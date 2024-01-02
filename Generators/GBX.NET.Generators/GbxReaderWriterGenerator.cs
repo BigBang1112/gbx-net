@@ -147,52 +147,24 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 && writerMethod.Parameters[0].NullableAnnotation == NullableAnnotation.Annotated
                 && !writerMethod.Parameters[0].Type.IsValueType;
 
+            var isNonNullableValueType = readerMethod.ReturnType.IsValueType
+                && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
+                && !writerMethod.Parameters.IsEmpty;
+
             // INTERFACE
-            sbInterface.Append("    ");
-            sbInterface.Append(readerMethod.ReturnType);
-
-            if (nullableReturn)
+            for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
-                sbInterface.Append('?');
-            }
+                var isNullableVariant = i == 1;
 
-            sbInterface.Append(' ');
+                sbInterface.Append("    ");
+                sbInterface.Append(readerMethod.ReturnType);
 
-            if (isNamed)
-            {
-                sbInterface.Append(readerMethod.Name.Substring("Read".Length));
-            }
-            else
-            {
-                sbInterface.Append(readerMethod.ReturnType.Name);
-            }
-
-            sbInterface.Append('(');
-
-            var firstInterface = true;
-
-            foreach (var parameter in writerMethod.Parameters)
-            {
-                if (!firstInterface)
+                if (nullableReturn || isNullableVariant)
                 {
-                    sbInterface.Append(", ");
+                    sbInterface.Append('?');
                 }
 
-                sbInterface.Append(parameter);
-
-                firstInterface = false;
-            }
-
-            if (writerMethod.Parameters.Length == 1)
-            {
-                sbInterface.Append(" = default");
-            }
-
-            sbInterface.AppendLine(");");
-
-            if (!writerMethod.Parameters.IsEmpty)
-            {
-                sbInterface.Append("    void ");
+                sbInterface.Append(' ');
 
                 if (isNamed)
                 {
@@ -203,140 +175,123 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbInterface.Append(readerMethod.ReturnType.Name);
                 }
 
-                sbInterface.Append("(ref ");
+                sbInterface.Append('(');
 
-                var first2Interface = true;
+                var first = true;
 
                 foreach (var parameter in writerMethod.Parameters)
                 {
-                    if (!first2Interface)
+                    if (!first)
                     {
                         sbInterface.Append(", ");
                     }
 
-                    sbInterface.Append(parameter);
+                    if (isNullableVariant && first)
+                    {
+                        sbInterface.Append(parameter.Type);
+                        sbInterface.Append("? ");
+                        sbInterface.Append(parameter.Name);
+                    }
+                    else
+                    {
+                        sbInterface.Append(parameter);
+                    }
 
-                    first2Interface = false;
+                    first = false;
+                }
+
+                if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                {
+                    sbInterface.Append(", ");
+                    sbInterface.Append(writerMethod.Parameters[0].Type);
+                    sbInterface.Append(" defaultValue");
+                }
+
+                if (writerMethod.Parameters.Length == 1)
+                {
+                    sbInterface.Append(" = default");
                 }
 
                 sbInterface.AppendLine(");");
+            }
+
+            if (!writerMethod.Parameters.IsEmpty)
+            {
+                for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
+                {
+                    var isNullableVariant = i == 1;
+
+                    sbInterface.Append("    void ");
+
+                    if (isNamed)
+                    {
+                        sbInterface.Append(readerMethod.Name.Substring("Read".Length));
+                    }
+                    else
+                    {
+                        sbInterface.Append(readerMethod.ReturnType.Name);
+                    }
+
+                    sbInterface.Append("(ref ");
+
+                    var first = true;
+
+                    foreach (var parameter in writerMethod.Parameters)
+                    {
+                        if (!first)
+                        {
+                            sbInterface.Append(", ");
+                        }
+
+                        if (isNullableVariant && first)
+                        {
+                            sbInterface.Append(parameter.Type);
+                            sbInterface.Append("? ");
+                            sbInterface.Append(parameter.Name);
+                        }
+                        else
+                        {
+                            sbInterface.Append(parameter);
+                        }
+
+                        first = false;
+                    }
+
+                    if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                    {
+                        sbInterface.Append(", ");
+                        sbInterface.Append(writerMethod.Parameters[0].Type);
+                        sbInterface.Append(" defaultValue = default");
+                    }
+
+                    sbInterface.AppendLine(");");
+                }
             }
 
             sbInterface.AppendLine();
 
 
             // CLASS
-            if (!writerMethod.Parameters.IsEmpty)
+            for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
-                sbClass.AppendLine("#if NET6_0_OR_GREATER");
-                sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
-                sbClass.AppendLine("#endif");
-            }
+                var isNullableVariant = i == 1;
 
-            sbClass.Append("    public ");
-            sbClass.Append(readerMethod.ReturnType);
-
-            if (nullableReturn)
-            {
-                sbClass.Append('?');
-            }
-
-            sbClass.Append(' ');
-
-            if (isNamed)
-            {
-                sbClass.Append(readerMethod.Name.Substring("Read".Length));
-            }
-            else
-            {
-                sbClass.Append(readerMethod.ReturnType.Name);
-            }
-
-            sbClass.Append('(');
-
-            var firstClass = true;
-
-            foreach (var parameter in writerMethod.Parameters)
-            {
-                if (!firstClass)
+                if (!writerMethod.Parameters.IsEmpty)
                 {
-                    sbClass.Append(", ");
+                    sbClass.AppendLine("#if NET6_0_OR_GREATER");
+                    sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
+                    sbClass.AppendLine("#endif");
                 }
 
-                sbClass.Append(parameter);
-
-                firstClass = false;
-            }
-
-            if (writerMethod.Parameters.Length == 1)
-            {
-                sbClass.Append(" = default");
-            }
-
-            sbClass.AppendLine(")");
-            sbClass.AppendLine("    {");
-
-            if (writerMethod.Parameters.IsEmpty)
-            {
-                sbClass.Append("        ");
+                sbClass.Append("    public ");
                 sbClass.Append(readerMethod.ReturnType);
-                sbClass.AppendLine(" value = default;");
-            }
 
-            // Reader
-            sbClass.Append("        if (Reader is not null) ");
-            sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
-            sbClass.Append(" = Reader.");
-            sbClass.Append(readerMethod.Name);
-            sbClass.Append('(');
-
-            var firstReader = true;
-
-            foreach (var parameter in writerMethod.Parameters.Skip(1))
-            {
-                if (!firstReader)
+                if (nullableReturn || isNullableVariant)
                 {
-                    sbClass.Append(", ");
+                    sbClass.Append('?');
                 }
 
-                sbClass.Append(parameter.Name);
-
-                firstReader = false;
-            }
-
-            sbClass.AppendLine(");");
-
-            // Writer
-            sbClass.Append("        Writer?.");
-            sbClass.Append(writerMethod.Name);
-            sbClass.Append('(');
-
-            var firstWriter = true;
-
-            foreach (var parameter in writerMethod.Parameters)
-            {
-                if (!firstWriter)
-                {
-                    sbClass.Append(", ");
-                }
-
-                sbClass.Append(parameter.Name);
-
-                firstWriter = false;
-            }
-
-            sbClass.AppendLine(");");
-            sbClass.Append("        return ");
-            sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
-            sbClass.AppendLine(";");
-
-            sbClass.AppendLine("    }");
-
-            sbClass.AppendLine();
-
-            if (!writerMethod.Parameters.IsEmpty)
-            {
-                sbClass.Append("    public void ");
+                sbClass.Append(' ');
 
                 if (isNamed)
                 {
@@ -347,50 +302,192 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbClass.Append(readerMethod.ReturnType.Name);
                 }
 
-                sbClass.AppendLine("(");
-                sbClass.AppendLine("#if NET6_0_OR_GREATER");
-                sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
-                sbClass.AppendLine("#endif");
-                sbClass.Append("        ref ");
+                sbClass.Append('(');
 
-                var first2Class = true;
+                var first = true;
 
                 foreach (var parameter in writerMethod.Parameters)
                 {
-                    if (!first2Class)
+                    if (!first)
                     {
                         sbClass.Append(", ");
                     }
 
-                    sbClass.Append(parameter);
+                    if (isNullableVariant && first)
+                    {
+                        sbClass.Append(parameter.Type);
+                        sbClass.Append("? ");
+                        sbClass.Append(parameter.Name);
+                    }
+                    else
+                    {
+                        sbClass.Append(parameter);
+                    }
 
-                    first2Class = false;
+                    first = false;
                 }
 
-                sbClass.Append(") => ");
-                sbClass.Append(writerMethod.Parameters[0].Name);
-                sbClass.Append(" = ");
-                sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                {
+                    sbClass.Append(", ");
+                    sbClass.Append(writerMethod.Parameters[0].Type);
+                    sbClass.Append(" defaultValue");
+                }
+
+                if (writerMethod.Parameters.Length == 1)
+                {
+                    sbClass.Append(" = default");
+                }
+
+                sbClass.AppendLine(")");
+                sbClass.AppendLine("    {");
+
+                if (writerMethod.Parameters.IsEmpty)
+                {
+                    sbClass.Append("        ");
+                    sbClass.Append(readerMethod.ReturnType);
+                    sbClass.AppendLine(" value = default;");
+                }
+
+                // Reader
+                sbClass.Append("        if (Reader is not null) ");
+                sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
+                sbClass.Append(" = Reader.");
+                sbClass.Append(readerMethod.Name);
                 sbClass.Append('(');
 
-                var first3Class = true;
+                var firstReader = true;
 
-                foreach (var parameter in writerMethod.Parameters)
+                foreach (var parameter in writerMethod.Parameters.Skip(1))
                 {
-                    if (!first3Class)
+                    if (!firstReader)
                     {
                         sbClass.Append(", ");
                     }
 
                     sbClass.Append(parameter.Name);
 
-                    first3Class = false;
+                    firstReader = false;
                 }
 
                 sbClass.AppendLine(");");
+
+                // Writer
+                sbClass.Append("        Writer?.");
+                sbClass.Append(writerMethod.Name);
+                sbClass.Append('(');
+
+                var firstWriter = true;
+
+                foreach (var parameter in writerMethod.Parameters)
+                {
+                    if (!firstWriter)
+                    {
+                        sbClass.Append(", ");
+                    }
+
+                    sbClass.Append(parameter.Name);
+
+                    if (isNullableVariant && firstWriter)
+                    {
+                        sbClass.Append(".GetValueOrDefault(defaultValue)");
+                    }
+
+                    firstWriter = false;
+                }
+
+                sbClass.AppendLine(");");
+                sbClass.Append("        return ");
+                sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
+                sbClass.AppendLine(";");
+
+                sbClass.AppendLine("    }");
+
+                sbClass.AppendLine();
             }
 
-            sbClass.AppendLine();
+            if (!writerMethod.Parameters.IsEmpty)
+            {
+                for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
+                {
+                    var isNullableVariant = i == 1;
+
+                    sbClass.Append("    public void ");
+
+                    if (isNamed)
+                    {
+                        sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                    }
+                    else
+                    {
+                        sbClass.Append(readerMethod.ReturnType.Name);
+                    }
+
+                    sbClass.AppendLine("(");
+                    sbClass.AppendLine("#if NET6_0_OR_GREATER");
+                    sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
+                    sbClass.AppendLine("#endif");
+                    sbClass.Append("        ref ");
+
+                    var first = true;
+
+                    foreach (var parameter in writerMethod.Parameters)
+                    {
+                        if (!first)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        if (isNullableVariant && first)
+                        {
+                            sbClass.Append(parameter.Type);
+                            sbClass.Append("? ");
+                            sbClass.Append(parameter.Name);
+                        }
+                        else
+                        {
+                            sbClass.Append(parameter);
+                        }
+
+                        first = false;
+                    }
+
+                    if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                    {
+                        sbClass.Append(", ");
+                        sbClass.Append(writerMethod.Parameters[0].Type);
+                        sbClass.Append(" defaultValue = default");
+                    }
+
+                    sbClass.Append(") => ");
+                    sbClass.Append(writerMethod.Parameters[0].Name);
+                    sbClass.Append(" = ");
+                    sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                    sbClass.Append('(');
+
+                    var first3Class = true;
+
+                    foreach (var parameter in writerMethod.Parameters)
+                    {
+                        if (!first3Class)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        sbClass.Append(parameter.Name);
+
+                        first3Class = false;
+                    }
+
+                    if (isNullableVariant)
+                    {
+                        sbClass.Append(", defaultValue");
+                    }
+
+                    sbClass.AppendLine(");");
+                    sbClass.AppendLine();
+                }
+            }
         }
 
         sbInterface.AppendLine("}");
