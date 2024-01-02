@@ -620,7 +620,7 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         var l = ValidateCollectionLength<T>(length, lengthInBytes);
 
-        var list = new List<T>(length);
+        var list = new List<T>(l);
 
         if (l > 1_000_000)
         {
