@@ -81,6 +81,8 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
     private int? idVersion;
     private Dictionary<int, string>? idDict;
     private Encapsulation? encapsulation;
+    private byte? packDescVersion;
+    private int? deprecVersion;
 
     internal int? IdVersion
     {
@@ -103,6 +105,9 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         : encapsulation.IdReadDict;
 
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
+
+    internal byte? PackDescVersion { get => packDescVersion; set => packDescVersion = value; }
+    internal int? DeprecVersion { get => deprecVersion; set => deprecVersion = value; }
 
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; }
@@ -488,23 +493,29 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
     public PackDesc ReadPackDesc()
     {
         var version = ReadByte();
+        packDescVersion ??= version;
+
+        if (version != packDescVersion)
+        {
+            // PackDesc version mismatch. but it's fine
+        }
 
         var checksum = default(byte[]);
         var locatorUrl = "";
 
-        if (version >= 3)
+        if (packDescVersion >= 3)
         {
             checksum = ReadBytes(32);
         }
 
         var filePath = ReadString();
 
-        if ((filePath.Length > 0 && version >= 1) || version >= 3)
+        if ((filePath.Length > 0 && packDescVersion >= 1) || packDescVersion >= 3)
         {
             locatorUrl = ReadString();
         }
 
-        return new PackDesc(version, checksum, filePath, locatorUrl);
+        return new PackDesc(filePath, checksum, locatorUrl);
     }
 
     public IClass ReadNodeRef()
@@ -576,9 +587,20 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         return MemoryMarshal.Cast<byte, T>(bytes).ToArray();
     }
 
+    private void ReadDeprecVersion()
+    {
+        var version = ReadInt32();
+        deprecVersion ??= version;
+
+        if (version != deprecVersion)
+        {
+            // Version mismatch. but it's fine
+        }
+    }
+
     internal T[] ReadArray_deprec<T>(int length, bool lengthInBytes = false) where T : struct
     {
-        ReadInt32(); // Version
+        ReadDeprecVersion();
         return ReadArray<T>(length, lengthInBytes);
     }
 

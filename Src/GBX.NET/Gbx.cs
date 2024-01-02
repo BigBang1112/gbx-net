@@ -49,6 +49,10 @@ public class Gbx : IGbx
     public GbxReadSettings ReadSettings { get; private set; }
     public IClass? Node { get; protected set; }
 
+    public int? IdVersion { get; set; }
+    public byte? PackDescVersion { get; set; }
+    public int? DeprecVersion { get; set; }
+
     internal static bool StrictBooleans { get; set; }
     internal static bool Exceptionless { get; set; }
 
@@ -83,6 +87,9 @@ public class Gbx : IGbx
         gbx.RefTable = refTable;
         gbx.Body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
         gbx.ReadSettings = settings;
+        gbx.IdVersion = reader.IdVersion;
+        gbx.PackDescVersion = reader.PackDescVersion;
+        gbx.DeprecVersion = reader.DeprecVersion;
 
         return gbx;
     }
@@ -108,7 +115,10 @@ public class Gbx : IGbx
         {
             RefTable = refTable,
             Body = body,
-            ReadSettings = settings
+            ReadSettings = settings,
+            IdVersion = reader.IdVersion,
+            PackDescVersion = reader.PackDescVersion,
+            DeprecVersion = reader.DeprecVersion
         };
     }
 
@@ -139,6 +149,9 @@ public class Gbx : IGbx
         gbx.RefTable = refTable;
         gbx.Body = body;
         gbx.ReadSettings = settings;
+        gbx.IdVersion = reader.IdVersion;
+        gbx.PackDescVersion = reader.PackDescVersion;
+        gbx.DeprecVersion = reader.DeprecVersion;
 
         return gbx;
     }
@@ -161,7 +174,10 @@ public class Gbx : IGbx
         {
             RefTable = refTable,
             Body = body,
-            ReadSettings = settings
+            ReadSettings = settings,
+            IdVersion = reader.IdVersion,
+            PackDescVersion = reader.PackDescVersion,
+            DeprecVersion = reader.DeprecVersion
         };
     }
 

@@ -96,6 +96,9 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
 
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
 
+    internal byte PackDescVersion { get; set; } = 3;
+    internal int DeprecVersion { get; set; } = 10;
+
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; }
 
@@ -429,35 +432,22 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
 
     public void Write(PackDesc? value)
     {
-        if (value is null)
-        {
-            Write((byte)3);
-#if NET6_0_OR_GREATER
-            Write(stackalloc byte[32]);
-#else
-            Write(new byte[32]);
-#endif
-            Write(string.Empty);
-            Write(string.Empty);
-            return;
-        }
+        Write(PackDescVersion);
 
-        Write(value.Version);
-
-        if (value.Version >= 3)
+        if (PackDescVersion >= 3)
         {
 #if NET6_0_OR_GREATER
-            Write(value.Checksum ?? stackalloc byte[32]);
+            Write(value?.Checksum ?? stackalloc byte[32]);
 #else
             Write(value.Checksum ?? new byte[32]);
 #endif
         }
 
-        Write(value.FilePath);
+        Write(value?.FilePath);
 
-        if (value.FilePath is not null
-            && ((value.FilePath.Length > 0 && value.Version >= 1)
-                || value.Version >= 3))
+        if (value?.FilePath is not null
+            && ((value.FilePath.Length > 0 && PackDescVersion >= 1)
+                || PackDescVersion >= 3))
         {
             Write(value.LocatorUrl);
         }
@@ -528,6 +518,17 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
 #else
         Write(MemoryMarshal.Cast<T, byte>(array).ToArray());
 #endif
+    }
+
+    private void WriteDeprecVersion()
+    {
+        Write(DeprecVersion);
+    }
+
+    internal void WriteArray_deprec<T>(T[]? array, bool lengthInBytes = false) where T : struct
+    {
+        WriteDeprecVersion();
+        WriteArray(array, lengthInBytes);
     }
 
     public void ResetIdState()

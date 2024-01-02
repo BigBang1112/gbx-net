@@ -1,10 +1,8 @@
 ﻿namespace GBX.NET;
 
-public record PackDesc(byte Version, byte[]? Checksum, string FilePath, string? LocatorUrl)
+public record PackDesc(string FilePath = "", byte[]? Checksum = null, string? LocatorUrl = "")
 {
     public static readonly PackDesc Default = new();
-
-    public PackDesc() : this(Version: 3, Checksum: new byte[32], FilePath: string.Empty, LocatorUrl: string.Empty) { }
 
     public Uri? GetLocatorUri()
     {
