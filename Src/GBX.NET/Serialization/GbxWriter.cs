@@ -50,11 +50,21 @@ public interface IGbxWriter : IDisposable
     void Write(Ident? value);
     void Write(PackDesc? value);
     void Write(IClass value);
+    void WriteNodeRef<T>(T value) where T : IClass;
     void Write(TimeInt32 value);
     void Write(TimeSingle value);
     void WriteTimeOfDay(TimeSpan? value);
     void Write(byte[]? value);
     void WriteData(byte[]? value);
+
+    void WriteArray<T>(T[]? value) where T : struct;
+    void WriteArray_deprec<T>(T[]? value) where T : struct;
+    void WriteList<T>(IList<T>? value) where T : struct;
+    void WriteList_deprec<T>(IList<T>? value) where T : struct;
+    void WriteArrayNode<T>(T[]? value) where T : IClass;
+    void WriteArrayNode_deprec<T>(T[]? value) where T : IClass;
+    void WriteListNode<T>(IList<T>? value) where T : IClass;
+    void WriteListNode_deprec<T>(IList<T>? value) where T : IClass;
 
     void ResetIdState();
 }
@@ -458,6 +468,11 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
         throw new NotImplementedException();
     }
 
+    public void WriteNodeRef<T>(T value) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
     public void Write(TimeInt32 value)
     {
         Write(value.TotalMilliseconds);
@@ -547,5 +562,45 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
 
         Write(value.Length);
         Write(value);
+    }
+
+    public void WriteArray<T>(T[]? value) where T : struct
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteArray_deprec<T>(T[]? value) where T : struct
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteList<T>(IList<T>? value) where T : struct
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteList_deprec<T>(IList<T>? value) where T : struct
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteArrayNode<T>(T[]? value) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteArrayNode_deprec<T>(T[]? value) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteListNode<T>(IList<T>? value) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteListNode_deprec<T>(IList<T>? value) where T : IClass
+    {
+        throw new NotImplementedException();
     }
 }
