@@ -576,6 +576,12 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         return MemoryMarshal.Cast<byte, T>(bytes).ToArray();
     }
 
+    internal T[] ReadArray_deprec<T>(int length, bool lengthInBytes = false) where T : struct
+    {
+        ReadInt32(); // Version
+        return ReadArray<T>(length, lengthInBytes);
+    }
+
     /// <summary>
     /// If can seek, position moves past the <paramref name="length"/>. If seeking is NOT supported, data is read with no allocation using <see cref="BinaryReader.Read(Span{byte})"/>. If .NET Standard 2.0, unavoidable byte array allocation happens with <see cref="BinaryReader.ReadBytes(int)"/>.
     /// </summary>
