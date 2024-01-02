@@ -1,0 +1,205 @@
+Class ID	Class Name
+01001000	CMwNod
+01020000	CMwCmdBufferCore
+01003000	CMwEngine
+01006000	CMwParam
+01037000
+01043000
+01044000
+01042000
+01050000
+0103E000
+0103F000
+01046000
+01047000
+01045000
+01051000
+0103C000
+0103D000
+01038000
+01052000
+01039000
+0103A000
+0103B000
+01040000
+01041000
+0104F000
+0104E000
+0104B000
+0104C000
+0104D000
+01053000
+01048000
+01049000
+0104A000
+01007000	CMwParamClass
+01021000	CMwParamDataRef
+01025000	CMwParamPtr
+01027000	CMwParamAggreg
+0101C000	CMwCmdBuffer
+01012000	CMwCmdFastCall
+010C0000	CMwCmdFastCallUser
+010C4000	CMwCmdFastCallStatic
+010C5000	CMwCmdFastCallStaticParam
+01005000	CMwCmd
+01022000	CMwClassInfoViewer
+01026000	CMwRefBuffer
+010C1000	
+01008000	CMwParamStruct
+01009000	CMwParamAction
+0100C000	CMwParamBool
+0100D000	CMwParamEnum
+01035000	CMwParamEnum8
+01036000	CMwParamEnum16
+0100E000	CMwParamInteger
+01033000	CMwParamInt8
+01034000	CMwParamInt16
+0100F000	CMwParamIntegerRange
+01010000	CMwParamNatural
+01031000	CMwParamNat8
+01032000	CMwParamNat16
+01011000	CMwParamNaturalRange
+01013000	CMwParamReal
+01014000	CMwParamRealRange
+01015000	CMwParamString
+01016000	CMwParamVec3
+01017000	CMwParamIso3
+01018000	CMwParamColor
+010D5000	CMwParamRGBAColor
+01019000	CMwParamVec2
+0101A000	CMwParamIso4
+0101F000	CMwParamVec4
+01024000	CMwParamProc
+01028000	CMwParamStringInt
+01030000	CMwCmdBlock
+01067000	CMwCmdBlockMain
+010B0000	CMwParamQuat
+010C2000	CMwParamInt3
+010C3000	CMwParamNat3
+010D0000	CMwParamMwId
+010D1000	CMwParamInt2
+010D4000	CMwParamNat2
+0101E000	CMwCmdFiber
+12012000	CNetHttpClient
+12013000	CNetHttpResult
+12002000	CNetServerInfo
+12001000	CNetNod
+12010000	CNetFormConnectionAdmin
+1201B000	CNetFileTransferForm
+12004000	CNetFormTimed
+12009000	CNetFormPing
+12008000	CNetFormEnumSessions
+12007000	CNetFormQuerrySessions
+1200F000	CNetConnection
+12003000	CNetClientInfo
+1200C000	CNetServer
+12038000	CNetFormNewPing
+12021000	CNetFormRpcCall
+09025000	CPlugFileImg
+09011000	CPlugBitmap
+09020000	CPlugFile
+09084000	CPlugFileZip
+090DB000	CPlugFileWebP
+09024000	CPlugFileDds
+09022000	CPlugFileJpg
+09023000	CPlugFileTga
+090AD000	CPlugFileExr
+0902B000	CPlug
+09088000	CPlugBitmapRenderCubeMap
+09087000	CPlugBitmapRenderWater
+09080000	CPlugBitmapShader
+090A8000	CPlugBitmapAtlas
+0902F000	CPlugFileGen
+09086000	CPlugBitmapRender
+09060000	CPlugFileVideo
+09040000	CPlugFileGPU
+09041000	CPlugFileText
+09035000	CPlugFileFidContainer
+090AA000	CPlugSphericalHarmonics
+09079000	CPlugMaterial
+09053000	CPlugGpuCompileCache
+09067000	CPlugShaderPass
+09002000	CPlugShader
+0903A000	CPlugMaterialCustom
+0907D000	CPlugMaterialFxs
+09006000	CPlugVisual
+0907A000	CPlugMaterialFx
+0907E000	CPlugBitmapSampler
+09075000	CPlugFileGPUV
+09026000	CPlugShaderApply
+09076000	CPlugFileGPUP
+09047000	CPlugBitmapAddress
+0900E000	CPlugModelShading
+09036000	CPlugBitmapPacker
+09056000	CPlugVertexStream
+09077000	CPlugFilePHlsl
+09004000	CPlugShaderGeneric
+090BE000	CPlugResource
+090B8000	CPlugBitmapApplyArray
+09074000	CPlugFileVHlsl
+090FD000	CPlugMaterialUserInst
+0901D000	CPlugLight
+09044000	CPlugBitmapPack
+09046000	CPlugBitmapPackElem
+09048000	CPlugBitmapPackInput
+0904F000	CPlugTree
+09005000	CPlugSolid
+09028000	CPlugVisualTriangles
+090C8000	CPlugSkelSetup
+090AC000	CPlugSpriteParam
+09068000	CPlugShaderSprite
+09010000	CPlugVisualSprite
+09051000	CPlugTreeGenerator
+09027000	CPlugVisualQuads
+09015000	CPlugTreeVisualMip
+09057000	CPlugIndexBuffer
+09019000	CPlugFilePack
+0905A000	CPlugFileOggVorbis
+0902C000	CPlugVisual3D
+0900F000	CPlugSurfaceGeomDeprecated
+0906A000	CPlugVisualIndexed
+0904B000	CPlugVisualQuads2D
+0901E000	CPlugVisualIndexedTriangles
+09078000	CPlugBitmapDecals
+09030000	CPlugFileSnd
+0903E000	CPlugBlendShapes
+0904A000	CPlugVisual2D
+090A7000	CPlugDecalModel
+0901A000	CPlugSound
+0906C000	CPlugFileSvg
+09001000	CPlugAudio
+0B005000	CSystemConfig
+0B000000	CSystemEngine
+0B013000	CSystemConfigDisplay
+0B009000	CSystemFids
+0B008000	CSystemFid
+0B00A000	CSystemFidFile
+0B018000	CSystemData
+0B01A000	CSystemFidContainer
+0B00B000	CSystemFidsFolder
+0B014000	CSystemPackManager
+0B015000	CSystemPackDesc
+0B00E000	CSystemFidMemory
+0B00C000	CSystemFidsDrive
+0B006000	CSystemMemoryMonitor
+0B003000	CSystemWindow
+0B007000	CNodSystem
+0B001000	CSystemMouse
+0B002000	CSystemKeyboard
+0B010000	CSystemDependenciesList
+0B017000	CSystemNodWrapper
+0B00F000	CSystemPlatformScript
+0501A000	CFuncKeysReal
+05014000	CFuncShaders
+05015000	CFuncShaderLayerUV
+0500B000	CFuncPlug
+05011000	CFuncShader
+05002000	CFuncKeys
+05010000	CFunc
+04002000	GxLightBall
+04001000	GxLight
+0400B000	GxLightSpot
+0400A000	GxLightFrustum
+04003000	GxLightPoint
+04006000	GxLightNotAmbient
+0905F000	CPlugFileBink

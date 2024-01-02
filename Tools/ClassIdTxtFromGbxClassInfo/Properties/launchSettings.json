@@ -2,11 +2,11 @@
   "profiles": {
     "ClassIdTxtFromGbxClassInfo": {
       "commandName": "Project",
-      "commandLineArgs": "ManiaPlanet32.txt"
+      "commandLineArgs": "GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt"
     },
     "UpdateClassId": {
       "commandName": "Project",
-      "commandLineArgs": "ManiaPlanet32.txt > ../../../../../Resources/ClassId.txt"
+      "commandLineArgs": "GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt > ../../../../../Resources/ClassId.txt"
     }
   }
 }

@@ -1,4 +1,4 @@
-00
+00 
   105 CMwCmdExpStringConcat
 01 MwFoundations
   001 CMwNod
@@ -27,8 +27,10 @@
   01E CMwCmdFiber
   01F CMwParamVec4
   020 CMwCmdBufferCore
+  021 CMwParamDataRef
   022 CMwClassInfoViewer
   024 CMwParamProc
+  025 CMwParamPtr
   026 CMwRefBuffer
   027 CMwParamRefBuffer
   028 CMwParamStringInt
@@ -66,6 +68,7 @@
   04E CMwCmdExpString
   04F CMwCmdExpStringIdent
   050 CMwCmdExpStringParam
+  051 
   052 CMwCmdScript
   053 CMwCmdExpNumBin
   054 CMwCmdExpBoolBin
@@ -155,7 +158,15 @@
   0A9 CMwCmdExpEnumCastedNum
   0B0 CMwParamQuat
   0C0 CMwCmdFastCallUser
+  0C1 
+  0C2 CMwParamInt3
+  0C3 CMwParamNat3
+  0C4 CMwCmdFastCallStatic
+  0C5 CMwCmdFastCallStaticParam
   0D0 CMwParamMwId
+  0D1 CMwParamInt2
+  0D4 CMwParamNat2
+  0D5 CMwParamRGBAColor
 03 Game
   000 CGameEngine
   001 CGameRule
@@ -174,8 +185,10 @@
   00E CGameNetPlayerInfo
   00F CGameNetwork
   010 CGameNetFormTunnel
+  011 CGameManiaPlanetNetwork
   012 CGameControlPlayerNet
   013 CGameControlPlayerInput
+  014 CGameStation
   015 CGameBulletModel
   017 CGameManialinkEntry
   018 CGameScene
@@ -187,10 +200,12 @@
   01E CGameCtnCatalog
   01F CGameCtnArticle
   020 CGameNetOnlineEvent
+  021 CGameCtnPlayground
   022 CGameNetOnlineNews
   023 CGameCamera
   024 CGameCtnMediaBlock3dStereo
   025 CGameNetTeamInfo
+  026 CGameMasterServerRequest
   027 CGameAvatar
   028 CGameNetOnlineMessage
   029 CGameCtnMediaBlockTriangles
@@ -217,6 +232,7 @@
   03E CGameAdvertisingElement
   03F CGameGhost
   040 CGameControlCameraMaster
+  041 CGameControlCameraFirstPerson
   042 CGameControlCameraEffectAdaptativeNearZ
   043 CGameCtnChallenge
   044 CGameCtnChallengeInfo
@@ -247,7 +263,7 @@
   05D CGameCtnZoneFlat
   05E CGameCtnZoneFrontier
   05F CGameCtnZoneTest
-  060 CGameCtnMediaShootParams
+  060 CGameCtnMediaVideoParams
   061 CGameCampaignsScoresManager
   062 CGameSkillScoreComputer
   063 CGameCampaignScores
@@ -338,7 +354,7 @@
   0C0 CGameControlCardNetOnlineNews
   0C1 CGameControlCardLadderRanking
   0C2 CGameControlCardMessage
-  0C3 CGameActionFxVis
+  0C3 CGameCalendar
   0C4 CGameCalendarEvent
   0C5 CGameControlCardCalendar
   0C6 CGameControlCardCalendarEvent
@@ -377,31 +393,494 @@
   0E8 CGameManialinkFileEntry
   0E9 CGameNetDataDownload
   0EA CGameCampaignPlayerScores
-  0EB CGameCtnMediaBlockSpectators
+  0EB CGameLoadProgress
   0EC CGameNetFormBuddy
   0ED CGameLadderScoresComputer
   0EE CGameLadderScores
+  0EF CGameEditPos3D
+  0F0 CGameQuestItemInfo
+  0F1 CGameControlFrameInventory
+  0F2 CGameControlFrameInventoryManager
+  0F3 CGamePlaygroundControlScores
+  0F4 CGameManialinkMediaPlayer
+  0F5 CGameNetFormPlayground
+  0F6 CGameCtnArticleNode
+  0F7 CGameSwitcher
+  0F8 CGameCtnSpawnPointInfo_deprecated
+  0F9 CGameManialinkOldTable
+  0FA CGameCtnMenusManiaPlanet
+  0FB CGameManialinkLabel
+  0FC CGameYoutube
+  0FF CGameUILayer
+  100 CGamePlaygroundCommon
+  101 CGameCtnAnchoredObject
+  102 CGameSwitcherModule
+  103 CGamePlaygroundUIConfig
+  104 CGameManialinkFrame
+  105 CGameManialinkPage
+  106 CGameManialinkControl
+  107 CGameCardEventInfo
+  109 CGameManialinkQuad
+  10B CGameManiaPlanetMenuStations
+  10C CGameCtnAnchorPoint
   10D CGameCtnMacroBlockInfo
+  10E CGameCtnEditorCommon
+  10F CGameCtnEditorFree
+  110 CGameCtnEditorPuzzle
+  111 CGamePlaygroundScore
+  112 CGameCtnEditorCommonInterface
+  113 CGameControlCameraFollowAboveWater
   114 CGameCtnMacroDecals
+  115 CGameCtnEditorSimple
+  116 CGameCtnArticleNodeDirectory
+  117 CGameCtnArticleNodeArticle
+  118 CGameCtnDecalsBrush
+  119 CGameCtnEditChallengePrecalcParticles
+  11A CGameCtnEditorDecals
+  11C CGameCtnPrecalcPartParams
+  11D CGameCtnZoneGenealogy
+  11E CGameOfficialRecorder
+  11F CGameOfficialRecord
+  120 CGameCtnAutoTerrain
   121 CGameCtnSolidDecals
   122 CGameCtnBlockInfoMobil
+  123 CGameCtnEditorBlockSolid
+  124 CGameCtnEditorBlockSolidInterface
+  125 CGameControlCameraEditorOrbital
+  126 CGameCtnMediaBlockDOF
+  127 CGameCtnMediaBlockToneMapping
   128 CGameCtnMediaBlockBloomHdr
   129 CGameCtnMediaBlockTimeSpeed
+  12A CGameCtnMediaBlockManialink
+  12B CGamePlayerProfileChunk
+  12C CGamePlayerProfileChunk_AccountSettings
+  12D CGamePlayerProfileChunk_GameSettings
+  12E CGamePlayerProfileChunk_InterfaceSettings
+  12F CGamePlayerProfileChunk_InputBindingsConfig
+  130 CGamePlayerProfileChunk_VehiclesSettings
+  131 CGamePlayerProfileChunk_Challenge
+  132 CGamePlayerProfileChunk_Campaign
+  133 CGameCtnMediaBlockVehicleLight
+  134 CGameCardEventListInfo
+  135 CGamePlaygroundUIConfigMgr
+  136 CGamePlaygroundControlSmPlayers
+  137 CGamePlaygroundControlMessages
+  138 CGamePlaygroundScript
+  139 CGameCtnMediaBlockFxCameraMap
+  13A CGamePodium
+  13D CGameManialinkDownloader
+  13E CGamePlaygroundBasic
+  13F CGameScriptHandlerManiaPlanet
+  140 CGamePlayerProfileChunk_PackagesInfos
+  141 CGameAnticheat
+  142 CGameAnticheatFunctions
+  143 CGameAnticheatMonitor
+  144 CGameAnticheatEvent
+  145 CGameCtnMediaBlockShoot
+  146 CGamePlayerProfileChunk_GameScores
+  147 CGamePlayerProfileChunk_GameStats
+  148 CGamePlayerProfileChunk_ChallengesStats
+  149 CGamePlayerProfileChunk_ChallengesScores
+  14A CGameCtnMediaBlockSkel
+  14B CGameEditorAnimClip
   14C CGameCtnBlockInfoTransition
+  14D CGameCtnZoneTransition
+  14E CGameMenuSkinChooser
+  150 CGameEditorTrigger
+  151 CGameCtnZoneFusionInfo
+  152 CGameControlCardBuddy
+  153 CGameBuddy
+  154 CGameCtnEditorPluginMapType
+  155 CGameCursorItem
+  156 CGameCtnMacroBlockJunction
+  157 CGameActionMaker
+  158 CGameCtnEditorTraffic
+  159 CGameCtnEditorScriptAnchoredObject
+  15A CGameCtnEditorScriptSpecialProperty
   15B CGameCtnBlockInfoVariant
   15C CGameCtnBlockInfoVariantGround
   15D CGameCtnBlockInfoVariantAir
+  15E CGameTeamProfile
+  15F CGameManialinkScriptEvent
+  160 CGameCtnEditorPlugin
+  161 CGameCtnMediaBlockCameraEffectScript
+  162 CGameCtnChallengeScript
+  163 CGamePlayerProfileChunk_EditorSettings
+  164 CGameCtnEditorPluginScriptEvent
+  165 CGameCtnMediaBlockDirtyLens
   166 CGameCtnMediaBlockCameraEffectInertialTracking
+  167 CGameEditorPacks
+  168 CGamePodiumInfo
+  169 CGameCtnMediaBlockBulletFx_Deprecated
+  16A CGameCtnMediaBlockCharVis_Deprecated
+  16B CGamePlaygroundScriptXmlRpc
   16C CGameCtnMediaBlockColoringCapturable
+  16D CGameCtnMediaBlockFxCameraBlend
+  16E CGameCtnChallengeTrafficElemDesc
+  16F CGameCoverFlowDesc
+  170 CGamePlayerProfileChunk_ScriptPersistentTraits
+  171 CGamePlayerProfileCompatibilityChunk
+  172 CGameCtnMediaBlockColoringBase
+  173 CGameCtnMediaClipConfigScriptContext
+  174 CGamePlaygroundScriptXmlRpcEvent
+  176 CGameScriptHandlerBrowser
+  177 CGameCtnEditorBody
+  178 CGameManialinkPlayerList
+  179 CGamePlayerProfileChunk_GlobalInterfaceSettings
+  17A CGameAnimSet
+  17B CGameScriptBuddiesManager
+  17C CGameScriptBuddy
+  17D CGameScriptBuddiesEvent
+  17E CGameManialink3dMood
+  17F CGameManialink3dWorld
+  180 CGamePlayerProfileChunk_ManiaPlanetStations
+  181 CGameManialink3dStyle
+  182 CGameManiaplanetPlugin
+  184 CGameCtnInterfaceViewer
+  185 CGameManialinkGauge
+  186 CGameCtnMediaBlockColorGrading
+  187 CGamePlaygroundClientScriptAPI
+  188 CGameCtnMediaBlockScenery
+  189 CGameControlCameraVehicleInternal
+  18A CGameMgrObjectVis
+  18C CGamePlaygroundResources
+  18D CGameMgrObjectPhy
+  18E CGameMgrActionFxVis
+  18F CGameEditorAsset
+  190 CGameManialinkGraph
+  191 CGameManialinkGraphCurve
+  192 CGameCtnBlockInfoMobilLink
+  193 CGameManiaplanetPluginInterface
+  194 CGameManiaplanetPluginInterfaceEvent
+  195 CGameCtnMediaBlockInterface
+  196 CGameCtnMediaBlockObject
+  197 CGameScriptCloudManager
+  198 CGameEditorBullet
   199 CGameCtnMediaBlockFog
+  19A CGameEditorActionScript
+  19B CGameEditorItem
+  19C CGameManialinkMiniMap
+  19D CGameMgrGatePhy
+  19E CGameMgrGateVis
+  19F CGameEditorManialink
+  1A0 CGameManiaTitleEditionScriptAPI
+  1A1 CGameEditorBase
+  1A2 CGameEditorPropertyList
+  1A3 CGameEditorFileToolBar
+  1A4 CGameManiaApp
+  1A5 CGameManiaAppScriptEvent
+  1A6 CGameManiaAppPlaygroundCommon
+  1A7 CGameManialinkCamera
+  1A8 CGameReplayObjectVisData
+  1A9 CGameManiaAppTitle
+  1AA CGameCtnMediaBlockDecal2d
+  1AB CGameCtnMediaBlockEditorDecal2d
+  1AC CGameManiaAppBrowser
+  1AD CGameManiaTitleFlowScriptAPI
+  1AE CGameManiaAppTitleLayerScriptHandler
+  1AF CGameCtnEditorPluginLayerScriptHandler
+  1B0 CGameScriptNotificationsConsumerNotification
+  1B1 CGameScriptNotificationsProducer
+  1B2 CGameScriptNotificationsConsumer
+  1B3 CGameScriptNotificationsProducerEvent
+  1B4 CGameScriptNotificationsConsumerEvent
+  1B5 CGameDataManagerScript
+  1B6 CGameManialinkTextEdit
   1B7 CGameUserFileList
+  1B8 CGameManialinkStylesheet
+  1B9 CGameMasterServerOnlineSignalsManager
+  1BA CGameMasterServerOnlineSignal
+  1BB CGameMasterServerOnlineSignal_RecordBeaten
+  1BC CGameManiaAppMinimal
+  1BD CGameVideoScriptManager
+  1BE CGameGhostScript
+  1BF CTmRaceResultNod
+  1C0 CGameEditorModule
+  1C1 CGameMgrItem
+  1C2 CGameHighScoreList
+  1C3 CGameAchievementScriptManager
+  1C4 CGameAchievementScriptEvent
+  1C5 CGameAchievementScriptAchievement
+  1C6 CGameAchievementScriptStat
+  1C7 CGamePlaygroundModuleClientInventory
+  1C8 CGamePlaygroundModuleClientScoresTable
+  1C9 CGamePlaygroundModuleManagerClient
+  1CA CGameManiaAppPlaygroundScriptEvent
+  1CB CGameBadgeScript
+  1CC CGameUserProfile
+  1CD CGameUIAnimManager
+  1CE CGameControlCameraTrackManiaRace3
+  1CF CGameControlCameraTrackManiaRace2
+  1D0 CGameEditorBadge
+  1D1 CGameEditorBadgeScript
+  1D3 CGamePlaygroundModuleClientStore
+  1D4 CGamePlaygroundModuleConfig
+  1D5 CGameMasterServerUserInfo
+  1D6 CGameBadgeStickerSlots
+  1D7 CGamePlaygroundModuleClient
+  1D8 CGameManiaAppPlayground
+  1D9 CGameVideoScriptVideo
+  1DA CGameUserScript
+  1DB CGameUserManagerScript
+  1DC CWebServicesTaskResult_BuddiesChallengeRecordsComparison
+  1DD CGameCtnMasterServerTask_GetChallengeRecordsComparisonSummaries
+  1DE CWebServicesTaskResult_BuddyChallengeRecordsComparison
+  1DF CGameCtnMasterServerTask_ChallengeRecords_GetBuddyRecordComparison
+  1E0 CGameHighScoreComparison
+  1E1 CGameHighScoreComparisonSummary
+  1E2 CGameModuleMenuBase
+  1E3 CGameModuleMenuBrowser
+  1E4 CGameHapticDevice
+  1E5 CGamePluginInterfacesScript
+  1E6 CGameEditorManialink2
+  1E7 CGameModuleMenuComponent
+  1E8 CGameModuleMenuAdvancedComponent
+  1E9 CGameScoreAndLeaderBoardManager
+  1EA CGameCampaignScoreManager
+  1EB CGameCampaignScoreManager_MapTime
+  1EC CGameCampaignScoreManager_MultiAsyncLevel
+  1ED CGameScoreComputer_MultiAsyncLevel
+  1EE CGameMultiplayerScoreManager
+  1EF CGameGlobalScoreManager
+  1F0 CGameLeaderBoard
+  1F1 CGameNaturalLeaderBoard
+  1F2 CGameRealLeaderBoard
+  1F3 CGameCampaignLeaderBoard
+  1F4 CGameMapLeaderBoard
+  1F5 CGameMultiplayerLeaderBoard
+  1F6 CGameGlobalLeaderBoard
+  1F7 CGameScoreTask_UpdateData
+  1F8 CGameScoreTask_UpdateMultiAsyncLevelComputer
+  1FB CGameScoreTask_LoadPlayerScores
+  1FC CGameScoreTask_SynchronizePlayerScore
+  1FD CWebServicesTaskResult_CampaignMapTimes
+  1FE CGameCtnMasterServerTask_GetCampaignMapTimes
+  1FF CGameEditorPluginModuleScriptEvent
+  203 CWebServicesTaskResult_CampaignPlayerRecordTimes
+  204 CGameCtnMasterServerTask_GetCampaignPlayerRecordTimes
+  205 CGameModuleMenuLadderRankings
+  206 CGameScriptHandlerPlaygroundModuleStore
+  207 CGameModuleMenuServerBrowser
+  208 CGamePlaygroundModuleClientHud
+  209 CGamePlaygroundModuleServer
+  20B CGameMasterServerOnlineSignalTask_GetPlayerOnlineSignals
+  20C CWebServicesTaskResult_OnlineSignals
+  20D CGameScriptHandlerTitleModuleMenu
+  20E CGameEditorAnimChar
+  20F CGameScriptHandlerPlaygroundModuleInventory
+  210 CGameModuleInventoryCategory
+  211 CGameModuleScriptItem
+  212 CGameMasterServerTask_SetBuddies
+  213 CGameCtnMasterServerTask_GetRealLeaderBoard
+  214 CGameCtnMasterServerTask_UploadPlayerRecord
+  215 CGameScoreTask_SetCampaignNewMapRecord
+  216 CWebServicesTaskResult_Timestamp
+  217 CGamePlaygroundModuleServerStore
+  218 CGamePlaygroundModuleServerHud
+  219 CGamePlaygroundModuleManagerServer
+  21A CGamePlaygroundModuleServerInventory
+  21B CGamePlaygroundModuleServerScoresTable
+  21C CWebServicesTaskResult_RealLeaderBoard
+  21D CGameRealLeaderBoardInfo
+  21E CGameScoreTask_GetRealLeaderBoardPlayerList
+  21F CWebServicesTaskResult_CampaignMapRecordGhost
+  220 CGameScoreTask_GetCampaignMapRecordGhost
+  221 CGameScoreAndLeaderBoardManagerScript
+  222 CGameCtnMasterServerTask_GetDisplayNameScript
+  223 CWebServicesTaskResult_GetDisplayNameScriptResult
+  224 CGameEditorTimeLine
+  225 CGameEditorAnimChar_Interface
+  228 CGameMasterServerOnlineSignalTask_NotifyBuddiesAboutNewOnlineSignals
+  229 CGameMasterServerUserOnlineSignals
+  22A CGameEditorAnimSet
+  22B CGameAnimClipNod
+  22C CGameUserPrivilegeTask_CheckPlayMultiplayerMode
+  22D CGameAchievementScriptStatDesc
+  22E CGameAchievementScriptAchievementDesc
+  22F CGameEditorVehicle
+  230 CGameEditorParent
+  231 CWebServicesTaskResult_ZoneList
+  232 CGameCtnMasterServerTask_ZoneGetChilds
+  233 CGameCtnMasterServerTask_GetLeagues
+  234 CGameLeagueScript
+  235 CGameMasterServerTask_Connect
+  236 CGameAchievementScriptUplayAction
+  237 CGameMasterServerPlayerOnlinePresence
+  238 CWebServicesTaskResult_OnlinePresenceList
+  239 CGameCtnMasterServerTask_GetOnlinePresenceForPlayers
+  23A CGameMasterServerRichPresenceTaskResult_GetOnlinePresenceForPlayersScript
+  23B CWebServicesTaskResult_GhostHandle
+  23C CGameMasterServerRichPresenceManager
+  23D CGameMasterServerRichPresenceTask_UpdatePresence
+  23E CGameUserPrivilegesManagerScript
+  23F CGameUserPrivilegeTask_CheckUploadUserCreatedContent
+  240 CWebServicesTaskResult_CheckTargetedPrivilegeResult
+  241 CGameUserPrivilegeTask_CheckViewOnlinePresence
+  242 CWebServicesTaskResult_CheckTargetedPrivilegeResultScript
+  243 CGameUserPrivilegeTask_CheckTargetedViewUserCreatedContent
+  244 CGameMasterServerRichPresenceTask_GetOnlinePresence
+  245 CGameMasterServerRichPresenceTaskResult_PlayerOnlinePresenceList
+  246 CGameMasterServerRichPresenceManagerScript
+  247 CGameUserPrivilegeTask_CheckViewUserCreatedContent
+  248 CGameManagerBadgeScript
+  249 CGameUserPrivilegeTask_CheckPlayMultiplayerSession
+  24A CGameCtnMasterServerTask_BuyFullGame
+  24B CGameUserPrivilegeTask_CheckVoiceChat
+  24C CGameNetFormVoiceChat
+  24D CGameMasterServerTask_ChangeZone
+  24E CGameUserPrivilegeTask_CheckPlayMultiplayerAsync
+  24F CGameCtnMasterServerTask_LaunchUplay
+  250 CGameUserPrivilegeTask_CheckDownloadUserCreatedContent
+  251 CGameScoreTask_UploadCampaignNewMapRecord
+  252 CGameUserPrivilegeTask_CheckTargetedViewUserGameHistory
+  253 CGameScoreTask_BuddiesChallengeRecordsComparison
+  254 CWebServicesTaskResult_ChallengeRecordsComparisonSummaries
+  255 CWebServicesTaskResult_LaunchUplayScriptResult
+  256 CGameUserPrivilegeTask_CheckTargetedViewUserCreatedContentForAllUsers
+  257 CGameUserPrivilegeTask_CheckPrivilegeForAllUsers
+  258 CGameCtnMasterServerTask_ChallengeRecords_GetBuddiesRecord
+  259 CWebServicesTaskResult_ChallengeRecords_BuddiesRecord
+  25A CGameScoreTask_BuddiesChallengeRecordsForMap
+  25B CWebServicesTaskResult_BuddiesChallengeRecord
+  25C CGameScoreTask_BuddyChallengeRecordsComparison
+  25D CWebServicesTaskResult_ChallengeRecords_BuddyRecordComparison
+  25E CGameCtnMediaBlockCheatEmptyCars
+  25F CGameControlCameraHmdExternal
+  260 CGameModuleScriptStoreCategory
+  262 CGameMgrMap
+  263 CWebServicesTaskResult_NaturalLeaderBoardSummaries
+  264 CGameCtnMasterServerTask_GetNaturalLeaderBoardSummaries
+  265 CWebServicesTaskResult_RealLeaderBoardSummaries
+  266 CGameCtnMasterServerTask_GetRealLeaderBoardSummaries
+  267 CGameEditorMainPlugin
+  268 CGameMgrConstraintPhy
+  26A CGamePlaygroundUIConfigEvent
+  26B CGameMgrShieldPhy
+  26C CGameMgrShieldVis
+  26D CGamePackCreatorScript
+  26E CGamePackCreator_PackScript
+  26F CGamePackCreator_TitleInfoScript
+  270 CGamePackCreator_RecipientScript
+  271 CGameCtnDecorationMaterialModifiers
+  272 CGameModuleMenuPage
+  274 CGameEditorPlugin
+  275 CGameManialinkAnimManager
+  276 CGameEditorEditor
+  27A CGameCampaignScoreManager_SkillPoint
+  27B CGameScriptChatRoom
+  27C CGameMgrWaypoint
   282 CGameShield
-  291 CGameTurretVis
+  285 CGameScriptChatHistory
+  286 CGameScriptChatHistoryEntry
+  287 CGameEditorCanvas
+  28A CGameEditorPluginMapManager
+  28B CGameEditorMesh
+  28C CGameEditorEvent
+  28D CGameMgrTurretPhy
+  28E CGameTurretPhy
+  28F CGameScenePhy
+  290 CGameMgrTurretVis
+  293 CGameEditorPluginHandle
+  294 CGameCtnMediaBlockTurret
+  295 CGameEditorPluginLayerScriptHandler
+  296 CGameMgrMapPhy
+  297 CGameDataFileManager
+  298 CGameDataFileTask_GhostStoreUserRecord_ConsoleMode
+  299 CGameDataFileTask_GhostStoreUserRecord_Maniaplanet
+  29A CGameDataFileTask_GhostLoadUserRecord_ConsoleMode
+  29B CGameDataFileTask_GhostLoadUserRecord_Maniaplanet
+  29D CWebServicesTaskResult_GhostScript
+  29E CGameDataFileTask_GhostLoadMedal
   29F CGameCtnMediaBlockEntity
-  2AC CGameObjectVis
-  2CB CGameArenaPlayer
-  2E3 CGameSlotVis
-  38B CGameCtnMediaBlockOpponentVisibility
+  2A0 CWebServicesTaskResult_NaturalLeaderBoardInfoList
+  2A1 CWebServicesTaskResult_MapListScript
+  2A2 CGameDataFileTask_MapGetUserList
+  2A3 CGameDataFileTask_GameFidGetGameList
+  2A4 CGameDataFileTask_UserDataCacheUpdate
+  2A5 CGameDataFileManagerScript
+  2A6 CGameDataUserFileManager
+  2A7 CWebServicesTaskResult_GameFidList
+  2A8 CWebServicesTaskResult_ReplayListScript
+  2A9 CWebServicesTaskResult_FileList
+  2AA CWebServicesTaskResult_FileListScript
+  2AB CGameDataFileTask_FileGetGameList
+  2AD CGameMapScoreManager
+  2AE CGameMapScoreManager_MapRecord
+  2AF CGameMapScoreManager_MultiAsyncLevel
+  2B0 CGameMapScoreManager_SkillPoint
+  2B1 CGameScriptMgrTurret
+  2B2 CGameScriptTurret
+  2B3 CWebServicesTaskResult_GhostList
+  2B4 CWebServicesTaskResult_GhostListScript
+  2B5 CGameMasterServerTask_SetTitlePaid
+  2B6 CGameScoreTask_GetNaturalLeaderBoardPlayerList
+  2B7 CGameCtnMasterServerTask_GetNaturalLeaderBoard
+  2B8 CGameNaturalLeaderBoardInfoScript
+  2B9 CWebServicesTaskResult_NaturalLeaderBoardInfoListScript
+  2BA CWebServicesTaskResult_RealLeaderBoardInfoListScript
+  2BB CGameMatchSettingsManagerScript
+  2BC CGameMatchSettingsScript
+  2BD CGameDataFileTask_PackDownloadOrUpdate
+  2BE CWebServicesTaskResult_Title
+  2BF CGameMatchSettingsPlaylistItemScript
+  2C0 CGameScoreTask_GetCampaignOpponentRecords
+  2C1 CWebServicesTaskResult_MapRecordListScript
+  2C2 CGamePlayerMapRecordScript
+  2C3 CGameDataFileTask_GameModeGetGameList
+  2C4 CWebServicesTaskResult_GameModeListScript
+  2C5 CGameGameModeInfoScript
+  2C6 CGameUserProfileWrapper
+  2C7 CGameEditorPluginAPI
+  2C9 CGameEditorVehiclePluginAPI
+  2CA CGameBlockItemVariantChooser
+  2CC CGameEditorMaterial
+  2CE CGameMgrAction
+  2CF CGameMgrArenaPhy
+  2D0 CGameScriptVehicle
+  2D1 CGameScriptMgrVehicle
+  2D2 CGameAction
+  2D3 CGameScriptAction
+  2D4 CGameMgrGhost
+  2D5 CGameScriptMapLandmark
+  2D6 CGameScriptMapSector
+  2D7 CGameScriptMapSpawn
+  2D8 CGameScriptMapBotPath
+  2D9 CGameScriptMapObjectAnchor
+  2DA CGameScriptMapBotSpawn
+  2DE CGameMgrVehiclePhy
+  2DF CGameMgrSlotPhy
+  2E0 CGameMgrSlotVis
+  2E5 CGameScriptEntity
+  2E6 CGameScriptPlayer
+  2E7 CGameScriptChatSquadInvitation
+  2E8 CGameScriptChatHistoryEntryMessage
+  2E9 CGameCtnMasterServerTask_ZoneUpdate
+  2EA CGameMasterServerTask_GetOnlineProfile
+  2EB CGameMasterServerRichPresenceTaskResult_NextPresence
+  2EC CWebServicesTaskResult_PlanetsTransaction_Bill
+  2EF CGameScriptMapWaypoint
+  2F1 CWebServicesTask_PostConnect
+  2F2 CWebServicesTask_PostConnect_Zone
+  2F3 CWebServicesTask_PostConnect_BannedCryptedChecksumsList
+  2F4 CWebServicesTask_PostConnect_UrlShortCutList
+  2F5 CGameEditorMapScriptClipList
+  2F6 CWebServicesTask_PostConnect_Title
+  2F7 CGameEditorMapScriptClip
+  2F8 CWebServicesTask_SynchronizeProfileChunks
+  2F9 CGamePlaygroundModuleClientChrono
+  2FA CGamePlaygroundModuleServerChrono
+  2FB CGamePlaygroundModuleClientSpeedMeter
+  2FC CGamePlaygroundModuleServerSpeedMeter
+  2FD CGamePlaygroundModuleClientPlayerState
+  2FE CGamePlaygroundModuleServerPlayerState
+  2FF CGamePlaygroundModuleClientTeamState
+  300 CGamePlaygroundModuleServerTeamState
+  301 CGamePlaygroundModuleClientAltimeter
+  302 CGamePlaygroundModuleServerAltimeter
+  303 CGamePlaygroundModuleClientThrottle
+  304 CGamePlaygroundModuleServerThrottle
+  314 CGameMasterServerTask_GetAccountFromUplayUser
+  319 CGameEditorMapMacroBlockInstance
 04 Graphic
   001 GxLight
   002 GxLightBall
@@ -466,6 +945,9 @@
   042 CFuncCurvesReal
   043 CFuncCurves2Real
   044 CFuncNoise
+  045 CFuncDayTime
+  046 CFuncCloudsParam
+  047 CFuncCloudsSolids
 06 Hms
   001 CHmsCamera
   002 CHmsCorpus
@@ -499,6 +981,21 @@
   024 CHmsPackLightMapAlloc
   025 CHmsCorpus2d
   026 CHmsAmbientOcc
+  027 CHmsLightProbeGrid
+  028 CHmsLightMapCacheSH
+  029 CHmsDynaZone
+  02A CHmsCollZone
+  02B CHmsLightMapParam
+  02C CHmsLightArray
+  02D CHmsDecalArray
+  02E CHmsLightProbePartition
+  02F CHmsMgrVisEnvMap
+  032 CHmsMgrVisDynaDecal2d
+  034 CHmsMgrVisParticle
+  035 CHmsVisMiniMap
+  046 CHmsMoodBlender
+  047 CHmsMgrVisVolume
+  048 CHmsLightMapCpt
 07 Control
   001 CControlBase
   002 CControlContainer
@@ -548,7 +1045,13 @@
   030 CControlPager
   031 CControlText
   032 CControlFrameAnimated
-08 Motion
+  033 CControlToolTipManager
+  034 CControlScriptEditor
+  035 CControlScriptConsole
+  036 CControlListCard
+  037 CControlMiniMap
+  038 CControlCamera
+08 
   001 CMotion
   027 CMotionFunc
   028 CMotions
@@ -582,6 +1085,7 @@
   04C CMotionEmitterLeaves
   04D CMotionManagerLeaves
   04E CMotionManaged
+  04F CMotionEmitterFlock
   051 CMotionWindBlocker
   052 CMotionManagerMeteo
   053 CMotionManagerWeathers
@@ -615,7 +1119,7 @@
   015 CPlugTreeVisualMip
   016 CPlugVisualStrip
   017 CPlugVisualVertexs
-  019 CPlugFilePack .pak
+  019 CPlugFilePack
   01A CPlugSound
   01B CPlugSoundMood
   01C CPlugMusic
@@ -623,9 +1127,9 @@
   01E CPlugVisualIndexedTriangles
   020 CPlugFile
   021 CPlugBitmapRenderLightFromMap
-  022 CPlugFileJpg .jpg
-  023 CPlugFileTga .tga
-  024 CPlugFileDds .dds
+  022 CPlugFileJpg
+  023 CPlugFileTga
+  024 CPlugFileDds
   025 CPlugFileImg
   026 CPlugShaderApply
   027 CPlugVisualQuads
@@ -634,11 +1138,12 @@
   02A CPlugVisualIndexedStrip
   02B CPlug
   02C CPlugVisual3D
-  02D CPlugFileFont .fnt
+  02D CPlugFileFont
   02F CPlugFileGen
   030 CPlugFileSnd
-  031 CPlugFileWav .wav
-  032 CPlugFileAvi .avi
+  031 CPlugFileWav
+  032 CPlugFileAvi
+  034 CPlugAudioBalance
   035 CPlugFileFidContainer
   036 CPlugBitmapPacker
   037 CPlugMusicType
@@ -646,14 +1151,14 @@
   03A CPlugMaterialCustom
   03B CPlugVisualGrid
   03C CPlugVisualPath
-  03D CPlugFilePng .png
+  03D CPlugFilePng
   03E CPlugBlendShapes
   03F CPlugTreeGenText
   040 CPlugFileGPU
-  041 CPlugFileText .txt
-  042 CPlugFileVsh .txt
+  041 CPlugFileText
+  042 CPlugFileVsh
   044 CPlugBitmapPack
-  045 CPlugFilePsh .txt
+  045 CPlugFilePsh
   046 CPlugBitmapPackElem
   047 CPlugBitmapAddress
   048 CPlugBitmapPackInput
@@ -667,17 +1172,18 @@
   052 CPlugRessourceStrings
   053 CPlugGpuCompileCache
   054 CPlugFileTextScript
-  055 CPlugFileI18n .mo
+  055 CPlugFileI18n
   056 CPlugVertexStream
   057 CPlugIndexBuffer
   058 CPlugBitmapRenderHemisphere
-  05A CPlugFileOggVorbis .ogg
+  05A CPlugFileOggVorbis
   05B CPlugBitmapRenderPortal
   05C CPlugBitmapRenderPlaneR
   05D CPlugModelShell
   05E CPlugSoundSurface
-  05F CPlugFileBink .bik
+  05F CPlugFileBink
   060 CPlugFileVideo
+  061 CPlugLocatedSound
   062 CPlugTreeLight
   064 CPlugSoundMulti
   065 CPlugSoundVideo
@@ -687,12 +1193,14 @@
   069 CPlugShaderSpritePath
   06A CPlugVisualIndexed
   06B CPlugTreeFrustum
+  06C CPlugFileSvg
   072 CPlugModelTree
   073 CPlugModelMesh
-  074 CPlugFileVHlsl .txt
+  074 CPlugFileVHlsl
   075 CPlugFileGPUV
   076 CPlugFileGPUP
-  077 CPlugFilePHlsl .txt
+  077 CPlugFilePHlsl
+  078 CPlugBitmapDecals
   079 CPlugMaterial
   07A CPlugMaterialFx
   07B CPlugMaterialFxFlags
@@ -703,7 +1211,8 @@
   081 CPlugMaterialFxDynaBump
   082 CPlugMaterialFxDynaMobil
   083 CPlugMaterialFxGenUvProj
-  084 CPlugFileZip .zip
+  084 CPlugFileZip
+  085 CPlugFileAudioMotors
   086 CPlugBitmapRender
   087 CPlugBitmapRenderWater
   088 CPlugBitmapRenderCubeMap
@@ -717,13 +1226,13 @@
   091 CPlugBitmapRenderSub
   092 CPlugModel
   093 CPlugFileGpuFx
-  094 CPlugFileGpuFxD3d .fx
+  094 CPlugFileGpuFxD3d
   095 CPlugFileVso
   096 CPlugFilePso
   098 CPlugFileModel
-  099 CPlugFileModelObj .obj
+  099 CPlugFileModelObj
   09A CPlugTreeGenSolid
-  09B CPlugFileModel3ds .3ds
+  09B CPlugFileModel3ds
   09C CPlugModelLodMesh
   09D CPlugModelFur
   09E CPlugBitmapRenderOverlay
@@ -733,34 +1242,122 @@
   0A2 CPlugDecoratorTree
   0A3 CPlugDecoratorSolid
   0A4 CPlugModelFences
+  0A5 CPlugFileModelFbx
   0A6 CPlugFurWind
-  0AD CPlugFileExr .exr
+  0A7 CPlugDecalModel
+  0A8 CPlugBitmapAtlas
+  0AA CPlugSphericalHarmonics
+  0AB CPlugBitmapArray
+  0AC CPlugSpriteParam
+  0AD CPlugFileExr
+  0AE CPlugPoissonDiscDistribution
+  0AF CPlugFileHdr
   0B0 CPlugAnimFile
+  0B1 CPlugVisualCelEdge
+  0B2 CPlugParticleEmitterSubModel
+  0B3 CPlugParticleEmitterModel
+  0B4 CPlugBeamEmitterModel
+  0B5 CPlugParticleSplashModel
+  0B6 CPlugParticleImpactModel
+  0B7 CPlugParticleMaterialImpactModel
+  0B8 CPlugBitmapApplyArray
+  0B9 CPlugOpModel
   0BA CPlugSkel
   0BB CPlugSolid2Model
+  0BC CPlugFileModelCollada
+  0BD CPlugTimedPixelArray
+  0BE CPlugResource
+  0BF CPlugWeatherModel
+  0C0 CPlugFileGenScriptCtx
+  0C1 CPlugFxLensFlareArray
+  0C4 CPlugParticleEmitterSubModelGpu
+  0C5 CPlugParticleGpuSpawn
+  0C6 CPlugParticleGpuModel
+  0C7 CPlugCharVisModel
+  0C8 CPlugSkelSetup
+  0C9 CPlugCharPhyModel
+  0CA CPlugCharPhyMaterial
+  0CB CPlugFxLensDirtGen
+  0CC CPlugShieldEmitterModel
+  0CD CPlugBulletModel
   0CE CPlugDataTape
-  0DB CPlugFileWebP .webp
+  0CF CPlugSpline3D
+  0D0 CPlugTrafficPathSquares
+  0D1 CPlugTrafficObjectParams
+  0D2 CPlugTrafficZoneSquares
+  0D3 CPlugFogMatter
+  0D4 CPlugFogVolume
+  0D5 CPlugFogVolumeBox
+  0D6 CPlugTurretObjectParams
+  0D7 CPlugDynaPointModel
+  0D8 CPlugFxLightning
+  0D9 CPlugFxWindOnDecal
+  0DA CPlugFileJxr
+  0DB CPlugFileWebP
+  0DC CPlugMaterialPack
+  0DD CPlugTrafficShapedTrajectory
+  0DE CPlugTrafficFlowDescriptor
+  0DF CPlugTrafficGraph
+  0E0 CPlugCharPhyRecoilModel
+  0E1 CPlugFxWindOnTreeSprite
+  0E5 CPlugFlockModel
+  0E6 CPlugVehicleVisEmitterModel
   0E7 CPlugVehicleVisModel
-  0EA CPlugVehiclePhyModel
-  0EB CPlugVehiclePhyTuning
-  0EC CPlugVehiclePhyTunings
+  0E8 CPlugVehicleVisModelShared
+  0E9 CPlugVehicleMaterialGroup
+  0EA 
+  0EB 
+  0EC 
   0ED CPlugVehicleCarPhyTuning
   0EF CPlugVehicleCameraRace3Model
-  0F1 CPlugVehicleMaterial
+  0F0 CPlugBodyPath
+  0F1 
+  0F2 CPlugCharPhySpecialProperty
+  0F3 CPlugParticleGpuVortex
   0F4 CPlugGameSkin
+  0F5 CPlugFxHdrScales_Tech3
   0F6 CPlugVehicleCameraRace2Model
   0F7 CPlugVehicleCameraInternalModel
   0F8 CPlugAnimLocSimple
   0F9 CPlugLightUserModel
-  108 CPlugFileWebM .webm
+  0FB CPlugCharPhyMaterials
+  0FC CPlugCharPhyModelCustom
+  0FD CPlugMaterialUserInst
+  0FE CPlugMoodSetting
+  0FF CPlugMoodAtmo
+  100 CPlugBodyGraph
+  103 CPlugCustomBulletModel
+  104 CPlugTriggerAction
+  105 CPlugBeamEmitterSubModel
+  106 CPlugProbe
+  107 CPlugCustomBeamModel
+  108 CPlugFileWebM
+  10A CPlugCharVisModelCustom
   10B CPlugCamShakeModel
   10C CPlugCamControlModel
-  10E CPlugVehicleCarPhyShape
-  11E CPlugVehiclePhyModelCustom
+  10D CPlugImportMeshParam
+  10E 
+  10F CPlugTurret
+  110 CPlugVehicleCamInternalVisOffset
+  111 CPlugShieldModel
+  112 CPlugVehicleCameraRaceModel
+  113 CPlugVehicleCameraHmdExternalModel
+  115 CPlugVisEntFxModel
+  116 CPlugGpuBuffer
+  118 CPlugPolyLine3
+  119 CPlugPath
+  11A CPlugMoodBlender
+  11B CPlugTrainModel
+  11C CPlugTrainWagonModel
+  11D CPlugMoodCurve
   11F CPlugEntRecordData
-  159 CPlugStaticObjectModel
-  160 CPlugPlacementPatch
-  182 CPlugCloudsParam
+  121 CPlugTrainWagonModelCustom
+  123 CPlugEntitySpawner
+  125 CPlugWeather_DayTimeElem_Compat
+  126 CPlugWeather_WindBlockerElem
+  127 CPlugDynaConstraintModel
+  128 CPlugRoadChunk
+  14D CPlugVehicleCameraHelicoModel
 0A Scene
   000 CSceneEngine
   001 CScene
@@ -777,38 +1374,38 @@
   00C CSceneController
   00D CSceneListener
   00E CSceneSoundSource
-  00F CSceneObjectLink
-  010
+  010 
   011 CSceneMobil
   012 CSceneToy
+  013 CSceneCloudSystem
   014 CSceneObjectLink
-  015
+  015 
   016 CSceneToyCharacterDesc
   017 CScenePickerManager
-  018 CSceneVehicleVis
-  019 CSceneCharVis
+  01C CScene3d
   01D CPlugBitmapRenderScene3d
   01E CSceneSoundManager
   01F CSceneMessageHandler
-  029 CSceneVehicleCarTuning
-  02A
-  02B
+  021 
+  029 
+  02A CSceneMgrVehicleVisImpl
+  02B CSceneVehicleCar
   02C CSceneMobilClouds
   02D CSceneToyBroomstick
-  02E CSceneVehicleTuning
-  030 CSceneVehicleTunings
-  031
-  032
-  033
+  02E 
+  030 
+  031 
+  032 CSceneMgrFlockPrivate
+  033 CSceneMgrFlock
   034 CSceneFxColors
   035 CSceneFxSuperSample
   036 CSceneLocationCamera
   037 CSceneToyRock
   038 CSceneFxFlares
-  039
+  039 
   03A CSceneFxNod
   03B CSceneFxBloom
-  03C
+  03C 
   03D CSceneFxToneMapping
   03E CBoatSailState
   03F CSceneFxBloomData
@@ -817,6 +1414,11 @@
   042 CSceneMood
   043 CSceneFxStereoscopy
   044 CSceneFxHeadTrack
+  046 
+  047 CSceneMgrCharVis
+  048 CSceneMgrAnim
+  049 CSceneMgrVehiclePhy
+  04A CSceneMgrParticle
   04F CSceneToyDisplayProgress
   050 CSceneToyDisplayHistogram
   051 CSceneToyDisplayGraph
@@ -824,10 +1426,11 @@
   05D CSceneMoods
   05E CSceneMobilLeaves
   05F CSceneToyMotorbike
-  060
-  061
+  060 CSceneVehicle
+  061 
   062 CSceneTrafficGraph
   063 CSceneTrafficPath
+  064 CSceneDecalsManager
   067 CSceneToyFilaments
   068 CSceneMobilTraffic
   069 CSceneMobilFlockAttractor
@@ -848,16 +1451,36 @@
   079 CSceneFxCameraBlend
   07A CSceneFxGrayAccum
   07B CSceneFxDistor2d
-  07C
-  07D
+  07C 
+  07D CSceneFxEdgeBlender
   07E CSceneFxOccZCmp
-  080
+  07F CSceneFxBloomHdr
+  080 
+  081 CSceneVehicleCarMarksModel
+  082 CSceneVehicleCarMarksModelSub
   083 CSceneVehicleCarMarksSamples
+  084 CSceneFxCellEdge
+  085 CSceneMover
+  086 CSceneFxMgr
+  087 CSceneMgrBulletPhy
+  088 CSceneMgrBulletVis
+  089 CSceneMgrTrafficVis
+  08B CSceneMgrWeather
+  08C CSceneMgrTrafficPhy
+  08E CSceneMgrMapColoring
   090 CSceneToyTrain
-  0A4 CSceneBulletVis
-  0AB CSceneWagonVis
-  0AE CSceneGunVis
-  0B6 CSceneTrafficPhy
+  093 CSceneMgrBody
+  094 CSceneAnimFileSkelBinding
+  098 CSceneMobilSolid2
+  099 CSceneMgrSolid2Vis
+  09F CSceneMgrPhy
+  0A1 CSceneMgrSpawn
+  0A6 CSceneMgrVis
+  0A8 CSceneMgrTrainVis
+  0A9 CSceneMgrTrainPhy
+  0AF CSceneMgrGunVis
+  0B0 CSceneMgrGunPhy
+  0BC CSceneRecorder
   100 CSceneToyBoat
   101 CSceneToySea
   104 CSceneToyStem
@@ -871,6 +1494,7 @@
   10C CSceneToySeaHouleTable
   10D CSceneToySeaHouleFixe
   10E CBoatParam
+  10F CSceneMobilSolid
   401 CSceneToyCharacter
 0B System
   000 CSystemEngine
@@ -878,6 +1502,7 @@
   002 CSystemKeyboard
   003 CSystemWindow
   005 CSystemConfig
+  006 CSystemMemoryMonitor
   007 CNodSystem
   008 CSystemFid
   009 CSystemFids
@@ -895,11 +1520,15 @@
   016 CSystemFidBuffer
   017 CSystemNodWrapper
   018 CSystemData
+  01A CSystemFidContainer
 0C Vision
   001 CVisionViewport
+  003 CVisionViewportNull
   00A CVisionViewportDx9
   00B CDx9DeviceCaps
   012 CVisionResourceFile
+  014 CDx11Viewport
+  019 CVisionResourceShaders
 10 Audio
   001 CAudioPort
   002 CAudioBufferKeeper
@@ -909,14 +1538,28 @@
   006 CAudioSoundSurface
   007 CAudioSoundMulti
   008 CAudioPortNull
+  009 CAudioScriptMusic
+  00F CAudioZoneSource
+  010 CAudioSource
+  011 CAudioSourceMusic
+  012 CAudioSourceEngine
+  013 CAudioSourceSurface
+  014 CAudioSourceMulti
+  015 CAudioSourceMood
+  016 CAudioSourceGauge
   020 COalAudioPort
   021 COalAudioBufferKeeper
   022 COalDevice
+  030 COalAudioPort
+  031 COalAudioBufferKeeper
+  033 COalDevice
 11 Script
   000 CScriptSetting
   001 CScriptTraitsPersistent
   002 CScriptTraitsMetadata
   003 CScriptInterfacableValue
+  004 CScriptBaseEvent
+  005 CScriptBaseConstEvent
 12 Net
   001 CNetNod
   002 CNetServerInfo
@@ -943,13 +1586,115 @@
   020 CNetIPC
   021 CNetFormRpcCall
   022 CNetUPnP
+  027 CNetMasterServerRequest
   028 CNetIPSource
   029 CNetMasterServerUptoDateCheck
   030 CNetURLSource
+  031 CNetScriptHttpManager
+  032 CNetScriptHttpRequest
+  033 CNetXmpp_Timer
+  034 CNetMasterServerDownload
+  038 CNetFormNewPing
+  039 CNetMasterServerUserInfo
+  03B CWebServicesTask
+  03C CWebServicesTaskSequence
+  03D CWebServicesTaskResult
+  03E CWebServicesTaskScheduler
+  03F CNetUbiServices
+  040 CNetUbiServicesTask
+  041 CNetUbiServicesTask_CreateSession
+  042 CNetUbiServicesTask_DeleteSession
+  043 CNetUbiServicesTask_LaunchUplay
+  044 CNetUbiServicesTask_GetUplayActions
+  045 CNetUbiServicesTask_GetUplayRewards
+  046 CNetUbiServicesTask_CompleteUplayActions
+  047 CNetUbiServicesTask_PurchaseUplayReward
+  048 CNetMasterServerEmptyTask
+  049 CNetUplayPC
+  04A CNetMasterServerTask_GetManiaplanetLoginFromWebIdentity
+  04B CNetMasterServerTask_GetWebIdentityFromManiaplanetLogin
+  04C CNetUbiServicesTask_RequestProfiles
+  04D CNetMasterServerTask_GetDisplayNameFromManiaplanetLogin
+  04E CNetMasterServerTask_GetDisplayNameFromWebIdentity
+  04F CNetMasterServerRequestTask
+  050 CWebServicesTaskResult_Bool
+  051 CWebServicesTaskResult_String
+  056 CNetMasterServerTask_GetClientConfigUrls
+  057 CNetUplayPCTask_OpenOverlay
+  058 CNetUbiServicesTask_SendNotification
+  059 CNetUbiServicesTask_CheckNewNotification
+  05E CNetMasterServerTask_CheckNetworkAvailability
+  061 CNetUplayPCUserInfo
+  065 CNetMasterServerTask_GetApplicationConfig
+  066 CWebServicesTaskResult_ApplicationConfig
+  067 CNetMasterServerTask_GetWaitingParams
+  068 CNetMasterServerTask_CheckLoginForSubscribe
+  069 CNetMasterServerTask_Subscribe
+  06A CNetMasterServerTask_OpenSession
+  06B CNetMasterServerTask_Connect
+  06F CWebServicesTaskResult_Session_Get
+  07A CNetMasterServerTask_ShowProfile
+  07F CNetUbiServicesTask_GetSpaceNews
+  080 CNetUbiServicesTask_GetProfileNews
+  081 CNetMasterServerTask_FinalizeConnection
+  082 CNetMasterServerTask_Session_Get
+  083 CNetMasterServerTask_Session_JoinOrCreate
+  084 CNetMasterServerTask_Session_Leave
+  087 CNetMasterServerTask_Session_InviteBuddy
+  091 CNetMasterServerTask_Session_ShowInviteUI
+  094 CNetMasterServerTask_GetFeatureTimeLimit
+  095 CWebServicesTaskResult_Natural
+  096 CNetMasterServerTask_CheckFeatureTimeLimit
+  097 CNetMasterServerTask_SetFeatureTimeUse
+  098 CWebServicesTaskResult_PlayerFeatureLimitList
+  099 CNetUbiServicesNews
+  09B CNetMasterServerTask_GamerPic_GetUrl
+  09D CWebServicesTaskResult_StringInt
+  09E CNetUbiServicesTask_GetUnsentEvents
+  09F CNetUbiServicesTask_RefreshSession
+  0A0 CNetUbiServicesTask_PostCreateSession
+  0A1 CNetMasterServerTask_GetManiaplanetLoginAndWebIdentities
+  0A2 CNetUbiServicesTask_RetrieveBetaUserInfo
+  0A3 CNetUbiServicesTask_AcceptNDA
+  0A4 CNetUplayPCTask_UserTrophiesUnlock
+  0A5 CWebServicesTaskVoid
+  0A8 CNetMasterServerTask_ImportAccount
+  0A9 CNetMasterServerTask_ImportAccount_IsFinished
+  0AA CWebServicesTaskResult_OpenSession
+  0AC CWebServicesTaskResult_StringIntList
+  0AD CNetScriptHttpEvent
+  0AE CNetNadeoServices
+  0AF CNetNadeoServicesUserInfo
+  0B0 CNetNadeoServicesRequestTask
+  0B1 CNetNadeoServicesRequest
+  0B2 CWebServicesTaskResult_UrlShortCutList
+  0B4 CNetNadeoServicesTask_GetClientConfig
+  0B5 CNetNadeoServicesTask_Authenticate
+  0B9 CWebServicesTaskResult_Connect
+  0BA CNetNadeoServicesTask_GetAccountClientSignature
+  0BB CNetNadeoServicesTask_SetClientCaps
+  0BC CWebServicesTaskResult_Signature
+  0BD CNetNadeoServicesTask_GetEncryptedPackageAccountKey
+  0BE CNetNadeoServicesTask_GetZones
+  0BF CWebServicesTaskResult_NSZoneList
+  0C0 CNetNadeoServicesRequestManager
+  0C1 CNetNadeoServicesTask_GetAccountClientUrls
+  0C2 CNetNadeoServicesTask_GetAccountZone
+  0C3 CWebServices
+  0C4 CWebServicesUserInfo
+  0C5 CWebServicesTask_Connect
+  0C6 CNetNadeoServicesTask_GetApiRequests
+  0C7 CWebServicesTask_ConnectToNadeoServices
+  0C8 CWebServicesTask_UpdateNadeoServicesConfig
+  0C9 CWebServicesTaskResult_NSWebServicesIdentityList
+  0CA CNetNadeoServicesTask_GetWebServicesIdentityFromNadeoServicesId
+  0CB CWebServicesTaskResult_ApplicationConfig
+  0CC CWebServicesTaskResult_NSProfileChunkList
 13 Input
   001 CInputPort
   002 CInputPortDx8
   003 CInputPortNull
+  004 CInputScriptEvent
   006 CInputBindingsConfig
   007 CInputDevice
   008 CInputDeviceMouse
@@ -957,6 +1702,8 @@
   00B CInputDeviceDx8Keyboard
   00C CInputDeviceDx8Pad
   00D CInputReplay
+  010 CInputScriptManager
+  020 CInputScriptPad
 14 Xml
   001 CXmlNod
   002 CXmlAttribute
@@ -972,40 +1719,11 @@
   00C CHdrElement
   00D CHdrText
   00E CHdrUnknown
-21 VirtualSkipper
-  000 CVirtualSkipperEngine
-  001 CVirtualSkipper
-  002 CVskRegatta
-  003 CVskPlayer
-  004 CVskControlPlayer
-  005 CVskControlACTeamCard
-  006 CVskMasterServer
-  007 CVskControlNetworkServerInfoCard
-  008 CVskReplayRaceState
-  02A CVskPlayerInfo
-  034 CVsk3Config
-  04B CVsk3Editor
-  04E CVsk3Race
-  04F CVsk3EditorBlock
-  070 CVskCourse
-  080 CConstructionChallengeVsk
-  083 CVskTrafficObjectInfo
-  084 CVskISAF
-  085 CVskCollection
-  086 CVskControlPlayerReplay
-  087 CVsk3UIPlayer
-  088 CControlVsk3UiRadar
-  089 CVskPlayerProfile
-  08B CConstructionChallengeVskParams
-  08C CVskPlayerCameraSet
-  08D CVskReplayRecord
-  08E CCtnMediaBlockEventVsk
-  08F CVskISAFConcurrent
-  091 CVskAC
-  092 CVskACModel
-  093 CVskACTeam
-  094 CVskRaceBoatInterface
-  095 CVskControlScores
+  00F CXmlScriptManager
+  010 CXmlScriptDocument
+  011 CXmlScriptNode
+  012 CXmlScriptParsingDocumentJson
+  013 CXmlScriptParsingNodeJson
 24 TrackMania
   001 CTrackMania
   013 CTrackManiaEditor
@@ -1028,7 +1746,9 @@
   042 CTrackManiaRace2PTurnBased
   044 CTrackManiaRaceNet
   045 CTrackManiaRaceNetTimeAttack
+  04C CTmRaceRulesEvent
   051 CTrackManiaEditorInterface
+  055 CTrackManiaAppPlayground
   056 CTrackManiaRaceNetLaps
   057 CTrackManiaEditorIcon
   058 CTrackManiaEditorIconPage
@@ -1056,18 +1776,69 @@
   0D2 CGameControlCameraFollowAboveWater
   0D3 CTrackManiaEditorSimple
   0D4 CTrackManiaControlScores2
+  0D5 CGamePlayerProfileChunk_TrackManiaSettings
+  0D6 CTrackManiaResource
+  0D7 CTmModuleManager
+  0D8 CTmModuleScoresTable
+  0D9 CTrackManiaScriptPlayer
 2D ShootMania
-  001 SSmPlayerVis
+  000 CShootMania
+  003 CSmArenaInterfaceManialinkScripHandler
+  004 CSmArenaClient
+  005 CSmArenaScore
+  006 CSmActionInstance
+  007 CSmNetForm
+  008 CSmPlayer
+  009 CSmArenaInterfaceUI
+  00A CSmPlayerDriver
+  00B CSmActionInstanceEvent
+  00C CSmArenaRules
+  00D CSmScriptObjectAnchor
+  00E CSmScriptBotPath
+  00F CSmChallengeParameters
+  010 CSmScriptBotSpawn
+  011 CSmObject
+  014 CSmAnalyzer
+  015 CSmArenaPhysics
+  016 CSmArenaInterface
+  017 CSmClient
+  018 CSmArenaServer
+  019 CSmArena
+  01A CSmArenaRulesMode
+  01B CSmServer
+  01C CSmArenaRulesEvent
+  01D CSmAnticheatFunctions
+  01E CSmAnticheatEvent
+  01F CSmEditorPluginMapType
+  020 CSmArenaResource
+  022 CSmScriptLandmark
+  023 CSmScriptBlock
+  024 CSmScriptBlockSpawn
+  025 CSmScriptBlockPole
+  026 CSmScriptBase
+  027 CSmScriptGauge
+  028 CSmScriptSector
+  029 CSmModuleScoresTable
+  02A CSmScriptMapBase
+  02B CSmScriptMapGate
+  02C CSmScriptMapGauge
+  02D CSmScriptMapLandmark
+  02E CSmScriptMapSector
+  02F CSmScriptMapPlayerSpawn
+  030 CSmScriptMapBotPath
+  031 CSmScriptMapObjectAnchor
+  032 CSmScriptMapBotSpawn
+  033 CSmModuleManager
+  035 CSmActionMgr
 2E GameData
-  000 CGameDataEngine
   001 CGameCtnCollector
   002 CGameItemModel
-  003 CGameAttributes
-  004 CGameAttribute
-  005 CGameAttributesStartPoint
+  003 
+  004 
+  005 CGameModulePlaygroundPlayerStateComponentModel
   006 CGameObjectPhyModel
   007 CGameObjectVisModel
-  008 CGameCtnPlaygroundActionModel
+  008 CGameActionModel
   009 CGameWaypointSpecialProperty
   00A CGameActionFxResources
   00B CGameGateModel
@@ -1077,8 +1848,8 @@
   00F CGameCaptureZoneModel
   010 CGameTurbineModel
   011 CGameGhostData
-  012 CGameModulePlaygroundModel
-  013 CGameModuleNodForPropertyList
+  012 CGameModuleModel
+  013 CGameModuleScoresTableColumn
   014 CGameModuleMenuModel
   015 CGameModuleModelCommon
   016 CGameModulePlaygroundInventoryModel
@@ -1088,16 +1859,21 @@
   01A CGameModuleMenuPageModel
   01B CGameEditorModel
   01C CGameVehicleModel
+  01E CGameModulePlaygroundChronoModel
+  01F CGameModulePlaygroundSpeedMeterModel
   020 CGameItemPlacementParam
+  021 CGameModulePlaygroundPlayerStateModel
+  022 CGameModulePlaygroundTeamStateModel
+  023 CGameModulePlaygroundPlayerStateGaugeModel
   024 CGamePixelArtModel
   025 CGameBlockItem
   026 CGameCommonItemEntityModelEdition
   027 CGameCommonItemEntityModel
-  028 CGameCustomBlockModel
-2F Meta
-  05E SConstructionVis
-  05F SPropVis
-  062 SSceneDestructibleVisGroupState
-  065 SSceneRopeVisEnt
-  06E SSceneDestructibleVisState
-  0CB NSceneDynaVis_SMgr
+  029 CGameManiaAppTextSet
+  02A CGameObjectPhyCompoundModel
+  02C CGameModulePlaygroundPlayerStateListModel
+  02D 
+  02E 
+  02F 
+  030 
+  031 
