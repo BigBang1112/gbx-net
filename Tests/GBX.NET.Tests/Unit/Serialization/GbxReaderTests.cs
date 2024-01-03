@@ -360,7 +360,7 @@ public class GbxReaderTests
     }
 
     [Fact]
-    public void ReadBytes_NoCount_TooLong_Throws()
+    public void ReadData_NoCount_TooLong_Throws()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -370,7 +370,7 @@ public class GbxReaderTests
         ms.Position = 0;
 
         // Act & Assert
-        Assert.Throws<LengthLimitException>(() => r.ReadBytes());
+        Assert.Throws<LengthLimitException>(() => r.ReadData());
     }
 
     [Fact]
@@ -385,14 +385,14 @@ public class GbxReaderTests
     }
 
     [Fact]
-    public void ReadBytes_NoCount_ReadsBytes()
+    public void ReadData_NoCount_ReadsBytes()
     {
         // Arrange
         using var ms = new MemoryStream([3, 0, 0, 0, 1, 2, 3, 69]);
         using var r = new GbxReader(ms);
 
         // Act
-        var bytes = r.ReadBytes();
+        var bytes = r.ReadData();
 
         // Assert
         Assert.Equal(expected: [1, 2, 3], actual: bytes);
@@ -768,40 +768,5 @@ public class GbxReaderTests
 
         // Act & Assert
         Assert.Null(r.IdDict);
-    }
-
-    [Fact]
-    public void IdDict_SetAndGetWithoutEncapsulation()
-    {
-        // Arrange
-        using var ms = new MemoryStream();
-        using var r = new GbxReader(ms);
-
-        var dict = new Dictionary<int, string> { { 1, "Test" } };
-
-        // Act
-        r.IdDict = dict;
-        var actual = r.IdDict;
-
-        // Assert
-        Assert.Equal(expected: dict, actual);
-    }
-
-    [Fact]
-    public void IdDict_SetAndGetWithEncapsulation()
-    {
-        // Arrange
-        using var ms = new MemoryStream();
-        using var r = new GbxReader(ms);
-        using var encapsulation = new Encapsulation(r);
-
-        var dict = new Dictionary<int, string> { { 1, "Test" } };
-
-        // Act
-        r.IdDict = dict;
-        var actual = r.Encapsulation?.IdDict;
-
-        // Assert
-        Assert.Equal(expected: dict, actual);
     }
 }

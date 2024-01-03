@@ -241,7 +241,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
                         var fieldName = char.ToLowerInvariant(prop.Name[0]) + prop.Name.Substring(1);
 
-                        var mappedType = SimpleMapping(prop.Type);
+                        var (mappedType, _) = SimpleMapping(prop.Type);
                         if (string.IsNullOrEmpty(mappedType)) mappedType = AdvancedMapping(prop.Type);
 
                         sb.AppendLine();
@@ -291,33 +291,33 @@ public class ClassChunkGenerator : IIncrementalGenerator
             }
         }
 
-        internal static string SimpleMapping(string type) => type switch
+        internal static (string Type, bool IsStruct) SimpleMapping(string type) => type switch
         {
-            "string" or "id" or "lookbackstring" => "string",
-            "byte" => "byte",
-            "bool" or "boolean" => "bool",
-            "short" or "int16" => "short",
-            "ushort" or "uint16" => "ushort",
-            "int" or "int32" => "int",
-            "uint" or "uint32" => "uint",
-            "long" or "int64" => "long",
-            "ulong" or "uint64" => "ulong",
-            "float" => "float",
-            "byte3" => "Byte3",
-            "int2" => "Int2",
-            "int3" => "Int3",
-            "vec2" => "Vec2",
-            "vec3" => "Vec3",
-            "vec4" => "Vec4",
-            "int128" => "System.Numerics.BigInteger",
-            "ident" or "meta" => "Ident",
-            "packdesc" or "fileref" => "PackDesc",
-            "data" or "bytes" => "byte[]",
-            "list" => "IList",
-            "timeint" => "TimeInt32",
-            "timefloat" => "TimeSingle",
-            "timeofday" => "TimeSpan",
-            _ => string.Empty
+            "string" or "id" or "lookbackstring" => ("string", false),
+            "byte" => ("byte", true),
+            "bool" or "boolean" => ("bool", true),
+            "short" or "int16" => ("short", true),
+            "ushort" or "uint16" => ("ushort", true),
+            "int" or "int32" => ("int", true),
+            "uint" or "uint32" => ("uint", true),
+            "long" or "int64" => ("long", true),
+            "ulong" or "uint64" => ("ulong", true),
+            "float" => ("float", true),
+            "byte3" => ("Byte3", true),
+            "int2" => ("Int2", true),
+            "int3" => ("Int3", true),
+            "vec2" => ("Vec2", true),
+            "vec3" => ("Vec3", true),
+            "vec4" => ("Vec4", true),
+            "int128" => ("System.Numerics.BigInteger", true),
+            "ident" or "meta" => ("Ident", false),
+            "packdesc" or "fileref" => ("PackDesc", false),
+            "data" or "bytes" => ("byte[]", false),
+            "list" => ("IList", false),
+            "timeint" => ("TimeInt32", true),
+            "timefloat" => ("TimeSingle", true),
+            "timeofday" => ("TimeSpan", true),
+            _ => (string.Empty, false)
         };
 
         internal static string AdvancedMapping(string type)
@@ -339,14 +339,14 @@ public class ClassChunkGenerator : IIncrementalGenerator
             var isArray = regex.Groups[4].Success;
             var arrayLength = isArray ? regex.Groups[5].Value : string.Empty;
 
-            var mappedType = SimpleMapping(primaryType);
+            var (mappedType, _) = SimpleMapping(primaryType);
             if (string.IsNullOrEmpty(mappedType)) mappedType = primaryType;
 
             var mappedGenericType = string.Empty;
 
             if (!string.IsNullOrEmpty(genericType))
             {
-                mappedGenericType = SimpleMapping(genericType);
+                (mappedGenericType, _) = SimpleMapping(genericType);
                 if (string.IsNullOrEmpty(mappedGenericType)) mappedGenericType = genericType;
             }
 
@@ -793,20 +793,30 @@ public class ClassChunkGenerator : IIncrementalGenerator
                                 switch (primaryType)
                                 {
                                     case "list":
+                                        var isGeneric = false;
                                         sb.Append("rw.List");
                                         if (!string.IsNullOrEmpty(genericType))
                                         {
-                                            mappedGenericType = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
+                                            (mappedGenericType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
                                             if (string.IsNullOrEmpty(mappedGenericType))
                                             {
                                                 mappedGenericType = genericType;
                                                 sb.Append("Node");
+                                                isGeneric = true;
                                             }
                                         }
                                         sb.Append(deprec);
-                                        sb.Append("<");
-                                        sb.Append(mappedGenericType);
-                                        sb.Append(">(ref ");
+                                        if (isGeneric)
+                                        {
+                                            sb.Append("<");
+                                            sb.Append(mappedGenericType);
+                                            sb.Append('>');
+                                        }
+                                        else
+                                        {
+                                            sb.Append(mappedGenericType);
+                                        }
+                                        sb.Append("(ref ");
                                         AppendPropertyName(prop, ref unknownCounter);
                                         sb.Append(");");
                                         break;
@@ -826,16 +836,25 @@ public class ClassChunkGenerator : IIncrementalGenerator
                                         if (isArray)
                                         {
                                             sb.Append("rw.Array");
-                                            var mappedType = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
+                                            (var mappedType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
                                             if (string.IsNullOrEmpty(mappedType))
                                             {
                                                 mappedType = primaryType;
                                                 sb.Append("Node");
+                                                isGeneric = true;
                                             }
                                             sb.Append(deprec);
-                                            sb.Append("<");
-                                            sb.Append(mappedType);
-                                            sb.Append(">(ref ");
+                                            if (isGeneric)
+                                            {
+                                                sb.Append("<");
+                                                sb.Append(mappedType);
+                                                sb.Append('>');
+                                            }
+                                            else
+                                            {
+                                                sb.Append(mappedType);
+                                            }
+                                            sb.Append("(ref ");
                                             AppendPropertyName(prop, ref unknownCounter);
                                             sb.Append(");");
                                         }
@@ -897,7 +916,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                             firstLine = false;
                         }
 
-                        var mappedType = SourceGeneratorPrimaryContext.SimpleMapping(prop.Type);
+                        var (mappedType, _) = SourceGeneratorPrimaryContext.SimpleMapping(prop.Type);
                         if (string.IsNullOrEmpty(mappedType)) mappedType = SourceGeneratorPrimaryContext.AdvancedMapping(prop.Type);
 
                         unknownCounter++;

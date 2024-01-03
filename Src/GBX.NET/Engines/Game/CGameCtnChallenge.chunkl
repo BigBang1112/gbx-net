@@ -261,8 +261,6 @@ CGameCtnChallenge 0x03043000 // A map.
  int DecoBaseHeightOffset
 
 0x053 (skippable) [MP3, TMT, MP4, TM2020] // bot paths
- version // = 3
- list<BotPath> BotPaths
 
 0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
 

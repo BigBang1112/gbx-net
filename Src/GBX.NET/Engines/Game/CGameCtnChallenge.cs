@@ -108,7 +108,7 @@ public sealed partial class CGameCtnChallenge :
         string MapUid { get; set; }
     }
 
-    public class BotPath : IReadableWritable
+    public sealed class BotPath : IReadableWritable
     {
         /*private int clan;
         private IList<Vec3>? path;

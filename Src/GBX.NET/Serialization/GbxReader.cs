@@ -72,6 +72,11 @@ public interface IGbxReader : IDisposable
     IList<T> ReadListNode_deprec<T>(int length) where T : IClass;
     IList<T> ReadListNode_deprec<T>() where T : IClass;
 
+    PackDesc[] ReadArrayPackDesc(int length);
+    PackDesc[] ReadArrayPackDesc();
+    IList<PackDesc> ReadListPackDesc(int length);
+    IList<PackDesc> ReadListPackDesc();
+
     void SkipData(int length);
     byte[] ReadToEnd();
     void ResetIdState();
@@ -839,4 +844,32 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         base.Dispose(disposing);
     }
+
+    public PackDesc[] ReadArrayPackDesc(int length)
+    {
+        var array = new PackDesc[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            array[i] = ReadPackDesc();
+        }
+
+        return array;
+    }
+
+    public PackDesc[] ReadArrayPackDesc() => ReadArrayPackDesc(ReadInt32());
+
+    public IList<PackDesc> ReadListPackDesc(int length)
+    {
+        var list = new List<PackDesc>(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            list.Add(ReadPackDesc());
+        }
+
+        return list;
+    }
+
+    public IList<PackDesc> ReadListPackDesc() => ReadListPackDesc(ReadInt32());
 }
