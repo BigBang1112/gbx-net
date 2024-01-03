@@ -1,12 +1,50 @@
 ﻿namespace GBX.NET;
 
+/// <summary>
+/// A set of header chunks.
+/// </summary>
 public interface IHeaderChunkSet : ISet<IHeaderChunk>
 {
+    /// <summary>
+    /// Creates a new header chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the header chunk.</param>
+    /// <returns>A new header chunk instance.</returns>
     IHeaderChunk Create(uint chunkId);
+
+    /// <summary>
+    /// Creates a new header chunk using the header chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the header chunk.</typeparam>
+    /// <returns>A new header chunk instance.</returns>
     T Create<T>() where T : IHeaderChunk, new();
+
+    /// <summary>
+    /// Removes a header chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the header chunk.</param>
+    /// <returns>True if the header chunk was successfully removed, otherwise false.</returns>
     bool Remove(uint chunkId);
+
+    /// <summary>
+    /// Removes a header chunk using the header chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the header chunk.</typeparam>
+    /// <returns>True if the header chunk was successfully removed, otherwise false.</returns>
     bool Remove<T>() where T : IHeaderChunk;
+
+    /// <summary>
+    /// Gets a header chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the header chunk.</param>
+    /// <returns>A new header chunk instance if available, otherwise null.</returns>
     IHeaderChunk? Get(uint chunkId);
+
+    /// <summary>
+    /// Gets a header chunk using the header chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the header chunk.</typeparam>
+    /// <returns>A new header chunk instance if available, otherwise null.</returns>
     T? Get<T>() where T : IHeaderChunk;
 }
 

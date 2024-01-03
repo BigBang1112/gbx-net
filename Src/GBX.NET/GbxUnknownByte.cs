@@ -2,6 +2,12 @@
 
 public enum GbxUnknownByte : byte
 {
-    E = 69,
-    R = 82
+    /// <summary>
+    /// E(arly access).
+    /// </summary>
+    E = (byte)'E',
+    /// <summary>
+    /// R(elease).
+    /// </summary>
+    R = (byte)'R'
 }

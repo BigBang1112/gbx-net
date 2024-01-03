@@ -1,12 +1,50 @@
 ﻿namespace GBX.NET;
 
+/// <summary>
+/// A set of body chunks.
+/// </summary>
 public interface IChunkSet : ISet<IChunk>
 {
+    /// <summary>
+    /// Creates a new chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the chunk.</param>
+    /// <returns>A new chunk instance.</returns>
     IChunk Create(uint chunkId);
+
+    /// <summary>
+    /// Creates a new chunk using the chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the chunk.</typeparam>
+    /// <returns>A new chunk instance.</returns>
     T Create<T>() where T : IChunk, new();
+
+    /// <summary>
+    /// Removes a chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the chunk.</param>
+    /// <returns>True if the chunk was successfully removed, otherwise false.</returns>
     bool Remove(uint chunkId);
+
+    /// <summary>
+    /// Removes a chunk using the chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the chunk.</typeparam>
+    /// <returns>True if the chunk was successfully removed, otherwise false.</returns>
     bool Remove<T>() where T : IChunk;
+
+    /// <summary>
+    /// Gets a chunk using the ID.
+    /// </summary>
+    /// <param name="chunkId">ID of the chunk.</param>
+    /// <returns>A new chunk instance if available, otherwise null.</returns>
     IChunk? Get(uint chunkId);
+
+    /// <summary>
+    /// Gets a chunk using the chunk type.
+    /// </summary>
+    /// <typeparam name="T">Type of the chunk.</typeparam>
+    /// <returns>A new chunk instance if available, otherwise null.</returns>
     T? Get<T>() where T : IChunk;
 }
 

@@ -5,6 +5,9 @@ namespace GBX.NET.Engines.Game;
 public sealed partial class CGameCtnChallenge :
     CGameCtnChallenge.ITM2020
 {
+    /// <summary>
+    /// The map's UID.
+    /// </summary>
     public string MapUid
     {
         get => mapInfo.Id;
@@ -22,6 +25,9 @@ public sealed partial class CGameCtnChallenge :
         set => MapUid = value;
     }
 
+    /// <summary>
+    /// Calculates the CRC32 of the map.
+    /// </summary>
     public void CalculateCRC32()
     {
         string toHash;
@@ -41,7 +47,7 @@ public sealed partial class CGameCtnChallenge :
             toHash = $"0x{hex}???{MapUid}";
         }
 
-        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new NullReferenceException("CRC32 is not imported (ICrc32).");
+        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new Exception("CRC32 is not imported (ICrc32).");
 
 #if NET6_0_OR_GREATER
         static void TryHex(ReadOnlySpan<byte> value, Span<char> chars)
@@ -99,7 +105,9 @@ public sealed partial class CGameCtnChallenge :
         public readonly bool Equals(HeaderChunk03043005 other) => Id == other.Id;
         /// <inheritdoc />
         public override readonly int GetHashCode() => Id.GetHashCode();
+        /// <inheritdoc />
         public static bool operator ==(HeaderChunk03043005 left, HeaderChunk03043005 right) => left.Equals(right);
+        /// <inheritdoc />
         public static bool operator !=(HeaderChunk03043005 left, HeaderChunk03043005 right) => !(left == right);
     }
 

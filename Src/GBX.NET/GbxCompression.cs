@@ -1,7 +1,16 @@
 ﻿namespace GBX.NET;
 
+/// <summary>
+/// Compression of the Gbx.
+/// </summary>
 public enum GbxCompression : byte
 {
-    Compressed = 67,
-    Uncompressed = 85
+    /// <summary>
+    /// Compressed.
+    /// </summary>
+    Compressed = (byte)'C',
+    /// <summary>
+    /// Uncompressed.
+    /// </summary>
+    Uncompressed = (byte)'U'
 }

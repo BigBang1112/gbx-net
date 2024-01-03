@@ -8,7 +8,8 @@ public class CMwNod : IClass
     private IChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet();
 
-    public static T Read<T>(T node, IGbxReaderWriter rw) where T : IClass
+    /// <inheritdoc />
+    public static void Read<T>(T node, IGbxReaderWriter rw) where T : IClass
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
@@ -18,7 +19,7 @@ public class CMwNod : IClass
 
             if (chunkId == 0xFACADE01)
             {
-                return node;
+                return;
             }
 
 #if NET8_0_OR_GREATER
@@ -36,7 +37,7 @@ public class CMwNod : IClass
                 {
                     if (chunk is not null)
                     {
-                        return node;
+                        return;
                     }
 
                     throw new Exception("Chunk cannot be processed");
