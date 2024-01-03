@@ -85,7 +85,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     }
                     else
                     {
-                        if (readerMethod.Parameters.Length == writerMethod.Parameters.Length - 1)
+                        if (readerMethod.TypeParameters.Length == writerMethod.TypeParameters.Length && readerMethod.Parameters.Length == writerMethod.Parameters.Length - 1)
                         {
                             for (int i = 0; i < readerMethod.Parameters.Length; i++)
                             {
@@ -151,6 +151,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
 
+            var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
+
             // INTERFACE
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
@@ -173,6 +175,27 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 else
                 {
                     sbInterface.Append(readerMethod.ReturnType.Name);
+                }
+
+                if (readerMethod.TypeParameters.Length > 0)
+                {
+                    sbInterface.Append('<');
+
+                    var firstType = true;
+
+                    foreach (var typeParameter in readerMethod.TypeParameters)
+                    {
+                        if (!firstType)
+                        {
+                            sbInterface.Append(", ");
+                        }
+
+                        sbInterface.Append(typeParameter);
+
+                        firstType = false;
+                    }
+
+                    sbInterface.Append('>');
                 }
 
                 sbInterface.Append('(');
@@ -200,14 +223,28 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     first = false;
                 }
 
-                if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                if (isArrayOrList)
+                {
+                    foreach (var p in readerMethod.Parameters)
+                    {
+                        if (!first)
+                        {
+                            sbInterface.Append(", ");
+                        }
+
+                        sbInterface.Append(p);
+
+                        first = false;
+                    }
+                }
+                else if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                 {
                     sbInterface.Append(", ");
                     sbInterface.Append(writerMethod.Parameters[0].Type);
                     sbInterface.Append(" defaultValue");
                 }
 
-                if (writerMethod.Parameters.Length == 1)
+                if (!isArrayOrList && writerMethod.Parameters.Length == 1)
                 {
                     sbInterface.Append(" = default");
                 }
@@ -230,6 +267,27 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     else
                     {
                         sbInterface.Append(readerMethod.ReturnType.Name);
+                    }
+
+                    if (readerMethod.TypeParameters.Length > 0)
+                    {
+                        sbInterface.Append('<');
+
+                        var firstType = true;
+
+                        foreach (var typeParameter in readerMethod.TypeParameters)
+                        {
+                            if (!firstType)
+                            {
+                                sbInterface.Append(", ");
+                            }
+
+                            sbInterface.Append(typeParameter);
+
+                            firstType = false;
+                        }
+
+                        sbInterface.Append('>');
                     }
 
                     sbInterface.Append("(ref ");
@@ -257,7 +315,21 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         first = false;
                     }
 
-                    if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                    if (isArrayOrList)
+                    {
+                        foreach (var p in readerMethod.Parameters)
+                        {
+                            if (!first)
+                            {
+                                sbInterface.Append(", ");
+                            }
+
+                            sbInterface.Append(p);
+
+                            first = false;
+                        }
+                    }
+                    else if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                     {
                         sbInterface.Append(", ");
                         sbInterface.Append(writerMethod.Parameters[0].Type);
