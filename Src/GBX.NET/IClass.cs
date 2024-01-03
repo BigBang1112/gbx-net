@@ -27,6 +27,8 @@ public interface IClass
     /// <returns>A new instance of the chunk.</returns>
     static abstract IChunk? NewChunk(uint chunkId);
 
+    static abstract IClass? New(uint classId);
+
     static abstract T Read<T>(T node, IGbxReaderWriter rw) where T : IClass;
 #endif
 

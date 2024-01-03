@@ -238,4 +238,9 @@ public class CMwNod : IClass
         0x01001000 => new Chunk01001000(),
         _ => null
     };
+
+    public static IClass? New(uint classId)
+    {
+        throw new NotImplementedException();
+    }
 }
