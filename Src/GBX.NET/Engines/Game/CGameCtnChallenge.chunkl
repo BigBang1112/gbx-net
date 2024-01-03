@@ -320,7 +320,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 archive BotPath
  int Clan
- list<Vec3> Path
+ list<vec3> Path
  bool IsFlying
  CGameWaypointSpecialProperty WaypointSpecialProperty
  bool IsAutonomous
