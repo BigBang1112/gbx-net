@@ -317,3 +317,10 @@ CGameCtnChallenge 0x03043000 // A map.
 0x069 (skippable) [TM2020] // macroblock instances
 
 0x06B (skippable) [TM2020] // light settings 2
+
+archive BotPath
+ int Clan
+ list<Vec3> Path
+ bool IsFlying
+ CGameWaypointSpecialProperty WaypointSpecialProperty
+ bool IsAutonomous
