@@ -468,7 +468,7 @@ public class GbxReaderTests
         Assert.Equal(expected: 3, actual: r.IdVersion);
         Assert.Equal(expected: 4, actual: id.Index);
         Assert.Null(id.String);
-        Assert.Null(r.IdDict);
+        Assert.NotNull(r.IdDict);
         Assert.Equal(expected: 8, actual: ms.Position);
     }
 
@@ -590,7 +590,7 @@ public class GbxReaderTests
         // Act & Assert
         Assert.Throws<NotSupportedException>(() => r.ReadIdAsString());
         Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Null(r.IdDict);
+        Assert.NotNull(r.IdDict);
         Assert.Equal(expected: 8, actual: ms.Position);
     }
 
@@ -760,13 +760,13 @@ public class GbxReaderTests
     }
 
     [Fact]
-    public void IdDict_InitiallyNull()
+    public void IdDict_InitiallyNotNull()
     {
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
         // Act & Assert
-        Assert.Null(r.IdDict);
+        Assert.NotNull(r.IdDict);
     }
 }
