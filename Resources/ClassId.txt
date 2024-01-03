@@ -23,6 +23,7 @@
   018 CMwParamColor
   019 CMwParamVec2
   01A CMwParamIso4
+  01B CMwExample
   01C CMwCmdBuffer
   01E CMwCmdFiber
   01F CMwParamVec4
@@ -1113,6 +1114,7 @@
   00A CPlugVisualOctree
   00B CPlugBitmapRenderShadow
   00C CPlugSurface
+  00D CPlugSurfaceCrystal
   00E CPlugModelShading
   00F CPlugSurfaceGeomDeprecated
   010 CPlugVisualSprite
@@ -1123,6 +1125,7 @@
   015 CPlugTreeVisualMip
   016 CPlugVisualStrip
   017 CPlugVisualVertexs
+  018 CPlugVisualBoxQuads
   019 CPlugFilePack
   01A CPlugSound
   01B CPlugSoundMood
@@ -1189,6 +1192,7 @@
   060 CPlugFileVideo
   061 CPlugLocatedSound
   062 CPlugTreeLight
+  063 CPlugShaderMaterial
   064 CPlugSoundMulti
   065 CPlugSoundVideo
   066 CPlugPointsInSphereOpt
@@ -1488,6 +1492,7 @@
   0BC CSceneRecorder
   100 CSceneToyBoat
   101 CSceneToySea
+  102 
   104 CSceneToyStem
   105 CBoatTeamDesc
   106 CBoatTeamActionDesc
@@ -1519,6 +1524,7 @@
   00F CSystemPlatformScript
   010 CSystemDependenciesList
   011 CSystemCmdAssert
+  012 CSystemDummyFidLoader
   013 CSystemConfigDisplay
   014 CSystemPackManager
   015 CSystemPackDesc
@@ -1586,6 +1592,8 @@
   013 CNetHttpResult
   014 CNetMasterServer
   015 CNetMasterHost
+  016 CNetMasterServerFileTransfer
+  017 CNetMasterServerSearchResult
   018 CNetFileTransfer
   019 CNetMasterServerInfo
   01A CNetFileTransferNod
@@ -1593,6 +1601,7 @@
   01C CNetFileTransferDownload
   01D CNetFileTransferUpload
   01E CNetSource
+  01F CNetDataServer
   020 CNetIPC
   021 CNetFormRpcCall
   022 CNetUPnP
@@ -1938,6 +1947,8 @@
   09A CCtnControlChallengeInfoCard
   09B CCtnPainterSetting
   09C CTrackManiaMatchSettingsControlGrid
+  09D CControlListCtnChallenges
+  09E CControlListCtnServers
   09F CTrackManiaScore
   0A0 CConstructionLeague
   0A1 CCtnControlLeagueCard
@@ -1946,6 +1957,7 @@
   0A4 CConstructionControlGrid
   0A5 CCtnControlGridCard
   0A6 CCtnControlNetworkServerInfoCard
+  0A7 CCtnControlGridCardNetwork
   0A8 CCtnControlGenericCard
   0A9 CCtnControlNetOnlineEventCard
   0AA CConstructionNetOnlineEvent
