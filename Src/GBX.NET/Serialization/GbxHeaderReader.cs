@@ -240,7 +240,12 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             // Non-matching chunk data length will throw
             if (chunkEndPos - chunkStartPos != desc.Size)
             {
-                throw new InvalidDataException($"Chunk size {desc.Size} does not match actual data length {chunkEndPos - chunkStartPos}.");
+                if (chunkEndPos - chunkStartPos > desc.Size)
+                {
+                    throw new InvalidDataException($"Chunk size {desc.Size} does not match actual data length {chunkEndPos - chunkStartPos}.");
+                }
+
+                reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
 
