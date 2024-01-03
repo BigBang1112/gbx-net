@@ -669,232 +669,295 @@ public class ClassChunkGenerator : IIncrementalGenerator
             sb.AppendLine("        {");
 
             unknownCounter = 0;
+            AppendMemberBlock(chunk, ref unknownCounter, indent: 3);
 
-            foreach (var mem in chunk.Members)
+            sb.AppendLine("        }");
+        }
+
+        private void AppendMemberBlock(IChunkMemberBlock block, ref int unknownCounter, int indent)
+        {
+            foreach (var mem in block.Members)
             {
                 switch (mem)
                 {
                     case ChunkProperty prop:
-                        sb.Append("            ");
-
-                        var standardProperty = default(string);
-
-                        switch (prop.Type.ToLowerInvariant())
-                        {
-                            case "version":
-                                sb.Append("rw.VersionInt32(this);");
-                                break;
-                            case "versionb":
-                                sb.Append("rw.VersionByte(this);");
-                                break;
-                            case "bool":
-                            case "boolean":
-                                standardProperty = nameof(Boolean);
-                                break;
-                            case "string":
-                                standardProperty = nameof(String);
-                                break;
-                            case "byte":
-                                standardProperty = nameof(Byte);
-                                break;
-                            case "short":
-                            case "int16":
-                                standardProperty = nameof(Int16);
-                                break;
-                            case "ushort":
-                            case "uint16":
-                                standardProperty = nameof(UInt16);
-                                break;
-                            case "int":
-                            case "int32":
-                                standardProperty = nameof(Int32);
-                                break;
-                            case "uint":
-                            case "uint32":
-                                standardProperty = nameof(UInt32);
-                                break;
-                            case "long":
-                            case "int64":
-                                standardProperty = nameof(Int32);
-                                break;
-                            case "ulong":
-                            case "uint64":
-                                standardProperty = nameof(UInt32);
-                                break;
-                            case "float":
-                                standardProperty = nameof(Single);
-                                break;
-                            case "byte3":
-                                standardProperty = "Byte3";
-                                break;
-                            case "int2":
-                                standardProperty = "Int2";
-                                break;
-                            case "int3":
-                                standardProperty = "Int3";
-                                break;
-                            case "vec2":
-                                standardProperty = "Vec2";
-                                break;
-                            case "vec3":
-                                standardProperty = "Vec3";
-                                break;
-                            case "vec4":
-                                standardProperty = "Vec4";
-                                break;
-                            case "int128":
-                                standardProperty = "Int128";
-                                break;
-                            case "id":
-                            case "lookbackstring":
-                                standardProperty = "Id";
-                                break;
-                            case "ident":
-                            case "meta":
-                                standardProperty = "Ident";
-                                break;
-                            case "fileref":
-                            case "packdesc":
-                                standardProperty = "PackDesc";
-                                break;
-                            case "timeint":
-                                standardProperty = "TimeInt32";
-                                break;
-                            case "timefloat":
-                                standardProperty = "TimeSingle";
-                                break;
-                            case "timeofday":
-                                standardProperty = "TimeOfDay";
-                                break;
-                            case "base":
-                                sb.Append("base.ReadWrite(n, rw);");
-                                break;
-                            case "data":
-                            case "bytes":
-                                standardProperty = "Data";
-                                break;
-                            default:
-                                var regex = Regex.Match(prop.Type, TypeMatch);
-
-                                if (!regex.Success)
-                                {
-                                    sb.Append("/* invalid type */");
-                                    break;
-                                }
-
-                                var primaryType = regex.Groups[1].Value;
-                                var genericType = regex.Groups[3].Value;
-                                var isArray = regex.Groups[4].Success;
-                                var arrayLength = isArray ? regex.Groups[5].Value : string.Empty;
-                                var deprec = regex.Groups[6].Value;
-
-                                var mappedGenericType = string.Empty;
-
-                                switch (primaryType)
-                                {
-                                    case "list":
-                                        var isGeneric = false;
-                                        sb.Append("rw.List");
-                                        if (!string.IsNullOrEmpty(genericType))
-                                        {
-                                            (mappedGenericType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
-                                            if (string.IsNullOrEmpty(mappedGenericType))
-                                            {
-                                                mappedGenericType = genericType;
-                                                sb.Append("Node");
-                                                isGeneric = true;
-                                            }
-                                        }
-                                        sb.Append(deprec);
-                                        if (isGeneric)
-                                        {
-                                            sb.Append("<");
-                                            sb.Append(mappedGenericType);
-                                            sb.Append('>');
-                                        }
-                                        else
-                                        {
-                                            sb.Append(mappedGenericType);
-                                        }
-                                        sb.Append("(ref ");
-                                        AppendPropertyName(prop, ref unknownCounter);
-                                        sb.Append(");");
-                                        break;
-                                    case "data":
-                                        sb.Append("rw.Data(ref ");
-                                        AppendPropertyName(prop, ref unknownCounter);
-
-                                        if (isArray)
-                                        {
-                                            sb.Append(", ");
-                                            sb.Append(arrayLength);
-                                        }
-
-                                        sb.Append(");");
-                                        break;
-                                    default:
-                                        if (isArray)
-                                        {
-                                            sb.Append("rw.Array");
-                                            (var mappedType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
-                                            if (string.IsNullOrEmpty(mappedType))
-                                            {
-                                                mappedType = primaryType;
-                                                sb.Append("Node");
-                                                isGeneric = true;
-                                            }
-                                            sb.Append(deprec);
-                                            if (isGeneric)
-                                            {
-                                                sb.Append("<");
-                                                sb.Append(mappedType);
-                                                sb.Append('>');
-                                            }
-                                            else
-                                            {
-                                                sb.Append(mappedType);
-                                            }
-                                            sb.Append("(ref ");
-                                            AppendPropertyName(prop, ref unknownCounter);
-                                            sb.Append(");");
-                                        }
-                                        else
-                                        {
-                                            sb.Append("rw.NodeRef<");
-                                            sb.Append(prop.Type);
-                                            sb.Append(">(ref ");
-                                            AppendPropertyName(prop, ref unknownCounter);
-                                            sb.Append(");");
-                                        }
-
-                                        break;
-                                }
-
-                                break;
-                        }
-
-                        if (standardProperty is not null)
-                        {
-                            sb.Append("rw.");
-                            sb.Append(standardProperty);
-                            sb.Append("(ref ");
-                            AppendPropertyName(prop, ref unknownCounter);
-                            sb.Append(");");
-                        }
-
-                        if (!string.IsNullOrWhiteSpace(prop.Description))
-                        {
-                            sb.Append(" // ");
-                            sb.Append(prop.Description);
-                        }
-
-                        sb.AppendLine();
-
+                        AppendProperty(ref unknownCounter, prop, indent);
+                        break;
+                    case ChunkVersion version:
+                        AppendVersion(ref unknownCounter, version, indent);
                         break;
                 }
             }
+        }
 
-            sb.AppendLine("        }");
+        private void AppendVersion(ref int unknownCounter, ChunkVersion version, int indent)
+        {
+            sb.AppendLine();
+
+            for (var i = 0; i < indent; i++)
+            {
+                sb.Append("    ");
+            }
+
+            sb.Append("if (Version ");
+            sb.Append(version.Operator switch
+            {
+                "+" => ">=",
+                "-" => "<=",
+                "=" => "==",
+                _ => version.Operator
+            });
+            sb.Append(' ');
+            sb.Append(version.Number);
+            sb.Append(")");
+
+            if (!string.IsNullOrWhiteSpace(version.Description))
+            {
+                sb.Append(" // ");
+                sb.Append(version.Description);
+            }
+
+            sb.AppendLine();
+
+            for (var i = 0; i < indent; i++)
+            {
+                sb.Append("    ");
+            }
+
+            sb.AppendLine("{");
+
+            AppendMemberBlock(version, ref unknownCounter, indent + 1);
+
+            for (var i = 0; i < indent; i++)
+            {
+                sb.Append("    ");
+            }
+
+            sb.AppendLine("}");
+        }
+
+        private void AppendProperty(ref int unknownCounter, ChunkProperty prop, int indent)
+        {
+            for (var i = 0; i < indent; i++)
+            {
+                sb.Append("    ");
+            }
+
+            var standardProperty = default(string);
+
+            switch (prop.Type.ToLowerInvariant())
+            {
+                case "version":
+                    sb.Append("rw.VersionInt32(this);");
+                    break;
+                case "versionb":
+                    sb.Append("rw.VersionByte(this);");
+                    break;
+                case "bool":
+                case "boolean":
+                    standardProperty = nameof(Boolean);
+                    break;
+                case "string":
+                    standardProperty = nameof(String);
+                    break;
+                case "byte":
+                    standardProperty = nameof(Byte);
+                    break;
+                case "short":
+                case "int16":
+                    standardProperty = nameof(Int16);
+                    break;
+                case "ushort":
+                case "uint16":
+                    standardProperty = nameof(UInt16);
+                    break;
+                case "int":
+                case "int32":
+                    standardProperty = nameof(Int32);
+                    break;
+                case "uint":
+                case "uint32":
+                    standardProperty = nameof(UInt32);
+                    break;
+                case "long":
+                case "int64":
+                    standardProperty = nameof(Int64);
+                    break;
+                case "ulong":
+                case "uint64":
+                    standardProperty = nameof(UInt64);
+                    break;
+                case "float":
+                    standardProperty = nameof(Single);
+                    break;
+                case "byte3":
+                    standardProperty = "Byte3";
+                    break;
+                case "int2":
+                    standardProperty = "Int2";
+                    break;
+                case "int3":
+                    standardProperty = "Int3";
+                    break;
+                case "vec2":
+                    standardProperty = "Vec2";
+                    break;
+                case "vec3":
+                    standardProperty = "Vec3";
+                    break;
+                case "vec4":
+                    standardProperty = "Vec4";
+                    break;
+                case "int128":
+                    standardProperty = "Int128";
+                    break;
+                case "id":
+                case "lookbackstring":
+                    standardProperty = "Id";
+                    break;
+                case "ident":
+                case "meta":
+                    standardProperty = "Ident";
+                    break;
+                case "fileref":
+                case "packdesc":
+                    standardProperty = "PackDesc";
+                    break;
+                case "timeint":
+                    standardProperty = "TimeInt32";
+                    break;
+                case "timefloat":
+                    standardProperty = "TimeSingle";
+                    break;
+                case "timeofday":
+                    standardProperty = "TimeOfDay";
+                    break;
+                case "base":
+                    sb.Append("base.ReadWrite(n, rw);");
+                    break;
+                case "data":
+                case "bytes":
+                    standardProperty = "Data";
+                    break;
+                case "throw":
+                    sb.Append("throw new NotImplementedException();");
+                    break;
+                default:
+                    var regex = Regex.Match(prop.Type, TypeMatch);
+
+                    if (!regex.Success)
+                    {
+                        sb.Append("/* invalid type */");
+                        break;
+                    }
+
+                    var primaryType = regex.Groups[1].Value;
+                    var genericType = regex.Groups[3].Value;
+                    var isArray = regex.Groups[4].Success;
+                    var arrayLength = isArray ? regex.Groups[5].Value : string.Empty;
+                    var deprec = regex.Groups[6].Value;
+
+                    var mappedGenericType = string.Empty;
+
+                    switch (primaryType)
+                    {
+                        case "list":
+                            var isGeneric = false;
+                            sb.Append("rw.List");
+                            if (!string.IsNullOrEmpty(genericType))
+                            {
+                                (mappedGenericType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
+                                if (string.IsNullOrEmpty(mappedGenericType))
+                                {
+                                    mappedGenericType = genericType;
+                                    sb.Append("Node");
+                                    isGeneric = true;
+                                }
+                            }
+                            sb.Append(deprec);
+                            if (isGeneric)
+                            {
+                                sb.Append("<");
+                                sb.Append(mappedGenericType);
+                                sb.Append('>');
+                            }
+                            else
+                            {
+                                sb.Append(mappedGenericType);
+                            }
+                            sb.Append("(ref ");
+                            AppendPropertyName(prop, ref unknownCounter);
+                            sb.Append(");");
+                            break;
+                        case "data":
+                            sb.Append("rw.Data(ref ");
+                            AppendPropertyName(prop, ref unknownCounter);
+
+                            if (isArray)
+                            {
+                                sb.Append(", ");
+                                sb.Append(arrayLength);
+                            }
+
+                            sb.Append(");");
+                            break;
+                        default:
+                            if (isArray)
+                            {
+                                sb.Append("rw.Array");
+                                (var mappedType, isGeneric) = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
+                                if (string.IsNullOrEmpty(mappedType))
+                                {
+                                    mappedType = primaryType;
+                                    sb.Append("Node");
+                                    isGeneric = true;
+                                }
+                                sb.Append(deprec);
+                                if (isGeneric)
+                                {
+                                    sb.Append("<");
+                                    sb.Append(mappedType);
+                                    sb.Append('>');
+                                }
+                                else
+                                {
+                                    sb.Append(mappedType);
+                                }
+                                sb.Append("(ref ");
+                                AppendPropertyName(prop, ref unknownCounter);
+                                sb.Append(");");
+                            }
+                            else
+                            {
+                                sb.Append("rw.NodeRef<");
+                                sb.Append(prop.Type);
+                                sb.Append(">(ref ");
+                                AppendPropertyName(prop, ref unknownCounter);
+                                sb.Append(");");
+                            }
+
+                            break;
+                    }
+
+                    break;
+            }
+
+            if (standardProperty is not null)
+            {
+                sb.Append("rw.");
+                sb.Append(standardProperty);
+                sb.Append("(ref ");
+                AppendPropertyName(prop, ref unknownCounter);
+                sb.Append(");");
+            }
+
+            if (!string.IsNullOrWhiteSpace(prop.Description))
+            {
+                sb.Append(" // ");
+                sb.Append(prop.Description);
+            }
+
+            sb.AppendLine();
         }
 
         private void WriteProperties(IChunkMemberBlock block, ref int unknownCounter)
