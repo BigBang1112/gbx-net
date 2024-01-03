@@ -313,7 +313,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
             "ident" or "meta" => "Ident",
             "packdesc" or "fileref" => "PackDesc",
             "data" or "bytes" => "byte[]",
-            "list" => "List",
+            "list" => "IList",
             "timeint" => "TimeInt32",
             "timefloat" => "TimeSingle",
             "timeofday" => "TimeSpan",
@@ -352,7 +352,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
             var finalType = mappedType;
 
-            if (mappedType == "List")
+            if (mappedType == "IList")
             {
                 finalType += $"<{mappedGenericType}>";
             }
@@ -790,16 +790,19 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
                                 var mappedGenericType = string.Empty;
 
-                                if (!string.IsNullOrEmpty(genericType))
-                                {
-                                    mappedGenericType = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
-                                    if (string.IsNullOrEmpty(mappedGenericType)) mappedGenericType = genericType;
-                                }
-
                                 switch (primaryType)
                                 {
                                     case "list":
                                         sb.Append("rw.List");
+                                        if (!string.IsNullOrEmpty(genericType))
+                                        {
+                                            mappedGenericType = SourceGeneratorPrimaryContext.SimpleMapping(genericType);
+                                            if (string.IsNullOrEmpty(mappedGenericType))
+                                            {
+                                                mappedGenericType = genericType;
+                                                sb.Append("Node");
+                                            }
+                                        }
                                         sb.Append(deprec);
                                         sb.Append("<");
                                         sb.Append(mappedGenericType);
@@ -823,10 +826,14 @@ public class ClassChunkGenerator : IIncrementalGenerator
                                         if (isArray)
                                         {
                                             sb.Append("rw.Array");
+                                            var mappedType = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
+                                            if (string.IsNullOrEmpty(mappedType))
+                                            {
+                                                mappedType = primaryType;
+                                                sb.Append("Node");
+                                            }
                                             sb.Append(deprec);
                                             sb.Append("<");
-                                            var mappedType = SourceGeneratorPrimaryContext.SimpleMapping(primaryType);
-                                            if (string.IsNullOrEmpty(mappedType)) mappedType = primaryType;
                                             sb.Append(mappedType);
                                             sb.Append(">(ref ");
                                             AppendPropertyName(prop, ref unknownCounter);

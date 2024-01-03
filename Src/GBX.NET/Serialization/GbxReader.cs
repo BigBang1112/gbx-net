@@ -41,6 +41,7 @@ public interface IGbxReader : IDisposable
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
     byte[] ReadData();
+    byte[] ReadData(int length);
     byte[] ReadBytes(int count);
     string ReadString();
     string ReadString(int length);
@@ -415,7 +416,12 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
     public byte[] ReadData()
     {
-        return ReadBytes(base.ReadInt32());
+        return ReadBytes(ReadInt32());
+    }
+
+    public byte[] ReadData(int length)
+    {
+        return ReadBytes(length);
     }
 
     public override byte[] ReadBytes(int count)

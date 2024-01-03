@@ -80,9 +80,4 @@ internal sealed partial class GbxReaderWriter : IGbxReaderWriter
         [NotNullIfNotNull(nameof(value))]
 #endif
         ref string? value) => value = Id(value);
-
-    public IClass? NodeRef(IClass? value = default) => value;
-    public void NodeRef(ref IClass? value) => value = NodeRef(value);
-    public T? NodeRef<T>(T? value = default) where T : IClass => value;
-    public void NodeRef<T>(ref T? value) where T : IClass => value = NodeRef(value);
 }

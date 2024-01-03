@@ -72,8 +72,30 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 {
                     if (typeStr.Equals(writerTypeStr))
                     {
-                        yield return (readerMethod, writerMethod, IsNamed: true);
-                        break;
+                        if (readerMethod.Parameters.Length == 0)
+                        {
+                            yield return (readerMethod, writerMethod, IsNamed: true);
+                            break;
+                        }
+                        else if (readerMethod.TypeParameters.Length == writerMethod.TypeParameters.Length && readerMethod.Parameters.Length == writerMethod.Parameters.Length - 1)
+                        {
+                            for (int i = 0; i < readerMethod.Parameters.Length; i++)
+                            {
+                                var parameter = readerMethod.Parameters[i];
+                                var parameterWriter = writerMethod.Parameters[i + 1];
+
+                                if (parameter.Type.Name != parameterWriter.Type.Name)
+                                {
+                                    break;
+                                }
+
+                                if (i == readerMethod.Parameters.Length - 1)
+                                {
+                                    yield return (readerMethod, writerMethod, IsNamed: true);
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
                 else
@@ -151,7 +173,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
 
-            var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
+            //var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
 
             // INTERFACE
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
@@ -220,10 +242,21 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbInterface.Append(parameter);
                     }
 
+                    if (parameter.HasExplicitDefaultValue)
+                    {
+                        sbInterface.Append(" = ");
+                        sbInterface.Append(parameter.ExplicitDefaultValue switch
+                        {
+                            bool b => b ? "true" : "false",
+                            string s => $"\"{s}\"",
+                            _ => parameter.ExplicitDefaultValue
+                        });
+                    }
+
                     first = false;
                 }
 
-                if (isArrayOrList)
+                /*if (isArrayOrList)
                 {
                     foreach (var p in readerMethod.Parameters)
                     {
@@ -234,22 +267,36 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         sbInterface.Append(p);
 
+                        if (p.HasExplicitDefaultValue)
+                        {
+                            sbInterface.Append(" = ");
+                            sbInterface.Append(p.ExplicitDefaultValue switch
+                            {
+                                bool b => b ? "true" : "false",
+                                string s => $"\"{s}\"",
+                                _ => p.ExplicitDefaultValue
+                            });
+                        }
+
                         first = false;
                     }
                 }
-                else if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                else*/
+                if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                 {
                     sbInterface.Append(", ");
                     sbInterface.Append(writerMethod.Parameters[0].Type);
                     sbInterface.Append(" defaultValue");
                 }
 
-                if (!isArrayOrList && writerMethod.Parameters.Length == 1)
+                if (/*!isArrayOrList &&*/ writerMethod.Parameters.Length == 1)
                 {
                     sbInterface.Append(" = default");
                 }
 
-                sbInterface.AppendLine(");");
+                sbInterface.Append(')');
+                AppendConstraints(sbInterface, readerMethod);
+                sbInterface.AppendLine(";");
             }
 
             if (!writerMethod.Parameters.IsEmpty)
@@ -312,10 +359,21 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             sbInterface.Append(parameter);
                         }
 
+                        if (parameter.HasExplicitDefaultValue)
+                        {
+                            sbInterface.Append(" = ");
+                            sbInterface.Append(parameter.ExplicitDefaultValue switch
+                            {
+                                bool b => b ? "true" : "false",
+                                string s => $"\"{s}\"",
+                                _ => parameter.ExplicitDefaultValue
+                            });
+                        }
+
                         first = false;
                     }
 
-                    if (isArrayOrList)
+                    /*if (isArrayOrList)
                     {
                         foreach (var p in readerMethod.Parameters)
                         {
@@ -326,17 +384,30 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                             sbInterface.Append(p);
 
+                            if (p.HasExplicitDefaultValue)
+                            {
+                                sbInterface.Append(" = ");
+                                sbInterface.Append(p.ExplicitDefaultValue switch
+                                {
+                                    bool b => b ? "true" : "false",
+                                    string s => $"\"{s}\"",
+                                    _ => p.ExplicitDefaultValue
+                                });
+                            }
+
                             first = false;
                         }
                     }
-                    else if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                    else*/ if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                     {
                         sbInterface.Append(", ");
                         sbInterface.Append(writerMethod.Parameters[0].Type);
                         sbInterface.Append(" defaultValue = default");
                     }
 
-                    sbInterface.AppendLine(");");
+                    sbInterface.Append(')');
+                    AppendConstraints(sbInterface, readerMethod);
+                    sbInterface.AppendLine(";");
                 }
             }
 
@@ -374,6 +445,27 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbClass.Append(readerMethod.ReturnType.Name);
                 }
 
+                if (readerMethod.TypeParameters.Length > 0)
+                {
+                    sbClass.Append('<');
+
+                    var firstType = true;
+
+                    foreach (var typeParameter in readerMethod.TypeParameters)
+                    {
+                        if (!firstType)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        sbClass.Append(typeParameter);
+
+                        firstType = false;
+                    }
+
+                    sbClass.Append('>');
+                }
+
                 sbClass.Append('(');
 
                 var first = true;
@@ -396,22 +488,61 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbClass.Append(parameter);
                     }
 
+                    if (parameter.HasExplicitDefaultValue)
+                    {
+                        sbClass.Append(" = ");
+                        sbClass.Append(parameter.ExplicitDefaultValue switch
+                        {
+                            bool b => b ? "true" : "false",
+                            string s => $"\"{s}\"",
+                            _ => parameter.ExplicitDefaultValue
+                        });
+                    }
+
                     first = false;
                 }
 
-                if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                /*if (isArrayOrList)
+                {
+                    foreach (var p in readerMethod.Parameters)
+                    {
+                        if (!first)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        sbClass.Append(p);
+
+                        if (p.HasExplicitDefaultValue)
+                        {
+                            sbClass.Append(" = ");
+                            sbClass.Append(p.ExplicitDefaultValue switch
+                            {
+                                bool b => b ? "true" : "false",
+                                string s => $"\"{s}\"",
+                                _ => p.ExplicitDefaultValue
+                            });
+                        }
+
+                        first = false;
+                    }
+                }
+                else*/ if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                 {
                     sbClass.Append(", ");
                     sbClass.Append(writerMethod.Parameters[0].Type);
                     sbClass.Append(" defaultValue");
                 }
 
-                if (writerMethod.Parameters.Length == 1)
+                if (/*!isArrayOrList &&*/ writerMethod.Parameters.Length == 1)
                 {
                     sbClass.Append(" = default");
                 }
 
-                sbClass.AppendLine(")");
+                sbClass.Append(')');
+                AppendConstraints(sbClass, readerMethod);
+                sbClass.AppendLine();
+
                 sbClass.AppendLine("    {");
 
                 if (writerMethod.Parameters.IsEmpty)
@@ -426,6 +557,28 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
                 sbClass.Append(" = Reader.");
                 sbClass.Append(readerMethod.Name);
+
+                if (readerMethod.TypeParameters.Length > 0)
+                {
+                    sbClass.Append('<');
+
+                    var firstType = true;
+
+                    foreach (var typeParameter in readerMethod.TypeParameters)
+                    {
+                        if (!firstType)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        sbClass.Append(typeParameter);
+
+                        firstType = false;
+                    }
+
+                    sbClass.Append('>');
+                }
+
                 sbClass.Append('(');
 
                 var firstReader = true;
@@ -441,6 +594,21 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                     firstReader = false;
                 }
+
+                /*if (isArrayOrList)
+                {
+                    foreach (var p in readerMethod.Parameters)
+                    {
+                        if (!firstReader)
+                        {
+                            sbClass.Append(", ");
+                        }
+
+                        sbClass.Append(p.Name);
+
+                        firstReader = false;
+                    }
+                }*/
 
                 sbClass.AppendLine(");");
 
@@ -495,6 +663,27 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbClass.Append(readerMethod.ReturnType.Name);
                     }
 
+                    if (readerMethod.TypeParameters.Length > 0)
+                    {
+                        sbClass.Append('<');
+
+                        var firstType = true;
+
+                        foreach (var typeParameter in readerMethod.TypeParameters)
+                        {
+                            if (!firstType)
+                            {
+                                sbClass.Append(", ");
+                            }
+
+                            sbClass.Append(typeParameter);
+
+                            firstType = false;
+                        }
+
+                        sbClass.Append('>');
+                    }
+
                     sbClass.AppendLine("(");
                     sbClass.AppendLine("#if NET6_0_OR_GREATER");
                     sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
@@ -521,17 +710,55 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             sbClass.Append(parameter);
                         }
 
+                        if (parameter.HasExplicitDefaultValue)
+                        {
+                            sbClass.Append(" = ");
+                            sbClass.Append(parameter.ExplicitDefaultValue switch
+                            {
+                                bool b => b ? "true" : "false",
+                                string s => $"\"{s}\"",
+                                _ => parameter.ExplicitDefaultValue
+                            });
+                        }
+
                         first = false;
                     }
 
-                    if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
+                    /*if (isArrayOrList)
+                    {
+                        foreach (var p in readerMethod.Parameters)
+                        {
+                            if (!first)
+                            {
+                                sbClass.Append(", ");
+                            }
+
+                            sbClass.Append(p);
+
+                            if (p.HasExplicitDefaultValue)
+                            {
+                                sbClass.Append(" = ");
+                                sbClass.Append(p.ExplicitDefaultValue switch
+                                {
+                                    bool b => b ? "true" : "false",
+                                    string s => $"\"{s}\"",
+                                    _ => p.ExplicitDefaultValue
+                                });
+                            }
+
+                            first = false;
+                        }
+                    }
+                    else*/ if (isNullableVariant && !writerMethod.Parameters.IsEmpty)
                     {
                         sbClass.Append(", ");
                         sbClass.Append(writerMethod.Parameters[0].Type);
                         sbClass.Append(" defaultValue = default");
                     }
 
-                    sbClass.Append(") => ");
+                    sbClass.Append(')');
+                    AppendConstraints(sbClass, readerMethod);
+                    sbClass.Append(" => ");
                     sbClass.Append(writerMethod.Parameters[0].Name);
                     sbClass.Append(" = ");
                     sbClass.Append(readerMethod.Name.Substring("Read".Length));
@@ -569,5 +796,46 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
         sb.AppendLine();
         sb.Append(sbClass.ToString());
         context.AddSource("GbxReaderWriter", sb.ToString());
+    }
+
+    private static void AppendConstraints(StringBuilder sb, IMethodSymbol methodSymbol)
+    {
+        if (methodSymbol.TypeParameters.Length <= 0)
+        {
+            return;
+        }
+
+        foreach (var typeParameter in methodSymbol.TypeParameters)
+        {
+            if (!typeParameter.HasValueTypeConstraint && typeParameter.ConstraintTypes.IsDefaultOrEmpty)
+            {
+                continue;
+            }
+
+            sb.Append(" where ");
+            sb.Append(typeParameter);
+            sb.Append(" : ");
+
+            if (typeParameter.HasValueTypeConstraint)
+            {
+                sb.Append("struct");
+            }
+            else
+            {
+                var firstType = true;
+
+                foreach (var constraintType in typeParameter.ConstraintTypes)
+                {
+                    if (!firstType)
+                    {
+                        sb.Append(", ");
+                    }
+
+                    sb.Append(constraintType);
+
+                    firstType = false;
+                }
+            }
+        }
     }
 }
