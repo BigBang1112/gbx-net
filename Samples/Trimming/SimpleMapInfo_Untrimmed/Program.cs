@@ -8,3 +8,5 @@ if (args.Length == 0)
 }
 
 var map = Gbx.ParseHeaderNode<CGameCtnChallenge>(args[0]);
+
+Console.WriteLine($"Map name: {map.MapName}");

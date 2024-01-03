@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleMapInfo_Untrimmed": {
+      "commandName": "Project",
+      "commandLineArgs": "\"../../../../../../../Tests/GBX.NET.Tests/Files/Gbx/CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TM2020 001.Map.Gbx\""
+    }
+  }
+}
