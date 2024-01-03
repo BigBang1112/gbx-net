@@ -447,6 +447,11 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
     {
         var index = ReadIdIndex();
 
+        if (index == -1)
+        {
+            return string.Empty;
+        }
+
         if ((index & 0xC0000000) is not 0x40000000 and not 0x80000000)
         {
             throw new NotSupportedException("This Id cannot be read as string.");
@@ -458,6 +463,11 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
     public Id ReadId()
     {
         var index = ReadIdIndex();
+
+        if (index == -1)
+        {
+            return new();
+        }
 
         if ((index & 0xC0000000) is not 0x40000000 and not 0x80000000)
         {

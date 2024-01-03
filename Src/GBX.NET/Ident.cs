@@ -27,7 +27,7 @@ public sealed record Ident(string Id, Id Collection, string Author)
     /// <returns>A string representation of the form '("{Id}", {Collection}, "{Author}")'.</returns>
     public override string ToString()
     {
-        return $"""("{Id}", {Collection}, "{Author}")""";
+        return $"""("{Id}", "{Collection}", "{Author}")""";
     }
 
     /// <summary>
