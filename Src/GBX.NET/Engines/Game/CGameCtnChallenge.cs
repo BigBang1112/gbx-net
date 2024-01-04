@@ -80,7 +80,7 @@ public sealed partial class CGameCtnChallenge :
     /// [SHeaderCommunity] CGameCtnChallenge 0x005 header chunk (community)
     /// </summary>
     [Chunk(0x03043005, "community")]
-    public struct HeaderChunk03043005 : IHeaderChunk<CGameCtnChallenge>, IEquatable<HeaderChunk03043005>
+    public struct HeaderChunk03043005 : IHeaderChunk<CGameCtnChallenge>
     {
         /// <inheritdoc />
         public readonly uint Id => 0x03043005;
@@ -98,17 +98,6 @@ public sealed partial class CGameCtnChallenge :
         {
             w.Write(n.Xml);
         }
-
-        /// <inheritdoc />
-        public override readonly bool Equals(object? obj) => obj is HeaderChunk03043005 other && Equals(other);
-        /// <inheritdoc />
-        public readonly bool Equals(HeaderChunk03043005 other) => Id == other.Id;
-        /// <inheritdoc />
-        public override readonly int GetHashCode() => Id.GetHashCode();
-        /// <inheritdoc />
-        public static bool operator ==(HeaderChunk03043005 left, HeaderChunk03043005 right) => left.Equals(right);
-        /// <inheritdoc />
-        public static bool operator !=(HeaderChunk03043005 left, HeaderChunk03043005 right) => !(left == right);
     }
 
     public interface ITM2020 : IClassVersion<CGameCtnChallenge>

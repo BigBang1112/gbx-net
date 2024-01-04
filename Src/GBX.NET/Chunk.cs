@@ -14,7 +14,7 @@ public interface IChunk
 /// <summary>
 /// A data chunk.
 /// </summary>
-public abstract class Chunk : IChunk, IReadableWritableChunk, IEquatable<Chunk>
+public abstract class Chunk : IChunk, IReadableWritableChunk
 {
     /// <inheritdoc />
     public abstract uint Id { get; }
@@ -50,11 +50,4 @@ public abstract class Chunk : IChunk, IReadableWritableChunk, IEquatable<Chunk>
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, IGbxReaderWriter rw) => ReadWrite(n, (GbxReaderWriter)rw);
-
-    /// <inheritdoc />
-    public override bool Equals(object? obj) => obj is Chunk other && Equals(other);
-    /// <inheritdoc />
-    public bool Equals(Chunk? other) => Id == other?.Id;
-    /// <inheritdoc />
-    public override int GetHashCode() => Id.GetHashCode();
 }

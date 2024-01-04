@@ -48,16 +48,10 @@ public interface IChunkSet : ISet<IChunk>
     T? Get<T>() where T : IChunk;
 }
 
-internal sealed class ChunkSet : HashSet<IChunk>, IChunkSet
+internal sealed class ChunkSet : SortedSet<IChunk>, IChunkSet
 {
-#if NET6_0_OR_GREATER
-    internal ChunkSet(int capacity) : base(capacity) { }
-#else
-#pragma warning disable IDE0060
-    internal ChunkSet(int capacity) : base() { }
-#pragma warning restore IDE0060
-#endif
-    internal ChunkSet() : base() { }
+    internal ChunkSet(int capacity) : base(new ChunkIdComparer()) { }
+    internal ChunkSet() : base(new ChunkIdComparer()) { }
 
     public IChunk Create(uint chunkId)
     {
