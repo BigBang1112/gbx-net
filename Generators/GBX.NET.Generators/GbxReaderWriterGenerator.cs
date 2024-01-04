@@ -165,10 +165,6 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
         foreach (var (readerMethod, writerMethod, isNamed) in symbols)
         {
-            var nullableReturn = !writerMethod.Parameters.IsEmpty
-                && writerMethod.Parameters[0].NullableAnnotation == NullableAnnotation.Annotated
-                && !writerMethod.Parameters[0].Type.IsValueType;
-
             var isNonNullableValueType = readerMethod.ReturnType.IsValueType
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
@@ -183,7 +179,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 sbInterface.Append("    ");
                 sbInterface.Append(readerMethod.ReturnType);
 
-                if (nullableReturn || isNullableVariant)
+                if (isNullableVariant)
                 {
                     sbInterface.Append('?');
                 }
@@ -429,7 +425,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 sbClass.Append("    public ");
                 sbClass.Append(readerMethod.ReturnType);
 
-                if (nullableReturn || isNullableVariant)
+                if (isNullableVariant)
                 {
                     sbClass.Append('?');
                 }
