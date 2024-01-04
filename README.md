@@ -100,14 +100,14 @@ Using the NuGet packages is recommended.
 
 ### Create a new GBX.NET project (lightweight)
 
-1. Install .NET SDK 8
+1. Install .NET SDK 8.
     - Windows: `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
 4. Add the latest GBX.NET NuGet pckage: `dotnet add package GBX.NET`
 5. Open `Program.cs` with your favorite text editor: `code . -g Program.cs`
-6. Write code, see [Usage](#usage) for simple examples.
+6. Write code - see [Usage](#usage) for simple examples.
 7. Use `dotnet run` to run the app.
 
 Steps 2-7:
@@ -120,11 +120,21 @@ code . -g Program.cs
 dotnet run
 ```
 
+### Create a new GBX.NET project (Visual Studio Code)
+
+1. Install C# Dev Kit extension.
+2. Click on `Create .NET Project` button, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type `.NET: New Project`.
+3. Select `Console App` and create your project.
+4. Open a new terminal and type `dotnet add package GBX.NET` to add GBX.NET.
+5. Write code - see [Usage](#usage) for simple examples.
+6. Run and debug as usual, select C# if prompted.
+
 ### Create a new GBX.NET project (Visual Studio)
 
 1. Create a new Console project
-2. Under your project in Solution Explorer, right-click on Dependencies and select 'Manage NuGet packages...'
-3. Search "GBX.NET" and click install
+2. Under your project in Solution Explorer, right-click on Dependencies and select `Manage NuGet packages...`
+3. Search `GBX.NET` and click install
+4. Write code - see [Usage](#usage) for simple examples.
 
 ### Examples
 
