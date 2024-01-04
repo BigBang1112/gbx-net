@@ -33,4 +33,6 @@ public readonly record struct Byte3(byte X, byte Y, byte Z)
     /// </summary>
     /// <param name="v">The Byte3 vector to convert.</param>
     public static implicit operator (byte X, byte Y, byte Z)(Byte3 v) => (v.X, v.Y, v.Z);
+
+    public static explicit operator Byte3(Int3 a) => new((byte)a.X, (byte)a.Y, (byte)a.Z);
 }

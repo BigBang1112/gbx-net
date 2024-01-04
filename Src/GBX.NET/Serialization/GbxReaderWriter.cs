@@ -11,6 +11,11 @@ public partial interface IGbxReaderWriter : IDisposable
 
     string? Id(string? value = default);
     void Id(ref string? value);
+
+    Int3 Byte3(Int3 value = default);
+    Int3? Byte3(Int3? value, Int3 defaultValue = default);
+    void Byte3(ref Int3 value);
+    void Byte3(ref Int3? value, Int3 defaultValue = default);
 }
 
 internal sealed partial class GbxReaderWriter : IGbxReaderWriter
@@ -80,4 +85,26 @@ internal sealed partial class GbxReaderWriter : IGbxReaderWriter
         [NotNullIfNotNull(nameof(value))]
 #endif
         ref string? value) => value = Id(value);
+
+#if NET6_0_OR_GREATER
+    [return: NotNullIfNotNull(nameof(value))]
+#endif
+    public Int3 Byte3(Int3 value = default) => Byte3((Byte3)value);
+
+#if NET6_0_OR_GREATER
+    [return: NotNullIfNotNull(nameof(value))]
+#endif
+    public Int3? Byte3(Int3? value, Int3 defaultValue = default) => Byte3((Byte3?)value, (Byte3)defaultValue);
+
+    public void Byte3(
+#if NET6_0_OR_GREATER
+        [NotNullIfNotNull(nameof(value))]
+#endif
+        ref Int3 value) => value = Byte3(value);
+
+    public void Byte3(
+#if NET6_0_OR_GREATER
+        [NotNullIfNotNull(nameof(value))]
+#endif
+        ref Int3? value, Int3 defaultValue = default) => value = Byte3(value, defaultValue);
 }

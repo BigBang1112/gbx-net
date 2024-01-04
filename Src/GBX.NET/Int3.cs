@@ -33,4 +33,6 @@ public readonly record struct Int3(int X, int Y, int Z)
     /// </summary>
     /// <param name="v">The <see cref="Int3"/> vector to convert.</param>
     public static implicit operator (int X, int Y, int Z)(Int3 v) => (v.X, v.Y, v.Z);
+
+    public static implicit operator Int3(Byte3 a) => new(a.X, a.Y, a.Z);
 }
