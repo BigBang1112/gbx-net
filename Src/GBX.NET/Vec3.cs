@@ -33,4 +33,6 @@ public readonly record struct Vec3(float X, float Y, float Z)
     /// </summary>
     /// <param name="v">The <see cref="Vec3"/> vector to convert.</param>
     public static implicit operator (float X, float Y, float Z)(Vec3 v) => (v.X, v.Y, v.Z);
+
+    public static implicit operator Vec3(Int3 a) => new(a.X, a.Y, a.Z);
 }

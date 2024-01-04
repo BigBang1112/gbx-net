@@ -32,4 +32,6 @@ public readonly record struct Vec2(float X, float Y)
     /// </summary>
     /// <param name="v">The <see cref="Vec2"/> vector to convert.</param>
     public static implicit operator (float X, float Y)(Vec2 v) => (v.X, v.Y);
+
+    public static implicit operator Vec2(Int2 a) => new(a.X, a.Y);
 }
