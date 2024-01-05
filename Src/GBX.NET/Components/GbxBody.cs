@@ -25,6 +25,8 @@ public sealed class GbxBody
         }
     }
 
+    public Exception? Exception { get; internal set; }
+
     internal static GbxBody Parse(GbxReader reader, GbxCompression compression, bool readRawBody)
     {
         return GbxBodyReader.Parse(reader, compression, readRawBody);

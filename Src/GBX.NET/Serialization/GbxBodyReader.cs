@@ -41,7 +41,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
         if (body.CompressedSize is null)
         {
-            node.ReadWrite(readerWriter);
+            ReadMainNode(node, body, readerWriter);
             return body;
         }
 
@@ -51,7 +51,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
         using var decompressedReader = new GbxReader(ms);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
-        node.ReadWrite(decompressedReaderWriter);
+        ReadMainNode(node, body, decompressedReaderWriter);
 
         return body;
     }
@@ -62,25 +62,17 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
         if (body.CompressedSize is null)
         {
-#if NET8_0_OR_GREATER
-            T.Read(node, readerWriter);
-#else
-            node.ReadWrite(readerWriter);
-#endif
+            ReadMainNode(node, body, readerWriter);
             return body;
         }
 
         var decompressedData = DecompressData(body.CompressedSize.Value, body.UncompressedSize);
-        
+
         using var ms = new MemoryStream(decompressedData);
         using var decompressedReader = new GbxReader(ms);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
-#if NET8_0_OR_GREATER
-        T.Read(node, decompressedReaderWriter);
-#else
-        node.ReadWrite(decompressedReaderWriter);
-#endif
+        ReadMainNode(node, body, decompressedReaderWriter);
 
         return body;
     }
@@ -98,5 +90,43 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
         Gbx.LZO.Decompress(compressedData, decompressedData);
 
         return decompressedData;
+    }
+
+    private void ReadMainNode(IClass node, GbxBody body, GbxReaderWriter rw)
+    {
+        try
+        {
+            node.ReadWrite(rw);
+        }
+        catch (Exception ex)
+        {
+            if (!settings.AvoidExceptionsInBody)
+            {
+                throw;
+            }
+
+            body.Exception = ex;
+        }
+    }
+
+    private void ReadMainNode<T>(T node, GbxBody body, GbxReaderWriter rw) where T : IClass
+    {
+        try
+        {
+#if NET8_0_OR_GREATER
+            T.Read(node, rw);
+#else
+            node.ReadWrite(rw);
+#endif
+        }
+        catch (Exception ex)
+        {
+            if (!settings.AvoidExceptionsInBody)
+            {
+                throw;
+            }
+
+            body.Exception = ex;
+        }
     }
 }
