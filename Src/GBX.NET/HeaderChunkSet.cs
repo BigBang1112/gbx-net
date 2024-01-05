@@ -55,7 +55,7 @@ internal sealed class HeaderChunkSet : SortedSet<IHeaderChunk>, IHeaderChunkSet
 
     public IHeaderChunk Create(uint chunkId)
     {
-        var chunk = ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Header chunk {chunkId:X8} is not supported.");
+        var chunk = ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Header chunk 0x{chunkId:X8} is not supported.");
 
         Add(chunk);
 

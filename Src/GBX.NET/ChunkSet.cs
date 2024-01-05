@@ -55,7 +55,7 @@ internal sealed class ChunkSet : SortedSet<IChunk>, IChunkSet
 
     public IChunk Create(uint chunkId)
     {
-        var chunk = ClassManager.NewChunk(chunkId) ?? throw new Exception($"Chunk {chunkId:X8} is not supported.");
+        var chunk = ClassManager.NewChunk(chunkId) ?? throw new Exception($"Chunk 0x{chunkId:X8} is not supported.");
 
         Add(chunk);
 

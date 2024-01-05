@@ -48,7 +48,7 @@ public class IdentTests
         var actual = i.ToString();
 
         // Assert
-        Assert.Equal(expected: "(\"Test\", Canyon, \"Hell\")", actual);
+        Assert.Equal(expected: "(\"Test\", \"Canyon\", \"Hell\")", actual);
     }
 
     [Fact]
