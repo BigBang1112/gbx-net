@@ -90,14 +90,14 @@ public class ClassTypeGenerator : IIncrementalGenerator
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
         builder.AppendLine();
-        builder.AppendLine("    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId)");
+        builder.AppendLine("    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId, IHeaderChunkSet? userData)");
         builder.AppendLine("    {");
         builder.AppendLine("        return classId switch");
         builder.AppendLine("        {");
 
         foreach (var (symbol, classId) in symbols)
         {
-            builder.AppendLine($"            0x{classId:X8} => new GbxHeader<{symbol.Name}>(basic),");
+            builder.AppendLine($"            0x{classId:X8} => new GbxHeader<{symbol.Name}>(basic, userData),");
         }
 
         builder.AppendLine("            _ => null");

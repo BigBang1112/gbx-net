@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Components;
 
-public sealed class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader(basic) where T : IClass
+public sealed class GbxHeader<T>(GbxHeaderBasic basic, IHeaderChunkSet? userData = null) : GbxHeader(basic, userData) where T : IClass
 {
 #if !NET8_0_OR_GREATER
     private uint? classId;

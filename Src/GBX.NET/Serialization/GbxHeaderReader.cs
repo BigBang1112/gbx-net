@@ -25,9 +25,8 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         var numNodes = reader.ReadInt32();
 
-        return new GbxHeader<T>(basic)
+        return new GbxHeader<T>(basic, userData)
         {
-            UserData = userData,
             NumNodes = numNodes
         };
     }
@@ -42,10 +41,9 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         node = ClassManager.New(classId);
 
-        var header = ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
+        var userData = basic.Version >= 6 ? ReadUserData(node) : null;
 
-        header.UserData = basic.Version >= 6 ? ReadUserData(node) : null;
-
+        var header = ClassManager.NewHeader(basic, classId, userData) ?? new GbxHeaderUnknown(basic, classId, userData);
         header.NumNodes = reader.ReadInt32();
 
         return header;

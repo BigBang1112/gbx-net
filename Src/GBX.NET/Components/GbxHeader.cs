@@ -2,15 +2,20 @@
 
 public abstract class GbxHeader
 {
+    private IHeaderChunkSet? userData;
+
     public GbxHeaderBasic Basic { get; set; }
-    public IHeaderChunkSet? UserData { get; internal set; }
+
+    public IHeaderChunkSet UserData => userData ??= new HeaderChunkSet();
+
     public int NumNodes { get; internal set; }
 
     public abstract uint ClassId { get; }
 
-    protected GbxHeader(GbxHeaderBasic basic)
+    protected GbxHeader(GbxHeaderBasic basic, IHeaderChunkSet? userData = null)
     {
         Basic = basic;
+        this.userData = userData;
     }
 
     internal static GbxHeader<T> Parse<T>(GbxReader reader, GbxReadSettings settings, out T node) where T : IClass, new()
