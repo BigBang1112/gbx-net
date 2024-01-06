@@ -100,12 +100,12 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
         }
         catch (Exception ex)
         {
-            if (!settings.AvoidExceptionsInBody)
+            body.Exception = ex;
+
+            if (!settings.SkipExceptionsInBody)
             {
                 throw;
             }
-
-            body.Exception = ex;
         }
     }
 
@@ -121,12 +121,12 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
         }
         catch (Exception ex)
         {
-            if (!settings.AvoidExceptionsInBody)
+            body.Exception = ex;
+
+            if (!settings.SkipExceptionsInBody)
             {
                 throw;
             }
-
-            body.Exception = ex;
         }
     }
 }

@@ -11,5 +11,5 @@ public readonly record struct GbxReadSettings
     /// If to store the raw body as a byte array data in <see cref="Gbx"/>, allowing to serialize the Gbx back with <see cref="Gbx"/>'s ParseHeader methods or Parse methods of unknown nodes.
     /// </summary>
     public bool ReadRawBody { get; init; }
-    public bool AvoidExceptionsInBody { get; init; }
+    public bool SkipExceptionsInBody { get; init; }
 }
