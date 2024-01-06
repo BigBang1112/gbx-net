@@ -14,26 +14,19 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxReaderWriter readerWr
 
         writer.Write(ClassManager.Remap(header.ClassId, settings.ClassIdRemapMode));
 
-        if (header.UserData is null)
+        // WRONG
+        foreach (var chunk in header.UserData)
         {
-            writer.Write(0);
-        }
-        else
-        {
-            // WRONG
-            foreach (var chunk in header.UserData)
+            switch (chunk)
             {
-                switch (chunk)
-                {
-                    case IReadableWritableChunk readableWritable:
-                        readableWritable.ReadWrite(node, readerWriter);
-                        break;
-                    case IWritableChunk readable:
-                        readable.Write(node, writer);
-                        break;
-                    default:
-                        throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
-                }
+                case IReadableWritableChunk readableWritable:
+                    readableWritable.ReadWrite(node, readerWriter);
+                    break;
+                case IWritableChunk readable:
+                    readable.Write(node, writer);
+                    break;
+                default:
+                    throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
             }
         }
 

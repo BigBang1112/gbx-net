@@ -2,5 +2,5 @@
 
 public readonly partial record struct Gas(TimeInt32 Time, int Value) : IInputReal
 {
-    public float NormalizedValue => InputRealExtensions.GetValue(this);
+    public float NormalizedValue => this.GetValue();
 }

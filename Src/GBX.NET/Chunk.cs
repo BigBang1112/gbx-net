@@ -14,7 +14,7 @@ public interface IChunk
 /// <summary>
 /// A data chunk.
 /// </summary>
-public abstract class Chunk : IChunk, IReadableWritableChunk
+public abstract class Chunk : IReadableWritableChunk
 {
     /// <inheritdoc />
     public abstract uint Id { get; }

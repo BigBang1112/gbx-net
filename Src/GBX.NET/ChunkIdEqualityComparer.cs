@@ -9,7 +9,7 @@ public sealed class ChunkIdEqualityComparer : IEqualityComparer<IChunk>
         return x.Id == y.Id;
     }
 
-    public int GetHashCode(IChunk obj)
+    public int GetHashCode(IChunk? obj)
     {
         return obj is null ? 0 : obj.Id.GetHashCode();
     }

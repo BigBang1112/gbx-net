@@ -309,7 +309,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
             "vec2" => ("Vec2", true),
             "vec3" => ("Vec3", true),
             "vec4" => ("Vec4", true),
-            "int128" => ("System.Numerics.BigInteger", true),
+            "int128" => ("global::System.Numerics.BigInteger", true),
             "ident" or "meta" => ("Ident", false),
             "packdesc" or "fileref" => ("PackDesc", false),
             "data" or "bytes" => ("byte[]", false),

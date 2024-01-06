@@ -15,7 +15,7 @@ public sealed partial class CGameCtnChallenge :
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
 
-            CalculateCRC32();
+            CalculateCrc32();
         }
     }
 
@@ -28,7 +28,7 @@ public sealed partial class CGameCtnChallenge :
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
-    public void CalculateCRC32()
+    public void CalculateCrc32()
     {
         string toHash;
 
@@ -63,6 +63,8 @@ public sealed partial class CGameCtnChallenge :
                 chars[i * 2 + 1] = hex1;
                 chars[i * 2] = hex2;
             }
+
+            return;
 
             static char HexIntToChar(byte v)
             {
