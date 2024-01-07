@@ -3,7 +3,7 @@ using GBX.NET.Engines.Game;
 
 if (args.Length == 0)
 {
-    Console.WriteLine("Please provide a path to a map.");
+    Console.WriteLine("Usage: dotnet run <path to map>");
     return;
 }
 
