@@ -1,0 +1,136 @@
+CSystemConfig 0x0B005000
+
+0x008 (skippable)
+ string? DesiredLanguageId
+
+0x02B (skippable)
+ int
+ bool Advertising_DisabledByUser
+ float Advertising_TunningCoef
+
+0x034 (skippable)
+ int TmCarQuality
+ int
+ int
+ int TmOpponents
+ int TmMaxOpponents
+ bool
+ int TmBackgroundQuality
+
+0x035 (skippable)
+ bool
+ bool NetworkTestInternetConnection
+
+0x039 (skippable)
+ bool NetworkUseProxy
+ string?
+ string?
+ int NetworkServerPort
+ int NetworkP2PServerPort
+ int NetworkClientPort
+ int NetworkServerBroadcastLength
+ bool NetworkForceUseLocalAddress
+ string? NetworkForceServerAddress
+ int NetworkDownload
+ int NetworkUpload
+ bool NetworkUseNatUPnP
+
+0x03D (skippable)
+ bool IsIgnorePlayerSkins
+ bool IsSkipRollingDemo
+ int
+
+0x041 (skippable)
+ string?
+
+0x043 (skippable)
+ bool
+ bool NetworkTestInternetConnection
+ string? NetworkLastUsedMSAddress
+ string? NetworkLastUsedMSPath
+
+0x044 (skippable)
+ bool NetworkTestInternetConnection
+ string? NetworkLastUsedMSAddress
+ string? NetworkLastUsedMSPath
+ int[]?
+
+0x045 (skippable)
+ bool InputsAlternateMethod
+ bool InputsFreezeUnusedAxes
+ bool InputsEnableRumble
+ bool InputsCaptureKeyboard
+
+0x047 (skippable)
+ bool
+
+0x048 (skippable)
+ bool GameProfileEnableMulti
+ string? GameProfileName
+
+0x04A (skippable)
+ bool IsIgnorePlayerSkins
+ bool IsSkipRollingDemo
+ int
+ int
+
+0x04F (skippable)
+ bool AudioEnabled
+ float AudioSoundVolume
+ float AudioMusicVolume
+ int
+ int
+ int
+ bool AudioAllowEFX
+ bool AudioDisableDoppler
+ bool
+ int AudioGlobalQuality
+ string? AudioDevice_Oal
+
+0x050 (skippable)
+ bool
+
+0x051 (skippable)
+ string?
+
+0x052 (skippable)
+ int TmCarQuality
+ int
+ int PlayerShadow
+ int
+ int TmOpponents
+ int TmMaxOpponents
+
+0x053 (skippable)
+ bool AudioSoundHdr
+
+0x056 (skippable)
+ bool
+ bool AudioAllowHRTF
+ int AudioDontMuteWhenApplicationUnfocused
+ int
+ bool AudioSoundHdr
+ bool
+
+0x059 (skippable)
+ bool FileTransferEnableAvatarDownload
+ bool FileTransferEnableAvatarUpload
+ bool FileTransferEnableAvatarLocators
+ bool FileTransferEnableMapDownload
+ bool FileTransferEnableMapUpload
+ bool FileTransferEnableMapLocators
+ bool FileTransferEnableMapModDownload
+ bool FileTransferEnableMapModUpload
+ bool FileTransferEnableMapModLocators
+ bool FileTransferEnableMapSkinDownload
+ bool FileTransferEnableMapSkinUpload
+ bool FileTransferEnableMapSkinLocators
+ bool FileTransferEnableTagDownload
+ bool FileTransferEnableTagUpload
+ bool FileTransferEnableTagLocators
+ bool FileTransferEnableVehicleSkinDownload
+ bool FileTransferEnableVehicleSkinUpload
+ bool FileTransferEnableVehicleSkinLocators
+ bool FileTransferEnableUnknownTypeDownload
+ bool FileTransferEnableUnknownTypeUpload
+ bool FileTransferEnableUnknownTypeLocators
