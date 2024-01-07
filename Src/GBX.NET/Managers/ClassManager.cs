@@ -28,7 +28,7 @@ public static partial class ClassManager
         _ => null
     };
 
-    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId, IHeaderChunkSet? userData);
+    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId);
     internal static partial Gbx? NewGbx(GbxHeader header, IClass node);
 
     internal static uint GetChunkId(Type type) => throw new Exception();

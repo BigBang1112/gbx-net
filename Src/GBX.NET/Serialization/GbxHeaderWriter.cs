@@ -15,21 +15,36 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxReaderWriter readerWr
         writer.Write(ClassManager.Remap(header.ClassId, settings.ClassIdRemapMode));
 
         // WRONG
-        foreach (var chunk in header.UserData)
+        if (header is GbxHeaderUnknown unknownHeader)
         {
-            switch (chunk)
+            foreach (var chunk in unknownHeader.UserData)
             {
-                case IReadableWritableChunk readableWritable:
-                    readableWritable.ReadWrite(node, readerWriter);
-                    break;
-                case IWritableChunk readable:
-                    readable.Write(node, writer);
-                    break;
-                default:
-                    throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
+                WriteChunk(node, chunk);
+            }
+        }
+        else
+        {
+            foreach (var chunk in node.Chunks.OfType<IHeaderChunk>())
+            {
+                WriteChunk(node, chunk);
             }
         }
 
         return true;
+    }
+
+    private void WriteChunk(IClass node, IHeaderChunk chunk)
+    {
+        switch (chunk)
+        {
+            case IReadableWritableChunk readableWritable:
+                readableWritable.ReadWrite(node, readerWriter);
+                break;
+            case IWritableChunk readable:
+                readable.Write(node, writer);
+                break;
+            default:
+                throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
+        }
     }
 }

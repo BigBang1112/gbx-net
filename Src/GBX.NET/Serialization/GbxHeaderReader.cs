@@ -21,11 +21,14 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         node = new T();
 
-        var userData = basic.Version >= 6 ? ReadUserData(node) : null;
+        if (basic.Version >= 6)
+        {
+            ReadUserData(node);
+        }
 
         var numNodes = reader.ReadInt32();
 
-        return new GbxHeader<T>(basic, userData)
+        return new GbxHeader<T>(basic)
         {
             NumNodes = numNodes
         };
@@ -41,21 +44,27 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         node = ClassManager.New(classId);
 
-        var userData = basic.Version >= 6 ? ReadUserData(node) : null;
+        var header = node is null
+            ? new GbxHeaderUnknown(basic, classId)
+            : ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
 
-        var header = ClassManager.NewHeader(basic, classId, userData) ?? new GbxHeaderUnknown(basic, classId, userData);
+        if (basic.Version >= 6)
+        {
+            ReadUserData(node, header as GbxHeaderUnknown);
+        }
+
         header.NumNodes = reader.ReadInt32();
 
         return header;
     }
 
-    internal HeaderChunkSet? ReadUserData<T>(T node) where T : notnull, IClass
+    internal void ReadUserData<T>(T node) where T : notnull, IClass
     {
         var userDataNums = ValidateUserDataNumbers();
 
         if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
         {
-            return null;
+            return;
         }
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
@@ -67,8 +76,6 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 #endif
 
         FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
-
-        var userData = new HeaderChunkSet(userDataNums.NumChunks);
 
         foreach (var desc in headerChunkInfos)
         {
@@ -89,13 +96,13 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                     Data = reader.ReadBytes(desc.Size)
                 };
 
-                userData.Add(chunk);
+                node.Chunks.Add(chunk);
             }
             else
             {
                 chunk.IsHeavy = desc.IsHeavy;
 
-                userData.Add(chunk);
+                node.Chunks.Add(chunk);
 
                 var nodeToRead = chunk is ISelfContainedChunk scChunk ? scChunk.Node : node;
 
@@ -157,17 +164,15 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
-
-        return userData;
     }
 
-    internal HeaderChunkSet? ReadUserData(IClass? node)
+    internal void ReadUserData(IClass? node, GbxHeaderUnknown? unknownHeader)
     {
         var userDataNums = ValidateUserDataNumbers();
 
         if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
         {
-            return null;
+            return;
         }
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
@@ -179,8 +184,6 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 #endif
 
         FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
-
-        var userData = new HeaderChunkSet(userDataNums.NumChunks);
 
         foreach (var desc in headerChunkInfos)
         {
@@ -197,12 +200,28 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                     Data = reader.ReadBytes(desc.Size)
                 };
 
-                userData.Add(chunk);
+                if (node is not null)
+                {
+                    node.Chunks.Add(chunk);
+                }
+                else if (unknownHeader is not null)
+                {
+                    unknownHeader.UserData.Add((HeaderChunk)chunk);
+                }
+                else
+                {
+                    throw new Exception($"Chunk 0x{desc.Id:X8} cannot be stored anywhere.");
+                }
             }
             else
             {
+                if (node is null)
+                {
+                    throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
+                }
+
                 chunk.IsHeavy = desc.IsHeavy;
-                userData.Add(chunk);
+                node.Chunks.Add(chunk);
 
                 var nodeToRead = ((chunk as ISelfContainedChunk)?.Node ?? node) ?? throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
                 
@@ -246,8 +265,6 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
-
-        return userData;
     }
 
 #if NET6_0_OR_GREATER
