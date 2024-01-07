@@ -9,6 +9,28 @@ public class CPlugVehicleMaterial : CMwNod
         
     }
 
+    #region 0x004 chunk
+
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00F chunk
+    /// </summary>
+    [Chunk(0x090F1004)]
+    public class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
+    {
+        public string? U01;
+        public float U02;
+        public float U03;
+
+        public override void ReadWrite(CPlugVehicleMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Id(ref U01);		// Possibly Id, so far only ever seen 0xFFFFFFFF
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    #endregion
+
     #region 0x00F chunk
 
     /// <summary>
