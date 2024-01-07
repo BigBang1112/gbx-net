@@ -12,7 +12,7 @@ public class CPlugVehicleMaterial : CMwNod
     #region 0x004 chunk
 
     /// <summary>
-    /// CPlugVehicleMaterial 0x00F chunk
+    /// CPlugVehicleMaterial 0x004 chunk
     /// </summary>
     [Chunk(0x090F1004)]
     public class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
