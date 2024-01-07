@@ -17,15 +17,13 @@ public class CPlugVehicleMaterial : CMwNod
     [Chunk(0x090F1004)]
     public class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
     {
-        public string? U01;
-        public float U02;
-        public float U03;
+        public CPlugBitmap? U01;
+        public Vec2 U02;
 
         public override void ReadWrite(CPlugVehicleMaterial n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref U01);		// Possibly Id, so far only ever seen 0xFFFFFFFF
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.NodeRef<CPlugBitmap>(ref U01);
+            rw.Vec2(ref U02);
         }
     }
 
