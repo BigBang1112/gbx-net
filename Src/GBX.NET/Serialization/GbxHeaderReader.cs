@@ -138,7 +138,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             var chunkStartPos = settings.SkipLengthValidation ? 0 : reader.BaseStream.Position;
 
             var chunk = ClassManager.NewHeaderChunk(desc.Id);
-            
+
             if (chunk is null)
             {
                 ReadAndAddUnknownHeaderChunk(node, unknownHeader, desc);
@@ -166,6 +166,83 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
+    }
+
+#if NET6_0_OR_GREATER
+    internal static void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
+#else
+    internal static void FillHeaderChunkInfo(HeaderChunkInfo[] headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
+#endif
+    {
+        var totalSize = 4; // Includes the number of header chunks
+
+        for (var i = 0; i < userDataNums.NumChunks; i++)
+        {
+            var chunkId = reader.ReadHexUInt32();
+            var chunkSize = reader.ReadInt32();
+            var actualChunkSize = (int)(chunkSize & ~0x80000000);
+            var isHeavy = (chunkSize & 0x80000000) != 0;
+
+            if (actualChunkSize > GbxReader.MaxDataSize)
+            {
+                throw new LengthLimitException($"Header chunk size {actualChunkSize} exceeds maximum data size {GbxReader.MaxDataSize}.");
+            }
+
+            headerChunkDescs[i] = new HeaderChunkInfo(chunkId, actualChunkSize, isHeavy);
+
+            // sizeof(uint) + sizeof(int) + actualChunkSize
+            totalSize += 8 + actualChunkSize;
+
+            if (totalSize > userDataNums.Length)
+            {
+                throw new InvalidDataException($"Header chunk 0x{chunkId:X8} (size {actualChunkSize}) exceeds user data length ({totalSize} > {userDataNums.Length}).");
+            }
+        }
+
+        // Non-matching user data length will throw
+        if (totalSize != userDataNums.Length)
+        {
+            throw new InvalidDataException($"User data length {userDataNums.Length} does not match actual data length {totalSize}.");
+        }
+    }
+
+    /// <summary>
+    /// Reads the user data length and the number of header chunks, also validating the values and returning them as <see cref="UserDataNumbers"/>.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="LengthLimitException"></exception>
+    internal UserDataNumbers ValidateUserDataNumbers()
+    {
+        var userDataLength = reader.ReadInt32();
+
+        if (userDataLength == 0)
+        {
+            return new(0, 0);
+        }
+
+        // Maybe should be much stricter... and configurable
+        if (userDataLength > GbxReader.MaxDataSize)
+        {
+            throw new LengthLimitException($"User data length {userDataLength} exceeds maximum data size {GbxReader.MaxDataSize}.");
+        }
+
+        // The idea is to preferably not create sub-buffers to reduce pressure on the GC.
+        // If SkipUserData is true, it can be faster to reach the next parse stage (reference table):
+        // - if seeking is supported, position moves past the user data
+        // - if seeking is NOT supported:
+        //   - .NET Standard 2.0: unavoidable byte array allocation with ReadBytes
+        //   - .NET 6+: no allocation with Read(stackalloc byte[])
+
+        if (settings.SkipUserData)
+        {
+            reader.SkipData(userDataLength);
+            return new(userDataLength, NumChunks: 0);
+        }
+
+        // Header chunk count
+        var numHeaderChunks = reader.ReadInt32();
+
+        return new(userDataLength, numHeaderChunks);
     }
 
     private void ReadAndAddUnknownHeaderChunk(IClass? node, GbxHeaderUnknown? unknownHeader, HeaderChunkInfo desc)
@@ -275,82 +352,5 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size);
                 break;
         }
-    }
-
-#if NET6_0_OR_GREATER
-    internal static void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
-#else
-    internal static void FillHeaderChunkInfo(HeaderChunkInfo[] headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
-#endif
-    {
-        var totalSize = 4; // Includes the number of header chunks
-
-        for (var i = 0; i < userDataNums.NumChunks; i++)
-        {
-            var chunkId = reader.ReadHexUInt32();
-            var chunkSize = reader.ReadInt32();
-            var actualChunkSize = (int)(chunkSize & ~0x80000000);
-            var isHeavy = (chunkSize & 0x80000000) != 0;
-
-            if (actualChunkSize > GbxReader.MaxDataSize)
-            {
-                throw new LengthLimitException($"Header chunk size {actualChunkSize} exceeds maximum data size {GbxReader.MaxDataSize}.");
-            }
-
-            headerChunkDescs[i] = new HeaderChunkInfo(chunkId, actualChunkSize, isHeavy);
-
-            // sizeof(uint) + sizeof(int) + actualChunkSize
-            totalSize += 8 + actualChunkSize;
-
-            if (totalSize > userDataNums.Length)
-            {
-                throw new InvalidDataException($"Header chunk 0x{chunkId:X8} (size {actualChunkSize}) exceeds user data length ({totalSize} > {userDataNums.Length}).");
-            }
-        }
-
-        // Non-matching user data length will throw
-        if (totalSize != userDataNums.Length)
-        {
-            throw new InvalidDataException($"User data length {userDataNums.Length} does not match actual data length {totalSize}.");
-        }
-    }
-
-    /// <summary>
-    /// Reads the user data length and the number of header chunks, also validating the values and returning them as <see cref="UserDataNumbers"/>.
-    /// </summary>
-    /// <returns></returns>
-    /// <exception cref="LengthLimitException"></exception>
-    internal UserDataNumbers ValidateUserDataNumbers()
-    {
-        var userDataLength = reader.ReadInt32();
-
-        if (userDataLength == 0)
-        {
-            return new(0, 0);
-        }
-
-        // Maybe should be much stricter... and configurable
-        if (userDataLength > GbxReader.MaxDataSize)
-        {
-            throw new LengthLimitException($"User data length {userDataLength} exceeds maximum data size {GbxReader.MaxDataSize}.");
-        }
-
-        // The idea is to preferably not create sub-buffers to reduce pressure on the GC.
-        // If SkipUserData is true, it can be faster to reach the next parse stage (reference table):
-        // - if seeking is supported, position moves past the user data
-        // - if seeking is NOT supported:
-        //   - .NET Standard 2.0: unavoidable byte array allocation with ReadBytes
-        //   - .NET 6+: no allocation with Read(stackalloc byte[])
-
-        if (settings.SkipUserData)
-        {
-            reader.SkipData(userDataLength);
-            return new(userDataLength, NumChunks: 0);
-        }
-
-        // Header chunk count
-        var numHeaderChunks = reader.ReadInt32();
-
-        return new(userDataLength, numHeaderChunks);
     }
 }
