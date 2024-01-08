@@ -90,64 +90,11 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
             if (chunk is null)
             {
-                chunk = new HeaderChunk(desc.Id)
-                {
-                    IsHeavy = desc.IsHeavy,
-                    Data = reader.ReadBytes(desc.Size)
-                };
-
-                node.Chunks.Add(chunk);
+                ReadAndAddUnknownHeaderChunk(node, unknownHeader: null, desc);
             }
             else
             {
-                chunk.IsHeavy = desc.IsHeavy;
-
-                node.Chunks.Add(chunk);
-
-                var nodeToRead = chunk is ISelfContainedChunk scChunk ? scChunk.Node : node;
-
-                switch (chunk)
-                {
-                    case IReadableWritableChunk<T> readableWritableT:
-                        readableWritableT.ReadWrite(node, readerWriter);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    case IReadableChunk<T> readableT:
-                        readableT.Read(node, reader);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    case IReadableWritableChunk readableWritable:
-                        readableWritable.ReadWrite(nodeToRead, readerWriter);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    case IReadableChunk readable:
-                        readable.Read(nodeToRead, reader);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    default:
-                        reader.SkipData(desc.Size);
-                        break;
-                }
+                ReadAndAddKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
             }
 
             // Used to validate user data length
@@ -194,61 +141,15 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             
             if (chunk is null)
             {
-                chunk = new HeaderChunk(desc.Id)
-                {
-                    IsHeavy = desc.IsHeavy,
-                    Data = reader.ReadBytes(desc.Size)
-                };
-
-                if (node is not null)
-                {
-                    node.Chunks.Add(chunk);
-                }
-                else if (unknownHeader is not null)
-                {
-                    unknownHeader.UserData.Add((HeaderChunk)chunk);
-                }
-                else
-                {
-                    throw new Exception($"Chunk 0x{desc.Id:X8} cannot be stored anywhere.");
-                }
+                ReadAndAddUnknownHeaderChunk(node, unknownHeader, desc);
+            }
+            else if (node is null)
+            {
+                throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
             }
             else
             {
-                if (node is null)
-                {
-                    throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
-                }
-
-                chunk.IsHeavy = desc.IsHeavy;
-                node.Chunks.Add(chunk);
-
-                var nodeToRead = ((chunk as ISelfContainedChunk)?.Node ?? node) ?? throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
-                
-                switch (chunk)
-                {
-                    case IReadableWritableChunk readableWritable:
-                        readableWritable.ReadWrite(nodeToRead, readerWriter);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    case IReadableChunk readable:
-                        readable.Read(nodeToRead, reader);
-
-                        if (settings.SkipDataUntilLengthMatches)
-                        {
-                            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                        }
-
-                        break;
-                    default:
-                        reader.SkipData(desc.Size);
-                        break;
-                }
+                ReadAndAddKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
             }
 
             // Used to validate user data length
@@ -264,6 +165,115 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
+        }
+    }
+
+    private void ReadAndAddUnknownHeaderChunk(IClass? node, GbxHeaderUnknown? unknownHeader, HeaderChunkInfo desc)
+    {
+        var chunk = new HeaderChunk(desc.Id)
+        {
+            IsHeavy = desc.IsHeavy,
+            Data = reader.ReadBytes(desc.Size)
+        };
+
+        if (node is not null)
+        {
+            node.Chunks.Add(chunk);
+        }
+        else if (unknownHeader is not null)
+        {
+            unknownHeader.UserData.Add(chunk);
+        }
+        else
+        {
+            throw new Exception($"Chunk 0x{desc.Id:X8} cannot be stored anywhere.");
+        }
+    }
+
+    private void ReadAndAddKnownHeaderChunk<T>(IHeaderChunk chunk, T node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
+        where T : notnull, IClass
+    {
+        chunk.IsHeavy = desc.IsHeavy;
+
+        node.Chunks.Add(chunk);
+
+        var nodeToRead = chunk is ISelfContainedChunk scChunk ? scChunk.Node : node;
+
+        switch (chunk)
+        {
+            case IReadableWritableChunk<T> readableWritableT:
+                readableWritableT.ReadWrite(node, rw);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            case IReadableChunk<T> readableT:
+                readableT.Read(node, reader);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            case IReadableWritableChunk readableWritable:
+                readableWritable.ReadWrite(nodeToRead, rw);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            case IReadableChunk readable:
+                readable.Read(nodeToRead, reader);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            default:
+                reader.SkipData(desc.Size);
+                break;
+        }
+    }
+
+    private void ReadAndAddKnownHeaderChunk(IHeaderChunk chunk, IClass node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
+    {
+        chunk.IsHeavy = desc.IsHeavy;
+
+        node.Chunks.Add(chunk);
+
+        var nodeToRead = ((chunk as ISelfContainedChunk)?.Node ?? node) ?? throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
+
+        switch (chunk)
+        {
+            case IReadableWritableChunk readableWritable:
+                readableWritable.ReadWrite(nodeToRead, rw);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            case IReadableChunk readable:
+                readable.Read(nodeToRead, reader);
+
+                if (settings.SkipDataUntilLengthMatches)
+                {
+                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
+                }
+
+                break;
+            default:
+                reader.SkipData(desc.Size);
+                break;
         }
     }
 
