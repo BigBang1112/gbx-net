@@ -26,7 +26,7 @@ public interface IClass
     /// <param name="node">Node to populate.</param>
     /// <param name="rw">Reader/writer.</param>
     /// <remarks>This method is intended to help with trimming (tree shaking) in .NET 8+ by only using expected chunk classes and structs.</remarks>
-    static abstract void Read<T>(T node, IGbxReaderWriter rw) where T : IClass;
+    internal static abstract void Read<T>(T node, GbxReaderWriter rw) where T : IClass;
 #endif
 
     /// <summary>

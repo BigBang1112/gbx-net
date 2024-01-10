@@ -1,6 +1,4 @@
-﻿using GBX.NET.Managers;
-
-namespace GBX.NET.Engines.MwFoundations;
+﻿namespace GBX.NET.Engines.MwFoundations;
 
 [Class(0x01001000)]
 public class CMwNod : IClass
@@ -10,8 +8,8 @@ public class CMwNod : IClass
     private IChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet();
 
-    /// <inheritdoc />
-    public static void Read<T>(T node, IGbxReaderWriter rw) where T : IClass
+#if NET8_0_OR_GREATER
+    static void IClass.Read<T>(T node, GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
@@ -65,7 +63,7 @@ public class CMwNod : IClass
 
                 continue;
             }
-            
+
             // Unskippable chunk
             switch (chunk)
             {
@@ -86,6 +84,7 @@ public class CMwNod : IClass
             }
         }
     }
+#endif
 
     internal virtual void Read(GbxReaderWriter rw)
     {
