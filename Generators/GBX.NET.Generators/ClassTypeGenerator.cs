@@ -65,7 +65,7 @@ public class ClassTypeGenerator : IIncrementalGenerator
 
         builder.AppendLine("using GBX.NET.Components;");
         builder.AppendLine();
-        builder.AppendLine("namespace GBX.NET;");
+        builder.AppendLine("namespace GBX.NET.Managers;");
         builder.AppendLine();
         builder.AppendLine("public static partial class ClassManager");
         builder.AppendLine("{");

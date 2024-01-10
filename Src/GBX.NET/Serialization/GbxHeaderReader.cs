@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Components;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Serialization;
 
@@ -16,7 +17,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         if (classId != expectedClassId)
         {
-            throw new InvalidCastException($"ClassId 0x{classId:X8} does not match {typeof(T).Name} classId 0x{expectedClassId:X8}.");
+            throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) does not match expected class ID 0x{expectedClassId:X8} ({typeof(T).Name}).");
         }
 
         node = new T();
@@ -82,11 +83,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             // Used to validate chunk size
             var chunkStartPos = settings.SkipLengthValidation ? 0 : reader.BaseStream.Position;
 
-#if NET8_0_OR_GREATER
-            var chunk = T.NewHeaderChunk(desc.Id);
-#else
-            var chunk = ClassManager.NewHeaderChunk(desc.Id);
-#endif
+            var chunk = node.CreateHeaderChunk(desc.Id);
 
             if (chunk is null)
             {
@@ -94,7 +91,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             }
             else
             {
-                ReadAndAddKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
+                ReadKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
             }
 
             // Used to validate user data length
@@ -137,19 +134,19 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             // Used to validate chunk size
             var chunkStartPos = settings.SkipLengthValidation ? 0 : reader.BaseStream.Position;
 
-            var chunk = ClassManager.NewHeaderChunk(desc.Id);
+            var chunk = node?.CreateHeaderChunk(desc.Id);
 
             if (chunk is null)
             {
                 ReadAndAddUnknownHeaderChunk(node, unknownHeader, desc);
             }
-            else if (node is null)
+            else if (node is not null)
             {
-                throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
+                ReadKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
             }
             else
             {
-                ReadAndAddKnownHeaderChunk(chunk, node, readerWriter, desc, chunkStartPos);
+                throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
             }
 
             // Used to validate user data length
@@ -217,7 +214,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         if (userDataLength == 0)
         {
-            return new(0, 0);
+            return new UserDataNumbers(0, 0);
         }
 
         // Maybe should be much stricter... and configurable
@@ -236,13 +233,13 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         if (settings.SkipUserData)
         {
             reader.SkipData(userDataLength);
-            return new(userDataLength, NumChunks: 0);
+            return new UserDataNumbers(userDataLength, NumChunks: 0);
         }
 
         // Header chunk count
         var numHeaderChunks = reader.ReadInt32();
 
-        return new(userDataLength, numHeaderChunks);
+        return new UserDataNumbers(userDataLength, numHeaderChunks);
     }
 
     private void ReadAndAddUnknownHeaderChunk(IClass? node, GbxHeaderUnknown? unknownHeader, HeaderChunkInfo desc)
@@ -267,12 +264,10 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
     }
 
-    private void ReadAndAddKnownHeaderChunk<T>(IHeaderChunk chunk, T node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
+    private void ReadKnownHeaderChunk<T>(IHeaderChunk chunk, T node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
         where T : notnull, IClass
     {
         chunk.IsHeavy = desc.IsHeavy;
-
-        node.Chunks.Add(chunk);
 
         var nodeToRead = chunk is ISelfContainedChunk scChunk ? scChunk.Node : node;
 
@@ -320,11 +315,9 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
     }
 
-    private void ReadAndAddKnownHeaderChunk(IHeaderChunk chunk, IClass node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
+    private void ReadKnownHeaderChunk(IHeaderChunk chunk, IClass node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
     {
         chunk.IsHeavy = desc.IsHeavy;
-
-        node.Chunks.Add(chunk);
 
         var nodeToRead = ((chunk as ISelfContainedChunk)?.Node ?? node) ?? throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
 

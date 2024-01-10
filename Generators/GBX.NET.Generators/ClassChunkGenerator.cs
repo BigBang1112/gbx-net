@@ -117,7 +117,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
             AppendChunks(existingMembers);
 
-            AppendStaticMethods(existingMembers);
+            AppendChunkMethods(existingMembers);
 
             sb.AppendLine("}");
         }
@@ -555,25 +555,26 @@ public class ClassChunkGenerator : IIncrementalGenerator
             sb.AppendLine(";");
         }
 
-        private void AppendStaticMethods(ImmutableArray<ISymbol> existingMembers)
+        private void AppendChunkMethods(ImmutableArray<ISymbol> existingMembers)
         {
-            var hasInherits = data.DataModel.Header.Features.TryGetValue("inherits", out var inherits);
-            inherits ??= existingSymbol?.BaseType?.Name ?? nameof(Object);
-            if (inherits == nameof(Object)) inherits = "CMwNod";
-
-            var hasNewHeaderChunkMethod = existingMembers
+            var hasCreateHeaderChunkMethod = existingMembers
                 .OfType<IMethodSymbol>()
                 .Any(x => x.IsStatic
-                    && x.Name == "NewHeaderChunk"
+                    && x.Name == "CreateHeaderChunk"
                     && x.ReturnType.Name == "IHeaderChunk"
-                    && x.Parameters.Length == 1
-                    && x.Parameters[0].Type.Name == nameof(UInt32));
+                    && (x.IsOverride || x.IsVirtual)
+                    && x.Parameters.Length == 2
+                    && x.Parameters[0].Type.Name == nameof(UInt32)
+                    && x.Parameters[1].Type.Name == nameof(Boolean));
 
-            if (!hasNewHeaderChunkMethod)
+            if (!hasCreateHeaderChunkMethod && chunkl.Body.ChunkDefinitions.Any(x => x.Properties.ContainsKey("header")))
             {
                 sb.AppendLine();
-                sb.AppendLine("    public static new IHeaderChunk? NewHeaderChunk(uint chunkId) => chunkId switch");
+                sb.AppendLine("    public override IHeaderChunk? CreateHeaderChunk(uint chunkId)");
                 sb.AppendLine("    {");
+                sb.AppendLine("        IHeaderChunk? chunk;");
+                sb.AppendLine("        switch (chunkId)");
+                sb.AppendLine("        {");
 
                 foreach (var chunk in chunkl.Body.ChunkDefinitions)
                 {
@@ -584,32 +585,43 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
                     var fullId = chunkl.Header.Id | chunk.Id;
 
-                    sb.Append("        0x");
+                    sb.Append("            case 0x");
                     sb.Append(fullId.ToString("X8"));
-                    sb.Append(" => new HeaderChunk");
+                    sb.Append(": chunk = new HeaderChunk");
                     sb.Append(fullId.ToString("X8"));
-                    sb.AppendLine("(),");
+                    sb.AppendLine("(); break;");
                 }
 
-                sb.Append("        _ => ");
-                sb.Append(inherits);
-                sb.AppendLine(".NewHeaderChunk(chunkId),");
-                sb.AppendLine("    };");
+                sb.AppendLine("            default: return base.CreateHeaderChunk(chunkId);");
+                sb.AppendLine("        }");
+                sb.AppendLine();
+                sb.AppendLine("        if (chunk is not null)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            Chunks.Add(chunk);");
+                sb.AppendLine("        }");
+                sb.AppendLine();
+                sb.AppendLine("        return chunk;");
+                sb.AppendLine("    }");
             }
 
-            var hasNewChunkMethod = existingMembers
+            var hasCreateChunkMethod = existingMembers
                 .OfType<IMethodSymbol>()
                 .Any(x => x.IsStatic
-                    && x.Name == "NewChunk"
+                    && x.Name == "CreateChunk"
                     && x.ReturnType.Name == "IChunk"
-                    && x.Parameters.Length == 1
-                    && x.Parameters[0].Type.Name == nameof(UInt32));
+                    && (x.IsOverride || x.IsVirtual)
+                    && x.Parameters.Length == 2
+                    && x.Parameters[0].Type.Name == nameof(UInt32)
+                    && x.Parameters[1].Type.Name == nameof(Boolean));
 
-            if (!hasNewChunkMethod)
+            if (!hasCreateChunkMethod && !chunkl.Body.ChunkDefinitions.Any(x => x.Properties.ContainsKey("header")))
             {
                 sb.AppendLine();
-                sb.AppendLine("    public static new IChunk? NewChunk(uint chunkId) => chunkId switch");
+                sb.AppendLine("    public override IChunk? CreateChunk(uint chunkId)");
                 sb.AppendLine("    {");
+                sb.AppendLine("        IChunk? chunk;");
+                sb.AppendLine("        switch (chunkId)");
+                sb.AppendLine("        {");
 
                 foreach (var chunk in chunkl.Body.ChunkDefinitions)
                 {
@@ -620,17 +632,23 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
                     var fullId = chunkl.Header.Id | chunk.Id;
 
-                    sb.Append("        0x");
+                    sb.Append("            case 0x");
                     sb.Append(fullId.ToString("X8"));
-                    sb.Append(" => new Chunk");
+                    sb.Append(": chunk = new Chunk");
                     sb.Append(fullId.ToString("X8"));
-                    sb.AppendLine("(),");
+                    sb.AppendLine("(); break;");
                 }
 
-                sb.Append("        _ => ");
-                sb.Append(inherits);
-                sb.AppendLine(".NewChunk(chunkId),");
-                sb.AppendLine("    };");
+                sb.AppendLine("            default: return base.CreateChunk(chunkId);");
+                sb.AppendLine("        }");
+                sb.AppendLine();
+                sb.AppendLine("        if (chunk is not null)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            Chunks.Add(chunk);");
+                sb.AppendLine("        }");
+                sb.AppendLine();
+                sb.AppendLine("        return chunk;");
+                sb.AppendLine("    }");
             }
         }
     }

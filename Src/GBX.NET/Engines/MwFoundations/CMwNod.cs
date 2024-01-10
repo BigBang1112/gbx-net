@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.MwFoundations;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Engines.MwFoundations;
 
 [Class(0x01001000)]
 public class CMwNod : IClass
@@ -22,11 +24,7 @@ public class CMwNod : IClass
                 return;
             }
 
-#if NET8_0_OR_GREATER
-            var chunk = T.NewChunk(chunkId);
-#else
-            var chunk = ClassManager.NewChunk(chunkId);
-#endif
+            var chunk = node.CreateChunk(chunkId);
 
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
@@ -102,7 +100,7 @@ public class CMwNod : IClass
                 return;
             }
 
-            var chunk = ClassManager.NewChunk(chunkId);
+            var chunk = CreateChunk(chunkId);
 
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
@@ -232,13 +230,26 @@ public class CMwNod : IClass
         }
     }
 
-    public static IHeaderChunk? NewHeaderChunk(uint chunkId) => null;
-
-    public static IChunk? NewChunk(uint chunkId) => chunkId switch
+    public virtual IHeaderChunk? CreateHeaderChunk(uint chunkId)
     {
-        0x01001000 => new Chunk01001000(),
-        _ => null
-    };
+        return null;
+    }
+
+    public virtual IChunk? CreateChunk(uint chunkId)
+    {
+        var chunk = chunkId switch
+        {
+            0x01001000 => new Chunk01001000(),
+            _ => null
+        };
+
+        if (chunk is not null)
+        {
+            Chunks.Add(chunk);
+        }
+
+        return chunk;
+    }
 
     public static IClass? New(uint classId)
     {

@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Components;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Serialization;
 

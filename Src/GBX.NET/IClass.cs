@@ -12,22 +12,6 @@ public interface IClass
     static abstract uint Id { get; }
 
     /// <summary>
-    /// Creates a new instance of a header chunk that matches the given chunk ID under this class scope, including the inherited classes. Do not override, implementation is source generated.
-    /// </summary>
-    /// <param name="chunkId">ID of the header chunk.</param>
-    /// <remarks>This method is intended to help with trimming (tree shaking) in .NET 8+ by only using expected chunk classes and structs in the switch statement. For wider range of available chunks, use <see cref="ClassManager.NewHeaderChunk(uint)"/>.</remarks>
-    /// <returns>A new instance of the header chunk.</returns>
-    static abstract IHeaderChunk? NewHeaderChunk(uint chunkId);
-
-    /// <summary>
-    /// Creates a new instance of a chunk that matches the given chunk ID under this class scope, including the inherited classes. Do not override, implementation is source generated.
-    /// </summary>
-    /// <param name="chunkId">ID of the chunk.</param>
-    /// <remarks>This method is intended to help with trimming (tree shaking) in .NET 8+ by only using expected chunk classes and structs in the switch statement. For wider range of available chunks, use <see cref="ClassManager.NewChunk(uint)"/>.</remarks>
-    /// <returns>A new instance of the chunk.</returns>
-    static abstract IChunk? NewChunk(uint chunkId);
-
-    /// <summary>
     /// Creates a new instance of a class that matches the given class ID, including the classes that inherit this one. Do not override, implementation is source generated.
     /// </summary>
     /// <param name="classId">ID of the class.</param>
@@ -46,7 +30,7 @@ public interface IClass
 #endif
 
     /// <summary>
-    /// A set of body chunks. Sorting by chunk ID is not guaranteed.
+    /// A set of body chunks. Sorting by chunk ID is not always guaranteed.
     /// </summary>
     IChunkSet Chunks { get; }
 
@@ -55,4 +39,18 @@ public interface IClass
     /// </summary>
     /// <param name="rw">A reader/writer.</param>
     void ReadWrite(IGbxReaderWriter rw);
+
+    /// <summary>
+    /// Safe method to create a new header chunk and add it to the chunk set, if it is valid. Returns null if the chunk ID is not supported in the context of the class.
+    /// </summary>
+    /// <param name="chunkId">ID of the header chunk.</param>
+    /// <returns>A new header chunk instance, or null if the ID is not supported in the context of the class.</returns>
+    IHeaderChunk? CreateHeaderChunk(uint chunkId);
+
+    /// <summary>
+    /// Safe method to create a new chunk and add it to the chunk set, if it is valid. Returns null if the chunk ID is not supported in the context of the class.
+    /// </summary>
+    /// <param name="chunkId">ID of the chunk.</param>
+    /// <returns>A new chunk instance, or null if the ID is not supported in the context of the class.</returns>
+    IChunk? CreateChunk(uint chunkId);
 }

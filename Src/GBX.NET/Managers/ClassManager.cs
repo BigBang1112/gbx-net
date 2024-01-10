@@ -1,10 +1,11 @@
 ﻿using GBX.NET.Components;
 
-namespace GBX.NET;
+namespace GBX.NET.Managers;
 
 public static partial class ClassManager
 {
-    public static partial string? GetName(uint classId, bool onlyImplemented = true);
+    public static partial string? GetName(uint classId);
+    public static partial string? GetName(uint classId, bool all);
 
     /// <summary>
     /// Get the class ID when a type is provided. Slower and heavier on older .NET versions.

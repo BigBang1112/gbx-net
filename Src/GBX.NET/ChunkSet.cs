@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET;
 
 /// <summary>
 /// A set of body chunks.

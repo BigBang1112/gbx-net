@@ -83,22 +83,18 @@ public class ClassIdGenerator : IIncrementalGenerator
 
         var builder = new StringBuilder();
 
-        builder.AppendLine("namespace GBX.NET;");
+        builder.AppendLine("namespace GBX.NET.Managers;");
         builder.AppendLine();
         builder.AppendLine("public static partial class ClassManager");
         builder.AppendLine("{");
-        builder.AppendLine("    public static partial string? GetName(uint classId, bool onlyImplemented)");
+        builder.AppendLine("    public static partial string? GetName(uint classId) => classId switch");
         builder.AppendLine("    {");
-        builder.AppendLine("        if (onlyImplemented)");
-        builder.AppendLine("        {");
-        builder.AppendLine("            return classId switch");
-        builder.AppendLine("            {");
 
         foreach (var pair in dict)
         {
             if (source.ExistingClasses.TryGetValue(pair.Value, out var existingClass))
             {
-                builder.AppendLine($"                0x{pair.Key:X8} => nameof({existingClass.ToDisplayString()}),");
+                builder.AppendLine($"        0x{pair.Key:X8} => nameof({existingClass.ToDisplayString()}),");
             }
         }
 
@@ -109,13 +105,15 @@ public class ClassIdGenerator : IIncrementalGenerator
                 continue;
             }
 
-            builder.AppendLine($"                0x{chunkl.DataModel.Header.Id:X8} => nameof(GBX.NET.Engines.{chunkl.Engine}.{chunkl.DataModel.Header.Name}),");
+            builder.AppendLine($"        0x{chunkl.DataModel.Header.Id:X8} => nameof(GBX.NET.Engines.{chunkl.Engine}.{chunkl.DataModel.Header.Name}),");
         }
 
-        builder.AppendLine("                _ => null");
-        builder.AppendLine("            };");
-        builder.AppendLine("        }");
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
         builder.AppendLine();
+        builder.AppendLine("    public static partial string? GetName(uint classId, bool all)");
+        builder.AppendLine("    {");
+        builder.AppendLine("        if (!all) return GetName(classId);");
         builder.AppendLine("        return classId switch");
         builder.AppendLine("        {");
 

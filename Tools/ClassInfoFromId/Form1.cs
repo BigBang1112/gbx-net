@@ -1,4 +1,5 @@
 using GBX.NET;
+using GBX.NET.Managers;
 using System.Globalization;
 
 namespace ClassInfoFromId
@@ -20,7 +21,7 @@ namespace ClassInfoFromId
 
             try
             {
-                LabelClassName.Text = ClassManager.GetName(classId & 0xFFFFF000);
+                LabelClassName.Text = ClassManager.GetName(classId & 0xFFFFF000, all: true);
             }
             catch
             {
@@ -40,7 +41,7 @@ namespace ClassInfoFromId
 
             try
             {
-                LabelClassName.Text = ClassManager.GetName(classId & 0xFFFFF000);
+                LabelClassName.Text = ClassManager.GetName(classId & 0xFFFFF000, all: true);
             }
             catch
             {
