@@ -576,7 +576,7 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         if (node is not T nod)
         {
-            throw new Exception($"Class ID {classId} cannot be casted to {typeof(T).Name}.");
+            throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) cannot be casted to {typeof(T).Name}.");
         }
 
         throw new NotImplementedException();

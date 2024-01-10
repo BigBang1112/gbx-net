@@ -19,6 +19,18 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
+    private byte[]? hashedPassword;
+    public byte[]? HashedPassword
+    {
+        get => hashedPassword;
+        set
+        {
+            hashedPassword = value;
+
+            CalculateCrc32();
+        }
+    }
+
     string ITM2020.MapUid
     {
         get => MapUid ?? throw new Exception("MapUid not available");
@@ -32,18 +44,18 @@ public sealed partial class CGameCtnChallenge :
     {
         string toHash;
 
-        if (HashedPassword is null)
+        if (hashedPassword is null)
         {
             toHash = $"0x00000000000000000000000000000000???{MapUid}";
         }
         else
         {
 #if NET6_0_OR_GREATER
-            Span<char> hex = stackalloc char[HashedPassword.Length * 2];
+            Span<char> hex = stackalloc char[hashedPassword.Length * 2];
 #else
-            var hex = new char[HashedPassword.Length * 2];
+            var hex = new char[hashedPassword.Length * 2];
 #endif
-            TryHex(HashedPassword, hex);
+            TryHex(hashedPassword, hex);
             toHash = $"0x{hex}???{MapUid}";
         }
 
