@@ -23,12 +23,7 @@ public static partial class ClassManager
 
     public static partial Type? GetType(uint classId);
 
-    internal static IClass? New(uint classId) => classId switch
-    {
-        0x03043000 => new CGameCtnChallenge(),
-        _ => null
-    };
-
+    internal static partial IClass? New(uint classId);
     internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId);
     internal static partial Gbx? NewGbx(GbxHeader header, IClass node);
 

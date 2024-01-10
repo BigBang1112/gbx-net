@@ -1,4 +1,6 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using ChunkL;
+using Microsoft.CodeAnalysis;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Text;
 
@@ -16,10 +18,60 @@ public class ClassTypeGenerator : IIncrementalGenerator
             Debugger.Launch();
         }
 
-        var namesAndContents = context.CompilationProvider.Select(GetTypeSymbols);  
+        var symbolAndClassId = context.CompilationProvider.Select(GetTypeSymbols);
 
-        context.RegisterSourceOutput(namesAndContents, GenerateSource);
+        var chunklFiles = context.AdditionalTextsProvider
+            .Where(static file => file.Path.EndsWith(".chunkl", StringComparison.OrdinalIgnoreCase))
+            .Select((chunklFile, token) =>
+            {
+                if (chunklFile.GetText()?.ToString() is not string chunklText)
+                {
+                    throw new Exception("Could not get text from file.");
+                }
+
+                using var reader = new StringReader(chunklText);
+
+                return new ChunkLData(
+                    DataModel: ChunkLSerializer.Deserialize(reader),
+                    Engine: Path.GetFileName(Path.GetDirectoryName(chunklFile.Path)));
+            });
+
+        var combined = symbolAndClassId.Combine(chunklFiles.Collect());
+
+        var transformed = combined.Select(static (source, token) =>
+        {
+            var (classes, chunkLData) = source;
+
+            var dict = new Dictionary<uint, ClassInfo>();
+
+            foreach (var (symbol, classId) in classes)
+            {
+                dict.Add(classId, new ClassInfo(classId, symbol.ToDisplayString(), symbol.IsAbstract));
+            }
+
+            foreach (var chunkl in chunkLData)
+            {
+                if (dict.ContainsKey(chunkl.DataModel.Header.Id))
+                {
+                    continue;
+                }
+
+                var classInfo = new ClassInfo(
+                    ClassId: chunkl.DataModel.Header.Id,
+                    FullClassName: $"GBX.NET.Engines.{chunkl.Engine}.{chunkl.DataModel.Header.Name}",
+                    IsAbstract: false);
+
+                dict.Add(chunkl.DataModel.Header.Id, classInfo);
+            }
+
+            return dict.Select(x => x.Value).ToImmutableArray();
+        });
+
+        context.RegisterSourceOutput(transformed, GenerateSource);
     }
+
+    private record ChunkLData(ChunkLDataModel DataModel, string Engine);
+    private record ClassInfo(uint ClassId, string FullClassName, bool IsAbstract);
 
     private IEnumerable<INamespaceSymbol> RecurseNamespaces(INamespaceSymbol namespaceSymbol)
     {
@@ -59,7 +111,7 @@ public class ClassTypeGenerator : IIncrementalGenerator
         }
     }
 
-    private void GenerateSource(SourceProductionContext context, IEnumerable<(INamedTypeSymbol, uint classId)> symbols)
+    private void GenerateSource(SourceProductionContext context, ImmutableArray<ClassInfo> classInfos)
     {
         var builder = new StringBuilder();
 
@@ -72,9 +124,9 @@ public class ClassTypeGenerator : IIncrementalGenerator
         builder.AppendLine("    internal static Dictionary<Type, uint> ClassIds { get; } = new()");
         builder.AppendLine("    {");
 
-        foreach (var (symbol, classId) in symbols)
+        foreach (var classInfo in classInfos)
         {
-            builder.AppendLine($"        {{ typeof({symbol.Name}), 0x{classId:X8} }},");
+            builder.AppendLine($"        {{ typeof({classInfo.FullClassName}), 0x{classInfo.ClassId:X8} }},");
         }
 
         builder.AppendLine("    };");
@@ -82,41 +134,51 @@ public class ClassTypeGenerator : IIncrementalGenerator
         builder.AppendLine("    public static partial Type? GetType(uint classId) => classId switch");
         builder.AppendLine("    {");
 
-        foreach (var (symbol, classId) in symbols)
+        foreach (var classInfo in classInfos)
         {
-            builder.AppendLine($"        0x{classId:X8} => typeof({symbol.Name}),");
+            builder.AppendLine($"        0x{classInfo.ClassId:X8} => typeof({classInfo.FullClassName}),");
         }
 
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
         builder.AppendLine();
-        builder.AppendLine("    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId)");
+        builder.AppendLine("    internal static partial IClass? New(uint classId) => classId switch");
         builder.AppendLine("    {");
-        builder.AppendLine("        return classId switch");
-        builder.AppendLine("        {");
 
-        foreach (var (symbol, classId) in symbols)
+        foreach (var classInfo in classInfos)
         {
-            builder.AppendLine($"            0x{classId:X8} => new GbxHeader<{symbol.Name}>(basic),");
+            if (classInfo.IsAbstract)
+            {
+                continue;
+            }
+
+            builder.AppendLine($"        0x{classInfo.ClassId:X8} => new {classInfo.FullClassName}(),");
         }
 
-        builder.AppendLine("            _ => null");
-        builder.AppendLine("        };");
-        builder.AppendLine("    }");
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
         builder.AppendLine();
-        builder.AppendLine("    internal static partial Gbx? NewGbx(GbxHeader header, IClass node)");
+        builder.AppendLine("    internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId) => classId switch");
         builder.AppendLine("    {");
-        builder.AppendLine("        return header.ClassId switch");
-        builder.AppendLine("        {");
 
-        foreach (var (symbol, classId) in symbols)
+        foreach (var classInfo in classInfos)
         {
-            builder.AppendLine($"            0x{classId:X8} => new Gbx<{symbol.Name}>((GbxHeader<{symbol.Name}>)header, ({symbol.Name})node),");
+            builder.AppendLine($"        0x{classInfo.ClassId:X8} => new GbxHeader<{classInfo.FullClassName}>(basic),");
         }
 
-        builder.AppendLine("            _ => null");
-        builder.AppendLine("        };");
-        builder.AppendLine("    }");
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
+        builder.AppendLine();
+        builder.AppendLine("    internal static partial Gbx? NewGbx(GbxHeader header, IClass node) => header.ClassId switch");
+        builder.AppendLine("    {");
+
+        foreach (var classInfo in classInfos)
+        {
+            builder.AppendLine($"        0x{classInfo.ClassId:X8} => new Gbx<{classInfo.FullClassName}>((GbxHeader<{classInfo.FullClassName}>)header, ({classInfo.FullClassName})node),");
+        }
+
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
 
         builder.AppendLine("}");
 
