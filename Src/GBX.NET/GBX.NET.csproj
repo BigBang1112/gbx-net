@@ -44,6 +44,7 @@
 		<Using Include="GBX.NET.Engines.MwFoundations" />
 		<Using Include="GBX.NET.Engines.Game" />
 		<Using Include="GBX.NET.Engines.Scene" />
+		<Using Include="GBX.NET.Engines.System" />
 	</ItemGroup>
 
 	<ItemGroup>

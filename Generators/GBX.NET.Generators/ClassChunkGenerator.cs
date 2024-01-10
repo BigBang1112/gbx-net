@@ -157,12 +157,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                 sb.Append("sealed ");
             }
 
-            if (hasExistingSymbol)
-            {
-                sb.Append("partial ");
-            }
-
-            sb.Append("class ");
+            sb.Append("partial class ");
             sb.Append(chunkl.Header.Name);
 
             var inheritanceList = new List<string>();

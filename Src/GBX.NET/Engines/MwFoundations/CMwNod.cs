@@ -1,7 +1,8 @@
 ﻿namespace GBX.NET.Engines.MwFoundations;
 
+/// <remarks>ID: 0x01001000</remarks>
 [Class(0x01001000)]
-public class CMwNod : IClass
+public partial class CMwNod : IClass
 {
     public static uint Id => 0x01001000;
 
@@ -248,10 +249,5 @@ public class CMwNod : IClass
         }
 
         return chunk;
-    }
-
-    public static IClass? New(uint classId)
-    {
-        throw new NotImplementedException();
     }
 }
