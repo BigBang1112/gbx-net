@@ -614,7 +614,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                     && x.Parameters[0].Type.Name == nameof(UInt32)
                     && x.Parameters[1].Type.Name == nameof(Boolean));
 
-            if (!hasCreateChunkMethod && !chunkl.Body.ChunkDefinitions.Any(x => x.Properties.ContainsKey("header")))
+            if (!hasCreateChunkMethod && chunkl.Body.ChunkDefinitions.Any(x => !x.Properties.ContainsKey("header")))
             {
                 sb.AppendLine();
                 sb.AppendLine("    public override IChunk? CreateChunk(uint chunkId)");

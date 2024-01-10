@@ -38,7 +38,7 @@ public class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception("Chunk cannot be processed");
+                    throw new Exception($"Chunk ID 0x{chunkId:X8} cannot be processed");
                 }
 
                 var chunkSize = r.ReadInt32();
