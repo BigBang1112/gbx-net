@@ -16,6 +16,8 @@ public partial interface IGbxReaderWriter : IDisposable
     Int3? Byte3(Int3? value, Int3 defaultValue = default);
     void Byte3(ref Int3 value);
     void Byte3(ref Int3? value, Int3 defaultValue = default);
+
+    void Marker(string value);
 }
 
 internal sealed partial class GbxReaderWriter : IGbxReaderWriter
@@ -107,4 +109,10 @@ internal sealed partial class GbxReaderWriter : IGbxReaderWriter
         [NotNullIfNotNull(nameof(value))]
 #endif
         ref Int3? value, Int3 defaultValue = default) => value = Byte3(value, defaultValue);
+
+    public void Marker(string value)
+    {
+        Reader?.ReadMarker(value);
+        Writer?.WriteMarker(value);
+    }
 }

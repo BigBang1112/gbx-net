@@ -53,6 +53,8 @@ public interface IGbxWriter : IDisposable
     void Write(TimeInt32 value);
     void Write(TimeSingle value);
     void WriteTimeOfDay(TimeSpan? value);
+    void WriteMarker(string value);
+
     void Write(byte[]? value);
     void WriteData(byte[]? value);
     void WriteData(byte[]? value, int length);
@@ -504,6 +506,11 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
         var secs = value.Value.TotalSeconds % maxTime.TotalSeconds;
 
         Write(Convert.ToInt32(secs / maxSecs * ushort.MaxValue));
+    }
+
+    public void WriteMarker(string value)
+    {
+        Write(value, StringLengthPrefix.None);
     }
 
     public override void Write(byte[]? value)

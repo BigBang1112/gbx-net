@@ -55,6 +55,7 @@ public interface IGbxReader : IDisposable
     TimeInt32 ReadTimeInt32();
     TimeSingle ReadTimeSingle();
     TimeSpan? ReadTimeOfDay();
+    void ReadMarker(string value);
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -579,7 +580,15 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
             throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) cannot be casted to {typeof(T).Name}.");
         }
 
-        throw new NotImplementedException();
+        var rw = new GbxReaderWriter(this, leaveOpen: true);
+
+#if NET8_0_OR_GREATER
+        T.Read(nod, rw);
+#else
+        node.ReadWrite(rw);
+#endif
+
+        return nod;
     }
 
     public TimeInt32 ReadTimeInt32()
@@ -610,6 +619,40 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         var maxSecs = maxTime.TotalSeconds;
 
         return TimeSpan.FromSeconds(Convert.ToInt32(dayTime / (float)ushort.MaxValue * maxSecs));
+    }
+
+    public void ReadMarker(string value)
+    {
+#if NET8_0_OR_GREATER
+        Span<byte> expected = stackalloc byte[value.Length * 4];
+        encoding.TryGetBytes(value, expected, out var bytesWritten);
+        Span<byte> actual = stackalloc byte[bytesWritten];
+        Read(actual);
+
+        for (var i = 0; i < bytesWritten; i++)
+        {
+            if (expected[i] != actual[i])
+            {
+                throw new Exception($"Invalid marker: {value} != {encoding.GetString(actual)}");
+            }
+        }
+#else
+
+#if NET6_0_OR_GREATER
+        var count = encoding.GetByteCount(value);
+        Span<byte> actual = stackalloc byte[count];
+        Read(actual);
+#else
+        var count = encoding.GetByteCount(value);
+        var actual = ReadBytes(count);
+#endif
+
+        if (!encoding.GetString(actual).Equals(value, StringComparison.Ordinal))
+        {
+            throw new Exception($"Invalid marker: {value} != {encoding.GetString(actual)}");
+        }
+
+#endif
     }
 
     private static void ValidateCollectionLength(int length)
