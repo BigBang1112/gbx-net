@@ -27,7 +27,7 @@ public static partial class ClassManager
     internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId);
     internal static partial Gbx? NewGbx(GbxHeader header, IClass node);
 
-    internal static uint GetChunkId(Type type) => throw new Exception();
+    internal static uint GetChunkId(Type type) => throw new NotImplementedException();
 
     internal static IHeaderChunk? NewHeaderChunk(uint chunkId) => chunkId switch
     {

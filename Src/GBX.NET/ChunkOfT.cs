@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET;
 
 /// <summary>
 /// A data chunk interface belonging to <typeparamref name="T"/>.
@@ -24,12 +26,12 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk<T> where T : ICla
 
     internal virtual void Read(T n, GbxReader r)
     {
-
+        throw new NotImplementedException($"Chunk 0x{Id:X8} ({ClassManager.GetName(Id & 0xFFFFF000)}, Read) is not implemented.");
     }
 
     internal virtual void Write(T n, GbxWriter w)
     {
-
+        throw new NotImplementedException($"Chunk 0x{Id:X8} ({ClassManager.GetName(Id & 0xFFFFF000)}, Write) is not implemented.");
     }
 
     internal virtual void ReadWrite(T n, GbxReaderWriter rw)

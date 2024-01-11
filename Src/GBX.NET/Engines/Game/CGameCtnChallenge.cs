@@ -19,6 +19,13 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
+    private byte[]? thumbnail;
+    public byte[]? Thumbnail
+    {
+        get => hashedPassword;
+        set => thumbnail = value;
+    }
+
     private byte[]? hashedPassword;
     public byte[]? HashedPassword
     {
@@ -111,6 +118,29 @@ public sealed partial class CGameCtnChallenge :
         public readonly void Write(CGameCtnChallenge n, IGbxWriter w)
         {
             w.Write(n.Xml);
+        }
+    }
+
+    public partial class HeaderChunk03043007 : IVersionable
+    {
+        public int Version { get; set; } = 1;
+
+        internal override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version == 0)
+            {
+                return;
+            }
+
+            var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
+            rw.Marker("<Thumbnail.jpg>");
+            rw.Data(ref n.thumbnail, thumbnailSize);
+            rw.Marker("</Thumbnail.jpg>");
+            rw.Marker("<Comments>");
+            rw.String(ref n.comments);
+            rw.Marker("</Comments>");
         }
     }
 

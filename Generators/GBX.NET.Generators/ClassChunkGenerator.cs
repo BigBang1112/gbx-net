@@ -14,7 +14,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
 
-    private const string TypeMatch = @"^(\w+)(<(\w+)>)?(\[([0-9]*)\])?(_deprec)?$";
+    private const string TypeMatch = @"^(\w+)(<(\w+)>)?(\[(\w*)\])?(_deprec)?$";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -230,7 +230,11 @@ public class ClassChunkGenerator : IIncrementalGenerator
                         AppendPropertiesRecurseChunkMembers(alreadyExistingProperties, alreadyWrittenProps, memberBl);
                         break;
                     case ChunkProperty prop:
-                        if (string.IsNullOrEmpty(prop.Name) || alreadyWrittenProps.Contains(prop.Name) || alreadyExistingProperties.ContainsKey(prop.Name)) continue;
+                        if (string.IsNullOrEmpty(prop.Name)
+                            || alreadyWrittenProps.Contains(prop.Name)
+                            || alreadyExistingProperties.ContainsKey(prop.Name)
+                            || prop.Type == "marker"
+                            || prop.IsLocal) continue;
 
                         alreadyWrittenProps.Add(prop.Name);
 
@@ -466,14 +470,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                     sb.AppendLine(")]");
                 }
 
-                sb.Append("    public ");
-
-                if (hasExistingChunkSymbol)
-                {
-                    sb.Append("partial ");
-                }
-
-                sb.Append("class ");
+                sb.Append("    public partial class ");
 
                 if (isHeaderChunk)
                 {
@@ -525,7 +522,20 @@ public class ClassChunkGenerator : IIncrementalGenerator
                 if (chunk.IsVersionable)
                 {
                     sb.AppendLine();
-                    sb.AppendLine("        public int Version { get; set; }");
+                    sb.Append("        public int Version { get; set; }");
+
+                    var versionProp = chunk.Members
+                        .OfType<ChunkProperty>()
+                        .First(p => p.Type is "version" or "versionb");
+
+                    if (!string.IsNullOrEmpty(versionProp.DefaultValue))
+                    {
+                        sb.Append(" = ");
+                        sb.Append(versionProp.DefaultValue);
+                        sb.Append(';');
+                    }
+
+                    sb.AppendLine();
                 }
 
                 if (chunk.Members.Count > 0)
@@ -845,6 +855,11 @@ public class ClassChunkGenerator : IIncrementalGenerator
                 case "timeofday":
                     standardProperty = "TimeOfDay";
                     break;
+                case "marker":
+                    sb.Append("rw.Marker(\"");
+                    sb.Append(prop.Name);
+                    sb.Append("\");");
+                    break;
                 case "base":
                     sb.Append("base.ReadWrite(n, rw);");
                     break;
@@ -854,6 +869,9 @@ public class ClassChunkGenerator : IIncrementalGenerator
                     break;
                 case "throw":
                     sb.Append("throw new NotImplementedException();");
+                    break;
+                case "return":
+                    sb.Append("return;");
                     break;
                 default:
                     var regex = Regex.Match(prop.Type, TypeMatch);
@@ -957,10 +975,27 @@ public class ClassChunkGenerator : IIncrementalGenerator
 
             if (standardProperty is not null)
             {
+                if (prop.IsLocal)
+                {
+                    sb.Append("var ");
+                    sb.Append(prop.Name);
+                    sb.Append(" = ");
+                }
+
                 sb.Append("rw.");
                 sb.Append(standardProperty);
-                sb.Append("(ref ");
-                AppendPropertyName(prop, ref unknownCounter);
+                sb.Append("(");
+
+                if (prop.IsLocal)
+                {
+                    sb.Append(prop.DefaultValue);
+                }
+                else
+                {
+                    sb.Append("ref ");
+                    AppendPropertyName(prop, ref unknownCounter);
+                }
+                
                 sb.Append(");");
             }
 
@@ -985,6 +1020,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                         if (prop.Type is "return" or "version" or "versionb" or "base" or "throw") break;
                         if (prop.Type.StartsWith("throw ")) break;
                         if (!string.IsNullOrWhiteSpace(prop.Name)) break;
+                        if (prop.IsLocal) break;
 
                         if (firstLine)
                         {
@@ -1002,6 +1038,13 @@ public class ClassChunkGenerator : IIncrementalGenerator
                         sb.Append(' ');
                         sb.Append("U");
                         sb.Append(unknownCounter.ToString("00"));
+
+                        if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
+                        {
+                            sb.Append(" = ");
+                            sb.Append(prop.DefaultValue);
+                        }
+
                         sb.AppendLine(";");
                         break;
                     case IChunkMemberBlock b:

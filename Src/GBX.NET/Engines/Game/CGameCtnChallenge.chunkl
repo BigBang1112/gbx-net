@@ -143,7 +143,7 @@ CGameCtnChallenge 0x03043000 // A map.
  CGameCtnMediaClipGroup? ClipGroupEndRace
 
 0x022 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
- int // = 1
+ int = 1
 
 0x023 // map origin
  vec2 MapCoordOrigin
@@ -207,7 +207,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x041 (skippable, ignore)
 
 0x042 (skippable) [MP3, TMT, MP4, TM2020] // author
- version // = 1
+ version = 1
  int AuthorVersion
  string AuthorLogin
  string AuthorNickname
@@ -227,7 +227,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x048 (skippable) [MP3, TMT, MP4, TM2020] // baked blocks
 
 0x049 (skippable) [MP3, TMT, MP4, TM2020] // mediatracker
- version // = 2
+ version = 2
  CGameCtnMediaClip? ClipIntro
  CGameCtnMediaClip? ClipPodium
  CGameCtnMediaClipGroup? ClipGroupInGame
@@ -267,7 +267,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x055 (skippable, ignore) [MP3, TMT, MP4, TM2020]
 
 0x056 (skippable) [MP4, TM2020] // light settings
- version // = 3
+ version = 3
  int
  timeofday? DayTime
  int
