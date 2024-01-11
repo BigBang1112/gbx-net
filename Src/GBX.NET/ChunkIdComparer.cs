@@ -9,6 +9,6 @@ public sealed class ChunkIdComparer : IComparer<IChunk>
             return 0;
         }
 
-        return x.Id.CompareTo(y.Id);
+        return x.Id.CompareTo(y.Id) + (x is IHeaderChunk ? -1 : 0) + (y is IHeaderChunk ? 1 : 0);
     }
 }
