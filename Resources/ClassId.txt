@@ -424,7 +424,9 @@
   105 CGameManialinkPage
   106 CGameManialinkControl
   107 CGameCardEventInfo
+  108 CGameCardEvent
   109 CGameManialinkQuad
+  10A CGameCardEventList
   10B CGameManiaPlanetMenuStations
   10C CGameCtnAnchorPoint
   10D CGameCtnMacroBlockInfo
@@ -472,6 +474,7 @@
   138 CGamePlaygroundScript
   139 CGameCtnMediaBlockFxCameraMap
   13A CGameScoreTask_GetAccountTrophyGainHistory
+  13B CGameWaypointSpecialProperty
   13D CGameControlCameraTrackManiaRace
   13E CGamePlaygroundBasic
   13F CGameScriptHandlerManiaPlanetPlugin
@@ -540,6 +543,7 @@
   180 CGamePlayerProfileChunk_ManiaPlanetStations
   181 CGameManialink3dStyle
   182 CGameManiaplanetPlugin
+  183 CGameManiaplanetPluginEvent
   184 CGameCtnInterfaceViewer
   185 CGameManialinkGauge
   186 CGameCtnMediaBlockColorGrading
@@ -1195,7 +1199,7 @@
   036 CControlListCard
   037 CControlMiniMap
   038 CControlCamera
-08 
+08 Motion
   001 CMotion
   027 CMotionFunc
   028 CMotions
@@ -1641,7 +1645,7 @@
   04F CSceneToyDisplayProgress
   050 CSceneToyDisplayHistogram
   051 CSceneToyDisplayGraph
-  059 CSceneField
+  059 CSceneObjectVisModelHandle
   05D CSceneMoods
   05E CSceneMobilLeaves
   05F CSceneMgrSolidVis
@@ -1657,8 +1661,8 @@
   06B CSceneMotorbikeEnvMaterial
   06C CSceneExtraFlockingCharacters
   06D CSceneVehicleSpeedBoat
-  06E CSceneToySubway
-  06F CSceneToyBird
+  06E CSceneCharVisModelHandle
+  06F CSceneVehicleVisModelHandle
   070 CSceneMobilSnow
   071 CSceneToyLeash
   072 CSceneFx
@@ -1688,9 +1692,13 @@
   08B CSceneMgrWeather
   08C CSceneMgrTrafficPhy
   08E CSceneMgrMapColoring
-  090 CSceneToyTrain
+  08F CSceneGlobalMgrVehicleVis
+  090 CSceneGlobalMgrCharVis
+  091 CSceneSolidVisModelHandle
   093 CSceneMgrBody
   094 CSceneAnimFileSkelBinding
+  095 CSceneGlobalMgrAnim
+  097 CSceneSolid2VisModelHandle
   098 CSceneMobilSolid2
   099 CSceneMgrSolid2Vis
   09F CSceneMgrPhy
@@ -1775,6 +1783,7 @@
   007 CAudioScriptManager
   008 CAudioScriptSound
   009 CAudioScriptMusic
+  00A CAudioSoundGauge
   00B CDx9AudioCaps
   00C CDx9AudioBufferKeeper
   00D CAudioSoundMulti
@@ -2316,7 +2325,7 @@
   012 CConstructionMasterServer
   013 CTrackManiaCore
   014 CTrackManiaRace
-  015 CTrackManiaSwitcher
+  015 CTmRaceResultNod
   016 CTrackManiaRaceNew
   017 CTrackManiaRaceRules
   018 CTrackManiaRace1P
@@ -2505,9 +2514,37 @@
   0D7 CTmModuleManager
   0D8 CTmModuleScoresTable
   0D9 CTrackManiaScriptPlayer
+2C QuestMania
+  000 CQuestMania
+  003 CQmMenus
+  005 CQmPlayground
+  007 CQmPlayer
+  008 CQmPlaygroundInterface
+  00A CQmActorsManager
+  00B CQmPlaygroundRulesManager
+  011 CQmControlAnimManager
+  012 CQmControlCardsStackAnimated
+  013 CQmControlGaugeAnimated
+  015 CQmControlCameraBoard
+  016 CQmChallengeParameters
+  017 CQmPlaygroundActorInterface
+  019 CQmRuleActionInfo
+  01A CQmRuleAction
+  01B CQmRuleActionParameter
+  01C CQmRuleEffectInfo
+  01D CQmActor
+  01E CQmRuleEvent
+  01F CQmRuleEffect
+  020 CQmTerminal
+  021 CQmBoard
+  022 CQmBoardSquare
+  023 CGamePlayerProfileChunk_QuestManiaSettings
+  024 CQmGhost
+  025 CQmPlaygroundCursor
 2D ShootMania
   000 CShootMania
   001 SSmPlayerVis
+  002 CSmArenaWorld
   003 CSmArenaInterfaceManialinkScripHandler
   004 CSmArenaClient
   005 CSmArenaScore
@@ -2523,6 +2560,7 @@
   00F CSmChallengeParameters
   010 CSmScriptBotSpawn
   011 CSmObject
+  013 CSmAttributesItem
   014 CSmAnalyzer
   015 CSmArenaPhysics
   016 CSmArenaInterface
@@ -2536,6 +2574,7 @@
   01E CSmAnticheatEvent
   01F CSmEditorPluginMapType
   020 CSmArenaResource
+  021 CSmTurret
   022 CSmScriptLandmark
   023 CSmScriptBlock
   024 CSmScriptBlockSpawn
@@ -2560,8 +2599,8 @@
 2E GameData
   001 CGameCtnCollector
   002 CGameItemModel
-  003 
-  004 
+  003 CGameAttributes
+  004 CGameAttribute
   005 CGameModulePlaygroundPlayerStateComponentModel
   006 CGameObjectPhyModel
   007 CGameObjectVisModel
