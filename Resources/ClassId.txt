@@ -1784,8 +1784,8 @@
   008 CAudioScriptSound
   009 CAudioScriptMusic
   00A CAudioSoundGauge
-  00B CDx9AudioCaps
-  00C CDx9AudioBufferKeeper
+  00B CAudioScriptManager
+  00C CAudioScriptSound
   00D CAudioSoundMulti
   00F CAudioZoneSource
   010 CAudioSource
@@ -1798,6 +1798,7 @@
   020 COalAudioPort
   021 COalAudioBufferKeeper
   022 COalDevice
+  023 COalDevice
   030 COalAudioPort
   031 COalAudioBufferKeeper
   033 COalDevice
