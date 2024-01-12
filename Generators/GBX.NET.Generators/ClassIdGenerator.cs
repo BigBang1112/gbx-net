@@ -184,7 +184,11 @@ public class ClassIdGenerator : IIncrementalGenerator
                     else
                     {
                         currentClass = classSpan.Slice(0, spaceIndex);
-                        currentClassName = classSpan.Slice(spaceIndex + 1).ToString();
+                        var classNames = classSpan.Slice(spaceIndex + 1);
+                        var nextSpace = classNames.IndexOf(' ');
+                        currentClassName = nextSpace == -1
+                            ? classNames.ToString()
+                            : classNames.Slice(0, nextSpace).ToString();
                     }
 
                     var a = currentClass[0];

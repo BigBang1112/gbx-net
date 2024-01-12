@@ -22,7 +22,7 @@ await foreach (var line in File.ReadLinesAsync("Engine.txt"))
     engineDict[engineId] = split[1];
 }
 
-var classIdDict = new Dictionary<uint, string?>();
+var classIdDict = new Dictionary<uint, List<string>>();
 
 foreach (var fileName in args)
 {
@@ -43,12 +43,18 @@ foreach (var fileName in args)
             name = split[1];
         }
 
-        if (classIdDict.TryGetValue(classId, out var existingName) && string.IsNullOrWhiteSpace(name))
+        if (!classIdDict.TryGetValue(classId, out var existingNames))
+        {
+            existingNames = [];
+            classIdDict[classId] = existingNames;
+        }
+
+        if (string.IsNullOrWhiteSpace(name) || existingNames.Contains(name))
         {
             continue;
         }
 
-        classIdDict[classId] = name;
+        existingNames.Add(name);
     }
 }
 
@@ -60,6 +66,6 @@ foreach (var engineGroup in classIdDict.OrderBy(x => x.Key).GroupBy(x => (x.Key 
 
     foreach (var kvp in engineGroup.OrderBy(x => x.Key))
     {
-        Console.WriteLine($"  {(kvp.Key >> 12) & 0xFFF:X3} {kvp.Value}");
+        Console.WriteLine($"  {(kvp.Key >> 12) & 0xFFF:X3} {string.Join(' ', kvp.Value.Reverse<string>())}");
     }
 }
