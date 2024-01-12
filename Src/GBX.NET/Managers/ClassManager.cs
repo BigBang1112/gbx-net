@@ -4,8 +4,12 @@ namespace GBX.NET.Managers;
 
 public static partial class ClassManager
 {
-    public static partial string? GetName(uint classId);
+#if DEBUG
+    public static partial string? GetName(uint classId, bool all = true);
+#else
     public static partial string? GetName(uint classId, bool all);
+    public static partial string? GetName(uint classId);
+#endif
 
     /// <summary>
     /// Get the class ID when a type is provided. Slower and heavier on older .NET versions.

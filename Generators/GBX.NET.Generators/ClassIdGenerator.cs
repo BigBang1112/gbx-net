@@ -87,6 +87,7 @@ public class ClassIdGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine("public static partial class ClassManager");
         builder.AppendLine("{");
+        builder.AppendLine("#if !DEBUG");
         builder.AppendLine("    public static partial string? GetName(uint classId) => classId switch");
         builder.AppendLine("    {");
 
@@ -110,6 +111,7 @@ public class ClassIdGenerator : IIncrementalGenerator
 
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
+        builder.AppendLine("#endif");
         builder.AppendLine();
         builder.AppendLine("    public static partial string? GetName(uint classId, bool all)");
         builder.AppendLine("    {");
