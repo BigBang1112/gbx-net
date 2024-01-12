@@ -14,7 +14,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
 
-    private const string TypeMatch = @"^(\w+)(<(\w+)>)?(\[(\w*)\])?(_deprec)?$";
+    private const string TypeMatch = @"^(\w+)(?:<(\w+)(\*)?>)?(\*)?(\[(\w*)\])?(_deprec)?$";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -334,9 +334,9 @@ public class ClassChunkGenerator : IIncrementalGenerator
             }
 
             var primaryType = regex.Groups[1].Value;
-            var genericType = regex.Groups[3].Value;
-            var isArray = regex.Groups[4].Success;
-            var arrayLength = isArray ? regex.Groups[5].Value : string.Empty;
+            var genericType = regex.Groups[2].Value;
+            var isArray = regex.Groups[5].Success;
+            var arrayLength = isArray ? regex.Groups[6].Value : string.Empty;
 
             var (mappedType, _) = SimpleMapping(primaryType);
             if (string.IsNullOrEmpty(mappedType)) mappedType = primaryType;
@@ -883,10 +883,10 @@ public class ClassChunkGenerator : IIncrementalGenerator
                     }
 
                     var primaryType = regex.Groups[1].Value;
-                    var genericType = regex.Groups[3].Value;
-                    var isArray = regex.Groups[4].Success;
-                    var arrayLength = isArray ? regex.Groups[5].Value : string.Empty;
-                    var deprec = regex.Groups[6].Value;
+                    var genericType = regex.Groups[2].Value;
+                    var isArray = regex.Groups[5].Success;
+                    var arrayLength = isArray ? regex.Groups[6].Value : string.Empty;
+                    var deprec = regex.Groups[7].Value;
 
                     var mappedGenericType = string.Empty;
 

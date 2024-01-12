@@ -83,7 +83,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x00F [TM10] // TM1.0 block data
  ident MapInfo
  int3 Size
- list<CGameCtnBlock>_deprec Blocks
+ list<CGameCtnBlock*>_deprec Blocks
  bool NeedUnlock
  ident Decoration
 
