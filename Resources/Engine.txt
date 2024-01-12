@@ -4,6 +4,7 @@
 05 Function
 06 Hms
 07 Control
+08 Motion
 09 Plug
 0A Scene
 0B System
@@ -15,6 +16,7 @@
 14 Xml
 21 VirtualSkipper
 24 TrackMania
+2C QuestMania
 2D ShootMania
 2E GameData
 2F Meta
