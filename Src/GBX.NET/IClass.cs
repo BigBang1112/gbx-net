@@ -53,4 +53,6 @@ public interface IClass
     /// <param name="chunkId">ID of the chunk.</param>
     /// <returns>A new chunk instance, or null if the ID is not supported in the context of the class.</returns>
     IChunk? CreateChunk(uint chunkId);
+
+    IClass DeepClone();
 }

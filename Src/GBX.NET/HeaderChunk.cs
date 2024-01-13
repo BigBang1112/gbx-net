@@ -29,4 +29,13 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
     /// Unknown data of the chunk.
     /// </summary>
     public byte[] Data { get; set; } = [];
+
+    public IChunk DeepClone()
+    {
+        return new HeaderChunk(Id)
+        {
+            IsHeavy = IsHeavy,
+            Data = Data.ToArray()
+        };
+    }
 }

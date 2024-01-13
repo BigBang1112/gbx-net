@@ -250,4 +250,25 @@ public partial class CMwNod : IClass
 
         return chunk;
     }
+
+    public virtual IClass DeepClone()
+    {
+        var clone = new CMwNod();
+        DeepCloneChunks(clone);
+        return clone;
+    }
+
+    protected void DeepCloneChunks(CMwNod dest)
+    {
+        if (chunks is null)
+        {
+            return;
+        }
+
+        foreach (var chunk in chunks)
+        {
+            var chunkClone = chunk.DeepClone();
+            dest.Chunks.Add(chunkClone);
+        }
+    }
 }

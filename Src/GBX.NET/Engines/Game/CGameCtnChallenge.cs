@@ -119,6 +119,11 @@ public sealed partial class CGameCtnChallenge :
         {
             w.Write(n.Xml);
         }
+
+        public IChunk DeepClone()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public partial class HeaderChunk03043007 : IVersionable

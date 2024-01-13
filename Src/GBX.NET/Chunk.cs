@@ -9,6 +9,8 @@ public interface IChunk
     /// ID of the chunk.
     /// </summary>
     uint Id { get; }
+
+    IChunk DeepClone();
 }
 
 /// <summary>
@@ -50,4 +52,9 @@ public abstract class Chunk : IReadableWritableChunk
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, IGbxReaderWriter rw) => ReadWrite(n, (GbxReaderWriter)rw);
+
+    public virtual IChunk DeepClone()
+    {
+        return (IChunk)MemberwiseClone(); // WRONG
+    }
 }
