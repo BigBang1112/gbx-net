@@ -9,9 +9,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
     {
         var basic = GbxHeaderBasic.Parse(reader);
 
-        var classId = reader.ReadHexUInt32();
-
-        // REMAP CLASS ID HERE, read out game version from it
+        var classId = ClassManager.Wrap(reader.ReadHexUInt32());
 
         var expectedClassId = ClassManager.GetClassId<T>();
 
@@ -39,9 +37,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
     {
         var basic = GbxHeaderBasic.Parse(reader);
 
-        var classId = reader.ReadHexUInt32();
-
-        // REMAP CLASS ID HERE, read out game version from it
+        var classId = ClassManager.Wrap(reader.ReadHexUInt32());
 
         node = ClassManager.New(classId);
 

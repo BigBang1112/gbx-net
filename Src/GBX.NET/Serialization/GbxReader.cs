@@ -567,12 +567,12 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
             return default!;
         }
 
-        var classId = ReadUInt32();
+        var classId = ClassManager.Wrap(ReadUInt32());
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: {classId}");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
-        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: {classId}");
+        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
 
         if (node is not T nod)

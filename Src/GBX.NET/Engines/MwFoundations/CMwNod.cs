@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.MwFoundations;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Engines.MwFoundations;
 
 /// <remarks>ID: 0x01001000</remarks>
 [Class(0x01001000)]
@@ -16,12 +18,14 @@ public partial class CMwNod : IClass
 
         while (true)
         {
-            var chunkId = r.ReadHexUInt32();
+            var originalChunkId = r.ReadHexUInt32();
 
-            if (chunkId == 0xFACADE01)
+            if (originalChunkId == 0xFACADE01)
             {
                 return;
             }
+
+            var chunkId = ClassManager.Wrap(originalChunkId);
 
             var chunk = node.CreateChunk(chunkId);
 
@@ -93,12 +97,14 @@ public partial class CMwNod : IClass
 
         while (true)
         {
-            var chunkId = r.ReadHexUInt32();
+            var originalChunkId = r.ReadHexUInt32();
 
-            if (chunkId == 0xFACADE01)
+            if (originalChunkId == 0xFACADE01)
             {
                 return;
             }
+
+            var chunkId = ClassManager.Wrap(originalChunkId);
 
             var chunk = CreateChunk(chunkId);
 
@@ -228,7 +234,7 @@ public partial class CMwNod : IClass
         {
             w.Write(U01);
         }
-    }
+        }
 
     public virtual IHeaderChunk? CreateHeaderChunk(uint chunkId)
     {

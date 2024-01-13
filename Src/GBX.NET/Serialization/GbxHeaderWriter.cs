@@ -13,7 +13,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxReaderWriter readerWr
 
         _ = header.Basic.Write(w);
 
-        writer.Write(ClassManager.Remap(header.ClassId, settings.ClassIdRemapMode));
+        writer.Write(header.ClassId);
 
         // WRONG
         if (header is GbxHeaderUnknown unknownHeader)
