@@ -50,6 +50,7 @@ public interface IGbxWriter : IDisposable
     void Write(Ident? value);
     void Write(PackDesc? value);
     void WriteNodeRef<T>(T? value) where T : IClass;
+    void WriteNode<T>(T? value) where T : IClass;
     void Write(TimeInt32 value);
     void Write(TimeSingle value);
     void WriteTimeOfDay(TimeSpan? value);
@@ -479,6 +480,11 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
     }
 
     public void WriteNodeRef<T>(T? value) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteNode<T>(T? value) where T : IClass
     {
         throw new NotImplementedException();
     }

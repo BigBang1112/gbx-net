@@ -52,6 +52,7 @@ public interface IGbxReader : IDisposable
     Ident ReadIdent();
     PackDesc ReadPackDesc();
     T? ReadNodeRef<T>() where T : IClass;
+    T? ReadNode<T>() where T : IClass, new();
     TimeInt32 ReadTimeInt32();
     TimeSingle ReadTimeSingle();
     TimeSpan? ReadTimeOfDay();
@@ -589,6 +590,21 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 #endif
 
         return nod;
+    }
+
+    public T? ReadNode<T>() where T : IClass, new()
+    {
+        var node = new T();
+
+        var rw = new GbxReaderWriter(this, leaveOpen: true);
+
+#if NET8_0_OR_GREATER
+        T.Read(nod, rw);
+#else
+        node.ReadWrite(rw);
+#endif
+
+        return node;
     }
 
     public TimeInt32 ReadTimeInt32()
