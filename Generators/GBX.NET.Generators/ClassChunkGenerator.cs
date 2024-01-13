@@ -14,7 +14,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
 
-    private const string TypeMatch = @"^(\w+)(?:<(\w+)(\*)?>)?(\*)?(\[(\w*)\])?(_deprec)?$";
+    private const string TypeMatch = @"^(\w+)(?:<(\w+)(\*|\^)?>)?(\*|\^)?(\[(\w*)\])?(_deprec)?$";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
