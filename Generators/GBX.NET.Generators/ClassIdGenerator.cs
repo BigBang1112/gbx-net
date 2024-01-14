@@ -79,7 +79,7 @@ public class ClassIdGenerator : IIncrementalGenerator
     private void GenerateSource(SourceProductionContext context, GetNameGenerationSource source)
     {
         using var reader = new StringReader(source.Contents);
-        var dict = Parser.Parse(reader);
+        var classIdNameDict = Parser.Parse(reader);
 
         var builder = new StringBuilder();
 
@@ -91,7 +91,7 @@ public class ClassIdGenerator : IIncrementalGenerator
         builder.AppendLine("    public static partial string? GetName(uint classId) => classId switch");
         builder.AppendLine("    {");
 
-        foreach (var pair in dict)
+        foreach (var pair in classIdNameDict)
         {
             if (source.ExistingClasses.TryGetValue(pair.Value, out var existingClass))
             {
@@ -111,15 +111,41 @@ public class ClassIdGenerator : IIncrementalGenerator
 
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
+        builder.AppendLine();
+        builder.AppendLine("    public static partial uint? GetId(string className) => className switch");
+        builder.AppendLine("    {");
+
+        foreach (var pair in classIdNameDict)
+        {
+            if (source.ExistingClasses.TryGetValue(pair.Value, out var existingClass))
+            {
+                builder.AppendLine($"        nameof({existingClass.ToDisplayString()}) => 0x{pair.Key:X8},");
+            }
+        }
+
+        foreach (var chunkl in source.ChunkLData)
+        {
+            if (source.ExistingClasses.ContainsKey(chunkl.DataModel.Header.Name))
+            {
+                continue;
+            }
+
+            builder.AppendLine($"        nameof(GBX.NET.Engines.{chunkl.Engine}.{chunkl.DataModel.Header.Name}) => 0x{chunkl.DataModel.Header.Id:X8},");
+        }
+
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
         builder.AppendLine("#endif");
         builder.AppendLine();
         builder.AppendLine("    public static partial string? GetName(uint classId, bool all)");
         builder.AppendLine("    {");
+        builder.AppendLine("#if !DEBUG");
         builder.AppendLine("        if (!all) return GetName(classId);");
+        builder.AppendLine("#endif");
         builder.AppendLine("        return classId switch");
         builder.AppendLine("        {");
 
-        foreach (var pair in dict)
+        foreach (var pair in classIdNameDict)
         {
             if (string.IsNullOrEmpty(pair.Value))
             {
@@ -134,9 +160,32 @@ public class ClassIdGenerator : IIncrementalGenerator
         builder.AppendLine("            _ => null");
         builder.AppendLine("        };");
         builder.AppendLine("    }");
+        builder.AppendLine();
+        builder.AppendLine("    public static partial uint? GetId(string className, bool all)");
+        builder.AppendLine("    {");
+        builder.AppendLine("#if !DEBUG");
+        builder.AppendLine("        if (!all) return GetId(className);");
+        builder.AppendLine("#endif");
+        builder.AppendLine("        return className switch");
+        builder.AppendLine("        {");
+
+        var alreadyAdded = new HashSet<string>();
+
+        foreach (var pair in classIdNameDict)
+        {
+            if (!string.IsNullOrEmpty(pair.Value) && !alreadyAdded.Contains(pair.Value))
+            {
+                builder.AppendLine($"            \"{pair.Value}\" => 0x{pair.Key:X8},");
+                alreadyAdded.Add(pair.Value);
+            }
+        }
+
+        builder.AppendLine("            _ => null");
+        builder.AppendLine("        };");
+        builder.AppendLine("    }");
         builder.AppendLine("}");
 
-        context.AddSource("ClassManager.GetName", builder.ToString());
+        context.AddSource("ClassManager.GetNameAndId", builder.ToString());
     }
 
     private static class Parser

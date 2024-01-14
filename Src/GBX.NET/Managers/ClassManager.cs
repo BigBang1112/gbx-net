@@ -6,9 +6,12 @@ public static partial class ClassManager
 {
 #if DEBUG
     public static partial string? GetName(uint classId, bool all = true);
+    public static partial uint? GetId(string className, bool all = true);
 #else
     public static partial string? GetName(uint classId, bool all);
     public static partial string? GetName(uint classId);
+    public static partial uint? GetId(string className, bool all);
+    public static partial uint? GetId(string className);
 #endif
 
     /// <summary>
