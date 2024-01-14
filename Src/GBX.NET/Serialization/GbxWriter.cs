@@ -75,10 +75,10 @@ public interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass;
 
-    void WriteArrayPackDesc(PackDesc[] value);
-    void WriteArrayPackDesc(PackDesc[] value, int length);
-    void WriteListPackDesc(IList<PackDesc> value);
-    void WriteListPackDesc(IList<PackDesc> value, int length);
+    void WriteArrayPackDesc(PackDesc[]? value);
+    void WriteArrayPackDesc(PackDesc[]? value, int length);
+    void WriteListPackDesc(IList<PackDesc>? value);
+    void WriteListPackDesc(IList<PackDesc>? value, int length);
 
     void ResetIdState();
 }
@@ -685,22 +685,22 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
         throw new NotImplementedException();
     }
 
-    public void WriteArrayPackDesc(PackDesc[] value)
+    public void WriteArrayPackDesc(PackDesc[]? value)
     {
         throw new NotImplementedException();
     }
 
-    public void WriteArrayPackDesc(PackDesc[] value, int length)
+    public void WriteArrayPackDesc(PackDesc[]? value, int length)
     {
         throw new NotImplementedException();
     }
 
-    public void WriteListPackDesc(IList<PackDesc> value)
+    public void WriteListPackDesc(IList<PackDesc>? value)
     {
         throw new NotImplementedException();
     }
 
-    public void WriteListPackDesc(IList<PackDesc> value, int length)
+    public void WriteListPackDesc(IList<PackDesc>? value, int length)
     {
         throw new NotImplementedException();
     }

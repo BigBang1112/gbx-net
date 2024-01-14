@@ -168,7 +168,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             var isNonNullableValueType = readerMethod.ReturnType.IsValueType
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
-
+            
             //var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
 
             // INTERFACE
@@ -177,7 +177,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 var isNullableVariant = i == 1;
 
                 sbInterface.Append("    ");
-                sbInterface.Append(readerMethod.ReturnType);
+                sbInterface.Append(writerMethod.Parameters.Length > 0 && writerMethod.Parameters[0].Type.Name == readerMethod.ReturnType.Name
+                    ? writerMethod.Parameters[0].Type : readerMethod.ReturnType);
 
                 if (isNullableVariant)
                 {
@@ -423,7 +424,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 }
 
                 sbClass.Append("    public ");
-                sbClass.Append(readerMethod.ReturnType);
+                sbClass.Append(writerMethod.Parameters.Length > 0 && writerMethod.Parameters[0].Type.Name == readerMethod.ReturnType.Name
+                    ? writerMethod.Parameters[0].Type : readerMethod.ReturnType);
 
                 if (isNullableVariant)
                 {
