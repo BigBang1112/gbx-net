@@ -52,6 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Resources\ClassId.txt = Resources\ClassId.txt
 		Resources\CollectionId.txt = Resources\CollectionId.txt
 		Resources\Engine.txt = Resources\Engine.txt
+		Resources\Extensions.txt = Resources\Extensions.txt
 		Unwrap.txt = Unwrap.txt
 		Wrap.txt = Wrap.txt
 	EndProjectSection
