@@ -53,8 +53,5 @@ public abstract class Chunk : IReadableWritableChunk
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, IGbxReaderWriter rw) => ReadWrite(n, (GbxReaderWriter)rw);
 
-    public virtual IChunk DeepClone()
-    {
-        return (IChunk)MemberwiseClone(); // WRONG
-    }
+    public abstract IChunk DeepClone();
 }
