@@ -803,7 +803,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
         foreach (var typeParameter in methodSymbol.TypeParameters)
         {
-            if (!typeParameter.HasValueTypeConstraint && typeParameter.ConstraintTypes.IsDefaultOrEmpty)
+            if (!typeParameter.HasValueTypeConstraint && typeParameter.ConstraintTypes.IsDefaultOrEmpty && !typeParameter.HasConstructorConstraint)
             {
                 continue;
             }
@@ -831,6 +831,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                     firstType = false;
                 }
+            }
+
+            if (typeParameter.HasConstructorConstraint)
+            {
+                sb.Append(", new()");
             }
         }
     }
