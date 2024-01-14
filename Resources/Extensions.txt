@@ -220,7 +220,7 @@ CGameCoverFlowDesc GameCoverFlow.Gbx
 CGameBadgeStickerSlots StickerSlots.Gbx
 CGameControlCameraTrackManiaRace2 CtrlCamTmRace2.gbx
 CGameControlCameraTrackManiaRace3 CtrlCamTmRace3.gbx
-CGameCtnAnchorPoint AnchorPoint.gbx";
+CGameCtnAnchorPoint AnchorPoint.gbx
 CGameNod
 CGameCtnMediaBlockTriangles GameCtnMediaBlockTriangles.gbx
 CShootMania TitleCore.Gbx
@@ -244,7 +244,7 @@ CFuncCloudsParam FuncCloudsParam.Gbx
 CFuncFullColorGradient FuncFullColorGradient.Gbx
 CFuncKeysPath KeysPath.Gbx
 CFuncKeysTransQuat KeysTransQuat.Gbx
-CFuncPathMesh PathMesh.Gbx";
+CFuncPathMesh PathMesh.Gbx
 CFuncPuffLull FuncPuffLull.Gbx
 CMotionCmdBaseParams MotionBase.Gbx
 CMotionShader MotionTrackShader.Gbx
