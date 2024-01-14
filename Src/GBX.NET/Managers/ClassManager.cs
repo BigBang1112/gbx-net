@@ -59,6 +59,14 @@ public static partial class ClassManager
         {
             classPart = 0x3057000;
         }
+        else if (classPart == 0x2403C000)
+        {
+            classPart = 0x0301B000;
+        }
+        else if (classPart == 0x2400C000)
+        {
+            classPart = 0x0305B000;
+        }
 
         return classPart | chunkPart;
     }

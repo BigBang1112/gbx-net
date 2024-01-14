@@ -83,6 +83,7 @@ public class Gbx : IGbx
         }
 
         reader.ResetIdState();
+        reader.ExpectedNodeCount = header.NumNodes;
 
         var gbx = ClassManager.NewGbx(header, node) ?? new Gbx(header);
         gbx.RefTable = refTable;
@@ -109,6 +110,7 @@ public class Gbx : IGbx
         var refTable = GbxRefTable.Parse(reader, header, settings);
 
         reader.ResetIdState();
+        reader.ExpectedNodeCount = header.NumNodes;
 
         var body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
 
