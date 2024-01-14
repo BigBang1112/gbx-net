@@ -599,7 +599,7 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         var rw = new GbxReaderWriter(this, leaveOpen: true);
 
 #if NET8_0_OR_GREATER
-        T.Read(nod, rw);
+        T.Read(node, rw);
 #else
         node.ReadWrite(rw);
 #endif
