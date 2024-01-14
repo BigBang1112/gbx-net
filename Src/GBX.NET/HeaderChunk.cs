@@ -20,7 +20,7 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
     /// <summary>
     /// ID of the header chunk.
     /// </summary>
-    public uint Id { get; } = id;
+    public uint Id => id;
 
     /// <inheritdoc />
     public bool IsHeavy { get; set; }

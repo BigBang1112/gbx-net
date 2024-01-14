@@ -495,15 +495,14 @@ public class ClassChunkGenerator : IIncrementalGenerator
                     {
                         sb.Append("Header");
                     }
+                    else if (isSkippableChunk)
+                    {
+                        sb.Append("Skippable");
+                    }
 
                     sb.Append("Chunk<");
                     sb.Append(chunkl.Header.Name);
                     sb.Append(">");
-                }
-
-                if (isSkippableChunk)
-                {
-                    sb.Append(", ISkippableChunk");
                 }
 
                 if (chunk.IsVersionable)

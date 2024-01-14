@@ -60,9 +60,20 @@ public partial class CMwNod : IClass
                     case IReadableChunk readable:
                         readable.Read(node, r);
                         break;
-                    default:
-                        // TODO: possibility to skip
-                        var chunkData = r.ReadBytes(chunkSize);
+                    case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
+                        // TODO: possibility to skip (not read into memory)
+                        skippable.Data = r.ReadBytes(chunkSize);
+                        break;
+                    default: // Unknown skippable
+
+                        // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
+                        var skippableChunk = new SkippableChunk(chunkId)
+                        {
+                            Data = r.ReadBytes(chunkSize)
+                        };
+
+                        node.Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
+
                         break;
                 }
 
@@ -135,9 +146,20 @@ public partial class CMwNod : IClass
                         readable.Read(this, r);
                         // TODO: validate chunk size
                         break;
-                    default:
-                        // TODO: possibility to skip
-                        var chunkData = r.ReadBytes(chunkSize);
+                    case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
+                        // TODO: possibility to skip (not read into memory)
+                        skippable.Data = r.ReadBytes(chunkSize);
+                        break;
+                    default: // Unknown skippable
+
+                        // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
+                        var skippableChunk = new SkippableChunk(chunkId)
+                        {
+                            Data = r.ReadBytes(chunkSize)
+                        };
+
+                        Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
+
                         break;
                 }
 
