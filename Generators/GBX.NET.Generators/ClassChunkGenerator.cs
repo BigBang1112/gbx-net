@@ -901,7 +901,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                                 if (string.IsNullOrEmpty(mappedGenericType))
                                 {
                                     mappedGenericType = genericType;
-                                    sb.Append("Node");
+                                    sb.Append("NodeRef");
                                     isGeneric = true;
                                 }
                             }
@@ -940,7 +940,7 @@ public class ClassChunkGenerator : IIncrementalGenerator
                                 if (string.IsNullOrEmpty(mappedType))
                                 {
                                     mappedType = primaryType;
-                                    sb.Append("Node");
+                                    sb.Append("NodeRef");
                                     isGeneric = true;
                                 }
                                 sb.Append(deprec);

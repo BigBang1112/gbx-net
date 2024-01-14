@@ -64,16 +64,13 @@ public interface IGbxReader : IDisposable
     T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct;
     IList<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
     IList<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
-    IList<T> ReadList_deprec<T>(int length, bool lengthInBytes = false) where T : struct;
     IList<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
-    T?[] ReadArrayNode<T>(int length) where T : IClass;
-    T?[] ReadArrayNode<T>() where T : IClass;
-    T?[] ReadArrayNode_deprec<T>(int length) where T : IClass;
-    T?[] ReadArrayNode_deprec<T>() where T : IClass;
-    IList<T?> ReadListNode<T>(int length) where T : IClass;
-    IList<T?> ReadListNode<T>() where T : IClass;
-    IList<T?> ReadListNode_deprec<T>(int length) where T : IClass;
-    IList<T?> ReadListNode_deprec<T>() where T : IClass;
+    T?[] ReadArrayNodeRef<T>(int length) where T : IClass;
+    T?[] ReadArrayNodeRef<T>() where T : IClass;
+    T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
+    IList<T?> ReadListNodeRef<T>(int length) where T : IClass;
+    IList<T?> ReadListNodeRef<T>() where T : IClass;
+    IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
 
     PackDesc[] ReadArrayPackDesc(int length);
     PackDesc[] ReadArrayPackDesc();
@@ -106,6 +103,7 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
     private int? idVersion;
     private Dictionary<int, string>? idDict;
+    private Dictionary<int, object>? nodeDict;
     private Encapsulation? encapsulation;
     private byte? packDescVersion;
     private int? deprecVersion;
@@ -130,10 +128,15 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         ? idDict ??= []
         : encapsulation.IdReadDict;
 
+    internal Dictionary<int, object> NodeDict => nodeDict ??= ExpectedNodeCount.HasValue
+        ? new(ExpectedNodeCount.Value) : [];
+
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
 
     internal byte? PackDescVersion { get => packDescVersion; set => packDescVersion = value; }
     internal int? DeprecVersion { get => deprecVersion; set => deprecVersion = value; }
+
+    internal int? ExpectedNodeCount { get; set; }
 
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; }
@@ -565,7 +568,12 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         if (index == -1)
         {
-            return default!;
+            return default;
+        }
+
+        if (NodeDict.TryGetValue(index, out var existingNode))
+        {
+            return (T)existingNode;
         }
 
         var classId = ClassManager.Wrap(ReadUInt32());
@@ -581,21 +589,19 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
             throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) cannot be casted to {typeof(T).Name}.");
         }
 
-        var rw = new GbxReaderWriter(this, leaveOpen: true);
+        NodeDict[index] = nod;
 
-#if NET8_0_OR_GREATER
-        T.Read(nod, rw);
-#else
-        node.ReadWrite(rw);
-#endif
-
-        return nod;
+        return ReadNode(nod);
     }
 
     public T? ReadNode<T>() where T : IClass, new()
     {
         var node = new T();
+        return ReadNode(node);
+    }
 
+    private T ReadNode<T>(T node) where T : IClass
+    {
         var rw = new GbxReaderWriter(this, leaveOpen: true);
 
 #if NET8_0_OR_GREATER
@@ -788,15 +794,13 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
     public IList<T> ReadList<T>(bool lengthInBytes = false) where T : struct => ReadList<T>(ReadInt32(), lengthInBytes);
 
-    public IList<T> ReadList_deprec<T>(int length, bool lengthInBytes = false) where T : struct
+    public IList<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct
     {
         ReadDeprecVersion();
-        return ReadList<T>(length, lengthInBytes);
+        return ReadList<T>(lengthInBytes);
     }
 
-    public IList<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct => ReadList_deprec<T>(ReadInt32(), lengthInBytes);
-
-    public T?[] ReadArrayNode<T>(int length) where T : IClass
+    public T?[] ReadArrayNodeRef<T>(int length) where T : IClass
     {
         if (length == 0)
         {
@@ -815,17 +819,15 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         return array;
     }
 
-    public T?[] ReadArrayNode<T>() where T : IClass => ReadArrayNode<T>(ReadInt32());
+    public T?[] ReadArrayNodeRef<T>() where T : IClass => ReadArrayNodeRef<T>(ReadInt32());
 
-    public T?[] ReadArrayNode_deprec<T>(int length) where T : IClass
+    public T?[] ReadArrayNodeRef_deprec<T>() where T : IClass
     {
         ReadDeprecVersion();
-        return ReadArrayNode<T>(length);
+        return ReadArrayNodeRef<T>();
     }
 
-    public T?[] ReadArrayNode_deprec<T>() where T : IClass => ReadArrayNode_deprec<T>(ReadInt32());
-
-    public IList<T?> ReadListNode<T>(int length) where T : IClass
+    public IList<T?> ReadListNodeRef<T>(int length) where T : IClass
     {
         if (length == 0)
         {
@@ -838,21 +840,19 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         for (var i = 0; i < length; i++)
         {
-            list[i] = ReadNodeRef<T>();
+            list.Add(ReadNodeRef<T>());
         }
 
         return list;
     }
 
-    public IList<T?> ReadListNode<T>() where T : IClass => ReadListNode<T>(ReadInt32());
+    public IList<T?> ReadListNodeRef<T>() where T : IClass => ReadListNodeRef<T>(ReadInt32());
 
-    public IList<T?> ReadListNode_deprec<T>(int length) where T : IClass
+    public IList<T?> ReadListNodeRef_deprec<T>() where T : IClass
     {
         ReadDeprecVersion();
-        return ReadListNode<T>(length);
+        return ReadListNodeRef<T>();
     }
-
-    public IList<T?> ReadListNode_deprec<T>() where T : IClass => ReadListNode_deprec<T>(ReadInt32());
 
     /// <summary>
     /// If can seek, position moves past the <paramref name="length"/>. If seeking is NOT supported, data is read with no allocation using <see cref="BinaryReader.Read(Span{byte})"/>. If .NET Standard 2.0, unavoidable byte array allocation happens with <see cref="BinaryReader.ReadBytes(int)"/>.
