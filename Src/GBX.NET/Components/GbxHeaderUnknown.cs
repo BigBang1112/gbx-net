@@ -3,5 +3,5 @@
 public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHeader(basic)
 {
     public override uint ClassId => classId;
-    public SortedSet<HeaderChunk> UserData { get; } = [];
+    public ISet<HeaderChunk> UserData { get; } = new SortedSet<HeaderChunk>();
 }
