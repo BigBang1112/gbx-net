@@ -3,6 +3,15 @@
 [Node(0x0910E000)]
 public class CPlugVehicleCarPhyShape : CMwNod
 {
+    private CPlugSurface? moveShape;
+    private Box carVsCarShapeBox;
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugSurface? MoveShape { get => moveShape; set => moveShape = value; }
+
+    [NodeMember(ExactName = "CarVsCarShape_Box")]
+    public Box CarVsCarShapeBox { get => carVsCarShapeBox; set => carVsCarShapeBox = value; }
+
     internal CPlugVehicleCarPhyShape()
     {
         
@@ -18,7 +27,6 @@ public class CPlugVehicleCarPhyShape : CMwNod
     {
         public float U01;
         public CPlugSolid? U02;
-        public CPlugSurface? U03;
         public CPlugVehicleWheelPhyModel[] U04 = Array.Empty<CPlugVehicleWheelPhyModel>();
         public Box U05;
         public bool U06;
@@ -32,7 +40,6 @@ public class CPlugVehicleCarPhyShape : CMwNod
         public float U14;
         public float U15;
         public Vec4[] U16 = Array.Empty<Vec4>();
-        public Box U17;
         public bool U18;
         public bool U19;
         public float U20;
@@ -66,7 +73,7 @@ public class CPlugVehicleCarPhyShape : CMwNod
 
             if (Version >= 1 && U02 is null)
             {
-                rw.NodeRef<CPlugSurface>(ref U03);
+                rw.NodeRef<CPlugSurface>(ref n.moveShape);
             }
 
             rw.ArrayArchive<CPlugVehicleWheelPhyModel>(ref U04!);
@@ -83,7 +90,7 @@ public class CPlugVehicleCarPhyShape : CMwNod
             rw.Single(ref U14);
             rw.Single(ref U15);
             rw.Array<Vec4>(ref U16!);
-            rw.Box(ref U17);
+            rw.Box(ref n.carVsCarShapeBox);
             rw.Boolean(ref U18);
             rw.Boolean(ref U19);
             rw.Single(ref U20);
