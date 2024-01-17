@@ -564,19 +564,34 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
     public T? ReadNodeRef<T>() where T : IClass
     {
-        var index = ReadInt32();
+        var index = default(int?);
 
-        if (index == -1)
+        if (encapsulation is null)
+        {
+            index = ReadInt32();
+
+            if (index == -1)
+            {
+                return default;
+            }
+
+            if (NodeDict.TryGetValue(index.Value, out var existingNode))
+            {
+                return (T)existingNode;
+            }
+
+            // check if in ref. table
+        }
+
+        var originalClassId = ReadUInt32();
+
+        /* TODO: Verify this
+         * if (originalClassId == uint.MaxValue)
         {
             return default;
-        }
+        }*/
 
-        if (NodeDict.TryGetValue(index, out var existingNode))
-        {
-            return (T)existingNode;
-        }
-
-        var classId = ClassManager.Wrap(ReadUInt32());
+        var classId = ClassManager.Wrap(originalClassId);
 
 #if NET8_0_OR_GREATER
         var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
@@ -589,7 +604,11 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
             throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) cannot be casted to {typeof(T).Name}.");
         }
 
-        NodeDict[index] = nod;
+        if (index.HasValue)
+        {
+            // TODO: Report on replacements
+            NodeDict[index.Value] = nod;
+        }
 
         return ReadNode(nod);
     }
