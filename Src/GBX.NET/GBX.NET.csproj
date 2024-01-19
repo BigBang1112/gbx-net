@@ -42,6 +42,7 @@
 		<Using Include="GBX.NET.Exceptions" />
 		<Using Include="GBX.NET.Serialization" />
 		<Using Include="GBX.NET.Engines.MwFoundations" />
+		<Using Include="GBX.NET.Engines.Plug" />
 		<Using Include="GBX.NET.Engines.Game" />
 		<Using Include="GBX.NET.Engines.Scene" />
 		<Using Include="GBX.NET.Engines.System" />
