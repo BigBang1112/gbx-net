@@ -73,6 +73,13 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.Append(symbol.ReturnType.Name);
             sb.AppendLine("(int length)");
             sb.AppendLine("    {");
+            sb.AppendLine("        if (length == 0)");
+            sb.AppendLine("        {");
+            sb.AppendLine("            return [];");
+            sb.AppendLine("        }");
+            sb.AppendLine();
+            sb.AppendLine("        ValidateCollectionLength(length);");
+            sb.AppendLine();
             sb.Append("        var array = new ");
             sb.Append(symbol.ReturnType);
             sb.AppendLine("[length];");
@@ -119,6 +126,13 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.Append(symbol.ReturnType.Name);
             sb.AppendLine("(int length)");
             sb.AppendLine("    {");
+            sb.AppendLine("        if (length == 0)");
+            sb.AppendLine("        {");
+            sb.AppendLine("            return new List<string>();");
+            sb.AppendLine("        }");
+            sb.AppendLine();
+            sb.AppendLine("        ValidateCollectionLength(length);");
+            sb.AppendLine();
             sb.Append("        var list = new List<");
             sb.Append(symbol.ReturnType);
             sb.AppendLine(">(length);");
