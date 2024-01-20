@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 namespace GBX.NET.Generators;
 
 [Generator(LanguageNames.CSharp)]
-public class ClassChunkGenerator : IIncrementalGenerator
+public class OldClassChunkGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
 

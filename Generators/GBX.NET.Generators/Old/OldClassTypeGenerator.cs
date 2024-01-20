@@ -7,7 +7,7 @@ using System.Text;
 namespace GBX.NET.Generators;
 
 [Generator(LanguageNames.CSharp)]
-public class ClassTypeGenerator : IIncrementalGenerator
+public class OldClassTypeGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
 

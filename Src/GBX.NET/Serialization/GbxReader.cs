@@ -10,7 +10,7 @@ namespace GBX.NET.Serialization;
 /// <summary>
 /// A binary/text reader specialized for Gbx.
 /// </summary>
-public interface IGbxReader : IDisposable
+public partial interface IGbxReader : IDisposable
 {
     Stream BaseStream { get; }
     SerializationMode Mode { get; }
@@ -72,11 +72,6 @@ public interface IGbxReader : IDisposable
     IList<T?> ReadListNodeRef<T>() where T : IClass;
     IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
 
-    PackDesc[] ReadArrayPackDesc(int length);
-    PackDesc[] ReadArrayPackDesc();
-    IList<PackDesc> ReadListPackDesc(int length);
-    IList<PackDesc> ReadListPackDesc();
-
     void SkipData(int length);
     byte[] ReadToEnd();
     void ResetIdState();
@@ -85,7 +80,7 @@ public interface IGbxReader : IDisposable
 /// <summary>
 /// A binary/text reader specialized for Gbx.
 /// </summary>
-internal sealed class GbxReader : BinaryReader, IGbxReader
+internal sealed partial class GbxReader : BinaryReader, IGbxReader
 {
     internal const int MaxDataSize = 0x10000000; // ~268MB
 
@@ -953,32 +948,4 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
 
         base.Dispose(disposing);
     }
-
-    public PackDesc[] ReadArrayPackDesc(int length)
-    {
-        var array = new PackDesc[length];
-
-        for (var i = 0; i < length; i++)
-        {
-            array[i] = ReadPackDesc();
-        }
-
-        return array;
-    }
-
-    public PackDesc[] ReadArrayPackDesc() => ReadArrayPackDesc(ReadInt32());
-
-    public IList<PackDesc> ReadListPackDesc(int length)
-    {
-        var list = new List<PackDesc>(length);
-
-        for (var i = 0; i < length; i++)
-        {
-            list.Add(ReadPackDesc());
-        }
-
-        return list;
-    }
-
-    public IList<PackDesc> ReadListPackDesc() => ReadListPackDesc(ReadInt32());
 }

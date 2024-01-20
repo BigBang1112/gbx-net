@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GBX.NET.Generators;
 
-[Generator(LanguageNames.CSharp)]
+[Generator]
 public class GbxReaderWriterGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
@@ -16,12 +16,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             Debugger.Launch();
         }
 
-        var namesAndContents = context.CompilationProvider.Select(GetTypeSymbols);
+        var readAndWriteSymbols = context.CompilationProvider.Select(GetReaderAndWriterMethods);
 
-        context.RegisterSourceOutput(namesAndContents, GenerateSource);
+        context.RegisterSourceOutput(readAndWriteSymbols, GenerateReaderWriterSource);
     }
 
-    private IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> GetTypeSymbols(Compilation compilation, CancellationToken token)
+    private IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> GetReaderAndWriterMethods(Compilation compilation, CancellationToken token)
     {
         var serializationNamespace = compilation.GlobalNamespace.GetNamespaceMembers()
             .FirstOrDefault(x => x.Name == "GBX")
@@ -145,7 +145,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
         }
     }
 
-    private void GenerateSource(SourceProductionContext context, IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> symbols)
+    private void GenerateReaderWriterSource(SourceProductionContext context, IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> symbols)
     {
         var sb = new StringBuilder();
         sb.AppendLine("#if NET6_0_OR_GREATER");
