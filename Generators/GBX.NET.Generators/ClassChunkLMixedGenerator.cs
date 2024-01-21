@@ -75,7 +75,7 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                 }
 
                 var id = (gbxClass.GetAttributes()
-                    .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkLClassAttribute")?
+                    .FirstOrDefault(x => x.AttributeClass?.Name == "ClassAttribute")?
                     .ConstructorArguments[0].Value as uint?)
                     .GetValueOrDefault();
 
