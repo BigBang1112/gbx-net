@@ -168,7 +168,9 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             var isNonNullableValueType = readerMethod.ReturnType.IsValueType
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
-            
+
+            var methodType = readerMethod.Name.Substring("Read".Length);
+
             //var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
 
             // INTERFACE
@@ -189,7 +191,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                 if (isNamed)
                 {
-                    sbInterface.Append(readerMethod.Name.Substring("Read".Length));
+                    sbInterface.Append(methodType);
                 }
                 else
                 {
@@ -306,7 +308,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                     if (isNamed)
                     {
-                        sbInterface.Append(readerMethod.Name.Substring("Read".Length));
+                        sbInterface.Append(methodType);
                     }
                     else
                     {
@@ -408,8 +410,106 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 }
             }
 
-            sbInterface.AppendLine();
+            var isForArrayGenerator = !readerMethod.ReturnType.IsValueType
+                && readerMethod.Parameters.IsDefaultOrEmpty
+                && readerMethod.TypeParameters.IsDefaultOrEmpty
+                && !string.IsNullOrEmpty(readerMethod.ReturnType.Name)
+                && methodType.StartsWith(readerMethod.ReturnType.Name);
 
+            if (isForArrayGenerator)
+            {
+                for (var i = 0; i < 2; i++)
+                {
+                    var isRef = i == 1;
+
+                    for (var j = 0; j < 2; j++)
+                    {
+                        var isList = j == 1;
+
+                        for (var k = 0; k < 3; k++)
+                        {
+                            sbInterface.Append("    ");
+
+                            if (isRef)
+                            {
+                                sbInterface.Append("void ");
+                            }
+                            else
+                            {
+                                if (isList)
+                                {
+                                    sbInterface.Append("IList<");
+                                }
+
+                                sbInterface.Append(readerMethod.ReturnType);
+
+                                if (isList)
+                                {
+                                    sbInterface.Append(">? ");
+                                }
+                                else
+                                {
+                                    sbInterface.Append("[]? ");
+                                }
+                            }
+
+                            if (isList)
+                            {
+                                sbInterface.Append("List");
+                            }
+                            else
+                            {
+                                sbInterface.Append("Array");
+                            }
+
+                            sbInterface.Append(methodType);
+
+                            if (k == 2) // deprec variant
+                            {
+                                sbInterface.Append("_deprec");
+                            }
+
+                            sbInterface.Append('(');
+
+                            if (isRef)
+                            {
+                                sbInterface.Append("ref ");
+                            }
+
+                            if (isList)
+                            {
+                                sbInterface.Append("IList<");
+                                sbInterface.Append(readerMethod.ReturnType);
+                                sbInterface.Append(">?");
+                            }
+                            else
+                            {
+                                sbInterface.Append(readerMethod.ReturnType);
+                                sbInterface.Append("[]?");
+                            }
+
+                            sbInterface.Append(" value");
+
+                            if (k == 0) // default variant
+                            {
+                                if (!isRef)
+                                {
+                                    sbInterface.Append(" = default");
+                                }
+                            }
+                            else if (k == 1) // length variant
+                            { 
+                                sbInterface.Append(", int length");
+                            }
+
+                            sbInterface.AppendLine(");");
+                        }
+                    }
+                }
+            }
+
+
+            sbInterface.AppendLine();
 
             // CLASS
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
@@ -436,7 +536,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                 if (isNamed)
                 {
-                    sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                    sbClass.Append(methodType);
                 }
                 else
                 {
@@ -654,7 +754,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                     if (isNamed)
                     {
-                        sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                        sbClass.Append(methodType);
                     }
                     else
                     {
@@ -759,7 +859,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbClass.Append(" => ");
                     sbClass.Append(writerMethod.Parameters[0].Name);
                     sbClass.Append(" = ");
-                    sbClass.Append(readerMethod.Name.Substring("Read".Length));
+                    sbClass.Append(methodType);
                     sbClass.Append('(');
 
                     var first3Class = true;
@@ -783,6 +883,161 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                     sbClass.AppendLine(");");
                     sbClass.AppendLine();
+                }
+            }
+
+            if (isForArrayGenerator)
+            {
+                for (var i = 0; i < 2; i++)
+                {
+                    var isList = i == 1;
+
+                    for (var j = 0; j < 3; j++)
+                    {
+                        var isLengthVariant = j == 1;
+                        var isDeprecVariant = j == 2;
+
+                        if (!writerMethod.Parameters.IsEmpty)
+                        {
+                            sbClass.AppendLine("#if NET6_0_OR_GREATER");
+                            sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
+                            sbClass.AppendLine("#endif");
+                        }
+
+                        sbClass.Append("    public ");
+
+                        if (isList)
+                        {
+                            sbClass.Append("IList<");
+                        }
+
+                        sbClass.Append(readerMethod.ReturnType);
+                        sbClass.Append(isList ? ">? List" : "[]? Array");
+                        sbClass.Append(methodType);
+
+                        if (isDeprecVariant)
+                        {
+                            sbClass.Append("_deprec");
+                        }
+
+                        sbClass.Append('(');
+
+                        if (isList)
+                        {
+                            sbClass.Append("IList<");
+                        }
+
+                        sbClass.Append(readerMethod.ReturnType);
+                        sbClass.Append(isList ? ">?" : "[]?");
+                        sbClass.Append(" value");
+                        sbClass.Append(isLengthVariant ? ", int length" : " = default");
+                        sbClass.AppendLine(")");
+                        sbClass.AppendLine("    {");
+
+                        // Reader
+                        sbClass.Append("        if (Reader is not null) ");
+                        sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
+                        sbClass.Append(" = Reader.Read");
+                        sbClass.Append(isList ? "List" : "Array");
+                        sbClass.Append(methodType);
+
+                        if (isDeprecVariant)
+                        {
+                            sbClass.Append("_deprec");
+                        }
+
+                        sbClass.Append('(');
+
+                        if (isLengthVariant)
+                        {
+                            sbClass.Append("length");
+                        }
+
+                        sbClass.AppendLine(");");
+
+                        // Writer
+                        sbClass.Append("        Writer?.Write");
+                        sbClass.Append(isList ? "List" : "Array");
+                        sbClass.Append(methodType);
+
+                        if (isDeprecVariant)
+                        {
+                            sbClass.Append("_deprec");
+                        }
+
+                        sbClass.Append("(value");
+
+                        if (isLengthVariant)
+                        {
+                            sbClass.Append(", length");
+                        }
+
+                        sbClass.AppendLine(");");
+                        sbClass.AppendLine("        return value;");
+
+                        sbClass.AppendLine("    }");
+
+                        sbClass.AppendLine();
+                    }
+                }
+
+                for (var i = 0; i < 2; i++)
+                {
+                    var isList = i == 1;
+
+                    for (var j = 0; j < 3; j++)
+                    {
+                        var isLengthVariant = j == 1;
+                        var isDeprecVariant = j == 2;
+
+                        sbClass.Append("    public void ");
+                        sbClass.Append(isList ? "List" : "Array");
+                        sbClass.Append(methodType);
+
+                        if (isDeprecVariant)
+                        {
+                            sbClass.Append("_deprec");
+                        }
+
+                        sbClass.AppendLine("(");
+                        sbClass.AppendLine("#if NET6_0_OR_GREATER");
+                        sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
+                        sbClass.AppendLine("#endif");
+                        sbClass.Append("        ref ");
+
+                        if (isList)
+                        {
+                            sbClass.Append("IList<");
+                        }
+
+                        sbClass.Append(readerMethod.ReturnType);
+                        sbClass.Append(isList ? ">?" : "[]?");
+                        sbClass.Append(" value");
+
+                        if (isLengthVariant)
+                        {
+                            sbClass.Append(", int length");
+                        }
+
+                        sbClass.Append(") => value = ");
+                        sbClass.Append(isList ? "List" : "Array");
+                        sbClass.Append(methodType);
+
+                        if (isDeprecVariant)
+                        {
+                            sbClass.Append("_deprec");
+                        }
+
+                        sbClass.Append("(value");
+
+                        if (isLengthVariant)
+                        {
+                            sbClass.Append(", length");
+                        }
+
+                        sbClass.AppendLine(");");
+                        sbClass.AppendLine();
+                    }
                 }
             }
         }

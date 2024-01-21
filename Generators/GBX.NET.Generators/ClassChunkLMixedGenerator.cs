@@ -79,7 +79,7 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                     .ConstructorArguments[0].Value as uint?)
                     .GetValueOrDefault();
 
-                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.ToDisplayString(), gbxClass));
+                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, gbxClass));
             }
 
             return classModels.ToImmutableArray();

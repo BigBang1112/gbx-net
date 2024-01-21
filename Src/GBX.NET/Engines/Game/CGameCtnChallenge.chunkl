@@ -11,7 +11,7 @@ CGameCtnChallenge 0x03043000 // A map.
   timeint SilverTime
   timeint GoldTime
   timeint AuthorTime
-  v3=
+  v2=
    byte
   v4+
    int Cost

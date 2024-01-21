@@ -72,6 +72,13 @@ public partial interface IGbxReader : IDisposable
     IList<T?> ReadListNodeRef<T>() where T : IClass;
     IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
 
+    string[] ReadArrayId(int length);
+    string[] ReadArrayId();
+    string[] ReadArrayId_deprec();
+    IList<string> ReadListId(int length);
+    IList<string> ReadListId();
+    IList<string> ReadListId_deprec();
+
     void SkipData(int length);
     byte[] ReadToEnd();
     void ResetIdState();
@@ -868,6 +875,60 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadListNodeRef<T>();
     }
 
+    public string[] ReadArrayId(int length)
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        ValidateCollectionLength(length);
+
+        var array = new string[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            array[i] = ReadIdAsString();
+        }
+
+        return array;
+    }
+
+    public string[] ReadArrayId() => ReadArrayId(ReadInt32());
+
+    public string[] ReadArrayId_deprec()
+    {
+        ReadDeprecVersion();
+        return ReadArrayId();
+    }
+
+    public IList<string> ReadListId(int length)
+    {
+        if (length == 0)
+        {
+            return new List<string>();
+        }
+
+        ValidateCollectionLength(length);
+
+        var list = new List<string>(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            list.Add(ReadIdAsString());
+        }
+
+        return list;
+    }
+
+    public IList<string> ReadListId() => ReadListId(ReadInt32());
+
+    public IList<string> ReadListId_deprec()
+    {
+        ReadDeprecVersion();
+        return ReadListId();
+    }
+
     /// <summary>
     /// If can seek, position moves past the <paramref name="length"/>. If seeking is NOT supported, data is read with no allocation using <see cref="BinaryReader.Read(Span{byte})"/>. If .NET Standard 2.0, unavoidable byte array allocation happens with <see cref="BinaryReader.ReadBytes(int)"/>.
     /// </summary>
@@ -875,6 +936,11 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
     /// <exception cref="EndOfStreamException"></exception>
     public void SkipData(int length)
     {
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+        }
+
         if (BaseStream.CanSeek)
         {
             if (BaseStream.Position + length > BaseStream.Length)

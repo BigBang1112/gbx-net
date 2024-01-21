@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
@@ -12,7 +11,7 @@ namespace GBX.NET.Serialization;
 /// <summary>
 /// A binary/text writer specialized for Gbx.
 /// </summary>
-public interface IGbxWriter : IDisposable
+public partial interface IGbxWriter : IDisposable
 {
     Stream BaseStream { get; }
     SerializationMode Mode { get; }
@@ -75,10 +74,12 @@ public interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass;
 
-    void WriteArrayPackDesc(PackDesc[]? value);
-    void WriteArrayPackDesc(PackDesc[]? value, int length);
-    void WriteListPackDesc(IList<PackDesc>? value);
-    void WriteListPackDesc(IList<PackDesc>? value, int length);
+    void WriteArrayId(string[]? value);
+    void WriteArrayId(string[]? value, int length);
+    void WriteArrayId_deprec(string[]? value);
+    void WriteListId(IList<string>? value);
+    void WriteListId(IList<string>? value, int length);
+    void WriteListId_deprec(IList<string>? value);
 
     void ResetIdState();
 }
@@ -86,7 +87,7 @@ public interface IGbxWriter : IDisposable
 /// <summary>
 /// A binary/text writer specialized for Gbx.
 /// </summary>
-internal sealed class GbxWriter : BinaryWriter, IGbxWriter
+internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 {
     private static readonly Encoding encoding = Encoding.UTF8;
 
@@ -685,23 +686,77 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
         throw new NotImplementedException();
     }
 
-    public void WriteArrayPackDesc(PackDesc[]? value)
+    public void WriteArrayId(string[]? value)
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteIdAsString(item);
+        }
     }
 
-    public void WriteArrayPackDesc(PackDesc[]? value, int length)
+    public void WriteArrayId(string[]? value, int length)
     {
-        throw new NotImplementedException();
+        if (value is null) return;
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteIdAsString(value[i]);
+
+            if (i >= value.Length)
+            {
+                WriteIdAsString(default);
+            }
+        }
     }
 
-    public void WriteListPackDesc(IList<PackDesc>? value)
+    public void WriteArrayId_deprec(string[]? value)
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteArrayId(value);
     }
 
-    public void WriteListPackDesc(IList<PackDesc>? value, int length)
+    public void WriteListId(IList<string>? value)
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteIdAsString(item);
+        }
+    }
+
+    public void WriteListId(IList<string>? value, int length)
+    {
+        if (value is null) return;
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteIdAsString(value[i]);
+
+            if (i >= value.Count)
+            {
+                WriteIdAsString(default);
+            }
+        }
+    }
+
+    public void WriteListId_deprec(IList<string>? value)
+    {
+        WriteDeprecVersion();
+        WriteListId(value);
     }
 }

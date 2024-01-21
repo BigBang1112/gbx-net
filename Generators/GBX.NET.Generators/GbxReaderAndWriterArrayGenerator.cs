@@ -36,7 +36,30 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
                     .ToImmutableArray();
             });
 
+        var writerRefTypeMethods = context.CompilationProvider
+            .Select(static (compilation, token) =>
+            {
+                var serializationNamespace = compilation.GlobalNamespace.GetNamespaceMembers()
+                    .FirstOrDefault(x => x.Name == "GBX")
+                    .GetNamespaceMembers()
+                    .FirstOrDefault(x => x.Name == "NET")
+                    .GetNamespaceMembers()
+                    .FirstOrDefault(x => x.Name == "Serialization");
+
+                return serializationNamespace.GetTypeMembers()
+                    .First(x => x.Name == "IGbxWriter")
+                    .GetMembers()
+                    .OfType<IMethodSymbol>()
+                    .Where(x => x.Parameters.Length == 1
+                        && !x.Parameters[0].Type.IsValueType
+                        && x.Name.StartsWith("Write")
+                        && !string.IsNullOrEmpty(x.Parameters[0].Type.Name)
+                        && (string.IsNullOrEmpty(x.Name.Substring("Write".Length)) || x.Name.Substring("Write".Length).StartsWith(x.Parameters[0].Type.Name)))
+                    .ToImmutableArray();
+            });
+
         context.RegisterSourceOutput(readerRefTypeMethods, GenerateReaderSource);
+        context.RegisterSourceOutput(writerRefTypeMethods, GenerateWriterSource);
     }
 
     private void GenerateReaderSource(SourceProductionContext context, ImmutableArray<IMethodSymbol> methodSymbols)
@@ -128,7 +151,9 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.AppendLine("    {");
             sb.AppendLine("        if (length == 0)");
             sb.AppendLine("        {");
-            sb.AppendLine("            return new List<string>();");
+            sb.Append("            return new List<");
+            sb.Append(symbol.ReturnType);
+            sb.AppendLine(">();");
             sb.AppendLine("        }");
             sb.AppendLine();
             sb.AppendLine("        ValidateCollectionLength(length);");
@@ -177,5 +202,166 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
         sb.AppendLine("}");
 
         context.AddSource("GbxReader", sb.ToString());
+    }
+
+    private void GenerateWriterSource(SourceProductionContext context, ImmutableArray<IMethodSymbol> methodSymbols)
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine("namespace GBX.NET.Serialization;");
+        sb.AppendLine();
+
+        sb.AppendLine("partial interface IGbxWriter");
+        sb.AppendLine("{");
+
+        foreach (var symbol in methodSymbols)
+        {
+            var type = symbol.Parameters[0].Type;
+
+            sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value, int length);");
+            sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value);");
+            sb.AppendLine($"    void WriteArray{type.Name}_deprec({type}[]? value);");
+            sb.AppendLine($"    void WriteList{type.Name}(IList<{type}>? value, int length);");
+            sb.AppendLine($"    void WriteList{type.Name}(IList<{type}>? value);");
+            sb.AppendLine($"    void WriteList{type.Name}_deprec(IList<{type}>? value);");
+        }
+
+        sb.AppendLine("}");
+
+        sb.AppendLine();
+
+        sb.AppendLine("partial class GbxWriter");
+        sb.AppendLine("{");
+
+        foreach (var symbol in methodSymbols)
+        {
+            var type = symbol.Parameters[0].Type;
+
+            sb.Append("    public void WriteArray");
+            sb.Append(type.Name);
+            sb.Append('(');
+            sb.Append(type);
+            sb.AppendLine("[]? value)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        if (value is null)");
+            sb.AppendLine("        {");
+            sb.AppendLine("            Write(0);");
+            sb.AppendLine("            return;");
+            sb.AppendLine("        }");
+            sb.AppendLine();
+            sb.AppendLine("        Write(value.Length);");
+            sb.AppendLine();
+            sb.AppendLine("        foreach (var item in value)");
+            sb.AppendLine("        {");
+            sb.Append("            ");
+            sb.Append(symbol.Name);
+            sb.AppendLine("(item);");
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+
+            sb.Append("    public void WriteArray");
+            sb.Append(type.Name);
+            sb.Append('(');
+            sb.Append(type);
+            sb.AppendLine("[]? value, int length)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        if (value is null) return;");
+            sb.AppendLine();
+            sb.AppendLine("        for (var i = 0; i < length; i++)");
+            sb.AppendLine("        {");
+            sb.Append("            ");
+            sb.Append(symbol.Name);
+            sb.AppendLine("(value[i]);");
+            sb.AppendLine();
+            sb.Append("            if (i >= value.Length) ");
+            sb.Append(symbol.Name);
+            sb.Append("(default(");
+            sb.Append(type);
+            sb.AppendLine("));");
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+
+            sb.Append("    public void WriteArray");
+            sb.Append(type.Name);
+            sb.Append("_deprec(");
+            sb.Append(type);
+            sb.AppendLine("[]? value)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        WriteDeprecVersion();");
+            sb.Append("        WriteArray");
+            sb.Append(type.Name);
+            sb.AppendLine("(value);");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+            sb.Append("    public void WriteList");
+            sb.Append(type.Name);
+            sb.Append("(IList<");
+            sb.Append(type);
+            sb.AppendLine(">? value)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        if (value is null)");
+            sb.AppendLine("        {");
+            sb.AppendLine("            Write(0);");
+            sb.AppendLine("            return;");
+            sb.AppendLine("        }");
+            sb.AppendLine();
+            sb.AppendLine("        Write(value.Count);");
+            sb.AppendLine();
+            sb.AppendLine("        foreach (var item in value)");
+            sb.AppendLine("        {");
+            sb.Append("            ");
+            sb.Append(symbol.Name);
+            sb.AppendLine("(item);");
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+
+            sb.Append("    public void WriteList");
+            sb.Append(type.Name);
+            sb.Append("(IList<");
+            sb.Append(type);
+            sb.AppendLine(">? value, int length)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        if (value is null) return;");
+            sb.AppendLine();
+            sb.AppendLine("        for (var i = 0; i < length; i++)");
+            sb.AppendLine("        {");
+            sb.Append("            ");
+            sb.Append(symbol.Name);
+            sb.AppendLine("(value[i]);");
+            sb.AppendLine();
+            sb.Append("            if (i >= value.Count) ");
+            sb.Append(symbol.Name);
+            sb.Append("(default(");
+            sb.Append(type);
+            sb.AppendLine("));");
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+
+            sb.Append("    public void WriteList");
+            sb.Append(type.Name);
+            sb.Append("_deprec(IList<");
+            sb.Append(type);
+            sb.AppendLine(">? value)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        WriteDeprecVersion();");
+            sb.Append("        WriteList");
+            sb.Append(type.Name);
+            sb.AppendLine("(value);");
+            sb.AppendLine("    }");
+
+            sb.AppendLine();
+        }
+
+        sb.AppendLine("}");
+
+        context.AddSource("GbxWriter", sb.ToString());
     }
 }

@@ -181,14 +181,16 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 throw new LengthLimitException($"Header chunk size {actualChunkSize} exceeds maximum data size {GbxReader.MaxDataSize}.");
             }
 
-            headerChunkDescs[i] = new HeaderChunkInfo(chunkId, actualChunkSize, isHeavy);
+            var mappedChunkId = ClassManager.Wrap(chunkId);
+
+            headerChunkDescs[i] = new HeaderChunkInfo(mappedChunkId, actualChunkSize, isHeavy);
 
             // sizeof(uint) + sizeof(int) + actualChunkSize
             totalSize += 8 + actualChunkSize;
 
             if (totalSize > userDataNums.Length)
             {
-                throw new InvalidDataException($"Header chunk 0x{chunkId:X8} (size {actualChunkSize}) exceeds user data length ({totalSize} > {userDataNums.Length}).");
+                throw new InvalidDataException($"Header chunk 0x{mappedChunkId:X8} (size {actualChunkSize}) exceeds user data length ({totalSize} > {userDataNums.Length}).");
             }
         }
 
@@ -271,43 +273,24 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         {
             case IReadableWritableChunk<T> readableWritableT:
                 readableWritableT.ReadWrite(node, rw);
-
-                if (settings.SkipDataUntilLengthMatches)
-                {
-                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                }
-
                 break;
             case IReadableChunk<T> readableT:
                 readableT.Read(node, reader);
-
-                if (settings.SkipDataUntilLengthMatches)
-                {
-                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                }
-
                 break;
             case IReadableWritableChunk readableWritable:
                 readableWritable.ReadWrite(nodeToRead, rw);
-
-                if (settings.SkipDataUntilLengthMatches)
-                {
-                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                }
-
                 break;
             case IReadableChunk readable:
                 readable.Read(nodeToRead, reader);
-
-                if (settings.SkipDataUntilLengthMatches)
-                {
-                    reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
-                }
-
                 break;
             default:
                 reader.SkipData(desc.Size);
                 break;
+        }
+
+        if (settings.SkipDataUntilLengthMatches)
+        {
+            reader.SkipData(desc.Size - (int)(reader.BaseStream.Position - chunkStartPos));
         }
     }
 
