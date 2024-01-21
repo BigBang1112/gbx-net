@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GBX.NET.Generators;
 
-[Generator(LanguageNames.CSharp)]
+[Generator]
 public class ClassNewGenerator : ClassChunkLMixedGenerator
 {
     private const bool Debug = false;
