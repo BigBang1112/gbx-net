@@ -7,7 +7,12 @@ namespace GBX.NET.Generators;
 public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
 {
     protected record ChunkLFile(ChunkLDataModel DataModel, string Engine);
-    protected record ClassDataModel(string Name, uint Id, string Engine, INamedTypeSymbol? TypeSymbol);
+    protected record ClassDataModel(
+        string Name,
+        uint Id,
+        string Engine,
+        string? Inherits,
+        INamedTypeSymbol? TypeSymbol);
 
     public virtual void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -63,7 +68,12 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                 var name = chunklFile.DataModel.Header.Name;
                 var id = chunklFile.DataModel.Header.Id;
 
-                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, symbol));
+                _ = chunklFile.DataModel.Header.Features.TryGetValue("inherits", out var inherits);
+                inherits ??= symbol?.BaseType?.Name ?? "CMwNod";
+                if (inherits == nameof(Object)) inherits = "CMwNod";
+                if (name == "CMwNod") inherits = null;
+
+                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, symbol));
                 alreadyAdded.Add(name);
             }
 
@@ -79,7 +89,11 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                     .ConstructorArguments[0].Value as uint?)
                     .GetValueOrDefault();
 
-                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, gbxClass));
+                var inherits = gbxClass.BaseType?.Name ?? "CMwNod";
+                if (inherits == nameof(Object)) inherits = "CMwNod";
+                if (gbxClass.Name == "CMwNod") inherits = null;
+
+                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, gbxClass));
             }
 
             return classModels.ToImmutableArray();
