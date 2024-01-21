@@ -1,7 +1,9 @@
 ﻿using GBX.NET.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Managers;
 
+[ExcludeFromCodeCoverage]
 public static partial class ClassManager
 {
 #if DEBUG
