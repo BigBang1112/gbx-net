@@ -12,4 +12,5 @@ public readonly record struct GbxReadSettings
     /// </summary>
     public bool ReadRawBody { get; init; }
     public bool SkipExceptionsInBody { get; init; }
+    public bool LeaveOpen { get; init; }
 }

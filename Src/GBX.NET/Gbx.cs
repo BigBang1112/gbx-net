@@ -67,7 +67,7 @@ public class Gbx : IGbx
 
     public static Gbx Parse(Stream stream, GbxReadSettings settings = default)
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.LeaveOpen);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -104,7 +104,7 @@ public class Gbx : IGbx
 
     public static Gbx<T> Parse<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new()
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.LeaveOpen);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -133,7 +133,7 @@ public class Gbx : IGbx
 
     public static Gbx ParseHeader(Stream stream, GbxReadSettings settings = default)
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.LeaveOpen);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -167,7 +167,7 @@ public class Gbx : IGbx
 
     public static Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new()
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.LeaveOpen);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
