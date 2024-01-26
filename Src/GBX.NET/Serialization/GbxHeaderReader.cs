@@ -55,13 +55,13 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         return header;
     }
 
-    internal void ReadUserData<T>(T node) where T : notnull, IClass
+    internal bool ReadUserData<T>(T node) where T : notnull, IClass
     {
         var userDataNums = ValidateUserDataNumbers();
 
         if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
         {
-            return;
+            return false;
         }
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
@@ -104,15 +104,17 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
+
+        return true;
     }
 
-    internal void ReadUserData(IClass? node, GbxHeaderUnknown? unknownHeader)
+    internal bool ReadUserData(IClass? node, GbxHeaderUnknown? unknownHeader)
     {
         var userDataNums = ValidateUserDataNumbers();
 
         if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
         {
-            return;
+            return false;
         }
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
@@ -159,6 +161,8 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
             }
         }
+
+        return true;
     }
 
 #if NET6_0_OR_GREATER
