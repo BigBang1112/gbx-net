@@ -15,6 +15,8 @@ public readonly record struct GbxHeaderBasic(
     GbxCompression CompressionOfBody,
     GbxUnknownByte UnknownByte)
 {
+    public static readonly GbxHeaderBasic Default = Create();
+
     public static GbxHeaderBasic Create(
         ushort Version = 6,
         GbxFormat Format = GbxFormat.Binary,
