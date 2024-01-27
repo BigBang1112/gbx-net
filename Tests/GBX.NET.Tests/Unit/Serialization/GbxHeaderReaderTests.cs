@@ -477,4 +477,260 @@ public class GbxHeaderReaderTests
         Assert.Equal(expected: 6, actual: ((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).Version);
         Assert.Equal(expected: 24, actual: ms.Position);
     }
+
+    [Fact]
+    public void Parse_KnownNode_Version6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            6, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03043000))
+            .Concat(BitConverter.GetBytes(16))
+            .Concat(BitConverter.GetBytes(1))
+            .Concat(BitConverter.GetBytes(0x03043004))
+            .Concat(BitConverter.GetBytes(4))
+            .Concat(BitConverter.GetBytes(6))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse(out var node);
+
+        // Assert
+        Assert.Equal(expected: 6, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
+        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
+        Assert.IsType<CGameCtnChallenge>(node);
+        Assert.Single(node.Chunks);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void Parse_KnownNode_VersionLowerThan6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            4, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03043000))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse(out var node);
+
+        // Assert
+        Assert.Equal(expected: 4, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
+        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
+        Assert.IsType<CGameCtnChallenge>(node);
+        Assert.Empty(node.Chunks);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void Parse_UnknownNode_Version6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            6, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03999000))
+            .Concat(BitConverter.GetBytes(16))
+            .Concat(BitConverter.GetBytes(1))
+            .Concat(BitConverter.GetBytes(0x03999004))
+            .Concat(BitConverter.GetBytes(4))
+            .Concat(BitConverter.GetBytes(6))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse(out var node);
+
+        // Assert
+        Assert.Equal(expected: 6, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03999000, actual: header.ClassId);
+        Assert.IsType<GbxHeaderUnknown>(header);
+        Assert.Single(((GbxHeaderUnknown)header).UserData);
+        Assert.Null(node);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void Parse_UnknownNode_VersionLowerThan6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            4, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03999000))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse(out var node);
+
+        // Assert
+        Assert.Equal(expected: 4, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03999000, actual: header.ClassId);
+        Assert.IsType<GbxHeaderUnknown>(header);
+        Assert.Empty(((GbxHeaderUnknown)header).UserData);
+        Assert.Null(node);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void ParseOfT_Version6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            6, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03043000))
+            .Concat(BitConverter.GetBytes(16))
+            .Concat(BitConverter.GetBytes(1))
+            .Concat(BitConverter.GetBytes(0x03043004))
+            .Concat(BitConverter.GetBytes(4))
+            .Concat(BitConverter.GetBytes(6))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse<CGameCtnChallenge>(out var node);
+
+        // Assert
+        Assert.Equal(expected: 6, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
+        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
+        Assert.IsType<CGameCtnChallenge>(node);
+        Assert.Single(node.Chunks);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void ParseOfT_VersionLowerThan6_ParsesCorrectly()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            4, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03043000))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act
+        var header = parser.Parse<CGameCtnChallenge>(out var node);
+
+        // Assert
+        Assert.Equal(expected: 4, actual: header.Basic.Version);
+        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
+        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
+        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
+        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
+        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
+        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
+        Assert.IsType<CGameCtnChallenge>(node);
+        Assert.Empty(node.Chunks);
+        Assert.Equal(expected: 69, actual: header.NumNodes);
+    }
+
+    [Fact]
+    public void ParseOfT_UnmatchingClassId_ThrowsInvalidCastException()
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] {
+            (byte)'G',
+            (byte)'B',
+            (byte)'X',
+            6, 0,
+            (byte)'B',
+            (byte)'U',
+            (byte)'C',
+            (byte)'R' }
+            .Concat(BitConverter.GetBytes(0x03092000))
+            .Concat(BitConverter.GetBytes(0))
+            .Concat(BitConverter.GetBytes(69))
+                .ToArray());
+        using var r = new GbxReader(ms);
+
+        var parser = new GbxHeaderReader(r, new());
+
+        // Act & Assert
+        Assert.Throws<InvalidCastException>(() => parser.Parse<CGameCtnChallenge>(out var _));
+    }
 }
