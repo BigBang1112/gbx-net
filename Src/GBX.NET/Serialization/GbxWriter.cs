@@ -51,7 +51,9 @@ public partial interface IGbxWriter : IDisposable
     void WriteNodeRef<T>(T? value) where T : IClass;
     void WriteNode<T>(T? value) where T : IClass;
     void Write(TimeInt32 value);
+    void WriteTimeInt32Nullable(TimeInt32? value);
     void Write(TimeSingle value);
+    void WriteTimeSingleNullable(TimeSingle? value);
     void WriteTimeOfDay(TimeSpan? value);
     void WriteMarker(string value);
 
@@ -493,9 +495,19 @@ internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.TotalMilliseconds);
     }
 
+    public void WriteTimeInt32Nullable(TimeInt32? value)
+    {
+        Write(value.HasValue ? value.Value.TotalMilliseconds : -1);
+    }
+
     public void Write(TimeSingle value)
     {
         Write(value.TotalSeconds);
+    }
+
+    public void WriteTimeSingleNullable(TimeSingle? value)
+    {
+        Write(value.HasValue ? value.Value.TotalSeconds : -1);
     }
 
     public void WriteTimeOfDay(TimeSpan? value)

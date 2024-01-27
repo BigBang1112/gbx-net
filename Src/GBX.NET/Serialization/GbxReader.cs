@@ -54,7 +54,9 @@ public partial interface IGbxReader : IDisposable
     T? ReadNodeRef<T>() where T : IClass;
     T? ReadNode<T>() where T : IClass, new();
     TimeInt32 ReadTimeInt32();
+    TimeInt32? ReadTimeInt32Nullable();
     TimeSingle ReadTimeSingle();
+    TimeSingle? ReadTimeSingleNullable();
     TimeSpan? ReadTimeOfDay();
     void ReadMarker(string value);
 
@@ -639,9 +641,23 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(ReadInt32());
     }
 
+    public TimeInt32? ReadTimeInt32Nullable()
+    {
+        var val = ReadInt32();
+        if (val == -1) return null;
+        return new(val);
+    }
+
     public TimeSingle ReadTimeSingle()
     {
         return new(ReadSingle());
+    }
+
+    public TimeSingle? ReadTimeSingleNullable()
+    {
+        var val = ReadSingle();
+        if (val == -1) return null;
+        return new(val);
     }
 
     public TimeSpan? ReadTimeOfDay()
