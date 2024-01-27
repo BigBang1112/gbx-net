@@ -76,7 +76,7 @@ public class Gbx : IGbx
             return new Gbx(header)
             {
                 RefTable = refTable,
-                Body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings.ReadRawBody),
+                Body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings),
                 ReadSettings = settings
             };
         }
@@ -136,7 +136,7 @@ public class Gbx : IGbx
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
-        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings.ReadRawBody);
+        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
@@ -170,7 +170,7 @@ public class Gbx : IGbx
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
-        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings.ReadRawBody);
+        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
 
         return new Gbx<T>(header, node)
         {

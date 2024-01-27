@@ -6,15 +6,21 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 {
     private readonly GbxReader reader = readerWriter.Reader ?? throw new Exception("Reader is required but not available.");
 
-    public static GbxBody Parse(GbxReader reader, GbxCompression compression, bool readRawBody)
+    public static GbxBody Parse(GbxReader reader, GbxCompression compression, GbxReadSettings settings)
     {
         switch (compression)
         {
             case GbxCompression.Compressed:
 
                 var uncompressedSize = reader.ReadInt32();
+
+                if (settings.MaxUncompressedBodySize.HasValue && uncompressedSize > settings.MaxUncompressedBodySize.Value)
+                {
+                    throw new Exception($"Uncompressed body (size {uncompressedSize}B) exceeds maximum allowed size {settings.MaxUncompressedBodySize}B.");
+                }
+
                 var compressedSize = reader.ReadInt32();
-                var rawData = readRawBody ? reader.ReadBytes(compressedSize) : null;
+                var rawData = settings.ReadRawBody ? reader.ReadBytes(compressedSize) : null;
 
                 return new GbxBody
                 {
@@ -27,7 +33,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
                 return new GbxBody
                 {
-                    RawData = readRawBody ? reader.ReadToEnd() : null
+                    RawData = settings.ReadRawBody ? reader.ReadToEnd() : null
                 };
 
             default:
@@ -37,7 +43,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
     public GbxBody Parse(IClass node)
     {
-        var body = Parse(reader, compression, readRawBody: false);
+        var body = Parse(reader, compression, settings);
 
         if (body.CompressedSize is null)
         {
@@ -58,7 +64,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
     public GbxBody Parse<T>(T node) where T : IClass
     {
-        var body = Parse(reader, compression, readRawBody: false);
+        var body = Parse(reader, compression, settings);
 
         if (body.CompressedSize is null)
         {
