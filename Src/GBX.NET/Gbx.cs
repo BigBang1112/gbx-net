@@ -55,7 +55,6 @@ public class Gbx : IGbx
     public int? DeprecVersion { get; set; }
 
     internal static bool StrictBooleans { get; set; }
-    internal static bool Exceptionless { get; set; }
 
     public static ILzo? LZO { get; set; }
     public static ICrc32? CRC32 { get; set; }

@@ -40,24 +40,24 @@ internal sealed class Encapsulation : IDisposable
         }
     }
 
-    private void EncapsulateReader(GbxReader reader)
+    private void EncapsulateReader(GbxReader r)
     {
-        if (reader.Encapsulation is not null)
+        if (r.Encapsulation is not null)
         {
             throw new InvalidOperationException("Reader already has an encapsulation.");
         }
 
-        reader.Encapsulation = this;
+        r.Encapsulation = this;
     }
 
-    private void EncapsulateWriter(GbxWriter writer)
+    private void EncapsulateWriter(GbxWriter w)
     {
-        if (writer.Encapsulation is not null)
+        if (w.Encapsulation is not null)
         {
             throw new InvalidOperationException("Writer already has an encapsulation.");
         }
 
-        writer.Encapsulation = this;
+        w.Encapsulation = this;
     }
 
     public void Dispose()

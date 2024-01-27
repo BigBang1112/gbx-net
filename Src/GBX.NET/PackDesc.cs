@@ -16,11 +16,6 @@ public record PackDesc(string FilePath = "", byte[]? Checksum = null, string? Lo
     /// <returns>A Uri object if LocatorUrl is specified, otherwise null.</returns>
     public Uri? GetLocatorUri()
     {
-        if (string.IsNullOrEmpty(LocatorUrl))
-        {
-            return null;
-        }
-
-        return new Uri(LocatorUrl);
+        return string.IsNullOrEmpty(LocatorUrl) ? null : new Uri(LocatorUrl);
     }
 }

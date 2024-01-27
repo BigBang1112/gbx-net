@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Components;
-using GBX.NET.Managers;
 
 namespace GBX.NET.Serialization;
 
@@ -9,9 +8,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxReaderWriter readerWr
 
     public bool Write(IClass node)
     {
-        var w = writer;
-
-        _ = header.Basic.Write(w);
+        _ = header.Basic.Write(writer);
 
         writer.Write(header.ClassId);
 

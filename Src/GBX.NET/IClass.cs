@@ -15,7 +15,7 @@ public interface IClass
     /// Creates a new instance of a class that matches the given class ID, including the classes that inherit this one. Do not override, implementation is source generated.
     /// </summary>
     /// <param name="classId">ID of the class.</param>
-    /// <remarks>This method is intended to help with trimming (tree shaking) in .NET 8+ by only using expected classes in the switch statement. For wider range of available classes, use <see cref="ClassManager.New(uint)"/>.</remarks>
+    /// <remarks>This method is intended to help with trimming (tree shaking) in .NET 8+ by only using expected classes in the switch statement. For wider range of available classes, use <see cref="Managers.ClassManager.New(uint)"/>.</remarks>
     /// <returns>A new instance of the class.</returns>
     static abstract IClass? New(uint classId);
 

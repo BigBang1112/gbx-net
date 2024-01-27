@@ -81,7 +81,10 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
     {
 #if NET5_0_OR_GREATER
         Span<byte> compressedData = stackalloc byte[compressedSize];
-        reader.Read(compressedData);
+        if (reader.Read(compressedData) != compressedSize)
+        {
+            throw new Exception("Failed to read compressed data");
+        }
 #else
         var compressedData = reader.ReadBytes(compressedSize);
 #endif

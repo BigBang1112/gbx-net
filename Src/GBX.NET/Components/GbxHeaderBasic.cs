@@ -18,13 +18,13 @@ public readonly record struct GbxHeaderBasic(
     public static readonly GbxHeaderBasic Default = Create();
 
     public static GbxHeaderBasic Create(
-        ushort Version = 6,
-        GbxFormat Format = GbxFormat.Binary,
-        GbxCompression CompressionOfRefTable = GbxCompression.Uncompressed,
-        GbxCompression CompressionOfBody = GbxCompression.Compressed,
-        GbxUnknownByte UnknownByte = GbxUnknownByte.R)
+        ushort version = 6,
+        GbxFormat format = GbxFormat.Binary,
+        GbxCompression compressionOfRefTable = GbxCompression.Uncompressed,
+        GbxCompression compressionOfBody = GbxCompression.Compressed,
+        GbxUnknownByte unknownByte = GbxUnknownByte.R)
     {
-        return new GbxHeaderBasic(Version, Format, CompressionOfRefTable, CompressionOfBody, UnknownByte);
+        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, unknownByte);
     }
 
     internal static GbxHeaderBasic Parse(GbxReader reader)

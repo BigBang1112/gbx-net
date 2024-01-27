@@ -151,15 +151,13 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             var chunkEndPos = settings.SkipLengthValidation ? 0 : reader.BaseStream.Position;
 
             // Non-matching chunk data length will throw
-            if (chunkEndPos - chunkStartPos != desc.Size)
+            if (chunkEndPos - chunkStartPos == desc.Size) continue;
+            if (chunkEndPos - chunkStartPos > desc.Size)
             {
-                if (chunkEndPos - chunkStartPos > desc.Size)
-                {
-                    throw new InvalidDataException($"Chunk size {desc.Size} does not match actual data length {chunkEndPos - chunkStartPos}.");
-                }
-
-                reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
+                throw new InvalidDataException($"Chunk size {desc.Size} does not match actual data length {chunkEndPos - chunkStartPos}.");
             }
+
+            reader.SkipData(desc.Size - (int)(chunkEndPos - chunkStartPos));
         }
 
         return true;

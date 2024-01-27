@@ -5,10 +5,7 @@ namespace GBX.NET;
 /// <summary>
 /// A data chunk interface belonging to <typeparamref name="T"/>.
 /// </summary>
-public interface IChunk<T> : IChunk where T : IClass
-{
-
-}
+public interface IChunk<T> : IChunk where T : IClass;
 
 /// <summary>
 /// A data chunk belonging to <typeparamref name="T"/>.

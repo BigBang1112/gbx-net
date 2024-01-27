@@ -1,5 +1,3 @@
 ﻿namespace GBX.NET;
 
-public interface IClassVersion<T> where T : IClass
-{
-}
+public interface IClassVersion<T> where T : IClass;
