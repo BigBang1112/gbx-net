@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// A data chunk located in the header part.

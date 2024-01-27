@@ -2,6 +2,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
+using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 

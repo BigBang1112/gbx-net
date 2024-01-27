@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 public sealed class ChunkIdEqualityComparer : IEqualityComparer<IChunk>
 {
@@ -8,7 +8,7 @@ public sealed class ChunkIdEqualityComparer : IEqualityComparer<IChunk>
     {
         if (ReferenceEquals(x, y)) return true;
         if (x is null || y is null) return false;
-        return x.Id == y.Id && ((x is not IHeaderChunk && y is not IHeaderChunk) || (x is IHeaderChunk && y is IHeaderChunk));
+        return x.Id == y.Id && (x is not IHeaderChunk && y is not IHeaderChunk || x is IHeaderChunk && y is IHeaderChunk);
     }
 
     public int GetHashCode(IChunk? obj)

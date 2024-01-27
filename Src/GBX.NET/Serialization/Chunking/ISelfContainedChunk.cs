@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// Chunk that has a completely different node data stored inside.

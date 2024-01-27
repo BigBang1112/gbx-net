@@ -1,6 +1,6 @@
 ﻿using GBX.NET.Managers;
 
-namespace GBX.NET;
+namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// A set of body chunks.

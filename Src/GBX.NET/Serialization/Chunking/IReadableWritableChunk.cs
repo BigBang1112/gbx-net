@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// Supports reading/writing data at the same time for the Gbx class.

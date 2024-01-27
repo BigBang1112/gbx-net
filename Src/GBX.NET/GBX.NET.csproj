@@ -41,6 +41,7 @@
 		<Using Include="GBX.NET.Attributes" />
 		<Using Include="GBX.NET.Exceptions" />
 		<Using Include="GBX.NET.Serialization" />
+		<Using Include="GBX.NET.Serialization.Chunking" />
 		<Using Include="GBX.NET.Engines.MwFoundations" />
 		<Using Include="GBX.NET.Engines.Plug" />
 		<Using Include="GBX.NET.Engines.Game" />

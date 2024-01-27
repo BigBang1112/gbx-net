@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization;
 
 /// <summary>
 /// Supports reading/writing data at the same time.

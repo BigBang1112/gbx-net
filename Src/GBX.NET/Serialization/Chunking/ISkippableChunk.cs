@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 public interface ISkippableChunk : IChunk
 {

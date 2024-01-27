@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Serialization.Chunking;
 
 public abstract class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : IClass
 {
