@@ -52,8 +52,8 @@ public interface IChunkSet : ISet<IChunk>
 
 internal sealed class ChunkSet : SortedSet<IChunk>, IChunkSet
 {
-    internal ChunkSet(int capacity) : base(new ChunkIdComparer()) { }
-    internal ChunkSet() : base(new ChunkIdComparer()) { }
+    internal ChunkSet(int capacity) : base(ChunkIdComparer.Default) { }
+    internal ChunkSet() : base(ChunkIdComparer.Default) { }
 
     public IChunk Create(uint chunkId)
     {

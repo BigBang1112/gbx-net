@@ -468,7 +468,7 @@ public class MiniLZO : ILzo
 
     public static unsafe void Decompress(byte* r, uint size_in, byte* w, ref uint size_out)
     {
-        fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
+        fixed (byte* wrkmem = stackalloc byte[IntPtr.Size * 16384])
         {
             lzo1x_decompress(r, size_in, w, ref size_out, wrkmem);
         }
@@ -476,17 +476,17 @@ public class MiniLZO : ILzo
 
     public static unsafe void Compress(byte* r, uint size_in, byte* w, ref uint size_out)
     {
-        fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
+        fixed (byte* wrkmem = stackalloc byte[IntPtr.Size * 16384])
         {
             lzo1x_1_compress(r, size_in, w, ref size_out, wrkmem);
         }
     }
 
 
-    public unsafe void Decompress(byte[] @in, byte[] @out)
+    public unsafe void Decompress(in Span<byte> @in, byte[] @out)
     {
         uint out_len = 0;
-        fixed (byte* @pIn = @in, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
+        fixed (byte* @pIn = @in, wrkmem = stackalloc byte[IntPtr.Size * 16384], pOut = @out)
         {
             lzo1x_decompress(pIn, (uint)@in.Length, @pOut, ref @out_len, wrkmem);
         }
@@ -496,7 +496,7 @@ public class MiniLZO : ILzo
     {
         byte[] @out = new byte[input.Length + (input.Length / 16) + 64 + 3];
         uint out_len = 0;
-        fixed (byte* @pIn = input, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
+        fixed (byte* @pIn = input, wrkmem = stackalloc byte[IntPtr.Size * 16384], pOut = @out)
         {
             lzo1x_1_compress(pIn, (uint)input.Length, @pOut, ref @out_len, wrkmem);
         }

@@ -2,6 +2,8 @@
 
 public sealed class ChunkIdEqualityComparer : IEqualityComparer<IChunk>
 {
+    public static readonly ChunkIdEqualityComparer Default = new();
+
     public bool Equals(IChunk? x, IChunk? y)
     {
         if (ReferenceEquals(x, y)) return true;

@@ -79,7 +79,12 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
     private byte[] DecompressData(int compressedSize, int uncompressedSize)
     {
+#if NET5_0_OR_GREATER
+        Span<byte> compressedData = stackalloc byte[compressedSize];
+        reader.Read(compressedData);
+#else
         var compressedData = reader.ReadBytes(compressedSize);
+#endif
         var decompressedData = new byte[uncompressedSize];
 
         if (Gbx.LZO is null)
@@ -87,7 +92,11 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
             throw new Exception("LZO is required but not available.");
         }
 
+#if NET5_0_OR_GREATER
+        Gbx.LZO.Decompress(in compressedData, decompressedData);
+#else
         Gbx.LZO.Decompress(compressedData, decompressedData);
+#endif
 
         return decompressedData;
     }

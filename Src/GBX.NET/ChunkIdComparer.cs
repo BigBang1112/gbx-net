@@ -2,6 +2,8 @@
 
 public sealed class ChunkIdComparer : IComparer<IChunk>
 {
+    public static readonly ChunkIdComparer Default = new();
+
     public int Compare(IChunk? x, IChunk? y)
     {
         if (x is null || y is null)

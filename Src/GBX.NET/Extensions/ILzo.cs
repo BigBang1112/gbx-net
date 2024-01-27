@@ -2,6 +2,6 @@
 
 public interface ILzo
 {
-    void Decompress(byte[] input, byte[] output);
+    void Decompress(in Span<byte> input, byte[] output);
     byte[] Compress(byte[] data);
 }
