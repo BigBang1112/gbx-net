@@ -51,33 +51,6 @@ public static partial class ClassManager
 
     internal static IChunk? NewChunk(uint chunkId) => null;
 
-    internal static uint Wrap(uint classId)
-    {
-        var classPart = classId & 0xFFFFF000;
-        var chunkPart = classId & 0x00000FFF;
-
-        if (classPart == 0x24003000)
-        {
-            classPart = 0x03043000;
-        }
-        else if (classPart == 0x24007000)
-        {
-            classPart = 0x3057000;
-        }
-        else if (classPart == 0x2403C000)
-        {
-            classPart = 0x0301B000;
-        }
-        else if (classPart == 0x2400C000)
-        {
-            classPart = 0x0305B000;
-        }
-
-        return classPart | chunkPart;
-    }
-
-    internal static uint Unwrap(uint classId)
-    {
-        return classId;
-    }
+    internal static partial uint Wrap(uint classId);
+    internal static partial uint Unwrap(uint classId);
 }
