@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ClassIdFormatter": {
+      "commandName": "Project",
+      "commandLineArgs": "../../../../../Resources/Wrap.txt"
+    }
+  }
+}
