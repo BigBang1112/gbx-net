@@ -14,9 +14,10 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
                 var uncompressedSize = reader.ReadInt32();
 
-                if (settings.MaxUncompressedBodySize.HasValue && uncompressedSize > settings.MaxUncompressedBodySize.Value)
+                if (uncompressedSize > GbxReader.MaxDataSize
+                    || (settings.MaxUncompressedBodySize.HasValue && uncompressedSize > settings.MaxUncompressedBodySize.Value))
                 {
-                    throw new Exception($"Uncompressed body (size {uncompressedSize}B) exceeds maximum allowed size {settings.MaxUncompressedBodySize}B.");
+                    throw new Exception($"Uncompressed body size {uncompressedSize} exceeds maximum allowed size {settings.MaxUncompressedBodySize}.");
                 }
 
                 var compressedSize = reader.ReadInt32();

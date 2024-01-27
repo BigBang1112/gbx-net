@@ -218,9 +218,9 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
 
         // Maybe should be much stricter... and configurable
-        if (userDataLength > GbxReader.MaxDataSize)
+        if (userDataLength > GbxReader.MaxDataSize || (settings.MaxUserDataSize.HasValue && userDataLength > settings.MaxUserDataSize.Value))
         {
-            throw new LengthLimitException($"User data length {userDataLength} exceeds maximum data size {GbxReader.MaxDataSize}.");
+            throw new LengthLimitException($"User data size {userDataLength} exceeds maximum allowed size {GbxReader.MaxDataSize}.");
         }
 
         // The idea is to preferably not create sub-buffers to reduce pressure on the GC.

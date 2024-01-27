@@ -14,4 +14,5 @@ public readonly record struct GbxReadSettings
     public bool SkipExceptionsInBody { get; init; }
     public bool LeaveOpen { get; init; }
     public int? MaxUncompressedBodySize { get; init; }
+    public int? MaxUserDataSize { get; init; }
 }
