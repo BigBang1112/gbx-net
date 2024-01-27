@@ -21,6 +21,16 @@ public readonly record struct Vec2(float X, float Y)
         return $"<{X}, {Y}>";
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+    public float GetMagnitude() => MathF.Sqrt(GetSqrMagnitude());
+#endif
+
+#if NETSTANDARD2_0 || NET462_OR_GREATER
+    public float GetMagnitude() => (float)Math.Sqrt(GetSqrMagnitude());
+#endif
+
+    public float GetSqrMagnitude() => X * X + Y * Y;
+
     /// <summary>
     /// Implicitly converts a tuple of floats to an <see cref="Vec2"/> vector.
     /// </summary>

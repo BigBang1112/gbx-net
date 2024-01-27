@@ -22,6 +22,23 @@ public readonly record struct Vec3(float X, float Y, float Z)
         return $"<{X}, {Y}, {Z}>";
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+    public float GetMagnitude() => MathF.Sqrt(GetSqrMagnitude());
+#else
+    public float GetMagnitude() => (float)Math.Sqrt(GetSqrMagnitude());
+#endif
+
+    public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
+
+    public Vec3 GetNormalized()
+    {
+        var magnitude = GetMagnitude();
+        return magnitude == 0 ? this : new(X / magnitude, Y / magnitude, Z / magnitude);
+    }
+
+    public static float GetDotProduct(Vec3 a, Vec3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+    public static Vec3 GetCrossProduct(Vec3 a, Vec3 b) => new(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+
     /// <summary>
     /// Implicitly converts a tuple of floats to an <see cref="Vec3"/> vector.
     /// </summary>

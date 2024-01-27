@@ -35,10 +35,18 @@ public partial interface IGbxReader : IDisposable
     BigInteger ReadInt128();
     Int2 ReadInt2();
     Int3 ReadInt3();
+    Int4 ReadInt4();
     Byte3 ReadByte3();
     Vec2 ReadVec2();
     Vec3 ReadVec3();
     Vec4 ReadVec4();
+    Box ReadBox();
+    Color ReadColor();
+    Iso4 ReadIso4();
+    Mat3 ReadMat3();
+    Mat4 ReadMat4();
+    Quat ReadQuat();
+    Rect ReadRect();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
     byte[] ReadData();
@@ -276,6 +284,11 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(ReadInt32(), ReadInt32(), ReadInt32());
     }
 
+    public Int4 ReadInt4()
+    {
+        return new(ReadInt32(), ReadInt32(), ReadInt32(), ReadInt32());
+    }
+
     public Byte3 ReadByte3()
     {
         return new(ReadByte(), ReadByte(), ReadByte());
@@ -294,6 +307,83 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
     public Vec4 ReadVec4()
     {
         return new(ReadSingle(), ReadSingle(), ReadSingle(), ReadSingle());
+    }
+
+    public Box ReadBox()
+    {
+        return new Box(X: ReadSingle(),
+                       Y: ReadSingle(),
+                       Z: ReadSingle(),
+                       X2: ReadSingle(),
+                       Y2: ReadSingle(),
+                       Z2: ReadSingle());
+    }
+
+    public Color ReadColor()
+    {
+        return new(ReadSingle(), ReadSingle(), ReadSingle(), ReadSingle());
+    }
+
+    public Iso4 ReadIso4()
+    {
+        return new Iso4(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle(),
+                        TX: ReadSingle(),
+                        TY: ReadSingle(),
+                        TZ: ReadSingle());
+    }
+
+    public Mat3 ReadMat3()
+    {
+        return new Mat3(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle());
+    }
+
+    public Mat4 ReadMat4()
+    {
+        return new Mat4(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        XW: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        YW: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle(),
+                        ZW: ReadSingle(),
+                        WX: ReadSingle(),
+                        WY: ReadSingle(),
+                        WZ: ReadSingle(),
+                        WW: ReadSingle());
+    }
+
+    public Quat ReadQuat()
+    {
+        return new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle(), W: ReadSingle());
+    }
+
+    public Rect ReadRect()
+    {
+        return new Rect(X: ReadSingle(),
+                        Y: ReadSingle(),
+                        X2: ReadSingle(),
+                        Y2: ReadSingle());
     }
 
     public GbxFormat ReadFormatByte()

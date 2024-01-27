@@ -40,10 +40,18 @@ public partial interface IGbxWriter : IDisposable
     void WriteInt128(BigInteger value);
     void Write(Int2 value);
     void Write(Int3 value);
+    void Write(Int4 value);
     void Write(Byte3 value);
     void Write(Vec2 value);
     void Write(Vec3 value);
     void Write(Vec4 value);
+    void Write(Box value);
+    void Write(Color value);
+    void Write(Iso4 value);
+    void Write(Mat3 value);
+    void Write(Mat4 value);
+    void Write(Quat value);
+    void Write(Rect value);
     void Write(Id value);
     void WriteIdAsString(string? value);
     void Write(Ident? value);
@@ -355,6 +363,14 @@ internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.Z);
     }
 
+    public void Write(Int4 value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.W);
+    }
+
     public void Write(Byte3 value)
     {
         Write(value.X);
@@ -381,6 +397,89 @@ internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.Y);
         Write(value.Z);
         Write(value.W);
+    }
+
+    public void Write(Box value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.X2);
+        Write(value.Y2);
+        Write(value.Z2);
+    }
+
+    public void Write(Color value)
+    {
+        Write(value.R);
+        Write(value.G);
+        Write(value.B);
+        Write(value.A);
+    }
+
+    public void Write(Iso4 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.XZ);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.YZ);
+        Write(value.ZX);
+        Write(value.ZY);
+        Write(value.ZZ);
+        Write(value.TX);
+        Write(value.TY);
+        Write(value.TZ);
+    }
+
+    public void Write(Mat3 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.XZ);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.YZ);
+        Write(value.ZX);
+        Write(value.ZY);
+        Write(value.ZZ);
+    }
+
+    public void Write(Mat4 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.XZ);
+        Write(value.XW);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.YZ);
+        Write(value.YW);
+        Write(value.ZX);
+        Write(value.ZY);
+        Write(value.ZZ);
+        Write(value.ZW);
+        Write(value.WX);
+        Write(value.WY);
+        Write(value.WZ);
+        Write(value.WW);
+    }
+
+    public void Write(Quat value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.W);
+    }
+
+    public void Write(Rect value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.X2);
+        Write(value.Y2);
     }
 
     public void Write(Id value)
