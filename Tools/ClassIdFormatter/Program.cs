@@ -35,7 +35,7 @@ foreach (var line in lines)
 
 using var w = File.CreateText(fileName);
 
-foreach (var (classId1, classId2) in classIdDict)
+foreach (var (classId1, classId2) in classIdDict.OrderBy(x => x.Key))
 {
     var classId1Str = classId1.ToString("X8", CultureInfo.InvariantCulture);
     var classId2Str = classId2.ToString("X8", CultureInfo.InvariantCulture);
