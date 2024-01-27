@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using GBX.NET.Tests.Mocks;
+using System.Text;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
@@ -768,5 +769,192 @@ public class GbxReaderTests
 
         // Act & Assert
         Assert.NotNull(r.IdDict);
+    }
+
+    [Fact]
+    public void ReadPackDesc_Version3_NoLocatorUrl()
+    {
+        // Arrange
+        var gibbrish = new byte[32];
+        Random.Shared.NextBytes(gibbrish);
+        var filePath = "folder\\test.txt";
+
+        using var ms = new MemoryStream(new byte[] { 3 }
+            .Concat(gibbrish)
+            .Concat(BitConverter.GetBytes(filePath.Length))
+            .Concat(Encoding.UTF8.GetBytes(filePath))
+            .Concat(BitConverter.GetBytes(0))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Equal(expected: filePath, actual: result.FilePath);
+        Assert.NotNull(result.LocatorUrl);
+        Assert.Empty(result.LocatorUrl);
+        Assert.Equal(expected: 56, actual: ms.Position);
+    }
+
+    [Fact]
+    public void ReadPackDesc_Version3_WithLocatorUrl()
+    {
+        // Arrange
+        var gibbrish = new byte[32];
+        Random.Shared.NextBytes(gibbrish);
+        var filePath = "folder\\test.txt";
+        var locatorUrl = "https://google.com";
+
+        using var ms = new MemoryStream(new byte[] { 3 }
+            .Concat(gibbrish)
+            .Concat(BitConverter.GetBytes(filePath.Length))
+            .Concat(Encoding.UTF8.GetBytes(filePath))
+            .Concat(BitConverter.GetBytes(locatorUrl.Length))
+            .Concat(Encoding.UTF8.GetBytes(locatorUrl))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Equal(expected: filePath, actual: result.FilePath);
+        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
+        Assert.Equal(expected: 74, actual: ms.Position);
+    }
+
+    [Fact]
+    public void ReadPackDesc_Version3_NoFilePath()
+    {
+        // Arrange
+        var gibbrish = new byte[32];
+        Random.Shared.NextBytes(gibbrish);
+        var locatorUrl = "https://google.com";
+
+        using var ms = new MemoryStream(new byte[] { 3 }
+            .Concat(gibbrish)
+            .Concat(BitConverter.GetBytes(0))
+            .Concat(BitConverter.GetBytes(locatorUrl.Length))
+            .Concat(Encoding.UTF8.GetBytes(locatorUrl))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Empty(result.FilePath);
+        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
+        Assert.Equal(expected: 59, actual: ms.Position);
+    }
+
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void ReadPackDesc_Version1And2_NoLocatorUrl_WithFilePath(byte version)
+    {
+        // Arrange
+        var filePath = "folder\\test.txt";
+
+        using var ms = new MemoryStream(new byte[] { version }
+            .Concat(BitConverter.GetBytes(filePath.Length))
+            .Concat(Encoding.UTF8.GetBytes(filePath))
+            .Concat(BitConverter.GetBytes(0))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Null(result.Checksum);
+        Assert.Equal(expected: filePath, actual: result.FilePath);
+        Assert.NotNull(result.LocatorUrl);
+        Assert.Empty(result.LocatorUrl);
+        Assert.Equal(expected: 24, actual: ms.Position);
+    }
+
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void ReadPackDesc_Version1And2_WithLocatorUrl_WithFilePath(byte version)
+    {
+        // Arrange
+        var filePath = "folder\\test.txt";
+        var locatorUrl = "https://google.com";
+
+        using var ms = new MemoryStream(new byte[] { version }
+            .Concat(BitConverter.GetBytes(filePath.Length))
+            .Concat(Encoding.UTF8.GetBytes(filePath))
+            .Concat(BitConverter.GetBytes(locatorUrl.Length))
+            .Concat(Encoding.UTF8.GetBytes(locatorUrl))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Null(result.Checksum);
+        Assert.Equal(expected: filePath, actual: result.FilePath);
+        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
+        Assert.Equal(expected: 42, actual: ms.Position);
+    }
+
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void ReadPackDesc_Version1And2_NoFilePath(byte version)
+    {
+        // Arrange
+        using var ms = new MemoryStream(new byte[] { version }
+            .Concat(BitConverter.GetBytes(0))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Null(result.Checksum);
+        Assert.NotNull(result.FilePath);
+        Assert.Empty(result.FilePath);
+        Assert.NotNull(result.LocatorUrl);
+        Assert.Empty(result.LocatorUrl);
+        Assert.Equal(expected: 5, actual: ms.Position);
+    }
+
+    [Fact]
+    public void ReadPackDesc_Version0()
+    {
+        // Arrange
+        var filePath = "folder\\test.txt";
+
+        using var ms = new MemoryStream(new byte[] { 0 }
+            .Concat(BitConverter.GetBytes(filePath.Length))
+            .Concat(Encoding.UTF8.GetBytes(filePath))
+            .Append((byte)69)
+            .ToArray());
+        using var r = new GbxReader(ms);
+
+        // Act
+        var result = r.ReadPackDesc();
+
+        // Assert
+        Assert.Null(result.Checksum);
+        Assert.Equal(expected: filePath, actual: result.FilePath);
+        Assert.NotNull(result.LocatorUrl);
+        Assert.Empty(result.LocatorUrl);
+        Assert.Equal(expected: 20, actual: ms.Position);
     }
 }
