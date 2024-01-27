@@ -53,8 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Resources\CollectionId.txt = Resources\CollectionId.txt
 		Resources\Engine.txt = Resources\Engine.txt
 		Resources\Extensions.txt = Resources\Extensions.txt
-		Unwrap.txt = Unwrap.txt
-		Wrap.txt = Wrap.txt
+		Resources\Unwrap.txt = Resources\Unwrap.txt
+		Resources\Wrap.txt = Resources\Wrap.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Tests.Generators", "Generators\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj", "{D59DD3E9-08AF-4935-B0F3-5FEB2417C013}"
@@ -84,6 +84,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Advanced", "Advanced", "{0A6947D1-283B-4DC0-A041-4661A8D6DF55}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullMapInfo", "Samples\Beginner\FullMapInfo\FullMapInfo.csproj", "{9C8DF117-D7D1-4E9E-BACD-2E16DD3BD053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassIdFormatter", "Tools\ClassIdFormatter\ClassIdFormatter.csproj", "{C98445DB-08AB-437A-9DF3-396886572AEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,10 @@ Global
 		{9C8DF117-D7D1-4E9E-BACD-2E16DD3BD053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8DF117-D7D1-4E9E-BACD-2E16DD3BD053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8DF117-D7D1-4E9E-BACD-2E16DD3BD053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98445DB-08AB-437A-9DF3-396886572AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98445DB-08AB-437A-9DF3-396886572AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98445DB-08AB-437A-9DF3-396886572AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98445DB-08AB-437A-9DF3-396886572AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,6 +221,7 @@ Global
 		{FB4631D3-4622-489D-B722-2AD86C7361BA} = {8F4F67F6-6FC6-4382-8DEE-A01030E619F3}
 		{0A6947D1-283B-4DC0-A041-4661A8D6DF55} = {8F4F67F6-6FC6-4382-8DEE-A01030E619F3}
 		{9C8DF117-D7D1-4E9E-BACD-2E16DD3BD053} = {FB4631D3-4622-489D-B722-2AD86C7361BA}
+		{C98445DB-08AB-437A-9DF3-396886572AEC} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
