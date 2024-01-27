@@ -1,46 +1,13 @@
-﻿using ChunkL;
+﻿using GBX.NET.Generators.Models;
 using GBX.NET.Generators.Utils;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Text;
 
-namespace GBX.NET.Generators;
+namespace GBX.NET.Generators.SubGenerators;
 
-[Generator]
-public class ClassNameGenerator : ClassChunkLMixedGenerator
+internal static class ClassManagerGetNameIdSubGenerator
 {
-    private const bool Debug = false;
-
-    public override void Initialize(IncrementalGeneratorInitializationContext context)
-    {
-        if (Debug && !Debugger.IsAttached)
-        {
-            Debugger.Launch();
-        }
-
-        base.Initialize(context);
-    }
-
-    protected override void Initialize(IncrementalGeneratorInitializationContext context, IncrementalValueProvider<ImmutableArray<ClassDataModel>> transformed)
-    {
-        var classIdContents = context.AdditionalTextsProvider
-            .Where(static file =>
-            {
-                return file.Path.EndsWith("ClassId.txt") && Path.GetDirectoryName(file.Path).EndsWith("Resources");
-            })
-            .Select((additionalText, cancellationToken) =>
-            {
-                var text = additionalText.GetText(cancellationToken) ?? throw new Exception("Could not get text from file.");
-                return text.ToString();
-            });
-
-        var combined = transformed.Combine(classIdContents.Collect());
-
-        context.RegisterSourceOutput(combined, GenerateGetNameSource);
-        context.RegisterSourceOutput(combined, GenerateGetIdSource);
-    }
-
     private static Dictionary<uint, string> GetClassIdNameDictionary(ImmutableArray<string> classNames)
     {
         using var ms = new MemoryStream();
@@ -59,7 +26,7 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
         return ClassIdParser.Parse(reader);
     }
 
-    private void GenerateGetNameSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
+    public static void GenerateGetNameSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
     {
         var (existingClasses, classNames) = source;
         var classIdNameDict = GetClassIdNameDictionary(classNames);
@@ -76,7 +43,11 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
 
         foreach (var classInfo in existingClasses)
         {
-            builder.AppendLine($"        0x{classInfo.Id:X8} => nameof(GBX.NET.Engines.{classInfo.Engine}.{classInfo.Name}),");
+            builder.Append("        0x");
+            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(" => nameof(");
+            builder.Append(classInfo.Name);
+            builder.AppendLine("),");
         }
 
         builder.AppendLine("        _ => null");
@@ -95,11 +66,17 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
         {
             if (string.IsNullOrEmpty(pair.Value))
             {
-                builder.AppendLine($"            0x{pair.Key:X8} => null,");
+                builder.Append($"            0x");
+                builder.Append(pair.Key.ToString("X8"));
+                builder.AppendLine(" => null,");
             }
             else
             {
-                builder.AppendLine($"            0x{pair.Key:X8} => \"{pair.Value}\",");
+                builder.Append("            0x");
+                builder.Append(pair.Key.ToString("X8"));
+                builder.Append(" => \"");
+                builder.Append(pair.Value);
+                builder.AppendLine("\",");
             }
         }
 
@@ -108,10 +85,10 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
         builder.AppendLine("    }");
         builder.AppendLine("}");
 
-        context.AddSource("ClassManager.GetName", builder.ToString());
+        context.AddSource("Managers/ClassManager.GetName", builder.ToString());
     }
 
-    private void GenerateGetIdSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
+    public static void GenerateGetIdSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
     {
         var (existingClasses, classNames) = source;
         var classIdNameDict = GetClassIdNameDictionary(classNames);
@@ -128,7 +105,11 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
 
         foreach (var classInfo in existingClasses)
         {
-            builder.AppendLine($"        nameof(GBX.NET.Engines.{classInfo.Engine}.{classInfo.Name}) => 0x{classInfo.Id:X8},");
+            builder.Append("        nameof(");
+            builder.Append(classInfo.Name);
+            builder.Append(") => 0x");
+            builder.Append(classInfo.Id.ToString("X8"));
+            builder.AppendLine(",");
         }
 
         builder.AppendLine("        _ => null");
@@ -149,7 +130,11 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
         {
             if (!string.IsNullOrEmpty(pair.Value) && !alreadyAdded.Contains(pair.Value))
             {
-                builder.AppendLine($"            \"{pair.Value}\" => 0x{pair.Key:X8},");
+                builder.Append("            \"");
+                builder.Append(pair.Value);
+                builder.Append("\" => 0x");
+                builder.Append(pair.Key.ToString("X8"));
+                builder.AppendLine(",");
                 alreadyAdded.Add(pair.Value);
             }
         }
@@ -159,6 +144,6 @@ public class ClassNameGenerator : ClassChunkLMixedGenerator
         builder.AppendLine("    }");
         builder.AppendLine("}");
 
-        context.AddSource("ClassManager.GetId", builder.ToString());
+        context.AddSource("Managers/ClassManager.GetId", builder.ToString());
     }
 }

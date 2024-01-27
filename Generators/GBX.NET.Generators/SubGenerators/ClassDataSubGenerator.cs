@@ -1,28 +1,13 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using GBX.NET.Generators.Models;
+using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Text;
 
-namespace GBX.NET.Generators;
+namespace GBX.NET.Generators.SubGenerators;
 
-[Generator]
-public class ClassNewGenerator : ClassChunkLMixedGenerator
+internal class ClassDataSubGenerator
 {
-    private const bool Debug = false;
-
-    public override void Initialize(IncrementalGeneratorInitializationContext context)
-    {
-        if (Debug && !Debugger.IsAttached) Debugger.Launch();
-
-        base.Initialize(context);
-    }
-
-    protected override void Initialize(IncrementalGeneratorInitializationContext context, IncrementalValueProvider<ImmutableArray<ClassDataModel>> transformed)
-    {
-        context.RegisterSourceOutput(transformed, GenerateSource);
-    }
-
-    private void GenerateSource(SourceProductionContext context, ImmutableArray<ClassDataModel> classInfos)
+    public static void GenerateSource(SourceProductionContext context, ImmutableArray<ClassDataModel> classInfos)
     {
         var inheritanceInverted = new Dictionary<string, Dictionary<uint, string>>();
 
@@ -93,7 +78,7 @@ public class ClassNewGenerator : ClassChunkLMixedGenerator
 
             sb.AppendLine("}");
 
-            context.AddSource(classInfo.Name, sb.ToString());
+            context.AddSource($"Engines/{classInfo.Name}", sb.ToString());
         }
     }
 }

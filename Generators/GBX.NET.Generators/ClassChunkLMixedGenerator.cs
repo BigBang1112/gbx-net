@@ -1,19 +1,16 @@
 ﻿using ChunkL;
+using ChunkL.Structure;
+using GBX.NET.Generators.Models;
+using GBX.NET.Generators.SubGenerators;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
+using System.Text;
 
 namespace GBX.NET.Generators;
 
-public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
+[Generator]
+public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 {
-    protected record ChunkLFile(ChunkLDataModel DataModel, string Engine);
-    protected record ClassDataModel(
-        string Name,
-        uint Id,
-        string Engine,
-        string? Inherits,
-        INamedTypeSymbol? TypeSymbol);
-
     public virtual void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var chunklFiles = context.AdditionalTextsProvider
@@ -73,10 +70,38 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                 if (inherits == nameof(Object)) inherits = "CMwNod";
                 if (name == "CMwNod") inherits = null;
 
-                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, symbol));
+                var nestedTypeSymbols = symbol?.GetTypeMembers()
+                    .ToImmutableDictionary(x => x.Name) ?? ImmutableDictionary<string, INamedTypeSymbol>.Empty;
+
+                var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
+                var chunkDict = new Dictionary<uint, ChunkDataModel>();
+
+                foreach (var chunkDef in chunklFile.DataModel.Body.ChunkDefinitions)
+                {
+                    var fullChunkId = id | chunkDef.Id;
+
+                    if (chunkDef.Properties.TryGetValue("header", out _))
+                    {
+                        var headerChunkSymbol = nestedTypeSymbols.GetValueOrDefault($"HeaderChunk{fullChunkId:X8}");
+                        headerChunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, chunkDef, headerChunkSymbol));
+                    }
+                    else
+                    {
+                        var chunkSymbol = nestedTypeSymbols.GetValueOrDefault($"Chunk{fullChunkId:X8}");
+                        chunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, chunkDef, chunkSymbol));
+                    }
+                }
+
+                foreach (var archiveDef in chunklFile.DataModel.Body.ArchiveDefinitions)
+                {
+
+                }
+
+                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, symbol, headerChunkDict, chunkDict, []));
                 alreadyAdded.Add(name);
             }
 
+            // classes implemented without chunkl files
             foreach (var gbxClass in gbxClasses)
             {
                 if (alreadyAdded.Contains(gbxClass.Name))
@@ -93,14 +118,65 @@ public abstract class ClassChunkLMixedGenerator : IIncrementalGenerator
                 if (inherits == nameof(Object)) inherits = "CMwNod";
                 if (gbxClass.Name == "CMwNod") inherits = null;
 
-                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, gbxClass));
+                var nestedTypeSymbols = gbxClass.GetTypeMembers();
+
+                var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
+                var chunkDict = new Dictionary<uint, ChunkDataModel>();
+                var chunksWithNoId = new List<INamedTypeSymbol>();
+
+                foreach (var nestedSymbol in nestedTypeSymbols)
+                {
+                    if (nestedSymbol.AllInterfaces.Any(x => x.Name == "IChunk"))
+                    {
+                        var isHeaderChunk = nestedSymbol.AllInterfaces.Any(x => x.Name == "IHeaderChunk");
+
+                        var chunkId = nestedSymbol.GetAttributes()
+                            .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkAttribute")?
+                            .ConstructorArguments[0].Value as uint?;
+
+                        if (chunkId is null)
+                        {
+                            chunksWithNoId.Add(nestedSymbol);
+                            continue;
+                        }
+
+                        var chunk = new ChunkDataModel(chunkId.Value, ChunkLDefinition: null, nestedSymbol);
+
+                        if (isHeaderChunk)
+                        {
+                            headerChunkDict.Add(chunkId.Value, chunk);
+                        }
+                        else
+                        {
+                            chunkDict.Add(chunkId.Value, chunk);
+                        }
+                    }
+
+                    // if archive definition
+                }
+
+                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, gbxClass, headerChunkDict, chunkDict, chunksWithNoId));
             }
 
             return classModels.ToImmutableArray();
         });
 
-        Initialize(context, transformed);
-    }
+        var classIdContents = context.AdditionalTextsProvider
+            .Where(static file =>
+            {
+                return file.Path.EndsWith("ClassId.txt") && Path.GetDirectoryName(file.Path).EndsWith("Resources");
+            })
+            .Select((additionalText, cancellationToken) =>
+            {
+                var text = additionalText.GetText(cancellationToken) ?? throw new Exception("Could not get text from file.");
+                return text.ToString();
+            });
 
-    protected abstract void Initialize(IncrementalGeneratorInitializationContext context, IncrementalValueProvider<ImmutableArray<ClassDataModel>> transformed);
+        var transformedWithClassIdTxt = transformed.Combine(classIdContents.Collect());
+        context.RegisterSourceOutput(transformedWithClassIdTxt, ClassManagerGetNameIdSubGenerator.GenerateGetNameSource);
+        context.RegisterSourceOutput(transformedWithClassIdTxt, ClassManagerGetNameIdSubGenerator.GenerateGetIdSource);
+
+        context.RegisterSourceOutput(transformed, ClassDataSubGenerator.GenerateSource);
+        context.RegisterSourceOutput(transformed, ClassManagerSubGenerator.GenerateSource);
+    }
 }

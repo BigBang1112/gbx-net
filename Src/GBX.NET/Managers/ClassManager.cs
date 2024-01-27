@@ -38,18 +38,8 @@ public static partial class ClassManager
 
     internal static uint GetChunkId(Type type) => throw new NotImplementedException();
 
-    internal static IHeaderChunk? NewHeaderChunk(uint chunkId) => chunkId switch
-    {
-        0x03043002 => new CGameCtnChallenge.HeaderChunk03043002(),
-        0x03043003 => new CGameCtnChallenge.HeaderChunk03043003(),
-        0x03043004 => new CGameCtnChallenge.HeaderChunk03043004(),
-        0x03043005 => new CGameCtnChallenge.HeaderChunk03043005(),
-        0x03043007 => new CGameCtnChallenge.HeaderChunk03043007(),
-        0x03043008 => new CGameCtnChallenge.HeaderChunk03043008(),
-        _ => null
-    };
-
-    internal static IChunk? NewChunk(uint chunkId) => null;
+    internal static partial IHeaderChunk? NewHeaderChunk(uint chunkId);
+    internal static partial IChunk? NewChunk(uint chunkId);
 
     internal static partial uint Wrap(uint classId);
     internal static partial uint Unwrap(uint classId);
