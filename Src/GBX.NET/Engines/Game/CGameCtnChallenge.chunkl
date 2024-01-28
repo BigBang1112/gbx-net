@@ -96,6 +96,12 @@ CGameCtnChallenge 0x03043000 // A map.
  string MapName
 
 0x013 // legacy block data
+ ident MapInfo
+ string MapName
+ ident Decoration
+ int3 Size
+ bool
+ list<CGameCtnBlock> Blocks
 
 0x014 (skippable) [TMSX, TMNESWC, TMU] // legacy password
  bool

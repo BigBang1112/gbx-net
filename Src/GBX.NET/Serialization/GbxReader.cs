@@ -67,6 +67,7 @@ public partial interface IGbxReader : IDisposable
     TimeSingle? ReadTimeSingleNullable();
     TimeSpan? ReadTimeOfDay();
     void ReadMarker(string value);
+    T ReadReadable<T>(int version = 0) where T : IReadable, new();
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -89,6 +90,7 @@ public partial interface IGbxReader : IDisposable
     IList<string> ReadListId();
     IList<string> ReadListId_deprec();
 
+    uint PeekUInt32();
     void SkipData(int length);
     byte[] ReadToEnd();
     void ResetIdState();
@@ -804,6 +806,13 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
 #endif
     }
 
+    public T ReadReadable<T>(int version = 0) where T : IReadable, new()
+    {
+        var readable = new T();
+        readable.Read(this, version);
+        return readable;
+    }
+
     private static void ValidateCollectionLength(int length)
     {
         if (length < 0)
@@ -1067,6 +1076,13 @@ internal sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             throw new EndOfStreamException();
         }
+    }
+
+    public uint PeekUInt32()
+    {
+        var result = ReadUInt32();
+        BaseStream.Seek(-sizeof(uint), SeekOrigin.Current);
+        return result;
     }
 
     public byte[] ReadToEnd()

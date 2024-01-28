@@ -148,9 +148,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
     private void GenerateReaderWriterSource(SourceProductionContext context, IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> symbols)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("#if NET6_0_OR_GREATER");
         sb.AppendLine("using System.Diagnostics.CodeAnalysis;");
-        sb.AppendLine("#endif");
         sb.AppendLine();
         sb.AppendLine("namespace GBX.NET.Serialization;");
         sb.AppendLine();
@@ -177,6 +175,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
                 var isNullableVariant = i == 1;
+
+                if (!writerMethod.Parameters.IsEmpty)
+                {
+                    sbInterface.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
+                }
 
                 sbInterface.Append("    ");
                 sbInterface.Append(writerMethod.Parameters.Length > 0 && writerMethod.Parameters[0].Type.Name == readerMethod.ReturnType.Name
@@ -336,7 +339,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbInterface.Append('>');
                     }
 
-                    sbInterface.Append("(ref ");
+
+                    sbInterface.Append("([NotNullIfNotNull(nameof(value))] ref ");
 
                     var first = true;
 
@@ -518,9 +522,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                 if (!writerMethod.Parameters.IsEmpty)
                 {
-                    sbClass.AppendLine("#if NET6_0_OR_GREATER");
                     sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
-                    sbClass.AppendLine("#endif");
                 }
 
                 sbClass.Append("    public ");
@@ -782,11 +784,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbClass.Append('>');
                     }
 
-                    sbClass.AppendLine("(");
-                    sbClass.AppendLine("#if NET6_0_OR_GREATER");
-                    sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
-                    sbClass.AppendLine("#endif");
-                    sbClass.Append("        ref ");
+                    sbClass.Append("([NotNullIfNotNull(nameof(value))] ref ");
 
                     var first = true;
 
@@ -899,9 +897,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         if (!writerMethod.Parameters.IsEmpty)
                         {
-                            sbClass.AppendLine("#if NET6_0_OR_GREATER");
                             sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
-                            sbClass.AppendLine("#endif");
                         }
 
                         sbClass.Append("    public ");
@@ -999,11 +995,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             sbClass.Append("_deprec");
                         }
 
-                        sbClass.AppendLine("(");
-                        sbClass.AppendLine("#if NET6_0_OR_GREATER");
-                        sbClass.AppendLine("        [NotNullIfNotNull(nameof(value))]");
-                        sbClass.AppendLine("#endif");
-                        sbClass.Append("        ref ");
+                        sbClass.Append("([NotNullIfNotNull(nameof(value))] ref ");
 
                         if (isList)
                         {

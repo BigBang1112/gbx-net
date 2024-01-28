@@ -26,6 +26,8 @@ public sealed partial class CGameCtnChallenge :
         set => thumbnail = value;
     }
 
+    public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1");
+
     private byte[]? hashedPassword;
     public byte[]? HashedPassword
     {
@@ -146,6 +148,59 @@ public sealed partial class CGameCtnChallenge :
             rw.Marker("<Comments>");
             rw.String(ref n.comments);
             rw.Marker("</Comments>");
+        }
+    }
+
+    public partial class Chunk0304301F : IVersionable
+    {
+        public int Version { get; set; } = 6;
+
+        public bool U01;
+
+        internal override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            n.mapInfo = r.ReadIdent();
+            n.mapName = r.ReadString();
+            n.decoration = r.ReadIdent();
+            n.size = r.ReadInt3();
+            U01 = r.ReadBoolean();
+            Version = r.ReadInt32();
+
+            var nbBlocks = r.ReadInt32();
+            var blocks = new List<CGameCtnBlock>(nbBlocks);
+
+            for (var i = 0; i < nbBlocks; i++)
+            {
+                var block = r.ReadReadable<CGameCtnBlock>(Version);
+                blocks.Add(block);
+
+                if (block.Flags == -1)
+                {
+                    i--;
+                }
+            }
+
+            while ((r.PeekUInt32() & 0xC0000000) > 0)
+            {
+                blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
+            }
+        }
+
+        internal override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(n.mapInfo);
+            w.Write(n.mapName);
+            w.Write(n.decoration);
+            w.Write(n.size);
+            w.Write(U01);
+            w.Write(Version);
+
+            w.Write(n.NbBlocks.GetValueOrDefault());
+
+            foreach (var block in n.blocks)
+            {
+                w.WriteWritable(block, Version);
+            }
         }
     }
 

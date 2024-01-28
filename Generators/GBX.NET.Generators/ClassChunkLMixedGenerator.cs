@@ -109,10 +109,9 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     continue;
                 }
 
-                var id = (gbxClass.GetAttributes()
+                var id = gbxClass.GetAttributes()
                     .FirstOrDefault(x => x.AttributeClass?.Name == "ClassAttribute")?
-                    .ConstructorArguments[0].Value as uint?)
-                    .GetValueOrDefault();
+                    .ConstructorArguments[0].Value as uint?;
 
                 var inherits = gbxClass.BaseType?.Name ?? "CMwNod";
                 if (inherits == nameof(Object)) inherits = "CMwNod";

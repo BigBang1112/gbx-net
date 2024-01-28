@@ -24,7 +24,7 @@ internal class ClassDataSubGenerator
                 inheritanceInverted[classInfo.Inherits] = [];
             }
 
-            inheritanceInverted[classInfo.Inherits].Add(classInfo.Id, classInfo.Name);
+            inheritanceInverted[classInfo.Inherits].Add(classInfo.Id.GetValueOrDefault(), classInfo.Name);
         }
 
         foreach (var classInfo in classInfos)
@@ -54,7 +54,7 @@ internal class ClassDataSubGenerator
             if (classInfo.TypeSymbol is null || !classInfo.TypeSymbol.IsAbstract)
             {
                 sb.Append("        0x");
-                sb.Append(classInfo.Id.ToString("X8"));
+                sb.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
                 sb.Append(" => new ");
                 sb.Append(classInfo.Name);
                 sb.AppendLine("(),");
@@ -79,6 +79,37 @@ internal class ClassDataSubGenerator
             sb.AppendLine("}");
 
             context.AddSource($"Engines/{classInfo.Name}", sb.ToString());
+        }
+
+        foreach (var classInfo in classInfos)
+        {
+            if (classInfo.Id is null)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                    "GBXNETGEN001",
+                    "Class has no ID",
+                    "{0} has no ID defined by ClassAttribute",
+                    "GBX.NET.Generators",
+                    DiagnosticSeverity.Error,
+                    isEnabledByDefault: true),
+                    classInfo.TypeSymbol?.Locations.FirstOrDefault(),
+                    classInfo.Name));
+            }
+
+            foreach (var chunkInfo in classInfo.ChunksWithNoId)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                    "GBXNETGEN002",
+                    "Chunk has no ID",
+                    "{0} has no ID defined by ChunkAttribute",
+                    "GBX.NET.Generators",
+                    DiagnosticSeverity.Error,
+                    isEnabledByDefault: true),
+                    chunkInfo.Locations.FirstOrDefault(),
+                    chunkInfo.Name));
+            }
         }
     }
 }

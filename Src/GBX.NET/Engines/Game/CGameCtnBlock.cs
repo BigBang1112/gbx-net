@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlock
+public partial class CGameCtnBlock : IReadable, IWritable
 {
     /// <summary>
     /// Name of the block.
@@ -16,4 +16,14 @@ public partial class CGameCtnBlock
     /// Position of the block on the map in block coordination.
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
+
+    public void Read(IGbxReader r, int version = 0)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Write(IGbxWriter w, int version = 0)
+    {
+        throw new NotImplementedException();
+    }
 }

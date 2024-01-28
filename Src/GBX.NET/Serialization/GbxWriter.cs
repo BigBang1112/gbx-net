@@ -64,6 +64,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeSingleNullable(TimeSingle? value);
     void WriteTimeOfDay(TimeSpan? value);
     void WriteMarker(string value);
+    void WriteWritable<T>(T value, int version = 0) where T : IWritable;
 
     void Write(byte[]? value);
     void WriteData(byte[]? value);
@@ -627,6 +628,11 @@ internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteMarker(string value)
     {
         Write(value, StringLengthPrefix.None);
+    }
+
+    public void WriteWritable<T>(T value, int version = 0) where T : IWritable
+    {
+        value.Write(this, version);
     }
 
     public override void Write(byte[]? value)

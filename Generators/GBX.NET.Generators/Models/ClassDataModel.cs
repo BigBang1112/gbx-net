@@ -4,7 +4,7 @@ namespace GBX.NET.Generators.Models;
 
 internal record ClassDataModel(
     string Name,
-    uint Id,
+    uint? Id,
     string Engine,
     string? Inherits,
     INamedTypeSymbol? TypeSymbol,

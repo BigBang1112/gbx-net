@@ -44,7 +44,7 @@ internal static class ClassManagerGetNameIdSubGenerator
         foreach (var classInfo in existingClasses)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => nameof(");
             builder.Append(classInfo.Name);
             builder.AppendLine("),");
@@ -108,7 +108,7 @@ internal static class ClassManagerGetNameIdSubGenerator
             builder.Append("        nameof(");
             builder.Append(classInfo.Name);
             builder.Append(") => 0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.AppendLine(",");
         }
 

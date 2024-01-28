@@ -25,7 +25,7 @@ internal static class ClassManagerSubGenerator
             builder.Append("        { typeof(");
             builder.Append(classInfo.Name);
             builder.Append($"), 0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.AppendLine(" },");
         }
 
@@ -37,7 +37,7 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => typeof(");
             builder.Append(classInfo.Name);
             builder.AppendLine("),");
@@ -57,7 +57,7 @@ internal static class ClassManagerSubGenerator
             }
 
             builder.Append("        0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new ");
             builder.Append(classInfo.Name);
             builder.AppendLine("(),");
@@ -72,7 +72,7 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new GbxHeader<");
             builder.Append(classInfo.Name);
             builder.AppendLine(">(basic),");
@@ -87,7 +87,7 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.ToString("X8"));
+            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new Gbx<");
             builder.Append(classInfo.Name);
             builder.AppendLine(">((GbxHeader<");
