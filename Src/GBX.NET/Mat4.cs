@@ -6,8 +6,8 @@ public readonly record struct Mat4(float XX, float XY, float XZ, float XW,
                                    float WX, float WY, float WZ, float WW)
 {
     public static readonly Mat4 Zero = new();
-    public static readonly Mat4 Identity = new(1, 0, 0, 0,
-                                                   0, 1, 0, 0,
-                                                   0, 0, 1, 0,
-                                                   0, 0, 0, 1);
+    public static readonly Mat4 Identity = new Mat4(1, 0, 0, 0,
+                                                    0, 1, 0, 0,
+                                                    0, 0, 1, 0,
+                                                    0, 0, 0, 1);
 }
