@@ -66,11 +66,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
 
-#if NET6_0_OR_GREATER
         Span<HeaderChunkInfo> headerChunkInfos = stackalloc HeaderChunkInfo[userDataNums.NumChunks];
-#else
-        var headerChunkInfos = new HeaderChunkInfo[userDataNums.NumChunks];
-#endif
 
         FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
 
@@ -119,11 +115,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         using var readerWriter = new GbxReaderWriter(reader, leaveOpen: true);
 
-#if NET6_0_OR_GREATER
         Span<HeaderChunkInfo> headerChunkInfos = stackalloc HeaderChunkInfo[userDataNums.NumChunks];
-#else
-        var headerChunkInfos = new HeaderChunkInfo[userDataNums.NumChunks];
-#endif
 
         FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
 
@@ -163,11 +155,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         return true;
     }
 
-#if NET6_0_OR_GREATER
     internal static void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
-#else
-    internal static void FillHeaderChunkInfo(HeaderChunkInfo[] headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
-#endif
     {
         var totalSize = 4; // Includes the number of header chunks
 

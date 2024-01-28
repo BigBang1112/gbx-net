@@ -59,22 +59,14 @@ public sealed partial class CGameCtnChallenge :
         }
         else
         {
-#if NET6_0_OR_GREATER
             Span<char> hex = stackalloc char[hashedPassword.Length * 2];
-#else
-            var hex = new char[hashedPassword.Length * 2];
-#endif
             TryHex(hashedPassword, hex);
-            toHash = $"0x{hex}???{MapUid}";
+            toHash = $"0x{hex.ToString()}???{MapUid}";
         }
 
         Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new Exception("CRC32 is not imported (ICrc32).");
 
-#if NET6_0_OR_GREATER
         static void TryHex(ReadOnlySpan<byte> value, Span<char> chars)
-#else
-        static void TryHex(byte[] value, char[] chars)
-#endif
         {
             for (var i = 0; i < value.Length; i++)
             {
