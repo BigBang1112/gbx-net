@@ -90,7 +90,7 @@ internal static class ClassManagerSubGenerator
             builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new Gbx<");
             builder.Append(classInfo.Name);
-            builder.AppendLine(">((GbxHeader<");
+            builder.Append(">((GbxHeader<");
             builder.Append(classInfo.Name);
             builder.Append(">)header, (");
             builder.Append(classInfo.Name);

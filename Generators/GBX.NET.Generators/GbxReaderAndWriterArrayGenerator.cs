@@ -215,7 +215,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
         foreach (var symbol in methodSymbols)
         {
-            var type = symbol.Parameters[0].Type;
+            var type = symbol.Parameters[0].Type.WithNullableAnnotation(NullableAnnotation.NotAnnotated);
 
             sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value, int length);");
             sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value);");
@@ -234,7 +234,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
         foreach (var symbol in methodSymbols)
         {
-            var type = symbol.Parameters[0].Type;
+            var type = symbol.Parameters[0].Type.WithNullableAnnotation(NullableAnnotation.NotAnnotated);
 
             sb.Append("    public void WriteArray");
             sb.Append(type.Name);
