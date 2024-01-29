@@ -1,5 +1,7 @@
 ![GBX.NET](logo_outline.png)
 
+### GBX.NET 2 is taking shape on [v2](https://github.com/BigBang1112/gbx-net/tree/v2) branch. Any attempt to help is appreciated!
+
 GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via DM: BigBang1112#9489.
