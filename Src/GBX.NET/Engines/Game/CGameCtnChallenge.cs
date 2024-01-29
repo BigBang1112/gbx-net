@@ -50,7 +50,7 @@ public sealed partial class CGameCtnChallenge :
 
     public string GetEnvironment()
     {
-        return mapInfo?.Collection ?? throw new Exception("Environment not available");
+        return Collection ?? throw new Exception("Environment not available");
     }
 
     /// <summary>
