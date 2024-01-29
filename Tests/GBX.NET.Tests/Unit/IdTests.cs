@@ -13,13 +13,13 @@ public class IdTests
     }
 
     [Fact]
-    public void Constructor_Index_IsCorrect()
+    public void Constructor_Number_IsCorrect()
     {
         // Arrange & Act
         var i = new Id(12);
 
         // Assert
-        Assert.Equal(expected: 12, actual: i.Index);
+        Assert.Equal(expected: 12, actual: i.Number);
     }
 
     [Fact]

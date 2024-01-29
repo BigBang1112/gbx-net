@@ -15,7 +15,7 @@ public readonly record struct Id
     /// <summary>
     /// Represents an ID of the collection. Null if the <see cref="Id"/> is string-defined.
     /// </summary>
-    public int? Index { get; }
+    public int? Number { get; }
 
     /// <summary>
     /// Represents the string of the <see cref="Id"/>. Null if the <see cref="Id"/> is presented as a collection ID.
@@ -37,7 +37,7 @@ public readonly record struct Id
     /// <param name="collectionId">A collection ID from the collection ID list (specified ID doesn't have to be available in the list).</param>
     public Id(int collectionId)
     {
-        Index = collectionId;
+        Number = collectionId;
     }
 
     /// <summary>
@@ -61,12 +61,12 @@ public readonly record struct Id
     /// <returns>If collection is ID-represented, the ID is converted to <see cref="string"/> based from the collection ID list. If it's string-represented, <see cref="String"/> is returned instead.</returns>
     public override string ToString()
     {
-        if (Index is null)
+        if (Number is null)
         {
             return String ?? string.Empty;
         }
 
-        return CollectionManager.GetName(Index.Value) ?? Index.Value.ToString();
+        return CollectionManager.GetName(Number.Value) ?? Number.Value.ToString();
     }
 
     /// <summary>

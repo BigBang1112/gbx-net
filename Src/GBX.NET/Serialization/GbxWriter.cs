@@ -506,9 +506,9 @@ internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     private void WriteIdWithoutVersion(Id value)
     {
-        if (value.Index.HasValue)
+        if (value.Number.HasValue)
         {
-            Write(value.Index.Value);
+            Write(value.Number.Value);
             return;
         }
 

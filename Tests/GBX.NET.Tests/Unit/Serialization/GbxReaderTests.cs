@@ -444,7 +444,7 @@ public class GbxReaderTests
         // Assert
         Assert.Equal(expected: 3, actual: r.IdVersion);
         Assert.Equal(expected: "Hi!", actual: id.String);
-        Assert.Null(id.Index);
+        Assert.Null(id.Number);
         Assert.NotNull(r.IdDict);
         Assert.Single(r.IdDict);
         Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
@@ -467,7 +467,7 @@ public class GbxReaderTests
 
         // Assert
         Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: 4, actual: id.Index);
+        Assert.Equal(expected: 4, actual: id.Number);
         Assert.Null(id.String);
         Assert.NotNull(r.IdDict);
         Assert.Equal(expected: 8, actual: ms.Position);
@@ -491,7 +491,7 @@ public class GbxReaderTests
         // Assert
         Assert.Equal(expected: 3, actual: r.IdVersion);
         Assert.Equal(expected: id, actual: reusedId);
-        Assert.Null(reusedId.Index);
+        Assert.Null(reusedId.Number);
         Assert.NotNull(r.IdDict);
         Assert.Single(r.IdDict);
         Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
@@ -544,8 +544,8 @@ public class GbxReaderTests
         Assert.Equal(expected: 3, actual: r.IdVersion);
         Assert.Equal(expected: "Hi!", actual: id.String);
         Assert.Equal(expected: "TM", actual: anotherId.String);
-        Assert.Null(id.Index);
-        Assert.Null(anotherId.Index);
+        Assert.Null(id.Number);
+        Assert.Null(anotherId.Number);
         Assert.NotNull(r.IdDict);
         Assert.Equal(expected: 2, actual: r.IdDict.Count);
         Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
