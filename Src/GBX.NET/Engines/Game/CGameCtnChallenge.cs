@@ -26,6 +26,8 @@ public sealed partial class CGameCtnChallenge :
         set => thumbnail = value;
     }
 
+    public Id? Collection => mapInfo?.Collection;
+
     public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1");
 
     private byte[]? hashedPassword;
