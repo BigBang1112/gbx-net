@@ -48,6 +48,11 @@ public sealed partial class CGameCtnChallenge :
         set => MapUid = value;
     }
 
+    public string GetEnvironment()
+    {
+        return mapInfo?.Collection ?? throw new Exception("Environment not available");
+    }
+
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
