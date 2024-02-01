@@ -27,7 +27,10 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
+    }
 
+    private async Task RenderMeshAsync(bool firstRender)
+    {
         if (firstRender)
         {
             await JS.InvokeVoidAsync("createScene");
@@ -58,7 +61,7 @@
             : LayerName + "<br />Finding the center...";
         StateHasChanged();
         await Task.Delay(10);
-        
+
         var minX = c.Positions.Select(x => x.X).Min();
         var minZ = c.Positions.Select(x => x.Z).Min();
         var maxX = c.Positions.Select(x => x.X).Max();
