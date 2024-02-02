@@ -2,5 +2,5 @@
 
 public interface IReadable
 {
-    void Read(IGbxReader r, int version = 0);
+    void Read(GbxReader r, int version = 0);
 }

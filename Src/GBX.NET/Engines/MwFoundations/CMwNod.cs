@@ -224,7 +224,8 @@ public partial class CMwNod : IClass
         }
     }
 
-    internal virtual void ReadWrite(GbxReaderWriter rw)
+    /// <inheritdoc />
+    public virtual void ReadWrite(GbxReaderWriter rw)
     {
         if (rw.Reader is not null)
         {
@@ -237,9 +238,6 @@ public partial class CMwNod : IClass
         }
     }
 
-    /// <inheritdoc />
-    public virtual void ReadWrite(IGbxReaderWriter rw) => ReadWrite((GbxReaderWriter)rw);
-
     [Chunk(0x01001000)]
     public sealed class Chunk01001000 : Chunk<CMwNod>
     {
@@ -247,16 +245,16 @@ public partial class CMwNod : IClass
 
         public string? U01;
 
-        internal override void Read(CMwNod n, GbxReader r)
+        public override void Read(CMwNod n, GbxReader r)
         {
             U01 = r.ReadString();
         }
 
-        internal override void Write(CMwNod n, GbxWriter w)
+        public override void Write(CMwNod n, GbxWriter w)
         {
             w.Write(U01);
         }
-        }
+    }
 
     public virtual IHeaderChunk? CreateHeaderChunk(uint chunkId)
     {

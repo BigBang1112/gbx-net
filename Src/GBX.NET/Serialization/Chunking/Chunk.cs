@@ -21,17 +21,8 @@ public abstract class Chunk : IReadableWritableChunk
     /// <inheritdoc />
     public abstract uint Id { get; }
 
-    internal virtual void Read(IClass n, GbxReader r)
-    {
-
-    }
-
-    internal virtual void Write(IClass n, GbxWriter w)
-    {
-
-    }
-
-    internal virtual void ReadWrite(IClass n, GbxReaderWriter rw)
+    /// <inheritdoc />
+    public virtual void ReadWrite(IClass n, GbxReaderWriter rw)
     {
         if (rw.Reader is not null)
         {
@@ -45,13 +36,10 @@ public abstract class Chunk : IReadableWritableChunk
     }
 
     /// <inheritdoc />
-    public virtual void Read(IClass n, IGbxReader r) => Read(n, (GbxReader)r);
+    public virtual void Read(IClass n, GbxReader r) { }
 
     /// <inheritdoc />
-    public virtual void Write(IClass n, IGbxWriter w) => Write(n, (GbxWriter)w);
-
-    /// <inheritdoc />
-    public virtual void ReadWrite(IClass n, IGbxReaderWriter rw) => ReadWrite(n, (GbxReaderWriter)rw);
+    public virtual void Write(IClass n, GbxWriter w) { }
 
     public abstract IChunk DeepClone();
 }

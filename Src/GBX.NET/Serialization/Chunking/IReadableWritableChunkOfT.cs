@@ -10,5 +10,5 @@ public interface IReadableWritableChunk<T> : IReadableChunk<T>, IWritableChunk<T
     /// </summary>
     /// <param name="n">A Gbx class.</param>
     /// <param name="rw">A reader/writer.</param>
-    void ReadWrite(T n, IGbxReaderWriter rw);
+    void ReadWrite(T n, GbxReaderWriter rw);
 }

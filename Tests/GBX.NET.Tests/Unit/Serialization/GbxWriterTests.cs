@@ -13,7 +13,7 @@ public class GbxWriterTests
         using var ms = new MemoryStream();
 
         // Act
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Assert
         Assert.Same(expected: ms, actual: w.BaseStream);
@@ -26,7 +26,7 @@ public class GbxWriterTests
         using var ms = new MemoryStream();
 
         // Act
-        using IGbxWriter w = new GbxWriter(ms, leaveOpen: true);
+        using var w = new GbxWriter(ms, leaveOpen: true);
 
         // Assert
         Assert.Same(expected: ms, actual: w.BaseStream);
@@ -37,7 +37,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.WriteGbxMagic();
@@ -58,7 +58,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write(value);
@@ -77,7 +77,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write(value, asByte: false);
@@ -96,7 +96,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write(value, asByte: true);
@@ -115,7 +115,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write(value, StringLengthPrefix.Byte);
@@ -132,7 +132,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write("Hi!", StringLengthPrefix.Byte);
@@ -149,7 +149,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act & Assert
         Assert.Throws<LengthLimitException>(() => w.Write(GetRandomString(256), StringLengthPrefix.Byte));
@@ -161,7 +161,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act & Assert
         Assert.Throws<LengthLimitException>(() => w.Write(GetRandomString(254) + "š", StringLengthPrefix.Byte));
@@ -175,7 +175,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write(value);
@@ -192,7 +192,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
 
         // Act
         w.Write("Hi!", StringLengthPrefix.Int32);
@@ -209,7 +209,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
         var str = GetRandomString(128);
         var expected = BitConverter.GetBytes(str.Length).Concat(Encoding.UTF8.GetBytes(str)).ToArray();
 
@@ -228,7 +228,7 @@ public class GbxWriterTests
     {
         // Arrange
         using var ms = new MemoryStream();
-        using IGbxWriter w = new GbxWriter(ms);
+        using var w = new GbxWriter(ms);
         var str = GetRandomString(ushort.MaxValue);
         var expected = BitConverter.GetBytes(str.Length).Concat(Encoding.UTF8.GetBytes(str)).ToArray();
 

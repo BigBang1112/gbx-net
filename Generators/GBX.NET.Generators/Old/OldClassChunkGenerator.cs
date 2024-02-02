@@ -685,7 +685,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
             sb.AppendLine();
 
             // RW mode
-            sb.Append("        internal override void ReadWrite(");
+            sb.Append("        public override void ReadWrite(");
             sb.Append(chunkl.Header.Name);
             sb.AppendLine(" n, GbxReaderWriter rw)");
             sb.AppendLine("        {");

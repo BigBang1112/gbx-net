@@ -38,7 +38,7 @@ public interface IClass
     /// Reads and/or writes data via the reader/writer and uses this object.
     /// </summary>
     /// <param name="rw">A reader/writer.</param>
-    void ReadWrite(IGbxReaderWriter rw);
+    void ReadWrite(GbxReaderWriter rw);
 
     /// <summary>
     /// Safe method to create a new header chunk and add it to the chunk set, if it is valid. Returns null if the chunk ID is not supported in the context of the class.

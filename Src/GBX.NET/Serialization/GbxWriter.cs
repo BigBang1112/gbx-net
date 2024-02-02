@@ -98,7 +98,7 @@ public partial interface IGbxWriter : IDisposable
 /// <summary>
 /// A binary/text writer specialized for Gbx.
 /// </summary>
-internal sealed partial class GbxWriter : BinaryWriter, IGbxWriter
+public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 {
     private static readonly Encoding encoding = Encoding.UTF8;
 

@@ -5,7 +5,7 @@ public partial class CGameCtnCollectorList
 {
     public partial class Chunk0301B000
     {
-        internal override void Read(CGameCtnCollectorList n, GbxReader r)
+        public override void Read(CGameCtnCollectorList n, GbxReader r)
         {
             var count = r.ReadInt32();
             for (var i = 0; i < count; i++)
@@ -15,7 +15,7 @@ public partial class CGameCtnCollectorList
             }
         }
 
-        internal override void Write(CGameCtnCollectorList n, GbxWriter w)
+        public override void Write(CGameCtnCollectorList n, GbxWriter w)
         {
             w.Write(0);
         }

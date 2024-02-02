@@ -11,5 +11,5 @@ public interface IWritableChunk<T> : IChunk<T> where T : IClass
     /// </summary>
     /// <param name="n">A Gbx class.</param>
     /// <param name="w">A writer.</param>
-    void Write(T n, IGbxWriter w);
+    void Write(T n, GbxWriter w);
 }

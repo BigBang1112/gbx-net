@@ -11,5 +11,5 @@ public interface IReadableChunk<T> : IChunk<T> where T : IClass
     /// </summary>
     /// <param name="n">A Gbx class.</param>
     /// <param name="r">A reader.</param>
-    void Read(T n, IGbxReader r);
+    void Read(T n, GbxReader r);
 }

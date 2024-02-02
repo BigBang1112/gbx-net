@@ -110,13 +110,13 @@ public sealed partial class CGameCtnChallenge :
         public bool IsHeavy { get; set; }
 
         /// <inheritdoc />
-        public readonly void Read(CGameCtnChallenge n, IGbxReader r)
+        public readonly void Read(CGameCtnChallenge n, GbxReader r)
         {
             n.Xml = r.ReadString();
         }
 
         /// <inheritdoc />
-        public readonly void Write(CGameCtnChallenge n, IGbxWriter w)
+        public readonly void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(n.Xml);
         }
@@ -131,7 +131,7 @@ public sealed partial class CGameCtnChallenge :
     {
         public int Version { get; set; } = 1;
 
-        internal override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
 
@@ -156,7 +156,7 @@ public sealed partial class CGameCtnChallenge :
 
         public bool U01;
 
-        internal override void Read(CGameCtnChallenge n, GbxReader r)
+        public override void Read(CGameCtnChallenge n, GbxReader r)
         {
             n.mapInfo = r.ReadIdent();
             n.mapName = r.ReadString();
@@ -185,7 +185,7 @@ public sealed partial class CGameCtnChallenge :
             }
         }
 
-        internal override void Write(CGameCtnChallenge n, GbxWriter w)
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(n.mapInfo);
             w.Write(n.mapName);
@@ -222,7 +222,7 @@ public sealed partial class CGameCtnChallenge :
         public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
         public bool IsAutonomous { get => isAutonomous; set => isAutonomous = value; }*/
 
-        public void ReadWrite(IGbxReaderWriter rw, int version = 0)
+        public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
             /*rw.Int32(ref clan);
             rw.List<Vec3>(ref path, r => r.ReadVec3(), (x, w) => w.Write(x));

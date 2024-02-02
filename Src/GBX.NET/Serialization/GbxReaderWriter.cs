@@ -4,8 +4,8 @@ namespace GBX.NET.Serialization;
 
 public partial interface IGbxReaderWriter : IDisposable
 {
-    IGbxReader? Reader { get; }
-    IGbxWriter? Writer { get; }
+    GbxReader? Reader { get; }
+    GbxWriter? Writer { get; }
 
     [return: NotNullIfNotNull(nameof(value))]
     string? Id(string? value = default);
@@ -24,15 +24,12 @@ public partial interface IGbxReaderWriter : IDisposable
     void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0) where T : IReadableWritable, new();
 }
 
-internal sealed partial class GbxReaderWriter : IGbxReaderWriter
+public sealed partial class GbxReaderWriter : IGbxReaderWriter
 {
     private readonly bool leaveOpen;
 
     public GbxReader? Reader { get; }
     public GbxWriter? Writer { get; }
-
-    IGbxReader? IGbxReaderWriter.Reader => Reader;
-    IGbxWriter? IGbxReaderWriter.Writer => Writer;
 
     public GbxReaderWriter(GbxReader reader, bool leaveOpen = false)
     {

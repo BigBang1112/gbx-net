@@ -99,7 +99,7 @@ public partial interface IGbxReader : IDisposable
 /// <summary>
 /// A binary/text reader specialized for Gbx.
 /// </summary>
-internal sealed partial class GbxReader : BinaryReader, IGbxReader
+public sealed partial class GbxReader : BinaryReader, IGbxReader
 {
     internal const int MaxDataSize = 0x10000000; // ~268MB
 

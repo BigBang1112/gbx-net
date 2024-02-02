@@ -2,5 +2,5 @@
 
 public interface IWritable
 {
-    void Write(IGbxWriter w, int version = 0);
+    void Write(GbxWriter w, int version = 0);
 }

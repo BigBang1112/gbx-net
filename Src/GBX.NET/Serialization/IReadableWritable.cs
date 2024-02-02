@@ -10,5 +10,5 @@ public interface IReadableWritable
     /// </summary>
     /// <param name="rw">A reader/writer.</param>
     /// <param name="version">Version to help with backwards compatibility.</param>
-    void ReadWrite(IGbxReaderWriter rw, int version = 0);
+    void ReadWrite(GbxReaderWriter rw, int version = 0);
 }

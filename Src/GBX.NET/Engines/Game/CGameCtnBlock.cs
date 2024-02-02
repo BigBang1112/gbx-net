@@ -17,12 +17,12 @@ public partial class CGameCtnBlock : IReadable, IWritable
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
 
-    public void Read(IGbxReader r, int version = 0)
+    public void Read(GbxReader r, int version = 0)
     {
         throw new NotImplementedException();
     }
 
-    public void Write(IGbxWriter w, int version = 0)
+    public void Write(GbxWriter w, int version = 0)
     {
         throw new NotImplementedException();
     }
