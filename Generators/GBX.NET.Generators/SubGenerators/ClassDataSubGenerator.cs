@@ -468,24 +468,61 @@ internal class ClassDataSubGenerator
             AppendVersionPropertyLine(sb, chunk);
         }
 
-        if (isStructChunk)
+        var generationOptionsAtt = chunk.TypeSymbol?.GetAttributes()
+            .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkGenerationOptionsAttribute");
+
+        var structureKind = generationOptionsAtt?.NamedArguments
+            .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?;
+
+        if (chunk.ChunkLDefinition?.Members.Count > 0)
         {
-            sb.AppendLine();
-            sb.Append("        public void Read(");
-            sb.Append(classInfo.Name);
-            sb.AppendLine(" n, GbxReader r)");
-            sb.AppendLine("        {");
-            sb.AppendLine("            throw new NotImplementedException();");
-            sb.AppendLine("        }");
-            sb.AppendLine();
-            sb.Append("        public void Write(");
-            sb.Append(classInfo.Name);
-            sb.AppendLine(" n, GbxWriter w)");
-            sb.AppendLine("        {");
-            sb.AppendLine("            throw new NotImplementedException();");
-            sb.AppendLine("        }");
-            sb.AppendLine();
-            sb.AppendLine("        public IChunk DeepClone() => throw new NotImplementedException();");
+            if (isStructChunk || structureKind == 1) // StructureKind == SeparateReadAndWrite
+            {
+                sb.AppendLine();
+                sb.Append("        public ");
+
+                if (!isStructChunk)
+                {
+                    sb.Append("override ");
+                }
+
+                sb.Append("void Read(");
+                sb.Append(classInfo.Name);
+                sb.AppendLine(" n, GbxReader r)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            throw new NotImplementedException();");
+                sb.AppendLine("        }");
+                sb.AppendLine();
+                sb.Append("        public ");
+
+                if (!isStructChunk)
+                {
+                    sb.Append("override ");
+                }
+
+                sb.Append("void Write(");
+                sb.Append(classInfo.Name);
+                sb.AppendLine(" n, GbxWriter w)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            throw new NotImplementedException();");
+                sb.AppendLine("        }");
+
+                if (isStructChunk)
+                {
+                    sb.AppendLine();
+                    sb.AppendLine("        public IChunk DeepClone() => throw new NotImplementedException();");
+                }
+            }
+            else if (structureKind.GetValueOrDefault() == 0)
+            {
+                sb.AppendLine();
+                sb.Append("        public override void ReadWrite(");
+                sb.Append(classInfo.Name);
+                sb.AppendLine(" n, GbxReaderWriter rw)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            throw new NotImplementedException();");
+                sb.AppendLine("        }");
+            }
         }
 
         sb.AppendLine("    }");
