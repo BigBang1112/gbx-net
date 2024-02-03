@@ -121,7 +121,7 @@ CGameCtnChallenge 0x03043000 // A map.
  packdesc ModPackDesc
 
 0x01A
- CMwNod? // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
+ CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
 0x01B // OldIgs
  int
@@ -132,21 +132,21 @@ CGameCtnChallenge 0x03043000 // A map.
  int<PlayMode> Mode
 
 0x01D
- CMwNod? // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
+ CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
 0x01F [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // block data
 
 0x020 // legacy legacy mediatracker
- CGameCtnMediaClip? ClipIntro
- CMwNod?
- CMwNod?
- CGameCtnMediaClipGroup? ClipGroupInGame
- CGameCtnMediaClipGroup? ClipGroupEndRace
+ CGameCtnMediaClip ClipIntro
+ CMwNod
+ CMwNod
+ CGameCtnMediaClipGroup ClipGroupInGame
+ CGameCtnMediaClipGroup ClipGroupEndRace
 
 0x021 [TMSX, TMNESWC, TMU, TMF] // legacy mediatracker
- CGameCtnMediaClip? ClipIntro
- CGameCtnMediaClipGroup? ClipGroupInGame
- CGameCtnMediaClipGroup? ClipGroupEndRace
+ CGameCtnMediaClip ClipIntro
+ CGameCtnMediaClipGroup ClipGroupInGame
+ CGameCtnMediaClipGroup ClipGroupEndRace
 
 0x022 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
  int = 1
@@ -163,7 +163,7 @@ CGameCtnChallenge 0x03043000 // A map.
  vec2 MapCoordTarget
 
 0x026 [TMNESWC, TMF, TMU, MP3, TMT, MP4, TM2020] // clip global
- CMwNod?
+ CMwNod
 
 0x027 // old realtime thumbnail
  bool HasCustomCamThumbnail
@@ -180,7 +180,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x028 (base: 0x027) [TMU, TMF, MP3, TMT, MP4, TM2020] // old realtime thumbnail + comments
  base
- string? Comments
+ string Comments
 
 0x029 (skippable) [TMF, MP3, TMT, MP4, TM2020] // password
  data[16] HashedPassword
@@ -226,7 +226,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x047 (skippable) [MP3, TMT]
  version
- string?
+ string
  v1+
   throw
 
@@ -234,20 +234,20 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x049 (skippable) [MP3, TMT, MP4, TM2020] // mediatracker
  version = 2
- CGameCtnMediaClip? ClipIntro
- CGameCtnMediaClip? ClipPodium
- CGameCtnMediaClipGroup? ClipGroupInGame
- CGameCtnMediaClipGroup? ClipGroupEndRace
+ CGameCtnMediaClip ClipIntro
+ CGameCtnMediaClip ClipPodium
+ CGameCtnMediaClipGroup ClipGroupInGame
+ CGameCtnMediaClipGroup ClipGroupEndRace
  v2+
-  CGameCtnMediaClip? ClipAmbiance
+  CGameCtnMediaClip ClipAmbiance
  v1+
   int3 TriggerSize
 
 0x04B (skippable) [MP3, TMT, MP4, TM2020] // objectives
- string? ObjectiveTextAuthor
- string? ObjectiveTextGold
- string? ObjectiveTextSilver
- string? ObjectiveTextBronze
+ string ObjectiveTextAuthor
+ string ObjectiveTextGold
+ string ObjectiveTextSilver
+ string ObjectiveTextBronze
 
 0x04D (skippable, ignore) [MP3, TMT]
 

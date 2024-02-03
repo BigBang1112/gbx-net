@@ -98,34 +98,7 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
-    /// <summary>
-    /// [SHeaderCommunity] CGameCtnChallenge 0x005 header chunk (community)
-    /// </summary>
-    [Chunk(0x03043005, "community")]
-    public struct HeaderChunk03043005 : IHeaderChunk<CGameCtnChallenge>
-    {
-        /// <inheritdoc />
-        public readonly uint Id => 0x03043005;
-
-        public bool IsHeavy { get; set; }
-
-        /// <inheritdoc />
-        public readonly void Read(CGameCtnChallenge n, GbxReader r)
-        {
-            n.Xml = r.ReadString();
-        }
-
-        /// <inheritdoc />
-        public readonly void Write(CGameCtnChallenge n, GbxWriter w)
-        {
-            w.Write(n.Xml);
-        }
-
-        public IChunk DeepClone()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    public partial struct HeaderChunk03043005;
 
     public partial class HeaderChunk03043007 : IVersionable
     {

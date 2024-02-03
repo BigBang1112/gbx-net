@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 
 namespace GBX.NET.Generators;
 
-[Generator(LanguageNames.CSharp)]
 public class OldClassChunkGenerator : IIncrementalGenerator
 {
     private const bool Debug = false;
@@ -233,15 +232,15 @@ public class OldClassChunkGenerator : IIncrementalGenerator
                         if (string.IsNullOrEmpty(prop.Name)
                             || alreadyWrittenProps.Contains(prop.Name)
                             || alreadyExistingProperties.ContainsKey(prop.Name)
-                            || prop.Type == "marker"
+                            || prop.Type.PrimaryType == "marker"
                             || prop.IsLocal) continue;
 
                         alreadyWrittenProps.Add(prop.Name);
 
                         var fieldName = char.ToLowerInvariant(prop.Name[0]) + prop.Name.Substring(1);
 
-                        var (mappedType, _) = SimpleMapping(prop.Type);
-                        if (string.IsNullOrEmpty(mappedType)) mappedType = AdvancedMapping(prop.Type);
+                        var (mappedType, _) = SimpleMapping(prop.Type.PrimaryType);
+                        if (string.IsNullOrEmpty(mappedType)) mappedType = AdvancedMapping(prop.Type.PrimaryType);
 
                         sb.AppendLine();
 
@@ -525,7 +524,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
 
                     var versionProp = chunk.Members
                         .OfType<ChunkProperty>()
-                        .First(p => p.Type is "version" or "versionb");
+                        .First(p => p.Type.PrimaryType is "version" or "versionb");
 
                     if (!string.IsNullOrEmpty(versionProp.DefaultValue))
                     {
@@ -767,7 +766,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
 
             var standardProperty = default(string);
 
-            switch (prop.Type.ToLowerInvariant())
+            switch (prop.Type.PrimaryType.ToLowerInvariant())
             {
                 case "version":
                     sb.Append("rw.VersionInt32(this);");
@@ -873,7 +872,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
                     sb.Append("return;");
                     break;
                 default:
-                    var regex = Regex.Match(prop.Type, TypeMatch);
+                    var regex = Regex.Match(prop.Type.PrimaryType, TypeMatch);
 
                     if (!regex.Success)
                     {
@@ -1016,8 +1015,8 @@ public class OldClassChunkGenerator : IIncrementalGenerator
                 switch (mem)
                 {
                     case ChunkProperty prop:
-                        if (prop.Type is "return" or "version" or "versionb" or "base" or "throw") break;
-                        if (prop.Type.StartsWith("throw ")) break;
+                        if (prop.Type.PrimaryType is "return" or "version" or "versionb" or "base" or "throw") break;
+                        if (prop.Type.PrimaryType.StartsWith("throw ")) break;
                         if (!string.IsNullOrWhiteSpace(prop.Name)) break;
                         if (prop.IsLocal) break;
 
@@ -1027,8 +1026,8 @@ public class OldClassChunkGenerator : IIncrementalGenerator
                             firstLine = false;
                         }
 
-                        var (mappedType, _) = SourceGeneratorPrimaryContext.SimpleMapping(prop.Type);
-                        if (string.IsNullOrEmpty(mappedType)) mappedType = SourceGeneratorPrimaryContext.AdvancedMapping(prop.Type);
+                        var (mappedType, _) = SourceGeneratorPrimaryContext.SimpleMapping(prop.Type.PrimaryType);
+                        if (string.IsNullOrEmpty(mappedType)) mappedType = SourceGeneratorPrimaryContext.AdvancedMapping(prop.Type.PrimaryType);
 
                         unknownCounter++;
 

@@ -74,9 +74,9 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
  int? AuthorScore
 
 0x00D // race validate ghost
- CGameCtnGhost? RaceValidateGhost
+ CGameCtnGhost RaceValidateGhost
 
 0x00E (skippable) // map type
- string? MapType
- string? MapStyle
+ string MapType
+ string MapStyle
  bool IsValidatedForScriptModes

@@ -109,17 +109,12 @@ internal static class ClassManagerSubGenerator
             {
                 var chunkInfo = pair.Value;
 
-                if (chunkInfo.Id is null)
-                {
-                    continue;
-                }
-
                 builder.Append("        0x");
-                builder.Append(chunkInfo.Id.Value.ToString("X8"));
+                builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.Append(" => new ");
                 builder.Append(classInfo.Name);
                 builder.Append(".HeaderChunk");
-                builder.Append(chunkInfo.Id.Value.ToString("X8"));
+                builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.AppendLine("(),");
             }
         }
@@ -136,17 +131,12 @@ internal static class ClassManagerSubGenerator
             {
                 var chunkInfo = pair.Value;
 
-                if (chunkInfo.Id is null)
-                {
-                    continue;
-                }
-
                 builder.Append("        0x");
-                builder.Append(chunkInfo.Id.Value.ToString("X8"));
+                builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.Append(" => new ");
                 builder.Append(classInfo.Name);
                 builder.Append(".Chunk");
-                builder.Append(chunkInfo.Id.Value.ToString("X8"));
+                builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.AppendLine("(),");
             }
         }

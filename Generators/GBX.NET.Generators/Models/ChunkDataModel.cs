@@ -4,6 +4,8 @@ using Microsoft.CodeAnalysis;
 namespace GBX.NET.Generators.Models;
 
 internal record ChunkDataModel(
-    uint? Id,
+    uint Id,
+    string? Description,
+    bool IsSkippable,
     ChunkDefinition? ChunkLDefinition,
     INamedTypeSymbol? TypeSymbol);

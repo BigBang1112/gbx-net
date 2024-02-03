@@ -6,8 +6,6 @@ namespace GBX.NET.Engines.MwFoundations;
 [Class(0x01001000)]
 public partial class CMwNod : IClass
 {
-    public static uint Id => 0x01001000;
-
     private IChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet();
 
@@ -235,24 +233,6 @@ public partial class CMwNod : IClass
         if (rw.Writer is not null)
         {
             Write(rw);
-        }
-    }
-
-    [Chunk(0x01001000)]
-    public sealed class Chunk01001000 : Chunk<CMwNod>
-    {
-        public override uint Id => 0x01001000;
-
-        public string? U01;
-
-        public override void Read(CMwNod n, GbxReader r)
-        {
-            U01 = r.ReadString();
-        }
-
-        public override void Write(CMwNod n, GbxWriter w)
-        {
-            w.Write(U01);
         }
     }
 

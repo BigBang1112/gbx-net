@@ -1,7 +1,7 @@
 CSystemConfig 0x0B005000
 
 0x008 (skippable)
- string? DesiredLanguageId
+ string DesiredLanguageId
 
 0x02B (skippable)
  int
@@ -23,14 +23,14 @@ CSystemConfig 0x0B005000
 
 0x039 (skippable)
  bool NetworkUseProxy
- string?
- string?
+ string
+ string
  int NetworkServerPort
  int NetworkP2PServerPort
  int NetworkClientPort
  int NetworkServerBroadcastLength
  bool NetworkForceUseLocalAddress
- string? NetworkForceServerAddress
+ string NetworkForceServerAddress
  int NetworkDownload
  int NetworkUpload
  bool NetworkUseNatUPnP
@@ -41,19 +41,19 @@ CSystemConfig 0x0B005000
  int
 
 0x041 (skippable)
- string?
+ string
 
 0x043 (skippable)
  bool
  bool NetworkTestInternetConnection
- string? NetworkLastUsedMSAddress
- string? NetworkLastUsedMSPath
+ string NetworkLastUsedMSAddress
+ string NetworkLastUsedMSPath
 
 0x044 (skippable)
  bool NetworkTestInternetConnection
- string? NetworkLastUsedMSAddress
- string? NetworkLastUsedMSPath
- int[]?
+ string NetworkLastUsedMSAddress
+ string NetworkLastUsedMSPath
+ int[]
 
 0x045 (skippable)
  bool InputsAlternateMethod
@@ -66,7 +66,7 @@ CSystemConfig 0x0B005000
 
 0x048 (skippable)
  bool GameProfileEnableMulti
- string? GameProfileName
+ string GameProfileName
 
 0x04A (skippable)
  bool IsIgnorePlayerSkins
@@ -85,13 +85,13 @@ CSystemConfig 0x0B005000
  bool AudioDisableDoppler
  bool
  int AudioGlobalQuality
- string? AudioDevice_Oal
+ string AudioDevice_Oal
 
 0x050 (skippable)
  bool
 
 0x051 (skippable)
- string?
+ string
 
 0x052 (skippable)
  int TmCarQuality

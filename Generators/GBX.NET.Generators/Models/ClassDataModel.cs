@@ -7,6 +7,7 @@ internal record ClassDataModel(
     uint? Id,
     string Engine,
     string? Inherits,
+    string? Description,
     INamedTypeSymbol? TypeSymbol,
     Dictionary<uint, ChunkDataModel> HeaderChunks,
     Dictionary<uint, ChunkDataModel> Chunks,

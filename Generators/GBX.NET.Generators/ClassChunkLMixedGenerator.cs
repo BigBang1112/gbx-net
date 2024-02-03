@@ -1,18 +1,24 @@
 ﻿using ChunkL;
-using ChunkL.Structure;
 using GBX.NET.Generators.Models;
 using GBX.NET.Generators.SubGenerators;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
-using System.Text;
+using System.Diagnostics;
 
 namespace GBX.NET.Generators;
 
 [Generator]
 public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 {
+    private const bool Debug = false;
+
     public virtual void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        if (Debug && !Debugger.IsAttached)
+        {
+            Debugger.Launch();
+        }
+
         var chunklFiles = context.AdditionalTextsProvider
             .Where(static file =>
             {
@@ -78,17 +84,19 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 
                 foreach (var chunkDef in chunklFile.DataModel.Body.ChunkDefinitions)
                 {
-                    var fullChunkId = id | chunkDef.Id;
+                    var fullChunkId = chunkDef.Id > 0xFFF ? chunkDef.Id : id | chunkDef.Id;
+                    var isSkippable = chunkDef.Properties.ContainsKey("skippable");
+                    var description = chunkDef.Description;
 
-                    if (chunkDef.Properties.TryGetValue("header", out _))
+                    if (chunkDef.Properties.ContainsKey("header"))
                     {
                         var headerChunkSymbol = nestedTypeSymbols.GetValueOrDefault($"HeaderChunk{fullChunkId:X8}");
-                        headerChunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, chunkDef, headerChunkSymbol));
+                        headerChunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, description, isSkippable, chunkDef, headerChunkSymbol));
                     }
                     else
                     {
                         var chunkSymbol = nestedTypeSymbols.GetValueOrDefault($"Chunk{fullChunkId:X8}");
-                        chunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, chunkDef, chunkSymbol));
+                        chunkDict.Add(fullChunkId, new ChunkDataModel(fullChunkId, description, isSkippable, chunkDef, chunkSymbol));
                     }
                 }
 
@@ -97,7 +105,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 
                 }
 
-                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, symbol, headerChunkDict, chunkDict, []));
+                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, chunklFile.DataModel.Header.Description, symbol, headerChunkDict, chunkDict, []));
                 alreadyAdded.Add(name);
             }
 
@@ -128,10 +136,13 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     if (nestedSymbol.AllInterfaces.Any(x => x.Name == "IChunk"))
                     {
                         var isHeaderChunk = nestedSymbol.AllInterfaces.Any(x => x.Name == "IHeaderChunk");
+                        var isSkippableChunk = nestedSymbol.AllInterfaces.Any(x => x.Name == "ISkippableChunk");
 
-                        var chunkId = nestedSymbol.GetAttributes()
-                            .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkAttribute")?
-                            .ConstructorArguments[0].Value as uint?;
+                        var chunkAttribute = nestedSymbol.GetAttributes()
+                            .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkAttribute");
+
+                        var chunkId = chunkAttribute?.ConstructorArguments[0].Value as uint?;
+                        var chunkDescription = chunkAttribute?.ConstructorArguments.Length > 1 ? chunkAttribute.ConstructorArguments[1].Value as string : null;
 
                         if (chunkId is null)
                         {
@@ -139,7 +150,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                             continue;
                         }
 
-                        var chunk = new ChunkDataModel(chunkId.Value, ChunkLDefinition: null, nestedSymbol);
+                        var chunk = new ChunkDataModel(chunkId.Value, chunkDescription, isSkippableChunk, ChunkLDefinition: null, nestedSymbol);
 
                         if (isHeaderChunk)
                         {
@@ -154,7 +165,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     // if archive definition
                 }
 
-                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, gbxClass, headerChunkDict, chunkDict, chunksWithNoId));
+                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, null, gbxClass, headerChunkDict, chunkDict, chunksWithNoId));
             }
 
             return classModels.ToImmutableArray();
