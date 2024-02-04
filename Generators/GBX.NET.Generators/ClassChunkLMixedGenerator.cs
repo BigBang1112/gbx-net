@@ -81,6 +81,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 
                 var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
                 var chunkDict = new Dictionary<uint, ChunkDataModel>();
+                var archiveDict = new Dictionary<string, ArchiveDataModel>();
 
                 foreach (var chunkDef in chunklFile.DataModel.Body.ChunkDefinitions)
                 {
@@ -100,12 +101,32 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     }
                 }
 
+                var namelessArchive = default(ArchiveDataModel);
+
                 foreach (var archiveDef in chunklFile.DataModel.Body.ArchiveDefinitions)
                 {
+                    if (string.IsNullOrEmpty(archiveDef.Name))
+                    {
+                        namelessArchive = new ArchiveDataModel(archiveDef, symbol);
+                        continue;
+                    }
 
+                    var archiveSymbol = nestedTypeSymbols.GetValueOrDefault(archiveDef.Name);
+                    archiveDict.Add(archiveDef.Name, new ArchiveDataModel(archiveDef, archiveSymbol));
                 }
 
-                classModels.Add(new ClassDataModel(name, id, chunklFile.Engine, inherits, chunklFile.DataModel.Header.Description, symbol, headerChunkDict, chunkDict, []));
+                classModels.Add(new ClassDataModel(
+                    name,
+                    id,
+                    chunklFile.Engine,
+                    inherits,
+                    chunklFile.DataModel.Header.Description,
+                    symbol,
+                    headerChunkDict,
+                    chunkDict,
+                    [],
+                    namelessArchive,
+                    archiveDict));
                 alreadyAdded.Add(name);
             }
 
@@ -130,6 +151,9 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                 var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
                 var chunkDict = new Dictionary<uint, ChunkDataModel>();
                 var chunksWithNoId = new List<INamedTypeSymbol>();
+                var archives = new Dictionary<string, ArchiveDataModel>();
+
+                var isNamelessArchive = gbxClass.AllInterfaces.Any(x => x.Name is "IReadable" or "IWritable" or "IReadableWritable");
 
                 foreach (var nestedSymbol in nestedTypeSymbols)
                 {
@@ -162,10 +186,24 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                         }
                     }
 
-                    // if archive definition
+                    if (nestedSymbol.AllInterfaces.Any(x => x.Name is "IReadable" or "IWritable" or "IReadableWritable"))
+                    {
+                        archives.Add(nestedSymbol.Name, new ArchiveDataModel(ChunkLDefinition: null, nestedSymbol));
+                    }
                 }
 
-                classModels.Add(new ClassDataModel(gbxClass.Name, id, gbxClass.ContainingNamespace.Name, inherits, null, gbxClass, headerChunkDict, chunkDict, chunksWithNoId));
+                classModels.Add(new ClassDataModel(
+                    gbxClass.Name,
+                    id,
+                    gbxClass.ContainingNamespace.Name,
+                    inherits,
+                    Description: null,
+                    gbxClass,
+                    headerChunkDict,
+                    chunkDict,
+                    chunksWithNoId,
+                    isNamelessArchive ? new ArchiveDataModel(ChunkLDefinition: null, gbxClass) : null,
+                    archives));
             }
 
             return classModels.ToImmutableArray();

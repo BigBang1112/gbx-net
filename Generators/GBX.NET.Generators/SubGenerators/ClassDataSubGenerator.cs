@@ -183,6 +183,16 @@ internal class ClassDataSubGenerator
             inheritanceList.Add("IClass");
         }
 
+        if (classInfo.NamelessArchive is not null)
+        {
+            var archiveGenOptionsAtt = classInfo.TypeSymbol?
+                .GetAttributes()
+                .FirstOrDefault(x => x.AttributeClass?.Name == "ArchiveGenerationOptionsAttribute");
+
+            var structureKind = (archiveGenOptionsAtt?.NamedArguments
+                .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
+        }
+
         var first = true;
 
         foreach (var item in inheritanceList)

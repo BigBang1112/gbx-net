@@ -11,4 +11,6 @@ internal record ClassDataModel(
     INamedTypeSymbol? TypeSymbol,
     Dictionary<uint, ChunkDataModel> HeaderChunks,
     Dictionary<uint, ChunkDataModel> Chunks,
-    List<INamedTypeSymbol> ChunksWithNoId);
+    List<INamedTypeSymbol> ChunksWithNoId,
+    ArchiveDataModel? NamelessArchive,
+    Dictionary<string, ArchiveDataModel> Archives);
