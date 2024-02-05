@@ -191,6 +191,26 @@ internal class ClassDataSubGenerator
 
             var structureKind = (archiveGenOptionsAtt?.NamedArguments
                 .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
+
+            if (structureKind == 1) // StructureKind == SeparateReadAndWrite
+            {
+                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IReadable") == false)
+                {
+                    inheritanceList.Add("IReadable");
+                }
+
+                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IWritable") == false)
+                {
+                    inheritanceList.Add("IWritable");
+                }
+            }
+            else
+            {
+                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IReadableWritable") == false)
+                {
+                    inheritanceList.Add("IReadableWritable");
+                }
+            }
         }
 
         var first = true;

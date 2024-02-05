@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlock : IReadable, IWritable
+[ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+public partial class CGameCtnBlock
 {
     /// <summary>
     /// Name of the block.
