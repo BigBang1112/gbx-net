@@ -5,6 +5,8 @@ using static GbxExplorer.Component.Lua.LuaCTypes;
 
 namespace GbxExplorer.Component.Lua;
 
+#pragma warning disable IDE1006
+
 internal static partial class LuaC
 {
     public const string LibName = "liblua";

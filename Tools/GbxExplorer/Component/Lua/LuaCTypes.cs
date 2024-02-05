@@ -1,5 +1,7 @@
 ﻿namespace GbxExplorer.Component.Lua;
 
+#pragma warning disable IDE1006
+
 internal static class LuaCTypes
 {
     public struct lua_State

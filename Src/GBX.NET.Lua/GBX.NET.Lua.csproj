@@ -33,12 +33,4 @@
 		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <EditorConfigFiles Remove="D:\GBX.NET 2\gbx-net\Src\GBX.NET.Lua\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="D:\GBX.NET 2\gbx-net\Src\GBX.NET.Lua\.editorconfig" />
-	</ItemGroup>
-
 </Project>

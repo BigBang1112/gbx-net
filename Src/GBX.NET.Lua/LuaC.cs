@@ -2,6 +2,8 @@
 
 using static GBX.NET.Lua.LuaCTypes;
 
+#pragma warning disable IDE1006
+
 namespace GBX.NET.Lua;
 
 internal static partial class LuaC
