@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Lua\" />
+	</ItemGroup>
+
 </Project>
