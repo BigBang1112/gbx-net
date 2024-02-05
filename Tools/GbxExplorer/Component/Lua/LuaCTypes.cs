@@ -1,4 +1,4 @@
-﻿namespace GbxExplorer.Client.Lua;
+﻿namespace GbxExplorer.Component.Lua;
 
 internal static class LuaCTypes
 {

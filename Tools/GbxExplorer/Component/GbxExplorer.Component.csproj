@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,7 +18,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\Src\GBX.NET.Lua\GBX.NET.Lua.csproj" />
+		<ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj" />
 		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<NativeFileReference Include="liblua.a" />
 	</ItemGroup>
 
 </Project>

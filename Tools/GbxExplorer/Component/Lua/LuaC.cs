@@ -1,9 +1,9 @@
 ﻿using GBX.NET.Lua;
 using System.Runtime.InteropServices;
 
-using static GbxExplorer.Client.Lua.LuaCTypes;
+using static GbxExplorer.Component.Lua.LuaCTypes;
 
-namespace GbxExplorer.Client.Lua;
+namespace GbxExplorer.Component.Lua;
 
 internal static partial class LuaC
 {
