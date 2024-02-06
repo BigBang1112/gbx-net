@@ -60,7 +60,19 @@ internal class ClassDataSubGenerator
                 classInfo.Name));
         }
 
-        AppendClassDefinitionLine(sb, classInfo);
+        var archiveStructureKind = default(int?);
+
+        if (classInfo.NamelessArchive is not null)
+        {
+            var archiveGenOptionsAtt = classInfo.TypeSymbol?
+                .GetAttributes()
+                .FirstOrDefault(x => x.AttributeClass?.Name == "ArchiveGenerationOptionsAttribute");
+
+            archiveStructureKind = (archiveGenOptionsAtt?.NamedArguments
+                .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
+        }
+
+        AppendClassDefinitionLine(sb, classInfo, archiveStructureKind);
 
         sb.AppendLine("{");
 
@@ -72,10 +84,16 @@ internal class ClassDataSubGenerator
         }
 
         sb.AppendLine();
-
         AppendPropertiesLine(sb, classInfo, existingMembers, context);
 
+        sb.AppendLine();
         AppendDefaultCtorLine(sb, classInfo.Name);
+
+        if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
+        {
+            sb.AppendLine();
+            AppendArchiveMethodsLine(sb, classInfo, existingMembers, context, archiveStructureKind);
+        }
 
         AppendChunksLine(sb, classInfo, existingMembers, context);
 
@@ -138,7 +156,7 @@ internal class ClassDataSubGenerator
         context.AddSource($"Engines/{classInfo.Name}", sb.ToString());
     }
 
-    private static void AppendClassDefinitionLine(StringBuilder sb, ClassDataModel classInfo)
+    private static void AppendClassDefinitionLine(StringBuilder sb, ClassDataModel classInfo, int? archiveStructureKind)
     {
         if (!string.IsNullOrWhiteSpace(classInfo.Description))
         {
@@ -183,16 +201,9 @@ internal class ClassDataSubGenerator
             inheritanceList.Add("IClass");
         }
 
-        if (classInfo.NamelessArchive is not null)
+        if (archiveStructureKind.HasValue)
         {
-            var archiveGenOptionsAtt = classInfo.TypeSymbol?
-                .GetAttributes()
-                .FirstOrDefault(x => x.AttributeClass?.Name == "ArchiveGenerationOptionsAttribute");
-
-            var structureKind = (archiveGenOptionsAtt?.NamedArguments
-                .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
-
-            if (structureKind == 1) // StructureKind == SeparateReadAndWrite
+            if (archiveStructureKind.Value == 1) // StructureKind == SeparateReadAndWrite
             {
                 if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IReadable") == false)
                 {
@@ -279,7 +290,6 @@ internal class ClassDataSubGenerator
 
     private static void AppendDefaultCtorLine(StringBuilder sb, string className)
     {
-        sb.AppendLine();
         sb.AppendLine("    /// <summary>");
         sb.Append("    /// Creates a new instance of <see cref=\"");
         sb.Append(className);
@@ -288,6 +298,11 @@ internal class ClassDataSubGenerator
         sb.Append("    public ");
         sb.Append(className);
         sb.AppendLine("() { }");
+    }
+
+    private static void AppendArchiveMethodsLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context, int? archiveStructureKind)
+    {
+
     }
 
     private static void AppendChunksLine(
