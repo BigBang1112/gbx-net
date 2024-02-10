@@ -89,7 +89,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassIdFormatter", "Tools\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Lua", "Src\GBX.NET.Lua\GBX.NET.Lua.csproj", "{CB3B39F5-5447-4C12-A416-08D5BB56450B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GbxLuaInterpreter", "Tools\GbxLuaInterpreter\GbxLuaInterpreter.csproj", "{EF0A5BD1-C5B4-4A41-B959-92EB56C22493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxLuaInterpreter", "Tools\GbxLuaInterpreter\GbxLuaInterpreter.csproj", "{EF0A5BD1-C5B4-4A41-B959-92EB56C22493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GbxDiscordBot", "Tools\GbxDiscordBot\GbxDiscordBot.csproj", "{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,6 +203,10 @@ Global
 		{EF0A5BD1-C5B4-4A41-B959-92EB56C22493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0A5BD1-C5B4-4A41-B959-92EB56C22493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0A5BD1-C5B4-4A41-B959-92EB56C22493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,6 +242,7 @@ Global
 		{C98445DB-08AB-437A-9DF3-396886572AEC} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{CB3B39F5-5447-4C12-A416-08D5BB56450B} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{EF0A5BD1-C5B4-4A41-B959-92EB56C22493} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{84EDDB1D-F8ED-46BC-8EFB-C13D294A0787} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
