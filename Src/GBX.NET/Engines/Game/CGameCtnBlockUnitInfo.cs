@@ -491,5 +491,26 @@ public class CGameCtnBlockUnitInfo : CMwNod
 
     #endregion
 
+    #region 0x00D chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00D chunk
+    /// </summary>
+    [Chunk(0x0303600D)]
+    public class Chunk0303600D : Chunk<CGameCtnBlockUnitInfo>, IVersionable
+    {
+        public byte[]? U01;
+
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Bytes(ref U01);
+        }
+    }
+
+    #endregion
+
     #endregion
 }
