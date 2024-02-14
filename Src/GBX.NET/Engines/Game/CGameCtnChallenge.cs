@@ -15,7 +15,7 @@ public sealed partial class CGameCtnChallenge :
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
 
-            CalculateCrc32();
+            ComputeCrc32();
         }
     }
 
@@ -38,7 +38,7 @@ public sealed partial class CGameCtnChallenge :
         {
             hashedPassword = value;
 
-            CalculateCrc32();
+            ComputeCrc32();
         }
     }
 
@@ -56,7 +56,7 @@ public sealed partial class CGameCtnChallenge :
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
-    public void CalculateCrc32()
+    public void ComputeCrc32()
     {
         string toHash;
 
