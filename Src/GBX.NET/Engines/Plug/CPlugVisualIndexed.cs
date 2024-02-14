@@ -4,15 +4,17 @@
 [Node(0x0906A000)]
 public abstract class CPlugVisualIndexed : CPlugVisual3D
 {
+    private int[]? indices;
+
     private CPlugIndexBuffer? indexBuffer;
 
     [NodeMember]
-    public ushort[] Indices
+    public int[] Indices
     {
-        get => indexBuffer?.Indices ?? Array.Empty<ushort>();
+        get => indexBuffer?.Indices ?? indices ?? [];
         set
         {
-            if (indexBuffer is not null)
+            if (indexBuffer is not null) // not ideal for old games
             {
                 indexBuffer.Indices = value;
             }
@@ -35,23 +37,27 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     {
         public override void Read(CPlugVisualIndexed n, GameBoxReader r)
         {
-            var indices = r.ReadArray<ushort>();
+            n.indices = new int[r.ReadInt32()];
 
-            if (n.indexBuffer is not null)
+            for (var i = 0; i < n.indices.Length; i++)
             {
-                n.indexBuffer.Indices = indices;
+                n.indices[i] = r.ReadUInt16();
             }
         }
 
         public override void Write(CPlugVisualIndexed n, GameBoxWriter w)
         {
-            if (n.indexBuffer is null)
+            if (n.indices is null)
             {
                 w.Write(0);
+                return;
             }
-            else
+
+            w.Write(n.indices.Length);
+
+            for (var i = 0; i < n.indices.Length; i++)
             {
-                w.WriteArray(n.indexBuffer.Indices);
+                w.Write((ushort)n.indices[i]);
             }
         }
     }

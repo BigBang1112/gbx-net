@@ -5,7 +5,7 @@ namespace GBX.NET.Engines.Plug;
 public class CPlugIndexBuffer : CPlug
 {
     private int flags;
-    private ushort[] indices;
+    private int[] indices;
 
     [NodeMember]
     [AppliedWithChunk<Chunk09057000>]
@@ -13,11 +13,11 @@ public class CPlugIndexBuffer : CPlug
     
     [NodeMember]
     [AppliedWithChunk<Chunk09057000>]
-    public ushort[] Indices { get => indices; set => indices = value; }
+    public int[] Indices { get => indices; set => indices = value; }
 
     internal CPlugIndexBuffer()
     {
-        indices = Array.Empty<ushort>();
+        indices = [];
     }
 
     /// <summary>
@@ -26,10 +26,26 @@ public class CPlugIndexBuffer : CPlug
     [Chunk(0x09057000)]
     public class Chunk09057000 : Chunk<CPlugIndexBuffer>
     {
-        public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)
+        public override void Read(CPlugIndexBuffer n, GameBoxReader r)
         {
-            rw.Int32(ref n.flags);
-            rw.Array(ref n.indices!);
+            n.flags = r.ReadInt32();
+            n.indices = new int[r.ReadInt32()];
+
+            for (var i = 0; i < n.indices.Length; i++)
+            {
+                n.indices[i] = r.ReadUInt16();
+            }
+        }
+
+        public override void Write(CPlugIndexBuffer n, GameBoxWriter w)
+        {
+            w.Write(n.flags);
+            w.Write(n.indices.Length);
+
+            for (var i = 0; i < n.indices.Length; i++)
+            {
+                w.Write((ushort)n.indices[i]);
+            }
         }
     }
 
@@ -41,10 +57,32 @@ public class CPlugIndexBuffer : CPlug
     [Chunk(0x09057001)]
     public class Chunk09057001 : Chunk<CPlugIndexBuffer>
     {
-        public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)
+        public override void Read(CPlugIndexBuffer n, GameBoxReader r)
         {
-            rw.Int32(ref n.flags);
-            rw.Array(ref n.indices!);
+            n.flags = r.ReadInt32();
+            n.indices = new int[r.ReadInt32()];
+
+            var curVal = 0;
+
+            for (var i = 0; i < n.indices.Length; i++)
+            {
+                curVal += r.ReadInt16();
+                n.indices[i] = curVal;
+            }
+        }
+
+        public override void Write(CPlugIndexBuffer n, GameBoxWriter w)
+        {
+            w.Write(n.flags);
+            w.Write(n.indices.Length);
+
+            var curVal = 0;
+
+            for (var i = 0; i < n.indices.Length; i++)
+            {
+                w.Write((short)(n.indices[i] - curVal));
+                curVal = n.indices[i];
+            }
         }
     }
 
