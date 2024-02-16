@@ -330,3 +330,18 @@ archive BotPath
  bool IsFlying
  CGameWaypointSpecialProperty WaypointSpecialProperty
  bool IsAutonomous
+
+enum MapKind
+ EndMarker
+ Campaign
+ Puzzle
+ Retro
+ TimeAttack
+ Rounds
+ InProgress
+ Campaign_7
+ Multi
+ Solo
+ Site
+ SoloNadeo
+ MultiNadeo

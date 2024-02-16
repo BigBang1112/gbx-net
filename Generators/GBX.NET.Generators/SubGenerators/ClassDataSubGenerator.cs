@@ -112,6 +112,12 @@ internal class ClassDataSubGenerator
         }
 
         sb.AppendLine();
+        AppendArchivesLine(sb, classInfo, existingMembers, context);
+
+        sb.AppendLine();
+        AppendEnumsLine(sb, classInfo, existingMembers, context);
+
+        sb.AppendLine();
         sb.Append("    public static ");
 
         if (classInfo.Name != "CMwNod")
@@ -301,6 +307,16 @@ internal class ClassDataSubGenerator
     }
 
     private static void AppendArchiveMethodsLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context, int? archiveStructureKind)
+    {
+
+    }
+
+    private static void AppendEnumsLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context)
+    {
+
+    }
+
+    private static void AppendArchivesLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context)
     {
 
     }
