@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddRazorPages();
+
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;
@@ -31,8 +33,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapRazorPages();
-app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();

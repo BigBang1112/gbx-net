@@ -35,4 +35,5 @@ RUN apk add --no-cache \
     tzdata
 WORKDIR /app
 COPY --from=build /app .
+USER $APP_UID
 ENTRYPOINT ["./GbxDiscordBot"]
