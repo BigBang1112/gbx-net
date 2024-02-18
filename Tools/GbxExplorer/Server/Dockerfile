@@ -12,7 +12,7 @@ COPY Src/GBX.NET/*.csproj Src/GBX.NET/
 COPY Src/GBX.NET.LZO/*.csproj Src/GBX.NET.LZO/
 COPY Src/GBX.NET.Lua/*.csproj Src/GBX.NET.Lua/
 COPY Generators/GBX.NET.Generators/*.csproj Generators/GBX.NET.Generators/
-RUN dotnet restore Tools/$APPNAME/$APPNAME.csproj -a $TARGETARCH
+RUN dotnet restore Tools/GbxExplorer/Server/GbxExplorer.Server.csproj -a $TARGETARCH
 
 # copy and publish app and libraries
 COPY Tools/GbxExplorer/Server/ Tools/GbxExplorer/Server/
