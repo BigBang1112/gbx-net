@@ -115,7 +115,7 @@ internal class ClassDataSubGenerator
         AppendArchivesLine(sb, classInfo, existingMembers, context);
 
         sb.AppendLine();
-        AppendEnumsLine(sb, classInfo, existingMembers, context);
+        AppendEnumsLine(sb, classInfo, context);
 
         sb.AppendLine();
         sb.Append("    public static ");
@@ -311,9 +311,64 @@ internal class ClassDataSubGenerator
 
     }
 
-    private static void AppendEnumsLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context)
+    private static void AppendEnumsLine(StringBuilder sb, ClassDataModel classInfo, SourceProductionContext context)
     {
+        foreach (var enumInfo in classInfo.Enums)
+        {
+            if (enumInfo.Value.TypeSymbol is not null)
+            {
+                if (enumInfo.Value.TypeSymbol.TypeKind == TypeKind.Enum)
+                {
+                    context.ReportDiagnostic(Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                    "GBXNETGEN008",
+                    "Enum cannot be implemented manually.",
+                    "Enum {0} cannot be implemented manually, it is defined in ChunkL.",
+                    "GBX.NET.Generators",
+                    DiagnosticSeverity.Error,
+                    isEnabledByDefault: true),
+                    enumInfo.Value.TypeSymbol.Locations.FirstOrDefault(),
+                    enumInfo.Key));
+                }
+                else
+                {
+                    context.ReportDiagnostic(Diagnostic.Create(
+                        new DiagnosticDescriptor(
+                        "GBXNETGEN009",
+                        "Name collision with nested type.",
+                        "Name collision with nested type: {0}",
+                        "GBX.NET.Generators",
+                        DiagnosticSeverity.Error,
+                        isEnabledByDefault: true),
+                        enumInfo.Value.TypeSymbol.Locations.FirstOrDefault(),
+                        enumInfo.Key));
+                }
 
+                continue;
+            }
+
+            sb.AppendLine();
+            sb.Append("    public enum ");
+            sb.Append(enumInfo.Key);
+            sb.AppendLine();
+            sb.AppendLine("    {");
+
+            foreach (var member in enumInfo.Value.ChunkLDefinition.Values)
+            {
+                sb.Append("        ");
+                sb.Append(member.Name);
+
+                if (!string.IsNullOrWhiteSpace(member.ExplicitValue))
+                {
+                    sb.Append(" = ");
+                    sb.Append(member.ExplicitValue);
+                }
+
+                sb.AppendLine(",");
+            }
+
+            sb.AppendLine("    }");
+        }
     }
 
     private static void AppendArchivesLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context)
@@ -355,7 +410,7 @@ internal class ClassDataSubGenerator
         {
             context.ReportDiagnostic(Diagnostic.Create(
                 new DiagnosticDescriptor(
-                "GBXNETGEN005",
+                "GBXNETGEN004",
                 "Header chunk cannot be skippable",
                 "Header chunk cannot be skippable",
                 "GBX.NET.Generators",
@@ -367,6 +422,19 @@ internal class ClassDataSubGenerator
         var expectedChunkName = (isHeaderChunk ? "HeaderChunk" : "Chunk") + chunk.Id.ToString("X8");
 
         _ = existingTypeSymbols.TryGetValue(expectedChunkName, out var existingChunkSymbol);
+
+        if (existingChunkSymbol?.TypeKind is TypeKind.Enum)
+        {
+            context.ReportDiagnostic(Diagnostic.Create(
+                new DiagnosticDescriptor(
+                "GBXNETGEN005",
+                "Enum cannot be named like a chunk type",
+                "Enum cannot be named like a chunk type",
+                "GBX.NET.Generators",
+                DiagnosticSeverity.Error,
+                isEnabledByDefault: true),
+                chunk.TypeSymbol?.Locations.FirstOrDefault()));
+        }
 
         sb.AppendLine();
         sb.AppendLine("    /// <summary>");

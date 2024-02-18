@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using System.Collections.Immutable;
 
 namespace GBX.NET.Generators.Models;
 
@@ -9,8 +10,9 @@ internal record ClassDataModel(
     string? Inherits,
     string? Description,
     INamedTypeSymbol? TypeSymbol,
-    Dictionary<uint, ChunkDataModel> HeaderChunks,
-    Dictionary<uint, ChunkDataModel> Chunks,
-    List<INamedTypeSymbol> ChunksWithNoId,
+    ImmutableDictionary<uint, ChunkDataModel> HeaderChunks,
+    ImmutableDictionary<uint, ChunkDataModel> Chunks,
+    ImmutableList<INamedTypeSymbol> ChunksWithNoId,
     ArchiveDataModel? NamelessArchive,
-    Dictionary<string, ArchiveDataModel> Archives);
+    ImmutableDictionary<string, ArchiveDataModel> Archives,
+    ImmutableDictionary<string, EnumDataModel> Enums);
