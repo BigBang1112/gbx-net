@@ -1,5 +1,7 @@
 ![GBX.NET](logo_outline.png)
 
+### GBX.NET 2 is taking shape on [v2](https://github.com/BigBang1112/gbx-net/tree/v2) branch. Any attempt to help is appreciated!
+
 GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via DM: BigBang1112#9489.
@@ -95,6 +97,48 @@ Coming soon!
 - Newtonsoft.Json
 
 ## Usage
+
+Using the NuGet packages is recommended.
+
+### Create a new GBX.NET project (lightweight)
+
+1. Install .NET SDK 8.
+    - Windows: `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
+    - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
+2. Create directory for your project (anywhere), **go inside it**.
+3. Create new console project: `dotnet new console`
+4. Add the latest GBX.NET NuGet pckage: `dotnet add package GBX.NET`
+5. Open `Program.cs` with your favorite text editor: `code . -g Program.cs`
+6. Write code - see [Examples](#examples).
+7. Use `dotnet run` to run the app.
+
+Steps 2-7:
+```
+mkdir MyGbxProject
+cd MyGbxProject
+dotnet new console
+dotnet add package GBX.NET
+code . -g Program.cs
+dotnet run
+```
+
+### Create a new GBX.NET project (Visual Studio Code)
+
+1. Install C# Dev Kit extension.
+2. Click on `Create .NET Project` button, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type `.NET: New Project`.
+3. Select `Console App` and create your project.
+4. Open a new terminal and type `dotnet add package GBX.NET` to add GBX.NET.
+5. Write code - see [Examples](#examples).
+6. Run and debug as usual, select C# if prompted.
+
+### Create a new GBX.NET project (Visual Studio)
+
+1. Create a new Console project
+2. Under your project in Solution Explorer, right-click on Dependencies and select `Manage NuGet packages...`
+3. Search `GBX.NET` and click install
+4. Write code - see [Examples](#examples).
+
+### Examples
 
 To parse a Gbx with a known type:
 
