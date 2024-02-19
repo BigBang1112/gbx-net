@@ -255,9 +255,10 @@ public class ObjFileExporter : IModelExporter, IDisposable
                 continue;
             }
             
-            var material = solid2.Materials[i];
+            var material = solid2.Materials.Length > i ? solid2.Materials[i] : null;
+            var materialName = solid2.MaterialIds.Length > i ? solid2.MaterialIds[i] : null;
 
-            WriteVisualWithMaterial(i.ToString(), visual, material.Node, material.File, solid2.GetGbx());
+            WriteVisualWithMaterial(i.ToString(), visual, material?.Node, material?.File, materialName, solid2.GetGbx());
         }
 
         Merge();
@@ -326,24 +327,39 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
         
-        WriteVisualWithMaterial(tree.Name, visual, corruptedMaterials ? null : tree.Shader as CPlugMaterial, tree.ShaderFile, gbx);
+        WriteVisualWithMaterial(tree.Name, visual, corruptedMaterials ? null : tree.Shader as CPlugMaterial, tree.ShaderFile, materialName: null, gbx);
     }
 
 #if NET6_0_OR_GREATER
     [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
 #endif
     private void WriteVisualWithMaterial(string? visualName,
-        CPlugVisual visual, CPlugMaterial? material, GameBoxRefTable.File? materialFile, GameBox? gbx)
+        CPlugVisual visual, CPlugMaterial? material, GameBoxRefTable.File? materialFile, string? materialName, GameBox? gbx)
     {
         objFaceWriter.WriteLine($"\no {visualName}");
 
         if (corruptedMaterials)
         {
-            WriteCorruptedMaterialToMtl(materialFile, gbx);
+            if (materialName is null)
+            {
+                WriteCorruptedMaterialToMtl(materialFile, gbx);
+            }
+            else
+            {
+                mtlWriter?.WriteLine("newmtl " + materialName);
+                mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
+                mtlWriter?.WriteLine("Kd 1.000 1.000 1.000");
+            }
         }
         else if (material is not null)
         {
             WriteMaterialToMtl(material);
+        }
+        else if (materialName is not null)
+        {
+            mtlWriter?.WriteLine("newmtl " + materialName);
+            mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
+            mtlWriter?.WriteLine("Kd 1.000 1.000 1.000");
         }
 
         if (visual is not CPlugVisualIndexedTriangles indexed)
@@ -351,27 +367,55 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
 
-        foreach (var v in indexed.Vertices)
+        if (indexed.VertexStreams.Length > 0)
         {
-            objWriter.WriteLine("v {0} {1} {2}",
-                v.Position.X.ToString(invariant),
-                v.Position.Y.ToString(invariant),
-                v.Position.Z.ToString(invariant));
-            //objNormalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.X, vertex.U01.Y, vertex.U01.Z);
+            foreach (var pos in indexed.VertexStreams[0].Positions)
+            {
+                objWriter.WriteLine("v {0} {1} {2}",
+                    pos.X.ToString(invariant),
+                    pos.Y.ToString(invariant),
+                    pos.Z.ToString(invariant));
+                //objNormalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.X, vertex.U01.Y, vertex.U01.Z);
+            }
+        }
+        else
+        {
+            foreach (var v in indexed.Vertices)
+            {
+                objWriter.WriteLine("v {0} {1} {2}",
+                    v.Position.X.ToString(invariant),
+                    v.Position.Y.ToString(invariant),
+                    v.Position.Z.ToString(invariant));
+                //objNormalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.X, vertex.U01.Y, vertex.U01.Z);
+            }
         }
 
-        if (indexed.TexCoords is not null)
-        {
-            var texCoords = indexed.TexCoords.FirstOrDefault();
+        var texCoords = indexed.TexCoords.FirstOrDefault();
 
-            if (texCoords is not null)
+        if (texCoords is null)
+        {
+            if (indexed.VertexStreams.Length > 0)
             {
-                foreach (var tex in texCoords)
+                var vertStream = indexed.VertexStreams[0];
+
+                if (vertStream.UVs.Count > 0)
                 {
-                    objUvWriter.WriteLine("vt {0} {1}",
-                        tex.UV.X.ToString(invariant),
-                        tex.UV.Y.ToString(invariant));
+                    foreach (var uv in vertStream.UVs.First().Value ?? [])
+                    {
+                        objUvWriter.WriteLine("vt {0} {1}",
+                            uv.X.ToString(invariant),
+                            uv.Y.ToString(invariant));
+                    }
                 }
+            }
+        }
+        else
+        {
+            foreach (var tex in texCoords)
+            {
+                objUvWriter.WriteLine("vt {0} {1}",
+                    tex.UV.X.ToString(invariant),
+                    tex.UV.Y.ToString(invariant));
             }
         }
 
@@ -381,11 +425,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
             while (enumerator.MoveNext())
             {
-                var a = enumerator.Current;
+                var a = Math.Abs(enumerator.Current);
                 if (!enumerator.MoveNext()) break;
-                var b = enumerator.Current;
+                var b = Math.Abs(enumerator.Current);
                 if (!enumerator.MoveNext()) break;
-                var c = enumerator.Current;
+                var c = Math.Abs(enumerator.Current);
 
                 var aVert = a + 1 + offsetVert;
                 var bVert = b + 1 + offsetVert;

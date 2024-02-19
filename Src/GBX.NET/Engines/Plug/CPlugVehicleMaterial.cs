@@ -9,6 +9,26 @@ public class CPlugVehicleMaterial : CMwNod
         
     }
 
+    #region 0x004 chunk
+
+    /// <summary>
+    /// CPlugVehicleMaterial 0x004 chunk
+    /// </summary>
+    [Chunk(0x090F1004)]
+    public class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
+    {
+        public CPlugBitmap? U01;
+        public Vec2 U02;
+
+        public override void ReadWrite(CPlugVehicleMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugBitmap>(ref U01);
+            rw.Vec2(ref U02);
+        }
+    }
+
+    #endregion
+
     #region 0x00F chunk
 
     /// <summary>

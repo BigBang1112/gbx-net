@@ -31,7 +31,10 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
+    }
 
+    private async Task RenderMeshAsync(bool firstRender)
+    {
         if (firstRender)
         {
             await JS.InvokeVoidAsync("createScene");

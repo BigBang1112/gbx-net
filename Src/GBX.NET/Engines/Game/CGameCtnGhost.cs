@@ -489,8 +489,9 @@ public partial class CGameCtnGhost : CGameGhost
         
         public bool U03;
         public int[]? U04;
-        public int U05;
+        public int AppearanceVersion;
         public int? U06;
+        public string? U07;
 
         public int Version { get => version; set => version = value; }
 
@@ -505,7 +506,7 @@ public partial class CGameCtnGhost : CGameGhost
 
             if (version >= 9)
             {
-                rw.Int32(ref U05);
+                rw.Int32(ref AppearanceVersion);
             }
             
             // SGamePlayerMobilAppearanceParams::Archive
@@ -518,6 +519,11 @@ public partial class CGameCtnGhost : CGameGhost
             {
                 rw.Int32(ref n.badgeVersion);
                 rw.Archive<Badge>(ref n.badge, n.badgeVersion.GetValueOrDefault()); // NGameBadge::BadgeArchive
+            }
+
+            if (AppearanceVersion >= 1)
+            {
+                rw.String(ref U07);
             }
             //
 
@@ -539,11 +545,6 @@ public partial class CGameCtnGhost : CGameGhost
 
                     if (Version >= 5)
                     {
-                        if (Version >= 9) // Not in code?
-                        {
-                            rw.Int32(ref U06);
-                        }
-
                         rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
                         rw.Array(ref U04);
 
