@@ -7,10 +7,10 @@ namespace GBX.NET.Generators.ChunkL;
 
 internal class ChunkLPropertiesWriter
 {
-    private StringBuilder sb;
-    private ClassDataModel classInfo;
-    private Dictionary<string, IPropertySymbol> alreadyExistingProperties;
-    private SourceProductionContext context;
+    private readonly StringBuilder sb;
+    private readonly ClassDataModel classInfo;
+    private readonly Dictionary<string, IPropertySymbol> alreadyExistingProperties;
+    private readonly SourceProductionContext context;
 
     public ChunkLPropertiesWriter(
         StringBuilder sb,

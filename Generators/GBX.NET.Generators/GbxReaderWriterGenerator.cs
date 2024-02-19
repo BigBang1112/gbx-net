@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Text;
 
@@ -53,12 +54,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
         var readerMethods = reader.GetMembers()
             .OfType<IMethodSymbol>()
             .Where(x => !x.IsOverride && x.Name.StartsWith("Read"))
-            .ToList();
+            .ToImmutableList();
 
         var writerMethods = writer.GetMembers()
             .OfType<IMethodSymbol>()
             .Where(x => !x.IsOverride && x.Name.StartsWith("Write"))
-            .ToList();
+            .ToImmutableList();
 
         foreach (var readerMethod in readerMethods)
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
@@ -44,9 +45,9 @@ public class ClassWrapUnwrapGenerator : IIncrementalGenerator
         context.RegisterSourceOutput(unwrapContents, GenerateUnwrapSource);
     }
 
-    private static Dictionary<uint, uint> GetClassIdDict(TextLineCollection lines)
+    private static ImmutableDictionary<uint, uint> GetClassIdDict(TextLineCollection lines)
     {
-        var dict = new Dictionary<uint, uint>();
+        var dict = ImmutableDictionary.CreateBuilder<uint, uint>();
 
         foreach (var line in lines)
         {
@@ -60,7 +61,7 @@ public class ClassWrapUnwrapGenerator : IIncrementalGenerator
             dict.Add(classId, chunkId);
         }
 
-        return dict;
+        return dict.ToImmutable();
     }
 
     private void GenerateSource(SourceProductionContext context, TextLineCollection lines, string name)

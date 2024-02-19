@@ -1,12 +1,12 @@
 ﻿using ChunkL.Structure;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace GBX.NET.Generators.ChunkL;
 
 internal static class PropertyTypeExtensions
 {
-    private static readonly HashSet<string> valueTypes = new()
-    {
+    private static readonly ImmutableHashSet<string> valueTypes = ImmutableHashSet.Create(
         "bool",
         "byte",
         "sbyte",
@@ -32,8 +32,7 @@ internal static class PropertyTypeExtensions
         "Quat",
         "Id",
         "TimeInt32",
-        "TimeSingle"
-    };
+        "TimeSingle");
 
     public static bool IsSimpleType(this PropertyType propertyType)
     {

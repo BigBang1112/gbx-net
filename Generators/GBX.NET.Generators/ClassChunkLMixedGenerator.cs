@@ -48,8 +48,17 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     .GetNamespaceMembers()
                     .FirstOrDefault(x => x.Name == "Engines");
 
-                return enginesNamespace.GetNamespaceMembers()
-                    .SelectMany(x => x.GetTypeMembers());
+                var classList = ImmutableList.CreateBuilder<INamedTypeSymbol>();
+
+                foreach (var engineNamespace in enginesNamespace.GetNamespaceMembers())
+                {
+                    foreach (var type in engineNamespace.GetTypeMembers())
+                    {
+                        classList.Add(type);
+                    }
+                }
+
+                return classList.ToImmutable();
             });
 
         var combined = chunklFiles.Collect()

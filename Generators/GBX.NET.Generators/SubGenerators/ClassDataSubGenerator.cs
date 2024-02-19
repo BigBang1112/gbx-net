@@ -320,15 +320,15 @@ internal class ClassDataSubGenerator
                 if (enumInfo.Value.TypeSymbol.TypeKind == TypeKind.Enum)
                 {
                     context.ReportDiagnostic(Diagnostic.Create(
-                    new DiagnosticDescriptor(
-                    "GBXNETGEN008",
-                    "Enum cannot be implemented manually.",
-                    "Enum {0} cannot be implemented manually, it is defined in ChunkL.",
-                    "GBX.NET.Generators",
-                    DiagnosticSeverity.Error,
-                    isEnabledByDefault: true),
-                    enumInfo.Value.TypeSymbol.Locations.FirstOrDefault(),
-                    enumInfo.Key));
+                        new DiagnosticDescriptor(
+                        "GBXNETGEN008",
+                        "Enum cannot be implemented manually.",
+                        "Enum {0} cannot be implemented manually, it is defined in ChunkL.",
+                        "GBX.NET.Generators",
+                        DiagnosticSeverity.Error,
+                        isEnabledByDefault: true),
+                        enumInfo.Value.TypeSymbol.Locations.FirstOrDefault(),
+                        enumInfo.Key));
                 }
                 else
                 {
