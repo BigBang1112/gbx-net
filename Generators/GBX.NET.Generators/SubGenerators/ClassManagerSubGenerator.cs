@@ -7,7 +7,7 @@ namespace GBX.NET.Generators.SubGenerators;
 
 internal static class ClassManagerSubGenerator
 {
-    public static void GenerateSource(SourceProductionContext context, ImmutableArray<ClassDataModel> classInfos)
+    public static void GenerateSource(SourceProductionContext context, ImmutableList<ClassDataModel> classInfos)
     {
         var builder = new StringBuilder();
 

@@ -59,7 +59,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
         {
             var (chunklFiles, gbxClasses) = pair;
 
-            var classModels = new List<ClassDataModel>();
+            var classModels = ImmutableList.CreateBuilder<ClassDataModel>();
             var alreadyAdded = new HashSet<string>();
 
             var gbxClassDict = gbxClasses.ToImmutableDictionary(x => x.Name);
@@ -79,9 +79,9 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                 var nestedTypeSymbols = symbol?.GetTypeMembers()
                     .ToImmutableDictionary(x => x.Name) ?? ImmutableDictionary<string, INamedTypeSymbol>.Empty;
 
-                var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
-                var chunkDict = new Dictionary<uint, ChunkDataModel>();
-                var archiveDict = new Dictionary<string, ArchiveDataModel>();
+                var headerChunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
+                var chunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
+                var archiveDict = ImmutableDictionary.CreateBuilder<string, ArchiveDataModel>();
 
                 foreach (var chunkDef in chunklFile.DataModel.Body.ChunkDefinitions)
                 {
@@ -125,11 +125,11 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     inherits,
                     chunklFile.DataModel.Header.Description,
                     symbol,
-                    headerChunkDict.ToImmutableDictionary(),
-                    chunkDict.ToImmutableDictionary(),
+                    headerChunkDict.ToImmutable(),
+                    chunkDict.ToImmutable(),
                     ImmutableList<INamedTypeSymbol>.Empty,
                     namelessArchive,
-                    archiveDict.ToImmutableDictionary(),
+                    archiveDict.ToImmutable(),
                     enums));
                 alreadyAdded.Add(name);
             }
@@ -152,10 +152,10 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 
                 var nestedTypeSymbols = gbxClass.GetTypeMembers();
 
-                var headerChunkDict = new Dictionary<uint, ChunkDataModel>();
-                var chunkDict = new Dictionary<uint, ChunkDataModel>();
-                var chunksWithNoId = new List<INamedTypeSymbol>();
-                var archives = new Dictionary<string, ArchiveDataModel>();
+                var headerChunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
+                var chunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
+                var chunksWithNoId = ImmutableList.CreateBuilder<INamedTypeSymbol>();
+                var archives = ImmutableDictionary.CreateBuilder<string, ArchiveDataModel>();
 
                 var isNamelessArchive = gbxClass.AllInterfaces.Any(x => x.Name is "IReadable" or "IWritable" or "IReadableWritable");
 
@@ -203,15 +203,15 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     inherits,
                     Description: null,
                     gbxClass,
-                    headerChunkDict.ToImmutableDictionary(),
-                    chunkDict.ToImmutableDictionary(),
-                    chunksWithNoId.ToImmutableList(),
+                    headerChunkDict.ToImmutable(),
+                    chunkDict.ToImmutable(),
+                    chunksWithNoId.ToImmutable(),
                     isNamelessArchive ? new ArchiveDataModel(ChunkLDefinition: null, gbxClass) : null,
-                    archives.ToImmutableDictionary(),
+                    archives.ToImmutable(),
                     ImmutableDictionary<string, EnumDataModel>.Empty));
             }
 
-            return classModels.ToImmutableArray();
+            return classModels.ToImmutable();
         });
 
         var classIdContents = context.AdditionalTextsProvider

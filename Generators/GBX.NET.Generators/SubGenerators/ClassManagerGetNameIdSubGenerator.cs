@@ -26,7 +26,7 @@ internal static class ClassManagerGetNameIdSubGenerator
         return ClassIdParser.Parse(reader);
     }
 
-    public static void GenerateGetNameSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
+    public static void GenerateGetNameSource(SourceProductionContext context, (ImmutableList<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
     {
         var (existingClasses, classNames) = source;
         var classIdNameDict = GetClassIdNameDictionary(classNames);
@@ -88,7 +88,7 @@ internal static class ClassManagerGetNameIdSubGenerator
         context.AddSource("Managers/ClassManager.GetName", builder.ToString());
     }
 
-    public static void GenerateGetIdSource(SourceProductionContext context, (ImmutableArray<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
+    public static void GenerateGetIdSource(SourceProductionContext context, (ImmutableList<ClassDataModel> ExistingClasses, ImmutableArray<string> ClassNames) source)
     {
         var (existingClasses, classNames) = source;
         var classIdNameDict = GetClassIdNameDictionary(classNames);

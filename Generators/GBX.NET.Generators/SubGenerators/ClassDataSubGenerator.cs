@@ -10,7 +10,7 @@ namespace GBX.NET.Generators.SubGenerators;
 
 internal class ClassDataSubGenerator
 {
-    public static void GenerateSource(SourceProductionContext context, ImmutableArray<ClassDataModel> classInfos)
+    public static void GenerateSource(SourceProductionContext context, ImmutableList<ClassDataModel> classInfos)
     {
         var inheritanceInverted = new Dictionary<string, Dictionary<uint, string>>();
 
