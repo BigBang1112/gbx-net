@@ -1,7 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: nuget
-    directory: Src
+    directory: Src/GBX.NET
+    target-branch: dev
+    schedule:
+      interval: daily
+  - package-ecosystem: nuget
+    directory: Src/GBX.NET.Imaging
     target-branch: dev
     schedule:
       interval: daily
