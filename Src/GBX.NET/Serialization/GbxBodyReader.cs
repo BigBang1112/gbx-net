@@ -99,7 +99,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
         if (Gbx.LZO is null)
         {
-            throw new Exception("LZO is required but not available.");
+            throw new LzoNotDefinedException();
         }
 
 #if NET5_0_OR_GREATER

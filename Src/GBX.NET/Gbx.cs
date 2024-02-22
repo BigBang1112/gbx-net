@@ -271,6 +271,109 @@ public class Gbx : IGbx
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// Compresses the body part of the Gbx file, also setting the header parameter so that the outputted Gbx file is compatible with the game. If the file is already detected compressed, the input is just copied over to the output.
+    /// </summary>
+    /// <param name="input">Gbx stream to compress.</param>
+    /// <param name="output">Output Gbx stream in the compressed form.</param>
+    /// <returns>False if <paramref name="input"/> was already compressed, otherwise true.</returns>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Compress(Stream input, Stream output) => GbxCompressionUtils.Compress(input, output);
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Compress(string inputFileName, Stream output)
+    {
+        using var input = File.OpenRead(inputFileName);
+        return Compress(input, output);
+    }
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Compress(Stream input, string outputFileName)
+    {
+        using var output = File.Create(outputFileName);
+        return Compress(input, output);
+    }
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Compress(string inputFileName, string outputFileName)
+    {
+        using var input = File.OpenRead(inputFileName);
+        using var output = File.Create(outputFileName);
+        return Compress(input, output);
+    }
+
+
+    /// <summary>
+    /// Decompresses the body part of the Gbx file, also setting the header parameter so that the outputted Gbx file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// </summary>
+    /// <param name="input">Gbx stream to decompress.</param>
+    /// <param name="output">Output Gbx stream in the decompressed form.</param>
+    /// <returns>False if <paramref name="input"/> was already decompressed, otherwise true.</returns>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Decompress(Stream input, Stream output) => GbxCompressionUtils.Decompress(input, output);
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Decompress(string inputFileName, Stream output)
+    {
+        using var input = File.OpenRead(inputFileName);
+        return Decompress(input, output);
+    }
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Decompress(Stream input, string outputFileName)
+    {
+        using var output = File.Create(outputFileName);
+        return Decompress(input, output);
+    }
+
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    public static bool Decompress(string inputFileName, string outputFileName)
+    {
+        using var input = File.OpenRead(inputFileName);
+        using var output = File.Create(outputFileName);
+        return Decompress(input, output);
+    }
 }
 
 public class Gbx<T> : Gbx, IGbx<T> where T : notnull, IClass
