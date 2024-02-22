@@ -1,5 +1,6 @@
 ﻿using ChunkL.Structure;
 using GBX.NET.Generators.ChunkL;
+using GBX.NET.Generators.Extensions;
 using GBX.NET.Generators.Models;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
@@ -91,8 +92,7 @@ internal class ClassDataSubGenerator
 
         if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
         {
-            sb.AppendLine();
-            AppendArchiveMethodsLine(sb, classInfo, existingMembers, context, archiveStructureKind);
+            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, context, archiveStructureKind, indent: 0);
         }
 
         AppendChunksLine(sb, classInfo, existingMembers, context);
@@ -289,9 +289,8 @@ internal class ClassDataSubGenerator
 
         sb.AppendLine();
 
-        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, alreadyExistingProperties, context);
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, context);
         propWriter.Append();
-        // ... 
     }
 
     private static void AppendDefaultCtorLine(StringBuilder sb, string className)
@@ -306,9 +305,105 @@ internal class ClassDataSubGenerator
         sb.AppendLine("() { }");
     }
 
-    private static void AppendArchiveMethodsLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context, int? archiveStructureKind)
+    private static void AppendArchiveMethodsLine(
+        StringBuilder sb,
+        ArchiveDataModel archiveInfo,
+        ImmutableArray<ISymbol> existingMembers,
+        SourceProductionContext context,
+        int? archiveStructureKind,
+        int indent)
     {
+        if (archiveInfo.ChunkLDefinition is null)
+        {
+            return;
+        }
 
+        var kind = archiveStructureKind.GetValueOrDefault();
+
+        var doReadMethod = false;
+        var doWriteMethod = false;
+        var doReadWriteMethod = false;
+
+        if (kind == 1) // StructureKind == SeparateReadAndWrite
+        {
+            doReadMethod = true;
+            doWriteMethod = true;
+
+            foreach (var symbol in existingMembers)
+            {
+                if (symbol is not IMethodSymbol methodSymbol)
+                {
+                    continue;
+                }
+
+                if (!doReadMethod && !doWriteMethod)
+                {
+                    break;
+                }
+
+                if (methodSymbol.Name == "Read" && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxReader" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                {
+                    doReadMethod = false;
+                }
+
+                if (methodSymbol.Name == "Write" && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxWriter" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                {
+                    doWriteMethod = false;
+                }
+            }
+        }
+        else
+        {
+            doReadWriteMethod = true;
+
+            foreach (var methodSymbol in existingMembers.OfType<IMethodSymbol>())
+            {
+                if (methodSymbol.Name == "ReadWrite" && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxReaderWriter" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                {
+                    doReadWriteMethod = false;
+                    break;
+                }
+            }
+        }
+
+        if (doReadMethod)
+        {
+            sb.AppendLine();
+            sb.Append(indent, "    public void Read(GbxReader r, int version = 0)");
+            sb.AppendLine();
+            sb.AppendLine(indent, "    {");
+
+            var memberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: true, context);
+            memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
+
+            sb.AppendLine(indent, "    }");
+        }
+
+        if (doWriteMethod)
+        {
+            sb.AppendLine();
+            sb.Append(indent, "    public void Write(GbxWriter w, int version = 0)");
+            sb.AppendLine();
+            sb.AppendLine(indent, "    {");
+
+            var memberWriter = new MemberSerializationWriter(sb, SerializationType.Write, self: true, context);
+            memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
+
+            sb.AppendLine(indent, "    }");
+        }
+
+        if (doReadWriteMethod)
+        {
+            sb.AppendLine();
+            sb.Append(indent, "    public void ReadWrite(GbxReaderWriter rw, int version = 0)");
+            sb.AppendLine();
+            sb.AppendLine(indent, "    {");
+
+            var memberWriter = new MemberSerializationWriter(sb, SerializationType.ReadWrite, self: true, context);
+            memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
+
+            sb.AppendLine(indent, "    }");
+        }
     }
 
     private static void AppendEnumsLine(StringBuilder sb, ClassDataModel classInfo, SourceProductionContext context)
@@ -371,9 +466,67 @@ internal class ClassDataSubGenerator
         }
     }
 
-    private static void AppendArchivesLine(StringBuilder sb, ClassDataModel classInfo, ImmutableArray<ISymbol> existingMembers, SourceProductionContext context)
+    private static void AppendArchivesLine(
+        StringBuilder sb,
+        ClassDataModel classInfo,
+        ImmutableArray<ISymbol> existingMembers,
+        SourceProductionContext context)
     {
+        foreach (var archiveInfo in classInfo.Archives)
+        {
+            AppendArchiveLine(sb, archiveInfo.Key, archiveInfo.Value, classInfo, context);
+        }
+    }
 
+    private static void AppendArchiveLine(
+        StringBuilder sb,
+        string archiveName,
+        ArchiveDataModel archiveInfo,
+        ClassDataModel classInfo,
+        SourceProductionContext context)
+    {
+        sb.AppendLine();
+        sb.Append("    public sealed ");
+
+        if (archiveInfo.TypeSymbol is not null)
+        {
+            sb.Append("partial ");
+        }
+
+        sb.Append("class ");
+        sb.Append(archiveName);
+        sb.Append(" : ");
+
+        var archiveGenOptionsAtt = archiveInfo.TypeSymbol?
+            .GetAttributes()
+            .FirstOrDefault(x => x.AttributeClass?.Name == "ArchiveGenerationOptionsAttribute");
+
+        var archiveStructureKind = (archiveGenOptionsAtt?.NamedArguments
+            .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
+
+        if (archiveStructureKind == 1) // StructureKind == SeparateReadAndWrite
+        {
+            sb.Append("IReadable, IWritable");
+        }
+        else
+        {
+            sb.Append("IReadableWritable");
+        }
+
+        sb.AppendLine();
+        sb.AppendLine("    {");
+
+        var existingArchiveMembers = archiveInfo.TypeSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
+
+        var alreadyExistingProperties = existingArchiveMembers.OfType<IPropertySymbol>()
+            .ToDictionary(x => x.Name) ?? [];
+
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, context);
+        propWriter.Append();
+
+        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, context, archiveStructureKind, indent: 1);
+
+        sb.AppendLine("    }");
     }
 
     private static void AppendChunksLine(
@@ -382,19 +535,16 @@ internal class ClassDataSubGenerator
         ImmutableArray<ISymbol> existingMembers,
         SourceProductionContext context)
     {
-        var existingTypeSymbols = existingMembers.OfType<INamedTypeSymbol>()
-            .ToDictionary(x => x.Name);
-
         foreach (var chunk in classInfo.HeaderChunks.OrderBy(x => x.Key))
         {
-            AppendChunkLine(sb, chunk.Value, isHeaderChunk: true, classInfo, existingTypeSymbols, context);
+            AppendChunkLine(sb, chunk.Value, isHeaderChunk: true, classInfo, context);
         }
 
         sb.AppendLine();
 
         foreach (var chunk in classInfo.Chunks.OrderBy(x => x.Key))
         {
-            AppendChunkLine(sb, chunk.Value, isHeaderChunk: false, classInfo, existingTypeSymbols, context);
+            AppendChunkLine(sb, chunk.Value, isHeaderChunk: false, classInfo, context);
         }
     }
 
@@ -403,7 +553,6 @@ internal class ClassDataSubGenerator
         ChunkDataModel chunk,
         bool isHeaderChunk,
         ClassDataModel classInfo,
-        Dictionary<string, INamedTypeSymbol> existingTypeSymbols,
         SourceProductionContext context)
     {
         if (isHeaderChunk && chunk.IsSkippable)
@@ -420,10 +569,8 @@ internal class ClassDataSubGenerator
         }
 
         var expectedChunkName = (isHeaderChunk ? "HeaderChunk" : "Chunk") + chunk.Id.ToString("X8");
-
-        _ = existingTypeSymbols.TryGetValue(expectedChunkName, out var existingChunkSymbol);
-
-        if (existingChunkSymbol?.TypeKind is TypeKind.Enum)
+        
+        if (chunk.TypeSymbol?.TypeKind is TypeKind.Enum)
         {
             context.ReportDiagnostic(Diagnostic.Create(
                 new DiagnosticDescriptor(
@@ -476,7 +623,7 @@ internal class ClassDataSubGenerator
 
         sb.AppendLine("    /// </summary>");
 
-        var hasChunkAttribute = existingChunkSymbol?.GetAttributes()
+        var hasChunkAttribute = chunk.TypeSymbol?.GetAttributes()
             .Any(x => x.AttributeClass?.Name == "ChunkAttribute") ?? false;
 
         if (!hasChunkAttribute)
@@ -496,7 +643,7 @@ internal class ClassDataSubGenerator
 
         sb.Append("    public partial ");
 
-        var isStructChunk = existingChunkSymbol?.IsValueType ?? false;
+        var isStructChunk = chunk.TypeSymbol?.IsValueType ?? false;
         sb.Append(isStructChunk ? "struct " : "class ");
 
         if (isHeaderChunk)
@@ -507,7 +654,7 @@ internal class ClassDataSubGenerator
         sb.Append("Chunk");
         sb.Append(chunk.Id.ToString("X8"));
 
-        var hasImplementedIChunk = existingChunkSymbol?.AllInterfaces.Any(x => x.Name == "IChunk") == true;
+        var hasImplementedIChunk = chunk.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IChunk") == true;
 
         if (chunk.ChunkLDefinition is not null && hasImplementedIChunk)
         {
@@ -581,9 +728,9 @@ internal class ClassDataSubGenerator
         sb.AppendLine();
         sb.AppendLine("    {");
 
-        var existingChunkMembers = existingChunkSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
+        var existingChunkMembers = chunk.TypeSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
 
-        AppendChunkIdMemberLine(sb, existingChunkMembers, chunk.Id, existingChunkSymbol?.IsValueType ?? false, context);
+        AppendChunkIdMemberLine(sb, existingChunkMembers, chunk.Id, chunk.TypeSymbol?.IsValueType ?? false, context);
 
         if (isHeaderChunk && isStructChunk)
         {
@@ -619,7 +766,10 @@ internal class ClassDataSubGenerator
                 sb.Append(classInfo.Name);
                 sb.AppendLine(" n, GbxReader r)");
                 sb.AppendLine("        {");
-                sb.AppendLine("            throw new NotImplementedException();");
+
+                var readMemberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: false, context);
+                readMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
+
                 sb.AppendLine("        }");
                 sb.AppendLine();
                 sb.Append("        public ");
@@ -633,7 +783,10 @@ internal class ClassDataSubGenerator
                 sb.Append(classInfo.Name);
                 sb.AppendLine(" n, GbxWriter w)");
                 sb.AppendLine("        {");
-                sb.AppendLine("            throw new NotImplementedException();");
+
+                var writeMemberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: false, context);
+                writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
+
                 sb.AppendLine("        }");
 
                 if (isStructChunk)
@@ -649,7 +802,10 @@ internal class ClassDataSubGenerator
                 sb.Append(classInfo.Name);
                 sb.AppendLine(" n, GbxReaderWriter rw)");
                 sb.AppendLine("        {");
-                sb.AppendLine("            throw new NotImplementedException();");
+
+                var memberWriter = new MemberSerializationWriter(sb, SerializationType.ReadWrite, self: false, context);
+                memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
+
                 sb.AppendLine("        }");
             }
         }

@@ -1,0 +1,14 @@
+CGameWaypointSpecialProperty 0x2E009000
+
+0x000
+ version
+ v1=
+  int Spawn
+  int Order
+ v2=
+  string Tag
+  int Order
+
+0x001 (skippable)
+ int
+ int

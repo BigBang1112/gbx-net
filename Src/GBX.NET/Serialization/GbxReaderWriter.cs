@@ -53,7 +53,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         this.leaveOpen = leaveOpen;
     }
 
-    public int Byte(int value = default) => Byte((byte)value);
+    public int Byte(int value) => Byte((byte)value);
 
     public void Byte(ref int value) => value = Byte(value);
 
@@ -83,7 +83,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void Id([NotNullIfNotNull(nameof(value))] ref string? value) => value = Id(value);
 
-    public Int3 Byte3(Int3 value = default) => Byte3((Byte3)value);
+    public Int3 Byte3(Int3 value) => Byte3((Byte3)value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public Int3? Byte3(Int3? value, Int3 defaultValue = default) => Byte3((Byte3?)value, (Byte3)defaultValue);

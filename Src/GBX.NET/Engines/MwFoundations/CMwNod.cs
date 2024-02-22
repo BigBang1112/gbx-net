@@ -270,7 +270,7 @@ public partial class CMwNod : IClass
         {
             return;
         }
-
+        
         foreach (var chunk in chunks)
         {
             var chunkClone = chunk.DeepClone();

@@ -394,6 +394,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return Format;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="BooleanOutOfRangeException"></exception>
+    /// <exception cref="SerializationModeNotSupportedException"></exception>
     public override bool ReadBoolean()
     {
         switch (Mode)

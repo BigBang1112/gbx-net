@@ -1,0 +1,18 @@
+CGameCtnBlockSkin 0x03059000
+
+0x000 // text
+ string Text
+ string
+
+0x001 // skin
+ string Text
+ packdesc PackDesc
+
+0x002 // skin + parent skin
+ string Text
+ packdesc PackDesc
+ packdesc ParentPackDesc
+
+0x003 // secondary skin
+ version
+ packdesc ForegroundPackDesc

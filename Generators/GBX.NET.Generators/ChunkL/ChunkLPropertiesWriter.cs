@@ -1,4 +1,5 @@
 ﻿using ChunkL.Structure;
+using GBX.NET.Generators.Extensions;
 using GBX.NET.Generators.Models;
 using Microsoft.CodeAnalysis;
 using System.Text;
@@ -8,19 +9,25 @@ namespace GBX.NET.Generators.ChunkL;
 internal class ChunkLPropertiesWriter
 {
     private readonly StringBuilder sb;
-    private readonly ClassDataModel classInfo;
+    private readonly ClassDataModel? classInfo;
+    private readonly ArchiveDataModel? archiveInfo;
     private readonly Dictionary<string, IPropertySymbol> alreadyExistingProperties;
+    private readonly int indent;
     private readonly SourceProductionContext context;
 
     public ChunkLPropertiesWriter(
         StringBuilder sb,
-        ClassDataModel classInfo,
+        ClassDataModel? classInfo,
+        ArchiveDataModel? archiveInfo,
         Dictionary<string, IPropertySymbol> alreadyExistingProperties,
+        int indent,
         SourceProductionContext context)
     {
         this.sb = sb;
         this.classInfo = classInfo;
+        this.archiveInfo = archiveInfo;
         this.alreadyExistingProperties = alreadyExistingProperties;
+        this.indent = indent;
         this.context = context;
     }
 
@@ -28,14 +35,22 @@ internal class ChunkLPropertiesWriter
     {
         var alreadyAddedProps = new HashSet<string>();
 
-        foreach (var item in classInfo.HeaderChunks.Concat(classInfo.Chunks))
+        if (classInfo is not null)
         {
-            if (item.Value.ChunkLDefinition is null)
+            foreach (var item in classInfo.HeaderChunks.Concat(classInfo.Chunks))
             {
-                continue;
-            }
+                if (item.Value.ChunkLDefinition is null)
+                {
+                    continue;
+                }
 
-            AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps);
+                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps);
+            }
+        }
+
+        if (archiveInfo?.ChunkLDefinition is not null)
+        {
+            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps);
         }
     }
 
@@ -62,7 +77,7 @@ internal class ChunkLPropertiesWriter
                 var fieldName = char.ToLowerInvariant(prop.Name[0]) + prop.Name.Substring(1);
 
                 sb.AppendLine();
-                sb.Append("    private ");
+                sb.Append(indent, "    private ");
                 sb.Append(mappedType);
 
                 if (!prop.Type.IsReferenceType() && prop.IsNullable)
@@ -76,13 +91,13 @@ internal class ChunkLPropertiesWriter
 
                 if (!string.IsNullOrWhiteSpace(prop.Description))
                 {
-                    sb.AppendLine("    /// <summary>");
-                    sb.Append("    /// ");
+                    sb.AppendLine(indent, "    /// <summary>");
+                    sb.Append(indent, "    /// ");
                     sb.AppendLine(prop.Description);
-                    sb.AppendLine("    /// </summary>");
+                    sb.AppendLine(indent, "    /// </summary>");
                 }
 
-                sb.Append("    public ");
+                sb.Append(indent, "    public ");
                 sb.Append(mappedType);
 
                 if (prop.IsNullable)
@@ -94,14 +109,14 @@ internal class ChunkLPropertiesWriter
                 sb.Append(prop.Name);
 
                 sb.AppendLine();
-                sb.AppendLine("    {");
-                sb.Append("        get => ");
+                sb.AppendLine(indent, "    {");
+                sb.Append(indent, "        get => ");
                 sb.Append(fieldName);
                 sb.AppendLine(";");
-                sb.Append("        set => ");
+                sb.Append(indent, "        set => ");
                 sb.Append(fieldName);
                 sb.AppendLine(" = value;");
-                sb.AppendLine("    }");
+                sb.AppendLine(indent, "    }");
             }
         }
     }
