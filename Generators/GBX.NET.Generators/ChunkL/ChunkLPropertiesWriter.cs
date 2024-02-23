@@ -44,37 +44,39 @@ internal class ChunkLPropertiesWriter
                     continue;
                 }
 
-                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps);
+                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: false);
             }
         }
 
         if (archiveInfo?.ChunkLDefinition is not null)
         {
-            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps);
+            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: true);
         }
     }
 
-    private void AppendPropertiesRecursive(List<IChunkMember> members, HashSet<string> alreadyAddedProps)
+    private void AppendPropertiesRecursive(List<IChunkMember> members, HashSet<string> alreadyAddedProps, bool includeUnknown, int unknownCounter = 0)
     {
         foreach (var member in members)
         {
             if (member is IChunkMemberBlock block)
             {
-                AppendPropertiesRecursive(block.Members, alreadyAddedProps);
+                AppendPropertiesRecursive(block.Members, alreadyAddedProps, includeUnknown, unknownCounter);
                 continue;
             }
             
             if (member is ChunkProperty prop)
             {
-                if (IsUnknownProperty(prop.Name) || alreadyExistingProperties.ContainsKey(prop.Name) || alreadyAddedProps.Contains(prop.Name))
+                if ((!includeUnknown && IsUnknownProperty(prop.Name)) || prop.Type.IsKeyword() || alreadyExistingProperties.ContainsKey(prop.Name) || alreadyAddedProps.Contains(prop.Name))
                 {
                     continue;
                 }
 
-                alreadyAddedProps.Add(prop.Name);
+                var propName = string.IsNullOrEmpty(prop.Name) ? $"U{++unknownCounter:00}" : prop.Name;
 
-                var mappedType = prop.Type.ToCSharpType();
-                var fieldName = char.ToLowerInvariant(prop.Name[0]) + prop.Name.Substring(1);
+                alreadyAddedProps.Add(propName);
+
+                var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
+                var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
 
                 sb.AppendLine();
                 sb.Append(indent, "    private ");
@@ -106,7 +108,7 @@ internal class ChunkLPropertiesWriter
                 }
 
                 sb.Append(' ');
-                sb.Append(prop.Name);
+                sb.Append(propName);
 
                 sb.AppendLine();
                 sb.AppendLine(indent, "    {");

@@ -443,6 +443,15 @@ internal class ClassDataSubGenerator
             }
 
             sb.AppendLine();
+
+            if (!string.IsNullOrEmpty(enumInfo.Value.ChunkLDefinition.Description))
+            {
+                sb.AppendLine("    /// <summary>");
+                sb.Append("    /// ");
+                sb.AppendLine(enumInfo.Value.ChunkLDefinition.Description);
+                sb.AppendLine("    /// </summary>");
+            }
+
             sb.Append("    public enum ");
             sb.Append(enumInfo.Key);
             sb.AppendLine();
@@ -450,6 +459,14 @@ internal class ClassDataSubGenerator
 
             foreach (var member in enumInfo.Value.ChunkLDefinition.Values)
             {
+                if (!string.IsNullOrEmpty(member.Description))
+                {
+                    sb.AppendLine("        /// <summary>");
+                    sb.Append("        /// ");
+                    sb.AppendLine(member.Description);
+                    sb.AppendLine("        /// </summary>");
+                }
+
                 sb.Append("        ");
                 sb.Append(member.Name);
 

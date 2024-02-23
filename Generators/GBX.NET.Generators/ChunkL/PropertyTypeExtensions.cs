@@ -34,6 +34,15 @@ internal static class PropertyTypeExtensions
         "TimeInt32",
         "TimeSingle");
 
+    private static readonly ImmutableHashSet<string> keywords = ImmutableHashSet.Create(
+        "return",
+        "throw");
+
+    public static bool IsKeyword(this PropertyType propertyType)
+    {
+        return keywords.Contains(propertyType.PrimaryType);
+    }
+
     public static bool IsSimpleType(this PropertyType propertyType)
     {
         return !propertyType.IsArray
@@ -72,7 +81,7 @@ internal static class PropertyTypeExtensions
         return propertyType.IsArray || !valueTypes.Contains(MapType(propertyType.PrimaryType));
     }
 
-    private static string MapType(string type)
+    public static string MapType(string type)
     {
         return type.ToLowerInvariant() switch
         {
@@ -101,6 +110,7 @@ internal static class PropertyTypeExtensions
             "id" or "lookbackstring" => "string",
             "packdesc" or "fileref" => "PackDesc",
             "list" => "IList",
+            "data" => "byte[]",
             _ => type
         };
     }

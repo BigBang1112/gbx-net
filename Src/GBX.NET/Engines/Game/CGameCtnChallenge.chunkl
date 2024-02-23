@@ -331,7 +331,7 @@ archive BotPath
  CGameWaypointSpecialProperty WaypointSpecialProperty
  bool IsAutonomous
 
-enum MapKind
+enum MapKind // The map's intended use.
  EndMarker
  Campaign
  Puzzle
@@ -345,3 +345,18 @@ enum MapKind
  Site
  SoloNadeo
  MultiNadeo
+
+enum PlayMode // Map type in which the map was validated in.
+ Race
+ Platform
+ Puzzle
+ Crazy
+ Shortcut
+ Stunts
+ Script // Any custom map type script.
+
+enum EditorMode
+ Advanced
+ Simple
+ HasGhostBlocks
+ Gamepad = 4

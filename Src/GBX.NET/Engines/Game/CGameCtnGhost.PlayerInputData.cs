@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Inputs;
+using System.Collections.Immutable;
 
 namespace GBX.NET.Engines.Game;
 
@@ -13,7 +14,7 @@ public partial class CGameCtnGhost
 	/// <summary>
 	/// Set of inputs.
 	/// </summary>
-	public class PlayerInputData : IReadableWritable
+	public partial class PlayerInputData : IReadableWritable
 	{
 		public enum EVersion
 		{
@@ -31,22 +32,9 @@ public partial class CGameCtnGhost
 			VehicleMix
 		}
 
-		private EVersion version; // 8 in shootmania, 12 in tm2020
-		private int u02;
-		private TimeInt32? startOffset;
-		private int ticks;
-		private byte[] data = [];
+		private ImmutableList<IInputChange>? inputChanges;
+		private ImmutableList<IInput>? inputs;
 
-		private IList<IInputChange>? inputChanges;
-		private IReadOnlyCollection<IInput>? inputs;
-
-		public EVersion Version { get => version; set => version = value; }
-		public int U02 { get => u02; set => u02 = value; }
-		public TimeInt32? StartOffset { get => startOffset; set => startOffset = value; }
-		public int Ticks { get => ticks; set => ticks = value; }
-		public byte[] Data { get => data; set => data = value; }
-
-		[Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
 		public IList<IInputChange> InputChanges
 		{
 			get
@@ -57,71 +45,21 @@ public partial class CGameCtnGhost
 						? ProcessShootmaniaInputChanges()
 						: ProcessTrackmaniaInputChanges();
 
-#if DEBUG
-					var testList = new List<IInputChange>();
-
-					try
-					{
-						foreach (var input in inputEnumerable)
-						{
-							testList.Add(input);
-						}
-					}
-					catch
-					{
-
-					}
-#endif
-
-					inputChanges = inputEnumerable.ToArray();
+					inputChanges = inputEnumerable.ToImmutableList();
 				}
 
 				return inputChanges;
 			}
 		}
 
-		public IReadOnlyCollection<IInput> Inputs
-		{
-			get
-			{
-				if (inputs is null)
-				{
-					var inputEnumerable = version is <= EVersion._2017_09_12
-						? ProcessShootmaniaInputs()
-						: ProcessTrackmaniaInputs();
+        public ImmutableList<IInput> Inputs => inputs ??= version is <= EVersion._2017_09_12
+            ? ProcessShootmaniaInputs().ToImmutableList()
+            : ProcessTrackmaniaInputs();
 
-					if (inputEnumerable is IReadOnlyCollection<IInput> collection)
-					{
-						inputs = collection;
-						return inputs;
-					}
-#if DEBUG
-					var testList = new List<IInput>();
-
-					try
-					{
-						foreach (var input in inputEnumerable)
-						{
-							testList.Add(input);
-						}
-					}
-					catch
-					{
-
-					}
-#endif
-
-					inputs = inputEnumerable.ToArray();
-				}
-
-				return inputs;
-			}
-		}
-
-		public void ReadWrite(GbxReaderWriter rw, int version = 0)
+        public void ReadWrite(GbxReaderWriter rw, int version = 0)
 		{
 			rw.EnumInt32<EVersion>(ref this.version); // 8 in shootmania, 12 in tm2020
-			rw.Int32(ref u02);
+			rw.Int32(ref u01);
 
 			// version from the method parameter (the chunk version), NOT this.version
 			if (version >= 4)
@@ -358,9 +296,9 @@ public partial class CGameCtnGhost
 			}
 		}
 
-		internal IEnumerable<IInput> ProcessTrackmaniaInputs()
+		internal ImmutableList<IInput> ProcessTrackmaniaInputs()
 		{
-			var inputs = new List<IInput>();
+			var inputs = ImmutableList.CreateBuilder<IInput>();
 
 			var r = new BitReader(data);
 
@@ -612,7 +550,7 @@ public partial class CGameCtnGhost
 				throw new Exception("Input buffer not cleared out completely");
 			}
 
-			return inputs;
+			return inputs.ToImmutable();
 		}
 
 		internal IEnumerable<IInputChange> ProcessShootmaniaInputChanges()
@@ -911,7 +849,6 @@ public partial class CGameCtnGhost
 			public EWalk? Walk => CharacterStates is null ? null : (EWalk)((CharacterStates >> 2) & 3);
 			public byte? Vertical => CharacterStates is null ? null : (byte)((CharacterStates >> 4) & 3);
 			public byte? Horizontal => CharacterStates is null ? null : (byte)((CharacterStates >> 6) & 3);
-
 		}
 	}
 }
