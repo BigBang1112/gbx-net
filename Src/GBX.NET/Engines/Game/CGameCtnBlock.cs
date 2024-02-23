@@ -3,13 +3,39 @@
 [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
 public partial class CGameCtnBlock
 {
+    private string? name;
+
     /// <summary>
     /// Name of the block.
     /// </summary>
     public string Name
     {
-        get => blockModel.Id;
-        set => blockModel = blockModel with { Id = value };
+        get => name ?? blockModel.Id;
+        set => name = value;
+    }
+
+    private Ident blockModel = Ident.Empty;
+    public Ident BlockModel
+    {
+        get
+        {
+            if (name is null)
+            {
+                return blockModel;
+            }
+
+            if (blockModel.Id == name)
+            {
+                return blockModel;
+            }
+
+            return blockModel = blockModel with { Id = name };
+        }
+        set
+        {
+            blockModel = value;
+            name = value.Id;
+        }
     }
 
     private Int3 coord;
