@@ -33,6 +33,7 @@ internal class ChunkLPropertiesWriter
 
     internal void Append()
     {
+        var unknownCounter = 0;
         var alreadyAddedProps = new HashSet<string>();
 
         if (classInfo is not null)
@@ -44,23 +45,23 @@ internal class ChunkLPropertiesWriter
                     continue;
                 }
 
-                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: false);
+                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: false, ref unknownCounter);
             }
         }
 
         if (archiveInfo?.ChunkLDefinition is not null)
         {
-            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: true);
+            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: true, ref unknownCounter);
         }
     }
 
-    private void AppendPropertiesRecursive(List<IChunkMember> members, HashSet<string> alreadyAddedProps, bool includeUnknown, int unknownCounter = 0)
+    private void AppendPropertiesRecursive(List<IChunkMember> members, HashSet<string> alreadyAddedProps, bool includeUnknown, ref int unknownCounter)
     {
         foreach (var member in members)
         {
             if (member is IChunkMemberBlock block)
             {
-                AppendPropertiesRecursive(block.Members, alreadyAddedProps, includeUnknown, unknownCounter);
+                AppendPropertiesRecursive(block.Members, alreadyAddedProps, includeUnknown, ref unknownCounter);
                 continue;
             }
             

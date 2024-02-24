@@ -36,7 +36,9 @@ internal static class PropertyTypeExtensions
 
     private static readonly ImmutableHashSet<string> keywords = ImmutableHashSet.Create(
         "return",
-        "throw");
+        "throw",
+        "version",
+        "versionb");
 
     public static bool IsKeyword(this PropertyType propertyType)
     {
@@ -79,6 +81,11 @@ internal static class PropertyTypeExtensions
     public static bool IsReferenceType(this PropertyType propertyType)
     {
         return propertyType.IsArray || !valueTypes.Contains(MapType(propertyType.PrimaryType));
+    }
+
+    public static bool IsValueType(string type)
+    {
+        return valueTypes.Contains(MapType(type));
     }
 
     public static string MapType(string type)
