@@ -7,6 +7,9 @@ public partial interface IGbxReaderWriter : IDisposable
     GbxReader? Reader { get; }
     GbxWriter? Writer { get; }
 
+    void VersionInt32(IVersionable versionable);
+    void VersionByte(IVersionable versionable);
+
     [return: NotNullIfNotNull(nameof(value))]
     string? Id(string? value = default);
     void Id([NotNullIfNotNull(nameof(value))] ref string? value);
@@ -27,6 +30,25 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new();
     void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0) where T : IReadableWritable, new();
+
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new();
+    void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int length, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new();
+    void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new();
+    void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    IList<T>? ListReadableWritable<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0) where T : IReadableWritable, new();
 }
 
 public sealed partial class GbxReaderWriter : IGbxReaderWriter
@@ -64,11 +86,13 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void VersionInt32(IVersionable versionable)
     {
+        _ = versionable ?? throw new ArgumentNullException(nameof(versionable));
         versionable.Version = Int32(versionable.Version);
     }
 
     public void VersionByte(IVersionable versionable)
     {
+        _ = versionable ?? throw new ArgumentNullException(nameof(versionable));
         versionable.Version = Byte(versionable.Version);
     }
 
@@ -147,4 +171,178 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0)
         where T : IReadableWritable, new() => value = ReadableWritable(value, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new()
+    {
+        if (Reader is not null && length != 0)
+        {
+            if (length < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+            }
+
+            if (length < 0 || length > 0x10000000) // ~268MB
+            {
+                throw new Exception($"Length is too big to handle ({length}).");
+            }
+
+            var array = new T[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                array[i] = ReadableWritable<T>(default, version)!;
+            }
+
+            value = array;
+        }
+
+        if (Writer is not null)
+        {
+            if (value is not null)
+            {
+                foreach (var item in value)
+                {
+                    ReadableWritable(item, version);
+                }
+            }
+
+            if (value is null || length > value.Length)
+            {
+                for (var i = value?.Length ?? 0; i < length; i++)
+                {
+                    ReadableWritable<T>(new(), version);
+                }
+            }
+        }
+
+        return value;
+    }
+
+    public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int length, int version = 0)
+        where T : IReadableWritable, new() => value = ArrayReadableWritable(value, length, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new()
+    {
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+            value = ArrayReadableWritable(value, length, version);
+        }
+
+        if (Writer is not null)
+        {
+            var length = value?.Length ?? 0;
+            Writer.Write(length);
+
+            if (length > 0)
+            {
+                ArrayReadableWritable(value, length, version);
+            }
+        }
+
+        return value;
+    }
+
+    public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0)
+        where T : IReadableWritable, new() => value = ArrayReadableWritable(value, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new()
+    {
+        Reader?.ReadDeprecVersion();
+        Writer?.WriteDeprecVersion();
+        return ArrayReadableWritable(value, version);
+    }
+
+    public void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0)
+        where T : IReadableWritable, new() => value = ArrayReadableWritable_deprec(value, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new()
+    {
+        if (Reader is not null && length != 0)
+        {
+            if (length < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+            }
+
+            if (length < 0 || length > 0x10000000) // ~268MB
+            {
+                throw new Exception($"Length is too big to handle ({length}).");
+            }
+
+            var list = new List<T>(length);
+
+            for (int i = 0; i < length; i++)
+            {
+                list.Add(ReadableWritable<T>(default, version)!);
+            }
+
+            value = list;
+        }
+
+        if (Writer is not null)
+        {
+            if (value is not null)
+            {
+                foreach (var item in value)
+                {
+                    ReadableWritable(item, version);
+                }
+            }
+
+            if (value is null || length > value.Count)
+            {
+                for (var i = value?.Count ?? 0; i < length; i++)
+                {
+                    ReadableWritable<T>(new(), version);
+                }
+            }
+        }
+
+        return value;
+    }
+
+    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int length, int version = 0)
+        where T : IReadableWritable, new() => value = ListReadableWritable(value, length, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public IList<T>? ListReadableWritable<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new()
+    {
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+            value = ListReadableWritable(value, length, version);
+        }
+
+        if (Writer is not null)
+        {
+            var length = value?.Count ?? 0;
+            Writer.Write(length);
+
+            if (length > 0)
+            {
+                ListReadableWritable(value, length, version);
+            }
+        }
+
+        return value;
+    }
+
+    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0)
+        where T : IReadableWritable, new() => value = ListReadableWritable(value, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new()
+    {
+        Reader?.ReadDeprecVersion();
+        Writer?.WriteDeprecVersion();
+        return ListReadableWritable(value, version);
+    }
+
+    public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0)
+        where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, version);
 }

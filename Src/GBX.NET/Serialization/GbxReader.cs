@@ -68,6 +68,7 @@ public partial interface IGbxReader : IDisposable
     TimeSpan? ReadTimeOfDay();
     void ReadMarker(string value);
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
+    void ReadDeprecVersion();
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -82,6 +83,12 @@ public partial interface IGbxReader : IDisposable
     IList<T?> ReadListNodeRef<T>(int length) where T : IClass;
     IList<T?> ReadListNodeRef<T>() where T : IClass;
     IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
+    T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
+    T[] ReadArrayReadable<T>(int version = 0) where T : IReadable, new();
+    T[] ReadArrayReadable_deprec<T>(int version = 0) where T : IReadable, new();
+    IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
+    IList<T> ReadListReadable<T>(int version = 0) where T : IReadable, new();
+    IList<T> ReadListReadable_deprec<T>(int version = 0) where T : IReadable, new();
 
     string[] ReadArrayId(int length);
     string[] ReadArrayId();
@@ -819,6 +826,60 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return readable;
     }
 
+    public T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new()
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        ValidateCollectionLength(length);
+
+        var array = new T[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            array[i] = ReadReadable<T>(version);
+        }
+
+        return array;
+    }
+
+    public T[] ReadArrayReadable<T>(int version = 0) where T : IReadable, new() => ReadArrayReadable<T>(ReadInt32(), version);
+
+    public T[] ReadArrayReadable_deprec<T>(int version = 0) where T : IReadable, new()
+    {
+        ReadDeprecVersion();
+        return ReadArrayReadable<T>(version);
+    }
+
+    public IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new()
+    {
+        if (length == 0)
+        {
+            return new List<T>();
+        }
+
+        ValidateCollectionLength(length);
+
+        var list = new List<T>(length);
+
+        for (int i = 0; i < length; i++)
+        {
+            list.Add(ReadReadable<T>(version));
+        }
+
+        return list;
+    }
+
+    public IList<T> ReadListReadable<T>(int version = 0) where T : IReadable, new() => ReadListReadable<T>(ReadInt32(), version);
+
+    public IList<T> ReadListReadable_deprec<T>(int version = 0) where T : IReadable, new()
+    {
+        ReadDeprecVersion();
+        return ReadListReadable<T>(version);
+    }
+
     private static void ValidateCollectionLength(int length)
     {
         if (length < 0)
@@ -849,7 +910,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return l;
     }
 
-    private void ReadDeprecVersion()
+    public void ReadDeprecVersion()
     {
         var version = ReadInt32();
         deprecVersion ??= version;

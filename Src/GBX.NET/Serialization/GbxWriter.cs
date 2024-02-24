@@ -65,6 +65,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeOfDay(TimeSpan? value);
     void WriteMarker(string value);
     void WriteWritable<T>(T value, int version = 0) where T : IWritable;
+    void WriteDeprecVersion();
 
     void Write(byte[]? value);
     void WriteData(byte[]? value);
@@ -85,12 +86,10 @@ public partial interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass;
 
-    void WriteArrayId(string[]? value);
-    void WriteArrayId(string[]? value, int length);
-    void WriteArrayId_deprec(string[]? value);
-    void WriteListId(IList<string>? value);
-    void WriteListId(IList<string>? value, int length);
-    void WriteListId_deprec(IList<string>? value);
+    void WriteArrayWritable<T>(T[]? value, int version = 0) where T : IWritable;
+    void WriteArrayWritable_deprec<T>(T[]? value, int version = 0) where T : IWritable;
+    void WriteListWritable<T>(IList<T>? value, int version = 0) where T : IWritable;
+    void WriteListWritable_deprec<T>(IList<T>? value, int version = 0) where T : IWritable;
 
     void ResetIdState();
 }
@@ -672,7 +671,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #endif
     }*/
 
-    private void WriteDeprecVersion()
+    public void WriteDeprecVersion()
     {
         Write(DeprecVersion);
     }
@@ -803,7 +802,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         throw new NotImplementedException();
     }
 
-    public void WriteArrayId(string[]? value)
+    public void WriteArrayWritable<T>(T[]? value, int version = 0) where T : IWritable
     {
         if (value is null)
         {
@@ -815,32 +814,17 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         foreach (var item in value)
         {
-            WriteIdAsString(item);
+            WriteWritable(item, version);
         }
     }
 
-    public void WriteArrayId(string[]? value, int length)
-    {
-        if (value is null) return;
-
-        for (var i = 0; i < length; i++)
-        {
-            WriteIdAsString(value[i]);
-
-            if (i >= value.Length)
-            {
-                WriteIdAsString(default);
-            }
-        }
-    }
-
-    public void WriteArrayId_deprec(string[]? value)
+    public void WriteArrayWritable_deprec<T>(T[]? value, int version = 0) where T : IWritable
     {
         WriteDeprecVersion();
-        WriteArrayId(value);
+        WriteArrayWritable(value, version);
     }
 
-    public void WriteListId(IList<string>? value)
+    public void WriteListWritable<T>(IList<T>? value, int version = 0) where T : IWritable
     {
         if (value is null)
         {
@@ -852,28 +836,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         foreach (var item in value)
         {
-            WriteIdAsString(item);
+            WriteWritable(item, version);
         }
     }
 
-    public void WriteListId(IList<string>? value, int length)
-    {
-        if (value is null) return;
-
-        for (var i = 0; i < length; i++)
-        {
-            WriteIdAsString(value[i]);
-
-            if (i >= value.Count)
-            {
-                WriteIdAsString(default);
-            }
-        }
-    }
-
-    public void WriteListId_deprec(IList<string>? value)
+    public void WriteListWritable_deprec<T>(IList<T>? value, int version = 0) where T : IWritable
     {
         WriteDeprecVersion();
-        WriteListId(value);
+        WriteListWritable(value, version);
     }
 }
