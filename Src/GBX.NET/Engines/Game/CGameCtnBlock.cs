@@ -4,7 +4,6 @@
 public partial class CGameCtnBlock
 {
     private string? name;
-
     /// <summary>
     /// Name of the block.
     /// </summary>

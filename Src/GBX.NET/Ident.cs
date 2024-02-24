@@ -6,7 +6,7 @@
 public sealed record Ident(string Id, Id Collection, string Author)
 {
     /// <summary>
-    /// An empty <see cref="Ident"/> with default values.
+    /// An empty <see cref="Ident"/> with <see cref="string.Empty"/> values.
     /// </summary>
     public static readonly Ident Empty = new();
     

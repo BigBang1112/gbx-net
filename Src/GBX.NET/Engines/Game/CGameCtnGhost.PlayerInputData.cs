@@ -14,7 +14,7 @@ public partial class CGameCtnGhost
 	/// <summary>
 	/// Set of inputs.
 	/// </summary>
-	public partial class PlayerInputData : IReadableWritable
+	public partial class PlayerInputData
 	{
 		public enum EVersion
 		{

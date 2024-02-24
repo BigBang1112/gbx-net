@@ -616,7 +616,7 @@ internal class ClassDataSubGenerator
 
         sb.Append(classInfo.Name);
         sb.Append(" 0x");
-        sb.Append(chunk.Id.ToString("X3"));
+        sb.Append((chunk.Id & 0xFFF).ToString("X3"));
 
         if (isHeaderChunk)
         {
@@ -761,6 +761,9 @@ internal class ClassDataSubGenerator
             AppendVersionPropertyLine(sb, chunk);
         }
 
+        var fieldsWriter = new ChunkLFieldsWriter(sb, chunk, existingChunkMembers, context);
+        fieldsWriter.Append();
+
         var generationOptionsAtt = chunk.TypeSymbol?.GetAttributes()
             .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkGenerationOptionsAttribute");
 
@@ -801,7 +804,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine(" n, GbxWriter w)");
                 sb.AppendLine("        {");
 
-                var writeMemberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: false, context);
+                var writeMemberWriter = new MemberSerializationWriter(sb, SerializationType.Write, self: false, context);
                 writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
