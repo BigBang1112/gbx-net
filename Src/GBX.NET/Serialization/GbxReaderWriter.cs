@@ -20,10 +20,10 @@ public partial interface IGbxReaderWriter : IDisposable
     void Byte3(ref Int3 value);
     void Byte3([NotNullIfNotNull(nameof(value))] ref Int3? value, Int3 defaultValue = default);
 
-    T EnumInt32<T>(T value) where T : Enum;
-    void EnumInt32<T>(ref T value) where T : Enum;
-    T EnumByte<T>(T value) where T : Enum;
-    void EnumByte<T>(ref T value) where T : Enum;
+    T EnumInt32<T>(T value) where T : struct, Enum;
+    void EnumInt32<T>(ref T value) where T : struct, Enum;
+    T EnumByte<T>(T value) where T : struct, Enum;
+    void EnumByte<T>(ref T value) where T : struct, Enum;
 
     void Marker(string value);
 
@@ -122,33 +122,33 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public void Byte3([NotNullIfNotNull(nameof(value))] ref Int3? value, Int3 defaultValue = default)
         => value = Byte3(value, defaultValue);
 
-    public T EnumInt32<T>(T value) where T : Enum
+    public T EnumInt32<T>(T value) where T : struct, Enum
     {
         if (Reader is not null)
         {
-            value = (T)(object)Reader.ReadInt32();
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadInt32()); // CastTo<T>.From(Reader.ReadInt32());
         }
 
-        Writer?.Write((int)(object)value);
+        Writer?.Write((int)(object)value /* CastTo<int>.From(value) */);
 
         return value;
     }
 
-    public void EnumInt32<T>(ref T value) where T : Enum => value = EnumInt32(value);
+    public void EnumInt32<T>(ref T value) where T : struct, Enum => value = EnumInt32(value);
 
-    public T EnumByte<T>(T value) where T : Enum
+    public T EnumByte<T>(T value) where T : struct, Enum
     {
         if (Reader is not null)
         {
-            value = (T)(object)Reader.ReadByte();
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadByte()); // CastTo<T>.From(Reader.ReadByte());
         }
 
-        Writer?.Write((byte)(object)value);
+        Writer?.Write((byte)(object)value /* CastTo<byte>.From(value) */);
 
         return value;
     }
 
-    public void EnumByte<T>(ref T value) where T : Enum => value = EnumByte(value);
+    public void EnumByte<T>(ref T value) where T : struct, Enum => value = EnumByte(value);
 
     public void Marker(string value)
     {

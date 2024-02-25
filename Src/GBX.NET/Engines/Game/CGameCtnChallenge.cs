@@ -142,12 +142,12 @@ public sealed partial class CGameCtnChallenge :
             Version = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
-            var blocks = new List<CGameCtnBlock>(nbBlocks);
+            n.blocks = new List<CGameCtnBlock>(nbBlocks);
 
             for (var i = 0; i < nbBlocks; i++)
             {
                 var block = r.ReadReadable<CGameCtnBlock>(Version);
-                blocks.Add(block);
+                n.blocks.Add(block);
 
                 if (block.Flags == -1)
                 {
@@ -157,7 +157,7 @@ public sealed partial class CGameCtnChallenge :
 
             while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
-                blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
+                n.blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
             }
         }
 

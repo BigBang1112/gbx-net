@@ -42,4 +42,9 @@ public partial class CGameCtnBlock
     /// Position of the block on the map in block coordination.
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
+
+    public override string ToString()
+    {
+        return $"{nameof(CGameCtnBlock)}: {Name} {coord}";
+    }
 }
