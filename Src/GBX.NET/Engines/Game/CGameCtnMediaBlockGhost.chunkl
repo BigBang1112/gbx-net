@@ -1,0 +1,10 @@
+CGameCtnMediaBlockGhost 0x030E5000
+- inherits: CGameCtnMediaBlock
+
+0x001
+ timefloat Start
+ timefloat End
+ CGameCtnGhost GhostModel
+ float StartOffset
+
+0x002

@@ -1,20 +1,47 @@
 CGameCtnGhost 0x03092000 // A ghost.
 - inherits: CGameGhost
-- chunk_Chunk03092000: Unexpected syntax
 - chunk_Chunk03092004: Unexpected syntax (args.Count != 1 or 2)
 - chunk_Chunk0309200B: Unexpected syntax (args.Count != 1 or 2)
-- chunk_Chunk0309200E: Unexpected syntax
-- chunk_Chunk03092011: Unexpected syntax
-- chunk_Chunk03092019: Unexpected syntax
 - chunk_Chunk0309201C: Unexpected syntax
 - chunk_Chunk0309201D: Unexpected syntax
 - chunk_Chunk03092025: Unexpected syntax
 - chunk_Chunk03092028: Unexpected syntax
 
+0x000 (skippable)
+ version
+ v9+
+  int AppearanceVersion
+ ident PlayerModel
+ vec3 LightTrailColor
+ list<packdesc> SkinPackDescs
+ bool HasBadges // boolnode?
+ if HasBadges
+  SBadge Badge
+ if AppearanceVersion >= 1
+  string
+ string GhostNickname
+ string GhostAvatarName
+ v2+
+  string RecordingContext
+  v4+
+   bool
+   v5+
+    CPlugEntRecordData RecordData
+    int[]
+    v6+
+     string GhostTrigram
+     v7+
+      string GhostZone
+      v8+
+       string GhostClubTag
+  
 0x003
  ident PlayerModel
  string SkinFile
  string GhostNickname
+
+0x004 (skippable)
+ Checkpoint[] Checkpoints
 
 0x005 (skippable) // race time
  timeint? RaceTime
@@ -49,11 +76,16 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  string GhostNickname
 
+0x00E
+ id GhostUid
+
 0x00F // ghost login
  string GhostLogin
 
 0x010 // validation map UID
  id Validate_ChallengeUid
+
+0x011 // validation TMU
 
 0x012
  uint32
@@ -76,6 +108,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x018
  ident PlayerModel
+
+0x019 (base: 0x011) // validation TMUF
 
 0x01A (skippable)
  int
@@ -132,3 +166,24 @@ archive PlayerInputData
   timeint? StartOffset
  int Ticks
  data Data
+
+archive SBadge
+ int Version
+ vec3 Color
+ v0=
+  int
+  string
+ list<SSticker> Stickers
+ list<string> Layers
+
+archive SSticker
+ string
+ string
+
+archive Checkpoint
+ timeint? Time
+ v0=
+  float? Speed
+ v1=
+  int? StuntsScore
+  

@@ -39,7 +39,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception($"Chunk ID 0x{chunkId:X8} cannot be processed");
+                    throw new Exception($"Unknown unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000)} 0x{chunkId:X8}) cannot be processed");
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -94,7 +94,7 @@ public partial class CMwNod : IClass
                     readable.Read(node, r);
                     break;
                 default:
-                    throw new Exception("Chunk cannot be processed");
+                    throw new Exception($"Known unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000)} 0x{chunkId:X8}) cannot be processed");
             }
         }
     }
@@ -129,7 +129,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception("Chunk cannot be processed");
+                    throw new Exception($"Unknown unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed");
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -174,7 +174,7 @@ public partial class CMwNod : IClass
                     readable.Read(this, r);
                     break;
                 default:
-                    throw new Exception("Chunk cannot be processed");
+                    throw new Exception($"Known unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed");
             }
         }
     }
@@ -210,7 +210,7 @@ public partial class CMwNod : IClass
                     writable.Write(this, chunkW);
                     break;
                 default:
-                    throw new Exception("Chunk cannot be processed");
+                    throw new Exception($"Chunk (ID 0x{chunk.Id:X8}, {ClassManager.GetName(chunk.Id & 0xFFFFF000)}) cannot be processed");
             }
 
             // Memory stream is not null only if chunk is skippable

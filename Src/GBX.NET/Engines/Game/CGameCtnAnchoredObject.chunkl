@@ -1,0 +1,29 @@
+CGameCtnAnchoredObject 0x03101000
+- chunk_Chunk03101002: Unexpected syntax
+
+0x002
+ version
+ ident ItemModel
+ vec3 PitchYawRoll
+ byte3 BlockUnitCoord
+ id AnchorTreeId
+ vec3 AbsolutePositionInMap
+ CGameWaypointSpecialProperty WaypointSpecialProperty
+ v4-
+  int
+ v4+
+  short Flags
+  v5+
+   vec3 PivotPosition
+   v6+
+    float Scale
+    v7+
+     v8+
+      vec3
+      vec3
+
+0x004 (skippable)
+ version
+ int
+
+0x005 (skippable, ignore)
