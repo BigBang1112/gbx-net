@@ -196,7 +196,14 @@ internal class ClassDataSubGenerator
             }
         }
 
-        sb.Append("public partial class ");
+        sb.Append("public ");
+
+        if (classInfo.IsAbstract)
+        {
+            sb.Append("abstract ");
+        }
+
+        sb.Append("partial class ");
         sb.Append(classInfo.Name);
 
         var inheritanceList = new List<string>();

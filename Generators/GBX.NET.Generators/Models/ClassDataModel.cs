@@ -15,4 +15,5 @@ internal record ClassDataModel(
     ImmutableList<INamedTypeSymbol> ChunksWithNoId,
     ArchiveDataModel? NamelessArchive,
     ImmutableDictionary<string, ArchiveDataModel> Archives,
-    ImmutableDictionary<string, EnumDataModel> Enums);
+    ImmutableDictionary<string, EnumDataModel> Enums,
+    bool IsAbstract);
