@@ -15,7 +15,7 @@ CGameCtnMediaClip 0x03079000
  string Name
 
 0x004
- CMwNod?
+ CMwNod
 
 0x005 (base: 0x003) // tracks without sorting
 

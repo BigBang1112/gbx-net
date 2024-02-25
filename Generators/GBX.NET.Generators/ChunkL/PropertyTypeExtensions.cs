@@ -1,5 +1,7 @@
 ﻿using ChunkL.Structure;
+using System.Collections;
 using System.Collections.Immutable;
+using System.Numerics;
 using System.Text;
 
 namespace GBX.NET.Generators.ChunkL;
@@ -38,7 +40,8 @@ internal static class PropertyTypeExtensions
         "return",
         "throw",
         "version",
-        "versionb");
+        "versionb",
+        "base");
 
     public static bool IsKeyword(this PropertyType propertyType)
     {
@@ -65,7 +68,7 @@ internal static class PropertyTypeExtensions
             sb.Append('>');
         }
 
-        if (propertyType.IsArray)
+        if (propertyType.IsArray && propertyType.PrimaryType != "data")
         {
             sb.Append("[]");
         }
@@ -92,6 +95,7 @@ internal static class PropertyTypeExtensions
     {
         return type.ToLowerInvariant() switch
         {
+            "int128" => "global::System.Numerics.BigInteger",
             "int64" => "long",
             "uint64" => "ulong",
             "uint32" => "uint",
@@ -112,11 +116,11 @@ internal static class PropertyTypeExtensions
             "color" => "Color",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
-            "timeofday" => "TimeSpan",
+            "timeofday" => nameof(TimeSpan),
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "string",
             "packdesc" or "fileref" => "PackDesc",
-            "list" => "IList",
+            "list" => nameof(IList),
             "data" => "byte[]",
             _ => type
         };

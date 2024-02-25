@@ -7,7 +7,7 @@ namespace GBX.NET.Generators.SubGenerators;
 
 internal static class ClassManagerSubGenerator
 {
-    public static void GenerateSource(SourceProductionContext context, ImmutableList<ClassDataModel> classInfos)
+    public static void GenerateSource(SourceProductionContext context, ImmutableDictionary<string, ClassDataModel> classInfos)
     {
         var builder = new StringBuilder();
 
@@ -23,9 +23,9 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        { typeof(");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.Append($"), 0x");
-            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
             builder.AppendLine(" },");
         }
 
@@ -37,9 +37,9 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => typeof(");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.AppendLine("),");
         }
 
@@ -51,15 +51,15 @@ internal static class ClassManagerSubGenerator
 
         foreach (var classInfo in classInfos)
         {
-            if (classInfo.TypeSymbol?.IsAbstract == true)
+            if (classInfo.Value.TypeSymbol?.IsAbstract == true)
             {
                 continue;
             }
 
             builder.Append("        0x");
-            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new ");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.AppendLine("(),");
         }
 
@@ -72,9 +72,9 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new GbxHeader<");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.AppendLine(">(basic),");
         }
 
@@ -87,13 +87,13 @@ internal static class ClassManagerSubGenerator
         foreach (var classInfo in classInfos)
         {
             builder.Append("        0x");
-            builder.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
             builder.Append(" => new Gbx<");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.Append(">((GbxHeader<");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.Append(">)header, (");
-            builder.Append(classInfo.Name);
+            builder.Append(classInfo.Key);
             builder.AppendLine(")node),");
         }
 
@@ -105,14 +105,14 @@ internal static class ClassManagerSubGenerator
 
         foreach (var classInfo in classInfos)
         {
-            foreach (var pair in classInfo.HeaderChunks)
+            foreach (var pair in classInfo.Value.HeaderChunks)
             {
                 var chunkInfo = pair.Value;
 
                 builder.Append("        0x");
                 builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.Append(" => new ");
-                builder.Append(classInfo.Name);
+                builder.Append(classInfo.Key);
                 builder.Append(".HeaderChunk");
                 builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.AppendLine("(),");
@@ -127,14 +127,14 @@ internal static class ClassManagerSubGenerator
 
         foreach (var classInfo in classInfos)
         {
-            foreach (var pair in classInfo.Chunks)
+            foreach (var pair in classInfo.Value.Chunks)
             {
                 var chunkInfo = pair.Value;
 
                 builder.Append("        0x");
                 builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.Append(" => new ");
-                builder.Append(classInfo.Name);
+                builder.Append(classInfo.Key);
                 builder.Append(".Chunk");
                 builder.Append(chunkInfo.Id.ToString("X8"));
                 builder.AppendLine("(),");

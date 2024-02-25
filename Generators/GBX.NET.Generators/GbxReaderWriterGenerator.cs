@@ -646,7 +646,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                 sbClass.AppendLine("    {");
 
-                if (writerMethod.Parameters.IsEmpty)
+                if (writerMethod.Parameters.IsEmpty && !readerMethod.ReturnsVoid)
                 {
                     sbClass.Append("        ");
                     sbClass.Append(readerMethod.ReturnType);
@@ -654,9 +654,18 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 }
 
                 // Reader
-                sbClass.Append("        if (Reader is not null) ");
-                sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
-                sbClass.Append(" = Reader.");
+                if (readerMethod.ReturnsVoid)
+                {
+                    sbClass.Append("        Reader?.");
+                }
+                else
+                {
+                    sbClass.Append("        if (Reader is not null) ");
+                    sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
+                    sbClass.Append(" = ");
+                    sbClass.Append("Reader.");
+                }
+                
                 sbClass.Append(readerMethod.Name);
 
                 if (readerMethod.TypeParameters.Length > 0)
@@ -738,9 +747,13 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 }
 
                 sbClass.AppendLine(");");
-                sbClass.Append("        return ");
-                sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
-                sbClass.AppendLine(";");
+
+                if (!readerMethod.ReturnsVoid)
+                {
+                    sbClass.Append("        return ");
+                    sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
+                    sbClass.AppendLine(";");
+                }
 
                 sbClass.AppendLine("    }");
 

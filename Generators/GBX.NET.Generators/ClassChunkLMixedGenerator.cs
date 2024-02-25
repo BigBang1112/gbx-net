@@ -68,7 +68,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
         {
             var (chunklFiles, gbxClasses) = pair;
 
-            var classModels = ImmutableList.CreateBuilder<ClassDataModel>();
+            var classModels = ImmutableDictionary.CreateBuilder<string, ClassDataModel>();
             var alreadyAdded = new HashSet<string>();
 
             var gbxClassDict = gbxClasses.ToImmutableDictionary(x => x.Name);
@@ -127,7 +127,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                 var enums = chunklFile.DataModel.Body.EnumDefinitions
                     .ToImmutableDictionary(x => x.Name, def => new EnumDataModel(def, nestedTypeSymbols.GetValueOrDefault(def.Name)));
 
-                classModels.Add(new ClassDataModel(
+                classModels.Add(name, new ClassDataModel(
                     name,
                     id,
                     chunklFile.Engine,
@@ -205,7 +205,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     }
                 }
 
-                classModels.Add(new ClassDataModel(
+                classModels.Add(gbxClass.Name, new ClassDataModel(
                     gbxClass.Name,
                     id,
                     gbxClass.ContainingNamespace.Name,

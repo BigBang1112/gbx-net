@@ -5,7 +5,7 @@ namespace GBX.NET;
 /// <summary>
 /// Old name for <see cref="Gbx"/>.
 /// </summary>
-public class GameBox(GbxHeader header) : Gbx(header) { }
+public class GameBox(GbxHeader header) : Gbx(header);
 
 /// <summary>
 /// Old name for <see cref="Gbx{T}"/>.

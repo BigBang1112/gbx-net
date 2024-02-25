@@ -56,21 +56,6 @@ public partial class CGameCtnGhost
             ? ProcessShootmaniaInputs().ToImmutableList()
             : ProcessTrackmaniaInputs();
 
-        public void ReadWrite(GbxReaderWriter rw, int version = 0)
-		{
-			rw.EnumInt32<EVersion>(ref this.version); // 8 in shootmania, 12 in tm2020
-			rw.Int32(ref u01);
-
-			// version from the method parameter (the chunk version), NOT this.version
-			if (version >= 4)
-			{
-				rw.TimeInt32Nullable(ref startOffset);
-			}
-
-			rw.Int32(ref ticks);
-			rw.Data(ref data!);
-		}
-
 		private static bool StateIsDifferent(int bit, out bool result, int states, int? prevStates)
 		{
 			var mask = 1 << bit;

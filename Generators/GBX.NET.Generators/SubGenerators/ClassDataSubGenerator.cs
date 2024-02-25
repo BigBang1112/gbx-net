@@ -11,13 +11,15 @@ namespace GBX.NET.Generators.SubGenerators;
 
 internal class ClassDataSubGenerator
 {
-    public static void GenerateSource(SourceProductionContext context, ImmutableList<ClassDataModel> classInfos)
+    public static void GenerateSource(SourceProductionContext context, ImmutableDictionary<string, ClassDataModel> classInfos)
     {
         var inheritanceInverted = new Dictionary<string, Dictionary<uint, string>>();
 
         // does not work properly, misses recursion
-        foreach (var classInfo in classInfos)
+        foreach (var classInfoPair in classInfos)
         {
+            var classInfo = classInfoPair.Value;
+
             if (classInfo.Inherits is null || (classInfo.TypeSymbol is not null && classInfo.TypeSymbol.IsAbstract))
             {
                 continue;
@@ -31,13 +33,17 @@ internal class ClassDataSubGenerator
             inheritanceInverted[classInfo.Inherits].Add(classInfo.Id.GetValueOrDefault(), classInfo.Name);
         }
 
-        foreach (var classInfo in classInfos)
+        foreach (var classInfoPair in classInfos)
         {
-            CreateClassCode(context, classInfo, inheritanceInverted);
+            CreateClassCode(context, classInfoPair.Value, classInfos, inheritanceInverted);
         }
     }
 
-    private static void CreateClassCode(SourceProductionContext context, ClassDataModel classInfo, Dictionary<string, Dictionary<uint, string>> inheritanceInverted)
+    private static void CreateClassCode(
+        SourceProductionContext context,
+        ClassDataModel classInfo,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        Dictionary<string, Dictionary<uint, string>> inheritanceInverted)
     {
         var sb = new StringBuilder();
 
@@ -92,10 +98,10 @@ internal class ClassDataSubGenerator
 
         if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
         {
-            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, context, archiveStructureKind, indent: 0);
+            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, classInfos, classInfo.Archives, context, archiveStructureKind, indent: 0);
         }
 
-        AppendChunksLine(sb, classInfo, existingMembers, context);
+        AppendChunksLine(sb, classInfo, existingMembers, classInfos, classInfo.Archives, context);
 
         foreach (var chunkInfo in classInfo.ChunksWithNoId)
         {
@@ -112,7 +118,7 @@ internal class ClassDataSubGenerator
         }
 
         sb.AppendLine();
-        AppendArchivesLine(sb, classInfo, existingMembers, context);
+        AppendArchivesLine(sb, classInfo, existingMembers, classInfos, classInfo.Archives, context);
 
         sb.AppendLine();
         AppendEnumsLine(sb, classInfo, context);
@@ -309,6 +315,8 @@ internal class ClassDataSubGenerator
         StringBuilder sb,
         ArchiveDataModel archiveInfo,
         ImmutableArray<ISymbol> existingMembers,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context,
         int? archiveStructureKind,
         int indent)
@@ -366,6 +374,9 @@ internal class ClassDataSubGenerator
             }
         }
 
+        //var existingProps = existingMembers.OfType<IPropertySymbol>()
+        //    .ToImmutableDictionary(x => x.Name);
+
         if (doReadMethod)
         {
             sb.AppendLine();
@@ -373,7 +384,8 @@ internal class ClassDataSubGenerator
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
-            var memberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: true, context);
+            var memberWriter = new MemberSerializationWriter(
+                sb, SerializationType.Read, self: true, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -386,7 +398,8 @@ internal class ClassDataSubGenerator
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
-            var memberWriter = new MemberSerializationWriter(sb, SerializationType.Write, self: true, context);
+            var memberWriter = new MemberSerializationWriter(
+                sb, SerializationType.Write, self: true, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -399,7 +412,8 @@ internal class ClassDataSubGenerator
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
-            var memberWriter = new MemberSerializationWriter(sb, SerializationType.ReadWrite, self: true, context);
+            var memberWriter = new MemberSerializationWriter(
+                sb, SerializationType.ReadWrite, self: true, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -487,11 +501,13 @@ internal class ClassDataSubGenerator
         StringBuilder sb,
         ClassDataModel classInfo,
         ImmutableArray<ISymbol> existingMembers,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context)
     {
         foreach (var archiveInfo in classInfo.Archives)
         {
-            AppendArchiveLine(sb, archiveInfo.Key, archiveInfo.Value, classInfo, context);
+            AppendArchiveLine(sb, archiveInfo.Key, archiveInfo.Value, classInfo, classInfos, archiveInfos, context);
         }
     }
 
@@ -500,6 +516,8 @@ internal class ClassDataSubGenerator
         string archiveName,
         ArchiveDataModel archiveInfo,
         ClassDataModel classInfo,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context)
     {
         sb.AppendLine();
@@ -541,7 +559,7 @@ internal class ClassDataSubGenerator
         var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, context);
         propWriter.Append();
 
-        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, context, archiveStructureKind, indent: 1);
+        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1);
 
         sb.AppendLine("    }");
     }
@@ -550,18 +568,20 @@ internal class ClassDataSubGenerator
         StringBuilder sb,
         ClassDataModel classInfo,
         ImmutableArray<ISymbol> existingMembers,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context)
     {
         foreach (var chunk in classInfo.HeaderChunks.OrderBy(x => x.Key))
         {
-            AppendChunkLine(sb, chunk.Value, isHeaderChunk: true, classInfo, context);
+            AppendChunkLine(sb, chunk.Value, isHeaderChunk: true, classInfo, classInfos, archiveInfos, context);
         }
 
         sb.AppendLine();
 
         foreach (var chunk in classInfo.Chunks.OrderBy(x => x.Key))
         {
-            AppendChunkLine(sb, chunk.Value, isHeaderChunk: false, classInfo, context);
+            AppendChunkLine(sb, chunk.Value, isHeaderChunk: false, classInfo, classInfos, archiveInfos, context);
         }
     }
 
@@ -570,6 +590,8 @@ internal class ClassDataSubGenerator
         ChunkDataModel chunk,
         bool isHeaderChunk,
         ClassDataModel classInfo,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context)
     {
         if (isHeaderChunk && chunk.IsSkippable)
@@ -761,6 +783,7 @@ internal class ClassDataSubGenerator
             AppendVersionPropertyLine(sb, chunk);
         }
 
+        sb.AppendLine();
         var fieldsWriter = new ChunkLFieldsWriter(sb, chunk, existingChunkMembers, context);
         fieldsWriter.Append();
 
@@ -772,6 +795,9 @@ internal class ClassDataSubGenerator
 
         if (chunk.ChunkLDefinition?.Members.Count > 0)
         {
+            //var existingProps = existingChunkMembers.OfType<IPropertySymbol>()
+            //    .ToImmutableDictionary(x => x.Name);
+
             if (isStructChunk || structureKind == 1) // StructureKind == SeparateReadAndWrite
             {
                 sb.AppendLine();
@@ -787,7 +813,8 @@ internal class ClassDataSubGenerator
                 sb.AppendLine(" n, GbxReader r)");
                 sb.AppendLine("        {");
 
-                var readMemberWriter = new MemberSerializationWriter(sb, SerializationType.Read, self: false, context);
+                var readMemberWriter = new MemberSerializationWriter(
+                    sb, SerializationType.Read, self: false, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
                 readMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -804,7 +831,8 @@ internal class ClassDataSubGenerator
                 sb.AppendLine(" n, GbxWriter w)");
                 sb.AppendLine("        {");
 
-                var writeMemberWriter = new MemberSerializationWriter(sb, SerializationType.Write, self: false, context);
+                var writeMemberWriter = new MemberSerializationWriter(
+                    sb, SerializationType.Write, self: false, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
                 writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -823,7 +851,8 @@ internal class ClassDataSubGenerator
                 sb.AppendLine(" n, GbxReaderWriter rw)");
                 sb.AppendLine("        {");
 
-                var memberWriter = new MemberSerializationWriter(sb, SerializationType.ReadWrite, self: false, context);
+                var memberWriter = new MemberSerializationWriter(
+                    sb, SerializationType.ReadWrite, self: false, ImmutableDictionary<string, IPropertySymbol>.Empty, classInfos, archiveInfos, context);
                 memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");

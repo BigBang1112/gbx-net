@@ -1,6 +1,8 @@
 ﻿using ChunkL.Structure;
 using GBX.NET.Generators.Extensions;
+using GBX.NET.Generators.Models;
 using Microsoft.CodeAnalysis;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace GBX.NET.Generators.ChunkL;
@@ -10,6 +12,9 @@ internal sealed class MemberSerializationWriter
     private readonly StringBuilder sb;
     private readonly SerializationType serializationType;
     private readonly bool self;
+    private readonly ImmutableDictionary<string, IPropertySymbol> existingProperties; // disabled atm
+    private readonly ImmutableDictionary<string, ClassDataModel> classes;
+    private readonly ImmutableDictionary<string, ArchiveDataModel> archives;
     private readonly SourceProductionContext context;
 
     private int unknownCounter;
@@ -18,11 +23,17 @@ internal sealed class MemberSerializationWriter
         StringBuilder sb, 
         SerializationType serializationType,
         bool self,
+        ImmutableDictionary<string, IPropertySymbol> existingProperties, // disabled atm
+        ImmutableDictionary<string, ClassDataModel> classes,
+        ImmutableDictionary<string, ArchiveDataModel> archives,
         SourceProductionContext context)
     {
         this.sb = sb;
         this.serializationType = serializationType;
         this.self = self;
+        this.existingProperties = existingProperties;
+        this.classes = classes;
+        this.archives = archives;
         this.context = context;
     }
 
@@ -77,17 +88,39 @@ internal sealed class MemberSerializationWriter
                 case ChunkIfStatement ifStatement:
                     sb.Append(indent, "if (");
 
-                    /*if (!self && !isUnknown)
+                    if (!string.IsNullOrEmpty(ifStatement.Left))
                     {
-                        sb.Append("n.");
-                    }*/
+                        var isNot = ifStatement.Left[0] == '!';
 
-                    sb.Append(ifStatement.Left);
-                    sb.Append(' ');
-                    sb.Append(ifStatement.Operator);
-                    sb.Append(' ');
-                    sb.Append(ifStatement.Right);
+                        if (isNot)
+                        {
+                            sb.Append('!');
+                        }
+
+                        var left = isNot ? ifStatement.Left.Substring(1) : ifStatement.Left;
+                        
+                        if (!self && !IsUnknown(left))
+                        {
+                            sb.Append("n.");
+                        }
+
+                        sb.Append(left);
+
+                        if (!string.IsNullOrEmpty(ifStatement.Operator))
+                        {
+                            sb.Append(' ');
+                            sb.Append(ifStatement.Operator);
+                        }
+
+                        if (!string.IsNullOrEmpty(ifStatement.Right))
+                        {
+                            sb.Append(' ');
+                            sb.Append(ifStatement.Right);
+                        }
+                    }
+
                     sb.AppendLine(")");
+
                     break;
                 default:
                     throw new NotImplementedException();
@@ -99,16 +132,13 @@ internal sealed class MemberSerializationWriter
 
             return;
         }
-
+        
         if (member is ChunkProperty chunkProperty)
         {
             switch (chunkProperty.Type.PrimaryType)
             {
                 case "return":
                     sb.Append(indent, "return;");
-                    break;
-                case "throw":
-                    sb.Append(indent, "throw new Exception();");
                     break;
                 case "base":
                     sb.Append(indent, "base.");
@@ -154,15 +184,32 @@ internal sealed class MemberSerializationWriter
             }
 
             sb.AppendLine();
+
+            return;
+        }
+
+        if (member is ChunkThrow chunkThrow)
+        {
+            sb.Append(indent, "throw new ");
+            sb.Append(chunkThrow.Exception);
+            sb.Append("(\"");
+            sb.Append(chunkThrow.Message);
+            sb.Append("\");");
+
+            if (!string.IsNullOrWhiteSpace(chunkThrow.Description))
+            {
+                sb.Append(" // ");
+                sb.Append(chunkThrow.Description);
+            }
+
+            sb.AppendLine();
         }
     }
 
     private void AppendRead(int indent, ChunkProperty chunkProperty)
     {
-        var isUnknown = string.IsNullOrEmpty(chunkProperty.Name);
-        var name = isUnknown
-            ? $"U{++unknownCounter:00}"
-            : char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
+        var isUnknown = IsUnknown(chunkProperty.Name);
+        var name = GetFieldName(chunkProperty, isUnknown);
 
         sb.AppendIndent(indent);
 
@@ -188,21 +235,15 @@ internal sealed class MemberSerializationWriter
             sb.Append("Array");
         }
 
-        var mappedType = MapType(chunkProperty.Type.PrimaryType, out var noMatch);
-
-        if (noMatch)
-        {
-            sb.Append("NodeRef<");
-            sb.Append(mappedType);
-            sb.Append(">");
-        }
-        else
-        {
-            sb.Append(mappedType);
-        }
+        AppendAnyRead(chunkProperty, onlyReadable: true);
 
         sb.Append("()");
         sb.Append(";");
+    }
+
+    private static bool IsUnknown(string name)
+    {
+        return string.IsNullOrEmpty(name) || (name[0] == 'U' && char.IsDigit(name[1]) && char.IsDigit(name[2]));
     }
 
     private void AppendWrite(int indent, ChunkProperty chunkProperty)
@@ -226,7 +267,7 @@ internal sealed class MemberSerializationWriter
             return;
         }
 
-        if (chunkProperty.Type.IsArray)
+        if (chunkProperty.Type.IsArray && chunkProperty.Type.PrimaryType != "data")
         {
             sb.Append("Array");
         }
@@ -236,23 +277,79 @@ internal sealed class MemberSerializationWriter
             sb.Append("Enum");
         }
 
+        AppendAnyRead(chunkProperty, onlyReadable: false);
+
+        sb.Append("(ref ");
+
+        var isUnknown = IsUnknown(chunkProperty.Name);
+        var name = GetFieldName(chunkProperty, isUnknown);
+
+        if (!self && !isUnknown)
+        {
+            sb.Append("n.");
+        }
+        else if (self && name == "version")
+        {
+            sb.Append("this.");
+        }
+
+        sb.Append(name);
+
+        if (chunkProperty.Type.IsArray && !string.IsNullOrEmpty(chunkProperty.Type.ArrayLength))
+        {
+            sb.Append(", ");
+            sb.Append(chunkProperty.Type.ArrayLength);
+        }
+
+        sb.Append(")");
+        sb.Append(";");
+    }
+
+    private void AppendAnyRead(ChunkProperty chunkProperty, bool onlyReadable)
+    {
         var mappedType = MapType(chunkProperty.Type.PrimaryType, out var noMatch);
 
         if (noMatch)
         {
-            sb.Append("NodeRef<");
+            sb.Append("NodeRef");
+
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+
+            sb.Append('<');
             sb.Append(mappedType);
-            sb.Append(">");
+            sb.Append('>');
         }
         else if (chunkProperty.Type.IsArray && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType))
         {
-            sb.Append("<");
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+
+            sb.Append('<');
             sb.Append(PropertyTypeExtensions.MapType(chunkProperty.Type.PrimaryType));
-            sb.Append(">");
+            sb.Append('>');
         }
         else
         {
             sb.Append(mappedType);
+
+            if (mappedType == "List")
+            {
+                AppendList(chunkProperty, onlyReadable);
+            }
+            else if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+        }
+
+        if (onlyReadable)
+        {
+            return;
         }
 
         if (chunkProperty is ChunkEnum chunkEnum)
@@ -261,23 +358,57 @@ internal sealed class MemberSerializationWriter
             sb.Append(chunkEnum.EnumType);
             sb.Append('>');
         }
+    }
 
-        sb.Append("(ref ");
+    private void AppendList(ChunkProperty chunkProperty, bool onlyReadable)
+    {
+        var genericType = chunkProperty.Type.GenericType;
+        var mappedGenericType = MapType(genericType, out var genericNoMatch);
 
-        var isUnknown = string.IsNullOrEmpty(chunkProperty.Name);
-
-        if (!self && !isUnknown)
+        if (PropertyTypeExtensions.IsValueType(genericType) || genericNoMatch)
         {
-            sb.Append("n.");
+            if (genericNoMatch)
+            {
+                var shouldApplyReadableWritable = archives.ContainsKey(genericType)
+                    || (classes.TryGetValue(genericType, out var classData)
+                        && classData.NamelessArchive is not null
+                        && chunkProperty.Type.GenericTypeMarker != "*");
+
+                if (shouldApplyReadableWritable)
+                {
+                    sb.Append(onlyReadable ? "Readable" : "ReadableWritable");
+                }
+                else
+                {
+                    sb.Append("NodeRef");
+                }
+            }
+
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+
+            sb.Append('<');
+            sb.Append(mappedGenericType);
+            sb.Append('>');
         }
+        else
+        {
+            sb.Append(mappedGenericType);
 
-        var name = isUnknown
-            ? $"U{++unknownCounter:00}"
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+        }
+    }
+
+    private string GetFieldName(ChunkProperty chunkProperty, bool isUnknown)
+    {
+        return isUnknown
+            ? $"{(self ? 'u' : 'U')}{++unknownCounter:00}"
             : char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
-        sb.Append(name);
-
-        sb.Append(")");
-        sb.Append(";");
     }
 
     public static string MapType(string type, out bool noMatch)
@@ -286,6 +417,7 @@ internal sealed class MemberSerializationWriter
 
         return type.ToLowerInvariant() switch
         {
+            "int128" => "Int128",
             "int64" or "long" => nameof(Int64),
             "uint64" or "ulong" => nameof(UInt64),
             "uint32" or "uint" => nameof(UInt32),

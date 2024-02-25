@@ -1,7 +1,8 @@
 CGameCtnCollectorList 0x0301B000 // A list of puzzle pieces.
 
 0x000
+ list<SCollectorStock> CollectorStock
 
-archive CollectorStock // [SCollectorStock]
+archive SCollectorStock
  ident BlockModel
  int Count

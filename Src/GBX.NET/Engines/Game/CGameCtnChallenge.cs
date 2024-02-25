@@ -123,6 +123,9 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
+    [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class Chunk03043013;
+
     public partial class Chunk0304301F : IVersionable
     {
         public int Version { get; set; } = 6;
