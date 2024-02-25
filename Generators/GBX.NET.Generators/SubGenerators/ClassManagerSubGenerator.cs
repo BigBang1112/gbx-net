@@ -51,7 +51,7 @@ internal static class ClassManagerSubGenerator
 
         foreach (var classInfo in classInfos)
         {
-            if (classInfo.Value.TypeSymbol?.IsAbstract == true)
+            if (classInfo.Value.IsAbstract)
             {
                 continue;
             }

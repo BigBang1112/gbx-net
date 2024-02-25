@@ -20,7 +20,7 @@ internal class ClassDataSubGenerator
         {
             var classInfo = classInfoPair.Value;
 
-            if (classInfo.Inherits is null || (classInfo.TypeSymbol is not null && classInfo.TypeSymbol.IsAbstract))
+            if (classInfo.Inherits is null || classInfo.IsAbstract)
             {
                 continue;
             }
@@ -134,7 +134,7 @@ internal class ClassDataSubGenerator
         sb.AppendLine("IClass? New(uint classId) => classId switch");
         sb.AppendLine("    {");
 
-        if (classInfo.TypeSymbol is null || !classInfo.TypeSymbol.IsAbstract)
+        if (!classInfo.IsAbstract)
         {
             sb.Append("        0x");
             sb.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));

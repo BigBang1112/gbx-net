@@ -127,7 +127,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                 var enums = chunklFile.DataModel.Body.EnumDefinitions
                     .ToImmutableDictionary(x => x.Name, def => new EnumDataModel(def, nestedTypeSymbols.GetValueOrDefault(def.Name)));
 
-                var isAbstract = chunklFile.DataModel.Header.Features.TryGetValue("abstract", out _);
+                var isAbstract = chunklFile.DataModel.Header.Features.TryGetValue("abstract", out _) || symbol?.IsAbstract == true;
 
                 classModels.Add(name, new ClassDataModel(
                     name,
@@ -221,7 +221,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                     isNamelessArchive ? new ArchiveDataModel(ChunkLDefinition: null, gbxClass) : null,
                     archives.ToImmutable(),
                     ImmutableDictionary<string, EnumDataModel>.Empty,
-                    IsAbstract: false));
+                    gbxClass.IsAbstract));
             }
 
             return classModels.ToImmutable();
