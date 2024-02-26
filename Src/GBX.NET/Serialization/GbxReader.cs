@@ -608,7 +608,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             IdVersion ??= ReadInt32();
 
-            if (IdVersion < 3)
+            if (IdVersion.Value < 3)
             {
                 throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
             }
