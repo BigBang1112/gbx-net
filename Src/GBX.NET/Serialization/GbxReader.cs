@@ -120,7 +120,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private bool enablePreviousStringCache;
     public bool EnablePreviousStringCache { get => enablePreviousStringCache; set => enablePreviousStringCache = value; }
 
-    private readonly GbxRefTable? refTable;
+    private GbxRefTable? refTable;
     private readonly XmlReader? xmlReader;
 
     private int? idVersion;
@@ -185,10 +185,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (reader is GbxReader r)
         {
-            IdVersion = r.IdVersion;
-            Encapsulation = r.Encapsulation;
-            PackDescVersion = r.PackDescVersion;
-            DeprecVersion = r.DeprecVersion;
+            refTable = r.refTable;
+            idVersion = r.idVersion;
+            idDict = r.idDict;
+            encapsulation = r.encapsulation;
+            packDescVersion = r.packDescVersion;
+            deprecVersion = r.deprecVersion;
+
             ExpectedNodeCount = r.ExpectedNodeCount;
         }
     }
