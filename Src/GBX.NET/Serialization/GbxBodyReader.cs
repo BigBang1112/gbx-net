@@ -77,6 +77,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
         using var ms = new MemoryStream(decompressedData);
         using var decompressedReader = new GbxReader(ms);
+        decompressedReader.LoadStateFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
         ReadMainNode(node, body, decompressedReaderWriter);

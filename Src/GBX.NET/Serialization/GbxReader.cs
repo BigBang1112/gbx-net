@@ -101,6 +101,7 @@ public partial interface IGbxReader : IDisposable
     void SkipData(int length);
     byte[] ReadToEnd();
     void ResetIdState();
+    void LoadStateFrom(IGbxReader reader);
 }
 
 /// <summary>
@@ -176,6 +177,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         xmlReader = input;
         Mode = SerializationMode.Xml;
+    }
+
+    public void LoadStateFrom(IGbxReader reader)
+    {
+        Format = reader.Format;
+
+        if (reader is GbxReader r)
+        {
+            IdVersion = r.IdVersion;
+            Encapsulation = r.Encapsulation;
+            PackDescVersion = r.PackDescVersion;
+            DeprecVersion = r.DeprecVersion;
+            ExpectedNodeCount = r.ExpectedNodeCount;
+        }
     }
 
     public bool ReadGbxMagic()
