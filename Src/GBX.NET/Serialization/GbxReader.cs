@@ -594,26 +594,32 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private int ReadIdIndex()
     {
-        switch (Mode)
+        return Mode switch
         {
-            case SerializationMode.Gbx:
-                IdVersion ??= ReadInt32();
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => GbxBinary(),
+                _ => throw new Exception(),
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
 
-                if (IdVersion < 3)
-                {
-                    throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
-                }
+        int GbxBinary()
+        {
+            IdVersion ??= ReadInt32();
 
-                return ReadInt32();
-            default:
-                throw new SerializationModeNotSupportedException(Mode);
+            if (IdVersion < 3)
+            {
+                throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
+            }
+
+            return ReadInt32();
         }
-        
     }
 
     private string ReadIdAsString(int index)
     {
-        if ((index & 0xFFFFFFF) != 0)
+        if ((index & 0x3FFFFFFF) != 0)
         {
             return IdDict?[index] ?? throw new Exception("Invalid Id index.");
         }
