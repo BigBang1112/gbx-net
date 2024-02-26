@@ -12,7 +12,7 @@
 	<PropertyGroup>
 		<InvariantGlobalization>false</InvariantGlobalization>
 		<PublishAot>false</PublishAot>
-		<PublishTrimmed>true</PublishTrimmed>
+		<PublishTrimmed>false</PublishTrimmed>
 		<TrimMode>partial</TrimMode>
 		<PublishSingleFile>true</PublishSingleFile>
 		<PublishReadyToRun>true</PublishReadyToRun>
