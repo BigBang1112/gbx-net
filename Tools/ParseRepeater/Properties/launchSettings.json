@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParseRepeater": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\petrp\\Documents\\TrackMania\\Tracks\\Challenges\\Downloaded\\_RandomizerTMF\\  Arrival.Challenge.Gbx\""
+    }
+  }
+}
