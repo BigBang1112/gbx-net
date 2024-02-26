@@ -19,18 +19,6 @@ public class GbxTests
     }
 
     [Fact]
-    public void FileName_Throws()
-    {
-        Assert.Throws<NotImplementedException>(() => new Gbx(new GbxHeaderUnknown(new(), 0)).FileName);
-    }
-
-    [Fact]
-    public void Clone_Throws()
-    {
-        Assert.Throws<NotImplementedException>(() => new Gbx(new GbxHeaderUnknown(new(), 0)).Clone());
-    }
-
-    [Fact]
     public void Save_Stream_Throws()
     {
         Assert.Throws<NotImplementedException>(() => new Gbx(new GbxHeaderUnknown(new(), 0)).Save(string.Empty));

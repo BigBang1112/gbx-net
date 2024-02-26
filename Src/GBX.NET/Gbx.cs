@@ -267,11 +267,6 @@ public class Gbx : IGbx
         return ParseHeader<TClass>(filePath, settings).Node;
     }
 
-    public object Clone()
-    {
-        throw new NotImplementedException();
-    }
-
     public virtual void Save(string filePath, ClassIdRemapMode remap = 0)
     {
         throw new NotImplementedException();
