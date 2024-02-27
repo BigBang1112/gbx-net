@@ -83,13 +83,32 @@ internal class ChunkLPropertiesWriter
                 sb.Append(indent, "    private ");
                 sb.Append(mappedType);
 
-                if (!prop.Type.IsReferenceType() && prop.IsNullable)
+                var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
+
+                if (nullable)
                 {
                     sb.Append('?');
                 }
 
                 sb.Append(' ');
                 sb.Append(fieldName);
+
+                if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
+                {
+                    sb.Append(" = ");
+
+                    switch (prop.DefaultValue)
+                    {
+                        case "empty":
+                            sb.Append(mappedType);
+                            sb.Append(".Empty");
+                            break;
+                        default:
+                            sb.Append(prop.DefaultValue);
+                            break;
+                    }
+                }
+
                 sb.AppendLine(";");
 
                 if (!string.IsNullOrWhiteSpace(prop.Description))
@@ -103,7 +122,7 @@ internal class ChunkLPropertiesWriter
                 sb.Append(indent, "    public ");
                 sb.Append(mappedType);
 
-                if (prop.IsNullable)
+                if (nullable)
                 {
                     sb.Append('?');
                 }

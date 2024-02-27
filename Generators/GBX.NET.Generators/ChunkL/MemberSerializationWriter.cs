@@ -337,6 +337,11 @@ internal sealed class MemberSerializationWriter
         {
             sb.Append(mappedType);
 
+            if (mappedType is "TimeInt32" or "TimeSingle" && chunkProperty.IsNullable)
+            {
+                sb.Append("Nullable");
+            }
+
             if (mappedType == "List")
             {
                 AppendList(chunkProperty, onlyReadable);

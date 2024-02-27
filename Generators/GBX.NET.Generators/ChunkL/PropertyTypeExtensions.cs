@@ -73,11 +73,6 @@ internal static class PropertyTypeExtensions
             sb.Append("[]");
         }
 
-        if (propertyType.IsReferenceType())
-        {
-            sb.Append('?');
-        }
-
         return sb.ToString();
     }
 

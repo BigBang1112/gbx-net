@@ -3,14 +3,14 @@ CGameCtnChallenge 0x03043000 // A map.
 0x002 (header, struct: SHeaderTMDesc) [TM10.v3, TMSX.v10, TMNESWC.v10, TMU.v10, TMF.v11, MP3.v13, TMT.v13, MP4.v13, TM2020.v13] // map info
  versionb
  v2-
-  ident MapInfo
+  ident MapInfo = empty
   string MapName
  bool
  v1+
-  timeint BronzeTime
-  timeint SilverTime
-  timeint GoldTime
-  timeint AuthorTime
+  timeint? BronzeTime
+  timeint? SilverTime
+  timeint? GoldTime
+  timeint? AuthorTime
   v2=
    byte
   v4+
@@ -81,7 +81,7 @@ CGameCtnChallenge 0x03043000 // A map.
  ident PlayerModel
 
 0x00F [TM10] // TM1.0 block data
- ident MapInfo
+ ident MapInfo = empty
  int3 Size
  list<CGameCtnBlock*>_deprec Blocks
  bool NeedUnlock
@@ -96,7 +96,7 @@ CGameCtnChallenge 0x03043000 // A map.
  string MapName
 
 0x013 // legacy block data
- ident MapInfo
+ ident MapInfo = empty
  string MapName
  ident Decoration
  int3 Size
@@ -110,7 +110,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x016 (skippable) [TMSX, TMNESWC]
  int // code says DoBool, likely IsPlatform (Mode == 1), but maps yield something like 1698004
 
-0x017 (skippable) [TMSX, TMNESWC, TMF, TMU] // checkpoints
+0x017 (skippable) [TMSX, TMNESWC, TMU, TMF] // checkpoints
  int3[] Checkpoints
 
 0x018 (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // laps
@@ -162,7 +162,7 @@ CGameCtnChallenge 0x03043000 // A map.
  vec2 MapCoordOrigin
  vec2 MapCoordTarget
 
-0x026 [TMNESWC, TMF, TMU, MP3, TMT, MP4, TM2020] // clip global
+0x026 [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // clip global
  CMwNod
 
 0x027 // old realtime thumbnail
@@ -232,7 +232,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x048 (skippable) [MP3, TMT, MP4, TM2020] // baked blocks
 
-0x049 (skippable) [MP3, TMT, MP4, TM2020] // mediatracker
+0x049 [MP3, TMT, MP4, TM2020] // mediatracker
  version = 2
  CGameCtnMediaClip ClipIntro
  CGameCtnMediaClip ClipPodium
