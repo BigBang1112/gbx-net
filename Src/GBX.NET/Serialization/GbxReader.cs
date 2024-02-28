@@ -161,7 +161,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     internal int? ExpectedNodeCount { get; set; }
 
     public SerializationMode Mode { get; }
-    public GbxFormat Format { get; private set; }
+    public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
     public GbxReader(Stream input, GbxRefTable? refTable = null) : base(input, encoding)
     {
