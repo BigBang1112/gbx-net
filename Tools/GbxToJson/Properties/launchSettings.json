@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GbxToJson": {
+      "commandName": "Project",
+      "commandLineArgs": "\"../../../../../Tests/GBX.NET.Tests/Files/Gbx/CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TMU 001.Challenge.Gbx\""
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "TmEssentials": {
+        "type": "Transitive",
+        "resolved": "2.4.1",
+        "contentHash": "K/RWlvnwJfLEH5gs1XA7d9wTvfXLexUBOA8W3N00ucrEqSQMwJbPhrPZJhzI2w5DRGJuAiEr7uXzZTCHEvtGWw=="
+      },
+      "gbx.net": {
+        "type": "Project",
+        "dependencies": {
+          "TmEssentials": "[2.4.1, )"
+        }
+      },
+      "gbx.net.lzo": {
+        "type": "Project",
+        "dependencies": {
+          "GBX.NET": "[2.0.0, )"
+        }
+      }
+    }
+  }
+}
