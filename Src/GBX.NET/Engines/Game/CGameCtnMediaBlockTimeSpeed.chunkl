@@ -1,0 +1,4 @@
+CGameCtnMediaBlockTimeSpeed 0x03129000
+- inherits: CGameCtnMediaBlock
+
+0x000

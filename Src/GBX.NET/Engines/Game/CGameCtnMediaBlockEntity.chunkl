@@ -1,0 +1,5 @@
+CGameCtnMediaBlockEntity 0x0329F000
+- inherits: CGameCtnMediaBlock
+
+0x002 // SkinOptions
+ string? SkinOptions

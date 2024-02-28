@@ -1,0 +1,8 @@
+CGameCtnMediaBlockManialink 0x0312A000
+- inherits: CGameCtnMediaBlock
+
+0x001
+ version
+ timefloat Start
+ timefloat End
+ string ManialinkURL

@@ -1,0 +1,12 @@
+CGameCtnMediaBlockText 0x030A8000
+- inherits: CGameCtnMediaBlock
+
+0x001 // text
+ string Text
+ CControlEffectSimi Effect
+
+0x002 // color
+ vec3 Color
+
+0x003
+ float

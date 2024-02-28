@@ -1,0 +1,3 @@
+CGameCtnMediaBlockCameraEffect 0x030A3000
+- inherits: CGameCtnMediaBlock
+- abstract

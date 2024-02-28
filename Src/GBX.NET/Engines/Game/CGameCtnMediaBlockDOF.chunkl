@@ -1,0 +1,4 @@
+CGameCtnMediaBlockDOF 0x03126000
+- inherits: CGameCtnMediaBlock
+
+0x000 // version 0

@@ -1,0 +1,9 @@
+CGameCtnMediaBlockOpponentVisibility 0x0338B000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ timefloat Start
+ timefloat End
+
+0x001
+ int Visibility

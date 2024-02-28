@@ -1,0 +1,4 @@
+CGameCtnMediaBlockSpectators 0x030EB000
+- inherits: CGameCtnMediaBlock
+
+0x000

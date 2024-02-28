@@ -1,0 +1,6 @@
+CGameCtnMediaBlockFxBlurMotion 0x03082000
+- inherits: CGameCtnMediaBlockFxBlur
+
+0x000
+ timefloat Start
+ timefloat End

@@ -3,7 +3,7 @@ CGameCtnAnchoredObject 0x03101000
 
 0x002
  version
- ident ItemModel
+ ident ItemModel = empty
  vec3 PitchYawRoll
  byte3 BlockUnitCoord
  id AnchorTreeId
@@ -19,8 +19,8 @@ CGameCtnAnchoredObject 0x03101000
     float Scale
     v7+
      v8+
-      vec3
-      vec3
+      vec3?
+      vec3?
 
 0x004 (skippable)
  version

@@ -1,0 +1,9 @@
+CGameCtnMediaBlockImage 0x030A5000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ CControlEffectSimi Effect
+ packdesc Image
+
+0x001
+ float

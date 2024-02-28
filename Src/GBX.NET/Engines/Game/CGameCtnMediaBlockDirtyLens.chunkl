@@ -1,0 +1,4 @@
+CGameCtnMediaBlockDirtyLens 0x03165000
+- inherits: CGameCtnMediaBlock
+
+0x000

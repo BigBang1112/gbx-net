@@ -1,0 +1,9 @@
+CGameCtnMediaBlockInterface 0x03195000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ version
+ timefloat Start
+ timefloat End
+ bool ShowInterface
+ string Manialink

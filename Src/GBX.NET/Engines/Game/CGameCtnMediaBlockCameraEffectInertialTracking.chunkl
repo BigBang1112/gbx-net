@@ -1,0 +1,10 @@
+CGameCtnMediaBlockCameraEffectInertialTracking 0x03166000
+- inherits: CGameCtnMediaBlockCameraEffect
+
+0x000
+ version
+ timefloat Start
+ timefloat End
+ bool Tracking
+ bool AutoZoom
+ bool AutoFocus

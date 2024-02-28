@@ -1,0 +1,6 @@
+CGameCtnMediaBlockShoot 0x03145000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ timefloat Start
+ timefloat End

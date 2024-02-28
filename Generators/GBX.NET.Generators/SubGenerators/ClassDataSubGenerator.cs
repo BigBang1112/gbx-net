@@ -35,7 +35,24 @@ internal class ClassDataSubGenerator
 
         foreach (var classInfoPair in classInfos)
         {
-            CreateClassCode(context, classInfoPair.Value, classInfos, inheritanceInverted);
+            try
+            {
+                CreateClassCode(context, classInfoPair.Value, classInfos, inheritanceInverted);
+            }
+            catch (Exception ex)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                    "GBXNETGEN010",
+                    "Error while generating class",
+                    "Error while generating class {0}: {1}",
+                    "GBX.NET.Generators",
+                    DiagnosticSeverity.Error,
+                    isEnabledByDefault: true),
+                    classInfoPair.Value.TypeSymbol?.Locations.FirstOrDefault(),
+                    classInfoPair.Value.Name,
+                    ex));
+            }
         }
     }
 

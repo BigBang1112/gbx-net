@@ -1,0 +1,4 @@
+CGameCtnMediaBlockCameraOrbital 0x030A0000
+- inherits: CGameCtnMediaBlock
+
+0x001

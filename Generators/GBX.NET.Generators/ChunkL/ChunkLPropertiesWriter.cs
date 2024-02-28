@@ -64,82 +64,79 @@ internal class ChunkLPropertiesWriter
                 AppendPropertiesRecursive(block.Members, alreadyAddedProps, includeUnknown, ref unknownCounter);
                 continue;
             }
-            
-            if (member is ChunkProperty prop)
+
+            if (member is not ChunkProperty prop)
             {
-                if ((!includeUnknown && IsUnknownProperty(prop.Name)) || prop.Type.IsKeyword() || alreadyExistingProperties.ContainsKey(prop.Name) || alreadyAddedProps.Contains(prop.Name))
-                {
-                    continue;
-                }
-
-                var propName = string.IsNullOrEmpty(prop.Name) ? $"U{++unknownCounter:00}" : prop.Name;
-
-                alreadyAddedProps.Add(propName);
-
-                var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
-                var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
-
-                sb.AppendLine();
-                sb.Append(indent, "    private ");
-                sb.Append(mappedType);
-
-                var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
-
-                if (nullable)
-                {
-                    sb.Append('?');
-                }
-
-                sb.Append(' ');
-                sb.Append(fieldName);
-
-                if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
-                {
-                    sb.Append(" = ");
-
-                    switch (prop.DefaultValue)
-                    {
-                        case "empty":
-                            sb.Append(mappedType);
-                            sb.Append(".Empty");
-                            break;
-                        default:
-                            sb.Append(prop.DefaultValue);
-                            break;
-                    }
-                }
-
-                sb.AppendLine(";");
-
-                if (!string.IsNullOrWhiteSpace(prop.Description))
-                {
-                    sb.AppendLine(indent, "    /// <summary>");
-                    sb.Append(indent, "    /// ");
-                    sb.AppendLine(prop.Description);
-                    sb.AppendLine(indent, "    /// </summary>");
-                }
-
-                sb.Append(indent, "    public ");
-                sb.Append(mappedType);
-
-                if (nullable)
-                {
-                    sb.Append('?');
-                }
-
-                sb.Append(' ');
-                sb.Append(propName);
-
-                sb.AppendLine();
-                sb.AppendLine(indent, "    {");
-                sb.Append(indent, "        get => ");
-                sb.Append(fieldName);
-                sb.AppendLine(";");
-                sb.Append(indent, "        set => ");
-                sb.Append(fieldName);
-                sb.AppendLine(" = value;");
-                sb.AppendLine(indent, "    }");
+                continue;
             }
+
+            if ((!includeUnknown && IsUnknownProperty(prop.Name)) || prop.Type.IsKeyword() || alreadyExistingProperties.ContainsKey(prop.Name) || alreadyAddedProps.Contains(prop.Name))
+            {
+                continue;
+            }
+
+            var propName = string.IsNullOrEmpty(prop.Name) ? $"U{++unknownCounter:00}" : prop.Name;
+
+            alreadyAddedProps.Add(propName);
+
+            var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
+            var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
+
+            sb.AppendLine();
+            sb.Append(indent, "    private ");
+            sb.Append(mappedType);
+
+            var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
+
+            if (nullable)
+            {
+                sb.Append('?');
+            }
+
+            sb.Append(' ');
+            sb.Append(fieldName);
+
+            if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
+            {
+                sb.Append(" = ");
+
+                switch (prop.DefaultValue)
+                {
+                    case "empty":
+                        sb.Append(mappedType);
+                        sb.Append(".Empty");
+                        break;
+                    default:
+                        sb.Append(prop.DefaultValue);
+                        break;
+                }
+            }
+
+            sb.AppendLine(";");
+
+            if (!string.IsNullOrWhiteSpace(prop.Description))
+            {
+                sb.AppendLine(indent, "    /// <summary>");
+                sb.Append(indent, "    /// ");
+                sb.AppendLine(prop.Description);
+                sb.AppendLine(indent, "    /// </summary>");
+            }
+
+            sb.Append(indent, "    public ");
+            sb.Append(mappedType);
+
+            if (nullable)
+            {
+                sb.Append('?');
+            }
+
+            sb.Append(' ');
+            sb.Append(propName);
+            sb.Append(" { get => ");
+            sb.Append(fieldName);
+            sb.Append("; set => ");
+            sb.Append(fieldName);
+            sb.AppendLine(" = value; }");
         }
     }
 

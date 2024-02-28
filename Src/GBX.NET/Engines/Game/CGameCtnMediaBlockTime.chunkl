@@ -1,0 +1,4 @@
+CGameCtnMediaBlockTime 0x03085000
+- inherits: CGameCtnMediaBlock
+
+0x000

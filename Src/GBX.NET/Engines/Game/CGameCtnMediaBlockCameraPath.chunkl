@@ -1,0 +1,4 @@
+CGameCtnMediaBlockCameraPath 0x030A1000
+- inherits: CGameCtnMediaBlockCamera
+
+0x000

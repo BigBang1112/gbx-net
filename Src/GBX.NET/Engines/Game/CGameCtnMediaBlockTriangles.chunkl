@@ -1,0 +1,7 @@
+CGameCtnMediaBlockTriangles 0x03029000
+- inherits: CGameCtnMediaBlock
+
+0x001
+
+0x002 (skippable)
+ int

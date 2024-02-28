@@ -1,0 +1,19 @@
+CGameCtnMediaBlockSound 0x030A7000
+- inherits: CGameCtnMediaBlock
+
+0x001
+
+0x002
+ int PlayCount
+ bool IsLooping
+
+0x003
+ version
+ int PlayCount
+ bool IsLooping
+ bool IsMusic
+ v1+
+  bool StopWithClip
+  v2+
+   bool AudioToSpeech
+   int AudioToSpeechTarget

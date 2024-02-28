@@ -1,0 +1,7 @@
+CGameCtnMediaBlockColorGrading 0x03186000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ packdesc Image
+
+0x001

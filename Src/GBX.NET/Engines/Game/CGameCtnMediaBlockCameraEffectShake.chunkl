@@ -1,0 +1,4 @@
+CGameCtnMediaBlockCameraEffectShake 0x030A4000
+- inherits: CGameCtnMediaBlockCameraEffect
+
+0x000

@@ -1,0 +1,3 @@
+CGameCtnMediaBlockFx 0x0307E000 // MediaTracker block - Effect.
+- inherits: CGameCtnMediaBlock
+- abstract

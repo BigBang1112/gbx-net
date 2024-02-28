@@ -1,0 +1,25 @@
+CGameCtnMediaBlockFxCameraMap 0x03139000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ timefloat Start
+ timefloat End
+
+0x001
+ float
+ int
+ float
+ float
+ float
+ int
+ float
+ float
+ float
+ int
+ float
+ float
+ byte
+ int
+ int
+ int
+ packdesc

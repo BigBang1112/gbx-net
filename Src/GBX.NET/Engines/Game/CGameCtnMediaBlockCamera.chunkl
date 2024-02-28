@@ -1,0 +1,3 @@
+CGameCtnMediaBlockCamera 0x0307C000
+- inherits: CGameCtnMediaBlock
+- abstract
