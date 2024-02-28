@@ -17,16 +17,4 @@ public class GbxTests
     {
         Assert.Equal(expected: "GBX", actual: Gbx.Magic);
     }
-
-    [Fact]
-    public void Save_Stream_Throws()
-    {
-        Assert.Throws<NotImplementedException>(() => new Gbx(new GbxHeaderUnknown(new(), 0)).Save(string.Empty));
-    }
-
-    [Fact]
-    public void Save_FileName_Throws()
-    {
-        Assert.Throws<NotImplementedException>(() => new Gbx(new GbxHeaderUnknown(new(), 0)).Save(ms));
-    }
 }

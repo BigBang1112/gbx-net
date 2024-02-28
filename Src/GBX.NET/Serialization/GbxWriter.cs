@@ -1,6 +1,8 @@
 ﻿using System.Numerics;
 using System.Text;
 using System.Xml;
+using GBX.NET.Managers;
+using System.Runtime.InteropServices;
 
 #if NET6_0_OR_GREATER
 using System.Buffers;
@@ -107,7 +109,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     private int? idVersion;
     private Dictionary<string, int>? idDict;
+    private Dictionary<object, int>? nodeDict;
     private Encapsulation? encapsulation;
+    private GbxReaderWriter? rw;
 
     internal int? IdVersion
     {
@@ -129,10 +133,15 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         ? idDict ??= []
         : encapsulation.IdWriteDict;
 
+    internal Dictionary<object, int> NodeDict => nodeDict ??= ExpectedNodeCount.HasValue
+        ? new(ExpectedNodeCount.Value) : [];
+
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
 
     internal byte PackDescVersion { get; set; } = 3;
     internal int DeprecVersion { get; set; } = 10;
+
+    internal int? ExpectedNodeCount { get; set; }
 
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; }
@@ -581,12 +590,50 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteNodeRef<T>(T? value) where T : IClass
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        if (ClassManager.GetClassId<T>() is not uint classId)
+        {
+            throw new InvalidOperationException("Class ID not found.");
+        }
+
+        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
+        if (encapsulation is not null)
+        {
+            Write(classId);
+            value.ReadWrite(rw);
+            return;
+        }
+
+        if (!NodeDict.TryGetValue(value, out var index))
+        {
+            index = NodeDict.Count;
+
+            // TODO: Report on replacements
+            NodeDict[value] = index;
+        }
+
+        Write(index);
+        Write(classId);
+        value.ReadWrite(rw);
     }
 
     public void WriteNode<T>(T? value) where T : IClass
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
+        value.ReadWrite(rw);
     }
 
     public void Write(TimeInt32 value)
@@ -734,7 +781,19 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        ValidateCollectionLength(value.Length);
+
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        Write(MemoryMarshal.Cast<T, byte>(value));
+#else
+        Write(MemoryMarshal.Cast<T, byte>(value).ToArray());
+#endif
     }
 
     public void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct
@@ -744,12 +803,14 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteArray(value, lengthInBytes);
     }
 
     public void WriteArray_deprec<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteArray(value, length, lengthInBytes);
     }
 
     public void WriteList<T>(IList<T>? value, bool lengthInBytes = false) where T : struct
@@ -764,17 +825,30 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteList_deprec<T>(IList<T>? value, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteList(value, lengthInBytes);
     }
 
     public void WriteList_deprec<T>(IList<T>? value, int length, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteList(value, length, lengthInBytes);
     }
 
     public void WriteArrayNodeRef<T>(T?[]? value) where T : IClass
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item);
+        }
     }
 
     public void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass
@@ -784,12 +858,24 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteArrayNodeRef(value);
     }
 
     public void WriteListNodeRef<T>(IList<T?>? value) where T : IClass
     {
-        throw new NotImplementedException();
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item);
+        }
     }
 
     public void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass
@@ -799,7 +885,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass
     {
-        throw new NotImplementedException();
+        WriteDeprecVersion();
+        WriteListNodeRef(value);
     }
 
     public void WriteArrayWritable<T>(T[]? value, int version = 0) where T : IWritable
@@ -844,5 +931,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         WriteDeprecVersion();
         WriteListWritable(value, version);
+    }
+
+    private static void ValidateCollectionLength(int length)
+    {
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+        }
+
+        if (length < 0 || length > 0x10000000) // ~268MB
+        {
+            throw new Exception($"Length is too big to handle ({length}).");
+        }
     }
 }

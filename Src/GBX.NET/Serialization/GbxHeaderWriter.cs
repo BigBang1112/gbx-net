@@ -6,7 +6,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxReaderWriter readerWr
 {
     private readonly GbxWriter writer = readerWriter.Writer ?? throw new Exception("Writer is required but not available.");
 
-    public bool Write(IClass node)
+    public bool Write(IClass? node)
     {
         _ = header.Basic.Write(writer);
 

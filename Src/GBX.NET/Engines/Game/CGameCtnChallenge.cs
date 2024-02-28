@@ -172,6 +172,11 @@ public sealed partial class CGameCtnChallenge :
 
             w.Write(n.NbBlocks.GetValueOrDefault());
 
+            if (n.blocks is null)
+            {
+                return;
+            }
+
             foreach (var block in n.blocks)
             {
                 w.WriteWritable(block, Version);

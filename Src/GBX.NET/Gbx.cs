@@ -11,8 +11,8 @@ public interface IGbx
     GbxRefTable? RefTable { get; }
     IClass? Node { get; }
 
-    void Save(string filePath, ClassIdRemapMode remap = default);
-    void Save(Stream stream, ClassIdRemapMode remap = default);
+    void Save(Stream stream, GbxWriteSettings settings = default);
+    void Save(string filePath, GbxWriteSettings settings = default);
 
 #if NET8_0_OR_GREATER
     static abstract Gbx ParseHeader(Stream stream, GbxReadSettings settings = default);
@@ -46,7 +46,7 @@ public class Gbx : IGbx
     public string? FilePath { get; set; }
     public GbxHeader Header { get; }
     public GbxRefTable? RefTable { get; private set; }
-    public GbxBody? Body { get; private set; }
+    public GbxBody Body { get; }
     public GbxReadSettings ReadSettings { get; private set; }
     public IClass? Node { get; protected set; }
 
@@ -59,9 +59,10 @@ public class Gbx : IGbx
     public static ILzo? LZO { get; set; }
     public static ICrc32? CRC32 { get; set; }
 
-    internal Gbx(GbxHeader header)
+    internal Gbx(GbxHeader header, GbxBody body)
     {
         Header = header;
+        Body = body;
     }
 
     public static Gbx Parse(Stream stream, GbxReadSettings settings = default)
@@ -75,10 +76,11 @@ public class Gbx : IGbx
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
-            return new Gbx(header)
+            var unknownBody = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
+
+            return new Gbx(header, unknownBody)
             {
                 RefTable = refTable,
-                Body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings),
                 ReadSettings = settings,
                 FilePath = filePath
             };
@@ -87,9 +89,10 @@ public class Gbx : IGbx
         reader.ResetIdState();
         reader.ExpectedNodeCount = header.NumNodes;
 
-        var gbx = ClassManager.NewGbx(header, node) ?? new Gbx(header);
+        var body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
+
+        var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
-        gbx.Body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
@@ -117,10 +120,9 @@ public class Gbx : IGbx
 
         var body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
 
-        return new Gbx<T>(header, node)
+        return new Gbx<T>(header, body, node)
         {
             RefTable = refTable,
-            Body = body,
             ReadSettings = settings,
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
@@ -147,7 +149,7 @@ public class Gbx : IGbx
         
         if (node is null) // aka, header is GbxHeaderUnknown
         {
-            return new Gbx(header)
+            return new Gbx(header, body)
             {
                 RefTable = refTable,
                 ReadSettings = settings,
@@ -155,9 +157,8 @@ public class Gbx : IGbx
             }; 
         }
         
-        var gbx = ClassManager.NewGbx(header, node) ?? new Gbx(header);
+        var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
-        gbx.Body = body;
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
@@ -181,10 +182,9 @@ public class Gbx : IGbx
         var refTable = GbxRefTable.Parse(reader, header, settings);
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
 
-        return new Gbx<T>(header, node)
+        return new Gbx<T>(header, body, node)
         {
             RefTable = refTable,
-            Body = body,
             ReadSettings = settings,
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
@@ -267,14 +267,27 @@ public class Gbx : IGbx
         return ParseHeader<TClass>(filePath, settings).Node;
     }
 
-    public virtual void Save(string filePath, ClassIdRemapMode remap = 0)
+    public virtual void Save(Stream stream, GbxWriteSettings settings = default)
     {
-        throw new NotImplementedException();
+        using var writer = new GbxWriter(stream, settings.LeaveOpen);
+        Header.Write(writer, Node, settings);
+
+        if (RefTable is null)
+        {
+            writer.Write(0);
+        }
+        else
+        {
+            RefTable.Write(writer, settings);
+        }
+
+        Body.Write(Node, writer, settings, Header.Basic.CompressionOfBody);
     }
 
-    public virtual void Save(Stream stream, ClassIdRemapMode remap = 0)
+    public virtual void Save(string filePath, GbxWriteSettings settings = default)
     {
-        throw new NotImplementedException();
+        using var fs = File.Create(filePath);
+        Save(fs, settings);
     }
 
     /// <summary>
@@ -385,7 +398,7 @@ public class Gbx<T> : Gbx, IGbx<T> where T : notnull, IClass
 {
     public new T Node => (T)(base.Node ?? throw new Exception("Null node is not expected here."));
 
-    internal Gbx(GbxHeader<T> header, T node) : base(header)
+    internal Gbx(GbxHeader<T> header, GbxBody body, T node) : base(header, body)
     {
         base.Node = node;
     }

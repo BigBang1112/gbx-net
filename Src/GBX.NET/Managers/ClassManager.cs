@@ -34,7 +34,7 @@ public static partial class ClassManager
 
     internal static partial IClass? New(uint classId);
     internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId);
-    internal static partial Gbx? NewGbx(GbxHeader header, IClass node);
+    internal static partial Gbx? NewGbx(GbxHeader header, GbxBody body, IClass node);
 
     internal static uint GetChunkId(Type type) => throw new NotImplementedException();
 

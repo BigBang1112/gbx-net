@@ -81,7 +81,7 @@ internal static class ClassManagerSubGenerator
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
         builder.AppendLine();
-        builder.AppendLine("    internal static partial Gbx? NewGbx(GbxHeader header, IClass node) => header.ClassId switch");
+        builder.AppendLine("    internal static partial Gbx? NewGbx(GbxHeader header, GbxBody body, IClass node) => header.ClassId switch");
         builder.AppendLine("    {");
 
         foreach (var classInfo in classInfos)
@@ -92,7 +92,7 @@ internal static class ClassManagerSubGenerator
             builder.Append(classInfo.Key);
             builder.Append(">((GbxHeader<");
             builder.Append(classInfo.Key);
-            builder.Append(">)header, (");
+            builder.Append(">)header, body, (");
             builder.Append(classInfo.Key);
             builder.AppendLine(")node),");
         }

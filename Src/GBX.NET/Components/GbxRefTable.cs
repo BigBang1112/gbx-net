@@ -10,4 +10,9 @@ public sealed class GbxRefTable(IDirectory root, int ancestorLevel)
     {
         return new GbxRefTableReader(reader, header, settings).Parse();
     }
+
+    internal bool Write(GbxWriter writer, GbxWriteSettings settings)
+    {
+        return new GbxRefTableWriter(this, writer, settings).Write();
+    }
 }

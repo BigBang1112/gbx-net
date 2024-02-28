@@ -129,6 +129,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private Encapsulation? encapsulation;
     private byte? packDescVersion;
     private int? deprecVersion;
+    private GbxReaderWriter? rw;
 
     internal int? IdVersion
     {
@@ -754,7 +755,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private T ReadNode<T>(T node) where T : IClass
     {
-        var rw = new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this, leaveOpen: true);
 
 #if NET8_0_OR_GREATER
         T.Read(node, rw);

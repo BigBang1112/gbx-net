@@ -43,4 +43,9 @@ public sealed class GbxBody
         using var rw = new GbxReaderWriter(reader, leaveOpen: true);
         return new GbxBodyReader(rw, settings, compression).Parse(node);
     }
+
+    internal bool Write(IClass? node, GbxWriter writer, GbxWriteSettings settings, GbxCompression compression)
+    {
+        return new GbxBodyWriter(this, writer, settings, compression).Write(node);
+    }
 }
