@@ -66,6 +66,7 @@ public partial interface IGbxReader : IDisposable
     TimeSingle ReadTimeSingle();
     TimeSingle? ReadTimeSingleNullable();
     TimeSpan? ReadTimeOfDay();
+    DateTime ReadFileTime();
     void ReadMarker(string value);
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
     void ReadDeprecVersion();
@@ -808,6 +809,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var maxSecs = maxTime.TotalSeconds;
 
         return TimeSpan.FromSeconds(Convert.ToInt32(dayTime / (float)ushort.MaxValue * maxSecs));
+    }
+
+    public DateTime ReadFileTime()
+    {
+        return DateTime.FromFileTime(ReadInt64());
     }
 
     public void ReadMarker(string value)

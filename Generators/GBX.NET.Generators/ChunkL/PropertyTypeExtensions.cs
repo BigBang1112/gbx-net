@@ -34,7 +34,8 @@ internal static class PropertyTypeExtensions
         "Quat",
         "Id",
         "TimeInt32",
-        "TimeSingle");
+        "TimeSingle",
+        "Iso4");
 
     private static readonly ImmutableHashSet<string> keywords = ImmutableHashSet.Create(
         "return",
@@ -106,12 +107,17 @@ internal static class PropertyTypeExtensions
             "int3" => "Int3",
             "int4" => "Int4",
             "byte3" => "Byte3",
+            "mat3" => "Mat3",
+            "mat4" => "Mat4",
+            "iso4" => "Iso4",
             "box" => "Box",
             "quat" => "Quat",
             "color" => "Color",
+            "rect" => "Rect",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => nameof(TimeSpan),
+            "filetime" => nameof(DateTime),
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "string",
             "packdesc" or "fileref" => "PackDesc",

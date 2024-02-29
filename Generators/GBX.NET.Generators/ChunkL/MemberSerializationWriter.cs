@@ -335,7 +335,14 @@ internal sealed class MemberSerializationWriter
         }
         else
         {
-            sb.Append(mappedType);
+            if (mappedType == "IdAsString")
+            {
+                sb.Append("Id");
+            }
+            else
+            {
+                sb.Append(mappedType);
+            }
 
             if (mappedType is "TimeInt32" or "TimeSingle" && chunkProperty.IsNullable)
             {
@@ -446,12 +453,17 @@ internal sealed class MemberSerializationWriter
             "int3" => "Int3",
             "int4" => "Int4",
             "byte3" => "Byte3",
+            "mat3" => "Mat3",
+            "mat4" => "Mat4",
+            "iso4" => "Iso4",
             "box" => "Box",
             "quat" => "Quat",
             "color" => "Color",
+            "rect" => "Rect",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => "TimeOfDay",
+            "filetime" => "FileTime",
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "IdAsString",
             "packdesc" or "fileref" => "PackDesc",

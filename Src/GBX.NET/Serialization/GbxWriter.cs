@@ -65,6 +65,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(TimeSingle value);
     void WriteTimeSingleNullable(TimeSingle? value);
     void WriteTimeOfDay(TimeSpan? value);
+    void WriteFileTime(DateTime value);
     void WriteMarker(string value);
     void WriteWritable<T>(T value, int version = 0) where T : IWritable;
     void WriteDeprecVersion();
@@ -92,6 +93,13 @@ public partial interface IGbxWriter : IDisposable
     void WriteArrayWritable_deprec<T>(T[]? value, int version = 0) where T : IWritable;
     void WriteListWritable<T>(IList<T>? value, int version = 0) where T : IWritable;
     void WriteListWritable_deprec<T>(IList<T>? value, int version = 0) where T : IWritable;
+
+    void WriteArrayId(string[]? value);
+    void WriteArrayId(string[]? value, int length);
+    void WriteArrayId_deprec(string[]? value);
+    void WriteListId(IList<string>? value);
+    void WriteListId(IList<string>? value, int length);
+    void WriteListId_deprec(IList<string>? value);
 
     void ResetIdState();
 }
@@ -671,6 +679,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(Convert.ToInt32(secs / maxSecs * ushort.MaxValue));
     }
 
+    public void WriteFileTime(DateTime value)
+    {
+        Write(value.ToFileTimeUtc());
+    }
+
     public void WriteMarker(string value)
     {
         Write(value, StringLengthPrefix.None);
@@ -944,5 +957,87 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         {
             throw new Exception($"Length is too big to handle ({length}).");
         }
+    }
+
+    public void WriteArrayId(string[]? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteIdAsString(item);
+        }
+    }
+
+    public void WriteArrayId(string[]? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                Write(item);
+            }
+        }
+
+        if (value is null || length > value.Length)
+        {
+            for (var i = value?.Length ?? 0; i < length; i++)
+            {
+                WriteIdAsString(default);
+            }
+        }
+    }
+
+    public void WriteArrayId_deprec(string[]? value)
+    {
+        WriteDeprecVersion();
+        WriteArrayId(value);
+    }
+
+    public void WriteListId(IList<string>? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteIdAsString(item);
+        }
+    }
+
+    public void WriteListId(IList<string>? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                Write(item);
+            }
+        }
+
+        if (value is null || length > value.Count)
+        {
+            for (var i = value?.Count ?? 0; i < length; i++)
+            {
+                WriteIdAsString(default);
+            }
+        }
+    }
+
+    public void WriteListId_deprec(IList<string>? value)
+    {
+        WriteDeprecVersion();
+        WriteListId(value);
     }
 }
