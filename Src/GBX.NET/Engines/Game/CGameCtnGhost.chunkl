@@ -142,6 +142,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x024 (skippable, ignore) // match replay separators
 
+0x025 (skippable, base: 0x019) // validation TM2
+
 0x026 (skippable)
  int128
 

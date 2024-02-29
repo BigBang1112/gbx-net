@@ -1,0 +1,143 @@
+﻿
+using GBX.NET.Inputs;
+using System.Collections.Immutable;
+
+namespace GBX.NET.Engines.Game;
+
+public partial class CGameCtnGhost
+{
+    private TimeInt32 eventsDuration;
+    public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
+
+    private string? validate_ExeVersion;
+    public string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
+
+    private uint validate_ExeChecksum;
+    public uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
+
+    private int validate_OsKind;
+    public int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
+
+    private int validate_CpuKind;
+    public int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
+
+    private string? validate_RaceSettings;
+    public string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
+
+    private ImmutableArray<IInput> inputs;
+    public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
+
+    private bool steeringWheelSensitivity;
+    public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
+
+    public partial class Chunk03092011
+    {
+        public int U01;
+        public int U02;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.TimeInt32(ref n.eventsDuration);
+
+            if (n.eventsDuration == TimeInt32.Zero)
+            {
+                return;
+            }
+
+            // CInputEventsStore::Archive
+            rw.Int32(ref U01); // always 0 now
+
+            if (rw.Reader is not null)
+            {
+                ReadInputs(n, rw.Reader);
+            }
+
+            if (rw.Writer is not null)
+            {
+                WriteInputs(n, rw.Writer);
+            }
+            //
+
+            rw.String(ref n.validate_ExeVersion);
+            rw.UInt32(ref n.validate_ExeChecksum);
+            rw.Int32(ref n.validate_OsKind);
+            rw.Int32(ref n.validate_CpuKind);
+            rw.String(ref n.validate_RaceSettings);
+        }
+
+        private void ReadInputs(CGameCtnGhost n, GbxReader r)
+        {
+            var inputNames = r.ReadArrayId();
+
+            var numEntries = r.ReadInt32();
+            U02 = r.ReadInt32(); // CountLimit?
+
+            var inputs = ImmutableArray.CreateBuilder<IInput>(numEntries);
+
+            for (var i = 0; i < numEntries; i++)
+            {
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
+                var inputNameIndex = r.ReadByte();
+                var data = r.ReadUInt32();
+
+                var name = inputNames[inputNameIndex];
+
+                inputs.Add(NET.Inputs.Input.Parse(time, name, data));
+            }
+
+            n.inputs = inputs.ToImmutable();
+        }
+
+        private void WriteInputs(CGameCtnGhost n, GbxWriter w)
+        {
+            var inputNames = n.inputs
+                .Select(NET.Inputs.Input.GetName)
+                .Distinct()
+                .ToImmutableList();
+
+            w.WriteListString(inputNames);
+
+            w.Write(n.inputs.Length);
+            w.Write(U02);
+
+            foreach (var input in n.inputs)
+            {
+                w.Write(input.Time.TotalMilliseconds + 100000);
+                w.Write((byte)inputNames.IndexOf(NET.Inputs.Input.GetName(input)));
+                w.Write(NET.Inputs.Input.GetData(input));
+            }
+        }
+    }
+
+    public partial class Chunk03092019
+    {
+        public int U03;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+
+            if (n.eventsDuration != TimeInt32.Zero)
+            {
+                rw.Int32(ref U03);
+            }
+        }
+    }
+
+    public partial class Chunk03092025 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            base.ReadWrite(n, rw);
+
+            if (n.eventsDuration != TimeInt32.Zero && Version >= 1)
+            {
+                rw.Boolean(ref n.steeringWheelSensitivity);
+            }
+        }
+    }
+}
