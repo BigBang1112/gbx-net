@@ -38,6 +38,8 @@ internal static class Input
         _ => throw new ArgumentException($"Unknown input type: {input.GetType()}.", nameof(input))
     };
 
+    public static uint GetData(IInput input) => 0;
+
     private static int ToSteerValue(this uint data)
     {
         var dir = (data >> 16) & 0xFF;

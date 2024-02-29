@@ -1,0 +1,8 @@
+CGameCtnMediaBlockCameraCustom 0x030A2000 // MediaTracker block - Custom camera.
+- inherits: CGameCtnMediaBlockCamera
+
+enum Interpolation
+ None
+ Hermite
+ Linear
+ FixedTangent

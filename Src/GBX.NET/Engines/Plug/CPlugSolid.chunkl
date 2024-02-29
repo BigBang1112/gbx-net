@@ -1,0 +1,139 @@
+CPlugSolid 0x09005000
+- inherits: CPlug
+
+0x000
+ int TypeAndIndex
+
+0x006
+ float
+ float
+ float
+ float
+ float
+ float
+ mat3
+
+0x007
+ bool
+
+0x00B
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ int
+
+0x00C
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ float
+ int
+ float
+ float
+ float
+ float
+ int
+ int
+
+0x00D
+ bool
+ bool
+ CPlug Tree
+
+0x00E
+ float
+ float
+ float
+ float
+ iso4
+
+0x00F
+ float
+ float
+
+0x010
+ CMwNod // CSceneVehicleEnvironment
+
+0x011
+ bool U01 // part of SetUseModel, possibly the 'Use' parameter
+ bool U02 // m_Model != null
+ if U02
+  bool? U03
+ CPlug Tree
+
+0x012
+ byte
+
+0x017 // SolidPreLightGen
+ version
+ v3+
+  bool U01
+  if U01
+   PreLightGen SolidPreLightGen
+ v2-
+  byte U02
+  float U03
+  bool U04
+  rect U05
+  rect U06
+  int2 U07 // sprite count def
+  v1+
+   box U08
+ v2+
+  filetime? FileWriteTime
+
+0x019
+ version
+ CPlugSound[]_deprec
+ CPlugParticleEmitterModel[]_deprec
+ LocatedInstance
+ LocatedInstance
+ v1+
+  int
+  v2+
+   id[]
+   iso4[]
+   v3+
+    string
+
+0x01A (skippable, ignore) // lod normal map
+
+archive PreLightGen
+ int Version
+ int
+ float
+ bool
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ int
+ int
+ box[]
+ if Version >= 1
+  UvGroup[]
+
+archive UvGroup
+ float
+ float
+ float
+ float
+ float
+
+archive LocatedInstance
+ int
+ iso4

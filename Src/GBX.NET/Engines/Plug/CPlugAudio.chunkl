@@ -1,0 +1,3 @@
+CPlugAudio 0x09001000
+- inherits: CPlug
+- abstract
