@@ -14,6 +14,8 @@ public partial class CMwNod : IClass
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
+        var prevChunkId = default(uint?);
+
         while (true)
         {
             var originalChunkId = r.ReadHexUInt32();
@@ -39,7 +41,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception($"Unknown unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000)} 0x{chunkId:X8}) cannot be processed");
+                    throw new Exception($"Unknown unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000) ?? "???"} 0x{chunkId:X8}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -94,8 +96,10 @@ public partial class CMwNod : IClass
                     readable.Read(node, r);
                     break;
                 default:
-                    throw new Exception($"Known unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000)} 0x{chunkId:X8}) cannot be processed");
+                    throw new Exception($"Known unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000) ?? "???"} 0x{chunkId:X8}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
             }
+
+            prevChunkId = chunkId;
         }
     }
 #endif
@@ -103,6 +107,8 @@ public partial class CMwNod : IClass
     internal virtual void Read(GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        var prevChunkId = default(uint?);
 
         while (true)
         {
@@ -129,7 +135,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception($"Unknown unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed");
+                    throw new Exception($"Unknown unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -174,8 +180,10 @@ public partial class CMwNod : IClass
                     readable.Read(this, r);
                     break;
                 default:
-                    throw new Exception($"Known unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed");
+                    throw new Exception($"Known unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
             }
+
+            prevChunkId = chunkId;
         }
     }
 
