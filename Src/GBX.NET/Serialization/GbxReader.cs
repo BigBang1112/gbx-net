@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
+using System.Collections.Immutable;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
