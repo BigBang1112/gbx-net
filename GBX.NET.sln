@@ -95,7 +95,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxDiscordBot", "Tools\GbxD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParseRepeater", "Tools\ParseRepeater\ParseRepeater.csproj", "{D6B90011-06F2-493B-B145-F7CC89F0A827}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GbxToJson", "Tools\GbxToJson\GbxToJson.csproj", "{C4AA5FE1-5C66-4306-8616-4F0B96D4C98C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxToJson", "Tools\GbxToJson\GbxToJson.csproj", "{C4AA5FE1-5C66-4306-8616-4F0B96D4C98C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
