@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches: [ "v2" ]
-    paths: [ "Src/**", "Benchmarks/**", "Generators/**", "Samples/**", "Tests/**", "Tools/**" ]
+    paths: [ "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**" ]
   pull_request:
     branches: [ "v2" ]
-    paths: [ "Src/**", "Benchmarks/**", "Generators/**", "Samples/**", "Tests/**", "Tools/**" ]
+    paths: [ "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**" ]
   workflow_dispatch:
 
 jobs:
