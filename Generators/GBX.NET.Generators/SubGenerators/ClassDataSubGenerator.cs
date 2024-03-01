@@ -13,14 +13,13 @@ internal class ClassDataSubGenerator
 {
     public static void GenerateSource(SourceProductionContext context, ImmutableDictionary<string, ClassDataModel> classInfos)
     {
-        var inheritanceInverted = new Dictionary<string, Dictionary<uint, string>>();
+        var inheritanceInverted = new Dictionary<string, Dictionary<uint, ClassDataModel>>();
 
-        // does not work properly, misses recursion
         foreach (var classInfoPair in classInfos)
         {
             var classInfo = classInfoPair.Value;
 
-            if (classInfo.Inherits is null || classInfo.IsAbstract)
+            if (classInfo.Inherits is null)
             {
                 continue;
             }
@@ -30,7 +29,7 @@ internal class ClassDataSubGenerator
                 inheritanceInverted[classInfo.Inherits] = [];
             }
 
-            inheritanceInverted[classInfo.Inherits].Add(classInfo.Id.GetValueOrDefault(), classInfo.Name);
+            inheritanceInverted[classInfo.Inherits].Add(classInfo.Id.GetValueOrDefault(), classInfo);
         }
 
         foreach (var classInfoPair in classInfos)
@@ -60,7 +59,7 @@ internal class ClassDataSubGenerator
         SourceProductionContext context,
         ClassDataModel classInfo,
         ImmutableDictionary<string, ClassDataModel> classInfos,
-        Dictionary<string, Dictionary<uint, string>> inheritanceInverted)
+        Dictionary<string, Dictionary<uint, ClassDataModel>> inheritanceInverted)
     {
         var sb = new StringBuilder();
 
@@ -160,17 +159,35 @@ internal class ClassDataSubGenerator
             sb.AppendLine("(),");
         }
 
-        if (inheritanceInverted.TryGetValue(classInfo.Name, out var classes))
+        RecurseInheritanceInverted(classInfo.Name, []);
+
+        void RecurseInheritanceInverted(string name, HashSet<uint> alreadyAddedInheritance)
         {
-            foreach (var classIdAndName in classes)
+            if (!inheritanceInverted.TryGetValue(name, out var classes))
             {
-                sb.Append("        0x");
-                sb.Append(classIdAndName.Key.ToString("X8"));
-                sb.Append(" => new ");
-                sb.Append(classIdAndName.Value);
-                sb.AppendLine("(),");
+                return;
+            }
+
+            foreach (var classIdAndDataModel in classes)
+            {
+                if (alreadyAddedInheritance.Contains(classIdAndDataModel.Key))
+                {
+                    continue;
+                }
+
+                if (!classIdAndDataModel.Value.IsAbstract)
+                {
+                    sb.Append("        0x");
+                    sb.Append(classIdAndDataModel.Key.ToString("X8"));
+                    sb.Append(" => new ");
+                    sb.Append(classIdAndDataModel.Value.Name);
+                    sb.AppendLine("(),");
+                }
+
+                RecurseInheritanceInverted(classIdAndDataModel.Value.Name, alreadyAddedInheritance);
             }
         }
+
 
         sb.AppendLine("        _ => null");
 

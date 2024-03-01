@@ -50,6 +50,7 @@
 		<Using Include="GBX.NET.Engines.Scene" />
 		<Using Include="GBX.NET.Engines.System" />
 		<Using Include="GBX.NET.Engines.Control" />
+		<Using Include="GBX.NET.Engines.Input" />
 	</ItemGroup>
 
 	<ItemGroup>
