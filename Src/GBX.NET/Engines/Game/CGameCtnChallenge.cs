@@ -53,6 +53,16 @@ public sealed partial class CGameCtnChallenge :
         return Collection ?? throw new Exception("Environment not available");
     }
 
+    public IEnumerable<CGameCtnBlock> GetBlocks(bool includeUnassigned1 = true)
+    {
+        if (includeUnassigned1)
+        {
+            return Blocks ?? [];
+        }
+
+        return Blocks?.Where(x => x.Name != "Unassigned1") ?? [];
+    }
+
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
@@ -100,6 +110,7 @@ public sealed partial class CGameCtnChallenge :
 
     public partial struct HeaderChunk03043005;
 
+    [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
     {
         public int Version { get; set; } = 1;
