@@ -360,7 +360,7 @@
   0C2 CGameControlCardMessage
   0C3 CGameActionFxVis CGameCalendar
   0C4 CGameCalendarEvent
-  0C5 NGameMgrMap_SBlockInstance NGameMgrMap::SBlockInstance CGameControlCardCalendar
+  0C5 NGameMgrMap_SBlockInstance CGameControlCardCalendar
   0C6 CGameControlCardCalendarEvent
   0C7 CGameControlCardProfile
   0C8 CGameControlCardCtnReplayRecordInfo
@@ -783,7 +783,7 @@
   27A CGameCampaignScoreManager_SkillPoint
   27B CGameScriptChatRoom
   27C CGameMgrWaypoint
-  27D NGameWaypoint_STrigger NGameWaypoint::STrigger
+  27D NGameWaypoint_STrigger
   27E CGameObjectItem
   27F CGameGatePhy
   280 CGameTriggerGate
@@ -1358,7 +1358,7 @@
   068 CPlugShaderSprite
   069 CPlugShaderSpritePath
   06A CPlugVisualIndexed
-  06B NPlugSkel_SLodSetup NPlugSkel::SLodSetup CPlugTreeFrustum CPlugTreeFrustrum
+  06B NPlugSkel_SLodSetup CPlugTreeFrustum CPlugTreeFrustrum
   06C CPlugFileSvg
   072 CPlugModelTree
   073 CPlugModelMesh
@@ -1394,7 +1394,7 @@
   093 CPlugIconIndex CPlugFileGpuFx
   094 CPlugVehicleGearBox CPlugFileGpuFxD3d
   095 CPlugAdnAnimClip CPlugFileVso
-  096 NPlugAdn_STagDatabase NPlugAdn::STagDatabase CPlugFilePso
+  096 NPlugAdn_STagDatabase CPlugFilePso
   098 CPlugFileModel
   099 CPlugFileModelObj
   09A CPlugTreeGenSolid
@@ -1462,7 +1462,7 @@
   0DA CPlugFileJxr
   0DB CPlugFileWebP
   0DC CPlugMaterialPack
-  0DD NPlugItemPlacement_SDatabase NPlugItemPlacement::SDatabase CPlugTrafficShapedTrajectory
+  0DD NPlugItemPlacement_SDatabase CPlugTrafficShapedTrajectory
   0DE CPlugTrafficFlowDescriptor
   0DF CPlugTrafficGraph
   0E0 CPlugCharPhyRecoilModel
@@ -1580,10 +1580,10 @@
   161 CPlugRoadChunkTraffic
   162 CPlugRoadChunkCitizen
   164 CPlugAnimJointExprGroup
-  165 NPlugModelKit_SDataBaseDesc NPlugModelKit::SDataBaseDesc
-  166 NPlugModelKit_SDataBase NPlugModelKit::SDataBase
-  178 NPlugTrigger_SWaypoint NPlugTrigger::SWaypoint
-  179 NPlugTrigger_SSpecial NPlugTrigger::SSpecial
+  165 NPlugModelKit_SDataBaseDesc
+  166 NPlugModelKit_SDataBase
+  178 NPlugTrigger_SWaypoint
+  179 NPlugTrigger_SSpecial
   17A CPlugSpawnModel
   17B CPlugEditorHelper
   17C SPlugFlockEmitterState
@@ -1597,7 +1597,7 @@
   184 CPlugCurveEnvelopeDeprec
   185 CPlugCurveSimpleNod
   186 CPlugBitmapArrayBuilder
-  187 NPlugItemPlacement_SClass NPlugItemPlacement::SClass
+  187 NPlugItemPlacement_SClass
   188 CPlugPodium
   189 CPlugMediaClipList
   18B NPlugAnim_SRig
@@ -2098,7 +2098,6 @@
   140 CNetNadeoServicesTask_GetUserAccount
   141 CWebServicesTaskResult_NSUserAccount
   143 CWebServicesTask_SetUserZone
-  144 CWebServicesTaskResult_NSAccountDisplayNameList
   145 CNetNadeoServicesTask_GetAccountDisplayNameList
   146 CNetNadeoServicesTask_SetTrophyLiveTimeAttackAchievementResult
   147 CWebServicesTaskResult_NSAccountTrophyGainList
@@ -2184,10 +2183,8 @@
   1A0 CWebServicesTask_Permission_CheckTargetedUseUserCreatedContent
   1A1 CWebServicesTask_Permission_CheckTargetedUseUserCreatedContentForAllUsers
   1A2 CWebServicesTask_Permission_CheckTargetedViewUserGameHistory
-  1A3 CWebServicesTask_UserProfile_ShowFirstPartyProfile
   1A4 CWebServicesTask_Permission_CheckViewOnlinePresence
   1A5 CWebServicesTask_Permission_CheckUseUserCreatedContent
-  1A6 CWebServicesTask_Permission_CheckCommunications
   1A7 CWebServicesTaskResult_CheckTargetedPrivilegeResult
   1A8 CWebServicesTaskResult_WSNewsList
   1A9 CWebServicesTask_GetUserNewsList
@@ -2266,7 +2263,6 @@
   205 CNetUbiServicesTask_Party_GetFirstPartySessionInfo
   207 CNetUbiServicesTask_Party_UpdateParty
   208 CWebServicesTask_Party_Update
-  20B CWebServicesTask_Permission_CheckCommunicationsWithCrossplayUsers
   214 CNetUbiServicesTask_Party_UpdateLockState
   215 CWebServicesTask_Party_SetLocked
   216 CNetUbiServicesTask_Profile_RetrieveProfileInfoListFromPlatform
@@ -2274,9 +2270,6 @@
   220 CNetNadeoServicesTask_AddSubscriptionDeprecated
   221 CNetNadeoServicesTask_AddClientDebugInfo
   223 CWebServicesTask_Preference_RetrieveUserPreference
-  225 CWebServicesTask_Permission_CheckPrivilegeMultiple
-  226 CWebServicesTaskResult_CheckAllPlayerInteractionsPrivilegesResult
-  227 CWebServicesTask_Permission_CheckAllPlayerInteractions
   228 CNetNadeoServicesTask_Activity_CreateMatch
   229 CNetNadeoServicesTask_Activity_ReportMatchResult
   22A CWebServicesTaskResult_WSMapRecordList
@@ -2730,11 +2723,11 @@
   033 CGameModuleEditorModel
   034 CGameModuleEditorGraphEditionModel
 2F Meta
-  002 NPlugPrefab_SLodGroup NPlugPrefab::SLodGroup
+  002 NPlugPrefab_SLodGroup
   004 CPlugAnimTimingFixedPeriod
-  005 NPlugAnim_SChannelGroupImport NPlugAnim::SChannelGroupImport
-  008 NPlugAdn_STagFromName NPlugAdn::STagFromName
-  00B NPlugAdn_STagFid NPlugAdn::STagFid
+  005 NPlugAnim_SChannelGroupImport
+  008 NPlugAdn_STagFromName
+  00B NPlugAdn_STagFid
   00C CPlugAnimClipFlags
   00D CPlugAnimFileXml
   00F CPlugAdnPartInstance
@@ -2743,13 +2736,12 @@
   019 CPlugAnimGraphState
   01A CPlugAnimGraphTransition
   01B CPlugAnimNode
-  01C NSceneFlock_SBirdPhysicsParams NSceneFlock::SBirdPhysicsParams
+  01C NSceneFlock_SBirdPhysicsParams
   021 CPlugAnimNodeAim
   023 SPlugSkelSocket
-  024 NHmsMgrParticle_SMgr NHmsMgrParticle::SMgr
-  025 NPlugAnim_SImportParams NPlugAnim::SImportParams
-  026 NPlugAnim_SClipImport NPlugAnim::SClipImport
-  027 GmTransQuat
+  024 NHmsMgrParticle_SMgr
+  025 NPlugAnim_SImportParams
+  026 NPlugAnim_SClipImport
   028 GmSurf
   029 GmSurfPrimitive
   02A GmSurfSphere
@@ -2770,7 +2762,6 @@
   039 GmSurfMesh
   03A GmSurfCompound
   03B GmSurfCompoundInstance
-  03C GmBoxAligned
   03D GmSurfCircle
   03F SPlugAnimGraphStateSelectCond
   040 CPlugAnimTransition
@@ -2782,83 +2773,80 @@
   046 SPlugAnimNodeProceduralAttractorParams
   047 CPlugAnimNodeClip
   048 CPlugAnimNodeLocoGroup
-  049 GmTransYaw
-  04A NPlugImageArray_SElem NPlugImageArray::SElem
-  04B NPlugAnim_SPoseGridImport NPlugAnim::SPoseGridImport
+  04A NPlugImageArray_SElem
+  04B NPlugAnim_SPoseGridImport
   04F GmSurfSphericalShell
   057 
   058 CGameMenuScene
   059 SSceneWagonState
-  05A CPlugAnimGraphNode_JointInertia CPlugAnimRigNode_JointInertia
+  05A CPlugAnimGraphNode_JointInertia
   05D MwClassId
-  05E NSceneConstruction_SConstructionVis NSceneConstruction::SConstructionVis
-  05F NSceneProp_SPropVis NSceneProp::SPropVis
-  061 CPlugAnimGraphNode_AirTrajectoryPrediction CPlugAnimRigNode_AirTrajectoryPrediction
+  05E NSceneConstruction_SConstructionVis
+  05F NSceneProp_SPropVis
+  061 CPlugAnimGraphNode_AirTrajectoryPrediction
   062 SSceneDestructibleVisGroupState
   065 SSceneRopeVisEnt
   066 SSceneGateSpecial
-  069 NPlugAnim_SSkelImport NPlugAnim::SSkelImport
+  069 NPlugAnim_SSkelImport
   06B CPlugAnimNodeBlend2d
   06C CPlugVegetMaterialVariation
   06D CPlugVegetSubSurfaceParams
   06E SSceneDestructibleVisState
-  074 NPlugDyna_SConstraintModel NPlugDyna::SConstraintModel
-  075 NPlugDyna_SForceFieldModel NPlugDyna::SForceFieldModel
-  077 NPlugPrefab_SEntRef NPlugPrefab::SEntRef
+  074 NPlugDyna_SConstraintModel
+  075 NPlugDyna_SForceFieldModel
+  077 NPlugPrefab_SEntRef
   078 SPlugVehicleVisStyle
-  079 NHmsMgrInstDyna_SMgr NHmsMgrInstDyna::SMgr
+  079 NHmsMgrInstDyna_SMgr
   081 CGameManialinkNavigationScriptHandler
   083 CScriptEvent
   084 CEventMenuNavigation
   085 CEventMenuNavigationOnAction
   086 CPlugVegetTreeModel
-  087 NPlugFxAnimFromTexture1dArray_SElem NPlugFxAnimFromTexture1dArray::SElem
+  087 NPlugFxAnimFromTexture1dArray_SElem
   08A CPlugGrassMatterArray
   08D NPlugPainterLayer_SList
   08E CPlugGraphNode
-  08F CPlugAnimGraphNode_JointRotateFrom CPlugAnimRigNode_JointRotateFrom
-  090 CPlugAnimGraphNode_JointRotate CPlugAnimRigNode_JointRotate
-  091 CPlugAnimGraphNode_JointAlignTo CPlugAnimRigNode_JointAlignTo
-  092 CPlugAnimGraphNode_JointTranslate CPlugAnimRigNode_JointTranslate
-  093 CPlugAnimGraphNode_JointIK2 CPlugAnimRigNode_JointIK2
-  094 CPlugAnimGraphNode_JointKeepRefGlobalRot CPlugAnimRigNode_JointKeepRefGlobalRot
-  095 CPlugAnimGraphNode_JointTranslateDistConstraint CPlugAnimRigNode_JointTranslateDistConstraint
-  096 CPlugAnimGraphNode_LocalToGlobal CPlugAnimRigNode_LocalToGlobal
-  097 CPlugAnimGraphNode_Blend CPlugAnimRigNode_Blend
-  098 CPlugAnimGraphNode_ClipPlay CPlugAnimRigNode_ClipPlay
-  099 CPlugAnimGraphNode_Blend2d CPlugAnimRigNode_Blend2d
-  09B CPlugAnimGraphNode_Graph CPlugAnimRigNode_Graph
-  09C CPlugAnimGraphNode_StateMachine CPlugAnimRigNode_StateMachine
-  09D CPlugAnimGraphNode_LodSwitch CPlugAnimRigNode_LodSwitch
-  09E CPlugAnimGraphNode_Group CPlugAnimRigNode_Group
-  09F CPlugAnimGraphNode_RefLocalPose CPlugAnimRigNode_RefLocalPose
-  0A0 CPlugAnimGraphNode_GraphOutput CPlugAnimRigNode_GraphOutput
+  08F CPlugAnimGraphNode_JointRotateFrom
+  090 CPlugAnimGraphNode_JointRotate
+  091 CPlugAnimGraphNode_JointAlignTo
+  092 CPlugAnimGraphNode_JointTranslate
+  093 CPlugAnimGraphNode_JointIK2
+  094 CPlugAnimGraphNode_JointKeepRefGlobalRot
+  095 CPlugAnimGraphNode_JointTranslateDistConstraint
+  096 CPlugAnimGraphNode_LocalToGlobal
+  097 CPlugAnimGraphNode_Blend
+  098 CPlugAnimGraphNode_ClipPlay
+  099 CPlugAnimGraphNode_Blend2d
+  09B CPlugAnimGraphNode_Graph
+  09C CPlugAnimGraphNode_StateMachine
+  09D CPlugAnimGraphNode_LodSwitch
+  09E CPlugAnimGraphNode_Group
+  09F CPlugAnimGraphNode_RefLocalPose
+  0A0 CPlugAnimGraphNode_GraphOutput
   0A2 CPlugVFXNode
   0A3 CPlugVFXNode_Emit
   0A4 CPlugVFXNode_EmitterModel
   0A5 CPlugVFXNode_Graph
   0A6 CPlugVFXNode_SubEmitterModel
-  0A7 CPlugAnimGraphNode_ExtractMotion CPlugAnimRigNode_ExtractMotion
-  0A8 CPlugAnimGraphNode_RefGlobalPose CPlugAnimRigNode_RefGlobalPose
-  0A9 NPlugItemPlacement_SPlacement NPlugItemPlacement::SPlacement
-  0AA CPlugAnimGraphNode_SetVar CPlugAnimRigNode_SetVar
-  0AB CPlugAnimGraphNode_ClipGroupPlay CPlugAnimRigNode_ClipGroupPlay
+  0A7 CPlugAnimGraphNode_ExtractMotion
+  0A8 CPlugAnimGraphNode_RefGlobalPose
+  0A9 NPlugItemPlacement_SPlacement
+  0AA CPlugAnimGraphNode_SetVar
+  0AB CPlugAnimGraphNode_ClipGroupPlay
   0AC CPlugVFXNode_VortexEmitterModel
   0AD CPlugVFXNode_EmissionGroup
-  0AE CPlugAnimGraphNode_SetSkel CPlugAnimRigNode_SetSkel
-  0AF GmTransYawPitch
-  0B0 GmTransYawPitchRoll
-  0B1 CPlugAnimGraphNode_LayeredBlend CPlugAnimRigNode_LayeredBlend
-  0B2 CPlugAnimGraphNode_GlobalToLocal CPlugAnimRigNode_GlobalToLocal
-  0B3 CPlugAnimGraphNode_PoseGrid CPlugAnimRigNode_PoseGrid
-  0B4 CPlugAnimGraphNode_GraphInput CPlugAnimRigNode_GraphInput
-  0B5 NPlugAnim_SSceneClip NPlugAnim::SSceneClip
-  0B6 NPlugDynaObjectModel_SInstanceParams NPlugDynaObjectModel::SInstanceParams
-  0B7 NSceneLight_SLight NSceneLight::SLight
-  0B8 NPlugItemPlacement_SGroups NPlugItemPlacement::SGroups
-  0B9 CPlugAnimGraphNode_JointLock CPlugAnimRigNode_JointLock
-  0BB NSceneDestructibleVis_SMgr NSceneDestructibleVis::SMgr
-  0BC NPlugItem_SVariantList NPlugItem::SVariantList
+  0AE CPlugAnimGraphNode_SetSkel
+  0B1 CPlugAnimGraphNode_LayeredBlend
+  0B2 CPlugAnimGraphNode_GlobalToLocal
+  0B3 CPlugAnimGraphNode_PoseGrid
+  0B4 CPlugAnimGraphNode_GraphInput
+  0B5 NPlugAnim_SSceneClip
+  0B6 NPlugDynaObjectModel_SInstanceParams
+  0B7 NSceneLight_SLight
+  0B8 NPlugItemPlacement_SGroups
+  0B9 CPlugAnimGraphNode_JointLock
+  0BB NSceneDestructibleVis_SMgr
+  0BC NPlugItem_SVariantList
   0BE CPlugGraphNode_Graph
   0BF CPlugGraphNode_StateMachine
   0C0 CPlugGraphNode_Group
@@ -2869,354 +2857,348 @@
   0C5 CPlugFxSystemNode_SubFxSystem
   0C6 CPlugFxSystemNode_UpdateVar
   0C7 CPlugFxSystemNode_SoundEmitter
-  0C8 NPlugDyna_SPrefabConstraintParams NPlugDyna::SPrefabConstraintParams
-  0CA NPlugDyna_SKinematicConstraint NPlugDyna::SKinematicConstraint
-  0CB NSceneDynaVis_SMgr NSceneDynaVis::SMgr
-  0CC CPlugAnimGraphNode_DebugHelper CPlugAnimRigNode_DebugHelper
-  0CD CPlugAnimGraphNode_AssertVar CPlugAnimRigNode_AssertVar
-  0CE CPlugAnimGraphNode_Funnel CPlugAnimRigNode_Funnel
-  0CF GmTransYawPitchRollDeg
-  0D0 CPlugAnimGraphNode_ExtractUnit CPlugAnimRigNode_ExtractUnit
+  0C8 NPlugDyna_SPrefabConstraintParams
+  0CA NPlugDyna_SKinematicConstraint
+  0CB NSceneDynaVis_SMgr
+  0CC CPlugAnimGraphNode_DebugHelper
+  0CD CPlugAnimGraphNode_AssertVar
+  0CE CPlugAnimGraphNode_Funnel
+  0D0 CPlugAnimGraphNode_ExtractUnit
   0D1 SGameCtnBlockInfoVariant_UsedData
-  0D4 CPlugAnimGraphNode_SetJointExpr CPlugAnimRigNode_SetJointExpr
-  0D5 CPlugAnimGraphNode_JointTransConstraint CPlugAnimRigNode_JointTransConstraint
-  0D6 CPlugAnimGraphNode_JointRotConstraint CPlugAnimRigNode_JointRotConstraint
-  0D8 NPlugItemPlacement_SPlacementGroup NPlugItemPlacement::SPlacementGroup
-  0D9 NPlugStaticObjectModel_SInstanceParams NPlugStaticObjectModel::SInstanceParams
+  0D4 CPlugAnimGraphNode_SetJointExpr
+  0D5 CPlugAnimGraphNode_JointTransConstraint
+  0D6 CPlugAnimGraphNode_JointRotConstraint
+  0D8 NPlugItemPlacement_SPlacementGroup
+  0D9 NPlugStaticObjectModel_SInstanceParams
   0DB CPlugShaderCBufferStatic
-  0DD NGameArenaState_SGameState NGameArenaState::SGameState
+  0DD NGameArenaState_SGameState
   0E1 SPlugVehiclePhyRestStateValues
-  0E5 CPlugAnimGraphNode_AvatarV3_Global CPlugAnimRigNode_AvatarV3_Global
-  0FF CPlugAnimGraphNode_AvatarV3_Locomotion CPlugAnimRigNode_AvatarV3_Locomotion
-  100 CPlugAnimGraphNode_AvatarV3_Jump CPlugAnimRigNode_AvatarV3_Jump
-  101 CPlugAnimGraphNode_AvatarV3_Swim CPlugAnimRigNode_AvatarV3_Swim
-  102 CPlugAnimGraphNode_AvatarV3_Idle CPlugAnimRigNode_AvatarV3_Idle
-  103 CPlugAnimGraphNode_AvatarV0 CPlugAnimRigNode_AvatarV0
-  104 CPlugAnimGraphNode_AvatarPoseEditor CPlugAnimRigNode_AvatarPoseEditor
-  105 CPlugAnimGraphNode_AvatarV3_Seated CPlugAnimRigNode_AvatarV3_Seated
-  106 CPlugAnimGraphNode_AvatarV3_Resting CPlugAnimRigNode_AvatarV3_Resting
+  0E5 CPlugAnimGraphNode_AvatarV3_Global
+  0FF CPlugAnimGraphNode_AvatarV3_Locomotion
+  100 CPlugAnimGraphNode_AvatarV3_Jump
+  101 CPlugAnimGraphNode_AvatarV3_Swim
+  102 CPlugAnimGraphNode_AvatarV3_Idle
+  103 CPlugAnimGraphNode_AvatarV0
+  104 CPlugAnimGraphNode_AvatarPoseEditor
+  105 CPlugAnimGraphNode_AvatarV3_Seated
+  106 CPlugAnimGraphNode_AvatarV3_Resting
   107 SSmWorldSaveFile
-  108 CPlugAnimGraphNode_Avatar_Climb CPlugAnimRigNode_Avatar_Climb
-  109 GmBoxNat3
+  108 CPlugAnimGraphNode_Avatar_Climb
 30 MetaNotPersistent
-  000 NHmsZone_SPImp NHmsZone::SPImp
+  000 NHmsZone_SPImp
   001 CHmsZoneVPacker
   002 SHmsZoneVisionCst
-  003 NPlugBitmap_SAtlasCubeIn NPlugBitmap::SAtlasCubeIn
+  003 NPlugBitmap_SAtlasCubeIn
   004 ISceneVis
   005 IScenePhy
-  006 NSceneWeather_SMgr NSceneWeather::SMgr
-  007 NGameLoadProgress_SMgr NGameLoadProgress::SMgr
-  008 NGameScriptChat_SManager NGameScriptChat::SManager
-  009 NGameHud3d_SMgr CWebServicesTaskResult_GhostDriver_UploadLimits
-  00A NGameMenuSkinChooser_SMgr CWebServicesTaskResult_GhostDriver_Download
-  00B CWebServicesTaskResult_GhostDriver_UploadLimits NPlugMaterial::SWater
-  00C CWebServicesTaskResult_GhostDriver_Download NGameCollection::SCustomizableDeco
-  00D NPlugMaterial_SWater CNotification
-  00E NGameCollection_SCustomizableDeco CNotification_Prestige
-  00F CNotification CNotification_Squad
-  010 CNotification_Prestige CNotification_PrestigeEarned
-  011 CNotification_Squad CNotification_SquadDeleted
-  012 CNotification_PrestigeEarned CNotification_SquadInvitationAccepted
-  013 CNotification_SquadDeleted CNotification_SquadInvitationAdded
-  014 CNotification_SquadInvitationAccepted CNotification_SquadInvitationCanceled
-  015 CNotification_SquadInvitationAdded CNotification_SquadInvitationCanceledForExitingPlayer
-  016 CNotification_SquadInvitationCanceled CNotification_SquadInvitationCanceledForFullSquad
-  017 CNotification_SquadInvitationCanceledForExitingPlayer CNotification_SquadInvitationDeclined
-  018 CNotification_SquadInvitationCanceledForFullSquad CNotification_SquadInvitationReceived
-  019 CNotification_SquadInvitationDeclined CNotification_SquadLockStateUpdated
-  01A CNotification_SquadInvitationReceived CNotification_SquadMemberAdded
-  01B CNotification_SquadLockStateUpdated CNotification_SquadMemberKicked
-  01C CNotification_SquadMemberAdded CNotification_SquadMemberRemoved
-  01D CNotification_SquadMemberKicked CNotification_SquadUpdated
-  01E CNotification_SquadMemberRemoved CSeasonMapInfo
-  01F CNotification_SquadUpdated CSeason
-  020 CSeasonMapInfo CAccountTrophyGain
-  021 CSeason CAccountTrophyGainForHistory
-  022 CAccountTrophyGain CAccountTrophyGainForHistory_CompetitionMatch
-  023 CAccountTrophyGainForHistory CAccountTrophyGainForHistory_CompetitionRanking
-  024 CAccountTrophyGainForHistory_CompetitionMatch CAccountTrophyGainForHistory_LiveMatch
-  025 CAccountTrophyGainForHistory_CompetitionRanking CAccountTrophyGainForHistory_SoloMedal
-  026 CAccountTrophyGainForHistory_LiveMatch CAccountTrophyGainForHistory_SoloRanking
-  027 CAccountTrophyGainForHistory_SoloMedal CAccountTrophyLastYearSummary
-  028 CAccountTrophyGainForHistory_SoloRanking CTrophyAchievement
-  029 CAccountTrophyLastYearSummary CTrophyAchievement_CompetitionMatch
-  02A CTrophyAchievement CTrophyAchievement_CompetitionRanking
-  02B CTrophyAchievement_CompetitionMatch CTrophyAchievement_LiveMatch
-  02C CTrophyAchievement_CompetitionRanking CTrophyAchievement_SoloMedal
-  02D CTrophyAchievement_LiveMatch CTrophyAchievement_SoloRanking
-  02E CTrophyAchievement_SoloMedal CTrophySoloMedalAchievementLevelSettings
-  02F CTrophyAchievement_SoloRanking CTrophySoloMedalAchievementSettings
-  030 CTrophySoloMedalAchievementLevelSettings CMapRecord
-  031 CTrophySoloMedalAchievementSettings NGameScriptChat::SContext
-  032 CMapRecord NGameScriptChat::SHistory
-  033 NGameScriptChat_SContext NGameScriptChat::SEntry
-  034 NGameScriptChat_SHistory NGameScriptChat::SEvent
-  035 NGameScriptChat_SEntry NGameScriptChat::SEvent_HistoryChange
-  036 NGameScriptChat_SEvent NGameScriptChat::SEvent_NewEntry
-  037 NGameScriptChat_SEvent_HistoryChange CGameDirectLinkScript
-  038 NGameScriptChat_SEvent_NewEntry CGameDirectLinkScript_Home
-  039 CGameDirectLinkScript CGameDirectLinkScript_NewMap
-  03A CGameDirectLinkScript_Home CGameDirectLinkScript_OfficialCampaign
-  03B CGameDirectLinkScript_NewMap CGameDirectLinkScript_JoinServer
-  03C CGameDirectLinkScript_OfficialCampaign CGameDirectLinkScript_TrackOfTheDay
-  03D CGameDirectLinkScript_JoinServer CGameDirectLinkScript_Ranked
-  03E CGameDirectLinkScript_TrackOfTheDay CGameDirectLinkScript_Royal
-  03F CGameDirectLinkScript_Ranked CGameDirectLinkScript_ArcadeServer
-  040 CGameDirectLinkScript_Royal CGameDirectLinkScript_Hotseat
-  041 CGameDirectLinkScript_ArcadeServer CGameDirectLinkScript_Splitscreen
-  042 CGameDirectLinkScript_Hotseat CGameDirectLinkScript_Garage
-  043 CGameDirectLinkScript_Splitscreen CGameDirectLinkScript_WaitingPage
-  044 CGameDirectLinkScript_Garage CGameDirectLinkScript_JoinSession
-  045 CGameDirectLinkScript_WaitingPage CGameUserManagerScript_VoiceChatEvent
-  046 CGameDirectLinkScript_JoinSession CGameUserManagerScript_VoiceChatEvent_UserChange_IsSpeaking
-  047 CGameUserManagerScript_VoiceChatEvent CGameUserManagerScript_VoiceChatEvent_UserChange_IsConnected
-  048 CGameUserManagerScript_VoiceChatEvent_UserChange_IsSpeaking CGameUserManagerScript_VoiceChatEvent_UserChange_IsMuted
-  049 CGameUserManagerScript_VoiceChatEvent_UserChange_IsConnected CGameUserManagerScript_VoiceChatEvent_SpeakingHasChanged
-  04A CGameUserManagerScript_VoiceChatEvent_UserChange_IsMuted CGameUserManagerScript_VoiceChatEvent_Message
-  04B CGameUserManagerScript_VoiceChatEvent_SpeakingHasChanged CGameUserManagerScript_VoiceChatEvent_DisplayUI
-  04C CGameUserManagerScript_VoiceChatEvent_Message NGameMenuSkinChooser::SMgr
-  04D CGameUserManagerScript_VoiceChatEvent_DisplayUI NPlugItemPlacement::STag
-  04E NGameEditorMap_SExperimentalFeatures NGameMiniMap::SMgr
-  04F NPlugItemPlacement_STag CGameDataFileTask_GhostDriver
-  050 CAdvertisingManager CGameDataFileTask_GhostDriver_UploadLimits
-  051 NGameMiniMap_SMgr CGameDataFileTask_GhostDriver_Upload
-  052 CGameVoiceChatConfigScript CGameDataFileTask_GhostDriver_Download
-  053 CGameDataFileTask_GhostDriver CFriend
-  054 CGameDataFileTask_GhostDriver_UploadLimits CSkinInfo
-  055 CGameDataFileTask_GhostDriver_Upload CSquadInvitation
-  056 CGameDataFileTask_GhostDriver_Download CSquadMember
-  057 CFriend CSquad
-  058 CSkinInfo CNewsLink
-  059 CSquadInvitation CNews
-  05A CSquadMember CPrestige
-  05B CSquad CUserPrestige
-  05C CNewsLink CGameCtnMenuProfileScene
-  05D CNews CGameVoiceChatConfigScript
-  05E CPrestige CNadeoServicesMap
-  05F CUserPrestige CNadeoServicesItemCollection
-  060 CGameCtnMenuProfileScene CNadeoServicesSkin
-  061 CNadeoServicesMap CZone
-  062 CNadeoServicesItemCollection CNadeoServicesItemCollectionVersion
-  063 CNadeoServicesSkin NSmArenaInterface::SMgr
-  064 CZone NPlugCurve::SSimpleCurveInPlace7
-  065 CNadeoServicesItemCollectionVersion NSceneTransitoryBlockingSurfs::SMgr
-  066 NSmArenaInterface_SMgr NSceneLightMapCloud::SServer
-  067 NPlugCurve_SSimpleCurveInPlace7 NSceneLightMapCloud::SClient
-  068 NSceneTransitoryBlockingSurfs_SMgr NScenePicking::SMgr
-  069 NSceneLightMapCloud_SServer NSceneGateSpecial::SMgr
-  06A NSceneLightMapCloud_SClient NSceneTimeshift::SMgr
-  06B NScenePicking_SMgr NSceneRecorder::SMgr
-  06C NSceneGateSpecial_SMgr NSmArenaPhysics::SMgr
-  06D NSceneTimeshift_SMgr NSmPlayerVis::SMgr
-  06E NSceneRecorder_SMgr NSmPlayerPhy::SMgr
-  06F NSmArenaPhysics_SMgr NSmArenaVis::SMgr
-  070 NSmPlayerVis_SMgr NGameConstraintPhy::SMgr
-  071 NSmPlayerPhy_SMgr NGameObjectPhy::SMgr
-  072 NSmArenaVis_SMgr NGameArenaState::SMgr
-  073 NGameConstraintPhy_SMgr NGameArenaVis::SMgr
-  074 NGameObjectPhy_SMgr NGamePrefab::SMgr
-  075 NGameArenaState_SMgr NGamePrefab::SInst
-  076 NGameArenaVis_SMgr NGamePrefab::SGridEntSpawner
-  077 NGamePrefab_SMgr NGamePrefabPhy::SMgr
-  078 NGamePrefab_SInst NGamePrefabPhy::SInst
-  079 NGamePrefab_SGridEntSpawner NSceneKinematicVis::SMgr
-  07A NGamePrefabPhy_SMgr NSceneKinematicVis::SConstraint
-  07B NGamePrefabPhy_SInst NGameActionFxVis::SMgr
-  07C NSceneKinematicVis_SMgr NGameShieldVis::SMgr
-  07D NSceneKinematicVis_SConstraint NGameShieldPhy::SMgr
-  07E NGameActionFxVis_SMgr NGameGateVis::SMgr
-  07F NGameShieldVis_SMgr NGameGatePhy::SMgr
-  080 NGameShieldPhy_SMgr NGameWaypoint::SMgr
-  081 NGameGateVis_SMgr NGameWaypoint::SSpawn
-  082 NGameGatePhy_SMgr NGameItem::SMgr
-  083 NGameWaypoint_SMgr NGameMediaClip::SMgr
-  084 NGameWaypoint_SSpawn NGameSlotVis::SMgr
-  085 NGameItem_SMgr NGameSlotPhy::SMgr
-  086 NGameMediaClip_SMgr NGameVehiclePhy::SMgr
-  087 NGameSlotVis_SMgr NGameTurretVis::SMgr
-  088 NGameSlotPhy_SMgr NGameTurretPhy::SMgr
-  089 NGameVehiclePhy_SMgr NGameObjectVis::SMgr
-  08A NGameTurretVis_SMgr NGamePodiumVis::SMgr
-  08B NGameTurretPhy_SMgr NGamePodium::SMgr
-  08C NGameObjectVis_SMgr NGamePodium::SPodium
-  08D NGamePodiumVis_SMgr NGameHud3d::SMgr
-  08E NGamePodium_SMgr NGameCamera::SMgr
-  08F NGamePodium_SPodium NGameMapPhy::SMgr
-  090 NGameCamera_SMgr NGameMgrMap::SMgr
-  091 NGameMapPhy_SMgr NGameGhostClips::SMgr
-  092 NGameMgrMap_SMgr NGameGhost::SMgr
-  093 NGameGhostClips_SMgr NSceneItemPlacement::SMgr
-  094 NGameGhost_SMgr NSceneItemPlacement::SZone
-  095 NSceneItemPlacement_SMgr NSceneBulletPhy::SMgr
-  096 NSceneItemPlacement_SZone NSceneDestructiblePhy::SMgr
-  097 NSceneBulletPhy_SMgr SSceneDestructibleDynaPhy
-  098 NSceneDestructiblePhy_SMgr SSceneDestructiblePhy
+  006 NSceneWeather_SMgr
+  007 NGameLoadProgress_SMgr
+  008 NGameScriptChat_SManager
+  009 NGameHud3d_SMgr
+  00A NGameMenuSkinChooser_SMgr
+  00B CWebServicesTaskResult_GhostDriver_UploadLimits
+  00C CWebServicesTaskResult_GhostDriver_Download
+  00D NPlugMaterial_SWater
+  00E NGameCollection_SCustomizableDeco
+  00F CNotification
+  010 CNotification_Prestige
+  011 CNotification_Squad
+  012 CNotification_PrestigeEarned
+  013 CNotification_SquadDeleted
+  014 CNotification_SquadInvitationAccepted
+  015 CNotification_SquadInvitationAdded
+  016 CNotification_SquadInvitationCanceled
+  017 CNotification_SquadInvitationCanceledForExitingPlayer
+  018 CNotification_SquadInvitationCanceledForFullSquad
+  019 CNotification_SquadInvitationDeclined
+  01A CNotification_SquadInvitationReceived
+  01B CNotification_SquadLockStateUpdated
+  01C CNotification_SquadMemberAdded
+  01D CNotification_SquadMemberKicked
+  01E CNotification_SquadMemberRemoved
+  01F CNotification_SquadUpdated
+  020 CSeasonMapInfo
+  021 CSeason
+  022 CAccountTrophyGain
+  023 CAccountTrophyGainForHistory
+  024 CAccountTrophyGainForHistory_CompetitionMatch
+  025 CAccountTrophyGainForHistory_CompetitionRanking
+  026 CAccountTrophyGainForHistory_LiveMatch
+  027 CAccountTrophyGainForHistory_SoloMedal
+  028 CAccountTrophyGainForHistory_SoloRanking
+  029 CAccountTrophyLastYearSummary
+  02A CTrophyAchievement
+  02B CTrophyAchievement_CompetitionMatch
+  02C CTrophyAchievement_CompetitionRanking
+  02D CTrophyAchievement_LiveMatch
+  02E CTrophyAchievement_SoloMedal
+  02F CTrophyAchievement_SoloRanking
+  030 CTrophySoloMedalAchievementLevelSettings
+  031 CTrophySoloMedalAchievementSettings
+  032 CMapRecord
+  033 NGameScriptChat_SContext
+  034 NGameScriptChat_SHistory
+  035 NGameScriptChat_SEntry
+  036 NGameScriptChat_SEvent
+  037 NGameScriptChat_SEvent_HistoryChange
+  038 NGameScriptChat_SEvent_NewEntry
+  039 CGameDirectLinkScript
+  03A CGameDirectLinkScript_Home
+  03B CGameDirectLinkScript_NewMap
+  03C CGameDirectLinkScript_OfficialCampaign
+  03D CGameDirectLinkScript_JoinServer
+  03E CGameDirectLinkScript_TrackOfTheDay
+  03F CGameDirectLinkScript_Ranked
+  040 CGameDirectLinkScript_Royal
+  041 CGameDirectLinkScript_ArcadeServer
+  042 CGameDirectLinkScript_Hotseat
+  043 CGameDirectLinkScript_Splitscreen
+  044 CGameDirectLinkScript_Garage
+  045 CGameDirectLinkScript_WaitingPage
+  046 CGameDirectLinkScript_JoinSession
+  047 CGameUserManagerScript_VoiceChatEvent
+  048 CGameUserManagerScript_VoiceChatEvent_UserChange_IsSpeaking
+  049 CGameUserManagerScript_VoiceChatEvent_UserChange_IsConnected
+  04A CGameUserManagerScript_VoiceChatEvent_UserChange_IsMuted
+  04B CGameUserManagerScript_VoiceChatEvent_SpeakingHasChanged
+  04C CGameUserManagerScript_VoiceChatEvent_Message
+  04D CGameUserManagerScript_VoiceChatEvent_DisplayUI
+  04E NGameEditorMap_SExperimentalFeatures
+  04F NPlugItemPlacement_STag
+  050 CAdvertisingManager
+  051 NGameMiniMap_SMgr
+  052 CGameVoiceChatConfigScript
+  053 CGameDataFileTask_GhostDriver
+  054 CGameDataFileTask_GhostDriver_UploadLimits
+  055 CGameDataFileTask_GhostDriver_Upload
+  056 CGameDataFileTask_GhostDriver_Download
+  057 CFriend
+  058 CSkinInfo
+  059 CSquadInvitation
+  05A CSquadMember
+  05B CSquad
+  05C CNewsLink
+  05D CNews
+  05E CPrestige
+  05F CUserPrestige
+  060 CGameCtnMenuProfileScene
+  061 CNadeoServicesMap
+  062 CNadeoServicesItemCollection
+  063 CNadeoServicesSkin
+  064 CZone
+  065 CNadeoServicesItemCollectionVersion
+  066 NSmArenaInterface_SMgr
+  067 NPlugCurve_SSimpleCurveInPlace7
+  068 NSceneTransitoryBlockingSurfs_SMgr
+  069 NSceneLightMapCloud_SServer
+  06A NSceneLightMapCloud_SClient
+  06B NScenePicking_SMgr
+  06C NSceneGateSpecial_SMgr
+  06D NSceneTimeshift_SMgr
+  06E NSceneRecorder_SMgr
+  06F NSmArenaPhysics_SMgr
+  070 NSmPlayerVis_SMgr
+  071 NSmPlayerPhy_SMgr
+  072 NSmArenaVis_SMgr
+  073 NGameConstraintPhy_SMgr
+  074 NGameObjectPhy_SMgr
+  075 NGameArenaState_SMgr
+  076 NGameArenaVis_SMgr
+  077 NGamePrefab_SMgr
+  078 NGamePrefab_SInst
+  079 NGamePrefab_SGridEntSpawner
+  07A NGamePrefabPhy_SMgr
+  07B NGamePrefabPhy_SInst
+  07C NSceneKinematicVis_SMgr
+  07D NSceneKinematicVis_SConstraint
+  07E NGameActionFxVis_SMgr
+  07F NGameShieldVis_SMgr
+  080 NGameShieldPhy_SMgr
+  081 NGameGateVis_SMgr
+  082 NGameGatePhy_SMgr
+  083 NGameWaypoint_SMgr
+  084 NGameWaypoint_SSpawn
+  085 NGameItem_SMgr
+  086 NGameMediaClip_SMgr
+  087 NGameSlotVis_SMgr
+  088 NGameSlotPhy_SMgr
+  089 NGameVehiclePhy_SMgr
+  08A NGameTurretVis_SMgr
+  08B NGameTurretPhy_SMgr
+  08C NGameObjectVis_SMgr
+  08D NGamePodiumVis_SMgr
+  08E NGamePodium_SMgr
+  08F NGamePodium_SPodium
+  090 NGameCamera_SMgr
+  091 NGameMapPhy_SMgr
+  092 NGameMgrMap_SMgr
+  093 NGameGhostClips_SMgr
+  094 NGameGhost_SMgr
+  095 NSceneItemPlacement_SMgr
+  096 NSceneItemPlacement_SZone
+  097 NSceneBulletPhy_SMgr
+  098 NSceneDestructiblePhy_SMgr
   099 SSceneDestructibleDynaPhy
-  09A SSceneDestructiblePhy NSceneDyna::SMgr
-  09B NSceneDyna::SKinematicConstraint
+  09A SSceneDestructiblePhy
+  09B 
   09C NSceneDyna_SMgr
-  09D NSceneDyna_SKinematicConstraint NSceneAdvert::SMgr
-  09E NSceneMapColoring::SMgr
-  09F NSceneAdvert_SMgr NSceneModelKit::SMgr
-  0A0 NSceneMapColoring_SMgr NSceneProp::SMgrPhy
-  0A1 NSceneModelKit_SMgr NSceneProp::SProp
-  0A2 NSceneProp_SMgrPhy NSceneProp::SMgrVis
-  0A3 NSceneProp_SProp NSceneConstruction::SMgrPhy
-  0A4 NSceneProp_SMgrVis NSceneConstruction::SConstruction
-  0A5 NSceneConstruction_SMgrPhy NSceneConstruction::SMgrVis
-  0A6 NSceneConstruction_SConstruction NSceneRopeVis::SMgr
-  0A7 NSceneConstruction_SMgrVis NSceneRopePhy::SMgr
-  0A8 NSceneRopeVis_SMgr SSceneRopePhyEnt
-  0A9 NSceneRopePhy_SMgr NSceneEditorHelper::SMgr
-  0AA SSceneRopePhyEnt NSceneEditorHelper::SHelper
-  0AB NSceneEditorHelper_SMgr NSceneFlock::SMgr
+  09D NSceneDyna_SKinematicConstraint
+  09F NSceneAdvert_SMgr
+  0A0 NSceneMapColoring_SMgr
+  0A1 NSceneModelKit_SMgr
+  0A2 NSceneProp_SMgrPhy
+  0A3 NSceneProp_SProp
+  0A4 NSceneProp_SMgrVis
+  0A5 NSceneConstruction_SMgrPhy
+  0A6 NSceneConstruction_SConstruction
+  0A7 NSceneConstruction_SMgrVis
+  0A8 NSceneRopeVis_SMgr
+  0A9 NSceneRopePhy_SMgr
+  0AA SSceneRopePhyEnt
+  0AB NSceneEditorHelper_SMgr
   0AC NSceneEditorHelper_SHelper
-  0AD NSceneFlock_SMgr NSceneAnim::SMgr
-  0AE NSceneSolid2Vis::SMgr
-  0AF NSceneAnim_SMgr NSceneSound::SMgr
-  0B0 NSceneSolid2Vis_SMgr NSceneSound::SSource
-  0B1 NSceneSound_SMgr NSceneSpectatorVis::SMgr
-  0B2 NSceneSound_SSource NSceneParticleVis::SMgr
-  0B3 NSceneSpectatorVis_SMgr NSceneCitizenNetwork::SMgr
-  0B4 NSceneParticleVis_SMgr NSceneCitizenNetwork::SChunk
-  0B5 NSceneCitizenNetwork_SMgr NSceneRoad::SMgr
-  0B6 NSceneCitizenNetwork_SChunk NSceneRoad::SChunk
-  0B7 NSceneRoad_SMgr NSceneRail::SMgr
-  0B8 NSceneRoad_SChunk NSceneBulletVis::SMgr
-  0B9 NSceneRail_SMgr NSceneFxSystem::SMgr
-  0BA NSceneBulletVis_SMgr NSceneFxSystem::SFxSystemInstance
-  0BB NSceneFxSystem_SMgr NSceneWind::SMgrPhy
-  0BC NSceneFxSystem_SFxSystemInstance NSceneTrainVis::SMgr
-  0BD NSceneWind_SMgrPhy NSceneTrainPhy::SMgr
-  0BE NSceneTrainVis_SMgr NSceneCharVis::SMgr
-  0BF NSceneTrainPhy_SMgr NSceneVehicleVis::SMgr
-  0C0 NSceneCharVis_SMgr NSceneLight::SMgr
-  0C1 NSceneVehicleVis_SMgr NScenePathFinding::SMgr
-  0C2 NSceneLight_SMgr NSceneTrafficVis::SMgr
+  0AD NSceneFlock_SMgr
+  0AF NSceneAnim_SMgr
+  0B0 NSceneSolid2Vis_SMgr
+  0B1 NSceneSound_SMgr
+  0B2 NSceneSound_SSource
+  0B3 NSceneSpectatorVis_SMgr
+  0B4 NSceneParticleVis_SMgr
+  0B5 NSceneCitizenNetwork_SMgr
+  0B6 NSceneCitizenNetwork_SChunk
+  0B7 NSceneRoad_SMgr
+  0B8 NSceneRoad_SChunk
+  0B9 NSceneRail_SMgr
+  0BA NSceneBulletVis_SMgr
+  0BB NSceneFxSystem_SMgr
+  0BC NSceneFxSystem_SFxSystemInstance
+  0BD NSceneWind_SMgrPhy
+  0BE NSceneTrainVis_SMgr
+  0BF NSceneTrainPhy_SMgr
+  0C0 NSceneCharVis_SMgr
+  0C1 NSceneVehicleVis_SMgr
+  0C2 NSceneLight_SMgr
   0C3 NScenePathFinding_SMgr
-  0C4 NSceneTrafficVis_SMgr NSceneTrafficPhy::SMgr
-  0C5 NSceneVFX::SMgr
-  0C6 NSceneTrafficPhy_SMgr NSceneVFX::SVFXInstance
-  0C7 NSceneVFX_SMgr NSceneEdEntWrapper::SMgr
-  0C8 NSceneVFX_SVFXInstance NSceneEdEntWrapper::SWrapper
-  0C9 NSceneEdEntWrapper_SMgr NHmsForestVis::SMgr
-  0CA NSceneEdEntWrapper_SWrapper NHmsForestVis::STree
-  0CB NHmsForestVis_SMgr NHmsMgrInstDyna2::SMgr
-  0CC NHmsForestVis_STree SHmsLodGroup
-  0CD NHmsMgrInstDyna2_SMgr SHmsInstDyna
-  0CE SHmsLodGroup SHmsMeshStatic
-  0CF SHmsInstDyna NHmsZone::SMgrLightDynamic
-  0D0 SHmsMeshStatic NHmsZone::SLightDyna
+  0C4 NSceneTrafficVis_SMgr
+  0C6 NSceneTrafficPhy_SMgr
+  0C7 NSceneVFX_SMgr
+  0C8 NSceneVFX_SVFXInstance
+  0C9 NSceneEdEntWrapper_SMgr
+  0CA NSceneEdEntWrapper_SWrapper
+  0CB NHmsForestVis_SMgr
+  0CC NHmsForestVis_STree
+  0CD NHmsMgrInstDyna2_SMgr
+  0CE SHmsLodGroup
+  0CF SHmsInstDyna
+  0D0 SHmsMeshStatic
   0D1 NHmsZone_SMgrLightDynamic
-  0D2 NHmsZone_SLightDyna NHmsCollision::SMgr
-  0D3 NHmsCollision::SItem
-  0D4 NHmsCollision_SMgr NScenePicking::SPickable
-  0D5 NHmsCollision_SItem NPlugAnim::SSkelPose
-  0D6 NScenePicking_SPickable NPlugAnim::SIKSkelPoseN
-  0D7 GmTransQuat NPlugAnim::SIKChainPoseN
-  0D8 NPlugPainterLayer_SElem NPlugAnim::SIKChainPose
-  0D9 NPlugPainterLayer_SLayerVFX NPlugAnim::SIKSkelMappingCache
-  0DA NPlugPainterLayer_SLayerDraw NPlugAnim::SIKChainMappingCache
-  0DB NPlugPainterLayer_SBitmapGroup NPlugAnim::SIKSkelMapping
-  0DC NPlugAnim_SSkelPose NPlugAnim::SIKChainMapping
-  0DD NPlugAnim_SIKSkelPoseN NPlugAnim::SIKSkel
-  0DE NPlugAnim_SIKChainPoseN SMetaPtr
-  0DF NPlugAnim_SIKChainPose NHmsMgrVolume::SFogSimuParameters
-  0E0 NPlugAnim_SIKSkelMappingCache NFuncShaderLayerUV::STransSubTextureIn
-  0E1 NPlugAnim_SIKChainMappingCache TSceneUId
-  0E2 NPlugAnim_SIKSkelMapping NGameAdvert_Anzu::SMgr
-  0E3 NPlugAnim_SIKChainMapping Nat256
-  0E4 NPlugAnim_SIKSkel NGameAdvert_Test::SMgr
-  0E5 SMetaPtr NGamePrefab::SInstanceCreateParams
-  0E6 NHmsMgrVolume_SFogSimuParameters NGamePrefab::SSceneEntListElem
-  0E7 NFuncShaderLayerUV_STransSubTextureIn NGamePrefab::SGridParams
-  0E8 TSceneUId NFastBlockAlloc::SAllocator
-  0E9 NGameAdvert_Simu_SMgr NGamePrefabPhy::SSceneEntListElem
-  0EA NGameAdvert_Anzu_SMgr NGamePrefabPhy::SInstanceCreateParams
-  0EB Nat256 NSceneKinematicVis::SSharedSignal
-  0EC NGameAdvert_Test_SMgr SWebServicesTaskResult_GhostDriver_UploadLimit
-  0ED EditorMeshPickingIdentifier SWebServicesTaskResult_GhostDriver_Download_Team
-  0EE NGamePrefab_SInstanceCreateParams SWebServicesTaskResult_GhostDriver_Download_Member
-  0EF NGamePrefab_SSceneEntListElem SWebServicesTaskResult_GhostDriver_Download_Ghost
-  0F0 NGamePrefab_SGridParams NGamePodiumVis::SConfig
-  0F1 NFastBlockAlloc_SAllocator NGamePodiumVis::SSequence
-  0F2 NGamePrefabPhy_SSceneEntListElem SGameHud3dParams
-  0F3 NGamePrefabPhy_SInstanceCreateParams NGameMenuSkinChooser::SDispParams
-  0F4 NSceneKinematicVis_SSharedSignal NGameEditorMap::SExperimentalFeatures
-  0F5 SWebServicesTaskResult_GhostDriver_UploadLimit NGameCamera::SCamSys
-  0F6 SWebServicesTaskResult_GhostDriver_Download_Team CAdvertisingManager
-  0F7 SWebServicesTaskResult_GhostDriver_Download_Member CAdvertisingSlot
-  0F8 SWebServicesTaskResult_GhostDriver_Download_Ghost NGameAdvert_Live::SMgr
-  0F9 NGamePodiumVis_SConfig NGameAdvert_Live::SAdsManager
-  0FA NGamePodiumVis_SSequence NGameAdvert_Live::SAdSlotInternal
-  0FB SGameHud3dParams NGameAdvert_Live::SImpressionParams
-  0FC NGameMenuSkinChooser_SDispParams NChatLog::SChatHistory
-  0FD NGameCamera_SCamSys NChatLog::SChatMsg
-  0FE NGameScriptDebugger_SDebuggerMgr NFastBucketAlloc::SAllocator
-  0FF NGameScriptDebugger_SWatchedVariable NGameMgrMap::SMapInst
-  100 NGameScriptDebugger_SWatchedVariableV2 NGameIconShooter::SSceneSetting
-  101 NGameVideoSource_SMgr NGameIconShooter::SCameraSetting
-  102 CAdvertisingSlot CGameCtnMediaBlockGhostTM::SuperSKeyVal
-  103 NGameAdvert_Live_SMgr NGameMediaBlockEntity::SuperSKeyVal
-  104 NGameAdvert_Live_SAdsManager CGameCtnMediaBlockOpponentVisibility::SuperSKeyVal
-  105 NGameAdvert_Live_SAdSlotInternal CGameCtnMediaBlockDirtyLens::SKeyVal
-  106 NGameAdvert_Live_SImpressionParams CGameCtnMediaBlockCameraEffectScript::SKeyVal
-  107 NChatLog_SChatHistory CGameCtnMediaBlockVehicleLight::SuperSKeyVal
-  108 NChatLog_SChatMsg CGameCtnMediaBlockFog::SKeyVal
-  109 NFastBucketAlloc_SAllocator CGameCtnMediaBlockTimeSpeed::SKeyVal
-  10A NGameMgrMap_SMapInst CGameCtnMediaBlockBloomHdr::SKeyVal
-  10B NGameIconShooter_SSceneSetting CGameCtnMediaBlockToneMapping::SKeyVal
-  10C NGameIconShooter_SCameraSetting CGameCtnMediaBlockDOF::SKeyVal
-  10D CGameCtnMediaBlockGhostTM_SuperSKeyVal CGameCtnMediaBlock3dStereo::SKeyVal
-  10E NGameMediaBlockEntity_SuperSKeyVal CGameCtnMediaBlockTransitionFade::SuperSKeyVal
-  10F CGameCtnMediaBlockOpponentVisibility_SuperSKeyVal CGameCtnMediaBlockColorGrading::SuperSKeyVal
-  110 CGameCtnMediaBlockDirtyLens_SKeyVal CGameCtnMediaBlockText::SuperSKeyVal
-  111 CGameCtnMediaBlockCameraEffectScript_SKeyVal CGameCtnMediaBlockSpectators::SKeyVal
-  112 CGameCtnMediaBlockVehicleLight_SuperSKeyVal CGameCtnMediaBlockSound::SuperSKeyVal
-  113 CGameCtnMediaBlockFog_SKeyVal CGameCtnMediaBlockMusicEffect::SKeyVal
-  114 CGameCtnMediaBlockTimeSpeed_SKeyVal CGameCtnMediaBlockImage::SuperSKeyVal
-  115 CGameCtnMediaBlockBloomHdr_SKeyVal CGameCtnMediaBlockCameraEffectShake::SKeyVal
-  116 CGameCtnMediaBlockToneMapping_SKeyVal CGameCtnMediaBlockCameraCustom::SKeyVal
-  117 CGameCtnMediaBlockDOF_SKeyVal CGameCtnMediaBlockCameraPath::SKeyVal
-  118 CGameCtnMediaBlock3dStereo_SKeyVal CGameCtnMediaBlockCameraOrbital::SKeyVal
-  119 CGameCtnMediaBlockTransitionFade_SuperSKeyVal CGameCtnMediaBlockTime::SKeyVal
-  11A CGameCtnMediaBlockColorGrading_SuperSKeyVal CGameCtnMediaBlockFxCameraBlend::SKeyVal
-  11B CGameCtnMediaBlockText_SuperSKeyVal CGameCtnMediaBlockFxColors::SKeyVal
-  11C CGameCtnMediaBlockSpectators_SKeyVal SGameItemModelTree
-  11D CGameCtnMediaBlockSound_SuperSKeyVal SGameBlockInfoTree
-  11E CGameCtnMediaBlockMusicEffect_SKeyVal SGameBlockInfoGroup
-  11F CGameCtnMediaBlockImage_SuperSKeyVal NPlugSkin::SCustomizableBitmap
-  120 CGameCtnMediaBlockCameraEffectShake_SKeyVal NGameGhostClips::SClipPlayerGhost
-  121 CGameCtnMediaBlockCameraCustom_SKeyVal NGameMapItemPlacement::SMapData
-  122 CGameCtnMediaBlockCameraPath_SKeyVal NGameMapItemPlacement::SZone
-  123 CGameCtnMediaBlockCameraOrbital_SKeyVal NGameMapItemPlacement::SZoneId
-  124 CGameCtnMediaBlockTime_SKeyVal NHmsLightMap::SCptBackgnd
-  125 CGameCtnMediaBlockFxCameraBlend_SKeyVal NSysCfgVision::SSubsurfaceScattering
-  126 CGameCtnMediaBlockFxColors_SKeyVal CVisionHmsZone
-  127 SGameItemModelTree NVisionHmsZone::SWaterPlaneVisibility
-  128 SGameBlockInfoTree NVis::SBenchShader
-  129 SGameBlockInfoGroup NFilmicTone_PowerSegments::SCurveParamsUser
-  12A NPlugSkin_SCustomizableBitmap NSysCfgVision::SVisionImpostor
-  12B NGameGhostClips_SClipPlayerGhost NSysCfgVision::SVisionForest
-  12C NGameMapItemPlacement_SMapData NSysCfgVision::SLightmap
-  12D NGameMapItemPlacement_SZone NSysCfgVision::SCptInGameplay
-  12E NGameMapItemPlacement_SZoneId NSysCfgVision::SCptInGame_Local
-  12F SGameCtnIdentifier NSysCfgVision::SCptInGame_Global
-  130 GmTransYawPitchRollDeg NSysCfgVision::SNvHBAO
-  131 NHmsLightMap_SCptBackgnd NSysCfgVision::SSSAmbOcc
-  132 CVisionVideoDecode NSysCfgVision::SDeferred
-  133 NSysCfgVision_SSubsurfaceScattering CSysFidNodRefBase
-  134 CVisionHmsZone NSysPlatform::SDirectLink
-  135 NVisionHmsZone_SWaterPlaneVisibility SScenePhy_DelayedScene
-  136 NVis_SBenchShader NSceneVisEntFx::STactical
-  137 NFilmicTone_PowerSegments_SCurveParamsUser NSceneDyna::SMgrParams
-  138 NSysCfgVision_SVisionImpostor NSceneDyna::SSleepingParams
-  139 NSysCfgVision_SVisionForest NSceneDyna::SSolverParams
-  13A NSysCfgVision_SLightmap NSceneLayout::SLight
-  13B NSysCfgVision_SCptInGameplay NSceneLayout::SItem
-  13C NSysCfgVision_SCptInGame_Local SSceneDestructibleRuntimePhy
-  13D NSysCfgVision_SCptInGame_Global SSceneDestructibleFrozenPhy
+  0D2 NHmsZone_SLightDyna
+  0D4 NHmsCollision_SMgr
+  0D5 NHmsCollision_SItem
+  0D6 NScenePicking_SPickable
+  0D7 GmTransQuat
+  0D8 NPlugPainterLayer_SElem
+  0D9 NPlugPainterLayer_SLayerVFX
+  0DA NPlugPainterLayer_SLayerDraw
+  0DB NPlugPainterLayer_SBitmapGroup
+  0DC NPlugAnim_SSkelPose
+  0DD NPlugAnim_SIKSkelPoseN
+  0DE NPlugAnim_SIKChainPoseN
+  0DF NPlugAnim_SIKChainPose
+  0E0 NPlugAnim_SIKSkelMappingCache
+  0E1 NPlugAnim_SIKChainMappingCache
+  0E2 NPlugAnim_SIKSkelMapping
+  0E3 NPlugAnim_SIKChainMapping
+  0E4 NPlugAnim_SIKSkel
+  0E5 SMetaPtr
+  0E6 NHmsMgrVolume_SFogSimuParameters
+  0E7 NFuncShaderLayerUV_STransSubTextureIn
+  0E8 TSceneUId
+  0E9 NGameAdvert_Simu_SMgr
+  0EA NGameAdvert_Anzu_SMgr
+  0EB Nat256
+  0EC NGameAdvert_Test_SMgr
+  0ED EditorMeshPickingIdentifier
+  0EE NGamePrefab_SInstanceCreateParams
+  0EF NGamePrefab_SSceneEntListElem
+  0F0 NGamePrefab_SGridParams
+  0F1 NFastBlockAlloc_SAllocator
+  0F2 NGamePrefabPhy_SSceneEntListElem
+  0F3 NGamePrefabPhy_SInstanceCreateParams
+  0F4 NSceneKinematicVis_SSharedSignal
+  0F5 SWebServicesTaskResult_GhostDriver_UploadLimit
+  0F6 SWebServicesTaskResult_GhostDriver_Download_Team
+  0F7 SWebServicesTaskResult_GhostDriver_Download_Member
+  0F8 SWebServicesTaskResult_GhostDriver_Download_Ghost
+  0F9 NGamePodiumVis_SConfig
+  0FA NGamePodiumVis_SSequence
+  0FB SGameHud3dParams
+  0FC NGameMenuSkinChooser_SDispParams
+  0FD NGameCamera_SCamSys
+  0FE NGameScriptDebugger_SDebuggerMgr
+  0FF NGameScriptDebugger_SWatchedVariable
+  100 NGameScriptDebugger_SWatchedVariableV2
+  101 NGameVideoSource_SMgr
+  102 CAdvertisingSlot
+  103 NGameAdvert_Live_SMgr
+  104 NGameAdvert_Live_SAdsManager
+  105 NGameAdvert_Live_SAdSlotInternal
+  106 NGameAdvert_Live_SImpressionParams
+  107 NChatLog_SChatHistory
+  108 NChatLog_SChatMsg
+  109 NFastBucketAlloc_SAllocator
+  10A NGameMgrMap_SMapInst
+  10B NGameIconShooter_SSceneSetting
+  10C NGameIconShooter_SCameraSetting
+  10D CGameCtnMediaBlockGhostTM_SuperSKeyVal
+  10E NGameMediaBlockEntity_SuperSKeyVal
+  10F CGameCtnMediaBlockOpponentVisibility_SuperSKeyVal
+  110 CGameCtnMediaBlockDirtyLens_SKeyVal
+  111 CGameCtnMediaBlockCameraEffectScript_SKeyVal
+  112 CGameCtnMediaBlockVehicleLight_SuperSKeyVal
+  113 CGameCtnMediaBlockFog_SKeyVal
+  114 CGameCtnMediaBlockTimeSpeed_SKeyVal
+  115 CGameCtnMediaBlockBloomHdr_SKeyVal
+  116 CGameCtnMediaBlockToneMapping_SKeyVal
+  117 CGameCtnMediaBlockDOF_SKeyVal
+  118 CGameCtnMediaBlock3dStereo_SKeyVal
+  119 CGameCtnMediaBlockTransitionFade_SuperSKeyVal
+  11A CGameCtnMediaBlockColorGrading_SuperSKeyVal
+  11B CGameCtnMediaBlockText_SuperSKeyVal
+  11C CGameCtnMediaBlockSpectators_SKeyVal
+  11D CGameCtnMediaBlockSound_SuperSKeyVal
+  11E CGameCtnMediaBlockMusicEffect_SKeyVal
+  11F CGameCtnMediaBlockImage_SuperSKeyVal
+  120 CGameCtnMediaBlockCameraEffectShake_SKeyVal
+  121 CGameCtnMediaBlockCameraCustom_SKeyVal
+  122 CGameCtnMediaBlockCameraPath_SKeyVal
+  123 CGameCtnMediaBlockCameraOrbital_SKeyVal
+  124 CGameCtnMediaBlockTime_SKeyVal
+  125 CGameCtnMediaBlockFxCameraBlend_SKeyVal
+  126 CGameCtnMediaBlockFxColors_SKeyVal
+  127 SGameItemModelTree
+  128 SGameBlockInfoTree
+  129 SGameBlockInfoGroup
+  12A NPlugSkin_SCustomizableBitmap
+  12B NGameGhostClips_SClipPlayerGhost
+  12C NGameMapItemPlacement_SMapData
+  12D NGameMapItemPlacement_SZone
+  12E NGameMapItemPlacement_SZoneId
+  12F SGameCtnIdentifier
+  130 GmTransYawPitchRollDeg
+  131 NHmsLightMap_SCptBackgnd
+  132 CVisionVideoDecode
+  133 NSysCfgVision_SSubsurfaceScattering
+  134 CVisionHmsZone
+  135 NVisionHmsZone_SWaterPlaneVisibility
+  136 NVis_SBenchShader
+  137 NFilmicTone_PowerSegments_SCurveParamsUser
+  138 NSysCfgVision_SVisionImpostor
+  139 NSysCfgVision_SVisionForest
+  13A NSysCfgVision_SLightmap
+  13B NSysCfgVision_SCptInGameplay
+  13C NSysCfgVision_SCptInGame_Local
+  13D NSysCfgVision_SCptInGame_Global
   13E NSysCfgVision_SNvHBAO
   13F NSysCfgVision_SSSAmbOcc
   140 NSysCfgVision_SDeferred
@@ -3230,104 +3212,104 @@
   148 NSceneDyna_SSolverParams
   149 NSceneLayout_SLight
   14A NSceneLayout_SItem
-  14B SSceneDestructibleRuntimePhy NSceneDyna::SKinematicSharedSignal
-  14C SSceneDestructibleFrozenPhy NSceneDyna::SItemArrayDyn
-  14D NSceneDyna::SItemState
-  14E NSceneDyna::SItemCreateParams
-  14F NSceneDyna::SKinematicConstraintCreateParams
-  150 NSceneAdvert::SBillboard
-  151 NSceneAdvert::SVisibilityTracker
-  152 NSceneAdvert::SAdSystemParams
-  153 SSceneMapColorisable01VisState
-  154 SSceneMapBaseVisState
-  155 NSceneAnim::SModel
-  156 NSceneAnim::SRig
-  157 NSceneAnim::SEdRigContext
-  158 NSceneAnim::SNodeState_StateMachine
-  159 NSceneAnim::SClipPlayer
-  15A NSceneAnim::SClipPlayerInput
-  15B NSceneDyna_SKinematicSharedSignal NSceneAnim::SRigInputBase
-  15C NSceneDyna_SItemArrayDyn NSceneAnim::SRigInput
-  15D NSceneDyna_SItemState NSceneAnim::SNodeUpdateContextParams
-  15E NSceneDyna_SItemCreateParams NSceneSpectatorVis::SInput
-  15F NSceneDyna_SKinematicConstraintCreateParams NSceneSpectatorVis::SLocGenOptions
-  160 NSceneAdvert_SVisibilityTracker NSceneSpectatorVis::SPositionGenOptions
-  161 NSceneAdvert_SAdSystemParams NSceneSpectatorVis::SOrientationOpts
-  162 SSceneMapColorisable01VisState NSceneFxSystem::SRuntimeModel
-  163 SSceneMapBaseVisState NSceneFxSystem::SFxSystemInstanceInput
-  164 NSceneAnim_SModel NSceneFxSystem::SFxSystemInstanceExpressionsUpdateParams
-  165 NSceneAnim_SModelInst NMotionPrediction::SParams
-  166 NSceneAnim_SEdModelInstContext CSceneVehicleVisParams
-  167 NSceneAnim_SNodeState_StateMachine NSceneAnim::SChar
-  168 NSceneAnim_SClipPlayer NSceneAnim::SCharInput
-  169 NSceneAnim_SClipPlayerInput NSceneAnim::SGraphInstance
-  16A NSceneAnim_SInstInputBase NSceneAnim::SCharState
-  16B NSceneAnim_SModelInstInput NSceneAnim::SGraphUpdateParams
-  16C NSceneAnim_SNodeUpdateContextParams NSceneAnim::SGraphState
-  16D NSceneSpectatorVis_SInput NSceneAnim::SNode
-  16E NSceneSpectatorVis_SLocGenOptions NSceneAnim::SNodeAim
-  16F NSceneSpectatorVis_SPositionGenOptions NSceneAnim::SNodeProceduralAttractor
-  170 NSceneSpectatorVis_SOrientationOpts NSceneAnim::SNodeBlend2d
-  171 NSceneFxSystem_SRuntimeModel NSceneAnim::SNodeLocoGroup
-  172 NSceneFxSystem_SFxSystemInstanceInput NSceneAnim::SNodeClip
-  173 NSceneFxSystem_SFxSystemInstanceExpressionsUpdateParams NSceneAnim::SNodeSequence
-  174 NMotionPrediction_SParams NSceneAnim::SNodeJump
-  175 CSceneVehicleVisParams NSceneAnim::SRootYaw
-  176 NSceneAnim_SChar NScenePathFinding::SNavMeshBuildParams
-  177 NSceneAnim_SCharInput NScenePathFinding::STileCacheHandler
-  178 NSceneAnim_SGraphInstance NScenePathFinding::SPathRequestState
-  179 NSceneAnim_SCharState NScenePathFinding::SDynamicPathState
-  17A NSceneAnim_SGraphUpdateParams NScenePathFinding::SAgentModel
-  17B NSceneAnim_SGraphState NScenePathFinding::SAgentSize
-  17C NSceneAnim_SNode NScenePathFinding::SPathRequestInput
-  17D NSceneAnim_SNodeAim NScenePathFinding::SPathRequestOutput
-  17E NSceneAnim_SNodeProceduralAttractor NScenePathFinding::SPathRequestData
-  17F NSceneAnim_SNodeBlend2d NSceneVFX::SVFXInstanceInput
-  180 NSceneAnim_SNodeLocoGroup NSceneVFX::SVFXInstanceNodeUpdateContext
-  181 NSceneAnim_SNodeClip TPlayerUId
-  182 NSceneAnim_SNodeSequence SPlugExpr
-  183 NSceneAnim_SNodeJump NPlugGunLock::SParams
-  184 NSceneAnim_SRootYaw SPlugGraphNodeConnection
-  185 NScenePathFinding_SNavMeshBuildParams SPlugGraphVar
-  186 NScenePathFinding_STileCacheHandler SPlugStateMachine_State
-  187 NScenePathFinding_SPathRequestState SPlugStateMachine_TransitionData
-  188 NScenePathFinding_SDynamicPathState SPlugStateMachine_Transition
-  189 NScenePathFinding_SAgentModel NPlugGpuHlsl_D3D12::SRootSign
-  18A NScenePathFinding_SAgentSize NPlugGpuHlsl_D3D12::NRootSign_SParam
-  18B NScenePathFinding_SPathRequestInput SPlugAnimUIRigNodeTypeConfig
-  18C NScenePathFinding_SPathRequestOutput NPlugAnim::SPoseEditor_Model
-  18D NScenePathFinding_SPathRequestData NPlugAnim::SAvatarAnimV0_Model
-  18E NSceneVFX_SVFXInstanceInput NPlugAnim::SAvatarAnimV3_Model_Global
-  18F NSceneVFX_SVFXInstanceNodeUpdateContext NPlugAnim::SAvatarAnimV3_Model_Locomotion
-  190 SPlugExpr NPlugAnim::SAvatarAnimV3_Model_Jump
-  191 NPlugGunLock_SParams NPlugAnim::SAvatarAnimV3_Model_Swim
-  192 SPlugGraphNodeConnection NPlugAnim::SAvatarAnimV3_Model_Idle
-  193 SPlugGraphVar NPlugAnim::SAvatarAnimV3_Model_Fire
-  194 SPlugStateMachine_State NPlugAnim::SAvatarAnim_Model_Rest
-  195 SPlugStateMachine_TransitionData NPlugAnim::SAvatarAnim_Model_Climb
-  196 SPlugStateMachine_Transition NPlugAnim::SAvatarAnimV3_Model_Gait
-  197 NPlugGpuHlsl_D3D12_SRootSign NPlugAnim::SGaitSelector
-  198 NPlugGpuHlsl_D3D12_NRootSign_SParam NPlugAnim::SLocomotionRotationModel
-  199 SPlugAnimUIRigNodeTypeConfig NPlugAnim::SAvatarAnimV0_Model_Locomotion
-  19A NPlugAnim_SPoseEditor_Model NPlugAnim::SAvatarAnimV0_Model_Tiredness
-  19B NPlugAnim_SAvatarAnimV0_Model NPlugAnim::SAvatarAnimV0_Model_Firing
-  19C NPlugAnim_SAvatarAnimV3_Model_Global NPlugAnim::SAvatarAnimV0_Model_WeightInfluence
-  19D NPlugAnim_SAvatarAnimV3_Model_Locomotion NPlugCurve::SRichCurveInPlace4
-  19E NPlugAnim_SAvatarAnimV3_Model_Jump SPlugAnimClipGroup
-  19F NPlugAnim_SAvatarAnimV3_Model_Swim NPlugItem::SVariant
-  1A0 NPlugAnim_SAvatarAnimV3_Model_Idle NPlugItemPlacement::SPatchLayoutDeprec
-  1A1 NPlugAnim_SAvatarAnimV3_Model_Fire NPlugItemPlacement::SPatchLayout
-  1A2 NPlugAnim_SAvatarAnim_Model_Rest NPlugItemPlacement::SIdGroup
-  1A3 NPlugAnim_SAvatarAnim_Model_Climb NPlugItemPlacement::SSizeGroup
-  1A4 NPlugAnim_SAvatarAnimV3_Model_Gait NPlugItemPlacement::SPlacementOption
-  1A5 NPlugAnim_SGaitSelector NPlugItemPlacement::STypeDef
-  1A6 NPlugAnim_SLocomotionRotationModel NPlugItemPlacement::STable
-  1A7 NPlugAnim_SAvatarAnimV0_Model_Locomotion NPlugItemPlacement::STypeInternal
-  1A8 NPlugAnim_SAvatarAnimV0_Model_Tiredness NPlugBulletModel::SElectroPulse
-  1A9 NPlugAnim_SAvatarAnimV0_Model_Firing NPlugBulletModel::SDamage
-  1AA NPlugAnim_SAvatarAnimV0_Model_WeightInfluence NPlugBulletModel::SBlow
-  1AB NPlugCurve_SRichCurveInPlace4 SPlugSpawnState
-  1AC SPlugAnimClipGroup SCamShakeParams
+  14B SSceneDestructibleRuntimePhy
+  14C SSceneDestructibleFrozenPhy
+  14D 
+  14E 
+  14F 
+  150 
+  151 
+  152 
+  153 
+  154 
+  155 
+  156 
+  157 
+  158 
+  159 
+  15A 
+  15B NSceneDyna_SKinematicSharedSignal
+  15C NSceneDyna_SItemArrayDyn
+  15D NSceneDyna_SItemState
+  15E NSceneDyna_SItemCreateParams
+  15F NSceneDyna_SKinematicConstraintCreateParams
+  160 NSceneAdvert_SVisibilityTracker
+  161 NSceneAdvert_SAdSystemParams
+  162 SSceneMapColorisable01VisState
+  163 SSceneMapBaseVisState
+  164 NSceneAnim_SModel
+  165 NSceneAnim_SModelInst
+  166 NSceneAnim_SEdModelInstContext
+  167 NSceneAnim_SNodeState_StateMachine
+  168 NSceneAnim_SClipPlayer
+  169 NSceneAnim_SClipPlayerInput
+  16A NSceneAnim_SInstInputBase
+  16B NSceneAnim_SModelInstInput
+  16C NSceneAnim_SNodeUpdateContextParams
+  16D NSceneSpectatorVis_SInput
+  16E NSceneSpectatorVis_SLocGenOptions
+  16F NSceneSpectatorVis_SPositionGenOptions
+  170 NSceneSpectatorVis_SOrientationOpts
+  171 NSceneFxSystem_SRuntimeModel
+  172 NSceneFxSystem_SFxSystemInstanceInput
+  173 NSceneFxSystem_SFxSystemInstanceExpressionsUpdateParams
+  174 NMotionPrediction_SParams
+  175 CSceneVehicleVisParams
+  176 NSceneAnim_SChar
+  177 NSceneAnim_SCharInput
+  178 NSceneAnim_SGraphInstance
+  179 NSceneAnim_SCharState
+  17A NSceneAnim_SGraphUpdateParams
+  17B NSceneAnim_SGraphState
+  17C NSceneAnim_SNode
+  17D NSceneAnim_SNodeAim
+  17E NSceneAnim_SNodeProceduralAttractor
+  17F NSceneAnim_SNodeBlend2d
+  180 NSceneAnim_SNodeLocoGroup
+  181 NSceneAnim_SNodeClip
+  182 NSceneAnim_SNodeSequence
+  183 NSceneAnim_SNodeJump
+  184 NSceneAnim_SRootYaw
+  185 NScenePathFinding_SNavMeshBuildParams
+  186 NScenePathFinding_STileCacheHandler
+  187 NScenePathFinding_SPathRequestState
+  188 NScenePathFinding_SDynamicPathState
+  189 NScenePathFinding_SAgentModel
+  18A NScenePathFinding_SAgentSize
+  18B NScenePathFinding_SPathRequestInput
+  18C NScenePathFinding_SPathRequestOutput
+  18D NScenePathFinding_SPathRequestData
+  18E NSceneVFX_SVFXInstanceInput
+  18F NSceneVFX_SVFXInstanceNodeUpdateContext
+  190 SPlugExpr
+  191 NPlugGunLock_SParams
+  192 SPlugGraphNodeConnection
+  193 SPlugGraphVar
+  194 SPlugStateMachine_State
+  195 SPlugStateMachine_TransitionData
+  196 SPlugStateMachine_Transition
+  197 NPlugGpuHlsl_D3D12_SRootSign
+  198 NPlugGpuHlsl_D3D12_NRootSign_SParam
+  199 SPlugAnimUIRigNodeTypeConfig
+  19A NPlugAnim_SPoseEditor_Model
+  19B NPlugAnim_SAvatarAnimV0_Model
+  19C NPlugAnim_SAvatarAnimV3_Model_Global
+  19D NPlugAnim_SAvatarAnimV3_Model_Locomotion
+  19E NPlugAnim_SAvatarAnimV3_Model_Jump
+  19F NPlugAnim_SAvatarAnimV3_Model_Swim
+  1A0 NPlugAnim_SAvatarAnimV3_Model_Idle
+  1A1 NPlugAnim_SAvatarAnimV3_Model_Fire
+  1A2 NPlugAnim_SAvatarAnim_Model_Rest
+  1A3 NPlugAnim_SAvatarAnim_Model_Climb
+  1A4 NPlugAnim_SAvatarAnimV3_Model_Gait
+  1A5 NPlugAnim_SGaitSelector
+  1A6 NPlugAnim_SLocomotionRotationModel
+  1A7 NPlugAnim_SAvatarAnimV0_Model_Locomotion
+  1A8 NPlugAnim_SAvatarAnimV0_Model_Tiredness
+  1A9 NPlugAnim_SAvatarAnimV0_Model_Firing
+  1AA NPlugAnim_SAvatarAnimV0_Model_WeightInfluence
+  1AB NPlugCurve_SRichCurveInPlace4
+  1AC SPlugAnimClipGroup
   1AD NPlugItem_SVariant
   1AE NPlugItemPlacement_SPatchLayoutDeprec
   1AF NPlugItemPlacement_SPatchLayout
@@ -3364,141 +3346,141 @@
   1CE 
   1CF 
   1D0 
-  1D1 NPlugAnim::SSkelImportJointLod
-  1D2 NPlugAnim::SPoseGridImportPose
-  1D3 NPlugAnim::SChannelGroupJointImport
-  1D4 SMwIdRefSkel
-  1D5 SMwIdRefChannelGroup
-  1D6 SMwIdRefJointExprGroup
-  1D7 SMwIdRefClip
-  1D8 NPlugAnim::SJointExpr
-  1D9 NPlugAnim::SAssetFiles
-  1DA SMwIdFid
-  1DB NPlugAnim::SAssetPaths
-  1DC SMwIdString
-  1DD SMwIdRefBase
-  1DE NPlugAdn::STag
-  1DF SPlugRandomMetaData
-  1E0 SPlugAdnRandomGenSet
-  1E1 NPlugAnim_SSkelImportJointLod NPlugAdn::STagType
-  1E2 NPlugAnim_SPoseGridImportPose NPlugAdn::STagValue
-  1E3 NPlugAnim_SChannelGroupJointImport NPlugAdn::SContext
-  1E4 SMwIdRefSkel NPlugAdn::STagTypeDef
-  1E5 SMwIdRefRig NPlugAdn::STagTable
-  1E6 SMwIdRefRigToSkel NPlugAdn::STagTypeInternal
-  1E7 SMwIdRefChannelGroup NPlugAdn::STagValueInternal
-  1E8 SMwIdRefJointExprGroup NPlugMapAI::SNode
-  1E9 SMwIdRefClip NPlugMapAI::SNode_SpawnCitizen
-  1EA NPlugAnim_SJointExpr NPlugTVScreen::SModelInfo
-  1EB SFastRange NPlugTVScreen::SSkinModel
-  1EC GmTransYaw NPlugClassicSkin::SSkinModel::SFxSystem
-  1ED NPlugAnim_SAssetFiles NPlugClassicSkin::SSkinModel
-  1EE SMwIdFid NPlugMatRemap::SSkinModel
-  1EF NPlugAnim_SAssetPaths NPlugParallaxScreen::SSkinModel
-  1F0 SMwIdString NPlugParallaxScreen::SSkinModel_Layer
-  1F1 SMwIdRefBase NPlugSkinManialink::SSkinModel
-  1F2 NPlugAdn_STag NPlugSkinnedModel::SMgr
-  1F3 SPlugRandomMetaData NPlugSkinnedModel::SModel
-  1F4 SPlugAdnRandomGenSet NPlugSkinnedModel::SSkin
-  1F5 NPlugAdn_STagType NPlugSkinnedModel::SImage::SSampler
-  1F6 NPlugAdn_STagValue NPlugSkinnedModel::SImage
-  1F7 NPlugAdn_SContext NPlugModelKit::SModelLib
-  1F8 NPlugAdn_STagTypeDef NPlugModelKit::SModelAssets
-  1F9 NPlugAdn_STagTable NPlugModelKit::SPartAssets
-  1FA NPlugAdn_STagTypeInternal NPlugModelShading::SMaterialFiles
-  1FB NPlugAdn_STagValueInternal NPlugModelKit::SPartFiles
-  1FC NPlugMapAI_SNode NPlugModelKit::SPartFilesVersion
-  1FD NPlugMapAI_SNode_SpawnCitizen NPlugModelKit::SPartFilesVersions
-  1FE NPlugTVScreen_SModelInfo NPlugModelKit::SOption
-  1FF NPlugTVScreen_SSkinModel NPlugModelKit::SOptionVal
-  200 NPlugClassicSkin_SSkinModel_SFxSystem NPlugModelKit::SOptionArray
-  201 NPlugClassicSkin_SSkinModel NPlugModelKit::SModelFiles
-  202 NPlugMatRemap_SSkinModel NPlugModelKit::SPartPaths
-  203 NPlugParallaxScreen_SSkinModel NPlugModelKit::SOptionDesc
-  204 NPlugParallaxScreen_SSkinModel_Layer NPlugModelKit::SOptionValDesc
-  205 NPlugSkinManialink_SSkinModel NPlugModelKit::SOptionArrayDesc
-  206 NPlugSkinnedModel_SMgr NPlugModelKit::SModelDesc
-  207 NPlugSkinnedModel_SModel SFastRange
-  208 NPlugSkinnedModel_SSkin NPlugModelKit::SFolder
-  209 NPlugSkinnedModel_SImage_SSampler NPlugPrefab::SEnt_Void
-  20A NPlugSkinnedModel_SImage NPlugRoadChunk::SParams
-  20B NPlugModelKit_SModelLib SPlugTrafficLight
-  20C NPlugModelKit_SModelAssets NPlugAnim::SEntTrack
-  20D NPlugModelKit_SPartAssets NPlugAnim::SEntClip
-  20E NPlugModelShading_SMaterialFiles NPlugAnim::SEntDesc
-  20F NPlugModelKit_SPartFiles NPlugAnim::SEntBlock
-  210 NPlugModelKit_SPartFilesVersion NPlugAnim::SPropClip
-  211 NPlugModelKit_SPartFilesVersions NPlugAnim::SPropDesc
-  212 NPlugModelKit_SOption NPlugCurve::SRichCurve
-  213 NPlugModelKit_SOptionVal NPlugNoise::SParams
-  214 NPlugModelKit_SOptionArray NPlugModelLodMesh::SRange
-  215 NPlugModelKit_SModelFiles NPlugGrass::SMatterArray
-  216 NPlugModelKit_SPartPaths NPlugGrass::SModel
-  217 NPlugModelKit_SOptionDesc NPlugGrass::SMatter
-  218 NPlugModelKit_SOptionValDesc NPlugGrass::SMatterModel
-  219 NPlugModelKit_SOptionArrayDesc GmSurfaceIds
-  21A NPlugModelKit_SModelDesc NPlugSkel::SJointLodSetup
-  21B NPlugModelKit_SFolder NPlugFilePreloader::SPreloadDesc
-  21C NPlugPrefab_SEnt_Void NPlugFilePreloader::SPreloadDescGroup
-  21D NPlugRoadChunk_SParams NPlugFilePreloader::SPreloadDescFid
-  21E SPlugTrafficLight NPlugModelShading::SText::SShading::STmCarPrestige
-  21F NPlugAnim_SEntTrack NPlugModelShading::SText::SShading::STmCarPrestige::SMedal
-  220 NPlugAnim_SEntClip NPlugModelShading::SText::SShading::SSampler
-  221 NPlugAnim_SEntDesc NPlugModelShading::SText::SShading::SColor
-  222 NPlugAnim_SEntBlock NPlugModelShading::SText::SShading::SConstant
-  223 NPlugAnim_SPropClip NPlugModelShading::SText::SShading
-  224 NPlugAnim_SPropDesc NPlugModelShading::SText
-  225 NPlugCurve_SRichCurve NPlugModelShading::STextureSlotFile
-  226 NPlugNoise_SParams NPlugModelShading::SDecalRender_StadiumSaisons
-  227 NPlugModelLodMesh_SRange SPlugParticleLaserEnergyStyle
-  228 NPlugGrass_SMatterArray SPlugParticleLaserEnergyModel
-  229 NPlugGrass_SModel SPlugParticleEmitStateFromImpactModel
-  22A NPlugGrass_SMatter SPlugParticleSimulatedSmokeModel
-  22B NPlugGrass_SMatterModel SPlugParticlePrecalcModel
-  22C GmSurfaceIds SPlugParticlePhysicsModel
-  22D NPlugSkel_SJointLodSetup SPlugParticleRenderModel
-  22E NPlugFilePreloader_SPreloadDesc NPlugCurve::SSimpleCurveInPlace4
-  22F NPlugFilePreloader_SPreloadDescGroup NPlugCurve::SColorGradient
-  230 NPlugFilePreloader_SPreloadDescFid SPlugParticleLifeModel
-  231 NPlugModelShading_SText_SShading_STmCarPrestige SPlugParticleSpawnModel
-  232 NPlugModelShading_SText_SShading_STmCarPrestige_SMedal SPlugVFXNodeConnection
-  233 NPlugModelShading_SText_SShading_SSampler NPlugVeget::STreeModel
-  234 NPlugModelShading_SText_SShading_SColor NPlugVeget::STreeLodModel
-  235 NPlugModelShading_SText_SShading_SConstant NPlugVeget::SMaterial
-  236 NPlugModelShading_SText_SShading NPlugVeget::STreeLeafPropagationModel
-  237 NPlugModelShading_SText NPlugVeget::SShadedGeom
-  238 NPlugModelShading_STextureSlotFile NPlugDyna::SAnimFunc01
-  239 NPlugModelShading_SDecalRender_StadiumSaisons NPlugDyna::SAnimFuncNat
-  23A SPlugParticleLaserEnergyStyle NPlugDyna::SAnimFuncNatBase
-  23B SPlugParticleLaserEnergyModel NPlugDyna::SAnimFunc01Base
-  23C SPlugParticleEmitStateFromImpactModel SPlugDynaWaterModel
-  23D SPlugParticleSimulatedSmokeModel SCBuffer
-  23E SPlugParticlePrecalcModel NPlugCurve::SRichCurveInPlace7
-  23F SPlugParticlePhysicsModel NPlugCurve::SRichCurveKey
-  240 SPlugParticleRenderModel NPlugCurve::SSimpleCurve
-  241 NPlugCurve_SSimpleCurveInPlace4 NPlugBitmap::SAtlasCubeInElem
-  242 NPlugCurve_SColorGradient NProbabilityDistributionSampler::SAliasTable
-  243 SPlugParticleLifeModel NFastPoolVirtual::SPoolBase
-  244 SPlugParticleSpawnModel SGmSmoothReal3Model
-  245 SPlugVFXNodeConnection NHmsCollision::SItemCreateParams
-  246 NPlugVeget_STreeModel NHmsLightMapBlender::SMgr
-  247 NPlugVeget_STreeLodModel NHmsLightMapBlender::SFrame
-  248 NPlugVeget_SMaterial NHmsLightMapCache::SFrame
-  249 NPlugVeget_STreeLeafPropagationModel NHmsZoneOverlay::SClipRect
-  24A NPlugVeget_SShadedGeom SHmsFxBloomHdr
-  24B NPlugDyna_SAnimFunc01 SHmsFxToneMap
-  24C NPlugDyna_SAnimFuncNat SHmsPostFxState
-  24D NPlugDyna_SAnimFuncNatBase NHmsLightMap::SComputePImp
-  24E NPlugDyna_SAnimFunc01Base NHmsLightMap::SPImp
-  24F SPlugDynaWaterModel CHmsSolidVisCst_TmCar::SPrestige
-  250 SCBuffer CHmsSolid2
-  251 NPlugCurve_SRichCurveInPlace7 NHmsZone::SLightDir
-  252 NPlugCurve_SRichCurveKey NHmsZone::SLightDynaFrustum
-  253 NPlugCurve_SSimpleCurve NHmsZone::SLightDyna2
-  254 NPlugBitmap_SAtlasCubeInElem NHmsZone::SLightStatic
-  255 NProbabilityDistributionSampler_SAliasTable NHmsZone::SMgrMeshStatic
-  256 GmTransYawPitchRoll NHmsZone::NHmsMeshStatic::SModelRef
-  257 GmTransYawPitch CControlEffectSimi::SKeyVal2
+  1D1 
+  1D2 
+  1D3 
+  1D4 
+  1D5 
+  1D6 
+  1D7 
+  1D8 
+  1D9 
+  1DA 
+  1DB 
+  1DC 
+  1DD 
+  1DE 
+  1DF 
+  1E0 
+  1E1 NPlugAnim_SSkelImportJointLod
+  1E2 NPlugAnim_SPoseGridImportPose
+  1E3 NPlugAnim_SChannelGroupJointImport
+  1E4 SMwIdRefSkel
+  1E5 SMwIdRefRig
+  1E6 SMwIdRefRigToSkel
+  1E7 SMwIdRefChannelGroup
+  1E8 SMwIdRefJointExprGroup
+  1E9 SMwIdRefClip
+  1EA NPlugAnim_SJointExpr
+  1EB SFastRange
+  1EC GmTransYaw
+  1ED NPlugAnim_SAssetFiles
+  1EE SMwIdFid
+  1EF NPlugAnim_SAssetPaths
+  1F0 SMwIdString
+  1F1 SMwIdRefBase
+  1F2 NPlugAdn_STag
+  1F3 SPlugRandomMetaData
+  1F4 SPlugAdnRandomGenSet
+  1F5 NPlugAdn_STagType
+  1F6 NPlugAdn_STagValue
+  1F7 NPlugAdn_SContext
+  1F8 NPlugAdn_STagTypeDef
+  1F9 NPlugAdn_STagTable
+  1FA NPlugAdn_STagTypeInternal
+  1FB NPlugAdn_STagValueInternal
+  1FC NPlugMapAI_SNode
+  1FD NPlugMapAI_SNode_SpawnCitizen
+  1FE NPlugTVScreen_SModelInfo
+  1FF NPlugTVScreen_SSkinModel
+  200 NPlugClassicSkin_SSkinModel_SFxSystem
+  201 NPlugClassicSkin_SSkinModel
+  202 NPlugMatRemap_SSkinModel
+  203 NPlugParallaxScreen_SSkinModel
+  204 NPlugParallaxScreen_SSkinModel_Layer
+  205 NPlugSkinManialink_SSkinModel
+  206 NPlugSkinnedModel_SMgr
+  207 NPlugSkinnedModel_SModel
+  208 NPlugSkinnedModel_SSkin
+  209 NPlugSkinnedModel_SImage_SSampler
+  20A NPlugSkinnedModel_SImage
+  20B NPlugModelKit_SModelLib
+  20C NPlugModelKit_SModelAssets
+  20D NPlugModelKit_SPartAssets
+  20E NPlugModelShading_SMaterialFiles
+  20F NPlugModelKit_SPartFiles
+  210 NPlugModelKit_SPartFilesVersion
+  211 NPlugModelKit_SPartFilesVersions
+  212 NPlugModelKit_SOption
+  213 NPlugModelKit_SOptionVal
+  214 NPlugModelKit_SOptionArray
+  215 NPlugModelKit_SModelFiles
+  216 NPlugModelKit_SPartPaths
+  217 NPlugModelKit_SOptionDesc
+  218 NPlugModelKit_SOptionValDesc
+  219 NPlugModelKit_SOptionArrayDesc
+  21A NPlugModelKit_SModelDesc
+  21B NPlugModelKit_SFolder
+  21C NPlugPrefab_SEnt_Void
+  21D NPlugRoadChunk_SParams
+  21E SPlugTrafficLight
+  21F NPlugAnim_SEntTrack
+  220 NPlugAnim_SEntClip
+  221 NPlugAnim_SEntDesc
+  222 NPlugAnim_SEntBlock
+  223 NPlugAnim_SPropClip
+  224 NPlugAnim_SPropDesc
+  225 NPlugCurve_SRichCurve
+  226 NPlugNoise_SParams
+  227 NPlugModelLodMesh_SRange
+  228 NPlugGrass_SMatterArray
+  229 NPlugGrass_SModel
+  22A NPlugGrass_SMatter
+  22B NPlugGrass_SMatterModel
+  22C GmSurfaceIds
+  22D NPlugSkel_SJointLodSetup
+  22E NPlugFilePreloader_SPreloadDesc
+  22F NPlugFilePreloader_SPreloadDescGroup
+  230 NPlugFilePreloader_SPreloadDescFid
+  231 NPlugModelShading_SText_SShading_STmCarPrestige
+  232 NPlugModelShading_SText_SShading_STmCarPrestige_SMedal
+  233 NPlugModelShading_SText_SShading_SSampler
+  234 NPlugModelShading_SText_SShading_SColor
+  235 NPlugModelShading_SText_SShading_SConstant
+  236 NPlugModelShading_SText_SShading
+  237 NPlugModelShading_SText
+  238 NPlugModelShading_STextureSlotFile
+  239 NPlugModelShading_SDecalRender_StadiumSaisons
+  23A SPlugParticleLaserEnergyStyle
+  23B SPlugParticleLaserEnergyModel
+  23C SPlugParticleEmitStateFromImpactModel
+  23D SPlugParticleSimulatedSmokeModel
+  23E SPlugParticlePrecalcModel
+  23F SPlugParticlePhysicsModel
+  240 SPlugParticleRenderModel
+  241 NPlugCurve_SSimpleCurveInPlace4
+  242 NPlugCurve_SColorGradient
+  243 SPlugParticleLifeModel
+  244 SPlugParticleSpawnModel
+  245 SPlugVFXNodeConnection
+  246 NPlugVeget_STreeModel
+  247 NPlugVeget_STreeLodModel
+  248 NPlugVeget_SMaterial
+  249 NPlugVeget_STreeLeafPropagationModel
+  24A NPlugVeget_SShadedGeom
+  24B NPlugDyna_SAnimFunc01
+  24C NPlugDyna_SAnimFuncNat
+  24D NPlugDyna_SAnimFuncNatBase
+  24E NPlugDyna_SAnimFunc01Base
+  24F SPlugDynaWaterModel
+  250 SCBuffer
+  251 NPlugCurve_SRichCurveInPlace7
+  252 NPlugCurve_SRichCurveKey
+  253 NPlugCurve_SSimpleCurve
+  254 NPlugBitmap_SAtlasCubeInElem
+  255 NProbabilityDistributionSampler_SAliasTable
+  256 GmTransYawPitchRoll
+  257 GmTransYawPitch
   258 NFastPoolVirtual_SPoolBase
   259 GmBoxNat3
   25A SGmSmoothReal3Model
