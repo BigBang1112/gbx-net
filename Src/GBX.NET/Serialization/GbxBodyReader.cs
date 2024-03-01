@@ -2,11 +2,16 @@
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSettings settings, GbxCompression compression)
+internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSettings settings, GbxCompression compression)
 {
     private readonly GbxReader reader = readerWriter.Reader ?? throw new Exception("Reader is required but not available.");
 
-    public static GbxBody Parse(GbxReader reader, GbxCompression compression, GbxReadSettings settings)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async ValueTask<GbxBody> ParseAsync(
+        GbxReader reader,
+        GbxCompression compression,
+        GbxReadSettings settings,
+        CancellationToken cancellationToken = default)
     {
         switch (compression)
         {
@@ -14,14 +19,13 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
                 var uncompressedSize = reader.ReadInt32();
 
-                if (uncompressedSize > GbxReader.MaxDataSize
-                    || (settings.MaxUncompressedBodySize.HasValue && uncompressedSize > settings.MaxUncompressedBodySize.Value))
+                if (IsValidUncompressedSize(uncompressedSize, settings))
                 {
                     throw new Exception($"Uncompressed body size {uncompressedSize} exceeds maximum allowed size {settings.MaxUncompressedBodySize}.");
                 }
 
                 var compressedSize = reader.ReadInt32();
-                var rawData = settings.ReadRawBody ? reader.ReadBytes(compressedSize) : null;
+                var rawData = settings.ReadRawBody ? await reader.ReadBytesAsync(compressedSize, cancellationToken) : null;
 
                 return new GbxBody
                 {
@@ -34,17 +38,24 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
 
                 return new GbxBody
                 {
-                    RawData = settings.ReadRawBody ? reader.ReadToEnd() : null
+                    RawData = settings.ReadRawBody ? await reader.ReadToEndAsync(cancellationToken) : null
                 };
 
             default:
-                throw new Exception($"Unknown compression type: {compression}");
+                throw new ArgumentException("Unknown compression type.", nameof(compression));
         }
     }
 
-    public GbxBody Parse(IClass node)
+    private static bool IsValidUncompressedSize(int uncompressedSize, GbxReadSettings settings)
     {
-        var body = Parse(reader, compression, settings);
+        return uncompressedSize > GbxReader.MaxDataSize
+            || (settings.MaxUncompressedBodySize.HasValue && uncompressedSize > settings.MaxUncompressedBodySize.Value);
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<GbxBody> ParseAsync(IClass node, CancellationToken cancellationToken = default)
+    {
+        var body = await ParseAsync(reader, compression, settings, cancellationToken);
 
         if (body.CompressedSize is null)
         {
@@ -52,28 +63,7 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
             return body;
         }
 
-        var decompressedData = DecompressData(body.CompressedSize.Value, body.UncompressedSize);
-
-        using var ms = new MemoryStream(decompressedData);
-        using var decompressedReader = new GbxReader(ms);
-        using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
-
-        ReadMainNode(node, body, decompressedReaderWriter);
-
-        return body;
-    }
-
-    public GbxBody Parse<T>(T node) where T : IClass
-    {
-        var body = Parse(reader, compression, settings);
-
-        if (body.CompressedSize is null)
-        {
-            ReadMainNode(node, body, readerWriter);
-            return body;
-        }
-
-        var decompressedData = DecompressData(body.CompressedSize.Value, body.UncompressedSize);
+        var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
         using var ms = new MemoryStream(decompressedData);
         using var decompressedReader = new GbxReader(ms);
@@ -83,6 +73,44 @@ internal sealed class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSetting
         ReadMainNode(node, body, decompressedReaderWriter);
 
         return body;
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<GbxBody> ParseAsync<T>(T node, CancellationToken cancellationToken = default) where T : IClass
+    {
+        var body = await ParseAsync(reader, compression, settings, cancellationToken);
+
+        if (body.CompressedSize is null)
+        {
+            ReadMainNode(node, body, readerWriter);
+            return body;
+        }
+
+        var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
+
+        using var ms = new MemoryStream(decompressedData);
+        using var decompressedReader = new GbxReader(ms);
+        decompressedReader.LoadStateFrom(reader);
+        using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
+
+        ReadMainNode(node, body, decompressedReaderWriter);
+
+        return body;
+    }
+
+    private async Task<byte[]> DecompressDataAsync(int compressedSize, int uncompressedSize, CancellationToken cancellationToken)
+    {
+        var compressedData = await reader.ReadBytesAsync(compressedSize, cancellationToken);
+        var decompressedData = new byte[uncompressedSize];
+
+        if (Gbx.LZO is null)
+        {
+            throw new LzoNotDefinedException();
+        }
+
+        Gbx.LZO.Decompress(compressedData, decompressedData);
+
+        return decompressedData;
     }
 
     private byte[] DecompressData(int compressedSize, int uncompressedSize)

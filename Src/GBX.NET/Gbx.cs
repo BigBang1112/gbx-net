@@ -19,14 +19,19 @@ public interface IGbx
     static abstract Gbx ParseHeader(string filePath, GbxReadSettings settings = default);
     static abstract Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new();
     static abstract Gbx<T> ParseHeader<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new();
+    static abstract Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
     static abstract Gbx Parse(Stream stream, GbxReadSettings settings = default);
+    static abstract Task<Gbx> ParseAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
     static abstract Gbx Parse(string filePath, GbxReadSettings settings = default);
+    static abstract Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new();
     static abstract Gbx<T> Parse<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new();
+    static abstract Task<Gbx<T>> ParseAsync<T>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new();
     static abstract Gbx<T> Parse<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new();
     static abstract IClass? ParseHeaderNode(Stream stream, GbxReadSettings settings = default);
     static abstract IClass? ParseHeaderNode(string filePath, GbxReadSettings settings = default);
     static abstract T ParseHeaderNode<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new();
     static abstract T ParseHeaderNode<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new();
+    static abstract Task<T> ParseNodeAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new();
     static abstract T ParseNode<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new();
     static abstract T ParseNode<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new();
     static abstract IClass? ParseNode(string filePath, GbxReadSettings settings = default);
@@ -39,7 +44,7 @@ public interface IGbx<T> : IGbx where T : notnull, IClass
     new T Node { get; }
 }
 
-public class Gbx : IGbx
+public partial class Gbx : IGbx
 {
     public const string Magic = "GBX";
 
@@ -65,7 +70,8 @@ public class Gbx : IGbx
         Body = body;
     }
 
-    public static Gbx Parse(Stream stream, GbxReadSettings settings = default)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {
         using var reader = new GbxReader(stream, settings.LeaveOpen);
 
@@ -76,7 +82,7 @@ public class Gbx : IGbx
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
-            var unknownBody = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
+            var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
 
             return new Gbx(header, unknownBody)
             {
@@ -89,7 +95,7 @@ public class Gbx : IGbx
         reader.ResetIdState();
         reader.ExpectedNodeCount = header.NumNodes;
 
-        var body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
+        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
@@ -102,13 +108,20 @@ public class Gbx : IGbx
         return gbx;
     }
 
+    public static async Task<Gbx> ParseAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ParseAsync(fs, settings, cancellationToken);
+    }
+
     public static Gbx Parse(string filePath, GbxReadSettings settings = default)
     {
         using var fs = File.OpenRead(filePath);
         return Parse(fs, settings);
     }
 
-    public static Gbx<T> Parse<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new()
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new()
     {
         using var reader = new GbxReader(stream, settings.LeaveOpen);
 
@@ -118,7 +131,7 @@ public class Gbx : IGbx
         reader.ResetIdState();
         reader.ExpectedNodeCount = header.NumNodes;
 
-        var body = GbxBody.Parse(node, reader, settings, header.Basic.CompressionOfBody);
+        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
 
         return new Gbx<T>(header, body, node)
         {
@@ -129,6 +142,12 @@ public class Gbx : IGbx
             DeprecVersion = reader.DeprecVersion,
             FilePath = stream is FileStream fs ? fs.Name : null
         };
+    }
+
+    public static async Task<Gbx<T>> ParseAsync<T>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new()
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ParseAsync<T>(fs, settings, cancellationToken);
     }
 
     public static Gbx<T> Parse<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new()
@@ -209,24 +228,26 @@ public class Gbx : IGbx
         return ParseHeader(filePath, settings).Node;
     }
 
-    public static T ParseNode<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new()
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<T> ParseNodeAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new()
     {
-        return Parse<T>(stream, settings).Node;
+        return (await ParseAsync<T>(stream, settings, cancellationToken)).Node;
     }
 
-    public static T ParseNode<T>(string filePath, GbxReadSettings settings = default) where T : IClass, new()
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<T> ParseNodeAsync<T>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : IClass, new()
     {
-        return Parse<T>(filePath, settings).Node;
-    }
-
-    public static IClass? ParseNode(string filePath, GbxReadSettings settings = default)
-    {
-        return Parse(filePath, settings).Node;
+        return (await ParseAsync<T>(filePath, settings, cancellationToken)).Node;
     }
 
     public static IClass? ParseNode(Stream stream, GbxReadSettings settings = default)
     {
         return Parse(stream, settings).Node;
+    }
+
+    public static IClass? ParseNode(string filePath, GbxReadSettings settings = default)
+    {
+        return Parse(filePath, settings).Node;
     }
 
     public static T ParseHeaderNode<T>(Stream stream, GbxReadSettings settings = default) where T : IClass, new()
@@ -281,7 +302,7 @@ public class Gbx : IGbx
             RefTable.Write(writer, settings);
         }
 
-        Body.Write(Node, writer, settings, Header.Basic.CompressionOfBody);
+        Body.Write(Node, writer, Header.Basic.CompressionOfBody, settings);
     }
 
     public virtual void Save(string filePath, GbxWriteSettings settings = default)
