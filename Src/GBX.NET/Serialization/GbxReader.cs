@@ -679,12 +679,23 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             // PackDesc version mismatch. but it's fine
         }
 
-        var checksum = default(byte[]);
+        var checksum = ImmutableArray<byte>.Empty;
         var locatorUrl = "";
 
         if (version >= 3)
         {
-            checksum = ReadBytes(32);
+#if NET8_0_OR_GREATER
+            Span<byte> checksumBytes = stackalloc byte[32];
+
+            if (Read(checksumBytes) != 32)
+            {
+                throw new EndOfStreamException();
+        }
+
+            checksum = checksum.AddRange(checksumBytes);
+#else
+            checksum = ImmutableArray.Create(ReadBytes(32));
+#endif
         }
 
         var filePath = ReadString();

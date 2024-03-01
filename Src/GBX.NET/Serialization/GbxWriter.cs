@@ -579,11 +579,30 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (PackDescVersion >= 3)
         {
+            if (value is null || value.Checksum.IsDefaultOrEmpty)
+            {
 #if NET6_0_OR_GREATER
-            Write(value?.Checksum ?? stackalloc byte[32]);
+                Write(stackalloc byte[32]);
 #else
-            Write(value?.Checksum ?? new byte[32]);
+                Write(new byte[32]);
 #endif
+            }
+            else
+            {
+                Span<byte> bytes = stackalloc byte[32];
+                
+                for (var i = 0; i < bytes.Length; i++)
+                {
+                    bytes[i] = value.Checksum[i];
+#if !NET6_0_OR_GREATER
+                    Write(bytes[i]);
+#endif
+                }
+
+#if NET6_0_OR_GREATER
+                Write(bytes);
+#endif
+            }
         }
 
         Write(value?.FilePath);

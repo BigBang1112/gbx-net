@@ -6,7 +6,7 @@ public class PackDescTests
     public void GetLocatorUri_WhenLocatorUrlSpecified_ReturnsUri()
     {
         // Arrange
-        var packDesc = new PackDesc("test.txt", null, "http://locator.url");
+        var packDesc = new PackDesc("test.txt", default, "http://locator.url");
 
         // Act
         var result = packDesc.GetLocatorUri();
