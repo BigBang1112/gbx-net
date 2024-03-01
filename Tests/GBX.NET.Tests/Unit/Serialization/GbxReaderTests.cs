@@ -875,7 +875,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
+        Assert.Empty(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.NotNull(result.LocatorUrl);
         Assert.Empty(result.LocatorUrl);
@@ -904,7 +904,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
+        Assert.Empty(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
         Assert.Equal(expected: 42, actual: ms.Position);
@@ -926,7 +926,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
+        Assert.Empty(result.Checksum);
         Assert.NotNull(result.FilePath);
         Assert.Empty(result.FilePath);
         Assert.NotNull(result.LocatorUrl);
@@ -951,7 +951,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
+        Assert.Empty(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.NotNull(result.LocatorUrl);
         Assert.Empty(result.LocatorUrl);

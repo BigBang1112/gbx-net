@@ -1,7 +1,7 @@
 ﻿
 namespace GBX.NET.Components;
 
-public sealed class GbxBody
+public sealed partial class GbxBody
 {
     private byte[]? rawData;
 
@@ -27,24 +27,27 @@ public sealed class GbxBody
 
     public Exception? Exception { get; internal set; }
 
-    internal static GbxBody Parse(GbxReader reader, GbxCompression compression, GbxReadSettings settings)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    internal static async Task<GbxBody> ParseAsync(GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)
     {
-        return GbxBodyReader.Parse(reader, compression, settings);
+        return await GbxBodyReader.ParseAsync(reader, compression, settings, cancellationToken);
     }
 
-    internal static GbxBody Parse(IClass node, GbxReader reader, GbxReadSettings settings, GbxCompression compression)
-    {
-        using var rw = new GbxReaderWriter(reader, leaveOpen: true);
-        return new GbxBodyReader(rw, settings, compression).Parse(node);
-    }
-
-    internal static GbxBody Parse<T>(T node, GbxReader reader, GbxReadSettings settings, GbxCompression compression) where T : IClass
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    internal static async Task<GbxBody> ParseAsync(IClass node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)
     {
         using var rw = new GbxReaderWriter(reader, leaveOpen: true);
-        return new GbxBodyReader(rw, settings, compression).Parse(node);
+        return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
     }
 
-    internal bool Write(IClass? node, GbxWriter writer, GbxWriteSettings settings, GbxCompression compression)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    internal static async Task<GbxBody> ParseAsync<T>(T node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken) where T : IClass
+    {
+        using var rw = new GbxReaderWriter(reader, leaveOpen: true);
+        return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
+    }
+
+    internal bool Write(IClass? node, GbxWriter writer, GbxCompression compression, GbxWriteSettings settings)
     {
         return new GbxBodyWriter(this, writer, settings, compression).Write(node);
     }

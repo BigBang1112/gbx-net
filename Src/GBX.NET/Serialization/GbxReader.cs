@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
+using System.Collections.Immutable;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -52,6 +53,7 @@ public partial interface IGbxReader : IDisposable
     byte[] ReadData();
     byte[] ReadData(int length);
     byte[] ReadBytes(int count);
+    Task<byte[]> ReadBytesAsync(int count, CancellationToken cancellationToken = default);
     string ReadString();
     string ReadString(int length);
     string ReadString(StringLengthPrefix readPrefix);
@@ -101,6 +103,7 @@ public partial interface IGbxReader : IDisposable
     uint PeekUInt32();
     void SkipData(int length);
     byte[] ReadToEnd();
+    Task<byte[]> ReadToEndAsync(CancellationToken cancellationToken = default);
     void ResetIdState();
     void LoadStateFrom(IGbxReader reader);
 }
@@ -578,6 +581,24 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         };
     }
 
+    public async Task<byte[]> ReadBytesAsync(int count, CancellationToken cancellationToken = default)
+    {
+        if (count > MaxDataSize)
+        {
+            throw new LengthLimitException(count);
+        }
+
+        var buffer = new byte[count];
+
+        _ = Mode switch
+        {
+            SerializationMode.Gbx => await BaseStream.ReadAsync(buffer, 0, count, cancellationToken),
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+
+        return buffer;
+    }
+
     public string ReadIdAsString()
     {
         var index = ReadIdIndex();
@@ -690,7 +711,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             if (Read(checksumBytes) != 32)
             {
                 throw new EndOfStreamException();
-        }
+            }
 
             checksum = checksum.AddRange(checksumBytes);
 #else
@@ -1203,6 +1224,24 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         using var ms = new MemoryStream();
         BaseStream.CopyTo(ms);
+        return ms.ToArray();
+    }
+
+    public async Task<byte[]> ReadToEndAsync(CancellationToken cancellationToken = default)
+    {
+        if (BaseStream.CanSeek)
+        {
+            var buffer = new byte[BaseStream.Length - BaseStream.Position];
+#if NET6_0_OR_GREATER
+            _ = await BaseStream.ReadAsync(buffer, cancellationToken);
+#else
+            _ = await BaseStream.ReadAsync(buffer, 0, buffer.Length, cancellationToken);
+#endif
+            return buffer;
+        }
+
+        using var ms = new MemoryStream();
+        await BaseStream.CopyToAsync(ms, bufferSize: 81920, cancellationToken);
         return ms.ToArray();
     }
 
