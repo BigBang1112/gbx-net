@@ -18,7 +18,7 @@ watch.Stop();
 
 Console.WriteLine("Block count per model:");
 
-foreach (var model in map.Blocks.GroupBy(x => x.BlockModel))
+foreach (var model in map.GetBlocks().GroupBy(x => x.BlockModel))
 {
     Console.WriteLine($"- {model.Key.Id}: {model.Count()}");
 }

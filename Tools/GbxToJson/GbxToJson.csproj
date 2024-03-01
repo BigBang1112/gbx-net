@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Src\GBX.NET.Json\GBX.NET.Json.csproj" />
     <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
     <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
   </ItemGroup>

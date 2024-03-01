@@ -4,7 +4,7 @@ CGameCtnChallenge 0x03043000 // A map.
  versionb
  v2-
   ident MapInfo = empty
-  string MapName
+  string MapName = empty
  bool
  v1+
   timeint? BronzeTime
@@ -42,7 +42,7 @@ CGameCtnChallenge 0x03043000 // A map.
   uint
   string Password
   v2+
-   ident Decoration
+   ident Decoration = empty
    v3+
     vec2 MapCoordOrigin
     v4+
