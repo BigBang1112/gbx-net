@@ -41,7 +41,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception($"Unknown unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000) ?? "???"} 0x{chunkId:X8}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
+                    throw new ChunkReadException(chunkId, prevChunkId, known: false);
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -96,7 +96,7 @@ public partial class CMwNod : IClass
                     readable.Read(node, r);
                     break;
                 default:
-                    throw new Exception($"Known unskippable chunk ({ClassManager.GetName(chunkId & 0xFFFFF000) ?? "???"} 0x{chunkId:X8}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
+                    throw new ChunkReadException(chunkId, prevChunkId, known: true);
             }
 
             prevChunkId = chunkId;
@@ -135,7 +135,7 @@ public partial class CMwNod : IClass
                         return;
                     }
 
-                    throw new Exception($"Unknown unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
+                    throw new ChunkReadException(chunkId, prevChunkId, known: false);
                 }
 
                 var chunkSize = r.ReadInt32();
@@ -180,7 +180,7 @@ public partial class CMwNod : IClass
                     readable.Read(this, r);
                     break;
                 default:
-                    throw new Exception($"Known unskippable chunk (ID 0x{chunkId:X8}, {ClassManager.GetName(chunkId & 0xFFFFF000)}) cannot be processed.\nPrevious chunk: {ClassManager.GetName(prevChunkId.GetValueOrDefault() & 0xFFFFF000) ?? "???"} 0x{prevChunkId:X8}");
+                    throw new ChunkReadException(chunkId, prevChunkId, known: true);
             }
 
             prevChunkId = chunkId;
