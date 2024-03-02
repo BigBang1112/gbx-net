@@ -1,0 +1,5 @@
+CPlugTreeGenerator 0x09051000
+- inherits: CPlug
+
+0x000
+ version

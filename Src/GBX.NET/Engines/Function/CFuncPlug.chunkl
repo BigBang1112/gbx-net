@@ -1,0 +1,20 @@
+CFuncPlug 0x0500B000
+- inherits: CFunc
+
+0x003
+ float Period
+ float Phase
+ bool AutoCreateMotion
+
+0x004
+ float Period
+ float Phase
+ bool AutoCreateMotion
+ bool RandomizePhase
+
+0x005
+ float Period
+ float Phase
+ bool AutoCreateMotion
+ bool RandomizePhase
+ id? InputValId

@@ -1,0 +1,39 @@
+CPlugVisual 0x09006000
+- inherits: CPlug
+
+0x001
+ id
+
+0x004
+ CMwNod
+
+0x005
+ int3[] SubVisuals // SSubVisual?
+
+0x006
+
+0x007
+ bool
+
+0x008
+
+0x009
+ float
+
+0x00A
+
+0x00B
+ Split[] Splits // SSplit array
+
+0x00C
+
+0x00D
+
+0x00E
+
+0x00F
+
+archive Split
+ int
+ int
+ Box BoundingBox
