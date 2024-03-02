@@ -1,0 +1,11 @@
+CGameCtnZoneGenealogy 0x0311D000
+
+0x001
+ int CurrentIndex
+ int<Direction> Dir
+
+0x002
+ id[] ZoneIds
+ int CurrentIndex
+ int<Direction> Dir
+ id CurrentZoneId

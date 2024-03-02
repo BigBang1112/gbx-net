@@ -27,3 +27,13 @@ CGameCtnAnchoredObject 0x03101000
  int
 
 0x005 (skippable, ignore)
+
+enum EPhaseOffset
+ None
+ One8th
+ Two8th
+ Three8th
+ Four8th
+ Five8th
+ Six8th
+ Seven8th

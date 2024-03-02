@@ -323,6 +323,11 @@ CGameCtnChallenge 0x03043000 // A map.
 0x069 (skippable) [TM2020] // macroblock instances
 
 0x06B (skippable) [TM2020] // light settings 2
+ int
+ timeofday? DayTime
+ int
+ bool DynamicDaylight
+ timeint? DayDuration
 
 archive BotPath
  int Clan
@@ -330,6 +335,13 @@ archive BotPath
  bool IsFlying
  CGameWaypointSpecialProperty WaypointSpecialProperty
  bool IsAutonomous
+
+archive SBakedClipsAdditionalData
+ ident Clip1
+ ident Clip2
+ ident Clip3
+ ident Clip4
+ int3 Coord
 
 enum MapKind // The map's intended use.
  EndMarker
