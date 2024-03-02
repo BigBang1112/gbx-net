@@ -1,0 +1,5 @@
+CPlugCamControlModel 0x0910C000
+
+0x000
+ version
+ CPlugCamShakeModel Shake

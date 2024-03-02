@@ -1,0 +1,18 @@
+CPlugVehicleGearBox 0x09094000
+
+0x001
+ version
+ float[]
+ bool
+ int
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  float?
+  v2+
+   float?

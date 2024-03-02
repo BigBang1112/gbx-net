@@ -1,0 +1,9 @@
+CPlugVehiclePhyTuning 0x090EB000
+
+0x000
+ id Name
+ CFuncKeysReal
+ float
+
+0x001
+ bool

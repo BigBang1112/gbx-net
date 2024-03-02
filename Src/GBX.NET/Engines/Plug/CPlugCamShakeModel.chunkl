@@ -1,0 +1,20 @@
+CPlugCamShakeModel 0x0910B000
+
+0x000
+ version
+ int
+ int
+ float
+ float
+ float
+ float
+ v2+
+  float?
+  v3+
+   int?
+   int?
+   float?
+   float?
+   float?
+   float?
+   float?
