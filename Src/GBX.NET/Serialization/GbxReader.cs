@@ -69,6 +69,8 @@ public partial interface IGbxReader : IDisposable
     TimeSingle? ReadTimeSingleNullable();
     TimeSpan? ReadTimeOfDay();
     DateTime ReadFileTime();
+    int ReadSmallLen();
+    string ReadSmallString();
     void ReadMarker(string value);
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
     void ReadDeprecVersion();
@@ -752,11 +754,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var originalClassId = ReadUInt32();
 
-        /* TODO: Verify this
-         * if (originalClassId == uint.MaxValue)
+        if (encapsulation is not null && originalClassId == uint.MaxValue)
         {
             return default;
-        }*/
+        }
 
         var classId = ClassManager.Wrap(originalClassId);
 
@@ -846,6 +847,24 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public DateTime ReadFileTime()
     {
         return DateTime.FromFileTime(ReadInt64());
+    }
+
+    public int ReadSmallLen()
+    {
+        var firstByte = ReadByte();
+        var secondUInt16 = default(ushort);
+
+        if (firstByte > 127)
+        {
+            secondUInt16 = ReadUInt16();
+        }
+
+        return firstByte & 127 | secondUInt16 << 7;
+    }
+
+    public string ReadSmallString()
+    {
+        return ReadString(ReadSmallLen());
     }
 
     public void ReadMarker(string value)
