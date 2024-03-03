@@ -1,8 +1,68 @@
 CGameCtnMediaBlockCameraCustom 0x030A2000 // MediaTracker block - Custom camera.
 - inherits: CGameCtnMediaBlockCamera
 
+0x001
+ list<Key> Keys (version: 1)
+
+0x002
+ list<Key> Keys (version: 2)
+
+0x005 // TMUF
+ list<Key> Keys (version: 5)
+
+0x006 // ManiaPlanet
+ version
+ list<Key> Keys (version: 6 + Version)
+
 enum Interpolation
  None
  Hermite
  Linear
  FixedTangent
+
+archive Key
+ float Time
+ int<Interpolation> Interpolation
+ v5-
+  int?
+  int?
+  vec3 Position
+  vec3 PitchYawRoll // Pitch, yaw and roll in radians.
+  float Fov
+ bool AnchorRot
+ int Anchor // -1, entity number (SGameClipEntityId) or Id if 0x004
+ bool AnchorVis
+ int Target // -1, entity number (SGameClipEntityId) or Id if 0x004
+ v5-
+  vec3 TargetPosition
+  v1=
+   float? // 60
+   float? // 30
+   return
+  InterpVal? LeftTangent
+  InterpVal? RightTangent
+  v3=
+   float?
+   quat?
+ v6+
+  vec3 Position
+  vec3 PitchYawRoll
+  float Fov
+  vec3 TargetPosition
+  v7+
+   float? NearZ
+  InterpVal? LeftTangent
+  InterpVal? RightTangent
+  v8=
+   int?
+   int?
+
+archive InterpVal
+ vec3 Position
+ v5-
+  return
+ vec3? PitchYawRoll
+ float? Fov
+ vec3? TargetPosition
+ v7+
+  float? NearZ

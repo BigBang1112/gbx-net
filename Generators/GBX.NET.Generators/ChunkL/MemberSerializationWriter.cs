@@ -286,6 +286,12 @@ internal sealed class MemberSerializationWriter
             sb.Append(chunkProperty.Type.ArrayLength);
         }
 
+        if (chunkProperty.Properties?.TryGetValue("version", out var version) == true)
+        {
+            sb.Append(", version: ");
+            sb.Append(version);
+        }
+
         sb.Append(")");
         sb.Append(";");
     }
