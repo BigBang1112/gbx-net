@@ -12,7 +12,7 @@ CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
  CGameCtnMediaClip[]_deprec Clips
  Trigger[] Triggers (version: 3)
 
-0x004
+0x004 (skippable)
  int
 
 archive Trigger

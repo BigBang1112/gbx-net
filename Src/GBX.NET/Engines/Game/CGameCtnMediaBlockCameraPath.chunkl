@@ -2,3 +2,32 @@ CGameCtnMediaBlockCameraPath 0x030A1000
 - inherits: CGameCtnMediaBlockCamera
 
 0x000
+ list<Key> Keys (version: 0)
+
+0x001
+ list<Key> Keys (version: 1)
+
+0x002
+ list<Key> Keys (version: 2)
+
+0x003
+ version
+ list<Key> Keys (version: Version)
+
+archive Key
+ timefloat Time
+ vec3 Position
+ vec3 PitchYawRoll // Pitch, yaw and roll in radians.
+ float Fov
+ v3+
+  float NearZ
+ bool AnchorRot
+ int Anchor
+ bool AnchorVis
+ int Target
+ vec3 TargetPosition
+ float Weight
+ quat // some rotation (yaw + pitch + roll + squad)
+ v4+
+  int // 5 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId
+  int // 1699124 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId

@@ -26,7 +26,7 @@ CGameCtnAnchoredObject 0x03101000
 
 0x004 (skippable)
  version
- int
+ int = -1
 
 0x005 (skippable, ignore)
 

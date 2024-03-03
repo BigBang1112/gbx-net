@@ -57,6 +57,7 @@
 		<Using Include="GBX.NET.Engines.Control" />
 		<Using Include="GBX.NET.Engines.Input" />
 		<Using Include="GBX.NET.Engines.Function" />
+		<Using Include="GBX.NET.Engines.Script" />
 	</ItemGroup>
 
 	<ItemGroup>

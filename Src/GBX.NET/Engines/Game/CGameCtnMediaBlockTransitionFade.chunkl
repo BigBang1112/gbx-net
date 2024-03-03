@@ -2,3 +2,10 @@ CGameCtnMediaBlockTransitionFade 0x030AB000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ list<Key> Keys
+ vec3 Color
+ float
+
+archive Key
+ timefloat Time
+ float Opacity

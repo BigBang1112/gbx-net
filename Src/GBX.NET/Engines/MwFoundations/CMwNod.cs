@@ -49,16 +49,56 @@ public partial class CMwNod : IClass
                 switch (chunk)
                 {
                     case IReadableWritableChunk<T> readableWritableT:
+
+                        if (readableWritableT.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readableWritableT).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readableWritableT.ReadWrite(node, rw);
+                        // TODO: validate chunk size
+
                         break;
                     case IReadableChunk<T> readableT:
+
+                        if (readableT.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readableT).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readableT.Read(node, r);
+                        // TODO: validate chunk size
+
                         break;
                     case IReadableWritableChunk readableWritable:
+
+                        if (readableWritable.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readableWritable.ReadWrite(node, rw);
+                        // TODO: validate chunk size
+
                         break;
                     case IReadableChunk readable:
+
+                        if (readable.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readable.Read(node, r);
+                        // TODO: validate chunk size
+
                         break;
                     case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
                         // TODO: possibility to skip (not read into memory)
@@ -81,6 +121,11 @@ public partial class CMwNod : IClass
             }
 
             // Unskippable chunk
+            if (chunk.Ignore)
+            {
+                throw new ChunkReadException(chunkId, prevChunkId, known: true);
+            }
+
             switch (chunk)
             {
                 case IReadableWritableChunk<T> readableWritableT:
@@ -143,13 +188,33 @@ public partial class CMwNod : IClass
                 switch (chunk)
                 {
                     case IReadableWritableChunk readableWritable:
+
+                        if (readableWritable.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readableWritable.ReadWrite(this, rw);
                         // TODO: validate chunk size
+
                         break;
+
                     case IReadableChunk readable:
+
+                        if (readable.Ignore)
+                        {
+                            // TODO: possibility to skip (not read into memory)
+                            ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                            break;
+                        }
+
                         readable.Read(this, r);
                         // TODO: validate chunk size
+
                         break;
+
                     case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
                         // TODO: possibility to skip (not read into memory)
                         skippable.Data = r.ReadBytes(chunkSize);
@@ -171,6 +236,11 @@ public partial class CMwNod : IClass
             }
 
             // Unskippable chunk
+            if (chunk.Ignore)
+            {
+                throw new ChunkReadException(chunkId, prevChunkId, known: true);
+            }
+
             switch (chunk)
             {
                 case IReadableWritableChunk readableWritable:

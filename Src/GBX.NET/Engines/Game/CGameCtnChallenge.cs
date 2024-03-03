@@ -41,9 +41,11 @@ public sealed partial class CGameCtnChallenge :
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     public IList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
-    private IList<CGameCtnZoneGenealogy>? genealogies;
+    private IList<CGameCtnZoneGenealogy>? zoneGenealogy;
+    public IList<CGameCtnZoneGenealogy>? ZoneGenealogy { get => zoneGenealogy; set => zoneGenealogy = value; }
 
-    public IList<CGameCtnZoneGenealogy>? Genealogies { get => genealogies; set => genealogies = value; }
+    private CScriptTraitsMetadata? scriptMetadata;
+    public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
     public int? NbBakedBlocks => bakedBlocks?.Count(x => x.Name != "Unassigned1");
 
@@ -235,7 +237,7 @@ public sealed partial class CGameCtnChallenge :
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadInt32();
+            U01 = r.ReadInt32(); // always 0
             var size = r.ReadInt32();
 
             using var _ = new Encapsulation(r);
@@ -486,15 +488,69 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class SBakedClipsAdditionalData;
+    public partial class Chunk03043043
+    {
+        public int U01;
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            U01 = r.ReadInt32(); // always 0
+            var size = r.ReadInt32();
+
+            using var _ = new Encapsulation(r);
+
+            n.zoneGenealogy = r.ReadListNodeRef<CGameCtnZoneGenealogy>()!;
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(U01);
+
+            using var ms = new MemoryStream();
+            using var wBuffer = new GbxWriter(ms);
+            using var _ = new Encapsulation(w);
+
+            wBuffer.WriteListNodeRef((n.zoneGenealogy ?? [])!);
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
+        }
+    }
+
+    public partial class Chunk03043044
+    {
+        public int U01;
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            U01 = r.ReadInt32(); // always 0
+            var size = r.ReadInt32();
+
+            using var _ = new Encapsulation(r);
+
+            n.scriptMetadata = r.ReadNode<CScriptTraitsMetadata>()!;
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(U01);
+
+            using var ms = new MemoryStream();
+            using var wBuffer = new GbxWriter(ms);
+            using var _ = new Encapsulation(w);
+
+            wBuffer.WriteNode(n.scriptMetadata!);
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
+        }
+    }
 
     public partial class Chunk03043048 : IVersionable
     {
-        public int Version { get; set; } = 6;
-
-        public bool U01;
-        public int U02;
+        public int Version { get; set; }
+        public int BlocksVersion { get; set; } = 6;
+        public int U01;
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
@@ -505,14 +561,14 @@ public sealed partial class CGameCtnChallenge :
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            U01 = r.ReadBoolean();
+            BlocksVersion = r.ReadInt32();
 
             var nbBakedBlocks = r.ReadInt32();
             n.bakedBlocks = new List<CGameCtnBlock>(nbBakedBlocks);
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(Version);
+                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
                 n.bakedBlocks.Add(block);
 
                 if (block.Flags == -1)
@@ -523,10 +579,10 @@ public sealed partial class CGameCtnChallenge :
 
             while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
-                n.bakedBlocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
+                n.bakedBlocks.Add(r.ReadReadable<CGameCtnBlock>(BlocksVersion));
             }
 
-            U02 = r.ReadInt32();
+            U01 = r.ReadInt32();
 
             n.BakedClipsAdditionalData = r.ReadListReadable<SBakedClipsAdditionalData>(Version);
         }
@@ -534,7 +590,7 @@ public sealed partial class CGameCtnChallenge :
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(Version);
-            w.Write(U01);
+            w.Write(BlocksVersion);
 
             w.Write(n.NbBakedBlocks.GetValueOrDefault());
 
@@ -542,15 +598,18 @@ public sealed partial class CGameCtnChallenge :
             {
                 foreach (var block in n.bakedBlocks)
                 {
-                    w.WriteWritable(block, Version);
+                    w.WriteWritable(block, BlocksVersion);
                 }
             }
 
-            w.Write(U02);
+            w.Write(U01);
 
             w.WriteListWritable(n.BakedClipsAdditionalData, Version);
         }
     }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class SBakedClipsAdditionalData;
 
     public partial class Chunk0304305F : IVersionable
     {
@@ -648,35 +707,6 @@ public sealed partial class CGameCtnChallenge :
                     item.ForegroundPackDesc = rw.PackDesc(item.ForegroundPackDesc);
                 }
             }
-        }
-    }
-
-    public partial class Chunk03043043
-    {
-        public int U01;
-
-        public override void Read(CGameCtnChallenge n, GbxReader r)
-        {
-            U01 = r.ReadInt32();
-            var sizeOfNodeWithClassID = r.ReadInt32();
-
-            using var _ = new Encapsulation(r);
-
-            n.genealogies = r.ReadListNodeRef<CGameCtnZoneGenealogy>()!;
-        }
-
-        public override void Write(CGameCtnChallenge n, GbxWriter w)
-        {
-            w.Write(U01);
-
-            using var ms = new MemoryStream();
-            using var wOwnIdState = new GbxWriter(ms);
-            using var _ = new Encapsulation(w);
-
-            wOwnIdState.WriteListNodeRef((n.genealogies ?? [])!);
-
-            w.Write((int)ms.Length);
-            w.Write(ms.ToArray());
         }
     }
 

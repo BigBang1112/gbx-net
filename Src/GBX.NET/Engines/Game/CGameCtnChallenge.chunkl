@@ -190,6 +190,14 @@ CGameCtnChallenge 0x03043000 // A map.
  bool // code hints to something with locking (NeedUnlock?)
 
 0x02D (skippable) // realtime thumbnail + comments
+ vec3 ThumbnailPosition
+ vec3 ThumbnailPitchYawRoll
+ float ThumbnailFov = 90
+ float // always 10
+ float // depth? 0 or 0.02
+ float ThumbnailNearClipPlane = -1
+ float ThumbnailFarClipPlane = -1
+ string Comments
 
 0x034 (skippable) [MP3, TMT, MP4, TM2020]
  data

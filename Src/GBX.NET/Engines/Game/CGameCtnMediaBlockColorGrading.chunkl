@@ -5,3 +5,8 @@ CGameCtnMediaBlockColorGrading 0x03186000
  packdesc Image
 
 0x001
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ float Intensity

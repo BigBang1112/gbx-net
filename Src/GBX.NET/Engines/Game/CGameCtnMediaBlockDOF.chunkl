@@ -1,4 +1,20 @@
 CGameCtnMediaBlockDOF 0x03126000
 - inherits: CGameCtnMediaBlock
 
-0x000 // version 0
+0x000
+ list<Key> Keys (version: 0)
+
+0x001
+ list<Key> Keys (version: 1)
+
+0x002
+ list<Key> Keys (version: 2)
+
+archive Key
+ timefloat Time
+ float ZFocus
+ float LensSize
+ v1+
+  int? Target
+  v2+
+   vec3? TargetPosition

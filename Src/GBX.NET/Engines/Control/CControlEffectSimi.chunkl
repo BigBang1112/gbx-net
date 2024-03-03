@@ -1,2 +1,42 @@
 CControlEffectSimi 0x07010000
 - inherits: CControlEffect
+
+0x001
+ list<Key> Keys (version: 1)
+ bool Centered
+
+0x002
+ list<Key> Keys (version: 2)
+ bool Centered
+
+0x004
+ list<Key> Keys (version: 4)
+ bool Centered
+ int<EColorBlendMode> ColorBlendMode
+ bool IsContinousEffect
+
+0x005
+ list<Key> Keys (version: 5)
+ bool Centered
+ int<EColorBlendMode> ColorBlendMode
+ bool IsContinousEffect
+ bool IsInterpolated
+
+enum EColorBlendMode
+ Set
+ Mult
+
+archive Key
+ timefloat Time
+ vec2 Position
+ float Rotation
+ vec2 Scale
+ v1+
+  float Opacity = 1
+  v2+
+   float Depth = 0.5f
+   v3+
+    float
+    float
+    float
+    float

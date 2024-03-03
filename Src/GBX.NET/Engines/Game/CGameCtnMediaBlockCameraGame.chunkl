@@ -2,11 +2,73 @@ CGameCtnMediaBlockCameraGame 0x03084000
 - inherits: CGameCtnMediaBlockCamera
 
 0x000
+ timefloat Start
+ timefloat End
+ int<EGameCamOld> GameCamOld
 
-0x001
+0x001 (base: 0x000)
+ base
+ int ClipEntId
 
 0x003
+ timefloat Start
+ timefloat End
+ id GameCamId
+ int ClipEntId
 
-0x005
+0x004 (base: 0x003)
+ base
+ vec3 CamPosition
+ vec3 CamPitchYawRoll
+ float CamFov = 90
+ float U01 // always 10
+ float U02 // depth? 0 or 0.02
+ float CamNearClipPlane = -1
+ float CamFarClipPlane = -1
 
-0x006
+0x005 (base: 0x004)
+ base
+ bool U03
+
+0x006 (base: 0x005)
+ base
+ bool U04
+
+0x007
+ version
+ timefloat Start
+ timefloat End
+ v1-
+  id GameCamId
+ v2+
+  int<EGameCam> GameCam
+ int ClipEntId
+ vec3 CamPosition
+ vec3 CamPitchYawRoll
+ float CamFov = 90
+ float U01 // always 10
+ float U02 // depth? 0 or 0.02
+ float CamNearClipPlane = -1
+ float CamFarClipPlane = -1
+ bool
+ bool
+ bool
+ v1+
+  float
+  v3+
+   int
+
+enum EGameCamOld
+ Behind
+ Close
+ Internal
+ Orbital
+
+enum EGameCam
+ Default
+ Internal
+ External
+ Helico
+ Free
+ Spectator
+ External_2
