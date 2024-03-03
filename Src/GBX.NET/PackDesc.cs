@@ -10,7 +10,7 @@ public sealed record PackDesc(string FilePath = "", ImmutableArray<byte> Checksu
     /// <summary>
     /// A default instance of <see cref=""/> with empty values.
     /// </summary>
-    public static readonly PackDesc Default = new();
+    public static readonly PackDesc Empty = new();
     
     /// <summary>
     /// Gets the locator URI of the file reference.
