@@ -18,6 +18,8 @@ CGameCtnAnchoredObject 0x03101000
    v6+
     float Scale
     v7+
+     if (Flags & 4) != 0
+      packdesc PackDesc
      v8+
       vec3?
       vec3?

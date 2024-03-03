@@ -4,6 +4,7 @@ using GBX.NET.Generators.Models;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GBX.NET.Generators.ChunkL;
 
@@ -88,35 +89,19 @@ internal sealed class MemberSerializationWriter
                 case ChunkIfStatement ifStatement:
                     sb.Append(indent, "if (");
 
-                    if (!string.IsNullOrEmpty(ifStatement.Left))
+                    foreach (var part in ifStatement.Condition)
                     {
-                        var isNot = ifStatement.Left[0] == '!';
+                        var isWord = Regex.IsMatch(part, @"^[^0-9]\w+$"); // does not start with a number and is azAZ09_
 
-                        if (isNot)
+                        if (isWord)
                         {
-                            sb.Append('!');
+                            if (!self && !IsUnknown(part))
+                            {
+                                sb.Append("n.");
+                            }
                         }
 
-                        var left = isNot ? ifStatement.Left.Substring(1) : ifStatement.Left;
-                        
-                        if (!self && !IsUnknown(left))
-                        {
-                            sb.Append("n.");
-                        }
-
-                        sb.Append(left);
-
-                        if (!string.IsNullOrEmpty(ifStatement.Operator))
-                        {
-                            sb.Append(' ');
-                            sb.Append(ifStatement.Operator);
-                        }
-
-                        if (!string.IsNullOrEmpty(ifStatement.Right))
-                        {
-                            sb.Append(' ');
-                            sb.Append(ifStatement.Right);
-                        }
+                        sb.Append(part);
                     }
 
                     sb.AppendLine(")");
