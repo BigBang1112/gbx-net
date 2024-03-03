@@ -5,6 +5,7 @@
 /// </summary>
 public enum GbxCompression : byte
 {
+    Unspecified,
     /// <summary>
     /// Compressed.
     /// </summary>

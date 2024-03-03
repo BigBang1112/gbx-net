@@ -2,6 +2,7 @@
 
 public enum GbxUnknownByte : byte
 {
+    Unspecified,
     /// <summary>
     /// E(arly access).
     /// </summary>

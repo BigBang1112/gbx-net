@@ -5,7 +5,7 @@ namespace GBX.NET;
 /// <summary>
 /// [CSystemPackDesc] Description of a file reference. Also known as "fileref".
 /// </summary>
-public record PackDesc(string FilePath = "", ImmutableArray<byte> Checksum = default, string? LocatorUrl = "")
+public sealed record PackDesc(string FilePath = "", ImmutableArray<byte> Checksum = default, string? LocatorUrl = "")
 {
     /// <summary>
     /// A default instance of <see cref=""/> with empty values.
@@ -15,9 +15,14 @@ public record PackDesc(string FilePath = "", ImmutableArray<byte> Checksum = def
     /// <summary>
     /// Gets the locator URI of the file reference.
     /// </summary>
-    /// <returns>A Uri object if LocatorUrl is specified, otherwise null.</returns>
+    /// <returns>A Uri object if <see cref="LocatorUrl"/> is specified, otherwise null.</returns>
     public Uri? GetLocatorUri()
     {
         return string.IsNullOrEmpty(LocatorUrl) ? null : new Uri(LocatorUrl);
+    }
+
+    public override string ToString()
+    {
+        return $"PackDesc: \"{FilePath}\" ({LocatorUrl})";
     }
 }
