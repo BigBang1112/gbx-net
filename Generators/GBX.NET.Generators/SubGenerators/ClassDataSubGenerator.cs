@@ -828,14 +828,14 @@ internal class ClassDataSubGenerator
         var fieldsWriter = new ChunkLFieldsWriter(sb, chunk, existingChunkMembers, context);
         fieldsWriter.Append();
 
-        var generationOptionsAtt = chunk.TypeSymbol?.GetAttributes()
-            .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkGenerationOptionsAttribute");
-
-        var structureKind = generationOptionsAtt?.NamedArguments
-            .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?;
-
-        if (chunk.ChunkLDefinition?.Members.Count > 0)
+        if (chunk.ChunkLDefinition?.Members.Count > 0 && !chunk.ChunkLDefinition.Properties.ContainsKey("demonstration"))
         {
+            var generationOptionsAtt = chunk.TypeSymbol?.GetAttributes()
+                .FirstOrDefault(x => x.AttributeClass?.Name == "ChunkGenerationOptionsAttribute");
+
+            var structureKind = generationOptionsAtt?.NamedArguments
+                .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?;
+
             //var existingProps = existingChunkMembers.OfType<IPropertySymbol>()
             //    .ToImmutableDictionary(x => x.Name);
 

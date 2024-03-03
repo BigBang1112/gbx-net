@@ -40,7 +40,7 @@ internal class ChunkLPropertiesWriter
         {
             foreach (var item in classInfo.HeaderChunks.Concat(classInfo.Chunks))
             {
-                if (item.Value.ChunkLDefinition is null)
+                if (item.Value.ChunkLDefinition is null || item.Value.ChunkLDefinition.Properties.ContainsKey("demonstration"))
                 {
                     continue;
                 }

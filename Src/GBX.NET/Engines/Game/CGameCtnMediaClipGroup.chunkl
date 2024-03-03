@@ -1,1 +1,43 @@
 CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
+
+0x001 (demonstration)
+ CGameCtnMediaClip[]_deprec Clips
+ Trigger[] Triggers (version: 1)
+
+0x002 (demonstration)
+ CGameCtnMediaClip[]_deprec Clips
+ Trigger[] Triggers (version: 2)
+
+0x003 (demonstration)
+ CGameCtnMediaClip[]_deprec Clips
+ Trigger[] Triggers (version: 3)
+
+0x004
+ int
+
+archive Trigger
+ v0=
+  return
+ v2-
+  list<int3> Coords
+ v2+
+  int
+  int
+  int
+  int
+  v3+
+   int<ECondition> Condition
+   float ConditionValue
+   list<int3> Coords
+
+enum ECondition
+ None
+ RaceTimeLessThan
+ RaceTimeGreaterThan
+ AlreadyTriggered
+ SpeedLessThan
+ SpeedGreaterThan
+ NotAlreadyTriggered
+ MaxPlayCount
+ RandomOnce
+ Random
