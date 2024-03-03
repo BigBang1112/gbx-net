@@ -1,5 +1,6 @@
 ﻿using GBX.NET;
 using GBX.NET.LZO;
+using System.Diagnostics;
 
 if (args.Length == 0)
 {
@@ -16,7 +17,10 @@ while (true)
 {
     try
     {
+        var stopwatch = Stopwatch.StartNew();
         var gbx = Gbx.ParseNode(fileName);
+        stopwatch.Stop();
+        Console.WriteLine($"Parsed in {stopwatch.Elapsed.TotalMilliseconds}ms");
     }
     catch (Exception ex)
     {
