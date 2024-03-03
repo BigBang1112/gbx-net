@@ -256,7 +256,7 @@ public sealed partial class CGameCtnChallenge :
             if (Version >= 5)
             {
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
-                var usedBlocks = new CGameCtnBlock[blockIndexes.Length];
+                var usedBlocks = new CGameCtnBlock?[blockIndexes.Length];
                 var blocksWithoutUnassigned = n.blocks!.Where(x => x.Flags != -1).ToArray();
 
                 for (var i = 0; i < blockIndexes.Length; i++)
@@ -395,14 +395,14 @@ public sealed partial class CGameCtnChallenge :
                 var usedItemIndexHashSet = new HashSet<(int itemIndex, int group)>();
                 var usedItemIndexList = new List<(int itemIndex, int group)>();
 
-                var indiciesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
-                var snappedOnIndicies = new List<int>(n.anchoredObjects?.Count ?? 0);
+                var indicesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
+                var snappedOnIndices = new List<int>(n.anchoredObjects?.Count ?? 0);
 
                 foreach (var item in n.GetAnchoredObjects())
                 {
                     if (item.SnappedOnBlock is null && item.SnappedOnItem is null)
                     {
-                        snappedOnIndicies.Add(-1);
+                        snappedOnIndices.Add(-1);
                         continue;
                     }
 
@@ -445,14 +445,14 @@ public sealed partial class CGameCtnChallenge :
                         }
                     }
 
-                    if (indiciesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
+                    if (indicesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
                     {
-                        snappedOnIndicies.Add(indexOfBlockOrItemIndex);
+                        snappedOnIndices.Add(indexOfBlockOrItemIndex);
                     }
                     else
                     {
-                        indiciesOnUsedBlocksAndItems[unique] = indiciesOnUsedBlocksAndItems.Count;
-                        snappedOnIndicies.Add(indiciesOnUsedBlocksAndItems.Count - 1);
+                        indicesOnUsedBlocksAndItems[unique] = indicesOnUsedBlocksAndItems.Count;
+                        snappedOnIndices.Add(indicesOnUsedBlocksAndItems.Count - 1);
                     }
                 }
 
@@ -478,7 +478,7 @@ public sealed partial class CGameCtnChallenge :
                     itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
                 }
 
-                itemW.WriteArray(snappedOnIndicies.ToArray());
+                itemW.WriteArray(snappedOnIndices.ToArray());
             }
 
             w.Write((int)itemMs.Length);

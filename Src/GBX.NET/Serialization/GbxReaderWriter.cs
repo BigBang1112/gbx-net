@@ -177,14 +177,12 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     {
         if (Reader is not null && length != 0)
         {
-            if (length < 0)
+            switch (length)
             {
-                throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
-            }
-
-            if (length < 0 || length > 0x10000000) // ~268MB
-            {
-                throw new Exception($"Length is too big to handle ({length}).");
+                case < 0:
+                    throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+                case < 0 or > 0x10000000: // ~268MB
+                    throw new Exception($"Length is too big to handle ({length}).");
             }
 
             var array = new T[length];
@@ -264,14 +262,12 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     {
         if (Reader is not null && length != 0)
         {
-            if (length < 0)
+            switch (length)
             {
-                throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
-            }
-
-            if (length < 0 || length > 0x10000000) // ~268MB
-            {
-                throw new Exception($"Length is too big to handle ({length}).");
+                case < 0:
+                    throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+                case < 0 or > 0x10000000: // ~268MB
+                    throw new Exception($"Length is too big to handle ({length}).");
             }
 
             var list = new List<T>(length);

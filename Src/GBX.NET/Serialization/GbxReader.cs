@@ -965,7 +965,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var l = lengthInBytes ? length : Marshal.SizeOf<T>() * length;
 
-        if (l < 0 || l > 0x10000000) // ~268MB
+        if (l is < 0 or > 0x10000000) // ~268MB
         {
             throw new Exception($"Length is too big to handle ({(l < 0 ? length : l)}).");
         }

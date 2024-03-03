@@ -42,7 +42,7 @@ public interface IGbx
 #endif
 }
 
-public interface IGbx<T> : IGbx where T : notnull, CMwNod
+public interface IGbx<out T> : IGbx where T : CMwNod
 {
     new T Node { get; }
 }
@@ -408,7 +408,7 @@ public partial class Gbx : IGbx
     }
 }
 
-public class Gbx<T> : Gbx, IGbx<T> where T : notnull, CMwNod
+public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
 {
     public new T Node => (T)(base.Node ?? throw new Exception("Null node is not expected here."));
 

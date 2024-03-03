@@ -22,10 +22,11 @@ var options = new JsonSerializerOptions
     WriteIndented = true,
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
 };
-options.Converters.Add(new JsonNumberTimeInt32Converter());
+options.Converters.Add(new JsonStringTimeInt32Converter());
 options.Converters.Add(new JsonNumberTimeSingleConverter());
 options.Converters.Add(new JsonInt3Converter());
 options.Converters.Add(new JsonStringEnumConverter());
 options.Converters.Add(new JsonChunkConverter());
+options.Converters.Add(new JsonClassConverter());
 
 JsonSerializer.Serialize(stream, gbx, gbx.GetType(), options);
