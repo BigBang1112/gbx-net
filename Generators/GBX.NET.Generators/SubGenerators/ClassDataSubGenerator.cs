@@ -812,11 +812,27 @@ internal class ClassDataSubGenerator
 
         AppendChunkIdMemberLine(sb, existingChunkMembers, chunk.Id, chunk.TypeSymbol?.IsValueType ?? false, context);
 
-        if (isHeaderChunk && isStructChunk)
+        if (isStructChunk)
         {
+            if (isHeaderChunk)
+            {
+                sb.AppendLine();
+                sb.AppendLine("        /// <inheritdoc />");
+                sb.AppendLine("        public bool IsHeavy { get; set; }");
+            }
+
             sb.AppendLine();
             sb.AppendLine("        /// <inheritdoc />");
-            sb.AppendLine("        public bool IsHeavy { get; set; }");
+            sb.AppendLine("        public bool Ignore => false;");
+        }
+        else
+        {
+            if (chunk.ChunkLDefinition?.Properties.ContainsKey("ignore") == true)
+            {
+                sb.AppendLine();
+                sb.AppendLine("        /// <inheritdoc />");
+                sb.AppendLine("        public override bool Ignore => true;");
+            }
         }
 
         if (isVersionableAutomated)
@@ -941,6 +957,7 @@ internal class ClassDataSubGenerator
             return;
         }
 
+        sb.AppendLine("        /// <inheritdoc />");
         sb.Append("        public ");
         sb.Append(isStruct ? "readonly" : "override");
         sb.Append(" uint Id => 0x");

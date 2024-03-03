@@ -10,6 +10,8 @@ public interface IChunk
     /// </summary>
     uint Id { get; }
 
+    bool Ignore { get; }
+
     IChunk DeepClone();
 }
 
@@ -20,6 +22,8 @@ public abstract class Chunk : IReadableWritableChunk
 {
     /// <inheritdoc />
     public abstract uint Id { get; }
+
+    public virtual bool Ignore => false;
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, GbxReaderWriter rw)

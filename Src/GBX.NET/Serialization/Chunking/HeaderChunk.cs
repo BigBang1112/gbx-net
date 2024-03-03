@@ -30,6 +30,8 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
     /// </summary>
     public byte[] Data { get; set; } = [];
 
+    public bool Ignore => false;
+
     public IChunk DeepClone()
     {
         return new HeaderChunk(Id)

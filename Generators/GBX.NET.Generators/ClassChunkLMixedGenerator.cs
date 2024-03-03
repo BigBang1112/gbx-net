@@ -86,7 +86,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
                 if (name == "CMwNod") inherits = null;
 
                 var nestedTypeSymbols = symbol?.GetTypeMembers()
-                    .ToImmutableDictionary(x => x.Name) ?? ImmutableDictionary<string, INamedTypeSymbol>.Empty;
+                    .ToImmutableDictionary(x => x.Name + (x.IsGenericType ? "<>" : "")) ?? ImmutableDictionary<string, INamedTypeSymbol>.Empty;
 
                 var headerChunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
                 var chunkDict = ImmutableDictionary.CreateBuilder<uint, ChunkDataModel>();
