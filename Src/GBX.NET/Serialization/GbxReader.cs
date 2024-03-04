@@ -128,7 +128,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private bool enablePreviousStringCache;
     public bool EnablePreviousStringCache { get => enablePreviousStringCache; set => enablePreviousStringCache = value; }
 
-    private GbxRefTable? refTable;
+    private IReadOnlyDictionary<int, GbxRefTableFile>? refTable;
     private readonly XmlReader? xmlReader;
 
     private int? idVersion;
@@ -174,12 +174,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private GbxReaderLimiter? limiter;
 
-    public GbxReader(Stream input, GbxRefTable? refTable = null) : base(input, encoding)
+    public GbxReader(Stream input, IReadOnlyDictionary<int, GbxRefTableFile>? refTable = null) : base(input, encoding)
     {
         this.refTable = refTable;
     }
 
-    public GbxReader(Stream input, bool leaveOpen, GbxRefTable? refTable = null) : base(input, encoding, leaveOpen)
+    public GbxReader(Stream input, bool leaveOpen, IReadOnlyDictionary<int, GbxRefTableFile>? refTable = null) : base(input, encoding, leaveOpen)
     {
         this.refTable = refTable;
     }

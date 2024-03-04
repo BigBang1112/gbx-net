@@ -115,8 +115,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 {
     private static readonly Encoding encoding = Encoding.UTF8;
 
+    private IReadOnlyDictionary<object, int>? refTable;
     private readonly XmlWriter? xmlWriter;
-
     private const int IdVersionToWrite = 3;
 
     private int? idVersion;
@@ -162,12 +162,14 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     /// 
     /// </summary>
     /// <param name="output"></param>
-    public GbxWriter(Stream output) : base(output, encoding)
+    public GbxWriter(Stream output, IReadOnlyDictionary<object, int>? refTable = null) : base(output, encoding)
     {
+        this.refTable = refTable;
     }
 
-    public GbxWriter(Stream output, bool leaveOpen) : base(output, encoding, leaveOpen)
+    public GbxWriter(Stream output, bool leaveOpen, IReadOnlyDictionary<object, int>? refTable = null) : base(output, encoding, leaveOpen)
     {
+        this.refTable = refTable;
     }
 
     public GbxWriter(XmlWriter output) : base(Stream.Null, encoding)
