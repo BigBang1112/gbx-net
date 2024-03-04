@@ -316,7 +316,11 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Compress(Stream input, Stream output) => GbxCompressionUtils.Compress(input, output);
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
+    {
+        return GbxCompressionUtils.CompressAsync(input, output, cancellationToken);
+    }
 
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
@@ -368,7 +372,11 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Decompress(Stream input, Stream output) => GbxCompressionUtils.Decompress(input, output);
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
+    {
+        return await GbxCompressionUtils.DecompressAsync(input, output, cancellationToken);
+    }
 
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentNullException"></exception>

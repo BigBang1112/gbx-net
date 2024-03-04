@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET;
 
-internal static class GbxCompressionUtils
+internal static partial class GbxCompressionUtils
 {
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
@@ -8,7 +8,8 @@ internal static class GbxCompressionUtils
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Compress(Stream input, Stream output)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
         Validate(input, output);
 
@@ -27,21 +28,21 @@ internal static class GbxCompressionUtils
 
         if (compressedBody != 'U')
         {
-            input.CopyTo(output);
+            await input.CopyToAsync(output, bufferSize: 81920, cancellationToken);
 
             return false;
         }
 
         w.Write('C');
 
-        CopyRestOfTheHeader(version, r, w);
+        await CopyRestOfTheHeaderAsync(version, r, w, cancellationToken);
 
-        var uncompressedData = r.ReadToEnd();
+        var uncompressedData = await r.ReadToEndAsync(cancellationToken);
         var compressedData = Gbx.LZO.Compress(uncompressedData);
 
         w.Write(uncompressedData.Length);
         w.Write(compressedData.Length);
-        w.Write(compressedData);
+        await w.WriteAsync(compressedData, cancellationToken);
 
         return true;
     }
@@ -52,7 +53,8 @@ internal static class GbxCompressionUtils
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Decompress(Stream input, Stream output)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
         Validate(input, output);
 
@@ -72,21 +74,22 @@ internal static class GbxCompressionUtils
         if (compressedBody != 'C')
         {
             w.Write(compressedBody);
-            input.CopyTo(output);
+            await input.CopyToAsync(output, bufferSize: 81920, cancellationToken);
 
             return false;
         }
 
         w.Write('U');
 
-        CopyRestOfTheHeader(version, r, w);
+        await CopyRestOfTheHeaderAsync(version, r, w, cancellationToken);
 
         var uncompressedSize = r.ReadInt32();
-        var compressedData = r.ReadData();
+        var compressedSize = r.ReadInt32();
+        var compressedData = await r.ReadBytesAsync(compressedSize, cancellationToken);
 
         var buffer = new byte[uncompressedSize];
         Gbx.LZO.Decompress(compressedData, buffer);
-        w.Write(buffer);
+        await w.WriteAsync(buffer, cancellationToken);
 
         return true;
     }
@@ -149,7 +152,8 @@ internal static class GbxCompressionUtils
         return version;
     }
 
-    private static void CopyRestOfTheHeader(short version, GbxReader r, GbxWriter w)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    private static async Task CopyRestOfTheHeaderAsync(short version, GbxReader r, GbxWriter w, CancellationToken cancellationToken)
     {
         if (version >= 4)
         {
@@ -160,7 +164,7 @@ internal static class GbxCompressionUtils
 
         if (version >= 6)
         {
-            w.WriteData(r.ReadData()); // User data
+            await w.WriteDataAsync(await r.ReadDataAsync(cancellationToken), cancellationToken); // User data
         }
 
         w.Write(r.ReadInt32()); // Num nodes

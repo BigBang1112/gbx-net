@@ -51,7 +51,9 @@ public partial interface IGbxReader : IDisposable
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
     byte[] ReadData();
+    Task<byte[]> ReadDataAsync(CancellationToken cancellationToken = default);
     byte[] ReadData(int length);
+    Task<byte[]> ReadDataAsync(int length, CancellationToken cancellationToken = default);
     byte[] ReadBytes(int count);
     Task<byte[]> ReadBytesAsync(int count, CancellationToken cancellationToken = default);
     string ReadString();
@@ -559,14 +561,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         
     }
 
-    public byte[] ReadData()
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<byte[]> ReadDataAsync(CancellationToken cancellationToken = default)
     {
-        return ReadBytes(ReadInt32());
+        return await ReadBytesAsync(ReadInt32(), cancellationToken);
     }
 
-    public byte[] ReadData(int length)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<byte[]> ReadDataAsync(int length, CancellationToken cancellationToken = default)
     {
-        return ReadBytes(length);
+        return await ReadBytesAsync(length, cancellationToken);
     }
 
     public override byte[] ReadBytes(int count)

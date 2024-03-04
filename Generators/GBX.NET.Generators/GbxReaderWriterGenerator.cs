@@ -252,6 +252,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         {
                             bool b => b ? "true" : "false",
                             string s => $"\"{s}\"",
+                            null => "default",
                             _ => parameter.ExplicitDefaultValue
                         });
                     }
@@ -308,6 +309,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 {
                     var isNullableVariant = i == 1;
 
+                    if (writerMethod.ReturnType.Name == "Task")
+                    {
+                        continue;
+                    }
+                    
                     sbInterface.Append("    void ");
 
                     if (isNamed)
@@ -370,6 +376,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             {
                                 bool b => b ? "true" : "false",
                                 string s => $"\"{s}\"",
+                                null => "default",
                                 _ => parameter.ExplicitDefaultValue
                             });
                         }
@@ -527,6 +534,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 }
 
                 sbClass.Append("    public ");
+
+                if (writerMethod.ReturnType.Name == "Task")
+                {
+                    sbClass.Append("async ");
+                }
+
                 sbClass.Append(writerMethod.Parameters.Length > 0 && writerMethod.Parameters[0].Type.Name == readerMethod.ReturnType.Name
                     ? writerMethod.Parameters[0].Type : readerMethod.ReturnType);
 
@@ -596,6 +609,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         {
                             bool b => b ? "true" : "false",
                             string s => $"\"{s}\"",
+                            null => "default",
                             _ => parameter.ExplicitDefaultValue
                         });
                     }
@@ -663,6 +677,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbClass.Append("        if (Reader is not null) ");
                     sbClass.Append(writerMethod.Parameters.IsEmpty ? "value" : writerMethod.Parameters[0].Name);
                     sbClass.Append(" = ");
+
+                    if (readerMethod.ReturnType.Name == "Task")
+                    {
+                        sbClass.Append("await ");
+                    }
+
                     sbClass.Append("Reader.");
                 }
                 
@@ -723,7 +743,16 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 sbClass.AppendLine(");");
 
                 // Writer
-                sbClass.Append("        Writer?.");
+
+                if (writerMethod.ReturnType.Name == "Task")
+                {
+                    sbClass.Append("        if (Writer is not null) await Writer.");
+                }
+                else
+                {
+                    sbClass.Append("        Writer?.");
+                }
+
                 sbClass.Append(writerMethod.Name);
                 sbClass.Append('(');
 
@@ -765,6 +794,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
                 {
                     var isNullableVariant = i == 1;
+
+                    if (writerMethod.ReturnType.Name == "Task")
+                    {
+                        continue;
+                    }
 
                     sbClass.Append("    public void ");
 
@@ -827,6 +861,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             {
                                 bool b => b ? "true" : "false",
                                 string s => $"\"{s}\"",
+                                null => "default",
                                 _ => parameter.ExplicitDefaultValue
                             });
                         }
@@ -871,6 +906,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     sbClass.Append(" => ");
                     sbClass.Append(writerMethod.Parameters[0].Name);
                     sbClass.Append(" = ");
+
+                    if (writerMethod.ReturnType.Name == "Task")
+                    {
+                        sbClass.Append("await ");
+                    }
+
                     sbClass.Append(methodType);
                     sbClass.Append('(');
 

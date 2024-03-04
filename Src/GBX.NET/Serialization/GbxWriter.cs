@@ -67,13 +67,15 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeOfDay(TimeSpan? value);
     void WriteFileTime(DateTime value);
     void WriteSmallLen(int value);
-    void WriteSmallString(string value);
+    void WriteSmallString(string? value);
     void WriteMarker(string value);
     void WriteWritable<T>(T value, int version = 0) where T : IWritable;
     void WriteDeprecVersion();
 
     void Write(byte[]? value);
+    Task WriteAsync(byte[]? value, CancellationToken cancellationToken = default);
     void WriteData(byte[]? value);
+    Task WriteDataAsync(byte[]? value, CancellationToken cancellationToken = default);
     void WriteData(byte[]? value, int length);
 
     void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct;
@@ -717,8 +719,14 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write((ushort)(value >> 7));
     }
 
-    public void WriteSmallString(string value)
+    public void WriteSmallString(string? value)
     {
+        if (value is null)
+        {
+            WriteSmallLen(0);
+            return;
+        }
+
         WriteSmallLen(value.Length);
         Write(value, StringLengthPrefix.None);
     }
@@ -819,7 +827,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #endif
     }
 
-    public void WriteData(byte[]? value)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task WriteDataAsync(byte[]? value, CancellationToken cancellationToken = default)
     {
         if (value is null)
         {
@@ -828,7 +837,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
 
         Write(value.Length);
-        Write(value);
+        await WriteAsync(value, cancellationToken);
+    }
+
+    public async Task WriteAsync(byte[]? value, CancellationToken cancellationToken = default)
+    {
+        var buffer = value ?? [];
+
+#if NETSTANDARD2_0
+        await BaseStream.WriteAsync(buffer, 0, buffer.Length, cancellationToken);
+#else
+        await BaseStream.WriteAsync(buffer, cancellationToken);
+#endif
     }
 
     public void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct
