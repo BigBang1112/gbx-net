@@ -137,8 +137,6 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
-    public partial struct HeaderChunk03043005;
-
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
     {

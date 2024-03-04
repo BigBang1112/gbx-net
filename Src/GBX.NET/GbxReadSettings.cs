@@ -3,7 +3,6 @@
 public readonly record struct GbxReadSettings
 {
     public bool SkipUserData { get; init; }
-    public bool SkipLengthValidation { get; init; }
     public bool SkipDataUntilLengthMatches { get; init; }
     public SerializationMode DeserializationMode { get; init; }
 
