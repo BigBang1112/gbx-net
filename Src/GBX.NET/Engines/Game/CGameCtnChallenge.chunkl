@@ -249,7 +249,7 @@ CGameCtnChallenge 0x03043000 // A map.
  v2+
   CGameCtnMediaClip ClipAmbiance
  v1+
-  int3 TriggerSize
+  int3 ClipTriggerSize
 
 0x04B (skippable) [MP3, TMT, MP4, TM2020] // objectives
  string ObjectiveTextAuthor
@@ -264,6 +264,9 @@ CGameCtnChallenge 0x03043000 // A map.
 0x04F (skippable, ignore) [MP3, TMT, MP4, TM2020]
 
 0x050 (skippable) [MP3, TMT, MP4, TM2020] // offzones
+ version
+ int3 OffzoneTriggerSize
+ list<boxint3> Offzones
 
 0x051 (skippable) [MP3, TMT, MP4, TM2020] // title info
  version
@@ -275,6 +278,8 @@ CGameCtnChallenge 0x03043000 // A map.
  int DecoBaseHeightOffset
 
 0x053 (skippable) [MP3, TMT, MP4, TM2020] // bot paths
+ version
+ list<BotPath> BotPaths
 
 0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
 

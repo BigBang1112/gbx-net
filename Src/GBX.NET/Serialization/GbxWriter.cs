@@ -47,7 +47,8 @@ public partial interface IGbxWriter : IDisposable
     void Write(Vec2 value);
     void Write(Vec3 value);
     void Write(Vec4 value);
-    void Write(Box value);
+    void Write(BoxAligned value);
+    void Write(BoxInt3 value);
     void Write(Color value);
     void Write(Iso4 value);
     void Write(Mat3 value);
@@ -422,7 +423,17 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.W);
     }
 
-    public void Write(Box value)
+    public void Write(BoxAligned value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.X2);
+        Write(value.Y2);
+        Write(value.Z2);
+    }
+
+    public void Write(BoxInt3 value)
     {
         Write(value.X);
         Write(value.Y);

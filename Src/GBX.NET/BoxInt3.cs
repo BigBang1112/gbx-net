@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET;
 
 /// <summary>
-/// [GmBoxAligned]
+/// [GmBoxNat3]
 /// </summary>
 /// <param name="X"></param>
 /// <param name="Y"></param>
@@ -9,7 +9,7 @@
 /// <param name="X2"></param>
 /// <param name="Y2"></param>
 /// <param name="Z2"></param>
-public readonly record struct Box(float X, float Y, float Z, float X2, float Y2, float Z2)
+public readonly record struct BoxInt3(int X, int Y, int Z, int X2, int Y2, int Z2)
 {
-    public static readonly Box Zero = new();
+    public static readonly BoxInt3 Zero = new();
 }

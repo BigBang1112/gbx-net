@@ -36,4 +36,4 @@ CPlugVisual 0x09006000
 archive Split
  int
  int
- Box BoundingBox
+ box BoundingBox

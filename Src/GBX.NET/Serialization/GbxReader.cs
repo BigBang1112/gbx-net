@@ -41,7 +41,8 @@ public partial interface IGbxReader : IDisposable
     Vec2 ReadVec2();
     Vec3 ReadVec3();
     Vec4 ReadVec4();
-    Box ReadBox();
+    BoxAligned ReadBoxAligned();
+    BoxInt3 ReadBoxInt3();
     Color ReadColor();
     Iso4 ReadIso4();
     Mat3 ReadMat3();
@@ -367,14 +368,24 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(ReadSingle(), ReadSingle(), ReadSingle(), ReadSingle());
     }
 
-    public Box ReadBox()
+    public BoxAligned ReadBoxAligned()
     {
-        return new Box(X: ReadSingle(),
-                       Y: ReadSingle(),
-                       Z: ReadSingle(),
-                       X2: ReadSingle(),
-                       Y2: ReadSingle(),
-                       Z2: ReadSingle());
+        return new BoxAligned(X: ReadSingle(),
+                              Y: ReadSingle(),
+                              Z: ReadSingle(),
+                              X2: ReadSingle(),
+                              Y2: ReadSingle(),
+                              Z2: ReadSingle());
+    }
+
+    public BoxInt3 ReadBoxInt3()
+    {
+        return new BoxInt3(X: ReadInt32(),
+                           Y: ReadInt32(),
+                           Z: ReadInt32(),
+                           X2: ReadInt32(),
+                           Y2: ReadInt32(),
+                           Z2: ReadInt32());
     }
 
     public Color ReadColor()

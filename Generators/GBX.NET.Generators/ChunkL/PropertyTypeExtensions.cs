@@ -1,14 +1,14 @@
 ﻿using ChunkL.Structure;
 using System.Collections;
 using System.Collections.Immutable;
-using System.Numerics;
 using System.Text;
 
 namespace GBX.NET.Generators.ChunkL;
 
 internal static class PropertyTypeExtensions
 {
-    private static readonly ImmutableHashSet<string> valueTypes = ImmutableHashSet.Create(
+    private static readonly ImmutableHashSet<string> valueTypes =
+    [
         "bool",
         "byte",
         "sbyte",
@@ -30,19 +30,23 @@ internal static class PropertyTypeExtensions
         "Int3",
         "Int4",
         "Byte3",
-        "Box",
+        "BoxAligned",
+        "BoxInt3",
         "Quat",
         "Id",
         "TimeInt32",
         "TimeSingle",
-        "Iso4");
+        "Iso4",
+    ];
 
-    private static readonly ImmutableHashSet<string> keywords = ImmutableHashSet.Create(
+    private static readonly ImmutableHashSet<string> keywords =
+    [
         "return",
         "throw",
         "version",
         "versionb",
-        "base");
+        "base"
+    ];
 
     public static bool IsKeyword(this PropertyType propertyType)
     {
@@ -110,7 +114,8 @@ internal static class PropertyTypeExtensions
             "mat3" => "Mat3",
             "mat4" => "Mat4",
             "iso4" => "Iso4",
-            "box" => "Box",
+            "boxaligned" or "box" => "BoxAligned",
+            "boxint3" => "BoxInt3",
             "quat" => "Quat",
             "color" => "Color",
             "rect" => "Rect",
