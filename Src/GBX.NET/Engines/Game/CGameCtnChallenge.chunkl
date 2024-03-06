@@ -208,7 +208,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x03A (skippable, ignore)
 
-0x03D (skippable) [MP3, TMT, MP4] // lightmaps
+0x03D (skippable, ignore) [MP3, TMT, MP4] // lightmaps
 
 0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
  version
@@ -301,13 +301,24 @@ CGameCtnChallenge 0x03043000 // A map.
  if U01 > 0
   throw
 
-0x059 (skippable) [MP4, TM2020]
+0x059 (skippable) [MP4, TM2020] // world distortion
+ version
+ vec3 WorldDistortion
+ v0=
+  CPlugBitmap U01
+ v1+
+  bool U02
+  if U02
+   throw
+  v3+
+   int
+   int
 
 0x05A (skippable) [TM2020]
  int
  int
 
-0x05B (skippable) [TM2020] // lightmaps
+0x05B (skippable, ignore) [TM2020] // lightmaps
 
 0x05C (skippable, ignore) [TM2020]
 

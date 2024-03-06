@@ -1,3 +1,7 @@
-CPlugEntRecordData 0x0911F000
+CPlugEntRecordData 0x0911F000 // Entity data in a timeline.
 
 0x000
+ version
+ v5+
+  int UncompressedSize
+  data Data

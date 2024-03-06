@@ -1,5 +1,72 @@
 CGameCtnMediaBlockEntity 0x0329F000
 - inherits: CGameCtnMediaBlock
 
+0x000
+ version
+ CPlugEntRecordData RecordData
+ v3-
+  timefloat Start
+  timefloat End
+ timefloat StartOffset
+ int[] NoticeRecords // SPlugEntRecord array
+ v2+
+  bool NoDamage
+  bool
+  bool ForceLight
+  bool ForceHue
+  v5-
+   vec3 LightTrailColor
+  v3+
+   v11+
+    int
+   ident PlayerModel = empty
+   vec3? // some rgb, new light trail color?
+   list<PackDesc> SkinNames // name assumed from getter
+   bool HasBadges
+   if HasBadges
+    SBadge Badge
+   v4+
+    v11+
+     string? SkinOptions
+    list<Key> Keys (version: Version)
+    v5=
+     float
+    v7+
+     string? GhostName
+     v8+
+      int
+      v11+
+       int
+       int
+
 0x002 // SkinOptions
  string? SkinOptions
+
+enum ELights
+ Auto
+ On
+ Off
+ 
+archive SBadge
+ int Version
+ vec3 Color
+ v0=
+  int
+  string
+ list<SSticker> Stickers
+ list<string> Layers
+
+archive SSticker
+ string
+ string
+
+archive Key
+ timefloat Time
+ int<ELights> Lights
+ v6+
+  float?
+  int?
+  int?
+  float TrailIntensity
+  v9+
+   float SelfIllumIntensity
