@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Serialization.Chunking;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Serialization.Chunking;
 
 public abstract class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : IClass
 {
@@ -12,4 +14,6 @@ public abstract class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : IC
         clone.Data = Data?.ToArray();
         return clone;
     }
+
+    public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} skippable chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

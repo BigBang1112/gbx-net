@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Serialization.Chunking;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// A data chunk located in the header part.
@@ -40,4 +42,6 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
             Data = Data.ToArray()
         };
     }
+
+    public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} unknown header chunk 0x{Id:X8}";
 }

@@ -27,4 +27,6 @@ public abstract class HeaderChunk<T> : Chunk<T>, IHeaderChunk<T> where T : IClas
     {
         throw new NotImplementedException($"Header chunk 0x{Id:X8} ({ClassManager.GetName(Id & 0xFFFFF000)}, Write) is not implemented.");
     }
+
+    public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} header chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

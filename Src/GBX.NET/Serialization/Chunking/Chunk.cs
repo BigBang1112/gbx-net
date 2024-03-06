@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Serialization.Chunking;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Serialization.Chunking;
 
 /// <summary>
 /// A data chunk.
@@ -46,4 +48,6 @@ public abstract class Chunk : IReadableWritableChunk
     public virtual void Write(IClass n, GbxWriter w) { }
 
     public abstract IChunk DeepClone();
+
+    public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }
