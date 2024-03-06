@@ -887,7 +887,7 @@ public sealed partial class CGameCtnChallenge :
                 item.MacroblockReference = instance;
             }
 
-            var idFlagsPair = r.ReadArray<(int, int)>();
+            var idFlagsPair = r.ReadArray<Int2>();
 
             foreach (var (id, flags) in idFlagsPair)
             {
