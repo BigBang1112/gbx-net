@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO.Compression;
+using System.Text;
 
 namespace GBX.NET.Engines.Game;
 
@@ -54,6 +55,10 @@ public sealed partial class CGameCtnChallenge :
 
     public IList<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
+    public byte[]? EmbeddedDataZip { get; set; }
+
+    private IList<string>? Textures { get; set; }
+
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
     string ITM2020.MapUid
@@ -90,6 +95,43 @@ public sealed partial class CGameCtnChallenge :
     public IEnumerable<CGameCtnBlock> GetBakedBlocks()
     {
         return bakedBlocks ?? [];
+    }
+
+    public ZipArchive OpenReadEmbeddedDataZip()
+    {
+        if (EmbeddedDataZip is null)
+        {
+            throw new Exception("Embedded data zip is not available.");
+        }
+
+        var ms = new MemoryStream(EmbeddedDataZip);
+        return new ZipArchive(ms);
+    }
+
+    public void UpdateEmbeddedDataZip(Action<ZipArchive> update)
+    {
+        EmbeddedDataZip ??= [];
+
+        using var ms = new MemoryStream(EmbeddedDataZip);
+        using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
+        {
+            update(zip);
+        }
+
+        EmbeddedDataZip = ms.ToArray();
+    }
+
+    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, Task> update)
+    {
+        EmbeddedDataZip ??= [];
+
+        using var ms = new MemoryStream(EmbeddedDataZip);
+        using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
+        {
+            await update(zip);
+        }
+
+        EmbeddedDataZip = ms.ToArray();
     }
 
     /// <summary>
@@ -608,6 +650,31 @@ public sealed partial class CGameCtnChallenge :
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SBakedClipsAdditionalData;
+
+    public partial class Chunk03043054 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public int U01;
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+            U01 = r.ReadInt32(); // always 0
+            var size = r.ReadInt32();
+
+            using var _ = new Encapsulation(r);
+
+            var embeddedItemModels = r.ReadArrayIdent(); // ignored, could be used for validation
+
+            n.EmbeddedDataZip = r.ReadData();
+
+            if (Version >= 1)
+            {
+                n.Textures = r.ReadListString();
+            }
+        }
+    }
 
     public partial class Chunk0304305F : IVersionable
     {
