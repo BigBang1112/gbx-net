@@ -46,4 +46,6 @@ public partial class CGameCtnAnchoredObject
     /// Reference to the macroblock that placed this item. In macroblock mode, this item is then part of a selection group. Available since TM2020.
     /// </summary>
     public MacroblockInstance? MacroblockReference { get; set; }
+
+    public override string ToString() => $"CGameCtnAnchoredObject: {itemModel}";
 }

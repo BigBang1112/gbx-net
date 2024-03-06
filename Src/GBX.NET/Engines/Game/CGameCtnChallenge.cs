@@ -21,7 +21,7 @@ public sealed partial class CGameCtnChallenge :
     }
 
     private byte[]? thumbnail;
-    public byte[]? Thumbnail { get => hashedPassword; set => thumbnail = value; }
+    public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
     public Id? Collection => mapInfo?.Collection;
 
@@ -99,9 +99,9 @@ public sealed partial class CGameCtnChallenge :
 
     public ZipArchive OpenReadEmbeddedDataZip()
     {
-        if (EmbeddedDataZip is null)
+        if (EmbeddedDataZip is null || EmbeddedDataZip.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available.");
+            throw new Exception("Embedded data zip is not available and cannot be read.");
         }
 
         var ms = new MemoryStream(EmbeddedDataZip);
@@ -112,7 +112,9 @@ public sealed partial class CGameCtnChallenge :
     {
         EmbeddedDataZip ??= [];
 
-        using var ms = new MemoryStream(EmbeddedDataZip);
+        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+        ms.Write(EmbeddedDataZip, 0, EmbeddedDataZip.Length);
+
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
         {
             update(zip);
@@ -121,14 +123,41 @@ public sealed partial class CGameCtnChallenge :
         EmbeddedDataZip = ms.ToArray();
     }
 
-    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, Task> update)
+    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, Task> update, CancellationToken cancellationToken = default)
     {
         EmbeddedDataZip ??= [];
 
-        using var ms = new MemoryStream(EmbeddedDataZip);
+        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+
+#if NET6_0_OR_GREATER
+        await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+#else
+        await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+#endif
+
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
         {
             await update(zip);
+        }
+
+        EmbeddedDataZip = ms.ToArray();
+    }
+
+    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, CancellationToken, Task> update, CancellationToken cancellationToken = default)
+    {
+        EmbeddedDataZip ??= [];
+
+        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+
+#if NET6_0_OR_GREATER
+        await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+#else
+        await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+#endif
+
+        using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
+        {
+            await update(zip, cancellationToken);
         }
 
         EmbeddedDataZip = ms.ToArray();
