@@ -48,7 +48,7 @@ CGameCtnChallenge 0x03043000 // A map.
     v4+
      vec2 MapCoordTarget
      v5+
-      data[16]
+      uint128 PackMask
       v6+
        string MapType
        string MapStyle
@@ -183,7 +183,7 @@ CGameCtnChallenge 0x03043000 // A map.
  string Comments
 
 0x029 (skippable) [TMF, MP3, TMT, MP4, TM2020] // password
- data[16] HashedPassword
+ uint128 HashedPassword
  uint Crc32
 
 0x02A [TMF, MP3, TMT, MP4, TM2020]

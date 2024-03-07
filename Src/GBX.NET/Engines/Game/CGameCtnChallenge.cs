@@ -27,8 +27,8 @@ public sealed partial class CGameCtnChallenge :
 
     public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1");
 
-    private byte[]? hashedPassword;
-    public byte[]? HashedPassword
+    private UInt128? hashedPassword;
+    public UInt128? HashedPassword
     {
         get => hashedPassword;
         set
@@ -176,8 +176,10 @@ public sealed partial class CGameCtnChallenge :
         }
         else
         {
-            Span<char> hex = stackalloc char[hashedPassword.Length * 2];
-            TryHex(hashedPassword, hex);
+            Span<byte> bytes = stackalloc byte[16];
+            hashedPassword.Value.WriteLittleEndian(bytes);
+            Span<char> hex = stackalloc char[32];
+            TryHex(bytes, hex);
             toHash = $"0x{hex.ToString()}???{MapUid}";
         }
 
