@@ -2,7 +2,16 @@ CPlugSurface 0x0900C000
 - inherits: CPlug
 
 0x000
+ CPlugSurfaceGeom Geom
+ SurfMaterial[] Materials
 
 0x001
 
 0x003
+
+archive SurfMaterial
+ bool IsMaterial
+ if IsMaterial
+  CPlugMaterial Material
+ if !IsMaterial
+  short SurfaceId

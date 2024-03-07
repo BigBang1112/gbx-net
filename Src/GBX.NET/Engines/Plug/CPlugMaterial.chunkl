@@ -1,0 +1,29 @@
+CPlugMaterial 0x09079000
+- inherits: CPlug
+
+0x002
+ int
+
+0x007
+ CPlugMaterialCustom CustomMaterial
+
+0x00A
+ int
+
+0x00E
+ int
+
+0x00F
+ int
+
+0x010
+ float
+
+0x011
+ id[]
+
+0x012 (skippable, ignore)
+
+0x013 (skippable, ignore)
+
+0x014 (skippable, ignore)
