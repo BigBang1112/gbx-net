@@ -39,7 +39,9 @@ public partial interface IGbxWriter : IDisposable
     void Write(string? value, StringLengthPrefix lengthPrefix);
     void WriteGbxMagic();
     void WriteBigInt(BigInteger value, int byteLength);
-    void WriteInt128(BigInteger value);
+    void WriteInt128(Int128 value);
+    void WriteUInt128(UInt128 value);
+    void WriteUInt256(UInt256 value);
     void Write(Int2 value);
     void Write(Int3 value);
     void Write(Int4 value);
@@ -369,9 +371,40 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(paddedBytes);
     }
 
-    public void WriteInt128(BigInteger value)
+    public void WriteInt128(Int128 value)
     {
-        WriteBigInt(value, byteLength: 16);
+#if NET8_0_OR_GREATER
+        Span<byte> dest = stackalloc byte[16];
+        _ = ((IBinaryInteger<Int128>)value).TryWriteLittleEndian(dest, out var _);
+        Write(dest);
+#else
+        Write(value.High);
+        Write(value.Low);
+#endif
+    }
+
+    public void WriteUInt128(UInt128 value)
+    {
+#if NET8_0_OR_GREATER
+        Span<byte> dest = stackalloc byte[16];
+        _ = ((IBinaryInteger<UInt128>)value).TryWriteLittleEndian(dest, out var _);
+        Write(dest);
+#else
+        Write(value.High);
+        Write(value.Low);
+#endif
+    }
+
+    public void WriteUInt256(UInt256 value)
+    {
+#if NET5_0_OR_GREATER
+        Span<byte> dest = stackalloc byte[16];
+        value.WriteLittleEndian(dest);
+        Write(dest);
+#else
+        WriteUInt128(value.Low);
+        WriteUInt128(value.High);
+#endif
     }
 
     public void Write(Int2 value)
@@ -596,30 +629,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (PackDescVersion >= 3)
         {
-            if (value is null || value.Checksum.IsDefaultOrEmpty)
-            {
-#if NET6_0_OR_GREATER
-                Write(stackalloc byte[32]);
-#else
-                Write(new byte[32]);
-#endif
-            }
-            else
-            {
-                Span<byte> bytes = stackalloc byte[32];
-                
-                for (var i = 0; i < bytes.Length; i++)
-                {
-                    bytes[i] = value.Checksum[i];
-#if !NET6_0_OR_GREATER
-                    Write(bytes[i]);
-#endif
-                }
-
-#if NET6_0_OR_GREATER
-                Write(bytes);
-#endif
-            }
+            WriteUInt256(value?.Checksum ?? default);
         }
 
         Write(value?.FilePath);

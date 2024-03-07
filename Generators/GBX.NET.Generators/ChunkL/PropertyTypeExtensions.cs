@@ -29,6 +29,9 @@ internal static class PropertyTypeExtensions
         "Int2",
         "Int3",
         "Int4",
+        "Int128",
+        "UInt128",
+        "UInt256",
         "Byte3",
         "BoxAligned",
         "BoxInt3",
@@ -95,7 +98,9 @@ internal static class PropertyTypeExtensions
     {
         return type.ToLowerInvariant() switch
         {
-            "int128" => "global::System.Numerics.BigInteger",
+            "int128" => "Int128",
+            "uint128" => "UInt128",
+            "uint256" => "Int256",
             "int64" => "long",
             "uint64" => "ulong",
             "uint32" => "uint",

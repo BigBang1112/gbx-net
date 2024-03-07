@@ -89,7 +89,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x012
  uint32
- int128
+ uint128
 
 0x013 (skippable)
  int
@@ -145,7 +145,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x025 (skippable, base: 0x019) // validation TM2
 
 0x026 (skippable)
- int128
+ uint128
 
 0x027 (skippable, ignore) // timed pixel array 2
 

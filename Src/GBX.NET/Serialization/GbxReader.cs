@@ -33,7 +33,9 @@ public partial interface IGbxReader : IDisposable
     int ReadHexInt32();
     uint ReadHexUInt32();
     BigInteger ReadBigInt(int byteLength);
-    BigInteger ReadInt128();
+    Int128 ReadInt128();
+    UInt128 ReadUInt128();
+    UInt256 ReadUInt256();
     Int2 ReadInt2();
     Int3 ReadInt3();
     Int4 ReadInt4();
@@ -328,9 +330,19 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new BigInteger(ReadBytes(byteLength));
     }
 
-    public BigInteger ReadInt128()
+    public Int128 ReadInt128()
     {
-        return ReadBigInt(byteLength: 16);
+        return new Int128(ReadUInt64(), ReadUInt64());
+    }
+
+    public UInt128 ReadUInt128()
+    {
+        return new UInt128(ReadUInt64(), ReadUInt64());
+    }
+
+    public UInt256 ReadUInt256()
+    {
+        return new UInt256(ReadUInt64(), ReadUInt64(), ReadUInt64(), ReadUInt64());
     }
 
     public Int2 ReadInt2()
@@ -752,23 +764,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             // PackDesc version mismatch. but it's fine
         }
 
-        var checksum = ImmutableArray<byte>.Empty;
+        var checksum = default(UInt256?);
         var locatorUrl = "";
 
         if (version >= 3)
         {
-#if NET8_0_OR_GREATER
-            Span<byte> checksumBytes = stackalloc byte[32];
-
-            if (Read(checksumBytes) != 32)
-            {
-                throw new EndOfStreamException();
-            }
-
-            checksum = checksum.AddRange(checksumBytes);
-#else
-            checksum = ImmutableArray.Create(ReadBytes(32));
-#endif
+            checksum = ReadUInt256();
         }
 
         var filePath = ReadString();

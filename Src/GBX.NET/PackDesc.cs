@@ -1,11 +1,9 @@
-﻿using System.Collections.Immutable;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// [CSystemPackDesc] Description of a file reference. Also known as "fileref".
 /// </summary>
-public sealed record PackDesc(string FilePath = "", ImmutableArray<byte> Checksum = default, string? LocatorUrl = "")
+public sealed record PackDesc(string FilePath = "", UInt256? Checksum = null, string? LocatorUrl = "")
 {
     /// <summary>
     /// A default instance of <see cref=""/> with empty values.
