@@ -39,6 +39,25 @@ public interface IGbx
     static abstract CMwNod? ParseNode(Stream stream, GbxReadSettings settings = default);
     static abstract Task<CMwNod?> ParseNodeAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
     static abstract CMwNod? ParseNode(string filePath, GbxReadSettings settings = default);
+
+    static abstract Task<TVersion> ParseNodeAsync<TClass, TVersion>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
+    static abstract TVersion ParseNode<TClass, TVersion>(Stream stream, GbxReadSettings settings = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
+    static abstract Task<TVersion> ParseNodeAsync<TClass, TVersion>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
+    static abstract TVersion ParseNode<TClass, TVersion>(string filePath, GbxReadSettings settings = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
+    static abstract TVersion ParseHeaderNode<TClass, TVersion>(Stream stream, GbxReadSettings settings = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
+    static abstract TVersion ParseHeaderNode<TClass, TVersion>(string filePath, GbxReadSettings settings = default)
+        where TClass : CMwNod, TVersion, new()
+        where TVersion : IClassVersion<TClass>;
 #endif
 }
 
@@ -265,21 +284,23 @@ public partial class Gbx : IGbx
         return ParseHeader<T>(filePath, settings).Node;
     }
 
-    public static TVersion ParseNode<TClass, TVersion>(Stream stream, GbxReadSettings settings = default)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<TVersion> ParseNodeAsync<TClass, TVersion>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
         where TClass : CMwNod, TVersion, new()
-        where TVersion : IClassVersion<TClass> => Parse<TClass>(stream, settings).Node;
+        where TVersion : IClassVersion<TClass> => await ParseNodeAsync<TClass>(stream, settings, cancellationToken);
 
-    public static TVersion ParseNode<TClass, TVersion>(string filePath, GbxReadSettings settings = default)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<TVersion> ParseNodeAsync<TClass, TVersion>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
         where TClass : CMwNod, TVersion, new()
-        where TVersion : IClassVersion<TClass> => Parse<TClass>(filePath, settings).Node;
+        where TVersion : IClassVersion<TClass> => await ParseNodeAsync<TClass>(filePath, settings, cancellationToken);
 
     public static TVersion ParseHeaderNode<TClass, TVersion>(Stream stream, GbxReadSettings settings = default)
         where TClass : CMwNod, TVersion, new()
-        where TVersion : IClassVersion<TClass> => ParseHeader<TClass>(stream, settings).Node;
+        where TVersion : IClassVersion<TClass> => ParseHeaderNode<TClass>(stream, settings);
 
     public static TVersion ParseHeaderNode<TClass, TVersion>(string filePath, GbxReadSettings settings = default)
         where TClass : CMwNod, TVersion, new()
-        where TVersion : IClassVersion<TClass> => ParseHeader<TClass>(filePath, settings).Node;
+        where TVersion : IClassVersion<TClass> => ParseHeaderNode<TClass>(filePath, settings);
 
     public virtual void Save(Stream stream, GbxWriteSettings settings = default)
     {
