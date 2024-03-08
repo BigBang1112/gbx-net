@@ -777,6 +777,11 @@ public class GbxReaderTests
         // Arrange
         var gibbrish = new byte[32];
         Random.Shared.NextBytes(gibbrish);
+        var gibbrishUInt256 = new UInt256(
+            BitConverter.ToUInt64(gibbrish, 0),
+            BitConverter.ToUInt64(gibbrish, 8),
+            BitConverter.ToUInt64(gibbrish, 16),
+            BitConverter.ToUInt64(gibbrish, 24));
         var filePath = "folder\\test.txt";
 
         using var ms = new MemoryStream(new byte[] { 3 }
@@ -792,7 +797,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Equal(expected: gibbrishUInt256, actual: result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.NotNull(result.LocatorUrl);
         Assert.Empty(result.LocatorUrl);
@@ -805,6 +810,11 @@ public class GbxReaderTests
         // Arrange
         var gibbrish = new byte[32];
         Random.Shared.NextBytes(gibbrish);
+        var gibbrishUInt256 = new UInt256(
+            BitConverter.ToUInt64(gibbrish, 0),
+            BitConverter.ToUInt64(gibbrish, 8),
+            BitConverter.ToUInt64(gibbrish, 16),
+            BitConverter.ToUInt64(gibbrish, 24));
         var filePath = "folder\\test.txt";
         var locatorUrl = "https://google.com";
 
@@ -822,7 +832,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Equal(expected: gibbrishUInt256, actual: result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
         Assert.Equal(expected: 74, actual: ms.Position);
@@ -834,6 +844,11 @@ public class GbxReaderTests
         // Arrange
         var gibbrish = new byte[32];
         Random.Shared.NextBytes(gibbrish);
+        var gibbrishUInt256 = new UInt256(
+            BitConverter.ToUInt64(gibbrish, 0),
+            BitConverter.ToUInt64(gibbrish, 8),
+            BitConverter.ToUInt64(gibbrish, 16),
+            BitConverter.ToUInt64(gibbrish, 24));
         var locatorUrl = "https://google.com";
 
         using var ms = new MemoryStream(new byte[] { 3 }
@@ -849,7 +864,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: gibbrish, actual: result.Checksum);
+        Assert.Equal(expected: gibbrishUInt256, actual: result.Checksum);
         Assert.Empty(result.FilePath);
         Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
         Assert.Equal(expected: 59, actual: ms.Position);
@@ -875,7 +890,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Empty(result.Checksum);
+        Assert.Null(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.NotNull(result.LocatorUrl);
         Assert.Empty(result.LocatorUrl);
@@ -904,7 +919,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Empty(result.Checksum);
+        Assert.Null(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
         Assert.Equal(expected: 42, actual: ms.Position);
@@ -926,7 +941,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Empty(result.Checksum);
+        Assert.Null(result.Checksum);
         Assert.NotNull(result.FilePath);
         Assert.Empty(result.FilePath);
         Assert.NotNull(result.LocatorUrl);
@@ -951,7 +966,7 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Empty(result.Checksum);
+        Assert.Null(result.Checksum);
         Assert.Equal(expected: filePath, actual: result.FilePath);
         Assert.NotNull(result.LocatorUrl);
         Assert.Empty(result.LocatorUrl);

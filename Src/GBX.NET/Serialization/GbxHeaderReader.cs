@@ -85,7 +85,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 ReadKnownHeaderChunk(chunk, node, readerWriter, desc);
             }
 
-            reader.Unlimit();
+            reader.Unlimit(skipToLimitWhenUnreached: settings.SkipUnclearedHeaderChunkBuffers);
         }
 
         return true;
@@ -125,7 +125,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
             }
 
-            reader.Unlimit();
+            reader.Unlimit(skipToLimitWhenUnreached: settings.SkipUnclearedHeaderChunkBuffers);
         }
 
         return true;

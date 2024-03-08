@@ -1372,14 +1372,18 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         limiter.Limit(limit);
     }
 
-    internal void Unlimit()
+    internal void Unlimit(bool skipToLimitWhenUnreached = false)
     {
         if (limiter is null)
         {
             return;
         }
 
-        if (limiter.Remaining > 0)
+        if (skipToLimitWhenUnreached)
+        {
+            SkipData(limiter.Remaining);
+        }
+        else if (limiter.Remaining > 0)
         {
             throw new Exception($"Data limit not reached ({limiter.Remaining} bytes remaining).");
         }

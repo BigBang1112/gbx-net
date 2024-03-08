@@ -463,7 +463,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r, new() { SkipUnclearedHeaderChunkBuffers = true });
 
         var node = new CGameCtnChallenge();
 

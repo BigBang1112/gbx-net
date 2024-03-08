@@ -3,7 +3,8 @@
 public readonly record struct GbxReadSettings
 {
     public bool SkipUserData { get; init; }
-    public bool SkipDataUntilLengthMatches { get; init; }
+    public bool SkipUnclearedHeaderChunkBuffers { get; init; }
+    public bool SkipUnclearedSkippableChunkBuffers { get; init; }
     public SerializationMode DeserializationMode { get; init; }
 
     /// <summary>
