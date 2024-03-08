@@ -27,5 +27,4 @@ public readonly record struct Quat(float X, float Y, float Z, float W)
     }
 
     public static implicit operator Quat((float X, float Y, float Z, float W) v) => new(v.X, v.Y, v.Z, v.W);
-    public static implicit operator (float X, float Y, float Z, float W)(Quat v) => (v.X, v.Y, v.Z, v.W);
 }

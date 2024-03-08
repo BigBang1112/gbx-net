@@ -11,5 +11,5 @@ public readonly record struct Color(float R, float G, float B, float A)
 
     public static implicit operator Color((float R, float G, float B, float A) v) => new(v.R, v.G, v.B, v.A);
 
-    public static implicit operator (float R, float G, float B, float A)(Color v) => (v.R, v.G, v.B, v.A);
+    public static explicit operator Color(Vec4 v) => new(v.X, v.Y, v.Z, v.W);
 }

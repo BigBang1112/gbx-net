@@ -45,11 +45,5 @@ public readonly record struct Vec3(float X, float Y, float Z)
     /// <param name="v">The tuple containing X, Y, and Z components.</param>
     public static implicit operator Vec3((float X, float Y, float Z) v) => new(v.X, v.Y, v.Z);
 
-    /// <summary>
-    /// Implicitly converts an <see cref="Vec3"/> vector to a tuple of floats.
-    /// </summary>
-    /// <param name="v">The <see cref="Vec3"/> vector to convert.</param>
-    public static implicit operator (float X, float Y, float Z)(Vec3 v) => (v.X, v.Y, v.Z);
-
     public static implicit operator Vec3(Int3 a) => new(a.X, a.Y, a.Z);
 }

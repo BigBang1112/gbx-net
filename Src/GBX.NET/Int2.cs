@@ -27,9 +27,5 @@ public readonly record struct Int2(int X, int Y)
     /// <param name="v">The tuple containing X and Y components.</param>
     public static implicit operator Int2((int X, int Y) v) => new(v.X, v.Y);
 
-    /// <summary>
-    /// Implicitly converts an <see cref="Int2"/> vector to a tuple of integers.
-    /// </summary>
-    /// <param name="v">The <see cref="Int2"/> vector to convert.</param>
-    public static implicit operator (int X, int Y)(Int2 v) => (v.X, v.Y);
+    public static explicit operator Int2(Vec2 v) => new((int)v.X, (int)v.Y);
 }

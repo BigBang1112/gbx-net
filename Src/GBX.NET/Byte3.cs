@@ -28,11 +28,5 @@ public readonly record struct Byte3(byte X, byte Y, byte Z)
     /// <param name="v">The tuple containing X, Y, and Z components.</param>
     public static implicit operator Byte3((byte X, byte Y, byte Z) v) => new(v.X, v.Y, v.Z);
 
-    /// <summary>
-    /// Implicitly converts an Byte3 vector to a tuple of bytes.
-    /// </summary>
-    /// <param name="v">The Byte3 vector to convert.</param>
-    public static implicit operator (byte X, byte Y, byte Z)(Byte3 v) => (v.X, v.Y, v.Z);
-
     public static explicit operator Byte3(Int3 a) => new((byte)a.X, (byte)a.Y, (byte)a.Z);
 }

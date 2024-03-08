@@ -29,10 +29,10 @@ public readonly record struct Int3(int X, int Y, int Z)
     public static implicit operator Int3((int X, int Y, int Z) v) => new(v.X, v.Y, v.Z);
 
     /// <summary>
-    /// Implicitly converts an <see cref="Int3"/> vector to a tuple of integers.
+    /// Implicitly converts a <see cref="Byte3"/> to an <see cref="Int3"/> vector.
     /// </summary>
-    /// <param name="v">The <see cref="Int3"/> vector to convert.</param>
-    public static implicit operator (int X, int Y, int Z)(Int3 v) => (v.X, v.Y, v.Z);
-
+    /// <param name="a">The <see cref="Byte3"/> to convert.</param>
     public static implicit operator Int3(Byte3 a) => new(a.X, a.Y, a.Z);
+
+    public static explicit operator Int3(Vec3 a) => new((int)a.X, (int)a.Y, (int)a.Z);
 }

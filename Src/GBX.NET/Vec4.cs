@@ -34,4 +34,6 @@ public readonly record struct Vec4(float X, float Y, float Z, float W)
     /// </summary>
     /// <param name="v">The <see cref="Vec4"/> vector to convert.</param>
     public static implicit operator (float X, float Y, float Z, float W)(Vec4 v) => (v.X, v.Y, v.Z, v.W);
+
+    public static implicit operator Vec4(Int4 a) => new(a.X, a.Y, a.Z, a.W);
 }
