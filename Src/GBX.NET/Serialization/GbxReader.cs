@@ -1267,13 +1267,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
         }
 
+        limiter?.ThrowIfLimitExceeded(length);
+
         if (BaseStream.CanSeek)
         {
-            if (BaseStream.Position + length > BaseStream.Length)
-            {
-                throw new EndOfStreamException();
-            }
-
             _ = BaseStream.Seek(length, SeekOrigin.Current);
 
             return;
