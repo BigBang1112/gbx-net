@@ -165,7 +165,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         {
             body.Exception = ex;
 
-            if (!settings.SkipExceptionsInBody)
+            if (!settings.IgnoreExceptionsInBody)
             {
                 throw;
             }
@@ -186,7 +186,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         {
             body.Exception = ex;
 
-            if (!settings.SkipExceptionsInBody)
+            if (!settings.IgnoreExceptionsInBody)
             {
                 throw;
             }
