@@ -334,19 +334,31 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map was made using the simple editor.
     /// </summary>
     [NodeMember]
-    public bool CreatedWithSimpleEditor => (editor & EditorMode.Simple) != 0;
+    public bool CreatedWithSimpleEditor
+    {
+        get => (editor & EditorMode.Simple) != 0;
+        set => editor = value ? editor | EditorMode.Simple : editor & ~EditorMode.Simple;
+    }
 
     /// <summary>
     /// If the map uses ghost blocks.
     /// </summary>
     [NodeMember]
-    public bool HasGhostBlocks => (editor & EditorMode.HasGhostBlocks) != 0;
+    public bool HasGhostBlocks
+    {
+        get => (editor & EditorMode.HasGhostBlocks) != 0;
+        set => editor = value ? editor | EditorMode.HasGhostBlocks : editor & ~EditorMode.HasGhostBlocks;
+    }
 
     /// <summary>
     /// If the map was made using the gamepad editor.
     /// </summary>
     [NodeMember]
-    public bool CreatedWithGamepadEditor => (editor & EditorMode.Gamepad) != 0;
+    public bool CreatedWithGamepadEditor
+    {
+        get => (editor & EditorMode.Gamepad) != 0;
+        set => editor = value ? editor | EditorMode.Gamepad : editor & ~EditorMode.Gamepad;
+    }
 
     /// <summary>
     /// If the map is a multilap.
