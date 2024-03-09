@@ -13,7 +13,8 @@ internal sealed class MemberSerializationWriter
     private readonly StringBuilder sb;
     private readonly SerializationType serializationType;
     private readonly bool self;
-    private readonly ImmutableDictionary<string, IPropertySymbol> existingProperties; // disabled atm
+    private readonly ImmutableDictionary<string, IFieldSymbol> existingFields;
+    private readonly ImmutableDictionary<string, IPropertySymbol> existingProperties;
     private readonly ImmutableDictionary<string, ClassDataModel> classes;
     private readonly ImmutableDictionary<string, ArchiveDataModel> archives;
     private readonly SourceProductionContext context;
@@ -24,7 +25,8 @@ internal sealed class MemberSerializationWriter
         StringBuilder sb, 
         SerializationType serializationType,
         bool self,
-        ImmutableDictionary<string, IPropertySymbol> existingProperties, // disabled atm
+        ImmutableDictionary<string, IFieldSymbol> existingFields,
+        ImmutableDictionary<string, IPropertySymbol> existingProperties,
         ImmutableDictionary<string, ClassDataModel> classes,
         ImmutableDictionary<string, ArchiveDataModel> archives,
         SourceProductionContext context)
@@ -32,6 +34,7 @@ internal sealed class MemberSerializationWriter
         this.sb = sb;
         this.serializationType = serializationType;
         this.self = self;
+        this.existingFields = existingFields;
         this.existingProperties = existingProperties;
         this.classes = classes;
         this.archives = archives;
@@ -233,12 +236,28 @@ internal sealed class MemberSerializationWriter
 
     private void AppendWrite(int indent, ChunkProperty chunkProperty)
     {
-
+        
     }
 
     private void AppendReadWrite(int indent, ChunkProperty chunkProperty)
     {
-        sb.Append(indent, "rw.");
+        var isFieldlessProperty = existingProperties.ContainsKey(chunkProperty.Name)
+            && !existingFields.ContainsKey(char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1));
+
+        sb.AppendIndent(indent);
+
+        if (isFieldlessProperty)
+        {
+            if (!self)
+            {
+                sb.Append("n.");
+            }
+
+            sb.Append(chunkProperty.Name);
+            sb.Append(" = ");
+        }
+
+        sb.Append("rw.");
 
         if (chunkProperty.Type.PrimaryType == "version")
         {
@@ -264,7 +283,12 @@ internal sealed class MemberSerializationWriter
 
         AppendAnyRead(chunkProperty, onlyReadable: false);
 
-        sb.Append("(ref ");
+        sb.Append("(");
+
+        if (!isFieldlessProperty)
+        {
+            sb.Append("ref ");
+        }
 
         var isUnknown = IsUnknown(chunkProperty.Name);
         var name = GetFieldName(chunkProperty, isUnknown);
@@ -278,7 +302,14 @@ internal sealed class MemberSerializationWriter
             sb.Append("this.");
         }
 
-        sb.Append(name);
+        if (isFieldlessProperty)
+        {
+            sb.Append(chunkProperty.Name);
+        }
+        else
+        {
+            sb.Append(name);
+        }
 
         if (chunkProperty.Type.IsArray && !string.IsNullOrEmpty(chunkProperty.Type.ArrayLength))
         {

@@ -187,7 +187,7 @@ CGameCtnChallenge 0x03043000 // A map.
  uint Crc32
 
 0x02A [TMF, MP3, TMT, MP4, TM2020]
- bool // code hints to something with locking (NeedUnlock?)
+ bool CreatedWithSimpleEditor
 
 0x02D (skippable) // realtime thumbnail + comments
  vec3 ThumbnailPosition
