@@ -38,13 +38,4 @@ public sealed record Ident(string Id, Id Collection, string Author)
     {
         return new(v.Id, v.Collection, v.Author);
     }
-
-    /// <summary>
-    /// Implicitly converts a tuple of string, <see cref="int"/>, and string to an <see cref="Ident"/>.
-    /// </summary>
-    /// <param name="v">The tuple containing Id, Collection, and Author components.</param>
-    public static implicit operator Ident((string Id, int Collection, string Author) v)
-    {
-        return new(v.Id, new(v.Collection), v.Author);
-    }
 }

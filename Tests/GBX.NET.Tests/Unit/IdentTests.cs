@@ -77,19 +77,4 @@ public class IdentTests
         Assert.Equal(expected: new Id(12), actual: i.Collection);
         Assert.Equal(expected: "Hell", actual: i.Author);
     }
-
-    [Fact]
-    public void ImplicitConversionToTuple_IsCorrect()
-    {
-        // Arrange
-        var i = new Ident("Test", new Id(12), "Hell");
-
-        // Act
-        (string Id, Id Collection, string Author) t = i;
-
-        // Assert
-        Assert.Equal(expected: "Test", actual: t.Id);
-        Assert.Equal(expected: new Id(12), actual: t.Collection);
-        Assert.Equal(expected: "Hell", actual: t.Author);
-    }
 }
