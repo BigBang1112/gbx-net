@@ -334,6 +334,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map was made using the simple editor.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk<Chunk0304302A>]
     public bool CreatedWithSimpleEditor
     {
         get => (editor & EditorMode.Simple) != 0;
@@ -3415,16 +3416,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     #region 0x02A chunk
 
     /// <summary>
-    /// CGameCtnChallenge 0x02A chunk
+    /// CGameCtnChallenge 0x02A chunk (CreatedWithSimpleEditor)
     /// </summary>
-    [Chunk(0x0304302A)]
+    [Chunk(0x0304302A, "CreatedWithSimpleEditor")]
     public class Chunk0304302A : Chunk<CGameCtnChallenge>
     {
-        public bool U01;
-
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01); // code hints to something with locking (NeedUnlock?)
+            n.CreatedWithSimpleEditor = rw.Boolean(n.CreatedWithSimpleEditor);
         }
     }
 
