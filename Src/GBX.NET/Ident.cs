@@ -40,11 +40,11 @@ public sealed record Ident(string Id, Id Collection, string Author)
     }
 
     /// <summary>
-    /// Implicitly converts an <see cref="Ident"/> to a tuple of string, Id, and string.
+    /// Implicitly converts a tuple of string, <see cref="int"/>, and string to an <see cref="Ident"/>.
     /// </summary>
-    /// <param name="v">The <see cref="Ident"/> to convert.</param>
-    public static implicit operator (string Id, Id Collection, string Author)(Ident v)
+    /// <param name="v">The tuple containing Id, Collection, and Author components.</param>
+    public static implicit operator Ident((string Id, int Collection, string Author) v)
     {
-        return (v.Id, v.Collection, v.Author);
+        return new(v.Id, new(v.Collection), v.Author);
     }
 }

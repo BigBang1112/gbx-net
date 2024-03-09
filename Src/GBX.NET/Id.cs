@@ -76,8 +76,8 @@ public readonly record struct Id
     public static implicit operator string(Id id) => id.ToString();
 
     /// <summary>
-    /// Implicitly converts an <see cref="int"/> to an <see cref="Id"/>.
+    /// Explicitly converts an <see cref="int"/> to an <see cref="Id"/>.
     /// </summary>
     /// <param name="id">The <see cref="int"/>.</param>
-    public static implicit operator Id(int id) => new(id);
+    public static explicit operator Id(int id) => new(id);
 }

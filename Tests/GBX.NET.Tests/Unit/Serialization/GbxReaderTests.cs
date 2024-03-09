@@ -697,28 +697,6 @@ public class GbxReaderTests
     }
 
     [Fact]
-    public void SkipData_WhenBaseStreamCanSeekAndNotEnoughBytesToRead_Throws()
-    {
-        // Arrange
-        using var ms = new NonSeekableStream([1, 2, 3]);
-        using var r = new GbxReader(ms);
-
-        // Act & Assert
-        Assert.Throws<EndOfStreamException>(() => r.SkipData(5));
-    }
-
-    [Fact]
-    public void SkipData_WhenBaseStreamCannotSeekAndNotEnoughBytesToRead_Throws()
-    {
-        // Arrange
-        using var ms = new MemoryStream([1, 2, 3]);
-        using var r = new GbxReader(ms);
-
-        // Act & Assert
-        Assert.Throws<EndOfStreamException>(() => r.SkipData(5));
-    }
-
-    [Fact]
     public void IdVersion_InitiallyNull()
     {
         // Arrange

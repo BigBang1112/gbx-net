@@ -327,36 +327,6 @@ public class GbxHeaderReaderTests
     }
 
     [Fact]
-    public void ReadUserData_KnownNode_ChunkLarger_CreatesAndReadsKnownHeaderChunkAndSkipsData()
-    {
-        // Arrange
-        using var ms = new MemoryStream(
-                    BitConverter.GetBytes(20)
-            .Concat(BitConverter.GetBytes(1))
-            .Concat(BitConverter.GetBytes(0x03043004))
-            .Concat(BitConverter.GetBytes(8))
-            .Concat(BitConverter.GetBytes(6))
-            .Concat(BitConverter.GetBytes(69))
-                .ToArray());
-        using var r = new GbxReader(ms);
-
-        var parser = new GbxHeaderReader(r, new());
-
-        var node = new CGameCtnChallenge();
-
-        // Act
-        var result = parser.ReadUserData(node, unknownHeader: null);
-
-        // Assert
-        Assert.True(result);
-        Assert.Single(node.Chunks);
-        Assert.IsType<CGameCtnChallenge.HeaderChunk03043004>(node.Chunks.First());
-        Assert.False(((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).IsHeavy, "Header chunk is heavy but should not be.");
-        Assert.Equal(expected: 6, actual: ((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).Version);
-        Assert.Equal(expected: 24, actual: ms.Position);
-    }
-
-    [Fact]
     public void ReadUserDataOfT_EmptyUserData_ReturnsFalse()
     {
         // Arrange

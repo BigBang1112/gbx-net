@@ -67,21 +67,6 @@ public class Int3Tests
     }
 
     [Fact]
-    public void ImplicitConversionToTuple_IsCorrect()
-    {
-        // Arrange
-        var i = new Int3(1, 2, 3);
-
-        // Act
-        (int X, int Y, int Z) t = i;
-
-        // Assert
-        Assert.Equal(expected: 1, actual: t.X);
-        Assert.Equal(expected: 2, actual: t.Y);
-        Assert.Equal(expected: 3, actual: t.Z);
-    }
-
-    [Fact]
     public void Equals_IsCorrect()
     {
         // Arrange

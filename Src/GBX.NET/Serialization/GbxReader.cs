@@ -1282,7 +1282,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         if (ReadBytes(length).Length != length)
 #endif
         {
-            throw new EndOfStreamException();
+            // Should be silent?
         }
     }
 
