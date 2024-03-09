@@ -20,6 +20,33 @@ public sealed partial class CGameCtnChallenge :
         }
     }
 
+    /// <summary>
+    /// If the map was made using the simple editor.
+    /// </summary>
+    public bool CreatedWithSimpleEditor
+    {
+        get => (editor & EditorMode.Simple) != 0;
+        set => editor = value ? editor | EditorMode.Simple : editor & ~EditorMode.Simple;
+    }
+
+    /// <summary>
+    /// If the map uses ghost blocks.
+    /// </summary>
+    public bool HasGhostBlocks
+    {
+        get => (editor & EditorMode.HasGhostBlocks) != 0;
+        set => editor = value ? editor | EditorMode.HasGhostBlocks : editor & ~EditorMode.HasGhostBlocks;
+    }
+
+    /// <summary>
+    /// If the map was made using the gamepad editor.
+    /// </summary>
+    public bool CreatedWithGamepadEditor
+    {
+        get => (editor & EditorMode.Gamepad) != 0;
+        set => editor = value ? editor | EditorMode.Gamepad : editor & ~EditorMode.Gamepad;
+    }
+
     private byte[]? thumbnail;
     public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
