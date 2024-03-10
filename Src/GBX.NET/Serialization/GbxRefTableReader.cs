@@ -16,10 +16,10 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
         var ancestorLevel = reader.ReadInt32();
 
         var root = new GbxRefTableDirectory();
-
         var directoryList = ReadChildren(root).ToList();
 
         var resources = new Dictionary<int, GbxRefTableResource>();
+        var refTableForReader = new Dictionary<int, GbxRefTableFile>();
 
         for (var i = 0; i < numExternalNodes; i++)
         {
@@ -48,13 +48,17 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
             if (name is not null && folderIndex.HasValue)
             {
                 var dir = directoryList[folderIndex.Value - 1];
-                dir.Files.Add(name, new GbxRefTableFile(dir));
+                var file = new GbxRefTableFile(dir);
+                dir.Files.Add(name, file);
+                refTableForReader.Add(nodeIndex, file);
             }
             else if (resourceIndex.HasValue)
             {
                 resources.Add(nodeIndex, new GbxRefTableResource());
             }
         }
+
+        reader.LoadRefTable(refTableForReader);
 
         return new GbxRefTable(root, ancestorLevel);
     }

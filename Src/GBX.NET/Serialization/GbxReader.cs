@@ -112,7 +112,6 @@ public partial interface IGbxReader : IDisposable
     byte[] ReadToEnd();
     Task<byte[]> ReadToEndAsync(CancellationToken cancellationToken = default);
     void ResetIdState();
-    void LoadStateFrom(IGbxReader reader);
 }
 
 /// <summary>
@@ -177,15 +176,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private GbxReaderLimiter? limiter;
 
-    public GbxReader(Stream input, IReadOnlyDictionary<int, GbxRefTableFile>? refTable = null) : base(input, encoding)
-    {
-        this.refTable = refTable;
-    }
+    public GbxReader(Stream input) : base(input, encoding) { }
 
-    public GbxReader(Stream input, bool leaveOpen, IReadOnlyDictionary<int, GbxRefTableFile>? refTable = null) : base(input, encoding, leaveOpen)
-    {
-        this.refTable = refTable;
-    }
+    public GbxReader(Stream input, bool leaveOpen) : base(input, encoding, leaveOpen) { }
 
     public GbxReader(XmlReader input) : base(Stream.Null, encoding)
     {
@@ -193,7 +186,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         Mode = SerializationMode.Xml;
     }
 
-    public void LoadStateFrom(IGbxReader reader)
+    internal void LoadFrom(IGbxReader reader)
     {
         Format = reader.Format;
 
@@ -208,6 +201,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             ExpectedNodeCount = r.ExpectedNodeCount;
         }
+    }
+
+    internal void LoadRefTable(IReadOnlyDictionary<int, GbxRefTableFile> refTable)
+    {
+        this.refTable = refTable;
     }
 
     public bool ReadGbxMagic()
@@ -674,7 +672,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if ((index & 0xC0000000) is not 0x40000000 and not 0x80000000)
         {
-            throw new NotSupportedException("This Id cannot be read as string.");
+            return index.ToString();
         }
 
         return ReadIdAsString(index);
@@ -800,7 +798,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                 return (T)existingNode;
             }
 
-            // check if in ref. table
+            if (refTable?.TryGetValue(index.Value, out var file) == true)
+            {
+                return default; // this might need to be a general CMwNod instance as the ref table file does not contain the class ID
+            }
         }
 
         var originalClassId = ReadUInt32();
