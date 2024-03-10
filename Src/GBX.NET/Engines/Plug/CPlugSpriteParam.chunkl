@@ -1,0 +1,16 @@
+CPlugSpriteParam 0x090AC000
+- inherits: CPlug
+
+0x000
+ uint
+ vec3 GlobalDirection
+ vec2 PivotPoint
+ float GlobalDirTiltFactor
+
+0x001 (base: 0x000)
+ version
+ base
+ float TextureHeightInWorld
+ v1+
+  float? VisibleMaxDistAtFov90
+  float? VisibleMinScreenHeight01

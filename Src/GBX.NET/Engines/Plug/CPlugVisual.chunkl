@@ -29,7 +29,10 @@ CPlugVisual 0x09006000
 
 0x00D
 
-0x00E
+0x00E (base: 0x00D)
+ base
+ BitmapElemToPack[] BitmapElemToPacks
+
 
 0x00F
 
@@ -37,3 +40,10 @@ archive Split
  int
  int
  box BoundingBox
+
+archive BitmapElemToPack
+ int
+ int
+ int
+ int
+ int

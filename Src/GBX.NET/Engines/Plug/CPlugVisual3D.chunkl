@@ -1,0 +1,9 @@
+CPlugVisual3D 0x0902C000
+- inherits: CPlugVisual
+
+0x002
+ CMwNod
+
+0x003
+
+0x004

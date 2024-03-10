@@ -15,3 +15,15 @@ archive SurfMaterial
   CPlugMaterial Material
  if !IsMaterial
   short SurfaceId
+
+archive Sphere
+ float Size
+ ushort
+
+archive Ellipsoid
+ vec3 Size
+ ushort
+
+archive Box
+ boxaligned Transform
+ ushort

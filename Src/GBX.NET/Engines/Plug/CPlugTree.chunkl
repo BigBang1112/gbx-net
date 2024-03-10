@@ -18,6 +18,8 @@ CPlugTree 0x0904F000
 
 0x015 // translation
  int Flags
+ if (Flags & 4) != 0
+  Iso4? Translation
 
 0x016 // properties
  CPlugVisual Visual

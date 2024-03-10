@@ -1,0 +1,5 @@
+CPlugVisualIndexedLines 0x09009000
+- inherits: CPlugVisualIndexed
+
+0x001
+ int

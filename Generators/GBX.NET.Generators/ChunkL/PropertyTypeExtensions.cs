@@ -40,6 +40,7 @@ internal static class PropertyTypeExtensions
         "TimeInt32",
         "TimeSingle",
         "Iso4",
+        "Rect"
     ];
 
     private static readonly ImmutableHashSet<string> keywords =

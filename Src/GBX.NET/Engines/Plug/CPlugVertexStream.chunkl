@@ -1,0 +1,41 @@
+CPlugVertexStream 0x09056000
+- inherits: CPlug
+
+enum EPlugVDclType
+ U01
+ Float2
+ Float3
+ Float4
+ Color // 4 bytes RGBA
+ Int32
+ Dec3N = 14
+
+enum EPlugVDcl
+ Position
+ Position1
+ TgtRotation
+ BlendWeight
+ BlendIndices
+ Normal
+ Normal1
+ PointSize
+ Color0
+ Color1
+ TexCoord0
+ TexCoord1
+ TexCoord2
+ TexCoord3
+ TexCoord4
+ TexCoord5
+ TexCoord6
+ TexCoord7
+ TangentU
+ TangentU1
+ TangentV
+ TangentV1
+ Color2
+
+enum EPlugVDclSpace
+ Global3D
+ Local3D
+ Global2D

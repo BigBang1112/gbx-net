@@ -1,0 +1,20 @@
+CPlugVisualSprite 0x09010000
+- inherits: CPlugVisual3D
+
+0x005
+ int
+ float
+ float
+ float
+ float
+ float
+
+0x006
+ int16
+ int16
+
+0x008
+ CPlugSpriteParam SpriteParam (direct)
+
+0x009
+ Rect[]

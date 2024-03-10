@@ -3,8 +3,7 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugSurfaceGeom
 {
-    private CPlugSurface.ISurf surf;
-    public CPlugSurface.ISurf Surf { get => surf; set => surf = value; }
+    public CPlugSurface.ISurf Surf { get; set; }
 
     public partial class Chunk0900F004
     {
@@ -19,7 +18,7 @@ public partial class CPlugSurfaceGeom
 
             if (rw.Reader is not null)
             {
-                n.Surf = CPlugSurface.ReadSurf(rw.Reader);
+                n.Surf = CPlugSurface.ReadSurf(rw.Reader, version: 0);
             }
             
             if (rw.Writer is not null)
