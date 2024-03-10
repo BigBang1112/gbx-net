@@ -1,0 +1,12 @@
+CPlugLight 0x0901D000
+- inherits: CPlug
+
+0x000
+ GxLight GxLightModel
+ CFuncLight FuncLight
+ CPlugBitmap BitmapFlare (external)
+ CPlugBitmap BitmapProjector (external)
+
+0x002 (base: 0x000)
+ base
+ uint // DoData

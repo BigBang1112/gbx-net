@@ -1,0 +1,3 @@
+CFuncLight 0x05018000
+- inherits: CFuncPlug
+- abstract

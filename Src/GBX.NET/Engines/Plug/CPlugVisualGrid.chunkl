@@ -1,0 +1,8 @@
+CPlugVisualGrid 0x0903B000
+- inherits: CPlugVisual3D
+
+0x000
+ int NbPointX
+ int NbPointZ
+ float RangeX
+ float RangeZ

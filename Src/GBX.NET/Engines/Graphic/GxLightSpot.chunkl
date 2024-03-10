@@ -1,0 +1,17 @@
+GxLightSpot 0x0400B000
+- inherits: GxLightBall
+
+0x001
+ float AngleInner
+ float AngleOuter
+ float
+ float
+
+0x002
+ uint
+ float AngleInner
+ float AngleOuter
+ float
+ float
+ float
+ float

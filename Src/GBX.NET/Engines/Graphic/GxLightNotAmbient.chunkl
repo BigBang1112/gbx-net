@@ -1,0 +1,2 @@
+GxLightNotAmbient 0x04006000
+- inherits: GxLight

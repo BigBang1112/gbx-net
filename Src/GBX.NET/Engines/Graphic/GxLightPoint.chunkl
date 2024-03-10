@@ -1,0 +1,9 @@
+GxLightPoint 0x04003000
+- inherits: GxLightNotAmbient
+
+0x003
+ float FlareSize
+
+0x004
+ float FlareSize
+ float FlareBiasZ
