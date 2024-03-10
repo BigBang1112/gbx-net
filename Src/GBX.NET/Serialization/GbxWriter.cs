@@ -3,6 +3,7 @@ using System.Text;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
+using GBX.NET.Components;
 
 #if NET6_0_OR_GREATER
 using System.Buffers;
@@ -62,6 +63,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(Ident? value);
     void Write(PackDesc? value);
     void WriteNodeRef<T>(T? value) where T : IClass;
+    void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass;
     void WriteNode<T>(T? value) where T : IClass;
     void Write(TimeInt32 value);
     void WriteTimeInt32Nullable(TimeInt32? value);
@@ -642,17 +644,27 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteNodeRef<T>(T? value) where T : IClass
+    public void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass
     {
         if (value is null)
         {
             Write(-1);
             return;
         }
-
+        
         if (ClassManager.GetClassId<T>() is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
+        }
+
+        // if is in ref table (either node instance of file)
+        // the file is null in case the node was loaded
+        if (encapsulation is null && refTable is not null
+            && ((file is not null && refTable.TryGetValue(file, out var ind))
+            || refTable.TryGetValue(value, out ind)))
+        {
+            Write(ind);
+            return;
         }
 
         rw ??= new GbxReaderWriter(this, leaveOpen: true);
@@ -675,6 +687,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(index);
         Write(classId);
         value.ReadWrite(rw);
+    }
+
+    public void WriteNodeRef<T>(T? value) where T : IClass
+    {
+        WriteNodeRef(value, file: null);
     }
 
     public void WriteNode<T>(T? value) where T : IClass

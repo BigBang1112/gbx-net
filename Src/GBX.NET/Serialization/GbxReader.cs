@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -68,6 +69,7 @@ public partial interface IGbxReader : IDisposable
     Ident ReadIdent();
     PackDesc ReadPackDesc();
     T? ReadNodeRef<T>() where T : IClass;
+    T? ReadNodeRef<T>(out GbxRefTableFile? file) where T : IClass;
     T? ReadNode<T>() where T : IClass, new();
     TimeInt32 ReadTimeInt32();
     TimeInt32? ReadTimeInt32Nullable();
@@ -790,7 +792,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new PackDesc(filePath, checksum, locatorUrl);
     }
 
-    public T? ReadNodeRef<T>() where T : IClass
+    public T? ReadNodeRef<T>(out GbxRefTableFile? file) where T : IClass
     {
         var index = default(int?);
 
@@ -800,19 +802,27 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (index == -1)
             {
+                file = null;
                 return default;
             }
 
             if (NodeDict.TryGetValue(index.Value, out var existingNode))
             {
+                file = null;
                 return (T)existingNode;
             }
 
-            if (refTable?.TryGetValue(index.Value, out var file) == true)
+            if (refTable?.TryGetValue(index.Value, out file) == true)
             {
-                return default; // this might need to be a general CMwNod instance as the ref table file does not contain the class ID
+                // this can return null as the file is guaranteed to exist
+                // this file is then used next to the actual member, and when requested, loaded into the member
+                // then the file uses this instance in its Node property, and the referenced file is nullified
+                // this will avoid any lost references
+                return default;
             }
         }
+
+        file = null;
 
         var originalClassId = ReadUInt32();
 
@@ -841,6 +851,18 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
         return ReadNode(nod);
+    }
+
+    public T? ReadNodeRef<T>() where T : IClass
+    {
+        var node = ReadNodeRef<T>(out var file);
+
+        if (file is not null)
+        {
+            logger?.LogWarning("Reference table file discard: {File}", file);
+        }
+
+        return node;
     }
 
     public T? ReadNode<T>() where T : IClass, new()

@@ -240,6 +240,13 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbInterface.Append("? ");
                         sbInterface.Append(parameter.Name);
                     }
+                    else if (parameter.RefKind == RefKind.In)
+                    {
+                        sbInterface.Append("ref ");
+                        sbInterface.Append(parameter.Type);
+                        sbInterface.Append(' ');
+                        sbInterface.Append(parameter.Name);
+                    }
                     else
                     {
                         sbInterface.Append(parameter);
@@ -362,6 +369,13 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         {
                             sbInterface.Append(parameter.Type);
                             sbInterface.Append("? ");
+                            sbInterface.Append(parameter.Name);
+                        }
+                        else if (parameter.RefKind == RefKind.In)
+                        {
+                            sbInterface.Append("ref ");
+                            sbInterface.Append(parameter.Type);
+                            sbInterface.Append(' ');
                             sbInterface.Append(parameter.Name);
                         }
                         else
@@ -597,6 +611,13 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbClass.Append("? ");
                         sbClass.Append(parameter.Name);
                     }
+                    else if (parameter.RefKind == RefKind.In)
+                    {
+                        sbClass.Append("ref ");
+                        sbClass.Append(parameter.Type);
+                        sbClass.Append(' ');
+                        sbClass.Append(parameter.Name);
+                    }
                     else
                     {
                         sbClass.Append(parameter);
@@ -718,6 +739,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     if (!firstReader)
                     {
                         sbClass.Append(", ");
+                    }
+
+                    if (parameter.RefKind == RefKind.In)
+                    {
+                        sbClass.Append("out ");
                     }
 
                     sbClass.Append(parameter.Name);
@@ -849,6 +875,13 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             sbClass.Append("? ");
                             sbClass.Append(parameter.Name);
                         }
+                        else if (parameter.RefKind == RefKind.In)
+                        {
+                            sbClass.Append("ref ");
+                            sbClass.Append(parameter.Type);
+                            sbClass.Append(' ');
+                            sbClass.Append(parameter.Name);
+                        }
                         else
                         {
                             sbClass.Append(parameter);
@@ -922,6 +955,11 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         if (!first3Class)
                         {
                             sbClass.Append(", ");
+                        }
+
+                        if (parameter.RefKind == RefKind.In)
+                        {
+                            sbClass.Append("ref ");
                         }
 
                         sbClass.Append(parameter.Name);
