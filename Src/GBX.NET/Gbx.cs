@@ -95,7 +95,7 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {
-        using var reader = new GbxReader(stream, settings.LeaveOpen);
+        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -145,7 +145,7 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
     {
-        using var reader = new GbxReader(stream, settings.LeaveOpen);
+        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -180,7 +180,7 @@ public partial class Gbx : IGbx
 
     public static Gbx ParseHeader(Stream stream, GbxReadSettings settings = default)
     {
-        using var reader = new GbxReader(stream, settings.LeaveOpen);
+        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
@@ -217,7 +217,7 @@ public partial class Gbx : IGbx
 
     public static Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new()
     {
-        using var reader = new GbxReader(stream, settings.LeaveOpen);
+        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);

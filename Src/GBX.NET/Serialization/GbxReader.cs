@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 using System.Collections.Immutable;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -132,6 +133,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private IReadOnlyDictionary<int, GbxRefTableFile>? refTable;
     private readonly XmlReader? xmlReader;
+    private readonly ILogger? logger;
 
     private int? idVersion;
     private Dictionary<int, string>? idDict;
@@ -176,13 +178,21 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private GbxReaderLimiter? limiter;
 
-    public GbxReader(Stream input) : base(input, encoding) { }
+    public GbxReader(Stream input, ILogger? logger = null) : base(input, encoding)
+    {
+        this.logger = logger;
+    }
 
-    public GbxReader(Stream input, bool leaveOpen) : base(input, encoding, leaveOpen) { }
+    public GbxReader(Stream input, bool leaveOpen, ILogger? logger = null) : base(input, encoding, leaveOpen)
+    {
+        this.logger = logger;
+    }
 
-    public GbxReader(XmlReader input) : base(Stream.Null, encoding)
+    public GbxReader(XmlReader input, ILogger? logger = null) : base(Stream.Null, encoding)
     {
         xmlReader = input;
+        this.logger = logger;
+
         Mode = SerializationMode.Xml;
     }
 

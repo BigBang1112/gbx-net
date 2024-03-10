@@ -66,7 +66,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
         using var ms = new MemoryStream(decompressedData);
-        using var decompressedReader = new GbxReader(ms);
+        using var decompressedReader = new GbxReader(ms, settings.Logger);
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
@@ -89,7 +89,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
         using var ms = new MemoryStream(decompressedData);
-        using var decompressedReader = new GbxReader(ms);
+        using var decompressedReader = new GbxReader(ms, settings.Logger);
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 

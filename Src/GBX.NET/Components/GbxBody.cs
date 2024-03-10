@@ -36,14 +36,14 @@ public sealed partial class GbxBody
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     internal static async Task<GbxBody> ParseAsync(IClass node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)
     {
-        using var rw = new GbxReaderWriter(reader, leaveOpen: true);
+        using var rw = new GbxReaderWriter(reader, settings.LeaveOpen);
         return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     internal static async Task<GbxBody> ParseAsync<T>(T node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken) where T : IClass
     {
-        using var rw = new GbxReaderWriter(reader, leaveOpen: true);
+        using var rw = new GbxReaderWriter(reader, settings.LeaveOpen);
         return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
     }
 

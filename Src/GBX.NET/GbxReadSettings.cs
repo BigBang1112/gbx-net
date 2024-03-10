@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using Microsoft.Extensions.Logging;
+
+namespace GBX.NET;
 
 public readonly record struct GbxReadSettings
 {
@@ -15,4 +17,5 @@ public readonly record struct GbxReadSettings
     public bool LeaveOpen { get; init; }
     public int? MaxUncompressedBodySize { get; init; }
     public int? MaxUserDataSize { get; init; }
+    public ILogger? Logger { get; init; }
 }
