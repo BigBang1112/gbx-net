@@ -56,15 +56,15 @@ public enum GameVersion
     /// </summary>
     MP3 = 1024,
     /// <summary>
-    /// TrackMania Turbo
+    /// Trackmania Turbo
     /// </summary>
     TMT = 2048,
     /// <summary>
-    /// Represents ManiaPlanet 4
+    /// ManiaPlanet 4
     /// </summary>
     MP4 = 4096,
     /// <summary>
-    /// TrackMania 2020
+    /// Trackmania 2020
     /// </summary>
     TM2020 = 8192
 }
