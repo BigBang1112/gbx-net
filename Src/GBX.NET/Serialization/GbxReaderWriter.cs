@@ -175,7 +175,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new()
     {
-        if (Reader is not null && length != 0)
+        if (Reader is not null)
         {
             switch (length)
             {
@@ -183,16 +183,20 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
                     throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
                 case < 0 or > 0x10000000: // ~268MB
                     throw new Exception($"Length is too big to handle ({length}).");
+                case 0:
+                    value = [];
+                    break;
+                default:
+                    var array = new T[length];
+
+                    for (int i = 0; i < length; i++)
+                    {
+                        array[i] = ReadableWritable<T>(default, version)!;
+                    }
+
+                    value = array;
+                    break;
             }
-
-            var array = new T[length];
-
-            for (int i = 0; i < length; i++)
-            {
-                array[i] = ReadableWritable<T>(default, version)!;
-            }
-
-            value = array;
         }
 
         if (Writer is not null)
@@ -260,7 +264,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     public IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new()
     {
-        if (Reader is not null && length != 0)
+        if (Reader is not null)
         {
             switch (length)
             {
