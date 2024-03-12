@@ -35,7 +35,7 @@ CGameCtnGhost 0x03092000 // A ghost.
       v8+
        string GhostClubTag
   
-0x003
+0x003 [TM10]
  ident PlayerModel
  string SkinFile
  string GhostNickname
@@ -43,10 +43,10 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x004 (skippable)
  Checkpoint[] Checkpoints
 
-0x005 (skippable) // race time
+0x005 (skippable) [TMSX, TMNESWC, TMU] // race time
  timeint? RaceTime
 
-0x006
+0x006 [TMSX, TMNESWC]
  ident PlayerModel
  string SkinFile
  int
@@ -55,19 +55,22 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x007 // old light trail color
  vec3 LightTrailColor
 
-0x008 (skippable) // respawns
+0x008 (skippable) [TMSX, TMNESWC, TMU] // respawns
  int? Respawns
 
-0x009 (skippable) // light trail color
+0x009 (skippable) [TMSX, TMNESWC, TMU] // light trail color
  vec3 LightTrailColor
 
-0x00A (skippable) // stunt score
+0x00A (skippable) [TMSX, TMNESWC, TMU] // stunt score
  int? StuntScore
 
-0x00C
+0x00B (skippable) [TMSX, TMNESWC, TMU] // checkpoint times
+ Checkpoint[] Checkpoints (version: 1)
+
+0x00C [TMNESWC, TMU]
  int
 
-0x00D
+0x00D [TMU]
  ident PlayerModel
  string SkinFile
  int
@@ -76,18 +79,18 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  string GhostNickname
 
-0x00E
+0x00E [TMU]
  id GhostUid
 
-0x00F // ghost login
+0x00F [TMU] // ghost login
  string GhostLogin
 
-0x010 // validation map UID
+0x010 [TMU] // validation map UID
  id Validate_ChallengeUid
 
-0x011 // validation TMU
+0x011 [TMU] // validation TMU
 
-0x012
+0x012 [TMU]
  uint32
  uint128
 
