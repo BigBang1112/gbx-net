@@ -125,11 +125,20 @@ internal static class ClassManagerSubGenerator
         builder.AppendLine("    internal static partial IChunk? NewChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
+        var alreadyAddedIds = new HashSet<uint>();
+
         foreach (var classInfo in classInfos)
         {
             foreach (var pair in classInfo.Value.Chunks)
             {
                 var chunkInfo = pair.Value;
+
+                if (alreadyAddedIds.Contains(chunkInfo.Id))
+                {
+                    continue;
+                }
+
+                alreadyAddedIds.Add(chunkInfo.Id);
 
                 builder.Append("        0x");
                 builder.Append(chunkInfo.Id.ToString("X8"));
@@ -143,6 +152,25 @@ internal static class ClassManagerSubGenerator
 
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
+        builder.AppendLine();
+        builder.AppendLine("    internal static partial bool IsChunkIdRemapped(uint chunkId) => chunkId switch");
+        builder.AppendLine("    {");
+
+        foreach (var classInfo in classInfos)
+        {
+            foreach (var pair in classInfo.Value.Chunks.Where(x => x.Value.ChunkLDefinition?.Properties.ContainsKey("not-remapped") == true))
+            {
+                var chunkInfo = pair.Value;
+
+                builder.Append("        0x");
+                builder.Append(chunkInfo.Id.ToString("X8"));
+                builder.AppendLine(" => false,");
+            }
+        }
+
+        builder.AppendLine("        _ => true");
+        builder.AppendLine("    };");
+
 
         builder.AppendLine("}");
 

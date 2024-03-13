@@ -43,4 +43,6 @@ public static partial class ClassManager
 
     internal static partial uint Wrap(uint classId);
     internal static partial uint Unwrap(uint classId);
+
+    internal static partial bool IsChunkIdRemapped(uint chunkId);
 }

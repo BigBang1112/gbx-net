@@ -25,7 +25,9 @@ public partial class CMwNod : IClass
                 return;
             }
 
-            var chunkId = ClassManager.Wrap(originalChunkId);
+            var chunkId = ClassManager.IsChunkIdRemapped(originalChunkId)
+                ? ClassManager.Wrap(originalChunkId)
+                : originalChunkId;
 
             var chunk = node.CreateChunk(chunkId);
 
@@ -164,7 +166,9 @@ public partial class CMwNod : IClass
                 return;
             }
 
-            var chunkId = ClassManager.Wrap(originalChunkId);
+            var chunkId = ClassManager.IsChunkIdRemapped(originalChunkId)
+                ? ClassManager.Wrap(originalChunkId)
+                : originalChunkId;
 
             var chunk = CreateChunk(chunkId);
 
