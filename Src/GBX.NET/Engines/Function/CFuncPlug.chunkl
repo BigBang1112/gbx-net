@@ -1,7 +1,7 @@
 CFuncPlug 0x0500B000
 - inherits: CFunc
 
-0x003
+0x003 [TM10]
  float Period
  float Phase
  bool AutoCreateMotion

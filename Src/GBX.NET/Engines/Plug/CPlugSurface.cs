@@ -36,12 +36,12 @@ public partial class CPlugSurface
         return surf;
     }
 
-    internal static void WriteSurf(ISurf surf, GbxWriter w)
+    internal static void WriteSurf(ISurf? surf, GbxWriter w)
     {
         switch (surf)
         {
             default:
-                throw new NotSupportedException("Unknown surf type: " + surf.GetType().Name);
+                throw new NotSupportedException("Cannot write default (null) surf.");
         }
     }
 

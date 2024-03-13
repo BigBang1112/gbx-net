@@ -6,6 +6,28 @@ public partial class CPlugVisual3D
     public Vec3[]? Tangents { get; set; }
     public Vec3[]? BiTangents { get; set; }
 
+    public partial class Chunk0902C003
+    {
+        public override void Read(CPlugVisual3D n, GbxReader r)
+        {
+            n.Vertices = new Vertex[n.Count];
+
+            for (int i = 0; i < n.Count; i++)
+            {
+                n.Vertices[i] = new Vertex
+                {
+                    Position = r.ReadVec3(),
+                    Normal = r.ReadVec3(),
+                    U02 = r.ReadVec3(),
+                    U03 = r.ReadSingle()
+                };
+            }
+
+            n.Tangents = r.ReadArray<Vec3>();
+            n.BiTangents = r.ReadArray<Vec3>();
+        }
+    }
+
     public partial class Chunk0902C004
     {
         public int Tangents1Count { get; set; }

@@ -65,6 +65,54 @@ public partial class CPlugVisual
         else Flags &= ~(1 << bit);
     }
 
+    public partial class Chunk09006006
+    {
+        public override void Read(CPlugVisual n, GbxReader r)
+        {
+            n.HasVertexNormals = r.ReadBoolean();
+        }
+
+        public override void Write(CPlugVisual n, GbxWriter w)
+        {
+            w.Write(n.HasVertexNormals);
+        }
+    }
+
+    public partial class Chunk09006008
+    {
+        public Iso4[]? U01;
+
+        public override void Read(CPlugVisual n, GbxReader r)
+        {
+            n.IsGeometryStatic = r.ReadBoolean();
+            n.IsIndexationStatic = r.ReadBoolean();
+
+            var numTexCoordSets = r.ReadInt32();
+
+            // this might be wrong
+            var skinFlags = r.ReadInt32() & 7; // Skin (& 7 added for safety)
+            n.Flags |= skinFlags;
+
+            n.Count = r.ReadInt32();
+
+            n.TexCoords = new TexCoordSet[numTexCoordSets];
+            for (var i = 0; i < numTexCoordSets; i++)
+            {
+                n.TexCoords[i] = TexCoordSet.Read(r, n.Count);
+            }
+
+            if (skinFlags != 0)
+            {
+                // DoData
+                throw new NotSupportedException("Skin flags are not yet supported");
+            }
+
+            n.SetFlagBit(8, r.ReadBoolean());
+
+            U01 = r.ReadArray<Iso4>();
+        }
+    }
+
     public partial class Chunk0900600D
     {
         public override void Read(CPlugVisual n, GbxReader r)

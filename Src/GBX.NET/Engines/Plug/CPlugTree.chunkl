@@ -1,30 +1,30 @@
 CPlugTree 0x0904F000
 - inherits: CPlug
 
-0x006
+0x006 [TM10]
  list<CPlugTree>_deprec Children
 
-0x00C
+0x00C [TM10]
  int // could be array of Ids
  if U01 > 0
   throw
 
-0x00D
+0x00D [TM10]
  id Name
  id
 
-0x011 // FuncTree
+0x011 [TM10] // FuncTree
  CFuncTree FuncTree
 
-0x015 // translation
+0x015 [TM10] // translation
  int Flags
  if (Flags & 4) != 0
   Iso4? Translation
 
-0x016 // properties
+0x016 [TM10] // properties
  CPlugVisual Visual
  CPlug Shader
- CPlugSurface Surface
+ CPlug Surface
  CPlugTreeGenerator Generator
 
 0x017

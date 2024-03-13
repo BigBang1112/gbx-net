@@ -1,7 +1,7 @@
 CPlugSolid 0x09005000
 - inherits: CPlug
 
-0x000
+0x000 [TM10]
  int TypeAndIndex
 
 0x006
@@ -13,7 +13,7 @@ CPlugSolid 0x09005000
  float
  mat3
 
-0x007
+0x007 [TM10]
  bool
 
 0x00B
@@ -25,7 +25,7 @@ CPlugSolid 0x09005000
  bool
  int
 
-0x00C
+0x00C [TM10]
  bool
  bool
  bool
@@ -45,19 +45,19 @@ CPlugSolid 0x09005000
  int
  int
 
-0x00D
+0x00D [TM10]
  bool
  bool
  CPlug Tree
 
-0x00E
+0x00E [TM10]
  float
  float
  float
  float
  iso4
 
-0x00F
+0x00F [TM10]
  float
  float
 
