@@ -55,4 +55,6 @@ public interface IClass
     IChunk? CreateChunk(uint chunkId);
 
     IClass DeepClone();
+
+    GameVersion GetGameVersion();
 }

@@ -8,9 +8,9 @@
 public enum GameVersion
 {
     /// <summary>
-    /// Undefined game version
+    /// Unspecified game version
     /// </summary>
-    Undefined = 0,
+    Unspecified = 0,
     /// <summary>
     /// TrackMania 1.0
     /// </summary>

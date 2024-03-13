@@ -11,6 +11,8 @@ public sealed class SkippableChunk(uint id) : ISkippableChunk
 
     public bool Ignore => false; // non-ignored skippable chunks get reported in logs, viable for unknown ones
 
+    public GameVersion GameVersion => GameVersion.Unspecified;
+
     public IChunk DeepClone()
     {
         return new SkippableChunk(Id)

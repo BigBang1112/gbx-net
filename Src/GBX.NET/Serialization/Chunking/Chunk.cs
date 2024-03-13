@@ -13,6 +13,7 @@ public interface IChunk
     uint Id { get; }
 
     bool Ignore { get; }
+    GameVersion GameVersion { get; }
 
     IChunk DeepClone();
 }
@@ -26,6 +27,7 @@ public abstract class Chunk : IReadableWritableChunk
     public abstract uint Id { get; }
 
     public virtual bool Ignore => false;
+    public virtual GameVersion GameVersion => GameVersion.Unspecified;
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, GbxReaderWriter rw)

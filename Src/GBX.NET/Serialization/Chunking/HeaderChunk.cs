@@ -34,6 +34,8 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
 
     public bool Ignore => false;
 
+    public GameVersion GameVersion => GameVersion.Unspecified;
+
     public IChunk DeepClone()
     {
         return new HeaderChunk(Id)

@@ -827,6 +827,9 @@ internal class ClassDataSubGenerator
             sb.AppendLine();
             sb.AppendLine("        /// <inheritdoc />");
             sb.AppendLine("        public bool Ignore => false;");
+            sb.AppendLine();
+            sb.AppendLine("        /// <inheritdoc />");
+            sb.AppendLine("        public GameVersion GameVersion => GameVersion.Unspecified;");
         }
         else
         {
@@ -835,6 +838,32 @@ internal class ClassDataSubGenerator
                 sb.AppendLine();
                 sb.AppendLine("        /// <inheritdoc />");
                 sb.AppendLine("        public override bool Ignore => true;");
+            }
+
+            if (chunk.ChunkLDefinition?.Versions.Count > 0)
+            {
+                sb.AppendLine();
+                sb.AppendLine("        /// <inheritdoc />");
+                sb.Append("        public override GameVersion GameVersion => ");
+
+                var first = true;
+
+                foreach (var pair in chunk.ChunkLDefinition.Versions)
+                {
+                    if (first)
+                    {
+                        first = false;
+                    }
+                    else
+                    {
+                        sb.Append(" | ");
+                    }
+
+                    sb.Append("GameVersion.");
+                    sb.Append(pair.Key);
+                }
+
+                sb.AppendLine(";");
             }
         }
 

@@ -359,4 +359,21 @@ public partial class CMwNod : IClass
             dest.Chunks.Add(chunkClone);
         }
     }
+
+    public GameVersion GetGameVersion()
+    {
+        var version = (GameVersion)int.MaxValue;
+
+        foreach (var chunk in Chunks)
+        {
+            version &= chunk.GameVersion;
+        }
+
+        return (int)version == int.MaxValue ? GameVersion.Unspecified : version;
+    }
+
+    public bool IsGameVersion(GameVersion version)
+    {
+        return (GetGameVersion() & version) == version;
+    }
 }
