@@ -376,4 +376,9 @@ public partial class CMwNod : IClass
     {
         return (GetGameVersion() & version) == version;
     }
+
+    public bool CanBeGameVersion(GameVersion version)
+    {
+        return (GetGameVersion() & version) != 0;
+    }
 }
