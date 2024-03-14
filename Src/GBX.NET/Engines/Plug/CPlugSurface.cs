@@ -1,8 +1,57 @@
-﻿
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugSurface
 {
+    public ISurf? Surf { get; set; }
+
+    private int surfVersion;
+    public int SurfVersion { get => surfVersion; set => surfVersion = value; }
+
+    private CPlugSkel? skel;
+    public CPlugSkel? Skel { get => skel; set => skel = value; }
+
+    public partial class Chunk0900C003 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public byte[]? U01;
+        public byte U02;
+
+        public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version >= 2)
+            {
+                rw.Int32(ref n.surfVersion);
+            }
+
+            if (rw.Reader is not null)
+            {
+                n.Surf = ReadSurf(rw.Reader, n.surfVersion);
+            }
+
+            if (rw.Writer is not null)
+            {
+                WriteSurf(n.Surf, rw.Writer);
+            }
+
+            rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
+
+            rw.Data(ref U01);
+
+            if (Version >= 4)
+            {
+                rw.Byte(ref U02);
+            }
+
+            if (Version >= 1)
+            {
+                rw.NodeRef<CPlugSkel>(ref n.skel);
+            }
+        }
+    }
+
     // 0 - Sphere
     // 1 - Ellipsoid
     // 6 - Box (Primitive)
@@ -78,9 +127,10 @@ public partial class CPlugSurface
     {
         public int Version { get; set; }
         public Vec3[] Vertices { get; set; } = [];
-        public CookedTriangle[] CookedTriangles { get; set; } = [];
+        public CookedTriangle[]? CookedTriangles { get; set; }
         public int? OctreeVersion { get; set; }
-        public OctreeCell[] OctreeCells { get; set; } = [];
+        public OctreeCell[]? OctreeCells { get; set; }
+        public Triangle[]? Triangles { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
@@ -96,6 +146,11 @@ public partial class CPlugSurface
                     OctreeVersion = r.ReadInt32();
                     OctreeCells = r.ReadArray<OctreeCell>();
                     break;
+                case 6:
+                case 7:
+                    Vertices = r.ReadArray<Vec3>();
+                    Triangles = r.ReadArray<Triangle>(); // GmSurfMeshTri
+                    break;
             }
         }
 
@@ -106,6 +161,7 @@ public partial class CPlugSurface
 
         public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
         public readonly record struct OctreeCell(int U01, Vec3 U02, Vec3 U03, int U04);
+        public readonly record struct Triangle(Int3 U01, int U02);
     }
 
     public sealed partial class Compound : ISurf, IVersionable

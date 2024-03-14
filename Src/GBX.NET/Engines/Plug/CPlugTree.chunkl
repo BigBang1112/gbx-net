@@ -1,19 +1,19 @@
 CPlugTree 0x0904F000
 - inherits: CPlug
 
-0x006 [TM10]
+0x006 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
  list<CPlugTree>_deprec Children
 
-0x00C [TM10]
+0x00C [TM10, TMSX]
  int // could be array of Ids
  if U01 > 0
   throw
 
-0x00D [TM10]
+0x00D [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
  id Name
  id
 
-0x011 [TM10] // FuncTree
+0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // FuncTree
  CFuncTree FuncTree
 
 0x015 [TM10] // translation
@@ -21,7 +21,7 @@ CPlugTree 0x0904F000
  if (Flags & 4) != 0
   Iso4? Translation
 
-0x016 [TM10] // properties
+0x016 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // properties
  CPlugVisual Visual
  CPlug Shader
  CPlug Surface
@@ -32,6 +32,6 @@ CPlugTree 0x0904F000
 
 0x018 (base: 0x015) // translation
 
-0x019 (base: 0x015) // translation
+0x019 (base: 0x015) [TMSX] // translation
 
-0x01A (base: 0x015) // translation
+0x01A (base: 0x015) [TMNESWC, TMF, TMT, MP4] // translation

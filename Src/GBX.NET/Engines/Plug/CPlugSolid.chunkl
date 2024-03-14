@@ -1,7 +1,7 @@
 CPlugSolid 0x09005000
 - inherits: CPlug
 
-0x000 [TM10]
+0x000 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
  int TypeAndIndex
 
 0x006
@@ -13,7 +13,7 @@ CPlugSolid 0x09005000
  float
  mat3
 
-0x007 [TM10]
+0x007 [TM10, TMSX]
  bool
 
 0x00B
@@ -25,7 +25,7 @@ CPlugSolid 0x09005000
  bool
  int
 
-0x00C [TM10]
+0x00C [TM10, TMSX, TMNESWC]
  bool
  bool
  bool
@@ -45,36 +45,36 @@ CPlugSolid 0x09005000
  int
  int
 
-0x00D [TM10]
+0x00D [TM10, TMSX, TMNESWC]
  bool
  bool
  CPlug Tree
 
-0x00E [TM10]
+0x00E [TM10, TMSX, TMNESWC, TMF]
  float
  float
  float
  float
  iso4
 
-0x00F [TM10]
+0x00F [TM10, TMSX, TMNESWC]
  float
  float
 
-0x010
+0x010 [TMSX, TMNESWC, TMF, TMT, MP4]
  CMwNod // CSceneVehicleEnvironment
 
-0x011
+0x011 [TMF, TMT, MP4]
  bool U01 // part of SetUseModel, possibly the 'Use' parameter
  bool U02 // m_Model != null
  if U02
   bool? U03
  CPlug Tree
 
-0x012
+0x012 [TMF]
  byte
 
-0x017 // SolidPreLightGen
+0x017 [TMT.v3, MP4.v3] // SolidPreLightGen
  version
  v3+
   bool U01
@@ -92,12 +92,12 @@ CPlugSolid 0x09005000
  v2+
   filetime? FileWriteTime
 
-0x019
+0x019 [TMT.v0, MP4.v3]
  version
  CPlugSound[]_deprec
  CPlugParticleEmitterModel[]_deprec
- LocatedInstance
- LocatedInstance
+ LocatedInstance[]
+ LocatedInstance[]
  v1+
   int
   v2+

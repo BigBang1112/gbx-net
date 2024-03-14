@@ -1,9 +1,9 @@
 CPlugVisual3D 0x0902C000
 - inherits: CPlugVisual
 
-0x002 [TM10]
+0x002 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
  CMwNod
 
-0x003 [TM10]
+0x003 [TM10, TMSX, TMNESWC]
 
-0x004
+0x004 [TMF, TMT, MP4]
