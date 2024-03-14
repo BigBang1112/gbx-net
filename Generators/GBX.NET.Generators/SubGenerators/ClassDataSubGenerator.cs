@@ -724,6 +724,39 @@ internal class ClassDataSubGenerator
             sb.AppendLine(")]");
         }
 
+        if (chunk.ChunkLDefinition?.Versions.Count > 0)
+        {
+            sb.Append("    [ChunkGameVersion(");
+
+            var first = true;
+
+            foreach (var pair in chunk.ChunkLDefinition.Versions)
+            {
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    sb.Append(" | ");
+                }
+
+                sb.Append("GameVersion.");
+                sb.Append(pair.Key);
+            }
+
+            if (chunk.ChunkLDefinition.Versions.Any(x => x.Value.HasValue))
+            {
+                foreach (var pair in chunk.ChunkLDefinition.Versions)
+                {
+                    sb.Append(", ");
+                    sb.Append(pair.Value ?? -1);
+                }
+            }
+
+            sb.AppendLine(")]");
+        }
+
         sb.Append("    public partial ");
 
         var isStructChunk = chunk.TypeSymbol?.IsValueType ?? false;
