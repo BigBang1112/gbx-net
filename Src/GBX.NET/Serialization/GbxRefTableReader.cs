@@ -16,6 +16,9 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
         var ancestorLevel = reader.ReadInt32();
 
         var root = new GbxRefTableDirectory();
+
+        var refTable = new GbxRefTable(root, ancestorLevel);
+
         var directoryList = ReadChildren(root).ToList();
 
         var resources = new Dictionary<int, GbxRefTableResource>();
@@ -48,8 +51,8 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
             if (name is not null && folderIndex.HasValue)
             {
                 var dir = directoryList[folderIndex.Value - 1];
-                var file = new GbxRefTableFile(dir);
-                dir.Files.Add(name, file);
+                var file = new GbxRefTableFile(refTable, name, dir);
+                dir.Files.Add(file);
                 refTableForReader.Add(nodeIndex, file);
             }
             else if (resourceIndex.HasValue)
@@ -60,7 +63,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
 
         reader.LoadRefTable(refTableForReader);
 
-        return new GbxRefTable(root, ancestorLevel);
+        return refTable;
     }
 
     private IEnumerable<IDirectory> ReadChildren(IDirectory currentDir)
@@ -71,7 +74,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
         {
             var name = reader.ReadString();
             var subDir = new GbxRefTableDirectory { Name = name, Parent = currentDir };
-            currentDir.Children.Add(name, subDir);
+            currentDir.Children.Add(subDir);
 
             yield return subDir;
             

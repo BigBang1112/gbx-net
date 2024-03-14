@@ -2,4 +2,5 @@
 
 public interface IFile
 {
+    string Name { get; set; }
 }
