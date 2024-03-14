@@ -92,6 +92,11 @@ public partial class Gbx : IGbx
         Body = body;
     }
 
+    public override string ToString()
+    {
+        return $"Gbx ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
+    }
+
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {

@@ -1,4 +1,5 @@
-﻿
+﻿using System.Text;
+
 namespace GBX.NET.Components;
 
 public sealed partial class GbxBody
@@ -7,6 +8,8 @@ public sealed partial class GbxBody
 
     public int UncompressedSize { get; init; }
     public int? CompressedSize { get; init; }
+
+    public float? CompressionRatio => CompressedSize.HasValue ? (float)CompressedSize / UncompressedSize : null;
 
     /// <summary>
     /// Pure body data usually in compressed form. This property is used if GameBox's ParseHeader methods are used, otherwise null.
@@ -26,6 +29,31 @@ public sealed partial class GbxBody
     }
 
     public Exception? Exception { get; internal set; }
+
+    public override string ToString()
+    {
+        if (CompressedSize is null)
+        {
+            return "GbxBody (uncompressed)";
+        }
+
+        var sb = new StringBuilder();
+        sb.Append("GbxBody (compressed, ");
+        sb.Append(CompressedSize.Value.ToString("N"));
+        sb.Append('/');
+        sb.Append(UncompressedSize.ToString("N"));
+        sb.Append(" bytes");
+
+        if (CompressionRatio.HasValue)
+        {
+            sb.Append(", ");
+            sb.Append(CompressionRatio.Value.ToString("P2"));
+            sb.Append(" ratio");
+        }
+
+        sb.Append(')');
+        return sb.ToString();
+    }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     internal static async Task<GbxBody> ParseAsync(GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)

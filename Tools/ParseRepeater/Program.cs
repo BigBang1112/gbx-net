@@ -18,7 +18,7 @@ while (true)
     try
     {
         var stopwatch = Stopwatch.StartNew();
-        var gbx = Gbx.ParseNode(fileName);
+        var gbx = Gbx.Parse(fileName);
         stopwatch.Stop();
         Console.WriteLine($"Parsed in {stopwatch.Elapsed.TotalMilliseconds}ms");
     }

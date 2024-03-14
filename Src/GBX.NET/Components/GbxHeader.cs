@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Components;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Components;
 
 public abstract class GbxHeader
 {
@@ -11,6 +13,11 @@ public abstract class GbxHeader
     protected GbxHeader(GbxHeaderBasic basic)
     {
         Basic = basic;
+    }
+
+    public override string ToString()
+    {
+        return $"GbxHeader ({ClassManager.GetName(ClassId)}, 0x{ClassId:X8})";
     }
 
     internal static GbxHeader<T> Parse<T>(GbxReader reader, GbxReadSettings settings, out T node) where T : IClass, new()
