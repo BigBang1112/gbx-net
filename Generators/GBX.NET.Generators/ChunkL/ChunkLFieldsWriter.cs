@@ -52,7 +52,8 @@ internal sealed class ChunkLFieldsWriter
                     continue;
                 }
 
-                var fieldName = $"U{++unknownCounter:00}";
+                ++unknownCounter;
+                var fieldName = IsExplicitUnknownProperty(prop.Name) ? prop.Name : $"U{unknownCounter:00}";
 
                 alreadyAddedFields.Add(fieldName);
 
@@ -102,6 +103,11 @@ internal sealed class ChunkLFieldsWriter
 
     private bool IsUnknownProperty(string? name)
     {
-        return string.IsNullOrWhiteSpace(name) || (name?.Length == 3 && name[0] == 'U' && char.IsDigit(name[1]) && char.IsDigit(name[2]));
+        return string.IsNullOrWhiteSpace(name) || IsExplicitUnknownProperty(name);
+    }
+
+    private bool IsExplicitUnknownProperty(string? name)
+    {
+        return name?.Length == 3 && name[0] == 'U' && char.IsDigit(name[1]) && char.IsDigit(name[2]);
     }
 }

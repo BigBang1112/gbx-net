@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace GBX.NET.Generators.ChunkL;
 
@@ -445,9 +446,20 @@ internal sealed class MemberSerializationWriter
 
     private string GetFieldName(ChunkProperty chunkProperty, bool isUnknown)
     {
-        return isUnknown
-            ? $"{(self ? 'u' : 'U')}{++unknownCounter:00}"
-            : char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
+        if (isUnknown)
+        {
+            ++unknownCounter;
+            return (IsExplicitUnknownProperty(chunkProperty.Name) ? chunkProperty.Name : $"{(self ? 'u' : 'U')}{unknownCounter:00}");
+        }
+        else
+        {
+            return char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
+        }
+    }
+
+    private bool IsExplicitUnknownProperty(string? name)
+    {
+        return name?.Length == 3 && name[0] == 'U' && char.IsDigit(name[1]) && char.IsDigit(name[2]);
     }
 
     public static string MapType(string type, out bool noMatch)
