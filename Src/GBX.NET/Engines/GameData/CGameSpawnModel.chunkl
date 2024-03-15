@@ -1,0 +1,12 @@
+CGameSpawnModel 0x2E00E000
+
+0x000
+ version
+ iso4 Loc
+ bool Underground
+ v1+
+  float TorqueX
+  v2+
+   int TorqueDuration
+   v3+
+    vec3 DefaultGravitySpawn

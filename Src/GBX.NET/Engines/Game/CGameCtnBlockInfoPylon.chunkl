@@ -1,0 +1,21 @@
+CGameCtnBlockInfoPylon 0x03055000
+- inherits: CGameCtnBlockInfo
+
+0x000
+ CMwNod
+ CMwNod
+ CMwNod
+
+0x002
+ float PylonOffset
+ int<EPylonAmount> PylonAmount
+ int<EPylonPlacement> PylonPlacement
+ int BlockHeightOffset
+
+enum EPylonAmount
+ PylonsX4
+ PylonsX8
+
+enum EPylonPlacement
+ SustainRoadCore
+ SustainRoadExterior

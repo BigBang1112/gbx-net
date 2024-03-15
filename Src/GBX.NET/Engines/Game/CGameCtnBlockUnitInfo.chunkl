@@ -1,0 +1,65 @@
+CGameCtnBlockUnitInfo 0x03036000
+- chunk_Chunk03036009: Unexpected syntax
+- chunk_Chunk0303600A: Unexpected syntax
+
+0x000
+ int PlacePylons
+ bool // AcceptPylons?
+ bool
+ int3 RelativeOffset
+ CGameCtnBlockInfoClip[] Clips
+
+0x001
+ id // Desert, Grass
+ int
+ int
+
+0x002 (skippable) // Underground
+ bool Underground
+
+0x003
+ CMwNod (external) // pillar stuff?
+ id
+ int
+ int
+
+0x004 // AcceptPylons
+ int AcceptPylons
+
+0x005 // TerrainModifierId
+ id TerrainModifierId
+
+0x006
+
+0x007
+
+0x008 // bottom+top clip
+ CGameCtnBlockInfoClip BottomClip
+ CGameCtnBlockInfoClip TopClip
+
+0x009
+ version
+ CMwNod (external) // pillar stuff?
+ int
+ v0=
+  int
+ v2=
+  byte
+
+0x00A
+ version
+ CMwNod (external) // pillar stuff?
+ int
+
+0x00B // bottom+top clip with dir
+ version
+ CGameCtnBlockInfoClip BottomClip (external)
+ CGameCtnBlockInfoClip TopClip (external)
+ int<Direction>? BottomClipDir
+ int<Direction>? TopClipDir
+
+0x00C
+
+0x00D
+ version
+ data

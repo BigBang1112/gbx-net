@@ -1,0 +1,125 @@
+CGameCtnBlockInfo 0x0304E000
+- inherits: CGameCtnCollector
+- abstract
+
+0x005
+
+0x009
+ bool IsPillar
+
+0x00B
+ int
+ CSceneMobil // VariantBaseGround
+ CSceneMobil
+ CSceneMobil // VariantBaseAir
+
+0x00C
+ iso4 // Sound1Loc/SpawnLocAir?
+ iso4 // Sound2Loc/SpawnLocGround?
+
+0x00D
+ bool // something with replacing?
+
+0x00E
+ int<EWayPointType> WayPointType
+ CSceneMobil // helper
+ CSceneMobil // helper
+ CSceneMobil // arrow
+
+0x00F
+ bool NoRespawn
+
+0x013
+ bool IconAutoUseGround
+
+0x015
+ int // node ref
+ iso4
+
+0x017
+ bool
+
+0x020
+ version
+ CPlugCharPhySpecialProperty CharPhySpecialProperty
+ v6-
+  CGameWaypointSpecialProperty U01
+ v2+
+  CGamePodiumInfo PodiumInfo
+  v3+
+   CGamePodiumInfo IntroInfo
+   v4+
+    bool CharPhySpecialPropertyCustomizable
+    v5=
+     bool U02
+    v8+
+     bool U03
+     if U03
+      string // MatModifier
+      string // Grass
+
+0x023
+ CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
+ CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
+
+0x026
+ int<EWayPointType> WayPointType
+
+0x027
+ CGameCtnBlockInfoVariantGround[]_deprec AdditionalVariantsGround
+
+0x028
+ id SymmetricalBlockInfoId
+ int<Direction> Dir
+
+0x029
+ CPlugFogVolumeBox FogVolumeBox (external)
+
+0x02A
+ version
+ CPlugSound Sound1 (external)
+ CPlugSound Sound2 (external)
+ v2-
+  iso4 Sound1Loc
+  iso4 Sound2Loc
+ v3+
+  if Sound1 != null
+   iso4 Sound1Loc
+  if Sound2 != null
+   iso4 Sound2Loc
+
+0x02B
+ version
+ int
+
+0x02C
+ CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
+
+0x02F
+ version
+ boolbyte IsPillar
+ byte<EMultiDir> PillarShapeMultiDir
+ v1+
+  byte
+
+0x031
+ int
+ int
+ int
+
+enum EWayPointType
+ Start
+ Finish
+ Checkpoint
+ None
+ StartFinish
+ Dispenser
+
+enum EMultiDir
+ SameDir
+ SymmetricalDirs
+ AllDir
+ OpposedDirOnly
+ PerpendicularDirsOnly
+ NextDirOnly
+ PreviousDirOnly

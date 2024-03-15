@@ -1,0 +1,89 @@
+CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
+
+0x002 // Ident
+ ident Ident
+
+0x003 (header, struct: SHeaderDesc) // desc
+ ident Ident
+ version
+ string PageName
+ v5=
+  id
+ v4+
+  id
+ v3+
+  int<ECollectorFlags> Flags
+  short CatalogPosition
+  v5-
+   byte
+   int
+   short
+  v7+
+   string Name
+   v8+
+    byte<EProdState> ProdState
+
+0x004 (header, struct: SHeaderIcon) // icon
+
+0x006 (header, struct: SHeaderLightMap) // lightmap compute time
+ filetime LightmapComputeTime
+
+0x006
+ int
+
+0x007
+ bool
+ bool
+ int CatalogPosition
+ int
+ int
+ int
+
+0x008
+ CPlugGameSkin
+
+0x009
+
+0x00A
+ id
+
+0x00B // ident
+ ident Ident
+
+0x00C // collector name
+ string Name
+
+0x00D // description
+ string Description
+
+0x00E // icon render
+ bool IconUseAutoRender
+ int IconQuarterRotationY
+
+0x010
+
+0x011
+ version
+ bool IsInternal
+ bool IsAdvanced
+ int CatalogPosition
+ v1+
+  byte<EProdState> ProdState
+
+0x012
+ int
+ int
+ int
+ int
+
+enum ECollectorFlags
+ None
+ UnknownValue
+ IsInternal
+ IsAdvanced = 4
+
+enum EProdState
+ Aborted
+ GameBox
+ DevBuild
+ Release

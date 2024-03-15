@@ -1,0 +1,12 @@
+CHmsItem 0x06003000
+
+0x001 // solid
+ CPlugSolid Solid
+
+0x010
+ ulong
+ short
+
+0x011
+ ulong
+ short

@@ -114,7 +114,7 @@ internal class ClassDataSubGenerator
 
         if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
         {
-            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, classInfos, classInfo.Archives, context, archiveStructureKind, indent: 0);
+            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, classInfos, classInfo.Archives, context, archiveStructureKind, indent: 0, null);
         }
 
         AppendChunksLine(sb, classInfo, existingMembers, classInfos, classInfo.Archives, context);
@@ -360,7 +360,8 @@ internal class ClassDataSubGenerator
         ImmutableDictionary<string, ArchiveDataModel> archiveInfos,
         SourceProductionContext context,
         int? archiveStructureKind,
-        int indent)
+        int indent,
+        bool? overrideMethods)
     {
         if (archiveInfo.ChunkLDefinition is null)
         {
@@ -423,7 +424,14 @@ internal class ClassDataSubGenerator
         if (doReadMethod)
         {
             sb.AppendLine();
-            sb.Append(indent, "    public void Read(GbxReader r, int version = 0)");
+            sb.Append(indent, "    public ");
+
+            if (overrideMethods.HasValue)
+            {
+                sb.Append(overrideMethods.Value ? "override " : "virtual ");
+            }
+
+            sb.Append("void Read(GbxReader r, int version = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
@@ -437,7 +445,14 @@ internal class ClassDataSubGenerator
         if (doWriteMethod)
         {
             sb.AppendLine();
-            sb.Append(indent, "    public void Write(GbxWriter w, int version = 0)");
+            sb.Append(indent, "    public ");
+
+            if (overrideMethods.HasValue)
+            {
+                sb.Append(overrideMethods.Value ? "override " : "virtual ");
+            }
+
+            sb.Append("void Write(GbxWriter w, int version = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
@@ -451,7 +466,14 @@ internal class ClassDataSubGenerator
         if (doReadWriteMethod)
         {
             sb.AppendLine();
-            sb.Append(indent, "    public void ReadWrite(GbxReaderWriter rw, int version = 0)");
+            sb.Append(indent, "    public ");
+
+            if (overrideMethods.HasValue)
+            {
+                sb.Append(overrideMethods.Value ? "override " : "virtual ");
+            }
+
+            sb.Append("void ReadWrite(GbxReaderWriter rw, int version = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
@@ -564,7 +586,18 @@ internal class ClassDataSubGenerator
         SourceProductionContext context)
     {
         sb.AppendLine();
-        sb.Append("    public sealed ");
+        sb.Append("    public ");
+
+        var sealedArchive = !archiveInfos.Any(x => x.Value
+            .ChunkLDefinition?
+            .Properties
+            .TryGetValue("inherits", out var otherInherits) == true
+                && otherInherits == archiveName);
+
+        if (sealedArchive)
+        {
+            sb.Append("sealed ");
+        }
 
         if (archiveInfo.TypeSymbol is not null)
         {
@@ -574,6 +607,18 @@ internal class ClassDataSubGenerator
         sb.Append("class ");
         sb.Append(archiveName);
         sb.Append(" : ");
+
+        bool? overrideMethods = sealedArchive;
+
+        if (archiveInfo.ChunkLDefinition?.Properties.TryGetValue("inherits", out var inherits) == true)
+        {
+            sb.Append(inherits);
+            sb.Append(", ");
+        }
+        else if (sealedArchive)
+        {
+            overrideMethods = null;
+        }
 
         var archiveGenOptionsAtt = archiveInfo.TypeSymbol?
             .GetAttributes()
@@ -602,7 +647,7 @@ internal class ClassDataSubGenerator
         var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, context);
         propWriter.Append();
 
-        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1);
+        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1, overrideMethods);
 
         sb.AppendLine("    }");
     }

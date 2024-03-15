@@ -1,0 +1,2 @@
+CPlugFogVolumeBox 0x090D5000
+- inherits: CPlugFogVolume

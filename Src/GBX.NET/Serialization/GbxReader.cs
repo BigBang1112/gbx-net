@@ -1077,7 +1077,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             throw new Exception($"Length is too big to handle ({(l < 0 ? length : l)}).");
         }
 
-        limiter?.ThrowIfLimitExceeded(length);
+        limiter?.ThrowIfLimitExceeded(l);
 
         return l;
     }

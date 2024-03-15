@@ -1,0 +1,5 @@
+CGameCtnAutoTerrain 0x03120000
+
+0x001
+ int3 Offset
+ CGameCtnZoneGenealogy Genealogy

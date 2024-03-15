@@ -74,6 +74,8 @@
 		<Using Include="GBX.NET.Engines.Function" />
 		<Using Include="GBX.NET.Engines.Script" />
 		<Using Include="GBX.NET.Engines.Graphic" />
+		<Using Include="GBX.NET.Engines.Motion" />
+		<Using Include="GBX.NET.Engines.Hms" />
 	</ItemGroup>
 
 	<ItemGroup>

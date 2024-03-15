@@ -99,7 +99,7 @@ internal sealed class MemberSerializationWriter
 
                         if (isWord)
                         {
-                            if (!self && !IsUnknown(part))
+                            if (!self && !IsUnknown(part) && part is not "null")
                             {
                                 sb.Append("n.");
                             }
@@ -135,13 +135,13 @@ internal sealed class MemberSerializationWriter
                     switch (serializationType)
                     {
                         case SerializationType.Read:
-                            sb.Append("Read(n, r);");
+                            sb.Append(self ? "Read(r, version);" : "Read(n, r);");
                             break;
                         case SerializationType.Write:
-                            sb.Append("Write(n, w);");
+                            sb.Append(self ? "Write(w, version);" : "Write(n, w);");
                             break;
                         case SerializationType.ReadWrite:
-                            sb.Append("ReadWrite(n, rw);");
+                            sb.Append(self ? "ReadWrite(rw, version);" : "ReadWrite(n, rw);");
                             break;
                         default:
                             throw new NotImplementedException();
@@ -324,6 +324,11 @@ internal sealed class MemberSerializationWriter
             sb.Append(version);
         }
 
+        if (chunkProperty.Type.PrimaryType.ToLowerInvariant() == "boolbyte")
+        {
+            sb.Append(", asByte: true");
+        }
+
         sb.Append(")");
         sb.Append(";");
     }
@@ -449,7 +454,9 @@ internal sealed class MemberSerializationWriter
         if (isUnknown)
         {
             ++unknownCounter;
-            return (IsExplicitUnknownProperty(chunkProperty.Name) ? chunkProperty.Name : $"{(self ? 'u' : 'U')}{unknownCounter:00}");
+            return IsExplicitUnknownProperty(chunkProperty.Name)
+                ? (self ? char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1) : chunkProperty.Name)
+                : $"{(self ? 'u' : 'U')}{unknownCounter:00}";
         }
         else
         {
@@ -480,7 +487,7 @@ internal sealed class MemberSerializationWriter
             "uint8" or "byte" => nameof(Byte),
             "int8" or "sbyte" => nameof(SByte),
             "float" => nameof(Single),
-            "bool" => nameof(Boolean),
+            "bool" or "boolbyte" => nameof(Boolean),
             "string" => nameof(String),
             "vec2" => "Vec2",
             "vec3" => "Vec3",

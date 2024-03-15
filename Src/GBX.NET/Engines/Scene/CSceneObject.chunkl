@@ -1,0 +1,14 @@
+CSceneObject 0x0A005000
+- abstract
+
+0x001
+ id
+
+0x002
+ bool // same as 0x004 U01
+
+0x003
+ CMotion Motion
+
+0x004
+ int // same as 0x002 U01

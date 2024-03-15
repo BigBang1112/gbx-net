@@ -1,0 +1,32 @@
+CSceneObjectLink 0x0A00F000
+
+0x0A014001
+ bool U01
+ if U01
+  int
+  id[]
+  int
+ if !U01
+  CMwNod
+ iso4
+ bool
+
+0x001
+ float
+ float
+ float
+ float
+ float
+ float
+ bool
+
+0x0A014002
+ id
+ bool
+ bool
+
+0x002
+ bool
+
+0x0A014003
+ id

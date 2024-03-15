@@ -107,6 +107,16 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         Writer?.Dispose();
     }
 
+    public int Int16(int value) => Int16((short)value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public int? Int16(int? value, int defaultValue = default) => Int16((short?)value, (short)defaultValue);
+
+    public void Int16(ref int value) => value = Int16(value);
+
+    public void Int16([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default)
+        => value = Int16(value, defaultValue);
+
     [return: NotNullIfNotNull(nameof(value))]
     public string? Id(string? value = null) => IdAsString(value);
 
@@ -149,6 +159,34 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     }
 
     public void EnumByte<T>(ref T value) where T : struct, Enum => value = EnumByte(value);
+
+    public T? EnumInt32<T>(T? value, T defaultValue = default) where T : struct, Enum
+    {
+        if (Reader is not null)
+        {
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadInt32()); // CastTo<T>.From(Reader.ReadInt32());
+        }
+
+        Writer?.Write(value.HasValue ? (int)(object)value : (int)(object)defaultValue /* CastTo<int>.From(value) */);
+
+        return value;
+    }
+
+    public void EnumInt32<T>(ref T? value, T defaultValue = default) where T : struct, Enum => value = EnumInt32(value, defaultValue);
+
+    public T? EnumByte<T>(T? value, T defaultValue = default) where T : struct, Enum
+    {
+        if (Reader is not null)
+        {
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadByte()); // CastTo<T>.From(Reader.ReadByte());
+        }
+
+        Writer?.Write(value.HasValue ? (byte)(object)value : (byte)(object)defaultValue /* CastTo<byte>.From(value) */);
+
+        return value;
+    }
+
+    public void EnumByte<T>(ref T? value, T defaultValue = default) where T : struct, Enum => value = EnumByte(value, defaultValue);
 
     public void Marker(string value)
     {

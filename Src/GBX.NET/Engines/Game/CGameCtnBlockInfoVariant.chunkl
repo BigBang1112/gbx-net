@@ -1,0 +1,153 @@
+CGameCtnBlockInfoVariant 0x0315B000
+
+0x002
+ int<EMultiDir> MultiDir
+
+0x003
+ version
+ int SymmetricalVariantIndex
+ v0=
+  int<ECardinalDir> CardinalDir
+ v1+
+  byte<ECardinalDir> CardinalDir
+  byte<EVariantBaseType> VariantBaseType
+  v2+
+   byte NoPillarBelowIndex
+
+0x004
+ short
+
+0x005
+
+0x006
+ version
+ v8-
+  CMwNod
+ CMwNod ScreenInteractionTriggerSolid (external)
+ CMwNod WaypointTriggerSolid (external)
+ v11+
+  CMwNod (external) // WaypointTriggerShape?
+  CMwNod (external) // ScreenInteractionTriggerShape?
+ v8-
+  int
+ v2+
+  CGameGateModel Gate
+  v3+
+   CGameTeleporterModel Teleporter
+   v5+
+    CGameTurbineModel Turbine
+    v7+
+     CPlugFlockModel FlockModel (external)
+     if FlockModel != null
+      FlockEmitterState FlockEmmiter
+     v8+
+      CGameSpawnModel SpawnModel (external)
+      v10+
+       CPlugEntitySpawner[] EntitySpawners
+
+0x007
+ version
+ CPlugProbe Probe
+
+0x008
+ version
+ CGameCtnBlockUnitInfo[] BlockUnitModels
+ int
+ bool HasManualSymmetryH
+ bool HasManualSymmetryV
+ bool HasManualSymmetryD1
+ bool HasManualSymmetryD2
+ v1-
+  vec3 SpawnTrans
+  float SpawnYaw
+  float SpawnPitch
+ v2+
+  boxaligned // SpawnTrans, SpawnYaw, SpawnPitch, SpawnRoll - I imagine
+ string Name
+
+0x009
+ version
+ PlacedPillarParam[]
+ v1+
+  ReplacedPillarParam[]
+
+0x00A
+ version
+ v1-
+  CMwNod
+  CMwNod
+  v1+
+   iso4?
+ v2+
+  CGameObjectPhyCompoundModel CompoundModel
+  v2- // Perhaps?
+   iso4 CompoundLoc
+
+0x00B
+ version
+ WaterVolume[] WaterVolumes
+
+0x00C
+ version
+ int U01
+ if U01 > 0
+  throw
+
+0x00D
+ int
+ int
+
+enum EMultiDir
+ SameDir
+ SymmetricalDirs
+ AllDir
+ OpposedDirOnly
+ PerpendicularDirsOnly
+ NextDirOnly
+ PreviousDirOnly
+
+enum ECardinalDir
+ North
+ East
+ South
+ West
+
+enum EVariantBaseType
+ Inherit
+ None
+ Conductor
+ Generator
+
+archive PlacedPillarParam
+ CMwNod (external)
+ int
+ int
+ int
+ int
+
+archive ReplacedPillarParam (inherits: PlacedPillarParam)
+ base
+ byte U06
+
+archive WaterVolume
+ boxint3[]
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  id
+
+archive FlockEmitterState
+ int Version
+ float // 10 is a clear state
+ float // 0x40000000 is a clear state
+ int // 5 is a clear state
+ bool
+ bool // true is a clear state
+ if Version >= 1
+  mat3? Matrix
+ vec3 Position
