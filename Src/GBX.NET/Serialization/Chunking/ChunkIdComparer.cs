@@ -6,11 +6,18 @@ public sealed class ChunkIdComparer : IComparer<IChunk>
 
     public int Compare(IChunk? x, IChunk? y)
     {
-        if (x is null || y is null)
-        {
-            return 0;
-        }
+        // Both null or same instance
+        if (ReferenceEquals(x, y)) return 0;
 
-        return x.Id.CompareTo(y.Id) + (x is IHeaderChunk ? -1 : 0) + (y is IHeaderChunk ? 1 : 0);
+        // null is considered less than any non-null
+        if (x is null) return -1;
+        if (y is null) return 1;
+
+        // Prioritize IHeaderChunk instances
+        if (x is IHeaderChunk && y is not IHeaderChunk) return -1;
+        if (x is not IHeaderChunk && y is IHeaderChunk) return 1;
+
+        // Compare by Id if none of the above conditions are met
+        return x.Id.CompareTo(y.Id);
     }
 }
