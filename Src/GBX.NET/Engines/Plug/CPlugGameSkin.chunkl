@@ -1,6 +1,6 @@
 CPlugGameSkin 0x090F4000
 
-0x000 (header, struct: SHeader)
+0x000 (header, self-contained, struct: SHeader)
 
 0x003
  string

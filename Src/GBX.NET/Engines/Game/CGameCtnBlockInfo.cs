@@ -20,6 +20,18 @@ public partial class CGameCtnBlockInfo
     private CSceneMobil[][]? airMobils;
     public CSceneMobil[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
+    public override IHeaderChunk? CreateHeaderChunk(uint chunkId)
+    {
+        if (chunkId == 0x090F4000)
+        {
+            var chunk = new CPlugGameSkin.HeaderChunk090F4000();
+            Chunks.Add(chunk);
+            return chunk;
+        }
+
+        return base.CreateHeaderChunk(chunkId);
+    }
+
     [Chunk(0x0304E005)]
     public partial class Chunk0304E005
     {

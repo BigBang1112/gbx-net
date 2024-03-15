@@ -99,7 +99,7 @@ internal class ClassDataSubGenerator
 
         sb.AppendLine("{");
 
-        var existingMembers = classInfo.TypeSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
+        var existingMembers = classInfo.TypeSymbol?.GetMembers() ?? [];
 
         if (classInfo.Id.HasValue)
         {
@@ -218,7 +218,7 @@ internal class ClassDataSubGenerator
             sb.Append(classInfo.Id.Value.ToString("X8"));
             sb.AppendLine("</remarks>");
 
-            var atts = classInfo.TypeSymbol?.GetAttributes() ?? ImmutableArray<AttributeData>.Empty;
+            var atts = classInfo.TypeSymbol?.GetAttributes() ?? [];
 
             var hasClassAttribute = atts.Any(x => x.AttributeClass?.Name == "ClassAttribute");
 
@@ -639,7 +639,7 @@ internal class ClassDataSubGenerator
         sb.AppendLine();
         sb.AppendLine("    {");
 
-        var existingArchiveMembers = archiveInfo.TypeSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
+        var existingArchiveMembers = archiveInfo.TypeSymbol?.GetMembers() ?? [];
 
         var alreadyExistingProperties = existingArchiveMembers.OfType<IPropertySymbol>()
             .ToDictionary(x => x.Name) ?? [];
@@ -881,6 +881,15 @@ internal class ClassDataSubGenerator
             }
         }
 
+        var isSelfContained = chunk.ChunkLDefinition?.Properties.ContainsKey("self-contained") == true;
+
+        if (isSelfContained)
+        {
+            sb.Append(", ISelfContainedChunk<");
+            sb.Append(classInfo.Name);
+            sb.Append(">");
+        }
+
         if (isVersionableAutomated)
         {
             sb.Append(", IVersionable");
@@ -889,7 +898,7 @@ internal class ClassDataSubGenerator
         sb.AppendLine();
         sb.AppendLine("    {");
 
-        var existingChunkMembers = chunk.TypeSymbol?.GetMembers() ?? ImmutableArray<ISymbol>.Empty;
+        var existingChunkMembers = chunk.TypeSymbol?.GetMembers() ?? [];
 
         AppendChunkIdMemberLine(sb, existingChunkMembers, chunk.Id, chunk.TypeSymbol?.IsValueType ?? false, context);
 
@@ -911,6 +920,20 @@ internal class ClassDataSubGenerator
         }
         else
         {
+            if (isSelfContained)
+            {
+                sb.AppendLine();
+                sb.AppendLine("        /// <inheritdoc />");
+                sb.Append("        public ");
+                sb.Append(classInfo.Name);
+                sb.AppendLine(" Node { get; set; } = new();");
+                sb.AppendLine();
+                sb.AppendLine("        /// <inheritdoc />");
+                sb.Append("        IClass ISelfContainedChunk.Node { get => Node; set => Node = (");
+                sb.Append(classInfo.Name);
+                sb.AppendLine("?)value; }");
+            }
+
             if (chunk.ChunkLDefinition?.Properties.ContainsKey("ignore") == true)
             {
                 sb.AppendLine();
