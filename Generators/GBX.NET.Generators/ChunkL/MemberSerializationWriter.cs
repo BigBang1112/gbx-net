@@ -339,7 +339,8 @@ internal sealed class MemberSerializationWriter
 
         if (noMatch)
         {
-            AppendNodeRefOrArchive(mappedType, chunkProperty.Type.PrimaryTypeMarker, onlyReadable);
+            AppendNodeRefOrArchive(mappedType, chunkProperty.Type.PrimaryTypeMarker, onlyReadable,
+                chunkProperty.Properties?.ContainsKey("direct") == true);
 
             if (chunkProperty.Type.IsDeprec)
             {
@@ -409,7 +410,8 @@ internal sealed class MemberSerializationWriter
         {
             if (genericNoMatch)
             {
-                AppendNodeRefOrArchive(genericType, chunkProperty.Type.GenericTypeMarker, onlyReadable);
+                AppendNodeRefOrArchive(genericType, chunkProperty.Type.GenericTypeMarker, onlyReadable,
+                    chunkProperty.Properties?.ContainsKey("direct") == true);
             }
 
             if (chunkProperty.Type.IsDeprec)
@@ -432,7 +434,7 @@ internal sealed class MemberSerializationWriter
         }
     }
 
-    private void AppendNodeRefOrArchive(string type, string typeMarker, bool onlyReadable)
+    private void AppendNodeRefOrArchive(string type, string typeMarker, bool onlyReadable, bool direct)
     {
         var shouldApplyReadableWritable = archives.ContainsKey(type)
                             || (classes.TryGetValue(type, out var classData)
@@ -445,7 +447,7 @@ internal sealed class MemberSerializationWriter
         }
         else
         {
-            sb.Append("NodeRef");
+            sb.Append(direct ? "Node" : "NodeRef");
         }
     }
 
