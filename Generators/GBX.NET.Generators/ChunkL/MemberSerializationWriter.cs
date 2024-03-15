@@ -329,6 +329,14 @@ internal sealed class MemberSerializationWriter
             sb.Append(", asByte: true");
         }
 
+        if (chunkProperty.Properties?.TryGetValue("prefix", out var prefix) == true)
+        {
+            if (prefix == "byte")
+            {
+                sb.Append(", byteLengthPrefix: true");
+            }
+        }
+
         sb.Append(")");
         sb.Append(";");
     }

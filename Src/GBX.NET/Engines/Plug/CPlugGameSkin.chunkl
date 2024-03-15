@@ -1,9 +1,30 @@
 CPlugGameSkin 0x090F4000
 
 0x000 (header, self-contained, struct: SHeader)
+ versionb
+ string RelativeSkinDirectory
+ v1+
+  string ParentPackDesc
+  string
+ HeaderFid[] HeaderFids (prefix: byte, version: Version)
+ v4+
+  string // PackDesc?
+  v5+
+   bool // something dialog?
+   v6+
+    string
+    v7+
+     int
 
 0x003
  string
  string
 
 0x004
+
+archive HeaderFid
+ uint ClassId
+ string Name
+ string Directory
+ v2+
+  bool

@@ -702,7 +702,7 @@ public sealed partial class CGameCtnChallenge :
 
             w.Write(U01);
 
-            w.WriteListWritable(n.BakedClipsAdditionalData, Version);
+            w.WriteListWritable(n.BakedClipsAdditionalData, version: Version);
         }
     }
 

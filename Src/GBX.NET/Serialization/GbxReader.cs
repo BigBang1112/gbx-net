@@ -97,11 +97,11 @@ public partial interface IGbxReader : IDisposable
     IList<T?> ReadListNodeRef<T>() where T : IClass;
     IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
-    T[] ReadArrayReadable<T>(int version = 0) where T : IReadable, new();
-    T[] ReadArrayReadable_deprec<T>(int version = 0) where T : IReadable, new();
+    T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
-    IList<T> ReadListReadable<T>(int version = 0) where T : IReadable, new();
-    IList<T> ReadListReadable_deprec<T>(int version = 0) where T : IReadable, new();
+    IList<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    IList<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
 
     string[] ReadArrayId(int length);
     string[] ReadArrayId();
@@ -1013,12 +1013,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return array;
     }
 
-    public T[] ReadArrayReadable<T>(int version = 0) where T : IReadable, new() => ReadArrayReadable<T>(ReadInt32(), version);
+    public T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
+        => ReadArrayReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
-    public T[] ReadArrayReadable_deprec<T>(int version = 0) where T : IReadable, new()
+    public T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {
         ReadDeprecVersion();
-        return ReadArrayReadable<T>(version);
+        return ReadArrayReadable<T>(byteLengthPrefix, version);
     }
 
     public IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new()
@@ -1040,12 +1041,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<T> ReadListReadable<T>(int version = 0) where T : IReadable, new() => ReadListReadable<T>(ReadInt32(), version);
+    public IList<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
+        => ReadListReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
-    public IList<T> ReadListReadable_deprec<T>(int version = 0) where T : IReadable, new()
+    public IList<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {
         ReadDeprecVersion();
-        return ReadListReadable<T>(version);
+        return ReadListReadable<T>(byteLengthPrefix, version);
     }
 
     private void ValidateCollectionLength(int length)

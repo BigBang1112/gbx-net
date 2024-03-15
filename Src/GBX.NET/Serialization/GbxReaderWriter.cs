@@ -35,20 +35,20 @@ public partial interface IGbxReaderWriter : IDisposable
     T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int length, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    T[]? ArrayReadableWritable<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new();
-    void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0) where T : IReadableWritable, new();
+    T[]? ArrayReadableWritable<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new();
-    void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0) where T : IReadableWritable, new();
+    T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
     IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
     void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    IList<T>? ListReadableWritable<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new();
-    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0) where T : IReadableWritable, new();
+    IList<T>? ListReadableWritable<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new();
-    void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0) where T : IReadableWritable, new();
+    IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
 }
 
 public sealed partial class GbxReaderWriter : IGbxReaderWriter
@@ -263,18 +263,26 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         where T : IReadableWritable, new() => value = ArrayReadableWritable(value, length, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public T[]? ArrayReadableWritable<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new()
+    public T[]? ArrayReadableWritable<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         if (Reader is not null)
         {
-            var length = Reader.ReadInt32();
+            var length = byteLengthPrefix ? Reader.ReadByte() : Reader.ReadInt32();
             value = ArrayReadableWritable(value, length, version);
         }
 
         if (Writer is not null)
         {
             var length = value?.Length ?? 0;
-            Writer.Write(length);
+
+            if (byteLengthPrefix)
+            {
+                Writer.Write((byte)length);
+            }
+            else
+            {
+                Writer.Write(length);
+            }
 
             if (length > 0)
             {
@@ -285,19 +293,19 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         return value;
     }
 
-    public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0)
-        where T : IReadableWritable, new() => value = ArrayReadableWritable(value, version);
+    public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadableWritable, new() => value = ArrayReadableWritable(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, int version = 0) where T : IReadableWritable, new()
+    public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         Reader?.ReadDeprecVersion();
         Writer?.WriteDeprecVersion();
-        return ArrayReadableWritable(value, version);
+        return ArrayReadableWritable(value, byteLengthPrefix, version);
     }
 
-    public void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int version = 0)
-        where T : IReadableWritable, new() => value = ArrayReadableWritable_deprec(value, version);
+    public void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadableWritable, new() => value = ArrayReadableWritable_deprec(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new()
@@ -348,18 +356,26 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         where T : IReadableWritable, new() => value = ListReadableWritable(value, length, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<T>? ListReadableWritable<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new()
+    public IList<T>? ListReadableWritable<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         if (Reader is not null)
         {
-            var length = Reader.ReadInt32();
+            var length = byteLengthPrefix ? Reader.ReadByte() : Reader.ReadInt32();
             value = ListReadableWritable(value, length, version);
         }
 
         if (Writer is not null)
         {
             var length = value?.Count ?? 0;
-            Writer.Write(length);
+
+            if (byteLengthPrefix)
+            {
+                Writer.Write((byte)length);
+            }
+            else
+            {
+                Writer.Write(length);
+            }
 
             if (length > 0)
             {
@@ -370,17 +386,17 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         return value;
     }
 
-    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0)
-        where T : IReadableWritable, new() => value = ListReadableWritable(value, version);
+    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadableWritable, new() => value = ListReadableWritable(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, int version = 0) where T : IReadableWritable, new()
+    public IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         Reader?.ReadDeprecVersion();
         Writer?.WriteDeprecVersion();
-        return ListReadableWritable(value, version);
+        return ListReadableWritable(value, byteLengthPrefix, version);
     }
 
-    public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int version = 0)
-        where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, version);
+    public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, byteLengthPrefix, version);
 }

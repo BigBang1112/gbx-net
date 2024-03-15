@@ -31,7 +31,7 @@ public partial class CGameCtnMediaClipGroup
     private static void WriteClips(CGameCtnMediaClipGroup n, GbxWriter w, int version)
     {
         w.WriteListNodeRef_deprec(n.Clips.Select(x => x.Clip).ToList()!);
-        w.WriteListWritable(n.Clips.Select(x => x.Trigger).ToList(), version);
+        w.WriteListWritable(n.Clips.Select(x => x.Trigger).ToList(), version: version);
     }
 
     public partial class Chunk0307A001
