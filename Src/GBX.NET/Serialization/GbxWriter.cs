@@ -161,7 +161,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     internal int? ExpectedNodeCount { get; set; }
 
     public SerializationMode Mode { get; }
-    public GbxFormat Format { get; private set; }
+    public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
     /// <summary>
     /// 
@@ -181,6 +181,23 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         xmlWriter = output;
         Mode = SerializationMode.Xml;
+    }
+
+    internal void LoadFrom(IGbxWriter writer)
+    {
+        Format = writer.Format;
+
+        if (writer is GbxWriter w)
+        {
+            refTable = w.refTable;
+            idVersion = w.idVersion;
+            idDict = w.idDict;
+            encapsulation = w.encapsulation;
+            PackDescVersion = w.PackDescVersion;
+            DeprecVersion = w.DeprecVersion;
+
+            ExpectedNodeCount = w.ExpectedNodeCount;
+        }
     }
 
     public void WriteGbxMagic()
@@ -400,7 +417,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteUInt256(UInt256 value)
     {
 #if NET5_0_OR_GREATER
-        Span<byte> dest = stackalloc byte[16];
+        Span<byte> dest = stackalloc byte[32];
         value.WriteLittleEndian(dest);
         Write(dest);
 #else
@@ -678,7 +695,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (!NodeDict.TryGetValue(value, out var index))
         {
-            index = NodeDict.Count;
+            index = NodeDict.Count + 1;
 
             // TODO: Report on replacements
             NodeDict[value] = index;
@@ -893,7 +910,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct
     {
-        if (value is null)
+        if (value is null || value.Length == 0)
         {
             Write(0);
             return;
@@ -927,7 +944,22 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteList<T>(IList<T>? value, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        if (value is null || value.Count == 0)
+        {
+            Write(0);
+            return;
+        }
+
+        ValidateCollectionLength(value.Count);
+
+#if NET6_0_OR_GREATER
+        if (value is List<T> list)
+        {
+            Write(MemoryMarshal.Cast<T, byte>(CollectionsMarshal.AsSpan(list)));
+        }
+#else
+        Write(MemoryMarshal.Cast<T, byte>(value.ToArray()).ToArray());
+#endif
     }
 
     public void WriteList<T>(IList<T>? value, int length, bool lengthInBytes = false) where T : struct
