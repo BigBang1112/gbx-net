@@ -134,6 +134,7 @@ internal static class PropertyTypeExtensions
             "packdesc" or "fileref" => "PackDesc",
             "list" => nameof(IList),
             "data" => "byte[]",
+            "boolbyte" => "bool",
             _ => type
         };
     }

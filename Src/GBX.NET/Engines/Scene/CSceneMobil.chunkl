@@ -1,14 +1,14 @@
 CSceneMobil 0x0A011000
 - inherits: CSceneObject
 
-0x003
+0x003 [TM10, TMSX, TMF]
  CSceneObjectLink[] ObjectLink
 
-0x004
+0x004 [TM10, TMSX]
  CMwNod
 
-0x005
+0x005 [TM10, TMSX, TMF]
  CHmsItem Item (direct)
 
-0x006
+0x006 [TM10, TMSX, TMF]
  CSceneMessageHandler MessageHandler

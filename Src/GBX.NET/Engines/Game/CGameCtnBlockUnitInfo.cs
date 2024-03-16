@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Components;
+
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockUnitInfo
 {
@@ -22,6 +24,22 @@ public partial class CGameCtnBlockUnitInfo
             {
                 rw.Boolean(ref U02.Item1);
                 rw.Int32(ref U02.Item2);
+            }
+        }
+    }
+
+    public partial class Chunk03036007
+    {
+        public External<CMwNod>[]? U01;
+
+        public override void Read(CGameCtnBlockUnitInfo n, GbxReader r)
+        {
+            U01 = new External<CMwNod>[4]; // or pylons?
+
+            for (var i = 0; i < U01.Length; i++)
+            {
+                var node = r.ReadNodeRef<CMwNod>(out GbxRefTableFile? file);
+                U01[i] = new(node, file);
             }
         }
     }

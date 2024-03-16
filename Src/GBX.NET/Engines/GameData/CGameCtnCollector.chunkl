@@ -1,9 +1,6 @@
 CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
-0x002 // Ident
- ident Ident
-
-0x003 (header, struct: SHeaderDesc) // desc
+0x003 (header, struct: SHeaderDesc) [TM10.v3, TMSX.v4, TMF.v5] // desc
  ident Ident
  version
  string PageName
@@ -23,15 +20,18 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
    v8+
     byte<EProdState> ProdState
 
-0x004 (header, struct: SHeaderIcon) // icon
+0x004 (header, struct: SHeaderIcon) [TM10, TMSX, TMF] // icon
 
 0x006 (header, struct: SHeaderLightMap) // lightmap compute time
  filetime LightmapComputeTime
 
-0x006
+0x002 [TM10, TMSX] // Ident
+ ident Ident
+
+0x006 [TM10, TMSX, TMF]
  int
 
-0x007
+0x007 [TM10, TMSX, TMF]
  bool
  bool
  int CatalogPosition
@@ -42,12 +42,12 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 0x008
  CPlugGameSkin
 
-0x009
+0x009 [TMSX, TMF]
 
-0x00A
+0x00A [TMF]
  id
 
-0x00B // ident
+0x00B [TMF] // ident
  ident Ident
 
 0x00C // collector name

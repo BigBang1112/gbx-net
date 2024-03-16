@@ -1,0 +1,12 @@
+CGameObjectVisModel 0x2E007000
+
+0x001
+
+0x002 (skippable)
+ version
+ string SoundRefSpawn
+ string SoundRefUnspawn
+ string SoundRefGrab
+ string SoundRefSmashed
+ string SoundRefPermanent
+ iso4 SoundLocPermanent

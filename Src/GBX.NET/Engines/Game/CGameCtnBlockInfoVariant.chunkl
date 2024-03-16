@@ -35,15 +35,17 @@ CGameCtnBlockInfoVariant 0x0315B000
   v3+
    CGameTeleporterModel Teleporter
    v5+
-    CGameTurbineModel Turbine
-    v7+
-     CPlugFlockModel FlockModel (external)
-     if FlockModel != null
-      FlockEmitterState FlockEmmiter
-     v8+
-      CGameSpawnModel SpawnModel (external)
-      v10+
-       CPlugEntitySpawner[] EntitySpawners
+    CGameCaptureZoneModel
+    v6+
+     CGameTurbineModel Turbine
+     v7+
+      CPlugFlockModel FlockModel (external)
+      if FlockModel != null
+       FlockEmitterState FlockEmmiter
+      v8+
+       CGameSpawnModel SpawnModel (external)
+       v10+
+        CPlugEntitySpawner[] EntitySpawners
 
 0x007
  version

@@ -1,0 +1,50 @@
+CGameCtnBlockInfoMobil 0x03122000
+
+0x002
+ CGameCtnSolidDecals[]_deprec SolidDecals
+ int
+
+0x003
+ version
+ v1-
+  bool
+  throw
+ int
+ v1+
+  boolbyte HasGeomTransformation
+  if HasGeomTransformation
+   vec3 GeomTranslation
+   vec3 GeomRotation
+  v2+
+   CPlugSolid SolidFid (external)
+   v14+
+    CMwNod
+   v3+
+    CPlugPrefab PrefabFid (external)
+    v4+
+     bool
+     v6+
+      CMwNod (external)
+      v7+
+       int // ?? probably noderef
+       v9+
+        int
+        v16+
+         int // node ref (file likely)
+         v17+
+          int
+          v18+
+           int // node ref (file likely)
+           byte
+           int
+           int
+           int
+           int
+           int
+           int
+           CMwNod[]
+           int
+
+0x004
+ version
+ CGameCtnBlockInfoMobilLink[]_deprec DynaLinks

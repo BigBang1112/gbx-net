@@ -32,7 +32,6 @@ public partial class CGameCtnBlockInfo
         return base.CreateHeaderChunk(chunkId);
     }
 
-    [Chunk(0x0304E005)]
     public partial class Chunk0304E005
     {
         public string? U01;

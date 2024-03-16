@@ -2,14 +2,14 @@ CGameCtnBlockUnitInfo 0x03036000
 - chunk_Chunk03036009: Unexpected syntax
 - chunk_Chunk0303600A: Unexpected syntax
 
-0x000
+0x000 [TM10]
  int PlacePylons
  bool // AcceptPylons?
  bool
  int3 RelativeOffset
  CGameCtnBlockInfoClip[] Clips
 
-0x001
+0x001 [TM10]
  id // Desert, Grass
  int
  int

@@ -1,0 +1,15 @@
+CGameCtnSolidDecals 0x03121000
+
+0x001
+ int
+ data
+
+0x002
+ string Name
+
+0x003
+ id TypeId
+ int TypeIntensity
+
+0x004
+ int DecalFrequency

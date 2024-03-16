@@ -2,31 +2,31 @@ CGameCtnBlockInfo 0x0304E000
 - inherits: CGameCtnCollector
 - abstract
 
-0x005
+0x005 [TM10, TMSX, TMF]
 
-0x009
+0x009 [TM10, TMSX, TMF]
  bool IsPillar
 
-0x00B
+0x00B [TM10, TMSX]
  int
  CSceneMobil // VariantBaseGround
  CSceneMobil
  CSceneMobil // VariantBaseAir
 
-0x00C
+0x00C [TM10, TMSX, TMF]
  iso4 // Sound1Loc/SpawnLocAir?
  iso4 // Sound2Loc/SpawnLocGround?
 
-0x00D
+0x00D [TMSX, TMF]
  bool // something with replacing?
 
-0x00E
+0x00E [TMF]
  int<EWayPointType> WayPointType
  CSceneMobil // helper
  CSceneMobil // helper
  CSceneMobil // arrow
 
-0x00F
+0x00F [TMF]
  bool NoRespawn
 
 0x013

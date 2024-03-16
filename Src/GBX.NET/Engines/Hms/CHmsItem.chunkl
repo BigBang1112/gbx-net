@@ -1,12 +1,16 @@
 CHmsItem 0x06003000
 
-0x001 // solid
+0x001 [TM10, TMSX, TMF] // solid
  CPlugSolid Solid
 
-0x010
+0x00E [TM10]
  ulong
  short
 
-0x011
+0x010 [TMSX]
+ ulong
+ short
+
+0x011 [TMF]
  ulong
  short

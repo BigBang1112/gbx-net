@@ -1,14 +1,14 @@
 CSceneObject 0x0A005000
 - abstract
 
-0x001
+0x001 [TM10, TMSX, TMF]
  id
 
 0x002
  bool // same as 0x004 U01
 
-0x003
+0x003 [TM10, TMSX, TMF]
  CMotion Motion
 
-0x004
+0x004 [TM10, TMSX]
  int // same as 0x002 U01

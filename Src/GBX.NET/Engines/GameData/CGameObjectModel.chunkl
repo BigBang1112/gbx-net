@@ -1,0 +1,24 @@
+CGameObjectModel 0x2E01D000
+
+0x000
+ version
+ CGameObjectPhyModel Phy
+ CGameObjectVisModel Vis
+ v1+
+  int
+  string InventoryName
+  string InventoryDescription
+  int<EGameInventoryItemClass> InventoryItemClass
+  int? InventoryOccupation
+  v2+
+   CGameObjectModel SlaveHealDome
+   v3+
+    CGameObjectModel SlaveShieldDome
+    v4+
+     string ScriptId
+
+enum EGameInventoryItemClass
+ Weapon
+ Movement
+ Consumable
+ Armor
