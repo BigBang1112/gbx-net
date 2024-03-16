@@ -1,6 +1,6 @@
 CPlugGameSkin 0x090F4000
 
-0x000 (header, self-contained, struct: SHeader) [TMSX.v2, TMF.v4, TMT.v5]
+0x000 (header, self-contained, struct: SHeader) [TMSX.v2, TMF.v4, TMT.v5, MP4.v5]
  versionb
  string RelativeSkinDirectory
  v1+

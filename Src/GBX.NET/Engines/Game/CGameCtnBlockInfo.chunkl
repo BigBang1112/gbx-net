@@ -26,20 +26,20 @@ CGameCtnBlockInfo 0x0304E000
  CSceneMobil // helper
  CSceneMobil // arrow
 
-0x00F [TMF, TMT]
+0x00F [TMF, TMT, MP4]
  bool NoRespawn
 
-0x013 [TMT]
+0x013 [TMT, MP4]
  bool IconAutoUseGround
 
-0x015 [TMT]
+0x015 [TMT, MP4]
  int // node ref
  iso4
 
-0x017 [TMT]
+0x017 [TMT, MP4]
  bool
 
-0x020 [TMT.v5]
+0x020 [TMT.v5, MP4.v6]
  version
  CPlugCharPhySpecialProperty CharPhySpecialProperty
  v6-
@@ -58,24 +58,24 @@ CGameCtnBlockInfo 0x0304E000
       string // MatModifier
       string // Grass
 
-0x023 [TMT]
+0x023 [TMT, MP4]
  CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
  CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
 
-0x026 [TMT]
+0x026 [TMT, MP4]
  int<EWayPointType> WayPointType
 
-0x027 [TMT]
+0x027 [TMT, MP4]
  CGameCtnBlockInfoVariantGround[]_deprec AdditionalVariantsGround
 
-0x028 [TMT]
+0x028 [TMT, MP4]
  id SymmetricalBlockInfoId
  int<Direction> Dir
 
-0x029 [TMT]
+0x029 [TMT, MP4]
  CPlugFogVolumeBox FogVolumeBox (external)
 
-0x02A [TMT.v1]
+0x02A [TMT.v1, MP4.v2]
  version
  CPlugSound Sound1 (external)
  CPlugSound Sound2 (external)
@@ -88,14 +88,14 @@ CGameCtnBlockInfo 0x0304E000
   if Sound2 != null
    iso4 Sound2Loc
 
-0x02B [TMT.v1]
+0x02B [TMT.v1, MP4.v1]
  version
  int
 
-0x02C [TMT]
+0x02C [TMT, MP4]
  CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
 
-0x02F
+0x02F [MP4.v0]
  version
  boolbyte IsPillar
  byte<EMultiDir> PillarShapeMultiDir

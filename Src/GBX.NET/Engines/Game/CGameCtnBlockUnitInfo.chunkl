@@ -2,19 +2,19 @@ CGameCtnBlockUnitInfo 0x03036000
 - chunk_Chunk03036009: Unexpected syntax
 - chunk_Chunk0303600A: Unexpected syntax
 
-0x000 [TM10, TMSX, TMF, TMT]
+0x000 [TM10, TMSX, TMF, TMT, MP4]
  int PlacePylons
  bool // AcceptPylons?
  bool
  int3 RelativeOffset
  CGameCtnBlockInfoClip[] Clips
 
-0x001 [TM10, TMSX, TMF, TMT]
+0x001 [TM10, TMSX, TMF, TMT, MP4]
  id // Desert, Grass
  int
  int
 
-0x002 (skippable) [TMSX, TMF, TMT] // Underground
+0x002 (skippable) [TMSX, TMF, TMT, MP4] // Underground
  bool Underground
 
 0x003 [TMSX, TMF]
@@ -23,15 +23,15 @@ CGameCtnBlockUnitInfo 0x03036000
  int
  int
 
-0x004 [TMF, TMT] // AcceptPylons
+0x004 [TMF, TMT, MP4] // AcceptPylons
  int AcceptPylons
 
-0x005 [TMF, TMT] // TerrainModifierId
+0x005 [TMF, TMT, MP4] // TerrainModifierId
  id TerrainModifierId
 
-0x006 [TMT]
+0x006 [TMT, MP4]
 
-0x007 [TMT]
+0x007 [TMT, MP4]
 
 0x008 // bottom+top clip
  CGameCtnBlockInfoClip BottomClip
@@ -51,7 +51,7 @@ CGameCtnBlockUnitInfo 0x03036000
  CMwNod (external) // pillar stuff?
  int
 
-0x00B [TMT.v0] // bottom+top clip with dir
+0x00B [TMT.v0, MP4.v0] // bottom+top clip with dir
  version
  CGameCtnBlockInfoClip BottomClip (external)
  CGameCtnBlockInfoClip TopClip (external)
