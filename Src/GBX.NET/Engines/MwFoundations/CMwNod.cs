@@ -284,13 +284,21 @@ public partial class CMwNod : IClass
 
             var ms = default(MemoryStream);
 
-            if (chunk is ISkippableChunk)
+            if (chunk is ISkippableChunk skippable)
             {
                 w.WriteHexUInt32(SKIP);
 
+                if (skippable.Data is not null)
+                {
+                    w.Write(skippable.Data.Length);
+                    w.Write(skippable.Data);
+                    continue;
+                }
+
                 ms = new MemoryStream();
-                chunkW = new GbxWriter(ms);
-                chunkRw = new GbxReaderWriter(chunkW);
+                chunkW = new GbxWriter(ms, leaveOpen: true);
+                chunkW.LoadFrom(w);
+                chunkRw = new GbxReaderWriter(chunkW, leaveOpen: true);
             }
 
             switch (chunk)
@@ -305,11 +313,12 @@ public partial class CMwNod : IClass
                     throw new Exception($"Chunk (ID 0x{chunk.Id:X8}, {ClassManager.GetName(chunk.Id & 0xFFFFF000)}) cannot be processed");
             }
 
-            // Memory stream is not null only if chunk is skippable
+            // Memory stream is not null only if chunk is skippable and not ignored
             if (ms is not null)
             {
                 w.Write((uint)ms.Length);
                 ms.WriteTo(w.BaseStream);
+                ms.Dispose();
             }
         }
 
