@@ -6,6 +6,9 @@ namespace GBX.NET.Engines.MwFoundations;
 [Class(0x01001000)]
 public partial class CMwNod : IClass
 {
+    private const uint SKIP = 0x534B4950;
+    private const uint FACADE = 0xFACADE01;
+
     private IChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet();
 
@@ -20,7 +23,7 @@ public partial class CMwNod : IClass
         {
             var originalChunkId = r.ReadHexUInt32();
 
-            if (originalChunkId == 0xFACADE01)
+            if (originalChunkId == FACADE)
             {
                 return;
             }
@@ -36,7 +39,7 @@ public partial class CMwNod : IClass
             {
                 var skip = r.ReadHexUInt32();
 
-                if (skip != 0x534B4950)
+                if (skip != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -161,7 +164,7 @@ public partial class CMwNod : IClass
         {
             var originalChunkId = r.ReadHexUInt32();
 
-            if (originalChunkId == 0xFACADE01)
+            if (originalChunkId == FACADE)
             {
                 return;
             }
@@ -177,7 +180,7 @@ public partial class CMwNod : IClass
             {
                 var skip = r.ReadHexUInt32();
 
-                if (skip != 0x534B4950)
+                if (skip != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -269,6 +272,11 @@ public partial class CMwNod : IClass
 
         foreach (var chunk in Chunks)
         {
+            if (chunk is IHeaderChunk)
+            {
+                continue;
+            }
+
             w.WriteHexUInt32(chunk.Id);
 
             var chunkW = w;
@@ -278,7 +286,7 @@ public partial class CMwNod : IClass
 
             if (chunk is ISkippableChunk)
             {
-                w.WriteHexUInt32(0x534B4950);
+                w.WriteHexUInt32(SKIP);
 
                 ms = new MemoryStream();
                 chunkW = new GbxWriter(ms);
@@ -304,6 +312,8 @@ public partial class CMwNod : IClass
                 ms.WriteTo(w.BaseStream);
             }
         }
+
+        w.WriteHexUInt32(FACADE);
     }
 
     /// <inheritdoc />

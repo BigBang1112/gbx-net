@@ -56,7 +56,6 @@ public abstract class GbxHeader
 
     internal bool Write(GbxWriter writer, IClass? node, GbxWriteSettings settings)
     {
-        using var rw = new GbxReaderWriter(writer);
-        return new GbxHeaderWriter(this, rw, settings).Write(node);
+        return new GbxHeaderWriter(this, writer, settings).Write(node);
     }
 }

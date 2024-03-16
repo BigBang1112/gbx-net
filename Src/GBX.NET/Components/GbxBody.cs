@@ -13,7 +13,7 @@ public sealed partial class GbxBody
     public float? CompressionRatio => CompressedSize.HasValue ? (float)CompressedSize / UncompressedSize : null;
 
     /// <summary>
-    /// Pure body data usually in compressed form. This property is used if GameBox's ParseHeader methods are used, otherwise null.
+    /// Pure body data usually in compressed form. This property is used if <see cref="Gbx"/>'s ParseHeader methods are used, otherwise null.
     /// </summary>
     public ImmutableArray<byte> RawData
     {
@@ -76,8 +76,18 @@ public sealed partial class GbxBody
         return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
     }
 
-    internal bool Write(IClass? node, GbxWriter writer, GbxCompression compression, GbxWriteSettings settings)
+    internal void WriteUncompressed(IClass? node, GbxWriter writer, GbxWriteSettings settings)
     {
-        return new GbxBodyWriter(this, writer, settings, compression).Write(node);
+        new GbxBodyWriter(this, writer, settings).WriteUncompressed(node);
+    }
+
+    internal void WriteRaw(GbxWriter writer, GbxWriteSettings settings)
+    {
+        new GbxBodyWriter(this, writer, settings).WriteRaw();
+    }
+
+    internal void Write(GbxWriter writer, MemoryStream uncompressedInputStream, GbxCompression compressionOfBody, GbxWriteSettings settings)
+    {
+        new GbxBodyWriter(this, writer, settings).Write(uncompressedInputStream, compressionOfBody);
     }
 }

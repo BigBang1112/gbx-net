@@ -312,16 +312,44 @@ public partial class Gbx : IGbx
         using var writer = new GbxWriter(stream, settings.LeaveOpen);
         Header.Write(writer, Node, settings);
 
+        var hasRawBodyData = !Body.RawData.IsDefaultOrEmpty;
+
+        var bodyUncompressedMs = default(MemoryStream);
+
+        if (hasRawBodyData)
+        {
+            writer.Write(Header.NumNodes);
+        }
+        else
+        {
+            bodyUncompressedMs = new MemoryStream();
+            using var bodyWriter = new GbxWriter(bodyUncompressedMs, leaveOpen: true);
+
+            Body.WriteUncompressed(Node, bodyWriter, settings);
+
+            writer.Write(bodyWriter.NodeDict.Count + 1);
+
+            bodyUncompressedMs.Position = 0;
+        }
+
         if (RefTable is null)
         {
-            writer.Write(0);
+            writer.Write(0); // number of external nodes
         }
         else
         {
             RefTable.Write(writer, settings);
         }
 
-        Body.Write(Node, writer, Header.Basic.CompressionOfBody, settings);
+        if (hasRawBodyData)
+        {
+            Body.WriteRaw(writer, settings);
+        }
+        else if (bodyUncompressedMs is not null)
+        {
+            Body.Write(writer, bodyUncompressedMs, Header.Basic.CompressionOfBody, settings);
+            bodyUncompressedMs.Dispose();
+        }
     }
 
     public virtual void Save(string filePath, GbxWriteSettings settings = default)

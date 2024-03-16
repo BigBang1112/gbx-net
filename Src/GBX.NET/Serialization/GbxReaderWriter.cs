@@ -153,7 +153,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
             value = (T)Enum.ToObject(typeof(T), Reader.ReadByte()); // CastTo<T>.From(Reader.ReadByte());
         }
 
-        Writer?.Write((byte)(object)value /* CastTo<byte>.From(value) */);
+        Writer?.Write((byte)(int)(object)value /* CastTo<byte>.From(value) */);
 
         return value;
     }
