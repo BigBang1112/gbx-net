@@ -236,6 +236,8 @@ public partial class CMwNod : IClass
                         break;
                 }
 
+                prevChunkId = chunkId;
+
                 continue;
             }
 

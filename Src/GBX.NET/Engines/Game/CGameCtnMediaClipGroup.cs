@@ -11,7 +11,7 @@ public partial class CGameCtnMediaClipGroup
     private static void ReadClips(CGameCtnMediaClipGroup n, GbxReader r, int version)
     {
         Span<CGameCtnMediaClip?> clipBuffer = r.ReadArrayNodeRef_deprec<CGameCtnMediaClip>();
-        Span<Trigger> triggerBuffer = r.ReadArrayReadable<Trigger>(version);
+        Span<Trigger> triggerBuffer = r.ReadArrayReadable<Trigger>(version: version);
 
         n.Clips = new List<ClipTrigger>(clipBuffer.Length);
 

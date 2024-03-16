@@ -682,7 +682,7 @@ public sealed partial class CGameCtnChallenge :
 
             U01 = r.ReadInt32();
 
-            n.BakedClipsAdditionalData = r.ReadListReadable<SBakedClipsAdditionalData>(Version);
+            n.BakedClipsAdditionalData = r.ReadListReadable<SBakedClipsAdditionalData>(version: Version);
         }
 
         public override void Write(CGameCtnChallenge n, GbxWriter w)
