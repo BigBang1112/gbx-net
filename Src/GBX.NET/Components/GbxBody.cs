@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using System.Collections.Immutable;
+using System.Text;
 
 namespace GBX.NET.Components;
 
 public sealed partial class GbxBody
 {
-    private byte[]? rawData;
+    private readonly ImmutableArray<byte> rawData;
 
     public int UncompressedSize { get; init; }
     public int? CompressedSize { get; init; }
@@ -14,14 +15,14 @@ public sealed partial class GbxBody
     /// <summary>
     /// Pure body data usually in compressed form. This property is used if GameBox's ParseHeader methods are used, otherwise null.
     /// </summary>
-    public byte[]? RawData
+    public ImmutableArray<byte> RawData
     {
         get => rawData;
         init
         {
             rawData = value;
 
-            if (value is not null)
+            if (!value.IsDefaultOrEmpty)
             {
                 UncompressedSize = value.Length;
             }
@@ -39,9 +40,9 @@ public sealed partial class GbxBody
 
         var sb = new StringBuilder();
         sb.Append("GbxBody (compressed, ");
-        sb.Append(CompressedSize.Value.ToString("N"));
+        sb.Append(CompressedSize.Value.ToString("N0"));
         sb.Append('/');
-        sb.Append(UncompressedSize.ToString("N"));
+        sb.Append(UncompressedSize.ToString("N0"));
         sb.Append(" bytes");
 
         if (CompressionRatio.HasValue)

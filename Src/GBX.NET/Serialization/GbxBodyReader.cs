@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Components;
+using System.Collections.Immutable;
 
 namespace GBX.NET.Serialization;
 
@@ -25,7 +26,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
                 }
 
                 var compressedSize = reader.ReadInt32();
-                var rawData = settings.ReadRawBody ? await reader.ReadBytesAsync(compressedSize, cancellationToken) : null;
+                var rawData = settings.ReadRawBody ? ImmutableArray.Create(await reader.ReadBytesAsync(compressedSize, cancellationToken)) : default;
 
                 return new GbxBody
                 {
@@ -38,7 +39,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
                 return new GbxBody
                 {
-                    RawData = settings.ReadRawBody ? await reader.ReadToEndAsync(cancellationToken) : null
+                    RawData = settings.ReadRawBody ? ImmutableArray.Create(await reader.ReadToEndAsync(cancellationToken)) : default
                 };
 
             default:
@@ -55,6 +56,11 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<GbxBody> ParseAsync(IClass node, CancellationToken cancellationToken = default)
     {
+        if (settings.ReadRawBody)
+        {
+            throw new NotSupportedException("Reading raw body is not supported when parsing body to a node.");
+        }
+
         var body = await ParseAsync(reader, compression, settings, cancellationToken);
 
         if (body.CompressedSize is null)
@@ -78,6 +84,11 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<GbxBody> ParseAsync<T>(T node, CancellationToken cancellationToken = default) where T : IClass
     {
+        if (settings.ReadRawBody)
+        {
+            throw new NotSupportedException("Reading raw body is not supported when parsing body to a node.");
+        }
+
         var body = await ParseAsync(reader, compression, settings, cancellationToken);
 
         if (body.CompressedSize is null)
