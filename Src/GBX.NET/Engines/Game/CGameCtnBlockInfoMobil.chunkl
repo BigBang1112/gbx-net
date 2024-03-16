@@ -1,10 +1,10 @@
 CGameCtnBlockInfoMobil 0x03122000
 
-0x002
+0x002 [TMT]
  CGameCtnSolidDecals[]_deprec SolidDecals
  int
 
-0x003
+0x003 [TMT.v3]
  version
  v1-
   bool
@@ -45,6 +45,6 @@ CGameCtnBlockInfoMobil 0x03122000
            CMwNod[]
            int
 
-0x004
+0x004 [TMT]
  version
  CGameCtnBlockInfoMobilLink[]_deprec DynaLinks

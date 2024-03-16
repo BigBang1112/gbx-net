@@ -1,7 +1,7 @@
 CGameCtnBlockInfoVariantGround 0x0315C000
 - inherits: CGameCtnBlockInfoVariant
 
-0x001
+0x001 [TMT.v0]
  version
  CGameCtnAutoTerrain[]_deprec AutoTerrains
  int AutoTerrainHeightOffset

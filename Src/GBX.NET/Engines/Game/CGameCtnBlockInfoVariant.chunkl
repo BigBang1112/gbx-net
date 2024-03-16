@@ -1,9 +1,9 @@
 CGameCtnBlockInfoVariant 0x0315B000
 
-0x002
+0x002 [TMT]
  int<EMultiDir> MultiDir
 
-0x003
+0x003 [TMT.v2]
  version
  int SymmetricalVariantIndex
  v0=
@@ -14,12 +14,12 @@ CGameCtnBlockInfoVariant 0x0315B000
   v2+
    byte NoPillarBelowIndex
 
-0x004
+0x004 [TMT]
  short
 
-0x005
+0x005 [TMT.v2]
 
-0x006
+0x006 [TMT.v8]
  version
  v8-
   CMwNod
@@ -47,11 +47,11 @@ CGameCtnBlockInfoVariant 0x0315B000
        v10+
         CPlugEntitySpawner[] EntitySpawners
 
-0x007
+0x007 [TMT.v0]
  version
  CPlugProbe Probe
 
-0x008
+0x008 [TMT.v0]
  version
  CGameCtnBlockUnitInfo[] BlockUnitModels
  int
