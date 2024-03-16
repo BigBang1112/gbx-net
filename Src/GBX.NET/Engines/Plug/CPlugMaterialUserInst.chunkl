@@ -1,0 +1,77 @@
+CPlugMaterialUserInst 0x090FD000
+
+0x000
+ version
+ v11+
+  boolbyte IsUsingGameMaterial
+ id MaterialName
+ id Model
+ string BaseTexture
+ byte SurfacePhysicId
+ v10+
+  byte SurfaceGameplayId
+ v1+
+  if IsUsingGameMaterial
+   string Link
+  if !IsUsingGameMaterial
+   v9+
+    v10-
+     string Link
+    v11+
+     id Link
+   v8-
+    id Link
+  v2+
+   Cst[] Csts
+   int[] Color
+   v3+
+    UvAnim[] UvAnims (version: Version)
+    v4+
+     id[]
+     v6+
+      UserTexture[] UserTextures
+      v7+
+       id HidingGroup
+
+   
+
+0x001
+ version
+ CPlugBitmapAtlas
+ v2=
+  throw
+ v3+
+  int<ETexAddress> TilingU
+  int<ETexAddress> TilingV
+  float TextureSizeInMeters
+  v4+
+   int?
+   v5+
+    bool IsNatural
+
+0x002
+ version
+ int
+
+enum ETexAddress
+ Wrap
+ Mirror
+ Clamp
+ Border
+
+archive Cst
+ id
+ id
+ int
+
+archive UvAnim
+ id
+ id
+ float
+ ulong
+ v5+
+  id
+
+archive UserTexture
+ int
+ string Texture
