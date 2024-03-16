@@ -579,7 +579,7 @@ public class GbxReaderTests
     }
 
     [Fact]
-    public void ReadIdAsString_HasIdCollection_Throws()
+    public void ReadIdAsString_HasIdCollection_ToStringifiedIndex()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -588,8 +588,11 @@ public class GbxReaderTests
         ms.Write([3, 0, 0, 0, 4, 0, 0, 0, 69]);
         ms.Position = 0;
 
-        // Act & Assert
-        Assert.Throws<NotSupportedException>(() => r.ReadIdAsString());
+        // Act
+        var str = r.ReadIdAsString();
+
+        // Assert
+        Assert.Equal(expected: "4", actual: str);
         Assert.Equal(expected: 3, actual: r.IdVersion);
         Assert.NotNull(r.IdDict);
         Assert.Equal(expected: 8, actual: ms.Position);
