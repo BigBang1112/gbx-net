@@ -80,7 +80,6 @@ CGameCtnGhost 0x03092000 // A ghost.
  string GhostNickname
 
 0x00E [TMU]
- id GhostUid
 
 0x00F [TMU] // ghost login
  string GhostLogin
@@ -102,7 +101,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
 
 0x015 // ghost nickname
- id? GhostNickname
+ id GhostNickname
 
 0x017 (skippable) // ghost metadata
  list<packdesc> SkinPackDescs
@@ -118,6 +117,9 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
 
 0x01B (skippable, ignore) // race result
+
+0x01C
+ uint256
 
 0x01F (skippable, ignore) // OldColorHistory
 
@@ -145,7 +147,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x024 (skippable, ignore) // match replay separators
 
-0x025 (skippable, base: 0x019) // validation TM2
+0x025 (skippable) // validation TM2
 
 0x026 (skippable)
  uint128

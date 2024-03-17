@@ -7,8 +7,8 @@ internal sealed class Encapsulation : IDisposable
 
     internal int? IdVersion { get; set; }
 
-    private Dictionary<int, string>? idReadDict;
-    internal Dictionary<int, string> IdReadDict => idReadDict ??= [];
+    private Dictionary<uint, string>? idReadDict;
+    internal Dictionary<uint, string> IdReadDict => idReadDict ??= [];
 
     private Dictionary<string, int>? idWriteDict;
     internal Dictionary<string, int> IdWriteDict => idWriteDict ??= [];

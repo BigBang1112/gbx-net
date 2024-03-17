@@ -5,7 +5,6 @@ using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 
 namespace GBX.NET.Generators.ChunkL;
 
@@ -237,7 +236,139 @@ internal sealed class MemberSerializationWriter
 
     private void AppendWrite(int indent, ChunkProperty chunkProperty)
     {
-        
+        sb.Append(indent, "w.Write");
+
+        if (chunkProperty.Type.PrimaryType == "version")
+        {
+            sb.Append("(Version);");
+            return;
+        }
+
+        if (chunkProperty.Type.PrimaryType == "versionb")
+        {
+            sb.Append("((byte)Version);");
+            return;
+        }
+
+        if (chunkProperty.Type.IsArray && chunkProperty.Type.PrimaryType != "data")
+        {
+            sb.Append("Array");
+        }
+
+        var mappedType = MapType(chunkProperty.Type.PrimaryType, out var noMatch);
+
+        if (noMatch)
+        {
+            AppendNodeRefOrArchive(mappedType, chunkProperty.Type.PrimaryTypeMarker,
+                chunkProperty.Properties?.ContainsKey("direct") == true);
+
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+
+            sb.Append('<');
+            sb.Append(mappedType);
+            sb.Append('>');
+        }
+        else if (chunkProperty.Type.IsArray && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType))
+        {
+            if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+
+            sb.Append('<');
+            sb.Append(PropertyTypeExtensions.MapType(chunkProperty.Type.PrimaryType));
+            sb.Append('>');
+        }
+        else
+        {
+            if (mappedType == "IdAsString")
+            {
+                sb.Append("IdAsString");
+            }
+
+            if (mappedType == "List")
+            {
+                sb.Append("List");
+                AppendList(chunkProperty);
+            }
+            else if (chunkProperty.Type.IsDeprec)
+            {
+                sb.Append("_deprec");
+            }
+        }
+
+        sb.Append('(');
+
+        var isUnknown = IsUnknown(chunkProperty.Name);
+        var name = GetFieldName(chunkProperty, isUnknown);
+
+        var csharpType = PropertyTypeExtensions.MapType(chunkProperty.Type.PrimaryType);
+
+        // enum or replaced existing field type
+        if (chunkProperty is ChunkEnum || (!isUnknown && ExistingFieldMatchesType(name, csharpType)))
+        {
+            sb.Append('(');
+            sb.Append(csharpType);
+            sb.Append(')');
+        }
+
+        if (!self && !isUnknown)
+        {
+            sb.Append("n.");
+        }
+
+        sb.Append(name);
+
+        if (chunkProperty.Type.IsArray && !string.IsNullOrEmpty(chunkProperty.Type.ArrayLength))
+        {
+            sb.Append(", ");
+            sb.Append(chunkProperty.Type.ArrayLength);
+        }
+
+        if (chunkProperty.Properties?.TryGetValue("version", out var version) == true)
+        {
+            sb.Append(", version: ");
+            sb.Append(version);
+        }
+
+        if (chunkProperty.Type.PrimaryType.ToLowerInvariant() == "boolbyte")
+        {
+            sb.Append(", asByte: true");
+        }
+
+        if (chunkProperty.Properties?.TryGetValue("prefix", out var prefix) == true)
+        {
+            if (prefix == "byte")
+            {
+                sb.Append(", byteLengthPrefix: true");
+            }
+        }
+
+        sb.Append(");");
+    }
+
+    // weird hacky method
+    private bool ExistingFieldMatchesType(string fieldName, string csharpType)
+    {
+        if (!existingFields.TryGetValue(fieldName, out var fieldSymbol))
+        {
+            return false;
+        }
+
+        var fieldType = fieldSymbol.Type
+            .ToDisplayString(new SymbolDisplayFormat(
+                SymbolDisplayGlobalNamespaceStyle.OmittedAsContaining,
+                miscellaneousOptions: SymbolDisplayMiscellaneousOptions.UseSpecialTypes));
+
+        if (fieldType.Length > 0 && fieldType[fieldType.Length - 1] == '?')
+        {
+            fieldType = fieldType.Substring(0, fieldType.Length - 1);
+        }
+
+        return fieldType != csharpType;
     }
 
     private void AppendReadWrite(int indent, ChunkProperty chunkProperty)
@@ -347,7 +478,7 @@ internal sealed class MemberSerializationWriter
 
         if (noMatch)
         {
-            AppendNodeRefOrArchive(mappedType, chunkProperty.Type.PrimaryTypeMarker, onlyReadable,
+            AppendNodeRefOrArchive(mappedType, chunkProperty.Type.PrimaryTypeMarker,
                 chunkProperty.Properties?.ContainsKey("direct") == true);
 
             if (chunkProperty.Type.IsDeprec)
@@ -388,7 +519,7 @@ internal sealed class MemberSerializationWriter
 
             if (mappedType == "List")
             {
-                AppendList(chunkProperty, onlyReadable);
+                AppendList(chunkProperty);
             }
             else if (chunkProperty.Type.IsDeprec)
             {
@@ -409,7 +540,7 @@ internal sealed class MemberSerializationWriter
         }
     }
 
-    private void AppendList(ChunkProperty chunkProperty, bool onlyReadable)
+    private void AppendList(ChunkProperty chunkProperty)
     {
         var genericType = chunkProperty.Type.GenericType;
         var mappedGenericType = MapType(genericType, out var genericNoMatch);
@@ -418,7 +549,7 @@ internal sealed class MemberSerializationWriter
         {
             if (genericNoMatch)
             {
-                AppendNodeRefOrArchive(genericType, chunkProperty.Type.GenericTypeMarker, onlyReadable,
+                AppendNodeRefOrArchive(genericType, chunkProperty.Type.GenericTypeMarker,
                     chunkProperty.Properties?.ContainsKey("direct") == true);
             }
 
@@ -442,16 +573,22 @@ internal sealed class MemberSerializationWriter
         }
     }
 
-    private void AppendNodeRefOrArchive(string type, string typeMarker, bool onlyReadable, bool direct)
+    private void AppendNodeRefOrArchive(string type, string typeMarker, bool direct)
     {
         var shouldApplyReadableWritable = archives.ContainsKey(type)
-                            || (classes.TryGetValue(type, out var classData)
-                                && classData.NamelessArchive is not null
-                                && typeMarker != "*");
+            || (classes.TryGetValue(type, out var classData)
+                && classData.NamelessArchive is not null
+                && typeMarker != "*");
 
         if (shouldApplyReadableWritable)
         {
-            sb.Append(onlyReadable ? "Readable" : "ReadableWritable");
+            sb.Append(serializationType switch
+            {
+                SerializationType.Read => "Readable",
+                SerializationType.Write => "Writable",
+                SerializationType.ReadWrite => "ReadableWritable",
+                _ => throw new NotImplementedException()
+            });
         }
         else
         {

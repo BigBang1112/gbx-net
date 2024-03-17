@@ -26,8 +26,13 @@ public static partial class ClassManager
 #if NET8_0_OR_GREATER
         return T.Id;
 #else
-        return ClassIds.TryGetValue(typeof(T), out var classId) ? classId : null;
+        return GetClassId(typeof(T));
 #endif
+    }
+
+    public static uint? GetClassId(Type type)
+    {
+        return ClassIds.TryGetValue(type, out var classId) ? classId : null;
     }
 
     public static partial Type? GetType(uint classId);

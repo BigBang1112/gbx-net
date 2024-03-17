@@ -6,6 +6,8 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
+    public Id? GhostUid { get; set; }
+
     private TimeInt32 eventsDuration;
     public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
 
@@ -29,6 +31,19 @@ public partial class CGameCtnGhost
 
     private bool steeringWheelSensitivity;
     public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
+
+    public partial class Chunk0309200E
+    {
+        public override void Read(CGameCtnGhost n, GbxReader r)
+        {
+            n.GhostUid = r.ReadId();
+        }
+
+        public override void Write(CGameCtnGhost n, GbxWriter w)
+        {
+            w.Write(n.GhostUid.GetValueOrDefault());
+        }
+    }
 
     public partial class Chunk03092011
     {
@@ -95,7 +110,7 @@ public partial class CGameCtnGhost
                 .Distinct()
                 .ToImmutableList();
 
-            w.WriteListString(inputNames);
+            w.WriteListId(inputNames);
 
             w.Write(n.inputs.Length);
             w.Write(U02);
@@ -128,13 +143,15 @@ public partial class CGameCtnGhost
     {
         public int Version { get; set; }
 
+        public Chunk03092019 Chunk019 { get; set; } = new();
+
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
 
-            base.ReadWrite(n, rw);
+            rw.Chunk(n, Chunk019);
 
-            if (n.eventsDuration != TimeInt32.Zero && Version >= 1)
+            if (n.eventsDuration != TimeInt32.Zero)
             {
                 rw.Boolean(ref n.steeringWheelSensitivity);
             }

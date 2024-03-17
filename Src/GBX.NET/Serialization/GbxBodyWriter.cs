@@ -4,12 +4,10 @@ namespace GBX.NET.Serialization;
 
 internal sealed class GbxBodyWriter(GbxBody body, GbxWriter writer, GbxWriteSettings settings)
 {
-    internal void WriteUncompressed(IClass? node)
+    internal void WriteUncompressed(IClass node)
     {
         using var readerWriter = new GbxReaderWriter(writer, leaveOpen: true);
-
-        (node ?? throw new Exception("Node cannot be null for a known header, as it contains the header chunk instances."))
-            .ReadWrite(readerWriter);
+        node.ReadWrite(readerWriter);
     }
 
     internal void WriteRaw()

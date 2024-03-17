@@ -606,7 +606,7 @@ public sealed partial class CGameCtnChallenge :
 
             using var ms = new MemoryStream();
             using var wBuffer = new GbxWriter(ms);
-            using var _ = new Encapsulation(w);
+            using var _ = new Encapsulation(wBuffer);
 
             wBuffer.WriteListNodeRef((n.zoneGenealogy ?? [])!);
 
@@ -635,7 +635,7 @@ public sealed partial class CGameCtnChallenge :
 
             using var ms = new MemoryStream();
             using var wBuffer = new GbxWriter(ms);
-            using var _ = new Encapsulation(w);
+            using var _ = new Encapsulation(wBuffer);
 
             wBuffer.WriteNode(n.scriptMetadata!);
 
@@ -731,6 +731,39 @@ public sealed partial class CGameCtnChallenge :
             {
                 n.Textures = r.ReadListString();
             }
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(Version);
+            w.Write(U01);
+
+            using var ms = new MemoryStream();
+            using var wBuffer = new GbxWriter(ms);
+            using var _ = new Encapsulation(wBuffer);
+
+            if (n.EmbeddedDataZip is null || n.EmbeddedDataZip.Length == 0)
+            {
+                wBuffer.Write(0);
+                wBuffer.Write(0);
+            }
+            else
+            {
+                using var embeddedMs = new MemoryStream(n.EmbeddedDataZip);
+                using var zip = new ZipArchive(embeddedMs, ZipArchiveMode.Read);
+
+                // TODO
+                wBuffer.WriteArrayIdent(new Ident[0]);
+                wBuffer.WriteData(n.EmbeddedDataZip!);
+            }
+
+            if (Version >= 1)
+            {
+                wBuffer.WriteListString(n.Textures!);
+            }
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
         }
     }
 
@@ -964,7 +997,14 @@ public sealed partial class CGameCtnChallenge :
                 }
             }
 
-            for (var i = 0; i < n.MacroblockInstances?.Count; i++)
+            if (n.MacroblockInstances is null)
+            {
+                w.Write(0);
+                return;
+            }
+
+            w.Write(n.MacroblockInstances.Count);
+            for (var i = 0; i < n.MacroblockInstances.Count; i++)
             {
                 w.Write(i);
                 w.Write(n.MacroblockInstances[i].Flags);

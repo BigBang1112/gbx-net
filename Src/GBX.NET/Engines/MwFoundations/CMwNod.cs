@@ -37,9 +37,7 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                var skip = r.ReadHexUInt32();
-
-                if (skip != SKIP)
+                if (r.ReadHexUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -178,9 +176,7 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                var skip = r.ReadHexUInt32();
-
-                if (skip != SKIP)
+                if (r.ReadHexUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -296,9 +292,9 @@ public partial class CMwNod : IClass
                 }
 
                 ms = new MemoryStream();
-                chunkW = new GbxWriter(ms, leaveOpen: true);
+                chunkW = new GbxWriter(ms);
                 chunkW.LoadFrom(w);
-                chunkRw = new GbxReaderWriter(chunkW, leaveOpen: true);
+                chunkRw = new GbxReaderWriter(chunkW);
             }
 
             switch (chunk)
@@ -318,6 +314,7 @@ public partial class CMwNod : IClass
             {
                 w.Write((uint)ms.Length);
                 ms.WriteTo(w.BaseStream);
+                w.LoadFrom(chunkW);
                 ms.Dispose();
             }
         }

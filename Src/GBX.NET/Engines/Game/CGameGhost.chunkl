@@ -9,6 +9,8 @@ CGameGhost 0x0303F000 // Ghost data.
  int UncompressedSize
  data Data
 
-0x006
+0x006 (base: 0x005)
+ bool IsReplaying
+ base
 
 0x007 (skippable, ignore)

@@ -5,12 +5,12 @@
 public readonly record struct UInt128
 {
     public static readonly UInt128 Zero = new();
-
-    private readonly ulong high;
+    
     private readonly ulong low;
-
-    internal ulong High => high;
+    private readonly ulong high;
+    
     internal ulong Low => low;
+    internal ulong High => high;
 
     public UInt128(ulong high, ulong low)
     {

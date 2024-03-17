@@ -81,6 +81,12 @@ public partial class Gbx : IGbx
     public byte? PackDescVersion { get; set; }
     public int? DeprecVersion { get; set; }
 
+    public GbxCompression BodyCompression
+    {
+        get => Header.Basic.CompressionOfBody;
+        set => Header.Basic = Header.Basic with { CompressionOfBody = value };
+    }
+
     internal static bool StrictBooleans { get; set; }
 
     public static ILzo? LZO { get; set; }
@@ -123,6 +129,7 @@ public partial class Gbx : IGbx
         reader.ExpectedNodeCount = header.NumNodes;
 
         var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+        // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
@@ -159,6 +166,7 @@ public partial class Gbx : IGbx
         reader.ExpectedNodeCount = header.NumNodes;
 
         var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+        // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
 
         return new Gbx<T>(header, body, node)
         {
@@ -320,7 +328,7 @@ public partial class Gbx : IGbx
         {
             writer.Write(Header.NumNodes);
         }
-        else
+        else if (Node is not null)
         {
             bodyUncompressedMs = new MemoryStream();
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, leaveOpen: true);
@@ -330,6 +338,10 @@ public partial class Gbx : IGbx
             writer.Write(bodyWriter.NodeDict.Count + 1);
 
             bodyUncompressedMs.Position = 0;
+        }
+        else
+        {
+            throw new Exception("Node cannot be null for a known header, as it contains the header chunk instances.");
         }
 
         if (RefTable is null)

@@ -76,7 +76,7 @@ public sealed partial class GbxBody
         return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
     }
 
-    internal void WriteUncompressed(IClass? node, GbxWriter writer, GbxWriteSettings settings)
+    internal void WriteUncompressed(IClass node, GbxWriter writer, GbxWriteSettings settings)
     {
         new GbxBodyWriter(this, writer, settings).WriteUncompressed(node);
     }

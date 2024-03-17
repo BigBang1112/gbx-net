@@ -49,6 +49,13 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+
+    void Chunk<TNode, TChunk>(TNode node, TChunk? chunk)
+        where TNode : IClass
+        where TChunk : IReadableWritableChunk<TNode>, new();
+    void Chunk<TNode, TChunk>(TNode node, ref TChunk? chunk)
+        where TNode : IClass
+        where TChunk : IReadableWritableChunk<TNode>, new();
 }
 
 public sealed partial class GbxReaderWriter : IGbxReaderWriter
@@ -399,4 +406,28 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, byteLengthPrefix, version);
+
+    public void Chunk<TNode, TChunk>(TNode node, TChunk? chunk)
+        where TNode : IClass
+        where TChunk : IReadableWritableChunk<TNode>, new()
+    {
+        chunk ??= new TChunk();
+        chunk.ReadWrite(node, this);
+    }
+
+    public void Chunk<TNode, TChunk>(TNode node, ref TChunk? chunk)
+        where TNode : IClass
+        where TChunk : IReadableWritableChunk<TNode>, new()
+    {
+        if (Reader is not null)
+        {
+            chunk ??= new TChunk();
+            chunk.ReadWrite(node, this);
+        }
+        
+        if (Writer is not null)
+        {
+            (chunk ?? new TChunk()).ReadWrite(node, this);
+        }
+    }
 }

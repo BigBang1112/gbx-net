@@ -104,7 +104,7 @@ CGameCtnChallenge 0x03043000 // A map.
  list<CGameCtnBlock> Blocks
 
 0x014 (skippable) [TMPU, TMS, TMO, TMSX, TMNESWC, TMU] // legacy password
- bool
+ int
  string Password
 
 0x016 (skippable) [TMS, TMO, TMSX, TMNESWC]

@@ -53,7 +53,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
     {
         using var concatenatedDataMs = new MemoryStream();
         using var concatenatedDataW = new GbxWriter(concatenatedDataMs);
-        using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW, leaveOpen: true);
+        using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
 
         var infos = new List<HeaderChunkInfo>();
 

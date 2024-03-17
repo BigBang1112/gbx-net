@@ -138,7 +138,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private readonly ILogger? logger;
 
     private int? idVersion;
-    private Dictionary<int, string>? idDict;
+    private Dictionary<uint, string>? idDict;
     private Dictionary<int, object>? nodeDict;
     private Encapsulation? encapsulation;
     private byte? packDescVersion;
@@ -161,7 +161,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
     }
 
-    internal Dictionary<int, string> IdDict => encapsulation is null
+    internal Dictionary<uint, string> IdDict => encapsulation is null
         ? idDict ??= []
         : encapsulation.IdReadDict;
 
@@ -342,12 +342,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public Int128 ReadInt128()
     {
-        return new Int128(ReadUInt64(), ReadUInt64());
+        var a = ReadUInt64();
+        var b = ReadUInt64();
+        return new Int128(b, a);
     }
 
     public UInt128 ReadUInt128()
     {
-        return new UInt128(ReadUInt64(), ReadUInt64());
+        var a = ReadUInt64();
+        var b = ReadUInt64();
+        return new UInt128(b, a);
     }
 
     public UInt256 ReadUInt256()
@@ -677,7 +681,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var index = ReadIdIndex();
 
-        if (index == -1)
+        if (index == uint.MaxValue)
         {
             return string.Empty;
         }
@@ -694,20 +698,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var index = ReadIdIndex();
 
-        if (index == -1)
+        if (index == uint.MaxValue)
         {
             return new();
         }
 
         if ((index & 0xC0000000) is not 0x40000000 and not 0x80000000)
         {
-            return new(index);
+            return new((int)index);
         }
 
         return new(ReadIdAsString(index));
     }
 
-    private int ReadIdIndex()
+    private uint ReadIdIndex()
     {
         return Mode switch
         {
@@ -719,7 +723,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
 
-        int GbxBinary()
+        uint GbxBinary()
         {
             IdVersion ??= ReadInt32();
 
@@ -728,11 +732,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                 throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
             }
 
-            return ReadInt32();
+            return ReadUInt32();
         }
     }
 
-    private string ReadIdAsString(int index)
+    private string ReadIdAsString(uint index)
     {
         if ((index & 0x3FFFFFFF) != 0)
         {
@@ -744,12 +748,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         if ((index & 0xC0000000) == 0x40000000)
         {
             // SetLocalName
-            IdDict.Add(index + IdDict.Count + 1, str);
+            IdDict.Add((uint)(index + IdDict.Count + 1), str);
         }
         else
         {
             // AddName
-            IdDict.Add(index + IdDict.Count + 1, str);
+            IdDict.Add((uint)(index + IdDict.Count + 1), str);
         }
 
         return str;
@@ -1069,7 +1073,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         if (length < 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid (-1).");
         }
 
         var l = lengthInBytes ? length : Marshal.SizeOf<T>() * length;

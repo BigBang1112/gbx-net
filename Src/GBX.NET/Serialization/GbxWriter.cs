@@ -397,8 +397,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         _ = ((IBinaryInteger<Int128>)value).TryWriteLittleEndian(dest, out var _);
         Write(dest);
 #else
-        Write(value.High);
         Write(value.Low);
+        Write(value.High);
 #endif
     }
 
@@ -409,8 +409,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         _ = ((IBinaryInteger<UInt128>)value).TryWriteLittleEndian(dest, out var _);
         Write(dest);
 #else
-        Write(value.High);
         Write(value.Low);
+        Write(value.High);
 #endif
     }
 
@@ -614,12 +614,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        /*if (tryParseToInt32 && int.TryParse(value, out index))
-        {
-            Write(index);
-            return;
-        }*/
-
         Write(0x40000000);
         Write(value);
 
@@ -669,7 +663,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
         
-        if (ClassManager.GetClassId<T>() is not uint classId)
+        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
         }
@@ -918,6 +912,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         ValidateCollectionLength(value.Length);
 
+        Write(value.Length);
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
         Write(MemoryMarshal.Cast<T, byte>(value));
 #else
@@ -952,6 +947,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         ValidateCollectionLength(value.Count);
 
+        Write(value.Count);
 #if NET6_0_OR_GREATER
         if (value is List<T> list)
         {

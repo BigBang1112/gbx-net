@@ -101,7 +101,7 @@ internal static class PropertyTypeExtensions
         {
             "int128" => "Int128",
             "uint128" => "UInt128",
-            "uint256" => "Int256",
+            "uint256" => "UInt256",
             "int64" => "long",
             "uint64" => "ulong",
             "uint32" => "uint",
