@@ -54,6 +54,12 @@ public partial class CGameCtnBlock
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
 
+    private int flags;
+    /// <summary>
+    /// Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
+    /// </summary>
+    public int Flags { get => flags; set => flags = value; }
+
     public bool HasFlags => flags != -1;
 
     /// <summary>
