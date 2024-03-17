@@ -5,7 +5,7 @@ namespace GBX.NET.Components;
 
 public sealed partial class GbxBody
 {
-    private readonly ImmutableArray<byte> rawData;
+    private readonly ImmutableArray<byte> rawData = ImmutableArray<byte>.Empty;
 
     public int UncompressedSize { get; init; }
     public int? CompressedSize { get; init; }

@@ -26,7 +26,9 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
                 }
 
                 var compressedSize = reader.ReadInt32();
-                var rawData = settings.ReadRawBody ? ImmutableArray.Create(await reader.ReadBytesAsync(compressedSize, cancellationToken)) : default;
+                var rawData = settings.ReadRawBody
+                    ? ImmutableArray.Create(await reader.ReadBytesAsync(compressedSize, cancellationToken))
+                    : ImmutableArray<byte>.Empty;
 
                 return new GbxBody
                 {
@@ -39,7 +41,9 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
                 return new GbxBody
                 {
-                    RawData = settings.ReadRawBody ? ImmutableArray.Create(await reader.ReadToEndAsync(cancellationToken)) : default
+                    RawData = settings.ReadRawBody
+                        ? ImmutableArray.Create(await reader.ReadToEndAsync(cancellationToken))
+                        : ImmutableArray<byte>.Empty
                 };
 
             default:

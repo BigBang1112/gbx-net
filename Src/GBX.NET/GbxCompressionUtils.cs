@@ -9,7 +9,7 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    public static async Task<bool> CompressAsync(Stream input, Stream output, bool leaveOpen, CancellationToken cancellationToken)
     {
         Validate(input, output);
 
@@ -18,8 +18,8 @@ internal static partial class GbxCompressionUtils
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input);
-        using var w = new GbxWriter(output);
+        using var r = new GbxReader(input, leaveOpen);
+        using var w = new GbxWriter(output, leaveOpen);
 
         var version = CopyBasicInformation(r, w);
 
@@ -54,7 +54,7 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    public static async Task<bool> DecompressAsync(Stream input, Stream output, bool leaveOpen, CancellationToken cancellationToken)
     {
         Validate(input, output);
 
@@ -63,8 +63,8 @@ internal static partial class GbxCompressionUtils
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input);
-        using var w = new GbxWriter(output);
+        using var r = new GbxReader(input, leaveOpen);
+        using var w = new GbxWriter(output, leaveOpen);
 
         var version = CopyBasicInformation(r, w);
 
