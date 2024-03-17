@@ -17,6 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CompareNETObjects" Version="4.83.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
 		<PackageReference Include="NSubstitute" Version="5.1.0" />
 		<PackageReference Include="xunit" Version="2.7.0" />
