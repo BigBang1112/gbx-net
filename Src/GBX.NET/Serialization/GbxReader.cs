@@ -1368,7 +1368,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         IdDict.Clear();
     }
 
-    private string ReadToWindowsNewLine()
+    private string ReadToCRLF()
     {
         var sb = new StringBuilder();
 
