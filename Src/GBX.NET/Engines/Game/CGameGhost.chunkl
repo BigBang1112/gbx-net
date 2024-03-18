@@ -1,16 +1,16 @@
 CGameGhost 0x0303F000 // Ghost data.
 
-0x003 [TM10, TMSX, TMNESWC]
+0x003 [TM10, TMPU, TMS, TMSX, TMNESWC]
 
-0x004 [TMSX, TMNESWC]
+0x004 [TMS, TMSX, TMNESWC]
  int
 
-0x005 [TMU]
+0x005 [TMU, TMF]
  int UncompressedSize
  data Data
 
-0x006 (base: 0x005)
+0x006 (base: 0x005) [MP3, TMT, MP4, TM2020]
  bool IsReplaying
  base
 
-0x007 (skippable, ignore)
+0x007 (skippable, ignore) [MP3, TMT, MP4, TM2020]

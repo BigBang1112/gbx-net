@@ -1,6 +1,7 @@
 ﻿
 using GBX.NET.Inputs;
 using System.Collections.Immutable;
+using System.Numerics;
 
 namespace GBX.NET.Engines.Game;
 
@@ -31,6 +32,9 @@ public partial class CGameCtnGhost
 
     private bool steeringWheelSensitivity;
     public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
+
+    private string? validate_TitleId;
+    public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
     public partial class Chunk0309200E
     {
@@ -155,6 +159,22 @@ public partial class CGameCtnGhost
             {
                 rw.Boolean(ref n.steeringWheelSensitivity);
             }
+        }
+    }
+
+    public partial class Chunk03092028
+    {
+        public UInt256? U01;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            if (n.EventsDuration == TimeInt32.Zero)
+            {
+                return;
+            }
+
+            rw.String(ref n.validate_TitleId);
+            rw.UInt256(ref U01);
         }
     }
 }

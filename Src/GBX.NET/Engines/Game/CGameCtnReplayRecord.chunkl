@@ -1,0 +1,69 @@
+CGameCtnReplayRecord 0x03093000
+
+0x000 (header, struct: SHeaderVersion) [TMPU.v1, TMSX.v4, TMNESWC.v4, TMU.v6, TMF.v7, MP3.v8, TMT.v8, MP4.v8, TM2020.v8] // basic
+
+0x001 (header, struct: SHeaderCommunity) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // xml
+
+0x002 (header, struct: SAuthorInfo) [MP3, TMT, MP4, TM2020] // author
+
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // track
+
+0x003 [TM10, TMPU] // validation TM1.0
+
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU] // ghosts
+
+0x005 [TM10]
+
+0x007 (skippable) [TMPU, TMSX, TMNESWC, TMU, TMF, MP3, TMT]
+
+0x008 (skippable) [TMPU, TMSX, TMNESWC] // game
+
+0x00C [TMSX, TMNESWC, TMU] // clip
+
+0x00D [TMSX, TMNESWC] // validation
+
+0x00E [TMSX, TMNESWC, TMU] // events
+
+0x00F (skippable) [TMSX, TMNESWC]
+
+0x010 // simple events display
+
+0x011 [TMNESWC, TMU]
+
+0x013 (skippable, ignore) [TMU]
+
+0x014 [TMF, MP3, TMT, MP4, TM2020] // ghosts
+
+0x015 [TMF, MP3, TMT, MP4, TM2020] // clip
+
+0x018 (skippable) [MP3, TMT, MP4, TM2020] // author
+
+0x01A (skippable) [MP3, TMT, MP4, TM2020] // scenery vortex key
+
+0x01B (skippable) [MP3, TMT, MP4, TM2020] // player of interest
+
+0x01C (skippable) [MP3, TMT, MP4, TM2020]
+
+0x01D (skippable) [MP3, TMT, MP4, TM2020] // InterfaceScriptInfos
+
+0x01E (skippable, ignore) [MP3, TMT, MP4, TM2020] // actions
+
+0x01F (skippable, ignore) [MP3, TMT, MP4, TM2020] // AnchoredObjectInfos
+
+0x020 (skippable, ignore) [MP3, TMT, MP4, TM2020] // item skins and names
+
+0x021 (skippable) [MP3, TMT, MP4, TM2020]
+
+0x022 (skippable, ignore) [TMT, MP4] // TimedCamVal
+
+0x023 (skippable, ignore) [TMT, MP4] // BonusBumpKey
+
+0x024 [MP4.v1, TM2020.v1] // record data
+
+0x025 (skippable) [MP4, TM2020]
+
+0x026 (skippable, ignore) [MP4, TM2020] // EntDataSceneUIdsToGhost
+
+0x027 (skippable, ignore) [TM2020]
+
+0x028 (skippable, ignore) [TM2020]

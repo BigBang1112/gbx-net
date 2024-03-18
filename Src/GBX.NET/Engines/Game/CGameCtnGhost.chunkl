@@ -1,13 +1,7 @@
 CGameCtnGhost 0x03092000 // A ghost.
 - inherits: CGameGhost
-- chunk_Chunk03092004: Unexpected syntax (args.Count != 1 or 2)
-- chunk_Chunk0309200B: Unexpected syntax (args.Count != 1 or 2)
-- chunk_Chunk0309201C: Unexpected syntax
-- chunk_Chunk0309201D: Unexpected syntax
-- chunk_Chunk03092025: Unexpected syntax
-- chunk_Chunk03092028: Unexpected syntax
 
-0x000 (skippable)
+0x000 (skippable) [TMT.v2, MP4.v2, TM2020.v9]
  version
  v9+
   int AppearanceVersion
@@ -35,18 +29,18 @@ CGameCtnGhost 0x03092000 // A ghost.
       v8+
        string GhostClubTag
   
-0x003 [TM10]
+0x003 [TM10, TMPU]
  ident PlayerModel
  string SkinFile
  string GhostNickname
 
-0x004 (skippable)
+0x004 (skippable) [TMPU]
  Checkpoint[] Checkpoints
 
-0x005 (skippable) [TMSX, TMNESWC, TMU] // race time
+0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
  timeint? RaceTime
 
-0x006 [TMSX, TMNESWC]
+0x006 [TMS, TMSX, TMNESWC]
  ident PlayerModel
  string SkinFile
  int
@@ -55,19 +49,19 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x007 // old light trail color
  vec3 LightTrailColor
 
-0x008 (skippable) [TMSX, TMNESWC, TMU] // respawns
+0x008 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // respawns
  int? Respawns
 
-0x009 (skippable) [TMSX, TMNESWC, TMU] // light trail color
+0x009 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3] // light trail color
  vec3 LightTrailColor
 
-0x00A (skippable) [TMSX, TMNESWC, TMU] // stunt score
+0x00A (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // stunt score
  int? StuntScore
 
-0x00B (skippable) [TMSX, TMNESWC, TMU] // checkpoint times
+0x00B (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // checkpoint times
  Checkpoint[] Checkpoints (version: 1)
 
-0x00C [TMNESWC, TMU]
+0x00C [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
  int
 
 0x00D [TMU]
@@ -79,55 +73,59 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  string GhostNickname
 
-0x00E [TMU]
+0x00E [TMU, TMF, MP3, TMT, MP4, TM2020]
 
-0x00F [TMU] // ghost login
+0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
  string GhostLogin
 
-0x010 [TMU] // validation map UID
+0x010 [TMU, TMF, MP3, TMT, MP4, TM2020] // validation map UID
  id Validate_ChallengeUid
 
 0x011 [TMU] // validation TMU
 
-0x012 [TMU]
+0x012 [TMU, TMF]
  uint32
  uint128
 
-0x013 (skippable)
+0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
  int
  int
 
-0x014 (skippable)
+0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020]
  int
 
-0x015 // ghost nickname
+0x015 [TMF] // ghost nickname
  id GhostNickname
 
-0x017 (skippable) // ghost metadata
+0x017 (skippable) [TMF, MP3] // ghost metadata
  list<packdesc> SkinPackDescs
  string GhostNickname
  string GhostAvatarName
 
-0x018
+0x018 [TMF, MP3]
  ident PlayerModel
 
-0x019 (base: 0x011) // validation TMUF
+0x019 (base: 0x011) [TMF] // validation TMUF
 
-0x01A (skippable)
+0x01A (skippable) [MP3, TMT, MP4, TM2020]
  int
 
-0x01B (skippable, ignore) // race result
+0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
-0x01C
+0x01C [MP3, TMT, MP4, TM2020]
  uint256
 
-0x01F (skippable, ignore) // OldColorHistory
+0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
+ version
+ PlayerInputData[] PlayerInputs (version: Version)
+
+0x01F (skippable, ignore) [MP4] // OldColorHistory
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
-0x022 (skippable, ignore) // timed pixel array
+0x022 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array
 
-0x023 (skippable)
+0x023 (skippable) [MP3, TMT, MP4, TM2020]
  version
  string
  int
@@ -145,26 +143,28 @@ CGameCtnGhost 0x03092000 // A ghost.
    byte
    byte
 
-0x024 (skippable, ignore) // match replay separators
+0x024 (skippable, ignore) [MP3, TMT, MP4, TM2020] // match replay separators
 
-0x025 (skippable) // validation TM2
+0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
-0x026 (skippable)
+0x026 (skippable) [MP3, TMT, MP4, TM2020]
  uint128
 
-0x027 (skippable, ignore) // timed pixel array 2
+0x027 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array 2
 
-0x029 (skippable, ignore)
+0x028 (skippable) [MP4, TM2020] // title id
 
-0x02A (skippable, ignore)
+0x029 (skippable, ignore) [TM2020]
 
-0x02B (skippable, ignore)
+0x02A (skippable, ignore) [TM2020]
 
-0x02C (skippable, ignore)
+0x02B (skippable, ignore) [TM2020]
 
-0x02D (skippable, ignore)
+0x02C (skippable, ignore) [TM2020]
 
-0x02E (skippable, ignore)
+0x02D (skippable, ignore) [TM2020]
+
+0x02E (skippable, ignore) [TM2020]
 
 archive PlayerInputData
  int<EVersion> Version // 8 in ShootMania, 12 in TM2020
