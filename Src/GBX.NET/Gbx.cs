@@ -59,6 +59,8 @@ public interface IGbx
         where TClass : CMwNod, TVersion, new()
         where TVersion : IClassVersion<TClass>;
 #endif
+
+    IGbx DeepClone();
 }
 
 public interface IGbx<out T> : IGbx where T : CMwNod
@@ -72,9 +74,9 @@ public partial class Gbx : IGbx
 
     public string? FilePath { get; set; }
     public GbxHeader Header { get; }
-    public GbxRefTable? RefTable { get; private set; }
+    public GbxRefTable? RefTable { get; protected set; }
     public GbxBody Body { get; }
-    public GbxReadSettings ReadSettings { get; private set; }
+    public GbxReadSettings ReadSettings { get; protected set; }
     public CMwNod? Node { get; protected set; }
 
     public int? IdVersion { get; set; }
@@ -102,6 +104,19 @@ public partial class Gbx : IGbx
     {
         return $"Gbx ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
     }
+
+    public virtual Gbx DeepClone() => new(Header.DeepClone(), Body)
+    {
+        FilePath = FilePath,
+        RefTable = RefTable?.DeepClone(),
+        ReadSettings = ReadSettings,
+        Node = Node?.DeepClone(),
+        IdVersion = IdVersion,
+        PackDescVersion = PackDescVersion,
+        DeprecVersion = DeprecVersion
+    };
+
+    IGbx IGbx.DeepClone() => DeepClone();
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
@@ -570,9 +585,29 @@ public partial class Gbx : IGbx
 public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
 {
     public new T Node => (T)(base.Node ?? throw new Exception("Null node is not expected here."));
+    public new GbxHeader<T> Header => (GbxHeader<T>)base.Header;
 
     internal Gbx(GbxHeader<T> header, GbxBody body, T node) : base(header, body)
     {
         base.Node = node;
     }
+
+    public override string ToString()
+    {
+        return $"Gbx<{typeof(T).Name}> ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
+    }
+
+#if NETSTANDARD2_0
+    public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body, (T)Node.DeepClone())
+#else
+    public override Gbx<T> DeepClone() => new(Header.DeepClone(), Body, (T)Node.DeepClone())
+#endif
+    {
+        FilePath = FilePath,
+        RefTable = RefTable?.DeepClone(),
+        ReadSettings = ReadSettings,
+        IdVersion = IdVersion,
+        PackDescVersion = PackDescVersion,
+        DeprecVersion = DeprecVersion
+    };
 }

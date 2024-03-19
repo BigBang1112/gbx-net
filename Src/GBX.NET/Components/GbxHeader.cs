@@ -20,6 +20,8 @@ public abstract class GbxHeader
         return $"GbxHeader ({ClassManager.GetName(ClassId)}, 0x{ClassId:X8})";
     }
 
+    public abstract GbxHeader DeepClone();
+
     internal static GbxHeader<T> Parse<T>(GbxReader reader, GbxReadSettings settings, out T node) where T : IClass, new()
     {
         return new GbxHeaderReader(reader, settings).Parse(out node);

@@ -49,7 +49,9 @@ public abstract class Chunk : IReadableWritableChunk
     /// <inheritdoc />
     public virtual void Write(IClass n, GbxWriter w) { }
 
-    public abstract IChunk DeepClone();
+    public abstract Chunk DeepClone();
+
+    IChunk IChunk.DeepClone() => DeepClone();
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

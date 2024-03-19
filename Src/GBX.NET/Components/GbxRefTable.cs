@@ -15,4 +15,9 @@ public sealed class GbxRefTable(IDirectory root, int ancestorLevel)
     {
         return new GbxRefTableWriter(this, writer, settings).Write();
     }
+
+    public GbxRefTable DeepClone()
+    {
+        return new GbxRefTable(Root, AncestorLevel); // WRONG, TODO
+    }
 }

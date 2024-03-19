@@ -7,13 +7,18 @@ public abstract class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : IC
     /// <inheritdoc />
     public byte[]? Data { get; set; }
 
-    public override IChunk DeepClone()
+    // Should stay abstract here, just temp avoid compile errors
+#if NETSTANDARD2_0
+    public override Chunk DeepClone()
+#else
+    public override SkippableChunk<T> DeepClone()
+#endif
     {
-        // Should stay abstract here, just temp avoid compile errors
-        var clone = (ISkippableChunk)MemberwiseClone();
+        var clone = (SkippableChunk<T>)MemberwiseClone();
         clone.Data = Data?.ToArray();
         return clone;
     }
+    //
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} skippable chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

@@ -36,14 +36,13 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
 
     public GameVersion GameVersion => GameVersion.Unspecified;
 
-    public IChunk DeepClone()
+    public HeaderChunk DeepClone() => new(Id)
     {
-        return new HeaderChunk(Id)
-        {
-            IsHeavy = IsHeavy,
-            Data = Data.ToArray()
-        };
-    }
+        IsHeavy = IsHeavy,
+        Data = Data.ToArray()
+    };
+
+    IChunk IChunk.DeepClone() => DeepClone();
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} unknown header chunk 0x{Id:X8}";
 }

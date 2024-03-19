@@ -13,13 +13,12 @@ public sealed class SkippableChunk(uint id) : ISkippableChunk
 
     public GameVersion GameVersion => GameVersion.Unspecified;
 
-    public IChunk DeepClone()
+    public SkippableChunk DeepClone() => new(Id)
     {
-        return new SkippableChunk(Id)
-        {
-            Data = Data?.ToArray()
-        };
-    }
+        Data = Data?.ToArray()
+    };
+
+    IChunk IChunk.DeepClone() => DeepClone();
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} unknown skippable chunk 0x{Id:X8}";
 }

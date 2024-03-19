@@ -8,17 +8,18 @@ public sealed class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader(basic) where 
     private uint? classId;
 #endif
 
-    public override uint ClassId
-    {
-        get
-        {
+    public override uint ClassId =>
 #if NET8_0_OR_GREATER
-            return T.Id;
+        T.Id;
 #else
-            return classId ??= ClassManager.GetClassId<T>() ?? throw new Exception("Class ID not available");
+        classId ??= ClassManager.GetClassId<T>() ?? throw new Exception("Class ID not available");
 #endif
-        }
-    }
+
+#if NETSTANDARD2_0
+    public override GbxHeader DeepClone() => new GbxHeader<T>(Basic);
+#else
+    public override GbxHeader<T> DeepClone() => new(Basic);
+#endif
 
     public override string ToString()
     {
