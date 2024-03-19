@@ -359,12 +359,17 @@ public partial class CMwNod : IClass
 
     public virtual CMwNod DeepClone()
     {
-        var clone = new CMwNod();
+        var clone = (CMwNod)MemberwiseClone();
         DeepCloneChunks(clone);
         return clone;
     }
 
-    IClass IClass.DeepClone() => DeepClone();
+    IClass IClass.DeepClone()
+    {
+        var clone = (IClass)MemberwiseClone();
+        DeepCloneChunks(clone);
+        return clone;
+    }
 
     protected void DeepCloneChunks(IClass dest)
     {
@@ -392,9 +397,11 @@ public partial class CMwNod : IClass
         return (int)version == int.MaxValue ? GameVersion.Unspecified : version;
     }
 
-    public bool IsGameVersion(GameVersion version)
+    public bool IsGameVersion(GameVersion version, bool strict = false)
     {
-        return (GetGameVersion() & version) == version;
+        return strict
+            ? GetGameVersion() == version
+            : (GetGameVersion() & version) == version;
     }
 
     public bool CanBeGameVersion(GameVersion version)
