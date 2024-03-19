@@ -5,4 +5,6 @@ namespace GBX.NET.Tests.Mocks;
 public sealed class MockGbxHeader(GbxHeaderBasic basic) : GbxHeader(basic)
 {
     public override uint ClassId => throw new NotImplementedException();
+
+    public override GbxHeader DeepClone() => throw new NotImplementedException();
 }
