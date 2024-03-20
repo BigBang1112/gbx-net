@@ -63,4 +63,10 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk<T> where T : ICla
         return (Chunk<T>)MemberwiseClone();
     }
     //
+
+    /*
+#if !NETSTANDARD2_0
+    public override abstract Chunk<T> DeepClone();
+#endif
+     */
 }

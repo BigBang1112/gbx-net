@@ -11,6 +11,11 @@ public interface IHeaderChunk : IChunk
     /// Indicates whether the validation of the chunk is gonna be skipped during the launch of the game.
     /// </summary>
     bool IsHeavy { get; set; }
+
+    /// <summary>
+    /// Shared node instance in case of an unknown Gbx class. This will be usually null, except when the Gbx class in unknown.
+    /// </summary>
+    IClass? Node { get; set; }
 }
 
 /// <summary>
@@ -35,6 +40,8 @@ public sealed class HeaderChunk(uint id) : IHeaderChunk
     public bool Ignore => false;
 
     public GameVersion GameVersion => GameVersion.Unspecified;
+
+    IClass? IHeaderChunk.Node { get; set; }
 
     public HeaderChunk DeepClone() => new(Id)
     {

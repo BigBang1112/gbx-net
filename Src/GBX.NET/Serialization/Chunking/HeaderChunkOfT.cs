@@ -16,6 +16,12 @@ public abstract class HeaderChunk<T> : Chunk<T>, IHeaderChunk<T> where T : IClas
     /// <inheritdoc />
     public bool IsHeavy { get; set; }
 
+    /// <summary>
+    /// Shared node instance in case of an unknown Gbx class. This will be usually null, except when the Gbx class in unknown.
+    /// </summary>
+    public T? Node { get; set; }
+    IClass? IHeaderChunk.Node { get => Node; set => Node = (T?)value; }
+
     /// <inheritdoc />
     public override void Read(T n, GbxReader r)
     {
@@ -27,6 +33,12 @@ public abstract class HeaderChunk<T> : Chunk<T>, IHeaderChunk<T> where T : IClas
     {
         throw new NotImplementedException($"Header chunk 0x{Id:X8} ({ClassManager.GetName(Id & 0xFFFFF000)}, Write) is not implemented.");
     }
+
+    /*
+#if !NETSTANDARD2_0
+    public override abstract HeaderChunk<T> DeepClone();
+#endif
+    */
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} header chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

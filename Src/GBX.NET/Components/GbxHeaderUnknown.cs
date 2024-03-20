@@ -5,7 +5,7 @@ namespace GBX.NET.Components;
 public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHeader(basic)
 {
     public override uint ClassId => classId;
-    public ISet<HeaderChunk> UserData { get; } = new SortedSet<HeaderChunk>(ChunkIdComparer.Default);
+    public ISet<IHeaderChunk> UserData { get; } = new SortedSet<IHeaderChunk>(ChunkIdComparer.Default);
 
     public override string ToString()
     {
@@ -22,7 +22,7 @@ public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHe
 
         foreach (var chunk in UserData)
         {
-            clone.UserData.Add(chunk.DeepClone());
+            clone.UserData.Add((IHeaderChunk)chunk.DeepClone());
         }
 
         return clone;

@@ -26,14 +26,24 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
     private static void WriteUnknownHeaderUserData(GbxWriter writer, GbxHeaderUnknown unknownHeader)
     {
-        var concatenatedDataLength = unknownHeader.UserData.Select(x => x.Data.Length).Sum();
+        var isAllUnknownHeaderChunk = unknownHeader.UserData.All(x => x is HeaderChunk);
+
+        if (!isAllUnknownHeaderChunk)
+        {
+            throw new NotSupportedException("Writing partially unknown header (user data) is not yet supported.");
+        }
+
+        var headerChunks = unknownHeader.UserData.OfType<HeaderChunk>();
+
+        var concatenatedDataLength = headerChunks.Select(x => x.Data.Length).Sum();
+
         var infosLength = unknownHeader.UserData.Count * sizeof(int) * 2 + sizeof(int); // +4 for the numHeaderChunks int
         var userDataLength = concatenatedDataLength + infosLength;
 
         writer.Write(userDataLength);
         writer.Write(unknownHeader.UserData.Count);
 
-        foreach (var chunk in unknownHeader.UserData)
+        foreach (var chunk in headerChunks)
         {
             var length = chunk.IsHeavy
                 ? (uint)chunk.Data.Length + 0x80000000
@@ -43,7 +53,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
             writer.Write(length);
         }
 
-        foreach (var chunk in unknownHeader.UserData)
+        foreach (var chunk in headerChunks)
         {
             writer.Write(chunk.Data);
         }

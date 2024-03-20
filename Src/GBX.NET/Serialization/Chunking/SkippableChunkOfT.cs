@@ -20,5 +20,11 @@ public abstract class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : IC
     }
     //
 
+    /*
+#if !NETSTANDARD2_0
+    public override abstract SkippableChunk<T> DeepClone();
+#endif
+     */
+
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} skippable chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";
 }

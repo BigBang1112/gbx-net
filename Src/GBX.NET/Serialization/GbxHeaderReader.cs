@@ -106,29 +106,59 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
 
+        var nodeDict = default(Dictionary<uint, CMwNod>);
+
         foreach (var desc in headerChunkInfos)
         {
             reader.Limit(desc.Size);
 
-            var chunk = node?.CreateHeaderChunk(desc.Id);
+            var chunk = node?.CreateHeaderChunk(desc.Id) ?? ClassManager.NewHeaderChunk(desc.Id);
 
             if (chunk is null)
             {
                 ReadAndAddUnknownHeaderChunk(node, unknownHeader, desc);
             }
-            else if (node is not null)
-            {
-                ReadKnownHeaderChunk(chunk, node, readerWriter, desc);
-            }
             else
             {
-                throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
+                // If the class is unknown but the chunk ID is known (chunk ID collision here is near impossible)
+                // Single node is shared for all chunks of the same class, except if it's abstract
+                node ??= GetOrCreateNodeFromHeaderChunkInfo(desc, ref nodeDict);
+
+                ReadKnownHeaderChunk(chunk, node, readerWriter, desc);
+
+                // On unknown classes, add the chunk and reset this temporary node state
+                if (unknownHeader is not null)
+                {
+                    chunk.Node = node;
+                    unknownHeader.UserData.Add(chunk);
+                    node = null;
+                }
             }
 
             reader.Unlimit(skipToLimitWhenUnreached: settings.SkipUnclearedHeaderChunkBuffers);
         }
 
         return true;
+    }
+
+    private static CMwNod GetOrCreateNodeFromHeaderChunkInfo(HeaderChunkInfo desc, ref Dictionary<uint, CMwNod>? nodeDict)
+    {
+        nodeDict ??= new(capacity: 3);
+
+        var classId = desc.Id & 0xFFFFF000;
+
+        if (nodeDict.TryGetValue(classId, out var existingNod))
+        {
+            return existingNod;
+        }
+
+        if (ClassManager.New(classId) is not CMwNod nod)
+        {
+            throw new Exception($"Chunk 0x{desc.Id:X8} requires a non-abstract CMwNod to read into.");
+        }
+
+        nodeDict.Add(classId, nod);
+        return nod;
     }
 
     internal static void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)

@@ -44,7 +44,7 @@ public sealed partial class GbxBody
         }
 
         var sb = new StringBuilder();
-        sb.Append("GbxBody (compressed, ");
+        sb.Append("GbxBody (compressed - ");
         sb.Append(CompressedSize.Value.ToString("N0"));
         sb.Append('/');
         sb.Append(UncompressedSize.ToString("N0"));
@@ -52,7 +52,7 @@ public sealed partial class GbxBody
 
         if (CompressionRatio.HasValue)
         {
-            sb.Append(", ");
+            sb.Append(" - ");
             sb.Append(CompressionRatio.Value.ToString("P2"));
             sb.Append(" ratio");
         }
