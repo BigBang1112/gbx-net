@@ -263,7 +263,7 @@ public class GbxHeaderReaderTests
         Assert.Single(unknownHeader.UserData);
         Assert.False(unknownHeader.UserData.First().IsHeavy, "Header chunk is heavy but should not be.");
         Assert.Equal(expected: (uint)0x03043069, actual: unknownHeader.UserData.First().Id);
-        Assert.Equal(expected: [6, 0, 0, 0], actual: unknownHeader.UserData.First().Data);
+        Assert.Equal(expected: [6, 0, 0, 0], actual: ((HeaderChunk)unknownHeader.UserData.First()).Data);
         Assert.Equal(expected: 20, actual: ms.Position);
     }
 
