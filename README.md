@@ -122,7 +122,7 @@ void DisplayBasicReplayInfo(string filePath)
 {
     try
     {
-        var nodeHeader = Gbx.ParseNodeHeader(filePath);
+        var nodeHeader = Gbx.ParseHeaderNode(filePath);
 
         if (nodeHeader is CGameCtnReplayRecord replay)
         {
@@ -131,7 +131,7 @@ void DisplayBasicReplayInfo(string filePath)
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Gbx exception occurred {Path.GetFileName(filePath)}: {ex.Message}");
+        Console.WriteLine($"Gbx exception occurred {Path.GetFileName(filePath)}: {ex}");
     }
 }
 ```
@@ -150,15 +150,13 @@ See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimizat
 
 This section describes best practices to keep your projects clean when using GBX.NET 2.
 
-## Differences between `Gbx.Parse/Node/Header`
+## Differences between `Gbx.Parse/Header/Node`
 
 Gbx files contain many different parameters that are not exactly part of the game objects. We commonly use `ParseNode` to simplify the access level, as Gbx parameters are usually unnecessary to know about, but they have to be present to ensure consistent serialization.
 
+You can still save nodes into Gbx files by using the `Save` method - be careful specifying the Gbx parameters correctly, like the class ID mappings (wrap/unwrap).
+
 ### Gbx.Parse
-
-TODO
-
-### Gbx.ParseHeader
 
 TODO
 
@@ -166,7 +164,11 @@ TODO
 
 TODO
 
-### Gbx.ParseNodeHeader
+### Gbx.ParseHeader
+
+TODO
+
+### Gbx.ParseHeaderNode
 
 TODO
 
