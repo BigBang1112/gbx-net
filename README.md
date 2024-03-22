@@ -70,6 +70,8 @@ Gbx.LZO = new MiniLZO();
 
 The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v3. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
 
+**Gbx header is not compressed** and can contain useful information (icon data, replay time, ...), and also many of the **internal Gbx files from Pak files are not compressed**, so you can avoid LZO for these purposes.
+
 ## Examples (simple)
 
 ### Load a map and display block count per block name
@@ -178,19 +180,42 @@ GBX.NET 2 introduced rich optimization techniques to improve both performance an
 
 The goal of these optimizations is to prove that GBX.NET is not "too big" for anything small.
 
+## Trimming (tree shaking)
+
+On *publish* (the final build), you can trim out unused code by using this property in `.csproj`:
+
+```xml
+<PropertyGroup>
+    <PublishTrimmed>true</PublishTrimmed>
+</PropertyGroup>
+```
+
+The library does not load anything dynamically and does not use reflection, so this is **fully supported**.
+
+GBX.NET is a huge library when everything is included (over 1.5MB), so please use this whenever it's possible. Code was written to be as trimmable as possible, so the different is huge (much bigger than in GBX.NET v1).
+
+> Expect this to work only with `dotnet publish`.
+
 ## Explicit vs. Implicit parse
 
 TODO
 
 ## NativeAOT
 
-GBX.NET fully supports NativeAOT, and it is highly recommended to use its potential on smaller-sized applications:
+GBX.NET **fully supports** NativeAOT, and it is highly recommended to use its potential on smaller-sized applications:
 
-```
-<PublishAot>true</PublishAot>
+```xml
+<PropertyGroup>
+    <PublishAot>true</PublishAot>
+</PropertyGroup>
 ```
 
-On basic GBX.NET applications, native compilation:
-- Reduces standalone binary size from ~7MB to 2.8MB.
-- Startup time is reduced from 50ms to 0.5ms (JIT is removed, so you're only bottleneck by disk speed).
-- The app feels generally lighter, but can be slightly slower than a runtime app with JIT.
+It also automatically trims the application (no need for `<PublishTrimmed>true</PublishTrimmed>`).
+
+On basic GBX.NET applications, native compilation has a couple of improvements:
+- Reduces trimmed standalone binary size from ~7MB to 2.8MB.
+- Startup time is reduced from 50ms to 0.5ms (JIT is removed, so you should be only bottlenecked by disk speed).
+- If only
+- The app feels generally lighter, but can be slightly slower for long-running process than a runtime app with JIT (very small difference).
+
+> Expect this to work only with `dotnet publish`.
