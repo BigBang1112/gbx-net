@@ -4,7 +4,7 @@ Welcome to GBX.NET 2!
 
 Visual Studio is probably the best IDE to use to see what's going on. Check out the `Dependencies -> Analyzers` section to see the source generators in action.
 
-# Usage
+## Usage
 
 Using the NuGet packages is recommended (coming soon, for now, just clone the Git repository).
 
@@ -105,7 +105,7 @@ This will print out all blocks on the map and their count. This code can potenti
 
 Required packages: `GBX.NET`
 
-In case you only need the most basic information about the most common Gbx files (maps, replays, items, ...), do not read the full Gbx file, but only the header part. It is a great performance benefit.
+In case you only need the most basic information about many of the most common Gbx files (maps, replays, items, ...), do not read the full Gbx file, but only the header part. It is a great performance benefit for disk scans.
 
 FUN FACT: Reading only the header also does not infect you with GNU GPL v3 and you can use licenses compatible with MIT. Header is not compressed with LZO.
 
@@ -140,7 +140,7 @@ void DisplayBasicReplayInfo(string filePath)
 
 This code should only crash in case of a file system problem. Other problems will be printed out in the console.
 
-The `Gbx.Parse...` approach is quite different here. Instead of `Gbx.Parse...<T>()`, `Gbx.Parse...()` was used with a pattern match afterwards:
+The `Gbx.Parse...` approach is a little different here. Instead of `Gbx.Parse...<T>()`, `Gbx.Parse...()` was used with a pattern match afterwards:
 
 ```cs
 if (nodeHeader is CGameCtnReplayRecord replay)
@@ -148,13 +148,15 @@ if (nodeHeader is CGameCtnReplayRecord replay)
 
 See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) part why that is.
 
+> It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
+
 # Clarity
 
 This section describes best practices to keep your projects clean when using GBX.NET 2.
 
 ## Differences between `Gbx.Parse/Header/Node`
 
-Gbx files contain many different parameters that are not exactly part of the game objects. We commonly use `ParseNode` to simplify the access level, as Gbx parameters are usually unnecessary to know about, but they have to be present to ensure consistent serialization.
+Gbx files contain many different parameters that are not exactly part of the game objects. We commonly use `ParseNode` or `ParseHeaderNode` to simplify the access level, as Gbx parameters are usually unnecessary to know about, but they have to be present to ensure consistent serialization.
 
 You can still save nodes into Gbx files by using the `Save` method - be careful specifying the Gbx parameters correctly, like the class ID mappings (wrap/unwrap).
 
@@ -192,13 +194,19 @@ On *publish* (the final build), you can trim out unused code by using this prope
 
 The library does not load anything dynamically and does not use reflection, so this is **fully supported**.
 
-GBX.NET is a huge library when everything is included (over 1.5MB), so please use this whenever it's possible. Code was written to be as trimmable as possible, so the different is huge (much bigger than in GBX.NET v1).
+GBX.NET is a huge library when everything is included (over 1.5MB), so please use this whenever it's possible. Code was written to be very trimmable, so the difference is huge (much bigger than in GBX.NET v1).
 
 > Expect this to work only with `dotnet publish`.
 
 ## Explicit vs. Implicit parse
 
 TODO
+
+## Only header parse
+
+As mentioned earlier, you can largely speed up Gbx reading in case your information is available in the header part of Gbx.
+
+However, if the information is something serious, you should still *validate it against the body*, in other words: read the full Gbx, which this process will use the information from the body instead, and overwrite what was read in the header.
 
 ## NativeAOT
 
@@ -219,3 +227,22 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 - The app feels generally lighter, but can be slightly slower for long-running process than a runtime app with JIT (very small difference).
 
 > Expect this to work only with `dotnet publish`.
+
+# License
+
+- MIT License
+  - **Src/GBX.NET**
+  - Src/GBX.NET.Crypto
+  - Src/GBX.NET.Hashing
+  - Src/GBX.NET.Json
+  - Src/GBX.NET.Lua
+  - Generators
+- GNU GPL v3 License
+  - **Src/GBX.NET.LZO**
+  - Samples
+  - Tools
+- The Unlicense
+  - Resources
+  - Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown)
+
+If you use the LZO compression library, you must license your project under the GNU GPL v3.
