@@ -9,6 +9,8 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 [![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/dev?style=for-the-badge&logo=github)](#)
+[![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge)](https://discord.gg/9wAAJvKYyE)
 
 - GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. Exploring new chunks can be done by reverse engineering the games.
 - GBX.NET can **write** most of the Gbx file types (those that can be read by the parser).
