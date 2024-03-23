@@ -1,9 +1,9 @@
 ![GBX.NET](logo_outline.png)
 
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge&logo=github)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/v2?style=for-the-badge&logo=github)](#)
-[![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge)](https://discord.gg/tECTQcAWC9)
+[![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge&logo=discord)](https://discord.gg/tECTQcAWC9)
 
 Welcome to GBX.NET 2!
 
