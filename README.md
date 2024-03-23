@@ -171,7 +171,8 @@ Required packages: `GBX.NET`
 
 In case you only need the most basic information about many of the most common Gbx files (maps, replays, items, ...), do not read the full Gbx file, but only the header part. It is a great performance benefit for disk scans.
 
-FUN FACT: Reading only the header also does not infect you with GNU GPL v3 and you can use licenses compatible with MIT. Header is not compressed with LZO.
+> [!NOTE]
+> Reading only the header also does not infect you with GNU GPL v3 and you can use licenses compatible with MIT. Header is not compressed with LZO.
 
 > This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.IO;`.
 
@@ -212,6 +213,7 @@ if (nodeHeader is CGameCtnReplayRecord replay)
 
 See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) part why that is.
 
+> [!NOTE]
 > It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
 
 ## Clarity
@@ -237,7 +239,7 @@ You can still save nodes into Gbx files by using the `Save` method - be careful 
 
 This was more common back in the 0.X version days, but it is still possible to do today.
 
-
+TODO
 
 ### Game Version Interfaces!
 
@@ -265,6 +267,7 @@ The library does not load anything dynamically and does not use reflection, so t
 
 GBX.NET is a huge library when everything is included (over 1.5MB), so please use this whenever it's possible. Code was written to be very trimmable, so the difference is huge (much bigger than in GBX.NET v1).
 
+> [!NOTE]
 > Expect this to work only with `dotnet publish`.
 
 ### Explicit vs. Implicit parse
@@ -294,6 +297,7 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 - Startup time is reduced from 50ms to 0.5ms (JIT is removed, so you should be only bottlenecked by disk speed).
 - The app feels generally lighter, but can be slightly slower for long-running process than a runtime app with JIT (very small difference).
 
+> [!NOTE]
 > Expect this to work only with `dotnet publish`.
 
 ## Benchmarks
