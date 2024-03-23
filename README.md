@@ -1,10 +1,51 @@
 ![GBX.NET](logo_outline.png)
 
+[![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/v2?style=for-the-badge&logo=github)](#)
+[![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge)](https://discord.gg/tECTQcAWC9)
+
 Welcome to GBX.NET 2!
 
 Visual Studio is probably the best IDE to use to see what's going on. Check out the `Dependencies -> Analyzers` section to see the source generators in action.
 
-## Usage
+- Gbx Explorer 2
+- Lua support
+- **Preparation**
+  - Create a new GBX.NET project (lightweight)
+  - Create a new GBX.NET project (Visual Studio Code)
+  - Create a new GBX.NET project (Visual Studio)
+- **Usage (simple examples)**
+  - Load a map and display block count per block name
+  - Read a large amount of replay metadata quickly
+- Clarity
+  - Differences between `Gbx.Parse/Header/Node`
+  - Do not repeat `gbx.Node.[any]` too often!
+  - Game Version Interfaces!
+- Optimization
+  - Trimming (tree shaking)
+  - Explicit vs. Implicit parse
+  - Only header parse
+  - NativeAOT
+- Benchmarks
+- License
+- Special thanks
+- Alternative Gbx parsers
+
+## Gbx Explorer 2
+
+TODO
+
+## Lua support
+
+GBX.NET 2 *will* support dynamic Lua script execution around the .NET code, to simplify the library usage even further.
+
+It should be supported to run offline locally through a **Gbx Lua Interpreter tool** and in **Gbx Explorer 2 in web browser, PWA, and Photino build.**
+
+The goal is to also make it viable for NativeAOT.
+
+## Preparation
 
 Using the NuGet packages is recommended (coming soon, for now, just clone the Git repository).
 
@@ -72,7 +113,7 @@ The compression logic is split up from the read/write logic to **allow GBX.NET 2
 
 **Gbx header is not compressed** and can contain useful information (icon data, replay time, ...), and also many of the **internal Gbx files from Pak files are not compressed**, so you can avoid LZO for these purposes.
 
-## Examples (simple)
+## Usage (simple examples)
 
 ### Load a map and display block count per block name
 
