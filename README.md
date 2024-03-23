@@ -176,13 +176,13 @@ TODO
 
 TODO
 
-# Optimization
+## Optimization
 
 GBX.NET 2 introduced rich optimization techniques to improve both performance and compiled size of your applications.
 
 The goal of these optimizations is to prove that GBX.NET is not "too big" for anything small.
 
-## Trimming (tree shaking)
+### Trimming (tree shaking)
 
 On *publish* (the final build), you can trim out unused code by using this property in `.csproj`:
 
@@ -198,17 +198,17 @@ GBX.NET is a huge library when everything is included (over 1.5MB), so please us
 
 > Expect this to work only with `dotnet publish`.
 
-## Explicit vs. Implicit parse
+### Explicit vs. Implicit parse
 
 TODO
 
-## Only header parse
+### Only header parse
 
 As mentioned earlier, you can largely speed up Gbx reading in case your information is available in the header part of Gbx.
 
 However, if the information is something serious, you should still *validate it against the body*, in other words: read the full Gbx, which this process will use the information from the body instead, and overwrite what was read in the header.
 
-## NativeAOT
+### NativeAOT
 
 GBX.NET **fully supports** NativeAOT, and it is highly recommended to use its potential on smaller-sized applications:
 
@@ -223,12 +223,13 @@ It also automatically trims the application (no need for `<PublishTrimmed>true</
 On basic GBX.NET applications, native compilation has a couple of improvements:
 - Reduces trimmed standalone binary size from ~7MB to 2.8MB.
 - Startup time is reduced from 50ms to 0.5ms (JIT is removed, so you should be only bottlenecked by disk speed).
-- If only
 - The app feels generally lighter, but can be slightly slower for long-running process than a runtime app with JIT (very small difference).
 
 > Expect this to work only with `dotnet publish`.
 
-# License
+## License
+
+GBX.NET 2 is licensed under multiple licenses, depending on the part of the project. Here are the licenses and their directories:
 
 - MIT License
   - **Src/GBX.NET**
@@ -243,6 +244,7 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
   - Tools
 - The Unlicense
   - Resources
-  - Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown)
+
+The Unlicense also applies on information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown).
 
 If you use the LZO compression library, you must license your project under the GNU GPL v3.
