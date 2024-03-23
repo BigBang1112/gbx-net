@@ -150,29 +150,34 @@ See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimizat
 
 > It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
 
-# Clarity
+## Clarity
 
 This section describes best practices to keep your projects clean when using GBX.NET 2.
 
-## Differences between `Gbx.Parse/Header/Node`
+### Differences between `Gbx.Parse/Header/Node`
 
 Gbx files contain many different parameters that are not exactly part of the game objects. We commonly use `ParseNode` or `ParseHeaderNode` to simplify the access level, as Gbx parameters are usually unnecessary to know about, but they have to be present to ensure consistent serialization.
 
 You can still save nodes into Gbx files by using the `Save` method - be careful specifying the Gbx parameters correctly, like the class ID mappings (wrap/unwrap).
 
-### Gbx.Parse
+- `Gbx.Parse`
+  - TODO
+- `Gbx.ParseNode`
+  - TODO
+- `Gbx.ParseHeader`
+  - TODO
+- `Gbx.ParseHeaderNode`
+  - TODO
 
-TODO
+### Do not repeat `gbx.Node.[any]` too often!
 
-### Gbx.ParseNode
+This was more common back in the 0.X version days, but it is still possible to do today.
 
-TODO
 
-### Gbx.ParseHeader
 
-TODO
+### Game Version Interfaces!
 
-### Gbx.ParseHeaderNode
+Interfaces (short name of Game Version Interfaces) is a new feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
 
 TODO
 
@@ -227,6 +232,10 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 
 > Expect this to work only with `dotnet publish`.
 
+## Benchmarks
+
+TODO
+
 ## License
 
 GBX.NET 2 is licensed under multiple licenses, depending on the part of the project. Here are the licenses and their directories:
@@ -248,3 +257,27 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 The Unlicense also applies on information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown).
 
 If you use the LZO compression library, you must license your project under the GNU GPL v3.
+
+## Special thanks
+
+Without these people, this project wouldn't be what it is today (ordered by impact):
+
+- Stefan Baumann (Solux)
+- Melissa (Miss)
+- florenzius
+- Kim
+- tilman
+- schadocalex
+- James Romeril
+- frolad (Juice)
+- Mika Kuijpers (TheMrMiku)
+- donadigo
+
+And many thanks to every bug reporter!
+
+## Alternative Gbx parsers
+
+- [gbx-py](https://github.com/schadocalex/gbx-py) by schadocalex (advanced read+write Gbx parser specialized on TM2020 and custom items)
+- [gbx-ts](https://github.com/thaumictom/gbx-ts) by thaumictom (read-only Gbx parser for TypeScript)
+- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including read-only Gbx parser used by ManiaExchange)
+- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (read-only Gbx parser for Python)
