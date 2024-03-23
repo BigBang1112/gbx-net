@@ -287,13 +287,14 @@ Your work doesn't have to fall under the GNU GPL license if you're interested in
 
 ## Special thanks
 
-Without these people, this project wouldn't be what it is today:
+Without these people, this project wouldn't be what it is today (ordered by impact):
 
 - Stefan Baumann (Solux)
 - Melissa (Miss)
 - florenzius
 - Kim
 - tilman
+- schadocalex
 - James Romeril
 - frolad (Juice)
 - Mika Kuijpers (TheMrMiku)
@@ -303,6 +304,7 @@ And many thanks to every bug reporter!
 
 ## Alternative Gbx parsers
 
-- [gbx.js](https://github.com/ThaumicTom/gbx.js) by ThaumicTom (Gbx header parser for clientside JavaScript)
-- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including Gbx parser used by ManiaExchange)
-- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (Gbx parser for Python)
+- [gbx-py](https://github.com/schadocalex/gbx-py) by schadocalex (advanced read+write Gbx parser specialized on TM2020 and custom items)
+- [gbx-ts](https://github.com/thaumictom/gbx-ts) by thaumictom (read-only Gbx parser for TypeScript)
+- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including read-only Gbx parser used by ManiaExchange)
+- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (read-only Gbx parser for Python)
