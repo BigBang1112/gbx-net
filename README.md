@@ -6,7 +6,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via DM: BigBang1112#9489.
 
-[![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
+[![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/dev?style=for-the-badge&logo=github)](#)
