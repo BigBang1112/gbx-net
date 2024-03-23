@@ -2,7 +2,6 @@
 
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/v2?style=for-the-badge&logo=github)](#)
 [![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge)](https://discord.gg/tECTQcAWC9)
 
