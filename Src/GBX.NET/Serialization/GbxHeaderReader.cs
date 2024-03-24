@@ -131,6 +131,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 {
                     chunk.Node = node;
                     unknownHeader.UserData.Add(chunk);
+                    node.Chunks.Add(chunk);
                     node = null;
                 }
             }
