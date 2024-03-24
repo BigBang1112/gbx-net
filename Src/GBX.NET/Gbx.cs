@@ -136,15 +136,25 @@ public partial class Gbx : IGbx
             {
                 RefTable = refTable,
                 ReadSettings = settings,
+                IdVersion = reader.IdVersion,
                 FilePath = filePath
             };
         }
 
-        reader.ResetIdState();
-        reader.ExpectedNodeCount = header.NumNodes;
+        GbxBody body;
 
-        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
-        // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
+        if (settings.ReadRawBody)
+        {
+            body = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+        }
+        else
+        {
+            reader.ResetIdState();
+            reader.ExpectedNodeCount = header.NumNodes;
+
+            body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+            // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
+        }
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
@@ -222,6 +232,7 @@ public partial class Gbx : IGbx
             {
                 RefTable = refTable,
                 ReadSettings = settings,
+                IdVersion = reader.IdVersion,
                 FilePath = filePath,
             }; 
         }
@@ -337,7 +348,7 @@ public partial class Gbx : IGbx
             PackDescVersion = PackDescVersion.GetValueOrDefault(3),
             DeprecVersion = DeprecVersion.GetValueOrDefault(10)
         };
-
+        
         Header.Write(writer, Node, settings);
 
         var hasRawBodyData = !Body.RawData.IsDefaultOrEmpty;
@@ -362,6 +373,10 @@ public partial class Gbx : IGbx
             writer.Write(bodyWriter.NodeDict.Count + 1);
 
             bodyUncompressedMs.Position = 0;
+        }
+        else if (Header is GbxHeaderUnknown)
+        {
+            throw new Exception("Gbx has an unknown header with a null Node, cannot write body. Set the ReadRawBody (in read setting) to true to fix this problem.");
         }
         else
         {

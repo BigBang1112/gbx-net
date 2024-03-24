@@ -12,7 +12,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
         if (header is GbxHeaderUnknown unknownHeader)
         {
-            WriteUnknownHeaderUserData(writer, unknownHeader);
+            WriteUnknownHeaderUserData(unknownHeader);
         }
         else
         {
@@ -24,13 +24,14 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
         return true;
     }
 
-    private static void WriteUnknownHeaderUserData(GbxWriter writer, GbxHeaderUnknown unknownHeader)
+    private void WriteUnknownHeaderUserData(GbxHeaderUnknown unknownHeader)
     {
         var isAllUnknownHeaderChunk = unknownHeader.UserData.All(x => x is HeaderChunk);
 
         if (!isAllUnknownHeaderChunk)
         {
-            throw new NotSupportedException("Writing partially unknown header (user data) is not yet supported.");
+            WritePartiallyKnownHeaderUserData(unknownHeader);
+            return;
         }
 
         var headerChunks = unknownHeader.UserData.OfType<HeaderChunk>();
@@ -59,6 +60,52 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
         }
     }
 
+    private void WritePartiallyKnownHeaderUserData(GbxHeaderUnknown unknownHeader)
+    {
+        using var concatenatedDataMs = new MemoryStream();
+        using var concatenatedDataW = new GbxWriter(concatenatedDataMs);
+        using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
+
+        var infos = new List<HeaderChunkInfo>();
+
+        foreach (var chunk in unknownHeader.UserData)
+        {
+            if (chunk is HeaderChunk unknownHeaderChunk)
+            {
+                concatenatedDataW.Write(unknownHeaderChunk.Data);
+
+                infos.Add(new HeaderChunkInfo
+                {
+                    Id = chunk.Id,
+                    Size = unknownHeaderChunk.Data.Length,
+                    IsHeavy = chunk.IsHeavy
+                });
+
+                continue;
+            }
+
+            if (chunk.Node is null)
+            {
+                throw new Exception("Node cannot be null for an unknown header on a known header chunk.");
+            }
+
+            var chunkStartPos = concatenatedDataMs.Position;
+
+            WriteChunk(chunk.Node, chunk, concatenatedDataRw);
+
+            infos.Add(new HeaderChunkInfo
+            {
+                Id = chunk.Id,
+                Size = (int)(concatenatedDataMs.Position - chunkStartPos),
+                IsHeavy = chunk.IsHeavy
+            });
+        }
+
+        concatenatedDataMs.Position = 0;
+
+        WriteUserData(infos, concatenatedDataMs);
+    }
+
     private void WriteKnownHeaderUserData(IClass node)
     {
         using var concatenatedDataMs = new MemoryStream();
@@ -83,8 +130,13 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
         concatenatedDataMs.Position = 0;
 
+        WriteUserData(infos, concatenatedDataMs);
+    }
+
+    private void WriteUserData(List<HeaderChunkInfo> infos, MemoryStream concatenatedDataStream)
+    {
         var infosLength = infos.Count * sizeof(int) * 2 + sizeof(int);
-        var userDataLength = (int)concatenatedDataMs.Length + infosLength;
+        var userDataLength = (int)concatenatedDataStream.Length + infosLength;
 
         writer.Write(userDataLength);
         writer.Write(infos.Count);
@@ -99,7 +151,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
             writer.Write(size);
         }
 
-        concatenatedDataMs.CopyTo(writer.BaseStream);
+        concatenatedDataStream.CopyTo(writer.BaseStream);
     }
 
     private void WriteChunk(IClass node, IHeaderChunk chunk, GbxReaderWriter rw)
@@ -109,8 +161,8 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
             case IReadableWritableChunk readableWritable:
                 readableWritable.ReadWrite(node, rw);
                 break;
-            case IWritableChunk readable:
-                readable.Write(node, writer);
+            case IWritableChunk writable:
+                writable.Write(node, writer);
                 break;
             default:
                 throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
