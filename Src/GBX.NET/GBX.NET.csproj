@@ -76,6 +76,7 @@
 		<Using Include="GBX.NET.Engines.Graphic" />
 		<Using Include="GBX.NET.Engines.Motion" />
 		<Using Include="GBX.NET.Engines.Hms" />
+		<Using Include="GBX.NET.Engines.TrackMania" />
 	</ItemGroup>
 
 	<ItemGroup>

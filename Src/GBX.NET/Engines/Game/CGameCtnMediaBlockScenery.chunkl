@@ -2,8 +2,16 @@ CGameCtnMediaBlockScenery 0x03188000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ version
+ list<Key> Keys (version: Version)
 
 0x001
  version
  int
  CPlugDataTape DataTape
+ 
+archive Key
+ timefloat Time
+ float
+ float
+ float

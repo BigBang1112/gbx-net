@@ -1047,7 +1047,6 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         // Writer
                         sbClass.Append("        Writer?.Write");
                         sbClass.Append(isList ? "List" : "Array");
-                        sbClass.Append(methodType);
 
                         if (isDeprecVariant)
                         {

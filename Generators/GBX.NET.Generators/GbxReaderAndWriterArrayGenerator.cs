@@ -217,12 +217,12 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
         {
             var type = symbol.Parameters[0].Type.WithNullableAnnotation(NullableAnnotation.NotAnnotated);
 
-            sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value, int length);");
-            sb.AppendLine($"    void WriteArray{type.Name}({type}[]? value);");
-            sb.AppendLine($"    void WriteArray{type.Name}_deprec({type}[]? value);");
-            sb.AppendLine($"    void WriteList{type.Name}(IList<{type}>? value, int length);");
-            sb.AppendLine($"    void WriteList{type.Name}(IList<{type}>? value);");
-            sb.AppendLine($"    void WriteList{type.Name}_deprec(IList<{type}>? value);");
+            sb.AppendLine($"    void WriteArray({type}[]? value, int length);");
+            sb.AppendLine($"    void WriteArray({type}[]? value);");
+            sb.AppendLine($"    void WriteArray_deprec({type}[]? value);");
+            sb.AppendLine($"    void WriteList(IList<{type}>? value, int length);");
+            sb.AppendLine($"    void WriteList(IList<{type}>? value);");
+            sb.AppendLine($"    void WriteList_deprec(IList<{type}>? value);");
         }
 
         sb.AppendLine("}");
@@ -236,9 +236,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
         {
             var type = symbol.Parameters[0].Type.WithNullableAnnotation(NullableAnnotation.NotAnnotated);
 
-            sb.Append("    public void WriteArray");
-            sb.Append(type.Name);
-            sb.Append('(');
+            sb.Append("    public void WriteArray(");
             sb.Append(type);
             sb.AppendLine("[]? value)");
             sb.AppendLine("    {");
@@ -260,9 +258,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteArray");
-            sb.Append(type.Name);
-            sb.Append('(');
+            sb.Append("    public void WriteArray(");
             sb.Append(type);
             sb.AppendLine("[]? value, int length)");
             sb.AppendLine("    {");
@@ -291,22 +287,16 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteArray");
-            sb.Append(type.Name);
-            sb.Append("_deprec(");
+            sb.Append("    public void WriteArray_deprec(");
             sb.Append(type);
             sb.AppendLine("[]? value)");
             sb.AppendLine("    {");
             sb.AppendLine("        WriteDeprecVersion();");
-            sb.Append("        WriteArray");
-            sb.Append(type.Name);
-            sb.AppendLine("(value);");
+            sb.AppendLine("        WriteArray(value);");
             sb.AppendLine("    }");
 
             sb.AppendLine();
-            sb.Append("    public void WriteList");
-            sb.Append(type.Name);
-            sb.Append("(IList<");
+            sb.Append("    public void WriteList(IList<");
             sb.Append(type);
             sb.AppendLine(">? value)");
             sb.AppendLine("    {");
@@ -328,9 +318,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteList");
-            sb.Append(type.Name);
-            sb.Append("(IList<");
+            sb.Append("    public void WriteList(IList<");
             sb.Append(type);
             sb.AppendLine(">? value, int length)");
             sb.AppendLine("    {");
@@ -359,16 +347,12 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteList");
-            sb.Append(type.Name);
-            sb.Append("_deprec(IList<");
+            sb.Append("    public void WriteList_deprec(IList<");
             sb.Append(type);
             sb.AppendLine(">? value)");
             sb.AppendLine("    {");
             sb.AppendLine("        WriteDeprecVersion();");
-            sb.Append("        WriteList");
-            sb.Append(type.Name);
-            sb.AppendLine("(value);");
+            sb.AppendLine("        WriteList(value);");
             sb.AppendLine("    }");
 
             sb.AppendLine();

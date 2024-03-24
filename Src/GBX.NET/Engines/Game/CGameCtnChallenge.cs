@@ -753,13 +753,13 @@ public sealed partial class CGameCtnChallenge :
                 using var zip = new ZipArchive(embeddedMs, ZipArchiveMode.Read);
 
                 // TODO
-                wBuffer.WriteArrayIdent(new Ident[0]);
+                wBuffer.WriteArray(new Ident[0]);
                 wBuffer.WriteData(n.EmbeddedDataZip!);
             }
 
             if (Version >= 1)
             {
-                wBuffer.WriteListString(n.Textures!);
+                wBuffer.WriteList(n.Textures!);
             }
 
             w.Write((int)ms.Length);
