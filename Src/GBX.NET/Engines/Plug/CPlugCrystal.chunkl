@@ -1,0 +1,58 @@
+CPlugCrystal 0x09003000
+- inherits: CPlugTreeGenerator
+
+0x000 // one layer only
+
+0x003 // materials
+ version
+ Material[] Materials
+
+0x004 (skippable)
+ version
+ data
+ v1+
+  int?
+
+0x005 // layers
+
+0x006
+ version
+ v0=
+  vec2[]
+ v1+
+  uint[] // two Int16 technically
+  v2+
+   int[] (optimized)
+
+0x007
+ version
+ float[] // SCrystalSmoothingGroup array
+ int[]
+
+enum ELayerType
+ Geometry
+ Smooth
+ Translation
+ Rotation
+ Scale
+ Mirror
+ U07
+ U08
+ Subdivide
+ Chaos
+ U11
+ U12
+ Deformation
+ Cubes
+ Trigger
+ SpawnPosition
+
+enum EAxis
+ X
+ Y
+ Z
+
+archive Material
+ string MaterialName
+ if MaterialName == ""
+  CPlugMaterialUserInst MaterialUserInst

@@ -15,6 +15,7 @@ internal sealed class MemberSerializationWriter
     private readonly bool self;
     private readonly ImmutableDictionary<string, IFieldSymbol> existingFields;
     private readonly ImmutableDictionary<string, IPropertySymbol> existingProperties;
+    private readonly ClassDataModel classInfo;
     private readonly ImmutableDictionary<string, ClassDataModel> classes;
     private readonly ImmutableDictionary<string, ArchiveDataModel> archives;
     private readonly SourceProductionContext context;
@@ -27,6 +28,7 @@ internal sealed class MemberSerializationWriter
         bool self,
         ImmutableDictionary<string, IFieldSymbol> existingFields,
         ImmutableDictionary<string, IPropertySymbol> existingProperties,
+        ClassDataModel classInfo,
         ImmutableDictionary<string, ClassDataModel> classes,
         ImmutableDictionary<string, ArchiveDataModel> archives,
         SourceProductionContext context)
@@ -36,6 +38,7 @@ internal sealed class MemberSerializationWriter
         this.self = self;
         this.existingFields = existingFields;
         this.existingProperties = existingProperties;
+        this.classInfo = classInfo;
         this.classes = classes;
         this.archives = archives;
         this.context = context;
@@ -92,15 +95,36 @@ internal sealed class MemberSerializationWriter
                 case ChunkIfStatement ifStatement:
                     sb.Append(indent, "if (");
 
+                    var enumDataModel = default(EnumDataModel);
+                    var enumValueNext = false;
+
                     foreach (var part in ifStatement.Condition)
                     {
+                        if (enumDataModel is not null && part == "::")
+                        {
+                            sb.Append('.');
+                            enumValueNext = true;
+                            continue;
+                        }
+
+                        if (enumValueNext)
+                        {
+                            sb.Append(part);
+                            enumValueNext = false;
+                            enumDataModel = null;
+                            continue;
+                        }
+
                         var isWord = Regex.IsMatch(part, @"^[^0-9]\w+$"); // does not start with a number and is azAZ09_
 
                         if (isWord)
                         {
                             if (!self && !IsUnknown(part) && part is not "null")
                             {
-                                sb.Append("n.");
+                                if (!classInfo.Enums.TryGetValue(part, out enumDataModel))
+                                {
+                                    sb.Append("n.");
+                                }
                             }
                         }
 

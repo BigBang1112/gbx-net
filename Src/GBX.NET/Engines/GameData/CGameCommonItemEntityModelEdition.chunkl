@@ -1,0 +1,79 @@
+CGameCommonItemEntityModelEdition 0x2E026000
+
+0x000
+ version
+ int<EItemType> ItemType
+ CPlugCrystal MeshCrystal
+ string U01
+ CPlugSolid U02 // if U01 is empty probably
+ CPlugFileImg[] U03
+ SpriteParam[] SpriteParams
+ CPlugParticleEmitterModel U04
+ CPlugAnimLocSimple U05
+ LightBallStateSimple[] U06
+ float U07
+ float U08
+ float U09
+ float U10
+ float U11
+ float U12
+ float U13
+ iso4 U14
+ v3+
+  if ItemType == EItemType::PickUp
+   float Mass
+ bool U15
+ if !U15
+  CPlugCrystal U16
+ if ItemType != EItemType::Ornament
+  throw
+ bool U17
+ if U17
+  int U18
+  iso4 U19
+ int U20
+ v1+
+  string InventoryName
+  string InventoryDescription
+  int InventoryItemClass
+  int InventoryOccupation
+  v6+
+   v7-
+    CMwNod U21
+   v7+
+    if ItemType == EItemType::PickUp
+	 bool U22
+
+0x001 (skippable, ignore)
+
+archive SpriteParam
+ vec3
+ bool
+ float
+
+archive LightBallStateSimple
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+enum EItemType
+ Undefined
+ Ornament
+ PickUp
+ Character
+ Vehicle
+ Spot
+ Cannon
+ Group
+ Decal
+ Turret
+ Wagon
+ Block
+ EntitySpawner
+ DeprecV
+ Procedural

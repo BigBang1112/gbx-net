@@ -1,0 +1,16 @@
+CPlugAnimLocSimple 0x090F8000
+
+0x000
+ int
+ version
+ int RotPeriod
+ int TransPeriod
+ float TransY
+ v1+
+  int Axis
+  v2+
+   int RotPeriodMax
+   int TransPeriodMax
+   v3+
+    byte RotFunc
+    float RotAngle

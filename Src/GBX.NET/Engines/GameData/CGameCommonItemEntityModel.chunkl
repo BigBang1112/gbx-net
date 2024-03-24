@@ -1,0 +1,28 @@
+CGameCommonItemEntityModel 0x2E027000
+
+0x000
+ version
+ v0=
+  CMwNod PhyModel
+  CMwNod VisModel
+ v3=
+  string
+  string
+ v4+
+  CMwNod StaticObject
+ v2+
+  CMwNod TriggerShape
+  iso4
+  CPlugParticleEmitterModel
+  CGameActionModel[]
+  v5-
+   CMwNod
+  string
+  string
+  string
+  string
+  string
+  iso4
+  int // ExprValidator
+  v5+
+   byte

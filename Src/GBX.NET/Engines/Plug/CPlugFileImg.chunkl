@@ -1,0 +1,3 @@
+CPlugFileImg 0x09025000
+- inherits: CPlugFile
+- abstract

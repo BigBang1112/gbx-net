@@ -1,0 +1,201 @@
+CGameItemModel 0x2E002000
+- inherits: CGameCtnCollector
+
+0x000 (header, struct: SHeaderItemModelDesc) // item type
+ int<EItemType> ItemType
+
+0x001 (header, struct: SHeaderFileVersion) // file version
+ version
+
+0x006
+ int
+
+0x008 // Nadeo skin fids
+ CMwNod[] NadeoSkinFids
+
+0x009 // cameras
+ version
+ CMwNod[] Cameras
+
+0x00A
+ CMwNod
+
+0x00C // race interface fid
+ CMwNod RaceInterfaceFid
+
+0x010
+ CMwNod
+
+0x012
+ vec3 GroundPoint
+ float PainterGroundMargin
+ float OrbitalCenterHeightFromGround
+ float OrbitalRadiusBase
+ float OrbitalPreviewAngle
+
+0x013
+ CPlugAudioEnvironment
+
+0x014
+ CMwNod
+
+0x015 // item type e
+ int<EItemType> ItemTypeE
+
+0x019 // model
+
+0x01A
+ CMwNod
+
+0x01B
+ CMwNod
+
+0x01C // default placement
+ version
+ v5+
+  CGameItemPlacementParam DefaultPlacement
+  return
+ vec3[]
+ v1+
+  float
+  float
+  float
+  float
+  float
+  float
+  v2+
+   float
+   float
+   float
+   float
+   float
+   v3+
+    float
+    float
+    v4+
+     float
+
+0x01D
+ short
+
+0x01E
+ version
+ v2+
+  string ArchetypeRef
+  v5+
+   if ArchetypeRef == ""
+    CGameItemModel ArchetypeFid
+   v6+
+    string // SkinDirNameCustom
+    v7+
+     int // -1
+
+0x01F
+ version
+ v6-
+  v5+
+   string?
+   string?
+   int?
+  v4+
+   int?
+  v2-
+   short?
+ int<EWaypointType> WaypointType
+ v7-
+  iso4
+ v6+
+  bool DisableLightmap
+  v10+
+   int
+   v11+
+    byte?
+    v12+
+     int?
+     int?
+
+0x020
+ version
+ v1-
+  string
+  CMwNod // CPlugFileImg
+  return
+ string IconFid
+ v3+
+  boolbyte // ArticlePtr? xD
+
+0x021
+ version
+ int
+
+0x022 (skippable)
+ version
+ int
+ id[]
+ int
+ ushort[]
+
+0x023
+ version
+ byte
+ int
+
+0x024 (skippable)
+ version
+ vec2[]
+
+0x025 (skippable, ignore)
+
+0x026 (skippable, ignore)
+
+0x027 (skippable, ignore)
+
+enum EItemType
+ Undefined
+ Ornament // StaticObject
+ PickUp // DynaObject
+ Character
+ Vehicle
+ Spot
+ Cannon
+ Group
+ Decal
+ Turret
+ Wagon
+ Block
+ EntitySpawner
+
+enum EWaypointType
+ Start
+ Finish
+ Checkpoint
+ None
+ StartFinish
+ Dispenser
+
+enum EDefaultCam
+ None
+ Default
+ Free
+ Spectator
+ Behind
+ Close
+ Internal
+ Helico
+ FirstPerson
+ ThirdPerson
+ ThirdPersonTop
+ Iso
+ IsoFocus
+ Dia3
+ Board
+ MonoScreen
+ Rear
+ Debug
+ _1
+ _2
+ _3
+ Alt1
+ Orbital
+ Decals
+ Snap

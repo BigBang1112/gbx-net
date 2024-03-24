@@ -1,0 +1,24 @@
+CGameItemPlacementParam 0x2E020000
+
+0x000 (skippable)
+ version
+ short Flags
+ vec3 CubeCenter
+ float CubeSize
+ float GridSnapHStep
+ float GridSnapVStep
+ float GridSnapHOffset
+ float GridSnapVOffset
+ float FlyVStep
+ float FlyVOffset
+ float PivotSnapDistance
+
+0x001 (skippable) // pivot positions
+ vec3[] PivotPositions
+ quat[] PivotRotations
+
+0x003 (skippable, ignore)
+
+0x004 (skippable, ignore)
+
+0x005 (skippable, ignore)

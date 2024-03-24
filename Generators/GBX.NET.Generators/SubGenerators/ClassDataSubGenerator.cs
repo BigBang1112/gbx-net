@@ -114,7 +114,7 @@ internal class ClassDataSubGenerator
 
         if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
         {
-            AppendArchiveMethodsLine(sb, classInfo.NamelessArchive, existingMembers, classInfos, classInfo.Archives, context, archiveStructureKind, indent: 0, null);
+            AppendArchiveMethodsLine(sb, classInfo, classInfo.NamelessArchive, existingMembers, classInfos, classInfo.Archives, context, archiveStructureKind, indent: 0, null);
         }
 
         AppendChunksLine(sb, classInfo, existingMembers, classInfos, classInfo.Archives, context);
@@ -354,6 +354,7 @@ internal class ClassDataSubGenerator
 
     private static void AppendArchiveMethodsLine(
         StringBuilder sb,
+        ClassDataModel classInfo,
         ArchiveDataModel archiveInfo,
         ImmutableArray<ISymbol> existingMembers,
         ImmutableDictionary<string, ClassDataModel> classInfos,
@@ -436,7 +437,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Read, self: true, existingFields, existingProps, classInfos, archiveInfos, context);
+                sb, SerializationType.Read, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -457,7 +458,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Write, self: true, existingFields, existingProps, classInfos, archiveInfos, context);
+                sb, SerializationType.Write, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -478,7 +479,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.ReadWrite, self: true, existingFields, existingProps, classInfos, archiveInfos, context);
+                sb, SerializationType.ReadWrite, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -647,7 +648,7 @@ internal class ClassDataSubGenerator
         var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, context);
         propWriter.Append();
 
-        AppendArchiveMethodsLine(sb, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1, overrideMethods);
+        AppendArchiveMethodsLine(sb, classInfo, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1, overrideMethods);
 
         sb.AppendLine("    }");
     }
@@ -1006,7 +1007,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var readMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Read, self: false, existingFields, existingProps, classInfos, archiveInfos, context);
+                    sb, SerializationType.Read, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
                 readMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1024,7 +1025,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var writeMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Write, self: false, existingFields, existingProps, classInfos, archiveInfos, context);
+                    sb, SerializationType.Write, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
                 writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1044,7 +1045,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var memberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.ReadWrite, self: false, existingFields, existingProps, classInfos, archiveInfos, context);
+                    sb, SerializationType.ReadWrite, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
                 memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");

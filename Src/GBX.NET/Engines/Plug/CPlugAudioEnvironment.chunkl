@@ -1,0 +1,2 @@
+CPlugAudioEnvironment 0x09039000
+- inherits: CPlugAudio
