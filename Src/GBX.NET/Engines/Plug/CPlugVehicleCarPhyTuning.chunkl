@@ -1,6 +1,5 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
-- chunk_Chunk090ED09A: Unexpected syntax
 
 0x000
  float
@@ -452,9 +451,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x089
  version
- v10+
-  throw
- CFuncKeysReal
+ Keys (version: Version - 10)
  v2-
   CFuncKeysReal
  v2+
@@ -479,43 +476,39 @@ CPlugVehicleCarPhyTuning 0x090ED000
     v7+
      bool?
      v8+
-      CFuncKeysReal
-      CFuncKeysReal
+      Keys (version: Version - 10)
+      Keys (version: Version - 10)
       v9+
-       CFuncKeysReal
+       Keys (version: Version - 10)
 
 0x08A
  version
- v8+
-  throw
  float
  float
  float
  float
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
+ Keys (version: Version - 8)
+ Keys (version: Version - 8)
+ Keys (version: Version - 8)
+ Keys (version: Version - 8)
  v1+
   v3-
    float?
    float?
   v4+
-   CFuncKeysReal
-   CFuncKeysReal
+   Keys (version: Version - 8)
+   Keys (version: Version - 8)
   v3+
    int?
    v5=
     float?
    v6+
-    CFuncKeysReal
+    Keys (version: Version - 8)
     v7+
      bool?
 
 0x08B
  version
- v35+
-  throw
  v1-
   float?
  v9-
@@ -541,48 +534,48 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
  v4+
-  CFuncKeysReal
+  Keys (version: Version - 37)
   v5+
    v8-
     int
     int
    v9+
-    CFuncKeysReal
+    Keys (version: Version - 37)
     v13+
      v21-
       float
      v22+
-      CFuncKeysReal
+      Keys (version: Version - 37)
      float
     v6+
-     CFuncKeysReal
+     Keys (version: Version - 37)
      v7+
       float
       v10+
-       CFuncKeysReal
-       CFuncKeysReal
-       CFuncKeysReal
+       Keys (version: Version - 37)
+       Keys (version: Version - 37)
+       Keys (version: Version - 37)
        v11+
         float
         float
         float
         float
         float
-        CFuncKeysReal
+        Keys (version: Version - 37)
         v12+
          float
          v14+
-          CFuncKeysReal
+          Keys (version: Version - 37)
           v15+
-           CFuncKeysReal
+           Keys (version: Version - 37)
            v16+
-            CFuncKeysReal
+            Keys (version: Version - 37)
             v17+
              int
              v18+
               int
               v19+
-               CFuncKeysReal
+               Keys (version: Version - 37)
                v20+
                 float
                 float
@@ -595,7 +588,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                   bool
                   float
                   float
-                  CFuncKeysReal
+                  Keys (version: Version - 37)
                   v24+
                    int
                    v25+
@@ -990,3 +983,5 @@ CPlugVehicleCarPhyTuning 0x090ED000
               int?
               int?
               int?
+
+archive Keys

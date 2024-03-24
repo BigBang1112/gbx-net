@@ -1,0 +1,5 @@
+CPlugVehiclePhyTunings 0x090EC000
+
+0x000
+ CPlugVehiclePhyTuning[]_deprec Tuning
+ int TuningIndex
