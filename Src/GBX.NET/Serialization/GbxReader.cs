@@ -1,8 +1,6 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
-using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -80,8 +78,11 @@ public partial interface IGbxReader : IDisposable
     int ReadSmallLen();
     string ReadSmallString();
     void ReadMarker(string value);
+    int ReadOptimizedInt(int determineFrom);
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
     void ReadDeprecVersion();
+
+    int[] ReadArrayOptimizedInt(int? determineFrom = null);
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -989,6 +990,32 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
 #endif
+    }
+
+    public int ReadOptimizedInt(int determineFrom) => (uint)determineFrom switch
+    {
+        >= ushort.MaxValue => ReadInt32(),
+        >= byte.MaxValue => ReadUInt16(),
+        _ => ReadByte()
+    };
+
+    public int[] ReadArrayOptimizedInt(int? determineFrom = null)
+    {
+        var length = ReadInt32();
+
+        if (length == 0)
+        {
+            return [];
+        }
+
+        ValidateCollectionLength(length);
+
+        return (uint)determineFrom.GetValueOrDefault(length) switch
+        {
+            >= ushort.MaxValue => ReadArray<int>(length),
+            >= byte.MaxValue => Array.ConvertAll(ReadArray<ushort>(length), x => (int)x),
+            _ => Array.ConvertAll(ReadBytes(length), x => (int)x),
+        };
     }
 
     public T ReadReadable<T>(int version = 0) where T : IReadable, new()

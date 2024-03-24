@@ -74,6 +74,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteSmallLen(int value);
     void WriteSmallString(string? value);
     void WriteMarker(string value);
+    void WriteOptimizedInt(int value, int determineFrom);
     void WriteWritable<T>(T value, int version = 0) where T : IWritable;
     void WriteDeprecVersion();
 
@@ -82,6 +83,8 @@ public partial interface IGbxWriter : IDisposable
     void WriteData(byte[]? value);
     Task WriteDataAsync(byte[]? value, CancellationToken cancellationToken = default);
     void WriteData(byte[]? value, int length);
+
+    void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null);
 
     void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct;
     void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
@@ -785,6 +788,48 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteMarker(string value)
     {
         Write(value, StringLengthPrefix.None);
+    }
+
+    public void WriteOptimizedInt(int value, int determineFrom)
+    {
+        switch ((uint)determineFrom)
+        {
+            case >= ushort.MaxValue:
+                Write(value);
+                break;
+            case >= byte.MaxValue:
+                Write((uint)value);
+                break;
+            default:
+                Write((byte)value);
+                break;
+        };
+    }
+
+    public void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null)
+    {
+        if (value is null || value.Length == 0)
+        {
+            Write(0);
+            return;
+        }
+
+        ValidateCollectionLength(value.Length);
+
+        Write(value.Length);
+
+        switch ((uint)determineFrom.GetValueOrDefault(value.Length))
+        {
+            case >= ushort.MaxValue:
+                WriteArray(value);
+                break;
+            case >= byte.MaxValue:
+                WriteArray(Array.ConvertAll(value, x => (ushort)x));
+                break;
+            default:
+                Write(Array.ConvertAll(value, x => (byte)x));
+                break;
+        }
     }
 
     public void WriteWritable<T>(T value, int version = 0) where T : IWritable
