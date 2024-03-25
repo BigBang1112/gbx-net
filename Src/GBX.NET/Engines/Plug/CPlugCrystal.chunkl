@@ -31,21 +31,21 @@ CPlugCrystal 0x09003000
 
 enum ELayerType
  Geometry
- Smooth
+ SubdivideSmooth
  Translation
  Rotation
  Scale
  Mirror
- U07
- U08
+ MoveToGround
+ Extrude
  Subdivide
  Chaos
- U11
- U12
- Deformation
- Cubes
- Trigger
- SpawnPosition
+ Smooth
+ BorderTransition
+ Deformation // BlocTransfo
+ Cubes // Voxels
+ Trigger // TriggerShape
+ SpawnPosition // RespawnPos
 
 enum EAxis
  X
@@ -56,3 +56,22 @@ archive Material
  string MaterialName
  if MaterialName == ""
   CPlugMaterialUserInst MaterialUserInst
+
+archive Layer
+ int Version
+ bool // CCrystal is not null
+ id LayerId
+ string LayerName
+ if Version >= 1
+  bool IsEnabled = true
+
+archive GeometryLayer (inherits: Layer)
+ base
+ int GeometryVersion
+ Crystal Crystal
+ int[] U02 // ID for each group?
+ if GeometryVersion >= 1
+  bool IsVisible = true
+  bool Collidable = true
+
+archive Crystal
