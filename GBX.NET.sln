@@ -114,6 +114,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Json", "Src\GBX.NET
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkParseTest", "Tools\BulkParseTest\BulkParseTest.csproj", "{A6058F78-E06B-46FE-B3DA-350BEB57A702}"
 EndProject
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -244,6 +245,10 @@ Global
 		{A6058F78-E06B-46FE-B3DA-350BEB57A702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6058F78-E06B-46FE-B3DA-350BEB57A702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6058F78-E06B-46FE-B3DA-350BEB57A702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1456C368-982B-488F-871C-F318901B758F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1456C368-982B-488F-871C-F318901B758F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1456C368-982B-488F-871C-F318901B758F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1456C368-982B-488F-871C-F318901B758F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +289,7 @@ Global
 		{C4AA5FE1-5C66-4306-8616-4F0B96D4C98C} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{F45B33A5-1478-4AA8-8592-8168C37A36FA} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{A6058F78-E06B-46FE-B3DA-350BEB57A702} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{1456C368-982B-488F-871C-F318901B758F} = {E5BBF1DE-6F46-4695-80C2-9FD1D7674246}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
