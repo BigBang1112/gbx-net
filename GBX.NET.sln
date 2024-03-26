@@ -114,6 +114,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Json", "Src\GBX.NET
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkParseTest", "Tools\BulkParseTest\BulkParseTest.csproj", "{A6058F78-E06B-46FE-B3DA-350BEB57A702}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBX.NET.Lua.Generators", "Generators\GBX.NET.Lua.Generators\GBX.NET.Lua.Generators.csproj", "{1456C368-982B-488F-871C-F318901B758F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
