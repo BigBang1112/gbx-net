@@ -243,7 +243,7 @@ TODO
 
 ### Game Version Interfaces!
 
-Interfaces (short name of Game Version Interfaces) is a new feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
+Interfaces (short name of Game Version Interfaces) is a new feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to hide unrelated properties and avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
 
 TODO
 
@@ -295,6 +295,7 @@ It also automatically trims the application (no need for `<PublishTrimmed>true</
 On basic GBX.NET applications, native compilation has a couple of improvements:
 - Reduces trimmed standalone binary size from ~7MB to 2.8MB.
 - Startup time is reduced from 50ms to 0.5ms (JIT is removed, so you should be only bottlenecked by disk speed).
+- If you're using only the MIT License libraries, you can make your project harder to reverse engineer.
 - The app feels generally lighter, but can be slightly slower for long-running process than a runtime app with JIT (very small difference).
 
 > [!NOTE]
