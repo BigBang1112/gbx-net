@@ -59,11 +59,20 @@ archive Material
 
 archive Layer
  int Version
- bool // CCrystal is not null
+ bool CrystalEnabled
  id LayerId
  string LayerName
  if Version >= 1
   bool IsEnabled = true
+
+archive ModifierLayer (inherits: Layer)
+ base
+ int ModifierVersion
+ PartInLayer[] Mask
+
+archive PartInLayer
+ int GroupIndex
+ id LayerId
 
 archive GeometryLayer (inherits: Layer)
  base
@@ -74,4 +83,100 @@ archive GeometryLayer (inherits: Layer)
   bool IsVisible = true
   bool Collidable = true
 
+archive SubdivideSmoothLayer (inherits: ModifierLayer)
+ base
+ int SubdivideSmoothVersion
+ int Subdivisions
+
+archive TranslationLayer (inherits: ModifierLayer)
+ base
+ int TranslationVersion
+ vec3 Translation
+
+archive RotationLayer (inherits: ModifierLayer)
+ base
+ int RotationVersion
+ float Rotation // in radians
+ int<EAxis> Axis
+ bool Independently
+
+archive ScaleLayer (inherits: ModifierLayer)
+ base
+ int ScaleVersion
+ vec3 Scale
+ bool Independently
+
+archive MirrorLayer (inherits: ModifierLayer)
+ base
+ int MirrorVersion
+ int<EAxis> Axis
+ float Distance
+ bool Independently
+
+archive MoveToGroundLayer (inherits: ModifierLayer)
+ base
+ int MoveToGroundVersion
+ bool
+
+archive ExtrudeLayer (inherits: ModifierLayer)
+ base
+ int ExtrudeVersion
+ vec3 Size
+ 
+archive SubdivideLayer (inherits: ModifierLayer)
+ base
+ int SubdivideVersion
+ int Subdivisions
+
+archive ChaosLayer (inherits: ModifierLayer)
+ base
+ int ChaosVersion
+ float MinDistance
+ int
+ if ChaosVersion >= 1
+  float MaxDistance
+
+archive SmoothLayer (inherits: ModifierLayer)
+ base
+ int SmoothVersion
+ float // SmoothFactor?
+ bool // Independently
+
+archive BorderTransitionLayer (inherits: ModifierLayer)
+ base
+ int BorderTransitionVersion
+ float
+ float
+ CPlugVisual[] // interesting, but not sure what it is
+
+archive DeformationLayer (inherits: ModifierLayer)
+ base
+ int DeformationVersion
+ boxaligned
+ iso4
+
+archive CubesLayer (inherits: Layer)
+ base
+ int CubesVersion
+ VoxelSpace Cubes
+ if CubesVersion >= 2
+  bool IsVisible = true
+  bool Collidable = true
+
+archive TriggerLayer (inherits: Layer)
+ base
+ int TriggerVersion
+ Crystal Crystal
+ if TriggerVersion >= 1
+  int[]
+
+archive SpawnPositionLayer (inherits: ModifierLayer)
+ base
+ int SpawnPositionVersion
+ vec3 SpawnPosition
+
+archive VoxelSpace
+ throw
+
 archive Crystal
+ throw
