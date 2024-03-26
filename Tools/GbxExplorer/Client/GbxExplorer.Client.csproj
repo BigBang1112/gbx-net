@@ -21,4 +21,8 @@
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<NativeFileReference Include="lua.a" />
+	</ItemGroup>
+
 </Project>

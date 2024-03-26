@@ -2,7 +2,7 @@
 
 #pragma warning disable IDE1006
 
-internal static class LuaCTypes
+public static class LuaCTypes
 {
     public struct lua_State
     {
