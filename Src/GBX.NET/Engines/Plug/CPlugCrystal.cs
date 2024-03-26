@@ -5,6 +5,34 @@ public partial class CPlugCrystal
 {
     public IList<Layer>? Layers { get; set; }
 
+    public partial class Chunk09003000 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public override void Read(CPlugCrystal n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+
+            n.Layers = new List<Layer>()
+            {
+                new GeometryLayer()
+                {
+                    LayerId = "Layer0",
+                    LayerName = "Geometry",
+                    Crystal = r.ReadReadable<Crystal>()
+                }
+            };
+        }
+
+        public override void Write(CPlugCrystal n, GbxWriter w)
+        {
+            w.Write(Version);
+
+            var geometryLayer = n.Layers.OfType<GeometryLayer>().First();
+            w.WriteWritable(geometryLayer.Crystal);
+        }
+    }
+
     public partial class Chunk09003005 : IVersionable
     {
         public int Version { get; set; }
@@ -18,15 +46,63 @@ public partial class CPlugCrystal
 
             for (var i = 0; i < layerCount; i++)
             {
-                var layer = (ELayerType)r.ReadInt32() switch
+                Layer layer = (ELayerType)r.ReadInt32() switch
                 {
                     ELayerType.Geometry => new GeometryLayer(),
+                    ELayerType.SubdivideSmooth => new SubdivideSmoothLayer(),
+                    ELayerType.Translation => new TranslationLayer(),
+                    ELayerType.Rotation => new RotationLayer(),
+                    ELayerType.Scale => new ScaleLayer(),
+                    ELayerType.Mirror => new MirrorLayer(),
+                    ELayerType.MoveToGround => new MoveToGroundLayer(),
+                    ELayerType.Extrude => new ExtrudeLayer(),
+                    ELayerType.Subdivide => new SubdivideLayer(),
+                    ELayerType.Chaos => new ChaosLayer(),
+                    ELayerType.Smooth => new SmoothLayer(),
+                    ELayerType.BorderTransition => new BorderTransitionLayer(),
+                    ELayerType.Deformation => new DeformationLayer(),
+                    ELayerType.Cubes => new CubesLayer(),
+                    ELayerType.Trigger => new TriggerLayer(),
+                    ELayerType.SpawnPosition => new SpawnPositionLayer(),
                     _ => throw new NotSupportedException()
                 };
 
                 layer.Read(r);
 
                 n.Layers.Add(layer);
+            }
+        }
+
+        public override void Write(CPlugCrystal n, GbxWriter w)
+        {
+            w.Write(Version);
+
+            w.Write(n.Layers?.Count ?? 0);
+
+            foreach (var layer in n.Layers ?? [])
+            {
+                w.Write(layer switch
+                {
+                    GeometryLayer => (int)ELayerType.Geometry,
+                    SubdivideSmoothLayer => (int)ELayerType.SubdivideSmooth,
+                    TranslationLayer => (int)ELayerType.Translation,
+                    RotationLayer => (int)ELayerType.Rotation,
+                    ScaleLayer => (int)ELayerType.Scale,
+                    MirrorLayer => (int)ELayerType.Mirror,
+                    MoveToGroundLayer => (int)ELayerType.MoveToGround,
+                    ExtrudeLayer => (int)ELayerType.Extrude,
+                    SubdivideLayer => (int)ELayerType.Subdivide,
+                    ChaosLayer => (int)ELayerType.Chaos,
+                    SmoothLayer => (int)ELayerType.Smooth,
+                    BorderTransitionLayer => (int)ELayerType.BorderTransition,
+                    DeformationLayer => (int)ELayerType.Deformation,
+                    CubesLayer => (int)ELayerType.Cubes,
+                    TriggerLayer => (int)ELayerType.Trigger,
+                    SpawnPositionLayer => (int)ELayerType.SpawnPosition,
+                    _ => throw new NotSupportedException()
+                });
+
+                layer.Write(w);
             }
         }
     }
