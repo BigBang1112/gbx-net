@@ -195,7 +195,7 @@ archive Crystal
   if Ver >= 34
    bool IsEmbeddedCrystal
   if Ver <= 33
-   boolbool IsEmbeddedCrystal
+   boolbyte IsEmbeddedCrystal
   if Ver >= 33
    int
    int
