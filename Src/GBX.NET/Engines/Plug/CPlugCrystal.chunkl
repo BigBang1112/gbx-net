@@ -58,11 +58,11 @@ archive Material
   CPlugMaterialUserInst MaterialUserInst
 
 archive Layer
- int Version
+ int Ver
  bool CrystalEnabled
  id LayerId
  string LayerName
- if Version >= 1
+ if Ver >= 1
   bool IsEnabled = true
 
 archive ModifierLayer (inherits: Layer)
@@ -179,4 +179,48 @@ archive VoxelSpace
  throw
 
 archive Crystal
- throw
+ int Ver
+ if Ver >= 13
+  int // 4
+  VisualLevel[] VisualLevels
+ if Ver >= 23
+  AnchorInfo[] AnchorInfos
+ if Ver >= 22
+  Part[] Groups (version: Ver)
+  throw
+ if Ver >= 25
+  if Ver < 29
+   bool IsEmbeddedCrystal = false
+   bool IsEmbeddedCrystal
+  if Ver >= 34
+   bool IsEmbeddedCrystal
+  if Ver <= 33
+   boolbool IsEmbeddedCrystal
+  if Ver >= 33
+   int
+   int
+ if IsEmbeddedCrystal
+  Vec3[] Positions
+
+archive VisualLevel
+ int
+ float
+
+archive AnchorInfo
+ bool
+ bool
+ iso4
+ string
+ int
+
+archive Part
+ v31+
+  int U01
+ v36+
+  byte U02
+ v35-
+  int U02
+ int U03
+ string Name
+ int U04
+ int[] U05

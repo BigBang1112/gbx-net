@@ -184,4 +184,17 @@ public partial class CPlugCrystal
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Crystal;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class VisualLevel;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class AnchorInfo;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class Part
+    {
+        private int u02;
+        public int U02 { get => u02; set => u02 = value; }
+    }
 }
