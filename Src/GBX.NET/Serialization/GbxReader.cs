@@ -82,7 +82,10 @@ public partial interface IGbxReader : IDisposable
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
     void ReadDeprecVersion();
 
+    int[] ReadArrayOptimizedInt(int length, int? determineFrom = null);
     int[] ReadArrayOptimizedInt(int? determineFrom = null);
+    Int2[] ReadArrayOptimizedInt2(int length, int? determineFrom = null);
+    Int2[] ReadArrayOptimizedInt2(int? determineFrom = null);
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -999,10 +1002,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         _ => ReadByte()
     };
 
-    public int[] ReadArrayOptimizedInt(int? determineFrom = null)
+    public int[] ReadArrayOptimizedInt(int length, int? determineFrom = null)
     {
-        var length = ReadInt32();
-
         if (length == 0)
         {
             return [];
@@ -1014,9 +1015,30 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             >= ushort.MaxValue => ReadArray<int>(length),
             >= byte.MaxValue => Array.ConvertAll(ReadArray<ushort>(length), x => (int)x),
-            _ => Array.ConvertAll(ReadBytes(length), x => (int)x),
+            _ => Array.ConvertAll(ReadBytes(length), x => (int)x)
         };
     }
+
+    public int[] ReadArrayOptimizedInt(int? determineFrom = null) => ReadArrayOptimizedInt(ReadInt32(), determineFrom);
+
+    public Int2[] ReadArrayOptimizedInt2(int length, int? determineFrom = null)
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        ValidateCollectionLength(length);
+
+        return (uint)determineFrom.GetValueOrDefault(length) switch
+        {
+            >= ushort.MaxValue => ReadArray<Int2>(length),
+            >= byte.MaxValue => Array.ConvertAll(ReadArray<int>(length), x => new Int2(x & 0xFFFF, x >> 16)),
+            _ => Array.ConvertAll(ReadArray<ushort>(length), x => new Int2(x & 0xFF, x >> 8))
+        };
+    }
+
+    public Int2[] ReadArrayOptimizedInt2(int? determineFrom = null) => ReadArrayOptimizedInt2(ReadInt32(), determineFrom);
 
     public T ReadReadable<T>(int version = 0) where T : IReadable, new()
     {

@@ -107,7 +107,13 @@ internal class ClassDataSubGenerator
         }
 
         sb.AppendLine();
-        AppendPropertiesLine(sb, classInfo, existingMembers, context);
+        var alreadyExistingProperties = existingMembers.OfType<IPropertySymbol>()
+            .ToDictionary(x => x.Name) ?? [];
+
+        sb.AppendLine();
+
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, archiveStructureKind == 1, context);
+        propWriter.Append();
 
         sb.AppendLine();
         AppendDefaultCtorLine(sb, classInfo.Name);
@@ -325,21 +331,6 @@ internal class ClassDataSubGenerator
         sb.AppendLine(";");
     }
 
-    private static void AppendPropertiesLine(
-        StringBuilder sb,
-        ClassDataModel classInfo,
-        ImmutableArray<ISymbol> existingMembers,
-        SourceProductionContext context)
-    {
-        var alreadyExistingProperties = existingMembers.OfType<IPropertySymbol>()
-            .ToDictionary(x => x.Name) ?? [];
-
-        sb.AppendLine();
-
-        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, context);
-        propWriter.Append();
-    }
-
     private static void AppendDefaultCtorLine(StringBuilder sb, string className)
     {
         sb.AppendLine("    /// <summary>");
@@ -437,7 +428,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Read, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                sb, SerializationType.Read, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -458,7 +449,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Write, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                sb, SerializationType.Write, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -479,7 +470,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.ReadWrite, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                sb, SerializationType.ReadWrite, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -628,9 +619,12 @@ internal class ClassDataSubGenerator
         var archiveStructureKind = (archiveGenOptionsAtt?.NamedArguments
             .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
 
+        var autoProperty = false;
+
         if (archiveStructureKind == 1) // StructureKind == SeparateReadAndWrite
         {
             sb.Append("IReadable, IWritable");
+            autoProperty = true;
         }
         else
         {
@@ -645,7 +639,7 @@ internal class ClassDataSubGenerator
         var alreadyExistingProperties = existingArchiveMembers.OfType<IPropertySymbol>()
             .ToDictionary(x => x.Name) ?? [];
 
-        var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, context);
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, autoProperty, context);
         propWriter.Append();
 
         AppendArchiveMethodsLine(sb, classInfo, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1, overrideMethods);
@@ -1007,7 +1001,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var readMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Read, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                    sb, SerializationType.Read, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
                 readMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1025,7 +1019,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var writeMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Write, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                    sb, SerializationType.Write, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
                 writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1045,7 +1039,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var memberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.ReadWrite, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, context);
+                    sb, SerializationType.ReadWrite, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
                 memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");

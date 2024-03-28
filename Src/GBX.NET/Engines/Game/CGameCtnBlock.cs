@@ -223,4 +223,7 @@ public partial class CGameCtnBlock
         flags |= 1 << bit;
         obj = value;
     }
+
+    [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class Chunk03057002;
 }

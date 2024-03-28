@@ -18,6 +18,7 @@ internal sealed class MemberSerializationWriter
     private readonly ClassDataModel classInfo;
     private readonly ImmutableDictionary<string, ClassDataModel> classes;
     private readonly ImmutableDictionary<string, ArchiveDataModel> archives;
+    private readonly bool autoProperty;
     private readonly SourceProductionContext context;
 
     private int unknownCounter;
@@ -31,6 +32,7 @@ internal sealed class MemberSerializationWriter
         ClassDataModel classInfo,
         ImmutableDictionary<string, ClassDataModel> classes,
         ImmutableDictionary<string, ArchiveDataModel> archives,
+        bool autoProperty,
         SourceProductionContext context)
     {
         this.sb = sb;
@@ -41,6 +43,7 @@ internal sealed class MemberSerializationWriter
         this.classInfo = classInfo;
         this.classes = classes;
         this.archives = archives;
+        this.autoProperty = autoProperty;
         this.context = context;
     }
 
@@ -221,7 +224,7 @@ internal sealed class MemberSerializationWriter
     private void AppendRead(int indent, ChunkProperty chunkProperty)
     {
         var isUnknown = IsUnknown(chunkProperty.Name);
-        var name = GetFieldName(chunkProperty, isUnknown);
+        var name = GetPropName(chunkProperty, isUnknown, isField: !autoProperty);
 
         sb.AppendIndent(indent);
 
@@ -249,8 +252,15 @@ internal sealed class MemberSerializationWriter
 
         AppendAnyRead(chunkProperty, onlyReadable: true);
 
-        sb.Append("()");
-        sb.Append(";");
+        sb.Append("(");
+        
+        if (chunkProperty.Properties?.TryGetValue("version", out var version) == true)
+        {
+            sb.Append("version: ");
+            sb.Append(version);
+        }
+
+        sb.Append(");");
     }
 
     private static bool IsUnknown(string name)
@@ -327,7 +337,7 @@ internal sealed class MemberSerializationWriter
         sb.Append('(');
 
         var isUnknown = IsUnknown(chunkProperty.Name);
-        var name = GetFieldName(chunkProperty, isUnknown);
+        var name = GetPropName(chunkProperty, isUnknown, isField: !autoProperty);
 
         var csharpType = PropertyTypeExtensions.MapType(chunkProperty.Type.PrimaryType);
 
@@ -447,7 +457,7 @@ internal sealed class MemberSerializationWriter
         }
 
         var isUnknown = IsUnknown(chunkProperty.Name);
-        var name = GetFieldName(chunkProperty, isUnknown);
+        var name = GetPropName(chunkProperty, isUnknown, isField: true);
 
         if (!self && !isUnknown)
         {
@@ -620,18 +630,20 @@ internal sealed class MemberSerializationWriter
         }
     }
 
-    private string GetFieldName(ChunkProperty chunkProperty, bool isUnknown)
+    private string GetPropName(ChunkProperty chunkProperty, bool isUnknown, bool isField)
     {
         if (isUnknown)
         {
             ++unknownCounter;
             return IsExplicitUnknownProperty(chunkProperty.Name)
-                ? (self ? char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1) : chunkProperty.Name)
-                : $"{(self ? 'u' : 'U')}{unknownCounter:00}";
+                ? (self && isField ? char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1) : chunkProperty.Name)
+                : $"{(self && isField ? 'u' : 'U')}{unknownCounter:00}";
         }
         else
         {
-            return char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
+            return isField
+                ? char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1)
+                : chunkProperty.Name;
         }
     }
 

@@ -4,4 +4,5 @@
 internal sealed class ArchiveGenerationOptionsAttribute : Attribute
 {
     public StructureKind StructureKind { get; set; }
+    public AutoPropertyMode AutoPropertyMode { get; set; }
 }

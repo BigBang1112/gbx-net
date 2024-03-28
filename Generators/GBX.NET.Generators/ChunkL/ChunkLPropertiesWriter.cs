@@ -13,6 +13,7 @@ internal class ChunkLPropertiesWriter
     private readonly ArchiveDataModel? archiveInfo;
     private readonly Dictionary<string, IPropertySymbol> alreadyExistingProperties;
     private readonly int indent;
+    private readonly bool autoProperty;
     private readonly SourceProductionContext context;
 
     public ChunkLPropertiesWriter(
@@ -21,6 +22,7 @@ internal class ChunkLPropertiesWriter
         ArchiveDataModel? archiveInfo,
         Dictionary<string, IPropertySymbol> alreadyExistingProperties,
         int indent,
+        bool autoProperty,
         SourceProductionContext context)
     {
         this.sb = sb;
@@ -28,6 +30,7 @@ internal class ChunkLPropertiesWriter
         this.archiveInfo = archiveInfo;
         this.alreadyExistingProperties = alreadyExistingProperties;
         this.indent = indent;
+        this.autoProperty = autoProperty;
         this.context = context;
     }
 
@@ -80,39 +83,31 @@ internal class ChunkLPropertiesWriter
             alreadyAddedProps.Add(propName);
 
             var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
-            var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
-
-            sb.AppendLine();
-            sb.Append(indent, "    private ");
-            sb.Append(mappedType);
 
             var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
+            var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
 
-            if (nullable)
+            if (!autoProperty)
             {
-                sb.Append('?');
-            }
+                sb.AppendLine();
+                sb.Append(indent, "    private ");
+                sb.Append(mappedType);
 
-            sb.Append(' ');
-            sb.Append(fieldName);
-
-            if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
-            {
-                sb.Append(" = ");
-
-                switch (prop.DefaultValue)
+                if (nullable)
                 {
-                    case "empty":
-                        sb.Append(mappedType);
-                        sb.Append(".Empty");
-                        break;
-                    default:
-                        sb.Append(prop.DefaultValue);
-                        break;
+                    sb.Append('?');
                 }
-            }
 
-            sb.AppendLine(";");
+                sb.Append(' ');
+                sb.Append(fieldName);
+
+                if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
+                {
+                    AppendDefaultValue(prop, mappedType);
+                }
+
+                sb.AppendLine(";");
+            }
 
             if (!string.IsNullOrWhiteSpace(prop.Description))
             {
@@ -132,11 +127,35 @@ internal class ChunkLPropertiesWriter
 
             sb.Append(' ');
             sb.Append(propName);
-            sb.Append(" { get => ");
-            sb.Append(fieldName);
-            sb.Append("; set => ");
-            sb.Append(fieldName);
-            sb.AppendLine(" = value; }");
+
+            if (autoProperty)
+            {
+                sb.AppendLine(" { get; set; }");
+            }
+            else
+            {
+                sb.Append(" { get => ");
+                sb.Append(fieldName);
+                sb.Append("; set => ");
+                sb.Append(fieldName);
+                sb.AppendLine(" = value; }");
+            }
+        }
+    }
+
+    private void AppendDefaultValue(ChunkProperty prop, string mappedType)
+    {
+        sb.Append(" = ");
+
+        switch (prop.DefaultValue)
+        {
+            case "empty":
+                sb.Append(mappedType);
+                sb.Append(".Empty");
+                break;
+            default:
+                sb.Append(prop.DefaultValue);
+                break;
         }
     }
 

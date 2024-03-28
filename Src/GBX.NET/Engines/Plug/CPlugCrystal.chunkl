@@ -179,28 +179,6 @@ archive VoxelSpace
  throw
 
 archive Crystal
- int Ver
- if Ver >= 13
-  int // 4
-  VisualLevel[] VisualLevels
- if Ver >= 23
-  AnchorInfo[] AnchorInfos
- if Ver >= 22
-  Part[] Groups (version: Ver)
-  throw
- if Ver >= 25
-  if Ver < 29
-   bool IsEmbeddedCrystal = false
-   bool IsEmbeddedCrystal
-  if Ver >= 34
-   bool IsEmbeddedCrystal
-  if Ver <= 33
-   boolbyte IsEmbeddedCrystal
-  if Ver >= 33
-   int
-   int
- if IsEmbeddedCrystal
-  Vec3[] Positions
 
 archive VisualLevel
  int
