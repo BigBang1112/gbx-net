@@ -113,16 +113,16 @@ public partial class CPlugCrystal
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public abstract partial class ModifierLayer
     {
-        public override void Read(GbxReader r, CPlugCrystal n, int version = 0)
+        public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
-            base.Read(r, n, version);
+            base.Read(r, n, v);
             ModifierVersion = r.ReadInt32();
             Mask = r.ReadArrayReadable<PartInLayer>();
         }
 
-        public override void Write(GbxWriter w, CPlugCrystal n, int version = 0)
+        public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)
         {
-            base.Write(w, n, version);
+            base.Write(w, n, v);
             w.Write(ModifierVersion);
             w.WriteArrayWritable<PartInLayer>(Mask);
         }
@@ -218,7 +218,7 @@ public partial class CPlugCrystal
         public int[]? FaceIndices { get; set; }
         public Face[]? Faces { get; set; }
 
-        public void Read(GbxReader r, CPlugCrystal n, int version = 0)
+        public void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             Version = r.ReadInt32();
 
@@ -285,8 +285,8 @@ public partial class CPlugCrystal
 
             for (var i = 0; i < faceCount; i++)
             {
-                var vertCount = version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
-                var inds = version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
+                var vertCount = Version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
+                var inds = Version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
 
                 if (Version < 27)
                 {
@@ -392,7 +392,7 @@ public partial class CPlugCrystal
             }
         }
 
-        public void Write(GbxWriter w, int version = 0)
+        public void Write(GbxWriter w, int v = 0)
         {
             w.Write(Version);
 
@@ -420,7 +420,7 @@ public partial class CPlugCrystal
                     w.Write(IsEmbeddedCrystal);
                 }
 
-                w.Write(IsEmbeddedCrystal, asByte: version >= 34);
+                w.Write(IsEmbeddedCrystal, asByte: Version >= 34);
 
                 if (Version >= 33)
                 {

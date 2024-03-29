@@ -68,7 +68,7 @@ internal sealed class MemberSerializationWriter
 
                     if (self)
                     {
-                        sb.Append("version");
+                        sb.Append("v");
                     }
                     else
                     {
@@ -176,7 +176,7 @@ internal sealed class MemberSerializationWriter
                                     sb.Append("n, ");
                                 }
 
-                                sb.Append("version);");
+                                sb.Append("v);");
                             }
                             break;
                         case SerializationType.Write:
@@ -193,7 +193,7 @@ internal sealed class MemberSerializationWriter
                                     sb.Append("n, ");
                                 }
 
-                                sb.Append("version);");
+                                sb.Append("v);");
                             }
                             break;
                         case SerializationType.ReadWrite:
@@ -210,7 +210,7 @@ internal sealed class MemberSerializationWriter
                                     sb.Append("n, ");
                                 }
 
-                                sb.Append("version);");
+                                sb.Append("v);");
                             }
                             break;
                         default:

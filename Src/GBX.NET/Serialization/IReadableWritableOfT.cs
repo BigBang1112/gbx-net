@@ -9,7 +9,7 @@ public interface IReadableWritable<T> where T : IClass
     /// Reads and/or writes data via the reader/writer.
     /// </summary>
     /// <param name="rw">A reader/writer.</param>
-    /// <param name="node">Node to use for context.</param>
-    /// <param name="version">Version to help with backwards compatibility.</param>
-    void ReadWrite(GbxReaderWriter rw, T node, int version = 0);
+    /// <param name="n">Node to use for context.</param>
+    /// <param name="v">Version to help with backwards compatibility.</param>
+    void ReadWrite(GbxReaderWriter rw, T n, int v = 0);
 }

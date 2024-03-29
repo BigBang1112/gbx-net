@@ -9,6 +9,6 @@ public interface IReadableWritable
     /// Reads and/or writes data via the reader/writer.
     /// </summary>
     /// <param name="rw">A reader/writer.</param>
-    /// <param name="version">Version to help with backwards compatibility.</param>
-    void ReadWrite(GbxReaderWriter rw, int version = 0);
+    /// <param name="v">Version to help with backwards compatibility.</param>
+    void ReadWrite(GbxReaderWriter rw, int v = 0);
 }

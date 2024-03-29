@@ -449,7 +449,7 @@ internal class ClassDataSubGenerator
                 sb.Append(" n, ");
             }
 
-            sb.Append("int version = 0)");
+            sb.Append("int v = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
@@ -478,7 +478,7 @@ internal class ClassDataSubGenerator
                 sb.Append(" n, ");
             }
 
-            sb.Append("int version = 0)");
+            sb.Append("int v = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
@@ -499,7 +499,7 @@ internal class ClassDataSubGenerator
                 sb.Append(overrideMethods.Value ? "override " : "virtual ");
             }
 
-            sb.Append("void ReadWrite(GbxReaderWriter rw, int version = 0)");
+            sb.Append("void ReadWrite(GbxReaderWriter rw, int v = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 

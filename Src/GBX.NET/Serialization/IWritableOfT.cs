@@ -2,5 +2,5 @@
 
 public interface IWritable<T> where T : IClass
 {
-    void Write(GbxWriter w, T n, int version = 0);
+    void Write(GbxWriter w, T n, int v = 0);
 }

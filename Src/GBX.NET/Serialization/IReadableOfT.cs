@@ -2,5 +2,5 @@
 
 public interface IReadable<T> where T : IClass
 {
-    void Read(GbxReader r, T n, int version = 0);
+    void Read(GbxReader r, T n, int v = 0);
 }
