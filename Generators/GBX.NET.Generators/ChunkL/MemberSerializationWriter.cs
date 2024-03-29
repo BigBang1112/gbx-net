@@ -12,6 +12,7 @@ internal sealed class MemberSerializationWriter
 {
     private readonly StringBuilder sb;
     private readonly SerializationType serializationType;
+    private readonly ArchiveDataModel? archive;
     private readonly bool self;
     private readonly ImmutableDictionary<string, IFieldSymbol> existingFields;
     private readonly ImmutableDictionary<string, IPropertySymbol> existingProperties;
@@ -26,7 +27,7 @@ internal sealed class MemberSerializationWriter
     public MemberSerializationWriter(
         StringBuilder sb, 
         SerializationType serializationType,
-        bool self,
+        ArchiveDataModel? archive,
         ImmutableDictionary<string, IFieldSymbol> existingFields,
         ImmutableDictionary<string, IPropertySymbol> existingProperties,
         ClassDataModel classInfo,
@@ -37,7 +38,8 @@ internal sealed class MemberSerializationWriter
     {
         this.sb = sb;
         this.serializationType = serializationType;
-        this.self = self;
+        this.archive = archive;
+        self = archive is not null;
         this.existingFields = existingFields;
         this.existingProperties = existingProperties;
         this.classInfo = classInfo;
@@ -161,13 +163,55 @@ internal sealed class MemberSerializationWriter
                     switch (serializationType)
                     {
                         case SerializationType.Read:
-                            sb.Append(self ? "Read(r, version);" : "Read(n, r);");
+                            if (archive is null)
+                            {
+                                sb.Append("Read(n, r);");
+                            }
+                            else
+                            {
+                                sb.Append("Read(r, ");
+
+                                if (archive.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+                                {
+                                    sb.Append("n, ");
+                                }
+
+                                sb.Append("version);");
+                            }
                             break;
                         case SerializationType.Write:
-                            sb.Append(self ? "Write(w, version);" : "Write(n, w);");
+                            if (archive is null)
+                            {
+                                sb.Append("Write(n, w);");
+                            }
+                            else
+                            {
+                                sb.Append("Write(w, ");
+
+                                if (archive.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+                                {
+                                    sb.Append("n, ");
+                                }
+
+                                sb.Append("version);");
+                            }
                             break;
                         case SerializationType.ReadWrite:
-                            sb.Append(self ? "ReadWrite(rw, version);" : "ReadWrite(n, rw);");
+                            if (archive is null)
+                            {
+                                sb.Append("ReadWrite(n, rw);");
+                            }
+                            else
+                            {
+                                sb.Append("ReadWrite(rw, ");
+
+                                if (archive.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+                                {
+                                    sb.Append("n, ");
+                                }
+
+                                sb.Append("version);");
+                            }
                             break;
                         default:
                             throw new NotImplementedException();
@@ -253,9 +297,22 @@ internal sealed class MemberSerializationWriter
         AppendAnyRead(chunkProperty, onlyReadable: true);
 
         sb.Append("(");
-        
+
+        var contextual = archives.TryGetValue(chunkProperty.Type.PrimaryType, out var archiveModel)
+            && archiveModel.ChunkLDefinition?.Properties.ContainsKey("contextual") == true;
+
+        if (contextual)
+        {
+            sb.Append('n');
+        }
+
         if (chunkProperty.Properties?.TryGetValue("version", out var version) == true)
         {
+            if (contextual)
+            {
+                sb.Append(", ");
+            }
+
             sb.Append("version: ");
             sb.Append(version);
         }
@@ -303,6 +360,14 @@ internal sealed class MemberSerializationWriter
 
             sb.Append('<');
             sb.Append(mappedType);
+
+            if (archives.TryGetValue(chunkProperty.Type.PrimaryType, out var a)
+                && a.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+            {
+                sb.Append(", ");
+                sb.Append(classInfo.Name);
+            }
+
             sb.Append('>');
         }
         else if (chunkProperty.Type.IsArray && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType))
@@ -355,6 +420,12 @@ internal sealed class MemberSerializationWriter
         }
 
         sb.Append(name);
+
+        if (archives.TryGetValue(chunkProperty.Type.PrimaryType, out var archiveModel)
+            && archiveModel.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+        {
+            sb.Append(", n");
+        }
 
         if (chunkProperty.Type.IsArray && !string.IsNullOrEmpty(chunkProperty.Type.ArrayLength))
         {
@@ -522,6 +593,14 @@ internal sealed class MemberSerializationWriter
 
             sb.Append('<');
             sb.Append(mappedType);
+
+            if (archives.TryGetValue(chunkProperty.Type.PrimaryType, out var a)
+                && a.ChunkLDefinition?.Properties.ContainsKey("contextual") == true)
+            {
+                sb.Append(", ");
+                sb.Append(classInfo.Name);
+            }
+
             sb.Append('>');
         }
         else if (chunkProperty.Type.IsArray && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType))

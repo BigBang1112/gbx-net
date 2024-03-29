@@ -362,6 +362,8 @@ internal class ClassDataSubGenerator
 
         var kind = archiveStructureKind.GetValueOrDefault();
 
+        var contextual = archiveInfo.ChunkLDefinition.Properties.ContainsKey("contextual") == true;
+
         var doReadMethod = false;
         var doWriteMethod = false;
         var doReadWriteMethod = false;
@@ -383,14 +385,30 @@ internal class ClassDataSubGenerator
                     break;
                 }
 
-                if (methodSymbol.Name == "Read" && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxReader" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                if (methodSymbol.Name == "Read")
                 {
-                    doReadMethod = false;
+                    if (!contextual && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxReader" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                    {
+                        doReadMethod = false;
+                    }
+
+                    if (contextual && methodSymbol.Parameters.Length == 3 && methodSymbol.Parameters[0].Type.Name == "GbxReader" && methodSymbol.Parameters[1].Type.Name == classInfo.Name && methodSymbol.Parameters[2].Type.Name == nameof(Int32))
+                    {
+                        doReadMethod = false;
+                    }
                 }
 
-                if (methodSymbol.Name == "Write" && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxWriter" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                if (methodSymbol.Name == "Write")
                 {
-                    doWriteMethod = false;
+                    if (!contextual && methodSymbol.Parameters.Length == 2 && methodSymbol.Parameters[0].Type.Name == "GbxWriter" && methodSymbol.Parameters[1].Type.Name == nameof(Int32))
+                    {
+                        doWriteMethod = false;
+                    }
+
+                    if (contextual && methodSymbol.Parameters.Length == 3 && methodSymbol.Parameters[0].Type.Name == "GbxWriter" && methodSymbol.Parameters[1].Type.Name == classInfo.Name && methodSymbol.Parameters[2].Type.Name == nameof(Int32))
+                    {
+                        doWriteMethod = false;
+                    }
                 }
             }
         }
@@ -423,12 +441,20 @@ internal class ClassDataSubGenerator
                 sb.Append(overrideMethods.Value ? "override " : "virtual ");
             }
 
-            sb.Append("void Read(GbxReader r, int version = 0)");
+            sb.Append("void Read(GbxReader r, ");
+
+            if (contextual)
+            {
+                sb.Append(classInfo.Name);
+                sb.Append(" n, ");
+            }
+
+            sb.Append("int version = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Read, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
+                sb, SerializationType.Read, archiveInfo, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -444,12 +470,20 @@ internal class ClassDataSubGenerator
                 sb.Append(overrideMethods.Value ? "override " : "virtual ");
             }
 
-            sb.Append("void Write(GbxWriter w, int version = 0)");
+            sb.Append("void Write(GbxWriter w, ");
+
+            if (contextual)
+            {
+                sb.Append(classInfo.Name);
+                sb.Append(" n, ");
+            }
+
+            sb.Append("int version = 0)");
             sb.AppendLine();
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.Write, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
+                sb, SerializationType.Write, archiveInfo, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -470,7 +504,7 @@ internal class ClassDataSubGenerator
             sb.AppendLine(indent, "    {");
 
             var memberWriter = new MemberSerializationWriter(
-                sb, SerializationType.ReadWrite, self: true, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
+                sb, SerializationType.ReadWrite, archiveInfo, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
             memberWriter.Append(indent + 2, archiveInfo.ChunkLDefinition.Members);
 
             sb.AppendLine(indent, "    }");
@@ -612,6 +646,8 @@ internal class ClassDataSubGenerator
             overrideMethods = null;
         }
 
+        var contextual = archiveInfo.ChunkLDefinition?.Properties.ContainsKey("contextual") == true;
+
         var archiveGenOptionsAtt = archiveInfo.TypeSymbol?
             .GetAttributes()
             .FirstOrDefault(x => x.AttributeClass?.Name == "ArchiveGenerationOptionsAttribute");
@@ -623,7 +659,24 @@ internal class ClassDataSubGenerator
 
         if (archiveStructureKind == 1) // StructureKind == SeparateReadAndWrite
         {
-            sb.Append("IReadable, IWritable");
+            sb.Append("IReadable");
+
+            if (contextual)
+            {
+                sb.Append("<");
+                sb.Append(classInfo.Name);
+                sb.Append(">");
+            }
+
+            sb.Append(", IWritable");
+
+            if (contextual)
+            {
+                sb.Append("<");
+                sb.Append(classInfo.Name);
+                sb.Append(">");
+            }
+
             autoProperty = true;
         }
         else
@@ -1001,7 +1054,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var readMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Read, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
+                    sb, SerializationType.Read, archive: null, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
                 readMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1019,7 +1072,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var writeMemberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.Write, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
+                    sb, SerializationType.Write, archive: null, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: true, context);
                 writeMemberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");
@@ -1039,7 +1092,7 @@ internal class ClassDataSubGenerator
                 sb.AppendLine("        {");
 
                 var memberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.ReadWrite, self: false, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
+                    sb, SerializationType.ReadWrite, archive: null, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
                 memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
 
                 sb.AppendLine("        }");

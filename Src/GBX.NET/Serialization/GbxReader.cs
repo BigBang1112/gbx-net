@@ -80,6 +80,9 @@ public partial interface IGbxReader : IDisposable
     void ReadMarker(string value);
     int ReadOptimizedInt(int determineFrom);
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
+    TReadable ReadReadable<TReadable, TNode>(TNode node, int version = 0)
+        where TNode : IClass
+        where TReadable : IReadable<TNode>, new();
     void ReadDeprecVersion();
 
     int[] ReadArrayOptimizedInt(int length, int? determineFrom = null);
@@ -1044,6 +1047,15 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var readable = new T();
         readable.Read(this, version);
+        return readable;
+    }
+
+    public TReadable ReadReadable<TReadable, TNode>(TNode node, int version = 0)
+        where TNode : IClass
+        where TReadable : IReadable<TNode>, new()
+    {
+        var readable = new TReadable();
+        readable.Read(this, node, version);
         return readable;
     }
 

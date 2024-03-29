@@ -19,7 +19,7 @@ public partial class CPlugCrystal
                 {
                     LayerId = "Layer0",
                     LayerName = "Geometry",
-                    Crystal = r.ReadReadable<Crystal>()
+                    Crystal = r.ReadReadable<Crystal, CPlugCrystal>(n)
                 }
             };
         }
@@ -28,8 +28,8 @@ public partial class CPlugCrystal
         {
             w.Write(Version);
 
-            var geometryLayer = n.Layers.OfType<GeometryLayer>().First();
-            w.WriteWritable(geometryLayer.Crystal);
+            var geometryLayer = n.Layers?.OfType<GeometryLayer>().FirstOrDefault();
+            w.WriteWritable(geometryLayer?.Crystal, n);
         }
     }
 
@@ -67,7 +67,7 @@ public partial class CPlugCrystal
                     _ => throw new NotSupportedException()
                 };
 
-                layer.Read(r);
+                layer.Read(r, n);
 
                 n.Layers.Add(layer);
             }
@@ -102,7 +102,7 @@ public partial class CPlugCrystal
                     _ => throw new NotSupportedException()
                 });
 
-                layer.Write(w);
+                layer.Write(w, n);
             }
         }
     }
@@ -113,16 +113,16 @@ public partial class CPlugCrystal
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public abstract partial class ModifierLayer
     {
-        public override void Read(GbxReader r, int version = 0)
+        public override void Read(GbxReader r, CPlugCrystal n, int version = 0)
         {
-            base.Read(r, version);
+            base.Read(r, n, version);
             ModifierVersion = r.ReadInt32();
             Mask = r.ReadArrayReadable<PartInLayer>();
         }
 
-        public override void Write(GbxWriter w, int version = 0)
+        public override void Write(GbxWriter w, CPlugCrystal n, int version = 0)
         {
-            base.Write(w, version);
+            base.Write(w, n, version);
             w.Write(ModifierVersion);
             w.WriteArrayWritable<PartInLayer>(Mask);
         }
@@ -198,7 +198,7 @@ public partial class CPlugCrystal
         public int U02 { get => u02; set => u02 = value; }
     }
 
-    public sealed partial class Crystal : IReadable, IWritable, IVersionable
+    public sealed partial class Crystal : IVersionable
     {
         public int Version { get; set; }
         /// <summary>
@@ -218,7 +218,7 @@ public partial class CPlugCrystal
         public int[]? FaceIndices { get; set; }
         public Face[]? Faces { get; set; }
 
-        public void Read(GbxReader r, int version = 0)
+        public void Read(GbxReader r, CPlugCrystal n, int version = 0)
         {
             Version = r.ReadInt32();
 
@@ -314,9 +314,9 @@ public partial class CPlugCrystal
                     {
                         if (Version >= 33)
                         {
-                            /*materialIndex = n.Materials.Length == 0
+                            materialIndex = n.Materials.Length == 0
                                 ? r.ReadInt32()
-                                : r.ReadOptimizedInt(n.Materials.Length);*/
+                                : r.ReadOptimizedInt(n.Materials.Length);
                         }
                         else
                         {
@@ -326,7 +326,7 @@ public partial class CPlugCrystal
 
                     var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
 
-                    //var material = materials.Length == 0 || materialIndex == -1 ? null : materials[materialIndex];
+                    var material = n.Materials.Length == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
                 }
             }
 

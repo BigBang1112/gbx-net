@@ -76,6 +76,9 @@ public partial interface IGbxWriter : IDisposable
     void WriteMarker(string value);
     void WriteOptimizedInt(int value, int determineFrom);
     void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new();
+    void WriteWritable<TWritable, TNode>(TWritable? value, TNode node, int version = 0)
+        where TNode : IClass
+        where TWritable : IWritable<TNode>, new();
     void WriteDeprecVersion();
 
     void Write(byte[]? value);
@@ -868,6 +871,19 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
 
         value.Write(this, version);
+    }
+
+    public void WriteWritable<TWritable, TNode>(TWritable? value, TNode node, int version = 0)
+        where TNode : IClass
+        where TWritable : IWritable<TNode>, new()
+    {
+        if (value is null)
+        {
+            new TWritable().Write(this, node, version);
+            return;
+        }
+
+        value.Write(this, node, version);
     }
 
     public override void Write(byte[]? value)
