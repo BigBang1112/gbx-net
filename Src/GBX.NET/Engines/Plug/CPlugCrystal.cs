@@ -205,13 +205,13 @@ public partial class CPlugCrystal
         /// 4
         /// </summary>
         public int U01 { get; set; }
-        public VisualLevel[]? VisualLevels { get; set; }
-        public AnchorInfo[]? AnchorInfos { get; set; }
-        public Part[]? Groups { get; set; }
+        public VisualLevel[] VisualLevels { get; set; } = [];
+        public AnchorInfo[] AnchorInfos { get; set; } = [];
+        public Part[] Groups { get; set; } = [];
         public bool IsEmbeddedCrystal { get; set; }
         public int U02 { get; set; }
         public int U03 { get; set; }
-        public Vec3[]? Positions { get; set; }
+        public Vec3[] Positions { get; set; } = [];
         public Int2[]? UnfacedEdges { get; set; }
         public Int2[]? Edges { get; set; }
         public Vec2[]? UVs { get; set; }
@@ -246,7 +246,7 @@ public partial class CPlugCrystal
                     IsEmbeddedCrystal = r.ReadBoolean();
                 }
 
-                IsEmbeddedCrystal = r.ReadBoolean(asByte: version >= 34);
+                IsEmbeddedCrystal = r.ReadBoolean(asByte: Version >= 34);
 
                 if (Version >= 33)
                 {
@@ -255,79 +255,81 @@ public partial class CPlugCrystal
                 }
             }
 
-            if (IsEmbeddedCrystal)
+            if (!IsEmbeddedCrystal)
             {
-                Positions = r.ReadArray<Vec3>();
+                throw new NotSupportedException("Crystal.Gbx is not supported");
+            }
 
-                var edgeCount = r.ReadInt32();
+            Positions = r.ReadArray<Vec3>();
 
-                if (Version >= 35)
+            var edgeCount = r.ReadInt32();
+
+            if (Version >= 35)
+            {
+                UnfacedEdges = r.ReadArrayOptimizedInt2();
+            }
+            else
+            {
+                Edges = r.ReadArray<Int2>(edgeCount);
+            }
+
+            var faceCount = r.ReadInt32();
+
+            if (Version >= 37)
+            {
+                UVs = r.ReadArray<Vec2>();
+                FaceIndices = r.ReadArrayOptimizedInt();
+            }
+
+            Faces = new Face[faceCount];
+
+            for (var i = 0; i < faceCount; i++)
+            {
+                var vertCount = version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
+                var inds = version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
+
+                if (Version < 27)
                 {
-                    UnfacedEdges = r.ReadArrayOptimizedInt2();
-                }
-                else
-                {
-                    Edges = r.ReadArray<Int2>(edgeCount);
-                }
+                    var uvCount = Math.Min(r.ReadInt32(), vertCount);
 
-                var faceCount = r.ReadInt32();
-
-                if (Version >= 37)
-                {
-                    UVs = r.ReadArray<Vec2>();
-                    FaceIndices = r.ReadArrayOptimizedInt();
-                }
-
-                Faces = new Face[faceCount];
-
-                for (var i = 0; i < faceCount; i++)
-                {
-                    var vertCount = version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
-                    var inds = version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
-
-                    if (Version < 27)
+                    for (var j = 0; j < uvCount; j++)
                     {
-                        var uvCount = Math.Min(r.ReadInt32(), vertCount);
-
-                        for (var j = 0; j < uvCount; j++)
-                        {
-                            r.ReadVec2();
-                        }
-
-                        var niceVec = r.ReadVec3();
+                        r.ReadVec2();
                     }
-                    else if (Version < 37)
+
+                    var niceVec = r.ReadVec3();
+                }
+                else if (Version < 37)
+                {
+                    for (var j = 0; j < vertCount; j++)
                     {
-                        for (var j = 0; j < vertCount; j++)
-                        {
-                            r.ReadVec2();
-                        }
+                        r.ReadVec2();
                     }
-                    else if (UVs is not null && FaceIndices is not null)
-                    {
+                }
+                else if (UVs is not null && FaceIndices is not null)
+                {
                         
-                    }
-
-                    var materialIndex = -1;
-
-                    if (Version >= 25)
-                    {
-                        if (Version >= 33)
-                        {
-                            materialIndex = n.Materials.Length == 0
-                                ? r.ReadInt32()
-                                : r.ReadOptimizedInt(n.Materials.Length);
-                        }
-                        else
-                        {
-                            materialIndex = r.ReadInt32();
-                        }
-                    }
-
-                    var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
-
-                    var material = n.Materials.Length == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
                 }
+
+                var materialIndex = -1;
+
+                if (Version >= 25)
+                {
+                    if (Version >= 33)
+                    {
+                        materialIndex = n.Materials.Length == 0
+                            ? r.ReadInt32()
+                            : r.ReadOptimizedInt(n.Materials.Length);
+                    }
+                    else
+                    {
+                        materialIndex = r.ReadInt32();
+                    }
+                }
+
+                var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
+
+                var material = n.Materials.Length == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
             }
 
             foreach (var face in Faces)
@@ -384,7 +386,9 @@ public partial class CPlugCrystal
                 var u28 = r.ReadArray<int>(numEdges);
                 var u29 = r.ReadArray<int>(numVerts);
 
-                var u17 = r.ReadInt32();
+                var u17 = r.ReadInt32(); // always zero on newer crystals
+
+                // some face properties array: int, 4 floats
             }
         }
 
@@ -425,28 +429,30 @@ public partial class CPlugCrystal
                 }
             }
 
-            if (IsEmbeddedCrystal)
+            if (!IsEmbeddedCrystal)
             {
-                w.WriteArray<Vec3>(Positions);
+                throw new NotSupportedException("Crystal.Gbx is not supported");
+            }
 
-                w.Write(Edges?.Length ?? 0);
+            w.WriteArray<Vec3>(Positions);
 
-                if (Version >= 35)
-                {
-                    w.WriteArrayOptimizedInt2(UnfacedEdges);
-                }
-                else
-                {
-                    w.WriteArray<Int2>(Edges);
-                }
+            w.Write(Edges?.Length ?? 0);
 
-                w.Write(Faces?.Length ?? 0);
+            if (Version >= 35)
+            {
+                w.WriteArrayOptimizedInt2(UnfacedEdges);
+            }
+            else
+            {
+                w.WriteArray<Int2>(Edges);
+            }
 
-                if (Version >= 37)
-                {
-                    w.WriteArray<Vec2>(UVs);
-                    w.WriteArray<int>(FaceIndices);
-                }
+            w.Write(Faces?.Length ?? 0);
+
+            if (Version >= 37)
+            {
+                w.WriteArray<Vec2>(UVs);
+                w.WriteArray<int>(FaceIndices);
             }
         }
     }
