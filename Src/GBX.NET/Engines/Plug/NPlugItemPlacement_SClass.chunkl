@@ -1,0 +1,23 @@
+NPlugItemPlacement_SClass 0x09187000
+
+archive
+ version
+ id SizeGroup
+ id[] CompatibleGroupsIds
+ bool AlwaysUp
+ bool AlignToInterior
+ bool AlignToWorldDir
+ vec3 WorldDir
+ PatchLayout[] PatchLayouts
+ int[] GroupCurPatchLayouts
+
+archive PatchLayout
+ int ItemCount
+ float ItemSpacing
+ int FillAlign
+ int FillDir
+ float NormedPos
+ float // DistFromNormedPos?
+ id[] OnlyOnGroups
+ float Altitude
+ float // FillBorderOffset?

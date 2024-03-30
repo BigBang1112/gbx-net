@@ -214,6 +214,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             refTable = r.refTable;
             idVersion = r.idVersion;
             idDict = r.idDict;
+            nodeDict = r.nodeDict;
             encapsulation = r.encapsulation;
             packDescVersion = r.packDescVersion;
             deprecVersion = r.deprecVersion;

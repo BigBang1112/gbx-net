@@ -12,7 +12,7 @@ public enum GameVersion
     /// </summary>
     Unspecified = 0,
     /// <summary>
-    /// TrackMania 1.0
+    /// TrackMania (1.0)
     /// </summary>
     TM10 = 1,
     /// <summary>
@@ -64,7 +64,7 @@ public enum GameVersion
     /// </summary>
     MP4 = 4096,
     /// <summary>
-    /// Trackmania 2020
+    /// Trackmania (2020)
     /// </summary>
     TM2020 = 8192
 }

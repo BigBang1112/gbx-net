@@ -199,6 +199,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             refTable = w.refTable;
             idVersion = w.idVersion;
             idDict = w.idDict;
+            nodeDict = w.nodeDict;
             encapsulation = w.encapsulation;
             PackDescVersion = w.PackDescVersion;
             DeprecVersion = w.DeprecVersion;

@@ -17,8 +17,10 @@ CGameItemPlacementParam 0x2E020000
  vec3[] PivotPositions
  quat[] PivotRotations
 
-0x003 (skippable, ignore)
+0x003 (skippable, ignore) // PlacementClass
+ version
 
 0x004 (skippable, ignore)
 
-0x005 (skippable, ignore)
+0x005 (skippable)
+ NPlugItemPlacement_SClass* PlacementClass
