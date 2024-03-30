@@ -83,7 +83,7 @@ CGameItemModel 0x2E002000
  v2+
   string ArchetypeRef
   v5+
-   if ArchetypeRef == ""
+   if ArchetypeRef == null || ArchetypeRef == ""
     CGameItemModel ArchetypeFid
    v6+
     string // SkinDirNameCustom

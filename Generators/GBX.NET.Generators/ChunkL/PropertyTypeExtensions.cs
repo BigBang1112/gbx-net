@@ -135,6 +135,7 @@ internal static class PropertyTypeExtensions
             "list" => nameof(IList),
             "data" => "byte[]",
             "boolbyte" => "bool",
+            "optimizedint" => "int",
             _ => type
         };
     }

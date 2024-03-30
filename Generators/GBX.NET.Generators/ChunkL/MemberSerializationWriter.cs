@@ -603,7 +603,9 @@ internal sealed class MemberSerializationWriter
 
             sb.Append('>');
         }
-        else if (chunkProperty.Type.IsArray && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType))
+        else if (chunkProperty.Type.IsArray
+            && PropertyTypeExtensions.IsValueType(chunkProperty.Type.PrimaryType)
+            && chunkProperty.Type.PrimaryType != "optimizedint")
         {
             if (chunkProperty.Type.IsDeprec)
             {
@@ -775,6 +777,7 @@ internal sealed class MemberSerializationWriter
             "packdesc" or "fileref" => "PackDesc",
             "list" => "List",
             "data" => "Data",
+            "optimizedint" => "OptimizedInt",
             _ => Default(type, out noMatch),
         };
 

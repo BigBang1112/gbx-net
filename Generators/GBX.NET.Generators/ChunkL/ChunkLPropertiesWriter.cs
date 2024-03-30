@@ -147,15 +147,24 @@ internal class ChunkLPropertiesWriter
     {
         sb.Append(" = ");
 
-        switch (prop.DefaultValue)
+        if (prop.Type.PrimaryType == "list")
         {
-            case "empty":
-                sb.Append(mappedType);
-                sb.Append(".Empty");
-                break;
-            default:
-                sb.Append(prop.DefaultValue);
-                break;
+            sb.Append("new List<");
+            sb.Append(prop.Type.GenericType);
+            sb.Append(">()");
+        }
+        else
+        {
+            switch (prop.DefaultValue)
+            {
+                case "empty":
+                    sb.Append(mappedType);
+                    sb.Append(".Empty");
+                    break;
+                default:
+                    sb.Append(prop.DefaultValue);
+                    break;
+            }
         }
     }
 

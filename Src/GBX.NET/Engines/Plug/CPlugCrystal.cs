@@ -214,9 +214,11 @@ public partial class CPlugCrystal
         public Vec3[] Positions { get; set; } = [];
         public Int2[]? UnfacedEdges { get; set; }
         public Int2[]? Edges { get; set; }
-        public Vec2[]? UVs { get; set; }
-        public int[]? FaceIndices { get; set; }
-        public Face[]? Faces { get; set; }
+        public Face[] Faces { get; set; } = [];
+        public int U04 { get; set; }
+        public int U05 { get; set; }
+        public string? U06 { get; set; }
+        public int U07 { get; set; }
 
         public void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
@@ -236,6 +238,11 @@ public partial class CPlugCrystal
             if (Version >= 22)
             {
                 Groups = r.ReadArrayReadable<Part>(version: Version);
+            }
+
+            if (Version < 21)
+            {
+                throw new VersionNotSupportedException(Version);
             }
 
             if (Version >= 25)
@@ -275,11 +282,16 @@ public partial class CPlugCrystal
 
             var faceCount = r.ReadInt32();
 
+            var texCoords = Array.Empty<Vec2>();
+            var faceIndices = Array.Empty<int>();
+
             if (Version >= 37)
             {
-                UVs = r.ReadArray<Vec2>();
-                FaceIndices = r.ReadArrayOptimizedInt();
+                texCoords = r.ReadArray<Vec2>();
+                faceIndices = r.ReadArrayOptimizedInt();
             }
+
+            var faceIndicesIndex = 0;
 
             Faces = new Face[faceCount];
 
@@ -288,48 +300,50 @@ public partial class CPlugCrystal
                 var vertCount = Version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
                 var inds = Version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
 
+                var vertices = new Vertex[vertCount];
+                var u01 = default(Vec3?);
+
                 if (Version < 27)
                 {
                     var uvCount = Math.Min(r.ReadInt32(), vertCount);
 
+                    // this doesnt sound right
                     for (var j = 0; j < uvCount; j++)
                     {
-                        r.ReadVec2();
+                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: r.ReadVec2());
                     }
 
-                    var niceVec = r.ReadVec3();
+                    u01 = r.ReadVec3(); // normal?
                 }
                 else if (Version < 37)
                 {
-                    for (var j = 0; j < vertCount; j++)
+                    for (var j = 0; j < vertices.Length; j++)
                     {
-                        r.ReadVec2();
+                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: r.ReadVec2());
                     }
                 }
-                else if (UVs is not null && FaceIndices is not null)
+                else
                 {
-                        
+                    for (var j = 0; j < vertCount; j++)
+                    {
+                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: texCoords[faceIndices[faceIndicesIndex++]]);
+                    }
                 }
 
                 var materialIndex = -1;
 
                 if (Version >= 25)
                 {
-                    if (Version >= 33)
-                    {
-                        materialIndex = n.Materials.Length == 0
-                            ? r.ReadInt32()
-                            : r.ReadOptimizedInt(n.Materials.Length);
-                    }
-                    else
-                    {
-                        materialIndex = r.ReadInt32();
-                    }
+                    materialIndex = Version >= 33
+                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0?
+                        : r.ReadInt32();
                 }
 
                 var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
 
-                var material = n.Materials.Length == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
+                var material = n.Materials.Count == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
+
+                Faces[i] = new Face(vertices, Groups[groupIndex], material, u01);
             }
 
             foreach (var face in Faces)
@@ -358,20 +372,25 @@ public partial class CPlugCrystal
                 }
             }
 
-            var u22 = r.ReadInt32();
+            U04 = r.ReadInt32();
 
             if (Version >= 7 && Version < 32)
             {
-                var u23 = r.ReadInt32(); // crystal link array
+                var crystalLinkLength = r.ReadInt32(); // crystal link array
+
+                if (crystalLinkLength > 0)
+                {
+                    throw new NotSupportedException("CCrystalLink array length > 0");
+                }
 
                 if (Version >= 10)
                 {
-                    var u24 = r.ReadInt32();
-                    var u25 = r.ReadString();
+                    U05 = r.ReadInt32(); // 0 on newer crystals
+                    U06 = r.ReadString(); // empty on newer crystals
 
                     if (Version < 30)
                     {
-                        var u26 = r.ReadArray<float>(); // SCrystalSmoothingGroup array
+                        r.ReadArray<float>(); // SCrystalSmoothingGroup array
                     }
                 }
             }
@@ -382,17 +401,17 @@ public partial class CPlugCrystal
                 var numEdges = r.ReadInt32();
                 var numVerts = r.ReadInt32();
 
-                var u27 = r.ReadArray<int>(numFaces);
-                var u28 = r.ReadArray<int>(numEdges);
-                var u29 = r.ReadArray<int>(numVerts);
+                r.SkipData(numFaces * 4);
+                r.SkipData(numEdges * 4);
+                r.SkipData(numVerts * 4);
 
-                var u17 = r.ReadInt32(); // always zero on newer crystals
+                U07 = r.ReadInt32(); // always zero on newer crystals
 
-                // some face properties array: int, 4 floats
+                // on non-embedded crystal some face properties array: int, 4 floats
             }
         }
 
-        public void Write(GbxWriter w, int v = 0)
+        public void Write(GbxWriter w, CPlugCrystal n, int v = 0)
         {
             w.Write(Version);
 
@@ -451,14 +470,13 @@ public partial class CPlugCrystal
 
             if (Version >= 37)
             {
-                w.WriteArray<Vec2>(UVs);
-                w.WriteArray<int>(FaceIndices);
+                w.WriteArray<Vec2>([]);
+                w.WriteArray<int>([]);
             }
         }
     }
 
-    public class Face
-    {
-        
-    }
+    public sealed record Face(Vertex[] Vertices, Part Group, Material? Material, Vec3? U01);
+
+    public readonly record struct Vertex(Vec3 Position, Vec2 TexCoord);
 }

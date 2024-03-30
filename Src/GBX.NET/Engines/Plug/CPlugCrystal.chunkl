@@ -5,7 +5,7 @@ CPlugCrystal 0x09003000
 
 0x003 // materials
  version
- Material[] Materials
+ list<Material> Materials = empty
 
 0x004 (skippable)
  version
@@ -22,7 +22,7 @@ CPlugCrystal 0x09003000
  v1+
   uint[] // two Int16 technically
   v2+
-   int[] (optimized)
+   optimizedint[]
 
 0x007
  version

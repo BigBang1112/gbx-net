@@ -29,8 +29,8 @@ CGameCommonItemEntityModelEdition 0x2E026000
   throw
  bool U17
  if U17
-  int U18
-  iso4 U19
+  int? U18
+  iso4? U19
  int U20
  v1+
   string InventoryName
@@ -42,7 +42,7 @@ CGameCommonItemEntityModelEdition 0x2E026000
     CMwNod U21
    v7+
     if ItemType == EItemType::PickUp
-	 bool U22
+     bool U22
 
 0x001 (skippable, ignore)
 

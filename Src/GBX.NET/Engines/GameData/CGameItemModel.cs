@@ -66,7 +66,16 @@ public partial class CGameItemModel
                                 if (Version >= 8)
                                 {
                                     rw.NodeRef<CMwNod>(ref n.entityModelEdition); // CGameCommonItemEntityModelEdition, CGameBlockItem
-                                    rw.NodeRef<CMwNod>(ref n.entityModel);
+
+                                    if (n.entityModelEdition is null)
+                                    {
+                                        if (n.itemType == EItemType.Block)
+                                        {
+                                            throw new Exception("EntityModel cannot exist for Block");
+                                        }
+
+                                        rw.NodeRef<CMwNod>(ref n.entityModel);
+                                    }
 
                                     if (Version >= 13)
                                     {
