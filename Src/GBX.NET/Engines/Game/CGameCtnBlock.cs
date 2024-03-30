@@ -56,7 +56,7 @@ public partial class CGameCtnBlock
 
     private int flags;
     /// <summary>
-    /// Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
+    /// Flags of the block. If the blocks version is 0, this value can be presented as <see cref="short"/>.
     /// </summary>
     public int Flags { get => flags; set => flags = value; }
 

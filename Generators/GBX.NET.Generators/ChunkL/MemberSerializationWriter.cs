@@ -407,7 +407,7 @@ internal sealed class MemberSerializationWriter
         var csharpType = PropertyTypeExtensions.MapType(chunkProperty.Type.PrimaryType);
 
         // enum or replaced existing field type
-        if (chunkProperty is ChunkEnum || (!isUnknown && ExistingFieldMatchesType(name, csharpType)))
+        if (chunkProperty is ChunkEnum || (!isUnknown && ExistingFieldOrPropertyMatchesType(name, csharpType)))
         {
             sb.Append('(');
             sb.Append(csharpType);
@@ -456,17 +456,26 @@ internal sealed class MemberSerializationWriter
     }
 
     // weird hacky method
-    private bool ExistingFieldMatchesType(string fieldName, string csharpType)
+    private bool ExistingFieldOrPropertyMatchesType(string fieldOrPropName, string csharpType)
     {
-        if (!existingFields.TryGetValue(fieldName, out var fieldSymbol))
+        ITypeSymbol type;
+
+        if (existingFields.TryGetValue(fieldOrPropName, out var fieldSymbol))
+        {
+            type = fieldSymbol.Type;
+        }
+        else if (existingProperties.TryGetValue(fieldOrPropName, out var propSymbol))
+        {
+            type = propSymbol.Type;
+        }
+        else
         {
             return false;
         }
 
-        var fieldType = fieldSymbol.Type
-            .ToDisplayString(new SymbolDisplayFormat(
-                SymbolDisplayGlobalNamespaceStyle.OmittedAsContaining,
-                miscellaneousOptions: SymbolDisplayMiscellaneousOptions.UseSpecialTypes));
+        var fieldType = type.ToDisplayString(new SymbolDisplayFormat(
+            SymbolDisplayGlobalNamespaceStyle.OmittedAsContaining,
+            miscellaneousOptions: SymbolDisplayMiscellaneousOptions.UseSpecialTypes));
 
         if (fieldType.Length > 0 && fieldType[fieldType.Length - 1] == '?')
         {
