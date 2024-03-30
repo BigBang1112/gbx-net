@@ -50,6 +50,14 @@ public partial interface IGbxReaderWriter : IDisposable
     IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
 
+    [return: NotNullIfNotNull(nameof(value))]
+    int[]? ArrayOptimizedInt(int[]? value, int? determineFrom = default);
+    void ArrayOptimizedInt([NotNullIfNotNull(nameof(value))] ref int[]? value, int? determineFrom = default);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.Int2[]? ArrayOptimizedInt2(GBX.NET.Int2[]? value, int? determineFrom = default);
+    void ArrayOptimizedInt2([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int2[]? value, int? determineFrom = default);
+
     void Chunk<TNode, TChunk>(TNode node, TChunk? chunk)
         where TNode : IClass
         where TChunk : IReadableWritableChunk<TNode>, new();
@@ -406,6 +414,26 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, byteLengthPrefix, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public int[]? ArrayOptimizedInt(int[]? value, int? determineFrom = default)
+    {
+        if (Reader is not null) value = Reader.ReadArrayOptimizedInt(determineFrom);
+        Writer?.WriteArrayOptimizedInt(value, determineFrom);
+        return value;
+    }
+
+    public void ArrayOptimizedInt([NotNullIfNotNull(nameof(value))] ref int[]? value, int? determineFrom = default) => value = ArrayOptimizedInt(value, determineFrom);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.Int2[]? ArrayOptimizedInt2(GBX.NET.Int2[]? value, int? determineFrom = default)
+    {
+        if (Reader is not null) value = Reader.ReadArrayOptimizedInt2(determineFrom);
+        Writer?.WriteArrayOptimizedInt2(value, determineFrom);
+        return value;
+    }
+
+    public void ArrayOptimizedInt2([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int2[]? value, int? determineFrom = default) => value = ArrayOptimizedInt2(value, determineFrom);
 
     public void Chunk<TNode, TChunk>(TNode node, TChunk? chunk)
         where TNode : IClass

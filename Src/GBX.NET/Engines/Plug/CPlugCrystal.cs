@@ -212,13 +212,17 @@ public partial class CPlugCrystal
         public int U02 { get; set; }
         public int U03 { get; set; }
         public Vec3[] Positions { get; set; } = [];
-        public Int2[]? UnfacedEdges { get; set; }
-        public Int2[]? Edges { get; set; }
+        public Int2[] Edges { get; set; } = [];
         public Face[] Faces { get; set; } = [];
         public int U04 { get; set; }
         public int U05 { get; set; }
         public string? U06 { get; set; }
         public int U07 { get; set; }
+
+        /// <summary>
+        /// If <see cref="Edges"/> contains edges that are part of a face.
+        /// </summary>
+        public bool HasFacedEdges => Version < 35;
 
         public void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
@@ -271,27 +275,22 @@ public partial class CPlugCrystal
 
             var edgeCount = r.ReadInt32();
 
-            if (Version >= 35)
-            {
-                UnfacedEdges = r.ReadArrayOptimizedInt2();
-            }
-            else
-            {
-                Edges = r.ReadArray<Int2>(edgeCount);
-            }
+            Edges = HasFacedEdges
+                ? r.ReadArray<Int2>(edgeCount)
+                : r.ReadArrayOptimizedInt2();
 
             var faceCount = r.ReadInt32();
 
             var texCoords = Array.Empty<Vec2>();
-            var faceIndices = Array.Empty<int>();
+            var texCoordIndices = Array.Empty<int>();
 
             if (Version >= 37)
             {
                 texCoords = r.ReadArray<Vec2>();
-                faceIndices = r.ReadArrayOptimizedInt();
+                texCoordIndices = r.ReadArrayOptimizedInt();
             }
 
-            var faceIndicesIndex = 0;
+            var faceVertexIndex = 0;
 
             Faces = new Face[faceCount];
 
@@ -310,7 +309,7 @@ public partial class CPlugCrystal
                     // this doesnt sound right
                     for (var j = 0; j < uvCount; j++)
                     {
-                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: r.ReadVec2());
+                        vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2());
                     }
 
                     u01 = r.ReadVec3(); // normal?
@@ -319,14 +318,14 @@ public partial class CPlugCrystal
                 {
                     for (var j = 0; j < vertices.Length; j++)
                     {
-                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: r.ReadVec2());
+                        vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2());
                     }
                 }
                 else
                 {
                     for (var j = 0; j < vertCount; j++)
                     {
-                        vertices[j] = new Vertex(Positions[inds[j]], TexCoord: texCoords[faceIndices[faceIndicesIndex++]]);
+                        vertices[j] = new Vertex(inds[j], TexCoord: texCoords[texCoordIndices[faceVertexIndex++]]);
                     }
                 }
 
@@ -455,28 +454,167 @@ public partial class CPlugCrystal
 
             w.WriteArray<Vec3>(Positions);
 
-            w.Write(Edges?.Length ?? 0);
-
-            if (Version >= 35)
-            {
-                w.WriteArrayOptimizedInt2(UnfacedEdges);
-            }
-            else
+            if (HasFacedEdges)
             {
                 w.WriteArray<Int2>(Edges);
             }
+            else
+            {
+                w.Write(0);
+                w.WriteArrayOptimizedInt2(Edges);
+            }
 
-            w.Write(Faces?.Length ?? 0);
+            w.Write(Faces.Length);
 
             if (Version >= 37)
             {
-                w.WriteArray<Vec2>([]);
-                w.WriteArray<int>([]);
+                if (Faces.Length == 0)
+                {
+                    w.Write(0);
+                    w.Write(0);
+                }
+                else
+                {
+                    var texCoordDict = new Dictionary<Vec2, int>();
+                    var texCoordIndices = new List<int>();
+
+                    foreach (var face in Faces)
+                    {
+                        foreach (var vertex in face.Vertices)
+                        {
+                            if (texCoordDict.TryGetValue(vertex.TexCoord, out var texCoordIndex))
+                            {
+                                texCoordIndices.Add(texCoordIndex);
+                            }
+                            else
+                            {
+                                texCoordIndices.Add(texCoordDict.Count);
+                                texCoordDict[vertex.TexCoord] = texCoordDict.Count;
+                            }
+                        }
+                    }
+
+                    w.WriteArray<Vec2>(texCoordDict.Keys.ToArray());
+                    w.WriteArrayOptimizedInt(texCoordIndices.ToArray());
+                }
+            }
+
+            foreach (var face in Faces)
+            {
+                if (Version >= 35)
+                {
+                    w.Write((byte)(face.Vertices.Length - 3));
+                }
+                else
+                {
+                    w.Write(face.Vertices.Length);
+                }
+
+                var indices = new int[face.Vertices.Length];
+
+                for (var i = 0; i < face.Vertices.Length; i++)
+                {
+                    indices[i] = face.Vertices[i].Index;
+                }
+
+                if (Version >= 34)
+                {
+                    w.WriteArrayOptimizedInt(indices, Positions.Length, hasLengthPrefix: false);
+                }
+                else
+                {
+                    for (var i = 0; i < indices.Length; i++)
+                    {
+                        w.Write(indices[i]);
+                    }
+                }
+
+                if (Version < 27)
+                {
+                    // this doesnt sound right
+                    w.Write(face.Vertices.Length);
+
+                    foreach (var vertex in face.Vertices)
+                    {
+                        w.Write(vertex.TexCoord);
+                    }
+
+                    w.Write(face.U01 ?? Vec3.Zero); // normal?
+                }
+                else if (Version < 37)
+                {
+                    foreach (var vertex in face.Vertices)
+                    {
+                        w.Write(vertex.TexCoord);
+                    }
+                }
+
+                if (Version >= 25)
+                {
+                    var materialIndex = face.Material is null ? -1 : n.Materials.IndexOf(face.Material);
+
+                    if (Version >= 33)
+                    {
+                        w.WriteOptimizedInt(materialIndex, n.Materials.Count);
+                    }
+                    else
+                    {
+                        w.Write(materialIndex);
+                    }
+                }
+
+                var groupIndex = Array.IndexOf(Groups, face.Group);
+
+                if (Version >= 33)
+                {
+                    w.WriteOptimizedInt(groupIndex, Groups.Length);
+                }
+                else
+                {
+                    w.Write(groupIndex);
+                }
+            }
+
+            if (Version < 29)
+            {
+                foreach (var pos in Positions)
+                {
+                    w.Write(0);
+                }
+            }
+
+            w.Write(U04);
+
+            if (Version >= 7 && Version < 32)
+            {
+                w.Write(0);
+
+                if (Version >= 10)
+                {
+                    w.Write(U05);
+                    w.Write(U06);
+
+                    if (Version < 30)
+                    {
+                        w.Write(0); // SCrystalSmoothingGroup array
+                    }
+                }
+            }
+
+            if (Version < 36)
+            {
+                w.Write(Faces.Length);
+                w.Write(Edges.Length);
+                w.Write(Positions.Length);
+
+                w.Write(new byte[Faces.Length * 4 + Edges.Length * 4 + Positions.Length * 4]);
+
+                w.Write(U07);
             }
         }
     }
 
     public sealed record Face(Vertex[] Vertices, Part Group, Material? Material, Vec3? U01);
 
-    public readonly record struct Vertex(Vec3 Position, Vec2 TexCoord);
+    public readonly record struct Vertex(int Index, Vec2 TexCoord);
 }

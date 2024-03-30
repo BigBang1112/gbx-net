@@ -87,8 +87,8 @@ public partial interface IGbxWriter : IDisposable
     Task WriteDataAsync(byte[]? value, CancellationToken cancellationToken = default);
     void WriteData(byte[]? value, int length);
 
-    void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null);
-    void WriteArrayOptimizedInt2(Int2[]? value, int? determineFrom = null);
+    void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null, bool hasLengthPrefix = true);
+    void WriteArrayOptimizedInt2(Int2[]? value, int? determineFrom = null, bool hasLengthPrefix = true);
 
     void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct;
     void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
@@ -810,25 +810,41 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         };
     }
 
-    public void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null)
+    public void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null, bool hasLengthPrefix = true)
     {
         if (value is null || value.Length == 0)
         {
-            Write(0);
+            if (hasLengthPrefix)
+            {
+                Write(0);
+            }
+
             return;
         }
 
         ValidateCollectionLength(value.Length);
 
-        Write(value.Length);
+        if (hasLengthPrefix)
+        {
+            Write(value.Length);
+        }
 
         switch ((uint)determineFrom.GetValueOrDefault(value.Length))
         {
             case >= ushort.MaxValue:
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                Write(MemoryMarshal.Cast<int, byte>(value));
+#else
+                Write(MemoryMarshal.Cast<int, byte>(value).ToArray());
+#endif
                 WriteArray(value);
                 break;
             case >= byte.MaxValue:
-                WriteArray(Array.ConvertAll(value, x => (ushort)x));
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                Write(MemoryMarshal.Cast<ushort, byte>(Array.ConvertAll(value, x => (ushort)x)));
+#else
+                Write(MemoryMarshal.Cast<ushort, byte>(Array.ConvertAll(value, x => (ushort)x)).ToArray());
+#endif
                 break;
             default:
                 Write(Array.ConvertAll(value, x => (byte)x));
@@ -836,17 +852,24 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteArrayOptimizedInt2(Int2[]? value, int? determineFrom = null)
+    public void WriteArrayOptimizedInt2(Int2[]? value, int? determineFrom = null, bool hasLengthPrefix = true)
     {
         if (value is null || value.Length == 0)
         {
-            Write(0);
+            if (hasLengthPrefix)
+            {
+                Write(0);
+            }
+
             return;
         }
 
         ValidateCollectionLength(value.Length);
 
-        Write(value.Length);
+        if (hasLengthPrefix)
+        {
+            Write(value.Length);
+        }
 
         switch ((uint)determineFrom.GetValueOrDefault(value.Length))
         {
