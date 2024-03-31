@@ -38,7 +38,14 @@ internal static class Input
         _ => throw new ArgumentException($"Unknown input type: {input.GetType()}.", nameof(input))
     };
 
-    public static uint GetData(IInput input) => 0;
+    public static uint GetData(IInput input) => input switch
+    {
+        IInputState state => (uint)(state.Pressed ? 128 : 0),
+        AccelerateReal accelerateReal => accelerateReal.Value.FromGasValue(),
+        BrakeReal brakeReal => brakeReal.Value.FromGasValue(),
+        Steer steer => steer.Value.FromSteerValue(),
+        _ => 0
+    };
 
     private static int ToSteerValue(this uint data)
     {
@@ -51,6 +58,36 @@ internal static class Input
             1 => -ushort.MaxValue - 1,
             _ => val * -1 * (int)(dir + 1)
         };
+    }
+
+    private static uint FromSteerValue(this int value)
+    {
+        if (value > 0)
+        {
+            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - value));
+        }
+
+        if (value < 0)
+        {
+            return (uint)(0x010000 | (value & 0xFFFF));
+        }
+
+        return 0;
+    }
+
+    private static uint FromGasValue(this int value)
+    {
+        if (value < 0)
+        {
+            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - value));
+        }
+
+        if (value > 0)
+        {
+            return (uint)(0x010000 | (value & 0xFFFF));
+        }
+
+        return 0;
     }
 
     private static int ToGasValue(this uint data)
