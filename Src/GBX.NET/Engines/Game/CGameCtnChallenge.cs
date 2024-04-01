@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game;
 
-public sealed partial class CGameCtnChallenge :
+public partial class CGameCtnChallenge :
     CGameCtnChallenge.ITM2020
 {
     /// <summary>

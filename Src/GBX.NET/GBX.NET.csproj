@@ -84,6 +84,7 @@
 		<Using Include="GBX.NET.Engines.Motion" />
 		<Using Include="GBX.NET.Engines.Hms" />
 		<Using Include="GBX.NET.Engines.TrackMania" />
+		<Using Include="GBX.NET.Engines.VirtualSkipper" />
 	</ItemGroup>
 
 	<ItemGroup>
