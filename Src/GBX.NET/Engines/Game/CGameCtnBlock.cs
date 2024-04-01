@@ -117,7 +117,21 @@ public partial class CGameCtnBlock
     public CGameCtnBlockSkin? Skin
     {
         get => skin;
-        set => SetFlagBitAndObject(SkinnableBit, ref skin, value);
+        set
+        {
+            if (!HasFlags)
+            {
+                return;
+            }
+
+            if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
+            {
+                flags &= ~(1 << SkinnableBit);
+            }
+
+            flags |= 1 << SkinnableBit;
+            skin = value;
+        }
     }
 
     /// <summary>
