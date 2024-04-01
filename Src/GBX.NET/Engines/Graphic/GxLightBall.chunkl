@@ -1,7 +1,12 @@
 GxLightBall 0x04002000
 - inherits: GxLightPoint
 
-0x002
+0x002 [TM10]
+ float
+ float
+ float
+ float
+ vec3 AmbientRGB
 
 0x006
  uint

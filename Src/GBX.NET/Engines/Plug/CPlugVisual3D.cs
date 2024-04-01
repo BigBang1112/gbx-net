@@ -26,6 +26,20 @@ public partial class CPlugVisual3D
             n.Tangents = r.ReadArray<Vec3>();
             n.BiTangents = r.ReadArray<Vec3>();
         }
+
+        public override void Write(CPlugVisual3D n, GbxWriter w)
+        {
+            foreach (var vertex in n.Vertices)
+            {
+                w.Write(vertex.Position);
+                w.Write(vertex.Normal.GetValueOrDefault());
+                w.Write(vertex.U02.GetValueOrDefault());
+                w.Write(vertex.U03.GetValueOrDefault());
+            }
+
+            w.WriteArray(n.Tangents);
+            w.WriteArray(n.BiTangents);
+        }
     }
 
     public partial class Chunk0902C004

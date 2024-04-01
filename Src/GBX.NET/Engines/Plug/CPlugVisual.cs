@@ -111,6 +111,34 @@ public partial class CPlugVisual
 
             U01 = r.ReadArray<Iso4>();
         }
+
+        public override void Write(CPlugVisual n, GbxWriter w)
+        {
+            w.Write(n.IsGeometryStatic);
+            w.Write(n.IsIndexationStatic);
+
+            w.Write(n.TexCoords.Length);
+
+            // this might be wrong
+            var skinFlags = n.Flags & 7;
+            w.Write(skinFlags);
+
+            w.Write(n.Count);
+
+            for (var i = 0; i < n.TexCoords.Length; i++)
+            {
+                n.TexCoords[i].Write(w);
+            }
+
+            if (skinFlags != 0)
+            {
+                // DoData
+                throw new NotSupportedException("Skin flags are presented");
+            }
+
+            w.Write(n.IsFlagBitSet(8));
+            w.WriteArray(U01);
+        }
     }
 
     public partial class Chunk0900600A

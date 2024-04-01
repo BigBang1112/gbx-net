@@ -77,17 +77,7 @@ internal static class Input
 
     private static uint FromGasValue(this int value)
     {
-        if (value < 0)
-        {
-            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - value));
-        }
-
-        if (value > 0)
-        {
-            return (uint)(0x010000 | (value & 0xFFFF));
-        }
-
-        return 0;
+        return FromSteerValue(-value);
     }
 
     private static int ToGasValue(this uint data)

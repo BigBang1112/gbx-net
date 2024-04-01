@@ -156,7 +156,24 @@ public partial class CPlugSurface
 
         public void Write(GbxWriter w, int version = 0)
         {
-            throw new NotImplementedException();
+            w.Write(Version);
+
+            switch (Version)
+            {
+                case 1: // has OctreeCells deprec (10 before array, TODO fix)
+                case 2:
+                case 3:
+                    w.WriteArray(Vertices);
+                    w.WriteArray(CookedTriangles);
+                    w.Write(OctreeVersion.GetValueOrDefault());
+                    w.WriteArray(OctreeCells);
+                    break;
+                case 6:
+                case 7:
+                    w.WriteArray(Vertices);
+                    w.WriteArray(Triangles);
+                    break;
+            }
         }
 
         public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
