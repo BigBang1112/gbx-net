@@ -1,10 +1,8 @@
 ﻿namespace GBX.NET.Components;
 
-public sealed class GbxRefTable(IDirectory root, int ancestorLevel)
+public sealed class GbxRefTable
 {
-    public IDirectory Root { get; } = root;
-    public int AncestorLevel { get; } = ancestorLevel;
-    public IDictionary<int, GbxRefTableResource> Resources { get; } = new Dictionary<int, GbxRefTableResource>();
+    public int AncestorLevel { get; set; }
 
     internal static GbxRefTable? Parse(GbxReader reader, GbxHeader header, GbxReadSettings settings)
     {
@@ -18,6 +16,6 @@ public sealed class GbxRefTable(IDirectory root, int ancestorLevel)
 
     public GbxRefTable DeepClone()
     {
-        return new GbxRefTable(Root, AncestorLevel); // WRONG, TODO
+        return new GbxRefTable(); // WRONG, TODO
     }
 }

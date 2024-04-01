@@ -140,7 +140,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private bool enablePreviousStringCache;
     public bool EnablePreviousStringCache { get => enablePreviousStringCache; set => enablePreviousStringCache = value; }
 
-    private IReadOnlyDictionary<int, GbxRefTableFile>? refTable;
+    private IReadOnlyDictionary<int, GbxRefTableNode>? refTable;
     private readonly XmlReader? xmlReader;
     private readonly ILogger? logger;
 
@@ -223,7 +223,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
     }
 
-    internal void LoadRefTable(IReadOnlyDictionary<int, GbxRefTableFile> refTable)
+    internal void LoadRefTable(IReadOnlyDictionary<int, GbxRefTableNode> refTable)
     {
         this.refTable = refTable;
     }
@@ -824,12 +824,14 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                 return (T)existingNode;
             }
 
-            if (refTable?.TryGetValue(index.Value, out file) == true)
+            if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
             {
                 // this can return null as the file is guaranteed to exist
                 // this file is then used next to the actual member, and when requested, loaded into the member
                 // then the file uses this instance in its Node property, and the referenced file is nullified
                 // this will avoid any lost references
+
+                file = externalNode as GbxRefTableFile;
                 return default;
             }
         }

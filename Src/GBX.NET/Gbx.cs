@@ -372,6 +372,8 @@ public partial class Gbx : IGbx
 
             writer.Write(bodyWriter.NodeDict.Count + 1);
 
+            writer.LoadFrom(bodyWriter);
+
             bodyUncompressedMs.Position = 0;
         }
         else if (Header is GbxHeaderUnknown)

@@ -1,15 +1,16 @@
 ﻿namespace GBX.NET.Components;
 
-public sealed class GbxRefTableFile(GbxRefTable refTable, string name, IDirectory parent) : IFile
+public sealed class GbxRefTableFile : GbxRefTableNode
 {
-    internal GbxRefTable RefTable { get; } = refTable;
+    public string RelativePath { get; set; }
 
-    public string Name { get; set; } = name;
-    public IDirectory Parent { get; set; } = parent;
-    public CMwNod? Node { get; set; }
+    public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string relativePath) : base(refTable, flags, useFile)
+    {
+        RelativePath = relativePath;
+    }
 
     public override string ToString()
     {
-        return Name;
+        return RelativePath;
     }
 }

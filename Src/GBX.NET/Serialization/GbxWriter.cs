@@ -127,7 +127,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 {
     private static readonly Encoding encoding = Encoding.UTF8;
 
-    private IReadOnlyDictionary<object, int>? refTable;
     private readonly XmlWriter? xmlWriter;
     private const int IdVersionToWrite = 3;
 
@@ -174,14 +173,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     /// 
     /// </summary>
     /// <param name="output"></param>
-    public GbxWriter(Stream output, IReadOnlyDictionary<object, int>? refTable = null) : base(output, encoding)
+    public GbxWriter(Stream output) : base(output, encoding)
     {
-        this.refTable = refTable;
     }
 
-    public GbxWriter(Stream output, bool leaveOpen, IReadOnlyDictionary<object, int>? refTable = null) : base(output, encoding, leaveOpen)
+    public GbxWriter(Stream output, bool leaveOpen) : base(output, encoding, leaveOpen)
     {
-        this.refTable = refTable;
     }
 
     public GbxWriter(XmlWriter output) : base(Stream.Null, encoding)
@@ -196,7 +193,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (writer is GbxWriter w)
         {
-            refTable = w.refTable;
             idVersion = w.idVersion;
             idDict = w.idDict;
             nodeDict = w.nodeDict;
@@ -676,34 +672,26 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new InvalidOperationException("Class ID not found.");
         }
 
-        // if is in ref table (either node instance of file)
-        // the file is null in case the node was loaded
-        if (encapsulation is null && refTable is not null
-            && ((file is not null && refTable.TryGetValue(file, out var ind))
-            || refTable.TryGetValue(value, out ind)))
+        if (encapsulation is null)
         {
-            Write(ind);
-            return;
+            if ((file is not null && NodeDict.TryGetValue(file, out int index)) || NodeDict.TryGetValue(value, out index))
+            {
+                Write(index);
+                return;
+            }
+            else
+            {
+                index = NodeDict.Count + 1;
+
+                // TODO: Report on replacements
+                NodeDict[value] = index;
+            }
+
+            Write(index);
         }
 
         rw ??= new GbxReaderWriter(this, leaveOpen: true);
 
-        if (encapsulation is not null)
-        {
-            Write(classId);
-            value.ReadWrite(rw);
-            return;
-        }
-
-        if (!NodeDict.TryGetValue(value, out var index))
-        {
-            index = NodeDict.Count + 1;
-
-            // TODO: Report on replacements
-            NodeDict[value] = index;
-        }
-
-        Write(index);
         Write(classId);
         value.ReadWrite(rw);
     }

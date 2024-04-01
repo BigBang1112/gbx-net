@@ -140,7 +140,11 @@ public sealed partial class CGameCtnChallenge :
         EmbeddedDataZip ??= [];
 
         using var ms = new MemoryStream(EmbeddedDataZip.Length);
-        ms.Write(EmbeddedDataZip, 0, EmbeddedDataZip.Length);
+
+        if (EmbeddedDataZip.Length > 0)
+        {
+            ms.Write(EmbeddedDataZip, 0, EmbeddedDataZip.Length);
+        }
 
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
         {
@@ -156,11 +160,14 @@ public sealed partial class CGameCtnChallenge :
 
         using var ms = new MemoryStream(EmbeddedDataZip.Length);
 
+        if (EmbeddedDataZip.Length > 0)
+        {
 #if NET6_0_OR_GREATER
-        await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+            await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
 #else
-        await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+            await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
 #endif
+        }
 
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
         {
@@ -176,11 +183,14 @@ public sealed partial class CGameCtnChallenge :
 
         using var ms = new MemoryStream(EmbeddedDataZip.Length);
 
+        if (EmbeddedDataZip.Length > 0)
+        {
 #if NET6_0_OR_GREATER
-        await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+            await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
 #else
-        await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+            await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
 #endif
+        }
 
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
         {
