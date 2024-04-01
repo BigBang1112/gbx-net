@@ -661,36 +661,47 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass
     {
-        if (value is null)
+        if (value is null && file is null)
         {
             Write(-1);
             return;
         }
-        
-        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
-        {
-            throw new InvalidOperationException("Class ID not found.");
-        }
 
         if (encapsulation is null)
         {
-            if ((file is not null && NodeDict.TryGetValue(file, out int index)) || NodeDict.TryGetValue(value, out index))
+            if ((file is not null && NodeDict.TryGetValue(file, out int index))
+            || (value is not null && NodeDict.TryGetValue(value, out index)))
             {
                 Write(index);
                 return;
             }
-            else
-            {
-                index = NodeDict.Count + 1;
 
-                // TODO: Report on replacements
-                NodeDict[value] = index;
-            }
+            var key = file ?? (object?)value ?? throw new InvalidOperationException("File or value is null.");
+
+            index = NodeDict.Count + 1;
+
+            // TODO: Report on replacements
+            NodeDict[key] = index;
 
             Write(index);
+
+            if (file is not null)
+            {
+                return;
+            }
+        }
+
+        if (value is null)
+        {
+            throw new InvalidOperationException("Value is null.");
         }
 
         rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
+        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
+        {
+            throw new InvalidOperationException("Class ID not found.");
+        }
 
         Write(classId);
         value.ReadWrite(rw);

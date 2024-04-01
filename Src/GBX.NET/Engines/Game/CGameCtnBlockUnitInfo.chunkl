@@ -34,8 +34,8 @@ CGameCtnBlockUnitInfo 0x03036000
 0x007 [TMT, MP4]
 
 0x008 // bottom+top clip
- CGameCtnBlockInfoClip BottomClip
- CGameCtnBlockInfoClip TopClip
+ CGameCtnBlockInfoClip BottomClip (external)
+ CGameCtnBlockInfoClip TopClip (external)
 
 0x009 [TMT.v0]
  version

@@ -317,6 +317,19 @@ internal sealed class MemberSerializationWriter
             sb.Append(version);
         }
 
+        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        {
+            sb.Append(", out ");
+
+            if (!self && !isUnknown)
+            {
+                sb.Append("n.");
+            }
+
+            sb.Append(name);
+            sb.Append("File");
+        }
+
         sb.Append(");");
     }
 
@@ -452,6 +465,19 @@ internal sealed class MemberSerializationWriter
             }
         }
 
+        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        {
+            sb.Append(", ");
+
+            if (!self && !isUnknown)
+            {
+                sb.Append("n.");
+            }
+
+            sb.Append(name);
+            sb.Append("File");
+        }
+
         sb.Append(");");
     }
 
@@ -585,6 +611,19 @@ internal sealed class MemberSerializationWriter
             {
                 sb.Append(", byteLengthPrefix: true");
             }
+        }
+
+        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        {
+            sb.Append(", ref ");
+
+            if (!self && !isUnknown)
+            {
+                sb.Append("n.");
+            }
+
+            sb.Append(name);
+            sb.Append("File");
         }
 
         sb.Append(")");

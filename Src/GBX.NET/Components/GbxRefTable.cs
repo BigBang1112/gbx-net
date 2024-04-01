@@ -9,9 +9,9 @@ public sealed class GbxRefTable
         return new GbxRefTableReader(reader, header, settings).Parse();
     }
 
-    internal bool Write(GbxWriter writer, GbxWriteSettings settings)
+    internal bool Write(GbxWriter writer, GbxHeader header, GbxWriteSettings settings)
     {
-        return new GbxRefTableWriter(this, writer, settings).Write();
+        return new GbxRefTableWriter(this, header, writer, settings).Write();
     }
 
     public GbxRefTable DeepClone()

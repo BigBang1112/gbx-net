@@ -97,6 +97,13 @@ internal sealed class ChunkLFieldsWriter
                 }
 
                 sb.AppendLine(";");
+
+                if (prop.Properties?.ContainsKey("external") == true)
+                {
+                    sb.Append(indent, "public Components.GbxRefTableFile? ");
+                    sb.Append(fieldName);
+                    sb.AppendLine("File;");
+                }
             }
         }
     }

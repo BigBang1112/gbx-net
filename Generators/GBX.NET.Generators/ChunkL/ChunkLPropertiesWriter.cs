@@ -87,7 +87,10 @@ internal class ChunkLPropertiesWriter
             var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
             var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
 
-            if (!autoProperty)
+            var isExternal = prop.Properties?.ContainsKey("external") ?? false;
+
+            // full property is forced for external for "behind the scenes" loading
+            if (!autoProperty || isExternal)
             {
                 sb.AppendLine();
                 sb.Append(indent, "    private ");
@@ -128,7 +131,7 @@ internal class ChunkLPropertiesWriter
             sb.Append(' ');
             sb.Append(propName);
 
-            if (autoProperty)
+            if (autoProperty && !isExternal)
             {
                 sb.AppendLine(" { get; set; }");
             }
@@ -139,6 +142,20 @@ internal class ChunkLPropertiesWriter
                 sb.Append("; set => ");
                 sb.Append(fieldName);
                 sb.AppendLine(" = value; }");
+            }
+
+            if (isExternal)
+            {
+                sb.Append(indent, "    private Components.GbxRefTableFile? ");
+                sb.Append(fieldName);
+                sb.AppendLine("File;");
+                sb.Append(indent, "    public Components.GbxRefTableFile? ");
+                sb.Append(propName);
+                sb.Append("File { get => ");
+                sb.Append(fieldName);
+                sb.Append("File; set => ");
+                sb.Append(fieldName);
+                sb.AppendLine("File = value; }");
             }
         }
     }

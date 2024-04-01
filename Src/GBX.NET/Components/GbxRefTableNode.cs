@@ -7,8 +7,6 @@ public abstract class GbxRefTableNode
     public int Flags { get; }
     public bool UseFile { get; }
 
-    internal int? NodeIndex { get; set; }
-
     protected GbxRefTableNode(GbxRefTable refTable, int flags, bool useFile)
     {
         this.refTable = refTable;
