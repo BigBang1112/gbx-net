@@ -2,15 +2,15 @@
 
 public sealed class GbxRefTableFile : GbxRefTableNode
 {
-    public string RelativePath { get; set; }
+    public string FilePath { get; set; }
 
-    public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string relativePath) : base(refTable, flags, useFile)
+    public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string filePath) : base(refTable, flags, useFile)
     {
-        RelativePath = relativePath;
+        FilePath = filePath;
     }
 
     public override string ToString()
     {
-        return RelativePath;
+        return FilePath;
     }
 }

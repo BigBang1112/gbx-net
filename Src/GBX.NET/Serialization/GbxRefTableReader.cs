@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Components;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GBX.NET.Serialization;
 
@@ -30,7 +29,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
             var flags = reader.ReadInt32();
             var isResource = (flags & 4) != 0;
 
-            var name = default(string);
+            var name = string.Empty;
             var resourceIndex = default(int?);
 
             if (isResource)
@@ -51,8 +50,9 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
                 continue;
             }
 
-            var dir = directoryList[reader.ReadInt32() - 1];
-            var relativePath = Path.Combine(dir.ToString(), name);
+            var dirIndex = reader.ReadInt32() - 1;
+
+            var relativePath = dirIndex == -1 ? name : Path.Combine(directoryList[dirIndex].ToString(), name);
 
             refTableForReader.Add(nodeIndex, new GbxRefTableFile(refTable, flags, useFile, relativePath));
         }

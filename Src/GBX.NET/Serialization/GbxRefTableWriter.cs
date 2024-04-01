@@ -21,11 +21,17 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
 
         var root = new Dir();
 
-        var fileDirDict = new Dictionary<GbxRefTableFile, Dir>();
+        var fileDirDict = new Dictionary<GbxRefTableFile, Dir?>();
 
         foreach (var file in nodes.OfType<GbxRefTableFile>())
         {
-            var parts = file.RelativePath.Split('/', '\\');
+            var parts = file.FilePath.Split('/', '\\');
+
+            if (parts.Length == 1)
+            {
+                fileDirDict[file] = null;
+                continue;
+            }
 
             var dir = root.InsertPath(parts, 0) ?? throw new Exception("Failed to insert path into directory tree");
 
@@ -58,7 +64,7 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
                     writer.Write(resource.ResourceIndex);
                     break;
                 case GbxRefTableFile file:
-                    writer.Write(Path.GetFileName(file.RelativePath));
+                    writer.Write(Path.GetFileName(file.FilePath));
                     break;
                 default:
                     throw new InvalidOperationException("Unknown external node type");
@@ -73,7 +79,8 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
 
             if (node is GbxRefTableFile fileNode)
             {
-                writer.Write(dirIndexDict[fileDirDict[fileNode]] + 1);
+                var dir = fileDirDict[fileNode];
+                writer.Write(dir is null ? 0 : dirIndexDict[dir] + 1);
             }
         }
 
