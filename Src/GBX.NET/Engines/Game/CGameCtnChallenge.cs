@@ -762,8 +762,29 @@ public partial class CGameCtnChallenge :
                 using var embeddedMs = new MemoryStream(n.EmbeddedDataZip);
                 using var zip = new ZipArchive(embeddedMs, ZipArchiveMode.Read);
 
+                var itemModelList = new List<Ident>();
+
+                foreach (var entry in zip.Entries)
+                {
+                    using var entryStream = entry.Open();
+
+                    try
+                    {
+                        var nodeHeader = Gbx.ParseHeaderNode(entryStream);
+
+                        if (nodeHeader is CGameItemModel { Ident: not null } itemModel)
+                        {
+                            itemModelList.Add(itemModel.Ident);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
                 // TODO
-                wBuffer.WriteArray(new Ident[0]);
+                wBuffer.WriteList(itemModelList);
                 wBuffer.WriteData(n.EmbeddedDataZip!);
             }
 
