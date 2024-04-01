@@ -8,3 +8,18 @@ CGameCtnMediaBlockGhost 0x030E5000
  float StartOffset
 
 0x002
+ version
+ v3+
+  list<Key> Keys
+ v2-
+  timefloat Start
+  timefloat End
+ CGameCtnGhost GhostModel
+ float StartOffset
+ bool NoDamage
+ bool ForceLight
+ bool ForceHue
+ 
+archive Key
+ timefloat Time
+ float LightIntensity
