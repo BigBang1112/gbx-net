@@ -552,10 +552,8 @@ public partial class CGameCtnChallenge :
                         }
                     }
 
-                    if (item.SnappedOnItem is not null)
+                    if (item.SnappedOnItem is not null && itemDict.TryGetValue(item.SnappedOnItem, out var itemIndex))
                     {
-                        var itemIndex = itemDict[item.SnappedOnItem];
-
                         unique = (itemIndex, groupIndex);
 
                         if (!usedItemIndexHashSet.Contains(unique))
