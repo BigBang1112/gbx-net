@@ -7,10 +7,10 @@ CGameCtnChallenge 0x03043000 // A map.
   string MapName = empty
  bool
  v1+
-  timeint? BronzeTime
-  timeint? SilverTime
-  timeint? GoldTime
-  timeint? AuthorTime
+  timeint? TMObjective_BronzeTime
+  timeint? TMObjective_SilverTime
+  timeint? TMObjective_GoldTime
+  timeint? TMObjective_AuthorTime
   v2=
    byte
   v4+
