@@ -1,4 +1,5 @@
-﻿using GBX.NET.Managers;
+﻿using GBX.NET.Components;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -407,5 +408,21 @@ public partial class CMwNod : IClass
     public bool CanBeGameVersion(GameVersion version)
     {
         return (GetGameVersion() & version) != 0;
+    }
+
+    public void Save(Stream stream, uint classId, GbxWriteSettings settings = default)
+    {
+        var header = ClassManager.NewHeader(GbxHeaderBasic.Default, classId) ?? throw new Exception("Header cannot be created");
+        var gbx = ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created");
+
+        gbx.Save(stream, settings);
+    }
+
+    public void Save(string fileName, uint classId, GbxWriteSettings settings = default)
+    {
+        var header = ClassManager.NewHeader(GbxHeaderBasic.Default, classId) ?? throw new Exception("Header cannot be created");
+        var gbx = ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created");
+
+        gbx.Save(fileName, settings);
     }
 }
