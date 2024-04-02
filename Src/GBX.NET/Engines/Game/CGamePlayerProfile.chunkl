@@ -1,0 +1,5 @@
+﻿CGamePlayerProfile 0x0308C000
+
+0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
+ string OnlineLogin
+ string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
