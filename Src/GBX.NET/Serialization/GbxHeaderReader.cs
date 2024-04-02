@@ -225,7 +225,11 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         //   - .NET Standard 2.0: unavoidable byte array allocation with ReadBytes
         //   - .NET 6+: no allocation with Read(stackalloc byte[])
 
-        if (settings.SkipUserData)
+        if (settings.OpenPlanetHookExtractMode)
+        {
+            return new UserDataNumbers(0, NumChunks: 0);
+        }
+        else if (settings.SkipUserData)
         {
             reader.SkipData(userDataLength);
             return new UserDataNumbers(userDataLength, NumChunks: 0);

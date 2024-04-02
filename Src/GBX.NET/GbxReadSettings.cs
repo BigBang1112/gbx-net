@@ -19,4 +19,9 @@ public readonly record struct GbxReadSettings
     public int? MaxUncompressedBodySize { get; init; }
     public int? MaxUserDataSize { get; init; }
     public ILogger? Logger { get; init; }
+
+    /// <summary>
+    /// Solves the occasional bug with OpenPlanet extraction where the header chunks are not properly written into the Gbx, while the length of this data section is still set to a non-zero value.
+    /// </summary>
+    public bool OpenPlanetHookExtractMode { get; init; }
 }
