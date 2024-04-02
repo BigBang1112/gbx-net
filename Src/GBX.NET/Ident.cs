@@ -38,4 +38,9 @@ public sealed record Ident(string Id, Id Collection, string Author)
     {
         return new(v.Id, v.Collection, v.Author);
     }
+
+    public static implicit operator Ident((string Id, int Collection, string Author) v)
+    {
+        return new(v.Id, new(v.Collection), v.Author);
+    }
 }
