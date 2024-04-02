@@ -246,6 +246,21 @@ public partial class CGameCtnChallenge :
             }
         }
     }
+    
+    /// <summary>
+    /// Cracks the map password.
+    /// </summary>
+    public void CrackPassword()
+    {
+        Password = null;
+
+        if (HashedPassword is not null)
+        {
+            HashedPassword = new UInt128();
+        }
+
+        Chunks.Remove<Chunk03043029>();
+    }
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
