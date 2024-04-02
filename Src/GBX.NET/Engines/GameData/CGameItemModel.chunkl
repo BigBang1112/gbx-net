@@ -144,11 +144,17 @@ CGameItemModel 0x2E002000
  version
  vec2[]
 
-0x025 (skippable, ignore)
+0x025 (skippable)
+ version
+ bool
 
-0x026 (skippable, ignore)
+0x026 (skippable)
+ version
+ vec3[]
 
-0x027 (skippable, ignore)
+0x027 (skippable)
+ version
+ float
 
 enum EItemType
  Undefined
