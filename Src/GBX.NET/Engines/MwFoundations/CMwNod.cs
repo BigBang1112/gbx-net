@@ -410,19 +410,25 @@ public partial class CMwNod : IClass
         return (GetGameVersion() & version) != 0;
     }
 
-    public void Save(Stream stream, uint classId, GbxWriteSettings settings = default)
+    public Gbx ToGbx(GbxHeaderBasic headerBasic)
     {
-        var header = ClassManager.NewHeader(GbxHeaderBasic.Default, classId) ?? throw new Exception("Header cannot be created");
-        var gbx = ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created");
-
-        gbx.Save(stream, settings);
+        var classId = ClassManager.GetClassId(GetType()) ?? throw new Exception("Class ID not found.");
+        var header = ClassManager.NewHeader(headerBasic, classId) ?? throw new Exception("Header cannot be created.");
+        return ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created.");
     }
 
-    public void Save(string fileName, uint classId, GbxWriteSettings settings = default)
+    public Gbx ToGbx()
     {
-        var header = ClassManager.NewHeader(GbxHeaderBasic.Default, classId) ?? throw new Exception("Header cannot be created");
-        var gbx = ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created");
+        return ToGbx(GbxHeaderBasic.Default);
+    }
 
-        gbx.Save(fileName, settings);
+    public void Save(Stream stream, GbxWriteSettings settings = default)
+    {
+        ToGbx().Save(stream, settings);
+    }
+
+    public void Save(string fileName, GbxWriteSettings settings = default)
+    {
+        ToGbx().Save(fileName, settings);
     }
 }

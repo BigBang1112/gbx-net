@@ -87,7 +87,7 @@ foreach (var arg in args)
         var pureFileName = $"{TextFormatter.Deformat(map.MapName)}.Map.Gbx";
         var validFileName = string.Join("_", pureFileName.Split(Path.GetInvalidFileNameChars()));
 
-        map.Save(Path.Combine("output", validFileName), 0x03043000);
+        map.Save(Path.Combine("output", validFileName));
     }
 }
 
