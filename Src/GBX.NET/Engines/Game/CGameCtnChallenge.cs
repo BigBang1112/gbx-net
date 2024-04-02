@@ -525,7 +525,9 @@ public partial class CGameCtnChallenge :
 
                 foreach (var item in n.GetAnchoredObjects())
                 {
-                    if (item.SnappedOnBlock is null && item.SnappedOnItem is null)
+                    var isItemNotSnappedOnItem = item.SnappedOnItem is null || !itemDict.ContainsKey(item.SnappedOnItem);
+
+                    if (item.SnappedOnBlock is null && isItemNotSnappedOnItem)
                     {
                         snappedOnIndices.Add(-1);
                         continue;
@@ -545,7 +547,7 @@ public partial class CGameCtnChallenge :
                             usedBlockIndexList.Add(unique);
                             usedBlockIndexHashSet.Add(unique);
 
-                            if (item.SnappedOnItem is null)
+                            if (isItemNotSnappedOnItem)
                             {
                                 usedItemIndexList.Add((-1, groupIndex));
                             }
