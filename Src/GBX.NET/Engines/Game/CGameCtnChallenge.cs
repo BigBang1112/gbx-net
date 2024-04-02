@@ -248,9 +248,9 @@ public partial class CGameCtnChallenge :
     }
     
     /// <summary>
-    /// Cracks the map password.
+    /// Removes the map password.
     /// </summary>
-    public void CrackPassword()
+    public void RemovePassword()
     {
         Password = null;
 

@@ -80,7 +80,7 @@ foreach (var arg in args)
             map.ChallengeParameters.BronzeTime = TimeInt32.MaxValue;
         }
 
-        map.CrackPassword();
+        map.RemovePassword();
 
         Directory.CreateDirectory("output");
 
