@@ -20,7 +20,7 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<PackageIcon>logo_icon.png</PackageIcon>
+		<PackageIcon>logo_icon_outline.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 
@@ -33,7 +33,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="../../logo_icon.png" Pack="true" PackagePath="\" />
+		<None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
 		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
@@ -89,6 +89,11 @@
 
 	<ItemGroup>
 		<AdditionalFiles Include="Engines/*/*.chunkl" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="engines\plug\CPlugSolid2Model.chunkl" />
+	  <None Remove="engines\plug\CPlugStaticObjectModel.chunkl" />
 	</ItemGroup>
 
 	<ItemGroup>
