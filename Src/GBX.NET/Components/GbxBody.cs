@@ -1,13 +1,11 @@
 ﻿using System.Collections.Immutable;
-using System.ComponentModel;
 using System.Text;
 
 namespace GBX.NET.Components;
 
 /// <summary>
-/// Body part of Gbx. This class is immutable.
+/// Body part of Gbx.
 /// </summary>
-[ImmutableObject(true)]
 public sealed partial class GbxBody
 {
     private readonly ImmutableArray<byte> rawData = ImmutableArray<byte>.Empty;
@@ -95,4 +93,12 @@ public sealed partial class GbxBody
     {
         new GbxBodyWriter(this, writer, settings).Write(uncompressedInputStream, compressionOfBody);
     }
+
+    public GbxBody DeepClone() => new()
+    {
+        RawData = RawData,
+        UncompressedSize = UncompressedSize,
+        CompressedSize = CompressedSize,
+        Exception = Exception
+    };
 }

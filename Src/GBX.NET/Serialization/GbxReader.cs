@@ -185,6 +185,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal ILogger? Logger => logger;
+
     private GbxReaderLimiter? limiter;
 
     public GbxReader(Stream input, ILogger? logger = null) : base(input, encoding)
@@ -820,16 +822,15 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (NodeDict.TryGetValue(index.Value, out var existingNode))
             {
+                logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
+
                 file = null;
                 return (T)existingNode;
             }
 
             if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
             {
-                // this can return null as the file is guaranteed to exist
-                // this file is then used next to the actual member, and when requested, loaded into the member
-                // then the file uses this instance in its Node property, and the referenced file is nullified
-                // this will avoid any lost references
+                logger?.LogDebug("NodeRef #{Index}: {ExternalNode} (external)", index.Value, externalNode);
 
                 file = externalNode as GbxRefTableFile;
                 return default;
@@ -838,14 +839,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         file = null;
 
-        var originalClassId = ReadUInt32();
+        var rawClassId = ReadUInt32();
 
-        if (encapsulation is not null && originalClassId == uint.MaxValue)
+        if (encapsulation is not null && rawClassId == uint.MaxValue)
         {
             return default;
         }
 
-        var classId = ClassManager.Wrap(originalClassId);
+        var classId = ClassManager.Wrap(rawClassId);
+
+        logger?.LogDebug("NodeRef #{Index}: {ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
 
 #if NET8_0_OR_GREATER
         var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
@@ -888,6 +891,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     private T ReadNode<T>(T node) where T : IClass
     {
         rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
+        using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
 
 #if NET8_0_OR_GREATER
         T.Read(node, rw);

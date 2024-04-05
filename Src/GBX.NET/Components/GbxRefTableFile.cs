@@ -11,6 +11,6 @@ public sealed class GbxRefTableFile : GbxRefTableNode
 
     public override string ToString()
     {
-        return FilePath;
+        return $"{FilePath}, Flags: {Flags}, UseFile: {UseFile}";
     }
 }

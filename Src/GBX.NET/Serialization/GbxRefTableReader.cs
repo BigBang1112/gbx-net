@@ -1,22 +1,31 @@
 ﻿using GBX.NET.Components;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
 internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxReadSettings settings)
 {
+    private readonly ILogger? logger = settings.Logger;
+
     public GbxRefTable? Parse()
     {
         var numExternalNodes = reader.ReadInt32();
+
+        logger?.LogDebug("Number of external nodes: {NumExternalNodes}", numExternalNodes);
 
         if (numExternalNodes == 0)
         {
             return null;
         }
 
+        using var _ = logger?.BeginScope("RefTable");
+
         var refTable = new GbxRefTable
         {
             AncestorLevel = reader.ReadInt32()
         };
+
+        logger?.LogDebug("Ancestor level: {AncestorLevel}", refTable.AncestorLevel);
 
         var root = new Dir(string.Empty, Parent: null);
 
@@ -46,15 +55,21 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
 
             if (isResource)
             {
-                refTableForReader.Add(nodeIndex, new GbxRefTableResource(refTable, flags, useFile, resourceIndex.GetValueOrDefault()));
+                var resource = new GbxRefTableResource(refTable, flags, useFile, resourceIndex.GetValueOrDefault());
+                logger?.LogInformation("External resource: {Resource}", resource);
+
+                refTableForReader.Add(nodeIndex, resource);
                 continue;
             }
 
             var dirIndex = reader.ReadInt32() - 1;
 
-            var relativePath = dirIndex == -1 ? name : Path.Combine(directoryList[dirIndex].ToString(), name);
+            var filePath = dirIndex == -1 ? name : Path.Combine(directoryList[dirIndex].ToString(), name);
 
-            refTableForReader.Add(nodeIndex, new GbxRefTableFile(refTable, flags, useFile, relativePath));
+            var file = new GbxRefTableFile(refTable, flags, useFile, filePath);
+            logger?.LogInformation("External file: {File}", file);
+
+            refTableForReader.Add(nodeIndex, file);
         }
 
         reader.LoadRefTable(refTableForReader);
@@ -70,6 +85,8 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
         {
             var name = reader.ReadString();
             var subDir = new Dir(name, currentDir);
+
+            logger?.LogTrace("Dir: {Dir}", subDir);
 
             yield return subDir;
             

@@ -1,4 +1,6 @@
 ﻿using GBX.NET.Components;
+using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 using System.Collections.Immutable;
 
 namespace GBX.NET.Serialization;
@@ -6,6 +8,7 @@ namespace GBX.NET.Serialization;
 internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSettings settings, GbxCompression compression)
 {
     private readonly GbxReader reader = readerWriter.Reader ?? throw new Exception("Reader is required but not available.");
+    private readonly ILogger? logger = settings.Logger;
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async ValueTask<GbxBody> ParseAsync(
@@ -14,11 +17,14 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         GbxReadSettings settings,
         CancellationToken cancellationToken = default)
     {
+        var logger = settings.Logger;
+
         switch (compression)
         {
             case GbxCompression.Compressed:
 
                 var uncompressedSize = reader.ReadInt32();
+                if (logger is not null) LoggerExtensions.LogInformation(logger, "Uncompressed body size: {UncompressedSize}", uncompressedSize);
 
                 if (IsValidUncompressedSize(uncompressedSize, settings))
                 {
@@ -26,6 +32,17 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
                 }
 
                 var compressedSize = reader.ReadInt32();
+
+                if (logger is not null)
+                {
+                    LoggerExtensions.LogInformation(logger, "Compressed body size: {CompressedSize}", compressedSize);
+
+                    if (settings.ReadRawBody)
+                    {
+                        LoggerExtensions.LogInformation(logger, "RawBody mode: reading {CompressedSize} bytes directly...", compressedSize);
+                    }
+                }
+
                 var rawData = settings.ReadRawBody
                     ? ImmutableArray.Create(await reader.ReadBytesAsync(compressedSize, cancellationToken))
                     : ImmutableArray<byte>.Empty;
@@ -38,6 +55,16 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
                 };
 
             case GbxCompression.Uncompressed:
+
+                if (logger is not null)
+                {
+                    LoggerExtensions.LogInformation(logger, "Uncompressed body.");
+
+                    if (settings.ReadRawBody)
+                    {
+                        LoggerExtensions.LogInformation(logger, "RawBody mode: reading all upcoming bytes directly...");
+                    }
+                }
 
                 return new GbxBody
                 {
@@ -69,9 +96,12 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
         if (body.CompressedSize is null)
         {
+            if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node directly...");
             ReadMainNode(node, body, readerWriter);
             return body;
         }
+
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Decompressing body...");
 
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
@@ -80,7 +110,11 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node...");
+
         ReadMainNode(node, body, decompressedReaderWriter);
+
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Main node complete.");
 
         return body;
     }
@@ -97,9 +131,12 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
         if (body.CompressedSize is null)
         {
+            if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node directly...");
             ReadMainNode(node, body, readerWriter);
             return body;
         }
+
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Decompressing body...");
 
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
@@ -108,7 +145,11 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node...");
+
         ReadMainNode(node, body, decompressedReaderWriter);
+
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Main node complete.");
 
         return body;
     }
@@ -172,6 +213,8 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
     private void ReadMainNode(IClass node, GbxBody body, GbxReaderWriter rw)
     {
+        using var _ = logger?.BeginScope("{ClassName} (main)", ClassManager.GetName(node.GetType()));
+
         try
         {
             node.ReadWrite(rw);
@@ -184,11 +227,15 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
             {
                 throw;
             }
+
+            logger?.LogError(ex, "Failed to read main node (IMPLICIT). Exception was internally ignored and the node returns with partial data.");
         }
     }
 
     private void ReadMainNode<T>(T node, GbxBody body, GbxReaderWriter rw) where T : IClass
     {
+        using var _ = logger?.BeginScope("{ClassName} (main)", ClassManager.GetName(node.GetType()));
+
         try
         {
 #if NET8_0_OR_GREATER
@@ -205,6 +252,8 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
             {
                 throw;
             }
+
+            logger?.LogError(ex, "Failed to read main node (EXPLICIT). Exception was internally ignored and the node returns with partial data.");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -22,16 +23,17 @@ public partial class CMwNod : IClass
 
         while (true)
         {
-            var originalChunkId = r.ReadHexUInt32();
+            var rawChunkId = r.ReadHexUInt32();
 
-            if (originalChunkId == FACADE)
+            if (rawChunkId == FACADE)
             {
+                r.Logger?.LogDebug("- FACADE -");
                 return;
             }
 
-            var chunkId = ClassManager.IsChunkIdRemapped(originalChunkId)
-                ? ClassManager.Wrap(originalChunkId)
-                : originalChunkId;
+            var chunkId = ClassManager.IsChunkIdRemapped(rawChunkId)
+                ? ClassManager.Wrap(rawChunkId)
+                : rawChunkId;
 
             var chunk = node.CreateChunk(chunkId);
 
@@ -49,6 +51,18 @@ public partial class CMwNod : IClass
                 }
 
                 var chunkSize = r.ReadInt32();
+
+                if (r.Logger is not null)
+                {
+                    if (chunkId == rawChunkId)
+                    {
+                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size})", chunkId, chunkSize);
+                    }
+                    else
+                    {
+                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                    }
+                }
 
                 switch (chunk)
                 {
@@ -125,6 +139,18 @@ public partial class CMwNod : IClass
             }
 
             // Unskippable chunk
+            if (r.Logger is not null)
+            {
+                if (chunkId == rawChunkId)
+                {
+                    r.Logger.LogDebug("0x{ChunkId:X8}", chunkId);
+                }
+                else
+                {
+                    r.Logger.LogDebug("0x{ChunkId:X8} (raw: 0x{RawChunkId:X8})", chunkId, rawChunkId);
+                }
+            }
+
             if (chunk.Ignore)
             {
                 throw new ChunkReadException(chunkId, prevChunkId, known: true);
@@ -161,16 +187,17 @@ public partial class CMwNod : IClass
 
         while (true)
         {
-            var originalChunkId = r.ReadHexUInt32();
+            var rawChunkId = r.ReadHexUInt32();
 
-            if (originalChunkId == FACADE)
+            if (rawChunkId == FACADE)
             {
+                r.Logger?.LogDebug("- FACADE -");
                 return;
             }
 
-            var chunkId = ClassManager.IsChunkIdRemapped(originalChunkId)
-                ? ClassManager.Wrap(originalChunkId)
-                : originalChunkId;
+            var chunkId = ClassManager.IsChunkIdRemapped(rawChunkId)
+                ? ClassManager.Wrap(rawChunkId)
+                : rawChunkId;
 
             var chunk = CreateChunk(chunkId);
 
@@ -188,6 +215,18 @@ public partial class CMwNod : IClass
                 }
 
                 var chunkSize = r.ReadInt32();
+
+                if (r.Logger is not null)
+                {
+                    if (chunkId == rawChunkId)
+                    {
+                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size})", chunkId, chunkSize);
+                    }
+                    else
+                    {
+                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                    }
+                }
 
                 switch (chunk)
                 {
@@ -242,6 +281,18 @@ public partial class CMwNod : IClass
             }
 
             // Unskippable chunk
+            if (r.Logger is not null)
+            {
+                if (chunkId == rawChunkId)
+                {
+                    r.Logger.LogDebug("0x{ChunkId:X8}", chunkId);
+                }
+                else
+                {
+                    r.Logger.LogDebug("0x{ChunkId:X8} (raw: 0x{RawChunkId:X8})", chunkId, rawChunkId);
+                }
+            }
+
             if (chunk.Ignore)
             {
                 throw new ChunkReadException(chunkId, prevChunkId, known: true);

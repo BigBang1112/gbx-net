@@ -15,6 +15,7 @@ public static partial class ClassManager
     public static partial uint? GetId(string className, bool all);
     public static partial uint? GetId(string className);
 #endif
+    public static string? GetName(Type type) => GetName(GetClassId(type) ?? 0);
 
     /// <summary>
     /// Get the class ID when a type is provided. Slower and heavier on older .NET versions.

@@ -1,5 +1,6 @@
 ﻿using GBX.NET;
 using GBX.NET.LZO;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 if (args.Length == 0)
@@ -10,21 +11,30 @@ if (args.Length == 0)
 }
 
 var fileName = args[0];
-
 Gbx.LZO = new MiniLZO();
+
+var logger = LoggerFactory.Create(builder =>
+{
+    builder.AddSimpleConsole(options =>
+    {
+        options.IncludeScopes = true;
+        options.SingleLine = true;
+    });
+    builder.SetMinimumLevel(LogLevel.Debug);
+}).CreateLogger<Program>();
 
 while (true)
 {
     try
     {
         var stopwatch = Stopwatch.StartNew();
-        var gbx = Gbx.Parse(fileName);
+        var gbx = Gbx.Parse(fileName, new() { Logger = logger });
         stopwatch.Stop();
-        Console.WriteLine($"Parsed in {stopwatch.Elapsed.TotalMilliseconds}ms");
+        logger.LogInformation("Parsed in {time}ms", stopwatch.Elapsed.TotalMilliseconds);
     }
     catch (Exception ex)
     {
-        Console.WriteLine("Exception during parse: " + ex);
+        logger.LogError(ex, "Exception during parse.");
     }
 
     Console.WriteLine();

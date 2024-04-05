@@ -1,15 +1,25 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
 internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings)
 {
+    private readonly ILogger? logger = settings.Logger;
+
     public GbxHeader<T> Parse<T>(out T node) where T : notnull, IClass, new()
     {
-        var basic = GbxHeaderBasic.Parse(reader);
+        logger?.LogDebug("Parsing header... (EXPLICIT, basic, UserData, number of nodes)");
 
-        var classId = ClassManager.Wrap(reader.ReadHexUInt32());
+        using var _ = logger?.BeginScope("Header");
+
+        var basic = GbxHeaderBasic.Parse(reader);
+        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
+
+        var rawClassId = reader.ReadHexUInt32();
+        var classId = ClassManager.Wrap(rawClassId);
+        logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", classId, ClassManager.GetName(classId), rawClassId);
 
         var expectedClassId = ClassManager.GetClassId<T>();
 
@@ -20,12 +30,15 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         node = new T();
 
+        logger?.LogInformation("Instantiated EXPLICIT node: {Node}", node);
+
         if (basic.Version >= 6)
         {
             ReadUserData(node);
         }
 
         var numNodes = reader.ReadInt32();
+        logger?.LogDebug("Number of nodes: {NumNodes}", numNodes);
 
         return new GbxHeader<T>(basic)
         {
@@ -35,15 +48,31 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
     public GbxHeader Parse(out IClass? node)
     {
-        var basic = GbxHeaderBasic.Parse(reader);
+        logger?.LogDebug("Parsing header... (IMPLICIT, basic, UserData, number of nodes)");
 
-        var classId = ClassManager.Wrap(reader.ReadHexUInt32());
+        using var _ = logger?.BeginScope("Header");
+
+        var basic = GbxHeaderBasic.Parse(reader);
+        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
+
+        var rawClassId = reader.ReadHexUInt32();
+        var classId = ClassManager.Wrap(rawClassId);
+        logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", classId, ClassManager.GetName(classId), rawClassId);
 
         node = ClassManager.New(classId);
 
-        var header = node is null
-            ? new GbxHeaderUnknown(basic, classId)
-            : ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
+        GbxHeader header;
+
+        if (node is null)
+        {
+            header = new GbxHeaderUnknown(basic, classId);
+            logger?.LogInformation("Unknown class, using GbxHeaderUnknown...");
+        }
+        else
+        {
+            header = ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
+            logger?.LogInformation("Known class!");
+        }
 
         if (basic.Version >= 6)
         {
@@ -51,6 +80,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
 
         header.NumNodes = reader.ReadInt32();
+        logger?.LogDebug("Number of nodes: {NumNodes}", header.NumNodes);
 
         return header;
     }
@@ -59,8 +89,16 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
     {
         var userDataNums = ValidateUserDataNumbers();
 
-        if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
+        if (userDataNums.Length == 0)
         {
+            return false;
+        }
+
+        // Corrupted header extract scenarios
+        if (userDataNums.NumChunks == 0 && userDataNums.Length > sizeof(int))
+        {
+            logger?.LogWarning("UserData is zeroed, possibly corrupted header. (EXPLICIT)");
+            reader.SkipData(userDataNums.Length - sizeof(int));
             return false;
         }
 
@@ -95,8 +133,16 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
     {
         var userDataNums = ValidateUserDataNumbers();
 
-        if (userDataNums.Length == 0 || userDataNums.NumChunks == 0)
+        if (userDataNums.Length == 0)
         {
+            return false;
+        }
+
+        // Corrupted header extract scenarios
+        if (userDataNums.NumChunks == 0 && userDataNums.Length > sizeof(int))
+        {
+            logger?.LogWarning("UserData is zeroed, possibly corrupted header. (IMPLICIT)");
+            reader.SkipData(userDataNums.Length - sizeof(int));
             return false;
         }
 
@@ -162,7 +208,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         return nod;
     }
 
-    internal static void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
+    internal void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
     {
         var totalSize = 4; // Includes the number of header chunks
 
@@ -172,6 +218,8 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             var chunkSize = reader.ReadInt32();
             var actualChunkSize = (int)(chunkSize & ~0x80000000);
             var isHeavy = (chunkSize & 0x80000000) != 0;
+
+            logger?.LogDebug("Chunk 0x{ChunkId:X8} (Size: {Size}, Heavy: {Heavy})", chunkId, chunkSize, isHeavy);
 
             if (actualChunkSize > GbxReader.MaxDataSize)
             {
@@ -209,6 +257,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         if (userDataLength == 0)
         {
+            logger?.LogDebug("UserData: Empty");
             return new UserDataNumbers(0, 0);
         }
 
@@ -227,16 +276,25 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         if (settings.OpenPlanetHookExtractMode)
         {
+            logger?.LogDebug("UserData: {Length} bytes (read skipped - OpenPlanetHookExtractMode)", userDataLength);
             return new UserDataNumbers(0, NumChunks: 0);
         }
         else if (settings.SkipUserData)
         {
+            logger?.LogDebug("UserData: {Length} bytes (read skipped)", userDataLength);
             reader.SkipData(userDataLength);
             return new UserDataNumbers(userDataLength, NumChunks: 0);
         }
 
         // Header chunk count
         var numHeaderChunks = reader.ReadInt32();
+
+        if (numHeaderChunks < 0)
+        {
+            throw new InvalidDataException($"Number of header chunks {numHeaderChunks} is negative.");
+        }
+
+        logger?.LogDebug("UserData: {Length} bytes, {NumChunks} header chunks", userDataLength, numHeaderChunks);
 
         return new UserDataNumbers(userDataLength, numHeaderChunks);
     }

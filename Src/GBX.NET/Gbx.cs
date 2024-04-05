@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Extensions;
 using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET;
 
@@ -105,7 +106,7 @@ public partial class Gbx : IGbx
         return $"Gbx ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
     }
 
-    public virtual Gbx DeepClone() => new(Header.DeepClone(), Body)
+    public virtual Gbx DeepClone() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
         RefTable = RefTable?.DeepClone(),
@@ -121,12 +122,16 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {
+        var logger = settings.Logger;
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Gbx Parse (IMPLICIT)");
+
+        var filePath = stream is FileStream fs ? fs.Name : null;
+        if (logger is not null) LoggerExtensions.LogDebug(logger, "File path: {FilePath}", filePath);
+
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
-
-        var filePath = stream is FileStream fs ? fs.Name : null;
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
@@ -182,6 +187,12 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
     {
+        var logger = settings.Logger;
+        if (logger is not null) LoggerExtensions.LogInformation(logger, "Gbx Parse (EXPLICIT)");
+
+        var filePath = stream is FileStream fs ? fs.Name : null;
+        if (logger is not null) LoggerExtensions.LogDebug(logger, "File path: {FilePath}", filePath);
+
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
@@ -200,7 +211,7 @@ public partial class Gbx : IGbx
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
             DeprecVersion = reader.DeprecVersion,
-            FilePath = stream is FileStream fs ? fs.Name : null
+            FilePath = filePath
         };
     }
 
@@ -218,13 +229,17 @@ public partial class Gbx : IGbx
 
     public static Gbx ParseHeader(Stream stream, GbxReadSettings settings = default)
     {
+        var logger = settings.Logger;
+        logger?.LogInformation("Gbx Header Parse (IMPLICIT)");
+
+        var filePath = stream is FileStream fs ? fs.Name : null;
+        logger?.LogDebug("File path: {FilePath}", filePath);
+
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
         var refTable = GbxRefTable.Parse(reader, header, settings);
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
-
-        var filePath = stream is FileStream fs ? fs.Name : null;
         
         if (node is null) // aka, header is GbxHeaderUnknown
         {
@@ -256,6 +271,12 @@ public partial class Gbx : IGbx
 
     public static Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new()
     {
+        var logger = settings.Logger;
+        logger?.LogInformation("Gbx Header Parse (EXPLICIT)");
+
+        var filePath = stream is FileStream fs ? fs.Name : null;
+        logger?.LogDebug("File path: {FilePath}", filePath);
+
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
@@ -269,7 +290,7 @@ public partial class Gbx : IGbx
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
             DeprecVersion = reader.DeprecVersion,
-            FilePath = stream is FileStream fs ? fs.Name : null
+            FilePath = filePath
         };
     }
 
@@ -615,9 +636,9 @@ public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
     }
 
 #if NETSTANDARD2_0
-    public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body, (T)Node.DeepClone())
+    public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
 #else
-    public override Gbx<T> DeepClone() => new(Header.DeepClone(), Body, (T)Node.DeepClone())
+    public override Gbx<T> DeepClone() => new(Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
 #endif
     {
         FilePath = FilePath,

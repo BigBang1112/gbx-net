@@ -29,7 +29,7 @@ public abstract class GbxHeader
 
     internal static GbxHeader<T> Parse<T>(Stream stream, GbxReadSettings settings, out T node) where T : IClass, new()
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.Logger);
         return Parse(reader, settings, out node);
     }
 
@@ -46,7 +46,7 @@ public abstract class GbxHeader
 
     internal static GbxHeader Parse(Stream stream, GbxReadSettings settings, out IClass? node)
     {
-        using var reader = new GbxReader(stream);
+        using var reader = new GbxReader(stream, settings.Logger);
         return Parse(reader, settings, out node);
     }
 
