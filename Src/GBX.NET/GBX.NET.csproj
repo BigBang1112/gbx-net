@@ -92,11 +92,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="engines\plug\CPlugSolid2Model.chunkl" />
-	  <None Remove="engines\plug\CPlugStaticObjectModel.chunkl" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<AdditionalFiles Include="../../Resources/ClassId.txt" />
 		<AdditionalFiles Include="../../Resources/CollectionId.txt" />
 		<AdditionalFiles Include="../../Resources/Wrap.txt" />

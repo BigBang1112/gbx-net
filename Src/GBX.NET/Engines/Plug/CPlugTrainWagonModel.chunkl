@@ -1,0 +1,30 @@
+CPlugTrainWagonModel 0x0911C000
+
+0x000
+ version
+ CPlugSurface Shape (external)
+ CPlugSolid2Model Mesh (external)
+ v2+
+  bool IsLoco
+  vec3
+  v3+
+   CPlugSound SoundEngine
+   CPlugSound SoundBrake
+   CPlugSound SoundRailContact (external)
+   CPlugSound SoundCollision
+   v5+
+    float WagonLength
+    float WagonColOffset
+    bool GenLengthFromShape
+    v6+
+     CFuncKeysReal AccelCurve
+     v7+
+      CPlugParticleEmitterModel SmokeEmitterModel
+      v8+
+       CFuncKeysReal
+       CPlugParticleEmitterModel DustEmitterModel
+       CPlugParticleEmitterModel SparkleParticle
+       v9+
+        CMwNod
+        v10+
+         CPlugAnimFile AnimFile

@@ -138,6 +138,15 @@ internal class ChunkLPropertiesWriter
             else
             {
                 sb.Append(" { get => ");
+
+                if (isExternal)
+                {
+                    sb.Append(fieldName);
+                    sb.Append("File?.GetNode(ref ");
+                    sb.Append(fieldName);
+                    sb.Append(") ?? ");
+                }
+
                 sb.Append(fieldName);
                 sb.Append("; set => ");
                 sb.Append(fieldName);
@@ -156,6 +165,22 @@ internal class ChunkLPropertiesWriter
                 sb.Append("File; set => ");
                 sb.Append(fieldName);
                 sb.AppendLine("File = value; }");
+
+                sb.Append(indent, "    public ");
+                sb.Append(mappedType);
+
+                if (nullable)
+                {
+                    sb.Append('?');
+                }
+
+                sb.Append(" Get");
+                sb.Append(propName);
+                sb.Append("(GbxReadSettings settings = default) => ");
+                sb.Append(fieldName);
+                sb.Append("File?.GetNode(ref ");
+                sb.Append(fieldName);
+                sb.AppendLine(", settings);");
             }
         }
     }

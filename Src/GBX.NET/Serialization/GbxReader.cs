@@ -848,7 +848,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var classId = ClassManager.Wrap(rawClassId);
 
-        logger?.LogDebug("NodeRef #{Index}: {ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
+        logger?.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
 
 #if NET8_0_OR_GREATER
         var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");

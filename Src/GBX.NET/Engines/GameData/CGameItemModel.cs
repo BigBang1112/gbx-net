@@ -1,9 +1,18 @@
-﻿namespace GBX.NET.Engines.GameData;
+﻿using GBX.NET.Components;
+
+namespace GBX.NET.Engines.GameData;
 
 public partial class CGameItemModel
 {
     private CMwNod? phyModelCustom;
-    public CMwNod? PhyModelCustom { get => phyModelCustom; set => phyModelCustom = value; }
+    public CMwNod? PhyModelCustom
+    {
+        get => phyModelCustomFile?.GetNode(ref phyModelCustom) ?? phyModelCustom;
+        set => phyModelCustom = value;
+    }
+    private GbxRefTableFile? phyModelCustomFile;
+    public GbxRefTableFile? PhyModelCustomFile { get => phyModelCustomFile; set => phyModelCustomFile = value; }
+    public CMwNod? GetPhyModelCustom(GbxReadSettings settings = default) => phyModelCustomFile?.GetNode(ref phyModelCustom, settings);
 
     private CMwNod? visModelCustom;
     public CMwNod? VisModelCustom { get => visModelCustom; set => visModelCustom = value; }
@@ -39,7 +48,7 @@ public partial class CGameItemModel
 
             if (itemTypeVersion.HasValue && Version < itemTypeVersion)
             {
-                rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
                 rw.NodeRef<CMwNod>(ref n.visModelCustom);
             }
 
