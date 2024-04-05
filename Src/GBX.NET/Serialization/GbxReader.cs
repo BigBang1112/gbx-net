@@ -876,7 +876,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (file is not null)
         {
-            logger?.LogWarning("Reference table file discard: {File}", file);
+            logger?.LogWarning("Reference table file discard: {File} {StackTrace}", file, Environment.StackTrace);
         }
 
         return node;
