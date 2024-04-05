@@ -13,4 +13,19 @@ public sealed class GbxRefTableFile : GbxRefTableNode
     {
         return $"{FilePath}, Flags: {Flags}, UseFile: {UseFile}";
     }
+
+    public T? GetNode<T>(ref T? cachedNode, GbxReadSettings settings = default) where T : CMwNod
+    {
+        if (cachedNode is not null)
+        {
+            return cachedNode;
+        }
+
+        return cachedNode = RefTable.LoadNode<T>(this, settings);
+    }
+
+    public string GetFullPath()
+    {
+        return RefTable.GetFullFilePath(this);
+    }
 }

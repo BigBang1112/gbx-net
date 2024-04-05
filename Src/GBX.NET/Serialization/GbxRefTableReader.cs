@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxReadSettings settings)
+internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, string? fileSystemPath, GbxReadSettings settings)
 {
     private readonly ILogger? logger = settings.Logger;
 
@@ -22,7 +22,8 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, GbxR
 
         var refTable = new GbxRefTable
         {
-            AncestorLevel = reader.ReadInt32()
+            AncestorLevel = reader.ReadInt32(),
+            FileSystemPath = fileSystemPath
         };
 
         logger?.LogDebug("Ancestor level: {AncestorLevel}", refTable.AncestorLevel);

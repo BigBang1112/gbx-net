@@ -131,11 +131,13 @@ public partial class Gbx : IGbx
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, settings);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+
+            if (logger is not null) LoggerExtensions.LogInformation(logger, "Unknown Gbx, completed.");
 
             return new Gbx(header, unknownBody)
             {
@@ -196,7 +198,7 @@ public partial class Gbx : IGbx
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, settings);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
 
         reader.ResetIdState();
         reader.ExpectedNodeCount = header.NumNodes;
@@ -238,7 +240,7 @@ public partial class Gbx : IGbx
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, settings);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
         
         if (node is null) // aka, header is GbxHeaderUnknown
@@ -280,7 +282,7 @@ public partial class Gbx : IGbx
         using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
 
         var header = GbxHeader.Parse<T>(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, settings);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
 
         return new Gbx<T>(header, body, node)
