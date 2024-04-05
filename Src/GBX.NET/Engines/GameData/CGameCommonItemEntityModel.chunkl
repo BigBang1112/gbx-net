@@ -9,7 +9,7 @@ CGameCommonItemEntityModel 0x2E027000
   string
   string
  v4+
-  CMwNod StaticObject
+  CPlugStaticObjectModel* StaticObject
  v2+
   CMwNod TriggerShape
   iso4

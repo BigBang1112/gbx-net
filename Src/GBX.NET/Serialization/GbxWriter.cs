@@ -49,6 +49,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(Byte3 value);
     void Write(Vec2 value);
     void Write(Vec3 value);
+    void WriteVec3_10b(Vec3 value);
     void Write(Vec4 value);
     void Write(BoxAligned value);
     void Write(BoxInt3 value);
@@ -89,6 +90,8 @@ public partial interface IGbxWriter : IDisposable
 
     void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null, bool hasLengthPrefix = true);
     void WriteArrayOptimizedInt2(Int2[]? value, int? determineFrom = null, bool hasLengthPrefix = true);
+    void WriteArrayVec3_10b(Vec3[]? value);
+    void WriteArrayVec3_10b(Vec3[]? value, int length);
 
     void WriteArray<T>(T[]? value, bool lengthInBytes = false) where T : struct;
     void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
@@ -469,6 +472,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.X);
         Write(value.Y);
         Write(value.Z);
+    }
+
+    public void WriteVec3_10b(Vec3 value)
+    {
+        Write((int)(value.X * 0x1FF) + ((int)(value.Y * 0x1FF) << 10) + ((int)(value.Z * 0x1FF) << 20));
     }
 
     public void Write(Vec4 value)
@@ -882,6 +890,45 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             default:
                 WriteArray(Array.ConvertAll(value, x => (ushort)(x.X & 0xFF | x.Y << 8)));
                 break;
+        }
+    }
+
+    public void WriteArrayVec3_10b(Vec3[]? value, int length)
+    {
+        ValidateCollectionLength(length);
+
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                WriteVec3_10b(item);
+            }
+        }
+
+        if (value is null || length > value.Length)
+        {
+            for (var i = value?.Length ?? 0; i < length; i++)
+            {
+                Write(0);
+            }
+        }
+    }
+
+    public void WriteArrayVec3_10b(Vec3[]? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        ValidateCollectionLength(value.Length);
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteVec3_10b(item);
         }
     }
 

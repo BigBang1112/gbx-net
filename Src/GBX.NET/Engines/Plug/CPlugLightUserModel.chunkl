@@ -1,0 +1,16 @@
+CPlugLightUserModel 0x090F9000
+
+0x000
+ version
+ int
+ vec3 Color
+ float Intensity
+ float Distance
+ float PointEmissionRadius
+ float PointEmissionLength
+ float SpotInnerAngle
+ float SpotOuterAngle
+ float SpotEmissionSizeX
+ float SpotEmissionSizeY
+ v1+
+  bool NightOnly

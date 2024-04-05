@@ -42,6 +42,7 @@ public partial interface IGbxReader : IDisposable
     Byte3 ReadByte3();
     Vec2 ReadVec2();
     Vec3 ReadVec3();
+    Vec3 ReadVec3_10b();
     Vec4 ReadVec4();
     BoxAligned ReadBoxAligned();
     BoxInt3 ReadBoxInt3();
@@ -89,6 +90,8 @@ public partial interface IGbxReader : IDisposable
     int[] ReadArrayOptimizedInt(int? determineFrom = null);
     Int2[] ReadArrayOptimizedInt2(int length, int? determineFrom = null);
     Int2[] ReadArrayOptimizedInt2(int? determineFrom = null);
+    Vec3[] ReadArrayVec3_10b();
+    Vec3[] ReadArrayVec3_10b(int length);
 
     T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
@@ -397,6 +400,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public Vec3 ReadVec3()
     {
         return new(ReadSingle(), ReadSingle(), ReadSingle());
+    }
+
+    public Vec3 ReadVec3_10b()
+    {
+        var val = ReadInt32();
+
+        return new Vec3(
+            (val & 0x3FF) / (float)0x1FF,
+            ((val >> 10) & 0x3FF) / (float)0x1FF,
+            ((val >> 20) & 0x3FF) / (float)0x1FF);
     }
 
     public Vec4 ReadVec4()
@@ -1050,6 +1063,30 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     }
 
     public Int2[] ReadArrayOptimizedInt2(int? determineFrom = null) => ReadArrayOptimizedInt2(ReadInt32(), determineFrom);
+
+    public Vec3[] ReadArrayVec3_10b(int length)
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+        
+        ValidateCollectionLength(length);
+        
+        var array = new Vec3[length];
+        
+        for (int i = 0; i < length; i++)
+        {
+            array[i] = ReadVec3_10b();
+        }
+        
+        return array;
+    }
+
+    public Vec3[] ReadArrayVec3_10b()
+    {
+        return ReadArrayVec3_10b(ReadInt32());
+    }
 
     public T ReadReadable<T>(int version = 0) where T : IReadable, new()
     {
