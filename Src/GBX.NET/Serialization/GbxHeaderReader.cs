@@ -219,7 +219,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             var actualChunkSize = (int)(chunkSize & ~0x80000000);
             var isHeavy = (chunkSize & 0x80000000) != 0;
 
-            logger?.LogDebug("Chunk 0x{ChunkId:X8} (Size: {Size}, Heavy: {Heavy})", chunkId, chunkSize, isHeavy);
+            logger?.LogDebug("Chunk 0x{ChunkId:X8} (Size: {Size}, Heavy: {Heavy})", chunkId, actualChunkSize, isHeavy);
 
             if (actualChunkSize > GbxReader.MaxDataSize)
             {

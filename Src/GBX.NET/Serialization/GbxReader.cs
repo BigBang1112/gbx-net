@@ -861,7 +861,17 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var classId = ClassManager.Wrap(rawClassId);
 
-        logger?.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
+        if (logger is not null)
+        {
+            if (classId == rawClassId)
+            {
+                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName})", index, classId, ClassManager.GetName(classId));
+            }
+            else
+            {
+                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
+            }
+        }
 
 #if NET8_0_OR_GREATER
         var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
@@ -877,6 +887,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         if (index.HasValue)
         {
             // TODO: Report on replacements
+            if (logger is not null && NodeDict.TryGetValue(index.Value, out var existingNode))
+            {
+                logger.LogWarning("NodeRef #{Index}: {ExistingNode} (existing was overwriten!)", index.Value, existingNode);
+            }
+
             NodeDict[index.Value] = nod;
         }
 

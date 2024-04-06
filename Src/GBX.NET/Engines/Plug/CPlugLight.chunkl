@@ -10,3 +10,20 @@ CPlugLight 0x0901D000
 0x002 (base: 0x000)
  base
  uint // DoData
+
+0x003
+ version
+ CPlugFileImg ImageAnim
+ float AnimPeriodMin
+ float AnimPeriodMax
+ v1+
+  id AnimTimerName
+
+0x004
+ version
+ GxLight GxLightModel
+ int
+ int
+ int
+ int
+ int

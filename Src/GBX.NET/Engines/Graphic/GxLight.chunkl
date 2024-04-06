@@ -22,3 +22,15 @@ GxLight 0x04001000
  float
  float
  float
+
+0x00A
+ version
+ vec3 Color
+ uint // DoData
+ float Intensity
+ float
+ float ShadowIntensity
+ float FlareIntensity
+ float
+ float
+ float

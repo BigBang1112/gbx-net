@@ -38,12 +38,14 @@ public partial class CPlugSurface
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
 
+            // Still incorrect
             rw.Data(ref U01);
 
             if (Version >= 4)
             {
                 rw.Byte(ref U02);
             }
+            //
 
             if (Version >= 1)
             {

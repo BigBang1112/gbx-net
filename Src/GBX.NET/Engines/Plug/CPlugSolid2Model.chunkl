@@ -24,7 +24,7 @@ archive PreLightGen
  float
  float
  float
- int SpriteCount
+ int2 SpriteCount
  boxaligned[]
  if Version >= 1
   int4[] UvGroups

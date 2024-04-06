@@ -24,7 +24,7 @@ public partial class CPlugVertexStream
     {
         public int Version { get; set; }
 
-        public bool U04;
+        public bool U01;
 
         public override void ReadWrite(CPlugVertexStream n, GbxReaderWriter rw)
         {
@@ -44,9 +44,9 @@ public partial class CPlugVertexStream
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ArrayReadableWritable<DataDecl>(ref n.dataDecls!, n.count);
+            rw.ArrayReadableWritable<DataDecl>(ref n.dataDecls!);
 
-            rw.Boolean(ref U04);
+            rw.Boolean(ref U01);
 
             foreach (var decl in n.dataDecls)
             {

@@ -18,3 +18,23 @@ GxLightBall 0x04002000
  float
  float
  vec3 AmbientRGB
+
+0x008
+ uint
+ float
+ float
+ float
+ float
+ float EmittingRadius
+ float
+ float
+ float
+ vec3 AmbientRGB
+ float
+ float
+
+0x009
+ float
+
+0x00A
+ float
