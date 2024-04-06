@@ -94,11 +94,15 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             return false;
         }
 
-        // Corrupted header extract scenarios
-        if (userDataNums.NumChunks == 0 && userDataNums.Length > sizeof(int))
+        if (userDataNums.NumChunks == 0)
         {
-            logger?.LogWarning("UserData is zeroed, possibly corrupted header. (EXPLICIT)");
-            reader.SkipData(userDataNums.Length - sizeof(int));
+            if (userDataNums.Length > sizeof(int))
+            {
+                // Corrupted header extract scenarios
+                logger?.LogWarning("UserData is zeroed, possibly corrupted header. (EXPLICIT)");
+                reader.SkipData(userDataNums.Length - sizeof(int));
+            }
+
             return false;
         }
 
@@ -138,11 +142,15 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
             return false;
         }
 
-        // Corrupted header extract scenarios
-        if (userDataNums.NumChunks == 0 && userDataNums.Length > sizeof(int))
+        if (userDataNums.NumChunks == 0)
         {
-            logger?.LogWarning("UserData is zeroed, possibly corrupted header. (IMPLICIT)");
-            reader.SkipData(userDataNums.Length - sizeof(int));
+            if (userDataNums.Length > sizeof(int))
+            {
+                // Corrupted header extract scenarios
+                logger?.LogWarning("UserData is zeroed, possibly corrupted header. (IMPLICIT)");
+                reader.SkipData(userDataNums.Length - sizeof(int));
+            }
+
             return false;
         }
 
