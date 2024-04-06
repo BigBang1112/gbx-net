@@ -58,7 +58,7 @@ foreach (var arg in args)
             continue;
         }
 
-        map.PlayerModel = (car, 10003, "");
+        map.PlayerModel = new Ident(car, new(10003), "");
         map.MapUid = $"{Convert.ToBase64String(Encoding.ASCII.GetBytes(Guid.NewGuid().ToString()))[..10]}{defaultMapUid.Substring(9, 10)}ENVIMIX";
         map.MapName = string.Format(mapFormat, defaultMapName, car);
 
