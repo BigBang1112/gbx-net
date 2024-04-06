@@ -12,7 +12,7 @@ CPlugSurface 0x0900C000
 archive SurfMaterial
  bool IsMaterial
  if IsMaterial
-  CPlugMaterial Material
+  CPlugMaterial Material (external)
  if !IsMaterial
   short SurfaceId
 

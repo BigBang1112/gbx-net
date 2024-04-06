@@ -116,14 +116,24 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
         foreach (var chunk in node.Chunks.OfType<IHeaderChunk>())
         {
-            var chunkStartPos = concatenatedDataMs.Position;
+            int size;
 
-            WriteChunk(node, chunk, concatenatedDataRw);
+            if (chunk is HeaderChunk unknownHeaderChunk)
+            {
+                concatenatedDataW.Write(unknownHeaderChunk.Data);
+                size = unknownHeaderChunk.Data.Length;
+            }
+            else
+            {
+                var chunkStartPos = concatenatedDataMs.Position;
+                WriteChunk(node, chunk, concatenatedDataRw);
+                size = (int)(concatenatedDataMs.Position - chunkStartPos);
+            }
 
             infos.Add(new HeaderChunkInfo
             {
                 Id = chunk.Id,
-                Size = (int)(concatenatedDataMs.Position - chunkStartPos),
+                Size = size,
                 IsHeavy = chunk.IsHeavy
             });
         }

@@ -1,12 +1,17 @@
 ﻿using GBX.NET.LZO;
 using KellermanSoftware.CompareNetObjects;
+using Xunit.Abstractions;
 
 namespace GBX.NET.Tests.Integration;
 
 public class GbxEqualTests
 {
-    public GbxEqualTests()
+    private readonly ITestOutputHelper output;
+
+    public GbxEqualTests(ITestOutputHelper output)
     {
+        this.output = output;
+
         Gbx.LZO = new MiniLZO();
         Gbx.StrictBooleans = true;
     }
@@ -35,9 +40,16 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
     public async Task TestGbxEqualData(string filePath)
     {
-        var inputGbx = await Gbx.ParseAsync(Path.Combine("Files", "Gbx", filePath));
+        using var logger = output.BuildLogger();
+
+        var inputGbx = await Gbx.ParseAsync(Path.Combine("Files", "Gbx", filePath), new() { Logger = logger });
         inputGbx.BodyCompression = GbxCompression.Uncompressed;
 
         using var savedGbxMs = new MemoryStream();
@@ -45,7 +57,7 @@ public class GbxEqualTests
 
         savedGbxMs.Position = 0;
 
-        var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs);
+        var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs, new() { Logger = logger });
 
         using var savedGbxAgainMs = new MemoryStream();
         gbxFromSavedGbx.Save(savedGbxAgainMs);
@@ -71,22 +83,29 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
     public async Task TestGbxEqualObjects(string filePath)
     {
+        using var logger = output.BuildLogger();
+
         using var inputGbxMs = new MemoryStream();
 
         await Gbx.DecompressAsync(Path.Combine("Files", "Gbx", filePath), inputGbxMs, leaveOpen: true);
 
         inputGbxMs.Position = 0;
 
-        var inputGbx = await Gbx.ParseAsync(inputGbxMs);
+        var inputGbx = await Gbx.ParseAsync(inputGbxMs, new() { Logger = logger });
 
         using var savedGbxMs = new MemoryStream();
         inputGbx.Save(savedGbxMs, new() { LeaveOpen = true });
 
         savedGbxMs.Position = 0;
 
-        var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs);
+        var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs, new() { Logger = logger });
 
         inputGbx.FilePath = null;
 

@@ -33,7 +33,7 @@ public partial class CPlugSurface
 
             if (rw.Writer is not null)
             {
-                WriteSurf(n.Surf, rw.Writer);
+                WriteSurf(n.Surf, rw.Writer, n.surfVersion);
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
@@ -87,22 +87,28 @@ public partial class CPlugSurface
         return surf;
     }
 
-    internal static void WriteSurf(ISurf? surf, GbxWriter w)
+    internal static void WriteSurf(ISurf? surf, GbxWriter w, int version)
     {
-        switch (surf)
+        w.Write(surf switch
         {
-            default:
-                throw new NotSupportedException("Cannot write default (null) surf.");
-        }
+            Sphere => 0,
+            Ellipsoid => 1,
+            Box => 6,
+            Mesh => 7,
+            Compound => 13,
+            _ => throw new NotSupportedException("Cannot write default (null) surf.")
+        });
+
+        surf.Write(w, version);
     }
 
     public sealed partial class SurfMaterial
     {
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(material is not null))
+            if (rw.Boolean(material is not null || materialFile is not null))
             {
-                rw.NodeRef<CPlugMaterial>(ref material);
+                rw.NodeRef<CPlugMaterial>(ref material, ref materialFile);
             }
             else
             {

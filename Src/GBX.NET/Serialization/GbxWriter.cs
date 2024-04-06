@@ -107,6 +107,12 @@ public partial interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(IList<T?>? value) where T : IClass;
     void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass;
+    void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : IClass;
+    void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : IClass;
+    void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : IClass;
+    void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : IClass;
+    void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : IClass;
+    void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : IClass;
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
@@ -1086,7 +1092,39 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+        if (value is null || value.Length == 0)
+        {
+            return;
+        }
+
+        ValidateCollectionLength(length);
+
+        if (value.Length == length)
+        {
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Write(MemoryMarshal.Cast<T, byte>(value));
+#else
+            Write(MemoryMarshal.Cast<T, byte>(value).ToArray());
+#endif
+            return;
+        }
+
+        if (value.Length > length)
+        {
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length));
+#else
+            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length).ToArray());
+#endif
+            return;
+        }
+
+        // Can be improved
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()));
+#else
+        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()).ToArray());
+#endif
     }
 
     public void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct
@@ -1191,6 +1229,60 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         WriteDeprecVersion();
         WriteListNodeRef(value);
+    }
+
+    public void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : IClass
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item.Node, item.File);
+        }
+    }
+
+    public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : IClass
+    {
+        WriteDeprecVersion();
+        WriteArrayExternalNodeRef(value);
+    }
+
+    public void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : IClass
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item.Node, item.File);
+        }
+    }
+
+    public void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : IClass
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : IClass
+    {
+        WriteDeprecVersion();
+        WriteListExternalNodeRef(value);
     }
 
     public void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()

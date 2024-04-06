@@ -5,7 +5,7 @@ public partial class CPlugSolid2Model
     private ShadedGeom[]? shadedGeoms;
     private CPlugVisual[]? visuals;
     private string[]? materialIds;
-    private CPlugMaterial[]? materials;
+    private External<CPlugMaterial>[]? materials;
     private CPlugSkel? skel;
     private int visCstType;
     private PreLightGen? preLightGenerator;

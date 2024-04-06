@@ -188,7 +188,7 @@ public partial class CPlugVisual
 
             w.Write(n.Count);
 
-            w.WriteListNodeRef(n.VertexStreams);
+            w.WriteListNodeRef(n.VertexStreams!);
 
             for (var i = 0; i < n.TexCoords.Length; i++)
             {
@@ -208,8 +208,6 @@ public partial class CPlugVisual
 
     public partial class Chunk0900600C
     {
-        public Iso4[]? U01;
-
         public override void Read(CPlugVisual n, GbxReader r)
         {
             n.IsGeometryStatic = r.ReadBoolean();
@@ -240,6 +238,36 @@ public partial class CPlugVisual
 
             n.BoundingBox = r.ReadBoxAligned();
         }
+
+        public override void Write(CPlugVisual n, GbxWriter w)
+        {
+            w.Write(n.IsGeometryStatic);
+            w.Write(n.IsIndexationStatic);
+
+            w.Write(n.TexCoords.Length);
+
+            var skinFlags = n.Flags & 7;
+            w.Write(skinFlags);
+
+            w.Write(n.Count);
+
+            w.WriteListNodeRef(n.VertexStreams!);
+
+            for (var i = 0; i < n.TexCoords.Length; i++)
+            {
+                n.TexCoords[i].Write(w);
+            }
+
+            if (skinFlags != 0)
+            {
+                // DoData
+                throw new NotSupportedException("Skin flags are presented");
+            }
+
+            w.Write(n.IsFlagBitSet(8));
+
+            w.Write(n.BoundingBox);
+        }
     }
 
     public partial class Chunk0900600D
@@ -264,11 +292,26 @@ public partial class CPlugVisual
 
             n.BoundingBox = r.ReadBoxAligned();
         }
-    }
 
-    public partial class Chunk0900600F
-    {
+        public override void Write(CPlugVisual n, GbxWriter w)
+        {
+            w.Write(ConvertFlagsToChunkFlags(n.Flags));
+            w.Write(n.TexCoords.Length);
+            w.Write(n.Count);
+            w.WriteListNodeRef(n.VertexStreams!);
 
+            for (var i = 0; i < n.TexCoords.Length; i++)
+            {
+                n.TexCoords[i].Write(w);
+            }
+
+            if ((n.Flags & 7) != 0)
+            {
+                throw new Exception();
+            }
+
+            w.Write(n.BoundingBox);
+        }
     }
 
     public sealed class TexCoordSet : IVersionable
@@ -349,6 +392,7 @@ public partial class CPlugVisual
             {
                 var expectedLength = TexCoords.Length * Flags.Value & 0xFF;
 
+                // This is weird, needs redo
                 var u01 = U01;
 
                 if (u01 is null)
@@ -360,7 +404,7 @@ public partial class CPlugVisual
                     Array.Resize(ref u01, expectedLength);
                 }
 
-                w.WriteArray(u01);
+                w.WriteArray(u01, expectedLength);
             }
         }
     }

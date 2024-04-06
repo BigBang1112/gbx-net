@@ -106,6 +106,12 @@ public partial interface IGbxReader : IDisposable
     IList<T?> ReadListNodeRef<T>(int length) where T : IClass;
     IList<T?> ReadListNodeRef<T>() where T : IClass;
     IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
+    External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : IClass;
+    External<T>[] ReadArrayExternalNodeRef<T>() where T : IClass;
+    External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : IClass;
+    IList<External<T>> ReadListExternalNodeRef<T>(int length) where T : IClass;
+    IList<External<T>> ReadListExternalNodeRef<T>() where T : IClass;
+    IList<External<T>> ReadListExternalNodeRef_deprec<T>() where T : IClass;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
@@ -1353,6 +1359,62 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadListNodeRef<T>();
+    }
+
+    public External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : IClass
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        ValidateCollectionLength(length);
+
+        var array = new External<T>[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            var node = ReadNodeRef<T>(out var file);
+            array[i] = new(node, file);
+        }
+
+        return array;
+    }
+
+    public External<T>[] ReadArrayExternalNodeRef<T>() where T : IClass => ReadArrayExternalNodeRef<T>(ReadInt32());
+
+    public External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : IClass
+    {
+        ReadDeprecVersion();
+        return ReadArrayExternalNodeRef<T>();
+    }
+
+    public IList<External<T>> ReadListExternalNodeRef<T>(int length) where T : IClass
+    {
+        if (length == 0)
+        {
+            return new List<External<T>>();
+        }
+
+        ValidateCollectionLength(length);
+
+        var list = new List<External<T>>(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var node = ReadNodeRef<T>(out var file);
+            list.Add(new(node, file));
+        }
+
+        return list;
+    }
+
+    public IList<External<T>> ReadListExternalNodeRef<T>() where T : IClass => ReadListExternalNodeRef<T>(ReadInt32());
+
+    public IList<External<T>> ReadListExternalNodeRef_deprec<T>() where T : IClass
+    {
+        ReadDeprecVersion();
+        return ReadListExternalNodeRef<T>();
     }
 
     public string[] ReadArrayId(int length)
