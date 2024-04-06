@@ -34,6 +34,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     public async Task TestGbxEqualData(string filePath)
     {
         var inputGbx = await Gbx.ParseAsync(Path.Combine("Files", "Gbx", filePath));
@@ -69,6 +70,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
+    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     public async Task TestGbxEqualObjects(string filePath)
     {
         using var inputGbxMs = new MemoryStream();
