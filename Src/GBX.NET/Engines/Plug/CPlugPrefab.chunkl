@@ -1,1 +1,4 @@
 CPlugPrefab 0x09145000
+
+archive EntRef
+ CPlugStaticObjectModel* Model
