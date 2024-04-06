@@ -106,7 +106,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         Span<HeaderChunkInfo> headerChunkInfos = stackalloc HeaderChunkInfo[userDataNums.NumChunks];
 
-        FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
+        FillHeaderChunkInfo(headerChunkInfos, userDataNums);
 
         foreach (var desc in headerChunkInfos)
         {
@@ -150,7 +150,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
 
         Span<HeaderChunkInfo> headerChunkInfos = stackalloc HeaderChunkInfo[userDataNums.NumChunks];
 
-        FillHeaderChunkInfo(headerChunkInfos, reader, userDataNums);
+        FillHeaderChunkInfo(headerChunkInfos, userDataNums);
 
         var nodeDict = default(Dictionary<uint, CMwNod>);
 
@@ -208,7 +208,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         return nod;
     }
 
-    internal void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader, UserDataNumbers userDataNums)
+    internal void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, UserDataNumbers userDataNums)
     {
         var totalSize = 4; // Includes the number of header chunks
 

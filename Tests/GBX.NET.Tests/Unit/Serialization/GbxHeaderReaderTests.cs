@@ -114,10 +114,12 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
+        var parser = new GbxHeaderReader(reader, default);
+
         Span<HeaderChunkInfo> headerChunkDescs = stackalloc HeaderChunkInfo[numChunks];
 
         // Act
-        GbxHeaderReader.FillHeaderChunkInfo(headerChunkDescs, reader, userDataInfo);
+        parser.FillHeaderChunkInfo(headerChunkDescs, userDataInfo);
 
         // Assert
         Assert.Equal(expected: (uint)0x03043003, actual: headerChunkDescs[0].Id);
@@ -149,10 +151,12 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
+        var parser = new GbxHeaderReader(reader, default);
+
         var headerChunkDescs = new HeaderChunkInfo[numChunks];
 
         // Act & Assert
-        Assert.Throws<LengthLimitException>(() => GbxHeaderReader.FillHeaderChunkInfo(headerChunkDescs, reader, userDataInfo));
+        Assert.Throws<LengthLimitException>(() => parser.FillHeaderChunkInfo(headerChunkDescs, userDataInfo));
         Assert.Equal(expected: 8, actual: ms.Position);
     }
 
@@ -176,10 +180,12 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
+        var parser = new GbxHeaderReader(reader, default);
+
         var headerChunkDescs = new HeaderChunkInfo[numChunks];
 
         // Act & Assert
-        Assert.Throws<InvalidDataException>(() => GbxHeaderReader.FillHeaderChunkInfo(headerChunkDescs, reader, userDataInfo));
+        Assert.Throws<InvalidDataException>(() => parser.FillHeaderChunkInfo(headerChunkDescs, userDataInfo));
 
         Assert.Equal(expected: streamPos, actual: ms.Position);
     }

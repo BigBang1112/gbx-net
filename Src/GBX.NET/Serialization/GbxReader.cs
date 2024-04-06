@@ -886,7 +886,6 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (index.HasValue)
         {
-            // TODO: Report on replacements
             if (logger is not null && NodeDict.TryGetValue(index.Value, out var existingNode))
             {
                 logger.LogWarning("NodeRef #{Index}: {ExistingNode} (existing was overwriten!)", index.Value, existingNode);
