@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<PackageId>GBX.NET.Json</PackageId>
-		<Version>1.0.0-alpha1</Version>
+		<PackageId>GBX.NET.Imaging</PackageId>
+		<Version>2.0.0-alpha1</Version>
 		<Authors>BigBang1112</Authors>
-		<Description>Better and easier JSON serialization for GBX.NET objects. This is still WIP.</Description>
+		<Description>Provides extensions for image handling in GBX.NET (GDI+, Windows only).</Description>
 		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 		<PackageIcon>logo_icon_outline.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageTags>gbx, json, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
+		<PackageTags>gbx, imaging, image, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>net8.0-windows;net6.0-windows;netstandard2.0</TargetFrameworks>
 		<LangVersion>12</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -28,7 +28,7 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 

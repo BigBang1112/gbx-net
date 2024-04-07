@@ -1,8 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.0</Version>
+		<PackageId>GBX.NET.Crypto</PackageId>
+		<Version>1.0.0-alpha1</Version>
+		<Authors>BigBang1112</Authors>
+		<Description></Description>
+		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+		<PackageIcon>logo_icon_outline.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>gbx, encryption, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
 		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -14,19 +23,34 @@
 		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
+		<IncludeSymbols>true</IncludeSymbols>
 
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+	<ItemGroup>
+		<None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="ThisAssembly.Git" Version="1.4.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />

@@ -1,8 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>2.0.0</Version>
+		<PackageId>GBX.NET</PackageId>
+		<Version>2.0.0-alpha1</Version>
+		<Authors>BigBang1112</Authors>
+		<Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 200+ Gbx classes.</Description>
+		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+		<PackageIcon>logo_icon_outline.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
 		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -14,22 +23,13 @@
 		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
+		<IncludeSymbols>true</IncludeSymbols>
 
-		<RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<PackageIcon>logo_icon_outline.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup>
