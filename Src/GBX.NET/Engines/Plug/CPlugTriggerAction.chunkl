@@ -1,0 +1,24 @@
+CPlugTriggerAction 0x09104000
+
+archive
+ v5+
+  int
+ v4+
+  float
+  float
+  float
+  float
+ v3+
+  int
+ v2+
+  int
+ v1+
+  int
+  int
+ float
+ float
+ float
+ float
+ float
+ float
+ id

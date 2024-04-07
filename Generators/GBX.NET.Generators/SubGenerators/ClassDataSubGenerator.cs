@@ -264,19 +264,19 @@ internal class ClassDataSubGenerator
         {
             if (archiveStructureKind.Value == 1) // StructureKind == SeparateReadAndWrite
             {
-                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IReadable") == false)
+                if (classInfo.TypeSymbol is null || classInfo.TypeSymbol.AllInterfaces.Any(x => x.Name == "IReadable") == false)
                 {
                     inheritanceList.Add("IReadable");
                 }
 
-                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IWritable") == false)
+                if (classInfo.TypeSymbol is null || classInfo.TypeSymbol.AllInterfaces.Any(x => x.Name == "IWritable") == false)
                 {
                     inheritanceList.Add("IWritable");
                 }
             }
             else
             {
-                if (classInfo.TypeSymbol?.AllInterfaces.Any(x => x.Name == "IReadableWritable") == false)
+                if (classInfo.TypeSymbol is null || classInfo.TypeSymbol.AllInterfaces.Any(x => x.Name == "IReadableWritable") == false)
                 {
                     inheritanceList.Add("IReadableWritable");
                 }
