@@ -34,4 +34,39 @@ public partial class CPlugPrefab : IVersionable
         rw.Int32(ref u02);
         rw.ArrayReadableWritable<EntRef>(ref ents, entsLength);
     }
+
+    public sealed partial class EntRef
+    {
+        private CMwNod? model;
+        public CMwNod? Model { get => modelFile?.GetNode(ref model) ?? model; set => model = value; }
+        private Components.GbxRefTableFile? modelFile;
+        public Components.GbxRefTableFile? ModelFile { get => modelFile; set => modelFile = value; }
+        public CMwNod? GetModel(GbxReadSettings settings = default) => modelFile?.GetNode(ref model, settings);
+
+        private Quat rotation;
+        public Quat Rotation { get => rotation; set => rotation = value; }
+
+        private Vec3 position;
+        public Vec3 Position { get => position; set => position = value; }
+
+        private SMetaPtr? @params;
+        public SMetaPtr? Params { get => @params; set => @params = value; }
+
+        private string? u01;
+        public string? U01 { get => u01; set => u01 = value; }
+
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref model, ref modelFile);
+            rw.Quat(ref rotation);
+            rw.Vec3(ref position);
+
+            if (model is not null || modelFile is not null)
+            {
+                rw.MetaRef<SMetaPtr>(ref @params);
+            }
+
+            rw.String(ref u01);
+        }
+    }
 }

@@ -136,6 +136,7 @@ internal static class PropertyTypeExtensions
             "data" => "byte[]",
             "boolbyte" => "bool",
             "optimizedint" => "int",
+            "node" => "CMwNod",
             _ => type
         };
     }

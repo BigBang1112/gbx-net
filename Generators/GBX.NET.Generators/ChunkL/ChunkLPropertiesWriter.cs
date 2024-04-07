@@ -85,7 +85,7 @@ internal class ChunkLPropertiesWriter
             var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
 
             var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
-            var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
+            var fieldName = GetFieldName(propName);
 
             var isExternal = prop.Properties?.ContainsKey("external") ?? false;
 
@@ -213,5 +213,17 @@ internal class ChunkLPropertiesWriter
     private bool IsUnknownProperty(string? name)
     {
         return string.IsNullOrWhiteSpace(name) || (name?.Length == 3 && name[0] == 'U' && char.IsDigit(name[1]) && char.IsDigit(name[2]));
+    }
+
+    private static string GetFieldName(string propName)
+    {
+        var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
+
+        if (fieldName is "params" or "class")
+        {
+            return '@' + fieldName;
+        }
+
+        return fieldName;
     }
 }
