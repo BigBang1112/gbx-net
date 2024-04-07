@@ -1,0 +1,9 @@
+CPlugPath 0x09119000
+
+0x000
+ version = 2
+ CPlugPolyLine3[] PolyLines
+ v2+
+  bool
+  byte
+  data LineGroups // length must equal PolyLines

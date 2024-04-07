@@ -1,0 +1,22 @@
+CPlugPolyLine3 0x09118000
+
+0x000
+ version
+ vec3[] Poss
+ v2+
+  vec3[] Lefts
+  v3=
+   bool
+   int
+  v4+
+   v4=
+    bool
+   bool
+   bool
+   v5+
+    bool
+    v7+
+     byte
+     v8+
+      byte
+      id
