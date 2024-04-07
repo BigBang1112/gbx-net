@@ -13,6 +13,7 @@ public partial class CPlugVisual
     public IList<CPlugVertexStream> VertexStreams { get; set; } = [];
     public TexCoordSet[] TexCoords { get; set; } = [];
     public BoxAligned BoundingBox { get; set; }
+    public SSkinData? SkinData { get; set; }
 
     public bool IsGeometryStatic
     {
@@ -125,9 +126,9 @@ public partial class CPlugVisual
 
             w.Write(n.Count);
 
-            for (var i = 0; i < n.TexCoords.Length; i++)
+            foreach (var texCoordSet in n.TexCoords)
             {
-                n.TexCoords[i].Write(w);
+                texCoordSet.Write(w);
             }
 
             if (skinFlags != 0)
@@ -190,9 +191,9 @@ public partial class CPlugVisual
 
             w.WriteListNodeRef(n.VertexStreams!);
 
-            for (var i = 0; i < n.TexCoords.Length; i++)
+            foreach (var texCoordSet in n.TexCoords)
             {
-                n.TexCoords[i].Write(w);
+                texCoordSet.Write(w);
             }
 
             if (skinFlags != 0)
@@ -230,8 +231,7 @@ public partial class CPlugVisual
 
             if (skinFlags != 0)
             {
-                // DoData
-                throw new NotSupportedException("Skin flags are not yet supported");
+                n.SkinData = r.ReadReadable<SSkinData>(version: 0 | (skinFlags << 4));
             }
 
             n.SetFlagBit(8, r.ReadBoolean());
@@ -253,15 +253,14 @@ public partial class CPlugVisual
 
             w.WriteListNodeRef(n.VertexStreams!);
 
-            for (var i = 0; i < n.TexCoords.Length; i++)
+            foreach (var texCoordSet in n.TexCoords)
             {
-                n.TexCoords[i].Write(w);
+                texCoordSet.Write(w);
             }
 
             if (skinFlags != 0)
             {
-                // DoData
-                throw new NotSupportedException("Skin flags are presented");
+                w.WriteWritable(n.SkinData, version: 0 | (skinFlags << 4));
             }
 
             w.Write(n.IsFlagBitSet(8));
@@ -287,7 +286,7 @@ public partial class CPlugVisual
 
             if ((n.Flags & 7) != 0)
             {
-                throw new Exception();
+                n.SkinData = r.ReadReadable<SSkinData>(version: 1 | ((n.Flags & 7) << 4));
             }
 
             n.BoundingBox = r.ReadBoxAligned();
@@ -300,6 +299,73 @@ public partial class CPlugVisual
             w.Write(n.Count);
             w.WriteListNodeRef(n.VertexStreams!);
 
+            foreach (var texCoordSet in n.TexCoords)
+            {
+                texCoordSet.Write(w);
+            }
+
+            if ((n.Flags & 7) != 0)
+            {
+                w.WriteWritable(n.SkinData, version: 1 | ((n.Flags & 7) << 4));
+            }
+
+            w.Write(n.BoundingBox);
+        }
+    }
+
+    [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class Chunk0900600E;
+
+    public partial class Chunk0900600F : IVersionable
+    {
+        public int Version { get; set; }
+
+        public ushort[]? U01;
+        public int U02;
+        public int U03;
+
+        public override void Read(CPlugVisual n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+            n.Flags = ConvertChunkFlagsToFlags(r.ReadInt32());
+            var numTexCoordSets = r.ReadInt32();
+            n.Count = r.ReadInt32();
+            n.VertexStreams = r.ReadListNodeRef<CPlugVertexStream>()!;
+
+            n.TexCoords = new TexCoordSet[numTexCoordSets];
+            for (var i = 0; i < numTexCoordSets; i++)
+            {
+                n.TexCoords[i] = TexCoordSet.Read(r, n.Count);
+            }
+
+            if ((n.Flags & 7) != 0)
+            {
+                n.SkinData = r.ReadReadable<SSkinData>(version: (2 + Version) | ((n.Flags & 7) << 4));
+            }
+
+            n.BoundingBox = r.ReadBoxAligned();
+            n.BitmapElemToPacks = r.ReadArrayReadable<BitmapElemToPack>();
+
+            if (Version >= 5)
+            {
+                U01 = r.ReadArray<ushort>();
+
+                if (Version >= 6)
+                {
+                    U02 = r.ReadInt32();
+                    U03 = r.ReadInt32();
+                }
+            }
+        }
+
+        public override void Write(CPlugVisual n, GbxWriter w)
+        {
+            w.Write(Version);
+            w.Write(ConvertFlagsToChunkFlags(n.Flags));
+            w.Write(n.TexCoords.Length);
+            w.Write(n.Count);
+            w.WriteListNodeRef(n.VertexStreams!);
+
             for (var i = 0; i < n.TexCoords.Length; i++)
             {
                 n.TexCoords[i].Write(w);
@@ -307,10 +373,22 @@ public partial class CPlugVisual
 
             if ((n.Flags & 7) != 0)
             {
-                throw new Exception();
+                w.WriteWritable(n.SkinData, version: (2 + Version) | ((n.Flags & 7) << 4));
             }
 
             w.Write(n.BoundingBox);
+            w.WriteArrayWritable(n.BitmapElemToPacks!);
+
+            if (Version >= 5)
+            {
+                w.WriteArray(U01);
+
+                if (Version >= 6)
+                {
+                    w.Write(U02);
+                    w.Write(U03);
+                }
+            }
         }
     }
 
@@ -442,6 +520,85 @@ public partial class CPlugVisual
                 {
                     w.Write(U02.GetValueOrDefault());
                 }
+            }
+        }
+    }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class BitmapElemToPack;
+
+    public sealed partial class SSkinData : IReadable, IWritable
+    {
+        public bool U01 { get; set; }
+        public int U02 { get; set; }
+        public bool U03 { get; set; }
+        public bool U04 { get; set; }
+        public int BoneCount { get; set; }
+        public Iso4[]? U05 { get; set; }
+        public string[]? U06 { get; set; }
+        public int[]? U07 { get; set; }
+
+        public void Read(GbxReader r, int v = 0)
+        {
+            // 0x00C = 0, 0x00D = 1, 0x00E = 2, 0x00F = 2 + Version
+            var version = v & 15;
+            var count = v >> 4;
+
+            U01 = r.ReadBoolean();
+            U02 = r.ReadInt32();
+
+            if (version >= 5)
+            {
+                U03 = r.ReadBoolean();
+                U04 = r.ReadBoolean();
+            }
+
+            if (U03)
+            {
+                throw new Exception("SkinData U03 is true");
+            }
+
+            BoneCount = r.ReadInt32();
+
+            if (version == 2)
+            {
+                U05 = r.ReadArray<Iso4>();
+            }
+
+            U06 = r.ReadArrayId(BoneCount);
+
+            if (version != 3)
+            {
+                U07 = r.ReadArray<int>();
+            }
+        }
+
+        public void Write(GbxWriter w, int v = 0)
+        {
+            var version = v & 15;
+            var count = v >> 4;
+
+            w.Write(U01);
+            w.Write(U02);
+
+            if (version >= 5)
+            {
+                w.Write(U03);
+                w.Write(U04);
+            }
+
+            w.Write(BoneCount);
+
+            if (version == 2)
+            {
+                w.WriteArray(U05);
+            }
+
+            w.WriteArrayId(U06);
+
+            if (version != 3)
+            {
+                w.WriteArray(U07);
             }
         }
     }

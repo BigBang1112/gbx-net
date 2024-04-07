@@ -34,13 +34,6 @@ CPlugVisual 0x09006000
  BitmapElemToPack[] BitmapElemToPacks
 
 0x00F (base: 0x00E) [TMT.v4, MP4.v5]
- version
- base
- v5+
-  ushort[]
-  v6+
-   int
-   int
 
 0x010 [TMT.v0, MP4.v0]
  version
