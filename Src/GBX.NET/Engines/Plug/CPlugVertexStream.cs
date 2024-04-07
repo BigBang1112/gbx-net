@@ -39,12 +39,13 @@ public partial class CPlugVertexStream
                 return;
             }
 
+            // version and count are stored in the same int, as more than 1 argument is not possible
+            rw.ArrayReadableWritable<DataDecl>(ref n.dataDecls!, version: Version | (n.count << 3));
+
             if (Version == 0)
             {
-                throw new ChunkVersionNotSupportedException(Version);
+                return;
             }
-
-            rw.ArrayReadableWritable<DataDecl>(ref n.dataDecls!);
 
             rw.Boolean(ref U01);
 
@@ -148,6 +149,21 @@ public partial class CPlugVertexStream
 
     public partial class DataDecl
     {
+        private uint flags1;
+        public uint Flags1 { get => flags1; set => flags1 = value; }
+
+        private uint flags2;
+        public uint Flags2 { get => flags2; set => flags2 = value; }
+
+        private byte[]? u01;
+        public byte[]? U01 { get => u01; set => u01 = value; }
+
+        private ushort u02;
+        public ushort U02 { get => u02; set => u02 = value; }
+
+        private ushort offset;
+        public ushort Offset { get => offset; set => offset = value; }
+
         public EPlugVDcl WeightCount => (EPlugVDcl)(flags1 & 0x1FF);
         public EPlugVDclType Type => (EPlugVDclType)((flags1 >> 9) & 0x1FF);
         public EPlugVDclSpace Space => (EPlugVDclSpace)((flags1 >> 28) & 0xF);
@@ -155,6 +171,33 @@ public partial class CPlugVertexStream
         public override string ToString()
         {
             return $"{Type} {Space} {WeightCount}";
+        }
+
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            // unpacking that integer
+            var version = v & 7;
+            var count = v >> 3;
+
+            rw.UInt32(ref flags1);
+            rw.UInt32(ref flags2);
+
+            if ((Flags2 & 0xFFC) == 0)
+            {
+                if (version == 0)
+                {
+                    rw.Data(ref u01, (int)(flags1 >> 0x12 & 0x3FF) * count);
+                }
+            }
+            else
+            {
+                rw.UInt16(ref u02);
+                rw.UInt16(ref offset);
+                if (((ushort)(Flags2 >> 2) & 0x3FF) != Offset)
+                {
+                    throw new("");
+                }
+            }
         }
     }
 }

@@ -43,10 +43,3 @@ enum EPlugVDclSpace
  Global2D
 
 archive DataDecl
- uint Flags1
- uint Flags2
- if (Flags2 & 0xFFC) != 0
-  ushort
-  ushort Offset
-  if ((ushort)(Flags2 >> 2) & 0x3FF) != Offset
-   throw
