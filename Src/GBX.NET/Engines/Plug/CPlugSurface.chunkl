@@ -18,12 +18,12 @@ archive SurfMaterial
 
 archive Sphere
  float Size
- ushort
+ ushort U02
 
 archive Ellipsoid
  vec3 Size
- ushort
+ ushort U02
 
 archive Box
  boxaligned Transform
- ushort
+ ushort U02

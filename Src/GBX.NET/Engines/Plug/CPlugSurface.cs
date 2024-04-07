@@ -15,7 +15,9 @@ public partial class CPlugSurface
         public int Version { get; set; }
 
         public byte[]? U01;
-        public byte U02;
+        public ushort[]? U02;
+        public float? U03;
+        public ushort[]? U04;
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
@@ -38,14 +40,19 @@ public partial class CPlugSurface
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
 
-            // Still incorrect
-            rw.Data(ref U01);
-
-            if (Version >= 4)
+            if ((Version == 3 && (n.materials is null || n.materials.Length == 0)) || Version >= 4)
             {
-                rw.Byte(ref U02);
+                rw.Array<ushort>(ref U02);
             }
-            //
+
+            if (Version < 3)
+            {
+                rw.Data(ref U01); // length matches materials count
+            }
+            else
+            {
+                rw.Array<ushort>(ref U04); // length matches materials count
+            }
 
             if (Version >= 1)
             {
@@ -84,6 +91,12 @@ public partial class CPlugSurface
         };
 
         surf.Read(r, version);
+
+        if (version >= 2)
+        {
+            surf.U01 = r.ReadVec3();
+        }
+
         return surf;
     }
 
@@ -100,6 +113,11 @@ public partial class CPlugSurface
         });
 
         surf.Write(w, version);
+
+        if (version >= 2)
+        {
+            w.Write(surf.U01.GetValueOrDefault());
+        }
     }
 
     public sealed partial class SurfMaterial
@@ -119,17 +137,26 @@ public partial class CPlugSurface
 
     public interface ISurf : IReadable, IWritable
     {
-
+        public Vec3? U01 { get; set; }
     }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public sealed partial class Sphere : ISurf;
+    public sealed partial class Sphere : ISurf
+    {
+        public Vec3? U01 { get; set; }
+    }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public sealed partial class Ellipsoid : ISurf;
+    public sealed partial class Ellipsoid : ISurf
+    {
+        public Vec3? U01 { get; set; }
+    }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public sealed partial class Box : ISurf;
+    public sealed partial class Box : ISurf
+    {
+        public Vec3? U01 { get; set; }
+    }
 
     public sealed partial class Mesh : ISurf, IVersionable
     {
@@ -139,6 +166,7 @@ public partial class CPlugSurface
         public int? OctreeVersion { get; set; }
         public OctreeCell[]? OctreeCells { get; set; }
         public Triangle[]? Triangles { get; set; }
+        public Vec3? U01 { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
@@ -192,6 +220,7 @@ public partial class CPlugSurface
     public sealed partial class Compound : ISurf, IVersionable
     {
         public int Version { get; set; }
+        public Vec3? U01 { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
