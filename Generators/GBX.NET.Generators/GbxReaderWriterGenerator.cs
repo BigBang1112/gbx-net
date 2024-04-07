@@ -53,12 +53,12 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
         var readerMethods = reader.GetMembers()
             .OfType<IMethodSymbol>()
-            .Where(x => !x.IsOverride && x.Name.StartsWith("Read"))
+            .Where(x => !x.IsOverride && x.Name.StartsWith("Read") && !x.GetAttributes().Any(x => x.AttributeClass?.Name == "IgnoreForCodeGenerationAttribute"))
             .ToImmutableList();
 
         var writerMethods = writer.GetMembers()
             .OfType<IMethodSymbol>()
-            .Where(x => !x.IsOverride && x.Name.StartsWith("Write"))
+            .Where(x => !x.IsOverride && x.Name.StartsWith("Write") && !x.GetAttributes().Any(x => x.AttributeClass?.Name == "IgnoreForCodeGenerationAttribute"))
             .ToImmutableList();
 
         foreach (var readerMethod in readerMethods)

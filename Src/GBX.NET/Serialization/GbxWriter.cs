@@ -64,8 +64,11 @@ public partial interface IGbxWriter : IDisposable
     void Write(Ident? value);
     void Write(PackDesc? value);
     void WriteNodeRef<T>(T? value) where T : IClass;
+    [IgnoreForCodeGeneration] void WriteNodeRef(IClass? value);
     void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass;
+    [IgnoreForCodeGeneration] void WriteNodeRef(IClass? value, in GbxRefTableFile? file);
     void WriteNode<T>(T? value) where T : IClass;
+    void WriteMetaRef<T>(T? value) where T : IClass;
     void Write(TimeInt32 value);
     void WriteTimeInt32Nullable(TimeInt32? value);
     void Write(TimeSingle value);
@@ -675,6 +678,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass
     {
+        WriteNodeRef((IClass?)value, in file);
+    }
+
+    [IgnoreForCodeGeneration]
+    public void WriteNodeRef(IClass? value, in GbxRefTableFile? file)
+    {
         if (value is null && file is null)
         {
             Write(-1);
@@ -710,18 +719,25 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new InvalidOperationException("Value is null.");
         }
 
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
-
         if (ClassManager.GetClassId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
         }
 
         Write(classId);
+
+        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
         value.ReadWrite(rw);
     }
 
     public void WriteNodeRef<T>(T? value) where T : IClass
+    {
+        WriteNodeRef(value, file: null);
+    }
+
+    [IgnoreForCodeGeneration]
+    public void WriteNodeRef(IClass? value)
     {
         WriteNodeRef(value, file: null);
     }
@@ -733,6 +749,26 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             Write(-1);
             return;
         }
+
+        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+
+        value.ReadWrite(rw);
+    }
+
+    public void WriteMetaRef<T>(T? value) where T : IClass
+    {
+        if (value is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
+        {
+            throw new InvalidOperationException("Class ID not found.");
+        }
+
+        Write(classId);
 
         rw ??= new GbxReaderWriter(this, leaveOpen: true);
 
