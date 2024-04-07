@@ -439,6 +439,8 @@ public partial class Gbx : IGbx
     /// </summary>
     /// <param name="input">Gbx stream to compress.</param>
     /// <param name="output">Output Gbx stream in the compressed form.</param>
+    /// <param name="leaveOpen">If true, the input and output streams will be left open after the method returns.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>False if <paramref name="input"/> was already compressed, otherwise true.</returns>
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentNullException"></exception>

@@ -30,7 +30,7 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 

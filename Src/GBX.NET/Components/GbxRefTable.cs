@@ -32,7 +32,10 @@ public sealed class GbxRefTable
     private string GetFilePath(GbxRefTableFile file)
     {
         var ancestor = string.Concat(Enumerable.Repeat(".." + Path.DirectorySeparatorChar, AncestorLevel));
-        return Path.Combine(FileSystemPath, ancestor, file.FilePath);
+        
+        return string.IsNullOrEmpty(FileSystemPath)
+            ? Path.Combine(ancestor, file.FilePath)
+            : Path.Combine(FileSystemPath, ancestor, file.FilePath);
     }
 
     public string GetFullFilePath(GbxRefTableFile file)

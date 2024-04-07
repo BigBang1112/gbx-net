@@ -38,6 +38,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="System.Drawing.Common" Version="8.0.3" />
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
