@@ -64,7 +64,7 @@ public partial class CPlugVertexStream
                             case EPlugVDcl.TexCoord6:
                             case EPlugVDcl.TexCoord7:
                                 var uvsIndex = (int)decl.WeightCount - (int)EPlugVDcl.TexCoord0;
-                                if (rw.Reader is not null) n.uvs = [];
+                                if (rw.Reader is not null) n.uvs ??= [];
                                 _ = n.uvs.TryGetValue(uvsIndex, out var uvs);
                                 rw.Array<Vec2>(ref uvs, n.count);
                                 n.uvs[uvsIndex] = uvs ?? throw new Exception("Null when it shouldn't be");
@@ -104,7 +104,7 @@ public partial class CPlugVertexStream
                             case EPlugVDcl.Color1:
                             case EPlugVDcl.Color2:
                                 var colorsIndex = (int)decl.WeightCount - (int)EPlugVDcl.Color0;
-                                if (rw.Reader is not null) n.colors = [];
+                                if (rw.Reader is not null) n.colors ??= [];
                                 _ = n.colors.TryGetValue(colorsIndex, out var colors);
                                 rw.Array<int>(ref colors, n.count);
                                 n.colors[colorsIndex] = colors ?? throw new Exception("Null when it shoudlnt be");
@@ -151,5 +151,10 @@ public partial class CPlugVertexStream
         public EPlugVDcl WeightCount => (EPlugVDcl)(flags1 & 0x1FF);
         public EPlugVDclType Type => (EPlugVDclType)((flags1 >> 9) & 0x1FF);
         public EPlugVDclSpace Space => (EPlugVDclSpace)((flags1 >> 28) & 0xF);
+
+        public override string ToString()
+        {
+            return $"{Type} {Space} {WeightCount}";
+        }
     }
 }
