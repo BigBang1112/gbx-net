@@ -45,7 +45,9 @@ public class GbxEqualTests
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
     [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
+    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
     [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
     public async Task TestGbxEqualData(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -89,7 +91,9 @@ public class GbxEqualTests
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
     [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
+    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
     [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
     public async Task TestGbxEqualObjects(string filePath)
     {
         using var logger = output.BuildLogger();
