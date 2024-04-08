@@ -587,6 +587,11 @@ public partial class CPlugVisual
                 w.Write(U04);
             }
 
+            if (U03)
+            {
+                throw new Exception("SkinData U03 is true");
+            }
+
             w.Write(BoneCount);
 
             if (version == 2)
@@ -594,7 +599,7 @@ public partial class CPlugVisual
                 w.WriteArray(U05);
             }
 
-            w.WriteArrayId(U06);
+            w.WriteArrayId(U06, BoneCount);
 
             if (version != 3)
             {

@@ -1426,7 +1426,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         {
             foreach (var item in value)
             {
-                Write(item);
+                WriteIdAsString(item);
             }
         }
 
