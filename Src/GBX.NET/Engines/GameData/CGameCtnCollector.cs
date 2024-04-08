@@ -128,21 +128,19 @@ public partial class CGameCtnCollector
 
     public partial class Chunk2E001010 : IVersionable
     {
-        private int version;
-
         public CMwNod? U01;
         private GbxRefTableFile? U01File;
         public CMwNod? U02;
 
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.NodeRef(ref U01, ref U01File); // skin direct reference inside pak
             rw.String(ref n.skinDirectory);
 
-            if (version >= 2 && (n.skinDirectory is null || n.skinDirectory.Length == 0))
+            if (Version >= 2 && string.IsNullOrEmpty(n.skinDirectory))
             {
                 rw.NodeRef(ref U02);
             }

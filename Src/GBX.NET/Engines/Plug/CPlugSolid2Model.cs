@@ -5,19 +5,22 @@ public partial class CPlugSolid2Model
     private ShadedGeom[]? shadedGeoms;
     private CPlugVisual[]? visuals;
     private string[]? materialIds;
-    private External<CPlugMaterial>[]? materials;
+    public External<CPlugMaterial>[]? materials;
     private CPlugSkel? skel;
     private int visCstType;
     private PreLightGen? preLightGenerator;
     private DateTime fileWriteTime;
     private string? materialsFolderName;
     private Light[]? lights;
-    private CPlugMaterialUserInst[]? materialInsts;
+    public CPlugMaterialUserInst[]? materialInsts;
     private CPlugLightUserModel[]? lightUserModels;
     private LightInst[] lightInsts;
     private int damageZone;
     private uint flags;
     private Material[]? customMaterials;
+
+    public int VisCstType { get => visCstType; set => visCstType = value; }
+    public string? MaterialsFolderName { get => materialsFolderName; set => materialsFolderName = value; }
 
     public partial class Chunk090BB000 : IVersionable
     {

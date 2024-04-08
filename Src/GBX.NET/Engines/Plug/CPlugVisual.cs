@@ -533,9 +533,8 @@ public partial class CPlugVisual
         public int U02 { get; set; }
         public bool U03 { get; set; }
         public bool U04 { get; set; }
-        public int BoneCount { get; set; }
         public Iso4[]? U05 { get; set; }
-        public string[]? U06 { get; set; }
+        public string[]? Bones { get; set; }
         public int[]? U07 { get; set; }
 
         public void Read(GbxReader r, int v = 0)
@@ -558,14 +557,14 @@ public partial class CPlugVisual
                 throw new Exception("SkinData U03 is true");
             }
 
-            BoneCount = r.ReadInt32();
+            var boneCount = r.ReadInt32();
 
             if (version == 2)
             {
                 U05 = r.ReadArray<Iso4>();
             }
 
-            U06 = r.ReadArrayId(BoneCount);
+            Bones = r.ReadArrayId(boneCount);
 
             if (version != 3)
             {
@@ -592,14 +591,15 @@ public partial class CPlugVisual
                 throw new Exception("SkinData U03 is true");
             }
 
-            w.Write(BoneCount);
+            var boneLength = Bones?.Length ?? 0;
+            w.Write(boneLength);
 
             if (version == 2)
             {
                 w.WriteArray(U05);
             }
 
-            w.WriteArrayId(U06, BoneCount);
+            w.WriteArrayId(Bones, boneLength);
 
             if (version != 3)
             {

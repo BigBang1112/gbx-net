@@ -58,7 +58,14 @@ public partial class CGameItemModel
 
                 if (Version >= 4)
                 {
-                    rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                    if (n.phyModelCustom is not null)
+                    {
+                        rw.Int32(-1);
+                    }
+                    else
+                    {
+                        rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                    }
 
                     if (Version >= 5)
                     {

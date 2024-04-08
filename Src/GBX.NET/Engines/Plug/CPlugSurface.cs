@@ -165,6 +165,7 @@ public partial class CPlugSurface
         public CookedTriangle[]? CookedTriangles { get; set; }
         public int? OctreeVersion { get; set; }
         public OctreeCell[]? OctreeCells { get; set; }
+        public AABBTreeCell[]? AABBTreeCells { get; set; }
         public Triangle[]? Triangles { get; set; }
         public Vec3? U01 { get; set; }
 
@@ -181,6 +182,12 @@ public partial class CPlugSurface
                     CookedTriangles = r.ReadArray<CookedTriangle>();
                     OctreeVersion = r.ReadInt32();
                     OctreeCells = r.ReadArray<OctreeCell>();
+                    break;
+                case 5:
+                    Vertices = r.ReadArray<Vec3>();
+                    CookedTriangles = r.ReadArray<CookedTriangle>();
+                    r.ReadInt32();
+                    AABBTreeCells = r.ReadArray<AABBTreeCell>();
                     break;
                 case 6:
                 case 7:
@@ -204,6 +211,12 @@ public partial class CPlugSurface
                     w.Write(OctreeVersion.GetValueOrDefault());
                     w.WriteArray(OctreeCells);
                     break;
+                case 5:
+                    w.WriteArray(Vertices);
+                    w.WriteArray(CookedTriangles);
+                    w.Write(1);
+                    w.WriteArray(AABBTreeCells);
+                    break;
                 case 6:
                 case 7:
                     w.WriteArray(Vertices);
@@ -215,6 +228,7 @@ public partial class CPlugSurface
         public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
         public readonly record struct OctreeCell(int U01, Vec3 U02, Vec3 U03, int U04);
         public readonly record struct Triangle(Int3 U01, int U02);
+        public readonly record struct AABBTreeCell(Vec3 U01, Vec3 U02, int U03);
     }
 
     public sealed partial class Compound : ISurf, IVersionable

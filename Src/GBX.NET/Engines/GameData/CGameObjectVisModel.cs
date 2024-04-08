@@ -4,14 +4,24 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameObjectVisModel
 {
+    private CPlugSolid2Model? meshShaded;
+    public CPlugSolid2Model? MeshShaded
+    {
+        get => meshShadedFile?.GetNode(ref meshShaded) ?? meshShaded;
+        set => meshShaded = value;
+    }
+    private GbxRefTableFile? meshShadedFile;
+    public GbxRefTableFile? MeshShadedFile { get => meshShadedFile; set => meshShadedFile = value; }
+    public CPlugSolid2Model? GetMeshShaded(GbxReadSettings settings = default) => meshShadedFile?.GetNode(ref meshShaded, settings);
+
     private string? mesh;
     private string? smashParticleRef;
     private string? visEntFx;
     private CMwNod? meshShadedFid;
     private Vec3? domeShaderColor;
-    private CPlugSolid2Model? meshShaded;
-    private GbxRefTableFile? meshShadedFile;
     private CPlugAnimLocSimple? locAnim;
+
+    public string? Mesh { get => mesh; set => mesh = value; }
 
     public partial class Chunk2E007001 : IVersionable
     {

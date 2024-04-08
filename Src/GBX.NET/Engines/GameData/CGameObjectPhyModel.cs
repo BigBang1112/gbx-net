@@ -5,7 +5,15 @@ namespace GBX.NET.Engines.GameData;
 public partial class CGameObjectPhyModel
 {
     private CPlugSurface? moveShapeFid;
+    public CPlugSurface? MoveShapeFid
+    {
+        get => moveShapeFidFile?.GetNode(ref moveShapeFid) ?? moveShapeFid;
+        set => moveShapeFid = value;
+    }
     private GbxRefTableFile? moveShapeFidFile;
+    public GbxRefTableFile? MoveShapeFidFile { get => moveShapeFidFile; set => moveShapeFidFile = value; }
+    public CPlugSurface? GetMoveShapeFid(GbxReadSettings settings = default) => moveShapeFidFile?.GetNode(ref moveShapeFid, settings);
+
     private CPlugSurface? hitShapeFid;
     private GbxRefTableFile? hitShapeFidFile;
     private CPlugSurface? triggerShapeFid;
@@ -38,6 +46,8 @@ public partial class CGameObjectPhyModel
     private int shieldDomeArmor = 200;
     private bool bumperEnabled;
     private bool magnetEnabled;
+
+    public string? MoveShape { get => moveShape; set => moveShape = value; }
 
     public partial class Chunk2E006001 : IVersionable
     {
