@@ -110,12 +110,12 @@ public partial interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(IList<T?>? value) where T : IClass;
     void WriteListNodeRef<T>(IList<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(IList<T?>? value) where T : IClass;
-    void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : IClass;
-    void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : IClass;
-    void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : IClass;
-    void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : IClass;
-    void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : IClass;
-    void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : IClass;
+    void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod;
+    void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod;
+    void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : CMwNod;
+    void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod;
+    void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : CMwNod;
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
@@ -1267,7 +1267,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteListNodeRef(value);
     }
 
-    public void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : IClass
+    public void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod
     {
         if (value is null)
         {
@@ -1283,18 +1283,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : IClass
+    public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod
     {
         throw new NotImplementedException();
     }
 
-    public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : IClass
+    public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteArrayExternalNodeRef(value);
     }
 
-    public void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : IClass
+    public void WriteListExternalNodeRef<T>(IList<External<T>>? value) where T : CMwNod
     {
         if (value is null)
         {
@@ -1310,12 +1310,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : IClass
+    public void WriteListExternalNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod
     {
         throw new NotImplementedException();
     }
 
-    public void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : IClass
+    public void WriteListExternalNodeRef_deprec<T>(IList<External<T>>? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteListExternalNodeRef(value);

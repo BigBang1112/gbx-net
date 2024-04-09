@@ -5,14 +5,14 @@ public partial class CPlugSolid2Model
     private ShadedGeom[]? shadedGeoms;
     private CPlugVisual[]? visuals;
     private string[]? materialIds;
-    public External<CPlugMaterial>[]? materials;
+    private External<CPlugMaterial>[]? materials;
     private CPlugSkel? skel;
     private int visCstType;
     private PreLightGen? preLightGenerator;
     private DateTime fileWriteTime;
     private string? materialsFolderName;
     private Light[]? lights;
-    public CPlugMaterialUserInst[]? materialInsts;
+    private CPlugMaterialUserInst[]? materialInsts;
     private CPlugLightUserModel[]? lightUserModels;
     private LightInst[] lightInsts;
     private int damageZone;

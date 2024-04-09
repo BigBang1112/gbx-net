@@ -35,23 +35,23 @@ public partial interface IGbxReaderWriter : IDisposable
     void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file);
 
     [return: NotNullIfNotNull(nameof(value))]
-    External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : IClass;
-    void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : IClass;
+    External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : IClass;
-    void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : IClass;
+    External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod;
+    void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : IClass;
-    void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : IClass;
+    External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod;
+    void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : IClass;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : IClass;
+    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod;
+    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : IClass;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : IClass;
+    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : CMwNod;
+    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : IClass;
-    void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : IClass;
+    IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : CMwNod;
+    void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new();
@@ -256,23 +256,23 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file) => value = NodeRef(value, ref file);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : IClass => ArrayExternalNodeRef(value, length);
-    public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : IClass => ArrayExternalNodeRef(ref value, length);
+    public External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(value, length);
+    public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
-    public External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : IClass => ArrayExternalNodeRef(value);
-    public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : IClass => ArrayExternalNodeRef(ref value);
+    public External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef(value);
+    public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
-    public External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : IClass => ArrayExternalNodeRef_deprec(value);
-    public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : IClass => ArrayExternalNodeRef_deprec(ref value);
+    public External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef_deprec(value);
+    public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef_deprec(ref value);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : IClass => ListExternalNodeRef(value, length);
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : IClass => ListExternalNodeRef(ref value, length);
+    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(value, length);
+    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : IClass => ListExternalNodeRef(value);
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : IClass => ListExternalNodeRef(ref value);
+    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef(value);
+    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod => ListExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : IClass => ListExternalNodeRef_deprec(value);
-    public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : IClass => ListExternalNodeRef_deprec(ref value);
+    public IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef_deprec(value);
+    public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod => ListExternalNodeRef_deprec(ref value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new()

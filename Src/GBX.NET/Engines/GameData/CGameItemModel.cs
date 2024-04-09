@@ -12,7 +12,7 @@ public partial class CGameItemModel
     }
     private GbxRefTableFile? phyModelCustomFile;
     public GbxRefTableFile? PhyModelCustomFile { get => phyModelCustomFile; set => phyModelCustomFile = value; }
-    public CMwNod? GetPhyModelCustom(GbxReadSettings settings = default) => phyModelCustomFile?.GetNode(ref phyModelCustom, settings);
+    public CMwNod? GetPhyModelCustom(GbxReadSettings settings = default) => phyModelCustomFile?.GetNode(ref phyModelCustom, settings) ?? phyModelCustom;
 
     private CMwNod? visModelCustom;
     public CMwNod? VisModelCustom { get => visModelCustom; set => visModelCustom = value; }
@@ -90,7 +90,7 @@ public partial class CGameItemModel
                                             throw new Exception("EntityModel cannot exist for Block");
                                         }
 
-                                        rw.NodeRef<CMwNod>(ref n.entityModel);
+                                        rw.NodeRef(ref n.entityModel);
                                     }
 
                                     if (Version >= 13)

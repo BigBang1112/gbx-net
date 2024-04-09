@@ -87,6 +87,7 @@
 		<Using Include="GBX.NET.Engines.TrackMania" />
 		<Using Include="GBX.NET.Engines.VirtualSkipper" />
 		<Using Include="GBX.NET.Engines.MetaNotPersistent" />
+		<Using Include="GBX.NET.Engines.Meta" />
 	</ItemGroup>
 
 	<ItemGroup>
