@@ -48,6 +48,7 @@ public partial class CGameCtnChallenge :
     }
 
     private byte[]? thumbnail;
+    [JpegData]
     public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
     public Id? Collection => mapInfo?.Collection;
@@ -82,7 +83,8 @@ public partial class CGameCtnChallenge :
 
     public IList<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
-    public byte[]? EmbeddedDataZip { get; set; }
+    [ZipData]
+    public byte[]? EmbeddedZipData { get; set; }
 
     private IList<string>? Textures { get; set; }
 
@@ -124,26 +126,26 @@ public partial class CGameCtnChallenge :
         return bakedBlocks ?? [];
     }
 
-    public ZipArchive OpenReadEmbeddedDataZip()
+    public ZipArchive OpenReadEmbeddedZipData()
     {
-        if (EmbeddedDataZip is null || EmbeddedDataZip.Length == 0)
+        if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
             throw new Exception("Embedded data zip is not available and cannot be read.");
         }
 
-        var ms = new MemoryStream(EmbeddedDataZip);
+        var ms = new MemoryStream(EmbeddedZipData);
         return new ZipArchive(ms);
     }
 
-    public void UpdateEmbeddedDataZip(Action<ZipArchive> update)
+    public void UpdateEmbeddedZipData(Action<ZipArchive> update)
     {
-        EmbeddedDataZip ??= [];
+        EmbeddedZipData ??= [];
 
-        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+        using var ms = new MemoryStream(EmbeddedZipData.Length);
 
-        if (EmbeddedDataZip.Length > 0)
+        if (EmbeddedZipData.Length > 0)
         {
-            ms.Write(EmbeddedDataZip, 0, EmbeddedDataZip.Length);
+            ms.Write(EmbeddedZipData, 0, EmbeddedZipData.Length);
         }
 
         using (var zip = new ZipArchive(ms, ZipArchiveMode.Update))
@@ -151,21 +153,21 @@ public partial class CGameCtnChallenge :
             update(zip);
         }
 
-        EmbeddedDataZip = ms.ToArray();
+        EmbeddedZipData = ms.ToArray();
     }
 
-    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, Task> update, CancellationToken cancellationToken = default)
+    public async Task UpdateEmbeddedZipDataAsync(Func<ZipArchive, Task> update, CancellationToken cancellationToken = default)
     {
-        EmbeddedDataZip ??= [];
+        EmbeddedZipData ??= [];
 
-        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+        using var ms = new MemoryStream(EmbeddedZipData.Length);
 
-        if (EmbeddedDataZip.Length > 0)
+        if (EmbeddedZipData.Length > 0)
         {
 #if NET6_0_OR_GREATER
-            await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+            await ms.WriteAsync(EmbeddedZipData, cancellationToken);
 #else
-            await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+            await ms.WriteAsync(EmbeddedZipData, 0, EmbeddedZipData.Length, cancellationToken);
 #endif
         }
 
@@ -174,21 +176,21 @@ public partial class CGameCtnChallenge :
             await update(zip);
         }
 
-        EmbeddedDataZip = ms.ToArray();
+        EmbeddedZipData = ms.ToArray();
     }
 
-    public async Task UpdateEmbeddedDataZipAsync(Func<ZipArchive, CancellationToken, Task> update, CancellationToken cancellationToken = default)
+    public async Task UpdateEmbeddedZipDataAsync(Func<ZipArchive, CancellationToken, Task> update, CancellationToken cancellationToken = default)
     {
-        EmbeddedDataZip ??= [];
+        EmbeddedZipData ??= [];
 
-        using var ms = new MemoryStream(EmbeddedDataZip.Length);
+        using var ms = new MemoryStream(EmbeddedZipData.Length);
 
-        if (EmbeddedDataZip.Length > 0)
+        if (EmbeddedZipData.Length > 0)
         {
 #if NET6_0_OR_GREATER
-            await ms.WriteAsync(EmbeddedDataZip, cancellationToken);
+            await ms.WriteAsync(EmbeddedZipData, cancellationToken);
 #else
-            await ms.WriteAsync(EmbeddedDataZip, 0, EmbeddedDataZip.Length, cancellationToken);
+            await ms.WriteAsync(EmbeddedZipData, 0, EmbeddedZipData.Length, cancellationToken);
 #endif
         }
 
@@ -197,7 +199,7 @@ public partial class CGameCtnChallenge :
             await update(zip, cancellationToken);
         }
 
-        EmbeddedDataZip = ms.ToArray();
+        EmbeddedZipData = ms.ToArray();
     }
 
     /// <summary>
@@ -750,7 +752,7 @@ public partial class CGameCtnChallenge :
 
             var embeddedItemModels = r.ReadArrayIdent(); // ignored, could be used for validation
 
-            n.EmbeddedDataZip = r.ReadData();
+            n.EmbeddedZipData = r.ReadData();
 
             if (Version >= 1)
             {
@@ -767,14 +769,14 @@ public partial class CGameCtnChallenge :
             using var wBuffer = new GbxWriter(ms);
             using var _ = new Encapsulation(wBuffer);
 
-            if (n.EmbeddedDataZip is null || n.EmbeddedDataZip.Length == 0)
+            if (n.EmbeddedZipData is null || n.EmbeddedZipData.Length == 0)
             {
                 wBuffer.Write(0);
                 wBuffer.Write(0);
             }
             else
             {
-                using var embeddedMs = new MemoryStream(n.EmbeddedDataZip);
+                using var embeddedMs = new MemoryStream(n.EmbeddedZipData);
                 using var zip = new ZipArchive(embeddedMs, ZipArchiveMode.Read);
 
                 var itemModelList = new List<Ident>();
@@ -800,7 +802,7 @@ public partial class CGameCtnChallenge :
 
                 // TODO
                 wBuffer.WriteList(itemModelList);
-                wBuffer.WriteData(n.EmbeddedDataZip!);
+                wBuffer.WriteData(n.EmbeddedZipData!);
             }
 
             if (Version >= 1)

@@ -15,6 +15,7 @@ public partial class CGameCtnCollector
     /// <summary>
     /// Icon of the collector in WebP format from TM2020 icons since April 2022 update.
     /// </summary>
+    [WebpData]
     public byte[]? IconWebP { get; set; }
 
     private CMwNod? iconFid;

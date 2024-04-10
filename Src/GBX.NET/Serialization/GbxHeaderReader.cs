@@ -329,12 +329,10 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
     }
 
-    private void ReadKnownHeaderChunk<T>(IHeaderChunk chunk, T node, GbxReaderWriter rw, HeaderChunkInfo desc, long chunkStartPos)
+    private void ReadKnownHeaderChunk<T>(IHeaderChunk chunk, T node, GbxReaderWriter rw, HeaderChunkInfo desc)
         where T : notnull, IClass
     {
         chunk.IsHeavy = desc.IsHeavy;
-
-        var nodeToRead = chunk is ISelfContainedChunk scChunk ? scChunk.Node : node;
 
         switch (chunk)
         {
@@ -345,10 +343,10 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 readableT.Read(node, reader);
                 break;
             case IReadableWritableChunk readableWritable:
-                readableWritable.ReadWrite(nodeToRead, rw);
+                readableWritable.ReadWrite(chunk.Node ?? node, rw);
                 break;
             case IReadableChunk readable:
-                readable.Read(nodeToRead, reader);
+                readable.Read(chunk.Node ?? node, reader);
                 break;
             default:
                 reader.SkipData(desc.Size);
@@ -360,15 +358,13 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
     {
         chunk.IsHeavy = desc.IsHeavy;
 
-        var nodeToRead = ((chunk as ISelfContainedChunk)?.Node ?? node) ?? throw new Exception($"Chunk 0x{desc.Id:X8} requires a node to read into.");
-
         switch (chunk)
         {
             case IReadableWritableChunk readableWritable:
-                readableWritable.ReadWrite(nodeToRead, rw);
+                readableWritable.ReadWrite(chunk.Node ?? node, rw);
                 break;
             case IReadableChunk readable:
-                readable.Read(nodeToRead, reader);
+                readable.Read(chunk.Node ?? node, reader);
                 break;
             default:
                 reader.SkipData(desc.Size); // maybe let know?

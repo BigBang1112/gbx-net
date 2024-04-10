@@ -180,7 +180,9 @@ internal class ChunkLPropertiesWriter
                 sb.Append(fieldName);
                 sb.Append("File?.GetNode(ref ");
                 sb.Append(fieldName);
-                sb.AppendLine(", settings);");
+                sb.Append(", settings) ?? ");
+                sb.Append(fieldName);
+                sb.AppendLine(";");
             }
         }
     }

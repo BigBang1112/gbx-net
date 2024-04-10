@@ -21,6 +21,9 @@ public partial class CPlugSolid2Model
 
     public int VisCstType { get => visCstType; set => visCstType = value; }
     public string? MaterialsFolderName { get => materialsFolderName; set => materialsFolderName = value; }
+    public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
+    public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
+    public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
 
     public partial class Chunk090BB000 : IVersionable
     {

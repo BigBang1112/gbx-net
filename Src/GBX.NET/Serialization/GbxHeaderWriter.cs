@@ -126,7 +126,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
             else
             {
                 var chunkStartPos = concatenatedDataMs.Position;
-                WriteChunk(node, chunk, concatenatedDataRw);
+                WriteChunk(chunk.Node ?? node, chunk, concatenatedDataRw);
                 size = (int)(concatenatedDataMs.Position - chunkStartPos);
             }
 

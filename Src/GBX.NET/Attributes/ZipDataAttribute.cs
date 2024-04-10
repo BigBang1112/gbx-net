@@ -1,4 +1,4 @@
 ﻿namespace GBX.NET.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
-public class JpegDataAttribute : Attribute;
+public class ZipDataAttribute : Attribute;
