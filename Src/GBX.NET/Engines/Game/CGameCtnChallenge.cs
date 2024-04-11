@@ -67,6 +67,14 @@ public partial class CGameCtnChallenge :
         }
     }
 
+    public bool HasLightmaps { get; set; }
+    public int? LightmapVersion { get; set; }
+    public CHmsLightMapCache? LightmapCache { get; set; }
+    public LightmapFrame[] LightmapFrames { get; set; }
+
+    [ZLibData]
+    public byte[]? LightmapCacheData { get; set; }
+
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     public IList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
@@ -348,6 +356,99 @@ public partial class CGameCtnChallenge :
             }
         }
     }
+
+    public partial class Chunk0304303D
+    {
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            n.HasLightmaps = r.ReadBoolean(); // true is SHmsLightMapCacheSmall is not empty
+
+            if (!n.HasLightmaps)
+            {
+                return;
+            }
+
+            n.LightmapVersion = r.ReadInt32();
+
+            if (n.LightmapVersion < 2)
+            {
+                n.LightmapCache = r.ReadNodeRef<CHmsLightMapCache>();
+                throw new NotSupportedException("Lightmap version <2 is not supported.");
+            }
+
+            var frameCount = n.LightmapVersion >= 5 ? r.ReadInt32() : 1;
+
+            n.LightmapFrames = r.ReadArrayReadable<LightmapFrame>(frameCount, n.LightmapVersion.GetValueOrDefault(8));
+
+            if (!n.LightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0))
+            {
+                return;
+            }
+
+            var uncompressedData = new byte[r.ReadInt32()];
+            n.LightmapCacheData = r.ReadData();
+
+            if (Gbx.ZLib is null)
+            {
+                throw new Exception("ZLib is not imported (IZLib).");
+            }
+
+            Gbx.ZLib.Decompress(n.LightmapCacheData, uncompressedData);
+
+            using var ms = new MemoryStream(uncompressedData);
+            using var rBuffer = new GbxReader(ms);
+            rBuffer.LoadFrom(r);
+
+            n.LightmapCache = rBuffer.ReadNode<CHmsLightMapCache>();
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(n.HasLightmaps);
+
+            if (!n.HasLightmaps)
+            {
+                return;
+            }
+
+            w.Write(n.LightmapVersion.GetValueOrDefault());
+
+            if (n.LightmapVersion < 2)
+            {
+                w.WriteNodeRef(n.LightmapCache);
+                return;
+            }
+
+            w.Write(n.LightmapFrames.Length);
+
+            w.WriteArrayWritable(n.LightmapFrames, version: n.LightmapVersion.GetValueOrDefault(8));
+
+            if (n.LightmapCacheData is null)
+            {
+                throw new Exception("Lightmap cache data is not available.");
+            }
+
+            using var ms = new MemoryStream();
+            using var wBuffer = new GbxWriter(ms);
+            wBuffer.LoadFrom(w);
+
+            wBuffer.WriteNode(n.LightmapCache);
+
+            if (Gbx.ZLib is null)
+            {
+                throw new Exception("ZLib is not imported (IZLib).");
+            }
+
+            var uncompressedData = ms.ToArray();
+            var compressedData = Gbx.ZLib.Compress(uncompressedData);
+
+            w.Write(compressedData.Length);
+            w.Write(compressedData);
+        }
+    }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class LightmapFrame;
 
     public partial class Chunk03043040
     {
@@ -638,7 +739,7 @@ public partial class CGameCtnChallenge :
             wBuffer.WriteListNodeRef((n.zoneGenealogy ?? [])!);
 
             w.Write((int)ms.Length);
-            w.Write(ms.ToArray());
+            ms.WriteTo(w.BaseStream);
         }
     }
 
@@ -667,7 +768,7 @@ public partial class CGameCtnChallenge :
             wBuffer.WriteNode(n.scriptMetadata!);
 
             w.Write((int)ms.Length);
-            w.Write(ms.ToArray());
+            ms.WriteTo(w.BaseStream);
         }
     }
 

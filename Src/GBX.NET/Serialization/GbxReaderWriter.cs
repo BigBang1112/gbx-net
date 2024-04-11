@@ -122,8 +122,10 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     }
 
     public int Byte(int value) => Byte((byte)value);
-
     public void Byte(ref int value) => value = Byte(value);
+    [return: NotNullIfNotNull(nameof(value))]
+    public int? Byte(int? value, int defaultValue = default) => Byte((byte?)value, (byte)defaultValue);
+    public void Byte([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default) => value = Byte(value, defaultValue);
 
     public void VersionInt32(IVersionable versionable)
     {

@@ -208,7 +208,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x03A (skippable, ignore)
 
-0x03D (skippable, ignore) [MP3, TMT, MP4] // lightmaps
+0x03D (skippable) [MP3, TMT, MP4] // lightmaps
 
 0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
  version
@@ -366,6 +366,13 @@ archive SBakedClipsAdditionalData
  ident Clip3
  ident Clip4
  int3 Coord
+
+archive LightmapFrame
+ data Data
+ v3+
+  data Data2
+  v6+
+   data Data3
 
 enum MapKind // The map's intended use.
  EndMarker

@@ -4,7 +4,7 @@
 		<PackageId>GBX.NET.Zlib</PackageId>
 		<Version>1.0.0-alpha1</Version>
 		<Authors>BigBang1112</Authors>
-		<Description>Support for zlib compressed parts of Gbx, integrated with GBX.NET.</Description>
+		<Description>Support for zlib compressed parts of Gbx, integrated with GBX.NET. This official implementation uses ZlibDotNet.</Description>
 		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 		<PackageIcon>logo_icon_outline.png</PackageIcon>
@@ -50,6 +50,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="ZLibDotNet" Version="0.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
