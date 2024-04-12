@@ -7,11 +7,17 @@
 
 Welcome to GBX.NET 2!
 
-Visual Studio is probably the best IDE to use to see what's going on. Check out the `Dependencies -> Analyzers` section to see the source generators in action.
+A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 200+ Gbx classes.
 
-- File types
-- Gbx Explorer 2
-- Lua support
+GBX.NET is not just a library, but essentially **a modding platform** that connects all Nadeo games together. It is also exceptionally useful for bulk Gbx data processing, for example, when you want to fix broken sign locator URLs on hundreds of maps.
+
+### Navigation
+
+- [Supported games](#supported-games)
+- [File types](#file-types)
+- [Gbx Explorer 2](#gbx-explorer-2)
+- [Lua support](#lua-support)
+- Framework support
 - **Preparation**
   - Create a new GBX.NET project (lightweight)
   - Create a new GBX.NET project (Visual Studio Code)
@@ -33,6 +39,26 @@ Visual Studio is probably the best IDE to use to see what's going on. Check out 
 - Special thanks
 - Alternative Gbx parsers
 
+## Supported games
+
+Many *essential* Gbx files from many games are supported:
+
+- **Trackmania (2020)**, April 2024 update
+- **ManiaPlanet 4**(.1), TM2/SM
+- **Trackmania Turbo**
+- ManiaPlanet 3, TM2/SM
+- ManiaPlanet 2, TM2/SM
+- ManiaPlanet 1, TM2
+- **TrackMania Forever**, Nations/United
+- Virtual Skipper 5
+- TrackMania United
+- **TrackMania Nations ESWC**
+- **TrackMania Sunrise eXtreme**
+- TrackMania Original
+- TrackMania Sunrise
+- TrackMania Power Up
+- TrackMania (1.0)
+
 ## File types
 
 Here are some of the known file types to start with:
@@ -40,13 +66,13 @@ Here are some of the known file types to start with:
 | Latest extension | Class | Can read | Can write | Other extension/s
 | --- | --- | --- | --- | ---
 | Map.Gbx | [CGameCtnChallenge](Src/GBX.NET/Engines/Game/CGameCtnChallenge.chunkl) | Yes | Yes | Challenge.Gbx
-| Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.chunkl) | No | No
+| Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.chunkl) | Yes | No
 | Ghost.Gbx | [CGameCtnGhost](Src/GBX.NET/Engines/Game/CGameCtnGhost.chunkl) | Yes | Yes
 | Clip.Gbx | [CGameCtnMediaClip](Src/GBX.NET/Engines/Game/CGameCtnMediaClip.chunkl) | Yes | Yes
-| Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | No | No
-| Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | No | No
+| Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes
+| Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes
 | Mat.Gbx | [CPlugMaterialUserInst](Src/GBX.NET/Engines/Plug/CPlugMaterialUserInst.chunkl) | Yes | Yes
-| Mesh.Gbx | [CPlugSolid2Model](Src/GBX.NET/Engines/Plug/CPlugSolid2Model.chunkl) | No | No
+| Mesh.Gbx | [CPlugSolid2Model](Src/GBX.NET/Engines/Plug/CPlugSolid2Model.chunkl) | Yes | Yes
 | Shape.Gbx | [CPlugSurface](Src/GBX.NET/Engines/Plug/CPlugSurface.chunkl) | Yes | Yes
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | No | No
 | LightMapCache.Gbx | [CHmsLightMapCache](Src/GBX.NET/Engines/Hms/CHmsLightMapCache.chunkl) | No | No
@@ -67,6 +93,16 @@ GBX.NET 2 *will* support dynamic Lua script execution around the .NET code, to s
 It should be supported to run offline locally through a **Gbx Lua Interpreter tool** and in **Gbx Explorer 2 in web browser, PWA, and Photino build.**
 
 The goal is to also make it viable for NativeAOT.
+
+## Framework support
+
+Due to recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
+
+- .NET 8
+- .NET 6
+- .NET Standard 2.0
+
+You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded.
 
 ## Preparation
 
@@ -165,6 +201,43 @@ This will print out all blocks on the map and their count. This code can potenti
 2. There's **a Gbx exception**. See *Exceptions in GBX.NET 2* (TBD).
 3. There's a file system problem.
 
+### Processing multiple Gbx types
+
+Required packages: `GBX.NET`, `GBX.NET.LZO`
+
+> This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.Linq;`.
+
+This example shows how you can retrieve ghost objects from multiple different types of Gbx:
+
+```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.LZO;
+
+Gbx.LZO = new MiniLZO();
+
+var node = Gbx.ParseNode("Path/To/My.Gbx");
+
+var ghost = node switch
+{
+    CGameCtnReplayRecord replay => replay.GetGhosts().FirstOrDefault(),
+    CGameCtnMediaClip clip => clip.GetGhosts().FirstOrDefault(),
+    CGameCtnGhost g => g,
+    _ => null
+};
+
+if (ghost is null)
+{
+    Console.WriteLine("This Gbx file does not have any ghost.");
+}
+else
+{
+    Console.WriteLine("Time: {0}", ghost.RaceTime);
+}
+```
+
+Using pattern matching with non-generic Parse methods is a safer approach (no exceptions on different Gbx types), but less trim-friendly, see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) section.
+
 ### Read a large amount of replay metadata quickly
 
 Required packages: `GBX.NET`
@@ -182,36 +255,28 @@ using GBX.NET.Engines.Game;
 
 foreach (var filePath in Directory.EnumerateFiles("Path/To/My/Directory", "*.Replay.Gbx", SearchOption.AllDirectories))
 {
-    DisplayBasicReplayInfo(filePath);
-}
-
-void DisplayBasicReplayInfo(string filePath)
-{
     try
     {
-        var nodeHeader = Gbx.ParseHeaderNode(filePath);
-
-        if (nodeHeader is CGameCtnReplayRecord replay)
-        {
-            Console.WriteLine($"{replay.MapInfo}: {replay.Time}");
-        }
+        DisplayBasicReplayInfo(filePath);
     }
     catch (Exception ex)
     {
         Console.WriteLine($"Gbx exception occurred {Path.GetFileName(filePath)}: {ex}");
     }
 }
+
+void DisplayBasicReplayInfo(string filePath)
+{
+    var nodeHeader = Gbx.ParseHeaderNode(filePath);
+
+    if (nodeHeader is CGameCtnReplayRecord replay)
+    {
+        Console.WriteLine($"{replay.MapInfo}: {replay.Time}");
+    }
+}
 ```
 
 This code should only crash in case of a file system problem. Other problems will be printed out in the console.
-
-The `Gbx.Parse...` approach is a little different here. Instead of `Gbx.Parse...<T>()`, `Gbx.Parse...()` was used with a pattern match afterwards:
-
-```cs
-if (nodeHeader is CGameCtnReplayRecord replay)
-```
-
-See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) part why that is.
 
 > [!NOTE]
 > It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
