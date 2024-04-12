@@ -67,10 +67,10 @@ foreach (var arg in args)
             ChangeGates(map, env);
         }
 
-        map.TMObjective_AuthorTime = TimeInt32.MaxValue;
-        map.TMObjective_GoldTime = TimeInt32.MaxValue;
-        map.TMObjective_SilverTime = TimeInt32.MaxValue;
-        map.TMObjective_BronzeTime = TimeInt32.MaxValue;
+        map.AuthorTime = TimeInt32.MaxValue;
+        map.GoldTime = TimeInt32.MaxValue;
+        map.SilverTime = TimeInt32.MaxValue;
+        map.BronzeTime = TimeInt32.MaxValue;
 
         if (map.ChallengeParameters is not null)
         {

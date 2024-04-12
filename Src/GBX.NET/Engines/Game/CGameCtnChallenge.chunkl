@@ -7,10 +7,10 @@ CGameCtnChallenge 0x03043000 // A map.
   string MapName = empty
  bool
  v1+
-  timeint? TMObjective_BronzeTime
-  timeint? TMObjective_SilverTime
-  timeint? TMObjective_GoldTime
-  timeint? TMObjective_AuthorTime
+  timeint? BronzeTime
+  timeint? SilverTime
+  timeint? GoldTime
+  timeint? AuthorTime
   v2=
    byte
   v4+
@@ -208,7 +208,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x03A (skippable, ignore)
 
-0x03D (skippable) [MP3, TMT, MP4] // lightmaps
+0x03D (skippable, ignore) [MP3, TMT, MP4] // lightmaps
 
 0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
  version
