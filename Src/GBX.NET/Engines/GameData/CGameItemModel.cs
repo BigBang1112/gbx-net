@@ -128,6 +128,18 @@ public partial class CGameItemModel
             Chunks.Add(chunk);
             return chunk;
         }
+        else if (chunkId == 0x2E002000)
+        {
+            var chunk = new HeaderChunk2E002000();
+            Chunks.Add(chunk);
+            return chunk;
+        }
+        else if (chunkId == 0x2E002001)
+        {
+            var chunk = new HeaderChunk2E002001();
+            Chunks.Add(chunk);
+            return chunk;
+        }
 
         return base.CreateHeaderChunk(chunkId);
     }
