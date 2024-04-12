@@ -17,27 +17,28 @@ GBX.NET is not just a library, but essentially **a modding platform** that conne
 - [File types](#file-types)
 - [Gbx Explorer 2](#gbx-explorer-2)
 - [Lua support](#lua-support)
-- Framework support
-- **Preparation**
-  - Create a new GBX.NET project (lightweight)
-  - Create a new GBX.NET project (Visual Studio Code)
-  - Create a new GBX.NET project (Visual Studio)
-- **Usage (simple examples)**
-  - Load a map and display block count per block name
-  - Read a large amount of replay metadata quickly
-- Clarity
-  - Differences between `Gbx.Parse/Header/Node`
-  - Do not repeat `gbx.Node.[any]` too often!
-  - Game Version Interfaces!
-- Optimization
-  - Trimming (tree shaking)
-  - Explicit vs. Implicit parse
-  - Only header parse
-  - NativeAOT
-- Benchmarks
-- License
-- Special thanks
-- Alternative Gbx parsers
+- [Framework support](#framework-support)
+- **[Preparation](#preparation)**
+  - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight-soon)
+  - [Create a new GBX.NET project (Visual Studio Code)](#create-a-new-gbxnet-project-visual-studio-code)
+  - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
+- **[Usage (simple examples)](#usage-simple-examples)**
+  - [Load a map and display block count per block name](#load-a-map-and-display-block-count-per-block-name)
+  - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
+- [Clarity](#clarity)
+  - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
+  - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
+  - [Game Version Interfaces!](#game-version-interfaces)
+- [Optimization](#optimization)
+  - [Trimming (tree shaking)](#trimming-tree-shaking)
+  - [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
+  - [Only header parse](#only-header-parse)
+  - [NativeAOT](#nativeaot)
+- [Benchmarks](#benchmarks)
+- [Build](#build)
+- [License](#license)
+- [Special thanks](#special-thanks)
+- [Alternative Gbx parsers](#alternative-gbx-parsers)
 
 ## Supported games
 
@@ -96,7 +97,7 @@ The goal is to also make it viable for NativeAOT.
 
 ## Framework support
 
-Due to recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
+Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
 - .NET 8
 - .NET 6
@@ -106,9 +107,9 @@ You can still use GBX.NET 2 on the old .NET Framework, but the performance of th
 
 ## Preparation
 
-Using the NuGet packages is recommended (coming soon, for now, just clone the Git repository).
+Using the NuGet packages is recommended.
 
-### Create a new GBX.NET project (lightweight) SOON
+### Create a new GBX.NET project (lightweight)
 
 1. Install .NET SDK 8.
     - Windows: `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
@@ -132,7 +133,7 @@ code . -g Program.cs
 dotnet run
 ```
 
-### Create a new GBX.NET project (Visual Studio Code) SOON
+### Create a new GBX.NET project (Visual Studio Code)
 
 1. Install C# Dev Kit extension.
 2. Click on `Create .NET Project` button, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type `.NET: New Project`.
@@ -142,7 +143,7 @@ dotnet run
 5. Write code - see [Examples (simple)](#examples-simple).
 6. Run and debug as usual, select C# if prompted.
 
-### Create a new GBX.NET project (Visual Studio) SOON
+### Create a new GBX.NET project (Visual Studio)
 
 1. Create a new Console project
 2. Under your project in Solution Explorer, right-click on Dependencies and select `Manage NuGet packages...`
@@ -369,6 +370,27 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 ## Benchmarks
 
 TODO
+
+## Build
+
+> [!NOTE]
+> You don't need to build the solution/repository to use GBX.NET, **NuGet packages have been made for you**. This is only for internal development purposes.
+
+> The solution has more than 30 projects for different purposes, make sure you have enough disk space, the full build could take up a couple hundreds of megabytes.
+
+Make sure you have these framework SDKs available:
+
+- .NET 8
+- .NET 6
+- .NET Standard 2.0
+
+**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will likely not work.
+
+You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It may not be required, but it will definitely help figuring out some problems.
+
+In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
+
+In .NET CLI, run `dotnet build` on the solution (`.sln`) level.
 
 ## License
 

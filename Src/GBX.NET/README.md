@@ -9,7 +9,7 @@ For more details, see the main README.
 
 ## Framework support
 
-Due to recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
+Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
 - .NET 8
 - .NET 6
