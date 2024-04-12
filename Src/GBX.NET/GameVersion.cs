@@ -40,31 +40,35 @@ public enum GameVersion
     /// </summary>
     TMU = 64,
     /// <summary>
+    /// Virtual Skipper 5
+    /// </summary>
+    VSK5 = 128,
+    /// <summary>
     /// TrackMania Forever
     /// </summary>
-    TMF = 128,
+    TMF = 256,
     /// <summary>
     /// ManiaPlanet 1
     /// </summary>
-    MP1 = 256,
+    MP1 = 512,
     /// <summary>
     /// ManiaPlanet 2
     /// </summary>
-    MP2 = 512,
+    MP2 = 1024,
     /// <summary>
     /// ManiaPlanet 3
     /// </summary>
-    MP3 = 1024,
+    MP3 = 2048,
     /// <summary>
     /// Trackmania Turbo
     /// </summary>
-    TMT = 2048,
+    TMT = 4096,
     /// <summary>
     /// ManiaPlanet 4
     /// </summary>
-    MP4 = 4096,
+    MP4 = 8192,
     /// <summary>
     /// Trackmania (2020)
     /// </summary>
-    TM2020 = 8192
+    TM2020 = 16384
 }
