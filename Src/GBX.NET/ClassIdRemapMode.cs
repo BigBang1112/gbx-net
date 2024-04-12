@@ -2,5 +2,6 @@
 
 public enum ClassIdRemapMode
 {
-    Latest
+    Latest,
+    Id2006
 }
