@@ -9,6 +9,8 @@ Hashing features (currently only CRC32) for GBX.NET 2. This hashing function is 
 
 Additional package `GBX.NET.LZO` is required in this example.
 
+At the beginning of your program execution, you add the `Gbx.CRC32 = new CRC32();` to prepare the CRC32 hashing. It should be run **only once**.
+
 ```cs
 using GBX.NET;
 using GBX.NET.Engines.Game;

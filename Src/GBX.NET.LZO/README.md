@@ -11,6 +11,8 @@ The compression logic is split up from the read/write logic to **allow GBX.NET 2
 
 ## Usage
 
+At the beginning of your program execution, you add the `Gbx.LZO = new MiniLZO();` to prepare the LZO compression. It should be run **only once**.
+
 > This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.Linq;`.
 
 ```cs
@@ -18,7 +20,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO; // Add this
 
-Gbx.LZO = new MiniLZO(); // Add this before any Gbx parsing
+Gbx.LZO = new MiniLZO(); // Add this ONLY ONCE and before you start using Parse methods
 
 var map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 
