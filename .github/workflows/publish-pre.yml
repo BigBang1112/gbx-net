@@ -55,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: build
-        path: Src/GBX.NET*/bin/Release/*.nupkg
+        path: Src/GBX.NET*/bin/Release/*.*nupkg
   
   publish:    
     needs: build
@@ -78,8 +78,11 @@ jobs:
       with:
         name: build
         
-    - name: Publish ${{ matrix.lib }} package to nuget.org
-      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+    - name: Publish ${{ matrix.lib }} nupkg to nuget.org
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+        
+    - name: Publish ${{ matrix.lib }} snupkg to nuget.org
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.snupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
     
     - name: Publish ${{ matrix.lib }} package to github.com
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
