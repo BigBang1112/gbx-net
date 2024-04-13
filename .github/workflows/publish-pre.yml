@@ -46,7 +46,7 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build -c Release --no-restore
+      run: dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true
       
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
@@ -84,10 +84,10 @@ jobs:
     - name: Publish ${{ matrix.lib }} snupkg to nuget.org
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.snupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
     
-    - name: Publish ${{ matrix.lib }} package to github.com
+    - name: Publish ${{ matrix.lib }} nupkg to github.com
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
     
-    - name: Upload ${{ matrix.lib }} package to this release
+    - name: Upload ${{ matrix.lib }} nupkg to this release
       run: gh release upload ${{ github.ref_name }} ${{ matrix.lib }}/bin/Release/*.nupkg
 
   finalize-description:
