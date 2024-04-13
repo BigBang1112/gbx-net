@@ -30,7 +30,7 @@ map.Save("MapWithNoPassword.Map.Gbx");
 This example could be broken in older Trackmania games, as these games use older class IDs, to fix this problem, save the map like this:
 
 ```cs
-map.Save("MapWithNoPassword.Map.Gbx", new()
+map.Save("MapWithNoPassword.Challenge.Gbx", new()
 {
     ClassIdRemapMode = ClassIdRemapMode.Id2006
 });

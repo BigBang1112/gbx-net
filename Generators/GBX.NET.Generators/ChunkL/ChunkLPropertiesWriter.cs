@@ -15,6 +15,7 @@ internal class ChunkLPropertiesWriter
     private readonly int indent;
     private readonly bool autoProperty;
     private readonly SourceProductionContext context;
+    private readonly Dictionary<string, List<string>> appliedWithChunkDictionary = [];
 
     public ChunkLPropertiesWriter(
         StringBuilder sb,
@@ -32,6 +33,69 @@ internal class ChunkLPropertiesWriter
         this.indent = indent;
         this.autoProperty = autoProperty;
         this.context = context;
+
+        PopulateAppliedWithChunkDictionary(appliedWithChunkDictionary, GetChunkLChunkMembers());
+    }
+
+    private void PopulateAppliedWithChunkDictionary(IDictionary<string, List<string>> appliedWithChunkDict, IEnumerable<(IChunkMember, ChunkDefinition)> members)
+    {
+        foreach (var pair in members)
+        {
+            var member = pair.Item1;
+            var chunk = pair.Item2;
+
+            if (member is IChunkMemberBlock block)
+            {
+                PopulateAppliedWithChunkDictionary(appliedWithChunkDict, block.Members.Select(x => (x, chunk)));
+                continue;
+            }
+
+            if (member is not ChunkProperty prop || string.IsNullOrEmpty(prop.Name))
+            {
+                continue;
+            }
+
+            var chunkClass = (chunk.Properties.ContainsKey("header") ? "HeaderChunk" : "Chunk") + ((classInfo?.Id ?? 0) + chunk.Id).ToString("X8");
+
+            if (appliedWithChunkDict.ContainsKey(prop.Name))
+            {
+                appliedWithChunkDict[prop.Name].Add(chunkClass);
+            }
+            else
+            {
+                appliedWithChunkDict[prop.Name] = [chunkClass];
+            }
+        }
+    }
+
+    private IEnumerable<(IChunkMember, ChunkDefinition)> GetChunkLChunkMembers()
+    {
+        if (classInfo is null)
+        {
+            yield break;
+        }
+
+        foreach (var item in classInfo.HeaderChunks.Concat(classInfo.Chunks))
+        {
+            if (item.Value.ChunkLDefinition is not null && !item.Value.ChunkLDefinition.Properties.ContainsKey("demonstration"))
+            {
+                foreach (var member in item.Value.ChunkLDefinition.Members)
+                {
+                    yield return (member, item.Value.ChunkLDefinition);
+                }
+            }
+        }
+    }
+
+    private IEnumerable<IChunkMember> GetChunkLArchiveMembers()
+    {
+        if (archiveInfo?.ChunkLDefinition is not null)
+        {
+            foreach (var member in archiveInfo.ChunkLDefinition.Members)
+            {
+                yield return member;
+            }
+        }
     }
 
     internal void Append()
@@ -39,26 +103,11 @@ internal class ChunkLPropertiesWriter
         var unknownCounter = 0;
         var alreadyAddedProps = new HashSet<string>();
 
-        if (classInfo is not null)
-        {
-            foreach (var item in classInfo.HeaderChunks.Concat(classInfo.Chunks))
-            {
-                if (item.Value.ChunkLDefinition is null || item.Value.ChunkLDefinition.Properties.ContainsKey("demonstration"))
-                {
-                    continue;
-                }
-
-                AppendPropertiesRecursive(item.Value.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: false, ref unknownCounter);
-            }
-        }
-
-        if (archiveInfo?.ChunkLDefinition is not null)
-        {
-            AppendPropertiesRecursive(archiveInfo.ChunkLDefinition.Members, alreadyAddedProps, includeUnknown: true, ref unknownCounter);
-        }
+        AppendPropertiesRecursive(GetChunkLChunkMembers().Select(x => x.Item1), alreadyAddedProps, includeUnknown: false, ref unknownCounter);
+        AppendPropertiesRecursive(GetChunkLArchiveMembers(), alreadyAddedProps, includeUnknown: true, ref unknownCounter);
     }
 
-    private void AppendPropertiesRecursive(List<IChunkMember> members, HashSet<string> alreadyAddedProps, bool includeUnknown, ref int unknownCounter)
+    private void AppendPropertiesRecursive(IEnumerable<IChunkMember> members, HashSet<string> alreadyAddedProps, bool includeUnknown, ref int unknownCounter)
     {
         foreach (var member in members)
         {
@@ -118,6 +167,16 @@ internal class ChunkLPropertiesWriter
                 sb.Append(indent, "    /// ");
                 sb.AppendLine(prop.Description);
                 sb.AppendLine(indent, "    /// </summary>");
+            }
+
+            if (classInfo?.Id is not null && appliedWithChunkDictionary.TryGetValue(propName, out var appliedWithChunks))
+            {
+                foreach (var chunkClass in appliedWithChunks)
+                {
+                    sb.Append(indent, "    [AppliedWithChunk<");
+                    sb.Append(chunkClass);
+                    sb.AppendLine(">]");
+                }
             }
 
             sb.Append(indent, "    public ");
