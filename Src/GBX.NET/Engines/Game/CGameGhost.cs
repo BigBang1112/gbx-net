@@ -7,6 +7,24 @@ public partial class CGameGhost
     public byte[]? RawData { get; set; }
     public CompressedData? CompressedData { get; set; }
 
+    [AppliedWithChunk<Chunk0303F003>]
+    [AppliedWithChunk<Chunk0303F005>]
+    [AppliedWithChunk<Chunk0303F006>]
+    public Data? SampleData
+    {
+        get
+        {
+            if (sampleData is null)
+            {
+                return null;
+            }
+
+            sampleData.Parse();
+
+            return sampleData;
+        }
+    }
+
     public partial class Chunk0303F003
     {
         public int[]? Times;
