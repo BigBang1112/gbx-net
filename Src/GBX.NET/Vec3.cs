@@ -46,4 +46,20 @@ public readonly record struct Vec3(float X, float Y, float Z)
     public static implicit operator Vec3((float X, float Y, float Z) v) => new(v.X, v.Y, v.Z);
 
     public static implicit operator Vec3(Int3 a) => new(a.X, a.Y, a.Z);
+
+    public static Vec3 operator +(Vec3 a, Vec3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+    public static Vec3 operator +(Vec3 a, Int3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+
+    public static Vec3 operator -(Vec3 a) => new(-a.X, -a.Y, -a.Z);
+    public static Vec3 operator -(Vec3 a, Vec3 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+    public static Vec3 operator -(Vec3 a, Int3 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+
+    public static Vec3 operator *(Vec3 a, Vec3 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+    public static Vec3 operator *(Vec3 a, Int3 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+    public static Vec3 operator *(Vec3 a, int b) => new(a.X * b, a.Y * b, a.Z * b);
+    public static Vec3 operator *(Vec3 a, float b) => new(a.X * b, a.Y * b, a.Z * b);
+
+    public static Vec3 operator *(Int3 a, Vec3 b) => b * a;
+    public static Vec3 operator *(int a, Vec3 b) => b * a;
+    public static Vec3 operator *(float a, Vec3 b) => b * a;
 }

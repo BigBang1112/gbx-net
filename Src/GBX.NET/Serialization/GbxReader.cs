@@ -43,6 +43,9 @@ public partial interface IGbxReader : IDisposable
     Vec2 ReadVec2();
     Vec3 ReadVec3();
     Vec3 ReadVec3_10b();
+    Vec3 ReadVec3Unit2();
+    Vec3 ReadVec3_4();
+    Vec3 ReadVec3Unit4();
     Vec4 ReadVec4();
     BoxAligned ReadBoxAligned();
     BoxInt3 ReadBoxInt3();
@@ -51,6 +54,7 @@ public partial interface IGbxReader : IDisposable
     Mat3 ReadMat3();
     Mat4 ReadMat4();
     Quat ReadQuat();
+    Quat ReadQuat6();
     Rect ReadRect();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
@@ -421,6 +425,59 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             ((val >> 20) & 0x3FF) / (float)0x1FF);
     }
 
+    /// <summary>
+    /// Reads a 2-byte <see cref="Vec3"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Vec3 ReadVec3Unit2()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var axisHeading = ReadByte() * MathF.PI / sbyte.MaxValue;
+        var axisPitch = ReadByte() * (MathF.PI / 2) / sbyte.MaxValue;
+
+        return new Vec3(MathF.Cos(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisPitch));
+#else
+        var axisHeading = ReadByte() * Math.PI / sbyte.MaxValue;
+        var axisPitch = ReadByte() * (Math.PI / 2) / sbyte.MaxValue;
+
+        return new Vec3((float)(Math.Cos(axisHeading) * Math.Cos(axisPitch)), (float)(Math.Sin(axisHeading) * Math.Cos(axisPitch)), (float)Math.Sin(axisPitch));
+#endif
+    }
+
+    public Vec3 ReadVec3_4()
+    {
+        var mag16 = ReadInt16();
+
+        var mag = mag16 == short.MinValue
+            ? 0
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+            : MathF.Exp(mag16 / 1000f);
+#else
+            : (float)Math.Exp(mag16 / 1000.0);
+#endif
+
+        return ReadVec3Unit2() * mag;
+    }
+
+    /// <summary>
+    /// Reads a 4-byte <see cref="Vec3"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Vec3 ReadVec3Unit4()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var axisHeading = ReadInt16() * MathF.PI / short.MaxValue;
+        var axisPitch = ReadInt16() * (MathF.PI / 2) / short.MaxValue;
+
+        return new Vec3(MathF.Cos(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisPitch));
+#else
+        var axisHeading = ReadInt16() * Math.PI / short.MaxValue;
+        var axisPitch = ReadInt16() * (Math.PI / 2) / short.MaxValue;
+
+        return new Vec3((float)(Math.Cos(axisHeading) * Math.Cos(axisPitch)), (float)(Math.Sin(axisHeading) * Math.Cos(axisPitch)), (float)Math.Sin(axisPitch));
+#endif
+    }
+
     public Vec4 ReadVec4()
     {
         return new(ReadSingle(), ReadSingle(), ReadSingle(), ReadSingle());
@@ -503,6 +560,25 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public Quat ReadQuat()
     {
         return new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle(), W: ReadSingle());
+    }
+
+    /// <summary>
+    /// Reads a 6-byte <see cref="Quat"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Quat ReadQuat6()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var angle = ReadUInt16() * MathF.PI / ushort.MaxValue;
+        var axis = ReadVec3Unit4();
+
+        return new Quat(axis * MathF.Sin(angle), MathF.Cos(angle));
+#else
+        var angle = ReadUInt16() * Math.PI / ushort.MaxValue;
+        var axis = ReadVec3Unit4();
+
+        return new Quat(axis * (float)Math.Sin(angle), (float)Math.Cos(angle));
+#endif
     }
 
     public Rect ReadRect()

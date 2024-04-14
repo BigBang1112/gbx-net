@@ -27,4 +27,14 @@ public readonly record struct Quat(float X, float Y, float Z, float W)
     }
 
     public static implicit operator Quat((float X, float Y, float Z, float W) v) => new(v.X, v.Y, v.Z, v.W);
+
+    public static Quat operator +(Quat a, Quat b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
+
+    public static Quat operator -(Quat a) => new(-a.X, -a.Y, -a.Z, -a.W);
+    public static Quat operator -(Quat a, Quat b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
+
+    public static Quat operator *(Quat a, Quat b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z, a.W * a.W);
+    public static Quat operator *(Quat a, float b) => new(a.X * b, a.Y * b, a.Z * b, a.W * b);
+
+    public static Quat operator *(float a, Quat b) => b * a;
 }
