@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches: [ "v2" ]
-    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**" ]
+    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
   pull_request:
     branches: [ "v2" ]
-    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**" ]
+    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
   workflow_dispatch:
 
 jobs:
