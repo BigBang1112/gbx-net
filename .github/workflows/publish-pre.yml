@@ -78,8 +78,11 @@ jobs:
       with:
         name: build
         
-    - name: Publish ${{ matrix.lib }} package to nuget.org
-      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/ -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+    - name: Publish ${{ matrix.lib }} nupkg to nuget.org
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+
+    - name: Publish ${{ matrix.lib }} snupkg to nuget.org
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.snupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
 
     - name: Publish ${{ matrix.lib }} nupkg to github.com
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
