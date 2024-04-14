@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO.Compression;
 
 namespace GBX.NET.Engines.Game;
 
