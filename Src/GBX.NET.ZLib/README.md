@@ -13,8 +13,6 @@ Additional package `GBX.NET.LZO` is required in this example.
 
 At the beginning of your program execution, you add the `Gbx.ZLib = new ZLib();` to prepare the ZLib compression. It should be run **only once**.
 
-> This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.Linq;`.
-
 ```cs
 using GBX.NET;
 using GBX.NET.Engines.Game;
@@ -29,7 +27,7 @@ var ghost = Gbx.ParseNode<CGameCtnGhost>("Path/To/My.Ghost.Gbx");
 // SampleData will (likely) use ZLib decompression
 foreach (var sample in ghost.SampleData.Samples)
 {
-	Console.WriteLine(sample.Position);
+    Console.WriteLine(sample.Position);
 }
 ```
 
