@@ -1594,6 +1594,53 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadListId();
     }
 
+    internal (Vec3 position, Quat rotation, float speed, Vec3 velocity) ReadTransform()
+    {
+        var pos = ReadVec3();
+
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+
+        var angle = ReadUInt16() * MathF.PI / ushort.MaxValue;
+        var axisHeading = ReadInt16() * MathF.PI / short.MaxValue;
+        var axisPitch = ReadInt16() / (float)short.MaxValue * MathF.PI / 2;
+        var speed = (float)Math.Exp(ReadInt16() / 1000.0);
+        var velocityHeading = ReadSByte() / (float)sbyte.MaxValue * MathF.PI;
+        var velocityPitch = ReadSByte() / (float)sbyte.MaxValue * MathF.PI / 2;
+
+        var axis = new Vec3((float)(MathF.Sin(angle) * MathF.Cos(axisPitch) * MathF.Cos(axisHeading)),
+            (float)(MathF.Sin(angle) * MathF.Cos(axisPitch) * MathF.Sin(axisHeading)),
+            (float)(MathF.Sin(angle) * MathF.Sin(axisPitch)));
+
+        var quaternion = new Quat(axis, MathF.Cos(angle));
+
+        var velocity = new Vec3((float)(speed * MathF.Cos(velocityPitch) * MathF.Cos(velocityHeading)),
+            (float)(speed * MathF.Cos(velocityPitch) * MathF.Sin(velocityHeading)),
+            (float)(speed * MathF.Sin(velocityPitch)));
+
+#else
+
+        var angle = ReadUInt16() / (double)ushort.MaxValue * Math.PI;
+        var axisHeading = ReadInt16() / (double)short.MaxValue * Math.PI;
+        var axisPitch = ReadInt16() / (double)short.MaxValue * Math.PI / 2;
+        var speed = (float)Math.Exp(ReadInt16() / 1000.0);
+        var velocityHeading = ReadSByte() / (double)sbyte.MaxValue * Math.PI;
+        var velocityPitch = ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
+
+        var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
+            (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
+            (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
+
+        var quaternion = new Quat(axis, (float)Math.Cos(angle));
+
+        var velocity = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
+            (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
+            (float)(speed * Math.Sin(velocityPitch)));
+
+#endif
+
+        return (pos, quaternion, speed, velocity);
+    }
+
     /// <summary>
     /// If can seek, position moves past the <paramref name="length"/>. If seeking is NOT supported, data is read with no allocation using <see cref="BinaryReader.Read(Span{byte})"/>. If .NET Standard 2.0, unavoidable byte array allocation happens with <see cref="BinaryReader.ReadBytes(int)"/>.
     /// </summary>

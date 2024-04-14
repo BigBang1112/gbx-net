@@ -1,0 +1,12 @@
+CSceneVehicleVis 0x0A018000
+
+enum ReactorBoostLvl
+ None
+ Lvl1
+ Lvl2
+    
+enum ReactorBoostType
+ None
+ Up
+ Down
+ UpAndDown

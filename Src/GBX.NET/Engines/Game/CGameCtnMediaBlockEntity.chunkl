@@ -5,8 +5,8 @@ CGameCtnMediaBlockEntity 0x0329F000
  version
  CPlugEntRecordData RecordData
  v3-
-  timefloat Start
-  timefloat End
+  timefloat? Start
+  timefloat? End
  timefloat StartOffset
  int[] NoticeRecords // SPlugEntRecord array
  v2+
@@ -40,7 +40,7 @@ CGameCtnMediaBlockEntity 0x0329F000
        int
 
 0x002 // SkinOptions
- string? SkinOptions
+ string SkinOptions
 
 enum ELights
  Auto
