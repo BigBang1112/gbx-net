@@ -625,12 +625,7 @@ internal class ClassDataSubGenerator
             sb.Append("sealed ");
         }
 
-        if (archiveInfo.TypeSymbol is not null)
-        {
-            sb.Append("partial ");
-        }
-
-        sb.Append("class ");
+        sb.Append("partial class ");
         sb.Append(archiveName);
         sb.Append(" : ");
 
