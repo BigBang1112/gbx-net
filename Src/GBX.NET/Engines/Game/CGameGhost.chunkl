@@ -5,7 +5,7 @@ CGameGhost 0x0303F000 // Ghost data.
 0x004 [TMS, TMSX, TMNESWC]
  int
 
-0x005 [TMU, TMF]
+0x005 (demonstration) [TMU, TMF]
  int UncompressedSize
  data Data
 
