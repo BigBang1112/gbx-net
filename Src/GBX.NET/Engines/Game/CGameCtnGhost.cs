@@ -58,11 +58,14 @@ public partial class CGameCtnGhost
         {
             rw.TimeInt32(ref n.eventsDuration);
 
-            if (n.eventsDuration == TimeInt32.Zero)
+            if (n.eventsDuration != TimeInt32.Zero)
             {
-                return;
+                ReadWriteInputs(n, rw);
             }
+        }
 
+        internal void ReadWriteInputs(CGameCtnGhost n, GbxReaderWriter rw)
+        {
             // CInputEventsStore::Archive
             rw.Int32(ref U01); // always 0 now
 
@@ -153,12 +156,21 @@ public partial class CGameCtnGhost
         {
             rw.VersionInt32(this);
 
-            rw.Chunk(n, Chunk019);
-
-            if (n.eventsDuration != TimeInt32.Zero)
+            if (Version == 0)
             {
-                rw.Boolean(ref n.steeringWheelSensitivity);
+                rw.Chunk(n, Chunk019);
             }
+            else
+            {
+                rw.TimeInt32(ref n.eventsDuration);
+
+                Chunk019 ??= new();
+                Chunk019.ReadWriteInputs(n, rw);
+
+                rw.Int32(ref Chunk019.U03);
+            }
+
+            rw.Boolean(ref n.steeringWheelSensitivity);
         }
     }
 
