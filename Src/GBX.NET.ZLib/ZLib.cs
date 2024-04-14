@@ -1,6 +1,6 @@
 ﻿using GBX.NET.Extensions;
 
-namespace GBX.NET.Zlib;
+namespace GBX.NET.ZLib;
 
 public sealed class ZLib : IZLib
 {

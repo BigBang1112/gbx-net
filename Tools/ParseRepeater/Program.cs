@@ -1,5 +1,6 @@
 ﻿using GBX.NET;
 using GBX.NET.LZO;
+using GBX.NET.ZLib;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
@@ -12,6 +13,7 @@ if (args.Length == 0)
 
 var fileName = args[0];
 Gbx.LZO = new MiniLZO();
+Gbx.ZLib = new ZLib();
 
 var logger = LoggerFactory.Create(builder =>
 {
