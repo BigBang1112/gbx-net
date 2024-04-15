@@ -1,2 +1,87 @@
 CPlugBitmap 0x09011000
 - inherits: CPlug
+
+0x015
+ ulong
+ float MipMapLowerAlpha
+ float BumpScaleFactor
+ float MipMapLodBiasDefault
+ int
+ int
+
+0x017
+ int
+ vec2 DefaultTexCoordScale
+
+0x018
+ CPlugFileImg Image (external)
+ ulong
+ float MipMapLowerAlpha
+ float BumpScaleFactor
+ float MipMapLodBiasDefault
+ int
+ if Image != null
+  CMwNod
+
+0x019
+ float BumpScaleMipLevel
+
+0x01C
+ vec2 DefaultTexCoordScale
+ vec2 DefaultTexCoordTrans
+ float DefaultTexCoordRotate
+
+0x01D
+ int16
+ int16
+
+0x01E
+ Vec2[]
+
+0x01F
+ uint
+
+0x020
+ float[] MipMapFadeAlphas
+
+0x022 (base: 0x018)
+
+0x023
+ uint
+
+0x024
+ uint
+
+0x025 (base: 0x01C)
+ base
+ uint
+
+0x028
+ int2
+
+0x02A
+ CPlugSpriteParam SpriteParam
+
+0x02B
+ CPlugBitmapAtlas Atlas
+
+0x02C
+ CPlugBitmapDecals Decals
+
+0x02D
+ version
+ int
+
+0x030
+ version
+ CPlugFileImg Image (external)
+ v1+
+  int3
+ float MipMapLowerAlpha
+ float BumpScaleFactor
+ float MipMapLodBiasDefault
+ uint
+
+0x032
+ version
+ uint

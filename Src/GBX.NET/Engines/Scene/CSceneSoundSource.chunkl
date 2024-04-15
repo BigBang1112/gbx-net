@@ -1,0 +1,5 @@
+CSceneSoundSource 0x0A00E000
+- inherits: CScenePoc
+
+0x000
+ CHmsSoundSource (direct) // Gliding/AfterBurnout/Burnout

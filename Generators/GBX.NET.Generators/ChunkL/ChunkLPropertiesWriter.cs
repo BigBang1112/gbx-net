@@ -280,7 +280,7 @@ internal class ChunkLPropertiesWriter
     {
         var fieldName = char.ToLowerInvariant(propName[0]) + propName.Substring(1);
 
-        if (fieldName is "params" or "class")
+        if (fieldName is "params" or "class" or "base")
         {
             return '@' + fieldName;
         }

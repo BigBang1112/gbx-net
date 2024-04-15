@@ -1,0 +1,60 @@
+CPlugParticleEmitterSubModel 0x090B2000
+
+0x011
+ CPlugMaterial Material
+ if Material == null
+  CPlugShader Shader
+ float SizeBirthRatioXY
+ vec2 SpritePivotPoint
+ float
+ float
+ float
+ float
+ CFuncColorGradient ColorGradient
+ int ColorGradientUse
+ bool ColorModulateWithTransparency
+ int MaxParticleCount
+ float SpawnPeriod
+ float Life
+ float LifeVariation
+ float SizeBirth
+ float SizeBirthVariation
+ float
+ float
+ float WeightBirth
+ float WeightBirthVariation
+ float RollSpeedBirth
+ float RollSpeedBirthVariation
+ float TransparencyBirth
+ float TransparencyBirthVariation
+ CFuncEnvelope SizeOverLife
+ CFuncEnvelope TransparencyOverLife
+ int<EPlugParticleEmitterSubModel> ParticleEmitterSubModel
+ int
+ int MultiStateRenderMode
+ int
+ int SpawnCond
+ float SpawnMinDist
+ float
+ int
+ float UScaleDist
+ int StandardRenderMode
+ float VScaleDist
+ float FluidFrictionBirth
+ float FluidFrictionBirthVariation
+ CFuncEnvelope SizeXOverLife
+ bool SizeUseSizeX
+ bool SizeBirthUseEmissionZone
+ int CircularTrailVertPerPartCount
+ int
+
+enum EPlugParticleEmitterSubModel
+ Standard
+ MultiState
+ OneParticle
+ VortexSim_Particle
+ VortexSim_VortexFilament
+ VortexSim_Repulsor
+ Chain
+ Gpu
+ Energy

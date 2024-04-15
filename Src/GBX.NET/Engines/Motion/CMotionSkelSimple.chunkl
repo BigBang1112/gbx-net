@@ -1,0 +1,2 @@
+CMotionSkelSimple 0x08036000
+- inherits: CMotionTrack

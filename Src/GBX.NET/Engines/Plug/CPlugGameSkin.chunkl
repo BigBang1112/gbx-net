@@ -21,6 +21,20 @@ CPlugGameSkin 0x090F4000
  string
 
 0x004
+ versionb
+ string RelativeSkinDirectory
+ v1+
+  string ParentPackDesc
+  string
+ Fid[] Fids (prefix: byte, version: Version)
+ v4+
+  string // PackDesc?
+  v5+
+   bool // something dialog?
+   v6+
+    string
+    v7+
+     int
 
 archive HeaderFid
  uint ClassId
@@ -28,3 +42,5 @@ archive HeaderFid
  string Directory
  v2+
   bool
+
+archive Fid

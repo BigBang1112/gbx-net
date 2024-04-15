@@ -1,0 +1,6 @@
+CScenePoc 0x0A009000
+- inherits: CSceneObject
+- abstract
+
+0x000
+ bool IsActive

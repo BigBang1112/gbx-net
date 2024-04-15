@@ -1,0 +1,9 @@
+CMotionPlayer 0x08034000
+- inherits: CMotion
+
+0x004
+ CMotionCmdBase Base (direct)
+ int // SavePlayState?
+ bool // IsPlaying?
+ id
+ list<CMotionTrack> Tracks

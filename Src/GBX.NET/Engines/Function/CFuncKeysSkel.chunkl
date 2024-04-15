@@ -1,0 +1,7 @@
+CFuncKeysSkel 0x05006000
+- inherits: CFuncKeys
+
+0x000
+ CFuncSkel Skel
+
+0x001 (ignore)

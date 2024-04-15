@@ -1,6 +1,6 @@
-CSceneObjectLink 0x0A00F000
+CSceneObjectLink 0x0A014000
 
-0x0A014001
+0x001
  bool U01
  if U01
   int
@@ -11,7 +11,7 @@ CSceneObjectLink 0x0A00F000
  iso4
  bool
 
-0x001
+0x0A00F001
  float
  float
  float
@@ -20,13 +20,13 @@ CSceneObjectLink 0x0A00F000
  float
  bool
 
-0x0A014002
+0x002
  id
  bool
  bool
 
-0x002
+0x0A00F002
  bool
 
-0x0A014003
+0x003
  id

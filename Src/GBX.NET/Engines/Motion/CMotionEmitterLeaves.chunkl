@@ -1,0 +1,11 @@
+CMotionEmitterLeaves 0x0804C000
+- inherits: CMotion
+
+0x001
+ CMwNod (external)
+ float
+ float
+ float
+ float
+ float
+ float

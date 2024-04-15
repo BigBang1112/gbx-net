@@ -1,0 +1,7 @@
+CMotionShader 0x0802B000
+- inherits: CMotionTrack
+
+0x000
+ int
+ int
+ int
