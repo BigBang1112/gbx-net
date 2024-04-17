@@ -19,7 +19,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.2
         with:
           submodules: recursive
       
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4.1.2
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -52,7 +52,7 @@ jobs:
       run: dotnet test -c Release --no-build --verbosity normal
       
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4.3.1
       with:
         name: build
         path: Src/GBX.NET*/bin/Release/*.*nupkg
@@ -71,10 +71,10 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4.1.2
     
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v4.1.4
       with:
         name: build
         
@@ -97,6 +97,6 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.2
       - name: Set release information
         run: gh release edit ${{ github.ref_name }} -n "$(echo -e '${{ github.event.release.body }}\n\nAssets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).')"
