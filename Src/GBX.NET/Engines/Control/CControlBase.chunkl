@@ -1,0 +1,23 @@
+CControlBase 0x07001000
+- inherits: CSceneToy
+
+0x00C
+ int
+ int
+ int
+ int
+ string StackText
+
+0x00E
+ boxaligned
+ CControlLayout Layout
+ int
+ int
+
+0x00F
+ string
+
+0x010
+ CMwNod U01
+ if U01 == null
+  int?

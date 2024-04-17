@@ -1,0 +1,9 @@
+CPlugBitmapApply 0x09012000
+- inherits: CPlugBitmapAddress
+
+0x003
+ int
+ int
+
+0x004
+ uint

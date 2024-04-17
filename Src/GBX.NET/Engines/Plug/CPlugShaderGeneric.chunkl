@@ -1,0 +1,6 @@
+CPlugShaderGeneric 0x09004000
+- inherits: CPlugShader
+
+0x001 (ignore)
+
+0x003 (ignore)

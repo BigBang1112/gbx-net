@@ -1,0 +1,14 @@
+CPlugBitmapRenderLightFromMap 0x09021000
+- inherits: CPlugBitmapRender
+
+0x001
+ int ObjectCountPerAxisMin
+ int ObjectCountPerAxisMax
+ float CameraNearZ_FactorInObject
+ float CameraFarZ_ToAdd
+ float
+ float
+ float
+ float
+ float
+ float

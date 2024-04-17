@@ -1,0 +1,11 @@
+CGameVehicleModel 0x2E01C000
+
+0x000
+ version
+ CPlugVehiclePhyModel PhyModel (external)
+ CPlugVehicleVisModel VisModel (external)
+ ItemOccupantSlotModel[] ItemOccupantSlotModels
+
+archive ItemOccupantSlotModel
+ id Id
+ CGameActionModel[] Actions

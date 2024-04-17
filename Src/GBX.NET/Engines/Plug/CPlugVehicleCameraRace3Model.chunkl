@@ -1,0 +1,84 @@
+CPlugVehicleCameraRace3Model 0x090EF000
+- inherits: CPlugCamControlModel
+
+0x001
+ float
+
+0x002
+ float
+ float
+
+0x003
+ bool
+ bool
+
+0x004
+ id
+
+0x005
+ version
+ float
+ float
+ float
+ int
+ int
+ int
+ float
+ float
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ float
+ int
+ int
+ float
+ float
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ float
+ int
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int

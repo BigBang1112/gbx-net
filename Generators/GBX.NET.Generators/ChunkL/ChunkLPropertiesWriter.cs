@@ -14,6 +14,7 @@ internal class ChunkLPropertiesWriter
     private readonly Dictionary<string, IPropertySymbol> alreadyExistingProperties;
     private readonly int indent;
     private readonly bool autoProperty;
+    private readonly bool privateSet;
     private readonly SourceProductionContext context;
     private readonly Dictionary<string, List<string>> appliedWithChunkDictionary = [];
 
@@ -24,6 +25,7 @@ internal class ChunkLPropertiesWriter
         Dictionary<string, IPropertySymbol> alreadyExistingProperties,
         int indent,
         bool autoProperty,
+        bool privateSet,
         SourceProductionContext context)
     {
         this.sb = sb;
@@ -32,6 +34,7 @@ internal class ChunkLPropertiesWriter
         this.alreadyExistingProperties = alreadyExistingProperties;
         this.indent = indent;
         this.autoProperty = autoProperty;
+        this.privateSet = privateSet;
         this.context = context;
 
         PopulateAppliedWithChunkDictionary(appliedWithChunkDictionary, GetChunkLChunkMembers());
@@ -192,7 +195,14 @@ internal class ChunkLPropertiesWriter
 
             if (autoProperty && !isExternal)
             {
-                sb.AppendLine(" { get; set; }");
+                sb.Append(" { get; ");
+
+                if (privateSet)
+                {
+                    sb.Append("private ");
+                }
+
+                sb.AppendLine("set; }");
             }
             else
             {
@@ -207,7 +217,14 @@ internal class ChunkLPropertiesWriter
                 }
 
                 sb.Append(fieldName);
-                sb.Append("; set => ");
+                sb.Append("; ");
+
+                if (privateSet)
+                {
+                    sb.Append("private ");
+                }
+
+                sb.Append("set => ");
                 sb.Append(fieldName);
                 sb.AppendLine(" = value; }");
             }
@@ -221,7 +238,14 @@ internal class ChunkLPropertiesWriter
                 sb.Append(propName);
                 sb.Append("File { get => ");
                 sb.Append(fieldName);
-                sb.Append("File; set => ");
+                sb.Append("File; ");
+
+                if (privateSet)
+                {
+                    sb.Append("private ");
+                }
+
+                sb.Append("set => ");
                 sb.Append(fieldName);
                 sb.AppendLine("File = value; }");
 

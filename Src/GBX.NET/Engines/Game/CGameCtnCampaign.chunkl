@@ -1,0 +1,105 @@
+CGameCtnCampaign 0x03090000
+
+0x000 // map groups
+ version
+ list<CGameCtnChallengeGroup> MapGroups
+
+0x001
+ version
+ int U01
+ if U01 > 0
+  throw
+
+0x002
+ int U01
+ int U01
+ int U01
+ int U01
+ int U01
+ int U01
+
+0x004
+ string Name
+ int<EType> Type
+ bool
+ bool
+ bool
+
+0x005
+ bool
+
+0x006 // campaign ID
+ id CampaignId
+
+0x007
+ int U01
+ int U01
+ int U01
+
+0x008
+ int
+
+0x009 (skippable) // collection ID
+ byte
+ id CollectionId
+
+0x00A (skippable) // index
+ int Index
+
+0x00B (skippable) // unlocked by campaign
+ string UnlockedByCampaign
+ int
+
+0x00C (skippable) // icon ID
+ id IconId
+
+0x00D // unlock type
+ int<EUnlockType> UnlockType
+
+0x00E // required players count
+ int<ERequiredPlayersCount> RequiredPlayersCount
+
+0x00F (skippable) // name
+ string Name
+ int
+ int<EType> Type
+
+0x010 // mode script name
+ version
+ string ModeScriptName
+
+0x012 (skippable) // official mode
+ version
+ v1-
+  string ScoreContext
+ v2+
+  int?
+  string
+  string
+  string
+ bool OfficialRecordEnabled
+ v0=
+  bool?
+  bool?
+
+enum EType
+ None
+ Race
+ Puzzle
+ Survival
+ Platform
+ Stunts
+ Training
+
+enum ERequiredPlayersCount
+ SoloOnly
+ MultiOnly
+ DuoOnly
+ TrioOnly
+ QuatuorOnly
+ All
+
+enum EUnlockType
+ ByRow
+ ByColumn
+ Custom

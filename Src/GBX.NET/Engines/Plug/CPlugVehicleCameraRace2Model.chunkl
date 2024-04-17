@@ -1,0 +1,78 @@
+CPlugVehicleCameraRace2Model 0x090F6000
+- inherits: CPlugCamControlModel
+
+0x000
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ int
+ int
+ float
+ float
+ int
+ int
+ int
+ int
+ int
+ int
+ float
+ float
+
+0x001
+ bool
+
+0x002
+ version
+ id
+ float
+ float
+ float
+ float
+ float
+ v2+
+  float
+  int
+  int
+  float
+  int
+  int

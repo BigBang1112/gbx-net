@@ -84,6 +84,7 @@ internal class ClassDataSubGenerator
         }
 
         var archiveStructureKind = default(int?);
+        var privateSet = false;
 
         if (classInfo.NamelessArchive is not null)
         {
@@ -93,6 +94,9 @@ internal class ClassDataSubGenerator
 
             archiveStructureKind = (archiveGenOptionsAtt?.NamedArguments
                 .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
+
+            privateSet = (archiveGenOptionsAtt?.NamedArguments
+                .FirstOrDefault(x => x.Key == "PrivateSet").Value.Value as bool?).GetValueOrDefault();
         }
 
         AppendClassDefinitionLine(sb, classInfo, archiveStructureKind);
@@ -112,7 +116,7 @@ internal class ClassDataSubGenerator
 
         sb.AppendLine();
 
-        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, archiveStructureKind == 1, context);
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, archiveStructureKind == 1, privateSet, context);
         propWriter.Append();
 
         sb.AppendLine();
@@ -650,6 +654,9 @@ internal class ClassDataSubGenerator
         var archiveStructureKind = (archiveGenOptionsAtt?.NamedArguments
             .FirstOrDefault(x => x.Key == "StructureKind").Value.Value as int?).GetValueOrDefault();
 
+        var privateSet = (archiveGenOptionsAtt?.NamedArguments
+            .FirstOrDefault(x => x.Key == "PrivateSet").Value.Value as bool?).GetValueOrDefault();
+
         var autoProperty = false;
 
         if (archiveStructureKind == 1) // StructureKind == SeparateReadAndWrite
@@ -687,7 +694,7 @@ internal class ClassDataSubGenerator
         var alreadyExistingProperties = existingArchiveMembers.OfType<IPropertySymbol>()
             .ToDictionary(x => x.Name) ?? [];
 
-        var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, autoProperty, context);
+        var propWriter = new ChunkLPropertiesWriter(sb, classInfo: null, archiveInfo, alreadyExistingProperties, indent: 1, autoProperty, privateSet, context);
         propWriter.Append();
 
         AppendArchiveMethodsLine(sb, classInfo, archiveInfo, existingArchiveMembers, classInfos, archiveInfos, context, archiveStructureKind, indent: 1, overrideMethods);

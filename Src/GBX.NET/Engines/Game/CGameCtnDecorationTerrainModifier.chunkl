@@ -1,0 +1,8 @@
+CGameCtnDecorationTerrainModifier 0x0303C000
+
+0x000
+ CPlugGameSkin Remapping (external)
+ string RemapFolder
+
+0x001
+ id IdName

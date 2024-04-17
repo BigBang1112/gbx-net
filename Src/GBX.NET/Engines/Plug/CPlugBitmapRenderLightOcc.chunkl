@@ -1,0 +1,7 @@
+CPlugBitmapRenderLightOcc 0x0909F000
+- inherits: CPlugBitmapRender
+
+0x000
+ float FovY
+ float
+ CMwNod

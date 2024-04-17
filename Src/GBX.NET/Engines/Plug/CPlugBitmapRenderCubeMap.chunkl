@@ -1,0 +1,11 @@
+CPlugBitmapRenderCubeMap 0x09088000
+- inherits: CPlugBitmapRender
+
+0x001
+ uint
+
+0x002
+ int CubeFaceCount
+ float NearZ
+ float FarZ
+ float MinDistToUpdate

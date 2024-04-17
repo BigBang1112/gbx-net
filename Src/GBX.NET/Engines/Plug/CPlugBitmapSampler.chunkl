@@ -1,0 +1,14 @@
+CPlugBitmapSampler 0x0907E000
+- inherits: CPlug
+
+0x002
+ id Name
+ CMwNod (external)
+ uint
+ float
+
+0x005 (base: 0x002)
+
+0x006 (base: 0x002)
+
+0x008 (base: 0x002)

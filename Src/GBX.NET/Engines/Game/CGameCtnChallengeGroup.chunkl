@@ -1,0 +1,44 @@
+CGameCtnChallengeGroup 0x0308F000
+
+0x002 // name
+ string Name
+
+0x003
+ int U01
+ int U01
+ int U01
+
+0x004
+ int U01
+ if U01 > 0
+  throw
+
+0x005
+ int
+
+0x006
+ bool U01
+ if U01
+  list<MapInfo> MapInfos
+
+0x007
+ int
+ int
+ int
+ int
+ int
+ int
+
+0x009
+ id
+
+0x00B
+ version
+ list<MapInfo> MapInfos (version: Version + 1)
+
+archive MapInfo
+ ident Metadata
+ v1+
+  string FilePath
+  v1=
+   bool

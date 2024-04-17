@@ -1,0 +1,6 @@
+CPlugVehicleWheelPhyModel 0x0912E000
+
+archive
+ bool IsDriving
+ bool IsSteering
+ id WheelId

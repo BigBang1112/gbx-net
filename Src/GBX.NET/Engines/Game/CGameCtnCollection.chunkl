@@ -1,0 +1,283 @@
+CGameCtnCollection 0x03033000
+
+0x000 // old header
+ id
+
+0x001 // desc
+ versionb version
+ id Collection
+ bool NeedUnlock
+ v1+
+  string IconEnv
+  string IconCollection
+  v2+
+   int SortIndex
+   v3+
+    id DefaultZone
+    v4+
+     ident Vehicle
+     v5+
+      string MapFid
+      vec2?
+      vec2?
+      v7-
+       vec2? MapCoordElem
+       v6+
+        vec2? MapCoordIcon
+      v7+
+       string LoadScreen
+       v8+
+        vec2? MapCoordElem
+        vec2? MapCoordIcon
+        vec2? MapCoordDesc
+        string LongDesc
+        v9+
+         string DisplayName
+         v10+
+          bool? IsEditable
+
+0x008 // DefaultDecoration
+ CGameCtnDecoration DefaultDecoration (external)
+
+0x009
+ id Collection
+ CGameCtnZone[] CompleteListZoneList
+ int
+ bool NeedUnlock
+ float SquareSize
+ float SquareHeight
+ ident Vehicle
+
+0x00B
+ int
+
+0x00C
+ bool IsEditable
+ int
+
+0x00D
+ bool HasIconFid
+ if HasIconFid
+  CPlugBitmap IconFid (external)
+ bool HasCollectionIconFid
+ if HasCollectionIconFid
+  CPlugBitmap CollectionIconFid (external)
+
+0x00E
+ int
+
+0x011
+ int
+
+0x013
+ float
+ float
+ float CameraMinHeight
+
+0x016
+ int
+ bool
+ int<EBackgroundShadow> BackgroundShadow
+ float ShadowSoftSizeInWorld
+ int<EVertexLighting> VertexLighting
+ float ColorVertexMin
+ float ColorVertexMax
+
+0x018
+ int
+ rect
+ vec2
+ vec2
+
+0x019 // LoadScreenFid
+ CPlugBitmap LoadScreenFid (external)
+
+0x01A
+ CMwNod
+ rect
+ vec2
+ vec2
+ vec2
+ string
+
+0x01B
+ int
+ bool
+ int<EBackgroundShadow> BackgroundShadow
+ float ShadowSoftSizeInWorld
+ int<EVertexLighting> VertexLighting
+ float ColorVertexMin
+ float ColorVertexMax
+
+0x01D
+ ZoneString[] ZoneStrings
+ CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers
+
+0x01E // camera
+ float
+ float
+ float CameraMinHeight
+ bool
+
+0x01F
+ int[] // ParticleEmitterModelsFids?
+
+0x020 // folders
+ string FolderBlockInfo
+ string FolderItem
+ string FolderDecoration
+ string FolderMenusIcons
+
+0x021 // display name
+ string DisplayName
+
+0x022 // is water multi-height
+ bool IsWaterMultiHeight
+
+0x023
+ bool
+
+0x024
+ int
+ int<EBackgroundShadow> BackgroundShadow
+ bool
+ float ShadowSoftSizeInWorld
+ int<EVertexLighting> VertexLighting
+ float ColorVertexMin
+ float ColorVertexMax
+
+0x027 // board square
+ float BoardSquareHeight
+ float BoardSquareBorder
+
+0x028 // FolderAdditionalItem1
+ string FolderAdditionalItem1
+
+0x029 // FolderAdditionalItem2
+ string FolderAdditionalItem2
+
+0x02A // FolderDecalModels
+ string FolderDecalModels
+
+0x02C
+ int128
+
+0x02F // Tech3TunnelSpecularExpScaleMax
+ vec3? Tech3TunnelSpecularExpScaleMax
+
+0x030
+ int
+
+0x031 // FolderMacroDecals
+ string FolderMacroDecals
+
+0x033
+ version
+ id[]
+ v1+
+  int DecalFadeCBlockFullDensity
+
+0x034
+ version
+ CFuncShaderLayerUV FidFuncShaderCloudsX2
+ CPlugBitmap FidPlugBitmapCloudsX2
+ v1+
+  CPlugBitmap VehicleEnvLayerFidBitmap
+  int<EVehicleEnvLayer> VehicleEnvLayer
+
+0x036 // OffZone_FogMatter
+ version
+ CPlugFogMatter OffZoneFogMatter
+
+0x037 // TerrainHeightOffset
+ float TerrainHeightOffset
+
+0x038 (ignore)
+
+0x039
+ version
+ v0=
+  float?
+  float?
+  float?
+ v1+
+  int?
+  v2+
+   CMwNod ItemPlacementGroups
+   v3+
+    CMwNod AdnRandomGenList
+    v4+
+     CMwNod FidBlockInfoGroups
+     v10-
+      CMwNod
+      v8+
+       CMwNod
+     v6+
+      CMwNod
+     v8-
+      CMwNod
+     v10+
+      CMwNod
+      v12+
+       CMwNod
+      v11+
+       CMwNod
+       CMwNod
+       CMwNod
+       CMwNod
+       CMwNod
+
+0x03A
+ version
+ int
+ int<EBackgroundShadow> BackgroundShadow
+ bool
+ float ShadowSoftSizeInWorld
+ int<EVertexLighting> VertexLighting
+ float ColorVertexMin
+ float ColorVertexMax
+ int
+ float? VisMeshLodDistScale
+ v1=
+  int
+
+0x03B // turbo color
+ version
+ uint? TurboColorRoulette1
+ uint? TurboColorRoulette2
+ uint? TurboColorRoulette3
+ v1+
+  uint? TurboColorTurbo
+  uint? TurboColorTurbo2
+
+0x03C
+ version
+ string
+ v1+
+  int?
+
+0x03D // BitmapDisplayControlDefaultTVProgram
+ version
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram16x9
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10A
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3
+
+enum EBackgroundShadow
+ None
+ Receive
+ CastAndReceive
+
+enum EVertexLighting
+ None
+ Sunrise
+ Nations
+
+enum EVehicleEnvLayer
+ Dirt
+ Mud
+
+archive ZoneString
+ string Base
+ string Replacement

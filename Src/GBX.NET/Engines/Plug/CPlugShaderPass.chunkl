@@ -1,0 +1,38 @@
+CPlugShaderPass 0x09067000
+- inherits: CPlug
+
+0x006
+ CPlugBitmapSampler[] VertexTextures
+
+0x007
+ uint
+
+0x008
+ CMwNod U01 (external)
+ if U01 != null
+  GpuLoadFx[] GpuLoadFxs1
+  vec4[] U02
+ CMwNod U03 (external)
+ if U03 != null
+  GpuLoadFx[] GpuLoadFxs2
+  vec4[] U04
+
+0x00A
+ id[]
+ PipelineGpu VHlsl
+ PipelineGpu PHlsl
+
+archive PipelineGpu
+ bool U01
+ CMwNod Script (external)
+ if !U01
+  return
+ GpuLoadFx[] GpuLoadFxs
+ vec4[] U02
+
+archive GpuLoadFx
+ id
+ int
+ int
+ int
+ int

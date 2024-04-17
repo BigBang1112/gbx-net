@@ -1,0 +1,29 @@
+CGameCtnDecorationMood 0x0303A000
+
+0x000
+ float Latitude
+ float Longitude
+ float DeltaGMT
+ int
+ int
+
+0x001
+ float RemappedStartDayTime
+ CPlugGameSkin? Remapping
+ string? RemapFolder
+
+0x002
+ int ShadowCountCarHuman
+ int ShadowCountCarOpponent
+ float ShadowCarIntensity
+ bool ShadowScene
+ bool BackgroundIsLocallyLighted
+
+0x003
+ bool
+
+0x004
+ CHmsLightMap HmsLightMap (external)
+
+0x005
+ CHmsAmbientOcc HmsAmbientOcc (external)

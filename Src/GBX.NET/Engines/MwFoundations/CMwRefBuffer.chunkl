@@ -1,0 +1,9 @@
+CMwRefBuffer 0x01026000
+
+0x000
+ uint NodClassId
+ bool UseAddRefRelease
+ CMwNod[]_deprec Nods
+
+0x001
+ id BufferId

@@ -1,0 +1,15 @@
+CPlugVisual2D 0x0904A000
+- inherits: CPlugVisual
+
+0x000
+ Vertex2D[] Vertices2D
+
+archive Vertex2D
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float

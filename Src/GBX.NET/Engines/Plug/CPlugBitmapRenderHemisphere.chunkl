@@ -1,0 +1,17 @@
+CPlugBitmapRenderHemisphere 0x09058000
+- inherits: CPlugBitmapRender
+
+0x001
+ int<EHemiLayout> HemiLayout
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+enum EHemiLayout
+ _1
+ _2_4_16

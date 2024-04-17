@@ -1,0 +1,18 @@
+CGameCtnMediaShootParams 0x03060000
+
+0x001
+ int VideoFps
+ int SizeX
+ int SizeY
+ bool Hq
+ int HqSampleCountPerAxe
+ bool
+ bool HqSoftShadows
+ bool HqAmbientOcc
+ bool IsAudioStream
+ int<EStereo3d> Stereo3d
+
+enum EStereo3d
+ None
+ RedNCyan
+ LeftNRight

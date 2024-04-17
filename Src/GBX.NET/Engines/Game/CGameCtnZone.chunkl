@@ -1,0 +1,15 @@
+CGameCtnZone 0x0305C000
+
+0x003
+ int Height
+ id ZoneId
+ id SurfaceId
+ int
+
+0x004 (skippable, ignore)
+
+0x005
+ bool
+
+0x006
+ bool

@@ -1,0 +1,7 @@
+CPlugVehiclePhyModelCustom 0x0911E000
+
+0x000
+ version
+ float AccelCoef
+ float ControlCoef
+ float GravityCoef

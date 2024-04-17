@@ -1,0 +1,20 @@
+CPlugRoadChunk 0x09128000
+
+0x000
+ version
+ int
+ int
+ vec3[]
+ vec3[]
+ vec3[]
+ v2+
+  int
+  vec3[]
+ v2-
+  int
+ v5+
+  byte
+  byte
+  v6+
+   float
+   float

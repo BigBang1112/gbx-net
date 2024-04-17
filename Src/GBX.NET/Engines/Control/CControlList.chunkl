@@ -1,0 +1,17 @@
+CControlList 0x0700F000
+- inherits: CControlContainer
+
+0x007 (ignore)
+
+0x00A
+ float
+ float
+ float
+ int
+ bool
+ id
+ if U06 == null || U06 == ""
+  CMwNod
+ float
+ float
+ bool

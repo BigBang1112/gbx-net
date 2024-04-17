@@ -1,0 +1,38 @@
+CFuncShaderLayerUV 0x05015000
+- inherits: CFuncShader
+
+0x005
+ string LayerName
+ int
+
+0x009
+ vec2
+ vec2
+
+0x00A (base: 0x009)
+ base
+ vec2
+
+0x00D
+ vec2
+ vec2
+ vec2
+
+0x012
+ int
+ int
+
+0x014
+ float
+ float
+ float
+ float
+
+0x015
+ int
+ int
+ int
+ int
+
+0x016
+ uint

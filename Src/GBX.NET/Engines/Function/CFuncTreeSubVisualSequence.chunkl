@@ -1,0 +1,16 @@
+CFuncTreeSubVisualSequence 0x05031000
+- inherits: CFuncTree
+
+0x000
+ CFuncKeysNatural SubKeys (direct)
+
+0x001
+ id
+
+0x002
+ CFuncKeysNatural SubKeys
+
+0x003
+ bool SimpleModeIsLooping
+ int SimpleModeStartIndex
+ int SimpleModeEndIndex

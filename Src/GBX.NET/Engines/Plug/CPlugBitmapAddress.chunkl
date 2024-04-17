@@ -1,0 +1,31 @@
+CPlugBitmapAddress 0x09047000
+- inherits: CPlugBitmapSampler
+
+0x002
+ int // SBitmapElemToPack array?
+
+0x004
+ int
+ byte
+ int
+ bool
+ bool
+ bool
+
+0x005 (base: 0x004)
+
+0x007
+ uint
+ int
+ byte
+ if U03 == 1
+  box?
+ if U03 == 2
+  mat4?
+
+0x008
+ int
+ float
+
+0x009
+ float

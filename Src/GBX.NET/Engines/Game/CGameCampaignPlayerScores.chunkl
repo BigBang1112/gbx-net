@@ -1,0 +1,12 @@
+CGameCampaignPlayerScores 0x030EA000
+
+0x001
+
+archive GameModeScores
+ int U01
+ boolbyte U02
+ if U02
+  int U03
+  int U04
+  int U05
+  bool U06

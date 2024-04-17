@@ -1,0 +1,21 @@
+CGameCtnDecorationSize 0x0303B000
+
+0x000
+ vec2 EditionZoneMin
+ vec2 EditionZoneMax
+ float
+
+0x001
+ int BaseHeightBase
+ int3 Size
+ CSceneLayout Scene (external)
+
+0x002
+ int BaseHeightBase
+ int3 Size
+ bool OffsetBlockY
+ CSceneLayout Scene (external)
+
+0x003 (skippable)
+ version
+ int BaseHeightOffset

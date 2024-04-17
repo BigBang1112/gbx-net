@@ -1,0 +1,37 @@
+CPlugVehiclePhyModel 0x090EA000
+
+0x002
+ CMwRefBuffer RefBuffer (external)
+
+0x003
+ CPlugVehiclePhyTunings Tunings (external)
+
+0x008
+ version
+ CPlugVehicleCarPhyShape PhyShape
+ v1+
+  OccupantSlot[] OccupantSlots (version: Version)
+ v6+
+  vec3[]
+
+archive OccupantSlot
+ byte U01
+ v2+
+  id U02
+  v3+
+   vec3 U03
+   v4+
+    bool U04
+    if U04
+     int U05
+     float U06
+     int U07
+     int U08
+     v5+
+      bool U09
+      v7+
+       byte U10
+       v8+
+        bool U11
+        float U12
+     

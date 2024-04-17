@@ -1,0 +1,50 @@
+CPlugVehicleCarPhyShape 0x0910E000
+
+0x000
+ version
+ float U01
+ CPlugSolid U02
+ v1+
+  if U02 == null
+   CPlugSurface MoveShape
+ CPlugVehicleWheelPhyModel[] U04
+ boxaligned U05
+ bool U06
+ float U07
+ float U08
+ float U09
+ float U10
+ float U11
+ float U12
+ float U13
+ float U14
+ float U15
+ vec4[] U16
+ boxaligned CarVsCarShapeBox
+ bool U18
+ bool U19
+ float U20
+ float U21
+ bool U22
+ float U23
+ bool U24
+ float U25
+ bool U26
+ float U27
+ float U28
+ float U29
+ v2+
+  float U30
+  float U31
+  float U32
+  v3+
+   string U33
+   if U33 == null || U33 == ""
+    CPlugSurface U34
+   v4+
+    vec3[] U35
+    v5+
+     CPlugSurface U36
+     v6+
+      CPlugSurface U37
+      CPlugSurface U38

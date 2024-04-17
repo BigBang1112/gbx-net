@@ -1,0 +1,137 @@
+CGameCtnMacroBlockInfo 0x0310D000
+- inherits: CGameCtnCollector
+
+0x000 // block spawns
+ list<BlockSpawn> BlockSpawns
+
+0x001 // block skin spawns
+ list<BlockSkinSpawn> BlockSkinSpawns
+
+0x002 // card events spawns
+ list<CardEventsSpawn> CardEventsSpawns
+
+0x006
+ int = 2
+ data // SceneDecals?
+
+0x007
+ CGameCtnMediaClipGroup
+ CGameCtnMediaClipGroup
+ CMwNod
+
+0x008
+ CGameCtnAutoTerrain[]_deprec AutoTerrains
+ int
+ bool
+
+0x00B (skippable) // script metadata
+
+0x00C (skippable) // splines
+ version = 2
+ v0=
+  CMwNod[]_deprec
+  CPlugSpline3D[]_deprec
+  CMwNod[]_deprec
+  CMwNod[]_deprec
+  int
+  int
+  int
+ v2+
+  return
+ CMwNod[]_deprec
+
+0x00D
+ version
+
+0x00E // object spawns
+ version
+ list<ObjectSpawn> ObjectSpawns
+ v2-
+  v1+
+   int2[]
+ v3+
+  int4[]
+
+0x00F
+ version
+ int3
+ int3
+ int3[]
+
+0x010 (skippable)
+ version
+ int IconSize
+
+0x011 (skippable) // clips
+
+archive BlockSpawn
+ int Version
+ ident BlockModel
+ if Version < 2
+  int3 Coord
+  int<Direction> Direction
+ if Version >= 2
+  if Version < 5
+   byte3 Coord
+   byte<Direction> Direction
+  int Flags
+  if Version >= 3
+   if Version >= 5
+    if ((Flags >> 26) & 1) != 0
+     vec3 AbsolutePositionInMap
+     vec3 PitchYawRoll
+    if ((Flags >> 26) & 1) == 0
+     byte3 Coord
+     byte<Direction> Direction
+   CGameWaypointSpecialProperty Waypoint
+   if Version >= 4
+    if Version < 6
+     CMwNod
+    if Version >= 8
+     short
+
+archive BlockSkinSpawn
+ int Version
+ CGameCtnBlockSkin Skin
+ if Version == 0
+  int3 // its position?
+ int BlockSpawnIndex
+
+archive CardEventsSpawn
+ int Version
+ ident[]
+ int3
+
+archive ObjectSpawn
+ int Version
+ ident ItemModel
+ if Version < 3
+  byte QuarterY
+  if Version >= 1
+   byte AdditionalDir
+ if Version >= 3
+  vec3 PitchYawRoll
+ int3 BlockCoord
+ id AnchorTreeId
+ vec3 AbsolutePositionInMap
+ if Version < 5
+  int U01
+ if Version < 6
+  int U02
+ if Version >= 6
+  short U03
+  if Version >= 7
+   vec3 PivotPosition
+   if Version >= 8
+    CGameWaypointSpecialProperty Waypoint
+    if Version >= 9
+     float Scale
+     if Version >= 10
+      int3 U04
+      if Version >= 14
+       int U05
+       boolbyte U06
+       if U06
+        packdesc PackDesc
+        packdesc ForegroundPackDesc
+       int U07

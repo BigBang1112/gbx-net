@@ -1,0 +1,51 @@
+CGameCtnDecoration 0x03038000
+- inherits: CGameCtnCollector
+
+0x001 // LightMap
+ versionb version
+ int
+
+0x011 // DecoSize
+ CGameCtnDecorationSize DecoSize (external)
+
+0x012 // DecoAudio
+ CGameCtnDecorationAudio DecoAudio (external)
+
+0x013 // DecoMood
+ CGameCtnDecorationMood DecoMood (external)
+
+0x014 // DecoratorSolidWarp
+ CPlugDecoratorSolid DecoratorSolidWarp
+
+0x015 // TerrainModifierCovered
+ CGameCtnDecorationTerrainModifier TerrainModifierCovered (external)
+
+0x016 // TerrainModifierBase
+ CGameCtnDecorationTerrainModifier TerrainModifierBase (external)
+
+0x017
+ version
+ id? DecorationZoneFrontierId
+ v1+
+  bool IsWaterOutsidePlayField
+
+0x018
+ version
+ CPlugGameSkin VehicleFxSkin
+ string VehicleFxFolder
+
+0x019
+ version
+ CGameCtnDecorationAudio DecoAudio (external)
+ v1+
+  CPlugSound DecoAudioAmbient
+
+0x01A
+ version
+ CGameCtnDecorationMaterialModifiers DecoMaterialModifiers
+
+0x01B
+ version
+ CGameCtnChallenge DecoMap (external)
+ v1+
+  CMwNod DecoMapLightMap // Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside

@@ -1,0 +1,36 @@
+CPlugVehicleMaterial 0x090F1000
+
+0x00F
+ float
+ float
+
+0x010
+ version
+ float
+ float
+ float
+ float
+ byte
+ v1=
+  float?
+  float?
+ v1+
+  float?
+  float?
+  float?
+  v2+
+   float?
+   v3+
+    float?
+    float?
+    float?
+    v4+
+     bool?
+     vec2?
+     v5+
+      float?
+      v6+
+       float?
+       v7+
+        float?
+        float?

@@ -1,0 +1,13 @@
+CGameCtnZoneFlat 0x0305D000
+- inherits: CGameCtnZone
+
+0x001
+ CGameCtnBlockInfoFlat BlockInfoFlat (external)
+ CGameCtnBlockInfoClip BlockInfoClip (external)
+ CGameCtnBlockInfoRoad BlockInfoRoad (external)
+ CGameCtnBlockInfoPylon BlockInfoPylon (external)
+
+0x002 (skippable)
+ int
+ bool GroundOnly
+ bool

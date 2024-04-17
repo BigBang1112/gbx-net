@@ -1,0 +1,9 @@
+CControlContainer 0x07002000
+- inherits: CControlBase
+
+0x005
+ bool AcceptOwnControls
+ bool UseScript
+ int
+ int
+ int

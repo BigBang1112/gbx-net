@@ -1,0 +1,10 @@
+CGameCtnDecorationAudio 0x03039000
+
+0x000
+
+0x001
+ CPlugAudioEnvironment AudioEnvOutsideOpen
+ CPlugAudioEnvironment AudioEnvOutsideEnclosed
+
+0x002
+ float

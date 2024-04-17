@@ -1,0 +1,26 @@
+CPlugBitmapRender 0x09086000
+- inherits: CPlug
+
+0x003
+ short
+ short
+ short
+ short
+
+0x00A
+ float FogCustomFarZ
+
+0x00B
+ int
+ uint
+ CPlugBitmap BitmapClear
+ vec2? BitmapClearUV
+
+0x00C
+ CPlugBitmapRenderSub RenderSub
+
+0x00D
+ uint
+
+0x00E
+ uint

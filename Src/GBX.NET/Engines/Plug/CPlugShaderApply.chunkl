@@ -1,0 +1,36 @@
+CPlugShaderApply 0x09026000
+- inherits: CPlugShaderGeneric
+
+0x001
+ int
+ int
+ CPlugBitmapAddress[] BitmapAddresses
+ int
+
+0x002
+ CPlugBitmapAddress[] BitmapAddresses
+
+0x004
+ int
+
+0x006
+ int
+
+0x008
+ int
+ int
+
+0x00A
+ uint
+ uint
+ uint
+
+0x00C
+ CPlugBitmapAddress[]_deprec BitmapAddresses // May not be correct
+
+0x010
+ byte // DoData
+
+0x011
+ version
+ CMwNod

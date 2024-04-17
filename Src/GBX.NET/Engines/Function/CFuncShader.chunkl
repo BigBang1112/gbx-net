@@ -1,0 +1,3 @@
+CFuncShader 0x05011000
+- inherits: CFuncPlug
+- abstract

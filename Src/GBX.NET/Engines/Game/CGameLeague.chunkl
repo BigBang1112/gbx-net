@@ -1,0 +1,9 @@
+CGameLeague 0x0308E000
+
+0x001
+ string Path
+ string Name
+ string Description
+ string Login
+ byte
+ string FlagUrl

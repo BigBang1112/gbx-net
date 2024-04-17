@@ -1,0 +1,7 @@
+CGameCtnZoneFrontier 0x0305E000
+- inherits: CGameCtnZone
+
+0x001
+ CGameCtnBlockInfoFrontier BlockInfoFrontier
+ id ParentZoneId
+ id ChildZoneId
