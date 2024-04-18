@@ -35,4 +35,11 @@ public readonly record struct Int3(int X, int Y, int Z)
     public static implicit operator Int3(Byte3 a) => new(a.X, a.Y, a.Z);
 
     public static explicit operator Int3(Vec3 a) => new((int)a.X, (int)a.Y, (int)a.Z);
+
+    public static Int3 operator +(Int3 a, Int3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+
+    public static Int3 operator -(Int3 a) => new(-a.X, -a.Y, -a.Z);
+    public static Int3 operator -(Int3 a, Int3 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+
+    public static Int3 operator *(Int3 a, Int3 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
 }
