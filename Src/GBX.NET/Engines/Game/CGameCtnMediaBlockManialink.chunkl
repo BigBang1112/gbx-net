@@ -5,4 +5,4 @@ CGameCtnMediaBlockManialink 0x0312A000
  version
  timefloat Start
  timefloat End
- string ManialinkURL
+ string ManialinkUrl

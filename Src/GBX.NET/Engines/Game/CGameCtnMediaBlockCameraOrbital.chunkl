@@ -2,3 +2,22 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
 - inherits: CGameCtnMediaBlock
 
 0x001
+ version
+ list<Key> Keys (version: Version)
+
+archive Key
+ timefloat Time
+ byte
+ float Radius
+ float Longitude
+ float Latitude
+ vec3 TargetPosition
+ float Fov
+ float
+ float
+ int
+ v1+
+  int
+  int
+  int
+  int

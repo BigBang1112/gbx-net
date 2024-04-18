@@ -58,7 +58,11 @@ internal class ChunkLPropertiesWriter
                 continue;
             }
 
-            var chunkClass = (chunk.Properties.ContainsKey("header") ? "HeaderChunk" : "Chunk") + ((classInfo?.Id ?? 0) + chunk.Id).ToString("X8");
+            var chunkId = chunk.Id > 0xFFF
+                ? chunk.Id
+                : ((classInfo?.Id ?? 0) + chunk.Id);
+
+            var chunkClass = (chunk.Properties.ContainsKey("header") ? "HeaderChunk" : "Chunk") + chunkId.ToString("X8");
 
             if (appliedWithChunkDict.ContainsKey(prop.Name))
             {

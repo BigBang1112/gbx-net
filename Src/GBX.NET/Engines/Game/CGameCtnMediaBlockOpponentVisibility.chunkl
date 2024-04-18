@@ -6,4 +6,9 @@ CGameCtnMediaBlockOpponentVisibility 0x0338B000
  timefloat End
 
 0x001
- int Visibility
+ int<EVisibility> Visibility
+
+enum EVisibility
+ Hidden
+ Ghost
+ Opaque

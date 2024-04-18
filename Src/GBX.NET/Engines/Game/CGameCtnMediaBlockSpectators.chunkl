@@ -2,3 +2,9 @@ CGameCtnMediaBlockSpectators 0x030EB000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ version
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ float Spectators

@@ -2,9 +2,37 @@ CGameCtnMediaBlockFxColors 0x03080000
 - inherits: CGameCtnMediaBlockFx
 
 0x000
+ list<Key> Keys
 
-0x001
+0x001 (base: 0x000)
 
-0x002
+0x002 (base: 0x000)
 
-0x003
+0x003 (base: 0x000)
+
+archive Key
+ timefloat Time
+ float Intensity
+ float BlendZ
+ float Distance
+ float FarDistance
+ float Inverse
+ float Hue
+ float Saturation // from center
+ float Brightness // from center
+ float Contrast // from center
+ vec3 Rgb
+ float U01
+ float U02
+ float U03
+ float U04
+ float FarInverse
+ float FarHue
+ float FarSaturation // from center
+ float FarBrightness // from center
+ float FarContrast // from center
+ vec3 FarRgb
+ float FarU01
+ float FarU02
+ float FarU03
+ float FarU04

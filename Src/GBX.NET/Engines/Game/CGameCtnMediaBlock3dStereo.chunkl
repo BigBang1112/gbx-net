@@ -2,3 +2,9 @@ CGameCtnMediaBlock3dStereo 0x03024000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ float UpToMax
+ float ScreenDist

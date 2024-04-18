@@ -2,3 +2,14 @@ CGameCtnMediaBlockColoringCapturable 0x0316C000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ version
+ int
+ list<Key> Keys
+ v1+
+  int CapturableIndex
+
+archive Key
+ timefloat Time
+ float Hue
+ float Gauge
+ int Emblem

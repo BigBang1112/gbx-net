@@ -2,6 +2,8 @@ CGameCtnMediaBlockSound 0x030A7000
 - inherits: CGameCtnMediaBlock
 
 0x001
+ packdesc Sound
+ list<Key> Keys
 
 0x002
  int PlayCount
@@ -17,3 +19,15 @@ CGameCtnMediaBlockSound 0x030A7000
   v2+
    bool AudioToSpeech
    int AudioToSpeechTarget
+
+0x004
+ packdesc Sound
+ version Version
+ list<Key> Keys (version: Version)
+
+archive Key
+ timefloat Time
+ float Volume
+ float Pan
+ v1+
+  vec3 Position

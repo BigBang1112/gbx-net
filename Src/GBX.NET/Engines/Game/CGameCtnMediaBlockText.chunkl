@@ -9,4 +9,4 @@ CGameCtnMediaBlockText 0x030A8000
  vec3 Color
 
 0x003
- float
+ float = 0.2f

@@ -6,4 +6,4 @@ CGameCtnMediaBlockImage 0x030A5000
  packdesc Image
 
 0x001
- float
+ float = 0.2f

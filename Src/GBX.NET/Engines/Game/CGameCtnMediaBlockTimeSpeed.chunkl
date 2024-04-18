@@ -2,3 +2,11 @@ CGameCtnMediaBlockTimeSpeed 0x03129000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ list<Key> Keys
+
+0x03085000
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ float Speed

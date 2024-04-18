@@ -2,11 +2,19 @@ CGameCtnMediaBlockToneMapping 0x03127000
 - inherits: CGameCtnMediaBlock
 
 0x000
+ list<Key> Keys
 
-0x001
+0x001 (base: 0x000)
 
-0x002
+0x002 (base: 0x000)
 
-0x003
+0x003 (base: 0x000)
 
-0x004
+0x004 (base: 0x000)
+
+archive Key
+ timefloat
+ float Exposure
+ float MaxHDR
+ float LightTrailScale
+ int
