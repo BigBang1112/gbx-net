@@ -116,6 +116,8 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
 
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Main node complete.");
 
+        reader.LoadFrom(decompressedReader);
+
         return body;
     }
 
@@ -150,6 +152,8 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         ReadMainNode(node, body, decompressedReaderWriter);
 
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Main node complete.");
+
+        reader.LoadFrom(decompressedReader);
 
         return body;
     }
