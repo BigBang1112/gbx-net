@@ -367,10 +367,13 @@ public partial class Gbx : IGbx
 
     public virtual void Save(Stream stream, GbxWriteSettings settings = default)
     {
+        var packDescVersion = settings.PackDescVersion ?? PackDescVersion.GetValueOrDefault(3);
+        var deprecVersion = DeprecVersion.GetValueOrDefault(10);
+
         using var writer = new GbxWriter(stream, settings.LeaveOpen)
         {
-            PackDescVersion = PackDescVersion.GetValueOrDefault(3),
-            DeprecVersion = DeprecVersion.GetValueOrDefault(10)
+            PackDescVersion = packDescVersion,
+            DeprecVersion = deprecVersion
         };
         
         Header.Write(writer, Node, settings);
@@ -388,8 +391,8 @@ public partial class Gbx : IGbx
             bodyUncompressedMs = new MemoryStream();
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, leaveOpen: true)
             {
-                PackDescVersion = PackDescVersion.GetValueOrDefault(3),
-                DeprecVersion = DeprecVersion.GetValueOrDefault(10)
+                PackDescVersion = packDescVersion,
+                DeprecVersion = deprecVersion
             };
 
             Body.WriteUncompressed(Node, bodyWriter, settings);
