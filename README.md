@@ -203,6 +203,52 @@ This will print out all blocks on the map and their count. This code can potenti
 2. There's **a Gbx exception**. See *Exceptions in GBX.NET 2* (TBD).
 3. There's a file system problem.
 
+### Modify and save a map
+
+Required packages: `GBX.NET`, `GBX.NET.LZO`
+
+GBX.NET's strength is in its ability to modify Gbx files and save them back. This example shows how you can change the map name of a map:
+
+```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.LZO;
+
+Gbx.LZO = new MiniLZO();
+
+var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+var map = gbx.Node; // See Clarity section for more info
+
+map.MapName = "My new map name";
+
+gbx.Save("Path/To/MyNew.Map.Gbx");
+```
+
+The trick here is that the Gbx properties are saved in the `gbx` variable (in the `Gbx` class). These properties ensure that the Gbx file is saved correctly across all Trackmania versions.
+
+If you were to go with `ParseNode` in this case, this would **not work for TMF and older games**, but it is still possible if you specify the Gbx parameters in the `Save` method:
+
+```cs
+map.Save("Path/To/MyNew.Map.Gbx", new()
+{
+    PackDescVersion = 2 // Latest known PackDesc version in TMF
+});
+```
+
+For TMS or TMN ESWC, you would have to specify `ClassIdRemapMode` for example:
+
+```cs
+map.Save("Path/To/MyNew.Map.Gbx", new()
+{
+	ClassIdRemapMode = ClassIdRemapMode.Id2006
+    PackDescVersion = 1
+});
+```
+
+These save parameters depend on the game of choice, but **since Trackmania 2, this does not matter** and you can safely use `Save` method on `CMwNod` without additional settings.
+
+For more details, see [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode) in the [Clarity](#clarity) section.
+
 ### Processing multiple Gbx types
 
 Required packages: `GBX.NET`, `GBX.NET.LZO`
