@@ -59,6 +59,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(Mat4 value);
     void Write(Quat value);
     void Write(Rect value);
+    void Write(TransQuat value);
     void Write(Id value);
     void WriteIdAsString(string? value);
     void Write(Ident? value);
@@ -587,6 +588,17 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.Y);
         Write(value.X2);
         Write(value.Y2);
+    }
+
+    public void Write(TransQuat value)
+    {
+        Write(value.TX);
+        Write(value.TY);
+        Write(value.TZ);
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.W);
     }
 
     public void Write(Id value)

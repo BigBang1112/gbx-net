@@ -56,6 +56,7 @@ public partial interface IGbxReader : IDisposable
     Quat ReadQuat();
     Quat ReadQuat6();
     Rect ReadRect();
+    TransQuat ReadTransQuat();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
     byte[] ReadData();
@@ -587,6 +588,17 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                         Y: ReadSingle(),
                         X2: ReadSingle(),
                         Y2: ReadSingle());
+    }
+
+    public TransQuat ReadTransQuat()
+    {
+        return new TransQuat(TX: ReadSingle(),
+                             TY: ReadSingle(),
+                             TZ: ReadSingle(),
+                             X: ReadSingle(),
+                             Y: ReadSingle(),
+                             Z: ReadSingle(),
+                             W: ReadSingle());
     }
 
     public GbxFormat ReadFormatByte()
