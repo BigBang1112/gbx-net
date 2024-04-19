@@ -297,7 +297,7 @@ public partial class Gbx : IGbx
             LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
             LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
             LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
-            LoggerExtensions.LogInformation(logger, "Gbx completed.");
+            LoggerExtensions.LogInformation(logger, "Known Gbx completed.");
         }
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);

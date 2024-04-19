@@ -34,6 +34,9 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
 
         var refTableForReader = new Dictionary<int, GbxRefTableNode>();
 
+        var unlinkedFiles = new List<UnlinkedGbxRefTableFile>();
+        var unlinkedResources = new List<UnlinkedGbxRefTableResource>();
+
         for (var i = 0; i < numExternalNodes; i++)
         {
             var flags = reader.ReadInt32();
@@ -60,20 +63,27 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
                 logger?.LogInformation("External resource: {Resource}", resource);
 
                 refTableForReader.Add(nodeIndex, resource);
+                unlinkedResources.Add(new UnlinkedGbxRefTableResource(flags, useFile, nodeIndex, resourceIndex.GetValueOrDefault()));
                 continue;
             }
 
             var dirIndex = reader.ReadInt32() - 1;
+            var dir = directoryList[dirIndex];
 
-            var filePath = dirIndex == -1 ? name : Path.Combine(directoryList[dirIndex].ToString(), name);
+            var filePath = dirIndex == -1 ? name : Path.Combine(dir.ToString(), name);
 
             var file = new GbxRefTableFile(refTable, flags, useFile, filePath);
             logger?.LogInformation("External file: {File}", file);
 
             refTableForReader.Add(nodeIndex, file);
+
+            unlinkedFiles.Add(new UnlinkedGbxRefTableFile(flags, useFile, nodeIndex, filePath));
         }
 
         reader.LoadRefTable(refTableForReader);
+
+        refTable.Files = unlinkedFiles;
+        refTable.Resources = unlinkedResources;
 
         return refTable;
     }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System.Collections.Immutable;
 
 namespace GBX.NET.Components;
 
@@ -8,19 +7,14 @@ public sealed class GbxRefTable
     public int AncestorLevel { get; set; }
 
     /// <summary>
-    /// Directories in the reference table at point when the Gbx was read. This could be different from reality if the nodes were modified.
+    /// Files in the reference table, available for header-only preview and minimal reference table modifications. This won't be serialized back to Gbx, except if <see cref="GbxBody.RawData"/> is set (for example when <see cref="GbxReadSettings.ReadRawBody"/> was enabled).
     /// </summary>
-    public ImmutableList<ImmutableGbxRefTableDirectory> Directories { get; internal set; } = ImmutableList<ImmutableGbxRefTableDirectory>.Empty;
+    public IReadOnlyCollection<UnlinkedGbxRefTableFile> Files { get; internal set; } = [];
 
     /// <summary>
-    /// Files in the root directory of the reference table at point when the Gbx was read. This could be different from reality if the nodes were modified.
+    /// Resources in the reference table, available for header-only preview and minimal reference table modifications. This won't be serialized back to Gbx, except if <see cref="GbxBody.RawData"/> is set (for example when <see cref="GbxReadSettings.ReadRawBody"/> was enabled).
     /// </summary>
-    public ImmutableList<ImmutableGbxRefTableFile> Files { get; internal set; } = ImmutableList<ImmutableGbxRefTableFile>.Empty;
-
-    /// <summary>
-    /// Resources in the reference table at point when the Gbx was read. This could be different from reality if the nodes were modified.
-    /// </summary>
-    public ImmutableList<ImmutableGbxRefTableResource> Resources { get; internal set; } = ImmutableList<ImmutableGbxRefTableResource>.Empty;
+    public IReadOnlyCollection<UnlinkedGbxRefTableResource> Resources { get; internal set; } = [];
 
     public Dictionary<GbxRefTableFile, byte[]> ExternalData { get; } = [];
 
