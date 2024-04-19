@@ -1,4 +1,5 @@
 CGameCtnMediaBlockLightmap 0x030C0000
+- inherits: CGameCtnMediaBlock
 
 0x000
  version

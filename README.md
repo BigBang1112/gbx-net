@@ -24,6 +24,8 @@ GBX.NET is not just a library, but essentially **a modding platform** that conne
   - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
 - **[Usage (simple examples)](#usage-simple-examples)**
   - [Load a map and display block count per block name](#load-a-map-and-display-block-count-per-block-name)
+  - [Modify and save a map](#modify-and-save-a-map)
+  - [Processing multiple Gbx types](#processing-multiple-gbx-types)
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
@@ -224,7 +226,7 @@ map.MapName = "My new map name";
 gbx.Save("Path/To/MyNew.Map.Gbx");
 ```
 
-The trick here is that the Gbx properties are saved in the `gbx` variable (in the `Gbx` class). These properties ensure that the Gbx file is saved correctly across all Trackmania versions.
+The trick here is that the Gbx properties are saved in the `gbx` object variable (`Gbx` class). These properties ensure that the Gbx file is saved correctly across all Trackmania versions.
 
 If you were to go with `ParseNode` in this case, this would **not work for TMF and older games**, but it is still possible if you specify the Gbx parameters in the `Save` method:
 
@@ -240,7 +242,7 @@ For TMS or TMN ESWC, you would have to specify `ClassIdRemapMode` for example:
 ```cs
 map.Save("Path/To/MyNew.Map.Gbx", new()
 {
-	ClassIdRemapMode = ClassIdRemapMode.Id2006
+    ClassIdRemapMode = ClassIdRemapMode.Id2006
     PackDescVersion = 1
 });
 ```

@@ -1,8 +1,19 @@
-CGameCtnMediaBlockCameraSimple 0x030A1000
+CGameCtnMediaBlockCameraSimple 0x0309F000
 - inherits: CGameCtnMediaBlockCamera
 
-0x000
+0x030A1000
  list<Key> Keys
+
+0x030A1001
+ int
+
+0x030A1002
+ version
+ list<Key> Keys
+ int
+ int
+ v2+
+  bool
 
 archive Key
  timefloat Time
@@ -11,14 +22,3 @@ archive Key
  float
  float
  float
-
-0x001
- int
-
-0x002
- version
- list<Key> Keys
- int
- int
- v2+
-  bool

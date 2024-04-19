@@ -55,6 +55,46 @@ Console.WriteLine(map.Xml);
 
 Header contains a lot less information than the full node.
 
+### Modify and save a map
+
+```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.LZO;
+
+Gbx.LZO = new MiniLZO();
+
+var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+var map = gbx.Node; // See Clarity section for more info
+
+map.MapName = "My new map name";
+
+gbx.Save("Path/To/MyNew.Map.Gbx");
+```
+
+The trick here is that the Gbx properties are saved in the `gbx` object variable (`Gbx` class).
+
+If you were to go with `ParseNode` in this case, this would **not work for TMF and older games**, but it is still possible if you specify the Gbx parameters in the `Save` method:
+
+```cs
+map.Save("Path/To/MyNew.Map.Gbx", new()
+{
+    PackDescVersion = 2 // Latest known PackDesc version in TMF
+});
+```
+
+For TMS or TMN ESWC, you would have to specify `ClassIdRemapMode` for example:
+
+```cs
+map.Save("Path/To/MyNew.Map.Gbx", new()
+{
+    ClassIdRemapMode = ClassIdRemapMode.Id2006
+    PackDescVersion = 1
+});
+```
+
+These save parameters depend on the game of choice, but **since Trackmania 2, this does not matter**.
+
 ### Processing multiple Gbx types
 
 Additional package `GBX.NET.LZO` is required in this example.

@@ -4,7 +4,7 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
 0x001 // main
  string Name
  list<CGameCtnMediaBlock>_deprec Blocks
- int // = -1
+ int = -1
 
 0x002 // TMS/TMU IsKeepPlaying
  bool IsKeepPlaying
