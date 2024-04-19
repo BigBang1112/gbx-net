@@ -26,6 +26,12 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
     private void WriteUnknownHeaderUserData(GbxHeaderUnknown unknownHeader)
     {
+        if (unknownHeader.UserData.Count == 0)
+        {
+            writer.Write(0);
+            return;
+        }
+
         var isAllUnknownHeaderChunk = unknownHeader.UserData.All(x => x is HeaderChunk);
 
         if (!isAllUnknownHeaderChunk)
@@ -108,6 +114,12 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
     private void WriteKnownHeaderUserData(IClass node)
     {
+        if (!node.Chunks.OfType<IHeaderChunk>().Any())
+        {
+            writer.Write(0);
+            return;
+        }
+
         using var concatenatedDataMs = new MemoryStream();
         using var concatenatedDataW = new GbxWriter(concatenatedDataMs);
         using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
