@@ -1,0 +1,8 @@
+CGameCtnMediaBlockLightmap 0x030C0000
+
+0x000
+ version
+ timefloat Start
+ timefloat End
+ v1+
+  float
