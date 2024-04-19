@@ -138,12 +138,12 @@ internal class ChunkLPropertiesWriter
 
             alreadyAddedProps.Add(propName);
 
-            var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
+            var isExternal = prop.Properties?.ContainsKey("external") ?? false;
+
+            var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType(isExternal);
 
             var nullable = prop.IsNullable || (prop.Type.IsReferenceType() && string.IsNullOrEmpty(prop.DefaultValue));
             var fieldName = GetFieldName(propName);
-
-            var isExternal = prop.Properties?.ContainsKey("external") ?? false;
 
             // full property is forced for external for "behind the scenes" loading
             if (!autoProperty || isExternal)
@@ -212,7 +212,7 @@ internal class ChunkLPropertiesWriter
             {
                 sb.Append(" { get => ");
 
-                if (isExternal)
+                if (isExternal && !prop.Type.IsArray)
                 {
                     sb.Append(fieldName);
                     sb.Append("File?.GetNode(ref ");
@@ -233,7 +233,7 @@ internal class ChunkLPropertiesWriter
                 sb.AppendLine(" = value; }");
             }
 
-            if (isExternal)
+            if (isExternal && !prop.Type.IsArray)
             {
                 sb.Append(indent, "    private Components.GbxRefTableFile? ");
                 sb.Append(fieldName);

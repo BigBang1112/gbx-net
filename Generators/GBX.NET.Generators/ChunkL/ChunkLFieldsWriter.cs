@@ -57,7 +57,9 @@ internal sealed class ChunkLFieldsWriter
 
                 alreadyAddedFields.Add(fieldName);
 
-                var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType();
+                var isExternal = prop.Properties?.ContainsKey("external") ?? false;
+
+                var mappedType = prop is ChunkEnum enumProp ? PropertyTypeExtensions.MapType(enumProp.EnumType) : prop.Type.ToCSharpType(isExternal);
 
                 if (!string.IsNullOrWhiteSpace(prop.Description))
                 {
@@ -98,7 +100,7 @@ internal sealed class ChunkLFieldsWriter
 
                 sb.AppendLine(";");
 
-                if (prop.Properties?.ContainsKey("external") == true)
+                if (isExternal)
                 {
                     sb.Append(indent, "public Components.GbxRefTableFile? ");
                     sb.Append(fieldName);

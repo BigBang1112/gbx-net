@@ -68,15 +68,21 @@ internal static class PropertyTypeExtensions
             && string.IsNullOrEmpty(propertyType.ArrayLength);
     }
 
-    public static string ToCSharpType(this PropertyType propertyType)
+    public static string ToCSharpType(this PropertyType propertyType, bool isExternal)
     {
-        var sb = new StringBuilder(MapType(propertyType.PrimaryType));
+        var sb = new StringBuilder();
+        if (isExternal && propertyType.IsArray) sb.Append("External<");
+        sb.Append(MapType(propertyType.PrimaryType));
         if (!string.IsNullOrEmpty(propertyType.GenericType))
         {
             sb.Append('<');
+            if (isExternal) sb.Append("External<");
             sb.Append(MapType(propertyType.GenericType));
+            if (isExternal) sb.Append('>');
             sb.Append('>');
         }
+
+        if (isExternal && propertyType.IsArray) sb.Append('>');
 
         if (propertyType.IsArray && propertyType.PrimaryType != "data")
         {

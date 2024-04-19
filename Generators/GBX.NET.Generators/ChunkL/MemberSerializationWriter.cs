@@ -317,7 +317,7 @@ internal sealed class MemberSerializationWriter
             sb.Append(version);
         }
 
-        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        if (chunkProperty.Properties?.ContainsKey("external") == true && !chunkProperty.Type.IsArray)
         {
             sb.Append(", out ");
 
@@ -466,7 +466,7 @@ internal sealed class MemberSerializationWriter
             }
         }
 
-        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        if (chunkProperty.Properties?.ContainsKey("external") == true && !chunkProperty.Type.IsArray)
         {
             sb.Append(", ");
 
@@ -614,7 +614,7 @@ internal sealed class MemberSerializationWriter
             }
         }
 
-        if (chunkProperty.Properties?.ContainsKey("external") == true)
+        if (chunkProperty.Properties?.ContainsKey("external") == true && !chunkProperty.Type.IsArray)
         {
             sb.Append(", ref ");
 
