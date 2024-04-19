@@ -31,9 +31,7 @@ public partial class CMwNod : IClass
                 return;
             }
 
-            var chunkId = ClassManager.IsChunkIdRemapped(rawChunkId)
-                ? ClassManager.Wrap(rawChunkId)
-                : rawChunkId;
+            _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
 
             var chunk = node.CreateChunk(chunkId);
 
@@ -197,9 +195,7 @@ public partial class CMwNod : IClass
                 return;
             }
 
-            var chunkId = ClassManager.IsChunkIdRemapped(rawChunkId)
-                ? ClassManager.Wrap(rawChunkId)
-                : rawChunkId;
+            _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
 
             var chunk = CreateChunk(chunkId);
 
@@ -327,7 +323,7 @@ public partial class CMwNod : IClass
                 continue;
             }
 
-            w.WriteHexUInt32(chunk.Id);
+            WriteChunkId(w, chunk.Id);
 
             var chunkW = w;
             var chunkRw = rw;
@@ -483,5 +479,49 @@ public partial class CMwNod : IClass
     public void Save(string fileName, GbxWriteSettings settings = default)
     {
         ToGbx().Save(fileName, settings);
+    }
+
+    private static bool TryRemapChunkId(GbxReader reader, uint chunkId, out uint remappedChunkId)
+    {
+        if (!ClassManager.IsChunkIdRemapped(chunkId))
+        {
+            remappedChunkId = chunkId;
+            return false;
+        }
+
+        remappedChunkId = ClassManager.Wrap(chunkId);
+
+        if (chunkId == remappedChunkId)
+        {
+            return false;
+        }
+
+        // Make sure 2008 doesn't get remapped to 2006 again after
+        if (reader.ClassIdRemapMode != ClassIdRemapMode.Id2008)
+        {
+            reader.ClassIdRemapMode = (chunkId & 0xFFFFF000) is 0x0301A000 // CGameCtnCollector in TMF
+                ? ClassIdRemapMode.Id2008
+                : ClassIdRemapMode.Id2006;
+        }
+
+        return true;
+    }
+
+    private static void WriteChunkId(GbxWriter writer, uint chunkId)
+    {
+        if (writer.ClassIdRemapMode == ClassIdRemapMode.Latest)
+        {
+            writer.WriteHexUInt32(chunkId);
+            return;
+        }
+
+        if (writer.ClassIdRemapMode == ClassIdRemapMode.Id2008 && (chunkId & 0xFFFFF000) == 0x2E001000)
+        {
+            writer.WriteHexUInt32(0x0301A000);
+            return;
+        }
+
+        var unwrappedChunkId = ClassManager.Unwrap(chunkId);
+        writer.WriteHexUInt32(unwrappedChunkId);
     }
 }

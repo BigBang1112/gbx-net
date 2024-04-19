@@ -83,6 +83,7 @@ public partial class Gbx : IGbx
     public int? IdVersion { get; set; }
     public byte? PackDescVersion { get; set; }
     public int? DeprecVersion { get; set; }
+    public ClassIdRemapMode ClassIdRemapMode { get; set; }
 
     public GbxCompression BodyCompression
     {
@@ -115,7 +116,8 @@ public partial class Gbx : IGbx
         Node = Node?.DeepClone(),
         IdVersion = IdVersion,
         PackDescVersion = PackDescVersion,
-        DeprecVersion = DeprecVersion
+        DeprecVersion = DeprecVersion,
+        ClassIdRemapMode = ClassIdRemapMode
     };
 
     IGbx IGbx.DeepClone() => DeepClone();
@@ -138,13 +140,19 @@ public partial class Gbx : IGbx
         {
             var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
 
-            if (logger is not null) LoggerExtensions.LogInformation(logger, "Unknown Gbx, completed.");
+            if (logger is not null)
+            {
+                LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+                LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+                LoggerExtensions.LogInformation(logger, "Unknown Gbx completed.");
+            }
 
             return new Gbx(header, unknownBody)
             {
                 RefTable = refTable,
                 ReadSettings = settings,
                 IdVersion = reader.IdVersion,
+                ClassIdRemapMode = reader.ClassIdRemapMode,
                 FilePath = filePath
             };
         }
@@ -170,7 +178,17 @@ public partial class Gbx : IGbx
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
         gbx.DeprecVersion = reader.DeprecVersion;
+        gbx.ClassIdRemapMode = reader.ClassIdRemapMode;
         gbx.FilePath = filePath;
+
+        if (logger is not null)
+        {
+            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+            LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
+            LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
+            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            LoggerExtensions.LogInformation(logger, "Known Gbx completed.");
+        }
 
         return gbx;
     }
@@ -207,6 +225,15 @@ public partial class Gbx : IGbx
         var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
         // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
 
+        if (logger is not null)
+        {
+            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+            LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
+            LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
+            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            LoggerExtensions.LogInformation(logger, "Gbx completed.");
+        }
+
         return new Gbx<T>(header, body, node)
         {
             RefTable = refTable,
@@ -214,6 +241,7 @@ public partial class Gbx : IGbx
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
             DeprecVersion = reader.DeprecVersion,
+            ClassIdRemapMode = reader.ClassIdRemapMode,
             FilePath = filePath
         };
     }
@@ -246,21 +274,39 @@ public partial class Gbx : IGbx
         
         if (node is null) // aka, header is GbxHeaderUnknown
         {
+            if (logger is not null)
+            {
+                LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+                LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+                LoggerExtensions.LogInformation(logger, "Unknown Gbx completed.");
+            }
+
             return new Gbx(header, body)
             {
                 RefTable = refTable,
                 ReadSettings = settings,
                 IdVersion = reader.IdVersion,
+                ClassIdRemapMode = reader.ClassIdRemapMode,
                 FilePath = filePath,
-            }; 
+            };
         }
-        
+
+        if (logger is not null)
+        {
+            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+            LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
+            LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
+            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            LoggerExtensions.LogInformation(logger, "Gbx completed.");
+        }
+
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
         gbx.RefTable = refTable;
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
         gbx.DeprecVersion = reader.DeprecVersion;
+        gbx.ClassIdRemapMode = reader.ClassIdRemapMode;
         gbx.FilePath = filePath;
 
         return gbx;
@@ -286,6 +332,13 @@ public partial class Gbx : IGbx
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
 
+        if (logger is not null)
+        {
+            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
+            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            LoggerExtensions.LogInformation(logger, "Gbx completed.");
+        }
+
         return new Gbx<T>(header, body, node)
         {
             RefTable = refTable,
@@ -293,6 +346,7 @@ public partial class Gbx : IGbx
             IdVersion = reader.IdVersion,
             PackDescVersion = reader.PackDescVersion,
             DeprecVersion = reader.DeprecVersion,
+            ClassIdRemapMode = reader.ClassIdRemapMode,
             FilePath = filePath
         };
     }
@@ -369,11 +423,13 @@ public partial class Gbx : IGbx
     {
         var packDescVersion = settings.PackDescVersion ?? PackDescVersion.GetValueOrDefault(3);
         var deprecVersion = DeprecVersion.GetValueOrDefault(10);
+        var classIdRemapMode = settings.ClassIdRemapMode ?? ClassIdRemapMode;
 
         using var writer = new GbxWriter(stream, settings.LeaveOpen)
         {
             PackDescVersion = packDescVersion,
-            DeprecVersion = deprecVersion
+            DeprecVersion = deprecVersion,
+            ClassIdRemapMode = classIdRemapMode
         };
         
         Header.Write(writer, Node, settings);
@@ -389,16 +445,17 @@ public partial class Gbx : IGbx
         else if (Node is not null)
         {
             bodyUncompressedMs = new MemoryStream();
+
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, leaveOpen: true)
             {
                 PackDescVersion = packDescVersion,
-                DeprecVersion = deprecVersion
+                DeprecVersion = deprecVersion,
+                ClassIdRemapMode = classIdRemapMode
             };
 
             Body.WriteUncompressed(Node, bodyWriter, settings);
 
             writer.Write(bodyWriter.NodeDict.Count + 1);
-
             writer.LoadFrom(bodyWriter);
 
             bodyUncompressedMs.Position = 0;
@@ -409,7 +466,7 @@ public partial class Gbx : IGbx
         }
         else
         {
-            throw new Exception("Node cannot be null for a known header, as it contains the header chunk instances.");
+            throw new Exception("Node cannot be null for a known header, as the node contains the header chunk definitions.");
         }
 
         if (RefTable is null)
@@ -654,6 +711,7 @@ public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
         ReadSettings = ReadSettings,
         IdVersion = IdVersion,
         PackDescVersion = PackDescVersion,
-        DeprecVersion = DeprecVersion
+        DeprecVersion = DeprecVersion,
+        ClassIdRemapMode = ClassIdRemapMode
     };
 }

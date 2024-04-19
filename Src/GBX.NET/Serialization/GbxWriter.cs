@@ -182,6 +182,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    public ClassIdRemapMode ClassIdRemapMode { get; set; }
+
     /// <summary>
     /// 
     /// </summary>

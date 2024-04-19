@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Components;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Serialization;
 
@@ -8,7 +9,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
     {
         _ = header.Basic.Write(writer);
 
-        writer.Write(header.ClassId);
+        WriteClassId();
 
         if (header is GbxHeaderUnknown unknownHeader)
         {
@@ -22,6 +23,24 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
         // NumNodes is handled elsewhere as unknown header doesnt change it while known header needs to first count it when writing body
 
         return true;
+    }
+
+    private void WriteClassId()
+    {
+        if (writer.ClassIdRemapMode == ClassIdRemapMode.Latest)
+        {
+            writer.WriteHexUInt32(header.ClassId);
+            return;
+        }
+
+        if (writer.ClassIdRemapMode == ClassIdRemapMode.Id2008 && header.ClassId == 0x2E001000)
+        {
+            writer.WriteHexUInt32(0x0301A000);
+            return;
+        }
+
+        var unwrappedClassId = ClassManager.Unwrap(header.ClassId);
+        writer.WriteHexUInt32(unwrappedClassId);
     }
 
     private void WriteUnknownHeaderUserData(GbxHeaderUnknown unknownHeader)

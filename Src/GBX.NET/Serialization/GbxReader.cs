@@ -204,6 +204,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal ILogger? Logger => logger;
 
+    public ClassIdRemapMode ClassIdRemapMode { get; set; }
+
     private GbxReaderLimiter? limiter;
 
     public GbxReader(Stream input, ILogger? logger = null) : base(input, encoding)

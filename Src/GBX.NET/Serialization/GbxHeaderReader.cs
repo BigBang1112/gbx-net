@@ -17,9 +17,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         var basic = GbxHeaderBasic.Parse(reader);
         logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
 
-        var rawClassId = reader.ReadHexUInt32();
-        var classId = ClassManager.Wrap(rawClassId);
-        logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", classId, ClassManager.GetName(classId), rawClassId);
+        var classId = ReadClassId();
 
         var expectedClassId = ClassManager.GetClassId<T>();
 
@@ -55,9 +53,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         var basic = GbxHeaderBasic.Parse(reader);
         logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
 
-        var rawClassId = reader.ReadHexUInt32();
-        var classId = ClassManager.Wrap(rawClassId);
-        logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", classId, ClassManager.GetName(classId), rawClassId);
+        var classId = ReadClassId();
 
         node = ClassManager.New(classId);
 
@@ -83,6 +79,30 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         logger?.LogDebug("Number of nodes: {NumNodes}", header.NumNodes);
 
         return header;
+    }
+
+    private uint ReadClassId()
+    {
+        var rawClassId = reader.ReadHexUInt32();
+        var classId = ClassManager.Wrap(rawClassId);
+
+        if (rawClassId == classId)
+        {
+            logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName})", classId, ClassManager.GetName(classId) ?? "unknown class");
+        }
+        else
+        {
+            logger?.LogDebug("Class ID: 0x{ClassId:X8} (raw: 0x{RawClassId:X8}, {RawClassName} -> {ClassName})",
+                classId, rawClassId,
+                ClassManager.GetName(rawClassId) ?? "unknown class",
+                ClassManager.GetName(classId) ?? "unknown class");
+
+            reader.ClassIdRemapMode = rawClassId is 0x0301A000 // CGameCtnCollector in TMF
+                ? ClassIdRemapMode.Id2008
+                : ClassIdRemapMode.Id2006;
+        }
+
+        return classId;
     }
 
     internal bool ReadUserData<T>(T node) where T : notnull, IClass
