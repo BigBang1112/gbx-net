@@ -46,10 +46,10 @@ internal static class ClassIdParser
                 {
                     currentClass = classSpan.Slice(0, spaceIndex);
                     var classNames = classSpan.Slice(spaceIndex + 1);
-                    var lastSpace = classNames.LastIndexOf(' ');
-                    currentClassName = lastSpace == -1
+                    var nextSpace = classNames.IndexOf(' ');
+                    currentClassName = nextSpace == -1
                         ? classNames.ToString()
-                        : classNames.Slice(lastSpace + 1, classNames.Length - lastSpace - 1).ToString();
+                        : classNames.Slice(0, nextSpace).ToString();
                 }
 
                 var a = currentClass[0];
