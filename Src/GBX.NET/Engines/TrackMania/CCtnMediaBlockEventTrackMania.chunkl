@@ -1,1 +1,101 @@
 CCtnMediaBlockEventTrackMania 0x2407F000
+
+0x000
+ timefloat Start
+ timefloat End
+ bool
+ Stunt[] Stunts
+
+0x003
+ timefloat Start
+ timefloat End
+ bool
+ Event[] Events
+
+archive Stunt
+ v0= // More of a hack
+  timefloat Time
+ int<EStuntFigure> Figure
+ int Angle
+ int Score
+ float Factor
+ bool Straight
+ bool
+ bool
+ bool
+ int Combo
+ int TotalScore
+
+archive Checkpoint
+ int U01
+ if U01 != 0
+  return
+ timefloat Time
+ int U02
+ int U03
+ int U04
+
+archive EndOfLap
+ int U01
+ if U01 >= 2
+  return
+ timefloat Time
+ int U02
+ int U03
+ v1=
+  int U04
+
+archive EndOfRace
+ int U01
+ if U01 != 0
+  return
+ timefloat Time
+ int U02
+
+archive Event
+
+enum EventType
+ Stunt
+ Checkpoint
+ EndOfLap
+ EndOfRace
+
+enum EStuntFigure
+ None
+ StraightJump
+ Flip
+ BackFlip
+ Spin
+ Aerial
+ AlleyOop
+ Roll
+ Corkscrew
+ SpinOff
+ Rodeo
+ FlipFlap
+ Twister
+ FreeStyle
+ SpinningMix
+ FlippingChaos
+ RollingMadness
+ WreckNone
+ WreckStraightJump
+ WreckFlip
+ WreckBackFlip
+ WreckSpin
+ WreckAerial
+ WreckAlleyOop
+ WreckRoll
+ WreckCorkscrew
+ WreckSpinOff
+ WreckRodeo
+ WreckFlipFlap
+ WreckTwister
+ WreckFreeStyle
+ WreckSpinningMix
+ WreckFlippingChaos
+ WreckRollingMadness
+ TimePenalty
+ RespawnPenalty
+ Grind
+ Reset
