@@ -40,7 +40,8 @@ internal static class PropertyTypeExtensions
         "TimeInt32",
         "TimeSingle",
         "Iso4",
-        "Rect"
+        "Rect",
+        "TransQuat"
     ];
 
     private static readonly ImmutableHashSet<string> keywords =
@@ -125,6 +126,7 @@ internal static class PropertyTypeExtensions
             "quat" => "Quat",
             "color" => "Color",
             "rect" => "Rect",
+            "transquat" => "TransQuat",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => nameof(TimeSpan),

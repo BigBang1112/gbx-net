@@ -841,6 +841,7 @@ internal sealed class MemberSerializationWriter
             "quat" => "Quat",
             "color" => "Color",
             "rect" => "Rect",
+            "transquat" => "TransQuat",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => "TimeOfDay",
