@@ -1,5 +1,5 @@
 CGameCtnMediaBlockTransitionFade 0x030AB000
-- inherits: CGameCtnMediaBlock
+- inherits: CGameCtnMediaBlockTransition
 
 0x000
  list<Key> Keys

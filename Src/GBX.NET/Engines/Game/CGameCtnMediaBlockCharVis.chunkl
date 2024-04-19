@@ -1,0 +1,7 @@
+CGameCtnMediaBlockCharVis 0x0316A000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ timefloat Start
+ timefloat End
+ CPlugDataTape DataTape

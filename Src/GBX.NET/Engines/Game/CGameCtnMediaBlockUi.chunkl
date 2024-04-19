@@ -2,7 +2,7 @@ CGameCtnMediaBlockUi 0x0307D000
 - inherits: CGameCtnMediaBlock
 
 0x000
- CControlList UserInterface
+ CControlContainer UserInterface
  timefloat Start
  timefloat End
 

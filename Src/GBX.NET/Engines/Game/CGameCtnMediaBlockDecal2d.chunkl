@@ -1,0 +1,15 @@
+CGameCtnMediaBlockDecal2d 0x031AA000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ timefloat Start
+ timefloat End
+ packdesc[] Images
+ list<Decal> Decals
+
+archive Decal
+ iso4
+ vec3 Scale
+ float
+ bool
+ int

@@ -1,0 +1,25 @@
+CGameReplayObjectVisData 0x031A8000
+
+0x000
+ version
+ list<ObjectVisKey> Keys
+ list<ObjectVis> VisList
+
+archive ObjectVisKey
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+
+archive ObjectVis
+ int
+ int
+ int
+ int
+ int

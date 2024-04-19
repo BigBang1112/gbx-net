@@ -1,0 +1,24 @@
+CGameCtnMediaBlockCameraSimple 0x030A1000
+- inherits: CGameCtnMediaBlockCamera
+
+0x000
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ byte
+ iso4
+ float
+ float
+ float
+
+0x001
+ int
+
+0x002
+ version
+ list<Key> Keys
+ int
+ int
+ v2+
+  bool

@@ -1,0 +1,3 @@
+CGameCtnMediaBlockTransition 0x030AA000
+- inherits: CGameCtnMediaBlock
+- abstract

@@ -1,0 +1,26 @@
+CGameCtnMediaBlockSkel 0x0314A000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ version
+ list<Key> Keys
+ v1+
+  int
+  v4=
+   int
+  v3+
+   float = 100
+   float = 1
+   float = 100
+   float = 1
+   v4+
+    float
+
+archive Key
+ timefloat
+ v2+
+  float
+  float
+  float
+  float
+ transquat[]

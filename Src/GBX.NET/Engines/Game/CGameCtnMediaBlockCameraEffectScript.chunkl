@@ -1,0 +1,16 @@
+CGameCtnMediaBlockCameraEffectScript 0x03161000
+- inherits: CGameCtnMediaBlockCameraEffect
+
+0x000
+ version
+ string Script = empty
+ v0=
+  timefloat Start
+  timefloat End
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ float A
+ float B
+ float C
