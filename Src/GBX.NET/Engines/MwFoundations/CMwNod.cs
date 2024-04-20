@@ -435,28 +435,31 @@ public partial class CMwNod : IClass
         }
     }
 
-    public GameVersion GetGameVersion()
+    public GameVersion GameVersion
     {
-        var version = (GameVersion)int.MaxValue;
-
-        foreach (var chunk in Chunks)
+        get
         {
-            version &= chunk.GameVersion;
-        }
+            var version = (GameVersion)int.MaxValue;
 
-        return (int)version == int.MaxValue ? GameVersion.Unspecified : version;
+            foreach (var chunk in Chunks)
+            {
+                version &= chunk.GameVersion;
+            }
+
+            return (int)version == int.MaxValue ? GameVersion.Unspecified : version;
+        }
     }
 
     public bool IsGameVersion(GameVersion version, bool strict = false)
     {
         return strict
-            ? GetGameVersion() == version
-            : (GetGameVersion() & version) == version;
+            ? GameVersion == version
+            : (GameVersion & version) == version;
     }
 
     public bool CanBeGameVersion(GameVersion version)
     {
-        return (GetGameVersion() & version) != 0;
+        return (GameVersion & version) != 0;
     }
 
     public Gbx ToGbx(GbxHeaderBasic headerBasic)

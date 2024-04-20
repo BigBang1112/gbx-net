@@ -58,7 +58,7 @@ public interface IClass
 
     IClass DeepClone();
 
-    GameVersion GetGameVersion();
+    GameVersion GameVersion { get; }
     bool IsGameVersion(GameVersion version, bool strict = false);
     bool CanBeGameVersion(GameVersion version);
 
