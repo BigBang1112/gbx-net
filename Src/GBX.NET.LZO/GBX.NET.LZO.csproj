@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>GBX.NET.LZO</PackageId>
-		<Version>2.0.0-alpha1</Version>
+		<Version>2.0.0-beta1</Version>
 		<Authors>BigBang1112</Authors>
 		<Description>An LZO compression plugin for GBX.NET to allow de/serialization of compressed Gbx bodies. This official implementation uses minilzo 2.06.</Description>
 		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>

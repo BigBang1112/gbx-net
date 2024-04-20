@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>GBX.NET.ZLib</PackageId>
-		<Version>1.0.0-alpha2</Version>
+		<Version>1.0.0-beta1</Version>
 		<Authors>BigBang1112</Authors>
 		<Description>Support for zlib compressed parts of Gbx, integrated with GBX.NET. This official implementation uses ZlibDotNet.</Description>
 		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
