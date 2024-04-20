@@ -517,7 +517,7 @@ public partial class CMwNod : IClass
 
         if (writer.ClassIdRemapMode == ClassIdRemapMode.Id2008 && (chunkId & 0xFFFFF000) == 0x2E001000)
         {
-            writer.WriteHexUInt32(0x0301A000);
+            writer.WriteHexUInt32(0x0301A000 | (chunkId & 0xFFF));
             return;
         }
 
