@@ -68,9 +68,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
             }
 
             var dirIndex = reader.ReadInt32() - 1;
-            var dir = directoryList[dirIndex];
-
-            var filePath = dirIndex == -1 ? name : Path.Combine(dir.ToString(), name);
+            var filePath = dirIndex == -1 ? name : Path.Combine(directoryList[dirIndex].ToString(), name);
 
             var file = new GbxRefTableFile(refTable, flags, useFile, filePath);
             logger?.LogInformation("External file: {File}", file);
