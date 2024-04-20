@@ -475,7 +475,7 @@ public partial class Gbx : IGbx
         }
         else
         {
-            RefTable.Write(writer, Header, settings);
+            RefTable.Write(writer, Header, hasRawBodyData, settings);
         }
 
         if (hasRawBodyData)

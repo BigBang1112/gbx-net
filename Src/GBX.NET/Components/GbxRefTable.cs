@@ -121,9 +121,9 @@ public sealed class GbxRefTable
         return new GbxRefTableReader(reader, header, fileSystemPath, settings).Parse();
     }
 
-    internal bool Write(GbxWriter writer, GbxHeader header, GbxWriteSettings settings)
+    internal bool Write(GbxWriter writer, GbxHeader header, bool rawBody, GbxWriteSettings settings)
     {
-        return new GbxRefTableWriter(this, header, writer, settings).Write();
+        return new GbxRefTableWriter(this, header, writer, settings).Write(rawBody);
     }
 
     public GbxRefTable DeepClone()

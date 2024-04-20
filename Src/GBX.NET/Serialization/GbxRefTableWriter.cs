@@ -4,7 +4,82 @@ namespace GBX.NET.Serialization;
 
 internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, GbxWriter writer, GbxWriteSettings settings)
 {
-    internal bool Write()
+    internal bool Write(bool rawBody)
+    {
+        return rawBody ? WriteUsingRefTableData() : WriteUsingNodeDictionary();
+    }
+
+    private bool WriteUsingRefTableData()
+    {
+        var numExternalNodes = refTable.Files.Count + refTable.Resources.Count;
+        writer.Write(numExternalNodes);
+
+        if (numExternalNodes == 0)
+        {
+            return true;
+        }
+
+        writer.Write(refTable.AncestorLevel);
+
+        var root = new Dir();
+
+        var fileDirDict = new Dictionary<UnlinkedGbxRefTableFile, Dir?>();
+
+        foreach (var file in refTable.Files)
+        {
+            var parts = file.FilePath.Split('/', '\\');
+
+            if (parts.Length == 1)
+            {
+                fileDirDict[file] = null;
+                continue;
+            }
+
+            var dir = root.InsertPath(parts, 0) ?? throw new Exception("Failed to insert path into directory tree");
+
+            fileDirDict[file] = dir;
+        }
+
+        root.Write(writer);
+
+        var dirIndexDict = new Dictionary<Dir, int>();
+
+        foreach (var dir in root.Flatten())
+        {
+            dirIndexDict[dir] = dirIndexDict.Count;
+        }
+
+        foreach (var file in refTable.Files)
+        {
+            writer.Write(file.Flags);
+            writer.Write(Path.GetFileName(file.FilePath));
+            writer.Write(file.NodeIndex);
+
+            if (header.Basic.Version >= 5)
+            {
+                writer.Write(file.UseFile);
+            }
+
+            var dir = fileDirDict[file];
+            writer.Write(dir is null ? 0 : dirIndexDict[dir] + 1);
+        }
+
+        foreach (var resource in refTable.Resources)
+        {
+            writer.Write(resource.Flags);
+            writer.Write(resource.ResourceIndex);
+            writer.Write(resource.NodeIndex);
+
+            if (header.Basic.Version >= 5)
+            {
+                writer.Write(resource.UseFile);
+            }
+        }
+
+        return true;
+    }
+
+    private bool WriteUsingNodeDictionary()
     {
         var nodes = writer.NodeDict.Keys;
 
@@ -139,34 +214,4 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
             return Name;
         }
     }
-
-    /*private void WriteChildren(IDirectory root)
-    {
-        writer.Write(root.Children.Count);
-
-        foreach (var child in root.Children)
-        {
-            writer.Write(child.Name);
-            WriteChildren(child);
-        }
-    }
-
-    private IEnumerable<IDirectory> FlattenChildren()
-    {
-        var stack = new Stack<IDirectory>();
-        stack.Push(refTable.Root);
-
-        while (stack.Count > 0)
-        {
-            var current = stack.Pop();
-            yield return current;
-
-            foreach (var child in current.Children)
-            {
-                stack.Push(child);
-            }
-        }
-    }
-
-    private IEnumerable<IFile> GetFiles() => FlattenChildren().SelectMany(x => x.Files);*/
 }
