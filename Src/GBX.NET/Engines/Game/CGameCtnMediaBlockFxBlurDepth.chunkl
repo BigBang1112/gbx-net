@@ -5,6 +5,7 @@ CGameCtnMediaBlockFxBlurDepth 0x03081000
  list<Key> Keys
 
 archive Key
- timefloat LensSize
+ timefloat Time
+ float LensSize
  bool ForceFocus
  float FocusZ
