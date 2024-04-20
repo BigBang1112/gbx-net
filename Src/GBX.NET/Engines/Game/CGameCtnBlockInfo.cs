@@ -79,5 +79,46 @@ public partial class CGameCtnBlockInfo
             U09 = r.ReadInt16(); // always 0?
             U10 = r.ReadInt16(); // always 0?
         }
+
+        public override void Write(CGameCtnBlockInfo n, GbxWriter w)
+        {
+            // ChunkCrypted_Base
+            w.WriteIdAsString(U01);
+            w.Write(U02);
+            w.Write(U03);
+            w.Write(U04);
+            w.Write(n.isPillar);
+            w.Write(U05);
+            w.Write(U06);
+            //
+
+            w.WriteNodeRef(n.pillar, n.pillarFile);
+
+            w.WriteArrayNodeRef(n.groundBlockUnitInfos);
+            w.WriteArrayNodeRef(n.airBlockUnitInfos);
+
+            w.Write(n.groundMobils?.Length ?? 0);
+            if (n.groundMobils is not null)
+            {
+                foreach (var mobil in n.groundMobils)
+                {
+                    w.WriteArrayNodeRef(mobil);
+                }
+            }
+
+            w.Write(n.airMobils?.Length ?? 0);
+            if (n.airMobils is not null)
+            {
+                foreach (var mobil in n.airMobils)
+                {
+                    w.WriteArrayNodeRef(mobil);
+                }
+            }
+
+            w.Write(U07);
+            w.Write(U08);
+            w.Write(U09);
+            w.Write(U10);
+        }
     }
 }
