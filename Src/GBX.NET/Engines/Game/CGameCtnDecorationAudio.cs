@@ -3,25 +3,31 @@
 public partial class CGameCtnDecorationAudio
 {
     [AppliedWithChunk<Chunk03039000>]
-    public Dictionary<string, CPlugSound?>? Sounds { get; set; }
+    public Dictionary<string, External<CPlugSound>>? Sounds { get; set; }
 
     [AppliedWithChunk<Chunk03039000>]
-    public Dictionary<string, CPlugSound?>? Musics { get; set; }
+    public Dictionary<string, External<CPlugSound>>? Musics { get; set; }
 
     public partial class Chunk03039000
     {
         public override void Read(CGameCtnDecorationAudio n, GbxReader r)
         {
-            n.Sounds = [];
-            for (var i = 0; i < r.ReadInt32(); i++)
+            var numSounds = r.ReadInt32();
+            n.Sounds = new(numSounds);
+            for (var i = 0; i < numSounds; i++)
             {
-                n.Sounds.Add(r.ReadId(), r.ReadNodeRef<CPlugSound>());
+                var name = r.ReadIdAsString();
+                var node = r.ReadNodeRef<CPlugSound>(out var file);
+                n.Sounds.Add(name, new(node, file));
             }
 
-            n.Musics = [];
-            for (var i = 0; i < r.ReadInt32(); i++)
+            var numMusics = r.ReadInt32();
+            n.Musics = new(numMusics);
+            for (var i = 0; i < numMusics; i++)
             {
-                n.Musics.Add(r.ReadId(), r.ReadNodeRef<CPlugSound>());
+                var name = r.ReadIdAsString();
+                var node = r.ReadNodeRef<CPlugSound>(out var file);
+                n.Musics.Add(name, new(node, file));
             }
         }
 
@@ -33,7 +39,7 @@ public partial class CGameCtnDecorationAudio
                 foreach (var pair in n.Sounds)
                 {
                     w.Write(pair.Key);
-                    w.WriteNodeRef(pair.Value);
+                    w.WriteNodeRef(pair.Value.Node, pair.Value.File);
                 }
             }
 
@@ -43,7 +49,7 @@ public partial class CGameCtnDecorationAudio
                 foreach (var pair in n.Musics)
                 {
                     w.Write(pair.Key);
-                    w.WriteNodeRef(pair.Value);
+                    w.WriteNodeRef(pair.Value.Node, pair.Value.File);
                 }
             }
         }

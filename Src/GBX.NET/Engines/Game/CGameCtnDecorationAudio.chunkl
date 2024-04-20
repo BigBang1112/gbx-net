@@ -3,8 +3,8 @@ CGameCtnDecorationAudio 0x03039000
 0x000
 
 0x001
- CPlugAudioEnvironment AudioEnvOutsideOpen
- CPlugAudioEnvironment AudioEnvOutsideEnclosed
+ CPlugAudioEnvironment AudioEnvOutsideOpen (external)
+ CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
 
 0x002
  float

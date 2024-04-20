@@ -1,9 +1,9 @@
 CPlugParticleEmitterSubModel 0x090B2000
 
 0x011
- CPlugMaterial Material
+ CPlugMaterial Material (external)
  if Material == null
-  CPlugShader Shader
+  CPlugShader Shader (external)
  float SizeBirthRatioXY
  vec2 SpritePivotPoint
  float

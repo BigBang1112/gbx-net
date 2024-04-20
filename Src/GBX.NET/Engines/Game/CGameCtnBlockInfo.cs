@@ -14,11 +14,11 @@ public partial class CGameCtnBlockInfo
     private CGameCtnBlockUnitInfo[]? airBlockUnitInfos;
     public CGameCtnBlockUnitInfo[]? AirBlockUnitInfos { get => airBlockUnitInfos; set => airBlockUnitInfos = value; }
 
-    private CSceneMobil[][]? groundMobils;
-    public CSceneMobil[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
+    private External<CSceneMobil>[][]? groundMobils;
+    public External<CSceneMobil>[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
 
-    private CSceneMobil[][]? airMobils;
-    public CSceneMobil[][]? AirMobils { get => airMobils; set => airMobils = value; }
+    private External<CSceneMobil>[][]? airMobils;
+    public External<CSceneMobil>[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
     public override IHeaderChunk? CreateHeaderChunk(uint chunkId)
     {
@@ -62,16 +62,16 @@ public partial class CGameCtnBlockInfo
             n.groundBlockUnitInfos = r.ReadArrayNodeRef<CGameCtnBlockUnitInfo>()!;
             n.airBlockUnitInfos = r.ReadArrayNodeRef<CGameCtnBlockUnitInfo>()!;
 
-            n.groundMobils = new CSceneMobil[r.ReadInt32()][];
+            n.groundMobils = new External<CSceneMobil>[r.ReadInt32()][];
             for (var i = 0; i < n.groundMobils.Length; i++)
             {
-                n.groundMobils[i] = r.ReadArrayNodeRef<CSceneMobil>()!;
+                n.groundMobils[i] = r.ReadArrayExternalNodeRef<CSceneMobil>()!;
             }
 
-            n.airMobils = new CSceneMobil[r.ReadInt32()][];
+            n.airMobils = new External<CSceneMobil>[r.ReadInt32()][];
             for (var i = 0; i < n.airMobils.Length; i++)
             {
-                n.airMobils[i] = r.ReadArrayNodeRef<CSceneMobil>()!;
+                n.airMobils[i] = r.ReadArrayExternalNodeRef<CSceneMobil>()!;
             }
 
             U07 = r.ReadByte(); // always 0?
@@ -102,7 +102,7 @@ public partial class CGameCtnBlockInfo
             {
                 foreach (var mobil in n.groundMobils)
                 {
-                    w.WriteArrayNodeRef(mobil);
+                    w.WriteArrayExternalNodeRef(mobil);
                 }
             }
 
@@ -111,7 +111,7 @@ public partial class CGameCtnBlockInfo
             {
                 foreach (var mobil in n.airMobils)
                 {
-                    w.WriteArrayNodeRef(mobil);
+                    w.WriteArrayExternalNodeRef(mobil);
                 }
             }
 

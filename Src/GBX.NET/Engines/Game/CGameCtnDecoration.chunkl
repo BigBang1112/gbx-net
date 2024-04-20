@@ -15,7 +15,7 @@ CGameCtnDecoration 0x03038000
  CGameCtnDecorationMood DecoMood (external)
 
 0x014 // DecoratorSolidWarp
- CPlugDecoratorSolid DecoratorSolidWarp
+ CPlugDecoratorSolid DecoratorSolidWarp (external)
 
 0x015 // TerrainModifierCovered
  CGameCtnDecorationTerrainModifier TerrainModifierCovered (external)

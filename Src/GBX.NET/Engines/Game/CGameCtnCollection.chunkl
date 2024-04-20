@@ -41,7 +41,7 @@ CGameCtnCollection 0x03033000
 
 0x009
  id Collection
- CGameCtnZone[] CompleteListZoneList
+ CGameCtnZone[]_deprec CompleteListZoneList (external)
  int
  bool NeedUnlock
  float SquareSize
@@ -111,7 +111,7 @@ CGameCtnCollection 0x03033000
 
 0x01D
  ZoneString[] ZoneStrings
- CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers
+ CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers (external)
 
 0x01E // camera
  float
@@ -279,5 +279,5 @@ enum EVehicleEnvLayer
  Mud
 
 archive ZoneString
- string Base
- string Replacement
+ id Base
+ id Replacement

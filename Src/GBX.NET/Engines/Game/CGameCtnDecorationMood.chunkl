@@ -9,7 +9,7 @@ CGameCtnDecorationMood 0x0303A000
 
 0x001
  float RemappedStartDayTime
- CPlugGameSkin? Remapping
+ CPlugGameSkin? Remapping (external)
  string? RemapFolder
 
 0x002

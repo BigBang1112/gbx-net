@@ -48,7 +48,7 @@ CPlugSolid 0x09005000
 0x00D [TM10, TMSX, TMNESWC]
  bool
  bool
- CPlug Tree
+ CPlug Tree (external)
 
 0x00E [TM10, TMSX, TMNESWC, TMF]
  float
@@ -69,7 +69,7 @@ CPlugSolid 0x09005000
  bool U02 // m_Model != null
  if U02
   bool? U03
- CPlug Tree
+ CPlug Tree (external)
 
 0x012 [TMF]
  byte
