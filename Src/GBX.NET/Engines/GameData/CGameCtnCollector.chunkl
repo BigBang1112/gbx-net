@@ -1,6 +1,6 @@
 CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
-0x003 (header, struct: SHeaderDesc) [TM10.v3, TMSX.v4, TMF.v5, TMT.v8, MP4.v8] // desc
+0x003 (header, struct: SHeaderDesc) [TM10.v3, TMSX.v4, TMF.v5, TMT.v8, MP4.v8, TM2020.v8] // desc
  ident Ident
  version
  string PageName
@@ -20,9 +20,9 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
    v8+
     byte<EProdState> ProdState
 
-0x004 (header, struct: SHeaderIcon) [TM10, TMSX, TMF, TMT, MP4] // icon
+0x004 (header, struct: SHeaderIcon) [TM10, TMSX, TMF, TMT, MP4, TM2020] // icon
 
-0x006 (header, struct: SHeaderLightMap) [TMT, MP4] // lightmap compute time
+0x006 (header, struct: SHeaderLightMap) [TMT, MP4, TM2020] // lightmap compute time
  long LightmapComputeTime
 
 0x002 [TM10, TMSX] // Ident
@@ -42,27 +42,27 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 0x008
  CPlugGameSkin
 
-0x009 [TMSX, TMF, TMT, MP4]
+0x009 [TMSX, TMF, TMT, MP4, TM2020]
 
 0x00A [TMF]
  id
 
-0x00B [TMF, TMT, MP4] // ident
+0x00B [TMF, TMT, MP4, TM2020] // ident
  ident Ident
 
-0x00C [TMT, MP4] // collector name
+0x00C [TMT, MP4, TM2020] // collector name
  string Name
 
-0x00D [TMT, MP4] // description
+0x00D [TMT, MP4, TM2020] // description
  string Description
 
 0x00E [TMT, MP4] // icon render
  bool IconUseAutoRender
  int IconQuarterRotationY
 
-0x010 [TMT.v2, MP4.v2]
+0x010 [TMT.v2, MP4.v2, TM2020.v4]
 
-0x011 [TMT.v1, MP4.v1]
+0x011 [TMT.v1, MP4.v1, TM2020.v1]
  version
  bool IsInternal
  bool IsAdvanced
@@ -70,7 +70,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  v1+
   byte<EProdState> ProdState
 
-0x012
+0x012 [TM2020]
  int
  int
  int

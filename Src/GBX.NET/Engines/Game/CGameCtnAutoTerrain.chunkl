@@ -1,5 +1,5 @@
 CGameCtnAutoTerrain 0x03120000
 
-0x001
+0x001 [MP4, TM2020]
  int3 Offset
  CGameCtnZoneGenealogy Genealogy

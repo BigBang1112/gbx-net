@@ -48,6 +48,9 @@ public class GbxEqualTests
     [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
     [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
     [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    [InlineData("CGameCtnBlockInfo/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
+    [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     public async Task TestGbxEqualData(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -94,6 +97,9 @@ public class GbxEqualTests
     [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
     [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
     [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    [InlineData("CGameCtnBlockInfo/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
+    [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     public async Task TestGbxEqualObjects(string filePath)
     {
         using var logger = output.BuildLogger();

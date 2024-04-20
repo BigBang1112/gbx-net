@@ -77,8 +77,8 @@ public partial class CGameCtnMacroBlockInfo
             using var wBuffer = new GbxWriter(ms);
             using var _ = new Encapsulation(wBuffer);
 
-            wBuffer.Write(U01);
             wBuffer.Write(U02);
+            wBuffer.Write(U03);
 
             wBuffer.WriteNode(n.ClipGroupInGame);
             wBuffer.WriteNode(n.ClipGroupEndRace);

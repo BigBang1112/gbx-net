@@ -4,7 +4,7 @@ CGameCtnZoneGenealogy 0x0311D000
  int CurrentIndex
  int<Direction> Dir
 
-0x002
+0x002 [MP4, TM2020]
  id[] ZoneIds
  int CurrentIndex
  int<Direction> Dir

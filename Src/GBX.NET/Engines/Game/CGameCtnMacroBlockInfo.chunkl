@@ -1,16 +1,16 @@
 CGameCtnMacroBlockInfo 0x0310D000
 - inherits: CGameCtnCollector
 
-0x000 // block spawns
+0x000 [MP4, TM2020] // block spawns
  list<BlockSpawn> BlockSpawns
 
-0x001 // block skin spawns
+0x001 [MP4, TM2020] // block skin spawns
  list<BlockSkinSpawn> BlockSkinSpawns
 
-0x002 // card events spawns
+0x002 [MP4, TM2020] // card events spawns
  list<CardEventsSpawn> CardEventsSpawns
 
-0x006
+0x006 [MP4, TM2020]
  int = 2
  data // SceneDecals?
 
@@ -19,14 +19,14 @@ CGameCtnMacroBlockInfo 0x0310D000
  CGameCtnMediaClipGroup
  CMwNod
 
-0x008
+0x008 [MP4, TM2020]
  CGameCtnAutoTerrain[]_deprec AutoTerrains
  int
- bool
+ int
 
-0x00B (skippable) // script metadata
+0x00B (skippable) [MP4, TM2020] // script metadata
 
-0x00C (skippable) // splines
+0x00C (skippable) [MP4.v2, TM2020.v2] // splines
  version = 2
  v0=
   CMwNod[]_deprec
@@ -43,7 +43,7 @@ CGameCtnMacroBlockInfo 0x0310D000
 0x00D
  version
 
-0x00E // object spawns
+0x00E [MP4.v2, TM2020.v2] // object spawns
  version
  list<ObjectSpawn> ObjectSpawns
  v2-
@@ -52,17 +52,17 @@ CGameCtnMacroBlockInfo 0x0310D000
  v3+
   int4[]
 
-0x00F
+0x00F [MP4, TM2020]
  version
  int3
  int3
  int3[]
 
-0x010 (skippable)
+0x010 (skippable) [MP4, TM2020]
  version
  int IconSize
 
-0x011 (skippable) // clips
+0x011 (skippable) [MP4, TM2020] // clips
 
 archive BlockSpawn
  int Version
