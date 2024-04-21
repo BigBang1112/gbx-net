@@ -683,6 +683,12 @@ public partial class Gbx : IGbx
         using var output = File.Create(outputFilePath);
         return Decompress(input, output);
     }
+
+    /// <summary>
+    /// Implicitly casts <see cref="Gbx"/> to its <see cref="Node"/>.
+    /// </summary>
+    /// <param name="gbx">Gbx.</param>
+    public static implicit operator CMwNod?(Gbx gbx) => gbx.Node;
 }
 
 public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
@@ -714,4 +720,10 @@ public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
+
+    /// <summary>
+    /// Implicitly casts <see cref="Gbx{T}"/> to its <see cref="Gbx{T}.Node"/>.
+    /// </summary>
+    /// <param name="gbx">Gbx.</param>
+    public static implicit operator T(Gbx<T> gbx) => gbx.Node;
 }
