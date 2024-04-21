@@ -17,14 +17,14 @@ public class GbxReaderStringBenchmarks
     {
         stream = new MemoryStream();
 
-        using var w = new GbxWriter(stream, true);
+        using var w = new GbxWriter(stream, new() { LeaveOpen = true });
         for (var i = 0; i < 10; i++)
         {
             w.Write("1string1");
             w.Write("1string2");
         }
         stream.Position = 0;
-        newReader = new GbxReader(stream, leaveOpen: true);
+        newReader = new GbxReader(stream, new() { LeaveOpen = true });
         oldReader = new GameBoxReader(stream, leaveOpen: true);
     }
 
