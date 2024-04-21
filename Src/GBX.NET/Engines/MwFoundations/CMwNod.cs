@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -35,6 +36,8 @@ public partial class CMwNod : IClass
 
             var chunk = node.CreateChunk(chunkId);
 
+            var stopwatch = default(Stopwatch);
+
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
@@ -59,6 +62,11 @@ public partial class CMwNod : IClass
                     else
                     {
                         r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                    }
+
+                    if (r.Logger.IsEnabled(LogLevel.Trace))
+                    {
+                        stopwatch = Stopwatch.StartNew();
                     }
                 }
 
@@ -133,6 +141,12 @@ public partial class CMwNod : IClass
                         break;
                 }
 
+                if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+                {
+                    stopwatch.Stop();
+                    r.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms)", chunkId, stopwatch.Elapsed.TotalMilliseconds);
+                }
+
                 prevChunkId = chunkId;
 
                 continue;
@@ -148,6 +162,11 @@ public partial class CMwNod : IClass
                 else
                 {
                     r.Logger.LogDebug("0x{ChunkId:X8} (raw: 0x{RawChunkId:X8})", chunkId, rawChunkId);
+                }
+
+                if (r.Logger.IsEnabled(LogLevel.Trace))
+                {
+                    stopwatch = Stopwatch.StartNew();
                 }
             }
 
@@ -172,6 +191,12 @@ public partial class CMwNod : IClass
                     break;
                 default:
                     throw new ChunkReadException(chunkId, prevChunkId, known: true);
+            }
+
+            if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+            {
+                stopwatch.Stop();
+                r.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms)", chunkId, stopwatch.Elapsed.TotalMilliseconds);
             }
 
             prevChunkId = chunkId;
@@ -199,6 +224,8 @@ public partial class CMwNod : IClass
 
             var chunk = CreateChunk(chunkId);
 
+            var stopwatch = default(Stopwatch);
+
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
@@ -223,6 +250,11 @@ public partial class CMwNod : IClass
                     else
                     {
                         r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                    }
+
+                    if (r.Logger.IsEnabled(LogLevel.Trace))
+                    {
+                        stopwatch = Stopwatch.StartNew();
                     }
                 }
 
@@ -273,6 +305,12 @@ public partial class CMwNod : IClass
                         break;
                 }
 
+                if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+                {
+                    stopwatch.Stop();
+                    r.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms)", chunkId, stopwatch.Elapsed.TotalMilliseconds);
+                }
+
                 prevChunkId = chunkId;
 
                 continue;
@@ -288,6 +326,11 @@ public partial class CMwNod : IClass
                 else
                 {
                     r.Logger.LogDebug("0x{ChunkId:X8} (raw: 0x{RawChunkId:X8})", chunkId, rawChunkId);
+                }
+
+                if (r.Logger.IsEnabled(LogLevel.Trace))
+                {
+                    stopwatch = Stopwatch.StartNew();
                 }
             }
 
@@ -306,6 +349,12 @@ public partial class CMwNod : IClass
                     break;
                 default:
                     throw new ChunkReadException(chunkId, prevChunkId, known: true);
+            }
+
+            if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+            {
+                stopwatch.Stop();
+                r.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms)", chunkId, stopwatch.Elapsed.TotalMilliseconds);
             }
 
             prevChunkId = chunkId;
