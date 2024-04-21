@@ -141,13 +141,15 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void Dispose()
     {
-        if (leaveOpen)
+        if (!leaveOpen && Reader is not null && !Reader.Settings.LeaveOpen)
         {
-            return;
+            Reader.Dispose();
         }
 
-        Reader?.Dispose();
-        Writer?.Dispose();
+        if (!leaveOpen && Writer is not null && !Writer.Settings.LeaveOpen)
+        {
+            Writer.Dispose();
+        }
     }
 
     public int Int16(int value) => Int16((short)value);

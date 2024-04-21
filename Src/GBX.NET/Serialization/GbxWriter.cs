@@ -182,6 +182,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal GbxWriteSettings Settings { get; }
+
     public ClassIdRemapMode ClassIdRemapMode { get; set; }
 
     /// <summary>
@@ -192,7 +194,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
     }
 
-    public GbxWriter(Stream output, bool leaveOpen) : base(output, encoding, leaveOpen)
+    public GbxWriter(Stream output, GbxWriteSettings settings = default) : base(output, encoding, settings.LeaveOpen)
     {
     }
 
@@ -740,7 +742,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         Write(classId);
 
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this);
 
         value.ReadWrite(rw);
     }
@@ -764,7 +766,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this);
 
         value.ReadWrite(rw);
     }
@@ -784,7 +786,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         Write(classId);
 
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this);
 
         value.ReadWrite(rw);
     }

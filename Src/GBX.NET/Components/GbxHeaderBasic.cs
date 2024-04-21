@@ -55,11 +55,11 @@ public readonly record struct GbxHeaderBasic(
     /// Parses a basic header from the specified <see cref="Stream"/>.
     /// </summary>
     /// <param name="stream">The <see cref="Stream"/> containing the data to parse.</param>
-    /// <param name="leaveOpen">A boolean indicating whether to leave the <paramref name="stream"/> open after parsing.</param>
+    /// <param name="settings">The settings to use when reading the data.</param>
     /// <returns>A <see cref="GbxHeaderBasic"/> instance parsed from the input <paramref name="stream"/>.</returns>
-    public static GbxHeaderBasic Parse(Stream stream, bool leaveOpen = false)
+    public static GbxHeaderBasic Parse(Stream stream, GbxReadSettings settings = default)
     {
-        using var r = new GbxReader(stream, leaveOpen);
+        using var r = new GbxReader(stream, settings);
         return Parse(r);
     }
 
@@ -67,11 +67,12 @@ public readonly record struct GbxHeaderBasic(
     /// Parses a basic header from the specified file.
     /// </summary>
     /// <param name="fileName">The name of the file to parse.</param>
+    /// <param name="settings">The settings to use when reading the data.</param>
     /// <returns>A <see cref="GbxHeaderBasic"/> instance parsed from the specified file.</returns>
-    public static GbxHeaderBasic Parse(string fileName)
+    public static GbxHeaderBasic Parse(string fileName, GbxReadSettings settings = default)
     {
         using var fs = File.OpenRead(fileName);
-        return Parse(fs, leaveOpen: false);
+        return Parse(fs, settings);
     }
 
     internal bool Write(GbxWriter writer)

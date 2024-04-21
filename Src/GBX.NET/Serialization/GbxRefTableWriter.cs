@@ -2,7 +2,7 @@
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, GbxWriter writer, GbxWriteSettings settings)
+internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, GbxWriter writer)
 {
     internal bool Write(bool rawBody)
     {

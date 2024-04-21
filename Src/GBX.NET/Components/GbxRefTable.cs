@@ -116,14 +116,14 @@ public sealed class GbxRefTable
         return LoadNode(file, settings) as T;
     }
 
-    internal static GbxRefTable? Parse(GbxReader reader, GbxHeader header, string? fileSystemPath, GbxReadSettings settings)
+    internal static GbxRefTable? Parse(GbxReader reader, GbxHeader header, string? fileSystemPath)
     {
-        return new GbxRefTableReader(reader, header, fileSystemPath, settings).Parse();
+        return new GbxRefTableReader(reader, header, fileSystemPath).Parse();
     }
 
-    internal bool Write(GbxWriter writer, GbxHeader header, bool rawBody, GbxWriteSettings settings)
+    internal bool Write(GbxWriter writer, GbxHeader header, bool rawBody)
     {
-        return new GbxRefTableWriter(this, header, writer, settings).Write(rawBody);
+        return new GbxRefTableWriter(this, header, writer).Write(rawBody);
     }
 
     public GbxRefTable DeepClone()

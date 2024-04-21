@@ -5,18 +5,20 @@ using System.Collections.Immutable;
 
 namespace GBX.NET.Serialization;
 
-internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxReadSettings settings, GbxCompression compression)
+internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCompression compression)
 {
     private readonly GbxReader reader = readerWriter.Reader ?? throw new Exception("Reader is required but not available.");
-    private readonly ILogger? logger = settings.Logger;
+    private readonly ILogger? logger = readerWriter.Reader?.Settings.Logger;
+
+    private GbxReadSettings Settings => reader.Settings;
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async ValueTask<GbxBody> ParseAsync(
         GbxReader reader,
         GbxCompression compression,
-        GbxReadSettings settings,
         CancellationToken cancellationToken = default)
     {
+        var settings = reader.Settings;
         var logger = settings.Logger;
 
         switch (compression)
@@ -87,12 +89,12 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<GbxBody> ParseAsync(IClass node, CancellationToken cancellationToken = default)
     {
-        if (settings.ReadRawBody)
+        if (Settings.ReadRawBody)
         {
             throw new NotSupportedException("Reading raw body is not supported when parsing body to a node.");
         }
 
-        var body = await ParseAsync(reader, compression, settings, cancellationToken);
+        var body = await ParseAsync(reader, compression, cancellationToken);
 
         if (body.CompressedSize is null)
         {
@@ -106,7 +108,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
         using var ms = new MemoryStream(decompressedData);
-        using var decompressedReader = new GbxReader(ms, settings.Logger);
+        using var decompressedReader = new GbxReader(ms, Settings);
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
@@ -124,12 +126,12 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<GbxBody> ParseAsync<T>(T node, CancellationToken cancellationToken = default) where T : IClass
     {
-        if (settings.ReadRawBody)
+        if (Settings.ReadRawBody)
         {
             throw new NotSupportedException("Reading raw body is not supported when parsing body to a node.");
         }
 
-        var body = await ParseAsync(reader, compression, settings, cancellationToken);
+        var body = await ParseAsync(reader, compression, cancellationToken);
 
         if (body.CompressedSize is null)
         {
@@ -143,7 +145,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
         using var ms = new MemoryStream(decompressedData);
-        using var decompressedReader = new GbxReader(ms, settings.Logger);
+        using var decompressedReader = new GbxReader(ms, Settings);
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
 
@@ -227,7 +229,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         {
             body.Exception = ex;
 
-            if (!settings.IgnoreExceptionsInBody)
+            if (!Settings.IgnoreExceptionsInBody)
             {
                 throw;
             }
@@ -252,7 +254,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxRea
         {
             body.Exception = ex;
 
-            if (!settings.IgnoreExceptionsInBody)
+            if (!Settings.IgnoreExceptionsInBody)
             {
                 throw;
             }

@@ -60,38 +60,38 @@ public sealed partial class GbxBody
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    internal static async Task<GbxBody> ParseAsync(GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)
+    internal static async Task<GbxBody> ParseAsync(GbxReader reader, GbxCompression compression, CancellationToken cancellationToken)
     {
-        return await GbxBodyReader.ParseAsync(reader, compression, settings, cancellationToken);
+        return await GbxBodyReader.ParseAsync(reader, compression, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    internal static async Task<GbxBody> ParseAsync(IClass node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken)
+    internal static async Task<GbxBody> ParseAsync(IClass node, GbxReader reader, GbxCompression compression, CancellationToken cancellationToken)
     {
-        using var rw = new GbxReaderWriter(reader, settings.LeaveOpen);
-        return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
+        using var rw = new GbxReaderWriter(reader);
+        return await new GbxBodyReader(rw, compression).ParseAsync(node, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    internal static async Task<GbxBody> ParseAsync<T>(T node, GbxReader reader, GbxCompression compression, GbxReadSettings settings, CancellationToken cancellationToken) where T : IClass
+    internal static async Task<GbxBody> ParseAsync<T>(T node, GbxReader reader, GbxCompression compression, CancellationToken cancellationToken) where T : IClass
     {
-        using var rw = new GbxReaderWriter(reader, settings.LeaveOpen);
-        return await new GbxBodyReader(rw, settings, compression).ParseAsync(node, cancellationToken);
+        using var rw = new GbxReaderWriter(reader);
+        return await new GbxBodyReader(rw, compression).ParseAsync(node, cancellationToken);
     }
 
-    internal void WriteUncompressed(IClass node, GbxWriter writer, GbxWriteSettings settings)
+    internal void WriteUncompressed(IClass node, GbxWriter writer)
     {
-        new GbxBodyWriter(this, writer, settings).WriteUncompressed(node);
+        new GbxBodyWriter(this, writer).WriteUncompressed(node);
     }
 
-    internal void WriteRaw(GbxWriter writer, GbxWriteSettings settings)
+    internal void WriteRaw(GbxWriter writer)
     {
-        new GbxBodyWriter(this, writer, settings).WriteRaw();
+        new GbxBodyWriter(this, writer).WriteRaw();
     }
 
-    internal void Write(GbxWriter writer, MemoryStream uncompressedInputStream, GbxCompression compressionOfBody, GbxWriteSettings settings)
+    internal void Write(GbxWriter writer, MemoryStream uncompressedInputStream, GbxCompression compressionOfBody)
     {
-        new GbxBodyWriter(this, writer, settings).Write(uncompressedInputStream, compressionOfBody);
+        new GbxBodyWriter(this, writer).Write(uncompressedInputStream, compressionOfBody);
     }
 
     public GbxBody DeepClone() => new()

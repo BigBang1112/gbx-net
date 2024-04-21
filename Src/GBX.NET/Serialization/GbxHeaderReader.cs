@@ -4,9 +4,11 @@ using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings)
+internal sealed class GbxHeaderReader(GbxReader reader)
 {
-    private readonly ILogger? logger = settings.Logger;
+    private readonly ILogger? logger = reader.Settings.Logger;
+
+    private GbxReadSettings Settings => reader.Settings;
 
     public GbxHeader<T> Parse<T>(out T node) where T : notnull, IClass, new()
     {
@@ -147,7 +149,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 ReadKnownHeaderChunk(chunk, node, readerWriter, desc);
             }
 
-            reader.Unlimit(skipToLimitWhenUnreached: settings.SkipUnclearedHeaderChunkBuffers);
+            reader.Unlimit(skipToLimitWhenUnreached: Settings.SkipUnclearedHeaderChunkBuffers);
         }
 
         return true;
@@ -210,7 +212,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
                 }
             }
 
-            reader.Unlimit(skipToLimitWhenUnreached: settings.SkipUnclearedHeaderChunkBuffers);
+            reader.Unlimit(skipToLimitWhenUnreached: Settings.SkipUnclearedHeaderChunkBuffers);
         }
 
         return true;
@@ -290,7 +292,7 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         }
 
         // Maybe should be much stricter... and configurable
-        if (userDataLength > GbxReader.MaxDataSize || (settings.MaxUserDataSize.HasValue && userDataLength > settings.MaxUserDataSize.Value))
+        if (userDataLength > GbxReader.MaxDataSize || (Settings.MaxUserDataSize.HasValue && userDataLength > Settings.MaxUserDataSize.Value))
         {
             throw new LengthLimitException($"User data size {userDataLength} exceeds maximum allowed size {GbxReader.MaxDataSize}.");
         }
@@ -302,12 +304,12 @@ internal sealed class GbxHeaderReader(GbxReader reader, GbxReadSettings settings
         //   - .NET Standard 2.0: unavoidable byte array allocation with ReadBytes
         //   - .NET 6+: no allocation with Read(stackalloc byte[])
 
-        if (settings.OpenPlanetHookExtractMode)
+        if (Settings.OpenPlanetHookExtractMode)
         {
             logger?.LogDebug("UserData: {Length} bytes (read skipped - OpenPlanetHookExtractMode)", userDataLength);
             return new UserDataNumbers(0, NumChunks: 0);
         }
-        else if (settings.SkipUserData)
+        else if (Settings.SkipUserData)
         {
             logger?.LogDebug("UserData: {Length} bytes (read skipped)", userDataLength);
             reader.SkipData(userDataLength);

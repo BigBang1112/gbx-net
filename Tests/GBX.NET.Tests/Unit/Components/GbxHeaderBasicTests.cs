@@ -41,7 +41,7 @@ public class GbxHeaderBasicTests
         using var ms = new MemoryStream([(byte)'G', (byte)'B', (byte)'X', 4, 0, (byte)'T', (byte)'C', (byte)'U', (byte)'E', 69]);
 
         // Act
-        var basic = GbxHeaderBasic.Parse(ms, leaveOpen: true);
+        var basic = GbxHeaderBasic.Parse(ms, new() { LeaveOpen = true });
 
         // Assert
         Assert.Equal(expected: 4, actual: basic.Version);

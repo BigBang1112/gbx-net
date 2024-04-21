@@ -18,8 +18,8 @@ internal static partial class GbxCompressionUtils
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input, leaveOpen);
-        using var w = new GbxWriter(output, leaveOpen);
+        using var r = new GbxReader(input, new() { LeaveOpen = leaveOpen });
+        using var w = new GbxWriter(output, new() { LeaveOpen = leaveOpen });
 
         var version = CopyBasicInformation(r, w);
 
@@ -63,8 +63,8 @@ internal static partial class GbxCompressionUtils
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input, leaveOpen);
-        using var w = new GbxWriter(output, leaveOpen);
+        using var r = new GbxReader(input, new() { LeaveOpen = leaveOpen });
+        using var w = new GbxWriter(output, new() { LeaveOpen = leaveOpen });
 
         var version = CopyBasicInformation(r, w);
 

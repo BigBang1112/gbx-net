@@ -3,9 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, string? fileSystemPath, GbxReadSettings settings)
+internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, string? fileSystemPath)
 {
-    private readonly ILogger? logger = settings.Logger;
+    private readonly ILogger? logger = reader.Settings.Logger;
+
+    private GbxReadSettings Settings => reader.Settings;
 
     public GbxRefTable? Parse()
     {

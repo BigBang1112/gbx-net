@@ -66,7 +66,7 @@ public class GbxEqualTests
         var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs, new() { Logger = logger });
 
         using var savedGbxAgainMs = new MemoryStream();
-        gbxFromSavedGbx.Save(savedGbxAgainMs);
+        gbxFromSavedGbx.Save(savedGbxAgainMs, new() { LeaveOpen = true });
 
         Assert.Equal(savedGbxMs.ToArray(), savedGbxAgainMs.ToArray());
     }

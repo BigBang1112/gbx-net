@@ -15,8 +15,7 @@ public class GbxHeaderReaderTests
         using var ms = new MemoryStream([0, 0, 0, 0, 69]);
         using var r = new GbxReader(ms);
 
-        var settings = new GbxReadSettings(); // Assuming default settings
-        var parser = new GbxHeaderReader(r, settings);
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ValidateUserDataNumbers();
@@ -37,8 +36,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var settings = new GbxReadSettings();
-        var parser = new GbxHeaderReader(r, settings);
+        var parser = new GbxHeaderReader(r);
 
         // Act & Assert
         Assert.Throws<LengthLimitException>(() => parser.ValidateUserDataNumbers());
@@ -59,8 +57,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var settings = new GbxReadSettings();
-        var parser = new GbxHeaderReader(r, settings);
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ValidateUserDataNumbers();
@@ -82,10 +79,9 @@ public class GbxHeaderReaderTests
                 .Concat(new byte[expectedLength])
                 .Append((byte)69)
                 .ToArray());
-        using var r = new GbxReader(ms);
+        using var r = new GbxReader(ms, new GbxReadSettings { SkipUserData = true });
 
-        var settings = new GbxReadSettings { SkipUserData = true };
-        var parser = new GbxHeaderReader(r, settings);
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ValidateUserDataNumbers();
@@ -114,7 +110,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(reader, default);
+        var parser = new GbxHeaderReader(reader);
 
         Span<HeaderChunkInfo> headerChunkDescs = stackalloc HeaderChunkInfo[numChunks];
 
@@ -151,7 +147,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(reader, default);
+        var parser = new GbxHeaderReader(reader);
 
         var headerChunkDescs = new HeaderChunkInfo[numChunks];
 
@@ -180,7 +176,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var reader = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(reader, default);
+        var parser = new GbxHeaderReader(reader);
 
         var headerChunkDescs = new HeaderChunkInfo[numChunks];
 
@@ -197,7 +193,7 @@ public class GbxHeaderReaderTests
         using var ms = new MemoryStream(BitConverter.GetBytes(0).ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ReadUserData(node: null, unknownHeader: null);
@@ -216,7 +212,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ReadUserData(node: null, unknownHeader: null);
@@ -238,7 +234,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act & Assert
         Assert.Throws<Exception>(() => parser.ReadUserData(node: null, unknownHeader: null));
@@ -257,7 +253,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         var unknownHeader = new GbxHeaderUnknown(GbxHeaderBasic.Default, 0x03043000);
 
@@ -286,7 +282,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         var node = new CGameCtnChallenge();
 
@@ -316,7 +312,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         var node = new CGameCtnChallenge();
 
@@ -339,7 +335,7 @@ public class GbxHeaderReaderTests
         using var ms = new MemoryStream(BitConverter.GetBytes(0).ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ReadUserData<CGameCtnChallenge>(new());
@@ -358,7 +354,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var result = parser.ReadUserData<CGameCtnChallenge>(new());
@@ -380,7 +376,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         var node = new CGameCtnChallenge();
 
@@ -409,7 +405,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         var node = new CGameCtnChallenge();
 
@@ -437,9 +433,9 @@ public class GbxHeaderReaderTests
             .Concat(BitConverter.GetBytes(6))
             .Concat(BitConverter.GetBytes(69))
                 .ToArray());
-        using var r = new GbxReader(ms);
+        using var r = new GbxReader(ms, new() { SkipUnclearedHeaderChunkBuffers = true });
 
-        var parser = new GbxHeaderReader(r, new() { SkipUnclearedHeaderChunkBuffers = true });
+        var parser = new GbxHeaderReader(r);
 
         var node = new CGameCtnChallenge();
 
@@ -478,7 +474,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse(out var node);
@@ -514,7 +510,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse(out var node);
@@ -555,7 +551,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse(out var node);
@@ -591,7 +587,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse(out var node);
@@ -632,7 +628,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse<CGameCtnChallenge>(out var node);
@@ -668,7 +664,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act
         var header = parser.Parse<CGameCtnChallenge>(out var node);
@@ -705,7 +701,7 @@ public class GbxHeaderReaderTests
                 .ToArray());
         using var r = new GbxReader(ms);
 
-        var parser = new GbxHeaderReader(r, new());
+        var parser = new GbxHeaderReader(r);
 
         // Act & Assert
         Assert.Throws<InvalidCastException>(() => parser.Parse<CGameCtnChallenge>(out var _));

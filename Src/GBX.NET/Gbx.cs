@@ -131,14 +131,14 @@ public partial class Gbx : IGbx
         var filePath = stream is FileStream fs ? fs.Name : null;
         if (logger is not null) LoggerExtensions.LogDebug(logger, "File path: {FilePath}", filePath);
 
-        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
+        using var reader = new GbxReader(stream, settings);
 
-        var header = GbxHeader.Parse(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
+        var header = GbxHeader.Parse(reader, out var node);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
-            var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+            var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, cancellationToken);
 
             if (logger is not null)
             {
@@ -161,14 +161,14 @@ public partial class Gbx : IGbx
 
         if (settings.ReadRawBody)
         {
-            body = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+            body = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, cancellationToken);
         }
         else
         {
             reader.ResetIdState();
             reader.ExpectedNodeCount = header.NumNodes;
 
-            body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+            body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, cancellationToken);
             // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
         }
 
@@ -214,15 +214,15 @@ public partial class Gbx : IGbx
         var filePath = stream is FileStream fs ? fs.Name : null;
         if (logger is not null) LoggerExtensions.LogDebug(logger, "File path: {FilePath}", filePath);
 
-        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
+        using var reader = new GbxReader(stream, settings);
 
-        var header = GbxHeader.Parse<T>(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
+        var header = GbxHeader.Parse<T>(reader, out var node);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
 
         reader.ResetIdState();
         reader.ExpectedNodeCount = header.NumNodes;
 
-        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, settings, cancellationToken);
+        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, cancellationToken);
         // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
 
         if (logger is not null)
@@ -266,11 +266,11 @@ public partial class Gbx : IGbx
         var filePath = stream is FileStream fs ? fs.Name : null;
         logger?.LogDebug("File path: {FilePath}", filePath);
 
-        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
+        using var reader = new GbxReader(stream, settings);
 
-        var header = GbxHeader.Parse(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
-        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
+        var header = GbxHeader.Parse(reader, out var node);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
+        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
         
         if (node is null) // aka, header is GbxHeaderUnknown
         {
@@ -326,11 +326,11 @@ public partial class Gbx : IGbx
         var filePath = stream is FileStream fs ? fs.Name : null;
         logger?.LogDebug("File path: {FilePath}", filePath);
 
-        using var reader = new GbxReader(stream, settings.LeaveOpen, settings.Logger);
+        using var reader = new GbxReader(stream, settings);
 
-        var header = GbxHeader.Parse<T>(reader, settings, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath), settings);
-        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody, settings);
+        var header = GbxHeader.Parse<T>(reader, out var node);
+        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
+        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
 
         if (logger is not null)
         {
@@ -425,7 +425,7 @@ public partial class Gbx : IGbx
         var deprecVersion = DeprecVersion.GetValueOrDefault(10);
         var classIdRemapMode = settings.ClassIdRemapMode ?? ClassIdRemapMode;
 
-        using var writer = new GbxWriter(stream, settings.LeaveOpen)
+        using var writer = new GbxWriter(stream, settings)
         {
             PackDescVersion = packDescVersion,
             DeprecVersion = deprecVersion,
@@ -446,14 +446,14 @@ public partial class Gbx : IGbx
         {
             bodyUncompressedMs = new MemoryStream();
 
-            using var bodyWriter = new GbxWriter(bodyUncompressedMs, leaveOpen: true)
+            using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings)
             {
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
                 ClassIdRemapMode = classIdRemapMode
             };
 
-            Body.WriteUncompressed(Node, bodyWriter, settings);
+            Body.WriteUncompressed(Node, bodyWriter);
 
             writer.Write(bodyWriter.NodeDict.Count + 1);
             writer.LoadFrom(bodyWriter);
@@ -475,16 +475,16 @@ public partial class Gbx : IGbx
         }
         else
         {
-            RefTable.Write(writer, Header, hasRawBodyData, settings);
+            RefTable.Write(writer, Header, hasRawBodyData);
         }
 
         if (hasRawBodyData)
         {
-            Body.WriteRaw(writer, settings);
+            Body.WriteRaw(writer);
         }
         else if (bodyUncompressedMs is not null)
         {
-            Body.Write(writer, bodyUncompressedMs, Header.Basic.CompressionOfBody, settings);
+            Body.Write(writer, bodyUncompressedMs, Header.Basic.CompressionOfBody);
             bodyUncompressedMs.Dispose();
         }
     }

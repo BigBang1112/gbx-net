@@ -202,26 +202,26 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal GbxReadSettings Settings { get; }
+
     internal ILogger? Logger => logger;
 
-    public ClassIdRemapMode ClassIdRemapMode { get; set; }
+    internal ClassIdRemapMode ClassIdRemapMode { get; set; }
 
     private GbxReaderLimiter? limiter;
 
-    public GbxReader(Stream input, ILogger? logger = null) : base(input, encoding)
+    public GbxReader(Stream input, GbxReadSettings settings = default) : base(input, encoding, settings.LeaveOpen)
     {
-        this.logger = logger;
+        Settings = settings;
+        logger = settings.Logger;
     }
 
-    public GbxReader(Stream input, bool leaveOpen, ILogger? logger = null) : base(input, encoding, leaveOpen)
-    {
-        this.logger = logger;
-    }
-
-    public GbxReader(XmlReader input, ILogger? logger = null) : base(Stream.Null, encoding)
+    public GbxReader(XmlReader input, GbxReadSettings settings = default) : base(Stream.Null, encoding)
     {
         xmlReader = input;
-        this.logger = logger;
+
+        Settings = settings;
+        logger = settings.Logger;
 
         Mode = SerializationMode.Xml;
     }
@@ -1099,7 +1099,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private T ReadNode<T>(T node) where T : IClass
     {
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
 
@@ -1115,7 +1115,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     [IgnoreForCodeGeneration]
     private IClass ReadNode(IClass node)
     {
-        rw ??= new GbxReaderWriter(this, leaveOpen: true);
+        rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
 
