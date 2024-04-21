@@ -31,7 +31,7 @@ public partial class CMwNod : IClass
                 r.Logger?.LogDebug("- FACADE -");
                 return;
             }
-
+            
             _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
 
             var chunk = node.CreateChunk(chunkId);
@@ -258,51 +258,58 @@ public partial class CMwNod : IClass
                     }
                 }
 
-                switch (chunk)
+                if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
-                    case IReadableWritableChunk readableWritable:
+                    r.SkipData(chunkSize);
+                }
+                else
+                {
+                    switch (chunk)
+                    {
+                        case IReadableWritableChunk readableWritable:
 
-                        if (readableWritable.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
+                            if (readableWritable.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
+
+                            readableWritable.ReadWrite(this, rw);
+                            // TODO: validate chunk size
+
                             break;
-                        }
 
-                        readableWritable.ReadWrite(this, rw);
-                        // TODO: validate chunk size
+                        case IReadableChunk readable:
 
-                        break;
+                            if (readable.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
 
-                    case IReadableChunk readable:
+                            readable.Read(this, r);
+                            // TODO: validate chunk size
 
-                        if (readable.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
                             break;
-                        }
 
-                        readable.Read(this, r);
-                        // TODO: validate chunk size
+                        case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
+                                                        // TODO: possibility to skip (not read into memory)
+                            skippable.Data = r.ReadBytes(chunkSize);
+                            break;
+                        default: // Unknown skippable
 
-                        break;
+                            // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
+                            var skippableChunk = new SkippableChunk(chunkId)
+                            {
+                                Data = r.ReadBytes(chunkSize)
+                            };
 
-                    case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
-                        // TODO: possibility to skip (not read into memory)
-                        skippable.Data = r.ReadBytes(chunkSize);
-                        break;
-                    default: // Unknown skippable
+                            Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
 
-                        // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
-                        var skippableChunk = new SkippableChunk(chunkId)
-                        {
-                            Data = r.ReadBytes(chunkSize)
-                        };
-
-                        Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
-
-                        break;
+                            break;
+                    }
                 }
 
                 if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)

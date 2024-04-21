@@ -24,4 +24,6 @@ public readonly record struct GbxReadSettings
     /// Solves the occasional bug with OpenPlanet extraction where the header chunks are not properly written into the Gbx, while the length of this data section is still set to a non-zero value.
     /// </summary>
     public bool OpenPlanetHookExtractMode { get; init; }
+
+    public HashSet<uint>? SkipChunkIds { get; init; }
 }
