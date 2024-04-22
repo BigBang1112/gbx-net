@@ -446,7 +446,7 @@ public partial class Gbx : IGbx
         {
             bodyUncompressedMs = new MemoryStream();
 
-            using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings)
+            using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { LeaveOpen = true })
             {
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
