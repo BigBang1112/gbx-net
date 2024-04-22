@@ -99,21 +99,21 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public GbxReader? Reader { get; }
     public GbxWriter? Writer { get; }
 
-    public GbxReaderWriter(GbxReader reader, bool leaveOpen = false)
+    public GbxReaderWriter(GbxReader reader, bool leaveOpen = true)
     {
         Reader = reader;
 
         this.leaveOpen = leaveOpen;
     }
 
-    public GbxReaderWriter(GbxWriter writer, bool leaveOpen = false)
+    public GbxReaderWriter(GbxWriter writer, bool leaveOpen = true)
     {
         Writer = writer;
 
         this.leaveOpen = leaveOpen;
     }
 
-    public GbxReaderWriter(GbxReader reader, GbxWriter writer, bool leaveOpen = false)
+    public GbxReaderWriter(GbxReader reader, GbxWriter writer, bool leaveOpen = true)
     {
         Reader = reader;
         Writer = writer;
@@ -141,12 +141,12 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void Dispose()
     {
-        if (!leaveOpen && Reader is not null && !Reader.Settings.LeaveOpen)
+        if (!leaveOpen && Reader is not null && Reader.Settings.CloseStream)
         {
             Reader.Dispose();
         }
 
-        if (!leaveOpen && Writer is not null && !Writer.Settings.LeaveOpen)
+        if (!leaveOpen && Writer is not null && Writer.Settings.CloseStream)
         {
             Writer.Dispose();
         }

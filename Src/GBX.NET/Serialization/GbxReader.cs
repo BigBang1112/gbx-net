@@ -210,7 +210,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private GbxReaderLimiter? limiter;
 
-    public GbxReader(Stream input, GbxReadSettings settings = default) : base(input, encoding, settings.LeaveOpen)
+    public GbxReader(Stream input, GbxReadSettings settings = default) : base(input, encoding, !settings.CloseStream)
     {
         Settings = settings;
         logger = settings.Logger;

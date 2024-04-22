@@ -186,15 +186,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public ClassIdRemapMode ClassIdRemapMode { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="output"></param>
-    public GbxWriter(Stream output) : base(output, encoding)
-    {
-    }
-
-    public GbxWriter(Stream output, GbxWriteSettings settings = default) : base(output, encoding, settings.LeaveOpen)
+    public GbxWriter(Stream output, GbxWriteSettings settings = default) : base(output, encoding, !settings.CloseStream)
     {
     }
 

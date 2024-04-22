@@ -15,7 +15,12 @@ public readonly record struct GbxReadSettings
     /// </summary>
     public bool ReadRawBody { get; init; }
     public bool IgnoreExceptionsInBody { get; init; }
-    public bool LeaveOpen { get; init; }
+
+    /// <summary>
+    /// Closes the stream after reading is finished. Default is <see langword="false"/>.
+    /// </summary>
+    public bool CloseStream { get; init; }
+
     public int? MaxUncompressedBodySize { get; init; }
     public int? MaxUserDataSize { get; init; }
     public ILogger? Logger { get; init; }

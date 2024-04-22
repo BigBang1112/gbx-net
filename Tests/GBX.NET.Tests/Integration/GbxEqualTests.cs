@@ -59,14 +59,14 @@ public class GbxEqualTests
         inputGbx.BodyCompression = GbxCompression.Uncompressed;
 
         using var savedGbxMs = new MemoryStream();
-        inputGbx.Save(savedGbxMs, new() { LeaveOpen = true });
+        inputGbx.Save(savedGbxMs);
 
         savedGbxMs.Position = 0;
 
         var gbxFromSavedGbx = await Gbx.ParseAsync(savedGbxMs, new() { Logger = logger });
 
         using var savedGbxAgainMs = new MemoryStream();
-        gbxFromSavedGbx.Save(savedGbxAgainMs, new() { LeaveOpen = true });
+        gbxFromSavedGbx.Save(savedGbxAgainMs);
 
         Assert.Equal(savedGbxMs.ToArray(), savedGbxAgainMs.ToArray());
     }
@@ -106,14 +106,14 @@ public class GbxEqualTests
 
         using var inputGbxMs = new MemoryStream();
 
-        await Gbx.DecompressAsync(Path.Combine("Files", "Gbx", filePath), inputGbxMs, leaveOpen: true);
+        await Gbx.DecompressAsync(Path.Combine("Files", "Gbx", filePath), inputGbxMs);
 
         inputGbxMs.Position = 0;
 
         var inputGbx = await Gbx.ParseAsync(inputGbxMs, new() { Logger = logger });
 
         using var savedGbxMs = new MemoryStream();
-        inputGbx.Save(savedGbxMs, new() { LeaveOpen = true });
+        inputGbx.Save(savedGbxMs);
 
         savedGbxMs.Position = 0;
 

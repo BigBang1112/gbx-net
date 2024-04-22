@@ -9,17 +9,18 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> CompressAsync(Stream input, Stream output, bool leaveOpen, CancellationToken cancellationToken)
+    public static async Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
-        Validate(input, output);
+        _ = input ?? throw new ArgumentNullException(nameof(input));
+        _ = output ?? throw new ArgumentNullException(nameof(output));
 
         if (Gbx.LZO is null)
         {
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input, new() { LeaveOpen = leaveOpen });
-        using var w = new GbxWriter(output, new() { LeaveOpen = leaveOpen });
+        using var r = new GbxReader(input);
+        using var w = new GbxWriter(output);
 
         var version = CopyBasicInformation(r, w);
 
@@ -54,17 +55,18 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> DecompressAsync(Stream input, Stream output, bool leaveOpen, CancellationToken cancellationToken)
+    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
-        Validate(input, output);
+        _ = input ?? throw new ArgumentNullException(nameof(input));
+        _ = output ?? throw new ArgumentNullException(nameof(output));
 
         if (Gbx.LZO is null)
         {
             throw new LzoNotDefinedException();
         }
 
-        using var r = new GbxReader(input, new() { LeaveOpen = leaveOpen });
-        using var w = new GbxWriter(output, new() { LeaveOpen = leaveOpen });
+        using var r = new GbxReader(input);
+        using var w = new GbxWriter(output);
 
         var version = CopyBasicInformation(r, w);
 
@@ -92,29 +94,6 @@ internal static partial class GbxCompressionUtils
         await w.WriteAsync(buffer, cancellationToken);
 
         return true;
-    }
-
-    private static void Validate(Stream input, Stream output)
-    {
-        if (input is null)
-        {
-            throw new ArgumentNullException(nameof(input));
-        }
-
-        if (output is null)
-        {
-            throw new ArgumentNullException(nameof(output));
-        }
-
-        if (input.CanRead is false)
-        {
-            throw new ArgumentException("Input stream must be readable.", nameof(input));
-        }
-
-        if (output.CanWrite is false)
-        {
-            throw new ArgumentException("Output stream must be writable.", nameof(output));
-        }
     }
 
     private static short CopyBasicInformation(GbxReader r, GbxWriter w)

@@ -26,7 +26,7 @@ public class GbxWriterTests
         using var ms = new MemoryStream();
 
         // Act
-        using var w = new GbxWriter(ms, new() { LeaveOpen = true });
+        using var w = new GbxWriter(ms);
 
         // Assert
         Assert.Same(expected: ms, actual: w.BaseStream);

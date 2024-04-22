@@ -5,7 +5,7 @@ public readonly record struct GbxWriteSettings
     public byte? PackDescVersion { get; init; }
     public ClassIdRemapMode? ClassIdRemapMode { get; init; }
     /// <summary>
-    /// Leave the stream open after writing.
+    /// Closes the stream after writing is finished. Default is <see langword="false"/>.
     /// </summary>
-    public bool LeaveOpen { get; init; }
+    public bool CloseStream { get; init; }
 }

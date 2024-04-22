@@ -27,7 +27,7 @@ public class GbxReaderTests
         using var ms = new MemoryStream();
 
         // Act
-        using var r = new GbxReader(ms, new() { LeaveOpen = true });
+        using var r = new GbxReader(ms);
 
         // Assert
         Assert.Same(expected: ms, actual: r.BaseStream);

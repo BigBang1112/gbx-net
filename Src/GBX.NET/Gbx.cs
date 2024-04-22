@@ -446,7 +446,7 @@ public partial class Gbx : IGbx
         {
             bodyUncompressedMs = new MemoryStream();
 
-            using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { LeaveOpen = true })
+            using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { CloseStream = false })
             {
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
@@ -500,7 +500,6 @@ public partial class Gbx : IGbx
     /// </summary>
     /// <param name="input">Gbx stream to compress.</param>
     /// <param name="output">Output Gbx stream in the compressed form.</param>
-    /// <param name="leaveOpen">If true, the input and output streams will be left open after the method returns.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>False if <paramref name="input"/> was already compressed, otherwise true.</returns>
     /// <exception cref="ArgumentException"></exception>
@@ -510,9 +509,9 @@ public partial class Gbx : IGbx
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> CompressAsync(Stream input, Stream output, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
     {
-        return await GbxCompressionUtils.CompressAsync(input, output, leaveOpen, cancellationToken);
+        return await GbxCompressionUtils.CompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -521,10 +520,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> CompressAsync(string inputFilePath, Stream output, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> CompressAsync(string inputFilePath, Stream output, CancellationToken cancellationToken = default)
     {
         using var input = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await CompressAsync(input, output, leaveOpen, cancellationToken);
+        return await CompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -533,10 +532,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> CompressAsync(Stream input, string outputFilePath, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> CompressAsync(Stream input, string outputFilePath, CancellationToken cancellationToken = default)
     {
         using var output = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true);
-        return await CompressAsync(input, output, leaveOpen, cancellationToken);
+        return await CompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -558,10 +557,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Compress(string inputFilePath, Stream output, bool leaveOpen = false)
+    public static bool Compress(string inputFilePath, Stream output)
     {
         using var input = File.OpenRead(inputFilePath);
-        return Compress(input, output, leaveOpen);
+        return Compress(input, output);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -570,10 +569,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Compress(Stream input, string outputFilePath, bool leaveOpen = false)
+    public static bool Compress(Stream input, string outputFilePath)
     {
         using var output = File.Create(outputFilePath);
-        return Compress(input, output, leaveOpen);
+        return Compress(input, output);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -595,7 +594,6 @@ public partial class Gbx : IGbx
     /// </summary>
     /// <param name="input">Gbx stream to decompress.</param>
     /// <param name="output">Output Gbx stream in the decompressed form.</param>
-    /// <param name="leaveOpen">If true, the input and output streams will be left open after the method returns.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>False if <paramref name="input"/> was already decompressed, otherwise true.</returns>
     /// <exception cref="ArgumentException"></exception>
@@ -605,9 +603,9 @@ public partial class Gbx : IGbx
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> DecompressAsync(Stream input, Stream output, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
     {
-        return await GbxCompressionUtils.DecompressAsync(input, output, leaveOpen, cancellationToken);
+        return await GbxCompressionUtils.DecompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -616,10 +614,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> DecompressAsync(string inputFilePath, Stream output, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> DecompressAsync(string inputFilePath, Stream output, CancellationToken cancellationToken = default)
     {
         using var input = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await DecompressAsync(input, output, leaveOpen, cancellationToken);
+        return await DecompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -628,10 +626,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> DecompressAsync(Stream input, string outputFilePath, bool leaveOpen = false, CancellationToken cancellationToken = default)
+    public static async Task<bool> DecompressAsync(Stream input, string outputFilePath, CancellationToken cancellationToken = default)
     {
         using var output = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true);
-        return await DecompressAsync(input, output, leaveOpen, cancellationToken);
+        return await DecompressAsync(input, output, cancellationToken);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -653,10 +651,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Decompress(string inputFilePath, Stream output, bool leaveOpen = false)
+    public static bool Decompress(string inputFilePath, Stream output)
     {
         using var input = File.OpenRead(inputFilePath);
-        return Decompress(input, output, leaveOpen);
+        return Decompress(input, output);
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -665,10 +663,10 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Decompress(Stream input, string outputFilePath, bool leaveOpen = false)
+    public static bool Decompress(Stream input, string outputFilePath)
     {
         using var output = File.Create(outputFilePath);
-        return Decompress(input, output, leaveOpen);
+        return Decompress(input, output);
     }
 
     /// <exception cref="ArgumentException"></exception>
