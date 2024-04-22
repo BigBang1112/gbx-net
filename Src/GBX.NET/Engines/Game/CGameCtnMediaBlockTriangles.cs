@@ -1,12 +1,14 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockTriangles
+public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
 {
     private Vec4[] vertices = [];
     private Int3[] triangles = [];
 
     [AppliedWithChunk<Chunk03029001>]
     public IList<Key> Keys { get; set; } = new List<Key>();
+
+    IEnumerable<IKey> IHasKeys.Keys => (IEnumerable<IKey>)Keys;
 
     [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices
