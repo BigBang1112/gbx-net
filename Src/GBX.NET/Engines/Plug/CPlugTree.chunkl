@@ -9,7 +9,7 @@ CPlugTree 0x0904F000
  if U01 > 0
   throw
 
-0x00D [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
+0x00D (demonstration) [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
  id Name
  id
 
