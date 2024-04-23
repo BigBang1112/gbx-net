@@ -9,6 +9,7 @@ if (args.Length == 0)
     Console.WriteLine("Usage: ParseRepeater <filename>");
     Console.WriteLine("Press any key to continue...");
     Console.ReadKey(true);
+    return;
 }
 
 var fileName = args[0];
@@ -22,7 +23,7 @@ var logger = LoggerFactory.Create(builder =>
         options.IncludeScopes = true;
         options.SingleLine = true;
     });
-    builder.SetMinimumLevel(LogLevel.Debug);
+    builder.SetMinimumLevel(LogLevel.Trace);
 }).CreateLogger<Program>();
 
 while (true)

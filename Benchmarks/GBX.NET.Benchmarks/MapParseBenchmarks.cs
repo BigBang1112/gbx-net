@@ -12,14 +12,14 @@ public class MapParseBenchmarks
     public MapParseBenchmarks()
     {
         Gbx.LZO = new MiniLZO();
-        stream = new MemoryStream(File.ReadAllBytes(Path.Combine("Gbx", "CGameCtnChallenge", "GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")));
+        stream = new MemoryStream(File.ReadAllBytes(Path.Combine("Gbx", "CGameCtnChallenge", "GBX-NET 2 CGameCtnChallenge TMU 001.Challenge.Gbx")));
     }
 
     [Benchmark]
     public Gbx ParseMap()
     {
         stream.Position = 0;
-        return Gbx.Parse<CGameCtnChallenge>(stream, new() { LeaveOpen = true });
+        return Gbx.Parse<CGameCtnChallenge>(stream);
     }
 }
 
