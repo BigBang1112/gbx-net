@@ -1,4 +1,5 @@
 CCtnMediaBlockUiTMSimpleEvtsDisplay 0x24092000
+- inherits: CGameCtnMediaBlock
 
 0x000
 

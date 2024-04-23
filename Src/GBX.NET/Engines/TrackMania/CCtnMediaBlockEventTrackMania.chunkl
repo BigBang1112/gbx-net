@@ -1,4 +1,5 @@
 CCtnMediaBlockEventTrackMania 0x2407F000
+- inherits: CGameCtnMediaBlock
 
 0x000
  timefloat Start
@@ -52,7 +53,7 @@ archive EndOfRace
  timefloat Time
  int U02
 
-archive Event
+archive Event (inherits: IKey)
 
 enum EventType
  Stunt
