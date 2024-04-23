@@ -70,75 +70,82 @@ public partial class CMwNod : IClass
                     }
                 }
 
-                switch (chunk)
+                if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
-                    case IReadableWritableChunk<T> readableWritableT:
+                    r.SkipData(chunkSize);
+                }
+                else
+                {
+                    switch (chunk)
+                    {
+                        case IReadableWritableChunk<T> readableWritableT:
 
-                        if (readableWritableT.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readableWritableT).Data = r.ReadBytes(chunkSize);
+                            if (readableWritableT.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readableWritableT).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
+
+                            readableWritableT.ReadWrite(node, rw);
+                            // TODO: validate chunk size
+
                             break;
-                        }
+                        case IReadableChunk<T> readableT:
 
-                        readableWritableT.ReadWrite(node, rw);
-                        // TODO: validate chunk size
+                            if (readableT.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readableT).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
 
-                        break;
-                    case IReadableChunk<T> readableT:
+                            readableT.Read(node, r);
+                            // TODO: validate chunk size
 
-                        if (readableT.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readableT).Data = r.ReadBytes(chunkSize);
                             break;
-                        }
+                        case IReadableWritableChunk readableWritable:
 
-                        readableT.Read(node, r);
-                        // TODO: validate chunk size
+                            if (readableWritable.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
 
-                        break;
-                    case IReadableWritableChunk readableWritable:
+                            readableWritable.ReadWrite(node, rw);
+                            // TODO: validate chunk size
 
-                        if (readableWritable.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readableWritable).Data = r.ReadBytes(chunkSize);
                             break;
-                        }
+                        case IReadableChunk readable:
 
-                        readableWritable.ReadWrite(node, rw);
-                        // TODO: validate chunk size
+                            if (readable.Ignore)
+                            {
+                                // TODO: possibility to skip (not read into memory)
+                                ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
 
-                        break;
-                    case IReadableChunk readable:
+                            readable.Read(node, r);
+                            // TODO: validate chunk size
 
-                        if (readable.Ignore)
-                        {
-                            // TODO: possibility to skip (not read into memory)
-                            ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
                             break;
-                        }
+                        case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
+                                                        // TODO: possibility to skip (not read into memory)
+                            skippable.Data = r.ReadBytes(chunkSize);
+                            break;
+                        default: // Unknown skippable
 
-                        readable.Read(node, r);
-                        // TODO: validate chunk size
+                            // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
+                            var skippableChunk = new SkippableChunk(chunkId)
+                            {
+                                Data = r.ReadBytes(chunkSize)
+                            };
 
-                        break;
-                    case ISkippableChunk skippable: // Known skippable but does not include reading/writing logic
-                        // TODO: possibility to skip (not read into memory)
-                        skippable.Data = r.ReadBytes(chunkSize);
-                        break;
-                    default: // Unknown skippable
+                            node.Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
 
-                        // TODO: possibility to skip (not read into memory), maybe create typed skippable chunk in the future?
-                        var skippableChunk = new SkippableChunk(chunkId)
-                        {
-                            Data = r.ReadBytes(chunkSize)
-                        };
-
-                        node.Chunks.Add(skippableChunk); // as its an unknown chunk, its not implicitly added by CreateChunk
-
-                        break;
+                            break;
+                    }
                 }
 
                 if (r.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
