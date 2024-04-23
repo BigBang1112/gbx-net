@@ -20,6 +20,6 @@ CGameCtnMediaBlockGhost 0x030E5000
  bool ForceLight
  bool ForceHue
  
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float LightIntensity

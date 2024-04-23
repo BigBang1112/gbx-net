@@ -10,7 +10,7 @@ CGameCtnMediaBlockScenery 0x03188000
  int
  CPlugDataTape DataTape
  
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float
  float

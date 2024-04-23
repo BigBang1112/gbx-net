@@ -8,7 +8,7 @@ CGameCtnMediaBlockBloomHdr 0x03128000
 
 0x002 (base: 0x000)
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float Intensity
  float StreaksIntensity

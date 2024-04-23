@@ -5,6 +5,6 @@ CGameCtnMediaBlockDirtyLens 0x03165000
  version
  list<Key> Keys
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float Intensity

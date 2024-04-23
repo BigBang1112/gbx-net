@@ -4,7 +4,7 @@ CGameCtnMediaBlockFxBloom 0x03083000
 0x001
  list<Key> Keys
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float Intensity
  float Sensitivity

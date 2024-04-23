@@ -5,7 +5,7 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
  version
  list<Key> Keys (version: Version)
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  byte
  float Radius

@@ -26,7 +26,7 @@ enum EColorBlendMode
  Set
  Mult
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  vec2 Position
  float Rotation

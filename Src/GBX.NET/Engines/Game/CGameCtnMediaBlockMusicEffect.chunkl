@@ -7,7 +7,7 @@ CGameCtnMediaBlockMusicEffect 0x030A6000
 0x001
  list<Key> Keys (version: 1)
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float MusicVolume
  v1+

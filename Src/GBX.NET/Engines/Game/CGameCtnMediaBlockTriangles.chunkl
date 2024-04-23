@@ -6,5 +6,5 @@ CGameCtnMediaBlockTriangles 0x03029000
 0x002 (skippable)
  int
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time

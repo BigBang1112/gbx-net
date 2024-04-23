@@ -25,7 +25,7 @@ CGameCtnMediaBlockSound 0x030A7000
  version Version
  list<Key> Keys (version: Version)
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float Volume
  float Pan

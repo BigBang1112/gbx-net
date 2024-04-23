@@ -10,7 +10,7 @@ CGameCtnMediaBlockFxColors 0x03080000
 
 0x003 (base: 0x000)
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float Intensity
  float BlendZ

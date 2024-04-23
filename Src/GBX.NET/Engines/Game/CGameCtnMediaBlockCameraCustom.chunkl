@@ -20,7 +20,7 @@ enum Interpolation
  Linear
  FixedTangent
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  int<Interpolation> Interpolation
  v5-

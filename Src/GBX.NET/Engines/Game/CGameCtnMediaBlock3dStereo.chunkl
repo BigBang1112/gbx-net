@@ -4,7 +4,7 @@ CGameCtnMediaBlock3dStereo 0x03024000
 0x000
  list<Key> Keys
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float UpToMax
  float ScreenDist

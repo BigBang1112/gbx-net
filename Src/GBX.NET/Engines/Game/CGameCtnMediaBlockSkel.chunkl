@@ -16,8 +16,8 @@ CGameCtnMediaBlockSkel 0x0314A000
    v4+
     float
 
-archive Key
- timefloat
+archive Key (inherits: IKey)
+ timefloat Time
  v2+
   float
   float

@@ -60,7 +60,7 @@ archive SSticker
  string
  string
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  int<ELights> Lights
  v6+

@@ -15,7 +15,7 @@ CGameCtnMediaBlockCameraSimple 0x0309F000
  v2+
   bool
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  byte
  iso4

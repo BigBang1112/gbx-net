@@ -9,7 +9,7 @@ CGameCtnMediaBlockCameraEffectScript 0x03161000
   timefloat End
  list<Key> Keys
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float A
  float B

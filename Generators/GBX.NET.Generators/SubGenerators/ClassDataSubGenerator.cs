@@ -639,6 +639,11 @@ internal class ClassDataSubGenerator
         {
             sb.Append(inherits);
             sb.Append(", ");
+
+            if (inherits.StartsWith("I")) // kinda weird
+            {
+                overrideMethods = null;
+            }
         }
         else if (sealedArchive)
         {

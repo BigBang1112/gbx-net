@@ -12,8 +12,8 @@ CGameCtnMediaBlockToneMapping 0x03127000
 
 0x004 (base: 0x000)
 
-archive Key
- timefloat
+archive Key (inherits: IKey)
+ timefloat Time
  float Exposure
  float MaxHDR
  float LightTrailScale

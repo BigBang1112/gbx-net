@@ -4,7 +4,7 @@ CGameCtnMediaBlockFxBlurDepth 0x03081000
 0x001
  list<Key> Keys
 
-archive Key
+archive Key (inherits: IKey)
  timefloat Time
  float LensSize
  bool ForceFocus
