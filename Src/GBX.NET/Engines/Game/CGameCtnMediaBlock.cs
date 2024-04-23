@@ -9,7 +9,7 @@ public partial class CGameCtnMediaBlock
 
     public interface IHasTwoKeys
     {
-        TimeInt32 Start { get; set; }
-        TimeInt32 End { get; set; }
+        TimeSingle Start { get; set; }
+        TimeSingle End { get; set; }
     }
 }

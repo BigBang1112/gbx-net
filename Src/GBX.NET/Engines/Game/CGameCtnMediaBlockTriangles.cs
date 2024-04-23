@@ -8,7 +8,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
     [AppliedWithChunk<Chunk03029001>]
     public IList<Key> Keys { get; set; } = new List<Key>();
 
-    IEnumerable<IKey> IHasKeys.Keys => (IEnumerable<IKey>)Keys;
+    IEnumerable<IKey> IHasKeys.Keys => Keys;
 
     [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices

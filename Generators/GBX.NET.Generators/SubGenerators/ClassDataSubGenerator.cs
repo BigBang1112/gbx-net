@@ -99,7 +99,7 @@ internal class ClassDataSubGenerator
                 .FirstOrDefault(x => x.Key == "PrivateSet").Value.Value as bool?).GetValueOrDefault();
         }
 
-        AppendClassDefinitionLine(sb, classInfo, archiveStructureKind);
+        AppendClassDefinitionLine(sb, classInfo, archiveStructureKind, classInfos, out var additionalCodePieces);
 
         sb.AppendLine("{");
 
@@ -108,6 +108,12 @@ internal class ClassDataSubGenerator
         if (classInfo.Id.HasValue)
         {
             AppendStaticIdMemberLine(sb, classInfo.Id.Value, existingMembers, context);
+        }
+
+        sb.AppendLine();
+        foreach (var additionalCodePiece in additionalCodePieces)
+        {
+            sb.AppendLine(indent: 1, additionalCodePiece);
         }
 
         sb.AppendLine();
@@ -212,7 +218,12 @@ internal class ClassDataSubGenerator
         context.AddSource($"Engines/{classInfo.Name}", sb.ToString());
     }
 
-    private static void AppendClassDefinitionLine(StringBuilder sb, ClassDataModel classInfo, int? archiveStructureKind)
+    private static void AppendClassDefinitionLine(
+        StringBuilder sb,
+        ClassDataModel classInfo,
+        int? archiveStructureKind,
+        ImmutableDictionary<string, ClassDataModel> classInfos,
+        out ImmutableList<string> additionalCodePieces)
     {
         if (!string.IsNullOrWhiteSpace(classInfo.Description))
         {
@@ -286,6 +297,94 @@ internal class ClassDataSubGenerator
                 }
             }
         }
+
+        var inherits = classInfo.Inherits;
+        while (inherits is not null && inherits != "CGameCtnMediaBlock")
+        {
+            if (classInfos.TryGetValue(inherits, out var inheritedClass))
+            {
+                inherits = inheritedClass.Inherits;
+            }
+        }
+        var inheritsMediaBlock = inherits == "CGameCtnMediaBlock";
+
+        var additionalCodePiecesBuilder = ImmutableList.CreateBuilder<string>();
+        var timeSingleStartProp = default(ChunkProperty);
+        var timeSingleEndProp = default(ChunkProperty);
+        var keysProp = default(ChunkProperty);
+
+        foreach (var chunk in classInfo.Chunks)
+        {
+            if (chunk.Value.ChunkLDefinition is null)
+            {
+                continue;
+            }
+
+            if (inheritsMediaBlock)
+            {
+                foreach (var member in RecurseMembers(chunk.Value.ChunkLDefinition))
+                {
+                    if (member is ChunkProperty { Name: "Start", Type.PrimaryType: "timefloat" } propStart)
+                    {
+                        timeSingleStartProp = propStart;
+                    }
+
+                    if (member is ChunkProperty { Name: "End", Type.PrimaryType: "timefloat" } propEnd)
+                    {
+                        timeSingleEndProp = propEnd;
+                    }
+
+                    if (member is ChunkProperty { Name: "Keys", Type.PrimaryType: "list", Type.GenericType: "Key" } propKeys)
+                    {
+                        keysProp = propKeys;
+                    }
+                }
+            }
+
+            static IEnumerable<IChunkMember> RecurseMembers(IChunkMemberBlock block)
+            {
+                foreach (var member in block.Members)
+                {
+                    yield return member;
+
+                    if (member is IChunkMemberBlock b)
+                    {
+                        foreach (var m in RecurseMembers(b))
+                        {
+                            yield return m;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (timeSingleStartProp is not null && timeSingleEndProp is not null)
+        {
+            if (classInfo.TypeSymbol is null || classInfo.TypeSymbol.AllInterfaces.Any(x => x.Name == "IHasTwoKeys") == false)
+            {
+                inheritanceList.Add("CGameCtnMediaBlock.IHasTwoKeys");
+            }
+
+            additionalCodePiecesBuilder.Add(timeSingleStartProp.IsNullable
+                ? "TimeSingle IHasTwoKeys.Start { get => Start.GetValueOrDefault(); set => Start = value; }"
+                : "TimeSingle IHasTwoKeys.Start { get => Start; set => Start = value; }");
+
+            additionalCodePiecesBuilder.Add(timeSingleEndProp.IsNullable
+                ? "TimeSingle IHasTwoKeys.End { get => End.GetValueOrDefault(); set => End = value; }"
+                : "TimeSingle IHasTwoKeys.End { get => End; set => End = value; }");
+        }
+
+        if (keysProp is not null)
+        {
+            if (classInfo.TypeSymbol is null || classInfo.TypeSymbol.AllInterfaces.Any(x => x.Name == "IHasKeys") == false)
+            {
+                inheritanceList.Add("CGameCtnMediaBlock.IHasKeys");
+            }
+
+            additionalCodePiecesBuilder.Add("IEnumerable<IKey> IHasKeys.Keys => Keys ?? [];");
+        }
+
+        additionalCodePieces = additionalCodePiecesBuilder.ToImmutable();
 
         var first = true;
 
