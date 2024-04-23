@@ -175,11 +175,11 @@ Some of the common types to start with (a lot more are supported):
 | Mat.Gbx | CPlugMaterialUserInst | Yes | Yes
 | Mesh.Gbx | CPlugSolid2Model | Yes | Yes
 | Shape.Gbx | CPlugSurface | Yes | Yes
-| Macroblock.Gbx | CGameCtnMacroBlockInfo | No | No
+| Macroblock.Gbx | CGameCtnMacroBlockInfo | Yes | Yes
 | LightMapCache.Gbx | CHmsLightMapCache | No | No
 | SystemConfig.Gbx | CSystemConfig | Yes | Yes
-| FidCache.Gbx | CMwRefBuffer | No | No
-| Scores.Gbx | CGamePlayerScore | No | No
+| FidCache.Gbx | CMwRefBuffer | Yes | Yes
+| Scores.Gbx | CGamePlayerScore | Yes | No
 
 ## Supported games
 
