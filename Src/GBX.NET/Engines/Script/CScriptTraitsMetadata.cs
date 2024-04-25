@@ -4,6 +4,30 @@ namespace GBX.NET.Engines.Script;
 
 public partial class CScriptTraitsMetadata
 {
+    /// <summary>
+    /// Type of the variable supported by ManiaScript.
+    /// </summary>
+    public enum EScriptType
+    {
+        Void,
+        Boolean,
+        Integer,
+        Real,
+        Class,
+        Text,
+        Enum,
+        Array,
+        ParamArray,
+        Vec2,
+        Vec3,
+        Int3,
+        Iso4,
+        Ident,
+        Int2,
+        Struct,
+        ValueNotComputed
+    }
+
     public IDictionary<string, ScriptTrait> Traits { get; set; }
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
