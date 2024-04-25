@@ -103,15 +103,7 @@ public partial class CGameGhost
 
         private void Read(CompressedData data)
         {
-            if (Gbx.ZLib is null)
-            {
-                throw new ZLibNotDefinedException();
-            }
-
-            var uncompressedData = new byte[data.UncompressedSize];
-            Gbx.ZLib.Decompress(data.Data, uncompressedData);
-
-            using var ms = new MemoryStream(uncompressedData);
+            using var ms = data.OpenDecompressedMemoryStream();
             using var r = new GbxReader(ms);
 
             Read(r);

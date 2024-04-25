@@ -73,7 +73,7 @@ public partial class CGameCtnChallenge :
     public LightmapFrame[] LightmapFrames { get; set; }
 
     [ZLibData]
-    public byte[]? LightmapCacheData { get; set; }
+    public CompressedData? LightmapCacheData { get; set; }
 
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     public IList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
@@ -476,17 +476,9 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            var uncompressedData = new byte[r.ReadInt32()];
-            n.LightmapCacheData = r.ReadData();
+            n.LightmapCacheData = new CompressedData(r.ReadInt32(), r.ReadData());
 
-            if (Gbx.ZLib is null)
-            {
-                throw new Exception("ZLib is not imported (IZLib).");
-            }
-
-            Gbx.ZLib.Decompress(n.LightmapCacheData, uncompressedData);
-
-            using var ms = new MemoryStream(uncompressedData);
+            using var ms = n.LightmapCacheData.OpenDecompressedMemoryStream();
             using var rBuffer = new GbxReader(ms);
             rBuffer.LoadFrom(r);
 
@@ -530,11 +522,13 @@ public partial class CGameCtnChallenge :
                 throw new Exception("ZLib is not imported (IZLib).");
             }
 
-            var uncompressedData = ms.ToArray();
-            var compressedData = Gbx.ZLib.Compress(uncompressedData);
+            ms.Position = 0;
+            using var compressedMs = new MemoryStream();
 
-            w.Write(compressedData.Length);
-            w.Write(compressedData);
+            Gbx.ZLib.Compress(ms, compressedMs);
+
+            w.Write(compressedMs.Length);
+            compressedMs.CopyTo(w.BaseStream);
         }
     }
 

@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET.ZLib?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET.ZLib/)
 [![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge&logo=discord)](https://discord.gg/tECTQcAWC9)
 
-A zlib compression plugin for GBX.NET to allow de/serialization of compressed Gbx parts like ghost/entity data or lightmap cache. This official implementation uses ZLibDotNet.
+A zlib compression plugin for GBX.NET to allow de/serialization of compressed Gbx parts like ghost/entity data or lightmap cache. This official implementation uses `Joveler.Compression.ZLib`.
 
 The compression logic is split up from the read/write logic to separate dependencies better.
 

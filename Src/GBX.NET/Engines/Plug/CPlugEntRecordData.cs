@@ -13,6 +13,7 @@ public partial class CPlugEntRecordData : IReadableWritable
     private IList<NoticeRecordListElem> bulkNoticeList = [];
     private IList<CustomModulesDeltaList> customModulesDeltaLists = [];
 
+    [ZLibData]
     public CompressedData CompressedData { get; set; }
 
     public TimeInt32 Start { get => start; }
@@ -85,12 +86,8 @@ public partial class CPlugEntRecordData : IReadableWritable
                 {
                     try
                     {
-                        var uncompressedBuffer = new byte[uncompressedSize];
-
-                        Gbx.ZLib.Decompress(n.CompressedData.Data, uncompressedBuffer);
-
-                        using var ms = new MemoryStream(uncompressedBuffer);
-                        using var rBuffer = new GbxReader(ms);
+                        using var uncompressedMs = n.CompressedData.OpenDecompressedMemoryStream();
+                        using var rBuffer = new GbxReader(uncompressedMs);
                         using var rwBuffer = new GbxReaderWriter(rBuffer);
 
                         n.ReadWrite(rwBuffer, Version);
