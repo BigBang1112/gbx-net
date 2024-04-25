@@ -128,6 +128,21 @@ public sealed class GbxRefTable
 
     public GbxRefTable DeepClone()
     {
-        return new GbxRefTable(); // WRONG, TODO
+        var refTable = new GbxRefTable
+        {
+            AncestorLevel = AncestorLevel,
+            Files = Files.Select(x => new UnlinkedGbxRefTableFile(x.Flags, x.UseFile, x.NodeIndex, x.FilePath)).ToList(),
+            Resources = Resources.Select(x => new UnlinkedGbxRefTableResource(x.Flags, x.UseFile, x.NodeIndex, x.ResourceIndex)).ToList(),
+            FileSystemPath = FileSystemPath
+        };
+
+        foreach (var pair in ExternalData)
+        {
+            // TODO: Deep clone file or not?
+            var file = new GbxRefTableFile(refTable, pair.Key.Flags, pair.Key.UseFile, pair.Key.FilePath);
+            refTable.ExternalData.Add(file, pair.Value.ToArray());
+        }
+
+        return refTable;
     }
 }
