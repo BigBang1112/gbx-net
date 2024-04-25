@@ -108,6 +108,12 @@ public partial class Gbx : IGbx
         return $"Gbx ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
     }
 
+    public string? GetFileNameWithoutExtension()
+    {
+        if (FilePath is null) return null;
+        return GbxPath.GetFileNameWithoutExtension(FilePath);
+    }
+
     public virtual Gbx DeepClone() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
