@@ -272,6 +272,97 @@ public partial class CGameCtnChallenge :
         Chunks.Remove<Chunk03043029>();
     }
 
+    /// <summary>
+    /// Gets the first block at this position.
+    /// </summary>
+    /// <param name="pos">Position of the block.</param>
+    /// <returns>The first available block.</returns>
+    public CGameCtnBlock? GetBlock(Int3 pos) => blocks?.FirstOrDefault(x => x.Coord == pos);
+
+    /// <summary>
+    /// Retrieves blocks at this position.
+    /// </summary>
+    /// <param name="pos">Position of the block.</param>
+    /// <returns>An enumerable of blocks.</returns>
+    public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => GetBlocks(includeUnassigned1: false).Where(x => x.Coord == pos);
+
+    /// <summary>
+    /// Retrieves ghost blocks on the map.
+    /// </summary>
+    /// <returns>An enumerable of ghost blocks.</returns>
+    public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks(includeUnassigned1: false).Where(x => x.IsGhost);
+
+    public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction direction)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        var block = new CGameCtnBlock
+        {
+            BlockModel = blockModel,
+            Coord = coord,
+            Direction = direction
+        };
+
+        block.CreateChunk<CGameCtnBlock.Chunk03057002>();
+
+        Blocks.Add(block);
+
+        return block;
+    }
+
+    public CGameCtnBlock PlaceBlock(string blockModel, Int3 coord, Direction direction)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        var block = new CGameCtnBlock
+        {
+            Name = blockModel,
+            Coord = coord,
+            Direction = direction
+        };
+
+        Blocks.Add(block);
+
+        return block;
+    }
+
+    public void RemoveAllBlocks()
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        Blocks.Clear();
+    }
+
+    /*
+    public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        Blocks.RemoveAll(match);
+    }
+    */
+
+    public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default)
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        CreateChunk<Chunk03043040>();
+
+        var anchoredObject = new CGameCtnAnchoredObject
+        {
+            ItemModel = itemModel,
+            AbsolutePositionInMap = absolutePosition,
+            PitchYawRoll = pitchYawRoll,
+            PivotPosition = offsetPivot
+        };
+
+        anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>().Version = 7;
+
+        AnchoredObjects.Add(anchoredObject);
+
+        return anchoredObject;
+    }
+
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
     {
@@ -901,7 +992,6 @@ public partial class CGameCtnChallenge :
                     }
                 }
 
-                // TODO
                 wBuffer.WriteList(itemModelList);
                 wBuffer.WriteData(n.EmbeddedZipData!);
             }

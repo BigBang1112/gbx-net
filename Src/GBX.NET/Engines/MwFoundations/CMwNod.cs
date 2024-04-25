@@ -547,6 +547,11 @@ public partial class CMwNod : IClass
         ToGbx().Save(fileName, settings);
     }
 
+    public T CreateChunk<T>() where T : IChunk, new()
+    {
+        return Chunks.Create<T>();
+    }
+
     private static bool TryRemapChunkId(GbxReader reader, uint chunkId, out uint remappedChunkId)
     {
         if (!ClassManager.IsChunkIdRemapped(chunkId))
