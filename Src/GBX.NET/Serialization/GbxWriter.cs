@@ -711,7 +711,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
             index = NodeDict.Count + 1;
 
-            // TODO: Report on replacements
+            if (NodeDict.ContainsKey(key))
+            {
+                // TODO: Report on replacements
+            }
+
             NodeDict[key] = index;
 
             Write(index);
@@ -730,6 +734,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         if (ClassManager.GetClassId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
+        }
+
+        if (!ClassManager.IsClassWriteSupported(classId))
+        {
+            throw new ClassWriteNotSupportedException(classId);
         }
 
         Write(classId);
@@ -774,6 +783,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         if (ClassManager.GetClassId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
+        }
+
+        if (!ClassManager.IsClassWriteSupported(classId))
+        {
+            throw new ClassWriteNotSupportedException(classId);
         }
 
         Write(classId);

@@ -27,6 +27,11 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
 
     private void WriteClassId()
     {
+        if (!ClassManager.IsClassWriteSupported(header.ClassId))
+        {
+            throw new ClassWriteNotSupportedException(header.ClassId);
+        }
+
         if (writer.ClassIdRemapMode == ClassIdRemapMode.Latest)
         {
             writer.WriteHexUInt32(header.ClassId);

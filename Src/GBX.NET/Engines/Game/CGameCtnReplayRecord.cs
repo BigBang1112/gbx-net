@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 
 namespace GBX.NET.Engines.Game;
 
+[WriteNotSupported]
 public partial class CGameCtnReplayRecord
 {
     private byte[]? challengeData;

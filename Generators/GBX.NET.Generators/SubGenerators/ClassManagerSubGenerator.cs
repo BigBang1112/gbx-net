@@ -171,6 +171,30 @@ internal static class ClassManagerSubGenerator
         builder.AppendLine("        _ => true");
         builder.AppendLine("    };");
 
+        builder.AppendLine();
+        builder.AppendLine("    internal static partial bool IsClassWriteSupported(uint classId) => classId switch");
+        builder.AppendLine("    {");
+
+        foreach (var classInfo in classInfos)
+        {
+            if (classInfo.Value.TypeSymbol is null)
+            {
+                continue;
+            }
+
+            if (!classInfo.Value.TypeSymbol.GetAttributes().Any(x => x.AttributeClass?.Name == "WriteNotSupportedAttribute"))
+            {
+                continue;
+            }
+
+            builder.Append("        0x");
+            builder.Append(classInfo.Value.Id.GetValueOrDefault().ToString("X8"));
+            builder.AppendLine(" => false,");
+        }
+
+        builder.AppendLine("        _ => true");
+        builder.AppendLine("    };");
+
 
         builder.AppendLine("}");
 
