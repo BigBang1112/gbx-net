@@ -36,6 +36,7 @@ GBX.NET is not just a library that can read or write Gbx files, but also **a mod
   - [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
   - [Only header parse](#only-header-parse)
   - [NativeAOT](#nativeaot)
+  - [Asynchronous](#asynchronous)
 - [Benchmarks](#benchmarks)
 - [Build](#build)
 - [License](#license)
@@ -86,7 +87,9 @@ Here are some of the known file types to start with:
 
 ## Gbx Explorer 2
 
-TODO
+Gbx Explorer 2 *will* be a complete remake of the old Gbx Explorer, fixing most of what the old version lacked. It is planned to be a relatively huge project, so it may take time to do.
+
+**Old Gbx Explorer is still not compatible** with GBX.NET 2, but something is being figured out about that. Some features may have to be stripped too.
 
 ## Lua support
 
@@ -104,7 +107,7 @@ Due to the recently paced evolution of .NET, framework support has been limited 
 - .NET 6
 - .NET Standard 2.0
 
-You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded.
+You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded. Depending on the needs, I can add explicit .NET Framework support, but so far there haven't been ones not replaceable with .NET Standard 2.0.
 
 ## Preparation
 
@@ -117,8 +120,8 @@ Using the NuGet packages is recommended.
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
-4. Add the pre-release GBX.NET 2 NuGet package: `dotnet add package GBX.NET --prerelease`
-5. *(optional)* Add the pre-release GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO --prerelease`
+4. Add the pre-release GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
+5. *(optional)* Add the pre-release GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
 6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
 7. Write code - see [Examples (simple)](#examples-simple).
 8. Use `dotnet run` to run the app.
@@ -128,8 +131,8 @@ Steps 2-8:
 mkdir MyGbxProject
 cd MyGbxProject
 dotnet new console
-dotnet add package GBX.NET --prerelease
-dotnet add package GBX.NET.LZO --prerelease
+dotnet add package GBX.NET
+dotnet add package GBX.NET.LZO
 code . -g Program.cs
 dotnet run
 ```
@@ -139,9 +142,9 @@ dotnet run
 1. Install C# Dev Kit extension.
 2. Click on `Create .NET Project` button, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type `.NET: New Project`.
 3. Select `Console App` and create your project.
-4. Open a new terminal and type `dotnet add package GBX.NET --prerelease` to add GBX.NET 2.
-5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO --prerelease`
-5. Write code - see [Examples (simple)](#examples-simple).
+4. Open a new terminal and type `dotnet add package GBX.NET` to add GBX.NET 2.
+5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
+5. Write code - see [Usage (simple examples)](#usage-simple-examples).
 6. Run and debug as usual, select C# if prompted.
 
 ### Create a new GBX.NET project (Visual Studio)
@@ -149,7 +152,7 @@ dotnet run
 1. Create a new Console project
 2. Under your project in Solution Explorer, right-click on Dependencies and select `Manage NuGet packages...`
 3. Search `GBX.NET` and click install
-4. Write code - see [Examples (simple)](#examples-simple).
+4. Write code - see [Usage (simple examples)](#usage-simple-examples).
 
 ## IMPORTANT INFO about the LZO and Gbx compression
 
@@ -158,7 +161,7 @@ Reading or writing compressed Gbx files **require** to include the GBX.NET.LZO 2
 Command line:
 
 ```
-dotnet add package GBX.NET.LZO --prerelease
+dotnet add package GBX.NET.LZO
 ```
 
 C# code:
@@ -342,25 +345,55 @@ Gbx files contain many different parameters that are not exactly part of the gam
 You can still save nodes into Gbx files by using the `Save` method - be careful specifying the Gbx parameters correctly, like the class ID mappings (wrap/unwrap).
 
 - `Gbx.Parse`
-  - TODO
+  - Reads the full Gbx file, saves the `Node` and many of its parameters to the `Gbx` object, and returns the `Gbx` object.
 - `Gbx.ParseNode`
-  - TODO
+  - Same as `Gbx.Parse`, except only the `Node` itself is returned and `Gbx` object parameters are discarded and garbage collected, except for `GbxRefTable`, which is referenced further down the nodes.
+  - Can return `null` on unknown Gbx file, while `Gbx.Parse` can't.
 - `Gbx.ParseHeader`
-  - TODO
+  - Reads only the uncompressed Gbx header part, saves the `Node` and *most* of its parameters to the `Gbx` object, and returns the `Gbx` object.
 - `Gbx.ParseHeaderNode`
-  - TODO
+  - Same as `Gbx.ParseHeader`, except only the `Node` itself is returned and `Gbx` object parameters are discarded and garbage collected, except for `GbxRefTable`, which is referenced further down the nodes.
+  - Can return `null` on unknown Gbx file, while `Gbx.ParseHeader` can't.
 
 ### Do not repeat `gbx.Node.[any]` too often!
 
-This was more common back in the 0.X version days, but it is still possible to do today.
+It is fairly common to see people repeat the `gbx.Node.something` instead of saving the `gbx.Node` to a new, shorter variable to improve code clarity. The original guide was to rather refer to using `Gbx.ParseNode`, however, in GBX.NET 2, some Gbx parameters can be lost by using `Gbx.ParseNode`, so for simplification, `Gbx.Parse` is recommended to use when the goal is to modify the file.
 
-TODO
+> [!NOTE]
+> That doesn't mean you cannot use `Gbx.ParseNode` for Gbx modification. In fact there's no different since TM2 for saving nodes retrieved using `Gbx.Parse` or `Gbx.ParseNode`. In TMUF and older versions, when you're using `Gbx.ParseNode`, you may need to specify a few write parameters that were stored in the original `Gbx` object, which got discarded.
+
+If you're accessing a lot of main node members, prefer saving `gbx.Node` into an additional variable.
+
+```cs
+var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+var map = gbx.Node; // See Clarity section for more info
+
+Console.WriteLine(map.MapName);
+Console.WriteLine(map.AuthorLogin);
+Console.WriteLine(map.AuthorNickname);
+Console.WriteLine(map.BuildVersion);
+```
+
+It looks better than this:
+
+```cs
+var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+
+Console.WriteLine(gbx.Node.MapName);
+Console.WriteLine(gbx.Node.AuthorLogin);
+Console.WriteLine(gbx.Node.AuthorNickname);
+Console.WriteLine(gbx.Node.BuildVersion);
+```
 
 ### Game Version Interfaces!
 
-Interfaces (short name of Game Version Interfaces) is a new feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to hide unrelated properties and avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
+Interfaces (short name of Game Version Interfaces) is a new *upcoming* feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to hide unrelated properties and avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
 
-TODO
+Currently, it is split into 3 ideas:
+- Chunk Game Version Specification *(partially available now)*
+  - Every `CMwNod` has a member `GameVersion` that can guess from which game the Gbx file is, or where it could be supported.
+- Generated Game Version Interfaces *(still WIP)*
+- Generated Builders *(still WIP)*
 
 ## Optimization
 
@@ -387,7 +420,38 @@ GBX.NET is a huge library when everything is included (over 1.5MB), so please us
 
 ### Explicit vs. Implicit parse
 
-TODO
+*In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
+
+GBX.NET 2 changes this majorly by making the Explicit parse way more explicit. The **Explicit parse** runs through a slightly modified code that does slightly simpler things than the Implicit parse:
+
+- The nodes are instantiated right away using the generics.
+  - If the node type is more of a base type, there's a check for all inherited classes, in a much smaller switch statement than the Implicit parse uses.
+  - If the type cannot match, exception is thrown.
+- Smaller switch statement of classes allows **effective trimming** that can reduce the library size much more than it is able to with the Implicit parse.
+- You cannot use Explicit parse on unknown Gbx files.
+- Explicit parse is still considered fairly experimental and it might sometimes fail its job.
+
+**Explicit parse:**
+
+```cs
+Gbx<CGameCtnChallenge> gbxMap = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+Gbx<CGameCtnChallenge> gbxMap = Gbx.ParseHeader<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge gbxMap = Gbx.ParseHeaderNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+```
+
+The Implicit parse cannot guess the type right away, but it does not fail on unknown Gbx files. It is also less effective with library trimming.
+
+**Implicit parse:**
+
+```cs
+Gbx gbxMap = Gbx.Parse("Path/To/My.Map.Gbx");
+CMwNod map = Gbx.ParseNode("Path/To/My.Map.Gbx");
+Gbx gbxMap = Gbx.ParseHeader("Path/To/My.Map.Gbx");
+CMwNod gbxMap = Gbx.ParseHeaderNode("Path/To/My.Map.Gbx");
+```
+
+To figure out a type, use **pattern matching** or **casting**.
 
 ### Only header parse
 
@@ -415,6 +479,17 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 
 > [!NOTE]
 > Expect this to work only with `dotnet publish`.
+
+### Asynchronous
+
+Reading Gbx files asynchronously is currently only partially supported, but can be already more effective in networking scenarios.
+
+- Asynchronous reading currently only takes effect in the Gbx **body** part.
+- It is used on reading the compressed LZO buffer, which is quite large, so async can have a positive effect.
+- It is also planned to use async reading on Gbx map thumbnail JPEG buffer.
+- It is not planned to use async reading while reading the contents of decompressed body, as it's already fully there in memory and it could rather hurt the performance than improve it.
+
+The library uses sync method generators to simplify async method definitions without duplicating code.
 
 ## Benchmarks
 

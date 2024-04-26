@@ -7,6 +7,8 @@ A zlib compression plugin for GBX.NET to allow de/serialization of compressed Gb
 
 The compression logic is split up from the read/write logic to separate dependencies better.
 
+With `Joveler.Compression.ZLib`, there are still some problems like when the loading fails if working directory is different. These problems are addressed and fixes are in plans. 
+
 ## Usage
 
 Additional package `GBX.NET.LZO` is required in this example.
