@@ -26,8 +26,9 @@
         <div id="menu">
             <img width="200" src="_content/GbxExplorer.Component/logo.png" alt="GBX.NET Explorer" style="float: right;margin-right: 15px;" />
             <div class="menu-list">
-                <button>Import Gbx/Pak files...</button>
+                <button @onclick="Kek">Import Gbx/Pak files...</button>
             </div>
+            <p>@testText</p>
         </div>
     </div>
 </nav>
@@ -37,6 +38,8 @@
     CssClass="my-editor-class" />-->
 
 @code {
+    private string? testText;
+
     private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
     {
         return new StandaloneEditorConstructionOptions
@@ -47,5 +50,11 @@
                         "   console.log(\"Hello world!\");\n" +
                         "}"
             };
+    }
+
+    public void Kek()
+    {
+        var engine = new GBX.NET.Lua.LuaEngine();
+        testText = engine.Open();
     }
 }

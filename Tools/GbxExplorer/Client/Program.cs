@@ -1,6 +1,10 @@
+using GBX.NET;
+using GBX.NET.ZLib;
 using GbxExplorer.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
+Gbx.ZLib = new ZLib();
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

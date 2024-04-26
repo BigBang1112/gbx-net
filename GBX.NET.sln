@@ -63,6 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Resources\LICENSE = Resources\LICENSE
 		Resources\Unwrap.txt = Resources\Unwrap.txt
 		Resources\Wrap.txt = Resources\Wrap.txt
+		Resources\WrapTMF.txt = Resources\WrapTMF.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Tests.Generators", "Generators\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj", "{D59DD3E9-08AF-4935-B0F3-5FEB2417C013}"
@@ -123,6 +124,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Imaging.ImageSharp", "Src\GBX.NET.Imaging.ImageSharp\GBX.NET.Imaging.ImageSharp.csproj", "{26170BF3-6059-4774-BCAF-2FCB90328743}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.ZLib", "Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj", "{82817753-9A3C-4C6E-B5FD-435EFF210F58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blik", "Samples\Advanced\Blik\Blik.csproj", "{62669E3C-C756-49AC-8AD5-D4B4F67407EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legomania", "Samples\Beginner\Legomania\Legomania.csproj", "{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemPacker", "Samples\Advanced\ItemPacker\ItemPacker.csproj", "{0BB42493-0206-4A06-9AA6-1461BE8DF299}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -274,6 +281,18 @@ Global
 		{82817753-9A3C-4C6E-B5FD-435EFF210F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82817753-9A3C-4C6E-B5FD-435EFF210F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82817753-9A3C-4C6E-B5FD-435EFF210F58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62669E3C-C756-49AC-8AD5-D4B4F67407EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62669E3C-C756-49AC-8AD5-D4B4F67407EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62669E3C-C756-49AC-8AD5-D4B4F67407EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62669E3C-C756-49AC-8AD5-D4B4F67407EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB42493-0206-4A06-9AA6-1461BE8DF299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB42493-0206-4A06-9AA6-1461BE8DF299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB42493-0206-4A06-9AA6-1461BE8DF299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB42493-0206-4A06-9AA6-1461BE8DF299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -319,6 +338,9 @@ Global
 		{D873A7F8-EDFE-4126-8532-7C59B7AA6598} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{26170BF3-6059-4774-BCAF-2FCB90328743} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{82817753-9A3C-4C6E-B5FD-435EFF210F58} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
+		{62669E3C-C756-49AC-8AD5-D4B4F67407EE} = {0A6947D1-283B-4DC0-A041-4661A8D6DF55}
+		{A05A9F87-20E1-495A-ABAE-CBF5CA2A8C56} = {FB4631D3-4622-489D-B722-2AD86C7361BA}
+		{0BB42493-0206-4A06-9AA6-1461BE8DF299} = {0A6947D1-283B-4DC0-A041-4661A8D6DF55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
