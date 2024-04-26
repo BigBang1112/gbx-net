@@ -21,7 +21,7 @@ if (!map.IsGameVersion(GameVersion.TM2020))
 var random = new Random();
 var colors = Enum.GetValues<DifficultyColor>().AsSpan().Slice(1);
 
-foreach (var block in map.GetBlocks().Where(x => x.Coord.Y > 33))
+foreach (var block in map.GetBlocks())
 {
     block.Color = colors[random.Next(colors.Length)];
 }
