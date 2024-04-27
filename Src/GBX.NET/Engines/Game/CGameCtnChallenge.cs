@@ -16,7 +16,10 @@ public partial class CGameCtnChallenge :
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
 
-            ComputeCrc32();
+            if (Gbx.CRC32 is not null)
+            {
+                ComputeCrc32();
+            }
         }
     }
 
@@ -63,7 +66,10 @@ public partial class CGameCtnChallenge :
         {
             hashedPassword = value;
 
-            ComputeCrc32();
+            if (Gbx.CRC32 is not null)
+            {
+                ComputeCrc32();
+            }
         }
     }
 
