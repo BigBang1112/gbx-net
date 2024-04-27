@@ -7,6 +7,102 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnChallenge :
     CGameCtnChallenge.ITM2020
 {
+    private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
+    private TimeInt32? silverTime; // Only used if ChallengeParameters is null
+    private TimeInt32? goldTime; // Only used if ChallengeParameters is null
+    private TimeInt32? authorTime; // Only used if ChallengeParameters is null
+    private int authorScore; // Only used if ChallengeParameters is null
+
+    /// <summary>
+    /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? BronzeTime
+    {
+        get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.BronzeTime = value;
+            }
+
+            bronzeTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? SilverTime
+    {
+        get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.SilverTime = value;
+            }
+
+            silverTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? GoldTime
+    {
+        get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.GoldTime = value;
+            }
+
+            goldTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? AuthorTime
+    {
+        get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.AuthorTime = value;
+            }
+
+            authorTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 10)]
+    public int AuthorScore
+    {
+        get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.AuthorScore = value;
+            }
+
+            authorScore = value;
+        }
+    }
+
     /// <summary>
     /// The map's UID.
     /// </summary>
