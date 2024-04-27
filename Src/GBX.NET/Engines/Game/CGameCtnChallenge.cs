@@ -719,9 +719,10 @@ public partial class CGameCtnChallenge :
 
                 foreach (var item in n.GetAnchoredObjects())
                 {
+                    var isItemNotSnappedOnBlock = item.SnappedOnBlock is null || !blockDict.ContainsKey(item.SnappedOnBlock);
                     var isItemNotSnappedOnItem = item.SnappedOnItem is null || !itemDict.ContainsKey(item.SnappedOnItem);
 
-                    if (item.SnappedOnBlock is null && isItemNotSnappedOnItem)
+                    if (isItemNotSnappedOnBlock && isItemNotSnappedOnItem)
                     {
                         snappedOnIndices.Add(-1);
                         continue;
