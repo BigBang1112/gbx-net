@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using GBX.NET.Extensions;
+using System.IO.Compression;
 using System.Text;
 
 namespace GBX.NET.Engines.Game;
@@ -298,7 +299,13 @@ public partial class CGameCtnChallenge :
     /// <returns>An enumerable of ghost blocks.</returns>
     public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks(includeUnassigned1: false).Where(x => x.IsGhost);
 
-    public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction direction)
+    public CGameCtnBlock PlaceBlock(
+        Ident blockModel,
+        Int3 coord,
+        Direction direction,
+        bool isGround = false,
+        byte variant = 0,
+        byte subVariant = 0)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
@@ -306,7 +313,10 @@ public partial class CGameCtnChallenge :
         {
             BlockModel = blockModel,
             Coord = coord,
-            Direction = direction
+            Direction = direction,
+            IsGround = isGround,
+            Variant = variant,
+            SubVariant = subVariant
         };
 
         block.CreateChunk<CGameCtnBlock.Chunk03057002>();
@@ -316,7 +326,13 @@ public partial class CGameCtnChallenge :
         return block;
     }
 
-    public CGameCtnBlock PlaceBlock(string blockModel, Int3 coord, Direction direction)
+    public CGameCtnBlock PlaceBlock(
+        string blockModel,
+        Int3 coord,
+        Direction direction,
+        bool isGround = false,
+        byte variant = 0,
+        byte subVariant = 0)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
@@ -324,7 +340,10 @@ public partial class CGameCtnChallenge :
         {
             Name = blockModel,
             Coord = coord,
-            Direction = direction
+            Direction = direction,
+            IsGround = isGround,
+            Variant = variant,
+            SubVariant = subVariant
         };
 
         Blocks.Add(block);
@@ -339,14 +358,35 @@ public partial class CGameCtnChallenge :
         Blocks.Clear();
     }
 
-    /*
-    public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
+    public int RemoveBlocks(Predicate<CGameCtnBlock> match)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
-        Blocks.RemoveAll(match);
+        return Blocks.RemoveAll(match);
     }
-    */
+
+    public bool RemoveBlock(Predicate<CGameCtnBlock> match)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        foreach (var block in Blocks)
+        {
+            if (match(block))
+            {
+                Blocks.Remove(block);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool RemoveBlock(CGameCtnBlock block)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        return Blocks.Remove(block);
+    }
 
     public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default)
     {
@@ -367,6 +407,41 @@ public partial class CGameCtnChallenge :
         AnchoredObjects.Add(anchoredObject);
 
         return anchoredObject;
+    }
+
+    public bool RemoveAnchoredObject(CGameCtnAnchoredObject anchoredObject)
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        return AnchoredObjects.Remove(anchoredObject);
+    }
+
+    public int RemoveAnchoredObjects(Predicate<CGameCtnAnchoredObject> match)
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        return AnchoredObjects.RemoveAll(match);
+    }
+
+    public void RemoveAllAnchoredObjects()
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        AnchoredObjects.Clear();
+    }
+
+    public void RemoveAllOffZone()
+    {
+        _ = Offzones ?? throw new MemberNullException(nameof(Offzones));
+
+        Offzones.Clear();
+    }
+
+    public void RemoveAll()
+    {
+        RemoveAllBlocks();
+        RemoveAllAnchoredObjects();
+        RemoveAllOffZone();
     }
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
