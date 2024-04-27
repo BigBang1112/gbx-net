@@ -96,6 +96,69 @@ internal static partial class GbxCompressionUtils
         return true;
     }
 
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    /// <exception cref="LzoNotDefinedException"></exception>
+    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <exception cref="TextFormatNotSupportedException"></exception>
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<bool> RecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    {
+        _ = input ?? throw new ArgumentNullException(nameof(input));
+        _ = output ?? throw new ArgumentNullException(nameof(output));
+
+        if (Gbx.LZO is null)
+        {
+            throw new LzoNotDefinedException();
+        }
+
+        using var r = new GbxReader(input);
+        using var w = new GbxWriter(output);
+
+        var version = CopyBasicInformation(r, w);
+
+        // Body compression type
+        var compressedBody = r.ReadByte();
+
+        switch (compressedBody)
+        {
+            case (byte)'U':
+                w.Write((byte)'C');
+                break;
+            case (byte)'C':
+                w.Write((byte)'U');
+                break;
+            default:
+                throw new Exception("Invalid compression type");
+        }
+
+        await CopyRestOfTheHeaderAsync(version, r, w, cancellationToken);
+
+        switch (compressedBody)
+        {
+            case (byte)'U':
+                var uncompressedData = await r.ReadToEndAsync(cancellationToken);
+                var compressedData = Gbx.LZO.Compress(uncompressedData);
+
+                w.Write(uncompressedData.Length);
+                w.Write(compressedData.Length);
+                await w.WriteAsync(compressedData, cancellationToken);
+                break;
+            case (byte)'C':
+                var uncompressedSize = r.ReadInt32();
+                var compressedSize = r.ReadInt32();
+                compressedData = await r.ReadBytesAsync(compressedSize, cancellationToken);
+
+                var buffer = new byte[uncompressedSize];
+                Gbx.LZO.Decompress(compressedData, buffer);
+                await w.WriteAsync(buffer, cancellationToken);
+                break;
+        }
+
+        return true;
+    }
+
     private static short CopyBasicInformation(GbxReader r, GbxWriter w)
     {
         // Magic
