@@ -6,7 +6,7 @@ public interface IGameCtnChallenge : IClassVersion<CGameCtnChallenge>
     IList<CGameCtnBlock> Blocks { get; set; }
 
     string GetEnvironment();
-    CGameCtnBlock PlaceBlock(CGameCtnBlock block);
+    void PlaceBlock(CGameCtnBlock block);
     void RemoveAllBlocks();
     bool RemoveBlock(CGameCtnBlock block);
 }
