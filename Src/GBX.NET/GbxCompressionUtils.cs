@@ -103,7 +103,7 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> RecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    public static async Task<GbxCompression> RecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
         _ = input ?? throw new ArgumentNullException(nameof(input));
         _ = output ?? throw new ArgumentNullException(nameof(output));
@@ -144,7 +144,7 @@ internal static partial class GbxCompressionUtils
                 w.Write(uncompressedData.Length);
                 w.Write(compressedData.Length);
                 await w.WriteAsync(compressedData, cancellationToken);
-                break;
+                return GbxCompression.Uncompressed;
             case (byte)'C':
                 var uncompressedSize = r.ReadInt32();
                 var compressedSize = r.ReadInt32();
@@ -153,10 +153,10 @@ internal static partial class GbxCompressionUtils
                 var buffer = new byte[uncompressedSize];
                 Gbx.LZO.Decompress(compressedData, buffer);
                 await w.WriteAsync(buffer, cancellationToken);
-                break;
+                return GbxCompression.Compressed;
         }
 
-        return true;
+        return GbxCompression.Unspecified;
     }
 
     private static short CopyBasicInformation(GbxReader r, GbxWriter w)

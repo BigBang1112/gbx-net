@@ -695,7 +695,7 @@ public partial class Gbx : IGbx
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> RecompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
+    public static async Task<GbxCompression> RecompressAsync(Stream input, Stream output, CancellationToken cancellationToken = default)
     {
         return await GbxCompressionUtils.RecompressAsync(input, output, cancellationToken);
     }
@@ -706,7 +706,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> RecompressAsync(string inputFilePath, Stream output, CancellationToken cancellationToken = default)
+    public static async Task<GbxCompression> RecompressAsync(string inputFilePath, Stream output, CancellationToken cancellationToken = default)
     {
         using var input = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
         return await RecompressAsync(input, output, cancellationToken);
@@ -718,7 +718,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> RecompressAsync(Stream input, string outputFilePath, CancellationToken cancellationToken = default)
+    public static async Task<GbxCompression> RecompressAsync(Stream input, string outputFilePath, CancellationToken cancellationToken = default)
     {
         using var output = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true);
         return await RecompressAsync(input, output, cancellationToken);
@@ -730,7 +730,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static async Task<bool> RecompressAsync(string inputFilePath, string outputFilePath, CancellationToken cancellationToken = default)
+    public static async Task<GbxCompression> RecompressAsync(string inputFilePath, string outputFilePath, CancellationToken cancellationToken = default)
     {
         using var input = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
         using var output = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true);
@@ -743,7 +743,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Recompress(string inputFilePath, Stream output)
+    public static GbxCompression Recompress(string inputFilePath, Stream output)
     {
         using var input = File.OpenRead(inputFilePath);
         return Recompress(input, output);
@@ -755,7 +755,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Recompress(Stream input, string outputFilePath)
+    public static GbxCompression Recompress(Stream input, string outputFilePath)
     {
         using var output = File.Create(outputFilePath);
         return Recompress(input, output);
@@ -767,7 +767,7 @@ public partial class Gbx : IGbx
     /// <exception cref="LzoNotDefinedException"></exception>
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
-    public static bool Recompress(string inputFilePath, string outputFilePath)
+    public static GbxCompression Recompress(string inputFilePath, string outputFilePath)
     {
         using var input = File.OpenRead(inputFilePath);
         using var output = File.Create(outputFilePath);
