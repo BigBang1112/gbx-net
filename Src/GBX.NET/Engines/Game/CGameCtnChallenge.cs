@@ -1,11 +1,16 @@
 ﻿using GBX.NET.Extensions;
+using GBX.NET.Interfaces.Game;
 using System.IO.Compression;
 using System.Text;
 
 namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnChallenge :
-    CGameCtnChallenge.ITM2020
+    IGameCtnChallengeTM10,
+    IGameCtnChallengeTMSX,
+    IGameCtnChallengeTMF,
+    IGameCtnChallengeMP4,
+    IGameCtnChallengeTM2020
 {
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
@@ -201,15 +206,18 @@ public partial class CGameCtnChallenge :
 
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
-    string ITM2020.MapUid
+    // poss to generate
+    string IGameCtnChallenge.MapUid
     {
-        get => MapUid ?? throw new Exception("MapUid not available");
+        get => MapUid ?? throw new MemberNullException(nameof(MapUid));
         set => MapUid = value;
     }
 
-    public interface ITM2020 : IClassVersion<CGameCtnChallenge>
+    // poss to generate
+    IList<CGameCtnBlock> IGameCtnChallenge.Blocks
     {
-        string MapUid { get; set; }
+        get => Blocks ?? throw new MemberNullException(nameof(Blocks));
+        set => Blocks = value;
     }
 
     public string GetEnvironment()
@@ -539,6 +547,12 @@ public partial class CGameCtnChallenge :
         RemoveAllAnchoredObjects();
         RemoveAllOffZone();
     }
+
+    IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBlocks(bool includeUnassigned1) => GetBlocks(includeUnassigned1);
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBlocks() => GetBlocks(includeUnassigned1: true);
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
