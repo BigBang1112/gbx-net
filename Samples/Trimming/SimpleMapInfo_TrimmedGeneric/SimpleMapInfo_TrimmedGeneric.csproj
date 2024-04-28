@@ -8,9 +8,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>
 		<PublishTrimmed>true</PublishTrimmed>
-		<PublishSingleFile>true</PublishSingleFile>
 	</PropertyGroup>
 
 	<ItemGroup>

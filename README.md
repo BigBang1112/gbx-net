@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge&logo=github)](https://github.com/BigBang1112/gbx-net/releases)
-[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/v2?style=for-the-badge&logo=github)](#)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bigbang1112/gbx-net/master?style=for-the-badge&logo=github)](#)
 [![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge&logo=discord)](https://discord.gg/tECTQcAWC9)
 
 Welcome to GBX.NET 2!
@@ -117,8 +117,8 @@ Using the NuGet packages is recommended.
 
 ### Create a new GBX.NET project (lightweight)
 
-1. Install .NET SDK 8.
-    - Windows: `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
+1. Install [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
@@ -141,7 +141,7 @@ dotnet run
 
 ### Create a new GBX.NET project (Visual Studio Code)
 
-1. Install C# Dev Kit extension.
+1. Install [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension.
 2. Click on `Create .NET Project` button, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type `.NET: New Project`.
 3. Select `Console App` and create your project.
 4. Open a new terminal and type `dotnet add package GBX.NET` to add GBX.NET 2.
@@ -291,7 +291,7 @@ else
 }
 ```
 
-Using pattern matching with non-generic Parse methods is a safer approach (no exceptions on different Gbx types), but less trim-friendly, see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) section.
+Using pattern matching with non-generic `Parse` methods is a safer approach (no exceptions on different Gbx types), but less trim-friendly, see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) section.
 
 ### Read a large amount of replay metadata quickly
 
@@ -362,13 +362,13 @@ You can still save nodes into Gbx files by using the `Save` method - be careful 
 It is fairly common to see people repeat the `gbx.Node.something` instead of saving the `gbx.Node` to a new, shorter variable to improve code clarity. The original guide was to rather refer to using `Gbx.ParseNode`, however, in GBX.NET 2, some Gbx parameters can be lost by using `Gbx.ParseNode`, so for simplification, `Gbx.Parse` is recommended to use when the goal is to modify the file.
 
 > [!NOTE]
-> That doesn't mean you cannot use `Gbx.ParseNode` for Gbx modification. In fact there's no different since TM2 for saving nodes retrieved using `Gbx.Parse` or `Gbx.ParseNode`. In TMUF and older versions, when you're using `Gbx.ParseNode`, you may need to specify a few write parameters that were stored in the original `Gbx` object, which got discarded.
+> That doesn't mean you cannot use `Gbx.ParseNode` for Gbx modification. In fact there's no difference since TM2 for saving nodes retrieved using `Gbx.Parse` or `Gbx.ParseNode`. In TMUF and older versions, when you're using `Gbx.ParseNode`, you may need to specify a few write parameters that were stored in the original `Gbx` object (which got discarded).
 
 If you're accessing a lot of main node members, prefer saving `gbx.Node` into an additional variable.
 
 ```cs
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-var map = gbx.Node; // See Clarity section for more info
+var map = gbx.Node;
 
 Console.WriteLine(map.MapName);
 Console.WriteLine(map.AuthorLogin);
@@ -396,6 +396,22 @@ Currently, it is split into 3 ideas:
   - Every `CMwNod` has a member `GameVersion` that can guess from which game the Gbx file is, or where it could be supported.
 - Generated Game Version Interfaces *(still WIP)*
 - Generated Builders *(still WIP)*
+
+Since 2.0.1, the experimentation of Game Version Interfaces started on the `CGameCtnChallenge` and `CGameCtnBlock` classes. Example:
+
+```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.Interfaces.Game;
+
+var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>();
+
+foreach (var block in map.GetBlocks())
+{
+	Console.WriteLine(block.Name);
+	// Console.WriteLine(block.Color); -- block color is not available in TMF
+}
+```
 
 ## Optimization
 
