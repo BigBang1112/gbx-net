@@ -2,7 +2,7 @@ CPlugTree 0x0904F000
 - inherits: CPlug
 
 0x006 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- list<CPlugTree>_deprec Children
+ list<CPlugTree>_deprec Children = empty
 
 0x00C [TM10, TMSX]
  int // could be array of Ids
