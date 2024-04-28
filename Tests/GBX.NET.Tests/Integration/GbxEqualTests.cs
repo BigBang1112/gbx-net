@@ -2,6 +2,7 @@
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.System;
 using GBX.NET.LZO;
 using KellermanSoftware.CompareNetObjects;
 using Xunit.Abstractions;
@@ -55,6 +56,9 @@ public class GbxEqualTests
     [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
     public void TestGbxEqualDataImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -105,6 +109,9 @@ public class GbxEqualTests
     [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
     public void TestGbxEqualObjectsImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -159,6 +166,9 @@ public class GbxEqualTests
     [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
     public async Task TestGbxEqualDataImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -208,6 +218,9 @@ public class GbxEqualTests
     [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
     public async Task TestGbxEqualObjectsImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -310,6 +323,15 @@ public class GbxEqualTests
     }
 
     [Theory]
+    [InlineData("GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    public void TestGbxEqualDataExplicitCSystemConfig(string filePath)
+    {
+        TestGbxEqualDataExplicit<CSystemConfig>(filePath);
+    }
+
+    [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMPU 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMSX 001.Challenge.Gbx")]
@@ -383,6 +405,15 @@ public class GbxEqualTests
     public void TestGbxEqualObjectsExplicitCGameCtnMacroBlockInfo(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameCtnMacroBlockInfo>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    public void TestGbxEqualObjectsExplicitCSystemConfig(string filePath)
+    {
+        TestGbxEqualObjectsExplicit<CSystemConfig>(filePath);
     }
 
 
@@ -463,6 +494,16 @@ public class GbxEqualTests
     }
 
     [Theory]
+    [InlineData("GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    public async Task TestGbxEqualDataExplicitCSystemConfigAsync(string filePath)
+    {
+        await TestGbxEqualDataExplicitAsync<CSystemConfig>(filePath);
+    }
+
+
+    [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMPU 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMSX 001.Challenge.Gbx")]
@@ -537,6 +578,16 @@ public class GbxEqualTests
     {
         await TestGbxEqualObjectsExplicitAsync<CGameCtnMacroBlockInfo>(filePath);
     }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
+    [InlineData("GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    public async Task TestGbxEqualObjectsExplicitCSystemConfigAsync(string filePath)
+    {
+        await TestGbxEqualObjectsExplicitAsync<CSystemConfig>(filePath);
+    }
+
 
     private void TestGbxEqualDataExplicit<T>(string filePath) where T : CMwNod, new()
     {
