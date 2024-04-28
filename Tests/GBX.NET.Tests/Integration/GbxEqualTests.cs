@@ -41,8 +41,11 @@ public class GbxEqualTests
     [InlineData("CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TM2020 001.Map.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -59,6 +62,10 @@ public class GbxEqualTests
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
     public void TestGbxEqualDataImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -94,8 +101,11 @@ public class GbxEqualTests
     [InlineData("CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TM2020 001.Map.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -112,6 +122,10 @@ public class GbxEqualTests
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
     public void TestGbxEqualObjectsImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -151,8 +165,11 @@ public class GbxEqualTests
     [InlineData("CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TM2020 001.Map.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -169,6 +186,10 @@ public class GbxEqualTests
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
     public async Task TestGbxEqualDataImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -203,8 +224,11 @@ public class GbxEqualTests
     [InlineData("CGameCtnChallenge/GBX-NET 2 CGameCtnChallenge TM2020 001.Map.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -221,6 +245,10 @@ public class GbxEqualTests
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
+    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
     public async Task TestGbxEqualObjectsImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -266,8 +294,11 @@ public class GbxEqualTests
     [Theory]
     [InlineData("GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     public void TestGbxEqualDataExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualDataExplicit<CGameItemModel>(filePath);
@@ -332,6 +363,23 @@ public class GbxEqualTests
     }
 
     [Theory]
+    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    public void TestGbxEqualDataExplicitCGameSpawnModel(string filePath)
+    {
+        TestGbxEqualDataExplicit<CGameSpawnModel>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    public void TestGbxEqualDataExplicitCGameCtnMediaClip(string filePath)
+    {
+        TestGbxEqualDataExplicit<CGameCtnMediaClip>(filePath);
+    }
+
+
+    [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMPU 001.Challenge.Gbx")]
     [InlineData("GBX-NET 2 CGameCtnChallenge TMSX 001.Challenge.Gbx")]
@@ -351,8 +399,11 @@ public class GbxEqualTests
     [Theory]
     [InlineData("GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     public void TestGbxEqualObjectsExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameItemModel>(filePath);
@@ -416,6 +467,22 @@ public class GbxEqualTests
         TestGbxEqualObjectsExplicit<CSystemConfig>(filePath);
     }
 
+    [Theory]
+    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    public void TestGbxEqualObjectsExplicitCGameSpawnModel(string filePath)
+    {
+        TestGbxEqualObjectsExplicit<CGameSpawnModel>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    public void TestGbxEqualObjectsExplicitCGameCtnMediaClip(string filePath)
+    {
+        TestGbxEqualObjectsExplicit<CGameCtnMediaClip>(filePath);
+    }
+    
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
@@ -437,8 +504,11 @@ public class GbxEqualTests
     [Theory]
     [InlineData("GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     public async Task TestGbxEqualDataExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CGameItemModel>(filePath);
@@ -502,6 +572,22 @@ public class GbxEqualTests
         await TestGbxEqualDataExplicitAsync<CSystemConfig>(filePath);
     }
 
+    [Theory]
+    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    public async Task TestGbxEqualDataExplicitCGameSpawnModelAsync(string filePath)
+    {
+        await TestGbxEqualDataExplicitAsync<CGameSpawnModel>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    public async Task TestGbxEqualDataExplicitCGameCtnMediaClipAsync(string filePath)
+    {
+        await TestGbxEqualDataExplicitAsync<CGameCtnMediaClip>(filePath);
+    }
+    
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
@@ -523,8 +609,11 @@ public class GbxEqualTests
     [Theory]
     [InlineData("GBX-NET 2 CGameItemModel MP4 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel MP4 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel MP4 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 001.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
     public async Task TestGbxEqualObjectsExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameItemModel>(filePath);
@@ -586,6 +675,22 @@ public class GbxEqualTests
     public async Task TestGbxEqualObjectsExplicitCSystemConfigAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CSystemConfig>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    public async Task TestGbxEqualObjectsExplicitCGameSpawnModelAsync(string filePath)
+    {
+        await TestGbxEqualObjectsExplicitAsync<CGameSpawnModel>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    public async Task TestGbxEqualObjectsExplicitCGameCtnMediaClipAsync(string filePath)
+    {
+        await TestGbxEqualObjectsExplicitAsync<CGameCtnMediaClip>(filePath);
     }
 
 
