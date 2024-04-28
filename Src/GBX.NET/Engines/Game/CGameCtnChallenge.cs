@@ -455,6 +455,15 @@ public partial class CGameCtnChallenge :
         return block;
     }
 
+    public CGameCtnBlock PlaceBlock(CGameCtnBlock block)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        Blocks.Add(block);
+
+        return block;
+    }
+
     public void RemoveAllBlocks()
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
