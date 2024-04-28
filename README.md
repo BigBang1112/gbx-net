@@ -11,6 +11,8 @@ A general purpose library for Gbx files - data from Nadeo games like Trackmania 
 
 GBX.NET is not just a library that can read or write Gbx files, but also **a modding platform** that connects all Nadeo games together. It is exceptionally useful for bulk Gbx data processing, for example, when you want to fix broken sign locator URLs on hundreds of maps.
 
+For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via Discord DM: `bigbang1112`
+
 ### Navigation
 
 - [Supported games](#supported-games)
@@ -120,8 +122,8 @@ Using the NuGet packages is recommended.
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
-4. Add the pre-release GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
-5. *(optional)* Add the pre-release GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
+4. Add the GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
+5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
 6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
 7. Write code - see [Examples (simple)](#examples-simple).
 8. Use `dotnet run` to run the app.

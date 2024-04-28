@@ -171,7 +171,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// If this block is a free block. Feature available since TM®. Set this property first before modifying free transformation.
+    /// If this block is a free block. Feature available since TM2020.
     /// </summary>
     public bool IsFree
     {
@@ -179,8 +179,14 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         set => SetFlagBit(FreeBit, value);
     }
 
+    /// <summary>
+    /// Absolute position of the block in the map. Used only in TM2020 in Free block mode.
+    /// </summary>
     public Vec3? AbsolutePositionInMap { get; set; }
 
+    /// <summary>
+    /// Rotation of the block. Used only in TM2020 in Free block mode.
+    /// </summary>
     public Vec3? PitchYawRoll { get; set; }
 
     /// <summary>
