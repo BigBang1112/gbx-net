@@ -1,0 +1,248 @@
+CSystemConfigDisplay 0x0B013000
+
+0x001 (skippable) [TMF]
+ int2 ScreenSizeFS
+ int
+ int
+ int
+ int RefreshRate
+ bool // DisplaySync and DisplayMode
+ bool
+
+0x003 (skippable) [TMF]
+ bool
+ int // something with GpuSync0
+ bool EmulateCursorGDI
+ int
+ bool OptimPartDynaGeom
+ bool
+
+0x004 (skippable) [TMF, MP3, MP4]
+ int // bool but weird number
+
+0x005 (skippable) [TMF, MP3, MP4]
+ bool EnableFullscreenGDI
+
+0x008 (skippable) [TMF, MP3, MP4]
+ int
+ int
+ int ZClipNbBlock
+
+0x009 (skippable) [TMF, MP3, MP4]
+ int
+ int
+ bool PostFx
+ bool
+
+0x00A (skippable) [TMF]
+ bool
+ bool
+
+0x00B (skippable) [TMF, MP3, MP4]
+ bool DisableZBufferRange
+ float AgpUseFactor
+
+0x00F (skippable) [TMF, MP3, MP4]
+ bool
+
+0x010 (skippable) [TMF]
+ float GeomLodScaleZ
+
+0x011 (skippable) [TMF]
+ bool
+
+0x013 (skippable) [TMF]
+ int
+
+0x015 (skippable) [TMF, MP3, MP4]
+ bool DisableWindowedAntiAlias
+
+0x016 (skippable) [TMF, MP3, MP4]
+ bool EnableCheckLags
+
+0x017 (skippable) [TMF, MP3, MP4]
+ int // bool but weird number
+
+0x018 (skippable) [TMF, MP3, MP4]
+ int = 8
+
+0x019 (skippable) [TMF, MP3, MP4]
+ int // bool but weird number
+
+0x01B (skippable) [TMF, MP3, MP4]
+ int
+
+0x01C (skippable) [TMF, MP3, MP4]
+ bool MultiThread
+ int ThreadCountMax
+
+0x01D (skippable) [TMF]
+ int
+
+0x01E (skippable) [TMF]
+ bool
+
+0x020 (skippable) [TMF, MP3, MP4]
+ bool StereoByDefault
+ bool StereoAdvanced
+
+0x021 (skippable) [TMF, MP3, MP4]
+ bool WaterGeomStadium
+
+0x022 (skippable) [TMF]
+ int
+ bool Customize
+ int
+ int
+ int
+ int
+ int<EFilterAnisoQ> FilterAnisoQ
+
+0x025 (skippable) [MP3, MP4]
+ int
+ int<EFxBloomHdr> FxBloomHdr
+
+0x026 (skippable) [MP3, MP4]
+ int // bool but weird number
+ int<EGpuSync> GpuSync0
+ bool EmulateCursorGDI
+ int
+ bool OptimPartDynaGeom
+ int // bool but weird number
+
+0x02A (skippable) [MP3, MP4]
+ int
+ bool Customize
+ int
+ int
+ int<EShaderQ> ShaderQuality
+ int
+ int<EFilterAnisoQ> FilterAnisoQ
+
+0x02C (skippable) [MP3, MP4]
+ int<EVehicleReflect> VehicleReflect
+
+0x02D (skippable) [MP3, MP4]
+ int<EFxMotionBlur> FxMotionBlur
+
+0x02E (skippable) [MP3, MP4]
+ bool
+
+0x02F (skippable) [MP3, MP4]
+ int MaxFps
+
+0x030 (skippable) [MP3, MP4]
+ int
+ int<ELightMapQuality> LM_Quality
+ bool LM_QUltra
+ bool LM_iLight
+
+0x031 (skippable) [MP3, MP4]
+ bool Decals_3D__TextureDecals
+ bool Decals_2D__TextureDecals
+
+0x032 (skippable) [MP3, MP4]
+ int
+
+0x033 (skippable) [MP3, MP4]
+ bool DisableHdrCubeRenderMipMap
+
+0x035 (skippable) [MP3, MP4]
+ float FxMotionBlurIntens
+
+0x036 (skippable) [MP3, MP4]
+ version
+ int2 ScreenSizeFS
+ int
+ int
+ int
+ int RefreshRate
+ int<EDisplaySync> DisplaySync
+ int<EDisplayMode> DisplayMode
+ int
+ v1+
+  int
+  v2+
+   int
+   int
+   int
+   int
+   v3+
+    string Adapter
+
+0x038 (skippable) [MP3]
+ bool
+
+0x039 (skippable) [MP3, MP4]
+ int<EScreenShotExt> ScreenShotExt
+
+0x03A (skippable) [MP3, MP4]
+ int
+
+0x03B (skippable) [MP3, MP4]
+ float ParticleMaxGpuLoadMs
+
+0x03C (skippable) [MP4]
+ bool
+
+0x03D (skippable) [MP4]
+ bool AsyncRender
+
+enum EFxBloomHdr
+ None
+ Medium
+ High
+
+enum EGpuSync
+ None
+ _3Frames
+ _2Frames
+ _1Frame
+ Immediate
+
+enum EShaderQ
+ Very_Fast
+ Fast
+ Nice
+ Very_Nice
+
+enum EFilterAnisoQ
+ Bilinear
+ Trilinear
+ Anisotropic__2x
+ Anisotropic__4x
+ Anisotropic__8x
+ Anisotropic_16x
+ Aniso_16x_everywhere
+
+enum EVehicleReflect
+ Low
+ HighInReplay
+ High
+
+enum EFxMotionBlur
+ Off
+ On
+
+enum ELightMapQuality
+ None
+ VeryFast
+ Fast
+ Default
+ High
+
+enum EDisplaySync
+ DisplaySync_None
+ DisplaySync_1_Interval
+ DisplaySync_2_Intervals
+ DisplaySync_3_Intervals
+
+enum EDisplayMode
+ DisplayMode_FullScreen
+ DisplayMode_Windowed
+ DisplayMode_WindowedFul
+
+enum EScreenShotExt
+ JPG
+ WebP
+ TGA

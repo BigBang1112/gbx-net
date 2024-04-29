@@ -57,11 +57,11 @@ public partial class CMwNod : IClass
                 {
                     if (chunkId == rawChunkId)
                     {
-                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size})", chunkId, chunkSize);
+                        r.Logger.LogDebug("0x{ChunkId:X8} ({SkippableType}, size: {Size})", chunkId, chunk is null ? "unknown skippable" : "skippable", chunkSize);
                     }
                     else
                     {
-                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                        r.Logger.LogDebug("0x{ChunkId:X8} ({SkippableType}, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunk is null ? "unknown skippable" : "skippable", chunkSize, rawChunkId);
                     }
 
                     if (r.Logger.IsEnabled(LogLevel.Trace))
@@ -252,11 +252,11 @@ public partial class CMwNod : IClass
                 {
                     if (chunkId == rawChunkId)
                     {
-                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size})", chunkId, chunkSize);
+                        r.Logger.LogDebug("0x{ChunkId:X8} ({SkippableType}, size: {Size})", chunkId, chunk is null ? "unknown skippable" : "skippable", chunkSize);
                     }
                     else
                     {
-                        r.Logger.LogDebug("0x{ChunkId:X8} (skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
+                        r.Logger.LogDebug("0x{ChunkId:X8} ({SkippableType}, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunk is null ? "unknown skippable" : "skippable", chunkSize, rawChunkId);
                     }
 
                     if (r.Logger.IsEnabled(LogLevel.Trace))

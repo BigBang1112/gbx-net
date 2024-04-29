@@ -153,4 +153,17 @@ public class IdTests
         // Assert
         Assert.Equal(expected: "69", actual);
     }
+
+    [Fact]
+    public void ImplicitConversionFromInt_IsCorrect()
+    {
+        // Arrange
+        var i = 26;
+
+        // Act
+        Id actual = (Id)i;
+
+        // Assert
+        Assert.Equal(expected: i, actual.Number);
+    }
 }

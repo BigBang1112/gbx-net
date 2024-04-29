@@ -1,11 +1,113 @@
-﻿using System.IO.Compression;
+﻿using GBX.NET.Extensions;
+using GBX.NET.Interfaces.Game;
+using System.IO.Compression;
 using System.Text;
 
 namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnChallenge :
-    CGameCtnChallenge.ITM2020
+    IGameCtnChallengeTM10,
+    IGameCtnChallengeTMSX,
+    IGameCtnChallengeTMF,
+    IGameCtnChallengeMP4,
+    IGameCtnChallengeTM2020
 {
+    private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
+    private TimeInt32? silverTime; // Only used if ChallengeParameters is null
+    private TimeInt32? goldTime; // Only used if ChallengeParameters is null
+    private TimeInt32? authorTime; // Only used if ChallengeParameters is null
+    private int authorScore; // Only used if ChallengeParameters is null
+
+    /// <summary>
+    /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? BronzeTime
+    {
+        get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.BronzeTime = value;
+            }
+
+            bronzeTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? SilverTime
+    {
+        get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.SilverTime = value;
+            }
+
+            silverTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? GoldTime
+    {
+        get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.GoldTime = value;
+            }
+
+            goldTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
+    public TimeInt32? AuthorTime
+    {
+        get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.AuthorTime = value;
+            }
+
+            authorTime = value;
+        }
+    }
+
+    /// <summary>
+    /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 10)]
+    public int AuthorScore
+    {
+        get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.AuthorScore = value;
+            }
+
+            authorScore = value;
+        }
+    }
+
     /// <summary>
     /// The map's UID.
     /// </summary>
@@ -16,7 +118,10 @@ public partial class CGameCtnChallenge :
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
 
-            ComputeCrc32();
+            if (Gbx.CRC32 is not null)
+            {
+                ComputeCrc32();
+            }
         }
     }
 
@@ -63,7 +168,10 @@ public partial class CGameCtnChallenge :
         {
             hashedPassword = value;
 
-            ComputeCrc32();
+            if (Gbx.CRC32 is not null)
+            {
+                ComputeCrc32();
+            }
         }
     }
 
@@ -98,15 +206,18 @@ public partial class CGameCtnChallenge :
 
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
-    string ITM2020.MapUid
+    // poss to generate
+    string IGameCtnChallenge.MapUid
     {
-        get => MapUid ?? throw new Exception("MapUid not available");
+        get => MapUid ?? throw new MemberNullException(nameof(MapUid));
         set => MapUid = value;
     }
 
-    public interface ITM2020 : IClassVersion<CGameCtnChallenge>
+    // poss to generate
+    IList<CGameCtnBlock> IGameCtnChallenge.Blocks
     {
-        string MapUid { get; set; }
+        get => Blocks ?? throw new MemberNullException(nameof(Blocks));
+        set => Blocks = value;
     }
 
     public string GetEnvironment()
@@ -292,7 +403,13 @@ public partial class CGameCtnChallenge :
     /// <returns>An enumerable of ghost blocks.</returns>
     public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks(includeUnassigned1: false).Where(x => x.IsGhost);
 
-    public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction direction)
+    public CGameCtnBlock PlaceBlock(
+        Ident blockModel,
+        Int3 coord,
+        Direction direction,
+        bool isGround = false,
+        byte variant = 0,
+        byte subVariant = 0)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
@@ -300,7 +417,10 @@ public partial class CGameCtnChallenge :
         {
             BlockModel = blockModel,
             Coord = coord,
-            Direction = direction
+            Direction = direction,
+            IsGround = isGround,
+            Variant = variant,
+            SubVariant = subVariant
         };
 
         block.CreateChunk<CGameCtnBlock.Chunk03057002>();
@@ -310,7 +430,13 @@ public partial class CGameCtnChallenge :
         return block;
     }
 
-    public CGameCtnBlock PlaceBlock(string blockModel, Int3 coord, Direction direction)
+    public CGameCtnBlock PlaceBlock(
+        string blockModel,
+        Int3 coord,
+        Direction direction,
+        bool isGround = false,
+        byte variant = 0,
+        byte subVariant = 0)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
@@ -318,12 +444,22 @@ public partial class CGameCtnChallenge :
         {
             Name = blockModel,
             Coord = coord,
-            Direction = direction
+            Direction = direction,
+            IsGround = isGround,
+            Variant = variant,
+            SubVariant = subVariant
         };
 
         Blocks.Add(block);
 
         return block;
+    }
+
+    public void PlaceBlock(CGameCtnBlock block)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        Blocks.Add(block);
     }
 
     public void RemoveAllBlocks()
@@ -333,14 +469,35 @@ public partial class CGameCtnChallenge :
         Blocks.Clear();
     }
 
-    /*
-    public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
+    public int RemoveBlocks(Predicate<CGameCtnBlock> match)
     {
         _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
-        Blocks.RemoveAll(match);
+        return Blocks.RemoveAll(match);
     }
-    */
+
+    public bool RemoveBlock(Predicate<CGameCtnBlock> match)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        foreach (var block in Blocks)
+        {
+            if (match(block))
+            {
+                Blocks.Remove(block);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool RemoveBlock(CGameCtnBlock block)
+    {
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
+
+        return Blocks.Remove(block);
+    }
 
     public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default)
     {
@@ -362,6 +519,76 @@ public partial class CGameCtnChallenge :
 
         return anchoredObject;
     }
+
+    public bool RemoveAnchoredObject(CGameCtnAnchoredObject anchoredObject)
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        return AnchoredObjects.Remove(anchoredObject);
+    }
+
+    public int RemoveAnchoredObjects(Predicate<CGameCtnAnchoredObject> match)
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        return AnchoredObjects.RemoveAll(match);
+    }
+
+    public void RemoveAllAnchoredObjects()
+    {
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
+
+        AnchoredObjects.Clear();
+    }
+
+    public void RemoveAllOffZone()
+    {
+        _ = Offzones ?? throw new MemberNullException(nameof(Offzones));
+
+        Offzones.Clear();
+    }
+
+    public void RemoveAll()
+    {
+        RemoveAllBlocks();
+        RemoveAllAnchoredObjects();
+        RemoveAllOffZone();
+    }
+
+    IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBlocks(bool includeUnassigned1) => GetBlocks(includeUnassigned1);
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBakedBlocks() => GetBakedBlocks();
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBakedBlocks() => GetBakedBlocks();
+    IGameCtnBlockTM10? IGameCtnChallengeTM10.GetBlock(Int3 pos) => GetBlock(pos);
+    IGameCtnBlockTMSX? IGameCtnChallengeTMSX.GetBlock(Int3 pos) => GetBlock(pos);
+    IGameCtnBlockTMF? IGameCtnChallengeTMF.GetBlock(Int3 pos) => GetBlock(pos);
+    IGameCtnBlockMP4? IGameCtnChallengeMP4.GetBlock(Int3 pos) => GetBlock(pos);
+    IGameCtnBlockTM2020? IGameCtnChallengeTM2020.GetBlock(Int3 pos) => GetBlock(pos);
+    IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks(Int3 pos) => GetBlocks(pos);
+    IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks(Int3 pos) => GetBlocks(pos);
+    IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks(Int3 pos) => GetBlocks(pos);
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBlocks(Int3 pos) => GetBlocks(pos);
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBlocks(Int3 pos) => GetBlocks(pos);
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetGhostBlocks() => GetGhostBlocks();
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetGhostBlocks() => GetGhostBlocks();
+    IGameCtnBlockTM10 IGameCtnChallengeTM10.PlaceBlock(Ident blockModel, Int3 coord, Direction direction, bool isGround, byte variant, byte subVariant) => PlaceBlock(blockModel, coord, direction, isGround, variant, subVariant);
+    IGameCtnBlockTMSX IGameCtnChallengeTMSX.PlaceBlock(string blockModel, Int3 coord, Direction direction, bool isGround, byte variant, byte subVariant) => PlaceBlock(blockModel, coord, direction, isGround, variant, subVariant);
+    IGameCtnBlockTMF IGameCtnChallengeTMF.PlaceBlock(string blockModel, Int3 coord, Direction direction, bool isGround, byte variant, byte subVariant) => PlaceBlock(blockModel, coord, direction, isGround, variant, subVariant);
+    IGameCtnBlockMP4 IGameCtnChallengeMP4.PlaceBlock(string blockModel, Int3 coord, Direction direction, bool isGround, byte variant, byte subVariant) => PlaceBlock(blockModel, coord, direction, isGround, variant, subVariant);
+    IGameCtnBlockTM2020 IGameCtnChallengeTM2020.PlaceBlock(string blockModel, Int3 coord, Direction direction, bool isGround, byte variant, byte subVariant) => PlaceBlock(blockModel, coord, direction, isGround, variant, subVariant);
+    int IGameCtnChallengeTM10.RemoveBlocks(Predicate<IGameCtnBlockTM10> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTMSX.RemoveBlocks(Predicate<IGameCtnBlockTMSX> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTMF.RemoveBlocks(Predicate<IGameCtnBlockTMF> match) => RemoveBlocks(match);
+    int IGameCtnChallengeMP4.RemoveBlocks(Predicate<IGameCtnBlockMP4> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTM2020.RemoveBlocks(Predicate<IGameCtnBlockTM2020> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTM10.RemoveBlock(Predicate<IGameCtnBlockTM10> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTMSX.RemoveBlock(Predicate<IGameCtnBlockTMSX> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTMF.RemoveBlock(Predicate<IGameCtnBlockTMF> match) => RemoveBlocks(match);
+    int IGameCtnChallengeMP4.RemoveBlock(Predicate<IGameCtnBlockMP4> match) => RemoveBlocks(match);
+    int IGameCtnChallengeTM2020.RemoveBlock(Predicate<IGameCtnBlockTM2020> match) => RemoveBlocks(match);
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
@@ -713,9 +940,10 @@ public partial class CGameCtnChallenge :
 
                 foreach (var item in n.GetAnchoredObjects())
                 {
+                    var isItemNotSnappedOnBlock = item.SnappedOnBlock is null || !blockDict.ContainsKey(item.SnappedOnBlock);
                     var isItemNotSnappedOnItem = item.SnappedOnItem is null || !itemDict.ContainsKey(item.SnappedOnItem);
 
-                    if (item.SnappedOnBlock is null && isItemNotSnappedOnItem)
+                    if (isItemNotSnappedOnBlock && isItemNotSnappedOnItem)
                     {
                         snappedOnIndices.Add(-1);
                         continue;

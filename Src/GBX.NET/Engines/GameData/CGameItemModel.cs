@@ -69,7 +69,14 @@ public partial class CGameItemModel
 
                     if (Version >= 5)
                     {
-                        rw.NodeRef<CMwNod>(ref n.visModelCustom);
+                        if (n.visModelCustom is not null)
+                        {
+                            rw.Int32(-1);
+                        }
+                        else
+                        {
+                            rw.NodeRef<CMwNod>(ref n.visModelCustom);
+                        }
 
                         if (Version >= 6)
                         {

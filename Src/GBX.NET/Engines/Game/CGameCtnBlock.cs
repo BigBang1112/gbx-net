@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Interfaces.Game;
+
+namespace GBX.NET.Engines.Game;
 
 [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-public partial class CGameCtnBlock
+public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGameCtnBlockTMF, IGameCtnBlockMP4, IGameCtnBlockTM2020
 {
     private const int GroundBit = 12;
     private const int ClipBit = 13;
@@ -169,7 +171,7 @@ public partial class CGameCtnBlock
     }
 
     /// <summary>
-    /// If this block is a free block. Feature available since TM®. Set this property first before modifying free transformation.
+    /// If this block is a free block. Feature available since TM2020.
     /// </summary>
     public bool IsFree
     {
@@ -177,8 +179,14 @@ public partial class CGameCtnBlock
         set => SetFlagBit(FreeBit, value);
     }
 
+    /// <summary>
+    /// Absolute position of the block in the map. Used only in TM2020 in Free block mode.
+    /// </summary>
     public Vec3? AbsolutePositionInMap { get; set; }
 
+    /// <summary>
+    /// Rotation of the block. Used only in TM2020 in Free block mode.
+    /// </summary>
     public Vec3? PitchYawRoll { get; set; }
 
     /// <summary>
@@ -196,6 +204,10 @@ public partial class CGameCtnBlock
     /// </summary>
     public MacroblockInstance? MacroblockReference { get; set; }
 
+    byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
+    byte IGameCtnBlockTMSX.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
+    byte IGameCtnBlockTMSX.SubVariant { get => SubVariant.GetValueOrDefault(); set => SubVariant = value; }
+    
     public override string ToString()
     {
         return $"{nameof(CGameCtnBlock)}: {Name} {coord}";

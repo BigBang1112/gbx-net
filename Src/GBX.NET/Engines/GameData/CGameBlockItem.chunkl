@@ -1,3 +1,18 @@
 CGameBlockItem 0x2E025000
 
 0x000
+
+archive Mobil
+ int Id
+ CPlugCrystal Crystal
+
+archive MobilProperties
+ byte Flags
+ if (Flags & 1) != 0
+  CPlugStaticObjectModel* StaticObject
+ if (Flags & 2) != 0
+  CPlugSurface Shape
+ if (Flags & 4) != 0
+  boxaligned
+ if (Flags & 8) != 0
+  vec3

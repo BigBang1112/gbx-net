@@ -22,7 +22,7 @@ jobs:
           submodules: recursive
       
       - name: Set release information
-        run: gh release edit ${{ github.ref_name }} -n "$(echo -e '***[Pre-release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***\n\n${{ github.event.release.body }}')"
+        run: gh release edit ${{ github.ref_name }} -n "$(echo -e '***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***\n\n${{ github.event.release.body }}')"
     
   build:
     needs: prepare-description

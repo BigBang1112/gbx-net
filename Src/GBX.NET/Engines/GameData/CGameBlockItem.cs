@@ -2,59 +2,44 @@
 
 public partial class CGameBlockItem
 {
+    private string archetypeBlockInfoId = string.Empty;
     [AppliedWithChunk<Chunk2E025000>]
-    public string ArchetypeBlockInfoId { get; set; } = "";
+    public string ArchetypeBlockInfoId { get => archetypeBlockInfoId; set => archetypeBlockInfoId = value; }
 
+    private string archetypeBlockInfoCollectionId = string.Empty;
     [AppliedWithChunk<Chunk2E025000>]
-    public string ArchetypeBlockInfoCollectionId { get; set; } = "";
+    public string ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
 
+    private IList<Mobil> customizedVariants = new List<Mobil>();
     [AppliedWithChunk<Chunk2E025000>]
-    public Dictionary<int, CPlugCrystal> CustomizedVariants { get; set; } = [];
+    public IList<Mobil> CustomizedVariants { get => customizedVariants; set => customizedVariants = value; }
 
     public partial class Chunk2E025000 : IVersionable
     {
         public int Version { get; set; }
 
-        public short U01 = 1;
-
-        public override void Read(CGameBlockItem n, GbxReader r)
+        public override void ReadWrite(CGameBlockItem n, GbxReaderWriter rw)
         {
-            Version = r.ReadInt32();
-            n.ArchetypeBlockInfoId = r.ReadId();
-            n.ArchetypeBlockInfoCollectionId = r.ReadId();
+            rw.VersionInt32(this);
+            rw.Id(ref n.archetypeBlockInfoId);
+            rw.Id(ref n.archetypeBlockInfoCollectionId);
 
-            n.CustomizedVariants = [];
-            for (var i = 0; i < r.ReadInt32(); i++)
+            rw.ListReadableWritable<Mobil>(ref n.customizedVariants);
+
+            if (Version >= 1
+                && rw.Boolean(n.customizedVariants?.Any(x => x.Properties is not null) == true, asByte: true)
+                && n.customizedVariants is not null)
             {
-                n.CustomizedVariants.Add(r.ReadInt32(), r.ReadNodeRef<CPlugCrystal>()!);
-            }
-
-            if (Version >= 1)
-            {
-                U01 = r.ReadByte();
-            }
-        }
-
-        public override void Write(CGameBlockItem n, GbxWriter w)
-        {
-            w.Write(Version);
-            w.WriteIdAsString(n.ArchetypeBlockInfoId);
-            w.WriteIdAsString(n.ArchetypeBlockInfoCollectionId);
-
-            w.Write(n.CustomizedVariants?.Count ?? 0);
-            if (n.CustomizedVariants is not null)
-            {
-                foreach (var pair in n.CustomizedVariants)
+                for (var i = 0; i < n.customizedVariants.Count; i++)
                 {
-                    w.Write(pair.Key);
-                    w.WriteNodeRef(pair.Value);
+                    n.customizedVariants[i].Properties = rw.ReadableWritable<MobilProperties>(n.customizedVariants[i].Properties);
                 }
             }
-
-            if (Version >= 1)
-            {
-                w.Write(U01);
-            }
         }
+    }
+
+    public partial class Mobil
+    {
+        public MobilProperties? Properties { get; set; }
     }
 }

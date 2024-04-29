@@ -1,0 +1,18 @@
+CGameCtnMediaBlockColoringBase 0x03172000
+- inherits: CGameCtnMediaBlock
+
+0x000
+ version
+ v2+
+  int = 2
+ list<Key> Keys (version: Version)
+ v1+
+  int BaseIndex
+
+archive Key (inherits: IKey)
+ timefloat Time
+ float Hue
+ v1+ // not 100% sure about this
+  float Intensity
+  v2+
+   short
