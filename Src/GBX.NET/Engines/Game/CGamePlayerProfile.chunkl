@@ -3,3 +3,180 @@
 0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
  string OnlineLogin
  string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
+
+0x038
+ string
+ string
+ bool
+ vec3
+ vec3
+ vec3
+ vec3
+ vec3
+
+0x03B // crypted
+ byte
+ byte
+ int
+ int
+ bool
+ int
+ bool
+ int
+ bool
+ int
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ int
+ bool
+ string
+ bool
+
+0x040
+ filetime
+
+0x041
+ bool
+
+0x043
+ VehicleProfile[] VehicleProfiles
+
+0x044
+ bool
+
+0x047
+ CGameNetOnlineMessage[]_deprec
+ CGameNetOnlineMessage[]_deprec
+ CGameNetOnlineMessage[]_deprec
+
+0x04A
+ CSceneMobil[] // might be false
+ int
+
+0x04B
+ CInputBindingsConfig BindingsConfig
+
+0x04C // LeagueManager
+ byte U01
+ int U02
+ bool U03
+ if U01 != 0
+  filetime
+  CGameLeague[]_deprec Leagues
+
+0x04D
+ filetime
+
+0x050
+ int
+ int
+
+0x052 (skippable)
+ string
+ string
+
+0x053
+ string
+
+0x054 (base: 0x044)
+
+0x056
+ version
+ CGameBuddy[] Buddies
+
+0x058 (base: 0x044)
+
+0x059 (base: 0x044)
+
+0x05A (skippable)
+ float
+
+0x05B
+ string
+ string
+ id
+ int
+ int
+
+0x05E
+ CGameCtnMediaShootParams ShootParams
+
+0x05F
+ int
+
+0x060 (skippable)
+ float
+ float = 1
+ float
+
+0x061
+ string
+
+0x062 // ArchiveBindingsForCompat
+ int
+ CInputBindingsConfig BindingsForCompatConfig
+
+0x063 (skippable)
+ bool
+ bool
+ bool
+ bool
+ float
+ float
+ float
+ bool
+ bool
+ bool
+
+0x064 // PlayerTagsConfig
+ int
+ PlayerTagConfig[] PlayerTags
+ int[]
+
+0x065
+ int
+
+0x066 (base: 0x044)
+
+0x068
+
+0x069
+ string U01
+ string ProfileDescription
+ int U02
+ int U03
+ string U04
+ int U05
+ if U05 != 0
+  uint128 CryptedPassword
+ string U06
+ string U07
+ bool U08
+ bool U09
+ string U10
+ string U11
+
+0x06A
+ bool
+
+0x06B
+ bool
+
+0x06C
+ int
+
+archive VehicleProfile
+ ident
+ string
+ uint128
+ int
+ float
+ float
+
+archive PlayerTagConfig
+ string
+ bool
