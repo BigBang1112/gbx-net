@@ -76,6 +76,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeSingleNullable(TimeSingle? value);
     void WriteTimeOfDay(TimeSpan? value);
     void WriteFileTime(DateTime value);
+    void WriteSystemTime(DateTime value);
     void WriteSmallLen(int value);
     void WriteSmallString(string? value);
     void WriteMarker(string value);
@@ -835,6 +836,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteFileTime(DateTime value)
     {
         Write(value.ToFileTimeUtc());
+    }
+
+    public void WriteSystemTime(DateTime value)
+    {
+        Write(value.Ticks);
     }
 
     public void WriteSmallLen(int value)

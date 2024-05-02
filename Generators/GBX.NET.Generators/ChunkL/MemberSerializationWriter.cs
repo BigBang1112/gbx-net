@@ -846,6 +846,7 @@ internal sealed class MemberSerializationWriter
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => "TimeOfDay",
             "filetime" => "FileTime",
+            "systemtime" => "SystemTime",
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "IdAsString",
             "packdesc" or "fileref" => "PackDesc",

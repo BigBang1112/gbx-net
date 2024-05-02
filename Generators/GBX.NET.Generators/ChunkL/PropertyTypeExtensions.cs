@@ -136,7 +136,7 @@ internal static class PropertyTypeExtensions
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => nameof(TimeSpan),
-            "filetime" => nameof(DateTime),
+            "filetime" or "systemtime" => nameof(DateTime),
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "string",
             "packdesc" or "fileref" => "PackDesc",
