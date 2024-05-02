@@ -37,7 +37,7 @@
  bool
 
 0x040
- filetime
+ systemtime
 
 0x041
  bool
@@ -64,12 +64,12 @@
  byte U01
  int U02
  bool U03
- if U01 != 0
-  filetime
+ if U03
+  systemtime
   CGameLeague[]_deprec Leagues
 
 0x04D
- filetime
+ systemtime
 
 0x050
  int
@@ -145,20 +145,6 @@
 0x068
 
 0x069
- string U01
- string ProfileDescription
- int U02
- int U03
- string U04
- int U05
- if U05 != 0
-  uint128 CryptedPassword
- string U06
- string U07
- bool U08
- bool U09
- string U10
- string U11
 
 0x06A
  bool
@@ -168,6 +154,90 @@
 
 0x06C
  int
+
+0x240B5003 (not-remapped)
+ string
+ string
+ string
+ string
+ string
+ string
+ string
+ string
+ id
+ id
+ id
+ id
+ id
+ id
+ id
+ id
+
+0x240B5004 (not-remapped)
+ CGameCtnChallenge[]
+
+0x240B5006 (not-remapped)
+ ChallengeOpponent[] ChallengeOpponents
+
+0x240B5007 (not-remapped)
+ CampaignUnlock[] CampaignUnlocks
+
+0x240B5009 (not-remapped)
+ bool U01
+ bool U02
+ int U03
+ if U03 < 5
+  data[44]
+  if U03 == 1
+   data[42]
+ byte
+ byte
+ byte
+ byte
+ byte
+ int
+ int
+ bool
+
+0x240B500B (not-remapped)
+ CGameCtnCampaign[]_deprec
+
+0x240B500C (not-remapped)
+ ident[]
+
+0x240B500D (not-remapped)
+ bool
+ bool
+ bool
+
+0x240B500E (not-remapped)
+ int
+ int
+
+0x240B500F (not-remapped)
+ int[]
+
+0x240B5010 (not-remapped)
+ bool
+
+0x240B5011 (not-remapped)
+ bool[]
+
+0x240B5012 (not-remapped)
+ bool
+
+0x240B5013 (not-remapped)
+ bool
+ bool
+ bool
+ bool
+ bool
+
+0x240B5014 (not-remapped)
+ int
+
+0x240B5015 (not-remapped)
+ SoloChallengesCurrentPage[]
 
 archive VehicleProfile
  ident
@@ -180,3 +250,31 @@ archive VehicleProfile
 archive PlayerTagConfig
  string
  bool
+
+archive ChallengeOpponent
+ byte U01
+ if U01 < 2
+  ident U02
+  int[] U03
+  return
+ ident U02
+ id[] U04
+ if U01 >= 3
+  int U05
+
+archive CampaignUnlock
+ byte U01
+ id U02
+ string U03
+ if U01 == 0
+  bool U04
+  bool U05
+  bool U06
+  bool U07
+  bool U08
+  bool U09
+ if U01 != 0
+  int U10
+
+archive SoloChallengesCurrentPage
+ int3

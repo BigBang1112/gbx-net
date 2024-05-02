@@ -17,9 +17,8 @@ CGameCtnChallengeGroup 0x0308F000
  int
 
 0x006
- bool U01
- if U01
-  list<MapInfo> MapInfos
+ bool
+ list<MapInfo> MapInfos
 
 0x007
  int

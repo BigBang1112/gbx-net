@@ -1,3 +1,10 @@
 CGameNetOnlineMessage 0x03028000
 
 0x000
+ string ReceiverLogin
+ string SenderLogin
+ string Subject
+ string Message
+ int Donation
+ bool
+ systemtime Date
