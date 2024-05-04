@@ -1,7 +1,7 @@
 CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
 0x003 (header, struct: SHeaderDesc) [TM10.v3, TMSX.v4, TMF.v5, TMT.v8, MP4.v8, TM2020.v8] // desc
- ident Ident
+ ident Ident = empty
  version
  string PageName
  v5=
