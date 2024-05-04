@@ -732,7 +732,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new InvalidOperationException("Value is null.");
         }
 
-        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
+        if (ClassManager.GetId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
         }
@@ -781,7 +781,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        if (ClassManager.GetClassId(value.GetType()) is not uint classId)
+        if (ClassManager.GetId(value.GetType()) is not uint classId)
         {
             throw new InvalidOperationException("Class ID not found.");
         }
