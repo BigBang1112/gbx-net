@@ -46,7 +46,7 @@ internal sealed class ResponseService : IResponseService
 
         var embed = new EmbedBuilder()
             .WithTitle(gbx.FilePath)
-            .WithDescription($"**{type.Name}** 0x{ClassManager.GetId(type)}\n\n" + string.Join('\n', validProperties.Select((x, i) => $"` {GetPropertyString(x.Info, x.Value)} `")))
+            .WithDescription($"**{type.Name}** 0x{ClassManager.GetId(type):X8}\n\n" + string.Join('\n', validProperties.Select((x, i) => $"` {GetPropertyString(x.Info, x.Value)} `")))
             .WithColor(Discord.Color.Blue)
             .WithFooter(Guid.NewGuid().ToString());
         embeds.Add(embed.Build());
