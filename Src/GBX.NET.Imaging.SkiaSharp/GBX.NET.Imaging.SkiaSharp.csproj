@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>GBX.NET.Imaging.SkiaSharp</PackageId>
-		<Version>1.0.0-alpha1</Version>
+		<Version>1.0.0</Version>
 		<Authors>BigBang1112</Authors>
 		<Description></Description>
 		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
@@ -27,7 +27,7 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 
