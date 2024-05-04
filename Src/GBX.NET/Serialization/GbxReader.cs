@@ -84,6 +84,7 @@ public partial interface IGbxReader : IDisposable
     TimeSingle? ReadTimeSingleNullable();
     TimeSpan? ReadTimeOfDay();
     DateTime ReadFileTime();
+    DateTime ReadSystemTime();
     int ReadSmallLen();
     string ReadSmallString();
     void ReadMarker(string value);
@@ -862,7 +863,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         if ((index & 0x3FFFFFFF) != 0)
         {
-            return IdDict?[index] ?? throw new Exception("Invalid Id index.");
+            if (Gbx.StrictIdIndices)
+            {
+                return IdDict[index];
+            }
+
+            return IdDict.TryGetValue(index, out var s) ? s : string.Empty;
         }
 
         var str = ReadString();
@@ -1196,6 +1202,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public DateTime ReadFileTime()
     {
         return DateTime.FromFileTime(ReadInt64());
+    }
+
+    public DateTime ReadSystemTime()
+    {
+        return new DateTime(ReadInt64());
     }
 
     public int ReadSmallLen()

@@ -144,7 +144,7 @@ internal static partial class GbxCompressionUtils
                 w.Write(uncompressedData.Length);
                 w.Write(compressedData.Length);
                 await w.WriteAsync(compressedData, cancellationToken);
-                return GbxCompression.Uncompressed;
+                return GbxCompression.Compressed;
             case (byte)'C':
                 var uncompressedSize = r.ReadInt32();
                 var compressedSize = r.ReadInt32();
@@ -153,7 +153,7 @@ internal static partial class GbxCompressionUtils
                 var buffer = new byte[uncompressedSize];
                 Gbx.LZO.Decompress(compressedData, buffer);
                 await w.WriteAsync(buffer, cancellationToken);
-                return GbxCompression.Compressed;
+                return GbxCompression.Uncompressed;
         }
 
         return GbxCompression.Unspecified;

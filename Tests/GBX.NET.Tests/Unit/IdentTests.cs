@@ -30,7 +30,7 @@ public class IdentTests
     public void Constructor_StringIdString_IsCorrect()
     {
         // Arrange & Act
-        var i = new Ident("Test", new(12), "Hell");
+        var i = new Ident("Test", 12, "Hell");
 
         // Assert
         Assert.Equal(expected: "Test", actual: i.Id);
@@ -42,7 +42,7 @@ public class IdentTests
     public void ToString_ReturnsCorrect()
     {
         // Arrange
-        var i = new Ident("Test", new(12), "Hell");
+        var i = new Ident("Test", 12, "Hell");
 
         // Act
         var actual = i.ToString();

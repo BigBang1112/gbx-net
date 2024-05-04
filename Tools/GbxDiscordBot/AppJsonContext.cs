@@ -1,11 +1,9 @@
-﻿using GBX.NET;
-using GBX.NET.Engines.MwFoundations;
+﻿using GbxDiscordBot.Models;
 using System.Text.Json.Serialization;
 
 namespace GbxDiscordBot;
 
-[JsonSerializable(typeof(CMwNod))]
-[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSerializable(typeof(GbxReadSettingsModel))]
 internal sealed partial class AppJsonContext : JsonSerializerContext
 {
 }

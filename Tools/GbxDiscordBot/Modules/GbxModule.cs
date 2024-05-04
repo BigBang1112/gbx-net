@@ -1,38 +1,74 @@
 ﻿using Discord.Interactions;
 using Discord;
-using System.Text.Json;
-using System.Text;
+using GbxDiscordBot.Services;
+using GBX.NET;
+using GbxDiscordBot.Attributes;
 
 namespace GbxDiscordBot.Modules;
 
 public sealed class GbxModule : InteractionModuleBase<SocketInteractionContext>
 {
-    private readonly HttpClient _http;
+    private readonly IGbxService _gbx;
+    private readonly IResponseService _response;
 
-    public GbxModule(HttpClient http)
+    public GbxModule(IGbxService gbx, IResponseService response)
     {
-        _http = http;
+        _gbx = gbx;
+        _response = response;
     }
 
+    [RequireAllowedUser]
     [SlashCommand("gbx", "Inspect a Gbx file.")]
-    public async Task Gbx(IAttachment file)
+    public async Task Gbx(IAttachment file, bool secretly = false)
     {
-        using var response = await _http.GetAsync(file.Url);
+        await InspectAsync(file, secretly);
+    }
 
-        response.EnsureSuccessStatusCode();
+    [RequireAllowedUser]
+    [RequireAttachment]
+    [MessageCommand("Inspect Gbx...")]
+    public async Task GbxContext(IMessage message)
+    {
+        await InspectAsync(message.Attachments.First(), inspectedMessage: message);
+    }
 
-        using var netStream = await response.Content.ReadAsStreamAsync();
+    [RequireAllowedUser]
+    [RequireAttachment]
+    [MessageCommand("Inspect Gbx... (secretly)")]
+    public async Task GbxContextEphemeral(IMessage message)
+    {
+        await InspectAsync(message.Attachments.First(), secretly: true, inspectedMessage: message);
+    }
 
-        var gbx = GBX.NET.Gbx.Parse(netStream);
-        gbx.FilePath = file.Filename;
+    private async Task InspectAsync(IAttachment file, bool secretly = false, IMessage? inspectedMessage = null)
+    {
+        await DeferAsync(secretly);
 
-        var json = JsonSerializer.Serialize(gbx, new JsonSerializerOptions()
+        var gbxModel = await _gbx.LoadGbxAsync(Context.User.Id, file.Url, file.Filename, new GbxReadSettings()
         {
-            WriteIndented = true
+            IgnoreExceptionsInBody = true // in case of an exception in body, disallow modification
         });
 
-        var ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+        var gbx = await _gbx.GetGbxObjectAsync(gbxModel);
 
-        await RespondWithFileAsync(ms, gbx.FilePath + ".json");
+        if (gbx is null)
+        {
+            // gbx has been discarded very early or weirdly timed out
+            var ir = await _response.UnavailableAsync(gbxModel);
+            await FollowupAsync(ir.Message, ir.Embeds, ephemeral: secretly);
+            return;
+        }
+
+        if (gbx.Node is null)
+        {
+            // show gbx properties response instead of main node response
+            var ir = await _response.GbxPropertiesAsync(gbxModel);
+            await FollowupAsync(ir.Message, ir.Embeds, ephemeral: secretly);
+            return;
+        }
+
+        // show main node response
+        var response = await _response.MainNodeAsync(gbx, gbx.Node, gbxModel, inspectedMessage);
+        await FollowupAsync(response.Message, response.Embeds, components: response.Components, ephemeral: secretly);
     }
 }

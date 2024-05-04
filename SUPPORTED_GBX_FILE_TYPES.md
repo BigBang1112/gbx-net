@@ -16,7 +16,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes | Yes
 | | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
 | | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Yes | Yes
-| | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) | No | No | Yes
+| | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) | Up to TMF | Up to TMF | Yes
 | | Spawn.Gbx | [CGameSpawnModel](Src/GBX.NET/Engines/GameData/CGameSpawnModel.chunkl) | Yes | Yes
 | ConstructionCampaign.Gbx | Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.chunkl) | Yes | Yes
 | TMCollection.Gbx | Collection.Gbx | [CGameCtnCollection](Src/GBX.NET/Engines/Game/CGameCtnCollection.chunkl) | Yes | Yes | Yes

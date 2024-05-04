@@ -354,7 +354,7 @@ You can still save nodes into Gbx files by using the `Save` method - be careful 
 - `Gbx.ParseHeader`
   - Reads only the uncompressed Gbx header part, saves the `Node` and *most* of its parameters to the `Gbx` object, and returns the `Gbx` object.
 - `Gbx.ParseHeaderNode`
-  - Same as `Gbx.ParseHeader`, except only the `Node` itself is returned and `Gbx` object parameters are discarded and garbage collected, except for `GbxRefTable`, which is referenced further down the nodes.
+  - Same as `Gbx.ParseHeader`, except only the `Node` itself is returned and `Gbx` object parameters are discarded and garbage collected.
   - Can return `null` on unknown Gbx file, while `Gbx.ParseHeader` can't.
 
 ### Do not repeat `gbx.Node.[any]` too often!
@@ -408,8 +408,8 @@ var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>();
 
 foreach (var block in map.GetBlocks())
 {
-	Console.WriteLine(block.Name);
-	// Console.WriteLine(block.Color); -- block color is not available in TMF
+    Console.WriteLine(block.Name);
+    // Console.WriteLine(block.Color); -- block color is not available in TMF
 }
 ```
 

@@ -48,6 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Položky řešení", "Polo�
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		README.md = README.md
+		SUPPORTED_GBX_FILE_TYPES.md = SUPPORTED_GBX_FILE_TYPES.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxExplorer.Photino", "Tools\GbxExplorer\Photino\GbxExplorer.Photino.csproj", "{36863733-DF0F-4B9C-9612-BB4FE5036250}"

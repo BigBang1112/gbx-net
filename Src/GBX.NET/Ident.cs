@@ -14,7 +14,11 @@ public sealed record Ident(string Id, Id Collection, string Author)
     /// Initializes a new instance of the <see cref="Ident"/> with the specified identifier and default values for collection and author names.
     /// </summary>
     /// <param name="id">The identifier string.</param>
-    public Ident(string id) : this(id, new(), string.Empty) { }
+    public Ident(string id) : this(id, new Id(), string.Empty) { }
+
+    public Ident(string id, int collection, string author) : this(id, new Id(collection), author) { }
+
+    public Ident(string id, string collection, string author) : this(id, new Id(collection), author) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ident"/> with default values.

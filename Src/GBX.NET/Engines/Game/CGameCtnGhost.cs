@@ -159,6 +159,11 @@ public partial class CGameCtnGhost
             if (Version == 0)
             {
                 rw.Chunk(n, Chunk019);
+
+                if (n.eventsDuration != TimeInt32.Zero)
+                {
+                    rw.Boolean(ref n.steeringWheelSensitivity);
+                }
             }
             else
             {
@@ -168,9 +173,8 @@ public partial class CGameCtnGhost
                 Chunk019.ReadWriteInputs(n, rw);
 
                 rw.Int32(ref Chunk019.U03);
+                rw.Boolean(ref n.steeringWheelSensitivity);
             }
-
-            rw.Boolean(ref n.steeringWheelSensitivity);
         }
     }
 

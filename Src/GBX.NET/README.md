@@ -179,6 +179,7 @@ Some of the common types to start with (a lot more are supported):
 | LightMapCache.Gbx | CHmsLightMapCache | No | No
 | SystemConfig.Gbx | CSystemConfig | Yes | Yes
 | FidCache.Gbx | CMwRefBuffer | Yes | Yes
+| Profile.Gbx | CGamePlayerProfile | Up to TMF | Up to TMF
 | Scores.Gbx | CGamePlayerScore | Yes | No
 
 ## Supported games

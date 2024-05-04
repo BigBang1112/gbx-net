@@ -92,6 +92,7 @@ public partial class Gbx : IGbx
     }
 
     internal static bool StrictBooleans { get; set; }
+    internal static bool StrictIdIndices { get; set; }
 
     public static ILzo? LZO { get; set; }
     public static ICrc32? CRC32 { get; set; }
@@ -131,6 +132,8 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
         var logger = settings.Logger;
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Gbx Parse (IMPLICIT)");
 
@@ -214,6 +217,8 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
     {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
         var logger = settings.Logger;
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Gbx Parse (EXPLICIT)");
 
@@ -266,6 +271,8 @@ public partial class Gbx : IGbx
 
     public static Gbx ParseHeader(Stream stream, GbxReadSettings settings = default)
     {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
         var logger = settings.Logger;
         logger?.LogInformation("Gbx Header Parse (IMPLICIT)");
 
@@ -326,6 +333,8 @@ public partial class Gbx : IGbx
 
     public static Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new()
     {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
         var logger = settings.Logger;
         logger?.LogInformation("Gbx Header Parse (EXPLICIT)");
 
@@ -427,6 +436,8 @@ public partial class Gbx : IGbx
 
     public virtual void Save(Stream stream, GbxWriteSettings settings = default)
     {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
         var packDescVersion = settings.PackDescVersion ?? PackDescVersion.GetValueOrDefault(3);
         var deprecVersion = DeprecVersion.GetValueOrDefault(10);
         var classIdRemapMode = settings.ClassIdRemapMode ?? ClassIdRemapMode;
@@ -772,6 +783,77 @@ public partial class Gbx : IGbx
         using var input = File.OpenRead(inputFilePath);
         using var output = File.Create(outputFilePath);
         return Recompress(input, output);
+    }
+
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    public static async Task<uint> ParseClassIdAsync(Stream stream, bool remap = true, CancellationToken cancellationToken = default)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+        var minimalData = new byte[13];
+        var count = await stream.ReadAsync(minimalData, 0, minimalData.Length, cancellationToken);
+
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to parse the class ID.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        var classId = BitConverter.ToUInt32(minimalData, 9);
+
+        return remap ? ClassManager.Wrap(classId) : classId;
+    }
+
+    /// <exception cref="NotAGbxException"></exception>
+    public static async Task<uint> ParseClassIdAsync(string filePath, bool remap = true, CancellationToken cancellationToken = default)
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 128, useAsync: true);
+        return await ParseClassIdAsync(fs, remap, cancellationToken);
+    }
+
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotAGbxException"></exception>
+    public static uint ParseClassId(Stream stream, bool remap = true)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+#if NETSTANDARD2_0
+        var minimalData = new byte[13];
+        var count = stream.Read(minimalData, 0, minimalData.Length);
+#else
+        Span<byte> minimalData = stackalloc byte[13];
+        var count = stream.Read(minimalData);
+#endif
+
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to parse the class ID.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+#if NETSTANDARD2_0
+        var classId = BitConverter.ToUInt32(minimalData, 9);
+#else
+        var classId = BitConverter.ToUInt32(minimalData.Slice(9));
+#endif
+
+        return remap ? ClassManager.Wrap(classId) : classId;
+    }
+
+    /// <exception cref="NotAGbxException"></exception>
+    public static uint ParseClassId(string filePath, bool remap = true)
+    {
+        using var fs = File.OpenRead(filePath);
+        return ParseClassId(fs, remap);
     }
 
     /// <summary>

@@ -8,12 +8,20 @@ using GbxDiscordBot;
 using GBX.NET.Extensions;
 using GBX.NET.LZO;
 using GBX.NET.Hashing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using GbxDiscordBot.Services;
 
 var builder = Host.CreateDefaultBuilder(args);
 
 builder.ConfigureServices((context, services) =>
 {
     services.AddSingleton(TimeProvider.System);
+
+    services.AddDbContext<AppDbContext>(options =>
+    {
+        options.UseSqlite(context.Configuration.GetConnectionString("DefaultConnection"));
+    });
 
     // Configure Discord bot
     services.AddSingleton(new DiscordSocketConfig()
@@ -43,6 +51,12 @@ builder.ConfigureServices((context, services) =>
     services.AddSingleton<IDiscordBot, DiscordBot>();
     services.AddSingleton<ILzo, MiniLZO>();
     services.AddSingleton<ICrc32, CRC32>();
+
+    services.AddScoped<IGbxService, GbxService>();
+    services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IResponseService, ResponseService>();
+
+    services.AddMemoryCache();
 });
 
 // Use Serilog

@@ -1,0 +1,32 @@
+CGameBuddy 0x03153000
+
+archive
+ int U01
+ if U01 == 0
+  string U02
+  int U03
+  filetime U04
+ if U01 >= 1
+  string U05
+  string U06
+  int U07
+  int U08
+  int U09
+  int U10
+  int U11
+  int U12
+  packdesc U13
+  if U01 >= 2
+   bool U14
+   bool U15
+   if U01 >= 3
+    CampaignMedal[] CampaignMedals
+    if U01 >= 4
+     string U16
+     if U01 >= 5
+      bool U17
+
+archive CampaignMedal
+ id
+ int
+ int

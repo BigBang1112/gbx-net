@@ -1,5 +1,15 @@
 CInputBindingsConfig 0x13006000
 
 0x000
+ string
+ Binding[] Bindings
 
 0x001
+ id[]
+
+archive Binding
+ int
+ id
+ int
+ int
+ string

@@ -15,23 +15,23 @@ public static partial class ClassManager
     public static partial uint? GetId(string className, bool all);
     public static partial uint? GetId(string className);
 #endif
-    public static string? GetName(Type type) => GetName(GetClassId(type) ?? 0);
+    public static string? GetName(Type type) => GetName(GetId(type) ?? 0);
 
     /// <summary>
     /// Get the class ID when a type is provided. Slower and heavier on older .NET versions.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static uint? GetClassId<T>() where T : IClass
+    public static uint? GetId<T>() where T : IClass
     {
 #if NET8_0_OR_GREATER
         return T.Id;
 #else
-        return GetClassId(typeof(T));
+        return GetId(typeof(T));
 #endif
     }
 
-    public static uint? GetClassId(Type type)
+    public static uint? GetId(Type type)
     {
         return ClassIds.TryGetValue(type, out var classId) ? classId : null;
     }
@@ -41,8 +41,6 @@ public static partial class ClassManager
     internal static partial IClass? New(uint classId);
     internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId);
     internal static partial Gbx? NewGbx(GbxHeader header, GbxBody body, IClass node);
-
-    internal static uint GetChunkId(Type type) => throw new NotImplementedException();
 
     internal static partial IHeaderChunk? NewHeaderChunk(uint chunkId);
     internal static partial IChunk? NewChunk(uint chunkId);

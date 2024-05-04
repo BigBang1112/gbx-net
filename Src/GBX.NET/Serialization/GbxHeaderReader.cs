@@ -21,7 +21,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         var classId = ReadClassId();
 
-        var expectedClassId = ClassManager.GetClassId<T>();
+        var expectedClassId = ClassManager.GetId<T>();
 
         if (classId != expectedClassId)
         {

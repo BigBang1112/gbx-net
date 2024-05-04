@@ -3,3 +3,278 @@
 0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
  string OnlineLogin
  string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
+
+0x038
+ string
+ string
+ bool
+ vec3
+ vec3
+ vec3
+ vec3
+ vec3
+
+0x03B // crypted
+ byte
+ byte
+ int
+ int
+ bool
+ int
+ bool
+ int
+ bool
+ int
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ int
+ bool
+ string
+ bool
+
+0x040
+ systemtime
+
+0x041
+ bool
+
+0x043
+ VehicleProfile[] VehicleProfiles
+
+0x044
+ bool
+
+0x047
+ CGameNetOnlineMessage[]_deprec
+ CGameNetOnlineMessage[]_deprec
+ CGameNetOnlineMessage[]_deprec
+
+0x04A
+ CSceneMobil[] // might be false
+ int
+
+0x04B
+ CInputBindingsConfig BindingsConfig
+
+0x04C // LeagueManager
+ byte U01
+ int U02
+ bool U03
+ if U03
+  systemtime
+  CGameLeague[]_deprec Leagues
+
+0x04D
+ systemtime
+
+0x050
+ int
+ int
+
+0x052 (skippable)
+ string
+ string
+
+0x053
+ string
+
+0x054 (base: 0x044)
+
+0x056
+ version
+ CGameBuddy[] Buddies
+
+0x058 (base: 0x044)
+
+0x059 (base: 0x044)
+
+0x05A (skippable)
+ float
+
+0x05B
+ string
+ string
+ id
+ int
+ int
+
+0x05E
+ CGameCtnMediaShootParams ShootParams
+
+0x05F
+ int
+
+0x060 (skippable)
+ float
+ float = 1
+ float
+
+0x061
+ string
+
+0x062 // ArchiveBindingsForCompat
+ int
+ CInputBindingsConfig BindingsForCompatConfig
+
+0x063 (skippable)
+ bool
+ bool
+ bool
+ bool
+ float
+ float
+ float
+ bool
+ bool
+ bool
+
+0x064 // PlayerTagsConfig
+ int
+ PlayerTagConfig[] PlayerTags
+ int[]
+
+0x065
+ int
+
+0x066 (base: 0x044)
+
+0x068
+
+0x069
+
+0x06A
+ bool
+
+0x06B
+ bool
+
+0x06C
+ int
+
+0x240B5003 (not-remapped)
+ string
+ string
+ string
+ string
+ string
+ string
+ string
+ string
+ id
+ id
+ id
+ id
+ id
+ id
+ id
+ id
+
+0x240B5004 (not-remapped)
+ CGameCtnChallenge[]
+
+0x240B5006 (not-remapped)
+ ChallengeOpponent[] ChallengeOpponents
+
+0x240B5007 (not-remapped)
+ CampaignUnlock[] CampaignUnlocks
+
+0x240B5009 (not-remapped)
+ bool U01
+ bool U02
+ int U03
+ if U03 < 5
+  data[44]
+  if U03 == 1
+   data[42]
+ byte
+ byte
+ byte
+ byte
+ byte
+ int
+ int
+ bool
+
+0x240B500B (not-remapped)
+ CGameCtnCampaign[]_deprec
+
+0x240B500C (not-remapped)
+ ident[]
+
+0x240B500D (not-remapped)
+ bool
+ bool
+ bool
+
+0x240B500E (not-remapped)
+ int
+ int
+
+0x240B500F (not-remapped)
+ int[]
+
+0x240B5010 (not-remapped)
+ bool
+
+0x240B5011 (not-remapped)
+ bool[]
+
+0x240B5012 (not-remapped)
+ bool
+
+0x240B5013 (not-remapped)
+ bool
+ bool
+ bool
+ bool
+ bool
+
+0x240B5014 (not-remapped)
+ int
+
+0x240B5015 (not-remapped)
+ SoloChallengesCurrentPage[]
+
+archive VehicleProfile
+ ident
+ string
+ uint128
+ int
+ float
+ float
+
+archive PlayerTagConfig
+ string
+ bool
+
+archive ChallengeOpponent
+ byte U01
+ if U01 < 2
+  ident U02
+  int[] U03
+  return
+ ident U02
+ id[] U04
+ if U01 >= 3
+  int U05
+
+archive CampaignUnlock
+ byte U01
+ id U02
+ string U03
+ if U01 == 0
+  bool U04
+  bool U05
+  bool U06
+  bool U07
+  bool U08
+  bool U09
+ if U01 != 0
+  int U10
+
+archive SoloChallengesCurrentPage
+ int3

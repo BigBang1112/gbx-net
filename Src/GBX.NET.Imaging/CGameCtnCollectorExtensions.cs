@@ -14,7 +14,7 @@ public static class CGameCtnCollectorExtensions
     /// Gets the collector's icon as <see cref="Bitmap"/>.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <returns>Thumbnail as <see cref="Bitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
+    /// <returns>Icon as <see cref="Bitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
     public static Bitmap? GetIconBitmap(this CGameCtnCollector node)
     {
         if (node.Icon is null) return null;
