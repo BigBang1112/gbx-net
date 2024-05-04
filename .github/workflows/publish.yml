@@ -60,7 +60,7 @@ jobs:
     
     strategy:
       matrix:
-        lib: [GBX.NET, GBX.NET.Hashing, GBX.NET.Imaging, GBX.NET.LZO, GBX.NET.ZLib]
+        lib: [GBX.NET, GBX.NET.Hashing, GBX.NET.Imaging, GBX.NET.Imaging.SkiaSharp, GBX.NET.LZO, GBX.NET.ZLib]
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest
