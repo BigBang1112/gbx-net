@@ -826,7 +826,7 @@ public partial class Gbx : IGbx
         var count = stream.Read(minimalData, 0, minimalData.Length);
 #else
         Span<byte> minimalData = stackalloc byte[13];
-        var count = stream.Read(minimalData, 0, minimalData.Length);
+        var count = stream.Read(minimalData);
 #endif
 
         if (count != minimalData.Length)
