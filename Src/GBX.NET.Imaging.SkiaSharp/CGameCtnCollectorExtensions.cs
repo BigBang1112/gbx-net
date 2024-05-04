@@ -16,7 +16,16 @@ public static class CGameCtnCollectorExtensions
     /// <returns>Icon as <see cref="SKBitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
     public static SKBitmap? GetIconBitmap(this CGameCtnCollector node)
     {
-        if (node.Icon is null) return null;
+        if (node.Icon is null)
+        {
+            if (node.IconWebP is not null)
+            {
+                using var webpBitmap = SKBitmap.Decode(node.IconWebP);
+                return webpBitmap.Rotate180FlipX();
+            }
+
+            return null;
+        }
         
         var width = node.Icon.GetLength(0);
         var height = node.Icon.GetLength(1);
@@ -51,8 +60,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
     public static bool ExportIcon(this CGameCtnCollector node, Stream stream, SKEncodedImageFormat format, int quality)
     {
-        var icon = node.GetIconBitmap();
-
+        using var icon = node.GetIconBitmap();
         return icon is not null && icon.Encode(stream, format, quality);
     }
 
@@ -75,7 +83,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName, SKEncodedImageFormat format, int quality)
     {
-        if (node.Icon is null)
+        if (node.Icon is null && node.IconWebP is null)
         {
             return false;
         }
