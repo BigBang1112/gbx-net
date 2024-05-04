@@ -1,6 +1,7 @@
 ﻿using Discord;
 using GBX.NET;
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Managers;
 using GbxDiscordBot.Models;
 using System.Reflection;
 using System.Text;
@@ -11,7 +12,7 @@ public interface IResponseService
 {
     Task<InteractionResponse> GbxPropertiesAsync(GbxModel gbxModel, CancellationToken cancellationToken = default);
     Task<InteractionResponse> UnavailableAsync(GbxModel? gbxModel = null, CancellationToken cancellationToken = default);
-    Task<InteractionResponse> MainNodeAsync(Gbx gbx, CMwNod node, GbxModel gbxModel, CancellationToken cancellationToken = default);
+    Task<InteractionResponse> MainNodeAsync(Gbx gbx, CMwNod node, GbxModel gbxModel, IMessage? inspectedMessage = null, CancellationToken cancellationToken = default);
 }
 
 internal sealed class ResponseService : IResponseService
@@ -26,18 +27,26 @@ internal sealed class ResponseService : IResponseService
         return new();
     }
 
-    public async Task<InteractionResponse> MainNodeAsync(Gbx gbx, CMwNod node, GbxModel gbxModel, CancellationToken cancellationToken = default)
+    public async Task<InteractionResponse> MainNodeAsync(Gbx gbx, CMwNod node, GbxModel gbxModel, IMessage? inspectedMessage = null, CancellationToken cancellationToken = default)
     {
         var validProperties = GetValidProperties(node)
             .OrderBy(x => x.Info.Name)
             .Take(25)
             .ToList();
 
+        var message = default(string);
         var embeds = new List<Embed>();
+
+        if (inspectedMessage is not null)
+        {
+            message = $"Inspected Gbx: {inspectedMessage.GetJumpUrl()} (first attachment)";
+        }
+
+        var type = node.GetType();
 
         var embed = new EmbedBuilder()
             .WithTitle(gbx.FilePath)
-            .WithDescription(string.Join('\n', validProperties.Select((x, i) => $"` {GetPropertyString(x.Info, x.Value)} `")))
+            .WithDescription($"**{type.Name}** 0x{ClassManager.GetId(type)}\n\n" + string.Join('\n', validProperties.Select((x, i) => $"` {GetPropertyString(x.Info, x.Value)} `")))
             .WithColor(Discord.Color.Blue)
             .WithFooter(Guid.NewGuid().ToString());
         embeds.Add(embed.Build());
@@ -83,6 +92,7 @@ internal sealed class ResponseService : IResponseService
 
         return new InteractionResponse
         {
+            Message = message,
             Embeds = embeds.ToArray(),
             Components = componentBuilder.Build()
         };
