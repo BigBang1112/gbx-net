@@ -863,7 +863,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         if ((index & 0x3FFFFFFF) != 0)
         {
-            return IdDict?[index] ?? throw new Exception("Invalid Id index.");
+            if (Gbx.StrictIdIndices)
+            {
+                return IdDict[index];
+            }
+
+            return IdDict.TryGetValue(index, out var s) ? s : string.Empty;
         }
 
         var str = ReadString();
