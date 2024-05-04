@@ -786,7 +786,7 @@ public partial class Gbx : IGbx
 
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="NotAGbxException"></exception>
-    public static async Task<uint> ParseClassIdAsync(Stream stream, CancellationToken cancellationToken = default)
+    public static async Task<uint> ParseClassIdAsync(Stream stream, bool remap = true, CancellationToken cancellationToken = default)
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
@@ -803,19 +803,21 @@ public partial class Gbx : IGbx
             throw new NotAGbxException();
         }
 
-        return BitConverter.ToUInt32(minimalData, 9);
+        var classId = BitConverter.ToUInt32(minimalData, 9);
+
+        return remap ? ClassManager.Wrap(classId) : classId;
     }
 
     /// <exception cref="NotAGbxException"></exception>
-    public static async Task<uint> ParseClassIdAsync(string filePath, CancellationToken cancellationToken = default)
+    public static async Task<uint> ParseClassIdAsync(string filePath, bool remap = true, CancellationToken cancellationToken = default)
     {
         using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 128, useAsync: true);
-        return await ParseClassIdAsync(fs, cancellationToken);
+        return await ParseClassIdAsync(fs, remap, cancellationToken);
     }
 
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="NotAGbxException"></exception>
-    public static uint ParseClassId(Stream stream)
+    public static uint ParseClassId(Stream stream, bool remap = true)
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
@@ -838,17 +840,19 @@ public partial class Gbx : IGbx
         }
 
 #if NETSTANDARD2_0
-        return BitConverter.ToUInt32(minimalData, 9);
+        var classId = BitConverter.ToUInt32(minimalData, 9);
 #else
-        return BitConverter.ToUInt32(minimalData.Slice(9));
+        var classId = BitConverter.ToUInt32(minimalData.Slice(9));
 #endif
+
+        return remap ? ClassManager.Wrap(classId) : classId;
     }
 
     /// <exception cref="NotAGbxException"></exception>
-    public static uint ParseClassId(string filePath)
+    public static uint ParseClassId(string filePath, bool remap = true)
     {
         using var fs = File.OpenRead(filePath);
-        return ParseClassId(fs);
+        return ParseClassId(fs, remap);
     }
 
     /// <summary>
