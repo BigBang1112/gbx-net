@@ -11,7 +11,7 @@ CPlugCrystal 0x09003000
  version
  data
  v1+
-  int?
+  int? // DoData
 
 0x005 // layers
 
@@ -54,7 +54,7 @@ enum EAxis
 
 archive Material
  string MaterialName
- if MaterialName == ""
+ if MaterialName == null || MaterialName == ""
   CPlugMaterialUserInst MaterialUserInst
 
 archive Layer (contextual)
