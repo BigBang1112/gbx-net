@@ -12,7 +12,7 @@ var ghost = Gbx.ParseNode<CGameCtnGhost>(args[1]);
 
 if (ghost.RecordData is null) return;
 
-var envs = new string[] { "Stadium", "Snow", "Rally" };
+var envs = new string[] { "Stadium", "Snow", "Rally", "Desert" };
 var envIndex = 0;
 
 var samples = ghost.RecordData
