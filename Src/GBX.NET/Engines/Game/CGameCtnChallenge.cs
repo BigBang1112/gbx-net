@@ -12,11 +12,24 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
+    private string authorLogin;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
     private TimeInt32? authorTime; // Only used if ChallengeParameters is null
     private int authorScore; // Only used if ChallengeParameters is null
+
+    [AppliedWithChunk<HeaderChunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
+    public string AuthorLogin
+    {
+        get => authorLogin is null ? mapInfo.Author : authorLogin;
+        set
+        {
+            authorLogin = value;
+            mapInfo = new Ident(mapInfo.Id, mapInfo.Collection, value);
+        }
+    }
 
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
