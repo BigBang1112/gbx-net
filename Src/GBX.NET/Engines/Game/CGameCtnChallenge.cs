@@ -20,6 +20,9 @@ public partial class CGameCtnChallenge :
     private int authorScore; // Only used if ChallengeParameters is null
 
     [AppliedWithChunk<HeaderChunk03043008>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     [AppliedWithChunk<Chunk03043042>]
     public string AuthorLogin
     {
