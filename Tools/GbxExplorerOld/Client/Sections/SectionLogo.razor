@@ -24,8 +24,8 @@
 
     protected override void OnInitialized()
     {
-        branch = Config["Branch"];
-        commit = Config["Commit"];
+        branch = ThisAssembly.Git.Branch;
+        commit = ThisAssembly.Git.Commit;
         
         version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
     }
