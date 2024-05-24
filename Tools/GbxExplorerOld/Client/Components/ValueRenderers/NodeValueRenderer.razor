@@ -1,0 +1,56 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using System.Reflection
+@using GBX.NET.Components
+@using GBX.NET.Engines.MwFoundations
+@using GBX.NET.Serialization
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(CMwNod))]
+
+@if (Value is null)
+{
+    var fileVal = default(object);
+
+    @if (Owner is not null && Property is not null)
+    {
+        var fileProp = Owner.GetType().GetProperty(Property.Name + "File");
+        fileVal = fileProp?.GetValue(Owner);
+
+        if (fileVal is null)
+        {
+            var fileField = Owner.GetType().GetField(char.ToLower(Property.Name[0]) + Property.Name.Substring(1) + "File", BindingFlags.NonPublic | BindingFlags.Instance);
+            fileVal = fileField?.GetValue(Owner);
+        }
+    }
+
+    if (fileVal is null)
+    {
+        <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+    }
+    else
+    {
+        var f = fileVal as GbxRefTableFile;
+        var gbx = typeof(CMwNod).GetField("gbxForRefTable", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(Owner) as Gbx;
+        var dirPath = default(string); //f is null ? null : gbx?.RefTable?.GetRelativeFolderPathToFile(f);
+
+        <span class="element-box"
+              title="@(f is null || dirPath is null ? "" : Path.Combine(dirPath, f.FilePath ?? ""))"
+              data-title="This value cannot be modified. Custom creation of nodes will be added later.">@(fileVal.ToString())</span>
+    }
+}
+else
+{
+    var valueType = Value.GetType();
+
+    if (Property is not null && valueType != Property.PropertyType)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This value is actually of type @(valueType.Name).">(@(valueType.Name))</span>
+    }
+}
+
+@code {
+    public static Func<PropertyInfo, bool> TreeFilterStatic { get; } = x => true;
+
+    public override bool ShowPropertyInTree(PropertyInfo prop) => TreeFilterStatic(prop);
+}

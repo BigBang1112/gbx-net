@@ -1,0 +1,162 @@
+﻿@page "/"
+
+@inject IGbxService GbxService
+@inject ISettingsService Settings
+@inject ILogger Logger
+@inject IFaultyGbxService FaultyGbxService
+@inject Blazored.LocalStorage.ISyncLocalStorageService LocalStorage
+
+@if (!LocalStorage.GetItem<bool>(AgreesToNotAbuse))
+{
+    <div class="centered-container">
+        <div class="section welcome">
+            <div style="font-size:1.7rem">GBX.NET Explorer opens the world of Gbx files to everyone!</div>
+            <div>By clicking <b>Proceed</b>, you agree that you won't <b>ever</b> use this tool for harmful purposes.</div>
+            <div>Many thanks. -BigBang1112</div>
+            <button class="button" @onclick="Proceed">Proceed</button>
+        </div>
+    </div>
+}
+else 
+{
+    <main>
+        <SectionLoadGbx OnImport="OnImportGbxAsync" />
+
+        <SectionLogo />
+
+        <SectionSocials />
+
+        <SectionGbxList @ref="sectionGbxList" OnSelect="OnSelectGbx" />
+
+        <SectionNodeTreeExplorer @ref="sectionNodeTreeExplorer" OnTypeClick="OnTypeClick" />
+
+        <SectionPreview @ref="sectionPreview" IndexPage="this" />
+
+        <SectionScripts @ref="sectionScripts" OnTypeClick="OnTypeClick" />
+
+        <SectionSaveGbx @ref="sectionSaveGbx"></SectionSaveGbx>
+
+        <SectionLog />
+
+        <a class="section section-copyright hoverable" href="https://bigbang1112.cz" target=”_blank”>
+            <span>© 2022-2024 Petr &nbsp;'&nbsp;</span>
+            <img style="margin-top: 0.1rem;height: 0.7rem;" src="img/bigbang1112.png">
+            <span>&nbsp;'&nbsp; Pivoňka</span>
+        </a>
+    </main>
+}
+
+@code {
+    private SectionGbxList? sectionGbxList;
+    private SectionNodeTreeExplorer? sectionNodeTreeExplorer;
+    private SectionScripts? sectionScripts;
+    private SectionPreview? sectionPreview;
+    private SectionSaveGbx? sectionSaveGbx;
+
+    private DateTime lastPause = DateTime.UtcNow;
+
+    public GbxModel? SelectedGbx => GbxService.SelectedGbx;
+
+    private const string AgreesToNotAbuse = "AgreesToNotAbuse";
+
+    protected override void OnInitialized()
+    {
+        if (!LocalStorage.ContainKey(AgreesToNotAbuse))
+        {
+            LocalStorage.SetItem<bool>(AgreesToNotAbuse, false);
+        }
+
+        var settingsLocalStorage = LocalStorage.GetItemAsString("Settings");
+
+        if (string.IsNullOrWhiteSpace(settingsLocalStorage))
+        {
+            return;
+        }
+
+        var savedSettings = JsonSerializer.Deserialize<SettingsService>(settingsLocalStorage);
+
+        foreach (var prop in Settings.GetType().GetProperties())
+        {
+            if (prop.CanWrite)
+            {
+                prop.SetValue(Settings, prop.GetValue(savedSettings));
+            }
+        }
+    }
+
+    private async Task OnImportGbxAsync(IBrowserFile file)
+    {
+        if (sectionGbxList is null)
+        {
+            return;
+        }
+
+        using var scope = Logger.BeginScope(file.Name);
+
+        if (file.Size > Settings.MaxAllowedFileSize)
+        {
+            Logger.LogWarning("Supplied file with size of {fileSize} bytes exceeds the maximum of {maxSize} bytes. You can increase this maximum in the Settings.", file.Size, Settings.MaxAllowedFileSize);
+            return;
+        }
+
+        try
+        {
+            var gbx = await GbxService.ImportGbxAsync(file, async eventName =>
+            {
+                if (DateTime.UtcNow - lastPause > TimeSpan.FromMilliseconds(20))
+                {
+                    await Task.Delay(10);
+                    StateHasChanged();
+                    lastPause = DateTime.UtcNow;
+                }
+            });
+
+            if (gbx is null)
+            {
+                return;
+            }
+
+            if (gbx is FaultyGbxModel faultyGbx)
+            {
+                FaultyGbxService.FaultyGbxs[faultyGbx.Exception] = faultyGbx;
+            }
+
+            if (gbx is GbxModel workingGbx)
+            {
+                await sectionGbxList.AddGbxAsync(workingGbx);
+            }
+        }
+        catch (ExistingGbxInListException)
+        {
+            Logger.LogInformation("{file} has already been added to the list, import skipped.", file.Name);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Import (not related to Gbx) has thrown {exName} -> {msg}", ex.GetType().Name, ex.Message);
+        }
+    }
+
+    private void OnSelectGbx(GbxModel gbx)
+    {
+        sectionNodeTreeExplorer?.Select(gbx);
+        sectionScripts?.Select(gbx);
+        sectionPreview?.SelectGbx(gbx);
+        sectionSaveGbx?.Select(gbx);
+    }
+
+    private void OnTypeClick(TypeModel type)
+    {
+        sectionScripts?.Update();
+        sectionNodeTreeExplorer?.Update();
+    }
+
+    public void UpdateNodeTreeExplorer()
+    {
+        sectionNodeTreeExplorer?.Update();
+    }
+
+    public void Proceed()
+    {
+        LocalStorage.SetItem<bool>("AgreesToNotAbuse", true);
+    }
+}

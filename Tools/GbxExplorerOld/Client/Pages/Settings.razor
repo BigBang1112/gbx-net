@@ -1,0 +1,53 @@
+﻿@page "/settings"
+
+@inject IBaseAddressService BaseAddressService
+@inject ISettingsService SettingsService
+@inject IValueRendererService ValueRendererService
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+@using System.Reflection
+
+<div class="centered-container">
+    <div class="section settings">
+        <div style="font-size:1.7rem;font-weight:bold">Settings</div>
+        <div>Settings are saved to local storage after clicking <b>Return</b>.</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;text-align:left;gap:0.5rem">
+
+            @foreach (var prop in SettingsService.GetType().GetProperties())
+            {
+                if (ignoredProperties.Contains(prop.Name))
+                {
+                    continue;
+                }
+
+                <div style="padding-left:0.5rem;">@prop.Name</div>
+                <div>
+                    <DynamicComponent Type="ValueRendererService[prop.PropertyType]" Parameters="GetValueRendererParameters(prop)" />
+                </div>
+            }
+
+        </div>
+
+        <a href="@BaseAddressService.GetRoot()" class="button" style="justify-content:center" @onclick="ReturnAsync">Return</a>
+    </div>
+</div>
+
+@code {
+    private string[] ignoredProperties = new[] { nameof(ISettingsService.InsiderMode) };
+
+    private Dictionary<string, object?> GetValueRendererParameters(PropertyInfo prop)
+    {
+        return new Dictionary<string, object?>
+        {
+            { "Property", prop },
+            { "Owner", SettingsService },
+            { "Value", prop.GetValue(SettingsService) },
+        };
+    }
+
+    private async Task ReturnAsync()
+    {
+        await LocalStorage.SetItemAsStringAsync("Settings", JsonSerializer.Serialize(SettingsService));
+    }
+}

@@ -1,0 +1,40 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug
+@using GBX.NET.Attributes
+
+@inherits NodeValueRenderer
+@attribute [AppliesForType(typeof(CPlugMaterialUserInst))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+}
+else if (Value is CPlugMaterialUserInst mat)
+{
+    @if (string.IsNullOrEmpty(mat.Link))
+    {
+        @if (string.IsNullOrEmpty(mat.MaterialName))
+        {
+            <span class="element-box" data-title="This material has no link.">(no link)</span>
+        }
+        else
+        {
+            <span class="element-box" data-title="This material is custom.">@mat.MaterialName</span>
+        }
+    }
+    else
+    {
+        <span class="element-box" data-title="This material is linked to @(mat.Link).">@mat.Link</span>
+    }
+
+    var valueType = mat.GetType();
+
+    @if (Property is not null && valueType != Property.PropertyType)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This value is actually of type @(valueType.Name).">(@(valueType.Name))</span>
+    }
+}
+
+@code {
+
+}

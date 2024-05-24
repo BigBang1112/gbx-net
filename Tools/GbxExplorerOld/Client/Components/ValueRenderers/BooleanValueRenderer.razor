@@ -1,0 +1,80 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(bool))]
+@inject ILogger Logger
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value." @onclick="InitValue">null</span>
+
+    @if (nullifiedValue is not null)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is bool val)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+
+    <span class="element-box @(cannotWrite ? "" : "hoverable")" style="padding-left:0.8rem;padding-right:0.8rem;@(cannotWrite ? "" : "color:#eee")" @onclick="Switch">
+
+        @if (val)
+        {
+            <span><i class="fa-solid fa-check"></i></span>
+        }
+        else
+        {
+            <span style="padding-left:0.1rem;padding-right:0.1rem;"><i class="fa-solid fa-xmark"></i></span>
+        }
+
+    </span>
+
+    if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+else
+{
+    <span>Error: value is not bool</span>
+}
+
+@code {
+    private object? nullifiedValue;
+
+    private void Switch()
+    {
+        if (Field is null && Property?.CannotWrite() == true)
+        {
+            return;
+        }
+
+        if (Value is not bool val)
+        {
+            return;
+        }
+
+        SetAndUpdate(!val, parent: true);
+
+        Logger.LogInformation("Switched {name} from {before} to {after}.", Property?.Name ?? "[unknown]", val, !val);
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(bool), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Value;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
+}

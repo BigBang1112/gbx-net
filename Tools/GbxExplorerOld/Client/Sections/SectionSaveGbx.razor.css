@@ -1,0 +1,88 @@
+﻿.tabs {
+    display: flex;
+    align-items: stretch;
+    gap: 0.4rem;
+    width:100%;
+}
+
+    .tabs > div {
+        flex: 1;
+        background-color: rgba(16,17,20,0.6);
+        height: 2rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        transition: 0.1s;
+    }
+
+        .tabs > div:hover, .tabs > .selected {
+            background-color: var(--button-blue);
+        }
+
+.save-params {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-family: Source Code Pro;
+    margin-right: 0.5rem;
+}
+
+.save-node-invalid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: gray;
+}
+
+input[type=text] {
+    flex: 1;
+    padding: 5px 8px;
+}
+
+.button {
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+@media (min-width: 1000px) {
+    .selected-node {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+    .tabs > div {
+        font-size: 0.85rem;
+    }
+
+    .selected-node {
+        font-size: 0.65rem !important;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+    .selected-node {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1560px) {
+    .tabs > div {
+        font-size: 0.85rem;
+    }
+
+    .selected-node {
+        font-size: 0.65rem !important;
+    }
+}
+
+@media (min-width: 1560px) and (max-width: 1750px) {
+    .selected-node {
+        font-size: 0.75rem;
+    }
+}

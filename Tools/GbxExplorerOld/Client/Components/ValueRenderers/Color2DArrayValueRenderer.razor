@@ -1,0 +1,50 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Color[,]))]
+
+@inject IJSRuntime JS
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified.">null</span>
+}
+else
+{
+    <span class="element-box gbx-icon">
+        @if (dataUrl is not null)
+        {
+            <img src="@(dataUrl)" style="border-radius: 0.2rem;" width="20" height="20" @onmouseover="() => iconHovered = true" @onmouseout="() => iconHovered = false" />
+
+            @if (iconHovered)
+            {
+                <span style="position: relative">
+                    <img class="gbx-icon-tooltip" src="@(dataUrl)" style="border-radius: 0.2rem;" />
+                </span>
+            }
+        }
+    </span>
+}
+
+@code {
+    private string? dataUrl;
+    private bool iconHovered;
+
+    public override bool PreferProperties => true;
+    
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    protected override async Task OnValueChangedAsync(object? previousValue)
+    {
+        if (Value is not Color[,] val)
+        {
+            return;
+        }
+
+        var byteArray = ColorUtilities.Color2dArrayToByteArray(val, out int width, out int height);
+
+        dataUrl = await JS.InvokeAsync<string>("rgbaBufferToImage", byteArray, width, height);
+
+        StateHasChanged();
+    }
+}

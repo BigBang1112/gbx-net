@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>GBX.NET Explorer by BigBang1112</title>
+    <base href="/" />
+
+    <meta name="description" content="Explore, modify, experiment with Gbx files from Nadeo games like Trackmania." />
+    <meta name="author" content="BigBang1112" />
+    <meta name="copyright" content="BigBang1112" />
+
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/layout.css" rel="stylesheet" />
+    <link href="css/loading.css" rel="stylesheet" />
+    <link href="css/scrollbar.css" rel="stylesheet" />
+    <link href="css/tooltip.css" rel="stylesheet" />
+
+    <link href="GbxExplorerOld.Client.styles.css" rel="stylesheet" />
+
+    <link href="manifest.json" rel="manifest" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="centered-container">
+            <div class="section loading">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        <div class="overlay">
+            <div class="section" style="align-items: center; gap: 0.5rem">
+                <div style="padding: 0 0.8rem">An unhandled error has occurred, see Console in DevTools.</div>
+                <a href="" onclick="location.reload()" class="button">Reload</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script type="module">
+        import { BrotliDecode } from './js/decode.min.js';
+        Blazor.start({
+            loadBootResource: function (type, name, defaultUri, integrity) {
+                if (type !== 'dotnetjs' && location.hostname !== 'localhost' && type !== 'configuration') {
+                    return (async function () {
+                        const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        const originalResponseBuffer = await response.arrayBuffer();
+                        const originalResponseArray = new Int8Array(originalResponseBuffer);
+                        const decompressedResponseArray = BrotliDecode(originalResponseArray);
+                        const contentType = type ===
+                            'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+                        return new Response(decompressedResponseArray,
+                            { headers: { 'content-type': contentType } });
+                    })();
+                }
+            }
+        });
+    </script>
+    <script src="_content/Toolbelt.Blazor.PWA.Updater.Service/script.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/sha256.min.js"></script>
+    <script src="js/download.js"></script>
+</body>
+
+</html>

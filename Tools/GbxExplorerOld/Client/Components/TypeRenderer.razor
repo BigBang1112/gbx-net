@@ -1,0 +1,138 @@
+﻿@inject ITypeCacheService TypeCacheService
+@inject IConfiguration Config
+
+@{
+    if (TypeInfo is null)
+    {
+        return;
+    }
+}
+
+@if (TypeInfo.ElementType.DeclaringType is not null && (Property is null || Property.DeclaringType != TypeInfo.ElementType.DeclaringType))
+{
+    var (newTypeInfo, _) = TypeCacheService.GetTypeInfoModel(TypeInfo.ElementType.DeclaringType, null);
+
+    <TypeRenderer TypeInfo="newTypeInfo" Property="Property"/>
+
+    <span>.</span>
+}
+
+@if (TypeInfo.StandardName is not null)
+{
+    <span class="type" style="color: #59B9FF;" data-title="@TypeInfo.Name">@TypeInfo.StandardName</span>
+}
+else
+{
+    @if (TypeInfo.GenericArguments is not null)
+    {
+        var propTypeName = TypeInfo.PropTypeName.Substring(0, TypeInfo.PropTypeName.IndexOf('`'));
+
+        if (propTypeName == "ValueTuple")
+        {
+            <span>(</span>
+        }
+        else
+        {
+            <span class="type" style="color: #@GetTypeColor(TypeInfo.ElementType);">@propTypeName</span>
+
+            <span>&lt;</span>
+        }
+
+        var args = TypeInfo.GenericArguments;
+
+        @for (var i = 0; i < args.Length; i++)
+        {
+            var (typeInfo, isNullable) = TypeCacheService.GetTypeInfoModel(args[i], null);
+
+            if (i != 0)
+            {
+                <span>, </span>
+            }
+
+            <TypeRenderer TypeInfo="typeInfo" IsNullable="isNullable" />
+        }
+
+        if (propTypeName == "ValueTuple")
+        {
+            <span>)</span>
+        }
+        else
+        {
+            <span>&gt;</span>
+        }
+    }
+    else
+    {
+        if (TypeInfo.IsNodeType && !string.IsNullOrEmpty(TypeInfo.Engine))
+        {
+            <a class="type clickable" href="https://github.com/BigBang1112/gbx-net/blob/@(Config["Branch"] ?? "master")/Src/GBX.NET/Engines/@(TypeInfo.Engine)/@(TypeInfo.Name).cs" target="_blank" style="color: #@GetTypeColor(TypeInfo.ElementType);">@TypeInfo.Name</a>
+        }
+        else
+        {
+            <span class="type" style="color: #@GetTypeColor(TypeInfo.ElementType);">@TypeInfo.Name</span>
+        }
+    }
+}
+
+@if (TypeInfo.ArrayRank.HasValue)
+{
+    var rank = TypeInfo.ArrayRank.Value;
+
+    <span class="array" data-title="@(rank == 1 ? "An" : $"A {rank}D") array (has fixed size of elements).">[@(new string(',', rank - 1))]</span>
+}
+
+@if (IsNullable.GetValueOrDefault())
+{
+    <span class="nullable" data-title="Nullable - this member can have a null value.">?</span>
+}
+
+@code {
+
+    [Parameter]
+    public PropertyInfo? Property { get; set; }
+
+    [Parameter]
+    public TypeInfoModel? TypeInfo { get; set; }
+
+    [Parameter]
+    public bool? IsNullable { get; set; }
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        foreach (var parameter in parameters)
+        {
+            switch (parameter.Name)
+            {
+                case nameof(Property):
+                    Property = parameter.Value as PropertyInfo;
+                    break;
+                case nameof(TypeInfo):
+                    TypeInfo = parameter.Value as TypeInfoModel;
+                    break;
+                case nameof(IsNullable):
+                    IsNullable = parameter.Value as bool?;
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown parameter: {parameter.Name}");
+            }
+        }
+
+        return base.SetParametersAsync(ParameterView.Empty);
+    }
+
+    private string GetTypeColor(Type type)
+    {
+        if (type.IsEnum || type.IsInterface)
+        {
+            return "DBFFC1";
+        }
+        else if (type.IsValueType)
+        {
+            return "63FFFF";
+        }
+        else
+        {
+            return "5BFFDE";
+        }
+    }
+}

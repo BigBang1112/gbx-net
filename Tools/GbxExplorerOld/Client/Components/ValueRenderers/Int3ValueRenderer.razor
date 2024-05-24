@@ -1,0 +1,103 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Int3))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value." @onclick="InitValue">null</span>
+
+    @if (nullifiedValue is not null)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is Int3 int3)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+
+    <input type="text" @bind="X" disabled="@cannotWrite" style="min-width: 4ch; width: @(X.ToString().Length)ch;" oninput="onInputText(this)" />
+    <input type="text" @bind="Y" disabled="@cannotWrite" style="min-width: 4ch; width: @(Y.ToString().Length)ch;" oninput="onInputText(this)" />
+    <input type="text" @bind="Z" disabled="@cannotWrite" style="min-width: 4ch; width: @(Z.ToString().Length)ch;" oninput="onInputText(this)" />
+
+    @if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+else
+{
+    <span>Error: value is not Int3</span>
+}
+
+@code {
+    private object? nullifiedValue;
+    
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    public int X
+    {
+        get => Value is Int3 int3 ? int3.X : 0;
+        set
+        {
+            if (Value is Int3 int3)
+            {
+                SetAndUpdate(int3 with { X = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Int3(value, 0, 0), parent: true);
+            }
+        }
+    }
+
+    public int Y
+    {
+        get => Value is Int3 int3 ? int3.Y : 0;
+        set
+        {
+            if (Value is Int3 int3)
+            {
+                SetAndUpdate(int3 with { Y = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Int3(0, value, 0), parent: true);
+            }
+        }
+    }
+
+    public int Z
+    {
+        get => Value is Int3 int3 ? int3.Z : 0;
+        set
+        {
+            if (Value is Int3 int3)
+            {
+                SetAndUpdate(int3 with { Z = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Int3(0, 0, value), parent: true);
+            }
+        }
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(Int3), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Value;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
+}

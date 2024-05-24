@@ -1,0 +1,19 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(TimeSingle))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified.">null</span>
+}
+else
+{
+    var str = Value.ToString();
+
+    <span class="element-box" style="font-size: 0.8rem" data-title="This is the ToString value of the general object.">@(string.IsNullOrWhiteSpace(str) ? "(empty)" : str)</span>
+}
+
+@code {
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+}

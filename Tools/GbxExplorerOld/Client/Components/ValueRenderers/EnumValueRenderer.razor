@@ -1,0 +1,81 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" @onclick="InitValue" data-title="The value doesn't exist. Click to create a value.">null</span>
+
+    @if (nullifiedValue is not null)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+    var values = Enum.GetValues(Value.GetType());
+    var containsCurrentValue = Array.IndexOf(values, Value) != -1;
+    var valueAsInt = Convert.ToInt32(Value);
+    var customValueSpawned = false;
+
+    <select disabled="@cannotWrite" @onchange="OnChange">
+
+        @foreach (var opt in values)
+        {
+            var val = Convert.ToInt32(opt);
+
+            if (!containsCurrentValue && !customValueSpawned)
+            {
+                customValueSpawned = true;
+
+                <option value="@valueAsInt" selected>@valueAsInt</option>
+            }
+
+            <option value="@val" selected="@Value.Equals(opt)">@opt</option>
+        }
+
+    </select>
+
+    @if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+
+@code {
+    private object? nullifiedValue;
+
+    private void InitValue()
+    {
+        if (!ActualType.IsGenericType && ActualType.GetGenericTypeDefinition() != typeof(Nullable<>)) // Init value is legitimate only for Nullable<Enum> types
+        {
+            return;
+        }
+
+        SetAndUpdate(Enum.ToObject(ActualType.GetGenericArguments()[0], 0), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Value;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
+
+    private void OnChange(ChangeEventArgs e)
+    {
+        if (Value is null || e.Value is null)
+        {
+            return;
+        }
+
+        SetAndUpdate(Enum.ToObject(ActualType, int.Parse(e.Value.ToString() ?? "")), parent: true);
+    }
+}

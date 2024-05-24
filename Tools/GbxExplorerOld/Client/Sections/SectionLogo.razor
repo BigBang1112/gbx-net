@@ -1,0 +1,32 @@
+﻿@inject IConfiguration Config
+
+<div class="section section-logo">
+    <h1 class="gbx-heading">
+        <span>GBX.NET</span>
+        <small>EXPLORER</small>
+    </h1>
+
+    @if (!string.IsNullOrWhiteSpace(branch))
+    {
+        <span class="version">@branch@(string.IsNullOrWhiteSpace(commit) ? "" : $" - {commit.Substring(0, 7)}")</span>
+    }
+    else if (version is not null)
+    {
+        <span class="version">v@(version)</span>
+    }
+
+</div>
+
+@code {
+    private string? branch;
+    private string? commit;
+    private string? version;
+
+    protected override void OnInitialized()
+    {
+        branch = Config["Branch"];
+        commit = Config["Commit"];
+        
+        version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+    }
+}
