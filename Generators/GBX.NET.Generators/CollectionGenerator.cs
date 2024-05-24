@@ -35,11 +35,25 @@ public class CollectionGenerator : IIncrementalGenerator
     {
         var builder = new StringBuilder();
 
+        builder.AppendLine("using System.Collections.Immutable;");
+        builder.AppendLine();
         builder.AppendLine("namespace GBX.NET.Managers;");
         builder.AppendLine();
         builder.AppendLine("public static partial class CollectionManager");
         builder.AppendLine("{");
-        builder.AppendLine($"    public static partial string? GetName(int id) => id switch");
+        builder.AppendLine("    public static ImmutableDictionary<int, string> Collections { get; } = new Dictionary<int, string>()");
+        builder.AppendLine("    {");
+
+        foreach (var line in lines)
+        {
+            var split = line.ToString().Split(' ');
+
+            builder.AppendLine($"        [{int.Parse(split[0])}] = \"{split[1]}\",");
+        }
+
+        builder.AppendLine("    }.ToImmutableDictionary();");
+        builder.AppendLine();
+        builder.AppendLine("    public static partial string? GetName(int id) => id switch");
         builder.AppendLine("    {");
 
         foreach (var line in lines)
