@@ -11,6 +11,8 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 GBX.NET.Gbx.LZO = new GBX.NET.LZO.MiniLZO();
+GBX.NET.Gbx.CRC32 = new GBX.NET.Hashing.CRC32();
+GBX.NET.Gbx.ZLib = new GBX.NET.ZLib.ZLib();
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
