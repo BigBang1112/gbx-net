@@ -6,27 +6,34 @@
         <small>EXPLORER</small>
     </h1>
 
-    @if (!string.IsNullOrWhiteSpace(branch))
+    @if (!string.IsNullOrEmpty(version))
+    {
+        <span class="version">@version</span>
+    }
+    else if (string.IsNullOrEmpty(branch))
+    {
+        <span class="version">@commit.Substring(0, 7)</span>
+    }
+    else
     {
         <span class="version">@branch@(string.IsNullOrWhiteSpace(commit) ? "" : $" - {commit.Substring(0, 7)}")</span>
-    }
-    else if (version is not null)
-    {
-        <span class="version">v@(version)</span>
     }
 
 </div>
 
 @code {
-    private string? branch;
-    private string? commit;
+    private string branch = "";
+    private string commit = "";
     private string? version;
 
     protected override void OnInitialized()
     {
         branch = ThisAssembly.Git.Branch;
         commit = ThisAssembly.Git.Commit;
-        
-        version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+
+        if (branch == "master")
+        {
+            version = ThisAssembly.Git.Tag;
+        }
     }
 }
