@@ -7,8 +7,6 @@
 		<UserSecretsId>14bef366-38a3-418f-93d8-e19bd6a41e2a</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..</DockerfileContext>
-		<PublishReadyToRun>true</PublishReadyToRun>
-		<SelfContained>true</SelfContained>
 		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 
