@@ -77,7 +77,12 @@ public class GbxService : IGbxService
 
             using (var gbxnetScope = _logger.BeginScope("GBX.NET"))
             {
-                gbx = await Gbx.ParseAsync(gbxStream, new() { Logger = _logger }, cancellationToken: cancellationToken);
+                gbx = await Gbx.ParseAsync(gbxStream, new()
+                {
+                    Logger = _logger,
+                    OpenPlanetHookExtractMode = _settings.OpenPlanetHookExtractMode,
+                    IgnoreExceptionsInBody = true
+                }, cancellationToken: cancellationToken);
             }
 
             _logger.LogInformation("Gbx successfully imported!");
