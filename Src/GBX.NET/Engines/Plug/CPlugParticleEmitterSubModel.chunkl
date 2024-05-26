@@ -48,6 +48,197 @@ CPlugParticleEmitterSubModel 0x090B2000
  int CircularTrailVertPerPartCount
  int
 
+0x02D
+ version
+ int
+ v3+
+  int
+  int
+ int
+ bool
+ int
+ int
+ bool
+ v1-
+  bool
+ v1+
+  id
+ v4+
+  float
+
+0x02E
+ version
+ v0=
+  CPlugParticleSplashModel
+
+0x02F
+ version
+ v2-
+  int
+  float
+  float
+  v1+
+   iso4
+  v2+
+   CFuncEnvelope
+
+0x030
+ version
+ float
+ float
+ int
+
+0x031
+ version
+ int
+ int
+ bool
+ float
+ CPlugMaterial Material
+ if Material == null
+  CPlugShader Shader
+ v4-
+  CPlugVisual Visual
+ v6+
+  string
+ CPlugSolid2Model Solid2Model
+ v7+
+  iso4
+ vec2
+ int
+ float
+ float
+ v3+
+  float
+  v4+
+   bool
+   v5+
+    bool = true
+    v9+
+     bool
+     v10+
+      bool
+      v11+
+       int
+       v12+
+        CFuncKeysReal
+        v13+
+         CFuncKeysReal
+         CFuncKeysReal
+
+0x032
+ version
+ int
+ int
+ int
+ int
+ bool
+ int
+ int
+ bool
+
+0x033
+ version
+ float
+ float
+ bool
+ float
+ float
+ bool
+ CFuncEnvelope
+ bool
+ CFuncEnvelope
+ float
+ float
+ bool
+ CFuncColorGradient
+ int
+ bool
+ v2-
+  v1+
+   bool
+   v2+
+    bool
+ v3+
+  int
+ float
+ float
+ bool
+ CFuncEnvelope
+ float
+ float
+ v4+
+  float
+  CFuncKeysReal
+
+0x034
+ version
+ GxLightBall
+ CFuncEnvelope
+ CFuncColorGradient
+ v1+
+  bool
+  v2+
+   bool
+
+0x035
+ version
+ v1+
+  return
+ CMwNod
+
+0x036
+ version
+ bool
+ int
+ int
+
+0x037
+ version
+ int
+ float
+ float
+ CFuncKeysReal
+ CFuncKeysReal
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ int
+ CFuncKeysReal
+ float
+ float
+ float
+
+0x038
+ version
+ float
+ float
+
+0x039
+ version
+ float
+ float
+ bool
+ float
+ float
+ float
+ bool
+ float
+ float
+ float
+ bool
+
+0x03A
+ version
+ v1+
+  CPlugParticleGpuSpawn
+  CPlugParticleGpuModel
+
 enum EPlugParticleEmitterSubModel
  Standard
  MultiState
