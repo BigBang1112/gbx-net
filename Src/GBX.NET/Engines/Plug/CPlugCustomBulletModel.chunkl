@@ -1,0 +1,104 @@
+CPlugCustomBulletModel 0x09103000
+
+archive
+ string BulletName
+ float BulletSpeed
+ float BulletMass
+ float BulletHitboxRadius
+ float BulletFluidFriction
+ float BulletLifeTime
+ bool BulletExplodeOnEndLife
+ int BulletRebounds
+ bool BulletBounceOnTechWall
+ int BulletPattern
+ float
+ float
+ float
+ float
+ int PatternBulletCount
+ float PatternBulletRadius
+ float PatternBulletSpinSecond
+ float PatternBulletBlendDuration
+ bool PatternBulletApexRegroup
+ float PatternBulletMinApexTime
+ bool PatternBulletRandomRotations
+ int NoPatternBulletCount
+ float NoPatternBulletDispersionAngle
+ float NoPatternBulletSpeedCoef
+ id BulletAliveSound
+ id BulletExplosionSound
+ id BulletShootingSound
+ CPlugParticleEmitterSubModel[]_deprec AliveParticleEmitterSubModels
+ CPlugParticleEmitterSubModel[]_deprec ExplosionParticleEmitterSubModels
+ v1+
+  float
+  int
+  float
+  v2-
+   int
+   int
+   int
+  float BulletLifeTimeAfterFirstImpact
+  v2+
+   float BulletImpactBouncingN
+   float BulletImpactBouncingT
+   v4+
+    v18-
+     bool = true
+    float BulletHomingDist
+    float BulletHomingAngularSpeed
+    float BulletHomingPeriod
+    v5+
+     bool BulletShowPlayerExplosion
+     v6+
+      float
+      v7+
+       id BulletReboundSound
+       v8+
+        float BulletAliveSoundVolume
+        float BulletExplosionSoundVolume
+        float BulletShootingSoundVolume
+        float BulletReboundSoundVolume
+        v9+
+         bool BulletShowDebris
+         v10+
+          bool BulletModifyFOV
+          v11+
+           bool
+           v12+
+            bool BulletIsFlare
+            v13+
+             float BulletFlareAttractionRadius
+             float BulletFlareExplosionRadius
+             v14+
+              id BulletHomingSound
+              float BulletHomingSoundVolume
+              v15+
+               v18-
+                bool
+               float BulletGuidedAngularSpeed
+               v16+
+                int BulletHomingLockDuration
+                v17+
+                 bool BulletIsWard
+                 float BulletWardRadius
+                 v18+
+                  v18=
+                   bool
+                  int BulletGuidedMinLifeTime
+                  v20+
+                   float BulletGunSpeedCoef
+                   v21+
+                    int BulletType
+                    v22+
+                     int BulletHomingDamageMinAngle_Deg
+                     int BulletHomingDamageMaxAngle_Deg
+                     v23+
+                      float BulletRecoil
+                      v24+
+                       float BulletGunSpeedCoefRatioMin
+                       float BulletGunSpeedCoefRatioMax
+                       v25+
+                        int
+                        v26+
+                         bool
