@@ -1,0 +1,51 @@
+CPlugParticleGpuSpawn 0x090C5000
+
+0x000
+ version
+ v0=
+  int
+ v1+
+  ParticleGpuSpawn Spawn
+  
+archive ParticleGpuSpawn
+ int Version = 4
+ int U01
+ if Version >= 2
+  int U02
+ int U03
+ float U04
+ if Version >= 3
+  float U05
+ if Version >= 4
+  bool U06
+  float U07
+  float U08
+  float U09
+ float U10
+ float U11
+ float U12
+ float U13
+ float U14
+ int U15
+ if U15 == 1
+  float U16
+  float U17
+  float U18
+  float U19
+ if U15 == 2
+  float U20
+  float U21
+  float U22
+  float U23
+  if Version >= 1
+   float U24
+   float U25
+   float U26
+   float U27
+ if U15 == 3
+  boxaligned U28
+ if U15 == 4
+  float U29
+  float U30
+  float U31
+  float U32
