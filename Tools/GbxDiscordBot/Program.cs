@@ -11,6 +11,10 @@ using GBX.NET.Hashing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using GbxDiscordBot.Services;
+using OpenTelemetry.Metrics;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Trace;
 
 var builder = Host.CreateDefaultBuilder(args);
 
@@ -41,6 +45,12 @@ builder.ConfigureServices((context, services) =>
     services.AddLogging(builder =>
     {
         builder.AddSerilog(dispose: true);
+        builder.AddOpenTelemetry(options =>
+        {
+            options.IncludeScopes = true;
+            options.IncludeFormattedMessage = true;
+            options.AddOtlpExporter();
+        });
     });
 
     // Add startup
@@ -57,6 +67,31 @@ builder.ConfigureServices((context, services) =>
     services.AddScoped<IResponseService, ResponseService>();
 
     services.AddMemoryCache();
+
+    services.AddOpenTelemetry()
+        .WithMetrics(options =>
+        {
+            options
+                .AddHttpClientInstrumentation()
+                .AddRuntimeInstrumentation()
+                .AddProcessInstrumentation()
+                .AddOtlpExporter();
+
+            options.AddMeter("System.Net.Http");
+        })
+        .WithTracing(options =>
+        {
+            if (context.HostingEnvironment.IsDevelopment())
+            {
+                options.SetSampler<AlwaysOnSampler>();
+            }
+
+            options
+                .AddHttpClientInstrumentation()
+                .AddEntityFrameworkCoreInstrumentation()
+                .AddOtlpExporter();
+        });
+    services.AddMetrics();
 });
 
 // Use Serilog
