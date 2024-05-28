@@ -17,6 +17,8 @@ public partial class CPlugTree
 
             foreach (var child in tree.Children)
             {
+                yield return child;
+
                 foreach (var descendant in GetAllChildren(child))
                 {
                     yield return descendant;
