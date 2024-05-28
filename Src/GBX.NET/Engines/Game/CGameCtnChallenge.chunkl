@@ -114,8 +114,8 @@ CGameCtnChallenge 0x03043000 // A map.
  int3[] Checkpoints
 
 0x018 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // laps
- bool TMObjective_IsLapRace
- int TMObjective_NbLaps
+ bool IsLapRace
+ int NbLaps
 
 0x019 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // mod
  packdesc ModPackDesc
