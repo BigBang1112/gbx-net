@@ -4,11 +4,11 @@ public partial class CPlugTree
 {
     public string Name { get; set; } = "";
 
-    public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMips = false)
+    public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
-        return GetAllChildren(this, includeVisualMips);
+        return GetAllChildren(this, includeVisualMipLevels);
         
-        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree, bool includeVisualMips)
+        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree, bool includeVisualMipLevels)
         {
             if (tree.Children is null)
             {
@@ -17,11 +17,14 @@ public partial class CPlugTree
 
             foreach (var child in tree.Children)
             {
-                if (includeVisualMips && child is CPlugTreeVisualMip mip)
+                if (includeVisualMipLevels && child is CPlugTreeVisualMip mip)
                 {
-                    foreach (var descendant in GetAllChildren(mip.Levels.First().Value, includeVisualMips))
+                    foreach (var level in mip.Levels)
                     {
-                        yield return descendant;
+                        foreach (var descendant in GetAllChildren(level.Value, includeVisualMipLevels))
+                        {
+                            yield return descendant;
+                        }
                     }
 
                     continue;
@@ -29,7 +32,7 @@ public partial class CPlugTree
 
                 yield return child;
 
-                foreach (var descendant in GetAllChildren(child, includeVisualMips))
+                foreach (var descendant in GetAllChildren(child, includeVisualMipLevels))
                 {
                     yield return descendant;
                 }
