@@ -1543,12 +1543,12 @@ public partial class CGameCtnChallenge :
             
             w.Write(instances.Count);
 
-            var i = 0;
+            var ind = 0;
             foreach (var instance in instances)
             {
-                w.Write(i);
+                w.Write(ind);
                 w.Write(instance.Flags);
-                i++;
+                ind++;
             }
         }
     }
