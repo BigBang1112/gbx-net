@@ -1484,7 +1484,10 @@ public partial class CGameCtnChallenge :
 
             foreach (var (id, flags) in idFlagsPair)
             {
-                dict[id].Flags = flags;
+                if (dict.TryGetValue(id, out var instance))
+                {
+                    instance.Flags = flags;
+                }
             }
 
             n.MacroblockInstances = dict.Values.ToList();
@@ -1494,22 +1497,20 @@ public partial class CGameCtnChallenge :
         {
             w.Write(Version);
 
-            var instanceDict = new Dictionary<MacroblockInstance, int>();
-            var hasObjectsHashSet = new HashSet<MacroblockInstance>();
+            var dict = new Dictionary<MacroblockInstance, int>();
 
             if (n.MacroblockInstances is not null)
             {
                 for (var i = 0; i < n.MacroblockInstances.Count; i++)
                 {
-                    instanceDict[n.MacroblockInstances[i]] = i;
+                    dict[n.MacroblockInstances[i]] = i;
                 }
             }
 
             foreach (var block in n.GetBlocks())
             {
-                if (block.MacroblockReference is not null && instanceDict.TryGetValue(block.MacroblockReference, out int index))
+                if (block.MacroblockReference is not null && dict.TryGetValue(block.MacroblockReference, out int index))
                 {
-                    hasObjectsHashSet.Add(block.MacroblockReference);
                     w.Write(index);
                 }
                 else
@@ -1520,9 +1521,8 @@ public partial class CGameCtnChallenge :
 
             foreach (var item in n.GetAnchoredObjects())
             {
-                if (item.MacroblockReference is not null && instanceDict.TryGetValue(item.MacroblockReference, out int index))
+                if (item.MacroblockReference is not null && dict.TryGetValue(item.MacroblockReference, out int index))
                 {
-                    hasObjectsHashSet.Add(item.MacroblockReference);
                     w.Write(index);
                 }
                 else
@@ -1537,18 +1537,11 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            var instances = n.MacroblockInstances
-                .Where(hasObjectsHashSet.Contains)
-                .ToList();
-            
-            w.Write(instances.Count);
-
-            var ind = 0;
-            foreach (var instance in instances)
+            w.Write(n.MacroblockInstances.Count);
+            for (var i = 0; i < n.MacroblockInstances.Count; i++)
             {
-                w.Write(ind);
-                w.Write(instance.Flags);
-                ind++;
+                w.Write(i);
+                w.Write(n.MacroblockInstances[i].Flags);
             }
         }
     }
