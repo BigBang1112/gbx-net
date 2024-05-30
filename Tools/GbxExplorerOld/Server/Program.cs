@@ -1,10 +1,45 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.ResponseCompression;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Logging.AddOpenTelemetry(options =>
+{
+    options.IncludeScopes = true;
+    options.IncludeFormattedMessage = true;
+    options.AddOtlpExporter();
+});
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(x =>
+    {
+        x.AddRuntimeInstrumentation()
+            .AddProcessInstrumentation()
+            .AddMeter("Microsoft.AspNetCore.Hosting")
+            .AddMeter("Microsoft.AspNetCore.Server.Kestrel")
+            .AddMeter("Microsoft.AspNetCore.Http.Connections")
+            .AddMeter("Microsoft.AspNetCore.Routing")
+            .AddMeter("Microsoft.AspNetCore.Diagnostics")
+            .AddMeter("Microsoft.AspNetCore.RateLimiting")
+            .AddMeter("System.Net.Http")
+            .AddOtlpExporter();
+    })
+    .WithTracing(x =>
+    {
+        if (builder.Environment.IsDevelopment())
+        {
+            x.SetSampler<AlwaysOnSampler>();
+        }
+
+        x.AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddOtlpExporter();
+    });
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
