@@ -1114,7 +1114,7 @@ public partial class CGameCtnChallenge :
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(U01);
-
+            
             using var ms = new MemoryStream();
             using var wBuffer = new GbxWriter(ms);
             using var _ = new Encapsulation(wBuffer);
@@ -1494,20 +1494,22 @@ public partial class CGameCtnChallenge :
         {
             w.Write(Version);
 
-            var dict = new Dictionary<MacroblockInstance, int>();
+            var instanceDict = new Dictionary<MacroblockInstance, int>();
+            var hasObjectsHashSet = new HashSet<MacroblockInstance>();
 
             if (n.MacroblockInstances is not null)
             {
                 for (var i = 0; i < n.MacroblockInstances.Count; i++)
                 {
-                    dict[n.MacroblockInstances[i]] = i;
+                    instanceDict[n.MacroblockInstances[i]] = i;
                 }
             }
 
             foreach (var block in n.GetBlocks())
             {
-                if (block.MacroblockReference is not null && dict.TryGetValue(block.MacroblockReference, out int index))
+                if (block.MacroblockReference is not null && instanceDict.TryGetValue(block.MacroblockReference, out int index))
                 {
+                    hasObjectsHashSet.Add(block.MacroblockReference);
                     w.Write(index);
                 }
                 else
@@ -1518,8 +1520,9 @@ public partial class CGameCtnChallenge :
 
             foreach (var item in n.GetAnchoredObjects())
             {
-                if (item.MacroblockReference is not null && dict.TryGetValue(item.MacroblockReference, out int index))
+                if (item.MacroblockReference is not null && instanceDict.TryGetValue(item.MacroblockReference, out int index))
                 {
+                    hasObjectsHashSet.Add(item.MacroblockReference);
                     w.Write(index);
                 }
                 else
@@ -1534,11 +1537,18 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            w.Write(n.MacroblockInstances.Count);
-            for (var i = 0; i < n.MacroblockInstances.Count; i++)
+            var instances = n.MacroblockInstances
+                .Where(hasObjectsHashSet.Contains)
+                .ToList();
+            
+            w.Write(instances.Count);
+
+            var index = 0;
+            foreach (var instance in instances)
             {
-                w.Write(i);
-                w.Write(n.MacroblockInstances[i].Flags);
+                w.Write(index);
+                w.Write(instance.Flags);
+                index++;
             }
         }
     }
