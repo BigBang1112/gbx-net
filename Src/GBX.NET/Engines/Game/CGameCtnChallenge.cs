@@ -700,6 +700,9 @@ public partial class CGameCtnChallenge :
         public int Version { get; set; } = 6;
 
         public bool U01;
+        public ulong? U02;
+
+        public string? UnlimiterMessage { get; set; }
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
@@ -713,15 +716,34 @@ public partial class CGameCtnChallenge :
             var nbBlocks = r.ReadInt32();
             n.blocks = new List<CGameCtnBlock>(nbBlocks);
 
+            var isUnlimiter = default(bool?);
+
             for (var i = 0; i < nbBlocks; i++)
             {
                 var block = r.ReadReadable<CGameCtnBlock>(Version);
                 n.blocks.Add(block);
 
-                if (block.Flags == -1)
+                if (block.Flags != -1)
+                {
+                    continue;
+                }
+
+                isUnlimiter ??= block.Name.StartsWith("TMUnlimiter 2");
+
+                if (isUnlimiter.Value)
+                {
+                    UnlimiterMessage = block.Name;
+                }
+                else
                 {
                     i--;
                 }
+            }
+
+            if (isUnlimiter.GetValueOrDefault())
+            {
+                U02 = r.ReadUInt64();
+                return;
             }
 
             while ((r.PeekUInt32() & 0xC0000000) > 0)
@@ -749,6 +771,11 @@ public partial class CGameCtnChallenge :
             foreach (var block in n.blocks)
             {
                 w.WriteWritable(block, Version);
+            }
+
+            if (UnlimiterMessage is not null)
+            {
+                w.Write(U02.GetValueOrDefault());
             }
         }
     }
