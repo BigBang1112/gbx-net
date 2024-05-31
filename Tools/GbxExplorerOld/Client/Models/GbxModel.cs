@@ -55,7 +55,7 @@ public class GbxModel : GbxModelBase
     {
         var type = node.GetType();
 
-        while (type is not null && type != typeof(CMwNod))
+        while (type is not null && type != typeof(object))
         {
             yield return type;
             type = type.BaseType;
