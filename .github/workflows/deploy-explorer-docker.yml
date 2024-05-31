@@ -5,7 +5,7 @@ on:
     types: [ published ]
     
 env:
-  BUILD_DIR: Tools/GbxExplorer/Server
+  BUILD_DIR: Tools/GbxExplorerOld/Server
   IMAGE_NAME: gbx-explorer
 
 jobs:
