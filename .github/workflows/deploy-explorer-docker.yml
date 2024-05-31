@@ -7,7 +7,6 @@ on:
 env:
   BUILD_DIR: Tools/GbxExplorer/Server
   IMAGE_NAME: gbx-explorer
-  VERSION: undefined
 
 jobs:
 
@@ -24,8 +23,8 @@ jobs:
         echo "VERSION=${TAG#v}" >>${GITHUB_ENV}
       env:
         OWNER: '${{ github.repository_owner }}'
-        TAG: '${{ github.event.release.tag_name }}'
+        TAG: ':${{ github.event.release.tag_name }}'
       
     - name: Build Docker Image
-      run: docker build . -f $BUILD_DIR/Dockerfile -t ghcr.io/$OWNER_LC/$IMAGE_NAME -t ghcr.io/$OWNER_LC/$IMAGE_NAME:$VERSION -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:$VERSION
+      run: docker build . -f $BUILD_DIR/Dockerfile -t ghcr.io/$OWNER_LC/$IMAGE_NAME -t ghcr.io/$OWNER_LC/$IMAGE_NAME$VERSION -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME$VERSION
     
