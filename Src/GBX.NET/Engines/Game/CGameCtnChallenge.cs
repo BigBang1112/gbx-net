@@ -702,7 +702,7 @@ public partial class CGameCtnChallenge :
         public bool U01;
         public ulong? U02;
 
-        public string? UnlimiterMessage { get; set; }
+        public bool IsUnlimiter2 { get; set; }
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
@@ -732,7 +732,7 @@ public partial class CGameCtnChallenge :
 
                 if (isUnlimiter.Value)
                 {
-                    UnlimiterMessage = block.Name;
+                    IsUnlimiter2 = isUnlimiter.Value;
                 }
                 else
                 {
@@ -740,7 +740,7 @@ public partial class CGameCtnChallenge :
                 }
             }
 
-            if (isUnlimiter.GetValueOrDefault())
+            if (IsUnlimiter2)
             {
                 U02 = r.ReadUInt64();
                 return;
@@ -773,7 +773,7 @@ public partial class CGameCtnChallenge :
                 w.WriteWritable(block, Version);
             }
 
-            if (UnlimiterMessage is not null)
+            if (IsUnlimiter2)
             {
                 w.Write(U02.GetValueOrDefault());
             }
