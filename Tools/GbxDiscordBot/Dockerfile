@@ -2,7 +2,10 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
 ARG TARGETARCH=x64
 ARG APPNAME=GbxDiscordBot
+RUN apk add --no-cache git
 WORKDIR /src
+
+COPY .git/ ./.git/
 
 # copy csproj and restore as distinct layers
 COPY Tools/$APPNAME/*.csproj Tools/$APPNAME/
@@ -20,11 +23,11 @@ COPY Src/GBX.NET.Hashing/ Src/GBX.NET.Hashing/
 COPY Generators/GBX.NET.Generators/ Generators/GBX.NET.Generators/
 COPY Resources/ Resources/
 WORKDIR /src/Tools/$APPNAME
-RUN dotnet publish -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app --no-restore --self-contained
+RUN dotnet publish -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app --no-restore
 
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime:8.0-alpine
 ENV \
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     LC_ALL=en_US.UTF-8 \

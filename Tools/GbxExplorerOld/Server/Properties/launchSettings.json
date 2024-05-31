@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "GbxExplorerOld.Server": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OTEL_SERVICE_NAME": "GbxExplorerOld"
+      },
+      "applicationUrl": "https://localhost:61308;http://localhost:61309"
+    }
+  }
+}

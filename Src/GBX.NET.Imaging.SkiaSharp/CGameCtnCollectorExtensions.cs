@@ -13,7 +13,7 @@ public static class CGameCtnCollectorExtensions
     /// Gets the collector's icon as <see cref="SKBitmap"/>.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <returns>Icon as <see cref="SKBitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
+    /// <returns>Icon as <see cref="SKBitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
     public static SKBitmap? GetIconBitmap(this CGameCtnCollector node)
     {
         if (node.Icon is null)
@@ -26,7 +26,7 @@ public static class CGameCtnCollectorExtensions
 
             return null;
         }
-        
+
         var width = node.Icon.GetLength(0);
         var height = node.Icon.GetLength(1);
 
@@ -40,15 +40,7 @@ public static class CGameCtnCollectorExtensions
             }
         }
 
-        var bitmap = new SKBitmap();
-
-        var gcHandle = GCHandle.Alloc(data, GCHandleType.Pinned);
-
-        // install the pixels with the color type of the pixel data
-        var info = new SKImageInfo(width, height, SKImageInfo.PlatformColorType, SKAlphaType.Unpremul);
-        bitmap.InstallPixels(info, gcHandle.AddrOfPinnedObject(), info.RowBytes, delegate { gcHandle.Free(); });
-
-        return bitmap;
+        return GetBitmap(data, width, height);
     }
 
     /// <summary>
@@ -58,6 +50,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="stream">Stream to export to.</param>
     /// <param name="format">Image format to use.</param>
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, Stream stream, SKEncodedImageFormat format, int quality)
     {
         using var icon = node.GetIconBitmap();
@@ -69,6 +62,7 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, Stream stream)
     {
         return ExportIcon(node, stream, SKEncodedImageFormat.Png, 100);
@@ -81,6 +75,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="fileName">File to export to.</param>
     /// <param name="format">Image format to use.</param>
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName, SKEncodedImageFormat format, int quality)
     {
         if (node.Icon is null && node.IconWebP is null)
@@ -97,8 +92,55 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName)
     {
         return ExportIcon(node, fileName, SKEncodedImageFormat.Png, 100);
+    }
+
+    /// <summary>
+    /// Replaces the collector's raw RGB icon with a WebP encoded icon. WebP is only accepted in TM2020.
+    /// </summary>
+    /// <param name="node">CGameCtnCollector</param>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
+    public static bool UpgradeIconToWebP(this CGameCtnCollector node)
+    {
+        if (node.Icon is null)
+        {
+            return false;
+        }
+
+        int width = node.Icon.GetLength(0);
+        int height = node.Icon.GetLength(1);
+        int[] array = new int[width * height];
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                array[y * width + x] = node.Icon[x, height - y - 1].ToArgb();
+            }
+        }
+
+        using var bitmap = GetBitmap(array, width, height);
+        var iconStream = new MemoryStream();
+        bitmap.Encode(iconStream, SKEncodedImageFormat.Webp, 100);
+        node.IconWebP = iconStream.ToArray();
+        node.Icon = null;
+        return true;
+    }
+
+    // public static bool DowngradeIconToRaw(this CGameCtnCollector node)
+
+    private static SKBitmap GetBitmap(int[] data, int width, int height)
+    {
+        var bitmap = new SKBitmap();
+
+        var gcHandle = GCHandle.Alloc(data, GCHandleType.Pinned);
+
+        // install the pixels with the color type of the pixel data
+        var info = new SKImageInfo(width, height, SKImageInfo.PlatformColorType, SKAlphaType.Unpremul);
+        bitmap.InstallPixels(info, gcHandle.AddrOfPinnedObject(), info.RowBytes, delegate { gcHandle.Free(); });
+        
+        return bitmap;
     }
 }

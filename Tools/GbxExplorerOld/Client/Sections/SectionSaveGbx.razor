@@ -1,0 +1,259 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using GBX.NET.Engines.MwFoundations
+@using GBX.NET.Managers
+
+@inject IGbxService GbxService
+@inject IDownloadStreamService DownloadService
+@inject ILogger Logger
+@inject ISelectionService SelectionService
+
+<div class="section section-save-gbx@(selectedGbx is null ? " centered-note" : "")">
+    @if (selectedGbx is null)
+    {
+        <span>No *.Gbx is selected.</span>
+    }
+    else
+    {
+        var extensions = Enumerable.Empty<string>();
+
+        if (selectedSaveMethod == 0)
+        {
+            extensions = ClassManager.GetGbxExtensions(selectedGbx.Gbx.Header.ClassId);
+        }
+        else if (element is not null)
+        {
+            var type = element.GetValue()?.GetType() ?? element.Property?.PropertyType;
+
+            if (type is not null)
+            {
+                var classId = ClassManager.GetId(type);
+
+                if (classId.HasValue)
+                {
+                    extensions = ClassManager.GetGbxExtensions(classId.Value);
+                }
+            }
+        }
+
+        <div class="tabs">
+            <div class="@(selectedSaveMethod == 0 ? "selected" : "")" @onclick="() => selectedSaveMethod = 0">Export imported Gbx</div>
+            <div class="selected-node @(selectedSaveMethod == 1 ? "selected" : "")" @onclick="() => selectedSaveMethod = 1">Export selected node to Gbx</div>
+        </div>
+
+        var selectedValue = selectedSaveMethod == 1 ? element?.GetValue() : null;
+
+        @if (selectedSaveMethod == 0 || (selectedValue is CMwNod && selectedValue is not GBX.NET.Engines.Game.CGameCtnBlock))
+        {
+            var node = selectedSaveMethod switch
+            {
+                0 => selectedGbx.Gbx.Node,
+                1 => selectedValue as CMwNod,
+                _ => null
+            };
+
+            var writingNotSupported = node is not null && !ClassManager.IsClassWriteSupported(ClassManager.GetId(node.GetType()).GetValueOrDefault());
+
+            <div class="save-params">
+
+                @if (extensions.Any())
+                {
+                    if (selectedSaveMethod == 1 && !extensions.Contains(customExtension))
+                    {
+                        customExtension = extensions.FirstOrDefault() ?? "";
+                    }
+
+                    <input type="text" style="min-width:6rem;" @bind="FileName" />
+                    <div>.</div>
+                    <select @bind="Extension" disabled="@(extensions.Count() == 1)">
+                        @foreach (var ext in extensions)
+                        {
+                            <option value="@ext">@ext</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input type="text" style="min-width:0;" @bind="FileName" />
+                }
+
+                <div>.Gbx</div>
+            </div>
+            <div style="text-align: center">
+                Export for TMS/TMNESWC/TM1.0?
+                <select style="margin-left:0.5rem" @bind="SaveOption">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <button class="button tooltip-top"
+                @onclick="SaveAsync"
+            disabled="@(node is null || writingNotSupported)"
+            data-title="@(node is not null && !writingNotSupported ? "" : $"Export of {node?.GetType().Name ?? "unknown class"} is not supported.")">
+                Export to Gbx!
+            </button>
+        }
+        else
+        {
+            <div class="save-node-invalid">
+
+                @if (element is null)
+                {
+                    <span>Nothing was selected to be exported.</span>
+                }
+                else
+                {
+                    <span>Currently selected value cannot be exported to Gbx.</span>
+                }
+
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private GbxModel? selectedGbx;
+    private int selectedSaveMethod;
+    private string customFileName = "";
+    private string customExtension = "";
+    private NodeTreeElement? element;
+
+    public int SaveOption { get; set; }
+    public bool IsOldTm => SaveOption == 1;
+
+    private string FileName
+    {
+        get => selectedSaveMethod == 0 ? selectedGbx?.FileNameWithoutExtension ?? "" : customFileName;
+        set
+        {
+            if (selectedSaveMethod == 0)
+            {
+                if (selectedGbx is not null)
+                {
+                    selectedGbx.FileNameWithoutExtension = value;
+                }
+            }
+            else
+            {
+                customFileName = value;
+            }
+        }
+    }
+
+    private string Extension
+    {
+        get => selectedSaveMethod == 0 ? selectedGbx?.OfficialExtension ?? "" : customExtension;
+        set
+        {
+            if (selectedSaveMethod == 0)
+            {
+                if (selectedGbx is not null)
+                {
+                    selectedGbx.OfficialExtension = value;
+                }
+            }
+            else
+            {
+                customExtension = value;
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        selectedGbx = GbxService.SelectedGbx;
+        SelectionService.SelectionChanged += SelectionChanged;
+    }
+
+    public void Select(GbxModel gbx)
+    {
+        selectedGbx = gbx;
+        StateHasChanged();
+    }
+
+    private async Task SaveAsync()
+    {
+        if (selectedGbx is null)
+        {
+            return;
+        }
+
+        var fileName = default(string);
+
+        switch (selectedSaveMethod)
+        {
+            case 0:
+                fileName = selectedGbx.OfficialExtension is null
+                    ? selectedGbx.FileNameWithoutExtension + ".Gbx"
+                    : selectedGbx.FileNameWithoutExtension + "." + selectedGbx.OfficialExtension + ".Gbx";
+                break;
+            case 1:
+                fileName = string.IsNullOrEmpty(customExtension)
+                    ? customFileName + ".Gbx"
+                    : customFileName + "." + customExtension + ".Gbx";
+
+                if (element is null) return;
+
+                break;
+            default:
+                return;
+        }
+
+        Logger.LogInformation("Preparint to export {fileName}...", fileName);
+
+        using var scope = Logger.BeginScope("{fileName}", fileName);
+
+        var remap = ClassIdRemapMode.Latest;  
+
+        if (IsOldTm)
+        {
+            remap = ClassIdRemapMode.Id2006;
+            Logger.LogInformation("Export adjusted to old TM games.");
+        }
+
+        using var ms = new MemoryStream();
+
+        try
+        {
+            switch (selectedSaveMethod)
+            {
+                case 0:
+                    Logger.LogInformation("Exporting imported Gbx to a new file {fileName}...", fileName);
+
+                    using (var gbxnetScope = Logger.BeginScope("GBX.NET"))
+                    {
+                        selectedGbx.Gbx.Save(ms, new() { ClassIdRemapMode = remap });
+                    }
+                    
+                    break;
+                case 1:
+                    if (element?.GetValue() is not CMwNod node) return;
+                    
+                    using (var gbxnetScope = Logger.BeginScope("GBX.NET"))
+                    {
+                        node.Save(ms, new() { ClassIdRemapMode = remap });
+                    }
+                    
+                    break;
+                default:
+                    return;
+            }
+
+            Logger.LogInformation("Exported successfully!");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Export has thrown {exName} -> {msg}", ex.GetType().Name, ex.Message);
+            return;
+        }
+
+        Logger.LogInformation("Downloading the file...");
+        await DownloadService.DownloadAsync(fileName, ms);
+    }
+
+    private void SelectionChanged(NodeTreeElement? element)
+    {
+        this.element = element;
+        StateHasChanged();
+    }
+}

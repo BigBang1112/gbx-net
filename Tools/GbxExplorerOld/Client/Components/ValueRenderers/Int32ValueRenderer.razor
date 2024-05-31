@@ -1,0 +1,59 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(int))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" @onclick="InitValue" data-title="The value doesn't exist. Click to create a value.">null</span>
+
+    @if (nullifiedValue.HasValue)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is int val)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+    
+    <span data-title="@(cannotWrite ? "This value cannot be modified." : "")">
+        <input type="text" @bind="Val" disabled="@cannotWrite" style="min-width: 4ch; width: @(val.ToString().Length)ch;" oninput="onInputText(this)" />
+    </span>
+
+    if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+else
+{
+    <span>Error: value is not int</span>
+}
+
+@code {
+    private int? nullifiedValue;
+
+    public int? Val
+    {
+        get => Value as int?;
+        set => SetAndUpdate(value, parent: true);
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(int), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Val;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
+}

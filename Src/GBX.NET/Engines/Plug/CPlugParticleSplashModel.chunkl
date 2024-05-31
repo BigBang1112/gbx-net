@@ -1,0 +1,37 @@
+CPlugParticleSplashModel 0x090B5000
+
+0x000
+ version
+ int
+ float
+ float
+ float
+ int
+ float
+ float
+ float
+ v1+
+  bool
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ bool
+ float
+ float
+ float
+ float
+ float
+ float
+ v2+
+  float
+  float
+  v3+
+   CFuncEnvelope
+   v4+
+    float
+    float
+    float

@@ -1,0 +1,34 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug
+@using System.IO.Compression
+
+@inject IJSRuntime JS
+@inject IDownloadStreamService DownloadService
+
+@inherits NodeValuePreview
+@attribute [AppliesForType(typeof(CPlugCrystal))]
+
+@if (Value is CPlugCrystal crystal)
+{
+    <div id="mesh-renderer" style="margin:1rem 0;position:relative">
+        <span style="z-index: 999;position: absolute;top:40%;text-align:center;width:100%">@(
+        (MarkupString)statusMsg
+        )</span>
+    </div>
+
+    <button class="button" style="width:100%;justify-content:center;margin-bottom:0.5rem">Export to .obj file</button>
+}
+
+@{
+    base.BuildRenderTree(__builder);
+}
+
+@code {
+    private CPlugCrystal? prevCrystal;
+    private string statusMsg = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

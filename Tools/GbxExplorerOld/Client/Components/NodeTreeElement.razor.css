@@ -1,0 +1,70 @@
+﻿.element {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    animation: fadeIn 0.3s;
+    transition: background-color 0.1s;
+    border-radius: 0.2rem;
+}
+
+    .element.highlight {
+        background-color: #A801;
+    }
+
+.type {
+    font-size: 0.8rem;
+    background-color: #22262A88;
+    font-family: Source Code Pro;
+    padding: 5px 0.5rem;
+    border-radius: 0.2rem;
+    transition: opacity 0.2s;
+}
+
+.member-name {
+    padding: 1px 0.8rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: #42495122;
+    transition: opacity 0.2s;
+}
+
+    .member-name:hover {
+        background-color: #42495166;
+    }
+
+.value {
+    font-family: Source Code Pro;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 0.3rem;
+    height: 100%;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.value:empty {
+    display: none;
+}
+
+.applied-chunk-tip {
+    opacity: 0;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+    .applied-chunk-tip.not-included {
+        color: yellow;
+    }
+
+    .applied-chunk-tip.hovered {
+        opacity: 1;
+    }
+
+.not-included-member {
+    opacity: 0.3;
+    animation: fadeIn30 0.3s;
+}

@@ -1,0 +1,194 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using GBX.NET.Managers
+@using GBX.NET.Serialization.Chunking
+
+@inject ITypeCacheService TypeCacheService
+@inject IValueRendererService ValueRendererService
+@inject IOpenChunkService OpenChunkService
+
+@{
+    if (Chunk is null)
+    {
+        return;
+    }
+
+    var skippableChunk = Chunk as ISkippableChunk;
+    var chunkType = Chunk.GetType();
+
+    var atts = chunkType.GetCustomAttribute<ChunkAttribute>();
+
+    string boxClass;
+
+    if (typeof(IHeaderChunk).IsAssignableFrom(chunkType))
+    {        
+        boxClass = "header-chunk";
+    }
+    else
+    {
+        if (typeof(ISkippableChunk).IsAssignableFrom(chunkType))
+        {
+            boxClass = "body-skippable-chunk";
+        }
+        else
+        {
+            boxClass = "body-chunk";
+        }
+    }
+
+    var chunkId = Chunk.Id & 0xFFF;
+    var isSameBaseId = true;
+}
+
+<div class="chunk-button @boxClass @(over || OpenChunkService.OpenedChunks.Contains(chunkType) ? "hovered" : "")">
+    <div class="chunk-name"
+        @onclick="async () => await OpenOrCloseChunkAsync(chunkType)"
+        @onmouseover="() => over = true"
+        @onmouseout="() => over = false">
+
+        @if (chunkType.IsGenericType)
+        {
+            var classType = chunkType.GetGenericArguments()[0];
+            var name = classType.Name;
+            var classId = GBX.NET.Managers.ClassManager.GetId(classType);
+
+            if (classId.HasValue && (classId.Value & 0xFFFFF000) == (Chunk.Id & 0xFFFFF000))
+            {
+                <span>@name</span>
+            }
+            else
+            {
+                isSameBaseId = false;
+
+                <span>0x@(Chunk.Id.ToString("X8"))</span>
+            }
+        }
+        else
+        {
+            <span>@chunkType.DeclaringType?.Name</span>
+        }
+
+        @if (isSameBaseId)
+        {
+            <span style="font-family: Source Code Pro;margin-left:0.3rem">0x@(chunkId.ToString("X3") ?? "XXX")</span>
+        }
+
+        @if (Chunk is IVersionable chunkVersionable)
+        {
+            <span style="margin-left:0.3rem;font-family: Source Code Pro;">v@(chunkVersionable.Version)</span>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(atts?.Description))
+        {
+            <span style="margin-left:0.3rem">(@atts.Description)</span>
+        }
+        
+        @if (atts is null)
+        {
+            <span style="margin-left:0.3rem;color:#FFB70F">(UNKNOWN)</span>
+        }
+    </div>
+
+    <div class="delete" @onclick="() => Deletion?.Invoke(Chunk)"><i class="fa-solid fa-trash-can"></i></div>
+
+    @if (OpenChunkService.OpenedChunks.Contains(chunkType))
+    {
+        if (atts is null)
+        {
+            // nastavení unknown chunků
+        }
+        else
+        {
+            var fields = chunkType.GetFields();
+            
+            <div class="inner @(fields.Length == 0 && Chunk is not IVersionable ? "one-column" : "")">
+
+                @if (Chunk is IVersionable versionable)
+                {
+                    <div style="font-weight:bold;">Version</div>
+                    <div style="font-size:0.85rem;display:flex;font-family:Source Code Pro;">
+                        <DynamicComponent Type="ValueRendererService[typeof(int)]" Parameters="GetValueRendererParameters(versionable.Version, isNullable: false, typeof(int), property: chunkType.GetProperty(nameof(IVersionable.Version)))" />
+                    </div>
+                }
+
+                @if (fields.Length == 0)
+                {
+                    <div style="font-weight: normal;color:gray;">No unknown values.</div>
+                }
+                else
+                {
+                    @foreach (var field in fields)
+                    {
+                        var (typeInfo, isNullable) = TypeCacheService.GetTypeInfoModel(field.FieldType, property: null);
+                        var value = field.GetValue(Chunk);
+                        var actualType = value?.GetType() ?? field.FieldType;
+
+                        <div>
+                            <TypeRenderer TypeInfo="typeInfo" />
+                            <span style="font-weight:bold">@field.Name</span>
+                        </div>
+                        <div style="display:flex;gap:0.2rem;font-family:Source Code Pro">
+                            <DynamicComponent Type="ValueRendererService[actualType]" Parameters="GetValueRendererParameters(value, isNullable, actualType, field)" />
+                        </div>
+                    }
+                }
+
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private bool over;
+
+    [Parameter]
+    public IChunk? Chunk { get; set; }
+
+    [Parameter]
+    public Action<IChunk>? Deletion { get; set; }
+
+    [Parameter]
+    public GbxExplorerOld.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; }
+
+    private async Task OpenOrCloseChunkAsync(Type chunkType)
+    {
+        if (OpenChunkService.OpenedChunks.Contains(chunkType))
+        {
+            OpenChunkService.OpenedChunks.Remove(chunkType);
+        }
+        else
+        {
+            OpenChunkService.OpenedChunks.Add(chunkType);
+        }
+
+        StateHasChanged();
+        await Task.Delay(1);
+
+        ValuePreview?.UpdateNodeTreeExplorer();
+    }
+
+    private Dictionary<string, object?> GetValueRendererParameters(
+        object? value, 
+        bool isNullable,
+        Type? actualType, 
+        FieldInfo? field = null,
+        PropertyInfo? property = null)
+    {
+        return new Dictionary<string, object?>
+        {
+            { "Value", value },
+            { "Owner", Chunk },
+            { "IsNullable", isNullable },
+            { "ActualType", actualType },
+            { "Field", field },
+            { "Property", property },
+            { "ChunkViewer", this }
+        };
+    }
+
+    public void Update()
+    {
+        StateHasChanged();
+        ValuePreview?.UpdateNodeTreeExplorer();
+    }
+}

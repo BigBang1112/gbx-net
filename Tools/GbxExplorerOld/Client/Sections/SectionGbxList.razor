@@ -1,0 +1,108 @@
+﻿@inject ILogger Logger
+@inject IGbxService GbxService;
+
+<div class="section section-gbx-list@(GbxList.Count == 0 ? " centered-note" : "")" @onkeydown="OnKeyDownAsync" tabindex="0">
+    @if (GbxList.Count == 0)
+    {
+        <span>No *.Gbx files are imported.</span>
+    }
+    else
+    {
+        <div class="gbx-list-inner" tabindex="-1">
+
+        @foreach (var gbx in GbxList)
+        {
+            <button class="button-delete fadeIn" @onclick="async () => await DeleteAsync(gbx)">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <button
+                class="button text-align-left fadeIn tooltip-bottom @(gbx.Selected ? "button-toggled" : "")"
+                data-title="@gbx.FileName"
+                @onclick="async () => await SelectAsync(gbx)">
+
+                <img src="img/gbx-small.png" class="button-icon" />
+                <span class="button-text">@gbx.FileName</span>
+
+            </button>
+        }
+
+        </div>
+    }
+</div>
+
+@code {
+    private List<GbxModel> GbxList => GbxService.List;
+
+    [Parameter]
+    public EventCallback<GbxModel> OnSelect { get; set; }
+
+    public async Task AddGbxAsync(GbxModel gbx)
+    {
+        await SelectAsync(gbx);
+        GbxList.Add(gbx);
+        StateHasChanged();
+    }
+
+    public async Task SelectAsync(GbxModel? gbx)
+    {
+        GbxList.ForEach(x => x.Selected = false);
+
+        if (gbx is not null)
+        {
+            gbx.Selected = true;
+        }
+
+        GbxService.SelectedGbx = gbx;
+
+        await OnSelect.InvokeAsync(gbx);
+    }
+
+    private async Task OnKeyDownAsync(KeyboardEventArgs args)
+    {
+        if (args.Code == "Delete")
+        {
+            await DeleteAsync(GbxService.SelectedGbx);
+        }
+    }
+
+    private async ValueTask DeleteAsync(GbxModel? gbx)
+    {
+        if (gbx is null)
+        {
+            return;
+        }
+
+        var indexOf = GbxList.IndexOf(gbx);
+        GbxList.Remove(gbx);
+
+        Logger.LogInformation("Removed '{file}' from the Gbx list.", gbx.FileName);
+
+        if (gbx != GbxService.SelectedGbx)
+        {
+            return;
+        }
+
+        if (indexOf == 0)
+        {
+            if (GbxList.Count > 0)
+            {
+                await SelectAsync(GbxList[0]);
+            }
+            else
+            {
+                await SelectAsync(null);
+            }
+
+            return;
+        }
+
+        if (indexOf == GbxList.Count)
+        {
+            await SelectAsync(null);
+        }
+        else
+        {
+            await SelectAsync(GbxList[indexOf]);
+        }
+    }
+}

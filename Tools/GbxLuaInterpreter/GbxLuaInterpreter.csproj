@@ -8,6 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Content Include="Examples\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\..\Src\GBX.NET.Lua\GBX.NET.Lua.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>

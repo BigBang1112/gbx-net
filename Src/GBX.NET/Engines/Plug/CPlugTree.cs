@@ -2,13 +2,26 @@
 
 public partial class CPlugTree
 {
+    [AppliedWithChunk<Chunk0904F00D>]
     public string Name { get; set; } = "";
 
-    public IEnumerable<CPlugTree> GetAllChildren()
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public int Flags { get; set; }
+
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public Iso4? Translation { get; set; }
+
+    public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
-        return GetAllChildren(this);
+        return GetAllChildren(this, includeVisualMipLevels);
         
-        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree)
+        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree, bool includeVisualMipLevels)
         {
             if (tree.Children is null)
             {
@@ -17,7 +30,22 @@ public partial class CPlugTree
 
             foreach (var child in tree.Children)
             {
-                foreach (var descendant in GetAllChildren(child))
+                if (includeVisualMipLevels && child is CPlugTreeVisualMip mip)
+                {
+                    foreach (var level in mip.Levels)
+                    {
+                        foreach (var descendant in GetAllChildren(level.Value, includeVisualMipLevels))
+                        {
+                            yield return descendant;
+                        }
+                    }
+
+                    continue;
+                }
+
+                yield return child;
+
+                foreach (var descendant in GetAllChildren(child, includeVisualMipLevels))
                 {
                     yield return descendant;
                 }

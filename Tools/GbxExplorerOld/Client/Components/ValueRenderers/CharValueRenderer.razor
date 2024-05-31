@@ -1,0 +1,17 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(char))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value.">null</span>
+}
+else
+{
+    <input type="text" value="@Value.ToString()" disabled="@(Property?.CanWrite == false)" style="width: 24px" />
+}
+
+@code {
+
+}

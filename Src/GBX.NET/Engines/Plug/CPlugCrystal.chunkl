@@ -3,19 +3,19 @@ CPlugCrystal 0x09003000
 
 0x000 // one layer only
 
-0x003 // materials
+0x003 [MP4.v2, TM2020.v2] // materials
  version
  list<Material> Materials = empty
 
-0x004 (skippable)
+0x004 (skippable) [MP4.v1, TM2020.v1]
  version
  data
  v1+
-  int?
+  int? // DoData
 
-0x005 // layers
+0x005 [MP4, TM2020] // layers
 
-0x006
+0x006 [MP4.v0, TM2020.v1]
  version
  v0=
   vec2[]
@@ -24,7 +24,7 @@ CPlugCrystal 0x09003000
   v2+
    optimizedint[]
 
-0x007
+0x007 [MP4, TM2020]
  version
  float[] // SCrystalSmoothingGroup array
  int[]
@@ -54,7 +54,7 @@ enum EAxis
 
 archive Material
  string MaterialName
- if MaterialName == ""
+ if MaterialName == null || MaterialName == ""
   CPlugMaterialUserInst MaterialUserInst
 
 archive Layer (contextual)

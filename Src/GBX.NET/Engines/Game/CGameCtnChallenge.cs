@@ -12,11 +12,51 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
+    private string authorLogin;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
     private TimeInt32? authorTime; // Only used if ChallengeParameters is null
     private int authorScore; // Only used if ChallengeParameters is null
+
+    private Ident mapInfo = Ident.Empty;
+    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
+
+    private string mapName = string.Empty;
+    [SupportsFormatting]
+    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<Chunk03043012>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    public string MapName { get => mapName; set => mapName = value; }
+
+
+    private Int3 size;
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    public Int3 Size { get => size; set => size = value; }
+
+    [AppliedWithChunk<HeaderChunk03043008>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    [AppliedWithChunk<Chunk03043042>]
+    public string AuthorLogin
+    {
+        get => authorLogin is null ? mapInfo.Author : authorLogin;
+        set
+        {
+            authorLogin = value;
+            mapInfo = new Ident(mapInfo.Id, mapInfo.Collection, value);
+        }
+    }
 
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
@@ -111,6 +151,11 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// The map's UID.
     /// </summary>
+    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public string MapUid
     {
         get => mapInfo.Id;
@@ -154,13 +199,29 @@ public partial class CGameCtnChallenge :
 
     private byte[]? thumbnail;
     [JpegData]
+    [AppliedWithChunk<HeaderChunk03043007>]
     public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
+    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Id? Collection => mapInfo?.Collection;
 
+    private IList<CGameCtnBlock>? blocks;
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    public IList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
+
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1");
 
     private UInt128? hashedPassword;
+    [AppliedWithChunk<Chunk03043029>]
     public UInt128? HashedPassword
     {
         get => hashedPassword;
@@ -175,35 +236,52 @@ public partial class CGameCtnChallenge :
         }
     }
 
+    [AppliedWithChunk<Chunk0304303D>]
     public bool HasLightmaps { get; set; }
+
+    [AppliedWithChunk<Chunk0304303D>]
     public int? LightmapVersion { get; set; }
+
+    [AppliedWithChunk<Chunk0304303D>]
     public CHmsLightMapCache? LightmapCache { get; set; }
+
+    [AppliedWithChunk<Chunk0304303D>]
     public LightmapFrame[] LightmapFrames { get; set; }
 
     [ZLibData]
+    [AppliedWithChunk<Chunk0304303D>]
     public CompressedData? LightmapCacheData { get; set; }
 
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
+    [AppliedWithChunk<Chunk03043040>]
     public IList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
     private IList<CGameCtnZoneGenealogy>? zoneGenealogy;
+    [AppliedWithChunk<Chunk03043043>]
     public IList<CGameCtnZoneGenealogy>? ZoneGenealogy { get => zoneGenealogy; set => zoneGenealogy = value; }
 
     private CScriptTraitsMetadata? scriptMetadata;
+    [AppliedWithChunk<Chunk03043044>]
     public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
+    [AppliedWithChunk<Chunk03043048>]
     public int? NbBakedBlocks => bakedBlocks?.Count(x => x.Name != "Unassigned1");
 
     private IList<CGameCtnBlock>? bakedBlocks;
+    [AppliedWithChunk<Chunk03043048>]
     public IList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
+    [AppliedWithChunk<Chunk03043048>]
     public IList<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
     [ZipData]
+    [AppliedWithChunk<Chunk03043054>]
     public byte[]? EmbeddedZipData { get; set; }
 
+    [AppliedWithChunk<Chunk03043054>]
     private IList<string>? Textures { get; set; }
 
+    [AppliedWithChunk<Chunk03043069>]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
     // poss to generate
@@ -1044,7 +1122,7 @@ public partial class CGameCtnChallenge :
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(U01);
-
+            
             using var ms = new MemoryStream();
             using var wBuffer = new GbxWriter(ms);
             using var _ = new Encapsulation(wBuffer);
@@ -1414,7 +1492,10 @@ public partial class CGameCtnChallenge :
 
             foreach (var (id, flags) in idFlagsPair)
             {
-                dict[id].Flags = flags;
+                if (dict.TryGetValue(id, out var instance))
+                {
+                    instance.Flags = flags;
+                }
             }
 
             n.MacroblockInstances = dict.Values.ToList();

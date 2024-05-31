@@ -1,0 +1,52 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug
+@using GBX.NET.Attributes
+
+@inherits NodeValueRenderer
+@attribute [AppliesForType(typeof(CPlugTree))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+}
+else if (Value is CPlugTree val)
+{
+    <span class="element-box" style="font-size: 0.8rem" data-title="Name of this plug tree is @(val.Name).">@val.Name</span>
+
+    
+    @if (val.Children.Count > 0)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This plug tree has @val.Children.Count children.">@val.Children.Count children</span>
+    }
+
+    @if (val.Visual is not null)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This plug tree has a visual (mesh).">Visual</span>
+    }
+
+    @if (val.Surface is not null)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This plug tree has a surface (collisions).">Surface</span>
+    }
+
+    @if (val.Shader is not null)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This plug tree has a shader.">Shader</span>
+    }
+
+    @if (val.Generator is not null)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This plug tree has a generator.">Generator</span>
+    }
+
+    var valueType = Value.GetType();
+
+    @if (Property is not null && valueType != Property.PropertyType)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This value is actually of type @(valueType.Name).">(@(valueType.Name))</span>
+    }
+}
+
+@code {
+
+}

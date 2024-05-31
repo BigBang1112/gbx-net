@@ -1,0 +1,39 @@
+﻿@inject IConfiguration Config
+
+<div class="section section-logo">
+    <h1 class="gbx-heading">
+        <span>GBX.NET</span>
+        <small>EXPLORER</small>
+    </h1>
+
+    @if (!string.IsNullOrEmpty(version))
+    {
+        <span class="version">@version</span>
+    }
+    else if (string.IsNullOrEmpty(branch))
+    {
+        <span class="version">@commit.Substring(0, 7)</span>
+    }
+    else
+    {
+        <span class="version">@branch@(string.IsNullOrWhiteSpace(commit) ? "" : $" - {commit.Substring(0, 7)}")</span>
+    }
+
+</div>
+
+@code {
+    private string branch = "";
+    private string commit = "";
+    private string? version;
+
+    protected override void OnInitialized()
+    {
+        branch = ThisAssembly.Git.Branch;
+        commit = ThisAssembly.Git.Commit;
+
+        if (branch == "master")
+        {
+            version = ThisAssembly.Git.Tag;
+        }
+    }
+}

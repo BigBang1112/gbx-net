@@ -1,0 +1,352 @@
+﻿@using System.Text
+@inject IJSRuntime JS
+@inject MemoryLog MemoryLog
+@inject IFaultyGbxService FaultyGbxService
+@inject IDownloadStreamService DownloadService
+
+<div class="section section-log hoverable @(UpfrontMessage?.LogLevel == LogLevel.Error ? "bar-error" : "") @(UpfrontMessage?.LogLevel == LogLevel.Warning ? "bar-warning" : "")" @onclick="OnExpandLog">
+    
+    @if (UpfrontMessage is null)
+    {
+        <span style="color: gray">Ready to catch warnings and errors...</span>
+    }
+    else
+    {
+        @if (UpfrontMessage.LogLevel == LogLevel.Error)
+        {
+            <b style="margin-right: 0.4rem">ERROR:</b>
+        }
+
+        @if (UpfrontMessage.LogLevel == LogLevel.Warning)
+        {
+            <b style="margin-right: 0.4rem">WARN:</b>
+        }
+
+        <span><LogScope Scope="UpfrontMessage.Scope" />@UpfrontMessage.Message</span>
+    }
+    
+</div>
+
+@if (Expanded)
+{
+    <div class="overlay">
+        <div class="section section-log-maximized" style="gap: 1rem">
+            <div class="overflow log">
+                <ul>
+
+                    <Virtualize Context="log" Items="MemoryLog.Logs" OverscanCount="50" ItemSize="16">
+                        <li class="log-message @((log.Exception is null ? "" : "hoverable-error")) @((log.Hovered || log.Selected ? "hovered-error" : ""))"
+                            style="color: @log.ThemeColor;"
+                            @onclick="async () => await OnLogMessageClickAsync(log)">
+
+                            <small class="log-level" style="color: @log.TextColor; background-color: @log.ThemeColor" data-title="@log.Timestamp">@log.LogLevelName</small>
+                            <span class="log-message-content"><LogScope Scope="log.Scope"/>@log.Message</span>
+
+                            @if (log.Exception is not null)
+                            {
+                                <ul class="exception"><li class="exception">@((MarkupString)log.Exception.ToString().Replace("\n", "<br />"))</li></ul>
+                            }
+                        </li>
+                    </Virtualize>
+
+                </ul>
+            </div>
+            <div style="width: 30rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+                
+                <button class="button button-centered" style="font-size: 1.5rem" @onclick="Minimize">Close</button>
+                <button class="button button-centered" style="font-size: 1.5rem" @onclick="DownloadLogAsync">Download full log</button>
+
+                @if (FaultyGbxService.FaultyGbxs.Count > 0)
+                {
+                    <big>Faulty Gbx files:</big>
+
+                    <div style="display: grid; grid-template-columns: 3rem calc(100% - 6rem) 3rem; grid-row-gap: 0.2rem; grid-auto-rows: min-content; width: 100%">
+
+                        @foreach (var (exception, faultyGbx) in FaultyGbxService.FaultyGbxs)
+                        {
+                            <button class="button-delete" @onclick="() => DeleteFaultyGbx(exception)">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button class="button button-error button-centered@(faultyGbx.Hovered || faultyGbx.Selected ? " button-error-hovered" : "")"
+                                @onclick="async () => await OnFaultyGbxClickAsync(faultyGbx)">
+                                @faultyGbx.FileName
+                            </button>
+                            <button class="button-copy-small tooltip-right-to-left" data-title="Download the log until the exception of @faultyGbx.FileName"
+                                @onclick="async () => await DownloadLogUntilExceptionAsync(faultyGbx)">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        }
+
+                    </div>
+
+                    @if (SelectedFaultyGbx is not null)
+                    {
+                        <div>
+                            <big>@SelectedFaultyGbx.FileName</big>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    private DateTime lastUpdated = DateTime.UtcNow;
+    private DateTime? lastUpdatedCleanup;
+
+    public bool Expanded { get; private set; }
+
+    public FaultyGbxModel? SelectedFaultyGbx { get; private set; }
+    public LogMessageModel? UpfrontMessage { get; private set; }
+
+    protected override void OnInitialized()
+    {
+        var timer = new System.Timers.Timer(500);
+        timer.Elapsed += ClearingTimer;
+        timer.Start();
+
+        MemoryLog.OnChange += (msg) =>
+        {
+            switch (msg.LogLevel)
+            {
+                case LogLevel.Error:
+                case LogLevel.Warning:
+                    UpfrontMessage = msg;
+                    StateHasChanged();
+                    return;
+            }
+
+            if (DateTime.UtcNow - lastUpdated > TimeSpan.FromMilliseconds(200))
+            {
+                lastUpdatedCleanup = null;
+
+                StateHasChanged();
+                lastUpdated = DateTime.UtcNow;
+            }
+        };
+    }
+
+    private void ClearingTimer(object? source, System.Timers.ElapsedEventArgs e)
+    {
+        if (lastUpdatedCleanup is null && DateTime.UtcNow - lastUpdated > TimeSpan.FromMilliseconds(400))
+        {
+            StateHasChanged();
+            lastUpdatedCleanup = DateTime.UtcNow;
+        }
+    }
+
+    private void OnExpandLog()
+    {
+        Expanded = true;
+        UpfrontMessage = null;
+        StateHasChanged();
+    }
+
+    private void Minimize()
+    {
+        Expanded = false;
+        StateHasChanged();
+    }
+
+    private void ResetLogSelection()
+    {
+        foreach (var log in MemoryLog.Logs)
+        {
+            log.Selected = false;
+        }
+    }
+
+    private async Task OnExceptionClickAsync(Exception ex, FaultyGbxModel? faultyGbx, LogMessageModel? msg)
+    {
+        SelectedFaultyGbx = faultyGbx;
+
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", ex.ToString());
+    }
+
+    private async Task OnFaultyGbxClickAsync(FaultyGbxModel faultyGbx)
+    {
+        var logMsg = default(LogMessageModel);
+
+        foreach (var msg in MemoryLog.Logs)
+        {
+            if (msg.Exception == faultyGbx.Exception)
+            {
+                logMsg = msg;
+                msg.Selected = true;
+            }
+            else
+            {
+                msg.Selected = false;
+            }
+        }
+
+        FaultyGbxService.ResetSelection();
+
+        faultyGbx.Selected = true;
+
+        await OnExceptionClickAsync(faultyGbx.Exception, faultyGbx, logMsg);
+    }
+
+    private async Task OnLogMessageClickAsync(LogMessageModel msg)
+    {
+        if (msg.Exception is null)
+        {
+            return;
+        }
+
+        foreach (var log in MemoryLog.Logs)
+        {
+            log.Selected = false;
+        }
+
+        msg.Selected = true;
+
+        FaultyGbxService.ResetSelection();
+
+        if (FaultyGbxService.FaultyGbxs.TryGetValue(msg.Exception, out var faultyGbx))
+        {
+            faultyGbx.Selected = true;
+        }
+
+        await OnExceptionClickAsync(msg.Exception, faultyGbx, msg);
+    }
+
+    private void DeleteFaultyGbx(Exception ex)
+    {
+        FaultyGbxService.FaultyGbxs.Remove(ex);
+
+        if (SelectedFaultyGbx?.Exception == ex)
+        {
+            SelectedFaultyGbx = null;
+        }
+    }
+
+    // Unused methods, due to performance issues
+
+    private void OnLogMessageMouseOver(LogMessageModel msg)
+    {
+        if (msg.Exception is null)
+        {
+            return;
+        }
+
+        FaultyGbxService.ResetHover();
+
+        if (!FaultyGbxService.FaultyGbxs.TryGetValue(msg.Exception, out var faultyGbx))
+        {
+            return;
+        }
+
+        faultyGbx.Hovered = true;
+    }
+
+    private void OnLogMessageMouseOut(LogMessageModel msg)
+    {        
+        if (msg.Exception is null)
+        {
+            return;
+        }
+
+        FaultyGbxService.ResetHover();
+    }
+
+    private void OnFaultyGbxMouseOver(FaultyGbxModel faultyGbx)
+    {
+        foreach (var msg in MemoryLog.Logs)
+        {
+            msg.Hovered = msg.Exception == faultyGbx.Exception;
+        }
+    }
+
+    private void OnFaultyGbxMouseOut(FaultyGbxModel faultyGbx)
+    {
+        foreach (var msg in MemoryLog.Logs)
+        {
+            msg.Hovered = false;
+        }
+    }
+
+    private async Task DownloadLogUntilExceptionAsync(FaultyGbxModel faultyGbx)
+    {
+        using var ms = new MemoryStream();
+
+        using (var writer = new StreamWriter(ms))
+        {
+            await WriteIntroAsync(writer);
+
+            foreach (var msg in MemoryLog.Logs)
+            {
+                await writer.WriteAsync($"{msg.LogLevelName}: ");
+
+                await WriteScopeAsync(writer, msg.Scope);
+
+                await writer.WriteLineAsync(msg.Message);
+
+                if (msg.Exception == faultyGbx.Exception)
+                {
+                    await writer.WriteLineAsync();
+                    await writer.WriteLineAsync(faultyGbx.Exception.ToString());
+
+                    break;
+                }
+            }
+        }
+
+        await DownloadService.DownloadAsync($"{faultyGbx.FileName}.log.txt", ms);
+    }
+
+    private async Task DownloadLogAsync()
+    {
+        using var ms = new MemoryStream();
+
+        using (var writer = new StreamWriter(ms))
+        {
+            await WriteIntroAsync(writer);
+
+            foreach (var msg in MemoryLog.Logs)
+            {
+                await writer.WriteAsync($"{msg.LogLevelNameUpper}: ");
+                
+                await WriteScopeAsync(writer, msg.Scope);
+
+                await writer.WriteLineAsync(msg.Message);
+
+                if (msg.Exception is not null)
+                {
+                    await writer.WriteLineAsync();
+                    await writer.WriteLineAsync(msg.Exception.ToString());
+                    await writer.WriteLineAsync();
+                }
+            }
+        }
+
+        await DownloadService.DownloadAsync("log.txt", ms);
+    }
+
+    private Task WriteIntroAsync(StreamWriter writer)
+    {
+        // TODO: general specs of the app
+        return Task.CompletedTask;
+    }
+
+    private async Task WriteScopeAsync(StreamWriter writer, LogScopeModel? scope)
+    {
+        var scopeBuilder = default(StringBuilder);
+
+        while (scope is not null)
+        {
+            scopeBuilder ??= new();
+            scopeBuilder.Insert(0, " -> ");
+            scopeBuilder.Insert(0, scope.Name);
+
+            scope = scope.Parent;
+        }
+
+        if (scopeBuilder is not null)
+        {
+            await writer.WriteAsync(scopeBuilder);
+        }
+    }
+}

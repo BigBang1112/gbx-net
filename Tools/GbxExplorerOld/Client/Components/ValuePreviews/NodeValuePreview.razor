@@ -1,0 +1,159 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using GBX.NET.Engines.MwFoundations
+@using GBX.NET.Managers
+@using GBX.NET.Serialization.Chunking
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(CMwNod))]
+
+@inject IOpenChunkService OpenChunkService
+
+@if (Value is not CMwNod node)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+@{
+    var headerChunks = node.Chunks.OfType<IHeaderChunk>().ToList();
+
+    var allChunks = node.Chunks;
+
+    var includedIds = allChunks.Select(x => x.GetType()).ToHashSet();
+
+    var chunksPossToAdd = GetAllChunkTypes(node.GetType()).Where(x => !includedIds.Contains(x));
+
+    var bodyChunks = node.Chunks.Where(x => x is not IHeaderChunk).ToList();
+}
+
+<select style="width:100%;margin-top:0.5rem;margin-bottom:0.2rem;" value="@tempChunkAddVal" @onchange="OnChunkAddAsync">
+
+    <option value="0">Add a chunk...</option>
+
+    @foreach (var chunkType in chunksPossToAdd)
+    {
+        var att = chunkType.GetCustomAttribute<ChunkAttribute>();
+
+        if (att is null)
+        {
+            continue;
+        }
+
+        var chunkId = att.Id;
+        
+        var isHeader = typeof(IHeaderChunk).IsAssignableFrom(chunkType);
+
+        <option value="@chunkId @isHeader">
+            @chunkType.DeclaringType?.Name 0x@((chunkId & 0xFFF).ToString("X3") ?? "XXX"
+        ) @(isHeader ? "header " : "")chunk @(string.IsNullOrWhiteSpace(att.Description) ? "" : $"({att.Description})")
+        </option>
+    }
+
+</select>
+
+<div class="list">
+
+    @if (headerChunks is not null && headerChunks.Count > 0)
+    {
+        <span class="label">Header chunks</span>
+
+        @foreach (var chunk in headerChunks)
+        {
+            <ChunkViewer Chunk="chunk" Deletion="DeleteChunk" ValuePreview="this" />
+        }
+    }
+
+    <span class="label">Body chunks</span>
+
+    @if (bodyChunks.Count == 0)
+    {
+        <span class="empty">No body chunks. This is not usual.</span>
+    }
+    else
+    {
+        <Virtualize Context="chunk" Items="bodyChunks" OverscanCount="16" ItemSize="36">
+            <ChunkViewer Chunk="chunk" Deletion="DeleteChunk" ValuePreview="this" />
+        </Virtualize>
+    }
+
+</div>
+
+@code {
+    private object? tempChunkAddVal = "0";
+
+    private async Task OnChunkAddAsync(ChangeEventArgs e)
+    {
+        if (Value is not CMwNod node)
+        {
+            return;
+        }
+
+        tempChunkAddVal = e.Value;
+        StateHasChanged();
+        await Task.Delay(1);
+
+        var valsStr = e.Value?.ToString();
+
+        if (valsStr is null || valsStr == "0")
+        {
+            return;
+        }
+
+        var vals = valsStr.Split(' ');
+
+        if (vals is null || vals.Length != 2)
+        {
+            return;
+        }
+
+        var chunkId = uint.Parse(vals[0]);
+
+        if (bool.Parse(vals[1]))
+        {
+            node.CreateHeaderChunk(chunkId);
+        }
+        else
+        {
+            node.Chunks.Create(chunkId);
+        }
+
+        tempChunkAddVal = "0";
+        StateHasChanged();
+        await Task.Delay(1);
+
+        SectionPreview?.UpdateNodeTreeExplorer();
+    }
+
+    private void DeleteChunk(IChunk chunk)
+    {
+        (Value as CMwNod)?.Chunks.Remove(chunk);
+        DeleteChunkShared(chunk);
+    }
+
+    private void DeleteChunkShared(IChunk chunk)
+    {
+        OpenChunkService.OpenedChunks.Remove(chunk.GetType());
+        StateHasChanged();
+        SectionPreview?.UpdateNodeTreeExplorer();
+    }
+
+    public void UpdateNodeTreeExplorer()
+    {
+        SectionPreview?.UpdateNodeTreeExplorer();
+    }
+
+    private IEnumerable<Type> GetAllChunkTypes(Type? type)
+    {
+        while (type is not null)
+        {
+            foreach (var chunkType in type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk))))
+            {
+                yield return chunkType;
+            }
+
+            type = type.BaseType;
+        }
+    }
+}

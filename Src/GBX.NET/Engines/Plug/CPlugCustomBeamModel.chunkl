@@ -1,0 +1,47 @@
+CPlugCustomBeamModel 0x09107000
+
+archive
+ string BulletName
+ CPlugBeamEmitterSubModel[]_deprec
+ CPlugParticleEmitterSubModel[]_deprec
+ id
+ id
+ id
+ v1+
+  float
+  float
+  float
+  v2+
+   bool
+   bool
+   v3+
+    bool
+    v4+
+     float
+     float
+     v5+
+      int LaserDamage
+      v6+
+       float LaserRadiusDamage
+       v7+
+        float BulletVsRadius
+        v8+
+         vec3 VisualOffsetFirstPerson
+         byte BeamType
+         v9+
+          float LaserDispersionAngle
+          v10+
+           bool DamageAttenuationWithDist
+           float
+           int
+           v11+
+            CFuncKeysReal DamageAttenuationFromDist
+            v12+
+             float MaxDistance
+             byte
+             float LaserRadius
+             v13+
+              float BlowRadius
+              float BlowValue
+              v14+
+               bool LaserShowAdvancedCrosshair

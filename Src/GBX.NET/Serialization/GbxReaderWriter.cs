@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Serialization;
 
@@ -131,12 +132,18 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     {
         _ = versionable ?? throw new ArgumentNullException(nameof(versionable));
         versionable.Version = Int32(versionable.Version);
+
+        // Should be handled in separate read and write methods with ReadVersion and WriteVersion
+        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void VersionByte(IVersionable versionable)
     {
         _ = versionable ?? throw new ArgumentNullException(nameof(versionable));
         versionable.Version = Byte(versionable.Version);
+
+        // Should be handled in separate read and write methods with ReadVersion and WriteVersion
+        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void Dispose()

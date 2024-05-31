@@ -49,5 +49,7 @@ public static partial class ClassManager
     internal static partial uint Unwrap(uint classId);
 
     internal static partial bool IsChunkIdRemapped(uint chunkId);
-    internal static partial bool IsClassWriteSupported(uint classId);
+    public static partial bool IsClassWriteSupported(uint classId);
+
+    public static IEnumerable<string> GetGbxExtensions(uint classId) => [];
 }

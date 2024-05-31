@@ -1,0 +1,119 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Ident))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value.">null</span>
+}
+else if (Value is Ident ident)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+    var collectionTitle = "This value is stored as ";
+
+    if (cannotWrite)
+    {
+        collectionTitle = "This value cannot be modified.";
+    }
+    else if (ident.Collection.Number.HasValue)
+    {
+        collectionTitle += "ID.";
+    }
+    else
+    {
+        collectionTitle += "string.";
+    }
+
+    <span data-title="Id of Ident.@(cannotWrite ? " This value cannot be modified." : "")">
+        <input type="text"
+            @bind="Id"
+            disabled="@cannotWrite"
+            placeholder="(empty)"
+            style="min-width: 160px;width: @(Id?.Length)ch;max-width:512px"
+            oninput="onInputText(this)" />
+    </span>
+    
+    <span data-title="Collection of Ident. @collectionTitle">
+        <input type="text"
+            @bind="Collection"
+            disabled="@cannotWrite"
+            placeholder="(empty)"
+            style="min-width: 160px;width: @(Collection?.Length)ch;max-width:512px"
+            oninput="onInputText(this)"
+            list="collectionIds" />
+        <datalist id="collectionIds">
+            @foreach (var (id, name) in GBX.NET.Managers.CollectionManager.Collections)
+            {
+                <option value="@id">@name</option>
+            }
+        </datalist>
+    </span>
+        
+    <span data-title="Author of Ident.@(cannotWrite ? " This value cannot be modified." : "")">
+        <input type="text"
+            @bind="Author"
+            disabled="@cannotWrite"
+            placeholder="(empty)"
+            style="min-width: 160px;width: @(Author?.Length)ch;max-width:512px"
+            oninput="onInputText(this)" />
+    </span>
+}
+else
+{
+    <span>Error: value is not ident</span>
+}
+
+@code {
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    public string Id
+    {
+        get => (Value as Ident)?.Id ?? "";
+        set
+        {
+            if (Value is Ident val)
+            {
+                SetAndUpdate(val with { Id = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Ident(value), parent: true);
+            }
+        }
+    }
+
+    public string Collection
+    {
+        get => (Value as Ident)?.Collection ?? "";
+        set
+        {
+            var id = int.TryParse(value, out int collectionId) ? new Id(collectionId) : new Id(value); 
+
+            if (Value is Ident val)
+            {
+                SetAndUpdate(val with { Collection = id }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Ident("", id, ""), parent: true);
+            }
+        }
+    }
+
+    public string Author
+    {
+        get => (Value as Ident)?.Author ?? "";
+        set
+        {
+            if (Value is Ident val)
+            {
+                SetAndUpdate(val with { Author = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Ident("", "", value), parent: true);
+            }
+        }
+    }
+}

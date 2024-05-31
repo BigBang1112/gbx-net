@@ -1,0 +1,21 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Game
+@using GBX.NET.Attributes
+
+@inherits NodeValueRenderer
+@attribute [AppliesForType(typeof(CGameCtnMediaBlockText))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+}
+else if (Value is CGameCtnMediaBlockText block)
+{
+    <span class="element-box" style="font-size: 0.8rem" data-title="Text content is @(block.Text).">
+        <FormattedText Text="@block.Text"></FormattedText>
+    </span>
+}
+
+@code {
+
+}

@@ -71,4 +71,14 @@ public sealed class GbxModule : InteractionModuleBase<SocketInteractionContext>
         var response = await _response.MainNodeAsync(gbx, gbx.Node, gbxModel, inspectedMessage);
         await FollowupAsync(response.Message, response.Embeds, components: response.Components, ephemeral: secretly);
     }
+
+    [ComponentInteraction("discard")]
+    public async Task Discard()
+    {
+        await DeferAsync();
+
+        // _gbx.RemoveGbxAsync()
+
+        await DeleteOriginalResponseAsync();
+    }
 }

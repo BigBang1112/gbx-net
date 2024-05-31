@@ -2,6 +2,8 @@ CPlugSkel 0x090BA000
 
 0x000
 
+archive
+
 archive Joint
  id Name
  short ParentIndex

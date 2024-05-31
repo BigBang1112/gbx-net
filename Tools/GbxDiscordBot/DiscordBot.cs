@@ -155,7 +155,7 @@ internal sealed class DiscordBot : IDiscordBot
                 sb.Append(" ` (");
                 sb.Append(executeResult.Error);
                 sb.Append(')');
-
+                
                 if (executeResult.Error is InteractionCommandError.Exception && executeResult.Exception.InnerException is not null)
                 {
                     var innerException = executeResult.Exception.InnerException;
@@ -182,12 +182,20 @@ internal sealed class DiscordBot : IDiscordBot
                     sb.Append("The full error has been sent to the owner.");
                 }
 
-                await context.Interaction.RespondAsync(embed: new EmbedBuilder()
+                var embed = new EmbedBuilder()
                     .WithTitle("Error")
                     .WithDescription(sb.ToString())
                     .WithColor(Color.Red)
-                    .Build(),
-                    ephemeral: true);
+                    .Build();
+
+                if (context.Interaction.HasResponded)
+                {
+                    await context.Interaction.FollowupAsync(embed: embed, ephemeral: true);
+                }
+                else
+                {
+                    await context.Interaction.RespondAsync(embed: embed, ephemeral: true);
+                }
 
                 break;
         }

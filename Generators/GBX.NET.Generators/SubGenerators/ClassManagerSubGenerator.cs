@@ -172,7 +172,7 @@ internal static class ClassManagerSubGenerator
         builder.AppendLine("    };");
 
         builder.AppendLine();
-        builder.AppendLine("    internal static partial bool IsClassWriteSupported(uint classId) => classId switch");
+        builder.AppendLine("    public static partial bool IsClassWriteSupported(uint classId) => classId switch");
         builder.AppendLine("    {");
 
         foreach (var classInfo in classInfos)

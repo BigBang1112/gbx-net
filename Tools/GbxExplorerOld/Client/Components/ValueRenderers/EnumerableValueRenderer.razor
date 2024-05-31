@@ -1,0 +1,34 @@
+﻿@using GBX.NET
+@using System.Collections
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(IEnumerable<>))]
+
+@if (Value is null)
+{
+    <span class="element-box">null</span>
+}
+else
+{
+    var count = (Value as ICollection)?.Count;
+
+    if (count is not null)
+    {
+        @if (count == 1)
+        {
+            <span class="element-box">1 element</span>
+        }
+        else
+        {
+            <span class="element-box">@count elements</span>
+        }
+    }
+}
+
+@code {
+    public override bool ShowPropertyInTree(PropertyInfo prop)
+    {
+        // Lmao I hate myself
+        return prop.DeclaringType?.Assembly.FullName?.StartsWith("GBX.NET") == true;
+    }
+}

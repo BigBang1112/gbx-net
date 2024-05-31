@@ -1,0 +1,31 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug
+
+@inject IJSRuntime JS
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(CPlugCrystal.Crystal))]
+
+@if (Value is not CPlugCrystal.Crystal crystal)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+<div id="mesh-renderer" style="margin:1rem 0;position:relative">
+    <span style="z-index: 999;position: absolute;top:40%;text-align:center;width:100%">@((MarkupString)statusMsg)</span>
+</div>
+
+@code {
+    private CPlugCrystal.Crystal? prevCrystal;
+    private string statusMsg = "";
+    
+    [Parameter]
+    public string? LayerName { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

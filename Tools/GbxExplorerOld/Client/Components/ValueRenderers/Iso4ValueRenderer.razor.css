@@ -1,0 +1,20 @@
+﻿input {
+    min-width: 4ch;
+}
+
+.iso-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.2rem;
+}
+
+.pitch-yaw-roll-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+    .pitch-yaw-roll-grid > span {
+        padding: 4px 5px;
+    }

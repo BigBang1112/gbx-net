@@ -1,0 +1,92 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using System.Drawing
+@using System.Runtime.InteropServices
+
+@inject IJSRuntime JS
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(PackDesc))]
+
+@if (Value is not PackDesc fileRef)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+<div style="margin-top:0.5rem">File path:</div>
+<input type="text"
+       @bind="FilePath"
+       placeholder="(empty)"
+       style="width: 95%" />
+
+<div style="margin-top:0.5rem">Checksum:</div>
+<input type="text"
+       @bind="Checksum"
+       disabled="true"
+       placeholder="(none)"
+       style="width: 95%" />
+
+<div style="margin-top:0.5rem">Locator URL:</div>
+<input type="text"
+       @bind="LocatorUrl"
+       placeholder="(empty)"
+       style="width: 95%" />
+
+@code {
+    public string FilePath
+    {
+        get => (Value as PackDesc)?.FilePath ?? "";
+        set
+        {
+            if (Value is not PackDesc fileRef)
+            {
+                SetValue(new PackDesc(value, new(), ""));
+            }
+            else
+            {
+                SetValue(fileRef with { FilePath = value });
+            }
+        }
+    }
+
+    public string Checksum
+    {
+        get => Value is PackDesc fileRef && fileRef.Checksum is not null ? BitConverter.ToString(fileRef.Checksum.GetValueOrDefault().GetBytes()).Replace("-", "") : "";
+        set
+        {
+            var finalBytes = new byte[32];
+            var valBytes = Convert.FromBase64String(value);
+
+            Array.Copy(valBytes, finalBytes, valBytes.Length);
+            var ulongs = MemoryMarshal.Cast<byte, ulong>(finalBytes);
+            var checksum = new UInt256(ulongs[0], ulongs[1], ulongs[2], ulongs[3]);
+
+            if (Value is not PackDesc fileRef)
+            {
+                SetValue(new PackDesc("", checksum, ""));
+            }
+            else
+            {
+                SetValue(fileRef with { Checksum = checksum });
+            }
+        }
+    }
+
+    public string LocatorUrl
+    {
+        get => (Value as PackDesc)?.LocatorUrl ?? "";
+        set
+        {
+            if (Value is not PackDesc fileRef)
+            {
+                SetValue(new PackDesc("", new(), value));
+            }
+            else
+            {
+                SetValue(fileRef with { LocatorUrl = value });
+            }
+        }
+    }
+}

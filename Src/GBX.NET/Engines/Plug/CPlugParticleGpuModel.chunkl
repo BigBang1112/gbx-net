@@ -1,0 +1,77 @@
+CPlugParticleGpuModel 0x090C6000
+
+0x000
+ version
+ float
+ float
+ float
+ float
+ v2+
+  float
+  float
+  v3+
+   float
+   v5+
+    bool
+
+0x001
+ version
+ float
+ float
+ v1+
+  bool
+  bool
+
+0x002
+ version
+ float U01
+ v6-
+  CPlugBitmap Bitmap
+ v7+
+  bool U02
+  if !U02
+   CPlugBitmap Bitmap
+  if U02
+   string
+  v8+
+   bool
+   float
+ float
+ float
+ int
+ int
+ v2-
+  float
+ v3+
+  float
+  float
+  v4+
+   float
+ float
+ float
+ bool
+ v2+
+  bool
+  v5+
+   bool
+   v6+
+    bool
+    float
+    v9+
+     CPlugBitmap
+     bool
+     bool
+     bool
+     bool
+     float
+     v10+
+      float
+      bool
+      v11+
+       float
+       bool
+
+0x003
+ version
+ float
+ float

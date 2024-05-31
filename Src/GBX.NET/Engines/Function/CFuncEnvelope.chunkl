@@ -1,2 +1,17 @@
 CFuncEnvelope 0x05036000
 - inherits: CFunc
+
+0x000
+ float KeyFrameValue0
+ float KeyFrameValue1
+ float KeyFrameValue2
+ float KeyFrameValue3
+ float KeyFramePos1
+ float KeyFramePos1
+ float Frequency
+ float Amplitude
+ int<EModulation> ModFunc
+
+enum EModulation
+ Cos
+ Sin
