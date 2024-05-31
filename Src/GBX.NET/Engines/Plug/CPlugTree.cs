@@ -2,7 +2,20 @@
 
 public partial class CPlugTree
 {
+    [AppliedWithChunk<Chunk0904F00D>]
     public string Name { get; set; } = "";
+
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public int Flags { get; set; }
+
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public Iso4? Translation { get; set; }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {

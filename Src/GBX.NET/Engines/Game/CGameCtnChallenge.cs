@@ -28,12 +28,20 @@ public partial class CGameCtnChallenge :
     public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     private string mapName = string.Empty;
+    [SupportsFormatting]
     [AppliedWithChunk<HeaderChunk03043002>]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk03043012>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
     public string MapName { get => mapName; set => mapName = value; }
+
+
+    private Int3 size;
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    public Int3 Size { get => size; set => size = value; }
 
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk0304300F>]
