@@ -31,7 +31,7 @@
         branch = ThisAssembly.Git.Branch;
         commit = ThisAssembly.Git.Commit;
 
-        if (branch == "master")
+        if (branch is "master" or "HEAD")
         {
             version = ThisAssembly.Git.Tag;
         }
