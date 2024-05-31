@@ -118,7 +118,7 @@
                     return;
             }
 
-            if (DateTime.UtcNow - lastUpdated > TimeSpan.FromMilliseconds(50))
+            if (DateTime.UtcNow - lastUpdated > TimeSpan.FromMilliseconds(200))
             {
                 lastUpdatedCleanup = null;
 
