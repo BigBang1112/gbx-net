@@ -1,3 +1,61 @@
 CPlugAnimFile 0x090B0000
 
-0x003 (ignore)
+0x003
+ version
+ v9-
+  int SkelVersion
+  int
+  int
+  int
+  int TimingFixedPeriodVersion
+  int
+  v3+
+   int SkelEditionVersion
+   v4+
+    int ClipFlagsVersion
+    int
+    int
+    int GraphVersion
+    v5+
+     int
+     v6+
+      int
+      v8+
+       int SkelEditionStateVersion
+       int
+  v0=
+   int
+   int
+  CPlugSkel[] (version: n.SkelVersion)
+  CPlugAnimSkelJointGroup[]
+  v3+
+   CPlugAnimSkelEdition[]
+  CPlugAnimClip[]
+  v4+
+   CPlugAnimPoseGroup[]
+   CPlugAnimPoseGrid[]
+   CPlugAnimGraph[]
+   CPlugAnimGraphStack[]
+   v5+
+    CPlugAnimVariantGroup[]
+    v6+
+     CPlugAnimSpotModel[]
+     v8+
+      CPlugAnimSkelEditionPose[]
+  v0=
+   int
+  v9+
+   string
+   string
+ v10+
+  v11+
+   CPlugSkel[]
+  CPlugAnimClip[]
+  CPlugAnimVariantGroup[]
+  CPlugAnimPoseGroup[]
+  CPlugAnimPoseGrid[]
+  CPlugAnimGraphStack[]
+  int
+  CPlugAnimSpotModel[]
+  string
+  string
