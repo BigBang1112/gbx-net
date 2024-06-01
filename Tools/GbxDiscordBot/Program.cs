@@ -3,7 +3,6 @@ using Discord.WebSocket;
 using Discord;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Serilog;
 using GbxDiscordBot;
 using GBX.NET.Extensions;
 using GBX.NET.LZO;
@@ -41,10 +40,8 @@ builder.ConfigureServices((context, services) =>
         //LocalizationManager = new JsonLocalizationManager("Localization", "commands")
     }));
 
-    // Add Serilog
     services.AddLogging(builder =>
     {
-        builder.AddSerilog(dispose: true);
         builder.AddOpenTelemetry(options =>
         {
             options.IncludeScopes = true;
@@ -76,7 +73,7 @@ builder.ConfigureServices((context, services) =>
                 .AddRuntimeInstrumentation()
                 .AddProcessInstrumentation()
                 .AddOtlpExporter();
-
+            
             options.AddMeter("System.Net.Http");
         })
         .WithTracing(options =>
@@ -93,12 +90,5 @@ builder.ConfigureServices((context, services) =>
         });
     services.AddMetrics();
 });
-
-// Use Serilog
-builder.UseSerilog();
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console(outputTemplate: "[{SourceContext} {Level:u3}] {Message:lj}{NewLine}{Exception}")
-    .CreateLogger();
 
 await builder.Build().RunAsync();
