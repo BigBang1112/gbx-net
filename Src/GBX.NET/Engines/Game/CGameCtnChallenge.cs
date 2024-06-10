@@ -1325,7 +1325,7 @@ public partial class CGameCtnChallenge :
 
             if (Version >= 1)
             {
-                wBuffer.WriteList(n.Textures!);
+                wBuffer.WriteList(n.Textures);
             }
 
             w.Write((int)ms.Length);
