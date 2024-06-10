@@ -1,0 +1,3 @@
+CMotionManaged 0x0804E000
+- inherits: CMotion
+- abstract
