@@ -9,18 +9,30 @@ public partial class CPlugSolid2Model
     private CPlugSkel? skel;
     private int visCstType;
     private PreLightGen? preLightGenerator;
-    private DateTime fileWriteTime;
+    private DateTime? fileWriteTime;
     private string? materialsFolderName;
     private Light[]? lights;
     private CPlugMaterialUserInst[]? materialInsts;
     private CPlugLightUserModel[]? lightUserModels;
-    private LightInst[] lightInsts;
+    private LightInst[]? lightInsts;
     private int damageZone;
     private uint flags;
     private Material[]? customMaterials;
 
+    public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
+    public CPlugVisual[]? Visuals { get => visuals; set => visuals = value; }
+    public CPlugSkel? Skel { get => skel; set => skel = value; }
     public int VisCstType { get => visCstType; set => visCstType = value; }
+    public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
+    public DateTime? FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
     public string? MaterialsFolderName { get => materialsFolderName; set => materialsFolderName = value; }
+    public Light[]? Lights { get => lights; set => lights = value; }
+    public CPlugLightUserModel[]? LightUserModels { get => lightUserModels; set => lightUserModels = value; }
+    public LightInst[]? LightInsts { get => lightInsts; set => lightInsts = value; }
+    public int DamageZone { get => damageZone; set => damageZone = value; }
+    public uint Flags { get => flags; set => flags = value; }
+
+    public string[]? MaterialIds { get => materialIds; set => materialIds = value; }
     public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
     public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
     public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
