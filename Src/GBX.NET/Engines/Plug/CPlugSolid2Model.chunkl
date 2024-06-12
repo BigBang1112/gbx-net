@@ -1,5 +1,8 @@
 CPlugSolid2Model 0x090BB000
 
+0x000 (header, struct: SHeaderFileVersion) // file version
+ int FileVersion
+
 0x000
 
 archive ShadedGeom

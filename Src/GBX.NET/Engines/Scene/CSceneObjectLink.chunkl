@@ -3,13 +3,15 @@ CSceneObjectLink 0x0A014000
 0x001
  bool U01
  if U01
-  int
-  id[]
-  int
+  CSceneMobil Mobil (external)
+  int U02
+  int U03
+  id U04
+  int U05
  if !U01
-  CMwNod
- iso4
- bool
+  CSceneObject Object
+ iso4 RelativeLocation
+ bool U06
 
 0x0A00F001
  float

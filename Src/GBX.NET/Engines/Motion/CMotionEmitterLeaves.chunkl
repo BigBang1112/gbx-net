@@ -1,8 +1,8 @@
 CMotionEmitterLeaves 0x0804C000
-- inherits: CMotion
+- inherits: CMotionManaged
 
 0x001
- CMwNod (external)
+ CMotionManagerLeaves ManagerModel (external)
  float
  float
  float

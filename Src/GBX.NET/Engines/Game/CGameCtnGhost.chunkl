@@ -177,7 +177,7 @@ archive PlayerInputData
 archive SBadge
  int Version
  vec3 Color
- v0=
+ if Version == 0
   int
   string
  list<SSticker> Stickers

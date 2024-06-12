@@ -91,7 +91,7 @@ Here are some of the known file types to start with:
 
 Gbx Explorer 2 *will* be a complete remake of the old Gbx Explorer, fixing most of what the old version lacked. It is planned to be a relatively huge project, so it may take time to do.
 
-**Old Gbx Explorer is still not compatible** with GBX.NET 2, but something is being figured out about that. Some features may have to be stripped too.
+Old Gbx Explorer is compatible with GBX.NET 2, but some features have been stripped off.
 
 ## Lua support
 

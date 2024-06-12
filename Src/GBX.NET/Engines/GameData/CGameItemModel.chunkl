@@ -125,7 +125,7 @@ CGameItemModel 0x2E002000
 
 0x021
  version
- int
+ ItemGroupElement[] ItemGroupElements
 
 0x022 (skippable)
  version
@@ -154,6 +154,12 @@ CGameItemModel 0x2E002000
 0x027 (skippable)
  version
  float
+
+archive ItemGroupElement
+ iso4 Location
+ string ItemRef
+ if ItemRef == null || ItemRef == ""
+  CGameItemModel Item
 
 enum EItemType
  Undefined

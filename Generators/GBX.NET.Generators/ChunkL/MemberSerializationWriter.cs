@@ -788,7 +788,7 @@ internal sealed class MemberSerializationWriter
         {
             var fieldName = char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
 
-            if (fieldName is "class" or "params" or "base")
+            if (fieldName is "class" or "params" or "base" or "object")
             {
                 return '@' + fieldName;
             }

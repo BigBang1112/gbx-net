@@ -1,0 +1,5 @@
+CMotionManagerLeaves 0x0804D000
+- inherits: CMotionManager
+
+0x000
+ CSceneMobilLeaves MobilLeaves
