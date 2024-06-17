@@ -15,7 +15,7 @@ public partial class CPlugTree
     [AppliedWithChunk<Chunk0904F018>]
     [AppliedWithChunk<Chunk0904F019>]
     [AppliedWithChunk<Chunk0904F01A>]
-    public Iso4? Translation { get; set; }
+    public Iso4? Location { get; set; }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
