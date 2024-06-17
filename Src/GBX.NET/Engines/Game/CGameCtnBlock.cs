@@ -207,7 +207,15 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
     byte IGameCtnBlockTMSX.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
     byte IGameCtnBlockTMSX.SubVariant { get => SubVariant.GetValueOrDefault(); set => SubVariant = value; }
-    
+
+    /// <summary>
+    /// Creates a new instance of <see cref="CGameCtnBlock"/>. Adding chunks is not needed (only when creating blocks for TM1.0 from 2003).
+    /// </summary>
+    public CGameCtnBlock()
+    {
+        
+    }
+
     public override string ToString()
     {
         return $"{nameof(CGameCtnBlock)}: {Name} {coord}";
