@@ -148,7 +148,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Tool", "Src\GBX.NET
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Tool.CLI", "Src\GBX.NET.Tool.CLI\GBX.NET.Tool.CLI.csproj", "{04CD1C15-FB32-4B7E-B395-ACA98DDA5D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GbxDecompress", "Tools\GbxDecompress\GbxDecompress.csproj", "{B59D61AE-BA13-42F7-9CD0-01041DC3425F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxDecompress", "Tools\GbxDecompress\GbxDecompress.csproj", "{B59D61AE-BA13-42F7-9CD0-01041DC3425F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidExtract", "Samples\Beginner\SolidExtract\SolidExtract.csproj", "{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -344,6 +346,10 @@ Global
 		{B59D61AE-BA13-42F7-9CD0-01041DC3425F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B59D61AE-BA13-42F7-9CD0-01041DC3425F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B59D61AE-BA13-42F7-9CD0-01041DC3425F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -401,6 +407,7 @@ Global
 		{31153CCF-A6AE-49D7-A3E5-34356B10C1FE} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{04CD1C15-FB32-4B7E-B395-ACA98DDA5D69} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{B59D61AE-BA13-42F7-9CD0-01041DC3425F} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{5FD2600A-2A57-44E3-BD2D-CAA7D9CF3D90} = {FB4631D3-4622-489D-B722-2AD86C7361BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
