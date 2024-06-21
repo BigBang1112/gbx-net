@@ -12,7 +12,7 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
-    private string authorLogin;
+    private string authorLogin = string.Empty;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
@@ -246,7 +246,7 @@ public partial class CGameCtnChallenge :
     public CHmsLightMapCache? LightmapCache { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
-    public LightmapFrame[] LightmapFrames { get; set; }
+    public LightmapFrame[]? LightmapFrames { get; set; }
 
     [ZLibData]
     [AppliedWithChunk<Chunk0304303D>]
@@ -834,7 +834,7 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            w.Write(n.LightmapFrames.Length);
+            w.Write(n.LightmapFrames?.Length ?? 0);
 
             w.WriteArrayWritable(n.LightmapFrames, version: n.LightmapVersion.GetValueOrDefault(8));
 

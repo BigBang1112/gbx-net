@@ -111,7 +111,7 @@ public partial class CGameCtnReplayRecord
     public TimeInt32? EventsDuration { get; private set; }
 
     public string? Game { get; private set; }
-    public ImmutableList<CGameCtnMediaBlockScenery.Key> SceneryVortexKeys { get; private set; }
+    public ImmutableList<CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; private set; }
     public int SceneryCapturableCount { get; private set; }
     public string? PlaygroundScript { get; private set; }
     public ImmutableArray<InterfaceScriptInfo> InterfaceScriptInfos { get; private set; }

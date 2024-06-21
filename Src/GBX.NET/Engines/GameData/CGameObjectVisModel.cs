@@ -15,13 +15,22 @@ public partial class CGameObjectVisModel
     public CPlugSolid2Model? GetMeshShaded(GbxReadSettings settings = default) => meshShadedFile?.GetNode(ref meshShaded, settings);
 
     private string? mesh;
-    private string? smashParticleRef;
-    private string? visEntFx;
-    private CMwNod? meshShadedFid;
-    private Vec3? domeShaderColor;
-    private CPlugAnimLocSimple? locAnim;
-
     public string? Mesh { get => mesh; set => mesh = value; }
+
+    private string? smashParticleRef;
+    public string? SmashParticleRef { get => smashParticleRef; set => smashParticleRef = value; }
+
+    private string? visEntFx;
+    public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
+
+    private CMwNod? meshShadedFid;
+    public CMwNod? MeshShadedFid { get => meshShadedFid; set => meshShadedFid = value; }
+
+    private Vec3? domeShaderColor;
+    public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
+
+    private CPlugAnimLocSimple? locAnim;
+    public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
 
     public partial class Chunk2E007001 : IVersionable
     {
