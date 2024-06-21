@@ -24,7 +24,7 @@ internal static class ObjExporter
 
         foreach (var material in crystal.Materials.Select(x => x.MaterialUserInst).OfType<CPlugMaterialUserInst>())
         {
-            mtlWriter.WriteLine("newmtl {0}", material.MaterialName);
+            mtlWriter.WriteLine("newmtl {0}", material.Link);
             mtlWriter.WriteLine("Ns 250.000000"); // Specular exponent
             mtlWriter.WriteLine("Ka 1.0000 1.0000 1.0000"); // Ambient color
 
@@ -113,11 +113,11 @@ internal static class ObjExporter
 
                 var group = faceGroup.Key;
 
-                objWriter.WriteLine("g {0}{1}", counter, group.Name);
+                objWriter.WriteLine("g {0}{1}", group.Name, counter);
 
                 foreach (var materialGroup in faceGroup.GroupBy(x => x.Material))
                 {
-                    objWriter.WriteLine("usemtl {0}", materialGroup.Key?.MaterialUserInst?.MaterialName);
+                    objWriter.WriteLine("usemtl {0}", materialGroup.Key?.MaterialUserInst?.Link);
 
                     foreach (var face in materialGroup)
                     {
@@ -132,6 +132,8 @@ internal static class ObjExporter
 
                             objWriter.Write(faceIndex);
                         }
+
+                        objWriter.WriteLine();
                     }
 
                     objWriter.WriteLine();
