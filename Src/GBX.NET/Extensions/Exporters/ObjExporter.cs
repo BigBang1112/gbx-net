@@ -28,7 +28,7 @@ internal static class ObjExporter
             mtlWriter.WriteLine("Ns 250.000000"); // Specular exponent
             mtlWriter.WriteLine("Ka 1.0000 1.0000 1.0000"); // Ambient color
 
-            if (material.Color is null)
+            if (material.Color is null || material.Color.Length == 0)
             {
                 mtlWriter.WriteLine("Kd 1.0000 1.0000 1.0000"); // Diffuse color
             }
