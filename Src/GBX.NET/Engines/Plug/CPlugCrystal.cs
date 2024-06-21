@@ -1,9 +1,24 @@
 ﻿
+using GBX.NET.Extensions.Exporters;
+
 namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugCrystal
 {
     public IList<Layer>? Layers { get; set; }
+
+    public void ExportToObj(TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null)
+    {
+        ObjExporter.Export(this, objWriter, mtlWriter, mergeVerticesDigitThreshold);
+    }
+
+    public void ExportToObj(string objFilePath, string mtlFilePath, int? mergeVerticesDigitThreshold = null)
+    {
+        using var objWriter = new StreamWriter(objFilePath);
+        using var mtlWriter = new StreamWriter(mtlFilePath);
+
+        ExportToObj(objWriter, mtlWriter, mergeVerticesDigitThreshold);
+    }
 
     public partial class Chunk09003000 : IVersionable
     {
