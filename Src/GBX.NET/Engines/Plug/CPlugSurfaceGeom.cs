@@ -40,7 +40,10 @@ public partial class CPlugSurfaceGeom
                 CPlugSurface.WriteSurf(n.Surf, rw.Writer, version: 0);
             }
 
-            rw.UInt16(ref U01);
+            if (n.Surf is null)
+            {
+                rw.UInt16(ref U01);
+            }
         }
     }
 
@@ -64,8 +67,6 @@ public partial class CPlugSurfaceGeom
             {
                 CPlugSurface.WriteSurf(n.Surf, rw.Writer, version: 0);
             }
-
-            rw.UInt16(ref U03);
         }
     }
 }
