@@ -14,11 +14,11 @@ internal static class ObjExporter
             return;
         }
 
-        objWriter.WriteLine("# GBX.NET 2 - OBJ Exporter (.obj)");
+        objWriter.WriteLine("# GBX.NET 2 - CPlugCrystal - OBJ Exporter (.obj)");
         objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
         objWriter.WriteLine();
 
-        mtlWriter.WriteLine("# GBX.NET 2 - OBJ Exporter (.mtl)");
+        mtlWriter.WriteLine("# GBX.NET 2 - CPlugCrystal - OBJ Exporter (.mtl)");
         mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
         mtlWriter.WriteLine();
 
@@ -139,6 +139,182 @@ internal static class ObjExporter
                     objWriter.WriteLine();
                 }
             }
+        }
+    }
+
+    public static void Export(CPlugSolid solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
+    {
+        objWriter.WriteLine("# GBX.NET 2 - CPlugSolid - OBJ Exporter (.obj)");
+        objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        objWriter.WriteLine();
+
+        mtlWriter.WriteLine("# GBX.NET 2 - CPlugSolid - OBJ Exporter (.mtl)");
+        mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        mtlWriter.WriteLine();
+
+        if (solid.Tree is not CPlugTree tree)
+        {
+            return;
+        }
+
+        var materials = new HashSet<string>();
+
+        var positionsDict = mergeVerticesDigitThreshold.HasValue
+            ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
+
+        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        {
+            if (t.Visual is null)
+            {
+                continue;
+            }
+
+            if (t.ShaderFile is null)
+            {
+                continue;
+            }
+
+            if (t.Visual is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            var materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+
+            if (!materials.Contains(materialName))
+            {
+                mtlWriter.WriteLine("newmtl {0}", materialName);
+                mtlWriter.WriteLine("Ns 250.000000"); // Specular exponent
+                mtlWriter.WriteLine("Ka 1.0000 1.0000 1.0000"); // Ambient color
+                mtlWriter.WriteLine("Kd 1.0000 1.0000 1.0000"); // Diffuse color
+                mtlWriter.WriteLine("Ks 0.5000 0.5000 0.5000"); // Specular color
+                mtlWriter.WriteLine("Ke 0.0000 0.0000 0.0000");
+                mtlWriter.WriteLine("Ni 1.4500"); // Optical density
+                mtlWriter.WriteLine("d 1.0000"); // Dissolve
+                mtlWriter.WriteLine("illum 2"); // Illumination model
+
+                mtlWriter.WriteLine();
+
+                materials.Add(materialName);
+            }
+
+            foreach (var pos in visual.VertexStreams
+                .SelectMany(x => x.Positions ?? [])
+                .Concat(visual.Vertices.Select(x => x.Position)))
+            {
+                var locatedPos = new Vec3(
+                    pos.X * loc.XX + pos.Y * loc.XY + pos.Z * loc.XZ + loc.TX,
+                    pos.X * loc.YZ + pos.Y * loc.YY + pos.Z * loc.YZ + loc.TY,
+                    pos.X * loc.ZX + pos.Y * loc.ZY + pos.Z * loc.ZZ + loc.TZ
+                );
+
+                if (positionsDict.ContainsKey(locatedPos))
+                {
+                    continue;
+                }
+
+                objWriter.WriteLine("v {0} {1} {2}",
+                    locatedPos.X.ToString(Invariant),
+                    locatedPos.Y.ToString(Invariant),
+                    locatedPos.Z.ToString(Invariant));
+
+                positionsDict.Add(locatedPos, positionsDict.Count);
+            }
+        }
+
+        var uvs = new Dictionary<Vec2, int>();
+
+        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        {
+            if (t.Visual is null)
+            {
+                continue;
+            }
+
+            if (t.Visual is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            if (visual.TexCoords.Length == 0)
+            {
+                continue;
+            }
+
+            foreach (var uv in visual.TexCoords[0].TexCoords.Select(x => x.UV))
+            {
+                if (uvs.ContainsKey(uv))
+                {
+                    continue;
+                }
+
+                objWriter.WriteLine("vt {0} {1}",
+                    uv.X.ToString(Invariant),
+                    uv.Y.ToString(Invariant));
+
+                uvs.Add(uv, uvs.Count);
+            }
+        }
+
+        var counter = 0;
+
+        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        {
+            if (t.Visual is null)
+            {
+                continue;
+            }
+
+            if (t.Visual is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            if (t.ShaderFile is null)
+            {
+                continue;
+            }
+
+            if (visual.IndexBuffer is null)
+            {
+                continue;
+            }
+
+            if (visual.TexCoords.Length == 0)
+            {
+                continue;
+            }
+
+            var materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+
+            objWriter.WriteLine("g {0}", materialName);
+            objWriter.WriteLine("usemtl {0}", materialName);
+
+            var triangleCounter = 0;
+
+            foreach (var index in visual.IndexBuffer.Indices)
+            {
+                objWriter.Write('f');
+
+                var v = visual.Vertices[index];
+                var locatedPos = new Vec3(
+                    v.Position.X * loc.XX + v.Position.Y * loc.XY + v.Position.Z * loc.XZ + loc.TX,
+                    v.Position.X * loc.YZ + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
+                    v.Position.X * loc.ZX + v.Position.Y * loc.ZY + v.Position.Z * loc.ZZ + loc.TZ
+                );
+                var uvIndex = uvs[visual.TexCoords[0].TexCoords[index].UV];
+
+                var faceIndex = $" {positionsDict[locatedPos] + 1}/{uvIndex + 1}";
+
+                objWriter.Write(faceIndex);
+
+                if (++triangleCounter % 3 == 0)
+                {
+                    objWriter.WriteLine();
+                }
+            }
+
+            objWriter.WriteLine();
         }
     }
 }

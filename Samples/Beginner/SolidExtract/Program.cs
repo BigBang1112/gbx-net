@@ -24,6 +24,7 @@ foreach (var filePath in args)
 
                 break;
             case CPlugSolid solid:
+                solid.ExportToObj(filePath + ".obj", filePath + ".mtl");
                 break;
             case CPlugSolid2Model solid2:
                 break;
