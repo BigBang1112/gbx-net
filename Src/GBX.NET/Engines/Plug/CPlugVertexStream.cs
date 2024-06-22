@@ -20,6 +20,8 @@ public partial class CPlugVertexStream
     private Vec3[]? tangentUs;
     private Vec3[]? tangentVs;
 
+    public Vec3[]? Positions { get => positions; set => positions = value; }
+
     public partial class Chunk09056000 : IVersionable
     {
         public int Version { get; set; }
