@@ -40,10 +40,7 @@ public partial class CPlugSurfaceGeom
                 CPlugSurface.WriteSurf(n.Surf, rw.Writer, version: 0);
             }
 
-            if (n.Surf is null)
-            {
-                rw.UInt16(ref U01);
-            }
+            rw.UInt16(ref U01);
         }
     }
 
@@ -66,6 +63,12 @@ public partial class CPlugSurfaceGeom
             if (rw.Writer is not null)
             {
                 CPlugSurface.WriteSurf(n.Surf, rw.Writer, version: 0);
+            }
+
+            // I have a suspicion Nadeo broke backwards compatibility here
+            if (n.Surf is CPlugSurface.Mesh)
+            {
+                rw.UInt16(ref U03);
             }
         }
     }
