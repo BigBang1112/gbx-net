@@ -1,6 +1,9 @@
 ﻿using Discord;
 using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Imaging.SkiaSharp;
 using GBX.NET.Managers;
 using GbxDiscordBot.Models;
 using System.Reflection;
@@ -31,6 +34,7 @@ internal sealed class ResponseService : IResponseService
     {
         var validProperties = GetValidProperties(node)
             .OrderBy(x => x.Info.Name)
+            .Skip(0)
             .Take(25)
             .ToList();
 
@@ -46,9 +50,35 @@ internal sealed class ResponseService : IResponseService
 
         var embed = new EmbedBuilder()
             .WithTitle(gbx.FilePath)
-            .WithDescription($"**{type.Name}** 0x{ClassManager.GetId(type):X8}\n\n" + string.Join('\n', validProperties.Select((x, i) => $"` {GetPropertyString(x.Info, x.Value)} `")))
+            .WithDescription(string.Join('\n', validProperties.Select((x, i) => $"`{GetPropertyString(x.Info, x.Value)}`")))
+            .AddField("Class", type.Name, inline: true)
+            .AddField("ID", $"0x{ClassManager.GetId(type):X8}", inline: true)
             .WithColor(Discord.Color.Blue)
-            .WithFooter(Guid.NewGuid().ToString());
+            .WithFooter(gbxModel.Guid.ToString());
+
+        var attachments = new List<FileAttachment>();
+
+        switch (node)
+        {
+            case CGameCtnChallenge { Thumbnail: not null } map:
+                var thumbnailStream = new MemoryStream();
+                if (map.ExportThumbnail(thumbnailStream, SkiaSharp.SKEncodedImageFormat.Jpeg, 95))
+                {
+                    attachments.Add(new FileAttachment(thumbnailStream, "thumbnail.jpg"));
+                    embed.WithThumbnailUrl("attachment://thumbnail.jpg");
+                }
+                break;
+
+            case CGameCtnCollector collector:
+                var iconStream = new MemoryStream();
+                if (collector.ExportIcon(iconStream))
+                {
+                    attachments.Add(new FileAttachment(iconStream, "icon.png"));
+                    embed.WithThumbnailUrl("attachment://icon.png");
+                }
+                break;
+        }
+
         embeds.Add(embed.Build());
 
         if (gbx.Body.Exception is not null)
@@ -94,7 +124,8 @@ internal sealed class ResponseService : IResponseService
         {
             Message = message,
             Embeds = embeds.ToArray(),
-            Components = componentBuilder.Build()
+            Components = componentBuilder.Build(),
+            Attachments = attachments
         };
     }
 
@@ -117,8 +148,8 @@ internal sealed class ResponseService : IResponseService
 
     private static string GetPropertyString(PropertyInfo prop, object value)
     {
-        var propLength = 32;
-        var valueLength = 24;
+        var propLength = 24;
+        var valueLength = 26;
 
         var sb = new StringBuilder();
 
@@ -136,7 +167,7 @@ internal sealed class ResponseService : IResponseService
             }
         }
 
-        sb.Append(" | ");
+        sb.Append("` | `");
 
         var valueStr = value.ToString() ?? "null";
 
