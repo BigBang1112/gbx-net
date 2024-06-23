@@ -177,12 +177,14 @@ public partial class CScriptTraitsMetadata
             {
                 if (Version >= 3)
                 {
-                    w.WriteSmallLen(n.Traits.Count);
+                    w.WriteSmallLen(n.Traits?.Count ?? 0);
                 }
                 else
                 {
-                    w.Write(n.Traits.Count);
+                    w.Write(n.Traits?.Count ?? 0);
                 }
+
+                if (n.Traits is null) return;
 
                 foreach (var trait in n.Traits)
                 {
@@ -204,9 +206,12 @@ public partial class CScriptTraitsMetadata
 
             var uniqueTypes = new Dictionary<IScriptType, int>();
 
-            foreach (var type in n.Traits.Select(x => x.Value.Type).Distinct())
+            if (n.Traits is not null)
             {
-                uniqueTypes.Add(type, uniqueTypes.Count);
+                foreach (var type in n.Traits.Select(x => x.Value.Type).Distinct())
+                {
+                    uniqueTypes.Add(type, uniqueTypes.Count);
+                }
             }
 
             w.WriteSmallLen(uniqueTypes.Count);
@@ -216,7 +221,9 @@ public partial class CScriptTraitsMetadata
                 WriteType(w, type.Key);
             }
 
-            w.WriteSmallLen(n.Traits.Count);
+            w.WriteSmallLen(n.Traits?.Count ?? 0);
+
+            if (n.Traits is null) return;
 
             foreach (var trait in n.Traits)
             {
