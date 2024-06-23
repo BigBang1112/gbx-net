@@ -867,7 +867,7 @@ public partial class CGameCtnChallenge :
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class LightmapFrame;
 
-    public partial class Chunk03043040
+    public partial class Chunk03043040 : IVersionable
     {
         public int U01;
         public int[]? U02;
