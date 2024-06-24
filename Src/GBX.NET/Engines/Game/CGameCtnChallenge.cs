@@ -1291,6 +1291,63 @@ public partial class CGameCtnChallenge :
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SBakedClipsAdditionalData;
 
+
+    public partial class Chunk0304304F : IVersionable
+    {
+        public int Version { get; set; } = 3;
+
+        public int U01;
+        public byte[]? U02;
+        public byte U03;
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+
+            if (Version < 2)
+            {
+                U01 = r.ReadInt32(); // always 0
+                var size = r.ReadInt32();
+
+                using var _ = new Encapsulation(r);
+                U02 = r.ReadData(size);
+                return;
+            }
+
+            if (Version < 3)
+            {
+                if (r.ReadBoolean())
+                {
+                    U03 = 2;
+                }
+
+                return;
+            }
+
+            U03 = r.ReadByte();
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(Version);
+
+            if (Version < 2)
+            {
+                w.Write(U01);
+                w.WriteData(U02);
+                return;
+            }
+
+            if (Version < 3)
+            {
+                w.Write(U03 == 2);
+                return;
+            }
+
+            w.Write(U03);
+        }
+    }
+
     public partial class Chunk03043054 : IVersionable
     {
         public int Version { get; set; }
@@ -1366,6 +1423,14 @@ public partial class CGameCtnChallenge :
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray());
+        }
+    }
+
+    public partial class Chunk03043055
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            // empty, sets classic clips to true?
         }
     }
 

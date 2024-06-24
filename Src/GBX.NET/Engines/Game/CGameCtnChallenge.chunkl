@@ -261,7 +261,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x04E (skippable, ignore)
 
-0x04F (skippable, ignore) [MP3, TMT, MP4, TM2020]
+0x04F (skippable) [MP3, TMT, MP4, TM2020]
 
 0x050 (skippable) [MP3, TMT, MP4, TM2020] // offzones
  version
@@ -283,7 +283,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
 
-0x055 (skippable, ignore) [MP3, TMT, MP4, TM2020]
+0x055 (skippable) [MP3, TMT, MP4, TM2020]
 
 0x056 (skippable) [MP4, TM2020] // light settings
  version = 3
