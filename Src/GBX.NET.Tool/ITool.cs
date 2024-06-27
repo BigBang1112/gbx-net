@@ -1,6 +1,3 @@
 ﻿namespace GBX.NET.Tool;
 
-public class Class1
-{
-
-}
+public interface ITool;

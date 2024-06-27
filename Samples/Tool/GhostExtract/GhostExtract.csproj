@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+    <ProjectReference Include="..\..\..\Src\GBX.NET.Tool\GBX.NET.Tool.csproj" />
   </ItemGroup>
 
 </Project>
