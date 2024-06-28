@@ -873,6 +873,16 @@ public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
         base.Node = node;
     }
 
+    public Gbx(T node, GbxHeaderBasic headerBasic) : this(new GbxHeader<T>(headerBasic), new GbxBody(), node)
+    {
+
+    }
+
+    public Gbx(T node) : this(node, GbxHeaderBasic.Default)
+    {
+        
+    }
+
     public override string ToString()
     {
         return $"Gbx<{typeof(T).Name}> ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
