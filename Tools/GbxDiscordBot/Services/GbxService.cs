@@ -33,8 +33,8 @@ internal sealed class GbxService : IGbxService
 
     public async Task<GbxModel> LoadGbxAsync(ulong userId, string url, string fileName, GbxReadSettings settings, CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrEmpty(nameof(url));
-        ArgumentException.ThrowIfNullOrEmpty(nameof(fileName));
+        ArgumentException.ThrowIfNullOrEmpty(url);
+        ArgumentException.ThrowIfNullOrEmpty(fileName);
 
         using var response = await _http.GetAsync(url, cancellationToken);
 
