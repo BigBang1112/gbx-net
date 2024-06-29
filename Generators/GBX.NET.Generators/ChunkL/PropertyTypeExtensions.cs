@@ -86,6 +86,11 @@ internal static class PropertyTypeExtensions
 
         if (propertyType.IsArray && propertyType.PrimaryType != "data")
         {
+            if (propertyType.PrimaryTypeNullable)
+            {
+                sb.Append('?');
+            }
+
             sb.Append("[]");
         }
 

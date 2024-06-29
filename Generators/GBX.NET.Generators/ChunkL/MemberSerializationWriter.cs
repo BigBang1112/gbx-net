@@ -589,6 +589,12 @@ internal sealed class MemberSerializationWriter
             sb.Append(name);
         }
 
+        if ((chunkProperty.Type.IsArray && !chunkProperty.Type.PrimaryTypeNullable)
+         || (chunkProperty.Type.PrimaryType == "list" && !chunkProperty.Type.GenericTypeNullable))
+        {
+            sb.Append('!');
+        }
+
         if (chunkProperty.Type.IsArray && !string.IsNullOrEmpty(chunkProperty.Type.ArrayLength))
         {
             sb.Append(", ");
@@ -784,7 +790,8 @@ internal sealed class MemberSerializationWriter
                 ? (self && isField ? char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1) : chunkProperty.Name)
                 : $"{(self && isField ? 'u' : 'U')}{unknownCounter:00}";
         }
-        else if (isField)
+        
+        if (isField)
         {
             var fieldName = char.ToLowerInvariant(chunkProperty.Name[0]) + chunkProperty.Name.Substring(1);
 
@@ -795,10 +802,8 @@ internal sealed class MemberSerializationWriter
 
             return fieldName;
         }
-        else
-        {
-            return chunkProperty.Name;
-        }
+        
+        return chunkProperty.Name;
     }
 
     private bool IsExplicitUnknownProperty(string? name)

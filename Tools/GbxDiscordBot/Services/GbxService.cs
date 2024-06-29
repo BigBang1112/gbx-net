@@ -22,7 +22,12 @@ internal sealed class GbxService : IGbxService
 
     public readonly TimeSpan GbxCacheDuration = TimeSpan.FromMinutes(5);
 
-    public GbxService(HttpClient http, AppDbContext db, IUserService userService, IMemoryCache cache, ILogger<GbxService> logger)
+    public GbxService(
+        HttpClient http,
+        AppDbContext db,
+        IUserService userService,
+        IMemoryCache cache,
+        ILogger<GbxService> logger)
     {
         _http = http;
         _db = db;

@@ -15,8 +15,4 @@ public class ExistingGbxInListException : Exception
     public ExistingGbxInListException(string? message, Exception? innerException) : base(message, innerException)
     {
     }
-
-    protected ExistingGbxInListException(SerializationInfo info, StreamingContext context) : base(info, context)
-    {
-    }
 }

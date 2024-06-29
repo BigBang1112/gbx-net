@@ -69,7 +69,7 @@ public partial class CPlugSolid2Model
 
             if (Version >= 6)
             {
-                rw.ArrayNodeRef_deprec<CPlugVisual>(ref n.visuals);
+                rw.ArrayNodeRef_deprec<CPlugVisual>(ref n.visuals!);
             }
 
             rw.ArrayId(ref n.materialIds!); // MaterialIds

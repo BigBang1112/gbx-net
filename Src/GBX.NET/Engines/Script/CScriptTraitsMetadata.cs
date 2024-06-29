@@ -28,7 +28,7 @@ public partial class CScriptTraitsMetadata
         ValueNotComputed
     }
 
-    public IDictionary<string, ScriptTrait> Traits { get; set; }
+    public IDictionary<string, ScriptTrait> Traits { get; set; } = new Dictionary<string, ScriptTrait>();
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
     public bool TryGet(string name, [NotNullWhen(true)] out ScriptTrait? trait)

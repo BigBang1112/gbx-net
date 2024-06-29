@@ -9,7 +9,7 @@ public abstract class GbxRefTableNode
 
     protected GbxRefTableNode(GbxRefTable refTable, int flags, bool useFile)
     {
-        RefTable = refTable;
+        RefTable = refTable ?? throw new ArgumentNullException(nameof(refTable));
         Flags = flags;
         UseFile = useFile;
     }

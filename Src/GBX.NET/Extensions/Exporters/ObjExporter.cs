@@ -256,8 +256,6 @@ internal static class ObjExporter
             }
         }
 
-        var counter = 0;
-
         foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)

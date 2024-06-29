@@ -6,7 +6,7 @@
 public sealed record PackDesc(string FilePath = "", UInt256? Checksum = null, string? LocatorUrl = "")
 {
     /// <summary>
-    /// A default instance of <see cref=""/> with empty values.
+    /// A default instance of <see cref="PackDesc"/> with empty values.
     /// </summary>
     public static readonly PackDesc Empty = new();
     

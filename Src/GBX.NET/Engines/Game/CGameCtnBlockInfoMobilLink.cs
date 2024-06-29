@@ -3,7 +3,7 @@
 public partial class CGameCtnBlockInfoMobilLink : IVersionable
 {
     private int version;
-    private string socketId;
+    private string socketId = string.Empty;
     private CGameObjectModel? model;
     private CMwNod? u01;
 
