@@ -1,32 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<SupportedPlatform Include="browser" />
-	</ItemGroup>
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="BlazorMonaco" Version="3.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.6" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BlazorMonaco" Version="3.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.6" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Src\GBX.NET.Lua\GBX.NET.Lua.csproj" />
-		<ProjectReference Include="..\..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
-		<ProjectReference Include="..\..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
-		<ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj" />
-		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Src\GBX.NET.Lua\GBX.NET.Lua.csproj" />
+        <ProjectReference Include="..\..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
+        <ProjectReference Include="..\..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
+        <ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj" />
+        <ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<NativeFileReference Include="liblua.a" />
-	</ItemGroup>
+    <ItemGroup>
+        <NativeFileReference Include="liblua.a" />
+    </ItemGroup>
 
 </Project>

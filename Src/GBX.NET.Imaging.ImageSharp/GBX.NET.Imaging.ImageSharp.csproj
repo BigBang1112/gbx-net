@@ -1,59 +1,59 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<PackageId>GBX.NET.Imaging.ImageSharp</PackageId>
-		<Version>1.0.0-alpha1</Version>
-		<Authors>BigBang1112</Authors>
-		<Description></Description>
-		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageIcon>logo_icon_outline.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageTags>gbx, imagesharp, imaging, image, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
-		<PackageReleaseNotes></PackageReleaseNotes>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+    <PropertyGroup>
+        <PackageId>GBX.NET.Imaging.ImageSharp</PackageId>
+        <Version>1.0.0-alpha1</Version>
+        <Authors>BigBang1112</Authors>
+        <Description></Description>
+        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageIcon>logo_icon_outline.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>gbx, imagesharp, imaging, image, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
-		<LangVersion>12</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-	</PropertyGroup>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
-		<None Include="README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="ThisAssembly.Git" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
+        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ThisAssembly.Git" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+    </ItemGroup>
 
 </Project>

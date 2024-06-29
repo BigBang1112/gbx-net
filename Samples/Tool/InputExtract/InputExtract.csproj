@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Src\GBX.NET.Tool\GBX.NET.Tool.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Src\GBX.NET.Tool\GBX.NET.Tool.csproj" />
+    </ItemGroup>
 
 </Project>
