@@ -17,7 +17,7 @@ internal sealed class ToolUpdateChecker
         return new ToolUpdateChecker(responseTask);
     }
 
-    public async ValueTask<bool> TryCompareVersionAsync()
+    public async ValueTask<bool> TryCompareVersionAsync(CancellationToken cancellationToken)
     {
         if (!updateInfoResponseTask.IsCompleted)
         {

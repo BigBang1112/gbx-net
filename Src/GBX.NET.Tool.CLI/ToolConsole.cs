@@ -62,13 +62,29 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         await IntroWriter<T>.WriteIntroAsync(args);
 
         // Check for updates here if received. If not, check at the end of the tool execution
-        await updateChecker.TryCompareVersionAsync();
+        var updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
 
         AnsiConsole.WriteLine();
 
         var logger = new SpectreConsoleLogger();
 
-        var toolProperties = ToolPropertiesResolver<T>.Resolve(logger);
+        // If the tool has setup, apply tool things below to setup
+
+        // See what the tool can do
+        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
+
+        // Read the files from the arguments
+        // Quickly invalidate ones that do not meet functionality
+
+        // Check again for updates if not done before
+        if (!updateCheckCompleted)
+        {
+            updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
+        }
+
+        // Instantiate the tool
+
+        // Run all produce methods in parallel and run mutate methods in sequence
 
         await AnsiConsole.Progress()
             .StartAsync(async ctx =>
