@@ -64,14 +64,9 @@ internal static class Input
 
     private static uint FromSteerValue(this int steerValue)
     {
-        if (steerValue == -ushort.MaxValue - 1)
-        {
-            return 0x010000;
-        }
-
         if (steerValue > 0)
         {
-            return (uint)((0xFF << 16) | (ushort.MaxValue + 1 - steerValue));
+            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - steerValue));
         }
 
         return (uint)Math.Abs(steerValue);
