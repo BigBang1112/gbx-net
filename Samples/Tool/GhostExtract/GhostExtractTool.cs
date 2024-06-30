@@ -4,7 +4,7 @@ using GBX.NET.Tool;
 
 namespace GhostExtract;
 
-public class GhostExtractTool : ITool
+public class GhostExtractTool : ITool, IProductive<IEnumerable<Gbx<CGameCtnGhost>>>
 {
     private readonly string? fileName;
     private readonly IEnumerable<CGameCtnGhost> ghosts;
