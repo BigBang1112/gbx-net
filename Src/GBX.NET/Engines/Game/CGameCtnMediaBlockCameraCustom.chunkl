@@ -56,12 +56,16 @@ archive Key (inherits: IKey)
   v8=
    int?
    int?
+  v10+
+   int?
 
 archive InterpVal
  vec3 Position
  v5-
   return
  vec3? PitchYawRoll
+ v10+
+  int?
  float? Fov
  vec3? TargetPosition
  v7+
