@@ -8,7 +8,7 @@ namespace GBX.NET;
 internal static class CastTo<T>
 {
     /// <summary>
-    /// Casts <see cref="S"/> to <see cref="T"/>.
+    /// Casts <typeparamref name="S"/> to <typeparamref name="T"/>.
     /// This does not cause boxing for value types.
     /// Useful in generic methods.
     /// </summary>

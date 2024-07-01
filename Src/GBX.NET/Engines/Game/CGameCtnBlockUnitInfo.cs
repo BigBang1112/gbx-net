@@ -74,12 +74,12 @@ public partial class CGameCtnBlockUnitInfo
             var clipCountTop = clipCountBits >> 12 & 7;
             var clipCountBottom = clipCountBits >> 15 & 7;
 
-            n.ClipsNorth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountNorth);
-            n.ClipsEast = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountEast);
-            n.ClipsSouth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountSouth);
-            n.ClipsWest = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountWest);
-            n.ClipsTop = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountTop);
-            n.ClipsBottom = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountBottom);
+            n.ClipsNorth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
+            n.ClipsEast = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
+            n.ClipsSouth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountSouth)!;
+            n.ClipsWest = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountWest)!;
+            n.ClipsTop = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
+            n.ClipsBottom = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
 
             if (version >= 2)
             {

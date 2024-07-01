@@ -47,6 +47,8 @@ internal static class Input
         _ => 0
     };
 
+    // using knowledge from https://github.com/stefan-baumann/ManiaPlanetSharp/issues/15#issuecomment-761836833
+
     private static int ToSteerValue(this uint data)
     {
         var dir = (data >> 16) & 0xFF;
@@ -55,24 +57,19 @@ internal static class Input
         return dir switch
         {
             0xFF => ushort.MaxValue + 1 - val,
-            1 => -ushort.MaxValue - 1,
-            _ => val * -1 * (int)(dir + 1)
+            1 => -ushort.MaxValue - 1, // the steer is full left (steer is 0 in this case)
+            _ => -val * (int)(dir + 1)
         };
     }
 
-    private static uint FromSteerValue(this int value)
+    private static uint FromSteerValue(this int steerValue)
     {
-        if (value > 0)
+        if (steerValue > 0)
         {
-            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - value));
+            return (uint)(0xFF0000 | (ushort.MaxValue + 1 - steerValue));
         }
 
-        if (value < 0)
-        {
-            return (uint)(0x010000 | (value & 0xFFFF));
-        }
-
-        return 0;
+        return (uint)Math.Abs(steerValue);
     }
 
     private static uint FromGasValue(this int value)

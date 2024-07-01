@@ -1,36 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-		<DockerfileContext>..\..\..</DockerfileContext>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..</DockerfileContext>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<InvariantGlobalization>false</InvariantGlobalization>
-		<PublishAot>false</PublishAot>
-		<PublishTrimmed>false</PublishTrimmed>
-		<TrimMode>partial</TrimMode>
-		<PublishSingleFile>true</PublishSingleFile>
-		<PublishReadyToRun>true</PublishReadyToRun>
-		<UserSecretsId>327bd64d-a627-46af-b142-9ac7eb934dbd</UserSecretsId>
-	</PropertyGroup>
+    <PropertyGroup>
+        <InvariantGlobalization>false</InvariantGlobalization>
+        <PublishAot>false</PublishAot>
+        <PublishTrimmed>false</PublishTrimmed>
+        <TrimMode>partial</TrimMode>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <UserSecretsId>327bd64d-a627-46af-b142-9ac7eb934dbd</UserSecretsId>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
-		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.6" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Client\GbxExplorer.Client.csproj" />
-		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Client\GbxExplorer.Client.csproj" />
+        <ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
+    </ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Lua\" />
-	</ItemGroup>
+    <ItemGroup>
+        <Folder Include="Lua\" />
+    </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@ public partial class CPlugEntRecordData : IReadableWritable
     private IList<CustomModulesDeltaList> customModulesDeltaLists = [];
 
     [ZLibData]
-    public CompressedData CompressedData { get; set; }
+    public CompressedData CompressedData { get; set; } = new(0, []);
 
     public TimeInt32 Start { get => start; }
     public TimeInt32 End { get => end; }

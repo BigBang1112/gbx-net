@@ -5,8 +5,12 @@ public partial class CGameCtnMediaClipGroup
 {
     public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger);
 
-    private IList<ClipTrigger> clips = new List<ClipTrigger>();
-    public IList<ClipTrigger> Clips { get => clips; set => clips = value; }
+    private IList<ClipTrigger>? clips;
+    public IList<ClipTrigger> Clips
+    {
+        get => clips ??= new List<ClipTrigger>();
+        set => clips = value;
+    }
 
     private static void ReadClips(CGameCtnMediaClipGroup n, GbxReader r, int version)
     {

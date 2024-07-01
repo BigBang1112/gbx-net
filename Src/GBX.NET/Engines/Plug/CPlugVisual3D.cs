@@ -2,7 +2,7 @@
 
 public partial class CPlugVisual3D
 {
-    public Vertex[] Vertices { get; set; }
+    public Vertex[] Vertices { get; set; } = [];
     public Vec3[]? Tangents { get; set; }
     public Vec3[]? BiTangents { get; set; }
 

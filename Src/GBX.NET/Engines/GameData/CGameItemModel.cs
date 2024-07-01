@@ -80,7 +80,7 @@ public partial class CGameItemModel
 
                         if (Version >= 6)
                         {
-                            rw.ArrayNodeRef<CGameActionModel>(ref n.actions);
+                            rw.ArrayNodeRef<CGameActionModel>(ref n.actions!);
 
                             if (Version >= 7)
                             {

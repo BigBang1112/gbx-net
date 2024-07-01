@@ -11,7 +11,7 @@ CGameItemModel 0x2E002000
  int
 
 0x008 // Nadeo skin fids
- CMwNod[] NadeoSkinFids
+ CMwNod?[] NadeoSkinFids
 
 0x009 // cameras
  CMwNod[]_deprec Cameras

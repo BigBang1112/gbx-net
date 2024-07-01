@@ -80,8 +80,8 @@ public partial class CGameCtnMacroBlockInfo
             wBuffer.Write(U02);
             wBuffer.Write(U03);
 
-            wBuffer.WriteNode(n.ClipGroupInGame);
-            wBuffer.WriteNode(n.ClipGroupEndRace);
+            wBuffer.WriteNodeRef(n.ClipGroupInGame);
+            wBuffer.WriteNodeRef(n.ClipGroupEndRace);
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray());

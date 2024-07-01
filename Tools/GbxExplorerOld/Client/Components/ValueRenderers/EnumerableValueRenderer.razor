@@ -10,18 +10,25 @@
 }
 else
 {
-    var count = (Value as ICollection)?.Count;
-
-    if (count is not null)
+    try
     {
-        @if (count == 1)
+        var count = (Value as ICollection)?.Count;
+
+        if (count is not null)
         {
-            <span class="element-box">1 element</span>
+            @if (count == 1)
+            {
+                <span class="element-box">1 element</span>
+            }
+            else
+            {
+                <span class="element-box">@count elements</span>
+            }
         }
-        else
-        {
-            <span class="element-box">@count elements</span>
-        }
+    }
+    catch (InvalidOperationException)
+    {
+        <span class="element-box">Uninitialized</span>
     }
 }
 

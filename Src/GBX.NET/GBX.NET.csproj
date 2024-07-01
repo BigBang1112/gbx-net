@@ -1,118 +1,118 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<PackageId>GBX.NET</PackageId>
-		<Version>2.0.4</Version>
-		<Authors>BigBang1112</Authors>
-		<Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 200+ Gbx classes.</Description>
-		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageIcon>logo_icon_outline.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
-		<PackageReleaseNotes></PackageReleaseNotes>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+    <PropertyGroup>
+        <PackageId>GBX.NET</PackageId>
+        <Version>2.0.5</Version>
+        <Authors>BigBang1112</Authors>
+        <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 200+ Gbx classes.</Description>
+        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageIcon>logo_icon_outline.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
-		<LangVersion>12</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
-		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
+        <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-		<NoWarn>1591</NoWarn>
-	</PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <NoWarn>1591</NoWarn>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
-		<None Include="README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="ThisAssembly.Git" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="TmEssentials" Version="2.4.2" />
-		<PackageReference Include="Zomp.SyncMethodGenerator" Version="1.3.40">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ThisAssembly.Git" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="TmEssentials" Version="2.4.2" />
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-		<PackageReference Include="System.Memory" Version="4.5.5" />
-		<PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-	</ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+        <PackageReference Include="System.Memory" Version="4.5.5" />
+        <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<Using Include="TmEssentials" />
-		<Using Include="GBX.NET.Attributes" />
-		<Using Include="GBX.NET.Exceptions" />
-		<Using Include="GBX.NET.Serialization" />
-		<Using Include="GBX.NET.Serialization.Chunking" />
-		<Using Include="GBX.NET.Engines.MwFoundations" />
-		<Using Include="GBX.NET.Engines.Plug" />
-		<Using Include="GBX.NET.Engines.Game" />
-		<Using Include="GBX.NET.Engines.GameData" />
-		<Using Include="GBX.NET.Engines.Scene" />
-		<Using Include="GBX.NET.Engines.System" />
-		<Using Include="GBX.NET.Engines.Control" />
-		<Using Include="GBX.NET.Engines.Input" />
-		<Using Include="GBX.NET.Engines.Function" />
-		<Using Include="GBX.NET.Engines.Script" />
-		<Using Include="GBX.NET.Engines.Graphic" />
-		<Using Include="GBX.NET.Engines.Motion" />
-		<Using Include="GBX.NET.Engines.Hms" />
-		<Using Include="GBX.NET.Engines.TrackMania" />
-		<Using Include="GBX.NET.Engines.VirtualSkipper" />
-		<Using Include="GBX.NET.Engines.MetaNotPersistent" />
-		<Using Include="GBX.NET.Engines.Meta" />
-	</ItemGroup>
+    <ItemGroup>
+        <Using Include="TmEssentials" />
+        <Using Include="GBX.NET.Attributes" />
+        <Using Include="GBX.NET.Exceptions" />
+        <Using Include="GBX.NET.Serialization" />
+        <Using Include="GBX.NET.Serialization.Chunking" />
+        <Using Include="GBX.NET.Engines.MwFoundations" />
+        <Using Include="GBX.NET.Engines.Plug" />
+        <Using Include="GBX.NET.Engines.Game" />
+        <Using Include="GBX.NET.Engines.GameData" />
+        <Using Include="GBX.NET.Engines.Scene" />
+        <Using Include="GBX.NET.Engines.System" />
+        <Using Include="GBX.NET.Engines.Control" />
+        <Using Include="GBX.NET.Engines.Input" />
+        <Using Include="GBX.NET.Engines.Function" />
+        <Using Include="GBX.NET.Engines.Script" />
+        <Using Include="GBX.NET.Engines.Graphic" />
+        <Using Include="GBX.NET.Engines.Motion" />
+        <Using Include="GBX.NET.Engines.Hms" />
+        <Using Include="GBX.NET.Engines.TrackMania" />
+        <Using Include="GBX.NET.Engines.VirtualSkipper" />
+        <Using Include="GBX.NET.Engines.MetaNotPersistent" />
+        <Using Include="GBX.NET.Engines.Meta" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<AdditionalFiles Include="Engines/*/*.chunkl" />
-	</ItemGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="Engines/*/*.chunkl" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<AdditionalFiles Include="../../Resources/ClassId.txt" />
-		<AdditionalFiles Include="../../Resources/CollectionId.txt" />
-		<AdditionalFiles Include="../../Resources/Wrap.txt" />
-		<AdditionalFiles Include="../../Resources/Unwrap.txt" />
-	</ItemGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="../../Resources/ClassId.txt" />
+        <AdditionalFiles Include="../../Resources/CollectionId.txt" />
+        <AdditionalFiles Include="../../Resources/Wrap.txt" />
+        <AdditionalFiles Include="../../Resources/Unwrap.txt" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Builders\" />
-	</ItemGroup>
+    <ItemGroup>
+        <Folder Include="Builders\" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
-		<InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
-	</ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+        <InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
+    </ItemGroup>
 
 </Project>

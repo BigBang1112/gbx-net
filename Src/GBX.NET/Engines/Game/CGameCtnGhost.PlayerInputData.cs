@@ -96,6 +96,11 @@ public partial class CGameCtnGhost
 
 		internal IEnumerable<IInput> ProcessShootmaniaInputs()
 		{
+			if (data is null)
+			{
+				yield break;
+            }
+
 			var r = new BitReader(data);
 
 			var prevStrafe = NET.Inputs.EStrafe.None;
@@ -282,8 +287,13 @@ public partial class CGameCtnGhost
 		}
 
 		internal ImmutableList<IInput> ProcessTrackmaniaInputs()
-		{
-			var inputs = ImmutableList.CreateBuilder<IInput>();
+        {
+            if (data is null)
+            {
+                return ImmutableList<IInput>.Empty;
+            }
+
+            var inputs = ImmutableList.CreateBuilder<IInput>();
 
 			var r = new BitReader(data);
 
@@ -539,8 +549,13 @@ public partial class CGameCtnGhost
 		}
 
 		internal IEnumerable<IInputChange> ProcessShootmaniaInputChanges()
-		{
-			var r = new BitReader(data);
+        {
+            if (data is null)
+            {
+                yield break;
+            }
+
+            var r = new BitReader(data);
 
 			for (var i = 0; i < ticks; i++)
 			{
@@ -618,8 +633,13 @@ public partial class CGameCtnGhost
 		}
 
 		internal IEnumerable<IInputChange> ProcessTrackmaniaInputChanges()
-		{
-			var r = new BitReader(data);
+        {
+            if (data is null)
+            {
+                yield break;
+            }
+
+            var r = new BitReader(data);
 
 			var started = EStart.NotStarted;
 

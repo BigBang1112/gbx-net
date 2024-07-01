@@ -15,7 +15,7 @@ public partial class CPlugTree
     [AppliedWithChunk<Chunk0904F018>]
     [AppliedWithChunk<Chunk0904F019>]
     [AppliedWithChunk<Chunk0904F01A>]
-    public Iso4? Translation { get; set; }
+    public Iso4? Location { get; set; }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
@@ -50,6 +50,84 @@ public partial class CPlugTree
                     yield return descendant;
                 }
             }
+        }
+    }
+
+    internal IEnumerable<(CPlugTree Tree, Iso4 Location)> GetAllChildrenWithLocation(int lod = 0)
+    {
+        return GetAllChildren(this, lod);
+
+        static IEnumerable<(CPlugTree, Iso4)> GetAllChildren(CPlugTree tree, int lod = 0, Iso4 location = default)
+        {
+            if (location == default)
+            {
+                location = Iso4.Identity;
+            }
+
+            if (tree.Children is null)
+            {
+                yield break;
+            }
+
+            foreach (var child in tree.Children)
+            {
+                var childLocation = child.Location.GetValueOrDefault(Iso4.Identity);
+
+                var newLocation = MultiplyAddIso4(location, childLocation);
+
+                if (child is CPlugTreeVisualMip mip)
+                {
+                    var lodChild = GetLodTree(mip, lod);
+
+                    newLocation = MultiplyAddIso4(newLocation, lodChild.Location.GetValueOrDefault(Iso4.Identity));
+
+                    foreach (var descendant in GetAllChildren(lodChild, lod, newLocation))
+                    {
+                        yield return descendant;
+                    }
+
+                    continue;
+                }
+
+                yield return (child, newLocation);
+
+                foreach (var descendant in GetAllChildren(child, lod, newLocation))
+                {
+                    yield return descendant;
+                }
+            }
+        }
+
+        static Iso4 MultiplyAddIso4(Iso4 a, Iso4 b)
+        {
+            return new Iso4(
+                a.XX * b.XX + a.XY * b.YX + a.XZ * b.ZX,
+                a.XX * b.XY + a.XY * b.YY + a.XZ * b.ZY,
+                a.XX * b.XZ + a.XY * b.YZ + a.XZ * b.ZZ,
+
+                a.YX * b.XX + a.YY * b.YX + a.YZ * b.ZX,
+                a.YX * b.XY + a.YY * b.YY + a.YZ * b.ZY,
+                a.YX * b.XZ + a.YY * b.YZ + a.YZ * b.ZZ,
+
+                a.ZX * b.XX + a.ZY * b.YX + a.ZZ * b.ZX,
+                a.ZX * b.XY + a.ZY * b.YY + a.ZZ * b.ZY,
+                a.ZX * b.XZ + a.ZY * b.YZ + a.ZZ * b.ZZ,
+
+                a.TX + b.TX,
+                a.TY + b.TY,
+                a.TZ + b.TZ
+            );
+        }
+
+        static CPlugTree GetLodTree(CPlugTreeVisualMip mip, int lod)
+        {
+            return mip.Levels
+                .OrderBy(x => x.Key)
+                .Select(x => x.Value)
+                .ElementAtOrDefault(lod) ?? mip.Levels
+                    .OrderBy(x => x.Key)
+                    .First()
+                    .Value;
         }
     }
 

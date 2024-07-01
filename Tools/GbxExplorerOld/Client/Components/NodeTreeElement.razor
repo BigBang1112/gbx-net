@@ -122,24 +122,31 @@
             .Where(x => x.GetGetMethod()?.IsStatic == false)
             .Where(ValueRenderer.ShowPropertyInTree);
 
-        if ((ValueRenderer.PreferProperties == false && (collection?.Count > 0 || enumerable?.OfType<object>().Any() == true)) || (collection is null && props.Any()))
+        try
         {
-            <span class="member-name @(isNotIncluded ? "not-included-member" : "")" @onclick="async () => await OnExpandAsync()">
+            if ((ValueRenderer.PreferProperties == false && (collection?.Count > 0 || enumerable?.OfType<object>().Any() == true)) || (collection is null && props.Any()))
+            {
+                <span class="member-name @(isNotIncluded ? "not-included-member" : "")" @onclick="async () => await OnExpandAsync()">
 
-            @if (IsExpanded)
-            {
-                <span style="animation: fadeIn 0.2s;"><i class="fa-solid fa-caret-up"></i></span>
-            }
-            else if (IsExpanding)
-            {
-                <span style="font-size:0.83rem;display:inline-block;animation: fadeIn 0.2s;"><i class="fa-solid fa-hourglass"></i></span>
-            }
-            else
-            {
-                <span><i class="fa-solid fa-caret-down"></i></span>
-            }
+                @if (IsExpanded)
+                {
+                    <span style="animation: fadeIn 0.2s;"><i class="fa-solid fa-caret-up"></i></span>
+                }
+                else if (IsExpanding)
+                {
+                    <span style="font-size:0.83rem;display:inline-block;animation: fadeIn 0.2s;"><i class="fa-solid fa-hourglass"></i></span>
+                }
+                else
+                {
+                    <span><i class="fa-solid fa-caret-down"></i></span>
+                }
 
-            </span>
+                </span>
+            }
+        }
+        catch (InvalidOperationException)
+        {
+            
         }
     }
 
@@ -263,7 +270,7 @@
     public int Depth { get; set; }
 
     [Parameter]
-    public GbxExplorerOld.Client.Components.NodeTree Tree { get; set; }
+    public GbxExplorerOld.Client.Components.NodeTree? Tree { get; set; }
 
     public bool IsExpanded { get; set; }
     private bool IsExpanding { get; set; }

@@ -22,7 +22,12 @@ internal sealed class GbxService : IGbxService
 
     public readonly TimeSpan GbxCacheDuration = TimeSpan.FromMinutes(5);
 
-    public GbxService(HttpClient http, AppDbContext db, IUserService userService, IMemoryCache cache, ILogger<GbxService> logger)
+    public GbxService(
+        HttpClient http,
+        AppDbContext db,
+        IUserService userService,
+        IMemoryCache cache,
+        ILogger<GbxService> logger)
     {
         _http = http;
         _db = db;
@@ -33,8 +38,8 @@ internal sealed class GbxService : IGbxService
 
     public async Task<GbxModel> LoadGbxAsync(ulong userId, string url, string fileName, GbxReadSettings settings, CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrEmpty(nameof(url));
-        ArgumentException.ThrowIfNullOrEmpty(nameof(fileName));
+        ArgumentException.ThrowIfNullOrEmpty(url);
+        ArgumentException.ThrowIfNullOrEmpty(fileName);
 
         using var response = await _http.GetAsync(url, cancellationToken);
 

@@ -6,7 +6,7 @@ public sealed class GbxRefTableFile : GbxRefTableNode
 
     public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string filePath) : base(refTable, flags, useFile)
     {
-        FilePath = filePath;
+        FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
     }
 
     public override string ToString()

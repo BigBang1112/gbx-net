@@ -66,6 +66,8 @@ public class GbxEqualTests
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
     public void TestGbxEqualDataImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -126,6 +128,8 @@ public class GbxEqualTests
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
     public void TestGbxEqualObjectsImplicit(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -190,6 +194,8 @@ public class GbxEqualTests
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
     public async Task TestGbxEqualDataImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -249,6 +255,8 @@ public class GbxEqualTests
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("CGameCtnGhost/GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
     public async Task TestGbxEqualObjectsImplicitAsync(string filePath)
     {
         using var logger = output.BuildLogger();
@@ -378,6 +386,14 @@ public class GbxEqualTests
         TestGbxEqualDataExplicit<CGameCtnMediaClip>(filePath);
     }
 
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
+    public void TestGbxEqualDataExplicitCGameCtnGhost(string filePath)
+    {
+        TestGbxEqualDataExplicit<CGameCtnGhost>(filePath);
+    }
+
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
@@ -482,7 +498,15 @@ public class GbxEqualTests
     {
         TestGbxEqualObjectsExplicit<CGameCtnMediaClip>(filePath);
     }
-    
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
+    public void TestGbxEqualObjectsExplicitCGameCtnGhost(string filePath)
+    {
+        TestGbxEqualObjectsExplicit<CGameCtnGhost>(filePath);
+    }
+
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
@@ -587,7 +611,15 @@ public class GbxEqualTests
     {
         await TestGbxEqualDataExplicitAsync<CGameCtnMediaClip>(filePath);
     }
-    
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
+    public async Task TestGbxEqualDataExplicitCGameCtnGhostAsync(string filePath)
+    {
+        await TestGbxEqualDataExplicitAsync<CGameCtnGhost>(filePath);
+    }
+
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnChallenge TM10 001.Challenge.Gbx")]
@@ -691,6 +723,14 @@ public class GbxEqualTests
     public async Task TestGbxEqualObjectsExplicitCGameCtnMediaClipAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameCtnMediaClip>(filePath);
+    }
+
+    [Theory]
+    [InlineData("GBX-NET 2 CGameCtnGhost MP4 001.Ghost.Gbx")]
+    [InlineData("GBX-NET 2 CGameCtnGhost TM2020 001.Ghost.Gbx")]
+    public async Task TestGbxEqualObjectsExplicitCGameCtnGhostAsync(string filePath)
+    {
+        await TestGbxEqualObjectsExplicitAsync<CGameCtnGhost>(filePath);
     }
 
 

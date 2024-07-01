@@ -100,8 +100,8 @@ public partial class Gbx : IGbx
 
     internal Gbx(GbxHeader header, GbxBody body)
     {
-        Header = header;
-        Body = body;
+        Header = header ?? throw new ArgumentNullException(nameof(header));
+        Body = body ?? throw new ArgumentNullException(nameof(body));
     }
 
     public override string ToString()
@@ -792,8 +792,11 @@ public partial class Gbx : IGbx
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
         var minimalData = new byte[13];
+#if NETSTANDARD2_0
         var count = await stream.ReadAsync(minimalData, 0, minimalData.Length, cancellationToken);
-
+#else
+        var count = await stream.ReadAsync(minimalData, cancellationToken);
+#endif
         if (count != minimalData.Length)
         {
             throw new NotAGbxException("Not enough data to parse the class ID.");
@@ -870,7 +873,17 @@ public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
 
     internal Gbx(GbxHeader<T> header, GbxBody body, T node) : base(header, body)
     {
-        base.Node = node;
+        base.Node = node ?? throw new ArgumentNullException(nameof(node));
+    }
+
+    public Gbx(T node, GbxHeaderBasic headerBasic) : this(new GbxHeader<T>(headerBasic), new GbxBody(), node)
+    {
+
+    }
+
+    public Gbx(T node) : this(node, GbxHeaderBasic.Default)
+    {
+        
     }
 
     public override string ToString()

@@ -1,61 +1,61 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<PackageId>GBX.NET.Imaging</PackageId>
-		<Version>2.0.1</Version>
-		<Authors>BigBang1112</Authors>
-		<Description>Provides extensions for image handling in GBX.NET (GDI+, Windows only).</Description>
-		<Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageIcon>logo_icon_outline.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageTags>gbx, imaging, image, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
-		<PackageReleaseNotes></PackageReleaseNotes>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+    <PropertyGroup>
+        <PackageId>GBX.NET.Imaging</PackageId>
+        <Version>2.0.1</Version>
+        <Authors>BigBang1112</Authors>
+        <Description>Provides extensions for image handling in GBX.NET (GDI+, Windows only).</Description>
+        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageIcon>logo_icon_outline.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>gbx, imaging, image, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0-windows;net6.0-windows;netstandard2.0</TargetFrameworks>
-		<LangVersion>12</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
-		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0-windows;net6.0-windows;netstandard2.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
+        <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-	</PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
-		<None Include="README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="System.Drawing.Common" Version="8.0.3" />
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="ThisAssembly.Git" Version="1.4.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ThisAssembly.Git" Version="1.4.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+    </ItemGroup>
 
 </Project>

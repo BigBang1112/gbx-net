@@ -16,10 +16,10 @@ CPlugTree 0x0904F000
 0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // FuncTree
  CFuncTree FuncTree
 
-0x015 [TM10] // translation
+0x015 [TM10] // location
  int Flags
  if (Flags & 4) != 0
-  Iso4? Translation
+  Iso4? Location
 
 0x016 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // properties
  CPlugVisual Visual
@@ -30,8 +30,8 @@ CPlugTree 0x0904F000
 0x017
  CPlugVisual
 
-0x018 (base: 0x015) // translation
+0x018 (base: 0x015) // location
 
-0x019 (base: 0x015) [TMSX] // translation
+0x019 (base: 0x015) [TMSX] // location
 
-0x01A (base: 0x015) [TMNESWC, TMF, TMT, MP4] // translation
+0x01A (base: 0x015) [TMNESWC, TMF, TMT, MP4] // location

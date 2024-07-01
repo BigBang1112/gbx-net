@@ -125,8 +125,11 @@ internal class ClassDataSubGenerator
         var propWriter = new ChunkLPropertiesWriter(sb, classInfo, classInfo.NamelessArchive, alreadyExistingProperties, indent: 0, archiveStructureKind == 1, privateSet, context);
         propWriter.Append();
 
-        sb.AppendLine();
-        AppendDefaultCtorLine(sb, classInfo.Name);
+        if (classInfo.TypeSymbol is null || !classInfo.TypeSymbol.Constructors.Any(x => x.Parameters.Length == 0))
+        {
+            sb.AppendLine();
+            AppendDefaultCtorLine(sb, classInfo.Name);
+        }
 
         if (classInfo.NamelessArchive?.ChunkLDefinition?.Members.Count > 0)
         {

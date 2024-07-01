@@ -677,11 +677,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         Write(value?.FilePath);
 
-        if (value?.FilePath is not null
-            && ((value.FilePath.Length > 0 && PackDescVersion >= 1)
-                || PackDescVersion >= 3))
+        if ((value?.FilePath.Length > 0 && PackDescVersion >= 1) || PackDescVersion >= 3)
         {
-            Write(value.LocatorUrl);
+            Write(value?.LocatorUrl);
         }
     }
 

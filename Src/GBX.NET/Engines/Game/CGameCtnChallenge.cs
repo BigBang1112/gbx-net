@@ -12,7 +12,7 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
-    private string authorLogin;
+    private string authorLogin = string.Empty;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
@@ -246,7 +246,7 @@ public partial class CGameCtnChallenge :
     public CHmsLightMapCache? LightmapCache { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
-    public LightmapFrame[] LightmapFrames { get; set; }
+    public LightmapFrame[]? LightmapFrames { get; set; }
 
     [ZLibData]
     [AppliedWithChunk<Chunk0304303D>]
@@ -283,6 +283,42 @@ public partial class CGameCtnChallenge :
 
     [AppliedWithChunk<Chunk03043069>]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
+
+    private Vec3 thumbnailPosition;
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
+
+    private float thumbnailFov;
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
+
+    private float thumbnailNearClipPlane;
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
+
+    private float thumbnailFarClipPlane;
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
+
+    private string? comments;
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public string? Comments { get => comments; set => comments = value; }
+
+    private Vec3 thumbnailPitchYawRoll;
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
+
 
     // poss to generate
     string IGameCtnChallenge.MapUid
@@ -834,7 +870,7 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            w.Write(n.LightmapFrames.Length);
+            w.Write(n.LightmapFrames?.Length ?? 0);
 
             w.WriteArrayWritable(n.LightmapFrames, version: n.LightmapVersion.GetValueOrDefault(8));
 
@@ -867,7 +903,7 @@ public partial class CGameCtnChallenge :
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class LightmapFrame;
 
-    public partial class Chunk03043040
+    public partial class Chunk03043040 : IVersionable
     {
         public int U01;
         public int[]? U02;
@@ -1255,6 +1291,63 @@ public partial class CGameCtnChallenge :
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SBakedClipsAdditionalData;
 
+
+    public partial class Chunk0304304F : IVersionable
+    {
+        public int Version { get; set; } = 3;
+
+        public int U01;
+        public byte[]? U02;
+        public byte U03;
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+
+            if (Version < 2)
+            {
+                U01 = r.ReadInt32(); // always 0
+                var size = r.ReadInt32();
+
+                using var _ = new Encapsulation(r);
+                U02 = r.ReadData(size);
+                return;
+            }
+
+            if (Version < 3)
+            {
+                if (r.ReadBoolean())
+                {
+                    U03 = 2;
+                }
+
+                return;
+            }
+
+            U03 = r.ReadByte();
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(Version);
+
+            if (Version < 2)
+            {
+                w.Write(U01);
+                w.WriteData(U02);
+                return;
+            }
+
+            if (Version < 3)
+            {
+                w.Write(U03 == 2);
+                return;
+            }
+
+            w.Write(U03);
+        }
+    }
+
     public partial class Chunk03043054 : IVersionable
     {
         public int Version { get; set; }
@@ -1330,6 +1423,14 @@ public partial class CGameCtnChallenge :
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray());
+        }
+    }
+
+    public partial class Chunk03043055
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            // empty, sets classic clips to true?
         }
     }
 

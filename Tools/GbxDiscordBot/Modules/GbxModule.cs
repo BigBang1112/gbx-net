@@ -69,7 +69,15 @@ public sealed class GbxModule : InteractionModuleBase<SocketInteractionContext>
 
         // show main node response
         var response = await _response.MainNodeAsync(gbx, gbx.Node, gbxModel, inspectedMessage);
-        await FollowupAsync(response.Message, response.Embeds, components: response.Components, ephemeral: secretly);
+
+        if (response.Attachments?.Any() == true)
+        {
+            await FollowupWithFilesAsync(response.Attachments, response.Message, response.Embeds, components: response.Components, ephemeral: secretly);
+        }
+        else
+        {
+            await FollowupAsync(response.Message, response.Embeds, components: response.Components, ephemeral: secretly);
+        }
     }
 
     [ComponentInteraction("discard")]
