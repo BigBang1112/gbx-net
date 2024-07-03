@@ -755,7 +755,7 @@ public partial class CGameCtnChallenge :
                 var block = r.ReadReadable<CGameCtnBlock>(Version);
                 n.blocks.Add(block);
 
-                if (block.Flags == -1)
+                if (block.Flags == -1 && Version >= 2)
                 {
                     i--;
                 }
