@@ -761,6 +761,11 @@ public partial class CGameCtnChallenge :
                 }
             }
 
+            if (Version < 2)
+            {
+                return;
+            }
+
             while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
                 n.blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));

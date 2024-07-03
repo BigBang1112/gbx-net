@@ -20,5 +20,6 @@ archive
  if (Flags & (1 << 15)) != 0
   id Author
   CGameCtnBlockSkin Skin
- if (Flags & (1 << 20)) != 0
-  CGameWaypointSpecialProperty WaypointSpecialProperty
+ v2+
+  if (Flags & (1 << 20)) != 0
+   CGameWaypointSpecialProperty WaypointSpecialProperty
