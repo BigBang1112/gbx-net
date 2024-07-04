@@ -746,7 +746,14 @@ public partial class CGameCtnChallenge :
 
             for (var i = 0; i < nbBlocks; i++)
             {
-                n.blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
+                var block = r.ReadReadable<CGameCtnBlock>(Version);
+
+                if (Version >= 6)
+                {
+                    block.Coord -= new Int3(1, 0, 1);
+                }
+
+                n.blocks.Add(block);
             }
         }
 
@@ -759,6 +766,12 @@ public partial class CGameCtnChallenge :
             w.Write(NeedUnlock);
             w.Write(Version);
 
+            if (Version < 6)
+            {
+                w.WriteListWritable(n.blocks, version: Version);
+                return;
+            }
+
             w.Write(n.NbBlocks.GetValueOrDefault());
 
             if (n.blocks is null)
@@ -768,7 +781,15 @@ public partial class CGameCtnChallenge :
 
             foreach (var block in n.blocks)
             {
-                w.WriteWritable(block, Version);
+                try
+                {
+                    block.Coord += new Int3(1, 0, 1);
+                    w.WriteWritable(block, Version);
+                }
+                finally
+                {
+                    block.Coord -= new Int3(1, 0, 1);
+                }
             }
         }
     }
