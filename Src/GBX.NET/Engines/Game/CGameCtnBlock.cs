@@ -8,6 +8,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     private const int GroundBit = 12;
     private const int ClipBit = 13;
     private const int SkinnableBit = 15;
+    private const int HasDecalBit = 17;
     private const int WaypointBit = 20;
     private const int GhostBit = 28;
     private const int FreeBit = 29;
@@ -62,7 +63,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public int Flags { get => flags; set => flags = value; }
 
-    [Obsolete]
+    [Obsolete("Flags are now always presented. There's no point to use this anymore.")]
     public bool HasFlags => flags != -1;
 
     /// <summary>
@@ -123,10 +124,11 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// <summary>
     /// Taken from flags.
     /// </summary>
+    [Obsolete("This bit has been resolved. If absolutely needed, equivalent is !string.IsNullOrEmpty(DecalId).")]
     public bool Bit17
     {
-        get => IsFlagBitSet(17);
-        set => SetFlagBit(17, value);
+        get => IsFlagBitSet(HasDecalBit);
+        set => SetFlagBit(HasDecalBit, value);
     }
 
     private CGameWaypointSpecialProperty? waypointSpecialProperty;
@@ -187,6 +189,13 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// Reference to the macroblock that placed this block. In macroblock mode, this block is then part of a selection group. Available since TM2020.
     /// </summary>
     public MacroblockInstance? MacroblockReference { get; set; }
+
+    private string? decalId;
+    public string? DecalId
+    {
+        get => decalId;
+        set => SetFlagBitAndObject(HasDecalBit, ref decalId, value);
+    }
 
     byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
     byte IGameCtnBlockTMSX.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
