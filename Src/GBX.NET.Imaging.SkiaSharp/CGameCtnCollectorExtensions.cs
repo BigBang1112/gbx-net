@@ -18,13 +18,13 @@ public static class CGameCtnCollectorExtensions
     {
         if (node.Icon is null)
         {
-            if (node.IconWebP is not null)
+            if (node.IconWebP is null)
             {
-                using var webpBitmap = SKBitmap.Decode(node.IconWebP);
-                return webpBitmap.Rotate180FlipX();
+                return null;
             }
 
-            return null;
+            using var webpBitmap = SKBitmap.Decode(node.IconWebP);
+            return webpBitmap.Rotate180FlipX();
         }
 
         var width = node.Icon.GetLength(0);
@@ -122,7 +122,7 @@ public static class CGameCtnCollectorExtensions
         }
 
         using var bitmap = GetBitmap(array, width, height);
-        var iconStream = new MemoryStream();
+        using var iconStream = new MemoryStream();
         bitmap.Encode(iconStream, SKEncodedImageFormat.Webp, 100);
         node.IconWebP = iconStream.ToArray();
         node.Icon = null;
