@@ -218,7 +218,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
-    public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1");
+    public int? NbBlocks => Blocks?.Count;
 
     private UInt128? hashedPassword;
     [AppliedWithChunk<Chunk03043029>]
@@ -265,7 +265,7 @@ public partial class CGameCtnChallenge :
     public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
     [AppliedWithChunk<Chunk03043048>]
-    public int? NbBakedBlocks => bakedBlocks?.Count(x => x.Name != "Unassigned1");
+    public int? NbBakedBlocks => bakedBlocks?.Count;
 
     private IList<CGameCtnBlock>? bakedBlocks;
     [AppliedWithChunk<Chunk03043048>]
@@ -339,14 +339,9 @@ public partial class CGameCtnChallenge :
         return Collection ?? throw new Exception("Environment not available");
     }
 
-    public IEnumerable<CGameCtnBlock> GetBlocks(bool includeUnassigned1 = true)
+    public IEnumerable<CGameCtnBlock> GetBlocks()
     {
-        if (includeUnassigned1)
-        {
-            return blocks ?? [];
-        }
-
-        return blocks?.Where(x => x.Name != "Unassigned1") ?? [];
+        return blocks ?? [];
     }
 
     public IEnumerable<CGameCtnAnchoredObject> GetAnchoredObjects()
@@ -509,13 +504,13 @@ public partial class CGameCtnChallenge :
     /// </summary>
     /// <param name="pos">Position of the block.</param>
     /// <returns>An enumerable of blocks.</returns>
-    public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => GetBlocks(includeUnassigned1: false).Where(x => x.Coord == pos);
+    public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => GetBlocks().Where(x => x.Coord == pos);
 
     /// <summary>
     /// Retrieves ghost blocks on the map.
     /// </summary>
     /// <returns>An enumerable of ghost blocks.</returns>
-    public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks(includeUnassigned1: false).Where(x => x.IsGhost);
+    public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks().Where(x => x.IsGhost);
 
     public CGameCtnBlock PlaceBlock(
         Ident blockModel,
@@ -669,11 +664,11 @@ public partial class CGameCtnChallenge :
         RemoveAllOffZone();
     }
 
-    IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks(includeUnassigned1: true);
-    IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks(includeUnassigned1: true);
-    IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks(includeUnassigned1: true);
-    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBlocks(bool includeUnassigned1) => GetBlocks(includeUnassigned1);
-    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBlocks() => GetBlocks(includeUnassigned1: true);
+    IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks();
+    IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks();
+    IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks();
+    IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBlocks() => GetBlocks();
+    IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBlocks() => GetBlocks();
     IEnumerable<IGameCtnBlockMP4> IGameCtnChallengeMP4.GetBakedBlocks() => GetBakedBlocks();
     IEnumerable<IGameCtnBlockTM2020> IGameCtnChallengeTM2020.GetBakedBlocks() => GetBakedBlocks();
     IGameCtnBlockTM10? IGameCtnChallengeTM10.GetBlock(Int3 pos) => GetBlock(pos);
@@ -900,15 +895,14 @@ public partial class CGameCtnChallenge :
             {
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
                 var usedBlocks = new CGameCtnBlock?[blockIndexes.Length];
-                var blocksWithoutUnassigned = n.blocks!.Where(x => x.Flags != -1).ToArray();
-
+                
                 for (var i = 0; i < blockIndexes.Length; i++)
                 {
                     var index = blockIndexes[i];
 
                     if (index > -1)
                     {
-                        usedBlocks[i] = blocksWithoutUnassigned[index];
+                        usedBlocks[i] = n.blocks![index];
                     }
                 }
 
