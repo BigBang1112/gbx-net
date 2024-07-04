@@ -1225,7 +1225,9 @@ public partial class CGameCtnChallenge :
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
-                n.bakedBlocks.Add(r.ReadReadable<CGameCtnBlock>(BlocksVersion));
+                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
+                block.Coord -= new Int3(1, 0, 1);
+                n.bakedBlocks.Add(block);
             }
 
             U01 = r.ReadInt32();
@@ -1238,13 +1240,28 @@ public partial class CGameCtnChallenge :
             w.Write(Version);
             w.Write(BlocksVersion);
 
-            w.Write(n.NbBakedBlocks.GetValueOrDefault());
-
-            if (n.bakedBlocks is not null)
+            if (BlocksVersion < 6)
             {
-                foreach (var block in n.bakedBlocks)
+                w.WriteListWritable(n.bakedBlocks, version: BlocksVersion);
+            }
+            else
+            {
+                w.Write(n.NbBakedBlocks.GetValueOrDefault());
+
+                if (n.bakedBlocks is not null)
                 {
-                    w.WriteWritable(block, BlocksVersion);
+                    foreach (var block in n.bakedBlocks)
+                    {
+                        try
+                        {
+                            block.Coord += new Int3(1, 0, 1);
+                            w.WriteWritable(block, BlocksVersion);
+                        }
+                        finally
+                        {
+                            block.Coord -= new Int3(1, 0, 1);
+                        }
+                    }
                 }
             }
 
