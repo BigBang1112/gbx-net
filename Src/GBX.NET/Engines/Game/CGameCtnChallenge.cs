@@ -736,7 +736,6 @@ public partial class CGameCtnChallenge :
         public int Version { get; set; } = 6;
 
         public bool NeedUnlock;
-        public ulong? U02;
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
