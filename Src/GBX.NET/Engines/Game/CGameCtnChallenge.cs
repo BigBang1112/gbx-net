@@ -751,22 +751,6 @@ public partial class CGameCtnChallenge :
 
             for (var i = 0; i < nbBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(Version);
-                n.blocks.Add(block);
-
-                if (block.Flags == -1 && Version >= 2)
-                {
-                    i--;
-                }
-            }
-
-            if (Version < 2)
-            {
-                return;
-            }
-
-            while ((r.PeekUInt32() & 0xC0000000) > 0)
-            {
                 n.blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
             }
         }
