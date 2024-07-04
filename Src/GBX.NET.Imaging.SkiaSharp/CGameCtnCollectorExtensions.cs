@@ -13,7 +13,7 @@ public static class CGameCtnCollectorExtensions
     /// Gets the collector's icon as <see cref="SKBitmap"/>.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <returns>Icon as <see cref="SKBitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
+    /// <returns>Icon as <see cref="SKBitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static SKBitmap? GetIconBitmap(this CGameCtnCollector node)
     {
         if (node.Icon is null)
@@ -50,7 +50,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="stream">Stream to export to.</param>
     /// <param name="format">Image format to use.</param>
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, Stream stream, SKEncodedImageFormat format, int quality)
     {
         using var icon = node.GetIconBitmap();
@@ -62,7 +62,7 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, Stream stream)
     {
         return ExportIcon(node, stream, SKEncodedImageFormat.Png, 100);
@@ -75,7 +75,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="fileName">File to export to.</param>
     /// <param name="format">Image format to use.</param>
     /// <param name="quality">The quality level to use for the image. This is in the range from 0-100. Not all formats (for example, PNG) respect or support it.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName, SKEncodedImageFormat format, int quality)
     {
         if (node.Icon is null && node.IconWebP is null)
@@ -92,7 +92,7 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is null.</returns>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName)
     {
         return ExportIcon(node, fileName, SKEncodedImageFormat.Png, 100);
@@ -102,7 +102,7 @@ public static class CGameCtnCollectorExtensions
     /// Replaces the collector's raw RGB icon with a WebP encoded icon. WebP is only accepted in TM2020.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
+    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> is <see langword="null" />.</returns>
     public static bool UpgradeIconToWebP(this CGameCtnCollector node)
     {
         if (node.Icon is null)
