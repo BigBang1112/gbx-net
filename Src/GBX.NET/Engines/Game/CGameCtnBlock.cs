@@ -62,6 +62,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public int Flags { get => flags; set => flags = value; }
 
+    [Obsolete]
     public bool HasFlags => flags != -1;
 
     /// <summary>
@@ -69,14 +70,8 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public byte? Variant
     {
-        get => HasFlags ? (byte)(flags & VariantMax) : null;
-        set
-        {
-            if (HasFlags)
-            {
-                flags = (flags & ~VariantMax) | (value ?? 0);
-            }
-        }
+        get => (byte)(flags & VariantMax);
+        set => flags = (flags & ~VariantMax) | (value ?? 0);
     }
 
     /// <summary>
@@ -84,14 +79,8 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public byte? SubVariant
     {
-        get => HasFlags ? (byte?)((flags >> SubVariantOffset) & SubVariantMax) : null;
-        set
-        {
-            if (HasFlags)
-            {
-                flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value ?? 0) << SubVariantOffset);
-            }
-        }
+        get => (byte?)((flags >> SubVariantOffset) & SubVariantMax);
+        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value ?? 0) << SubVariantOffset);
     }
 
     /// <summary>
@@ -121,11 +110,6 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         get => skin;
         set
         {
-            if (!HasFlags)
-            {
-                return;
-            }
-
             if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
             {
                 flags &= ~(1 << SkinnableBit);
@@ -221,15 +205,10 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         return $"{nameof(CGameCtnBlock)}: {Name} {coord}";
     }
 
-    private bool IsFlagBitSet(int bit) => HasFlags && (flags & (1 << bit)) != 0;
+    private bool IsFlagBitSet(int bit) => (flags & (1 << bit)) != 0;
 
     private void SetFlagBit(int bit, bool value)
     {
-        if (!HasFlags)
-        {
-            return;
-        }
-
         if (value)
         {
             flags |= 1 << bit;
@@ -242,11 +221,6 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 
     private void SetFlagBitAndObject<T>(int bit, ref T? obj, T? value)
     {
-        if (!HasFlags)
-        {
-            return;
-        }
-
         if (value is null)
         {
             flags &= ~(1 << bit);
