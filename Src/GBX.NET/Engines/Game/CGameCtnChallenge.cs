@@ -735,8 +735,7 @@ public partial class CGameCtnChallenge :
     {
         public int Version { get; set; } = 6;
 
-        public bool U01;
-        public ulong? U02;
+        public bool NeedUnlock;
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
@@ -744,29 +743,13 @@ public partial class CGameCtnChallenge :
             n.mapName = r.ReadString();
             n.decoration = r.ReadIdent();
             n.size = r.ReadInt3();
-            U01 = r.ReadBoolean();
+            NeedUnlock = r.ReadBoolean();
             Version = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
             n.blocks = new List<CGameCtnBlock>(nbBlocks);
 
             for (var i = 0; i < nbBlocks; i++)
-            {
-                var block = r.ReadReadable<CGameCtnBlock>(Version);
-                n.blocks.Add(block);
-
-                if (block.Flags == -1 && Version >= 2)
-                {
-                    i--;
-                }
-            }
-
-            if (Version < 2)
-            {
-                return;
-            }
-
-            while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
                 n.blocks.Add(r.ReadReadable<CGameCtnBlock>(Version));
             }
@@ -778,7 +761,7 @@ public partial class CGameCtnChallenge :
             w.Write(n.mapName);
             w.Write(n.decoration);
             w.Write(n.size);
-            w.Write(U01);
+            w.Write(NeedUnlock);
             w.Write(Version);
 
             w.Write(n.NbBlocks.GetValueOrDefault());
@@ -1226,17 +1209,6 @@ public partial class CGameCtnChallenge :
             n.bakedBlocks = new List<CGameCtnBlock>(nbBakedBlocks);
 
             for (var i = 0; i < nbBakedBlocks; i++)
-            {
-                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
-                n.bakedBlocks.Add(block);
-
-                if (block.Flags == -1)
-                {
-                    i--;
-                }
-            }
-
-            while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
                 n.bakedBlocks.Add(r.ReadReadable<CGameCtnBlock>(BlocksVersion));
             }
