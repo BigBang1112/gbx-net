@@ -1210,17 +1210,6 @@ public partial class CGameCtnChallenge :
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
-                n.bakedBlocks.Add(block);
-
-                if (block.Flags == -1)
-                {
-                    i--;
-                }
-            }
-
-            while ((r.PeekUInt32() & 0xC0000000) > 0)
-            {
                 n.bakedBlocks.Add(r.ReadReadable<CGameCtnBlock>(BlocksVersion));
             }
 
