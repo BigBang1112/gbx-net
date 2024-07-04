@@ -26,8 +26,8 @@ archive
    SSquareCardEventIds[] SquareCardEventIds
   if (Flags & (1 << 17)) != 0
    id DecalId
-   int DecalIntensity
-   int DecalVariant
+   int DecalIntensity = 1
+   int DecalVariant = -1
 
 archive SSquareCardEventIds
  int
