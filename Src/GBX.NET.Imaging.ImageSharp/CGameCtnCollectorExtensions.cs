@@ -182,6 +182,75 @@ public static partial class CGameCtnCollectorExtensions
 
     // public static bool DowngradeIconToRaw(this CGameCtnCollector node)
 
+    /// <summary>
+    /// Replaces an icon (any popular image format) to use for the collector.
+    /// </summary>
+    /// <param name="node">CGameCtnCollector</param>
+    /// <param name="stream">Stream to import from.</param>
+    /// <param name="webp">If icon should be imported as WebP, which is used in TM2020 since April 2022.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<Image> ImportIconAsync(this CGameCtnCollector node, Stream stream, bool webp = false, CancellationToken cancellationToken = default)
+    {
+        using var image = await Image.LoadAsync<Rgba32>(stream, cancellationToken);
+
+        image.Mutate(x =>
+        {
+            x.Rotate(RotateMode.Rotate180);
+            x.Flip(FlipMode.Horizontal);
+        });
+
+        await using var ms = new MemoryStream();
+
+        if (webp)
+        {
+            await image.SaveAsWebpAsync(ms, cancellationToken);
+            node.IconWebP = ms.ToArray();
+            return image;
+        }
+
+        var width = image.Width;
+        var height = image.Height;
+        var data = new Color[width, height];
+
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                data[x, y] = new((int)image[x, height - y - 1].Rgba);
+            }
+        }
+
+        node.Icon = data;
+
+        return image;
+    }
+
+    /// <summary>
+    /// Replaces an icon (any popular image format) to use for the collector.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="fileName">File to import from.</param>
+    /// <param name="webp">If icon should be imported as WebP, which is used in TM2020 since April 2022.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    public static async Task<Image> ImportIconAsync(this CGameCtnCollector node, string fileName, bool webp = false, CancellationToken cancellationToken = default)
+    {
+        await using var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
+        return await node.ImportIconAsync(fs, webp, cancellationToken);
+    }
+
+    /// <summary>
+    /// Replaces an icon (any popular image format) to use for the collector.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="fileName">File to import from.</param>
+    /// <param name="webp">If icon should be imported as WebP, which is used in TM2020 since April 2022.</param>
+    public static Image ImportIcon(this CGameCtnCollector node, string fileName, bool webp = false)
+    {
+        using var fs = File.OpenRead(fileName);
+        return node.ImportIcon(fs, webp);
+    }
+
     private static Image<Rgba32> GetImage(int[] data, int width, int height)
     {
         var image = new Image<Rgba32>(width, height);
