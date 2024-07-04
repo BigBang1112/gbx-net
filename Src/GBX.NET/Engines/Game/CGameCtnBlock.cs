@@ -260,4 +260,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03057002;
+
+    [ArchiveGenerationOptions( StructureKind = StructureKind.SeparateReadAndWrite )]
+    public partial class SSquareCardEventIds;
 }
