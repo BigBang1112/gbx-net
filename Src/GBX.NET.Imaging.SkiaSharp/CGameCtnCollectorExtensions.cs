@@ -131,6 +131,55 @@ public static class CGameCtnCollectorExtensions
 
     // public static bool DowngradeIconToRaw(this CGameCtnCollector node)
 
+    /// <summary>
+    /// Replaces an icon (any popular image format) to use for the collector.
+    /// </summary>
+    /// <param name="node">CGameCtnCollector</param>
+    /// <param name="stream">Stream to import from.</param>
+    /// <param name="webp">If icon should be imported as WebP, which is used in TM2020 since April 2022.</param>
+    public static SKBitmap ImportIcon(this CGameCtnCollector node, Stream stream, bool webp = false)
+    {
+        using var bitmap = SKBitmap.Decode(stream);
+        using var rotated = bitmap.Rotate180FlipX();
+        using var ms = new MemoryStream();
+
+        if (webp)
+        {
+            rotated.Encode(ms, SKEncodedImageFormat.Webp, 100);
+            node.IconWebP = ms.ToArray();
+            return rotated;
+        }
+
+        // later replace with GetPixels
+        var width = rotated.Width;
+        var height = rotated.Height;
+        var data = new Color[width, height];
+
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                data[x, y] = new Color((int)(uint)rotated.GetPixel(x, y));
+            }
+        }
+
+        node.Icon = data;
+
+        return rotated;
+    }
+
+    /// <summary>
+    /// Replaces an icon (any popular image format) to use for the collector.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="fileName">File to import from.</param>
+    /// <param name="webp">If icon should be imported as WebP, which is used in TM2020 since April 2022.</param>
+    public static SKBitmap ImportIcon(this CGameCtnCollector node, string fileName, bool webp = false)
+    {
+        using var fs = File.OpenRead(fileName);
+        return node.ImportIcon(fs, webp);
+    }
+
     private static SKBitmap GetBitmap(int[] data, int width, int height)
     {
         var bitmap = new SKBitmap();
