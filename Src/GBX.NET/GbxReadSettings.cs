@@ -31,4 +31,9 @@ public readonly record struct GbxReadSettings
     public bool OpenPlanetHookExtractMode { get; init; }
 
     public HashSet<uint>? SkipChunkIds { get; init; }
+
+    /// <summary>
+    /// Skippable chunks will be read less efficiently, but they will be ignored if the read will fail, with (usually) no corruption once saved.
+    /// </summary>
+    public bool SafeSkippableChunks { get; init; }
 }

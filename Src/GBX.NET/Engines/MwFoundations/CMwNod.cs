@@ -87,6 +87,24 @@ public partial class CMwNod : IClass
                                 break;
                             }
 
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+                                using var rwSafe = new GbxReaderWriter(rSafe);
+
+                                try
+                                {
+                                    readableWritableT.ReadWrite(node, rwSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
+                                break;
+                            }
+
                             readableWritableT.ReadWrite(node, rw);
                             // TODO: validate chunk size
 
@@ -97,6 +115,23 @@ public partial class CMwNod : IClass
                             {
                                 // TODO: possibility to skip (not read into memory)
                                 ((ISkippableChunk)readableT).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
+
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+
+                                try
+                                {
+                                    readableT.Read(node, rSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
                                 break;
                             }
 
@@ -113,6 +148,24 @@ public partial class CMwNod : IClass
                                 break;
                             }
 
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+                                using var rwSafe = new GbxReaderWriter(rSafe);
+
+                                try
+                                {
+                                    readableWritable.ReadWrite(node, rwSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
+                                break;
+                            }
+
                             readableWritable.ReadWrite(node, rw);
                             // TODO: validate chunk size
 
@@ -123,6 +176,23 @@ public partial class CMwNod : IClass
                             {
                                 // TODO: possibility to skip (not read into memory)
                                 ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
+
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+
+                                try
+                                {
+                                    readable.Read(node, rSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
                                 break;
                             }
 
@@ -282,6 +352,24 @@ public partial class CMwNod : IClass
                                 break;
                             }
 
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+                                using var rwSafe = new GbxReaderWriter(rSafe);
+
+                                try
+                                {
+                                    readableWritable.ReadWrite(this, rwSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
+                                break;
+                            }
+
                             readableWritable.ReadWrite(this, rw);
                             // TODO: validate chunk size
 
@@ -293,6 +381,23 @@ public partial class CMwNod : IClass
                             {
                                 // TODO: possibility to skip (not read into memory)
                                 ((ISkippableChunk)readable).Data = r.ReadBytes(chunkSize);
+                                break;
+                            }
+
+                            if (r.Settings.SafeSkippableChunks)
+                            {
+                                using var ms = new MemoryStream(r.ReadBytes(chunkSize));
+                                using var rSafe = new GbxReader(ms, r.Settings);
+
+                                try
+                                {
+                                    readable.Read(this, rSafe);
+                                }
+                                catch (Exception ex)
+                                {
+                                    r.Logger?.LogError(ex, "Skippable chunk data failed to read. Some properties may have been read. Buffer will be stored and used instead.");
+                                }
+
                                 break;
                             }
 

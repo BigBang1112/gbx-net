@@ -81,7 +81,8 @@ public class GbxService : IGbxService
                 {
                     Logger = _logger,
                     OpenPlanetHookExtractMode = _settings.OpenPlanetHookExtractMode,
-                    IgnoreExceptionsInBody = true
+                    IgnoreExceptionsInBody = true,
+                    SafeSkippableChunks = true
                 }, cancellationToken: cancellationToken);
             }
 
