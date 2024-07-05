@@ -11,10 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <NativeFileReference Include="liblzo2.a" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Compile Remove="wwwroot\img\classes\**" />
         <Content Remove="wwwroot\img\classes\**" />
         <EmbeddedResource Remove="wwwroot\img\classes\**" />
@@ -39,6 +35,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="NativeSharpLzo" Version="0.3.2" />
         <PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
     </ItemGroup>
 
