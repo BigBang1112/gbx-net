@@ -56,7 +56,7 @@ builder.ConfigureServices((context, services) =>
     // Add services
     services.AddHttpClient();
     services.AddSingleton<IDiscordBot, DiscordBot>();
-    services.AddSingleton<ILzo, MiniLZO>();
+    services.AddSingleton<ILzo, Lzo>();
     services.AddSingleton<ICrc32, CRC32>();
 
     services.AddScoped<IGbxService, GbxService>();

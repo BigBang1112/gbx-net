@@ -23,7 +23,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.NewtonsoftJson; // Add this
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 
@@ -41,7 +41,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.NewtonsoftJson; // Add this
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 

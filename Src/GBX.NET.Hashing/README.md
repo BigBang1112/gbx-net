@@ -17,7 +17,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.Hashing;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 Gbx.CRC32 = new CRC32(); // You need to add this
 
 var map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
