@@ -9,7 +9,7 @@ if (args.Length == 0)
     Console.ReadKey(true);
 }
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse(args[0]);
 

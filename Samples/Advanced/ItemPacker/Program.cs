@@ -4,7 +4,7 @@ using GBX.NET.Engines.Plug;
 using GBX.NET.LZO;
 using Microsoft.Extensions.Logging;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var logger = LoggerFactory.Create(builder =>
 {

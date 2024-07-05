@@ -10,7 +10,7 @@ if (args.Length == 0)
     return;
 }
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 foreach (var fileName in args)
 {

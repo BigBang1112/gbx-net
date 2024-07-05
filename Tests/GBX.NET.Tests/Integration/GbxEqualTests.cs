@@ -17,7 +17,7 @@ public class GbxEqualTests
     {
         this.output = output;
 
-        Gbx.LZO = new MiniLZO();
+        Gbx.LZO = new Lzo();
         Gbx.StrictBooleans = true;
     }
 

@@ -13,7 +13,7 @@ Console.WriteLine("Expected: " + Path.GetFileName(args[0]));
 Console.WriteLine("Actual: " + Path.GetFileName(args[1]));
 Console.WriteLine();
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx1 = Gbx.Parse(args[0]);
 var gbx2 = Gbx.Parse(args[1]);

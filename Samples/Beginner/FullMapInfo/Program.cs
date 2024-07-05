@@ -11,7 +11,7 @@ if (args.Length == 0)
 
 var watch = Stopwatch.StartNew();
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 var map = Gbx.ParseNode<CGameCtnChallenge>(args[0]);
 
 watch.Stop();

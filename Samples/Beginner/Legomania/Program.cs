@@ -8,7 +8,7 @@ if (args.Length == 0)
     return;
 }
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var map = Gbx.ParseNode<CGameCtnChallenge>(args[0]);
 

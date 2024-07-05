@@ -5,7 +5,7 @@ using GBX.NET.LZO;
 using System.Text;
 using TmEssentials;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 Gbx.CRC32 = new CRC32();
 
 var cars = new[] { "CarSport", "CarSnow", "CarRally", "CarDesert", "CharacterPilot" };
