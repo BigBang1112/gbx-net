@@ -22,6 +22,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Nickname of the record owner.
     /// </summary>
+    [SupportsFormatting]
     public string? PlayerNickname { get; private set; }
 
     /// <summary>
@@ -49,6 +50,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Nickname of the replay creator.
     /// </summary>
+    [SupportsFormatting]
     public string? AuthorNickname { get; private set; }
 
     /// <summary>
