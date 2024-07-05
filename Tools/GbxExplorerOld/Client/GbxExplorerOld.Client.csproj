@@ -11,6 +11,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <NativeFileReference Include="liblzo2.a" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Compile Remove="wwwroot\img\classes\**" />
         <Content Remove="wwwroot\img\classes\**" />
         <EmbeddedResource Remove="wwwroot\img\classes\**" />
