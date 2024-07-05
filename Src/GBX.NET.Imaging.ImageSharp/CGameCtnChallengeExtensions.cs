@@ -17,7 +17,6 @@ public static partial class CGameCtnChallengeExtensions
     /// <param name="node">CGameCtnChallenge</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Thumbnail as <see cref="Image"/>.</returns>
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async ValueTask<Image?> GetThumbnailImageAsync(this CGameCtnChallenge node, CancellationToken cancellationToken = default)
     {
         if (node.Thumbnail is null)
