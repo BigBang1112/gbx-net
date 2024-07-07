@@ -1,0 +1,83 @@
+NPlugDyna_SKinematicConstraint 0x2F0CA000
+
+archive
+ version
+ int SubVersion
+ AnimFunc TransAnimFunc
+ AnimFunc RotAnimFunc
+ int<EShaderTcType> ShaderTcType
+ int ShaderTcVersion
+ AnimFuncNat[] ShaderTcAnimFunc
+ if (int)ShaderTcType == 1
+  TransSubTextureIn ShaderTcDataTransSub
+ byte<EAxis> TransAxis
+ float TransMin
+ float TransMax
+ byte<EAxis> RotAxis
+ float AngleMinDeg
+ float AngleMaxDeg
+
+archive AnimFunc
+ bool IsDuration
+ SubAnimFunc[] SubFuncs
+
+archive SubAnimFunc
+ byte<AnimEase> Ease
+ boolbyte Reverse
+ timeint Duration
+
+archive AnimFuncNat
+ timeint Duration
+ int TextureId
+
+archive TransSubTextureIn
+ int NbSubTexture
+ int NbSubTexturePerLine
+ int NbSubTexturePerColumn
+ bool TopToBottom
+
+enum AnimEase
+ Constant
+ Linear
+ QuadIn
+ QuadOut
+ QuadInOut
+ CubicIn
+ CubicOut
+ CubicInOut
+ QuartIn
+ QuartOut
+ QuartInOut
+ QuintIn
+ QuintOut
+ QuintInOut
+ SineIn
+ SineOut
+ SineInOut
+ ExpIn
+ ExpOut
+ ExpInOut
+ CircIn
+ CircOut
+ CircInOut
+ BackIn
+ BackOut
+ BackInOut
+ ElasticIn
+ ElasticOut
+ ElasticInOut
+ ElasticIn2
+ ElasticOut2
+ ElasticInOut2
+ BounceIn
+ BounceOut
+ BounceInOut
+
+enum EShaderTcType
+ None
+ TransSubTexture
+
+enum EAxis
+ X
+ Y
+ Z

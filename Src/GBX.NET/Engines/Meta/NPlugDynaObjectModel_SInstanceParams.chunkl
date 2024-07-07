@@ -1,0 +1,14 @@
+NPlugDynaObjectModel_SInstanceParams 0x2F0B6000
+- inherits: SMetaPtr
+
+archive
+ version
+ float PeriodSc
+ int TextureId
+ bool IsKinematic
+ if Version >= 1
+  float PeriodScMax
+  float Phase01
+  float Phase01Max
+  if Version >= 2
+   bool CastStaticShadow
