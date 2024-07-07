@@ -49,10 +49,6 @@ public partial class CPlugSurface
             {
                 rw.Data(ref U01); // length matches materials count
             }
-            else
-            {
-                rw.Array<ushort>(ref U04); // length matches materials count
-            }
 
             if (Version >= 1)
             {
