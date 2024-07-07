@@ -57,7 +57,12 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
 
-    private int flags;
+	/// <summary>
+	/// Facing direction of the block.
+	/// </summary>
+	public Direction Direction { get; set; }
+
+	private int flags;
     /// <summary>
     /// Flags of the block. If the blocks version is 0, this value can be presented as <see cref="short"/>.
     /// </summary>
