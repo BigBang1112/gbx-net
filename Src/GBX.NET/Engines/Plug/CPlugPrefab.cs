@@ -1,4 +1,5 @@
-﻿
+﻿using GBX.NET.Managers;
+
 namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugPrefab : IVersionable
@@ -63,7 +64,18 @@ public partial class CPlugPrefab : IVersionable
 
             if (model is not null || modelFile is not null)
             {
-                rw.MetaRef<SMetaPtr>(ref @params);
+                // should be replaced with rw.MetaRef<SMetaPtr> in the future or something
+                var classId = rw.UInt32(@params is null
+                    ? uint.MaxValue
+                    : ClassManager.GetId(@params.GetType())
+                        .GetValueOrDefault(uint.MaxValue));
+
+                @params = classId switch
+                {
+                    0x2F0B6000 => rw.Node((NPlugDynaObjectModel_SInstanceParams?)@params),
+                    0x2F0C8000 => rw.Node((NPlugDyna_SPrefabConstraintParams?)@params),
+                    _ => throw new NotImplementedException($"Unknown classId: 0x{classId:X8} ({ClassManager.GetName(classId)})"),
+                };
             }
 
             rw.String(ref u01);
