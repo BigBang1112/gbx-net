@@ -7,8 +7,10 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 {
     private const int GroundBit = 12;
     private const int ClipBit = 13;
+    private const int PillarBit = 14;
     private const int SkinnableBit = 15;
-    private const int HasDecalBit = 17;
+    private const int ReplacementBit = 16;
+    private const int DecalBit = 17;
     private const int WaypointBit = 20;
     private const int GhostBit = 28;
     private const int FreeBit = 29;
@@ -99,12 +101,21 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// If the block is considered as clip. Taken from flags.
+    /// If the block is considered as clip. Also known as <c>IsEditable</c>. Taken from flags.
     /// </summary>
     public bool IsClip
     {
         get => IsFlagBitSet(ClipBit);
         set => SetFlagBit(ClipBit, value);
+    }
+
+    /// <summary>
+    /// Taken from flags.
+    /// </summary>
+    public bool IsPillar
+    {
+        get => IsFlagBitSet(PillarBit);
+        set => SetFlagBit(PillarBit, value);
     }
 
     private CGameCtnBlockSkin? skin;
@@ -129,11 +140,20 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// <summary>
     /// Taken from flags.
     /// </summary>
+    public bool IsReplacement
+    {
+        get => IsFlagBitSet(ReplacementBit);
+        set => SetFlagBit(ReplacementBit, value);
+    }
+
+    /// <summary>
+    /// Taken from flags.
+    /// </summary>
     [Obsolete("This bit has been resolved. If absolutely needed, equivalent is !string.IsNullOrEmpty(DecalId).")]
     public bool Bit17
     {
-        get => IsFlagBitSet(HasDecalBit);
-        set => SetFlagBit(HasDecalBit, value);
+        get => IsFlagBitSet(DecalBit);
+        set => SetFlagBit(DecalBit, value);
     }
 
     private CGameWaypointSpecialProperty? waypointSpecialProperty;
@@ -199,7 +219,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     public string? DecalId
     {
         get => decalId;
-        set => SetFlagBitAndObject(HasDecalBit, ref decalId, value);
+        set => SetFlagBitAndObject(DecalBit, ref decalId, value);
     }
 
     byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
