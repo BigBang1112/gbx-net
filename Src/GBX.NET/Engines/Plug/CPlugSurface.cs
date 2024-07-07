@@ -18,6 +18,7 @@ public partial class CPlugSurface
         public ushort[]? U02;
         public float? U03;
         public ushort[]? U04;
+        public int? U05;
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
@@ -39,6 +40,11 @@ public partial class CPlugSurface
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
+
+            if (Version >= 4 && n.materials?.Length > 0)
+            {
+                rw.Int32(ref U05);
+            }
 
             if ((Version == 3 && (n.materials is null || n.materials.Length == 0)) || Version >= 4)
             {
