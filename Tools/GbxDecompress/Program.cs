@@ -12,21 +12,13 @@ if (args.Length == 0)
 
 Gbx.LZO = new Lzo();
 
+var folderName = "decompressed";
+
 foreach (var fileName in args)
 {
-    Directory.CreateDirectory("decompressed");
-    var outputFilePath = Path.GetDirectoryName(fileName) is string dir
-        ? Path.Combine(dir, "decompressed", Path.GetFileName(fileName))
-        : Path.Combine("decompressed", Path.GetFileName(fileName));
+    Directory.CreateDirectory(folderName);
 
-    var decompressed = Gbx.Decompress(fileName, outputFilePath);
+    Gbx.Decompress(fileName, Path.Combine(folderName, Path.GetFileName(fileName)));
 
-    if (decompressed)
-    {
-        Console.WriteLine($"{fileName} successfully decompressed.");
-    }
-    else
-    {
-        Console.WriteLine($"{fileName} is already decompressed.");
-    }
+    Console.WriteLine($"{fileName} successfully decompressed.");
 }
