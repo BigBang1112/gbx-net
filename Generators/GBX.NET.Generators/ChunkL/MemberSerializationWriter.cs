@@ -359,6 +359,11 @@ internal sealed class MemberSerializationWriter
             sb.Append("Array");
         }
 
+        if (chunkProperty.Type.PrimaryType == "data")
+        {
+            sb.Append("Data");
+        }
+
         var mappedType = MapType(chunkProperty.Type.PrimaryType, out var noMatch);
 
         if (noMatch)
