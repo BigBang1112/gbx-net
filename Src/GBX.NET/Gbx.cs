@@ -204,6 +204,9 @@ public partial class Gbx : IGbx
 
     public static async Task<Gbx> ParseAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
     {
+#if !NETSTANDARD2_0
+        await
+#endif
         using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
         return await ParseAsync(fs, settings, cancellationToken);
     }
@@ -259,6 +262,9 @@ public partial class Gbx : IGbx
 
     public static async Task<Gbx<T>> ParseAsync<T>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
     {
+#if !NETSTANDARD2_0
+        await
+#endif
         using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
         return await ParseAsync<T>(fs, settings, cancellationToken);
     }
