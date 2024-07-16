@@ -536,7 +536,7 @@ Make sure you have these framework SDKs available:
 
 **Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will likely not work.
 
-You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It may not be required, but it will definitely help figuring out some problems.
+You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It is required for Gbx Explorer to work properly, as it uses native LZO implementation compiled into WebAssembly.
 
 In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
 
