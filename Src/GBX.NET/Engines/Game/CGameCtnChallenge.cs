@@ -241,20 +241,19 @@ public partial class CGameCtnChallenge :
 
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
     [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305F>]
     public int? LightmapVersion { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305F>]
+    [AppliedWithChunk<Chunk0304305B>]
     public CHmsLightMapCache? LightmapCache { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305F>]
+    [AppliedWithChunk<Chunk0304305B>]
     public LightmapFrame[]? LightmapFrames { get; set; }
 
     [ZLibData]
     [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305F>]
+    [AppliedWithChunk<Chunk0304305B>]
     public CompressedData? LightmapCacheData { get; set; }
 
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
