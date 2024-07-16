@@ -29,8 +29,7 @@ public static partial class CGameCtnChallengeExtensions
 
         image.Mutate(x =>
         {
-            x.Rotate(RotateMode.Rotate180);
-            x.Flip(FlipMode.Horizontal);
+            x.RotateFlip(RotateMode.Rotate180, FlipMode.Horizontal);
         });
 
         return image;
@@ -52,8 +51,7 @@ public static partial class CGameCtnChallengeExtensions
 
         image.Mutate(x =>
         {
-            x.Rotate(RotateMode.Rotate180);
-            x.Flip(FlipMode.Horizontal);
+            x.RotateFlip(RotateMode.Rotate180, FlipMode.Horizontal);
         });
 
         return image;
@@ -120,8 +118,7 @@ public static partial class CGameCtnChallengeExtensions
 
         image.Mutate(x =>
         {
-            x.Rotate(RotateMode.Rotate180);
-            x.Flip(FlipMode.Horizontal);
+            x.RotateFlip(RotateMode.Rotate180, FlipMode.Horizontal);
         });
 
         await using var ms = new MemoryStream();
