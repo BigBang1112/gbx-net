@@ -917,7 +917,7 @@ public partial class CGameCtnChallenge :
 
             w.Write((int)ms.Length);
             w.Write((int)compressedMs.Length);
-            compressedMs.CopyTo(w.BaseStream);
+            compressedMs.WriteTo(w.BaseStream);
         }
     }
 
