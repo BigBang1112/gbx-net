@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Imaging.SkiaSharp</PackageId>
-        <Version>1.1.0</Version>
+        <Version>1.1.0-beta1</Version>
         <Authors>BigBang1112</Authors>
         <Description>Provides extensions for image handling in GBX.NET (Google's Skia with SkiaSharp).</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
