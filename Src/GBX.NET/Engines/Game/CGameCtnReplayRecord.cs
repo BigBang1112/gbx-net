@@ -142,7 +142,29 @@ public partial class CGameCtnReplayRecord
         }
     }
 
-    public Gbx<CGameCtnChallenge>? GetChallengeHeader()
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async ValueTask<Gbx<CGameCtnChallenge>?> GetChallengeAsync(GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+        if (challengeData is null)
+        {
+            return null;
+        }
+
+#if NETSTANDARD2_0
+        using var ms = new MemoryStream(challengeData);
+#else
+        await using var ms = new MemoryStream(challengeData);
+#endif
+        return await Gbx.ParseAsync<CGameCtnChallenge>(ms, settings, cancellationToken);
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<CGameCtnChallenge?> GetChallengeNodeAsync(GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+        return (await GetChallengeAsync(settings, cancellationToken))?.Node;
+    }
+
+    public Gbx<CGameCtnChallenge>? GetChallengeHeader(GbxReadSettings settings = default)
     {
         if (challengeData is null)
         {
@@ -150,13 +172,12 @@ public partial class CGameCtnReplayRecord
         }
 
         using var ms = new MemoryStream(challengeData);
-
-        return Gbx.ParseHeader<CGameCtnChallenge>(ms);
+        return Gbx.ParseHeader<CGameCtnChallenge>(ms, settings);
     }
 
-    public CGameCtnChallenge? GetChallengeHeaderNode()
+    public CGameCtnChallenge? GetChallengeHeaderNode(GbxReadSettings settings = default)
     {
-        return GetChallengeHeader()?.Node;
+        return GetChallengeHeader(settings)?.Node;
     }
 
     public partial class HeaderChunk03093000 : IVersionable
