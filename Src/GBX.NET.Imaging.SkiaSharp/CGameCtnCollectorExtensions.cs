@@ -32,13 +32,30 @@ public static class CGameCtnCollectorExtensions
 
         var data = new int[width * height];
 
-        for (var y = 0; y < height; y++)
+#if NET6_0_OR_GREATER
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Wasm)
         {
-            for (var x = 0; x < width; x++)
+            for (var y = 0; y < height; y++)
             {
-                data[y * width + x] = node.Icon[x, y].ToArgb();
+                for (var x = 0; x < width; x++)
+                {
+                    data[y * width + x] = node.Icon[x, y].ToRgba();
+                }
             }
         }
+        else
+        {
+#endif
+            for (var y = 0; y < height; y++)
+            {
+                for (var x = 0; x < width; x++)
+                {
+                    data[y * width + x] = node.Icon[x, y].ToArgb();
+                }
+            }
+#if NET6_0_OR_GREATER
+        }
+#endif
 
         return GetBitmap(data, width, height);
     }
@@ -113,13 +130,31 @@ public static class CGameCtnCollectorExtensions
         int width = node.Icon.GetLength(0);
         int height = node.Icon.GetLength(1);
         int[] array = new int[width * height];
-        for (int y = 0; y < height; y++)
+
+#if NET6_0_OR_GREATER
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Wasm)
         {
-            for (int x = 0; x < width; x++)
+            for (int y = 0; y < height; y++)
             {
-                array[y * width + x] = node.Icon[x, height - y - 1].ToArgb();
+                for (int x = 0; x < width; x++)
+                {
+                    array[y * width + x] = node.Icon[x, height - y - 1].ToRgba();
+                }
             }
         }
+        else
+        {
+#endif
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    array[y * width + x] = node.Icon[x, height - y - 1].ToArgb();
+                }
+            }
+#if NET6_0_OR_GREATER
+        }
+#endif
 
         using var bitmap = GetBitmap(array, width, height);
         using var iconStream = new MemoryStream();
