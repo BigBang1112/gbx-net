@@ -436,6 +436,14 @@ GBX.NET is a huge library when everything is included (over 1.5MB), so please us
 > [!NOTE]
 > Expect this to work only with `dotnet publish`.
 
+However, in case you wanna use reflection on GBX.NET, it is strongly recommended to simply turn off trimming of this library. **In case of Blazor WebAssembly specifically, it's worth noting that the release build trims automatically**, so in case you're using reflection, modify your library reference:
+
+```xml
+<PackageReference Include="GBX.NET">
+    <IsTrimmable>false</IsTrimmable> <!-- add this line -->
+</PackageReference>
+```
+
 ### Explicit vs. Implicit parse
 
 *In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
