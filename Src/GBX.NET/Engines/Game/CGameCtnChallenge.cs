@@ -239,17 +239,22 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk0304303D>]
     public bool HasLightmaps { get; set; }
 
+    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305F>]
     public int? LightmapVersion { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305F>]
     public CHmsLightMapCache? LightmapCache { get; set; }
 
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305F>]
     public LightmapFrame[]? LightmapFrames { get; set; }
 
     [ZLibData]
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305F>]
     public CompressedData? LightmapCacheData { get; set; }
 
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
@@ -798,13 +803,43 @@ public partial class CGameCtnChallenge :
     {
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
-            n.HasLightmaps = r.ReadBoolean(); // true is SHmsLightMapCacheSmall is not empty
+            n.HasLightmaps = r.ReadBoolean(); // true if SHmsLightMapCacheSmall is not empty
 
             if (!n.HasLightmaps)
             {
                 return;
             }
 
+            ReadLightMapCacheSmall(n, r);
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(n.HasLightmaps);
+
+            if (!n.HasLightmaps)
+            {
+                return;
+            }
+
+            WriteLightMapCacheSmall(n, w);
+        }
+
+        internal static void ReadWriteLightMapCacheSmall(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            if (rw.Reader is not null)
+            {
+                ReadLightMapCacheSmall(n, rw.Reader);
+            }
+
+            if (rw.Writer is not null)
+            {
+                WriteLightMapCacheSmall(n, rw.Writer);
+            }
+        }
+
+        private static void ReadLightMapCacheSmall(CGameCtnChallenge n, GbxReader r)
+        {
             n.LightmapVersion = r.ReadInt32();
 
             if (n.LightmapVersion < 2)
@@ -831,15 +866,8 @@ public partial class CGameCtnChallenge :
             n.LightmapCache = rBuffer.ReadNode<CHmsLightMapCache>();
         }
 
-        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        private static void WriteLightMapCacheSmall(CGameCtnChallenge n, GbxWriter w)
         {
-            w.Write(n.HasLightmaps);
-
-            if (!n.HasLightmaps)
-            {
-                return;
-            }
-
             w.Write(n.LightmapVersion.GetValueOrDefault());
 
             if (n.LightmapVersion < 2)
@@ -870,7 +898,6 @@ public partial class CGameCtnChallenge :
 
             ms.Position = 0;
             using var compressedMs = new MemoryStream();
-
             Gbx.ZLib.Compress(ms, compressedMs);
 
             w.Write(compressedMs.Length);
@@ -1414,6 +1441,30 @@ public partial class CGameCtnChallenge :
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             // empty, sets classic clips to true?
+        }
+    }
+
+    public partial class Chunk0304305B : IVersionable
+    {
+        public int Version { get; set; }
+
+        public bool U01;
+        public bool U02;
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            n.HasLightmaps = rw.Boolean(n.HasLightmaps);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+
+            if (!n.HasLightmaps)
+            {
+                return;
+            }
+
+            Chunk0304303D.ReadWriteLightMapCacheSmall(n, rw);
         }
     }
 
