@@ -277,7 +277,7 @@ public static partial class CGameCtnCollectorExtensions
         {
             for (var x = 0; x < width; x++)
             {
-                data[y * width + x] = icon[x, y].ToArgb();
+                data[y * width + x] = icon[x, y].ToRgba();
             }
         }
 
@@ -294,7 +294,7 @@ public static partial class CGameCtnCollectorExtensions
         {
             for (int x = 0; x < width; x++)
             {
-                array[y * width + x] = icon[x, height - y - 1].ToArgb();
+                array[y * width + x] = icon[x, height - y - 1].ToRgba();
             }
         }
 
