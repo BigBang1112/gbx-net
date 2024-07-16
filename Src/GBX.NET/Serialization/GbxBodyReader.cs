@@ -144,10 +144,11 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
 
         var decompressedData = await DecompressDataAsync(body.CompressedSize.Value, body.UncompressedSize, cancellationToken);
 
-#if !NETSTANDARD2_0
-        await
-#endif
+#if NETSTANDARD2_0
         using var ms = new MemoryStream(decompressedData);
+#else
+        await using var ms = new MemoryStream(decompressedData);
+#endif
         using var decompressedReader = new GbxReader(ms, Settings);
         decompressedReader.LoadFrom(reader);
         using var decompressedReaderWriter = new GbxReaderWriter(decompressedReader);
