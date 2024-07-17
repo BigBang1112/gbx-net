@@ -10,6 +10,11 @@ public partial class CPlugSurface
     private CPlugSkel? skel;
     public CPlugSkel? Skel { get => skel; set => skel = value; }
 
+    private SurfMaterial[] materials = [];
+    [AppliedWithChunk<Chunk0900C000>]
+    [AppliedWithChunk<Chunk0900C003>]
+    public SurfMaterial[] Materials { get => materials; set => materials = value; }
+
     public partial class Chunk0900C003 : IVersionable
     {
         public int Version { get; set; }
