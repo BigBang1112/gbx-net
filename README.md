@@ -444,6 +444,14 @@ However, in case you wanna use reflection on GBX.NET, it is strongly recommended
 </PackageReference>
 ```
 
+In case this is not enough, you can specify `TrimmerRootAssembly` on the project you're building that this library should absolutely not be trimmed:
+
+```xml
+<ItemGroup>
+    <TrimmerRootAssembly Include="GBX.NET" />
+</ItemGroup>
+```
+
 ### Explicit vs. Implicit parse
 
 *In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
