@@ -9,7 +9,7 @@ public partial class NPlugItem_SVariant
     public CMwNod? EntityModel { get => entityModelFile?.GetNode(ref entityModel) ?? entityModel; set => entityModel = value; }
     private Components.GbxRefTableFile? entityModelFile;
     public Components.GbxRefTableFile? EntityModelFile { get => entityModelFile; set => entityModelFile = value; }
-    public CMwNod? GetEntityModel(GbxReadSettings settings = default) => entityModelFile?.GetNode(ref entityModel, settings);
+    public CMwNod? GetEntityModel(GbxReadSettings settings = default, bool exceptions = false) => entityModelFile?.GetNode(ref entityModel, settings, exceptions);
 
     private bool hiddenInManualCycle;
     public bool HiddenInManualCycle { get => hiddenInManualCycle; set => hiddenInManualCycle = value; }

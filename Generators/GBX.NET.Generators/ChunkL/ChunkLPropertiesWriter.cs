@@ -263,11 +263,11 @@ internal class ChunkLPropertiesWriter
 
                 sb.Append(" Get");
                 sb.Append(propName);
-                sb.Append("(GbxReadSettings settings = default) => ");
+                sb.Append("(GbxReadSettings settings = default, bool exceptions = false) => ");
                 sb.Append(fieldName);
                 sb.Append("File?.GetNode(ref ");
                 sb.Append(fieldName);
-                sb.Append(", settings) ?? ");
+                sb.Append(", settings, exceptions) ?? ");
                 sb.Append(fieldName);
                 sb.AppendLine(";");
             }

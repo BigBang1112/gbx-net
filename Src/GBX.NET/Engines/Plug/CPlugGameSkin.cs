@@ -16,7 +16,7 @@ public partial class CPlugGameSkin
         public CMwNod? Node { get => nodeFile?.GetNode(ref node) ?? node; set => node = value; }
         private Components.GbxRefTableFile? nodeFile;
         public Components.GbxRefTableFile? NodeFile { get => nodeFile; set => nodeFile = value; }
-        public CMwNod? GetNode(GbxReadSettings settings = default) => nodeFile?.GetNode(ref node, settings) ?? node;
+        public CMwNod? GetNode(GbxReadSettings settings = default, bool exceptions = false) => nodeFile?.GetNode(ref node, settings, exceptions) ?? node;
 
         public string Directory { get => directory; set => directory = value; }
         public bool U01 { get => u01; set => u01 = value; }

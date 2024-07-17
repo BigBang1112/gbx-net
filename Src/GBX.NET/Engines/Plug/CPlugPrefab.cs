@@ -42,7 +42,7 @@ public partial class CPlugPrefab : IVersionable
         public CMwNod? Model { get => modelFile?.GetNode(ref model) ?? model; set => model = value; }
         private Components.GbxRefTableFile? modelFile;
         public Components.GbxRefTableFile? ModelFile { get => modelFile; set => modelFile = value; }
-        public CMwNod? GetModel(GbxReadSettings settings = default) => modelFile?.GetNode(ref model, settings);
+        public CMwNod? GetModel(GbxReadSettings settings = default, bool exceptions = false) => modelFile?.GetNode(ref model, settings, exceptions);
 
         private Quat rotation;
         public Quat Rotation { get => rotation; set => rotation = value; }
