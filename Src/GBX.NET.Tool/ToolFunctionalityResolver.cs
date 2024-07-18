@@ -16,13 +16,11 @@ public sealed class ToolFunctionalityResolver<[DynamicallyAccessedMembers(Dynami
 
         ResolveInterfaces(type);
 
-        var paramObjects = ResolveConstructors(type, logger);
-
         logger.LogInformation("Tool properties resolved successfully.");
 
         return new ToolFunctionality<T>
         {
-            InputParameters = paramObjects
+            Constructors = type.GetConstructors()
         };
     }
 
@@ -55,44 +53,5 @@ public sealed class ToolFunctionalityResolver<[DynamicallyAccessedMembers(Dynami
                 continue;
             }
         }
-    }
-
-    private static object?[] ResolveConstructors(Type type, ILogger logger)
-    {
-        foreach (var ctor in type.GetConstructors())
-        {
-            var parameters = ctor.GetParameters();
-
-            if (parameters.Length == 0)
-            {
-                // input-less tools?
-                continue;
-            }
-
-            var ctorUsable = true;
-            var paramObjects = new object?[parameters.Length];
-
-            // Check for constructor parameters
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                var parameter = parameters[i];
-
-                if (parameter.ParameterType == typeof(ILogger))
-                {
-                    paramObjects[i] = logger;
-                    continue;
-                }
-
-                ctorUsable = false;
-                break;
-            }
-
-            if (ctorUsable)
-            {
-                return paramObjects;
-            }
-        }
-
-        return [];
     }
 }

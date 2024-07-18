@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\GBX.NET.LZO\GBX.NET.LZO.csproj" />
         <ProjectReference Include="..\GBX.NET.Tool\GBX.NET.Tool.csproj" />
     </ItemGroup>
 
