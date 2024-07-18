@@ -1,10 +1,7 @@
 ﻿using GBX.NET.LZO;
 using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
-using Microsoft.Extensions.Logging;
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -77,97 +74,22 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         var logger = new SpectreConsoleLogger();
 
+        if (toolConfig.Inputs.Count == 0)
+        {
+            throw new ConsoleProblemException("No files passed to the tool.");
+        }
+
         // If the tool has setup, apply tool things below to setup
 
         // See what the tool can do
         var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
 
-        var resolvedInputsDict = new Dictionary<Input, object?>();
-        var pickedCtor = default(ConstructorInfo);
-        var paramsForCtor = new List<object>();
 
-        foreach (var constructor in toolFunctionality.Constructors)
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolConfig, logger);
+
+        await foreach (var toolInstance in toolInstanceMaker.MakeToolInstances())
         {
-            var isInvalidCtor = false;
-            var parameters = constructor.GetParameters();
 
-            if (parameters.Length == 0)
-            {
-                // inputless tools?
-                continue;
-            }
-
-            // issue here is with multiple inputs where it should repeat tool constructors
-            var inputEnumerator = toolConfig.Inputs.GetEnumerator();
-            if (!inputEnumerator.MoveNext())
-            {
-                continue;
-            }
-            var input = inputEnumerator.Current;
-
-            foreach (var parameter in parameters)
-            {
-                var type = parameter.ParameterType;
-
-                if (type == typeof(ILogger))
-                {
-                    paramsForCtor.Add(logger);
-                    continue;
-                }
-
-                if (type == typeof(Gbx))
-                {
-                    var resolvedObject = await input.ResolveAsync(cancellationToken);
-
-                    if (resolvedObject is not Gbx)
-                    {
-                        isInvalidCtor = true;
-                        break;
-                    }
-
-                    paramsForCtor.Add(resolvedObject);
-                    continue;
-                }
-
-                if (!type.IsGenericType)
-                {
-                    continue;
-                }
-
-                var typeDef = type.GetGenericTypeDefinition();
-
-                if (typeDef == typeof(Gbx<>))
-                {
-                    var nodeType = type.GetGenericArguments()[0];
-
-                    var resolvedObject = await input.ResolveAsync(cancellationToken);
-
-                    if (resolvedObject is not Gbx gbx || gbx.Node?.GetType() != nodeType)
-                    {
-                        isInvalidCtor = true;
-                        break;
-                    }
-
-                    paramsForCtor.Add(resolvedObject);
-                    continue;
-                }
-
-                if (typeDef == typeof(IEnumerable<>))
-                {
-                    var elementType = type.GetGenericArguments()[0];
-                    continue;
-                }
-            }
-
-            if (isInvalidCtor)
-            {
-                paramsForCtor.Clear();
-            }
-            else
-            {
-                pickedCtor = constructor;
-                break;
-            }
         }
 
         // Check again for updates if not done before
@@ -175,16 +97,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         {
             updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
         }
-
-        // Instantiate the tool
-        if (pickedCtor is null)
-        {
-            throw new ConsoleProblemException("Invalid files passed to the tool.");
-        }
-
-        var toolInstance = pickedCtor.Invoke(paramsForCtor.ToArray());
-
-        // Run all produce methods in parallel and run mutate methods in sequence
 
         await AnsiConsole.Progress()
             .StartAsync(async ctx =>
