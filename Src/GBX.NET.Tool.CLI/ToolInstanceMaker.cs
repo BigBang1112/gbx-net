@@ -24,159 +24,172 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
 
     public async IAsyncEnumerable<T> MakeToolInstances()
     {
-        var pickedCtor = default(ConstructorInfo);
-
-        while (true)
+        do
         {
             var paramsForCtor = new List<object>();
+            var pickedCtor = default(ConstructorInfo);
 
             foreach (var constructor in toolFunctionality.Constructors)
             {
-                var invalidCtor = false;
-                var parameters = constructor.GetParameters();
+                paramsForCtor = await TryPickConstructorAsync(constructor);
 
-                if (parameters.Length == 0)
-                {
-                    // inputless tools?
-                    continue;
-                }
-
-                foreach (var parameter in parameters)
-                {
-                    var type = parameter.ParameterType;
-
-                    if (type == typeof(ILogger))
-                    {
-                        paramsForCtor.Add(logger);
-                        continue;
-                    }
-
-                    if (type == typeof(Gbx))
-                    {
-                        continue;
-                    }
-
-                    if (!type.IsGenericType)
-                    {
-                        continue;
-                    }
-
-                    var typeDef = type.GetGenericTypeDefinition();
-
-                    if (typeDef == typeof(Gbx<>))
-                    {
-                        var nodeType = type.GetGenericArguments()[0];
-
-                        var parameterUsed = false;
-
-                        // if there are leftover objects from previous instance
-                        if (unprocessedObjects.Count > 0)
-                        {
-                            var obj = unprocessedObjects[0];
-
-                            if (obj is Gbx gbx && gbx.Node?.GetType() == nodeType)
-                            {
-                                paramsForCtor.Add(obj);
-                                usedObjects.Add(obj);
-                                parameterUsed = true;
-
-                                unprocessedObjects.RemoveAt(0);
-                                continue;
-                            }
-                        }
-
-                        foreach (var input in toolConfig.Inputs)
-                        {
-                            if (!resolvedInputs.TryGetValue(input, out var resolvedObject))
-                            {
-                                resolvedObject = await input.ResolveAsync(default);
-                                resolvedInputs.Add(input, resolvedObject);
-                            }
-
-                            if (resolvedObject is null)
-                            {
-                                continue;
-                            }
-
-                            if (resolvedObject is IEnumerable<object> enumerable)
-                            {
-                                foreach (var obj in enumerable)
-                                {
-                                    if (obj is null || usedObjects.Contains(obj) || obj is IEnumerable<object>)
-                                    {
-                                        continue;
-                                    }
-
-                                    if (obj is Gbx gbxx && gbxx.Node?.GetType() == nodeType)
-                                    {
-                                        if (parameterUsed)
-                                        {
-                                            unprocessedObjects.Add(gbxx);
-                                            continue;
-                                        }
-
-                                        paramsForCtor.Add(gbxx);
-                                        usedObjects.Add(gbxx);
-                                        parameterUsed = true;
-                                    }
-                                }
-
-                                continue;
-                            }
-
-                            if (usedObjects.Contains(resolvedObject))
-                            {
-                                continue;
-                            }
-
-                            if (resolvedObject is Gbx gbx && gbx.Node?.GetType() == nodeType)
-                            {
-                                if (parameterUsed)
-                                {
-                                    unprocessedObjects.Add(gbx);
-                                    continue;
-                                }
-
-                                paramsForCtor.Add(gbx);
-                                usedObjects.Add(gbx);
-                                parameterUsed = true;
-                            }
-                        }
-
-                        continue;
-                    }
-
-                    if (typeDef == typeof(IEnumerable<>))
-                    {
-                        var elementType = type.GetGenericArguments()[0];
-                        continue;
-                    }
-                }
-
-                if (invalidCtor)
-                {
-                    paramsForCtor.Clear();
-                }
-                else
+                if (paramsForCtor.Count > 0)
                 {
                     pickedCtor = constructor;
                     break;
                 }
             }
 
-            // Instantiate the tool
             if (pickedCtor is null)
             {
                 throw new ConsoleProblemException("Invalid files passed to the tool.");
             }
 
+            // Instantiate the tool
             yield return (T)pickedCtor.Invoke(paramsForCtor.ToArray());
+        }
+        while (unprocessedObjects.Count > 0);
+    }
 
-            // Run all produce methods in parallel and run mutate methods in sequence
-            if (unprocessedObjects.Count == 0)
+    private async Task<List<object>> TryPickConstructorAsync(ConstructorInfo constructor)
+    {
+        var paramsForCtor = new List<object>();
+
+        var invalidCtor = false;
+        var parameters = constructor.GetParameters();
+
+        if (parameters.Length == 0)
+        {
+            // inputless tools?
+            return paramsForCtor;
+        }
+
+        foreach (var parameter in parameters)
+        {
+            var type = parameter.ParameterType;
+
+            if (type == typeof(ILogger))
             {
-                break;
+                paramsForCtor.Add(logger);
+                continue;
+            }
+
+            if (type == typeof(Gbx))
+            {
+                var paramObj = await GetParameterObjectAsync(obj => obj is Gbx);
+                paramsForCtor.Add(paramObj);
+                continue;
+            }
+
+            if (!type.IsGenericType)
+            {
+                continue;
+            }
+
+            var typeDef = type.GetGenericTypeDefinition();
+
+            if (typeDef == typeof(Gbx<>))
+            {
+                var nodeType = type.GetGenericArguments()[0];
+                var paramObj = await GetParameterObjectAsync(obj => obj is Gbx gbx && gbx.Node?.GetType() == nodeType);
+                paramsForCtor.Add(paramObj);
+                continue;
+            }
+
+            if (typeDef == typeof(IEnumerable<>))
+            {
+                var elementType = type.GetGenericArguments()[0];
+                continue;
             }
         }
+
+        if (invalidCtor)
+        {
+            return [];
+        }
+
+        return paramsForCtor;
+    }
+
+    private async Task<object> GetParameterObjectAsync(Predicate<object> predicate)
+    {
+        // if there are leftover objects from previous instance
+        if (unprocessedObjects.Count > 0)
+        {
+            var obj = unprocessedObjects[0];
+
+            // check if the leftover fits this parameter
+            if (predicate(obj))
+            {
+                usedObjects.Add(obj);
+                unprocessedObjects.RemoveAt(0);
+                return obj;
+            }
+        }
+
+        var paramForCtor = default(object);
+
+        foreach (var input in toolConfig.Inputs)
+        {
+            if (!resolvedInputs.TryGetValue(input, out var resolvedObject))
+            {
+                resolvedObject = await input.ResolveAsync(default);
+                resolvedInputs.Add(input, resolvedObject);
+            }
+
+            if (resolvedObject is null)
+            {
+                continue;
+            }
+
+            if (resolvedObject is IEnumerable<object> enumerable)
+            {
+                foreach (var obj in enumerable)
+                {
+                    if (obj is null || usedObjects.Contains(obj) || obj is IEnumerable<object>)
+                    {
+                        continue;
+                    }
+
+                    if (predicate(obj))
+                    {
+                        if (paramForCtor is not null)
+                        {
+                            unprocessedObjects.Add(obj);
+                            continue;
+                        }
+
+                        paramForCtor = obj;
+                        usedObjects.Add(obj);
+                    }
+                }
+
+                continue;
+            }
+
+            if (usedObjects.Contains(resolvedObject))
+            {
+                continue;
+            }
+
+            if (predicate(resolvedObject))
+            {
+                if (paramForCtor is not null)
+                {
+                    unprocessedObjects.Add(resolvedObject);
+                    continue;
+                }
+
+                paramForCtor = resolvedObject;
+                usedObjects.Add(resolvedObject);
+            }
+        }
+
+        if (paramForCtor is null)
+        {
+            throw new Exception("Invalid file passed to the tool.");
+        }
+
+        return paramForCtor;
     }
 }

@@ -89,7 +89,8 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstances())
         {
-
+            // Run all produce methods in parallel and run mutate methods in sequence
+            
         }
 
         // Check again for updates if not done before
