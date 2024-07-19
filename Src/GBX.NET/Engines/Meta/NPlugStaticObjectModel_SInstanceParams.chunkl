@@ -1,0 +1,6 @@
+NPlugStaticObjectModel_SInstanceParams 0x2F0D9000
+- inherits: SMetaPtr
+
+archive
+ version
+ float Phase01

@@ -1,0 +1,9 @@
+CPlugSpawnModel 0x0917A000
+
+0x000
+ version
+ iso4 Loc
+ float TorqueX
+ timeint TorqueDuration
+ vec3 DefaultGravitySpawn
+ int

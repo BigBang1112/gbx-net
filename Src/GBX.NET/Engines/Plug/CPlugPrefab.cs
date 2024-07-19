@@ -74,6 +74,7 @@ public partial class CPlugPrefab : IVersionable
                 0x2F0B6000 => rw.Node((NPlugDynaObjectModel_SInstanceParams?)@params),
                 0x2F0C8000 => rw.Node((NPlugDyna_SPrefabConstraintParams?)@params),
                 0x2F0D8000 => rw.Node((NPlugItemPlacement_SPlacementGroup?)@params),
+                0x2F0D9000 => rw.Node((NPlugStaticObjectModel_SInstanceParams?)@params),
                 uint.MaxValue => null,
                 _ => throw new NotImplementedException($"Unknown classId: 0x{classId:X8} ({ClassManager.GetName(classId)})"),
             };
