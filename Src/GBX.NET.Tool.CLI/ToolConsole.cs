@@ -21,6 +21,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         Gbx.LZO = new Lzo();
     }
 
+    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args)
     {
         using var http = new HttpClient();
@@ -54,6 +55,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         return new ToolConsoleRunResult<T>(tool);
     }
 
+    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
     private async Task RunAsync(CancellationToken cancellationToken)
     {
         var argsResolver = new ArgsResolver(args, http);
@@ -84,10 +86,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // See what the tool can do
         var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
 
-
         var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolConfig, logger);
 
-        await foreach (var toolInstance in toolInstanceMaker.MakeToolInstances())
+        await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
             // Run all produce methods in parallel and run mutate methods in sequence
             
