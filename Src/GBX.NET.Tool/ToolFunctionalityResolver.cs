@@ -65,7 +65,7 @@ public sealed class ToolFunctionalityResolver<[DynamicallyAccessedMembers(Dynami
             {
                 var producedType = interfaceType.GetGenericArguments()[0];
                 var method = methods.Single(m => m.Name == nameof(IMutative<object>.Mutate) && m.ReturnType == producedType);
-                prodMethods.Add(method);
+                mutMethods.Add(method);
                 continue;
             }
         }
