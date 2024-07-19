@@ -318,7 +318,7 @@ CGameCtnChallenge 0x03043000 // A map.
  int
  int
 
-0x05B (skippable) [TM2020] // lightmaps TM2020
+0x05B (skippable, base: 0x03D) [TM2020] // lightmaps TM2020
 
 0x05C (skippable, ignore) [TM2020]
 
@@ -373,6 +373,37 @@ archive LightmapFrame
   data Data2
   v6+
    data Data3
+   
+archive ProbeGridBoxOld
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ float
+ float
+ float
+
+archive ProbeGridBox
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ float
+ float
+ float
+ float
+ float
+ float
 
 enum MapKind // The map's intended use.
  EndMarker

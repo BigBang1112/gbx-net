@@ -236,8 +236,9 @@ public partial class CGameCtnChallenge :
         }
     }
 
+    private bool hasLightmaps;
     [AppliedWithChunk<Chunk0304303D>]
-    public bool HasLightmaps { get; set; }
+    public bool HasLightmaps { get => hasLightmaps; set => hasLightmaps = value; }
 
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
     [AppliedWithChunk<Chunk0304303D>]
@@ -801,31 +802,32 @@ public partial class CGameCtnChallenge :
 
     public partial class Chunk0304303D
     {
-        public override void Read(CGameCtnChallenge n, GbxReader r)
+        public int U01;
+        public int? U02;
+        public int? U03;
+        public int? U04;
+        public int? U05;
+        public int? U06;
+        public int? U07;
+        public byte[]? U08;
+        public int U09;
+        public int U10;
+        public float? U11;
+        public int? U12;
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            n.HasLightmaps = r.ReadBoolean(); // true if SHmsLightMapCacheSmall is not empty
+            rw.Boolean(ref n.hasLightmaps); // true if SHmsLightMapCacheSmall is not empty
 
             if (!n.HasLightmaps)
             {
                 return;
             }
 
-            ReadLightMapCacheSmall(n, r);
+            ReadWriteLightMapCacheSmall(n, rw);
         }
 
-        public override void Write(CGameCtnChallenge n, GbxWriter w)
-        {
-            w.Write(n.HasLightmaps);
-
-            if (!n.HasLightmaps)
-            {
-                return;
-            }
-
-            WriteLightMapCacheSmall(n, w);
-        }
-
-        internal static void ReadWriteLightMapCacheSmall(CGameCtnChallenge n, GbxReaderWriter rw)
+        internal void ReadWriteLightMapCacheSmall(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             if (rw.Reader is not null)
             {
@@ -838,7 +840,7 @@ public partial class CGameCtnChallenge :
             }
         }
 
-        private static void ReadLightMapCacheSmall(CGameCtnChallenge n, GbxReader r)
+        private void ReadLightMapCacheSmall(CGameCtnChallenge n, GbxReader r)
         {
             n.LightmapVersion = r.ReadInt32();
 
@@ -865,13 +867,16 @@ public partial class CGameCtnChallenge :
             }
 
             using var ms = n.LightmapCacheData.OpenDecompressedMemoryStream();
-            using var rBuffer = new GbxReader(ms);
+            var rBuffer = new GbxReader(ms);
             rBuffer.LoadFrom(r);
 
             n.LightmapCache = rBuffer.ReadNode<CHmsLightMapCache>();
+
+            var rw = new GbxReaderWriter(rBuffer);
+            ReadWriteTheRestOfCompressedData(n, rw);
         }
 
-        private static void WriteLightMapCacheSmall(CGameCtnChallenge n, GbxWriter w)
+        private void WriteLightMapCacheSmall(CGameCtnChallenge n, GbxWriter w)
         {
             var lightmapVersion = n.LightmapVersion.GetValueOrDefault(8);
 
@@ -911,6 +916,9 @@ public partial class CGameCtnChallenge :
 
             wBuffer.WriteNode(n.LightmapCache);
 
+            var rw = new GbxReaderWriter(wBuffer);
+            ReadWriteTheRestOfCompressedData(n, rw);
+
             ms.Position = 0;
             using var compressedMs = new MemoryStream();
             Gbx.ZLib.Compress(ms, compressedMs);
@@ -919,10 +927,194 @@ public partial class CGameCtnChallenge :
             w.Write((int)compressedMs.Length);
             compressedMs.WriteTo(w.BaseStream);
         }
+
+        private void ReadWriteTheRestOfCompressedData(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+
+            if (n.LightmapVersion >= 3)
+            {
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+                rw.Int32(ref U05);
+                rw.Int32(ref U06);
+
+                if (n.LightmapVersion >= 4)
+                {
+                    rw.Int32(ref U07);
+
+                    if (n.LightmapVersion < 5)
+                    {
+                        rw.Data(ref U08);
+                    }
+                    else if (n.LightmapFrames is not null)
+                    {
+                        foreach (var frame in n.LightmapFrames)
+                        {
+                            frame.U01 = rw.Data(frame.U01);
+                            frame.U02 = rw.Single(frame.U02);
+
+                            if (n.LightmapVersion >= 6)
+                            {
+                                // NHmsLightMapCache::ArchiveToZip
+                                frame.Version = rw.Int32(frame.Version);
+
+                                if (frame.Version < 2)
+                                {
+                                    frame.U03 = rw.Single(frame.U03);
+                                    frame.U04 = rw.Int32(frame.U04);
+
+                                    if (frame.Version != 0)
+                                    {
+                                        frame.U05 = rw.Int32(frame.U05);
+                                    }
+
+                                    frame.U06 = rw.Int32(frame.U06);
+                                    frame.U07 = rw.Int32(frame.U07);
+                                    frame.U08 = rw.Int32(frame.U08);
+                                    frame.U09 = rw.Iso4(frame.U09);
+                                    frame.U10 = rw.Array<short>(frame.U10);
+                                }
+                                else
+                                {
+                                    frame.U11 = rw.Single(frame.U11);
+                                    frame.U12 = rw.Int32(frame.U12);
+
+                                    if (frame.Version >= 5)
+                                    {
+                                        frame.U39 = rw.Single(frame.U39);
+                                        frame.U40 = rw.Int32(frame.U40);
+
+                                        if (frame.Version >= 6)
+                                        {
+                                            frame.U41 = rw.Single(frame.U41);
+                                            frame.U42 = rw.Int32(frame.U42);
+                                        }
+                                    }
+
+                                    frame.U13 = rw.Int32(frame.U13);
+                                    frame.U14 = rw.Int32(frame.U14);
+                                    frame.U15 = rw.Int32(frame.U15);
+
+                                    if (frame.Version < 4)
+                                    {
+                                        frame.U16 = rw.ArrayReadableWritable<ProbeGridBoxOld>(frame.U16);
+                                    }
+                                    else
+                                    {
+                                        frame.U17 = rw.ArrayReadableWritable<ProbeGridBox>(frame.U17);
+                                    }
+
+                                    frame.U18 = rw.Array<Int2>(frame.U18);
+                                    frame.U19 = rw.Array<short>(frame.U19);
+
+                                    if (frame.Version >= 3)
+                                    {
+                                        frame.U20 = rw.Int32(frame.U20);
+                                        frame.U21 = rw.Int32(frame.U21);
+                                        frame.U22 = rw.Int32(frame.U22);
+                                        frame.U23 = rw.Int32(frame.U23);
+                                        frame.U24 = rw.Int32(frame.U24);
+                                        frame.U25 = rw.Int32(frame.U25);
+
+                                        if (frame.Version >= 4)
+                                        {
+                                            frame.U33 = rw.Int32(frame.U33);
+                                            frame.U34 = rw.Int32(frame.U34);
+                                            frame.U35 = rw.Int32(frame.U35);
+                                        }
+
+                                        frame.U26 = rw.Single(frame.U26);
+                                        frame.U27 = rw.Single(frame.U27);
+                                        frame.U28 = rw.Single(frame.U28);
+                                        frame.U29 = rw.Single(frame.U29);
+                                        frame.U30 = rw.Single(frame.U30);
+                                        frame.U31 = rw.Single(frame.U31);
+                                        frame.U32 = rw.Array<int>(frame.U32);
+                                    }
+                                }
+                                //
+
+                                if (n.LightmapVersion >= 8)
+                                {
+                                    frame.U36 = rw.Int32(frame.U36);
+                                    frame.U37 = rw.Int32(frame.U37);
+
+                                    // Unchecked
+                                    if (n.LightmapVersion >= 10)
+                                    {
+                                        frame.U38 = rw.Int32(frame.U38);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            rw.Int32(ref U09);
+            rw.Int32(ref U10);
+
+            if (n.LightmapVersion < 5)
+            {
+                rw.Single(ref U11);
+            }
+
+            if (n.LightmapVersion >= 7)
+            {
+                rw.Int32(ref U12);
+            }
+        }
     }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class LightmapFrame;
+    public partial class LightmapFrame : IVersionable
+    {
+        public byte[]? U01 { get; set; }
+        public float U02 { get; set; }
+        public int Version { get; set; }
+        public float? U03 { get; set; }
+        public int? U04 { get; set; }
+        public int? U05 { get; set; }
+        public int? U06 { get; set; }
+        public int? U07 { get; set; }
+        public int? U08 { get; set; }
+        public Iso4? U09 { get; set; }
+        public short[]? U10 { get; set; }
+        public float? U11 { get; set; }
+        public int? U12 { get; set; }
+        public int? U13 { get; set; }
+        public int? U14 { get; set; }
+        public int? U15 { get; set; }
+        public ProbeGridBoxOld[]? U16 { get; set; }
+        public ProbeGridBox[]? U17 { get; set; }
+        public Int2[]? U18 { get; set; }
+        public short[]? U19 { get; set; }
+        public int? U20 { get; set; }
+        public int? U21 { get; set; }
+        public int? U22 { get; set; }
+        public int? U23 { get; set; }
+        public int? U24 { get; set; }
+        public int? U25 { get; set; }
+        public float? U26 { get; set; }
+        public float? U27 { get; set; }
+        public float? U28 { get; set; }
+        public float? U29 { get; set; }
+        public float? U30 { get; set; }
+        public float? U31 { get; set; }
+        public int[]? U32 { get; set; }
+        public int? U33 { get; set; }
+        public int? U34 { get; set; }
+        public int? U35 { get; set; }
+        public int? U36 { get; set; }
+        public int? U37 { get; set; }
+        public int? U38 { get; set; }
+        public float? U39 { get; set; }
+        public int? U40 { get; set; }
+        public float? U41 { get; set; }
+        public int? U42 { get; set; }
+    }
 
     public partial class Chunk03043040 : IVersionable
     {
@@ -1480,7 +1672,7 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            Chunk0304303D.ReadWriteLightMapCacheSmall(n, rw);
+            ReadWriteLightMapCacheSmall(n, rw);
         }
     }
 
