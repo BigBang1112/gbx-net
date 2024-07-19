@@ -34,8 +34,8 @@ public class GhostExtractTool : ITool, IProductive<IEnumerable<Gbx<CGameCtnGhost
             return new Gbx<CGameCtnGhost>(ghost)
             {
                 FilePath = ghost.CanBeGameVersion(GameVersion.MP3)
-                    ? Path.Combine("Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Gbx.Gbx")
-                    : Path.Combine("Tracks", "Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Gbx")
+                    ? Path.Combine("Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Ghost.Gbx")
+                    : Path.Combine("Tracks", "Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Ghost.Gbx")
             };
         });
     }

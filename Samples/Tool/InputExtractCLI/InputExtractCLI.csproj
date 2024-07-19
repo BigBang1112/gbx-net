@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\Src\GBX.NET.Tool.CLI\GBX.NET.Tool.CLI.csproj" />
+        <ProjectReference Include="..\InputExtract\InputExtract.csproj" />
     </ItemGroup>
 
 </Project>

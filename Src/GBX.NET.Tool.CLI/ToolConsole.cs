@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Tool.CLI;
 
-public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces | DynamicallyAccessedMemberTypes.PublicConstructors)] T> where T : class, ITool
+public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces | DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicMethods)] T> where T : class, ITool
 {
     private readonly string[] args;
     private readonly HttpClient http;
@@ -58,15 +58,22 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
     private async Task RunAsync(CancellationToken cancellationToken)
     {
+        var consoleOptions = new ConsoleOptions();
+
+        // Load console options from file if exists otherwise create one
+
         var argsResolver = new ArgsResolver(args, http);
-        var toolConfig = argsResolver.Resolve();
+        var toolConfig = argsResolver.Resolve(consoleOptions);
 
         // Request update info and additional stuff
         var updateChecker = toolConfig.ConsoleOptions.DisableUpdateCheck
             ? null
             : ToolUpdateChecker.Check(http);
-        
-        await IntroWriter<T>.WriteIntroAsync(args);
+
+        if (!toolConfig.ConsoleOptions.SkipIntro)
+        {
+            await IntroWriter<T>.WriteIntroAsync(args);
+        }
 
         // Check for updates here if received. If not, check at the end of the tool execution
         var updateCheckCompleted = updateChecker is null
@@ -76,6 +83,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         var logger = new SpectreConsoleLogger();
 
+        // See what the tool can do
+        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
+
         if (toolConfig.Inputs.Count == 0)
         {
             throw new ConsoleProblemException("No files passed to the tool.");
@@ -83,15 +93,41 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         // If the tool has setup, apply tool things below to setup
 
-        // See what the tool can do
-        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
-
         var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolConfig, logger);
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
+            if (toolInstance is IConfigurable<Config> configurable)
+            {
+                // Load config parameters from config file and config overwrites
+            }
+
             // Run all produce methods in parallel and run mutate methods in sequence
-            
+
+            if (toolFunctionality.ProduceMethods.Length == 1)
+            {
+                var produceMethod = toolFunctionality.ProduceMethods[0];
+                var result = produceMethod.Invoke(toolInstance, null);
+            }
+            else if (toolFunctionality.ProduceMethods.Length > 1)
+            {
+                var produceTasks = toolFunctionality.ProduceMethods
+                    .Select(method => Task.Run(() => method.Invoke(toolInstance, null)));
+                await Task.WhenAll(produceTasks);
+            }
+
+            if (toolFunctionality.MutateMethods.Length == 1)
+            {
+                var mutateMethod = toolFunctionality.MutateMethods[0];
+                var result = mutateMethod.Invoke(toolInstance, null);
+            }
+            else if (toolFunctionality.MutateMethods.Length > 1)
+            {
+                foreach (var mutateMethod in toolFunctionality.MutateMethods)
+                {
+                    var result = mutateMethod.Invoke(toolInstance, null);
+                }
+            }
         }
 
         // Check again for updates if not done before

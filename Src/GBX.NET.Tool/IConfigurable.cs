@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Tool;
 
-public interface IConfigurable<TConfig> where TConfig : Config
+public interface IConfigurable<out TConfig> where TConfig : Config
 {
-    TConfig Config { get; set; }
+    TConfig Config { get; }
 }
