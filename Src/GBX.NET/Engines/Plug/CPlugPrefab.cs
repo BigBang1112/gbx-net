@@ -62,22 +62,21 @@ public partial class CPlugPrefab : IVersionable
             rw.Quat(ref rotation);
             rw.Vec3(ref position);
 
-            if (model is not null || modelFile is not null)
-            {
-                // should be replaced with rw.MetaRef<SMetaPtr> in the future or something
-                var classId = rw.UInt32(@params is null
-                    ? uint.MaxValue
-                    : ClassManager.GetId(@params.GetType())
-                        .GetValueOrDefault(uint.MaxValue));
+            // should be replaced with rw.MetaRef<SMetaPtr> in the future or something
+            var classId = rw.UInt32(@params is null
+                ? uint.MaxValue
+                : ClassManager.GetId(@params.GetType())
+                    .GetValueOrDefault(uint.MaxValue));
 
-                @params = classId switch
-                {
-                    0x2F0B6000 => rw.Node((NPlugDynaObjectModel_SInstanceParams?)@params),
-                    0x2F0C8000 => rw.Node((NPlugDyna_SPrefabConstraintParams?)@params),
-                    uint.MaxValue => null,
-                    _ => throw new NotImplementedException($"Unknown classId: 0x{classId:X8} ({ClassManager.GetName(classId)})"),
-                };
-            }
+            @params = classId switch
+            {
+                0x2F0A9000 => rw.Node((NPlugItemPlacement_SPlacement?)@params),
+                0x2F0B6000 => rw.Node((NPlugDynaObjectModel_SInstanceParams?)@params),
+                0x2F0C8000 => rw.Node((NPlugDyna_SPrefabConstraintParams?)@params),
+                0x2F0D8000 => rw.Node((NPlugItemPlacement_SPlacementGroup?)@params),
+                uint.MaxValue => null,
+                _ => throw new NotImplementedException($"Unknown classId: 0x{classId:X8} ({ClassManager.GetName(classId)})"),
+            };
 
             rw.String(ref u01);
         }
