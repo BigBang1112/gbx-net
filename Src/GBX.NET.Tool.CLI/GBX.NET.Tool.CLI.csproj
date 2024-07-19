@@ -11,7 +11,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, tool, cli, console, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <PropertyGroup>

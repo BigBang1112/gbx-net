@@ -29,6 +29,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Modify and save a map](#modify-and-save-a-map)
   - [Processing multiple Gbx types](#processing-multiple-gbx-types)
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
+- [Tool framework](#tool-framework)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
@@ -335,6 +336,39 @@ This code should only crash in case of a file system problem. Other problems wil
 
 > [!NOTE]
 > It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
+
+## Tool framework
+
+Tool framework (`GBX.NET.Tool*` libraries) is a simple way to create rich tools that can be adapted to different environments.
+
+Currently supported environments:
+- **Console** (`GBX.NET.Tool.CLI`)
+
+Planned environments:
+- Blazor (`GBX.NET.Tool.Blazor`) - both server and WebAssembly
+- HTTP server (`GBX.NET.Tool.Server`)
+
+The tool framework guides you with this project structure:
+
+```mermaid
+graph LR
+    A(GBX.NET.Tool) --> B(YourToolProject)
+    C(GBX.NET.Tool.CLI) --> D(YourToolProjectCLI)
+    B --> D
+    A --> C
+    E(GBX.NET) --> A
+    F(GBX.NET.LZO) --> C
+    E --> F
+    G(Spectre.Console) --> C
+```
+
+- Structure: Tool library (`YourToolProject`) and at least 1 implementation application of it (`YourToolProjectCLI`).
+- Tool library references `GBX.NET.Tool` and implementation application references `GBX.NET.Tool.CLI`.
+- `GBX.NET.Tool.CLI` currently uses LZO by default, no need to reference it additionally.
+
+Tool library has a primary tool class that implements `ITool` interface. There should be only one.
+
+Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map).
 
 ## Clarity
 
