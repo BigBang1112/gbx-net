@@ -2,6 +2,7 @@
 using GBX.NET.Tool.CLI.Exceptions;
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -9,11 +10,14 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 {
     private readonly string[] args;
     private readonly HttpClient http;
+    private readonly string runningDir;
 
     public ToolConsole(string[] args, HttpClient http)
     {
         this.args = args;
         this.http = http;
+
+        runningDir = AppDomain.CurrentDomain.BaseDirectory;
     }
 
     static ToolConsole()
@@ -61,6 +65,25 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         var consoleOptions = new ConsoleOptions();
 
         // Load console options from file if exists otherwise create one
+        var consoleOptionsFilePath = Path.Combine(runningDir, "ConsoleOptions.json");
+        if (File.Exists(consoleOptionsFilePath))
+        {
+            using var fs = new FileStream(consoleOptionsFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
+
+            try
+            {
+                consoleOptions = await JsonSerializer.DeserializeAsync(fs, MainJsonContext.Default.ConsoleOptions, cancellationToken) ?? new();
+            }
+            catch (Exception ex)
+            {
+                AnsiConsole.WriteException(ex);
+            }
+        }
+
+        using (var fsConsoleOptions = new FileStream(consoleOptionsFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
+        {
+            await JsonSerializer.SerializeAsync(fsConsoleOptions, consoleOptions, MainJsonContext.Default.ConsoleOptions, cancellationToken);
+        }
 
         var argsResolver = new ArgsResolver(args, http);
         var toolConfig = argsResolver.Resolve(consoleOptions);

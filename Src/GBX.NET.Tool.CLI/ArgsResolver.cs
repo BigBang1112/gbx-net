@@ -83,6 +83,25 @@ internal sealed class ArgsResolver
                 continue;
             }
 
+            if (arg == "--output" || arg == "-o")
+            {
+                if (!argsEnumerator.MoveNext())
+                {
+                    throw new ConsoleProblemException("Missing output path.");
+                }
+
+                var outputPath = argsEnumerator.Current;
+
+                consoleOptions.OutputDirPath = outputPath;
+                continue;
+            }
+
+            if (arg == "--direct-output" || arg == "-d")
+            {
+                consoleOptions.DirectOutput = true;
+                continue;
+            }
+
             if (arg.StartsWith('-'))
             {
                 continue;
