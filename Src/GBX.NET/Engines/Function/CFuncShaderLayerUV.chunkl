@@ -11,7 +11,7 @@ CFuncShaderLayerUV 0x05015000
 
 0x00A (base: 0x009)
  base
- vec2
+ vec2 U03
 
 0x00D
  vec2
