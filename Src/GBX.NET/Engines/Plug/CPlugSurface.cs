@@ -241,16 +241,47 @@ public partial class CPlugSurface
     public sealed partial class Compound : ISurf, IVersionable
     {
         public int Version { get; set; }
+        public ISurf[] Surfs { get; set; } = [];
+        public Iso4[] SurfLocs { get; set; } = [];
+        public short[] SurfJoints { get; set; } = [];
         public Vec3? U01 { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
-            throw new NotImplementedException();
+            var surfCount = r.ReadInt32();
+            Surfs = new ISurf[surfCount];
+
+            for (var i = 0; i < surfCount; i++)
+            {
+                Surfs[i] = ReadSurf(r, version);
+            }
+
+            SurfLocs = r.ReadArray<Iso4>(surfCount);
+
+            if (version >= 1)
+            {
+                SurfJoints = r.ReadArray<short>();
+            }
         }
 
         public void Write(GbxWriter w, int version = 0)
         {
-            throw new NotImplementedException();
+            w.Write(Surfs.Length);
+
+            foreach (var surf in Surfs)
+            {
+                WriteSurf(surf, w, version);
+            }
+
+            foreach (var surfLoc in SurfLocs)
+            {
+                w.Write(surfLoc);
+            }
+
+            if (version >= 1)
+            {
+                w.WriteArray(SurfJoints);
+            }
         }
     }
 }
