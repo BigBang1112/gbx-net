@@ -368,7 +368,9 @@ graph LR
 
 Tool library has a primary tool class that implements `ITool` interface. There should be only one.
 
-Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map).
+Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map without having to recreate it again).
+
+Samples are available [here](Samples/Tool/).
 
 ## Clarity
 
