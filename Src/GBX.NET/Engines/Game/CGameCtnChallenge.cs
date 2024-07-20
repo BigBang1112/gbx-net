@@ -686,6 +686,7 @@ public partial class CGameCtnChallenge :
     /// Generates an approximate map UID using <see cref="MapUtils.GenerateMapUid(Random)"/> that is applied to <see cref="MapUid"/> and returned.
     /// </summary>
     /// <returns>A random map UID.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="random"/> is null.</exception>
     public string GenerateMapUid(Random random) => MapUid = MapUtils.GenerateMapUid(random);
 
     IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks();

@@ -5,6 +5,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Tool.CLI;
 
+/// <summary>
+/// Represents the CLI implementation of GBX.NET tool.
+/// </summary>
+/// <typeparam name="T">Tool type.</typeparam>
 public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces | DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicMethods)] T> where T : class, ITool
 {
     private readonly string[] args;
@@ -14,11 +18,18 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private readonly SettingsManager settingsManager;
     private readonly string runningDir;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ToolConsole{T}"/> class.
+    /// </summary>
+    /// <param name="args">Command line arguments.</param>
+    /// <param name="http">HTTP client to use for requests.</param>
+    /// <param name="options">Options for the tool console. These should be hardcoded for purpose.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="args"/>, <paramref name="http"/>, or <paramref name="options"/> is null.</exception>
     public ToolConsole(string[] args, HttpClient http, ToolConsoleOptions options)
     {
-        this.args = args;
-        this.http = http;
-        this.options = options;
+        this.args = args ?? throw new ArgumentNullException(nameof(args));
+        this.http = http ?? throw new ArgumentNullException(nameof(http));
+        this.options = options ?? throw new ArgumentNullException(nameof(options));
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
         settingsManager = new SettingsManager(runningDir);
@@ -29,10 +40,18 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         Gbx.LZO = new Lzo();
     }
 
+    /// <summary>
+    /// Runs the tool CLI implementation with the specified arguments.
+    /// </summary>
+    /// <param name="args">Command line arguments. Use the 'args' keyword here.</param>
+    /// <param name="options">Options for the tool console. These should be hardcoded for purpose.</param>
+    /// <returns>Result of the tool execution (if wanted to use later).</returns>
     [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
     [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
     {
+        ArgumentNullException.ThrowIfNull(args);
+
         using var http = new HttpClient();
         http.DefaultRequestHeaders.UserAgent.ParseAdd("GBX.NET.Tool.CLI");
 
