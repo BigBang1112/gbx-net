@@ -15,8 +15,11 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private readonly HttpClient http;
     private readonly ToolConsoleOptions options;
 
-    private readonly SettingsManager settingsManager;
     private readonly string runningDir;
+    private readonly SettingsManager settingsManager;
+    private readonly ArgsResolver argsResolver;
+
+    private bool noPause;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ToolConsole{T}"/> class.
@@ -33,6 +36,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
         settingsManager = new SettingsManager(runningDir);
+        argsResolver = new ArgsResolver(args, http);
     }
 
     static ToolConsole()
@@ -76,9 +80,10 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             AnsiConsole.WriteException(ex);
         }
 
-        AnsiConsole.WriteLine();
-        AnsiConsole.Markup("Press any key to continue...");
-        Console.ReadKey(true);
+        if (!tool.noPause)
+        {
+            PressAnyKeyToContinue();
+        }
 
         return new ToolConsoleRunResult<T>(tool);
     }
@@ -92,8 +97,10 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             ToolJsonContext.Default.ConsoleSettings,
             cancellationToken: cancellationToken);
 
-        var argsResolver = new ArgsResolver(args, http);
         var toolSettings = argsResolver.Resolve(consoleSettings);
+
+        // Not ideal mutative state, but it's fine for now
+        noPause = toolSettings.ConsoleSettings.NoPause;
 
         var introWriterTask = default(Task);
 
@@ -131,9 +138,12 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // If the tool has setup, apply tool things below to setup
 
         var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
+        var outputs = new List<object>();
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
+            // Load config into each instance (may be worth caching later)
+
             if (toolInstance is IConfigurable<Config> configurable)
             {
                 var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
@@ -148,24 +158,47 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             {
                 var produceMethod = toolFunctionality.ProduceMethods[0];
                 var result = produceMethod.Invoke(toolInstance, null);
+
+                if (result is not null)
+                {
+                    outputs.Add(result);
+                }
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
                 var produceTasks = toolFunctionality.ProduceMethods
                     .Select(method => Task.Run(() => method.Invoke(toolInstance, null)));
                 await Task.WhenAll(produceTasks);
+
+                foreach (var produceTask in produceTasks)
+                {
+                    if (produceTask.Result is not null)
+                    {
+                        outputs.Add(produceTask.Result);
+                    }
+                }
             }
 
             if (toolFunctionality.MutateMethods.Length == 1)
             {
                 var mutateMethod = toolFunctionality.MutateMethods[0];
                 var result = mutateMethod.Invoke(toolInstance, null);
+
+                if (result is not null)
+                {
+                    outputs.Add(result);
+                }
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
                 foreach (var mutateMethod in toolFunctionality.MutateMethods)
                 {
                     var result = mutateMethod.Invoke(toolInstance, null);
+
+                    if (result is not null)
+                    {
+                        outputs.Add(result);
+                    }
                 }
             }
         }
@@ -176,22 +209,14 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
         }
 
-        await AnsiConsole.Progress()
-            .StartAsync(async ctx =>
-            {
-                // Define tasks
-                var task1 = ctx.AddTask("[green]Reticulating splines[/]");
-                var task2 = ctx.AddTask("[green]Folding space[/]");
+        var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
+        await outputDistributor.DistributeOutputsAsync(outputs, cancellationToken);
+    }
 
-                while (!ctx.IsFinished)
-                {
-                    // Simulate some work
-                    await Task.Delay(250);
-
-                    // Increment
-                    task1.Increment(1.5);
-                    task2.Increment(0.5);
-                }
-            });
+    private static void PressAnyKeyToContinue()
+    {
+        AnsiConsole.WriteLine();
+        AnsiConsole.Markup("Press any key to continue...");
+        Console.ReadKey(true);
     }
 }
