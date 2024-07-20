@@ -49,7 +49,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="TmEssentials" Version="2.4.2" />
+        <PackageReference Include="TmEssentials" Version="2.5.0" />
         <PackageReference Include="Zomp.SyncMethodGenerator" Version="1.4.10">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

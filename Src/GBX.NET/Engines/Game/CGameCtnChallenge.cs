@@ -670,6 +670,24 @@ public partial class CGameCtnChallenge :
         RemoveAllOffZone();
     }
 
+    /// <summary>
+    /// Generates an approximate map UID using <see cref="MapUtils.GenerateMapUid()"/> that is applied to <see cref="MapUid"/> and returned.
+    /// </summary>
+    /// <returns>A random map UID.</returns>
+    public string GenerateMapUid() => MapUid = MapUtils.GenerateMapUid();
+
+    /// <summary>
+    /// Generates an approximate map UID using <see cref="MapUtils.GenerateMapUid(int)"/> that is applied to <see cref="MapUid"/> and returned.
+    /// </summary>
+    /// <returns>A consistent map UID, based on the seed.</returns>
+    public string GenerateMapUid(int seed) => MapUid = MapUtils.GenerateMapUid(seed);
+
+    /// <summary>
+    /// Generates an approximate map UID using <see cref="MapUtils.GenerateMapUid(Random)"/> that is applied to <see cref="MapUid"/> and returned.
+    /// </summary>
+    /// <returns>A random map UID.</returns>
+    public string GenerateMapUid(Random random) => MapUid = MapUtils.GenerateMapUid(random);
+
     IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks();
     IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks();
     IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks();
