@@ -69,6 +69,8 @@ jobs:
         - GBX.NET.LZO
         - GBX.NET.ZLib
         - GBX.NET.NewtonsoftJson
+        - GBX.NET.Tool
+        - GBX.NET.Tool.CLI
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest
