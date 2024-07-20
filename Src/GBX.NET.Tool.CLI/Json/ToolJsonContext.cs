@@ -2,6 +2,6 @@
 
 namespace GBX.NET.Tool.CLI;
 
-[JsonSerializable(typeof(ConsoleOptions))]
+[JsonSerializable(typeof(ConsoleSettings))]
 [JsonSourceGenerationOptions(WriteIndented = true)]
-internal sealed partial class MainJsonContext : JsonSerializerContext;
+internal sealed partial class ToolJsonContext : JsonSerializerContext;

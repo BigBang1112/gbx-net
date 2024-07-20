@@ -16,11 +16,11 @@ internal sealed class ArgsResolver
         this.client = http;
     }
 
-    public ToolConfiguration Resolve(ConsoleOptions consoleOptions)
+    public ToolSettings Resolve(ConsoleSettings consoleOptions)
     {
         if (!HasArgs)
         {
-            return new ToolConfiguration { ConsoleOptions = consoleOptions };
+            return new ToolSettings { ConsoleSettings = consoleOptions };
         }
 
         var configOverwrites = new Dictionary<string, string>();
@@ -54,17 +54,17 @@ internal sealed class ArgsResolver
             {
                 if (!argsEnumerator.MoveNext())
                 {
-                    throw new ConsoleProblemException("Missing config file path.");
+                    throw new ConsoleProblemException("Missing config name.");
                 }
 
-                var configPath = argsEnumerator.Current;
+                var configName = argsEnumerator.Current;
 
-                if (!File.Exists(configPath))
+                if (!File.Exists(configName))
                 {
-                    throw new ConsoleProblemException("Config file does not exist.");
+                    throw new ConsoleProblemException("Config does not exist.");
                 }
                 
-                consoleOptions.ConfigFilePath = configPath;
+                consoleOptions.ConfigName = configName;
                 continue;
             }
 
@@ -135,11 +135,11 @@ internal sealed class ArgsResolver
             }
         }
 
-        return new ToolConfiguration
+        return new ToolSettings
         {
             Inputs = inputs,
             ConfigOverwrites = configOverwrites,
-            ConsoleOptions = consoleOptions
+            ConsoleSettings = consoleOptions
         };
     }
 }

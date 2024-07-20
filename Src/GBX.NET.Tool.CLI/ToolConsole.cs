@@ -2,7 +2,6 @@
 using GBX.NET.Tool.CLI.Exceptions;
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -10,14 +9,19 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 {
     private readonly string[] args;
     private readonly HttpClient http;
+    private readonly ToolConsoleOptions options;
+
+    private readonly SettingsManager settingsManager;
     private readonly string runningDir;
 
-    public ToolConsole(string[] args, HttpClient http)
+    public ToolConsole(string[] args, HttpClient http, ToolConsoleOptions options)
     {
         this.args = args;
         this.http = http;
+        this.options = options;
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
+        settingsManager = new SettingsManager(runningDir);
     }
 
     static ToolConsole()
@@ -25,15 +29,16 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         Gbx.LZO = new Lzo();
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
-    public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args)
+    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
+    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
+    public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
     {
         using var http = new HttpClient();
-        http.DefaultRequestHeaders.Add("User-Agent", "GBX.NET.Tool.CLI");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("GBX.NET.Tool.CLI");
 
         using var cts = new CancellationTokenSource();
 
-        var tool = new ToolConsole<T>(args, http);
+        var tool = new ToolConsole<T>(args, http, options ?? new());
 
         try
         {
@@ -59,43 +64,33 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         return new ToolConsoleRunResult<T>(tool);
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
+    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
+    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
     private async Task RunAsync(CancellationToken cancellationToken)
     {
-        var consoleOptions = new ConsoleOptions();
-
-        // Load console options from file if exists otherwise create one
-        var consoleOptionsFilePath = Path.Combine(runningDir, "ConsoleOptions.json");
-        if (File.Exists(consoleOptionsFilePath))
-        {
-            using var fs = new FileStream(consoleOptionsFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
-
-            try
-            {
-                consoleOptions = await JsonSerializer.DeserializeAsync(fs, MainJsonContext.Default.ConsoleOptions, cancellationToken) ?? new();
-            }
-            catch (Exception ex)
-            {
-                AnsiConsole.WriteException(ex);
-            }
-        }
-
-        using (var fsConsoleOptions = new FileStream(consoleOptionsFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
-        {
-            await JsonSerializer.SerializeAsync(fsConsoleOptions, consoleOptions, MainJsonContext.Default.ConsoleOptions, cancellationToken);
-        }
+        // Load console settings from file if exists otherwise create one
+        var consoleSettings = await settingsManager.GetOrCreateFileAsync("ConsoleSettings",
+            ToolJsonContext.Default.ConsoleSettings,
+            cancellationToken: cancellationToken);
 
         var argsResolver = new ArgsResolver(args, http);
-        var toolConfig = argsResolver.Resolve(consoleOptions);
+        var toolSettings = argsResolver.Resolve(consoleSettings);
+
+        var introWriterTask = default(Task);
+
+        if (!toolSettings.ConsoleSettings.SkipIntro)
+        {
+            introWriterTask = IntroWriter<T>.WriteIntroAsync(args);
+        }
 
         // Request update info and additional stuff
-        var updateChecker = toolConfig.ConsoleOptions.DisableUpdateCheck
+        var updateChecker = toolSettings.ConsoleSettings.DisableUpdateCheck
             ? null
             : ToolUpdateChecker.Check(http);
 
-        if (!toolConfig.ConsoleOptions.SkipIntro)
+        if (introWriterTask is not null)
         {
-            await IntroWriter<T>.WriteIntroAsync(args);
+            await introWriterTask;
         }
 
         // Check for updates here if received. If not, check at the end of the tool execution
@@ -109,20 +104,23 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // See what the tool can do
         var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
 
-        if (toolConfig.Inputs.Count == 0)
+        if (toolSettings.Inputs.Count == 0)
         {
             throw new ConsoleProblemException("No files passed to the tool.");
         }
 
         // If the tool has setup, apply tool things below to setup
 
-        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolConfig, logger);
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
             if (toolInstance is IConfigurable<Config> configurable)
             {
-                // Load config parameters from config file and config overwrites
+                var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
+                    : toolSettings.ConsoleSettings.ConfigName;
+
+                await settingsManager.PopulateConfigAsync(configName, configurable.Config, options.JsonSerializerContext, cancellationToken);
             }
 
             // Run all produce methods in parallel and run mutate methods in sequence

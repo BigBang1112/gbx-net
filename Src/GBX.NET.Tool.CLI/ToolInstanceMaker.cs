@@ -10,17 +10,17 @@ namespace GBX.NET.Tool.CLI;
 internal sealed class ToolInstanceMaker<T> where T : ITool
 {
     private readonly ToolFunctionality<T> toolFunctionality;
-    private readonly ToolConfiguration toolConfig;
+    private readonly ToolSettings toolSettings;
     private readonly ILogger logger;
 
     private readonly Dictionary<Input, object?> resolvedInputs = [];
     private readonly HashSet<object> usedObjects = [];
     private readonly List<object> unprocessedObjects = [];
 
-    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolConfiguration toolConfig, ILogger logger)
+    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, ILogger logger)
     {
         this.toolFunctionality = toolFunctionality;
-        this.toolConfig = toolConfig;
+        this.toolSettings = toolSettings;
         this.logger = logger;
     }
 
@@ -223,7 +223,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
 
     private async IAsyncEnumerable<object> EnumerateResolvedObjectsAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var input in toolConfig.Inputs)
+        foreach (var input in toolSettings.Inputs)
         {
             // Resolve objects from input and cache them
             if (!resolvedInputs.TryGetValue(input, out var resolvedObject))
@@ -257,5 +257,20 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 yield return resolvedObject;
             }
         }
+    }
+
+    private static bool IsTypeOrBaseType(Type? givenType, Type expectedType)
+    {
+        while (givenType is not null)
+        {
+            if (givenType == expectedType)
+            {
+                return true;
+            }
+
+            givenType = givenType.BaseType;
+        }
+
+        return false;
     }
 }
