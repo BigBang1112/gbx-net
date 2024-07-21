@@ -11,282 +11,282 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
-	/// <summary>
-	/// Set of inputs.
-	/// </summary>
-	public partial class PlayerInputData
-	{
-		public enum EVersion
-		{
-			_2017_07_07 = 7,
-			_2017_09_12 = 8,
-			_2020_04_08 = 11,
-			_2020_07_20 = 12
-		}
+    /// <summary>
+    /// Set of inputs.
+    /// </summary>
+    public partial class PlayerInputData
+    {
+        public enum EVersion
+        {
+            _2017_07_07 = 7,
+            _2017_09_12 = 8,
+            _2020_04_08 = 11,
+            _2020_07_20 = 12
+        }
 
-		private enum EStart
-		{
-			NotStarted,
-			Character,
-			Vehicle,
-			VehicleMix
-		}
+        private enum EStart
+        {
+            NotStarted,
+            Character,
+            Vehicle,
+            VehicleMix
+        }
 
-		private ImmutableList<IInputChange>? inputChanges;
-		private ImmutableList<IInput>? inputs;
+        private ImmutableList<IInputChange>? inputChanges;
+        private ImmutableList<IInput>? inputs;
 
-		public IList<IInputChange> InputChanges
-		{
-			get
-			{
-				if (inputChanges is null)
-				{
-					var inputEnumerable = version is <= EVersion._2017_09_12
-						? ProcessShootmaniaInputChanges()
-						: ProcessTrackmaniaInputChanges();
+        public IList<IInputChange> InputChanges
+        {
+            get
+            {
+                if (inputChanges is null)
+                {
+                    var inputEnumerable = version is <= EVersion._2017_09_12
+                        ? ProcessShootmaniaInputChanges()
+                        : ProcessTrackmaniaInputChanges();
 
-					inputChanges = inputEnumerable.ToImmutableList();
-				}
+                    inputChanges = inputEnumerable.ToImmutableList();
+                }
 
-				return inputChanges;
-			}
-		}
+                return inputChanges;
+            }
+        }
 
         public ImmutableList<IInput> Inputs => inputs ??= version is <= EVersion._2017_09_12
             ? ProcessShootmaniaInputs().ToImmutableList()
             : ProcessTrackmaniaInputs();
 
-		private static bool StateIsDifferent(int bit, out bool result, int states, int? prevStates)
-		{
-			var mask = 1 << bit;
-			return StateIsDifferentWithMask(mask, out result, states, prevStates);
-		}
+        private static bool StateIsDifferent(int bit, out bool result, int states, int? prevStates)
+        {
+            var mask = 1 << bit;
+            return StateIsDifferentWithMask(mask, out result, states, prevStates);
+        }
 
-		private static bool StateIsDifferentWithMask(int mask, out bool result, int states, int? prevStates)
-		{
-			var masked = states & mask;
-			result = masked != 0;
+        private static bool StateIsDifferentWithMask(int mask, out bool result, int states, int? prevStates)
+        {
+            var masked = states & mask;
+            result = masked != 0;
 
-			if (prevStates is null)
-			{
-				return result;
-			}
-
-			return masked != (prevStates & mask);
-		}
-
-		private static bool StateIsDifferent(int bit, out bool result, ulong states, ulong? prevStates)
-		{
-			var mask = (ulong)1 << bit;
-			return StateIsDifferentWithMask(mask, out result, states, prevStates);
-		}
-
-		private static bool StateIsDifferentWithMask(ulong mask, out bool result, ulong states, ulong? prevStates)
-		{
-			var masked = states & mask;
-			result = masked != 0;
-
-			if (prevStates is null)
-			{
-				return result;
-			}
-
-			return masked != (prevStates & mask);
-		}
-
-		internal IEnumerable<IInput> ProcessShootmaniaInputs()
-		{
-			if (data is null)
-			{
-				yield break;
+            if (prevStates is null)
+            {
+                return result;
             }
 
-			var r = new BitReader(data);
+            return masked != (prevStates & mask);
+        }
 
-			var prevStrafe = NET.Inputs.EStrafe.None;
-			var prevWalk = NET.Inputs.EWalk.None;
-			var prevVertical = default(byte);
-			var prevStatesFull = default(int?);
-			var prevStates2Bit = default(byte?);
-			var prevAction = default(bool);
-			var prevGunTrigger = default(bool);
+        private static bool StateIsDifferent(int bit, out bool result, ulong states, ulong? prevStates)
+        {
+            var mask = (ulong)1 << bit;
+            return StateIsDifferentWithMask(mask, out result, states, prevStates);
+        }
 
-			for (var i = 0; i < ticks; i++)
-			{
-				var time = new TimeInt32(i * 10);
+        private static bool StateIsDifferentWithMask(ulong mask, out bool result, ulong states, ulong? prevStates)
+        {
+            var masked = states & mask;
+            result = masked != 0;
 
-				var sameMouse = r.ReadBit();
+            if (prevStates is null)
+            {
+                return result;
+            }
 
-				if (!sameMouse)
-				{
-					var mouseAccuX = r.ReadUInt16();
-					var mouseAccuY = r.ReadUInt16();
+            return masked != (prevStates & mask);
+        }
 
-					yield return new MouseAccu(time, mouseAccuX, mouseAccuY);
-				}
+        internal IEnumerable<IInput> ProcessShootmaniaInputs()
+        {
+            if (data is null)
+            {
+                yield break;
+            }
 
-				var sameValuesAfter = r.ReadBit();
-				var sameValue = sameValuesAfter;
+            var r = new BitReader(data);
 
-				if (!sameValuesAfter)
-				{
-					sameValue = r.ReadBit();
-				}
+            var prevStrafe = NET.Inputs.EStrafe.None;
+            var prevWalk = NET.Inputs.EWalk.None;
+            var prevVertical = default(byte);
+            var prevStatesFull = default(int?);
+            var prevStates2Bit = default(byte?);
+            var prevAction = default(bool);
+            var prevGunTrigger = default(bool);
 
-				if (!sameValue)
-				{
-					var strafe = (Inputs.EStrafe)r.Read2Bit();
-					if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+            for (var i = 0; i < ticks; i++)
+            {
+                var time = new TimeInt32(i * 10);
 
-					if (strafe != prevStrafe)
-					{
-						yield return new Strafe(time, strafe);
-						prevStrafe = strafe;
-					}
+                var sameMouse = r.ReadBit();
 
-					var walk = (Inputs.EWalk)r.Read2Bit();
-					if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                if (!sameMouse)
+                {
+                    var mouseAccuX = r.ReadUInt16();
+                    var mouseAccuY = r.ReadUInt16();
 
-					if (walk != prevWalk)
-					{
-						yield return new Walk(time, walk);
-						prevWalk = walk;
-					}
+                    yield return new MouseAccu(time, mouseAccuX, mouseAccuY);
+                }
 
-					if (version == EVersion._2017_09_12)
-					{
-						var vertical = r.Read2Bit();
+                var sameValuesAfter = r.ReadBit();
+                var sameValue = sameValuesAfter;
 
-						if (vertical != prevVertical)
-						{
-							yield return new Vertical(time, vertical);
-							prevVertical = vertical;
-						}
-					}
-				}
+                if (!sameValuesAfter)
+                {
+                    sameValue = r.ReadBit();
+                }
 
-				if (sameValuesAfter)
-				{
-					continue;
-				}
+                if (!sameValue)
+                {
+                    var strafe = (Inputs.EStrafe)r.Read2Bit();
+                    if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
 
-				sameValue = r.ReadBit();
+                    if (strafe != prevStrafe)
+                    {
+                        yield return new Strafe(time, strafe);
+                        prevStrafe = strafe;
+                    }
 
-				if (sameValue)
-				{
-					continue;
-				}
+                    var walk = (Inputs.EWalk)r.Read2Bit();
+                    if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
 
-				var onlyGunTriggerAndAction = r.ReadBit();
+                    if (walk != prevWalk)
+                    {
+                        yield return new Walk(time, walk);
+                        prevWalk = walk;
+                    }
 
-				if (onlyGunTriggerAndAction)
-				{
-					var states2Bit = r.Read2Bit();
+                    if (version == EVersion._2017_09_12)
+                    {
+                        var vertical = r.Read2Bit();
 
-					if (states2Bit == prevStates2Bit)
-					{
-						continue;
-					}
+                        if (vertical != prevVertical)
+                        {
+                            yield return new Vertical(time, vertical);
+                            prevVertical = vertical;
+                        }
+                    }
+                }
 
-					if (StateIsDifferent(bit: 0, out bool action2Bit, states2Bit, prevStates2Bit) && action2Bit != prevAction)
-					{
-						yield return new Inputs.Action(time, action2Bit);
-						prevAction = action2Bit;
-					}
+                if (sameValuesAfter)
+                {
+                    continue;
+                }
 
-					if (StateIsDifferent(bit: 1, out bool gunTrigger2Bit, states2Bit, prevStates2Bit) && gunTrigger2Bit != prevGunTrigger)
-					{
-						yield return new GunTrigger(time, gunTrigger2Bit);
-						prevGunTrigger = gunTrigger2Bit;
-					}
+                sameValue = r.ReadBit();
 
-					prevStates2Bit = states2Bit;
+                if (sameValue)
+                {
+                    continue;
+                }
 
-					continue;
-				}
+                var onlyGunTriggerAndAction = r.ReadBit();
 
-				var states = r.ReadInt32();
+                if (onlyGunTriggerAndAction)
+                {
+                    var states2Bit = r.Read2Bit();
 
-				if (states == prevStatesFull)
-				{
-					continue;
-				}
+                    if (states2Bit == prevStates2Bit)
+                    {
+                        continue;
+                    }
 
-				if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
-				{
-					yield return new GunTrigger(time, gunTrigger);
-					prevGunTrigger = gunTrigger;
-				}
+                    if (StateIsDifferent(bit: 0, out bool action2Bit, states2Bit, prevStates2Bit) && action2Bit != prevAction)
+                    {
+                        yield return new Inputs.Action(time, action2Bit);
+                        prevAction = action2Bit;
+                    }
 
-				if (StateIsDifferent(bit: 2, out bool freeLook, states, prevStatesFull))
-				{
-					yield return new FreeLook(time, freeLook);
-				}
+                    if (StateIsDifferent(bit: 1, out bool gunTrigger2Bit, states2Bit, prevStates2Bit) && gunTrigger2Bit != prevGunTrigger)
+                    {
+                        yield return new GunTrigger(time, gunTrigger2Bit);
+                        prevGunTrigger = gunTrigger2Bit;
+                    }
 
-				if (StateIsDifferent(bit: 3, out bool fly, states, prevStatesFull))
-				{
-					yield return new Fly(time, fly);
-				}
+                    prevStates2Bit = states2Bit;
 
-				if (StateIsDifferent(bit: 5, out bool camera2, states, prevStatesFull))
-				{
-					yield return new Camera2(time, camera2);
-				}
+                    continue;
+                }
 
-				if (StateIsDifferent(bit: 7, out bool jump, states, prevStatesFull))
-				{
-					yield return new Jump(time, jump);
-				}
+                var states = r.ReadInt32();
 
-				if (StateIsDifferent(bit: 8, out bool action, states, prevStatesFull) && action != prevAction)
-				{
-					yield return new Inputs.Action(time, action);
-					prevAction = action;
-				}
+                if (states == prevStatesFull)
+                {
+                    continue;
+                }
 
-				for (var j = 0; j < 4; j++) // 4 action slots
-				{
-					if (StateIsDifferent(bit: 10 + j, out bool actionSlot, states, prevStatesFull))
-					{
-						yield return new ActionSlot(time, (byte)(1 + j), actionSlot);
-					}
-				}
+                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
+                {
+                    yield return new GunTrigger(time, gunTrigger);
+                    prevGunTrigger = gunTrigger;
+                }
 
-				if (StateIsDifferentWithMask(16896, out bool use1, states, prevStatesFull))
-				{
-					yield return new Use(time, 1, use1);
-				}
+                if (StateIsDifferent(bit: 2, out bool freeLook, states, prevStatesFull))
+                {
+                    yield return new FreeLook(time, freeLook);
+                }
 
-				if (StateIsDifferentWithMask(32832, out bool use2, states, prevStatesFull))
-				{
-					yield return new Use(time, 2, use2);
-				}
+                if (StateIsDifferent(bit: 3, out bool fly, states, prevStatesFull))
+                {
+                    yield return new Fly(time, fly);
+                }
 
-				if (StateIsDifferent(bit: 16, out bool menu, states, prevStatesFull))
-				{
-					yield return new Menu(time, menu);
-				}
+                if (StateIsDifferent(bit: 5, out bool camera2, states, prevStatesFull))
+                {
+                    yield return new Camera2(time, camera2);
+                }
 
-				if (StateIsDifferent(bit: 20, out bool horn, states, prevStatesFull))
-				{
-					yield return new Horn(time, horn);
-				}
+                if (StateIsDifferent(bit: 7, out bool jump, states, prevStatesFull))
+                {
+                    yield return new Jump(time, jump);
+                }
 
-				if (StateIsDifferent(bit: 21, out bool respawn, states, prevStatesFull))
-				{
-					yield return new Respawn(time, respawn);
-				}
+                if (StateIsDifferent(bit: 8, out bool action, states, prevStatesFull) && action != prevAction)
+                {
+                    yield return new Inputs.Action(time, action);
+                    prevAction = action;
+                }
 
-				if (StateIsDifferent(bit: 26, out bool giveUp, states, prevStatesFull))
-				{
-					yield return new GiveUp(time, giveUp);
-				}
+                for (var j = 0; j < 4; j++) // 4 action slots
+                {
+                    if (StateIsDifferent(bit: 10 + j, out bool actionSlot, states, prevStatesFull))
+                    {
+                        yield return new ActionSlot(time, (byte)(1 + j), actionSlot);
+                    }
+                }
 
-				prevStatesFull = states;
-			}
-		}
+                if (StateIsDifferentWithMask(16896, out bool use1, states, prevStatesFull))
+                {
+                    yield return new Use(time, 1, use1);
+                }
 
-		internal ImmutableList<IInput> ProcessTrackmaniaInputs()
+                if (StateIsDifferentWithMask(32832, out bool use2, states, prevStatesFull))
+                {
+                    yield return new Use(time, 2, use2);
+                }
+
+                if (StateIsDifferent(bit: 16, out bool menu, states, prevStatesFull))
+                {
+                    yield return new Menu(time, menu);
+                }
+
+                if (StateIsDifferent(bit: 20, out bool horn, states, prevStatesFull))
+                {
+                    yield return new Horn(time, horn);
+                }
+
+                if (StateIsDifferent(bit: 21, out bool respawn, states, prevStatesFull))
+                {
+                    yield return new Respawn(time, respawn);
+                }
+
+                if (StateIsDifferent(bit: 26, out bool giveUp, states, prevStatesFull))
+                {
+                    yield return new GiveUp(time, giveUp);
+                }
+
+                prevStatesFull = states;
+            }
+        }
+
+        internal ImmutableList<IInput> ProcessTrackmaniaInputs()
         {
             if (data is null)
             {
@@ -295,260 +295,260 @@ public partial class CGameCtnGhost
 
             var inputs = ImmutableList.CreateBuilder<IInput>();
 
-			var r = new BitReader(data);
+            var r = new BitReader(data);
 
-			var started = EStart.NotStarted;
+            var started = EStart.NotStarted;
 
-			var prevStatesFull = default(ulong?);
-			var prevStates2Bit = default(byte?);
-			var prevHorn = default(bool);
-			var prevGunTrigger = default(bool);
-			var prevAction = default(bool);
-			var prevSteer = default(sbyte);
-			var prevAccel = default(bool);
-			var prevBrake = default(bool);
-			var prevStrafe = NET.Inputs.EStrafe.None;
-			var prevWalk = NET.Inputs.EWalk.None;
-			var prevVertical = default(byte);
-			var prevHorizontal = default(byte);
+            var prevStatesFull = default(ulong?);
+            var prevStates2Bit = default(byte?);
+            var prevHorn = default(bool);
+            var prevGunTrigger = default(bool);
+            var prevAction = default(bool);
+            var prevSteer = default(sbyte);
+            var prevAccel = default(bool);
+            var prevBrake = default(bool);
+            var prevStrafe = NET.Inputs.EStrafe.None;
+            var prevWalk = NET.Inputs.EWalk.None;
+            var prevVertical = default(byte);
+            var prevHorizontal = default(byte);
 
-			for (var i = 0; i < ticks; i++)
-			{
-				var time = new TimeInt32(i * 10) + StartOffset.GetValueOrDefault();
+            for (var i = 0; i < ticks; i++)
+            {
+                var time = new TimeInt32(i * 10) + StartOffset.GetValueOrDefault();
 
-				try
-				{
-					var sameState = r.ReadBit();
+                try
+                {
+                    var sameState = r.ReadBit();
 
-					if (!sameState)
-					{
-						var only2Bit = r.ReadBit();
+                    if (!sameState)
+                    {
+                        var only2Bit = r.ReadBit();
 
-						if (only2Bit)
-						{
-							var states = r.Read2Bit();
+                        if (only2Bit)
+                        {
+                            var states = r.Read2Bit();
 
-							if (states != prevStates2Bit)
-							{
-								if (started is EStart.Vehicle)
-								{
-									if (StateIsDifferent(bit: 1, out bool horn2Bit, states, prevStates2Bit) && horn2Bit != prevHorn)
-									{
-										inputs.Add(new Horn(time, horn2Bit));
-										prevHorn = horn2Bit;
-									}
-								}
-								else if (started is EStart.Character)
-								{
-									if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates2Bit) && gunTrigger != prevGunTrigger)
-									{
-										inputs.Add(new GunTrigger(time, gunTrigger));
-										prevGunTrigger = gunTrigger;
-									}
+                            if (states != prevStates2Bit)
+                            {
+                                if (started is EStart.Vehicle)
+                                {
+                                    if (StateIsDifferent(bit: 1, out bool horn2Bit, states, prevStates2Bit) && horn2Bit != prevHorn)
+                                    {
+                                        inputs.Add(new Horn(time, horn2Bit));
+                                        prevHorn = horn2Bit;
+                                    }
+                                }
+                                else if (started is EStart.Character)
+                                {
+                                    if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates2Bit) && gunTrigger != prevGunTrigger)
+                                    {
+                                        inputs.Add(new GunTrigger(time, gunTrigger));
+                                        prevGunTrigger = gunTrigger;
+                                    }
 
-									if (StateIsDifferent(bit: 1, out bool action, states, prevStates2Bit) && action != prevAction)
-									{
-										inputs.Add(new Inputs.Action(time, action));
-										prevAction = action;
-									}
-								}
+                                    if (StateIsDifferent(bit: 1, out bool action, states, prevStates2Bit) && action != prevAction)
+                                    {
+                                        inputs.Add(new Inputs.Action(time, action));
+                                        prevAction = action;
+                                    }
+                                }
 
-								prevStates2Bit = states;
-							}
-						}
-						else
-						{
-							var states = r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
+                                prevStates2Bit = states;
+                            }
+                        }
+                        else
+                        {
+                            var states = r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-							if (started is EStart.NotStarted)
-							{
-								started = (EStart)(states & 3);
+                            if (started is EStart.NotStarted)
+                            {
+                                started = (EStart)(states & 3);
 
-								if (started is EStart.VehicleMix)
-								{
-									started = EStart.Vehicle;
-								}
-							}
+                                if (started is EStart.VehicleMix)
+                                {
+                                    started = EStart.Vehicle;
+                                }
+                            }
 
-							if (started is EStart.Character)
-							{
-								if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
-								{
-									inputs.Add(new GunTrigger(time, gunTrigger));
-									prevGunTrigger = gunTrigger;
-								}
-							}
+                            if (started is EStart.Character)
+                            {
+                                if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
+                                {
+                                    inputs.Add(new GunTrigger(time, gunTrigger));
+                                    prevGunTrigger = gunTrigger;
+                                }
+                            }
 
-							if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
-							{
-								if (started is EStart.Vehicle && hornOrAction != prevHorn)
-								{
-									inputs.Add(new Horn(time, hornOrAction));
-									prevHorn = hornOrAction;
-								}
-								else if (started is EStart.Character && hornOrAction != prevAction)
-								{
-									inputs.Add(new Inputs.Action(time, hornOrAction));
-									prevAction = hornOrAction;
-								}
-							}
+                            if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
+                            {
+                                if (started is EStart.Vehicle && hornOrAction != prevHorn)
+                                {
+                                    inputs.Add(new Horn(time, hornOrAction));
+                                    prevHorn = hornOrAction;
+                                }
+                                else if (started is EStart.Character && hornOrAction != prevAction)
+                                {
+                                    inputs.Add(new Inputs.Action(time, hornOrAction));
+                                    prevAction = hornOrAction;
+                                }
+                            }
 
-							if (started is EStart.Character && StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
-							{
-								inputs.Add(new Camera2(time, camera2));
-							}
+                            if (started is EStart.Character && StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
+                            {
+                                inputs.Add(new Camera2(time, camera2));
+                            }
 
-							if (StateIsDifferent(bit: 12, out bool jump, states, prevStatesFull))
-							{
-								inputs.Add(new Jump(time, jump));
-							}
+                            if (StateIsDifferent(bit: 12, out bool jump, states, prevStatesFull))
+                            {
+                                inputs.Add(new Jump(time, jump));
+                            }
 
-							if (StateIsDifferent(bit: 13, out bool freeLook, states, prevStatesFull))
-							{
-								inputs.Add(new FreeLook(time, freeLook));
-							}
+                            if (StateIsDifferent(bit: 13, out bool freeLook, states, prevStatesFull))
+                            {
+                                inputs.Add(new FreeLook(time, freeLook));
+                            }
 
-							for (var j = 0; j < 9; j++) // 9 action slots
-							{
-								// Action slots 2 and 4 have an additional bit 7 usage, which is ignored here
+                            for (var j = 0; j < 9; j++) // 9 action slots
+                            {
+                                // Action slots 2 and 4 have an additional bit 7 usage, which is ignored here
 
-								if (StateIsDifferent(bit: 14 + j, out bool actionSlot, states, prevStatesFull))
-								{
-									inputs.Add(new ActionSlot(time, (byte)(1 + j), actionSlot));
-								}
-							}
+                                if (StateIsDifferent(bit: 14 + j, out bool actionSlot, states, prevStatesFull))
+                                {
+                                    inputs.Add(new ActionSlot(time, (byte)(1 + j), actionSlot));
+                                }
+                            }
 
-							// + 1 action slot 0
+                            // + 1 action slot 0
 
-							if (StateIsDifferent(bit: 23, out bool actionSlot0, states, prevStatesFull))
-							{
-								inputs.Add(new ActionSlot(time, 0, actionSlot0));
-							}
+                            if (StateIsDifferent(bit: 23, out bool actionSlot0, states, prevStatesFull))
+                            {
+                                inputs.Add(new ActionSlot(time, 0, actionSlot0));
+                            }
 
-							if (((states >> 31) & 1) != 0)
-							{
-								inputs.Add(new RespawnTM2020(time));
-							}
+                            if (((states >> 31) & 1) != 0)
+                            {
+                                inputs.Add(new RespawnTM2020(time));
+                            }
 
-							if (((states >> 33) & 1) != 0)
-							{
-								inputs.Add(new SecondaryRespawn(time));
-							}
+                            if (((states >> 33) & 1) != 0)
+                            {
+                                inputs.Add(new SecondaryRespawn(time));
+                            }
 
-							prevStatesFull = states;
-						}
-					}
+                            prevStatesFull = states;
+                        }
+                    }
 
-					var sameMouse = r.ReadBit();
+                    var sameMouse = r.ReadBit();
 
-					if (!sameMouse)
-					{
-						var mouseAccuX = r.ReadUInt16();
-						var mouseAccuY = r.ReadUInt16();
+                    if (!sameMouse)
+                    {
+                        var mouseAccuX = r.ReadUInt16();
+                        var mouseAccuY = r.ReadUInt16();
 
-						inputs.Add(new MouseAccu(time, mouseAccuX, mouseAccuY));
-					}
+                        inputs.Add(new MouseAccu(time, mouseAccuX, mouseAccuY));
+                    }
 
-					// In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
+                    // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
 
-					switch (started)
-					{
-						case EStart.Vehicle:
-							var sameVehicleValue = r.ReadBit();
+                    switch (started)
+                    {
+                        case EStart.Vehicle:
+                            var sameVehicleValue = r.ReadBit();
 
-							if (sameVehicleValue)
-							{
-								break;
-							}
+                            if (sameVehicleValue)
+                            {
+                                break;
+                            }
 
-							var steer = r.ReadSByte();
+                            var steer = r.ReadSByte();
 
-							if (steer != prevSteer)
-							{
-								inputs.Add(new SteerTM2020(time, steer));
-								prevSteer = steer;
-							}
+                            if (steer != prevSteer)
+                            {
+                                inputs.Add(new SteerTM2020(time, steer));
+                                prevSteer = steer;
+                            }
 
-							var accel = r.ReadBit();
+                            var accel = r.ReadBit();
 
-							if (accel != prevAccel)
-							{
-								inputs.Add(new Accelerate(time, accel));
-								prevAccel = accel;
-							}
+                            if (accel != prevAccel)
+                            {
+                                inputs.Add(new Accelerate(time, accel));
+                                prevAccel = accel;
+                            }
 
-							var brake = r.ReadBit();
+                            var brake = r.ReadBit();
 
-							if (brake != prevBrake)
-							{
-								inputs.Add(new Brake(time, brake));
-								prevBrake = brake;
-							}
+                            if (brake != prevBrake)
+                            {
+                                inputs.Add(new Brake(time, brake));
+                                prevBrake = brake;
+                            }
 
-							break;
+                            break;
 
-						case EStart.Character:
-							var sameCharacterValue = r.ReadBit();
+                        case EStart.Character:
+                            var sameCharacterValue = r.ReadBit();
 
-							if (sameCharacterValue)
-							{
-								break;
-							}
+                            if (sameCharacterValue)
+                            {
+                                break;
+                            }
 
-							var strafe = (Inputs.EStrafe)r.Read2Bit();
-							if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+                            var strafe = (Inputs.EStrafe)r.Read2Bit();
+                            if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
 
-							if (strafe != prevStrafe)
-							{
-								inputs.Add(new Strafe(time, strafe));
-								prevStrafe = strafe;
-							}
+                            if (strafe != prevStrafe)
+                            {
+                                inputs.Add(new Strafe(time, strafe));
+                                prevStrafe = strafe;
+                            }
 
-							var walk = (Inputs.EWalk)r.Read2Bit();
-							if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                            var walk = (Inputs.EWalk)r.Read2Bit();
+                            if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
 
-							if (walk != prevWalk)
-							{
-								inputs.Add(new Walk(time, walk));
-								prevWalk = walk;
-							}
+                            if (walk != prevWalk)
+                            {
+                                inputs.Add(new Walk(time, walk));
+                                prevWalk = walk;
+                            }
 
-							var vertical = r.Read2Bit();
+                            var vertical = r.Read2Bit();
 
-							if (vertical != prevVertical)
-							{
-								inputs.Add(new Vertical(time, vertical));
-								prevVertical = vertical;
-							}
+                            if (vertical != prevVertical)
+                            {
+                                inputs.Add(new Vertical(time, vertical));
+                                prevVertical = vertical;
+                            }
 
-							var horizontal = r.Read2Bit();
+                            var horizontal = r.Read2Bit();
 
-							if (horizontal != prevHorizontal)
-							{
-								inputs.Add(new Horizontal(time, horizontal));
-								prevHorizontal = horizontal;
-							}
+                            if (horizontal != prevHorizontal)
+                            {
+                                inputs.Add(new Horizontal(time, horizontal));
+                                prevHorizontal = horizontal;
+                            }
 
-							break;
-					}
-				}
-				catch (IndexOutOfRangeException)
-				{
-					// TM2020 moment
-				}
-			}
+                            break;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    // TM2020 moment
+                }
+            }
 
-			var theRest = r.ReadToEnd();
+            var theRest = r.ReadToEnd();
 
-			if (theRest.Any(x => x != 0))
-			{
-				throw new Exception("Input buffer not cleared out completely");
-			}
+            if (theRest.Any(x => x != 0))
+            {
+                throw new Exception("Input buffer not cleared out completely");
+            }
 
-			return inputs.ToImmutable();
-		}
+            return inputs.ToImmutable();
+        }
 
-		internal IEnumerable<IInputChange> ProcessShootmaniaInputChanges()
+        internal IEnumerable<IInputChange> ProcessShootmaniaInputChanges()
         {
             if (data is null)
             {
@@ -557,82 +557,82 @@ public partial class CGameCtnGhost
 
             var r = new BitReader(data);
 
-			for (var i = 0; i < ticks; i++)
-			{
-				var different = false;
+            for (var i = 0; i < ticks; i++)
+            {
+                var different = false;
 
-				var mouseAccuX = default(ushort?);
-				var mouseAccuY = default(ushort?);
-				var strafe = default(EStrafe?);
-				var walk = default(EWalk?);
-				var vertical = default(byte?);
-				var states = default(int?);
+                var mouseAccuX = default(ushort?);
+                var mouseAccuY = default(ushort?);
+                var strafe = default(EStrafe?);
+                var walk = default(EWalk?);
+                var vertical = default(byte?);
+                var states = default(int?);
 
-				var sameMouse = r.ReadBit();
+                var sameMouse = r.ReadBit();
 
-				if (!sameMouse)
-				{
-					mouseAccuX = r.ReadUInt16();
-					mouseAccuY = r.ReadUInt16();
+                if (!sameMouse)
+                {
+                    mouseAccuX = r.ReadUInt16();
+                    mouseAccuY = r.ReadUInt16();
 
-					different = true;
-				}
+                    different = true;
+                }
 
-				var sameValuesAfter = r.ReadBit();
-				var sameValue = sameValuesAfter;
+                var sameValuesAfter = r.ReadBit();
+                var sameValue = sameValuesAfter;
 
-				if (!sameValuesAfter)
-				{
-					sameValue = r.ReadBit();
-				}
+                if (!sameValuesAfter)
+                {
+                    sameValue = r.ReadBit();
+                }
 
-				if (!sameValue)
-				{
-					strafe = (EStrafe)r.Read2Bit();
-					if (strafe == EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+                if (!sameValue)
+                {
+                    strafe = (EStrafe)r.Read2Bit();
+                    if (strafe == EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
 
-					walk = (EWalk)r.Read2Bit();
-					if (walk == EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                    walk = (EWalk)r.Read2Bit();
+                    if (walk == EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
 
-					if (version == EVersion._2017_09_12)
-					{
-						vertical = r.Read2Bit();
-					}
+                    if (version == EVersion._2017_09_12)
+                    {
+                        vertical = r.Read2Bit();
+                    }
 
-					different = true;
-				}
+                    different = true;
+                }
 
-				if (!sameValuesAfter)
-				{
-					sameValue = r.ReadBit();
+                if (!sameValuesAfter)
+                {
+                    sameValue = r.ReadBit();
 
-					if (!sameValue)
-					{
-						var onlyTriggerAndAction = r.ReadBit();
+                    if (!sameValue)
+                    {
+                        var onlyTriggerAndAction = r.ReadBit();
 
-						states = onlyTriggerAndAction
-							? r.Read2Bit()
-							: r.ReadInt32();
+                        states = onlyTriggerAndAction
+                            ? r.Read2Bit()
+                            : r.ReadInt32();
 
-						different = true;
-					}
-				}
+                        different = true;
+                    }
+                }
 
-				if (different)
-				{
-					yield return new ShootmaniaInputChange(i, mouseAccuX, mouseAccuY, strafe, walk, vertical, states);
-				}
-			}
+                if (different)
+                {
+                    yield return new ShootmaniaInputChange(i, mouseAccuX, mouseAccuY, strafe, walk, vertical, states);
+                }
+            }
 
-			var theRest = r.ReadToEnd();
+            var theRest = r.ReadToEnd();
 
-			if (theRest.Any(x => x != 0))
-			{
-				throw new Exception("Input buffer not cleared out completely");
-			}
-		}
+            if (theRest.Any(x => x != 0))
+            {
+                throw new Exception("Input buffer not cleared out completely");
+            }
+        }
 
-		internal IEnumerable<IInputChange> ProcessTrackmaniaInputChanges()
+        internal IEnumerable<IInputChange> ProcessTrackmaniaInputChanges()
         {
             if (data is null)
             {
@@ -641,219 +641,219 @@ public partial class CGameCtnGhost
 
             var r = new BitReader(data);
 
-			var started = EStart.NotStarted;
+            var started = EStart.NotStarted;
 
-			for (var i = 0; i < ticks; i++)
-			{
-				var different = false;
+            for (var i = 0; i < ticks; i++)
+            {
+                var different = false;
 
-				var states = default(ulong?);
-				var mouseAccuX = default(ushort?);
-				var mouseAccuY = default(ushort?);
-				var steer = default(sbyte?);
-				var gas = default(bool?);
-				var brake = default(bool?);
-				var horn = default(bool?);
-				var characterStates = default(byte?);
+                var states = default(ulong?);
+                var mouseAccuX = default(ushort?);
+                var mouseAccuY = default(ushort?);
+                var steer = default(sbyte?);
+                var gas = default(bool?);
+                var brake = default(bool?);
+                var horn = default(bool?);
+                var characterStates = default(byte?);
 
-				try
-				{
-					var sameState = r.ReadBit();
+                try
+                {
+                    var sameState = r.ReadBit();
 
-					if (!sameState)
-					{
-						var onlyHorn = r.ReadBit();
+                    if (!sameState)
+                    {
+                        var onlyHorn = r.ReadBit();
 
-						states = onlyHorn
-							? r.Read2Bit()
-							: r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
+                        states = onlyHorn
+                            ? r.Read2Bit()
+                            : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-						if (started is EStart.NotStarted)
-						{
-							started = (EStart)(states & 3);
+                        if (started is EStart.NotStarted)
+                        {
+                            started = (EStart)(states & 3);
 
-							if (started is EStart.VehicleMix)
-							{
-								started = EStart.Vehicle;
-							}
+                            if (started is EStart.VehicleMix)
+                            {
+                                started = EStart.Vehicle;
+                            }
 
-							horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
-						}
-						else if (started is EStart.Vehicle)
-						{
-							horn = onlyHorn
-								? (states & 2) != 0
-								: (states & 64) != 0;
-						}
+                            horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
+                        }
+                        else if (started is EStart.Vehicle)
+                        {
+                            horn = onlyHorn
+                                ? (states & 2) != 0
+                                : (states & 64) != 0;
+                        }
 
-						different = true;
-					}
+                        different = true;
+                    }
 
-					var sameMouse = r.ReadBit();
+                    var sameMouse = r.ReadBit();
 
-					if (!sameMouse)
-					{
-						mouseAccuX = r.ReadUInt16();
-						mouseAccuY = r.ReadUInt16();
+                    if (!sameMouse)
+                    {
+                        mouseAccuX = r.ReadUInt16();
+                        mouseAccuY = r.ReadUInt16();
 
-						different = true;
-					}
+                        different = true;
+                    }
 
-					// This check is a bit weird, may not work for StormMan gameplay
-					// If starting with horn on, it is included on first tick
-					// If mouse is not plugged, it is also included
-					// In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
+                    // This check is a bit weird, may not work for StormMan gameplay
+                    // If starting with horn on, it is included on first tick
+                    // If mouse is not plugged, it is also included
+                    // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
 
-					switch (started)
-					{
-						case EStart.Vehicle:
-							var sameVehicleValue = r.ReadBit();
+                    switch (started)
+                    {
+                        case EStart.Vehicle:
+                            var sameVehicleValue = r.ReadBit();
 
-							if (!sameVehicleValue)
-							{
-								steer = r.ReadSByte();
-								gas = r.ReadBit();
-								brake = r.ReadBit();
+                            if (!sameVehicleValue)
+                            {
+                                steer = r.ReadSByte();
+                                gas = r.ReadBit();
+                                brake = r.ReadBit();
 
-								different = true;
-							}
+                                different = true;
+                            }
 
-							break;
+                            break;
 
-						case EStart.Character:
-							var sameCharacterValue = r.ReadBit();
+                        case EStart.Character:
+                            var sameCharacterValue = r.ReadBit();
 
-							if (!sameCharacterValue)
-							{
-								// Strafe2
-								// Walk2
-								// Vertical2
-								// Horiz2
-								characterStates = r.ReadByte();
+                            if (!sameCharacterValue)
+                            {
+                                // Strafe2
+                                // Walk2
+                                // Vertical2
+                                // Horiz2
+                                characterStates = r.ReadByte();
 
-								different = true;
-							}
+                                different = true;
+                            }
 
-							break;
-					}
-				}
-				catch (IndexOutOfRangeException)
-				{
-					// TM2020 moment
-				}
+                            break;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    // TM2020 moment
+                }
 
-				if (different)
-				{
-					yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn, characterStates);
-				}
-			}
+                if (different)
+                {
+                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn, characterStates);
+                }
+            }
 
-			var theRest = r.ReadToEnd();
+            var theRest = r.ReadToEnd();
 
-			if (theRest.Any(x => x != 0))
-			{
-				throw new Exception("Input buffer not cleared out completely");
-			}
-		}
+            if (theRest.Any(x => x != 0))
+            {
+                throw new Exception("Input buffer not cleared out completely");
+            }
+        }
 
-		public enum EStrafe : byte
-		{
-			None,
-			Left,
-			Corrupted,
-			Right
-		}
+        public enum EStrafe : byte
+        {
+            None,
+            Left,
+            Corrupted,
+            Right
+        }
 
-		public enum EWalk : byte
-		{
-			None,
-			Forward,
-			Corrupted,
-			Backward
-		}
+        public enum EWalk : byte
+        {
+            None,
+            Forward,
+            Corrupted,
+            Backward
+        }
 
-		public interface IInputChange
-		{
-			int Tick { get; }
-			ushort? MouseAccuX { get; }
-			ushort? MouseAccuY { get; }
-			ulong? States { get; }
-			bool? Respawn { get; }
-			bool? Horn { get; }
+        public interface IInputChange
+        {
+            int Tick { get; }
+            ushort? MouseAccuX { get; }
+            ushort? MouseAccuY { get; }
+            ulong? States { get; }
+            bool? Respawn { get; }
+            bool? Horn { get; }
 
-			bool? FreeLook { get; }
-			bool? ActionSlot1 { get; }
-			bool? ActionSlot2 { get; }
-			bool? ActionSlot3 { get; }
-			bool? ActionSlot4 { get; }
+            bool? FreeLook { get; }
+            bool? ActionSlot1 { get; }
+            bool? ActionSlot2 { get; }
+            bool? ActionSlot3 { get; }
+            bool? ActionSlot4 { get; }
 
-			EStrafe? Strafe { get; }
-			EWalk? Walk { get; }
-			byte? Vertical { get; }
+            EStrafe? Strafe { get; }
+            EWalk? Walk { get; }
+            byte? Vertical { get; }
 
-			TimeInt32 Timestamp { get; }
-		}
+            TimeInt32 Timestamp { get; }
+        }
 
-		public readonly record struct ShootmaniaInputChange(int Tick,
-															ushort? MouseAccuX,
-															ushort? MouseAccuY,
-															EStrafe? Strafe,
-															EWalk? Walk,
-															byte? Vertical,
-															int? States) : IInputChange
-		{
-			public TimeInt32 Timestamp => new(Tick * 10);
+        public readonly record struct ShootmaniaInputChange(int Tick,
+                                                            ushort? MouseAccuX,
+                                                            ushort? MouseAccuY,
+                                                            EStrafe? Strafe,
+                                                            EWalk? Walk,
+                                                            byte? Vertical,
+                                                            int? States) : IInputChange
+        {
+            public TimeInt32 Timestamp => new(Tick * 10);
 
-			public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
-			public bool? FreeLook => States is null ? null : (States & 4) != 0;
-			public bool? Fly => States is null ? null : (States & 8) != 0;
-			public bool? Camera2 => States is null ? null : (States & 32) != 0;
-			public bool? Jump => States is null ? null : (States & 128) != 0;
-			public bool? IsAction => States is null ? null : (States & 257) != 0;
-			public bool? ActionSlot1 => States is null ? null : (States & 1024) != 0;
-			public bool? ActionSlot2 => States is null ? null : (States & 2048) != 0;
-			public bool? ActionSlot3 => States is null ? null : (States & 4096) != 0;
-			public bool? ActionSlot4 => States is null ? null : (States & 8192) != 0;
-			public bool? Use1 => States is null ? null : (States & 16896) != 0;
-			public bool? Use2 => States is null ? null : (States & 32832) != 0;
-			public bool? Menu => States is null ? null : (States & 65536) != 0;
-			public bool? Horn => States is null ? null : (States & 1048576) != 0;
-			public bool? Respawn => States is null ? null : (States & 2097152) != 0;
-			public bool? GiveUp => States is null ? null : (States & (1 << 26)) != 0;
+            public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
+            public bool? FreeLook => States is null ? null : (States & 4) != 0;
+            public bool? Fly => States is null ? null : (States & 8) != 0;
+            public bool? Camera2 => States is null ? null : (States & 32) != 0;
+            public bool? Jump => States is null ? null : (States & 128) != 0;
+            public bool? IsAction => States is null ? null : (States & 257) != 0;
+            public bool? ActionSlot1 => States is null ? null : (States & 1024) != 0;
+            public bool? ActionSlot2 => States is null ? null : (States & 2048) != 0;
+            public bool? ActionSlot3 => States is null ? null : (States & 4096) != 0;
+            public bool? ActionSlot4 => States is null ? null : (States & 8192) != 0;
+            public bool? Use1 => States is null ? null : (States & 16896) != 0;
+            public bool? Use2 => States is null ? null : (States & 32832) != 0;
+            public bool? Menu => States is null ? null : (States & 65536) != 0;
+            public bool? Horn => States is null ? null : (States & 1048576) != 0;
+            public bool? Respawn => States is null ? null : (States & 2097152) != 0;
+            public bool? GiveUp => States is null ? null : (States & (1 << 26)) != 0;
 
-			ulong? IInputChange.States => States is null ? null : (ulong)States;
-		}
+            ulong? IInputChange.States => States is null ? null : (ulong)States;
+        }
 
-		public readonly record struct TrackmaniaInputChange(int Tick,
-															ulong? States,
-															ushort? MouseAccuX,
-															ushort? MouseAccuY,
-															sbyte? Steer,
-															bool? Gas,
-															bool? Brake,
-															bool? Horn = null,
-															byte? CharacterStates = null) : IInputChange
-		{
-			public TimeInt32 Timestamp { get; } = new(Tick * 10);
+        public readonly record struct TrackmaniaInputChange(int Tick,
+                                                            ulong? States,
+                                                            ushort? MouseAccuX,
+                                                            ushort? MouseAccuY,
+                                                            sbyte? Steer,
+                                                            bool? Gas,
+                                                            bool? Brake,
+                                                            bool? Horn = null,
+                                                            byte? CharacterStates = null) : IInputChange
+        {
+            public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
-			public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
-			public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;
-			public bool? ActionSlot2 => States is null ? null : (States & 32896) != 0; // bit 15 (and bit 7?)
-			public bool? ActionSlot3 => States is null ? null : (States & (1 << 16)) != 0;
-			public bool? ActionSlot4 => States is null ? null : (States & 132096) != 0; // bit 17 (and bit 7?)
-			public bool? ActionSlot5 => States is null ? null : (States & (1 << 18)) != 0;
-			public bool? ActionSlot6 => States is null ? null : (States & 524288) != 0; // bit 19
-			public bool? ActionSlot7 => States is null ? null : (States & (1 << 20)) != 0;
-			public bool? ActionSlot8 => States is null ? null : (States & 2097152) != 0; // bit 21
-			public bool? ActionSlot9 => States is null ? null : (States & (1 << 22)) != 0;
-			public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0; // bit 23
-			public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
-			public bool? SecondaryRespawn => States is null ? null : (States & 8589934592) != 0;
+            public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
+            public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;
+            public bool? ActionSlot2 => States is null ? null : (States & 32896) != 0; // bit 15 (and bit 7?)
+            public bool? ActionSlot3 => States is null ? null : (States & (1 << 16)) != 0;
+            public bool? ActionSlot4 => States is null ? null : (States & 132096) != 0; // bit 17 (and bit 7?)
+            public bool? ActionSlot5 => States is null ? null : (States & (1 << 18)) != 0;
+            public bool? ActionSlot6 => States is null ? null : (States & 524288) != 0; // bit 19
+            public bool? ActionSlot7 => States is null ? null : (States & (1 << 20)) != 0;
+            public bool? ActionSlot8 => States is null ? null : (States & 2097152) != 0; // bit 21
+            public bool? ActionSlot9 => States is null ? null : (States & (1 << 22)) != 0;
+            public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0; // bit 23
+            public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
+            public bool? SecondaryRespawn => States is null ? null : (States & 8589934592) != 0;
 
-			public EStrafe? Strafe => CharacterStates is null ? null : (EStrafe)(CharacterStates & 3);
-			public EWalk? Walk => CharacterStates is null ? null : (EWalk)((CharacterStates >> 2) & 3);
-			public byte? Vertical => CharacterStates is null ? null : (byte)((CharacterStates >> 4) & 3);
-			public byte? Horizontal => CharacterStates is null ? null : (byte)((CharacterStates >> 6) & 3);
-		}
-	}
+            public EStrafe? Strafe => CharacterStates is null ? null : (EStrafe)(CharacterStates & 3);
+            public EWalk? Walk => CharacterStates is null ? null : (EWalk)((CharacterStates >> 2) & 3);
+            public byte? Vertical => CharacterStates is null ? null : (byte)((CharacterStates >> 4) & 3);
+            public byte? Horizontal => CharacterStates is null ? null : (byte)((CharacterStates >> 6) & 3);
+        }
+    }
 }
