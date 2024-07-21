@@ -1,8 +1,11 @@
-﻿namespace GBX.NET;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GBX.NET;
 
 public static class GbxPath
 {
-    public static string GetFileNameWithoutExtension(string path)
+    [return: NotNullIfNotNull(nameof(path))]
+    public static string? GetFileNameWithoutExtension(string? path)
     {
         return Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(path));
     }

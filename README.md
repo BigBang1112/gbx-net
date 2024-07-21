@@ -347,6 +347,7 @@ Currently supported environments:
 Planned environments:
 - Blazor (`GBX.NET.Tool.Blazor`) - both server and WebAssembly
 - HTTP server (`GBX.NET.Tool.Server`)
+- Discord bot (`GBX.NET.Tool.Discord.Bot`)
 
 The tool framework guides you with this project structure:
 

@@ -37,5 +37,6 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.cs) | Up to TM2 | No
 | | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.cs) | Up to TMUF | No
 | | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.cs) | Yes | Yes
+| | Prefab.Gbx | [CPlugPrefab](Src/GBX.NET/Engines/Plug/CPlugPrefab.cs) | Yes | Yes
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.

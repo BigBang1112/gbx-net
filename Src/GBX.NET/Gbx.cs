@@ -83,10 +83,29 @@ public partial class Gbx : IGbx
     /// </summary>
     public const string Magic = "GBX";
 
+    /// <summary>
+    /// File path where the Gbx was read from. This can be set externally. It is not used when saving the Gbx.
+    /// </summary>
     public string? FilePath { get; set; }
+
+    /// <summary>
+    /// Header of the Gbx.
+    /// </summary>
     public GbxHeader Header { get; init; }
+
+    /// <summary>
+    /// Reference table of the Gbx. This is <see langword="null"/> the Gbx has no external Gbx references (Gbx files or <see cref="CPlugFile"/>-related files, <see cref="PackDesc"/> does not count here).
+    /// </summary>
     public GbxRefTable? RefTable { get; protected set; }
+
+    /// <summary>
+    /// Body of the Gbx. This only handles body metadata and raw data (in case this reading method was picked).
+    /// </summary>
     public GbxBody Body { get; init; }
+
+    /// <summary>
+    /// Settings used to read the Gbx. They are stored just for convenience, they don't affect writing when using <see cref="Save(Stream, GbxWriteSettings)"/> or <see cref="Save(string, GbxWriteSettings)"/>.
+    /// </summary>
     public GbxReadSettings ReadSettings { get; protected set; }
 
 	/// <summary>
@@ -97,8 +116,15 @@ public partial class Gbx : IGbx
     public int? IdVersion { get; set; }
     public byte? PackDescVersion { get; set; }
     public int? DeprecVersion { get; set; }
+
+    /// <summary>
+    /// Class ID remap mode used during serialization.
+    /// </summary>
     public ClassIdRemapMode ClassIdRemapMode { get; set; }
 
+    /// <summary>
+    /// Compression of the body part of the Gbx. This wraps <see cref="GbxHeaderBasic.CompressionOfBody"/> of <see cref="Header"/>.
+    /// </summary>
     public GbxCompression BodyCompression
     {
         get => Header.Basic.CompressionOfBody;
@@ -125,7 +151,6 @@ public partial class Gbx : IGbx
 
     public string? GetFileNameWithoutExtension()
     {
-        if (FilePath is null) return null;
         return GbxPath.GetFileNameWithoutExtension(FilePath);
     }
 
