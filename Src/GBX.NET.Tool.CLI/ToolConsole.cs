@@ -138,7 +138,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // If the tool has setup, apply tool things below to setup
 
         var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
-        var outputs = new List<object>();
+        var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
@@ -159,23 +159,19 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 var produceMethod = toolFunctionality.ProduceMethods[0];
                 var result = produceMethod.Invoke(toolInstance, null);
 
-                if (result is not null)
-                {
-                    outputs.Add(result);
-                }
+                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
                 var produceTasks = toolFunctionality.ProduceMethods
-                    .Select(method => Task.Run(() => method.Invoke(toolInstance, null)));
-                await Task.WhenAll(produceTasks);
+                    .Select(method => Task.Run(() => method.Invoke(toolInstance, null)))
+                    .ToList();
 
-                foreach (var produceTask in produceTasks)
+                while (produceTasks.Count > 0)
                 {
-                    if (produceTask.Result is not null)
-                    {
-                        outputs.Add(produceTask.Result);
-                    }
+                    var completedTask = await Task.WhenAny(produceTasks);
+                    produceTasks.Remove(completedTask);
+                    await outputDistributor.DistributeOutputAsync(completedTask.Result, cancellationToken);
                 }
             }
 
@@ -184,10 +180,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 var mutateMethod = toolFunctionality.MutateMethods[0];
                 var result = mutateMethod.Invoke(toolInstance, null);
 
-                if (result is not null)
-                {
-                    outputs.Add(result);
-                }
+                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
@@ -195,10 +188,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 {
                     var result = mutateMethod.Invoke(toolInstance, null);
 
-                    if (result is not null)
-                    {
-                        outputs.Add(result);
-                    }
+                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
                 }
             }
         }
@@ -208,9 +198,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         {
             updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
         }
-
-        var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
-        await outputDistributor.DistributeOutputsAsync(outputs, cancellationToken);
     }
 
     private static void PressAnyKeyToContinue()

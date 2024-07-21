@@ -27,7 +27,7 @@ internal sealed class OutputDistributor
         }
     }
 
-    private async Task DistributeOutputAsync(object output, CancellationToken cancellationToken)
+    public async ValueTask DistributeOutputAsync(object? output, CancellationToken cancellationToken)
     {
         switch (output)
         {
