@@ -3,6 +3,10 @@ using GBX.NET.Extensions;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 
+#if NET6_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
+
 namespace GBX.NET;
 
 public interface IGbx
@@ -69,16 +73,26 @@ public interface IGbx<out T> : IGbx where T : CMwNod
     new T Node { get; }
 }
 
+/// <summary>
+/// Represents a Gbx, which can be either known (<see cref="Node"/> is not null) or unknown (<see cref="Node"/> is null).
+/// </summary>
 public partial class Gbx : IGbx
 {
+    /// <summary>
+    /// Magic (intial binary letters) for Gbx files.
+    /// </summary>
     public const string Magic = "GBX";
 
     public string? FilePath { get; set; }
-    public GbxHeader Header { get; }
+    public GbxHeader Header { get; init; }
     public GbxRefTable? RefTable { get; protected set; }
-    public GbxBody Body { get; }
+    public GbxBody Body { get; init; }
     public GbxReadSettings ReadSettings { get; protected set; }
-    public CMwNod? Node { get; protected set; }
+
+	/// <summary>
+	/// Main node of the Gbx.
+	/// </summary>
+	public CMwNod? Node { get; protected set; }
 
     public int? IdVersion { get; set; }
     public byte? PackDescVersion { get; set; }
@@ -784,24 +798,56 @@ public partial class Gbx : IGbx
     public static implicit operator CMwNod?(Gbx gbx) => gbx.Node;
 }
 
-public class Gbx<T> : Gbx, IGbx<T> where T : CMwNod
+/// <summary>
+/// Represents a Gbx with a main node of type <typeparamref name="T"/>.
+/// </summary>
+/// <typeparam name="T">Type of the main node.</typeparam>
+public class Gbx<
+#if NET6_0_OR_GREATER
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
+#endif
+    T> : Gbx, IGbx<T> where T : CMwNod
 {
+    /// <summary>
+    /// Main typed node of the Gbx.
+    /// </summary>
     public new T Node => (T)(base.Node ?? throw new Exception("Null node is not expected here."));
-    public new GbxHeader<T> Header => (GbxHeader<T>)base.Header;
+
+	/// <summary>
+	/// Typed header of the Gbx.
+	/// </summary>
+	public new GbxHeader<T> Header => (GbxHeader<T>)base.Header;
 
     internal Gbx(GbxHeader<T> header, GbxBody body, T node) : base(header, body)
     {
         base.Node = node ?? throw new ArgumentNullException(nameof(node));
     }
 
-    public Gbx(T node, GbxHeaderBasic headerBasic) : this(new GbxHeader<T>(headerBasic), new GbxBody(), node)
+	/// <summary>
+	/// Creates a new Gbx wrap of <typeparamref name="T"/> with <paramref name="node"/> and basic header parameters.
+	/// </summary>
+	/// <param name="node">Node.</param>
+	/// <param name="headerBasic">Basic header parameters.</param>
+	public Gbx(T node, GbxHeaderBasic headerBasic) : this(new GbxHeader<T>(headerBasic), new GbxBody(), node)
     {
 
     }
 
+    /// <summary>
+    /// Creates a new Gbx wrap of <typeparamref name="T"/> with <paramref name="node"/>.
+    /// </summary>
+    /// <param name="node">Node.</param>
     public Gbx(T node) : this(node, GbxHeaderBasic.Default)
     {
         
+    }
+
+    /// <summary>
+    /// Creates a new Gbx with all defaults. This should be ONLY used for deserialization purposes.
+    /// </summary>
+    internal Gbx() : this(new GbxHeader<T>(GbxHeaderBasic.Default), new(), Activator.CreateInstance<T>())
+    {
+
     }
 
     public override string ToString()
