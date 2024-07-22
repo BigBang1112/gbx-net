@@ -104,7 +104,7 @@ internal sealed class SettingsManager
             {
                 var att = prop.GetCustomAttribute<ExternalFileAttribute>()!;
 
-                var filePath = Path.Combine(configDir, att.FileName);
+                var filePath = Path.Combine(configDir, att.FileName + ".json");
 
                 if (File.Exists(filePath))
                 {
