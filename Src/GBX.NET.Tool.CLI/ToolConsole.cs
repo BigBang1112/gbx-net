@@ -1,5 +1,6 @@
 ﻿using GBX.NET.LZO;
 using GBX.NET.Tool.CLI.Exceptions;
+using Microsoft.Extensions.Logging;
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
 
@@ -102,6 +103,18 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // Not ideal mutative state, but it's fine for now
         noPause = toolSettings.ConsoleSettings.NoPause;
 
+        var logger = new SpectreConsoleLogger(toolSettings.ConsoleSettings.LogLevel);
+
+        logger.LogDebug("Running directory: {RunningDir}", runningDir);
+        logger.LogDebug("CLI settings from file: {Settings}", toolSettings.ConsoleSettings);
+        logger.LogDebug("Settings/config overwrites: {Overwrites}", toolSettings.ConfigOverwrites.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.ConfigOverwrites.Select(kv => $"{kv.Key}={kv.Value}")));
+        logger.LogDebug("Inputs: {Inputs}", toolSettings.Inputs.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.Inputs));
+        logger.LogTrace("No pause: {NoPause}", noPause);
+
         var introWriterTask = default(Task);
 
         if (!toolSettings.ConsoleSettings.SkipIntro)
@@ -109,30 +122,47 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             introWriterTask = IntroWriter<T>.WriteIntroAsync(args);
         }
 
+        logger.LogTrace("Checking for updates...");
+
         // Request update info and additional stuff
         var updateChecker = toolSettings.ConsoleSettings.DisableUpdateCheck
             ? null
-            : ToolUpdateChecker.Check(http);
+            : ToolUpdateChecker.Check(http, cancellationToken);
 
         if (introWriterTask is not null)
         {
             await introWriterTask;
+            logger.LogTrace("Intro finished.");
         }
 
         // Check for updates here if received. If not, check at the end of the tool execution
         var updateCheckCompleted = updateChecker is null
-            || await updateChecker.TryCompareVersionAsync(cancellationToken);
+            || await updateChecker.TryCompareVersionAsync();
+
+        logger.LogDebug("Update check completed: {UpdateCheckCompleted}", updateCheckCompleted);
 
         AnsiConsole.WriteLine();
-
-        var logger = new SpectreConsoleLogger();
 
         // See what the tool can do
         var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
 
         if (toolSettings.Inputs.Count == 0)
         {
-            throw new ConsoleProblemException("No files passed to the tool.");
+            // write tool specific intro
+            if (!string.IsNullOrWhiteSpace(options.IntroText))
+            {
+                AnsiConsole.WriteLine();
+                AnsiConsole.WriteLine(options.IntroText);
+            }
+
+            if (!updateCheckCompleted && updateChecker is not null)
+            {
+                await updateChecker.CompareVersionAsync();
+            }
+
+            AnsiConsole.WriteLine();
+
+            throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
         // If the tool has setup, apply tool things below to setup
@@ -140,14 +170,24 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
         var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
 
+        AnsiConsole.WriteLine();
+        logger.LogInformation("Starting tool instance creation...");
+        AnsiConsole.WriteLine();
+        var counter = 0;
+
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
         {
+            counter++;
+            logger.LogInformation("Tool instance #{Number} created.", counter);
+
             // Load config into each instance (may be worth caching later)
 
             if (toolInstance is IConfigurable<Config> configurable)
             {
                 var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
                     : toolSettings.ConsoleSettings.ConfigName;
+
+                logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, typeof(Config));
 
                 await settingsManager.PopulateConfigAsync(configName, configurable.Config, options.JsonSerializerContext, cancellationToken);
             }
@@ -156,13 +196,26 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             if (toolFunctionality.ProduceMethods.Length == 1)
             {
+                logger.LogInformation("Producing...");
+
                 var produceMethod = toolFunctionality.ProduceMethods[0];
                 var result = produceMethod.Invoke(toolInstance, null);
+
+                if (result is IEnumerable<object>)
+                {
+                    logger.LogInformation("Producing for each distributed output...");
+                }
+                else
+                {
+                    logger.LogInformation("Produced! Distributing output...");
+                }
 
                 await outputDistributor.DistributeOutputAsync(result, cancellationToken);
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
+                logger.LogInformation("Producing ({Count} methods)...", toolFunctionality.ProduceMethods.Length);
+
                 var produceTasks = toolFunctionality.ProduceMethods
                     .Select(method => Task.Run(() => method.Invoke(toolInstance, null)))
                     .ToList();
@@ -171,32 +224,87 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 {
                     var completedTask = await Task.WhenAny(produceTasks);
                     produceTasks.Remove(completedTask);
-                    await outputDistributor.DistributeOutputAsync(completedTask.Result, cancellationToken);
+
+                    var result = completedTask.Result;
+
+                    if (result is IEnumerable<object>)
+                    {
+                        if (produceTasks.Count > 0)
+                        {
+                            logger.LogInformation("Producing for each distributed output ({Count} remaining)...", produceTasks.Count);
+                        }
+                        else
+                        {
+                            logger.LogInformation("Producing for each distributed output (last output)...");
+                        }
+                    }
+                    else
+                    {
+                        if (produceTasks.Count > 0)
+                        {
+                            logger.LogInformation("Produced! Distributing output ({Count} remaining)...", produceTasks.Count);
+                        }
+                        else
+                        {
+                            logger.LogInformation("Produced! Distributing last output...");
+                        }
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
                 }
             }
 
             if (toolFunctionality.MutateMethods.Length == 1)
             {
+                logger.LogInformation("Mutating...");
+
                 var mutateMethod = toolFunctionality.MutateMethods[0];
                 var result = mutateMethod.Invoke(toolInstance, null);
+
+                if (result is IEnumerable<object>)
+                {
+                    logger.LogInformation("Mutationing while distributing output...");
+                }
+                else
+                {
+                    logger.LogInformation("Mutated! Distributing output...");
+                }
 
                 await outputDistributor.DistributeOutputAsync(result, cancellationToken);
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
-                foreach (var mutateMethod in toolFunctionality.MutateMethods)
+                for (int i = 0; i < toolFunctionality.MutateMethods.Length; i++)
                 {
+                    logger.LogInformation("Mutating ({Count}/{Total})...", i + 1, toolFunctionality.MutateMethods.Length);
+
+                    var mutateMethod = toolFunctionality.MutateMethods[i];
                     var result = mutateMethod.Invoke(toolInstance, null);
+
+                    if (result is IEnumerable<object>)
+                    {
+                        logger.LogInformation("Mutating while distributing output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Mutated! Distributing output...");
+                    }
 
                     await outputDistributor.DistributeOutputAsync(result, cancellationToken);
                 }
             }
+
+            logger.LogInformation("Tool instance #{Number} completed.", counter);
         }
+
+        AnsiConsole.WriteLine();
+
+        logger.LogInformation("Completed!");
 
         // Check again for updates if not done before
         if (!updateCheckCompleted && updateChecker is not null)
         {
-            updateCheckCompleted = await updateChecker.TryCompareVersionAsync(cancellationToken);
+            await updateChecker.CompareVersionAsync();
         }
     }
 

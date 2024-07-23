@@ -1,6 +1,8 @@
-﻿namespace GBX.NET.Tool.CLI;
+﻿using Microsoft.Extensions.Logging;
 
-public sealed class ConsoleSettings
+namespace GBX.NET.Tool.CLI;
+
+public sealed record ConsoleSettings
 {
     public bool DisableUpdateCheck { get; set; }
     public bool SkipIntro { get; set; }
@@ -8,4 +10,5 @@ public sealed class ConsoleSettings
     public bool DirectOutput { get; set; } = true;
     public string? OutputDirPath { get; set; }
     public string? ConfigName { get; set; }
+    public LogLevel LogLevel { get; set; } = LogLevel.Information;
 }

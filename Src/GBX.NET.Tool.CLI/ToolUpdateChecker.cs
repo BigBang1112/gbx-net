@@ -11,19 +11,26 @@ internal sealed class ToolUpdateChecker
         this.updateInfoResponseTask = updateInfoResponseTask;
     }
 
-    public static ToolUpdateChecker Check(HttpClient client)
+    public static ToolUpdateChecker Check(HttpClient client, CancellationToken cancellationToken)
     {
-        var responseTask = client.GetAsync("https://api.github.com/repos/GBX.NET/GBX.NET.Tool/releases/latest");
+        var responseTask = client.GetAsync("https://api.github.com/repos/GBX.NET/GBX.NET.Tool/releases/latest", cancellationToken);
         return new ToolUpdateChecker(responseTask);
     }
 
-    public async ValueTask<bool> TryCompareVersionAsync(CancellationToken cancellationToken)
+    public async ValueTask<bool> TryCompareVersionAsync()
     {
         if (!updateInfoResponseTask.IsCompleted)
         {
             return false;
         }
 
+        await CompareVersionAsync();
+
+        return true;
+    }
+
+    public async Task CompareVersionAsync()
+    {
         AnsiConsole.WriteLine();
 
         var updateInfoResponse = await updateInfoResponseTask;
@@ -52,7 +59,5 @@ internal sealed class ToolUpdateChecker
             AnsiConsole.WriteLine();
             AnsiConsole.Write(new Rule().RuleStyle("yellow dim"));
         }
-
-        return true;
     }
 }

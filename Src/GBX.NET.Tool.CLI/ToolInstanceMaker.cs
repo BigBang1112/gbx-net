@@ -33,6 +33,8 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
             var paramsForCtor = Array.Empty<object>();
             var pickedCtor = default(ConstructorInfo);
 
+            logger.LogInformation("Resolving new tool instance...");
+
             // Tries to pick the FIRST valid constructor
             foreach (var constructor in toolFunctionality.Constructors)
             {
@@ -47,13 +49,18 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                     pickedCtor = constructor;
                     break;
                 }
+
+                logger.LogInformation("Constructor {Constructor} is not valid with these inputs.", constructor);
             }
 
             // If no valid constructor was found
             if (pickedCtor is null)
             {
+                logger.LogWarning("No valid constructor found for the tool.");
                 throw new ConsoleProblemException("Invalid files passed to the tool.");
             }
+
+            logger.LogInformation("Creating new tool instance...");
 
             // Instantiate the tool
             yield return (T)pickedCtor.Invoke(paramsForCtor);

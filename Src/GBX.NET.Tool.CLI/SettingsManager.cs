@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using Microsoft.Extensions.Logging;
+using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json;
@@ -25,6 +26,7 @@ internal sealed class SettingsManager
         string fileName,
         JsonTypeInfo<T> typeInfo,
         bool resetOnException = false,
+        ILogger? logger = null,
         CancellationToken cancellationToken = default) where T : new()
     {
         T result;
@@ -33,6 +35,8 @@ internal sealed class SettingsManager
 
         if (File.Exists(filePath))
         {
+            logger?.LogDebug("File {FileName} exists. Deserializing...", fileName);
+
             try
             {
                 await using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
@@ -54,6 +58,8 @@ internal sealed class SettingsManager
         {
             result = new();
 
+            logger?.LogDebug("File {FileName} does not exist.", fileName);
+
             var directory = Path.GetDirectoryName(filePath);
 
             if (!string.IsNullOrWhiteSpace(directory))
@@ -61,6 +67,8 @@ internal sealed class SettingsManager
                 Directory.CreateDirectory(directory);
             }
         }
+
+        logger?.LogDebug("Creating and serializing {FileName}...", fileName);
 
         await using var fsCreate = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true);
         await JsonSerializer.SerializeAsync(fsCreate, result, typeInfo, cancellationToken);
