@@ -30,7 +30,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 
@@ -62,7 +62,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 var map = gbx.Node; // See Clarity section for more info
@@ -106,7 +106,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var node = Gbx.ParseNode("Path/To/My.Gbx");
 

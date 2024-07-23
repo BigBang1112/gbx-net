@@ -34,7 +34,7 @@ public partial class CPlugTree
                 {
                     foreach (var level in mip.Levels)
                     {
-                        foreach (var descendant in GetAllChildren(level.Value, includeVisualMipLevels))
+                        foreach (var descendant in GetAllChildren(level.Tree, includeVisualMipLevels))
                         {
                             yield return descendant;
                         }
@@ -122,12 +122,12 @@ public partial class CPlugTree
         static CPlugTree GetLodTree(CPlugTreeVisualMip mip, int lod)
         {
             return mip.Levels
-                .OrderBy(x => x.Key)
-                .Select(x => x.Value)
+                .OrderBy(x => x.FarZ)
+                .Select(x => x.Tree)
                 .ElementAtOrDefault(lod) ?? mip.Levels
-                    .OrderBy(x => x.Key)
+                    .OrderBy(x => x.FarZ)
                     .First()
-                    .Value;
+                    .Tree;
         }
     }
 

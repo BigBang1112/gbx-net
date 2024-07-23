@@ -10,6 +10,7 @@ public readonly record struct Color(float R, float G, float B, float A)
     }
 
     public int ToArgb() => ((int)A << 24) | ((int)R << 16) | ((int)G << 8) | (int)B;
+    public int ToRgba() => ((int)A << 24) | ((int)B << 16) | ((int)G << 8) | (int)R;
 
     public override string ToString()
     {

@@ -2,7 +2,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbxMap = Gbx.Parse<CGameCtnChallenge>(args[0]);
 

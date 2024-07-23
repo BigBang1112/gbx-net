@@ -37,7 +37,7 @@ public sealed class GbxRefTable
         return Path.GetFullPath(GetFilePath(file));
     }
 
-    public CMwNod? LoadNode(GbxRefTableFile file, GbxReadSettings settings = default)
+    public CMwNod? LoadNode(GbxRefTableFile file, GbxReadSettings settings = default, bool exceptions = false)
     {
         if (file is null)
         {
@@ -77,6 +77,12 @@ public sealed class GbxRefTable
             {
                 scope?.Dispose();
                 logger?.LogError(ex, "Failed to load node from file: {FilePath}", filePath);
+
+                if (exceptions)
+                {
+                    throw;
+                }
+
                 return default;
             }
         }
@@ -104,6 +110,12 @@ public sealed class GbxRefTable
             {
                 scope?.Dispose();
                 logger?.LogError(ex, "Failed to load node from file: {Length} bytes", data.Length);
+
+                if (exceptions)
+                {
+                    throw;
+                }
+
                 return default;
             }
         }
@@ -111,9 +123,9 @@ public sealed class GbxRefTable
         return default;
     }
 
-    public T? LoadNode<T>(GbxRefTableFile file, GbxReadSettings settings = default) where T : CMwNod
+    public T? LoadNode<T>(GbxRefTableFile file, GbxReadSettings settings = default, bool exceptions = false) where T : CMwNod
     {
-        return LoadNode(file, settings) as T;
+        return LoadNode(file, settings, exceptions) as T;
     }
 
     internal static GbxRefTable? Parse(GbxReader reader, GbxHeader header, string? fileSystemPath)

@@ -1,0 +1,9 @@
+NPlugDyna_SPrefabConstraintParams 0x2F0C8000
+- inherits: SMetaPtr
+
+archive
+ version
+ int Ent1
+ int Ent2
+ vec3 Pos1
+ vec3 Pos2

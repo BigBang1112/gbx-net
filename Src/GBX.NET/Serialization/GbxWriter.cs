@@ -861,7 +861,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        WriteSmallLen(value.Length);
+        WriteSmallLen(encoding.GetByteCount(value));
         Write(value, StringLengthPrefix.None);
     }
 

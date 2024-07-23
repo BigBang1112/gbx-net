@@ -11,7 +11,7 @@ if (args.Length == 0)
 
 var dirPath = args[0];
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var existingExceptions = new HashSet<string>();
 var counter = 0;

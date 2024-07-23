@@ -4,7 +4,7 @@ using GBX.NET.Engines.Scene;
 using GBX.NET.LZO;
 using GBX.NET.ZLib;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 Gbx.ZLib = new ZLib();
 
 var gbxMap = Gbx.Parse<CGameCtnChallenge>(args[0]);

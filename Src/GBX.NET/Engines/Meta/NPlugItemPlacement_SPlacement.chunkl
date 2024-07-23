@@ -1,0 +1,7 @@
+NPlugItemPlacement_SPlacement 0x2F0A9000
+- inherits: SMetaPtr
+
+archive
+ version
+ int ILayout
+ NPlugItemPlacement_SPlacementOption[] Options

@@ -9,7 +9,7 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> CompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    public static async Task CompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
         _ = input ?? throw new ArgumentNullException(nameof(input));
         _ = output ?? throw new ArgumentNullException(nameof(output));
@@ -27,25 +27,30 @@ internal static partial class GbxCompressionUtils
         // Body compression type
         var compressedBody = r.ReadByte();
 
-        if (compressedBody != 'U')
-        {
-            await input.CopyToAsync(output, bufferSize: 81920, cancellationToken);
-
-            return false;
-        }
+        var isAlreadyCompressed = compressedBody != 'U';
 
         w.Write('C');
 
         await CopyRestOfTheHeaderAsync(version, r, w, cancellationToken);
 
-        var uncompressedData = await r.ReadToEndAsync(cancellationToken);
+        byte[] uncompressedData;
+
+        if (isAlreadyCompressed)
+        {
+            var uncompressedSize = r.ReadInt32();
+            uncompressedData = new byte[uncompressedSize];
+            Gbx.LZO.Decompress(await r.ReadDataAsync(cancellationToken), uncompressedData);
+        }
+        else
+        {
+            uncompressedData = await r.ReadToEndAsync(cancellationToken);
+        }
+
         var compressedData = Gbx.LZO.Compress(uncompressedData);
 
         w.Write(uncompressedData.Length);
         w.Write(compressedData.Length);
         await w.WriteAsync(compressedData, cancellationToken);
-
-        return true;
     }
 
     /// <exception cref="ArgumentException"></exception>
@@ -55,7 +60,7 @@ internal static partial class GbxCompressionUtils
     /// <exception cref="VersionNotSupportedException"></exception>
     /// <exception cref="TextFormatNotSupportedException"></exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<bool> DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
+    public static async Task DecompressAsync(Stream input, Stream output, CancellationToken cancellationToken)
     {
         _ = input ?? throw new ArgumentNullException(nameof(input));
         _ = output ?? throw new ArgumentNullException(nameof(output));
@@ -77,8 +82,7 @@ internal static partial class GbxCompressionUtils
         {
             w.Write(compressedBody);
             await input.CopyToAsync(output, bufferSize: 81920, cancellationToken);
-
-            return false;
+            return;
         }
 
         w.Write('U');
@@ -92,8 +96,6 @@ internal static partial class GbxCompressionUtils
         var buffer = new byte[uncompressedSize];
         Gbx.LZO.Decompress(compressedData, buffer);
         await w.WriteAsync(buffer, cancellationToken);
-
-        return true;
     }
 
     /// <exception cref="ArgumentException"></exception>

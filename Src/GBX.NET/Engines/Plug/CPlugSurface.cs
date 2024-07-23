@@ -10,6 +10,11 @@ public partial class CPlugSurface
     private CPlugSkel? skel;
     public CPlugSkel? Skel { get => skel; set => skel = value; }
 
+    private SurfMaterial[] materials = [];
+    [AppliedWithChunk<Chunk0900C000>]
+    [AppliedWithChunk<Chunk0900C003>]
+    public SurfMaterial[] Materials { get => materials; set => materials = value; }
+
     public partial class Chunk0900C003 : IVersionable
     {
         public int Version { get; set; }
@@ -18,6 +23,7 @@ public partial class CPlugSurface
         public ushort[]? U02;
         public float? U03;
         public ushort[]? U04;
+        public int? U05;
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
@@ -40,6 +46,11 @@ public partial class CPlugSurface
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
 
+            if (Version >= 4 && n.materials?.Length > 0)
+            {
+                rw.Int32(ref U05);
+            }
+
             if ((Version == 3 && (n.materials is null || n.materials.Length == 0)) || Version >= 4)
             {
                 rw.Array<ushort>(ref U02);
@@ -48,10 +59,6 @@ public partial class CPlugSurface
             if (Version < 3)
             {
                 rw.Data(ref U01); // length matches materials count
-            }
-            else
-            {
-                rw.Array<ushort>(ref U04); // length matches materials count
             }
 
             if (Version >= 1)
@@ -234,16 +241,47 @@ public partial class CPlugSurface
     public sealed partial class Compound : ISurf, IVersionable
     {
         public int Version { get; set; }
+        public ISurf[] Surfs { get; set; } = [];
+        public Iso4[] SurfLocs { get; set; } = [];
+        public short[] SurfJoints { get; set; } = [];
         public Vec3? U01 { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
-            throw new NotImplementedException();
+            var surfCount = r.ReadInt32();
+            Surfs = new ISurf[surfCount];
+
+            for (var i = 0; i < surfCount; i++)
+            {
+                Surfs[i] = ReadSurf(r, version);
+            }
+
+            SurfLocs = r.ReadArray<Iso4>(surfCount);
+
+            if (version >= 1)
+            {
+                SurfJoints = r.ReadArray<short>();
+            }
         }
 
         public void Write(GbxWriter w, int version = 0)
         {
-            throw new NotImplementedException();
+            w.Write(Surfs.Length);
+
+            foreach (var surf in Surfs)
+            {
+                WriteSurf(surf, w, version);
+            }
+
+            foreach (var surfLoc in SurfLocs)
+            {
+                w.Write(surfLoc);
+            }
+
+            if (version >= 1)
+            {
+                w.WriteArray(SurfJoints);
+            }
         }
     }
 }

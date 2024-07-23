@@ -3,7 +3,9 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTreeVisualMip
 {
-    public IDictionary<float, CPlugTree> Levels { get; set; } = new Dictionary<float, CPlugTree>();
+    private IList<Level> levels = new List<Level>();
+    [AppliedWithChunk<Chunk09015002>]
+    public IList<Level> Levels { get => levels; set => levels = value; }
 
     public partial class Chunk09015002
     {
@@ -15,9 +17,9 @@ public partial class CPlugTreeVisualMip
 
             for (var i = 0; i < length; i++)
             {
-                var key = r.ReadSingle();
-                var value = r.ReadNodeRef<CPlugTree>()!;
-                n.Levels.Add(key, value);
+                var farZ = r.ReadSingle();
+                var tree = r.ReadNodeRef<CPlugTree>()!;
+                n.Levels.Add(new(farZ, tree));
             }
         }
 
@@ -27,9 +29,11 @@ public partial class CPlugTreeVisualMip
 
             foreach (var pair in n.Levels)
             {
-                w.Write(pair.Key);
-                w.WriteNodeRef(pair.Value);
+                w.Write(pair.FarZ);
+                w.WriteNodeRef(pair.Tree);
             }
         }
     }
+
+    public sealed record Level(float FarZ, CPlugTree Tree);
 }

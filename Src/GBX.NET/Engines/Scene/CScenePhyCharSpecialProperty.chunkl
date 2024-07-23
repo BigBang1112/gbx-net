@@ -1,0 +1,23 @@
+CScenePhyCharSpecialProperty 0x0A071000
+
+0x000
+ version = 2
+ v3+
+  throw
+ int
+ v1-
+  float
+  float
+  float
+ bool
+ int
+ float
+ int
+ float
+ v1+
+  int
+ v2+
+  float
+  float
+  float
+  float

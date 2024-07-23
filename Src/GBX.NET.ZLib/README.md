@@ -21,7 +21,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.ZLib; // Add this
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 Gbx.ZLib = new ZLib(); // Add this ONLY ONCE and before you start using Parse methods
 
 var ghost = Gbx.ParseNode<CGameCtnGhost>("Path/To/My.Ghost.Gbx");

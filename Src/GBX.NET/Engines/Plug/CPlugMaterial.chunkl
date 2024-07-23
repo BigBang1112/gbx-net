@@ -1,6 +1,9 @@
 CPlugMaterial 0x09079000
 - inherits: CPlug
 
+0x001
+ CMwNod
+
 0x002
  int
 
@@ -9,6 +12,8 @@ CPlugMaterial 0x09079000
 
 0x00A
  int
+
+0x00D
 
 0x00E
  int
@@ -27,3 +32,13 @@ CPlugMaterial 0x09079000
 0x013 (skippable, ignore)
 
 0x014 (skippable, ignore)
+
+archive DeviceMat
+ short
+ short
+ v4+
+  bool
+ CPlugShader Shader1 (external)
+ v9+
+  CPlugShader Shader2 (external)
+  CPlugShader Shader3 (external)

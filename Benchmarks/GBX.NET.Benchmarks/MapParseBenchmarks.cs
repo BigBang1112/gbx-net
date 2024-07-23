@@ -11,7 +11,7 @@ public class MapParseBenchmarks
 
     public MapParseBenchmarks()
     {
-        Gbx.LZO = new MiniLZO();
+        Gbx.LZO = new Lzo();
         stream = new MemoryStream(File.ReadAllBytes(Path.Combine("Gbx", "CGameCtnChallenge", "GBX-NET 2 CGameCtnChallenge TMU 001.Challenge.Gbx")));
     }
 

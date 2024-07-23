@@ -18,7 +18,7 @@ CSystemConfig 0x0B005000
 
 0x00B (skippable, base: 0x005) [TMF, MP3, MP4]
  base
- int
+ int U04
 
 0x020 (skippable) [TMF, MP3, MP4]
  bool IsSafeMode

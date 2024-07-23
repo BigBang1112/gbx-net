@@ -7,7 +7,10 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 {
     private const int GroundBit = 12;
     private const int ClipBit = 13;
+    private const int PillarBit = 14;
     private const int SkinnableBit = 15;
+    private const int ReplacementBit = 16;
+    private const int DecalBit = 17;
     private const int WaypointBit = 20;
     private const int GhostBit = 28;
     private const int FreeBit = 29;
@@ -56,12 +59,18 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public Int3 Coord { get => coord; set => coord = value; }
 
-    private int flags;
+	/// <summary>
+	/// Facing direction of the block.
+	/// </summary>
+	public Direction Direction { get; set; }
+
+	private int flags;
     /// <summary>
     /// Flags of the block. If the blocks version is 0, this value can be presented as <see cref="short"/>.
     /// </summary>
     public int Flags { get => flags; set => flags = value; }
 
+    [Obsolete("Flags are now always presented. There's no point to use this anymore.")]
     public bool HasFlags => flags != -1;
 
     /// <summary>
@@ -69,14 +78,8 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public byte? Variant
     {
-        get => HasFlags ? (byte)(flags & VariantMax) : null;
-        set
-        {
-            if (HasFlags)
-            {
-                flags = (flags & ~VariantMax) | (value ?? 0);
-            }
-        }
+        get => (byte)(flags & VariantMax);
+        set => flags = (flags & ~VariantMax) | (value ?? 0);
     }
 
     /// <summary>
@@ -84,14 +87,8 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public byte? SubVariant
     {
-        get => HasFlags ? (byte?)((flags >> SubVariantOffset) & SubVariantMax) : null;
-        set
-        {
-            if (HasFlags)
-            {
-                flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value ?? 0) << SubVariantOffset);
-            }
-        }
+        get => (byte?)((flags >> SubVariantOffset) & SubVariantMax);
+        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value ?? 0) << SubVariantOffset);
     }
 
     /// <summary>
@@ -104,12 +101,21 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// If the block is considered as clip. Taken from flags.
+    /// If the block is considered as clip. Also known as <c>IsEditable</c>. Taken from flags.
     /// </summary>
     public bool IsClip
     {
         get => IsFlagBitSet(ClipBit);
         set => SetFlagBit(ClipBit, value);
+    }
+
+    /// <summary>
+    /// Taken from flags.
+    /// </summary>
+    public bool IsPillar
+    {
+        get => IsFlagBitSet(PillarBit);
+        set => SetFlagBit(PillarBit, value);
     }
 
     private CGameCtnBlockSkin? skin;
@@ -121,11 +127,6 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         get => skin;
         set
         {
-            if (!HasFlags)
-            {
-                return;
-            }
-
             if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
             {
                 flags &= ~(1 << SkinnableBit);
@@ -139,10 +140,20 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// <summary>
     /// Taken from flags.
     /// </summary>
+    public bool IsReplacement
+    {
+        get => IsFlagBitSet(ReplacementBit);
+        set => SetFlagBit(ReplacementBit, value);
+    }
+
+    /// <summary>
+    /// Taken from flags.
+    /// </summary>
+    [Obsolete("This bit has been resolved. If absolutely needed, equivalent is !string.IsNullOrEmpty(DecalId).")]
     public bool Bit17
     {
-        get => IsFlagBitSet(17);
-        set => SetFlagBit(17, value);
+        get => IsFlagBitSet(DecalBit);
+        set => SetFlagBit(DecalBit, value);
     }
 
     private CGameWaypointSpecialProperty? waypointSpecialProperty;
@@ -204,6 +215,13 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public MacroblockInstance? MacroblockReference { get; set; }
 
+    private string? decalId;
+    public string? DecalId
+    {
+        get => decalId;
+        set => SetFlagBitAndObject(DecalBit, ref decalId, value);
+    }
+
     byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
     byte IGameCtnBlockTMSX.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
     byte IGameCtnBlockTMSX.SubVariant { get => SubVariant.GetValueOrDefault(); set => SubVariant = value; }
@@ -221,15 +239,10 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         return $"{nameof(CGameCtnBlock)}: {Name} {coord}";
     }
 
-    private bool IsFlagBitSet(int bit) => HasFlags && (flags & (1 << bit)) != 0;
+    private bool IsFlagBitSet(int bit) => (flags & (1 << bit)) != 0;
 
     private void SetFlagBit(int bit, bool value)
     {
-        if (!HasFlags)
-        {
-            return;
-        }
-
         if (value)
         {
             flags |= 1 << bit;
@@ -242,11 +255,6 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 
     private void SetFlagBitAndObject<T>(int bit, ref T? obj, T? value)
     {
-        if (!HasFlags)
-        {
-            return;
-        }
-
         if (value is null)
         {
             flags &= ~(1 << bit);
@@ -260,4 +268,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03057002;
+
+    [ArchiveGenerationOptions( StructureKind = StructureKind.SeparateReadAndWrite )]
+    public partial class SSquareCardEventIds;
 }

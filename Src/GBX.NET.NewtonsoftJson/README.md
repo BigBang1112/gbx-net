@@ -15,7 +15,7 @@ Provides extensions for JSON serialization with `Newtonsoft.Json`.
 
 ### Convert Gbx and any `CMwNod` to JSON
 
-Additional package `GBX.NET.LZO` is required in this example.Additional package `GBX.NET.LZO` is required in this example.
+Additional package `GBX.NET.LZO` is required in this example.
 
 ```cs
 using GBX.NET;
@@ -23,7 +23,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.NewtonsoftJson; // Add this
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 
@@ -33,7 +33,7 @@ string jsonNode = gbx.Node.ToJson();
 
 ### Print JSON of Gbx to console using `TextWriter`
 
-Additional package `GBX.NET.LZO` is required in this example.Additional package `GBX.NET.LZO` is required in this example.
+Additional package `GBX.NET.LZO` is required in this example.
 
 ```cs
 using GBX.NET;
@@ -41,7 +41,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.NewtonsoftJson; // Add this
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 

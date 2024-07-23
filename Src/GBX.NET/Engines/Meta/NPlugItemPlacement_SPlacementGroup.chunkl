@@ -1,0 +1,8 @@
+NPlugItemPlacement_SPlacementGroup 0x2F0D8000
+- inherits: SMetaPtr
+
+archive
+ version
+ NPlugItemPlacement_SPlacement[] Placements
+ short[]
+ transquat[]

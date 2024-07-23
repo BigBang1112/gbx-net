@@ -3,7 +3,7 @@ using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Plug;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 foreach (var filePath in args)
 {

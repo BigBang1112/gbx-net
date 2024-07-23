@@ -29,6 +29,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Modify and save a map](#modify-and-save-a-map)
   - [Processing multiple Gbx types](#processing-multiple-gbx-types)
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
+- [Tool framework](#tool-framework)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
@@ -172,7 +173,7 @@ C# code:
 using GBX.NET;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 ```
 
 You should run this line of code **only once** for the whole program lifetime.
@@ -194,7 +195,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 
@@ -221,7 +222,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var gbx = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
 var map = gbx.Node; // See Clarity section for more info
@@ -269,7 +270,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 
 var node = Gbx.ParseNode("Path/To/My.Gbx");
 
@@ -335,6 +336,42 @@ This code should only crash in case of a file system problem. Other problems wil
 
 > [!NOTE]
 > It is still valuable to parse the full Gbx even when you just want a piece of information available in header, because **body info overwrites header info**. So you can use the benefit of full parse to fool people tackling with the Gbx header.
+
+## Tool framework
+
+Tool framework (`GBX.NET.Tool*` libraries) is a simple way to create rich tools that can be adapted to different environments.
+
+Currently supported environments:
+- **Console** (`GBX.NET.Tool.CLI`)
+
+Planned environments:
+- Blazor (`GBX.NET.Tool.Blazor`) - both server and WebAssembly
+- HTTP server (`GBX.NET.Tool.Server`)
+- Discord bot (`GBX.NET.Tool.Discord.Bot`)
+
+The tool framework guides you with this project structure:
+
+```mermaid
+graph LR
+    A(GBX.NET.Tool) --> B(YourToolProject)
+    C(GBX.NET.Tool.CLI) --> D(YourToolProjectCLI)
+    B --> D
+    A --> C
+    E(GBX.NET) --> A
+    F(GBX.NET.LZO) --> C
+    E --> F
+    G(Spectre.Console) --> C
+```
+
+- Structure: Tool library (`YourToolProject`) and at least 1 implementation application of it (`YourToolProjectCLI`).
+- Tool library references `GBX.NET.Tool` and implementation application references `GBX.NET.Tool.CLI`.
+- `GBX.NET.Tool.CLI` currently uses LZO by default, no need to reference it additionally.
+
+Tool library has a primary tool class that implements `ITool` interface. There should be only one.
+
+Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map without having to recreate it again).
+
+Samples are available [here](Samples/Tool/).
 
 ## Clarity
 
@@ -436,6 +473,22 @@ GBX.NET is a huge library when everything is included (over 1.5MB), so please us
 > [!NOTE]
 > Expect this to work only with `dotnet publish`.
 
+However, in case you wanna use reflection on GBX.NET, it is strongly recommended to simply turn off trimming of this library. **In case of Blazor WebAssembly specifically, it's worth noting that the release build trims automatically**, so in case you're using reflection, modify your library reference:
+
+```xml
+<PackageReference Include="GBX.NET">
+    <IsTrimmable>false</IsTrimmable> <!-- add this line -->
+</PackageReference>
+```
+
+In case this is not enough, you can specify `TrimmerRootAssembly` on the project you're building that this library should absolutely not be trimmed:
+
+```xml
+<ItemGroup>
+    <TrimmerRootAssembly Include="GBX.NET" />
+</ItemGroup>
+```
+
 ### Explicit vs. Implicit parse
 
 *In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
@@ -528,7 +581,7 @@ Make sure you have these framework SDKs available:
 
 **Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will likely not work.
 
-You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It may not be required, but it will definitely help figuring out some problems.
+You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It is required for Gbx Explorer to work properly, as it uses native LZO implementation compiled into WebAssembly.
 
 In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
 

@@ -13,7 +13,7 @@ if (args.Length == 0)
 }
 
 var fileName = args[0];
-Gbx.LZO = new MiniLZO();
+Gbx.LZO = new Lzo();
 Gbx.ZLib = new ZLib();
 
 var logger = LoggerFactory.Create(builder =>

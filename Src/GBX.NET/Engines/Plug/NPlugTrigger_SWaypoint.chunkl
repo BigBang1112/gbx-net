@@ -1,0 +1,15 @@
+NPlugTrigger_SWaypoint 0x09178000
+
+archive
+ version
+ int<EGameItemWaypointType> Type
+ CPlugSurface TriggerShape (external)
+ bool NoRespawn
+
+enum EGameItemWaypointType
+ Start
+ Finish
+ Checkpoint
+ None
+ StartFinish
+ Dispenser
