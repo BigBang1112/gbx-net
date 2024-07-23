@@ -528,11 +528,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v8-
   float
   float
- v1+
-  bool
- v8-
-  float
-  float
  v4+
   Keys (version: Version - 37)
   v5+
@@ -653,14 +648,14 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v4+
   throw
  int
- CPlugCamControlModel[]
+ CPlugCamControlModel[] (external)
  v1+
   int
-  CPlugCamControlModel[]
+  CPlugCamControlModel[] (external)
   v2+
-   CPlugCamControlModel
+   CPlugCamControlModel (external)
    v3+
-    CPlugCamControlModel
+    CPlugCamControlModel (external)
 
 0x094
  version
@@ -755,7 +750,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x09A
  version
- CPlugVehicleGearBox
+ CPlugVehicleGearBox (external)
 
 0x09B
  version
