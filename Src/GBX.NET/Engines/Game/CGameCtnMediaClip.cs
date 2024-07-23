@@ -2,9 +2,17 @@
 
 public partial class CGameCtnMediaClip
 {
+    private string? name;
+    [AppliedWithChunk<Chunk03079002>]
+    [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public string? Name { get => name; set => name = value; }
+
     private IList<CGameCtnMediaTrack>? tracks;
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
     [AppliedWithChunk<Chunk0307900D>]
     public IList<CGameCtnMediaTrack> Tracks
     {

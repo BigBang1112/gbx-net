@@ -290,26 +290,35 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk03043069>]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
+    private bool hasCustomCamThumbnail;
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    public bool HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
+
     private Vec3 thumbnailPosition;
     [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
 
     private float thumbnailFov;
     [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
 
     private float thumbnailNearClipPlane;
     [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
 
     private float thumbnailFarClipPlane;
     [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
