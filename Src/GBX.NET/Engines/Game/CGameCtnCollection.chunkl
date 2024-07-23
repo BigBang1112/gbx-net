@@ -179,10 +179,10 @@ CGameCtnCollection 0x03033000
 
 0x034
  version
- CFuncShaderLayerUV FidFuncShaderCloudsX2
- CPlugBitmap FidPlugBitmapCloudsX2
+ CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
+ CPlugBitmap FidPlugBitmapCloudsX2 (external)
  v1+
-  CPlugBitmap VehicleEnvLayerFidBitmap
+  CPlugBitmap VehicleEnvLayerFidBitmap (external)
   int<EVehicleEnvLayer> VehicleEnvLayer
 
 0x036 // OffZone_FogMatter
@@ -192,7 +192,36 @@ CGameCtnCollection 0x03033000
 0x037 // TerrainHeightOffset
  float TerrainHeightOffset
 
-0x038 (ignore)
+0x038
+ version
+ v3-
+  float
+  v0=
+   float
+   float
+  v1+
+   Water Water1 (version: Version)
+   Water Water2 (version: Version)
+ v4+
+  Water Water1 (version: Version)
+  Water Water2 (version: Version)
+  Water Water3 (version: Version)
+  Water Water4 (version: Version)
+  v5+
+   CPlugBitmap WaterGBitmapNormal (external)
+   float WaterGBumpSpeedUV
+   float WaterGBumpScaleUV
+   float WaterGBumpScale
+   float WaterGRefracPertub
+   v7+
+    int // not seen in code
+   float CameraMinHeight
+   v3-
+    bool // CSystemFidsFolder something?
+   bool IsWaterMultiHeight
+   v2-
+    float
+   float WaterFogClampAboveDist
 
 0x039
  version
@@ -281,3 +310,14 @@ enum EVehicleEnvLayer
 archive ZoneString
  id Base
  id Replacement
+
+archive Water
+ id
+ float
+ float
+ v3+
+  float?
+ v2+
+  int? // NodeRef?
+  v7+
+   int? // not seen in code
