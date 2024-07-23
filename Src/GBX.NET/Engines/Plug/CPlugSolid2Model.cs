@@ -155,7 +155,7 @@ public partial class CPlugSolid2Model
                                                             {
                                                                 if (Version < 29)
                                                                 {
-                                                                    rw.Int32(ref materialCount);
+                                                                    materialCount = rw.Int32(n.customMaterials?.Length ?? 0);
                                                                 }
 
                                                                 if (Version >= 30)
