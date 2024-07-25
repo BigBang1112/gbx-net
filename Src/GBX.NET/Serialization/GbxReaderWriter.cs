@@ -45,14 +45,14 @@ public partial interface IGbxReaderWriter : IDisposable
     External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod;
     void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : CMwNod;
+    List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
+    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : CMwNod;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod;
+    List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod;
+    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
-    IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : CMwNod;
-    void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod;
+    List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod;
+    void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new();
@@ -68,14 +68,14 @@ public partial interface IGbxReaderWriter : IDisposable
     T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
-    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int length, int version = 0) where T : IReadableWritable, new();
+    List<T>? ListReadableWritable<T>(List<T>? value, int length, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, int length, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    IList<T>? ListReadableWritable<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
-    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    List<T>? ListReadableWritable<T>(List<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
-    IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
-    void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    List<T>? ListReadableWritable_deprec<T>(List<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
 
     [return: NotNullIfNotNull(nameof(value))]
     int[]? ArrayOptimizedInt(int[]? value, int? determineFrom = default);
@@ -276,14 +276,14 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef_deprec(value);
     public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef_deprec(ref value);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(value, length);
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(ref value, length);
+    public List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(value, length);
+    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef<T>(IList<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef(value);
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod => ListExternalNodeRef(ref value);
+    public List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef(value);
+    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<External<T>>? ListNodeRef_deprec<T>(IList<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef_deprec(value);
-    public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<External<T>>? value) where T : CMwNod => ListExternalNodeRef_deprec(ref value);
+    public List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef_deprec(value);
+    public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef_deprec(ref value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new()
@@ -399,7 +399,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         where T : IReadableWritable, new() => value = ArrayReadableWritable_deprec(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<T>? ListReadableWritable<T>(IList<T>? value, int length, int version = 0) where T : IReadableWritable, new()
+    public List<T>? ListReadableWritable<T>(List<T>? value, int length, int version = 0) where T : IReadableWritable, new()
     {
         if (Reader is not null)
         {
@@ -443,11 +443,11 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         return value;
     }
 
-    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, int length, int version = 0)
+    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, int length, int version = 0)
         where T : IReadableWritable, new() => value = ListReadableWritable(value, length, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<T>? ListReadableWritable<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
+    public List<T>? ListReadableWritable<T>(List<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         if (Reader is not null)
         {
@@ -477,18 +477,18 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         return value;
     }
 
-    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
+    public void ListReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ListReadableWritable(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public IList<T>? ListReadableWritable_deprec<T>(IList<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
+    public List<T>? ListReadableWritable_deprec<T>(List<T>? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()
     {
         Reader?.ReadDeprecVersion();
         Writer?.WriteDeprecVersion();
         return ListReadableWritable(value, byteLengthPrefix, version);
     }
 
-    public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref IList<T>? value, bool byteLengthPrefix = false, int version = 0)
+    public void ListReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<T>? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ListReadableWritable_deprec(value, byteLengthPrefix, version);
 
     [return: NotNullIfNotNull(nameof(value))]

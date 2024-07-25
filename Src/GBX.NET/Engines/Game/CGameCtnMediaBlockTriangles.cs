@@ -6,7 +6,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
     private Int3[] triangles = [];
 
     [AppliedWithChunk<Chunk03029001>]
-    public IList<Key> Keys { get; set; } = new List<Key>();
+    public List<Key> Keys { get; set; } = [];
 
     IEnumerable<IKey> IHasKeys.Keys => Keys;
 
@@ -88,7 +88,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         public override void Read(CGameCtnMediaBlockTriangles n, GbxReader r)
         {
             var numKeys = r.ReadInt32();
-            n.Keys = new List<Key>();
+            n.Keys = new List<Key>(numKeys);
             for (var i = 0; i < numKeys; i++)
             {
                 n.Keys.Add(new Key(n)

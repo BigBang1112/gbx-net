@@ -35,7 +35,7 @@ public partial class CGameCtnGhost
         private ImmutableList<IInputChange>? inputChanges;
         private ImmutableList<IInput>? inputs;
 
-        public IList<IInputChange> InputChanges
+        public ImmutableList<IInputChange> InputChanges
         {
             get
             {

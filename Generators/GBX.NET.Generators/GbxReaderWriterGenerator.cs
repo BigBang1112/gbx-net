@@ -170,7 +170,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
             var methodType = readerMethod.Name.Substring("Read".Length);
 
-            //var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "IList" };
+            //var isArrayOrList = readerMethod.ReturnType is IArrayTypeSymbol or { Name: "List" };
 
             // INTERFACE
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
@@ -440,7 +440,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                 && readerMethod.Parameters.IsDefaultOrEmpty
                 && readerMethod.TypeParameters.IsDefaultOrEmpty
                 && !string.IsNullOrEmpty(readerMethod.ReturnType.Name)
-                && methodType.StartsWith(readerMethod.ReturnType.Name);
+                && methodType.StartsWith(readerMethod.ReturnType.Name)
+                && !methodType.StartsWith("List");
 
             if (isForArrayGenerator)
             {
@@ -464,7 +465,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                             {
                                 if (isList)
                                 {
-                                    sbInterface.Append("IList<");
+                                    sbInterface.Append("List<");
                                 }
 
                                 sbInterface.Append(readerMethod.ReturnType);
@@ -504,7 +505,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                             if (isList)
                             {
-                                sbInterface.Append("IList<");
+                                sbInterface.Append("List<");
                                 sbInterface.Append(readerMethod.ReturnType);
                                 sbInterface.Append(">?");
                             }
@@ -997,7 +998,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         if (isList)
                         {
-                            sbClass.Append("IList<");
+                            sbClass.Append("List<");
                         }
 
                         sbClass.Append(readerMethod.ReturnType);
@@ -1013,7 +1014,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         if (isList)
                         {
-                            sbClass.Append("IList<");
+                            sbClass.Append("List<");
                         }
 
                         sbClass.Append(readerMethod.ReturnType);
@@ -1091,7 +1092,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         if (isList)
                         {
-                            sbClass.Append("IList<");
+                            sbClass.Append("List<");
                         }
 
                         sbClass.Append(readerMethod.ReturnType);

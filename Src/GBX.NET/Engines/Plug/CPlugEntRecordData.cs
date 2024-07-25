@@ -9,9 +9,9 @@ public partial class CPlugEntRecordData : IReadableWritable
     private TimeInt32 end;
     private EntRecordDesc[] entRecordDescs = [];
     private NoticeRecordDesc[] noticeRecordDescs = [];
-    private IList<EntRecordListElem> entList = [];
-    private IList<NoticeRecordListElem> bulkNoticeList = [];
-    private IList<CustomModulesDeltaList> customModulesDeltaLists = [];
+    private List<EntRecordListElem> entList = [];
+    private List<NoticeRecordListElem> bulkNoticeList = [];
+    private List<CustomModulesDeltaList> customModulesDeltaLists = [];
 
     [ZLibData]
     public CompressedData CompressedData { get; set; } = new(0, []);
@@ -20,9 +20,9 @@ public partial class CPlugEntRecordData : IReadableWritable
     public TimeInt32 End { get => end; }
     public EntRecordDesc[] EntRecordDescs { get => entRecordDescs; set => entRecordDescs = value; }
     public NoticeRecordDesc[] NoticeRecordDescs { get => noticeRecordDescs; set => noticeRecordDescs = value; }
-    public IList<EntRecordListElem> EntList { get => entList; }
-    public IList<NoticeRecordListElem> BulkNoticeList { get => bulkNoticeList; }
-    public IList<CustomModulesDeltaList> CustomModulesDeltaLists { get => customModulesDeltaLists; }
+    public List<EntRecordListElem> EntList { get => entList; }
+    public List<NoticeRecordListElem> BulkNoticeList { get => bulkNoticeList; }
+    public List<CustomModulesDeltaList> CustomModulesDeltaLists { get => customModulesDeltaLists; }
 
     public void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
@@ -124,7 +124,7 @@ public partial class CPlugEntRecordData : IReadableWritable
 
             hasNextElem = r.ReadBoolean(asByte: true);
 
-            IList<EntRecordDelta2> samples2 = version >= 2 ? ReadEntRecordDeltas2(r).ToList() : Array.Empty<EntRecordDelta2>();
+            List<EntRecordDelta2> samples2 = version >= 2 ? ReadEntRecordDeltas2(r).ToList() : [];
 
             yield return new EntRecordListElem
             {
@@ -281,8 +281,8 @@ public partial class CPlugEntRecordData : IReadableWritable
         public int U02 { get; set; }
         public int U03 { get; set; }
         public int U04 { get; set; }
-        public IList<EntRecordDelta> Samples { get; set; } = [];
-        public IList<EntRecordDelta2> Samples2 { get; set; } = [];
+        public List<EntRecordDelta> Samples { get; set; } = [];
+        public List<EntRecordDelta2> Samples2 { get; set; } = [];
     }
 
     public class EntRecordDelta
@@ -323,19 +323,19 @@ public partial class CPlugEntRecordData : IReadableWritable
     {
         public int U01 { get; set; }
         public int U02 { get; set; }
-        public byte[] Data { get; set; } = Array.Empty<byte>();
+        public byte[] Data { get; set; } = [];
     }
 
     public class CustomModulesDeltaList
     {
-        public IList<CustomModulesDelta> Deltas { get; set; } = Array.Empty<CustomModulesDelta>();
+        public List<CustomModulesDelta> Deltas { get; set; } = [];
         public int? Period { get; set; }
     }
 
     public class CustomModulesDelta
     {
         public int U01 { get; set; }
-        public byte[] Data { get; set; } = Array.Empty<byte>();
-        public byte[] U02 { get; set; } = Array.Empty<byte>();
+        public byte[] Data { get; set; } = [];
+        public byte[] U02 { get; set; } = [];
     }
 }

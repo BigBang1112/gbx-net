@@ -115,7 +115,7 @@ public partial class CGameCtnGhost
             var inputNames = n.inputs
                 .Select(NET.Inputs.Input.GetName)
                 .Distinct()
-                .ToImmutableList();
+                .ToList();
 
             w.WriteListId(inputNames);
 

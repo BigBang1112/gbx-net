@@ -209,11 +209,11 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk0304301F>]
     public Id? Collection => mapInfo?.Collection;
 
-    private IList<CGameCtnBlock>? blocks;
+    private List<CGameCtnBlock>? blocks;
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
-    public IList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
+    public List<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
@@ -258,13 +258,13 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk0304305B>]
     public CompressedData? LightmapCacheData { get; set; }
 
-    private IList<CGameCtnAnchoredObject>? anchoredObjects;
+    private List<CGameCtnAnchoredObject>? anchoredObjects;
     [AppliedWithChunk<Chunk03043040>]
-    public IList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
+    public List<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
-    private IList<CGameCtnZoneGenealogy>? zoneGenealogy;
+    private List<CGameCtnZoneGenealogy>? zoneGenealogy;
     [AppliedWithChunk<Chunk03043043>]
-    public IList<CGameCtnZoneGenealogy>? ZoneGenealogy { get => zoneGenealogy; set => zoneGenealogy = value; }
+    public List<CGameCtnZoneGenealogy>? ZoneGenealogy { get => zoneGenealogy; set => zoneGenealogy = value; }
 
     private CScriptTraitsMetadata? scriptMetadata;
     [AppliedWithChunk<Chunk03043044>]
@@ -273,22 +273,22 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk03043048>]
     public int? NbBakedBlocks => bakedBlocks?.Count;
 
-    private IList<CGameCtnBlock>? bakedBlocks;
+    private List<CGameCtnBlock>? bakedBlocks;
     [AppliedWithChunk<Chunk03043048>]
-    public IList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
+    public List<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
     [AppliedWithChunk<Chunk03043048>]
-    public IList<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
+    public List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
     [ZipData]
     [AppliedWithChunk<Chunk03043054>]
     public byte[]? EmbeddedZipData { get; set; }
 
     [AppliedWithChunk<Chunk03043054>]
-    private IList<string>? Textures { get; set; }
+    private List<string>? Textures { get; set; }
 
     [AppliedWithChunk<Chunk03043069>]
-    public IList<MacroblockInstance>? MacroblockInstances { get; set; }
+    public List<MacroblockInstance>? MacroblockInstances { get; set; }
 
     private bool hasCustomCamThumbnail;
     [AppliedWithChunk<Chunk03043027>]
@@ -343,7 +343,7 @@ public partial class CGameCtnChallenge :
     }
 
     // poss to generate
-    IList<CGameCtnBlock> IGameCtnChallenge.Blocks
+    List<CGameCtnBlock> IGameCtnChallenge.Blocks
     {
         get => Blocks ?? throw new MemberNullException(nameof(Blocks));
         set => Blocks = value;

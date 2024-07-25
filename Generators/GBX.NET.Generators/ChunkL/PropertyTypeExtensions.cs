@@ -145,7 +145,7 @@ internal static class PropertyTypeExtensions
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "string",
             "packdesc" or "fileref" => "PackDesc",
-            "list" => nameof(IList),
+            "list" => "List",
             "data" => "byte[]",
             "boolbyte" => "bool",
             "optimizedint" => "int",

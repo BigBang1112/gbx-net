@@ -3,9 +3,9 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTreeVisualMip
 {
-    private IList<Level> levels = new List<Level>();
+    private List<Level> levels = [];
     [AppliedWithChunk<Chunk09015002>]
-    public IList<Level> Levels { get => levels; set => levels = value; }
+    public List<Level> Levels { get => levels; set => levels = value; }
 
     public partial class Chunk09015002
     {

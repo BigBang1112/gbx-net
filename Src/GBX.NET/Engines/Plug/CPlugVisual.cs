@@ -10,7 +10,7 @@ public partial class CPlugVisual
 
     internal int Count { get; set; }
 
-    public IList<CPlugVertexStream> VertexStreams { get; set; } = [];
+    public List<CPlugVertexStream> VertexStreams { get; set; } = [];
     public TexCoordSet[] TexCoords { get; set; } = [];
     public BoxAligned BoundingBox { get; set; }
     public SSkinData? SkinData { get; set; }

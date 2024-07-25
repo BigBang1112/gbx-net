@@ -5,10 +5,10 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugCrystal
 {
-    private IList<Layer>? layers;
-    public IList<Layer> Layers
+    private List<Layer>? layers;
+    public List<Layer> Layers
     {
-        get => layers ??= new List<Layer>();
+        get => layers ??= [];
         set => layers = value;
     }
 
@@ -33,7 +33,7 @@ public partial class CPlugCrystal
         {
             Version = r.ReadInt32();
 
-            n.Layers = new List<Layer>()
+            n.Layers = new()
             {
                 new GeometryLayer()
                 {
