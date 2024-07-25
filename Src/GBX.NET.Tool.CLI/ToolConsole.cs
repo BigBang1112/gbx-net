@@ -36,7 +36,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         this.options = options ?? throw new ArgumentNullException(nameof(options));
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
-        settingsManager = new SettingsManager(runningDir);
+        settingsManager = new SettingsManager(runningDir, options.JsonContext, options.JsonOptions);
         argsResolver = new ArgsResolver(args, http);
     }
 
@@ -189,7 +189,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
                 logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, typeof(Config));
 
-                await settingsManager.PopulateConfigAsync(configName, configurable.Config, options.JsonSerializerContext, cancellationToken);
+                await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);
             }
 
             // Run all produce methods in parallel and run mutate methods in sequence

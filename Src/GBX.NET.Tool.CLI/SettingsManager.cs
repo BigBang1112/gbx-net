@@ -10,16 +10,15 @@ namespace GBX.NET.Tool.CLI;
 
 internal sealed class SettingsManager
 {
-    private static readonly JsonSerializerOptions jsonOptions = new()
-    {
-        WriteIndented = true
-    };
-
     private readonly string runningDir;
+    private readonly JsonSerializerContext? jsonContext;
+    private readonly JsonSerializerOptions jsonOptions;
 
-    public SettingsManager(string runningDir)
+    public SettingsManager(string runningDir, JsonSerializerContext? jsonContext, JsonSerializerOptions jsonOptions)
     {
         this.runningDir = runningDir;
+        this.jsonContext = jsonContext;
+        this.jsonOptions = jsonOptions;
     }
 
     public async Task<T> GetOrCreateFileAsync<T>(
@@ -78,7 +77,7 @@ internal sealed class SettingsManager
 
     [RequiresDynamicCode(DynamicCodeMessages.JsonSerializeMessage)]
     [RequiresUnreferencedCode(DynamicCodeMessages.JsonSerializeMessage)]
-    public async Task PopulateConfigAsync(string configName, Config config, JsonSerializerContext? context, CancellationToken cancellationToken)
+    public async Task PopulateConfigAsync(string configName, Config config, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(configName);
 
@@ -92,9 +91,9 @@ internal sealed class SettingsManager
         {
             await using var fs = new FileStream(mainConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
 
-            existingConfig = context is null
+            existingConfig = jsonContext is null
                 ? (Config?)await JsonSerializer.DeserializeAsync(fs, configType, jsonOptions, cancellationToken)
-                : (Config?)await JsonSerializer.DeserializeAsync(fs, configType, context, cancellationToken: cancellationToken);
+                : (Config?)await JsonSerializer.DeserializeAsync(fs, configType, jsonContext, cancellationToken: cancellationToken);
         }
         else
         {
@@ -118,9 +117,9 @@ internal sealed class SettingsManager
                 {
                     await using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
 
-                    var value = context is null
+                    var value = jsonContext is null
                         ? await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, jsonOptions, cancellationToken)
-                        : await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, context, cancellationToken: cancellationToken);
+                        : await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, jsonContext, cancellationToken: cancellationToken);
 
                     prop.SetValue(config, value);
                 }
@@ -129,13 +128,13 @@ internal sealed class SettingsManager
 
         await using var fsCreate = new FileStream(mainConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true);
 
-        if (context is null)
+        if (jsonContext is null)
         {
             await JsonSerializer.SerializeAsync(fsCreate, config, configType, jsonOptions, cancellationToken);
         }
         else
         {
-            await JsonSerializer.SerializeAsync(fsCreate, config, configType, context, cancellationToken);
+            await JsonSerializer.SerializeAsync(fsCreate, config, configType, jsonContext, cancellationToken);
         }
     }
 }
