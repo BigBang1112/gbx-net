@@ -187,7 +187,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
                     : toolSettings.ConsoleSettings.ConfigName;
 
-                logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, typeof(Config));
+                logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, configurable.Config.GetType());
 
                 await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);
             }
