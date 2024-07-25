@@ -11,4 +11,5 @@ public sealed record ConsoleSettings
     public string? OutputDirPath { get; set; }
     public string? ConfigName { get; set; }
     public LogLevel LogLevel { get; set; } = LogLevel.Information;
+    public bool HidePath { get; set; }
 }

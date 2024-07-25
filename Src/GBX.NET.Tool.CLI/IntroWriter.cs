@@ -6,7 +6,7 @@ namespace GBX.NET.Tool.CLI;
 
 internal static class IntroWriter<T> where T : ITool
 {
-    public static async Task WriteIntroAsync(string[] args)
+    public static async Task WriteIntroAsync(string[] args, ToolSettings toolSettings)
     {
         var assembly = typeof(T).Assembly;
         var assemblyName = assembly.GetName();
@@ -85,10 +85,19 @@ internal static class IntroWriter<T> where T : ITool
         }
 
         AnsiConsole.MarkupInterpolated($"[grey]Current Directory:[/] ");
-        AnsiConsole.Write(new TextPath(Environment.CurrentDirectory)
-            .RootColor(Spectre.Console.Color.Red)
-            .StemColor(Spectre.Console.Color.Yellow)
-            .LeafColor(Spectre.Console.Color.Yellow));
+
+        if (toolSettings.ConsoleSettings.HidePath)
+        {
+            AnsiConsole.Write("(hidden)");
+        }
+        else
+        {
+            AnsiConsole.Write(new TextPath(Environment.CurrentDirectory)
+                .RootColor(Spectre.Console.Color.Red)
+                .StemColor(Spectre.Console.Color.Yellow)
+                .LeafColor(Spectre.Console.Color.Yellow));
+        }
+
         AnsiConsole.WriteLine();
 
         AnsiConsole.MarkupLineInterpolated($"[grey]Privileged:[/] [yellow]{Environment.IsPrivilegedProcess}[/]");

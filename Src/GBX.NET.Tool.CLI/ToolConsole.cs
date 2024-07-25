@@ -119,7 +119,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         if (!toolSettings.ConsoleSettings.SkipIntro)
         {
-            introWriterTask = IntroWriter<T>.WriteIntroAsync(args);
+            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
         }
 
         logger.LogTrace("Checking for updates...");

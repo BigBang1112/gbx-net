@@ -1,22 +1,31 @@
-﻿namespace GBX.NET.Tool.CLI;
+﻿using Microsoft.Extensions.Logging;
+
+namespace GBX.NET.Tool.CLI;
 
 internal sealed class OutputDistributor
 {
-    private readonly string runningDir;
     private readonly ToolSettings toolSettings;
-    private readonly SpectreConsoleLogger logger;
+    private readonly ILogger logger;
 
     private readonly string outputDir;
 
-    public OutputDistributor(string runningDir, ToolSettings toolSettings, SpectreConsoleLogger logger)
+    public OutputDistributor(string runningDir, ToolSettings toolSettings, ILogger logger)
     {
-        this.runningDir = runningDir;
         this.toolSettings = toolSettings;
         this.logger = logger;
 
         outputDir = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.OutputDirPath)
             ? Path.Combine(runningDir, "Output")
             : toolSettings.ConsoleSettings.OutputDirPath;
+
+        if (toolSettings.ConsoleSettings.HidePath)
+        {
+            logger.LogDebug("Output directory: {OutputDir}", outputDir);
+        }
+        else
+        {
+            logger.LogInformation("Output directory: {OutputDir}", outputDir);
+        }
     }
 
     public async Task DistributeOutputsAsync(IEnumerable<object> outputs, CancellationToken cancellationToken)
@@ -44,6 +53,8 @@ internal sealed class OutputDistributor
                     filePath = Path.GetFileName(filePath);
                 }
 
+                logger.LogInformation("Saving Gbx ({FilePath})...", filePath);
+
                 var finalPath = Path.Combine(outputDir, filePath);
                 var dirPath = Path.GetDirectoryName(finalPath);
 
@@ -56,6 +67,8 @@ internal sealed class OutputDistributor
                 {
                     gbx.Save(fs);
                 }
+
+                logger.LogInformation("Gbx ({FilePath}) saved.", filePath);
 
                 break;
             default:
