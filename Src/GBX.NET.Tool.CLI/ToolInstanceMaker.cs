@@ -60,6 +60,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 throw new ConsoleProblemException("Invalid files passed to the tool.");
             }
 
+            logger.LogInformation("Constructor {Constructor} will be used.", pickedCtor);
             logger.LogInformation("Creating new tool instance...");
 
             // Instantiate the tool
