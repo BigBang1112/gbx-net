@@ -4,9 +4,14 @@ namespace GBX.NET.LZO;
 
 public sealed class Lzo : ILzo
 {
+    private static readonly object PadLock = new();
+
     public byte[] Compress(byte[] data)
     {
-        return SharpLzo.Lzo.Compress(SharpLzo.CompressionMode.Lzo1x_999, data);
+        lock (PadLock)
+        {
+            return SharpLzo.Lzo.Compress(SharpLzo.CompressionMode.Lzo1x_999, data);
+        }
     }
 
     public void Decompress(in Span<byte> input, byte[] output)
