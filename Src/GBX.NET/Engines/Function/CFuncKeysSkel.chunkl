@@ -4,4 +4,8 @@ CFuncKeysSkel 0x05006000
 0x000
  CFuncSkel Skel
 
-0x001 (ignore)
+0x001
+
+archive Loc
+ quat
+ vec3
