@@ -14,7 +14,14 @@ public interface IGbx
     string? FilePath { get; set; }
     GbxHeader Header { get; }
     GbxRefTable? RefTable { get; }
+    GbxBody Body { get; }
+    GbxReadSettings ReadSettings { get; }
     CMwNod? Node { get; }
+    int? IdVersion { get; set; }
+    byte? PackDescVersion { get; set; }
+    int? DeprecVersion { get; set; }
+    ClassIdRemapMode ClassIdRemapMode { get; set; }
+    GbxCompression BodyCompression { get; set; }
 
     void Save(Stream stream, GbxWriteSettings settings = default);
     void Save(string filePath, GbxWriteSettings settings = default);
