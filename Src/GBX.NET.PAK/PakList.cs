@@ -83,13 +83,13 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         return new PakList(version, crc32, salt, signature, packs);
     }
 
-    public static async Task<PakList> ParseAsync(string filePath)
+    public static async Task<PakList> ParseAsync(string filePath, CancellationToken cancellationToken = default)
     {
 #if !NETSTANDARD2_0
         await
 #endif
-        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
-        return await ParseAsync(fs);
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
+        return await ParseAsync(fs, cancellationToken);
     }
 
     public static PakList Parse(string filePath)
