@@ -197,7 +197,7 @@ public partial class CPlugVertexStream
                 rw.UInt16(ref offset);
                 if (((ushort)(Flags2 >> 2) & 0x3FF) != Offset)
                 {
-                    throw new("");
+                    throw new Exception("Offset mismatch");
                 }
             }
         }

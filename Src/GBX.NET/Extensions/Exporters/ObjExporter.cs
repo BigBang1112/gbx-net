@@ -315,4 +315,148 @@ internal static class ObjExporter
             objWriter.WriteLine();
         }
     }
+
+    public static void Export(CPlugSolid2Model solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
+    {
+        objWriter.WriteLine("# GBX.NET 2 - CPlugSolid2Model - OBJ Exporter (.obj)");
+        objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        objWriter.WriteLine();
+
+        mtlWriter.WriteLine("# GBX.NET 2 - CPlugSolid2Model - OBJ Exporter (.mtl)");
+        mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        mtlWriter.WriteLine();
+
+        var materials = new HashSet<string>();
+
+        var positionsDict = mergeVerticesDigitThreshold.HasValue
+            ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
+
+        if (solid.Visuals is null || solid.Visuals.Length == 0)
+        {
+            throw new Exception("CPlugSolid2Model has no Visuals.");
+        }
+
+        if (solid.CustomMaterials is null || solid.CustomMaterials.Length == 0)
+        {
+            throw new Exception("CPlugSolid2Model with no CustomMaterials is not supported.");
+        }
+
+        foreach (var geom in solid.ShadedGeoms ?? [])
+        {
+            if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
+
+            if (!materials.Contains(materialName))
+            {
+                mtlWriter.WriteLine("newmtl {0}", materialName);
+                mtlWriter.WriteLine("Ns 250.000000"); // Specular exponent
+                mtlWriter.WriteLine("Ka 1.0000 1.0000 1.0000"); // Ambient color
+                mtlWriter.WriteLine("Kd 1.0000 1.0000 1.0000"); // Diffuse color
+                mtlWriter.WriteLine("Ks 0.5000 0.5000 0.5000"); // Specular color
+                mtlWriter.WriteLine("Ke 0.0000 0.0000 0.0000");
+                mtlWriter.WriteLine("Ni 1.4500"); // Optical density
+                mtlWriter.WriteLine("d 1.0000"); // Dissolve
+                mtlWriter.WriteLine("illum 2"); // Illumination model
+
+                mtlWriter.WriteLine();
+
+                materials.Add(materialName);
+            }
+
+            foreach (var pos in visual.VertexStreams
+                .SelectMany(x => x.Positions ?? [])
+                .Concat(visual.Vertices.Select(x => x.Position)))
+            {
+                if (positionsDict.ContainsKey(pos))
+                {
+                    continue;
+                }
+
+                objWriter.WriteLine("v {0} {1} {2}",
+                    pos.X.ToString(Invariant),
+                    pos.Y.ToString(Invariant),
+                    pos.Z.ToString(Invariant));
+
+                positionsDict.Add(pos, positionsDict.Count);
+            }
+        }
+
+        var uvs = new Dictionary<Vec2, int>();
+
+        foreach (var geom in solid.ShadedGeoms ?? [])
+        {
+            if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            if (visual.TexCoords.Length == 0)
+            {
+                continue;
+            }
+
+            foreach (var uv in visual.TexCoords[0].TexCoords.Select(x => x.UV))
+            {
+                if (uvs.ContainsKey(uv))
+                {
+                    continue;
+                }
+
+                objWriter.WriteLine("vt {0} {1}",
+                    uv.X.ToString(Invariant),
+                    uv.Y.ToString(Invariant));
+
+                uvs.Add(uv, uvs.Count);
+            }
+        }
+
+        foreach (var geom in solid.ShadedGeoms ?? [])
+        {
+            if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            
+            if (visual.IndexBuffer is null)
+            {
+                continue;
+            }
+
+            if (visual.TexCoords.Length == 0)
+            {
+                continue;
+            }
+
+            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
+
+            objWriter.WriteLine("g {0}", materialName);
+            objWriter.WriteLine("usemtl {0}", materialName);
+
+            var triangleCounter = 0;
+
+            foreach (var index in visual.IndexBuffer.Indices)
+            {
+                objWriter.Write('f');
+
+                var v = visual.Vertices[index];
+                var uvIndex = uvs[visual.TexCoords[0].TexCoords[index].UV];
+
+                var faceIndex = $" {positionsDict[v.Position] + 1}/{uvIndex + 1}";
+
+                objWriter.Write(faceIndex);
+
+                if (++triangleCounter % 3 == 0)
+                {
+                    objWriter.WriteLine();
+                }
+            }
+
+            objWriter.WriteLine();
+        }
+    }
 }
