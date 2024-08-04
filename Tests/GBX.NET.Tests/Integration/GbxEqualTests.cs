@@ -47,6 +47,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -110,6 +111,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -177,6 +179,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -239,6 +242,7 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
     [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
@@ -312,6 +316,7 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     public void TestGbxEqualDataExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualDataExplicit<CGameItemModel>(filePath);
@@ -426,6 +431,7 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     public void TestGbxEqualObjectsExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameItemModel>(filePath);
@@ -540,6 +546,7 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     public async Task TestGbxEqualDataExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CGameItemModel>(filePath);
@@ -654,6 +661,7 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
     public async Task TestGbxEqualObjectsExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameItemModel>(filePath);
