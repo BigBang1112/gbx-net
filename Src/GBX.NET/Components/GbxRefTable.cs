@@ -23,19 +23,20 @@ public sealed class GbxRefTable
     /// </summary>
     public string? FileSystemPath { get; init; }
 
-    private string GetFilePath(GbxRefTableFile file)
+    private string GetFilePath(string filePath)
     {
         var ancestor = string.Concat(Enumerable.Repeat(".." + Path.DirectorySeparatorChar, AncestorLevel));
         
         return string.IsNullOrEmpty(FileSystemPath)
-            ? Path.Combine(ancestor, file.FilePath)
-            : Path.Combine(FileSystemPath, ancestor, file.FilePath);
+            ? Path.Combine(ancestor, filePath)
+            : Path.Combine(FileSystemPath, ancestor, filePath);
     }
 
-    public string GetFullFilePath(GbxRefTableFile file)
-    {
-        return Path.GetFullPath(GetFilePath(file));
-    }
+    private string GetFilePath(GbxRefTableFile file) => GetFilePath(file.FilePath);
+    private string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath(file.FilePath);
+
+    public string GetFullFilePath(GbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
+    public string GetFullFilePath(UnlinkedGbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
 
     public CMwNod? LoadNode(GbxRefTableFile file, GbxReadSettings settings = default, bool exceptions = false)
     {
