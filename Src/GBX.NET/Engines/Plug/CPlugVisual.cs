@@ -423,9 +423,12 @@ public partial class CPlugVisual
 
             var texCoords = new TexCoord[expectedCount];
 
-            for (var i = 0; i < expectedCount; i++)
+            using (var _ = r.ForceBinary())
             {
-                texCoords[i] = TexCoord.Read(r, version);
+                for (var i = 0; i < expectedCount; i++)
+                {
+                    texCoords[i] = TexCoord.Read(r, version);
+                }
             }
 
             var u01 = default(float[]);

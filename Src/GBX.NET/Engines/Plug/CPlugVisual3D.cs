@@ -12,15 +12,18 @@ public partial class CPlugVisual3D
         {
             n.Vertices = new Vertex[n.Count];
 
-            for (int i = 0; i < n.Count; i++)
+            using (var _ = r.ForceBinary())
             {
-                n.Vertices[i] = new Vertex
+                for (int i = 0; i < n.Count; i++)
                 {
-                    Position = r.ReadVec3(),
-                    Normal = r.ReadVec3(),
-                    U02 = r.ReadVec3(),
-                    U03 = r.ReadSingle()
-                };
+                    n.Vertices[i] = new Vertex
+                    {
+                        Position = r.ReadVec3(),
+                        Normal = r.ReadVec3(),
+                        U02 = r.ReadVec3(),
+                        U03 = r.ReadSingle()
+                    };
+                }
             }
 
             n.Tangents = r.ReadArray<Vec3>();
