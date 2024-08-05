@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Text;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -41,7 +42,23 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                if (r.ReadHexUInt32() != SKIP)
+                // Text format skippable chunk
+                if (chunk is null && r.Format == GbxFormat.Text)
+                {
+                    var skippableBuffer = Encoding.ASCII.GetString(r.ReadBytes(12));
+
+                    if (skippableBuffer != "1397442896\r\n")
+                    {
+                        if (chunk is not null)
+                        {
+                            return;
+                        }
+
+                        throw new ChunkReadException(chunkId, prevChunkId, known: false);
+                    }
+                }
+                // Binary format skippable chunk
+                else if (r.ReadUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -326,7 +343,23 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                if (r.ReadHexUInt32() != SKIP)
+                // Text format skippable chunk
+                if (chunk is null && r.Format == GbxFormat.Text)
+                {
+                    var skippableBuffer = Encoding.ASCII.GetString(r.ReadBytes(12));
+
+                    if (skippableBuffer != "1397442896\r\n")
+                    {
+                        if (chunk is not null)
+                        {
+                            return;
+                        }
+
+                        throw new ChunkReadException(chunkId, prevChunkId, known: false);
+                    }
+                }
+                // Binary format skippable chunk
+                else if (r.ReadUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
