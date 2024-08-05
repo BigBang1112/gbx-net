@@ -9,7 +9,7 @@ public partial class CPlugTree
     [AppliedWithChunk<Chunk0904F018>]
     [AppliedWithChunk<Chunk0904F019>]
     [AppliedWithChunk<Chunk0904F01A>]
-    public int Flags { get; set; }
+    public ulong Flags { get; set; }
 
     [AppliedWithChunk<Chunk0904F015>]
     [AppliedWithChunk<Chunk0904F018>]
@@ -149,6 +149,19 @@ public partial class CPlugTree
             }
 
             w.WriteIdAsString(U01);
+        }
+    }
+
+    public partial class Chunk0904F015
+    {
+        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
+        {
+            n.Flags = rw.DataUInt32((uint)n.Flags);
+
+            if ((n.Flags & 4) != 0)
+            {
+                n.Location = rw.Iso4(n.Location);
+            }
         }
     }
 }
