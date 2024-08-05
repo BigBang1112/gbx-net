@@ -34,7 +34,10 @@ public partial interface IGbxWriter : IDisposable
     void WriteFormat(GbxFormat format);
     void WriteHexInt32(int value);
     void WriteHexUInt32(uint value);
+    void WriteDataInt32(int value);
     void WriteDataUInt32(uint value);
+    void WriteDataInt64(long value);
+    void WriteDataUInt64(ulong value);
     void Write(bool value);
     void Write(bool value, bool asByte);
     void Write(string? value);
@@ -382,7 +385,43 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    public void WriteDataInt32(int value)
+    {
+        switch (Mode)
+        {
+            case SerializationMode.Gbx:
+                Write(value);
+                break;
+            default:
+                throw new SerializationModeNotSupportedException(Mode);
+        }
+    }
+
     public void WriteDataUInt32(uint value)
+    {
+        switch (Mode)
+        {
+            case SerializationMode.Gbx:
+                Write(value);
+                break;
+            default:
+                throw new SerializationModeNotSupportedException(Mode);
+        }
+    }
+
+    public void WriteDataInt64(long value)
+    {
+        switch (Mode)
+        {
+            case SerializationMode.Gbx:
+                Write(value);
+                break;
+            default:
+                throw new SerializationModeNotSupportedException(Mode);
+        }
+    }
+
+    public void WriteDataUInt64(ulong value)
     {
         switch (Mode)
         {

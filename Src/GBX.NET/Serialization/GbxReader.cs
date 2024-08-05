@@ -32,7 +32,10 @@ public partial interface IGbxReader : IDisposable
 
     int ReadHexInt32();
     uint ReadHexUInt32();
+    int ReadDataInt32();
     uint ReadDataUInt32();
+    long ReadDataInt64();
+    ulong ReadDataUInt64();
     BigInteger ReadBigInt(int byteLength);
     Int128 ReadInt128();
     UInt128 ReadUInt128();
@@ -284,9 +287,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt16(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt16(),
+                GbxFormat.Text => GbxText(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
+
+        short GbxText()
+        {
+            var value = ReadToCRLF();
+            return value == "4294967295" ? (short)-1 : short.Parse(value);
+        }
     }
 
     public override int ReadInt32()
@@ -359,6 +373,22 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         };
     }
 
+    public int ReadDataInt32()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(int));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadInt32(),
+                GbxFormat.Text => base.ReadInt32(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
     public uint ReadDataUInt32()
     {
         limiter?.ThrowIfLimitExceeded(sizeof(uint));
@@ -369,6 +399,38 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             {
                 GbxFormat.Binary => ReadUInt32(),
                 GbxFormat.Text => base.ReadUInt32(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public long ReadDataInt64()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(long));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadInt64(),
+                GbxFormat.Text => base.ReadInt64(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public ulong ReadDataUInt64()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(ulong));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadUInt64(),
+                GbxFormat.Text => base.ReadUInt64(),
                 _ => throw new FormatNotSupportedException(Format)
             },
             _ => throw new SerializationModeNotSupportedException(Mode),
@@ -403,7 +465,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadSingle(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadSingle(),
+                GbxFormat.Text => float.Parse(ReadToCRLF(), System.Globalization.CultureInfo.InvariantCulture),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -1884,7 +1951,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var sb = new StringBuilder();
 
-        while (true)
+        for (var i = 0; i < 255; i++)
         {
             var b = base.ReadByte();
 
@@ -1895,13 +1962,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                     throw new Exception("Invalid string format.");
                 }
 
-                break;
+                return sb.ToString();
             }
 
             sb.Append((char)b);
         }
 
-        return sb.ToString();
+        throw new Exception("String is too long.");
     }
 
     protected override void Dispose(bool disposing)
@@ -1937,5 +2004,25 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
         limiter.Unlimit();
+    }
+
+    internal BinaryScope ForceBinary() => new(this);
+
+    internal readonly struct BinaryScope : IDisposable
+    {
+        private readonly GbxReader reader;
+        private readonly GbxFormat format;
+
+        public BinaryScope(GbxReader reader)
+        {
+            this.reader = reader;
+            format = reader.Format;
+            reader.Format = GbxFormat.Binary;
+        }
+
+        public void Dispose()
+        {
+            reader.Format = format;
+        }
     }
 }
