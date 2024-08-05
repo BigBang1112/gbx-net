@@ -32,6 +32,7 @@ public partial interface IGbxReader : IDisposable
 
     int ReadHexInt32();
     uint ReadHexUInt32();
+    uint ReadDataUInt32();
     BigInteger ReadBigInt(int byteLength);
     Int128 ReadInt128();
     UInt128 ReadUInt128();
@@ -352,6 +353,22 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             {
                 GbxFormat.Binary => base.ReadUInt32(),
                 GbxFormat.Text => uint.Parse(ReadToCRLF(), System.Globalization.NumberStyles.HexNumber),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public uint ReadDataUInt32()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(uint));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadUInt32(),
+                GbxFormat.Text => base.ReadUInt32(),
                 _ => throw new FormatNotSupportedException(Format)
             },
             _ => throw new SerializationModeNotSupportedException(Mode),
