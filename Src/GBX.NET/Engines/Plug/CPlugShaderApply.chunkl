@@ -7,6 +7,15 @@ CPlugShaderApply 0x09026000
  CPlugBitmapAddress[] BitmapAddresses
  int
 
+0x09063002 (not-remapped)
+ dataint
+ int
+ CPlugBitmapAddress
+ CPlugBitmapAddress
+ CPlugBitmapAddress
+ CPlugBitmapAddress
+ CPlugBitmapAddress
+
 0x002
  CPlugBitmapAddress[] BitmapAddresses
 
