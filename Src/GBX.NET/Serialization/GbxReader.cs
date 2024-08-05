@@ -294,9 +294,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt32(),
+                GbxFormat.Text => GbxText(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
+
+        int GbxText()
+        {
+            var value = ReadToCRLF();
+            return value == "4294967295" ? -1 : int.Parse(value);
+        }
     }
 
     public int ReadHexInt32()
@@ -305,7 +316,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt32(),
+                GbxFormat.Text => int.Parse(ReadToCRLF(), System.Globalization.NumberStyles.HexNumber),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -316,7 +332,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadUInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadUInt32(),
+                GbxFormat.Text => uint.Parse(ReadToCRLF()),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -327,7 +348,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadUInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadUInt32(),
+                GbxFormat.Text => uint.Parse(ReadToCRLF(), System.Globalization.NumberStyles.HexNumber),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -620,19 +646,27 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         limiter?.ThrowIfLimitExceeded(4);
 
-        switch (Mode)
+        return Mode switch
         {
-            case SerializationMode.Gbx:
-                var booleanAsInt = base.ReadUInt32();
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => GbxBinary(),
+                GbxFormat.Text => bool.Parse(ReadToCRLF()),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+        
+        bool GbxBinary()
+        {
+            var booleanAsInt = base.ReadUInt32();
 
-                if (Gbx.StrictBooleans && booleanAsInt > 1)
-                {
-                    throw new BooleanOutOfRangeException(booleanAsInt);
-                }
+            if (Gbx.StrictBooleans && booleanAsInt > 1)
+            {
+                throw new BooleanOutOfRangeException(booleanAsInt);
+            }
 
-                return booleanAsInt != 0;
-            default:
-                throw new SerializationModeNotSupportedException(Mode);
+            return booleanAsInt != 0;
         }
     }
 
@@ -655,14 +689,18 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public override string ReadString()
     {
-        switch (Mode)
+        limiter?.ThrowIfLimitExceeded(sizeof(int));
+
+        return Mode switch
         {
-            case SerializationMode.Gbx:
-                limiter?.ThrowIfLimitExceeded(sizeof(int));
-                return ReadString(base.ReadInt32());
-            default:
-                throw new SerializationModeNotSupportedException(Mode);
-        }
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadString(base.ReadInt32()),
+                GbxFormat.Text => ReadToCRLF(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
     }
 
     public string ReadString(StringLengthPrefix readPrefix)
@@ -836,26 +874,30 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private uint ReadIdIndex()
     {
-        return Mode switch
+        switch (Mode)
         {
-            SerializationMode.Gbx => Format switch
-            {
-                GbxFormat.Binary => GbxBinary(),
-                _ => throw new Exception(),
-            },
-            _ => throw new SerializationModeNotSupportedException(Mode),
-        };
+            case SerializationMode.Gbx:
+                IdVersion ??= ReadInt32();
 
-        uint GbxBinary()
-        {
-            IdVersion ??= ReadInt32();
+                if (IdVersion.Value < 3)
+                {
+                    throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
+                }
 
-            if (IdVersion.Value < 3)
-            {
-                throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
-            }
-
-            return ReadUInt32();
+                switch (Format)
+                {
+                    case GbxFormat.Binary:
+                        return ReadHexUInt32();
+                    case GbxFormat.Text:
+                        var value = ReadToCRLF();
+                        return value == "4294967295"
+                            ? uint.MaxValue
+                            : uint.Parse(value, System.Globalization.NumberStyles.HexNumber);
+                    default:
+                        throw new FormatNotSupportedException(Format);
+                }
+            default:
+                throw new SerializationModeNotSupportedException(Mode);
         }
     }
 
@@ -957,7 +999,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         file = null;
 
-        var rawClassId = ReadUInt32();
+        var rawClassId = ReadHexUInt32();
 
         if (encapsulation is not null && rawClassId == uint.MaxValue)
         {
