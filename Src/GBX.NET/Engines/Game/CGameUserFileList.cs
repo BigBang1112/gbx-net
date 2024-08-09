@@ -20,7 +20,7 @@ public partial class CGameUserFileList
         public string? GhostKind { get => ghostKind; set => ghostKind = value; }
         public FileType Type { get => type; set => type = value; }
 
-        public void ReadWrite(GbxReaderWriter rw)
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.String(ref name!);
             rw.Byte(0);

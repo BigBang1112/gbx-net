@@ -2,7 +2,7 @@ CGameUserFileList 0x031B7000
 
 0x000
  version
- FileInfo[] Files
+ FileInfo[] Files (version: Version)
 
 archive FileInfo
 
