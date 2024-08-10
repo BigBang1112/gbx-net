@@ -193,4 +193,12 @@ public partial class CGameCtnGhost
             rw.UInt256(ref U01);
         }
     }
+
+    public partial class Checkpoint
+    {
+        public override string ToString()
+        {
+            return $"{Time.ToTmString()} ({(Speed.HasValue ? $"{Speed}km/h, " : "")}{StuntsScore} pts.)";
+        }
+    }
 }
