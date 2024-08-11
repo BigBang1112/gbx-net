@@ -1,0 +1,11 @@
+CGameUserFileList 0x031B7000
+
+0x000
+ version
+ FileInfo[] Files (version: Version)
+
+archive FileInfo
+
+enum FileType
+ Map
+ Ghost
