@@ -71,6 +71,7 @@ jobs:
         - GBX.NET.NewtonsoftJson
         - GBX.NET.Tool
         - GBX.NET.Tool.CLI
+        - GBX.NET.Crypto
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest
