@@ -10,6 +10,8 @@ public partial class CGameCtnMediaBlockCameraCustom
         private Vec3? targetPosition;
         private float? nearZ;
 
+        public int? U01;
+
         public Vec3 Position { get => position; set => position = value; }
 
         /// <summary>
@@ -31,6 +33,12 @@ public partial class CGameCtnMediaBlockCameraCustom
             }
 
             rw.Vec3(ref pitchYawRoll);
+
+            if (version >= 10)
+            {
+                rw.Int32(ref U01);
+            }
+
             rw.Single(ref fov);
             rw.Vec3(ref targetPosition);
 

@@ -26,6 +26,7 @@ public partial class CGameCtnMediaBlockCameraCustom
         public Quat? U06;
         public int? U07;
         public int? U08;
+        public int? U09;
 
         public Interpolation Interpolation { get => interpolation; set => interpolation = value; }
         public Vec3 Position { get => position; set => position = value; }
@@ -129,7 +130,12 @@ public partial class CGameCtnMediaBlockCameraCustom
 
             if (version >= 10)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                rw.Int32(ref U09);
+
+                if (version >= 11)
+                {
+                    throw new ChunkVersionNotSupportedException(version);
+                }
             }
         }
     }
