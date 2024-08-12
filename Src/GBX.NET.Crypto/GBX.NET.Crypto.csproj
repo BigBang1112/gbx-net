@@ -58,6 +58,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\GBX.NET.Hashing\GBX.NET.Hashing.csproj" />
         <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>
 
