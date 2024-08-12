@@ -27,8 +27,8 @@ public partial class CGameCtnGhost
     private string? validate_RaceSettings;
     public string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
 
-    private ImmutableArray<IInput> inputs;
-    public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
+    private ImmutableList<IInput>? inputs;
+    public ImmutableList<IInput>? Inputs { get => inputs; set => inputs = value; }
 
     private bool steeringWheelSensitivity;
     public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
@@ -94,7 +94,7 @@ public partial class CGameCtnGhost
             var numEntries = r.ReadInt32();
             U02 = r.ReadInt32(); // CountLimit?
 
-            var inputs = ImmutableArray.CreateBuilder<IInput>(numEntries);
+            var inputs = ImmutableList.CreateBuilder<IInput>();
 
             for (var i = 0; i < numEntries; i++)
             {
@@ -112,15 +112,20 @@ public partial class CGameCtnGhost
 
         private void WriteInputs(CGameCtnGhost n, GbxWriter w)
         {
-            var inputNames = n.inputs
+            var inputNames = n.inputs?
                 .Select(NET.Inputs.Input.GetName)
                 .Distinct()
-                .ToImmutableList();
+                .ToImmutableList() ?? ImmutableList<string>.Empty;
 
             w.WriteListId(inputNames);
 
-            w.Write(n.inputs.Length);
+            w.Write(n.inputs?.Count ?? 0);
             w.Write(U02);
+
+            if (n.inputs is null)
+            {
+                return;
+            }
 
             foreach (var input in n.inputs)
             {
