@@ -13,7 +13,7 @@ CGameCtnCollection 0x03033000
   v2+
    int SortIndex
    v3+
-    id DefaultZone
+    id DefaultZoneId
     v4+
      ident Vehicle
      v5+
