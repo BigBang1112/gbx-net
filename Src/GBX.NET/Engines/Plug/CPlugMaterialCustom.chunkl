@@ -1,2 +1,36 @@
 CPlugMaterialCustom 0x0903A000
 - inherits: CPlug
+
+0x004
+ int[]
+
+0x006
+ Bitmap[] Textures
+
+0x00A
+ GpuFx[] GpuFxs1
+ GpuFx[] GpuFxs2
+
+0x00C
+ BitmapSkip[] SkipSamplers
+
+0x00D
+ ulong U01
+ ulong U02
+ if (U01 & 1) != 0 // SPlugVisibleFilter
+  short U03
+  short U04
+
+archive Bitmap
+ id
+ int
+ int
+ v1+
+  int
+  int
+
+archive GpuFx
+
+archive BitmapSkip
+ id Name
+ bool
