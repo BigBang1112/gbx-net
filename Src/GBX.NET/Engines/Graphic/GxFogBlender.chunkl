@@ -1,0 +1,10 @@
+GxFogBlender 0x04008000
+
+0x000
+ bool
+ int
+ list<Key> Keys
+
+archive Key
+ timefloat Time
+ GxFog Fog
