@@ -10,11 +10,6 @@ CPlugSurface 0x0900C000
 0x003 [TMT.v2, MP4.v2]
 
 archive SurfMaterial
- bool IsMaterial
- if IsMaterial
-  CPlugMaterial Material (external)
- if !IsMaterial
-  short SurfaceId
 
 archive Sphere
  float Size

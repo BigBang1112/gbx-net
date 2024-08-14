@@ -129,6 +129,14 @@ public partial class CPlugSurface
 
     public sealed partial class SurfMaterial
     {
+        private CPlugMaterial? material;
+        public CPlugMaterial? Material { get => materialFile?.GetNode(ref material) ?? material; set => material = value; }
+        private Components.GbxRefTableFile? materialFile;
+        public Components.GbxRefTableFile? MaterialFile { get => materialFile; set => materialFile = value; }
+        public CPlugMaterial? GetMaterial(GbxReadSettings settings = default, bool exceptions = false) => materialFile?.GetNode(ref material, settings, exceptions) ?? material;
+
+        public MaterialId? SurfaceId { get; set; }
+
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
             if (rw.Boolean(material is not null || materialFile is not null))
@@ -137,7 +145,7 @@ public partial class CPlugSurface
             }
             else
             {
-                rw.Int16(ref surfaceId);
+                SurfaceId = (MaterialId)rw.Int16((short)SurfaceId.GetValueOrDefault());
             }
         }
     }
