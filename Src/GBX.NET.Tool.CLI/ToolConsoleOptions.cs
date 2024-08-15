@@ -11,4 +11,7 @@ public sealed record ToolConsoleOptions
     {
         WriteIndented = true
     };
+
+    public YamlDotNet.Serialization.IDeserializer? YmlDeserializer { get; init; }
+    public YamlDotNet.Serialization.ISerializer? YmlSerializer { get; init; }
 }
