@@ -336,11 +336,6 @@ internal static class ObjExporter
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
 
-        if (solid.CustomMaterials is null || solid.CustomMaterials.Length == 0)
-        {
-            throw new Exception("CPlugSolid2Model with no CustomMaterials is not supported.");
-        }
-
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
@@ -348,7 +343,7 @@ internal static class ObjExporter
                 continue;
             }
 
-            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
+            var materialName = GetMaterialName(solid, geom.MaterialIndex);
 
             if (!materials.Contains(materialName))
             {
@@ -432,8 +427,8 @@ internal static class ObjExporter
                 continue;
             }
 
-            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
-
+            var materialName = GetMaterialName(solid, geom.MaterialIndex);
+            
             objWriter.WriteLine("g {0}", materialName);
             objWriter.WriteLine("usemtl {0}", materialName);
 
@@ -458,5 +453,20 @@ internal static class ObjExporter
 
             objWriter.WriteLine();
         }
+    }
+
+    private static string GetMaterialName(CPlugSolid2Model solid, int materialIndex)
+    {
+        if (solid.CustomMaterials is { Length: > 0 } customMaterials)
+        {
+            return customMaterials[materialIndex].MaterialUserInst?.Link ?? "Unknown";
+        }
+        
+        if (solid.Materials is { Length: > 0 } materialsArray)
+        {
+            return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
+        }
+
+        return "Unknown";
     }
 }

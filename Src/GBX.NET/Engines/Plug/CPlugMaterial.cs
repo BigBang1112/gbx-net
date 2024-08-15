@@ -13,6 +13,7 @@ public partial class CPlugMaterial
     [AppliedWithChunk<Chunk0907900D>]
     public DeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
+    [AppliedWithChunk<Chunk0907900E>]
     public CPlugSurface.MaterialId SurfaceId { get; set; }
 
     public partial class Chunk0907900D
