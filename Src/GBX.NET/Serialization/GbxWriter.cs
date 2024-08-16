@@ -878,7 +878,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
                 Write(value);
                 break;
             case >= byte.MaxValue:
-                Write((uint)value);
+                Write((ushort)value);
                 break;
             default:
                 Write((byte)value);

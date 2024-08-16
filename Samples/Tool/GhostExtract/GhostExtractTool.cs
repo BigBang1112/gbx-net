@@ -34,11 +34,13 @@ public class GhostExtractTool : ITool, IProductive<IEnumerable<Gbx<CGameCtnGhost
         {
             logger.LogInformation("Extracting ghost {GhostIndex} from {FileName}...", i + 1, fileName);
 
+            var ghostFileName = GbxPath.GetValidFileName($"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Ghost.Gbx");
+
             return new Gbx<CGameCtnGhost>(ghost, gbx.Header.Basic)
             {
                 FilePath = ghost.CanBeGameVersion(GameVersion.MP3)
-                    ? Path.Combine("Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Ghost.Gbx")
-                    : Path.Combine("Tracks", "Replays", "GbxTools", "GhostExtract", $"{GbxPath.GetFileNameWithoutExtension(fileName ?? "Ghost")}_{i + 1:00}.Ghost.Gbx"),
+                    ? Path.Combine("Replays", "GbxTools", "GhostExtract", ghostFileName)
+                    : Path.Combine("Tracks", "Replays", "GbxTools", "GhostExtract", ghostFileName),
                 ClassIdRemapMode = gbx.ClassIdRemapMode,
                 PackDescVersion = gbx.PackDescVersion,
             };

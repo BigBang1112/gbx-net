@@ -10,16 +10,24 @@ namespace GBX.NET.Tool.CLI;
 
 internal sealed class SettingsManager
 {
-    private static readonly JsonSerializerOptions jsonOptions = new()
-    {
-        WriteIndented = true
-    };
-
     private readonly string runningDir;
+    private readonly JsonSerializerContext? jsonContext;
+    private readonly JsonSerializerOptions jsonOptions;
+    private readonly YamlDotNet.Serialization.IDeserializer? ymlDeserializer;
+    private readonly YamlDotNet.Serialization.ISerializer? ymlSerializer;
 
-    public SettingsManager(string runningDir)
+    public SettingsManager(
+        string runningDir,
+        JsonSerializerContext? jsonContext,
+        JsonSerializerOptions jsonOptions,
+        YamlDotNet.Serialization.IDeserializer? yamlDeserializer,
+        YamlDotNet.Serialization.ISerializer? yamlSerializer)
     {
         this.runningDir = runningDir;
+        this.jsonContext = jsonContext;
+        this.jsonOptions = jsonOptions;
+        this.ymlDeserializer = yamlDeserializer;
+        this.ymlSerializer = yamlSerializer;
     }
 
     public async Task<T> GetOrCreateFileAsync<T>(
@@ -78,7 +86,7 @@ internal sealed class SettingsManager
 
     [RequiresDynamicCode(DynamicCodeMessages.JsonSerializeMessage)]
     [RequiresUnreferencedCode(DynamicCodeMessages.JsonSerializeMessage)]
-    public async Task PopulateConfigAsync(string configName, Config config, JsonSerializerContext? context, CancellationToken cancellationToken)
+    public async Task PopulateConfigAsync(string configName, Config config, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(configName);
 
@@ -86,15 +94,23 @@ internal sealed class SettingsManager
         var existingConfig = default(Config);
 
         var configDir = Path.Combine(runningDir, "Config", configName);
-        var mainConfigFilePath = Path.Combine(configDir, "Config.json");
+        var mainConfigFilePath = Path.Combine(configDir, ymlDeserializer is null ? "Config.json" : "Config.yml");
 
         if (File.Exists(mainConfigFilePath))
         {
             await using var fs = new FileStream(mainConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
+            using var reader = new StreamReader(fs);
 
-            existingConfig = context is null
-                ? (Config?)await JsonSerializer.DeserializeAsync(fs, configType, jsonOptions, cancellationToken)
-                : (Config?)await JsonSerializer.DeserializeAsync(fs, configType, context, cancellationToken: cancellationToken);
+            if (ymlDeserializer is null)
+            {
+                existingConfig = jsonContext is null
+                    ? (Config?)await JsonSerializer.DeserializeAsync(fs, configType, jsonOptions, cancellationToken)
+                    : (Config?)await JsonSerializer.DeserializeAsync(fs, configType, jsonContext, cancellationToken: cancellationToken);
+            }
+            else
+            {
+                existingConfig = (Config?)ymlDeserializer.Deserialize(reader, configType);
+            }
         }
         else
         {
@@ -112,15 +128,24 @@ internal sealed class SettingsManager
             {
                 var att = prop.GetCustomAttribute<ExternalFileAttribute>()!;
 
-                var filePath = Path.Combine(configDir, att.FileName + ".json");
+                var filePathWithoutExtension = Path.Combine(configDir, att.FileName);
 
-                if (File.Exists(filePath))
+                if (File.Exists(filePathWithoutExtension + ".json"))
                 {
-                    await using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
+                    await using var fs = new FileStream(filePathWithoutExtension + ".json", FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
 
-                    var value = context is null
+                    var value = jsonContext is null
                         ? await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, jsonOptions, cancellationToken)
-                        : await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, context, cancellationToken: cancellationToken);
+                        : await JsonSerializer.DeserializeAsync(fs, prop.PropertyType, jsonContext, cancellationToken: cancellationToken);
+
+                    prop.SetValue(config, value);
+                }
+                else if (ymlDeserializer is not null && File.Exists(filePathWithoutExtension + ".yml"))
+                {
+                    await using var fs = new FileStream(filePathWithoutExtension + ".yml", FileMode.Open, FileAccess.Read, FileShare.None, 4096, useAsync: true);
+                    using var reader = new StreamReader(fs);
+
+                    var value = ymlDeserializer.Deserialize(reader, prop.PropertyType);
 
                     prop.SetValue(config, value);
                 }
@@ -129,13 +154,21 @@ internal sealed class SettingsManager
 
         await using var fsCreate = new FileStream(mainConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true);
 
-        if (context is null)
+        if (ymlSerializer is null)
         {
-            await JsonSerializer.SerializeAsync(fsCreate, config, configType, jsonOptions, cancellationToken);
+            if (jsonContext is null)
+            {
+                await JsonSerializer.SerializeAsync(fsCreate, config, configType, jsonOptions, cancellationToken);
+            }
+            else
+            {
+                await JsonSerializer.SerializeAsync(fsCreate, config, configType, jsonContext, cancellationToken);
+            }
         }
         else
         {
-            await JsonSerializer.SerializeAsync(fsCreate, config, configType, context, cancellationToken);
+            using var writer = new StreamWriter(fsCreate);
+            ymlSerializer.Serialize(writer, config);
         }
     }
 }

@@ -64,7 +64,7 @@ CSceneMobilLeaves 0x0A05E000
  float
 
 0x003
- CMwNod
+ CMwNod (external)
  float
  float
  int

@@ -66,7 +66,7 @@ public class GbxReaderTests
 
         // Assert
         Assert.False(result, "GBX magic is valid but it shouldn't be.");
-        Assert.Equal(expected: 2, actual: ms.Position);
+        Assert.Equal(expected: 3, actual: ms.Position);
     }
 
     [Fact]
@@ -79,8 +79,10 @@ public class GbxReaderTests
         ms.Write([(byte)'G', (byte)'B']);
         ms.Position = 0;
 
-        // Act & Assert
-        Assert.Throws<EndOfStreamException>(() => r.ReadGbxMagic());
+        // Act
+        var result = r.ReadGbxMagic();
+
+        Assert.False(result);
     }
 
     [Fact]

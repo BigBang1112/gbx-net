@@ -1,6 +1,7 @@
 ﻿using GBX.NET;
 using GBX.NET.NewtonsoftJson;
 using GBX.NET.LZO;
+using GBX.NET.ZLib;
 
 if (args.Length == 0)
 {
@@ -10,6 +11,7 @@ if (args.Length == 0)
 }
 
 Gbx.LZO = new Lzo();
+Gbx.ZLib = new ZLib();
 
 var gbx = Gbx.Parse(args[0]);
 

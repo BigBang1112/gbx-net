@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Extensions.Exporters;
+
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugSolid2Model
 {
@@ -36,6 +38,19 @@ public partial class CPlugSolid2Model
     public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
     public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
     public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
+
+    public void ExportToObj(TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
+    {
+        ObjExporter.Export(this, objWriter, mtlWriter, mergeVerticesDigitThreshold, lod);
+    }
+
+    public void ExportToObj(string objFilePath, string mtlFilePath, int? mergeVerticesDigitThreshold = null, int lod = 0)
+    {
+        using var objWriter = new StreamWriter(objFilePath);
+        using var mtlWriter = new StreamWriter(mtlFilePath);
+
+        ExportToObj(objWriter, mtlWriter, mergeVerticesDigitThreshold, lod);
+    }
 
     public partial class Chunk090BB000 : IVersionable
     {

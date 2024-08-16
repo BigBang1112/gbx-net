@@ -1,0 +1,5 @@
+CPlugWeatherModel 0x090BF000
+
+0x001
+ CPlugWeather[]_deprec Weathers
+ CPlugBitmap BitmapSpecularDir

@@ -252,7 +252,18 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public bool ReadGbxMagic()
     {
+#if NETSTANDARD2_0
         return base.ReadByte() == 'G' && base.ReadByte() == 'B' && base.ReadByte() == 'X';
+#else
+        Span<byte> buffer = stackalloc byte[3];
+
+        if (BaseStream.Read(buffer) != 3)
+        {
+            return false;
+        }
+
+        return buffer[0] == 'G' && buffer[1] == 'B' && buffer[2] == 'X';
+#endif
     }
 
     public override byte ReadByte()

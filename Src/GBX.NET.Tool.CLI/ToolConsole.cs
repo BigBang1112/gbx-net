@@ -36,7 +36,11 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         this.options = options ?? throw new ArgumentNullException(nameof(options));
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
-        settingsManager = new SettingsManager(runningDir);
+        settingsManager = new SettingsManager(runningDir,
+            options.JsonContext,
+            options.JsonOptions,
+            options.YmlDeserializer,
+            options.YmlSerializer);
         argsResolver = new ArgsResolver(args, http);
     }
 
@@ -119,7 +123,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         if (!toolSettings.ConsoleSettings.SkipIntro)
         {
-            introWriterTask = IntroWriter<T>.WriteIntroAsync(args);
+            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
         }
 
         logger.LogTrace("Checking for updates...");
@@ -173,6 +177,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         AnsiConsole.WriteLine();
         logger.LogInformation("Starting tool instance creation...");
         AnsiConsole.WriteLine();
+
         var counter = 0;
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))
@@ -187,9 +192,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
                     : toolSettings.ConsoleSettings.ConfigName;
 
-                logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, typeof(Config));
+                logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, configurable.Config.GetType());
 
-                await settingsManager.PopulateConfigAsync(configName, configurable.Config, options.JsonSerializerContext, cancellationToken);
+                await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);
             }
 
             // Run all produce methods in parallel and run mutate methods in sequence

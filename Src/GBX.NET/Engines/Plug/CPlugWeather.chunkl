@@ -1,0 +1,57 @@
+CPlugWeather 0x0917E000
+
+0x007
+
+0x00B
+ int
+ int
+ int
+ int
+ int
+ int
+
+0x00D
+ vec2
+ vec2 LDirSpecIntens
+ vec2 LDirSpecPower
+ vec3 SeaTwkWaterColor_Night
+ vec3 SeaTwkWaterColor_Day
+ vec2
+ vec2
+ vec2
+
+0x00E
+ data[28]
+ data[28]
+ id
+ CPlugFileImg ImageLightAmb (external)
+ CPlugFileImg ImageLightDirSun (external)
+ CPlugFileImg ImageLightDirMoon (external)
+ CPlugFileImg BitmapFlareSun (external)
+ CPlugFileImg BitmapFlareMoon (external)
+ float FlareAngularSizeSun
+ float FlareAngularSizeMoon
+ float
+ float
+ float
+ float CameraFarZ
+ CPlugBitmap BitmapRainFid
+ CMwNod SceneFxFid
+
+0x00F
+ CPlugFileImg ImageLightDirDblSided (external)
+
+0x011
+ CPlugFileImg BitmapSkyGradV (external)
+
+0x013
+ CPlugFileImg ImageFogColor (external)
+
+0x014
+ CPlugFileImg ImageSeaColor (external)
+
+0x016
+ CPlugClouds Clouds
+
+0x017
+ GxFogBlender FogBlender

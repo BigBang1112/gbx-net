@@ -13,7 +13,7 @@ CGameCtnCollection 0x03033000
   v2+
    int SortIndex
    v3+
-    id DefaultZone
+    id DefaultZoneId
     v4+
      ident Vehicle
      v5+
@@ -42,7 +42,7 @@ CGameCtnCollection 0x03033000
 0x009
  id Collection
  CGameCtnZone[]_deprec CompleteListZoneList (external)
- int
+ CGameCtnZone DefaultZone (external)
  bool NeedUnlock
  float SquareSize
  float SquareHeight

@@ -580,6 +580,7 @@ public partial class CPlugCrystal
 
                     if (Version >= 33)
                     {
+                        // this can write 255 in case of -1, which is not correct?
                         w.WriteOptimizedInt(materialIndex, n.Materials.Count);
                     }
                     else

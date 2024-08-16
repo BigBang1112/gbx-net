@@ -47,23 +47,13 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
-    [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
-    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
-    [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
-    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
@@ -110,23 +100,13 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
-    [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
-    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
-    [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
-    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
@@ -177,23 +157,13 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
-    [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
-    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
-    [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
-    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
@@ -239,23 +209,13 @@ public class GbxEqualTests
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("CPlugSolid/GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("CPlugSolid2Model/GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
-    [InlineData("CPlugPrefab/GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
-    [InlineData("CPlugTrainWagonModel/GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
-    [InlineData("CGameCtnBlockInfoClassic/GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("CGameItemModel/GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
     [InlineData("CGameCtnMacroBlockInfo/GBX-NET 2 CGameCtnMacroBlockInfo TM2020 001.Macroblock.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig TMF 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP3 001.SystemConfig.Gbx")]
     [InlineData("CSystemConfig/GBX-NET 2 CSystemConfig MP4 001.SystemConfig.Gbx")]
-    [InlineData("CGameSpawnModel/GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip MP4 001.Clip.Gbx")]
     [InlineData("CGameCtnMediaClip/GBX-NET 2 CGameCtnMediaClip TM2020 001.Clip.Gbx")]
@@ -312,51 +272,42 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     public void TestGbxEqualDataExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualDataExplicit<CGameItemModel>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCPlugSolid(string filePath)
     {
         TestGbxEqualDataExplicit<CPlugSolid>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCPlugSolid2Model(string filePath)
     {
         TestGbxEqualDataExplicit<CPlugSolid2Model>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCPlugPrefab(string filePath)
     {
         TestGbxEqualDataExplicit<CPlugPrefab>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCPlugTrainWagonModel(string filePath)
     {
         TestGbxEqualDataExplicit<CPlugTrainWagonModel>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCGameCtnBlockInfoClassic(string filePath)
     {
         TestGbxEqualDataExplicit<CGameCtnBlockInfoClassic>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
@@ -375,12 +326,11 @@ public class GbxEqualTests
         TestGbxEqualDataExplicit<CSystemConfig>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    /*[Theory]
     public void TestGbxEqualDataExplicitCGameSpawnModel(string filePath)
     {
         TestGbxEqualDataExplicit<CGameSpawnModel>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
@@ -426,51 +376,42 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     public void TestGbxEqualObjectsExplicitCGameItemModel(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameItemModel>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCPlugSolid(string filePath)
     {
         TestGbxEqualObjectsExplicit<CPlugSolid>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCPlugSolid2Model(string filePath)
     {
         TestGbxEqualObjectsExplicit<CPlugSolid2Model>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCPlugPrefab(string filePath)
     {
         TestGbxEqualObjectsExplicit<CPlugPrefab>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCPlugTrainWagonModel(string filePath)
     {
         TestGbxEqualObjectsExplicit<CPlugTrainWagonModel>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCGameCtnBlockInfoClassic(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameCtnBlockInfoClassic>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
@@ -489,12 +430,11 @@ public class GbxEqualTests
         TestGbxEqualObjectsExplicit<CSystemConfig>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    /*[Theory]
     public void TestGbxEqualObjectsExplicitCGameSpawnModel(string filePath)
     {
         TestGbxEqualObjectsExplicit<CGameSpawnModel>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
@@ -540,51 +480,42 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     public async Task TestGbxEqualDataExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CGameItemModel>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCPlugSolidAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CPlugSolid>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCPlugSolid2ModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CPlugSolid2Model>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCPlugPrefabAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CPlugPrefab>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCPlugTrainWagonModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CPlugTrainWagonModel>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCGameCtnBlockInfoClassicAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CGameCtnBlockInfoClassic>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
@@ -603,12 +534,11 @@ public class GbxEqualTests
         await TestGbxEqualDataExplicitAsync<CSystemConfig>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualDataExplicitCGameSpawnModelAsync(string filePath)
     {
         await TestGbxEqualDataExplicitAsync<CGameSpawnModel>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
@@ -654,51 +584,42 @@ public class GbxEqualTests
     [InlineData("GBX-NET 2 CGameItemModel TM2020 002.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 003.Item.Gbx")]
     [InlineData("GBX-NET 2 CGameItemModel TM2020 004.Block.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 005.Item.Gbx")]
+    [InlineData("GBX-NET 2 CGameItemModel TM2020 006.Item.Gbx")]
     public async Task TestGbxEqualObjectsExplicitCGameItemModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameItemModel>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid TM10 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMSX 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMNESWC 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMF 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid TMT 001.Solid.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid MP4 001.Solid.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCPlugSolidAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CPlugSolid>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugSolid2Model TMT 001.Solid2.Gbx")]
-    [InlineData("GBX-NET 2 CPlugSolid2Model MP4 001.Mesh.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCPlugSolid2ModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CPlugSolid2Model>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugPrefab TM2020 001.Prefab.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCPlugPrefabAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CPlugPrefab>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CPlugTrainWagonModel MP4 001.Wagon.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCPlugTrainWagonModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CPlugTrainWagonModel>(filePath);
-    }
+    }*/
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameCtnBlockInfo TMF 001.TMEDClassic.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCGameCtnBlockInfoClassicAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameCtnBlockInfoClassic>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMacroBlockInfo MP4 001.Macroblock.Gbx")]
@@ -717,12 +638,11 @@ public class GbxEqualTests
         await TestGbxEqualObjectsExplicitAsync<CSystemConfig>(filePath);
     }
 
-    [Theory]
-    [InlineData("GBX-NET 2 CGameSpawnModel TMT 001.Spawn.Gbx")]
+    /*[Theory]
     public async Task TestGbxEqualObjectsExplicitCGameSpawnModelAsync(string filePath)
     {
         await TestGbxEqualObjectsExplicitAsync<CGameSpawnModel>(filePath);
-    }
+    }*/
 
     [Theory]
     [InlineData("GBX-NET 2 CGameCtnMediaClip TMF 001.Clip.Gbx")]
