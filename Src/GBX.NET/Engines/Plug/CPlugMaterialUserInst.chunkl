@@ -7,9 +7,9 @@ CPlugMaterialUserInst 0x090FD000
  id MaterialName
  id Model
  string BaseTexture
- byte SurfacePhysicId
+ byte<CPlugSurface.MaterialId> SurfacePhysicId
  v10+
-  byte SurfaceGameplayId
+  byte<GameplayId> SurfaceGameplayId
  v1+
   if IsUsingGameMaterial
    string Link
@@ -56,6 +56,29 @@ enum ETexAddress
  Mirror
  Clamp
  Border
+
+enum GameplayId
+ Concrete
+ ConcreteTurbo
+ ConcreteTurbo2
+ ConcreteTurboRoulette
+ ConcreteFreeWheeling
+ ConcreteNoGrip
+ ConcreteNoSteering
+ ConcreteForceAcceleration
+ ConcreteReset
+ ConcreteSlowMotion
+ ConcreteBumper
+ ConcreteBumper2
+ ConcreteFragile
+ ConcreteNoBrakes
+ ConcreteCruise
+ ConcreteReactorBoost_Oriented
+ ConcreteReactorBoost2_Oriented
+ ConcreteVehicleTransform_Reset
+ ConcreteVehicleTransform_CarSnow
+ ConcreteVehicleTransform_CarRally
+ ConcreteVehicleTransform_CarDesert
 
 archive Cst
  id
