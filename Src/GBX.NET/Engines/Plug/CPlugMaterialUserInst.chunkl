@@ -58,27 +58,27 @@ enum ETexAddress
  Border
 
 enum GameplayId
- Concrete
- ConcreteTurbo
- ConcreteTurbo2
- ConcreteTurboRoulette
- ConcreteFreeWheeling
- ConcreteNoGrip
- ConcreteNoSteering
- ConcreteForceAcceleration
- ConcreteReset
- ConcreteSlowMotion
- ConcreteBumper
- ConcreteBumper2
- ConcreteFragile
- ConcreteNoBrakes
- ConcreteCruise
- ConcreteReactorBoost_Oriented
- ConcreteReactorBoost2_Oriented
- ConcreteVehicleTransform_Reset
- ConcreteVehicleTransform_CarSnow
- ConcreteVehicleTransform_CarRally
- ConcreteVehicleTransform_CarDesert
+ None
+ Turbo
+ Turbo2
+ TurboRoulette
+ FreeWheeling
+ NoGrip
+ NoSteering
+ ForceAcceleration
+ Reset
+ SlowMotion
+ Bumper
+ Bumper2
+ Fragile
+ NoBrakes
+ Cruise
+ ReactorBoost_Oriented
+ ReactorBoost2_Oriented
+ VehicleTransform_Reset
+ VehicleTransform_CarSnow
+ VehicleTransform_CarRally
+ VehicleTransform_CarDesert
 
 archive Cst
  id
