@@ -21,7 +21,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 - [Lua support](#lua-support)
 - [Framework support](#framework-support)
 - **[Preparation](#preparation)**
-  - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight-soon)
+  - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight)
   - [Create a new GBX.NET project (Visual Studio Code)](#create-a-new-gbxnet-project-visual-studio-code)
   - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
 - **[Usage (simple examples)](#usage-simple-examples)**
@@ -596,10 +596,17 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
   - Src/GBX.NET.Crypto
   - Src/GBX.NET.Hashing
   - Src/GBX.NET.Json
+  - Src/GBX.NET.NewtonsoftJson
+  - Src/GBX.NET.Imaging
+  - Src/GBX.NET.Imaging.ImageSharp
+  - Src/GBX.NET.Imaging.SkiaSharp
+  - Src/GBX.NET.Tool
+  - Src/GBX.NET.ZLib
   - Src/GBX.NET.Lua
   - Generators
 - GNU GPL v3 License
   - **Src/GBX.NET.LZO**
+  - Src/GBX.NET.Tool.CLI
   - Samples
   - Tools
 - The Unlicense
