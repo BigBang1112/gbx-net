@@ -21,7 +21,9 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | ConstructionCampaign.Gbx | Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.chunkl) | Yes | Yes
 | TMCollection.Gbx | Collection.Gbx | [CGameCtnCollection](Src/GBX.NET/Engines/Game/CGameCtnCollection.chunkl) | Yes | Yes | Yes
 | TMDecoration.Gbx | Decoration.Gbx | [CGameCtnDecoration](Src/GBX.NET/Engines/Game/CGameCtnDecoration.chunkl) | Yes | Yes | Yes
-| TMDecorationSize.Gbx | DecorationSize.Gbx | [CGameCtnDecorationSize](Src/GBX.NET/Engines/Game/CGameCtnDecorationSize.chunkl) | Yes | Yes
+| TMDecorationSize.Gbx | DecorationSize.Gbx | [CGameCtnDecorationSize](Src/GBX.NET/Engines/Game/CGameCtnDecorationSize.chunkl) | Yes | Yes | Yes
+| TMDecorationMood.Gbx | DecorationMood.Gbx | [CGameCtnDecorationMood](Src/GBX.NET/Engines/Game/CGameCtnDecorationMood.chunkl) | Yes | Yes | Yes
+| TMDecorationAudio.Gbx | DecorationAudio.Gbx | [CGameCtnDecorationAudio](Src/GBX.NET/Engines/Game/CGameCtnDecorationAudio.chunkl) | Yes | Yes | Yes
 | TMEDClassic.Gbx | EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.chunkl) | Yes | Yes | Yes
 | TMEDClip.Gbx | EDClip.Gbx | [CGameCtnBlockInfoClip](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClip.chunkl) | Yes | Yes | Yes
 | TMEDFlat.Gbx | EDFlat.Gbx | [CGameCtnBlockInfoFlat](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoFlat.chunkl) | Yes | Yes | Yes
@@ -30,6 +32,13 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | TMEDRectAsym.Gbx | EDRectAsym.Gbx | [CGameCtnBlockInfoRectAsym](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoRectAsym.chunkl) | Yes | Yes | Yes
 | TMEDRoad.Gbx | EDRoad.Gbx | [CGameCtnBlockInfoRoad](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoRoad.chunkl) | Yes | Yes | Yes
 | | EDTransition.Gbx | [CGameCtnBlockInfoTransition](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoTransition.chunkl) | Yes | Yes | Yes
+| TMZoneFlat.Gbx | ZoneFlat.Gbx | [CGameCtnZoneFlat](Src/GBX.NET/Engines/Game/CGameCtnZoneFlat.chunkl) | Yes | Yes
+| TMZoneFrontier.Gbx | ZoneFrontier.Gbx | [CGameCtnZoneFrontier](Src/GBX.NET/Engines/Game/CGameCtnZoneFrontier.chunkl) | Yes | Yes
+| | FuncShader.Gbx | [CFuncShaderLayerUV](Src/GBX.NET/Engines/Func/CFuncShaderLayerUV.chunkl) | Yes | Yes
+| | TMTerrainModifier.Gbx | [CGameCtnDecorationTerrainModifier](Src/GBX.NET/Engines/Game/CGameCtnDecorationTerrainModifier.chunkl) | Yes | Yes
+| | MotionManagerWeathers.Gbx | [CPlugWeatherModel](Src/GBX.NET/Engines/Plug/CPlugWeatherModel.chunkl) | Up to TMUF | Yes
+| | RallyLeafManager.Gbx | [CMotionManagerLeaves](Src/GBX.NET/Engines/Motion/CMotionManagerLeaves.chunkl) | Yes | Yes
+| | GameSkin.Gbx | [CPlugGameSkin](Src/GBX.NET/Engines/Plug/CPlugGameSkin.chunkl) | Yes | Yes
 | | VehicleTunings.Gbx | [CPlugVehiclePhyTunings](Src/GBX.NET/Engines/Plug/CPlugVehiclePhyTunings.chunkl) | Up to TM2 | Up to TM2 | Yes
 | | ObjectInfo.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes

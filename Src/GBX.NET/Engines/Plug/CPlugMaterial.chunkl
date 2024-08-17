@@ -15,8 +15,9 @@ CPlugMaterial 0x09079000
 
 0x00D
 
-0x00E
- int
+0x00E (demonstration)
+ short SurfaceId
+ short
 
 0x00F
  int

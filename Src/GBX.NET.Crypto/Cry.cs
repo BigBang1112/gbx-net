@@ -37,10 +37,13 @@ public static partial class Cry
         return Encoding.ASCII.GetString(uncompressedData);
     }
 
-    public static Task<string> DecryptAsync(string fileName, CancellationToken cancellationToken = default)
+    public static async Task<string> DecryptAsync(string fileName, CancellationToken cancellationToken = default)
     {
+#if !NETSTANDARD2_0
+        await
+#endif
         using var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
-        return DecryptAsync(fs, cancellationToken);
+        return await DecryptAsync(fs, cancellationToken);
     }
 
     public static string Decrypt(string fileName)
@@ -77,10 +80,13 @@ public static partial class Cry
         await w.WriteDataAsync(compressedData, cancellationToken);
     }
 
-    public static Task EncryptAsync(string fileName, string contents, CancellationToken cancellationToken = default)
+    public static async Task EncryptAsync(string fileName, string contents, CancellationToken cancellationToken = default)
     {
+#if !NETSTANDARD2_0
+        await
+#endif
         using var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true);
-        return EncryptAsync(fs, contents, cancellationToken);
+        await EncryptAsync(fs, contents, cancellationToken);
     }
 
     public static void Encrypt(string fileName, string contents)

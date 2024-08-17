@@ -39,11 +39,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.5.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="ThisAssembly.Git" Version="1.4.3">
+        <PackageReference Include="ThisAssembly.Git" Version="1.5.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

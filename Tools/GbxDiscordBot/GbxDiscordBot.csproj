@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Discord.Net" Version="3.15.2" />
+        <PackageReference Include="Discord.Net" Version="3.15.3" />
         <PackageReference Include="GitInfo" Version="3.3.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,12 +27,12 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Process" Version="0.5.0-beta.6" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.7" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.8" />
+        <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.9" />
     </ItemGroup>
 
     <ItemGroup>

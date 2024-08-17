@@ -36,7 +36,11 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         this.options = options ?? throw new ArgumentNullException(nameof(options));
 
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
-        settingsManager = new SettingsManager(runningDir, options.JsonContext, options.JsonOptions);
+        settingsManager = new SettingsManager(runningDir,
+            options.JsonContext,
+            options.JsonOptions,
+            options.YmlDeserializer,
+            options.YmlSerializer);
         argsResolver = new ArgsResolver(args, http);
     }
 
@@ -173,6 +177,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         AnsiConsole.WriteLine();
         logger.LogInformation("Starting tool instance creation...");
         AnsiConsole.WriteLine();
+
         var counter = 0;
 
         await foreach (var toolInstance in toolInstanceMaker.MakeToolInstancesAsync(cancellationToken))

@@ -116,7 +116,7 @@ public partial class CGameCtnReplayRecord
     public ImmutableList<CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; private set; }
     public int SceneryCapturableCount { get; private set; }
     public string? PlaygroundScript { get; private set; }
-    public ImmutableArray<InterfaceScriptInfo>? InterfaceScriptInfos { get; private set; }
+    public ImmutableList<InterfaceScriptInfo>? InterfaceScriptInfos { get; private set; }
 
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.Inputs"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs are available in <see cref="Ghosts"/> in <see cref="CGameCtnGhost.PlayerInputs"/>. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
@@ -534,7 +534,7 @@ public partial class CGameCtnReplayRecord
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            n.InterfaceScriptInfos = ImmutableArray.Create(r.ReadArrayReadable<InterfaceScriptInfo>());
+            n.InterfaceScriptInfos = ImmutableList.Create(r.ReadArrayReadable<InterfaceScriptInfo>());
         }
     }
 

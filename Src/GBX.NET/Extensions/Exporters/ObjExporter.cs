@@ -336,11 +336,6 @@ internal static class ObjExporter
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
 
-        if (solid.CustomMaterials is null || solid.CustomMaterials.Length == 0)
-        {
-            throw new Exception("CPlugSolid2Model with no CustomMaterials is not supported.");
-        }
-
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
@@ -348,7 +343,7 @@ internal static class ObjExporter
                 continue;
             }
 
-            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
+            var materialName = GetMaterialName(solid, geom.MaterialIndex);
 
             if (!materials.Contains(materialName))
             {
@@ -394,12 +389,25 @@ internal static class ObjExporter
                 continue;
             }
 
-            if (visual.TexCoords.Length == 0)
+            if (visual.TexCoords.Length > 0)
             {
-                continue;
+                foreach (var uv in visual.TexCoords[0].TexCoords.Select(x => x.UV))
+                {
+                    if (uvs.ContainsKey(uv))
+                    {
+                        continue;
+                    }
+
+                    objWriter.WriteLine("vt {0} {1}",
+                        uv.X.ToString(Invariant),
+                        uv.Y.ToString(Invariant));
+
+                    uvs.Add(uv, uvs.Count);
+                }
             }
 
-            foreach (var uv in visual.TexCoords[0].TexCoords.Select(x => x.UV))
+            foreach (var uv in visual.VertexStreams
+                .SelectMany(x => x.UVs.Values.FirstOrDefault() ?? []))
             {
                 if (uvs.ContainsKey(uv))
                 {
@@ -420,20 +428,14 @@ internal static class ObjExporter
             {
                 continue;
             }
-
             
             if (visual.IndexBuffer is null)
             {
                 continue;
             }
 
-            if (visual.TexCoords.Length == 0)
-            {
-                continue;
-            }
-
-            var materialName = solid.CustomMaterials[geom.MaterialIndex].MaterialUserInst?.Link ?? "Unknown";
-
+            var materialName = GetMaterialName(solid, geom.MaterialIndex);
+            
             objWriter.WriteLine("g {0}", materialName);
             objWriter.WriteLine("usemtl {0}", materialName);
 
@@ -443,10 +445,15 @@ internal static class ObjExporter
             {
                 objWriter.Write('f');
 
-                var v = visual.Vertices[index];
-                var uvIndex = uvs[visual.TexCoords[0].TexCoords[index].UV];
+                var v = visual.VertexStreams.FirstOrDefault()?.Positions?[index] ?? visual.Vertices[index].Position;
 
-                var faceIndex = $" {positionsDict[v.Position] + 1}/{uvIndex + 1}";
+                var uv = visual.TexCoords.Length == 0
+                    ? visual.VertexStreams[0].UVs.Values.First()[index]
+                    : visual.TexCoords[0].TexCoords[index].UV;
+
+                var uvIndex = uvs[uv];
+
+                var faceIndex = $" {positionsDict[v] + 1}/{uvIndex + 1}";
 
                 objWriter.Write(faceIndex);
 
@@ -458,5 +465,20 @@ internal static class ObjExporter
 
             objWriter.WriteLine();
         }
+    }
+
+    private static string GetMaterialName(CPlugSolid2Model solid, int materialIndex)
+    {
+        if (solid.CustomMaterials is { Length: > 0 } customMaterials)
+        {
+            return customMaterials[materialIndex].MaterialUserInst?.Link ?? "Unknown";
+        }
+        
+        if (solid.Materials is { Length: > 0 } materialsArray)
+        {
+            return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
+        }
+
+        return "Unknown";
     }
 }

@@ -1,7 +1,7 @@
 ﻿using GBX.NET.Serialization;
 using System.Collections;
-using System.Security.Cryptography;
 using System.Text;
+using GBX.NET.Crypto;
 
 #if !NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
@@ -48,7 +48,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         var crc32 = r.ReadUInt32();
         var salt = r.ReadUInt32();
 
-        var nameKey = await ComputeMD5Async(NameKeySalt + salt, cancellationToken);
+        var nameKey = await MD5.ComputeAsync(NameKeySalt + salt, cancellationToken);
 
         var packs = new Dictionary<string, PakListItem>(numPacks);
 
@@ -66,14 +66,14 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 
             var name = Encoding.ASCII.GetString(encryptedName);
 
-            var keyStringKey = await ComputeMD5Async(name + salt + KeyStringKeySalt, cancellationToken);
+            var keyStringKey = await MD5.ComputeAsync(name + salt + KeyStringKeySalt, cancellationToken);
 
             for (var j = 0; j < encryptedKeyString.Length; j++)
             {
                 encryptedKeyString[j] ^= keyStringKey[j % keyStringKey.Length];
             }
 
-            var key = await ComputeMD5Async(Encoding.ASCII.GetString(encryptedKeyString) + "NadeoPak", cancellationToken);
+            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + "NadeoPak", cancellationToken);
 
             packs[name] = new PakListItem(key, flags);
         }
@@ -97,35 +97,6 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         using var fs = File.OpenRead(filePath);
         return Parse(fs);
     }
-
-    private static byte[] ComputeMD5(string str)
-    {
-#if NET6_0_OR_GREATER
-        return MD5.HashData(Encoding.ASCII.GetBytes(str));
-#else
-        using var md5 = MD5.Create();
-        return md5.ComputeHash(Encoding.ASCII.GetBytes(str));
-#endif
-    }
-
-#if NET8_0_OR_GREATER
-    private static async ValueTask<byte[]> ComputeMD5Async(string str, CancellationToken cancellationToken)
-    {
-        await using var ms = new MemoryStream(Encoding.ASCII.GetBytes(str));
-        return await MD5.HashDataAsync(ms, cancellationToken);
-    }
-#elif NET6_0_OR_GREATER || NETSTANDARD2_0
-    private static async Task<byte[]> ComputeMD5Async(string str, CancellationToken cancellationToken)
-    {
-        using var md5 = MD5.Create();
-#if NET6_0_OR_GREATER
-        await using var ms = new MemoryStream(Encoding.ASCII.GetBytes(str));
-        return await md5.ComputeHashAsync(ms, cancellationToken);
-#else
-        return await Task.FromResult(md5.ComputeHash(Encoding.ASCII.GetBytes(str)));
-#endif
-    }
-#endif
 
     public bool ContainsKey(string key)
     {

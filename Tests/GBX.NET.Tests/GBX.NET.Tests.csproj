@@ -19,7 +19,7 @@
     <ItemGroup>
         <PackageReference Include="CompareNETObjects" Version="4.83.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-        <PackageReference Include="Neovolve.Logging.Xunit" Version="6.0.0" />
+        <PackageReference Include="Neovolve.Logging.Xunit" Version="6.1.0" />
         <PackageReference Include="NSubstitute" Version="5.1.0" />
         <PackageReference Include="xunit" Version="2.9.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
