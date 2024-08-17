@@ -40,7 +40,7 @@ jobs:
       
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
-      if: matrix.os == 'ubuntu-latest'
+      if: github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest'
       with:
         filename: coverage/**/coverage.cobertura.xml
         badge: true
