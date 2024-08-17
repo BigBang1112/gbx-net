@@ -35,6 +35,7 @@ jobs:
       run: dotnet build -c Release --no-restore  /p:ContinuousIntegrationBuild=true
       
     - name: Test
+      if: github.ref == 'refs/heads/master'
       run: dotnet test -c Release --no-build --verbosity normal --no-build --collect:"XPlat Code Coverage" --results-directory ./coverage
       
     - name: Code Coverage Report
