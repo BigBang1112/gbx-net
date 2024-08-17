@@ -587,6 +587,29 @@ In Visual Studio, you can just use Build Solution and everything should build. J
 
 In .NET CLI, run `dotnet build` on the solution (`.sln`) level.
 
+### Nightly builds
+
+Every **5AM UTC**, there is a new build from the `dev` branch published in GitHub Packages of the base GBX.NET package (no other packages are considered at the moment).
+
+GitHub Packages require you to provide access tokens to be able to read the packages, which is currently the unfortunate part, and I may migrate the nightly builds somewhere else due to this in the future.
+
+In GitHub settings -> Developer Settings at the bottom -> Personal access tokens -> Tokens (classic) -> Generate new token (classic), you can generate the access token. Setting Expiration to **No expiration** should be the best option, as you only have to enable **`read:packages`**, which if this token would leak, would not cause much harm anyway. Then go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include that secret:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="BigBang1112" value="https://nuget.pkg.github.com/bigbang1112/index.json" /> <!-- add this -->
+  </packageSources>
+  <packageSourceCredentials>
+    <BigBang1112> <!-- add this -->
+      <add key="Username" value="your_github_username" /> <!-- gh username -->
+      <add key="ClearTextPassword" value="your_generated_token" /> <!-- that generated token -->
+    </BigBang1112>
+  </packageSourceCredentials>
+</configuration>
+```
+Then you can select the GitHub package source and fetch nightly builds from there. More details [here](<https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages>).
+
 ## License
 
 GBX.NET 2 is licensed under multiple licenses, depending on the part of the project. Here are the licenses and their directories:
