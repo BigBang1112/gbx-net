@@ -12,7 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -35,6 +39,7 @@ jobs:
       
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
+      if: matrix.os == 'ubuntu-latest'
       with:
         filename: coverage/**/coverage.cobertura.xml
         badge: true
