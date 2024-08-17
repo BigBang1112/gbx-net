@@ -2,7 +2,7 @@ name: Nightly Build and Publish
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # Runs every day at midnight UTC
+    - cron: '0 5 * * *'  # Runs every day at 5AM UTC
   workflow_dispatch:
 
 permissions:
