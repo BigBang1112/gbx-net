@@ -1,0 +1,37 @@
+name: Nightly Build and Publish
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Runs every day at 5AM UTC
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  build-and-publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: dev
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          8.0.x
+          6.0.x
+          
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: |
+        cd Src/GBX.NET
+        dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${GITHUB_SHA::7}
+
+    - name: Publish nightly ${{ matrix.lib }} nupkg to github.com
+      run: dotnet nuget push bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
