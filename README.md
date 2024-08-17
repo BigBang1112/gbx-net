@@ -42,6 +42,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Asynchronous](#asynchronous)
 - [Benchmarks](#benchmarks)
 - [Build](#build)
+  - [Nightly builds](#nightly-builds)
 - [License](#license)
 - [Special thanks](#special-thanks)
 - [Alternative Gbx parsers](#alternative-gbx-parsers)
