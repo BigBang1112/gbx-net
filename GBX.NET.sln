@@ -170,7 +170,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryCryptSwitch", "Tools\Cry
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.BlockInfo", "Src\GBX.NET.BlockInfo\GBX.NET.BlockInfo.csproj", "{89F6FFE5-E32A-4713-8D63-98D070A17DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuxCryptSwitch", "Tools\MuxCryptSwitch\MuxCryptSwitch.csproj", "{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuxCryptSwitch", "Tools\MuxCryptSwitch\MuxCryptSwitch.csproj", "{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBX.NET.Tool.StandardIO", "Src\GBX.NET.Tool.StandardIO\GBX.NET.Tool.StandardIO.csproj", "{55BD1330-7431-41A8-90EB-DEB20D9EB981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -406,6 +408,10 @@ Global
 		{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BD1330-7431-41A8-90EB-DEB20D9EB981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BD1330-7431-41A8-90EB-DEB20D9EB981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BD1330-7431-41A8-90EB-DEB20D9EB981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BD1330-7431-41A8-90EB-DEB20D9EB981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -474,6 +480,7 @@ Global
 		{4327AB87-DF45-4364-9D27-1C72BA0E78FF} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{89F6FFE5-E32A-4713-8D63-98D070A17DC1} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{55BD1330-7431-41A8-90EB-DEB20D9EB981} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
