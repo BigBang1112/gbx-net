@@ -31,7 +31,8 @@ jobs:
     - name: Build
       run: |
         cd Src/GBX.NET
-        dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${GITHUB_SHA::7}
+        git_hash=$(git rev-parse HEAD)
+        dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${git_hash::7}
 
     - name: Publish nightly ${{ matrix.lib }} nupkg to github.com
       run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
