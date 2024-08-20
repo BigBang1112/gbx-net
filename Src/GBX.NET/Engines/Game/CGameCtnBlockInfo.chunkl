@@ -14,8 +14,8 @@ CGameCtnBlockInfo 0x0304E000
  CSceneMobil // VariantBaseAir
 
 0x00C [TM10, TMSX, TMF]
- iso4? SpawnLocAir
  iso4? SpawnLocGround
+ iso4? SpawnLocAir
 
 0x00D [TMSX, TMF]
  bool // something with replacing?
