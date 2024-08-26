@@ -3,6 +3,7 @@ using GBX.NET.Tool.CLI.Exceptions;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -204,18 +205,31 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Producing...");
 
                 var produceMethod = toolFunctionality.ProduceMethods[0];
-                var result = produceMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Producing for each distributed output...");
-                }
-                else
-                {
-                    logger.LogInformation("Produced! Distributing output...");
-                }
+                    var result = produceMethod.Invoke(toolInstance, null);
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    if (result is IEnumerable<object>)
+                    {
+                        logger.LogInformation("Producing for each distributed output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Produced! Distributing output...");
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while producing.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
@@ -264,18 +278,31 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Mutating...");
 
                 var mutateMethod = toolFunctionality.MutateMethods[0];
-                var result = mutateMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Mutationing while distributing output...");
-                }
-                else
-                {
-                    logger.LogInformation("Mutated! Distributing output...");
-                }
+                    var result = mutateMethod.Invoke(toolInstance, null);
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    if (result is IEnumerable<object>)
+                    {
+                        logger.LogInformation("Mutationing while distributing output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Mutated! Distributing output...");
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while mutating.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
