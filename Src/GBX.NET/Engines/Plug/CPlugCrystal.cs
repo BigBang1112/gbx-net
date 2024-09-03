@@ -85,6 +85,7 @@ public partial class CPlugCrystal
                     ELayerType.Cubes => new CubesLayer(),
                     ELayerType.Trigger => new TriggerLayer(),
                     ELayerType.SpawnPosition => new SpawnPositionLayer(),
+                    ELayerType.Light => new LightLayer(),
                     _ => throw new NotSupportedException($"Layer type {layerType} is not supported")
                 };
 
@@ -120,6 +121,7 @@ public partial class CPlugCrystal
                     CubesLayer => (int)ELayerType.Cubes,
                     TriggerLayer => (int)ELayerType.Trigger,
                     SpawnPositionLayer => (int)ELayerType.SpawnPosition,
+                    LightLayer => (int)ELayerType.Light,
                     _ => throw new NotSupportedException()
                 });
 
@@ -199,6 +201,32 @@ public partial class CPlugCrystal
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SpawnPositionLayer;
+
+    public partial class LightLayer : ModifierLayer, IReadable<CPlugCrystal>, IWritable<CPlugCrystal>
+    {
+        public int LightVersion { get; set; }
+        public CPlugLightUserModel[] Lights { get; set; } = [];
+        public LightPos[] LightPositions { get; set; } = [];
+
+        public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
+        {
+            base.Read(r, n, v);
+            LightVersion = r.ReadInt32();
+            Lights = r.ReadArrayNodeRef<CPlugLightUserModel>()!;
+            LightPositions = r.ReadArrayReadable<LightPos>();
+        }
+
+        public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)
+        {
+            base.Write(w, n, v);
+            w.Write(LightVersion);
+            w.WriteArrayNodeRef(Lights);
+            w.WriteArrayWritable<LightPos>(LightPositions);
+        }
+    }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class LightPos;
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class VoxelSpace;
