@@ -180,6 +180,12 @@ archive SpawnPositionLayer (inherits: ModifierLayer, contextual)
  if SpawnPositionVersion >= 1
   float RollAngle
 
+archive LightLayer (inherits: ModifierLayer, contextual)
+ base
+ int LightVersion
+ CPlugLightUserModel[] Lights
+ LightPos[] LightPositions
+
 archive VoxelSpace
  throw
 

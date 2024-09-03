@@ -202,28 +202,8 @@ public partial class CPlugCrystal
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SpawnPositionLayer;
 
-    public partial class LightLayer : ModifierLayer, IReadable<CPlugCrystal>, IWritable<CPlugCrystal>
-    {
-        public int LightVersion { get; set; }
-        public CPlugLightUserModel[] Lights { get; set; } = [];
-        public LightPos[] LightPositions { get; set; } = [];
-
-        public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
-        {
-            base.Read(r, n, v);
-            LightVersion = r.ReadInt32();
-            Lights = r.ReadArrayNodeRef<CPlugLightUserModel>()!;
-            LightPositions = r.ReadArrayReadable<LightPos>();
-        }
-
-        public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)
-        {
-            base.Write(w, n, v);
-            w.Write(LightVersion);
-            w.WriteArrayNodeRef(Lights);
-            w.WriteArrayWritable<LightPos>(LightPositions);
-        }
-    }
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class LightLayer;
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class LightPos;
