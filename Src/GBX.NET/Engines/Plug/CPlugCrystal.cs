@@ -66,7 +66,8 @@ public partial class CPlugCrystal
 
             for (var i = 0; i < layerCount; i++)
             {
-                Layer layer = (ELayerType)r.ReadInt32() switch
+                var layerType = (ELayerType)r.ReadInt32();
+                Layer layer = layerType switch
                 {
                     ELayerType.Geometry => new GeometryLayer(),
                     ELayerType.SubdivideSmooth => new SubdivideSmoothLayer(),
@@ -84,7 +85,7 @@ public partial class CPlugCrystal
                     ELayerType.Cubes => new CubesLayer(),
                     ELayerType.Trigger => new TriggerLayer(),
                     ELayerType.SpawnPosition => new SpawnPositionLayer(),
-                    _ => throw new NotSupportedException()
+                    _ => throw new NotSupportedException($"Layer type {layerType} is not supported")
                 };
 
                 layer.Read(r, n);
