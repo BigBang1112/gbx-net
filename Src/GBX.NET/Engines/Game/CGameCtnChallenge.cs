@@ -1177,6 +1177,12 @@ public partial class CGameCtnChallenge :
 
             if (Version >= 5)
             {
+                if (Version >= 8)
+                {
+                    // yo nice leak from TOTD made using alpha build of the game
+                    throw new ChunkVersionNotSupportedException(Version);
+                }
+
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
                 var usedBlocks = new CGameCtnBlock?[blockIndexes.Length];
                 
@@ -1249,11 +1255,6 @@ public partial class CGameCtnChallenge :
                     }
 
                     n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
-                }
-
-                if (Version >= 8)
-                {
-                    throw new ChunkVersionNotSupportedException(Version);
                 }
             }
         }
