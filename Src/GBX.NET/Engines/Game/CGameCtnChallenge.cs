@@ -1177,9 +1177,8 @@ public partial class CGameCtnChallenge :
 
             if (Version >= 5)
             {
-                if (Version >= 8)
+                if (Version >= 9)
                 {
-                    // yo nice leak from TOTD made using alpha build of the game
                     throw new ChunkVersionNotSupportedException(Version);
                 }
 
@@ -1226,6 +1225,11 @@ public partial class CGameCtnChallenge :
                     {
                         throw new NotSupportedException("U07 has something else than -1");
                     }
+                }
+
+                if (Version >= 8)
+                {
+                    return;
                 }
 
                 // always the same count as anchoredObjects
@@ -1399,6 +1403,11 @@ public partial class CGameCtnChallenge :
                 if (Version != 6)
                 {
                     itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
+                }
+
+                if (Version >= 8)
+                {
+                    return;
                 }
 
                 itemW.WriteArray(snappedOnIndices.ToArray());
