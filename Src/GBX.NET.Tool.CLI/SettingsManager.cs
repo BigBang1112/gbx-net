@@ -107,7 +107,7 @@ internal sealed class SettingsManager
                 using var fs = File.OpenRead(filePath);
                 using var reader = new StreamReader(fs);
 
-                result = (T)(ymlDeserializer.Deserialize(reader) ?? new T());
+                result = ymlDeserializer.Deserialize<T>(reader);
             }
             catch (Exception ex)
             {
