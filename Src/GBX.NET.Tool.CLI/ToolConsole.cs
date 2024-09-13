@@ -2,6 +2,7 @@
 using GBX.NET.Tool.CLI.Exceptions;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -212,18 +213,20 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
                 try
                 {
+                    var watch = Stopwatch.StartNew();
+
                     var result = produceMethod.Invoke(toolInstance, null);
 
-                    if (result is IEnumerable<object>)
+                    if (result is IEnumerable<object> and not System.Collections.ICollection)
                     {
                         logger.LogInformation("Producing for each distributed output...");
                     }
                     else
                     {
-                        logger.LogInformation("Produced! Distributing output...");
+                        logger.LogInformation("Produced in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
                 }
                 catch (TargetInvocationException ex)
                 {
@@ -273,7 +276,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         }
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
                 }
             }
 
@@ -285,18 +288,20 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
                 try
                 {
+                    var watch = Stopwatch.StartNew();
+
                     var result = mutateMethod.Invoke(toolInstance, null);
 
                     if (result is IEnumerable<object>)
                     {
-                        logger.LogInformation("Mutationing while distributing output...");
+                        logger.LogInformation("Mutating while distributing output...");
                     }
                     else
                     {
-                        logger.LogInformation("Mutated! Distributing output...");
+                        logger.LogInformation("Mutated in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
                 }
                 catch (TargetInvocationException ex)
                 {
@@ -326,7 +331,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         logger.LogInformation("Mutated! Distributing output...");
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
                 }
             }
 
