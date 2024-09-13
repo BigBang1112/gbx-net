@@ -84,6 +84,66 @@ internal sealed class SettingsManager
         return result;
     }
 
+    public T GetOrCreateYmlFile<T>(
+        string fileName,
+        bool resetOnException = false,
+        ILogger? logger = null) where T : new()
+    {
+        T result;
+
+        if (ymlDeserializer is null || ymlSerializer is null)
+        {
+            throw new InvalidOperationException("YAML deserializer or serializer is not available.");
+        }
+
+        var filePath = Path.Combine(runningDir, fileName + ".yml");
+
+        if (File.Exists(filePath))
+        {
+            logger?.LogDebug("File {FileName} exists. Deserializing...", fileName);
+
+            try
+            {
+                using var fs = File.OpenRead(filePath);
+                using var reader = new StreamReader(fs);
+
+                result = (T)(ymlDeserializer.Deserialize(reader) ?? new T());
+            }
+            catch (Exception ex)
+            {
+                if (!resetOnException)
+                {
+                    throw;
+                }
+
+                AnsiConsole.WriteException(ex);
+
+                result = new();
+            }
+        }
+        else
+        {
+            result = new();
+
+            logger?.LogDebug("File {FileName} does not exist.", fileName);
+
+            var directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+        }
+
+        logger?.LogDebug("Creating and serializing {FileName}...", fileName);
+
+        using var writer = File.CreateText(filePath);
+
+        ymlSerializer.Serialize(writer, result);
+
+        return result;
+    }
+
     [RequiresDynamicCode(DynamicCodeMessages.JsonSerializeMessage)]
     [RequiresUnreferencedCode(DynamicCodeMessages.JsonSerializeMessage)]
     public async Task PopulateConfigAsync(string configName, Config config, CancellationToken cancellationToken)
