@@ -99,9 +99,11 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private async Task RunAsync(CancellationToken cancellationToken)
     {
         // Load console settings from file if exists otherwise create one
-        var consoleSettings = await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
-            ToolJsonContext.Default.ConsoleSettings,
-            cancellationToken: cancellationToken);
+        var consoleSettings = options.YmlSerializer is null || options.YmlDeserializer is null
+            ? await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
+                ToolJsonContext.Default.ConsoleSettings,
+                cancellationToken: cancellationToken)
+            : settingsManager.GetOrCreateYmlFile<ConsoleSettings>("ConsoleSettings");
 
         var toolSettings = argsResolver.Resolve(consoleSettings);
 
