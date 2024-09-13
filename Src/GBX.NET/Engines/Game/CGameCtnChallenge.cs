@@ -921,7 +921,12 @@ public partial class CGameCtnChallenge :
                 w.Write(n.LightmapFrames?.Length ?? 0);
             }
 
-            foreach (var frame in n.LightmapFrames ?? [])
+            if (n.LightmapFrames is null || n.LightmapFrames.Length == 0)
+            {
+                return;
+            }
+
+            foreach (var frame in n.LightmapFrames)
             {
                 w.WriteWritable(frame, version: lightmapVersion);
             }
