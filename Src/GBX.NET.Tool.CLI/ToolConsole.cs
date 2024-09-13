@@ -99,7 +99,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private async Task RunAsync(CancellationToken cancellationToken)
     {
         // Load console settings from file if exists otherwise create one
-        var consoleSettings = await settingsManager.GetOrCreateFileAsync("ConsoleSettings",
+        var consoleSettings = await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
             ToolJsonContext.Default.ConsoleSettings,
             cancellationToken: cancellationToken);
 
@@ -170,9 +170,14 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
+        var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
+            : toolSettings.ConsoleSettings.ConfigName;
+
+        var complexConfig = new ComplexConfig(configName, settingsManager);
+
         // If the tool has setup, apply tool things below to setup
 
-        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, complexConfig, logger);
         var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
 
         AnsiConsole.WriteLine();
@@ -190,9 +195,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             if (toolInstance is IConfigurable<Config> configurable)
             {
-                var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
-                    : toolSettings.ConsoleSettings.ConfigName;
-
                 logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, configurable.Config.GetType());
 
                 await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);

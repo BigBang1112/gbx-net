@@ -11,16 +11,18 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
 {
     private readonly ToolFunctionality<T> toolFunctionality;
     private readonly ToolSettings toolSettings;
+    private readonly ComplexConfig complexConfig;
     private readonly ILogger logger;
 
     private readonly Dictionary<Input, object?> resolvedInputs = [];
     private readonly HashSet<object> usedObjects = [];
     private readonly List<object> unprocessedObjects = [];
 
-    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, ILogger logger)
+    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, ComplexConfig complexConfig, ILogger logger)
     {
         this.toolFunctionality = toolFunctionality;
         this.toolSettings = toolSettings;
+        this.complexConfig = complexConfig;
         this.logger = logger;
     }
 
@@ -109,6 +111,12 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 }
 
                 paramsForCtor[index++] = paramObj;
+                continue;
+            }
+
+            if (type == typeof(IComplexConfig))
+            {
+                paramsForCtor[index++] = complexConfig;
                 continue;
             }
 
