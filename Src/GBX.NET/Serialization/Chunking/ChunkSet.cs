@@ -57,6 +57,13 @@ internal sealed class ChunkSet : SortedSet<IChunk>, IChunkSet
 
     public IChunk Create(uint chunkId)
     {
+        var existing = Get(chunkId);
+
+        if (existing is not null)
+        {
+            return existing;
+        }
+
         var chunk = ClassManager.NewChunk(chunkId) ?? ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Chunk 0x{chunkId:X8} is not supported.");
 
         Add(chunk);
@@ -66,6 +73,13 @@ internal sealed class ChunkSet : SortedSet<IChunk>, IChunkSet
 
     public T Create<T>() where T : IChunk, new()
     {
+        var existing = Get<T>();
+
+        if (existing is not null)
+        {
+            return existing;
+        }
+
         var chunk = new T();
 
         Add(chunk);
