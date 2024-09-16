@@ -367,8 +367,8 @@ public partial class CPlugCrystal
 
                 if (Version >= 25)
                 {
-                    materialIndex = Version >= 33
-                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0?
+                    materialIndex = Version >= 33 && n.Materials.Count > 0
+                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0? yes
                         : r.ReadInt32();
                 }
 
@@ -587,7 +587,7 @@ public partial class CPlugCrystal
                 {
                     var materialIndex = face.Material is null ? -1 : n.Materials.IndexOf(face.Material);
 
-                    if (Version >= 33)
+                    if (Version >= 33 && n.Materials.Count > 0)
                     {
                         // this can write 255 in case of -1, which is not correct?
                         w.WriteOptimizedInt(materialIndex, n.Materials.Count);
