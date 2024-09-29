@@ -874,10 +874,10 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         switch ((uint)determineFrom)
         {
-            case >= ushort.MaxValue:
+            case > ushort.MaxValue:
                 Write(value);
                 break;
-            case >= byte.MaxValue:
+            case > byte.MaxValue:
                 Write((ushort)value);
                 break;
             default:

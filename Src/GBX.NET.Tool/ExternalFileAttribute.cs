@@ -5,7 +5,7 @@
 /// </summary>
 /// <param name="fileName">The name of the file to be created and read from.</param>
 [AttributeUsage(AttributeTargets.Property)]
-public class ExternalFileAttribute(string fileName) : Attribute
+public class ExternalFileAttribute(string fileNameWithoutExtension) : Attribute
 {
-    public string FileName { get; } = fileName;
+    public string FileNameWithoutExtension { get; } = fileNameWithoutExtension;
 }

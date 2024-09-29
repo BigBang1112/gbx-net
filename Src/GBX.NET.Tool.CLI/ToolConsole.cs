@@ -2,7 +2,9 @@
 using GBX.NET.Tool.CLI.Exceptions;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -98,9 +100,11 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private async Task RunAsync(CancellationToken cancellationToken)
     {
         // Load console settings from file if exists otherwise create one
-        var consoleSettings = await settingsManager.GetOrCreateFileAsync("ConsoleSettings",
-            ToolJsonContext.Default.ConsoleSettings,
-            cancellationToken: cancellationToken);
+        var consoleSettings = options.YmlSerializer is null || options.YmlDeserializer is null
+            ? await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
+                ToolJsonContext.Default.ConsoleSettings,
+                cancellationToken: cancellationToken)
+            : settingsManager.GetOrCreateYmlFile<ConsoleSettings>("ConsoleSettings");
 
         var toolSettings = argsResolver.Resolve(consoleSettings);
 
@@ -169,9 +173,14 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
+        var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
+            : toolSettings.ConsoleSettings.ConfigName;
+
+        var complexConfig = new ComplexConfig(configName, settingsManager);
+
         // If the tool has setup, apply tool things below to setup
 
-        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, complexConfig, logger);
         var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
 
         AnsiConsole.WriteLine();
@@ -189,9 +198,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             if (toolInstance is IConfigurable<Config> configurable)
             {
-                var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
-                    : toolSettings.ConsoleSettings.ConfigName;
-
                 logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, configurable.Config.GetType());
 
                 await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);
@@ -204,18 +210,33 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Producing...");
 
                 var produceMethod = toolFunctionality.ProduceMethods[0];
-                var result = produceMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Producing for each distributed output...");
-                }
-                else
-                {
-                    logger.LogInformation("Produced! Distributing output...");
-                }
+                    var watch = Stopwatch.StartNew();
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    var result = produceMethod.Invoke(toolInstance, null);
+
+                    if (result is IEnumerable<object> and not System.Collections.ICollection)
+                    {
+                        logger.LogInformation("Producing for each distributed output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Produced in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while producing.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
@@ -255,7 +276,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         }
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
                 }
             }
 
@@ -264,18 +285,33 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Mutating...");
 
                 var mutateMethod = toolFunctionality.MutateMethods[0];
-                var result = mutateMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Mutationing while distributing output...");
-                }
-                else
-                {
-                    logger.LogInformation("Mutated! Distributing output...");
-                }
+                    var watch = Stopwatch.StartNew();
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    var result = mutateMethod.Invoke(toolInstance, null);
+
+                    if (result is IEnumerable<object>)
+                    {
+                        logger.LogInformation("Mutating while distributing output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Mutated in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while mutating.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
@@ -295,7 +331,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         logger.LogInformation("Mutated! Distributing output...");
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
                 }
             }
 

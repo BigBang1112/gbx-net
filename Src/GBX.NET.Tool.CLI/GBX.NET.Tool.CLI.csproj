@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Tool.CLI</PackageId>
-        <Version>0.2.0</Version>
+        <VersionPrefix>0.3.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>CLI implementation for the GBX.NET tool framework using Spectre.Console.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>

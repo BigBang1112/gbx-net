@@ -34,11 +34,12 @@ public partial class CGameGhost
             n.RawData = r.ReadData();
             n.sampleData = new Data(n.RawData)
             {
-                Offsets = r.ReadArray<int>(),
-                IsFixedTimeStep = r.ReadBoolean(),
-                SamplePeriod = r.ReadTimeInt32(),
-                Version = r.ReadInt32()
+                Offsets = r.ReadArray<int>()
             };
+            Times = r.ReadArray<int>();
+            n.sampleData.IsFixedTimeStep = r.ReadBoolean();
+            n.sampleData.SamplePeriod = r.ReadTimeInt32();
+            n.sampleData.Version = r.ReadInt32();
         }
 
         public override void Write(CGameGhost n, GbxWriter w)

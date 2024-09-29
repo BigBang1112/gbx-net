@@ -1276,8 +1276,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public int ReadOptimizedInt(int determineFrom) => (uint)determineFrom switch
     {
-        >= ushort.MaxValue => ReadInt32(),
-        >= byte.MaxValue => ReadUInt16(),
+        > ushort.MaxValue => ReadInt32(),
+        > byte.MaxValue => ReadUInt16(),
         _ => ReadByte()
     };
 

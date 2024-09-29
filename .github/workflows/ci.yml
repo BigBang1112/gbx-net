@@ -3,16 +3,20 @@ name: CI
 on:
   push:
     branches: [ "master", "dev" ]
-    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
+    paths: [ ".github/workflows/ci.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
   pull_request:
     branches: [ "master", "dev" ]
-    paths: [ ".github/workflows/dotnet.yml", "Src/**", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
+    paths: [ ".github/workflows/ci.yml", "Src/**", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
   workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -31,10 +35,12 @@ jobs:
       run: dotnet build -c Release --no-restore  /p:ContinuousIntegrationBuild=true
       
     - name: Test
+      if: ${{ (matrix.os == 'ubuntu-latest') || (github.ref == 'refs/heads/master') }}
       run: dotnet test -c Release --no-build --verbosity normal --no-build --collect:"XPlat Code Coverage" --results-directory ./coverage
       
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
+      if: ${{ (github.ref == 'refs/heads/master') && (matrix.os == 'ubuntu-latest') }}
       with:
         filename: coverage/**/coverage.cobertura.xml
         badge: true

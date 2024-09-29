@@ -92,6 +92,9 @@ jobs:
 
     - name: Publish ${{ matrix.lib }} nupkg to github.com
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
+
+    - name: Publish ${{ matrix.lib }} nupkg to nuget.gbx.tools
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
     
     - name: Upload ${{ matrix.lib }} nupkg to this release
       run: gh release upload ${{ github.ref_name }} ${{ matrix.lib }}/bin/Release/*.nupkg
