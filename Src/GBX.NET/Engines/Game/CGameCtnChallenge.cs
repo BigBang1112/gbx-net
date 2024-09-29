@@ -1737,16 +1737,16 @@ public partial class CGameCtnChallenge :
     {
         public int Version { get; set; }
 
-        public bool U01;
-        public bool U02;
+        public bool U13;
+        public bool U14;
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
 
             n.HasLightmaps = rw.Boolean(n.HasLightmaps);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref U13);
+            rw.Boolean(ref U14);
 
             if (!n.HasLightmaps)
             {
