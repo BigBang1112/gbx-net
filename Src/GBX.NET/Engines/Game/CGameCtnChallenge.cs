@@ -18,6 +18,8 @@ public partial class CGameCtnChallenge :
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
     private TimeInt32? authorTime; // Only used if ChallengeParameters is null
     private int authorScore; // Only used if ChallengeParameters is null
+    private string? mapType; // Only used if ChallengeParameters is null
+    private string? mapStyle; // Only used if ChallengeParameters is null
 
     private Ident mapInfo = Ident.Empty;
     [AppliedWithChunk<HeaderChunk03043002>]
@@ -145,6 +147,42 @@ public partial class CGameCtnChallenge :
             }
 
             authorScore = value;
+        }
+    }
+
+    /// <summary>
+    /// Map type, the expected mode. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
+    public string? MapType
+    {
+        get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.MapType = value;
+            }
+
+            mapType = value;
+        }
+    }
+
+    /// <summary>
+    /// Map style. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
+    public string? MapStyle
+    {
+        get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.MapStyle = value;
+            }
+
+            mapStyle = value;
         }
     }
 
