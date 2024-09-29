@@ -37,12 +37,21 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         this.http = http ?? throw new ArgumentNullException(nameof(http));
         this.options = options ?? throw new ArgumentNullException(nameof(options));
 
+        var deserializer = options.YmlContext is null
+            ? options.YmlDeserializer?.Build()
+            : new YamlDotNet.Serialization.StaticDeserializerBuilder(options.YmlContext).Build();
+
+        var serializer = options.YmlContext is null
+            ? options.YmlSerializer?.Build()
+            : new YamlDotNet.Serialization.StaticSerializerBuilder(options.YmlContext).Build();
+
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
         settingsManager = new SettingsManager(runningDir,
             options.JsonContext,
             options.JsonOptions,
-            options.YmlDeserializer,
-            options.YmlSerializer);
+            deserializer,
+            serializer,
+            options.YmlContext);
         argsResolver = new ArgsResolver(args, http);
     }
 
@@ -57,8 +66,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     /// <param name="args">Command line arguments. Use the 'args' keyword here.</param>
     /// <param name="options">Options for the tool console. These should be hardcoded for purpose.</param>
     /// <returns>Result of the tool execution (if wanted to use later).</returns>
-    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
     {
         ArgumentNullException.ThrowIfNull(args);
@@ -95,8 +102,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         return new ToolConsoleRunResult<T>(tool);
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
     private async Task RunAsync(CancellationToken cancellationToken)
     {
         // Load console settings from file if exists otherwise create one

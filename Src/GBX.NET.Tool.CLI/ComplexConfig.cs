@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Tool.CLI;
@@ -17,8 +16,8 @@ internal sealed class ComplexConfig : IComplexConfig
         this.settings = settings;
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.JsonSerializeMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.JsonSerializeMessage)]
+    [RequiresUnreferencedCode(SettingsManager.UnreferencedCodeMessage)]
+    [RequiresDynamicCode(SettingsManager.DynamicCodeMessage)]
     public T Get<T>(string filePathWithoutExtension, bool cache = false) where T : class
     {
         if (cache && this.cache.TryGetValue(filePathWithoutExtension, out var value))
@@ -36,8 +35,25 @@ internal sealed class ComplexConfig : IComplexConfig
         return result;
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.JsonSerializeMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.JsonSerializeMessage)]
+    public T GetStatically<T>(string filePathWithoutExtension, bool cache = false) where T : class
+    {
+        if (cache && this.cache.TryGetValue(filePathWithoutExtension, out var value))
+        {
+            return (T)value;
+        }
+
+        var result = settings.GetFileFromConfigStatically<T>(configName, filePathWithoutExtension);
+
+        if (cache)
+        {
+            this.cache.TryAdd(filePathWithoutExtension, result);
+        }
+
+        return result;
+    }
+
+    [RequiresUnreferencedCode(SettingsManager.UnreferencedCodeMessage)]
+    [RequiresDynamicCode(SettingsManager.DynamicCodeMessage)]
     public async Task<T> GetAsync<T>(string filePathWithoutExtension, bool cache = false, CancellationToken cancellationToken = default) where T : class
     {
         if (cache && this.cache.TryGetValue(filePathWithoutExtension, out var value))
@@ -46,6 +62,23 @@ internal sealed class ComplexConfig : IComplexConfig
         }
 
         var result = await settings.GetFileFromConfigAsync<T>(configName, filePathWithoutExtension, cancellationToken).ConfigureAwait(false);
+
+        if (cache)
+        {
+            this.cache.TryAdd(filePathWithoutExtension, result);
+        }
+
+        return result;
+    }
+
+    public async Task<T> GetStaticallyAsync<T>(string filePathWithoutExtension, bool cache = false, CancellationToken cancellationToken = default) where T : class
+    {
+        if (cache && this.cache.TryGetValue(filePathWithoutExtension, out var value))
+        {
+            return (T)value;
+        }
+
+        var result = await settings.GetFileFromConfigStaticallyAsync<T>(configName, filePathWithoutExtension, cancellationToken).ConfigureAwait(false);
 
         if (cache)
         {
