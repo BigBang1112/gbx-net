@@ -18,7 +18,7 @@ internal sealed class ArgsResolver
 
     public ToolSettings Resolve(ConsoleSettings consoleOptions)
     {
-        if (!HasArgs)
+        if (!HasArgs && !Console.IsInputRedirected)
         {
             return new ToolSettings { ConsoleSettings = consoleOptions };
         }
@@ -31,14 +31,12 @@ internal sealed class ArgsResolver
         // - check for folders
         // - check for stdin (maybe?)
         // - check for configured user data path
-        var stream = new BufferedStream(Console.OpenStandardInput());
 
-        if (stream.CanRead)
+        if (Console.IsInputRedirected)
         {
-            inputs.Add(new StandardInputArgument(stream));
+            inputs.Add(new StandardInputArgument(Console.OpenStandardInput()));
+            inputs.Add(new StandardTextInputArgument(Console.In));
         }
-
-        inputs.Add(new StandardTextInputArgument(Console.In));
 
         var argsEnumerator = args.AsEnumerable().GetEnumerator();
 

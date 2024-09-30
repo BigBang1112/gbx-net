@@ -107,7 +107,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             AnsiConsole.WriteException(ex);
         }
 
-        if (!tool.noPause)
+        if (!tool.noPause && !Console.IsInputRedirected)
         {
             PressAnyKeyToContinue();
         }

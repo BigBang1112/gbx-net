@@ -1,5 +1,4 @@
-﻿
-namespace GBX.NET.Tool.CLI.InputArguments;
+﻿namespace GBX.NET.Tool.CLI.InputArguments;
 
 public sealed record StandardTextInputArgument(TextReader Reader) : InputArgument
 {
