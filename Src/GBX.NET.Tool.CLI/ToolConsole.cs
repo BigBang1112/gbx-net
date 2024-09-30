@@ -1,5 +1,6 @@
 ﻿using GBX.NET.LZO;
 using GBX.NET.Tool.CLI.Exceptions;
+using GBX.NET.Tool.CLI.Inputs;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
 using System.Diagnostics;
@@ -23,6 +24,15 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private readonly ArgsResolver argsResolver;
 
     private bool noPause;
+
+    public delegate Task ExecuteLogic(
+        ToolSettings toolSettings,
+        SettingsManager settingsManager,
+        OutputDistributor outputDistributor, 
+        string configName, 
+        IComplexConfig complexConfig, 
+        ILogger logger, 
+        CancellationToken cancellationToken);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ToolConsole{T}"/> class.
@@ -79,7 +89,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         try
         {
-            await tool.RunAsync(cts.Token);
+            await tool.RunAsync(ExecuteReflectionLogicAsync, cts.Token);
         }
         catch (ConsoleProblemException ex)
         {
@@ -102,14 +112,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         return new ToolConsoleRunResult<T>(tool);
     }
 
-    private async Task RunAsync(CancellationToken cancellationToken)
+    public async Task RunAsync(ExecuteLogic executeLogic, CancellationToken cancellationToken)
     {
-        // Load console settings from file if exists otherwise create one
-        var consoleSettings = options.YmlSerializer is null || options.YmlDeserializer is null
-            ? await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
-                ToolJsonContext.Default.ConsoleSettings,
-                cancellationToken: cancellationToken)
-            : settingsManager.GetOrCreateYmlFile<ConsoleSettings>("ConsoleSettings");
+        var consoleSettings = await SetupConsoleSettingsAsync(cancellationToken);
 
         var toolSettings = argsResolver.Resolve(consoleSettings);
 
@@ -118,22 +123,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         var logger = new SpectreConsoleLogger(toolSettings.ConsoleSettings.LogLevel);
 
-        logger.LogDebug("Running directory: {RunningDir}", runningDir);
-        logger.LogDebug("CLI settings from file: {Settings}", toolSettings.ConsoleSettings);
-        logger.LogDebug("Settings/config overwrites: {Overwrites}", toolSettings.ConfigOverwrites.Count == 0
-            ? "None"
-            : string.Join(", ", toolSettings.ConfigOverwrites.Select(kv => $"{kv.Key}={kv.Value}")));
-        logger.LogDebug("Inputs: {Inputs}", toolSettings.Inputs.Count == 0
-            ? "None"
-            : string.Join(", ", toolSettings.Inputs));
-        logger.LogTrace("No pause: {NoPause}", noPause);
-
-        var introWriterTask = default(Task);
-
-        if (!toolSettings.ConsoleSettings.SkipIntro)
-        {
-            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
-        }
+        var introWriterTask = WriteIntroAsync(toolSettings, logger);
 
         logger.LogTrace("Checking for updates...");
 
@@ -156,10 +146,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         AnsiConsole.WriteLine();
 
-        // See what the tool can do
-        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
-
-        if (toolSettings.Inputs.Count == 0)
+        if (toolSettings.InputArguments.Count == 0)
         {
             // write tool specific intro
             if (!string.IsNullOrWhiteSpace(options.IntroText))
@@ -185,12 +172,38 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         // If the tool has setup, apply tool things below to setup
 
-        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, complexConfig, logger);
-        var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
-
         AnsiConsole.WriteLine();
         logger.LogInformation("Starting tool instance creation...");
         AnsiConsole.WriteLine();
+
+        var outputDistributor = new OutputDistributor(toolSettings, runningDir, logger);
+
+        await executeLogic(toolSettings, settingsManager, outputDistributor, configName, complexConfig, logger, cancellationToken);
+
+        AnsiConsole.WriteLine();
+
+        logger.LogInformation("Completed!");
+
+        // Check again for updates if not done before
+        if (!updateCheckCompleted && updateChecker is not null)
+        {
+            await updateChecker.CompareVersionAsync();
+        }
+    }
+
+    private static async Task ExecuteReflectionLogicAsync(
+        ToolSettings toolSettings, 
+        SettingsManager settingsManager, 
+        OutputDistributor outputDistributor, 
+        string configName, 
+        IComplexConfig complexConfig, 
+        ILogger logger,
+        CancellationToken cancellationToken)
+    {
+        // See what the tool can do
+        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
+
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, complexConfig, logger);
 
         var counter = 0;
 
@@ -342,16 +355,42 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             logger.LogInformation("Tool instance #{Number} completed.", counter);
         }
+    }
 
-        AnsiConsole.WriteLine();
+    /// <summary>
+    /// Load console settings from file if exists otherwise create one.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    private async Task<ConsoleSettings> SetupConsoleSettingsAsync(CancellationToken cancellationToken)
+    {
+        return options.YmlSerializer is null || options.YmlDeserializer is null
+            ? await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
+                ToolJsonContext.Default.ConsoleSettings,
+                cancellationToken: cancellationToken)
+            : settingsManager.GetOrCreateYmlFile<ConsoleSettings>("ConsoleSettings");
+    }
 
-        logger.LogInformation("Completed!");
+    private Task? WriteIntroAsync(ToolSettings toolSettings, SpectreConsoleLogger logger)
+    {
+        logger.LogDebug("Running directory: {RunningDir}", runningDir);
+        logger.LogDebug("CLI settings from file: {Settings}", toolSettings.ConsoleSettings);
+        logger.LogDebug("Settings/config overwrites: {Overwrites}", toolSettings.ConfigOverwrites.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.ConfigOverwrites.Select(kv => $"{kv.Key}={kv.Value}")));
+        logger.LogDebug("Inputs: {Inputs}", toolSettings.InputArguments.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.InputArguments));
+        logger.LogTrace("No pause: {NoPause}", noPause);
 
-        // Check again for updates if not done before
-        if (!updateCheckCompleted && updateChecker is not null)
+        var introWriterTask = default(Task);
+
+        if (!toolSettings.ConsoleSettings.SkipIntro)
         {
-            await updateChecker.CompareVersionAsync();
+            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
         }
+
+        return introWriterTask;
     }
 
     private static void PressAnyKeyToContinue()

@@ -3,7 +3,7 @@ using GBX.NET.Exceptions;
 
 namespace GBX.NET.Tool.CLI.Inputs;
 
-internal sealed record FileInput(string FilePath) : Input
+public sealed record FileInputArgument(string FilePath) : InputArgument
 {
     public override async Task<object?> ResolveAsync(CancellationToken cancellationToken)
     {

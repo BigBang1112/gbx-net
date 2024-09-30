@@ -14,10 +14,10 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
     
     private readonly ToolFunctionality<T> toolFunctionality;
     private readonly ToolSettings toolSettings;
-    private readonly ComplexConfig complexConfig;
+    private readonly IComplexConfig complexConfig;
     private readonly ILogger logger;
 
-    private readonly Dictionary<Input, object?> resolvedInputs = [];
+    private readonly Dictionary<InputArgument, object?> resolvedInputs = [];
     private readonly HashSet<object> usedObjects = [];
     private readonly List<object> unprocessedObjects = [];
 
@@ -30,7 +30,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
         typeof(IReadOnlyList<>),
     ];
 
-    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, ComplexConfig complexConfig, ILogger logger)
+    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, IComplexConfig complexConfig, ILogger logger)
     {
         this.toolFunctionality = toolFunctionality;
         this.toolSettings = toolSettings;
@@ -249,7 +249,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
 
     private async IAsyncEnumerable<object> EnumerateResolvedObjectsAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var input in toolSettings.Inputs)
+        foreach (var input in toolSettings.InputArguments)
         {
             // Resolve objects from input and cache them
             if (!resolvedInputs.TryGetValue(input, out var resolvedObject))

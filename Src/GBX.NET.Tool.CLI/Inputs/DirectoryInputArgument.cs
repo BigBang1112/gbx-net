@@ -3,7 +3,7 @@ using GBX.NET.Exceptions;
 
 namespace GBX.NET.Tool.CLI.Inputs;
 
-internal sealed record DirectoryInput(string DirectoryPath) : Input
+public sealed record DirectoryInputArgument(string DirectoryPath) : InputArgument
 {
     public override async Task<object?> ResolveAsync(CancellationToken cancellationToken)
     {

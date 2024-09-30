@@ -24,7 +24,7 @@ internal sealed class ArgsResolver
         }
 
         var configOverwrites = new Dictionary<string, string>();
-        var inputs = new List<Input>();
+        var inputs = new List<InputArgument>();
 
         var argsEnumerator = args.AsEnumerable().GetEnumerator();
 
@@ -114,13 +114,13 @@ internal sealed class ArgsResolver
             // - check for configured user data path
             if (Directory.Exists(arg))
             {
-                inputs.Add(new DirectoryInput(arg));
+                inputs.Add(new DirectoryInputArgument(arg));
                 continue;
             }
 
             if (File.Exists(arg))
             {
-                inputs.Add(new FileInput(arg));
+                inputs.Add(new FileInputArgument(arg));
                 continue;
             }
 
@@ -128,7 +128,7 @@ internal sealed class ArgsResolver
             {
                 if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
                 {
-                    inputs.Add(new UriInput(client, uri));
+                    inputs.Add(new UriInputArgument(client, uri));
                 }
 
                 continue;
@@ -137,7 +137,7 @@ internal sealed class ArgsResolver
 
         return new ToolSettings
         {
-            Inputs = inputs,
+            InputArguments = inputs,
             ConfigOverwrites = configOverwrites,
             ConsoleSettings = consoleOptions
         };

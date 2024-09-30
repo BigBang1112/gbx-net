@@ -8,7 +8,7 @@ using System.Text.Json.Serialization.Metadata;
 
 namespace GBX.NET.Tool.CLI;
 
-internal sealed class SettingsManager
+public sealed class SettingsManager
 {
     internal const string DynamicCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, this can cause serialization problems when AOT-compiled.";
     internal const string UnreferencedCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, some members can get trimmed unexpectedly.";

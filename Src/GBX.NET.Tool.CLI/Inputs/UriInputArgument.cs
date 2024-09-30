@@ -3,7 +3,7 @@ using GBX.NET.Exceptions;
 
 namespace GBX.NET.Tool.CLI.Inputs;
 
-internal sealed record UriInput(HttpClient Http, Uri Uri) : Input
+public sealed record UriInputArgument(HttpClient Http, Uri Uri) : InputArgument
 {
     public override async Task<object?> ResolveAsync(CancellationToken cancellationToken)
     {
