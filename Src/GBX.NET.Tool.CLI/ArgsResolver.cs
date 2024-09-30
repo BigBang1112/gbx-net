@@ -6,14 +6,14 @@ namespace GBX.NET.Tool.CLI;
 internal sealed class ArgsResolver
 {
     private readonly string[] args;
-    private readonly HttpClient client;
+    private readonly HttpClient http;
 
     public bool HasArgs => args.Length > 0;
 
     public ArgsResolver(string[] args, HttpClient http)
     {
         this.args = args;
-        this.client = http;
+        this.http = http;
     }
 
     public ToolSettings Resolve(ConsoleSettings consoleOptions)
@@ -25,6 +25,20 @@ internal sealed class ArgsResolver
 
         var configOverwrites = new Dictionary<string, string>();
         var inputs = new List<InputArgument>();
+
+        // - check http:// and https:// for URLs
+        // - check for individual files and files in zip archives
+        // - check for folders
+        // - check for stdin (maybe?)
+        // - check for configured user data path
+        var stream = new BufferedStream(Console.OpenStandardInput());
+
+        if (stream.CanRead)
+        {
+            inputs.Add(new StandardInputArgument(stream));
+        }
+
+        inputs.Add(new StandardTextInputArgument(Console.In));
 
         var argsEnumerator = args.AsEnumerable().GetEnumerator();
 
@@ -107,11 +121,6 @@ internal sealed class ArgsResolver
                 continue;
             }
 
-            // - check http:// and https:// for URLs
-            // - check for individual files and files in zip archives
-            // - check for folders
-            // - check for stdin (maybe?)
-            // - check for configured user data path
             if (Directory.Exists(arg))
             {
                 inputs.Add(new DirectoryInputArgument(arg));
@@ -128,7 +137,7 @@ internal sealed class ArgsResolver
             {
                 if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
                 {
-                    inputs.Add(new UriInputArgument(client, uri));
+                    inputs.Add(new UriInputArgument(http, uri));
                 }
 
                 continue;

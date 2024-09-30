@@ -132,6 +132,34 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 continue;
             }
 
+            if (type == typeof(Stream))
+            {
+                var paramObj = await GetParameterObjectAsync(obj => obj is Stream, cancellationToken);
+
+                if (paramObj is null)
+                {
+                    // Constructor is not valid for this configuration
+                    return null;
+                }
+
+                paramsForCtor[index++] = paramObj;
+                continue;
+            }
+
+            if (type == typeof(TextReader))
+            {
+                var paramObj = await GetParameterObjectAsync(obj => obj is TextReader, cancellationToken);
+
+                if (paramObj is null)
+                {
+                    // Constructor is not valid for this configuration
+                    return null;
+                }
+
+                paramsForCtor[index++] = paramObj;
+                continue;
+            }
+
             if (!type.IsGenericType)
             {
                 return null;
