@@ -1,6 +1,5 @@
 ﻿using GBX.NET.LZO;
 using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
 using System.Diagnostics;
@@ -15,6 +14,8 @@ namespace GBX.NET.Tool.CLI;
 /// <typeparam name="T">Tool type.</typeparam>
 public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces | DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicMethods)] T> where T : class, ITool
 {
+    private const string DynamicCodeMessage = "Tool instantiation uses MakeGenericType to create collections, but it should work as expected if constructor parameters don't include any IEnumerable-based types. If JsonContext is not set, or YAML is used and YmlContext is not set, this can cause serialization problems with configuration when AOT-compiled.";
+    private const string UnreferencedCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, some configuration members can get trimmed unexpectedly.";
     private readonly string[] args;
     private readonly HttpClient http;
     private readonly ToolConsoleOptions options;
@@ -76,6 +77,8 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     /// <param name="args">Command line arguments. Use the 'args' keyword here.</param>
     /// <param name="options">Options for the tool console. These should be hardcoded for purpose.</param>
     /// <returns>Result of the tool execution (if wanted to use later).</returns>
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
     {
         ArgumentNullException.ThrowIfNull(args);
@@ -191,6 +194,8 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         }
     }
 
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
     private static async Task ExecuteReflectionLogicAsync(
         ToolSettings toolSettings, 
         SettingsManager settingsManager, 

@@ -1,7 +1,7 @@
 ﻿
 using GBX.NET.Exceptions;
 
-namespace GBX.NET.Tool.CLI.Inputs;
+namespace GBX.NET.Tool.CLI.InputArguments;
 
 public sealed record UriInputArgument(HttpClient Http, Uri Uri) : InputArgument
 {

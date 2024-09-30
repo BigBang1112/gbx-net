@@ -1,5 +1,5 @@
 ﻿using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
+using GBX.NET.Tool.CLI.InputArguments;
 using Microsoft.Extensions.Logging;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;

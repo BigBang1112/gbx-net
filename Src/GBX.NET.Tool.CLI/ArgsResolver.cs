@@ -1,5 +1,5 @@
 ﻿using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
+using GBX.NET.Tool.CLI.InputArguments;
 
 namespace GBX.NET.Tool.CLI;
 

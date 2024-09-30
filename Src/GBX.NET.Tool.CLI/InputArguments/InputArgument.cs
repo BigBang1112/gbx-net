@@ -1,5 +1,5 @@
 ﻿
-namespace GBX.NET.Tool.CLI.Inputs;
+namespace GBX.NET.Tool.CLI.InputArguments;
 
 public abstract record InputArgument
 {
