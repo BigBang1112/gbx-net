@@ -81,6 +81,13 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     [RequiresUnreferencedCode(UnreferencedCodeMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
     {
+        return await RunWithExecuteLogicAsync(args, ExecuteReflectionLogicAsync, options);
+    }
+
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
+    public static async Task<ToolConsoleRunResult<T>> RunWithExecuteLogicAsync(string[] args, ExecuteLogic executeLogic, ToolConsoleOptions? options = null)
+    {
         ArgumentNullException.ThrowIfNull(args);
 
         using var http = new HttpClient();
@@ -92,7 +99,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         try
         {
-            await tool.RunAsync(ExecuteReflectionLogicAsync, cts.Token);
+            await tool.RunAsync(executeLogic, cts.Token);
         }
         catch (ConsoleProblemException ex)
         {
