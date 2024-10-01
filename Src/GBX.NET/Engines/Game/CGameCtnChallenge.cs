@@ -1207,7 +1207,7 @@ public partial class CGameCtnChallenge :
 
             n.anchoredObjects = r.ReadListNodeRef_deprec<CGameCtnAnchoredObject>()!;
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 // defines which (second element) items are deleted together with other (first element) item?
                 var itemsOnItem = r.ReadArray<Int2>();
@@ -1270,11 +1270,6 @@ public partial class CGameCtnChallenge :
                     }
                 }
 
-                if (Version >= 8)
-                {
-                    return;
-                }
-
                 // always the same count as anchoredObjects
                 var snappedIndexes = r.ReadArray<int>(); // "snapped onto block/item" indexes
 
@@ -1327,7 +1322,7 @@ public partial class CGameCtnChallenge :
                 }
             }
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 var pairs = new List<Int2>();
 
@@ -1446,11 +1441,6 @@ public partial class CGameCtnChallenge :
                 if (Version != 6)
                 {
                     itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
-                }
-
-                if (Version >= 8)
-                {
-                    return;
                 }
 
                 itemW.WriteArray(snappedOnIndices.ToArray());

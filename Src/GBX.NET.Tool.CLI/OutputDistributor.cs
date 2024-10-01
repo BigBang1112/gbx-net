@@ -3,14 +3,14 @@ using System.Diagnostics;
 
 namespace GBX.NET.Tool.CLI;
 
-internal sealed class OutputDistributor
+public sealed class OutputDistributor
 {
     private readonly ToolSettings toolSettings;
     private readonly ILogger logger;
 
     private readonly string outputDir;
 
-    public OutputDistributor(string runningDir, ToolSettings toolSettings, ILogger logger)
+    public OutputDistributor(ToolSettings toolSettings, string runningDir, ILogger logger)
     {
         this.toolSettings = toolSettings;
         this.logger = logger;

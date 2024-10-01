@@ -823,6 +823,126 @@ public partial class Gbx : IGbx
         return ParseClassId(fs, remap);
     }
 
+    public static bool IsUncompressed(Stream stream)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+#if NETSTANDARD2_0
+        var minimalData = new byte[8];
+        var count = stream.Read(minimalData, 0, minimalData.Length);
+#else
+        Span<byte> minimalData = stackalloc byte[8];
+        var count = stream.Read(minimalData);
+#endif
+
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to check if the Gbx is uncompressed.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        return minimalData[7] == (byte)GbxCompression.Uncompressed;
+    }
+
+    public static bool IsUncompressed(string filePath)
+    {
+        using var fs = File.OpenRead(filePath);
+        return IsUncompressed(fs);
+    }
+
+    public static async Task<bool> IsUncompressed(Stream stream, CancellationToken cancellationToken = default)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+        var minimalData = new byte[8];
+#if NETSTANDARD2_0
+        var count = await stream.ReadAsync(minimalData, 0, minimalData.Length, cancellationToken);
+#else
+        var count = await stream.ReadAsync(minimalData, cancellationToken);
+#endif
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to check if the Gbx is uncompressed.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        return minimalData[7] == (byte)GbxCompression.Uncompressed;
+    }
+
+    public static async Task<bool> IsUncompressed(string filePath, CancellationToken cancellationToken = default)
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await IsUncompressed(fs, cancellationToken);
+    }
+
+    public static bool IsCompressed(Stream stream)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+#if NETSTANDARD2_0
+        var minimalData = new byte[8];
+        var count = stream.Read(minimalData, 0, minimalData.Length);
+#else
+        Span<byte> minimalData = stackalloc byte[8];
+        var count = stream.Read(minimalData);
+#endif
+
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to check if the Gbx is compressed.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        return minimalData[7] == (byte)GbxCompression.Compressed;
+    }
+
+    public static bool IsCompressed(string filePath)
+    {
+        using var fs = File.OpenRead(filePath);
+        return IsCompressed(fs);
+    }
+
+    public static async Task<bool> IsCompressed(Stream stream, CancellationToken cancellationToken = default)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+        var minimalData = new byte[8];
+#if NETSTANDARD2_0
+        var count = await stream.ReadAsync(minimalData, 0, minimalData.Length, cancellationToken);
+#else
+        var count = await stream.ReadAsync(minimalData, cancellationToken);
+#endif
+        if (count != minimalData.Length)
+        {
+            throw new NotAGbxException("Not enough data to check if the Gbx is compressed.");
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        return minimalData[7] == (byte)GbxCompression.Compressed;
+    }
+
+    public static async Task<bool> IsCompressed(string filePath, CancellationToken cancellationToken = default)
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await IsCompressed(fs, cancellationToken);
+    }
+
     /// <summary>
     /// Implicitly casts <see cref="Gbx"/> to its <see cref="Node"/>.
     /// </summary>

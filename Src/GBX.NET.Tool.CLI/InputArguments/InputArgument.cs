@@ -1,7 +1,7 @@
 ﻿
-namespace GBX.NET.Tool.CLI.Inputs;
+namespace GBX.NET.Tool.CLI.InputArguments;
 
-internal abstract record Input
+public abstract record InputArgument
 {
     public abstract Task<object?> ResolveAsync(CancellationToken cancellationToken);
 }

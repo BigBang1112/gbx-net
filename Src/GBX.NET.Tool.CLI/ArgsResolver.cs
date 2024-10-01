@@ -1,30 +1,42 @@
 ﻿using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
+using GBX.NET.Tool.CLI.InputArguments;
 
 namespace GBX.NET.Tool.CLI;
 
 internal sealed class ArgsResolver
 {
     private readonly string[] args;
-    private readonly HttpClient client;
+    private readonly HttpClient http;
 
     public bool HasArgs => args.Length > 0;
 
     public ArgsResolver(string[] args, HttpClient http)
     {
         this.args = args;
-        this.client = http;
+        this.http = http;
     }
 
     public ToolSettings Resolve(ConsoleSettings consoleOptions)
     {
-        if (!HasArgs)
+        if (!HasArgs && !Console.IsInputRedirected)
         {
             return new ToolSettings { ConsoleSettings = consoleOptions };
         }
 
         var configOverwrites = new Dictionary<string, string>();
-        var inputs = new List<Input>();
+        var inputs = new List<InputArgument>();
+
+        // - check http:// and https:// for URLs
+        // - check for individual files and files in zip archives
+        // - check for folders
+        // - check for stdin (maybe?)
+        // - check for configured user data path
+
+        if (Console.IsInputRedirected)
+        {
+            inputs.Add(new StandardInputArgument(Console.OpenStandardInput()));
+            inputs.Add(new StandardTextInputArgument(Console.In));
+        }
 
         var argsEnumerator = args.AsEnumerable().GetEnumerator();
 
@@ -107,20 +119,15 @@ internal sealed class ArgsResolver
                 continue;
             }
 
-            // - check http:// and https:// for URLs
-            // - check for individual files and files in zip archives
-            // - check for folders
-            // - check for stdin (maybe?)
-            // - check for configured user data path
             if (Directory.Exists(arg))
             {
-                inputs.Add(new DirectoryInput(arg));
+                inputs.Add(new DirectoryInputArgument(arg));
                 continue;
             }
 
             if (File.Exists(arg))
             {
-                inputs.Add(new FileInput(arg));
+                inputs.Add(new FileInputArgument(arg));
                 continue;
             }
 
@@ -128,7 +135,7 @@ internal sealed class ArgsResolver
             {
                 if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
                 {
-                    inputs.Add(new UriInput(client, uri));
+                    inputs.Add(new UriInputArgument(http, uri));
                 }
 
                 continue;
@@ -137,7 +144,7 @@ internal sealed class ArgsResolver
 
         return new ToolSettings
         {
-            Inputs = inputs,
+            InputArguments = inputs,
             ConfigOverwrites = configOverwrites,
             ConsoleSettings = consoleOptions
         };
