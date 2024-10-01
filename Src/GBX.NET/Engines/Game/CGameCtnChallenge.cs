@@ -1207,7 +1207,7 @@ public partial class CGameCtnChallenge :
 
             n.anchoredObjects = r.ReadListNodeRef_deprec<CGameCtnAnchoredObject>()!;
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 // defines which (second element) items are deleted together with other (first element) item?
                 var itemsOnItem = r.ReadArray<Int2>();
@@ -1268,11 +1268,6 @@ public partial class CGameCtnChallenge :
                     {
                         throw new NotSupportedException("U07 has something else than -1");
                     }
-                }
-
-                if (Version >= 8)
-                {
-                    return;
                 }
 
                 // always the same count as anchoredObjects
