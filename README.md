@@ -24,6 +24,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight)
   - [Create a new GBX.NET project (Visual Studio Code)](#create-a-new-gbxnet-project-visual-studio-code)
   - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
+- **[IMPORTANT INFO about the LZO and Gbx compression](#important-info-about-the-lzo-and-gbx-compression)**
 - **[Usage (simple examples)](#usage-simple-examples)**
   - [Load a map and display block count per block name](#load-a-map-and-display-block-count-per-block-name)
   - [Modify and save a map](#modify-and-save-a-map)
