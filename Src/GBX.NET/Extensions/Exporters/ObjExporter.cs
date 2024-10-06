@@ -337,12 +337,12 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
-            if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
+            if (geom.Lod != -1 && geom.Lod != lod)
             {
                 continue;
             }
 
-            if (geom.Lod != -1 && geom.Lod != lod)
+            if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
             }
@@ -388,6 +388,11 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
@@ -428,6 +433,11 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
