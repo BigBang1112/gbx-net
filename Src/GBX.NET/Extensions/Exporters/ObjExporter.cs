@@ -342,6 +342,11 @@ internal static class ObjExporter
                 continue;
             }
 
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             var materialName = GetMaterialName(solid, geom.MaterialIndex);
 
             if (!materials.Contains(materialName))
