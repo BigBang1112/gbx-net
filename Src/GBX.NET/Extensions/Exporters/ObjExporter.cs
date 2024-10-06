@@ -465,7 +465,7 @@ internal static class ObjExporter
                 var v = visual.VertexStreams.FirstOrDefault()?.Positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
-                    ? visual.VertexStreams[0].UVs.Values.First()[index]
+                    ? (visual.VertexStreams.Count > 0 ? visual.VertexStreams[0].UVs.Values.First()[index] : (0, 0))
                     : visual.TexCoords[0].TexCoords[index].UV;
 
                 var uvIndex = uvs[uv];
