@@ -496,6 +496,11 @@ internal static class ObjExporter
             return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
         }
 
+        if (solid.MaterialInsts is { Length: > 0 } materialInsts)
+        {
+            return materialInsts[materialIndex].Link ?? "Unknown";
+        }
+
         return "Unknown";
     }
 }
