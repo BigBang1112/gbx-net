@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Tool.CLI.Exceptions;
-using GBX.NET.Tool.CLI.Inputs;
+using GBX.NET.Tool.CLI.InputArguments;
 using Microsoft.Extensions.Logging;
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -9,22 +10,35 @@ namespace GBX.NET.Tool.CLI;
 
 internal sealed class ToolInstanceMaker<T> where T : ITool
 {
+    private const string DynamicCodeMessage = "This method uses MakeGenericType to create collections. It should work as expected if constructor parameters don't include any IEnumerable-based types.";
+    
     private readonly ToolFunctionality<T> toolFunctionality;
     private readonly ToolSettings toolSettings;
+    private readonly IComplexConfig complexConfig;
     private readonly ILogger logger;
 
-    private readonly Dictionary<Input, object?> resolvedInputs = [];
+    private readonly Dictionary<InputArgument, object?> resolvedInputs = [];
     private readonly HashSet<object> usedObjects = [];
     private readonly List<object> unprocessedObjects = [];
 
-    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, ILogger logger)
+    private readonly HashSet<Type> supportedGenericCollectionTypes = [
+        typeof(List<>),
+        typeof(IList<>),
+        typeof(ICollection<>),
+        typeof(IEnumerable<>),
+        typeof(IReadOnlyCollection<>),
+        typeof(IReadOnlyList<>),
+    ];
+
+    public ToolInstanceMaker(ToolFunctionality<T> toolFunctionality, ToolSettings toolSettings, IComplexConfig complexConfig, ILogger logger)
     {
         this.toolFunctionality = toolFunctionality;
         this.toolSettings = toolSettings;
+        this.complexConfig = complexConfig;
         this.logger = logger;
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
+    [RequiresDynamicCode(DynamicCodeMessage)]
     public async IAsyncEnumerable<T> MakeToolInstancesAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
         // Each loop iteration defines tool instance
@@ -70,8 +84,8 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
         // Continue creating more tool instances if there are unused resolved objects left
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.MakeGenericTypeMessage)]
-    private async Task<object[]?> TryPickConstructorAsync(ConstructorInfo constructor, CancellationToken cancellationToken)
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    private async ValueTask<object[]?> TryPickConstructorAsync(ConstructorInfo constructor, CancellationToken cancellationToken)
     {
         var parameters = constructor.GetParameters();
 
@@ -112,9 +126,43 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 continue;
             }
 
+            if (type == typeof(IComplexConfig))
+            {
+                paramsForCtor[index++] = complexConfig;
+                continue;
+            }
+
+            if (type == typeof(Stream))
+            {
+                var paramObj = await GetParameterObjectAsync(obj => obj is Stream, cancellationToken);
+
+                if (paramObj is null)
+                {
+                    // Constructor is not valid for this configuration
+                    return null;
+                }
+
+                paramsForCtor[index++] = paramObj;
+                continue;
+            }
+
+            if (type == typeof(TextReader))
+            {
+                var paramObj = await GetParameterObjectAsync(obj => obj is TextReader, cancellationToken);
+
+                if (paramObj is null)
+                {
+                    // Constructor is not valid for this configuration
+                    return null;
+                }
+
+                paramsForCtor[index++] = paramObj;
+                continue;
+            }
+
             if (!type.IsGenericType)
             {
-                continue;
+                return null;
             }
 
             // Generic types
@@ -139,14 +187,13 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 continue;
             }
 
-            // Currently only generic IEnumerable<> is recognized from collections
-            if (typeDef == typeof(IEnumerable<>))
+            if (supportedGenericCollectionTypes.Contains(typeDef))
             {
                 var elementType = type.GetGenericArguments()[0];
 
                 // Create a List<elementType> to populate and pass to constructor
                 // This cannot be handled properly in NativeAOT complication
-                var finalCollection = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType))!;
+                var finalCollection = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType))!;
 
                 // Maybe unprocessedObjects logic missing here?
                 // Could break if there's single Gbx param and then an IEnumerable<Gbx> afterwards
@@ -175,7 +222,6 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                 }
 
                 paramsForCtor[index++] = finalCollection;
-
                 continue;
             }
         }
@@ -231,7 +277,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
 
     private async IAsyncEnumerable<object> EnumerateResolvedObjectsAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var input in toolSettings.Inputs)
+        foreach (var input in toolSettings.InputArguments)
         {
             // Resolve objects from input and cache them
             if (!resolvedInputs.TryGetValue(input, out var resolvedObject))

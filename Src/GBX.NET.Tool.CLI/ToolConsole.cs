@@ -2,7 +2,9 @@
 using GBX.NET.Tool.CLI.Exceptions;
 using Microsoft.Extensions.Logging;
 using Spectre.Console;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -12,6 +14,8 @@ namespace GBX.NET.Tool.CLI;
 /// <typeparam name="T">Tool type.</typeparam>
 public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces | DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicMethods)] T> where T : class, ITool
 {
+    private const string DynamicCodeMessage = "Tool instantiation uses MakeGenericType to create collections, but it should work as expected if constructor parameters don't include any IEnumerable-based types. If JsonContext is not set, or YAML is used and YmlContext is not set, this can cause serialization problems with configuration when AOT-compiled.";
+    private const string UnreferencedCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, some configuration members can get trimmed unexpectedly.";
     private readonly string[] args;
     private readonly HttpClient http;
     private readonly ToolConsoleOptions options;
@@ -21,6 +25,15 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     private readonly ArgsResolver argsResolver;
 
     private bool noPause;
+
+    public delegate Task ExecuteLogic(
+        ToolSettings toolSettings,
+        SettingsManager settingsManager,
+        OutputDistributor outputDistributor, 
+        string configName, 
+        IComplexConfig complexConfig, 
+        ILogger logger, 
+        CancellationToken cancellationToken);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ToolConsole{T}"/> class.
@@ -35,12 +48,21 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         this.http = http ?? throw new ArgumentNullException(nameof(http));
         this.options = options ?? throw new ArgumentNullException(nameof(options));
 
+        var deserializer = options.YmlContext is null
+            ? options.YmlDeserializer?.Build()
+            : new YamlDotNet.Serialization.StaticDeserializerBuilder(options.YmlContext).Build();
+
+        var serializer = options.YmlContext is null
+            ? options.YmlSerializer?.Build()
+            : new YamlDotNet.Serialization.StaticSerializerBuilder(options.YmlContext).Build();
+
         runningDir = AppDomain.CurrentDomain.BaseDirectory;
         settingsManager = new SettingsManager(runningDir,
             options.JsonContext,
             options.JsonOptions,
-            options.YmlDeserializer,
-            options.YmlSerializer);
+            deserializer,
+            serializer,
+            options.YmlContext);
         argsResolver = new ArgsResolver(args, http);
     }
 
@@ -55,9 +77,16 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
     /// <param name="args">Command line arguments. Use the 'args' keyword here.</param>
     /// <param name="options">Options for the tool console. These should be hardcoded for purpose.</param>
     /// <returns>Result of the tool execution (if wanted to use later).</returns>
-    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
     public static async Task<ToolConsoleRunResult<T>> RunAsync(string[] args, ToolConsoleOptions? options = null)
+    {
+        return await RunWithExecuteLogicAsync(args, ExecuteReflectionLogicAsync, options);
+    }
+
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
+    public static async Task<ToolConsoleRunResult<T>> RunWithExecuteLogicAsync(string[] args, ExecuteLogic executeLogic, ToolConsoleOptions? options = null)
     {
         ArgumentNullException.ThrowIfNull(args);
 
@@ -70,7 +99,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         try
         {
-            await tool.RunAsync(cts.Token);
+            await tool.RunAsync(executeLogic, cts.Token);
         }
         catch (ConsoleProblemException ex)
         {
@@ -85,7 +114,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             AnsiConsole.WriteException(ex);
         }
 
-        if (!tool.noPause)
+        if (!tool.noPause && !Console.IsInputRedirected)
         {
             PressAnyKeyToContinue();
         }
@@ -93,14 +122,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         return new ToolConsoleRunResult<T>(tool);
     }
 
-    [RequiresDynamicCode(DynamicCodeMessages.DynamicRunMessage)]
-    [RequiresUnreferencedCode(DynamicCodeMessages.UnreferencedRunMessage)]
-    private async Task RunAsync(CancellationToken cancellationToken)
+    public async Task RunAsync(ExecuteLogic executeLogic, CancellationToken cancellationToken)
     {
-        // Load console settings from file if exists otherwise create one
-        var consoleSettings = await settingsManager.GetOrCreateFileAsync("ConsoleSettings",
-            ToolJsonContext.Default.ConsoleSettings,
-            cancellationToken: cancellationToken);
+        var consoleSettings = await SetupConsoleSettingsAsync(cancellationToken);
 
         var toolSettings = argsResolver.Resolve(consoleSettings);
 
@@ -109,22 +133,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         var logger = new SpectreConsoleLogger(toolSettings.ConsoleSettings.LogLevel);
 
-        logger.LogDebug("Running directory: {RunningDir}", runningDir);
-        logger.LogDebug("CLI settings from file: {Settings}", toolSettings.ConsoleSettings);
-        logger.LogDebug("Settings/config overwrites: {Overwrites}", toolSettings.ConfigOverwrites.Count == 0
-            ? "None"
-            : string.Join(", ", toolSettings.ConfigOverwrites.Select(kv => $"{kv.Key}={kv.Value}")));
-        logger.LogDebug("Inputs: {Inputs}", toolSettings.Inputs.Count == 0
-            ? "None"
-            : string.Join(", ", toolSettings.Inputs));
-        logger.LogTrace("No pause: {NoPause}", noPause);
-
-        var introWriterTask = default(Task);
-
-        if (!toolSettings.ConsoleSettings.SkipIntro)
-        {
-            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
-        }
+        var introWriterTask = WriteIntroAsync(toolSettings, logger);
 
         logger.LogTrace("Checking for updates...");
 
@@ -147,10 +156,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         AnsiConsole.WriteLine();
 
-        // See what the tool can do
-        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
-
-        if (toolSettings.Inputs.Count == 0)
+        if (toolSettings.InputArguments.Count == 0)
         {
             // write tool specific intro
             if (!string.IsNullOrWhiteSpace(options.IntroText))
@@ -169,14 +175,47 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
-        // If the tool has setup, apply tool things below to setup
+        var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
+            : toolSettings.ConsoleSettings.ConfigName;
 
-        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, logger);
-        var outputDistributor = new OutputDistributor(runningDir, toolSettings, logger);
+        var complexConfig = new ComplexConfig(configName, settingsManager);
+
+        // If the tool has setup, apply tool things below to setup
 
         AnsiConsole.WriteLine();
         logger.LogInformation("Starting tool instance creation...");
         AnsiConsole.WriteLine();
+
+        var outputDistributor = new OutputDistributor(toolSettings, runningDir, logger);
+
+        await executeLogic(toolSettings, settingsManager, outputDistributor, configName, complexConfig, logger, cancellationToken);
+
+        AnsiConsole.WriteLine();
+
+        logger.LogInformation("Completed!");
+
+        // Check again for updates if not done before
+        if (!updateCheckCompleted && updateChecker is not null)
+        {
+            await updateChecker.CompareVersionAsync();
+        }
+    }
+
+    [RequiresDynamicCode(DynamicCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
+    private static async Task ExecuteReflectionLogicAsync(
+        ToolSettings toolSettings, 
+        SettingsManager settingsManager, 
+        OutputDistributor outputDistributor, 
+        string configName, 
+        IComplexConfig complexConfig, 
+        ILogger logger,
+        CancellationToken cancellationToken)
+    {
+        // See what the tool can do
+        var toolFunctionality = ToolFunctionalityResolver<T>.Resolve(logger);
+
+        var toolInstanceMaker = new ToolInstanceMaker<T>(toolFunctionality, toolSettings, complexConfig, logger);
 
         var counter = 0;
 
@@ -189,9 +228,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             if (toolInstance is IConfigurable<Config> configurable)
             {
-                var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
-                    : toolSettings.ConsoleSettings.ConfigName;
-
                 logger.LogInformation("Populating tool config (name: {ConfigName}, type: {ConfigType})...", configName, configurable.Config.GetType());
 
                 await settingsManager.PopulateConfigAsync(configName, configurable.Config, cancellationToken);
@@ -204,18 +240,33 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Producing...");
 
                 var produceMethod = toolFunctionality.ProduceMethods[0];
-                var result = produceMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Producing for each distributed output...");
-                }
-                else
-                {
-                    logger.LogInformation("Produced! Distributing output...");
-                }
+                    var watch = Stopwatch.StartNew();
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    var result = produceMethod.Invoke(toolInstance, null);
+
+                    if (result is IEnumerable<object> and not System.Collections.ICollection)
+                    {
+                        logger.LogInformation("Producing for each distributed output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Produced in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while producing.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.ProduceMethods.Length > 1)
             {
@@ -255,7 +306,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         }
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: false, cancellationToken);
                 }
             }
 
@@ -264,18 +315,33 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 logger.LogInformation("Mutating...");
 
                 var mutateMethod = toolFunctionality.MutateMethods[0];
-                var result = mutateMethod.Invoke(toolInstance, null);
 
-                if (result is IEnumerable<object>)
+                try
                 {
-                    logger.LogInformation("Mutationing while distributing output...");
-                }
-                else
-                {
-                    logger.LogInformation("Mutated! Distributing output...");
-                }
+                    var watch = Stopwatch.StartNew();
 
-                await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    var result = mutateMethod.Invoke(toolInstance, null);
+
+                    if (result is IEnumerable<object>)
+                    {
+                        logger.LogInformation("Mutating while distributing output...");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Mutated in {Milliseconds}ms! Distributing output...", watch.ElapsedMilliseconds);
+                    }
+
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    logger.LogError(ex.InnerException, "Error while mutating.");
+
+                    if (ex.InnerException is not null)
+                    {
+                        AnsiConsole.WriteException(ex.InnerException);
+                    }
+                }
             }
             else if (toolFunctionality.MutateMethods.Length > 1)
             {
@@ -295,22 +361,48 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                         logger.LogInformation("Mutated! Distributing output...");
                     }
 
-                    await outputDistributor.DistributeOutputAsync(result, cancellationToken);
+                    await outputDistributor.DistributeOutputAsync(result, mutating: true, cancellationToken);
                 }
             }
 
             logger.LogInformation("Tool instance #{Number} completed.", counter);
         }
+    }
 
-        AnsiConsole.WriteLine();
+    /// <summary>
+    /// Load console settings from file if exists otherwise create one.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    private async Task<ConsoleSettings> SetupConsoleSettingsAsync(CancellationToken cancellationToken)
+    {
+        return options.YmlSerializer is null || options.YmlDeserializer is null
+            ? await settingsManager.GetOrCreateJsonFileAsync("ConsoleSettings",
+                ToolJsonContext.Default.ConsoleSettings,
+                cancellationToken: cancellationToken)
+            : settingsManager.GetOrCreateYmlFile<ConsoleSettings>("ConsoleSettings");
+    }
 
-        logger.LogInformation("Completed!");
+    private Task? WriteIntroAsync(ToolSettings toolSettings, SpectreConsoleLogger logger)
+    {
+        logger.LogDebug("Running directory: {RunningDir}", runningDir);
+        logger.LogDebug("CLI settings from file: {Settings}", toolSettings.ConsoleSettings);
+        logger.LogDebug("Settings/config overwrites: {Overwrites}", toolSettings.ConfigOverwrites.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.ConfigOverwrites.Select(kv => $"{kv.Key}={kv.Value}")));
+        logger.LogDebug("Inputs: {Inputs}", toolSettings.InputArguments.Count == 0
+            ? "None"
+            : string.Join(", ", toolSettings.InputArguments));
+        logger.LogTrace("No pause: {NoPause}", noPause);
 
-        // Check again for updates if not done before
-        if (!updateCheckCompleted && updateChecker is not null)
+        var introWriterTask = default(Task);
+
+        if (!toolSettings.ConsoleSettings.SkipIntro)
         {
-            await updateChecker.CompareVersionAsync();
+            introWriterTask = IntroWriter<T>.WriteIntroAsync(args, toolSettings);
         }
+
+        return introWriterTask;
     }
 
     private static void PressAnyKeyToContinue()

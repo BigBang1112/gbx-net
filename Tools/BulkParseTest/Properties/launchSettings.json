@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BulkParseTest": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\TMUF_CORRECT\""
+    }
+  }
+}

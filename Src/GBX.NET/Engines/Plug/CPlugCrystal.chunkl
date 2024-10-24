@@ -46,6 +46,7 @@ enum ELayerType
  Cubes // Voxels
  Trigger // TriggerShape
  SpawnPosition // RespawnPos
+ Light = 18
 
 enum EAxis
  X
@@ -179,6 +180,12 @@ archive SpawnPositionLayer (inherits: ModifierLayer, contextual)
  if SpawnPositionVersion >= 1
   float RollAngle
 
+archive LightLayer (inherits: ModifierLayer, contextual)
+ base
+ int LightVersion
+ CPlugLightUserModel[] Lights
+ LightPos[] LightPositions
+
 archive VoxelSpace
  throw
 
@@ -206,3 +213,7 @@ archive Part
  string Name
  int U04
  int[] U05
+
+archive LightPos
+ int
+ iso4

@@ -18,6 +18,8 @@ public partial class CGameCtnChallenge :
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
     private TimeInt32? authorTime; // Only used if ChallengeParameters is null
     private int authorScore; // Only used if ChallengeParameters is null
+    private string? mapType; // Only used if ChallengeParameters is null
+    private string? mapStyle; // Only used if ChallengeParameters is null
 
     private Ident mapInfo = Ident.Empty;
     [AppliedWithChunk<HeaderChunk03043002>]
@@ -145,6 +147,42 @@ public partial class CGameCtnChallenge :
             }
 
             authorScore = value;
+        }
+    }
+
+    /// <summary>
+    /// Map type, the expected mode. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
+    public string? MapType
+    {
+        get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.MapType = value;
+            }
+
+            mapType = value;
+        }
+    }
+
+    /// <summary>
+    /// Map style. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+    /// </summary>
+    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
+    public string? MapStyle
+    {
+        get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
+        set
+        {
+            if (ChallengeParameters is not null)
+            {
+                ChallengeParameters.MapStyle = value;
+            }
+
+            mapStyle = value;
         }
     }
 
@@ -921,7 +959,12 @@ public partial class CGameCtnChallenge :
                 w.Write(n.LightmapFrames?.Length ?? 0);
             }
 
-            foreach (var frame in n.LightmapFrames ?? [])
+            if (n.LightmapFrames is null || n.LightmapFrames.Length == 0)
+            {
+                return;
+            }
+
+            foreach (var frame in n.LightmapFrames)
             {
                 w.WriteWritable(frame, version: lightmapVersion);
             }
@@ -1164,7 +1207,7 @@ public partial class CGameCtnChallenge :
 
             n.anchoredObjects = r.ReadListNodeRef_deprec<CGameCtnAnchoredObject>()!;
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 // defines which (second element) items are deleted together with other (first element) item?
                 var itemsOnItem = r.ReadArray<Int2>();
@@ -1177,6 +1220,11 @@ public partial class CGameCtnChallenge :
 
             if (Version >= 5)
             {
+                if (Version >= 9)
+                {
+                    throw new ChunkVersionNotSupportedException(Version);
+                }
+
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
                 var usedBlocks = new CGameCtnBlock?[blockIndexes.Length];
                 
@@ -1250,11 +1298,6 @@ public partial class CGameCtnChallenge :
 
                     n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
                 }
-
-                if (Version >= 8)
-                {
-                    throw new ChunkVersionNotSupportedException(Version);
-                }
             }
         }
 
@@ -1279,7 +1322,7 @@ public partial class CGameCtnChallenge :
                 }
             }
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 var pairs = new List<Int2>();
 
@@ -1684,16 +1727,16 @@ public partial class CGameCtnChallenge :
     {
         public int Version { get; set; }
 
-        public bool U01;
-        public bool U02;
+        public bool U13;
+        public bool U14;
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
 
             n.HasLightmaps = rw.Boolean(n.HasLightmaps);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref U13);
+            rw.Boolean(ref U14);
 
             if (!n.HasLightmaps)
             {

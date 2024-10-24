@@ -66,7 +66,8 @@ public partial class CPlugCrystal
 
             for (var i = 0; i < layerCount; i++)
             {
-                Layer layer = (ELayerType)r.ReadInt32() switch
+                var layerType = (ELayerType)r.ReadInt32();
+                Layer layer = layerType switch
                 {
                     ELayerType.Geometry => new GeometryLayer(),
                     ELayerType.SubdivideSmooth => new SubdivideSmoothLayer(),
@@ -84,7 +85,8 @@ public partial class CPlugCrystal
                     ELayerType.Cubes => new CubesLayer(),
                     ELayerType.Trigger => new TriggerLayer(),
                     ELayerType.SpawnPosition => new SpawnPositionLayer(),
-                    _ => throw new NotSupportedException()
+                    ELayerType.Light => new LightLayer(),
+                    _ => throw new NotSupportedException($"Layer type {layerType} is not supported")
                 };
 
                 layer.Read(r, n);
@@ -119,6 +121,7 @@ public partial class CPlugCrystal
                     CubesLayer => (int)ELayerType.Cubes,
                     TriggerLayer => (int)ELayerType.Trigger,
                     SpawnPositionLayer => (int)ELayerType.SpawnPosition,
+                    LightLayer => (int)ELayerType.Light,
                     _ => throw new NotSupportedException()
                 });
 
@@ -198,6 +201,12 @@ public partial class CPlugCrystal
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SpawnPositionLayer;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class LightLayer;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class LightPos;
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class VoxelSpace;
@@ -358,8 +367,8 @@ public partial class CPlugCrystal
 
                 if (Version >= 25)
                 {
-                    materialIndex = Version >= 33
-                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0?
+                    materialIndex = Version >= 33 && n.Materials.Count > 0
+                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0? yes
                         : r.ReadInt32();
                 }
 
@@ -578,7 +587,7 @@ public partial class CPlugCrystal
                 {
                     var materialIndex = face.Material is null ? -1 : n.Materials.IndexOf(face.Material);
 
-                    if (Version >= 33)
+                    if (Version >= 33 && n.Materials.Count > 0)
                     {
                         // this can write 255 in case of -1, which is not correct?
                         w.WriteOptimizedInt(materialIndex, n.Materials.Count);

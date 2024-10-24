@@ -50,7 +50,7 @@ jobs:
       run: dotnet test -c Release --no-build --verbosity normal
       
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.1
+      uses: actions/upload-artifact@v4
       with:
         name: build
         path: Src/GBX.NET*/bin/Release/*.*nupkg
@@ -83,7 +83,7 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v4.1.4
+      uses: actions/download-artifact@v4
       with:
         name: build
         
@@ -92,6 +92,9 @@ jobs:
 
     - name: Publish ${{ matrix.lib }} nupkg to github.com
       run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
+
+    - name: Publish ${{ matrix.lib }} nupkg to nuget.gbx.tools
+      run: dotnet nuget push ${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
     
     - name: Upload ${{ matrix.lib }} nupkg to this release
       run: gh release upload ${{ github.ref_name }} ${{ matrix.lib }}/bin/Release/*.nupkg

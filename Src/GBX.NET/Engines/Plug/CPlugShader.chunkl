@@ -55,6 +55,8 @@ CPlugShader 0x09002000
  uint
 
 0x01F
+ version
+ UnknownStruct[]
 
 0x020
  version
@@ -62,3 +64,10 @@ CPlugShader 0x09002000
  float
  CMwNod
  short
+
+archive UnknownStruct
+ CMwNod U01
+ if U01 != null
+  bool U02
+  if U02
+   CMwNod U03

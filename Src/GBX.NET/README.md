@@ -186,7 +186,7 @@ Some of the common types to start with (a lot more are supported):
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, April 2024 update
+- **Trackmania (2020)**, July 2024 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM

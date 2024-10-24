@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Tool</PackageId>
-        <Version>0.1.0</Version>
+        <VersionPrefix>0.3.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Base library for creating rich tools for different environments with GBX.NET.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
@@ -39,14 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.5.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="ThisAssembly.Git" Version="1.5.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

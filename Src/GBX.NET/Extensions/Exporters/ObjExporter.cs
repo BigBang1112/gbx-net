@@ -278,11 +278,6 @@ internal static class ObjExporter
                 continue;
             }
 
-            if (visual.TexCoords.Length == 0)
-            {
-                continue;
-            }
-
             var materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
 
             objWriter.WriteLine("g {0}", materialName);
@@ -292,7 +287,10 @@ internal static class ObjExporter
 
             foreach (var index in visual.IndexBuffer.Indices)
             {
-                objWriter.Write('f');
+                if (triangleCounter % 3 == 0)
+                {
+                    objWriter.Write('f');
+                }
 
                 var v = visual.Vertices[index];
                 var locatedPos = new Vec3(
@@ -300,9 +298,10 @@ internal static class ObjExporter
                     v.Position.X * loc.YZ + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
                     v.Position.X * loc.ZX + v.Position.Y * loc.ZY + v.Position.Z * loc.ZZ + loc.TZ
                 );
-                var uvIndex = uvs[visual.TexCoords[0].TexCoords[index].UV];
 
-                var faceIndex = $" {positionsDict[locatedPos] + 1}/{uvIndex + 1}";
+                var faceIndex = visual.TexCoords.Length > 0
+                    ? $" {positionsDict[locatedPos] + 1}/{uvs[visual.TexCoords[0].TexCoords[index].UV] + 1}"
+                    : $" {positionsDict[locatedPos] + 1}";
 
                 objWriter.Write(faceIndex);
 
@@ -338,6 +337,11 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
@@ -384,6 +388,11 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
@@ -424,6 +433,11 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms ?? [])
         {
+            if (geom.Lod != -1 && geom.Lod != lod)
+            {
+                continue;
+            }
+
             if (solid.Visuals?[geom.VisualIndex] is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
@@ -443,12 +457,15 @@ internal static class ObjExporter
 
             foreach (var index in visual.IndexBuffer.Indices)
             {
-                objWriter.Write('f');
+                if (triangleCounter % 3 == 0)
+                {
+                    objWriter.Write('f');
+                }
 
                 var v = visual.VertexStreams.FirstOrDefault()?.Positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
-                    ? visual.VertexStreams[0].UVs.Values.First()[index]
+                    ? (visual.VertexStreams.Count > 0 ? visual.VertexStreams[0].UVs.Values.First()[index] : (0, 0))
                     : visual.TexCoords[0].TexCoords[index].UV;
 
                 var uvIndex = uvs[uv];
@@ -477,6 +494,11 @@ internal static class ObjExporter
         if (solid.Materials is { Length: > 0 } materialsArray)
         {
             return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
+        }
+
+        if (solid.MaterialInsts is { Length: > 0 } materialInsts)
+        {
+            return materialInsts[materialIndex].Link ?? "Unknown";
         }
 
         return "Unknown";
