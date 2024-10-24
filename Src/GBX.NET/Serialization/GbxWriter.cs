@@ -4,6 +4,8 @@ using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
 using GBX.NET.Components;
+using System.Collections.Immutable;
+
 
 #if NET6_0_OR_GREATER
 using System.Buffers;
@@ -134,6 +136,9 @@ public partial interface IGbxWriter : IDisposable
     void WriteListId(List<string>? value);
     void WriteListId(List<string>? value, int length);
     void WriteListId_deprec(List<string>? value);
+    [IgnoreForCodeGeneration] void WriteListId(IList<string>? value);
+    [IgnoreForCodeGeneration] void WriteListId(IList<string>? value, int length);
+    [IgnoreForCodeGeneration] void WriteListId_deprec(IList<string>? value);
 
     void ResetIdState();
 }
@@ -1533,6 +1538,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         Write(value.Count);
 
+        // TODO: optimize
         foreach (var item in value)
         {
             WriteIdAsString(item);
@@ -1540,6 +1546,48 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     }
 
     public void WriteListId(List<string>? value, int length)
+    {
+        if (value is not null)
+        {
+            // TODO: optimize
+            foreach (var item in value)
+            {
+                Write(item);
+            }
+        }
+
+        if (value is null || length > value.Count)
+        {
+            for (var i = value?.Count ?? 0; i < length; i++)
+            {
+                WriteIdAsString(default);
+            }
+        }
+    }
+
+    public void WriteListId_deprec(List<string>? value)
+    {
+        WriteDeprecVersion();
+        WriteListId(value);
+    }
+
+    public void WriteListId(IList<string>? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteIdAsString(item);
+        }
+    }
+
+    public void WriteListId(IList<string>? value, int length)
     {
         if (value is not null)
         {
@@ -1558,7 +1606,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteListId_deprec(List<string>? value)
+    public void WriteListId_deprec(IList<string>? value)
     {
         WriteDeprecVersion();
         WriteListId(value);
