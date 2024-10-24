@@ -336,11 +336,11 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x063 (skippable) [TM2020] // AnimPhaseOffset
 
-0x064 (skippable, ignore) [TM2020]
+0x064 (skippable, ignore) [TM2020] // MT groups?
 
 0x065 (skippable) [TM2020] // foreground pack desc
 
-0x067 (skippable, ignore) [TM2020]
+0x067 (skippable, ignore) [TM2020] // launched checkpoints
 
 0x068 (skippable) [TM2020] // MapElemLmQuality
 
