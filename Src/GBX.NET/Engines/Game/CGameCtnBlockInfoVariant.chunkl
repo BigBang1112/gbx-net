@@ -40,7 +40,7 @@ CGameCtnBlockInfoVariant 0x0315B000
      CGameTurbineModel Turbine
      v7+
       CPlugFlockModel FlockModel (external)
-      if FlockModel != null
+      if FlockModel != null || FlockModelFile != null
        FlockEmitterState FlockEmmiter
       v8+
        CGameSpawnModel SpawnModel (external)
