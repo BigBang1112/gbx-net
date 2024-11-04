@@ -1,0 +1,5 @@
+CGamePodiumInfo 0x03168000
+
+0x000
+ version
+ CMwNod[] MediaClipFids (external)
