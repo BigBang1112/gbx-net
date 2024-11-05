@@ -1,9 +1,9 @@
 CGameCtnBlockInfoVariant 0x0315B000
 
-0x002 [TMT]
+0x002 [TMT, MP4]
  int<EMultiDir> MultiDir
 
-0x003 [TMT.v2]
+0x003 [TMT.v2, MP4.v2]
  version
  int SymmetricalVariantIndex
  v0=
@@ -14,12 +14,12 @@ CGameCtnBlockInfoVariant 0x0315B000
   v2+
    byte NoPillarBelowIndex
 
-0x004 [TMT]
+0x004 [TMT, MP4]
  short
 
-0x005 [TMT.v2]
+0x005 [TMT.v2, MP4.v2]
 
-0x006 [TMT.v8]
+0x006 [TMT.v8, MP4.v10]
  version
  v8-
   CMwNod
@@ -47,11 +47,11 @@ CGameCtnBlockInfoVariant 0x0315B000
        v10+
         CPlugEntitySpawner[] EntitySpawners
 
-0x007 [TMT.v0]
+0x007 [TMT.v0, MP4.v0]
  version
  CPlugProbe Probe
 
-0x008 [TMT.v0]
+0x008 [TMT.v0, MP4.v1]
  version
  CGameCtnBlockUnitInfo[] BlockUnitModels
  int
@@ -67,13 +67,13 @@ CGameCtnBlockInfoVariant 0x0315B000
   boxaligned // SpawnTrans, SpawnYaw, SpawnPitch, SpawnRoll - I imagine
  string Name
 
-0x009
+0x009 [MP4.v1]
  version
  PlacedPillarParam[]
  v1+
   ReplacedPillarParam[]
 
-0x00A
+0x00A [MP4.v2]
  version
  v1-
   CMwNod
@@ -85,11 +85,11 @@ CGameCtnBlockInfoVariant 0x0315B000
   v2- // Perhaps?
    iso4 CompoundLoc
 
-0x00B
+0x00B [MP4.v1]
  version
  WaterVolume[] WaterVolumes
 
-0x00C
+0x00C [MP4.v1]
  version
  int U01
  if U01 > 0

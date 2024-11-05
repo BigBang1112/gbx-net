@@ -2,7 +2,7 @@
 
 public partial class CGameCtnBlockInfoVariant
 {
-    private CGameCtnBlockInfoMobil[][]? Mobils { get; set; }
+    public CGameCtnBlockInfoMobil[][]? Mobils { get; set; }
 
     public partial class Chunk0315B005 : IVersionable
     {
