@@ -1994,4 +1994,15 @@ public partial class CGameCtnChallenge :
             }
         }
     }
+
+    public partial class Chunk3F001003 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            Version = r.ReadByte();
+            var flags = r.ReadInt16();
+        }
+    }
 }
