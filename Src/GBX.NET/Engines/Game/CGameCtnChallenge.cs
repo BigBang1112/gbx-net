@@ -3754,7 +3754,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null)!;
             });
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 // defines which (second element) items are deleted together with other (first element) item?
                 var itemsOnItem = r.ReadArray<Int2>();
@@ -3872,7 +3872,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
             }
 
-            if (Version >= 1 && Version != 5)
+            if (Version >= 1 && Version != 5 && Version < 8)
             {
                 var pairs = new List<Int2>();
 
