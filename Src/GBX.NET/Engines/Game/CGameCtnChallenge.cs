@@ -3842,7 +3842,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
                 }
 
-                if (Version >= 8)
+                if (Version >= 9)
                 {
                     throw new ChunkVersionNotSupportedException(Version);
                 }

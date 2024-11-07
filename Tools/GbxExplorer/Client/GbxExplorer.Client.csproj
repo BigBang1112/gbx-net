@@ -7,7 +7,7 @@
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
 		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
-		<Version>1.2.8</Version>
+		<Version>1.2.9</Version>
 		<TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
 	</PropertyGroup>
 
