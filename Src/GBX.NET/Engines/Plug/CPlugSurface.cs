@@ -242,7 +242,7 @@ public partial class CPlugSurface
 
         public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
         public readonly record struct OctreeCell(int U01, Vec3 U02, Vec3 U03, int U04);
-        public readonly record struct Triangle(Int3 U01, int U02);
+        public readonly record struct Triangle(Int3 U01, byte U02, byte U03, byte U04, byte U05);
         public readonly record struct AABBTreeCell(Vec3 U01, Vec3 U02, int U03);
     }
 
