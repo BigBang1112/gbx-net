@@ -139,6 +139,8 @@ main {
 .section-log {
     animation-delay: 0.3s;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .section-copyright {
