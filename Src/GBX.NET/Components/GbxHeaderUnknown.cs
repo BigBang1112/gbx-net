@@ -5,7 +5,7 @@ namespace GBX.NET.Components;
 public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHeader(basic)
 {
     public override uint ClassId => classId;
-    public ISet<IHeaderChunk> UserData { get; } = new SortedSet<IHeaderChunk>(ChunkIdComparer.Default);
+    public IHeaderChunkSet UserData { get; } = new HeaderChunkSet();
 
     public override string ToString()
     {
