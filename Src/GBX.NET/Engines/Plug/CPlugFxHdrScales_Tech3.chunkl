@@ -1,0 +1,9 @@
+CPlugFxHdrScales_Tech3 0x090F5000
+
+0x000
+ version
+ float
+ v1+
+  float
+ float
+ float
