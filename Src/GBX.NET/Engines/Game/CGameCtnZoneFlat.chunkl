@@ -11,3 +11,6 @@ CGameCtnZoneFlat 0x0305D000
  int
  bool GroundOnly
  bool
+
+0x003 (skippable)
+ bool AutoSimplifyGenealogy
