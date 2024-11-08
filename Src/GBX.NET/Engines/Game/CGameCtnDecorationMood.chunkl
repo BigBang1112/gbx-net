@@ -64,9 +64,9 @@ CGameCtnDecorationMood 0x0303A000
  bool EnableStars
  CFuncCloudsSolids CloudsSolids
  CPlugFxLightning FxLightning
- CPlugFxWindOnDecal FxWindOnDecal
+ CPlugFxWindOnDecal FxWindOnDecal (external)
  v1+
-  CPlugFxWindOnTreeSprite FxWindOnTreeSprite
+  CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
 
 0x013
  version
