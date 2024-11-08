@@ -65,14 +65,19 @@ internal class ChunkSet<TKind> : IChunkSet<TKind> where TKind : IChunk
         idsByType = [];
     }
 
-    public virtual TKind Create(uint chunkId)
+    protected virtual TKind New(uint chunkId)
+    {
+        return (TKind)(ClassManager.NewChunk(chunkId) ?? ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Chunk 0x{chunkId:X8} is not supported."));
+    }
+
+    public TKind Create(uint chunkId)
     {
         if (chunksById.TryGetValue(chunkId, out var chunk))
         {
             return chunk;
         }
 
-        chunk = (TKind)(ClassManager.NewChunk(chunkId) ?? ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Chunk 0x{chunkId:X8} is not supported."));
+        chunk = New(chunkId);
 
         Add(chunk);
 
