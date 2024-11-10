@@ -820,13 +820,13 @@ public partial class CGameCtnChallenge :
                                             if (Version >= 13)
                                             {
                                                 rw.Int32(ref n.nbCheckpoints);
-                                                if (n.isLapRace)
+                                                if (n.isLapRace || rw.Reader is not null)
                                                 {
                                                     rw.Int32(ref n.nbLaps);
                                                 }
                                                 else
                                                 {
-                                                    n.nbLaps = rw.Int32(1);
+                                                    rw.Int32(1);
                                                 }
                                             }
                                         }
