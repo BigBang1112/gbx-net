@@ -18,7 +18,7 @@ CGameCtnChallenge 0x03043000 // A map.
    v5+
     bool IsLapRace
     v6=
-     bool IsMultilap
+     bool
     v7+
      int<PlayMode> Mode
      v9+

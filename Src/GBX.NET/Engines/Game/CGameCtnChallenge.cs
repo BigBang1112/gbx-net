@@ -771,6 +771,75 @@ public partial class CGameCtnChallenge :
     int IGameCtnChallengeMP4.RemoveBlock(Predicate<IGameCtnBlockMP4> match) => RemoveBlocks(match);
     int IGameCtnChallengeTM2020.RemoveBlock(Predicate<IGameCtnBlockTM2020> match) => RemoveBlocks(match);
 
+    public partial class HeaderChunk03043002
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.VersionByte(this);
+            if (Version <= 2)
+            {
+                rw.Ident(ref n.mapInfo);
+                rw.String(ref n.mapName);
+            }
+            rw.Boolean(ref U01);
+            if (Version >= 1)
+            {
+                rw.TimeInt32Nullable(ref n.bronzeTime);
+                rw.TimeInt32Nullable(ref n.silverTime);
+                rw.TimeInt32Nullable(ref n.goldTime);
+                rw.TimeInt32Nullable(ref n.authorTime);
+                if (Version == 2)
+                {
+                    rw.Byte(ref U02);
+                }
+                if (Version >= 4)
+                {
+                    rw.Int32(ref n.cost);
+                    if (Version >= 5)
+                    {
+                        rw.Boolean(ref n.isLapRace);
+                        if (Version == 6)
+                        {
+                            rw.Boolean(ref U03);
+                        }
+                        if (Version >= 7)
+                        {
+                            rw.EnumInt32<PlayMode>(ref n.mode);
+                            if (Version >= 9)
+                            {
+                                rw.Int32(ref U04);
+                                if (Version >= 10)
+                                {
+                                    rw.Int32(ref n.authorScore);
+                                    if (Version >= 11)
+                                    {
+                                        rw.EnumInt32<EditorMode>(ref n.editor);
+                                        if (Version >= 12)
+                                        {
+                                            rw.Int32(ref U05);
+                                            if (Version >= 13)
+                                            {
+                                                rw.Int32(ref n.nbCheckpoints);
+                                                if (n.isLapRace)
+                                                {
+                                                    rw.Int32(ref n.nbLaps);
+                                                }
+                                                else
+                                                {
+                                                    n.nbLaps = rw.Int32(1);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
     {
