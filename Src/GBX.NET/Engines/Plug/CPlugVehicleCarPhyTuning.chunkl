@@ -806,7 +806,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x099
  version
- CFuncKeysReal
+ CMwNod
 
 0x09A
  version
