@@ -24,6 +24,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight)
   - [Create a new GBX.NET project (Visual Studio Code)](#create-a-new-gbxnet-project-visual-studio-code)
   - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
+- **[IMPORTANT INFO about the LZO and Gbx compression](#important-info-about-the-lzo-and-gbx-compression)**
 - **[Usage (simple examples)](#usage-simple-examples)**
   - [Load a map and display block count per block name](#load-a-map-and-display-block-count-per-block-name)
   - [Modify and save a map](#modify-and-save-a-map)
@@ -42,6 +43,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Asynchronous](#asynchronous)
 - [Benchmarks](#benchmarks)
 - [Build](#build)
+  - [Nightly builds](#nightly-builds)
 - [License](#license)
 - [Special thanks](#special-thanks)
 - [Alternative Gbx parsers](#alternative-gbx-parsers)
@@ -50,7 +52,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, April 2024 update
+- **Trackmania (2020)**, July 2024 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM
@@ -588,6 +590,23 @@ You should also have **.NET WebAssembly Build Tools** installed additionally to 
 In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
 
 In .NET CLI, run `dotnet build` on the solution (`.sln`) level.
+
+### Nightly builds
+
+Every **5AM UTC**, there is a new build from the `dev` branch published on https://nuget.gbx.tools/ of the base GBX.NET package (soon also GBX.NET.Tool*).
+
+Go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include the package source:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="nuget.gbx.tools" value="https://nuget.gbx.tools/v3/index.json" /> <!-- add this -->
+  </packageSources>
+</configuration>
+```
+Then you can select the `nuget.gbx.tools` package source and fetch nightly builds from there.
+
+> In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
 ## License
 
