@@ -789,7 +789,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
  bool
  v2+
-  CFuncKeysReal
+  CMwNod
 
 0x098
  version
