@@ -106,6 +106,7 @@ The goal is to also make it viable for NativeAOT.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
+- **.NET 9**
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
@@ -118,8 +119,8 @@ Using the NuGet packages is recommended.
 
 ### Create a new GBX.NET project (lightweight)
 
-1. Install [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
+1. Install [.NET SDK 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
+    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.9` (make sure you have WinGet installed)
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
@@ -575,11 +576,12 @@ TODO
 
 Make sure you have these framework SDKs available:
 
+- **.NET 9**
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
 
-**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will likely not work.
+**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will not work.
 
 You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It is required for Gbx Explorer to work properly, as it uses native LZO implementation compiled into WebAssembly.
 

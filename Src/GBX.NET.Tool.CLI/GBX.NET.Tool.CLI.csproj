@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0</TargetFrameworks>
+        <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
         <LangVersion>12</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -48,7 +48,7 @@
 
     <ItemGroup>
         <PackageReference Include="Spectre.Console" Version="0.49.1" />
-        <PackageReference Include="YamlDotNet" Version="16.0.0" />
+        <PackageReference Include="YamlDotNet" Version="16.2.0" />
     </ItemGroup>
 
     <ItemGroup>
