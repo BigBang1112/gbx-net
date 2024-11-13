@@ -1116,7 +1116,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
@@ -1279,7 +1279,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var classId = ClassManager.Wrap(rawClassId);
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
