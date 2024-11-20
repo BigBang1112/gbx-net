@@ -11,7 +11,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -36,6 +37,7 @@
     <ItemGroup>
         <None Include="../../logo_icon_outline.png" Pack="true" PackagePath="\" />
         <None Include="README.md" Pack="true" PackagePath="\" />
+        <None Include="LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
