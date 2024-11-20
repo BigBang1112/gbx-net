@@ -26,8 +26,8 @@ public class BlowfishStream : Stream, IEncryptionInitializer
     public override bool CanRead => stream.CanRead;
     public override bool CanWrite => false;
     public override bool CanSeek => false;
-    public override long Length => throw new NotSupportedException();
-    public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+    public override long Length => stream.Length;
+    public override long Position { get => totalIndex; set => throw new NotSupportedException(); }
 
     public override void Flush() => stream.Flush();
 

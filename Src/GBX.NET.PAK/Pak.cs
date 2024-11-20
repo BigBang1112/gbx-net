@@ -165,12 +165,7 @@ public sealed partial class Pak : IDisposable
         stream.Read(ivBuffer, 0, 8);
         var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
-        var data = new byte[file.CompressedSize];
-        stream.Read(data, 0, data.Length);
-
-        var ms = new MemoryStream(data);
-
-        var blowfish = new BlowfishStream(ms, key, iv);
+        var blowfish = new BlowfishStream(stream, key, iv);
 
         encryptionInitializer = new EncryptionInitializer(blowfish);
 
@@ -179,12 +174,14 @@ public sealed partial class Pak : IDisposable
             return blowfish;
         }
 
-        if (Gbx.ZLib is null)
-        {
-            throw new ZLibNotDefinedException();
-        }
+        return new ZlibDeflateStream(blowfish, false);
+    }
 
-        return Gbx.ZLib.Decompress(blowfish);
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+        using var stream = OpenFile(file, out var encryptionInitializer);
+        return await Gbx.ParseAsync(stream, settings with { EncryptionInitializer = encryptionInitializer }, cancellationToken);
     }
 
     public void Dispose()

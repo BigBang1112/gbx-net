@@ -3,7 +3,6 @@ using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text;
-using System.Xml.Linq;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -21,6 +20,8 @@ public partial class CMwNod : IClass
     static void IClass.Read<T>(T node, GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        r.TryInitializeDecryption(node);
 
         var prevChunkId = default(uint?);
 
@@ -322,6 +323,8 @@ public partial class CMwNod : IClass
     internal virtual void Read(GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        r.TryInitializeDecryption(this);
 
         var prevChunkId = default(uint?);
 

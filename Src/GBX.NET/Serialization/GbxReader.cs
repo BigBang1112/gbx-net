@@ -1242,8 +1242,6 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private T ReadNode<T>(T node) where T : IClass
     {
-        TryInitializeDecryption(node);
-
         rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
@@ -1260,8 +1258,6 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     [IgnoreForCodeGeneration]
     private IClass ReadNode(IClass node)
     {
-        TryInitializeDecryption(node);
-
         rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
@@ -2041,7 +2037,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
     }
 
-    private bool TryInitializeDecryption(IClass node)
+    internal bool TryInitializeDecryption(IClass node)
     {
         if (Settings.EncryptionInitializer is null)
         {

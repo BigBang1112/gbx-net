@@ -14,10 +14,8 @@ var key = packlist[Path.GetFileNameWithoutExtension(fileName).ToLowerInvariant()
 using var fs = File.OpenRead(fileName);
 using var pak = await Pak.ParseAsync(fs, key);
 
-var file = pak.Files.Values.First(x => x.FolderPath.EndsWith("Solid\\"));
+var file = pak.Files.Values.First(x => x.Name == "B2FC497BF7F81AB02D01FE8FB2F707CD8F");
 
-using var stream = pak.OpenFile(file, out var encryptionInitializer);
-
-var ok = Gbx.Parse(stream, new() { EncryptionInitializer = encryptionInitializer });
+var gbx = await pak.OpenGbxFileAsync(file);
 
 Console.WriteLine();
