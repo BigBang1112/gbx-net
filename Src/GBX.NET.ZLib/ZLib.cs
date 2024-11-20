@@ -16,4 +16,9 @@ public sealed class ZLib : IZLib
         using var zlib = new ZlibStream(input, CompressionMode.Decompress, leaveOpen: true);
         zlib.CopyTo(output);
     }
+
+    public Stream Decompress(Stream input)
+    {
+        return new ZlibStream(input, CompressionMode.Decompress);
+    }
 }

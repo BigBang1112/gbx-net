@@ -73,7 +73,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
                 encryptedKeyString[j] ^= keyStringKey[j % keyStringKey.Length];
             }
 
-            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + "NadeoPak", cancellationToken);
+            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + Pak.Magic, cancellationToken);
 
             packs[name] = new PakListItem(key, flags);
         }

@@ -263,7 +263,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (BaseStream.Read(buffer) != 3)
         {
-            return false;
+            throw new EndOfStreamException("Failed to read GBX magic bytes.");
         }
 
         return buffer[0] == 'G' && buffer[1] == 'B' && buffer[2] == 'X';
