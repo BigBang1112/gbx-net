@@ -1242,6 +1242,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private T ReadNode<T>(T node) where T : IClass
     {
+        TryInitializeDecryption(node);
+
         rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
@@ -1258,6 +1260,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     [IgnoreForCodeGeneration]
     private IClass ReadNode(IClass node)
     {
+        TryInitializeDecryption(node);
+
         rw ??= new GbxReaderWriter(this);
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
@@ -2035,5 +2039,38 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             reader.Format = format;
         }
+    }
+
+    private bool TryInitializeDecryption(IClass node)
+    {
+        if (Settings.EncryptionInitializer is null)
+        {
+            return false;
+        }
+
+        var baseType = node.GetType().BaseType ?? throw new ThisShouldNotHappenException();
+
+        var parentClassId = ClassManager.ClassIds[baseType];
+
+        if (parentClassId == 0x07031000)
+        {
+            parentClassId = 0x07001000;
+        }
+
+        if (node is CPlugSurfaceGeom)
+        {
+            parentClassId = 0x0902B000;
+        }
+
+        if (baseType == typeof(CGameCtnBlockInfo))
+        {
+            parentClassId = 0x24005000;
+        }
+
+        var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+
+        Settings.EncryptionInitializer.Initialize(parentClassIDBytes, 0, 4);
+
+        return true;
     }
 }

@@ -1,8 +1,6 @@
-﻿using GBX.NET.Serialization;
+﻿namespace GBX.NET.PAK;
 
-namespace GBX.NET.PAK;
-
-public class BlowfishStream : Stream, IEncryptedStream
+public class BlowfishStream : Stream, IEncryptionInitializer
 {
     private readonly Stream stream;
     private readonly Blowfish blowfish;

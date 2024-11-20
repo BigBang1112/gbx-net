@@ -83,7 +83,7 @@ public sealed partial class Pak : IDisposable
         if (allFolders.Length > 2 && allFolders[2].Name.Length > 4)
         {
             var nameBytes = Encoding.Unicode.GetBytes(allFolders[2].Name);
-            ((IEncryptedStream)r.BaseStream).Initialize(nameBytes, 4, 4);
+            ((IEncryptionInitializer)r.BaseStream).Initialize(nameBytes, 4, 4);
         }
 
         var files = ReadAllFiles(r, allFolders);
@@ -157,7 +157,7 @@ public sealed partial class Pak : IDisposable
         }
     }
 
-    public Stream OpenFile(PakFile file)
+    public Stream OpenFile(PakFile file, out EncryptionInitializer encryptionInitializer)
     {
         stream.Position = dataStart + file.Offset;
 
@@ -171,6 +171,8 @@ public sealed partial class Pak : IDisposable
         var ms = new MemoryStream(data);
 
         var blowfish = new BlowfishStream(ms, key, iv);
+
+        encryptionInitializer = new EncryptionInitializer(blowfish);
 
         if (!file.IsCompressed)
         {

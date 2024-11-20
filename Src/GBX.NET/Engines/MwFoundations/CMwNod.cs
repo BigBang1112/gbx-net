@@ -323,32 +323,6 @@ public partial class CMwNod : IClass
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
-        /*if (r.BaseStream is IEncryptedStream encryptedStream)
-        {
-            var baseType = GetType().BaseType ?? throw new ThisShouldNotHappenException();
-
-            var parentClassId = ClassManager.ClassIds[baseType];
-
-            if (parentClassId == 0x07031000)
-            {
-                parentClassId = 0x07001000;
-            }
-
-            if (this is CPlugSurfaceGeom)
-            {
-                parentClassId = 0x0902B000;
-            }
-
-            if (baseType == typeof(CGameCtnBlockInfo))
-            {
-                parentClassId = 0x24005000;
-            }
-
-            var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
-
-            encryptedStream.Initialize(parentClassIDBytes, 0, 4);
-        }*/
-
         var prevChunkId = default(uint?);
 
         while (true)
