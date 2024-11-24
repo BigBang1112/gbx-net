@@ -31,6 +31,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Processing multiple Gbx types](#processing-multiple-gbx-types)
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
 - [Tool framework](#tool-framework)
+- [Zlib compression in Gbx](#zlib-compression-in-gbx)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
@@ -375,6 +376,45 @@ Tool library has a primary tool class that implements `ITool` interface. There s
 Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map without having to recreate it again).
 
 Samples are available [here](Samples/Tool/).
+
+## Zlib compression in Gbx
+
+There are a few places where Gbx includes additional zlib-compressed data:
+
+- Ghost samples
+  - `CGameGhost.SampleData`
+- Record data (general replay data or TM2020 ghost samples)
+  - `CGameCtnReplayRecord.RecordData`, `CGameCtnGhost.RecordData`, `CGameCtnMediaBlockEntity.RecordData`
+- Lightmap data of a map
+  - `CGameCtnChallenge.LightmapCache`, additional lightmap parameters
+
+GBX.NET does not include zlib algorithm by default to read this data. Properties will often return `null` silently, but you can hook onto more details about this if you specify `Logger` in the parse methods.
+
+To "unlock" this data, you need to specify zlib implementation:
+
+Command line:
+
+```
+dotnet add package GBX.NET.ZLib
+```
+
+C# code:
+
+```cs
+using GBX.NET;
+using GBX.NET.ZLib;
+
+Gbx.ZLib = new ZLib();
+```
+
+> [!NOTE]
+> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.1 or 2.2.
+
+The data is often stored in properties of type `CompressedData` which are byte arrays with additional uncompressed data size for validation. If there's a property with this type (`CGameCtnChallenge.LightmapCacheData` for example), zlib data will be stored there no matter if the zlib implementation is included, so read/write consistency is guaranteed.
+
+> The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
+
+GBX.NET.PAK uses a separate zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
 ## Clarity
 
