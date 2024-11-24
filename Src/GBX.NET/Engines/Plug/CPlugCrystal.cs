@@ -249,10 +249,13 @@ public partial class CPlugCrystal
                     w.Write((ushort)(lightmap.Y * ushort.MaxValue));
                 }
 
-                // subject to optimization due to IndexOf complexity
-                var indices = faces.SelectMany(f => f.Vertices.Select(v => Array.IndexOf(lightmaps, v.LightmapCoord))).ToArray();
+                if (Version >= 2)
+                {
+                    // subject to optimization due to IndexOf complexity
+                    var indices = faces.SelectMany(f => f.Vertices.Select(v => Array.IndexOf(lightmaps, v.LightmapCoord))).ToArray();
 
-                w.WriteArrayOptimizedInt(indices);
+                    w.WriteArrayOptimizedInt(indices);
+                }
             }
         }
     }
