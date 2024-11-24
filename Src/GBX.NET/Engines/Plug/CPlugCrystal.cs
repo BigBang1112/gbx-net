@@ -159,6 +159,7 @@ public partial class CPlugCrystal
             Version = r.ReadInt32();
 
             var faces = n.Layers.OfType<GeometryLayer>()
+                .Where(x => x.IsVisible)
                 .Select(x => x.Crystal)
                 .OfType<Crystal>()
                 .SelectMany(c => c.Faces);
@@ -190,30 +191,41 @@ public partial class CPlugCrystal
 
             if (Version >= 1)
             {
-                var lightmaps = new Vec2[lightmapCoordCount];
+                var lightmapCoords = new Vec2[lightmapCoordCount];
 
                 for (int i = 0; i < lightmapCoordCount; i++)
                 {
-                    lightmaps[i] = (r.ReadUInt16() / (float)ushort.MaxValue, r.ReadUInt16() / (float)ushort.MaxValue);
+                    lightmapCoords[i] = (r.ReadUInt16() / (float)ushort.MaxValue, r.ReadUInt16() / (float)ushort.MaxValue);
                 }
 
+                // indices of lightmap coords
                 var indices = Version >= 2 ? r.ReadArrayOptimizedInt() : null;
+
+                var lightmapCount = indices?.Length ?? lightmapCoordCount;
 
                 var counter = 0;
                 foreach (var face in faces)
                 {
                     for (int i = 0; i < face.Vertices.Length; i++)
                     {
-                        face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmaps[indices?[counter++] ?? counter] };
-
-                        if (counter > lightmapCoordCount)
+                        try
                         {
-                            throw new Exception("LightmapCoord count exceeded");
+                            var index = indices?[counter++] ?? counter;
+                            face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
+
+                            if (counter > lightmapCount)
+                            {
+                                throw new Exception("LightmapCoord count exceeded");
+                            }
+                        }
+                        catch
+                        {
+
                         }
                     }
                 }
 
-                if (counter != lightmapCoordCount)
+                if (counter != lightmapCount)
                 {
                     throw new Exception("LightmapCoord count mismatch");
                 }
@@ -225,17 +237,18 @@ public partial class CPlugCrystal
             w.Write(Version);
 
             var faces = n.Layers.OfType<GeometryLayer>()
+                .Where(x => x.IsVisible)
                 .Select(x => x.Crystal)
                 .OfType<Crystal>()
                 .SelectMany(c => c.Faces);
 
-            var lightmaps = faces.SelectMany(f => f.Vertices.Select(v => v.LightmapCoord)).ToArray();
+            var lightmapCoords = faces.SelectMany(f => f.Vertices.Select(v => v.LightmapCoord)).ToArray();
 
-            w.Write(lightmaps.Length);
+            w.Write(lightmapCoords.Length);
 
             if (Version == 0)
             {
-                foreach (var lightmap in lightmaps)
+                foreach (var lightmap in lightmapCoords)
                 {
                     w.Write(lightmap);
                 }
@@ -243,7 +256,7 @@ public partial class CPlugCrystal
 
             if (Version >= 1)
             {
-                foreach (var lightmap in lightmaps)
+                foreach (var lightmap in lightmapCoords)
                 {
                     w.Write((ushort)(lightmap.X * ushort.MaxValue));
                     w.Write((ushort)(lightmap.Y * ushort.MaxValue));
@@ -251,8 +264,10 @@ public partial class CPlugCrystal
 
                 if (Version >= 2)
                 {
-                    // subject to optimization due to IndexOf complexity
-                    var indices = faces.SelectMany(f => f.Vertices.Select(v => Array.IndexOf(lightmaps, v.LightmapCoord))).ToArray();
+                    var lightmapCoordIndices = lightmapCoords.Distinct()
+                        .Select((x, i) => (x, i))
+                        .ToDictionary(x => x.x, x => x.i);
+                    var indices = faces.SelectMany(f => f.Vertices.Select(v => lightmapCoordIndices[v.LightmapCoord])).ToArray();
 
                     w.WriteArrayOptimizedInt(indices);
                 }
@@ -779,7 +794,13 @@ public partial class CPlugCrystal
         }
     }
 
-    public sealed record Face(Vertex[] Vertices, Part Group, Material? Material, Vec3? U01);
+    public sealed record Face(Vertex[] Vertices, Part Group, Material? Material, Vec3? U01)
+    {
+        public override string ToString()
+        {
+            return $"{Vertices.Length} vertices, material: {Material?.MaterialUserInst?.Link ?? Material?.MaterialName ?? "none"}";
+        }
+    }
 
     public readonly record struct Vertex(int Index, Vec2 TexCoord, Vec2 LightmapCoord);
 }
