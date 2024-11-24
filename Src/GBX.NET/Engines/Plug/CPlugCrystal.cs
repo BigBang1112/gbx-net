@@ -208,19 +208,12 @@ public partial class CPlugCrystal
                 {
                     for (int i = 0; i < face.Vertices.Length; i++)
                     {
-                        try
-                        {
-                            var index = indices?[counter++] ?? counter;
-                            face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
+                        var index = indices?[counter++] ?? counter;
+                        face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
 
-                            if (counter > lightmapCount)
-                            {
-                                throw new Exception("LightmapCoord count exceeded");
-                            }
-                        }
-                        catch
+                        if (counter > lightmapCount)
                         {
-
+                            throw new Exception("LightmapCoord count exceeded");
                         }
                     }
                 }
@@ -242,21 +235,22 @@ public partial class CPlugCrystal
                 .OfType<Crystal>()
                 .SelectMany(c => c.Faces);
 
-            var lightmapCoords = faces.SelectMany(f => f.Vertices.Select(v => v.LightmapCoord)).ToArray();
-
-            w.Write(lightmapCoords.Length);
+            var lightmapCoords = faces.SelectMany(f => f.Vertices.Select(v => v.LightmapCoord));
 
             if (Version == 0)
             {
-                foreach (var lightmap in lightmapCoords)
-                {
-                    w.Write(lightmap);
-                }
+                w.WriteArray(lightmapCoords.ToArray());
             }
 
             if (Version >= 1)
             {
-                foreach (var lightmap in lightmapCoords)
+                var lightmapCoordArray = Version == 1
+                    ? lightmapCoords.ToArray()
+                    : lightmapCoords.Distinct().ToArray();
+
+                w.Write(lightmapCoordArray.Length);
+
+                foreach (var lightmap in lightmapCoordArray)
                 {
                     w.Write((ushort)(lightmap.X * ushort.MaxValue));
                     w.Write((ushort)(lightmap.Y * ushort.MaxValue));
@@ -264,7 +258,7 @@ public partial class CPlugCrystal
 
                 if (Version >= 2)
                 {
-                    var lightmapCoordIndices = lightmapCoords.Distinct()
+                    var lightmapCoordIndices = lightmapCoordArray
                         .Select((x, i) => (x, i))
                         .ToDictionary(x => x.x, x => x.i);
                     var indices = faces.SelectMany(f => f.Vertices.Select(v => lightmapCoordIndices[v.LightmapCoord])).ToArray();
