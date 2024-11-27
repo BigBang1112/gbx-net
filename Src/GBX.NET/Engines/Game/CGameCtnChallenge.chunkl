@@ -359,6 +359,8 @@ CGameCtnChallenge 0x03043000 // A map.
  version
  byte<PaletteColor> Palette
 
+0x3F001003 (skippable)
+
 archive BotPath
  int Clan
  list<vec3> Path
