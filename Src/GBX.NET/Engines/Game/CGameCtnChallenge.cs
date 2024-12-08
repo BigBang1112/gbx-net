@@ -1753,9 +1753,8 @@ public partial class CGameCtnChallenge :
 
                 foreach (var entry in zip.Entries)
                 {
-                    const string itemsPrefix = "Items/";
-                    const string clubItemsPrefix = "ClubItems/";
-                    //const string favoriteClubItemsPrefix = "<fake>/MemoryTemp/FavoriteClubItems";
+                    const string itemsPrefix = "Items\\";
+                    const string clubItemsPrefix = "ClubItems\\";
 
                     using var entryStream = entry.Open();
 
@@ -1775,10 +1774,10 @@ public partial class CGameCtnChallenge :
 
                         var ident = itemModel.Ident;
 
-                        var fullName = entry.FullName.Replace('\\', '/');
+                        var fullName = entry.FullName.Replace('/', '\\');
                         if (fullName.StartsWith(itemsPrefix))
                         {
-                            ident = ident with { Id = entry.FullName.Replace('/', '\\').Substring(itemsPrefix.Length) };
+                            ident = ident with { Id = fullName.Substring(itemsPrefix.Length) };
                         }
 
                         if (fullName.StartsWith(clubItemsPrefix))
@@ -1786,9 +1785,9 @@ public partial class CGameCtnChallenge :
                             ident = ident with
                             {
 #if NET6_0_OR_GREATER
-                                Id = string.Concat("club:", entry.FullName.Replace('/', '\\').AsSpan(clubItemsPrefix.Length))
+                                Id = string.Concat("club:", fullName.AsSpan(clubItemsPrefix.Length))
 #else
-                                Id = "club:" + entry.FullName.Replace('/', '\\').Substring(clubItemsPrefix.Length)
+                                Id = "club:" + fullName.Substring(clubItemsPrefix.Length)
 #endif
                             };
                         }
