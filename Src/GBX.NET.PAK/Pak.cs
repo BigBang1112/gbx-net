@@ -1,4 +1,5 @@
-﻿using GBX.NET.Exceptions;
+﻿using GBX.NET.Crypto;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using System.Collections.Immutable;
 using System.IO.Compression;
@@ -18,6 +19,7 @@ public sealed partial class Pak : IDisposable
 
     private readonly Stream stream;
     private readonly byte[] key;
+    private readonly byte[] headerMD5;
     private readonly int metadataStart;
     private readonly int dataStart;
 
@@ -25,11 +27,19 @@ public sealed partial class Pak : IDisposable
     public int Flags { get; }
     public ImmutableDictionary<string, PakFile> Files { get; }
 
-    private Pak(Stream stream, byte[] key, int version, int metadataStart, int dataStart, int flags, ImmutableDictionary<string, PakFile> files)
+    private Pak(Stream stream,
+        byte[] key,
+        int version,
+        byte[] headerMD5,
+        int metadataStart,
+        int dataStart,
+        int flags,
+        ImmutableDictionary<string, PakFile> files)
     {
         this.stream = stream;
         this.key = key;
         Version = version;
+        this.headerMD5 = headerMD5;
         this.metadataStart = metadataStart;
         this.dataStart = dataStart;
         Flags = flags;
@@ -52,6 +62,12 @@ public sealed partial class Pak : IDisposable
         var decryptReader = new GbxReader(decryptStream);
         
         return await ParseEncryptedAsync(decryptReader, stream, version, key, cancellationToken);
+    }
+
+    public static async Task<Pak> ParseAsync(string filePath, byte[] key, CancellationToken cancellationToken = default)
+    {
+        var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ParseAsync(fs, key, cancellationToken);
     }
 
     private static async Task<Pak> ParseEncryptedAsync(
@@ -88,7 +104,7 @@ public sealed partial class Pak : IDisposable
 
         var files = ReadAllFiles(r, allFolders);
 
-        return new Pak(originalStream, key, version, metadataStart, dataStart, flags, files);
+        return new Pak(originalStream, key, version, headerMD5, metadataStart, dataStart, flags, files);
     }
 
     private static PakFolder[] ReadAllFolders(GbxReader r)
@@ -162,7 +178,10 @@ public sealed partial class Pak : IDisposable
         stream.Position = dataStart + file.Offset;
 
         var ivBuffer = new byte[8];
-        stream.Read(ivBuffer, 0, 8);
+        if (stream.Read(ivBuffer, 0, 8) != 8)
+        {
+            throw new EndOfStreamException("Could not read IV from file.");
+        }
         var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
         var blowfish = new BlowfishStream(stream, key, iv);
@@ -184,6 +203,13 @@ public sealed partial class Pak : IDisposable
         return await Gbx.ParseAsync(stream, settings with { EncryptionInitializer = encryptionInitializer }, cancellationToken);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public Gbx OpenGbxFileHeader(PakFile file, GbxReadSettings settings = default)
+    {
+        using var stream = OpenFile(file, out var encryptionInitializer);
+        return Gbx.ParseHeader(stream, settings with { EncryptionInitializer = encryptionInitializer });
+    }
+
     public void Dispose()
     {
         stream.Dispose();
@@ -195,4 +221,72 @@ public sealed partial class Pak : IDisposable
         await stream.DisposeAsync();
     }
 #endif
+
+    public static async Task<Dictionary<string, string>> BruteforceHashFileNamesAsync(
+        string directoryPath, 
+        IProgress<KeyValuePair<string, string>>? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        var pakList = PakList.Parse(Path.Combine(directoryPath, "packlist.dat"));
+
+        var hashFileNames = new Dictionary<string, string>();
+
+        foreach (var pakInfo in pakList)
+        {
+            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
+            var fullFileName = Path.Combine(directoryPath, fileName);
+
+            if (!File.Exists(fullFileName))
+            {
+                continue;
+            }
+
+            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, cancellationToken);
+
+            foreach (var file in pak.Files.Values)
+            {
+                if (!file.Name.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                cancellationToken.ThrowIfCancellationRequested();
+
+                Gbx gbx;
+                try
+                {
+                    gbx = pak.OpenGbxFileHeader(file);
+                }
+                catch (NotAGbxException)
+                {
+                    continue;
+                }
+
+                var refTable = gbx.RefTable;
+
+                if (refTable is null)
+                {
+                    continue;
+                }
+
+                foreach (var refTableFile in refTable.Files)
+                {
+                    var filePath = refTableFile.FilePath;
+                    var hash = MD5.Compute136(filePath);
+                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                    hashFileNames[hash] = filePath;
+
+                    while (filePath.Contains('\\'))
+                    {
+                        filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
+                        hash = MD5.Compute136(filePath);
+                        progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                        hashFileNames[hash] = filePath;
+                    }
+                }
+            }
+        }
+
+        return hashFileNames;
+    }
 }
