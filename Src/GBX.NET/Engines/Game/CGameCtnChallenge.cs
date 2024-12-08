@@ -1753,6 +1753,11 @@ public partial class CGameCtnChallenge :
 
                 foreach (var entry in zip.Entries)
                 {
+                    if (!entry.FullName.StartsWith("Items/"))
+                    {
+                        continue;
+                    }
+
                     using var entryStream = entry.Open();
 
                     try
@@ -1761,12 +1766,19 @@ public partial class CGameCtnChallenge :
 
                         if (nodeHeader is CGameItemModel { Ident: not null } itemModel)
                         {
-                            itemModelList.Add(itemModel.Ident);
+                            itemModelList.Add(itemModel.Ident with
+                            {
+                                Id = entry.FullName.Replace('/', '\\').Substring("Items/".Length)
+                            });
                         }
+
+                        // CGameItemModel.Ident is also often renamed inside the Gbx file
+                        // so if this is an issue to match the Ident, read the gbx fully, change Ident, and save
+                        // do so only if it doesn't match with entry file name, to optimize the process
                     }
                     catch
                     {
-
+                        // TODO: log
                     }
                 }
 
