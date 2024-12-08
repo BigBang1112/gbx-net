@@ -1775,12 +1775,13 @@ public partial class CGameCtnChallenge :
 
                         var ident = itemModel.Ident;
 
-                        if (entry.FullName.StartsWith(itemsPrefix))
+                        var fullName = entry.FullName.Replace('\\', '/');
+                        if (fullName.StartsWith(itemsPrefix))
                         {
                             ident = ident with { Id = entry.FullName.Replace('/', '\\').Substring(itemsPrefix.Length) };
                         }
 
-                        if (entry.FullName.StartsWith(clubItemsPrefix))
+                        if (fullName.StartsWith(clubItemsPrefix))
                         {
                             ident = ident with
                             {
