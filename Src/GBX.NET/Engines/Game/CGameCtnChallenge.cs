@@ -1753,10 +1753,9 @@ public partial class CGameCtnChallenge :
 
                 foreach (var entry in zip.Entries)
                 {
-                    if (!entry.FullName.StartsWith("Items/"))
-                    {
-                        continue;
-                    }
+                    const string itemsPrefix = "Items/";
+                    const string clubItemsPrefix = "ClubItems/";
+                    //const string favoriteClubItemsPrefix = "<fake>/MemoryTemp/FavoriteClubItems";
 
                     using var entryStream = entry.Open();
 
@@ -1764,13 +1763,36 @@ public partial class CGameCtnChallenge :
                     {
                         var nodeHeader = Gbx.ParseHeaderNode(entryStream);
 
-                        if (nodeHeader is CGameItemModel { Ident: not null } itemModel)
+                        if (nodeHeader is not CGameItemModel itemModel)
                         {
-                            itemModelList.Add(itemModel.Ident with
-                            {
-                                Id = entry.FullName.Replace('/', '\\').Substring("Items/".Length)
-                            });
+                            continue;
                         }
+
+                        if (itemModel.Ident is null || itemModel.ItemType == CGameItemModel.EItemType.Block)
+                        {
+                            continue;
+                        }
+
+                        var ident = itemModel.Ident;
+
+                        if (entry.FullName.StartsWith(itemsPrefix))
+                        {
+                            ident = ident with { Id = entry.FullName.Replace('/', '\\').Substring(itemsPrefix.Length) };
+                        }
+
+                        if (entry.FullName.StartsWith(clubItemsPrefix))
+                        {
+                            ident = ident with
+                            {
+#if NET6_0_OR_GREATER
+                                Id = string.Concat("club:", entry.FullName.Replace('/', '\\').AsSpan(clubItemsPrefix.Length))
+#else
+                                Id = "club:" + entry.FullName.Replace('/', '\\').Substring(clubItemsPrefix.Length)
+#endif
+                            };
+                        }
+
+                        itemModelList.Add(ident);
 
                         // CGameItemModel.Ident is also often renamed inside the Gbx file
                         // so if this is an issue to match the Ident, read the gbx fully, change Ident, and save
