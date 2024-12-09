@@ -1780,13 +1780,11 @@ public partial class CGameCtnChallenge :
                         {
                             ident = ident with { Id = fullName.Substring(itemsPrefix.Length) };
                         }
-
-                        if (fullName.StartsWith(blocksPrefix))
+                        else if (fullName.StartsWith(blocksPrefix))
                         {
                             ident = ident with { Id = fullName.Substring(blocksPrefix.Length) };
                         }
-
-                        if (fullName.StartsWith(clubItemsPrefix))
+                        else if (fullName.StartsWith(clubItemsPrefix))
                         {
                             ident = ident with
                             {
