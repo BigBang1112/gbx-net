@@ -1754,6 +1754,7 @@ public partial class CGameCtnChallenge :
                 foreach (var entry in zip.Entries)
                 {
                     const string itemsPrefix = "Items\\";
+                    const string blocksPrefix = "Blocks\\";
                     const string clubItemsPrefix = "ClubItems\\";
 
                     using var entryStream = entry.Open();
@@ -1778,6 +1779,11 @@ public partial class CGameCtnChallenge :
                         if (fullName.StartsWith(itemsPrefix))
                         {
                             ident = ident with { Id = fullName.Substring(itemsPrefix.Length) };
+                        }
+
+                        if (fullName.StartsWith(blocksPrefix))
+                        {
+                            ident = ident with { Id = fullName.Substring(blocksPrefix.Length) };
                         }
 
                         if (fullName.StartsWith(clubItemsPrefix))
