@@ -1768,7 +1768,7 @@ public partial class CGameCtnChallenge :
                             continue;
                         }
 
-                        if (itemModel.Ident is null || itemModel.ItemType == CGameItemModel.EItemType.Block)
+                        if (itemModel.Ident is null)
                         {
                             continue;
                         }
