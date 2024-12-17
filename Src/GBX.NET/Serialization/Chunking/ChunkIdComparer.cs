@@ -1,23 +1,12 @@
 ﻿namespace GBX.NET.Serialization.Chunking;
 
-public sealed class ChunkIdComparer : IComparer<IChunk>
+public sealed class ChunkIdComparer : IComparer<uint>
 {
     public static readonly ChunkIdComparer Default = new();
 
-    public int Compare(IChunk? x, IChunk? y)
+    public int Compare(uint x, uint y)
     {
-        // Both null or same instance
-        if (ReferenceEquals(x, y)) return 0;
-
-        // null is considered less than any non-null
-        if (x is null) return -1;
-        if (y is null) return 1;
-
-        // Prioritize IHeaderChunk instances
-        if (x is IHeaderChunk && y is not IHeaderChunk) return -1;
-        if (x is not IHeaderChunk && y is IHeaderChunk) return 1;
-
-        // Compare by Id if none of the above conditions are met
-        return x.Id.CompareTo(y.Id);
+        // TODO order by chunk type and inheritance
+        return x.CompareTo(y);
     }
 }
