@@ -180,7 +180,7 @@ using GBX.NET.LZO;
 Gbx.LZO = new Lzo();
 ```
 
-You should run this line of code **only once** for the whole program lifetime.
+You should run this line of code **only once** at the start of the program.
 
 The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v2+. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
 
@@ -408,7 +408,7 @@ Gbx.ZLib = new ZLib();
 ```
 
 > [!NOTE]
-> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.1 or 2.2.
+> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.2.
 
 The data is often stored in properties of type `CompressedData` which are byte arrays with additional uncompressed data size for validation. If there's a property with this type (`CGameCtnChallenge.LightmapCacheData` for example), zlib data will be stored there no matter if the zlib implementation is included, so read/write consistency is guaranteed.
 
