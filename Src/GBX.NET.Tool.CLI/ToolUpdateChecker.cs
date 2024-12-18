@@ -11,9 +11,14 @@ internal sealed class ToolUpdateChecker
         this.updateInfoResponseTask = updateInfoResponseTask;
     }
 
-    public static ToolUpdateChecker Check(HttpClient client, CancellationToken cancellationToken)
+    public static ToolUpdateChecker? Check(HttpClient client, string? githubRepo, CancellationToken cancellationToken)
     {
-        var responseTask = client.GetAsync("https://api.github.com/repos/GBX.NET/GBX.NET.Tool/releases/latest", cancellationToken);
+        if (githubRepo is null)
+        {
+            return null;
+        }
+
+        var responseTask = client.GetAsync($"https://api.github.com/repos/{githubRepo}/releases/latest", cancellationToken);
         return new ToolUpdateChecker(responseTask);
     }
 

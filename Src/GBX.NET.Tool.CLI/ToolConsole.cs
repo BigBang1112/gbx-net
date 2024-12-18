@@ -140,7 +140,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // Request update info and additional stuff
         var updateChecker = toolSettings.ConsoleSettings.DisableUpdateCheck
             ? null
-            : ToolUpdateChecker.Check(http, cancellationToken);
+            : ToolUpdateChecker.Check(http, options.GitHubRepo, cancellationToken);
 
         if (introWriterTask is not null)
         {
