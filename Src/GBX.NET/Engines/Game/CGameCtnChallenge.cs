@@ -12,7 +12,7 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
-    private string authorLogin = string.Empty;
+    private string? authorLogin;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
