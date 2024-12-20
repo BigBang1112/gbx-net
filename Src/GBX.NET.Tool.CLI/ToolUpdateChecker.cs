@@ -20,7 +20,7 @@ internal sealed class ToolUpdateChecker
             return null;
         }
 
-        var responseTask = client.GetAsync($"https://api.github.com/repos/{githubRepo}/releases/latest", cancellationToken);
+        var responseTask = client.GetAsync($"https://api.github.com/repos/{githubRepo}/releases", cancellationToken);
         return new ToolUpdateChecker(responseTask);
     }
 
@@ -49,13 +49,17 @@ internal sealed class ToolUpdateChecker
 
             try
             {
-                var updateInfo = await updateInfoResponse.Content.ReadFromJsonAsync(GitHubJsonContext.Default.UpdateInfo, cancellationToken);
-
-                if (updateInfo is not null)
+                await foreach (var updateInfo in updateInfoResponse.Content.ReadFromJsonAsAsyncEnumerable(GitHubJsonContext.Default.UpdateInfo, cancellationToken))
                 {
-                    AnsiConsole.MarkupLine($"[yellow]Latest version available:[/] [green]{updateInfo.TagName?.TrimStart('v')}[/]");
-                    AnsiConsole.MarkupLine($"[yellow]Release notes:[/] [green]{updateInfo.HtmlUrl}[/]");
+                    if (updateInfo is not null)
+                    {
+                        AnsiConsole.MarkupLine($"[yellow]Latest version available:[/] [green]{updateInfo.TagName?.TrimStart('v')}[/]");
+                        AnsiConsole.MarkupLine($"[yellow]Release notes:[/] [green]{updateInfo.HtmlUrl}[/]");
+                    }
+
+                    break;
                 }
+
             }
             catch (Exception ex)
             {
