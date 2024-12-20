@@ -148,12 +148,6 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
             logger.LogTrace("Intro finished.");
         }
 
-        // Check for updates here if received. If not, check at the end of the tool execution
-        var updateCheckCompleted = updateChecker is null
-            || await updateChecker.TryCompareVersionAsync();
-
-        logger.LogDebug("Update check completed: {UpdateCheckCompleted}", updateCheckCompleted);
-
         AnsiConsole.WriteLine();
 
         if (toolSettings.InputArguments.Count == 0)
@@ -165,9 +159,9 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 AnsiConsole.WriteLine(options.IntroText);
             }
 
-            if (!updateCheckCompleted && updateChecker is not null)
+            if (updateChecker is not null)
             {
-                await updateChecker.CompareVersionAsync();
+                await updateChecker.CompareVersionAsync(cancellationToken);
             }
 
             AnsiConsole.WriteLine();
@@ -194,10 +188,10 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         logger.LogInformation("Completed!");
 
-        // Check again for updates if not done before
-        if (!updateCheckCompleted && updateChecker is not null)
+        // Check for updates if not done before
+        if (updateChecker is not null)
         {
-            await updateChecker.CompareVersionAsync();
+            await updateChecker.CompareVersionAsync(cancellationToken);
         }
     }
 
