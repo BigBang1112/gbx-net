@@ -9,6 +9,8 @@ Gbx.ZLib = new ZLib();
 var pakFileName = args[0];
 var directoryPath = Path.GetDirectoryName(pakFileName)!;
 
+Console.WriteLine("Bruteforcing possible file names from hashes...");
+
 var hashes = await Pak.BruteforceHashFileNamesAsync(directoryPath);
 
 var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
@@ -43,7 +45,9 @@ foreach (var file in pak.Files.Values)
         using var stream = entry.Open();
 
         using var pakItemFileStream = pak.OpenFile(file, out _);
-        //await pakItemFileStream.CopyToAsync(stream);
+        var data = new byte[file.UncompressedSize];
+        var count = pakItemFileStream.Read(data);
+        stream.Write(data, 0, count);
     }
     catch (Exception ex)
     {
