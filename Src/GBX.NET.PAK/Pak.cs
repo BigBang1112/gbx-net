@@ -246,11 +246,6 @@ public sealed partial class Pak : IDisposable
 
             foreach (var file in pak.Files.Values)
             {
-                if (!file.Name.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
                 cancellationToken.ThrowIfCancellationRequested();
 
                 Gbx gbx;
