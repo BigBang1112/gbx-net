@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
+using NativeSharpZlib;
 using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Text;
@@ -193,7 +194,7 @@ public sealed partial class Pak : IDisposable
             return blowfish;
         }
 
-        return new ZlibDeflateStream(blowfish, false);
+        return new NativeZlibStream(blowfish, CompressionMode.Decompress);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]

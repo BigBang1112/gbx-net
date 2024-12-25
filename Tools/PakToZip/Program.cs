@@ -1,25 +1,52 @@
 ﻿using GBX.NET;
+using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 using GBX.NET.ZLib;
+using System.IO.Compression;
 
 Gbx.ZLib = new ZLib();
 
-var fileName = args[0];
-var directoryPath = Path.GetDirectoryName(fileName)!;
+var pakFileName = args[0];
+var directoryPath = Path.GetDirectoryName(pakFileName)!;
 
 var hashes = await Pak.BruteforceHashFileNamesAsync(directoryPath);
 
 var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
 var packlist = await PakList.ParseAsync(packlistFileName);
 
-var key = packlist[Path.GetFileNameWithoutExtension(fileName).ToLowerInvariant()].Key;
+var key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
 
-using var fs = File.OpenRead(fileName);
+using var fs = File.OpenRead(pakFileName);
 using var pak = await Pak.ParseAsync(fs, key);
 
-var file = pak.Files.Values.First(x => x.Name == "B2FC497BF7F81AB02D01FE8FB2F707CD8F");
-var fileItemName = hashes[file.Name];
+using var zip = ZipFile.Open(Path.ChangeExtension(pakFileName, ".zip"), ZipArchiveMode.Create);
 
-var gbx = await pak.OpenGbxFileAsync(file);
+foreach (var file in pak.Files.Values)
+{
+    var fileName = hashes.GetValueOrDefault(file.Name) ?? file.Name;
+    var fullPath = Path.Combine(file.FolderPath, fileName);
 
-Console.WriteLine();
+    Console.WriteLine(fullPath);
+
+    try
+    {
+        var gbx = await pak.OpenGbxFileAsync(file);
+
+        var entry = zip.CreateEntry(fullPath);
+        using var stream = entry.Open();
+
+        gbx.Save(stream);
+    }
+    catch (NotAGbxException)
+    {
+        var entry = zip.CreateEntry(fullPath);
+        using var stream = entry.Open();
+
+        using var pakItemFileStream = pak.OpenFile(file, out _);
+        //await pakItemFileStream.CopyToAsync(stream);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+    }
+}
