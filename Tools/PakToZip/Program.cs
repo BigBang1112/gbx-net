@@ -1,4 +1,5 @@
 ﻿using GBX.NET;
+using GBX.NET.Components;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 using GBX.NET.ZLib;
@@ -37,20 +38,31 @@ foreach (var file in pak.Files.Values)
         var entry = zip.CreateEntry(fullPath);
         using var stream = entry.Open();
 
-        gbx.Save(stream);
+        if (gbx.Header is GbxHeaderUnknown)
+        {
+            CopyFileToStream(pak, file, stream);
+        }
+        else
+        {
+            gbx.Save(stream);
+        }
     }
     catch (NotAGbxException)
     {
         var entry = zip.CreateEntry(fullPath);
         using var stream = entry.Open();
-
-        using var pakItemFileStream = pak.OpenFile(file, out _);
-        var data = new byte[file.UncompressedSize];
-        var count = pakItemFileStream.Read(data);
-        stream.Write(data, 0, count);
+        CopyFileToStream(pak, file, stream);
     }
     catch (Exception ex)
     {
         Console.WriteLine(ex);
     }
+}
+
+static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
+{
+    var pakItemFileStream = pak.OpenFile(file, out _);
+    var data = new byte[file.UncompressedSize];
+    var count = pakItemFileStream.Read(data);
+    stream.Write(data, 0, count);
 }
