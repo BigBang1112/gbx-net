@@ -176,6 +176,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBX.NET.Tool.StandardIO", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PakToZip", "Tools\PakToZip\PakToZip.csproj", "{47A58E42-EBBC-48D0-B4B1-C25DFD074506}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractPakFileHashes", "Tools\ExtractPakFileHashes\ExtractPakFileHashes.csproj", "{B3C5D493-3172-4780-95EC-CBEE73BE4850}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -418,6 +420,10 @@ Global
 		{47A58E42-EBBC-48D0-B4B1-C25DFD074506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A58E42-EBBC-48D0-B4B1-C25DFD074506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A58E42-EBBC-48D0-B4B1-C25DFD074506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C5D493-3172-4780-95EC-CBEE73BE4850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C5D493-3172-4780-95EC-CBEE73BE4850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C5D493-3172-4780-95EC-CBEE73BE4850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C5D493-3172-4780-95EC-CBEE73BE4850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -488,6 +494,7 @@ Global
 		{0B5609C6-7B10-4E8D-B41C-35CC1A2532A4} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{55BD1330-7431-41A8-90EB-DEB20D9EB981} = {80DCE6B7-4BD9-415C-B053-92B059D7C938}
 		{47A58E42-EBBC-48D0-B4B1-C25DFD074506} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{B3C5D493-3172-4780-95EC-CBEE73BE4850} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}

@@ -50,6 +50,7 @@ public sealed partial class Pak : IDisposable
         Files = files;
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Pak> ParseAsync(Stream stream, byte[] key, CancellationToken cancellationToken = default)
     {
         var r = new GbxReader(stream);
@@ -80,6 +81,13 @@ public sealed partial class Pak : IDisposable
         return await ParseAsync(fs, key, cancellationToken);
     }
 
+    public static Pak Parse(string filePath, byte[] key)
+    {
+        var fs = File.OpenRead(filePath);
+        return Parse(fs, key);
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     private static async Task<Pak> ParseEncryptedAsync(
         GbxReader r, 
         Stream originalStream, 
@@ -126,6 +134,11 @@ public sealed partial class Pak : IDisposable
         {
             var parentFolderIndex = r.ReadInt32(); // index into folders; -1 if this is a root folder
             var name = r.ReadString();
+
+            if (!name.EndsWith('\\') && !name.EndsWith('/'))
+            {
+                name += '\\';
+            }
 
             allFolders[i] = new PakFolder(name, parentFolderIndex == -1 ? null : parentFolderIndex);
         }
@@ -246,7 +259,7 @@ public sealed partial class Pak : IDisposable
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakList = PakList.Parse(Path.Combine(directoryPath, PakListFileName));
+        var pakList = await PakList.ParseAsync(Path.Combine(directoryPath, PakListFileName), cancellationToken);
 
         var allPossibleFileHashes = new Dictionary<string, string>();
 
