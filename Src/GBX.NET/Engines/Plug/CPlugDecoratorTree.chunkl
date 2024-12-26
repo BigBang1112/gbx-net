@@ -1,0 +1,30 @@
+CPlugDecoratorTree 0x090A2000
+
+0x006
+ id TreeId
+ CPlugMaterial Material
+ CPlugTreeLight TreeLight
+ int VisibleCond
+ bool VisibleApplyOnChilds
+ int ShadowCasterCond
+ bool ShadowCasterApplyOnChilds
+ bool TransformVisualToSurface
+
+0x007
+ id TreeId
+ CPlugMaterial Material
+ CPlugTreeLight TreeLight
+ int ExistCond
+ int VisibleCond
+ bool VisibleApplyOnChilds
+ int ShadowCasterCond
+ bool ShadowCasterApplyOnChilds
+ bool TransformVisualToSurface
+
+0x008 (base: 0x007)
+ base
+ bool NoLocation
+
+0x009 (base: 0x008)
+ base
+ int CollidableCond
