@@ -44,6 +44,9 @@ CPlugBitmap 0x09011000
 0x020
  float[] MipMapFadeAlphas
 
+0x021
+ uint
+
 0x022 (base: 0x018)
 
 0x023

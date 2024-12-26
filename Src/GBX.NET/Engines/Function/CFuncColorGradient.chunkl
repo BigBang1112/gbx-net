@@ -1,13 +1,16 @@
 CFuncColorGradient 0x05038000
 - inherits: CFunc
 
-0x001
+0x000
  vec3 KeyFrameValue0
  vec3 KeyFrameValue1
  vec3 KeyFrameValue2
  vec3 KeyFrameValue3
  float KeyFramePos1
  float KeyFramePos2
+
+0x001 (base: 0x000)
+ base
  int<EColorSpace> ColorSpace
 
 enum EColorSpace

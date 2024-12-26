@@ -11,6 +11,13 @@ CPlugMaterialCustom 0x0903A000
  GpuFx[] GpuFxs1
  GpuFx[] GpuFxs2
 
+0x00B
+ uint U01
+ ulong U02
+ if (U01 & 1) != 0
+  short U03
+  short U04
+
 0x00C
  BitmapSkip[] SkipSamplers
 

@@ -1,2 +1,5 @@
 CPlugSound 0x0901A000
 - inherits: CPlugAudio
+
+0x000
+ CMwNod (external)
