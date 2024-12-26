@@ -38,6 +38,7 @@ jobs:
         dotnet build Src/GBX.NET -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${git_hash::7}
         dotnet build Src/GBX.NET.Tool -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${git_hash::7}
         dotnet build Src/GBX.NET.Tool.CLI -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${git_hash::7}
+        dotnet build Src/GBX.NET.PAK -c Release --no-restore /p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').${git_hash::7}
 
     - name: Publish nightly GBX.NET nupkg to nuget.gbx.tools
       run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
@@ -47,3 +48,6 @@ jobs:
 
     - name: Publish nightly GBX.NET.Tool.CLI nupkg to nuget.gbx.tools
       run: dotnet nuget push Src/GBX.NET.Tool.CLI/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
+
+    - name: Publish nightly GBX.NET.PAK nupkg to nuget.gbx.tools
+      run: dotnet nuget push Src/GBX.NET.PAK/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
