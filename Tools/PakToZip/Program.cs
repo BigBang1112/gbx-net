@@ -2,10 +2,7 @@
 using GBX.NET.Components;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
-using GBX.NET.ZLib;
 using System.IO.Compression;
-
-Gbx.ZLib = new ZLib();
 
 var pakFileName = args[0];
 var directoryPath = Path.GetDirectoryName(pakFileName)!;

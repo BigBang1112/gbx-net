@@ -73,6 +73,7 @@ jobs:
         - GBX.NET.Tool
         - GBX.NET.Tool.CLI
         - GBX.NET.Crypto
+        - GBX.NET.PAK
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest

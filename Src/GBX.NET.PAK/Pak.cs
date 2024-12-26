@@ -19,6 +19,8 @@ public sealed partial class Pak : IDisposable
     /// </summary>
     public const string Magic = "NadeoPak";
 
+    private const string PakListFileName = "packlist.dat";
+
     private readonly Stream stream;
     private readonly byte[] key;
     private readonly byte[] headerMD5;
@@ -58,6 +60,12 @@ public sealed partial class Pak : IDisposable
         }
 
         var version = r.ReadInt32();
+
+        if (version > 5)
+        {
+            throw new Exception($"Version >5 (actual: {version}) is not supported. Use Pak6 for this file.");
+        }
+
         var headerIV = r.ReadUInt64();
 
         var decryptStream = new BlowfishStream(stream, key, headerIV);
@@ -238,7 +246,7 @@ public sealed partial class Pak : IDisposable
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakList = PakList.Parse(Path.Combine(directoryPath, "packlist.dat"));
+        var pakList = PakList.Parse(Path.Combine(directoryPath, PakListFileName));
 
         var allPossibleFileHashes = new Dictionary<string, string>();
 
