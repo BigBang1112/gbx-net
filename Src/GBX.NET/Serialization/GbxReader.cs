@@ -63,6 +63,7 @@ public partial interface IGbxReader : IDisposable
     TransQuat ReadTransQuat();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
+    bool ReadBoolean(BoolType type);
     byte[] ReadData();
     Task<byte[]> ReadDataAsync(CancellationToken cancellationToken = default);
     byte[] ReadData(int length);
@@ -780,6 +781,22 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
         return booleanAsByte != 0;
+    }
+
+    public bool ReadBoolean(BoolType type)
+    {
+        switch (type)
+        {
+            case BoolType.Int32:
+                return ReadBoolean();
+            case BoolType.Byte:
+                return ReadBoolean(asByte: true);
+            case BoolType.Text:
+                var bytes = ReadString(20);
+                return bool.Parse(ReadToCRLF());
+            default:
+                throw new ArgumentException("Invalid boolean type.", nameof(type));
+        }
     }
 
     public override string ReadString()
