@@ -12,7 +12,7 @@ var directoryPath = Path.GetDirectoryName(pakFileName)!;
 
 Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-var hashes = await Pak.BruteforceHashFileNamesAsync(directoryPath);
+var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, onlyUsedHashes: false);
 
 var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
 var packlist = await PakList.ParseAsync(packlistFileName);

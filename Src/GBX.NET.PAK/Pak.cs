@@ -4,6 +4,7 @@ using GBX.NET.Serialization;
 using NativeSharpZlib;
 using System.Collections.Immutable;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace GBX.NET.PAK;
@@ -223,15 +224,82 @@ public sealed partial class Pak : IDisposable
     }
 #endif
 
-    public static async Task<Dictionary<string, string>> BruteforceHashFileNamesAsync(
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="directoryPath"></param>
+    /// <param name="progress"></param>
+    /// <param name="onlyUsedHashes"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
+    public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath, 
         IProgress<KeyValuePair<string, string>>? progress = null,
+        bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
         var pakList = PakList.Parse(Path.Combine(directoryPath, "packlist.dat"));
 
-        var hashFileNames = new Dictionary<string, string>();
+        var allPossibleFileHashes = new Dictionary<string, string>();
 
+        await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, pakList, cancellationToken))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            Gbx gbx;
+            try
+            {
+                gbx = pak.OpenGbxFileHeader(file);
+            }
+            catch (NotAGbxException)
+            {
+                continue;
+            }
+
+            var refTable = gbx.RefTable;
+
+            if (refTable is null)
+            {
+                continue;
+            }
+
+            foreach (var refTableFile in refTable.Files)
+            {
+                var filePath = refTableFile.FilePath;
+                var hash = MD5.Compute136(filePath);
+                progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                allPossibleFileHashes[hash] = filePath;
+
+                while (filePath.Contains('\\'))
+                {
+                    filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
+                    hash = MD5.Compute136(filePath);
+                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                    allPossibleFileHashes[hash] = filePath;
+                }
+            }
+        }
+
+        if (!onlyUsedHashes)
+        {
+            return allPossibleFileHashes;
+        }
+
+        var usedHashes = new Dictionary<string, string>();
+
+        await foreach (var (_, file) in EnumeratePakFilesAsync(directoryPath, pakList, cancellationToken))
+        {
+            if (allPossibleFileHashes.TryGetValue(file.Name, out var name))
+            {
+                usedHashes[file.Name] = name;
+            }
+        }
+
+        return usedHashes;
+    }
+
+    private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(string directoryPath, PakList pakList, [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
         foreach (var pakInfo in pakList)
         {
             var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
@@ -246,43 +314,8 @@ public sealed partial class Pak : IDisposable
 
             foreach (var file in pak.Files.Values)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                Gbx gbx;
-                try
-                {
-                    gbx = pak.OpenGbxFileHeader(file);
-                }
-                catch (NotAGbxException)
-                {
-                    continue;
-                }
-
-                var refTable = gbx.RefTable;
-
-                if (refTable is null)
-                {
-                    continue;
-                }
-
-                foreach (var refTableFile in refTable.Files)
-                {
-                    var filePath = refTableFile.FilePath;
-                    var hash = MD5.Compute136(filePath);
-                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                    hashFileNames[hash] = filePath;
-
-                    while (filePath.Contains('\\'))
-                    {
-                        filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
-                        hash = MD5.Compute136(filePath);
-                        progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                        hashFileNames[hash] = filePath;
-                    }
-                }
+                yield return (pak, file);
             }
         }
-
-        return hashFileNames;
     }
 }
