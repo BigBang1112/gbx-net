@@ -166,7 +166,7 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
             AnsiConsole.WriteLine();
 
-            throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
+            throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable (not this window), or provide the input paths as command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
         var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
