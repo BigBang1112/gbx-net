@@ -291,9 +291,9 @@ public sealed partial class Pak : IDisposable
                 progress?.Report(new KeyValuePair<string, string>(hash, filePath));
                 allPossibleFileHashes[hash] = filePath;
 
-                while (filePath.Contains('\\'))
+                while (filePath.Contains(Path.DirectorySeparatorChar))
                 {
-                    filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
+                    filePath = filePath.Substring(filePath.IndexOf(Path.DirectorySeparatorChar) + 1);
                     hash = MD5.Compute136(filePath);
                     progress?.Report(new KeyValuePair<string, string>(hash, filePath));
                     allPossibleFileHashes[hash] = filePath;
