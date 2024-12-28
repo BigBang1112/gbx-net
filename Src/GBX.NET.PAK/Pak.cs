@@ -162,9 +162,9 @@ public sealed partial class Pak : IDisposable
             var classId = r.ReadUInt32(); // indicates the type of the file
             var fileFlags = r.ReadUInt64();
 
-            var folderPath = string.Concat(RecurseFoldersToParent(folderIndex, allFolders)
+            var folderPath = string.Join(Path.DirectorySeparatorChar, RecurseFoldersToParent(folderIndex, allFolders)
                 .Reverse()
-                .Select(f => f.Name));
+                .Select(f => f.Name.TrimEnd('\\')));
             var filePath = string.Concat(folderPath, name);
 
             var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, fileFlags);
