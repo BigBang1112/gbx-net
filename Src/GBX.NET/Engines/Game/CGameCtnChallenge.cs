@@ -1824,9 +1824,34 @@ public partial class CGameCtnChallenge :
 
     public partial class Chunk03043055
     {
+        public Chunk3F001001? UnlimiterChunk;
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             // empty, sets classic clips to true?
+            // if unskippable = odd unlimiter chunk
+
+            if (UnlimiterChunk is null)
+            {
+                return;
+            }
+
+            if (rw.Reader is not null)
+            {
+                UnlimiterChunk.Version = rw.Reader.ReadByte() switch
+                {
+                    1 => 4,
+                    2 => 5,
+                    _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
+                };
+            }
+
+            if (rw.Writer is not null)
+            {
+                rw.Writer.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
+            }
+
+            UnlimiterChunk.ReadWriteWithoutVersion(n, rw, ver: 0);
         }
     }
 
@@ -2102,14 +2127,42 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    public partial class Chunk3F001003 : IVersionable
+    public partial class Chunk3F001001 : IVersionable
     {
         public int Version { get; set; }
 
-        public override void Read(CGameCtnChallenge n, GbxReader r)
+        public ushort Flags { get; set; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw) => ReadWrite(n, rw, ver: 0);
+
+        protected void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw, int ver)
         {
-            Version = r.ReadByte();
-            var flags = r.ReadInt16();
+            rw.VersionByte(this);
+
+            if (Version == 0)
+            {
+                return;
+            }
+
+            ReadWriteWithoutVersion(n, rw, ver);
         }
+
+        public void ReadWriteWithoutVersion(CGameCtnChallenge n, GbxReaderWriter rw, int ver)
+        {
+            if (Version == 4)
+            {
+                Flags = rw.Byte((byte)Flags);
+            }
+        }
+    }
+
+    public partial class Chunk3F001002
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw) => ReadWrite(n, rw, ver: 1);
+    }
+
+    public partial class Chunk3F001003 : IVersionable
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw) => ReadWrite(n, rw, ver: 2);
     }
 }

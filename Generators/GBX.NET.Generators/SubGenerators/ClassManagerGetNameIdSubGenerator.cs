@@ -80,6 +80,7 @@ internal static class ClassManagerGetNameIdSubGenerator
             }
         }
 
+        builder.AppendLine("            0x3F001000 => \"CGameCtnChallenge (Unlimiter)\",");
         builder.AppendLine("            _ => null");
         builder.AppendLine("        };");
         builder.AppendLine("    }");
