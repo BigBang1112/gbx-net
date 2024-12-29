@@ -154,7 +154,7 @@ public sealed partial class Pak : IDisposable
         for (var i = 0; i < numFiles; i++)
         {
             var folderIndex = r.ReadInt32(); // index into folders
-            var name = r.ReadString();
+            var name = r.ReadString().Replace('\\', Path.DirectorySeparatorChar);
             var u01 = r.ReadInt32();
             var uncompressedSize = r.ReadInt32();
             var compressedSize = r.ReadInt32();
@@ -165,7 +165,7 @@ public sealed partial class Pak : IDisposable
             var folderPath = string.Join(Path.DirectorySeparatorChar, RecurseFoldersToParent(folderIndex, allFolders)
                 .Reverse()
                 .Select(f => f.Name.TrimEnd('\\')));
-            var filePath = string.Concat(folderPath, name);
+            var filePath = Path.Combine(folderPath, name);
 
             var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, fileFlags);
             files[filePath] = file;
@@ -286,14 +286,14 @@ public sealed partial class Pak : IDisposable
 
             foreach (var refTableFile in refTable.Files)
             {
-                var filePath = refTableFile.FilePath;
+                var filePath = refTableFile.FilePath.Replace('/', '\\');
                 var hash = MD5.Compute136(filePath);
                 progress?.Report(new KeyValuePair<string, string>(hash, filePath));
                 allPossibleFileHashes[hash] = filePath;
 
-                while (filePath.Contains(Path.DirectorySeparatorChar))
+                while (filePath.Contains('\\'))
                 {
-                    filePath = filePath.Substring(filePath.IndexOf(Path.DirectorySeparatorChar) + 1);
+                    filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
                     hash = MD5.Compute136(filePath);
                     progress?.Report(new KeyValuePair<string, string>(hash, filePath));
                     allPossibleFileHashes[hash] = filePath;
