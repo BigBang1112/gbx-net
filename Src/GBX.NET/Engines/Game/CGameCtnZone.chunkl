@@ -12,4 +12,16 @@ CGameCtnZone 0x0305C000
  bool
 
 0x006
- bool
+ bool IsLargeZone
+
+0x007
+ float VisualTopGroundHeight
+
+0x008
+ int Height
+
+0x00B
+ id WaterId
+
+0x00C
+ id ForcedParentZoneFrontierId

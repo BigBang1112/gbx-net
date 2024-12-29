@@ -21,6 +21,8 @@ public partial class CMwNod : IClass
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
+        r.TryInitializeDecryption(node);
+
         var prevChunkId = default(uint?);
 
         while (true)
@@ -321,6 +323,8 @@ public partial class CMwNod : IClass
     internal virtual void Read(GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        r.TryInitializeDecryption(this);
 
         var prevChunkId = default(uint?);
 

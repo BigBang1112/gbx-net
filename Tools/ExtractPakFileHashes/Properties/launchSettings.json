@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExtractPakFileHashes": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\Games\\Vsk5Online\\Packs\""
+    }
+  }
+}

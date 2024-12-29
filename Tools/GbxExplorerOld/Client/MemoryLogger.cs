@@ -34,7 +34,7 @@ public class MemoryLogger : ILogger
                 continue;
             }
 
-            str = str.Replace($"{{{key}}}", val.ToString());
+            str = str.Replace($"{{{key}}}", val?.ToString());
         }
 
         return CurrentScope = new LogScopeModel(str, CurrentScope, this);

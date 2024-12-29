@@ -37,6 +37,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
+          9.0.x
           8.0.x
           6.0.x
           
@@ -72,6 +73,7 @@ jobs:
         - GBX.NET.Tool
         - GBX.NET.Tool.CLI
         - GBX.NET.Crypto
+        - GBX.NET.PAK
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest

@@ -24,12 +24,14 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight)
   - [Create a new GBX.NET project (Visual Studio Code)](#create-a-new-gbxnet-project-visual-studio-code)
   - [Create a new GBX.NET project (Visual Studio)](#create-a-new-gbxnet-project-visual-studio)
+- **[IMPORTANT INFO about the LZO and Gbx compression](#important-info-about-the-lzo-and-gbx-compression)**
 - **[Usage (simple examples)](#usage-simple-examples)**
   - [Load a map and display block count per block name](#load-a-map-and-display-block-count-per-block-name)
   - [Modify and save a map](#modify-and-save-a-map)
   - [Processing multiple Gbx types](#processing-multiple-gbx-types)
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
 - [Tool framework](#tool-framework)
+- [Zlib compression in Gbx](#zlib-compression-in-gbx)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
@@ -42,6 +44,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Asynchronous](#asynchronous)
 - [Benchmarks](#benchmarks)
 - [Build](#build)
+  - [Nightly builds](#nightly-builds)
 - [License](#license)
 - [Special thanks](#special-thanks)
 - [Alternative Gbx parsers](#alternative-gbx-parsers)
@@ -50,7 +53,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, April 2024 update
+- **Trackmania (2020)**, October 2024 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM
@@ -106,6 +109,7 @@ The goal is to also make it viable for NativeAOT.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
+- **.NET 9**
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
@@ -118,8 +122,8 @@ Using the NuGet packages is recommended.
 
 ### Create a new GBX.NET project (lightweight)
 
-1. Install [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.8` (make sure you have WinGet installed)
+1. Install [.NET SDK 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
+    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.9` (make sure you have WinGet installed)
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
 2. Create directory for your project (anywhere), **go inside it**.
 3. Create new console project: `dotnet new console`
@@ -176,9 +180,9 @@ using GBX.NET.LZO;
 Gbx.LZO = new Lzo();
 ```
 
-You should run this line of code **only once** for the whole program lifetime.
+You should run this line of code **only once** at the start of the program.
 
-The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v3. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
+The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v2+. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
 
 **Gbx header is not compressed** and can contain useful information (icon data, replay time, ...), and also many of the **internal Gbx files from Pak files are not compressed**, so you can avoid LZO for these purposes.
 
@@ -372,6 +376,45 @@ Tool library has a primary tool class that implements `ITool` interface. There s
 Tool class accepts input through constructors (best one is picked according to input provided by implementation). The tool can output as "produce" (`IProductive`), which creates objects without mutating the input (for example, create MediaTracker clip from replay inputs), or "mutate" (`IMutative`) which creates objects while also causing changes to the input (for example, modifying a map without having to recreate it again).
 
 Samples are available [here](Samples/Tool/).
+
+## Zlib compression in Gbx
+
+There are a few places where Gbx includes additional zlib-compressed data:
+
+- Ghost samples
+  - `CGameGhost.SampleData`
+- Record data (general replay data or TM2020 ghost samples)
+  - `CGameCtnReplayRecord.RecordData`, `CGameCtnGhost.RecordData`, `CGameCtnMediaBlockEntity.RecordData`
+- Lightmap data of a map
+  - `CGameCtnChallenge.LightmapCache`, additional lightmap parameters
+
+GBX.NET does not include zlib algorithm by default to read this data. Properties will often return `null` silently, but you can hook onto more details about this if you specify `Logger` in the parse methods.
+
+To "unlock" this data, you need to specify zlib implementation:
+
+Command line:
+
+```
+dotnet add package GBX.NET.ZLib
+```
+
+C# code:
+
+```cs
+using GBX.NET;
+using GBX.NET.ZLib;
+
+Gbx.ZLib = new ZLib();
+```
+
+> [!NOTE]
+> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.2.
+
+The data is often stored in properties of type `CompressedData` which are byte arrays with additional uncompressed data size for validation. If there's a property with this type (`CGameCtnChallenge.LightmapCacheData` for example), zlib data will be stored there no matter if the zlib implementation is included, so read/write consistency is guaranteed.
+
+> The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
+
+GBX.NET.PAK uses a separate zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
 ## Clarity
 
@@ -575,17 +618,35 @@ TODO
 
 Make sure you have these framework SDKs available:
 
+- **.NET 9**
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
 
-**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will likely not work.
+**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will not work.
 
 You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It is required for Gbx Explorer to work properly, as it uses native LZO implementation compiled into WebAssembly.
 
 In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
 
 In .NET CLI, run `dotnet build` on the solution (`.sln`) level.
+
+### Nightly builds
+
+Every **5AM UTC**, there is a new build from the `dev` branch published on https://nuget.gbx.tools/ of the base GBX.NET package (soon also GBX.NET.Tool*).
+
+Go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include the package source:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="nuget.gbx.tools" value="https://nuget.gbx.tools/v3/index.json" /> <!-- add this -->
+  </packageSources>
+</configuration>
+```
+Then you can select the `nuget.gbx.tools` package source and fetch nightly builds from there.
+
+> In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
 ## License
 
@@ -607,6 +668,7 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 - GNU GPL v3 License
   - **Src/GBX.NET.LZO**
   - Src/GBX.NET.Tool.CLI
+  - **Src/GBX.NET.PAK**
   - Samples
   - Tools
 - The Unlicense

@@ -31,14 +31,14 @@ CGameCtnDecoration 0x03038000
 
 0x018
  version
- CPlugGameSkin VehicleFxSkin
+ CPlugGameSkin VehicleFxSkin (external)
  string VehicleFxFolder
 
 0x019
  version
  CGameCtnDecorationAudio DecoAudio (external)
  v1+
-  CPlugSound DecoAudioAmbient
+  CPlugSound DecoAudioAmbient (external)
 
 0x01A
  version

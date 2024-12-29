@@ -228,7 +228,7 @@
  bool
 
 0x240B5011 (not-remapped)
- bool[]
+ int[]
 
 0x240B5012 (not-remapped)
  bool

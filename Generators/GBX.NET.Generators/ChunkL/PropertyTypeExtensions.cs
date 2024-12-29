@@ -151,7 +151,7 @@ internal static class PropertyTypeExtensions
             "dataint" => "int",
             "dataulong" => "ulong",
             "datalong" => "long",
-            "boolbyte" => "bool",
+            "boolbyte" or "booltext" => "bool",
             "optimizedint" => "int",
             "node" => "CMwNod",
             _ => type

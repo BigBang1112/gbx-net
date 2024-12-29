@@ -79,10 +79,8 @@ public class GbxReaderTests
         ms.Write([(byte)'G', (byte)'B']);
         ms.Position = 0;
 
-        // Act
-        var result = r.ReadGbxMagic();
-
-        Assert.False(result);
+        // Act & Assert
+        Assert.Throws<EndOfStreamException>(() => r.ReadGbxMagic());
     }
 
     [Fact]

@@ -339,12 +339,16 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk03093008
     {
-        public int U01;
+        public byte[][]? U01;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             n.Game = r.ReadString();
-            U01 = r.ReadInt32(); // SOldCutKey2
+            U01 = new byte[r.ReadInt32()][]; // SOldCutKey2
+            for (var i = 0; i < U01.Length; i++)
+            {
+                U01[i] = r.ReadBytes(72);
+            }
         }
     }
 

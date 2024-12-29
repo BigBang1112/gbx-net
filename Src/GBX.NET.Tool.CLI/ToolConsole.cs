@@ -140,19 +140,13 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
         // Request update info and additional stuff
         var updateChecker = toolSettings.ConsoleSettings.DisableUpdateCheck
             ? null
-            : ToolUpdateChecker.Check(http, cancellationToken);
+            : ToolUpdateChecker.Check(http, options.GitHubRepo, cancellationToken);
 
         if (introWriterTask is not null)
         {
             await introWriterTask;
             logger.LogTrace("Intro finished.");
         }
-
-        // Check for updates here if received. If not, check at the end of the tool execution
-        var updateCheckCompleted = updateChecker is null
-            || await updateChecker.TryCompareVersionAsync();
-
-        logger.LogDebug("Update check completed: {UpdateCheckCompleted}", updateCheckCompleted);
 
         AnsiConsole.WriteLine();
 
@@ -165,14 +159,14 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
                 AnsiConsole.WriteLine(options.IntroText);
             }
 
-            if (!updateCheckCompleted && updateChecker is not null)
+            if (updateChecker is not null)
             {
-                await updateChecker.CompareVersionAsync();
+                await updateChecker.CompareVersionAsync(cancellationToken);
             }
 
             AnsiConsole.WriteLine();
 
-            throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable, or include the input paths as the command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
+            throw new ConsoleProblemException("No files were passed to the tool.\nPlease drag and drop files onto the executable (not this window), or provide the input paths as command line arguments.\nFile paths, directory paths, or URLs are supported in any order.");
         }
 
         var configName = string.IsNullOrWhiteSpace(toolSettings.ConsoleSettings.ConfigName) ? "Default"
@@ -194,10 +188,10 @@ public class ToolConsole<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
         logger.LogInformation("Completed!");
 
-        // Check again for updates if not done before
-        if (!updateCheckCompleted && updateChecker is not null)
+        // Check for updates if not done before
+        if (updateChecker is not null)
         {
-            await updateChecker.CompareVersionAsync();
+            await updateChecker.CompareVersionAsync(cancellationToken);
         }
     }
 

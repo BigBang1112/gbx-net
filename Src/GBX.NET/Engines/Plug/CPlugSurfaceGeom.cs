@@ -57,6 +57,8 @@ public partial class CPlugSurfaceGeom
 
             if (rw.Reader is not null)
             {
+                rw.Reader.Settings.EncryptionInitializer?.Initialize(BitConverter.GetBytes(U02.X - U02.X2), 0, 4);
+
                 n.Surf = CPlugSurface.ReadSurf(rw.Reader, version: 0);
             }
             

@@ -5,3 +5,19 @@ CGameCtnZoneFrontier 0x0305E000
  CGameCtnBlockInfoFrontier BlockInfoFrontier (external)
  id ParentZoneId
  id ChildZoneId
+
+0x002
+ int
+ int BlockYOffsetFromParent
+
+0x003
+ bool FrontierParentBorder_AcceptPylons
+ bool FrontierChildBorder_AcceptPylons
+
+0x004 (base: 0x003)
+ base
+ bool FrontierTransitionMiddle_AcceptPylons
+ bool FrontierStraightMiddle_AcceptPylons
+
+0x005 (skippable)
+ CGameCtnZoneFusionInfo[]_deprec CompatibleZones

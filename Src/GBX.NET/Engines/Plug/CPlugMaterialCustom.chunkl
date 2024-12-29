@@ -11,6 +11,13 @@ CPlugMaterialCustom 0x0903A000
  GpuFx[] GpuFxs1
  GpuFx[] GpuFxs2
 
+0x00B
+ uint U01
+ ulong U02
+ if (U01 & 1) != 0
+  short U03
+  short U04
+
 0x00C
  BitmapSkip[] SkipSamplers
 
@@ -21,10 +28,44 @@ CPlugMaterialCustom 0x0903A000
   short U03
   short U04
 
+0x00F (skippable)
+ version
+ float
+ float
+ v1+
+  float
+  v2+
+   DefineNat[]
+
+0x010
+ CMwNod
+
+0x011 (skippable)
+ int
+
+0x012
+ CMwNod
+
+0x013
+ version
+ Bitmap[] Textures (version: 1)
+
+0x014
+ version
+ CBuffer[]
+
+0x015
+ version
+ v1+
+  int U01
+ if U01 == 0
+  string
+  string
+
 archive Bitmap
  id
  int
- int
+ CMwNod (external)
  v1+
   int
   int
@@ -34,3 +75,11 @@ archive GpuFx
 archive BitmapSkip
  id Name
  bool
+
+archive DefineNat
+ id
+ int
+
+archive CBuffer
+ int
+ data

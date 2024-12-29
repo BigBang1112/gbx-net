@@ -42,13 +42,19 @@ public partial class CGameCtnBlockUnitInfo
                 U01[i] = new(node, file);
             }
         }
+
+        public override void Write(CGameCtnBlockUnitInfo n, GbxWriter w)
+        {
+            foreach (var e in U01!)
+            {
+                w.WriteNodeRef(e.Node, e.File);
+            }
+        }
     }
 
-    public partial class Chunk0303600C
+    public partial class Chunk0303600C : IVersionable
     {
-        private int version;
-
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public short? U01;
         public short? U02;
@@ -57,12 +63,12 @@ public partial class CGameCtnBlockUnitInfo
 
         public override void Read(CGameCtnBlockUnitInfo n, GbxReader r)
         {
-            var version = r.ReadInt32();
+            Version = r.ReadInt32();
 
-            if (version == 0)
+            if (Version == 0)
             {
                 //rw.Int16();
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             var clipCountBits = r.ReadInt32();
@@ -81,7 +87,7 @@ public partial class CGameCtnBlockUnitInfo
             n.ClipsTop = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
             n.ClipsBottom = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
 
-            if (version >= 2)
+            if (Version >= 2)
             {
                 U01 = r.ReadInt16();
                 U02 = r.ReadInt16();
@@ -90,6 +96,60 @@ public partial class CGameCtnBlockUnitInfo
             {
                 U03 = r.ReadInt32();
                 U04 = r.ReadInt32();
+            }
+        }
+
+        public override void Write(CGameCtnBlockUnitInfo n, GbxWriter w)
+        {
+            w.Write(Version);
+
+            var clipCountBits = (n.ClipsNorth?.Length ?? 0)
+                | (n.ClipsEast?.Length ?? 0) << 3
+                | (n.ClipsSouth?.Length ?? 0) << 6
+                | (n.ClipsWest?.Length ?? 0) << 9
+                | (n.ClipsTop?.Length ?? 0) << 12
+                | (n.ClipsBottom?.Length ?? 0) << 15;
+            w.Write(clipCountBits);
+
+            foreach (var clip in n.ClipsNorth ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            foreach (var clip in n.ClipsEast ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            foreach (var clip in n.ClipsSouth ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            foreach (var clip in n.ClipsWest ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            foreach (var clip in n.ClipsTop ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            foreach (var clip in n.ClipsBottom ?? [])
+            {
+                w.WriteNodeRef(clip);
+            }
+
+            if (Version >= 2)
+            {
+                w.Write(U01.GetValueOrDefault());
+                w.Write(U02.GetValueOrDefault());
+            }
+            else
+            {
+                w.Write(U03.GetValueOrDefault());
+                w.Write(U04.GetValueOrDefault());
             }
         }
     }

@@ -63,6 +63,7 @@ public partial interface IGbxReader : IDisposable
     TransQuat ReadTransQuat();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
+    bool ReadBoolean(BoolType type);
     byte[] ReadData();
     Task<byte[]> ReadDataAsync(CancellationToken cancellationToken = default);
     byte[] ReadData(int length);
@@ -263,7 +264,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (BaseStream.Read(buffer) != 3)
         {
-            return false;
+            throw new EndOfStreamException("Failed to read GBX magic bytes.");
         }
 
         return buffer[0] == 'G' && buffer[1] == 'B' && buffer[2] == 'X';
@@ -782,6 +783,22 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return booleanAsByte != 0;
     }
 
+    public bool ReadBoolean(BoolType type)
+    {
+        switch (type)
+        {
+            case BoolType.Int32:
+                return ReadBoolean();
+            case BoolType.Byte:
+                return ReadBoolean(asByte: true);
+            case BoolType.Text:
+                var bytes = ReadString(20);
+                return bool.Parse(ReadToCRLF());
+            default:
+                throw new ArgumentException("Invalid boolean type.", nameof(type));
+        }
+    }
+
     public override string ReadString()
     {
         limiter?.ThrowIfLimitExceeded(sizeof(int));
@@ -1116,7 +1133,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
@@ -1279,7 +1296,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var classId = ClassManager.Wrap(rawClassId);
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
@@ -2035,5 +2052,38 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             reader.Format = format;
         }
+    }
+
+    internal bool TryInitializeDecryption(IClass node)
+    {
+        if (Settings.EncryptionInitializer is null)
+        {
+            return false;
+        }
+
+        var baseType = node.GetType().BaseType ?? throw new ThisShouldNotHappenException();
+
+        var parentClassId = ClassManager.ClassIds[baseType];
+
+        if (parentClassId == 0x07031000)
+        {
+            parentClassId = 0x07001000;
+        }
+
+        if (node is CPlugSurfaceGeom)
+        {
+            parentClassId = 0x0902B000;
+        }
+
+        if (baseType == typeof(CGameCtnBlockInfo))
+        {
+            parentClassId = 0x24005000;
+        }
+
+        var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+
+        Settings.EncryptionInitializer.Initialize(parentClassIDBytes, 0, 4);
+
+        return true;
     }
 }

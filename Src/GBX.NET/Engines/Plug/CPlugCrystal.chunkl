@@ -16,13 +16,6 @@ CPlugCrystal 0x09003000
 0x005 [MP4, TM2020] // layers
 
 0x006 [MP4.v0, TM2020.v1] // lightmap UVs
- version
- v0=
-  vec2[]
- v1+
-  uint[] // two Int16 technically
-  v2+
-   optimizedint[]
 
 0x007 [MP4, TM2020] // smoothing groups
  version

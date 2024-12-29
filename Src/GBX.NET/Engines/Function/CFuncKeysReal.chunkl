@@ -1,6 +1,9 @@
 CFuncKeysReal 0x0501A000
 - inherits: CFuncKeys
 
+0x000
+ float[] Ys
+
 0x001
  float[] Ys
  int<ERealInterp> RealInterp

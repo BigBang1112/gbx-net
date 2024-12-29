@@ -6,9 +6,9 @@ public partial class CGameBlockItem
     [AppliedWithChunk<Chunk2E025000>]
     public string ArchetypeBlockInfoId { get => archetypeBlockInfoId; set => archetypeBlockInfoId = value; }
 
-    private string archetypeBlockInfoCollectionId = string.Empty;
+    private Id archetypeBlockInfoCollectionId = new();
     [AppliedWithChunk<Chunk2E025000>]
-    public string ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
+    public Id ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
 
     private List<Mobil> customizedVariants = [];
     [AppliedWithChunk<Chunk2E025000>]

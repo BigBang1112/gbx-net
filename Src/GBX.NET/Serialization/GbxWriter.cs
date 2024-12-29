@@ -42,6 +42,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteDataUInt64(ulong value);
     void Write(bool value);
     void Write(bool value, bool asByte);
+    void Write(bool value, BoolType type);
     void Write(string? value);
     void Write(string? value, StringLengthPrefix lengthPrefix);
     void WriteGbxMagic();
@@ -264,6 +265,24 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         else
         {
             Write(Convert.ToInt32(value));
+        }
+    }
+
+    public void Write(bool value, BoolType type)
+    {
+        switch (type)
+        {
+            case BoolType.Int32:
+                Write(value);
+                return;
+            case BoolType.Byte:
+                Write(value, asByte: true);
+                return;
+            case BoolType.Text:
+                Write(value ? "True\r\n" : "False\r\n");
+                return;
+            default:
+                throw new ArgumentException("Invalid boolean type.", nameof(type));
         }
     }
 

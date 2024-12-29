@@ -1,4 +1,6 @@
-﻿using Spectre.Console;
+﻿using NationsConverterWeb;
+using Spectre.Console;
+using System.Net.Http.Json;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -11,25 +13,30 @@ internal sealed class ToolUpdateChecker
         this.updateInfoResponseTask = updateInfoResponseTask;
     }
 
-    public static ToolUpdateChecker Check(HttpClient client, CancellationToken cancellationToken)
+    public static ToolUpdateChecker? Check(HttpClient client, string? githubRepo, CancellationToken cancellationToken)
     {
-        var responseTask = client.GetAsync("https://api.github.com/repos/GBX.NET/GBX.NET.Tool/releases/latest", cancellationToken);
+        if (githubRepo is null)
+        {
+            return null;
+        }
+
+        var responseTask = client.GetAsync($"https://api.github.com/repos/{githubRepo}/releases", cancellationToken);
         return new ToolUpdateChecker(responseTask);
     }
 
-    public async ValueTask<bool> TryCompareVersionAsync()
+    public async ValueTask<bool> TryCompareVersionAsync(CancellationToken cancellationToken)
     {
         if (!updateInfoResponseTask.IsCompleted)
         {
             return false;
         }
 
-        await CompareVersionAsync();
+        await CompareVersionAsync(cancellationToken);
 
         return true;
     }
 
-    public async Task CompareVersionAsync()
+    public async Task CompareVersionAsync(CancellationToken cancellationToken)
     {
         AnsiConsole.WriteLine();
 
@@ -40,13 +47,25 @@ internal sealed class ToolUpdateChecker
             AnsiConsole.Write(new Rule("Check for updates / auto-updater").LeftJustified().RuleStyle("yellow"));
             AnsiConsole.WriteLine();
 
-            //var updateInfo = await updateInfoResponse.Content.ReadFromJsonAsync<UpdateInfo>(cancellationToken);
+            try
+            {
+                await foreach (var updateInfo in updateInfoResponse.Content.ReadFromJsonAsAsyncEnumerable(GitHubJsonContext.Default.UpdateInfo, cancellationToken))
+                {
+                    if (updateInfo is not null)
+                    {
+                        AnsiConsole.MarkupLine($"[yellow]Latest version available:[/] [green]{updateInfo.TagName?.TrimStart('v')}[/]");
+                        AnsiConsole.MarkupLine($"[yellow]Release notes:[/] [green]{updateInfo.HtmlUrl}[/]");
+                    }
 
-            //if (updateInfo is not null)
-            //{
-            AnsiConsole.MarkupLine($"[yellow]New version available:[/] [green]tag[/]");
-            AnsiConsole.MarkupLine($"[yellow]Release notes:[/] [green]url[/]");
-            //}
+                    break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                AnsiConsole.MarkupLine("[red]Failed to parse update information.[/]");
+                AnsiConsole.WriteException(ex);
+            }
 
             AnsiConsole.WriteLine();
             AnsiConsole.Write(new Rule().RuleStyle("yellow"));

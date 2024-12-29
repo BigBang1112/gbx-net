@@ -12,7 +12,7 @@ public partial class CGameCtnChallenge :
     IGameCtnChallengeMP4,
     IGameCtnChallengeTM2020
 {
-    private string authorLogin = string.Empty;
+    private string? authorLogin;
     private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
@@ -770,6 +770,75 @@ public partial class CGameCtnChallenge :
     int IGameCtnChallengeTMF.RemoveBlock(Predicate<IGameCtnBlockTMF> match) => RemoveBlocks(match);
     int IGameCtnChallengeMP4.RemoveBlock(Predicate<IGameCtnBlockMP4> match) => RemoveBlocks(match);
     int IGameCtnChallengeTM2020.RemoveBlock(Predicate<IGameCtnBlockTM2020> match) => RemoveBlocks(match);
+
+    public partial class HeaderChunk03043002
+    {
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.VersionByte(this);
+            if (Version <= 2)
+            {
+                rw.Ident(ref n.mapInfo);
+                rw.String(ref n.mapName);
+            }
+            rw.Boolean(ref U01);
+            if (Version >= 1)
+            {
+                rw.TimeInt32Nullable(ref n.bronzeTime);
+                rw.TimeInt32Nullable(ref n.silverTime);
+                rw.TimeInt32Nullable(ref n.goldTime);
+                rw.TimeInt32Nullable(ref n.authorTime);
+                if (Version == 2)
+                {
+                    rw.Byte(ref U02);
+                }
+                if (Version >= 4)
+                {
+                    rw.Int32(ref n.cost);
+                    if (Version >= 5)
+                    {
+                        rw.Boolean(ref n.isLapRace);
+                        if (Version == 6)
+                        {
+                            rw.Boolean(ref U03);
+                        }
+                        if (Version >= 7)
+                        {
+                            rw.EnumInt32<PlayMode>(ref n.mode);
+                            if (Version >= 9)
+                            {
+                                rw.Int32(ref U04);
+                                if (Version >= 10)
+                                {
+                                    rw.Int32(ref n.authorScore);
+                                    if (Version >= 11)
+                                    {
+                                        rw.EnumInt32<EditorMode>(ref n.editor);
+                                        if (Version >= 12)
+                                        {
+                                            rw.Int32(ref U05);
+                                            if (Version >= 13)
+                                            {
+                                                rw.Int32(ref n.nbCheckpoints);
+                                                if (n.isLapRace || rw.Reader is not null)
+                                                {
+                                                    rw.Int32(ref n.nbLaps);
+                                                }
+                                                else
+                                                {
+                                                    rw.Int32(1);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class HeaderChunk03043007 : IVersionable
@@ -1684,20 +1753,58 @@ public partial class CGameCtnChallenge :
 
                 foreach (var entry in zip.Entries)
                 {
+                    const string itemsPrefix = "Items\\";
+                    const string blocksPrefix = "Blocks\\";
+                    const string clubItemsPrefix = "ClubItems\\";
+
                     using var entryStream = entry.Open();
 
                     try
                     {
                         var nodeHeader = Gbx.ParseHeaderNode(entryStream);
 
-                        if (nodeHeader is CGameItemModel { Ident: not null } itemModel)
+                        if (nodeHeader is not CGameItemModel itemModel)
                         {
-                            itemModelList.Add(itemModel.Ident);
+                            continue;
                         }
+
+                        if (itemModel.Ident is null)
+                        {
+                            continue;
+                        }
+
+                        var ident = itemModel.Ident;
+
+                        var fullName = entry.FullName.Replace('/', '\\');
+                        if (fullName.StartsWith(itemsPrefix))
+                        {
+                            ident = ident with { Id = fullName.Substring(itemsPrefix.Length) };
+                        }
+                        else if (fullName.StartsWith(blocksPrefix))
+                        {
+                            ident = ident with { Id = fullName.Substring(blocksPrefix.Length) };
+                        }
+                        else if (fullName.StartsWith(clubItemsPrefix))
+                        {
+                            ident = ident with
+                            {
+#if NET6_0_OR_GREATER
+                                Id = string.Concat("club:", fullName.AsSpan(clubItemsPrefix.Length))
+#else
+                                Id = "club:" + fullName.Substring(clubItemsPrefix.Length)
+#endif
+                            };
+                        }
+
+                        itemModelList.Add(ident);
+
+                        // CGameItemModel.Ident is also often renamed inside the Gbx file
+                        // so if this is an issue to match the Ident, read the gbx fully, change Ident, and save
+                        // do so only if it doesn't match with entry file name, to optimize the process
                     }
                     catch
                     {
-
+                        // TODO: log
                     }
                 }
 
