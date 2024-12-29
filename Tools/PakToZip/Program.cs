@@ -23,7 +23,7 @@ using var zip = ZipFile.Open(Path.ChangeExtension(pakFileName, ".zip"), ZipArchi
 
 foreach (var file in pak.Files.Values)
 {
-    var fileName = hashes.GetValueOrDefault(file.Name) ?? file.Name;
+    var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
     var fullPath = Path.Combine(file.FolderPath, fileName);
 
     Console.WriteLine(fullPath);
