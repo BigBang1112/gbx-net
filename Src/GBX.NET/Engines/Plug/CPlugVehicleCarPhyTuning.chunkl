@@ -225,7 +225,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  int TurboDuration
 
 0x030
- CFuncKeysReal SteerDriveTorque
+ CFuncKeysReal SteerDriveTorque // encryption trick here
 
 0x031
  float LimitToMaxSpeedForce
