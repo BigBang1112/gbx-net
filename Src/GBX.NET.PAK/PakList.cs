@@ -53,7 +53,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 
         var nameKey = await MD5.ComputeAsync(nameKeySalt + salt, cancellationToken);
 
-        var packs = new Dictionary<string, PakListItem>(numPacks);
+        var packs = new Dictionary<string, PakListItem>(numPacks, StringComparer.OrdinalIgnoreCase);
 
         for (var i = 0; i < numPacks; i++)
         {
