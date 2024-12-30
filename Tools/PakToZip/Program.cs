@@ -7,9 +7,16 @@ using System.IO.Compression;
 var pakFileName = args[0];
 var directoryPath = Path.GetDirectoryName(pakFileName)!;
 
+var game = PakListGame.TM;
+
+if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
+{
+    game = PakListGame.Vsk5;
+}
+
 Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, onlyUsedHashes: false);
+var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
 
 var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
 var packlist = await PakList.ParseAsync(packlistFileName);

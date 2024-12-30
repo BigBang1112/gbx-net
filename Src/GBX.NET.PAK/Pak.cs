@@ -255,11 +255,12 @@ public sealed partial class Pak : IDisposable
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath, 
+        PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakList = await PakList.ParseAsync(Path.Combine(directoryPath, PakListFileName), cancellationToken);
+        var pakList = await PakList.ParseAsync(Path.Combine(directoryPath, PakListFileName), game, cancellationToken);
 
         var allPossibleFileHashes = new Dictionary<string, string>();
 
