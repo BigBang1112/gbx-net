@@ -115,37 +115,34 @@ public partial class CPlugVisual3D
         }
     }
 
-    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07, float? U08, int? U09)
+    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, Vec4? Color, float? U08, int? U09)
     {
         public static Vertex Read(GbxReader r, bool u01, bool u02, bool u03, bool u04, bool isSprite)
         {
             var pos = r.ReadVec3();
-            var vertU01 = default(int?);
-            var vertU02 = default(Vec3?);
-            var vertU03 = default(int?);
-            var vertU04 = default(Vec4?);
+            var normal = default(Vec3?);
+            var color = default(Vec4?);
 
             if (u01)
             {
-                if (u03)
-                {
-                    vertU01 = r.ReadInt32();
-                }
-                else
-                {
-                    vertU02 = r.ReadVec3();
-                }
+                normal = u03 ? r.ReadVec3_10b() : r.ReadVec3();
             }
 
             if (u02)
             {
                 if (u04)
                 {
-                    vertU03 = r.ReadInt32();
+                    var colorInt = r.ReadInt32();
+                    color = new Vec4(
+                        (colorInt >> 0x10 & 0xFF) / 255f,
+                        (colorInt >> 8 & 0xFF) / 255f,
+                        (colorInt & 0xFF) / 255f,
+                        (colorInt >> 0x18 & 0xFF) / 255f
+                    );
                 }
                 else
                 {
-                    vertU04 = r.ReadVec4();
+                    color = r.ReadVec4();
                 }
             }
 
@@ -161,10 +158,8 @@ public partial class CPlugVisual3D
             return new Vertex
             {
                 Position = pos,
-                U04 = vertU01,
-                U05 = vertU02,
-                U06 = vertU03,
-                U07 = vertU04,
+                Normal = normal,
+                Color = color,
                 U08 = vertU05,
                 U09 = vertU06,
             };
@@ -178,11 +173,11 @@ public partial class CPlugVisual3D
             {
                 if (u03)
                 {
-                    w.Write(U04.GetValueOrDefault());
+                    w.WriteVec3_10b(Normal.GetValueOrDefault());
                 }
                 else
                 {
-                    w.Write(U05.GetValueOrDefault());
+                    w.Write(Normal.GetValueOrDefault());
                 }
             }
 
@@ -190,11 +185,14 @@ public partial class CPlugVisual3D
             {
                 if (u04)
                 {
-                    w.Write(U06.GetValueOrDefault());
+                    w.Write((int)(Color.GetValueOrDefault().X * 255) << 0x10
+                        | (int)(Color.GetValueOrDefault().Y * 255) << 8
+                        | (int)(Color.GetValueOrDefault().Z * 255)
+                        | (int)(Color.GetValueOrDefault().W * 255) << 0x18);
                 }
                 else
                 {
-                    w.Write(U07.GetValueOrDefault());
+                    w.Write(Color.GetValueOrDefault());
                 }
             }
 
