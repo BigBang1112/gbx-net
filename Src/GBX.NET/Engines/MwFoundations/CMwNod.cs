@@ -688,6 +688,9 @@ public partial class CMwNod : IClass
         }
     }
 
+    /// <summary>
+    /// The version of the game where this node should be accepted without a game crash.
+    /// </summary>
     public GameVersion GameVersion
     {
         get
@@ -703,13 +706,24 @@ public partial class CMwNod : IClass
         }
     }
 
-    public bool IsGameVersion(GameVersion version, bool strict = false)
+    /// <summary>
+    /// Checks if the node is accepted in the given game version without a game crash.
+    /// </summary>
+    /// <param name="version">Game version flags.</param>
+    /// <param name="strict">If enabled, checks for the exact flag match (if accepted in MP4 and TM2020, only <c>MP4 | TM2020</c> will return true).</param>
+    /// <returns>True if matches, false if not.</returns>
+    public virtual bool IsGameVersion(GameVersion version, bool strict = false)
     {
         return strict
             ? GameVersion == version
             : (GameVersion & version) == version;
     }
 
+    /// <summary>
+    /// Checks if the node could be accepted in the given game version.
+    /// </summary>
+    /// <param name="version">Game version flags.</param>
+    /// <returns>True if matches, false if not.</returns>
     public bool CanBeGameVersion(GameVersion version)
     {
         return (GameVersion & version) != 0;
