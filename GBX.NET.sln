@@ -180,6 +180,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractPakFileHashes", "Too
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PakToFolder", "Tools\PakToFolder\PakToFolder.csproj", "{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjExporter", "Tools\ObjExporter\ObjExporter.csproj", "{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -430,6 +432,10 @@ Global
 		{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -502,6 +508,7 @@ Global
 		{47A58E42-EBBC-48D0-B4B1-C25DFD074506} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{B3C5D493-3172-4780-95EC-CBEE73BE4850} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 		{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
+		{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB} = {F3336145-FDA9-4517-AEDC-7F4C4D526ECB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EA2F0DE-BA72-486D-AB3A-9320C0CE5CFD}
