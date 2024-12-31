@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.NewtonsoftJson</PackageId>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <Authors>BigBang1112</Authors>
         <Description>Better and easier JSON serialization with polymorphic support for GBX.NET objects.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
