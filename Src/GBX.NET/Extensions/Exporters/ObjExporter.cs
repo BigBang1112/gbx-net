@@ -7,6 +7,17 @@ internal static class ObjExporter
 {
     private static CultureInfo Invariant => CultureInfo.InvariantCulture;
 
+    private static void WriteHeader(string type, TextWriter objWriter, TextWriter mtlWriter)
+    {
+        objWriter.WriteLine("# GBX.NET 2 - {0} - OBJ Exporter (.obj)", type);
+        objWriter.WriteLine("# Exported at {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        objWriter.WriteLine();
+
+        mtlWriter.WriteLine("# GBX.NET 2 - {0} - OBJ Exporter (.mtl)", type);
+        mtlWriter.WriteLine("# Exported at {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
+        mtlWriter.WriteLine();
+    }
+
     public static void Export(CPlugCrystal crystal, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null)
     {
         if (crystal.Layers is null)
@@ -14,13 +25,7 @@ internal static class ObjExporter
             return;
         }
 
-        objWriter.WriteLine("# GBX.NET 2 - CPlugCrystal - OBJ Exporter (.obj)");
-        objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        objWriter.WriteLine();
-
-        mtlWriter.WriteLine("# GBX.NET 2 - CPlugCrystal - OBJ Exporter (.mtl)");
-        mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        mtlWriter.WriteLine();
+        WriteHeader(nameof(CPlugCrystal), objWriter, mtlWriter);
 
         foreach (var material in crystal.Materials.Select(x => x.MaterialUserInst).OfType<CPlugMaterialUserInst>())
         {
@@ -144,13 +149,9 @@ internal static class ObjExporter
 
     public static void Export(CPlugSolid solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
     {
-        objWriter.WriteLine("# GBX.NET 2 - CPlugSolid - OBJ Exporter (.obj)");
-        objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        objWriter.WriteLine();
+        var enableNormals = true;
 
-        mtlWriter.WriteLine("# GBX.NET 2 - CPlugSolid - OBJ Exporter (.mtl)");
-        mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        mtlWriter.WriteLine();
+        WriteHeader(nameof(CPlugSolid), objWriter, mtlWriter);
 
         if (solid.Tree is not CPlugTree tree)
         {
@@ -169,17 +170,12 @@ internal static class ObjExporter
                 continue;
             }
 
-            if (t.ShaderFile is null)
-            {
-                continue;
-            }
-
             if (t.Visual is not CPlugVisualIndexedTriangles visual)
             {
                 continue;
             }
 
-            var materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+            var materialName = t.ShaderFile is null ? "Unknown" : GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
 
             if (!materials.Contains(materialName))
             {
@@ -219,6 +215,46 @@ internal static class ObjExporter
                     locatedPos.Z.ToString(Invariant));
 
                 positionsDict.Add(locatedPos, positionsDict.Count);
+            }
+        }
+
+        var normalsDict = new Dictionary<Vec3, int>();
+
+        if (enableNormals)
+        {
+            foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+            {
+                if (t.Visual is null)
+                {
+                    continue;
+                }
+
+                if (t.Visual is not CPlugVisualIndexedTriangles visual)
+                {
+                    continue;
+                }
+
+                foreach (var normal in visual.Vertices.Select(x => x.Normal))
+                {
+                    if (normal is null)
+                    {
+                        continue;
+                    }
+
+                    var normalized = normal.Value.GetNormalized();
+
+                    if (normalsDict.ContainsKey(normalized))
+                    {
+                        continue;
+                    }
+
+                    objWriter.WriteLine("vn {0} {1} {2}",
+                        normalized.X.ToString(Invariant),
+                        normalized.Y.ToString(Invariant),
+                        normalized.Z.ToString(Invariant));
+
+                    normalsDict.Add(normalized, normalsDict.Count);
+                }
             }
         }
 
@@ -299,11 +335,27 @@ internal static class ObjExporter
                     v.Position.X * loc.ZX + v.Position.Y * loc.ZY + v.Position.Z * loc.ZZ + loc.TZ
                 );
 
-                var faceIndex = visual.TexCoords.Length > 0
-                    ? $" {positionsDict[locatedPos] + 1}/{uvs[visual.TexCoords[0].TexCoords[index].UV] + 1}"
-                    : $" {positionsDict[locatedPos] + 1}";
+                objWriter.Write(' ');
+                objWriter.Write(positionsDict[locatedPos] + 1);
 
-                objWriter.Write(faceIndex);
+                var normalized = enableNormals ? v.Normal?.GetNormalized() : null;
+
+                if (visual.TexCoords.Length > 0)
+                {
+                    objWriter.Write('/');
+                    objWriter.Write(uvs[visual.TexCoords[0].TexCoords[index].UV] + 1);
+
+                    if (normalized.HasValue)
+                    {
+                        objWriter.Write('/');
+                        objWriter.Write(normalsDict[normalized.Value] + 1);
+                    }
+                }
+                else if (normalized.HasValue)
+                {
+                    objWriter.Write("//");
+                    objWriter.Write(normalsDict[normalized.Value] + 1);
+                }
 
                 if (++triangleCounter % 3 == 0)
                 {
@@ -317,13 +369,7 @@ internal static class ObjExporter
 
     public static void Export(CPlugSolid2Model solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
     {
-        objWriter.WriteLine("# GBX.NET 2 - CPlugSolid2Model - OBJ Exporter (.obj)");
-        objWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        objWriter.WriteLine();
-
-        mtlWriter.WriteLine("# GBX.NET 2 - CPlugSolid2Model - OBJ Exporter (.mtl)");
-        mtlWriter.WriteLine("# Exported on {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", Invariant));
-        mtlWriter.WriteLine();
+        WriteHeader(nameof(CPlugSolid2Model), objWriter, mtlWriter);
 
         var materials = new HashSet<string>();
 
