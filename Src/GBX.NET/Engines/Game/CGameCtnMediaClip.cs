@@ -9,14 +9,14 @@ public partial class CGameCtnMediaClip
     [AppliedWithChunk<Chunk0307900D>]
     public string? Name { get => name; set => name = value; }
 
-    private IList<CGameCtnMediaTrack>? tracks;
+    private List<CGameCtnMediaTrack>? tracks;
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
     [AppliedWithChunk<Chunk0307900D>]
-    public IList<CGameCtnMediaTrack> Tracks
+    public List<CGameCtnMediaTrack> Tracks
     {
-        get => tracks ??= new List<CGameCtnMediaTrack>();
+        get => tracks ??= [];
         set => tracks = value;
     }
 

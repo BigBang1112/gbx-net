@@ -7,7 +7,7 @@ public sealed record DirectoryInputArgument(string DirectoryPath) : InputArgumen
 {
     public override async Task<object?> ResolveAsync(CancellationToken cancellationToken)
     {
-        var files = Directory.GetFiles(DirectoryPath, "*.*", SearchOption.AllDirectories);
+        var files = Directory.EnumerateFiles(DirectoryPath, "*.*", SearchOption.AllDirectories);
         
         var tasks = files.Select<string, Task<object?>>(async file =>
         {

@@ -32,6 +32,10 @@ public partial interface IGbxReader : IDisposable
 
     int ReadHexInt32();
     uint ReadHexUInt32();
+    int ReadDataInt32();
+    uint ReadDataUInt32();
+    long ReadDataInt64();
+    ulong ReadDataUInt64();
     BigInteger ReadBigInt(int byteLength);
     Int128 ReadInt128();
     UInt128 ReadUInt128();
@@ -59,6 +63,7 @@ public partial interface IGbxReader : IDisposable
     TransQuat ReadTransQuat();
     bool ReadBoolean();
     bool ReadBoolean(bool asByte);
+    bool ReadBoolean(BoolType type);
     byte[] ReadData();
     Task<byte[]> ReadDataAsync(CancellationToken cancellationToken = default);
     byte[] ReadData(int length);
@@ -106,34 +111,34 @@ public partial interface IGbxReader : IDisposable
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct;
-    IList<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
-    IList<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
-    IList<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
+    List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
+    List<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
+    List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
     T?[] ReadArrayNodeRef<T>(int length) where T : IClass;
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
-    IList<T?> ReadListNodeRef<T>(int length) where T : IClass;
-    IList<T?> ReadListNodeRef<T>() where T : IClass;
-    IList<T?> ReadListNodeRef_deprec<T>() where T : IClass;
+    List<T?> ReadListNodeRef<T>(int length) where T : IClass;
+    List<T?> ReadListNodeRef<T>() where T : IClass;
+    List<T?> ReadListNodeRef_deprec<T>() where T : IClass;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
-    IList<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
-    IList<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
-    IList<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
+    List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
+    List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
+    List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
-    IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
-    IList<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
-    IList<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    List<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
+    List<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    List<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
 
     string[] ReadArrayId(int length);
     string[] ReadArrayId();
     string[] ReadArrayId_deprec();
-    IList<string> ReadListId(int length);
-    IList<string> ReadListId();
-    IList<string> ReadListId_deprec();
+    List<string> ReadListId(int length);
+    List<string> ReadListId();
+    List<string> ReadListId_deprec();
 
     uint PeekUInt32();
     void SkipData(int length);
@@ -259,7 +264,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (BaseStream.Read(buffer) != 3)
         {
-            return false;
+            throw new EndOfStreamException("Failed to read GBX magic bytes.");
         }
 
         return buffer[0] == 'G' && buffer[1] == 'B' && buffer[2] == 'X';
@@ -294,9 +299,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt16(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt16(),
+                GbxFormat.Text => GbxText(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
+
+        short GbxText()
+        {
+            var value = ReadToCRLF();
+            return value == "4294967295" ? (short)-1 : short.Parse(value);
+        }
     }
 
     public override int ReadInt32()
@@ -305,9 +321,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt32(),
+                GbxFormat.Text => GbxText(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
+
+        int GbxText()
+        {
+            var value = ReadToCRLF();
+            return value == "4294967295" ? -1 : int.Parse(value);
+        }
     }
 
     public int ReadHexInt32()
@@ -316,7 +343,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadInt32(),
+                GbxFormat.Text => int.Parse(ReadToCRLF(), System.Globalization.NumberStyles.HexNumber),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -327,7 +359,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadUInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadUInt32(),
+                GbxFormat.Text => uint.Parse(ReadToCRLF()),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -338,7 +375,76 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadUInt32(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadUInt32(),
+                GbxFormat.Text => uint.Parse(ReadToCRLF(), System.Globalization.NumberStyles.HexNumber),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public int ReadDataInt32()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(int));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadInt32(),
+                GbxFormat.Text => base.ReadInt32(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public uint ReadDataUInt32()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(uint));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadUInt32(),
+                GbxFormat.Text => base.ReadUInt32(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public long ReadDataInt64()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(long));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadInt64(),
+                GbxFormat.Text => base.ReadInt64(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
+    public ulong ReadDataUInt64()
+    {
+        limiter?.ThrowIfLimitExceeded(sizeof(ulong));
+
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadUInt64(),
+                GbxFormat.Text => base.ReadUInt64(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -371,7 +477,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         return Mode switch
         {
-            SerializationMode.Gbx => base.ReadSingle(),
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadSingle(),
+                GbxFormat.Text => float.Parse(ReadToCRLF(), System.Globalization.CultureInfo.InvariantCulture),
+                _ => throw new FormatNotSupportedException(Format)
+            },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
@@ -631,19 +742,27 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         limiter?.ThrowIfLimitExceeded(4);
 
-        switch (Mode)
+        return Mode switch
         {
-            case SerializationMode.Gbx:
-                var booleanAsInt = base.ReadUInt32();
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => GbxBinary(),
+                GbxFormat.Text => bool.Parse(ReadToCRLF()),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+        
+        bool GbxBinary()
+        {
+            var booleanAsInt = base.ReadUInt32();
 
-                if (Gbx.StrictBooleans && booleanAsInt > 1)
-                {
-                    throw new BooleanOutOfRangeException(booleanAsInt);
-                }
+            if (Gbx.StrictBooleans && booleanAsInt > 1)
+            {
+                throw new BooleanOutOfRangeException(booleanAsInt);
+            }
 
-                return booleanAsInt != 0;
-            default:
-                throw new SerializationModeNotSupportedException(Mode);
+            return booleanAsInt != 0;
         }
     }
 
@@ -664,16 +783,36 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return booleanAsByte != 0;
     }
 
+    public bool ReadBoolean(BoolType type)
+    {
+        switch (type)
+        {
+            case BoolType.Int32:
+                return ReadBoolean();
+            case BoolType.Byte:
+                return ReadBoolean(asByte: true);
+            case BoolType.Text:
+                var bytes = ReadString(20);
+                return bool.Parse(ReadToCRLF());
+            default:
+                throw new ArgumentException("Invalid boolean type.", nameof(type));
+        }
+    }
+
     public override string ReadString()
     {
-        switch (Mode)
+        limiter?.ThrowIfLimitExceeded(sizeof(int));
+
+        return Mode switch
         {
-            case SerializationMode.Gbx:
-                limiter?.ThrowIfLimitExceeded(sizeof(int));
-                return ReadString(base.ReadInt32());
-            default:
-                throw new SerializationModeNotSupportedException(Mode);
-        }
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => ReadString(base.ReadInt32()),
+                GbxFormat.Text => ReadToCRLF(),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
     }
 
     public string ReadString(StringLengthPrefix readPrefix)
@@ -847,26 +986,30 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     private uint ReadIdIndex()
     {
-        return Mode switch
+        switch (Mode)
         {
-            SerializationMode.Gbx => Format switch
-            {
-                GbxFormat.Binary => GbxBinary(),
-                _ => throw new Exception(),
-            },
-            _ => throw new SerializationModeNotSupportedException(Mode),
-        };
+            case SerializationMode.Gbx:
+                IdVersion ??= ReadInt32();
 
-        uint GbxBinary()
-        {
-            IdVersion ??= ReadInt32();
+                if (IdVersion.Value < 3)
+                {
+                    throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
+                }
 
-            if (IdVersion.Value < 3)
-            {
-                throw new NotSupportedException($"Unsupported Id version ({IdVersion}).");
-            }
-
-            return ReadUInt32();
+                switch (Format)
+                {
+                    case GbxFormat.Binary:
+                        return ReadHexUInt32();
+                    case GbxFormat.Text:
+                        var value = ReadToCRLF();
+                        return value == "4294967295"
+                            ? uint.MaxValue
+                            : uint.Parse(value, System.Globalization.NumberStyles.HexNumber);
+                    default:
+                        throw new FormatNotSupportedException(Format);
+                }
+            default:
+                throw new SerializationModeNotSupportedException(Mode);
         }
     }
 
@@ -968,7 +1111,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         file = null;
 
-        var rawClassId = ReadUInt32();
+        var rawClassId = ReadHexUInt32();
 
         if (encapsulation is not null && rawClassId == uint.MaxValue)
         {
@@ -990,7 +1133,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
@@ -1153,7 +1296,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var classId = ClassManager.Wrap(rawClassId);
 
 #if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
 #endif
@@ -1387,11 +1530,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayReadable<T>(byteLengthPrefix, version);
     }
 
-    public IList<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new()
+    public List<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new()
     {
         if (length == 0)
         {
-            return new List<T>();
+            return [];
         }
 
         ValidateCollectionLength(length);
@@ -1406,10 +1549,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
+    public List<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
         => ReadListReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
-    public IList<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
+    public List<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {
         ReadDeprecVersion();
         return ReadListReadable<T>(byteLengthPrefix, version);
@@ -1494,11 +1637,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct => ReadArray_deprec<T>(ReadInt32(), lengthInBytes);
 
-    public IList<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct
+    public List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct
     {
         if (length == 0)
         {
-            return new List<T>();
+            return [];
         }
 
         var l = ValidateCollectionLength<T>(length, lengthInBytes);
@@ -1534,9 +1677,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<T> ReadList<T>(bool lengthInBytes = false) where T : struct => ReadList<T>(ReadInt32(), lengthInBytes);
+    public List<T> ReadList<T>(bool lengthInBytes = false) where T : struct => ReadList<T>(ReadInt32(), lengthInBytes);
 
-    public IList<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct
+    public List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct
     {
         ReadDeprecVersion();
         return ReadList<T>(lengthInBytes);
@@ -1569,11 +1712,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayNodeRef<T>();
     }
 
-    public IList<T?> ReadListNodeRef<T>(int length) where T : IClass
+    public List<T?> ReadListNodeRef<T>(int length) where T : IClass
     {
         if (length == 0)
         {
-            return new List<T?>();
+            return [];
         }
 
         ValidateCollectionLength(length);
@@ -1588,9 +1731,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<T?> ReadListNodeRef<T>() where T : IClass => ReadListNodeRef<T>(ReadInt32());
+    public List<T?> ReadListNodeRef<T>() where T : IClass => ReadListNodeRef<T>(ReadInt32());
 
-    public IList<T?> ReadListNodeRef_deprec<T>() where T : IClass
+    public List<T?> ReadListNodeRef_deprec<T>() where T : IClass
     {
         ReadDeprecVersion();
         return ReadListNodeRef<T>();
@@ -1624,11 +1767,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayExternalNodeRef<T>();
     }
 
-    public IList<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod
+    public List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod
     {
         if (length == 0)
         {
-            return new List<External<T>>();
+            return [];
         }
 
         ValidateCollectionLength(length);
@@ -1644,9 +1787,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod => ReadListExternalNodeRef<T>(ReadInt32());
+    public List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod => ReadListExternalNodeRef<T>(ReadInt32());
 
-    public IList<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod
+    public List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod
     {
         ReadDeprecVersion();
         return ReadListExternalNodeRef<T>();
@@ -1679,11 +1822,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayId();
     }
 
-    public IList<string> ReadListId(int length)
+    public List<string> ReadListId(int length)
     {
         if (length == 0)
         {
-            return new List<string>();
+            return [];
         }
 
         ValidateCollectionLength(length);
@@ -1698,9 +1841,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
-    public IList<string> ReadListId() => ReadListId(ReadInt32());
+    public List<string> ReadListId() => ReadListId(ReadInt32());
 
-    public IList<string> ReadListId_deprec()
+    public List<string> ReadListId_deprec()
     {
         ReadDeprecVersion();
         return ReadListId();
@@ -1836,7 +1979,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var sb = new StringBuilder();
 
-        while (true)
+        for (var i = 0; i < 255; i++)
         {
             var b = base.ReadByte();
 
@@ -1847,13 +1990,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
                     throw new Exception("Invalid string format.");
                 }
 
-                break;
+                return sb.ToString();
             }
 
             sb.Append((char)b);
         }
 
-        return sb.ToString();
+        throw new Exception("String is too long.");
     }
 
     protected override void Dispose(bool disposing)
@@ -1889,5 +2032,58 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
 
         limiter.Unlimit();
+    }
+
+    internal BinaryScope ForceBinary() => new(this);
+
+    internal readonly struct BinaryScope : IDisposable
+    {
+        private readonly GbxReader reader;
+        private readonly GbxFormat format;
+
+        public BinaryScope(GbxReader reader)
+        {
+            this.reader = reader;
+            format = reader.Format;
+            reader.Format = GbxFormat.Binary;
+        }
+
+        public void Dispose()
+        {
+            reader.Format = format;
+        }
+    }
+
+    internal bool TryInitializeDecryption(IClass node)
+    {
+        if (Settings.EncryptionInitializer is null)
+        {
+            return false;
+        }
+
+        var baseType = node.GetType().BaseType ?? throw new ThisShouldNotHappenException();
+
+        var parentClassId = ClassManager.ClassIds[baseType];
+
+        if (parentClassId == 0x07031000)
+        {
+            parentClassId = 0x07001000;
+        }
+
+        if (node is CPlugSurfaceGeom)
+        {
+            parentClassId = 0x0902B000;
+        }
+
+        if (baseType == typeof(CGameCtnBlockInfo))
+        {
+            parentClassId = 0x24005000;
+        }
+
+        var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+
+        Settings.EncryptionInitializer.Initialize(parentClassIDBytes, 0, 4);
+
+        return true;
     }
 }

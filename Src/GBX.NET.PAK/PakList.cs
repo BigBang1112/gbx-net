@@ -13,8 +13,11 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 {
     private readonly IReadOnlyDictionary<string, PakListItem> packs;
 
-    private const string NameKeySalt = "6611992868945B0B59536FC3226F3FD0";
-    private const string KeyStringKeySalt = "B97C1205648A66E04F86A1B5D5AF9862";
+    private const string NameKeySaltTM = "6611992868945B0B59536FC3226F3FD0";
+    private const string NameKeySaltVsk5 = "33751203003810C43D169A5B608FC820";
+
+    private const string KeyStringKeySaltTM = "B97C1205648A66E04F86A1B5D5AF9862";
+    private const string KeyStringKeySaltVsk5 = "5A8BFF30451E627EAB838DADFB120FB6";
 
     public byte Version { get; init; }
     public uint CRC32 { get; init; }
@@ -39,7 +42,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<PakList> ParseAsync(Stream stream, CancellationToken cancellationToken = default)
+    public static async Task<PakList> ParseAsync(Stream stream, string nameKeySalt, string keyStringKeySalt, CancellationToken cancellationToken = default)
     {
         using var r = new GbxReader(stream);
 
@@ -48,9 +51,9 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         var crc32 = r.ReadUInt32();
         var salt = r.ReadUInt32();
 
-        var nameKey = await MD5.ComputeAsync(NameKeySalt + salt, cancellationToken);
+        var nameKey = await MD5.ComputeAsync(nameKeySalt + salt, cancellationToken);
 
-        var packs = new Dictionary<string, PakListItem>(numPacks);
+        var packs = new Dictionary<string, PakListItem>(numPacks, StringComparer.OrdinalIgnoreCase);
 
         for (var i = 0; i < numPacks; i++)
         {
@@ -66,14 +69,14 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 
             var name = Encoding.ASCII.GetString(encryptedName);
 
-            var keyStringKey = await MD5.ComputeAsync(name + salt + KeyStringKeySalt, cancellationToken);
+            var keyStringKey = await MD5.ComputeAsync(name + salt + keyStringKeySalt, cancellationToken);
 
             for (var j = 0; j < encryptedKeyString.Length; j++)
             {
                 encryptedKeyString[j] ^= keyStringKey[j % keyStringKey.Length];
             }
 
-            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + "NadeoPak", cancellationToken);
+            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + Pak.Magic, cancellationToken);
 
             packs[name] = new PakListItem(key, flags);
         }
@@ -83,19 +86,48 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         return new PakList(version, crc32, salt, signature, packs);
     }
 
-    public static async Task<PakList> ParseAsync(string filePath, CancellationToken cancellationToken = default)
+    public static async Task<PakList> ParseAsync(string filePath, string nameKeySalt, string keyStringKeySalt, CancellationToken cancellationToken = default)
     {
 #if !NETSTANDARD2_0
         await
 #endif
         using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
-        return await ParseAsync(fs, cancellationToken);
+        return await ParseAsync(fs, nameKeySalt, keyStringKeySalt, cancellationToken);
     }
 
-    public static PakList Parse(string filePath)
+    public static PakList Parse(string filePath, string nameKeySalt, string keyStringKeySalt)
     {
         using var fs = File.OpenRead(filePath);
-        return Parse(fs);
+        return Parse(fs, nameKeySalt, keyStringKeySalt);
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<PakList> ParseAsync(Stream stream, PakListGame game = PakListGame.TM, CancellationToken cancellationToken = default)
+    {
+        switch (game)
+        {
+            case PakListGame.TM:
+                return await ParseAsync(stream, NameKeySaltTM, KeyStringKeySaltTM, cancellationToken);
+            case PakListGame.Vsk5:
+                return await ParseAsync(stream, NameKeySaltVsk5, KeyStringKeySaltVsk5, cancellationToken);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(game));
+        }
+    }
+
+    public static async Task<PakList> ParseAsync(string filePath, PakListGame game = PakListGame.TM, CancellationToken cancellationToken = default)
+    {
+#if !NETSTANDARD2_0
+        await
+#endif
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
+        return await ParseAsync(fs, game, cancellationToken);
+    }
+
+    public static PakList Parse(string filePath, PakListGame game = PakListGame.TM)
+    {
+        using var fs = File.OpenRead(filePath);
+        return Parse(fs, game);
     }
 
     public bool ContainsKey(string key)

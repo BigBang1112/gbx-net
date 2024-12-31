@@ -311,7 +311,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
             "ident" or "meta" => ("Ident", false),
             "packdesc" or "fileref" => ("PackDesc", false),
             "data" or "bytes" => ("byte[]", false),
-            "list" => ("IList", false),
+            "list" => ("List", false),
             "timeint" => ("TimeInt32", true),
             "timefloat" => ("TimeSingle", true),
             "timeofday" => ("TimeSpan", true),
@@ -350,7 +350,7 @@ public class OldClassChunkGenerator : IIncrementalGenerator
 
             var finalType = mappedType;
 
-            if (mappedType == "IList")
+            if (mappedType == "List")
             {
                 finalType += $"<{mappedGenericType}>";
             }

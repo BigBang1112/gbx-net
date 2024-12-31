@@ -2,7 +2,7 @@ CPlugParticleEmitterSubModel 0x090B2000
 
 0x011
  CPlugMaterial Material (external)
- if Material == null
+ if Material == null && MaterialFile == null
   CPlugShader Shader (external)
  float SizeBirthRatioXY
  vec2 SpritePivotPoint
@@ -47,6 +47,79 @@ CPlugParticleEmitterSubModel 0x090B2000
  bool SizeBirthUseEmissionZone
  int CircularTrailVertPerPartCount
  int
+
+0x013
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x015
+ bool SizeBirthUseIntensity
+ bool ColorBirthUseIntensity
+ bool TransparencyBirthUseIntensity
+ float
+ float
+ float
+
+0x016
+ float SizeBirthEmissionZoneScale
+ int
+
+0x017
+ float FluidFrictionBirthIntensityBase
+ bool FluidFrictionBirthUseIntensity
+
+0x018
+ CFuncEnvelope IntensityFilter
+
+0x019
+ id
+
+0x01A
+ CMwNod
+
+0x01B
+ bool MultiState_IsAsyncLink
+ bool
+
+0x01C
+ int TextureAtlas
+ int TextureAtlasDimX
+ int TextureAtlasDimY
+ int TextureAtlasFixedIndex
+
+0x01D
+ float
+ float
+
+0x01E
+ float
+
+0x01F
+ float BeamLengthSpeedScale
+
+0x020
+ bool PrecalcEnabled
+ int PrecalcPartCount
+ int PrecalcSampleRate
+ bool CollisionEnabled
+ float CollisionBounce
+ float CollisionRadius
+
+0x021
+ float CollisionDamper
+
+0x022
+ bool SortSprites
+
+0x023
+ bool
 
 0x02D
  version

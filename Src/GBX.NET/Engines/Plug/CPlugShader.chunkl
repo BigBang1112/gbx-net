@@ -17,7 +17,7 @@ CPlugShader 0x09002000
  short
 
 0x014
- ulong
+ dataulong
  float
  CMwNod
  short

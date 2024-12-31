@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Text;
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -19,6 +20,8 @@ public partial class CMwNod : IClass
     static void IClass.Read<T>(T node, GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        r.TryInitializeDecryption(node);
 
         var prevChunkId = default(uint?);
 
@@ -41,7 +44,23 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                if (r.ReadHexUInt32() != SKIP)
+                // Text format skippable chunk
+                if (chunk is null && r.Format == GbxFormat.Text)
+                {
+                    var skippableBuffer = Encoding.ASCII.GetString(r.ReadBytes(12));
+
+                    if (skippableBuffer != "1397442896\r\n")
+                    {
+                        if (chunk is not null)
+                        {
+                            return;
+                        }
+
+                        throw new ChunkReadException(chunkId, prevChunkId, known: false);
+                    }
+                }
+                // Binary format skippable chunk
+                else if (r.ReadUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -305,6 +324,8 @@ public partial class CMwNod : IClass
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
+        r.TryInitializeDecryption(this);
+
         var prevChunkId = default(uint?);
 
         while (true)
@@ -326,7 +347,23 @@ public partial class CMwNod : IClass
             // Unknown or skippable chunk
             if (chunk is null or ISkippableChunk)
             {
-                if (r.ReadHexUInt32() != SKIP)
+                // Text format skippable chunk
+                if (chunk is null && r.Format == GbxFormat.Text)
+                {
+                    var skippableBuffer = Encoding.ASCII.GetString(r.ReadBytes(12));
+
+                    if (skippableBuffer != "1397442896\r\n")
+                    {
+                        if (chunk is not null)
+                        {
+                            return;
+                        }
+
+                        throw new ChunkReadException(chunkId, prevChunkId, known: false);
+                    }
+                }
+                // Binary format skippable chunk
+                else if (r.ReadUInt32() != SKIP)
                 {
                     if (chunk is not null)
                     {
@@ -633,6 +670,9 @@ public partial class CMwNod : IClass
         }
     }
 
+    /// <summary>
+    /// The version of the game where this node should be accepted without a game crash.
+    /// </summary>
     public GameVersion GameVersion
     {
         get
@@ -648,13 +688,24 @@ public partial class CMwNod : IClass
         }
     }
 
-    public bool IsGameVersion(GameVersion version, bool strict = false)
+    /// <summary>
+    /// Checks if the node is accepted in the given game version without a game crash.
+    /// </summary>
+    /// <param name="version">Game version flags.</param>
+    /// <param name="strict">If enabled, checks for the exact flag match (if accepted in MP4 and TM2020, only <c>MP4 | TM2020</c> will return true).</param>
+    /// <returns>True if matches, false if not.</returns>
+    public virtual bool IsGameVersion(GameVersion version, bool strict = false)
     {
         return strict
             ? GameVersion == version
             : (GameVersion & version) == version;
     }
 
+    /// <summary>
+    /// Checks if the node could be accepted in the given game version.
+    /// </summary>
+    /// <param name="version">Game version flags.</param>
+    /// <returns>True if matches, false if not.</returns>
     public bool CanBeGameVersion(GameVersion version)
     {
         return (GameVersion & version) != 0;

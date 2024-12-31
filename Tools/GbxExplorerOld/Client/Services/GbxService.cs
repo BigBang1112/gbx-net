@@ -84,9 +84,21 @@ public class GbxService : IGbxService
                     IgnoreExceptionsInBody = true,
                     SafeSkippableChunks = true
                 }, cancellationToken: cancellationToken);
+
+                if (gbx.Body.Exception is not null)
+                {
+                    _logger.LogError(gbx.Body.Exception, "{msg}", gbx.Body.Exception.Message);
+                }
             }
 
-            _logger.LogInformation("Gbx successfully imported!");
+            if (gbx.Body.Exception is null)
+            {
+                _logger.LogInformation("Gbx successfully imported!");
+            }
+            else
+            {
+                _logger.LogInformation("Gbx imported with exceptions.");
+            }
 
             return new GbxModel(file.Name, file.LastModified, gbxStream.ToArray(), sha256, gbx);
         }

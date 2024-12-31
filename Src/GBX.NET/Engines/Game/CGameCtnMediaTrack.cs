@@ -2,11 +2,11 @@
 
 public partial class CGameCtnMediaTrack
 {
-    private IList<CGameCtnMediaBlock>? blocks;
+    private List<CGameCtnMediaBlock>? blocks;
     [AppliedWithChunk<Chunk03078001>]
-    public IList<CGameCtnMediaBlock> Blocks
+    public List<CGameCtnMediaBlock> Blocks
     {
-        get => blocks ??= new List<CGameCtnMediaBlock>();
+        get => blocks ??= [];
         set => blocks = value;
     }
 }

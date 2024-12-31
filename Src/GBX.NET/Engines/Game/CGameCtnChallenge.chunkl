@@ -18,7 +18,7 @@ CGameCtnChallenge 0x03043000 // A map.
    v5+
     bool IsLapRace
     v6=
-     bool IsMultilap
+     bool
     v7+
      int<PlayMode> Mode
      v9+
@@ -328,7 +328,9 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x05F (skippable) [TM2020] // free blocks
 
-0x060 (skippable, ignore) [TM2020]
+0x060 (skippable) [TM2020]
+ version
+ int
 
 0x061 (skippable, ignore) [TM2020]
 
@@ -336,11 +338,11 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x063 (skippable) [TM2020] // AnimPhaseOffset
 
-0x064 (skippable, ignore) [TM2020]
+0x064 (skippable, ignore) [TM2020] // MT groups?
 
 0x065 (skippable) [TM2020] // foreground pack desc
 
-0x067 (skippable, ignore) [TM2020]
+0x067 (skippable, ignore) [TM2020] // launched checkpoints
 
 0x068 (skippable) [TM2020] // MapElemLmQuality
 
@@ -352,6 +354,10 @@ CGameCtnChallenge 0x03043000 // A map.
  int
  bool DynamicDaylight
  timeint? DayDuration
+
+0x06C (skippable) [TM2020] // color palette
+ version
+ byte<PaletteColor> Palette
 
 archive BotPath
  int Clan
@@ -434,3 +440,18 @@ enum EditorMode
  Simple
  HasGhostBlocks
  Gamepad = 4
+
+enum PaletteColor
+ Classic
+ Stunt
+ Red
+ Orange
+ Yellow
+ Lime
+ Green
+ Cyan
+ Blue
+ Purple
+ Pink
+ White
+ Black

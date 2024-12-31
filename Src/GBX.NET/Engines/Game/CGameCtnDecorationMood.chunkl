@@ -27,3 +27,47 @@ CGameCtnDecorationMood 0x0303A000
 
 0x005
  CHmsAmbientOcc HmsAmbientOcc (external)
+
+0x006
+ float SunMoonIntensity
+
+0x007
+ float SunMoonIntensity
+ float LocalLightScale
+
+0x00C
+ vec3
+ float ToneMapExposureStaticBase
+ int ToneMapFilmCurve
+ CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
+
+0x00F
+ version
+ vec3 Tech3SpecularFake_ExpScaleMax
+ vec2 Tech3SpecularLocal
+ vec3 Tech3Bloom
+ vec4 Tech3ToneMapAutoExp
+ CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
+ v1+
+  bool WaterReflectFakeCube
+  v2+
+   CPlugFxHdrScales_Tech3 FxHdrScalesT3
+   v3+
+    CPlugMoodBlender MoodBlender (external)
+
+0x012
+ version
+ float RemappedStartDayTime
+ bool IsNight
+ CPlugGameSkin Remapping (external)
+ string RemapFolder
+ bool EnableStars
+ CFuncCloudsSolids CloudsSolids
+ CPlugFxLightning FxLightning
+ CPlugFxWindOnDecal FxWindOnDecal (external)
+ v1+
+  CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
+
+0x013
+ version
+ float EditorHelperHdrScale

@@ -1,1 +1,10 @@
 CHmsLightMap 0x06021000
+
+0x001
+ CPlugPointsInSphereOpt (external)
+
+0x002
+ CMwNod (external)
+
+0x003
+ CHmsLightMapMood (external)

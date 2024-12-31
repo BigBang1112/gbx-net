@@ -10,7 +10,7 @@ public partial class CPlugVisual
 
     internal int Count { get; set; }
 
-    public IList<CPlugVertexStream> VertexStreams { get; set; } = [];
+    public List<CPlugVertexStream> VertexStreams { get; set; } = [];
     public TexCoordSet[] TexCoords { get; set; } = [];
     public BoxAligned BoundingBox { get; set; }
     public SSkinData? SkinData { get; set; }
@@ -423,9 +423,12 @@ public partial class CPlugVisual
 
             var texCoords = new TexCoord[expectedCount];
 
-            for (var i = 0; i < expectedCount; i++)
+            using (var _ = r.ForceBinary())
             {
-                texCoords[i] = TexCoord.Read(r, version);
+                for (var i = 0; i < expectedCount; i++)
+                {
+                    texCoords[i] = TexCoord.Read(r, version);
+                }
             }
 
             var u01 = default(float[]);

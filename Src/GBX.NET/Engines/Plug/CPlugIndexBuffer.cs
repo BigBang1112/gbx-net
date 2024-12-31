@@ -9,8 +9,10 @@ public partial class CPlugIndexBuffer
     {
         public override void Read(CPlugIndexBuffer n, GbxReader r)
         {
-            n.Flags = r.ReadInt32();
+            n.Flags = r.ReadDataInt32();
             n.Indices = new int[r.ReadInt32()];
+
+            using var _ = r.ForceBinary();
 
             for (var i = 0; i < n.Indices.Length; i++)
             {
@@ -20,7 +22,7 @@ public partial class CPlugIndexBuffer
 
         public override void Write(CPlugIndexBuffer n, GbxWriter w)
         {
-            w.Write(n.Flags);
+            w.WriteDataInt32(n.Flags);
             w.Write(n.Indices.Length);
 
             for (var i = 0; i < n.Indices.Length; i++)
@@ -34,7 +36,7 @@ public partial class CPlugIndexBuffer
     {
         public override void Read(CPlugIndexBuffer n, GbxReader r)
         {
-            n.Flags = r.ReadInt32();
+            n.Flags = r.ReadDataInt32();
             n.Indices = new int[r.ReadInt32()];
 
             var curVal = 0;
@@ -48,7 +50,7 @@ public partial class CPlugIndexBuffer
 
         public override void Write(CPlugIndexBuffer n, GbxWriter w)
         {
-            w.Write(n.Flags);
+            w.WriteDataInt32(n.Flags);
             w.Write(n.Indices.Length);
 
             var curVal = 0;

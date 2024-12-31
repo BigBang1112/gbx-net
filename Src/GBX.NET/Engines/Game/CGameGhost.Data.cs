@@ -160,7 +160,7 @@ public partial class CGameGhost
             }
             //
 
-            Samples = new ObservableCollection<Sample>();
+            Samples = [];
 
             if (numSamples <= 0)
             {

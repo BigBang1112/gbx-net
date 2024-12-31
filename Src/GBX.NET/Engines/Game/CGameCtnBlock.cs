@@ -76,19 +76,19 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// <summary>
     /// Variant of the block. Taken from flags. Value range of 0-63.
     /// </summary>
-    public byte? Variant
+    public byte Variant
     {
         get => (byte)(flags & VariantMax);
-        set => flags = (flags & ~VariantMax) | (value ?? 0);
+        set => flags = (flags & ~VariantMax) | value;
     }
 
     /// <summary>
     /// Subvariant of the block. Taken from flags. Value range of 0-63. Always 63 when <see cref="IsClip"/> is true.
     /// </summary>
-    public byte? SubVariant
+    public byte SubVariant
     {
-        get => (byte?)((flags >> SubVariantOffset) & SubVariantMax);
-        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value ?? 0) << SubVariantOffset);
+        get => (byte)((flags >> SubVariantOffset) & SubVariantMax);
+        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | (value << SubVariantOffset);
     }
 
     /// <summary>
@@ -221,10 +221,6 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         get => decalId;
         set => SetFlagBitAndObject(DecalBit, ref decalId, value);
     }
-
-    byte IGameCtnBlockTM10.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
-    byte IGameCtnBlockTMSX.Variant { get => Variant.GetValueOrDefault(); set => Variant = value; }
-    byte IGameCtnBlockTMSX.SubVariant { get => SubVariant.GetValueOrDefault(); set => SubVariant = value; }
 
     /// <summary>
     /// Creates a new instance of <see cref="CGameCtnBlock"/>. Adding chunks is not needed (only when creating blocks for TM1.0 from 2003).

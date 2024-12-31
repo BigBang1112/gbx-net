@@ -60,11 +60,6 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         var basic = GbxHeaderBasic.Parse(reader);
         logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
 
-        if (basic.Format != GbxFormat.Binary)
-        {
-            throw new TextFormatNotSupportedException();
-        }
-
         var classId = ReadClassId();
 
         node = ClassManager.New(classId);

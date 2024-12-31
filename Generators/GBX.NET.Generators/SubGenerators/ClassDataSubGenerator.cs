@@ -1194,17 +1194,23 @@ internal class ClassDataSubGenerator
             }
             else if (structureKind.GetValueOrDefault() == 0)
             {
-                sb.AppendLine();
-                sb.Append("        public override void ReadWrite(");
-                sb.Append(classInfo.Name);
-                sb.AppendLine(" n, GbxReaderWriter rw)");
-                sb.AppendLine("        {");
+                var doReadWriteMethod = !existingChunkMembers.OfType<IMethodSymbol>()
+                    .Any(x => x.Name == "ReadWrite" && x.Parameters.Length == 2 && x.Parameters[0].Type.Name == classInfo.Name && x.Parameters[1].Type.Name == "GbxReaderWriter");
 
-                var memberWriter = new MemberSerializationWriter(
-                    sb, SerializationType.ReadWrite, archive: null, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
-                memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
+                if (doReadWriteMethod)
+                {
+                    sb.AppendLine();
+                    sb.Append("        public override void ReadWrite(");
+                    sb.Append(classInfo.Name);
+                    sb.AppendLine(" n, GbxReaderWriter rw)");
+                    sb.AppendLine("        {");
 
-                sb.AppendLine("        }");
+                    var memberWriter = new MemberSerializationWriter(
+                        sb, SerializationType.ReadWrite, archive: null, existingFields, existingProps, classInfo, classInfos, archiveInfos, autoProperty: false, context);
+                    memberWriter.Append(indent: 3, chunk.ChunkLDefinition.Members);
+
+                    sb.AppendLine("        }");
+                }
             }
         }
 

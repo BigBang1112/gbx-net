@@ -6,13 +6,13 @@ public partial class CGameBlockItem
     [AppliedWithChunk<Chunk2E025000>]
     public string ArchetypeBlockInfoId { get => archetypeBlockInfoId; set => archetypeBlockInfoId = value; }
 
-    private string archetypeBlockInfoCollectionId = string.Empty;
+    private Id archetypeBlockInfoCollectionId = new();
     [AppliedWithChunk<Chunk2E025000>]
-    public string ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
+    public Id ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
 
-    private IList<Mobil> customizedVariants = new List<Mobil>();
+    private List<Mobil> customizedVariants = [];
     [AppliedWithChunk<Chunk2E025000>]
-    public IList<Mobil> CustomizedVariants { get => customizedVariants; set => customizedVariants = value; }
+    public List<Mobil> CustomizedVariants { get => customizedVariants; set => customizedVariants = value; }
 
     public partial class Chunk2E025000 : IVersionable
     {

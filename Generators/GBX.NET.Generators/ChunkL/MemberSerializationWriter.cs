@@ -463,6 +463,11 @@ internal sealed class MemberSerializationWriter
             sb.Append(", asByte: true");
         }
 
+        if (chunkProperty.Type.PrimaryType.ToLowerInvariant() == "booltext")
+        {
+            sb.Append(", type: BoolType.Text");
+        }
+
         if (chunkProperty.Properties?.TryGetValue("prefix", out var prefix) == true)
         {
             if (prefix == "byte")
@@ -615,6 +620,11 @@ internal sealed class MemberSerializationWriter
         if (chunkProperty.Type.PrimaryType.ToLowerInvariant() == "boolbyte")
         {
             sb.Append(", asByte: true");
+        }
+
+        if (chunkProperty.Type.PrimaryType.ToLowerInvariant() == "booltext")
+        {
+            sb.Append(", type: BoolType.Text");
         }
 
         if (chunkProperty.Properties?.TryGetValue("prefix", out var prefix) == true)
@@ -834,7 +844,7 @@ internal sealed class MemberSerializationWriter
             "uint8" or "byte" => nameof(Byte),
             "int8" or "sbyte" => nameof(SByte),
             "float" => nameof(Single),
-            "bool" or "boolbyte" => nameof(Boolean),
+            "bool" or "boolbyte" or "booltext" => nameof(Boolean),
             "string" => nameof(String),
             "vec2" => "Vec2",
             "vec3" => "Vec3",
@@ -862,6 +872,10 @@ internal sealed class MemberSerializationWriter
             "packdesc" or "fileref" => "PackDesc",
             "list" => "List",
             "data" => "Data",
+            "datauint32" or "datauint" => "DataUInt32",
+            "dataint32" or "dataint" => "DataInt32",
+            "datauint64" or "dataulong" => "DataUInt64",
+            "dataint64" or "datalong" => "DataInt64",
             "optimizedint" => "OptimizedInt",
             "node" => "NodeRef",
             _ => Default(type, out noMatch),

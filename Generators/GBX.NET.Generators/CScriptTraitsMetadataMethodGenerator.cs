@@ -104,7 +104,7 @@ public partial class CScriptTraitsMetadata
         return val is not null;
     }}
 
-    public IList<{mapped}>? Get{enumName}Array(string name)
+    public List<{mapped}>? Get{enumName}Array(string name)
     {{
         return (Get(name) as ScriptArrayTrait)?.Value
             .Select(x => ((ScriptTrait<{mapped}>)x).Value)
@@ -112,9 +112,9 @@ public partial class CScriptTraitsMetadata
     }}
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-    public bool TryGet{enumName}Array(string name, [NotNullWhen(true)] out IList<{mapped}>? value)
+    public bool TryGet{enumName}Array(string name, [NotNullWhen(true)] out List<{mapped}>? value)
 #else
-    public bool TryGet{enumName}Array(string name, out IList<{mapped}> value)
+    public bool TryGet{enumName}Array(string name, out List<{mapped}> value)
 #endif
     {{
         var val = Get{enumName}Array(name);

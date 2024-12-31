@@ -16,8 +16,8 @@ CPlugTree 0x0904F000
 0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // FuncTree
  CFuncTree FuncTree
 
-0x015 [TM10] // location
- int Flags
+0x015 (demonstration) [TM10] // location
+ datauint Flags
  if (Flags & 4) != 0
   Iso4? Location
 
@@ -30,7 +30,10 @@ CPlugTree 0x0904F000
 0x017
  CPlugVisual
 
-0x018 (base: 0x015) // location
+0x018 // location
+ dataulong Flags
+ if (Flags & 4) != 0
+  Iso4? Location
 
 0x019 (base: 0x015) [TMSX] // location
 

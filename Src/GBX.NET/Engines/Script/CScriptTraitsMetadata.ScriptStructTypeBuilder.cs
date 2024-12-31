@@ -10,7 +10,7 @@ public partial class CScriptTraitsMetadata
         public ScriptStructTypeBuilder(string name)
         {
             Name = name;
-            Members = new();
+            Members = [];
         }
 
         public ScriptStructType Build()

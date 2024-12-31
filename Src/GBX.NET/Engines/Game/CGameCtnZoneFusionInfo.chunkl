@@ -1,0 +1,9 @@
+CGameCtnZoneFusionInfo 0x03151000
+
+0x000
+ id CompatibleZoneId
+ int FusionType
+
+0x001
+ version
+ id MergedZoneId

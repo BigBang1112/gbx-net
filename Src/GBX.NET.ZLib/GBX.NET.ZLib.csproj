@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.ZLib</PackageId>
-        <Version>1.1.0</Version>
+        <VersionPrefix>1.1.1</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Support for zlib compressed parts of Gbx, integrated with GBX.NET. This official implementation uses Iconic.Zlib.Netstandard.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
         <LangVersion>12</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -40,14 +40,6 @@
 
     <ItemGroup>
         <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
-        <PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.5.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="ThisAssembly.Git" Version="1.5.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

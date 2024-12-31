@@ -3,53 +3,85 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x000
  float
+ float SteerRadiusMin
+ float SteerRadiusCoef
+ float MaxSpeed
+ float AbsorbingValKi
+ float AbsorbingValKa
+ float AbsorbingValMin
+ float AbsorbingValMax
+ float AbsorbingValRest
+ float RelSpeedMultCoef
  float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ float DebugAbsorbCoef
 
 0x001
  id Name
 
 0x002
- float
- float
- float
+ float Mass
+ float CMAftForce
+ float CMDownUp
 
 0x004
- bool
+ bool IsFakeEngine
 
 0x005
+ float GravityCoef
+
+0x006
+ float
+ float
+ float
  float
 
 0x007
- float
+ float SteerSpeed
+
+0x008
+ float ReverseMaxSpeed
+ float TurboBoost
 
 0x009
- float
+ float BrakeBase
+
+0x00A
+ float LinearFluidFrictionCoef
+ float AngularFluidFrictionCoef1
 
 0x00B
- float
- float
- float
- float
+ float InertiaMass
+ Vec3 InertiaHalfDiag
+
+0x00C
+ bool
 
 0x00D
- int
+ int TireMaterial
 
 0x00E
- int
+ int<EShockModel> ShockModel
 
 0x010
- int
+ int<ESteerModel> SteerModel
+ float SteerGroundTorque
+
+0x011
  float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x012
+ float SoundEngineVolume
+ float SoundSkidSandVolume
+ float SoundImpactVolume
+ float SoundBodyImpact_Hard_Threshold
 
 0x013
  float
@@ -69,14 +101,21 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
  float
 
+0x015
+ float SoundEngineVolume
+ float SoundSkidSandVolume
+ float SoundSkidConcreteVolume
+ float SoundImpactVolume
+ float SoundBodyImpact_Hard_Threshold
+
 0x016
- float
- float
+ float DisplaySteerRadiusMin
+ float DisplaySteerRadiusCoef
 
 0x017
- float
- float
- float
+ float DecrepitudeImpactVal
+ float DecrepitudeCoef
+ float VibrationPeriodSpeedCoef
  float
  float
  float
@@ -84,19 +123,19 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
 
 0x018
- float
- float
- float
+ float LinearFluidFrictionCoef
+ float AngularFluidFrictionCoef1
+ float AngularFluidFrictionCoef2
 
 0x019
- float
- float
- float
- float
- float
- float
- float
- float
+ float BodyFrictionCoef
+ float BodyFrictionCoef_Metal
+ float BodyRestCoef_Metal
+ float BodyRestCoef
+ float WheelFrictionCoef_Concrete
+ float WheelRestCoef_Concrete
+ float WheelFrictionCoef_Metal
+ float WheelRestCoef_Metal
 
 0x01A
  float
@@ -105,11 +144,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
 
 0x01D
- float
- float
+ float GravityCoefAir
+ float RolloverAxial
 
 0x01E
- int
+ int AirControlDuration
 
 0x01F
  float
@@ -117,38 +156,45 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
 
 0x020
+ float SteerAngleMax
+ float SlipAngleForceMax
+ float SlipAngleForceCoef1
+ float SlipAngleForceCoef2
+
+0x021
  float
- float
+
+0x022
  float
  float
 
 0x023
- float
- float
+ float AngularSpeedYImpulseScale
+ float SteerLowSpeed
 
 0x024
- CFuncKeysReal Accel
+ CFuncKeysReal AccelCurve
 
 0x026
- float
- float
- float
- float
+ float LateralSlopeAdherenceMin
+ float LateralSlopeAdherenceMax
+ float AxialSlopeAdherenceMin
+ float AxialSlopeAdherenceMax
 
 0x027
- float
- float
+ float SteerGroundTorqueSlippingCoef
+ float MaxSideFrictionBlendCoef
 
 0x028
  float
  CFuncKeysReal MaxSideFriction
+ float MaxSideFrictionSliding
  float
- float
- float
- float
+ float GroundSlowDownBase
+ float AbsorbTension
 
 0x029
- float
+ float SideFriction1
  CFuncKeysReal RolloverLateral
 
 0x02A
@@ -156,222 +202,236 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x02B
  CFuncKeysReal SteerSlowDown
- float
- float
- int
+ float SideFriction2
+ float RubberBallElasticity
+ int SteerSlowDownFadeInDuration
 
 0x02C
- CFuncKeysReal
- float
- float
- float
- float
- float
+ CFuncKeysReal RolloverLateralFromAngle
+ float MaxAngularSpeedYAirControl
+ float BrakeCoef
+ float BrakeMax
+ float BrakeMaxDynamic
+ float GroundSlowDownCoef
 
 0x02D
- int
+ int SteerSlowDownFadeOutDuration
 
 0x02E
+ float SteerSlowDownCoef
  float
- float
+
+0x02F
+ int TurboDuration
 
 0x030
- CFuncKeysReal SteerDriveTorque
+ CFuncKeysReal SteerDriveTorque // encryption trick here
 
 0x031
- float
- float
+ float LimitToMaxSpeedForce
+ float SlopeSpeedGainLimit
 
 0x032
- float
- float
- float
- float
- float
- float
- float
- float
+ float SoundEngineVolume
+ float SoundSkidSandVolume
+ float SoundSkidConcreteVolume
+ float SoundImpactVolume
+ float SoundWheelImpact_Hard_Threshold
+ float SoundWheelImpact_Soft_Threshold
+ float SoundBodyImpact_Hard_Threshold
+ float SoundBodyImpact_Soft_Threshold
 
 0x033
- float
+ float AngularSpeedClamp
 
 0x034
- float
+ float LinearSpeed2PositiveDeltaMax
 
 0x035
- bool
+ bool NoSteerSlowDownWhenSlipping
 
 0x036
- float
- float
- float
- CFuncKeysReal SteerRadius
+ float M4LateralFrictionSquareForce
+ float M4LateralFrictionTorque
+ float M4LateralFrictionForce
+ CFuncKeysReal M4SteerRadiusFromSpeed
 
 0x037
- CFuncKeysReal MaxFrictionTorque
+ CFuncKeysReal M4MaxFrictionTorqueFromSpeed
 
 0x038
- float
- CFuncKeysReal MaxFrictionForce
- float
- float
+ float M4MaxFrictionTorqueWhenSlippingCoef
+ CFuncKeysReal M4MaxFrictionForceFromSpeed
+ float M4MaxFrictionForceWhenSlipping
+ float M4SteerRadiusWhenSlippingCoef
 
 0x039
- float
+ float M4LateralFrictionSquareTorque
  float
 
 0x03A
- float
- float
+ float M4SlipAngleSpeed
+ float M4SteerRadiusCoefFromSlipAngle
 
 0x03B
- float
+ float M4LeaveSlippingSpeed
 
 0x03C
- float
+ float M4SteerAngleWhenSlippingMax
 
 0x03D
- CFuncKeysReal SlippingAccel
+ CFuncKeysReal M5SlippingAccelCurve
 
 0x03E
- int
+ int M5LateralConstantSlowDownDuration
 
 0x03F
- CFuncKeysReal SteerCoef
+ CFuncKeysReal M5SteerCoefFromSpeed
 
 0x040
- CFuncKeysReal SmoothInputSteerDuration
+ CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
 
 0x041
- float
- int
+ float M5MaxAxialRolloverTorque
+ int M5KeepSlidingAccelDuration
 
 0x042
- int
+ int M5KeepSteerSlowDownDurarion
 
 0x043
- int
+ int M5KeepNoSteerSlowDownWhenSlippingDuration
 
 0x044
+ float M5AccelSlipCoefMax
+
+0x045
+ float  WaterGravity
+ float
+ float
+ float  WaterReboundMinHSpeed
  float
 
 0x046
- float
- float
- float
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
+ float WaterGravity
+ float WaterReboundMinHSpeed
+ float WaterBumpMinSpeed
+ CFuncKeysReal WaterBumpSlowDownFromSpeedRatio
+ CFuncKeysReal WaterFrictionFromSpeed
+ CFuncKeysReal WaterReboundFromSpeedRatio
 
 0x047
- float
+ float WaterAngularFriction
 
 0x048
- CFuncKeysReal
+ CFuncKeysReal WaterSplashFromSpeed
 
 0x049
- CFuncKeysReal Modulation
+ CFuncKeysReal ModulationFromWheelCompression
+
+0x04A
+ float
+ float M6InertialMass
 
 0x04D
- float
+ float M6ForceEpsilon
 
 0x04E
- float
- float
+ float M6InertialTorqueModualtionX
+ float M6InertialTorqueModulationZ
 
 0x04F
- float
- CFuncKeysReal BurnoutRadius
+ float M6MaxSpeed4Burnout
+ CFuncKeysReal M6BurnoutRadius
 
 0x051
- float
+ float M6BurnoutFricMod
 
 0x052
- CFuncKeysReal RolloverLateralRatio
+ CFuncKeysReal M6RolloverLateralFromSpeedRatio
 
 0x053
- float
+ float M6BurnoutCenterForceCoeff2
 
 0x056
- float
- float
- float
+ float M6BurnoutRpmAcc
+ float M6AirRpmAcc
+ float M6AirRpmDeadening
 
 0x057
- float[]
+ float[] M6RpmWantedOnGearUp
 
 0x058
- float
+ float M6RpmLossCoefOnGearUp
 
 0x059
- float
- float
- float
- float
+ float M6RpmGainCoefOnGearDown
+ float M6SpeedLimitPositiveForTakeOffFront
+ float M6RpmGainOnTakeOff
+ float M6RpmLossOnTakeOffFinished
 
 0x05A
- float
- float
- float
+ float M6SpeedLimitPositiveForTakeOffRear
+ float M6SpeedLimitNegForTakeOffFront
+ float M6SpeedLimitNegTakeOffRear
 
 0x05B
- CFuncKeysReal
- float
+ CFuncKeysReal BrakeHeatSpeedFromFBrake
+ float BrakeCoolingSpeed
 
 0x05C
- float
- float
+ float M6BrakeMaxRear
+ float M6BrakeMaxDynamicRear
 
 0x05D
- float
- float
- CFuncKeysReal RearGearAccel
- CFuncKeysReal LateralSpeed
- float
- float
- float
- float
- float
- float
- float
- float
- float
- int
- float
- float
- int
- float
- float
- float
- float
- CFuncKeysReal BurnoutRollover
- CFuncKeysReal DonutRollover
- float
- float
- float
- float
- float
- float
- float[]
- float[]
- float[]
- int
+ float M6InertialMass
+ float M6MaxDiffBtwnPropulsionAndSpeed
+ CFuncKeysReal AccelCurveRearGear
+ CFuncKeysReal M6BurnoutLateralSpeed
+ float M6BurnoutLateralSpeedCoeff
+ float M6MinSpeed4Burnout
+ float M6BurnoutSteerCoeff
+ float M6BurnoutCenterForceCoeff
+ float M6BurnoutRadiusMax
+ float M6BurnoutLateralSpeedMax
+ float M6BurnoutSteerCoeff2
+ float M6BurnoutSteerCoeff3
+ float M6BrakeModulationWhenSlipping
+ int M6BurnoutDuration
+ float M6BurnoutAccMod
+ float M6AfterBurnoutAccMod
+ int M6AfterBurnoutDuration
+ float M6FrictionModulationWhenSlipNBrake
+ float M6BrakeSmokeIntensity
+ float M6BurnoutSmokeVelocity
+ float M6BurnoutSmokeIntensity
+ CFuncKeysReal M6BurnoutRolloverFromSpeed
+ CFuncKeysReal M6DonutRolloverFromSpeed
+ float M6MaxDiffBtwGroundNormal
+ float M6BurnoutWheelAngularRotation
+ float M6MaxPosAngle4Burnout
+ float M6MaxNegAngle4Burnout
+ float M6AfterBurnoutImpulse
+ float M6MaxRpm
+ float[] M6GearRatio
+ float[] M6MaxRPM
+ float[] M6MinRPM
+ int SteerDurationBeforeSteerSlowDown
 
 0x05E
- CFuncKeysReal
+ CFuncKeysReal AirControlZCoefFromAngularSpeed
 
 0x05F
- float
+ float WaterAngularFrictionSq
 
 0x060
- float
- float
- float
- int
- int
+ float ReverseMaxSpeed
+ float TurboBoost
+ float Turbo2Boost
+ int TurboDuration
+ int Turbo2Duration
 
 0x061
- CMwNod
+ CFuncKeysReal VisualSteerAngleFromSpeed
 
 0x062
  float
@@ -729,7 +789,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  float
  bool
  v2+
-  CFuncKeysReal
+  CMwNod
 
 0x098
  version
@@ -746,7 +806,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x099
  version
- CFuncKeysReal
+ CMwNod
 
 0x09A
  version
@@ -978,5 +1038,18 @@ CPlugVehicleCarPhyTuning 0x090ED000
               int?
               int?
               int?
+
+enum EShockModel
+ Demo01
+ Demo02
+ Demo03
+
+enum ESteerModel
+ Steer01
+ Steer02
+ Steer03
+ Steer04
+ Steer05
+ Steer06
 
 archive Keys

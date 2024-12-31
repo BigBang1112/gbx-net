@@ -263,7 +263,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
                 throw;
             }
 
-            logger?.LogError(ex, "Failed to read main node (EXPLICIT). Exception was internally ignored and the node returns with partial data.");
+            logger?.LogWarning(ex, "Failed to read main node (EXPLICIT). Exception was internally ignored and the node returns with partial data.");
         }
     }
 }

@@ -32,7 +32,8 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
                         && x.Parameters.Length == 0
                         && x.Name.StartsWith("Read")
                         && !string.IsNullOrEmpty(x.ReturnType.Name)
-                        && x.Name.Substring("Read".Length).StartsWith(x.ReturnType.Name))
+                        && x.Name.Substring("Read".Length).StartsWith(x.ReturnType.Name)
+                        && !x.Name.Substring("Read".Length).StartsWith("List"))
                     .ToImmutableArray();
             });
 
@@ -54,7 +55,8 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
                         && !x.Parameters[0].Type.IsValueType
                         && x.Name.StartsWith("Write")
                         && !string.IsNullOrEmpty(x.Parameters[0].Type.Name)
-                        && (string.IsNullOrEmpty(x.Name.Substring("Write".Length)) || x.Name.Substring("Write".Length).StartsWith(x.Parameters[0].Type.Name)))
+                        && (string.IsNullOrEmpty(x.Name.Substring("Write".Length)) || x.Name.Substring("Write".Length).StartsWith(x.Parameters[0].Type.Name))
+                        && !x.Name.Substring("Write".Length).StartsWith("List"))
                     .ToImmutableArray();
             });
 
@@ -76,9 +78,9 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.AppendLine($"    {symbol.ReturnType}[] ReadArray{symbol.ReturnType.Name}(int length);");
             sb.AppendLine($"    {symbol.ReturnType}[] ReadArray{symbol.ReturnType.Name}();");
             sb.AppendLine($"    {symbol.ReturnType}[] ReadArray{symbol.ReturnType.Name}_deprec();");
-            sb.AppendLine($"    IList<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}(int length);");
-            sb.AppendLine($"    IList<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}();");
-            sb.AppendLine($"    IList<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}_deprec();");
+            sb.AppendLine($"    List<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}(int length);");
+            sb.AppendLine($"    List<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}();");
+            sb.AppendLine($"    List<{symbol.ReturnType}> ReadList{symbol.ReturnType.Name}_deprec();");
         }
 
         sb.AppendLine("}");
@@ -143,7 +145,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public IList<");
+            sb.Append("    public List<");
             sb.Append(symbol.ReturnType);
             sb.Append("> ReadList");
             sb.Append(symbol.ReturnType.Name);
@@ -174,7 +176,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public IList<");
+            sb.Append("    public List<");
             sb.Append(symbol.ReturnType);
             sb.Append("> ReadList");
             sb.Append(symbol.ReturnType.Name);
@@ -184,7 +186,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public IList<");
+            sb.Append("    public List<");
             sb.Append(symbol.ReturnType);
             sb.Append("> ReadList");
             sb.Append(symbol.ReturnType.Name);
@@ -220,9 +222,9 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.AppendLine($"    void WriteArray({type}[]? value, int length);");
             sb.AppendLine($"    void WriteArray({type}[]? value);");
             sb.AppendLine($"    void WriteArray_deprec({type}[]? value);");
-            sb.AppendLine($"    void WriteList(IList<{type}>? value, int length);");
-            sb.AppendLine($"    void WriteList(IList<{type}>? value);");
-            sb.AppendLine($"    void WriteList_deprec(IList<{type}>? value);");
+            sb.AppendLine($"    void WriteList(List<{type}>? value, int length);");
+            sb.AppendLine($"    void WriteList(List<{type}>? value);");
+            sb.AppendLine($"    void WriteList_deprec(List<{type}>? value);");
         }
 
         sb.AppendLine("}");
@@ -296,7 +298,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
             sb.AppendLine("    }");
 
             sb.AppendLine();
-            sb.Append("    public void WriteList(IList<");
+            sb.Append("    public void WriteList(List<");
             sb.Append(type);
             sb.AppendLine(">? value)");
             sb.AppendLine("    {");
@@ -318,7 +320,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteList(IList<");
+            sb.Append("    public void WriteList(List<");
             sb.Append(type);
             sb.AppendLine(">? value, int length)");
             sb.AppendLine("    {");
@@ -347,7 +349,7 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
 
             sb.AppendLine();
 
-            sb.Append("    public void WriteList_deprec(IList<");
+            sb.Append("    public void WriteList_deprec(List<");
             sb.Append(type);
             sb.AppendLine(">? value)");
             sb.AppendLine("    {");

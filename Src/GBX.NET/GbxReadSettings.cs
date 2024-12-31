@@ -36,4 +36,6 @@ public readonly record struct GbxReadSettings
     /// Skippable chunks will be read less efficiently, but they will be ignored if the read will fail, with (usually) no corruption once saved.
     /// </summary>
     public bool SafeSkippableChunks { get; init; }
+
+    public IEncryptionInitializer EncryptionInitializer { get; init; }
 }
