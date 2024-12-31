@@ -1,8 +1,7 @@
-name: Docker Image Publish - Explorer
+name: Docker Image Publish - Explorer (manual)
 
 on:
-  release:
-    types: [ published ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,7 +25,7 @@ jobs:
             ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}}
+            type=raw,value=latest
           
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
