@@ -1846,12 +1846,36 @@ public partial class CGameCtnChallenge :
                 };
             }
 
-            if (rw.Writer is not null)
-            {
-                rw.Writer.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
-            }
+            rw.Writer?.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
 
-            UnlimiterChunk.ReadWriteWithoutVersion(n, rw, ver: 0);
+            UnlimiterChunk.DecorationOffset = rw.Int3(UnlimiterChunk.DecorationOffset);
+            UnlimiterChunk.SkyDecorationVisibility = rw.Boolean(UnlimiterChunk.SkyDecorationVisibility, asByte: true);
+
+            if (rw.Reader is not null)
+            {
+                var blockCount = rw.Reader.ReadInt32();
+                var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
+
+                if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
+
+                for (var i = 0; i < blockCount; i++)
+                {
+                    var block = n.blocks[rw.Reader.ReadInt32()];
+                    var overOverSizeChunk = rw.Reader.ReadByte3();
+                    var isInverted = rw.Reader.ReadBoolean(asByte: true);
+                    var blockOffset = rw.Reader.ReadInt3();
+                    var blockRotation = rw.Reader.ReadByte3();
+
+                    blocks[i] = (block, overOverSizeChunk, isInverted, blockOffset, blockRotation);
+                }
+
+                var mediaClipMappingCount = rw.Reader.ReadUInt32();
+
+                if (mediaClipMappingCount > 0)
+                {
+                    throw new NotSupportedException("Media clip mapping count > 0 is not supported atm.");
+                }
+            }
         }
     }
 
@@ -2133,6 +2157,20 @@ public partial class CGameCtnChallenge :
 
         public ushort Flags { get; set; }
 
+        private Int3 decorationOffset;
+        public Int3 DecorationOffset { get => decorationOffset; set => decorationOffset = value; }
+
+        public bool SkyDecorationVisibility { get; set; }
+
+        private List<LegacyScript> legacyScripts = [];
+        public List<LegacyScript> LegacyScripts { get => legacyScripts; set => legacyScripts = value; }
+
+        private List<ParameterSet> parameterSets = [];
+        public List<ParameterSet> ParameterSets { get => parameterSets; set => parameterSets = value; }
+
+        private List<MediaClipMapping> mediaClipMappings = [];
+        public List<MediaClipMapping> MediaClipMappings { get => mediaClipMappings; set => mediaClipMappings = value; }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw) => ReadWrite(n, rw, ver: 0);
 
         protected void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw, int ver)
@@ -2152,7 +2190,108 @@ public partial class CGameCtnChallenge :
             if (Version == 4)
             {
                 Flags = rw.Byte((byte)Flags);
+
+                if ((Flags & 1) != 0)
+                {
+                    rw.Int3(ref decorationOffset);
+                }
+
+                rw.ListReadableWritable(ref legacyScripts);
+                rw.ListReadableWritable(ref parameterSets);
+                rw.ListReadableWritable(ref mediaClipMappings);
+
+                if (rw.Reader is not null)
+                {
+                    var count = rw.Reader.ReadInt32();
+                    for (var i = 0; i < count; i++)
+                    {
+                        var data = rw.Reader.ReadBytes(30);
+                        var blockType = (BlockType)rw.Reader.ReadByte();
+                        var name = rw.Reader.ReadId();
+
+                        switch (blockType)
+                        {
+                            case BlockType.GameBlock:
+                                var blockIndex = rw.Reader.ReadInt32();
+                                break;
+                            case BlockType.ExternalBlock:
+                                var externalBlock = rw.Reader.ReadIdent();
+                                break;
+                        }
+                    }
+                }
             }
+        }
+
+        public record LegacyScript : IReadableWritable
+        {
+            public string Name { get; set; } = "";
+            public byte[] ByteCode { get; set; } = [];
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                Name = rw.String(Name);
+                ByteCode = rw.Data(ByteCode);
+            }
+        }
+
+        public record ParameterSet : IReadableWritable
+        {
+            public string Name { get; set; } = "";
+            public List<Parameter> Parameters { get; set; } = [];
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                Name = rw.String(Name);
+                Parameters = rw.ListReadableWritable(Parameters);
+            }
+        }
+
+        public record Parameter : IReadableWritable
+        {
+            public int FunctionIndex { get; set; }
+            public float? Value { get; set; }
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                FunctionIndex = rw.Int32(FunctionIndex);
+            }
+        }
+
+        public record MediaClipMapping : IReadableWritable
+        {
+            public int MediaClipIndex { get; set; }
+            public MediaClipMappedResourceType MappedResourceType { get; set; }
+            public int? ParameterSetIndex { get; set; }
+            public int? LegacyScriptIndex { get; set; }
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                MediaClipIndex = rw.Int32(MediaClipIndex);
+                MappedResourceType = rw.EnumByte(MappedResourceType);
+
+                switch (MappedResourceType)
+                {
+                    case MediaClipMappedResourceType.ParameterSet:
+                        ParameterSetIndex = rw.Int32(ParameterSetIndex);
+                        break;
+                    case MediaClipMappedResourceType.LegacyScript:
+                        LegacyScriptIndex = rw.Int32(LegacyScriptIndex);
+                        break;
+                }
+            }
+        }
+
+        public enum MediaClipMappedResourceType
+        {
+            ParameterSet,
+            LegacyScript
+        }
+
+        public enum BlockType
+        {
+            GameBlock,
+            ExternalBlock
         }
     }
 
