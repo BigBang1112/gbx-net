@@ -47,6 +47,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-7jgj-8wvc-jh57" />
+        <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-7mfr-774f-w5r9" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>
 
