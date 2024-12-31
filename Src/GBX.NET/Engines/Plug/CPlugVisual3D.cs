@@ -125,7 +125,18 @@ public partial class CPlugVisual3D
 
             if (u01)
             {
-                normal = u03 ? r.ReadVec3_10b() : r.ReadVec3();
+                if (u03)
+                {
+                    var normalInt = r.ReadInt32();
+                    normal = new Vec3(
+                        ((normalInt << 22) >> 22) / 511f,
+                        ((normalInt << 12) >> 22) / 511f,
+                        ((normalInt * 4) >> 22) / 511f);
+                }
+                else
+                {
+                    normal = r.ReadVec3();
+                }
             }
 
             if (u02)
@@ -173,7 +184,9 @@ public partial class CPlugVisual3D
             {
                 if (u03)
                 {
-                    w.WriteVec3_10b(Normal.GetValueOrDefault());
+                    w.Write((int)(Normal.GetValueOrDefault().X * 511) << 22
+                          | (int)(Normal.GetValueOrDefault().Y * 511) << 12
+                          | (int)(Normal.GetValueOrDefault().Z * 511));
                 }
                 else
                 {
@@ -186,9 +199,9 @@ public partial class CPlugVisual3D
                 if (u04)
                 {
                     w.Write((int)(Color.GetValueOrDefault().X * 255) << 0x10
-                        | (int)(Color.GetValueOrDefault().Y * 255) << 8
-                        | (int)(Color.GetValueOrDefault().Z * 255)
-                        | (int)(Color.GetValueOrDefault().W * 255) << 0x18);
+                          | (int)(Color.GetValueOrDefault().Y * 255) << 8
+                          | (int)(Color.GetValueOrDefault().Z * 255)
+                          | (int)(Color.GetValueOrDefault().W * 255) << 0x18);
                 }
                 else
                 {
