@@ -30,6 +30,11 @@ public class SpectreConsoleLogger : ILogger
         }
 
         AnsiConsole.MarkupLine($" {GetLevelString(logLevel)} {Markup.Escape(formatter(state, exception))}");
+
+        if (exception is not null)
+        {
+            AnsiConsole.WriteException(exception);
+        }
     }
 
     private static string GetLevelString(LogLevel level) => level switch

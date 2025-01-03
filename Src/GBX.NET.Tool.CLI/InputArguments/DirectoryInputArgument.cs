@@ -1,11 +1,12 @@
 ﻿
 using GBX.NET.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Tool.CLI.InputArguments;
 
 public sealed record DirectoryInputArgument(string DirectoryPath) : InputArgument
 {
-    public override async Task<object?> ResolveAsync(CancellationToken cancellationToken)
+    public override Task<object?> ResolveAsync(ILogger logger, CancellationToken cancellationToken)
     {
         var files = Directory.EnumerateFiles(DirectoryPath, "*.*", SearchOption.AllDirectories);
         
@@ -13,6 +14,7 @@ public sealed record DirectoryInputArgument(string DirectoryPath) : InputArgumen
         {
             try
             {
+                logger.LogInformation("Reading file {File}...", Path.GetFileName(file));
                 await using var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true);
                 return await Gbx.ParseAsync(stream, cancellationToken: cancellationToken);
             }
@@ -20,8 +22,13 @@ public sealed record DirectoryInputArgument(string DirectoryPath) : InputArgumen
             {
                 return await File.ReadAllBytesAsync(file, cancellationToken);
             }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Failed to read file {File}.", Path.GetFileName(file));
+                return null;
+            }
         });
 
-        return await Task.WhenAll(tasks);
+        return Task.FromResult((object?)tasks);
     }
 }
