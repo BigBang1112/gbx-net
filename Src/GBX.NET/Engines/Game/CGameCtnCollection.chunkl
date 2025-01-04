@@ -103,7 +103,7 @@ CGameCtnCollection 0x03033000
  float ColorVertexMax
 
 0x018
- int
+ CMwNod
  rect
  vec2
  vec2
@@ -138,8 +138,8 @@ CGameCtnCollection 0x03033000
  float CameraMinHeight
  bool
 
-0x01F
- int[] // ParticleEmitterModelsFids?
+0x01F // ParticleEmitterModelsFids
+ int[] ParticleEmitterModelsFids
 
 0x020 // folders
  string FolderBlockInfo
@@ -249,7 +249,7 @@ CGameCtnCollection 0x03033000
   float?
   float?
  v1+
-  int?
+  int? // VehicleStyles?
   v2+
    CMwNod ItemPlacementGroups
    v3+
