@@ -1,10 +1,10 @@
 CGameCtnCollection 0x03033000
 
-0x000 // old header
+0x000 (header, struct: SOldHeaderDesc) // old header
  id
 
-0x001 // desc
- versionb version
+0x001 (header, struct: SHeaderDesc) // desc
+ versionb
  id Collection
  bool NeedUnlock
  v1+
@@ -35,6 +35,25 @@ CGameCtnCollection 0x03033000
          string DisplayName
          v10+
           bool? IsEditable
+
+0x002 (header, struct: SHeaderCollectorFolders)
+ versionb
+ string FolderBlockInfo
+ string
+ string FolderDecoration
+ v1+
+  v2-
+   string
+  v2+
+   string
+   v3+
+    string
+    v4+
+     string
+
+0x003 (header, struct: SHeaderMenuIconsFolders)
+ versionb
+ string FolderMenusIcons
 
 0x008 // DefaultDecoration
  CGameCtnDecoration DefaultDecoration (external)
