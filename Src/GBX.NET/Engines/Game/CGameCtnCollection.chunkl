@@ -234,13 +234,13 @@ CGameCtnCollection 0x03033000
    float WaterGRefracPertub
    v7+
     int // not seen in code
-   float CameraMinHeight
-   v3-
-    bool // CSystemFidsFolder something?
-   bool IsWaterMultiHeight
-   v2-
-    float
-   float WaterFogClampAboveDist
+ float CameraMinHeight
+ v3-
+  bool // CSystemFidsFolder something?
+ bool IsWaterMultiHeight
+ v2-
+  float
+ float WaterFogClampAboveDist
 
 0x039
  version
@@ -337,6 +337,6 @@ archive Water
  v3+
   float?
  v2+
-  int? // NodeRef?
+  CMwNod
   v7+
    int? // not seen in code
