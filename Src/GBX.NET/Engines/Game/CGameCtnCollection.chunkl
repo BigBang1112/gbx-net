@@ -45,11 +45,11 @@ CGameCtnCollection 0x03033000
   v2-
    string
   v2+
-   string
+   string FolderCardEventInfo
    v3+
-    string
+    string FolderMacroBlockInfo
     v4+
-     string
+     string FolderMacroDecals
 
 0x003 (header, struct: SHeaderMenuIconsFolders)
  versionb
