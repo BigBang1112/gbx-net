@@ -83,7 +83,7 @@ CGameCtnCollection 0x03033000
   CPlugBitmap CollectionIconFid (external)
 
 0x00E
- int
+ int SortIndex
 
 0x011
  int
