@@ -276,6 +276,7 @@ public partial class CGameCtnChallenge :
 
     private bool hasLightmaps;
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public bool HasLightmaps { get => hasLightmaps; set => hasLightmaps = value; }
 
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
