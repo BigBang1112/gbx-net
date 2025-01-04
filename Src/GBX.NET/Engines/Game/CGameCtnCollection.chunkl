@@ -39,7 +39,7 @@ CGameCtnCollection 0x03033000
 0x002 (header, struct: SHeaderCollectorFolders)
  versionb
  string FolderBlockInfo
- string
+ string FolderItem
  string FolderDecoration
  v1+
   v2-
