@@ -153,8 +153,8 @@ CGameCtnCollection 0x03033000
 0x022 // is water multi-height
  bool IsWaterMultiHeight
 
-0x023
- bool
+0x023 // CarCanBeDirty
+ bool? CarCanBeDirty
 
 0x024
  int
