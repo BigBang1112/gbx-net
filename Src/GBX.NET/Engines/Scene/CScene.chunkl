@@ -1,0 +1,11 @@
+CScene 0x0A001000
+- abstract
+
+0x003
+ CSceneConfig SceneConfig
+
+0x004
+ uint[]
+
+0x005
+ CMotionManager[]_deprec MotionManagers (external)
