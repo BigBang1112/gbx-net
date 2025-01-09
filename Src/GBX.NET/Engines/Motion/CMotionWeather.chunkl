@@ -1,0 +1,2 @@
+CMotionWeather 0x08054000
+- inherits: CMotionManaged

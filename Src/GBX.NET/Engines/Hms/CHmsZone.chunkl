@@ -14,4 +14,4 @@ CHmsZone 0x06004000
  CHmsPrecalcRender[]_deprec PrecalcRenders
 
 0x006
- CPlugBitmap BitmapCubeReflectHardSpecA
+ CPlugBitmap BitmapCubeReflectHardSpecA (external)

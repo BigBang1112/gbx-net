@@ -16,3 +16,40 @@ CSceneLayout 0x0A003000
 
 0x018
  CSceneSector[]_deprec Sectors
+ version
+ Mobil[]
+ SceneLoc[]
+ CSceneObject[]_deprec
+ SceneLoc[]
+ CSceneLight[]_deprec Lights (external)
+ SceneLoc[]
+ CSceneObject[]_deprec
+ SceneLoc[]
+ CSceneObject[]_deprec
+ SceneLoc[]
+ CSceneObject[]_deprec
+ SceneLoc[]
+ CSceneGate[]_deprec Gates
+ CScenePath[]_deprec Paths
+ CSceneTrafficGraph TrafficGraph
+ CSceneTrafficPath[]_deprec TrafficPaths
+ CSceneFxNod SceneFxNod (external)
+
+archive Mobil
+ int U01
+ if U01 == -2
+  CMwNod U02
+
+archive SceneLoc
+ CMwNod
+ iso4
+
+archive Unknown
+ CMwNod
+ id
+ int
+ CMwNod
+ id
+ int
+ iso4
+ iso4
