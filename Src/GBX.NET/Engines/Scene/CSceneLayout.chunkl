@@ -17,18 +17,18 @@ CSceneLayout 0x0A003000
 0x018
  CSceneSector[]_deprec Sectors
  version
- Mobil[]
- SceneLoc[]
+ Mobil[] Scene
+ SceneLoc[] SceneLocations
  CSceneObject[]_deprec
  SceneLoc[]
  CSceneLight[]_deprec Lights (external)
- SceneLoc[]
- CSceneObject[]_deprec
- SceneLoc[]
- CSceneObject[]_deprec
- SceneLoc[]
- CSceneObject[]_deprec
- SceneLoc[]
+ SceneLoc[] LightLocations
+ CSceneObject[]_deprec Sounds
+ SceneLoc[] SoundLocations
+ CSceneObject[]_deprec Locations
+ SceneLoc[] LocationLocations
+ CSceneObject[]_deprec Fields
+ SceneLoc[] FieldLocations
  CSceneGate[]_deprec Gates
  CScenePath[]_deprec Paths
  CSceneTrafficGraph TrafficGraph
