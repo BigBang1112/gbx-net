@@ -9,3 +9,10 @@ CScene 0x0A001000
 
 0x005
  CMotionManager[]_deprec MotionManagers (external)
+
+0x006 (ignore)
+ OldSceneMobil[] OldMobils
+
+archive OldSceneMobil
+ CMwNod (external)
+ CMwNod (external)

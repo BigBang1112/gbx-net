@@ -17,7 +17,7 @@ CSceneLayout 0x0A003000
 0x018
  CSceneSector[]_deprec Sectors
  version
- Mobil[] Scene
+ SceneMobil[] Scene
  SceneLoc[] SceneLocations
  CSceneObject[]_deprec
  SceneLoc[]
@@ -35,10 +35,10 @@ CSceneLayout 0x0A003000
  CSceneTrafficPath[]_deprec TrafficPaths
  CSceneFxNod SceneFxNod (external)
 
-archive Mobil
+archive SceneMobil
  int U01
  if U01 == -2
-  CMwNod U02
+  CMwNod Mobil
 
 archive SceneLoc
  CMwNod
