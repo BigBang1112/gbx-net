@@ -70,8 +70,9 @@ public interface IGbx
     static abstract TVersion ParseHeaderNode<TClass, TVersion>(string filePath, GbxReadSettings settings = default)
         where TClass : CMwNod, TVersion, new()
         where TVersion : IClassVersion<TClass>;
-#endif
 
+    [Experimental("GBXNET10001")]
+#endif
     IGbx DeepClone();
 }
 
@@ -161,6 +162,9 @@ public partial class Gbx : IGbx
         return GbxPath.GetFileNameWithoutExtension(FilePath);
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     public virtual Gbx DeepClone() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
@@ -173,6 +177,9 @@ public partial class Gbx : IGbx
         ClassIdRemapMode = ClassIdRemapMode
     };
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     IGbx IGbx.DeepClone() => DeepClone();
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -1007,6 +1014,9 @@ public class Gbx<
         return $"Gbx<{typeof(T).Name}> ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
 #if NETSTANDARD2_0
     public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
 #else

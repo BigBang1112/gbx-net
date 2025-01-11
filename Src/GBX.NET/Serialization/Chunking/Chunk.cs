@@ -1,4 +1,7 @@
 ﻿using GBX.NET.Managers;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace GBX.NET.Serialization.Chunking;
 
@@ -15,6 +18,9 @@ public interface IChunk
     bool Ignore { get; }
     GameVersion GameVersion { get; }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     IChunk DeepClone();
 }
 
@@ -49,8 +55,14 @@ public abstract class Chunk : IReadableWritableChunk
     /// <inheritdoc />
     public virtual void Write(IClass n, GbxWriter w) { }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     public abstract Chunk DeepClone();
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     IChunk IChunk.DeepClone() => DeepClone();
 
     public override string ToString() => $"{ClassManager.GetName(Id & 0xFFFFF000)} chunk 0x{Id:X8}{(this is IVersionable v ? $" [v{v.Version}]" : "")}";

@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace GBX.NET.Components;
 
@@ -112,6 +115,9 @@ public sealed class GbxRefTable
         return new GbxRefTableWriter(this, header, writer).Write(rawBody);
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     public GbxRefTable DeepClone()
     {
         var refTable = new GbxRefTable
