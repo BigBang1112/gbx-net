@@ -1,4 +1,5 @@
-﻿using GBX.NET.Crypto;
+﻿using GBX.NET.Components;
+using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using NativeSharpZlib;
@@ -220,10 +221,61 @@ public sealed partial class Pak : IDisposable
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, IDictionary<string, string>? fileHashes = default, CancellationToken cancellationToken = default)
     {
         using var stream = OpenFile(file, out var encryptionInitializer);
-        return await Gbx.ParseAsync(stream, settings with { EncryptionInitializer = encryptionInitializer }, cancellationToken);
+        var gbx = await Gbx.ParseAsync(stream, settings with { EncryptionInitializer = encryptionInitializer }, cancellationToken);
+
+        if (gbx.RefTable is not null && importExternalNodesFromRefTable)
+        {
+            ImportExternalNodesFromRefTable(file, gbx.RefTable, settings, fileHashes);
+        }
+
+        return gbx;
+    }
+
+    private void ImportExternalNodesFromRefTable(PakFile file, GbxRefTable refTable, GbxReadSettings settings, IDictionary<string, string>? fileHashes)
+    {
+        var ancestor = string.Join('\\', Enumerable.Repeat("..", refTable.AncestorLevel));
+        var currentFileName = fileHashes?.TryGetValue(file.Name, out var resolvedFileName) == true ? resolvedFileName : file.Name;
+        var currentFileFolderPath = Path.GetDirectoryName(currentFileName);
+        var currentPakFileFolderPath = string.IsNullOrEmpty(currentFileFolderPath) ? file.FolderPath : Path.Combine(file.FolderPath, currentFileFolderPath);
+
+        foreach (var refTableFile in refTable.Files)
+        {
+            var filePath = Path.GetRelativePath(Directory.GetCurrentDirectory(), Path.Combine(currentPakFileFolderPath, ancestor, refTableFile.FilePath)).Replace('/', '\\');
+
+            if (!Files.TryGetValue(filePath, out var refTableFileInPak))
+            {
+                var directoryPath = Path.GetDirectoryName(filePath);
+                var fileName = Path.GetFileName(filePath);
+
+                while (true)
+                {
+                    var hash = MD5.Compute136(fileName);
+
+                    if (Files.TryGetValue(directoryPath + "\\" + hash, out refTableFileInPak))
+                    {
+                        break;
+                    }
+
+                    fileName = Path.Combine(Path.GetFileName(directoryPath)!, fileName); // maybe can rarely fail here?
+                    directoryPath = Path.GetDirectoryName(directoryPath);
+
+                    if (string.IsNullOrEmpty(directoryPath))
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (refTableFileInPak is null)
+            {
+                continue;
+            }
+
+            refTable.ExternalNodes.Add(refTableFile.FilePath, () => OpenGbxFile(refTableFileInPak, settings));
+        }
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
