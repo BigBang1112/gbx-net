@@ -220,15 +220,27 @@ public sealed partial class Pak : IDisposable
         return new NativeZlibStream(blowfish, CompressionMode.Decompress);
     }
 
+    /// <summary>
+    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="NotAGbxException"/> is thrown.
+    /// </summary>
+    /// <param name="file"></param>
+    /// <param name="settings"></param>
+    /// <param name="importExternalNodesFromRefTable"></param>
+    /// <param name="fileHashes"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, IDictionary<string, string>? fileHashes = default, CancellationToken cancellationToken = default)
     {
         using var stream = OpenFile(file, out var encryptionInitializer);
-        var gbx = await Gbx.ParseAsync(stream, settings with { EncryptionInitializer = encryptionInitializer }, cancellationToken);
+
+        var settingsWithEncryption = settings with { EncryptionInitializer = encryptionInitializer };
+
+        var gbx = await Gbx.ParseAsync(stream, settingsWithEncryption, cancellationToken);
 
         if (gbx.RefTable is not null && importExternalNodesFromRefTable)
         {
-            ImportExternalNodesFromRefTable(file, gbx.RefTable, settings, fileHashes);
+            ImportExternalNodesFromRefTable(file, gbx.RefTable, settingsWithEncryption, fileHashes);
         }
 
         return gbx;
