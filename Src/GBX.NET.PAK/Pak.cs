@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Components;
 using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
+using GBX.NET.PAK.Exceptions;
 using GBX.NET.Serialization;
 using NativeSharpZlib;
 using System.Collections.Immutable;
@@ -24,6 +25,7 @@ public partial class Pak : IDisposable
 
     private readonly Stream stream;
     private readonly byte[]? key;
+    private readonly byte[]? secondKey;
 
     private int metadataStart;
     private int dataStart;
@@ -36,16 +38,32 @@ public partial class Pak : IDisposable
 
     public ImmutableDictionary<string, PakFile> Files { get; private set; } = ImmutableDictionary<string, PakFile>.Empty;
 
-    internal Pak(Stream stream, byte[]? key, int version)
+    internal Pak(Stream stream, byte[]? key, byte[]? secondKey, int version)
     {
         this.stream = stream;
         this.key = key;
+        this.secondKey = secondKey;
         Version = version;
     }
 
+    /// <summary>
+    /// Parses the Pak file from the stream. Should be disposed after use, as it keeps the file open (currently at least).
+    /// </summary>
+    /// <param name="stream">Stream.</param>
+    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task. The task result contains the parsed Pak format.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
+    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key, byte[]? secondKey = null, CancellationToken cancellationToken = default)
     {
+        if (stream is null)
+        {
+            throw new ArgumentNullException(nameof(stream));
+        }
+
         var r = new GbxReader(stream);
 
         if (!r.ReadPakMagic())
@@ -55,7 +73,7 @@ public partial class Pak : IDisposable
 
         var version = r.ReadInt32();
 
-        var pak = await CreateBasePak(stream, r, key, version, cancellationToken);
+        var pak = await CreateBasePak(stream, r, key, secondKey, version, cancellationToken);
         pak.HeaderIV = r.ReadUInt64();
 
         if (key is not null)
@@ -66,29 +84,48 @@ public partial class Pak : IDisposable
         return pak;
     }
 
+    /// <summary>
+    /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
+    /// </summary>
+    /// <param name="filePath">File path.</param>
+    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task. The task result contains the parsed Pak format.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
+    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    public static async Task<Pak> ParseAsync(string filePath, byte[] key, byte[]? secondKey = null, CancellationToken cancellationToken = default)
+    {
+        var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ParseAsync(fs, key, secondKey, cancellationToken);
+    }
+
+    /// <summary>
+    /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
+    /// </summary>
+    /// <param name="filePath">File path.</param>
+    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <returns>Parsed Pak format.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
+    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    public static Pak Parse(string filePath, byte[] key, byte[]? secondKey = null)
+    {
+        var fs = File.OpenRead(filePath);
+        return Parse(fs, key, secondKey);
+    }
+
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    private static async ValueTask<Pak> CreateBasePak(Stream stream, GbxReader r, byte[]? key, int version, CancellationToken cancellationToken)
+    private static async ValueTask<Pak> CreateBasePak(Stream stream, GbxReader r, byte[]? key, byte[]? secondKey, int version, CancellationToken cancellationToken)
     {
         if (version < 6)
         {
-            return new Pak(stream, key, version);
+            return new Pak(stream, key, secondKey, version);
         }
 
-        var pak6 = new Pak6(stream, key, version);
+        var pak6 = new Pak6(stream, headerKey: key, bodyKey: secondKey, version);
         await pak6.ReadUnencryptedHeaderAsync(r, version, cancellationToken);
         return pak6;
-    }
-
-    public static async Task<Pak> ParseAsync(string filePath, byte[] key, CancellationToken cancellationToken = default)
-    {
-        var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, cancellationToken);
-    }
-
-    public static Pak Parse(string filePath, byte[] key)
-    {
-        var fs = File.OpenRead(filePath);
-        return Parse(fs, key);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -431,7 +468,7 @@ public partial class Pak : IDisposable
                 continue;
             }
 
-            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, cancellationToken);
+            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {
