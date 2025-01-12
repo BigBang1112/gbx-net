@@ -10,7 +10,7 @@ using System.Text;
 
 namespace GBX.NET.PAK;
 
-public sealed partial class Pak : IDisposable
+public partial class Pak : IDisposable
 #if NET5_0_OR_GREATER
     , IAsyncDisposable
 #endif
@@ -23,36 +23,28 @@ public sealed partial class Pak : IDisposable
     private const string PakListFileName = "packlist.dat";
 
     private readonly Stream stream;
-    private readonly byte[] key;
-    private readonly byte[] headerMD5;
-    private readonly int metadataStart;
-    private readonly int dataStart;
+    private readonly byte[]? key;
+
+    private int metadataStart;
+    private int dataStart;
 
     public int Version { get; }
-    public int Flags { get; }
-    public ImmutableDictionary<string, PakFile> Files { get; }
 
-    private Pak(Stream stream,
-        byte[] key,
-        int version,
-        byte[] headerMD5,
-        int metadataStart,
-        int dataStart,
-        int flags,
-        ImmutableDictionary<string, PakFile> files)
+    public ulong HeaderIV { get; private set; }
+    public byte[]? HeaderMD5 { get; private set; }
+    public int Flags { get; private set; }
+
+    public ImmutableDictionary<string, PakFile> Files { get; private set; } = ImmutableDictionary<string, PakFile>.Empty;
+
+    internal Pak(Stream stream, byte[]? key, int version)
     {
         this.stream = stream;
         this.key = key;
         Version = version;
-        this.headerMD5 = headerMD5;
-        this.metadataStart = metadataStart;
-        this.dataStart = dataStart;
-        Flags = flags;
-        Files = files;
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[] key, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key, CancellationToken cancellationToken = default)
     {
         var r = new GbxReader(stream);
 
@@ -63,17 +55,28 @@ public sealed partial class Pak : IDisposable
 
         var version = r.ReadInt32();
 
-        if (version > 5)
+        var pak = await CreateBasePak(stream, r, key, version, cancellationToken);
+        pak.HeaderIV = r.ReadUInt64();
+
+        if (key is not null)
         {
-            throw new Exception($"Version >5 (actual: {version}) is not supported. Use Pak6 for this file.");
+            await pak.ReadEncryptedAsync(stream, cancellationToken);
         }
 
-        var headerIV = r.ReadUInt64();
+        return pak;
+    }
 
-        var decryptStream = new BlowfishStream(stream, key, headerIV);
-        var decryptReader = new GbxReader(decryptStream);
-        
-        return await ParseEncryptedAsync(decryptReader, stream, version, key, cancellationToken);
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    private static async ValueTask<Pak> CreateBasePak(Stream stream, GbxReader r, byte[]? key, int version, CancellationToken cancellationToken)
+    {
+        if (version < 6)
+        {
+            return new Pak(stream, key, version);
+        }
+
+        var pak6 = new Pak6(stream, key, version);
+        await pak6.ReadUnencryptedHeaderAsync(r, version, cancellationToken);
+        return pak6;
     }
 
     public static async Task<Pak> ParseAsync(string filePath, byte[] key, CancellationToken cancellationToken = default)
@@ -89,29 +92,32 @@ public sealed partial class Pak : IDisposable
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    private static async Task<Pak> ParseEncryptedAsync(
-        GbxReader r, 
-        Stream originalStream, 
-        int version,
-        byte[] key,
-        CancellationToken cancellationToken)
+    protected async Task ReadEncryptedAsync(Stream stream, CancellationToken cancellationToken)
     {
-        var headerMD5 = await r.ReadBytesAsync(16, cancellationToken);
-        var metadataStart = r.ReadInt32(); // offset to metadata section
-        var dataStart = r.ReadInt32();
+        if (key is null)
+        {
+            throw new Exception("Encryption key is missing");
+        }
 
-        if (version >= 2)
+        var decryptStream = new BlowfishStream(stream, key, HeaderIV);
+        var r = new GbxReader(decryptStream);
+
+        HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
+        metadataStart = r.ReadInt32(); // offset to metadata section
+        dataStart = r.ReadInt32();
+
+        if (Version >= 2)
         {
             var gbxHeadersSize = r.ReadInt32();
             var gbxHeadersComprSize = r.ReadInt32();
         }
 
-        if (version >= 3)
+        if (Version >= 3)
         {
             r.SkipData(16); // unused
         }
 
-        var flags = r.ReadInt32();
+        Flags = r.ReadInt32();
 
         var allFolders = ReadAllFolders(r);
 
@@ -121,9 +127,7 @@ public sealed partial class Pak : IDisposable
             ((IEncryptionInitializer)r.BaseStream).Initialize(nameBytes, 4, 4);
         }
 
-        var files = ReadAllFiles(r, allFolders);
-
-        return new Pak(originalStream, key, version, headerMD5, metadataStart, dataStart, flags, files);
+        Files = ReadAllFiles(r, allFolders);
     }
 
     private static PakFolder[] ReadAllFolders(GbxReader r)
@@ -199,6 +203,11 @@ public sealed partial class Pak : IDisposable
 
     public Stream OpenFile(PakFile file, out EncryptionInitializer encryptionInitializer)
     {
+        if (key is null)
+        {
+            throw new Exception("Encryption key is missing");
+        }
+
         stream.Position = dataStart + file.Offset;
 
         var ivBuffer = new byte[8];
@@ -240,13 +249,14 @@ public sealed partial class Pak : IDisposable
 
         if (gbx.RefTable is not null && importExternalNodesFromRefTable)
         {
-            ImportExternalNodesFromRefTable(file, gbx.RefTable, settingsWithEncryption, fileHashes);
+            // this can miss some files from other Pak files
+            ImportExternalNodesFromRefTable(this, file, gbx.RefTable, settingsWithEncryption, fileHashes);
         }
 
         return gbx;
     }
 
-    private void ImportExternalNodesFromRefTable(PakFile file, GbxRefTable refTable, GbxReadSettings settings, IDictionary<string, string>? fileHashes)
+    private static void ImportExternalNodesFromRefTable(Pak pak, PakFile file, GbxRefTable refTable, GbxReadSettings settings, IDictionary<string, string>? fileHashes)
     {
         var ancestor = string.Join('\\', Enumerable.Repeat("..", refTable.AncestorLevel));
         var currentFileName = fileHashes?.TryGetValue(file.Name, out var resolvedFileName) == true ? resolvedFileName : file.Name;
@@ -257,7 +267,7 @@ public sealed partial class Pak : IDisposable
         {
             var filePath = Path.GetRelativePath(Directory.GetCurrentDirectory(), Path.Combine(currentPakFileFolderPath, ancestor, refTableFile.FilePath)).Replace('/', '\\');
 
-            if (!Files.TryGetValue(filePath, out var refTableFileInPak))
+            if (!pak.Files.TryGetValue(filePath, out var refTableFileInPak))
             {
                 var directoryPath = Path.GetDirectoryName(filePath);
                 var fileName = Path.GetFileName(filePath);
@@ -266,7 +276,7 @@ public sealed partial class Pak : IDisposable
                 {
                     var hash = MD5.Compute136(fileName);
 
-                    if (Files.TryGetValue(directoryPath + "\\" + hash, out refTableFileInPak))
+                    if (pak.Files.TryGetValue(directoryPath + "\\" + hash, out refTableFileInPak))
                     {
                         break;
                     }
@@ -286,7 +296,7 @@ public sealed partial class Pak : IDisposable
                 continue;
             }
 
-            refTable.ExternalNodes.Add(refTableFile.FilePath, () => OpenGbxFile(refTableFileInPak, settings));
+            refTable.ExternalNodes.Add(refTableFile.FilePath, () => pak.OpenGbxFile(refTableFileInPak, settings));
         }
     }
 
@@ -324,7 +334,14 @@ public sealed partial class Pak : IDisposable
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakList = await PakList.ParseAsync(Path.Combine(directoryPath, PakListFileName), game, cancellationToken);
+        var pakListFilePath = Path.Combine(directoryPath, PakListFileName);
+
+        if (!File.Exists(pakListFilePath))
+        {
+            return [];
+        }
+
+        var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
         var allPossibleFileHashes = new Dictionary<string, string>();
 
