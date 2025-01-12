@@ -40,11 +40,7 @@ internal sealed partial class Pak6 : Pak
 
         if (version >= 7)
         {
-            AuthorVersion = r.ReadInt32();
-            AuthorLogin = r.ReadString();
-            AuthorNickname = r.ReadString();
-            AuthorZone = r.ReadString();
-            AuthorExtraInfo = r.ReadString();
+            ReadAuthorInfo(r);
 
             if (version < 9)
             {
@@ -82,7 +78,7 @@ internal sealed partial class Pak6 : Pak
                 if (version >= 10)
                 {
                     IncludedPacks = new IncludedPackHeader[r.ReadUInt32()];
-                    
+
                     for (var i = 0; i < IncludedPacks.Length; i++)
                     {
                         IncludedPacks[i] = await IncludedPackHeader.DeserializeAsync(r, version, cancellationToken);
@@ -90,6 +86,15 @@ internal sealed partial class Pak6 : Pak
                 }
             }
         }
+    }
+
+    internal void ReadAuthorInfo(GbxReader r)
+    {
+        AuthorVersion = r.ReadInt32();
+        AuthorLogin = r.ReadString();
+        AuthorNickname = r.ReadString();
+        AuthorZone = r.ReadString();
+        AuthorExtraInfo = r.ReadString();
     }
 
     public sealed partial class IncludedPackHeader

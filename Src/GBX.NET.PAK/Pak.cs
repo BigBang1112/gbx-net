@@ -112,9 +112,24 @@ public partial class Pak : IDisposable
             var gbxHeadersComprSize = r.ReadInt32();
         }
 
+        if (Version >= 14)
+        {
+            r.SkipData(16); // unused
+
+            if (Version >= 16)
+            {
+                var fileSize = r.ReadUInt32();
+            }
+        }
+
         if (Version >= 3)
         {
             r.SkipData(16); // unused
+
+            if (Version == 6 && this is Pak6 pak6)
+            {
+                pak6.ReadAuthorInfo(r);
+            }
         }
 
         Flags = r.ReadInt32();
@@ -151,7 +166,7 @@ public partial class Pak : IDisposable
         return allFolders;
     }
 
-    private static ImmutableDictionary<string, PakFile> ReadAllFiles(GbxReader r, PakFolder[] allFolders)
+    private ImmutableDictionary<string, PakFile> ReadAllFiles(GbxReader r, PakFolder[] allFolders)
     {
         var files = ImmutableDictionary.CreateBuilder<string, PakFile>();
 
@@ -165,6 +180,9 @@ public partial class Pak : IDisposable
             var compressedSize = r.ReadInt32();
             var offset = r.ReadInt32();
             var classId = r.ReadUInt32(); // indicates the type of the file
+            var size = Version >= 17 ? r.ReadInt32() : default(int?);
+            var checksum = Version >= 14 ? r.ReadUInt128() : default(UInt128?);
+
             var fileFlags = r.ReadUInt64();
 
             var folderPath = string.Join(Path.DirectorySeparatorChar, RecurseFoldersToParent(folderIndex, allFolders)
@@ -172,7 +190,7 @@ public partial class Pak : IDisposable
                 .Select(f => f.Name.TrimEnd('\\')));
             var filePath = Path.Combine(folderPath, name);
 
-            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, fileFlags);
+            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags);
             files[filePath] = file;
         }
 
