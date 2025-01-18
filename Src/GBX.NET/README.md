@@ -11,6 +11,7 @@ For more details, see the main README.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
+- .NET 9
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
@@ -180,13 +181,13 @@ Some of the common types to start with (a lot more are supported):
 | SystemConfig.Gbx | CSystemConfig | Yes | Yes
 | FidCache.Gbx | CMwRefBuffer | Yes | Yes
 | Profile.Gbx | CGamePlayerProfile | Up to TMF | Up to TMF
-| Scores.Gbx | CGamePlayerScore | Yes | No
+| Scores.Gbx | CGamePlayerScore | No | No
 
 ## Supported games
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, July 2024 update
+- **Trackmania (2020)**, December 2024 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM
