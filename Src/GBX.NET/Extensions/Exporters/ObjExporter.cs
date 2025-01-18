@@ -163,6 +163,8 @@ internal static class ObjExporter
         var positionsDict = mergeVerticesDigitThreshold.HasValue
             ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
 
+        var unknownMaterialDict = new Dictionary<CPlug, int>();
+
         foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
@@ -175,7 +177,20 @@ internal static class ObjExporter
                 continue;
             }
 
-            var materialName = t.ShaderFile is null ? "Unknown" : GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+            string materialName;
+            if (t.ShaderFile is not null)
+            {
+                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+            }
+            else if (t.Shader is not null)
+            {
+                unknownMaterialDict[t.Shader] = unknownMaterialDict.Count;
+                materialName = "Unknown" + unknownMaterialDict.Count;
+            }
+            else
+            {
+                materialName = "Unknown";
+            }
 
             if (!materials.Contains(materialName))
             {
@@ -304,17 +319,24 @@ internal static class ObjExporter
                 continue;
             }
 
-            if (t.ShaderFile is null)
-            {
-                continue;
-            }
-
             if (visual.IndexBuffer is null)
             {
                 continue;
             }
 
-            var materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+            string materialName;
+            if (t.ShaderFile is not null)
+            {
+                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+            }
+            else if (t.Shader is not null)
+            {
+                materialName = "Unknown" + unknownMaterialDict[t.Shader];
+            }
+            else
+            {
+                materialName = "Unknown";
+            }
 
             objWriter.WriteLine("g {0}", materialName);
             objWriter.WriteLine("usemtl {0}", materialName);
