@@ -63,9 +63,9 @@ CPlugMaterialCustom 0x0903A000
   string
 
 archive Bitmap
- id
+ id Name
  int
- CMwNod (external)
+ CMwNod Texture (external)
  v1+
   int
   int
