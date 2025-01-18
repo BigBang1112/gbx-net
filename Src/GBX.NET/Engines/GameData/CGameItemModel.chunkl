@@ -7,23 +7,47 @@ CGameItemModel 0x2E002000
 0x001 (header, struct: SHeaderFileVersion) // file version
  version
 
+0x000
+ CSceneMobil Vehicle (external)
+
+0x003
+ CMwNod
+
 0x006
  int
 
 0x008 // Nadeo skin fids
- CMwNod?[] NadeoSkinFids
+ CMwNod?[] NadeoSkinFids (external)
 
 0x009 // cameras
- CMwNod[]_deprec Cameras
+ CMwNod[]_deprec Cameras (external)
 
 0x00A
+ CPlugDecoratorSolid DecoratorSolid (external)
+
+0x00B
+ CMwNod
  CMwNod
 
 0x00C // race interface fid
  CMwNod RaceInterfaceFid
 
+0x00D
+ CMwNod[]
+
 0x010
- CMwNod
+ CPlugBitmap BannerProfileFid (external)
+
+0x011
+ CPlugMaterial MaterialSkin (external)
+ CPlugMaterial MaterialGlass (external)
+ CPlugMaterial MaterialDetails (external)
+ CPlugMaterial MaterialPilot (external)
+ CPlugLight FrontLight (external)
+ CPlugLight FrontLightSmall (external)
+ CPlugLight RearLight (external)
+ CPlugLight ProjShadow (external)
+ CPlugLight ProjFront (external)
 
 0x012
  vec3 GroundPoint
@@ -33,7 +57,7 @@ CGameItemModel 0x2E002000
  float OrbitalPreviewAngle
 
 0x013
- CPlugAudioEnvironment
+ CPlugAudioEnvironment AudioEnvironmentInCar (external)
 
 0x014
  CMwNod
