@@ -1,1 +1,14 @@
 GxFog 0x04004000
+
+0x000
+ bool
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float

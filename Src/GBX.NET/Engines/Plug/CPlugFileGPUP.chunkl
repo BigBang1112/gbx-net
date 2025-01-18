@@ -1,0 +1,3 @@
+CPlugFileGPUP 0x09076000
+- inherits: CPlugFileGPU
+- abstract
