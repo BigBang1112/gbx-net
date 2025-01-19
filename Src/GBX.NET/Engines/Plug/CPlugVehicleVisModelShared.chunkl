@@ -50,5 +50,5 @@ archive VisualWheel
  bool
 
 archive VisualId
- id
+ id Name
  bool

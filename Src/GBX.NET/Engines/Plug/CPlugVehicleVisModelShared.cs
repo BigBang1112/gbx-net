@@ -1,5 +1,4 @@
-﻿
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugVehicleVisModelShared
 {
@@ -106,17 +105,49 @@ public partial class CPlugVehicleVisModelShared
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class VisualId;
+    public partial class SimulationWheel
+    {
+        public override string ToString()
+        {
+            return $"{Name} (U01: {U01}, U02: {U01})";
+        }
+    }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class VisualArm;
+    public partial class VisualId
+    {
+        public override string ToString()
+        {
+            return $"{Name} (U01: {U01})";
+        }
+    }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class VisualLight;
+    public partial class VisualArm
+    {
+        public override string ToString()
+        {
+            return $"{U01}, {U02}, {U03} [U04: {U04}, U05: {U05}, U06: {U06}]";
+        }
+    }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class VisualWheel;
+    public partial class VisualLight
+    {
+        public override string ToString()
+        {
+            return $"{U01} [U02: {U02}]";
+        }
+    }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class VisualWheel
+    {
+        public override string ToString()
+        {
+            return $"{U01}, {U02}, {U03}, {U04} [U05: {U05}, U06: {U06}]";
+        }
+    }
 
     public sealed class VisualVehicle
     {
