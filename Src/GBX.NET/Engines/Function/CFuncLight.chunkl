@@ -3,7 +3,7 @@ CFuncLight 0x05018000
 - abstract
 
 0x000
- int FctType
+ int<EFctType> FctType
  float FlickPeriod
  int FlickCount
 

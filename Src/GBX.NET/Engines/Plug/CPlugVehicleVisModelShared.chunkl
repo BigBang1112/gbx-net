@@ -1,0 +1,54 @@
+CPlugVehicleVisModelShared 0x090E8000
+
+0x005
+ SimulationWheel[] SimulationWheels
+
+0x006
+
+0x009
+
+0x00A
+
+0x00F
+
+0x010
+
+0x012
+ CPlugVehicleMaterialGroup[]_deprec VehicleMaterialGroups
+
+0x013
+ CFuncKeysReal
+ CFuncKeysReal
+ CFuncKeysReal
+
+0x014
+ CPlugVehicleVisEmitterModel[]_deprec VehicleEmitters
+
+archive SimulationWheel
+ bool
+ bool
+ id Name
+
+archive VisualArm
+ VisualId
+ VisualId
+ VisualId
+ bool
+ bool
+ int
+
+archive VisualLight
+ VisualId
+ bool
+
+archive VisualWheel
+ VisualId
+ VisualId
+ VisualId
+ VisualId
+ int
+ bool
+
+archive VisualId
+ id
+ bool
