@@ -230,7 +230,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
         var classIdContents = context.AdditionalTextsProvider
             .Where(static file =>
             {
-                return file.Path.EndsWith("ClassId.txt") && Path.GetDirectoryName(file.Path).EndsWith("Resources");
+                return (file.Path.EndsWith("ClassId.txt") || file.Path.EndsWith("ClassIdManual.txt")) && Path.GetDirectoryName(file.Path).EndsWith("Resources");
             })
             .Select((additionalText, cancellationToken) =>
             {
