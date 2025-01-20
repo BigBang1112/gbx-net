@@ -1,0 +1,11 @@
+CGameControlCameraTarget 0x03072000
+- inherits: CGameControlCamera
+
+0x001
+ iso4
+ bool
+ bool
+ float
+
+0x002
+ bool

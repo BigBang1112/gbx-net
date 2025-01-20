@@ -1,0 +1,35 @@
+CGameControlCamera 0x0306B000
+- inherits: CSceneController
+
+0x00A
+ id Name
+
+0x00B
+ float
+ float
+ float
+ bool
+ bool
+ bool
+ float
+ float
+ float
+ float
+ float
+ float
+ bool
+ iso4
+ bool
+ float
+ float
+ bool
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ bool

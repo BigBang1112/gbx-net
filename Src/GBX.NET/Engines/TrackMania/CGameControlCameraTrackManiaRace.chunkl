@@ -1,0 +1,18 @@
+CGameControlCameraTrackManiaRace 0x24085000
+- inherits: CGameControlCameraTarget
+
+0x000
+ float
+ float
+ float
+ bool
+ float
+ float
+ float
+ float
+ bool
+ float
+ float
+ float
+ float
+ float
