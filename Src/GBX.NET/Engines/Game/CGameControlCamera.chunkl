@@ -1,6 +1,57 @@
 CGameControlCamera 0x0306B000
 - inherits: CSceneController
 
+0x001
+ vec3 RelativeTargetPos
+ bool IsFirstPerson
+ bool CanCameraMove
+ bool IsFollowing
+ float MaxSpeed
+ float PlaneDist
+ float MinDist
+ float MaxDist
+ float Fov
+ float DefaultFov
+ bool UseForcedLocation
+ iso4 ForcedLocation
+
+0x002
+ bool UseOnlyFollowedMobilPosition
+
+0x003
+ id Name
+
+0x004
+ string Name
+
+0x009
+ vec3 RelativeFollowedPos
+ bool IsFirstPerson
+ bool CanCameraMove
+ bool IsFollowing
+ float MaxSpeed
+ float PlaneDist
+ float MinDist
+ float MaxDist
+ float Fov
+ float DefaultFov
+ bool UseForcedLocation
+ iso4 ForcedLocation
+ bool UseOnlyFollowedMobilPosition
+ id Name
+ string Name
+ float MinFov
+ float MaxFov
+ bool UseForcedUp
+ vec3 ForcedUp
+ float DefaultNearZ
+ float MinNearZ
+ float MaxNearZ
+ float DefaultFarZ
+ float MinFarZ
+ float MaxFarZ
+ bool
+
 0x00A
  id Name
 
