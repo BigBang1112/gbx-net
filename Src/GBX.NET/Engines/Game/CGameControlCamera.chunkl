@@ -5,31 +5,27 @@ CGameControlCamera 0x0306B000
  id Name
 
 0x00B
- float
- float
- float
- bool
- bool
- bool
- float
- float
- float
- float
- float
- float
- bool
- iso4
- bool
- float
- float
- bool
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ vec3 RelativeFollowedPos
+ bool IsFirstPerson
+ bool CanCameraMove
+ bool IsFollowing
+ float MaxSpeed
+ float PlaneDist
+ float MinDist
+ float MaxDist
+ float Fov
+ float DefaultFov
+ bool UseForcedLocation
+ iso4 ForcedLocation
+ bool UseOnlyFollowedMobilPosition
+ float MinFov
+ float MaxFov
+ bool UseForcedUp
+ vec3 ForcedUp
+ float DefaultNearZ
+ float MinNearZ
+ float MaxNearZ
+ float DefaultFarZ
+ float MinFarZ
+ float MaxFarZ
  bool

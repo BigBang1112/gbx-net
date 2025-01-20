@@ -2,17 +2,17 @@ CGameControlCameraTrackManiaRace 0x24085000
 - inherits: CGameControlCameraTarget
 
 0x000
- float
- float
- float
- bool
- float
- float
- float
- float
- bool
- float
- float
+ float ConeAperture
+ float ConeMinSpeed
+ float ConeMaxSpeed
+ bool UseSpeedDir
+ float CarCameraHeight
+ float CarCameraDistance
+ float CarCameraTargetDistance
+ float CarCameraAlign
+ bool IsSegmentCast
+ float SegmentCastMinDist
+ float SegmentCastLength
  float
  float
  float
