@@ -10,35 +10,52 @@ CGameItemModel 0x2E002000
 0x000
  CSceneMobil Vehicle (external)
 
-0x003
+0x002 // old race interface fid
+ CScene2d RaceInterfaceFid
+
+0x003 // LowQualitySolid
+ CPlugSolid LowQualitySolid (external)
+
+0x004
  CMwNod
 
-0x006
- int
+0x006 // DefaultCamIndex
+ int DefaultCamIndex
+
+0x007 // old materials
+ CPlugMaterial MaterialSkin (external)
+ CPlugMaterial MaterialGlass (external)
+ CPlugMaterial MaterialDetails (external)
 
 0x008 // Nadeo skin fids
  CMwNod?[] NadeoSkinFids (external)
 
-0x009 // cameras
+0x009 // Cameras
  CMwNod[]_deprec Cameras (external)
 
-0x00A
+0x00A // DecoratorSolid
  CPlugDecoratorSolid DecoratorSolid (external)
 
-0x00B
- CMwNod
- CMwNod
+0x00B // stem materials
+ CPlugMaterial StemMaterial (external)
+ CPlugMaterial StemBumpMaterial (external)
 
 0x00C // race interface fid
- CMwNod RaceInterfaceFid
+ CScene2d RaceInterfaceFid
 
-0x00D
- CMwNod[]
+0x00D (ForcedSkinsFids)
+ CMwNod[] ForcedSkinsFids
 
-0x010
+0x00E // StadiumCar materials
+ CPlugMaterial MaterialSkin (external)
+ CPlugMaterial MaterialGlass (external)
+ CPlugMaterial MaterialDetails (external)
+ CPlugMaterial MaterialPilot (external)
+
+0x010 (BannerProfileFid)
  CPlugBitmap BannerProfileFid (external)
 
-0x011
+0x011 // materials
  CPlugMaterial MaterialSkin (external)
  CPlugMaterial MaterialGlass (external)
  CPlugMaterial MaterialDetails (external)
@@ -56,13 +73,13 @@ CGameItemModel 0x2E002000
  float OrbitalRadiusBase
  float OrbitalPreviewAngle
 
-0x013
+0x013 (AudioEnvironmentInCar)
  CPlugAudioEnvironment AudioEnvironmentInCar (external)
 
 0x014
  CMwNod
 
-0x015 // item type e
+0x015 // ItemTypeE
  int<EItemType> ItemTypeE
 
 0x019 // model

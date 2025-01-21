@@ -57,6 +57,56 @@ public partial class CPlugVehicleVisModelShared
         }
     }
 
+    public partial class Chunk090E800C
+    {
+        public int[][]? U01;
+
+        public override void Read(CPlugVehicleVisModelShared n, GbxReader r)
+        {
+            var count = r.ReadInt32();
+            U01 = new int[count][];
+            for (int i = 0; i < count; i++)
+            {
+                U01[i] = r.ReadArray<int>();
+            }
+        }
+
+        public override void Write(CPlugVehicleVisModelShared n, GbxWriter w)
+        {
+            if (U01 is null)
+            {
+                w.Write(0);
+                return;
+            }
+
+            w.Write(U01.Length);
+            for (int i = 0; i < U01.Length; i++)
+            {
+                w.WriteArray(U01[i]);
+            }
+        }
+    }
+
+    public partial class Chunk090E800D
+    {
+        public override void Read(CPlugVehicleVisModelShared n, GbxReader r)
+        {
+            for (int i = 0; i < n.VisualVehicles.Length; i++)
+            {
+                n.VisualVehicles[i] ??= new VisualVehicle();
+                n.VisualVehicles[i].Emitters = r.ReadArrayReadable<Emitter>();
+            }
+        }
+
+        public override void Write(CPlugVehicleVisModelShared n, GbxWriter w)
+        {
+            for (int i = 0; i < n.VisualVehicles.Length; i++)
+            {
+                w.WriteArrayWritable(n.VisualVehicles[i].Emitters);
+            }
+        }
+    }
+
     public partial class Chunk090E800F
     {
         public override void Read(CPlugVehicleVisModelShared n, GbxReader r)
@@ -149,11 +199,15 @@ public partial class CPlugVehicleVisModelShared
         }
     }
 
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class Emitter;
+
     public sealed class VisualVehicle
     {
         public VisualArm[] VisualArms { get; set; } = [];
         public VisualLight[] VisualLights { get; set; } = [];
         public VisualWheel[] VisualWheels { get; set; } = [];
+        public Emitter[] Emitters { get; set; } = [];
         public VisualId? U01 { get; set; }
         public VisualId? U02 { get; set; }
         public VisualId? U03 { get; set; }

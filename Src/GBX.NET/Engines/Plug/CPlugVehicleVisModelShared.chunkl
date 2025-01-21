@@ -9,6 +9,10 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x00A
 
+0x00C
+
+0x00D
+
 0x00F
 
 0x010
@@ -52,3 +56,30 @@ archive VisualWheel
 archive VisualId
  id Name
  bool
+
+archive Emitter
+ int
+ CPlugParticleEmitterModel
+ int
+ int
+ int
+ bool
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
