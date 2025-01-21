@@ -24,6 +24,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | TMDecorationSize.Gbx | DecorationSize.Gbx | [CGameCtnDecorationSize](Src/GBX.NET/Engines/Game/CGameCtnDecorationSize.chunkl) | Yes | Yes | Yes
 | TMDecorationMood.Gbx | DecorationMood.Gbx | [CGameCtnDecorationMood](Src/GBX.NET/Engines/Game/CGameCtnDecorationMood.chunkl) | Yes | Yes | Yes
 | TMDecorationAudio.Gbx | DecorationAudio.Gbx | [CGameCtnDecorationAudio](Src/GBX.NET/Engines/Game/CGameCtnDecorationAudio.chunkl) | Yes | Yes | Yes
+| | Scene3d.Gbx | [CSceneLayout](Src/GBX.NET/Engines/Scene/CSceneLayout.chunkl) | Yes | Yes
 | TMEDClassic.Gbx | EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.chunkl) | Yes | Yes | Yes
 | TMEDClip.Gbx | EDClip.Gbx | [CGameCtnBlockInfoClip](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClip.chunkl) | Yes | Yes | Yes
 | TMEDFlat.Gbx | EDFlat.Gbx | [CGameCtnBlockInfoFlat](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoFlat.chunkl) | Yes | Yes | Yes
@@ -62,5 +63,6 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.cs) | Up to TMUF | No
 | | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.cs) | Yes | Yes
 | | Prefab.Gbx | [CPlugPrefab](Src/GBX.NET/Engines/Plug/CPlugPrefab.cs) | Yes | Yes
+| | Wagon.Gbx | [CPlugTrainWagonModel](Src/GBX.NET/Engines/Plug/CPlugTrainWagonModel.cs) | Yes | Yes
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.

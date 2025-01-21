@@ -33,8 +33,7 @@ CFuncShaderLayerUV 0x05015000
 0x013 (base: 0x00A)
 
 0x014
- float
- float
+ vec2
  float
  float
 
