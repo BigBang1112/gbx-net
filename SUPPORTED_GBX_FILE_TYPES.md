@@ -15,7 +15,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Shape.Gbx | [CPlugSurface](Src/GBX.NET/Engines/Plug/CPlugSurface.chunkl) | Yes | Yes
 | | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes | Yes
 | | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
-| | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Yes | Yes
+| RefBuffer.Gbx | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Yes | Yes
 | | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) | Up to TMF | Up to TMF | Yes
 | | Spawn.Gbx | [CGameSpawnModel](Src/GBX.NET/Engines/GameData/CGameSpawnModel.chunkl) | Yes | Yes
 | ConstructionCampaign.Gbx | Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.chunkl) | Yes | Yes
@@ -39,11 +39,25 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | MotionManagerWeathers.Gbx | [CPlugWeatherModel](Src/GBX.NET/Engines/Plug/CPlugWeatherModel.chunkl) | Up to TMUF | Yes
 | | RallyLeafManager.Gbx | [CMotionManagerLeaves](Src/GBX.NET/Engines/Motion/CMotionManagerLeaves.chunkl) | Yes | Yes
 | | GameSkin.Gbx | [CPlugGameSkin](Src/GBX.NET/Engines/Plug/CPlugGameSkin.chunkl) | Yes | Yes
-| | VehicleTunings.Gbx | [CPlugVehiclePhyTunings](Src/GBX.NET/Engines/Plug/CPlugVehiclePhyTunings.chunkl) | Up to TM2 | Up to TM2 | Yes
+| | VehicleTunings.Gbx | [CPlugVehiclePhyTunings](Src/GBX.NET/Engines/Plug/CPlugVehiclePhyTunings.chunkl) | Up to TM2 | Up to TM2
+| | CtrlCam.Gbx | [CGameControlCamera](Src/GBX.NET/Engines/Game/CGameControlCamera.chunkl) | Yes | Yes
+| | CtrlCamTarget.Gbx | [CGameControlCameraTarget](Src/GBX.NET/Engines/Game/CGameControlCameraTarget.chunkl) | Yes | Yes
+| | CtrlCamOrbital3d.Gbx | [CGameControlCameraOrbital3d](Src/GBX.NET/Engines/Game/CGameControlCameraOrbital3d.chunkl) | Yes | Yes
+| | CtrlCamTmRace.Gbx | [CGameControlCameraTrackManiaRace](Src/GBX.NET/Engines/TrackMania/CGameControlCameraTrackManiaRace.chunkl) | Yes | Yes
+| | CtrlCamTmRace2.Gbx | [CGameControlCameraTrackManiaRace2](Src/GBX.NET/Engines/TrackMania/CGameControlCameraTrackManiaRace2.chunkl) | Yes | Yes
+| | CtrlCamTmRace3.Gbx | [CGameControlCameraTrackManiaRace3](Src/GBX.NET/Engines/TrackMania/CGameControlCameraTrackManiaRace3.chunkl) | Yes | Yes
+| | DecoSolid.Gbx | [CPlugDecoratorSolid](Src/GBX.NET/Engines/CPlug/CPlugDecoratorSolid.chunkl) | Yes | Yes
+| | TrackManiaVehicle.Gbx | [CSceneVehicleCar](Src/GBX.NET/Engines/Scene/CSceneVehicleCar.chunkl) | Only TMUF | Only TMUF
+| TMVehicle.Gbx | ConstructionVehicle.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
+| | ParticleModel.Gbx | [CPlugParticleEmitterModel](Src/GBX.NET/Engines/CPlug/CPlugParticleEmitterModel.chunkl) | Up to TMUF | Up to TMUF
+| | VehicleStruct.Gbx | [CPlugVehicleVisModelShared](Src/GBX.NET/Engines/GameData/CPlugVehicleVisModelShared.chunkl) | Yes | Yes
+| | FuncClouds.Gbx | [CPlugClouds](Src/GBX.NET/Engines/Plug/CPlugClouds.chunkl) | Yes | Yes
+| | FuncShader.Gbx | [CFuncShaderLayerUV](Src/GBX.NET/Engines/Func/CFuncShaderLayerUV.chunkl) | Yes | Yes
 | | ObjectInfo.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes
 | | Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.cs) | Yes | Yes
 | | Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.cs) | Up to TM2 | No
+| | Shader.Gbx | [CPlugShader](Src/GBX.NET/Engines/Plug/CPlugShader.cs) | Up to TMUF | No
 | | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.cs) | Up to TMUF | No
 | | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.cs) | Yes | Yes
 | | Prefab.Gbx | [CPlugPrefab](Src/GBX.NET/Engines/Plug/CPlugPrefab.cs) | Yes | Yes
