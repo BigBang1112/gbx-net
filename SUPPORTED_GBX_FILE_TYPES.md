@@ -53,6 +53,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | VehicleStruct.Gbx | [CPlugVehicleVisModelShared](Src/GBX.NET/Engines/GameData/CPlugVehicleVisModelShared.chunkl) | Yes | Yes
 | | FuncClouds.Gbx | [CPlugClouds](Src/GBX.NET/Engines/Plug/CPlugClouds.chunkl) | Yes | Yes
 | | FuncShader.Gbx | [CFuncShaderLayerUV](Src/GBX.NET/Engines/Func/CFuncShaderLayerUV.chunkl) | Yes | Yes
+| | AmbientOcc.Gbx | [CHmsAmbientOcc](Src/GBX.NET/Engines/Hms/CHmsAmbientOcc.chunkl) | Yes | Yes
 | | ObjectInfo.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes
 | | Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.cs) | Yes | Yes
