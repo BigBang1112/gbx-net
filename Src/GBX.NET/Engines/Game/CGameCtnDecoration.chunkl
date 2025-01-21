@@ -1,9 +1,11 @@
 CGameCtnDecoration 0x03038000
 - inherits: CGameCtnCollector
 
-0x001 // LightMap
+0x000 (header, struct: SMoodRemaping)
+
+0x001 (header, struct: SLightMap) // LightMap
  versionb version
- int
+ int // CHmsLightMap Tech
 
 0x011 // DecoSize
  CGameCtnDecorationSize DecoSize (external)
