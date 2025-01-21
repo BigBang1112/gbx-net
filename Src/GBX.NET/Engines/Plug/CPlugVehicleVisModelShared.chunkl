@@ -59,7 +59,7 @@ archive VisualId
 
 archive Emitter
  int
- CPlugParticleEmitterModel
+ CPlugParticleEmitterModel EmitterModel (external)
  int
  int
  int
