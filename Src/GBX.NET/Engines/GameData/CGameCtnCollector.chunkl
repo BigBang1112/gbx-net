@@ -7,7 +7,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  v5=
   id
  v4+
-  id
+  id ParentCollectorId
  v3+
   int<ECollectorFlags> Flags
   short CatalogPosition
@@ -32,7 +32,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  int
 
 0x007 [TM10, TMSX, TMF]
- bool
+ bool IsInternal
  bool
  int CatalogPosition
  int

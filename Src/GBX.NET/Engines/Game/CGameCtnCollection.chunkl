@@ -1,10 +1,10 @@
 CGameCtnCollection 0x03033000
 
-0x000 // old header
+0x000 (header, struct: SOldHeaderDesc) // old header
  id
 
-0x001 // desc
- versionb version
+0x001 (header, struct: SHeaderDesc) // desc
+ versionb
  id Collection
  bool NeedUnlock
  v1+
@@ -36,6 +36,25 @@ CGameCtnCollection 0x03033000
          v10+
           bool? IsEditable
 
+0x002 (header, struct: SHeaderCollectorFolders)
+ versionb
+ string FolderBlockInfo
+ string FolderItem
+ string FolderDecoration
+ v1+
+  v2-
+   string
+  v2+
+   string FolderCardEventInfo
+   v3+
+    string FolderMacroBlockInfo
+    v4+
+     string FolderMacroDecals
+
+0x003 (header, struct: SHeaderMenuIconsFolders)
+ versionb
+ string FolderMenusIcons
+
 0x008 // DefaultDecoration
  CGameCtnDecoration DefaultDecoration (external)
 
@@ -64,7 +83,7 @@ CGameCtnCollection 0x03033000
   CPlugBitmap CollectionIconFid (external)
 
 0x00E
- int
+ int SortIndex
 
 0x011
  int
@@ -84,7 +103,7 @@ CGameCtnCollection 0x03033000
  float ColorVertexMax
 
 0x018
- int
+ CMwNod
  rect
  vec2
  vec2
@@ -119,8 +138,8 @@ CGameCtnCollection 0x03033000
  float CameraMinHeight
  bool
 
-0x01F
- int[] // ParticleEmitterModelsFids?
+0x01F // ParticleEmitterModelsFids
+ int[] ParticleEmitterModelsFids
 
 0x020 // folders
  string FolderBlockInfo
@@ -134,8 +153,8 @@ CGameCtnCollection 0x03033000
 0x022 // is water multi-height
  bool IsWaterMultiHeight
 
-0x023
- bool
+0x023 // CarCanBeDirty
+ bool? CarCanBeDirty
 
 0x024
  int
@@ -215,13 +234,13 @@ CGameCtnCollection 0x03033000
    float WaterGRefracPertub
    v7+
     int // not seen in code
-   float CameraMinHeight
-   v3-
-    bool // CSystemFidsFolder something?
-   bool IsWaterMultiHeight
-   v2-
-    float
-   float WaterFogClampAboveDist
+ float CameraMinHeight
+ v3-
+  bool // CSystemFidsFolder something?
+ bool IsWaterMultiHeight
+ v2-
+  float
+ float WaterFogClampAboveDist
 
 0x039
  version
@@ -230,7 +249,7 @@ CGameCtnCollection 0x03033000
   float?
   float?
  v1+
-  int?
+  int? // VehicleStyles?
   v2+
    CMwNod ItemPlacementGroups
    v3+
@@ -318,6 +337,6 @@ archive Water
  v3+
   float?
  v2+
-  int? // NodeRef?
+  CMwNod
   v7+
    int? // not seen in code

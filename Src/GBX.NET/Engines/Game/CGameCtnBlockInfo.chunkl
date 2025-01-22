@@ -123,3 +123,8 @@ enum EMultiDir
  PerpendicularDirsOnly
  NextDirOnly
  PreviousDirOnly
+
+enum ESelection
+ Random
+ Obsolete
+ AutoRotate

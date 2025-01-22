@@ -1,0 +1,22 @@
+GxLightDirectional 0x04007000
+- inherits: GxLightNotAmbient
+
+0x001
+ bool UseBoundaryHint
+ vec3 BoundaryHintPos
+
+0x002 (base: 0x001)
+ base
+ float DazzleAngleMax
+ float DazzleIntensity
+
+0x003
+ vec3 DblSidedRGB
+
+0x004
+ vec3 ReverseRGB
+ float ReverseIntens
+
+0x005
+ float EmittAngularSize
+ float FlareAngularSize

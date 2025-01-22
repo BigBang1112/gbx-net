@@ -1,1 +1,57 @@
 CSceneLayout 0x0A003000
+- inherits: CScene
+
+0x00C
+ int
+
+0x010
+ float CameraFarZ
+ vec3 CameraClearColor
+
+0x014
+ int
+ bool
+ box
+ iso4
+
+0x017 (ignore)
+
+0x018
+ CSceneSector[]_deprec Sectors
+ version
+ SceneMobil[] Scene
+ SceneLoc[] SceneLocations
+ CSceneObject[]_deprec
+ SceneLoc[]
+ CSceneLight[]_deprec Lights (external)
+ SceneLoc[] LightLocations
+ CSceneObject[]_deprec Sounds
+ SceneLoc[] SoundLocations
+ CSceneObject[]_deprec Locations
+ SceneLoc[] LocationLocations
+ CSceneObject[]_deprec Fields
+ SceneLoc[] FieldLocations
+ CSceneGate[]_deprec Gates
+ CScenePath[]_deprec Paths
+ CSceneTrafficGraph TrafficGraph
+ CSceneTrafficPath[]_deprec TrafficPaths
+ CSceneFxNod SceneFxNod (external)
+
+archive SceneMobil
+ int U01
+ if U01 == -2
+  CMwNod Mobil
+
+archive SceneLoc
+ CMwNod
+ iso4
+
+archive Unknown
+ CMwNod
+ id
+ int
+ CMwNod
+ id
+ int
+ iso4
+ iso4

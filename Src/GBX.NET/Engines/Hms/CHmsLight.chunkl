@@ -1,0 +1,17 @@
+CHmsLight 0x0600C000
+- inherits: CHmsPocEmitter
+
+0x000
+ int
+ GxLight MainGxLight
+
+0x001 (base: 0x000)
+ base
+
+0x002 (base: 0x001)
+ base
+ CPlugBitmap BitmapFlare (external)
+
+0x003 (base: 0x002)
+ base
+ CPlugBitmap BitmapSprite (external)

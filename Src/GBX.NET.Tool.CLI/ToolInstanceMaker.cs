@@ -282,7 +282,7 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
             // Resolve objects from input and cache them
             if (!resolvedInputs.TryGetValue(input, out var resolvedObject))
             {
-                resolvedObject = await input.ResolveAsync(cancellationToken);
+                resolvedObject = await input.ResolveAsync(logger, cancellationToken);
                 resolvedInputs.Add(input, resolvedObject);
             }
 
@@ -303,7 +303,14 @@ internal sealed class ToolInstanceMaker<T> where T : ITool
                         continue;
                     }
 
-                    yield return obj;
+                    if (obj is Task<object> task)
+                    {
+                        yield return await task;
+                    }
+                    else
+                    {
+                        yield return obj;
+                    }
                 }
             }
             else

@@ -25,6 +25,9 @@ CPlugShaderApply 0x09026000
 0x006
  int
 
+0x007
+ int
+
 0x008
  int
  int

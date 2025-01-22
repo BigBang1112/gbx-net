@@ -1,0 +1,3 @@
+CPlugFileGPU 0x09040000
+- inherits: CPlugFileText
+- abstract

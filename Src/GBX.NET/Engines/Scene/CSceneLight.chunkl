@@ -1,0 +1,5 @@
+CSceneLight 0x0A00B000
+- inherits: CScenePoc
+
+0x000
+ CHmsLight Light (direct)

@@ -301,32 +301,42 @@ internal sealed class MemberSerializationWriter
         var contextual = archives.TryGetValue(chunkProperty.Type.PrimaryType, out var archiveModel)
             && archiveModel.ChunkLDefinition?.Properties.ContainsKey("contextual") == true;
 
+        var comma = false;
+
         if (contextual)
         {
             sb.Append('n');
+            comma = true;
         }
 
         if (chunkProperty.Properties?.TryGetValue("version", out var version) == true)
         {
-            if (contextual)
+            if (comma)
             {
                 sb.Append(", ");
             }
 
             sb.Append("version: ");
             sb.Append(version);
+
+            comma = true;
         }
 
         if (chunkProperty.Properties?.ContainsKey("external") == true && !chunkProperty.Type.IsArray)
         {
-            sb.Append(", out ");
+            if (comma)
+            {
+                sb.Append(", ");
+            }
+
+            sb.Append("out ");
 
             if (!self && !isUnknown)
             {
                 sb.Append("n.");
             }
 
-            sb.Append(name);
+            sb.Append(char.ToLowerInvariant(name[0]) + name.Substring(1));
             sb.Append("File");
         }
 

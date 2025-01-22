@@ -6,7 +6,7 @@ CPlugBitmap 0x09011000
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- int
+ int BorderRGB
  int
 
 0x017
@@ -19,7 +19,7 @@ CPlugBitmap 0x09011000
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- int
+ int BorderRGB
  if Image != null
   CMwNod
 
@@ -36,7 +36,7 @@ CPlugBitmap 0x09011000
  int16
 
 0x01E
- Vec2[]
+ vec2[] AtlasCountUVs
 
 0x01F
  uint

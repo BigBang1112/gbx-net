@@ -1,0 +1,17 @@
+CHmsZone 0x06004000
+
+0x002
+ CHmsFogPlane[]_deprec FogPlanes
+ data[28]
+
+0x003
+ bool U01
+ if U01
+  vec3 MRPoint
+  vec3 MRNormal
+
+0x005
+ CHmsPrecalcRender[]_deprec PrecalcRenders
+
+0x006
+ CPlugBitmap BitmapCubeReflectHardSpecA (external)

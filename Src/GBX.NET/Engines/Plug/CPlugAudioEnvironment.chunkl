@@ -1,5 +1,36 @@
 CPlugAudioEnvironment 0x09039000
 - inherits: CPlugAudio
 
+0x000
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+ bool
+
 0x001
  float

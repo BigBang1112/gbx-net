@@ -112,8 +112,6 @@ public partial class CGameCtnCollector
 
     public partial class Chunk2E001009
     {
-        public string? U01;
-
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
@@ -123,7 +121,7 @@ public partial class CGameCtnCollector
                 rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
             }
 
-            rw.Id(ref U01);
+            rw.Id(ref n.parentCollectorId);
         }
     }
 

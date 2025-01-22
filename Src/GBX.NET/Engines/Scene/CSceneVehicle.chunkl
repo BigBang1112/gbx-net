@@ -1,2 +1,9 @@
 ﻿CSceneVehicle 0x0A060000
 - inherits: CSceneMobil
+
+0x000
+ CPlugVehiclePhyTunings VehicleTunings (external)
+ CMwRefBuffer VehicleMaterials (external)
+ CSceneVehicleEnvironment Environment
+ CMwNod
+ CPlugVehicleVisModelShared VehicleStruct (external)

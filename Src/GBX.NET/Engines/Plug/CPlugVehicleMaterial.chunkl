@@ -1,5 +1,43 @@
 CPlugVehicleMaterial 0x090F1000
 
+0x004
+ CPlugBitmap (external)
+ vec2
+
+0x005
+ float
+ float
+ float
+ float
+
+0x009
+ byte
+ float
+ float
+ bool
+ CMwNod (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+
+0x00A
+ CPlugParticleEmitterModel (external)
+
+0x00B
+ CPlugParticleEmitterModel (external)
+
+0x00C
+ CPlugParticleEmitterModel (external)
+
+0x00D
+ CPlugParticleEmitterModel (external)
+
+0x00E
+ byte
+ float
+ float
+
 0x00F
  float
  float

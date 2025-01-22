@@ -36,7 +36,7 @@ archive Light
  id U01
  bool U02
  if U02
-  CPlugLight U03
+  CPlugLight U03 (external)
  if !U02
   string U04
  iso4 U05

@@ -67,7 +67,14 @@ internal static class ClassIdParser
                 // combine engine and class like EECCC000
                 var classId = (uint)((currentEngineByte << 24) | (classPart << 12));
 
-                result.Add(classId, currentClassName);
+                if (!result.TryGetValue(classId, out var curName) || string.IsNullOrEmpty(curName))
+                {
+                    result[classId] = currentClassName;
+                }
+                else
+                {
+                    throw new Exception($"Duplicate class id {classId:X8} with names '{curName}' and '{currentClassName}'.");
+                }
             }
             else
             {

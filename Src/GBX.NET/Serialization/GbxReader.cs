@@ -2069,15 +2069,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             parentClassId = 0x07001000;
         }
-
-        if (node is CPlugSurfaceGeom)
-        {
-            parentClassId = 0x0902B000;
-        }
-
-        if (baseType == typeof(CGameCtnBlockInfo))
+        else if (baseType == typeof(CGameCtnBlockInfo))
         {
             parentClassId = 0x24005000;
+        }
+        else if (baseType == typeof(CPlugVehiclePhyTuning))
+        {
+            parentClassId = 0x0A02E000;
         }
 
         var parentClassIDBytes = BitConverter.GetBytes(parentClassId);

@@ -18,13 +18,21 @@ Console.WriteLine("Bruteforcing possible file names from hashes...");
 
 var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
 
-var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
-var packlist = await PakList.ParseAsync(packlistFileName, game);
+var key = default(byte[]);
 
-var key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
+var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
+
+if (File.Exists(packlistFileName))
+{
+    Console.WriteLine("Reading packlist...");
+    var packlist = await PakList.ParseAsync(packlistFileName, game);
+    key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
+}
 
 await using var fs = File.OpenRead(pakFileName);
 await using var pak = await Pak.ParseAsync(fs, key);
+
+File.Delete(Path.ChangeExtension(pakFileName, ".zip"));
 
 using var zip = ZipFile.Open(Path.ChangeExtension(pakFileName, ".zip"), ZipArchiveMode.Create);
 
@@ -39,7 +47,7 @@ foreach (var file in pak.Files.Values)
 
     try
     {
-        var gbx = await pak.OpenGbxFileAsync(file);
+        var gbx = await pak.OpenGbxFileAsync(file, fileHashes: hashes);
 
         using var stream = entry.Open();
 
