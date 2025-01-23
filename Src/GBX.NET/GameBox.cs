@@ -9,11 +9,13 @@ namespace GBX.NET;
 /// <summary>
 /// Old name for <see cref="Gbx"/>.
 /// </summary>
+[Obsolete("Use Gbx class instead.")]
 public class GameBox(GbxHeader header, GbxBody body) : Gbx(header, body);
 
 /// <summary>
 /// Old name for <see cref="Gbx{T}"/>.
 /// </summary>
+[Obsolete("Use Gbx class instead.")]
 public class GameBox<
 #if NET6_0_OR_GREATER
 	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
