@@ -1,5 +1,4 @@
-﻿using GBX.NET;
-using GBX.NET.Components;
+﻿using GBX.NET.Components;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 
@@ -8,11 +7,9 @@ var isDirectory = Directory.Exists(pakFileNameOrDirectory);
 
 var directoryPath = isDirectory ? pakFileNameOrDirectory : Path.GetDirectoryName(pakFileNameOrDirectory)!;
 
-var extractFolderPath = args.Length > 1 ? args[1] : "";
-
 var game = PakListGame.TM;
 
-if (args.Length > 2 && args[2].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
+if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
 {
     game = PakListGame.Vsk5;
 }
@@ -28,7 +25,9 @@ var pakFileNames = isDirectory ? Directory.GetFiles(pakFileNameOrDirectory, "*.p
 
 foreach (var pakFileName in pakFileNames)
 {
-    var key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
+    var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pakFileName);
+    var extractFolderPath = Path.Combine(directoryPath, fileNameWithoutExtension);
+    var key = packlist[fileNameWithoutExtension.ToLowerInvariant()].Key;
 
     await using var fs = File.OpenRead(pakFileName);
     await using var pak = await Pak.ParseAsync(fs, key);
@@ -36,9 +35,7 @@ foreach (var pakFileName in pakFileNames)
     foreach (var file in pak.Files.Values)
     {
         var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
-        var fullPath = string.IsNullOrEmpty(extractFolderPath)
-            ? Path.Combine(file.FolderPath, fileName)
-            : Path.Combine(extractFolderPath, file.FolderPath, fileName);
+        var fullPath = Path.Combine(extractFolderPath, file.FolderPath, fileName);
 
         Console.WriteLine(fullPath);
 
