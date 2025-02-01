@@ -4,10 +4,15 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockInfo
 {
-    private CGameCtnBlockInfoClassic? pillar;
-    private GbxRefTableFile? pillarFile;
-    public CGameCtnBlockInfoClassic? Pillar { get => pillar; set => pillar = value; }
+    public ESelection Selection { get; set; }
 
+    private CGameCtnBlockInfoClassic? pillar;
+    [AppliedWithChunk<Chunk0304E005>]
+    public CGameCtnBlockInfoClassic? Pillar { get => pillarFile?.GetNode(ref pillar) ?? pillar; set => pillar = value; }
+    private GbxRefTableFile? pillarFile;
+    public GbxRefTableFile? PillarFile { get => pillarFile; set => pillarFile = value; }
+    public CGameCtnBlockInfoClassic? GetPillar(GbxReadSettings settings = default, bool exceptions = false) => pillarFile?.GetNode(ref pillar, settings, exceptions) ?? pillar;
+    
     private CGameCtnBlockUnitInfo[]? groundBlockUnitInfos;
     public CGameCtnBlockUnitInfo[]? GroundBlockUnitInfos { get => groundBlockUnitInfos; set => groundBlockUnitInfos = value; }
 
@@ -38,7 +43,6 @@ public partial class CGameCtnBlockInfo
         public int U02;
         public int U03;
         public int U04;
-        public int U05;
         public int U06;
         public byte U07;
         public int U08;
@@ -53,7 +57,7 @@ public partial class CGameCtnBlockInfo
             U03 = r.ReadInt32(); // always 0?
             U04 = r.ReadInt32(); // always 0?
             n.isPillar = r.ReadBoolean();
-            U05 = r.ReadInt32(); // always 0?
+            n.Selection = (ESelection)r.ReadInt32();
             U06 = r.ReadInt32(); // always 0?
             //
 
@@ -88,7 +92,7 @@ public partial class CGameCtnBlockInfo
             w.Write(U03);
             w.Write(U04);
             w.Write(n.isPillar);
-            w.Write(U05);
+            w.Write((int)n.Selection);
             w.Write(U06);
             //
 

@@ -23,4 +23,9 @@ public partial class CPlugVehiclePhyTuning
             }
         }
     }
+
+    public override string ToString()
+    {
+        return Name;
+    }
 }

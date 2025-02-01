@@ -18,13 +18,22 @@ CFuncShaderLayerUV 0x05015000
  vec2
  vec2
 
+0x011
+ int
+ int
+ bool
+ bool
+ bool
+ CMwNod
+
 0x012
  int
  int
 
+0x013 (base: 0x00A)
+
 0x014
- float
- float
+ vec2
  float
  float
 

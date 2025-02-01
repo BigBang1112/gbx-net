@@ -95,11 +95,11 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (rawClassId == classId)
         {
-            logger?.LogDebug("Class ID: 0x{ClassId:X8} ({ClassName})", classId, ClassManager.GetName(classId) ?? "unknown class");
+            logger?.LogInformation("Class ID: 0x{ClassId:X8} ({ClassName})", classId, ClassManager.GetName(classId) ?? "unknown class");
         }
         else
         {
-            logger?.LogDebug("Class ID: 0x{ClassId:X8} (raw: 0x{RawClassId:X8}, {RawClassName} -> {ClassName})",
+            logger?.LogInformation("Class ID: 0x{ClassId:X8} (raw: 0x{RawClassId:X8}, {RawClassName} -> {ClassName})",
                 classId, rawClassId,
                 ClassManager.GetName(rawClassId) ?? "unknown class",
                 ClassManager.GetName(classId) ?? "unknown class");

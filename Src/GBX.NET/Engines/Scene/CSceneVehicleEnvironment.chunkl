@@ -1,0 +1,7 @@
+CSceneVehicleEnvironment 0x0A033000
+
+0x000
+ bool
+
+0x002
+ CPlugMaterial[] Materials (external)

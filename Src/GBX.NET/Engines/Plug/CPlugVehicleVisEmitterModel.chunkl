@@ -1,0 +1,42 @@
+CPlugVehicleVisEmitterModel 0x090E6000
+
+0x002
+ bool
+
+0x003
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x004
+ int
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ int
+ int
+ int
+ bool
+ bool
+ bool
+ iso4
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x005
+ bool

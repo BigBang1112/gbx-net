@@ -1,0 +1,11 @@
+CGameControlCameraTarget 0x03072000
+- inherits: CGameControlCamera
+
+0x001
+ iso4 Location
+ bool IsUpLinked
+ bool Interpolate
+ float LookAtFactor
+
+0x002
+ bool CanUseRelativeTargetLocation

@@ -36,15 +36,14 @@
         }
     }
 
-    var chunkId = Chunk.Id & 0xFFF;
     var isSameBaseId = true;
 }
 
 <div class="chunk-button @boxClass @(over || OpenChunkService.OpenedChunks.Contains(chunkType) ? "hovered" : "")">
     <div class="chunk-name"
-        @onclick="async () => await OpenOrCloseChunkAsync(chunkType)"
-        @onmouseover="() => over = true"
-        @onmouseout="() => over = false">
+    @onclick="async () => await OpenOrCloseChunkAsync(chunkType)"
+    @onmouseover="() => over = true"
+    @onmouseout="() => over = false">
 
         @if (chunkType.IsGenericType)
         {
@@ -54,7 +53,7 @@
 
             if (classId.HasValue && (classId.Value & 0xFFFFF000) == (Chunk.Id & 0xFFFFF000))
             {
-                <span>@name</span>
+                <span style="margin-right:0.3rem">@name</span>
             }
             else
             {
@@ -65,12 +64,17 @@
         }
         else
         {
-            <span>@chunkType.DeclaringType?.Name</span>
+            var className = chunkType.DeclaringType?.Name ?? GBX.NET.Managers.ClassManager.GetName(Chunk.Id & 0xFFFFF000);
+
+            if (!string.IsNullOrEmpty(className))
+            {
+                <span style="margin-right:0.3rem">@className</span>
+            }
         }
 
         @if (isSameBaseId)
         {
-            <span style="font-family: Source Code Pro;margin-left:0.3rem">0x@(chunkId.ToString("X3") ?? "XXX")</span>
+            <span style="font-family: Source Code Pro">0x@(Chunk.Id.ToString("X8"))</span>
         }
 
         @if (Chunk is IVersionable chunkVersionable)
@@ -80,7 +84,7 @@
 
         @if (!string.IsNullOrWhiteSpace(atts?.Description))
         {
-            <span style="margin-left:0.3rem">(@atts.Description)</span>
+            <span style="margin-left:0.3rem" title="@atts.Description">(@atts.Description)</span>
         }
         
         @if (atts is null)

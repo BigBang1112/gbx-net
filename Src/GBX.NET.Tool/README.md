@@ -7,6 +7,7 @@ Base library for creating rich tools for different environments with GBX.NET.
 
 ## Framework support
 
+- .NET 9
 - .NET 8
 
 ## License

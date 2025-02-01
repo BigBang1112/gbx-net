@@ -1,1 +1,8 @@
 CSceneFxNod 0x0A03A000
+
+0x000
+ CSceneFx Fx
+
+0x001
+ CSceneFxNod[]_deprec NodInputs
+ int

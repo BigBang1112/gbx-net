@@ -1,0 +1,56 @@
+CGameControlCameraOrbital3d 0x0306E000
+- inherits: CGameControlCameraTarget
+
+0x001
+ vec3 RadiusScale
+ vec2 RotateSpeed
+ bool OcclusionIsEnable
+ bool
+ bool
+ float MouseBorderMoveSize
+ float
+ float
+ float OcclusionTargetRadius
+ float OcclusionDistFromHit
+ float Radius
+ float Latitude
+ float Longitude
+ float RadiusMin
+ float RadiusMax
+ float LatitudeMin
+ float LatitudeMax
+
+0x002
+ float
+
+0x003
+ float WheelSensitivity
+
+0x004
+ float FovKeySensitivity
+
+0x005
+ vec3 RadiusScale
+ vec2 RotateSpeed
+ bool OcclusionIsEnable
+ bool
+ bool
+ float MouseBorderMoveSize
+ float OcclusionTargetRadius
+ float OcclusionDistFromHit
+ float Radius
+ float Latitude
+ float Longitude
+ float RadiusMin
+ float RadiusMax
+ float LatitudeMin
+ float LatitudeMax
+ float
+ float WheelSensitivity
+ float FovKeySensitivity
+
+0x006
+ float ZoomKeySensitivity
+
+0x007
+ float DefaultRadius
