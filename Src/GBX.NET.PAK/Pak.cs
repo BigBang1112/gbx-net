@@ -136,12 +136,25 @@ public partial class Pak : IDisposable
             throw new Exception("Encryption key is missing");
         }
 
-        var decryptStream = new BlowfishStream(stream, key, HeaderIV);
+        var decryptStream = new BlowfishStream(stream, key, HeaderIV, Version == 18);
         var r = new GbxReader(decryptStream);
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
         metadataStart = r.ReadInt32(); // offset to metadata section
-        dataStart = r.ReadInt32();
+
+        if (Version < 15)
+        {
+            dataStart = r.ReadInt32();
+        }
+        else
+        {
+            if (this is Pak6 pak6)
+            {
+                dataStart = pak6.HeaderMaxSize ?? throw new InvalidOperationException("HeaderMaxSize is null.");
+            }
+
+            throw new InvalidCastException("Pak is not of type Pak6.");
+        }
 
         if (Version >= 2)
         {

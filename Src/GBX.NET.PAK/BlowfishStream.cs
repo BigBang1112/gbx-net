@@ -19,7 +19,7 @@ public class BlowfishStream : Stream, IEncryptionInitializer
     public BlowfishStream(Stream stream, byte[] key, ulong iv, bool isPak18 = false)
     {
         this.stream = stream ?? throw new ArgumentNullException(nameof(BlowfishStream.stream));
-        blowfish = new Blowfish(key);
+        blowfish = new Blowfish(key, isPak18);
         this.iv = iv;
         memoryBuffer = new byte[8];
         this.isPak18 = isPak18;
