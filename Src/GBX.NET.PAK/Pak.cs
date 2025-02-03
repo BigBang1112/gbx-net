@@ -230,7 +230,7 @@ public partial class Pak : IDisposable
             var u01 = r.ReadInt32();
             var uncompressedSize = r.ReadInt32();
             var compressedSize = r.ReadInt32();
-            var offset = r.ReadInt32();
+            var offset = r.ReadUInt32();
             var classId = r.ReadUInt32(); // indicates the type of the file
             var size = Version >= 17 ? r.ReadInt32() : default(int?);
             var checksum = Version >= 14 ? r.ReadUInt128() : default(UInt128?);

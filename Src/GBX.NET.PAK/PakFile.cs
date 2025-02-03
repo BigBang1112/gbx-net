@@ -5,7 +5,7 @@ public sealed class PakFile
     public string Name { get; }
     public string FolderPath { get; }
     public uint ClassId { get; }
-    public int Offset { get; }
+    public uint Offset { get; }
     public int UncompressedSize { get; }
     public int CompressedSize { get; }
     public int? Size { get; }
@@ -19,7 +19,7 @@ public sealed class PakFile
         string name,
         string folderPath, 
         uint classId, 
-        int offset, 
+        uint offset, 
         int uncompressedSize, 
         int compressedSize,
         int? size,
