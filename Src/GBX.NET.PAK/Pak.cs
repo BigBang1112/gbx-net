@@ -269,32 +269,47 @@ public partial class Pak : IDisposable
         }
     }
 
-    public Stream OpenFile(PakFile file, out EncryptionInitializer encryptionInitializer)
+    public Stream OpenFile(PakFile file, out EncryptionInitializer? encryptionInitializer)
     {
-        if (key is null)
-        {
-            throw new Exception("Encryption key is missing");
-        }
+        var fileKey = (this is Pak6) ? secondKey : key;
 
         stream.Position = dataStart + file.Offset;
 
-        var ivBuffer = new byte[8];
-        if (stream.Read(ivBuffer, 0, 8) != 8)
+        var newStream = stream;
+
+        if (file.IsEncrypted)
         {
-            throw new EndOfStreamException("Could not read IV from file.");
+            var ivBuffer = new byte[8];
+            if (stream.Read(ivBuffer, 0, 8) != 8)
+            {
+                throw new EndOfStreamException("Could not read IV from file.");
+            }
+            var iv = BitConverter.ToUInt64(ivBuffer, 0);
+
+            if (fileKey is null)
+            {
+                throw new Exception("Encryption key is missing");
+            }
+
+            var blowfish = new BlowfishStream(newStream, fileKey, iv, Version == 18);
+
+            encryptionInitializer = new EncryptionInitializer(blowfish);
+
+            newStream = blowfish;
         }
-        var iv = BitConverter.ToUInt64(ivBuffer, 0);
-
-        var blowfish = new BlowfishStream(stream, key, iv);
-
-        encryptionInitializer = new EncryptionInitializer(blowfish);
-
-        if (!file.IsCompressed)
+        else
         {
-            return blowfish;
+            encryptionInitializer = null;
         }
 
-        return new NativeZlibStream(blowfish, CompressionMode.Decompress);
+        if (file.IsCompressed)
+        {
+            newStream = Version == 18 ? 
+                new LZ4Stream(newStream, file.UncompressedSize) : 
+                new NativeZlibStream(newStream, CompressionMode.Decompress);
+        }
+
+        return newStream;
     }
 
     /// <summary>
