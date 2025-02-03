@@ -74,11 +74,16 @@ foreach (var pakFileName in pakFileNames)
 
             pak = await Pak.ParseAsync(fs, key, secondKey);
         }
+        else
+        {
+            Console.WriteLine($"No key found for pak {pakFileName} {fileNameWithoutExtension}");
+            continue;
+        }
     }
 
-        continue;
+    Console.WriteLine($"Pak: {pakFileName}");
 
-    foreach (var file in pak.Files.Values)
+    foreach (var file in pak!.Files.Values)
     {
         var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
         var fullPath = Path.Combine(extractFolderPath, file.FolderPath, fileName);
@@ -111,7 +116,6 @@ foreach (var pakFileName in pakFileNames)
         {
             CopyFileToStream(pak, file, stream);
         }
-        catch (Exception ex)
         catch
         {
             try
@@ -136,7 +140,6 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
 
 static Dictionary<string, (string? Key, string? SecondKey)> GetKeysFromTxt(string keysFileName)
 {
-    Dictionary<string, (string? Key, string? SecondKey)> keys = [];
     var keys = new Dictionary<string, (string? Key, string? SecondKey)>(StringComparer.OrdinalIgnoreCase);
 
     foreach (var line in File.ReadLines(keysFileName))
