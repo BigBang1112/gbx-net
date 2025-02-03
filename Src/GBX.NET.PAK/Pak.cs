@@ -306,12 +306,12 @@ public partial class Pak : IDisposable
 
         if (file.IsCompressed)
         {
-            newStream = Version == 18 ? 
+            newStream = Version >= 18 ? 
                 new LZ4Stream(newStream, file.UncompressedSize) : 
                 new NativeZlibStream(newStream, CompressionMode.Decompress);
         }
 
-        return newStream;
+        return new NonDisposingStream(newStream);
     }
 
     /// <summary>
