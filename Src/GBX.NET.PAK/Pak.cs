@@ -152,8 +152,10 @@ public partial class Pak : IDisposable
             {
                 dataStart = pak6.HeaderMaxSize ?? throw new InvalidOperationException("HeaderMaxSize is null.");
             }
-
-            throw new InvalidCastException("Pak is not of type Pak6.");
+            else
+            {
+                throw new InvalidCastException("Pak is not of type Pak6.");
+            }
         }
 
         if (Version >= 2)

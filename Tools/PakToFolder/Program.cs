@@ -19,7 +19,24 @@ Console.WriteLine("Bruteforcing possible file names from hashes...");
 var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
 
 var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
-var packlist = await PakList.ParseAsync(packlistFileName, game);
+var keysFileName = "keys.txt";
+
+PakList? packlist = null;
+Dictionary<string, (string? Key, string? SecondKey)>? keys = null;
+
+if (File.Exists(packlistFileName))
+{
+    packlist = await PakList.ParseAsync(packlistFileName, game);
+}
+else if (File.Exists(keysFileName))
+{
+    keys = GetKeysFromTxt(keysFileName);
+}
+else
+{
+    Console.WriteLine("No packlist.dat or keys.txt files found.");
+    return;
+}
 
 var pakFileNames = isDirectory ? Directory.GetFiles(pakFileNameOrDirectory, "*.pak", SearchOption.AllDirectories) : [pakFileNameOrDirectory];
 
@@ -27,10 +44,33 @@ foreach (var pakFileName in pakFileNames)
 {
     var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pakFileName);
     var extractFolderPath = Path.Combine(directoryPath, fileNameWithoutExtension);
-    var key = packlist[fileNameWithoutExtension.ToLowerInvariant()].Key;
+
+    Pak? pak = null;
 
     await using var fs = File.OpenRead(pakFileName);
-    await using var pak = await Pak.ParseAsync(fs, key);
+
+    if (packlist != null)
+    {
+        var key = packlist[fileNameWithoutExtension.ToLowerInvariant()].Key;
+        Console.WriteLine($"Pak: {pakFileName}, key: {BitConverter.ToString(key ?? [])}");
+
+        pak = await Pak.ParseAsync(fs, key);
+    }
+    else if (keys != null)
+    {
+        if (keys.TryGetValue(fileNameWithoutExtension, out var keyData))
+        {
+            var key = keyData.Key != null ? Convert.FromHexString(keyData.Key) : null;
+            var secondKey = keyData.SecondKey != null ? Convert.FromHexString(keyData.SecondKey) : null;
+
+            Console.WriteLine($"Pak: {pakFileName}, key: {BitConverter.ToString(key ?? [])}, secondKey: {BitConverter.ToString(secondKey ?? [])}");
+
+            pak = await Pak.ParseAsync(fs, key, secondKey);
+        }
+    }
+
+    if (pak == null)
+        continue;
 
     foreach (var file in pak.Files.Values)
     {
@@ -78,4 +118,25 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
     var data = new byte[file.UncompressedSize];
     var count = pakItemFileStream.Read(data);
     stream.Write(data, 0, count);
+}
+
+static Dictionary<string, (string? Key, string? SecondKey)> GetKeysFromTxt(string keysFileName)
+{
+    Dictionary<string, (string? Key, string? SecondKey)> keys = [];
+
+    foreach (var line in File.ReadLines(keysFileName))
+    {
+        var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (parts.Length < 2) 
+            continue;
+
+        string pak = parts[0];
+        string? key = parts[1] != "null" ? parts[1] : null;
+        string? secondKey = parts.Length > 2 && parts[2] != "null" ? parts[2] : null;
+
+        keys[pak] = (key, secondKey);
+    }
+
+    return keys;
 }
