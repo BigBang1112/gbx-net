@@ -38,7 +38,17 @@ else
     return;
 }
 
-var pakFileNames = isDirectory ? Directory.GetFiles(pakFileNameOrDirectory, "*.pak", SearchOption.AllDirectories) : [pakFileNameOrDirectory];
+var pakFileNames = isDirectory ? 
+    Directory.GetFiles(pakFileNameOrDirectory, "*.*", SearchOption.AllDirectories)
+    .Where(file => file.EndsWith(".pak", StringComparison.OrdinalIgnoreCase) ||
+                   file.EndsWith(".Pack.Gbx", StringComparison.OrdinalIgnoreCase))
+    .ToArray() 
+    : [pakFileNameOrDirectory];
+
+if (pakFileNames.Length == 0)
+{
+    Console.WriteLine($"No files found in directory {pakFileNameOrDirectory}");
+}
 
 foreach (var pakFileName in pakFileNames)
 {
@@ -52,7 +62,6 @@ foreach (var pakFileName in pakFileNames)
     if (packlist != null)
     {
         var key = packlist[fileNameWithoutExtension.ToLowerInvariant()].Key;
-        Console.WriteLine($"Pak: {pakFileName}, key: {BitConverter.ToString(key ?? [])}");
 
         pak = await Pak.ParseAsync(fs, key);
     }
@@ -63,13 +72,10 @@ foreach (var pakFileName in pakFileNames)
             var key = keyData.Key != null ? Convert.FromHexString(keyData.Key) : null;
             var secondKey = keyData.SecondKey != null ? Convert.FromHexString(keyData.SecondKey) : null;
 
-            Console.WriteLine($"Pak: {pakFileName}, key: {BitConverter.ToString(key ?? [])}, secondKey: {BitConverter.ToString(secondKey ?? [])}");
-
             pak = await Pak.ParseAsync(fs, key, secondKey);
         }
     }
 
-    if (pak == null)
         continue;
 
     foreach (var file in pak.Files.Values)
@@ -107,7 +113,6 @@ foreach (var pakFileName in pakFileNames)
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
         }
     }
 }
@@ -123,6 +128,7 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
 static Dictionary<string, (string? Key, string? SecondKey)> GetKeysFromTxt(string keysFileName)
 {
     Dictionary<string, (string? Key, string? SecondKey)> keys = [];
+    var keys = new Dictionary<string, (string? Key, string? SecondKey)>(StringComparer.OrdinalIgnoreCase);
 
     foreach (var line in File.ReadLines(keysFileName))
     {
