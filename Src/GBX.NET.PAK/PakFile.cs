@@ -12,7 +12,8 @@ public sealed class PakFile
     public UInt128? Checksum { get; }
     public ulong Flags { get; }
 
-    public bool IsCompressed => (Flags & 0x7C) != 0;
+    public bool IsCompressed => (Flags & 0x3C) != 0;
+    public bool IsEncrypted => (Flags & 0x4000000000000) == 0;
 
     public PakFile(
         string name,
