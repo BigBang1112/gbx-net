@@ -112,7 +112,16 @@ foreach (var pakFileName in pakFileNames)
             CopyFileToStream(pak, file, stream);
         }
         catch (Exception ex)
+        catch
         {
+            try
+            {
+                CopyFileToStream(pak, file, stream);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
