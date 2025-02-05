@@ -14,7 +14,7 @@ internal sealed partial class Pak6 : Pak
     public string AuthorExtraInfo { get; private set; } = string.Empty;
     public string Comments { get; private set; } = string.Empty;
     public string CreationBuildInfo { get; private set; } = string.Empty;
-    public string AuthorUrl { get; private set; } = string.Empty;
+    public string? AuthorUrl { get; private set; }
     public string? ManialinkUrl { get; private set; }
     public string? DownloadUrl { get; private set; }
     public DateTime? CreationDate { get; private set; }
