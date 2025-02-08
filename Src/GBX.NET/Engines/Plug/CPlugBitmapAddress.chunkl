@@ -19,13 +19,13 @@ CPlugBitmapAddress 0x09047000
  int
  byte
  if U03 == 1
-  box?
+  box? UVTransfoIso3
  if U03 == 2
-  mat4?
+  mat4? UVTransfoMat4
 
 0x008
  int
  float
 
 0x009
- float
+ float BumpEnvScale
