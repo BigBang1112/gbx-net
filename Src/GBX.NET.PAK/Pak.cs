@@ -34,6 +34,7 @@ public partial class Pak : IDisposable
 
     public byte[]? HeaderMD5 { get; private set; }
     public int Flags { get; private set; }
+    public virtual bool IsHeaderEncrypted => true;
 
     public ImmutableDictionary<string, PakFile> Files { get; private set; } = ImmutableDictionary<string, PakFile>.Empty;
 
@@ -72,9 +73,31 @@ public partial class Pak : IDisposable
 
         var version = r.ReadInt32();
 
-        var pak = await CreateBasePak(stream, r, key, secondKey, version, cancellationToken);
+        var pak = version < 6 
+            ? new Pak(stream, key, secondKey, version) 
+            : new Pak6(stream, headerKey: key, bodyKey: secondKey, version);
 
-        await pak.ReadEncryptedAsync(stream, cancellationToken);
+        if (pak is Pak6 pak6)
+        {
+            await pak6.ReadUnencryptedHeaderAsync(r, version, cancellationToken);
+        }
+
+        if (pak.IsHeaderEncrypted)
+        {
+            if (key is null)
+            {
+                throw new Exception("Encryption key is missing");
+            }
+
+            var iv = r.ReadUInt64();
+            var blowfishStream = new BlowfishStream(stream, key, iv, version == 18);
+
+            await pak.ReadHeaderAsync(blowfishStream, cancellationToken);
+        }
+        else
+        {
+            await pak.ReadHeaderAsync(stream, cancellationToken);
+        }
 
         return pak;
     }
@@ -111,45 +134,10 @@ public partial class Pak : IDisposable
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    private static async ValueTask<Pak> CreateBasePak(Stream stream, GbxReader r, byte[]? key, byte[]? secondKey, int version, CancellationToken cancellationToken)
+    protected async Task ReadHeaderAsync(Stream stream, CancellationToken cancellationToken)
     {
-        if (version < 6)
-        {
-            return new Pak(stream, key, secondKey, version);
-        }
-
-        var pak6 = new Pak6(stream, headerKey: key, bodyKey: secondKey, version);
-        await pak6.ReadUnencryptedHeaderAsync(r, version, cancellationToken);
-        return pak6;
-    }
-
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    protected async Task ReadEncryptedAsync(Stream stream, CancellationToken cancellationToken)
-    {
-        GbxReader? r = null;
         var pak6 = this as Pak6;
-
-        if (pak6 is not null && (pak6.HeaderFlags & 0x3) == 0) // header is not encrypted
-        {
-            r = new GbxReader(stream);
-        }
-        else
-        {
-            var ivBuffer = new byte[8];
-            if (stream.Read(ivBuffer, 0, 8) != 8)
-            {
-                throw new EndOfStreamException("Could not read IV from file.");
-            }
-            var iv = BitConverter.ToUInt64(ivBuffer, 0);
-
-            if (key is null)
-            {
-                throw new Exception("Encryption key is missing");
-            }
-
-            var decryptStream = new BlowfishStream(stream, key, iv, Version == 18);
-            r = new GbxReader(decryptStream);
-        }
+        var r = new GbxReader(stream);
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
         metadataStart = r.ReadInt32(); // offset to metadata section
