@@ -32,7 +32,6 @@ public partial class Pak : IDisposable
 
     public int Version { get; }
 
-    public ulong HeaderIV { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
     public int Flags { get; private set; }
 
@@ -57,7 +56,7 @@ public partial class Pak : IDisposable
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key, byte[]? secondKey = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, byte[]? secondKey = null, CancellationToken cancellationToken = default)
     {
         if (stream is null)
         {
@@ -74,12 +73,8 @@ public partial class Pak : IDisposable
         var version = r.ReadInt32();
 
         var pak = await CreateBasePak(stream, r, key, secondKey, version, cancellationToken);
-        pak.HeaderIV = r.ReadUInt64();
 
-        if (key is not null)
-        {
-            await pak.ReadEncryptedAsync(stream, cancellationToken);
-        }
+        await pak.ReadEncryptedAsync(stream, cancellationToken);
 
         return pak;
     }
@@ -94,7 +89,7 @@ public partial class Pak : IDisposable
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[] key, byte[]? secondKey = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, byte[]? secondKey = null, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
         return await ParseAsync(fs, key, secondKey, cancellationToken);
@@ -109,7 +104,7 @@ public partial class Pak : IDisposable
     /// <returns>Parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static Pak Parse(string filePath, byte[] key, byte[]? secondKey = null)
+    public static Pak Parse(string filePath, byte[]? key = null, byte[]? secondKey = null)
     {
         var fs = File.OpenRead(filePath);
         return Parse(fs, key, secondKey);
@@ -131,13 +126,30 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     protected async Task ReadEncryptedAsync(Stream stream, CancellationToken cancellationToken)
     {
-        if (key is null)
-        {
-            throw new Exception("Encryption key is missing");
-        }
+        GbxReader? r = null;
+        var pak6 = this as Pak6;
 
-        var decryptStream = new BlowfishStream(stream, key, HeaderIV, Version == 18);
-        var r = new GbxReader(decryptStream);
+        if (pak6 is not null && (pak6.HeaderFlags & 0x3) == 0) // header is not encrypted
+        {
+            r = new GbxReader(stream);
+        }
+        else
+        {
+            var ivBuffer = new byte[8];
+            if (stream.Read(ivBuffer, 0, 8) != 8)
+            {
+                throw new EndOfStreamException("Could not read IV from file.");
+            }
+            var iv = BitConverter.ToUInt64(ivBuffer, 0);
+
+            if (key is null)
+            {
+                throw new Exception("Encryption key is missing");
+            }
+
+            var decryptStream = new BlowfishStream(stream, key, iv, Version == 18);
+            r = new GbxReader(decryptStream);
+        }
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
         metadataStart = r.ReadInt32(); // offset to metadata section
@@ -148,14 +160,7 @@ public partial class Pak : IDisposable
         }
         else
         {
-            if (this is Pak6 pak6)
-            {
-                dataStart = pak6.HeaderMaxSize ?? throw new InvalidOperationException("HeaderMaxSize is null.");
-            }
-            else
-            {
-                throw new InvalidCastException("Pak is not of type Pak6.");
-            }
+            dataStart = pak6?.HeaderMaxSize ?? throw new InvalidOperationException("HeaderMaxSize is null.");
         }
 
         if (Version >= 2)
@@ -178,9 +183,9 @@ public partial class Pak : IDisposable
         {
             r.SkipData(16); // unused
 
-            if (Version == 6 && this is Pak6 pak6)
+            if (Version == 6)
             {
-                pak6.ReadAuthorInfo(r);
+                pak6?.ReadAuthorInfo(r);
             }
         }
 
@@ -191,7 +196,11 @@ public partial class Pak : IDisposable
         if (allFolders.Length > 2 && allFolders[2].Name.Length > 4)
         {
             var nameBytes = Encoding.Unicode.GetBytes(allFolders[2].Name);
-            ((IEncryptionInitializer)r.BaseStream).Initialize(nameBytes, 4, 4);
+
+            if (r.BaseStream is IEncryptionInitializer encryptionInitializer)
+            {
+                encryptionInitializer.Initialize(nameBytes, 4, 4);
+            }
         }
 
         Files = ReadAllFiles(r, allFolders);
