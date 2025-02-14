@@ -1,5 +1,4 @@
-﻿using GBX.NET;
-using GBX.NET.Components;
+﻿using GBX.NET.Components;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 
@@ -8,37 +7,92 @@ var isDirectory = Directory.Exists(pakFileNameOrDirectory);
 
 var directoryPath = isDirectory ? pakFileNameOrDirectory : Path.GetDirectoryName(pakFileNameOrDirectory)!;
 
-var extractFolderPath = args.Length > 1 ? args[1] : "";
-
 var game = PakListGame.TM;
 
-if (args.Length > 2 && args[2].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
+if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
 {
     game = PakListGame.Vsk5;
 }
 
+var pakListFileName = Path.Combine(directoryPath, "packlist.dat");
+var keysFileName = "keys.txt";
+
+PakList? pakList = null;
+Dictionary<string, (byte[]? Key, byte[]? SecondKey)>? keys = null;
+
+if (File.Exists(pakListFileName))
+{
+    pakList = await PakList.ParseAsync(pakListFileName, game);
+}
+else if (File.Exists(keysFileName))
+{
+    keys = await PakList.ParseKeysFromTxtAsync(keysFileName);
+}
+else
+{
+    Console.WriteLine($"No {pakListFileName} or {keysFileName} files found.");
+    return;
+}
+
 Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
+Dictionary<string, string> hashes = [];
 
-var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
-var packlist = await PakList.ParseAsync(packlistFileName, game);
+if (pakList is not null)
+{
+    hashes = await Pak.BruteforceFileHashesAsync(directoryPath, pakList, onlyUsedHashes: false);
+}
+else if (keys is not null)
+{
+    hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false);
+}
 
-var pakFileNames = isDirectory ? Directory.GetFiles(pakFileNameOrDirectory, "*.pak", SearchOption.AllDirectories) : [pakFileNameOrDirectory];
+var pakFileNames = isDirectory ? 
+    Directory.GetFiles(pakFileNameOrDirectory, "*.*", SearchOption.AllDirectories)
+    .Where(file => file.EndsWith(".pak", StringComparison.OrdinalIgnoreCase) ||
+                   file.EndsWith(".Pack.Gbx", StringComparison.OrdinalIgnoreCase))
+    .ToArray() 
+    : [pakFileNameOrDirectory];
+
+if (pakFileNames.Length == 0)
+{
+    Console.WriteLine($"No files found in directory {pakFileNameOrDirectory}");
+}
 
 foreach (var pakFileName in pakFileNames)
 {
-    var key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
+    var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pakFileName);
+    var extractFolderPath = Path.Combine(directoryPath, fileNameWithoutExtension);
+
+    Pak? pak = null;
 
     await using var fs = File.OpenRead(pakFileName);
-    await using var pak = await Pak.ParseAsync(fs, key);
 
-    foreach (var file in pak.Files.Values)
+    if (pakList != null)
+    {
+        var key = pakList[fileNameWithoutExtension.ToLowerInvariant()].Key;
+
+        pak = await Pak.ParseAsync(fs, key);
+    }
+    else if (keys != null)
+    {
+        if (keys.TryGetValue(fileNameWithoutExtension, out var keyData))
+        {
+            pak = await Pak.ParseAsync(fs, keyData.Key, keyData.SecondKey);
+        }
+        else
+        {
+            Console.WriteLine($"No key found for pak {pakFileName} {fileNameWithoutExtension}");
+            continue;
+        }
+    }
+
+    Console.WriteLine($"Pak: {pakFileName}");
+
+    foreach (var file in pak!.Files.Values)
     {
         var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
-        var fullPath = string.IsNullOrEmpty(extractFolderPath)
-            ? Path.Combine(file.FolderPath, fileName)
-            : Path.Combine(extractFolderPath, file.FolderPath, fileName);
+        var fullPath = Path.Combine(extractFolderPath, file.FolderPath, fileName);
 
         Console.WriteLine(fullPath);
 
@@ -68,9 +122,16 @@ foreach (var pakFileName in pakFileNames)
         {
             CopyFileToStream(pak, file, stream);
         }
-        catch (Exception ex)
+        catch
         {
-            Console.WriteLine(ex);
+            try
+            {
+                CopyFileToStream(pak, file, stream);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ namespace GBX.NET.PAK;
 /// </summary>
 internal sealed class Blowfish
 {
-    private const int N = 16;
+    private int N = 16;
 
     private readonly uint[] P = [
         0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,
@@ -226,7 +226,7 @@ internal sealed class Blowfish
     /// Constructs and initializes a blowfish instance with the supplied key.
     /// </summary>
     /// <param name="key">The key to cipher with.</param>
-    public Blowfish(byte[] key)
+    public Blowfish(byte[] key, bool isPak18 = false)
     {
         short i;
         short j;
@@ -234,6 +234,12 @@ internal sealed class Blowfish
         uint data;
         uint datal;
         uint datar;
+
+        // Trick #1: reduce N from 16 to 8
+        if (isPak18)
+        {
+            N = 8;
+        }
 
         j = 0;
         for (i = 0; i < N + 2; ++i)
@@ -271,6 +277,16 @@ internal sealed class Blowfish
                 S[i, j + 1] = datar;
             }
         }
+
+        // Trick #2: reverse the order of first 10 elements in the P array
+        if (isPak18)
+        {
+            uint[] temp = (uint[])P.Clone();
+            for (i = 0; i < 10; i++)
+            {
+                P[i] = temp[9 - i];
+            }
+        }
     }
 
     /// <summary>
@@ -300,6 +316,53 @@ internal sealed class Blowfish
         return y;
     }
 
+    /// <summary>
+    /// Encrypts a byte array in place.
+    /// </summary>
+    /// <param name="data">The array to encrypt.</param>
+    /// <param name="length">The amount to encrypt.</param>
+    public void Encipher(byte[] data)
+    {
+        if (data.Length % 8 != 0)
+        {
+            throw new Exception("Invalid Length");
+        }
+
+        for (int i = 0; i < data.Length; i += 8)
+        {
+            // Encode the data in 8 byte blocks.
+            var xl = BitConverter.ToUInt32(data, i);
+            var xr = BitConverter.ToUInt32(data, i + 4);
+            Encipher(ref xl, ref xr);
+            Array.Copy(BitConverter.GetBytes(xl), 0, data, i, 4);
+            Array.Copy(BitConverter.GetBytes(xr), 0, data, i + 4, 4);
+        }
+    }
+
+#if NET5_0_OR_GREATER
+    /// <summary>
+    /// Encrypts a byte span in place.
+    /// </summary>
+    /// <param name="data">The array to encrypt.</param>
+    /// <param name="length">The amount to encrypt.</param>
+    public void Encipher(Span<byte> data)
+    {
+        if (data.Length % 8 != 0)
+        {
+            throw new Exception("Invalid Length");
+        }
+
+        for (int i = 0; i < data.Length; i += 8)
+        {
+            // Encode the data in 8 byte blocks.
+            var xl = BitConverter.ToUInt32(data.Slice(i));
+            var xr = BitConverter.ToUInt32(data.Slice(i + 4));
+            Encipher(ref xl, ref xr);
+            BitConverter.TryWriteBytes(data.Slice(i), xl);
+            BitConverter.TryWriteBytes(data.Slice(i + 4), xr);
+        }
+    }
+#endif
 
     /// <summary>
     /// Encrypts 8 bytes of data (1 block)
@@ -393,7 +456,7 @@ internal sealed class Blowfish
         uint Xl;
         uint Xr;
         uint temp;
-        short i;
+        int i;
 
         Xl = xl;
         Xr = xr;
