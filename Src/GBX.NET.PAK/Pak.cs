@@ -411,20 +411,11 @@ public partial class Pak : IDisposable
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath, 
-        PakListGame game = PakListGame.TM,
+        PakList pakList,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakListFilePath = Path.Combine(directoryPath, PakListFileName);
-
-        if (!File.Exists(pakListFilePath))
-        {
-            return [];
-        }
-
-        var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
-
         var allPossibleFileHashes = new Dictionary<string, string>();
 
         await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, pakList, cancellationToken))
@@ -483,6 +474,76 @@ public partial class Pak : IDisposable
         return usedHashes;
     }
 
+    public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
+        string directoryPath,
+        Dictionary<string, (byte[]? Key, byte[]? SecondKey)> keys,
+        IProgress<KeyValuePair<string, string>>? progress = null,
+        bool onlyUsedHashes = true,
+        CancellationToken cancellationToken = default)
+    {
+        var allPossibleFileHashes = new Dictionary<string, string>();
+
+        await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            Gbx gbx;
+            try
+            {
+                gbx = pak.OpenGbxFileHeader(file);
+            }
+            catch (NotAGbxException)
+            {
+                continue;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{file.Name} {e.Message}");
+                continue;
+            }
+
+            var refTable = gbx.RefTable;
+
+            if (refTable is null)
+            {
+                continue;
+            }
+
+            foreach (var refTableFile in refTable.Files)
+            {
+                var filePath = refTableFile.FilePath.Replace('/', '\\');
+                var hash = MD5.Compute136(filePath);
+                progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                allPossibleFileHashes[hash] = filePath;
+
+                while (filePath.Contains('\\'))
+                {
+                    filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
+                    hash = MD5.Compute136(filePath);
+                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                    allPossibleFileHashes[hash] = filePath;
+                }
+            }
+        }
+
+        if (!onlyUsedHashes)
+        {
+            return allPossibleFileHashes;
+        }
+
+        var usedHashes = new Dictionary<string, string>();
+
+        await foreach (var (_, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
+        {
+            if (allPossibleFileHashes.TryGetValue(file.Name, out var name))
+            {
+                usedHashes[file.Name] = name;
+            }
+        }
+
+        return usedHashes;
+    }
+
     private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(string directoryPath, PakList pakList, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         foreach (var pakInfo in pakList)
@@ -496,6 +557,30 @@ public partial class Pak : IDisposable
             }
 
             using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, cancellationToken: cancellationToken);
+
+            foreach (var file in pak.Files.Values)
+            {
+                yield return (pak, file);
+            }
+        }
+    }
+
+    private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(
+        string directoryPath,
+        Dictionary<string, (byte[]? Key, byte[]? SecondKey)> keys, 
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        foreach (var pakInfo in keys)
+        {
+            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
+            var fullFileName = Path.Combine(directoryPath, fileName);
+
+            if (!File.Exists(fullFileName))
+            {
+                continue;
+            }
+
+            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, pakInfo.Value.SecondKey, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {
