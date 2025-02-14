@@ -2,4 +2,4 @@ CPlugBitmapRenderSub 0x09091000
 - inherits: CPlugBitmapRender
 
 0x000
- CMwNod
+ CPlugShader ShaderToForce

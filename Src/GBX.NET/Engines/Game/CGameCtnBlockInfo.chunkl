@@ -9,22 +9,22 @@ CGameCtnBlockInfo 0x0304E000
 
 0x00B [TM10, TMSX]
  int
- CSceneMobil // VariantBaseGround
- CSceneMobil
- CSceneMobil // VariantBaseAir
+ CSceneMobil GroundHelperMobil
+ CSceneMobil AirHelperMobil
+ CSceneMobil ConstructionModeHelperMobil
 
 0x00C [TM10, TMSX, TMF]
  iso4? SpawnLocGround
  iso4? SpawnLocAir
 
 0x00D [TMSX, TMF]
- bool // something with replacing?
+ bool IsReplacement
 
 0x00E [TMF]
  int<EWayPointType> WayPointType
- CSceneMobil // helper
- CSceneMobil // helper
- CSceneMobil // arrow
+ CSceneMobil GroundHelperMobil
+ CSceneMobil AirHelperMobil
+ CSceneMobil ConstructionModeHelperMobil
 
 0x00F [TMF, TMT, MP4]
  bool NoRespawn
