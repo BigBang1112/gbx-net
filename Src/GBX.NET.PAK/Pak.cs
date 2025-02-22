@@ -427,7 +427,7 @@ public partial class Pak : IDisposable
         var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
         return await BruteforceFileHashesAsync(directoryPath,
-            pakList.ToDictionary(x => x.Key, x => new PakKeyInfo(x.Value.Key)),
+            pakList.ToDictionary(x => x.Key, x => (PakKeyInfo?)new PakKeyInfo(x.Value.Key)),
             progress,
             onlyUsedHashes,
             cancellationToken);
@@ -444,7 +444,7 @@ public partial class Pak : IDisposable
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
-        Dictionary<string, PakKeyInfo> keys,
+        Dictionary<string, PakKeyInfo?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
@@ -507,6 +507,10 @@ public partial class Pak : IDisposable
             {
                 usedHashes[file.Name] = name;
             }
+            /* else if (Regex.IsMatch(file.Name, "^[0-9a-fA-F]{34}$"))
+            {
+                usedHashes[file.Name] = "";
+            } */
         }
 
         return usedHashes;
@@ -514,7 +518,7 @@ public partial class Pak : IDisposable
 
     private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(
         string directoryPath,
-        Dictionary<string, PakKeyInfo> keys, 
+        Dictionary<string, PakKeyInfo?> keys, 
         [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         foreach (var pakInfo in keys)
@@ -527,7 +531,7 @@ public partial class Pak : IDisposable
                 continue;
             }
 
-            using var pak = await ParseAsync(fullFileName, pakInfo.Value.PrimaryKey, pakInfo.Value.FileKey, cancellationToken: cancellationToken);
+            using var pak = await ParseAsync(fullFileName, pakInfo.Value?.PrimaryKey, pakInfo.Value?.FileKey, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {
