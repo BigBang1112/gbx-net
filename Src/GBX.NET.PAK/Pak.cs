@@ -405,17 +405,27 @@ public partial class Pak : IDisposable
     /// 
     /// </summary>
     /// <param name="directoryPath"></param>
+    /// <param name="game"></param>
     /// <param name="progress"></param>
     /// <param name="onlyUsedHashes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
-        PakList pakList,
+        PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
+        var pakListFilePath = Path.Combine(directoryPath, PakListFileName);
+
+        if (!File.Exists(pakListFilePath))
+        {
+            return [];
+        }
+
+        var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
+
         return await BruteforceFileHashesAsync(directoryPath,
             pakList.ToDictionary(x => x.Key, x => new PakKeyInfo(x.Value.Key)),
             progress,
@@ -427,6 +437,7 @@ public partial class Pak : IDisposable
     /// 
     /// </summary>
     /// <param name="directoryPath"></param>
+    /// <param name="keys"></param>
     /// <param name="progress"></param>
     /// <param name="onlyUsedHashes"></param>
     /// <param name="cancellationToken"></param>
@@ -508,7 +519,7 @@ public partial class Pak : IDisposable
     {
         foreach (var pakInfo in keys)
         {
-            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
+            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak"; // maybe should look for .Pack.Gbx too
             var fullFileName = Path.Combine(directoryPath, fileName);
 
             if (!File.Exists(fullFileName))
