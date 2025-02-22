@@ -37,7 +37,7 @@ Console.WriteLine("Bruteforcing possible file names from hashes...");
 var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false);
 
 await using var pak = keys.TryGetValue(Path.GetFileNameWithoutExtension(pakFileName), out var keyData)
-    ? await Pak.ParseAsync(pakFileName, keyData.PrimaryKey, keyData.FileKey)
+    ? await Pak.ParseAsync(pakFileName, keyData?.PrimaryKey, keyData?.FileKey)
     : await Pak.ParseAsync(pakFileName);
 
 File.Delete(Path.ChangeExtension(pakFileName, ".zip"));
