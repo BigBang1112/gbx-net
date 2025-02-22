@@ -14,23 +14,31 @@ if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureI
     game = PakListGame.Vsk5;
 }
 
-Console.WriteLine("Bruteforcing possible file names from hashes...");
+var pakListFileName = Path.Combine(directoryPath, "packlist.dat");
+var keysFileName = "keys.txt";
 
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
+Dictionary<string, PakKeyInfo> keys;
 
-var key = default(byte[]);
-
-var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
-
-if (File.Exists(packlistFileName))
+if (File.Exists(pakListFileName))
 {
-    Console.WriteLine("Reading packlist...");
-    var packlist = await PakList.ParseAsync(packlistFileName, game);
-    key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
+    keys = (await PakList.ParseAsync(pakListFileName, game)).ToKeyInfoDictionary();
+}
+else if (File.Exists(keysFileName))
+{
+    keys = await ParseKeysFromTxtAsync(keysFileName);
+}
+else
+{
+    keys = [];
 }
 
-await using var fs = File.OpenRead(pakFileName);
-await using var pak = await Pak.ParseAsync(fs, key);
+Console.WriteLine("Bruteforcing possible file names from hashes...");
+
+var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false);
+
+await using var pak = keys.TryGetValue(Path.GetFileNameWithoutExtension(pakFileName), out var keyData)
+    ? await Pak.ParseAsync(pakFileName, keyData.PrimaryKey, keyData.FileKey)
+    : await Pak.ParseAsync(pakFileName);
 
 File.Delete(Path.ChangeExtension(pakFileName, ".zip"));
 
@@ -77,4 +85,27 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
     var data = new byte[file.UncompressedSize];
     var count = pakItemFileStream.Read(data);
     stream.Write(data, 0, count);
+}
+
+static async Task<Dictionary<string, PakKeyInfo>> ParseKeysFromTxtAsync(string keysFileName)
+{
+    var keys = new Dictionary<string, PakKeyInfo>(StringComparer.OrdinalIgnoreCase);
+
+    using var reader = new StreamReader(keysFileName);
+
+    while (await reader.ReadLineAsync() is string line)
+    {
+        var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (parts.Length < 2)
+            continue;
+
+        var pak = parts[0];
+        var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
+        var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
+
+        keys[pak] = new PakKeyInfo(key, secondKey);
+    }
+
+    return keys;
 }

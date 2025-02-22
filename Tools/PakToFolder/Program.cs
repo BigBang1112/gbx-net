@@ -53,7 +53,7 @@ foreach (var pakFileName in pakFileNames)
     var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pakFileName);
     var extractFolderPath = Path.Combine(directoryPath, fileNameWithoutExtension);
 
-    Pak? pak = null;
+    Pak pak;
 
     await using var fs = File.OpenRead(pakFileName);
 
@@ -114,6 +114,8 @@ foreach (var pakFileName in pakFileNames)
             }
         }
     }
+
+    await pak.DisposeAsync();
 }
 
 static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
@@ -137,9 +139,9 @@ static async Task<Dictionary<string, PakKeyInfo>> ParseKeysFromTxtAsync(string k
         if (parts.Length < 2)
             continue;
 
-        string pak = parts[0];
-        byte[]? key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
-        byte[]? secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
+        var pak = parts[0];
+        var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
+        var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
 
         keys[pak] = new PakKeyInfo(key, secondKey);
     }
