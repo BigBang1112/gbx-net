@@ -41,6 +41,65 @@ CPlugSound 0x0901A000
  bool IsContinuous
  float Priority
 
+0x00E
+ version
+ int<EMode> Mode
+ float
+ bool IsLooping
+ bool IsContinuous
+ float Priority
+ v1+
+  bool UseLowPassFilter
+  v2+
+   int MaxDuplicates
+   v3+
+    int BalanceGroup
+    v4+
+     int DuplicatesIntervalMin
+     v5+
+      float FadeStopDuration
+      v6+
+       float Pitch
+       v7+
+        float FadePlayDuration
+        v9+
+         id GroupDuplicate
+
+0x00F
+ version
+ float RefDistance
+ float MaxDistance
+ bool EnableDoppler
+ float DopplerFactor
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  float RolloffFactor
+  v2+
+   CFuncKeysReal VolumeFromDistance
+   v3+
+    int RoomFxSend
+    v4+
+     float RoomRolloffFactor
+     float AirAbsorptionFactor
+     v7+
+      int PitchFromDistMode
+      int IgnoreSourceProperties
+      v8+
+       CFuncKeysReal PitchFromDistance
+       v9+
+        CFuncKeysReal VolumeFormSpeedKmh
+        v10+
+         float Radius
+         v11+
+          float PanAngleDeg
+          v12+
+           float
+
 enum ESoundKind
  Point
  Directional

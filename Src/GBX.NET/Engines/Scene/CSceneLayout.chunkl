@@ -37,6 +37,38 @@ CSceneLayout 0x0A003000
  CSceneTrafficPath[]_deprec TrafficPaths
  CSceneFxNod SceneFxNod (external)
 
+0x01C
+ version
+ CSceneObject[]_deprec
+ iso4[]
+ CSceneConfig
+ v1-
+  CMwNod[]_deprec
+ v2+
+  int
+ uint[]
+ CPlugBitmap BitmapWaterFog (external)
+ CPlugBitmap BitmapCubeReflectHardSpecA (external)
+ CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+ v0=
+  CSceneLocation[]
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float CameraFarZ
+ float
+ float
+ float
+ CSceneFxNod SceneFxNod (external)
+
 archive SceneMobil
  int U01
  if U01 == -2
