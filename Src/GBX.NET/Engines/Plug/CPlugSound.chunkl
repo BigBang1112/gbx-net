@@ -16,7 +16,7 @@ CPlugSound 0x0901A000
 
 0x00B
  int<ESoundKind> SoundKind
- int InsideConeANgle
+ int InsideConeAngle
  int OutsideConeAngle
  float ConeOutsideAttenuation
  float
@@ -99,6 +99,21 @@ CPlugSound 0x0901A000
           float PanAngleDeg
           v12+
            float
+
+0x011
+ version
+ int<ESoundKind> SoundKind
+ int InsideConeAngle
+ int OutsideConeAngle
+ float ConeOutsideAttenuation
+
+0x012
+ version
+ CPlugSound BackingSound
+
+0x013
+ version
+ CPlugSound FocusedSound
 
 enum ESoundKind
  Point

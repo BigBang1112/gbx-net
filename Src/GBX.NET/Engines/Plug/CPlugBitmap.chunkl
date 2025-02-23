@@ -91,3 +91,14 @@ CPlugBitmap 0x09011000
 
 0x033
  float HeightInMeters
+
+0x034
+ version
+ CPlugImageArray ImageArray
+ v1+
+  string ImageArraySuffix
+  v2+
+   string[] ImageArrayFids
+   v3+
+    CPlugBitmapArray BitmapArray
+    string BitmapArrayElemName
