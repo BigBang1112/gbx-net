@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.PAK;
 
-public class NonDisposingStream : Stream
+internal class NonDisposingStream : Stream
 {
     private readonly Stream _innerStream;
 

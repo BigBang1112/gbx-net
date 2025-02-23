@@ -130,29 +130,6 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
         return Parse(fs, game);
     }
 
-    public static async Task<Dictionary<string, (byte[]? Key, byte[]? SecondKey)>> ParseKeysFromTxtAsync(string keysFileName)
-    {
-        var keys = new Dictionary<string, (byte[]? Key, byte[]? SecondKey)>(StringComparer.OrdinalIgnoreCase);
-
-        using var reader = new StreamReader(keysFileName);
-
-        while (await reader.ReadLineAsync() is string line)
-        {
-            var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            if (parts.Length < 2)
-                continue;
-
-            string pak = parts[0];
-            byte[]? key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
-            byte[]? secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
-
-            keys[pak] = (key, secondKey);
-        }
-
-        return keys;
-    }
-
     public bool ContainsKey(string key)
     {
         return packs.ContainsKey(key);
@@ -175,5 +152,17 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
     IEnumerator IEnumerable.GetEnumerator()
     {
         return ((IEnumerable)packs).GetEnumerator();
+    }
+
+    public Dictionary<string, PakKeyInfo?> ToKeyInfoDictionary()
+    {
+        var keys = new Dictionary<string, PakKeyInfo?>(packs.Count, StringComparer.OrdinalIgnoreCase);
+
+        foreach (var (name, item) in packs)
+        {
+            keys[name] = new PakKeyInfo(item.Key);
+        }
+
+        return keys;
     }
 }

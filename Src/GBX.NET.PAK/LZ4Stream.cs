@@ -89,16 +89,16 @@ public class LZ4Stream : Stream
     private byte[] _buffer = new byte[] { };
     private int _bufferIndex = 0;
 
-    [DllImport("lz4")]
+    [DllImport("liblz4")]
     private static extern unsafe IntPtr LZ4_createStreamDecode();
 
-    [DllImport("lz4")]
+    [DllImport("liblz4")]
     private static extern unsafe int LZ4_freeStreamDecode(IntPtr stream);
 
-    [DllImport("lz4")]
+    [DllImport("liblz4")]
     private static extern unsafe int LZ4_setStreamDecode(IntPtr stream, IntPtr dictionary, int dictSize);
 
-    [DllImport("lz4")]
+    [DllImport("liblz4")]
     private static extern unsafe int LZ4_decompress_safe_continue(IntPtr stream, byte* src, byte* dst, int srcSize, int dstCapacity);
 
     public unsafe LZ4Stream(Stream innerStream, int UncompressedSize)

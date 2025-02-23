@@ -50,14 +50,14 @@ public partial class Pak : IDisposable
     /// Parses the Pak file from the stream. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="stream">Stream.</param>
-    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, byte[]? secondKey = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? primaryKey = null, byte[]? fileKey = null, CancellationToken cancellationToken = default)
     {
         if (stream is null)
         {
@@ -74,8 +74,8 @@ public partial class Pak : IDisposable
         var version = r.ReadInt32();
 
         var pak = version < 6 
-            ? new Pak(stream, key, secondKey, version) 
-            : new Pak6(stream, headerKey: key, bodyKey: secondKey, version);
+            ? new Pak(stream, primaryKey, fileKey, version) 
+            : new Pak6(stream, primaryKey, fileKey, version);
 
         if (pak is Pak6 pak6)
         {
@@ -84,13 +84,13 @@ public partial class Pak : IDisposable
 
         if (pak.IsHeaderEncrypted)
         {
-            if (key is null)
+            if (primaryKey is null)
             {
-                throw new Exception("Encryption key is missing");
+                return pak;
             }
 
             var iv = r.ReadUInt64();
-            var blowfishStream = new BlowfishStream(stream, key, iv, version == 18);
+            var blowfishStream = new BlowfishStream(stream, primaryKey, iv, version == 18);
 
             await pak.ReadHeaderAsync(blowfishStream, cancellationToken);
         }
@@ -106,31 +106,31 @@ public partial class Pak : IDisposable
     /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="filePath">File path.</param>
-    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, byte[]? secondKey = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? primaryKey = null, byte[]? fileKey = null, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, secondKey, cancellationToken);
+        return await ParseAsync(fs, primaryKey, fileKey, cancellationToken);
     }
 
     /// <summary>
     /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="filePath">File path.</param>
-    /// <param name="key">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="secondKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
+    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
     /// <returns>Parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static Pak Parse(string filePath, byte[]? key = null, byte[]? secondKey = null)
+    public static Pak Parse(string filePath, byte[]? primaryKey = null, byte[]? fileKey = null)
     {
         var fs = File.OpenRead(filePath);
-        return Parse(fs, key, secondKey);
+        return Parse(fs, primaryKey, fileKey);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -405,78 +405,46 @@ public partial class Pak : IDisposable
     /// 
     /// </summary>
     /// <param name="directoryPath"></param>
+    /// <param name="game"></param>
     /// <param name="progress"></param>
     /// <param name="onlyUsedHashes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
-        string directoryPath, 
-        PakList pakList,
+        string directoryPath,
+        PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var allPossibleFileHashes = new Dictionary<string, string>();
+        var pakListFilePath = Path.Combine(directoryPath, PakListFileName);
 
-        await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, pakList, cancellationToken))
+        if (!File.Exists(pakListFilePath))
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            Gbx gbx;
-            try
-            {
-                gbx = pak.OpenGbxFileHeader(file);
-            }
-            catch (NotAGbxException)
-            {
-                continue;
-            }
-
-            var refTable = gbx.RefTable;
-
-            if (refTable is null)
-            {
-                continue;
-            }
-
-            foreach (var refTableFile in refTable.Files)
-            {
-                var filePath = refTableFile.FilePath.Replace('/', '\\');
-                var hash = MD5.Compute136(filePath);
-                progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                allPossibleFileHashes[hash] = filePath;
-
-                while (filePath.Contains('\\'))
-                {
-                    filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
-                    hash = MD5.Compute136(filePath);
-                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                    allPossibleFileHashes[hash] = filePath;
-                }
-            }
+            return [];
         }
 
-        if (!onlyUsedHashes)
-        {
-            return allPossibleFileHashes;
-        }
+        var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
-        var usedHashes = new Dictionary<string, string>();
-
-        await foreach (var (_, file) in EnumeratePakFilesAsync(directoryPath, pakList, cancellationToken))
-        {
-            if (allPossibleFileHashes.TryGetValue(file.Name, out var name))
-            {
-                usedHashes[file.Name] = name;
-            }
-        }
-
-        return usedHashes;
+        return await BruteforceFileHashesAsync(directoryPath,
+            pakList.ToDictionary(x => x.Key, x => (PakKeyInfo?)new PakKeyInfo(x.Value.Key)),
+            progress,
+            onlyUsedHashes,
+            cancellationToken);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="directoryPath"></param>
+    /// <param name="keys"></param>
+    /// <param name="progress"></param>
+    /// <param name="onlyUsedHashes"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
-        Dictionary<string, (byte[]? Key, byte[]? SecondKey)> keys,
+        Dictionary<string, PakKeyInfo?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
@@ -539,40 +507,23 @@ public partial class Pak : IDisposable
             {
                 usedHashes[file.Name] = name;
             }
+            /* else if (Regex.IsMatch(file.Name, "^[0-9a-fA-F]{34}$"))
+            {
+                usedHashes[file.Name] = "";
+            } */
         }
 
         return usedHashes;
     }
 
-    private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(string directoryPath, PakList pakList, [EnumeratorCancellation] CancellationToken cancellationToken)
-    {
-        foreach (var pakInfo in pakList)
-        {
-            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
-            var fullFileName = Path.Combine(directoryPath, fileName);
-
-            if (!File.Exists(fullFileName))
-            {
-                continue;
-            }
-
-            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, cancellationToken: cancellationToken);
-
-            foreach (var file in pak.Files.Values)
-            {
-                yield return (pak, file);
-            }
-        }
-    }
-
     private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(
         string directoryPath,
-        Dictionary<string, (byte[]? Key, byte[]? SecondKey)> keys, 
+        Dictionary<string, PakKeyInfo?> keys, 
         [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         foreach (var pakInfo in keys)
         {
-            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak";
+            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak"; // maybe should look for .Pack.Gbx too
             var fullFileName = Path.Combine(directoryPath, fileName);
 
             if (!File.Exists(fullFileName))
@@ -580,7 +531,7 @@ public partial class Pak : IDisposable
                 continue;
             }
 
-            using var pak = await ParseAsync(fullFileName, pakInfo.Value.Key, pakInfo.Value.SecondKey, cancellationToken: cancellationToken);
+            using var pak = await ParseAsync(fullFileName, pakInfo.Value?.PrimaryKey, pakInfo.Value?.FileKey, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {

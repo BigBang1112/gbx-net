@@ -88,3 +88,6 @@ CPlugBitmap 0x09011000
 0x032
  version
  uint
+
+0x033
+ float HeightInMeters
