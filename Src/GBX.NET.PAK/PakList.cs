@@ -153,4 +153,16 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
     {
         return ((IEnumerable)packs).GetEnumerator();
     }
+
+    public Dictionary<string, PakKeyInfo?> ToKeyInfoDictionary()
+    {
+        var keys = new Dictionary<string, PakKeyInfo?>(packs.Count, StringComparer.OrdinalIgnoreCase);
+
+        foreach (var (name, item) in packs)
+        {
+            keys[name] = new PakKeyInfo(item.Key);
+        }
+
+        return keys;
+    }
 }

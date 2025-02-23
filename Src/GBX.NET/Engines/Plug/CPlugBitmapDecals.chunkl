@@ -1,2 +1,35 @@
 CPlugBitmapDecals 0x09078000
 - inherits: CPlug
+
+0x000
+ version
+ CPlugDecalModel[]_deprec DecalModels
+ DecalSet[] DecalSets (version: Version)
+
+0x001
+ int
+ int
+ int
+
+archive DecalSet
+
+archive Decal
+ int
+ id
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ v2+
+  bool
