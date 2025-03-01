@@ -75,12 +75,6 @@ CGameCtnCollection 0x03033000
  int
 
 0x00D
- bool HasIconFid
- if HasIconFid
-  CPlugBitmap IconFid (external)
- bool HasCollectionIconFid
- if HasCollectionIconFid
-  CPlugBitmap CollectionIconFid (external)
 
 0x00E
  int SortIndex
