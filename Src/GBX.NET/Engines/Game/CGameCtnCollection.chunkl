@@ -8,8 +8,8 @@ CGameCtnCollection 0x03033000
  id Collection
  bool NeedUnlock
  v1+
-  string IconEnv
-  string IconCollection
+  string IconFullName
+  string IconSmallFullName
   v2+
    int SortIndex
    v3+
@@ -17,24 +17,23 @@ CGameCtnCollection 0x03033000
     v4+
      ident Vehicle
      v5+
-      string MapFid
-      vec2?
-      vec2?
+      string MapFullName
+      rect MapRect
       v7-
-       vec2? MapCoordElem
+       vec2 MapCoordElem
        v6+
-        vec2? MapCoordIcon
+        vec2 MapCoordIcon
       v7+
        string LoadScreen
        v8+
-        vec2? MapCoordElem
-        vec2? MapCoordIcon
-        vec2? MapCoordDesc
+        vec2 MapCoordElem
+        vec2 MapCoordIcon
+        vec2 MapCoordDesc
         string LongDesc
         v9+
          string DisplayName
          v10+
-          bool? IsEditable
+          bool IsEditable
 
 0x002 (header, struct: SHeaderCollectorFolders)
  versionb
@@ -97,21 +96,21 @@ CGameCtnCollection 0x03033000
  float ColorVertexMax
 
 0x018
- CMwNod
- rect
- vec2
- vec2
+ CPlugBitmap MapFid
+ rect MapRect
+ vec2 MapCoordElem
+ vec2 MapCoordIcon
 
 0x019 // LoadScreenFid
  CPlugBitmap LoadScreenFid (external)
 
 0x01A
- CMwNod
- rect
- vec2
- vec2
- vec2
- string
+ CPlugBitmap MapFid
+ rect MapRect
+ vec2 MapCoordElem
+ vec2 MapCoordIcon
+ vec2 MapCoordDesc
+ string LongDesc
 
 0x01B
  int
