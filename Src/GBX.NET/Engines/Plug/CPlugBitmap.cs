@@ -2,5 +2,5 @@
 
 public partial class CPlugBitmap
 {
-    public EGxUVGenerate GenerateUV => (EGxUVGenerate)(Flags2 >> 16);
+    public EGxUVGenerate GenerateUV => (EGxUVGenerate)(Flags2 >> 16 & 0xFF);
 }
