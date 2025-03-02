@@ -2,7 +2,7 @@ CPlugBitmap 0x09011000
 - inherits: CPlug
 
 0x015
- ulong
+ ulong Flags
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
@@ -10,12 +10,12 @@ CPlugBitmap 0x09011000
  int
 
 0x017
- int
+ uint Flags2
  vec2 DefaultTexCoordScale
 
 0x018
  CPlugFileImg Image (external)
- ulong
+ ulong Flags
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
@@ -39,7 +39,7 @@ CPlugBitmap 0x09011000
  vec2[] AtlasCountUVs
 
 0x01F
- uint
+ uint Flags2
 
 0x020
  float[] MipMapFadeAlphas
@@ -53,7 +53,7 @@ CPlugBitmap 0x09011000
  uint
 
 0x024
- uint
+ uint Flags2
 
 0x025 (base: 0x01C)
  base
@@ -88,3 +88,29 @@ CPlugBitmap 0x09011000
 0x032
  version
  uint
+
+enum EGxUVGenerate
+ NoGenerate
+ CameraVertex
+ WorldVertex
+ WorldVertexXY
+ WorldVertexXZ
+ WorldVertexYZ
+ CameraNormal
+ WorldNormal
+ CameraReflectionVector
+ WorldReflectionVector
+ WorldNormalNeg
+ WaterReflectionVector
+ Hack1Vertex
+ MapTexel
+ FogPlane0
+ Vsk3SeaFoam
+ ImageSpace
+ LightDir0Reflect
+ EyeNormal
+ ShadowB1Pw01
+ Tex3AsPosPrCamera
+ FlatWaterReflect
+ FlatWaterRefract
+ FlatWaterFresnel
