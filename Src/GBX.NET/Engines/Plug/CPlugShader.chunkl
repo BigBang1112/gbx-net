@@ -2,13 +2,13 @@ CPlugShader 0x09002000
 - inherits: CPlug
 
 0x007
- CMwNod
- CMwNod[] // CPlugShaderPass array
- CMwNod
+ CFuncShader FuncShader (external)
+ CPlugShaderPass[] Passes
+ CMwNod U01
 
 0x00E (base: 0x007)
  base
- CMwNod[]
+ CMwNod[] U02
 
 0x010
  ulong
