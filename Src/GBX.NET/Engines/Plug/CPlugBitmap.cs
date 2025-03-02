@@ -2,7 +2,7 @@
 
 public partial class CPlugBitmap
 {
-    public EUsage Usage => (EGxUVGenerate)(Flags & 0xFF);
+    public EUsage Usage => (EUsage)(Flags & 0xFF);
     public bool NormalAreSigned => (Flags >> 62 & 1) != 0;
     public bool NormalCanBeSigned => (Flags >> 61 & 1) != 0;
     public EColorDepth WantedColorDepth => (EColorDepth)(Flags >> 16 & 3);
