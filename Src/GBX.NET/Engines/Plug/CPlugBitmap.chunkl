@@ -89,6 +89,63 @@ CPlugBitmap 0x09011000
  version
  uint
 
+enum EUsage
+ Color
+ Light
+ Height2DuDv
+ Render
+ Height2DuDvLumi
+ Height2NxNyNz
+ Height2NxNy
+ Depth
+ DispH01
+ Height2NormPal8b
+ NxNyNz
+ NxNy
+ NormPal8b
+ NormPal16b
+ ColorFloat
+ RenderFloat
+ Height2DuDv1
+ Alpha
+ LightAlpha
+ Height2RxG0BzAy
+ NormRxG0BzAy
+ TexCoord
+ Render16b
+ Vertex
+ Height2BumpTxTy
+ BumpTxTy
+ Height2R0GyBzAx
+ NormR0GyBzAx
+ NormXYZ0YZX
+
+enum EColorDepth
+ DefaultColorDepth
+ Color16b
+ Color32b
+
+enum ECubeFace
+ None
+ XPos
+ XNeg
+ YPos
+ YNeg
+ ZPos
+ ZNeg
+
+enum EGxTexFilter
+ Point
+ Bilinear
+ Trilinear
+ Anisotropic
+
+enum EGxTexAddress
+ Wrap
+ Mirror
+ Clamp
+ BorderSM3
+
 enum EGxUVGenerate
  NoGenerate
  CameraVertex
