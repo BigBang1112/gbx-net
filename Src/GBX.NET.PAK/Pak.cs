@@ -325,14 +325,17 @@ public partial class Pak : IDisposable
     {
         using var stream = OpenFile(file, out var encryptionInitializer);
 
-        var settingsWithEncryption = settings with { EncryptionInitializer = encryptionInitializer };
+        if (!file.DontUseDummyWrite)
+        {
+            settings = settings with { EncryptionInitializer = encryptionInitializer };
+        }
 
-        var gbx = await Gbx.ParseAsync(stream, settingsWithEncryption, cancellationToken);
+        var gbx = await Gbx.ParseAsync(stream, settings, cancellationToken);
 
         if (gbx.RefTable is not null && importExternalNodesFromRefTable)
         {
             // this can miss some files from other Pak files
-            ImportExternalNodesFromRefTable(this, file, gbx.RefTable, settingsWithEncryption, fileHashes);
+            ImportExternalNodesFromRefTable(this, file, gbx.RefTable, settings, fileHashes);
         }
 
         return gbx;
