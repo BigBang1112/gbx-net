@@ -206,7 +206,15 @@ internal class ChunkLPropertiesWriter
                     sb.Append("private ");
                 }
 
-                sb.AppendLine("set; }");
+                sb.Append("set; }");
+
+                if (!string.IsNullOrWhiteSpace(prop.DefaultValue))
+                {
+                    AppendDefaultValue(prop, mappedType);
+                    sb.Append(";");
+                }
+
+                sb.AppendLine();
             }
             else
             {
