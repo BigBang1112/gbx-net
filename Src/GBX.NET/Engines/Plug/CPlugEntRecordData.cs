@@ -154,7 +154,7 @@ public partial class CPlugEntRecordData : IReadableWritable
 
             if (Version < 5)
             {
-                n.ReadWrite(rw, Version);
+                ((IReadableWritable)n).ReadWrite(rw, Version);
                 return;
             }
 
@@ -176,7 +176,7 @@ public partial class CPlugEntRecordData : IReadableWritable
                         using var rBuffer = new GbxReader(uncompressedMs);
                         using var rwBuffer = new GbxReaderWriter(rBuffer);
 
-                        n.ReadWrite(rwBuffer, Version);
+                        ((IReadableWritable)n).ReadWrite(rwBuffer, Version);
                     }
                     catch (Exception ex)
                     {
