@@ -388,7 +388,7 @@ There are a few places where Gbx includes additional zlib-compressed data:
 - Lightmap data of a map
   - `CGameCtnChallenge.LightmapCache`, additional lightmap parameters
 
-GBX.NET does not include zlib algorithm by default to read this data. Properties will often return `null` silently, but you can hook onto more details about this if you specify `Logger` in the parse methods.
+GBX.NET does not include zlib algorithm by default to read this data. Properties will often throw a `ZLibNotDefinedException`.
 
 To "unlock" this data, you need to specify zlib implementation:
 
@@ -414,7 +414,7 @@ The data is often stored in properties of type `CompressedData` which are byte a
 
 > The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
 
-GBX.NET.PAK uses a separate zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
+GBX.NET.PAK uses a different zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
 ## Clarity
 

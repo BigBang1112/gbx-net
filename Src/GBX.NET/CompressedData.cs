@@ -18,6 +18,7 @@ public sealed class CompressedData(int uncompressedSize, byte[] data)
         return uncompressedMs;
     }
 
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
     internal MemoryStream OpenDecompressedMemoryStream()
     {
         if (Gbx.ZLib is null)
