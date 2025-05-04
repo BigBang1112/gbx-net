@@ -62,4 +62,7 @@ public readonly record struct Vec3(float X, float Y, float Z)
     public static Vec3 operator *(Int3 a, Vec3 b) => b * a;
     public static Vec3 operator *(int a, Vec3 b) => b * a;
     public static Vec3 operator *(float a, Vec3 b) => b * a;
+
+    public static Vec3 operator /(Vec3 a, int b) => new(a.X / b, a.Y / b, a.Z / b);
+    public static Vec3 operator /(Vec3 a, float b) => new(a.X / b, a.Y / b, a.Z / b);
 }
