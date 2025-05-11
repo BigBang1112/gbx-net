@@ -24,8 +24,7 @@ jobs:
       
       - name: Set release information
         run: |
-          MESSAGE="***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***"
-          FINAL_BODY="${MESSAGE}
+          FINAL_BODY="***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***
           
           $RELEASE_BODY"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
@@ -124,8 +123,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set release information
         run: |
-          MESSAGE="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})."
-          FINAL_BODY="$RELEASE_BODY
+          FINAL_BODY="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
           
           ${MESSAGE}"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
