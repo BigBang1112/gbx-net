@@ -1,0 +1,6 @@
+CPlugSoundMulti 0x09064000
+- inherits: CPlugSound
+
+0x000
+ CMwNod[] AdditionalSounds (external)
+ bool ForceUseRandom
