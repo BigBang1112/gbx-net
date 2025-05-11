@@ -25,7 +25,7 @@ jobs:
       - name: Set release information
         run: |
           MESSAGE="***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***"
-          FINAL_BODY="${MESSAGE}\n\n${{ env.RELEASE_BODY }}"
+          FINAL_BODY="${MESSAGE}\n\n$RELEASE_BODY"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
     
   build:
@@ -123,5 +123,5 @@ jobs:
       - name: Set release information
         run: |
           MESSAGE="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})."
-          FINAL_BODY="${{ env.RELEASE_BODY }}\n\n${MESSAGE}"
+          FINAL_BODY="$RELEASE_BODY\n\n${MESSAGE}"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
