@@ -15,6 +15,7 @@ jobs:
     
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RELEASE_BODY: ${{ github.event.release.body }}
     
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
       - name: Set release information
         run: |
           MESSAGE="***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***"
-          FINAL_BODY="${MESSAGE}\n\n${{ github.event.release.body }}"
+          FINAL_BODY="${MESSAGE}\n\n${{ env.RELEASE_BODY }}"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
     
   build:
@@ -115,11 +116,12 @@ jobs:
     
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RELEASE_BODY: ${{ github.event.release.body }}
     
     steps:
       - uses: actions/checkout@v4
       - name: Set release information
         run: |
           MESSAGE="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})."
-          FINAL_BODY="${{ github.event.release.body }}\n\n${MESSAGE}"
+          FINAL_BODY="${{ env.RELEASE_BODY }}\n\n${MESSAGE}"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
