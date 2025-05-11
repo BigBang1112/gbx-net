@@ -3,7 +3,7 @@ CPlugBitmapSampler 0x0907E000
 
 0x002
  id Name
- CMwNod (external)
+ CPlugBitmap Bitmap (external)
  uint
  float
 

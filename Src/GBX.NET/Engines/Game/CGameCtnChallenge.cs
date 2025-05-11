@@ -286,16 +286,28 @@ public partial class CGameCtnChallenge :
 
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
-    public CHmsLightMapCache? LightmapCache { get; set; }
+    public CompressedData? LightmapCacheData { get; set; }
+
+    private CHmsLightMapCache? lightmapCache;
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
+    public CHmsLightMapCache? LightmapCache
+    {
+        get
+        {
+            if (Gbx.ZLib is null && lightmapCache is null && LightmapCacheData is not null)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return lightmapCache;
+        }
+        set => lightmapCache = value;
+    }
 
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public LightmapFrame[]? LightmapFrames { get; set; }
-
-    [ZLibData]
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public CompressedData? LightmapCacheData { get; set; }
 
     private List<CGameCtnAnchoredObject>? anchoredObjects;
     [AppliedWithChunk<Chunk03043040>]
@@ -1776,6 +1788,9 @@ public partial class CGameCtnChallenge :
 
                         var ident = itemModel.Ident;
 
+                        // sometimes, when the items are placed in incorrect or different folders, the ident won't match the file name
+                        // this will cause a popup on opening, but the items will still be loaded. needs more investigation if the ident
+                        // should come entirely from the file name or not
                         var fullName = entry.FullName.Replace('/', '\\');
                         if (fullName.StartsWith(itemsPrefix))
                         {
@@ -1874,7 +1889,7 @@ public partial class CGameCtnChallenge :
             foreach (var block in n.GetBlocks().Concat(n.GetBakedBlocks()).Where(x => x.IsFree))
             {
                 block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
-                block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+                block.YawPitchRoll = rw.Vec3(block.YawPitchRoll);
             }
         }
     }

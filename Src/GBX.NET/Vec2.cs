@@ -60,4 +60,7 @@ public readonly record struct Vec2(float X, float Y)
     public static Vec2 operator *(Int2 a, Vec2 b) => b * a;
     public static Vec2 operator *(int a, Vec2 b) => b * a;
     public static Vec2 operator *(float a, Vec2 b) => b * a;
+
+    public static Vec2 operator /(Vec2 a, int b) => new(a.X / b, a.Y / b);
+    public static Vec2 operator /(Vec2 a, float b) => new(a.X / b, a.Y / b);
 }

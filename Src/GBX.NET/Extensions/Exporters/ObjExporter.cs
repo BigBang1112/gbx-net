@@ -398,14 +398,16 @@ internal static class ObjExporter
         var positionsDict = mergeVerticesDigitThreshold.HasValue
             ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
 
-        if (solid.Visuals is null || solid.Visuals.Length == 0)
+        if (solid.Visuals is null || solid.Visuals.Length == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
         {
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
 
-        foreach (var geom in solid.ShadedGeoms ?? [])
+        var pickedLod = solid.ShadedGeoms.Any(x => x.Lod == lod) ? lod : solid.ShadedGeoms.Min(x => x.Lod);
+
+        foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != lod)
+            if (geom.Lod != -1 && geom.Lod != pickedLod)
             {
                 continue;
             }
@@ -454,9 +456,9 @@ internal static class ObjExporter
 
         var uvs = new Dictionary<Vec2, int>();
 
-        foreach (var geom in solid.ShadedGeoms ?? [])
+        foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != lod)
+            if (geom.Lod != -1 && geom.Lod != pickedLod)
             {
                 continue;
             }
@@ -499,9 +501,9 @@ internal static class ObjExporter
             }
         }
 
-        foreach (var geom in solid.ShadedGeoms ?? [])
+        foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != lod)
+            if (geom.Lod != -1 && geom.Lod != pickedLod)
             {
                 continue;
             }
@@ -533,10 +535,15 @@ internal static class ObjExporter
                 var v = visual.VertexStreams.FirstOrDefault()?.Positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
-                    ? (visual.VertexStreams.Count > 0 ? visual.VertexStreams[0].UVs.Values.First()[index] : (0, 0))
+                    ? (visual.VertexStreams.Count > 0 ? visual.VertexStreams[0].UVs.Values.FirstOrDefault()?[index] : (0, 0))
                     : visual.TexCoords[0].TexCoords[index].UV;
 
-                var uvIndex = uvs[uv];
+                if (uv is null)
+                {
+                    continue;
+                }
+
+                var uvIndex = uvs[uv.Value];
 
                 var faceIndex = $" {positionsDict[v] + 1}/{uvIndex + 1}";
 

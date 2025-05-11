@@ -9,6 +9,7 @@ Async methods are available.
 
 ## Framework support
 
+- .NET 9
 - .NET 8
 - .NET 6
 

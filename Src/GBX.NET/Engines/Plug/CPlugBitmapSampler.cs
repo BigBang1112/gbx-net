@@ -11,7 +11,7 @@ public partial class CPlugBitmapSampler
             base.ReadWrite(n, rw);
 
             // CPlugBitmapSampler::IsBorderColorUsed
-            if ((((byte)U02 & 0x18) != 0x18) && (((byte)U02 & 0x60) != 0x60) && ((U02 & 0x1800) != 0x1800))
+            if ((((byte)U01 & 0x18) != 0x18) && (((byte)U01 & 0x60) != 0x60) && ((U01 & 0x1800) != 0x1800))
             {
                 return;
             }

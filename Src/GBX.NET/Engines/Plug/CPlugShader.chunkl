@@ -2,13 +2,13 @@ CPlugShader 0x09002000
 - inherits: CPlug
 
 0x007
- CMwNod
- CMwNod[] // CPlugShaderPass array
- CMwNod
+ CFuncShader FuncShader (external)
+ CPlugShaderPass[] Passes
+ CMwNod U01
 
 0x00E (base: 0x007)
  base
- CMwNod[]
+ CMwNod[] U02
 
 0x010
  ulong
@@ -17,22 +17,22 @@ CPlugShader 0x09002000
  short
 
 0x014
- dataulong
+ dataulong Flags
  float
  CMwNod
- short
+ short VisibleId
 
 0x015
- ulong
+ ulong Flags
  float
  CMwNod
- short
+ short VisibleId
 
 0x016
- ulong
+ ulong Flags
  float
  CMwNod
- short
+ short VisibleId
 
 0x018
  uint
@@ -71,3 +71,25 @@ archive UnknownStruct
   bool U02
   if U02
    CMwNod U03
+
+enum EFillMode
+ Solid
+ Wired
+ LineWired
+ SolidWired
+
+enum EVertexSpace
+ None
+ Fixed
+ PlaneY
+
+enum ESpriteColor0
+ Copy
+ NHalfDiagInWorld
+ TmFRallyTreeRGB
+
+enum ESortPosition
+ Begining
+ BeforeAlpha01
+ BeforeTrans
+ Ending

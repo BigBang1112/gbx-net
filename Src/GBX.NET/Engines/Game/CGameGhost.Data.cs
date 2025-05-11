@@ -57,6 +57,7 @@ public partial class CGameGhost
             Samples = [];
         }
 
+        /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
         internal void Parse()
         {
             if (SamplesRequested)
@@ -101,6 +102,7 @@ public partial class CGameGhost
             }
         }
 
+        /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
         private void Read(CompressedData data)
         {
             using var ms = data.OpenDecompressedMemoryStream();

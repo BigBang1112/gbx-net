@@ -4,7 +4,7 @@ CGameCtnAnchoredObject 0x03101000
 0x002
  version
  ident ItemModel = empty
- vec3 PitchYawRoll
+ vec3 YawPitchRoll
  byte3 BlockUnitCoord
  id AnchorTreeId
  vec3 AbsolutePositionInMap

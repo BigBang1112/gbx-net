@@ -7,6 +7,9 @@ public partial class CGameGhost
     public byte[]? RawData { get; set; }
     public CompressedData? CompressedData { get; set; }
 
+    private readonly object parseLock = new();
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
     [AppliedWithChunk<Chunk0303F003>]
     [AppliedWithChunk<Chunk0303F005>]
     [AppliedWithChunk<Chunk0303F006>]
@@ -19,7 +22,10 @@ public partial class CGameGhost
                 return null;
             }
 
-            sampleData.Parse();
+            lock (parseLock)
+            {
+                sampleData.Parse();
+            }
 
             return sampleData;
         }

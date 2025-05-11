@@ -88,8 +88,6 @@ public partial class CGameCtnReplayRecord
     /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
     public ImmutableList<CGameCtnGhost>? Ghosts { get; private set; }
 
-    public ImmutableArray<long>? Extras { get; private set; }
-
     /// <summary>
     /// MediaTracker clip of the replay.
     /// </summary>
@@ -112,7 +110,6 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     public TimeInt32? EventsDuration { get; private set; }
 
-    public string? Game { get; private set; }
     public ImmutableList<CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; private set; }
     public int SceneryCapturableCount { get; private set; }
     public string? PlaygroundScript { get; private set; }
@@ -293,7 +290,7 @@ public partial class CGameCtnReplayRecord
             }
 
             inputs.Reverse(); // Inputs are originally reversed
-            n.Inputs = inputs.ToImmutable();
+            n.Inputs = inputs.ToImmutable(); // inputs are actually stored in the first ghost object
 
             U02 = r.ReadInt32();
         }
@@ -304,7 +301,7 @@ public partial class CGameCtnReplayRecord
         public int Version { get; set; }
 
         public int U01;
-        public int U02;
+        public ImmutableArray<long> U02;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
@@ -313,7 +310,7 @@ public partial class CGameCtnReplayRecord
             n.Ghosts = ImmutableList.Create(r.ReadArrayNodeRef_deprec<CGameCtnGhost>())!;
 
             U01 = r.ReadInt32(); // CGameReplayObjectVisData something, millisecond length of something (usually record time + 0.5s)
-            U02 = r.ReadInt32(); // SOldShowTime
+            U02 = ImmutableArray.Create(r.ReadArray<long>()); // SRecordUnit/SOldShowTime array
         }
     }
 
@@ -323,7 +320,7 @@ public partial class CGameCtnReplayRecord
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            U01 = r.ReadInt32();
+            U01 = r.ReadInt32(); // SOldCutKey
         }
     }
 
@@ -343,11 +340,19 @@ public partial class CGameCtnReplayRecord
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Game = r.ReadString();
+            var exeVersion = r.ReadString();
+
             U01 = new byte[r.ReadInt32()][]; // SOldCutKey2
             for (var i = 0; i < U01.Length; i++)
             {
                 U01[i] = r.ReadBytes(72);
+            }
+
+            var ghost = n.Ghosts?.FirstOrDefault();
+
+            if (ghost is not null)
+            {
+                ghost.Validate_ExeVersion = exeVersion;
             }
         }
     }
@@ -394,7 +399,7 @@ public partial class CGameCtnReplayRecord
                 inputs.Add(NET.Inputs.Input.Parse(time, name, data));
             }
 
-            n.Inputs = inputs.ToImmutable();
+            n.Inputs = inputs.ToImmutable(); // inputs are actually stored in the first ghost object
         }
     }
 
@@ -408,18 +413,26 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk0309300F
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public string U04 = string.Empty;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Game = r.ReadString();
-            U01 = r.ReadInt32();
-            U02 = r.ReadInt32();
-            U03 = r.ReadInt32();
-            U04 = r.ReadString();
+            var exeVersion = r.ReadString();
+            var exeChecksum = r.ReadUInt32();
+            var osKind = r.ReadInt32();
+            var cpuKind = r.ReadInt32();
+            var raceSettings = r.ReadString();
+
+            var ghost = n.Ghosts?.FirstOrDefault();
+
+            if (ghost is null)
+            {
+                return;
+            }
+
+            ghost.Validate_ExeVersion = exeVersion;
+            ghost.Validate_ExeChecksum = exeChecksum;
+            ghost.Validate_OsKind = osKind;
+            ghost.Validate_CpuKind = cpuKind;
+            ghost.Validate_RaceSettings = raceSettings;
         }
     }
 
@@ -441,11 +454,13 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk03093014
     {
+        public ImmutableArray<long> U01;
+
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             n.Ghosts = ImmutableList.Create(r.ReadArrayNodeRef_deprec<CGameCtnGhost>())!;
             r.ReadInt32(); // always zero
-            n.Extras = ImmutableArray.Create(r.ReadArray<long>()); // SOldShowTime array
+            U01 = ImmutableArray.Create(r.ReadArray<long>()); // SRecordUnit/SOldShowTime array
         }
     }
 
