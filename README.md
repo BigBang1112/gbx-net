@@ -682,13 +682,15 @@ If you use the LZO compression library, you must license your project under the 
 
 ## Special thanks
 
-Without these people, this project wouldn't be what it is today (ordered by impact):
+Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
 - Melissa (Miss)
 - florenzius
 - Kim
 - tilman
+- GreffMASTER
+- AurisTFG
 - schadocalex
 - James Romeril
 - frolad (Juice)
