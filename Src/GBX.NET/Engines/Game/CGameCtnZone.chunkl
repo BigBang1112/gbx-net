@@ -6,7 +6,9 @@ CGameCtnZone 0x0305C000
  id SurfaceId
  int
 
-0x004 (skippable, ignore)
+0x004 (skippable)
+ int
+ bool
 
 0x005
  bool
