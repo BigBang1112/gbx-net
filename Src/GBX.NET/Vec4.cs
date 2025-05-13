@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Numerics;
+
+namespace GBX.NET;
 
 /// <summary>
 /// [GmVec4] Represents a three-dimensional vector with <see cref="float"/> components (X, Y, Z, W).
@@ -36,4 +38,10 @@ public readonly record struct Vec4(float X, float Y, float Z, float W)
     public static implicit operator (float X, float Y, float Z, float W)(Vec4 v) => (v.X, v.Y, v.Z, v.W);
 
     public static implicit operator Vec4(Int4 a) => new(a.X, a.Y, a.Z, a.W);
+
+    public static implicit operator Vector4(Vec4 a) => new(a.X, a.Y, a.Z, a.W);
+    public static implicit operator Vec4(Vector4 a) => new(a.X, a.Y, a.Z, a.W);
+
+    public static explicit operator Vec4(Rect a) => new(a.X, a.Y, a.X2, a.Y2);
+    public static explicit operator Vec4(Quat a) => new(a.X, a.Y, a.Z, a.W);
 }

@@ -15,4 +15,10 @@ public readonly record struct TransQuat(float TX, float TY, float TZ,
     public static implicit operator TransQuat((float TX, float TY, float TZ,
                                                float X,  float Y,  float Z, float W) v) => new TransQuat(v.TX, v.TY, v.TZ,
                                                                                                          v.X,  v.Y,  v.Z, v.W);
+
+    public void Deconstruct(out Vec3 xyz, out Quat quat)
+    {
+        xyz = new Vec3(TX, TY, TZ);
+        quat = new Quat(X, Y, Z, W);
+    }
 }

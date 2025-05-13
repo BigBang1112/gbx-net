@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Numerics;
+
+namespace GBX.NET;
 
 public readonly record struct Mat4(float XX, float XY, float XZ, float XW,
                                    float YX, float YY, float YZ, float YW,
@@ -18,4 +20,14 @@ public readonly record struct Mat4(float XX, float XY, float XZ, float XW,
                                                                                                  v.YX, v.YY, v.YZ, v.YW,
                                                                                                  v.ZX, v.ZY, v.ZZ, v.ZW,
                                                                                                  v.WX, v.WY, v.WZ, v.WW);
+
+    public static implicit operator Matrix4x4(Mat4 a) => new Matrix4x4(a.XX, a.XY, a.XZ, a.XW,
+                                                                       a.YX, a.YY, a.YZ, a.YW,
+                                                                       a.ZX, a.ZY, a.ZZ, a.ZW,
+                                                                       a.WX, a.WY, a.WZ, a.WW);
+
+    public static implicit operator Mat4(Matrix4x4 m) => new Mat4(m.M11, m.M12, m.M13, m.M14,
+                                                                  m.M21, m.M22, m.M23, m.M24,
+                                                                  m.M31, m.M32, m.M33, m.M34,
+                                                                  m.M41, m.M42, m.M43, m.M44);
 }
