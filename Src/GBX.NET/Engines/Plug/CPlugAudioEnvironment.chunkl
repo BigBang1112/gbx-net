@@ -33,4 +33,27 @@ CPlugAudioEnvironment 0x09039000
  bool
 
 0x001
+ float Dopplerfactor
+
+0x002 
  float
+ float
+ float Gain
+ float
+ float ReflectionGain
+ float
+ float
+ float
+ float
+ float
+ float LateReverbGain
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ bool
