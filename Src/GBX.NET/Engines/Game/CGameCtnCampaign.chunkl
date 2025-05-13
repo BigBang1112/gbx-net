@@ -1,16 +1,17 @@
 CGameCtnCampaign 0x03090000
 
 0x000 // map groups
- version
- list<CGameCtnChallengeGroup> MapGroups
+ id ChallengeGroupsId
+ list<CGameCtnChallengeGroup> ChallengeGroups
 
 0x001
- version
+ id CollectionId
  int U01
  if U01 > 0
   throw
 
 0x002
+ id IconId
  int U01
  int U01
  int U01
@@ -18,10 +19,16 @@ CGameCtnCampaign 0x03090000
  int U01
  int U01
 
+0x003
+ string Name
+ int Type
+ bool IsInternal
+ bool
+
 0x004
  string Name
  int<EType> Type
- bool
+ bool IsInternal
  bool
  bool
 
