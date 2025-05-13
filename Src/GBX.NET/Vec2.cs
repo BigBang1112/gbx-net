@@ -33,6 +33,8 @@ public readonly record struct Vec2(float X, float Y)
 
     public float GetSqrMagnitude() => X * X + Y * Y;
 
+    public Vector2 AsVector2() => new(X, Y);
+
     /// <summary>
     /// Implicitly converts a tuple of floats to an <see cref="Vec2"/> vector.
     /// </summary>
@@ -47,7 +49,7 @@ public readonly record struct Vec2(float X, float Y)
 
     public static implicit operator Vec2(Int2 a) => new(a.X, a.Y);
 
-    public static implicit operator Vector2(Vec2 a) => new(a.X, a.Y);
+    public static implicit operator Vector2(Vec2 a) => a.AsVector2();
     public static implicit operator Vec2(Vector2 a) => new(a.X, a.Y);
 
     public static Vec2 operator +(Vec2 a, Vec2 b) => new(a.X + b.X, a.Y + b.Y);
