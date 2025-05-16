@@ -51,4 +51,7 @@ public readonly record struct Int3(int X, int Y, int Z)
     public static Int3 operator -(Int3 a, Int3 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 
     public static Int3 operator *(Int3 a, Int3 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+
+    public static Int3 operator *(Int3 a, int b) => new(a.X * b, a.Y * b, a.Z * b);
+    public static Vec3 operator *(Int3 a, float b) => new(a.X * b, a.Y * b, a.Z * b);
 }
