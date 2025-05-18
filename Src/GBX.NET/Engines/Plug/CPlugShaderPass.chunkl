@@ -9,11 +9,11 @@ CPlugShaderPass 0x09067000
 
 0x008
  CMwNod U01 (external)
- if U01 != null
+ if U01 != null || U01File != null
   GpuLoadFx[] GpuLoadFxs1
   vec4[] U02
  CMwNod U03 (external)
- if U03 != null
+ if U03 != null || U03File != null
   GpuLoadFx[] GpuLoadFxs2
   vec4[] U04
 
