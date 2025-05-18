@@ -21,7 +21,7 @@ CGameCtnCampaign 0x03090000
 
 0x003
  string Name
- int Type
+ int<EType> Type
  bool IsInternal
  bool
 
