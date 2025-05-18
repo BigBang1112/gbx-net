@@ -7,7 +7,7 @@ CSceneObjectLink 0x0A014000
   int U02 // array of tree ids?
   if U02 == 2
    int U03
-  id MobilTreeId
+  id Name
   int U05
  if !U01
   CSceneObject Object

@@ -2,7 +2,7 @@ CSceneObject 0x0A005000
 - abstract
 
 0x001 [TM10, TMSX, TMF]
- id
+ id Name
 
 0x002
  bool // same as 0x004 U01
