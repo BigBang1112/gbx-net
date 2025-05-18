@@ -33,7 +33,7 @@ CPlugAudioEnvironment 0x09039000
  bool
 
 0x001
- float Dopplerfactor
+ float DopplerFactor
 
 0x002 
  float
