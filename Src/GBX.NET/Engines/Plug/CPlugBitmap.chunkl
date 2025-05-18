@@ -26,6 +26,9 @@ CPlugBitmap 0x09011000
 0x019
  float BumpScaleMipLevel
 
+0x01B
+ uint Flags2
+
 0x01C
  vec2 DefaultTexCoordScale
  vec2 DefaultTexCoordTrans
