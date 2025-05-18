@@ -4,9 +4,10 @@ CSceneObjectLink 0x0A014000
  bool U01
  if U01
   CSceneMobil Mobil (external)
-  int U02
-  int U03
-  id U04
+  int U02 // array of tree ids?
+  if U02 == 2
+   int U03
+  id MobilTreeId
   int U05
  if !U01
   CSceneObject Object
@@ -28,7 +29,7 @@ CSceneObjectLink 0x0A014000
  bool
 
 0x002
- id
+ id MobilTreeId
  bool
  bool
 
