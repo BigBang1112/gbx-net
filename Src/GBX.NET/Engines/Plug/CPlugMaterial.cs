@@ -16,6 +16,21 @@ public partial class CPlugMaterial
     [AppliedWithChunk<Chunk0907900E>]
     public CPlugSurface.MaterialId SurfaceId { get; set; }
 
+    public partial class Chunk09079009
+    {
+        public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.shader, ref n.shaderFile);
+
+            if (n.shader is not null || n.shaderFile is not null)
+            {
+                return;
+            }
+
+            rw.ArrayReadableWritable(ref n.deviceMaterials, version: 0x9);
+        }
+    }
+
     public partial class Chunk0907900D
     {
         public int[]? U01;
