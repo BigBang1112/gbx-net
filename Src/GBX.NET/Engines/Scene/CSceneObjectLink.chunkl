@@ -13,7 +13,12 @@ CSceneObjectLink 0x0A014000
  iso4 RelativeLocation
  bool U06
 
-0x0A00F001
+0x0A00F000 (not-remapped)
+ CSceneObject Object
+ iso4 RelativeLocation
+ bool
+
+0x0A00F001 (not-remapped)
  float
  float
  float
@@ -27,7 +32,7 @@ CSceneObjectLink 0x0A014000
  bool
  bool
 
-0x0A00F002
+0x0A00F002 (not-remapped)
  bool
 
 0x003
