@@ -15,6 +15,7 @@ jobs:
     
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RELEASE_BODY: ${{ github.event.release.body }}
     
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +23,11 @@ jobs:
           submodules: recursive
       
       - name: Set release information
-        run: gh release edit ${{ github.ref_name }} -n "$(echo -e '***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***\n\n${{ github.event.release.body }}')"
+        run: |
+          FINAL_BODY="***[Release is being automatically created, please wait...](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})***
+          
+          $RELEASE_BODY"
+          gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
     
   build:
     needs: prepare-description
@@ -112,8 +117,13 @@ jobs:
     
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RELEASE_BODY: ${{ github.event.release.body }}
     
     steps:
       - uses: actions/checkout@v4
       - name: Set release information
-        run: gh release edit ${{ github.ref_name }} -n "$(echo -e '${{ github.event.release.body }}\n\nAssets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).')"
+        run: |
+          FINAL_BODY="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+          
+          ${MESSAGE}"
+          gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"

@@ -130,7 +130,7 @@ Using the NuGet packages is recommended.
 4. Add the GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
 5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
 6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
-7. Write code - see [Examples (simple)](#examples-simple).
+7. Write code - see [Usage (simple examples)](#usage-simple-examples).
 8. Use `dotnet run` to run the app.
 
 Steps 2-8:
@@ -388,7 +388,7 @@ There are a few places where Gbx includes additional zlib-compressed data:
 - Lightmap data of a map
   - `CGameCtnChallenge.LightmapCache`, additional lightmap parameters
 
-GBX.NET does not include zlib algorithm by default to read this data. Properties will often return `null` silently, but you can hook onto more details about this if you specify `Logger` in the parse methods.
+GBX.NET does not include zlib algorithm by default to read this data. Properties will often throw a `ZLibNotDefinedException`.
 
 To "unlock" this data, you need to specify zlib implementation:
 
@@ -414,7 +414,7 @@ The data is often stored in properties of type `CompressedData` which are byte a
 
 > The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
 
-GBX.NET.PAK uses a separate zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
+GBX.NET.PAK uses a different zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
 ## Clarity
 
@@ -646,6 +646,8 @@ Go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include the packag
 ```
 Then you can select the `nuget.gbx.tools` package source and fetch nightly builds from there.
 
+You can also create a `nuget.config` file in your solution directory and put the XML above into it, which makes it easier to build your project in CI or with generally less preparation.
+
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
 ## License
@@ -680,13 +682,15 @@ If you use the LZO compression library, you must license your project under the 
 
 ## Special thanks
 
-Without these people, this project wouldn't be what it is today (ordered by impact):
+Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
 - Melissa (Miss)
 - florenzius
 - Kim
 - tilman
+- GreffMASTER
+- AurisTFG
 - schadocalex
 - James Romeril
 - frolad (Juice)

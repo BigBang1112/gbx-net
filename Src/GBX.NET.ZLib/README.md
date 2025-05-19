@@ -9,13 +9,6 @@ The compression logic is split up from the read/write logic to separate dependen
 
 Compression has not been tested.
 
-## Framework support
-
-- .NET 9
-- .NET 8
-- .NET 6
-- .NET Standard 2.0
-
 ## Usage
 
 Additional package `GBX.NET.LZO` is required in this example.

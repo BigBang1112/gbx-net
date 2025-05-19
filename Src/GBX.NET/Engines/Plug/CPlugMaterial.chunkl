@@ -10,6 +10,8 @@ CPlugMaterial 0x09079000
 0x007
  CPlugMaterialCustom CustomMaterial
 
+0x009
+
 0x00A
  int
 

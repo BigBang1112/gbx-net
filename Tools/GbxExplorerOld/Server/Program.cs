@@ -3,43 +3,60 @@ using Microsoft.AspNetCore.ResponseCompression;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Logging.AddOpenTelemetry(options =>
-{
-    options.IncludeScopes = true;
-    options.IncludeFormattedMessage = true;
-    options.AddOtlpExporter();
-});
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console(theme: AnsiConsoleTheme.Sixteen, applyThemeToRedirectedOutput: true)
+    .WriteTo.OpenTelemetry(options =>
+    {
+        options.Endpoint = builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"];
+        options.Protocol = builder.Configuration["OTEL_EXPORTER_OTLP_PROTOCOL"]?.ToLowerInvariant() switch
+        {
+            "grpc" => Serilog.Sinks.OpenTelemetry.OtlpProtocol.Grpc,
+            "http/protobuf" or null or "" => Serilog.Sinks.OpenTelemetry.OtlpProtocol.HttpProtobuf,
+            _ => throw new NotSupportedException($"OTLP protocol {builder.Configuration["OTEL_EXPORTER_OTLP_PROTOCOL"]} is not supported")
+        };
+        options.Headers = builder.Configuration["OTEL_EXPORTER_OTLP_HEADERS"]?
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(x => x.Split('=', 2, StringSplitOptions.RemoveEmptyEntries))
+            .ToDictionary(x => x[0], x => x[1]) ?? [];
+    })
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 
 builder.Services.AddOpenTelemetry()
-    .WithMetrics(x =>
+    .WithMetrics(options =>
     {
-        x.AddRuntimeInstrumentation()
+        options
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddRuntimeInstrumentation()
             .AddProcessInstrumentation()
-            .AddMeter("Microsoft.AspNetCore.Hosting")
-            .AddMeter("Microsoft.AspNetCore.Server.Kestrel")
-            .AddMeter("Microsoft.AspNetCore.Http.Connections")
-            .AddMeter("Microsoft.AspNetCore.Routing")
-            .AddMeter("Microsoft.AspNetCore.Diagnostics")
-            .AddMeter("Microsoft.AspNetCore.RateLimiting")
-            .AddMeter("System.Net.Http")
             .AddOtlpExporter();
+
+        options.AddMeter("System.Net.Http");
     })
-    .WithTracing(x =>
+    .WithTracing(options =>
     {
         if (builder.Environment.IsDevelopment())
         {
-            x.SetSampler<AlwaysOnSampler>();
+            options.SetSampler<AlwaysOnSampler>();
         }
 
-        x.AddAspNetCoreInstrumentation()
+        options
+            .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddOtlpExporter();
     });
+builder.Services.AddMetrics();
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();

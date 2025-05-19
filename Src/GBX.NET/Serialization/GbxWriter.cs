@@ -925,7 +925,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        Write((byte)value | 0x80);
+        Write((byte)(value | 0x80));
         Write((ushort)(value >> 7));
     }
 

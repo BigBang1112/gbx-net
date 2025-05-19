@@ -5,26 +5,112 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugEntRecordData : IReadableWritable
 {
-    private TimeInt32 start;
-    private TimeInt32 end;
+    private TimeInt32? start;
+    private TimeInt32? end;
     private EntRecordDesc[] entRecordDescs = [];
     private NoticeRecordDesc[] noticeRecordDescs = [];
     private List<EntRecordListElem> entList = [];
     private List<NoticeRecordListElem> bulkNoticeList = [];
     private List<CustomModulesDeltaList> customModulesDeltaLists = [];
 
-    [ZLibData]
     public CompressedData CompressedData { get; set; } = new(0, []);
 
-    public TimeInt32 Start { get => start; }
-    public TimeInt32 End { get => end; }
-    public EntRecordDesc[] EntRecordDescs { get => entRecordDescs; set => entRecordDescs = value; }
-    public NoticeRecordDesc[] NoticeRecordDescs { get => noticeRecordDescs; set => noticeRecordDescs = value; }
-    public List<EntRecordListElem> EntList { get => entList; }
-    public List<NoticeRecordListElem> BulkNoticeList { get => bulkNoticeList; }
-    public List<CustomModulesDeltaList> CustomModulesDeltaLists { get => customModulesDeltaLists; }
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public TimeInt32 Start
+    {
+        get
+        {
+            if (Gbx.ZLib is null && start is null && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return start ?? TimeInt32.Zero;
+        }
+    }
 
-    public void ReadWrite(GbxReaderWriter rw, int v = 0)
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public TimeInt32 End
+    {
+        get
+        {
+            if (Gbx.ZLib is null && end is null && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return end ?? TimeInt32.Zero;
+        }
+    }
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public EntRecordDesc[] EntRecordDescs
+    {
+        get
+        {
+            if (Gbx.ZLib is null && (entRecordDescs is null || entRecordDescs.Length == 0) && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return entRecordDescs ?? [];
+        }
+
+        set => entRecordDescs = value;
+    }
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public NoticeRecordDesc[] NoticeRecordDescs
+    {
+        get
+        {
+            if (Gbx.ZLib is null && (noticeRecordDescs is null || noticeRecordDescs.Length == 0) && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return noticeRecordDescs ?? [];
+        }
+
+        set => noticeRecordDescs = value;
+    }
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public List<EntRecordListElem> EntList
+    {
+        get
+        {
+            if (Gbx.ZLib is null && (entList is null || entList.Count == 0) && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return entList ?? [];
+        }
+    }
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public List<NoticeRecordListElem> BulkNoticeList
+    {
+        get
+        {
+            if (Gbx.ZLib is null && (bulkNoticeList is null || bulkNoticeList.Count == 0) && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return bulkNoticeList ?? [];
+        }
+    }
+
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    public List<CustomModulesDeltaList> CustomModulesDeltaLists
+    {
+        get
+        {
+            if (Gbx.ZLib is null && (customModulesDeltaLists is null || customModulesDeltaLists.Count == 0) && CompressedData?.Data.Length > 0)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return customModulesDeltaLists ?? [];
+        }
+    }
+
+    void IReadableWritable.ReadWrite(GbxReaderWriter rw, int v)
     {
         if (v >= 1)
         {
@@ -68,7 +154,7 @@ public partial class CPlugEntRecordData : IReadableWritable
 
             if (Version < 5)
             {
-                n.ReadWrite(rw, Version);
+                ((IReadableWritable)n).ReadWrite(rw, Version);
                 return;
             }
 
@@ -90,7 +176,7 @@ public partial class CPlugEntRecordData : IReadableWritable
                         using var rBuffer = new GbxReader(uncompressedMs);
                         using var rwBuffer = new GbxReaderWriter(rBuffer);
 
-                        n.ReadWrite(rwBuffer, Version);
+                        ((IReadableWritable)n).ReadWrite(rwBuffer, Version);
                     }
                     catch (Exception ex)
                     {

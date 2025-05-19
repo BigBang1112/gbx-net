@@ -58,6 +58,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{3111C645-E0FA-4957-94AE-7BD7254CFCB6}"
 	ProjectSection(SolutionItems) = preProject
 		Resources\ClassId.txt = Resources\ClassId.txt
+		Resources\ClassIdManual.txt = Resources\ClassIdManual.txt
 		Resources\CollectionId.txt = Resources\CollectionId.txt
 		Resources\Engine.txt = Resources\Engine.txt
 		Resources\Extensions.txt = Resources\Extensions.txt
@@ -181,6 +182,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PakToFolder", "Tools\PakToFolder\PakToFolder.csproj", "{8BCA7A11-5A5E-4B9F-AC1A-384D46C68559}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjExporter", "Tools\ObjExporter\ObjExporter.csproj", "{57CF1E52-A9C7-4C6E-9B16-AB0F8D904AFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

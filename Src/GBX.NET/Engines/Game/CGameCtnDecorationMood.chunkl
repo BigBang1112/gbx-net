@@ -4,8 +4,8 @@ CGameCtnDecorationMood 0x0303A000
  float Latitude
  float Longitude
  float DeltaGMT
- int
- int
+ timeint TimeSunRise
+ timeint TimeSunFall
 
 0x001
  float RemappedStartDayTime

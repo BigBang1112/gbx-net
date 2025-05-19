@@ -198,7 +198,18 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// <summary>
     /// Rotation of the block. Used only in TM2020 in Free block mode.
     /// </summary>
-    public Vec3? PitchYawRoll { get; set; }
+    /// <remarks>Use the correctly-named YawPitchRoll instead. This property doesn't swap Pitch and Yaw and behaves like YawPitchRoll, and it will be removed in 2.3.0.</remarks>
+    [Obsolete("Use the correctly-named YawPitchRoll instead. This property doesn't swap Pitch and Yaw and behaves like YawPitchRoll, and it will be removed in 2.3.0.")]
+    public Vec3? PitchYawRoll
+    {
+        get => YawPitchRoll;
+        set => YawPitchRoll = value;
+    }
+
+    /// <summary>
+    /// Rotation of the block. Used only in TM2020 in Free block mode.
+    /// </summary>
+    public Vec3? YawPitchRoll { get; set; }
 
     /// <summary>
     /// [MapElemColor] Color of the block. Available since TM2020 Royal update.

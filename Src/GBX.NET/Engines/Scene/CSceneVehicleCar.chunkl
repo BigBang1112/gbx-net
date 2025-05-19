@@ -1,7 +1,37 @@
 CSceneVehicleCar 0x0A02B000
 - inherits: CSceneVehicle
 
+0x003
+
+0x005
+ CMwNod
+ vec3
+
+0x007
+ CMwNod
+ vec3
+
+0x008
+
+0x009
+ OldStruct[]
+
+0x00B
+ CMwNod
+ CMwNod
+
 0x00C
  float
  float
  box
+
+0x014
+ CMwNod
+
+archive OldStruct
+ id
+ int
+ id
+ id
+ bool
+ bool

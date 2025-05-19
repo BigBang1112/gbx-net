@@ -7,4 +7,4 @@ CGameCtnDecorationAudio 0x03039000
  CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
 
 0x002
- float
+ float SoundAttenuationInEditor
