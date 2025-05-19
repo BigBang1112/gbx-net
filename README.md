@@ -130,7 +130,7 @@ Using the NuGet packages is recommended.
 4. Add the GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
 5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
 6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
-7. Write code - see [Examples (simple)](#examples-simple).
+7. Write code - see [Usage (simple examples)](#usage-simple-examples).
 8. Use `dotnet run` to run the app.
 
 Steps 2-8:
@@ -646,6 +646,8 @@ Go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include the packag
 ```
 Then you can select the `nuget.gbx.tools` package source and fetch nightly builds from there.
 
+You can also create a `nuget.config` file in your solution directory and put the XML above into it, which makes it easier to build your project in CI or with generally less preparation.
+
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
 ## License
@@ -680,13 +682,15 @@ If you use the LZO compression library, you must license your project under the 
 
 ## Special thanks
 
-Without these people, this project wouldn't be what it is today (ordered by impact):
+Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
 - Melissa (Miss)
 - florenzius
 - Kim
 - tilman
+- GreffMASTER
+- AurisTFG
 - schadocalex
 - James Romeril
 - frolad (Juice)
