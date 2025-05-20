@@ -272,12 +272,20 @@ internal sealed class MemberSerializationWriter
 
         sb.AppendIndent(indent);
 
-        if (!self && !isUnknown)
+        if (chunkProperty.Type.PrimaryType is "version" or "versionb")
         {
-            sb.Append("n.");
+            sb.Append("Version");
+        }
+        else
+        {
+            if (!self && !isUnknown)
+            {
+                sb.Append("n.");
+            }
+
+            sb.Append(name);
         }
 
-        sb.Append(name);
         sb.Append(" = ");
 
         if (chunkProperty is ChunkEnum chunkEnum)
@@ -288,6 +296,18 @@ internal sealed class MemberSerializationWriter
         }
 
         sb.Append("r.Read");
+
+        if (chunkProperty.Type.PrimaryType == "version")
+        {
+            sb.Append("Int32();");
+            return;
+        }
+
+        if (chunkProperty.Type.PrimaryType == "versionb")
+        {
+            sb.Append("Byte();");
+            return;
+        }
 
         if (chunkProperty.Type.IsArray)
         {
