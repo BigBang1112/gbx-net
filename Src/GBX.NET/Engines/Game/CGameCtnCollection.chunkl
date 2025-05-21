@@ -73,13 +73,13 @@ CGameCtnCollection 0x03033000
  bool IsEditable
  int<ECollectionType> CollectionType
 
-0x00D //IconFid(0xc0), IconSmallFid(0xc4)
+0x00D //IconFid, IconSmallFid
 
 0x00E
  int SortIndex
 
 0x011
- int Default Decoration
+ int DefaultDecoration
 
 0x013
  float WaterTop
