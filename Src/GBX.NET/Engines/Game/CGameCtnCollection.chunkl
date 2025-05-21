@@ -71,20 +71,12 @@ CGameCtnCollection 0x03033000
 
 0x00C
  bool IsEditable
- int CollectionType
+ int<ECollectionType> CollectionType
 
 0x00D //IconFid(0xc0), IconSmallFid(0xc4)
 
 0x00E
  int SortIndex
-
-0x00F
- int BlocksShadow
-
-0x010
- int BlocksShadow
- float ShadowSoftSizeInWorld
- int<EVertexLighting> VertexLighting 
 
 0x011
  int Default Decoration
@@ -312,6 +304,10 @@ CGameCtnCollection 0x03033000
  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B
  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C
  CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3
+
+enum ECollectionType
+ Environment
+ Car
 
 enum EBackgroundShadow
  None
