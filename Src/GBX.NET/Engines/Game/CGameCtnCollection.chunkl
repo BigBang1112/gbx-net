@@ -67,28 +67,28 @@ CGameCtnCollection 0x03033000
  ident Vehicle
 
 0x00B
- int
+ int BlocksShadow
 
 0x00C
  bool IsEditable
- int
+ int<ECollectionType> CollectionType
 
-0x00D
+0x00D //IconFid, IconSmallFid
 
 0x00E
  int SortIndex
 
 0x011
- int
+ CGameCtnDecoration DefaultDecoration (external)
 
 0x013
- float
- float
+ float WaterTop
+ float WaterBottom
  float CameraMinHeight
 
 0x016
- int
- bool
+ int BlocksShadow
+ bool ShadowCastBack
  int<EBackgroundShadow> BackgroundShadow
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
@@ -113,8 +113,8 @@ CGameCtnCollection 0x03033000
  string LongDesc
 
 0x01B
- int
- bool
+ int BlocksShadow
+ bool ShadowCastBack
  int<EBackgroundShadow> BackgroundShadow
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
@@ -126,10 +126,10 @@ CGameCtnCollection 0x03033000
  CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers (external)
 
 0x01E // camera
- float
- float
+ float WaterTop
+ float WaterBottom
  float CameraMinHeight
- bool
+ bool IsWaterOutsidePlayField
 
 0x01F // ParticleEmitterModelsFids
  int[] ParticleEmitterModelsFids
@@ -150,9 +150,9 @@ CGameCtnCollection 0x03033000
  bool? CarCanBeDirty
 
 0x024
- int
+ int BlocksShadow
  int<EBackgroundShadow> BackgroundShadow
- bool
+ bool ShadowCastBack
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
  float ColorVertexMin
@@ -304,6 +304,10 @@ CGameCtnCollection 0x03033000
  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B
  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C
  CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3
+
+enum ECollectionType
+ Environment
+ Car
 
 enum EBackgroundShadow
  None
