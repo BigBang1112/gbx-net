@@ -79,7 +79,7 @@ CGameCtnCollection 0x03033000
  int SortIndex
 
 0x011
- int DefaultDecoration
+ CGameCtnDecoration DefaultDecoration (external)
 
 0x013
  float WaterTop
