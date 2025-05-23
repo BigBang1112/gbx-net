@@ -249,7 +249,7 @@ CGameCtnChallenge 0x03043000 // A map.
  v2+
   CGameCtnMediaClip ClipAmbiance
  v1+
-  int3 ClipTriggerSize
+  int3 ClipTriggerSize = (1, 1, 1)
 
 0x04B (skippable) [MP3, TMT, MP4, TM2020] // objectives
  string ObjectiveTextAuthor

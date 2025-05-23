@@ -24,7 +24,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
             {
                 return file.Path.EndsWith(".chunkl", StringComparison.OrdinalIgnoreCase);
             })
-            .Select(static (chunklFile, token) =>
+            .Select((chunklFile, token) =>
             {
                 if (chunklFile.GetText(token)?.ToString() is not string chunklText)
                 {
@@ -33,9 +33,16 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
 
                 using var reader = new StringReader(chunklText);
 
-                return new ChunkLFile(
-                    DataModel: ChunkLSerializer.Deserialize(reader),
-                    Engine: Path.GetFileName(Path.GetDirectoryName(chunklFile.Path)));
+                try
+                {
+                    return new ChunkLFile(
+                        DataModel: ChunkLSerializer.Deserialize(reader),
+                        Engine: Path.GetFileName(Path.GetDirectoryName(chunklFile.Path)));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Failed to parse chunkl file: {chunklFile.Path}", ex);
+                }
             });
 
         var gbxClasses = context.CompilationProvider
