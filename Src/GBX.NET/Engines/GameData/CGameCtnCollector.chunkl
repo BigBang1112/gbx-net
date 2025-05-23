@@ -12,9 +12,9 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int<ECollectorFlags> Flags
   short CatalogPosition
   v5-
-   byte
-   int
-   short
+   byte NbAvailableMin
+   int CopperPrice
+   short NbAvailableMax
   v7+
    string Name
    v8+
@@ -29,15 +29,15 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  ident Ident
 
 0x006 [TM10, TMSX, TMF]
- int
+ int<ESkinKind> SkinKind
 
 0x007 [TM10, TMSX, TMF]
  bool IsInternal
- bool
+ bool NeedUnlock
  int CatalogPosition
- int
- int
- int
+ int NbAvailableMin
+ int CopperPrice
+ int NbAvailableMax
 
 0x008
  CPlugGameSkin
@@ -87,3 +87,9 @@ enum EProdState
  GameBox
  DevBuild
  Release
+
+enum ESkinKind
+ None
+ Text
+ Image
+ Vehicle

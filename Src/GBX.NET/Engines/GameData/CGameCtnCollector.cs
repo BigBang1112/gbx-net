@@ -7,6 +7,12 @@ public partial class CGameCtnCollector
     private int catalogPosition;
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
+    private int nbAvailableMin;
+    public int NbAvailableMin { get => nbAvailableMin; set => nbAvailableMin = value; }
+
+    private int nbAvailableMax;
+    public int NbAvailableMax { get => nbAvailableMax; set => nbAvailableMax = value; }
+
     /// <summary>
     /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
     /// </summary>
