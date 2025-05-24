@@ -14,7 +14,7 @@ CSceneVehicleCar 0x0A02B000
 0x008
 
 0x009
- OldStruct[]
+ VisualVehicle[] VisualVehicles
 
 0x00B
  CMwNod
@@ -27,7 +27,7 @@ CSceneVehicleCar 0x0A02B000
 
 0x014
 
-archive OldStruct
+archive VisualVehicle
  id
  int
  id
