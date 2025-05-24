@@ -889,7 +889,7 @@ public partial class CGameCtnChallenge :
                 rw.Ident(ref n.mapInfo);
                 rw.String(ref n.mapName);
             }
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.needUnlock);
             if (Version >= 1)
             {
                 rw.TimeInt32Nullable(ref n.bronzeTime);
@@ -906,11 +906,7 @@ public partial class CGameCtnChallenge :
                     if (Version >= 5)
                     {
                         rw.Boolean(ref n.isLapRace);
-                        if (Version == 6)
-                        {
-                            rw.Boolean(ref U03);
-                        }
-                        if (Version >= 7)
+                        if (Version >= 6)
                         {
                             rw.EnumInt32<PlayMode>(ref n.mode);
                             if (Version >= 9)

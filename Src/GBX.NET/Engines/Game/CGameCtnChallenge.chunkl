@@ -12,7 +12,7 @@ CGameCtnChallenge 0x03043000 // A map.
   timeint? GoldTime
   timeint? AuthorTime
   v2=
-   byte
+   byte U02
   v4+
    int Cost
    v5+
@@ -20,13 +20,13 @@ CGameCtnChallenge 0x03043000 // A map.
     v6+
      int<PlayMode> Mode
      v9+
-      int
+      int U04
       v10+
        int AuthorScore
        v11+
         int<EditorMode> Editor
         v12+
-         int
+         int U05
          v13+
           int NbCheckpoints
           int NbLaps
