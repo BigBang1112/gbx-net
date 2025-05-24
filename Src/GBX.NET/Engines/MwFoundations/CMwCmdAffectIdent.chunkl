@@ -1,0 +1,7 @@
+CMwCmdAffectIdent 0x01032000
+- inherits: CMwCmdInst
+
+0x000
+ string
+ CMwCmdExp Value
+ bool

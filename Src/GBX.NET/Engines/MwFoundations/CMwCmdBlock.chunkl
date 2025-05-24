@@ -1,0 +1,4 @@
+CMwCmdBlock 0x01030000
+
+0x004
+ CMwCmdScript[] Cmds
