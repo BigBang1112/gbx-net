@@ -5,7 +5,7 @@ CGameCtnChallenge 0x03043000 // A map.
  v2-
   ident MapInfo = empty
   string MapName = empty
- bool
+ bool NeedUnlock
  v1+
   timeint? BronzeTime
   timeint? SilverTime
@@ -17,9 +17,7 @@ CGameCtnChallenge 0x03043000 // A map.
    int Cost
    v5+
     bool IsLapRace
-    v6=
-     bool
-    v7+
+    v6+
      int<PlayMode> Mode
      v9+
       int
@@ -55,7 +53,7 @@ CGameCtnChallenge 0x03043000 // A map.
        v8-
         int
        v8+
-        ulong LightmapCacheUid
+        ulong LightmapCacheUid (hex)
         v9+
          byte LightmapVersion
          v11+
@@ -163,7 +161,7 @@ CGameCtnChallenge 0x03043000 // A map.
  vec2 MapCoordTarget
 
 0x026 [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // clip global
- CMwNod
+ CGameCtnMediaClip ClipGlobal
 
 0x027 // old realtime thumbnail
  bool HasCustomCamThumbnail
