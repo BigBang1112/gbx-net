@@ -8,7 +8,7 @@ CScene 0x0A001000
  uint[]
 
 0x005
- CMotionManager[]_deprec MotionManagers (external)
+ CMotionManager[]_deprec MotionManagerModels (external)
 
 0x006 (ignore)
  OldSceneMobil[] OldMobils
