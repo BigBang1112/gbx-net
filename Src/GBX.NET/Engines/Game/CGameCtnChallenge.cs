@@ -674,7 +674,7 @@ public partial class CGameCtnChallenge :
         return Blocks.Remove(block);
     }
 
-    public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default)
+    public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 yawPitchRoll, Vec3 offsetPivot = default)
     {
         _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
 
@@ -684,7 +684,7 @@ public partial class CGameCtnChallenge :
         {
             ItemModel = itemModel,
             AbsolutePositionInMap = absolutePosition,
-            PitchYawRoll = pitchYawRoll,
+            YawPitchRoll = yawPitchRoll,
             PivotPosition = offsetPivot
         };
 
