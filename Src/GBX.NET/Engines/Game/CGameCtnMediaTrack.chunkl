@@ -22,5 +22,5 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
  bool IsReadOnly
  bool IsCycling
  v1+
-  float
-  float
+  timefloat? RepeatingSegmentStart
+  timefloat? RepeatingSegmentEnd
