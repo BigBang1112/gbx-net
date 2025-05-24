@@ -26,7 +26,6 @@ CSceneVehicleCar 0x0A02B000
  box
 
 0x014
- CMwNod
 
 archive OldStruct
  id

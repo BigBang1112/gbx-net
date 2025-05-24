@@ -21,4 +21,14 @@ public partial class CSceneVehicleCar
             n.VehicleMaterialsFile = vehicleMaterialsFile;
         }
     }
+
+    public partial class Chunk0A02B014
+    {
+        public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
+        {
+            var vehicleStructFile = n.VehicleStructFile;
+            n.VehicleStruct = rw.NodeRef(n.VehicleStruct, ref vehicleStructFile);
+            n.VehicleStructFile = vehicleStructFile;
+        }
+    }
 }
