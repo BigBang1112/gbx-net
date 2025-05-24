@@ -24,7 +24,7 @@ public partial class ClassChunkLMixedGenerator : IIncrementalGenerator
             {
                 return file.Path.EndsWith(".chunkl", StringComparison.OrdinalIgnoreCase);
             })
-            .Select((chunklFile, token) =>
+            .Select(static (chunklFile, token) =>
             {
                 if (chunklFile.GetText(token)?.ToString() is not string chunklText)
                 {
