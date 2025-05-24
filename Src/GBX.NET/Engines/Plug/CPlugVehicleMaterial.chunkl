@@ -18,7 +18,7 @@ CPlugVehicleMaterial 0x090F1000
  float BrakeCoef
 
 0x006
- CMotionManagerTrails TrailManagerModel (external)
+ CPlugFlockModel TrailManagerModel (external)
 
 0x009
  byte MaterialId
