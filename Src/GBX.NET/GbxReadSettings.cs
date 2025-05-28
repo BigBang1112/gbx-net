@@ -37,5 +37,5 @@ public readonly record struct GbxReadSettings
     /// </summary>
     public bool SafeSkippableChunks { get; init; }
 
-    public IEncryptionInitializer EncryptionInitializer { get; init; }
+    public IEncryptionInitializer? EncryptionInitializer { get; init; }
 }
