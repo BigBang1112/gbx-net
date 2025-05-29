@@ -46,6 +46,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="NativeSharpLz4" Version="0.1.0" />
         <PackageReference Include="NativeSharpZlib" Version="0.2.8" />
         <PackageReference Include="Zomp.SyncMethodGenerator" Version="1.4.14">
             <PrivateAssets>all</PrivateAssets>

@@ -2,14 +2,7 @@
 
 namespace GBX.NET.PAK;
 
-public class LZ4Exception : Exception
-{
-    public LZ4Exception() { }
-    public LZ4Exception(string message) : base("[LZ4] " + message) { }
-    public LZ4Exception(string message, Exception innerException) : base(message, innerException) { }
-}
-
-public class LZ4Stream : Stream
+internal class LZ4Stream : Stream
 {
     private static readonly byte[] LZ4_DICTIONARY =
     [
@@ -78,15 +71,15 @@ public class LZ4Stream : Stream
         ,0x65 ,0x74 ,0x75 ,0x72 ,0x6E ,0x3B ,0x00 ,0x00 , 0x80 ,0x3F ,0xFF ,0xFF ,0xFF ,0xFF
     ];
 
-    private Stream innerStream;
-    private int UncompressedSize;
+    private readonly Stream innerStream;
+    private readonly int UncompressedSize;
     private int position;
     private IntPtr dictionary;
     private IntPtr lz4_stream;
     private IntPtr ringBuffer;
-    private static int RING_BUFFER_SIZE = 73728;
+    private const int RING_BUFFER_SIZE = 73728;
 
-    private byte[] _buffer = new byte[] { };
+    private byte[] _buffer = [];
     private int _bufferIndex = 0;
 
     [DllImport("liblz4")]
