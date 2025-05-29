@@ -2,7 +2,7 @@
 
 namespace GBX.NET.PAK;
 
-internal class LZ4Stream : Stream
+internal partial class LZ4Stream : Stream
 {
     private static readonly byte[] LZ4_DICTIONARY =
     [
@@ -82,17 +82,37 @@ internal class LZ4Stream : Stream
     private byte[] _buffer = [];
     private int _bufferIndex = 0;
 
+#if NET8_0_OR_GREATER
+    [LibraryImport("liblz4")]
+    private static unsafe partial IntPtr LZ4_createStreamDecode();
+#else
     [DllImport("liblz4")]
     private static extern unsafe IntPtr LZ4_createStreamDecode();
+#endif
 
+#if NET8_0_OR_GREATER
+    [LibraryImport("liblz4")]
+    private static unsafe partial int LZ4_freeStreamDecode(IntPtr stream);
+#else
     [DllImport("liblz4")]
     private static extern unsafe int LZ4_freeStreamDecode(IntPtr stream);
+#endif
 
+#if NET8_0_OR_GREATER
+    [LibraryImport("liblz4")]
+    private static unsafe partial int LZ4_setStreamDecode(IntPtr stream, IntPtr dictionary, int dictSize);
+#else
     [DllImport("liblz4")]
     private static extern unsafe int LZ4_setStreamDecode(IntPtr stream, IntPtr dictionary, int dictSize);
+#endif
 
+#if NET8_0_OR_GREATER
+    [LibraryImport("liblz4")]
+    private static unsafe partial int LZ4_decompress_safe_continue(IntPtr stream, byte* src, byte* dst, int srcSize, int dstCapacity);
+#else
     [DllImport("liblz4")]
     private static extern unsafe int LZ4_decompress_safe_continue(IntPtr stream, byte* src, byte* dst, int srcSize, int dstCapacity);
+#endif
 
     public unsafe LZ4Stream(Stream innerStream, int UncompressedSize)
     {
