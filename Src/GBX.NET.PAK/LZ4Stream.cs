@@ -136,7 +136,7 @@ internal partial class LZ4Stream : Stream
 
     public override long Length => UncompressedSize;
 
-    public override long Position { get { return position; } set => Seek(value, SeekOrigin.Begin); }
+    public override long Position { get => position; set => Seek(value, SeekOrigin.Begin); }
 
     public override void Flush()
     {

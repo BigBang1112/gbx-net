@@ -22,6 +22,13 @@ CPlugShaderPass 0x09067000
  PipelineGpu VHlsl
  PipelineGpu PHlsl
 
+0x00B
+ version
+ PipelineGpu VHlsl
+ PipelineGpu PHlsl
+ v1+
+  PipelineGpu
+
 archive PipelineGpu
  bool U01
  CMwNod Script (external)

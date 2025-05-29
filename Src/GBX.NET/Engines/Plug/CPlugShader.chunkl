@@ -44,8 +44,8 @@ CPlugShader 0x09002000
 
 0x01C
  version
- CMwNod
- CMwNod
+ CPlugFileText (external)
+ CMwNod (external)
 
 0x01D
  uint
@@ -60,14 +60,14 @@ CPlugShader 0x09002000
 
 0x020
  version
- uint
+ ulong
  float
- CMwNod
+ CPlugMaterialFx
  short
 
 archive UnknownStruct
- CMwNod U01
- if U01 != null
+ CMwNod U01 (external)
+ if U01 == null && U01File == null
   bool U02
   if U02
    CMwNod U03

@@ -1,0 +1,3 @@
+CPlugMaterialFx 0x0907A000
+- inherits: CPlug
+- abstract

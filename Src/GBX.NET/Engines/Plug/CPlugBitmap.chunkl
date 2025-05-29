@@ -86,7 +86,9 @@ CPlugBitmap 0x09011000
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- uint
+ int BorderRGB
+ if Image != null
+  CMwNod
 
 0x032
  version
