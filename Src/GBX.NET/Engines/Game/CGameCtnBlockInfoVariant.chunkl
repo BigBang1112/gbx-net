@@ -31,13 +31,13 @@ CGameCtnBlockInfoVariant 0x0315B000
  v8-
   int
  v2+
-  CGameGateModel Gate
+  CGameGateModel Gate (external)
   v3+
    CGameTeleporterModel Teleporter
    v5+
     CGameCaptureZoneModel
     v6+
-     CGameTurbineModel Turbine
+     CGameTurbineModel Turbine (external)
      v7+
       CPlugFlockModel FlockModel (external)
       if FlockModel != null || FlockModelFile != null
@@ -49,7 +49,7 @@ CGameCtnBlockInfoVariant 0x0315B000
 
 0x007 [TMT.v0, MP4.v0]
  version
- CPlugProbe Probe
+ CPlugProbe Probe (external)
 
 0x008 [TMT.v0, MP4.v1]
  version

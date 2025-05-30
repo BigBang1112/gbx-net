@@ -24,8 +24,8 @@ CPlugShaderPass 0x09067000
 
 0x00B
  version
- PipelineGpu VHlsl
- PipelineGpu PHlsl
+ PipelineGpu
+ PipelineGpu
  v1+
   PipelineGpu
 

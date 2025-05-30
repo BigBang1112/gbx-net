@@ -109,11 +109,11 @@ CPlugSound 0x0901A000
 
 0x012
  version
- CPlugSound BackingSound
+ CPlugSound BackingSound (external)
 
 0x013
  version
- CPlugSound FocusedSound
+ CPlugSound FocusedSound (external)
 
 enum ESoundKind
  Point

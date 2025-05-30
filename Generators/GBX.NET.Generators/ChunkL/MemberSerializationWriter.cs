@@ -312,6 +312,11 @@ internal sealed class MemberSerializationWriter
         if (chunkProperty.Type.IsArray)
         {
             sb.Append("Array");
+
+            if (chunkProperty.Properties?.ContainsKey("external") == true)
+            {
+                sb.Append("External");
+            }
         }
 
         AppendAnyRead(chunkProperty, onlyReadable: true);
@@ -387,7 +392,13 @@ internal sealed class MemberSerializationWriter
         if (chunkProperty.Type.IsArray && chunkProperty.Type.PrimaryType != "data")
         {
             sb.Append("Array");
+
+            if (chunkProperty.Properties?.ContainsKey("external") == true)
+            {
+                sb.Append("External");
+            }
         }
+
 
         if (chunkProperty.Type.PrimaryType == "data")
         {

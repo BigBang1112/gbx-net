@@ -51,7 +51,7 @@ CGameCtnDecorationMood 0x0303A000
  v1+
   bool WaterReflectFakeCube
   v2+
-   CPlugFxHdrScales_Tech3 FxHdrScalesT3
+   CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
    v3+
     CPlugMoodBlender MoodBlender (external)
 
@@ -62,8 +62,8 @@ CGameCtnDecorationMood 0x0303A000
  CPlugGameSkin Remapping (external)
  string RemapFolder
  bool EnableStars
- CFuncCloudsSolids CloudsSolids
- CPlugFxLightning FxLightning
+ CFuncCloudsSolids CloudsSolids (external)
+ CPlugFxLightning FxLightning (external)
  CPlugFxWindOnDecal FxWindOnDecal (external)
  v1+
   CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)

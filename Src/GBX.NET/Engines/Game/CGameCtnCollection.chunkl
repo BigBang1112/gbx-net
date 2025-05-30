@@ -199,7 +199,7 @@ CGameCtnCollection 0x03033000
 
 0x036 // OffZone_FogMatter
  version
- CPlugFogMatter OffZoneFogMatter
+ CPlugFogMatter OffZoneFogMatter (external)
 
 0x037 // TerrainHeightOffset
  float TerrainHeightOffset

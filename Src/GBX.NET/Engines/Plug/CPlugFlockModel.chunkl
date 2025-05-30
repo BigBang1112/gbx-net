@@ -43,7 +43,7 @@ CPlugFlockModel 0x090E5000
 
 0x002
  version
- CPlugSound SoundLoop
+ CPlugSound SoundLoop (external)
  v2+
   CPlugSound SoundEventTakeOff
 

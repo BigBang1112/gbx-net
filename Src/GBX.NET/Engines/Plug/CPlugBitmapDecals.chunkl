@@ -3,7 +3,7 @@ CPlugBitmapDecals 0x09078000
 
 0x000
  version
- CPlugDecalModel[]_deprec DecalModels
+ CPlugDecalModel[]_deprec DecalModels (external)
  DecalSet[] DecalSets (version: Version)
 
 0x001

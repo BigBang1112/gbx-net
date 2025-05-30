@@ -4,8 +4,8 @@ CPlugDecalModel 0x090A7000
 0x002
  version
  v4-
-  CPlugBitmap DiffuseA
-  CPlugBitmap Normal
+  CPlugBitmap DiffuseA (external)
+  CPlugBitmap Normal (external)
  v1+
   float TexelByMeter
   v2+
@@ -13,24 +13,24 @@ CPlugDecalModel 0x090A7000
    v3+
     float
     v4=
-     CPlugBitmap Specular
+     CPlugBitmap Specular (external)
     v5+
      string DiffuseARef
      if DiffuseARef == null || DiffuseARef == ""
-      CPlugBitmap DiffuseA
+      CPlugBitmap DiffuseA (external)
      string NormalRef
      if NormalRef == null || NormalRef == ""
-      CPlugBitmap Normal
+      CPlugBitmap Normal (external)
      string SpecularRef
      if SpecularRef == null || SpecularRef == ""
-      CPlugBitmap Specular
+      CPlugBitmap Specular (external)
      v6+
       string RoughnessRef
       if RoughnessRef == null || RoughnessRef == ""
        CPlugBitmap Roughness
 
 0x003
- CPlugBitmap Icon
+ CPlugBitmap Icon (external)
 
 0x004
  version
@@ -39,7 +39,7 @@ CPlugDecalModel 0x090A7000
  v2+
   float
   v3+
-   CPlugBitmap Sprite3dBitmap
+   CPlugBitmap Sprite3dBitmap (external)
    id Sprite3dGroupId
    v4+
     string SvgRef
