@@ -2,72 +2,147 @@
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 
-var pakFileNameOrDirectory = args[0];
-var isDirectory = Directory.Exists(pakFileNameOrDirectory);
-
-var directoryPath = isDirectory ? pakFileNameOrDirectory : Path.GetDirectoryName(pakFileNameOrDirectory)!;
-
 var game = PakListGame.TM;
+var pakFilePaths = new List<string>();
+var keys = new Dictionary<string, PakKeyInfo?>(StringComparer.OrdinalIgnoreCase);
+var hashes = new Dictionary<string, string?>();
 
-if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
+var keysTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "keys.txt");
+
+if (File.Exists(keysTxtPath))
 {
-    game = PakListGame.Vsk5;
-}
-
-var pakListFileName = Path.Combine(directoryPath, "packlist.dat");
-var keysFileName = "keys.txt";
-
-Dictionary<string, PakKeyInfo?> keys;
-
-if (File.Exists(pakListFileName))
-{
-    keys = (await PakList.ParseAsync(pakListFileName, game)).ToKeyInfoDictionary();
-}
-else if (File.Exists(keysFileName))
-{
-    keys = await ParseKeysFromTxtAsync(keysFileName);
-}
-else
-{
-    keys = [];
-}
-
-Console.WriteLine("Bruteforcing possible file names from hashes...");
-
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false);
-
-var pakFileNames = isDirectory ? 
-    Directory.GetFiles(pakFileNameOrDirectory, "*.*", SearchOption.AllDirectories)
-    .Where(file => file.EndsWith(".pak", StringComparison.OrdinalIgnoreCase) ||
-                   file.EndsWith(".Pack.Gbx", StringComparison.OrdinalIgnoreCase))
-    .ToArray() 
-    : [pakFileNameOrDirectory];
-
-if (pakFileNames.Length == 0)
-{
-    Console.WriteLine($"No files found in directory {pakFileNameOrDirectory}");
-}
-
-foreach (var pakFileName in pakFileNames)
-{
-    var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pakFileName);
-    var extractFolderPath = Path.Combine(directoryPath, fileNameWithoutExtension);
-
-    Pak pak;
-
-    await using var fs = File.OpenRead(pakFileName);
-
-    if (keys.TryGetValue(fileNameWithoutExtension, out var keyData))
+    foreach (var (name, keyInfo) in ParseKeysFromTxt(keysTxtPath))
     {
-        pak = await Pak.ParseAsync(fs, keyData?.PrimaryKey, keyData?.FileKey);
+        keys[name] = keyInfo;
     }
-    else
+}
+
+var hashesTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "hashes.txt");
+
+if (File.Exists(hashesTxtPath))
+{
+    foreach (var (hash, fileName) in ParseHashesFromTxt(hashesTxtPath))
     {
-        Console.WriteLine($"No key found for pak {fileNameWithoutExtension}, reading only metadata...");
-        pak = await Pak.ParseAsync(fs);
+        hashes[hash] = fileName;
+    }
+}
+
+var argsEnumerator = args.AsEnumerable().GetEnumerator();
+
+while (argsEnumerator.MoveNext())
+{
+    var arg = argsEnumerator.Current;
+    var argLower = arg.ToLowerInvariant();
+
+    if (argLower == "-k" || argLower == "--keys")
+    {
+        if (!argsEnumerator.MoveNext())
+        {
+            throw new Exception("Missing keys file.");
+        }
+
+        var keysFilePath = argsEnumerator.Current;
+
+        if (!File.Exists(keysFilePath))
+        {
+            throw new Exception("Keys file does not exist.");
+        }
+
+        foreach (var (name, keyInfo) in ParseKeysFromTxt(keysFilePath))
+        {
+            keys[name] = keyInfo;
+        }
+
+        continue;
     }
 
-    Console.WriteLine($"Pak: {pakFileName}");
+    if (argLower == "-h" || argLower == "--hashes")
+    {
+        if (!argsEnumerator.MoveNext())
+        {
+            throw new Exception("Missing hashes file.");
+        }
+
+        var hashesFilePath = argsEnumerator.Current;
+
+        if (!File.Exists(hashesFilePath))
+        {
+            throw new Exception("Hashes file does not exist.");
+        }
+
+        foreach (var (hash, fileName) in ParseHashesFromTxt(hashesFilePath))
+        {
+            hashes[hash] = fileName;
+        }
+
+        continue;
+    }
+
+    if (argLower == "--vsk5")
+    {
+        game = PakListGame.Vsk5;
+        continue;
+    }
+
+    if (Directory.Exists(arg))
+    {
+        pakFilePaths.AddRange(Directory.GetFiles(arg, "*.pak", SearchOption.AllDirectories));
+        pakFilePaths.AddRange(Directory.GetFiles(arg, "*.Pack.Gbx", SearchOption.AllDirectories));
+        continue;
+    }
+
+    if (File.Exists(arg))
+    {
+        pakFilePaths.Add(arg);
+        continue;
+    }
+}
+
+var checkedDirectories = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+foreach (var pakFilePath in pakFilePaths)
+{
+    var directoryPath = Path.GetDirectoryName(pakFilePath)!;
+
+    if (checkedDirectories.Add(directoryPath))
+    {
+        var keysFilePath = Path.Combine(directoryPath, "keys.txt");
+        var pakListFilePath = Path.Combine(directoryPath, "packlist.dat");
+
+        if (File.Exists(keysFilePath))
+        {
+            foreach (var (name, keyInfo) in ParseKeysFromTxt(keysFilePath))
+            {
+                keys[name] = keyInfo;
+            }
+        }
+
+        if (File.Exists(pakListFilePath))
+        {
+            foreach (var (name, keyInfo) in (await PakList.ParseAsync(pakListFilePath, game)).ToKeyInfoDictionary())
+            {
+                keys[name] = keyInfo;
+            }
+
+            Console.WriteLine("Bruteforcing possible file names from hashes...");
+
+            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false))
+            {
+                hashes[hash] = fileName;
+            }
+
+            Console.WriteLine("Bruteforcing completed.");
+        }
+    }
+
+    var pakId = Path.GetFileNameWithoutExtension(pakFilePath);
+    var extractFolderPath = Path.Combine(directoryPath, pakId);
+
+    await using var pak = keys.TryGetValue(pakId, out var keyData)
+        ? await Pak.ParseAsync(pakFilePath, keyData?.PrimaryKey, keyData?.FileKey)
+        : await Pak.ParseAsync(pakFilePath);
+
+    Console.WriteLine($"Pak: {pakFilePath}");
 
     foreach (var file in pak.Files.Values)
     {
@@ -78,12 +153,7 @@ foreach (var pakFileName in pakFileNames)
 
         Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
 
-        if (File.Exists(fullPath))
-        {
-            File.Delete(fullPath);
-        }
-
-        using var stream = File.OpenWrite(fullPath);
+        await using var stream = File.Create(fullPath);
 
         try
         {
@@ -114,8 +184,6 @@ foreach (var pakFileName in pakFileNames)
             }
         }
     }
-
-    await pak.DisposeAsync();
 }
 
 static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
@@ -126,13 +194,9 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
     stream.Write(data, 0, count);
 }
 
-static async Task<Dictionary<string, PakKeyInfo?>> ParseKeysFromTxtAsync(string keysFileName)
+static IEnumerable<(string, PakKeyInfo?)> ParseKeysFromTxt(string keysFileName)
 {
-    var keys = new Dictionary<string, PakKeyInfo?>(StringComparer.OrdinalIgnoreCase);
-
-    using var reader = new StreamReader(keysFileName);
-
-    while (await reader.ReadLineAsync() is string line)
+    foreach (var line in File.ReadLines(keysFileName))
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
@@ -143,8 +207,24 @@ static async Task<Dictionary<string, PakKeyInfo?>> ParseKeysFromTxtAsync(string 
         var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
         var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
 
-        keys[pak] = new PakKeyInfo(key, secondKey);
+        yield return (pak, new PakKeyInfo(key, secondKey));
     }
+}
 
-    return keys;
+static IEnumerable<(string, string?)> ParseHashesFromTxt(string hashesFileName)
+{
+    foreach (var line in File.ReadLines(hashesFileName))
+    {
+        var firstSpace = line.IndexOf(' ');
+
+        if (firstSpace == -1)
+        {
+            continue;
+        }
+
+        var hash = line[..firstSpace];
+        var path = line[(firstSpace + 1)..];
+
+        yield return (hash, string.IsNullOrEmpty(path) ? null : path);
+    }
 }
