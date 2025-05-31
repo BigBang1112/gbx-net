@@ -1,0 +1,6 @@
+CGameArmorModel 0x2E00D000
+
+0x000
+ version
+ int ArmorMax
+ int ReplenishDelayAfterDamage
