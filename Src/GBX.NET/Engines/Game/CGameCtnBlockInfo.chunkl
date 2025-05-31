@@ -90,7 +90,9 @@ CGameCtnBlockInfo 0x0304E000
 
 0x02B [TMT.v1, MP4.v1]
  version
- int
+ int<EBaseType> BaseType
+ v0=
+  throw
 
 0x02C [TMT, MP4]
  CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
@@ -103,9 +105,11 @@ CGameCtnBlockInfo 0x0304E000
   byte
 
 0x031
- int
- int
- int
+ version
+ CMwNod
+ CPlugGameSkinAndFolder MaterialModifier (external)
+ v1+
+  CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
 
 enum EWayPointType
  Start
@@ -128,3 +132,9 @@ enum ESelection
  Random
  Obsolete
  AutoRotate
+
+enum EBaseType
+ None
+ Conductor
+ Generator
+ Collector

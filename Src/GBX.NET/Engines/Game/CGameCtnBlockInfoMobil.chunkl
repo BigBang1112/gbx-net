@@ -7,9 +7,9 @@ CGameCtnBlockInfoMobil 0x03122000
 0x003 [TMT.v3, MP4.v6]
  version
  v1-
-  bool
+  bool U01
   throw
- int
+ int SolidFrequency
  v1+
   boolbyte HasGeomTransformation
   if HasGeomTransformation
@@ -17,33 +17,57 @@ CGameCtnBlockInfoMobil 0x03122000
    vec3 GeomRotation
   v2+
    CPlugSolid SolidFid (external)
+   if SolidFid == null && SolidFidFile == null
+    CSceneMobil OldMobil
    v14+
-    CMwNod
-   v3+
     CPlugPrefab PrefabFid (external)
+   v3+
+    CPlugSolid OldSolidAggreg (external)
     v4+
-     bool
+     v5-
+      bool U02
      v6+
-      CMwNod (external)
+      CPlugPath RailPath (external)
       v7+
-       int // ?? probably noderef
-       v9+
-        int
-        v16+
-         int // node ref (file likely)
-         v17+
-          int
-          v18+
-           int // node ref (file likely)
-           byte
-           int
-           int
-           int
-           int
-           int
-           int
-           CMwNod[]
-           int
+       v22-
+        CPlugPath TrafficPath (external)
+       v15+
+        CMwNod U03
+       v8+
+        v12-
+         int U04
+        v9+
+         v22-
+          CPlugRoadChunk[]_deprec RoadChunks
+         v23+
+          CPlugRoadChunk[] RoadChunks
+         v10+
+          v12-
+           int U05
+           v12=
+            int U06
+          v16+
+           v22-
+            CPlugPath CitizenNetworkPath // QuestMania confirmed
+           v17+
+            CMwNod[] U07
+            v18+
+             CMwNod VFXs
+             byte U08
+             if U08 == 0
+              float U09
+             if U08 == 1
+              float U10
+             v18=
+              iso4 U11
+             v19+
+              vec3 U12
+              vec3 U13
+             float U14
+             v20+
+              CMwNod[] U15
+              v21+
+               CMwNod U16
 
 0x004 [TMT, MP4]
  version

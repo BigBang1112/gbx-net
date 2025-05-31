@@ -4,12 +4,12 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockUnitInfo
 {
-    public CGameCtnBlockInfoClip[]? ClipsNorth { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsEast { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsSouth { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsWest { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsTop { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsBottom { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsNorth { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsEast { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsSouth { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsWest { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsTop { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsBottom { get; set; }
 
     public partial class Chunk03036006
     {
@@ -80,12 +80,12 @@ public partial class CGameCtnBlockUnitInfo
             var clipCountTop = clipCountBits >> 12 & 7;
             var clipCountBottom = clipCountBits >> 15 & 7;
 
-            n.ClipsNorth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
-            n.ClipsEast = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
-            n.ClipsSouth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountSouth)!;
-            n.ClipsWest = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountWest)!;
-            n.ClipsTop = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
-            n.ClipsBottom = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
+            n.ClipsNorth = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
+            n.ClipsEast = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
+            n.ClipsSouth = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountSouth)!;
+            n.ClipsWest = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountWest)!;
+            n.ClipsTop = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
+            n.ClipsBottom = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
 
             if (Version >= 2)
             {
@@ -113,32 +113,32 @@ public partial class CGameCtnBlockUnitInfo
 
             foreach (var clip in n.ClipsNorth ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsEast ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsSouth ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsWest ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsTop ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsBottom ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             if (Version >= 2)
