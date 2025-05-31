@@ -1,2 +1,11 @@
 CScene2d 0x0A002000
 - inherits: CScene
+
+0x000
+ float
+ float
+ float
+ float
+ CSceneSector
+
+0x003 (ignore)

@@ -58,6 +58,26 @@ CPlugAudioEnvironment 0x09039000
  float AirAbsorbtionHF //NOT REALLY SURE
  bool DecayHFLimitScale
 
+0x004
+ version
+ float
+ v1+
+  float
+  v2+
+   float
+   float
+   float
+   float
+   float
+   float
+   float
+   float
+   v3+
+    float
+    float
+    float
+    float
+
 enum EEAXPreset
  Generic
  PaddedCell

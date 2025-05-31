@@ -1,2 +1,6 @@
 CPlugFogVolume 0x090D4000
 - inherits: CPlug
+
+0x001
+ version
+ id

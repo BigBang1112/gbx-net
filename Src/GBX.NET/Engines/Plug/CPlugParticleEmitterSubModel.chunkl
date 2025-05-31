@@ -312,6 +312,21 @@ CPlugParticleEmitterSubModel 0x090B2000
   CPlugParticleGpuSpawn
   CPlugParticleGpuModel
 
+0x03B
+ version
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  float
+
 enum EPlugParticleEmitterSubModel
  Standard
  MultiState

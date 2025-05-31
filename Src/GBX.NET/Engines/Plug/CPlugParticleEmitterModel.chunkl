@@ -2,3 +2,36 @@ CPlugParticleEmitterModel 0x090B3000
 
 0x000
  CPlugParticleEmitterSubModel[]_deprec ParticleEmitterSubModels (external)
+
+0x001
+ id
+
+0x002
+ version
+ bool IsSplashMode
+ v3+
+  float ShadowMapTexelSize
+
+0x003
+ version
+ string[]
+
+0x004
+ version
+ v1-
+  v1=
+   bool U01
+   if U01
+    data[40]
+ v2+
+  v2=
+   data[12]
+  float
+  int
+  float
+  int
+  float
+  float
+  bool
+  int
+  bool
