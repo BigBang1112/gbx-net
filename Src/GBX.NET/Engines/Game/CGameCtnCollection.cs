@@ -16,6 +16,9 @@ public partial class CGameCtnCollection
     public Components.GbxRefTableFile? IconSmallFidFile { get => iconSmallFidFile; set => iconSmallFidFile = value; }
     public CPlugBitmap? GetIconSmallFid(GbxReadSettings settings = default, bool exceptions = false) => iconSmallFidFile?.GetNode(ref iconSmallFid, settings, exceptions) ?? iconSmallFid;
 
+    private Id? collection;
+    public Id? Collection { get => collection; set => collection = value; }
+
     public partial class Chunk0303300D
     {
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
