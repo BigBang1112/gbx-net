@@ -25,6 +25,10 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 0x006 (header, struct: SHeaderLightMap) [TMT, MP4, TM2020] // lightmap compute time
  long LightmapComputeTime
 
+0x008 (header, struct: SHeaderDefaultSkin) // default skin
+ versionb
+ string DefaultSkinName
+
 0x002 [TM10, TMSX] // Ident
  ident Ident
 
@@ -61,6 +65,12 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  int IconQuarterRotationY
 
 0x010 [TMT.v2, MP4.v2, TM2020.v4]
+ version
+ CPlugFileZip DefaultSkin (external)
+ string SkinDirectory
+ v2+
+  if SkinDirectory == null || SkinDirectory == ""
+   CMwNod
 
 0x011 [TMT.v1, MP4.v1, TM2020.v1]
  version
