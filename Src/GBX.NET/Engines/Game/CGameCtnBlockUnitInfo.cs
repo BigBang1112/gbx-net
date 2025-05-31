@@ -1,6 +1,4 @@
-﻿using GBX.NET.Components;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockUnitInfo
 {
@@ -10,47 +8,6 @@ public partial class CGameCtnBlockUnitInfo
     public External<CGameCtnBlockInfoClip>[]? ClipsWest { get; set; }
     public External<CGameCtnBlockInfoClip>[]? ClipsTop { get; set; }
     public External<CGameCtnBlockInfoClip>[]? ClipsBottom { get; set; }
-
-    public partial class Chunk03036006
-    {
-        public bool U01;
-        public (bool, int) U02;
-
-        public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
-        {
-            rw.Boolean(ref U01);
-
-            for (var i = 0; i < 4; i++)
-            {
-                rw.Boolean(ref U02.Item1);
-                rw.Int32(ref U02.Item2);
-            }
-        }
-    }
-
-    public partial class Chunk03036007
-    {
-        public External<CMwNod>[]? U01;
-
-        public override void Read(CGameCtnBlockUnitInfo n, GbxReader r)
-        {
-            U01 = new External<CMwNod>[4]; // or pylons?
-
-            for (var i = 0; i < U01.Length; i++)
-            {
-                var node = r.ReadNodeRef<CMwNod>(out GbxRefTableFile? file);
-                U01[i] = new(node, file);
-            }
-        }
-
-        public override void Write(CGameCtnBlockUnitInfo n, GbxWriter w)
-        {
-            foreach (var e in U01!)
-            {
-                w.WriteNodeRef(e.Node, e.File);
-            }
-        }
-    }
 
     public partial class Chunk0303600C : IVersionable
     {
