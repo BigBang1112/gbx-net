@@ -24,50 +24,53 @@ CGameCtnBlockInfoMobil 0x03122000
    v3+
     CPlugSolid OldSolidAggreg (external)
     v4+
-     v5-
-      bool U02
-     v6+
-      CPlugPath RailPath (external)
-      v7+
-       v22-
-        CPlugPath TrafficPath (external)
-       v15+
-        CMwNod U03
-       v8+
-        v12-
-         int U04
-        v9+
-         v22-
-          CPlugRoadChunk[]_deprec RoadChunks
-         v23+
-          CPlugRoadChunk[] RoadChunks
-         v10+
-          v12-
-           int U05
-           v12=
+     v5+
+      v5=
+       CPlugPolyLine3[] U02
+      v10-
+       bool U03
+      v6+
+       CPlugPath RailPath (external)
+       v7+
+        v22-
+         CPlugPath TrafficPath (external)
+        v15+
+         CMwNod U04
+        v8+
+         v12-
+          int U05
+         v9+
+          v22-
+           CPlugRoadChunk[]_deprec RoadChunks
+          v23+
+           CPlugRoadChunk[] RoadChunks
+          v10+
+           v12-
             int U06
-          v16+
-           v22-
-            CPlugPath CitizenNetworkPath // QuestMania confirmed
-           v17+
-            CMwNod[] U07
-            v18+
-             CMwNod VFXs
-             byte U08
-             if U08 == 0
-              float U09
-             if U08 == 1
-              float U10
-             v18=
-              iso4 U11
-             v19+
-              vec3 U12
-              vec3 U13
-             float U14
-             v20+
-              CMwNod[] U15
-              v21+
-               CMwNod U16
+            v12=
+             int U07
+           v16+
+            v22-
+             CPlugPath CitizenNetworkPath // QuestMania confirmed
+            v17+
+             CMwNod[] U08
+             v18+
+              CMwNod VFXs
+              byte U09
+              if U09 == 0
+               float U10
+              if U09 == 1
+               float U11
+              v18=
+               iso4 U12
+              v19+
+               vec3 U13
+               vec3 U14
+              float U15
+              v20+
+               CMwNod[] U16
+               v21+
+                CMwNod U17
 
 0x004 [TMT, MP4]
  version
