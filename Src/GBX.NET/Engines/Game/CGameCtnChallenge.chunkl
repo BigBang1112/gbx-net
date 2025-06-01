@@ -255,7 +255,7 @@ CGameCtnChallenge 0x03043000 // A map.
  string ObjectiveTextSilver
  string ObjectiveTextBronze
 
-0x04D (skippable, ignore) [MP3, TMT]
+0x04D (skippable, ignore) [MP3, TMT, MP4]
 
 0x04E (skippable, ignore)
 
