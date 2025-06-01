@@ -1,5 +1,8 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Game;
+#if (EnableCrc32)
+using GBX.NET.Hashing;
+#endif
 #if (EnableLzo)
 using GBX.NET.LZO;
 #endif
@@ -12,6 +15,9 @@ Gbx.LZO = new Lzo();
 #endif
 #if (EnableZlib)
 Gbx.ZLib = new ZLib();
+#endif
+#if (EnableCrc32)
+Gbx.CRC32 = new CRC32();
 #endif
 
 if (args.Length == 0)

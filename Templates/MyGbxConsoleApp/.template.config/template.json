@@ -29,6 +29,13 @@
       "defaultValue": "false",
       "displayName": "Enable ghost samples, lightmap data, and other zlib features"
     },
+    "EnableCrc32": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Improve MapUid modification support and other CRC32 features",
+      "description": "Changing the MapUid or HashedPassword of a map without calculating its CRC32 can open the password prompt. Enable this to fix this problem."
+    },
     "SaveGbx": {
       "type": "parameter",
       "datatype": "bool",

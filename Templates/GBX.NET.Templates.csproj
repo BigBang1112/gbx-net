@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>0.1.0</PackageVersion>
+        <VersionPrefix>0.1.0</VersionPrefix>
         <PackageId>GBX.NET.Templates</PackageId>
         <Title>GBX.NET Templates</Title>
         <Authors>BigBang1112</Authors>
