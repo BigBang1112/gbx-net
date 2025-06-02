@@ -1,4 +1,7 @@
 ﻿using GBX.NET.Managers;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace GBX.NET.Components;
 
@@ -15,6 +18,9 @@ public sealed class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader(basic) where 
         classId ??= ClassManager.GetId<T>() ?? throw new Exception("Class ID not available");
 #endif
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
 #if NETSTANDARD2_0
     public override GbxHeader DeepClone() => new GbxHeader<T>(Basic);
 #else

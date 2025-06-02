@@ -1,2 +1,23 @@
 CPlugBitmapAtlas 0x090A8000
 - inherits: CPlug
+
+0x002
+ version
+ SubTex[] SubTextures
+
+archive SubTex
+ id
+ id
+ int
+ int
+ int
+ int
+ int
+ int
+ v1+
+  float
+  float
+  v2+
+   float
+   v3+
+    bool

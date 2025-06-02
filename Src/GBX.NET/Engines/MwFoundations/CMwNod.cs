@@ -3,6 +3,9 @@ using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -660,6 +663,9 @@ public partial class CMwNod : IClass
         return chunk;
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     public virtual CMwNod DeepClone()
     {
         var clone = (CMwNod)MemberwiseClone();
@@ -667,6 +673,9 @@ public partial class CMwNod : IClass
         return clone;
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     IClass IClass.DeepClone()
     {
         var clone = (IClass)MemberwiseClone();
@@ -674,6 +683,9 @@ public partial class CMwNod : IClass
         return clone;
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     protected void DeepCloneChunks(IClass dest)
     {
         if (chunks is null)
@@ -700,6 +712,11 @@ public partial class CMwNod : IClass
             foreach (var chunk in Chunks)
             {
                 version &= chunk.GameVersion;
+
+                if (version == GameVersion.Unspecified)
+                {
+                    return GameVersion.Unspecified; // No game version is specified, so it is not accepted in any game version
+                }
             }
 
             return (int)version == int.MaxValue ? GameVersion.Unspecified : version;

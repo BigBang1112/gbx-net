@@ -1,1 +1,13 @@
 CGameGateModel 0x2E00B000
+
+0x000
+ version
+ CGameArmorModel Armor (external)
+ CPlugSurface Shape (external)
+
+0x001
+ version
+ CPlugSound GateOpenSound (external)
+ CPlugSound GateCloseSound (external)
+ v1+
+  CPlugSound GateSound (external)

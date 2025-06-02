@@ -15,7 +15,15 @@ public partial class CGameItemModel
     public CMwNod? GetPhyModelCustom(GbxReadSettings settings = default) => phyModelCustomFile?.GetNode(ref phyModelCustom, settings) ?? phyModelCustom;
 
     private CMwNod? visModelCustom;
-    public CMwNod? VisModelCustom { get => visModelCustom; set => visModelCustom = value; }
+    public CMwNod? VisModelCustom
+    {
+        get => visModelCustomFile?.GetNode(ref visModelCustom) ?? visModelCustom;
+        set => visModelCustom = value;
+    }
+    private GbxRefTableFile? visModelCustomFile;
+    public GbxRefTableFile? VisModelCustomFile { get => visModelCustomFile; set => visModelCustomFile = value; }
+    public CMwNod? GetVisModelCustom(GbxReadSettings settings = default) => visModelCustomFile?.GetNode(ref visModelCustom, settings) ?? visModelCustom;
+
 
     private string? defaultWeaponName;
     public string? DefaultWeaponName { get => defaultWeaponName; set => defaultWeaponName = value; }
@@ -49,7 +57,7 @@ public partial class CGameItemModel
             if (itemTypeVersion.HasValue && Version < itemTypeVersion)
             {
                 rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
-                rw.NodeRef<CMwNod>(ref n.visModelCustom);
+                rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
             }
 
             if (Version >= 3)

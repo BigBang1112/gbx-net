@@ -11,6 +11,12 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
                                                     0, 0, 1,
                                                     0, 0, 0);
 
+    public Mat3 Rotation => new Mat3(XX, XY, XZ,
+                                     YX, YY, YZ,
+                                     ZX, ZY, ZZ);
+
+    public Vec3 Translation => new(TX, TY, TZ);
+
     public float GetPitch(bool inDegrees = false)
     {
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
@@ -200,6 +206,14 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
     public Iso4 SetScale(float value)
     {
         return ScaleX(value).ScaleY(value).ScaleZ(value);
+    }
+
+    public void Deconstruct(out Mat3 rot, out Vec3 xyz)
+    {
+        rot = new Mat3(XX, XY, XZ,
+                       YX, YY, YZ,
+                       ZX, ZY, ZZ);
+        xyz = new Vec3(TX, TY, TZ);
     }
 
     public static implicit operator Iso4((float XX, float XY, float XZ,

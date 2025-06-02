@@ -2,33 +2,39 @@ CPlugGameSkin 0x090F4000
 
 0x000 (header, struct: SHeader) [TMSX.v2, TMF.v4, TMT.v5, MP4.v5]
  versionb
- string RelativeSkinDirectory
+ string DirName
  v1+
-  string ParentPackDesc
-  string
+  string PainterTextureName
+  string PainterSceneId
  HeaderFid[] HeaderFids (prefix: byte, version: Version)
  v4+
-  string // PackDesc?
+  string DirNameAlt
   v5+
    bool // something dialog?
    v6+
     string
     v7+
      int
+     v8+
+      byte
+
+0x000
+
+0x001
 
 0x003
- string
- string
+ string PainterTextureName
+ string PainterSceneId
 
 0x004
  versionb
- string RelativeSkinDirectory
+ string DirName
  v1+
-  string ParentPackDesc
-  string
- Fid[] Fids (prefix: byte, version: Version)
+  string PainterTextureName
+  string PainterSceneId
+ Fid[] CustomizableFids (prefix: byte, version: Version)
  v4+
-  string // PackDesc?
+  string DirNameAlt
   v5+
    bool // something dialog?
    v6+
@@ -41,6 +47,6 @@ archive HeaderFid
  string Name
  string Directory
  v2+
-  bool
+  bool MipMaps
 
 archive Fid

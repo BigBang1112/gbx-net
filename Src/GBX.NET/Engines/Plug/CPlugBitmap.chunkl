@@ -2,29 +2,32 @@ CPlugBitmap 0x09011000
 - inherits: CPlug
 
 0x015
- ulong
+ ulong Flags
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- int
+ int BorderRGB
  int
 
 0x017
- int
+ uint Flags2
  vec2 DefaultTexCoordScale
 
 0x018
  CPlugFileImg Image (external)
- ulong
+ ulong Flags
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- int
+ int BorderRGB
  if Image != null
   CMwNod
 
 0x019
  float BumpScaleMipLevel
+
+0x01B
+ uint Flags2
 
 0x01C
  vec2 DefaultTexCoordScale
@@ -36,10 +39,10 @@ CPlugBitmap 0x09011000
  int16
 
 0x01E
- Vec2[]
+ vec2[] AtlasCountUVs
 
 0x01F
- uint
+ uint Flags2
 
 0x020
  float[] MipMapFadeAlphas
@@ -53,7 +56,7 @@ CPlugBitmap 0x09011000
  uint
 
 0x024
- uint
+ uint Flags2
 
 0x025 (base: 0x01C)
  base
@@ -83,8 +86,107 @@ CPlugBitmap 0x09011000
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- uint
+ int BorderRGB
+ if Image != null
+  CMwNod
 
 0x032
  version
  uint
+
+0x033
+ float HeightInMeters
+
+0x034
+ version
+ CPlugImageArray ImageArray
+ v1+
+  string ImageArraySuffix
+  v2+
+   string[] ImageArrayFids
+   v3+
+    CPlugBitmapArray BitmapArray
+    string BitmapArrayElemName
+
+enum EUsage
+ Color
+ Light
+ Height2DuDv
+ Render
+ Height2DuDvLumi
+ Height2NxNyNz
+ Height2NxNy
+ Depth
+ DispH01
+ Height2NormPal8b
+ NxNyNz
+ NxNy
+ NormPal8b
+ NormPal16b
+ ColorFloat
+ RenderFloat
+ Height2DuDv1
+ Alpha
+ LightAlpha
+ Height2RxG0BzAy
+ NormRxG0BzAy
+ TexCoord
+ Render16b
+ Vertex
+ Height2BumpTxTy
+ BumpTxTy
+ Height2R0GyBzAx
+ NormR0GyBzAx
+ NormXYZ0YZX
+
+enum EColorDepth
+ DefaultColorDepth
+ Color16b
+ Color32b
+
+enum ECubeFace
+ None
+ XPos
+ XNeg
+ YPos
+ YNeg
+ ZPos
+ ZNeg
+
+enum EGxTexFilter
+ Point
+ Bilinear
+ Trilinear
+ Anisotropic
+
+enum EGxTexAddress
+ Wrap
+ Mirror
+ Clamp
+ BorderSM3
+
+enum EGxUVGenerate
+ NoGenerate
+ CameraVertex
+ WorldVertex
+ WorldVertexXY
+ WorldVertexXZ
+ WorldVertexYZ
+ CameraNormal
+ WorldNormal
+ CameraReflectionVector
+ WorldReflectionVector
+ WorldNormalNeg
+ WaterReflectionVector
+ Hack1Vertex
+ MapTexel
+ FogPlane0
+ Vsk3SeaFoam
+ ImageSpace
+ LightDir0Reflect
+ EyeNormal
+ ShadowB1Pw01
+ Tex3AsPosPrCamera
+ FlatWaterReflect
+ FlatWaterRefract
+ FlatWaterFresnel

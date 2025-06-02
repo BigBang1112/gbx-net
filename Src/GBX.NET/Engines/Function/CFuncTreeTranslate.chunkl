@@ -1,0 +1,9 @@
+CFuncTreeTranslate 0x0500D000
+- inherits: CFuncTree
+
+0x000
+ vec3 StartPoint
+ vec3 EndPoint
+
+0x001
+ uint

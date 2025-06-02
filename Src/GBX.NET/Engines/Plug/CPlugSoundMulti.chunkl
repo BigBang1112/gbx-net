@@ -1,0 +1,36 @@
+CPlugSoundMulti 0x09064000
+- inherits: CPlugSound
+
+0x000
+ CMwNod AdditionalSounds (external)
+ int<ESoundInputMapping> InputMapping
+
+0x001
+ CMwNod[]_deprec AdditionalSounds2 (external)
+ int<ESoundInputMapping> InputMapping
+
+0x002
+ version
+ float PitchVariancePos
+ float VolumeVariance
+ v1+
+  bool AvoidDuplicates
+  v2+
+   bool AlternateParity
+   v3+
+    float PitchVarianceNeg
+
+0x003
+ version
+ bool // is Distance from ESoundInputMapping
+ vec3[] PreferedDistances
+ v1+
+  CFuncKeysReal VolumeFromInput (external)
+  v2+
+   int<ESoundInputMapping> InputMapping
+
+enum ESoundInputMapping
+ Direct
+ ForceRandom
+ Distance
+ Scale

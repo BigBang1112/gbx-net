@@ -7,7 +7,7 @@
 
 Welcome to GBX.NET 2!
 
-A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 200+ Gbx classes.
+A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 350+ Gbx classes.
 
 GBX.NET is not just a library that can read or write Gbx files, but also **a modding platform** that connects all Nadeo games together. It is exceptionally useful for bulk Gbx data processing, for example, when you want to fix broken sign locator URLs on hundreds of maps.
 
@@ -53,7 +53,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, October 2024 update
+- **Trackmania (2020)**, December 2024 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM
@@ -87,7 +87,7 @@ Here are some of the known file types to start with:
 | LightMapCache.Gbx | [CHmsLightMapCache](Src/GBX.NET/Engines/Hms/CHmsLightMapCache.chunkl) | No | No
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
 | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Yes | Yes
-| Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.chunkl) | Yes | No
+| Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.chunkl) | No | No
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
 
@@ -130,7 +130,7 @@ Using the NuGet packages is recommended.
 4. Add the GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
 5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
 6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
-7. Write code - see [Examples (simple)](#examples-simple).
+7. Write code - see [Usage (simple examples)](#usage-simple-examples).
 8. Use `dotnet run` to run the app.
 
 Steps 2-8:
@@ -388,7 +388,7 @@ There are a few places where Gbx includes additional zlib-compressed data:
 - Lightmap data of a map
   - `CGameCtnChallenge.LightmapCache`, additional lightmap parameters
 
-GBX.NET does not include zlib algorithm by default to read this data. Properties will often return `null` silently, but you can hook onto more details about this if you specify `Logger` in the parse methods.
+GBX.NET does not include zlib algorithm by default to read this data. Properties will often throw a `ZLibNotDefinedException`.
 
 To "unlock" this data, you need to specify zlib implementation:
 
@@ -414,7 +414,7 @@ The data is often stored in properties of type `CompressedData` which are byte a
 
 > The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
 
-GBX.NET.PAK uses a separate zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
+GBX.NET.PAK uses a different zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
 ## Clarity
 
@@ -646,6 +646,8 @@ Go to `%appdata%/NuGet` and modify the `NuGet.Config` file to include the packag
 ```
 Then you can select the `nuget.gbx.tools` package source and fetch nightly builds from there.
 
+You can also create a `nuget.config` file in your solution directory and put the XML above into it, which makes it easier to build your project in CI or with generally less preparation.
+
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
 ## License
@@ -680,13 +682,15 @@ If you use the LZO compression library, you must license your project under the 
 
 ## Special thanks
 
-Without these people, this project wouldn't be what it is today (ordered by impact):
+Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
 - Melissa (Miss)
 - florenzius
 - Kim
 - tilman
+- GreffMASTER
+- AurisTFG
 - schadocalex
 - James Romeril
 - frolad (Juice)

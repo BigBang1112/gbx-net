@@ -42,6 +42,18 @@ public static class GbxPath
     }
 
     /// <summary>
+    /// Changes the file path extension, considering the Gbx's double extension.
+    /// </summary>
+    /// <param name="path">File path.</param>
+    /// <param name="extension">The new extension.</param>
+    /// <returns>The file path with changed extension.</returns>
+    [return: NotNullIfNotNull(nameof(path))]
+    public static string? ChangeExtension(string? path, string? extension)
+    {
+        return Path.ChangeExtension(Path.ChangeExtension(path, null), extension);
+    }
+
+    /// <summary>
     /// Gets a valid file name by replacing invalid Windows characters with underscores.
     /// </summary>
     /// <param name="fileName">Name of the file, WITHOUT the directory path.</param>
@@ -65,5 +77,35 @@ public static class GbxPath
         ArrayPool<char>.Shared.Return(buffer);
 
         return result;
+    }
+
+    /// <summary>
+    /// Gets the file extension (including the period "."), considering the Gbx's double extension.
+    /// </summary>
+    /// <param name="path">The path string from which to get the extension.</param>
+    /// <returns>The extension of the specified path.</returns>
+    [return: NotNullIfNotNull(nameof(path))]
+    public static string? GetExtension(string? path)
+    {
+        if (path is null)
+        {
+            return null;
+        }
+
+        var mainExtension = Path.GetExtension(path);
+
+        if (string.IsNullOrEmpty(mainExtension))
+        {
+            return string.Empty;
+        }
+
+        var secondaryExtension = Path.GetExtension(Path.GetFileNameWithoutExtension(path));
+
+        if (string.IsNullOrEmpty(secondaryExtension))
+        {
+            return mainExtension;
+        }
+
+        return secondaryExtension + mainExtension;
     }
 }

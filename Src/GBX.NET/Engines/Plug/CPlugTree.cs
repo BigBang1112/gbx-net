@@ -53,7 +53,7 @@ public partial class CPlugTree
         }
     }
 
-    internal IEnumerable<(CPlugTree Tree, Iso4 Location)> GetAllChildrenWithLocation(int lod = 0)
+    public IEnumerable<(CPlugTree Tree, Iso4 Location)> GetAllChildrenWithLocation(int lod = 0)
     {
         return GetAllChildren(this, lod);
 

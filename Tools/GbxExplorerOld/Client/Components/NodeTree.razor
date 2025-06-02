@@ -50,7 +50,7 @@
 
         if (declaringTypeGroups.Count > 1)
         {
-            <li class="declaringType">
+            <li class="declaringType" title="Namespace: @group.Key?.Namespace">
                 @(sameDeclaringTypes || group.Key?.DeclaringType is null ? "" : $"{group.Key.DeclaringType.Name}.")@group.Key?.Name
             </li>
         }

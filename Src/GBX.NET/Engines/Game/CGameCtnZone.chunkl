@@ -6,10 +6,12 @@ CGameCtnZone 0x0305C000
  id SurfaceId
  int
 
-0x004 (skippable, ignore)
+0x004 (skippable)
+ int Depth
+ bool OldZone
 
 0x005
- bool
+ bool HasWater
 
 0x006
  bool IsLargeZone

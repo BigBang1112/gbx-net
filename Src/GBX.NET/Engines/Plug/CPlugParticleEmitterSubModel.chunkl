@@ -167,14 +167,14 @@ CPlugParticleEmitterSubModel 0x090B2000
  int
  bool
  float
- CPlugMaterial Material
- if Material == null
-  CPlugShader Shader
+ CPlugMaterial Material (external)
+ if Material == null && MaterialFile == null
+  CPlugShader Shader (external)
  v4-
   CPlugVisual Visual
  v6+
   string
- CPlugSolid2Model Solid2Model
+ CPlugSolid2Model Solid2Model (external)
  v7+
   iso4
  vec2
@@ -311,6 +311,21 @@ CPlugParticleEmitterSubModel 0x090B2000
  v1+
   CPlugParticleGpuSpawn
   CPlugParticleGpuModel
+
+0x03B
+ version
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  float
 
 enum EPlugParticleEmitterSubModel
  Standard

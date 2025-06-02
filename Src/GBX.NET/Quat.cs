@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Numerics;
+
+namespace GBX.NET;
 
 public readonly record struct Quat(float X, float Y, float Z, float W)
 {
@@ -26,7 +28,14 @@ public readonly record struct Quat(float X, float Y, float Z, float W)
         return (pitch, yaw, roll);
     }
 
+    public Quaternion AsQuaternion() => new(X, Y, Z, W);
+
     public static implicit operator Quat((float X, float Y, float Z, float W) v) => new(v.X, v.Y, v.Z, v.W);
+
+    public static implicit operator Quat(Vec3 xyz) => new(xyz.X, xyz.Y, xyz.Z, 0);
+
+    public static implicit operator Quaternion(Quat a) => a.AsQuaternion();
+    public static implicit operator Quat(Quaternion a) => new(a.X, a.Y, a.Z, a.W);
 
     public static Quat operator +(Quat a, Quat b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
 

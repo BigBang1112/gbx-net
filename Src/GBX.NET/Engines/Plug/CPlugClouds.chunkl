@@ -1,9 +1,9 @@
 CPlugClouds 0x09180000
 
 0x000
+ CPlugSolid[] SolidFids (external)
  float BottomNearZ
  float BottomFarZ
- float
  CPlugFileImg ImageColorMin (external)
  CPlugFileImg ImageColorMax (external)
  int Lighting

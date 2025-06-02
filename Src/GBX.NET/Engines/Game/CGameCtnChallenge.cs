@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Extensions;
 using GBX.NET.Interfaces.Game;
 using System.IO.Compression;
+using System.Security;
 using System.Text;
 
 namespace GBX.NET.Engines.Game;
@@ -276,6 +277,7 @@ public partial class CGameCtnChallenge :
 
     private bool hasLightmaps;
     [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public bool HasLightmaps { get => hasLightmaps; set => hasLightmaps = value; }
 
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
@@ -285,16 +287,28 @@ public partial class CGameCtnChallenge :
 
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
-    public CHmsLightMapCache? LightmapCache { get; set; }
+    public CompressedData? LightmapCacheData { get; set; }
+
+    private CHmsLightMapCache? lightmapCache;
+    /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
+    public CHmsLightMapCache? LightmapCache
+    {
+        get
+        {
+            if (Gbx.ZLib is null && lightmapCache is null && LightmapCacheData is not null)
+            {
+                throw new ZLibNotDefinedException();
+            }
+            return lightmapCache;
+        }
+        set => lightmapCache = value;
+    }
 
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public LightmapFrame[]? LightmapFrames { get; set; }
-
-    [ZLibData]
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public CompressedData? LightmapCacheData { get; set; }
 
     private List<CGameCtnAnchoredObject>? anchoredObjects;
     [AppliedWithChunk<Chunk03043040>]
@@ -661,7 +675,7 @@ public partial class CGameCtnChallenge :
         return Blocks.Remove(block);
     }
 
-    public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default)
+    public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 yawPitchRoll, Vec3 offsetPivot = default)
     {
         _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
 
@@ -671,7 +685,7 @@ public partial class CGameCtnChallenge :
         {
             ItemModel = itemModel,
             AbsolutePositionInMap = absolutePosition,
-            PitchYawRoll = pitchYawRoll,
+            YawPitchRoll = yawPitchRoll,
             PivotPosition = offsetPivot
         };
 
@@ -736,6 +750,100 @@ public partial class CGameCtnChallenge :
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="random"/> is null.</exception>
     public string GenerateMapUid(Random random) => MapUid = MapUtils.GenerateMapUid(random);
 
+    public string CreateHeaderXml()
+    {
+        if (IsGameVersion(GameVersion.TMF, strict: true))
+        {
+            const string version = "TMc.6";
+            const string exever = "2.11.25"; // also often 2.11.11
+
+            var sb = new StringBuilder("<header type=\"challenge\" version=\"");
+            sb.Append(version);
+            sb.Append("\" exever=\"");
+            sb.Append(exever);
+            sb.Append("\"><ident uid=\"");
+            sb.Append(SecurityElement.Escape(MapUid));
+            sb.Append("\" name=\"");
+            sb.Append(SecurityElement.Escape(MapName));
+            sb.Append("\" author=\"");
+            sb.Append(SecurityElement.Escape(AuthorLogin));
+            sb.Append("\"/><desc envir=\"");
+            sb.Append(SecurityElement.Escape(GetEnvironment())); // some collections might be called wrong
+            sb.Append("\" mood=\"");
+            sb.Append(SecurityElement.Escape(Decoration.Id));
+            sb.Append("type=\"");
+            sb.Append(Mode.ToString());
+            sb.Append("\" nblaps=\"");
+            sb.Append(NbLaps);
+            sb.Append("\" price=\"");
+            sb.Append(Cost);
+            sb.Append("\" ");
+
+            if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+            {
+                sb.Append("mod=\"");
+                sb.Append(SecurityElement.Escape(Path.GetFileNameWithoutExtension(ModPackDesc.FilePath)));
+                sb.Append('"');
+            }
+
+            sb.Append("/><times bronze=\"");
+            sb.Append(BronzeTime?.TotalMilliseconds ?? -1);
+            sb.Append("\" silver=\"");
+            sb.Append(SilverTime?.TotalMilliseconds ?? -1);
+            sb.Append("\" gold=\"");
+            sb.Append(GoldTime?.TotalMilliseconds ?? -1);
+            sb.Append("\" authortime=\"");
+            sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
+            sb.Append("\" authorscore=\"");
+            sb.Append(AuthorScore);
+            sb.Append("\"/><deps>");
+
+            foreach (var dep in GetBlocks().Select(x => x.Skin?.PackDesc).OfType<PackDesc>().Where(x => !string.IsNullOrEmpty(x.FilePath)))
+            {
+                AppendDep(sb, dep);
+            }
+
+            if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+            {
+                AppendDep(sb, ModPackDesc);
+            }
+
+            // TODO add mediatracker sound and image support
+
+            if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
+            {
+                AppendDep(sb, CustomMusicPackDesc);
+            }
+
+            sb.Append("</deps></header>");
+
+            return sb.ToString();
+        }
+
+        throw new NotImplementedException();
+
+        static void AppendDep(StringBuilder sb, PackDesc dep)
+        {
+            sb.Append("<dep file=\"");
+            sb.Append(SecurityElement.Escape(dep.FilePath));
+            sb.Append('"');
+
+            if (!string.IsNullOrEmpty(dep.LocatorUrl))
+            {
+                sb.Append(" url=\"");
+                sb.Append(dep.LocatorUrl);
+                sb.Append('"');
+            }
+
+            sb.Append("/>");
+        }
+    }
+
+    public string UpdateHeaderXml()
+    {
+        return Xml = CreateHeaderXml();
+    }
+
     IEnumerable<IGameCtnBlockTM10> IGameCtnChallengeTM10.GetBlocks() => GetBlocks();
     IEnumerable<IGameCtnBlockTMSX> IGameCtnChallengeTMSX.GetBlocks() => GetBlocks();
     IEnumerable<IGameCtnBlockTMF> IGameCtnChallengeTMF.GetBlocks() => GetBlocks();
@@ -781,7 +889,7 @@ public partial class CGameCtnChallenge :
                 rw.Ident(ref n.mapInfo);
                 rw.String(ref n.mapName);
             }
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.needUnlock);
             if (Version >= 1)
             {
                 rw.TimeInt32Nullable(ref n.bronzeTime);
@@ -798,11 +906,7 @@ public partial class CGameCtnChallenge :
                     if (Version >= 5)
                     {
                         rw.Boolean(ref n.isLapRace);
-                        if (Version == 6)
-                        {
-                            rw.Boolean(ref U03);
-                        }
-                        if (Version >= 7)
+                        if (Version >= 6)
                         {
                             rw.EnumInt32<PlayMode>(ref n.mode);
                             if (Version >= 9)
@@ -871,15 +975,13 @@ public partial class CGameCtnChallenge :
     {
         public int Version { get; set; } = 6;
 
-        public bool NeedUnlock;
-
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
             n.mapInfo = r.ReadIdent();
             n.mapName = r.ReadString();
             n.decoration = r.ReadIdent();
             n.size = r.ReadInt3();
-            NeedUnlock = r.ReadBoolean();
+            n.needUnlock = r.ReadBoolean();
             Version = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
@@ -904,7 +1006,7 @@ public partial class CGameCtnChallenge :
             w.Write(n.mapName);
             w.Write(n.decoration);
             w.Write(n.size);
-            w.Write(NeedUnlock);
+            w.Write(n.needUnlock);
             w.Write(Version);
 
             if (Version < 6)
@@ -1775,6 +1877,9 @@ public partial class CGameCtnChallenge :
 
                         var ident = itemModel.Ident;
 
+                        // sometimes, when the items are placed in incorrect or different folders, the ident won't match the file name
+                        // this will cause a popup on opening, but the items will still be loaded. needs more investigation if the ident
+                        // should come entirely from the file name or not
                         var fullName = entry.FullName.Replace('/', '\\');
                         if (fullName.StartsWith(itemsPrefix))
                         {
@@ -1922,7 +2027,7 @@ public partial class CGameCtnChallenge :
             foreach (var block in n.GetBlocks().Concat(n.GetBakedBlocks()).Where(x => x.IsFree))
             {
                 block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
-                block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+                block.YawPitchRoll = rw.Vec3(block.YawPitchRoll);
             }
         }
     }

@@ -1,0 +1,52 @@
+CPlugAudioBalance 0x09034000
+- inherits: CPlugAudio
+
+0x000
+ version
+ Group[] Groups (version: Version)
+ v1+
+  float
+  v2+
+   float
+   v6+
+    float
+    v7+
+     float
+     float
+     float
+     float
+     CFuncKeysReal (external)
+     CFuncKeysReal (external)
+     v8+
+      CFuncKeysReal (external)
+      CFuncKeysReal (external)
+      v9+
+       CFuncKeysReal (external)
+       v10+
+        float
+        float
+        float
+        v11+
+         float
+         v12+
+          float
+
+0x001
+ version
+ float
+ float
+ float
+ bool
+
+archive Group
+ Line (version: v)
+ Line (version: v)
+
+archive Line
+ float
+ float
+ float
+ v3+
+  float
+  v6+
+   float

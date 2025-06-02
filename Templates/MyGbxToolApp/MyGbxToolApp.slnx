@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MyGbxToolApp/MyGbxToolApp.csproj" />
+  <Project Path="MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />
+</Solution>

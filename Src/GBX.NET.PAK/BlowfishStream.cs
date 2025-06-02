@@ -14,13 +14,15 @@ public class BlowfishStream : Stream, IEncryptionInitializer
 #endif
     private int bufferIndex;
     private int totalIndex;
+    private bool isPak18;
 
-    public BlowfishStream(Stream stream, byte[] key, ulong iv)
+    public BlowfishStream(Stream stream, byte[] key, ulong iv, bool isPak18 = false)
     {
         this.stream = stream ?? throw new ArgumentNullException(nameof(BlowfishStream.stream));
-        blowfish = new Blowfish(key);
+        blowfish = new Blowfish(key, isPak18);
         this.iv = iv;
         memoryBuffer = new byte[8];
+        this.isPak18 = isPak18;
     }
 
     public override bool CanRead => stream.CanRead;
@@ -75,19 +77,48 @@ public class BlowfishStream : Stream, IEncryptionInitializer
 #if NET5_0_OR_GREATER
                 var read = stream.Read(memorySpan);
                 var nextIV = BitConverter.ToUInt64(memorySpan);
-                blowfish.Decipher(memorySpan);
+
+                // Trick #3: Switch Decipher with Encipher
+                if(isPak18)
+                {
+                    blowfish.Encipher(memorySpan);
+                }
+                else
+                {
+                    blowfish.Decipher(memorySpan);
+                }
+
                 var block = BitConverter.ToUInt64(memorySpan);
                 block ^= iv;
                 BitConverter.TryWriteBytes(memorySpan, block);
 #else
                 var read = stream.Read(memoryBuffer, 0, 8);
                 ulong nextIV = BitConverter.ToUInt64(memoryBuffer, 0);
-                blowfish.Decipher(memoryBuffer);
+
+                // Trick #3: Switch Decipher with Encipher
+                if(isPak18)
+                {
+                    blowfish.Encipher(memoryBuffer);
+                }
+                else
+                {
+                    blowfish.Decipher(memoryBuffer);
+                }
+
                 ulong block = BitConverter.ToUInt64(memoryBuffer, 0);
                 block ^= iv;
                 memoryBuffer = BitConverter.GetBytes(block);
 #endif
-                iv = nextIV;
+                
+                // Trick #4: Custom nextIV logic
+                if (isPak18)
+                {
+                    iv = iv >> 0x2f ^ iv * 9 ^ nextIV;
+                }
+                else
+                {
+                    iv = nextIV;
+                }
             }
 #if NET5_0_OR_GREATER
             buffer[offset + i] = memorySpan[bufferIndex % 8];

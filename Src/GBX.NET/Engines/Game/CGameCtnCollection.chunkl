@@ -1,15 +1,15 @@
 CGameCtnCollection 0x03033000
 
-0x000 // old header
+0x000 (header, struct: SOldHeaderDesc) // old header
  id
 
-0x001 // desc
- versionb version
+0x001 (header, struct: SHeaderDesc) // desc
+ versionb
  id Collection
  bool NeedUnlock
  v1+
-  string IconEnv
-  string IconCollection
+  string IconFullName
+  string IconSmallFullName
   v2+
    int SortIndex
    v3+
@@ -17,24 +17,42 @@ CGameCtnCollection 0x03033000
     v4+
      ident Vehicle
      v5+
-      string MapFid
-      vec2?
-      vec2?
+      string MapFullName
+      rect MapRect
       v7-
-       vec2? MapCoordElem
+       vec2 MapCoordElem
        v6+
-        vec2? MapCoordIcon
+        vec2 MapCoordIcon
       v7+
        string LoadScreen
        v8+
-        vec2? MapCoordElem
-        vec2? MapCoordIcon
-        vec2? MapCoordDesc
+        vec2 MapCoordElem
+        vec2 MapCoordIcon
+        vec2 MapCoordDesc
         string LongDesc
         v9+
          string DisplayName
          v10+
-          bool? IsEditable
+          bool IsEditable
+
+0x002 (header, struct: SHeaderCollectorFolders)
+ versionb
+ string FolderBlockInfo
+ string FolderItem
+ string FolderDecoration
+ v1+
+  v2-
+   string
+  v2+
+   string FolderCardEventInfo
+   v3+
+    string FolderMacroBlockInfo
+    v4+
+     string FolderMacroDecals
+
+0x003 (header, struct: SHeaderMenuIconsFolders)
+ versionb
+ string FolderMenusIcons
 
 0x008 // DefaultDecoration
  CGameCtnDecoration DefaultDecoration (external)
@@ -49,34 +67,28 @@ CGameCtnCollection 0x03033000
  ident Vehicle
 
 0x00B
- int
+ int BlocksShadow
 
 0x00C
  bool IsEditable
- int
+ int<ECollectionType> CollectionType
 
-0x00D
- bool HasIconFid
- if HasIconFid
-  CPlugBitmap IconFid (external)
- bool HasCollectionIconFid
- if HasCollectionIconFid
-  CPlugBitmap CollectionIconFid (external)
+0x00D //IconFid, IconSmallFid
 
 0x00E
- int
+ int SortIndex
 
 0x011
- int
+ CGameCtnDecoration DefaultDecoration (external)
 
 0x013
- float
- float
+ float WaterTop
+ float WaterBottom
  float CameraMinHeight
 
 0x016
- int
- bool
+ int BlocksShadow
+ bool ShadowCastBack
  int<EBackgroundShadow> BackgroundShadow
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
@@ -84,25 +96,25 @@ CGameCtnCollection 0x03033000
  float ColorVertexMax
 
 0x018
- int
- rect
- vec2
- vec2
+ CPlugBitmap MapFid
+ rect MapRect
+ vec2 MapCoordElem
+ vec2 MapCoordIcon
 
 0x019 // LoadScreenFid
  CPlugBitmap LoadScreenFid (external)
 
 0x01A
- CMwNod
- rect
- vec2
- vec2
- vec2
- string
+ CPlugBitmap MapFid
+ rect MapRect
+ vec2 MapCoordElem
+ vec2 MapCoordIcon
+ vec2 MapCoordDesc
+ string LongDesc
 
 0x01B
- int
- bool
+ int BlocksShadow
+ bool ShadowCastBack
  int<EBackgroundShadow> BackgroundShadow
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
@@ -114,13 +126,13 @@ CGameCtnCollection 0x03033000
  CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers (external)
 
 0x01E // camera
- float
- float
+ float WaterTop
+ float WaterBottom
  float CameraMinHeight
- bool
+ bool IsWaterOutsidePlayField
 
-0x01F
- int[] // ParticleEmitterModelsFids?
+0x01F // ParticleEmitterModelsFids
+ int[] ParticleEmitterModelsFids
 
 0x020 // folders
  string FolderBlockInfo
@@ -134,13 +146,13 @@ CGameCtnCollection 0x03033000
 0x022 // is water multi-height
  bool IsWaterMultiHeight
 
-0x023
- bool
+0x023 // CarCanBeDirty
+ bool? CarCanBeDirty
 
 0x024
- int
+ int BlocksShadow
  int<EBackgroundShadow> BackgroundShadow
- bool
+ bool ShadowCastBack
  float ShadowSoftSizeInWorld
  int<EVertexLighting> VertexLighting
  float ColorVertexMin
@@ -187,7 +199,7 @@ CGameCtnCollection 0x03033000
 
 0x036 // OffZone_FogMatter
  version
- CPlugFogMatter OffZoneFogMatter
+ CPlugFogMatter OffZoneFogMatter (external)
 
 0x037 // TerrainHeightOffset
  float TerrainHeightOffset
@@ -215,13 +227,13 @@ CGameCtnCollection 0x03033000
    float WaterGRefracPertub
    v7+
     int // not seen in code
-   float CameraMinHeight
-   v3-
-    bool // CSystemFidsFolder something?
-   bool IsWaterMultiHeight
-   v2-
-    float
-   float WaterFogClampAboveDist
+ float CameraMinHeight
+ v3-
+  bool // CSystemFidsFolder something?
+ bool IsWaterMultiHeight
+ v2-
+  float
+ float WaterFogClampAboveDist
 
 0x039
  version
@@ -230,7 +242,7 @@ CGameCtnCollection 0x03033000
   float?
   float?
  v1+
-  int?
+  int? // VehicleStyles?
   v2+
    CMwNod ItemPlacementGroups
    v3+
@@ -293,6 +305,10 @@ CGameCtnCollection 0x03033000
  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C
  CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3
 
+enum ECollectionType
+ Environment
+ Car
+
 enum EBackgroundShadow
  None
  Receive
@@ -318,6 +334,6 @@ archive Water
  v3+
   float?
  v2+
-  int? // NodeRef?
+  CMwNod
   v7+
    int? // not seen in code

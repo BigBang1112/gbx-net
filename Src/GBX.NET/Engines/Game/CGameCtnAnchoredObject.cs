@@ -47,5 +47,12 @@ public partial class CGameCtnAnchoredObject
     /// </summary>
     public MacroblockInstance? MacroblockReference { get; set; }
 
+    [Obsolete("Use the correctly-named YawPitchRoll instead. This property doesn't swap Pitch and Yaw and behaves like YawPitchRoll, and it will be removed in 2.3.0.")]
+    public Vec3 PitchYawRoll
+    {
+        get => YawPitchRoll;
+        set => YawPitchRoll = value;
+    }
+
     public override string ToString() => $"CGameCtnAnchoredObject: {itemModel}";
 }

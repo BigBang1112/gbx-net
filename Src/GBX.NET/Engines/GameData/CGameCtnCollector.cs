@@ -7,6 +7,12 @@ public partial class CGameCtnCollector
     private int catalogPosition;
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
+    private int nbAvailableMin;
+    public int NbAvailableMin { get => nbAvailableMin; set => nbAvailableMin = value; }
+
+    private int nbAvailableMax;
+    public int NbAvailableMax { get => nbAvailableMax; set => nbAvailableMax = value; }
+
     /// <summary>
     /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
     /// </summary>
@@ -21,9 +27,6 @@ public partial class CGameCtnCollector
     private CMwNod? iconFid;
     private GbxRefTableFile? iconFidFile;
     public CMwNod? IconFid { get => iconFid; set => iconFid = value; }
-
-    private string? skinDirectory;
-    public string? SkinDirectory { get => skinDirectory; set => skinDirectory = value; }
 
     public partial class HeaderChunk2E001004
     {
@@ -112,8 +115,6 @@ public partial class CGameCtnCollector
 
     public partial class Chunk2E001009
     {
-        public string? U01;
-
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
@@ -123,28 +124,7 @@ public partial class CGameCtnCollector
                 rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
             }
 
-            rw.Id(ref U01);
-        }
-    }
-
-    public partial class Chunk2E001010 : IVersionable
-    {
-        public CMwNod? U01;
-        private GbxRefTableFile? U01File;
-        public CMwNod? U02;
-
-        public int Version { get; set; }
-
-        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-            rw.NodeRef(ref U01, ref U01File); // skin direct reference inside pak
-            rw.String(ref n.skinDirectory);
-
-            if (Version >= 2 && string.IsNullOrEmpty(n.skinDirectory))
-            {
-                rw.NodeRef(ref U02);
-            }
+            rw.Id(ref n.parentCollectorId);
         }
     }
 }

@@ -10,11 +10,24 @@ CPlugRoadChunk 0x09128000
  v2+
   int
   vec3[]
- v2-
-  int
- v5+
-  byte
-  byte
-  v6+
-   float
-   float
+  v3+
+   int
+   v5+
+    byte
+    byte
+    v6+
+     float
+     float
+     v7+
+      byte
+      v8+
+       id
+       v9+
+        int[]
+        v10+
+         byte
+         id
+         v11+
+          vec3
+          v12+
+           float

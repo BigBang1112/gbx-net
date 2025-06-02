@@ -1,1 +1,11 @@
 CGameTeleporterModel 0x2E00C000
+
+0x000
+ version
+ v0=
+  iso4 SpawnLoc
+ v1+
+  CGameSpawnModel Spawn
+ CPlugSurface TriggerShape (external)
+ v2+
+  vec3 CenterPos

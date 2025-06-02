@@ -5,6 +5,13 @@
 
 Hashing features (currently only CRC32) for GBX.NET 2. This hashing function is used in maps when changing the `MapUid` or `HashedPassword`.
 
+## Framework support
+
+- .NET 9
+- .NET 8
+- .NET 6
+- .NET Standard 2.0
+
 ## Usage
 
 Additional package `GBX.NET.LZO` is required in this example.

@@ -80,11 +80,13 @@ public partial class CGameCtnGhost
             }
             //
 
+            // SGameGhostValidationData
             rw.String(ref n.validate_ExeVersion);
             rw.UInt32(ref n.validate_ExeChecksum);
             rw.Int32(ref n.validate_OsKind);
             rw.Int32(ref n.validate_CpuKind);
             rw.String(ref n.validate_RaceSettings);
+            //
         }
 
         private void ReadInputs(CGameCtnGhost n, GbxReader r)

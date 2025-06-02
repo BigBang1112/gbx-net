@@ -1,0 +1,75 @@
+CGameControlCameraTrackManiaRace3 0x24087000
+- inherits: CGameControlCameraTarget
+
+0x000
+ float SlerpSpeed
+ float Up
+ float Far
+ int FlyDurationBeforeFlyingBehavior
+ int InputNoSteerDurationBeforeReset
+ int InputSteerDurationBeforeBurnoutShowView
+ float MinSpeed
+ float MinSpeed2
+ float SlerpTargetPosNormalBehaviorDelta
+ int SlerpTargetPosNormalBehaviorTimeUp
+ int SlerpTargetPosNormalBehaviorTimeDown
+ float SlerpTargetPosFlyingDelta
+ int SlerpTargetPosFlyingTimeUp
+ int SlerpTargetPosFlyingTimeDown
+ float SlerpTargetPosDelta
+ int SlerpTargetPosTimeUp
+ int SlerpTargetPosTimeDown
+ float SlerpTargetCamUpDelta
+ int SlerpTargetCamUpTimeUp
+ int SlerpTargetCamUpTimeDown
+ float SlerpSpeedFlyingBehavior
+ float SlerpSpeedDelta
+ int SlerpSpeedTimeUp
+ int SlerpSpeedTimeDown
+ float SlerpSpeedCamUp
+ float SlerpSpeedCamUpFlyingBehavior
+ float SlerpSpeedCamUpDelta
+ int SlerpSpeedCamUpTimeUp
+ int SlerpSpeedCamUpTimeDown
+ float StateFlyingLookAtFactorDelta
+ int StateFlyingLookAtFactorTimeUp
+ int StateFlyingLookAtFactorTimeDown
+ float StateFlyingLookAtStep
+ float StateFlyingRadiusDelta
+ int StateFlyingRadiusTimeUp
+ int StateFlyingRadiusTimeDown
+ float ConstantFlyingLookDownFactor
+ float FlyingLookDownFactorKi
+ float FlyingLookDownFactorKa
+ float RadiusDamperKi
+ float RadiusDamperKa
+ float InputGasFarDelta
+ int InputGasFarTimeUp
+ int InputGasFarTimeDown
+ float InputBrakeFarDelta
+ int InputBrakeFarTimeUp
+ int InputBrakeFarTimeDown
+ float InputSteerFarDelta
+ int InputSteerFarTimeUp
+ int InputSteerFarTimeDown
+ float EventTurboFovDelta
+ int EventTurboFovTimeUp
+ int EventTurboFovTimeDown
+ float EventTurboFarDelta
+ int EventTurboFarTimeUp
+ int EventTurboFarTimeDown
+ float EventChangeGearFarDelta
+ int EventChangeGearFarTimeUp
+ int EventChangeGearFarTimeDown
+ float EventBurningLookAtFactorDelta
+ int
+ int EventBurningLookAtFactorTimeDown
+ float EventBurningRadiusDelta
+ int EventBurningRadiusTimeUp
+ int EventBurningRadiusTimeDown
+ CFuncKeysReal SlerpSpeedModulationFromSpeed
+ CFuncKeysReal LookAtFactorFromUpSpeedRatio
+ CFuncKeysReal FlyingLookDownFactorFromSpeedRatio
+
+0x001
+ float

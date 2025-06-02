@@ -1,0 +1,14 @@
+CSceneSector 0x0A004000
+
+0x000
+ int Scene
+ CHmsZone Zone
+
+0x001
+ iso4
+
+0x002
+ id
+
+0x004
+ box

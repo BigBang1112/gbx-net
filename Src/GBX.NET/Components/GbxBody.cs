@@ -1,4 +1,7 @@
 ﻿using System.Collections.Immutable;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 using System.Text;
 
 namespace GBX.NET.Components;
@@ -94,6 +97,9 @@ public sealed partial class GbxBody
         new GbxBodyWriter(this, writer).Write(uncompressedInputStream, compressionOfBody);
     }
 
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10001")]
+#endif
     public GbxBody DeepClone() => new()
     {
         RawData = RawData,

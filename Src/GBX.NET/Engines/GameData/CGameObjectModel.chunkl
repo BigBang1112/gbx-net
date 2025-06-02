@@ -3,7 +3,7 @@ CGameObjectModel 0x2E01D000
 0x000
  version
  CGameObjectPhyModel Phy
- CGameObjectVisModel Vis
+ CGameObjectVisModel Vis (external)
  v1+
   int
   string InventoryName

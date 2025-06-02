@@ -22,6 +22,7 @@ public partial class CPlugVertexStream
 
     public Vec3[]? Positions { get => positions; set => positions = value; }
     public SortedDictionary<int, Vec2[]> UVs { get => uvs; set => uvs = value; }
+    public Vec3[]? Normals { get => normals; set => normals = value; }
     public SortedDictionary<int, int[]> Colors { get => colors; set => colors = value; }
 
     public partial class Chunk09056000 : IVersionable

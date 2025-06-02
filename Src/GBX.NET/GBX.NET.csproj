@@ -2,9 +2,9 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.1.0</VersionPrefix>
+        <VersionPrefix>2.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
-        <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 200+ Gbx classes.</Description>
+        <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 350+ Gbx classes.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
@@ -16,7 +16,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>12</LangVersion>
+        <LangVersion>13</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
@@ -53,9 +53,9 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-        <PackageReference Include="System.Memory" Version="4.5.5" />
+        <PackageReference Include="System.Memory" Version="4.6.0" />
         <PackageReference Include="System.Collections.Immutable" Version="9.0.0" />
-        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -89,6 +89,7 @@
 
     <ItemGroup>
         <AdditionalFiles Include="../../Resources/ClassId.txt" />
+        <AdditionalFiles Include="../../Resources/ClassIdManual.txt" />
         <AdditionalFiles Include="../../Resources/CollectionId.txt" />
         <AdditionalFiles Include="../../Resources/Wrap.txt" />
         <AdditionalFiles Include="../../Resources/Unwrap.txt" />

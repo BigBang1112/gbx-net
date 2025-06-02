@@ -1,0 +1,72 @@
+CPlugDecalModel 0x090A7000
+- inherits: CPlug
+
+0x002
+ version
+ v4-
+  CPlugBitmap DiffuseA (external)
+  CPlugBitmap Normal (external)
+ v1+
+  float TexelByMeter
+  v2+
+   bool FadeNormalAndZ
+   v3+
+    float
+    v4=
+     CPlugBitmap Specular (external)
+    v5+
+     string DiffuseARef
+     if DiffuseARef == null || DiffuseARef == ""
+      CPlugBitmap DiffuseA (external)
+     string NormalRef
+     if NormalRef == null || NormalRef == ""
+      CPlugBitmap Normal (external)
+     string SpecularRef
+     if SpecularRef == null || SpecularRef == ""
+      CPlugBitmap Specular (external)
+     v6+
+      string RoughnessRef
+      if RoughnessRef == null || RoughnessRef == ""
+       CPlugBitmap Roughness
+
+0x003
+ CPlugBitmap Icon (external)
+
+0x004
+ version
+ CPlugSolid
+ bool RandomInstances
+ v2+
+  float
+  v3+
+   CPlugBitmap Sprite3dBitmap (external)
+   id Sprite3dGroupId
+   v4+
+    string SvgRef
+    if SvgRef == null || SvgRef == ""
+     CMwNod Svg (external)
+    v5+
+     float SvgSize
+     v6+
+      float SvgAlpha
+      v7+
+       int MinAngleN3d
+       v8+
+        CPlugDecalModel[]_deprec DecalModels
+        MacroDecalSet[] MacroDecalSets
+
+0x006
+ version
+ uint
+
+archive MacroDecalSet
+ id
+ box
+ MacroDecal3d[] Decals
+
+archive MacroDecal3d
+ int
+ id
+ float
+ float
+ float

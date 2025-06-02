@@ -2,9 +2,9 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.PAK</PackageId>
-        <VersionPrefix>2.0.0</VersionPrefix>
+        <VersionPrefix>2.1.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
-        <Description>Support for Pak (NadeoPak) package files, integrated with GBX.NET.</Description>
+        <Description>Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.</Description>
         <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
@@ -32,6 +32,7 @@
 
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -45,7 +46,8 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="NativeSharpZlib" Version="0.2.5" />
+        <PackageReference Include="NativeSharpLz4" Version="0.1.0" />
+        <PackageReference Include="NativeSharpZlib" Version="0.2.8" />
         <PackageReference Include="Zomp.SyncMethodGenerator" Version="1.4.14">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

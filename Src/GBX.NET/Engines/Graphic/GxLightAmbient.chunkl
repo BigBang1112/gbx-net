@@ -1,0 +1,6 @@
+GxLightAmbient 0x04005000
+- inherits: GxLight
+
+0x000
+ float ShadeMinY
+ float ShadeMaxY

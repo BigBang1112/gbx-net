@@ -1,0 +1,12 @@
+CMotionTrackMobilPitchin 0x08041000
+- inherits: CMotionTrack
+
+0x002
+ CMwNod
+ float
+ float
+ float
+ float
+ int
+ float
+ float

@@ -5,6 +5,13 @@
 
 Cryptographic features for GBX.NET 2. Adds MUX and CRY algorithms, simplifies MD5 implementation.
 
+## Framework support
+
+- .NET 9
+- .NET 8
+- .NET 6
+- .NET Standard 2.0
+
 ## License
 
 GBX.NET.Crypto library is MIT Licensed.

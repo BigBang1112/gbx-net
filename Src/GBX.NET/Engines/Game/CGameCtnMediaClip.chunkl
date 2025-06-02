@@ -1,43 +1,38 @@
 CGameCtnMediaClip 0x03079000
-- chunk_Chunk03079002: Unexpected syntax (listVersion)
-- chunk_Chunk03079003: Unexpected syntax (listVersion)
-- chunk_Chunk03079005: Unexpected syntax (listVersion)
-- chunk_Chunk03079007: Unexpected syntax
-- chunk_Chunk0307900D: Unexpected syntax (listVersion)
 
-0x002
+0x002 // tracks
  list<CGameCtnMediaTrack>_deprec Tracks
  string Name
  bool
 
-0x003 // tracks with sorting
+0x003 [TMSX, TMNESWC, TMU] // tracks with sorting
  list<CGameCtnMediaTrack>_deprec Tracks
  string Name
 
-0x004
- CMwNod
+0x004 [TMU, TMF] // Scene
+ CSceneLayout Scene
 
-0x005 (base: 0x003) // tracks without sorting
+0x005 (base: 0x003) [TMF, MP3] // tracks without sorting
 
-0x007
- int LocalPlayerClipEntIndex = -1
+0x007 [TMF, MP3] // LocalPlayerClipEntIndex
+ int LocalPlayerClipEntIndex = -1 // also called LocalPlayerGhostId
 
-0x008
+0x008 [MP3]
  float = 0.2f
 
-0x009
+0x009 [MP3]
  string // same as 0x00D U02
 
-0x00A
+0x00A [MP3] // StopWhenLeave
  bool StopWhenLeave
 
-0x00B
+0x00B [MP3]
  bool // probably NOT StopWhenRespawn
 
 0x00C
  int
 
-0x00D
+0x00D [MP4.v0, TM2020.v1] // MP tracks
  version
  list<CGameCtnMediaTrack>_deprec Tracks
  string Name
@@ -48,4 +43,6 @@ CGameCtnMediaClip 0x03079000
  float
  int LocalPlayerClipEntIndex // = -1
 
-0x00E (skippable, ignore)
+0x00E (skippable) [TM2020]
+ version
+ int

@@ -1,1 +1,9 @@
 CHmsAmbientOcc 0x06026000
+
+0x000
+ float
+ float
+ int
+ float
+ float
+ float

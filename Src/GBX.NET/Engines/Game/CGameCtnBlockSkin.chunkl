@@ -8,7 +8,7 @@ CGameCtnBlockSkin 0x03059000
  string Text
  packdesc PackDesc
 
-0x002 // skin + parent skin
+0x002 [TMF] // skin + parent skin
  string Text
  packdesc PackDesc
  packdesc ParentPackDesc

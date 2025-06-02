@@ -13,6 +13,16 @@ CSceneVehicleCarMarksSamples 0x0A083000
  version
  v1+
   throw
+ Sample[] Samples
+
+archive Sample // SSceneVehicleCarkMarkSample typo lol
  int
- if U01 > 0
-  throw
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int

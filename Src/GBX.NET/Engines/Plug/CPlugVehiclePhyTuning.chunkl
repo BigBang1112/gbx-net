@@ -1,7 +1,7 @@
 CPlugVehiclePhyTuning 0x090EB000
 
 0x000
- id Name
+ id Name = empty
  CFuncKeysReal
  float
 

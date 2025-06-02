@@ -9,22 +9,22 @@ CGameCtnBlockInfo 0x0304E000
 
 0x00B [TM10, TMSX]
  int
- CSceneMobil // VariantBaseGround
- CSceneMobil
- CSceneMobil // VariantBaseAir
+ CSceneMobil GroundHelperMobil
+ CSceneMobil AirHelperMobil
+ CSceneMobil ConstructionModeHelperMobil
 
 0x00C [TM10, TMSX, TMF]
  iso4? SpawnLocGround
  iso4? SpawnLocAir
 
 0x00D [TMSX, TMF]
- bool // something with replacing?
+ bool IsReplacement
 
 0x00E [TMF]
  int<EWayPointType> WayPointType
- CSceneMobil // helper
- CSceneMobil // helper
- CSceneMobil // arrow
+ CSceneMobil GroundHelperMobil
+ CSceneMobil AirHelperMobil
+ CSceneMobil ConstructionModeHelperMobil
 
 0x00F [TMF, TMT, MP4]
  bool NoRespawn
@@ -90,7 +90,9 @@ CGameCtnBlockInfo 0x0304E000
 
 0x02B [TMT.v1, MP4.v1]
  version
- int
+ int<EBaseType> BaseType
+ v0=
+  throw
 
 0x02C [TMT, MP4]
  CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
@@ -103,9 +105,11 @@ CGameCtnBlockInfo 0x0304E000
   byte
 
 0x031
- int
- int
- int
+ version
+ CMwNod
+ CPlugGameSkinAndFolder MaterialModifier (external)
+ v1+
+  CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
 
 enum EWayPointType
  Start
@@ -123,3 +127,14 @@ enum EMultiDir
  PerpendicularDirsOnly
  NextDirOnly
  PreviousDirOnly
+
+enum ESelection
+ Random
+ Obsolete
+ AutoRotate
+
+enum EBaseType
+ None
+ Conductor
+ Generator
+ Collector

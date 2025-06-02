@@ -7,6 +7,7 @@ Provides extensions for JSON serialization with `Newtonsoft.Json`.
 
 ## Framework support
 
+- .NET 9
 - .NET 8
 - .NET 6
 - .NET Standard 2.0

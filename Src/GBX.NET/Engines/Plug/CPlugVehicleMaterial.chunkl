@@ -1,5 +1,53 @@
 CPlugVehicleMaterial 0x090F1000
 
+0x001
+ byte MaterialId
+ bool TrailIsOnlyWhenSliding
+ CPlugShader TrailShader
+ float VibrationSpeedCoef
+ float VibrationMax
+
+0x004
+ CPlugBitmap MaterialHeightDetailBitmap (external)
+ vec2 MaterialHeightDetailScale
+
+0x005
+ float Speed
+ float Grip
+ float AccelerationCoef
+ float BrakeCoef
+
+0x006
+ CPlugFlockModel TrailManagerModel (external)
+
+0x009
+ byte MaterialId
+ float VibrationSpeedCoef
+ float VibrationMax
+ bool TrailIsOnlyWhenSliding
+ CMwNod (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+
+0x00A
+ CPlugParticleEmitterModel (external)
+
+0x00B
+ CPlugParticleEmitterModel (external)
+
+0x00C
+ CPlugParticleEmitterModel (external)
+
+0x00D
+ CPlugParticleEmitterModel (external)
+
+0x00E
+ byte MaterialId
+ float VibrationSpeedCoef
+ float VibrationMax
+
 0x00F
  float
  float

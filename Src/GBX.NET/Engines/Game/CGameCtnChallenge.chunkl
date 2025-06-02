@@ -5,30 +5,28 @@ CGameCtnChallenge 0x03043000 // A map.
  v2-
   ident MapInfo = empty
   string MapName = empty
- bool
+ bool NeedUnlock
  v1+
   timeint? BronzeTime
   timeint? SilverTime
   timeint? GoldTime
   timeint? AuthorTime
   v2=
-   byte
+   byte U02
   v4+
    int Cost
    v5+
     bool IsLapRace
-    v6=
-     bool
-    v7+
+    v6+
      int<PlayMode> Mode
      v9+
-      int
+      int U04
       v10+
        int AuthorScore
        v11+
         int<EditorMode> Editor
         v12+
-         int
+         int U05
          v13+
           int NbCheckpoints
           int NbLaps
@@ -55,7 +53,7 @@ CGameCtnChallenge 0x03043000 // A map.
        v8-
         int
        v8+
-        ulong LightmapCacheUid
+        ulong LightmapCacheUid (hex)
         v9+
          byte LightmapVersion
          v11+
@@ -163,7 +161,7 @@ CGameCtnChallenge 0x03043000 // A map.
  vec2 MapCoordTarget
 
 0x026 [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // clip global
- CMwNod
+ CGameCtnMediaClip ClipGlobal
 
 0x027 // old realtime thumbnail
  bool HasCustomCamThumbnail
@@ -249,7 +247,7 @@ CGameCtnChallenge 0x03043000 // A map.
  v2+
   CGameCtnMediaClip ClipAmbiance
  v1+
-  int3 ClipTriggerSize
+  int3 ClipTriggerSize = (1, 1, 1)
 
 0x04B (skippable) [MP3, TMT, MP4, TM2020] // objectives
  string ObjectiveTextAuthor
@@ -257,7 +255,7 @@ CGameCtnChallenge 0x03043000 // A map.
  string ObjectiveTextSilver
  string ObjectiveTextBronze
 
-0x04D (skippable, ignore) [MP3, TMT]
+0x04D (skippable, ignore) [MP3, TMT, MP4]
 
 0x04E (skippable, ignore)
 
