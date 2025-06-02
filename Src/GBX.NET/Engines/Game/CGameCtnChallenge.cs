@@ -2262,8 +2262,14 @@ public partial class CGameCtnChallenge :
 
         public ushort Flags { get; set; }
 
-        private Int3 decorationOffset;
-        public Int3 DecorationOffset { get => decorationOffset; set => decorationOffset = value; }
+        private Vec3 decorationOffset;
+        public Vec3 DecorationOffset { get => decorationOffset; set => decorationOffset = value; }
+
+        private Vec3 decorationScale = new(1, 1, 1);
+        public Vec3 DecorationScale { get => decorationScale; set => decorationScale = value; }
+
+        private List<AngelScriptModule> angelScriptModules = [];
+        public List<AngelScriptModule> AngelScriptModules { get => angelScriptModules; set => angelScriptModules = value; }
 
         public bool SkyDecorationVisibility { get; set; }
 
@@ -2298,7 +2304,7 @@ public partial class CGameCtnChallenge :
 
                 if ((Flags & 1) != 0)
                 {
-                    rw.Int3(ref decorationOffset);
+                    DecorationOffset = rw.Int3((Int3)DecorationOffset);
                 }
 
                 rw.ListReadableWritable(ref legacyScripts);
@@ -2325,6 +2331,26 @@ public partial class CGameCtnChallenge :
                         }
                     }
                 }
+            }
+
+            if (Version == 7)
+            {
+                Flags = rw.UInt16(Flags);
+
+                if ((Flags & 2) != 2)
+                {
+                    if ((Flags & 1) != 0) // decorationOffsetApplied
+                    {
+                        rw.Vec3(ref decorationOffset);
+                    }
+
+                    if ((Flags & 4) != 0) // decorationScaleApplied
+                    {
+                        rw.Vec3(ref decorationScale);
+                    }
+                }
+
+                rw.ListReadableWritable(ref angelScriptModules);
             }
         }
 
@@ -2383,6 +2409,28 @@ public partial class CGameCtnChallenge :
                     case MediaClipMappedResourceType.LegacyScript:
                         LegacyScriptIndex = rw.Int32(LegacyScriptIndex);
                         break;
+                }
+            }
+        }
+
+        public record AngelScriptModule : IReadableWritable
+        {
+            public byte Flags { get; set; }
+            public string? ModuleName { get; set; }
+            public byte[]? ByteCode { get; set; }
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                Flags = rw.Byte(Flags);
+
+                if ((Flags & 2) == 0) // not isCoreModule
+                {
+                    ModuleName = rw.String(ModuleName);
+                }
+
+                if ((Flags & 1) == 0) // not isEmpty
+                {
+                    ByteCode = rw.Data(ByteCode);
                 }
             }
         }
