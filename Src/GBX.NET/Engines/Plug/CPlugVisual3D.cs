@@ -184,9 +184,9 @@ public partial class CPlugVisual3D
             {
                 if (u03)
                 {
-                    w.Write((int)(Normal.GetValueOrDefault().X * 511) << 22
-                          | (int)(Normal.GetValueOrDefault().Y * 511) << 12
-                          | (int)(Normal.GetValueOrDefault().Z * 511));
+                    w.Write(((int)(Normal.GetValueOrDefault().X * 511) & 0x3FF) // Mask to 10 bits
+                          | ((int)(Normal.GetValueOrDefault().Y * 511) & 0x3FF) << 10
+                          | ((int)(Normal.GetValueOrDefault().Z * 511) & 0x3FF) << 20);
                 }
                 else
                 {
