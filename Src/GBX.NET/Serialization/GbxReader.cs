@@ -1104,6 +1104,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             {
                 logger?.LogDebug("NodeRef #{Index}: {ExternalNode} (external)", index.Value, externalNode);
 
+                // if ClassManager.IsPlugFile then create an instance with externalNode as param, the plug file will have internal handles
+                // alternatively, this could ALWAYS create a node and store the file inside which when presented would act as external node <-- this would avoid the File properties
+
                 file = externalNode as GbxRefTableFile;
                 return default;
             }
