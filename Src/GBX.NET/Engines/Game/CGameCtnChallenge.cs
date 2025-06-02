@@ -2467,7 +2467,14 @@ public partial class CGameCtnChallenge :
 
             public virtual void Write(GbxWriter w, int v = 0)
             {
-                throw new NotImplementedException();
+                w.Write(Name);
+                w.Write(Parameters.Count);
+
+                foreach (var parameter in Parameters)
+                {
+                    w.Write((int)parameter.Function);
+                    parameter.Write(w, v);
+                }
             }
         }
 
