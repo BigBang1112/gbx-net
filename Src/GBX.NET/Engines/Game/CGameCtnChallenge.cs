@@ -2317,7 +2317,10 @@ public partial class CGameCtnChallenge :
                 }
 
                 rw.ListReadableWritable(ref legacyScripts);
-                rw.ListReadableWritable(ref parameterSets);
+
+                if (rw.Reader is not null) ParameterSets = rw.Reader.ReadListReadable<ParameterSet>();
+                rw.Writer?.WriteListWritable(ParameterSets);
+
                 rw.ListReadableWritable(ref mediaClipMappings);
 
                 if (rw.Reader is not null)
@@ -2360,7 +2363,10 @@ public partial class CGameCtnChallenge :
                 }
 
                 rw.ListReadableWritable(ref angelScriptModules);
-                rw.ListReadableWritable(ref parameterSets);
+
+                if (rw.Reader is not null) ParameterSets = rw.Reader.ReadListReadable<ParameterSet>();
+                rw.Writer?.WriteListWritable(ParameterSets);
+
                 rw.ListReadableWritable(ref triggerGroups);
 
             }
@@ -2392,41 +2398,70 @@ public partial class CGameCtnChallenge :
 
                 for (var i = 0; i < count; i++)
                 {
-                    var functionIndex = (ParameterName)r.ReadInt32();
-
+                    var function = (ParameterName)r.ReadInt32();
+#pragma warning disable IDE0066
                     Parameter parameter;
-                    switch (functionIndex)
+                    switch (function)
                     {
                         // float
                         case ParameterName.Vehicle_Scale:
-                            parameter = new FloatParameter(functionIndex);
+                        case ParameterName.Vehicle_AddLinearSpeedX:
+                        case ParameterName.Vehicle_AddLinearSpeedY:
+                        case ParameterName.Vehicle_AddLinearSpeedZ:
+                        case ParameterName.Vehicle_Mass:
+                        case ParameterName.Vehicle_GravityGround:
+                        case ParameterName.Vehicle_GravityAir:
+                        case ParameterName.Vehicle_MaxSpeedForward:
+                        case ParameterName.Vehicle_MaxSpeedBackward:
+                        case ParameterName.Vehicle_SpeedClamp:
+                        case ParameterName.Vehicle_YellowBoostMultiplier:
+                        case ParameterName.Vehicle_RedBoostMultiplier:
+                        case ParameterName.Vehicle_YellowBoostDuration:
+                        case ParameterName.Vehicle_RedBoostDuration:
+                        case ParameterName.Vehicle_BrakeBase:
+                        case ParameterName.Vehicle_BrakeCoef:
+                        case ParameterName.Vehicle_BrakeMax:
+                        case ParameterName.Vehicle_BrakeMaxDynamic:
+                        case ParameterName.Vehicle_GroundSlowDownBaseValue:
+                            parameter = new FloatParameter(function);
                             break;
+
                         // string
-                        case ParameterName.Reset_AbsorbingValKa:
-                            parameter = new StringParameter(functionIndex);
+                        case ParameterName.Vehicle_Transform:
+                        case ParameterName.Vehicle_SetVehicleTuningByName:
+                            parameter = new StringParameter(function);
                             break;
+
                         // keys
-                        case ParameterName.Reset_AirControlZCoefFromAngularSpeed:
-                            parameter = new KeysRealParameter(functionIndex);
+                        case ParameterName.Vehicle_AccelerationCurve:
+                            parameter = new KeysRealParameter(function);
                             break;
+
                         // int
-                        case ParameterName.Reset_BrakeHeatSpeedFromFBrake:
-                            parameter = new NaturalParameter(functionIndex);
+                        case ParameterName.Vehicle_SetVehicleTuningByIndex:
+                        case ParameterName.Vehicle_SteerModel:
+                        case ParameterName.Vehicle_ShockModel:
+                            parameter = new NaturalParameter(function);
                             break;
+
                         // float[]
-                        case ParameterName.Vehicle_SteerDriveTorque:
-                            parameter = new FastBufferRealParameter(functionIndex);
+                        case ParameterName.Vehicle_SteerDriveTorque: // random example
+                            parameter = new FastBufferRealParameter(function);
                             break;
+
                         // bool
-                        case ParameterName.Reset_M6BurnoutCenterForceCoeff:
-                            parameter = new BoolParameter(functionIndex);
+                        case ParameterName.Reset_M6BurnoutCenterForceCoeff: // random example
+                            parameter = new BoolParameter(function);
                             break;
+
                         default:
-                            parameter = new Parameter(functionIndex);
+                            parameter = new Parameter(function);
                             break;
                     }
+#pragma warning restore IDE0066
 
                     parameter.Read(r, v);
+                    Parameters.Add(parameter);
                 }
             }
 
@@ -2438,12 +2473,12 @@ public partial class CGameCtnChallenge :
 
         public record Parameter : IReadable, IWritable
         {
-            public ParameterName FunctionIndex { get; }
+            public ParameterName Function { get; }
             public ParameterOperation ParameterOperation { get; set; }
 
-            public Parameter(ParameterName functionIndex)
+            public Parameter(ParameterName function)
             {
-                FunctionIndex = functionIndex;
+                Function = function;
             }
 
             public virtual void Read(GbxReader r, int v = 0)
@@ -2461,7 +2496,7 @@ public partial class CGameCtnChallenge :
         {
             public float Value { get; set; }
 
-            public FloatParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public FloatParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2480,7 +2515,7 @@ public partial class CGameCtnChallenge :
         {
             public string Value { get; set; } = string.Empty;
 
-            public StringParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public StringParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2500,7 +2535,7 @@ public partial class CGameCtnChallenge :
             public float? MultiplyValue { get; set; }
             public CFuncKeysReal? Value { get; set; }
 
-            public KeysRealParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public KeysRealParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2534,7 +2569,7 @@ public partial class CGameCtnChallenge :
         {
             public uint? Value { get; set; }
 
-            public NaturalParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public NaturalParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2570,7 +2605,7 @@ public partial class CGameCtnChallenge :
             public float? MultiplyValue { get; set; }
             public float[]? Value { get; set; }
 
-            public FastBufferRealParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public FastBufferRealParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2605,7 +2640,7 @@ public partial class CGameCtnChallenge :
         {
             public bool Value { get; set; }
 
-            public BoolParameter(ParameterName functionIndex) : base(functionIndex) { }
+            public BoolParameter(ParameterName function) : base(function) { }
 
             public override void Read(GbxReader r, int v = 0)
             {
@@ -2792,7 +2827,7 @@ public partial class CGameCtnChallenge :
 
         public enum ParameterOperation
         {
-            None,
+            Execute,
             Set,
             Multiply
         }
