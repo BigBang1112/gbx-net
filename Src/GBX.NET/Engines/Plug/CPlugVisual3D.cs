@@ -198,10 +198,10 @@ public partial class CPlugVisual3D
             {
                 if (u04)
                 {
-                    w.Write((int)(Color.GetValueOrDefault().X * 255) << 0x10
-                          | (int)(Color.GetValueOrDefault().Y * 255) << 8
-                          | (int)(Color.GetValueOrDefault().Z * 255)
-                          | (int)(Color.GetValueOrDefault().W * 255) << 0x18);
+                    w.Write(((int)(Color.GetValueOrDefault().W * 255) & 0xFF) << 0x18
+                          | ((int)(Color.GetValueOrDefault().X * 255) & 0xFF) << 0x10
+                          | ((int)(Color.GetValueOrDefault().Y * 255) & 0xFF) << 8
+                          | ((int)(Color.GetValueOrDefault().Z * 255) & 0xFF));
                 }
                 else
                 {
