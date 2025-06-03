@@ -2423,17 +2423,208 @@ public partial class CGameCtnChallenge :
                         case ParameterName.Vehicle_BrakeMax:
                         case ParameterName.Vehicle_BrakeMaxDynamic:
                         case ParameterName.Vehicle_GroundSlowDownBaseValue:
+                        case ParameterName.Vehicle_GroundSlowDownMultiplier:
+                        case ParameterName.Vehicle_LimitToMaxSpeedForce:
+                        case ParameterName.Vehicle_SlopeSpeedGainLimit:
+                        case ParameterName.Vehicle_SteerRadiusMin:
+                        case ParameterName.Vehicle_SteerRadiusCoef:
+                        case ParameterName.Vehicle_SteerLowSpeed:
+                        case ParameterName.Vehicle_SteerSlowDownCoef:
+                        case ParameterName.Vehicle_SteerMaxBlend:
+                        case ParameterName.Vehicle_SideFriction1:
+                        case ParameterName.Vehicle_SideFriction2:
+                        case ParameterName.Vehicle_MaxSideFrictionSliding:
+                        case ParameterName.Vehicle_MaxSideFrictionBlendCoef:
+                        case ParameterName.Vehicle_RolloverAxial:
+                        case ParameterName.Vehicle_SteerGroundTorque:
+                        case ParameterName.Vehicle_SteerGroundTorqueSlippingCoef:
+                        case ParameterName.Vehicle_LateralSlopeAdherenceMin:
+                        case ParameterName.Vehicle_LateralSlopeAdherenceMax:
+                        case ParameterName.Vehicle_AxialSlopeAdherenceMin:
+                        case ParameterName.Vehicle_AxialSlopeAdherenceMax:
+                        case ParameterName.Vehicle_AngularSpeedYImpulseBlend:
+                        case ParameterName.Vehicle_AngularSpeedImpulseScale:
+                        case ParameterName.Vehicle_SteerSpeed:
+                        case ParameterName.Vehicle_SteerAngleMax:
+                        case ParameterName.Vehicle_SlipAngleForceMax:
+                        case ParameterName.Vehicle_SlipAngleForceCoef1:
+                        case ParameterName.Vehicle_SlipAngleForceCoef2:
+                        case ParameterName.Vehicle_Field0x18:
+                        case ParameterName.Vehicle_Field0x1c:
+                        case ParameterName.Vehicle_Field0x20:
+                        case ParameterName.Vehicle_Field0x28:
+                        case ParameterName.Vehicle_Field0x38:
+                        case ParameterName.Vehicle_Field0x3c:
+                        case ParameterName.Vehicle_Field0x50:
+                        case ParameterName.Vehicle_Field0x54:
+                        case ParameterName.Vehicle_InertiaMass:
+                        case ParameterName.Vehicle_InertiaHalfDiagX:
+                        case ParameterName.Vehicle_InertiaHalfDiagY:
+                        case ParameterName.Vehicle_InertiaHalfDiagZ:
+                        case ParameterName.Vehicle_LinearFluidFrictionMultiplier:
+                        case ParameterName.Vehicle_AngularFluidFrictionFirstMultiplier:
+                        case ParameterName.Vehicle_AngularFluidFrictionSecondMultiplier:
+                        case ParameterName.Vehicle_BodyFrictionWithConcreteMultiplier:
+                        case ParameterName.Vehicle_BodyFrictionWithMetalMultiplier:
+                        case ParameterName.Vehicle_BodyRestCoefMetal:
+                        case ParameterName.Vehicle_BodyRestCoefConcrete:
+                        case ParameterName.Vehicle_WheelFrictionCoefConcrete:
+                        case ParameterName.Vehicle_WheelRestCoefConcrete:
+                        case ParameterName.Vehicle_WheelFrictionCoefMetal:
+                        case ParameterName.Vehicle_WheelRestCoefMetal:
+                        case ParameterName.Vehicle_AbsorbingValKi:
+                        case ParameterName.Vehicle_AbsorbingValKa:
+                        case ParameterName.Vehicle_AbsorbingValMin:
+                        case ParameterName.Vehicle_AbsorbingValMax:
+                        case ParameterName.Vehicle_AbsorbingValRest:
+                        case ParameterName.Vehicle_CMAftFore:
+                        case ParameterName.Vehicle_CMDownUp:
+                        case ParameterName.Vehicle_AngularSpeedClamp:
+                        case ParameterName.Vehicle_LinearSpeed2PositiveDeltaMax:
+                        case ParameterName.Vehicle_RubberBallElasticity:
+                        case ParameterName.Vehicle_JumpImpulseVal:
+                        case ParameterName.Vehicle_MaxDistPerStep:
+                        case ParameterName.Vehicle_AbsorbTension:
+                        case ParameterName.Vehicle_TwistAngle:
+                        case ParameterName.Vehicle_GlidingGravityCoef:
+                        case ParameterName.Vehicle_DebugAbsorbCoef:
+                        case ParameterName.Vehicle_RelSpeedMultCoef:
+                        case ParameterName.Vehicle_MaxAngularSpeedYAirControl:
+                        case ParameterName.Vehicle_VibrationPeriodSpeedCoef:
+                        case ParameterName.Vehicle_Field0x384:
+                        case ParameterName.Vehicle_Field0x33c:
+                        case ParameterName.Vehicle_Field0x340:
+                        case ParameterName.Vehicle_Field0x344:
+                        case ParameterName.Vehicle_Field0x348:
+                        case ParameterName.Vehicle_Field0x34c:
+                        case ParameterName.Vehicle_Field0x358:
+                        case ParameterName.Vehicle_Field0x35c:
+                        case ParameterName.Vehicle_Field0x360:
+                        case ParameterName.Vehicle_WaterGravity:
+                        case ParameterName.Vehicle_WaterReboundMinHSpeed:
+                        case ParameterName.Vehicle_WaterBumpMinSpeed:
+                        case ParameterName.Vehicle_WaterAngularFriction:
+                        case ParameterName.Vehicle_WaterAngularFrictionSq:
+                        case ParameterName.Vehicle_EngineVolume:
+                        case ParameterName.Vehicle_EnginePitch:
+                        case ParameterName.Vehicle_SoundEngineVolume:
+                        case ParameterName.Vehicle_SoundSkidConcreteVolume:
+                        case ParameterName.Vehicle_SoundSkidSandVolume:
+                        case ParameterName.Vehicle_SoundImpactVolume:
+                        case ParameterName.Vehicle_Field0x398:
+                        case ParameterName.Vehicle_Field0x39c:
+                        case ParameterName.Vehicle_Field0x3a0:
+                        case ParameterName.Vehicle_Field0x3a4:
+                        case ParameterName.Vehicle_Field0x3a8:
+                        case ParameterName.Vehicle_M6InertialMass:
+                        case ParameterName.Vehicle_M6MaxDiffBtwnPropulsionAndSpeed:
+                        case ParameterName.Vehicle_M6ForceEpsilon:
+                        case ParameterName.Vehicle_M6InertialTorqueModulationX:
+                        case ParameterName.Vehicle_M6InertialTorqueModulationZ:
+                        case ParameterName.Vehicle_M6BrakeModulationWhenSlipping:
+                        case ParameterName.Vehicle_M6FrictionModulationWhenSlipNBrake:
+                        case ParameterName.Vehicle_M6BrakeMaxRear:
+                        case ParameterName.Vehicle_M6BrakeMaxDynamicRear:
+                        case ParameterName.Vehicle_M6MinSpeed4Burnout:
+                        case ParameterName.Vehicle_M6MaxSpeed4Burnout:
+                        case ParameterName.Vehicle_M6BurnoutLateralSpeedCoeff:
+                        case ParameterName.Vehicle_M6BurnoutSteerCoeff:
+                        case ParameterName.Vehicle_M6BurnoutSteerCoeff2:
+                        case ParameterName.Vehicle_M6BurnoutSteerCoeff3:
+                        case ParameterName.Vehicle_M6BurnoutSteerCoeff4:
+                        case ParameterName.Vehicle_M6BurnoutCenterForceCoeff:
+                        case ParameterName.Vehicle_M6BurnoutCenterForceCoeff2:
+                        case ParameterName.Vehicle_M6BurnoutRadiusMax:
+                        case ParameterName.Vehicle_M6BurnoutLateralSpeedMax:
+                        case ParameterName.Vehicle_M6MaxDiffBtwGroundNormal:
+                        case ParameterName.Vehicle_M6MaxPosAngle4Burnout:
+                        case ParameterName.Vehicle_M6MaxNegAngle4Burnout:
+                        case ParameterName.Vehicle_M6BurnoutAccMod:
+                        case ParameterName.Vehicle_M6BurnoutFricMod:
+                        case ParameterName.Vehicle_M6AfterBurnoutAccMod:
+                        case ParameterName.Vehicle_M6BurnoutSmokeIntensity:
+                        case ParameterName.Vehicle_M6BurnoutSmokeVelocity:
+                        case ParameterName.Vehicle_M6AfterBurnoutImpulse:
+                        case ParameterName.Vehicle_M6BurnoutWheelAngularRotation:
+                        case ParameterName.Vehicle_M6BrakeSmokeIntensity:
+                        case ParameterName.Vehicle_M6MaxRpm:
+                        case ParameterName.Vehicle_M6BurnoutRpmAcc:
+                        case ParameterName.Vehicle_M6AirRpmAcc:
+                        case ParameterName.Vehicle_M6AirRpmDeadening:
+                        case ParameterName.Vehicle_M6RpmLossCoefOnGearUp:
+                        case ParameterName.Vehicle_M6RpmGainCoefOnGearDown:
+                        case ParameterName.Vehicle_M6RpmGainOnTakeOff:
+                        case ParameterName.Vehicle_M6RpmLossOnTakeOffFinished:
+                        case ParameterName.Vehicle_M6SpeedLimitPositiveForTakeOffFront:
+                        case ParameterName.Vehicle_M6SpeedLimitNegForTakeOffFront:
+                        case ParameterName.Vehicle_M6SpeedLimitPositiveForTakeOffRear:
+                        case ParameterName.Vehicle_M6SpeedLimitNegForTakeOffRear:
+                        case ParameterName.Vehicle_M5SlippingAccelCurveCoef:
+                        case ParameterName.Vehicle_M5MaxAxialRolloverTorque:
+                        case ParameterName.Vehicle_M5AccelSlipCoefMax:
+                        case ParameterName.Vehicle_M4SteerTorqueCoef:
+                        case ParameterName.Vehicle_M4LateralFrictionTorque:
+                        case ParameterName.Vehicle_M4LateralFrictionSquareTorque:
+                        case ParameterName.Vehicle_M4LateralFrictionForce:
+                        case ParameterName.Vehicle_M4LateralFrictionSquareForce:
+                        case ParameterName.Vehicle_M4LeaveSplippingSpeed:
+                        case ParameterName.Vehicle_M4SteerRadiusWhenSlippingCoef:
+                        case ParameterName.Vehicle_M4MaxFrictionForceWhenSlippingCoef:
+                        case ParameterName.Vehicle_M4MaxFrictionTorqueWhenSlippingCoef:
+                        case ParameterName.Vehicle_M4SlipAngleSpeed:
+                        case ParameterName.Vehicle_Field0x1d8:
+                        case ParameterName.Vehicle_M4SteerAngleWhenSlippingMax:
+                        case ParameterName.World_DisplayMediaTrackerClip:
+                        case ParameterName.World_SetGravityForceX:
+                        case ParameterName.World_SetGravityForceY:
+                        case ParameterName.World_SetGravityForceZ:
+                        case ParameterName.World_SetDayTime:
+                        case ParameterName.World_SetDynamicDayTimeFlowSpeed:
                             parameter = new FloatParameter(function);
                             break;
 
                         // string
                         case ParameterName.Vehicle_Transform:
                         case ParameterName.Vehicle_SetVehicleTuningByName:
+                        case ParameterName.World_ExecuteParameterSet:
+                        case ParameterName.World_ExecuteScript:
+                        case ParameterName.World_BlockGroupMakeVisible:
+                        case ParameterName.World_BlockGroupMakeInvisible:
+                        case ParameterName.World_BlockGroupMakeCollidable:
+                        case ParameterName.World_BlockGroupMakeNonCollidable:
                             parameter = new StringParameter(function);
                             break;
 
                         // keys
                         case ParameterName.Vehicle_AccelerationCurve:
+                        case ParameterName.Vehicle_SteerDriveTorque:
+                        case ParameterName.Vehicle_SteerSlowDown:
+                        case ParameterName.Vehicle_LateralContactSlowDown:
+                        case ParameterName.Vehicle_MaxSideFriction:
+                        case ParameterName.Vehicle_RolloverLateral:
+                        case ParameterName.Vehicle_RolloverLateralFromAngle:
+                        case ParameterName.Vehicle_BrakeHeatSpeedFromFBrake:
+                        case ParameterName.Vehicle_VisualSteerAngleFromSpeed:
+                        case ParameterName.Vehicle_AirControlZCoefFromAngularSpeed:
+                        case ParameterName.Vehicle_WaterSplashFromSpeed:
+                        case ParameterName.Vehicle_WaterReboundFromSpeedRatio:
+                        case ParameterName.Vehicle_WaterBumpSlowDownFromSpeedRatio:
+                        case ParameterName.Vehicle_WaterFrictionFromSpeed:
+                        case ParameterName.Vehicle_ModulationFromWheelCompression:
+                        case ParameterName.Vehicle_AccelCurveRearGear:
+                        case ParameterName.Vehicle_M6RolloverLateralFromSpeedRatio:
+                        case ParameterName.Vehicle_M6BurnoutRadius:
+                        case ParameterName.Vehicle_M6BurnoutLateralSpeed:
+                        case ParameterName.Vehicle_M6DonutRolloverFromSpeed:
+                        case ParameterName.Vehicle_M6BurnoutRolloverFromSpeed:
+                        case ParameterName.Vehicle_M5SlippingAccelCurve:
+                        case ParameterName.Vehicle_M5SteerCoefFromSpeed:
+                        case ParameterName.Vehicle_M5SmoothInputSteerDurationFromSpeed:
+                        case ParameterName.Vehicle_M4SteerRadiusFromSpeed:
+                        case ParameterName.Vehicle_M4MaxFrictionForceFromSpeed:
+                        case ParameterName.Vehicle_M4MaxFrictionTorqueFromSpeed:
+                        case ParameterName.Vehicle_M4SteerRadiusCoefFromSlipAngle:
+                        case ParameterName.Vehicle_M4AccelFromSlipAngle:
                             parameter = new KeysRealParameter(function);
                             break;
 
@@ -2441,16 +2632,35 @@ public partial class CGameCtnChallenge :
                         case ParameterName.Vehicle_SetVehicleTuningByIndex:
                         case ParameterName.Vehicle_SteerModel:
                         case ParameterName.Vehicle_ShockModel:
+                        case ParameterName.Vehicle_M5KeepNoSteerSlowDownWhenSlippingDuration:
+                        case ParameterName.Vehicle_SteerSlowDownFadeInDuration:
+                        case ParameterName.Vehicle_SteerSlowDownFadeOutDuration:
+                        case ParameterName.Vehicle_SteerDurationBeforeSteerSlowDown:
+                        case ParameterName.Vehicle_TireMaterial:
+                        case ParameterName.Vehicle_GearCount:
+                        case ParameterName.Vehicle_MinGear:
+                        case ParameterName.Vehicle_AirControlDuration:
+                        case ParameterName.Vehicle_M6BurnoutDuration:
+                        case ParameterName.Vehicle_M6AfterBurnoutDuration:
+                        case ParameterName.Vehicle_M5LateralContactSlowDownDuration:
+                        case ParameterName.Vehicle_M5KeepSlidingAccelDurarion:
+                        case ParameterName.Vehicle_M5KeepSteerSlowDownDurarion:
                             parameter = new NaturalParameter(function);
                             break;
 
                         // float[]
-                        case ParameterName.Vehicle_SteerDriveTorque: // random example
+                        case ParameterName.Vehicle_M6GearRatio:
+                        case ParameterName.Vehicle_M6MaxRPM:
+                        case ParameterName.Vehicle_M6MinRPM:
+                        case ParameterName.Vehicle_M6RpmWantedOnGearUp:
+                        case ParameterName.Vehicle_M6RpmDelta:
+                        case ParameterName.Vehicle_M6RpmComputedOnGearDown:
                             parameter = new FastBufferRealParameter(function);
                             break;
 
                         // bool
-                        case ParameterName.Reset_M6BurnoutCenterForceCoeff: // random example
+                        case ParameterName.Vehicle_NoSteerSlowDownWhenSlipping:
+                        case ParameterName.Vehicle_IsFakeEngine:
                             parameter = new BoolParameter(function);
                             break;
 
