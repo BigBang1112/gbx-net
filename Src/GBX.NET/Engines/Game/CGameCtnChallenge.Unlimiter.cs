@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Components;
+
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnChallenge
 {
@@ -131,15 +133,203 @@ public partial class CGameCtnChallenge
                 rw.ListReadableWritable<TriggerGroup>(ref triggerGroups);
                 rw.ListReadableWritable<BlockGroup>(ref blockGroups);
                 var embeddedBlockCount = rw.Int32(embeddedBlocks.Count);
+
                 rw.ListReadableWritable<MaterialModelRef>(ref materialModelRefs);
+
+                if (rw.Reader is not null)
+                {
+                    var tempRefTable = new GbxRefTable();
+
+                    foreach (var materialModelRef in materialModelRefs)
+                    {
+                        rw.Reader.NodeDict[materialModelRef.InstanceIndex] = new GbxRefTableFile(tempRefTable, 0, useFile: false, materialModelRef.MaterialModelRelativePath);
+                    }
+                }
+                
                 rw.ReadableWritable(ref replacementTexture);
+                
+                if (rw.Reader is not null)
+                {
+                    var tempRefTable = new GbxRefTable();
+
+                    if (replacementTexture.SpecularInstanceIndex.HasValue)
+                    {
+                        rw.Reader.NodeDict[replacementTexture.SpecularInstanceIndex.Value] = new GbxRefTableFile(tempRefTable, 0, useFile: true, "Specular");
+                    }
+
+                    if (replacementTexture.NormalInstanceIndex.HasValue)
+                    {
+                        rw.Reader.NodeDict[replacementTexture.NormalInstanceIndex.Value] = new GbxRefTableFile(tempRefTable, 0, useFile: true, "Normal");
+                    }
+
+                    if (replacementTexture.WhiteInstanceIndex.HasValue)
+                    {
+                        rw.Reader.NodeDict[replacementTexture.WhiteInstanceIndex.Value] = new GbxRefTableFile(tempRefTable, 0, useFile: true, "White");
+                    }
+
+                    if (replacementTexture.BlackInstanceIndex.HasValue)
+                    {
+                        rw.Reader.NodeDict[replacementTexture.BlackInstanceIndex.Value] = new GbxRefTableFile(tempRefTable, 0, useFile: true, "Black");
+                    }
+                }
+
                 rw.ListReadableWritable<EmbeddedImage>(ref embeddedImages);
+
+                if (rw.Reader is not null)
+                {
+                    var tempRefTable = new GbxRefTable();
+
+                    foreach (var embeddedImage in embeddedImages)
+                    {
+                        var file = new GbxRefTableFile(tempRefTable, 0, useFile: true, embeddedImage.RelativePath);
+
+                        foreach (var bitmapPair in embeddedImage.BitmapPairs)
+                        {
+                            rw.Reader.NodeDict[bitmapPair.InstanceIndex] = file;
+                        }
+                    }
+                }
+
+                rw.ListReadableWritable<EmbeddedBlock>(ref embeddedBlocks, embeddedBlockCount, version: ver);
             }
         }
 
-        public class EmbeddedBlock
+        public class EmbeddedBlock : IReadableWritable
         {
+            public string Id { get; set; } = string.Empty;
+            public string Author { get; set; } = string.Empty;
+            public uint U01 { get; set; }
+            public byte Flags { get; set; }
 
+            public byte BlockType
+            {
+                get => (byte)(Flags & 0b111);
+                set => Flags = (byte)((Flags & ~0b111) | (value & 0b111));
+            }
+
+            public CGameItemModel.EWaypointType WaypointType
+            {
+                get => (CGameItemModel.EWaypointType)((Flags >> 3) & 0b111);
+                set => Flags = (byte)((Flags & ~(0b111 << 3)) | (((byte)value & 0b111) << 3));
+            }
+
+            public byte? IconWidth { get; set; }
+            public byte? IconHeight { get; set; }
+            public byte[]? IconData { get; set; }
+            public List<SubVariation> GroundSubVariations0 { get; set; } = [];
+            public List<SubVariation> AirSubVariations0 { get; set; } = [];
+            public List<SubVariation> GroundSubVariations1 { get; set; } = [];
+            public List<SubVariation> AirSubVariations1 { get; set; } = [];
+            public List<SubVariation> GroundSubVariations2 { get; set; } = [];
+            public List<SubVariation> AirSubVariations2 { get; set; } = [];
+            public List<SubVariation> GroundSubVariations3 { get; set; } = [];
+            public List<SubVariation> AirSubVariations3 { get; set; } = [];
+            public List<SubVariation> GroundSubVariations4 { get; set; } = [];
+            public List<SubVariation> AirSubVariations4 { get; set; } = [];
+            public List<SubVariation> GroundSubVariations5 { get; set; } = [];
+            public List<SubVariation> AirSubVariations5 { get; set; } = [];
+            public List<Int3>? GroundBlockUnitInfos { get; set; }
+            public List<Int3>? AirBlockUnitInfos { get; set; }
+            public Vec3 SpawnOffsetGround { get; set; }
+            public Vec3 SpawnRotationGround { get; set; }
+            public Vec3 SpawnOffsetAir { get; set; }
+            public Vec3 SpawnRotationAir { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Id} by {Author} (Type: {WaypointType}, BlockType: {BlockType})";
+            }
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                Id = rw.Id(Id);
+                Author = rw.Id(Author);
+
+                if (v == 0)
+                {
+                    U01 = rw.UInt32(U01);
+                }
+                else
+                {
+                    Flags = rw.Byte(Flags);
+
+                    if ((Flags & 0b01000000) != 0) // has icon
+                    {
+                        IconWidth = rw.Byte(IconWidth);
+                        IconHeight = rw.Byte(IconHeight);
+                        IconData = rw.Data(IconData, IconWidth.GetValueOrDefault() * IconHeight.GetValueOrDefault() * 4);
+                    }
+                }
+
+                if (v == 0)
+                {
+                    WaypointType = rw.EnumByte<CGameItemModel.EWaypointType>(WaypointType);
+                    BlockType = rw.Byte(BlockType);
+                }
+
+                var packedVersion = (int)WaypointType | (v << 4);
+
+                if (BlockType is 2 or 3) // classic or road
+                {
+                    GroundSubVariations0 = rw.ListReadableWritable<SubVariation>(GroundSubVariations0, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations0 = rw.ListReadableWritable<SubVariation>(AirSubVariations0, byteLengthPrefix: true, packedVersion);
+                }
+
+                if (BlockType == 3) // road
+                {
+                    GroundSubVariations1 = rw.ListReadableWritable<SubVariation>(GroundSubVariations1, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations1 = rw.ListReadableWritable<SubVariation>(AirSubVariations1, byteLengthPrefix: true, packedVersion);
+                    GroundSubVariations2 = rw.ListReadableWritable<SubVariation>(GroundSubVariations2, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations2 = rw.ListReadableWritable<SubVariation>(AirSubVariations2, byteLengthPrefix: true, packedVersion);
+                    GroundSubVariations3 = rw.ListReadableWritable<SubVariation>(GroundSubVariations3, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations3 = rw.ListReadableWritable<SubVariation>(AirSubVariations3, byteLengthPrefix: true, packedVersion);
+                    GroundSubVariations4 = rw.ListReadableWritable<SubVariation>(GroundSubVariations4, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations4 = rw.ListReadableWritable<SubVariation>(AirSubVariations4, byteLengthPrefix: true, packedVersion);
+                    GroundSubVariations5 = rw.ListReadableWritable<SubVariation>(GroundSubVariations5, byteLengthPrefix: true, packedVersion);
+                    AirSubVariations5 = rw.ListReadableWritable<SubVariation>(AirSubVariations5, byteLengthPrefix: true, packedVersion);
+                }
+
+                SpawnOffsetGround = rw.Vec3(SpawnOffsetGround);
+                SpawnRotationGround = rw.Vec3(SpawnRotationGround);
+                SpawnOffsetAir = rw.Vec3(SpawnOffsetAir);
+                SpawnRotationAir = rw.Vec3(SpawnRotationAir);
+
+                if (v >= 1)
+                {
+                    var groundBlockUnitInfosCount = rw.Int32(GroundBlockUnitInfos?.Count ?? 0);
+                    var airBlockUnitInfosCount = rw.Int32(AirBlockUnitInfos?.Count ?? 0);
+
+                    GroundBlockUnitInfos = rw.List<Int3>(GroundBlockUnitInfos, groundBlockUnitInfosCount);
+                    AirBlockUnitInfos = rw.List<Int3>(AirBlockUnitInfos, airBlockUnitInfosCount);
+                }
+            }
+        }
+
+        public class SubVariation : IReadableWritable
+        {
+            public CPlugTree? Tree { get; set; }
+            public CPlugTree? TriggerTree { get; set; }
+            public byte? PreLightGenTileCountU { get; set; }
+
+            public void ReadWrite(GbxReaderWriter rw, int v = 0)
+            {
+                var waypointType = (CGameItemModel.EWaypointType)(v & 0xF);
+                var ver = (v >> 4) & 0xF;
+
+                Tree = rw.NodeRef<CPlugTree>(Tree);
+
+                if (waypointType is CGameItemModel.EWaypointType.Finish
+                                 or CGameItemModel.EWaypointType.Checkpoint
+                                 or CGameItemModel.EWaypointType.StartFinish)
+                {
+                    TriggerTree = rw.NodeRef<CPlugTree>(TriggerTree);
+                }
+                
+                if (ver >= 2)
+                {
+                    PreLightGenTileCountU = rw.Byte(PreLightGenTileCountU);
+                }
+            }
         }
 
         public class ReplacementTextureFlags : IReadableWritable
@@ -156,10 +346,10 @@ public partial class CGameCtnChallenge
             public bool HasWhite => (Flags & (1 << WhiteBit)) != 0;
             public bool HasBlack => (Flags & (1 << BlackBit)) != 0;
 
-            public uint? SpecularInstanceIndex { get; set; }
-            public uint? NormalInstanceIndex { get; set; }
-            public uint? WhiteInstanceIndex { get; set; }
-            public uint? BlackInstanceIndex { get; set; }
+            public int? SpecularInstanceIndex { get; set; }
+            public int? NormalInstanceIndex { get; set; }
+            public int? WhiteInstanceIndex { get; set; }
+            public int? BlackInstanceIndex { get; set; }
 
             public void ReadWrite(GbxReaderWriter rw, int v = 0)
             {
@@ -167,34 +357,34 @@ public partial class CGameCtnChallenge
 
                 if (HasSpecular)
                 {
-                    SpecularInstanceIndex = rw.UInt32(SpecularInstanceIndex);
+                    SpecularInstanceIndex = rw.Int32(SpecularInstanceIndex);
                 }
 
                 if (HasNormal)
                 {
-                    NormalInstanceIndex = rw.UInt32(NormalInstanceIndex);
+                    NormalInstanceIndex = rw.Int32(NormalInstanceIndex);
                 }
 
                 if (HasWhite)
                 {
-                    WhiteInstanceIndex = rw.UInt32(WhiteInstanceIndex);
+                    WhiteInstanceIndex = rw.Int32(WhiteInstanceIndex);
                 }
 
                 if (HasBlack)
                 {
-                    BlackInstanceIndex = rw.UInt32(BlackInstanceIndex);
+                    BlackInstanceIndex = rw.Int32(BlackInstanceIndex);
                 }
             }
         }
 
         public class MaterialModelRef : IReadableWritable
         {
-            public uint InstanceIndex { get; set; }
+            public int InstanceIndex { get; set; }
             public string MaterialModelRelativePath { get; set; } = string.Empty;
 
             public void ReadWrite(GbxReaderWriter rw, int v = 0)
             {
-                InstanceIndex = rw.UInt32(InstanceIndex);
+                InstanceIndex = rw.Int32(InstanceIndex);
                 MaterialModelRelativePath = rw.String(MaterialModelRelativePath);
             }
         }
@@ -219,13 +409,13 @@ public partial class CGameCtnChallenge
 
         public class BitmapPair : IReadableWritable
         {
-            public uint InstanceIndex { get; set; }
+            public int InstanceIndex { get; set; }
             public byte TexFilter { get; set; }
             public byte TexAddress { get; set; }
 
             public void ReadWrite(GbxReaderWriter rw, int v = 0)
             {
-                InstanceIndex = rw.UInt32(InstanceIndex);
+                InstanceIndex = rw.Int32(InstanceIndex);
                 TexFilter = rw.Byte(TexFilter);
                 TexAddress = rw.Byte(TexAddress);
             }
