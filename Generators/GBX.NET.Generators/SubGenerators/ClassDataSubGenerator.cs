@@ -1013,7 +1013,11 @@ internal class ClassDataSubGenerator
 
                 sb.Append("Chunk");
                 if (baseChunkIdStr.StartsWith("0x")) baseChunkIdStr = baseChunkIdStr.Substring(2);
-                var baseChunkId = classInfo.Id.GetValueOrDefault() | uint.Parse(baseChunkIdStr, NumberStyles.HexNumber);
+                var baseChunkId = uint.Parse(baseChunkIdStr, NumberStyles.HexNumber);
+                if (baseChunkId <= 0xFFF)
+                {
+                    baseChunkId = classInfo.Id.GetValueOrDefault() | baseChunkId;
+                }
                 sb.Append(baseChunkId.ToString("X8"));
             }
             else
