@@ -54,6 +54,9 @@ public partial class CGameCtnChallenge
         private List<EmbeddedImage> embeddedImages = [];
         public List<EmbeddedImage> EmbeddedImages { get => embeddedImages; set => embeddedImages = value; }
 
+        private List<Ident> vehicleIdentifiers = [];
+        public List<Ident> VehicleIdentifiers { get => vehicleIdentifiers; set => vehicleIdentifiers = value; }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw) => ReadWrite(n, rw, ver: 0);
 
         protected void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw, int ver)
@@ -191,6 +194,193 @@ public partial class CGameCtnChallenge
                 }
 
                 rw.ListReadableWritable<EmbeddedBlock>(ref embeddedBlocks, embeddedBlockCount, version: ver);
+                rw.ListIdent(ref vehicleIdentifiers);
+
+                if (rw.Reader is not null)
+                {
+                    ReadBlocks(n, rw.Reader);
+                }
+            }
+        }
+
+        private void ReadBlocks(CGameCtnChallenge n, GbxReader r)
+        {
+            var blockCount = r.ReadInt32();
+            n.Blocks = [];
+
+            for (var i = 0; i < blockCount; i++)
+            {
+                var blockType = r.ReadByte();
+
+                switch (blockType)
+                {
+                    case 0:
+                        {
+                            var block = new CGameCtnBlock
+                            {
+                                BlockModel = (r.ReadIdAsString(), r.ReadId(), ""),
+                                Coord = r.ReadInt3(),
+                                Direction = (Direction)r.ReadByte(),
+                                Flags = r.ReadInt32()
+                            };
+
+                            if ((Flags & (1 << 15)) != 0) // hasAuthorAndSkin
+                            {
+                                block.Author = r.ReadIdAsString();
+                                block.Skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+                            }
+
+                            n.Blocks.Add(block);
+                            break;
+                        }
+
+                    case 1:
+                        {
+                            var coord = r.ReadInt3();
+                            var direction = (Direction)r.ReadByte();
+                            var triggerGroupIndexes = r.ReadArray<int>();
+                            break;
+                        }
+
+                    case 2:
+                        {
+                            var name = r.ReadIdAsString();
+                            var author = r.ReadIdAsString();
+                            var coord = r.ReadInt3();
+                            var direction = (Direction)r.ReadByte();
+                            var flags = r.ReadInt32();
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            var embeddedBlockIndex = r.ReadInt32();
+                            var coord = r.ReadInt3();
+                            var direction = (Direction)r.ReadByte();
+                            var flags = r.ReadInt32();
+                            break;
+                        }
+                }
+
+                switch (blockType)
+                {
+                    case 0:
+                    case 2:
+                    case 3:
+                        {
+                            var flags2 = r.ReadUInt16();
+
+                            if ((flags2 & 1) != 0) // isOffsetApplied  
+                            {
+                                var offset = r.ReadVec3();
+                            }
+
+                            if ((flags2 & (1 << 1)) != 0) // isRotationApplied  
+                            {
+                                var rotation = r.ReadVec3();
+                            }
+
+                            if ((flags2 & (1 << 2)) != 0) // isScaleApplied  
+                            {
+                                var scale = r.ReadVec3();
+                            }
+
+                            if ((flags2 & (1 << 3)) != 0) // isMotionApplied  
+                            {
+                                var flags3 = r.ReadByte();
+
+                                if ((flags3 & (1 << 3)) == 0) // not isManuallyControlled  
+                                {
+                                    var motionPointsCount = r.ReadInt32();
+                                    for (var j = 0; j < motionPointsCount; j++)
+                                    {
+                                        var time = r.ReadTimeInt32();
+                                        var motionOffset = r.ReadVec3();
+                                        var motionRotation = r.ReadVec3();
+                                    }
+                                }
+                            }
+
+                            if ((flags2 & (1 << 4)) != 0) // isOriginOffsetApplied  
+                            {
+                                var originOffset = r.ReadVec3();
+                            }
+
+                            if ((flags2 & (1 << 5)) != 0) // isInBlockGroups  
+                            {
+                                var blockGroupIndexesCount = r.ReadInt32();
+                                var blockGroupIndexes = new List<uint>(blockGroupIndexesCount);
+                                for (var j = 0; j < blockGroupIndexesCount; j++)
+                                {
+                                    blockGroupIndexes.Add(r.ReadUInt32());
+                                }
+                            }
+
+                            var spawnPointAlterMethod = (flags2 >> 9) & 3;
+                            if (spawnPointAlterMethod == 1) // manual  
+                            {
+                                var spawnOffset = r.ReadVec3();
+                                var spawnRotation = r.ReadVec3();
+                            }
+
+                            break;
+                        }
+
+                    case 1:
+                        {
+                            var flags2 = r.ReadByte();
+
+                            const byte isOffsetApplied = 1 << 0;
+                            const byte isRotationApplied = 1 << 1;
+                            const byte isScaleApplied = 1 << 2;
+                            const byte isMotionApplied = 1 << 3;
+                            const byte isInBlockGroups = 1 << 4;
+
+                            if ((flags2 & isOffsetApplied) != 0)
+                            {
+                                var offset = r.ReadVec3();
+                            }
+
+                            if ((flags2 & isRotationApplied) != 0)
+                            {
+                                var rotation = r.ReadVec3();
+                            }
+
+                            if ((flags2 & isScaleApplied) != 0)
+                            {
+                                var scale = r.ReadVec3();
+                            }
+
+                            if ((flags2 & isMotionApplied) != 0)
+                            {
+                                var flags3 = r.ReadByte();
+                                const byte isManuallyControlled = 1 << 3;
+
+                                if ((flags3 & isManuallyControlled) == 0)
+                                {
+                                    var motionPointsCount = r.ReadInt32();
+                                    for (var j = 0; j < motionPointsCount; j++)
+                                    {
+                                        var time = r.ReadTimeInt32();
+                                        var motionOffset = r.ReadVec3();
+                                        var motionRotation = r.ReadVec3();
+                                    }
+                                }
+                            }
+
+                            if ((flags2 & isInBlockGroups) != 0)
+                            {
+                                var blockGroupIndexesCount = r.ReadInt32();
+                                var blockGroupIndexes = new List<uint>(blockGroupIndexesCount);
+                                for (var j = 0; j < blockGroupIndexesCount; j++)
+                                {
+                                    blockGroupIndexes.Add(r.ReadUInt32());
+                                }
+                            }
+
+                            break;
+                        }
+                }
             }
         }
 
