@@ -230,6 +230,7 @@ public partial class CSceneVehicleCar
                                     }
                                 }
 
+                                // count is broken in specific cases like the last sample of a ghost
                                 var count = u35 >> 2 & 7;
 
                                 if (version == 11 && count > 4)

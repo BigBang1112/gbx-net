@@ -184,7 +184,7 @@ CGameCtnChallenge 0x03043000 // A map.
  uint128 HashedPassword
  uint Crc32
 
-0x02A [TMF, MP3, TMT, MP4, TM2020]
+0x02A [TMF, MP3, TMT, MP4, TM2020] // CreatedWithSimpleEditor
  bool CreatedWithSimpleEditor
 
 0x02D (skippable) // realtime thumbnail + comments
