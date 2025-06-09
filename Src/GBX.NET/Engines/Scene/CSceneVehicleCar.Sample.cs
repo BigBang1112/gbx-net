@@ -16,7 +16,7 @@ public partial class CSceneVehicleCar
         public float Brake { get; set; }
         public float U09_U10_1 => Gas + Brake; // clamped between 0-1
         public bool U09_U10_2 => Gas < Brake;
-        public byte U11 { get; set; }
+        public float U11 { get; set; }
         public byte U12 { get; set; }
         public float U13 { get; set; }
         public float U14 { get; set; }
@@ -68,13 +68,45 @@ public partial class CSceneVehicleCar
         {
             // CHmsDynaReplayItem::RestoreDynaItemState
 
+
             // HmsStateVersion == 0 (EHmsDynaItemSaveStateVersion_TmNetworkAfter260205)
             // Position 9-byte Vec3
             // Rotation = r.ReadQuat6();
 
             // HmsStateVersion == 1 (EHmsDynaItemSaveStateVersion_TmReplayAfter260205)
-            Position = r.ReadVec3();
+            Position = version == 13 ? r.ReadVec3_9() : r.ReadVec3();
             Rotation = r.ReadQuat6();
+
+            if (version == 13)
+            {
+                // SVehicleSimpleNetState::ToVehicle
+                FLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                FRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                RRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                RLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                var netData = r.ReadUInt16();
+                Brake = netData >> 1 & 1;
+
+                // Calculate RPM
+                var min = 100f; // guessed cuz its stored by vehicle
+                var max = 11000f; // guessed cuz its stored by vehicle
+                var ratio = min / max; // min/max rpm i guess
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                var powRatio = MathF.Pow(ratio, 3.0f);
+#else
+                var powRatio = Math.Pow(ratio, 3.0f);
+#endif
+                var normalizedValue = (netData >> 9) / 127.0f;
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+#else
+                var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+#endif
+                rpmValue *= max;
+                RPM = (float)rpmValue;
+                return;
+            }
+
             Velocity = r.ReadVec3_4();
             AngularVelocity = r.ReadVec3_4();
 
@@ -103,7 +135,7 @@ public partial class CSceneVehicleCar
                 Gas = r.ReadByte() / 255f;
                 Brake = r.ReadByte() / 255f;
 
-                U11 = r.ReadByte(); // it should be always 0 but sometimes it isnt
+                U11 = r.ReadByte() / 255f;
 
                 if (version >= 8)
                 {
