@@ -5,7 +5,7 @@
         <Version>1.0.2</Version>
         <Authors>BigBang1112</Authors>
         <Description>Hashing features (CRC32) for GBX.NET 2.</Description>
-        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
