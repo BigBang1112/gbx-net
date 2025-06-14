@@ -541,14 +541,23 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(ReadSingle(), ReadSingle(), ReadSingle());
     }
 
+    /// <summary>
+    /// Reads a 4-byte <see cref="Vec3"/> with 10-bit components in [-511, 511] converted to [-1, 1].
+    /// </summary>
+    /// <returns></returns>
     public Vec3 ReadVec3_10b()
     {
         var val = ReadInt32();
 
-        return new Vec3(
-            (val & 0x3FF) / (float)0x1FF,
-            ((val >> 10) & 0x3FF) / (float)0x1FF,
-            ((val >> 20) & 0x3FF) / (float)0x1FF);
+        var x = val & 0x3FF;
+        var y = (val >> 10) & 0x3FF;
+        var z = (val >> 20) & 0x3FF;
+
+        x = (x & 0x200) != 0 ? x - 0x400 : x;
+        y = (y & 0x200) != 0 ? y - 0x400 : y;
+        z = (z & 0x200) != 0 ? z - 0x400 : z;
+
+        return new Vec3(x, y, z) / 511f;
     }
 
     /// <summary>

@@ -560,7 +560,21 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteVec3_10b(Vec3 value)
     {
-        Write((int)(value.X * 0x1FF) + ((int)(value.Y * 0x1FF) << 10) + ((int)(value.Z * 0x1FF) << 20));
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var x = (int)MathF.Round(MathF.Max(-1f, MathF.Min(1f, value.X)) * 511f);
+        var y = (int)MathF.Round(MathF.Max(-1f, MathF.Min(1f, value.Y)) * 511f);
+        var z = (int)MathF.Round(MathF.Max(-1f, MathF.Min(1f, value.Z)) * 511f);
+#else
+        var x = (int)Math.Round(Math.Max(-1f, Math.Min(1f, value.X)) * 511f);
+        var y = (int)Math.Round(Math.Max(-1f, Math.Min(1f, value.Y)) * 511f);
+        var z = (int)Math.Round(Math.Max(-1f, Math.Min(1f, value.Z)) * 511f);
+#endif
+
+        x &= 0x3FF;
+        y &= 0x3FF;
+        z &= 0x3FF;
+
+        Write((z << 20) | (y << 10) | x);
     }
 
     public void WriteVec3Unit4(Vec3 value)
