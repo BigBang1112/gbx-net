@@ -5,7 +5,7 @@
         <Version>2.1.2</Version>
         <Authors>BigBang1112</Authors>
         <Description>An LZO compression plugin for GBX.NET to allow de/serialization of compressed Gbx bodies. This official implementation uses lzo 2.10 from NativeSharpLzo and minilzo 2.06 port by zzattack.</Description>
-        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
