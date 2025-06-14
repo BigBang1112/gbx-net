@@ -40,3 +40,6 @@ CPlugVehicleVisEmitterModel 0x090E6000
 
 0x005
  bool
+
+0x006
+ CPlugParticleEmitterModel (external)

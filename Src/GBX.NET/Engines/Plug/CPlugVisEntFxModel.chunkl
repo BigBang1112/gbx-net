@@ -1,1 +1,14 @@
 CPlugVisEntFxModel 0x09115000
+
+0x000
+ version
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CPlugParticleEmitterModel (external)
+ CFuncKeysReal
+ CFuncKeysReal
+ float
+ float
+ float
+ GxLightBall
