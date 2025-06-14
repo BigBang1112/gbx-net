@@ -37,6 +37,9 @@ CPlugShader 0x09002000
 0x018
  uint
 
+0x019
+ UnknownStruct2[]
+
 0x01B
  version
  float
@@ -71,6 +74,11 @@ archive UnknownStruct
   bool U02
   if U02
    CMwNod U03
+
+archive UnknownStruct2
+ CMwNod U01 (external)
+ if U01 == null && U01File == null
+  CMwNod U02
 
 enum EFillMode
  Solid
