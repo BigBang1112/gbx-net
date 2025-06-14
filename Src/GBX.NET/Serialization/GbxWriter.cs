@@ -57,6 +57,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(Vec2 value);
     void Write(Vec3 value);
     void WriteVec3_10b(Vec3 value);
+    void WriteVec3Unit4(Vec3 value);
     void Write(Vec4 value);
     void Write(BoxAligned value);
     void Write(BoxInt3 value);
@@ -560,6 +561,17 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteVec3_10b(Vec3 value)
     {
         Write((int)(value.X * 0x1FF) + ((int)(value.Y * 0x1FF) << 10) + ((int)(value.Z * 0x1FF) << 20));
+    }
+
+    public void WriteVec3Unit4(Vec3 value)
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        Write((short)(MathF.Atan2(value.Y, value.X) * short.MaxValue / MathF.PI));
+        Write((short)(MathF.Asin(value.Z) * short.MaxValue / (MathF.PI / 2)));
+#else
+        Write((short)(Math.Atan2(value.Y, value.X) * short.MaxValue / Math.PI));
+        Write((short)(Math.Asin(value.Z) * short.MaxValue / (Math.PI / 2)));
+#endif
     }
 
     public void Write(Vec4 value)
