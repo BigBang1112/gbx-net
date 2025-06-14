@@ -149,8 +149,6 @@ internal static class ObjExporter
 
     public static void Export(CPlugSolid solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
     {
-        var enableNormals = true;
-
         WriteHeader(nameof(CPlugSolid), objWriter, mtlWriter);
 
         if (solid.Tree is not CPlugTree tree)
@@ -235,41 +233,35 @@ internal static class ObjExporter
 
         var normalsDict = new Dictionary<Vec3, int>();
 
-        if (enableNormals)
+        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
         {
-            foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+            if (t.Visual is null)
             {
-                if (t.Visual is null)
+                continue;
+            }
+
+            if (t.Visual is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            foreach (var normal in visual.VertexStreams
+                .SelectMany(x => x.Normals ?? [])
+                .Concat(visual.Vertices.Select(x => x.Normal).OfType<Vec3>()))
+            {
+                var normalized = normal.GetNormalized();
+
+                if (normalsDict.ContainsKey(normalized))
                 {
                     continue;
                 }
 
-                if (t.Visual is not CPlugVisualIndexedTriangles visual)
-                {
-                    continue;
-                }
+                objWriter.WriteLine("vn {0} {1} {2}",
+                    normalized.X.ToString(Invariant),
+                    normalized.Y.ToString(Invariant),
+                    normalized.Z.ToString(Invariant));
 
-                foreach (var normal in visual.Vertices.Select(x => x.Normal))
-                {
-                    if (normal is null)
-                    {
-                        continue;
-                    }
-
-                    var normalized = normal.Value.GetNormalized();
-
-                    if (normalsDict.ContainsKey(normalized))
-                    {
-                        continue;
-                    }
-
-                    objWriter.WriteLine("vn {0} {1} {2}",
-                        normalized.X.ToString(Invariant),
-                        normalized.Y.ToString(Invariant),
-                        normalized.Z.ToString(Invariant));
-
-                    normalsDict.Add(normalized, normalsDict.Count);
-                }
+                normalsDict.Add(normalized, normalsDict.Count);
             }
         }
 
@@ -350,7 +342,17 @@ internal static class ObjExporter
                     objWriter.Write('f');
                 }
 
-                var v = visual.Vertices[index];
+                CPlugVisual3D.Vertex v;
+                if (visual.VertexStreams.Count > 0)
+                {
+                    var vStream = visual.VertexStreams[0];
+                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index], null, null, null, null, null);
+                }
+                else
+                {
+                    v = visual.Vertices[index];
+                }
+
                 var locatedPos = new Vec3(
                     v.Position.X * loc.XX + v.Position.Y * loc.XY + v.Position.Z * loc.XZ + loc.TX,
                     v.Position.X * loc.YZ + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
@@ -360,7 +362,7 @@ internal static class ObjExporter
                 objWriter.Write(' ');
                 objWriter.Write(positionsDict[locatedPos] + 1);
 
-                var normalized = enableNormals ? v.Normal?.GetNormalized() : null;
+                var normalized = v.Normal?.GetNormalized();
 
                 if (visual.TexCoords.Length > 0)
                 {
