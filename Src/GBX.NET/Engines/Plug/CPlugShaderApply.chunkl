@@ -40,6 +40,9 @@ CPlugShaderApply 0x09026000
 0x00C
  CPlugBitmapAddress[]_deprec BitmapAddresses // May not be correct
 
+0x00D
+ byte // DoData
+
 0x010
  byte // DoData
 
