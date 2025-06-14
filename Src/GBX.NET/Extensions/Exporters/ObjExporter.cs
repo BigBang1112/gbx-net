@@ -578,6 +578,11 @@ internal static class ObjExporter
             return materialInsts[materialIndex].Link ?? "Unknown";
         }
 
+        if (solid.MaterialIds is { Length: > 0 } materialIds)
+        {
+            return materialIds[materialIndex];
+        }
+
         return "Unknown";
     }
 }
