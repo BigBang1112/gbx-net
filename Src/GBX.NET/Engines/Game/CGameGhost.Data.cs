@@ -93,12 +93,13 @@ public partial class CGameGhost
                 {
                     var offset = Offsets[i - 1];
 
-                    Samples.Add(ReadSample(i - 1, sampleData: r.ReadBytes(offset - prevOffset)));
+                    Samples.Add(ReadSample(new TimeInt32((i - 1) * SamplePeriod.Milliseconds), sampleData: r.ReadBytes(offset - prevOffset)));
 
                     prevOffset = offset;
                 }
 
-                Samples.Add(ReadSample(Offsets.Length - 1, sampleData: r.ReadBytes((int)r.BaseStream.Length - Offsets[Offsets.Length - 1])));
+
+                Samples.Add(ReadSample(new TimeInt32((Offsets.Length - 1) * SamplePeriod.Milliseconds), sampleData: r.ReadBytes((int)r.BaseStream.Length - Offsets[Offsets.Length - 1])));
             }
         }
 
@@ -169,6 +170,8 @@ public partial class CGameGhost
                 return;
             }
 
+            var currentTime = TimeInt32.Zero;
+
             using var stateBufferMs = new MemoryStream(stateBuffer);
             using var stateBufferR = new GbxReader(stateBufferMs);
 
@@ -180,14 +183,21 @@ public partial class CGameGhost
                     _ => stateBufferR.ReadBytes(sizePerSample)
                 };
 
-                Samples.Add(ReadSample(i, sampleData, sampleTimes));
+                if (sampleTimes is null)
+                {
+                    currentTime = new TimeInt32(i * SamplePeriod.Milliseconds);
+                }
+                else
+                {
+                    currentTime += new TimeInt32(sampleTimes[i]);
+                }
+
+                Samples.Add(ReadSample(currentTime, sampleData));
             }
         }
 
-        private Sample ReadSample(int i, byte[] sampleData, int[]? sampleTimes = null)
+        private Sample ReadSample(TimeInt32 time, byte[] sampleData)
         {
-            var time = new TimeInt32(sampleTimes?[i] ?? i * SamplePeriod.Milliseconds);
-
             Sample sample = SavedMobilClassId switch
             {
                 0x0A02B000 => new CSceneVehicleCar.Sample(time, sampleData),
