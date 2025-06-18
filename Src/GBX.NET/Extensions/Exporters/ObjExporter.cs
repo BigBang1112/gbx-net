@@ -213,7 +213,7 @@ internal static class ObjExporter
             {
                 var locatedPos = new Vec3(
                     pos.X * loc.XX + pos.Y * loc.XY + pos.Z * loc.XZ + loc.TX,
-                    pos.X * loc.YZ + pos.Y * loc.YY + pos.Z * loc.YZ + loc.TY,
+                    pos.X * loc.YX + pos.Y * loc.YY + pos.Z * loc.YZ + loc.TY,
                     pos.X * loc.ZX + pos.Y * loc.ZY + pos.Z * loc.ZZ + loc.TZ
                 );
 
@@ -355,7 +355,7 @@ internal static class ObjExporter
 
                 var locatedPos = new Vec3(
                     v.Position.X * loc.XX + v.Position.Y * loc.XY + v.Position.Z * loc.XZ + loc.TX,
-                    v.Position.X * loc.YZ + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
+                    v.Position.X * loc.YX + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
                     v.Position.X * loc.ZX + v.Position.Y * loc.ZY + v.Position.Z * loc.ZZ + loc.TZ
                 );
 
