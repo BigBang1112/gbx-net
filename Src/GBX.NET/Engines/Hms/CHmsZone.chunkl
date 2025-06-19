@@ -15,3 +15,7 @@ CHmsZone 0x06004000
 
 0x006
  CPlugBitmap BitmapCubeReflectHardSpecA (external)
+
+0x008
+ CPlugBitmap BitmapCubeReflectHardSpecA (external)
+ CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
