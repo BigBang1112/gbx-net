@@ -37,6 +37,37 @@ CSceneLayout 0x0A003000
  CSceneTrafficPath[]_deprec TrafficPaths
  CSceneFxNod SceneFxNod (external)
 
+0x019
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x01B
+ CSceneSector[]_deprec Sectors
+ version
+ SceneMobil[] Scene
+ SceneLoc[] SceneLocations
+ CSceneObject[]_deprec
+ SceneLoc[] 
+ CSceneLight[]_deprec Lights
+ SceneLoc[] LightLocations
+ CSceneObject[]_deprec Sounds
+ SceneLoc[] SoundLocations
+ CSceneObject[]_deprec Locations
+ SceneLoc[] LocationLocations
+ int
+ int
+ CSceneFxNod SceneFxNod (external)
+
 0x01C
  version
  CSceneObject[]_deprec
