@@ -70,13 +70,13 @@ CSceneLayout 0x0A003000
 
 0x01C
  version
- CSceneObject[]_deprec
- iso4[]
+ CSceneObject[]_deprec Objects
+ iso4[] ObjectLocations
  CSceneConfig
  v1-
-  CMwNod[]_deprec (external)
+  CPlugWeatherModel[]_deprec WeatherModels (external)
  v2+
-  int
+  CPlugWeatherModel WeatherModel (external)
  uint[]
  CPlugBitmap BitmapWaterFog (external)
  CPlugBitmap BitmapCubeReflectHardSpecA (external)
