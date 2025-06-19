@@ -249,7 +249,11 @@ internal static class ObjExporter
                 .SelectMany(x => x.Normals ?? [])
                 .Concat(visual.Vertices.Select(x => x.Normal).OfType<Vec3>()))
             {
-                var normalized = normal.GetNormalized();
+                var normalized = new Vec3(
+                    normal.X * loc.XX + normal.Y * loc.XY + normal.Z * loc.XZ,
+                    normal.X * loc.YX + normal.Y * loc.YY + normal.Z * loc.YZ,
+                    normal.X * loc.ZX + normal.Y * loc.ZY + normal.Z * loc.ZZ
+                ).GetNormalized();
 
                 if (normalsDict.ContainsKey(normalized))
                 {
@@ -362,7 +366,11 @@ internal static class ObjExporter
                 objWriter.Write(' ');
                 objWriter.Write(positionsDict[locatedPos] + 1);
 
-                var normalized = v.Normal?.GetNormalized();
+                var normalized = v.Normal is null ? default(Vec3?) : new Vec3(
+                    v.Normal.Value.X * loc.XX + v.Normal.Value.Y * loc.XY + v.Normal.Value.Z * loc.XZ,
+                    v.Normal.Value.X * loc.YX + v.Normal.Value.Y * loc.YY + v.Normal.Value.Z * loc.YZ,
+                    v.Normal.Value.X * loc.ZX + v.Normal.Value.Y * loc.ZY + v.Normal.Value.Z * loc.ZZ
+                ).GetNormalized();
 
                 if (visual.TexCoords.Length > 0)
                 {
