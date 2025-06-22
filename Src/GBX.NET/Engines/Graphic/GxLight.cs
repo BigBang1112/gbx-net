@@ -66,5 +66,4 @@ public partial class GxLight
         get => GetFlag(EFlags.EnableGroup3);
         set => SetFlag(EFlags.EnableGroup3, value);
     }
-
 }
