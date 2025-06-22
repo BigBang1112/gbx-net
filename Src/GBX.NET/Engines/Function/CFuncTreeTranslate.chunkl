@@ -6,4 +6,9 @@ CFuncTreeTranslate 0x0500D000
  vec3 EndPoint
 
 0x001
- uint
+ int<EFlags> Flags
+
+enum EFlags
+ None
+ PingPong
+ Smooth
