@@ -4,14 +4,14 @@ GxLightSpot 0x0400B000
 0x001
  float AngleInner
  float AngleOuter
- float
- float
+ float AngleFlare
+ float FalloffExponent
 
 0x002
- uint
+ uint Flags
  float AngleInner
  float AngleOuter
- float
- float
- float
- float
+ float AngleFlare
+ float AngleInnerShadow
+ float AngleOuterShadow
+ float FalloffExponent
