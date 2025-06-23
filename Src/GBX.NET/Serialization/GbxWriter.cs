@@ -1407,7 +1407,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         foreach (var item in value)
         {
-            WriteNodeRef(item.Node, item.File);
+            WriteNodeRef(item?.Node, item?.File);
         }
     }
 
