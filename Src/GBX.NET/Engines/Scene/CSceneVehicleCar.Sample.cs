@@ -36,8 +36,8 @@ public partial class CSceneVehicleCar
         public byte U25_3 => (byte)((U25 >> 5) & 3);
         public bool U25_4 => (U25 >> 7) != 0;
         public byte U26 { get; set; }
-        public bool U26_FL_1 => (U25 & 0x40) != 0;
-        public bool U26_FL_2 => (U25 & 0x80) != 0;
+        public bool U26_FL_1 => (U26 & 0x40) != 0;
+        public bool U26_FL_2 => (U26 & 0x80) != 0;
         public byte U27 { get; set; }
         public bool U27_FR_1 => (U27 & 0x01) != 0;
         public bool U27_FR_2 => (U27 & 0x02) != 0;
