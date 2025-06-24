@@ -31,18 +31,22 @@ public partial class CSceneVehicleCar
         public float RLDampenLen { get; set; }
         public CPlugSurface.MaterialId RLGroundContactMaterial { get; set; }
         public byte U25 { get; set; }
-        public int Horn { get; set; }
-        public bool IsTurbo { get; set; }
-        public float U26 { get; set; }
+        public byte U25_1 => (byte)(U25 & 7);
+        public byte U25_2 => (byte)((U25 >> 3) & 3);
+        public byte U25_3 => (byte)((U25 >> 5) & 3);
+        public bool U25_4 => (U25 >> 7) != 0;
+        public byte U26 { get; set; }
+        public bool U26_FL_1 => (U25 & 0x40) != 0;
+        public bool U26_FL_2 => (U25 & 0x80) != 0;
         public byte U27 { get; set; }
-        public float U27_1 => (U27 & 1) == 0 ? 0 : 1f;
-        public bool U27_2 => Convert.ToBoolean((U27 >> 1) & 1);
-        public float U27_3 => (U27 & 4) == 0 ? 0 : 1f;
-        public bool U27_4 => Convert.ToBoolean((U27 >> 3) & 1);
-        public float U27_5 => (U27 & 0x10) == 0 ? 0 : 1f;
-        public bool U27_6 => Convert.ToBoolean((U27 >> 5) & 1);
-        public int U27_7 => U27 >> 7;
-        public float U27_8 => ((U27 & 0x40) == 0 ? -1f : 1f) * 5000f;
+        public bool U27_FR_1 => (U27 & 0x01) != 0;
+        public bool U27_FR_2 => (U27 & 0x02) != 0;
+        public bool U27_RR_3 => (U27 & 0x04) != 0;
+        public bool U27_RR_4 => (U27 & 0x08) != 0;
+        public bool U27_RL_5 => (U27 & 0x10) != 0;
+        public bool U27_RL_6 => (U27 & 0x20) != 0;
+        public bool U27_7 => (U27 & 0x40) != 0;
+        public bool U27_8 => (U27 & 0x80) != 0;
         public float? DirtBlend { get; set; }
         public Vec4? U33 { get; set; }
         public Vec4? U34 { get; set; }
@@ -169,13 +173,8 @@ public partial class CSceneVehicleCar
 
                 if (version >= 8)
                 {
-                    U25 = r.ReadByte(); // first 3 bits are relevant
-                    Horn = U25 & 3;
-                    IsTurbo = (U25 & 128) != 0;
-
-                    U26 = (r.ReadByte() & 0x40) == 0 ? 0 : 1;
-                    // (this->U26 >> 7)
-
+                    U25 = r.ReadByte();
+                    U26 = r.ReadByte();
                     U27 = r.ReadByte(); // similar to U26, some form of flags
 
                     if (version >= 9)
