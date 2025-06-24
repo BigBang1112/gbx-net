@@ -59,7 +59,7 @@ jobs:
       run: dotnet test -c Release --no-build --verbosity normal
       
     - name: Pack templates
-      run: dotnet pack Templates/GBX.NET.Templates -c Release --no-build --no-restore -p:ContinuousIntegrationBuild=true
+      run: dotnet pack Templates -c Release --no-build --no-restore -p:ContinuousIntegrationBuild=true
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
@@ -67,7 +67,7 @@ jobs:
         name: build
         path: |
           Src/GBX.NET*/bin/Release/*.*nupkg
-          Templates/GBX.NET.Templates/bin/Release/*.*nupkg
+          Templates/bin/Release/*.*nupkg
 
   
   publish:    
@@ -88,7 +88,7 @@ jobs:
         - GBX.NET.Tool.CLI
         - GBX.NET.Crypto
         - GBX.NET.PAK
-        - GBX.NET.Templates
+        - Templates
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest
