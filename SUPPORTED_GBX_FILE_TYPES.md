@@ -60,6 +60,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes
 | | Sound.Gbx | [CPlugSound](Src/GBX.NET/Engines/Plug/CPlugSound.chunkl) | Yes | Yes
 | | Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.chunkl) | Yes | Yes
+| | AudioEnvironment.Gbx | [CPlugAudioEnvironment](Src/GBX.NET/Engines/Plug/CPlugAudioEnvironment.chunkl) | Yes | Yes
 | | Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.chunkl) | Up to TM2 | Up to TM2
 | | Shader.Gbx | [CPlugShader](Src/GBX.NET/Engines/Plug/CPlugShader.chunkl) | Up to TM2 | Up to TM2
 | | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.chunkl) | Up to TM2 | Up to TM2
