@@ -32,18 +32,23 @@ public partial class CSceneVehicleCar
         public CPlugSurface.MaterialId RLGroundContactMaterial { get; set; }
         public byte U25 { get; set; }
         public byte U25_1 => (byte)(U25 & 7);
-        public byte U25_2 => (byte)((U25 >> 3) & 3);
+
+        /// <summary>
+        /// Horn counter that loops around after reaching number 3.
+        /// </summary>
+        public byte Horn => (byte)((U25 >> 3) & 3);
+
         public byte U25_3 => (byte)((U25 >> 5) & 3);
         public bool U25_4 => (U25 >> 7) != 0;
         public byte U26 { get; set; }
-        public bool U26_FL_1 => (U26 & 0x40) != 0;
+        public bool FLIsSliding => (U26 & 0x40) != 0;
         public bool U26_FL_2 => (U26 & 0x80) != 0;
         public byte U27 { get; set; }
-        public bool U27_FR_1 => (U27 & 0x01) != 0;
+        public bool FRIsSliding => (U27 & 0x01) != 0;
         public bool U27_FR_2 => (U27 & 0x02) != 0;
-        public bool U27_RR_3 => (U27 & 0x04) != 0;
+        public bool RRIsSliding => (U27 & 0x04) != 0;
         public bool U27_RR_4 => (U27 & 0x08) != 0;
-        public bool U27_RL_5 => (U27 & 0x10) != 0;
+        public bool RLIsSliding => (U27 & 0x10) != 0;
         public bool U27_RL_6 => (U27 & 0x20) != 0;
         public bool U27_7 => (U27 & 0x40) != 0;
         public bool U27_8 => (U27 & 0x80) != 0;
