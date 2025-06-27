@@ -41,14 +41,50 @@ public partial class CSceneVehicleCar
         public byte U25_3 => (byte)((U25 >> 5) & 3);
         public bool U25_4 => (U25 >> 7) != 0;
         public byte U26 { get; set; }
-        public bool FLIsSliding => (U26 & 0x40) != 0;
+        public bool FLIsSliding
+        {
+            get => (U26 & 0x40) != 0;
+            set
+            {
+                if (value) U26 |= 0x40;
+                else U26 &= 0xBF; // 0b10111111
+            }
+        }
+
         public bool U26_FL_2 => (U26 & 0x80) != 0;
         public byte U27 { get; set; }
-        public bool FRIsSliding => (U27 & 0x01) != 0;
+        public bool FRIsSliding
+        {
+            get => (U27 & 0x01) != 0;
+            set
+            {
+                if (value) U27 |= 0x01;
+                else U27 &= 0xFE; // 0b11111110
+            }
+        }
+
         public bool U27_FR_2 => (U27 & 0x02) != 0;
-        public bool RRIsSliding => (U27 & 0x04) != 0;
+        public bool RRIsSliding
+        {
+            get => (U27 & 0x04) != 0;
+            set
+            {
+                if (value) U27 |= 0x04;
+                else U27 &= 0xFB; // 0b11111011
+            }
+        }
+
         public bool U27_RR_4 => (U27 & 0x08) != 0;
-        public bool RLIsSliding => (U27 & 0x10) != 0;
+        public bool RLIsSliding
+        {
+            get => (U27 & 0x10) != 0;
+            set
+            {
+                if (value) U27 |= 0x10;
+                else U27 &= 0xEF; // 0b11101111
+            }
+        }
+
         public bool U27_RL_6 => (U27 & 0x20) != 0;
         public bool U27_7 => (U27 & 0x40) != 0;
         public bool U27_8 => (U27 & 0x80) != 0;
@@ -93,8 +129,16 @@ public partial class CSceneVehicleCar
                 FRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
                 RRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
                 RLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+
                 var netData = r.ReadUInt16();
+
                 Brake = netData >> 1 & 1;
+
+                var isSliding = (netData >> 2 & 1) != 0;
+                FLIsSliding = isSliding;
+                FRIsSliding = isSliding;
+                RRIsSliding = isSliding;
+                RLIsSliding = isSliding;
 
                 // Calculate RPM
                 var min = 100f; // guessed cuz its stored by vehicle
