@@ -12,9 +12,9 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int<ECollectorFlags> Flags
   short CatalogPosition
   v5-
-   byte
-   int
-   short
+   byte NbAvailableMin
+   int CopperPrice
+   short NbAvailableMax
   v7+
    string Name
    v8+
@@ -25,19 +25,23 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 0x006 (header, struct: SHeaderLightMap) [TMT, MP4, TM2020] // lightmap compute time
  long LightmapComputeTime
 
+0x008 (header, struct: SHeaderDefaultSkin) // default skin
+ versionb
+ string DefaultSkinName
+
 0x002 [TM10, TMSX] // Ident
  ident Ident
 
 0x006 [TM10, TMSX, TMF]
- int
+ int<ESkinKind> SkinKind
 
 0x007 [TM10, TMSX, TMF]
  bool IsInternal
- bool
+ bool NeedUnlock
  int CatalogPosition
- int
- int
- int
+ int NbAvailableMin
+ int CopperPrice
+ int NbAvailableMax
 
 0x008
  CPlugGameSkin
@@ -61,6 +65,12 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
  int IconQuarterRotationY
 
 0x010 [TMT.v2, MP4.v2, TM2020.v4]
+ version
+ CPlugFileZip DefaultSkin (external)
+ string SkinDirectory
+ v2+
+  if SkinDirectory == null || SkinDirectory == ""
+   CMwNod
 
 0x011 [TMT.v1, MP4.v1, TM2020.v1]
  version
@@ -87,3 +97,9 @@ enum EProdState
  GameBox
  DevBuild
  Release
+
+enum ESkinKind
+ None
+ Text
+ Image
+ Vehicle

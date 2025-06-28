@@ -694,6 +694,11 @@ public partial class CMwNod : IClass
             foreach (var chunk in Chunks)
             {
                 version &= chunk.GameVersion;
+
+                if (version == GameVersion.Unspecified)
+                {
+                    return GameVersion.Unspecified; // No game version is specified, so it is not accepted in any game version
+                }
             }
 
             return (int)version == int.MaxValue ? GameVersion.Unspecified : version;

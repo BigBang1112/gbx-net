@@ -1,1 +1,25 @@
 CPlugCharPhySpecialProperty 0x090F2000
+
+0x000
+ version
+ int
+ v1-
+  float
+  float
+  float
+ bool
+ int
+ float
+ int
+ float
+ v1+
+  int
+ v2+
+  float
+  float
+  float
+  float
+  v3+
+   int
+   v4+
+    bool

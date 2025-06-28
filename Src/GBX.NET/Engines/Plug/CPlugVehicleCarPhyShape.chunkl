@@ -6,7 +6,7 @@ CPlugVehicleCarPhyShape 0x0910E000
  CPlugSolid U02
  v1+
   if U02 == null
-   CPlugSurface MoveShape
+   CPlugSurface MoveShape (external)
  CPlugVehicleWheelPhyModel[] U04
  boxaligned U05
  bool U06

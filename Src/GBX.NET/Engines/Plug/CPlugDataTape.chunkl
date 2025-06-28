@@ -1,1 +1,10 @@
 CPlugDataTape 0x090CE000
+
+0x001
+ version
+ int
+ int[]
+ int[]
+ data
+ int
+ data

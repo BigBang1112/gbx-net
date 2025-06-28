@@ -1,2 +1,16 @@
 CPlugFxLightning 0x090D8000
 - inherits: CPlug
+
+0x000
+ version
+ CPlugSound Sound (external)
+ CFuncKeysReal[]_deprec (external)
+ float
+ float
+ float
+ float
+ v1+
+  float
+  float
+  float
+  float

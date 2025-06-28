@@ -1,56 +1,13 @@
-﻿using GBX.NET.Components;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockUnitInfo
 {
-    public CGameCtnBlockInfoClip[]? ClipsNorth { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsEast { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsSouth { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsWest { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsTop { get; set; }
-    public CGameCtnBlockInfoClip[]? ClipsBottom { get; set; }
-
-    public partial class Chunk03036006
-    {
-        public bool U01;
-        public (bool, int) U02;
-
-        public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
-        {
-            rw.Boolean(ref U01);
-
-            for (var i = 0; i < 4; i++)
-            {
-                rw.Boolean(ref U02.Item1);
-                rw.Int32(ref U02.Item2);
-            }
-        }
-    }
-
-    public partial class Chunk03036007
-    {
-        public External<CMwNod>[]? U01;
-
-        public override void Read(CGameCtnBlockUnitInfo n, GbxReader r)
-        {
-            U01 = new External<CMwNod>[4]; // or pylons?
-
-            for (var i = 0; i < U01.Length; i++)
-            {
-                var node = r.ReadNodeRef<CMwNod>(out GbxRefTableFile? file);
-                U01[i] = new(node, file);
-            }
-        }
-
-        public override void Write(CGameCtnBlockUnitInfo n, GbxWriter w)
-        {
-            foreach (var e in U01!)
-            {
-                w.WriteNodeRef(e.Node, e.File);
-            }
-        }
-    }
+    public External<CGameCtnBlockInfoClip>[]? ClipsNorth { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsEast { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsSouth { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsWest { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsTop { get; set; }
+    public External<CGameCtnBlockInfoClip>[]? ClipsBottom { get; set; }
 
     public partial class Chunk0303600C : IVersionable
     {
@@ -80,12 +37,12 @@ public partial class CGameCtnBlockUnitInfo
             var clipCountTop = clipCountBits >> 12 & 7;
             var clipCountBottom = clipCountBits >> 15 & 7;
 
-            n.ClipsNorth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
-            n.ClipsEast = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
-            n.ClipsSouth = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountSouth)!;
-            n.ClipsWest = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountWest)!;
-            n.ClipsTop = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
-            n.ClipsBottom = r.ReadArrayNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
+            n.ClipsNorth = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
+            n.ClipsEast = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
+            n.ClipsSouth = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountSouth)!;
+            n.ClipsWest = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountWest)!;
+            n.ClipsTop = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountTop)!;
+            n.ClipsBottom = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountBottom)!;
 
             if (Version >= 2)
             {
@@ -113,32 +70,32 @@ public partial class CGameCtnBlockUnitInfo
 
             foreach (var clip in n.ClipsNorth ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsEast ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsSouth ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsWest ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsTop ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             foreach (var clip in n.ClipsBottom ?? [])
             {
-                w.WriteNodeRef(clip);
+                w.WriteNodeRef(clip.Node, clip.File);
             }
 
             if (Version >= 2)

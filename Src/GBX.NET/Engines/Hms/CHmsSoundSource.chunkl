@@ -1,21 +1,23 @@
 CHmsSoundSource 0x0600D000
 - inherits: CHmsPoc
 
-0x000 // AudioSound
- CMwNod AudioSound (external)
+0x000
+ CPlugSound PlugSound (external)
 
 0x002
- CMwNod AudioSound (external)
- int
- bool
+ CPlugSound PlugSound (external)
+ float PriorityAdjustement
+ bool UseLowQuality
 
-0x003
- vec3
+0x003 // volume, pitch, speed
+ float Volume
+ float Pitch
+ float RpmOrSpeed
 
-0x004
- vec3
+0x004 // VolumicSize
+ vec3 VolumicSize
 
 0x005
- CMwNod AudioSound (external)
- float
- bool
+ CPlugSound PlugSound (external)
+ float PriorityAdjustement
+ bool UseLowQuality

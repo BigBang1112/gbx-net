@@ -1,73 +1,186 @@
-﻿using GBX.NET;
-using GBX.NET.Components;
+﻿using GBX.NET.Components;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK;
 using System.IO.Compression;
 
-var pakFileName = args[0];
-var directoryPath = Path.GetDirectoryName(pakFileName)!;
-
 var game = PakListGame.TM;
+var pakFilePaths = new List<string>();
+var keys = new Dictionary<string, PakKeyInfo?>(StringComparer.OrdinalIgnoreCase);
+var hashes = new Dictionary<string, string?>();
 
-if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureIgnoreCase))
+var keysTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "keys.txt");
+
+if (File.Exists(keysTxtPath))
 {
-    game = PakListGame.Vsk5;
-}
-
-Console.WriteLine("Bruteforcing possible file names from hashes...");
-
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, game, onlyUsedHashes: false);
-
-var key = default(byte[]);
-
-var packlistFileName = Path.Combine(directoryPath, "packlist.dat");
-
-if (File.Exists(packlistFileName))
-{
-    Console.WriteLine("Reading packlist...");
-    var packlist = await PakList.ParseAsync(packlistFileName, game);
-    key = packlist[Path.GetFileNameWithoutExtension(pakFileName).ToLowerInvariant()].Key;
-}
-
-await using var fs = File.OpenRead(pakFileName);
-await using var pak = await Pak.ParseAsync(fs, key);
-
-File.Delete(Path.ChangeExtension(pakFileName, ".zip"));
-
-using var zip = ZipFile.Open(Path.ChangeExtension(pakFileName, ".zip"), ZipArchiveMode.Create);
-
-foreach (var file in pak.Files.Values)
-{
-    var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
-    var fullPath = Path.Combine(file.FolderPath, fileName);
-
-    Console.WriteLine(fullPath);
-
-    var entry = zip.CreateEntry(fullPath);
-
-    try
+    foreach (var (name, keyInfo) in ParseKeysFromTxt(keysTxtPath))
     {
-        var gbx = await pak.OpenGbxFileAsync(file, fileHashes: hashes);
+        keys[name] = keyInfo;
+    }
+}
 
-        using var stream = entry.Open();
+var hashesTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "hashes.txt");
 
-        if (gbx.Header is GbxHeaderUnknown)
+if (File.Exists(hashesTxtPath))
+{
+    foreach (var (hash, fileName) in ParseHashesFromTxt(hashesTxtPath))
+    {
+        hashes[hash] = fileName;
+    }
+}
+
+var argsEnumerator = args.AsEnumerable().GetEnumerator();
+
+while (argsEnumerator.MoveNext())
+{
+    var arg = argsEnumerator.Current;
+    var argLower = arg.ToLowerInvariant();
+
+    if (argLower == "-k" || argLower == "--keys")
+    {
+        if (!argsEnumerator.MoveNext())
         {
+            throw new Exception("Missing keys file.");
+        }
+
+        var keysFilePath = argsEnumerator.Current;
+
+        if (!File.Exists(keysFilePath))
+        {
+            throw new Exception("Keys file does not exist.");
+        }
+
+        foreach (var (name, keyInfo) in ParseKeysFromTxt(keysFilePath))
+        {
+            keys[name] = keyInfo;
+        }
+
+        continue;
+    }
+
+    if (argLower == "-h" || argLower == "--hashes")
+    {
+        if (!argsEnumerator.MoveNext())
+        {
+            throw new Exception("Missing hashes file.");
+        }
+
+        var hashesFilePath = argsEnumerator.Current;
+
+        if (!File.Exists(hashesFilePath))
+        {
+            throw new Exception("Hashes file does not exist.");
+        }
+
+        foreach (var (hash, fileName) in ParseHashesFromTxt(hashesFilePath))
+        {
+            hashes[hash] = fileName;
+        }
+
+        continue;
+    }
+
+    if (argLower == "--vsk5")
+    {
+        game = PakListGame.Vsk5;
+        continue;
+    }
+
+    if (Directory.Exists(arg))
+    {
+        pakFilePaths.AddRange(Directory.GetFiles(arg, "*.pak", SearchOption.AllDirectories));
+        pakFilePaths.AddRange(Directory.GetFiles(arg, "*.Pack.Gbx", SearchOption.AllDirectories));
+        continue;
+    }
+
+    if (File.Exists(arg))
+    {
+        pakFilePaths.Add(arg);
+        continue;
+    }
+}
+
+var checkedDirectories = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+foreach (var pakFilePath in pakFilePaths)
+{
+    var directoryPath = Path.GetDirectoryName(pakFilePath)!;
+
+    if (checkedDirectories.Add(directoryPath))
+    {
+        var keysFilePath = Path.Combine(directoryPath, "keys.txt");
+        var pakListFilePath = Path.Combine(directoryPath, "packlist.dat");
+
+        if (File.Exists(keysFilePath))
+        {
+            foreach (var (name, keyInfo) in ParseKeysFromTxt(keysFilePath))
+            {
+                keys[name] = keyInfo;
+            }
+        }
+
+        if (File.Exists(pakListFilePath))
+        {
+            foreach (var (name, keyInfo) in (await PakList.ParseAsync(pakListFilePath, game)).ToKeyInfoDictionary())
+            {
+                keys[name] = keyInfo;
+            }
+
+            Console.WriteLine("Bruteforcing possible file names from hashes...");
+
+            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false))
+            {
+                hashes[hash] = fileName;
+            }
+
+            Console.WriteLine("Bruteforcing completed.");
+        }
+    }
+
+    var pakId = Path.GetFileNameWithoutExtension(pakFilePath);
+
+    await using var pak = keys.TryGetValue(pakId, out var keyData)
+        ? await Pak.ParseAsync(pakFilePath, keyData?.PrimaryKey, keyData?.FileKey)
+        : await Pak.ParseAsync(pakFilePath);
+
+    var zipFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{pakId}.zip");
+
+    File.Delete(zipFileName);
+
+    using var zip = ZipFile.Open(zipFileName, ZipArchiveMode.Create);
+
+    foreach (var file in pak.Files.Values)
+    {
+        var fileName = hashes.GetValueOrDefault(file.Name)?.Replace('\\', Path.DirectorySeparatorChar) ?? file.Name;
+        var fullPath = Path.Combine(file.FolderPath, fileName);
+
+        Console.WriteLine(fullPath);
+
+        var entry = zip.CreateEntry(fullPath);
+
+        try
+        {
+            var gbx = await pak.OpenGbxFileAsync(file);
+
+            using var stream = entry.Open();
+
+            if (gbx.Header is GbxHeaderUnknown)
+            {
+                CopyFileToStream(pak, file, stream);
+            }
+            else
+            {
+                gbx.Save(stream);
+            }
+        }
+        catch (NotAGbxException)
+        {
+            await using var stream = entry.Open();
             CopyFileToStream(pak, file, stream);
         }
-        else
+        catch (Exception ex)
         {
-            gbx.Save(stream);
+            Console.WriteLine(ex);
         }
-    }
-    catch (NotAGbxException)
-    {
-        await using var stream = entry.Open();
-        CopyFileToStream(pak, file, stream);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex);
     }
 }
 
@@ -77,4 +190,39 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
     var data = new byte[file.UncompressedSize];
     var count = pakItemFileStream.Read(data);
     stream.Write(data, 0, count);
+}
+
+static IEnumerable<(string, PakKeyInfo?)> ParseKeysFromTxt(string keysFileName)
+{
+    foreach (var line in File.ReadLines(keysFileName))
+    {
+        var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (parts.Length < 2)
+            continue;
+
+        var pak = parts[0];
+        var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
+        var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
+
+        yield return (pak, new PakKeyInfo(key, secondKey));
+    }
+}
+
+static IEnumerable<(string, string?)> ParseHashesFromTxt(string hashesFileName)
+{
+    foreach (var line in File.ReadLines(hashesFileName))
+    {
+        var firstSpace = line.IndexOf(' ');
+
+        if (firstSpace == -1)
+        {
+            continue;
+        }
+
+        var hash = line[..firstSpace];
+        var path = line[(firstSpace + 1)..];
+
+        yield return (hash, string.IsNullOrEmpty(path) ? null : path);
+    }
 }

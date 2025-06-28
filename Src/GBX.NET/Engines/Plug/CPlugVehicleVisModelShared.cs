@@ -2,7 +2,8 @@
 
 public partial class CPlugVehicleVisModelShared
 {
-    public VisualVehicle[] VisualVehicles { get; set; } = [];
+    private VisualVehicle[]? visualVehicles;
+    public VisualVehicle[] VisualVehicles { get => visualVehicles ?? []; set => visualVehicles = value; }
 
     public partial class Chunk090E8006
     {
@@ -21,6 +22,7 @@ public partial class CPlugVehicleVisModelShared
     {
         public override void Read(CPlugVehicleVisModelShared n, GbxReader r)
         {
+            n.visualVehicles ??= [new()]; // TM2 case
             for (int i = 0; i < n.VisualVehicles.Length; i++)
             {
                 n.VisualVehicles[i] ??= new VisualVehicle();
@@ -151,6 +153,26 @@ public partial class CPlugVehicleVisModelShared
                 w.WriteWritable(n.VisualVehicles[i].U03);
                 w.WriteWritable(n.VisualVehicles[i].U04);
                 w.Write(n.VisualVehicles[i].U05);
+            }
+        }
+    }
+
+    public partial class Chunk090E8015
+    {
+        public override void Read(CPlugVehicleVisModelShared n, GbxReader r)
+        {
+            for (int i = 0; i < n.VisualVehicles.Length; i++)
+            {
+                n.VisualVehicles[i] ??= new VisualVehicle();
+                n.VisualVehicles[i].VisualWheels = r.ReadArrayReadable<VisualWheel>(version: 1);
+            }
+        }
+
+        public override void Write(CPlugVehicleVisModelShared n, GbxWriter w)
+        {
+            for (int i = 0; i < n.VisualVehicles.Length; i++)
+            {
+                w.WriteArrayWritable(n.VisualVehicles[i].VisualWheels, version: 1);
             }
         }
     }

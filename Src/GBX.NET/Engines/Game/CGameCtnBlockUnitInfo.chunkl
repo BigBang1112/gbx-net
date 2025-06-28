@@ -2,23 +2,23 @@ CGameCtnBlockUnitInfo 0x03036000
 
 0x000 [TM10, TMSX, TMF, TMT, MP4]
  int PlacePylons
- bool // AcceptPylons?
+ bool // AcceptPylons? true = 255, false = 0?
  bool
  int3 RelativeOffset
- CGameCtnBlockInfoClip[] Clips (external)
+ CGameCtnBlockInfoClip[] Clips (external) // also called Junctions
 
 0x001 [TM10, TMSX, TMF, TMT, MP4]
- id // Desert, Grass
- int
- int
+ id Surface
+ int Frontier
+ int<Direction> Dir
 
 0x002 (skippable) [TMSX, TMF, TMT, MP4] // Underground
  bool Underground
 
 0x003 [TMSX, TMF]
- CMwNod (external) // pillar stuff?
- id
- int
+ CGameCtnBlockInfo ReplacementBlockInfo (external)
+ id ReplacementId
+ int<ReplacementDir> MultiDir
  int
 
 0x004 [TMF, TMT, MP4] // AcceptPylons
@@ -28,8 +28,21 @@ CGameCtnBlockUnitInfo 0x03036000
  id TerrainModifierId
 
 0x006 [TMT, MP4]
+ bool
+ bool
+ int
+ bool
+ int
+ bool
+ int
+ bool
+ int
 
 0x007 [TMT, MP4]
+ CGameCtnBlockInfoPylon PylonNorth (external)
+ CGameCtnBlockInfoPylon PylonEast (external)
+ CGameCtnBlockInfoPylon PylonSouth (external)
+ CGameCtnBlockInfoPylon PylonWest (external)
 
 0x008 // bottom+top clip
  CGameCtnBlockInfoClip BottomClip (external)
@@ -61,3 +74,15 @@ CGameCtnBlockUnitInfo 0x03036000
 0x00D
  version
  data
+
+enum EFrontier
+ DeadEnd
+ Corner
+ Straight
+ TShaped
+ Cross
+
+enum ReplacementDir
+ Simple
+ Symetrical
+ All

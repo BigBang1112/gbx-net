@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.1.2</VersionPrefix>
+        <VersionPrefix>2.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
-        <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 350+ Gbx classes.</Description>
-        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 400+ Gbx classes.</Description>
+        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,7 +16,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>12</LangVersion>
+        <LangVersion>13</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>

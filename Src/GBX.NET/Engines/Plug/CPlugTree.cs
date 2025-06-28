@@ -61,7 +61,7 @@ public partial class CPlugTree
         {
             if (location == default)
             {
-                location = Iso4.Identity;
+                location = tree.Location ?? Iso4.Identity;
             }
 
             if (tree is CPlugTreeVisualMip mip)

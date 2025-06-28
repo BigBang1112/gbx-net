@@ -9,26 +9,26 @@ CPlugSound 0x0901A000
 
 0x009
  int<EMode> Mode
- float
+ float Volume
  bool IsLooping
  bool IsContinuous
  float Priority
 
 0x00B
  int<ESoundKind> SoundKind
- int InsideConeANgle
+ int InsideConeAngle
  int OutsideConeAngle
  float ConeOutsideAttenuation
- float
+ float ConeOutsideAttenuationHF
 
 0x00C
  float RefDistance
- float MaxDistance
+ float MaxDistanceOmni
  bool EnableDoppler
- float
- float
- float
- float
+ float VolumeAttenuationDirect
+ float VolumeAttenuationDirectHF
+ float VolumeAttenuationRoom
+ float VolumeAttenuationRoomHF
  float DopplerFactor
  float RolloffFactor
  float RoomRolloffFactor
@@ -36,10 +36,84 @@ CPlugSound 0x0901A000
 
 0x00D
  int<EMode> Mode
+ float Volume
+ bool IsLooping
+ bool IsContinuous
+ float Priority
+
+0x00E
+ version
+ int<EMode> Mode
  float
  bool IsLooping
  bool IsContinuous
  float Priority
+ v1+
+  bool UseLowPassFilter
+  v2+
+   int MaxDuplicates
+   v3+
+    int BalanceGroup
+    v4+
+     int DuplicatesIntervalMin
+     v5+
+      float FadeStopDuration
+      v6+
+       float Pitch
+       v7+
+        float FadePlayDuration
+        v9+
+         id GroupDuplicate
+
+0x00F
+ version
+ float RefDistance
+ float MaxDistance
+ bool EnableDoppler
+ float DopplerFactor
+ float
+ float
+ float
+ float
+ float
+ float
+ v1+
+  float RolloffFactor
+  v2+
+   CFuncKeysReal VolumeFromDistance
+   v3+
+    int RoomFxSend
+    v4+
+     float RoomRolloffFactor
+     float AirAbsorptionFactor
+     v7+
+      int PitchFromDistMode
+      int IgnoreSourceProperties
+      v8+
+       CFuncKeysReal PitchFromDistance
+       v9+
+        CFuncKeysReal VolumeFormSpeedKmh
+        v10+
+         float Radius
+         v11+
+          float PanAngleDeg
+          v12+
+           float
+
+0x011
+ version
+ int<ESoundKind> SoundKind
+ int InsideConeAngle
+ int OutsideConeAngle
+ float ConeOutsideAttenuation
+
+0x012
+ version
+ CPlugSound BackingSound (external)
+
+0x013
+ version
+ CPlugSound FocusedSound (external)
 
 enum ESoundKind
  Point
@@ -49,5 +123,5 @@ enum EMode
  Direct
  Direct_w__attenuation
  Spatialised
- Spacialised_Omni
+ Spatialised_Omni
  ForceHard3d

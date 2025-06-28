@@ -1,0 +1,2 @@
+CPlugPlacementPatch 0x09160000
+- inherits: CPlugRoadChunk

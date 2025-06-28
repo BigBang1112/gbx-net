@@ -10,6 +10,9 @@ CGameItemModel 0x2E002000
 0x000
  CSceneMobil Vehicle (external)
 
+0x001
+ CPlugGameSkin GameSkin
+
 0x002 // old race interface fid
  CScene2d RaceInterfaceFid
 

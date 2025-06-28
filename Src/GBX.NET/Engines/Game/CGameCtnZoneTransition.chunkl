@@ -1,0 +1,37 @@
+CGameCtnZoneTransition 0x0314D000
+- inherits: CGameCtnZone
+
+0x000
+ CGameCtnBlockInfoTransition BlockInfoTransition (external)
+
+0x005
+ version
+ id ReplacementZoneId
+
+0x006
+ version
+ int
+
+0x007
+ version
+ id
+ id
+ id
+
+0x008
+ version
+ int<EBorderType> Border_North
+ CGameCtnZoneGenealogy Genealogy_North (direct)
+ int<EBorderType> Border_East
+ CGameCtnZoneGenealogy Genealogy_East (direct)
+ int<EBorderType> Border_South
+ CGameCtnZoneGenealogy Genealogy_South (direct)
+ int<EBorderType> Border_West
+ CGameCtnZoneGenealogy Genealogy_West (direct)
+
+enum EBorderType
+ Parent
+ ParentToChild
+ ChildToParent
+ Straight
+ Child

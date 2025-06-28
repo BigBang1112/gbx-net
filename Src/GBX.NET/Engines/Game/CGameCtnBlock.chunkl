@@ -19,7 +19,7 @@ archive
   CGameCtnBlockSkin Skin
  v2+
   if (Flags & (1 << 19)) != 0
-   CScenePhyCharSpecialProperty PhyCharSpecialProperty
+   CPlugCharPhySpecialProperty PhyCharSpecialProperty
   if (Flags & (1 << 20)) != 0
    CGameWaypointSpecialProperty WaypointSpecialProperty
   if (Flags & (1 << 18)) != 0

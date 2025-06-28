@@ -1,0 +1,93 @@
+CPlugTurret 0x0910F000
+
+0x000
+ version
+ v4-
+  v3+
+   int U01
+  v2+
+   int U02
+  transquat[] U03
+  short[] U04
+  v1+
+   short[] U05
+  id[] U06
+  v4+
+   int[] U07
+ v5+
+  string SkelRef
+  if SkelRef == null || SkelRef == ""
+   CPlugSkel* Skel
+  string BulletModelRef
+  if BulletModelRef == null || BulletModelRef == ""
+   CPlugBulletModel BulletModel
+  v6+
+   string MeshRef
+   if MeshRef == null || MeshRef == ""
+    CPlugSolid2Model Mesh
+   v7+
+    string VisEntFxRef
+    if VisEntFxRef == null || VisEntFxRef == ""
+     CPlugVisEntFxModel VisEntFx
+    v8+
+     string ShapeRef
+     if ShapeRef == null || ShapeRef == ""
+      CPlugSurface Shape
+     v9+
+      id Joint0Name
+      id Joint1Name
+      v10+
+       id JointFireName
+       vec3 Joint0LocalAxis
+       vec3 Joint1LocalAxis
+       vec3 JointFireLocalAxis
+       float Joint0MinAngleDeg
+       float Joint0MaxAngleDeg
+       float Joint1MinAngleDeg
+       float Joint1MaxAngleDeg
+       v11+
+        float Joint0SpeedDegPerS
+        float Joint1SpeedDegPerS
+        v12+
+         int U36
+         float AimDetectRadius
+         float AimDetectFOVDeg
+         float AimMaxTrackDist
+         float AimAnticipation
+         int AimKeepAimingDurationMs
+         int AimFireTargetChangeDelayMs
+         float AimFireMaxAngleDeg
+         int<ETurretFixedAngleSignal> FixedAngleSignal
+         int FixedAnglePeriodMs
+         float FixedAngleMinDeg
+         float FixedAngleMaxDeg
+         int FirePeriodMs
+         v13+
+          string RotateSound1Ref
+          if RotateSound1Ref == null || RotateSound1Ref == ""
+           CMwNod RotateSound1
+          v14+
+           float Joint0NextJointUpdateAngleMaxDeg
+           float Joint1NextJointUpdateAngleMaxDeg
+           float AimFireMaxDist
+           v15+
+            bool AimEnabled
+            v16+
+             id JointRadarName
+             v17+
+              int LifeArmorMax
+              int<EOnArmorEmtpy> LifeOnArmorEmtpy
+              int LifeDisabledDuration
+              v18+
+               bool IsControllable
+               v19+
+                CPlugParticleEmitterModel OnFireParticle
+
+enum ETurretFixedAngleSignal
+ Constant
+ Linear
+ PingPong
+
+enum EOnArmorEmtpy
+ Destroy
+ Disable

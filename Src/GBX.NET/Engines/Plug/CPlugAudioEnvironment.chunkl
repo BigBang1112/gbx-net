@@ -2,58 +2,107 @@ CPlugAudioEnvironment 0x09039000
 - inherits: CPlugAudio
 
 0x000
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- bool
- bool
- bool
- bool
- bool
- bool
- bool
- bool
+ int<EEAXPreset> EAXPreset
+ float SizeFactor
+ float Diffusion
+ float Room
+ float RoomHFRatio
+ float RoomLFRatio
+ float DecayTime
+ float DecayHFRatio
+ float DecayLFRatio
+ float Reflections
+ float ReflectionsDelay
+ float Reverb
+ float ReverbDelay
+ float EchoTime
+ float EchoDepth
+ float ModulationTime
+ float ModulationDepth
+ float RolloffFactor
+ float AirAbsorbtionHF
+ float HFReference
+ float LFReference
+ bool DecayTimeScale
+ bool ReflectionsScale
+ bool ReflectionsDelayScale
+ bool ReverbScale
+ bool ReverbDelayScale
+ bool EchoTimeScale
+ bool ModulationTimeScale
+ bool DecayHFLimitScale
 
 0x001
  float DopplerFactor
 
 0x002 
- float
- float
+ float SizeFactor
+ float Diffusion
  float Gain
- float
- float ReflectionGain
- float
- float
- float
- float
- float
+ float RoomHFRatio
+ float RoomLFRatio
+ float DecayTime
+ float DecayHFRatio
+ float DecayLFRatio
+ float ReflectionsGain
+ float ReflectionsDelay
  float LateReverbGain
+ float ReverbDelay
+ float EchoTime
+ float EchoDepth
+ float ModulationTime
+ float ModulationDepth
+ float RolloffFactor
+ float HFReference
+ float LFReference
+ float AirAbsorbtionHF //NOT REALLY SURE
+ bool DecayHFLimitScale
+
+0x004
+ version
  float
- float
- float
- float
- float
- float
- float
- float
- float
- bool
+ v1+
+  float
+  v2+
+   float
+   float
+   float
+   float
+   float
+   float
+   float
+   float
+   v3+
+    float
+    float
+    float
+    float
+
+enum EEAXPreset
+ Generic
+ PaddedCell
+ Room
+ Bathroom
+ LivingRoom
+ Stoneroom
+ Auditorium
+ ConcertHall
+ Cave
+ Arena
+ Hangar
+ CarpetedHallway
+ Hallway
+ StoneCorridor
+ Alley
+ Forest
+ City
+ Mountains
+ Quarry
+ Plain
+ ParkingLot
+ Sewerpipe
+ Underwater
+ Drugged
+ Dizzy
+ Psychotic
+ Undefined

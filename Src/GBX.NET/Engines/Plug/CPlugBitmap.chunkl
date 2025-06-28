@@ -26,6 +26,9 @@ CPlugBitmap 0x09011000
 0x019
  float BumpScaleMipLevel
 
+0x01B
+ uint Flags2
+
 0x01C
  vec2 DefaultTexCoordScale
  vec2 DefaultTexCoordTrans
@@ -83,11 +86,27 @@ CPlugBitmap 0x09011000
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
- uint
+ int BorderRGB
+ if Image != null
+  CMwNod
 
 0x032
  version
  uint
+
+0x033
+ float HeightInMeters
+
+0x034
+ version
+ CPlugImageArray ImageArray
+ v1+
+  string ImageArraySuffix
+  v2+
+   string[] ImageArrayFids
+   v3+
+    CPlugBitmapArray BitmapArray
+    string BitmapArrayElemName
 
 enum EUsage
  Color

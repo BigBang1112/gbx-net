@@ -1,1 +1,52 @@
 CPlugFlockModel 0x090E5000
+
+0x000
+ version
+ v5-
+  float Range
+  float CosViewAngle
+  float MinSpeed
+  float MaxSpeed
+  int UpdateFrequency
+  float Variance
+  float VAvoidance
+  float KAvoidance
+  float VGrouping
+  float KGrouping
+  float VMatching
+  float KMatching
+  float Volatility
+  float VGroundAvoid
+  float KGroundAvoid
+  float
+  int StandingDuration
+  v2+
+   int<EFlockType> FlockType
+   v3+
+    CMwNod AnimFileFid (external)
+    v4+
+     int DefSpawnCount
+     v5+
+      CMwNod BirdModel (external)
+
+0x001
+ version
+ CMwNod BirdModelFid (external)
+ int AnimPeriod
+ v2+
+  int AnimStandingStart
+  int AnimStandingEnd
+  int AnimGlidingStart
+  int AnimGlidingEnd
+  int AnimFlappingStart
+  int AnimFlappingEnd
+
+0x002
+ version
+ CPlugSound SoundLoop (external)
+ v2+
+  CPlugSound SoundEventTakeOff
+
+enum EFlockType
+ Bird
+ Pig

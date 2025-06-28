@@ -37,6 +37,69 @@ CSceneLayout 0x0A003000
  CSceneTrafficPath[]_deprec TrafficPaths
  CSceneFxNod SceneFxNod (external)
 
+0x019
+ int
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+
+0x01B
+ CSceneSector[]_deprec Sectors
+ version
+ SceneMobil[] Scene
+ SceneLoc[] SceneLocations
+ CSceneObject[]_deprec
+ SceneLoc[] 
+ CSceneLight[]_deprec Lights
+ SceneLoc[] LightLocations
+ CSceneObject[]_deprec Sounds
+ SceneLoc[] SoundLocations
+ CSceneObject[]_deprec Locations
+ SceneLoc[] LocationLocations
+ int
+ int
+ CSceneFxNod SceneFxNod (external)
+
+0x01C
+ version
+ CSceneObject[]_deprec Objects
+ iso4[] ObjectLocations
+ CSceneConfig
+ v1-
+  CPlugWeatherModel[]_deprec WeatherModels (external)
+ v2+
+  CPlugWeatherModel WeatherModel (external)
+ uint[]
+ CPlugBitmap BitmapWaterFog (external)
+ CPlugBitmap BitmapCubeReflectHardSpecA (external)
+ CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+ v0=
+  CSceneLocation[]
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float CameraFarZ
+ float
+ float
+ float
+ CSceneFxNod SceneFxNod (external)
+
 archive SceneMobil
  int U01
  if U01 == -2

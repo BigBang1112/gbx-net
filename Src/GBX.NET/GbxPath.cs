@@ -78,4 +78,34 @@ public static class GbxPath
 
         return result;
     }
+
+    /// <summary>
+    /// Gets the file extension (including the period "."), considering the Gbx's double extension.
+    /// </summary>
+    /// <param name="path">The path string from which to get the extension.</param>
+    /// <returns>The extension of the specified path.</returns>
+    [return: NotNullIfNotNull(nameof(path))]
+    public static string? GetExtension(string? path)
+    {
+        if (path is null)
+        {
+            return null;
+        }
+
+        var mainExtension = Path.GetExtension(path);
+
+        if (string.IsNullOrEmpty(mainExtension))
+        {
+            return string.Empty;
+        }
+
+        var secondaryExtension = Path.GetExtension(Path.GetFileNameWithoutExtension(path));
+
+        if (string.IsNullOrEmpty(secondaryExtension))
+        {
+            return mainExtension;
+        }
+
+        return secondaryExtension + mainExtension;
+    }
 }

@@ -1,7 +1,7 @@
 CSceneMessageHandler 0x0A01F000
 
 0x000
- CMwNod
+ CMwNod OnClickScript (external)
 
 0x001
- CMwNod Script (external)
+ CMwNod OnContactScript (external)

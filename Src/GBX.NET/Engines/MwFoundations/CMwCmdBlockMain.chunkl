@@ -1,0 +1,2 @@
+CMwCmdBlockMain 0x01067000
+- inherits: CMwCmdBlock

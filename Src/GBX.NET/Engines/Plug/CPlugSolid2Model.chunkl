@@ -5,6 +5,10 @@ CPlugSolid2Model 0x090BB000
 
 0x000
 
+0x002 (skippable)
+ string[]
+ FakeOccProj[] FakeOccProjs
+
 archive ShadedGeom
  int VisualIndex
  int MaterialIndex
@@ -64,3 +68,16 @@ archive Material
  string MaterialName
  if MaterialName == null || MaterialName == ""
   CPlugMaterialUserInst MaterialUserInst
+
+archive FakeOccProj
+ int
+ int
+ int
+ quat
+ float
+ float
+ float
+ float
+ float
+ float
+ float

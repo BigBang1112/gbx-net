@@ -541,14 +541,23 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(ReadSingle(), ReadSingle(), ReadSingle());
     }
 
+    /// <summary>
+    /// Reads a 4-byte <see cref="Vec3"/> with 10-bit components in [-511, 511] converted to [-1, 1].
+    /// </summary>
+    /// <returns></returns>
     public Vec3 ReadVec3_10b()
     {
         var val = ReadInt32();
 
-        return new Vec3(
-            (val & 0x3FF) / (float)0x1FF,
-            ((val >> 10) & 0x3FF) / (float)0x1FF,
-            ((val >> 20) & 0x3FF) / (float)0x1FF);
+        var x = val & 0x3FF;
+        var y = (val >> 10) & 0x3FF;
+        var z = (val >> 20) & 0x3FF;
+
+        x = (x & 0x200) != 0 ? x - 0x400 : x;
+        y = (y & 0x200) != 0 ? y - 0x400 : y;
+        z = (z & 0x200) != 0 ? z - 0x400 : z;
+
+        return new Vec3(x, y, z) / 511f;
     }
 
     /// <summary>
@@ -583,6 +592,26 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 #endif
 
         return ReadVec3Unit2() * mag;
+    }
+
+    public Vec3 ReadVec3_9()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        Span<byte> buffer = stackalloc byte[9];
+        if (BaseStream.Read(buffer) != 9)
+        {
+            throw new EndOfStreamException("Failed to read Vec3_9 bytes.");
+        }
+#else
+        var buffer = ReadBytes(9);
+#endif
+
+        var x = (float)((((buffer[0] << 16) | (buffer[2] << 8) | buffer[1]) - 0x800000) * 0.002f);
+        var y = (float)((((buffer[3] << 16) | (buffer[5] << 8) | buffer[4]) - 0x800000) * 0.002f);
+        var z = (float)((((buffer[6] << 16) | (buffer[8] << 8) | buffer[7]) - 0x800000) * 0.002f);
+
+        // Return the Vector3
+        return new Vec3(x, y, z);
     }
 
     /// <summary>
@@ -1103,6 +1132,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
             {
                 logger?.LogDebug("NodeRef #{Index}: {ExternalNode} (external)", index.Value, externalNode);
+
+                // if ClassManager.IsPlugFile then create an instance with externalNode as param, the plug file will have internal handles
+                // alternatively, this could ALWAYS create a node and store the file inside which when presented would act as external node <-- this would avoid the File properties
 
                 file = externalNode as GbxRefTableFile;
                 return default;

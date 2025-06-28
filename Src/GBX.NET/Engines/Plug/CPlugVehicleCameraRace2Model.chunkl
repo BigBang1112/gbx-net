@@ -57,6 +57,13 @@ CPlugVehicleCameraRace2Model 0x090F6000
  int
  float
  float
+ CFuncKeysReal
+ CFuncKeysReal
+ CFuncKeysReal
+ float
+ float
+ float
+ float
 
 0x001
  bool

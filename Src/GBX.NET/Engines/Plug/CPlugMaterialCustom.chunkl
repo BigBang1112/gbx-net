@@ -38,7 +38,7 @@ CPlugMaterialCustom 0x0903A000
    DefineNat[]
 
 0x010
- CMwNod
+ CPlugBitmap (external)
 
 0x011 (skippable)
  int

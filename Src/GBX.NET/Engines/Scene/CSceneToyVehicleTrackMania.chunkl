@@ -1,0 +1,2 @@
+CSceneToyVehicleTrackMania 0x0A103000
+- inherits: CSceneVehicleCar

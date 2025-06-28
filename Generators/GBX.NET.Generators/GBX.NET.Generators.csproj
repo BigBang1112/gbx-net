@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ChunkL" Version="0.7.3" PrivateAssets="all" GeneratePathProperty="true" />
+		<PackageReference Include="ChunkL" Version="0.7.5" PrivateAssets="all" GeneratePathProperty="true" />
 	</ItemGroup>
 
 	<PropertyGroup>

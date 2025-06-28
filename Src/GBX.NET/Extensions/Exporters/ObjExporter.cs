@@ -149,8 +149,6 @@ internal static class ObjExporter
 
     public static void Export(CPlugSolid solid, TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
     {
-        var enableNormals = true;
-
         WriteHeader(nameof(CPlugSolid), objWriter, mtlWriter);
 
         if (solid.Tree is not CPlugTree tree)
@@ -215,7 +213,7 @@ internal static class ObjExporter
             {
                 var locatedPos = new Vec3(
                     pos.X * loc.XX + pos.Y * loc.XY + pos.Z * loc.XZ + loc.TX,
-                    pos.X * loc.YZ + pos.Y * loc.YY + pos.Z * loc.YZ + loc.TY,
+                    pos.X * loc.YX + pos.Y * loc.YY + pos.Z * loc.YZ + loc.TY,
                     pos.X * loc.ZX + pos.Y * loc.ZY + pos.Z * loc.ZZ + loc.TZ
                 );
 
@@ -235,41 +233,39 @@ internal static class ObjExporter
 
         var normalsDict = new Dictionary<Vec3, int>();
 
-        if (enableNormals)
+        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
         {
-            foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+            if (t.Visual is null)
             {
-                if (t.Visual is null)
+                continue;
+            }
+
+            if (t.Visual is not CPlugVisualIndexedTriangles visual)
+            {
+                continue;
+            }
+
+            foreach (var normal in visual.VertexStreams
+                .SelectMany(x => x.Normals ?? [])
+                .Concat(visual.Vertices.Select(x => x.Normal).OfType<Vec3>()))
+            {
+                var normalized = new Vec3(
+                    normal.X * loc.XX + normal.Y * loc.XY + normal.Z * loc.XZ,
+                    normal.X * loc.YX + normal.Y * loc.YY + normal.Z * loc.YZ,
+                    normal.X * loc.ZX + normal.Y * loc.ZY + normal.Z * loc.ZZ
+                ).GetNormalized();
+
+                if (normalsDict.ContainsKey(normalized))
                 {
                     continue;
                 }
 
-                if (t.Visual is not CPlugVisualIndexedTriangles visual)
-                {
-                    continue;
-                }
+                objWriter.WriteLine("vn {0} {1} {2}",
+                    normalized.X.ToString(Invariant),
+                    normalized.Y.ToString(Invariant),
+                    normalized.Z.ToString(Invariant));
 
-                foreach (var normal in visual.Vertices.Select(x => x.Normal))
-                {
-                    if (normal is null)
-                    {
-                        continue;
-                    }
-
-                    var normalized = normal.Value.GetNormalized();
-
-                    if (normalsDict.ContainsKey(normalized))
-                    {
-                        continue;
-                    }
-
-                    objWriter.WriteLine("vn {0} {1} {2}",
-                        normalized.X.ToString(Invariant),
-                        normalized.Y.ToString(Invariant),
-                        normalized.Z.ToString(Invariant));
-
-                    normalsDict.Add(normalized, normalsDict.Count);
-                }
+                normalsDict.Add(normalized, normalsDict.Count);
             }
         }
 
@@ -350,17 +346,31 @@ internal static class ObjExporter
                     objWriter.Write('f');
                 }
 
-                var v = visual.Vertices[index];
+                CPlugVisual3D.Vertex v;
+                if (visual.VertexStreams.Count > 0)
+                {
+                    var vStream = visual.VertexStreams[0];
+                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index], null, null, null, null, null);
+                }
+                else
+                {
+                    v = visual.Vertices[index];
+                }
+
                 var locatedPos = new Vec3(
                     v.Position.X * loc.XX + v.Position.Y * loc.XY + v.Position.Z * loc.XZ + loc.TX,
-                    v.Position.X * loc.YZ + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
+                    v.Position.X * loc.YX + v.Position.Y * loc.YY + v.Position.Z * loc.YZ + loc.TY,
                     v.Position.X * loc.ZX + v.Position.Y * loc.ZY + v.Position.Z * loc.ZZ + loc.TZ
                 );
 
                 objWriter.Write(' ');
                 objWriter.Write(positionsDict[locatedPos] + 1);
 
-                var normalized = enableNormals ? v.Normal?.GetNormalized() : null;
+                var normalized = v.Normal is null ? default(Vec3?) : new Vec3(
+                    v.Normal.Value.X * loc.XX + v.Normal.Value.Y * loc.XY + v.Normal.Value.Z * loc.XZ,
+                    v.Normal.Value.X * loc.YX + v.Normal.Value.Y * loc.YY + v.Normal.Value.Z * loc.YZ,
+                    v.Normal.Value.X * loc.ZX + v.Normal.Value.Y * loc.ZY + v.Normal.Value.Z * loc.ZZ
+                ).GetNormalized();
 
                 if (visual.TexCoords.Length > 0)
                 {
@@ -574,6 +584,11 @@ internal static class ObjExporter
         if (solid.MaterialInsts is { Length: > 0 } materialInsts)
         {
             return materialInsts[materialIndex].Link ?? "Unknown";
+        }
+
+        if (solid.MaterialIds is { Length: > 0 } materialIds)
+        {
+            return materialIds[materialIndex];
         }
 
         return "Unknown";

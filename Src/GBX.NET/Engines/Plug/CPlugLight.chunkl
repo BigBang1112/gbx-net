@@ -2,14 +2,14 @@ CPlugLight 0x0901D000
 - inherits: CPlug
 
 0x000
- GxLight GxLightModel
+ GxLight Light
  CFuncLight FuncLight
  CPlugBitmap BitmapFlare (external)
  CPlugBitmap BitmapProjector (external)
 
 0x002 (base: 0x000)
  base
- uint // DoData
+ int<EFlags> Flags
 
 0x003
  version
@@ -21,9 +21,16 @@ CPlugLight 0x0901D000
 
 0x004
  version
- GxLight GxLightModel
+ GxLight Light
  int
  int
  int
  int
  int
+
+enum EFlags
+ None
+ NightOnly
+ ReflectByGround
+ DuplicateGxLight = 4
+ SceneLightOnlyWhenTreeVisible = 8

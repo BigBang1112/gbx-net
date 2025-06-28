@@ -12,3 +12,7 @@ GxFog 0x04004000
  float
  float
  float
+
+0x001
+ version
+ vec3

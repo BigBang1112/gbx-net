@@ -7,4 +7,65 @@ CGameCtnDecorationAudio 0x03039000
  CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
 
 0x002
+ float SoundAttenuationInEditor
+
+0x003
+ version
+ v1+
+  v3-
+   CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
+   CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
+ CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
+ CPlugAudioBalance AudioBalance_ReplayLoud (external)
+ CPlugAudioBalance AudioBalance_Podium (external)
+ v6+
+  CPlugAudioBalance AudioBalance_PlaygroundSoft (external)
+  CPlugAudioBalance AudioBalance_ReplaySoft (external)
+ CPlugAudioBalance AudioBalance_TM_EvtStartLine (external)
+ CPlugAudioBalance AudioBalance_TM_EvtCheckpoint (external)
+ CPlugAudioBalance AudioBalance_TM_EvtRespawn (external)
+ CPlugAudioBalance AudioBalance_TM_EvtCrash (external)
+ CPlugAudioBalance AudioBalance_TM_EvtFlying (external)
+ v7+
+  CPlugAudioBalance AudioBalance_TM_EvtSwimming (external)
+ CPlugAudioBalance AudioBalance_SM_EvtSpawn (external)
+ v2+
+  CPlugAudioBalance AudioBalance_Overlay_Underground (external)
+  CPlugAudioBalance AudioBalance_Overlay_Far (external)
+  CPlugAudioBalance AudioBalance_SM_EvtUnspawn (external)
+  CPlugAudioBalance AudioBalance_SM_EvtHit (external)
+  v3+
+   CPlugAudioBalance AudioBalance_SM_EvtFire (external)
+   v4+
+    CPlugAudioBalance AudioBalance_SM_EvtHitEliminated (external)
+    v5+
+     v5=
+      CPlugAudioBalance
+      CPlugAudioBalance
+      CPlugAudioBalance
+      CPlugAudioBalance
+      CPlugAudioBalance
+      CPlugAudioBalance
+     v6+
+      CPlugAudioBalance
+      v8+
+       CPlugAudioBalance AudioBalance_SM_EvtBulletTime (external)
+
+0x004
+ version
+ CPlugAudioEnvironment AudioEnvOutsideOpen (external)
+ CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
+ CPlugAudioEnvironment AudioEnvUndergroundOpen (external)
+ CPlugAudioEnvironment AudioEnvUndergroundEnclosed (external)
+
+0x005
+ version
  float
+ float CameraWooshMinSpeedKmh
+ float ReverbMinBlockDist
+ float ReverbMaxBlockDist
+ float[] ReverbMaterialGains
+
+0x006
+ version
+ CPlugFileText ModifierXmlFile (external)

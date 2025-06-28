@@ -5,7 +5,7 @@
         <VersionPrefix>0.5.2</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>CLI implementation for the GBX.NET tool framework using Spectre.Console.</Description>
-        <Copyright>Copyright (c) 2024 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>

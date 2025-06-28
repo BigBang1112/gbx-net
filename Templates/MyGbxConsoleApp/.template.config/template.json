@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "BigBang1112",
+  "classifications": [
+    "Console",
+    "Utility",
+    "GBX.NET"
+  ],
+  "identity": "GBX.NET.Templates.ConsoleApp",
+  "name": "GBX.NET Console App",
+  "shortName": "gbxconsole",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MyGbxConsoleApp",
+  "description": "A simple GBX.NET console app to work with a Gbx file.",
+  "symbols": {
+    "EnableLzo": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "displayName": "Enable Gbx body read/write and other LZO features",
+      "description": "LZO is required for full Gbx reading and writing. Be aware that LZO is GNU GPL v3 licensed."
+    },
+    "EnableZlib": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable ghost samples, lightmap data, and other zlib features"
+    },
+    "EnableCrc32": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Improve MapUid modification support and other CRC32 features",
+      "description": "Changing the MapUid or HashedPassword of a map without calculating its CRC32 can open the password prompt. Enable this to fix this problem."
+    },
+    "SaveGbx": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Modify and save the Gbx to a new file",
+      "description": "Changes the example to the best practices when wanting to modify a Gbx file."
+    },
+    "EnableNativeAOT": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "displayName": "Enable NativeAOT",
+      "description": "Makes the final build smaller and quicker to run, but be aware that it has various limitations."
+    }
+  }
+}
