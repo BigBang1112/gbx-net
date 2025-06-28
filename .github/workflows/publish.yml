@@ -76,18 +76,18 @@ jobs:
     strategy:
       matrix:
         lib:
-        - GBX.NET
-        - GBX.NET.Hashing
-        - GBX.NET.Imaging
-        - GBX.NET.Imaging.SkiaSharp
-        - GBX.NET.Imaging.ImageSharp
-        - GBX.NET.LZO
-        - GBX.NET.ZLib
-        - GBX.NET.NewtonsoftJson
-        - GBX.NET.Tool
-        - GBX.NET.Tool.CLI
-        - GBX.NET.Crypto
-        - GBX.NET.PAK
+        - Src/GBX.NET
+        - Src/GBX.NET.Hashing
+        - Src/GBX.NET.Imaging
+        - Src/GBX.NET.Imaging.SkiaSharp
+        - Src/GBX.NET.Imaging.ImageSharp
+        - Src/GBX.NET.LZO
+        - Src/GBX.NET.ZLib
+        - Src/GBX.NET.NewtonsoftJson
+        - Src/GBX.NET.Tool
+        - Src/GBX.NET.Tool.CLI
+        - Src/GBX.NET.Crypto
+        - Src/GBX.NET.PAK
         - Templates
     
     name: Publish ${{ matrix.lib }}
