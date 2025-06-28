@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.PAK</PackageId>
-        <VersionPrefix>2.1.0</VersionPrefix>
+        <VersionPrefix>2.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.</Description>
         <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
