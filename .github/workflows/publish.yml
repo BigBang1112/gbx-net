@@ -132,5 +132,5 @@ jobs:
         run: |
           FINAL_BODY="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
           
-          ${MESSAGE}"
+          ${RELEASE_BODY}"
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
