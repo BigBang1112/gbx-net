@@ -752,75 +752,239 @@ public partial class CGameCtnChallenge :
 
     public string CreateHeaderXml()
     {
-        if (IsGameVersion(GameVersion.TMF, strict: true))
+        if (IsGameVersion(GameVersion.TMSX, strict: true)) return CreateHeaderXml(GameVersion.TMSX);
+        if (IsGameVersion(GameVersion.TMU, strict: true)) return CreateHeaderXml(GameVersion.TMU);
+        if (IsGameVersion(GameVersion.TMF, strict: true)) return CreateHeaderXml(GameVersion.TMF);
+        if (IsGameVersion(GameVersion.MP3, strict: true)) return CreateHeaderXml(GameVersion.MP3);
+        if (IsGameVersion(GameVersion.TMT, strict: true)) return CreateHeaderXml(GameVersion.TMT);
+        if (IsGameVersion(GameVersion.MP4, strict: true)) return CreateHeaderXml(GameVersion.MP4);
+        if (IsGameVersion(GameVersion.TM2020, strict: true)) return CreateHeaderXml(GameVersion.TM2020);
+        throw new NotSupportedException($"Game version {GameVersion} cannot be used to automatically create an XML header. Use the CreateHeaderXml(GameVersion gameVersion) overload and specify a concrete GameVersion.");
+    }
+
+    public string CreateHeaderXml(GameVersion gameVersion)
+    {
+        switch (gameVersion)
         {
-            const string version = "TMc.6";
-            const string exever = "2.11.25"; // also often 2.11.11
+            case GameVersion.TMSX:
+            case GameVersion.TMU:
+            case GameVersion.TMF:
+                {
+                    var version = gameVersion switch
+                    {
+                        GameVersion.TMSX => "TMc.6",
+                        GameVersion.TMU or GameVersion.TMF => "TMc.6",
+                        _ => throw new NotSupportedException($"Game version {gameVersion} cannot be used to automatically assign 'version'.")
+                    };
 
-            var sb = new StringBuilder("<header type=\"challenge\" version=\"");
-            sb.Append(version);
-            sb.Append("\" exever=\"");
-            sb.Append(exever);
-            sb.Append("\"><ident uid=\"");
-            sb.Append(SecurityElement.Escape(MapUid));
-            sb.Append("\" name=\"");
-            sb.Append(SecurityElement.Escape(MapName));
-            sb.Append("\" author=\"");
-            sb.Append(SecurityElement.Escape(AuthorLogin));
-            sb.Append("\"/><desc envir=\"");
-            sb.Append(SecurityElement.Escape(GetEnvironment())); // some collections might be called wrong
-            sb.Append("\" mood=\"");
-            sb.Append(SecurityElement.Escape(Decoration.Id));
-            sb.Append("type=\"");
-            sb.Append(Mode.ToString());
-            sb.Append("\" nblaps=\"");
-            sb.Append(NbLaps);
-            sb.Append("\" price=\"");
-            sb.Append(Cost);
-            sb.Append("\" ");
+                    var exever = gameVersion switch
+                    {
+                        GameVersion.TMSX => "0.1.5.0",
+                        GameVersion.TMU => "0.2.1.0",
+                        GameVersion.TMF => "2.11.25", // also often 2.11.11
+                        _ => throw new NotSupportedException($"Game version {gameVersion} cannot be used to automatically assign 'exever'.")
+                    };
 
-            if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
-            {
-                sb.Append("mod=\"");
-                sb.Append(SecurityElement.Escape(Path.GetFileNameWithoutExtension(ModPackDesc.FilePath)));
-                sb.Append('"');
-            }
+                    var sb = new StringBuilder("<header type=\"challenge\" version=\"");
+                    sb.Append(version);
+                    sb.Append("\" exever=\"");
+                    sb.Append(exever);
+                    sb.Append("\"><ident uid=\"");
+                    sb.Append(SecurityElement.Escape(MapUid));
+                    sb.Append("\" name=\"");
+                    sb.Append(SecurityElement.Escape(MapName));
+                    sb.Append("\" author=\"");
+                    sb.Append(SecurityElement.Escape(AuthorLogin));
+                    sb.Append("\"/><desc envir=\"");
+                    sb.Append(SecurityElement.Escape(GetEnvironment())); // some collections might be called wrong
+                    sb.Append("\" mood=\"");
+                    sb.Append(SecurityElement.Escape(Decoration.Id));
+                    sb.Append("type=\"");
+                    sb.Append(Mode.ToString());
+                    sb.Append("\" nblaps=\"");
+                    sb.Append(IsLapRace ? NbLaps : 0);
+                    sb.Append("\" price=\"");
+                    sb.Append(Cost);
+                    sb.Append("\" ");
 
-            sb.Append("/><times bronze=\"");
-            sb.Append(BronzeTime?.TotalMilliseconds ?? -1);
-            sb.Append("\" silver=\"");
-            sb.Append(SilverTime?.TotalMilliseconds ?? -1);
-            sb.Append("\" gold=\"");
-            sb.Append(GoldTime?.TotalMilliseconds ?? -1);
-            sb.Append("\" authortime=\"");
-            sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
-            sb.Append("\" authorscore=\"");
-            sb.Append(AuthorScore);
-            sb.Append("\"/><deps>");
+                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    {
+                        sb.Append("mod=\"");
+                        sb.Append(SecurityElement.Escape(Path.GetFileNameWithoutExtension(ModPackDesc.FilePath)));
+                        sb.Append('"');
+                    }
 
-            foreach (var dep in GetBlocks().Select(x => x.Skin?.PackDesc).OfType<PackDesc>().Where(x => !string.IsNullOrEmpty(x.FilePath)))
-            {
-                AppendDep(sb, dep);
-            }
+                    sb.Append("/><times bronze=\"");
+                    sb.Append(BronzeTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" silver=\"");
+                    sb.Append(SilverTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" gold=\"");
+                    sb.Append(GoldTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" authortime=\"");
+                    sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" authorscore=\"");
+                    sb.Append(AuthorScore);
+                    sb.Append("\"/><deps>");
 
-            if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
-            {
-                AppendDep(sb, ModPackDesc);
-            }
+                    foreach (var dep in GetBlocks()
+                        .Select(x => x.Skin?.PackDesc)
+                        .OfType<PackDesc>()
+                        .Where(x => !string.IsNullOrEmpty(x.FilePath)))
+                    {
+                        AppendDep(sb, dep);
+                    }
 
-            // TODO add mediatracker sound and image support
+                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    {
+                        AppendDep(sb, ModPackDesc);
+                    }
 
-            if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
-            {
-                AppendDep(sb, CustomMusicPackDesc);
-            }
+                    AppendMediaTrackerDeps(sb);
 
-            sb.Append("</deps></header>");
+                    if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
+                    {
+                        AppendDep(sb, CustomMusicPackDesc);
+                    }
 
-            return sb.ToString();
+                    sb.Append("</deps></header>");
+                    return sb.ToString();
+                }
+            case GameVersion.MP3:
+            case GameVersion.TMT:
+            case GameVersion.MP4:
+            case GameVersion.TM2020:
+                {
+                    var exever = "3.3.0";
+                    var exebuild = default(string);
+                    var lighmapVersion = 0;
+
+                    if (LightmapFrames?.Length > 0)
+                    {
+                        lighmapVersion = gameVersion switch
+                        {
+                            GameVersion.MP3 or GameVersion.TMT => 6,
+                            GameVersion.MP4 => 7,
+                            GameVersion.TM2020 => 8, // somehow, LightmapVersion 10 is still being written as 8 here
+                            _ => throw new NotSupportedException($"Game version {gameVersion} cannot be used to automatically assign 'lightmap'.")
+                        };
+                    }
+
+                    foreach (var param in BuildVersion?.Split(' ') ?? [])
+                    {
+                        if (param.StartsWith("date=", StringComparison.OrdinalIgnoreCase))
+                        {
+                            exebuild = param.Substring(5);
+                        }
+                        else if (param.StartsWith("GameVersion=", StringComparison.OrdinalIgnoreCase))
+                        {
+                            exever = param.Substring(13);
+                        }
+                    }
+
+                    exebuild ??= gameVersion switch
+                    {
+                        GameVersion.MP3 => "2015-06-18_15_10",
+                        GameVersion.TMT => "2016-11-07_16_15",
+                        GameVersion.MP4 => "2019-11-19_18_50",
+                        GameVersion.TM2020 => "2024-12-12_15_15",
+                        _ => throw new NotSupportedException($"Game version {gameVersion} cannot be used to automatically assign 'exebuild'.")
+                    };
+
+                    var sb = new StringBuilder("<header type=\"map\" exever=\"");
+                    sb.Append(exever);
+                    sb.Append("\" exebuild=\"");
+                    sb.Append(exebuild);
+                    sb.Append("\" title=\"");
+                    sb.Append(SecurityElement.Escape(TitleId));
+                    sb.Append("\" lightmap=\"");
+                    sb.Append(lighmapVersion);
+                    sb.Append("\"><ident uid=\"");
+                    sb.Append(SecurityElement.Escape(MapUid));
+                    sb.Append("\" name=\"");
+                    sb.Append(SecurityElement.Escape(MapName));
+                    sb.Append("\" author=\"");
+                    sb.Append(SecurityElement.Escape(AuthorLogin));
+                    sb.Append("\" authorzone=\"");
+                    sb.Append(SecurityElement.Escape(AuthorZone));
+                    sb.Append("\"/><desc envir=\"");
+                    sb.Append(SecurityElement.Escape(GetEnvironment()));
+                    sb.Append("\" mood=\"");
+                    sb.Append(SecurityElement.Escape(Decoration.Id));
+                    sb.Append("\" type=\"");
+                    sb.Append(Mode.ToString());
+                    sb.Append("\" maptype=\"");
+                    sb.Append(SecurityElement.Escape(MapType ?? ""));
+                    sb.Append("\" mapstyle=\"");
+                    sb.Append(SecurityElement.Escape(MapStyle ?? ""));
+                    sb.Append("\" validated=\"");
+                    sb.Append(AuthorTime.HasValue ? "1" : "0"); // It's a bit different logic, but here it's simplified
+                    sb.Append("\" nblaps=\"");
+                    sb.Append(IsLapRace ? NbLaps : 0);
+                    sb.Append("\" displaycost=\"");
+                    sb.Append(Cost);
+                    sb.Append("\" mod=\"");
+                    sb.Append(SecurityElement.Escape(Path.GetFileNameWithoutExtension(ModPackDesc?.FilePath ?? "")));
+                    sb.Append("\" hasghostblocks=\"");
+                    sb.Append(HasGhostBlocks ? "1" : "0");
+                    sb.Append("\"/><playermodel id=\"");
+                    sb.Append(SecurityElement.Escape(PlayerModel?.Id ?? ""));
+                    sb.Append("\"/><times bronze=\"");
+                    sb.Append(BronzeTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" silver=\"");
+                    sb.Append(SilverTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" gold=\"");
+                    sb.Append(GoldTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" authortime=\"");
+                    sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
+                    sb.Append("\" authorscore=\"");
+                    sb.Append(AuthorScore);
+                    sb.Append("\"/><deps>");
+
+                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    {
+                        AppendDep(sb, ModPackDesc);
+                    }
+
+                    if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
+                    {
+                        AppendDep(sb, CustomMusicPackDesc);
+                    }
+
+                    AppendMediaTrackerDeps(sb);
+
+                    sb.Append("</deps></header>");
+                    return sb.ToString();
+                }
+            default:
+                throw new NotSupportedException($"Game version {version} is not supported for header XML generation.");
         }
 
-        throw new NotImplementedException();
+        void AppendMediaTrackerDeps(StringBuilder sb)
+        {
+            foreach (var block in ClipIntro?.Tracks
+                .Concat(ClipGroupInGame.Clips.SelectMany(x => x.Clip.Tracks))
+                .Concat(ClipGroupEndRace.Clips.SelectMany(x => x.Clip.Tracks))
+                .Concat(ClipGlobal?.Tracks ?? [])
+                .Concat(ClipAmbiance?.Tracks ?? [])
+                .SelectMany(x => x.Blocks) ?? [])
+            {
+                switch (block)
+                {
+                    case CGameCtnMediaBlockImage imageBlock:
+                        if (!string.IsNullOrEmpty(imageBlock.Image?.FilePath))
+                        {
+                            AppendDep(sb, imageBlock.Image);
+                        }
+                        break;
+                    case CGameCtnMediaBlockSound soundBlock:
+                        if (!string.IsNullOrEmpty(soundBlock.Sound?.FilePath))
+                        {
+                            AppendDep(sb, soundBlock.Sound);
+                        }
+                        break;
+                }
+            }
+        }
 
         static void AppendDep(StringBuilder sb, PackDesc dep)
         {
@@ -837,6 +1001,11 @@ public partial class CGameCtnChallenge :
 
             sb.Append("/>");
         }
+    }
+
+    public string UpdateHeaderXml(GameVersion version)
+    {
+        return Xml = CreateHeaderXml(version);
     }
 
     public string UpdateHeaderXml()
