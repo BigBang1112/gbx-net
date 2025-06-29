@@ -956,14 +956,14 @@ public partial class CGameCtnChallenge :
                     return sb.ToString();
                 }
             default:
-                throw new NotSupportedException($"Game version {version} is not supported for header XML generation.");
+                throw new NotSupportedException($"Game version {gameVersion} is not supported for header XML generation.");
         }
 
         void AppendMediaTrackerDeps(StringBuilder sb)
         {
             foreach (var block in ClipIntro?.Tracks
-                .Concat(ClipGroupInGame.Clips.SelectMany(x => x.Clip.Tracks))
-                .Concat(ClipGroupEndRace.Clips.SelectMany(x => x.Clip.Tracks))
+                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
+                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
                 .Concat(ClipGlobal?.Tracks ?? [])
                 .Concat(ClipAmbiance?.Tracks ?? [])
                 .SelectMany(x => x.Blocks) ?? [])
