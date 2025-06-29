@@ -51,7 +51,7 @@ public partial class CSceneVehicleCar
             }
         }
 
-        public bool U26_FL_2 => (U26 & 0x80) != 0;
+        public bool FLOnGround => (U26 & 0x80) != 0;
         public byte U27 { get; set; }
         public bool FRIsSliding
         {
@@ -63,7 +63,7 @@ public partial class CSceneVehicleCar
             }
         }
 
-        public bool U27_FR_2 => (U27 & 0x02) != 0;
+        public bool FROnGround => (U27 & 0x02) != 0;
         public bool RRIsSliding
         {
             get => (U27 & 0x04) != 0;
@@ -74,7 +74,7 @@ public partial class CSceneVehicleCar
             }
         }
 
-        public bool U27_RR_4 => (U27 & 0x08) != 0;
+        public bool RROnGround => (U27 & 0x08) != 0;
         public bool RLIsSliding
         {
             get => (U27 & 0x10) != 0;
@@ -85,7 +85,7 @@ public partial class CSceneVehicleCar
             }
         }
 
-        public bool U27_RL_6 => (U27 & 0x20) != 0;
+        public bool RLOnGround => (U27 & 0x20) != 0;
         public bool U27_7 => (U27 & 0x40) != 0;
         public bool U27_8 => (U27 & 0x80) != 0;
         public float? DirtBlend { get; set; }
