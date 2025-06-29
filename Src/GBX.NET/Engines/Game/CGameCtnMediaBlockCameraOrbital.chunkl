@@ -2,7 +2,7 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys (version: 0)
+ list<Key> Keys (version: -1)
 
 0x001
  version
@@ -18,9 +18,10 @@ archive Key (inherits: IKey)
  float Fov
  float MinRenderDistance
  float MaxRenderDistance
- v1+
+ v0+
   int
-  int
-  int
-  int
-  int
+  v1+
+   int
+   int
+   int
+   int
