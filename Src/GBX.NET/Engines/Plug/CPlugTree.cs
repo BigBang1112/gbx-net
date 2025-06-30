@@ -30,6 +30,8 @@ public partial class CPlugTree
 
             foreach (var child in tree.Children)
             {
+                yield return child;
+
                 if (includeVisualMipLevels && child is CPlugTreeVisualMip mip)
                 {
                     foreach (var level in mip.Levels)
@@ -39,11 +41,7 @@ public partial class CPlugTree
                             yield return descendant;
                         }
                     }
-
-                    continue;
                 }
-
-                yield return child;
 
                 foreach (var descendant in GetAllChildren(child, includeVisualMipLevels))
                 {
