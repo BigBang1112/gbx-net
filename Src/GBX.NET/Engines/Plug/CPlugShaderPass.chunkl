@@ -32,6 +32,13 @@ CPlugShaderPass 0x09067000
 0x00C
  uint
 
+0x00D
+ UnknownStruct[]
+ UnknownStruct[]
+ UnknownStruct[]
+ UnknownStruct[]
+ UnknownStruct[]
+
 archive PipelineGpu
  bool U01
  CMwNod Script (external)
@@ -46,3 +53,7 @@ archive GpuLoadFx
  int
  int
  int
+
+archive UnknownStruct
+ CPlugBitmap (external)
+ id

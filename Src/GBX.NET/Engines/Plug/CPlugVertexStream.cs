@@ -54,7 +54,7 @@ public partial class CPlugVertexStream
 
             rw.Boolean(ref U01);
 
-            foreach (var decl in n.dataDecls)
+            foreach (var decl in n.dataDecls ?? [])
             {
                 switch (decl.Type)
                 {
