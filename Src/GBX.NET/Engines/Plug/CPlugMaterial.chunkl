@@ -38,10 +38,16 @@ CPlugMaterial 0x09079000
 
 0x015
  version
- int
- int[]
- v7+
-  CMwNod
+ CPlug Shader (external)
+ if Shader == null && ShaderFile == null
+  DeviceMat[] DeviceMaterials (version: 0x015)
+  int
+  v3+
+   int
+ if Shader != null || ShaderFile != null
+  CPlugMaterialColorTargetTable[]
+  v7+
+   CMwNod
 
 0x016
  version
