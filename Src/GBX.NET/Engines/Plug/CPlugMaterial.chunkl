@@ -36,6 +36,27 @@ CPlugMaterial 0x09079000
 
 0x014 (skippable, ignore)
 
+0x015
+ version
+ int
+ int[]
+ v7+
+  CMwNod
+
+0x016
+ version
+ uint
+
+0x017
+ version
+ uint
+ v1+
+  int
+  int
+  string
+
+0x019 (skippable, ignore)
+
 archive DeviceMat
  short
  short
