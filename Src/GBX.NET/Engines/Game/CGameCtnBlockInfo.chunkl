@@ -106,7 +106,7 @@ CGameCtnBlockInfo 0x0304E000
 
 0x031
  version
- CMwNod
+ CMwNod (external)
  CPlugGameSkinAndFolder MaterialModifier (external)
  v1+
   CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
