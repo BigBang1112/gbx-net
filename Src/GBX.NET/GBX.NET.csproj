@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.2.0</VersionPrefix>
+        <VersionPrefix>2.2.1</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 400+ Gbx classes.</Description>
         <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>

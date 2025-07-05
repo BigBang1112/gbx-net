@@ -18,6 +18,10 @@ CGameCtnBlockInfoClip 0x03053000
   int<EMultiDir> TopBottomMultiDir
   v2+
    byte?
+   v3+
+    byte?
+    v4+
+     byte?
 
 0x007
  version
@@ -31,6 +35,9 @@ CGameCtnBlockInfoClip 0x03053000
  version
  id ClipGroupId
  id SymmetricalClipGroupId
+ v1+
+  id
+  id
 
 enum EClipType
  ClassicClip

@@ -1,1 +1,9 @@
 CPlugPointsInSphereOpt 0x09066000
+
+0x000
+ Pack[] Packs
+ vec3[]
+
+archive Pack
+ int
+ int

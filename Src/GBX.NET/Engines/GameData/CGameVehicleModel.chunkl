@@ -5,6 +5,10 @@ CGameVehicleModel 0x2E01C000
  CPlugVehiclePhyModel PhyModel (external)
  CPlugVehicleVisModel VisModel (external)
  ItemOccupantSlotModel[] ItemOccupantSlotModels
+ v1+
+  CGameObjectModel[]
+  v2=
+   CMwNod
 
 archive ItemOccupantSlotModel
  id Id

@@ -15,8 +15,10 @@ CPlugPolyLine3 0x09118000
    bool
    v5+
     bool
-    v7+
-     byte
-     v8+
+    v6+
+     int
+     v7+
       byte
-      id
+      v8+
+       byte
+       id

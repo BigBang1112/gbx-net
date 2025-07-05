@@ -87,7 +87,7 @@ CGameCtnBlockInfoVariant 0x0315B000
 
 0x00B [MP4.v1]
  version
- WaterVolume[] WaterVolumes
+ WaterVolume[] WaterVolumes (version: Version)
 
 0x00C [MP4.v1]
  version
