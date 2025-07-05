@@ -107,6 +107,42 @@ CPlugBitmap 0x09011000
    v3+
     CPlugBitmapArray BitmapArray
     string BitmapArrayElemName
+    v4=
+     int
+
+0x035
+ version
+ short
+
+0x036
+ version
+ CMwNod U01
+ v0=
+  id U02
+ v1+
+  if U01 == null
+   id U02
+  if U01 != null
+   vec2 U03
+   vec2 U04
+   int U05
+ CMwNod U06
+
+0x037
+ version
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+ int
+
+0x038
+ version
+ CPlugBitmapAtlas
+ int
 
 enum EUsage
  Color
