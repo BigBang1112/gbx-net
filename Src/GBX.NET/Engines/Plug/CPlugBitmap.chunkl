@@ -79,16 +79,6 @@ CPlugBitmap 0x09011000
  int
 
 0x030
- version
- CPlugFileImg Image (external)
- v1+
-  int3
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
- if Image != null
-  CMwNod
 
 0x032
  version
