@@ -41,7 +41,7 @@ CPlugMaterial 0x09079000
  CPlug Shader (external)
  if Shader == null && ShaderFile == null
   DeviceMat[] DeviceMaterials (version: 0x015)
-  int
+  int[]
   v3+
    int
  if Shader != null || ShaderFile != null
