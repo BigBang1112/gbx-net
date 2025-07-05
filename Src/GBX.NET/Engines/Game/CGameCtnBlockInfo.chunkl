@@ -83,9 +83,9 @@ CGameCtnBlockInfo 0x0304E000
   iso4 Sound1Loc
   iso4 Sound2Loc
  v3+
-  if Sound1 != null
+  if Sound1 != null || Sound1File != null
    iso4 Sound1Loc
-  if Sound2 != null
+  if Sound2 != null || Sound2File != null
    iso4 Sound2Loc
 
 0x02B [TMT.v1, MP4.v1]
