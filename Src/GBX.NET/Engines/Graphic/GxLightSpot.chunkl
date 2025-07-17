@@ -15,3 +15,18 @@ GxLightSpot 0x0400B000
  float AngleInnerShadow
  float AngleOuterShadow
  float FalloffExponent
+
+0x003
+ version
+ uint Flags
+ float AngleInner
+ float AngleOuter
+ float AngleFlare
+ float AngleInnerShadow
+ float AngleOuterShadow
+ float FalloffExponent
+ v1+
+  byte
+  byte
+ v0=
+  int

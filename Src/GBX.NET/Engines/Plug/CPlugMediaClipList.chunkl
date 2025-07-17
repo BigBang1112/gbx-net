@@ -1,5 +1,5 @@
 CPlugMediaClipList 0x09189000
 
 0x000
- int
- CMwNod[] MediaClipFids // (external)
+ version
+ CMwNod[] MediaClipFids (external)
