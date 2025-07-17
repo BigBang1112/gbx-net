@@ -45,9 +45,9 @@ CGameCtnBlockInfo 0x0304E000
  v6-
   CGameWaypointSpecialProperty U01
  v2+
-  CGamePodiumInfo PodiumInfo
+  CMwNod PodiumInfo // CGamePodiumInfo or CPlugMediaClipList
   v3+
-   CGamePodiumInfo IntroInfo
+   CMwNod IntroInfo // CGamePodiumInfo or CPlugMediaClipList
    v4+
     bool CharPhySpecialPropertyCustomizable
     v5=
