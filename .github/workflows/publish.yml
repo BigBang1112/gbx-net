@@ -130,7 +130,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set release information
         run: |
-          FINAL_BODY="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+          FINAL_BODY="${RELEASE_BODY}
           
-          ${RELEASE_BODY}"
+          Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})."
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"
