@@ -36,6 +36,9 @@ public partial class CGameCtnGhost
     private string? validate_TitleId;
     public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
+    private int? validate_ValidationSeed;
+    public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
+
     public partial class Chunk0309200E
     {
         public override void Read(CGameCtnGhost n, GbxReader r)
@@ -140,15 +143,13 @@ public partial class CGameCtnGhost
 
     public partial class Chunk03092019
     {
-        public int U03;
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
 
             if (n.eventsDuration != TimeInt32.Zero)
             {
-                rw.Int32(ref U03);
+                rw.Int32(ref n.validate_ValidationSeed);
             }
         }
     }
@@ -157,7 +158,7 @@ public partial class CGameCtnGhost
     {
         public int Version { get; set; }
 
-        public Chunk03092019 Chunk019 { get; set; } = new();
+        private readonly Chunk03092019 chunk019 = new();
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
@@ -165,7 +166,7 @@ public partial class CGameCtnGhost
 
             if (Version == 0)
             {
-                rw.Chunk(n, Chunk019);
+                rw.Chunk(n, chunk019);
 
                 if (n.eventsDuration != TimeInt32.Zero)
                 {
@@ -176,10 +177,9 @@ public partial class CGameCtnGhost
             {
                 rw.TimeInt32(ref n.eventsDuration);
 
-                Chunk019 ??= new();
-                Chunk019.ReadWriteInputs(n, rw);
+                chunk019.ReadWriteInputs(n, rw);
 
-                rw.Int32(ref Chunk019.U03);
+                rw.Int32(ref n.validate_ValidationSeed);
                 rw.Boolean(ref n.steeringWheelSensitivity);
             }
         }
