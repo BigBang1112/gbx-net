@@ -73,7 +73,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  string GhostNickname
 
-0x00E [TMU, TMF, MP3, TMT, MP4, TM2020]
+0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
 
 0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
  string GhostLogin
@@ -167,9 +167,16 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x028 (skippable) [MP4, TM2020] // title id
 
-0x029 (skippable, ignore) [TM2020]
+0x029 (skippable) [TM2020]
+ version
+ int
+ string
+ string
+ string
 
-0x02A (skippable, ignore) [TM2020]
+0x02A (skippable) [TM2020]
+ int
+ int
 
 0x02B (skippable, ignore) [TM2020]
 
@@ -178,7 +185,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  unixtime? WalltimeStartTimestamp
  unixtime? WalltimeEndTimestamp
 
-0x02D (skippable, ignore) [TM2020]
+0x02D (skippable) [TM2020]
 
 0x02E (skippable) [TM2020]
  string

@@ -228,6 +228,41 @@ public partial class CGameCtnGhost
         }
     }
 
+    public partial class Chunk0309202D
+    {
+        private readonly Chunk03092019 chunk019 = new();
+
+        public int U01;
+        public int U02; // same as 02A
+        public int U03; // same as 02A
+        public int U04;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+
+            if (U01 >= 1)
+            {
+                throw new Exception("Inputs stored separately");
+                //chunk019.ReadWriteInputs(n, rw);
+            }
+
+            rw.String(ref n.validate_ExeVersion);
+            rw.UInt32(ref n.validate_ExeChecksum);
+            rw.Int32(ref n.validate_OsKind);
+            rw.Int32(ref n.validate_CpuKind);
+            rw.UnixTime(ref n.walltimeStartTimestamp);
+            rw.UnixTime(ref n.walltimeEndTimestamp);
+            rw.String(ref n.validate_TitleId);
+            rw.UInt256(ref n.validate_TitleChecksum);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref n.validate_ValidationSeed);
+            rw.Int32(ref U04);
+            rw.String(ref n.validate_RaceSettings);
+        }
+    }
+
     public partial class Checkpoint
     {
         public override string ToString()
