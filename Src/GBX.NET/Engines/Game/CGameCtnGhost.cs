@@ -1,5 +1,4 @@
-﻿
-using GBX.NET.Inputs;
+﻿using GBX.NET.Inputs;
 using System.Collections.Immutable;
 using System.Numerics;
 
@@ -7,39 +6,66 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
+    [AppliedWithChunk<Chunk0309200E>]
     public Id? GhostUid { get; set; }
 
     private TimeInt32 eventsDuration;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
 
     private string? validate_ExeVersion;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
 
     private uint validate_ExeChecksum;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
 
     private int validate_OsKind;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
 
     private int validate_CpuKind;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
 
     private string? validate_RaceSettings;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
 
     private ImmutableList<IInput>? inputs;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public ImmutableList<IInput>? Inputs { get => inputs; set => inputs = value; }
 
     private bool steeringWheelSensitivity;
+    [AppliedWithChunk<Chunk03092025>]
     public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
 
     private string? validate_TitleId;
+    [AppliedWithChunk<Chunk03092028>]
     public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
     private UInt256? validate_TitleChecksum;
+    [AppliedWithChunk<Chunk03092028>]
     public UInt256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
 
     private int? validate_ValidationSeed;
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
 
     public partial class Chunk0309200E
