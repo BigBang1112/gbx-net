@@ -107,8 +107,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x019 (base: 0x011) [TMF] // validation TMUF
 
-0x01A (skippable) [MP3, TMT, MP4, TM2020]
- int
+0x01A (skippable) [MP3, TMT, MP4, TM2020] // checkpoint count
 
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 

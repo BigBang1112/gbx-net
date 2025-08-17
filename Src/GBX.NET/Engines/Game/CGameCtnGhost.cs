@@ -183,6 +183,14 @@ public partial class CGameCtnGhost
         }
     }
 
+    public partial class Chunk0309201A
+    {
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.Int32(n.checkpoints?.Length ?? 0);
+        }
+    }
+
     public partial class Chunk03092025 : IVersionable
     {
         public int Version { get; set; }
