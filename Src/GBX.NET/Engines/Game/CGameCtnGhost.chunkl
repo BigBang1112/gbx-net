@@ -123,7 +123,12 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
-0x022 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array
+0x022 (skippable) [MP3, TMT, MP4, TM2020] // settings info
+ version
+ v1-
+  OldSettingsInfos[] OldSettings
+ v2+
+  SettingsInfos[] Settings
 
 0x023 (skippable) [MP3, TMT, MP4, TM2020]
  version
@@ -197,4 +202,23 @@ archive Checkpoint
   float? Speed
  v1=
   int? StuntsScore
-  
+ 
+archive OldSettingsInfos
+ int
+ int
+ int
+
+archive SettingsInfos
+ bool
+ bool
+ byte
+ bool
+ float
+ bool
+ float
+ float[]
+ string
+ v3+
+  int3
+  v4+
+   float
