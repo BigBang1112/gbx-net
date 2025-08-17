@@ -36,6 +36,9 @@ public partial class CGameCtnGhost
     private string? validate_TitleId;
     public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
+    private UInt256? validate_TitleChecksum;
+    public UInt256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
+
     private int? validate_ValidationSeed;
     public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
 
@@ -187,8 +190,6 @@ public partial class CGameCtnGhost
 
     public partial class Chunk03092028
     {
-        public UInt256? U01;
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             if (n.EventsDuration == TimeInt32.Zero)
@@ -197,7 +198,7 @@ public partial class CGameCtnGhost
             }
 
             rw.String(ref n.validate_TitleId);
-            rw.UInt256(ref U01);
+            rw.UInt256(ref n.validate_TitleChecksum);
         }
     }
 
