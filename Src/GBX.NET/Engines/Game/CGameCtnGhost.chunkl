@@ -162,8 +162,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x02C (skippable) [TM2020]
  version
- int
- int
+ unixtime? WalltimeStartTimestamp
+ unixtime? WalltimeEndTimestamp
 
 0x02D (skippable, ignore) [TM2020]
 
