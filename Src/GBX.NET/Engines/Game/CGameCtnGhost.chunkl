@@ -130,7 +130,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  v2+
   SettingsInfos[] Settings
 
-0x023 (skippable) [MP3, TMT, MP4, TM2020]
+0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat data
  version
  string
  int
@@ -148,14 +148,22 @@ CGameCtnGhost 0x03092000 // A ghost.
    byte
    byte
 
-0x024 (skippable, ignore) [MP3, TMT, MP4, TM2020] // match replay separators
+0x024 (skippable) [MP3, TMT, MP4, TM2020] // match replay separators
+ version
+ MatchReplaySeparator[] MatchReplaySeparators
 
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020]
  uint128
 
-0x027 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array 2
+0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
+ version
+ CPlugTimedPixelArray[]
+ v1+
+  int[]
+  v3+
+   CPlugTimedPixelArray[]
 
 0x028 (skippable) [MP4, TM2020] // title id
 
@@ -222,3 +230,7 @@ archive SettingsInfos
   int3
   v4+
    float
+
+archive MatchReplaySeparator
+ int
+ int
