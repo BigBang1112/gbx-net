@@ -6,6 +6,12 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
+    [SupportsFormatting]
+    public string? GhostNickname { get; set; }
+
+    [SupportsFormatting]
+    public string? GhostClubTag { get; set; }
+
     [AppliedWithChunk<Chunk0309200E>]
     public Id? GhostUid { get; set; }
 
