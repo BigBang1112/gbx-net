@@ -1,8 +1,7 @@
 CGameCtnCampaign 0x03090000
 
 0x000 // map groups
- id ChallengeGroupsId
- list<CGameCtnChallengeGroup> ChallengeGroups
+ list<CGameCtnChallengeGroup>_deprec ChallengeGroups
 
 0x001
  id CollectionId
