@@ -693,6 +693,11 @@ public partial class CMwNod : IClass
 
             foreach (var chunk in Chunks)
             {
+                if (chunk is SkippableChunk)
+                {
+                    continue; // Unknown skippable chunks shouldn't be considered
+                }
+
                 version &= chunk.GameVersion;
 
                 if (version == GameVersion.Unspecified)
