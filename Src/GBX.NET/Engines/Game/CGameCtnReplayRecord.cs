@@ -181,28 +181,31 @@ public partial class CGameCtnReplayRecord
     {
         public byte U01;
 
-        public int Version { get; set; }
+        private uint version;
+        public int Version { get => (int)version; set => version = (uint)value; }
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            Version = r.ReadInt32();
+            version = r.ReadUInt32();
 
-            if (Version >= 2) // Versionings may not be exact, don't forget to adjust attributes
+            // This is some decompiled scuffness IDK
+            if (version >= 4 && version != 9999)
             {
                 n.MapInfo = r.ReadIdent();
                 n.Time = r.ReadTimeInt32Nullable();
                 n.PlayerNickname = r.ReadString();
 
-                if (Version >= 6)
+                if (version >= 6)
                 {
                     n.PlayerLogin = r.ReadString();
-
-                    if (Version >= 8)
-                    {
-                        U01 = r.ReadByte();
-                        n.TitleId = r.ReadId();
-                    }
                 }
+            }
+
+            // capital Version here is important
+            if (Version > 7)
+            {
+                U01 = r.ReadByte();
+                n.TitleId = r.ReadId();
             }
         }
     }

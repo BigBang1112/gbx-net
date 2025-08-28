@@ -908,6 +908,7 @@ internal sealed class MemberSerializationWriter
             "timeofday" => "TimeOfDay",
             "filetime" => "FileTime",
             "systemtime" => "SystemTime",
+            "unixtime" => "UnixTime",
             "ident" or "meta" => "Ident",
             "id" or "lookbackstring" => "IdAsString",
             "packdesc" or "fileref" => "PackDesc",
