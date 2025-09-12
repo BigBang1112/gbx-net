@@ -8,7 +8,7 @@
 
     @if (!string.IsNullOrEmpty(version))
     {
-        <span class="version">@version@(string.IsNullOrWhiteSpace(commit) ? "" : $" - {commit.Substring(0, 7)}")</span>
+        <span class="version">@version</span>
     }
     else if (string.IsNullOrEmpty(branch))
     {
