@@ -28,12 +28,13 @@
 
     protected override void OnInitialized()
     {
-        branch = ThisAssembly.Git.Branch;
+        version = ThisAssembly.AssemblyInformationalVersion;
+        /*branch = ThisAssembly.Git.Branch;
         commit = ThisAssembly.Git.Commit;
 
         if (branch is "master" or "HEAD")
         {
             version = ThisAssembly.Git.Tag;
-        }
+        }*/
     }
 }
