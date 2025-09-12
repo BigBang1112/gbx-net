@@ -28,13 +28,12 @@
 
     protected override void OnInitialized()
     {
-        version = ThisAssembly.AssemblyInformationalVersion;
-        /*branch = ThisAssembly.Git.Branch;
+        branch = ThisAssembly.Git.Branch;
         commit = ThisAssembly.Git.Commit;
 
         if (branch is "master" or "HEAD")
         {
-            version = ThisAssembly.Git.Tag;
-        }*/
+            version = Verlite.Version.Core;
+        }
     }
 }
