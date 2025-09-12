@@ -90,6 +90,7 @@ public partial interface IGbxReader : IDisposable
     TimeSpan? ReadTimeOfDay();
     DateTime ReadFileTime();
     DateTime ReadSystemTime();
+    DateTimeOffset ReadUnixTime();
     int ReadSmallLen();
     string ReadSmallString();
     void ReadMarker(string value);
@@ -1393,6 +1394,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public DateTime ReadSystemTime()
     {
         return new DateTime(ReadInt64());
+    }
+
+    public DateTimeOffset ReadUnixTime()
+    {
+        return DateTimeOffset.FromUnixTimeSeconds(ReadUInt32());
     }
 
     public int ReadSmallLen()
