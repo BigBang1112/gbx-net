@@ -14,7 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="BlazorMonaco" Version="3.3.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.9" />
     </ItemGroup>
 
     <ItemGroup>

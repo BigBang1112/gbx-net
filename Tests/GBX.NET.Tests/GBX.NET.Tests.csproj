@@ -17,8 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CompareNETObjects" Version="4.83.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
+        <PackageReference Include="CompareNETObjects" Version="4.84.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
         <PackageReference Include="Neovolve.Logging.Xunit" Version="6.3.0" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
@@ -27,7 +28,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="6.0.3">
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
