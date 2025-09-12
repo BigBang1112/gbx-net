@@ -3,7 +3,7 @@ name: Deploy Explorer to Pages
 on:
   push:
     branches: ["dev"]
-    paths: [ ".github/workflows/deploy-explorer-pages.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.sln" ]
+    paths: [ ".github/workflows/deploy-explorer-pages.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.slnx" ]
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
