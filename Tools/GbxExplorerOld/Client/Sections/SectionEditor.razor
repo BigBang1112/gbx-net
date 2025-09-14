@@ -1,0 +1,604 @@
+﻿@using Blazored.LocalStorage
+@using BlazorMonaco.Editor
+@using Microsoft.CodeAnalysis
+@using Microsoft.CodeAnalysis.CSharp
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@inject HttpClient Http
+@inject IGbxService GbxService
+@inject IJSRuntime JS
+@inject IDownloadStreamService DownloadService
+@inject ISyncLocalStorageService LocalStorage
+
+<div class="section section-editor hoverable" style="padding: 4px" @onclick="ExpandEditor">
+    <div>Try scripting with C#</div> <img style="height: 42px;" src="img/editor.png"/>
+</div>
+<style>
+    .editor {
+        height: 70%;
+        margin-top: 0.8rem;
+    }
+</style>
+<script>
+    let dotNetRef;
+
+    function setDotNetRef(ref) {
+        dotNetRef = ref;
+    }
+
+
+    // Register folding range provider for usings
+    monaco.languages.registerFoldingRangeProvider("csharp", {
+        provideFoldingRanges: function (model, context, token) {
+            const ranges = [];
+            const lines = model.getLinesContent();
+
+            let i = 0;
+            while (i < lines.length) {
+                if (lines[i].startsWith("using ")) {
+                    let start = i + 1;
+                    let end = start;
+
+                    while (end < lines.length && lines[end].startsWith("using ")) {
+                        end++;
+                    }
+
+                    ranges.push({
+                        start: start,
+                        end: end,
+                        kind: monaco.languages.FoldingRangeKind.Imports
+                    });
+
+                    i = end;
+                } else {
+                    i++;
+                }
+            }
+
+            return ranges;
+        }
+    });
+
+    monaco.languages.registerCompletionItemProvider('csharp', {
+        provideCompletionItems: async function (model, position) {
+            const suggestions = await dotNetRef.invokeMethodAsync("GetSuggestions");
+
+            return {
+                suggestions: suggestions.map(s => ({
+                    ...s,
+                    kind: monaco.languages.CompletionItemKind.Method,
+                }))
+            };
+        }
+    });
+
+    window.foldAllImports = async () => {
+        var editor = monaco.editor.getEditors()[0];
+        editor.setPosition({lineNumber: 1, column: 1})
+        await editor.getAction("editor.fold").run();
+        var lines = editor.getValue().split("\n");
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i].includes("public static void") && lines.length >= i + 3) {
+                editor.setPosition({lineNumber: i + 3, column: 9})
+                break;
+            }
+        }
+        editor.focus()
+    };
+    window.addMonacoShortcuts = () => {
+        var editor = monaco.editor.getEditors()[0];
+        editor.addCommand(
+            monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+            () => {
+                dotNetRef.invokeMethodAsync("RunUserCode")
+            }
+        );
+        editor.addCommand(
+            monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
+            () => {
+                dotNetRef.invokeMethodAsync("SaveNote")
+            }
+        );
+        window.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+            }
+        });
+    };
+</script>
+@if (Expanded)
+{
+    <div class="overlay">
+        <div class="section section-log-maximized" style="gap: 1rem">
+            <div class="notes-wrapper">
+                <h3 class="notes-header">Notes</h3>
+                <div class="notes-container">
+                    @if (noteManager is not null)
+                    {
+                        @foreach (var note in noteManager.Notes.Values.OrderByDescending(x => x.UpdatedAt))
+                        {
+                            @if (note == noteManager.selectedNote)
+                            {
+                                <div class="note-card selected-note">
+                                    <input @bind="note.Name" @oninput="OnNoteNameChanged"/>
+                                    <img @onclick="RemoveSelectedNote" style="height: 24px;" src="img/bin.png"/>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="note-card hoverable" @onclick="() => OnNoteClick(note.Id)">
+                                    @note.Name
+                                </div>
+                            }
+                        }
+                    }
+                    
+                </div>
+                <button class="button button-centered" @onclick="AddNewNote">Add new note</button>
+            </div>
+            <div class="editor-wrapper">
+                <div class="editor-controls">
+                    <div class="controls-group">
+                        <button class="button run-button" @onclick="RunUserCode" title="ctrl+enter">Run</button>
+                        <button class="button " @onclick="SaveNote" title="ctrl+s">Save</button>
+                    </div>
+                    <div class="editor-tip">ctrl+space for suggestions</div>
+                    <button class="button close-button" @onclick="MinimizeEditor">Close</button>
+                </div>
+                <StandaloneCodeEditor @ref="_editor"
+                                      Id="csharp-editor"
+                                      CssClass="editor"
+                                      ConstructionOptions="EditorConstructionOptions"
+                                      OnDidChangeModelContent="OnCodeChanged"
+                                      OnDidInit="OnEditorInit"
+                                      OnDidChangeCursorPosition="OnCursorChanged"/>
+                <br/>
+                <div class="output-controls">
+                    <h3 class="output-header">Output</h3>
+                    <button class="button clear-button" @onclick="ClearOutput">Clear</button>
+
+                </div>
+                <div class="output-area">
+                    <pre class="sysout">@output</pre>
+                    <pre class="syserr">@errors</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public EventCallback<GbxModel> OnSelect { get; set; }
+
+    private bool Expanded { get; set; }
+
+    private readonly Dictionary<string, MetadataReference> references = [];
+    private StandaloneCodeEditor _editor;
+    private NodeManager? noteManager;
+    private string output = "";
+    private string errors = "";
+    private int cursorPosition = 0;
+
+
+    private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
+    {
+        return new StandaloneEditorConstructionOptions
+        {
+            AutomaticLayout = true,
+            Language = "csharp",
+            Theme = "vs-dark"
+        };
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("setDotNetRef", DotNetObjectReference.Create(this));
+
+            // load reference assemblies
+            // TODO load when opening editor
+            // TODO handle this somehow better
+            foreach (var dll in new[]
+            {
+                "System.Runtime.dll",
+                "System.Console.dll",
+                "netstandard.dll",
+                "GBX.NET.dll",
+                "TmEssentials.dll",
+                "System.Linq.dll",
+                "System.Collections.dll",
+                "System.Private.CoreLib.dll",
+                "System.Core.dll",
+                "System.Threading.Tasks.dll"
+            })
+            {
+                await using var stream = await Http.GetStreamAsync($"refs/{dll}");
+                references.Add(dll, MetadataReference.CreateFromStream(stream));
+            }
+            references.Add("GbxExplorerOld.Client.dll", CreateFakeDll());
+
+            // prefetch global symbols to avoid lag on first key press
+            GetAutocompleteSuggestions(TemplateProvider.Template, 1);
+        }
+    }
+
+    private MetadataReference CreateFakeDll()
+    {
+        string fakeCode = @"
+            using GBX.NET;
+            using System.Threading.Tasks;
+            namespace GbxExplorerOld.Client.Services {
+                public interface IDownloadStreamService {
+                    Task DownloadAsync(string fileName, IGbx gbx);
+                }
+            }";
+
+        var syntaxTree = CSharpSyntaxTree.ParseText(fakeCode);
+
+        var compilation = CSharpCompilation.Create(
+            "GbxExplorerOld.Client.dll",
+            [syntaxTree],
+            [references["System.Private.CoreLib.dll"], references["System.Runtime.dll"], references["GBX.NET.dll"], references["System.Threading.Tasks.dll"]],
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+        );
+
+        using var ms = new MemoryStream();
+        var result = compilation.Emit(ms);
+        if (!result.Success)
+        {
+            throw new InvalidOperationException("Failed to compile fake DLL: " +
+                string.Join("\n", result.Diagnostics));
+        }
+
+        ms.Seek(0, SeekOrigin.Begin);
+        var reference = MetadataReference.CreateFromStream(ms);
+        return reference;
+    }
+
+
+    public async Task AddNewNote()
+    {
+        var note = noteManager.CreateNote();
+        await noteManager.SelectNoteAsync(note.Id);
+    }
+
+    public async Task OnNoteClick(string noteId)
+    {
+        await noteManager.SelectNoteAsync(noteId);
+    }
+
+    private async Task RemoveSelectedNote()
+    {
+        await noteManager.DeleteNoteAsync();
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task SaveNote()
+    {
+        await noteManager.SaveNoteAsync();
+    }
+
+    private async Task OnNoteNameChanged(ChangeEventArgs e)
+    {
+        var newValue = e.Value?.ToString() ?? "";
+        noteManager.selectedNote.Name = newValue;
+        await noteManager.SaveNoteAsync();
+    }
+
+    private void ExpandEditor()
+    {
+        Expanded = true;
+        StateHasChanged();
+    }
+
+    private void MinimizeEditor()
+    {
+        Expanded = false;
+        StateHasChanged();
+    }
+
+
+    private async Task OnEditorInit()
+    {
+        noteManager = new NodeManager(LocalStorage, JS, _editor);
+        await noteManager.SelectNoteAsync();
+        await JS.InvokeVoidAsync("foldAllImports");
+        await JS.InvokeVoidAsync("addMonacoShortcuts");
+    }
+
+    private async Task OnCodeChanged()
+    {
+        noteManager.selectedNote.Body = await _editor.GetValue();
+    }
+
+    private async Task ClearOutput()
+    {
+        output = "";
+        errors = "";
+    }
+
+    [JSInvokable]
+    public object GetSuggestions()
+    {
+        var suggestions = GetAutocompleteSuggestions(noteManager.selectedNote.Body, cursorPosition);
+
+        return suggestions.Select(c => new { label = c, insertText = c, detail = "" }).ToList();
+    }
+
+    private async Task OnCursorChanged(CursorPositionChangedEvent evt)
+    {
+        noteManager.selectedNote.Body = await _editor.GetValue();
+        cursorPosition = GetOffsetFromLineColumn(noteManager.selectedNote.Body, evt.Position.LineNumber, evt.Position.Column);
+    }
+
+    private int GetOffsetFromLineColumn(string code, int lineNumber, int column)
+    {
+        var lines = code.Split('\n');
+        var offset = 0;
+
+        // Monaco lines are 1-based
+        for (int i = 0; i < lineNumber - 1; i++)
+            offset += lines[i].Length + 1; // +1 for '\n'
+
+        offset += column - 1; // column is 1-based
+        return offset - 1;
+    }
+
+    [JSInvokable]
+    public async Task RunUserCode()
+    {
+        await noteManager.SaveNoteAsync();
+
+        var originalOut = Console.Out;
+        try
+        {
+            var syntaxTree = CSharpSyntaxTree.ParseText(noteManager.selectedNote.Body);
+
+            var compilation = CSharpCompilation.Create("UserCode")
+                .AddReferences(references.Values)
+                .AddSyntaxTrees(syntaxTree)
+                .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+            using var ms = new MemoryStream();
+            var result = compilation.Emit(ms);
+
+            if (!result.Success)
+            {
+                errors = string.Join("\n", result.Diagnostics.Where(d => d.Severity == DiagnosticSeverity.Error));
+                output = "";
+                return;
+            }
+            if (GbxService.SelectedGbx is null)
+            {
+                errors = "GBX file is not selected";
+                return;
+            }
+
+            errors = "";
+
+            ms.Seek(0, SeekOrigin.Begin);
+            var asm = Assembly.Load(ms.ToArray());
+
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var runMethod = asm.GetType("Program").GetMethod("Run");
+            try
+            {
+                runMethod.Invoke(null, [GbxService.SelectedGbx.Gbx, DownloadService]);
+            }
+            catch (Exception)
+            {
+                errors = "Catch exception in your code";
+            }
+            
+
+            output = writer.ToString();
+        }
+        catch (Exception ex)
+        {
+            output = $"Runtime Error: {ex.Message}\n{ex.StackTrace}";
+        }
+        finally
+        {
+            Console.SetOut(originalOut);
+            await OnSelect.InvokeAsync(GbxService.SelectedGbx);
+        }
+
+        StateHasChanged();
+    }
+
+    private IEnumerable<string> GetAutocompleteSuggestions(string code, int position)
+    {
+        var tree = CSharpSyntaxTree.ParseText(code);
+        var compilation = CSharpCompilation.Create("UserCode")
+            .AddReferences(references.Values)
+            .AddSyntaxTrees(tree)
+            .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+        var model = compilation.GetSemanticModel(tree);
+        var root = tree.GetRoot();
+        var token = root.FindToken(position);
+
+        // Grab text already typed (prefix for filtering)
+        var prefix = token.IsKind(SyntaxKind.IdentifierToken) ? token.ValueText : string.Empty;
+        var prevChar = token.SpanStart > 0 ? code[token.SpanStart - 1] : '\0';
+
+        // Member completion after dot (map.Blo, Console.Wri…)
+        if (prevChar == '.' || token.IsKind(SyntaxKind.DotToken))
+        {
+            var memberAccess = token.Parent as MemberAccessExpressionSyntax
+                ?? token.Parent?.Parent as MemberAccessExpressionSyntax;
+
+            if (memberAccess?.Expression != null)
+            {
+                var typeInfo = model.GetTypeInfo(memberAccess.Expression).Type;
+                if (typeInfo != null)
+                {
+                    return typeInfo.GetMembers()
+                        .Where(m =>
+                            m.DeclaredAccessibility == Accessibility.Public &&
+                            !m.Name.StartsWith("get_") &&
+                            !m.Name.StartsWith("set_") &&
+                            m.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                        .Select(m => m.Name)
+                        .Distinct();
+                }
+            }
+        }
+
+        // Scope completion after whitespace ( " ma" )
+        if (token.IsKind(SyntaxKind.IdentifierToken) && char.IsWhiteSpace(prevChar))
+        {
+            return model.LookupSymbols(position)
+                .Where(s =>
+                    !s.Name.StartsWith("get_") &&
+                    !s.Name.StartsWith("set_") &&
+                    s.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                .Select(s => s.Name)
+                .Distinct();
+        }
+
+        // Fallback
+        return model.LookupSymbols(position)
+            .Where(s => !s.Name.StartsWith("get_") && !s.Name.StartsWith("set_"))
+            .Select(s => s.Name)
+            .Distinct();
+    }
+
+    public class Note(string name, int version, long createdAt, long updatedAt, string body)
+    {
+        public string Id { get; set; } = Guid.NewGuid().ToString("N");
+        public string Name { get; set; } = name;
+        public int Version { get; set; } = version;
+        public long CreatedAt { get; set; } = createdAt;
+        public long UpdatedAt { get; set; } = updatedAt;
+        public string Body { get; set; } = body;
+    }
+
+    public class NodeManager
+    {
+        private static string storageNotePreifx = "csharpEditorNote_";
+
+        private ISyncLocalStorageService localStorageService;
+        private IJSRuntime jsRuntime;
+        private StandaloneCodeEditor editor;
+
+        public Dictionary<string, Note> Notes = new();
+        public Note selectedNote { get; private set; }
+
+        public NodeManager(ISyncLocalStorageService localStorageService, IJSRuntime jsRuntime, StandaloneCodeEditor editor)
+        {
+            this.localStorageService = localStorageService;
+            this.jsRuntime = jsRuntime;
+            this.editor = editor;
+
+            RetrieveNotes();
+
+            if (Notes.Count == 0)
+            {
+                CreateNote();
+            }
+
+            selectedNote = Notes.Values.OrderByDescending(x => x.UpdatedAt).First();
+        }
+        private void RetrieveNotes()
+        {
+            var allKeys = localStorageService.Keys();
+            foreach (var key in allKeys)
+            {
+                if (key.StartsWith(storageNotePreifx))
+                {
+                    try
+                    {
+                        var value = localStorageService.GetItem<Note>(key);
+                        Notes.Add(value!.Id, value);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine($"Invalid note: {key}");
+                    }
+                }
+            }
+        }
+
+        public async Task DeleteNoteAsync()
+        {
+            var toRemove = selectedNote;
+            localStorageService.RemoveItem($"{storageNotePreifx}{toRemove.Id}");
+            Notes.Remove(selectedNote.Id);
+            if (Notes.Count > 0)
+            {
+                selectedNote = Notes.Values.OrderByDescending(x => x.UpdatedAt).FirstOrDefault(note => note.UpdatedAt < toRemove.UpdatedAt) ?? Notes.Values.First();
+                await SelectNoteAsync();
+            }
+            else
+            {
+                var note = CreateNote();
+                await SelectNoteAsync(note.Id);
+            }
+        }
+
+        public Note CreateNote()
+        {
+            var counter = 1;
+            while (Notes.Values.Any(note => $"new {counter}".Equals(note.Name)))
+            {
+                counter++;
+            }
+            var note = new Note(
+                $"new {counter}",
+                TemplateProvider.Version,
+                DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                TemplateProvider.Template);
+            Notes.Add(note.Id, note);
+            return note;
+        }
+
+        public async Task SelectNoteAsync()
+        {
+            await editor.SetValue(selectedNote.Body);
+            await jsRuntime.InvokeVoidAsync("foldAllImports");
+        }
+
+        public async Task SelectNoteAsync(string noteId)
+        {
+            selectedNote = Notes[noteId];
+            await SelectNoteAsync();
+        }
+
+        public async Task SaveNoteAsync()
+        {
+            selectedNote.Body = await editor.GetValue();
+            selectedNote.UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            localStorageService.SetItem($"{storageNotePreifx}{selectedNote.Id}", selectedNote);
+        }
+    }
+
+    public class TemplateProvider
+    {
+        public static int Version = 1;
+
+        public static string Template = @"using System;
+using GBX.NET;
+using GBX.NET.Engines.Game;
+using GBX.NET.Engines.Scene;
+using GBX.NET.Inputs;
+using TmEssentials;
+using System.Linq;
+using GbxExplorerOld.Client.Services;
+
+public static class Program
+{
+    //entrypoint
+    public static void Run(Gbx gbx, IDownloadStreamService dls)
+    {
+        
+    }
+}
+";
+    }
+
+}

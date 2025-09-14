@@ -121,6 +121,12 @@ main {
     flex-direction: column;
 }
 
+.section-editor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .section-preview {
     animation-delay: 0.3s;
     min-height: 200px;
@@ -262,7 +268,7 @@ main {
 }
 
 .section-log {
-    grid-column: span 4;
+    grid-column: span 3;
 }
 
 .section-copyright {
