@@ -1,0 +1,14 @@
+﻿.dialog {
+    background-color: #333;
+    color: var(--text-normal);
+    border: 1px solid #666;
+    padding: 1rem;
+}
+
+.close-dialog {
+    margin: auto;
+}
+
+.close-form {
+    margin-top: 1rem;
+}

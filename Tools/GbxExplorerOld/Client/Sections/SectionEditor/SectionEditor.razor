@@ -1,0 +1,684 @@
+﻿@using Blazored.LocalStorage
+@using BlazorMonaco.Editor
+@using Microsoft.CodeAnalysis
+@using Microsoft.CodeAnalysis.CSharp
+@using System.Text
+@inject HttpClient Http
+@inject IGbxService GbxService
+@inject IJSRuntime JS
+@inject IDownloadStreamService DownloadService
+@inject ISyncLocalStorageService LocalStorage
+
+<div class="section section-editor hoverable" style="padding: 4px" @onclick="ExpandEditor">
+    <div>Try scripting with C#</div>
+    <img style="height: 42px;" src="img/editor.png"/>
+</div>
+<script>
+    let dotNetRef;
+
+    function setDotNetRef(ref) {
+        dotNetRef = ref;
+    }
+
+
+    // Register folding range provider for usings
+    monaco.languages.registerFoldingRangeProvider("csharp", {
+        provideFoldingRanges: function (model, context, token) {
+            const ranges = [];
+            const lines = model.getLinesContent();
+
+            let i = 0;
+            while (i < lines.length) {
+                if (lines[i].startsWith("using ")) {
+                    let start = i + 1;
+                    let end = start;
+
+                    while (end < lines.length && lines[end].startsWith("using ")) {
+                        end++;
+                    }
+
+                    ranges.push({
+                        start: start,
+                        end: end,
+                        kind: monaco.languages.FoldingRangeKind.Imports
+                    });
+
+                    i = end;
+                } else {
+                    i++;
+                }
+            }
+
+            return ranges;
+        }
+    });
+
+    monaco.languages.registerCompletionItemProvider('csharp', {
+        provideCompletionItems: async (model, position) => {
+            const suggestions = await dotNetRef.invokeMethodAsync("GetSuggestions");
+
+            return {
+                suggestions: suggestions.map(s => ({
+                    ...s,
+                    kind: monaco.languages.CompletionItemKind.Method,
+                }))
+            };
+        }
+    });
+
+    window.foldAllImports = async () => {
+        const editor = monaco.editor.getEditors()[0];
+        editor.setPosition({lineNumber: 1, column: 1})
+        await editor.getAction("editor.fold").run();
+        const lines = editor.getValue().split("\n");
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i].includes("public static void") && lines.length >= i + 3) {
+                editor.setPosition({lineNumber: i + 3, column: 9})
+                break;
+            }
+        }
+        editor.focus()
+    };
+    window.addMonacoShortcuts = () => {
+        const editor = monaco.editor.getEditors()[0];
+        editor._domElement.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                dotNetRef.invokeMethodAsync("SaveNote")
+            }
+        });
+        editor._domElement.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+                e.preventDefault();
+                dotNetRef.invokeMethodAsync("RunUserCode")
+            }
+        }, true);
+    };
+    window.resizeEditor = () => {
+        monaco.editor.getEditors()[0].layout({width: 1})
+    }
+
+    window.dialogHelper = {
+        showModal: (dialog) => dialog.showModal(),
+        close: (dialog) => dialog.close()
+    };
+
+</script>
+
+@if (Expanded)
+{
+    <div class="overlay">
+        <div class="section section-log-maximized section-editor-overlay">
+            <div class="notes-wrapper">
+                <h3 class="notes-header">Notes</h3>
+                <div class="notes-container">
+                    @if (noteManager is not null)
+                    {
+                        @foreach (var note in noteManager.Notes.Values.OrderByDescending(x => x.UpdatedAt))
+                        {
+                            @if (note == noteManager.SelectedNote)
+                            {
+                                <div class="note-card selected-note">
+                                    <img @onclick="DuplicateSelectedNote" style="filter: invert(1);" src="img/copy.png" title="Create a copy" alt="Copy"/>
+                                    <input @bind="note.Name" @oninput="OnNoteNameChanged"/>
+                                    <img @onclick="RemoveSelectedNote" src="img/bin.png" alt="Del"/>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="note-card hoverable" @onclick="() => OnNoteClick(note.Id)">
+                                    @note.Name
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 1rem;">
+                    <button class="button button-centered" @onclick="AddNewNote">Add new note</button>
+                    <div style="display: flex;justify-content: space-between;gap: 1rem;">
+                        <ButtonWithDialog DialogTitle="Import" ButtonText="Import" CssClass="button-centered">
+                            <div class="import-wrapper">
+                                <SectionLoadGbx OnImport="OnImportAsync" ImportMessage="Import json files with notes here.."></SectionLoadGbx>
+                                <button class="button " @onclick="ImportFromClipboard">From clipboard</button>
+                            </div>
+                        </ButtonWithDialog>
+                        <ButtonWithDialog DialogTitle="Select notes to export" ButtonText="Export" CssClass="button-centered">
+                            <div class="export-wrapper">
+                                <div class="controls-group">
+                                    <button class="button button-centered" @onclick="ExportSelectAll">Select all</button>
+                                    <button class="button button-centered" @onclick="ExportUnselectAll">Unselect all</button>
+                                </div>
+                                <div class="export-notes-container">
+                                    @if (noteManager is not null)
+                                    {
+                                        @foreach (var note in noteManager.Notes.Values.OrderByDescending(x => x.UpdatedAt))
+                                        {
+                                            <div>
+                                                <input type="checkbox"
+                                                       id="@note.Id"
+                                                       checked="@selectedForExport.Contains(note.Id)"
+                                                       @onchange="e => OnExportCheckboxChanged(note.Id, e.Value)"/>
+                                                <label for="@note.Id">@note.Name</label>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <div class="controls-group">
+                                    <button class="button button-centered" @onclick="ExportToFile">To file</button>
+                                    <button class="button button-centered" @onclick="ExportToClipboard">To clipboard</button>
+                                </div>
+                            </div>
+                        </ButtonWithDialog>
+                    </div>
+                </div>
+            </div>
+            <div class="editor-wrapper @(SplitView ? "with-tree" : "without-tree")">
+                <div class="editor-controls">
+                    <div class="controls-group">
+                        <button class="button run-button" @onclick="RunUserCode" title="ctrl+enter">Run</button>
+                        <button class="button " @onclick="SaveNote" title="ctrl+s">Save</button>
+                        <ButtonWithDialog DialogTitle="Select DLL" ButtonText="Select DLL">
+                            <div class="dll-options">
+                                @foreach (var kvp in availableDlls.OrderBy(k => k.Key))
+                                {
+                                    <div>
+                                        <input type="checkbox"
+                                               checked="@kvp.Value"
+                                               id="@kvp.Key"
+                                               @onchange="e => OnDllCheckboxChanged(kvp.Key, e.Value)"/>
+                                        <label for="@kvp.Key">@kvp.Key</label>
+                                    </div>
+                                }
+                            </div>
+                        </ButtonWithDialog>
+                    </div>
+                    <div class="controls-group">
+                        <ButtonWithDialog DialogTitle="Docs" ButtonText="Docs">
+                            <div>
+                                <h3 style="text-align: center">Useful shortcuts</h3>
+                                <ul class="shortcuts-list">
+                                    <li><b>CTRL + S</b> <span>save</span></li>
+                                    <li><b>CTRL + Enter</b> <span>execute code</span></li>
+                                    <li><b>CTRL + Space</b> <span>get suggestions</span></li>
+                                </ul>
+                                <h3 style="text-align: center">More info <a href="https://github.com/microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide#keyboard-navigation" style="text-decoration: underline; color: var(--text-normal)">here</a>.</h3>
+                            </div>
+                        </ButtonWithDialog>
+                        <button class="button " @onclick="ToggleSplitView">Split view</button>
+                        <button class="button close-button" @onclick="MinimizeEditor">Close</button>
+                    </div>
+                </div>
+                <StandaloneCodeEditor @ref="editor"
+                                      Id="csharp-editor"
+                                      ConstructionOptions="EditorConstructionOptions"
+                                      OnDidChangeModelContent="OnCodeChanged"
+                                      OnDidInit="OnEditorInit"
+                                      OnDidChangeCursorPosition="OnCursorChanged"/>
+                @if (SplitView)
+                {
+                    <SectionNodeTreeExplorer @ref="sectionNodeTreeExplorer" OnTypeClick="OnTypeClick"/>
+                }
+                <div class="output-controls">
+                    <h3 class="output-header">Output</h3>
+                    <button class="button clear-button" @onclick="ClearOutput">Clear</button>
+
+                </div>
+                <div class="output-area">
+                    <pre class="sysout">@output</pre>
+                    <pre class="syserr">@errors</pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public EventCallback<GbxModel> OnSelect { get; set; }
+    [Parameter]
+    public EventCallback<GbxModel> MainTreeCallback { get; set; }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("setDotNetRef", DotNetObjectReference.Create(this));
+            availableDlls = await RetrieveAvailableDlls();
+        }
+    }
+
+
+    #region Overlay
+
+    private bool Expanded { get; set; }
+    private bool SplitView { get; set; }
+
+    private SectionNodeTreeExplorer? sectionNodeTreeExplorer;
+    private void OnTypeClick(TypeModel type)
+    {
+        sectionNodeTreeExplorer?.Update();
+    }
+
+    private async Task ToggleSplitView()
+    {
+        SplitView = !SplitView;
+        StateHasChanged();
+        await JS.InvokeVoidAsync("resizeEditor");
+    }
+
+    private void ExpandEditor()
+    {
+        Expanded = true;
+        MainTreeCallback.InvokeAsync(null);
+        StateHasChanged();
+    }
+
+    private async Task MinimizeEditor()
+    {
+        Expanded = false;
+        if (noteManager is not null)
+        {
+            await noteManager.SaveSelectedNoteAsync(updated: false);
+        }
+        await MainTreeCallback.InvokeAsync(GbxService.SelectedGbx);
+        StateHasChanged();
+    }
+
+    #endregion
+
+    #region Editor
+
+    private StandaloneCodeEditor? editor;
+
+    private AutocompleteService autocompleteService = new();
+
+    private string output = "";
+    private string errors = "";
+    private int cursorPosition = 0;
+
+    private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editorRef)
+    {
+        return new StandaloneEditorConstructionOptions
+        {
+            AutomaticLayout = true,
+            Language = "csharp",
+            Theme = "vs-dark"
+        };
+    }
+
+    private async Task OnEditorInit()
+    {
+        noteManager = new NoteManager(LocalStorage, JS, editor!);
+        
+        await noteManager.SelectNoteAsync();
+        await PrepareSelectedNoteRefs();
+        // prefetch global symbols to avoid lag on first key press
+        GetSuggestions();
+        UpdateSelectedDlls();
+
+        await JS.InvokeVoidAsync("foldAllImports");
+        await JS.InvokeVoidAsync("addMonacoShortcuts");
+    }
+
+    private async Task OnCodeChanged()
+    {
+        noteManager!.SelectedNote.Body = await editor!.GetValue();
+    }
+
+    private void ClearOutput()
+    {
+        output = "";
+        errors = "";
+    }
+
+    private async Task OnCursorChanged(CursorPositionChangedEvent evt)
+    {
+        noteManager!.SelectedNote.Body = await editor!.GetValue();
+        cursorPosition = GetOffsetFromLineColumn(noteManager.SelectedNote.Body, evt.Position.LineNumber, evt.Position.Column);
+    }
+
+    private int GetOffsetFromLineColumn(string code, int lineNumber, int column)
+    {
+        var lines = code.Split('\n');
+        var offset = 0;
+
+        // Monaco lines are 1-based
+        for (int i = 0; i < lineNumber - 1; i++)
+            offset += lines[i].Length + 1; // +1 for '\n'
+
+        offset += column - 1; // column is 1-based
+        return offset - 1;
+    }
+
+    [JSInvokable]
+    public List<object> GetSuggestions()
+    {
+        if (noteManager is null)
+        {
+            return [];
+        }
+        var suggestions = autocompleteService.GetSuggestions(noteManager.SelectedNote.Body, cursorPosition, GetSelectedNoteRefsMetadata());
+
+        return suggestions.Select(c => new
+        {
+            label = c,
+            insertText = c,
+            detail = ""
+        }).ToList<object>();
+    }
+
+    #endregion
+
+    #region Note
+
+    private NoteManager? noteManager;
+
+    private async Task AddNewNote()
+    {
+        if (noteManager is null)
+        {
+            return;
+        }
+        await noteManager.SaveSelectedNoteAsync(updated: false);
+        var note = noteManager.CreateNote();
+        await noteManager.SelectNoteAsync(note.Id);
+        UpdateSelectedDlls();
+    }
+
+    private async Task OnNoteClick(string noteId)
+    {
+        await noteManager!.SaveSelectedNoteAsync(updated: false);
+        await noteManager.SelectNoteAsync(noteId);
+        UpdateSelectedDlls();
+    }
+
+    private async Task RemoveSelectedNote()
+    {
+        var confirmed = await JS.InvokeAsync<bool>("confirm", $"Remove note '{noteManager!.SelectedNote.Name}'?");
+        if (confirmed)
+        {
+            await noteManager.DeleteNoteAsync();
+            UpdateSelectedDlls();
+            StateHasChanged();
+        }
+    }
+
+    private async Task DuplicateSelectedNote()
+    {
+        await noteManager!.SaveSelectedNoteAsync(updated: false);
+        var note = noteManager.CreateNote();
+        var selectedNote = noteManager.SelectedNote;
+        note.Body = selectedNote.Body;
+        note.Name = $"Copy of {selectedNote.Name}";
+        note.Refs = selectedNote.Refs.ToList();
+        await noteManager.SelectNoteAsync(note.Id);
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task SaveNote()
+    {
+        if (noteManager is null)
+        {
+            return;
+        }
+        await noteManager.SaveSelectedNoteAsync();
+    }
+
+    private async Task OnNoteNameChanged(ChangeEventArgs e)
+    {
+        var newValue = e.Value?.ToString() ?? "";
+        noteManager!.SelectedNote.Name = newValue;
+        await noteManager.SaveSelectedNoteAsync(updated: false);
+    }
+
+    #endregion
+
+    #region DLL
+
+    private readonly Dictionary<string, MetadataReference> references = [];
+
+    private Dictionary<string, bool> availableDlls = [];
+
+    private async Task<Dictionary<string, bool>> RetrieveAvailableDlls()
+    {
+        return (await Http.GetStringAsync("refs/available_dlls.txt"))
+            .Split("\n")
+            .Where(s => !string.IsNullOrEmpty(s))
+            .Select(s => s.Trim())
+            .ToDictionary(s => s, _ => false);
+    }
+
+    private void OnDllCheckboxChanged(string key, object? value)
+    {
+        if (noteManager is null)
+        {
+            return;
+        }
+        if (value is bool b)
+        {
+            availableDlls[key] = b;
+            var selected = noteManager.SelectedNote.Refs;
+            if (b)
+            {
+                selected.Add(key);
+            }
+            else
+            {
+                selected.Remove(key);
+            }
+        }
+    }
+
+    private void UpdateSelectedDlls()
+    {
+        foreach (var kvp in availableDlls)
+        {
+            availableDlls[kvp.Key] = false;
+        }
+        foreach (var dll in noteManager!.SelectedNote.Refs)
+        {
+            availableDlls[dll] = true;
+        }
+        StateHasChanged();
+    }
+
+    private List<MetadataReference> GetSelectedNoteRefsMetadata()
+    {
+        var selectedRefs = noteManager!.SelectedNote.Refs;
+        return references.Where(kvp => selectedRefs.Contains(kvp.Key)).Select(kvp => kvp.Value).ToList();
+    }
+
+    private async Task PrepareSelectedNoteRefs()
+    {
+        var selectedNote = noteManager!.SelectedNote;
+        foreach (var dll in selectedNote.Refs.Where(dll => !references.ContainsKey(dll)))
+        {
+            await using var stream = await Http.GetStreamAsync($"refs/{dll}");
+            references.Add(dll, MetadataReference.CreateFromStream(stream));
+        }
+    }
+
+    #endregion
+
+    #region Export
+
+    private HashSet<string> selectedForExport = [];
+
+    private void ExportSelectAll()
+    {
+        if (noteManager is not null)
+        {
+            selectedForExport = noteManager.Notes.Keys.ToHashSet();
+        }
+    }
+
+    private void ExportUnselectAll()
+    {
+        selectedForExport.Clear();
+    }
+
+    private void OnExportCheckboxChanged(string key, object? value)
+    {
+        if (value is bool b)
+        {
+            if (b)
+            {
+                selectedForExport.Add(key);
+            }
+            else
+            {
+                selectedForExport.Remove(key);
+            }
+        }
+    }
+
+    private string PrepareNotesForExport()
+    {
+        if (noteManager is null)
+        {
+            return "{}";
+        }
+        var notes = selectedForExport
+            .ToDictionary(noteId => noteId, noteId => noteManager.Notes[noteId]);
+        var obj = new
+        {
+            Notes = notes
+        };
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+        var json = JsonSerializer.Serialize(obj, options);
+        return json;
+
+    }
+
+    private async Task ExportToFile()
+    {
+        var text = Encoding.UTF8.GetBytes(PrepareNotesForExport());
+        await DownloadService.DownloadAsync("gbx_explorer_notes.json", text);
+    }
+
+    private async Task ExportToClipboard()
+    {
+        var text = PrepareNotesForExport();
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", text);
+    }
+
+    #endregion
+
+    #region Import
+
+    private List<Note> DeserializeImport(string json)
+    {
+        var toImport = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, Note>>>(json);
+        if (!toImport?.ContainsKey("Notes") ?? true)
+        {
+            return [];
+        }
+
+        return toImport["Notes"].Values.ToList();
+    }
+
+    public async Task OnImportAsync(IBrowserFile file)
+    {
+        await using var stream = file.OpenReadStream();
+        using var reader = new StreamReader(stream);
+
+        var json = await reader.ReadToEndAsync();
+        ImportJson(json);
+
+    }
+
+    private async Task ImportFromClipboard()
+    {
+        var json = await JS.InvokeAsync<string>("navigator.clipboard.readText");
+        ImportJson(json);
+    }
+
+    private void ImportJson(string json)
+    {
+        if (noteManager is null)
+        {
+            return;
+        }
+        foreach (var note in DeserializeImport(json))
+        {
+            noteManager.ImportNote(note);
+        }
+    }
+
+    #endregion
+    
+
+    [JSInvokable]
+    public async Task RunUserCode()
+    {
+        if (noteManager is null)
+        {
+            return;
+        }
+        await noteManager.SaveSelectedNoteAsync();
+        await PrepareSelectedNoteRefs();
+
+        var originalOut = Console.Out;
+        try
+        {
+            var syntaxTree = CSharpSyntaxTree.ParseText(noteManager.SelectedNote.Body);
+
+            var compilation = CSharpCompilation.Create("UserCode")
+                .AddReferences(GetSelectedNoteRefsMetadata())
+                .AddSyntaxTrees(syntaxTree)
+                .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+            using var ms = new MemoryStream();
+            var result = compilation.Emit(ms);
+
+            if (!result.Success)
+            {
+                errors = string.Join("\n", result.Diagnostics.Where(d => d.Severity == DiagnosticSeverity.Error));
+                output = "";
+                return;
+            }
+            if (GbxService.SelectedGbx is null)
+            {
+                errors = "GBX file is not selected";
+                return;
+            }
+
+            errors = "";
+
+            ms.Seek(0, SeekOrigin.Begin);
+            var asm = Assembly.Load(ms.ToArray());
+
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var runMethod = asm.GetType("Program")?.GetMethod("Run");
+            try
+            {
+                runMethod?.Invoke(null, [GbxService.SelectedGbx.Gbx, DownloadService]);
+            }
+            catch (Exception ex)
+            {
+                errors = $"{ex.Message}\n{ex.StackTrace}";
+            }
+
+            output = writer.ToString();
+        }
+        catch (Exception ex)
+        {
+            output = $"Runtime Error: {ex.Message}\n{ex.StackTrace}";
+        }
+        finally
+        {
+            Console.SetOut(originalOut);
+            await OnSelect.InvokeAsync(GbxService.SelectedGbx);
+        }
+
+        StateHasChanged();
+    }
+}
