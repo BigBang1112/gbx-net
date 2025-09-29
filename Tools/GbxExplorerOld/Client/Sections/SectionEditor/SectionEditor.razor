@@ -1,5 +1,10 @@
 ﻿@using Blazored.LocalStorage
 @using BlazorMonaco.Editor
+
+
+@using global::OmniSharp.Models
+@using global::OmniSharp.Models.SignatureHelp
+@using global::OmniSharp.Models.v1.Completion
 @using Microsoft.CodeAnalysis
 @using Microsoft.CodeAnalysis.CSharp
 @using System.Text
@@ -8,11 +13,22 @@
 @inject IJSRuntime JS
 @inject IDownloadStreamService DownloadService
 @inject ISyncLocalStorageService LocalStorage
+@inject EditorServices EditorServices
 
 <div class="section section-editor hoverable" style="padding: 4px" @onclick="ExpandEditor">
     <div>Try scripting with C#</div>
     <img style="height: 42px;" src="img/editor.png"/>
 </div>
+<style>
+    .suggest-details-container .suggest-details .rendered-markdown {
+        overflow: auto !important;
+    }
+
+    .suggest-details-container .suggest-details {
+        width: 400px !important;
+        max-width: 600px !important;
+    }
+</style>
 <script>
     let dotNetRef;
 
@@ -53,18 +69,6 @@
         }
     });
 
-    monaco.languages.registerCompletionItemProvider('csharp', {
-        provideCompletionItems: async (model, position) => {
-            const suggestions = await dotNetRef.invokeMethodAsync("GetSuggestions");
-
-            return {
-                suggestions: suggestions.map(s => ({
-                    ...s,
-                    kind: monaco.languages.CompletionItemKind.Method,
-                }))
-            };
-        }
-    });
 
     window.foldAllImports = async () => {
         const editor = monaco.editor.getEditors()[0];
@@ -87,21 +91,250 @@
                 dotNetRef.invokeMethodAsync("SaveNote")
             }
         });
-        editor._domElement.addEventListener('keydown', function (e) {
+        editor._domElement.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
                 e.preventDefault();
                 dotNetRef.invokeMethodAsync("RunUserCode")
             }
         }, true);
     };
-    window.resizeEditor = () => {
-        monaco.editor.getEditors()[0].layout({width: 1})
-    }
 
     window.dialogHelper = {
         showModal: (dialog) => dialog.showModal(),
         close: (dialog) => dialog.close()
     };
+
+    let lastDebounceInvocation = Date.now();
+    let debounceDelay = 100;
+
+    function debounce(fn, increment = 100, maxDelay = 300, resetDelay = 1000) {
+        if (Date.now() - lastDebounceInvocation > resetDelay) {
+            debounceDelay = 100;
+        }
+        lastDebounceInvocation = Date.now();
+        let timerId;
+        return function (...args) {
+            clearTimeout(timerId);
+            return new Promise(resolve => {
+                timerId = setTimeout(() => {
+                    debounceDelay = Math.min(debounceDelay + increment, maxDelay);
+                    resolve(fn.apply(this, args))
+                }, debounceDelay);
+            });
+        };
+    }
+
+    const debouncedCompletion = debounce(provideCompletionItems);
+
+    function registerProviders() {
+
+        window.monaco.languages.registerCompletionItemProvider("csharp", {
+            triggerCharacters: [".", " "],
+            resolveCompletionItem: (item, token) => {
+                return item;
+            },
+            provideCompletionItems: async (model, position, context) => {
+                return await debouncedCompletion(model, position, context, dotNetRef);
+            }
+        });
+
+        window.monaco.languages.registerSignatureHelpProvider("csharp", {
+            signatureHelpTriggerCharacters: ['('],
+            provideSignatureHelp: async (model, position) => {
+                return await provideSignatureHelp(model, position, dotNetRef)
+            }
+        });
+
+        window.monaco.languages.registerHoverProvider("csharp", {
+            provideHover: async (model, position) => {
+                return await provideHover(model, position, dotNetRef)
+            }
+        });
+    }
+
+    let _lastCompletions;
+
+    async function provideCompletionItems(model, position, context, dotnetHelper) {
+        let request = _createRequest(position);
+        request.CompletionTrigger = (context.triggerKind + 1);
+        request.TriggerCharacter = context.triggerCharacter;
+
+        try {
+            const code = model.getValue();
+            const response = await dotnetHelper.invokeMethodAsync("GetCompletionAsync", code, request);
+            const mappedItems = response.items.map(_convertToVscodeCompletionItem);
+
+            let lastCompletions = new Map();
+
+            for (let i = 0; i < mappedItems.length; i++) {
+                lastCompletions.set(mappedItems[i], response.items[i]);
+            }
+
+            _lastCompletions = lastCompletions;
+            return {suggestions: mappedItems};
+        } catch (error) {
+            return;
+        }
+    }
+
+    async function provideSignatureHelp(model, position, dotnetHelper) {
+
+        let req = _createRequest(position);
+
+        try {
+            let code = model.getValue();
+            let res = await dotnetHelper.invokeMethodAsync("GetSignatureHelpAsync", code, req);
+
+            if (!res) {
+                return undefined;
+            }
+
+            let ret = {
+                signatures: [],
+                activeSignature: res.activeSignature,
+                activeParameter: res.activeParameter
+            }
+
+            for (let signature of res.signatures) {
+
+                let signatureInfo = {
+                    label: signature.label,
+                    documentation: signature.structuredDocumentation.summaryText,
+                    parameters: []
+                }
+
+                ret.signatures.push(signatureInfo);
+
+                for (let parameter of signature.parameters) {
+                    let parameterInfo = {
+                        label: parameter.label,
+                        documentation: _getParameterDocumentation(parameter)
+                    }
+
+                    signatureInfo.parameters.push(parameterInfo);
+                }
+            }
+
+            return {
+                value: ret,
+                dispose: () => {
+                }
+            }
+        } catch (error) {
+            return undefined;
+        }
+    }
+
+    async function provideHover(document, position, dotnetHelper) {
+        let request = _createRequest(position);
+        try {
+            const response = await dotnetHelper.invokeMethodAsync("GetQuickInfoAsync", request);
+            if (!response || !response.markdown) {
+                return undefined;
+            }
+
+            return {
+                contents: [
+                    {
+                        value: response.markdown
+                    }
+                ]
+            }
+        } catch (error) {
+            return undefined;
+        }
+    }
+
+    function setDiagnostics(diagnostics, uri) {
+
+        var model = monaco.editor.getModel(uri)
+
+        diagnostics.forEach(diagnostic => {
+            diagnostic.startLineNumber = diagnostic.start.line + 1;
+            diagnostic.startColumn = diagnostic.start.character + 1;
+
+            diagnostic.endLineNumber = diagnostic.end.line + 1;
+            diagnostic.endColumn = diagnostic.end.character + 1;
+        });
+
+        window.monaco.editor.setModelMarkers(model, "owner", diagnostics);
+    }
+
+    function _getParameterDocumentation(parameter) {
+        let summary = parameter.documentation;
+        if (summary.length > 0) {
+            let paramText = `**${parameter.name}**: ${summary}`;
+            return {
+                value: paramText
+            };
+        }
+
+        return "";
+    }
+
+    function _convertToVscodeCompletionItem(omnisharpCompletion) {
+        const mapRange = function (edit) {
+            const newStart = {
+                lineNumber: edit.startLine + 1,
+                column: edit.startColumn + 1
+            };
+            const newEnd = {
+                lineNumber: edit.endLine + 1,
+                column: edit.endColumn + 1
+            };
+            return {
+                startLineNumber: newStart.lineNumber,
+                startColumn: newStart.column,
+                endLineNumber: newEnd.lineNumber,
+                endColumn: newEnd.column
+            };
+        };
+
+        const mapTextEdit = function (edit) {
+            return new TextEdit(mapRange(edit), edit.NewText);
+        };
+
+        const additionalTextEdits = omnisharpCompletion.additionalTextEdits?.map(mapTextEdit);
+
+        const newText = omnisharpCompletion.textEdit?.newText ?? omnisharpCompletion.insertText;
+        const insertText = newText;
+
+        const insertRange = omnisharpCompletion.textEdit ? mapRange(omnisharpCompletion.textEdit) : undefined;
+
+        return {
+            label: {label: omnisharpCompletion.label, description: omnisharpCompletion.detail ?? ""},
+            kind: omnisharpCompletion.kind - 1,
+            detail: "",
+            documentation: {
+                value: omnisharpCompletion.documentation,
+                kind: "markdown"
+            },
+            commitCharacters: omnisharpCompletion.commitCharacters,
+            preselect: omnisharpCompletion.preselect,
+            filterText: omnisharpCompletion.filterText,
+            insertText: insertText,
+            range: insertRange,
+            tags: omnisharpCompletion.tags,
+            sortText: omnisharpCompletion.sortText,
+            additionalTextEdits: additionalTextEdits,
+            keepWhitespace: true
+        };
+    }
+
+    function _createRequest(position) {
+
+        let Line, Column;
+
+        Line = position.lineNumber - 1;
+        Column = position.column - 1;
+
+        let request = {
+            Line,
+            Column
+        };
+
+        return request;
+    }
 
 </script>
 
@@ -170,9 +403,20 @@
                             </div>
                         </ButtonWithDialog>
                     </div>
+                    <ButtonWithDialog DialogTitle="Samples" ButtonText="Samples" CssClass="button-centered">
+                        <div class="sample_list">
+                            @foreach (var kvp in availableSamples.OrderBy(k => k.Key))
+                            {
+                                <div class="sample_container">
+                                    <div class="sample_name">@kvp.Key</div>
+                                    <button class="button" @onclick="() => UseSample(kvp.Value)">Use</button>
+                                </div>
+                            }
+                        </div>
+                    </ButtonWithDialog>
                 </div>
             </div>
-            <div class="editor-wrapper @(SplitView ? "with-tree" : "without-tree")">
+            <div class="editor-wrapper @(SplitViewEnabled ? "with-tree" : "without-tree")">
                 <div class="editor-controls">
                     <div class="controls-group">
                         <button class="button run-button" @onclick="RunUserCode" title="ctrl+enter">Run</button>
@@ -212,22 +456,25 @@
                                       Id="csharp-editor"
                                       ConstructionOptions="EditorConstructionOptions"
                                       OnDidChangeModelContent="OnCodeChanged"
-                                      OnDidInit="OnEditorInit"
-                                      OnDidChangeCursorPosition="OnCursorChanged"/>
-                @if (SplitView)
+                                      OnDidInit="OnEditorInit"/>
+                @if (SplitViewEnabled)
                 {
                     <SectionNodeTreeExplorer @ref="sectionNodeTreeExplorer" OnTypeClick="OnTypeClick"/>
+
                 }
                 <div class="output-controls">
                     <h3 class="output-header">Output</h3>
                     <button class="button clear-button" @onclick="ClearOutput">Clear</button>
 
                 </div>
+                @if (SplitViewEnabled)
+                {
+                    <SectionGbxList OnSelect="OnSelectGbx"/>
+                }
                 <div class="output-area">
                     <pre class="sysout">@output</pre>
                     <pre class="syserr">@errors</pre>
                 </div>
-
             </div>
         </div>
     </div>
@@ -244,8 +491,10 @@
     {
         if (firstRender)
         {
+            SplitViewEnabled = LocalStorage.GetItem<bool>(ShowSplitView);
             await JS.InvokeVoidAsync("setDotNetRef", DotNetObjectReference.Create(this));
             availableDlls = await RetrieveAvailableDlls();
+            await JS.InvokeVoidAsync("registerProviders");
         }
     }
 
@@ -253,7 +502,8 @@
     #region Overlay
 
     private bool Expanded { get; set; }
-    private bool SplitView { get; set; }
+    private bool SplitViewEnabled { get; set; }
+    private static string ShowSplitView = "ShowSplitView";
 
     private SectionNodeTreeExplorer? sectionNodeTreeExplorer;
     private void OnTypeClick(TypeModel type)
@@ -261,11 +511,16 @@
         sectionNodeTreeExplorer?.Update();
     }
 
+    private void OnSelectGbx(GbxModel gbx)
+    {
+        sectionNodeTreeExplorer?.Select(gbx);
+    }
+
     private async Task ToggleSplitView()
     {
-        SplitView = !SplitView;
+        SplitViewEnabled = !SplitViewEnabled;
+        LocalStorage.SetItem(ShowSplitView, SplitViewEnabled);
         StateHasChanged();
-        await JS.InvokeVoidAsync("resizeEditor");
     }
 
     private void ExpandEditor()
@@ -291,12 +546,11 @@
     #region Editor
 
     private StandaloneCodeEditor? editor;
-
-    private AutocompleteService autocompleteService = new();
+    private AutocompleteService? autocompleteService;
+    private Debouncer debouncer = new();
 
     private string output = "";
     private string errors = "";
-    private int cursorPosition = 0;
 
     private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editorRef)
     {
@@ -304,27 +558,42 @@
         {
             AutomaticLayout = true,
             Language = "csharp",
-            Theme = "vs-dark"
+            Theme = "vs-dark",
+            Suggest = new SuggestOptions
+            {
+                Preview = true,
+                ShowInlineDetails = true,
+            },
         };
     }
 
     private async Task OnEditorInit()
     {
         noteManager = new NoteManager(LocalStorage, JS, editor!);
-        
-        await noteManager.SelectNoteAsync();
-        await PrepareSelectedNoteRefs();
-        // prefetch global symbols to avoid lag on first key press
-        GetSuggestions();
-        UpdateSelectedDlls();
 
-        await JS.InvokeVoidAsync("foldAllImports");
+        await noteManager.SelectNoteAsync();
+        await UpdateSelectedDlls();
         await JS.InvokeVoidAsync("addMonacoShortcuts");
     }
 
     private async Task OnCodeChanged()
     {
-        noteManager!.SelectedNote.Body = await editor!.GetValue();
+        await debouncer.DebounceAsync(async () => {
+            await ProvideDiagnostics();
+        });
+    }
+
+    private async Task ProvideDiagnostics()
+    {
+        var uri = (await editor!.GetModel()).Uri;
+        var code = await editor.GetValue();
+
+        if (autocompleteService is null)
+        {
+            return;
+        }
+        var diagnostics = await autocompleteService.GetDiagnosticsAsync(code);
+        await JS.InvokeAsync<string>("setDiagnostics", diagnostics, uri);
     }
 
     private void ClearOutput()
@@ -333,40 +602,28 @@
         errors = "";
     }
 
-    private async Task OnCursorChanged(CursorPositionChangedEvent evt)
+    [JSInvokable]
+    public async Task<CompletionResponse> GetCompletionAsync(string code, CompletionRequest completionRequest)
     {
-        noteManager!.SelectedNote.Body = await editor!.GetValue();
-        cursorPosition = GetOffsetFromLineColumn(noteManager.SelectedNote.Body, evt.Position.LineNumber, evt.Position.Column);
-    }
-
-    private int GetOffsetFromLineColumn(string code, int lineNumber, int column)
-    {
-        var lines = code.Split('\n');
-        var offset = 0;
-
-        // Monaco lines are 1-based
-        for (int i = 0; i < lineNumber - 1; i++)
-            offset += lines[i].Length + 1; // +1 for '\n'
-
-        offset += column - 1; // column is 1-based
-        return offset - 1;
+        return await autocompleteService!.GetCompletionAsync(code, completionRequest);
     }
 
     [JSInvokable]
-    public List<object> GetSuggestions()
+    public async Task<CompletionResolveResponse> GetCompletionResolveAsync(CompletionResolveRequest completionResolveRequest)
     {
-        if (noteManager is null)
-        {
-            return [];
-        }
-        var suggestions = autocompleteService.GetSuggestions(noteManager.SelectedNote.Body, cursorPosition, GetSelectedNoteRefsMetadata());
+        return await autocompleteService!.GetCompletionResolveAsync(completionResolveRequest);
+    }
 
-        return suggestions.Select(c => new
-        {
-            label = c,
-            insertText = c,
-            detail = ""
-        }).ToList<object>();
+    [JSInvokable]
+    public async Task<SignatureHelpResponse> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
+    {
+        return await autocompleteService!.GetSignatureHelpAsync(code, signatureHelpRequest);
+    }
+
+    [JSInvokable]
+    public async Task<QuickInfoResponse> GetQuickInfoAsync(QuickInfoRequest quickInfoRequest)
+    {
+        return await autocompleteService!.GetQuickInfoAsync(quickInfoRequest);
     }
 
     #endregion
@@ -384,14 +641,14 @@
         await noteManager.SaveSelectedNoteAsync(updated: false);
         var note = noteManager.CreateNote();
         await noteManager.SelectNoteAsync(note.Id);
-        UpdateSelectedDlls();
+        await UpdateSelectedDlls();
     }
 
     private async Task OnNoteClick(string noteId)
     {
         await noteManager!.SaveSelectedNoteAsync(updated: false);
         await noteManager.SelectNoteAsync(noteId);
-        UpdateSelectedDlls();
+        await UpdateSelectedDlls();
     }
 
     private async Task RemoveSelectedNote()
@@ -400,7 +657,7 @@
         if (confirmed)
         {
             await noteManager.DeleteNoteAsync();
-            UpdateSelectedDlls();
+            await UpdateSelectedDlls();
             StateHasChanged();
         }
     }
@@ -472,7 +729,7 @@
         }
     }
 
-    private void UpdateSelectedDlls()
+    private async Task UpdateSelectedDlls()
     {
         foreach (var kvp in availableDlls)
         {
@@ -482,6 +739,9 @@
         {
             availableDlls[dll] = true;
         }
+        await PrepareSelectedNoteRefs();
+        autocompleteService = new(GetSelectedNoteRefsMetadata(), noteManager.SelectedNote.Body);
+        await ProvideDiagnostics();
         StateHasChanged();
     }
 
@@ -612,7 +872,34 @@
     }
 
     #endregion
-    
+
+    #region Samples
+
+    private Dictionary<string, string> availableSamples = new()
+    {
+        {"Compare 2 GBX ", "compare_gbx.sample.json"} 
+    };
+
+    private async Task UseSample(string sampleUrl)
+    {
+        var sampleJson = await Http.GetStringAsync($"samples/{sampleUrl}");
+        var sampleDict = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, Note>>>(sampleJson);
+        var sample = sampleDict!["Notes"].Values.First();
+        
+        await noteManager!.SaveSelectedNoteAsync(updated: false);
+        
+        var note = noteManager.CreateNote();
+        note.Body = sample.Body;
+        note.Name = sample.Name;
+        note.Refs = sample.Refs;
+        await noteManager.SelectNoteAsync(note.Id);
+        UpdateSelectedDlls();
+        
+        StateHasChanged();
+    }
+
+    #endregion
+
 
     [JSInvokable]
     public async Task RunUserCode()
@@ -660,7 +947,7 @@
             var runMethod = asm.GetType("Program")?.GetMethod("Run");
             try
             {
-                runMethod?.Invoke(null, [GbxService.SelectedGbx.Gbx, DownloadService]);
+                runMethod?.Invoke(null, [GbxService.SelectedGbx.Gbx, EditorServices]);
             }
             catch (Exception ex)
             {

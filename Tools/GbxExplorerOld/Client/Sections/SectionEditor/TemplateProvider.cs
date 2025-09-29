@@ -11,12 +11,12 @@ using GBX.NET.Engines.Scene;
 using GBX.NET.Inputs;
 using TmEssentials;
 using System.Linq;
-using GbxExplorerOld.Client.Services;
+using GbxExplorerOld.Client.Sections.SectionEditor;
 
 public static class Program
 {
     //entrypoint
-    public static void Run(Gbx gbx, IDownloadStreamService dls)
+    public static void Run(Gbx gbx, EditorServices services)
     {
         
     }

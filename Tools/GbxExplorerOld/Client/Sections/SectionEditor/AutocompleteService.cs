@@ -1,65 +1,124 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Text;
+using OmniSharp.Models;
+using OmniSharp.Models.SignatureHelp;
+using OmniSharp.Models.v1.Completion;
+using OmniSharp.Options;
 namespace GbxExplorerOld.Client.Sections.SectionEditor;
 
 public class AutocompleteService
 {
-    public IEnumerable<string> GetSuggestions(string code, int position, List<MetadataReference> references)
+    private readonly RoslynProject completionProject;
+    private readonly OmniSharpCompletionService completionService;
+    private readonly OmniSharpSignatureHelpService signatureService;
+    private readonly OmniSharpQuickInfoProvider quickInfoProvider;
+
+    public AutocompleteService(List<MetadataReference> references, string code)
     {
-        var tree = CSharpSyntaxTree.ParseText(code);
-        var compilation = CSharpCompilation.Create("UserCode")
-            .AddReferences(references)
-            .AddSyntaxTrees(tree)
-            .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        completionProject = new RoslynProject(references, code);
 
-        var model = compilation.GetSemanticModel(tree);
-        var root = tree.GetRoot();
-        var token = root.FindToken(position);
+        var loggerFactory = LoggerFactory.Create(builder => {
+            builder.SetMinimumLevel(LogLevel.Error);
+        });
+        var formattingOptions = new FormattingOptions();
 
-        // Grab text already typed (prefix for filtering)
-        var prefix = token.IsKind(SyntaxKind.IdentifierToken) ? token.ValueText : string.Empty;
-        var prevChar = token.SpanStart > 0 ? code[token.SpanStart - 1] : '\0';
 
-        // Member completion after dot (map.Blo, Console.Wri…)
-        if (prevChar == '.' || token.IsKind(SyntaxKind.DotToken))
+        completionService = new OmniSharpCompletionService(completionProject.Workspace, formattingOptions, loggerFactory);
+        signatureService = new OmniSharpSignatureHelpService(completionProject.Workspace);
+        quickInfoProvider = new OmniSharpQuickInfoProvider(completionProject.Workspace, formattingOptions, loggerFactory);
+    }
+
+    public record Diagnostic
+    {
+        public LinePosition Start { get; init; }
+        public LinePosition End { get; init; }
+        public string Message { get; init; }
+        public int Severity { get; init; }
+    }
+
+    public async Task<CompletionResponse> GetCompletionAsync(string code, CompletionRequest completionRequest)
+    {
+        Solution updatedSolution;
+
+        do
         {
-            var memberAccess = token.Parent as MemberAccessExpressionSyntax
-                ?? token.Parent?.Parent as MemberAccessExpressionSyntax;
+            updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
+        } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
 
-            if (memberAccess?.Expression != null)
+        var document = updatedSolution.GetDocument(completionProject.DocumentId);
+        var completionResponse = await completionService.Handle(completionRequest, document);
+        
+        return completionResponse;
+    }
+
+    public async Task<CompletionResolveResponse> GetCompletionResolveAsync(CompletionResolveRequest completionResolveRequest)
+    {
+        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId);
+        var completionResponse = await completionService.Handle(completionResolveRequest, document);
+
+        return completionResponse;
+    }
+
+    public async Task<SignatureHelpResponse> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
+    {
+        Solution updatedSolution;
+
+        do
+        {
+            updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
+        } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
+
+        var document = updatedSolution.GetDocument(completionProject.DocumentId);
+        var signatureHelpResponse = await signatureService.Handle(signatureHelpRequest, document);
+
+        return signatureHelpResponse;
+    }
+
+    public async Task<QuickInfoResponse> GetQuickInfoAsync(QuickInfoRequest quickInfoRequest)
+    {
+        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId);
+        var quickInfoResponse = await quickInfoProvider.Handle(quickInfoRequest, document);
+
+        return quickInfoResponse;
+    }
+
+    public async Task<List<Diagnostic>> GetDiagnosticsAsync(string code)
+    {
+        Solution updatedSolution;
+
+        do
+        {
+            updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
+        } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
+
+        var compilation = await updatedSolution.Projects.First().GetCompilationAsync();
+        var dotnetDiagnostics = compilation.GetDiagnostics();
+
+        var diagnostics = dotnetDiagnostics.Select(current => {
+            var lineSpan = current.Location.GetLineSpan();
+
+            return new Diagnostic
             {
-                var typeInfo = model.GetTypeInfo(memberAccess.Expression).Type;
-                if (typeInfo != null)
-                {
-                    return typeInfo.GetMembers()
-                        .Where(m =>
-                            m.DeclaredAccessibility == Accessibility.Public &&
-                            !m.Name.StartsWith("get_") &&
-                            !m.Name.StartsWith("set_") &&
-                            m.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-                        .Select(m => m.Name)
-                        .Distinct();
-                }
-            }
-        }
+                Start = lineSpan.StartLinePosition,
+                End = lineSpan.EndLinePosition,
+                Message = current.GetMessage(),
+                Severity = GetSeverity(current.Severity)
+            };
+        }).ToList();
 
-        // Scope completion after whitespace ( " ma" )
-        if (token.IsKind(SyntaxKind.IdentifierToken) && char.IsWhiteSpace(prevChar))
+        return diagnostics;
+    }
+
+    private int GetSeverity(DiagnosticSeverity severity)
+    {
+        return severity switch
         {
-            return model.LookupSymbols(position)
-                .Where(s =>
-                    !s.Name.StartsWith("get_") &&
-                    !s.Name.StartsWith("set_") &&
-                    s.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-                .Select(s => s.Name)
-                .Distinct();
-        }
-
-        // Fallback
-        return model.LookupSymbols(position)
-            .Where(s => !s.Name.StartsWith("get_") && !s.Name.StartsWith("set_"))
-            .Select(s => s.Name)
-            .Distinct();
+            DiagnosticSeverity.Hidden => 1,
+            DiagnosticSeverity.Info => 2,
+            DiagnosticSeverity.Warning => 4,
+            DiagnosticSeverity.Error => 8,
+            _ => throw new Exception("Unknown diagnostic severity.")
+        };
     }
 }

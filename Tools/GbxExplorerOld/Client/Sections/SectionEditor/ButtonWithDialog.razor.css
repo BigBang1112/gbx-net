@@ -2,7 +2,12 @@
     background-color: #333;
     color: var(--text-normal);
     border: 1px solid #666;
-    padding: 1rem;
+}
+
+.dialog_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .close-dialog {
@@ -10,5 +15,4 @@
 }
 
 .close-form {
-    margin-top: 1rem;
 }

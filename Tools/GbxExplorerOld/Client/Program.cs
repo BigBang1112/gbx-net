@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
 using Blazored.LocalStorage;
+using GbxExplorerOld.Client.Sections.SectionEditor;
 using Microsoft.AspNetCore.Components.Authorization;
 
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, DiscordAuthenticationSta
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IGbxService, GbxService>();
 builder.Services.AddScoped<IDownloadStreamService, DownloadStreamService>();
+builder.Services.AddScoped<EditorServices>();
 builder.Services.AddSingleton<ISettingsService, SettingsService>();
 builder.Services.AddSingleton<ILogger, MemoryLogger>();
 builder.Services.AddSingleton<IFaultyGbxService, FaultyGbxService>();
