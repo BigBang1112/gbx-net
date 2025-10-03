@@ -2,7 +2,7 @@ name: Deploy Explorer to Pages
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["dev", "csharp-editor"]
     paths: [ ".github/workflows/deploy-explorer-pages.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.slnx" ]
   workflow_dispatch:
 
