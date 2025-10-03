@@ -22,8 +22,6 @@
     <ItemGroup>
         <PackageReference Include="BlazorMonaco" Version="3.3.0" />
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.14.0" />
         <PackageReference Include="OmniSharp.Roslyn.CSharp" Version="1.37.4" />
         <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
         <PackageReference Include="GitInfo" Version="3.5.0">
@@ -119,9 +117,6 @@
         <TrimmerRootAssembly Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
         <TrimmerRootAssembly Include="Microsoft.AspNetCore.Components.WebAssembly" />
         <TrimmerRootAssembly Include="Microsoft.AspNetCore.Metadata" />
-        <TrimmerRootAssembly Include="Microsoft.CodeAnalysis.CSharp" />
-        <TrimmerRootAssembly Include="Microsoft.CodeAnalysis" />
-        <TrimmerRootAssembly Include="Microsoft.CSharp" />
         <TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.Abstractions" />
         <TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.Binder" />
         <TrimmerRootAssembly Include="Microsoft.Extensions.Configuration" />
