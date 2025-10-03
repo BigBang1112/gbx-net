@@ -32,6 +32,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Completion;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.QuickInfo;
 using Microsoft.CodeAnalysis.Recommendations;
 using Microsoft.CodeAnalysis.Tags;
@@ -42,6 +43,7 @@ using OmniSharp.Options;
 using OmniSharp.Roslyn.CSharp.Helpers;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using CompletionItem = OmniSharp.Models.v1.Completion.CompletionItem;
 using CompletionTriggerKind = OmniSharp.Models.v1.Completion.CompletionTriggerKind;
@@ -116,6 +118,18 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             _logger = loggerFactory.CreateLogger<OmniSharpCompletionService>();
         }
 
+        
+        [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "GetCompletionsInternalAsync")]
+        public static extern Task<(CompletionList completionList, bool expandItemsAvailable)> 
+            GetCompletionsInternalAsync(
+                CSharpCompletionService @this, 
+                Document document,
+                int caretPosition,
+                CompletionTrigger trigger = default,
+                ImmutableHashSet<string> roles = null,
+                OptionSet options = null,
+                CancellationToken cancellationToken = default);
+        
         public async Task<CompletionResponse> Handle(CompletionRequest request, Document document)
         {
             _logger.LogTrace("Completions requested");
@@ -144,7 +158,7 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
                 return new CompletionResponse { Items = ImmutableArray<CompletionItem>.Empty };
             }
 
-            var (completions, expandedItemsAvailable) = await completionService.GetCompletionsInternalAsync(
+            var (completions, expandedItemsAvailable) = await GetCompletionsInternalAsync(completionService,
                 document,
                 position,
                 getCompletionTrigger(includeTriggerCharacter: false));

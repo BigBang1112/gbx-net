@@ -43,7 +43,7 @@ jobs:
         run: dotnet workload install wasm-tools
           
       - name: Publish
-        run: dotnet build && dotnet publish Tools/GbxExplorerOld/Client -c Debug --nologo -o publish /p:ContinuousIntegrationBuild=true
+        run: dotnet build && dotnet publish Tools/GbxExplorerOld/Client -c Release --nologo -o publish /p:ContinuousIntegrationBuild=true
         
       - name: Change base in index.html to repository name
         run: sed -i 's/<base href="\/" \/>/<base href="\/${{ github.event.repository.name }}\/" \/>/g' publish/wwwroot/index.html

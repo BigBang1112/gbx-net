@@ -45,7 +45,6 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
         private static readonly Type _symbolCompletionItemType;
         private static readonly MethodInfo _getSymbolsAsync;
         private static readonly PropertyInfo _getProviderName;
-        private static readonly MethodInfo _getCompletionsInternalAsync;
         private static readonly MethodInfo _getChangeAsync;
         internal static readonly PerLanguageOption<bool?> ShowItemsFromUnimportedNamespaces = new PerLanguageOption<bool?>("CompletionOptions", "ShowItemsFromUnimportedNamespaces", defaultValue: null);
 
@@ -56,7 +55,6 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
 
             _getProviderName = typeof(CompletionItem).GetProperty(ProviderName, BindingFlags.NonPublic | BindingFlags.Instance);
 
-            _getCompletionsInternalAsync = typeof(Microsoft.CodeAnalysis.Completion.CompletionService).GetMethod(nameof(GetCompletionsInternalAsync), BindingFlags.NonPublic | BindingFlags.Instance);
             _getChangeAsync = typeof(Microsoft.CodeAnalysis.Completion.CompletionService).GetMethod(nameof(GetChangeAsync), BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
@@ -91,16 +89,6 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
 
             return Enumerable.Empty<ISymbol>();
         }
-        
-        public static Task<(CompletionList completionList, bool expandItemsAvailable)> GetCompletionsInternalAsync(
-            this Microsoft.CodeAnalysis.Completion.CompletionService completionService,
-            Document document,
-            int caretPosition,
-            CompletionTrigger trigger = default,
-            ImmutableHashSet<string> roles = null,
-            OptionSet options = null,
-            CancellationToken cancellationToken = default)
-            => (Task<(CompletionList completionList, bool expandItemsAvailable)>)_getCompletionsInternalAsync.Invoke(completionService, new object[] { document, caretPosition, trigger, roles, options, cancellationToken });
 
         internal static Task<CompletionChange> GetChangeAsync(
             this Microsoft.CodeAnalysis.Completion.CompletionService completionService,
