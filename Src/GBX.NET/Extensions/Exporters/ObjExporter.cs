@@ -535,14 +535,20 @@ internal static class ObjExporter
 
             var triangleCounter = 0;
 
+            var positions = visual.VertexStreams.FirstOrDefault()?.Positions;
             foreach (var index in visual.IndexBuffer.Indices)
             {
+                if (index >= positions?.Length)
+                {
+                    continue;
+                }
+                
                 if (triangleCounter % 3 == 0)
                 {
                     objWriter.Write('f');
                 }
-
-                var v = visual.VertexStreams.FirstOrDefault()?.Positions?[index] ?? visual.Vertices[index].Position;
+                
+                var v = positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
                     ? (visual.VertexStreams.Count > 0 ? visual.VertexStreams[0].UVs.Values.FirstOrDefault()?[index] : (0, 0))
