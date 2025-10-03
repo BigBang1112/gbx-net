@@ -95,6 +95,7 @@ public partial interface IGbxReader : IDisposable
     string ReadSmallString();
     void ReadMarker(string value);
     int ReadOptimizedInt(int determineFrom);
+    short ReadVarNat15();
     T ReadReadable<T>(int version = 0) where T : IReadable, new();
     TReadable ReadReadable<TReadable, TNode>(TNode node, int version = 0)
         where TNode : IClass
@@ -1461,6 +1462,21 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         > byte.MaxValue => ReadUInt16(),
         _ => ReadByte()
     };
+
+    public short ReadVarNat15()
+    {
+        var b1 = ReadByte();
+
+        if ((b1 & 0x80) == 0)
+        {
+            // Single byte (0..127)
+            return (short)(b1 & 0x7F);
+        }
+
+        // Two bytes (128..32767)
+        var b2 = ReadByte();
+        return (short)((b1 & 0x7F) | (b2 << 7));
+    }
 
     public int[] ReadArrayOptimizedInt(int length, int? determineFrom = null)
     {
