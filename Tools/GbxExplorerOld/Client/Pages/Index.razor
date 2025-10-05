@@ -36,6 +36,7 @@ else
 
         <SectionSaveGbx @ref="sectionSaveGbx"></SectionSaveGbx>
 
+        <SectionEditor MainTreeCallback="MainTreeCallback"></SectionEditor>
         <SectionLog />
 
         <a class="section section-copyright hoverable" href="https://bigbang1112.cz" target=”_blank”>
@@ -153,6 +154,11 @@ else
     public void UpdateNodeTreeExplorer()
     {
         sectionNodeTreeExplorer?.Update();
+    }
+
+    public void MainTreeCallback(GbxModel gbx)
+    {
+        sectionNodeTreeExplorer?.Select(gbx);
     }
 
     public void Proceed()

@@ -1,5 +1,5 @@
-﻿using Microsoft.JSInterop;
-
+﻿using GBX.NET;
+using Microsoft.JSInterop;
 namespace GbxExplorerOld.Client.Services;
 
 public class DownloadStreamService : IDownloadStreamService
@@ -21,5 +21,12 @@ public class DownloadStreamService : IDownloadStreamService
     public async Task DownloadAsync(string fileName, MemoryStream stream)
     {
         await DownloadAsync(fileName, stream.ToArray());
+    }
+    
+    public async Task DownloadAsync(string fileName, IGbx gbx)
+    {
+        using var resultMs = new MemoryStream();
+        gbx.Save(resultMs);
+        await DownloadAsync(fileName, resultMs.ToArray());
     }
 }

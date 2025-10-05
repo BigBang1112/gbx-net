@@ -36,5 +36,27 @@
         <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <Target Name="GenerateDllListProd" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+        <ItemGroup>
+            <BuiltDlls Include="..\Client\bin\Release\$(TargetFramework)\*.dll" />
+        </ItemGroup>
 
+        <WriteLinesToFile
+                File="..\Client\bin\Release\$(TargetFramework)\available_dlls.txt"
+                Lines="@(BuiltDlls->'%(Filename)%(Extension)')"
+                Overwrite="true" />
+    </Target>
+
+    <Target Name="CopyDllsToWwwrootProd" DependsOnTargets="GenerateDllListProd" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+        <RemoveDir Directories="$(PublishDir)wwwroot\refs" />
+        
+        <ItemGroup>
+            <FilesToCopy Include="..\Client\bin\Release\$(TargetFramework)\*.dll" />
+            <FilesToCopy Include="..\Client\bin\Release\$(TargetFramework)\available_dlls.txt" />
+        </ItemGroup>
+
+        <Copy SourceFiles="@(FilesToCopy)"
+              DestinationFolder="$(PublishDir)wwwroot\refs"
+              SkipUnchangedFiles="true" />
+    </Target>
 </Project>
