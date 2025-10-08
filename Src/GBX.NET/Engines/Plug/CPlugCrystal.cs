@@ -208,8 +208,9 @@ public partial class CPlugCrystal
                 {
                     for (int i = 0; i < face.Vertices.Length; i++)
                     {
-                        var index = indices?[counter++] ?? counter;
+                        var index = indices is null ? counter : indices[counter];
                         face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
+                        counter++;
 
                         if (counter > lightmapCount)
                         {
