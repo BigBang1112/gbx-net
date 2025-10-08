@@ -1,0 +1,25 @@
+{
+  "Notes": {
+    "c3bf1bff3d534e088f7c6ccbdee0bc89": {
+      "Id": "c3bf1bff3d534e088f7c6ccbdee0bc89",
+      "Name": "Count Blocks",
+      "Version": 1,
+      "CreatedAt": 1759532765213,
+      "UpdatedAt": 1759533012662,
+      "Body": "using System;\nusing GBX.NET;\nusing GBX.NET.Engines.Game;\nusing GBX.NET.Engines.Scene;\nusing GBX.NET.Inputs;\nusing TmEssentials;\nusing System.Linq;\nusing GbxExplorerOld.Client.Sections.SectionEditor;\n\npublic static class Program\n{\n    //entrypoint\n    public static void Run(Gbx gbx, EditorServices services)\n    {\n        var map = (CGameCtnChallenge) gbx;\n        var result = map.GetBlocks()\n            .GroupBy(b =\u003E b.Name)\n            .Select(g =\u003E new { Name = g.Key, Count = g.Count() })\n            .OrderByDescending(x =\u003E x.Count);\n\n        Console.WriteLine(map.MapName);\n        foreach (var item in result)\n        {\n            Console.WriteLine($\u0022{item.Name}: {item.Count}\u0022);\n        }\n    }\n}\n",
+      "Refs": [
+        "System.Runtime.dll",
+        "System.Console.dll",
+        "netstandard.dll",
+        "GBX.NET.dll",
+        "TmEssentials.dll",
+        "System.Linq.dll",
+        "System.Collections.dll",
+        "System.Private.CoreLib.dll",
+        "System.Core.dll",
+        "System.Threading.Tasks.dll",
+        "GbxExplorerOld.Client.dll"
+      ]
+    }
+  }
+}

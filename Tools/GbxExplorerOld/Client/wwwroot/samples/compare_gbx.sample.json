@@ -1,0 +1,26 @@
+{
+  "Notes": {
+    "ae548df976cb4f3ead700c834b3d24b7": {
+      "Id": "ae548df976cb4f3ead700c834b3d24b7",
+      "Name": "Compare 2 GBX",
+      "Version": 1,
+      "CreatedAt": 1759087202654,
+      "UpdatedAt": 1759095428746,
+      "Body": "using System;\r\nusing GBX.NET;\r\nusing GBX.NET.Engines.Game;\r\nusing GBX.NET.Engines.Scene;\r\nusing GBX.NET.Inputs;\r\nusing TmEssentials;\r\nusing System.Linq;\r\nusing GbxExplorerOld.Client.Sections.SectionEditor;\r\nusing KellermanSoftware.CompareNetObjects;\r\n\r\npublic static class Program\r\n{\r\n    //entrypoint\r\n    public static void Run(Gbx gbx, EditorServices services)\r\n    {\r\n        if (services.GbxService.List.Count != 2) {\r\n            Console.WriteLine(\u0022Expected exactly 2 GBX files\u0022);\r\n            return;\r\n        }\r\n        var gbx1 = services.GbxService.List[0].Gbx;\r\n        var gbx2 = services.GbxService.List[1].Gbx;\r\n\r\n        if (gbx1.GetType() != gbx2.GetType()) {\r\n            Console.WriteLine(\u0022Expected GBX files of the same type\u0022);\r\n            return;\r\n        }\r\n\r\n\r\n        var compareLogic = new CompareLogic(new ComparisonConfig() { MaxDifferences = 100 });\r\n\r\n        var result = compareLogic.Compare(gbx1, gbx2);\r\n\r\n        if (!result.AreEqual)\r\n        {\r\n            Console.WriteLine(\u0022Files are not equal:\u0022);\r\n            Console.WriteLine();\r\n\r\n            foreach (var difference in result.Differences)\r\n            {\r\n                Console.WriteLine(difference.ToString());\r\n            }\r\n        }\r\n        else\r\n        {\r\n            Console.WriteLine(\u0022Files are equal.\u0022);\r\n        }\r\n    }\r\n}\r\n",
+      "Refs": [
+        "System.Runtime.dll",
+        "System.Console.dll",
+        "netstandard.dll",
+        "GBX.NET.dll",
+        "TmEssentials.dll",
+        "System.Linq.dll",
+        "System.Collections.dll",
+        "System.Private.CoreLib.dll",
+        "System.Core.dll",
+        "System.Threading.Tasks.dll",
+        "GbxExplorerOld.Client.dll",
+        "KellermanSoftware.Compare-NET-Objects.dll"
+      ]
+    }
+  }
+}
