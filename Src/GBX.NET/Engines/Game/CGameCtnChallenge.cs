@@ -497,6 +497,19 @@ public partial class CGameCtnChallenge :
         EmbeddedZipData = ms.ToArray();
     }
 
+#if NET8_0_OR_GREATER
+    public void ExtractEmbeddedZipData(string destinationDirectoryName)
+    {
+        if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
+        {
+            throw new Exception("Embedded data zip is not available and cannot be read.");
+        }
+
+        using var ms = new MemoryStream(EmbeddedZipData);
+        ZipFile.ExtractToDirectory(ms, destinationDirectoryName);
+    }
+#endif
+
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
