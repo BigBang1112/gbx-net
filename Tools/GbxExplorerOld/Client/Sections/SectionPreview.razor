@@ -7,6 +7,7 @@
 @inject ITypeCacheService TypeCacheService
 @inject ISelectionService SelectionService
 @inject IValuePreviewService ValuePreviewService
+@inject IJSRuntime Js
 
 <div class="section section-preview@(Gbx is null ? " centered-note" : "")" style="overflow:hidden">
     @if (Gbx is null)
@@ -132,8 +133,9 @@
                         <div>
                             <TypeRenderer Property="selectedElement.Property" TypeInfo="typeInfo" IsNullable="isNullable" />
                         </div>
-                        <div style="font-size: 1.7rem;font-weight:bold;">
-                            @(selectedElement.Property?.Name ?? $"#{selectedElement.Id}")
+                        <div style="display: flex;gap: 1rem">
+                            <span style="font-size: 1.7rem;font-weight:bold;">@(selectedElement.Property?.Name ?? $"#{selectedElement.Id}")</span>
+                            <button class="button" @onclick="CopyJsonPath" title="Copy JSONPath">{$.*}</button>
                         </div>
                         <div style="width:100%;display:flex;flex-direction:column;align-items:center">
                             <DynamicComponent Type="ValuePreviewService[actualType]" Parameters="GetValuePreviewParameters(val, selectedElement.Property, selectedElement.Owner)" />
@@ -207,6 +209,26 @@
     public void UpdateNodeTreeExplorer()
     {
         IndexPage?.UpdateNodeTreeExplorer();
+    }
+
+    private async Task CopyJsonPath()
+    {
+        var path = "";
+        var currentElement = selectedElement;
+        while (currentElement is not null)
+        {
+            if (currentElement.Property is not null)
+            {
+                path = "." + currentElement.Property.Name + path;
+            }
+            else
+            {
+                path = $"[{currentElement.Id}]" + path;
+            }
+            currentElement = currentElement.Tree?.Parent ?? null;
+        }
+        path = "$" + path;
+        await Js.InvokeVoidAsync("navigator.clipboard.writeText", path);
     }
 
     private Dictionary<string, object?> GetValuePreviewParameters(object? value, PropertyInfo? property, object? owner = null) => new()
