@@ -163,7 +163,7 @@ internal static class ObjExporter
 
         var unknownMaterialDict = new Dictionary<CPlug, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -233,7 +233,7 @@ internal static class ObjExporter
 
         var normalsDict = new Dictionary<Vec3, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -271,7 +271,7 @@ internal static class ObjExporter
 
         var uvs = new Dictionary<Vec2, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -303,7 +303,7 @@ internal static class ObjExporter
             }
         }
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
