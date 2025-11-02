@@ -255,8 +255,8 @@ archive VehicleProfile
  float
 
 archive PlayerTagConfig
- string
- bool
+ string TagId
+ bool IsVisibleByOtherPlayers
 
 archive ChallengeOpponent
  byte U01

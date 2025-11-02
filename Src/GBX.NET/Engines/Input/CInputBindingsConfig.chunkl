@@ -8,8 +8,8 @@ CInputBindingsConfig 0x13006000
  id[]
 
 archive Binding
+ int 
+ id DeviceId
+ int IsAnalog
  int
- id
- int
- int
- string
+ string Name
