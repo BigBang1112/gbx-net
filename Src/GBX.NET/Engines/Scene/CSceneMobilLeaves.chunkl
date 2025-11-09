@@ -2,7 +2,7 @@ CSceneMobilLeaves 0x0A05E000
 - inherits: CSceneMobil
 
 0x000
- CMwNod LeafShader (external)
+ CPlugShader LeafShader (external)
  float LeafRadiusBase
  float LeafRadiusRandom
  float
@@ -23,7 +23,7 @@ CSceneMobilLeaves 0x0A05E000
  float
 
 0x001
- CMwNod LeafShader (external)
+ CPlugShader LeafShader (external)
  float LeafRadiusBase
  float LeafRadiusRandom
  int LeafMaxCount
@@ -40,7 +40,7 @@ CSceneMobilLeaves 0x0A05E000
  float FarZ
 
 0x002
- CMwNod LeafShader (external)
+ CPlugShader LeafShader (external)
  float LeafRadiusBase
  float LeafRadiusRandom
  int LeafMaxCount
@@ -58,7 +58,7 @@ CSceneMobilLeaves 0x0A05E000
  float Curvature
 
 0x003
- CMwNod LeafShader (external)
+ CPlugShader LeafShader (external)
  float LeafRadiusBase
  float LeafRadiusRandom
  int LeafMaxCount
