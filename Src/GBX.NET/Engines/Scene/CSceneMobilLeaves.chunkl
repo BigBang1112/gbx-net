@@ -54,8 +54,6 @@ CSceneMobilLeaves 0x0A05E000
  float LeafOscillationPeriodRandom
  vec3 Wind
  float RespawnPeriod
- float FarZ
- float Curvature
 
 0x003
  CPlugShader LeafShader (external)
@@ -73,3 +71,5 @@ CSceneMobilLeaves 0x0A05E000
  float LeafOscillationPeriodRandom
  vec3 Wind
  float RespawnPeriod
+ float FarZ
+ float Curvature
