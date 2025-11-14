@@ -6,9 +6,9 @@ CPlugBitmapRenderLightFromMap 0x09021000
  int ObjectCountPerAxisMax
  float CameraNearZ_FactorInObject
  float CameraFarZ_ToAdd
- float
- float
- float
- float
- float
- float
+ float RemapMin_Night
+ float RemapMax_Night
+ float RemapMin_DayAmb
+ float RemapMax_DayAmb
+ float RemapMin_DayDir
+ float RemapMax_DayDir
