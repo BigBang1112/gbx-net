@@ -9,6 +9,7 @@
         <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
         <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
         <WasmBuildNative>true</WasmBuildNative>
+        <WasmEnableStreamingResponse>false</WasmEnableStreamingResponse>
     </PropertyGroup>
 
     <ItemGroup>
