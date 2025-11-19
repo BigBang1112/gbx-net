@@ -2,84 +2,74 @@ CSceneMobilLeaves 0x0A05E000
 - inherits: CSceneMobil
 
 0x000
- CMwNod
+ CPlugShader LeafShader (external)
+ float LeafRadiusBase
+ float LeafRadiusRandom
+ float
+ float
+ int LeafMaxCount
+ float LeafFallingSpeedBase
+ float LeafAlphaSpeedMax
+ float LeafBetaSpeedlMax
+ float
+ float
+ float
+ vec3 Wind
  float
  float
  float
  float
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ float RespawnPeriod
  float
 
 0x001
- CMwNod
- float
- float
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ CPlugShader LeafShader (external)
+ float LeafRadiusBase
+ float LeafRadiusRandom
+ int LeafMaxCount
+ float LeafFallingSpeedBase
+ float LeafFallingSpeedRandom
+ float LeafAlphaSpeedMax
+ float LeafBetaSpeedlMax
+ float LeafOscillationAmplitudeBase
+ float LeafOscillationAmplitudeRandom
+ float LeafOscillationPeriodBase
+ float LeafOscillationPeriodRandom
+ vec3 Wind
+ float RespawnPeriod
+ float FarZ
 
 0x002
- CMwNod
- float
- float
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ CPlugShader LeafShader (external)
+ float LeafRadiusBase
+ float LeafRadiusRandom
+ int LeafMaxCount
+ float LeafFallingSpeedBase
+ float LeafFallingSpeedRandom
+ float LeafAlphaSpeedMax
+ float LeafBetaSpeedlMax
+ float LeafOscillationAmplitudeBase
+ float LeafOscillationAmplitudeRandom
+ float LeafOscillationPeriodBase
+ float LeafOscillationPeriodRandom
+ vec3 Wind
+ float RespawnPeriod
 
 0x003
- CMwNod (external)
- float
- float
- int
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+ CPlugShader LeafShader (external)
+ float LeafRadiusBase
+ float LeafRadiusRandom
+ int LeafMaxCount
+ int LeafEmitterMaxCount
+ float LeafFallingSpeedBase
+ float LeafFallingSpeedRandom
+ float LeafAlphaSpeedMax
+ float LeafBetaSpeedlMax
+ float LeafOscillationAmplitudeBase
+ float LeafOscillationAmplitudeRandom
+ float LeafOscillationPeriodBase
+ float LeafOscillationPeriodRandom
+ vec3 Wind
+ float RespawnPeriod
+ float FarZ
+ float Curvature
