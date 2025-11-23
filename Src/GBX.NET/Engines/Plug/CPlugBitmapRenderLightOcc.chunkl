@@ -3,5 +3,5 @@ CPlugBitmapRenderLightOcc 0x0909F000
 
 0x000
  float FovY
- float
- CMwNod
+ float Opacity
+ CMwNod BitmapToModulate
