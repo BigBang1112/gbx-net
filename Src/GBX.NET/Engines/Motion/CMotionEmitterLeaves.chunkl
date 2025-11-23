@@ -1,18 +1,7 @@
 CMotionEmitterLeaves 0x0804C000
 - inherits: CMotionManaged
 
-0x000
- CMotionManagerLeaves ManagerModel (external)
- float
- float
- float
- float
-
 0x001
  CMotionManagerLeaves ManagerModel (external)
- float
- float
- float
- float
- float
- float
+ vec3 position
+ vec3 Radius
