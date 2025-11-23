@@ -2,11 +2,15 @@ CMotionTrackMobilPitchin 0x08041000
 - inherits: CMotionTrack
 
 0x002
- CMwNod
- float
- float
- float
- float
- int
- float
- float
+ CMwNod Sea
+ float Flottaison
+ float Tangage
+ float Roulis
+ float OffsetHauteur
+ int<EPitchinMode> PitchinMode
+ float PeriodDelta
+ float MaxAngle
+
+enum EPitchinMode
+ Normal
+ Simple
