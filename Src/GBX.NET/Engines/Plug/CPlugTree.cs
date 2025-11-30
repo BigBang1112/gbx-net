@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Components;
+
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTree
 {
@@ -16,6 +18,18 @@ public partial class CPlugTree
     [AppliedWithChunk<Chunk0904F019>]
     [AppliedWithChunk<Chunk0904F01A>]
     public Iso4? Location { get; set; }
+
+    public CPlugMaterial? Material
+    {
+        get => Shader as CPlugMaterial;
+        set => Shader = value;
+    }
+
+    public GbxRefTableFile? MaterialFile
+    {
+        get => ShaderFile;
+        set => ShaderFile = value;
+    }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
