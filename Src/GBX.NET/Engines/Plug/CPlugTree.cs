@@ -31,6 +31,84 @@ public partial class CPlugTree
         set => ShaderFile = value;
     }
 
+    public bool IsVisible
+    {
+        get => (Flags >> 0x3 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x8) : (Flags & ~0x8u);
+    }
+
+    public bool IsCollidable
+    {
+        get => (Flags >> 0x7 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x80) : (Flags & ~0x80u);
+    }
+
+    public bool IsRooted
+    {
+        get => (Flags >> 0xF & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x1000) : (Flags & ~0x1000u);
+    }
+
+    public bool IsLightVolume
+    {
+        get => (Flags >> 0x9 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x200) : (Flags & ~0x200u);
+    }
+
+    public bool IsLightVolumeVisible
+    {
+        get => (Flags >> 0xA & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x400) : (Flags & ~0x400u);
+    }
+
+    public bool UseLocation
+    {
+        get => (Flags >> 0x2 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x4) : (Flags & ~0x4u);
+    }
+
+    public bool IsShadowCaster
+    {
+        get => (Flags >> 0xE & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+    }
+
+    public bool IsFixedRatio2D
+    {
+        get => (Flags >> 0x8 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x100) : (Flags & ~0x100u);
+    }
+
+    public bool IsPickable
+    {
+        get => (Flags >> 0x6 & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x40) : (Flags & ~0x40u);
+    }
+
+    public bool IsPickableVisual
+    {
+        get => (Flags >> 0xB & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+    }
+
+    public bool IsPortal
+    {
+        get => (Flags & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x1) : (Flags & ~0x1u);
+    }
+
+    public bool TestBBoxVisibility
+    {
+        get => (Flags >> 0xD & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x4000) : (Flags & ~0x4000u);
+    }
+
+    public bool UseRenderBefore
+    {
+        get => (Flags >> 0xC & 0x1) != 0;
+        set => Flags = value ? (Flags | 0x2000) : (Flags & ~0x2000u);
+    }
+
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
         return GetAllChildren(this, includeVisualMipLevels);
@@ -168,12 +246,60 @@ public partial class CPlugTree
     {
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
+            n.Flags = rw.DataUInt32((uint)n.Flags) & 0x1FFFF;
+
+            if ((n.Flags & 4) != 0)
+            {
+                n.Location = rw.Iso4(n.Location);
+            }
+        }
+    }
+
+    public partial class Chunk0904F018
+    {
+        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
+        {
+            n.Flags = rw.DataUInt64(n.Flags);
+
+            if ((n.Flags & 4) != 0)
+            {
+                n.Location = rw.Iso4(n.Location);
+            }
+
+            n.Flags |= 0x2800;
+            // Flags = Flags | 0x8000; (if Bucr3IsR)
+        }
+    }
+
+    public partial class Chunk0904F019
+    {
+        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
+        {
             n.Flags = rw.DataUInt32((uint)n.Flags);
 
             if ((n.Flags & 4) != 0)
             {
                 n.Location = rw.Iso4(n.Location);
             }
+
+            n.Flags |= 0x2800;
+            // Flags = Flags | 0x8000; (if Bucr3IsR)
+        }
+    }
+
+    public partial class Chunk0904F01A
+    {
+        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
+        {
+            n.Flags = rw.DataUInt32((uint)n.Flags);
+
+            if ((n.Flags & 4) != 0)
+            {
+                n.Location = rw.Iso4(n.Location);
+            }
+
+            n.Flags |= 0x2000;
+            // Flags = Flags | 0x8000; (if Bucr3IsR)
         }
     }
 }
