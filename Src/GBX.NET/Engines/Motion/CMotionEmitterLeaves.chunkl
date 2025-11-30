@@ -3,5 +3,5 @@ CMotionEmitterLeaves 0x0804C000
 
 0x001
  CMotionManagerLeaves ManagerModel (external)
- vec3 pos
+ vec3 Pos
  vec3 Radius
