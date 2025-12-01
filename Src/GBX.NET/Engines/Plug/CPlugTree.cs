@@ -248,7 +248,7 @@ public partial class CPlugTree
         {
             n.Flags = rw.DataUInt32((uint)n.Flags) & 0x1FFFF;
 
-            if ((n.Flags & 4) != 0)
+            if (n.UseLocation)
             {
                 n.Location = rw.Iso4(n.Location);
             }
@@ -261,7 +261,7 @@ public partial class CPlugTree
         {
             n.Flags = rw.DataUInt64(n.Flags);
 
-            if ((n.Flags & 4) != 0)
+            if (n.UseLocation)
             {
                 n.Location = rw.Iso4(n.Location);
             }
@@ -277,7 +277,7 @@ public partial class CPlugTree
         {
             n.Flags = rw.DataUInt32((uint)n.Flags);
 
-            if ((n.Flags & 4) != 0)
+            if (n.UseLocation)
             {
                 n.Location = rw.Iso4(n.Location);
             }
@@ -293,7 +293,7 @@ public partial class CPlugTree
         {
             n.Flags = rw.DataUInt32((uint)n.Flags);
 
-            if ((n.Flags & 4) != 0)
+            if (n.UseLocation)
             {
                 n.Location = rw.Iso4(n.Location);
             }
