@@ -34,79 +34,79 @@ public partial class CPlugTree
     public bool IsVisible
     {
         get => (Flags >> 0x3 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x8) : (Flags & ~0x8u);
+        set => Flags = value ? (Flags | 0x8) : (Flags & ~0x8ul);
     }
 
     public bool IsCollidable
     {
         get => (Flags >> 0x7 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x80) : (Flags & ~0x80u);
+        set => Flags = value ? (Flags | 0x80) : (Flags & ~0x80ul);
     }
 
     public bool IsRooted
     {
         get => (Flags >> 0xF & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x1000) : (Flags & ~0x1000u);
+        set => Flags = value ? (Flags | 0x8000) : (Flags & ~0x8000ul);
     }
 
     public bool IsLightVolume
     {
         get => (Flags >> 0x9 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x200) : (Flags & ~0x200u);
+        set => Flags = value ? (Flags | 0x200) : (Flags & ~0x200ul);
     }
 
     public bool IsLightVolumeVisible
     {
         get => (Flags >> 0xA & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x400) : (Flags & ~0x400u);
+        set => Flags = value ? (Flags | 0x400) : (Flags & ~0x400ul);
     }
 
     public bool UseLocation
     {
         get => (Flags >> 0x2 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x4) : (Flags & ~0x4u);
+        set => Flags = value ? (Flags | 0x4) : (Flags & ~0x4ul);
     }
 
     public bool IsShadowCaster
     {
         get => (Flags >> 0xE & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+        set => Flags = value ? (Flags | 0x4000) : (Flags & ~0x4000ul);
     }
 
     public bool IsFixedRatio2D
     {
         get => (Flags >> 0x8 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x100) : (Flags & ~0x100u);
+        set => Flags = value ? (Flags | 0x100) : (Flags & ~0x100ul);
     }
 
     public bool IsPickable
     {
         get => (Flags >> 0x6 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x40) : (Flags & ~0x40u);
+        set => Flags = value ? (Flags | 0x40) : (Flags & ~0x40ul);
     }
 
     public bool IsPickableVisual
     {
         get => (Flags >> 0xB & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800ul);
     }
 
     public bool IsPortal
     {
         get => (Flags & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x1) : (Flags & ~0x1u);
+        set => Flags = value ? (Flags | 0x1) : (Flags & ~0x1ul);
     }
 
     public bool TestBBoxVisibility
     {
         get => (Flags >> 0xD & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x4000) : (Flags & ~0x4000u);
+        set => Flags = value ? (Flags | 0x2000) : (Flags & ~0x2000ul);
     }
 
     public bool UseRenderBefore
     {
         get => (Flags >> 0xC & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x2000) : (Flags & ~0x2000u);
+        set => Flags = value ? (Flags | 0x1000) : (Flags & ~0x1000ul);
     }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
