@@ -1,4 +1,5 @@
 ﻿using GBX.NET;
+using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
 using GBX.NET.ZLib;
 using Microsoft.Extensions.Logging;
@@ -28,17 +29,17 @@ var logger = LoggerFactory.Create(builder =>
 
 while (true)
 {
-    try
-    {
+    /*try
+    {*/
         var stopwatch = Stopwatch.StartNew();
-        var gbx = Gbx.Parse(fileName, new() { Logger = logger });
+        var gbx = Gbx.ParseNode(fileName, new() { Logger = logger });
         stopwatch.Stop();
         logger.LogInformation("Parsed in {time}ms", stopwatch.Elapsed.TotalMilliseconds);
-    }
+    /*}
     catch (Exception ex)
     {
         logger.LogError(ex, "Exception during parse.");
-    }
+    }*/
 
     Console.WriteLine();
     Console.ReadKey(true);

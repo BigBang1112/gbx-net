@@ -2,7 +2,7 @@
   "profiles": {
     "ExtractPakFileHashes": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\Games\\Vsk5Online\\Packs\""
+      "commandLineArgs": "\"E:\\Maniaplanet3\\Packs\""
     }
   }
 }

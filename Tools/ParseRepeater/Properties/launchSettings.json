@@ -2,7 +2,7 @@
   "profiles": {
     "ParseRepeater": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\TMUF_CORRECT\\Alpine\\Media\\Solid\\AlpineAdvertAir.Solid.Gbx\""
+      "commandLineArgs": "\"D:\\GBX.NET 2\\nations-converter\\Src\\NationsConverterCLI\\UserData\\Items\\NC2\\Crystal\\Modernized\\MM\\Stadium\\Decors\\Fabric\\StadiumFabricCornerOut\\Air_0_0.Item.Gbx\""
     }
   }
 }
