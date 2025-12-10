@@ -1,5 +1,7 @@
 ﻿using GBX.NET.Components;
 
+using static GBX.NET.BitHelper;
+
 namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTree
@@ -33,80 +35,80 @@ public partial class CPlugTree
 
     public bool IsVisible
     {
-        get => (Flags >> 0x3 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x8) : (Flags & ~0x8u);
+        get => GetBit(Flags, 0x3);
+        set => Flags = SetBit(Flags, 0x3, value);
     }
 
     public bool IsCollidable
     {
-        get => (Flags >> 0x7 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x80) : (Flags & ~0x80u);
+        get => GetBit(Flags, 0x7);
+        set => Flags = SetBit(Flags, 0x7, value);
     }
 
     public bool IsRooted
     {
-        get => (Flags >> 0xF & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x1000) : (Flags & ~0x1000u);
+        get => GetBit(Flags, 0xF);
+        set => Flags = SetBit(Flags, 0xF, value);
     }
 
     public bool IsLightVolume
     {
-        get => (Flags >> 0x9 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x200) : (Flags & ~0x200u);
+        get => GetBit(Flags, 0x9);
+        set => Flags = SetBit(Flags, 0x9, value);
     }
 
     public bool IsLightVolumeVisible
     {
-        get => (Flags >> 0xA & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x400) : (Flags & ~0x400u);
+        get => GetBit(Flags, 0xA);
+        set => Flags = SetBit(Flags, 0xA, value);
     }
 
     public bool UseLocation
     {
-        get => (Flags >> 0x2 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x4) : (Flags & ~0x4u);
+        get => GetBit(Flags, 0x2);
+        set => Flags = SetBit(Flags, 0x2, value);
     }
 
     public bool IsShadowCaster
     {
-        get => (Flags >> 0xE & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+        get => GetBit(Flags, 0xE);
+        set => Flags = SetBit(Flags, 0xE, value);
     }
 
     public bool IsFixedRatio2D
     {
-        get => (Flags >> 0x8 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x100) : (Flags & ~0x100u);
+        get => GetBit(Flags, 0x8);
+        set => Flags = SetBit(Flags, 0x8, value);
     }
 
     public bool IsPickable
     {
-        get => (Flags >> 0x6 & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x40) : (Flags & ~0x40u);
+        get => GetBit(Flags, 0x6);
+        set => Flags = SetBit(Flags, 0x6, value);
     }
 
     public bool IsPickableVisual
     {
-        get => (Flags >> 0xB & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x800) : (Flags & ~0x800u);
+        get => GetBit(Flags, 0xB);
+        set => Flags = SetBit(Flags, 0xB, value);
     }
 
     public bool IsPortal
     {
-        get => (Flags & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x1) : (Flags & ~0x1u);
+        get => GetBit(Flags, 0x0);
+        set => Flags = SetBit(Flags, 0x0, value);
     }
 
     public bool TestBBoxVisibility
     {
-        get => (Flags >> 0xD & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x4000) : (Flags & ~0x4000u);
+        get => GetBit(Flags, 0xD);
+        set => Flags = SetBit(Flags, 0xD, value);
     }
 
     public bool UseRenderBefore
     {
-        get => (Flags >> 0xC & 0x1) != 0;
-        set => Flags = value ? (Flags | 0x2000) : (Flags & ~0x2000u);
+        get => GetBit(Flags, 0xC);
+        set => Flags = SetBit(Flags, 0xC, value);
     }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)

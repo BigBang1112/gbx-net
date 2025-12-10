@@ -1,240 +1,241 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using static GBX.NET.BitHelper;
+
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugShader
 {
     public bool IsDoubleSided
     {
-        get => (RequirementFlags >> 0xA & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x400) : (RequirementFlags & ~0x400ul);
+        get => GetBit(RequirementFlags, 0xA);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xA, value);
     }
 
     public int BiasZ
     {
-        get => (int)(RequirementFlags >> 0x2 & 0x1F);
-        set => RequirementFlags = (RequirementFlags & ~0x7Cul) | ((ulong)(value & 0x1F) << 0x2);
+        get => GetBitRange(RequirementFlags, 0x2, 5);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x2, 5, value);
     }
 
     public EFillMode FillMode
     {
-        get => (EFillMode)(RequirementFlags & 0x3);
-        set => RequirementFlags = (RequirementFlags & ~0x3ul) | ((ulong)value & 0x3);
+        get => (EFillMode)GetBitRange(RequirementFlags, 0, 2);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0, 2, (int)value);
     }
 
     public int TexCoordCount
     {
-        get => (int)(RequirementFlags >> 0x20 & 0xF);
-        set => RequirementFlags = (RequirementFlags & ~0xF00000000ul) | ((ulong)(value & 0xF) << 0x20);
+        get => GetBitRange(RequirementFlags, 0x20, 4);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x20, 4, value);
     }
-
 
     public bool ShadowRecvGrp0
     {
-        get => (RequirementFlags >> 0x24 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x1000000000UL) : (RequirementFlags & ~0x1000000000UL);
+        get => GetBit(RequirementFlags, 0x24);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x24, value);
     }
 
     public bool ShadowRecvGrp1
     {
-        get => (RequirementFlags >> 0x25 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x2000000000UL) : (RequirementFlags & ~0x2000000000UL);
+        get => GetBit(RequirementFlags, 0x25);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x25, value);
     }
 
     public bool ShadowRecvGrp2
     {
-        get => (RequirementFlags >> 0x26 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x4000000000UL) : (RequirementFlags & ~0x4000000000UL);
+        get => GetBit(RequirementFlags, 0x26);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x26, value);
     }
 
     public bool ShadowRecvGrp3
     {
-        get => (RequirementFlags >> 0x27 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x8000000000UL) : (RequirementFlags & ~0x8000000000UL);
+        get => GetBit(RequirementFlags, 0x27);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x27, value);
     }
 
     public bool ShadowMPassEnable
     {
-        get => (RequirementFlags >> 0xB & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x800UL) : (RequirementFlags & ~0x800UL);
+        get => GetBit(RequirementFlags, 0xB);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xB, value);
     }
 
     public bool ShadowCasterDisable
     {
-        get => (RequirementFlags >> 0x32 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x4000000000000UL) : (RequirementFlags & ~0x4000000000000UL);
+        get => GetBit(RequirementFlags, 0x32);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x32, value);
     }
 
     public bool ShadowImageSpaceDisable
     {
-        get => (RequirementFlags >> 0x35 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x20000000000000UL) : (RequirementFlags & ~0x20000000000000UL);
+        get => GetBit(RequirementFlags, 0x35);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x35, value);
     }
 
     public bool ProjectorReceiver
     {
-        get => (RequirementFlags >> 0xC & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x1000UL) : (RequirementFlags & ~0x1000UL);
+        get => GetBit(RequirementFlags, 0xC);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xC, value);
     }
 
     public bool StaticLighting
     {
-        get => (RequirementFlags >> 0xF & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x8000UL) : (RequirementFlags & ~0x8000UL);
+        get => GetBit(RequirementFlags, 0xF);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xF, value);
     }
 
     public bool IsFogEyeZEnable
     {
-        get => (RequirementFlags >> 0xD & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x2000UL) : (RequirementFlags & ~0x2000UL);
+        get => GetBit(RequirementFlags, 0xD);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xD, value);
     }
 
     public bool TweakFogColorBlack
     {
-        get => (RequirementFlags >> 0x33 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x8000000000000UL) : (RequirementFlags & ~0x8000000000000UL);
+        get => GetBit(RequirementFlags, 0x33);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x33, value);
     }
 
     public bool IsFogPlaneEnable
     {
-        get => (RequirementFlags >> 0xE & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x4000UL) : (RequirementFlags & ~0x4000UL);
+        get => GetBit(RequirementFlags, 0xE);
+        set => RequirementFlags = SetBit(RequirementFlags, 0xE, value);
     }
 
     public bool TransTreeMip
     {
-        get => (RequirementFlags >> 0x9 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x200UL) : (RequirementFlags & ~0x200UL);
+        get => GetBit(RequirementFlags, 0x9);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x9, value);
     }
 
     public bool IsTranslucent
     {
-        get => (RequirementFlags >> 0x7 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x80UL) : (RequirementFlags & ~0x80UL);
+        get => GetBit(RequirementFlags, 0x7);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x7, value);
     }
 
     public bool IsAlphaBlended
     {
-        get => (RequirementFlags >> 0x8 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x100UL) : (RequirementFlags & ~0x100UL);
+        get => GetBit(RequirementFlags, 0x8);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x8, value);
     }
 
     public bool Alpha01SoftEdges
     {
-        get => (RequirementFlags >> 0x1F & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x80000000UL) : (RequirementFlags & ~0x80000000UL);
+        get => GetBit(RequirementFlags, 0x1F);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x1F, value);
     }
 
     public EVertexSpace VertexSpace
     {
-        get => (EVertexSpace)(RequirementFlags >> 0x36 & 0x3);
-        set => RequirementFlags = (RequirementFlags & ~0xC0000000000000UL) | (((ulong)value & 0x3) << 0x36);
+        get => (EVertexSpace)GetBitRange(RequirementFlags, 0x36, 2);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x36, 2, (int)value);
     }
 
     public bool SortCustom
     {
-        get => (RequirementFlags >> 0x12 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x40000UL) : (RequirementFlags & ~0x40000UL);
+        get => GetBit(RequirementFlags, 0x12);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x12, value);
     }
 
     public ESortPosition SortPosition
     {
-        get => (ESortPosition)(RequirementFlags >> 0x1A & 0x3);
-        set => RequirementFlags = (RequirementFlags & ~0xC000000UL) | (((ulong)value & 0x3) << 0x1A);
+        get => (ESortPosition)GetBitRange(RequirementFlags, 0x1A, 2);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x1A, 2, (int)value);
     }
 
     public bool SortIndex
     {
-        get => (RequirementFlags >> 0x19 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x2000000UL) : (RequirementFlags & ~0x2000000UL);
+        get => GetBit(RequirementFlags, 0x19);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x19, value);
     }
 
     public bool ComputeFillValue
     {
-        get => (RequirementFlags >> 0x31 & 0x1) != 0;
-        set => RequirementFlags = value ? (RequirementFlags | 0x2000000000000UL) : (RequirementFlags & ~0x2000000000000UL);
+        get => GetBit(RequirementFlags, 0x31);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x31, value);
     }
 
     public bool VIdReflected
     {
-        get => (VisibleIdFlags & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x1) : (VisibleIdFlags & ~0x1));
+        get => GetBit(VisibleIdFlags, 0);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0, value);
     }
 
     public bool VIdReflectMirror
     {
-        get => (VisibleIdFlags >> 0x1 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x2) : (VisibleIdFlags & ~0x2));
+        get => GetBit(VisibleIdFlags, 0x1);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x1, value);
     }
 
     public bool VIdRefracted
     {
-        get => (VisibleIdFlags >> 0x2 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x4) : (VisibleIdFlags & ~0x4));
+        get => GetBit(VisibleIdFlags, 0x2);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x2, value);
     }
 
     public bool VIdViewDepBump
     {
-        get => (VisibleIdFlags >> 0x3 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x8) : (VisibleIdFlags & ~0x8));
+        get => GetBit(VisibleIdFlags, 0x3);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x3, value);
     }
 
     public bool VIdViewDepOcclusion
     {
-        get => (VisibleIdFlags >> 0x4 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x10) : (VisibleIdFlags & ~0x10));
+        get => GetBit(VisibleIdFlags, 0x4);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x4, value);
     }
 
     public bool VIdOnlyRefracted
     {
-        get => (VisibleIdFlags >> 0x5 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x20) : (VisibleIdFlags & ~0x20));
+        get => GetBit(VisibleIdFlags, 0x5);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x5, value);
     }
 
     public bool VIdHideWhenUnderground
     {
-        get => (VisibleIdFlags >> 0x6 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x40) : (VisibleIdFlags & ~0x40));
+        get => GetBit(VisibleIdFlags, 0x6);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x6, value);
     }
 
     public bool VIdHideWhenOverground
     {
-        get => (VisibleIdFlags >> 0x7 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x80) : (VisibleIdFlags & ~0x80));
+        get => GetBit(VisibleIdFlags, 0x7);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x7, value);
     }
 
     public bool VIdViewDepWindIntens
     {
-        get => (VisibleIdFlags >> 0x9 & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x200) : (VisibleIdFlags & ~0x200));
+        get => GetBit(VisibleIdFlags, 0x9);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0x9, value);
     }
 
     public bool VIdBackground
     {
-        get => (VisibleIdFlags >> 0xA & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x400) : (VisibleIdFlags & ~0x400));
+        get => GetBit(VisibleIdFlags, 0xA);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xA, value);
     }
 
     public bool VIdGrassRGB
     {
-        get => (VisibleIdFlags >> 0xB & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x800) : (VisibleIdFlags & ~0x800));
+        get => GetBit(VisibleIdFlags, 0xB);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xB, value);
     }
 
     public bool VIdLightGenP
     {
-        get => (VisibleIdFlags >> 0xC & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x1000) : (VisibleIdFlags & ~0x1000));
+        get => GetBit(VisibleIdFlags, 0xC);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xC, value);
     }
 
     public bool VIdVehicle
     {
-        get => (VisibleIdFlags >> 0xD & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x2000) : (VisibleIdFlags & ~0x2000));
+        get => GetBit(VisibleIdFlags, 0xD);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xD, value);
     }
 
     public bool VIdHideOnlyDirect
     {
-        get => (VisibleIdFlags >> 0xE & 0x1) != 0;
-        set => VisibleIdFlags = (ushort)(value ? (VisibleIdFlags | 0x4000) : (VisibleIdFlags & ~0x4000));
+        get => GetBit(VisibleIdFlags, 0xE);
+        set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xE, value);
     }
 
     public partial class Chunk09002014
