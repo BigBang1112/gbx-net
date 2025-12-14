@@ -4,6 +4,10 @@ CHmsSoundSource 0x0600D000
 0x000
  CPlugSound PlugSound (external)
 
+0x001
+ float Volume
+ float Pitch
+
 0x002
  CPlugSound PlugSound (external)
  float PriorityAdjustement
