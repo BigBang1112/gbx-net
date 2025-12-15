@@ -77,12 +77,11 @@ public sealed class GbxRefTable
                 var fileName = Path.GetFileName(filePath);
 
                 filePath = Directory.EnumerateFiles(directory)
-                    .Select(Path.GetFileName)
-                    .FirstOrDefault(f => string.Equals(f, fileName, StringComparison.OrdinalIgnoreCase));
+                    .FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
 
                 if (filePath is null)
                 {
-                    logger?.LogWarning("File not found: {FilePath}", filePath);
+                    logger?.LogWarning("File not found in directory {Directory}: {FileName}", directory, fileName);
                     return default;
                 }
             }
