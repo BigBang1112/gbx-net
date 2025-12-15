@@ -69,6 +69,8 @@ public sealed class GbxRefTable
                 var directory = Path.GetDirectoryName(filePath);
                 if (string.IsNullOrEmpty(directory) || !Directory.Exists(directory))
                 {
+                    logger?.LogWarning("Directory not found: {Directory}", directory);
+                    logger?.LogWarning("File not found: {FilePath}", filePath);
                     return default;
                 }
 
