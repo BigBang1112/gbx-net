@@ -40,12 +40,12 @@ internal static class Input
 
     public static uint GetData(IInput input) => input switch
     {
+        FakeIsRaceRunning fakeIsRaceRunning => fakeIsRaceRunning.Data,
+        FakeFinishLine fakeFinishLine => fakeFinishLine.Data,
         IInputState state => (uint)(state.Pressed ? 128 : 0),
         AccelerateReal accelerateReal => accelerateReal.Value.FromGasValue(),
         BrakeReal brakeReal => brakeReal.Value.FromGasValue(),
         Steer steer => steer.Value.FromSteerValue(),
-        FakeIsRaceRunning fakeIsRaceRunning => fakeIsRaceRunning.Data,
-        FakeFinishLine fakeFinishLine => fakeFinishLine.Data,
         _ => 0
     };
 
