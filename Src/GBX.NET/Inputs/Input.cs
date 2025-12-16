@@ -5,8 +5,8 @@ internal static class Input
     public static IInput Parse(TimeInt32 time, string name, uint data) => name switch
     {
         "_FakeDontInverseAxis" => new FakeDontInverseAxis(time, data != 0),
-        "_FakeFinishLine" => new FakeFinishLine(time, data != 0),
-        "_FakeIsRaceRunning" => new FakeIsRaceRunning(time, data != 0),
+        "_FakeFinishLine" => new FakeFinishLine(time, data),
+        "_FakeIsRaceRunning" => new FakeIsRaceRunning(time, data),
         "Accelerate" => new Accelerate(time, data != 0),
         "AccelerateReal" => new AccelerateReal(time, data.ToGasValue()),
         "Brake" => new Brake(time, data != 0),
@@ -44,6 +44,8 @@ internal static class Input
         AccelerateReal accelerateReal => accelerateReal.Value.FromGasValue(),
         BrakeReal brakeReal => brakeReal.Value.FromGasValue(),
         Steer steer => steer.Value.FromSteerValue(),
+        FakeIsRaceRunning fakeIsRaceRunning => fakeIsRaceRunning.Data,
+        FakeFinishLine fakeFinishLine => fakeFinishLine.Data,
         _ => 0
     };
 
