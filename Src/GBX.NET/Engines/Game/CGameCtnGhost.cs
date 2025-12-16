@@ -81,6 +81,75 @@ public partial class CGameCtnGhost
     [AppliedWithChunk<Chunk03092025>]
     public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
 
+    /// <summary>
+    /// Retrieves inputs from <see cref="Inputs"/> that are displayable. Currently it only makes a difference with Competition Patch 2 features.
+    /// </summary>
+    /// <returns>Displayable inputs as IEnumerable.</returns>
+    public IEnumerable<IInput> GetDisplayableInputs()
+    {
+        if (inputs is null)
+        {
+            yield break;
+        }
+
+        uint version = 0;
+
+        foreach (var input in inputs)
+        {
+            if (input is FakeIsRaceRunning fakeIsRaceRunning)
+            {
+                version = fakeIsRaceRunning.Data;
+
+                if (version > 2)
+                {
+                    throw new VersionNotSupportedException((int)version);
+                }
+            }
+
+            if (version < 2)
+            {
+                yield return input;
+                continue;
+            }
+
+            if (input is FakeFinishLine)
+            {
+                if (input.Time.TotalMilliseconds % 10 == 0)
+                {
+                    yield return input;
+                }
+                continue;
+            }
+
+            if (input is SteerLeft or SteerRight)
+            {
+                if (input.Time.TotalMilliseconds % 10 == 1)
+                {
+                    var ceilingTime = TimeInt32.FromMilliseconds((input.Time.TotalMilliseconds + 9) / 10 * 10);
+
+                    yield return input switch
+                    {
+                        SteerLeft steerLeft => steerLeft with { Time = ceilingTime },
+                        SteerRight steerRight => steerRight with { Time = ceilingTime },
+                        _ => throw new InvalidOperationException()
+                    };
+                }
+                continue;
+            }
+            
+            if (input is Steer steer)
+            {
+                if (input.Time.TotalMilliseconds % 10 is 2 or 9)
+                {
+                    yield return steer with { Time = new((input.Time.TotalMilliseconds + 9) / 10 * 10) };
+                }
+                continue;
+            }
+
+            yield return input;
+        }
+    }
+
     public partial class Chunk0309200E
     {
         public override void Read(CGameCtnGhost n, GbxReader r)
