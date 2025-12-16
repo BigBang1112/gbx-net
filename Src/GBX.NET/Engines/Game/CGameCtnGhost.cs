@@ -99,6 +99,11 @@ public partial class CGameCtnGhost
             if (input is FakeIsRaceRunning fakeIsRaceRunning)
             {
                 version = fakeIsRaceRunning.Data;
+
+                if (version > 2)
+                {
+                    throw new VersionNotSupportedException((int)version);
+                }
             }
 
             if (version < 2)
