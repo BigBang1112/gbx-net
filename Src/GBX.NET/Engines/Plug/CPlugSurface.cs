@@ -152,6 +152,7 @@ public partial class CPlugSurface
 
     public interface ISurf : IReadable, IWritable
     {
+        public MaterialId? SurfaceId { get; set; }
         public Vec3? U01 { get; set; }
     }
 
@@ -183,6 +184,8 @@ public partial class CPlugSurface
         public AABBTreeCell[]? AABBTreeCells { get; set; }
         public Triangle[]? Triangles { get; set; }
         public Vec3? U01 { get; set; }
+
+        MaterialId? ISurf.SurfaceId { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
@@ -249,9 +252,9 @@ public partial class CPlugSurface
             }
         }
 
-        public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
+        public readonly record struct CookedTriangle(Vec4 U01, Int3 Indices, MaterialId SurfaceId, byte U04, byte U05);
         public readonly record struct OctreeCell(int U01, Vec3 U02, Vec3 U03, int U04);
-        public readonly record struct Triangle(Int3 U01, byte U02, byte U03, byte U04, byte U05);
+        public readonly record struct Triangle(Int3 Indices, byte U02, byte U03, MaterialId SurfaceId);
         public readonly record struct AABBTreeCell(Vec3 U01, Vec3 U02, int U03);
     }
 
@@ -262,6 +265,8 @@ public partial class CPlugSurface
         public Iso4[] SurfLocs { get; set; } = [];
         public short[] SurfJoints { get; set; } = [];
         public Vec3? U01 { get; set; }
+
+        MaterialId? ISurf.SurfaceId { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
@@ -300,5 +305,90 @@ public partial class CPlugSurface
                 w.WriteArray(SurfJoints);
             }
         }
+    }
+
+    public enum MaterialId : short
+    {
+        Concrete,
+        Pavement,
+        Grass,
+        Ice,
+        Metal,
+        Sand,
+        Dirt,
+        Turbo_Deprecated,
+        DirtRoad,
+        Rubber,
+        SlidingRubber,
+        Test,
+        Rock,
+        Water,
+        Wood,
+        Danger,
+        Asphalt,
+        WetDirtRoad,
+        WetAsphalt,
+        WetPavement,
+        WetGrass,
+        Snow,
+        ResonantMetal,
+        GolfBall,
+        GolfWall,
+        GolfGround,
+        Turbo2_Deprecated,
+        Bumper_Deprecated,
+        NotCollidable,
+        FreeWheeling_Deprecated,
+        TurboRoulette_Deprecated,
+        WallJump,
+        MetalTrans,
+        Stone,
+        Player,
+        Trunk,
+        TechLaser,
+        SlidingWood,
+        PlayerOnly,
+        Tech,
+        TechArmor,
+        TechSafe,
+        OffZone,
+        Bullet,
+        TechHook,
+        TechGround,
+        TechWall,
+        TechArrow,
+        TechHook2,
+        Forest,
+        Wheat,
+        TechTarget,
+        PavementStair,
+        TechTeleport,
+        Energy,
+        TechMagnetic,
+        TurboTechMagnetic_Deprecated,
+        Turbo2TechMagnetic_Deprecated,
+        TurboWood_Deprecated,
+        Turbo2Wood_Deprecated,
+        FreeWheelingTechMagnetic_Deprecated,
+        FreeWheelingWood_Deprecated,
+        TechSuperMagnetic,
+        TechNucleus,
+        TechMagneticAccel,
+        MetalFence,
+        TechGravityChange,
+        TechGravityReset,
+        RubberBand,
+        Gravel,
+        Hack_NoGrip_Deprecated,
+        Bumper2_Deprecated,
+        NoSteering_Deprecated,
+        NoBrakes_Deprecated,
+        RoadIce,
+        RoadSynthetic,
+        Green,
+        Plastic,
+        DevDebug,
+        Free3,
+        XXX_Null,
     }
 }
