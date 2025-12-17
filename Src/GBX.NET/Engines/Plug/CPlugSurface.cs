@@ -152,7 +152,7 @@ public partial class CPlugSurface
 
     public interface ISurf : IReadable, IWritable
     {
-        public short? SurfaceIndex { get; set; }
+        public short SurfaceIndex { get; set; }
         public Vec3? U01 { get; set; }
     }
 
@@ -185,7 +185,7 @@ public partial class CPlugSurface
         public Triangle[]? Triangles { get; set; }
         public Vec3? U01 { get; set; }
 
-        short? ISurf.SurfaceIndex { get; set; }
+        short ISurf.SurfaceIndex { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
@@ -266,7 +266,7 @@ public partial class CPlugSurface
         public short[] SurfJoints { get; set; } = [];
         public Vec3? U01 { get; set; }
 
-        short? ISurf.SurfaceIndex { get; set; }
+        short ISurf.SurfaceIndex { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {
