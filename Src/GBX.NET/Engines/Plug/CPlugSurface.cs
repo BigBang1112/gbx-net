@@ -190,13 +190,15 @@ public partial class CPlugSurface
 
             switch (Version)
             {
-                case 1: // has OctreeCells deprec (10 before array, TODO fix)
+                case 1:
                 case 2:
                 case 3:
                     Vertices = r.ReadArray<Vec3>();
                     CookedTriangles = r.ReadArray<CookedTriangle>();
                     OctreeVersion = r.ReadInt32();
-                    OctreeCells = r.ReadArray<OctreeCell>();
+                    OctreeCells = OctreeVersion == 1
+                        ? r.ReadArray_deprec<OctreeCell>()
+                        : r.ReadArray<OctreeCell>();
                     break;
                 case 5:
                     Vertices = r.ReadArray<Vec3>();
@@ -218,13 +220,20 @@ public partial class CPlugSurface
 
             switch (Version)
             {
-                case 1: // has OctreeCells deprec (10 before array, TODO fix)
+                case 1:
                 case 2:
                 case 3:
                     w.WriteArray(Vertices);
                     w.WriteArray(CookedTriangles);
                     w.Write(OctreeVersion.GetValueOrDefault());
-                    w.WriteArray(OctreeCells);
+                    if (OctreeVersion == 1)
+                    {
+                        w.WriteArray_deprec(OctreeCells);
+                    }
+                    else
+                    {
+                        w.WriteArray(OctreeCells);
+                    }
                     break;
                 case 5:
                     w.WriteArray(Vertices);
