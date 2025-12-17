@@ -1125,6 +1125,13 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (NodeDict.TryGetValue(index.Value, out var existingNode))
             {
+                if (existingNode is GbxRefTableFile additionalExternalNode)
+                {
+                    logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (external additionally)", index.Value, existingNode);
+                    file = additionalExternalNode;
+                    return default;
+                }
+                
                 logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
 
                 file = null;

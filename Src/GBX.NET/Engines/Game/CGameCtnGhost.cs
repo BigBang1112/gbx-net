@@ -367,10 +367,12 @@ public partial class CGameCtnGhost
         {
             return false;
         }
+
         if (version == (GameVersion.MP4 | GameVersion.TM2020))
         {
             return Chunks.Any(static x => x is Chunk03092029);
         }
+
         return true;
     }
 }
