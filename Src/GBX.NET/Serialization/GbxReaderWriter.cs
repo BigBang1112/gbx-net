@@ -191,7 +191,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
             value = (T)Enum.ToObject(typeof(T), Reader.ReadInt32()); // CastTo<T>.From(Reader.ReadInt32());
         }
 
-        Writer?.Write((int)(object)value /* CastTo<int>.From(value) */);
+        Writer?.Write(Convert.ToInt32(value) /* CastTo<int>.From(value) */);
 
         return value;
     }
@@ -205,7 +205,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
             value = (T)Enum.ToObject(typeof(T), Reader.ReadByte()); // CastTo<T>.From(Reader.ReadByte());
         }
 
-        Writer?.Write((byte)(int)(object)value /* CastTo<byte>.From(value) */);
+        Writer?.Write((byte)Convert.ToInt32(value));
 
         return value;
     }
@@ -219,7 +219,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
             value = (T)Enum.ToObject(typeof(T), Reader.ReadInt32()); // CastTo<T>.From(Reader.ReadInt32());
         }
 
-        Writer?.Write(value.HasValue ? (int)(object)value : (int)(object)defaultValue /* CastTo<int>.From(value) */);
+        Writer?.Write(value.HasValue ? Convert.ToInt32(value) : Convert.ToInt32(defaultValue) /* CastTo<int>.From(value) */);
 
         return value;
     }
@@ -233,7 +233,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
             value = (T)Enum.ToObject(typeof(T), Reader.ReadByte()); // CastTo<T>.From(Reader.ReadByte());
         }
 
-        Writer?.Write(value.HasValue ? (byte)(object)value : (byte)(object)defaultValue /* CastTo<byte>.From(value) */);
+        Writer?.Write(value.HasValue ? (byte)Convert.ToInt32(value) : (byte)Convert.ToInt32(defaultValue) /* CastTo<byte>.From(value) */);
 
         return value;
     }
