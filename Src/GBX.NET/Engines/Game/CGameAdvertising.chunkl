@@ -6,6 +6,9 @@ CGameAdvertising 0x0303D000
 0x001
  CMwNod[] Files (external)
 
+0x002
+ CMwNod[] FilesOrig (external)
+
 0x003
  int<EMode> Mode
 
