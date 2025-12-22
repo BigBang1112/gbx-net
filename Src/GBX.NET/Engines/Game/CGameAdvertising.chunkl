@@ -1,7 +1,5 @@
 CGameAdvertising 0x0303D000
-
-0x03008000
- lookbackstring Name
+- inherits: CGameNod
 
 0x001
  CMwNod[] Files (external)
