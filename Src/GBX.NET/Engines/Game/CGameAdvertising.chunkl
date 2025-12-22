@@ -1,10 +1,17 @@
-CGameAdvertising 0303D000
+CGameAdvertising 0x0303D000
+
+0x03008000
+ lookbackstring Name
 
 0x001
- list<CMwNod> Files
+ CMwNod[] Files (external)
 
 0x003
- enum Mode
+ int<EMode> Mode
 
 0x004
  string Radial_Config
+
+enum EMode
+ Environement
+ Vehicle
