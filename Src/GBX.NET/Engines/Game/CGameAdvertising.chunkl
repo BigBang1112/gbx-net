@@ -1,0 +1,10 @@
+CGameAdvertising 0303D000
+
+0x001
+ list<CMwNod> Files
+
+0x003
+ enum Mode
+
+0x004
+ string Radial_Config
