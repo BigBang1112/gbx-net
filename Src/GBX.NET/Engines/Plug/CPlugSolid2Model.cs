@@ -9,6 +9,7 @@ public partial class CPlugSolid2Model
     private string[]? materialIds;
     private External<CPlugMaterial>[]? materials;
     private CPlugSkel? skel;
+    private float[]? lodMaxDistAtFov90;
     private int visCstType;
     private PreLightGen? preLightGenerator;
     private DateTime? fileWriteTime;
@@ -20,11 +21,14 @@ public partial class CPlugSolid2Model
     private int damageZone;
     private uint flags;
     private Material[]? customMaterials;
+    private BoxAligned[]? boxes;
+    private string[]? joints;
     private byte[]? fileImageBytes;
 
     public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
     public CPlugVisual[]? Visuals { get => visuals; set => visuals = value; }
     public CPlugSkel? Skel { get => skel; set => skel = value; }
+    public float[]? LodMaxDistAtFov90 { get => lodMaxDistAtFov90; set => lodMaxDistAtFov90 = value; }
     public int VisCstType { get => visCstType; set => visCstType = value; }
     public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
     public DateTime? FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
@@ -39,6 +43,9 @@ public partial class CPlugSolid2Model
     public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
     public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
     public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
+
+    public BoxAligned[]? Boxes { get => boxes; set => boxes = value; }
+    public string[]? Joints { get => joints; set => joints = value; }
 
     [WebpData]
     public byte[]? FileImageBytes { get => fileImageBytes; set => fileImageBytes = value; }
@@ -110,7 +117,7 @@ public partial class CPlugSolid2Model
 
             if (Version >= 1)
             {
-                rw.Array<float>(ref U02); // something related to lod?
+                rw.Array<float>(ref n.lodMaxDistAtFov90);
 
                 if (Version >= 2)
                 {
@@ -130,7 +137,7 @@ public partial class CPlugSolid2Model
 
                             if (Version >= 5)
                             {
-                                rw.String(ref U03);
+                                rw.String(ref U03); // something geom inst
 
                                 if (Version >= 7)
                                 {
@@ -170,7 +177,7 @@ public partial class CPlugSolid2Model
 
                                                     if (Version >= 13)
                                                     {
-                                                        rw.Int32(ref U05); // fake occ something?
+                                                        rw.Int32(ref U05); // fake occ something? very much often constant 1
 
                                                         if (Version >= 14)
                                                         {
@@ -194,12 +201,12 @@ public partial class CPlugSolid2Model
                                                                 {
                                                                     if (Version < 21)
                                                                     {
-                                                                        rw.Array<BoxAligned>(ref U08);
+                                                                        rw.Array<BoxAligned>(ref n.boxes);
                                                                     }
 
                                                                     if (Version >= 20)
                                                                     {
-                                                                        rw.ArrayId(ref U09); // slightly related to skels and joints
+                                                                        rw.ArrayId(ref n.joints);
 
                                                                         // END OF MP4
 
