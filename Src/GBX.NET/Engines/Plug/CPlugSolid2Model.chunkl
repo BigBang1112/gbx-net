@@ -6,7 +6,7 @@ CPlugSolid2Model 0x090BB000
 0x000
 
 0x002 (skippable)
- string[]
+ data
  FakeOccProj[] FakeOccProjs
 
 archive ShadedGeom
