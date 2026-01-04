@@ -56,6 +56,12 @@ public partial class CPlugSolid2Model
         ExportToObj(objWriter, mtlWriter, mergeVerticesDigitThreshold, lod);
     }
 
+    public partial class ShadedGeom
+    {
+        [Obsolete("Use LodMask instead. Lod will be removed soon.")]
+        public int Lod { get => LodMask; set => LodMask = value; }
+    }
+
     public partial class Chunk090BB000 : IVersionable
     {
         public int Version { get; set; }

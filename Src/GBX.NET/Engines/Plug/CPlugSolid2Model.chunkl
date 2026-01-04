@@ -14,7 +14,7 @@ archive ShadedGeom
  int MaterialIndex
  int
  v1+
-  int Lod
+  int LodMask
   v32+
    int
 
