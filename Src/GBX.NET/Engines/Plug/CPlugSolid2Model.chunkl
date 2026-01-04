@@ -5,8 +5,8 @@ CPlugSolid2Model 0x090BB000
 
 0x000
 
-0x002 (skippable)
- data
+0x002 (skippable) // fake occlusion
+ data FileImageBytes
  FakeOccProj[] FakeOccProjs
 
 archive ShadedGeom

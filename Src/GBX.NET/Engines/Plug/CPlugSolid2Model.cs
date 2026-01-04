@@ -20,6 +20,7 @@ public partial class CPlugSolid2Model
     private int damageZone;
     private uint flags;
     private Material[]? customMaterials;
+    private byte[]? fileImageBytes;
 
     public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
     public CPlugVisual[]? Visuals { get => visuals; set => visuals = value; }
@@ -38,6 +39,9 @@ public partial class CPlugSolid2Model
     public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
     public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
     public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
+
+    [WebpData]
+    public byte[]? FileImageBytes { get => fileImageBytes; set => fileImageBytes = value; }
 
     public void ExportToObj(TextWriter objWriter, TextWriter mtlWriter, int? mergeVerticesDigitThreshold = null, int lod = 0)
     {
