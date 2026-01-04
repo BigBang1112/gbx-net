@@ -69,5 +69,6 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Wagon.Gbx | [CPlugTrainWagonModel](Src/GBX.NET/Engines/Plug/CPlugTrainWagonModel.chunkl) | Yes | Yes
 | | Armor.Gbx | [CGameArmorModel](Src/GBX.NET/Engines/GameData/CGameArmorModel.chunkl) | Yes | Yes
 | | Gate.Gbx | [CGameGateModel](Src/GBX.NET/Engines/GameData/CGameGateModel.chunkl) | Yes | Yes
+| | GameAdvertisement.Gbx | [CGameAdvertising](Src/GBX.NET/Engines/Game/CGameAdvertising.chunkl) | Yes | Yes
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
