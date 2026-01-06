@@ -124,7 +124,6 @@ else
 
 app.UseHttpsRedirection();
 
-app.MapStaticAssets();
 app.UseStaticFiles(new StaticFileOptions
 {
     ServeUnknownFileTypes = true,
