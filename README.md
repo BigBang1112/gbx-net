@@ -109,7 +109,8 @@ The goal is to also make it viable for NativeAOT.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
@@ -618,7 +619,8 @@ TODO
 
 Make sure you have these framework SDKs available:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
 - .NET 6
 - .NET Standard 2.0
