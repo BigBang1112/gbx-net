@@ -159,7 +159,7 @@ public partial class CPlugCrystal
             Version = r.ReadInt32();
 
             var faces = n.Layers.OfType<GeometryLayer>()
-                .Where(x => x.IsVisible)
+                .Where(x => x.IsEnabled && x.IsVisible)
                 .Select(x => x.Crystal)
                 .OfType<Crystal>()
                 .SelectMany(c => c.Faces);
@@ -171,7 +171,7 @@ public partial class CPlugCrystal
                 var counter = 0;
                 foreach (var face in faces)
                 {
-                    for (int i = 0; i < face.Vertices.Length; i++)
+                    for (var i = 0; i < face.Vertices.Length; i++)
                     {
                         face.Vertices[i] = face.Vertices[i] with { LightmapCoord = r.ReadVec2() };
                         counter++;
@@ -206,10 +206,11 @@ public partial class CPlugCrystal
                 var counter = 0;
                 foreach (var face in faces)
                 {
-                    for (int i = 0; i < face.Vertices.Length; i++)
+                    for (var i = 0; i < face.Vertices.Length; i++)
                     {
-                        var index = indices?[counter++] ?? counter;
+                        var index = indices is null ? counter : indices[counter];
                         face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
+                        counter++;
 
                         if (counter > lightmapCount)
                         {
@@ -230,7 +231,7 @@ public partial class CPlugCrystal
             w.Write(Version);
 
             var faces = n.Layers.OfType<GeometryLayer>()
-                .Where(x => x.IsVisible)
+                .Where(x => x.IsEnabled && x.IsVisible)
                 .Select(x => x.Crystal)
                 .OfType<Crystal>()
                 .SelectMany(c => c.Faces);

@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.PAK</PackageId>
-        <VersionPrefix>2.2.0</VersionPrefix>
+        <VersionPrefix>2.2.1</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.</Description>
-        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,8 +16,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0;net8.0;net6.0</TargetFrameworks>
-        <LangVersion>12</LangVersion>
+        <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
+        <LangVersion>14</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>

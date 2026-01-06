@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.LZO</PackageId>
-        <Version>2.1.2</Version>
+        <Version>2.1.3</Version>
         <Authors>BigBang1112</Authors>
         <Description>An LZO compression plugin for GBX.NET to allow de/serialization of compressed Gbx bodies. This official implementation uses lzo 2.10 from NativeSharpLzo and minilzo 2.06 port by zzattack.</Description>
-        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,8 +16,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>12</LangVersion>
+        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <LangVersion>14</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>

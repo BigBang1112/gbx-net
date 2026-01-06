@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.FileProviders;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using System.Reflection;
+using System.Runtime.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +77,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    var assembly = Assembly.GetExecutingAssembly();
+    var attr = assembly.GetCustomAttribute<TargetFrameworkAttribute>();
+    var version =  attr!.FrameworkName.Split('=')[1];
+    var netVersion = "net" + version.TrimStart('v');
+    var dllPath = Path.Combine(builder.Environment.ContentRootPath, "..", "Client", "bin", "Debug", netVersion);
+
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(dllPath),
+        RequestPath = "/refs",
+        ServeUnknownFileTypes = true,
+    });
     app.UseWebAssemblyDebugging();
 }
 else
@@ -86,7 +101,10 @@ else
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+});
 
 app.UseRouting();
 

@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.NewtonsoftJson</PackageId>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <Authors>BigBang1112</Authors>
         <Description>Better and easier JSON serialization with polymorphic support for GBX.NET objects.</Description>
-        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -15,8 +15,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>12</LangVersion>
+        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <LangVersion>14</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
@@ -40,7 +40,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

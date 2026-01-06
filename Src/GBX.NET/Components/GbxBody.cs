@@ -13,8 +13,8 @@ public sealed partial class GbxBody
 {
     private readonly ImmutableArray<byte> rawData = ImmutableArray<byte>.Empty;
 
-    public int UncompressedSize { get; init; }
-    public int? CompressedSize { get; init; }
+    public int UncompressedSize { get; internal init; }
+    public int? CompressedSize { get; internal init; }
 
     public float? CompressionRatio => CompressedSize.HasValue ? (float)CompressedSize / UncompressedSize : null;
 
@@ -24,15 +24,7 @@ public sealed partial class GbxBody
     public ImmutableArray<byte> RawData
     {
         get => rawData;
-        init
-        {
-            rawData = value;
-
-            if (!value.IsDefaultOrEmpty)
-            {
-                UncompressedSize = value.Length;
-            }
-        }
+        internal init => rawData = value;
     }
 
     public Exception? Exception { get; internal set; }

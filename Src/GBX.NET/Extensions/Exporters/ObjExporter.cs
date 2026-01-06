@@ -163,7 +163,7 @@ internal static class ObjExporter
 
         var unknownMaterialDict = new Dictionary<CPlug, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -233,7 +233,7 @@ internal static class ObjExporter
 
         var normalsDict = new Dictionary<Vec3, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -271,7 +271,7 @@ internal static class ObjExporter
 
         var uvs = new Dictionary<Vec2, int>();
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -303,7 +303,7 @@ internal static class ObjExporter
             }
         }
 
-        foreach (var (t, loc) in tree.GetAllChildrenWithLocation(lod))
+        foreach (var (t, loc) in solid.GetAllChildrenWithLocation(lod))
         {
             if (t.Visual is null)
             {
@@ -413,11 +413,11 @@ internal static class ObjExporter
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
 
-        var pickedLod = solid.ShadedGeoms.Any(x => x.Lod == lod) ? lod : solid.ShadedGeoms.Min(x => x.Lod);
+        var pickedLod = solid.ShadedGeoms.Any(x => x.LodMask == lod) ? lod : solid.ShadedGeoms.Min(x => x.LodMask);
 
         foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != pickedLod)
+            if (geom.LodMask != -1 && geom.LodMask != pickedLod)
             {
                 continue;
             }
@@ -468,7 +468,7 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != pickedLod)
+            if (geom.LodMask != -1 && geom.LodMask != pickedLod)
             {
                 continue;
             }
@@ -513,7 +513,7 @@ internal static class ObjExporter
 
         foreach (var geom in solid.ShadedGeoms)
         {
-            if (geom.Lod != -1 && geom.Lod != pickedLod)
+            if (geom.LodMask != -1 && geom.LodMask != pickedLod)
             {
                 continue;
             }

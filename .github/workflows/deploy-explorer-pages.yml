@@ -2,7 +2,7 @@ name: Deploy Explorer to Pages
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["dev", "csharp-editor"]
     paths: [ ".github/workflows/deploy-explorer-pages.yml", "Src/**", "Benchmarks/**", "Generators/**", "Resources/**", "Samples/**", "Tests/**", "Tools/**", "GBX.NET.slnx" ]
   workflow_dispatch:
 
@@ -35,15 +35,15 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
+            10.0.x
             9.0.x
             8.0.x
-            6.0.x
       
       - name: Install wasm-tools
         run: dotnet workload install wasm-tools
           
       - name: Publish
-        run: dotnet publish Tools/GbxExplorerOld/Client -c Release --nologo -o publish /p:ContinuousIntegrationBuild=true
+        run: dotnet build && dotnet publish Tools/GbxExplorerOld/Client -c Release --nologo -o publish /p:ContinuousIntegrationBuild=true
         
       - name: Change base in index.html to repository name
         run: sed -i 's/<base href="\/" \/>/<base href="\/${{ github.event.repository.name }}\/" \/>/g' publish/wwwroot/index.html

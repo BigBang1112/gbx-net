@@ -497,6 +497,53 @@ public partial class CGameCtnChallenge :
         EmbeddedZipData = ms.ToArray();
     }
 
+#if NET8_0_OR_GREATER
+    public void ExtractEmbeddedZipData(string destinationDirectoryName)
+    {
+        if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
+        {
+            throw new Exception("Embedded data zip is not available and cannot be read.");
+        }
+
+        using var ms = new MemoryStream(EmbeddedZipData);
+        ZipFile.ExtractToDirectory(ms, destinationDirectoryName);
+    }
+#else
+    public void ExtractEmbeddedZipData(string destinationDirectoryName)
+    {
+        if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
+        {
+            throw new Exception("Embedded data zip is not available and cannot be read.");
+        }
+
+        using var ms = new MemoryStream(EmbeddedZipData);
+        using var zip = new ZipArchive(ms, ZipArchiveMode.Read);
+        
+        Directory.CreateDirectory(destinationDirectoryName);
+
+        foreach (var entry in zip.Entries)
+        {
+            if (string.IsNullOrEmpty(entry.Name))
+            {
+                continue;
+            }
+
+            var destinationPath = Path.Combine(destinationDirectoryName, entry.FullName);
+            
+            var directoryPath = Path.GetDirectoryName(destinationPath);
+            if (!string.IsNullOrEmpty(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Extract the file
+            using var entryStream = entry.Open();
+            using var fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write);
+            entryStream.CopyTo(fileStream);
+        }
+    }
+#endif
+
     /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
@@ -807,7 +854,7 @@ public partial class CGameCtnChallenge :
                     sb.Append(Cost);
                     sb.Append("\" ");
 
-                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    if (ModPackDesc is not null && !string.IsNullOrEmpty(ModPackDesc.FilePath))
                     {
                         sb.Append("mod=\"");
                         sb.Append(SecurityElement.Escape(Path.GetFileNameWithoutExtension(ModPackDesc.FilePath)));
@@ -834,14 +881,14 @@ public partial class CGameCtnChallenge :
                         AppendDep(sb, dep);
                     }
 
-                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    if (ModPackDesc is not null && !string.IsNullOrEmpty(ModPackDesc.FilePath))
                     {
                         AppendDep(sb, ModPackDesc);
                     }
 
                     AppendMediaTrackerDeps(sb);
 
-                    if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
+                    if (CustomMusicPackDesc is not null && !string.IsNullOrEmpty(CustomMusicPackDesc.FilePath))
                     {
                         AppendDep(sb, CustomMusicPackDesc);
                     }
@@ -940,12 +987,12 @@ public partial class CGameCtnChallenge :
                     sb.Append(AuthorScore);
                     sb.Append("\"/><deps>");
 
-                    if (!string.IsNullOrEmpty(ModPackDesc?.FilePath))
+                    if (ModPackDesc is not null && !string.IsNullOrEmpty(ModPackDesc.FilePath))
                     {
                         AppendDep(sb, ModPackDesc);
                     }
 
-                    if (!string.IsNullOrEmpty(CustomMusicPackDesc?.FilePath))
+                    if (CustomMusicPackDesc is not null && !string.IsNullOrEmpty(CustomMusicPackDesc.FilePath))
                     {
                         AppendDep(sb, CustomMusicPackDesc);
                     }
@@ -971,13 +1018,13 @@ public partial class CGameCtnChallenge :
                 switch (block)
                 {
                     case CGameCtnMediaBlockImage imageBlock:
-                        if (!string.IsNullOrEmpty(imageBlock.Image?.FilePath))
+                        if (imageBlock.Image is not null && !string.IsNullOrEmpty(imageBlock.Image.FilePath))
                         {
                             AppendDep(sb, imageBlock.Image);
                         }
                         break;
                     case CGameCtnMediaBlockSound soundBlock:
-                        if (!string.IsNullOrEmpty(soundBlock.Sound?.FilePath))
+                        if (soundBlock.Sound is not null && !string.IsNullOrEmpty(soundBlock.Sound.FilePath))
                         {
                             AppendDep(sb, soundBlock.Sound);
                         }

@@ -16,8 +16,9 @@ CPlugTree 0x0904F000
 0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // FuncTree
  CFuncTree FuncTree
 
-0x015 (demonstration) [TM10] // location
+0x015 (demonstration) [TM10] // flags+location, TM1.0
  datauint Flags
+ Flags = Flags & 0x1FFFF
  if (Flags & 4) != 0
   Iso4? Location
 
@@ -30,11 +31,23 @@ CPlugTree 0x0904F000
 0x017
  CPlugVisual
 
-0x018 // location
+0x018 (demonstration) // flags+location, unused
  dataulong Flags
  if (Flags & 4) != 0
   Iso4? Location
+ Flags = Flags | 0x2800
+ // Flags = Flags | 0x8000 (if Bucr3IsR)
 
-0x019 (base: 0x015) [TMSX] // location
+0x019 (demonstration) [TMSX] // flags+location, TMSX
+ datauint Flags
+ if (Flags & 4) != 0
+  Iso4? Location
+ Flags = Flags | 0x2800
+ // Flags = Flags | 0x8000 (if Bucr3IsR)
 
-0x01A (base: 0x015) [TMNESWC, TMF, TMT, MP4] // location
+0x01A (demonstration) [TMNESWC, TMF, TMT, MP4] // flags+location, latest
+ datauint Flags
+ if (Flags & 4) != 0
+  Iso4? Location
+ Flags = Flags | 0x2000
+ // Flags = Flags | 0x8000 (if Bucr3IsR)

@@ -7,6 +7,9 @@ CPlugMaterial 0x09079000
 0x002
  int
 
+0x004
+ DeviceMat[] DeviceMaterials (version: 0x004)
+
 0x007
  CPlugMaterialCustom CustomMaterial
 

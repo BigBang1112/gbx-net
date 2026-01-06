@@ -90,6 +90,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteSmallString(string? value);
     void WriteMarker(string value);
     void WriteOptimizedInt(int value, int determineFrom);
+    void WriteVarNat15(short value);
     void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new();
     void WriteWritable<TWritable, TNode>(TWritable? value, TNode node, int version = 0)
         where TNode : IClass
@@ -992,6 +993,20 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
                 Write((byte)value);
                 break;
         };
+    }
+
+    public void WriteVarNat15(short value)
+    {
+        if (value < 0x80)
+        {
+            // Single byte
+            Write((byte)value);
+            return;
+        }
+
+        // Two bytes
+        Write((byte)((value & 0x7F) | 0x80));
+        Write((byte)(value >> 7));
     }
 
     public void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null, bool hasLengthPrefix = true)

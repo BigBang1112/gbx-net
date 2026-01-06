@@ -11,28 +11,28 @@ CPlugShader 0x09002000
  CMwNod[] U02
 
 0x010
- ulong
+ ulong // SRequirementOld10 (old flags)
  float
  CMwNod
- short
+ ushort VisibleIdFlags
 
 0x014
- dataulong Flags
+ dataulong RequirementFlags // SRequirement
  float
  CMwNod
- short VisibleId
+ ushort VisibleIdFlags
 
 0x015
- ulong Flags
+ dataulong RequirementFlags // SRequirement
  float
  CMwNod
- short VisibleId
+ ushort VisibleIdFlags
 
-0x016
- ulong Flags
+0x016 // flags, latest TMF
+ dataulong RequirementFlags // SRequirement
  float
  CMwNod
- short VisibleId
+ ushort VisibleIdFlags
 
 0x018
  uint

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 #if NET8_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 #endif
 
 namespace GBX.NET.Components;
@@ -57,8 +58,32 @@ public sealed class GbxRefTable
 
             if (!File.Exists(filePath))
             {
-                logger?.LogWarning("File not found: {FilePath}", filePath);
-                return default;
+#if NET5_0_OR_GREATER
+                if (OperatingSystem.IsWindows())
+                {
+                    logger?.LogWarning("File not found: {FilePath}", filePath);
+                    return default;
+                }
+#endif
+
+                var directory = Path.GetDirectoryName(filePath);
+                if (string.IsNullOrEmpty(directory) || !Directory.Exists(directory))
+                {
+                    logger?.LogWarning("Directory not found: {Directory}", directory);
+                    logger?.LogWarning("File not found: {FilePath}", filePath);
+                    return default;
+                }
+
+                var fileName = Path.GetFileName(filePath);
+
+                filePath = Directory.EnumerateFiles(directory)
+                    .FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
+
+                if (filePath is null)
+                {
+                    logger?.LogWarning("File not found in directory {Directory}: {FileName}", directory, fileName);
+                    return default;
+                }
             }
 
             logger?.LogDebug("Loading node from file: {FilePath}", filePath);

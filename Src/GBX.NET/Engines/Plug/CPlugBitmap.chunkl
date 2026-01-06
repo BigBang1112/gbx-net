@@ -1,13 +1,21 @@
 CPlugBitmap 0x09011000
 - inherits: CPlug
 
-0x015
+0x014
+ CPlugFileImg Image (external)
  ulong Flags
  float MipMapLowerAlpha
  float BumpScaleFactor
  float MipMapLodBiasDefault
  int BorderRGB
- int
+
+0x015
+ CPlugFileImg Image (external)
+ ulong Flags
+ float MipMapLowerAlpha
+ float BumpScaleFactor
+ float MipMapLodBiasDefault
+ int BorderRGB
 
 0x017
  uint Flags2
@@ -216,3 +224,9 @@ enum EGxUVGenerate
  FlatWaterReflect
  FlatWaterRefract
  FlatWaterFresnel
+
+archive SpecularSubMapCat
+ float
+ float
+ float
+ float

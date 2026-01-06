@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>14bef366-38a3-418f-93d8-e19bd6a41e2a</UserSecretsId>
@@ -11,21 +11,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.9" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
 
-        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
-        <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
         <PackageReference Include="Serilog.Sinks.OpenTelemetry" Version="4.2.0" />
-        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
-        <PackageReference Include="OpenTelemetry.Api.ProviderBuilderExtensions" Version="1.12.0" />
-        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
-        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
-        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Api.ProviderBuilderExtensions" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.14.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Process" Version="1.11.0-beta.1" />
-        <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.14.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,5 +35,22 @@
         <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <Target Name="GenerateDllListProd" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+        <ItemGroup>
+            <BuiltDlls Include="..\Client\bin\Release\$(TargetFramework)\*.dll" />
+        </ItemGroup>
 
+        <WriteLinesToFile File="..\Client\bin\Release\$(TargetFramework)\available_dlls.txt" Lines="@(BuiltDlls->'%(Filename)%(Extension)')" Overwrite="true" />
+    </Target>
+
+    <Target Name="CopyDllsToWwwrootProd" DependsOnTargets="GenerateDllListProd" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+        <RemoveDir Directories="$(PublishDir)wwwroot\refs" />
+        
+        <ItemGroup>
+            <FilesToCopy Include="..\Client\bin\Release\$(TargetFramework)\*.dll" />
+            <FilesToCopy Include="..\Client\bin\Release\$(TargetFramework)\available_dlls.txt" />
+        </ItemGroup>
+
+        <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(PublishDir)wwwroot\refs" SkipUnchangedFiles="true" />
+    </Target>
 </Project>
