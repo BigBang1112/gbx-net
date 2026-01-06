@@ -10,6 +10,9 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.Versioning;
 
+// ALERT
+// This project no longer works properly on .NET 10, prefer using just the client variant.
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -123,6 +126,7 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles(new StaticFileOptions
