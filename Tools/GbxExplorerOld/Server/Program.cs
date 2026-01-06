@@ -124,12 +124,11 @@ else
 
 app.UseHttpsRedirection();
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseResponseCompression();
-}
-
 app.MapStaticAssets();
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+});
 
 app.MapRazorPages();
 app.MapControllers();
