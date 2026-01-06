@@ -22,12 +22,6 @@ public partial class CPlugShader
         set => RequirementFlags = SetBitRange(RequirementFlags, 0, 2, (int)value);
     }
 
-    public int TexCoordCount
-    {
-        get => GetBitRange(RequirementFlags, 0x20, 4);
-        set => RequirementFlags = SetBitRange(RequirementFlags, 0x20, 4, value);
-    }
-
     public bool ShadowRecvGrp0
     {
         get => GetBit(RequirementFlags, 0x24);
@@ -106,6 +100,18 @@ public partial class CPlugShader
         set => RequirementFlags = SetBit(RequirementFlags, 0x9, value);
     }
 
+    public int TexCoordCount
+    {
+        get => GetBitRange(RequirementFlags, 0x20, 4);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x20, 4, value);
+    }
+
+    public bool GReqColor0
+    {
+        get => GetBit(RequirementFlags, 0x13);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x13, value);
+    }
+
     public bool IsTranslucent
     {
         get => GetBit(RequirementFlags, 0x7);
@@ -128,30 +134,6 @@ public partial class CPlugShader
     {
         get => (EVertexSpace)GetBitRange(RequirementFlags, 0x36, 2);
         set => RequirementFlags = SetBitRange(RequirementFlags, 0x36, 2, (int)value);
-    }
-
-    public bool SortCustom
-    {
-        get => GetBit(RequirementFlags, 0x12);
-        set => RequirementFlags = SetBit(RequirementFlags, 0x12, value);
-    }
-
-    public ESortPosition SortPosition
-    {
-        get => (ESortPosition)GetBitRange(RequirementFlags, 0x1A, 2);
-        set => RequirementFlags = SetBitRange(RequirementFlags, 0x1A, 2, (int)value);
-    }
-
-    public bool SortIndex
-    {
-        get => GetBit(RequirementFlags, 0x19);
-        set => RequirementFlags = SetBit(RequirementFlags, 0x19, value);
-    }
-
-    public bool ComputeFillValue
-    {
-        get => GetBit(RequirementFlags, 0x31);
-        set => RequirementFlags = SetBit(RequirementFlags, 0x31, value);
     }
 
     public bool VIdReflected
@@ -236,6 +218,30 @@ public partial class CPlugShader
     {
         get => GetBit(VisibleIdFlags, 0xE);
         set => VisibleIdFlags = SetBit(VisibleIdFlags, 0xE, value);
+    }
+
+    public bool SortCustom
+    {
+        get => GetBit(RequirementFlags, 0x12);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x12, value);
+    }
+
+    public ESortPosition SortPosition
+    {
+        get => (ESortPosition)GetBitRange(RequirementFlags, 0x1A, 2);
+        set => RequirementFlags = SetBitRange(RequirementFlags, 0x1A, 2, (int)value);
+    }
+
+    public bool SortIndex
+    {
+        get => GetBit(RequirementFlags, 0x19);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x19, value);
+    }
+
+    public bool ComputeFillValue
+    {
+        get => GetBit(RequirementFlags, 0x31);
+        set => RequirementFlags = SetBit(RequirementFlags, 0x31, value);
     }
 
     public partial class Chunk09002014
