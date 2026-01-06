@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Imaging.ImageSharp</PackageId>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <Authors>BigBang1112</Authors>
         <Description>Provides extensions for image handling in GBX.NET using ImageSharp.</Description>
-        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
