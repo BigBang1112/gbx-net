@@ -508,6 +508,40 @@ public partial class CGameCtnChallenge :
         using var ms = new MemoryStream(EmbeddedZipData);
         ZipFile.ExtractToDirectory(ms, destinationDirectoryName);
     }
+#else
+    public void ExtractEmbeddedZipData(string destinationDirectoryName)
+    {
+        if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
+        {
+            throw new Exception("Embedded data zip is not available and cannot be read.");
+        }
+
+        using var ms = new MemoryStream(EmbeddedZipData);
+        using var zip = new ZipArchive(ms, ZipArchiveMode.Read);
+        
+        Directory.CreateDirectory(destinationDirectoryName);
+
+        foreach (var entry in zip.Entries)
+        {
+            if (string.IsNullOrEmpty(entry.Name))
+            {
+                continue;
+            }
+
+            var destinationPath = Path.Combine(destinationDirectoryName, entry.FullName);
+            
+            var directoryPath = Path.GetDirectoryName(destinationPath);
+            if (!string.IsNullOrEmpty(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Extract the file
+            using var entryStream = entry.Open();
+            using var fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write);
+            entryStream.CopyTo(fileStream);
+        }
+    }
 #endif
 
     /// <summary>
