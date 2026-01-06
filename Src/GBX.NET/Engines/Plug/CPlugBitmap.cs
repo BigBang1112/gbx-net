@@ -1,7 +1,21 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using static GBX.NET.BitHelper;
+
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugBitmap
 {
+    public EUsage Usage
+    {
+        get => (EUsage)GetBitRange(Flags, 8, 8);
+        set => Flags = SetBitRange(Flags, 8, 8, (int)value);
+    }
+
+    public int PixelUpdate
+    {
+        get => GetBitRange(Flags, 0, 8);
+        set => Flags = SetBitRange(Flags, 0, 8, value);
+    }
+
     public partial class Chunk09011030 : IVersionable
     {
         public int Version { get; set; }
