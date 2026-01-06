@@ -25,7 +25,7 @@ COPY Src/GBX.NET.Hashing/ Src/GBX.NET.Hashing/
 COPY Src/GBX.NET.ZLib/ Src/GBX.NET.ZLib/
 COPY Generators/GBX.NET.Generators/ Generators/GBX.NET.Generators/
 COPY Resources/ Resources/
-RUN dotnet publish Tools/GbxExplorerOld/Client -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app --no-restore
+RUN dotnet build && dotnet publish Tools/GbxExplorerOld/Client -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app --no-restore
 
 
 # final stage/image
