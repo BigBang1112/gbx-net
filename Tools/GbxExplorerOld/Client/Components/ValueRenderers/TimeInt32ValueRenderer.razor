@@ -5,15 +5,55 @@
 
 @if (Value is null)
 {
-    <span class="element-box" data-title="This value cannot be modified.">null</span>
+    <span class="element-box hoverable" @onclick="InitValue" data-title="The value doesn't exist. Click to create a value.">null</span>
+
+    @if (nullifiedValue.HasValue)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is TimeInt32 val)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+
+    <input type="text" @bind="Val" disabled="@cannotWrite" style="min-width: 10ch; width: @(val.ToString().Length)ch;" oninput="onInputText(this)" />
+
+    if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
 }
 else
 {
-    var str = Value.ToString();
-
-    <span class="element-box" style="font-size: 0.8rem" data-title="This is the ToString value of the general object.">@(string.IsNullOrWhiteSpace(str) ? "(empty)" : str)</span>
+    <span>Error: value is not TimeInt32</span>
 }
 
 @code {
     public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    private TimeInt32? nullifiedValue;
+
+    public TimeInt32? Val
+    {
+        get => Value as TimeInt32?;
+        set => SetAndUpdate(value, parent: true);
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(TimeInt32), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Val;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
 }
