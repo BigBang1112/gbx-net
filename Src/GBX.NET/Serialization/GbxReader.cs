@@ -1111,83 +1111,19 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public T? ReadNodeRef<T>(out GbxRefTableFile? file) where T : IClass
     {
-        var index = default(int?);
+        var node = ReadNodeRef(out file);
 
-        if (encapsulation is null)
-        {
-            index = ReadInt32();
-
-            if (index == -1)
-            {
-                file = null;
-                return default;
-            }
-
-            if (NodeDict.TryGetValue(index.Value, out var existingNode))
-            {
-                logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
-
-                file = null;
-                return (T)existingNode;
-            }
-
-            if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
-            {
-                logger?.LogDebug("NodeRef #{Index}: {ExternalNode} (external)", index.Value, externalNode);
-
-                // if ClassManager.IsPlugFile then create an instance with externalNode as param, the plug file will have internal handles
-                // alternatively, this could ALWAYS create a node and store the file inside which when presented would act as external node <-- this would avoid the File properties
-
-                file = externalNode as GbxRefTableFile;
-                return default;
-            }
-        }
-
-        file = null;
-
-        var rawClassId = ReadHexUInt32();
-
-        if (encapsulation is not null && rawClassId == uint.MaxValue)
+        if (node is null)
         {
             return default;
         }
 
-        var classId = ClassManager.Wrap(rawClassId);
-
-        if (logger is not null)
+        if (node is not T typedNode)
         {
-            if (classId == rawClassId)
-            {
-                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName})", index, classId, ClassManager.GetName(classId));
-            }
-            else
-            {
-                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
-            }
+            throw new InvalidCastException($"Node cannot be casted to {typeof(T).Name}.");
         }
 
-#if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
-#else
-        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
-#endif
-
-        if (node is not T nod)
-        {
-            throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) cannot be casted to {typeof(T).Name}.");
-        }
-
-        if (index.HasValue)
-        {
-            if (logger is not null && NodeDict.TryGetValue(index.Value, out var existingNode))
-            {
-                logger.LogWarning("NodeRef #{Index}: {ExistingNode} (existing was overwriten!)", index.Value, existingNode);
-            }
-
-            NodeDict[index.Value] = nod;
-        }
-
-        return ReadNode(nod);
+        return typedNode;
     }
 
     [IgnoreForCodeGeneration]
@@ -1297,11 +1233,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         using var _ = logger?.BeginScope("{ClassName} (aux)", ClassManager.GetName(node.GetType()));
 
-#if NET8_0_OR_GREATER
-        T.Read(node, rw);
-#else
         node.ReadWrite(rw);
-#endif
 
         return node;
     }
@@ -1329,11 +1261,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var classId = ClassManager.Wrap(rawClassId);
 
-#if NET8_0_OR_GREATER
-        var node = T.New(classId) ?? throw new Exception($"Unknown class ID (within {typeof(T).Name}): 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
-#else
         var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
-#endif
 
         if (node is not T metaNod)
         {

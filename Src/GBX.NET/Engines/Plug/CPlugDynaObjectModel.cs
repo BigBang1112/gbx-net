@@ -50,13 +50,6 @@ public partial class CPlugDynaObjectModel : IVersionable
 	public bool LocAnimIsPhysical { get => locAnimIsPhysical; set => locAnimIsPhysical = value; }
 	public CPlugDynaWaterModel? WaterModel { get => waterModel; set => waterModel = value; }
 
-#if NET8_0_OR_GREATER
-    static void IClass.Read<T>(T node, GbxReaderWriter rw)
-    {
-        node.ReadWrite(rw);
-    }
-#endif
-
 	public override void ReadWrite(GbxReaderWriter rw)
 	{
 		rw.VersionInt32(this);

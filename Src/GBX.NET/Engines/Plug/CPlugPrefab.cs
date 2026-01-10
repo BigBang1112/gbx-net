@@ -18,13 +18,6 @@ public partial class CPlugPrefab : IVersionable
     public int U02 { get => u02; set => u02 = value; }
     public EntRef[] Ents { get => ents; set => ents = value; }
 
-#if NET8_0_OR_GREATER
-    static void IClass.Read<T>(T node, GbxReaderWriter rw)
-    {
-        node.ReadWrite(rw);
-    }
-#endif
-
     public override void ReadWrite(GbxReaderWriter rw)
     {
         rw.VersionInt32(this);
