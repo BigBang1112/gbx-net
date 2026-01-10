@@ -248,11 +248,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
 
         try
         {
-#if NET8_0_OR_GREATER
-            T.Read(node, rw);
-#else
             node.ReadWrite(rw);
-#endif
         }
         catch (Exception ex)
         {
