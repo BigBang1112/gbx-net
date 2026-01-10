@@ -16,14 +16,6 @@ public partial class CGameCtnBlockInfoMobilLink : IVersionable
     public CMwNod? U01 { get => u01File?.GetNode(ref u01) ?? u01; set => u01 = value; }
     public CMwNod? GetU01(GbxReadSettings settings = default, bool exceptions = false) => u01File?.GetNode(ref u01, settings, exceptions) ?? u01;
 
-
-#if NET8_0_OR_GREATER
-    static void IClass.Read<T>(T node, GbxReaderWriter rw)
-    {
-        node.ReadWrite(rw);
-    }
-#endif
-
     public override void ReadWrite(GbxReaderWriter rw)
     {
         rw.VersionInt32(this);
