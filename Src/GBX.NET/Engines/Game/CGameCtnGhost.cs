@@ -499,6 +499,11 @@ public partial class CGameCtnGhost : CGameGhost
                 {
                     version = 1;
                 }
+
+                if (version > 2)
+                {
+                    throw new VersionNotSupportedException((int)version);
+                }
             }
 
             if (version < 2)
