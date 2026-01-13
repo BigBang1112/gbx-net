@@ -7,9 +7,9 @@ Hashing features (currently only CRC32) for GBX.NET 2. This hashing function is 
 
 ## Framework support
 
+- .NET 10
 - .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 ## Usage
