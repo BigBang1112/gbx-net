@@ -1,29 +1,25 @@
 # Trimming Sample
 
-This is an example of how trimming + explicit parse can significantly improve the self-contained app size.
+This is an example of how trimming can significantly improve the self-contained app size.
 
-There are 4 apps that do the exact same thing - display the map name of the imported map. **Only the header part is read**, just to see how far it can go, but expect slightly smaller differences on full read scenarios. The categories are:
+There are 2 apps that do the exact same thing - display the map name of the imported map. **Only the header part is read**, just to see how far it can go, but expect slightly smaller differences on full read scenarios. The categories are:
 
 - **Untrimmed** - uses `Gbx.ParseHeaderNode` (implicit parse)
   - `PublishSingleFile` + `SelfContained`
-- **UntrimmedGeneric** - uses `Gbx.ParseHeaderNode<CGameCtnChallenge>` (explicit parse)
-  - `PublishSingleFile` + `SelfContained`
 - **Trimmed** - uses `Gbx.ParseHeaderNode` (implicit parse)
-  - `PublishSingleFile` + `SelfContained` + `PublishTrimmed`
-- **TrimmedGeneric** - uses `Gbx.ParseHeaderNode<CGameCtnChallenge>` (explicit parse)
   - `PublishSingleFile` + `SelfContained` + `PublishTrimmed`
 
 ## Test yourself
 
-Run `dotnet publish` command on all 4 projects.
+Run `dotnet publish` command on both of these projects.
 
 ## Results
 
-Here are the results of the final `GBX.NET.dll` file size (GBX.NET 2.0.1):
+Here are the results of the final `GBX.NET.dll` file size (GBX.NET 2.3.0):
 
-- **Untrimmed** - 1 949 kB
-- **UntrimmedGeneric** - 1 949 kB
-- **Trimmed** - 751 kB
-- **TrimmedGeneric** - **83 kB**
+- **Untrimmed** - 2 624 kB
+- **Trimmed** - 1 169 kB
 
-### Use `<PublishTrimmed>` and explicit parse in your code whenever it's possible!
+## Future
+
+It is expected to use `FeatureSwitchDefinition` in the future to be able to disable various types of classes. For example when you only want to modify maps, you only want to include map-related things, like `CGameCtnBlock` or MediaTracker blocks like `CGameCtnMediaTrack`.
