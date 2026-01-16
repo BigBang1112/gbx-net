@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BenchmarkDotNet" Version="0.15.7" />
+		<PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
 		<PackageReference Include="BlazorMonaco" Version="3.4.0" />
 	</ItemGroup>
 
