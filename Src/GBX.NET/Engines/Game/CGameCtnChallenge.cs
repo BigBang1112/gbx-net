@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Extensions;
 using GBX.NET.Interfaces.Game;
+using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Security;
 using System.Text;
@@ -386,6 +387,10 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk03043036>]
     public Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
 
+    /// <summary>
+    /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is constructed from scratch again using the actual ZIP data.
+    /// </summary>
+    public ImmutableList<Ident>? ExpectedEmbeddedItemModels { get; private set; }
 
     // poss to generate
     string IGameCtnChallenge.MapUid
@@ -2038,7 +2043,7 @@ public partial class CGameCtnChallenge :
 
             using var _ = new Encapsulation(r);
 
-            var embeddedItemModels = r.ReadArrayIdent(); // ignored, could be used for validation
+            n.ExpectedEmbeddedItemModels = r.ReadArrayIdent().ToImmutableList();
 
             n.EmbeddedZipData = r.ReadData();
 
