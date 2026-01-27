@@ -14,11 +14,6 @@ public partial class CGameCtnChallengeParameters
             using var _ = new Encapsulation(r);
             
             n.raceValidateGhost = r.ReadNodeRef<CGameCtnGhost>();
-
-            if (n.raceValidateGhost is not null)
-            {
-                return;
-            }
         }
 
         public override void Write(CGameCtnChallengeParameters n, GbxWriter w)
