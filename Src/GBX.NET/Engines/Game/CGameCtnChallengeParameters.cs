@@ -2,6 +2,11 @@
 
 public partial class CGameCtnChallengeParameters
 {
+    private CGameCtnGhost? raceValidateGhost;
+    [AppliedWithChunk<Chunk0305B00D>]
+    [AppliedWithChunk<Chunk0305B00F>]
+    public CGameCtnGhost? RaceValidateGhost { get => raceValidateGhost; set => raceValidateGhost = value; }
+
     public partial class Chunk0305B00F
     {
         public int U01;
