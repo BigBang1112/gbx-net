@@ -243,16 +243,17 @@ public partial class CPlugEntRecordData : IReadableWritable
     private static byte[][] ReadEncodedDeltas(GbxReader r)
     {
         var numSamples = r.ReadInt32();
+
+        if (numSamples == 0)
+        {
+            return [];
+        }
+
         var sampleSize = r.ReadInt32();
 
         if (numSamples < 0 || sampleSize < 0)
         {
             throw new InvalidDataException($"Invalid header dimensions: {numSamples}x{sampleSize}");
-        }
-
-        if (numSamples == 0)
-        {
-            return [];
         }
 
         var samples = new byte[numSamples][];
