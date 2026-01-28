@@ -16,7 +16,7 @@ else if (Value is TimeInt32 val)
 {
     var cannotWrite = Property?.CannotWrite() == true;
 
-    <input type="text" @bind="Val" disabled="@cannotWrite" style="min-width: 10ch; width: @(val.ToString().Length)ch;" oninput="onInputText(this)" />
+    <input type="text" @bind="Val" disabled="@cannotWrite" style="min-width: 8ch; width: @(val.ToString().Length)ch;" oninput="onInputText(this)" />
 
     if (!cannotWrite && IsNullable)
     {

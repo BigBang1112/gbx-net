@@ -277,14 +277,32 @@ CGameCtnCollection 0x03033000
        CPlugBitmap (external)
        CPlugBitmap (external)
        CMwNod (external)
+       v20+
+        CMwNod
+        v21+
+         CMwNod
+         CMwNod
+         CMwNod
+         CMwNod
+         v22+
+          CPlugFileImg BlockSkins_Default_FidAdvertisement1x1 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement2x1 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement2x3 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement4x1 (external)
+          CPlugFileImg BlockSkins_Default_FidItemFlag (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement16x9 (external)
        v13+
         CMwNod FidMacroBlockInfoInventory (external)
         v14+
          CPlugMediaClipList DefaultSpawnClipList (external)
-         v18+ // guessed, not in my latest decompile
-          ident // CarSnow
-          ident // CarRally
-          ident // CarDesert
+         v16+
+          ident VehicleTransform_CarSnow
+          v17+
+           ident VehicleTransform_CarRally
+           v18+
+            ident VehicleTransform_CarDesert
+            v19+
+             int
 
 0x03A
  version
@@ -298,6 +316,8 @@ CGameCtnCollection 0x03033000
  int
  float? VisMeshLodDistScale
  v1=
+  int
+ v3+
   int
 
 0x03B // turbo color
@@ -333,7 +353,7 @@ CGameCtnCollection 0x03033000
  version
  int
 
-0x040
+0x040 // ColorBlindnessModifier
  version
  CPlugGameSkinAndFolder ColorBlindnessModifier (external)
 
@@ -345,6 +365,10 @@ CGameCtnCollection 0x03033000
 
 0x043
  string
+
+0x044 // GlobalMaterialModifier
+ version
+ CPlugGameSkinAndFolder GlobalMaterialModifier (external)
 
 enum ECollectionType
  Environment

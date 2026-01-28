@@ -120,6 +120,10 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     public ImmutableList<IInput>? Inputs { get; private set; }
 
+    public ImmutableList<EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts { get; private set; }
+
+    public CGameCtnChallengeParameters? ChallengeParameters { get; private set; }
+
     public IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true)
     {
         if (Ghosts is not null)
@@ -617,6 +621,67 @@ public partial class CGameCtnReplayRecord
         }
     }
 
+    public partial class Chunk03093026 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public int U02;
+
+        public override void Read(CGameCtnReplayRecord n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+
+            n.EntDataSceneUIdsToGhosts = r.ReadArrayReadable<EntDataSceneUIdsToGhost>().ToImmutableList();
+
+            if (Version >= 1)
+            {
+                foreach (var entData in n.EntDataSceneUIdsToGhosts)
+                {
+                    entData.U04 = r.ReadInt32();
+                }
+            }
+        }
+    }
+
+    public partial class Chunk03093027 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public string[]? U01;
+        public PackDesc[]? U02;
+
+        public override void Read(CGameCtnReplayRecord n, GbxReader r)
+        {
+            Version = r.ReadInt32();
+            U01 = r.ReadArrayString();
+            U02 = r.ReadArrayPackDesc();
+        }
+    }
+
+    public partial class Chunk03093028
+    {
+        public int U01;
+
+        public override void Read(CGameCtnReplayRecord n, GbxReader r)
+        {
+            U01 = r.ReadInt32();
+        }
+    }
+
+    public partial class Chunk03093029
+    {
+        public override void Read(CGameCtnReplayRecord n, GbxReader r)
+        {
+            n.ChallengeParameters = r.ReadNodeRef<CGameCtnChallengeParameters>();
+        }
+    }
+
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class InterfaceScriptInfo;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class EntDataSceneUIdsToGhost
+    {
+        public int U04 { get; set; }
+    }
 }

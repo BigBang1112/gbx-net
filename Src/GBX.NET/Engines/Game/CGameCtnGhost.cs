@@ -100,6 +100,12 @@ public partial class CGameCtnGhost
             {
                 version = fakeIsRaceRunning.Data;
 
+                // TM2 and TMT has _FakeIsRaceRunning 128 instead of 1
+                if (version == 128)
+                {
+                    version = 1;
+                }
+
                 if (version > 2)
                 {
                     throw new VersionNotSupportedException((int)version);

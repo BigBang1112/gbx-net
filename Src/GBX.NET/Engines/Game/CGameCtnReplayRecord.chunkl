@@ -62,12 +62,19 @@ CGameCtnReplayRecord 0x03093000
 
 0x025 (skippable) [MP4, TM2020]
 
-0x026 (skippable, ignore) [MP4, TM2020] // EntDataSceneUIdsToGhost
+0x026 (skippable) [MP4, TM2020] // EntDataSceneUIdsToGhost
 
-0x027 (skippable, ignore) [TM2020]
+0x027 (skippable) [TM2020]
 
-0x028 (skippable, ignore) [TM2020]
+0x028 (skippable) [TM2020]
+
+0x029 (skippable) [TM2020]
 
 archive InterfaceScriptInfo
  string[]
+ int
+
+archive EntDataSceneUIdsToGhost
+ int
+ int
  int

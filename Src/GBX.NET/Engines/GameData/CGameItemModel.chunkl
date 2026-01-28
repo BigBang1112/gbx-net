@@ -149,8 +149,9 @@ CGameItemModel 0x2E002000
   iso4
  v6+
   bool DisableLightmap
-  v10+
-   int
+  v9+
+   v12-
+    CMwNod
    v11+
     byte?
     v12+
