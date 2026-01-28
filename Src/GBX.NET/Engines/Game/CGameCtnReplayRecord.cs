@@ -120,6 +120,8 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     public ImmutableList<IInput>? Inputs { get; private set; }
 
+    public CGameCtnChallengeParameters? ChallengeParameters { get; private set; }
+
     public IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true)
     {
         if (Ghosts is not null)
@@ -614,6 +616,14 @@ public partial class CGameCtnReplayRecord
             Version = r.ReadInt32();
             U01 = r.ReadSingle();
             U02 = r.ReadInt32();
+        }
+    }
+
+    public partial class Chunk03093029
+    {
+        public override void Read(CGameCtnReplayRecord n, GbxReader r)
+        {
+            n.ChallengeParameters = r.ReadNodeRef<CGameCtnChallengeParameters>();
         }
     }
 

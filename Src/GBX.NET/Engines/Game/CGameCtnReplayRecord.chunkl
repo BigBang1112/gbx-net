@@ -68,6 +68,8 @@ CGameCtnReplayRecord 0x03093000
 
 0x028 (skippable, ignore) [TM2020]
 
+0x029 (skippable) [TM2020]
+
 archive InterfaceScriptInfo
  string[]
  int
