@@ -990,6 +990,13 @@ public partial class CGameCtnChallenge :
                     sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
                     sb.Append("\" authorscore=\"");
                     sb.Append(AuthorScore);
+
+                    if (gameVersion is GameVersion.TM2020)
+                    {
+                        sb.Append("\" hasclones=\"");
+                        sb.Append(HasClones ? "1" : "0");
+                    }
+
                     sb.Append("\"/><deps>");
 
                     if (ModPackDesc is not null && !string.IsNullOrEmpty(ModPackDesc.FilePath))
