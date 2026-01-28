@@ -206,7 +206,34 @@ public partial class CPlugEntRecordData : IReadableWritable
 
             var u04 = version >= 6 ? r.ReadInt32() : u01;
 
-            var samples = ReadEntRecordDeltas(r, entRecordDescs[type]).ToList();
+            List<EntRecordDelta> samples;
+            if (version >= 11)
+            {
+                // columnar delta encoding wtf
+                var count = r.ReadInt32();
+
+                if (count > 0)
+                {
+                    var deltas = new int[count];
+                    var itemSize = r.ReadInt32();
+
+                    for (var i = 0; i < deltas.Length; i++)
+                    {
+                        deltas[i] = r.ReadInt32();
+                    }
+
+                    for (var i = 0; i < itemSize; i++)
+                    {
+                        var deltaData = r.ReadData(deltas.Length);
+                    }
+                }
+
+                samples = []; // TODO
+            }
+            else
+            {
+                samples = ReadEntRecordDeltas(r, entRecordDescs[type]).ToList();
+            }
 
             hasNextElem = r.ReadBoolean(asByte: true);
 
