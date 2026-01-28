@@ -1139,7 +1139,7 @@ public partial class CGameCtnChallenge :
                             rw.EnumInt32<PlayMode>(ref n.mode);
                             if (Version >= 9)
                             {
-                                rw.Int32(ref U04);
+                                rw.Boolean(ref n.hasClones);
                                 if (Version >= 10)
                                 {
                                     rw.Int32(ref n.authorScore);
