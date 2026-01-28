@@ -1,6 +1,5 @@
 ﻿using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
-using static GBX.NET.Engines.Plug.CPlugVertexStream;
 
 namespace GBX.NET.Engines.Plug;
 
