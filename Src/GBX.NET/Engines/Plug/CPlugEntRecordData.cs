@@ -206,7 +206,25 @@ public partial class CPlugEntRecordData : IReadableWritable
 
             var u04 = version >= 6 ? r.ReadInt32() : u01;
 
-            var samples = ReadEntRecordDeltas(r, entRecordDescs[type]).ToList();
+            var desc = entRecordDescs[type];
+            List<EntRecordDelta> samples;
+            if (version < 11)
+            {
+                samples = ReadEntRecordDeltas(r, desc).ToList();
+            }
+            else
+            {
+                var buffers = ReadEncodedDeltas(r);
+                samples = new(buffers.Length);
+
+                var time = TimeInt32.Zero;
+                for (var i = 0; i < buffers.Length; i++)
+                {
+                    var (deltaTime, data) = buffers[i];
+                    time += deltaTime;
+                    samples.Add(CreateEntRecordDelta(time, data, desc));
+                }
+            }
 
             hasNextElem = r.ReadBoolean(asByte: true);
 
@@ -223,6 +241,55 @@ public partial class CPlugEntRecordData : IReadableWritable
                 Samples2 = samples2
             };
         }
+    }
+
+    private static (TimeInt32 deltaTime, byte[] data)[] ReadEncodedDeltas(GbxReader r)
+    {
+        var numSamples = r.ReadInt32();
+
+        if (numSamples == 0)
+        {
+            return [];
+        }
+
+        var sampleSize = r.ReadInt32();
+
+        if (numSamples < 0 || sampleSize < 0)
+        {
+            throw new InvalidDataException($"Invalid header dimensions: {numSamples}x{sampleSize}");
+        }
+
+        var samples = new (TimeInt32 deltaTime, byte[] data)[numSamples];
+        for (var i = 0; i < numSamples; i++)
+        {
+            samples[i] = (r.ReadTimeInt32(), new byte[sampleSize]);
+        }
+
+        // Read data (Columnar Delta Decoding)
+        // The data is stored by row (one byte for every buffer), then column (next byte for every buffer)
+        // It is also delta-encoded horizontally across the buffers
+        for (var i = 0; i < sampleSize; i++)
+        {
+            // Read a slice: one byte for every buffer
+            var slice = r.ReadBytes(numSamples);
+
+            if (slice.Length != numSamples)
+            {
+                throw new EndOfStreamException("Unexpected end of reading data slices.");
+            }
+
+            byte accumulator = 0; // Resets for every new row (byte index)
+
+            for (var b = 0; b < numSamples; b++)
+            {
+                // Apply delta: CurrentBufferVal = PreviousBufferVal + ReadVal
+                accumulator += slice[b];
+
+                samples[b].data[i] = accumulator;
+            }
+        }
+
+        return samples;
     }
 
     private static IEnumerable<EntRecordDelta2> ReadEntRecordDeltas2(GbxReader r)
@@ -243,15 +310,14 @@ public partial class CPlugEntRecordData : IReadableWritable
         // Reads byte on every loop until the byte is 0, should be 1 otherwise
         while (r.ReadBoolean(asByte: true))
         {
-            yield return ReadEntRecordDelta(r, desc);
+            var time = r.ReadTimeInt32();
+            var data = r.ReadData(); // MwBuffer
+            yield return CreateEntRecordDelta(time, data, desc);
         }
     }
 
-    private static EntRecordDelta ReadEntRecordDelta(GbxReader r, EntRecordDesc desc)
+    private static EntRecordDelta CreateEntRecordDelta(TimeInt32 time, byte[] data, EntRecordDesc desc)
     {
-        var time = r.ReadTimeInt32();
-        var data = r.ReadData(); // MwBuffer
-
         EntRecordDelta? delta = desc.ClassId switch
         {
             0x0A018000 => new CSceneVehicleVis.EntRecordDelta(time, data),

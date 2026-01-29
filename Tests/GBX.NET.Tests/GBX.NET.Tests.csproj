@@ -17,10 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.15.7" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
         <PackageReference Include="BlazorMonaco" Version="3.4.0" />
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.2" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
         <PackageReference Include="Neovolve.Logging.Xunit" Version="6.3.0" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />

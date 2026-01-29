@@ -13,6 +13,8 @@
 12 Canyon
 13 Lagoon
 14 Deprecated_Arena
+15 GreenCoast
+16 RedIsland
 17 TMCommon
 18 Canyon4
 19 Canyon256
@@ -23,6 +25,8 @@
 24 Stadium4
 25 Stadium256
 26 Stadium2020
+28 BlueBay
+29 WhiteShore
 100 History
 101 Society
 102 Galaxy

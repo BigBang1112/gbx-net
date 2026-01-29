@@ -2,7 +2,7 @@
   "profiles": {
     "ParseRepeater": {
       "commandName": "Project",
-      "commandLineArgs": "\"D:\\GBX.NET 2\\nations-converter\\Src\\NationsConverterCLI\\UserData\\Items\\NC2\\Crystal\\Modernized\\MM\\Stadium\\Decors\\Fabric\\StadiumFabricCornerOut\\Air_0_0.Item.Gbx\""
+      "commandLineArgs": "\"D:\\GbxTools\\Dataset\\TM10\\Alpine\\Media\\Texture\\AlpineBark.Texture.gbx\""
     }
   }
 }

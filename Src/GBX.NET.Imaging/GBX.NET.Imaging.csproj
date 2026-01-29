@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Imaging</PackageId>
-        <Version>2.0.3</Version>
+        <Version>2.0.4</Version>
         <Authors>BigBang1112</Authors>
         <Description>Provides extensions for image handling in GBX.NET (GDI+, Windows only).</Description>
-        <Copyright>Copyright (c) 2025 Petr Pivoňka</Copyright>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -39,8 +39,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+        <PackageReference Include="System.Drawing.Common" Version="10.0.2" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>

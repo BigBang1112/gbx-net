@@ -32,7 +32,7 @@ while (true)
     /*try
     {*/
         var stopwatch = Stopwatch.StartNew();
-        var gbx = Gbx.ParseNode(fileName, new() { Logger = logger });
+        var gbx = Gbx.Parse(fileName, new() { Logger = logger });
         stopwatch.Stop();
         logger.LogInformation("Parsed in {time}ms", stopwatch.Elapsed.TotalMilliseconds);
     /*}

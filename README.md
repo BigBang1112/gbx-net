@@ -109,9 +109,9 @@ The goal is to also make it viable for NativeAOT.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded. Depending on the needs, I can add explicit .NET Framework support, but so far there haven't been ones not replaceable with .NET Standard 2.0.
@@ -618,9 +618,9 @@ TODO
 
 Make sure you have these framework SDKs available:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 **Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will not work.
