@@ -10,6 +10,7 @@
         <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
         <WasmBuildNative>true</WasmBuildNative>
         <WasmEnableStreamingResponse>false</WasmEnableStreamingResponse>
+		<BlazorCacheBootResources>false</BlazorCacheBootResources>  
     </PropertyGroup>
 
     <ItemGroup>
