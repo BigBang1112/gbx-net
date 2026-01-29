@@ -165,9 +165,12 @@ public class CPlugEntRecordData : CMwNod
                 var buffers = ReadEncodedDeltas(r);
                 samples = new(buffers.Length);
 
+                var time = TimeInt32.Zero;
                 for (var i = 0; i < buffers.Length; i++)
                 {
-                    samples.Add(CreateEntRecordDelta(new TimeInt32(i * 50), buffers[i], desc));
+                    var (deltaTime, data) = buffers[i];
+                    time += deltaTime;
+                    samples.Add(CreateEntRecordDelta(time, data, desc));
                 }
             }
 
@@ -188,7 +191,7 @@ public class CPlugEntRecordData : CMwNod
         }
     }
 
-    private static byte[][] ReadEncodedDeltas(GameBoxReader r)
+    private static (TimeInt32 deltaTime, byte[] data)[] ReadEncodedDeltas(GameBoxReader r)
     {
         var numSamples = r.ReadInt32();
 
@@ -204,20 +207,10 @@ public class CPlugEntRecordData : CMwNod
             throw new InvalidDataException($"Invalid header dimensions: {numSamples}x{sampleSize}");
         }
 
-        var samples = new byte[numSamples][];
+        var samples = new (TimeInt32 deltaTime, byte[] data)[numSamples];
         for (var i = 0; i < numSamples; i++)
         {
-            samples[i] = new byte[sampleSize];
-        }
-
-        // The C code reads numSamples integers here to determine memory positions
-        // Since we are using C# arrays, we don't need the actual offset values to manage memory
-        // but we MUST read them to advance the file stream past the header
-        for (var i = 0; i < numSamples; i++)
-        {
-            _ = r.ReadInt32(); // delta
-            // In the C code: uVar14 = delta + previousOffset
-            // We interpret the file data as: 1st int = Offset for Buffer 0, 2nd int = Offset for Buffer 1, etc.
+            samples[i] = (r.ReadTimeInt32(), new byte[sampleSize]);
         }
 
         // Read data (Columnar Delta Decoding)
@@ -240,7 +233,7 @@ public class CPlugEntRecordData : CMwNod
                 // Apply delta: CurrentBufferVal = PreviousBufferVal + ReadVal
                 accumulator += slice[b];
 
-                samples[b][i] = accumulator;
+                samples[b].data[i] = accumulator;
             }
         }
 
