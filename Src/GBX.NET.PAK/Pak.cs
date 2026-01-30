@@ -58,7 +58,6 @@ public partial class Pak : IDisposable
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
     {
         if (stream is null)
@@ -134,21 +133,6 @@ public partial class Pak : IDisposable
         return await ParseAsync(fs, key, cancellationToken);
     }
 
-    /// <summary>
-    /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
-    /// </summary>
-    /// <param name="filePath">File path.</param>
-    /// <param name="key">Key for decryption. Can be optional but only minimal information will be available without it.</param>
-    /// <returns>Parsed Pak format.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static Pak Parse(string filePath, byte[]? key = null)
-    {
-        var fs = File.OpenRead(filePath);
-        return Parse(fs, key);
-    }
-
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     protected async Task ReadHeaderAsync(Stream stream, CancellationToken cancellationToken)
     {
         var r = new AsyncGbxReader(stream);
@@ -410,7 +394,6 @@ public partial class Pak : IDisposable
         }
     }
 
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public Gbx OpenGbxFileHeader(PakFile file, GbxReadSettings settings = default)
     {
         using var stream = OpenFile(file, out var encryptionInitializer);

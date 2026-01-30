@@ -31,7 +31,6 @@ internal sealed partial class Pak6 : Pak
         await base.ReadHeaderAsync(stream, r, version, cancellationToken);
     }
 
-    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     private async Task ReadUnencryptedHeaderAsync(AsyncGbxReader r, int version, CancellationToken cancellationToken)
     {
         Checksum = await r.ReadBytesAsync(32, cancellationToken);
@@ -105,7 +104,6 @@ internal sealed partial class Pak6 : Pak
         public DateTime CreationDate { get; private set; }
         public uint IncludeDepth { get; private set; }
 
-        [Zomp.SyncMethodGenerator.CreateSyncVersion]
         internal static async Task<IncludedPackHeader> DeserializeAsync(AsyncGbxReader r, int version, CancellationToken cancellationToken)
         {
             var includedPacksHeaders = new IncludedPackHeader
