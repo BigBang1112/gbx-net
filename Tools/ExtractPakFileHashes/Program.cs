@@ -15,7 +15,7 @@ if (args.Length > 1 && args[1].Equals("vsk5", StringComparison.InvariantCultureI
 var pakListFileName = Path.Combine(directoryPath, "packlist.dat");
 var keysFileName = "keys.txt";
 
-Dictionary<string, PakKeyInfo?> keys;
+Dictionary<string, byte[]?> keys;
 
 if (File.Exists(pakListFileName))
 {
@@ -40,9 +40,9 @@ foreach (var (hash, name) in hashes.OrderBy(x => x.Value))
     await writer.WriteLineAsync($"{hash:X16} {name}");
 }
 
-static async Task<Dictionary<string, PakKeyInfo?>> ParseKeysFromTxtAsync(string keysFileName)
+static async Task<Dictionary<string, byte[]?>> ParseKeysFromTxtAsync(string keysFileName)
 {
-    var keys = new Dictionary<string, PakKeyInfo?>(StringComparer.OrdinalIgnoreCase);
+    var keys = new Dictionary<string, byte[]?>(StringComparer.OrdinalIgnoreCase);
 
     using var reader = new StreamReader(keysFileName);
 
@@ -55,9 +55,8 @@ static async Task<Dictionary<string, PakKeyInfo?>> ParseKeysFromTxtAsync(string 
 
         var pak = parts[0];
         var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
-        var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
 
-        keys[pak] = new PakKeyInfo(key, secondKey);
+        keys[pak] = key;
     }
 
     return keys;

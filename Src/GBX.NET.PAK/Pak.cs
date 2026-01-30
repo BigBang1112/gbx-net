@@ -21,28 +21,31 @@ public partial class Pak : IDisposable
     /// </summary>
     public const string Magic = "NadeoPak";
 
-    private const string PakListFileName = "packlist.dat";
-
     private readonly Stream stream;
     private readonly byte[]? key;
-    private readonly byte[]? secondKey;
 
     private int metadataStart;
-    private int dataStart;
+
+    private static readonly byte[] headerKeySalt = [
+        0x56, 0xee, 0xcb, 0xbb, 0xde, 0xb6, 0xbc, 0x90,
+        0xa1, 0x7d, 0xfc, 0xeb, 0x76, 0x1d, 0x59, 0xce
+    ];
 
     public int Version { get; }
 
+    public int? HeaderMaxSize { get; protected set; }
     public byte[]? HeaderMD5 { get; private set; }
-    public int Flags { get; private set; }
+    public uint Flags { get; private set; }
     public virtual bool IsHeaderEncrypted => true;
+
+    public AuthorInfo? AuthorInfo { get; protected set; }
 
     public ImmutableDictionary<string, PakFile> Files { get; private set; } = ImmutableDictionary<string, PakFile>.Empty;
 
-    internal Pak(Stream stream, byte[]? key, byte[]? secondKey, int version)
+    protected Pak(Stream stream, byte[]? key, int version)
     {
         this.stream = stream;
         this.key = key;
-        this.secondKey = secondKey;
         Version = version;
     }
 
@@ -50,159 +53,178 @@ public partial class Pak : IDisposable
     /// Parses the Pak file from the stream. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="stream">Stream.</param>
-    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="key">Key for decryption.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? primaryKey = null, byte[]? fileKey = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
     {
         if (stream is null)
         {
             throw new ArgumentNullException(nameof(stream));
         }
 
-        var r = new GbxReader(stream);
+        var r = new AsyncGbxReader(stream);
 
-        if (!r.ReadPakMagic())
+        if (!await r.ReadPakMagicAsync(cancellationToken))
         {
             throw new NotAPakException();
         }
 
-        var version = r.ReadInt32();
+        var version = await r.ReadInt32Async(cancellationToken);
 
-        var pak = version < 6 
-            ? new Pak(stream, primaryKey, fileKey, version) 
-            : new Pak6(stream, primaryKey, fileKey, version);
+        var pak = version < 6
+            ? new Pak(stream, key, version)
+            : new Pak6(stream, MD5.Compute(Encoding.ASCII.GetBytes(key + "NadeoPak")), version);
 
-        if (pak is Pak6 pak6)
-        {
-            await pak6.ReadUnencryptedHeaderAsync(r, version, cancellationToken);
-        }
-
-        if (pak.IsHeaderEncrypted)
-        {
-            if (primaryKey is null)
-            {
-                return pak;
-            }
-
-            var iv = r.ReadUInt64();
-            var blowfishStream = new BlowfishStream(stream, primaryKey, iv, version == 18);
-
-            await pak.ReadHeaderAsync(blowfishStream, cancellationToken);
-        }
-        else
-        {
-            await pak.ReadHeaderAsync(stream, cancellationToken);
-        }
+        await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
         return pak;
     }
 
-    /// <summary>
-    /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
-    /// </summary>
-    /// <param name="filePath">File path.</param>
-    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task. The task result contains the parsed Pak format.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? primaryKey = null, byte[]? fileKey = null, CancellationToken cancellationToken = default)
+    internal virtual async Task ReadHeaderAsync(Stream stream, AsyncGbxReader r, int version, CancellationToken cancellationToken)
     {
-        var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, primaryKey, fileKey, cancellationToken);
+        if (!IsHeaderEncrypted)
+        {
+            await ReadHeaderAsync(stream, cancellationToken);
+            return;
+        }
+
+        if (key is null)
+        {
+            return;
+        }
+
+        byte[] headerKey;
+        if (version < 6)
+        {
+            headerKey = key;
+        }
+        else
+        {
+            headerKey = new byte[key.Length];
+            Array.Copy(key, headerKey, key.Length);
+
+            for (var i = 0; i < 16; i++)
+            {
+                headerKey[i] ^= headerKeySalt[i];
+            }
+        }
+
+        var iv = await r.ReadUInt64Async(cancellationToken);
+        var blowfishStream = new BlowfishStream(stream, headerKey, iv, version == 18);
+
+        await ReadHeaderAsync(blowfishStream, cancellationToken);
     }
 
     /// <summary>
     /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="filePath">File path.</param>
-    /// <param name="primaryKey">Key for main decryption, or only the header part for newer Pak format.</param>
-    /// <param name="fileKey">Alternative key to use for decrypting individual files. Ignored for TMF Pak (v3) format and older.</param>
+    /// <param name="key">Key for decryption.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task. The task result contains the parsed Pak format.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
+    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, CancellationToken cancellationToken = default)
+    {
+        var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ParseAsync(fs, key, cancellationToken);
+    }
+
+    /// <summary>
+    /// Parses the Pak file from file path. Should be disposed after use, as it keeps the file open (currently at least).
+    /// </summary>
+    /// <param name="filePath">File path.</param>
+    /// <param name="key">Key for decryption. Can be optional but only minimal information will be available without it.</param>
     /// <returns>Parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static Pak Parse(string filePath, byte[]? primaryKey = null, byte[]? fileKey = null)
+    public static Pak Parse(string filePath, byte[]? key = null)
     {
         var fs = File.OpenRead(filePath);
-        return Parse(fs, primaryKey, fileKey);
+        return Parse(fs, key);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     protected async Task ReadHeaderAsync(Stream stream, CancellationToken cancellationToken)
     {
-        var pak6 = this as Pak6;
-        var r = new GbxReader(stream);
+        var r = new AsyncGbxReader(stream);
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
-        metadataStart = r.ReadInt32(); // offset to metadata section
+        metadataStart = await r.ReadInt32Async(cancellationToken); // offset to metadata section
 
         if (Version < 15)
         {
-            dataStart = r.ReadInt32();
-        }
-        else
-        {
-            dataStart = pak6?.HeaderMaxSize ?? throw new InvalidOperationException("HeaderMaxSize is null.");
+            HeaderMaxSize = await r.ReadInt32Async(cancellationToken); // data start
         }
 
         if (Version >= 2)
         {
-            var gbxHeadersSize = r.ReadInt32();
-            var gbxHeadersComprSize = r.ReadInt32();
+            var gbxHeadersSize = await r.ReadInt32Async(cancellationToken);
+            var gbxHeadersComprSize = await r.ReadInt32Async(cancellationToken);
         }
 
         if (Version >= 14)
         {
-            r.SkipData(16); // unused
+            await r.ReadBytesAsync(16, cancellationToken); // unused
 
             if (Version >= 16)
             {
-                var fileSize = r.ReadUInt32();
+                var fileSize = await r.ReadUInt32Async(cancellationToken);
             }
         }
 
         if (Version >= 3)
         {
-            r.SkipData(16); // unused
+            await r.ReadBytesAsync(16, cancellationToken); // unused
 
             if (Version == 6)
             {
-                pak6?.ReadAuthorInfo(r);
+                AuthorInfo = await ReadAuthorInfoAsync(r, cancellationToken);
             }
         }
 
-        Flags = r.ReadInt32();
+        Flags = await r.ReadUInt32Async(cancellationToken);
 
-        var allFolders = ReadAllFolders(r);
+        var allFolders = await ReadAllFoldersAsync(r, cancellationToken);
 
         if (allFolders.Length > 2 && allFolders[2].Name.Length > 4)
         {
             var nameBytes = Encoding.Unicode.GetBytes(allFolders[2].Name);
 
-            if (r.BaseStream is IEncryptionInitializer encryptionInitializer)
+            if (stream is IEncryptionInitializer encryptionInitializer)
             {
                 encryptionInitializer.Initialize(nameBytes, 4, 4);
             }
         }
 
-        Files = ReadAllFiles(r, allFolders);
+        Files = await ReadAllFilesAsync(r, allFolders, cancellationToken);
     }
 
-    private static PakFolder[] ReadAllFolders(GbxReader r)
+    internal static async Task<AuthorInfo> ReadAuthorInfoAsync(AsyncGbxReader r, CancellationToken cancellationToken)
     {
-        var numFolders = r.ReadInt32();
+        return new AuthorInfo
+        {
+            AuthorVersion = await r.ReadInt32Async(cancellationToken),
+            AuthorLogin = await r.ReadStringAsync(cancellationToken),
+            AuthorNickname = await r.ReadStringAsync(cancellationToken),
+            AuthorZone = await r.ReadStringAsync(cancellationToken),
+            AuthorExtraInfo = await r.ReadStringAsync(cancellationToken)
+        };
+    }
+
+    private static async Task<PakFolder[]> ReadAllFoldersAsync(AsyncGbxReader r, CancellationToken cancellationToken)
+    {
+        var numFolders = await r.ReadInt32Async(cancellationToken);
         var allFolders = new PakFolder[numFolders];
 
         for (var i = 0; i < numFolders; i++)
         {
-            var parentFolderIndex = r.ReadInt32(); // index into folders; -1 if this is a root folder
-            var name = r.ReadString();
+            var parentFolderIndex = await r.ReadInt32Async(cancellationToken); // index into folders; -1 if this is a root folder
+            var name = await r.ReadStringAsync(cancellationToken);
 
             if (!name.EndsWith('\\') && !name.EndsWith('/'))
             {
@@ -215,24 +237,24 @@ public partial class Pak : IDisposable
         return allFolders;
     }
 
-    private ImmutableDictionary<string, PakFile> ReadAllFiles(GbxReader r, PakFolder[] allFolders)
+    private async Task<ImmutableDictionary<string, PakFile>> ReadAllFilesAsync(AsyncGbxReader r, PakFolder[] allFolders, CancellationToken cancellationToken)
     {
         var files = ImmutableDictionary.CreateBuilder<string, PakFile>();
 
-        var numFiles = r.ReadInt32();
+        var numFiles = await r.ReadInt32Async(cancellationToken);
         for (var i = 0; i < numFiles; i++)
         {
-            var folderIndex = r.ReadInt32(); // index into folders
-            var name = r.ReadString().Replace('\\', Path.DirectorySeparatorChar);
-            var u01 = r.ReadInt32();
-            var uncompressedSize = r.ReadInt32();
-            var compressedSize = r.ReadInt32();
-            var offset = r.ReadUInt32();
-            var classId = r.ReadUInt32(); // indicates the type of the file
-            var size = Version >= 17 ? r.ReadInt32() : default(int?);
-            var checksum = Version >= 14 ? r.ReadUInt128() : default(UInt128?);
+            var folderIndex = await r.ReadInt32Async(cancellationToken); // index into folders
+            var name = (await r.ReadStringAsync(cancellationToken)).Replace('\\', Path.DirectorySeparatorChar); // should this replacement really happen?
+            var u01 = await r.ReadInt32Async(cancellationToken);
+            var uncompressedSize = await r.ReadInt32Async(cancellationToken);
+            var compressedSize = await r.ReadInt32Async(cancellationToken);
+            var offset = await r.ReadUInt32Async(cancellationToken);
+            var classId = await r.ReadUInt32Async(cancellationToken); // indicates the type of the file
+            var size = Version >= 17 ? await r.ReadInt32Async(cancellationToken) : default(int?);
+            var checksum = Version >= 14 ? await r.ReadUInt128Async(cancellationToken) : default(UInt128?);
 
-            var fileFlags = r.ReadUInt64();
+            var fileFlags = await r.ReadUInt64Async(cancellationToken);
 
             var folderPath = string.Join(Path.DirectorySeparatorChar, RecurseFoldersToParent(folderIndex, allFolders)
                 .Reverse()
@@ -270,9 +292,12 @@ public partial class Pak : IDisposable
 
     public Stream OpenFile(PakFile file, out EncryptionInitializer? encryptionInitializer)
     {
-        var fileKey = (this is Pak6) ? secondKey : key;
+        if (HeaderMaxSize is null)
+        {
+            throw new Exception("Cannot open file.");
+        }
 
-        stream.Position = dataStart + file.Offset;
+        stream.Position = HeaderMaxSize.Value + file.Offset;
 
         var newStream = stream;
 
@@ -285,12 +310,12 @@ public partial class Pak : IDisposable
             }
             var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
-            if (fileKey is null)
+            if (key is null)
             {
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, fileKey, iv, Version == 18);
+            var blowfish = new BlowfishStream(newStream, key, iv, Version == 18);
 
             encryptionInitializer = new EncryptionInitializer(blowfish);
 
@@ -420,7 +445,7 @@ public partial class Pak : IDisposable
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
     {
-        var pakListFilePath = Path.Combine(directoryPath, PakListFileName);
+        var pakListFilePath = Path.Combine(directoryPath, PakList.FileName);
 
         if (!File.Exists(pakListFilePath))
         {
@@ -430,7 +455,7 @@ public partial class Pak : IDisposable
         var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
         return await BruteforceFileHashesAsync(directoryPath,
-            pakList.ToDictionary(x => x.Key, x => (PakKeyInfo?)new PakKeyInfo(x.Value.Key)),
+            pakList.ToDictionary(x => x.Key, x => (byte[]?)x.Value.Key),
             progress,
             onlyUsedHashes,
             cancellationToken);
@@ -447,7 +472,7 @@ public partial class Pak : IDisposable
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
-        Dictionary<string, PakKeyInfo?> keys,
+        Dictionary<string, byte[]?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool onlyUsedHashes = true,
         CancellationToken cancellationToken = default)
@@ -510,7 +535,7 @@ public partial class Pak : IDisposable
             {
                 usedHashes[file.Name] = name;
             }
-            /* else if (Regex.IsMatch(file.Name, "^[0-9a-fA-F]{34}$"))
+            /* else if (System.Text.RegularExpressions.Regex.IsMatch(file.Name, "^[0-9a-fA-F]{34}$"))
             {
                 usedHashes[file.Name] = "";
             } */
@@ -521,12 +546,12 @@ public partial class Pak : IDisposable
 
     private static async IAsyncEnumerable<(Pak, PakFile)> EnumeratePakFilesAsync(
         string directoryPath,
-        Dictionary<string, PakKeyInfo?> keys, 
+        Dictionary<string, byte[]?> keys, 
         [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var pakInfo in keys)
+        foreach (var (name, key) in keys)
         {
-            var fileName = $"{char.ToUpperInvariant(pakInfo.Key[0])}{pakInfo.Key.Substring(1)}.pak"; // maybe should look for .Pack.Gbx too
+            var fileName = $"{char.ToUpperInvariant(name[0])}{name.Substring(1)}.pak"; // maybe should look for .Pack.Gbx too
             var fullFileName = Path.Combine(directoryPath, fileName);
 
             if (!File.Exists(fullFileName))
@@ -534,7 +559,7 @@ public partial class Pak : IDisposable
                 continue;
             }
 
-            using var pak = await ParseAsync(fullFileName, pakInfo.Value?.PrimaryKey, pakInfo.Value?.FileKey, cancellationToken: cancellationToken);
+            using var pak = await ParseAsync(fullFileName, key, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {
