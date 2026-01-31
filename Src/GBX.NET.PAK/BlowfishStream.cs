@@ -2,7 +2,7 @@
 
 namespace GBX.NET.PAK;
 
-public class BlowfishStream : Stream, IEncryptionInitializer
+public partial class BlowfishStream : Stream, IEncryptionInitializer
 {
     private readonly Stream stream;
     private readonly Blowfish blowfish;
@@ -43,6 +43,7 @@ public class BlowfishStream : Stream, IEncryptionInitializer
         }
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
     {
         if (!CanRead)
@@ -113,7 +114,7 @@ public class BlowfishStream : Stream, IEncryptionInitializer
 
     public override int Read(byte[] buffer, int offset, int count)
     {
-        throw new NotSupportedException();
+        return Read(buffer.AsSpan(offset, count));
     }
 
     public override void Write(byte[] buffer, int offset, int count)

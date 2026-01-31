@@ -127,7 +127,7 @@ foreach (var pakFilePath in pakFilePaths)
 
             Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false))
+            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys))
             {
                 hashes[hash] = fileName;
             }

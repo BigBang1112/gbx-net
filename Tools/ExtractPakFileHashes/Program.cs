@@ -32,10 +32,12 @@ else
 
 Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys);
+var hashes = await Pak.BruteforceFileHashesAsync(directoryPath, keys, keepUnresolvedHashes: true);
+
+Console.WriteLine($"Resolved {hashes.Count(x => !string.IsNullOrEmpty(x.Value))}/{hashes.Count} hashes.");
 
 using var writer = new StreamWriter("hashes.txt");
-foreach (var (hash, name) in hashes.OrderBy(x => x.Value))
+foreach (var (hash, name) in hashes.OrderBy(x => x.Value).ThenBy(x => x.Key))
 {
     await writer.WriteLineAsync($"{hash:X16} {name}");
 }
@@ -50,11 +52,13 @@ static async Task<Dictionary<string, byte[]?>> ParseKeysFromTxtAsync(string keys
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-        if (parts.Length < 2)
+        if (parts.Length == 0)
+        {
             continue;
+        }
 
         var pak = parts[0];
-        var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
+        var key = parts.Length > 1 ? Convert.FromHexString(parts[1]) : null;
 
         keys[pak] = key;
     }

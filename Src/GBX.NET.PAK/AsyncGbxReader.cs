@@ -14,7 +14,7 @@ internal sealed class AsyncGbxReader : IAsyncDisposable
 
     private const int MaxDataSize = 0x10000000; // ~268MB
 
-    private readonly byte[] primitiveBuffer = new byte[8];
+    private readonly byte[] primitiveBuffer = new byte[16];
 
     public AsyncGbxReader(Stream stream, bool leaveOpen = true)
     {

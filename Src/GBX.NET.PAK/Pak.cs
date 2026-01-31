@@ -2,12 +2,12 @@
 using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK.Exceptions;
-using GBX.NET.Serialization;
 using NativeSharpZlib;
 using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GBX.NET.PAK;
 
@@ -24,8 +24,6 @@ public partial class Pak : IDisposable
     private readonly Stream stream;
     private readonly byte[]? key;
 
-    private int metadataStart;
-
     private static readonly byte[] headerKeySalt = [
         0x56, 0xee, 0xcb, 0xbb, 0xde, 0xb6, 0xbc, 0x90,
         0xa1, 0x7d, 0xfc, 0xeb, 0x76, 0x1d, 0x59, 0xce
@@ -33,9 +31,14 @@ public partial class Pak : IDisposable
 
     public int Version { get; }
 
+    public int GbxHeadersStart { get; private set; }
+    public int? GbxHeadersSize { get; private set; }
+    public int? GbxHeadersComprSize { get; private set; }
     public int? HeaderMaxSize { get; protected set; }
+    public uint? Size { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
     public uint Flags { get; private set; }
+    public virtual bool UseDefaultHeaderKey => true;
     public virtual bool IsHeaderEncrypted => true;
 
     public AuthorInfo? AuthorInfo { get; protected set; }
@@ -60,10 +63,7 @@ public partial class Pak : IDisposable
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
     {
-        if (stream is null)
-        {
-            throw new ArgumentNullException(nameof(stream));
-        }
+        ArgumentNullException.ThrowIfNull(stream);
 
         var r = new AsyncGbxReader(stream);
 
@@ -76,7 +76,7 @@ public partial class Pak : IDisposable
 
         var pak = version < 6
             ? new Pak(stream, key, version)
-            : new Pak6(stream, MD5.Compute(Encoding.ASCII.GetBytes(key + "NadeoPak")), version);
+            : new Pak6(stream, key is null ? null : MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + "NadeoPak")), version);
 
         await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
@@ -97,7 +97,7 @@ public partial class Pak : IDisposable
         }
 
         byte[] headerKey;
-        if (version < 6)
+        if (version < 6 || !UseDefaultHeaderKey)
         {
             headerKey = key;
         }
@@ -138,7 +138,7 @@ public partial class Pak : IDisposable
         var r = new AsyncGbxReader(stream);
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
-        metadataStart = await r.ReadInt32Async(cancellationToken); // offset to metadata section
+        GbxHeadersStart = await r.ReadInt32Async(cancellationToken); // offset to metadata section
 
         if (Version < 15)
         {
@@ -147,8 +147,8 @@ public partial class Pak : IDisposable
 
         if (Version >= 2)
         {
-            var gbxHeadersSize = await r.ReadInt32Async(cancellationToken);
-            var gbxHeadersComprSize = await r.ReadInt32Async(cancellationToken);
+            GbxHeadersSize = await r.ReadInt32Async(cancellationToken);
+            GbxHeadersComprSize = await r.ReadInt32Async(cancellationToken);
         }
 
         if (Version >= 14)
@@ -157,7 +157,7 @@ public partial class Pak : IDisposable
 
             if (Version >= 16)
             {
-                var fileSize = await r.ReadUInt32Async(cancellationToken);
+                Size = await r.ReadUInt32Async(cancellationToken);
             }
         }
 
@@ -418,14 +418,14 @@ public partial class Pak : IDisposable
     /// <param name="directoryPath"></param>
     /// <param name="game"></param>
     /// <param name="progress"></param>
-    /// <param name="onlyUsedHashes"></param>
+    /// <param name="keepUnresolvedHashes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
         PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
-        bool onlyUsedHashes = true,
+        bool keepUnresolvedHashes = false,
         CancellationToken cancellationToken = default)
     {
         var pakListFilePath = Path.Combine(directoryPath, PakList.FileName);
@@ -440,7 +440,7 @@ public partial class Pak : IDisposable
         return await BruteforceFileHashesAsync(directoryPath,
             pakList.ToDictionary(x => x.Key, x => (byte[]?)x.Value.Key),
             progress,
-            onlyUsedHashes,
+            keepUnresolvedHashes,
             cancellationToken);
     }
 
@@ -450,21 +450,24 @@ public partial class Pak : IDisposable
     /// <param name="directoryPath"></param>
     /// <param name="keys"></param>
     /// <param name="progress"></param>
-    /// <param name="onlyUsedHashes"></param>
+    /// <param name="keepUnresolvedHashes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
         string directoryPath,
         Dictionary<string, byte[]?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
-        bool onlyUsedHashes = true,
+        bool keepUnresolvedHashes = false,
         CancellationToken cancellationToken = default)
     {
         var allPossibleFileHashes = new Dictionary<string, string>();
+        var foundFileNames = new List<string>();
 
         await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
         {
-            cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested(); 
+            
+            foundFileNames.Add(file.Name);
 
             Gbx gbx;
             try
@@ -475,53 +478,65 @@ public partial class Pak : IDisposable
             {
                 continue;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{file.Name} {e.Message}");
-                continue;
-            }
-
-            var refTable = gbx.RefTable;
-
-            if (refTable is null)
+            catch (Exception ex)
             {
                 continue;
             }
 
-            foreach (var refTableFile in refTable.Files)
+            if (gbx.RefTable is null)
+            {
+                continue;
+            }
+
+            foreach (var refTableFile in gbx.RefTable.Files)
             {
                 var filePath = refTableFile.FilePath.Replace('/', '\\');
+
                 var hash = MD5.Compute136(filePath);
-                progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                allPossibleFileHashes[hash] = filePath;
+                if (!allPossibleFileHashes.ContainsKey(hash))
+                {
+                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                    allPossibleFileHashes[hash] = filePath;
+                }
+
+                var filePathDir = Path.GetDirectoryName(file.Name);
+                if (!string.IsNullOrEmpty(filePathDir))
+                {
+                    var filePathWithDir = $"{filePathDir}\\{filePath}";
+                    hash = MD5.Compute136(filePathWithDir);
+                    if (!allPossibleFileHashes.ContainsKey(hash))
+                    {
+                        progress?.Report(new KeyValuePair<string, string>(hash, filePathWithDir));
+                        allPossibleFileHashes[hash] = filePathWithDir;
+                    }
+                }
 
                 while (filePath.Contains('\\'))
                 {
                     filePath = filePath.Substring(filePath.IndexOf('\\') + 1);
                     hash = MD5.Compute136(filePath);
-                    progress?.Report(new KeyValuePair<string, string>(hash, filePath));
-                    allPossibleFileHashes[hash] = filePath;
+
+                    if (!allPossibleFileHashes.ContainsKey(hash))
+                    {
+                        progress?.Report(new KeyValuePair<string, string>(hash, filePath));
+                        allPossibleFileHashes[hash] = filePath;
+                    }
                 }
             }
         }
 
-        if (!onlyUsedHashes)
-        {
-            return allPossibleFileHashes;
-        }
-
         var usedHashes = new Dictionary<string, string>();
 
-        await foreach (var (_, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
+        foreach (var fileName in foundFileNames)
         {
-            if (allPossibleFileHashes.TryGetValue(file.Name, out var name))
+            if (allPossibleFileHashes.TryGetValue(fileName, out var name))
             {
-                usedHashes[file.Name] = name;
+                usedHashes[fileName] = name;
             }
-            /* else if (System.Text.RegularExpressions.Regex.IsMatch(file.Name, "^[0-9a-fA-F]{34}$"))
+            else if (keepUnresolvedHashes && HashGuessRegex().IsMatch(fileName))
             {
-                usedHashes[file.Name] = "";
-            } */
+                usedHashes[fileName] = "";
+            }
         }
 
         return usedHashes;
@@ -532,17 +547,18 @@ public partial class Pak : IDisposable
         Dictionary<string, byte[]?> keys, 
         [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var (name, key) in keys)
+        foreach (var filePath in Directory.EnumerateFiles(directoryPath)
+            .Where(x => x.EndsWith(".pak", StringComparison.OrdinalIgnoreCase) || x.EndsWith(".Pack.Gbx", StringComparison.OrdinalIgnoreCase)))
         {
-            var fileName = $"{char.ToUpperInvariant(name[0])}{name.Substring(1)}.pak"; // maybe should look for .Pack.Gbx too
-            var fullFileName = Path.Combine(directoryPath, fileName);
+            var identifier = Path.GetFileNameWithoutExtension(filePath);
+            var key = keys.GetValueOrDefault(identifier);
 
-            if (!File.Exists(fullFileName))
+            if (key is null)
             {
-                continue;
+
             }
 
-            using var pak = await ParseAsync(fullFileName, key, cancellationToken: cancellationToken);
+            await using var pak = await ParseAsync(filePath, key, cancellationToken: cancellationToken);
 
             foreach (var file in pak.Files.Values)
             {
@@ -550,4 +566,7 @@ public partial class Pak : IDisposable
             }
         }
     }
+
+    [GeneratedRegex("^[0-9a-fA-F]{34}$")]
+    private static partial Regex HashGuessRegex();
 }

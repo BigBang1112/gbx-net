@@ -18,7 +18,7 @@ internal sealed partial class Pak6 : Pak
     public byte[]? U01 { get; private set; }
 
     public bool IsHeaderPrivate => (HeaderFlags & 0x01) != 0;
-    public bool UseDefaultHeaderKey => (HeaderFlags & 0x02) != 0;
+    public override bool UseDefaultHeaderKey => (HeaderFlags & 0x02) != 0;
     public override bool IsHeaderEncrypted => IsHeaderPrivate || UseDefaultHeaderKey;
 
     internal Pak6(Stream stream, byte[]? key, int version) : base(stream, key, version)
