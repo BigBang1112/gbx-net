@@ -61,6 +61,7 @@ public partial class Pak : IDisposable
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
@@ -83,6 +84,7 @@ public partial class Pak : IDisposable
         return pak;
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     internal virtual async Task ReadHeaderAsync(Stream stream, AsyncGbxReader r, int version, CancellationToken cancellationToken)
     {
         if (!IsHeaderEncrypted)
@@ -133,7 +135,8 @@ public partial class Pak : IDisposable
         return await ParseAsync(fs, key, cancellationToken);
     }
 
-    protected async Task ReadHeaderAsync(Stream stream, CancellationToken cancellationToken)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    private async Task ReadHeaderAsync(Stream stream, CancellationToken cancellationToken)
     {
         var r = new AsyncGbxReader(stream);
 
@@ -188,6 +191,7 @@ public partial class Pak : IDisposable
         Files = await ReadAllFilesAsync(r, allFolders, cancellationToken);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     internal static async Task<AuthorInfo> ReadAuthorInfoAsync(AsyncGbxReader r, CancellationToken cancellationToken)
     {
         return new AuthorInfo
@@ -200,6 +204,7 @@ public partial class Pak : IDisposable
         };
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     private static async Task<PakFolder[]> ReadAllFoldersAsync(AsyncGbxReader r, CancellationToken cancellationToken)
     {
         var numFolders = await r.ReadInt32Async(cancellationToken);
@@ -221,6 +226,7 @@ public partial class Pak : IDisposable
         return allFolders;
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     private async Task<ImmutableDictionary<string, PakFile>> ReadAllFilesAsync(AsyncGbxReader r, PakFolder[] allFolders, CancellationToken cancellationToken)
     {
         var files = ImmutableDictionary.CreateBuilder<string, PakFile>();

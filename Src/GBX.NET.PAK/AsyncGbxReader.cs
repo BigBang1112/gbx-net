@@ -1,11 +1,10 @@
 ﻿using GBX.NET.Exceptions;
-using GBX.NET.Serialization;
 using System.Buffers.Binary;
 using System.Text;
 
 namespace GBX.NET.PAK;
 
-internal sealed class AsyncGbxReader : IAsyncDisposable
+internal sealed partial class AsyncGbxReader : IDisposable, IAsyncDisposable
 {
     private readonly Stream stream;
     private readonly bool leaveOpen;
@@ -22,52 +21,61 @@ internal sealed class AsyncGbxReader : IAsyncDisposable
         this.leaveOpen = leaveOpen;
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<bool> ReadPakMagicAsync(CancellationToken cancellationToken = default)
     {
         return await ReadInt64Async(cancellationToken) == NadeoPakMagic;
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<short> ReadInt16Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, sizeof(short)), cancellationToken);
         return BinaryPrimitives.ReadInt16LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<int> ReadInt32Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, sizeof(int)), cancellationToken);
         return BinaryPrimitives.ReadInt32LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<long> ReadInt64Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, sizeof(long)), cancellationToken);
         return BinaryPrimitives.ReadInt64LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<uint> ReadUInt32Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, sizeof(uint)), cancellationToken);
         return BinaryPrimitives.ReadUInt32LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<ulong> ReadUInt64Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, sizeof(ulong)), cancellationToken);
         return BinaryPrimitives.ReadUInt64LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<UInt128> ReadUInt128Async(CancellationToken cancellationToken = default)
     {
         await stream.ReadExactlyAsync(primitiveBuffer.AsMemory(0, 16), cancellationToken);
         return BinaryPrimitives.ReadUInt128LittleEndian(primitiveBuffer);
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<DateTime> ReadFileTimeAsync(CancellationToken cancellationToken = default)
     {
         return DateTime.FromFileTime(await ReadInt64Async(cancellationToken));
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<string> ReadStringAsync(CancellationToken cancellationToken = default)
     {
         var length = await ReadInt32Async(cancellationToken);
@@ -90,11 +98,22 @@ internal sealed class AsyncGbxReader : IAsyncDisposable
         return Encoding.UTF8.GetString(await ReadBytesAsync(length, cancellationToken)); 
     }
 
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<byte[]> ReadBytesAsync(int count, CancellationToken cancellationToken = default)
     {
         var buffer = new byte[count];
         await stream.ReadExactlyAsync(buffer.AsMemory(0, count), cancellationToken);
         return buffer;
+    }
+
+    public void Dispose()
+    {
+        if (leaveOpen)
+        {
+            return;
+        }
+
+        stream.Dispose();
     }
 
     public ValueTask DisposeAsync()
