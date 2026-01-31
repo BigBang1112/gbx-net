@@ -830,6 +830,36 @@ public partial class Gbx : IGbx
         return ParseClassId(fs, remap);
     }
 
+    public static bool IsGbx(Stream stream)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+#if NETSTANDARD2_0
+        var minimalData = new byte[5];
+        var count = stream.Read(minimalData, 0, minimalData.Length);
+#else
+        Span<byte> minimalData = stackalloc byte[5];
+        var count = stream.Read(minimalData);
+#endif
+
+        if (count != minimalData.Length)
+        {
+            return false;
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            throw new NotAGbxException();
+        }
+
+        if (minimalData[4] != 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public static bool IsUncompressed(Stream stream)
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));

@@ -17,11 +17,18 @@
     <File Path="SUPPORTED_GBX_FILE_TYPES.md" />
   </Folder>
   <Folder Name="/Resources/">
+    <File Path="Resources/BaseKeys.txt" />
     <File Path="Resources/ClassId.txt" />
     <File Path="Resources/ClassIdManual.txt" />
     <File Path="Resources/CollectionId.txt" />
     <File Path="Resources/Engine.txt" />
     <File Path="Resources/Extensions.txt" />
+    <File Path="Resources/FileHashes_MP4.txt" />
+    <File Path="Resources/FileHashes_TM2020.txt" />
+    <File Path="Resources/FileHashes_TMT.txt" />
+    <File Path="Resources/FileHashes_TMU.txt" />
+    <File Path="Resources/FileHashes_TMUF.txt" />
+    <File Path="Resources/FileHashes_Vsk5.txt" />
     <File Path="Resources/LICENSE" />
     <File Path="Resources/Unwrap.txt" />
     <File Path="Resources/Wrap.txt" />
