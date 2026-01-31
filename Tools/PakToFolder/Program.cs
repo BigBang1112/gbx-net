@@ -136,7 +136,7 @@ foreach (var pakFilePath in pakFilePaths)
     }
 
     var pakId = Path.GetFileNameWithoutExtension(pakFilePath);
-    var extractFolderPath = Path.Combine(directoryPath, pakId);
+    var extractFolderPath = pakId;
 
     await using var pak = keys.TryGetValue(pakId, out var keyData)
         ? await Pak.ParseAsync(pakFilePath, keyData)
