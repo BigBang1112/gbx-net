@@ -14,6 +14,7 @@ public partial class CPlugVisual
     public TexCoordSet[] TexCoords { get; set; } = [];
     public BoxAligned BoundingBox { get; set; }
     public SSkinData? SkinData { get; set; }
+    public ushort[]? UvGroups { get; set; }
 
     public bool IsGeometryStatic
     {
@@ -320,9 +321,9 @@ public partial class CPlugVisual
     {
         public int Version { get; set; }
 
-        public ushort[]? U01;
         public int U02;
         public int U03;
+        public byte[]? U04;
 
         public override void Read(CPlugVisual n, GbxReader r)
         {
@@ -348,12 +349,16 @@ public partial class CPlugVisual
 
             if (Version >= 5)
             {
-                U01 = r.ReadArray<ushort>();
+                n.UvGroups = r.ReadArray<ushort>();
 
                 if (Version >= 6)
                 {
                     U02 = r.ReadInt32();
                     U03 = r.ReadInt32();
+                    if (U03 > 0)
+                    {
+                        U04 = r.ReadData(U03 - 4);
+                    }
                 }
             }
         }
@@ -381,12 +386,16 @@ public partial class CPlugVisual
 
             if (Version >= 5)
             {
-                w.WriteArray(U01);
+                w.WriteArray(n.UvGroups);
 
                 if (Version >= 6)
                 {
                     w.Write(U02);
                     w.Write(U03);
+                    if (U03 > 0)
+                    {
+                        w.WriteData(U04!);
+                    }
                 }
             }
         }
