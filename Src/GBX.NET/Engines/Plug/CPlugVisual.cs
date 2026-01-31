@@ -394,7 +394,7 @@ public partial class CPlugVisual
                     w.Write(U03);
                     if (U03 > 0)
                     {
-                        w.WriteData(U04!);
+                        w.Write(U04!);
                     }
                 }
             }
