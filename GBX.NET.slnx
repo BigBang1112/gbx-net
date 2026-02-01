@@ -83,6 +83,7 @@
   </Folder>
   <Folder Name="/Templates/">
     <Project Path="Templates/GBX.NET.Templates.csproj" />
+    <Project Path="Templates/MyGbxBlazorWasmApp/MyGbxBlazorWasmApp.csproj" />
     <Project Path="Templates/MyGbxConsoleApp/MyGbxConsoleApp.csproj" />
   </Folder>
   <Folder Name="/Templates/MyGbxToolApp/">
