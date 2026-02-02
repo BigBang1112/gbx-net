@@ -1,1 +1,35 @@
 CPlugImageArray 0x0914C000
+
+0x000
+ version
+ string Folder
+ Elem[] Layers (version: Version)
+ v4+
+  CMwNod Material_VId
+  v5+
+   float MaskScale
+   v6+
+    string Folder_TextureDecals
+    v7+
+     int
+
+archive Elem
+ string
+ float
+ float
+ float
+ float
+ v3+
+  float
+  float
+  float
+  float
+ float
+ v1+
+  float
+  float
+  float
+  float
+  v2+
+   int
+   int

@@ -1,20 +1,18 @@
-﻿namespace GBX.NET.PAK;
+﻿using System.Buffers.Binary;
 
-public class BlowfishStream : Stream, IEncryptionInitializer
+namespace GBX.NET.PAK;
+
+public partial class BlowfishStream : Stream, IEncryptionInitializer
 {
     private readonly Stream stream;
     private readonly Blowfish blowfish;
 
     private ulong iv;
     private ulong ivXor;
-#if NET5_0_OR_GREATER
-    private readonly byte[] memoryBuffer;
-#else
-    private byte[] memoryBuffer;
-#endif
     private int bufferIndex;
     private int totalIndex;
-    private bool isPak18;
+    private readonly byte[] memoryBuffer;
+    private readonly bool isPak18;
 
     public BlowfishStream(Stream stream, byte[] key, ulong iv, bool isPak18 = false)
     {
@@ -45,7 +43,8 @@ public class BlowfishStream : Stream, IEncryptionInitializer
         }
     }
 
-    public override int Read(byte[] buffer, int offset, int count)
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
     {
         if (!CanRead)
         {
@@ -58,11 +57,7 @@ public class BlowfishStream : Stream, IEncryptionInitializer
             ivXor = 0;
         }
 
-#if NET5_0_OR_GREATER
-        var memorySpan = memoryBuffer.AsSpan();
-#endif
-
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < buffer.Length; i++)
         {
             if (bufferIndex % 8 == 0)
             {
@@ -74,29 +69,18 @@ public class BlowfishStream : Stream, IEncryptionInitializer
                     bufferIndex = 0;
                 }
 
-#if NET5_0_OR_GREATER
-                var read = stream.Read(memorySpan);
-                var nextIV = BitConverter.ToUInt64(memorySpan);
+                // Async read of one block
+                var read = await stream.ReadAsync(memoryBuffer.AsMemory(0, 8), cancellationToken).ConfigureAwait(false);
 
-                // Trick #3: Switch Decipher with Encipher
-                if(isPak18)
+                if (read < 8)
                 {
-                    blowfish.Encipher(memorySpan);
-                }
-                else
-                {
-                    blowfish.Decipher(memorySpan);
+                    return i; // Return actual bytes read so far
                 }
 
-                var block = BitConverter.ToUInt64(memorySpan);
-                block ^= iv;
-                BitConverter.TryWriteBytes(memorySpan, block);
-#else
-                var read = stream.Read(memoryBuffer, 0, 8);
-                ulong nextIV = BitConverter.ToUInt64(memoryBuffer, 0);
+                var nextIV = BinaryPrimitives.ReadUInt64LittleEndian(memoryBuffer);
 
                 // Trick #3: Switch Decipher with Encipher
-                if(isPak18)
+                if (isPak18)
                 {
                     blowfish.Encipher(memoryBuffer);
                 }
@@ -105,35 +89,37 @@ public class BlowfishStream : Stream, IEncryptionInitializer
                     blowfish.Decipher(memoryBuffer);
                 }
 
-                ulong block = BitConverter.ToUInt64(memoryBuffer, 0);
+                var block = BinaryPrimitives.ReadUInt64LittleEndian(memoryBuffer);
                 block ^= iv;
-                memoryBuffer = BitConverter.GetBytes(block);
-#endif
-                
+                BitConverter.GetBytes(block).CopyTo(memoryBuffer, 0);
+
                 // Trick #4: Custom nextIV logic
                 if (isPak18)
                 {
-                    iv = iv >> 0x2f ^ iv * 9 ^ nextIV;
+                    iv = (iv >> 0x2f) ^ (iv * 9) ^ nextIV;
                 }
                 else
                 {
                     iv = nextIV;
                 }
             }
-#if NET5_0_OR_GREATER
-            buffer[offset + i] = memorySpan[bufferIndex % 8];
-#else
-            buffer[offset + i] = memoryBuffer[bufferIndex % 8];
-#endif
+
+            buffer.Span[i] = memoryBuffer[bufferIndex & 7];
             bufferIndex++;
             totalIndex++;
         }
-        return count;
+
+        return buffer.Length;
     }
 
-    public override void Write(byte[] inputBuffer, int offset, int count)
+    public override int Read(byte[] buffer, int offset, int count)
     {
-        throw new NotSupportedException("Stream is not writable.");
+        return Read(buffer.AsSpan(offset, count));
+    }
+
+    public override void Write(byte[] buffer, int offset, int count)
+    {
+        throw new NotSupportedException();
     }
 
     public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();

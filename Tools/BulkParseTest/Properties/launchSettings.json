@@ -2,7 +2,7 @@
   "profiles": {
     "BulkParseTest": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\TMUF_CORRECT\""
+      "commandLineArgs": "\"D:\\GbxTools\\Dataset\\TMF\\Stadium\\Media\\Texture\""
     }
   }
 }
