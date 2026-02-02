@@ -53,7 +53,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, December 2024 update
+- **Trackmania (2020)**, January 2026 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM

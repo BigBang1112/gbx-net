@@ -20,7 +20,7 @@ CGameCtnChallenge 0x03043000 // A map.
     v6+
      int<PlayMode> Mode
      v9+
-      int U04
+      bool HasClones
       v10+
        int AuthorScore
        v11+

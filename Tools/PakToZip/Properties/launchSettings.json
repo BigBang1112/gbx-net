@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PakToZip": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\Games\\Ubisoft\\Ubisoft Game Launcher\\games\\Trackmania\\Packs\\WhiteShore.pak\" -k ../../../../../Resources/BaseKeys.txt -h ../../../../../Resources/FileHashes_TM2020.txt"
+    }
+  }
+}

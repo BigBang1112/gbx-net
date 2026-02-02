@@ -4,7 +4,7 @@ using GBX.NET.PAK;
 
 var game = PakListGame.TM;
 var pakFilePaths = new List<string>();
-var keys = new Dictionary<string, PakKeyInfo?>(StringComparer.OrdinalIgnoreCase);
+var keys = new Dictionary<string, byte[]?>(StringComparer.OrdinalIgnoreCase);
 var hashes = new Dictionary<string, string?>();
 
 var keysTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "keys.txt");
@@ -126,7 +126,7 @@ foreach (var pakFilePath in pakFilePaths)
 
             Console.WriteLine("Bruteforcing possible file names from hashes...");
 
-            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys, onlyUsedHashes: false))
+            foreach (var (hash, fileName) in await Pak.BruteforceFileHashesAsync(directoryPath, keys, keepUnresolvedHashes: false))
             {
                 hashes[hash] = fileName;
             }
@@ -136,10 +136,10 @@ foreach (var pakFilePath in pakFilePaths)
     }
 
     var pakId = Path.GetFileNameWithoutExtension(pakFilePath);
-    var extractFolderPath = Path.Combine(directoryPath, pakId);
+    var extractFolderPath = pakId;
 
     await using var pak = keys.TryGetValue(pakId, out var keyData)
-        ? await Pak.ParseAsync(pakFilePath, keyData?.PrimaryKey, keyData?.FileKey)
+        ? await Pak.ParseAsync(pakFilePath, keyData)
         : await Pak.ParseAsync(pakFilePath);
 
     Console.WriteLine($"Pak: {pakFilePath}");
@@ -194,7 +194,7 @@ static void CopyFileToStream(Pak pak, PakFile file, Stream stream)
     stream.Write(data, 0, count);
 }
 
-static IEnumerable<(string, PakKeyInfo?)> ParseKeysFromTxt(string keysFileName)
+static IEnumerable<(string, byte[]?)> ParseKeysFromTxt(string keysFileName)
 {
     foreach (var line in File.ReadLines(keysFileName))
     {
@@ -207,7 +207,7 @@ static IEnumerable<(string, PakKeyInfo?)> ParseKeysFromTxt(string keysFileName)
         var key = parts[1] != "null" ? Convert.FromHexString(parts[1]) : null;
         var secondKey = parts.Length > 2 && parts[2] != "null" ? Convert.FromHexString(parts[2]) : null;
 
-        yield return (pak, new PakKeyInfo(key, secondKey));
+        yield return (pak, key);
     }
 }
 

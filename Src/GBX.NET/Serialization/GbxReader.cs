@@ -2059,6 +2059,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             parentClassId = 0x0A02E000;
         }
+        else if (baseType == typeof(CFuncKeysReal)) // weird case of CPlugCurveSimpleNod
+        {
+            parentClassId = 0x01001000;
+        }
 
         var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
 

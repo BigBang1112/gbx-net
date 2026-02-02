@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Extensions;
 using GBX.NET.Interfaces.Game;
+using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Security;
 using System.Text;
@@ -386,6 +387,10 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk03043036>]
     public Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
 
+    /// <summary>
+    /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used by the game to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is constructed from scratch again using the actual ZIP data.
+    /// </summary>
+    public ImmutableList<Ident>? ExpectedEmbeddedItemModels { get; private set; }
 
     // poss to generate
     string IGameCtnChallenge.MapUid
@@ -985,6 +990,13 @@ public partial class CGameCtnChallenge :
                     sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
                     sb.Append("\" authorscore=\"");
                     sb.Append(AuthorScore);
+
+                    if (gameVersion is GameVersion.TM2020)
+                    {
+                        sb.Append("\" hasclones=\"");
+                        sb.Append(HasClones ? "1" : "0");
+                    }
+
                     sb.Append("\"/><deps>");
 
                     if (ModPackDesc is not null && !string.IsNullOrEmpty(ModPackDesc.FilePath))
@@ -1127,7 +1139,7 @@ public partial class CGameCtnChallenge :
                             rw.EnumInt32<PlayMode>(ref n.mode);
                             if (Version >= 9)
                             {
-                                rw.Int32(ref U04);
+                                rw.Boolean(ref n.hasClones);
                                 if (Version >= 10)
                                 {
                                     rw.Int32(ref n.authorScore);
@@ -2038,7 +2050,7 @@ public partial class CGameCtnChallenge :
 
             using var _ = new Encapsulation(r);
 
-            var embeddedItemModels = r.ReadArrayIdent(); // ignored, could be used for validation
+            n.ExpectedEmbeddedItemModels = r.ReadArrayIdent().ToImmutableList();
 
             n.EmbeddedZipData = r.ReadData();
 

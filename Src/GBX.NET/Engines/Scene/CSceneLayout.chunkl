@@ -70,8 +70,12 @@ CSceneLayout 0x0A003000
 
 0x01C
  version
- CSceneObject[]_deprec Objects
- iso4[] ObjectLocations
+ v2-
+  CSceneObject[]_deprec Objects
+  iso4[] ObjectLocations
+ v3+
+  Unknown2[]
+  Unknown3[] (version: Version)
  CSceneConfig
  v1-
   CPlugWeatherModel[]_deprec WeatherModels (external)
@@ -118,3 +122,24 @@ archive Unknown
  int
  iso4
  iso4
+
+archive Unknown2
+ id
+ transquat
+ int
+ CPlugBitmap
+ CPlugBitmap
+ CPlugBitmap
+ GxLight
+ int
+
+archive Unknown3
+ id
+ transquat
+ short
+ ulong
+ CPlugSolid
+ v4+
+  CPlugSolid2Model
+  v5+
+   CPlugPrefab

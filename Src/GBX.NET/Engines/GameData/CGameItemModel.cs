@@ -35,18 +35,27 @@ public partial class CGameItemModel
     public EDefaultCam DefaultCam { get => defaultCam; set => defaultCam = value; }
 
     private CMwNod? entityModelEdition;
-    public CMwNod? EntityModelEdition { get => entityModelEdition; set => entityModelEdition = value; }
+    public CMwNod? EntityModelEdition
+    {
+        get => entityModelEditionFile?.GetNode(ref entityModelEdition) ?? entityModelEdition;
+        set => entityModelEdition = value;
+    }
+    private GbxRefTableFile? entityModelEditionFile;
+    public GbxRefTableFile? EntityModelEditionFile { get => entityModelEditionFile; set => entityModelEditionFile = value; }
+    public CMwNod? GetEntityModelEdition(GbxReadSettings settings = default) => entityModelEditionFile?.GetNode(ref entityModelEdition, settings) ?? entityModelEdition;
 
     private CMwNod? entityModel;
     public CMwNod? EntityModel { get => entityModel; set => entityModel = value; }
 
+    private CPlugVFXFile? vfx;
+    public CPlugVFXFile? VFX { get => vfx; set => vfx = value; }
+
+    private CPlugGameSkinAndFolder? materialModifier;
+    public CPlugGameSkinAndFolder? MaterialModifier { get => materialModifier; set => materialModifier = value; }
+
     public partial class Chunk2E002019 : IVersionable
     {
         public int Version { get; set; }
-
-        public int? U01;
-        public CMwNod? U02;
-        public CMwNod? U03;
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
@@ -96,9 +105,9 @@ public partial class CGameItemModel
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef<CMwNod>(ref n.entityModelEdition); // CGameCommonItemEntityModelEdition, CGameBlockItem
+                                    rw.NodeRef<CMwNod>(ref n.entityModelEdition, ref n.entityModelEditionFile); // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
 
-                                    if (n.entityModelEdition is null)
+                                    if (n.entityModelEdition is null && n.entityModelEditionFile is null)
                                     {
                                         if (n.itemType == EItemType.Block)
                                         {
@@ -110,11 +119,11 @@ public partial class CGameItemModel
 
                                     if (Version >= 13)
                                     {
-                                        rw.NodeRef(ref U02);
+                                        rw.NodeRef<CPlugVFXFile>(ref n.vfx);
 
                                         if (Version >= 15)
                                         {
-                                            rw.NodeRef(ref U03);
+                                            rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier);
                                         }
                                     }
                                 }
