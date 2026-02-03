@@ -370,7 +370,7 @@ Gbx.ZLib = new ZLib();
 ```
 
 > [!NOTE]
-> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.2.
+> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.4.
 
 The data is often stored in properties of type `CompressedData` which are byte arrays with additional uncompressed data size for validation. If there's a property with this type (`CGameCtnChallenge.LightmapCacheData` for example), zlib data will be stored there no matter if the zlib implementation is included, so read/write consistency is guaranteed.
 
