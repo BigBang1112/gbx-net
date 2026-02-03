@@ -52,23 +52,8 @@ public partial class CGamePlayerProfile
     private CGameNetOnlineMessage[]? outboxMessages;
     public CGameNetOnlineMessage[]? OutboxMessages { get => outboxMessages; set => outboxMessages = value; }
 
-    public bool UnlockAllCheats { get; set; }
-    public bool FriendsCheat { get; set; }
-
-    public string? avatarName;
-    public string? AvatarName { get => avatarName; set => avatarName = value; }
-
-    private int? eulaVersion;
-    public int? EulaVersion { get => eulaVersion; set => eulaVersion = value; }
-
-    private PlayerTagsConfig? playerTagsConfig;
-    public PlayerTagsConfig? PlayerTagsConfiguration { get => playerTagsConfig; set => playerTagsConfig = value; }
-
-    private bool receiveNews;
-    public bool ReceiveNews { get => receiveNews; set => receiveNews = value; }
-
-    private ProfileChunk[]? oldProfileChunks;
-    public ProfileChunk[]? OldProfileChunks { get => oldProfileChunks; set => oldProfileChunks = value; }
+    private CGamePlayerProfileChunk[]? oldProfileChunks;
+    public CGamePlayerProfileChunk[]? OldProfileChunks { get => oldProfileChunks; set => oldProfileChunks = value; }
 
     private CGamePlayerProfileChunk[]? profileChunks;
     public CGamePlayerProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
@@ -156,7 +141,7 @@ public partial class CGamePlayerProfile
 
             if (rw.Reader is GbxReader r)
             {
-                n.oldProfileChunks = new ProfileChunk[r.ReadInt32()];
+                n.oldProfileChunks = new CGamePlayerProfileChunk[r.ReadInt32()];
 
                 for (var i = 0; i < n.oldProfileChunks.Length; i++)
                 {
@@ -167,14 +152,17 @@ public partial class CGamePlayerProfile
                     var u04 = r.ReadInt32();
                     var archiveVersion = r.ReadInt32();
 
-                    ProfileChunk chunk = chunkId switch
+                    switch (chunkId)
                     {
-                        0x0312C000 => new AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
-                        _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
-                    };
-
-                    chunk.ReadWrite(n, rw, archiveVersion);
-                    n.oldProfileChunks[i] = chunk;
+                        case 0x0312C000:
+                            // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
+                            var chunk = new CGamePlayerProfileChunk_AccountSettings();
+                            chunk.ReadWrite(rw, archiveVersion);
+                            n.oldProfileChunks[i] = chunk;
+                            break;
+                        default:
+                            throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented.");
+                    }
                 }
             }
         }
@@ -222,122 +210,9 @@ public partial class CGamePlayerProfile
 
                     if (chunk is not null)
                     {
-                        chunkRw.Node(ref chunk);
+                        chunk.ReadWrite(chunkRw);
                         n.profileChunks[i] = chunk;
                     }
-                }
-            }
-        }
-    }
-
-    public abstract class ProfileChunk
-    {
-        public abstract void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw, int version);
-    }
-
-    public partial class AccountSettings : ProfileChunk
-    {
-        public int U01;
-        public string League = "";
-        public ulong U02;
-        public int U03;
-        public ulong U04;
-        public string? U05;
-        public int U06;
-        public int U07;
-
-        public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw, int version)
-        {
-            rw.String(ref n.description);
-            rw.String(ref n.nickName);
-
-            if (rw.Reader is not null)
-            {
-                var flags = rw.Reader.ReadByte();
-                n.loginValidated = (flags & 1) != 0;
-                n.rememberOnlinePassword = (flags & 2) != 0;
-                n.autoConnect = (flags & 4) != 0;
-                n.AskForAccountConversion = (flags & 8) != 0;
-            }
-
-            if (rw.Writer is not null)
-            {
-                byte flags = 0;
-                if (n.loginValidated) flags |= 1;
-                if (n.rememberOnlinePassword) flags |= 2;
-                if (n.autoConnect) flags |= 4;
-                if (n.AskForAccountConversion) flags |= 8;
-                rw.Writer.Write(flags);
-            }
-
-            rw.String(ref n.onlineLogin);
-            rw.String(ref n.onlinePassword);
-            rw.String(ref n.onlineValidationCode);
-            rw.String(ref n.onlineSupportKey);
-            rw.String(ref n.lastUsedMSAddress);
-            rw.String(ref n.lastUsedMSPath);
-            rw.String(ref n.lastSessionId);
-            rw.String(ref League);
-
-            if (version < 4)
-            {
-                rw.Int32(ref U01);
-            }
-
-            rw.Int32(ref n.onlineRemainingNickNamesChangesCount);
-            rw.Int32(ref n.onlinePlanets);
-
-            if (version >= 1)
-            {
-                rw.String(ref n.rsaPublicKey);
-            }
-
-            rw.String(ref n.rsaPrivateKey);
-            rw.UInt64(ref U02); // SSystemTime
-            rw.Int32(ref U03);
-            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies);
-            rw.UInt64(ref U04); // SSystemTime
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages);
-
-            if (rw.Reader is not null)
-            {
-                var flags = rw.Reader.ReadByte();
-                n.UnlockAllCheats = (flags & 1) != 0;
-                n.FriendsCheat = (flags & 2) != 0;
-            }
-
-            if (rw.Writer is not null)
-            {
-                byte flags = 0;
-                if (n.UnlockAllCheats) flags |= 1;
-                if (n.FriendsCheat) flags |= 2;
-                rw.Writer.Write(flags);
-            }
-
-            if (version >= 3)
-            {
-                rw.String(ref U05);
-            }
-
-            rw.String(ref n.avatarName);
-            rw.ReadableWritable<PlayerTagsConfig>(ref n.playerTagsConfig);
-            rw.Boolean(ref n.receiveNews, asByte: true);
-
-            if (version < 2)
-            {
-                rw.Int32(ref U06);
-            }
-
-            if (version >= 5)
-            {
-                rw.Int32(ref n.eulaVersion);
-
-                if (version >= 8)
-                {
-                    rw.Int32(ref U07);
-                    rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies);
                 }
             }
         }

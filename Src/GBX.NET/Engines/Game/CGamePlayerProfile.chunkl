@@ -286,8 +286,3 @@ archive CampaignUnlock
 
 archive SoloChallengesCurrentPage
  int3
-
-archive PlayerTagsConfig
- int
- PlayerTagConfig[] PlayerTags
- ulong[]
