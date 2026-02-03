@@ -50,10 +50,17 @@ public partial class CGamePlayerProfile
     private CGameNetOnlineMessage[]? outboxMessages;
     public CGameNetOnlineMessage[]? OutboxMessages { get => outboxMessages; set => outboxMessages = value; }
 
+    public bool UnlockAllCheats { get; set; }
     public bool FriendsCheat { get; set; }
 
-    private PlayerTagsConfig[]? playerTagsConfig;
-    public PlayerTagsConfig[]? PlayerTagsConfig { get => playerTagsConfig; set => playerTagsConfig = value; }
+    public string? avatarName;
+    public string? AvatarName { get => avatarName; set => avatarName = value; }
+
+    private int? eulaVersion;
+    public int? EulaVersion { get => eulaVersion; set => eulaVersion = value; }
+
+    private PlayerTagsConfig? playerTagsConfig;
+    public PlayerTagsConfig? PlayerTagsConfiguration { get => playerTagsConfig; set => playerTagsConfig = value; }
 
     private bool receiveNews;
     public bool ReceiveNews { get => receiveNews; set => receiveNews = value; }
