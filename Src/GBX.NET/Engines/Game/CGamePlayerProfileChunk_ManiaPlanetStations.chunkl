@@ -1,0 +1,2 @@
+CGamePlayerProfileChunk_ManiaPlanetStations 0x03180000
+- inherits: CGamePlayerProfileChunk

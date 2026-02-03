@@ -1,0 +1,2 @@
+CGamePlayerProfileChunk_TrackManiaSettings 0x240D5000
+- inherits: CGamePlayerProfileChunk

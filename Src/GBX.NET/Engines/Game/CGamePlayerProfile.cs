@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET.Engines.Game;
 
 public partial class CGamePlayerProfile
 {
@@ -65,11 +67,11 @@ public partial class CGamePlayerProfile
     private bool receiveNews;
     public bool ReceiveNews { get => receiveNews; set => receiveNews = value; }
 
-    private ProfileChunk[]? profileChunks;
-    public ProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
+    private ProfileChunk[]? oldProfileChunks;
+    public ProfileChunk[]? OldProfileChunks { get => oldProfileChunks; set => oldProfileChunks = value; }
 
-    private ProfileChunk[]? profileChunks2;
-    public ProfileChunk[]? ProfileChunks2 { get => profileChunks2; set => profileChunks2 = value; }
+    private CGamePlayerProfileChunk[]? profileChunks;
+    public CGamePlayerProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
 
     public partial class Chunk0308C068
     {
@@ -154,9 +156,9 @@ public partial class CGamePlayerProfile
 
             if (rw.Reader is GbxReader r)
             {
-                n.profileChunks = new ProfileChunk[r.ReadInt32()];
+                n.oldProfileChunks = new ProfileChunk[r.ReadInt32()];
 
-                for (var i = 0; i < n.profileChunks.Length; i++)
+                for (var i = 0; i < n.oldProfileChunks.Length; i++)
                 {
                     var chunkId = r.ReadUInt32();
                     var u01 = r.ReadString();
@@ -165,17 +167,14 @@ public partial class CGamePlayerProfile
                     var u04 = r.ReadInt32();
                     var archiveVersion = r.ReadInt32();
 
-                    ProfileChunk? chunk = chunkId switch
+                    ProfileChunk chunk = chunkId switch
                     {
                         0x0312C000 => new AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
                         _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
                     };
 
-                    if (chunk is not null)
-                    {
-                        chunk.ReadWrite(n, rw, archiveVersion);
-                        n.profileChunks[i] = chunk;
-                    }
+                    chunk.ReadWrite(n, rw, archiveVersion);
+                    n.oldProfileChunks[i] = chunk;
                 }
             }
         }
@@ -195,9 +194,9 @@ public partial class CGamePlayerProfile
 
             if (rw.Reader is GbxReader r)
             {
-                n.profileChunks2 = new ProfileChunk[r.ReadInt32()];
+                n.profileChunks = new CGamePlayerProfileChunk[r.ReadInt32()];
 
-                for (var i = 0; i < n.profileChunks2.Length; i++)
+                for (var i = 0; i < n.profileChunks.Length; i++)
                 {
                     var chunkId = r.ReadUInt32();
                     var u01 = r.ReadString();
@@ -211,6 +210,21 @@ public partial class CGamePlayerProfile
                     }
 
                     var chunkData = r.ReadData();
+                    using var ms = new MemoryStream(chunkData);
+                    using var chunkReader = new GbxReader(ms, r.Settings);
+                    using var chunkRw = new GbxReaderWriter(chunkReader);
+
+                    var u06 = chunkReader.ReadInt32();
+                    var u07 = chunkReader.ReadInt32();
+
+                    var chunk = (CGamePlayerProfileChunk?)ClassManager.New(chunkId)
+                        ?? throw new NotImplementedException($"Profile chunk 0x{chunkId:X8} ({ClassManager.GetName(chunkId)}) is not implemented.");
+
+                    if (chunk is not null)
+                    {
+                        chunkRw.Node(ref chunk);
+                        n.profileChunks[i] = chunk;
+                    }
                 }
             }
         }

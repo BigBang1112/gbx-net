@@ -1,0 +1,2 @@
+CGamePlayerProfileChunk_GameStats 0x03147000
+- inherits: CGamePlayerProfileChunk
