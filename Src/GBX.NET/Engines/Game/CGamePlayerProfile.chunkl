@@ -286,3 +286,12 @@ archive CampaignUnlock
 
 archive SoloChallengesCurrentPage
  int3
+
+archive PlayerTagsConfig
+ version
+ PlayerTagConfig[] PlayerTags
+ ulong[]
+
+archive PlayerTagConfig
+ string
+ bool

@@ -15,13 +15,48 @@ public partial class CGamePlayerProfile
     public bool RememberOnlinePassword { get => rememberOnlinePassword; set => rememberOnlinePassword = value; }
 
     public bool AskForAccountConversion { get; set; }
-    public string? OnlinePassword { get; set; }
-    public string? OnlineValidationCode { get; set; }
-    public string? LastUsedMSAddress { get; set; }
-    public string? LastUsedMSPath { get; set; }
-    public string? LastSessionId { get; set; }
-    public int? OnlineRemainingNickNamesChangesCount { get; set; }
-    public int? OnlinePlanets { get; set; }
+
+    private string? onlinePassword;
+    public string? OnlinePassword { get => onlinePassword; set => onlinePassword = value; }
+
+    private string? onlineValidationCode;
+    public string? OnlineValidationCode { get => onlineValidationCode; set => onlineValidationCode = value; }
+
+    private string? lastUsedMSAddress;
+    public string? LastUsedMSAddress { get => lastUsedMSAddress; set => lastUsedMSAddress = value; }
+    private string? lastUsedMSPath;
+    public string? LastUsedMSPath { get => lastUsedMSPath; set => lastUsedMSPath = value; }
+    private string? lastSessionId;
+    public string? LastSessionId { get => lastSessionId; set => lastSessionId = value; }
+
+    private int? onlineRemainingNickNamesChangesCount;
+    public int? OnlineRemainingNickNamesChangesCount { get => onlineRemainingNickNamesChangesCount; set => onlineRemainingNickNamesChangesCount = value; }
+
+    private int? onlinePlanets;
+    public int? OnlinePlanets { get => onlinePlanets; set => onlinePlanets = value; }
+
+    private string? rsaPublicKey;
+    public string? RSAPublicKey { get => rsaPublicKey; set => rsaPublicKey = value; }
+
+    private string? rsaPrivateKey;
+    public string? RSAPrivateKey { get => rsaPrivateKey; set => rsaPrivateKey = value; }
+
+    private CGameNetOnlineMessage[]? inboxMessages;
+    public CGameNetOnlineMessage[]? InboxMessages { get => inboxMessages; set => inboxMessages = value; }
+
+    private CGameNetOnlineMessage[]? readMessages;
+    public CGameNetOnlineMessage[]? ReadMessages { get => readMessages; set => readMessages = value; }
+
+    private CGameNetOnlineMessage[]? outboxMessages;
+    public CGameNetOnlineMessage[]? OutboxMessages { get => outboxMessages; set => outboxMessages = value; }
+
+    public bool FriendsCheat { get; set; }
+
+    private PlayerTagsConfig[]? playerTagsConfig;
+    public PlayerTagsConfig[]? PlayerTagsConfig { get => playerTagsConfig; set => playerTagsConfig = value; }
+
+    private bool receiveNews;
+    public bool ReceiveNews { get => receiveNews; set => receiveNews = value; }
 
     private ProfileChunk[]? profileChunks;
     public ProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
@@ -102,32 +137,35 @@ public partial class CGamePlayerProfile
     {
         public string? U01;
 
-        public override void Read(CGamePlayerProfile n, GbxReader r)
+        public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            U01 = r.ReadId();
-            n.profileName = r.ReadString();
+            rw.Id(ref U01);
+            rw.String(ref n.profileName);
 
-            n.profileChunks = new ProfileChunk[r.ReadInt32()];
-
-            for (var i = 0; i < n.profileChunks.Length; i++)
+            if (rw.Reader is GbxReader r)
             {
-                var chunkId = r.ReadUInt32();
-                var u01 = r.ReadString();
-                var u02 = r.ReadString();
-                var u03 = r.ReadString();
-                var u04 = r.ReadInt32();
-                var archiveVersion = r.ReadInt32();
+                n.profileChunks = new ProfileChunk[r.ReadInt32()];
 
-                ProfileChunk? chunk = chunkId switch
+                for (var i = 0; i < n.profileChunks.Length; i++)
                 {
-                    0x0312C000 => new AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
-                    _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
-                };
+                    var chunkId = r.ReadUInt32();
+                    var u01 = r.ReadString();
+                    var u02 = r.ReadString();
+                    var u03 = r.ReadString();
+                    var u04 = r.ReadInt32();
+                    var archiveVersion = r.ReadInt32();
 
-                if (chunk is not null)
-                {
-                    chunk.Read(n, r, archiveVersion);
-                    n.profileChunks[i] = chunk;
+                    ProfileChunk? chunk = chunkId switch
+                    {
+                        0x0312C000 => new AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
+                        _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
+                    };
+
+                    if (chunk is not null)
+                    {
+                        chunk.ReadWrite(n, rw, archiveVersion);
+                        n.profileChunks[i] = chunk;
+                    }
                 }
             }
         }
@@ -135,46 +173,114 @@ public partial class CGamePlayerProfile
 
     public abstract class ProfileChunk
     {
-        public abstract void Read(CGamePlayerProfile n, GbxReader r, int version);
+        public abstract void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw, int version);
     }
 
     public partial class AccountSettings : ProfileChunk
     {
         public int U01;
-        public bool U02;
-        public string League { get; set; } = "";
-        public string? RSAPublicKey { get; set; }
-        public string? RSAPrivateKey { get; set; }
+        public string League = "";
+        public ulong U02;
+        public int U03;
+        public ulong U04;
+        public string? U05;
+        public int U06;
+        public int U07;
 
-        public override void Read(CGamePlayerProfile n, GbxReader r, int version)
+        public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw, int version)
         {
-            n.description = r.ReadString();
-            n.nickName = r.ReadString();
-            var flags = r.ReadByte();
-            n.loginValidated = (flags & 1) != 0;
-            n.rememberOnlinePassword = (flags & 2) != 0;
-            n.autoConnect = (flags & 4) != 0;
-            n.AskForAccountConversion = (flags & 8) != 0;
-            n.onlineLogin = r.ReadString();
-            n.OnlinePassword = r.ReadString();
-            n.OnlineValidationCode = r.ReadString();
-            n.onlineSupportKey = r.ReadString();
-            n.LastUsedMSAddress = r.ReadString();
-            n.LastUsedMSPath = r.ReadString();
-            n.LastSessionId = r.ReadString();
-            League = r.ReadString();
+            rw.String(ref n.description);
+            rw.String(ref n.nickName);
+
+            if (rw.Reader is not null)
+            {
+                var flags = rw.Reader.ReadByte();
+                n.loginValidated = (flags & 1) != 0;
+                n.rememberOnlinePassword = (flags & 2) != 0;
+                n.autoConnect = (flags & 4) != 0;
+                n.AskForAccountConversion = (flags & 8) != 0;
+            }
+
+            if (rw.Writer is not null)
+            {
+                byte flags = 0;
+                if (n.loginValidated) flags |= 1;
+                if (n.rememberOnlinePassword) flags |= 2;
+                if (n.autoConnect) flags |= 4;
+                if (n.AskForAccountConversion) flags |= 8;
+                rw.Writer.Write(flags);
+            }
+
+            rw.String(ref n.onlineLogin);
+            rw.String(ref n.onlinePassword);
+            rw.String(ref n.onlineValidationCode);
+            rw.String(ref n.onlineSupportKey);
+            rw.String(ref n.lastUsedMSAddress);
+            rw.String(ref n.lastUsedMSPath);
+            rw.String(ref n.lastSessionId);
+            rw.String(ref League);
+
             if (version < 4)
             {
-                var u08 = r.ReadInt32();
+                rw.Int32(ref U01);
             }
-            n.OnlineRemainingNickNamesChangesCount = r.ReadInt32();
-            n.OnlinePlanets = r.ReadInt32();
+
+            rw.Int32(ref n.onlineRemainingNickNamesChangesCount);
+            rw.Int32(ref n.onlinePlanets);
+
             if (version >= 1)
             {
-                RSAPublicKey = r.ReadString();
+                rw.String(ref n.rsaPublicKey);
             }
-            RSAPrivateKey = r.ReadString();
-            var wtf = r.ReadArray<int>(20);
+
+            rw.String(ref n.rsaPrivateKey);
+            rw.UInt64(ref U02); // SSystemTime
+            rw.Int32(ref U03);
+            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies);
+            rw.UInt64(ref U04); // SSystemTime
+            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages);
+            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages);
+            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages);
+
+            if (rw.Reader is not null)
+            {
+                var flags = rw.Reader.ReadByte();
+                n.UnlockAllCheats = (flags & 1) != 0;
+                n.FriendsCheat = (flags & 2) != 0;
+            }
+
+            if (rw.Writer is not null)
+            {
+                byte flags = 0;
+                if (n.UnlockAllCheats) flags |= 1;
+                if (n.FriendsCheat) flags |= 2;
+                rw.Writer.Write(flags);
+            }
+
+            if (version >= 3)
+            {
+                rw.String(ref U05);
+            }
+
+            rw.String(ref n.avatarName);
+            rw.ReadableWritable<PlayerTagsConfig>(ref n.playerTagsConfig);
+            rw.Boolean(ref n.receiveNews, asByte: true);
+
+            if (version < 2)
+            {
+                rw.Int32(ref U06);
+            }
+
+            if (version >= 5)
+            {
+                rw.Int32(ref n.eulaVersion);
+
+                if (version >= 8)
+                {
+                    rw.Int32(ref U07);
+                    rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies);
+                }
+            }
         }
     }
 }
