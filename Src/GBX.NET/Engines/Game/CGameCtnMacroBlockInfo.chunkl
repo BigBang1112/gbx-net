@@ -128,10 +128,17 @@ archive ObjectSpawn
      float Scale
      if Version >= 10
       int3 U04
-      if Version >= 14
-       int U05
-       boolbyte U06
-       if U06
-        packdesc PackDesc
-        packdesc ForegroundPackDesc
-       int U07
+      if Version >= 11
+       byte U05
+       byte U06
+       if Version >= 12
+        byte U07
+        if Version >= 13
+         boolbyte HasPackDesc
+         boolbyte HasForegroundPackDesc
+         if HasPackDesc
+          packdesc PackDesc
+         if HasForegroundPackDesc
+          packdesc ForegroundPackDesc
+         if Version >= 14
+          int U10
