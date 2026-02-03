@@ -39,6 +39,17 @@ internal static class BitHelper
     }
 
     /// <summary>
+    /// Gets the value of a specific bit in a byte.
+    /// </summary>
+    /// <param name="flags">The value to examine.</param>
+    /// <param name="bitPosition">The zero-based position of the bit to get (0-7).</param>
+    /// <returns>True if the bit is set, false otherwise.</returns>
+    public static bool GetBit(byte flags, int bitPosition)
+    {
+        return (flags >> bitPosition & 1) != 0;
+    }
+
+    /// <summary>
     /// Sets or clears a specific bit in a 64-bit unsigned integer.
     /// </summary>
     /// <param name="value">The value to modify.</param>
@@ -73,6 +84,18 @@ internal static class BitHelper
     {
         var mask = (ushort)(1 << bitPosition);
         return enable ? (ushort)(value | mask) : (ushort)(value & ~mask);
+    }
+
+    /// <summary>
+    /// Sets or clears a specific bit in a byte.
+    /// </summary>
+    /// <param name="value">The value to modify.</param>
+    /// <param name="bitPosition">The zero-based position of the bit to set (0-7).</param>
+    /// <param name="enable">True to set the bit, false to clear it.</param>
+    public static byte SetBit(byte value, int bitPosition, bool enable)
+    {
+        var mask = (byte)(1 << bitPosition);
+        return enable ? (byte)(value | mask) : (byte)(value & ~mask);
     }
 
     /// <summary>
