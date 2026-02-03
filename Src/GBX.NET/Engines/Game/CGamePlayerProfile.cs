@@ -14,6 +14,15 @@ public partial class CGamePlayerProfile
     private bool rememberOnlinePassword;
     public bool RememberOnlinePassword { get => rememberOnlinePassword; set => rememberOnlinePassword = value; }
 
+    public bool AskForAccountConversion { get; set; }
+    public string? OnlinePassword { get; set; }
+    public string? OnlineValidationCode { get; set; }
+    public string? LastUsedMSAddress { get; set; }
+    public string? LastUsedMSPath { get; set; }
+    public string? LastSessionId { get; set; }
+    public int? OnlineRemainingNickNamesChangesCount { get; set; }
+    public int? OnlinePlanets { get; set; }
+
     private ProfileChunk[]? profileChunks;
     public ProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
 
@@ -133,8 +142,6 @@ public partial class CGamePlayerProfile
     {
         public int U01;
         public bool U02;
-        public string LastUsedMSAddress { get; set; } = "";
-        public string LastUsedMSPath { get; set; } = "";
         public string League { get; set; } = "";
         public string? RSAPublicKey { get; set; }
         public string? RSAPrivateKey { get; set; }
@@ -143,21 +150,25 @@ public partial class CGamePlayerProfile
         {
             n.description = r.ReadString();
             n.nickName = r.ReadString();
-            var u01 = r.ReadByte();
+            var flags = r.ReadByte();
+            n.loginValidated = (flags & 1) != 0;
+            n.rememberOnlinePassword = (flags & 2) != 0;
+            n.autoConnect = (flags & 4) != 0;
+            n.AskForAccountConversion = (flags & 8) != 0;
             n.onlineLogin = r.ReadString();
-            var u02 = r.ReadString();
-            var u03 = r.ReadString();
-            var u04 = r.ReadString();
-            LastUsedMSAddress = r.ReadString();
-            LastUsedMSPath = r.ReadString();
-            var u07 = r.ReadString();
+            n.OnlinePassword = r.ReadString();
+            n.OnlineValidationCode = r.ReadString();
+            n.onlineSupportKey = r.ReadString();
+            n.LastUsedMSAddress = r.ReadString();
+            n.LastUsedMSPath = r.ReadString();
+            n.LastSessionId = r.ReadString();
             League = r.ReadString();
             if (version < 4)
             {
                 var u08 = r.ReadInt32();
             }
-            var u09 = r.ReadInt32();
-            var u10 = r.ReadInt32();
+            n.OnlineRemainingNickNamesChangesCount = r.ReadInt32();
+            n.OnlinePlanets = r.ReadInt32();
             if (version >= 1)
             {
                 RSAPublicKey = r.ReadString();
