@@ -14,4 +14,4 @@ Cryptographic features for GBX.NET 2. Adds MUX and CRY algorithms, simplifies MD
 
 ## License
 
-GBX.NET.Crypto library is MIT Licensed.
+GBX.NET.Crypto library is GNU GPL v3 Licensed.

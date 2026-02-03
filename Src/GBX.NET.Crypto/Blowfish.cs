@@ -24,14 +24,14 @@
  |	reference implementation. http://www.schneier.com/blowfish.html
  |***************************************************************************/
 
-namespace GBX.NET.PAK;
+namespace GBX.NET.Crypto;
 
 /// <summary>
 /// Class that provides blowfish encryption.
 /// </summary>
 internal sealed class Blowfish
 {
-    private int N = 16;
+    private readonly int N = 16;
 
     private readonly uint[] P = [
         0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,

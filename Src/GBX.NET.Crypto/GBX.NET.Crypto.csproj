@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Crypto</PackageId>
-        <Version>1.0.3</Version>
+        <Version>1.1.0</Version>
         <Authors>BigBang1112</Authors>
         <Description>Cryptographic features for GBX.NET 2.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,7 +11,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, encryption, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <PropertyGroup>
