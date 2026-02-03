@@ -10,47 +10,6 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
     private GbxReadSettings Settings => reader.Settings;
 
-    public GbxHeader<T> Parse<T>(out T node) where T : notnull, IClass, new()
-    {
-        logger?.LogDebug("Parsing header... (EXPLICIT, basic, UserData, number of nodes)");
-
-        using var _ = logger?.BeginScope("Header");
-
-        var basic = GbxHeaderBasic.Parse(reader);
-        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
-
-        if (basic.Format != GbxFormat.Binary)
-        {
-            throw new TextFormatNotSupportedException();
-        }
-
-        var classId = ReadClassId();
-
-        var expectedClassId = ClassManager.GetId<T>();
-
-        if (classId != expectedClassId)
-        {
-            throw new InvalidCastException($"Class ID 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"}) does not match expected class ID 0x{expectedClassId:X8} ({typeof(T).Name}).");
-        }
-
-        node = new T();
-
-        logger?.LogInformation("Instantiated EXPLICIT node: {Node}", node);
-
-        if (basic.Version >= 6)
-        {
-            ReadUserData(node);
-        }
-
-        var numNodes = reader.ReadInt32();
-        logger?.LogDebug("Number of nodes: {NumNodes}", numNodes);
-
-        return new GbxHeader<T>(basic)
-        {
-            NumNodes = numNodes
-        };
-    }
-
     public GbxHeader Parse(out IClass? node)
     {
         logger?.LogDebug("Parsing header... (IMPLICIT, basic, UserData, number of nodes)");

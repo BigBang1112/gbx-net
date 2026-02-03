@@ -30,13 +30,13 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
 - [Tool framework](#tool-framework)
 - [Zlib compression in Gbx](#zlib-compression-in-gbx)
+- [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
   - [Game Version Interfaces!](#game-version-interfaces)
 - [Optimization](#optimization)
   - [Trimming (tree shaking)](#trimming-tree-shaking)
-  - [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
   - [Only header parse](#only-header-parse)
   - [NativeAOT](#nativeaot)
   - [Asynchronous](#asynchronous)
@@ -190,7 +190,7 @@ foreach (var block in map.GetBlocks().GroupBy(x => x.Name))
 
 This will print out all blocks on the map and their count. This code can potentially crash for at least 3 reasons:
 
-1. The Gbx file is **not a map**. See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) part.
+1. The Gbx file is **not a map**. See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse).
 2. There's **a Gbx exception**. See *Exceptions in GBX.NET 2* (TBD).
 3. There's a file system problem.
 
@@ -275,7 +275,7 @@ else
 }
 ```
 
-Using pattern matching with non-generic `Parse` methods is a safer approach (no exceptions on different Gbx types), but less trim-friendly, see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) section.
+Using pattern matching with non-generic `Parse` methods is a safer approach (no exceptions on different Gbx types), see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse).
 
 ### Read a large amount of replay metadata quickly
 
@@ -388,6 +388,38 @@ The data is often stored in properties of type `CompressedData` which are byte a
 
 GBX.NET.PAK uses a different zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
 
+## Explicit vs. Implicit parse
+
+**Explicit parse:**
+
+```cs
+Gbx<CGameCtnChallenge> gbxMap = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+Gbx<CGameCtnChallenge> gbxMap = Gbx.ParseHeader<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge gbxMap = Gbx.ParseHeaderNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+```
+
+Explicit parse will throw `InvalidCastException` if the Gbx type does not match. Use explicit parse when you know the exact type of Gbx file you're reading.
+
+**Implicit parse:**
+
+```cs
+Gbx gbxMap = Gbx.Parse("Path/To/My.Map.Gbx");
+CMwNod map = Gbx.ParseNode("Path/To/My.Map.Gbx");
+Gbx gbxMap = Gbx.ParseHeader("Path/To/My.Map.Gbx");
+CMwNod gbxMap = Gbx.ParseHeaderNode("Path/To/My.Map.Gbx");
+```
+
+Implicit parse is more useful for general use. It will return a generic `Gbx`/`CMwNod` from any Gbx type it manages to read, which you can further specify **by pattern matching** or casting and allow different Gbx types to process.
+
+For unknown Gbx files, the implicit `Gbx.Parse` will return the general `Gbx` class and implicit `Gbx.ParseNode` will return `null`.
+
+> Explicit parse simply does `(Gbx<T>)Gbx.Parse("Path/To/My.Map.Gbx")` or `(T)Gbx.ParseNode("Path/To/My.Map.Gbx")` behind the scenes, there is no performance difference.
+
+### 2.0.0-2.3.x
+
+Between these versions, explicit parse was more explicit by using a different code path that was slightly more optimized for specific types, but this created large code duplicates, issues with certain node references, and further code generation mess, so it was simplified for 2.4.
+
 ## Clarity
 
 This section describes best practices to keep your projects clean when using GBX.NET 2.
@@ -495,41 +527,6 @@ However, in case you wanna use reflection on GBX.NET, it is strongly recommended
     <TrimmerRootAssembly Include="GBX.NET" />
 </ItemGroup>
 ```
-
-### Explicit vs. Implicit parse
-
-*In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
-
-GBX.NET 2 changes this majorly by making the Explicit parse way more explicit. The **Explicit parse** runs through a slightly modified code that does slightly simpler things than the Implicit parse:
-
-- The nodes are instantiated right away using the generics.
-  - If the node type is more of a base type, there's a check for all inherited classes, in a much smaller switch statement than the Implicit parse uses.
-  - If the type cannot match, exception is thrown.
-- Smaller switch statement of classes allows **effective trimming** that can reduce the library size much more than it is able to with the Implicit parse.
-- You cannot use Explicit parse on unknown Gbx files.
-- Explicit parse is still considered fairly experimental and it might sometimes fail its job.
-
-**Explicit parse:**
-
-```cs
-Gbx<CGameCtnChallenge> gbxMap = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-CGameCtnChallenge map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-Gbx<CGameCtnChallenge> gbxMap = Gbx.ParseHeader<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-CGameCtnChallenge gbxMap = Gbx.ParseHeaderNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-```
-
-The Implicit parse cannot guess the type right away, but it does not fail on unknown Gbx files. It is also less effective with library trimming.
-
-**Implicit parse:**
-
-```cs
-Gbx gbxMap = Gbx.Parse("Path/To/My.Map.Gbx");
-CMwNod map = Gbx.ParseNode("Path/To/My.Map.Gbx");
-Gbx gbxMap = Gbx.ParseHeader("Path/To/My.Map.Gbx");
-CMwNod gbxMap = Gbx.ParseHeaderNode("Path/To/My.Map.Gbx");
-```
-
-To figure out a type, use **pattern matching** or **casting**.
 
 ### Only header parse
 

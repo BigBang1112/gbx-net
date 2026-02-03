@@ -22,23 +22,6 @@ public abstract class GbxHeader
 
     public abstract GbxHeader DeepClone();
 
-    internal static GbxHeader<T> Parse<T>(GbxReader reader, out T node) where T : IClass, new()
-    {
-        return new GbxHeaderReader(reader).Parse(out node);
-    }
-
-    internal static GbxHeader<T> Parse<T>(Stream stream, GbxReadSettings settings, out T node) where T : IClass, new()
-    {
-        using var reader = new GbxReader(stream, settings);
-        return Parse(reader, out node);
-    }
-
-    internal static GbxHeader<T> Parse<T>(string fileName, GbxReadSettings settings, out T node) where T : IClass, new()
-    {
-        using var fs = File.OpenRead(fileName);
-        return Parse(fs, settings, out node);
-    }
-
     internal static GbxHeader Parse(GbxReader reader, out IClass? node)
     {
         return new GbxHeaderReader(reader).Parse(out node);

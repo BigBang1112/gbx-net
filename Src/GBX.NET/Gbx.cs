@@ -273,44 +273,7 @@ public partial class Gbx : IGbx
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx<T>> ParseAsync<T>(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
     {
-        _ = stream ?? throw new ArgumentNullException(nameof(stream));
-
-        var logger = settings.Logger;
-        if (logger is not null) LoggerExtensions.LogInformation(logger, "Gbx Parse (EXPLICIT)");
-
-        var filePath = stream is FileStream fs ? fs.Name : null;
-        if (logger is not null) LoggerExtensions.LogDebug(logger, "File path: {FilePath}", filePath);
-
-        using var reader = new GbxReader(stream, settings);
-
-        var header = GbxHeader.Parse<T>(reader, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
-
-        reader.ResetIdState();
-        reader.ExpectedNodeCount = header.NumNodes;
-
-        var body = await GbxBody.ParseAsync(node, reader, header.Basic.CompressionOfBody, cancellationToken);
-        // reader is disposed here by the GbxReaderWriter in GbxBody.ParseAsync
-
-        if (logger is not null)
-        {
-            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
-            LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
-            LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
-            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
-            LoggerExtensions.LogInformation(logger, "Gbx completed.");
-        }
-
-        return new Gbx<T>(header, body, node)
-        {
-            RefTable = refTable,
-            ReadSettings = settings,
-            IdVersion = reader.IdVersion,
-            PackDescVersion = reader.PackDescVersion,
-            DeprecVersion = reader.DeprecVersion,
-            ClassIdRemapMode = reader.ClassIdRemapMode,
-            FilePath = filePath
-        };
+        return (Gbx<T>)await ParseAsync(stream, settings, cancellationToken);
     }
 
     public static async Task<Gbx<T>> ParseAsync<T>(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default) where T : CMwNod, new()
@@ -392,37 +355,7 @@ public partial class Gbx : IGbx
 
     public static Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new()
     {
-        _ = stream ?? throw new ArgumentNullException(nameof(stream));
-
-        var logger = settings.Logger;
-        logger?.LogInformation("Gbx Header Parse (EXPLICIT)");
-
-        var filePath = stream is FileStream fs ? fs.Name : null;
-        logger?.LogDebug("File path: {FilePath}", filePath);
-
-        using var reader = new GbxReader(stream, settings);
-
-        var header = GbxHeader.Parse<T>(reader, out var node);
-        var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
-        var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
-
-        if (logger is not null)
-        {
-            LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
-            LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
-            LoggerExtensions.LogInformation(logger, "Gbx completed.");
-        }
-
-        return new Gbx<T>(header, body, node)
-        {
-            RefTable = refTable,
-            ReadSettings = settings,
-            IdVersion = reader.IdVersion,
-            PackDescVersion = reader.PackDescVersion,
-            DeprecVersion = reader.DeprecVersion,
-            ClassIdRemapMode = reader.ClassIdRemapMode,
-            FilePath = filePath
-        };
+        return (Gbx<T>)ParseHeader(stream, settings);
     }
 
     public static Gbx<T> ParseHeader<T>(string filePath, GbxReadSettings settings = default) where T : CMwNod, new()
