@@ -150,7 +150,7 @@ Gbx.LZO = new Lzo();
 
 You should run this line of code **only once** at the start of the program.
 
-In Blazor WebAssembly, you must additionally enable `WasmBuildNative`, as the `Lzo` implementation utilizes the native build.
+In Blazor WebAssembly, you must additionally enable `WasmBuildNative`, as the `Lzo` implementation utilizes the native build. This also requires having [WebAssembly Build Tools](https://learn.microsoft.com/en-us/aspnet/core/blazor/webassembly-build-tools-and-aot?view=aspnetcore-10.0) installed.
 
 ```xml
 <PropertyGroup>
@@ -158,7 +158,7 @@ In Blazor WebAssembly, you must additionally enable `WasmBuildNative`, as the `L
 </PropertyGroup>
 ```
 
-In case that doesn't work either, you can substitute with the older `MiniLZO` implementation, which is written in C#.
+In case that doesn't work for you, you can substitute with the older `MiniLZO` implementation, which is written in C#.
 
 The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v2+. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
 
