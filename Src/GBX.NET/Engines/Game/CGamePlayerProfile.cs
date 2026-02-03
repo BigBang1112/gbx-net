@@ -68,6 +68,9 @@ public partial class CGamePlayerProfile
     private ProfileChunk[]? profileChunks;
     public ProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
 
+    private ProfileChunk[]? profileChunks2;
+    public ProfileChunk[]? ProfileChunks2 { get => profileChunks2; set => profileChunks2 = value; }
+
     public partial class Chunk0308C068
     {
         public Dictionary<string, int>? U01;
@@ -173,6 +176,41 @@ public partial class CGamePlayerProfile
                         chunk.ReadWrite(n, rw, archiveVersion);
                         n.profileChunks[i] = chunk;
                     }
+                }
+            }
+        }
+    }
+
+    public partial class Chunk0308C07E : IVersionable
+    {
+        public string? U01;
+
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Id(ref U01);
+            rw.String(ref n.profileName);
+
+            if (rw.Reader is GbxReader r)
+            {
+                n.profileChunks2 = new ProfileChunk[r.ReadInt32()];
+
+                for (var i = 0; i < n.profileChunks2.Length; i++)
+                {
+                    var chunkId = r.ReadUInt32();
+                    var u01 = r.ReadString();
+                    var u02 = r.ReadString();
+                    var u03 = r.ReadString();
+                    var u04 = r.ReadInt32();
+
+                    if (Version >= 2)
+                    {
+                        var u05 = r.ReadInt32();
+                    }
+
+                    var chunkData = r.ReadData();
                 }
             }
         }
