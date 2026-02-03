@@ -14,6 +14,9 @@ public partial class CGamePlayerProfile
     private bool rememberOnlinePassword;
     public bool RememberOnlinePassword { get => rememberOnlinePassword; set => rememberOnlinePassword = value; }
 
+    private ProfileChunk[]? profileChunks;
+    public ProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
+
     public partial class Chunk0308C068
     {
         public Dictionary<string, int>? U01;
@@ -83,6 +86,84 @@ public partial class CGamePlayerProfile
             rw.Boolean(ref n.rememberOnlinePassword);
             rw.String(ref U11);
             rw.String(ref U12);
+        }
+    }
+
+    public partial class Chunk0308C07C
+    {
+        public string? U01;
+
+        public override void Read(CGamePlayerProfile n, GbxReader r)
+        {
+            U01 = r.ReadId();
+            n.profileName = r.ReadString();
+
+            n.profileChunks = new ProfileChunk[r.ReadInt32()];
+
+            for (var i = 0; i < n.profileChunks.Length; i++)
+            {
+                var chunkId = r.ReadUInt32();
+                var u01 = r.ReadString();
+                var u02 = r.ReadString();
+                var u03 = r.ReadString();
+                var u04 = r.ReadInt32();
+                var archiveVersion = r.ReadInt32();
+
+                ProfileChunk? chunk = chunkId switch
+                {
+                    0x0312C000 => new AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
+                    _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
+                };
+
+                if (chunk is not null)
+                {
+                    chunk.Read(n, r, archiveVersion);
+                    n.profileChunks[i] = chunk;
+                }
+            }
+        }
+    }
+
+    public abstract class ProfileChunk
+    {
+        public abstract void Read(CGamePlayerProfile n, GbxReader r, int version);
+    }
+
+    public partial class AccountSettings : ProfileChunk
+    {
+        public int U01;
+        public bool U02;
+        public string LastUsedMSAddress { get; set; } = "";
+        public string LastUsedMSPath { get; set; } = "";
+        public string League { get; set; } = "";
+        public string? RSAPublicKey { get; set; }
+        public string? RSAPrivateKey { get; set; }
+
+        public override void Read(CGamePlayerProfile n, GbxReader r, int version)
+        {
+            n.description = r.ReadString();
+            n.nickName = r.ReadString();
+            var u01 = r.ReadByte();
+            n.onlineLogin = r.ReadString();
+            var u02 = r.ReadString();
+            var u03 = r.ReadString();
+            var u04 = r.ReadString();
+            LastUsedMSAddress = r.ReadString();
+            LastUsedMSPath = r.ReadString();
+            var u07 = r.ReadString();
+            League = r.ReadString();
+            if (version < 4)
+            {
+                var u08 = r.ReadInt32();
+            }
+            var u09 = r.ReadInt32();
+            var u10 = r.ReadInt32();
+            if (version >= 1)
+            {
+                RSAPublicKey = r.ReadString();
+            }
+            RSAPrivateKey = r.ReadString();
+            var wtf = r.ReadArray<int>(20);
         }
     }
 }
