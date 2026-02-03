@@ -99,6 +99,7 @@
     <Project Path="Tools/ClassIdTxtFromGbxClassInfo/ClassIdTxtFromGbxClassInfo.csproj" />
     <Project Path="Tools/ClassInfoFromId/ClassInfoFromId.csproj" />
     <Project Path="Tools/CryCryptSwitch/CryCryptSwitch.csproj" />
+    <Project Path="Tools/ExportTitlePackKeys/ExportTitlePackKeys.csproj" Id="e4ef8c35-f9e4-4fd2-8653-fe0720d54541" />
     <Project Path="Tools/ExtractPakFileHashes/ExtractPakFileHashes.csproj" />
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
     <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
