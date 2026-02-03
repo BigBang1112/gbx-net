@@ -152,7 +152,7 @@ You should run this line of code **only once** at the start of the program.
 
 In Blazor WebAssembly, you must additionally enable `WasmBuildNative`, as the `Lzo` implementation utilizes the native build.
 
-```
+```xml
 <PropertyGroup>
   <WasmBuildNative>true</WasmBuildNative>
 </PropertyGroup>
