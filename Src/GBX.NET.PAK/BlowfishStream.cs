@@ -1,4 +1,5 @@
-﻿using System.Buffers.Binary;
+﻿using GBX.NET.Crypto;
+using System.Buffers.Binary;
 
 namespace GBX.NET.PAK;
 
@@ -82,11 +83,11 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
                 // Trick #3: Switch Decipher with Encipher
                 if (isPak18)
                 {
-                    blowfish.Encipher(memoryBuffer);
+                    blowfish.Encrypt(memoryBuffer.AsSpan());
                 }
                 else
                 {
-                    blowfish.Decipher(memoryBuffer);
+                    blowfish.Decrypt(memoryBuffer.AsSpan());
                 }
 
                 var block = BinaryPrimitives.ReadUInt64LittleEndian(memoryBuffer);
