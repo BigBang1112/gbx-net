@@ -613,6 +613,7 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 
 - MIT License
   - **Src/GBX.NET**
+  - Src/GBX.NET.Crypto
   - Src/GBX.NET.Hashing
   - Src/GBX.NET.Json
   - Src/GBX.NET.NewtonsoftJson
@@ -625,9 +626,8 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
   - Generators
 - GNU GPL v3 License
   - **Src/GBX.NET.LZO**
-  - **Src/GBX.NET.Crypto**
-  - **Src/GBX.NET.PAK**
   - Src/GBX.NET.Tool.CLI
+  - **Src/GBX.NET.PAK**
   - Samples
   - Tools
 - The Unlicense
