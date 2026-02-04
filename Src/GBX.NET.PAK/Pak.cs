@@ -24,7 +24,7 @@ public partial class Pak : IDisposable
     private readonly Stream stream;
     private readonly byte[]? key;
 
-    private static readonly byte[] headerKeySalt = [
+    private static readonly byte[] headerKey = [
         0x56, 0xee, 0xcb, 0xbb, 0xde, 0xb6, 0xbc, 0x90,
         0xa1, 0x7d, 0xfc, 0xeb, 0x76, 0x1d, 0x59, 0xce
     ];
@@ -38,7 +38,8 @@ public partial class Pak : IDisposable
     public uint? Size { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
     public uint Flags { get; private set; }
-    public virtual bool UseDefaultHeaderKey => true;
+    public virtual bool IsHeaderPrivate => true;
+    public virtual bool UseDefaultHeaderKey => false;
     public virtual bool IsHeaderEncrypted => true;
 
     public AuthorInfo? AuthorInfo { get; protected set; }
@@ -63,7 +64,7 @@ public partial class Pak : IDisposable
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
 
@@ -104,24 +105,32 @@ public partial class Pak : IDisposable
             return;
         }
 
-        byte[] headerKey;
-        if (version < 6 || !UseDefaultHeaderKey)
+        byte[] keyForHeader;
+        if (!IsHeaderPrivate)
         {
-            headerKey = key;
+            keyForHeader = headerKey;
+        }
+        else if (key is null)
+        {
+            return;
+        }
+        else if (version < 6) // || !UseDefaultHeaderKey ??
+        {
+            keyForHeader = key;
         }
         else
         {
-            headerKey = new byte[key.Length];
-            Array.Copy(key, headerKey, key.Length);
+            keyForHeader = new byte[key.Length];
+            Array.Copy(key, keyForHeader, key.Length);
 
             for (var i = 0; i < 16; i++)
             {
-                headerKey[i] ^= headerKeySalt[i];
+                keyForHeader[i] ^= headerKey[i];
             }
         }
 
         var iv = await r.ReadUInt64Async(cancellationToken);
-        var blowfishStream = new BlowfishStream(stream, headerKey, iv, version == 18);
+        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version == 18);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
     }
@@ -136,10 +145,10 @@ public partial class Pak : IDisposable
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, cancellationToken);
+        return await ParseAsync(fs, key, computeKey, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
