@@ -18,6 +18,8 @@
   </Folder>
   <Folder Name="/Resources/">
     <File Path="Resources/BaseKeys.txt" />
+    <File Path="Resources/BaseKeys_TMU.txt" />
+    <File Path="Resources/BaseKeys_Vsk5.txt" />
     <File Path="Resources/ClassId.txt" />
     <File Path="Resources/ClassIdManual.txt" />
     <File Path="Resources/CollectionId.txt" />

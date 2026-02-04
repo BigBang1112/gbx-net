@@ -78,9 +78,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
                 encryptedKeyString[j] ^= keyStringKey[j % keyStringKey.Length];
             }
 
-            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + Pak.Magic, cancellationToken);
-
-            packs[name] = new PakListItem(key, flags);
+            packs[name] = new PakListItem(Encoding.ASCII.GetString(encryptedKeyString), flags);
         }
 
         var signature = await r.ReadBytesAsync(0x10, cancellationToken);
@@ -166,7 +164,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 
         foreach (var (name, item) in packs)
         {
-            keys[name] = item.Key;
+            keys[name] = item.GetBytes();
         }
 
         return keys;

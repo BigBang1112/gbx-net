@@ -58,6 +58,7 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="stream">Stream.</param>
     /// <param name="key">Key for decryption.</param>
+    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
@@ -76,24 +77,14 @@ public partial class Pak : IDisposable
 
         var version = await r.ReadInt32Async(cancellationToken);
 
-        Pak pak;
-
-        if (version < 6)
+        if (key is not null && computeKey)
         {
-            pak = new Pak(stream, key, version); // TODO, should also have compute key applied here
+            key = MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + Magic));
         }
-        else
-        {
-            if (key is not null)
-            {
-                if (computeKey)
-                {
-                    key = MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + "NadeoPak"));
-                }
-            }
 
-            pak = new Pak6(stream, key, version);
-        }
+        var pak = version < 6
+            ? new Pak(stream, key, version)
+            : new Pak6(stream, key, version);
 
         await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
@@ -144,6 +135,7 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="filePath">File path.</param>
     /// <param name="key">Key for decryption.</param>
+    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
@@ -463,7 +455,7 @@ public partial class Pak : IDisposable
         var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
         return await BruteforceFileHashesAsync(directoryPath,
-            pakList.ToDictionary(x => x.Key, x => (byte[]?)x.Value.Key),
+            pakList.ToDictionary(x => x.Key, x => Convert.FromHexString(x.Value.Key)),
             progress,
             keepUnresolvedHashes,
             cancellationToken);
