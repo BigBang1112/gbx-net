@@ -18,7 +18,7 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
     public BlowfishStream(Stream stream, byte[] key, ulong iv, bool isPak18 = false)
     {
         this.stream = stream ?? throw new ArgumentNullException(nameof(BlowfishStream.stream));
-        blowfish = new Blowfish(key, isPak18);
+        blowfish = new Blowfish(key, isPak18 ? BlowfishTrick.LittleEndianPak18 : BlowfishTrick.LittleEndian);
         this.iv = iv;
         memoryBuffer = new byte[8];
         this.isPak18 = isPak18;
@@ -80,7 +80,7 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
 
                 var nextIV = BinaryPrimitives.ReadUInt64LittleEndian(memoryBuffer);
 
-                // Trick #3: Switch Decipher with Encipher
+                // Trick #3: Switch Decrypt with Encrypt
                 if (isPak18)
                 {
                     blowfish.Encrypt(memoryBuffer.AsSpan());
