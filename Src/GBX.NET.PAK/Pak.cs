@@ -100,11 +100,6 @@ public partial class Pak : IDisposable
             return;
         }
 
-        if (key is null)
-        {
-            return;
-        }
-
         byte[] keyForHeader;
         if (!IsHeaderPrivate)
         {
