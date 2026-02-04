@@ -1,0 +1,179 @@
+CGamePlayerProfileChunk_AccountSettings 0x0312C000
+- inherits: CGamePlayerProfileChunk
+
+archive
+ string Description
+ string NickName
+ byte Flags
+ string OnlineLogin
+ string OnlinePassword
+ string OnlineValidationKey
+ string OnlineSupportKey
+ string LastUsedMSAddress
+ string LastUsedMSPath
+ string LastSessionId
+ string League
+ v3-
+  int
+ int OnlineRemainingNickNamesChangesCount
+ int OnlinePlanets
+ v1+
+  string RSAPublicKey
+ string RSAPrivateKey
+ ulong
+ int
+ CGameBuddy[] Buddies
+ ulong
+ CGameNetOnlineMessage[]_deprec InboxMessages
+ CGameNetOnlineMessage[]_deprec ReadMessages
+ CGameNetOnlineMessage[]_deprec OutboxMessages
+ byte Flags2
+ v3+
+  string
+ string AvatarName
+ SPlayerTagsConfig PlayerTagsConfig
+ boolbyte ReceiveNews
+ v1-
+  int
+ v5+
+  int EulaVersion
+  v8+
+   int
+   CGameBuddy[] Buddies
+
+0x000 (skippable)
+ version
+ int EulaVersion
+ string NickName
+ byte Flags
+ if LoginValidated
+  string OnlineLogin
+  string OnlinePassword
+  string OnlineValidationKey
+  string OnlineSupportKey
+  string LastUsedMSAddress
+  string LastUsedMSPath
+  string LastSessionId
+  string League
+  int OnlineRemainingNickNamesChangesCount
+  int OnlinePlanets
+  string RSAPublicKey
+ string RSAPrivateKey
+ ulong
+ v2+
+  bool
+  v3+
+   int PrivacyPolicyVersion
+   int Age
+
+0x001 (skippable)
+ version
+ string Description
+ string AvatarName
+ SPlayerTagsConfig PlayerTagsConfig
+ v2+
+  string Trigram
+
+0x002 (skippable)
+ version
+ boolbyte ReceiveNews
+
+0x003 (skippable)
+ version
+ int
+ CGameBuddy[] Buddies
+ v3+
+  string
+  v4=
+   string[]
+  v6+
+   data
+   v7+
+    data
+
+0x004 (skippable)
+ version
+ string
+
+0x005 (skippable)
+
+0x006 (skippable)
+ version
+ byte Flags2
+
+0x007 (skippable)
+ version
+ string
+ int
+ int
+ int
+ int
+ int
+ int
+ bool
+ float
+ float
+ string
+
+0x008 (skippable)
+ version
+ string ClubLinkUrl
+
+0x009 (skippable)
+ version
+ byte FameStars
+
+0x00A (skippable)
+ version
+ float
+ float
+ v2+
+  bool
+ float
+ bool
+ bool
+ float
+ float
+ bool
+ v3+
+  float
+ float
+ float
+
+0x00B (skippable)
+ version
+ int
+ v1+
+  float
+
+0x00C (skippable)
+ version
+ string
+ YoutubeUpload[] YoutubeUploads
+
+0x00D (skippable)
+ version
+ int
+ int
+
+0x00E (skippable)
+ version
+ ulong
+ bool
+
+0x00F (skippable)
+ version
+ string
+ 
+archive SPlayerTagsConfig
+ int
+ PlayerTagConfig[] PlayerTags
+ ulong[]
+
+archive PlayerTagConfig
+ string TagId
+ bool IsVisibleByOtherPlayers
+
+archive YoutubeUpload
+ string
+ string

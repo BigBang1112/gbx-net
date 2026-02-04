@@ -160,9 +160,6 @@
  int
 
 0x07C (skippable)
- id
- string
- ProfileChunk[] ProfileChunks
 
 0x07E (skippable)
 
@@ -289,11 +286,3 @@ archive CampaignUnlock
 
 archive SoloChallengesCurrentPage
  int3
-
-archive ProfileChunk
- int
- string
- string
- string
- int
- int[16]

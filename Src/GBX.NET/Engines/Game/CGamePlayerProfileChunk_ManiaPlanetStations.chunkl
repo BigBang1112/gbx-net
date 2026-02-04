@@ -1,0 +1,47 @@
+CGamePlayerProfileChunk_ManiaPlanetStations 0x03180000
+- inherits: CGamePlayerProfileChunk
+
+0x000 (skippable) // OldStations
+ version
+ OldGameStationDesc[] OldStations (version: Version)
+
+0x001 (skippable)
+ version
+ DisplayInfo[] DisplayInfos
+ v2+
+  bool IsFirstLaunch
+  v3+
+   int
+
+0x002 (skippable) // Stations
+
+0x003 (skippable) // LatestTitleIdLoaded
+ version
+ id LatestTitleIdLoaded
+
+archive OldGameStationDesc
+ int
+ int
+ id
+ v3+
+  int
+ v2-
+  int
+  int
+  int
+
+archive GameStationDesc
+ int
+ int
+ id TitleId
+ data[32] Checksum
+ int
+ int
+ int
+ int
+
+archive DisplayInfo
+ int
+ int
+ int
+ int

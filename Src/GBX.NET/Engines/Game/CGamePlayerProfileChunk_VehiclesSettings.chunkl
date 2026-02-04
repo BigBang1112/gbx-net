@@ -1,0 +1,2 @@
+CGamePlayerProfileChunk_VehiclesSettings 0x03130000
+- inherits: CGamePlayerProfileChunk
