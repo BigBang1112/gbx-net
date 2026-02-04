@@ -21,10 +21,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: |
-          9.0.x
-          8.0.x
-          6.0.x
+        dotnet-version: 10.0.x
       
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
@@ -40,6 +37,7 @@ jobs:
         dotnet build Src/GBX.NET.Tool.CLI -c Release --no-restore -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
         dotnet build Src/GBX.NET.PAK -c Release --no-restore -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
         dotnet build Src/GBX.NET.ZLib -c Release --no-restore -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
+        dotnet build Src/GBX.NET.Crypto -c Release --no-restore -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
         dotnet pack Templates -c Release --no-build --no-restore -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
 
     - name: Publish nightly GBX.NET nupkg to nuget.gbx.tools
@@ -56,6 +54,9 @@ jobs:
 
     - name: Publish nightly GBX.NET.ZLib nupkg to nuget.gbx.tools
       run: dotnet nuget push Src/GBX.NET.ZLib/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
+
+    - name: Publish nightly GBX.NET.Crypto nupkg to nuget.gbx.tools
+      run: dotnet nuget push Src/GBX.NET.Crypto/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
 
     - name: Publish nightly GBX.NET.Templates nupkg to nuget.gbx.tools
       run: dotnet nuget push Templates/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate
