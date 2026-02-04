@@ -1,11 +1,10 @@
-﻿#if NET5_0_OR_GREATER
-namespace GBX.NET.Crypto;
+﻿namespace GBX.NET.PAK;
 
 public sealed class EncryptionInitializer : IEncryptionInitializer
 {
     private readonly BlowfishStream stream;
 
-    public EncryptionInitializer(BlowfishStream stream)
+    internal EncryptionInitializer(BlowfishStream stream)
     {
         this.stream = stream;
     }
@@ -15,4 +14,3 @@ public sealed class EncryptionInitializer : IEncryptionInitializer
         stream.Initialize(data, offset, count);
     }
 }
-#endif

@@ -1,7 +1,6 @@
-﻿#if NET5_0_OR_GREATER
-using System.Buffers.Binary;
+﻿using System.Buffers.Binary;
 
-namespace GBX.NET.Crypto;
+namespace GBX.NET.PAK;
 
 public partial class BlowfishStream : Stream, IEncryptionInitializer
 {
@@ -126,4 +125,3 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
     public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
     public override void SetLength(long value) => throw new NotSupportedException();
 }
-#endif

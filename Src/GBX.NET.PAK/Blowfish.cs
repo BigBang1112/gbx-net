@@ -24,7 +24,7 @@
  |	reference implementation. http://www.schneier.com/blowfish.html
  |***************************************************************************/
 
-namespace GBX.NET.Crypto;
+namespace GBX.NET.PAK;
 
 /// <summary>
 /// Class that provides blowfish encryption.
