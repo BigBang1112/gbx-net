@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>GbxExplorer</AssemblyName>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <SelfContained>true</SelfContained>
@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Photino.Blazor" Version="3.2.0">
+        <PackageReference Include="Photino.Blazor" Version="4.0.13">
             <IsTrimmable>false</IsTrimmable>
         </PackageReference>
     </ItemGroup>

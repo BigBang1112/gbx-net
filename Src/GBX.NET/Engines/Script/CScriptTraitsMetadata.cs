@@ -383,7 +383,7 @@ public partial class CScriptTraitsMetadata
                 throw new Exception("EScriptType.Array not matching ScriptArrayType");
             }
 
-            var arrayFieldCount = Version >= 3 ? r.ReadSmallLen() : r.ReadInt32();
+            var arrayFieldCount = noContent ? 0 : (Version >= 3 ? r.ReadSmallLen() : r.ReadInt32());
             var isRegularArray = arrayType.KeyType.Type == EScriptType.Void;
 
             if (isRegularArray)

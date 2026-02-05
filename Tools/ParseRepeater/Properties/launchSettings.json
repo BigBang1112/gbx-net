@@ -2,7 +2,7 @@
   "profiles": {
     "ParseRepeater": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\TMUF_CORRECT\\Alpine\\Media\\Solid\\AlpineAdvertAir.Solid.Gbx\""
+      "commandLineArgs": "\"D:\\GbxTools\\Dataset\\TM10\\Alpine\\Media\\Texture\\AlpineBark.Texture.gbx\""
     }
   }
 }

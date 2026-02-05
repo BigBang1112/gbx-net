@@ -1,12 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageType>Template</PackageType>
-        <VersionPrefix>0.1.0</VersionPrefix>
         <PackageId>GBX.NET.Templates</PackageId>
-        <Title>GBX.NET Templates</Title>
+        <PackageType>Template</PackageType>
+        <VersionPrefix>0.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
+        <Title>GBX.NET Templates</Title>
         <Description>Templates for GBX.NET.</Description>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageIcon>logo_icon_outline.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>gbx, templates, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <PackageTags>dotnet-new;templates;gbx.net</PackageTags>
         <TargetFramework>netstandard2.0</TargetFramework>
 
@@ -14,6 +24,11 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../logo_icon_outline.png" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
         <Content Include="**\*" Exclude="**\bin\**;**\obj\**;GBX.NET.Templates.csproj" />

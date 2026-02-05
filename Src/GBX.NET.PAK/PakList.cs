@@ -13,6 +13,8 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
 {
     private readonly IReadOnlyDictionary<string, PakListItem> packs;
 
+    public const string FileName = "packlist.dat";
+
     private const string NameKeySaltTM = "6611992868945B0B59536FC3226F3FD0";
     private const string NameKeySaltVsk5 = "33751203003810C43D169A5B608FC820";
 
@@ -76,9 +78,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
                 encryptedKeyString[j] ^= keyStringKey[j % keyStringKey.Length];
             }
 
-            var key = await MD5.ComputeAsync(Encoding.ASCII.GetString(encryptedKeyString) + Pak.Magic, cancellationToken);
-
-            packs[name] = new PakListItem(key, flags);
+            packs[name] = new PakListItem(Encoding.ASCII.GetString(encryptedKeyString), flags);
         }
 
         var signature = await r.ReadBytesAsync(0x10, cancellationToken);
@@ -158,13 +158,13 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
     /// Creates a dictionary of case-insensitive Pak identifiers as their decryption keys.
     /// </summary>
     /// <returns>A dictionary of <see langword="string"/> and <see cref="PakKeyInfo"/>.</returns>
-    public Dictionary<string, PakKeyInfo?> ToKeyInfoDictionary()
+    public Dictionary<string, byte[]?> ToKeyInfoDictionary()
     {
-        var keys = new Dictionary<string, PakKeyInfo?>(packs.Count, StringComparer.OrdinalIgnoreCase);
+        var keys = new Dictionary<string, byte[]?>(packs.Count, StringComparer.OrdinalIgnoreCase);
 
         foreach (var (name, item) in packs)
         {
-            keys[name] = new PakKeyInfo(item.Key);
+            keys[name] = item.GetBytes();
         }
 
         return keys;

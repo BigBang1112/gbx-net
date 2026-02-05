@@ -1,7 +1,7 @@
 ﻿@inject ILogger Logger
 @inject IGbxService GbxService;
 
-<div class="section section-gbx-list@(GbxList.Count == 0 ? " centered-note" : "")" @onkeydown="OnKeyDownAsync" tabindex="0">
+<div class="section section-gbx-list @(GbxList.Count == 0 ? "centered-note" : "")" @onkeydown="OnKeyDownAsync" tabindex="0">
     @if (GbxList.Count == 0)
     {
         <span>No *.Gbx files are imported.</span>

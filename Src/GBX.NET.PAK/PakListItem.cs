@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.PAK;
 
-public sealed record PakListItem(byte[] Key, byte Flags)
+public sealed record PakListItem(string Key, byte Flags)
 {
-    public override string ToString()
+    public byte[] GetBytes()
     {
-        return BitConverter.ToString(Key);
+        return Convert.FromHexString(Key);
     }
 }

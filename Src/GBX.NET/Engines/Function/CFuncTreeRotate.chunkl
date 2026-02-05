@@ -2,8 +2,6 @@ CFuncTreeRotate 0x0501E000
 - inherits: CFuncTree
 
 0x001 [TM10]
- float
- float
- float
+ vec3 Axis
  float AngleMin
  float AngleMax

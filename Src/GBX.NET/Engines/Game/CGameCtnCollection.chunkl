@@ -49,6 +49,10 @@ CGameCtnCollection 0x03033000
     string FolderMacroBlockInfo
     v4+
      string FolderMacroDecals
+     v5+
+      string
+      v6+
+       string
 
 0x003 (header, struct: SHeaderMenuIconsFolders)
  versionb
@@ -206,27 +210,33 @@ CGameCtnCollection 0x03033000
 
 0x038
  version
- v3-
-  float
-  v0=
+ v7-
+  v3-
    float
-   float
-  v1+
+   v0=
+    float
+    float
+   v1+
+    Water Water1 (version: Version)
+    Water Water2 (version: Version)
+  v4+
    Water Water1 (version: Version)
    Water Water2 (version: Version)
- v4+
-  Water Water1 (version: Version)
-  Water Water2 (version: Version)
-  Water Water3 (version: Version)
-  Water Water4 (version: Version)
-  v5+
-   CPlugBitmap WaterGBitmapNormal (external)
-   float WaterGBumpSpeedUV
-   float WaterGBumpScaleUV
-   float WaterGBumpScale
-   float WaterGRefracPertub
-   v7+
-    int // not seen in code
+   Water Water3 (version: Version)
+   Water Water4 (version: Version)
+ v8+
+  CPlugMaterialWaterArray WaterArray
+  if WaterArray == null
+   int
+   Water Water1 (version: Version)
+ v5+
+  CPlugBitmap WaterGBitmapNormal (external)
+  float WaterGBumpSpeedUV
+  float WaterGBumpScaleUV
+  float WaterGBumpScale
+  float WaterGRefracPertub
+  v7+
+   int // not seen in code
  float CameraMinHeight
  v3-
   bool // CSystemFidsFolder something?
@@ -244,29 +254,55 @@ CGameCtnCollection 0x03033000
  v1+
   int? // VehicleStyles?
   v2+
-   CMwNod ItemPlacementGroups
+   CMwNod ItemPlacementGroups (external)
    v3+
     CMwNod AdnRandomGenList
     v4+
-     CMwNod FidBlockInfoGroups
+     CMwNod FidBlockInfoGroups (external)
      v10-
       CMwNod
       v8+
        CMwNod
      v6+
-      CMwNod
+      CMwNod FidBlockInfoInventory (external)
      v8-
       CMwNod
      v10+
-      CMwNod
+      CMwNod FidItemModelInventory (external)
       v12+
-       CMwNod
+       CPlugBitmap (external)
       v11+
-       CMwNod
-       CMwNod
-       CMwNod
-       CMwNod
-       CMwNod
+       CPlugBitmap (external)
+       CPlugBitmap (external)
+       CPlugBitmap (external)
+       CPlugBitmap (external)
+       CMwNod (external)
+       v20+
+        CMwNod
+        v21+
+         CMwNod
+         CMwNod
+         CMwNod
+         CMwNod
+         v22+
+          CPlugFileImg BlockSkins_Default_FidAdvertisement1x1 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement2x1 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement2x3 (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement4x1 (external)
+          CPlugFileImg BlockSkins_Default_FidItemFlag (external)
+          CPlugFileImg BlockSkins_Default_FidAdvertisement16x9 (external)
+       v13+
+        CMwNod FidMacroBlockInfoInventory (external)
+        v14+
+         CPlugMediaClipList DefaultSpawnClipList (external)
+         v16+
+          ident VehicleTransform_CarSnow
+          v17+
+           ident VehicleTransform_CarRally
+           v18+
+            ident VehicleTransform_CarDesert
+            v19+
+             int
 
 0x03A
  version
@@ -281,6 +317,8 @@ CGameCtnCollection 0x03033000
  float? VisMeshLodDistScale
  v1=
   int
+ v3+
+  int
 
 0x03B // turbo color
  version
@@ -290,6 +328,8 @@ CGameCtnCollection 0x03033000
  v1+
   uint? TurboColorTurbo
   uint? TurboColorTurbo2
+  v2+
+   int?
 
 0x03C
  version
@@ -299,11 +339,36 @@ CGameCtnCollection 0x03033000
 
 0x03D // BitmapDisplayControlDefaultTVProgram
  version
- CPlugBitmap BitmapDisplayControlDefaultTVProgram16x9
- CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10A
- CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B
- CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C
- CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram16x9 (external)
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10A (external)
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B (external)
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C (external)
+ CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3 (external)
+
+0x03E
+ version
+ int
+
+0x03F
+ version
+ int
+
+0x040 // ColorBlindnessModifier
+ version
+ CPlugGameSkinAndFolder ColorBlindnessModifier (external)
+
+0x041
+ string
+
+0x042
+ int
+
+0x043
+ string
+
+0x044 // GlobalMaterialModifier
+ version
+ CPlugGameSkinAndFolder GlobalMaterialModifier (external)
 
 enum ECollectionType
  Environment
@@ -334,6 +399,6 @@ archive Water
  v3+
   float?
  v2+
-  CMwNod
+  CMwNod (external)
   v7+
    int? // not seen in code

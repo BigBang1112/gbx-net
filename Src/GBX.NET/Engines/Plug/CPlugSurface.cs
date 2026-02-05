@@ -152,6 +152,7 @@ public partial class CPlugSurface
 
     public interface ISurf : IReadable, IWritable
     {
+        public short SurfaceIndex { get; set; }
         public Vec3? U01 { get; set; }
     }
 
@@ -184,19 +185,23 @@ public partial class CPlugSurface
         public Triangle[]? Triangles { get; set; }
         public Vec3? U01 { get; set; }
 
+        short ISurf.SurfaceIndex { get; set; }
+
         public void Read(GbxReader r, int version = 0)
         {
             Version = r.ReadInt32();
 
             switch (Version)
             {
-                case 1: // has OctreeCells deprec (10 before array, TODO fix)
+                case 1:
                 case 2:
                 case 3:
                     Vertices = r.ReadArray<Vec3>();
                     CookedTriangles = r.ReadArray<CookedTriangle>();
                     OctreeVersion = r.ReadInt32();
-                    OctreeCells = r.ReadArray<OctreeCell>();
+                    OctreeCells = OctreeVersion == 1
+                        ? r.ReadArray_deprec<OctreeCell>()
+                        : r.ReadArray<OctreeCell>();
                     break;
                 case 5:
                     Vertices = r.ReadArray<Vec3>();
@@ -218,13 +223,20 @@ public partial class CPlugSurface
 
             switch (Version)
             {
-                case 1: // has OctreeCells deprec (10 before array, TODO fix)
+                case 1:
                 case 2:
                 case 3:
                     w.WriteArray(Vertices);
                     w.WriteArray(CookedTriangles);
                     w.Write(OctreeVersion.GetValueOrDefault());
-                    w.WriteArray(OctreeCells);
+                    if (OctreeVersion == 1)
+                    {
+                        w.WriteArray_deprec(OctreeCells);
+                    }
+                    else
+                    {
+                        w.WriteArray(OctreeCells);
+                    }
                     break;
                 case 5:
                     w.WriteArray(Vertices);
@@ -240,9 +252,9 @@ public partial class CPlugSurface
             }
         }
 
-        public readonly record struct CookedTriangle(Vec4 U01, Int3 U02, ushort U03, byte U04, byte U05);
+        public readonly record struct CookedTriangle(Vec4 U01, Int3 Indices, short SurfaceIndex, byte U04, byte U05);
         public readonly record struct OctreeCell(int U01, Vec3 U02, Vec3 U03, int U04);
-        public readonly record struct Triangle(Int3 U01, byte U02, byte U03, byte U04, byte U05);
+        public readonly record struct Triangle(Int3 Indices, byte U02, byte U03, short SurfaceIndex);
         public readonly record struct AABBTreeCell(Vec3 U01, Vec3 U02, int U03);
     }
 
@@ -253,6 +265,8 @@ public partial class CPlugSurface
         public Iso4[] SurfLocs { get; set; } = [];
         public short[] SurfJoints { get; set; } = [];
         public Vec3? U01 { get; set; }
+
+        short ISurf.SurfaceIndex { get; set; }
 
         public void Read(GbxReader r, int version = 0)
         {

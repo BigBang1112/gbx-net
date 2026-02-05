@@ -38,7 +38,7 @@ public partial class CGameCtnDecorationAudio
             {
                 foreach (var pair in n.Sounds)
                 {
-                    w.Write(pair.Key);
+                    w.WriteIdAsString(pair.Key);
                     w.WriteNodeRef(pair.Value.Node, pair.Value.File);
                 }
             }
@@ -48,7 +48,7 @@ public partial class CGameCtnDecorationAudio
             {
                 foreach (var pair in n.Musics)
                 {
-                    w.Write(pair.Key);
+                    w.WriteIdAsString(pair.Key);
                     w.WriteNodeRef(pair.Value.Node, pair.Value.File);
                 }
             }

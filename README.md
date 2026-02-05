@@ -7,7 +7,7 @@
 
 Welcome to GBX.NET 2!
 
-A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 350+ Gbx classes.
+A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 400+ Gbx classes.
 
 GBX.NET is not just a library that can read or write Gbx files, but also **a modding platform** that connects all Nadeo games together. It is exceptionally useful for bulk Gbx data processing, for example, when you want to fix broken sign locator URLs on hundreds of maps.
 
@@ -17,8 +17,6 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 - [Supported games](#supported-games)
 - [File types](#file-types)
-- [Gbx Explorer 2](#gbx-explorer-2)
-- [Lua support](#lua-support)
 - [Framework support](#framework-support)
 - **[Preparation](#preparation)**
   - [Create a new GBX.NET project (lightweight)](#create-a-new-gbxnet-project-lightweight)
@@ -32,13 +30,13 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
   - [Read a large amount of replay metadata quickly](#read-a-large-amount-of-replay-metadata-quickly)
 - [Tool framework](#tool-framework)
 - [Zlib compression in Gbx](#zlib-compression-in-gbx)
+- [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
 - [Clarity](#clarity)
   - [Differences between `Gbx.Parse/Header/Node`](#differences-between-gbxparseheadernode)
   - [Do not repeat `gbx.Node.[any]` too often!](#do-not-repeat-gbxnodeany-too-often)
   - [Game Version Interfaces!](#game-version-interfaces)
 - [Optimization](#optimization)
   - [Trimming (tree shaking)](#trimming-tree-shaking)
-  - [Explicit vs. Implicit parse](#explicit-vs-implicit-parse)
   - [Only header parse](#only-header-parse)
   - [NativeAOT](#nativeaot)
   - [Asynchronous](#asynchronous)
@@ -46,6 +44,9 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 - [Build](#build)
   - [Nightly builds](#nightly-builds)
 - [License](#license)
+- [Plans](#plans)
+  - [Gbx Explorer 2](#gbx-explorer-2)
+  - [Lua support](#lua-support)
 - [Special thanks](#special-thanks)
 - [Alternative Gbx parsers](#alternative-gbx-parsers)
 
@@ -53,7 +54,7 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, December 2024 update
+- **Trackmania (2020)**, January 2026 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM
@@ -91,27 +92,13 @@ Here are some of the known file types to start with:
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
 
-## Gbx Explorer 2
-
-Gbx Explorer 2 *will* be a complete remake of the old Gbx Explorer, fixing most of what the old version lacked. It is planned to be a relatively huge project, so it may take time to do.
-
-Old Gbx Explorer is compatible with GBX.NET 2, but some features have been stripped off.
-
-## Lua support
-
-GBX.NET 2 *will* support dynamic Lua script execution around the .NET code, to simplify the library usage even further.
-
-It should be supported to run offline locally through a **Gbx Lua Interpreter tool** and in **Gbx Explorer 2 in web browser, PWA, and Photino build.**
-
-The goal is to also make it viable for NativeAOT.
-
 ## Framework support
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded. Depending on the needs, I can add explicit .NET Framework support, but so far there haven't been ones not replaceable with .NET Standard 2.0.
@@ -122,27 +109,13 @@ Using the NuGet packages is recommended.
 
 ### Create a new GBX.NET project (lightweight)
 
-1. Install [.NET SDK 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
-    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.9` (make sure you have WinGet installed)
+1. Install [.NET SDK 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) (older versions won't work)
+    - Windows: [here](https://dotnet.microsoft.com/en-us/download) or `winget install Microsoft.DotNet.SDK.10` (make sure you have WinGet installed)
     - [Linux](https://learn.microsoft.com/en-us/dotnet/core/install/linux) (just SDK)
-2. Create directory for your project (anywhere), **go inside it**.
-3. Create new console project: `dotnet new console`
-4. Add the GBX.NET 2 NuGet package: `dotnet add package GBX.NET`
-5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
-6. Open `Program.cs` with your favorite text editor: `code . -g Program.cs` (for example)
-7. Write code - see [Usage (simple examples)](#usage-simple-examples).
-8. Use `dotnet run` to run the app.
-
-Steps 2-8:
-```
-mkdir MyGbxProject
-cd MyGbxProject
-dotnet new console
-dotnet add package GBX.NET
-dotnet add package GBX.NET.LZO
-code . -g Program.cs
-dotnet run
-```
+2. Create a new C# script, for example `GbxScript.cs`
+3. Open `GbxScript.cs` with your favorite text editor: `code . -g GbxScript.cs` (for example).
+4. Write code - see [Usage (simple examples)](#usage-simple-examples).
+5. Use `dotnet run GbxScript.cs` to run the script.
 
 ### Create a new GBX.NET project (Visual Studio Code)
 
@@ -151,29 +124,24 @@ dotnet run
 3. Select `Console App` and create your project.
 4. Open a new terminal and type `dotnet add package GBX.NET` to add GBX.NET 2.
 5. *(optional)* Add the GBX.NET.LZO 2 NuGet package: `dotnet add package GBX.NET.LZO`
-5. Write code - see [Usage (simple examples)](#usage-simple-examples).
+5. Write code (without the `#:package`s at the top) - see [Usage (simple examples)](#usage-simple-examples).
 6. Run and debug as usual, select C# if prompted.
 
 ### Create a new GBX.NET project (Visual Studio)
 
 1. Create a new Console project
 2. Under your project in Solution Explorer, right-click on Dependencies and select `Manage NuGet packages...`
-3. Search `GBX.NET` and click install
-4. Write code - see [Usage (simple examples)](#usage-simple-examples).
+3. Search `GBX.NET` and click install, optionally install `GBX.NET.LZO`
+4. Write code (without the `#:package`s at the top) - see [Usage (simple examples)](#usage-simple-examples).
 
 ## IMPORTANT INFO about the LZO and Gbx compression
 
 Reading or writing compressed Gbx files **require** to include the GBX.NET.LZO 2 library (or any other implementation that uses the `ILzo` interface). This is how you can include it:
 
-Command line:
-
-```
-dotnet add package GBX.NET.LZO
-```
-
-C# code:
-
 ```cs
+#:package GBX.NET@2.*
+#:package GBX.NET.LZO@2.*
+
 using GBX.NET;
 using GBX.NET.LZO;
 
@@ -182,19 +150,30 @@ Gbx.LZO = new Lzo();
 
 You should run this line of code **only once** at the start of the program.
 
+In Blazor WebAssembly, you must additionally enable `WasmBuildNative`, as the `Lzo` implementation utilizes the native build. This also requires having [WebAssembly Build Tools](https://learn.microsoft.com/en-us/aspnet/core/blazor/webassembly-build-tools-and-aot?view=aspnetcore-10.0) installed.
+
+```xml
+<PropertyGroup>
+  <WasmBuildNative>true</WasmBuildNative>
+</PropertyGroup>
+```
+
+In case that doesn't work for you, you can substitute with the older `MiniLZO` implementation, which is written in C#.
+
 The compression logic is split up from the read/write logic to **allow GBX.NET 2 library to be distributed under the MIT license**, as Oberhumer distributes the open source version of LZO under the GNU GPL v2+. Therefore, using GBX.NET.LZO 2 requires you to license your project under the GNU GPL v3, see [License](#license).
 
 **Gbx header is not compressed** and can contain useful information (icon data, replay time, ...), and also many of the **internal Gbx files from Pak files are not compressed**, so you can avoid LZO for these purposes.
 
 ## Usage (simple examples)
 
+> These examples expect you to have .NET 10 installed. In older versions, you may need to include relevant packages with `dotnet add package` command or add the `using System.Linq;` statement at the top.
+
 ### Load a map and display block count per block name
 
-Required packages: `GBX.NET`, `GBX.NET.LZO`
-
-> This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.Linq;`.
-
 ```cs
+#:package GBX.NET@2.*
+#:package GBX.NET.LZO@2.*
+
 using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
@@ -211,17 +190,18 @@ foreach (var block in map.GetBlocks().GroupBy(x => x.Name))
 
 This will print out all blocks on the map and their count. This code can potentially crash for at least 3 reasons:
 
-1. The Gbx file is **not a map**. See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) part.
+1. The Gbx file is **not a map**. See [Explicit vs. Implicit parse](#explicit-vs-implicit-parse).
 2. There's **a Gbx exception**. See *Exceptions in GBX.NET 2* (TBD).
 3. There's a file system problem.
 
 ### Modify and save a map
 
-Required packages: `GBX.NET`, `GBX.NET.LZO`
-
 GBX.NET's strength is in its ability to modify Gbx files and save them back. This example shows how you can change the map name of a map:
 
 ```cs
+#:package GBX.NET@2.*
+#:package GBX.NET.LZO@2.*
+
 using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
@@ -263,13 +243,12 @@ For more details, see [Differences between `Gbx.Parse/Header/Node`](#differences
 
 ### Processing multiple Gbx types
 
-Required packages: `GBX.NET`, `GBX.NET.LZO`
-
-> This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.Linq;`.
-
 This example shows how you can retrieve ghost objects from multiple different types of Gbx:
 
 ```cs
+#:package GBX.NET@2.*
+#:package GBX.NET.LZO@2.*
+
 using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.LZO;
@@ -296,20 +275,18 @@ else
 }
 ```
 
-Using pattern matching with non-generic `Parse` methods is a safer approach (no exceptions on different Gbx types), but less trim-friendly, see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse) in the [Optimization](#optimization) section.
+Using pattern matching with non-generic `Parse` methods is a safer approach (no exceptions on different Gbx types), see [Explicit vs. Implicit parse](#explicit-vs-implicit-parse).
 
 ### Read a large amount of replay metadata quickly
-
-Required packages: `GBX.NET`
 
 In case you only need the most basic information about many of the most common Gbx files (maps, replays, items, ...), do not read the full Gbx file, but only the header part. It is a great performance benefit for disk scans.
 
 > [!NOTE]
-> Reading only the header also does not infect you with GNU GPL v3 and you can use licenses compatible with MIT. Header is not compressed with LZO.
-
-> This project example expects you to have `<ImplicitUsings>enable</ImplicitUsings>`. If this does not work for you, add `using System.IO;`.
+> Reading only the header also does not infect you with GNU GPL v3, and you can use licenses compatible with MIT. The header is not compressed with LZO.
 
 ```cs
+#:package GBX.NET@2.*
+
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
@@ -343,7 +320,7 @@ This code should only crash in case of a file system problem. Other problems wil
 
 ## Tool framework
 
-Tool framework (`GBX.NET.Tool*` libraries) is a simple way to create rich tools that can be adapted to different environments.
+Tool framework (`GBX.NET.Tool*` libraries) is a work-in-progress simple way to create rich tools that can be adapted to different environments.
 
 Currently supported environments:
 - **Console** (`GBX.NET.Tool.CLI`)
@@ -392,15 +369,10 @@ GBX.NET does not include zlib algorithm by default to read this data. Properties
 
 To "unlock" this data, you need to specify zlib implementation:
 
-Command line:
-
-```
-dotnet add package GBX.NET.ZLib
-```
-
-C# code:
-
 ```cs
+#:package GBX.NET@2.*
+#:package GBX.NET.ZLib@2.* // IMPORTANT to include this package!
+
 using GBX.NET;
 using GBX.NET.ZLib;
 
@@ -408,13 +380,45 @@ Gbx.ZLib = new ZLib();
 ```
 
 > [!NOTE]
-> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.2.
+> Zlib-compressed data is **currently read-only for ghost samples and record data**, lightmap data is the only zlib data that can be modified with GBX.NET. Write support for ghost samples and record data is planned for 2.4.
 
 The data is often stored in properties of type `CompressedData` which are byte arrays with additional uncompressed data size for validation. If there's a property with this type (`CGameCtnChallenge.LightmapCacheData` for example), zlib data will be stored there no matter if the zlib implementation is included, so read/write consistency is guaranteed.
 
 > The current reason why the zlib implementation is split similarly to LZO (even when zlib license is perfectly fine) is that there aren't any good official solutions by Microsoft that would work for .NET Standard 2 (new `ZlibStream` is promising but .NET 6+ only, still not tested enough if reliable), and third party solutions are also of a questionable quality. But this topic is continously under attention and the zlib implementation is slowly improving.
 
 GBX.NET.PAK uses a different zlib solution due to very specific patterns to follow during decryption + decompression in .pak data.
+
+## Explicit vs. Implicit parse
+
+**Explicit parse:**
+
+```cs
+Gbx<CGameCtnChallenge> gbxMap = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+Gbx<CGameCtnChallenge> gbxMap = Gbx.ParseHeader<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+CGameCtnChallenge gbxMap = Gbx.ParseHeaderNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
+```
+
+Explicit parse will throw `InvalidCastException` if the Gbx type does not match. Use explicit parse when you know the exact type of Gbx file you're reading.
+
+**Implicit parse:**
+
+```cs
+Gbx gbxMap = Gbx.Parse("Path/To/My.Map.Gbx");
+CMwNod map = Gbx.ParseNode("Path/To/My.Map.Gbx");
+Gbx gbxMap = Gbx.ParseHeader("Path/To/My.Map.Gbx");
+CMwNod gbxMap = Gbx.ParseHeaderNode("Path/To/My.Map.Gbx");
+```
+
+Implicit parse is more useful for general use. It will return a generic `Gbx`/`CMwNod` from any Gbx type it manages to read, which you can further specify **by pattern matching** or casting and allow different Gbx types to process.
+
+For unknown Gbx files, the implicit `Gbx.Parse` will return the general `Gbx` class and implicit `Gbx.ParseNode` will return `null`.
+
+> Explicit parse simply does `(Gbx<T>)Gbx.Parse("Path/To/My.Map.Gbx")` or `(T)Gbx.ParseNode("Path/To/My.Map.Gbx")` behind the scenes, there is no performance difference.
+
+### 2.0.0-2.3.x
+
+Between these versions, explicit parse was more explicit by using a different code path that was slightly more optimized for specific types, but this created large code duplicates, issues with certain node references, and further code generation mess, so it was simplified for 2.4.
 
 ## Clarity
 
@@ -516,56 +520,13 @@ GBX.NET is a huge library when everything is included (over 1.5MB), so please us
 > [!NOTE]
 > Expect this to work only with `dotnet publish`.
 
-However, in case you wanna use reflection on GBX.NET, it is strongly recommended to simply turn off trimming of this library. **In case of Blazor WebAssembly specifically, it's worth noting that the release build trims automatically**, so in case you're using reflection, modify your library reference:
-
-```xml
-<PackageReference Include="GBX.NET">
-    <IsTrimmable>false</IsTrimmable> <!-- add this line -->
-</PackageReference>
-```
-
-In case this is not enough, you can specify `TrimmerRootAssembly` on the project you're building that this library should absolutely not be trimmed:
+However, in case you wanna use reflection on GBX.NET, it is strongly recommended to simply turn off trimming of this library. **In case of Blazor WebAssembly specifically, it's worth noting that the release build trims automatically**, so in case you're using reflection, specify the `TrimmerRootAssembly` on GBX.NET:
 
 ```xml
 <ItemGroup>
     <TrimmerRootAssembly Include="GBX.NET" />
 </ItemGroup>
 ```
-
-### Explicit vs. Implicit parse
-
-*In the past, the difference between these two used to be only to reduce the amount of written code by the consumer and making the type more strict, the performance was exactly the same.*
-
-GBX.NET 2 changes this majorly by making the Explicit parse way more explicit. The **Explicit parse** runs through a slightly modified code that does slightly simpler things than the Implicit parse:
-
-- The nodes are instantiated right away using the generics.
-  - If the node type is more of a base type, there's a check for all inherited classes, in a much smaller switch statement than the Implicit parse uses.
-  - If the type cannot match, exception is thrown.
-- Smaller switch statement of classes allows **effective trimming** that can reduce the library size much more than it is able to with the Implicit parse.
-- You cannot use Explicit parse on unknown Gbx files.
-- Explicit parse is still considered fairly experimental and it might sometimes fail its job.
-
-**Explicit parse:**
-
-```cs
-Gbx<CGameCtnChallenge> gbxMap = Gbx.Parse<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-CGameCtnChallenge map = Gbx.ParseNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-Gbx<CGameCtnChallenge> gbxMap = Gbx.ParseHeader<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-CGameCtnChallenge gbxMap = Gbx.ParseHeaderNode<CGameCtnChallenge>("Path/To/My.Map.Gbx");
-```
-
-The Implicit parse cannot guess the type right away, but it does not fail on unknown Gbx files. It is also less effective with library trimming.
-
-**Implicit parse:**
-
-```cs
-Gbx gbxMap = Gbx.Parse("Path/To/My.Map.Gbx");
-CMwNod map = Gbx.ParseNode("Path/To/My.Map.Gbx");
-Gbx gbxMap = Gbx.ParseHeader("Path/To/My.Map.Gbx");
-CMwNod gbxMap = Gbx.ParseHeaderNode("Path/To/My.Map.Gbx");
-```
-
-To figure out a type, use **pattern matching** or **casting**.
 
 ### Only header parse
 
@@ -596,18 +557,14 @@ On basic GBX.NET applications, native compilation has a couple of improvements:
 
 ### Asynchronous
 
-Reading Gbx files asynchronously is currently only partially supported, but can be already more effective in networking scenarios.
+Reading Gbx files asynchronously is currently only partially supported, but can already be more effective in networking scenarios.
 
 - Asynchronous reading currently only takes effect in the Gbx **body** part.
 - It is used on reading the compressed LZO buffer, which is quite large, so async can have a positive effect.
-- It is also planned to use async reading on Gbx map thumbnail JPEG buffer.
-- It is not planned to use async reading while reading the contents of decompressed body, as it's already fully there in memory and it could rather hurt the performance than improve it.
+- It is also planned to use async reading on the Gbx map thumbnail JPEG buffer.
+- It is not planned to use async reading while reading the contents of the decompressed body, as it's already fully there in memory, and it could rather hurt the performance than improve it.
 
 The library uses sync method generators to simplify async method definitions without duplicating code.
-
-## Benchmarks
-
-TODO
 
 ## Build
 
@@ -618,9 +575,9 @@ TODO
 
 Make sure you have these framework SDKs available:
 
-- **.NET 9**
+- **.NET 10**
+- .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 **Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will not work.
@@ -629,7 +586,7 @@ You should also have **.NET WebAssembly Build Tools** installed additionally to 
 
 In Visual Studio, you can just use Build Solution and everything should build. JetBrains Rider has been tested and also works.
 
-In .NET CLI, run `dotnet build` on the solution (`.sln`) level.
+In .NET CLI, run `dotnet build` on the solution (`.slnx`) level.
 
 ### Nightly builds
 
@@ -679,6 +636,22 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 The Unlicense also applies on information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown).
 
 If you use the LZO compression library, you must license your project under the GNU GPL v3.
+
+## Plans
+
+### Gbx Explorer 2
+
+Gbx Explorer 2 *will* be a complete remake of the old Gbx Explorer, fixing most of what the old version lacked. It is planned to be a relatively huge project, so it may take time to do.
+
+Old Gbx Explorer is compatible with GBX.NET 2, but some features have been stripped off.
+
+### Lua support
+
+GBX.NET 2 *will* support dynamic Lua script execution around the .NET code, to simplify the library usage even further.
+
+It should be supported to run offline locally through a **Gbx Lua Interpreter tool** and in **Gbx Explorer 2 in web browser, PWA, and Photino build.**
+
+The goal is to also make it viable for NativeAOT.
 
 ## Special thanks
 

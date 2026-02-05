@@ -11,12 +11,12 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mat.Gbx | [CPlugMaterialUserInst](Src/GBX.NET/Engines/Plug/CPlugMaterialUserInst.chunkl) | Yes | Yes
-| Solid2.Gbx | Mesh.Gbx | [CPlugSolid2Model](Src/GBX.NET/Engines/Plug/CPlugSolid2Model.chunkl) | Yes | Yes
+| Solid2.Gbx | Mesh.Gbx | [CPlugSolid2Model](Src/GBX.NET/Engines/Plug/CPlugSolid2Model.chunkl) | Yes | Yes | Yes
 | | Shape.Gbx | [CPlugSurface](Src/GBX.NET/Engines/Plug/CPlugSurface.chunkl) | Yes | Yes
 | | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes | Yes
 | | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
 | RefBuffer.Gbx | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Yes | Yes
-| | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) | Up to TMF | Up to TMF | Yes
+| | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) | Up to TMF | No | Yes
 | | Spawn.Gbx | [CGameSpawnModel](Src/GBX.NET/Engines/GameData/CGameSpawnModel.chunkl) | Yes | Yes
 | ConstructionCampaign.Gbx | Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.chunkl) | Yes | Yes
 | TMCollection.Gbx | Collection.Gbx | [CGameCtnCollection](Src/GBX.NET/Engines/Game/CGameCtnCollection.chunkl) | Yes | Yes | Yes
@@ -24,7 +24,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | TMDecorationSize.Gbx | DecorationSize.Gbx | [CGameCtnDecorationSize](Src/GBX.NET/Engines/Game/CGameCtnDecorationSize.chunkl) | Yes | Yes | Yes
 | TMDecorationMood.Gbx | DecorationMood.Gbx | [CGameCtnDecorationMood](Src/GBX.NET/Engines/Game/CGameCtnDecorationMood.chunkl) | Yes | Yes | Yes
 | TMDecorationAudio.Gbx | DecorationAudio.Gbx | [CGameCtnDecorationAudio](Src/GBX.NET/Engines/Game/CGameCtnDecorationAudio.chunkl) | Yes | Yes | Yes
-| | Scene3d.Gbx | [CSceneLayout](Src/GBX.NET/Engines/Scene/CSceneLayout.chunkl) | Yes | Yes
+| | Scene3d.Gbx | [CSceneLayout](Src/GBX.NET/Engines/Scene/CSceneLayout.chunkl) | From TMF | From TMF
 | TMEDClassic.Gbx | EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.chunkl) | Yes | Yes | Yes
 | TMEDClip.Gbx | EDClip.Gbx | [CGameCtnBlockInfoClip](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClip.chunkl) | Yes | Yes | Yes
 | TMEDFlat.Gbx | EDFlat.Gbx | [CGameCtnBlockInfoFlat](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoFlat.chunkl) | Yes | Yes | Yes
@@ -37,7 +37,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | TMZoneFrontier.Gbx | ZoneFrontier.Gbx | [CGameCtnZoneFrontier](Src/GBX.NET/Engines/Game/CGameCtnZoneFrontier.chunkl) | Yes | Yes
 | | FuncShader.Gbx | [CFuncShaderLayerUV](Src/GBX.NET/Engines/Func/CFuncShaderLayerUV.chunkl) | Yes | Yes
 | | TMTerrainModifier.Gbx | [CGameCtnDecorationTerrainModifier](Src/GBX.NET/Engines/Game/CGameCtnDecorationTerrainModifier.chunkl) | Yes | Yes
-| | MotionManagerWeathers.Gbx | [CPlugWeatherModel](Src/GBX.NET/Engines/Plug/CPlugWeatherModel.chunkl) | Up to TMUF | Yes
+| | MotionManagerWeathers.Gbx | [CPlugWeatherModel](Src/GBX.NET/Engines/Plug/CPlugWeatherModel.chunkl) | Up to TM2 | Up to TM2
 | | RallyLeafManager.Gbx | [CMotionManagerLeaves](Src/GBX.NET/Engines/Motion/CMotionManagerLeaves.chunkl) | Yes | Yes
 | | GameSkin.Gbx | [CPlugGameSkin](Src/GBX.NET/Engines/Plug/CPlugGameSkin.chunkl) | Yes | Yes
 | | VehicleTunings.Gbx | [CPlugVehiclePhyTunings](Src/GBX.NET/Engines/Plug/CPlugVehiclePhyTunings.chunkl) | Up to TM2 | Up to TM2
@@ -48,6 +48,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | CtrlCamTmRace2.Gbx | [CGameControlCameraTrackManiaRace2](Src/GBX.NET/Engines/TrackMania/CGameControlCameraTrackManiaRace2.chunkl) | Yes | Yes
 | | CtrlCamTmRace3.Gbx | [CGameControlCameraTrackManiaRace3](Src/GBX.NET/Engines/TrackMania/CGameControlCameraTrackManiaRace3.chunkl) | Yes | Yes
 | | DecoSolid.Gbx | [CPlugDecoratorSolid](Src/GBX.NET/Engines/CPlug/CPlugDecoratorSolid.chunkl) | Yes | Yes
+| | FuncKeysReals.Gbx | [CFuncKeysReal](Src/GBX.NET/Engines/Func/CFuncKeysReal.chunkl) | Yes | Yes
 | | TrackManiaVehicle.Gbx | [CSceneVehicleCar](Src/GBX.NET/Engines/Scene/CSceneVehicleCar.chunkl) | Only TMUF | Only TMUF
 | TMVehicle.Gbx | ConstructionVehicle.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | ParticleModel.Gbx | [CPlugParticleEmitterModel](Src/GBX.NET/Engines/CPlug/CPlugParticleEmitterModel.chunkl) | Up to TMUF | Up to TMUF
@@ -57,12 +58,17 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | AmbientOcc.Gbx | [CHmsAmbientOcc](Src/GBX.NET/Engines/Hms/CHmsAmbientOcc.chunkl) | Yes | Yes
 | | ObjectInfo.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes
-| | Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.cs) | Yes | Yes
-| | Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.cs) | Up to TM2 | No
-| | Shader.Gbx | [CPlugShader](Src/GBX.NET/Engines/Plug/CPlugShader.cs) | Up to TMUF | No
-| | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.cs) | Up to TMUF | No
-| | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.cs) | Yes | Yes
-| | Prefab.Gbx | [CPlugPrefab](Src/GBX.NET/Engines/Plug/CPlugPrefab.cs) | Yes | Yes
-| | Wagon.Gbx | [CPlugTrainWagonModel](Src/GBX.NET/Engines/Plug/CPlugTrainWagonModel.cs) | Yes | Yes
+| | Sound.Gbx | [CPlugSound](Src/GBX.NET/Engines/Plug/CPlugSound.chunkl) | Yes | Yes
+| | Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.chunkl) | Yes | Yes
+| | AudioEnvironment.Gbx | [CPlugAudioEnvironment](Src/GBX.NET/Engines/Plug/CPlugAudioEnvironment.chunkl) | Yes | Yes
+| | Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.chunkl) | Up to TM2 | Up to TM2
+| | Shader.Gbx | [CPlugShader](Src/GBX.NET/Engines/Plug/CPlugShader.chunkl) | Up to TM2 | Up to TM2
+| | Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.chunkl) | Up to TM2 | Up to TM2
+| | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.chunkl) | Yes | Yes
+| | Prefab.Gbx | [CPlugPrefab](Src/GBX.NET/Engines/Plug/CPlugPrefab.chunkl) | Yes | Yes
+| | Wagon.Gbx | [CPlugTrainWagonModel](Src/GBX.NET/Engines/Plug/CPlugTrainWagonModel.chunkl) | Yes | Yes
+| | Armor.Gbx | [CGameArmorModel](Src/GBX.NET/Engines/GameData/CGameArmorModel.chunkl) | Yes | Yes
+| | Gate.Gbx | [CGameGateModel](Src/GBX.NET/Engines/GameData/CGameGateModel.chunkl) | Yes | Yes
+| | GameAdvertisement.Gbx | [CGameAdvertising](Src/GBX.NET/Engines/Game/CGameAdvertising.chunkl) | Yes | Yes
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.

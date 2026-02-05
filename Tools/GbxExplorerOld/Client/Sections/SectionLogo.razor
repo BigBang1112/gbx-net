@@ -31,9 +31,9 @@
         branch = ThisAssembly.Git.Branch;
         commit = ThisAssembly.Git.Commit;
 
-        if (branch is "master" or "HEAD")
+        if (branch is "master" or "main" or "HEAD")
         {
-            version = ThisAssembly.Git.Tag;
+            version = typeof(GBX.NET.Gbx).Assembly.GetName().Version?.ToString(3);
         }
     }
 }

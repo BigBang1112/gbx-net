@@ -1,0 +1,196 @@
+﻿.section-editor-overlay {
+    gap: 1rem; background: #282828;
+    display: grid;
+    grid-template-columns: auto calc(100% - 200px);
+    grid-template-rows: 100%;
+}
+
+.editor-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2.5rem minmax(auto, calc(100% - 15% - 3 * 1rem - 2 * 2.5rem)) 2.5rem 15%;
+    gap: 1rem;
+}
+
+.notes-wrapper {
+    /*width: 15%;*/
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 20px 0;
+}
+
+.notes-header {
+    text-align: center;
+}
+
+.note-card {
+
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.2rem;
+    background: #1e1e1e;
+    margin: 0.1rem;
+    min-height: 30px;
+    text-overflow: ellipsis;
+    text-wrap-mode: nowrap;
+    overflow: hidden;
+}
+
+.note-card.hoverable:hover {
+    background: #3b3a3a;
+}
+.note-card > img {
+    height: 24px;
+    cursor: pointer;
+}
+
+.selected-note {
+    display: flex;
+    align-items: center;
+}
+
+.selected-note input {
+    height: 100%;
+    width: 100%;
+    background: #1e1e1e;
+    border: none;
+    color: white;
+}
+
+.editor-controls, .output-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.editor-tip {
+    color: #cccccc;
+    margin: auto;
+}
+
+.run-button {
+    background-color: green;
+}
+
+.close-button {
+    background-color: red;
+}
+
+.clear-button {
+    background-color: grey;
+}
+
+.output-header {
+    margin: auto 0;
+}
+
+.output-area {
+    background-color: #1e1e1e;
+    font-family: monospace;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+}
+
+.syserr {
+    color: red;
+}
+
+.dll-options {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 70vh;
+}
+
+.editor-tree {
+    grid-row: span 3
+}
+
+::deep .section-node-tree-explorer {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+}
+
+::deep .section-gbx-list {
+    grid-column: span 1 !important;
+    grid-row: span 2 !important;
+}
+
+::deep .section-node-tree-explorer > div:last-child {
+    padding: 0 0 0 0.2rem !important;
+}
+
+.with-tree {
+    grid-template-columns: 60% 40%;
+    width: calc(100% - 2rem);
+}
+
+.with-tree .editor-controls {
+    grid-column: span 2;
+}
+
+
+.without-tree {
+    grid-template-columns: 100%;
+    width: calc(100% - 1rem);
+}
+
+.import-wrapper {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+::deep .section-import-gbx {
+    height: 70%;
+}
+
+.export-wrapper {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    cursor: pointer;
+}
+
+.export-notes-container {
+    width: fit-content;
+    margin: auto;
+}
+
+.shortcuts-list li{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.sample_list {
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.sample_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    
+}

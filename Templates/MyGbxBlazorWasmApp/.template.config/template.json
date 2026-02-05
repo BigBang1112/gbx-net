@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "BigBang1112",
+  "classifications": [
+    "Blazor",
+    "Utility",
+    "GBX.NET"
+  ],
+  "identity": "GBX.NET.Templates.BlazorWasmApp",
+  "name": "GBX.NET Blazor WebAssembly App",
+  "shortName": "gbxblazorwasm",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MyGbxBlazorWasmApp",
+  "description": "A simple GBX.NET Blazor WebAssembly app to work with a Gbx file.",
+  "symbols": {
+    "EnableLzo": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "displayName": "Enable Gbx body read/write and other LZO features",
+      "description": "LZO is required for full Gbx reading and writing. Be aware that LZO is GNU GPL v3 licensed."
+    },
+    "EnableZlib": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable ghost samples, lightmap data, and other zlib features"
+    },
+    "EnableCrc32": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Improve MapUid modification support and other CRC32 features",
+      "description": "Changing the MapUid or HashedPassword of a map without calculating its CRC32 can open the password prompt. Enable this to fix this problem."
+    }
+  }
+}

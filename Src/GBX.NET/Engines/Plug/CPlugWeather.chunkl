@@ -51,7 +51,7 @@ CPlugWeather 0x0917E000
  CPlugFileImg ImageSeaColor (external)
 
 0x016
- CPlugClouds Clouds
+ CPlugClouds Clouds (external)
 
 0x017
- GxFogBlender FogBlender
+ GxFogBlender FogBlender (external)

@@ -1,0 +1,18 @@
+﻿.dialog {
+    background-color: #333;
+    color: var(--text-normal);
+    border: 1px solid #666;
+}
+
+.dialog_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.close-dialog {
+    margin: auto;
+}
+
+.close-form {
+}

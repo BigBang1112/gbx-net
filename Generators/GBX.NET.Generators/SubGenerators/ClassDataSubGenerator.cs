@@ -159,60 +159,6 @@ internal class ClassDataSubGenerator
         AppendEnumsLine(sb, classInfo, context);
 
         sb.AppendLine();
-        sb.Append("    public static ");
-
-        if (classInfo.Name != "CMwNod")
-        {
-            sb.Append("new ");
-        }
-
-        sb.AppendLine("IClass? New(uint classId) => classId switch");
-        sb.AppendLine("    {");
-
-        if (!classInfo.IsAbstract)
-        {
-            sb.Append("        0x");
-            sb.Append(classInfo.Id.GetValueOrDefault().ToString("X8"));
-            sb.Append(" => new ");
-            sb.Append(classInfo.Name);
-            sb.AppendLine("(),");
-        }
-
-        RecurseInheritanceInverted(classInfo.Name, []);
-
-        void RecurseInheritanceInverted(string name, HashSet<uint> alreadyAddedInheritance)
-        {
-            if (!inheritanceInverted.TryGetValue(name, out var classes))
-            {
-                return;
-            }
-
-            foreach (var classIdAndDataModel in classes)
-            {
-                if (alreadyAddedInheritance.Contains(classIdAndDataModel.Key))
-                {
-                    continue;
-                }
-
-                if (!classIdAndDataModel.Value.IsAbstract)
-                {
-                    sb.Append("        0x");
-                    sb.Append(classIdAndDataModel.Key.ToString("X8"));
-                    sb.Append(" => new ");
-                    sb.Append(classIdAndDataModel.Value.Name);
-                    sb.AppendLine("(),");
-                }
-
-                RecurseInheritanceInverted(classIdAndDataModel.Value.Name, alreadyAddedInheritance);
-            }
-        }
-
-
-        sb.AppendLine("        _ => null");
-
-        sb.AppendLine("    };");
-
-        sb.AppendLine();
 
         AppendChunkMethodsLine(sb, classInfo, existingMembers);
 

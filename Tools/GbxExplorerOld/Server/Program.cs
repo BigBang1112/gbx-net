@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.FileProviders;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using System.Net;
+using System.Reflection;
+using System.Runtime.Versioning;
+
+// ALERT
+// This project no longer works properly on .NET 10, prefer using just the client variant.
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,36 +76,63 @@ builder.Services.AddResponseCompression(options =>
     options.Providers.Add<GzipCompressionProvider>();
 });
 
+// Figures out HTTPS behind proxies
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+    foreach (var knownProxy in builder.Configuration.GetSection("KnownProxies").Get<string[]>() ?? [])
+    {
+        if (IPAddress.TryParse(knownProxy, out var ipAddress))
+        {
+            options.KnownProxies.Add(ipAddress);
+            continue;
+        }
+
+        foreach (var hostIpAddress in Dns.GetHostAddresses(knownProxy))
+        {
+            options.KnownProxies.Add(hostIpAddress);
+        }
+    }
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    var assembly = Assembly.GetExecutingAssembly();
+    var attr = assembly.GetCustomAttribute<TargetFrameworkAttribute>();
+    var version =  attr!.FrameworkName.Split('=')[1];
+    var netVersion = "net" + version.TrimStart('v');
+    var dllPath = Path.Combine(builder.Environment.ContentRootPath, "..", "Client", "bin", "Debug", netVersion);
+
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(dllPath),
+        RequestPath = "/refs",
+        ServeUnknownFileTypes = true,
+    });
     app.UseWebAssemblyDebugging();
+    app.UseForwardedHeaders();
 }
 else
 {
     app.UseExceptionHandler("/Error");
+    app.UseForwardedHeaders();
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-
-app.UseBlazorFrameworkFiles();
-app.UseStaticFiles();
-
 app.UseRouting();
 
-app.UseResponseCompression();
-
-app.UseForwardedHeaders(new()
+app.UseBlazorFrameworkFiles();
+app.UseStaticFiles(new StaticFileOptions
 {
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    ServeUnknownFileTypes = true,
 });
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();

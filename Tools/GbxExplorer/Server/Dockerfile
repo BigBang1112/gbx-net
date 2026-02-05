@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0-alpine AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
 ARG TARGETARCH=x64
 WORKDIR /src
@@ -33,7 +33,7 @@ RUN dotnet publish -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app --no-restore -
 
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/runtime-deps:9.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime-deps:10.0-alpine
 EXPOSE 8080
 EXPOSE 8081
 WORKDIR /app

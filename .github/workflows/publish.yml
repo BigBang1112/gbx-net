@@ -42,9 +42,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
+          10.0.x
           9.0.x
           8.0.x
-          6.0.x
           
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
@@ -53,16 +53,22 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true
+      run: dotnet build -c Release --no-restore -p:ContinuousIntegrationBuild=true
       
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
+      
+    - name: Pack templates
+      run: dotnet pack Templates -c Release --no-build --no-restore -p:ContinuousIntegrationBuild=true
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: build
-        path: Src/GBX.NET*/bin/Release/*.*nupkg
+        path: |
+          Src/GBX.NET*/bin/Release/*.*nupkg
+          Templates/bin/Release/*.*nupkg
+
   
   publish:    
     needs: build
@@ -70,18 +76,19 @@ jobs:
     strategy:
       matrix:
         lib:
-        - GBX.NET
-        - GBX.NET.Hashing
-        - GBX.NET.Imaging
-        - GBX.NET.Imaging.SkiaSharp
-        - GBX.NET.Imaging.ImageSharp
-        - GBX.NET.LZO
-        - GBX.NET.ZLib
-        - GBX.NET.NewtonsoftJson
-        - GBX.NET.Tool
-        - GBX.NET.Tool.CLI
-        - GBX.NET.Crypto
-        - GBX.NET.PAK
+        - Src/GBX.NET
+        - Src/GBX.NET.Hashing
+        - Src/GBX.NET.Imaging
+        - Src/GBX.NET.Imaging.SkiaSharp
+        - Src/GBX.NET.Imaging.ImageSharp
+        - Src/GBX.NET.LZO
+        - Src/GBX.NET.ZLib
+        - Src/GBX.NET.NewtonsoftJson
+        - Src/GBX.NET.Tool
+        - Src/GBX.NET.Tool.CLI
+        - Src/GBX.NET.Crypto
+        - Src/GBX.NET.PAK
+        - Templates
     
     name: Publish ${{ matrix.lib }}
     runs-on: ubuntu-latest
@@ -123,7 +130,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set release information
         run: |
-          FINAL_BODY="Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+          FINAL_BODY="${RELEASE_BODY}
           
-          ${MESSAGE}"
+          Assets were automatically generated using the [publish workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})."
           gh release edit ${{ github.ref_name }} -n "$FINAL_BODY"

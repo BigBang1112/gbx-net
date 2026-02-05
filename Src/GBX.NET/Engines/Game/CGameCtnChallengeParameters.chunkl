@@ -80,3 +80,5 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
  string MapType
  string MapStyle
  bool IsValidatedForScriptModes
+
+0x00F (skippable) // race validate ghost TM2020

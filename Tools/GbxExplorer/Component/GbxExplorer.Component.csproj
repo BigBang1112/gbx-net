@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
@@ -13,8 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BlazorMonaco" Version="3.3.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+        <PackageReference Include="BlazorMonaco" Version="3.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.2" />
     </ItemGroup>
 
     <ItemGroup>

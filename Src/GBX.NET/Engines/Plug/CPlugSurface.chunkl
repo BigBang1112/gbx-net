@@ -13,15 +13,18 @@ archive SurfMaterial
 
 archive Sphere
  float Size
- ushort U02
+ v1+
+  short SurfaceIndex // Only relevant for TM2+
 
 archive Ellipsoid
  vec3 Size
- ushort U02
+ v1+
+  short SurfaceIndex // Only relevant for TM2+
 
 archive Box
  boxaligned Transform
- ushort U02
+ v1+
+  short SurfaceIndex // Only relevant for TM2+
 
 enum MaterialId
  Concrete

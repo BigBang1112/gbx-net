@@ -20,7 +20,7 @@ CGameCtnDecorationMood 0x0303A000
  bool BackgroundIsLocallyLighted
 
 0x003
- bool
+ bool SolidLightAreSkinned
 
 0x004
  CHmsLightMap HmsLightMap (external)

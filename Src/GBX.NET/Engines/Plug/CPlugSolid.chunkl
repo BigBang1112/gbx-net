@@ -88,7 +88,7 @@ CPlugSolid 0x09005000
   rect U06
   int2 U07 // sprite count def
   v1+
-   box U08
+   box[] U08
  v2+
   filetime? FileWriteTime
 
@@ -105,6 +105,10 @@ CPlugSolid 0x09005000
    iso4[]
    v3+
     string
+    v4+
+     int
+     v5+
+      CPlugPath
 
 0x01A (skippable, ignore) // lod normal map
 

@@ -61,6 +61,19 @@ CPlugMaterialCustom 0x0903A000
  if U01 == 0
   string
   string
+  v2+
+   string
+   string
+
+0x016
+ version
+ ulong U01
+ ulong U02
+ v1+
+  int U03
+ if (U01 & 1) != 0
+  short U04
+  short U05
 
 archive Bitmap
  id Name

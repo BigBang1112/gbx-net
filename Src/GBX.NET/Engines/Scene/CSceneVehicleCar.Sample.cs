@@ -16,7 +16,7 @@ public partial class CSceneVehicleCar
         public float Brake { get; set; }
         public float U09_U10_1 => Gas + Brake; // clamped between 0-1
         public bool U09_U10_2 => Gas < Brake;
-        public byte U11 { get; set; }
+        public float U11 { get; set; }
         public byte U12 { get; set; }
         public float U13 { get; set; }
         public float U14 { get; set; }
@@ -31,18 +31,63 @@ public partial class CSceneVehicleCar
         public float RLDampenLen { get; set; }
         public CPlugSurface.MaterialId RLGroundContactMaterial { get; set; }
         public byte U25 { get; set; }
-        public int Horn { get; set; }
-        public bool IsTurbo { get; set; }
-        public float U26 { get; set; }
+        public byte U25_1 => (byte)(U25 & 7);
+
+        /// <summary>
+        /// Horn counter that loops around after reaching number 3.
+        /// </summary>
+        public byte Horn => (byte)((U25 >> 3) & 3);
+
+        public byte U25_3 => (byte)((U25 >> 5) & 3);
+        public bool U25_4 => (U25 >> 7) != 0;
+        public byte U26 { get; set; }
+        public bool FLIsSliding
+        {
+            get => (U26 & 0x40) != 0;
+            set
+            {
+                if (value) U26 |= 0x40;
+                else U26 &= 0xBF; // 0b10111111
+            }
+        }
+
+        public bool FLOnGround => (U26 & 0x80) != 0;
         public byte U27 { get; set; }
-        public float U27_1 => (U27 & 1) == 0 ? 0 : 1f;
-        public bool U27_2 => Convert.ToBoolean((U27 >> 1) & 1);
-        public float U27_3 => (U27 & 4) == 0 ? 0 : 1f;
-        public bool U27_4 => Convert.ToBoolean((U27 >> 3) & 1);
-        public float U27_5 => (U27 & 0x10) == 0 ? 0 : 1f;
-        public bool U27_6 => Convert.ToBoolean((U27 >> 5) & 1);
-        public int U27_7 => U27 >> 7;
-        public float U27_8 => ((U27 & 0x40) == 0 ? -1f : 1f) * 5000f;
+        public bool FRIsSliding
+        {
+            get => (U27 & 0x01) != 0;
+            set
+            {
+                if (value) U27 |= 0x01;
+                else U27 &= 0xFE; // 0b11111110
+            }
+        }
+
+        public bool FROnGround => (U27 & 0x02) != 0;
+        public bool RRIsSliding
+        {
+            get => (U27 & 0x04) != 0;
+            set
+            {
+                if (value) U27 |= 0x04;
+                else U27 &= 0xFB; // 0b11111011
+            }
+        }
+
+        public bool RROnGround => (U27 & 0x08) != 0;
+        public bool RLIsSliding
+        {
+            get => (U27 & 0x10) != 0;
+            set
+            {
+                if (value) U27 |= 0x10;
+                else U27 &= 0xEF; // 0b11101111
+            }
+        }
+
+        public bool RLOnGround => (U27 & 0x20) != 0;
+        public bool U27_7 => (U27 & 0x40) != 0;
+        public bool U27_8 => (U27 & 0x80) != 0;
         public float? DirtBlend { get; set; }
         public Vec4? U33 { get; set; }
         public Vec4? U34 { get; set; }
@@ -68,13 +113,53 @@ public partial class CSceneVehicleCar
         {
             // CHmsDynaReplayItem::RestoreDynaItemState
 
+
             // HmsStateVersion == 0 (EHmsDynaItemSaveStateVersion_TmNetworkAfter260205)
             // Position 9-byte Vec3
             // Rotation = r.ReadQuat6();
 
             // HmsStateVersion == 1 (EHmsDynaItemSaveStateVersion_TmReplayAfter260205)
-            Position = r.ReadVec3();
+            Position = version == 13 ? r.ReadVec3_9() : r.ReadVec3();
             Rotation = r.ReadQuat6();
+
+            if (version == 13)
+            {
+                // SVehicleSimpleNetState::ToVehicle
+                FLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                FRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                RRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                RLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+
+                var netData = r.ReadUInt16();
+
+                Brake = netData >> 1 & 1;
+
+                var isSliding = (netData >> 2 & 1) != 0;
+                FLIsSliding = isSliding;
+                FRIsSliding = isSliding;
+                RRIsSliding = isSliding;
+                RLIsSliding = isSliding;
+
+                // Calculate RPM
+                var min = 100f; // guessed cuz its stored by vehicle
+                var max = 11000f; // guessed cuz its stored by vehicle
+                var ratio = min / max; // min/max rpm i guess
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                var powRatio = MathF.Pow(ratio, 3.0f);
+#else
+                var powRatio = Math.Pow(ratio, 3.0f);
+#endif
+                var normalizedValue = (netData >> 9) / 127.0f;
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+#else
+                var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+#endif
+                rpmValue *= max;
+                RPM = (float)rpmValue;
+                return;
+            }
+
             Velocity = r.ReadVec3_4();
             AngularVelocity = r.ReadVec3_4();
 
@@ -103,7 +188,7 @@ public partial class CSceneVehicleCar
                 Gas = r.ReadByte() / 255f;
                 Brake = r.ReadByte() / 255f;
 
-                U11 = r.ReadByte(); // it should be always 0 but sometimes it isnt
+                U11 = r.ReadByte() / 255f;
 
                 if (version >= 8)
                 {
@@ -137,13 +222,8 @@ public partial class CSceneVehicleCar
 
                 if (version >= 8)
                 {
-                    U25 = r.ReadByte(); // first 3 bits are relevant
-                    Horn = U25 & 3;
-                    IsTurbo = (U25 & 128) != 0;
-
-                    U26 = (r.ReadByte() & 0x40) == 0 ? 0 : 1;
-                    // (this->U26 >> 7)
-
+                    U25 = r.ReadByte();
+                    U26 = r.ReadByte();
                     U27 = r.ReadByte(); // similar to U26, some form of flags
 
                     if (version >= 9)
@@ -198,6 +278,7 @@ public partial class CSceneVehicleCar
                                     }
                                 }
 
+                                // count is broken in specific cases like the last sample of a ghost
                                 var count = u35 >> 2 & 7;
 
                                 if (version == 11 && count > 4)

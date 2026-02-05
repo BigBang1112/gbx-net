@@ -1,0 +1,27 @@
+﻿@inject IJSRuntime JS
+
+<button class="button @(CssClass ?? "")" @onclick="OpenDialog">@ButtonText</button>
+<dialog class="dialog" @ref="dllDialog">
+    <div class="dialog_content">
+        <h3 style="text-align: center">@DialogTitle</h3>
+
+        @ChildContent
+
+        <form method="dialog" class="close-form">
+            <button type="submit" class="button close-dialog">Close</button>
+        </form>
+    </div>
+</dialog>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? DialogTitle { get; set; }
+    [Parameter] public string? ButtonText { get; set; }
+    [Parameter] public string? CssClass { get; set; }
+    private ElementReference? dllDialog;
+    
+    private async Task OpenDialog()
+    {
+        await JS.InvokeVoidAsync("dialogHelper.showModal", dllDialog);
+    }
+}

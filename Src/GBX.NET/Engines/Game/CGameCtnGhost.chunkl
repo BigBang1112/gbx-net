@@ -73,7 +73,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  string GhostNickname
 
-0x00E [TMU, TMF, MP3, TMT, MP4, TM2020]
+0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
 
 0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
  string GhostLogin
@@ -107,8 +107,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x019 (base: 0x011) [TMF] // validation TMUF
 
-0x01A (skippable) [MP3, TMT, MP4, TM2020]
- int
+0x01A (skippable) [MP3, TMT, MP4, TM2020] // checkpoint count
 
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
@@ -123,9 +122,14 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
-0x022 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array
+0x022 (skippable) [MP3, TMT, MP4, TM2020] // settings info
+ version
+ v1-
+  OldSettingsInfos[] OldSettings
+ v2+
+  SettingsInfos[] Settings
 
-0x023 (skippable) [MP3, TMT, MP4, TM2020]
+0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat data
  version
  string
  int
@@ -143,28 +147,47 @@ CGameCtnGhost 0x03092000 // A ghost.
    byte
    byte
 
-0x024 (skippable, ignore) [MP3, TMT, MP4, TM2020] // match replay separators
+0x024 (skippable) [MP3, TMT, MP4, TM2020] // match replay separators
+ version
+ MatchReplaySeparator[] MatchReplaySeparators
 
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020]
  uint128
 
-0x027 (skippable, ignore) [MP3, TMT, MP4, TM2020] // timed pixel array 2
+0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
+ version
+ CPlugTimedPixelArray[]
+ v1+
+  int[]
+  v3+
+   CPlugTimedPixelArray[]
 
 0x028 (skippable) [MP4, TM2020] // title id
 
-0x029 (skippable, ignore) [TM2020]
+0x029 (skippable) [TM2020]
+ version
+ int
+ string
+ string
+ string
 
-0x02A (skippable, ignore) [TM2020]
+0x02A (skippable) [TM2020]
+ int
+ int
 
 0x02B (skippable, ignore) [TM2020]
 
-0x02C (skippable, ignore) [TM2020]
+0x02C (skippable) [TM2020]
+ version
+ unixtime? WalltimeStartTimestamp
+ unixtime? WalltimeEndTimestamp
 
-0x02D (skippable, ignore) [TM2020]
+0x02D (skippable) [TM2020]
 
-0x02E (skippable, ignore) [TM2020]
+0x02E (skippable) [TM2020]
+ string
 
 archive PlayerInputData
  int<EVersion> Version // 8 in ShootMania, 12 in TM2020
@@ -193,4 +216,27 @@ archive Checkpoint
   float? Speed
  v1=
   int? StuntsScore
-  
+ 
+archive OldSettingsInfos
+ int
+ int
+ int
+
+archive SettingsInfos
+ bool
+ bool
+ byte
+ bool
+ float
+ bool
+ float
+ float[]
+ string
+ v3+
+  int3
+  v4+
+   float
+
+archive MatchReplaySeparator
+ int
+ int

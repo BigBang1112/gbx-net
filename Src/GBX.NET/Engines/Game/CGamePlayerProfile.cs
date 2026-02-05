@@ -2,11 +2,17 @@
 
 public partial class CGamePlayerProfile
 {
-    private string? profileDescription;
-    public string? ProfileDescription { get => profileDescription; set => profileDescription = value; }
+    private string? description;
+    public string? Description { get => description; set => description = value; }
 
     private UInt128 cryptedPassword;
     public UInt128 CryptedPassword { get => cryptedPassword; set => cryptedPassword = value; }
+
+    private bool loginValidated;
+    public bool LoginValidated { get => loginValidated; set => loginValidated = value; }
+
+    private bool rememberOnlinePassword;
+    public bool RememberOnlinePassword { get => rememberOnlinePassword; set => rememberOnlinePassword = value; }
 
     public partial class Chunk0308C068
     {
@@ -59,10 +65,10 @@ public partial class CGamePlayerProfile
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.String(ref U01);
-            rw.String(ref n.profileDescription);
+            rw.String(ref n.description);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
-            rw.String(ref U04);
+            rw.String(ref n.onlineLogin);
             rw.Int32(ref U05);
 
             if (U05 != 0)
@@ -73,8 +79,8 @@ public partial class CGamePlayerProfile
 
             rw.String(ref U07);
             rw.String(ref U08);
-            rw.Boolean(ref U09);
-            rw.Boolean(ref U10);
+            rw.Boolean(ref n.loginValidated);
+            rw.Boolean(ref n.rememberOnlinePassword);
             rw.String(ref U11);
             rw.String(ref U12);
         }

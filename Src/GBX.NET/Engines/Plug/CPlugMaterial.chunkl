@@ -7,6 +7,9 @@ CPlugMaterial 0x09079000
 0x002
  int
 
+0x004
+ DeviceMat[] DeviceMaterials (version: 0x004)
+
 0x007
  CPlugMaterialCustom CustomMaterial
 
@@ -35,6 +38,33 @@ CPlugMaterial 0x09079000
 0x013 (skippable, ignore)
 
 0x014 (skippable, ignore)
+
+0x015
+ version
+ CPlug Shader (external)
+ if Shader == null && ShaderFile == null
+  DeviceMat[] DeviceMaterials (version: 0x015)
+  int[]
+  v3+
+   int
+ if Shader != null || ShaderFile != null
+  CPlugMaterialColorTargetTable[]
+  v7+
+   CMwNod
+
+0x016
+ version
+ uint
+
+0x017
+ version
+ uint
+ v1+
+  int
+  int
+  string
+
+0x019 (skippable, ignore)
 
 archive DeviceMat
  short

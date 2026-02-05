@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
 [![Discord](https://img.shields.io/discord/1012862402611642448?style=for-the-badge&logo=discord)](https://discord.gg/tECTQcAWC9)
 
-A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 350+ Gbx classes.
+A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 400+ Gbx classes.
 
 For more details, see the main README.
 
@@ -11,9 +11,9 @@ For more details, see the main README.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
+- .NET 10
 - .NET 9
 - .NET 8
-- .NET 6
 - .NET Standard 2.0
 
 You can still use GBX.NET 2 on the old .NET Framework, but the performance of the library could be degraded.
@@ -187,7 +187,7 @@ Some of the common types to start with (a lot more are supported):
 
 Many *essential* Gbx files from many games are supported:
 
-- **Trackmania (2020)**, December 2024 update
+- **Trackmania (2020)**, January 2026 update
 - **ManiaPlanet 4**(.1), TM2/SM
 - **Trackmania Turbo**
 - ManiaPlanet 3, TM2/SM

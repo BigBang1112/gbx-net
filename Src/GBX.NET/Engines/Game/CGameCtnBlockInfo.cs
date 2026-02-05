@@ -39,7 +39,6 @@ public partial class CGameCtnBlockInfo
 
     public partial class Chunk0304E005
     {
-        public string? U01;
         public int U02;
         public int U03;
         public int U04;
@@ -52,7 +51,7 @@ public partial class CGameCtnBlockInfo
         public override void Read(CGameCtnBlockInfo n, GbxReader r)
         {
             // ChunkCrypted_Base
-            U01 = r.ReadId(); // Ident.Id but why it's in CGameCtnBlockInfo?? xd
+            n.Ident = n.Ident with { Id = r.ReadId() }; // Ident.Id but why it's in CGameCtnBlockInfo?? xd
             U02 = r.ReadInt32(); // always 0?
             U03 = r.ReadInt32(); // always 0?
             U04 = r.ReadInt32(); // always 0?
@@ -87,7 +86,7 @@ public partial class CGameCtnBlockInfo
         public override void Write(CGameCtnBlockInfo n, GbxWriter w)
         {
             // ChunkCrypted_Base
-            w.WriteIdAsString(U01);
+            w.WriteIdAsString(n.Ident.Id);
             w.Write(U02);
             w.Write(U03);
             w.Write(U04);

@@ -5,8 +5,8 @@
  string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 
 0x038
- string
- string
+ string CurrentSoloPlaylistName
+ string CurrentSoloPlaylistPath
  bool
  vec3
  vec3
@@ -40,13 +40,13 @@
  systemtime
 
 0x041
- bool
+ bool AutoConnect
 
 0x043
  VehicleProfile[] VehicleProfiles
 
 0x044
- bool
+ bool IsShowPlayerGhost
 
 0x047
  CGameNetOnlineMessage[]_deprec
@@ -82,22 +82,25 @@
 0x053
  string
 
-0x054 (base: 0x044)
+0x054
+ bool
 
 0x056
  version
  CGameBuddy[] Buddies
 
-0x058 (base: 0x044)
+0x058
+ bool AskOpponents
 
-0x059 (base: 0x044)
+0x059
+ bool LockHigherDifficulties
 
 0x05A (skippable)
  float
 
 0x05B
- string
- string
+ string ProfileName
+ string NickName
  id
  int
  int
@@ -121,15 +124,15 @@
  CInputBindingsConfig BindingsForCompatConfig
 
 0x063 (skippable)
- bool
- bool
- bool
- bool
+ bool EnableChat
+ bool EnableAvatars
+ bool EnableCarSkinGeom
+ bool EnableUnlimitedHorns
  float
  float
  float
  bool
- bool
+ bool UnlockAllCheat
  bool
 
 0x064 // PlayerTagsConfig
@@ -140,7 +143,8 @@
 0x065
  int
 
-0x066 (base: 0x044)
+0x066
+ bool
 
 0x068
 
@@ -255,8 +259,8 @@ archive VehicleProfile
  float
 
 archive PlayerTagConfig
- string
- bool
+ string TagId
+ bool IsVisibleByOtherPlayers
 
 archive ChallengeOpponent
  byte U01
