@@ -357,6 +357,8 @@ CGameCtnChallenge 0x03043000 // A map.
  version
  byte<PaletteColor> Palette
 
+0x3F001000 (skippable)
+
 0x3F001001 (skippable)
 
 0x3F001002 (skippable, base: 0x3F001001)

@@ -2155,63 +2155,6 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    public partial class Chunk03043055
-    {
-        public Chunk3F001001? UnlimiterChunk;
-
-        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
-        {
-            // empty, sets classic clips to true?
-            // if unskippable = odd unlimiter chunk
-
-            if (UnlimiterChunk is null)
-            {
-                return;
-            }
-
-            if (rw.Reader is not null)
-            {
-                UnlimiterChunk.Version = rw.Reader.ReadByte() switch
-                {
-                    1 => 4,
-                    2 => 5,
-                    _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
-                };
-            }
-
-            rw.Writer?.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
-
-            UnlimiterChunk.DecorationOffset = rw.Int3((Int3)UnlimiterChunk.DecorationOffset);
-            UnlimiterChunk.SkyDecorationVisibility = rw.Boolean(UnlimiterChunk.SkyDecorationVisibility, asByte: true);
-
-            if (rw.Reader is not null)
-            {
-                var blockCount = rw.Reader.ReadInt32();
-                var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
-
-                if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
-
-                for (var i = 0; i < blockCount; i++)
-                {
-                    var block = n.blocks[rw.Reader.ReadInt32()];
-                    var overOverSizeChunk = rw.Reader.ReadByte3();
-                    var isInverted = rw.Reader.ReadBoolean(asByte: true);
-                    var blockOffset = rw.Reader.ReadInt3();
-                    var blockRotation = rw.Reader.ReadByte3();
-
-                    blocks[i] = (block, overOverSizeChunk, isInverted, blockOffset, blockRotation);
-                }
-
-                var mediaClipMappingCount = rw.Reader.ReadUInt32();
-
-                if (mediaClipMappingCount > 0)
-                {
-                    throw new NotSupportedException("Media clip mapping count > 0 is not supported atm.");
-                }
-            }
-        }
-    }
-
     public partial class Chunk0304305B : IVersionable
     {
         public int Version { get; set; }

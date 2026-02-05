@@ -4,6 +4,171 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnChallenge
 {
+    public partial class Chunk03043055
+    {
+        public Chunk3F001001? UnlimiterChunk;
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            // empty, sets classic clips to true?
+            // if unskippable = odd unlimiter chunk
+
+            if (UnlimiterChunk is null)
+            {
+                return;
+            }
+
+            if (rw.Reader is not null)
+            {
+                UnlimiterChunk.Version = rw.Reader.ReadByte() switch
+                {
+                    1 => 4,
+                    2 => 5,
+                    _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
+                };
+            }
+
+            rw.Writer?.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
+
+            UnlimiterChunk.DecorationOffset = rw.Int3((Int3)UnlimiterChunk.DecorationOffset);
+            UnlimiterChunk.SkyDecorationVisibility = rw.Boolean(UnlimiterChunk.SkyDecorationVisibility, asByte: true);
+
+            if (rw.Reader is not null)
+            {
+                var blockCount = rw.Reader.ReadInt32();
+                var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
+
+                if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
+
+                for (var i = 0; i < blockCount; i++)
+                {
+                    var block = n.blocks[rw.Reader.ReadInt32()];
+                    var overOverSizeChunk = rw.Reader.ReadByte3();
+                    var isInverted = rw.Reader.ReadBoolean(asByte: true);
+                    var blockOffset = rw.Reader.ReadInt3();
+                    var blockRotation = rw.Reader.ReadByte3();
+
+                    blocks[i] = (block, overOverSizeChunk, isInverted, blockOffset, blockRotation);
+                }
+
+                var mediaClipMappingCount = rw.Reader.ReadUInt32();
+
+                if (mediaClipMappingCount > 0)
+                {
+                    throw new NotSupportedException("Media clip mapping count > 0 is not supported atm.");
+                }
+            }
+        }
+    }
+
+    public partial class Chunk3F001000 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public int U01;
+
+        private enum BlockFlags : ushort
+        {
+            IsOutsideBoundaries = 1 << 0,
+            IsMoved = 1 << 1,
+            IsRotated = 1 << 2,
+            IsScaled = 1 << 3,
+            IsInverted = 1 << 4,
+            IsVanillaTerrain = 1 << 5,
+            IsSpawnPointFixEnabled = 1 << 6,
+            IsDynamic = 1 << 7,
+            IsInvisible = 1 << 8,
+            IsCollisionDisabled = 1 << 9,
+            IsClassicMode = 1 << 10,
+            IsClassicTerrain = 1 << 11,
+            HasIdentifier = 1 << 14,
+            Reserved = 1 << 15,
+        }
+
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
+            using var ms = new MemoryStream(Decrypt(r.ReadToEnd()));
+            using var decryptedReader = new GbxReader(ms);
+            decryptedReader.LoadFrom(r);
+            ReadDecrypted(n, decryptedReader);
+        }
+
+        private void ReadDecrypted(CGameCtnChallenge n, GbxReader r)
+        {
+            var challengeFlags = r.ReadUInt16();
+            var blockCount = r.ReadInt32();
+
+            if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
+
+            for (var i = 0; i < blockCount; i++)
+            {
+                var block = n.blocks![r.ReadInt32()];
+                var flags = (BlockFlags)r.ReadUInt16();
+
+                if (flags.HasFlag(BlockFlags.IsOutsideBoundaries))
+                {
+                    var internalOverOverSizeChunkX = r.ReadByte();
+                    var internalOverOverSizeChunkY = r.ReadByte();
+                    var internalOverOverSizeChunkZ = r.ReadByte();
+                }
+
+                /*blockData.InternalIsInverted = blockFlags.HasFlag(BlockFlags.IsInverted);
+                blockData.InternalIsDynamic = blockFlags.HasFlag(BlockFlags.IsDynamic);
+                blockData.InternalIsInvisible = blockFlags.HasFlag(BlockFlags.IsInvisible);
+                blockData.InternalIsCollisionDisabled = blockFlags.HasFlag(BlockFlags.IsCollisionDisabled);
+                blockData.InternalIsSpawnPointFixEnabled = blockFlags.HasFlag(BlockFlags.IsSpawnPointFixEnabled);*/
+
+                if (flags.HasFlag(BlockFlags.IsVanillaTerrain))
+                {
+                    continue;
+                }
+
+                if (flags.HasFlag(BlockFlags.IsMoved))
+                {
+                    var internalBlockOffset = r.ReadVec3();
+                }
+
+                if (flags.HasFlag(BlockFlags.IsRotated))
+                {
+                    var internalBlockRotation = r.ReadVec3();
+                }
+
+                if (flags.HasFlag(BlockFlags.IsScaled))
+                {
+                    var internalBlockScale = r.ReadVec3();
+                }
+
+                if (flags.HasFlag(BlockFlags.HasIdentifier))
+                {
+                    var internalBlockGroup = r.ReadString();
+                }
+            }
+
+            U01 = r.ReadInt32();
+        }
+
+        private static byte[] Decrypt(byte[] cryptedChunkData)
+        {
+            for (uint offset = 0; offset < cryptedChunkData.Length; offset++)
+            {
+                uint data = cryptedChunkData[offset];
+                uint hash = (uint)(cryptedChunkData.Length * ((cryptedChunkData.Length * 2) - offset));
+
+                hash ^= 0xEAD9C8B3;
+                hash += offset * 3 % 0x7F;
+
+                if (offset % 5 < 2)
+                {
+                    hash = ~hash;
+                }
+
+                cryptedChunkData[offset] = (byte)~(data ^ hash);
+            }
+
+            return cryptedChunkData;
+        }
+    }
+
     public partial class Chunk3F001001 : IVersionable
     {
         public int Version { get; set; }

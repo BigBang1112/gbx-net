@@ -115,7 +115,7 @@ public partial class CMwNod : IClass
                                 break;
                             }
 
-                            if (r.Settings.SafeSkippableChunks)
+                            if (r.Settings.SafeSkippableChunks || chunkId == 0x3F001000)
                             {
                                 var data = r.ReadBytes(chunkSize);
                                 using var ms = new MemoryStream(data);
