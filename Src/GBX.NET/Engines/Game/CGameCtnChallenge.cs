@@ -2155,14 +2155,6 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    public partial class Chunk03043055
-    {
-        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
-        {
-            // empty, sets classic clips to true?
-        }
-    }
-
     public partial class Chunk0304305B : IVersionable
     {
         public int Version { get; set; }

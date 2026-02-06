@@ -66,6 +66,13 @@ public partial class CMwNod : IClass
                 {
                     if (chunk is not null)
                     {
+                        if (chunk is CGameCtnChallenge.Chunk03043055 unlimiterChunk)
+                        {
+                            unlimiterChunk.TMUnlimiterChunk = new();
+                            r.BaseStream.Position -= 4;
+                            goto TMUnlimiter055;
+                        }
+
                         return;
                     }
 
@@ -108,7 +115,7 @@ public partial class CMwNod : IClass
                                 break;
                             }
 
-                            if (r.Settings.SafeSkippableChunks)
+                            if (r.Settings.SafeSkippableChunks || chunkId == 0x3F001000)
                             {
                                 var data = r.ReadBytes(chunkSize);
                                 using var ms = new MemoryStream(data);
@@ -200,6 +207,8 @@ public partial class CMwNod : IClass
 
                 continue;
             }
+
+            TMUnlimiter055:
 
             // Unskippable chunk
             if (r.Logger is not null)
