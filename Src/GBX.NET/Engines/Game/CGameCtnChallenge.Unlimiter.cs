@@ -8,56 +8,88 @@ public partial class CGameCtnChallenge
     {
         public Chunk3F001001? UnlimiterChunk;
 
-        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
-        {
-            // empty, sets classic clips to true?
-            // if unskippable = odd unlimiter chunk
+        // empty => sets classic clips to true? related to TMCanyon?
+        // if unskippable = odd unlimiter chunk
 
+        public override void Read(CGameCtnChallenge n, GbxReader r)
+        {
             if (UnlimiterChunk is null)
             {
                 return;
             }
 
-            if (rw.Reader is not null)
+            UnlimiterChunk.Version = r.ReadByte() switch
             {
-                UnlimiterChunk.Version = rw.Reader.ReadByte() switch
-                {
-                    1 => 4,
-                    2 => 5,
-                    _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
-                };
+                1 => 4,
+                2 => 5,
+                _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
+            };
+
+            UnlimiterChunk.DecorationOffset = r.ReadInt3();
+            UnlimiterChunk.SkyDecorationVisibility = r.ReadBoolean(asByte: true);
+
+            var blockCount = r.ReadInt32();
+            var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
+
+            if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
+
+            for (var i = 0; i < blockCount; i++)
+            {
+                var block = n.blocks[r.ReadInt32()];
+                var overOverSizeChunk = r.ReadByte3();
+                var isInverted = r.ReadBoolean(asByte: true);
+                var blockOffset = r.ReadInt3();
+                var blockRotation = r.ReadByte3();
+
+                blocks[i] = (block, overOverSizeChunk, isInverted, blockOffset, blockRotation);
             }
 
-            rw.Writer?.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
+            var mediaClipMappingCount = r.ReadUInt32();
 
-            UnlimiterChunk.DecorationOffset = rw.Int3((Int3)UnlimiterChunk.DecorationOffset);
-            UnlimiterChunk.SkyDecorationVisibility = rw.Boolean(UnlimiterChunk.SkyDecorationVisibility, asByte: true);
-
-            if (rw.Reader is not null)
+            for (var i = 0; i < mediaClipMappingCount; i++)
             {
-                var blockCount = rw.Reader.ReadInt32();
-                var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
+                var mediaClipIndex = r.ReadUInt32();
+                var resourceType = r.ReadByte();
 
-                if (n.blocks is null) throw new InvalidOperationException("Blocks are null.");
-
-                for (var i = 0; i < blockCount; i++)
+                switch (resourceType)
                 {
-                    var block = n.blocks[rw.Reader.ReadInt32()];
-                    var overOverSizeChunk = rw.Reader.ReadByte3();
-                    var isInverted = rw.Reader.ReadBoolean(asByte: true);
-                    var blockOffset = rw.Reader.ReadInt3();
-                    var blockRotation = rw.Reader.ReadByte3();
+                    case 0: // Parameter Set
+                        var parameterSet = new ParameterSet();
 
-                    blocks[i] = (block, overOverSizeChunk, isInverted, blockOffset, blockRotation);
-                }
+                        for (var parameterIndex = 0; parameterIndex < 4; parameterIndex++)
+                        {
+                            var catalogIndex = r.ReadByte();
+                            var functionIndex = r.ReadByte();
+                            var value = r.ReadSingle();
+                        }
 
-                var mediaClipMappingCount = rw.Reader.ReadUInt32();
-
-                if (mediaClipMappingCount > 0)
-                {
-                    throw new NotSupportedException("Media clip mapping count > 0 is not supported atm.");
+                        break;
+                    case 1: // Legacy Script
+                        var byteCode = r.ReadData();
+                        break;
+                    default: // Unknown
+                        throw new NotSupportedException($"Media clip mapping resource type {resourceType} not supported.");
                 }
             }
+
+            r.ReadUInt32(); // 0xFACADE01
+        }
+
+        public override void Write(CGameCtnChallenge n, GbxWriter w)
+        {
+            if (UnlimiterChunk is null)
+            {
+                return;
+            }
+
+            w.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
+
+            throw new NotSupportedException("Writing unlimiter chunk not supported.");
+        }
+
+        public record ParameterSet
+        {
+
         }
     }
 
