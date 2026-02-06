@@ -1,4 +1,5 @@
 ﻿#if NET5_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,6 +8,9 @@ namespace GBX.NET.Crypto;
 public static class RSAExtensions
 {
     // NOTE: This method is AI generated and will need some tweaking in the future
+#if NET8_0_OR_GREATER
+    [Experimental("GBXNET10101")]
+#endif
     public static byte[] PublicDecrypt(this RSA rsa, byte[] encryptedData, byte[] publicKeyData)
     {
         try
