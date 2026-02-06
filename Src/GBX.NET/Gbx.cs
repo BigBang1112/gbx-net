@@ -830,6 +830,41 @@ public partial class Gbx : IGbx
         return ParseClassId(fs, remap);
     }
 
+    public static async Task<bool> IsGbxAsync(Stream stream, CancellationToken cancellationToken = default)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+
+        var minimalData = new byte[5];
+#if NETSTANDARD2_0
+        var count = await stream.ReadAsync(minimalData, 0, minimalData.Length, cancellationToken);
+#else
+        var count = await stream.ReadAsync(minimalData, cancellationToken);
+#endif
+
+        if (count != minimalData.Length)
+        {
+            return false;
+        }
+
+        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        {
+            return false;
+        }
+
+        if (minimalData[4] != 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static async Task<bool> IsGbxAsync(string filePath, CancellationToken cancellationToken = default)
+    {
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await IsGbxAsync(fs, cancellationToken);
+    }
+
     public static bool IsGbx(Stream stream)
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
@@ -849,7 +884,7 @@ public partial class Gbx : IGbx
 
         if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
         {
-            throw new NotAGbxException();
+            return false;
         }
 
         if (minimalData[4] != 0)
@@ -858,6 +893,12 @@ public partial class Gbx : IGbx
         }
 
         return true;
+    }
+
+    public static bool IsGbx(string filePath)
+    {
+        using var fs = File.OpenRead(filePath);
+        return IsGbx(fs);
     }
 
     public static bool IsUncompressed(Stream stream)

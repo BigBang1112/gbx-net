@@ -13,4 +13,4 @@ Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.
 
 ## License
 
-GBX.NET.PAK library is GNU GPL v3 Licensed.
+GBX.NET.PAK library is MIT Licensed.

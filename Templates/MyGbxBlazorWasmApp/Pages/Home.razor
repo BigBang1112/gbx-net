@@ -1,0 +1,41 @@
+﻿@page "/"
+
+@using GBX.NET
+@using GBX.NET.Engines.Game
+@using TmEssentials
+
+<PageTitle>Home</PageTitle>
+
+<h1>Import any map:</h1>
+
+<InputFile OnChange="OnChange" />
+
+@if (map is not null)
+{
+    <p><strong>Name:</strong> @map.MapName</p>
+    <p><strong>Author:</strong> @(string.IsNullOrEmpty(map.AuthorNickname) ? map.AuthorLogin : TextFormatter.Deformat(map.AuthorNickname))</p>
+    <p><strong>Environment:</strong> @map.GetEnvironment()</p>
+}
+
+@code {
+    private CGameCtnChallenge? map;
+
+    private async Task OnChange(InputFileChangeEventArgs e)
+    {
+        foreach (var file in e.GetMultipleFiles(maximumFileCount: int.MaxValue))
+        {
+            // Currently, Blazor WebAssembly only supports async stream reading, while GBX.NET does not fully support async parsing.
+            // Therefore, it is necessary to read the entire file into a buffer first. This could be optimized in JS using 'await file.arrayBuffer()'.
+            var buffer = new byte[file.Size];
+            await file.OpenReadStream(maxAllowedSize: int.MaxValue).ReadExactlyAsync(buffer);
+
+            await using var ms = new MemoryStream(buffer);
+
+#if (EnableLzo)
+            map = await Gbx.ParseNodeAsync<CGameCtnChallenge>(ms);
+#else
+            map = Gbx.ParseHeaderNode<CGameCtnChallenge>(ms);
+#endif
+        }
+    }
+}

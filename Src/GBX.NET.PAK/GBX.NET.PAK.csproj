@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.PAK</PackageId>
-        <VersionPrefix>2.3.0</VersionPrefix>
+        <VersionPrefix>2.4.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,8 +11,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <PropertyGroup>

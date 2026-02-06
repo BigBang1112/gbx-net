@@ -18,6 +18,8 @@
   </Folder>
   <Folder Name="/Resources/">
     <File Path="Resources/BaseKeys.txt" />
+    <File Path="Resources/BaseKeys_TMU.txt" />
+    <File Path="Resources/BaseKeys_Vsk5.txt" />
     <File Path="Resources/ClassId.txt" />
     <File Path="Resources/ClassIdManual.txt" />
     <File Path="Resources/CollectionId.txt" />
@@ -83,8 +85,10 @@
   </Folder>
   <Folder Name="/Templates/">
     <Project Path="Templates/GBX.NET.Templates.csproj" />
+    <Project Path="Templates/MyGbxBlazorWasmApp/MyGbxBlazorWasmApp.csproj" />
     <Project Path="Templates/MyGbxConsoleApp/MyGbxConsoleApp.csproj" />
   </Folder>
+  <Folder Name="/Templates/MyGbxBlazorWebApp/" />
   <Folder Name="/Templates/MyGbxToolApp/">
     <Project Path="Templates/MyGbxToolApp/MyGbxToolApp/MyGbxToolApp.csproj" />
     <Project Path="Templates/MyGbxToolApp/MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />

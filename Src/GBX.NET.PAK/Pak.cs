@@ -24,7 +24,7 @@ public partial class Pak : IDisposable
     private readonly Stream stream;
     private readonly byte[]? key;
 
-    private static readonly byte[] headerKeySalt = [
+    private static readonly byte[] headerKey = [
         0x56, 0xee, 0xcb, 0xbb, 0xde, 0xb6, 0xbc, 0x90,
         0xa1, 0x7d, 0xfc, 0xeb, 0x76, 0x1d, 0x59, 0xce
     ];
@@ -38,7 +38,8 @@ public partial class Pak : IDisposable
     public uint? Size { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
     public uint Flags { get; private set; }
-    public virtual bool UseDefaultHeaderKey => true;
+    public virtual bool IsHeaderPrivate => true;
+    public virtual bool UseDefaultHeaderKey => false;
     public virtual bool IsHeaderEncrypted => true;
 
     public AuthorInfo? AuthorInfo { get; protected set; }
@@ -57,12 +58,13 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="stream">Stream.</param>
     /// <param name="key">Key for decryption.</param>
+    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
 
@@ -75,9 +77,14 @@ public partial class Pak : IDisposable
 
         var version = await r.ReadInt32Async(cancellationToken);
 
+        if (key is not null && computeKey)
+        {
+            key = MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + Magic));
+        }
+
         var pak = version < 6
             ? new Pak(stream, key, version)
-            : new Pak6(stream, key is null ? null : MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + "NadeoPak")), version);
+            : new Pak6(stream, key, version);
 
         await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
@@ -93,29 +100,32 @@ public partial class Pak : IDisposable
             return;
         }
 
-        if (key is null)
+        byte[] keyForHeader;
+        if (!IsHeaderPrivate)
+        {
+            keyForHeader = headerKey;
+        }
+        else if (key is null)
         {
             return;
         }
-
-        byte[] headerKey;
-        if (version < 6 || !UseDefaultHeaderKey)
+        else if (version < 6) // || !UseDefaultHeaderKey ??
         {
-            headerKey = key;
+            keyForHeader = key;
         }
         else
         {
-            headerKey = new byte[key.Length];
-            Array.Copy(key, headerKey, key.Length);
+            keyForHeader = new byte[key.Length];
+            Array.Copy(key, keyForHeader, key.Length);
 
             for (var i = 0; i < 16; i++)
             {
-                headerKey[i] ^= headerKeySalt[i];
+                keyForHeader[i] ^= headerKey[i];
             }
         }
 
         var iv = await r.ReadUInt64Async(cancellationToken);
-        var blowfishStream = new BlowfishStream(stream, headerKey, iv, version == 18);
+        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version == 18);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
     }
@@ -125,14 +135,15 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="filePath">File path.</param>
     /// <param name="key">Key for decryption.</param>
+    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, cancellationToken);
+        return await ParseAsync(fs, key, computeKey, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -444,7 +455,7 @@ public partial class Pak : IDisposable
         var pakList = await PakList.ParseAsync(pakListFilePath, game, cancellationToken);
 
         return await BruteforceFileHashesAsync(directoryPath,
-            pakList.ToDictionary(x => x.Key, x => (byte[]?)x.Value.Key),
+            pakList.ToDictionary(x => x.Key, x => Convert.FromHexString(x.Value.Key)),
             progress,
             keepUnresolvedHashes,
             cancellationToken);
