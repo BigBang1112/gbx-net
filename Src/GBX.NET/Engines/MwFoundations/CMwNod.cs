@@ -68,7 +68,7 @@ public partial class CMwNod : IClass
                     {
                         if (chunk is CGameCtnChallenge.Chunk03043055 unlimiterChunk)
                         {
-                            unlimiterChunk.UnlimiterChunk = new();
+                            unlimiterChunk.TMUnlimiterChunk = new();
                             r.BaseStream.Position -= 4;
                             goto TMUnlimiter055;
                         }

@@ -6,27 +6,27 @@ public partial class CGameCtnChallenge
 {
     public partial class Chunk03043055
     {
-        public Chunk3F001001? UnlimiterChunk;
+        public Chunk3F001001? TMUnlimiterChunk;
 
         // empty => sets classic clips to true? related to TMCanyon?
         // if unskippable = odd unlimiter chunk
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
-            if (UnlimiterChunk is null)
+            if (TMUnlimiterChunk is null)
             {
                 return;
             }
 
-            UnlimiterChunk.Version = r.ReadByte() switch
+            TMUnlimiterChunk.Version = r.ReadByte() switch
             {
                 1 => 4,
                 2 => 5,
                 _ => throw new NotSupportedException("Unlimiter chunk version not supported.")
             };
 
-            UnlimiterChunk.DecorationOffset = r.ReadInt3();
-            UnlimiterChunk.SkyDecorationVisibility = r.ReadBoolean(asByte: true);
+            TMUnlimiterChunk.DecorationOffset = r.ReadInt3();
+            TMUnlimiterChunk.SkyDecorationVisibility = r.ReadBoolean(asByte: true);
 
             var blockCount = r.ReadInt32();
             var blocks = new (CGameCtnBlock, Byte3, bool, Int3, Byte3)[blockCount];
@@ -77,12 +77,12 @@ public partial class CGameCtnChallenge
 
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
-            if (UnlimiterChunk is null)
+            if (TMUnlimiterChunk is null)
             {
                 return;
             }
 
-            w.Write((byte)(UnlimiterChunk.Version == 4 ? 1 : 2));
+            w.Write((byte)(TMUnlimiterChunk.Version == 4 ? 1 : 2));
 
             throw new NotSupportedException("Writing unlimiter chunk not supported.");
         }
