@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.PAK;
 
-internal sealed partial class Pak6 : Pak
+public sealed partial class Pak6 : Pak
 {
     public byte[] Checksum { get; private set; } = [];
     public uint HeaderFlags { get; private set; }
