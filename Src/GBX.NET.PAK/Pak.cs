@@ -31,7 +31,7 @@ public partial class Pak : IDisposable
 
     public int Version { get; }
 
-    public int GbxHeadersStart { get; private set; }
+    public uint GbxHeadersStart { get; private set; }
     public int? GbxHeadersSize { get; private set; }
     public int? GbxHeadersComprSize { get; private set; }
     public int? HeaderMaxSize { get; protected set; }
@@ -152,7 +152,7 @@ public partial class Pak : IDisposable
         var r = new AsyncGbxReader(stream);
 
         HeaderMD5 = await r.ReadBytesAsync(16, cancellationToken);
-        GbxHeadersStart = await r.ReadInt32Async(cancellationToken); // offset to metadata section
+        GbxHeadersStart = await r.ReadUInt32Async(cancellationToken); // offset to metadata section
 
         if (Version < 15)
         {
