@@ -101,7 +101,7 @@ public partial class Pak : IDisposable
         }
 
         byte[] keyForHeader;
-        if (!IsHeaderPrivate)
+        if (version >= 18 && !IsHeaderPrivate)
         {
             keyForHeader = headerKey;
         }
