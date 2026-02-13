@@ -1,5 +1,6 @@
 ﻿using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GBX.NET.Crypto;
@@ -246,6 +247,28 @@ public class Blowfish
         }
     }
 
+    public bool Encrypt(Span<byte> data, ulong iv)
+    {
+        if (data.IsEmpty || data.Length % 8 != 0)
+        {
+            return false;
+        }
+
+        for (var i = 0; i < data.Length; i += 8)
+        {
+            var block = data.Slice(i, 8);
+
+            var blockValue = BinaryPrimitives.ReadUInt64LittleEndian(block);
+            BinaryPrimitives.WriteUInt64LittleEndian(block, blockValue ^ iv);
+
+            Encrypt(block);
+
+            iv = BinaryPrimitives.ReadUInt64LittleEndian(block);
+        }
+
+        return true;
+    }
+
     public static string DecryptHexa(string hex, byte[] key)
     {
 #if NET5_0_OR_GREATER
@@ -274,6 +297,46 @@ public class Blowfish
         return Encoding.UTF8.GetString(trimmedCiphertext);
 #else
         return Encoding.UTF8.GetString(trimmedCiphertext.ToArray());
+#endif
+    }
+
+    public static string EncryptHexa(string plainText, byte[] key)
+    {
+        var plainBytes = Encoding.UTF8.GetBytes(plainText);
+
+        var paddedLength = (plainBytes.Length + 7) / 8 * 8;
+        var buffer = new byte[paddedLength];
+        plainBytes.CopyTo(buffer, 0);
+
+#if NET5_0_OR_GREATER
+        var ivBytes = RandomNumberGenerator.GetBytes(8);
+#else
+        var ivBytes = new byte[8];
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(ivBytes);
+        }
+#endif
+        var iv = BinaryPrimitives.ReadUInt64LittleEndian(ivBytes);
+
+        var blowfish = new Blowfish(key, BlowfishTrick.BigEndian);
+
+        blowfish.Encrypt(buffer.AsSpan(), iv);
+
+        // Prepend IV
+        var result = new byte[8 + buffer.Length];
+        ivBytes.CopyTo(result, 0);
+        buffer.CopyTo(result, 8);
+
+#if NET5_0_OR_GREATER
+        return Convert.ToHexString(result);
+#else
+        var sb = new StringBuilder(result.Length * 2);
+        foreach (var b in result)
+        {
+            sb.AppendFormat("{0:x2}", b);
+        }
+        return sb.ToString();
 #endif
     }
 

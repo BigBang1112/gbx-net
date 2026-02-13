@@ -59,9 +59,13 @@
   </Folder>
   <Folder Name="/Samples/Trimming/">
     <Project Path="Samples/Trimming/SimpleMapInfo_Trimmed/SimpleMapInfo_Trimmed.csproj" />
-    <Project Path="Samples/Trimming/SimpleMapInfo_TrimmedGeneric/SimpleMapInfo_TrimmedGeneric.csproj" />
+    <Project Path="Samples/Trimming/SimpleMapInfo_TrimmedGeneric/SimpleMapInfo_TrimmedGeneric.csproj">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
     <Project Path="Samples/Trimming/SimpleMapInfo_Untrimmed/SimpleMapInfo_Untrimmed.csproj" />
-    <Project Path="Samples/Trimming/SimpleMapInfo_UntrimmedGeneric/SimpleMapInfo_UntrimmedGeneric.csproj" />
+    <Project Path="Samples/Trimming/SimpleMapInfo_UntrimmedGeneric/SimpleMapInfo_UntrimmedGeneric.csproj">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
   </Folder>
   <Folder Name="/Src/">
     <Project Path="Src/GBX.NET.BlockInfo/GBX.NET.BlockInfo.csproj" />
