@@ -210,3 +210,43 @@ archive Part
 archive LightPos
  int
  iso4
+
+archive CrystalEdge
+ bool
+ int
+ v7+
+  int
+ v25-
+  v8+
+   int
+   v14+
+    int GuideEdge
+    if GuideEdge != -1
+     float
+     float
+  GuideEdge = 0
+ v19+
+  bool
+  float
+  float
+  float
+  float
+
+archive GxMesh
+ int Version
+ vec3[]
+ vec3[]
+ GxMeshFace[] Faces
+
+archive GxMeshFace
+ GxMeshFaceUnknown1[]
+ GxMeshFaceUnknown2[]
+
+archive GxMeshFaceUnknown1
+ int
+ int
+ float
+ vec3
+
+archive GxMeshFaceUnknown2
+ vec2[]

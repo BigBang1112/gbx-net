@@ -361,6 +361,24 @@ public partial class CPlugCrystal
     public partial class AnchorInfo;
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class CrystalEdge
+    {
+        public Int2 Indices { get; set; }
+    }
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class GxMesh;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class GxMeshFace;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class GxMeshFaceUnknown1;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+    public partial class GxMeshFaceUnknown2;
+
+    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Part
     {
         private int u02;
@@ -442,81 +460,103 @@ public partial class CPlugCrystal
 
             if (!IsEmbeddedCrystal)
             {
-                throw new NotSupportedException("Crystal.Gbx is not supported");
+                var vertices = new CrystalElemPool();
+                vertices.Read(r);
+                var edges = new CrystalElemPool();
+                edges.Read(r);
+                var faces = new CrystalElemPool();
+                faces.Read(r);
+
+                foreach (var handle in edges.RawBuffer)
+                {
+                    var edge = new CrystalEdge();
+                    edge.Indices = r.ReadInt2();
+                    edge.Read(r, Version);
+                }
+
+                var gxMesh = new GxMesh();
+                gxMesh.Read(r);
+
+                foreach (var face in gxMesh.Faces)
+                {
+                    var idk = r.ReadInt32();
+                }
             }
-
-            Positions = r.ReadArray<Vec3>();
-
-            var edgeCount = r.ReadInt32();
-
-            Edges = HasFacedEdges
-                ? r.ReadArray<Int2>(edgeCount)
-                : r.ReadArrayOptimizedInt2();
-
-            var faceCount = r.ReadInt32();
-
-            var texCoords = Array.Empty<Vec2>();
-            var texCoordIndices = Array.Empty<int>();
-
-            if (Version >= 37)
+            else
             {
-                texCoords = r.ReadArray<Vec2>();
-                texCoordIndices = r.ReadArrayOptimizedInt();
-            }
+                Positions = r.ReadArray<Vec3>();
 
-            var faceVertexIndex = 0;
+                var edgeCount = r.ReadInt32();
 
-            Faces = new Face[faceCount];
+                Edges = HasFacedEdges
+                    ? r.ReadArray<Int2>(edgeCount)
+                    : r.ReadArrayOptimizedInt2();
 
-            for (var i = 0; i < faceCount; i++)
-            {
-                var vertCount = Version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
-                var inds = Version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
+                var faceCount = r.ReadInt32();
 
-                var vertices = new Vertex[vertCount];
-                var u01 = default(Vec3?);
+                var texCoords = Array.Empty<Vec2>();
+                var texCoordIndices = Array.Empty<int>();
 
-                if (Version < 27)
+                if (Version >= 37)
                 {
-                    var uvCount = Math.Min(r.ReadInt32(), vertCount);
+                    texCoords = r.ReadArray<Vec2>();
+                    texCoordIndices = r.ReadArrayOptimizedInt();
+                }
 
-                    // this doesnt sound right
-                    for (var j = 0; j < uvCount; j++)
+                var faceVertexIndex = 0;
+
+                Faces = new Face[faceCount];
+
+                for (var i = 0; i < faceCount; i++)
+                {
+                    var vertCount = Version >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
+                    var inds = Version >= 34 ? r.ReadArrayOptimizedInt(vertCount, Positions.Length) : r.ReadArray<int>(vertCount);
+
+                    var vertices = new Vertex[vertCount];
+                    var u01 = default(Vec3?);
+
+                    if (Version < 27)
                     {
-                        vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2(), default);
+                        var uvCount = Math.Min(r.ReadInt32(), vertCount);
+
+                        // this doesnt sound right
+                        for (var j = 0; j < uvCount; j++)
+                        {
+                            vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2(), default);
+                        }
+
+                        u01 = r.ReadVec3(); // normal?
+                    }
+                    else if (Version < 37)
+                    {
+                        for (var j = 0; j < vertices.Length; j++)
+                        {
+                            vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2(), default);
+                        }
+                    }
+                    else
+                    {
+                        for (var j = 0; j < vertCount; j++)
+                        {
+                            vertices[j] = new Vertex(inds[j], TexCoord: texCoords[texCoordIndices[faceVertexIndex++]], default);
+                        }
                     }
 
-                    u01 = r.ReadVec3(); // normal?
-                }
-                else if (Version < 37)
-                {
-                    for (var j = 0; j < vertices.Length; j++)
+                    var materialIndex = -1;
+
+                    if (Version >= 25)
                     {
-                        vertices[j] = new Vertex(inds[j], TexCoord: r.ReadVec2(), default);
+                        materialIndex = Version >= 33 && n.Materials.Count > 0
+                            ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0? yes
+                            : r.ReadInt32();
                     }
+
+                    var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
+
+                    var material = n.Materials.Count == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
+
+                    Faces[i] = new Face(vertices, Groups[groupIndex], material, u01);
                 }
-                else
-                {
-                    for (var j = 0; j < vertCount; j++)
-                    {
-                        vertices[j] = new Vertex(inds[j], TexCoord: texCoords[texCoordIndices[faceVertexIndex++]], default);
-                    }
-                }
-
-                var materialIndex = -1;
-
-                if (Version >= 25)
-                {
-                    materialIndex = Version >= 33 && n.Materials.Count > 0
-                        ? r.ReadOptimizedInt(n.Materials.Count) // normal int when count = 0? yes
-                        : r.ReadInt32();
-                }
-
-                var groupIndex = Version >= 33 ? r.ReadOptimizedInt(Groups.Length) : r.ReadInt32();
-
-                var material = n.Materials.Count == 0 || materialIndex == -1 ? null : n.Materials[materialIndex];
-
-                Faces[i] = new Face(vertices, Groups[groupIndex], material, u01);
             }
 
             foreach (var face in Faces)
