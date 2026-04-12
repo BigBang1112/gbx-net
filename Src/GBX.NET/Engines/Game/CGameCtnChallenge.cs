@@ -1027,7 +1027,7 @@ public partial class CGameCtnChallenge :
                         }
                         else if (param.StartsWith("GameVersion=", StringComparison.OrdinalIgnoreCase))
                         {
-                            exever = param.Substring(13);
+                            exever = param.Substring(12);
                         }
                     }
 
