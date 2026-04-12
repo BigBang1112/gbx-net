@@ -82,7 +82,7 @@ public partial class CGameCtnMediaClipGroup
     {
         public override string ToString()
         {
-            return $"Trigger: {Coords.Count} coords";
+            return $"Trigger: {Coords?.Count ?? 0} coords";
         }
     }
 }
