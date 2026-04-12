@@ -141,6 +141,8 @@ public partial class CGameCtnReplayRecord
 
     public CGameCtnChallengeParameters? ChallengeParameters { get; private set; }
 
+    protected internal override bool IsWriteSupported => false;
+
     public IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true)
     {
         if (Ghosts is not null)
