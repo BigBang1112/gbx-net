@@ -49,7 +49,6 @@ public static partial class ClassManager
     internal static partial uint Unwrap(uint classId);
 
     internal static partial bool IsChunkIdRemapped(uint chunkId);
-    public static partial bool IsClassWriteSupported(uint classId);
 
     internal static partial uint? GetBaseClassId(uint classId);
 

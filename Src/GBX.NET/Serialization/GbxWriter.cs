@@ -1002,7 +1002,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new InvalidOperationException("Class ID not found.");
         }
 
-        if (!ClassManager.IsClassWriteSupported(classId))
+        if (value?.IsWriteSupported == false)
         {
             throw new ClassWriteNotSupportedException(classId);
         }
@@ -1051,7 +1051,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new InvalidOperationException("Class ID not found.");
         }
 
-        if (!ClassManager.IsClassWriteSupported(classId))
+        if (value?.IsWriteSupported == false)
         {
             throw new ClassWriteNotSupportedException(classId);
         }
