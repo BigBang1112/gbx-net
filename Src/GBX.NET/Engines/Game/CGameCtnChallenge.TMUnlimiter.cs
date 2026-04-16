@@ -489,26 +489,46 @@ public partial class CGameCtnChallenge
 
             if (Version == 0)
             {
+                // vanilla
                 return;
             }
 
-            if (Version != 7)
+            if (Version == 1)
             {
-                throw new ChunkVersionNotSupportedException(Version);
+                if (rw.Reader is not null) ReadV1(n, rw.Reader);
+                if (rw.Writer is not null) WriteV1(n, rw.Writer);
+
+                return;
             }
 
-            if (rw.Reader is not null)
+            if (Version == 7)
             {
-                Read(n, rw.Reader, ver);
+                if (rw.Reader is not null) ReadV7(n, rw.Reader, ver);
+                if (rw.Writer is not null) WriteV7(n, rw.Writer, ver);
+
+                return;
             }
 
-            if (rw.Writer is not null)
+            throw new ChunkVersionNotSupportedException(Version);
+        }
+
+        private static void ReadV1(CGameCtnChallenge n, GbxReader r)
+        {
+            n.TMUnlimiterData = new()
             {
-                Write(n, rw.Writer, ver);
+                FakeBlocks = n.blocks
+            };
+
+            var blockCount = r.ReadInt32();
+            n.blocks = new List<CGameCtnBlock>(blockCount);
+
+            for (var i = 0; i < blockCount; i++)
+            {
+                n.blocks.Add(ReadGameBlock(r, byteCoord: true));
             }
         }
 
-        private static void Read(CGameCtnChallenge n, GbxReader r, int ver)
+        private static void ReadV7(CGameCtnChallenge n, GbxReader r, int ver)
         {
             var flags = (ChallengeFlags)r.ReadUInt16();
             var isDecorationMoved = (flags & ChallengeFlags.IsDecorationMoved) != 0;
@@ -611,7 +631,17 @@ public partial class CGameCtnChallenge
             ReadBlocks(n, n.TMUnlimiterData, r, embeddedBlockData, triggerGroups, blockGroups);
         }
 
-        private static void Write(CGameCtnChallenge n, GbxWriter w, int ver)
+        private static void WriteV1(CGameCtnChallenge n, GbxWriter w)
+        {
+            w.Write(n.blocks?.Count ?? 0);
+
+            foreach (var block in n.blocks ?? [])
+            {
+                WriteGameBlock(w, block, byteCoord: true);
+            }
+        }
+
+        private static void WriteV7(CGameCtnChallenge n, GbxWriter w, int ver)
         {
             var flags = (ChallengeFlags)0;
             if (n.TMUnlimiterData is not null)
@@ -736,21 +766,7 @@ public partial class CGameCtnChallenge
                 switch (blockType)
                 {
                     case 0: // game block
-                        block = new CGameCtnBlock
-                        {
-                            BlockModel = (r.ReadIdAsString(), r.ReadId(), ""),
-                            Coord = r.ReadInt3(),
-                            Direction = (Direction)r.ReadByte(),
-                            Flags = r.ReadInt32()
-                        };
-
-                        if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
-                        {
-                            block.Author = r.ReadIdAsString();
-                            block.Skin = r.ReadNodeRef<CGameCtnBlockSkin>();
-                        }
-
-                        n.blocks.Add(block);
+                        n.blocks.Add(ReadGameBlock(r, byteCoord: false));
                         break;
                     case 1: // trigger block
                         var triggerBlock = new TMUnlimiter.TriggerBlock
@@ -910,6 +926,25 @@ public partial class CGameCtnChallenge
             }
         }
 
+        private static CGameCtnBlock ReadGameBlock(GbxReader r, bool byteCoord)
+        {
+            var block = new CGameCtnBlock
+            {
+                BlockModel = (r.ReadIdAsString(), r.ReadId(), ""),
+                Coord = byteCoord ? r.ReadByte3() : r.ReadInt3(),
+                Direction = (Direction)r.ReadByte(),
+                Flags = r.ReadInt32()
+            };
+
+            if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
+            {
+                block.Author = r.ReadIdAsString();
+                block.Skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+            }
+
+            return block;
+        }
+
         private static void ReadBlockPositionalProperties(GbxReader r, CGameCtnBlock? block, TMUnlimiter.Block? tmUnlimiterBlock, ushort flags)
         {
             if ((flags & 1) != 0) // isOffsetApplied  
@@ -967,17 +1002,7 @@ public partial class CGameCtnChallenge
             foreach (var block in blocks)
             {
                 w.Write((byte)0); // game block
-                w.WriteIdAsString(block.BlockModel.Id);
-                w.Write(block.BlockModel.Collection);
-                w.Write(block.Coord);
-                w.Write((byte)block.Direction);
-                w.Write(block.Flags);
-
-                if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
-                {
-                    w.WriteIdAsString(block.Author ?? "");
-                    w.WriteNodeRef(block.Skin);
-                }
+                WriteGameBlock(w, block, byteCoord: false);
 
                 WriteBlock20Properties(w, block, tmUnlimiterBlock: null, allBlockGroups);
             }
@@ -1013,6 +1038,30 @@ public partial class CGameCtnChallenge
                 w.Write(embeddedBlock.Flags);
 
                 WriteBlock20Properties(w, block: null, embeddedBlock, allBlockGroups);
+            }
+        }
+
+        private static void WriteGameBlock(GbxWriter w, CGameCtnBlock block, bool byteCoord)
+        {
+            w.WriteIdAsString(block.BlockModel.Id);
+            w.Write(block.BlockModel.Collection);
+
+            if (byteCoord)
+            {
+                w.Write((Byte3)block.Coord);
+            }
+            else
+            {
+                w.Write(block.Coord);
+            }
+
+            w.Write((byte)block.Direction);
+            w.Write(block.Flags);
+
+            if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
+            {
+                w.WriteIdAsString(block.Author ?? "");
+                w.WriteNodeRef(block.Skin);
             }
         }
 
