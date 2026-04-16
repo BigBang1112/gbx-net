@@ -207,7 +207,7 @@ public partial class CGameCtnGhost
 
         private void ReadInputs(CGameCtnGhost n, GbxReader r)
         {
-            var inputNames = r.ReadArrayId();
+            Span<string> inputNames = r.ReadArrayId();
 
             var numInputs = r.ReadInt32();
             U02 = r.ReadInt32(); // CountLimit?
