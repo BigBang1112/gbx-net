@@ -74,5 +74,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | GameAdvertisement.Gbx | [CGameAdvertising](Src/GBX.NET/Engines/Game/CGameAdvertising.chunkl) | Yes | Yes
 | | Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.chunkl) | Yes | Yes
 | | ScriptCache.Gbx | [CScriptTraitsMetadata](Src/GBX.NET/Engines/Script/CScriptTraitsMetadata.chunkl) | Yes | Yes
+| | LeaguesManager.Manager.Gbx | [CGameLeagueManager](Src/GBX.NET/Engines/Game/CGameLeagueManager.chunkl) | Yes | Yes
+| | CampaignScoresManager.Manager.Gbx | [CGameCampaignsScoresManager](Src/GBX.NET/Engines/Game/CGameCampaignsScoresManager.chunkl) | Yes | Yes
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
