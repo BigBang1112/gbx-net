@@ -36,6 +36,6 @@ archive ChampionRanking
  int
  string
  string
- v1+
+ v2+
   string
   string
