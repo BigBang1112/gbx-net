@@ -32,10 +32,10 @@ archive OldShowTime
  int
 
 archive ChampionRanking
- int
- int
- string
- string
+ int Rank
+ int Score
+ string Login
+ string Nickname
  v2+
   string
   string
