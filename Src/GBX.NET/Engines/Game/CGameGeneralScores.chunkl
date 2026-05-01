@@ -1,0 +1,31 @@
+CGameGeneralScores 0x03065000
+
+0x001
+ version
+ Unknown[]
+
+archive Unknown
+ string
+ bool
+ byte
+ systemtime
+ byte
+ systemtime
+ RecordsBuffer
+ ChampionRanking[]
+ 
+archive RecordsBuffer
+ int Version
+ int
+ bool
+ OldShowTime[]
+
+archive OldShowTime
+ int
+ int
+
+archive ChampionRanking
+ int
+ int
+ string
+ string

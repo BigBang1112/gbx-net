@@ -1,0 +1,33 @@
+CGameCampaignScores 0x03063000
+
+0x001
+ version
+ id
+ Unknown1[]
+ Unknown2[]
+
+archive Unknown1
+ string
+ byte
+ systemtime
+ byte
+ systemtime
+
+archive Unknown2
+ int
+ Unknown3[]
+
+archive Unknown3
+ string
+ bool
+ RecordsBuffer
+ 
+archive RecordsBuffer
+ int Version
+ int
+ bool
+ OldShowTime[]
+
+archive OldShowTime
+ int
+ int

@@ -1,0 +1,10 @@
+CGameCampaignsScoresManager 0x03061000
+
+0x000
+ CGameChallengeScores[]_deprec ChallengeScores
+ CGameCampaignScores[]_deprec CampaignScores
+ CGameGeneralScores GeneralScores
+ CGameSkillScoreComputer SkillScoreComputer
+
+0x001
+ string

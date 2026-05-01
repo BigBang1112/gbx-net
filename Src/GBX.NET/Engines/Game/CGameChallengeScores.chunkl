@@ -1,0 +1,38 @@
+CGameChallengeScores 0x03064000
+
+0x001
+ version
+ id
+ string
+ bool
+ bool
+ int
+ systemtime
+ Unknown[]
+
+archive Unknown
+ string
+ bool
+ RecordsBuffer
+ int ScoreCount
+ byte
+ systemtime
+ byte
+ systemtime
+ ChampionRanking[ScoreCount]
+
+archive RecordsBuffer
+ int Version
+ int
+ bool
+ OldShowTime[]
+
+archive OldShowTime
+ int
+ int
+
+archive ChampionRanking
+ int
+ int
+ string
+ string
