@@ -42,7 +42,7 @@ jobs:
             ~/.dotnet/metadata
             ~/.dotnet/packs
             ~/.dotnet/library-packs
-          key: ${{ runner.os }}-workloads-${{ inputs.dotnet-version }}-${{ inputs.workloads }}
+          key: ${{ runner.os }}-workloads
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
@@ -52,6 +52,12 @@ jobs:
             9.0.x
             8.0.x
           workloads: wasm-tools
+      
+      - name: Patch base href in index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/${{ github.event.repository.name }}\/" \/>/g' Tools/GbxExplorerOld/Client/wwwroot/index.html
+
+      - name: Patch base in service-worker.published.js
+        run: sed -i 's/const base = "\//const base = "\/${{ github.event.repository.name }}\//g' Tools/GbxExplorerOld/Client/wwwroot/service-worker.published.js
 
       - name: Cache NuGet Packages
         uses: actions/cache@v5
@@ -60,12 +66,6 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.props', '**/*.targets') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-      
-      - name: Patch base href in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/${{ github.event.repository.name }}\/" \/>/g' ${{ inputs.project }}/wwwroot/index.html
-
-      - name: Patch base in service-worker.published.js
-        run: sed -i 's/const base = "\//const base = "\/${{ github.event.repository.name }}\//g' ${{ inputs.project }}/wwwroot/service-worker.published.js
 
       - name: Publish
         run: dotnet build Tools/GbxExplorerOld/Client && dotnet publish Tools/GbxExplorerOld/Client -c Release --nologo -o publish /p:ContinuousIntegrationBuild=true
