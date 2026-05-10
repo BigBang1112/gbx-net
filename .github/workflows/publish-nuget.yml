@@ -1,0 +1,28 @@
+name: Publish NuGet
+
+on:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+permissions:
+  contents: write # important for release description edit and asset upload
+  packages: write
+
+jobs:
+  deploy:
+    name: Publish NuGet
+    uses: bigbang1112/workflows/.github/workflows/publish-nuget.yml@main
+    with:
+      dotnet-version: |
+        10.x.x
+        9.x.x
+        8.x.x
+      project-path: Src/*
+      test-path: Tests/*
+      pack-path: "{Src/*,Templates}"
+      push-to-custom-feeds: true
+      custom-feed-urls: https://nuget.gbx.tools/v3/index.json
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
