@@ -20,7 +20,7 @@ jobs:
         8.x.x
       project-path: Src/*
       test-path: Tests/*
-      pack-path: Templates
+      pack-path: "{Src/*,Templates}"
       push-to-custom-feeds: true
       custom-feed-urls: https://nuget.gbx.tools/v3/index.json
     secrets:
