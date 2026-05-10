@@ -14,10 +14,6 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" PrivateAssets="all" />
 	</ItemGroup>
 
-	<PropertyGroup>
-		<IncludeBuildOutput>false</IncludeBuildOutput>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
 	</ItemGroup>

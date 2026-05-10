@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup>
