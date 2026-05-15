@@ -930,6 +930,7 @@ public partial class CGameCtnChallenge
         {
             var block = new CGameCtnBlock
             {
+                TMUnlimiterData = new(),
                 BlockModel = (r.ReadIdAsString(), r.ReadId(), ""),
                 Coord = byteCoord ? r.ReadByte3() : r.ReadInt3(),
                 Direction = (Direction)r.ReadByte(),
