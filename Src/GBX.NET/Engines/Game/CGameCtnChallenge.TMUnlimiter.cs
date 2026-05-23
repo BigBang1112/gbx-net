@@ -503,8 +503,8 @@ public partial class CGameCtnChallenge
 
             if (Version == 6)
             {
-                if (rw.Reader is not null) ReadV6(n, rw.Reader, ver);
-                if (rw.Writer is not null) WriteV6(n, rw.Writer, ver);
+                if (rw.Reader is not null) ReadV6(n, rw.Reader);
+                if (rw.Writer is not null) WriteV6(n, rw.Writer);
 
                 return;
             }
@@ -536,7 +536,7 @@ public partial class CGameCtnChallenge
             }
         }
 
-        private static void ReadV6(CGameCtnChallenge n, GbxReader r, int ver)
+        private static void ReadV6(CGameCtnChallenge n, GbxReader r)
         {
             var flags = r.ReadByte();
             var isDecorationOffsetApplied = (flags & (1 << 0)) != 0;
@@ -639,7 +639,7 @@ public partial class CGameCtnChallenge
             ReadBlocks(n, n.TMUnlimiterData, r, [], [], blockGroups);
         }
 
-        private static void WriteV6(CGameCtnChallenge n, GbxWriter w, int ver)
+        private static void WriteV6(CGameCtnChallenge n, GbxWriter w)
         {
             var flags = (byte)0;
             if (n.TMUnlimiterData is not null)
