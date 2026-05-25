@@ -11,11 +11,11 @@ CControlEffect ShowingEffect (external)
 CControlEffect HidingEffect (external)
 CControlEffect ActionEffect (external)
 
-0x701c001
+0x001
 bool
 int
 
-0x701c002
+0x002
 CControlEffect FocusEffect (external)
 CControlEffect FocusGainedEffect (external)
 CControlEffect FocusLostEffect (external)
@@ -27,5 +27,5 @@ CControlEffect HidingEffect (external)
 CControlEffect ActionEffect (external)
 CControlEffect ManagedEffect (external)
 
-0x701c003
+0x003
 CMwRefBuffer SpecialEffect (external)
