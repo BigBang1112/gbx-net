@@ -1,1 +1,8 @@
 CHmsLightMapMood 0x06023000
+
+0x000
+ float
+ float
+ float
+ float
+ float
