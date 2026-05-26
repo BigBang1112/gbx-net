@@ -1,4 +1,4 @@
-CControlEffectMaster 0x701c000
+CControlEffectMaster 0x0701C000
 
 0x000
  CControlEffect FocusEffect (external)
