@@ -100,24 +100,25 @@ public partial class Pak : IDisposable
             return;
         }
 
-        byte[] keyForHeader;
-        if (version >= 18 && !IsHeaderPrivate)
-        {
-            keyForHeader = headerKey;
-        }
-        else if (key is null)
+        if (IsHeaderPrivate && key is null)
         {
             return;
         }
-        else if (version < 6) // || !UseDefaultHeaderKey ??
-        {
-            keyForHeader = key;
-        }
-        else
-        {
-            keyForHeader = new byte[key.Length];
-            Array.Copy(key, keyForHeader, key.Length);
 
+        var keyForHeader = new byte[16];
+
+        if (IsHeaderPrivate)
+        {
+            if (key is null)
+            {
+                throw new Exception("Key is required for header decryption.");
+            }
+
+            Array.Copy(key, keyForHeader, 16);
+        }
+
+        if (UseDefaultHeaderKey)
+        {
             for (var i = 0; i < 16; i++)
             {
                 keyForHeader[i] ^= headerKey[i];
