@@ -112,7 +112,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
 0x01C [MP3, TMT, MP4, TM2020]
- uint256
+ uint256 SecurityKey
 
 0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
  version
