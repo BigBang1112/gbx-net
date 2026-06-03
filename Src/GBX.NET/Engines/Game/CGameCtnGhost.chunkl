@@ -34,7 +34,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  string SkinFile
  string GhostNickname
 
-0x004 (skippable) [TMPU]
+0x004 (skippable) [TMPU] // checkpoints TMPU
  Checkpoint[] Checkpoints
 
 0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
@@ -85,7 +85,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x012 [TMU, TMF] // old security key
  uint32
- uint128 SecurityKey128
+ uint128? SecurityKey128
 
 0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
  int
