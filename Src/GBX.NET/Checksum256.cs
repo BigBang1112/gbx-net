@@ -44,6 +44,12 @@ public readonly record struct Checksum256
 
     public override string ToString()
     {
-        return string.Concat(GetBytes().Select(b => b.ToString("x2")));
+#if NET8_0_OR_GREATER
+        Span<byte> span = stackalloc byte[32];
+        WriteLittleEndian(span);
+        return Convert.ToHexString(span);
+#else
+        return string.Concat(GetBytes().Select(b => b.ToString("X2")));
+#endif
     }
 }
