@@ -92,7 +92,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
 
 0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020]
- int
+ int GhostVersion
 
 0x015 [TMF] // ghost nickname
  id GhostNickname
@@ -154,7 +154,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
- uint128 GhostUid128
+ checksum128 GhostUid128
 
 0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
  version
