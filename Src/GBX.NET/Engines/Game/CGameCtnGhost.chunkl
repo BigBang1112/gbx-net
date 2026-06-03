@@ -85,7 +85,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x012 [TMU, TMF]
  uint32
- uint128
+ uint128 SecurityKey128
 
 0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
  int
@@ -112,7 +112,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
 0x01C [MP3, TMT, MP4, TM2020]
- uint256 SecurityKey
+ uint256 SecurityKey256
 
 0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
  version
@@ -153,8 +153,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
-0x026 (skippable) [MP3, TMT, MP4, TM2020]
- uint128
+0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
+ uint128 GhostUid128
 
 0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
  version
