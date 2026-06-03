@@ -251,9 +251,9 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<Chunk0304301F>]
     public int? NbBlocks => Blocks?.Count;
 
-    private UInt128? hashedPassword;
+    private Checksum128? hashedPassword;
     [AppliedWithChunk<Chunk03043029>]
-    public UInt128? HashedPassword
+    public Checksum128? HashedPassword
     {
         get => hashedPassword;
         set
@@ -703,7 +703,7 @@ public partial class CGameCtnChallenge :
 
         if (HashedPassword is not null)
         {
-            HashedPassword = new UInt128();
+            HashedPassword = new Checksum128();
         }
 
         Chunks.Remove<Chunk03043029>();

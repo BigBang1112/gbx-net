@@ -13,8 +13,8 @@ public partial class CGamePlayerProfile
     [AppliedWithChunk<Chunk0308C05B>]
     public string? NickName { get => nickName; set => nickName = value; }
 
-    private UInt128 cryptedPassword;
-    public UInt128 CryptedPassword { get => cryptedPassword; set => cryptedPassword = value; }
+    private Checksum128 cryptedPassword;
+    public Checksum128 CryptedPassword { get => cryptedPassword; set => cryptedPassword = value; }
 
     private bool loginValidated;
     public bool LoginValidated { get => loginValidated; set => loginValidated = value; }
@@ -123,7 +123,7 @@ public partial class CGamePlayerProfile
 
             if (U05 != 0)
             {
-                rw.UInt128(ref n.cryptedPassword);
+                rw.Checksum128(ref n.cryptedPassword);
                 rw.Data(ref U06, U05);
             }
 

@@ -49,6 +49,8 @@ public partial interface IGbxWriter : IDisposable
     void WriteInt128(Int128 value);
     void WriteUInt128(UInt128 value);
     void WriteUInt256(UInt256 value);
+    void WriteChecksum128(Checksum128 value);
+    void WriteChecksum256(Checksum256 value);
     void Write(Int2 value);
     void Write(Int3 value);
     void Write(Int4 value);
@@ -532,6 +534,30 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #endif
     }
 
+    public void WriteChecksum128(Checksum128 value)
+    {
+#if NET8_0_OR_GREATER
+        Span<byte> dest = stackalloc byte[16];
+        value.WriteLittleEndian(dest);
+        Write(dest);
+#else
+        Write(value.Low);
+        Write(value.High);
+#endif
+    }
+
+    public void WriteChecksum256(Checksum256 value)
+    {
+#if NET5_0_OR_GREATER
+        Span<byte> dest = stackalloc byte[32];
+        value.WriteLittleEndian(dest);
+        Write(dest);
+#else
+        WriteChecksum128(value.Low);
+        WriteChecksum128(value.High);
+#endif
+    }
+
     public void Write(Int2 value)
     {
         Write(value.X);
@@ -939,7 +965,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (PackDescVersion >= 3)
         {
-            WriteUInt256(value?.Checksum ?? default);
+            WriteChecksum256(value?.Checksum ?? default);
         }
 
         Write(value?.FilePath);

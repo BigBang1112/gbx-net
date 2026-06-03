@@ -3,7 +3,7 @@
 /// <summary>
 /// [CSystemPackDesc] Description of a file reference. Also known as "fileref".
 /// </summary>
-public sealed record PackDesc(string FilePath = "", UInt256? Checksum = null, string? LocatorUrl = "")
+public sealed record PackDesc(string FilePath = "", Checksum256? Checksum = null, string? LocatorUrl = "")
 {
     /// <summary>
     /// A default instance of <see cref="PackDesc"/> with empty values.
