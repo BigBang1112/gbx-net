@@ -91,7 +91,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  int
  int
 
-0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020]
+0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020] // ghost version
  int GhostVersion
 
 0x015 [TMF] // ghost nickname
