@@ -55,37 +55,41 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
-    /// Derives the Blowfish key used to decrypt a Pak file, given the decrypted master server key (hex string) and the Pak checksum (32 bytes). The resulting key is considered "computed", so make sure you set <c>computeKey</c> to <see langword="false"/> in parse methods.
+    /// Computes the Blowfish key used to decrypt a Pak file, given the decrypted master server key and the Pak checksum (32 bytes). The resulting key is considered "computed", so make sure you set <c>keyType</c> to <see cref="KeyType.ComputedKey"/>
     /// </summary>
-    /// <param name="key">Decrypted key as a 32-character hex string (16 bytes).</param>
+    /// <param name="msKey">Decrypted key as a 16-byte array.</param>
     /// <param name="checksum">Pak checksum, exactly 32 bytes.</param>
-    /// <returns>16-byte derived Blowfish key.</returns>
-    public static byte[] DeriveKeyFromMasterServer(string key, byte[] checksum)
+    /// <returns>16-byte computed Blowfish key.</returns>
+    public static byte[] ComputeKeyFromMasterServer(byte[] msKey, byte[] checksum)
     {
-        if (checksum is null || checksum.Length != 32)
+        ArgumentNullException.ThrowIfNull(checksum);
+        ArgumentNullException.ThrowIfNull(msKey);
+
+        if (checksum.Length != 32)
             throw new ArgumentException("Checksum must be exactly 32 bytes.", nameof(checksum));
 
-        var keyBytes = Convert.FromHexString(key.Trim());
-
-        if (keyBytes.Length != 16)
-            throw new ArgumentException("Key must be a 32-character hex string (16 bytes).", nameof(key));
-
-        // reverse to get callback-key byte order
-        Array.Reverse(keyBytes);
-
-        var callbackLo = BinaryPrimitives.ReadUInt64LittleEndian(keyBytes.AsSpan(0, 8));
-        var callbackHi = BinaryPrimitives.ReadUInt64LittleEndian(keyBytes.AsSpan(8, 8));
-        var checksumLo = BinaryPrimitives.ReadUInt64LittleEndian(checksum.AsSpan(0, 8));
-        var checksumMid = BinaryPrimitives.ReadUInt64LittleEndian(checksum.AsSpan(16, 8));
-
-        var derivedLo = callbackLo ^ checksumLo;
-        var derivedHi = callbackHi ^ checksumMid;
+        if (msKey.Length != 16)
+            throw new ArgumentException("Key must be exactly 16 bytes.", nameof(msKey));
 
         var derivedKey = new byte[16];
-        BinaryPrimitives.WriteUInt64LittleEndian(derivedKey.AsSpan(0, 8), derivedLo);
-        BinaryPrimitives.WriteUInt64LittleEndian(derivedKey.AsSpan(8, 8), derivedHi);
+
+        for (var i = 0; i < 8; i++)
+        {
+            derivedKey[i] = (byte)(msKey[15 - i] ^ checksum[i]);
+            derivedKey[i + 8] = (byte)(msKey[7 - i] ^ checksum[i + 16]);
+        }
 
         return derivedKey;
+    }
+
+    /// <summary>
+    /// Computes the Blowfish key used to decrypt a Pak file, given the base key. The resulting key is considered "computed", so make sure you set <c>keyType</c> to <see cref="KeyType.ComputedKey"/> in parse methods.
+    /// </summary>
+    /// <param name="baseKey">Base key as a 16-byte array.</param>
+    /// <returns>16-byte computed Blowfish key.</returns>
+    public static byte[] ComputeKey(byte[] baseKey)
+    {
+        return MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(baseKey) + Magic));
     }
 
     /// <summary>
@@ -93,13 +97,13 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="stream">Stream.</param>
     /// <param name="key">Key for decryption.</param>
-    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
+    /// <param name="keyType">Type of the key provided.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
 
@@ -112,14 +116,41 @@ public partial class Pak : IDisposable
 
         var version = await r.ReadInt32Async(cancellationToken);
 
-        if (key is not null && computeKey)
-        {
-            key = MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + Magic));
-        }
+        Pak pak;
 
-        var pak = version < 6
-            ? new Pak(stream, key, version)
-            : new Pak6(stream, key, version);
+        if (version < 6)
+        {
+            if (keyType == KeyType.MasterServerKey)
+            {
+                throw new ArgumentException("Master server key cannot be used for Pak versions below 6, as they don't have the checksum in the header.", nameof(keyType));
+            }
+
+            if (keyType == KeyType.BaseKey && key is not null)
+            {
+                key = ComputeKey(key);
+            }
+
+            pak = new Pak(stream, key, version);
+        }
+        else
+        {
+            var checksum = await r.ReadBytesAsync(32, cancellationToken);
+
+            if (key is not null)
+            {
+                switch (keyType)
+                {
+                    case KeyType.BaseKey:
+                        key = ComputeKey(key);
+                        break;
+                    case KeyType.MasterServerKey:
+                        key = ComputeKeyFromMasterServer(key, checksum);
+                        break;
+                }
+            }
+
+            pak = new Pak6(stream, key, version, checksum);
+        }
 
         await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
@@ -171,15 +202,15 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="filePath">File path.</param>
     /// <param name="key">Key for decryption.</param>
-    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
+    /// <param name="keyType">Type of the key for decryption.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, computeKey, cancellationToken);
+        return await ParseAsync(fs, key, keyType, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
