@@ -12,8 +12,8 @@ public readonly record struct Checksum256
 
     internal Checksum256(ulong a, ulong b, ulong c, ulong d)
     {
-        low = new Checksum128(b, a);
-        high = new Checksum128(d, c);
+        low = new Checksum128(a, b);
+        high = new Checksum128(c, d);
     }
 
     public Checksum256(ReadOnlySpan<byte> span)
