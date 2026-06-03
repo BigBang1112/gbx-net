@@ -3,6 +3,7 @@ using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK.Exceptions;
 using NativeSharpZlib;
+using System.Buffers.Binary;
 using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Runtime.CompilerServices;
@@ -51,6 +52,40 @@ public partial class Pak : IDisposable
         this.stream = stream;
         this.key = key;
         Version = version;
+    }
+
+    /// <summary>
+    /// Derives the Blowfish key used to decrypt a Pak file, given the decrypted master server key (hex string) and the Pak checksum (32 bytes). The resulting key is considered "computed", so make sure you set <c>computeKey</c> to <see langword="false"/> in parse methods.
+    /// </summary>
+    /// <param name="key">Decrypted key as a 32-character hex string (16 bytes).</param>
+    /// <param name="checksum">Pak checksum, exactly 32 bytes.</param>
+    /// <returns>16-byte derived Blowfish key.</returns>
+    public static byte[] DeriveKeyFromMasterServer(string key, byte[] checksum)
+    {
+        if (checksum is null || checksum.Length != 32)
+            throw new ArgumentException("Checksum must be exactly 32 bytes.", nameof(checksum));
+
+        var keyBytes = Convert.FromHexString(key.Trim());
+
+        if (keyBytes.Length != 16)
+            throw new ArgumentException("Key must be a 32-character hex string (16 bytes).", nameof(key));
+
+        // reverse to get callback-key byte order
+        Array.Reverse(keyBytes);
+
+        var callbackLo = BinaryPrimitives.ReadUInt64LittleEndian(keyBytes.AsSpan(0, 8));
+        var callbackHi = BinaryPrimitives.ReadUInt64LittleEndian(keyBytes.AsSpan(8, 8));
+        var checksumLo = BinaryPrimitives.ReadUInt64LittleEndian(checksum.AsSpan(0, 8));
+        var checksumMid = BinaryPrimitives.ReadUInt64LittleEndian(checksum.AsSpan(16, 8));
+
+        var derivedLo = callbackLo ^ checksumLo;
+        var derivedHi = callbackHi ^ checksumMid;
+
+        var derivedKey = new byte[16];
+        BinaryPrimitives.WriteUInt64LittleEndian(derivedKey.AsSpan(0, 8), derivedLo);
+        BinaryPrimitives.WriteUInt64LittleEndian(derivedKey.AsSpan(8, 8), derivedHi);
+
+        return derivedKey;
     }
 
     /// <summary>

@@ -93,6 +93,7 @@
     <Project Path="Templates/MyGbxToolApp/MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/GBX.NET.PAK.Tests/GBX.NET.PAK.Tests.csproj" Id="e0d7028e-a295-4aa8-9b4c-93f37112ea53" />
     <Project Path="Tests/GBX.NET.Tests/GBX.NET.Tests.csproj" />
   </Folder>
   <Folder Name="/Tools/">
