@@ -416,7 +416,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         var a = ReadUInt64();
         var b = ReadUInt64();
-        return new Checksum128(b, a);
+        return new Checksum128(a, b);
     }
 
     public Checksum256 ReadChecksum256()
