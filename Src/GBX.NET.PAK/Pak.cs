@@ -515,6 +515,7 @@ public partial class Pak : IDisposable
     /// <param name="game"></param>
     /// <param name="progress"></param>
     /// <param name="keepUnresolvedHashes"></param>
+    /// <param name="additionalFileHashes">Additional file hashes to reference that are not found during the scan.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
@@ -522,6 +523,7 @@ public partial class Pak : IDisposable
         PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool keepUnresolvedHashes = false,
+        IEnumerable<string>? additionalFileHashes = null,
         CancellationToken cancellationToken = default)
     {
         var pakListFilePath = Path.Combine(directoryPath, PakList.FileName);
@@ -537,6 +539,7 @@ public partial class Pak : IDisposable
             pakList.ToDictionary(x => x.Key, x => (byte[]?)Convert.FromHexString(x.Value.Key)),
             progress,
             keepUnresolvedHashes,
+            additionalFileHashes,
             cancellationToken);
     }
 
@@ -547,6 +550,7 @@ public partial class Pak : IDisposable
     /// <param name="keys"></param>
     /// <param name="progress"></param>
     /// <param name="keepUnresolvedHashes"></param>
+    /// <param name="additionalFileHashes">Additional file hashes to reference that are not found during the scan.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
@@ -554,15 +558,16 @@ public partial class Pak : IDisposable
         Dictionary<string, byte[]?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool keepUnresolvedHashes = false,
+        IEnumerable<string>? additionalFileHashes = null,
         CancellationToken cancellationToken = default)
     {
         var allPossibleFileHashes = new Dictionary<string, string>();
-        var foundFileNames = new List<string>();
+        var foundFileNames = new HashSet<string>(additionalFileHashes ?? []);
 
         await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
         {
-            cancellationToken.ThrowIfCancellationRequested(); 
-            
+            cancellationToken.ThrowIfCancellationRequested();
+
             foundFileNames.Add(file.Name);
 
             // skip non-decryptable files
