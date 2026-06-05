@@ -487,6 +487,11 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<bool> CheckFileIsGbxAsync(PakFile file, CancellationToken cancellationToken = default)
     {
+        if (file.Size == 0)
+        {
+            return false;
+        }
+
         using var stream = OpenFile(file, out var _);
         return await Gbx.IsGbxAsync(stream, cancellationToken);
     }
