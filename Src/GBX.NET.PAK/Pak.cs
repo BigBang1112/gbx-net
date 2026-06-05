@@ -565,6 +565,12 @@ public partial class Pak : IDisposable
             
             foundFileNames.Add(file.Name);
 
+            // skip non-decryptable files
+            if (pak.key is null && file.IsEncrypted)
+            {
+                continue;
+            }
+
             // only gbx files can be checked for reference table
             if (!await pak.CheckFileIsGbxAsync(file, cancellationToken))
             {
