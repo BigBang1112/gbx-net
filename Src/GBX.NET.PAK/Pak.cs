@@ -666,17 +666,23 @@ public partial class Pak : IDisposable
             var identifier = Path.GetFileNameWithoutExtension(filePath);
             var key = keys.GetValueOrDefault(identifier);
 
-            if (key is null)
+            Pak pak;
+
+            try
             {
-
+                pak = await ParseAsync(filePath, key, cancellationToken: cancellationToken);
             }
-
-            await using var pak = await ParseAsync(filePath, key, cancellationToken: cancellationToken);
+            catch
+            {
+                continue;
+            }
 
             foreach (var file in pak.Files.Values)
             {
                 yield return (pak, file);
             }
+
+            await pak.DisposeAsync();
         }
     }
 
