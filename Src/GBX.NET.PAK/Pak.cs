@@ -372,10 +372,7 @@ public partial class Pak : IDisposable
         if (file.IsEncrypted)
         {
             var ivBuffer = new byte[8];
-            if (stream.Read(ivBuffer, 0, 8) != 8)
-            {
-                throw new EndOfStreamException("Could not read IV from file.");
-            }
+            stream.ReadExactly(ivBuffer);
             var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
             if (key is null)
@@ -383,7 +380,7 @@ public partial class Pak : IDisposable
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, key, iv, Version == 18);
+            var blowfish = new BlowfishStream(newStream, key, iv, Version >= 18);
 
             encryptionInitializer = new EncryptionInitializer(blowfish);
 
