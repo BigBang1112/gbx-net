@@ -55,7 +55,7 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
-    /// Computes the Blowfish key used to decrypt a Pak file, given the decrypted master server key and the Pak checksum (32 bytes). The resulting key is considered "computed", so make sure you set <c>keyType</c> to <see cref="KeyType.ComputedKey"/>
+    /// Computes the Blowfish key used to decrypt a Pak file, given the decrypted master server key and the Pak checksum (32 bytes). The resulting key is the encryption key, so make sure you set <c>keyType</c> to <see cref="KeyType.EncryptionKey"/>
     /// </summary>
     /// <param name="msKey">Decrypted key as a 16-byte array.</param>
     /// <param name="checksum">Pak checksum, exactly 32 bytes.</param>
@@ -83,7 +83,7 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
-    /// Computes the Blowfish key used to decrypt a Pak file, given the base key. The resulting key is considered "computed", so make sure you set <c>keyType</c> to <see cref="KeyType.ComputedKey"/> in parse methods.
+    /// Computes the Blowfish key used to decrypt a Pak file, given the base key. The resulting key is the encryption key, so make sure you set <c>keyType</c> to <see cref="KeyType.EncryptionKey"/> in parse methods.
     /// </summary>
     /// <param name="baseKey">Base key as a 16-byte array.</param>
     /// <returns>16-byte computed Blowfish key.</returns>

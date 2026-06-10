@@ -2,7 +2,7 @@
 
 public enum KeyType
 {
-    ComputedKey,
+    EncryptionKey,
     BaseKey,
     MasterServerKey
 }
