@@ -398,7 +398,11 @@ public partial class Pak : IDisposable
                 new NativeZlibStream(newStream, CompressionMode.Decompress);
         }
 
-        return new NonDisposingStream(newStream);
+        // Only wrap in NonDisposingStream when newStream IS the underlying pak stream (no wrappers
+        // created). BlowfishStream and LZ4Stream do not propagate Dispose to their inner streams,
+        // so returning them directly lets the caller properly dispose any unmanaged resources (e.g.
+        // the Marshal.AllocHGlobal buffers inside LZ4Stream) without ever touching the pak stream.
+        return ReferenceEquals(newStream, stream) ? new NonDisposingStream(newStream) : newStream;
     }
 
     /// <summary>
