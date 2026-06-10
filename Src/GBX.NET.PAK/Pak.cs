@@ -577,8 +577,24 @@ public partial class Pak : IDisposable
                 continue;
             }
 
-            // only gbx files can be checked for reference table
-            if (!await pak.CheckFileIsGbxAsync(file, cancellationToken))
+            try
+            { 
+                // only gbx files can be checked for reference table
+                if (!await pak.CheckFileIsGbxAsync(file, cancellationToken))
+                {
+                    // CPlugFileTextScript or CPlugFileText
+                    if (file.ClassId is 0x09054000)
+                    {
+                        foreach (var (hash, fileName) in ResolveHashesInTextFile(pak, file))
+                        {
+                            allPossibleFileHashes[hash] = fileName;
+                        }
+                    }
+
+                    continue;
+                }
+            }
+            catch (Exception)
             {
                 continue;
             }
@@ -592,7 +608,7 @@ public partial class Pak : IDisposable
             {
                 continue;
             }
-            catch (Exception)
+            catch
             {
                 continue;
             }
@@ -687,6 +703,37 @@ public partial class Pak : IDisposable
         }
     }
 
+    private static IEnumerable<KeyValuePair<string, string>> ResolveHashesInTextFile(Pak pak, PakFile file)
+    {
+        using var stream = pak.OpenFile(file, out _);
+        using var reader = new StreamReader(stream);
+
+        var text = reader.ReadToEnd();
+
+        if (string.IsNullOrEmpty(text))
+        {
+            yield break;
+        }
+
+        foreach (var match in ScriptNameRegex().Matches(text)
+            .Concat(IncludeRegex().Matches(text)).Cast<Match>()
+            .Concat(NameRegex().Matches(text)).Cast<Match>())
+        {
+            var filePath = Path.GetFileName(match.Groups[1].Value);
+            var hash = MD5.Compute136(filePath);
+            yield return new KeyValuePair<string, string>(hash, filePath);
+        }
+    }
+
     [GeneratedRegex("^[0-9a-fA-F]{34}$")]
     private static partial Regex HashGuessRegex();
+
+    [GeneratedRegex(@"#Const[\s]+[\w]*ScriptName[\s]+""([\w.\\/@]+)""")]
+    private static partial Regex ScriptNameRegex();
+
+    [GeneratedRegex(@"#(?:Include|Extends)[\s]+""([\w.\\/@]+)""")]
+    private static partial Regex IncludeRegex();
+
+    [GeneratedRegex(@"(?:name|url)=""([\w.\\/@]+)""")]
+    private static partial Regex NameRegex();
 }

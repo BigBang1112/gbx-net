@@ -54,14 +54,12 @@ while (argsEnumerator.MoveNext())
 
         hashesFilePath = argsEnumerator.Current;
 
-        if (!File.Exists(hashesFilePath))
+        if (File.Exists(hashesFilePath))
         {
-            throw new Exception("Hashes file does not exist.");
-        }
-
-        foreach (var (hash, fileName) in ParseHashesFromTxt(hashesFilePath))
-        {
-            hashes[hash] = fileName;
+            foreach (var (hash, fileName) in ParseHashesFromTxt(hashesFilePath))
+            {
+                hashes[hash] = fileName;
+            }
         }
 
         continue;
