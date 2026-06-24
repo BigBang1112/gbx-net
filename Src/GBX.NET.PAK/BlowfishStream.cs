@@ -95,8 +95,8 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
                 BitConverter.GetBytes(block).CopyTo(memoryBuffer, 0);
 
                 // Trick #4: Custom nextIV logic
-                // (not tested below version 17)
-                if (version >= 17)
+                // (not tested below version 12)
+                if (version >= 12)
                 {
                     iv = (iv >> 0x2f) ^ (iv * 9) ^ nextIV;
                 }
