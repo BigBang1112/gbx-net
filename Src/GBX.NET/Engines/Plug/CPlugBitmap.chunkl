@@ -86,6 +86,9 @@ CPlugBitmap 0x09011000
  version
  int
 
+0x02E
+ uint
+
 0x030
 
 0x032
