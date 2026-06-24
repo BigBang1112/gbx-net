@@ -1,18 +1,18 @@
 CGameCtnBlockUnitInfo 0x03036000
 
-0x000 [TM10, TMSX, TMF, TMT, MP4]
+0x000 [TM10, TMSX, TMF, MP3, TMT, MP4]
  int PlacePylons
  bool // AcceptPylons? true = 255, false = 0?
  bool
  int3 RelativeOffset
  CGameCtnBlockInfoClip[] Clips (external) // also called Junctions
 
-0x001 [TM10, TMSX, TMF, TMT, MP4]
+0x001 [TM10, TMSX, TMF, MP3, TMT, MP4]
  id Surface
  int Frontier
  int<Direction> Dir
 
-0x002 (skippable) [TMSX, TMF, TMT, MP4] // Underground
+0x002 (skippable) [TMSX, TMF, MP3, TMT, MP4] // Underground
  bool Underground
 
 0x003 [TMSX, TMF]
@@ -21,13 +21,13 @@ CGameCtnBlockUnitInfo 0x03036000
  int<ReplacementDir> MultiDir
  int
 
-0x004 [TMF, TMT, MP4] // AcceptPylons
+0x004 [TMF, MP3, TMT, MP4] // AcceptPylons
  int AcceptPylons
 
-0x005 [TMF, TMT, MP4] // TerrainModifierId
+0x005 [TMF, MP3, TMT, MP4] // TerrainModifierId
  id TerrainModifierId
 
-0x006 [TMT, MP4]
+0x006 [MP3, TMT, MP4]
  bool
  bool
  int
@@ -38,7 +38,7 @@ CGameCtnBlockUnitInfo 0x03036000
  bool
  int
 
-0x007 [TMT, MP4]
+0x007 [MP3, TMT, MP4]
  CGameCtnBlockInfoPylon PylonNorth (external)
  CGameCtnBlockInfoPylon PylonEast (external)
  CGameCtnBlockInfoPylon PylonSouth (external)
@@ -48,7 +48,7 @@ CGameCtnBlockUnitInfo 0x03036000
  CGameCtnBlockInfoClip BottomClip (external)
  CGameCtnBlockInfoClip TopClip (external)
 
-0x009 [TMT.v0]
+0x009 [MP3.v0, TMT.v0]
  version
  CMwNod (external) // pillar stuff?
  int
@@ -57,12 +57,12 @@ CGameCtnBlockUnitInfo 0x03036000
  v2=
   byte
 
-0x00A [TMT.v0]
+0x00A [MP3.v0, TMT.v0]
  version
  CMwNod (external) // pillar stuff?
  int
 
-0x00B [TMT.v0, MP4.v0] // bottom+top clip with dir
+0x00B [MP3.v0, TMT.v0, MP4.v0] // bottom+top clip with dir
  version
  CGameCtnBlockInfoClip BottomClip (external)
  CGameCtnBlockInfoClip TopClip (external)

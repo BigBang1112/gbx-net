@@ -10,10 +10,10 @@ CGameCtnBlockInfoVariant 0x0315B000
  iso4 SpawnLoc
  string Name
 
-0x002 [TMT, MP4]
+0x002 [MP3, TMT, MP4]
  int<EMultiDir> MultiDir
 
-0x003 [TMT.v2, MP4.v2]
+0x003 [MP3.v2, TMT.v2, MP4.v2]
  version
  int SymmetricalVariantIndex
  v0=
@@ -24,12 +24,12 @@ CGameCtnBlockInfoVariant 0x0315B000
   v2+
    byte NoPillarBelowIndex
 
-0x004 [TMT, MP4]
+0x004 [MP3, TMT, MP4]
  short
 
 0x005 [MP3.v0, TMT.v2, MP4.v2]
 
-0x006 [TMT.v8, MP4.v10]
+0x006 [MP3.v6, TMT.v8, MP4.v10]
  version
  v8-
   CMwNod
@@ -57,7 +57,7 @@ CGameCtnBlockInfoVariant 0x0315B000
        v10+
         CPlugEntitySpawner[] EntitySpawners
 
-0x007 [TMT.v0, MP4.v0]
+0x007 [MP3.v0, TMT.v0, MP4.v0]
  version
  CPlugProbe Probe (external)
 
