@@ -4,11 +4,12 @@ CGameCtnBlockInfoMobil 0x03122000
  CGameCtnSolidDecals[]_deprec SolidDecals
  int
 
-0x003 [TMT.v3, MP4.v6]
+0x003 [MP3.v0, TMT.v3, MP4.v6]
  version
  v1-
   bool U01
-  throw
+  v0=
+   CSceneMobil OldMobil
  int SolidFrequency
  v1+
   boolbyte HasGeomTransformation
