@@ -97,6 +97,8 @@ CGameCtnBlockInfo 0x0304E000
 0x02C [TMT, MP4]
  CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
 
+0x02E [MP3]
+
 0x02F [MP4.v0]
  version
  boolbyte IsPillar
