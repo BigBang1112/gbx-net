@@ -1,5 +1,15 @@
 CGameCtnBlockInfoVariant 0x0315B000
 
+0x000 [MP3]
+ CGameCtnBlockUnitInfo[] BlockUnitModels
+ int
+ bool HasManualSymmetryH
+ bool HasManualSymmetryV
+ bool HasManualSymmetryD1
+ bool HasManualSymmetryD2
+ iso4 SpawnLoc
+ string Name
+
 0x002 [TMT, MP4]
  int<EMultiDir> MultiDir
 
@@ -17,7 +27,7 @@ CGameCtnBlockInfoVariant 0x0315B000
 0x004 [TMT, MP4]
  short
 
-0x005 [TMT.v2, MP4.v2]
+0x005 [MP3.v0, TMT.v2, MP4.v2]
 
 0x006 [TMT.v8, MP4.v10]
  version

@@ -24,6 +24,8 @@ public partial class CGameCtnBlockInfoVariant
     {
         public int Version { get; set; }
 
+        public CSceneMobil? U01;
+        public CSceneMobil? U02;
         public int U03;
 
         public override void Read(CGameCtnBlockInfoVariant n, GbxReader r)
@@ -36,15 +38,19 @@ public partial class CGameCtnBlockInfoVariant
                 n.Mobils[i] = r.ReadArrayNodeRef<CGameCtnBlockInfoMobil>()!;
             }
 
-            if (Version >= 2)
+            if (Version < 2)
             {
-                n.helperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.helperSolidFidFile); // HelperSolidFid?
-                n.facultativeHelperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.facultativeHelperSolidFidFile); // FacultativeHelperSolidFid?
+                U01 = r.ReadNodeRef<CSceneMobil>();
+                U02 = r.ReadNodeRef<CSceneMobil>();
+                return;
+            }
 
-                if (Version >= 3)
-                {
-                    U03 = r.ReadInt32();
-                }
+            n.helperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.helperSolidFidFile); // HelperSolidFid?
+            n.facultativeHelperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.facultativeHelperSolidFidFile); // FacultativeHelperSolidFid?
+
+            if (Version >= 3)
+            {
+                U03 = r.ReadInt32();
             }
         }
 
@@ -58,15 +64,19 @@ public partial class CGameCtnBlockInfoVariant
                 w.WriteArrayNodeRef(n.Mobils[i]);
             }
 
-            if (Version >= 2)
+            if (Version < 2)
             {
-                w.WriteNodeRef(n.helperSolidFid, n.helperSolidFidFile);
-                w.WriteNodeRef(n.facultativeHelperSolidFid, n.facultativeHelperSolidFidFile);
+                w.WriteNodeRef(U01);
+                w.WriteNodeRef(U02);
+                return;
+            }
 
-                if (Version >= 3)
-                {
-                    w.Write(U03);
-                }
+            w.WriteNodeRef(n.helperSolidFid, n.helperSolidFidFile);
+            w.WriteNodeRef(n.facultativeHelperSolidFid, n.facultativeHelperSolidFidFile);
+
+            if (Version >= 3)
+            {
+                w.Write(U03);
             }
         }
     }
