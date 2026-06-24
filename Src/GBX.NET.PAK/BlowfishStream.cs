@@ -13,15 +13,15 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
     private int bufferIndex;
     private int totalIndex;
     private readonly byte[] memoryBuffer;
-    private readonly bool isPak18;
+    private readonly int version;
 
-    public BlowfishStream(Stream stream, byte[] key, ulong iv, bool isPak18 = false)
+    public BlowfishStream(Stream stream, byte[] key, ulong iv, int version)
     {
-        this.stream = stream ?? throw new ArgumentNullException(nameof(BlowfishStream.stream));
-        blowfish = new Blowfish(key, isPak18 ? BlowfishTrick.LittleEndianPak18 : BlowfishTrick.LittleEndian);
+        this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
+        blowfish = new Blowfish(key, version >= 18 ? BlowfishTrick.LittleEndianPak18 : BlowfishTrick.LittleEndian);
         this.iv = iv;
         memoryBuffer = new byte[8];
-        this.isPak18 = isPak18;
+        this.version = version;
     }
 
     public override bool CanRead => stream.CanRead;
@@ -81,7 +81,7 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
                 var nextIV = BinaryPrimitives.ReadUInt64LittleEndian(memoryBuffer);
 
                 // Trick #3: Switch Decrypt with Encrypt
-                if (isPak18)
+                if (version >= 18)
                 {
                     blowfish.Encrypt(memoryBuffer.AsSpan());
                 }
@@ -95,7 +95,8 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
                 BitConverter.GetBytes(block).CopyTo(memoryBuffer, 0);
 
                 // Trick #4: Custom nextIV logic
-                if (isPak18)
+                // (not tested below version 17)
+                if (version >= 17)
                 {
                     iv = (iv >> 0x2f) ^ (iv * 9) ^ nextIV;
                 }

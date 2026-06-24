@@ -192,7 +192,7 @@ public partial class Pak : IDisposable
         }
 
         var iv = await r.ReadUInt64Async(cancellationToken);
-        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version == 18);
+        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
     }
@@ -380,7 +380,7 @@ public partial class Pak : IDisposable
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, key, iv, Version >= 18);
+            var blowfish = new BlowfishStream(newStream, key, iv, Version);
 
             encryptionInitializer = new EncryptionInitializer(blowfish);
 
