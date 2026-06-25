@@ -34,7 +34,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  string SkinFile
  string GhostNickname
 
-0x004 (skippable) [TMPU]
+0x004 (skippable) [TMPU] // checkpoints TMPU
  Checkpoint[] Checkpoints
 
 0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
@@ -83,16 +83,16 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x011 [TMU] // validation TMU
 
-0x012 [TMU, TMF]
+0x012 [TMU, TMF] // old security key
  uint32
- uint128
+ uint128? SecurityKey128
 
 0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
  int
  int
 
-0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020]
- int
+0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020] // ghost version
+ int? GhostVersion
 
 0x015 [TMF] // ghost nickname
  id GhostNickname
@@ -102,7 +102,7 @@ CGameCtnGhost 0x03092000 // A ghost.
  string GhostNickname
  string GhostAvatarName
 
-0x018 [TMF, MP3]
+0x018 [TMF, MP3] // PlayerModel TMF-MP3
  ident PlayerModel
 
 0x019 (base: 0x011) [TMF] // validation TMUF
@@ -111,8 +111,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
-0x01C [MP3, TMT, MP4, TM2020]
- uint256
+0x01C [MP3, TMT, MP4, TM2020] // security key
+ uint256? SecurityKey256
 
 0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
  version
@@ -153,8 +153,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
-0x026 (skippable) [MP3, TMT, MP4, TM2020]
- uint128
+0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
+ checksum128? GhostUid128
 
 0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
  version

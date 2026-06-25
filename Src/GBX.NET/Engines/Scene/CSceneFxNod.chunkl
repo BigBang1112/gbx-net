@@ -1,7 +1,7 @@
 CSceneFxNod 0x0A03A000
 
 0x000
- CSceneFx Fx
+ CSceneFx Fx (external)
 
 0x001
  CSceneFxNod[]_deprec NodInputs

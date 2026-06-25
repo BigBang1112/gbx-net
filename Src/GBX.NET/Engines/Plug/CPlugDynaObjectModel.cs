@@ -1,12 +1,17 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Components;
+
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugDynaObjectModel : IVersionable
 {
 	private bool isStatic;
 	private bool dynamizeOnSpawn;
 	private CPlugSolid2Model? mesh;
-	private CPlugSurface? dynaShape;
+    private GbxRefTableFile? meshFile;
+    private CPlugSurface? dynaShape;
+    private GbxRefTableFile? dynaShapeFile;
     private CPlugSurface? staticShape;
+	private GbxRefTableFile? staticShapeFile;
     private float breakSpeedKmh;
     private float mass;
 	private float lightAliveDurationScMin;
@@ -21,7 +26,8 @@ public partial class CPlugDynaObjectModel : IVersionable
 	private int u08;
 	private int u09;
 	private CPlugAnimLocSimple? locAnim;
-	private int u10;
+    private GbxRefTableFile? locAnimFile;
+    private int u10;
 	private bool locAnimIsPhysical;
 	private CPlugDynaWaterModel? waterModel;
 
@@ -29,9 +35,15 @@ public partial class CPlugDynaObjectModel : IVersionable
 
 	public bool IsStatic { get => isStatic; set => isStatic = value; }
 	public bool DynamizeOnSpawn { get => dynamizeOnSpawn; set => dynamizeOnSpawn = value; }
-	public CPlugSolid2Model? Mesh { get => mesh; set => mesh = value; }
-	public CPlugSurface? DynaShape { get => dynaShape; set => dynaShape = value; }
-    public CPlugSurface? StaticShape { get => staticShape; set => staticShape = value; }
+    public CPlugSolid2Model? Mesh { get => meshFile?.GetNode(ref mesh) ?? mesh; set => mesh = value; }
+    public GbxRefTableFile? MeshFile { get => meshFile; set => meshFile = value; }
+    public CPlugSolid2Model? GetMesh(GbxReadSettings settings = default, bool exceptions = false) => meshFile?.GetNode(ref mesh, settings, exceptions) ?? mesh;
+    public CPlugSurface? DynaShape { get => dynaShapeFile?.GetNode(ref dynaShape) ?? dynaShape; set => dynaShape = value; }
+    public GbxRefTableFile? DynaShapeFile { get => dynaShapeFile; set => dynaShapeFile = value; }
+    public CPlugSurface? GetDynaShape(GbxReadSettings settings = default, bool exceptions = false) => dynaShapeFile?.GetNode(ref dynaShape, settings, exceptions) ?? dynaShape;
+    public CPlugSurface? StaticShape { get => staticShapeFile?.GetNode(ref staticShape) ?? staticShape; set => staticShape = value; }
+    public GbxRefTableFile? StaticShapeFile { get => staticShapeFile; set => staticShapeFile = value; }
+    public CPlugSurface? GetStaticShape(GbxReadSettings settings = default, bool exceptions = false) => staticShapeFile?.GetNode(ref staticShape, settings, exceptions) ?? staticShape;
     public float BreakSpeedKmh { get => breakSpeedKmh; set => breakSpeedKmh = value; }
     public float Mass { get => mass; set => mass = value; }
 	public float LightAliveDurationScMin { get => lightAliveDurationScMin; set => lightAliveDurationScMin = value; }
@@ -45,8 +57,10 @@ public partial class CPlugDynaObjectModel : IVersionable
 	public byte U07 { get => u07; set => u07 = value; }
 	public int U08 { get => u08; set => u08 = value; }
 	public int U09 { get => u09; set => u09 = value; }
-	public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
-	public int U10 { get => u10; set => u10 = value; }
+	public CPlugAnimLocSimple? LocAnim { get => locAnimFile?.GetNode(ref locAnim) ?? locAnim; set => locAnim = value; }
+    public GbxRefTableFile? LocAnimFile { get => locAnimFile; set => locAnimFile = value; }
+    public CPlugAnimLocSimple? GetLocAnim(GbxReadSettings settings = default, bool exceptions = false) => locAnimFile?.GetNode(ref locAnim, settings, exceptions) ?? locAnim;
+    public int U10 { get => u10; set => u10 = value; }
 	public bool LocAnimIsPhysical { get => locAnimIsPhysical; set => locAnimIsPhysical = value; }
 	public CPlugDynaWaterModel? WaterModel { get => waterModel; set => waterModel = value; }
 
@@ -55,9 +69,9 @@ public partial class CPlugDynaObjectModel : IVersionable
 		rw.VersionInt32(this);
 		rw.Boolean(ref isStatic);
 		rw.Boolean(ref dynamizeOnSpawn);
-		rw.NodeRef<CPlugSolid2Model>(ref mesh);
-		rw.NodeRef<CPlugSurface>(ref dynaShape);
-		rw.NodeRef<CPlugSurface>(ref staticShape);
+		rw.NodeRef<CPlugSolid2Model>(ref mesh, ref meshFile);
+		rw.NodeRef<CPlugSurface>(ref dynaShape, ref dynaShapeFile);
+		rw.NodeRef<CPlugSurface>(ref staticShape, ref staticShapeFile);
 		rw.Single(ref breakSpeedKmh);
         rw.Single(ref mass);
         rw.Single(ref lightAliveDurationScMin);
@@ -71,7 +85,7 @@ public partial class CPlugDynaObjectModel : IVersionable
 		rw.Byte(ref u07);
 		rw.Int32(ref u08);
 		rw.Int32(ref u09);
-		rw.NodeRef(ref locAnim);
+		rw.NodeRef(ref locAnim, ref locAnimFile);
 		rw.Int32(ref u10);
 		rw.Boolean(ref locAnimIsPhysical);
 		rw.NodeRef<CPlugDynaWaterModel>(ref waterModel);

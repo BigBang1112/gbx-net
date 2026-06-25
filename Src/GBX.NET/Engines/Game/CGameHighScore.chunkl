@@ -1,13 +1,13 @@
 CGameHighScore 0x03047000
 
 0x002
- int
- int
- int
- string
- string
+ int Time
+ int Rank
+ int Count
+ string Name
+ string Score
  string
 
 0x004 (skippable)
  string
- string
+ string GhostUrl

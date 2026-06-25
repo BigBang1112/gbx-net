@@ -1,5 +1,7 @@
-﻿using GBX.NET.Components;
+﻿using GBX.NET;
+using GBX.NET.Components;
 using GBX.NET.Exceptions;
+using GBX.NET.LZO;
 using GBX.NET.PAK;
 using System.IO.Compression;
 
@@ -147,6 +149,8 @@ foreach (var pakFilePath in pakFilePaths)
             Console.WriteLine("Bruteforcing completed.");
         }
     }
+
+    Gbx.LZO = new Lzo();
 
     var pakId = Path.GetFileNameWithoutExtension(pakFilePath);
 

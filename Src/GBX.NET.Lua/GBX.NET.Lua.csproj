@@ -15,6 +15,10 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
         <LangVersion>14</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>

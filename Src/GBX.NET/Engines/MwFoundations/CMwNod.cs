@@ -463,6 +463,10 @@ public partial class CMwNod : IClass
         }
     }
 
+    bool IClass.IsWriteSupported => IsWriteSupported;
+
+    protected internal virtual bool IsWriteSupported => true;
+
     /// <summary>
     /// Checks if the node is accepted in the given game version without a game crash.
     /// </summary>

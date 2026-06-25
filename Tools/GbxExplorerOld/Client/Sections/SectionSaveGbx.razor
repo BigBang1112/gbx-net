@@ -52,7 +52,7 @@
                 _ => null
             };
 
-            var writingNotSupported = node is not null && !ClassManager.IsClassWriteSupported(ClassManager.GetId(node.GetType()).GetValueOrDefault());
+            var writingNotSupported = node is not null && Attribute.IsDefined(node.GetType(), typeof(WriteNotSupportedAttribute));
 
             <div class="save-params">
 

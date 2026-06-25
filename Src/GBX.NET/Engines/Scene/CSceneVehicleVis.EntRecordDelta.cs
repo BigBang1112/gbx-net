@@ -114,8 +114,8 @@ public partial class CSceneVehicleVis
 
         public float Gear
         {
-            get => gear / 5f;
-            set => gear = (byte)AdditionalMath.Clamp(Math.Round(value * 5f), 0, 255);
+            get => (gear - 1) / 4f;
+            set => gear = (byte)AdditionalMath.Clamp(Math.Round(value * 4f + 1), 0, 255);
         }
 
         public byte RPM

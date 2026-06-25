@@ -179,7 +179,7 @@ CGameCtnChallenge 0x03043000 // A map.
  string Comments
 
 0x029 (skippable) [TMF, MP3, TMT, MP4, TM2020] // password
- uint128 HashedPassword
+ checksum128 HashedPassword
  uint Crc32
 
 0x02A [TMF, MP3, TMT, MP4, TM2020] // CreatedWithSimpleEditor

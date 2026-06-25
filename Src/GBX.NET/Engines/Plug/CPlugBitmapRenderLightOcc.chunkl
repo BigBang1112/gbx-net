@@ -4,4 +4,4 @@ CPlugBitmapRenderLightOcc 0x0909F000
 0x000
  float FovY
  float Opacity
- CPlugBitmap BitmapToModulate
+ CPlugBitmap BitmapToModulate (external)

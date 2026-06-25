@@ -72,14 +72,32 @@ public partial class CGameCtnGhost
     [AppliedWithChunk<Chunk03092028>]
     public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
-    private UInt256? validate_TitleChecksum;
+    private Checksum256? validate_TitleChecksum;
     [AppliedWithChunk<Chunk03092028>]
-    public UInt256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
+    public Checksum256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
 
     private int? validate_ValidationSeed;
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
+
+    public string GhostVersionString
+    {
+        get
+        {
+            if (ghostVersion >= 1 && ghostVersion <= 9998)
+            {
+                return $"TMr.{ghostVersion}";
+            }
+
+            if (ghostVersion >= 10000)
+            {
+                return $"VSKr.{ghostVersion - 9999}";
+            }
+
+            return "Unknown";
+        }
+    }
 
     /// <summary>
     /// Retrieves inputs from <see cref="Inputs"/> that are displayable. Currently it only makes a difference with Competition Patch 2 features.
@@ -207,7 +225,7 @@ public partial class CGameCtnGhost
 
         private void ReadInputs(CGameCtnGhost n, GbxReader r)
         {
-            var inputNames = r.ReadArrayId();
+            Span<string> inputNames = r.ReadArrayId();
 
             var numInputs = r.ReadInt32();
             U02 = r.ReadInt32(); // CountLimit?
@@ -326,7 +344,7 @@ public partial class CGameCtnGhost
             }
 
             rw.String(ref n.validate_TitleId);
-            rw.UInt256(ref n.validate_TitleChecksum);
+            rw.Checksum256(ref n.validate_TitleChecksum);
         }
     }
 
@@ -356,7 +374,7 @@ public partial class CGameCtnGhost
             rw.UnixTime(ref n.walltimeStartTimestamp);
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);
-            rw.UInt256(ref n.validate_TitleChecksum);
+            rw.Checksum256(ref n.validate_TitleChecksum);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
             rw.Int32(ref n.validate_ValidationSeed);

@@ -1,0 +1,31 @@
+CControlEffectMaster 0x0701C000
+
+0x000
+ CControlEffect FocusEffect (external)
+ CControlEffect FocusGainedEffect (external)
+ CControlEffect FocusLostEffect (external)
+ CControlEffect FocusGainedByAnotherEffect (external)
+ CControlEffect FocusLostByAnotherEffect (external)
+ CControlEffect SleepingEffect (external)
+ CControlEffect ShowingEffect (external)
+ CControlEffect HidingEffect (external)
+ CControlEffect ActionEffect (external)
+
+0x001
+ bool
+ int
+
+0x002
+ CControlEffect FocusEffect (external)
+ CControlEffect FocusGainedEffect (external)
+ CControlEffect FocusLostEffect (external)
+ CControlEffect FocusGainedByAnotherEffect (external)
+ CControlEffect FocusLostByAnotherEffect (external)
+ CControlEffect SleepingEffect (external)
+ CControlEffect ShowingEffect (external)
+ CControlEffect HidingEffect (external)
+ CControlEffect ActionEffect (external)
+ CControlEffect ManagedEffect (external)
+
+0x003
+ CMwRefBuffer SpecialEffect (external)

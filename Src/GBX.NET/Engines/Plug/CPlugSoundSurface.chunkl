@@ -1,6 +1,8 @@
 CPlugSoundSurface 0x0905E000
 - inherits: CPlugSound
 
+0x000 (ignore)
+
 0x002
  version
  float

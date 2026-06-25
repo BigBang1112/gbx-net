@@ -15,6 +15,8 @@ public interface IClass
     static abstract uint Id { get; }
 #endif
 
+    bool IsWriteSupported { get; }
+
     /// <summary>
     /// A set of body chunks. Sorting by chunk ID is not always guaranteed.
     /// </summary>

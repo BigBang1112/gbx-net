@@ -220,26 +220,30 @@ internal partial class LZ4Stream : Stream
         throw new NotImplementedException();
     }
 
+    ~LZ4Stream() => FreeNativeResources();
+
     protected override void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            if (dictionary != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(dictionary);
-                dictionary = IntPtr.Zero;
-            }
-            if (ringBuffer != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(ringBuffer);
-                ringBuffer = IntPtr.Zero;
-            }
-            if (lz4_stream != IntPtr.Zero)
-            {
-                LZ4_freeStreamDecode(lz4_stream);
-                lz4_stream = IntPtr.Zero;
-            }
-        }
+        FreeNativeResources();
         base.Dispose(disposing);
+    }
+
+    private void FreeNativeResources()
+    {
+        if (dictionary != IntPtr.Zero)
+        {
+            Marshal.FreeHGlobal(dictionary);
+            dictionary = IntPtr.Zero;
+        }
+        if (ringBuffer != IntPtr.Zero)
+        {
+            Marshal.FreeHGlobal(ringBuffer);
+            ringBuffer = IntPtr.Zero;
+        }
+        if (lz4_stream != IntPtr.Zero)
+        {
+            LZ4_freeStreamDecode(lz4_stream);
+            lz4_stream = IntPtr.Zero;
+        }
     }
 }

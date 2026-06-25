@@ -9,7 +9,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWri
     {
         _ = header.Basic.Write(writer);
 
-        if (!ClassManager.IsClassWriteSupported(header.ClassId))
+        if (node?.IsWriteSupported == false)
         {
             throw new ClassWriteNotSupportedException(header.ClassId);
         }

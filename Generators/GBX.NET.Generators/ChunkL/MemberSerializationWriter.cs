@@ -876,6 +876,8 @@ internal sealed class MemberSerializationWriter
             "int128" => "Int128",
             "uint128" => "UInt128",
             "uint256" => "UInt256",
+            "checksum128" => "Checksum128",
+            "checksum256" => "Checksum256",
             "int64" or "long" => nameof(Int64),
             "uint64" or "ulong" => nameof(UInt64),
             "uint32" or "uint" => nameof(UInt32),

@@ -41,6 +41,11 @@ public sealed class PakFile
 
     public override string ToString()
     {
+        if (string.IsNullOrWhiteSpace(FolderPath))
+        {
+            return Name;
+        }
+
         return $"{Name}, Folder: {FolderPath}";
     }
 }

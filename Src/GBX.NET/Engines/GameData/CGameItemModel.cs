@@ -51,7 +51,14 @@ public partial class CGameItemModel
     public CPlugVFXFile? VFX { get => vfx; set => vfx = value; }
 
     private CPlugGameSkinAndFolder? materialModifier;
-    public CPlugGameSkinAndFolder? MaterialModifier { get => materialModifier; set => materialModifier = value; }
+    public CPlugGameSkinAndFolder? MaterialModifier
+    {
+        get => materialModifierFile?.GetNode(ref materialModifier) ?? materialModifier;
+        set => materialModifier = value;
+    }
+    private GbxRefTableFile? materialModifierFile;
+    public GbxRefTableFile? MaterialModifierFile { get => materialModifierFile; set => materialModifierFile = value; }
+    public CPlugGameSkinAndFolder? GetMaterialModifier(GbxReadSettings settings = default) => materialModifierFile?.GetNode(ref materialModifier, settings) ?? materialModifier;
 
     public partial class Chunk2E002019 : IVersionable
     {
@@ -123,7 +130,7 @@ public partial class CGameItemModel
 
                                         if (Version >= 15)
                                         {
-                                            rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier);
+                                            rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier, ref n.materialModifierFile);
                                         }
                                     }
                                 }

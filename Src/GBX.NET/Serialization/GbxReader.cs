@@ -41,6 +41,8 @@ public partial interface IGbxReader : IDisposable
     Int128 ReadInt128();
     UInt128 ReadUInt128();
     UInt256 ReadUInt256();
+    Checksum128 ReadChecksum128();
+    Checksum256 ReadChecksum256();
     Int2 ReadInt2();
     Int3 ReadInt3();
     Int4 ReadInt4();
@@ -408,6 +410,18 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public UInt256 ReadUInt256()
     {
         return new UInt256(ReadUInt64(), ReadUInt64(), ReadUInt64(), ReadUInt64());
+    }
+
+    public Checksum128 ReadChecksum128()
+    {
+        var a = ReadUInt64();
+        var b = ReadUInt64();
+        return new Checksum128(a, b);
+    }
+
+    public Checksum256 ReadChecksum256()
+    {
+        return new Checksum256(ReadUInt64(), ReadUInt64(), ReadUInt64(), ReadUInt64());
     }
 
     public Int2 ReadInt2()
@@ -974,12 +988,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             // PackDesc version mismatch. but it's fine
         }
 
-        var checksum = default(UInt256?);
+        var checksum = default(Checksum256?);
         var locatorUrl = "";
 
         if (version >= 3)
         {
-            checksum = ReadUInt256();
+            checksum = ReadChecksum256();
         }
 
         var filePath = ReadString();

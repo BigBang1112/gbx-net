@@ -11,9 +11,12 @@ public partial class CPlugVehicleVisModel
 
         public CPlugVehicleVisModelShared? U01;
         public Components.GbxRefTableFile? U01File;
-        public CMwNod? U02;
-        public CMwNod? U03;
-        public CMwNod? U04;
+        public CPlugSolid? U02;
+        public Components.GbxRefTableFile? U02File;
+        public CPlugSolid? U03;
+        public Components.GbxRefTableFile? U03File;
+        public CPlugSolid? U04;
+        public Components.GbxRefTableFile? U04File;
         public CPlugLocatedSound? U06;
         public CPlugLocatedSound? U07;
         public CPlugLocatedSound? U08;
@@ -78,9 +81,9 @@ public partial class CPlugVehicleVisModel
         {
             rw.VersionInt32(this);
             rw.NodeRef<CPlugVehicleVisModelShared>(ref U01, ref U01File);
-            rw.NodeRef<CMwNod>(ref U02);
-            rw.NodeRef<CMwNod>(ref U03);
-            rw.NodeRef<CMwNod>(ref U04);
+            rw.NodeRef<CPlugSolid>(ref U02, ref U02File);
+            rw.NodeRef<CPlugSolid>(ref U03, ref U03File);
+            rw.NodeRef<CPlugSolid>(ref U04, ref U04File);
             if (Version >= 5)
             {
                 rw.Int32(ref n.surfVersion);

@@ -2,7 +2,7 @@
 
 public sealed partial class Pak6 : Pak
 {
-    public byte[] Checksum { get; private set; } = [];
+    public byte[] Checksum { get; private set; }
     public uint HeaderFlags { get; private set; }
     public string Comments { get; private set; } = string.Empty;
     public string CreationBuildInfo { get; private set; } = string.Empty;
@@ -22,8 +22,9 @@ public sealed partial class Pak6 : Pak
     public bool IsDataPrivate => (HeaderFlags & 4) != 0;
     public override bool IsHeaderEncrypted => IsHeaderPrivate || UseDefaultHeaderKey;
 
-    internal Pak6(Stream stream, byte[]? key, int version) : base(stream, key, version)
+    internal Pak6(Stream stream, byte[]? key, int version, byte[] checksum) : base(stream, key, version)
     {
+        Checksum = checksum;
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -36,7 +37,6 @@ public sealed partial class Pak6 : Pak
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     private async Task ReadUnencryptedHeaderAsync(AsyncGbxReader r, int version, CancellationToken cancellationToken)
     {
-        Checksum = await r.ReadBytesAsync(32, cancellationToken);
         HeaderFlags = await r.ReadUInt32Async(cancellationToken);
 
         if (version >= 15)

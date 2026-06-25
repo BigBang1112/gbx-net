@@ -3,6 +3,7 @@ using GBX.NET.Crypto;
 using GBX.NET.Exceptions;
 using GBX.NET.PAK.Exceptions;
 using NativeSharpZlib;
+using System.Buffers.Binary;
 using System.Collections.Immutable;
 using System.IO.Compression;
 using System.Runtime.CompilerServices;
@@ -54,17 +55,55 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
+    /// Computes the Blowfish key used to decrypt a Pak file, given the decrypted master server key and the Pak checksum (32 bytes). The resulting key is the encryption key, so make sure you set <c>keyType</c> to <see cref="KeyType.EncryptionKey"/>
+    /// </summary>
+    /// <param name="msKey">Decrypted key as a 16-byte array.</param>
+    /// <param name="checksum">Pak checksum, exactly 32 bytes.</param>
+    /// <returns>16-byte computed Blowfish key.</returns>
+    public static byte[] ComputeKeyFromMasterServer(byte[] msKey, byte[] checksum)
+    {
+        ArgumentNullException.ThrowIfNull(checksum);
+        ArgumentNullException.ThrowIfNull(msKey);
+
+        if (checksum.Length != 32)
+            throw new ArgumentException("Checksum must be exactly 32 bytes.", nameof(checksum));
+
+        if (msKey.Length != 16)
+            throw new ArgumentException("Key must be exactly 16 bytes.", nameof(msKey));
+
+        var derivedKey = new byte[16];
+
+        for (var i = 0; i < 8; i++)
+        {
+            derivedKey[i] = (byte)(msKey[15 - i] ^ checksum[i]);
+            derivedKey[i + 8] = (byte)(msKey[7 - i] ^ checksum[i + 16]);
+        }
+
+        return derivedKey;
+    }
+
+    /// <summary>
+    /// Computes the Blowfish key used to decrypt a Pak file, given the base key. The resulting key is the encryption key, so make sure you set <c>keyType</c> to <see cref="KeyType.EncryptionKey"/> in parse methods.
+    /// </summary>
+    /// <param name="baseKey">Base key as a 16-byte array.</param>
+    /// <returns>16-byte computed Blowfish key.</returns>
+    public static byte[] ComputeKey(byte[] baseKey)
+    {
+        return MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(baseKey) + Magic));
+    }
+
+    /// <summary>
     /// Parses the Pak file from the stream. Should be disposed after use, as it keeps the file open (currently at least).
     /// </summary>
     /// <param name="stream">Stream.</param>
     /// <param name="key">Key for decryption.</param>
-    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
+    /// <param name="keyType">Type of the key provided.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
-    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
 
@@ -77,14 +116,41 @@ public partial class Pak : IDisposable
 
         var version = await r.ReadInt32Async(cancellationToken);
 
-        if (key is not null && computeKey)
-        {
-            key = MD5.Compute(Encoding.ASCII.GetBytes(Convert.ToHexString(key) + Magic));
-        }
+        Pak pak;
 
-        var pak = version < 6
-            ? new Pak(stream, key, version)
-            : new Pak6(stream, key, version);
+        if (version < 6)
+        {
+            if (keyType == KeyType.MasterServerKey)
+            {
+                throw new ArgumentException("Master server key cannot be used for Pak versions below 6, as they don't have the checksum in the header.", nameof(keyType));
+            }
+
+            if (keyType == KeyType.BaseKey && key is not null)
+            {
+                key = ComputeKey(key);
+            }
+
+            pak = new Pak(stream, key, version);
+        }
+        else
+        {
+            var checksum = await r.ReadBytesAsync(32, cancellationToken);
+
+            if (key is not null)
+            {
+                switch (keyType)
+                {
+                    case KeyType.BaseKey:
+                        key = ComputeKey(key);
+                        break;
+                    case KeyType.MasterServerKey:
+                        key = ComputeKeyFromMasterServer(key, checksum);
+                        break;
+                }
+            }
+
+            pak = new Pak6(stream, key, version, checksum);
+        }
 
         await pak.ReadHeaderAsync(stream, r, version, cancellationToken);
 
@@ -100,24 +166,25 @@ public partial class Pak : IDisposable
             return;
         }
 
-        byte[] keyForHeader;
-        if (version >= 18 && !IsHeaderPrivate)
-        {
-            keyForHeader = headerKey;
-        }
-        else if (key is null)
+        if (IsHeaderPrivate && key is null)
         {
             return;
         }
-        else if (version < 6) // || !UseDefaultHeaderKey ??
-        {
-            keyForHeader = key;
-        }
-        else
-        {
-            keyForHeader = new byte[key.Length];
-            Array.Copy(key, keyForHeader, key.Length);
 
+        var keyForHeader = new byte[16];
+
+        if (IsHeaderPrivate)
+        {
+            if (key is null)
+            {
+                throw new Exception("Key is required for header decryption.");
+            }
+
+            Array.Copy(key, keyForHeader, 16);
+        }
+
+        if (UseDefaultHeaderKey)
+        {
             for (var i = 0; i < 16; i++)
             {
                 keyForHeader[i] ^= headerKey[i];
@@ -125,7 +192,7 @@ public partial class Pak : IDisposable
         }
 
         var iv = await r.ReadUInt64Async(cancellationToken);
-        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version == 18);
+        var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
     }
@@ -135,15 +202,15 @@ public partial class Pak : IDisposable
     /// </summary>
     /// <param name="filePath">File path.</param>
     /// <param name="key">Key for decryption.</param>
-    /// <param name="computeKey">Expects the key to be a "base" key and will calculate the actual decryption key if set to <see langword="true"/>. Use <see langword="false"/> if you already have the computed key.</param>
+    /// <param name="keyType">Type of the key for decryption.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
     /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
-    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, bool computeKey = true, CancellationToken cancellationToken = default)
+    public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        return await ParseAsync(fs, key, computeKey, cancellationToken);
+        return await ParseAsync(fs, key, keyType, cancellationToken);
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -305,10 +372,7 @@ public partial class Pak : IDisposable
         if (file.IsEncrypted)
         {
             var ivBuffer = new byte[8];
-            if (stream.Read(ivBuffer, 0, 8) != 8)
-            {
-                throw new EndOfStreamException("Could not read IV from file.");
-            }
+            stream.ReadExactly(ivBuffer);
             var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
             if (key is null)
@@ -316,7 +380,7 @@ public partial class Pak : IDisposable
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, key, iv, Version == 18);
+            var blowfish = new BlowfishStream(newStream, key, iv, Version);
 
             encryptionInitializer = new EncryptionInitializer(blowfish);
 
@@ -334,7 +398,11 @@ public partial class Pak : IDisposable
                 new NativeZlibStream(newStream, CompressionMode.Decompress);
         }
 
-        return new NonDisposingStream(newStream);
+        // Only wrap in NonDisposingStream when newStream IS the underlying pak stream (no wrappers
+        // created). BlowfishStream and LZ4Stream do not propagate Dispose to their inner streams,
+        // so returning them directly lets the caller properly dispose any unmanaged resources (e.g.
+        // the Marshal.AllocHGlobal buffers inside LZ4Stream) without ever touching the pak stream.
+        return ReferenceEquals(newStream, stream) ? new NonDisposingStream(newStream) : newStream;
     }
 
     /// <summary>
@@ -420,6 +488,11 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<bool> CheckFileIsGbxAsync(PakFile file, CancellationToken cancellationToken = default)
     {
+        if (file.Size == 0)
+        {
+            return false;
+        }
+
         using var stream = OpenFile(file, out var _);
         return await Gbx.IsGbxAsync(stream, cancellationToken);
     }
@@ -443,6 +516,7 @@ public partial class Pak : IDisposable
     /// <param name="game"></param>
     /// <param name="progress"></param>
     /// <param name="keepUnresolvedHashes"></param>
+    /// <param name="additionalFileHashes">Additional file hashes to reference that are not found during the scan.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
@@ -450,6 +524,7 @@ public partial class Pak : IDisposable
         PakListGame game = PakListGame.TM,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool keepUnresolvedHashes = false,
+        IEnumerable<string>? additionalFileHashes = null,
         CancellationToken cancellationToken = default)
     {
         var pakListFilePath = Path.Combine(directoryPath, PakList.FileName);
@@ -465,6 +540,7 @@ public partial class Pak : IDisposable
             pakList.ToDictionary(x => x.Key, x => (byte[]?)Convert.FromHexString(x.Value.Key)),
             progress,
             keepUnresolvedHashes,
+            additionalFileHashes,
             cancellationToken);
     }
 
@@ -475,6 +551,7 @@ public partial class Pak : IDisposable
     /// <param name="keys"></param>
     /// <param name="progress"></param>
     /// <param name="keepUnresolvedHashes"></param>
+    /// <param name="additionalFileHashes">Additional file hashes to reference that are not found during the scan.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Dictionary where the key is the hash (file name) and value is the true resolved file name.</returns>
     public static async Task<Dictionary<string, string>> BruteforceFileHashesAsync(
@@ -482,19 +559,42 @@ public partial class Pak : IDisposable
         Dictionary<string, byte[]?> keys,
         IProgress<KeyValuePair<string, string>>? progress = null,
         bool keepUnresolvedHashes = false,
+        IEnumerable<string>? additionalFileHashes = null,
         CancellationToken cancellationToken = default)
     {
         var allPossibleFileHashes = new Dictionary<string, string>();
-        var foundFileNames = new List<string>();
+        var foundFileNames = new HashSet<string>(additionalFileHashes ?? []);
 
         await foreach (var (pak, file) in EnumeratePakFilesAsync(directoryPath, keys, cancellationToken))
         {
-            cancellationToken.ThrowIfCancellationRequested(); 
-            
+            cancellationToken.ThrowIfCancellationRequested();
+
             foundFileNames.Add(file.Name);
 
-            // only gbx files can be checked for reference table
-            if (!await pak.CheckFileIsGbxAsync(file, cancellationToken))
+            // skip non-decryptable files
+            if (pak.key is null && file.IsEncrypted)
+            {
+                continue;
+            }
+
+            try
+            { 
+                // only gbx files can be checked for reference table
+                if (!await pak.CheckFileIsGbxAsync(file, cancellationToken))
+                {
+                    // CPlugFileTextScript or CPlugFileText
+                    if (file.ClassId is 0x09054000)
+                    {
+                        foreach (var (hash, fileName) in ResolveHashesInTextFile(pak, file))
+                        {
+                            allPossibleFileHashes[hash] = fileName;
+                        }
+                    }
+
+                    continue;
+                }
+            }
+            catch (Exception)
             {
                 continue;
             }
@@ -508,7 +608,7 @@ public partial class Pak : IDisposable
             {
                 continue;
             }
-            catch (Exception)
+            catch
             {
                 continue;
             }
@@ -583,20 +683,57 @@ public partial class Pak : IDisposable
             var identifier = Path.GetFileNameWithoutExtension(filePath);
             var key = keys.GetValueOrDefault(identifier);
 
-            if (key is null)
+            Pak pak;
+
+            try
             {
-
+                pak = await ParseAsync(filePath, key, cancellationToken: cancellationToken);
             }
-
-            await using var pak = await ParseAsync(filePath, key, cancellationToken: cancellationToken);
+            catch
+            {
+                continue;
+            }
 
             foreach (var file in pak.Files.Values)
             {
                 yield return (pak, file);
             }
+
+            await pak.DisposeAsync();
+        }
+    }
+
+    private static IEnumerable<KeyValuePair<string, string>> ResolveHashesInTextFile(Pak pak, PakFile file)
+    {
+        using var stream = pak.OpenFile(file, out _);
+        using var reader = new StreamReader(stream);
+
+        var text = reader.ReadToEnd();
+
+        if (string.IsNullOrEmpty(text))
+        {
+            yield break;
+        }
+
+        foreach (var match in ScriptNameRegex().Matches(text)
+            .Concat(IncludeRegex().Matches(text)).Cast<Match>()
+            .Concat(NameRegex().Matches(text)).Cast<Match>())
+        {
+            var filePath = Path.GetFileName(match.Groups[1].Value);
+            var hash = MD5.Compute136(filePath);
+            yield return new KeyValuePair<string, string>(hash, filePath);
         }
     }
 
     [GeneratedRegex("^[0-9a-fA-F]{34}$")]
     private static partial Regex HashGuessRegex();
+
+    [GeneratedRegex(@"#Const[\s]+[\w]*ScriptName[\s]+""([\w.\\/@]+)""")]
+    private static partial Regex ScriptNameRegex();
+
+    [GeneratedRegex(@"#(?:Include|Extends)[\s]+""([\w.\\/@]+)""")]
+    private static partial Regex IncludeRegex();
+
+    [GeneratedRegex(@"(?:name|url)=""([\w.\\/@]+)""")]
+    private static partial Regex NameRegex();
 }

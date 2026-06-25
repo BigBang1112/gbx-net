@@ -41,6 +41,7 @@ public partial class CGameGhost
         public int Version { get; set; }
 
         public int? U01 { get; set; }
+        public int? U02 { get; set; }
         public int[]? Offsets { get; set; }
 
         public int? FirstSampleOffset { get; set; }
@@ -161,11 +162,16 @@ public partial class CGameGhost
                 }
             }
 
-            // guessed. there's some difference between TM1 and TM2 here, pls investigate soon
-            if (Version >= 10 || !IsFixedTimeStep)
+            if (!IsFixedTimeStep)
             {
                 // CGameGhostTMData::ArchiveStateTimes
                 stateTimes = r.ReadArray<int>();
+            }
+
+            // guessed. there's some difference between TM1 and TM2 here, pls investigate soon
+            if (Version >= 10)
+            {
+                U02 = r.ReadInt32();
             }
 
             if (r.BaseStream.Position != r.BaseStream.Length)
@@ -269,10 +275,15 @@ public partial class CGameGhost
                 }
             }
 
-            if (Version >= 10 || !IsFixedTimeStep)
+            if (!IsFixedTimeStep)
             {
                 // CGameGhostTMData::ArchiveStateTimes
                 w.WriteArray(stateTimes);
+            }
+
+            if (Version >= 10)
+            {
+                w.Write(U02.GetValueOrDefault());
             }
         }
 

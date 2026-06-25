@@ -1,0 +1,9 @@
+CGameLeagueManager 0x03049000
+
+0x000
+ versionb
+ int CacheDuration
+ bool Updated
+ if Updated
+  systemtime Timestamp
+  CGameLeague[]_deprec Leagues

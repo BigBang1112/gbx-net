@@ -23,4 +23,4 @@ CGameItemPlacementParam 0x2E020000
 0x004 (skippable, ignore)
 
 0x005 (skippable)
- NPlugItemPlacement_SClass* PlacementClass
+ NPlugItemPlacement_SClass* PlacementClass (external)
