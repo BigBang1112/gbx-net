@@ -122,6 +122,7 @@
     <Project Path="Tools/PakToZip/PakToZip.csproj" />
     <Project Path="Tools/ParseRepeater/ParseRepeater.csproj" />
     <Project Path="Tools/PopulateExtensions/PopulateExtensions.csproj" Id="a4d3d9a7-2e22-4cfa-bf7c-6c61cf1236f9" />
+    <Project Path="Tools/SplitFileHashesPerPak/SplitFileHashesPerPak.csproj" Id="3b8de8d8-dfab-4f67-bf8d-871caf36b57d" />
   </Folder>
   <Folder Name="/Tools/Old Gbx Explorer/">
     <Project Path="Tools/GbxExplorerOld/Client/GbxExplorerOld.Client.csproj" />
