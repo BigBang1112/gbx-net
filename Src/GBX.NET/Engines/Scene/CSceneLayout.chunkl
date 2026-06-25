@@ -127,9 +127,9 @@ archive Unknown2
  id
  transquat
  int
- CPlugBitmap
- CPlugBitmap
- CPlugBitmap
+ CPlugBitmap (external)
+ CPlugBitmap (external)
+ CPlugBitmap (external)
  GxLight
  int
 
@@ -138,7 +138,7 @@ archive Unknown3
  transquat
  short
  ulong
- CPlugSolid
+ CPlugSolid (external)
  v4+
   CPlugSolid2Model
   v5+

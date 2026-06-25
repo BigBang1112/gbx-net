@@ -13,7 +13,7 @@ CPlugLight 0x0901D000
 
 0x003
  version
- CPlugFileImg ImageAnim
+ CPlugFileImg ImageAnim (external)
  float AnimPeriodMin
  float AnimPeriodMax
  v1+

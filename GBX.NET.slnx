@@ -25,6 +25,7 @@
     <File Path="Resources/CollectionId.txt" />
     <File Path="Resources/Engine.txt" />
     <File Path="Resources/Extensions.txt" />
+    <File Path="Resources/FileHashes_MP3.txt" />
     <File Path="Resources/FileHashes_MP4.txt" />
     <File Path="Resources/FileHashes_TM2020.txt" />
     <File Path="Resources/FileHashes_TMT.txt" />

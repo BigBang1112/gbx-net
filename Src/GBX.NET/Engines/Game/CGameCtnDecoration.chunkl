@@ -50,4 +50,4 @@ CGameCtnDecoration 0x03038000
  version
  CGameCtnChallenge DecoMap (external)
  v1+
-  CMwNod DecoMapLightMap // Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
+  CMwNod DecoMapLightMap (external) // Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
