@@ -37,17 +37,18 @@ public partial class CPlugSurface
 
             if (rw.Reader is not null)
             {
-                n.Surf = ReadSurf(rw.Reader, n.surfVersion);
+                n.Surf = ReadSurf(rw.Reader, Version == 1 ? 1 : n.surfVersion);
             }
 
             if (rw.Writer is not null)
             {
-                WriteSurf(n.Surf, rw.Writer, n.surfVersion);
+                WriteSurf(n.Surf, rw.Writer, Version == 1 ? 1 : n.surfVersion);
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
 
-            if ((Version == 3 && (n.materials == null || n.materials.Length == 0)) || Version > 3)
+            // this somehow doesn't exist in the code, but works for almost every TM2020 surface
+            if (Version >= 4 && n.materials?.Length > 0)
             {
                 rw.Int32(ref U05);
             }
@@ -98,7 +99,7 @@ public partial class CPlugSurface
     // 16 - Cylinder (Primitive)
     // 17 - SphericalShell
 
-    internal static ISurf ReadSurf(GbxReader r, int version)
+    internal static ISurf ReadSurf(GbxReader r, int surfVersion)
     {
         var surfId = r.ReadInt32();
 
@@ -112,9 +113,9 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Unknown surf type: " + surfId)
         };
 
-        surf.Read(r, version);
+        surf.Read(r, surfVersion);
 
-        if (version >= 2)
+        if (surfVersion >= 2)
         {
             surf.GameplayMainDir = r.ReadVec3();
         }
@@ -122,7 +123,7 @@ public partial class CPlugSurface
         return surf;
     }
 
-    internal static void WriteSurf(ISurf? surf, GbxWriter w, int version)
+    internal static void WriteSurf(ISurf? surf, GbxWriter w, int surfVersion)
     {
         w.Write(surf switch
         {
@@ -134,9 +135,9 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Cannot write default (null) surf.")
         });
 
-        surf.Write(w, version);
+        surf.Write(w, surfVersion);
 
-        if (version >= 2)
+        if (surfVersion >= 2)
         {
             w.Write(surf.GameplayMainDir.GetValueOrDefault());
         }
@@ -167,8 +168,8 @@ public partial class CPlugSurface
 
     public interface ISurf : IReadable, IWritable
     {
-        public short SurfaceIndex { get; set; }
-        public Vec3? GameplayMainDir { get; set; }
+        short SurfaceIndex { get; set; }
+        Vec3? GameplayMainDir { get; set; }
     }
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
@@ -229,7 +230,7 @@ public partial class CPlugSurface
                     Vertices = r.ReadArray<Vec3>();
                     Triangles = r.ReadArray<Triangle>(); // GmSurfMeshTri
                     break;
-            }
+            } 
         }
 
         public void Write(GbxWriter w, int version = 0)
