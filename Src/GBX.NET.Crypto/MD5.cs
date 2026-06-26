@@ -7,6 +7,11 @@ public static partial class MD5
     public static byte[] Compute(byte[] data)
     {
 #if NET6_0_OR_GREATER
+        if (OperatingSystem.IsBrowser())
+        {
+            return ManagedMD5.Compute(data);
+        }
+
         return System.Security.Cryptography.MD5.HashData(data);
 #else
         using var md5 = System.Security.Cryptography.MD5.Create();
@@ -17,11 +22,21 @@ public static partial class MD5
 #if NET6_0_OR_GREATER
     public static byte[] Compute(Span<byte> data)
     {
+        if (OperatingSystem.IsBrowser())
+        {
+            return ManagedMD5.Compute(data);
+        }
+
         return System.Security.Cryptography.MD5.HashData(data);
     }
 
     public static int Compute(Span<byte> data, Span<byte> destination)
     {
+        if (OperatingSystem.IsBrowser())
+        {
+            return ManagedMD5.Compute(data, destination);
+        }
+
         return System.Security.Cryptography.MD5.HashData(data, destination);
     }
 #endif
@@ -34,12 +49,23 @@ public static partial class MD5
 #if NET8_0_OR_GREATER
     public static async ValueTask<byte[]> ComputeAsync(byte[] data, CancellationToken cancellationToken = default)
     {
+        if (OperatingSystem.IsBrowser())
+        {
+            return ManagedMD5.Compute(data);
+        }
+
         await using var ms = new MemoryStream(data);
         return await System.Security.Cryptography.MD5.HashDataAsync(ms, cancellationToken);
     }
 #elif NET6_0_OR_GREATER || NETSTANDARD2_0
     public static async Task<byte[]> ComputeAsync(byte[] data, CancellationToken cancellationToken = default)
     {
+#if NET6_0_OR_GREATER
+        if (OperatingSystem.IsBrowser())
+        {
+            return ManagedMD5.Compute(data);
+        }
+#endif
         using var md5 = System.Security.Cryptography.MD5.Create();
 #if NET6_0_OR_GREATER
         await using var ms = new MemoryStream(data);
