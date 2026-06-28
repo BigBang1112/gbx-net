@@ -23,7 +23,7 @@ CPlugVehiclePhyModel 0x090EA000
  version
  v1-
   CMwRefBuffer
-  CMwRefBuffer
+  CMwRefBuffer (external)
 
 archive OccupantSlot
  byte U01
