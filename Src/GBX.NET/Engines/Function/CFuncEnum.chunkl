@@ -12,3 +12,6 @@ CFuncEnum 0x0500E000
 
 0x006
  CMwRefBuffer IconIndexs (external)
+
+0x007
+ vec2 TexSize
