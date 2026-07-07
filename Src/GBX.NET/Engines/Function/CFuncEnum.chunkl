@@ -4,7 +4,7 @@ CFuncEnum 0x0500E000
 0x005
  int WantedCount
  CPlug[] Values (external)
- id
+ id Name
  int2 Atlas
  int[] ValuesAtlasYx
  vec2 MinTexCoord
