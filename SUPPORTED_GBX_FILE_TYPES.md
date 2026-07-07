@@ -15,7 +15,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | Shape.Gbx | [CPlugSurface](Src/GBX.NET/Engines/Plug/CPlugSurface.chunkl) | Yes | Yes
 | | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes | Yes
 | | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
-| RefBuffer.Gbx | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | No | No
+| RefBuffer.Gbx | FidCache.Gbx | [CMwRefBuffer](Src/GBX.NET/Engines/MwFoundations/CMwRefBuffer.chunkl) | Mostly | Mostly
 | | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) / [CGameUserProfile](Src/GBX.NET/Engines/Game/CGameUserProfile.chunkl) | Yes | Yes | Yes
 | | Spawn.Gbx | [CGameSpawnModel](Src/GBX.NET/Engines/GameData/CGameSpawnModel.chunkl) | Yes | Yes
 | ConstructionCampaign.Gbx | Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.chunkl) | Yes | Yes
@@ -57,6 +57,7 @@ Older extensions | Latest extension | Class | Read (whole) | Write | Read (heade
 | | FuncShader.Gbx | [CFuncShaderLayerUV](Src/GBX.NET/Engines/Func/CFuncShaderLayerUV.chunkl) | Yes | Yes
 | | FuncEnum.Gbx | [CFuncEnum](Src/GBX.NET/Engines/Func/CFuncEnum.chunkl) | Yes | Yes
 | | FuncKeysReals.Gbx | [CFuncKeysReal](Src/GBX.NET/Engines/Func/CFuncKeysReal.chunkl) | Yes | Yes
+| | ControlStyle.Gbx | [CControlStyle](Src/GBX.NET/Engines/Control/CControlStyle.chunkl) | Only TMUF | Only TMUF
 | | AmbientOcc.Gbx | [CHmsAmbientOcc](Src/GBX.NET/Engines/Hms/CHmsAmbientOcc.chunkl) | Yes | Yes
 | | ObjectInfo.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.chunkl) | Yes | Yes | Yes
 | | Mobil.Gbx | [CSceneMobil](Src/GBX.NET/Engines/Scene/CSceneMobil.chunkl) | Yes | Yes

@@ -1,0 +1,123 @@
+CControlStyle 0x07017000
+
+0x000
+ CMwCmdBlockMain FocusGainedScript
+ CMwCmdBlockMain FocusLostScript
+ CPlugSound FocusSound (external)
+ CMwNod
+ CMwNod
+
+0x004
+ CPlugSound EntrySound
+
+0x009
+ CPlugShader DefaultShader
+
+0x00B
+ bool FitTextSize
+ int
+ int
+
+0x00C
+ id
+
+0x00D
+ CPlugSound EnumSound
+ CPlugShader EnumListShader
+ int EnumMaxElemCount
+ float EnumIconWidth
+ float EnumIconHeight
+
+0x00E
+ CPlugSound ActionSound (external)
+ float ButtonIconWidth
+ float ButtonIconHeight
+ CFuncEnum ButtonDefaultIcons (external)
+
+0x010
+ CPlugSound EnumSound
+ CPlugShader EnumListShader
+ int EnumMaxElemCount
+ float EnumIconWidth
+ float EnumIconHeight
+ int EnumForceDisplayType
+ CFuncEnum EnumForceIcons (external)
+
+0x014
+ bool QuadIsLines
+ bool QuadIsFill
+ float QuadZ
+ float QuadZLines
+ vec4 QuadGradientColor0
+ vec4 QuadGradientColor1
+ vec4 QuadLinesColor
+
+0x015
+ bool QuadIsLines
+ bool QuadIsFill
+ float QuadZ
+ float QuadZLines
+ vec4 QuadGradientColor0
+ vec4 QuadGradientColor1
+ vec2 Quad_UvTopLeft
+ vec2 Quad_UvBottomRight
+
+0x016
+ CControlEffectMaster EffectMaster (external)
+
+0x017
+ bool QuadIsLines
+ bool QuadIsFill
+ float QuadZ
+ float QuadZLines
+ vec4 QuadGradientColor0
+ vec4 QuadGradientColor1
+ vec2 Quad_UvTopLeft
+ vec2 Quad_UvBottomRight
+ float Skew
+
+0x018
+ vec4 LineGradientColor0
+ vec4 LineGradientColor1
+
+0x01B
+ CPlugFont Font (external)
+ float
+ float
+ STextSettings_ColorAndChars
+ STextSettings_ColorAndChars
+ STextSettings_ColorAndChars
+
+0x01C
+ float SliderBarWidth
+ float SliderBarHeight
+ float SliderCursorWidth
+ float SliderCursorHeight
+ CPlugSound SliderSound
+ CFuncEnum SliderBarIcons (external)
+ CFuncEnum SliderCursorIcons (external)
+
+0x01D
+ bool FocusAreaEnable
+ CPlugMaterial FocusAreaMaterial (external)
+ CPlugMaterial FocusAreaMaterialReadOnly (external)
+ CPlugMaterial FocusAreaMaterialSelected (external)
+ CPlugMaterial FocusAreaMaterialFocused (external)
+ float FocusAreaMinWidth
+ float FocusAreaMinHeight
+ float FocusAreaXMargin
+ float FocusAreaYMargin
+ CPlugSolid FocusAreaSolid
+ float FocusAreaZOffset
+
+0x01E
+ id ButtonDefaultIconId
+
+archive STextSettings_ColorAndChars
+ int
+ int
+ float
+ float
+ float
+ float
+ string

@@ -1,0 +1,19 @@
+CControlIconIndex 0x0702B000
+
+0x000
+ id
+ int IndexOff
+ int IndexOffFocused
+ int IndexOffGrayed
+ int IndexOn
+ int IndexOnFocused
+ int IndexOnGrayed
+
+0x001 (base: 0x000)
+ base
+ int MarginPercentU
+
+0x002 (base: 0x001)
+ base
+ int MarginPercentV
+ vec2 MarginSize
