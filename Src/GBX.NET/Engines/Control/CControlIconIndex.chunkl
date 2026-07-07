@@ -1,7 +1,7 @@
 CControlIconIndex 0x0702B000
 
 0x000
- id
+ id Name
  int IndexOff
  int IndexOffFocused
  int IndexOffGrayed
