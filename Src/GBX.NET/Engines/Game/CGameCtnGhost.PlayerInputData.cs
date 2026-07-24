@@ -810,7 +810,9 @@ public partial class CGameCtnGhost
                                                             byte? Vertical,
                                                             int? States) : IInputChange
         {
-            public TimeInt32 Timestamp => new(Tick * 10);
+            public TimeInt32 Time => new(Tick * 10);
+            [Obsolete("Use Time instead.")]
+            public TimeInt32 Timestamp => Time;
 
             public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
             public bool? FreeLook => States is null ? null : (States & 4) != 0;
@@ -842,7 +844,9 @@ public partial class CGameCtnGhost
                                                             bool? Horn = null,
                                                             byte? CharacterStates = null) : IInputChange
         {
-            public TimeInt32 Timestamp { get; } = new(Tick * 10);
+            public TimeInt32 Time { get; } = new(Tick * 10);
+            [Obsolete("Use Time instead.")]
+            public TimeInt32 Timestamp => Time;
 
             public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
             public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;
