@@ -109,6 +109,7 @@
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
     <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
+    <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
     <Project Path="Tools/GbxExplorer/Client/GbxExplorer.Client.csproj" />
     <Project Path="Tools/GbxExplorer/Component/GbxExplorer.Component.csproj" />
     <Project Path="Tools/GbxExplorer/Photino/GbxExplorer.Photino.csproj" />
