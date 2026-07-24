@@ -46,7 +46,20 @@ public partial class CGameCtnGhost
         public int Ticks { get => ticks; set => ticks = value; }
         public byte[] Data { get => data; set => data = value; }
 
-        [Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
+        private static EStart GetStart(ulong? states)
+        {
+            var kind = states & 0xF;
+
+            return kind switch
+            {
+                0 => EStart.NotStarted,
+                1 => EStart.Character,
+                2 or 3 or 4 => EStart.Vehicle,
+                0xC or 0xD => throw new Exception($"Unsupported input kind 0x{kind:X} (float-based steering is not implemented)."),
+                _ => EStart.Character,
+            };
+        }
+
         public IList<IInputChange> InputChanges
         {
             get
@@ -427,12 +440,7 @@ public partial class CGameCtnGhost
                         {
                             var states = r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                            started = (EStart)(states & 3);
-
-                            if (started is EStart.VehicleMix)
-                            {
-                                started = EStart.Vehicle;
-                            }
+                            started = GetStart(states);
 
                             if (started is EStart.Character)
                             {
@@ -753,12 +761,7 @@ public partial class CGameCtnGhost
                                 horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                             }
 
-                            started = (EStart)(states & 3);
-
-                            if (started is EStart.VehicleMix)
-                            {
-                                started = EStart.Vehicle;
-                            }
+                            started = GetStart(states);
                         }
 
                         different = true;
