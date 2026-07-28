@@ -1,6 +1,4 @@
-# Changelog for bigbang1112/gbx-net
-
-This file was automatically generated from GitHub Releases.
+# Changelog
 
 ## [GBX.NET 1.12.14](https://github.com/BigBang1112/gbx-net/releases/tag/v1.2.14) - 2026-07-24
 
@@ -1017,10 +1015,10 @@ This is one of the few upcoming revisions for 0.16 during the summer.
 
 Way too much stuff to cover.
 
-## What's Changed
+### What's Changed
 * GBX.NET 0.16.0 by @BigBang1112 in https://github.com/BigBang1112/gbx-net/pull/48
 
-## New Contributors
+### New Contributors
 * @MKuijpers made their first contribution in https://github.com/BigBang1112/gbx-net/pull/49
 
 **Full Changelog**: https://github.com/BigBang1112/gbx-net/compare/v0.15.1...v0.16.0
