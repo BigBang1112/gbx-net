@@ -1,4 +1,4 @@
-![GBX.NET](logo_outline.png)
+![GBX.NET](Media/logo_outline.png)
 
 [![NuGet](https://img.shields.io/nuget/vpre/GBX.NET?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?style=for-the-badge&logo=github)](https://github.com/BigBang1112/gbx-net/releases)
