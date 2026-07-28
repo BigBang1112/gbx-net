@@ -1296,7 +1296,7 @@ Full changelog will come on full release.
 
 This update also reveals a road to the x64 platform library support. A new check has been added for `GameBox.Save()` to throw an exception if the library is running in x64 (as the bug is with the LZO compressing). In this version though, the library is still x86 only. x64 platform support for reading-only is planned for 0.9.0.
 
-# Island Converter 1.0.0
+### Island Converter 1.0.0
 
 - **Program now runs on .NET Framework 4.5.2, included natively in every Windows since Win7**
   - **Fixes problems with opening the exe file.** If Nations Converter did open to you, Island Converter will also open.
@@ -1315,7 +1315,7 @@ This update also reveals a road to the x64 platform library support. A new check
 - **GBX.NET has been updated to 0.8.0**
   - Better performance, minor conversion fixes, MediaTracker parsing fixes
 
-## How to install Island Converter
+#### How to install Island Converter
 1. Download the IslandConverter.zip
 2. Extract it anywhere (on Desktop for example)
 3. Open the folder
@@ -1333,7 +1333,7 @@ This update also reveals a road to the x64 platform library support. A new check
 - Fixed crash when selecting a map without thumbnail
 - **Many block fixes (very close to all-fixed).** Look around for remaining bugs!
 
-## How to install Island Converter
+### How to install Island Converter
 1. Download the IslandConverter-rc2.zip
 2. Extract it anywhere (on Desktop for example)
 3. Open the folder
@@ -1347,7 +1347,7 @@ This update also reveals a road to the x64 platform library support. A new check
 - Added `TriggerSize` property to 0x049
 - Added logging Push event intended for moving log report display cursor up
 
-# Island Converter 1.0.0-rc1
+### Island Converter 1.0.0-rc1
 
 - **Program now runs on .NET Framework 4.5.2, included natively in every Windows since Win7**
   - Fixes problems with opening the exe file. If Nations Converter did open to you, Island Converter will also open.
@@ -1361,7 +1361,7 @@ This update also reveals a road to the x64 platform library support. A new check
 
 Please report load-related, conversion-related and block-related issues. A full release is planned at the end of the week.
 
-## How to install Island Converter
+#### How to install Island Converter
 1. Download the IslandConverter-rc1.zip
 2. Extract it anywhere (on Desktop for example)
 3. Open the folder
