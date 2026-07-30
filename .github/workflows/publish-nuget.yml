@@ -33,6 +33,7 @@ jobs:
       push-to-custom-feeds: true
       custom-feed-urls: https://nuget.gbx.tools/v3/index.json
       release-title-prefix: GBX.NET
+      main-project: GBX.NET
       discord-top-lines: ${{ inputs.discord-description }}
       discord-bottom-lines: ${{ inputs.discord-footer }}
     secrets:
