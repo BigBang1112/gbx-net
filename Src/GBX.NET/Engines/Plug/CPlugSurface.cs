@@ -59,16 +59,6 @@ public partial class CPlugSurface
             }
             else
             {
-                if (rw.Writer is not null && n.materials is not null)
-                {
-                    var materialIds = new ushort[n.materials.Length];
-                    for (var i = 0; i < n.materials.Length; i++)
-                    {
-                        materialIds[i] = (ushort)((int?)n.materials[i].SurfaceId ?? 0);
-                    }
-                    U02 = materialIds;
-                }
-
                 rw.Array<ushort>(ref U02);
             }
 

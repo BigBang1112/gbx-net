@@ -36,8 +36,8 @@ public sealed class GbxRefTable
             : Path.Combine(FileSystemPath, ancestor, filePath);
     }
 
-    private string GetFilePath(GbxRefTableFile file) => GetFilePath(file.FilePath);
-    private string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath(file.FilePath);
+    public string GetFilePath(GbxRefTableFile file) => GetFilePath(file.FilePath);
+    public string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath(file.FilePath);
 
     public string GetFullFilePath(GbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
     public string GetFullFilePath(UnlinkedGbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));

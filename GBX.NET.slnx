@@ -94,6 +94,7 @@
     <Project Path="Templates/MyGbxToolApp/MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/GBX.NET.Crypto.Tests/GBX.NET.Crypto.Tests.csproj" />
     <Project Path="Tests/GBX.NET.PAK.Tests/GBX.NET.PAK.Tests.csproj" Id="e0d7028e-a295-4aa8-9b4c-93f37112ea53" />
     <Project Path="Tests/GBX.NET.Tests/GBX.NET.Tests.csproj" />
   </Folder>
@@ -108,6 +109,7 @@
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
     <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
+    <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
     <Project Path="Tools/GbxExplorer/Client/GbxExplorer.Client.csproj" />
     <Project Path="Tools/GbxExplorer/Component/GbxExplorer.Component.csproj" />
     <Project Path="Tools/GbxExplorer/Photino/GbxExplorer.Photino.csproj" />
@@ -122,6 +124,7 @@
     <Project Path="Tools/PakToZip/PakToZip.csproj" />
     <Project Path="Tools/ParseRepeater/ParseRepeater.csproj" />
     <Project Path="Tools/PopulateExtensions/PopulateExtensions.csproj" Id="a4d3d9a7-2e22-4cfa-bf7c-6c61cf1236f9" />
+    <Project Path="Tools/SplitFileHashesPerPak/SplitFileHashesPerPak.csproj" Id="3b8de8d8-dfab-4f67-bf8d-871caf36b57d" />
   </Folder>
   <Folder Name="/Tools/Old Gbx Explorer/">
     <Project Path="Tools/GbxExplorerOld/Client/GbxExplorerOld.Client.csproj" />

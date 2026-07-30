@@ -3,3 +3,5 @@ NPlugTrigger_SSpecial 0x09179000
 archive
  version
  CPlugSurface TriggerShape (external)
+ if Version >= 2
+  bool IsMergeable

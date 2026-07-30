@@ -42,7 +42,7 @@ CPlugVehicleVisModelShared 0x090E8000
  CPlugMaterial (external)
  v1+
   v2-
-   CPlugMaterial
+   CPlugMaterial (external)
   v3+
    CPlugMaterial[] (external)
   v1-

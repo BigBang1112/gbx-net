@@ -1037,8 +1037,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
      v5+
       float?
       v6+
-       int?
-       int?
+       float?
+       float?
 
 0x09F
  version
@@ -1092,31 +1092,31 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x0A0
  version
  v1+
-  int
-  int
-  int
-  int
-  int
+  float
+  float
+  float
+  float
+  float
   v2+
-   int
-   int
-   int
-   int
-   int
+   float
+   float
+   float
+   float
+   float
 
 0x0A1
  version
  Keys
  Keys
- int
- int
+ float
+ float
  Keys
  Keys
- int
- int
- int
- int
- int
+ float
+ float
+ float
+ float
+ float
  Keys
 
 0x0A2
@@ -1136,22 +1136,22 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0A3
  version
- int
- int
+ float
+ float
  int
  int
  v1+
-  int
+  float
   v2+
-   int
-   int
-   int
-   int
+   float
+   float
+   float
+   float
    v3+
-    int
+    float
     v4+
      CFuncKeysReal
-     int
+     float
      int
      int
      int
@@ -1168,32 +1168,32 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v8+
          int
          v9+
-          int
+          float
           int
           v10+
            int
            v11+
-            int
+            float
             v12+
              Keys (version: Version - 13)
              Keys (version: Version - 13)
 
 0x0A4
  version
- int
+ float
  v1+
-  int
+  float
  v2+
   int
  v3+
   int
   Keys (version: Version - 14)
-  int
-  int
+  float
+  float
  v4+
+  float
   int
-  int
-  int
+  float
  v5+
   Keys (version: Version - 14)
  v6+
@@ -1221,7 +1221,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v15+
   int
  v16+
-  int
+  float
  v18+
   int
 
@@ -1238,12 +1238,12 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int
   int
   int
- int
- int
- int
- int
- int
- int
+ float
+ float
+ float
+ float
+ float
+ float
  v1-
   Keys (version: Version - 1)
   Keys (version: Version - 1)
@@ -1267,13 +1267,13 @@ CPlugVehicleCarPhyTuning 0x090ED000
  int
  int
  v1+
-  int
+  float
   Keys (version: Version - 11)
   Keys (version: Version - 11)
-  int
+  float
   Keys (version: Version - 11)
  v2+
-  int
+  float
  v3+
   Keys (version: Version - 11)
  v4+
@@ -1311,10 +1311,10 @@ CPlugVehicleCarPhyTuning 0x090ED000
  int
  int
  int
- int
- int
- int
- int
+ float
+ float
+ float
+ float
  Keys (version: Version - 19)
  Keys (version: Version - 19)
  v1+
@@ -1325,8 +1325,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v3+
   int
  v4+
-  int
-  int
+  float
+  float
   int
   int
  v5+
@@ -1343,13 +1343,13 @@ CPlugVehicleCarPhyTuning 0x090ED000
   Keys (version: Version - 19)
   int
  v10+
-  int
+  float
   Keys (version: Version - 19)
  v11+
   Keys (version: Version - 19)
  v12+
-  int
-  int
+  float
+  float
  v13+
   Keys (version: Version - 19)
  v14+
@@ -1362,8 +1362,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v17+
   Keys (version: Version - 19)
  v18+
-  int
-  int
+  float
+  float
 
 0x0A8
  version
@@ -1380,14 +1380,14 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int
  v5+
   int
-  int
+  float
  v6+
   Keys (version: Version - 10)
  v7+
   Keys (version: Version - 10)
  v8+
-  int
-  int
+  float
+  float
  v9+
   Keys (version: Version - 10)
 
@@ -1401,7 +1401,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int
  v2+
   int
-  int
+  float
   Keys (version: Version - 4)
   Keys (version: Version - 4)
  v3+
@@ -1409,13 +1409,13 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0AA
  version
- int
+ float
 
 0x0AB
  version
  int
  int
- int
+ float
  Keys (version: Version - 1)
 
 0x0AC
@@ -1426,7 +1426,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  version
  Keys (version: Version - 10)
  int
- int
+ float
  int
  CFuncKeysReal
  int
@@ -1454,9 +1454,9 @@ CPlugVehicleCarPhyTuning 0x090ED000
   Keys (version: Version - 10)
  v4+
   Keys (version: Version - 10)
-  int
+  float
  v5+
-  int
+  float
  v6+
   Keys (version: Version - 10)
  v7+
@@ -1465,7 +1465,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
  v8+
   Keys (version: Version - 10)
  v9+
-  int
+  float
  v11+
   int
 
@@ -1474,84 +1474,84 @@ CPlugVehicleCarPhyTuning 0x090ED000
  int
  Keys (version: Version - 2)
  v1+
-  int
+  float
 
 0x0AF
  version
  Keys
- int
- int
- int
- int
+ float
+ float
+ float
+ float
  Keys
  Keys
  Keys
  Keys
- int
- int
- int
- int
- int
+ float
+ float
+ float
+ float
+ float
  Keys
- int
- int
- int
- Keys
- Keys
- int
- Keys
- int
- int
+ float
+ float
+ float
  Keys
  Keys
+ float
  Keys
- int
- int
- int
+ float
+ float
  Keys
  Keys
  Keys
+ float
+ float
+ float
+ Keys
+ Keys
+ Keys
+ Keys
+ float
+ Keys
+ Keys
+ float
+ float
+ Keys
+ Keys
+ Keys
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ float
+ int
+ float
+ float
+ int
+ float
+ float
+ float
+ float
+ Keys
+ Keys
+ float
+ float
+ float
+ float
+ float
+ Keys
+ float
+ float
  Keys
  int
  Keys
  Keys
- int
- int
- Keys
- Keys
- Keys
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- Keys
- Keys
- int
- int
- int
- int
- int
- Keys
- int
- int
- Keys
- int
- Keys
- Keys
- int
+ float
  Keys
  Keys
  Keys
@@ -1559,9 +1559,9 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0B0
  version
- int
+ float
  v1+
-  int
+  float
 
 enum EShockModel
  Demo01

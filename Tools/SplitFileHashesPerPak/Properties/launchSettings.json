@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SplitFileHashesPerPak": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\Steam\\steamapps\\common\\Trackmania Turbo\\Packs\""
+    }
+  }
+}

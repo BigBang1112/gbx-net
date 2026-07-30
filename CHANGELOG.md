@@ -1,5 +1,24 @@
 # Changelog
 
+## [GBX.NET 2.4.4](https://github.com/BigBang1112/gbx-net/releases/tag/v2.4.4) - 2026-07-30
+
+- Added `CPlugVisualQuads2D`, `CControlStyle`, `CControlIconIndex`, `CFuncEnum`
+- `CGameCtnChallenge`: Added `0x01E`
+- `CHmsZone`: Renamed `0x003` `U01` to `MRIsForced` (by marosis)
+- Better `NPlugTrigger_SSpecial` support
+- Fixed `CPlugSurface` write issue
+- Fixed rare TM2020 input state bugs
+- Fixed some `CCtnMediaBlockEventTrackMania` ToStrings
+- Updated some `CPlugVehicleCarPhyTuning` types from `int` to `float`
+- Made `GbxRefTable.GetFilePath` public
+- More external nodes
+
+GBX.NET.PAK
+- Fixed `BlowfishStream` to read 8-byte blocks guaranteed
+
+GBX.NET.Crypto
+- Added support for MD5 in WASM (browser)
+
 ## [GBX.NET 1.12.14](https://github.com/BigBang1112/gbx-net/releases/tag/v1.2.14) - 2026-07-24
 
 - Fixed rare TM2020 input state bugs

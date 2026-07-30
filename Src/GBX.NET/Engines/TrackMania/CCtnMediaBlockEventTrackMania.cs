@@ -15,7 +15,7 @@ public partial class CCtnMediaBlockEventTrackMania
     {
         public override string ToString()
         {
-            return $"[{time}] Checkpoint";
+            return $"[{Time}] Checkpoint";
         }
     }
 
@@ -23,7 +23,7 @@ public partial class CCtnMediaBlockEventTrackMania
     {
         public override string ToString()
         {
-            return $"[{time}] End of lap";
+            return $"[{Time}] End of lap";
         }
     }
 
@@ -31,7 +31,7 @@ public partial class CCtnMediaBlockEventTrackMania
     {
         public override string ToString()
         {
-            return $"[{time}] End of race";
+            return $"[{Time}] End of race";
         }
     }
 

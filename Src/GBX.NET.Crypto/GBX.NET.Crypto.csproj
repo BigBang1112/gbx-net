@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Crypto</PackageId>
-        <VersionPrefix>1.2.1</VersionPrefix>
+        <VersionPrefix>1.2.2</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Cryptographic features for GBX.NET 2.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -32,6 +32,14 @@
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="GBX.NET.Crypto.Tests" />
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="../../Media/logo_icon_outline.png" Pack="true" PackagePath="\" />

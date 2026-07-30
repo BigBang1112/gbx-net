@@ -32,6 +32,20 @@ public partial class CGameCtnGhost
             VehicleMix
         }
 
+        private static EStart GetStart(ulong? states)
+        {
+            var kind = states & 0xF;
+
+            return kind switch
+            {
+                0 => EStart.NotStarted,
+                1 => EStart.Character,
+                2 or 3 or 4 => EStart.Vehicle,
+                0xC or 0xD => throw new Exception($"Unsupported input kind 0x{kind:X} (float-based steering is not implemented)."),
+                _ => EStart.Character,
+            };
+        }
+
         private ImmutableList<IInputChange>? inputChanges;
         private ImmutableList<IInput>? inputs;
 
@@ -107,7 +121,6 @@ public partial class CGameCtnGhost
             var prevWalk = NET.Inputs.EWalk.None;
             var prevVertical = default(byte);
             var prevStatesFull = default(int?);
-            var prevStates2Bit = default(byte?);
             var prevAction = default(bool);
             var prevGunTrigger = default(bool);
 
@@ -183,36 +196,30 @@ public partial class CGameCtnGhost
                 {
                     var states2Bit = r.Read2Bit();
 
-                    if (states2Bit == prevStates2Bit)
-                    {
-                        continue;
-                    }
+                    var action2Bit = (states2Bit & 1) != 0;
 
-                    if (StateIsDifferent(bit: 0, out bool action2Bit, states2Bit, prevStates2Bit) && action2Bit != prevAction)
+                    if (action2Bit != prevAction)
                     {
                         yield return new Inputs.Action(time, action2Bit);
                         prevAction = action2Bit;
                     }
 
-                    if (StateIsDifferent(bit: 1, out bool gunTrigger2Bit, states2Bit, prevStates2Bit) && gunTrigger2Bit != prevGunTrigger)
+                    var gunTrigger2Bit = (states2Bit & 2) != 0;
+
+                    if (gunTrigger2Bit != prevGunTrigger)
                     {
                         yield return new GunTrigger(time, gunTrigger2Bit);
                         prevGunTrigger = gunTrigger2Bit;
                     }
-
-                    prevStates2Bit = states2Bit;
 
                     continue;
                 }
 
                 var states = r.ReadInt32();
 
-                if (states == prevStatesFull)
-                {
-                    continue;
-                }
+                var gunTrigger = (states & 2) != 0;
 
-                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
+                if (gunTrigger != prevGunTrigger)
                 {
                     yield return new GunTrigger(time, gunTrigger);
                     prevGunTrigger = gunTrigger;
@@ -238,7 +245,9 @@ public partial class CGameCtnGhost
                     yield return new Jump(time, jump);
                 }
 
-                if (StateIsDifferent(bit: 8, out bool action, states, prevStatesFull) && action != prevAction)
+                var action = (states & (1 << 8)) != 0;
+
+                if (action != prevAction)
                 {
                     yield return new Inputs.Action(time, action);
                     prevAction = action;
@@ -300,7 +309,6 @@ public partial class CGameCtnGhost
             var started = EStart.NotStarted;
 
             var prevStatesFull = default(ulong?);
-            var prevStates2Bit = default(byte?);
             var prevHorn = default(bool);
             var prevGunTrigger = default(bool);
             var prevAction = default(bool);
@@ -328,65 +336,65 @@ public partial class CGameCtnGhost
                         {
                             var states = r.Read2Bit();
 
-                            if (states != prevStates2Bit)
+                            if (started is EStart.Vehicle)
                             {
-                                if (started is EStart.Vehicle)
-                                {
-                                    if (StateIsDifferent(bit: 1, out bool horn2Bit, states, prevStates2Bit) && horn2Bit != prevHorn)
-                                    {
-                                        inputs.Add(new Horn(time, horn2Bit));
-                                        prevHorn = horn2Bit;
-                                    }
-                                }
-                                else if (started is EStart.Character)
-                                {
-                                    if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates2Bit) && gunTrigger != prevGunTrigger)
-                                    {
-                                        inputs.Add(new GunTrigger(time, gunTrigger));
-                                        prevGunTrigger = gunTrigger;
-                                    }
+                                var horn2Bit = (states & 2) != 0;
 
-                                    if (StateIsDifferent(bit: 1, out bool action, states, prevStates2Bit) && action != prevAction)
-                                    {
-                                        inputs.Add(new Inputs.Action(time, action));
-                                        prevAction = action;
-                                    }
+                                if (horn2Bit != prevHorn)
+                                {
+                                    inputs.Add(new Horn(time, horn2Bit));
+                                    prevHorn = horn2Bit;
+                                }
+                            }
+                            else if (started is EStart.Character)
+                            {
+                                var gunTrigger2Bit = (states & 1) != 0;
+
+                                if (gunTrigger2Bit != prevGunTrigger)
+                                {
+                                    inputs.Add(new GunTrigger(time, gunTrigger2Bit));
+                                    prevGunTrigger = gunTrigger2Bit;
                                 }
 
-                                prevStates2Bit = states;
+                                var action2Bit = (states & 2) != 0;
+
+                                if (action2Bit != prevAction)
+                                {
+                                    inputs.Add(new Inputs.Action(time, action2Bit));
+                                    prevAction = action2Bit;
+                                }
                             }
                         }
                         else
                         {
                             var states = r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                            if (started is EStart.NotStarted)
-                            {
-                                started = (EStart)(states & 3);
-
-                                if (started is EStart.VehicleMix)
-                                {
-                                    started = EStart.Vehicle;
-                                }
-                            }
+                            started = GetStart(states);
 
                             if (started is EStart.Character)
                             {
-                                if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
+                                var gunTrigger = (states & (1UL << 5)) != 0;
+
+                                if (gunTrigger != prevGunTrigger)
                                 {
                                     inputs.Add(new GunTrigger(time, gunTrigger));
                                     prevGunTrigger = gunTrigger;
                                 }
                             }
 
-                            if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
+                            var hornOrAction = (states & (1UL << 6)) != 0;
+
+                            if (started is EStart.Vehicle)
                             {
-                                if (started is EStart.Vehicle && hornOrAction != prevHorn)
+                                if (hornOrAction != prevHorn)
                                 {
                                     inputs.Add(new Horn(time, hornOrAction));
                                     prevHorn = hornOrAction;
                                 }
-                                else if (started is EStart.Character && hornOrAction != prevAction)
+                            }
+                            else if (started is EStart.Character)
+                            {
+                                if (hornOrAction != prevAction)
                                 {
                                     inputs.Add(new Inputs.Action(time, hornOrAction));
                                     prevAction = hornOrAction;
@@ -668,22 +676,21 @@ public partial class CGameCtnGhost
                             ? r.Read2Bit()
                             : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                        if (started is EStart.NotStarted)
+                        if (onlyHorn)
                         {
-                            started = (EStart)(states & 3);
-
-                            if (started is EStart.VehicleMix)
+                            if (started is EStart.Vehicle)
                             {
-                                started = EStart.Vehicle;
+                                horn = (states & 2) != 0;
+                            }
+                        }
+                        else
+                        {
+                            if (started is EStart.NotStarted or EStart.Vehicle)
+                            {
+                                horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                             }
 
-                            horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
-                        }
-                        else if (started is EStart.Vehicle)
-                        {
-                            horn = onlyHorn
-                                ? (states & 2) != 0
-                                : (states & 64) != 0;
+                            started = GetStart(states);
                         }
 
                         different = true;
@@ -807,7 +814,9 @@ public partial class CGameCtnGhost
                                                             byte? Vertical,
                                                             int? States) : IInputChange
         {
-            public TimeInt32 Timestamp => new(Tick * 10);
+            public TimeInt32 Time => new(Tick * 10);
+            [Obsolete("Use Time instead.")]
+            public TimeInt32 Timestamp => Time;
 
             public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
             public bool? FreeLook => States is null ? null : (States & 4) != 0;
@@ -839,7 +848,9 @@ public partial class CGameCtnGhost
                                                             bool? Horn = null,
                                                             byte? CharacterStates = null) : IInputChange
         {
-            public TimeInt32 Timestamp { get; } = new(Tick * 10);
+            public TimeInt32 Time { get; } = new(Tick * 10);
+            [Obsolete("Use Time instead.")]
+            public TimeInt32 Timestamp => Time;
 
             public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
             public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;

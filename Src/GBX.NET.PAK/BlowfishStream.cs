@@ -70,8 +70,20 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
                     bufferIndex = 0;
                 }
 
-                // Async read of one block
-                var read = await stream.ReadAsync(memoryBuffer, cancellationToken).ConfigureAwait(false);
+                // A single ReadAsync is not guaranteed to fill the buffer
+                // so keep reading until the block is complete or EOF
+                var read = 0;
+                while (read < 8)
+                {
+                    var r = await stream.ReadAsync(memoryBuffer.AsMemory(read, 8 - read), cancellationToken).ConfigureAwait(false);
+
+                    if (r == 0)
+                    {
+                        break; // True end of stream
+                    }
+
+                    read += r;
+                }
 
                 if (read < 8)
                 {

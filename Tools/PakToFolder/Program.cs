@@ -7,6 +7,7 @@ var pakFilePaths = new List<string>();
 var keys = new Dictionary<string, byte[]?>(StringComparer.OrdinalIgnoreCase);
 var hashes = new Dictionary<string, string?>();
 var fileNameEnd = default(string);
+var referencedFiles = false;
 
 var keysTxtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "keys.txt");
 
@@ -87,6 +88,12 @@ while (argsEnumerator.MoveNext())
         }
 
         fileNameEnd = argsEnumerator.Current;
+        continue;
+    }
+
+    if (argLower == "-r")
+    {
+        referencedFiles = true;
         continue;
     }
 
@@ -176,7 +183,21 @@ foreach (var pakFilePath in pakFilePaths)
         {
             var gbx = await pak.OpenGbxFileAsync(file);
 
-            if (gbx.Header is GbxHeaderUnknown)
+            if (referencedFiles && gbx.RefTable is not null)
+            {
+                foreach (var refTableFile in gbx.RefTable.Files)
+                {
+                    var refFilePath = Path.Combine(Path.GetDirectoryName(fullPath)!, gbx.RefTable.GetFilePath(refTableFile) + ".ref.txt");
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(refFilePath)!);
+                    var referencedFileHashSet = File.Exists(refFilePath) ? File.ReadLines(refFilePath).ToHashSet() : new();
+                    referencedFileHashSet.Add(Path.Combine(file.FolderPath, fileName));
+
+                    File.WriteAllLines(refFilePath, referencedFileHashSet.Order());
+                }
+            }
+
+            if (gbx.Header is GbxHeaderUnknown unknownHeader)
             {
                 CopyFileToStream(pak, file, stream);
             }

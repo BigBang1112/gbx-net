@@ -8,7 +8,7 @@ CPlugShader 0x09002000
 
 0x00E (base: 0x007)
  base
- CMwNod[] U02
+ CMwNod[] U02 (external)
 
 0x010
  ulong // SRequirementOld10 (old flags)

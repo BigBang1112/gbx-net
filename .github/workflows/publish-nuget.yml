@@ -1,18 +1,27 @@
 name: Publish NuGet
 
 on:
-  release:
-    types: [ published ]
+  push:
+    tags: [ 'v*' ]
   workflow_dispatch:
+    inputs:
+      discord-description:
+        description: Discord description
+        type: string
+        default: ""
+      discord-footer:
+        description: Discord footer
+        type: string
+        default: ""
 
 permissions:
-  contents: write # important for release description edit and asset upload
+  contents: write # important for release creation and asset upload
   packages: write
 
 jobs:
   deploy:
     name: Publish NuGet
-    uses: bigbang1112/workflows/.github/workflows/publish-nuget.yml@main
+    uses: bigbang1112/workflows/.github/workflows/publish-nuget-immutable.yml@main
     with:
       dotnet-version: |
         10.x.x
@@ -23,6 +32,11 @@ jobs:
       pack-path: "{Src/*,Templates}"
       push-to-custom-feeds: true
       custom-feed-urls: https://nuget.gbx.tools/v3/index.json
+      release-title-prefix: GBX.NET
+      main-project: GBX.NET
+      discord-top-lines: ${{ inputs.discord-description }}
+      discord-bottom-lines: ${{ inputs.discord-footer }}
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.4.3</VersionPrefix>
+        <VersionPrefix>2.4.4</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 400+ Gbx classes.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -33,6 +33,10 @@
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <NoWarn>1591</NoWarn>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="../../Media/logo_icon_outline.png" Pack="true" PackagePath="\" />

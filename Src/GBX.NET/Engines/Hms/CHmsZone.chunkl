@@ -5,8 +5,8 @@ CHmsZone 0x06004000
  data[28]
 
 0x003
- bool U01
- if U01
+ bool MRIsForced
+ if MRIsForced
   vec3 MRPoint
   vec3 MRNormal
 

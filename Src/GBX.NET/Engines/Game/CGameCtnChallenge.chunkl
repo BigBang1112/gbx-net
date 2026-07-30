@@ -132,6 +132,9 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01D
  CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
+0x01E
+ CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
+
 0x01F [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
 
 0x020 // legacy legacy mediatracker

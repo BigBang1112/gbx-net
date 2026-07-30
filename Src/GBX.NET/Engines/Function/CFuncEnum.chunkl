@@ -1,0 +1,17 @@
+CFuncEnum 0x0500E000
+- inherits: CFunc
+
+0x005
+ int WantedCount
+ CPlug[] Values (external)
+ id Name
+ int2 Atlas
+ int[] ValuesAtlasYx
+ vec2 MinTexCoord
+ vec2 MaxTexCoord
+
+0x006
+ CMwRefBuffer IconIndexs (external)
+
+0x007
+ vec2 TexSize
