@@ -69,7 +69,7 @@ public partial class CGameUserProfile
         public bool AccelerateUseToggleMode { get; set; }
         public bool BrakeUseToggleMode { get; set; }
         public int U06 { get; set; }
-        public int U07 { get; set; }
+        public int U07 { get; set; } = 1;
 
         public override string ToString()
         {
