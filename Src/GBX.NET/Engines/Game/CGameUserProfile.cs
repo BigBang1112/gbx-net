@@ -36,8 +36,6 @@ public partial class CGameUserProfile
 
     public partial class Chunk031CC01B
     {
-        public (float AnalogSensitivity, float AnalogDeadZone, int InvertSteeringAxis, int AccelerateUseToggleMode, int BrakeUseToggleMode, float VibrationIntensity, float CenterSpringIntensity, int)[]? U01;
-
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             foreach (var deviceSettings in n.vehicleSettings ?? [])
@@ -56,8 +54,6 @@ public partial class CGameUserProfile
 
     public partial class Chunk031CC021
     {
-        public int[]? U01;
-
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             foreach (var deviceSettings in n.vehicleSettings ?? [])
