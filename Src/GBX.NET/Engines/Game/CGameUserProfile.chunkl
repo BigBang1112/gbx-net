@@ -310,10 +310,10 @@ archive Unknown4
 
 archive Unknown5
  ident
+ float
+ float
  int
- int
- int
- int
+ float
  int
  int
  string
