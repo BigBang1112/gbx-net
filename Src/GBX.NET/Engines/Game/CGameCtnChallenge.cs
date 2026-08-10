@@ -1427,7 +1427,13 @@ public partial class CGameCtnChallenge :
 
                 n.lightmapFrames = r.ReadArrayReadable<CHmsLightMapCache.Frame>(frameCount, n.LightmapVersion.GetValueOrDefault(8));
 
-                if (!n.lightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0))
+                var isUncompressedEmpty = false;
+                if (n.LightmapVersion < 5)
+                {
+                    isUncompressedEmpty = !n.lightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0);
+                }
+
+                if (isUncompressedEmpty)
                 {
                     return;
                 }
@@ -1452,6 +1458,17 @@ public partial class CGameCtnChallenge :
                 foreach (var frame in n.lightmapFrames)
                 {
                     w.WriteWritable(frame, version: n.LightmapVersion.Value);
+                }
+
+                var isUncompressedEmpty = false;
+                if (n.LightmapVersion < 5)
+                {
+                    isUncompressedEmpty = !n.lightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0);
+                }
+
+                if (isUncompressedEmpty)
+                {
+                    return;
                 }
 
                 w.WriteZlibData(n.LightmapCacheData, w =>
