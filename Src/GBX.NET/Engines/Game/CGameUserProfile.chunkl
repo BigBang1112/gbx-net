@@ -152,7 +152,7 @@ CGameUserProfile 0x031CC000
 
 0x00C (skippable)
  version
- Unknown5[] Unknowns5
+ DeviceSettings[] VehicleSettings
 
 0x00D (skippable)
  version
@@ -308,13 +308,13 @@ archive Unknown4
  int
  int
 
-archive Unknown5
- ident
- float
- float
+archive DeviceSettings
+ ident Vehicle = empty
+ float AnalogSensitivity = 1
+ float AnalogDeadZone = 0.1f
  int
- float
- int
+ float VibrationIntensity = 1
+ float CenterSpringIntensity
  int
  string
  string
