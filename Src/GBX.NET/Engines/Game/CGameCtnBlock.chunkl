@@ -5,6 +5,8 @@ CGameCtnBlock 0x03057000 // Block placed on a map.
  byte<Direction> Direction // Facing direction of the block.
  byte3 Coord // Position of the block on the map in block coordination.
  int Flags // Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
+ if (Flags & (1 << 27)) != 0
+  CGameCtnBlockSkin Skin
 
 archive
  id Name
