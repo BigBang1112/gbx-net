@@ -10,7 +10,7 @@ public partial class CPlugMaterial
     [AppliedWithChunk<Chunk09079017>]
     public CPlugSurface.MaterialId SurfaceId { get; set; }
     [AppliedWithChunk<Chunk09079017>]
-    public CPlugMaterialUserInst.GameplayId GameplayId { get; set; }
+    public CPlugSurface.GameplayId GameplayId { get; set; }
 
     public partial class Chunk09079009
     {
@@ -63,7 +63,7 @@ public partial class CPlugMaterial
             if (Version == 1)
             {
                 n.SurfaceId = (CPlugSurface.MaterialId)rw.Byte((byte)n.SurfaceId);
-                n.GameplayId = (CPlugMaterialUserInst.GameplayId)rw.Byte((byte)n.GameplayId);
+                n.GameplayId = (CPlugSurface.GameplayId)rw.Byte((byte)n.GameplayId);
                 rw.Int32(ref U01);
                 rw.Int32(ref U02);
                 rw.Int16(ref U03);
