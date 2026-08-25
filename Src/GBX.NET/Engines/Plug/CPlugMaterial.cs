@@ -7,6 +7,7 @@ public partial class CPlugMaterial
     public DeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
     [AppliedWithChunk<Chunk0907900E>]
+    [AppliedWithChunk<Chunk09079017>]
     public CPlugSurface.MaterialId SurfaceId { get; set; }
 
     public partial class Chunk09079009
@@ -49,6 +50,22 @@ public partial class CPlugMaterial
         {
             n.SurfaceId = (CPlugSurface.MaterialId)rw.Int16((short)n.SurfaceId);
             rw.Int16(ref U01);
+        }
+    }
+
+    public partial class Chunk09079017
+    {
+        public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version == 1)
+            {
+                n.SurfaceId = (CPlugSurface.MaterialId)rw.Int16((short)n.SurfaceId);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int16(ref U03);
+                rw.String(ref U04);
+            }
         }
     }
 }

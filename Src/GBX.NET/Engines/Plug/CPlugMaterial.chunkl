@@ -56,12 +56,13 @@ CPlugMaterial 0x09079000
  version
  uint
 
-0x017
+0x017 (demonstration)
  version
- uint
+ short SurfaceId
  v1+
   int
   int
+  short
   string
 
 0x019 (skippable, ignore)
