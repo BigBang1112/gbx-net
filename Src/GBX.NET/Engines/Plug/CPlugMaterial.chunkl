@@ -20,8 +20,8 @@ CPlugMaterial 0x09079000
 
 0x00D
 
-0x00E (demonstration)
- short SurfaceId
+0x00E
+ short<CPlugSurface.MaterialId> SurfaceId
  short
 
 0x00F
@@ -56,11 +56,11 @@ CPlugMaterial 0x09079000
  version
  uint
 
-0x017 (demonstration)
+0x017
  version
  v1+
-  byte SurfaceId
-  byte GameplayId
+  byte<CPlugSurface.MaterialId> SurfaceId
+  byte<CPlugSurface.GameplayId> GameplayId
   int
   int
   short
