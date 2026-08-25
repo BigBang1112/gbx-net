@@ -58,8 +58,9 @@ CPlugMaterial 0x09079000
 
 0x017 (demonstration)
  version
- short SurfaceId
  v1+
+  byte SurfaceId
+  byte GameplayId
   int
   int
   short

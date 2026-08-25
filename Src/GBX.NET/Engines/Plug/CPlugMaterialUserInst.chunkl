@@ -70,7 +70,10 @@ enum GameplayId
  SlowMotion
  Bumper
  Bumper2
+ ReactorBoost_Legacy
  Fragile
+ ReactorBoost2_Legacy
+ Bouncy
  NoBrakes
  Cruise
  ReactorBoost_Oriented
