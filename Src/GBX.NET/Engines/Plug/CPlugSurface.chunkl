@@ -106,3 +106,29 @@ enum MaterialId
  DevDebug
  Free3
  XXX_Null
+
+enum GameplayId
+ None
+ Turbo
+ Turbo2
+ TurboRoulette
+ FreeWheeling
+ NoGrip
+ NoSteering
+ ForceAcceleration
+ Reset
+ SlowMotion
+ Bumper
+ Bumper2
+ ReactorBoost_Legacy
+ Fragile
+ ReactorBoost2_Legacy
+ Bouncy
+ NoBrakes
+ Cruise
+ ReactorBoost_Oriented
+ ReactorBoost2_Oriented
+ VehicleTransform_Reset
+ VehicleTransform_CarSnow
+ VehicleTransform_CarRally
+ VehicleTransform_CarDesert
