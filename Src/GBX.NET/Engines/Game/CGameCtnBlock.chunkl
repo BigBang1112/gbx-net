@@ -1,6 +1,6 @@
 CGameCtnBlock 0x03057000 // Block placed on a map.
 
-0x002 [TM10]
+0x002 (demonstration) [TM10]
  ident BlockModel
  byte<Direction> Direction // Facing direction of the block.
  byte3 Coord // Position of the block on the map in block coordination.
