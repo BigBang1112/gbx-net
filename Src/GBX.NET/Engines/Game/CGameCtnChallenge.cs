@@ -1428,7 +1428,7 @@ public partial class CGameCtnChallenge :
                 n.lightmapFrames = r.ReadArrayReadable<CHmsLightMapCache.Frame>(frameCount, n.LightmapVersion.GetValueOrDefault(8));
 
                 var isUncompressedEmpty = false;
-                if (n.LightmapVersion < 5)
+                if (n.LightmapVersion < 9)
                 {
                     isUncompressedEmpty = !n.lightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0);
                 }
@@ -1461,7 +1461,7 @@ public partial class CGameCtnChallenge :
                 }
 
                 var isUncompressedEmpty = false;
-                if (n.LightmapVersion < 5)
+                if (n.LightmapVersion < 9)
                 {
                     isUncompressedEmpty = !n.lightmapFrames.Any(x => x.Data?.Length > 0 || x.Data2?.Length > 0 || x.Data3?.Length > 0);
                 }
