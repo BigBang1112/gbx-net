@@ -191,7 +191,8 @@ public partial class CPlugSurface
             }
             else
             {
-                SurfaceId = (MaterialId)rw.Int16((short)SurfaceId.GetValueOrDefault());
+                var rawSurfaceId = rw.Int16((short)(SurfaceId ?? (MaterialId)(-1)));
+                SurfaceId = rawSurfaceId < 0 ? null : (MaterialId)rawSurfaceId;
             }
         }
     }
