@@ -97,12 +97,12 @@ public partial class CPlugSurface
     // 18 - Voxel
     // 19 - Diggable
 
-    internal static ISurf? ReadSurf(GbxReader r, int surfVersion)
+    internal static ISurf ReadSurf(GbxReader r, int surfVersion)
     {
         var surfId = r.ReadInt32();
         if (surfId == -1)
         {
-            return null;
+            return null!;
         }
 
         ISurf surf = surfId switch // ArchiveGmSurf
@@ -191,8 +191,7 @@ public partial class CPlugSurface
             }
             else
             {
-                var rawSurfaceId = rw.Int16((short)(SurfaceId ?? (MaterialId)(-1)));
-                SurfaceId = rawSurfaceId < 0 ? null : (MaterialId)rawSurfaceId;
+                SurfaceId = (MaterialId)rw.Int16((short)SurfaceId.GetValueOrDefault());
             }
         }
     }
