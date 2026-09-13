@@ -73,7 +73,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
     public TimeInt32? BronzeTime
     {
-        get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
+        get => ChallengeParameters?.BronzeTime ?? bronzeTime;
         set
         {
             ChallengeParameters?.BronzeTime = value;
@@ -88,7 +88,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
     public TimeInt32? SilverTime
     {
-        get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
+        get => ChallengeParameters?.SilverTime ?? silverTime;
         set
         {
             ChallengeParameters?.SilverTime = value;
@@ -103,7 +103,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
     public TimeInt32? GoldTime
     {
-        get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
+        get => ChallengeParameters?.GoldTime ?? goldTime;
         set
         {
             ChallengeParameters?.GoldTime = value;
@@ -118,7 +118,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
     public TimeInt32? AuthorTime
     {
-        get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
+        get => ChallengeParameters?.AuthorTime ?? authorTime;
         set
         {
             ChallengeParameters?.AuthorTime = value;
@@ -133,7 +133,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 10)]
     public int AuthorScore
     {
-        get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
+        get => ChallengeParameters?.AuthorScore ?? authorScore;
         set
         {
             ChallengeParameters?.AuthorScore = value;
@@ -148,7 +148,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
     public string? MapType
     {
-        get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
+        get => ChallengeParameters?.MapType ?? mapType;
         set
         {
             ChallengeParameters?.MapType = value;
@@ -163,7 +163,7 @@ public partial class CGameCtnChallenge :
     [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
     public string? MapStyle
     {
-        get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
+        get => ChallengeParameters?.MapStyle ?? mapStyle;
         set
         {
             ChallengeParameters?.MapStyle = value;
