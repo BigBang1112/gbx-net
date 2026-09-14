@@ -24,6 +24,50 @@ archive Box
  v1+
   short SurfaceIndex // Only relevant for TM2+
 
+archive SphereLocated
+ vec3 Center
+ float Radius
+ short SurfaceIndex
+
+archive VCylinder
+ float Radius
+ float Height
+ short SurfaceIndex
+
+archive Cylinder
+ float RadiusY
+ float RadiusXZ
+ short SurfaceIndex
+
+archive Circle
+ vec3 Center
+ vec3 Normal
+ float Radius
+
+archive Capsule
+ vec3 SphereCenter
+ vec3 Dir
+ float Length // The runtime Radius field is not archived.
+ short SurfaceIndex
+
+archive SphericalShell
+ float InnerRadius
+ float OuterRadius
+ bool SkipInToOut
+ short SurfaceIndex
+
+archive CompoundInstance // No subclass payload; compound and transforms are runtime-only.
+
+archive Voxel // No subclass payload; voxel data is runtime-only.
+
+archive Diggable
+ boxaligned Bounds
+ uint U01
+ uint U02
+ uint U03
+ uint U04
+ uint U05
+
 enum MaterialId
  Concrete
  Pavement

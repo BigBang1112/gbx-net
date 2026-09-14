@@ -35,7 +35,9 @@ jobs:
       release-title-prefix: GBX.NET
       main-project: GBX.NET
       discord-top-lines: ${{ inputs.discord-description }}
-      discord-bottom-lines: ${{ inputs.discord-footer }}
+      discord-bottom-lines: |
+        Explorer: <https://explorer.gbx.tools/>
+        ${{ inputs.discord-footer }}
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
