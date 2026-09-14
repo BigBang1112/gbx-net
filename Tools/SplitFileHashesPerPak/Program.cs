@@ -8,13 +8,13 @@ foreach (var filePath in Directory.GetFiles("../../../../../Resources", "FileHas
     {
         var parts = line.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
 
-        if (parts.Length != 2)
+        if (parts.Length == 0)
         {
             continue;
         }
 
         var hash = parts[0];
-        var fileName = parts[1];
+        var fileName = parts.Length > 1 ? parts[1] : string.Empty;
 
         hashes[hash] = fileName;
     }
@@ -51,13 +51,13 @@ foreach (var pakFilePath in Directory.EnumerateFiles(directoryPath, "*.pak").Con
                 {
                     var parts = line.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (parts.Length != 2)
+                    if (parts.Length == 0)
                     {
                         continue;
                     }
 
                     var hash = parts[0];
-                    var fileName = parts[1];
+                    var fileName = parts.Length > 1 ? parts[1] : string.Empty;
 
                     perPakHashes[hash] = fileName;
                 }
@@ -77,7 +77,7 @@ foreach (var pakFilePath in Directory.EnumerateFiles(directoryPath, "*.pak").Con
 
                 foreach (var (hash, name) in perPakHashes.OrderBy(x => x.Value).ThenBy(x => x.Key))
                 {
-                    await writer.WriteLineAsync($"{hash} {name}");
+                    await writer.WriteLineAsync(name.Length == 0 ? hash : $"{hash} {name}");
                 }
             }
         }
