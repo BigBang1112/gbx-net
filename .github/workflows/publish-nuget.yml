@@ -5,40 +5,117 @@ on:
     tags: [ 'v*' ]
   workflow_dispatch:
     inputs:
-      discord-description:
-        description: Discord description
+      optional-description:
+        description: Text before the package release notes
         type: string
         default: ""
-      discord-footer:
-        description: Discord footer
-        type: string
-        default: ""
+      notify-discord:
+        description: Send the release to the Discord webhook
+        type: boolean
+        default: true
 
 permissions:
-  contents: write # important for release creation and asset upload
+  contents: write
   packages: write
+
+env:
+  MAIN_PACKAGE: GBX.NET
+
+concurrency:
+  group: publish-nuget-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Publish NuGet
-    uses: bigbang1112/workflows/.github/workflows/publish-nuget-immutable.yml@main
-    with:
-      dotnet-version: |
-        10.x.x
-        9.x.x
-        8.x.x
-      project-path: Src/*
-      test-path: Tests/*
-      pack-path: "{Src/*,Templates}"
-      push-to-custom-feeds: true
-      custom-feed-urls: https://nuget.gbx.tools/v3/index.json
-      release-title-prefix: GBX.NET
-      main-project: GBX.NET
-      discord-top-lines: ${{ inputs.discord-description }}
-      discord-bottom-lines: |
-        Explorer: <https://explorer.gbx.tools/>
-        ${{ inputs.discord-footer }}
-    secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
-      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    name: Build, test, and publish NuGet
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Build
+        shell: bash
+        run: |
+          set -euo pipefail
+          for project in Src/*/*.csproj; do
+            dotnet build "$project" -c Release -p:ContinuousIntegrationBuild=true
+          done
+
+      - name: Test
+        shell: bash
+        run: |
+          set -euo pipefail
+          for project in Tests/*/*.csproj; do
+            dotnet test "$project" -c Release --collect:"XPlat Code Coverage" --results-directory ./coverage
+          done
+
+      - name: Generate code coverage summary
+        run: |
+          dotnet tool install --global dotnet-reportgenerator-globaltool
+          reportgenerator -reports:"./coverage/**/coverage.cobertura.xml" -targetdir:"./coveragereport" -reporttypes:"MarkdownSummaryGithub"
+          cat ./coveragereport/SummaryGithub.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Pack packages and templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p packages
+          for project in Src/*/*.csproj; do
+            dotnet pack "$project" -c Release -p:ContinuousIntegrationBuild=true --output ./packages
+          done
+          dotnet pack Templates/GBX.NET.Templates.csproj -c Release -p:ContinuousIntegrationBuild=true --output ./packages
+          python .github/scripts/publish_nuget.py prepare
+
+      - name: Upload package artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: nuget-packages
+          path: |
+            packages/*.nupkg
+            packages/*.snupkg
+          if-no-files-found: error
+
+      - name: Publish packages
+        id: publish
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_FEED_API_KEY: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
+          CUSTOM_FEED_URL: https://nuget.gbx.tools/v3/index.json
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: python .github/scripts/publish_nuget.py publish
+
+      - name: Create release from newly uploaded packages
+        if: steps.publish.outputs.has-new == 'true'
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPTIONAL_DESCRIPTION: ${{ inputs['optional-description'] }}
+        run: python .github/scripts/publish_nuget.py release
+
+      - name: Send release to Discord
+        if: steps.release.outputs.created == 'true' && (inputs['notify-discord'] || vars.PUBLISH_NUGET_NOTIFY_DISCORD == 'true')
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RELEASE_URL: ${{ steps.release.outputs.url }}
+          OPTIONAL_DESCRIPTION: ${{ inputs['optional-description'] }}
+        run: python .github/scripts/publish_nuget.py discord
+
+      - name: Report feed failures
+        if: steps.publish.outputs.has-failures == 'true'
+        run: |
+          echo 'One or more package feeds rejected an upload; see the publish summary.' >&2
+          exit 1

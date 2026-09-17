@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.4.4</VersionPrefix>
+        <VersionPrefix>2.4.5</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 400+ Gbx classes.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -10,7 +10,15 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+            - Added block skin and flag support for TM1.0 (by greffmaster)
+            - Added `GameplayId` support to `CPlugMaterial` (by Zai)
+            - Implemented profile vehicle details
+            - Implemented better way to read properties from `CGameCtnChallengeParameters` in `CGameCtnChallenge`
+            - Fixed and enhanced support for modern `CPlugSurface` (by XertroV agent)
+            - Fixed newer ManiaPlanet sample types and network ghosts
+            - Fixed early exit on v5+ lightmap versions with no lightmap frames
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [GBX.NET 2.4.5](https://github.com/BigBang1112/gbx-net/releases/tag/v2.4.5) - 2026-09-17
+
+- Added block skin and flag support for TM1.0 (by greffmaster)
+- Added `GameplayId` support to `CPlugMaterial` (by Zai)
+- Implemented profile vehicle details
+- Implemented better way to read properties from `CGameCtnChallengeParameters` in `CGameCtnChallenge`
+- Fixed and enhanced support for modern `CPlugSurface` (by XertroV agent)
+- Fixed newer ManiaPlanet sample types and network ghosts
+- Fixed early exit on v5+ lightmap versions with no lightmap frames
+
 ## [GBX.NET 2.4.4](https://github.com/BigBang1112/gbx-net/releases/tag/v2.4.4) - 2026-07-30
 
 - Added `CPlugVisualQuads2D`, `CControlStyle`, `CControlIconIndex`, `CFuncEnum`
