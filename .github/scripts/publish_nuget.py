@@ -293,18 +293,29 @@ def discord():
         for result in results
     )
     message = compose_discord_message(packages, os.environ["RELEASE_URL"], nuget_available)
+    opener = urllib.request.build_opener()
+    opener.addheaders = []
     # Validate every line before sending anything, so an overlong line cannot cause a partial announcement.
     for chunk in list(split_discord_message(message)):
         payload = json.dumps({"content": chunk}).encode("utf-8")
         for attempt in range(4):
-            request = urllib.request.Request(webhook, payload, {"Content-Type": "application/json"}, method="POST")
+            request = urllib.request.Request(webhook, payload, {
+                "Content-Type": "application/json",
+            }, method="POST")
             try:
-                with urllib.request.urlopen(request, timeout=30):
+                with opener.open(request, timeout=30):
                     break
             except urllib.error.HTTPError as error:
-                if error.code != 429 or attempt == 3:
-                    raise
-                time.sleep(float(error.headers.get("Retry-After", "1")))
+                if error.code == 429 and attempt < 3:
+                    time.sleep(float(error.headers.get("Retry-After", "1")))
+                    continue
+                body = error.read().decode("utf-8", errors="replace").strip()
+                try:
+                    detail = json.loads(body).get("message", body)
+                except json.JSONDecodeError:
+                    detail = body
+                suffix = f": {detail}" if detail else ""
+                raise RuntimeError(f"Discord webhook request failed with HTTP {error.code}{suffix}") from None
 
 
 if __name__ == "__main__":

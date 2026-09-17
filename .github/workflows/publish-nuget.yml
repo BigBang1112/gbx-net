@@ -5,11 +5,11 @@ on:
     tags: [ 'v*' ]
   workflow_dispatch:
     inputs:
-      optional-description:
+      optional_description:
         description: Text before the package release notes
         type: string
         default: ""
-      notify-discord:
+      notify_discord:
         description: Send the release to the Discord webhook
         type: boolean
         default: true
@@ -103,19 +103,19 @@ jobs:
         id: release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPTIONAL_DESCRIPTION: ${{ inputs['optional-description'] }}
+          OPTIONAL_DESCRIPTION: ${{ inputs.optional_description }}
         run: python .github/scripts/publish_nuget.py release
 
       - name: Send release to Discord
-        if: steps.release.outputs.created == 'true' && (inputs['notify-discord'] || vars.PUBLISH_NUGET_NOTIFY_DISCORD == 'true')
+        if: steps.release.outputs.created == 'true' && (github.event_name == 'push' || inputs.notify_discord)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           RELEASE_URL: ${{ steps.release.outputs.url }}
-          OPTIONAL_DESCRIPTION: ${{ inputs['optional-description'] }}
+          OPTIONAL_DESCRIPTION: ${{ inputs.optional_description }}
         run: python .github/scripts/publish_nuget.py discord
 
       - name: Report feed failures
         if: steps.publish.outputs.has-failures == 'true'
         run: |
-          echo 'One or more package feeds rejected an upload; see the publish summary.' >&2
+          echo 'One or more package feeds rejected an upload, see the publish summary.' >&2
           exit 1
