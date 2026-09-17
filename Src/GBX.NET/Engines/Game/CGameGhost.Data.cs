@@ -168,8 +168,9 @@ public partial class CGameGhost
                 stateTimes = r.ReadArray<int>();
             }
 
-            // guessed. there's some difference between TM1 and TM2 here, pls investigate soon
-            if (Version >= 10)
+            // Fixed-timestep TM2 ghost-recorder streams store this extra value.
+            // Variable-timestep streams end after the state-times array.
+            if (Version >= 10 && IsFixedTimeStep)
             {
                 U02 = r.ReadInt32();
             }
@@ -281,7 +282,7 @@ public partial class CGameGhost
                 w.WriteArray(stateTimes);
             }
 
-            if (Version >= 10)
+            if (Version >= 10 && IsFixedTimeStep)
             {
                 w.Write(U02.GetValueOrDefault());
             }
