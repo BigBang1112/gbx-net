@@ -219,6 +219,50 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         
     }
 
+    public partial class Chunk03057002
+    {
+        public override void Read(CGameCtnBlock n, GbxReader r)
+        {
+            n.BlockModel = r.ReadIdent();
+            n.Direction = (Direction)r.ReadByte();
+            n.Coord = r.ReadByte3();
+
+            var flags = r.ReadInt32();
+            if ((flags & (1 << 27)) != 0)
+            {
+                n.skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+            }
+            n.Flags = 0;
+            n.Variant = (byte)(flags & 0xFFF);
+            n.SubVariant = (byte)((flags >> 12) & 0xFFF);
+            n.Flags |= (flags >> 12) & 0xF000;
+        }
+
+        public override void Write(CGameCtnBlock n, GbxWriter w)
+        {
+            w.Write(n.BlockModel);
+            w.Write((byte)n.Direction);
+            w.Write((Byte3)n.Coord);
+
+            var flags =
+                (n.Variant & 0xFFF) |
+                ((n.SubVariant & 0xFFF) << 12) |
+                ((n.Flags & 0xF000) << 12);
+
+            // in case of private value desync
+            if (n.skin is not null)
+            {
+                flags |= 1 << 27;
+            }
+
+            w.Write(flags);
+            if (n.skin is not null)
+            {
+                w.WriteNodeRef<CGameCtnBlockSkin>(n.skin);
+            }
+        }
+    }
+
     public override string ToString()
     {
         return $"{nameof(CGameCtnBlock)}: {Name} {coord}";

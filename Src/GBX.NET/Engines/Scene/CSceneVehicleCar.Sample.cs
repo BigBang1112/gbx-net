@@ -33,6 +33,11 @@ public partial class CSceneVehicleCar
         private byte? u37;
         private byte? u38;
         private byte? u40;
+        private byte? u41;
+        private byte? u42;
+        private byte? u43;
+        private byte? u44;
+        private byte? u45;
         private (Vec3, Quat, byte)[]? u35_1;
 
         uint ISampleRawData.Velocity { get => velocity; set => velocity = value; }
@@ -295,6 +300,22 @@ public partial class CSceneVehicleCar
             }
         }
 
+        public float? U35_2
+        {
+            get => u35.HasValue ? (u35.Value >> 5) / 7f : null;
+            set
+            {
+                if (!value.HasValue)
+                {
+                    if (u35.HasValue) u35 = (byte)(u35.Value & 0x1F);
+                }
+                else
+                {
+                    u35 = (byte)((u35.GetValueOrDefault() & 0x1F) | (byte)AdditionalMath.Clamp(Math.Round(value.Value * 7f), 0, 7) << 5);
+                }
+            }
+        }
+
         public bool? U36_1 { get => BitHelper.GetBit(u36, 0); set => u36 = BitHelper.SetBit(u36, 0, value); }
         public bool? U36_2 { get => BitHelper.GetBit(u36, 1); set => u36 = BitHelper.SetBit(u36, 1, value); }
         public bool? U36_3 { get => BitHelper.GetBit(u36, 2); set => u36 = BitHelper.SetBit(u36, 2, value); }
@@ -336,6 +357,19 @@ public partial class CSceneVehicleCar
             set => u40 = value.HasValue ? (byte)AdditionalMath.Clamp(Math.Round(value.Value * 255f), 0, 255) : null;
         }
 
+        // SVehicleSimpleState_ReplayAfter100117 (version 17)
+        public byte? U41 { get => u41; set => u41 = value; }
+
+        // SVehicleSimpleState_ReplayAfter111217 (version 18)
+        public byte? U42 { get => u42; set => u42 = value; }
+
+        // Version 19 only: three packed boolean flags.
+        public byte? U43 { get => u43; set => u43 = value; }
+
+        // SVehicleSimpleState_ReplayAfter2018_03_09 (version 20)
+        public byte? U44 { get => u44; set => u44 = value; }
+        public byte? U45 { get => u45; set => u45 = value; }
+
         internal Sample(TimeInt32 time, byte[] data) : base(time, data)
         {
         }
@@ -347,56 +381,63 @@ public partial class CSceneVehicleCar
                 throw new VersionNotSupportedException(version);
             }
 
+            // NSceneMgr_Vehicle::StateArchive (v17+) writes the legacy simple
+            // state before the dynamic position/rotation/motion block.
+            var isStateFirst = version >= 17;
+
             // CHmsDynaReplayItem::RestoreDynaItemState
 
             // HmsStateVersion == 0 (EHmsDynaItemSaveStateVersion_TmNetworkAfter260205)
             // Position 9-byte Vec3
             // Rotation = r.ReadQuat6();
 
-            // HmsStateVersion == 1 (EHmsDynaItemSaveStateVersion_TmReplayAfter260205)
-            Position = version == 13 ? r.ReadVec3_9() : r.ReadVec3();
-            Rotation = r.ReadQuat6();
-
-            if (version == 13)
+            if (!isStateFirst)
             {
-                // SVehicleSimpleNetState::ToVehicle
-                FLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
-                FRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
-                RRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
-                RLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                // HmsStateVersion == 1 (EHmsDynaItemSaveStateVersion_TmReplayAfter260205)
+                Position = version == 13 ? r.ReadVec3_9() : r.ReadVec3();
+                Rotation = r.ReadQuat6();
 
-                var netData = r.ReadUInt16();
+                if (version == 13)
+                {
+                    // SVehicleSimpleNetState::ToVehicle
+                    FLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                    FRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                    RRGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
+                    RLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
 
-                Brake = netData >> 1 & 1;
+                    var netData = r.ReadUInt16();
 
-                var isSliding = (netData >> 2 & 1) != 0;
-                FLIsSliding = isSliding;
-                FRIsSliding = isSliding;
-                RRIsSliding = isSliding;
-                RLIsSliding = isSliding;
+                    Brake = netData >> 1 & 1;
 
-                // Calculate RPM
-                var min = 100f; // guessed cuz its stored by vehicle
-                var max = 11000f; // guessed cuz its stored by vehicle
-                var ratio = min / max; // min/max rpm i guess
+                    var isSliding = (netData >> 2 & 1) != 0;
+                    FLIsSliding = isSliding;
+                    FRIsSliding = isSliding;
+                    RRIsSliding = isSliding;
+                    RLIsSliding = isSliding;
+
+                    // Calculate RPM
+                    var min = 100f; // guessed cuz its stored by vehicle
+                    var max = 11000f; // guessed cuz its stored by vehicle
+                    var ratio = min / max; // min/max rpm i guess
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                var powRatio = MathF.Pow(ratio, 3.0f);
+                    var powRatio = MathF.Pow(ratio, 3.0f);
 #else
-                var powRatio = Math.Pow(ratio, 3.0f);
+                    var powRatio = Math.Pow(ratio, 3.0f);
 #endif
-                var normalizedValue = (netData >> 9) / 127.0f;
+                    var normalizedValue = (netData >> 9) / 127.0f;
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+                    var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
 #else
-                var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+                    var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
 #endif
-                rpmValue *= max;
-                RPM = (float)rpmValue;
-                return;
+                    rpmValue *= max;
+                    RPM = (float)rpmValue;
+                    return;
+                }
+
+                velocity = r.ReadUInt32();
+                angularVelocity = r.ReadUInt32();
             }
-
-            velocity = r.ReadUInt32();
-            angularVelocity = r.ReadUInt32();
 
             // CSceneVehicleVis_RestoreStaticState
             if (version >= 7)
@@ -483,22 +524,52 @@ public partial class CSceneVehicleCar
                                     }
                                 }
 
-                                // count is broken in specific cases like the last sample of a ghost
-                                var count = u35.GetValueOrDefault() >> 2 & 7;
-
-                                if (version == 11 && count > 4)
+                                // The v17+ archive contains only the fixed 47-byte
+                                // legacy state here; its U35 count bits have no tail.
+                                if (!isStateFirst)
                                 {
-                                    count = 4;
-                                }
+                                    // count is broken in specific cases like the last sample of a ghost
+                                    var count = u35.GetValueOrDefault() >> 2 & 7;
 
-                                u35_1 = new (Vec3, Quat, byte)[count];
+                                    if (version == 11 && count > 4)
+                                    {
+                                        count = 4;
+                                    }
 
-                                for (var i = 0; i < count; i++)
-                                {
-                                    u35_1[i] = (r.ReadVec3(), r.ReadQuat6(), r.ReadByte());
+                                    u35_1 = new (Vec3, Quat, byte)[count];
+
+                                    for (var i = 0; i < count; i++)
+                                    {
+                                        u35_1[i] = (r.ReadVec3(), r.ReadQuat6(), r.ReadByte());
+                                    }
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            if (isStateFirst)
+            {
+                Position = r.ReadVec3();
+                Rotation = r.ReadQuat6();
+                velocity = r.ReadUInt32();
+                angularVelocity = r.ReadUInt32();
+
+                u41 = r.ReadByte();
+
+                if (version >= 18)
+                {
+                    u42 = r.ReadByte();
+
+                    if (version == 19)
+                    {
+                        u43 = r.ReadByte();
+                    }
+                    else if (version >= 20)
+                    {
+                        u44 = r.ReadByte();
+                        u45 = r.ReadByte();
                     }
                 }
             }
@@ -515,6 +586,8 @@ public partial class CSceneVehicleCar
             {
                 throw new VersionNotSupportedException(version);
             }
+
+            var isStateFirst = version >= 17;
 
             if (version == 13)
             {
@@ -551,11 +624,14 @@ public partial class CSceneVehicleCar
                 return;
             }
 
-            w.Write(Position);
-            w.WriteQuat6(Rotation);
+            if (!isStateFirst)
+            {
+                w.Write(Position);
+                w.WriteQuat6(Rotation);
 
-            w.Write(velocity);
-            w.Write(angularVelocity);
+                w.Write(velocity);
+                w.Write(angularVelocity);
+            }
 
             if (version >= 7)
             {
@@ -625,20 +701,48 @@ public partial class CSceneVehicleCar
                                     }
                                 }
 
-                                var count = u35.GetValueOrDefault() >> 2 & 7;
-                                if (version == 11 && count > 4) count = 4;
-
-                                if (u35_1 != null)
+                                if (!isStateFirst)
                                 {
-                                    for (var i = 0; i < count && i < u35_1.Length; i++)
+                                    var count = u35.GetValueOrDefault() >> 2 & 7;
+                                    if (version == 11 && count > 4) count = 4;
+
+                                    if (u35_1 != null)
                                     {
-                                        w.Write(u35_1[i].Item1);
-                                        w.WriteQuat6(u35_1[i].Item2);
-                                        w.Write(u35_1[i].Item3);
+                                        for (var i = 0; i < count && i < u35_1.Length; i++)
+                                        {
+                                            w.Write(u35_1[i].Item1);
+                                            w.WriteQuat6(u35_1[i].Item2);
+                                            w.Write(u35_1[i].Item3);
+                                        }
                                     }
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            if (isStateFirst)
+            {
+                w.Write(Position);
+                w.WriteQuat6(Rotation);
+                w.Write(velocity);
+                w.Write(angularVelocity);
+
+                w.Write(u41.GetValueOrDefault());
+
+                if (version >= 18)
+                {
+                    w.Write(u42.GetValueOrDefault());
+
+                    if (version == 19)
+                    {
+                        w.Write(u43.GetValueOrDefault());
+                    }
+                    else if (version >= 20)
+                    {
+                        w.Write(u44.GetValueOrDefault());
+                        w.Write(u45.GetValueOrDefault());
                     }
                 }
             }

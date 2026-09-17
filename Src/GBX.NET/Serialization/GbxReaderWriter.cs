@@ -23,6 +23,8 @@ public partial interface IGbxReaderWriter : IDisposable
 
     T EnumInt32<T>(T value) where T : struct, Enum;
     void EnumInt32<T>(ref T value) where T : struct, Enum;
+    T EnumInt16<T>(T value) where T : struct, Enum;
+    void EnumInt16<T>(ref T value) where T : struct, Enum;
     T EnumByte<T>(T value) where T : struct, Enum;
     void EnumByte<T>(ref T value) where T : struct, Enum;
 
@@ -208,6 +210,20 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void EnumInt32<T>(ref T value) where T : struct, Enum => value = EnumInt32(value);
 
+    public T EnumInt16<T>(T value) where T : struct, Enum
+    {
+        if (Reader is not null)
+        {
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadInt16()); // CastTo<T>.From(Reader.ReadInt16());
+        }
+
+        Writer?.Write(Convert.ToInt16(value) /* CastTo<int>.From(value) */);
+
+        return value;
+    }
+
+    public void EnumInt16<T>(ref T value) where T : struct, Enum => value = EnumInt16(value);
+
     public T EnumByte<T>(T value) where T : struct, Enum
     {
         if (Reader is not null)
@@ -235,6 +251,20 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     }
 
     public void EnumInt32<T>(ref T? value, T defaultValue = default) where T : struct, Enum => value = EnumInt32(value, defaultValue);
+
+    public T? EnumInt16<T>(T? value, T defaultValue = default) where T : struct, Enum
+    {
+        if (Reader is not null)
+        {
+            value = (T)Enum.ToObject(typeof(T), Reader.ReadInt16()); // CastTo<T>.From(Reader.ReadInt16());
+        }
+
+        Writer?.Write(value.HasValue ? Convert.ToInt16(value) : Convert.ToInt16(defaultValue) /* CastTo<int>.From(value) */);
+
+        return value;
+    }
+
+    public void EnumInt16<T>(ref T? value, T defaultValue = default) where T : struct, Enum => value = EnumInt16(value, defaultValue);
 
     public T? EnumByte<T>(T? value, T defaultValue = default) where T : struct, Enum
     {

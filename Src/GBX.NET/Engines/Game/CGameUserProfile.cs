@@ -36,21 +36,44 @@ public partial class CGameUserProfile
 
     public partial class Chunk031CC01B
     {
-        public (int, int, int, int, int, int, int, int)[]? U01;
-
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
-            rw.Array<(int, int, int, int, int, int, int, int)>(ref U01, length: n.unknowns5?.Length ?? 0);
+            foreach (var deviceSettings in n.vehicleSettings ?? [])
+            {
+                deviceSettings.AnalogSensitivity = rw.Single(deviceSettings.AnalogSensitivity);
+                deviceSettings.AnalogDeadZone = rw.Single(deviceSettings.AnalogDeadZone);
+                deviceSettings.InvertSteeringAxis = rw.Boolean(deviceSettings.InvertSteeringAxis);
+                deviceSettings.AccelerateUseToggleMode = rw.Boolean(deviceSettings.AccelerateUseToggleMode);
+                deviceSettings.BrakeUseToggleMode = rw.Boolean(deviceSettings.BrakeUseToggleMode);
+                deviceSettings.VibrationIntensity = rw.Single(deviceSettings.VibrationIntensity);
+                deviceSettings.CenterSpringIntensity = rw.Single(deviceSettings.CenterSpringIntensity);
+                deviceSettings.U06 = rw.Int32(deviceSettings.U06);
+            }
         }
     }
 
     public partial class Chunk031CC021
     {
-        public int[]? U01;
-
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
-            rw.Array<int>(ref U01, length: n.unknowns5?.Length ?? 0);
+            foreach (var deviceSettings in n.vehicleSettings ?? [])
+            {
+                deviceSettings.U07 = rw.Int32(deviceSettings.U07);
+            }
+        }
+    }
+
+    public partial class DeviceSettings
+    {
+        public bool InvertSteeringAxis { get; set; }
+        public bool AccelerateUseToggleMode { get; set; }
+        public bool BrakeUseToggleMode { get; set; }
+        public int U06 { get; set; }
+        public int U07 { get; set; } = 1;
+
+        public override string ToString()
+        {
+            return Vehicle.ToString();
         }
     }
 }
