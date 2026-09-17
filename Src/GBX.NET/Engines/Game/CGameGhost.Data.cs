@@ -194,7 +194,12 @@ public partial class CGameGhost
 
             for (var i = 0; i < numSamples; i++)
             {
-                var sampleData = sizePerSample switch
+                // State offsets describe every sample except the final one. Its
+                // size is the remainder of the state buffer and can differ from
+                // an otherwise uniform sequence (for example, a U35_1 tail).
+                var sampleData = i == numSamples - 1
+                    ? stateBufferR.ReadToEnd()
+                    : sizePerSample switch
                 {
                     -1 => GetSampleDataFromDifferentSizes(stateBufferR, numSamples, sampleSizes, i),
                     _ => stateBufferR.ReadBytes(sizePerSample)
