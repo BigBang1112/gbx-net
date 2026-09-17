@@ -159,10 +159,9 @@ class PublishNugetTests(unittest.TestCase):
             "## GBX.NET 2.4.4\n\nIntroduction\n\n- Added a chunk\n\n"
             "### GBX.NET.PAK 2.4.4\n\n- Fixed blocks\n\n"
             "### GBX.NET.Crypto 1.2.2\n\n- Added MD5\n\n"
-            f"GitHub: [{release_url}]({release_url})\n"
-            "NuGet: [https://www.nuget.org/packages/GBX.NET/2.4.4]"
-            "(https://www.nuget.org/packages/GBX.NET/2.4.4)\n"
-            "Explorer: [https://explorer.gbx.tools/](https://explorer.gbx.tools/)\n",
+            f"GitHub: <{release_url}>\n"
+            "NuGet: <https://www.nuget.org/packages/GBX.NET/2.4.4>\n"
+            "Explorer: <https://explorer.gbx.tools/>\n",
             message,
         )
         self.assertNotIn("NuGet:", message_without_nuget)
@@ -189,7 +188,7 @@ class PublishNugetTests(unittest.TestCase):
                 self.assertGreater(len(contents), 1)
                 self.assertNotIn("Continued from previous message", "".join(contents))
                 self.assertTrue(all(len(content.encode("utf-16-le")) // 2 <= 1900 for content in contents))
-                self.assertIn("NuGet: [https://www.nuget.org/packages/GBX.NET/2.4.4]", contents[-1])
+                self.assertIn("NuGet: <https://www.nuget.org/packages/GBX.NET/2.4.4>", contents[-1])
             finally:
                 os.chdir(old_directory)
 

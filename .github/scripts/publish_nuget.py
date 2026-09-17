@@ -249,11 +249,11 @@ def compose_discord_message(packages, release_url, nuget_available):
         notes = package["notes"] or "*No release notes provided.*"
         sections.append(f"### {package['id']} {package['version']}\n\n{notes}")
 
-    links = [f"GitHub: [{release_url}]({release_url})"]
+    links = [f"GitHub: <{release_url}>"]
     if nuget_available:
         nuget_url = f"https://www.nuget.org/packages/{main['id']}/{main['version']}"
-        links.append(f"NuGet: [{nuget_url}]({nuget_url})")
-    links.append("Explorer: [https://explorer.gbx.tools/](https://explorer.gbx.tools/)")
+        links.append(f"NuGet: <{nuget_url}>")
+    links.append("Explorer: <https://explorer.gbx.tools/>")
     sections.append("\n".join(links))
     return "\n\n".join(sections) + "\n"
 
