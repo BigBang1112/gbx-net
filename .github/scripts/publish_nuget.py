@@ -1,4 +1,8 @@
-"""Pack metadata, publish results, and release notes for publish-nuget.yml."""
+"""Pack metadata, publish results, and release notes for publish-nuget.yml.
+
+Test from the repository root with ``python .github/scripts/test_publish_nuget.py``.
+The tests mock external publishing and notification requests.
+"""
 
 import json
 import os
