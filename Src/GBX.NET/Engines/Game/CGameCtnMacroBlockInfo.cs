@@ -3,11 +3,15 @@
 public partial class CGameCtnMacroBlockInfo
 {
     private CScriptTraitsMetadata? scriptMetadata;
+    private Int3 clipTriggerSize = new(3, 1, 3);
     private CGameCtnMediaClipGroup? clipGroupInGame;
     private CGameCtnMediaClipGroup? clipGroupEndRace;
 
     [AppliedWithChunk<Chunk0310D00B>]
     public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
+
+    [AppliedWithChunk<Chunk0310D011>]
+    public Int3 ClipTriggerSize { get => clipTriggerSize; set => clipTriggerSize = value; }
 
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
@@ -31,7 +35,6 @@ public partial class CGameCtnMacroBlockInfo
         public int Version { get; set; }
 
         public Int3 U02;
-        public Int3 U03;
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
@@ -40,7 +43,7 @@ public partial class CGameCtnMacroBlockInfo
             {
                 // SMediaTrackSpawns
                 rw.Int3(ref U02);
-                rw.Int3(ref U03);
+                rw.Int3(ref n.clipTriggerSize);
                 rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
                 rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
                 //

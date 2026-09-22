@@ -12,7 +12,7 @@ CGameCtnMacroBlockInfo 0x0310D000
 
 0x006 [MP4, TM2020]
  int = 2
- data // SceneDecals?
+ data SceneDecals
 
 0x007
  CGameCtnMediaClipGroup
@@ -55,14 +55,14 @@ CGameCtnMacroBlockInfo 0x0310D000
 0x00F [MP4, TM2020]
  version
  int3
- int3 OffzoneTriggerSize
+ int3 OffzoneTriggerSize = (3, 1, 3)
  boxint3[] Offzones
 
 0x010 (skippable) [MP4, TM2020]
  version
  int IconSize
 
-0x011 (skippable) [MP4, TM2020] // clips
+0x011 (skippable) [MP4, TM2020] // mediatracker
 
 archive BlockSpawn
  int Version
