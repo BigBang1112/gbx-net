@@ -56,7 +56,7 @@ CGameCtnMacroBlockInfo 0x0310D000
  version
  int3
  int3 OffzoneTriggerSize
- int3[] Offzones
+ boxint3[] Offzones
 
 0x010 (skippable) [MP4, TM2020]
  version
