@@ -2,234 +2,234 @@ CPlugBitmap 0x09011000
 - inherits: CPlug
 
 0x014
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha
+  float BumpScaleFactor
+  float MipMapLodBiasDefault
+  int BorderRGB
 
 0x015
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha
+  float BumpScaleFactor
+  float MipMapLodBiasDefault
+  int BorderRGB
 
 0x017
- uint Flags2
- vec2 DefaultTexCoordScale
+  uint Flags2
+  vec2 DefaultTexCoordScale
 
 0x018
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
- if Image != null
-  CMwNod
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha
+  float BumpScaleFactor
+  float MipMapLodBiasDefault
+  int BorderRGB
+  if Image != null
+    CMwNod
 
 0x019
- float BumpScaleMipLevel
+  float BumpScaleMipLevel
 
 0x01B
- uint Flags2
+  uint Flags2
 
 0x01C
- vec2 DefaultTexCoordScale
- vec2 DefaultTexCoordTrans
- float DefaultTexCoordRotate
+  vec2 DefaultTexCoordScale
+  vec2 DefaultTexCoordTrans
+  float DefaultTexCoordRotate
 
 0x01D
- int16
- int16
+  int16
+  int16
 
 0x01E
- vec2[] AtlasCountUVs
+  vec2[] AtlasCountUVs
 
 0x01F
- uint Flags2
+  uint Flags2
 
 0x020
- float[] MipMapFadeAlphas
+  float[] MipMapFadeAlphas
 
 0x021
- uint
+  uint
 
 0x022 (base: 0x018)
 
 0x023
- uint
+  uint
 
 0x024
- uint Flags2
+  uint Flags2
 
 0x025 (base: 0x01C)
- base
- uint
+  base
+  uint
 
 0x028
- int2
+  int2
 
 0x02A
- CPlugSpriteParam SpriteParam
+  CPlugSpriteParam SpriteParam
 
 0x02B
- CPlugBitmapAtlas Atlas
+  CPlugBitmapAtlas Atlas
 
 0x02C
- CPlugBitmapDecals Decals
+  CPlugBitmapDecals Decals
 
 0x02D
- version
- int
+  version
+  int
 
 0x02E
- uint
+  uint
 
 0x030
 
 0x032
- version
- uint
+  version
+  uint
 
 0x033
- float HeightInMeters
+  float HeightInMeters
 
 0x034
- version
- CPlugImageArray ImageArray
- v1+
-  string ImageArraySuffix
-  v2+
-   string[] ImageArrayFids
-   v3+
-    CPlugBitmapArray BitmapArray
-    string BitmapArrayElemName
-    v4=
-     int
+  version
+  CPlugImageArray ImageArray
+  v1+
+    string ImageArraySuffix
+    v2+
+      string[] ImageArrayFids
+      v3+
+        CPlugBitmapArray BitmapArray
+        string BitmapArrayElemName
+        v4=
+          int
 
 0x035
- version
- short
+  version
+  short
 
 0x036
- version
- CMwNod U01
- v0=
-  id U02
- v1+
-  if U01 == null
-   id U02
-  if U01 != null
-   vec2 U03
-   vec2 U04
-   int U05
- CMwNod U06
+  version
+  CMwNod U01
+  v0=
+    id U02
+  v1+
+    if U01 == null
+      id U02
+    if U01 != null
+      vec2 U03
+      vec2 U04
+      int U05
+  CMwNod U06
 
 0x037
- version
- int
- int
- int
- int
- int
- int
- int
- int
+  version
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
 0x038
- version
- CPlugBitmapAtlas
- int
+  version
+  CPlugBitmapAtlas
+  int
 
 enum EUsage
- Color
- Light
- Height2DuDv
- Render
- Height2DuDvLumi
- Height2NxNyNz
- Height2NxNy
- Depth
- DispH01
- Height2NormPal8b
- NxNyNz
- NxNy
- NormPal8b
- NormPal16b
- ColorFloat
- RenderFloat
- Height2DuDv1
- Alpha
- LightAlpha
- Height2RxG0BzAy
- NormRxG0BzAy
- TexCoord
- Render16b
- Vertex
- Height2BumpTxTy
- BumpTxTy
- Height2R0GyBzAx
- NormR0GyBzAx
- NormXYZ0YZX
+  Color
+  Light
+  Height2DuDv
+  Render
+  Height2DuDvLumi
+  Height2NxNyNz
+  Height2NxNy
+  Depth
+  DispH01
+  Height2NormPal8b
+  NxNyNz
+  NxNy
+  NormPal8b
+  NormPal16b
+  ColorFloat
+  RenderFloat
+  Height2DuDv1
+  Alpha
+  LightAlpha
+  Height2RxG0BzAy
+  NormRxG0BzAy
+  TexCoord
+  Render16b
+  Vertex
+  Height2BumpTxTy
+  BumpTxTy
+  Height2R0GyBzAx
+  NormR0GyBzAx
+  NormXYZ0YZX
 
 enum EColorDepth
- DefaultColorDepth
- Color16b
- Color32b
+  DefaultColorDepth
+  Color16b
+  Color32b
 
 enum ECubeFace
- None
- XPos
- XNeg
- YPos
- YNeg
- ZPos
- ZNeg
+  None
+  XPos
+  XNeg
+  YPos
+  YNeg
+  ZPos
+  ZNeg
 
 enum EGxTexFilter
- Point
- Bilinear
- Trilinear
- Anisotropic
+  Point
+  Bilinear
+  Trilinear
+  Anisotropic
 
 enum EGxTexAddress
- Wrap
- Mirror
- Clamp
- BorderSM3
+  Wrap
+  Mirror
+  Clamp
+  BorderSM3
 
 enum EGxUVGenerate
- NoGenerate
- CameraVertex
- WorldVertex
- WorldVertexXY
- WorldVertexXZ
- WorldVertexYZ
- CameraNormal
- WorldNormal
- CameraReflectionVector
- WorldReflectionVector
- WorldNormalNeg
- WaterReflectionVector
- Hack1Vertex
- MapTexel
- FogPlane0
- Vsk3SeaFoam
- ImageSpace
- LightDir0Reflect
- EyeNormal
- ShadowB1Pw01
- Tex3AsPosPrCamera
- FlatWaterReflect
- FlatWaterRefract
- FlatWaterFresnel
+  NoGenerate
+  CameraVertex
+  WorldVertex
+  WorldVertexXY
+  WorldVertexXZ
+  WorldVertexYZ
+  CameraNormal
+  WorldNormal
+  CameraReflectionVector
+  WorldReflectionVector
+  WorldNormalNeg
+  WaterReflectionVector
+  Hack1Vertex
+  MapTexel
+  FogPlane0
+  Vsk3SeaFoam
+  ImageSpace
+  LightDir0Reflect
+  EyeNormal
+  ShadowB1Pw01
+  Tex3AsPosPrCamera
+  FlatWaterReflect
+  FlatWaterRefract
+  FlatWaterFresnel
 
 archive SpecularSubMapCat
- float
- float
- float
- float
+  float
+  float
+  float
+  float

@@ -2,8 +2,8 @@ CGameCtnMediaBlockVehicleLight 0x03133000
 - inherits: CGameCtnMediaBlock
 
 0x000
- timefloat Start
- timefloat End
+  timefloat Start
+  timefloat End
 
 0x001 // target
- int Target
+  int Target

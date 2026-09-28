@@ -1,8 +1,8 @@
 CPlugStaticObjectModel 0x09159000
 
 archive
- int Version
- CPlugSolid2Model Mesh (external)
- boolbyte IsMeshCollidable
- if !IsMeshCollidable
-  CPlugSurface Shape (external)
+  int Version
+  CPlugSolid2Model Mesh (external)
+  boolbyte IsMeshCollidable
+  if !IsMeshCollidable
+    CPlugSurface Shape (external)

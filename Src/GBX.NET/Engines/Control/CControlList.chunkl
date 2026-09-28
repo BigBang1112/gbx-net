@@ -2,31 +2,31 @@ CControlList 0x0700F000
 - inherits: CControlContainer
 
 0x007
- int
- int
- int
- int
- int
- int
- int
- Unknown[]
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  Unknown[]
 
 0x00A
- float
- float
- float
- int
- bool
- id
- if U06 == null || U06 == ""
-  CMwNod
- float
- float
- bool
+  float
+  float
+  float
+  int
+  bool
+  id
+  if U06 == null || U06 == ""
+    CMwNod
+  float
+  float
+  bool
 
 archive Unknown
- string
- float
- CMwNod
- id
- bool
+  string
+  float
+  CMwNod
+  id
+  bool

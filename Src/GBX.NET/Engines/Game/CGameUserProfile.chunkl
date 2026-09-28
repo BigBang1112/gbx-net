@@ -1,357 +1,357 @@
 CGameUserProfile 0x031CC000
 
 0x000 (skippable)
- version
- float
- float
- float
- v0=
+  version
   float
- v3-
-  int
-  string
- v2-
-  string
-  v2=
-   string
- v3+
-  Sticker[] Stickers
-  string[] Layers
-  v4+
-   bool
-   string
-  v5+
-   string
-   string
-  v6+
-   byte
-  v7+
-   string ClubTag
-  v8+
-   string
-   string
-   float
-   string
-   string
-   float
-   int
-   int
-  v10+
-   int
-  v11+
-   int
-  v12+
-   byte
-  v13+
-   float
-   float
-  v14+
-   int
-  v15+
-   int
-  v16+
-   string
+  float
+  float
+  v0=
+    float
+  v3-
+    int
+    string
+  v2-
+    string
+    v2=
+      string
+  v3+
+    Sticker[] Stickers
+    string[] Layers
+    v4+
+      bool
+      string
+    v5+
+      string
+      string
+    v6+
+      byte
+    v7+
+      string ClubTag
+    v8+
+      string
+      string
+      float
+      string
+      string
+      float
+      int
+      int
+    v10+
+      int
+    v11+
+      int
+    v12+
+      byte
+    v13+
+      float
+      float
+    v14+
+      int
+    v15+
+      int
+    v16+
+      string
 
 0x001 (skippable)
 
 0x002 (skippable)
- version
- data
+  version
+  data
 
 0x003 (skippable)
- version
- data
+  version
+  data
 
 0x004 (skippable)
- version
- ContextTime[] ContextTimes
+  version
+  ContextTime[] ContextTimes
 
 0x005 (skippable)
- version
- string
+  version
+  string
 
 0x006 (skippable)
- version
- ContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
+  version
+  ContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
 
 0x007 (skippable)
- version
- v1=
-  CInputBindingsConfig
- v2+
-  CInputBindingsConfig[]
- float
- float
- bool
- int
- bool
- float
- float
- float
- bool
- float
- float
- v2-
-  Unknown[]
+  version
+  v1=
+    CInputBindingsConfig
+  v2+
+    CInputBindingsConfig[]
+  float
+  float
+  bool
+  int
+  bool
+  float
+  float
+  float
+  bool
+  float
+  float
+  v2-
+    Unknown[]
 
 0x008 (skippable)
- version
- int
+  version
+  int
 
 0x009 (skippable)
 
 0x00A (skippable)
- version
- Unknown2[]
- v2+
-  int
-  int
-  int
-  int
-  int
- v3+
-  int
+  version
+  Unknown2[]
+  v2+
+    int
+    int
+    int
+    int
+    int
+  v3+
+    int
 
 0x00B (skippable)
- version
- bool Editor_ShowHelp
- v1+
-  string
-  string
-  string
-  string
-  string
-  string
- v2+
-  v3-
-   int3
-   int3
-   int3
-   int3
-   int3
- v4+
-  int3
-  int3
-  int3
-  int3
-  int3
-  int3
- v5+
-  Unknown4[]
-  int
- v6+
-  int
-  int
-  v6=
-   int
-  v7+
-   byte
-  int
- v8+
-  int
+  version
+  bool Editor_ShowHelp
+  v1+
+    string
+    string
+    string
+    string
+    string
+    string
+  v2+
+    v3-
+      int3
+      int3
+      int3
+      int3
+      int3
+  v4+
+    int3
+    int3
+    int3
+    int3
+    int3
+    int3
+  v5+
+    Unknown4[]
+    int
+  v6+
+    int
+    int
+    v6=
+      int
+    v7+
+      byte
+    int
+  v8+
+    int
 
 0x00C (skippable)
- version
- DeviceSettings[] VehicleSettings
+  version
+  DeviceSettings[] VehicleSettings
 
 0x00D (skippable)
- version
- int
- v1+
+  version
   int
+  v1+
+    int
 
 0x00E (skippable, ignore)
 
 0x00F (skippable)
- version
- Unknown6
- v2+
-  byte
- v3+
-  int
- v4+
-  int
-  int
+  version
+  Unknown6
+  v2+
+    byte
+  v3+
+    int
+  v4+
+    int
+    int
 
 0x010 (skippable)
- version
- Unknown7[]
+  version
+  Unknown7[]
 
 0x011 (skippable)
- version
- int
- int
- ulong
-
-0x012 (skippable)
- version
- int
-
-0x014 (skippable)
- version
- int
-
-0x015 (skippable)
- version
- Unknown8 (version: Version)
-
-0x016 (skippable)
- version
- byte
-
-0x017 (skippable)
- version
- Unknown8 (version: 5)
- v6+
+  version
+  int
+  int
   ulong
 
+0x012 (skippable)
+  version
+  int
+
+0x014 (skippable)
+  version
+  int
+
+0x015 (skippable)
+  version
+  Unknown8 (version: Version)
+
+0x016 (skippable)
+  version
+  byte
+
+0x017 (skippable)
+  version
+  Unknown8 (version: 5)
+  v6+
+    ulong
+
 0x018 (skippable)
- version
- byte
+  version
+  byte
 
 0x019 (skippable)
- version
- string
+  version
+  string
 
 0x01A (skippable)
- version
- string
+  version
+  string
 
 0x01B (skippable)
 
 0x01C (skippable)
- int
+  int
 
 0x01D (skippable)
- version
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+  version
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
 0x01E (skippable)
- int
+  int
 
 0x01F (skippable)
- int
+  int
 
 0x020 (skippable)
- version
- Unknown8 (version: Version)
- ulong
+  version
+  Unknown8 (version: Version)
+  ulong
 
 0x021 (skippable)
 
 0x022 (skippable)
- data[20]
+  data[20]
 
 0x023 (skippable)
- int
+  int
 
 0x024 (skippable)
- int
+  int
 
 archive Sticker
- string
- string
+  string
+  string
 
 archive ContextTime
- string
- int
- int
+  string
+  int
+  int
 
 archive ContextMapRecordForProfile
- v2-
-  id TitleId
- id MapUid
- int PersonalBest
- v2+
-  int
-  int
-  v3+
-   string
+  v2-
+    id TitleId
+  id MapUid
+  int PersonalBest
+  v2+
+    int
+    int
+    v3+
+      string
 
 archive Unknown
- id
- float
- float
- bool
+  id
+  float
+  float
+  bool
 
 archive Unknown2
- int
- string
- string
- string
- Unknown3[] InnerData
+  int
+  string
+  string
+  string
+  Unknown3[] InnerData
 
 archive Unknown3
- id
- int
- int
- int
- int
- int
+  id
+  int
+  int
+  int
+  int
+  int
 
 archive Unknown4
- int
- string
- int
- int
- int
- int
+  int
+  string
+  int
+  int
+  int
+  int
 
 archive DeviceSettings
- ident Vehicle = empty
- float AnalogSensitivity = 1
- float AnalogDeadZone = 0.1f
- int
- float VibrationIntensity = 1
- float CenterSpringIntensity
- int
- string
- string
- int
+  ident Vehicle = empty
+  float AnalogSensitivity = 1
+  float AnalogDeadZone = 0.1f
+  int
+  float VibrationIntensity = 1
+  float CenterSpringIntensity
+  int
+  string
+  string
+  int
 
 archive Unknown6
- int Version
- if Version >= 1
-  int
-  quat[]
+  int Version
+  if Version >= 1
+    int
+    quat[]
 
 archive Unknown7
- string
- string
- string
- string
- string
- string
- data[32]
- int
+  string
+  string
+  string
+  string
+  string
+  string
+  data[32]
+  int
 
 archive Unknown8
- v1+
-  v4-
-   int
-  v5+
-   int
-  int
- v2+
-  v5-
-   int
-  v3-
-   byte
-  v2=
-   string
-   string
- v7+
-  int
- v8+
-  int
+  v1+
+    v4-
+      int
+    v5+
+      int
+    int
+  v2+
+    v5-
+      int
+    v3-
+      byte
+    v2=
+      string
+      string
+  v7+
+    int
+  v8+
+    int

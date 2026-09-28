@@ -2,10 +2,10 @@ CGameCtnMediaBlockUi 0x0307D000
 - inherits: CGameCtnMediaBlock
 
 0x000
- CControlContainer UserInterface
- timefloat Start
- timefloat End
+  CControlContainer UserInterface
+  timefloat Start
+  timefloat End
 
 0x001
- timefloat Start
- timefloat End
+  timefloat Start
+  timefloat End

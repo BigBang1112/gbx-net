@@ -4,33 +4,33 @@ CSceneVehicleCar 0x0A02B000
 0x003
 
 0x005
- CMwNod
- vec3
+  CMwNod
+  vec3
 
 0x007
- CMwNod
- vec3
+  CMwNod
+  vec3
 
 0x008
 
 0x009
- VisualVehicle[] VisualVehicles
+  VisualVehicle[] VisualVehicles
 
 0x00B
- CMwNod
- CMwNod
+  CMwNod
+  CMwNod
 
 0x00C
- float
- float
- box
+  float
+  float
+  box
 
 0x014
 
 archive VisualVehicle
- id
- int
- id
- id
- bool
- bool
+  id
+  int
+  id
+  id
+  bool
+  bool

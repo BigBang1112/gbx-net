@@ -5,17 +5,17 @@ CPlugSkel 0x090BA000
 archive
 
 archive Joint
- id Name
- short ParentIndex
- v14-
-  quat GlobalJoint
-  vec3
- v1+
-  iso4
+  id Name
+  short ParentIndex
+  v14-
+    quat GlobalJoint
+    vec3
+  v1+
+    iso4
 
 archive Socket
- id Name
- short
- iso4
+  id Name
+  short
+  iso4
 
 archive JointExpr

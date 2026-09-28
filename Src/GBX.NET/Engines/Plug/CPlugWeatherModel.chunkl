@@ -1,14 +1,14 @@
 CPlugWeatherModel 0x090BF000
 
 0x001
- CPlugWeather[]_deprec Weathers
- CPlugBitmap BitmapSpecularDir
+  CPlugWeather[] Weathers (deprec)
+  CPlugBitmap BitmapSpecularDir
 
 0x002
- CFuncDayTime FuncDayTime (external)
+  CFuncDayTime FuncDayTime (external)
 
 0x003
- CPlugBitmap BitmapWaterFog (external)
+  CPlugBitmap BitmapWaterFog (external)
 
 0x004
- CPlugMoodSetting MoodSetting (external)
+  CPlugMoodSetting MoodSetting (external)

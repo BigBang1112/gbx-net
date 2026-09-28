@@ -114,12 +114,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+        <InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
-        <InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
+        <ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
 </Project>

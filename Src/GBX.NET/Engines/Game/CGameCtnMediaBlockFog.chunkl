@@ -2,17 +2,17 @@ CGameCtnMediaBlockFog 0x03199000
 - inherits: CGameCtnMediaBlock
 
 0x000
- version
- list<Key> Keys (version: Version)
+  version
+  Key[] Keys (version: Version, list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
- float SkyIntensity
- float Distance
- v1+
-  float? Coefficient
-  vec3? Color
-  v2+
-   float? CloudsOpacity
-   float? CloudsSpeed
+  timefloat Time
+  float Intensity
+  float SkyIntensity
+  float Distance
+  v1+
+    float? Coefficient
+    vec3? Color
+    v2+
+      float? CloudsOpacity
+      float? CloudsSpeed

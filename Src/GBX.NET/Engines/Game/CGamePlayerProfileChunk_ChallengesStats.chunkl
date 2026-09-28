@@ -2,34 +2,18 @@ CGamePlayerProfileChunk_ChallengesStats 0x03148000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- int
+  version
+  int
 
 0x001 (skippable)
- version
- SChallengeStats[] ChallengeStats (version: Version)
+  version
+  SChallengeStats[] ChallengeStats (version: Version)
 
 archive SChallengeStats
- ident
- v2+
-  string
-  int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int 
- int
- int
- bool
- bool NeedsSynchro
- if NeedsSynchro
+  ident
+  v2+
+    string
+    int
   int
   int
   int
@@ -40,6 +24,22 @@ archive SChallengeStats
   int
   int
   int
+  int 
   int
   int
-  int
+  bool
+  bool NeedsSynchro
+  if NeedsSynchro
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int

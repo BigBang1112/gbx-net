@@ -2,7 +2,7 @@ CGameCtnMediaBlockToneMapping 0x03127000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys
+  Key[] Keys (list)
 
 0x001 (base: 0x000)
 
@@ -13,8 +13,8 @@ CGameCtnMediaBlockToneMapping 0x03127000
 0x004 (base: 0x000)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Exposure
- float MaxHDR
- float LightTrailScale
- int
+  timefloat Time
+  float Exposure
+  float MaxHDR
+  float LightTrailScale
+  int

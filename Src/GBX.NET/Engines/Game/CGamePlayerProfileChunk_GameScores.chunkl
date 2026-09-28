@@ -2,19 +2,19 @@ CGamePlayerProfileChunk_GameScores 0x03146000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- STrainingMedalsScores[] TrainingMedalsScores
+  version
+  STrainingMedalsScores[] TrainingMedalsScores
 
 0x001 (skippable)
 
 0x004 (skippable)
 
 0x005 (skippable)
- version
- LadderMatchResult[] LadderMatchResults
+  version
+  LadderMatchResult[] LadderMatchResults
 
 archive STrainingMedalsScores
 
 archive LadderMatchResult
- systemtime
- float
+  systemtime
+  float

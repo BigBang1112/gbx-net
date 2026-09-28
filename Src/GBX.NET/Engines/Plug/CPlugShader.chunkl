@@ -2,102 +2,102 @@ CPlugShader 0x09002000
 - inherits: CPlug
 
 0x007
- CFuncShader FuncShader (external)
- CPlugShaderPass[] Passes
- CMwNod U01
+  CFuncShader FuncShader (external)
+  CPlugShaderPass[] Passes
+  CMwNod U01
 
 0x00E (base: 0x007)
- base
- CMwNod[] U02 (external)
+  base
+  CMwNod[] U02 (external)
 
 0x010
- ulong // SRequirementOld10 (old flags)
- float
- CMwNod
- ushort VisibleIdFlags
+  ulong // SRequirementOld10 (old flags)
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
 0x014
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
 0x015
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
 0x016 // flags, latest TMF
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
 0x018
- uint
+  uint
 
 0x019
- UnknownStruct2[]
+  UnknownStruct2[]
 
 0x01B
- version
- float
- float
+  version
+  float
+  float
 
 0x01C
- version
- CPlugFileText (external)
- CMwNod (external)
+  version
+  CPlugFileText (external)
+  CMwNod (external)
 
 0x01D
- uint
+  uint
 
 0x01E
- version
- uint
+  version
+  uint
 
 0x01F
- version
- UnknownStruct[]
+  version
+  UnknownStruct[]
 
 0x020
- version
- ulong
- float
- CPlugMaterialFx
- short
+  version
+  ulong
+  float
+  CPlugMaterialFx
+  short
 
 archive UnknownStruct
- CMwNod U01 (external)
- if U01 == null && U01File == null
-  bool U02
-  if U02
-   CMwNod U03
+  CMwNod U01 (external)
+  if U01 == null && U01File == null
+    bool U02
+    if U02
+      CMwNod U03
 
 archive UnknownStruct2
- CMwNod U01 (external)
- if U01 == null && U01File == null
-  CMwNod U02
+  CMwNod U01 (external)
+  if U01 == null && U01File == null
+    CMwNod U02
 
 enum EFillMode
- Solid
- Wired
- LineWired
- SolidWired
+  Solid
+  Wired
+  LineWired
+  SolidWired
 
 enum EVertexSpace
- None
- Fixed
- PlaneY
+  None
+  Fixed
+  PlaneY
 
 enum ESpriteColor0
- Copy
- NHalfDiagInWorld
- TmFRallyTreeRGB
+  Copy
+  NHalfDiagInWorld
+  TmFRallyTreeRGB
 
 enum ESortPosition
- Begining
- BeforeAlpha01
- BeforeTrans
- Ending
+  Begining
+  BeforeAlpha01
+  BeforeTrans
+  Ending

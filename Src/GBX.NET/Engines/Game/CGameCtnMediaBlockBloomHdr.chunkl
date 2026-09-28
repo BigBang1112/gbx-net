@@ -2,14 +2,14 @@ CGameCtnMediaBlockBloomHdr 0x03128000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys
+  Key[] Keys (list)
 
 0x001 (base: 0x000)
 
 0x002 (base: 0x000)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
- float StreaksIntensity
- float StreaksAttenuation
+  timefloat Time
+  float Intensity
+  float StreaksIntensity
+  float StreaksAttenuation

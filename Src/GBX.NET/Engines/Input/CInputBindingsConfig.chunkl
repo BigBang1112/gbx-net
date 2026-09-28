@@ -1,27 +1,27 @@
 CInputBindingsConfig 0x13006000
 
 0x000
- string
- Binding[] Bindings
+  string
+  Binding[] Bindings
 
 0x001
- id[]
+  id[]
 
 0x002 (skippable)
- string
- int
+  string
+  int
 
 0x003
- version
- Binding[] Bindings (version: Version + 1)
+  version
+  Binding[] Bindings (version: Version + 1)
 
 archive Binding
- v0=
-  int U01
- id DeviceId
- v1+
-  int U02
-  int U01
- int IsAnalog
- int U03
- string Name
+  v0=
+    int U01
+  id DeviceId
+  v1+
+    int U02
+    int U01
+  int IsAnalog
+  int U03
+  string Name

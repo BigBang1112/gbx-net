@@ -1,29 +1,29 @@
 CGameCtnZone 0x0305C000
 
 0x003
- int Height
- id ZoneId
- id SurfaceId
- int
+  int Height
+  id ZoneId
+  id SurfaceId
+  int
 
 0x004 (skippable)
- int Depth
- bool OldZone
+  int Depth
+  bool OldZone
 
 0x005
- bool HasWater
+  bool HasWater
 
 0x006
- bool IsLargeZone
+  bool IsLargeZone
 
 0x007
- float VisualTopGroundHeight
+  float VisualTopGroundHeight
 
 0x008
- int Height
+  int Height
 
 0x00B
- id WaterId
+  id WaterId
 
 0x00C
- id ForcedParentZoneFrontierId
+  id ForcedParentZoneFrontierId

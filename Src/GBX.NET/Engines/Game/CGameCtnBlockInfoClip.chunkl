@@ -2,45 +2,45 @@ CGameCtnBlockInfoClip 0x03053000
 - inherits: CGameCtnBlockInfo
 
 0x002
- id ASymmetricalClipId
+  id ASymmetricalClipId
 
 0x004
- bool IsFullFreeClip
- bool IsExclusiveFreeClip
+  bool IsFullFreeClip
+  bool IsExclusiveFreeClip
 
 0x005
- int<EClipType> ClipType
+  int<EClipType> ClipType
 
 0x006
- version
- bool CanBeDeletedByFullFreeClip
- v1+
-  int<EMultiDir> TopBottomMultiDir
-  v2+
-   byte?
-   v3+
-    byte?
-    v4+
-     byte?
+  version
+  bool CanBeDeletedByFullFreeClip
+  v1+
+    int<EMultiDir> TopBottomMultiDir
+    v2+
+      byte?
+      v3+
+        byte?
+        v4+
+          byte?
 
 0x007
- version
- bool HasPassingPoint
- if HasPassingPoint
-  vec2 PassingPointPos
-  float PassingPointRoll
-  float PassingPointPitch
+  version
+  bool HasPassingPoint
+  if HasPassingPoint
+    vec2 PassingPointPos
+    float PassingPointRoll
+    float PassingPointPitch
 
 0x008 (skippable)
- version
- id ClipGroupId
- id SymmetricalClipGroupId
- v1+
-  id
-  id
+  version
+  id ClipGroupId
+  id SymmetricalClipGroupId
+  v1+
+    id
+    id
 
 enum EClipType
- ClassicClip
- FreeClipSide
- FreeClipTop
- FreeClipBottom
+  ClassicClip
+  FreeClipSide
+  FreeClipTop
+  FreeClipBottom

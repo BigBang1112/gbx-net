@@ -1,171 +1,171 @@
 CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameScriptDebugger.
 
 0x003
- string PlayerName
- string NickName
- id
- int ScoresVersion
- Score[] Scores (version: n.ScoresVersion)
+  string PlayerName
+  string NickName
+  id
+  int ScoresVersion
+  Score[] Scores (version: n.ScoresVersion)
 
 0x004
- string PlayerName
- string NickName
- id
- int ScoresVersion
- Score[] Scores (version: n.ScoresVersion)
+  string PlayerName
+  string NickName
+  id
+  int ScoresVersion
+  Score[] Scores (version: n.ScoresVersion)
 
 0x006
- int SurvivalScoresVersion
- SurvivalScore[] SurvivalScores (version: n.SurvivalScoresVersion)
+  int SurvivalScoresVersion
+  SurvivalScore[] SurvivalScores (version: n.SurvivalScoresVersion)
 
 0x00F
- CGamePlayerOfficialScores PlayerOfficialScores
- TrainingMedalsScore[] TrainingMedalsScores
- CGameCampaignPlayerScores[]_deprec CampaignPlayerScores
+  CGamePlayerOfficialScores PlayerOfficialScores
+  TrainingMedalsScore[] TrainingMedalsScores
+  CGameCampaignPlayerScores[] CampaignPlayerScores (deprec)
 
 0x010
- byte
- CampaignRecordsState[] CampaignRecordsStates
+  byte
+  CampaignRecordsState[] CampaignRecordsStates
 
 0x011
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
 0x012
- LadderMatchResult[] LadderMatchResults
+  LadderMatchResult[] LadderMatchResults
 
 archive Score
- ident MapInfo
- v0=
-  int
- timeint PersonalBest
- v4-
-  v1+
-   int
-   bool
-  v2+
-   int
-   int
-   int
-  v3+
-   int
-  v4=
-   int
- v5+
-  int
-  int
-  int
-  short
-  short
- v6+
-  int
- v7+
-  int
- v8+
-  int
- v9+
-  systemtime
-  systemtime
-  v15-
-   DeprecatedChallengeLeagueScore[] DeprecatedChallengeLeagueScores
- v10+
-  int
- v11+
-  int
- v12+
-  int
- v13+
-  byte
-  string MapName
- v14+
-  int
- v15+
-  int
- v17+
-  int
-  int
-  int
-  int
- v18+
-  int
-  int
-  int
-  short
-  short
+  ident MapInfo
+  v0=
+    int
+  timeint PersonalBest
+  v4-
+    v1+
+      int
+      bool
+    v2+
+      int
+      int
+      int
+    v3+
+      int
+    v4=
+      int
+  v5+
+    int
+    int
+    int
+    short
+    short
+  v6+
+    int
+  v7+
+    int
+  v8+
+    int
+  v9+
+    systemtime
+    systemtime
+    v15-
+      DeprecatedChallengeLeagueScore[] DeprecatedChallengeLeagueScores
+  v10+
+    int
+  v11+
+    int
+  v12+
+    int
+  v13+
+    byte
+    string MapName
+  v14+
+    int
+  v15+
+    int
+  v17+
+    int
+    int
+    int
+    int
+  v18+
+    int
+    int
+    int
+    short
+    short
 
 archive DeprecatedChallengeLeagueScore
- int Version
- if Version >= 5
-  CMwNod
-  CMwNod
- if Version == 4
-  CMwNod
-  CMwNod
-  CGameHighScore[]
- if Version < 4
-  int
-  int
-  string
-  if Version < 2
-   CMwNod[]
-  if Version >= 2
-   CGameHighScore[]
-  if Version >= 3
-   string
+  int Version
+  if Version >= 5
+    CMwNod
+    CMwNod
+  if Version == 4
+    CMwNod
+    CMwNod
+    CGameHighScore[]
+  if Version < 4
+    int
+    int
+    string
+    if Version < 2
+      CMwNod[]
+    if Version >= 2
+      CGameHighScore[]
+    if Version >= 3
+      string
 
 archive SurvivalScore
- id MapUid
- int
- int
- int
- int
- v2+
-  int = -1
+  id MapUid
+  int
+  int
+  int
+  int
+  v2+
+    int = -1
 
 archive TrainingMedalsScore
- id CampaignId
- int
- CGamePlayerOfficialScores Score
+  id CampaignId
+  int
+  CGamePlayerOfficialScores Score
 
 archive CampaignRecordsState
- id CampaignId
- systemtime
+  id CampaignId
+  systemtime
 
 archive LadderMatchResult
- systemtime
- float
- byte
- byte
- byte
+  systemtime
+  float
+  byte
+  byte
+  byte

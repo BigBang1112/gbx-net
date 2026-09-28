@@ -2,6 +2,6 @@ CMotionDayTime 0x08055000
 - inherits: CMotion
 
 0x000
- int
- int
- int
+  int
+  int
+  int

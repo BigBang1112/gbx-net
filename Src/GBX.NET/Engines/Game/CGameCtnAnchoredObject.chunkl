@@ -2,40 +2,40 @@ CGameCtnAnchoredObject 0x03101000
 - chunk_Chunk03101002: Unexpected syntax
 
 0x002
- version
- ident ItemModel = empty
- vec3 YawPitchRoll
- byte3 BlockUnitCoord
- id AnchorTreeId
- vec3 AbsolutePositionInMap
- CGameWaypointSpecialProperty WaypointSpecialProperty
- v4-
-  int
- v4+
-  short Flags
-  v5+
-   vec3 PivotPosition
-   v6+
-    float Scale
-    v7+
-     if (Flags & 4) != 0
-      packdesc PackDesc
-     v8+
-      vec3?
-      vec3?
+  version
+  ident ItemModel = empty
+  vec3 YawPitchRoll
+  byte3 BlockUnitCoord
+  id AnchorTreeId
+  vec3 AbsolutePositionInMap
+  CGameWaypointSpecialProperty WaypointSpecialProperty
+  v4-
+    int
+  v4+
+    short Flags
+    v5+
+      vec3 PivotPosition
+      v6+
+        float Scale
+        v7+
+          if (Flags & 4) != 0
+            packdesc PackDesc
+          v8+
+            vec3?
+            vec3?
 
 0x004 (skippable)
- version
- int = -1
+  version
+  int = -1
 
 0x005 (skippable, ignore)
 
 enum EPhaseOffset
- None
- One8th
- Two8th
- Three8th
- Four8th
- Five8th
- Six8th
- Seven8th
+  None
+  One8th
+  Two8th
+  Three8th
+  Four8th
+  Five8th
+  Six8th
+  Seven8th

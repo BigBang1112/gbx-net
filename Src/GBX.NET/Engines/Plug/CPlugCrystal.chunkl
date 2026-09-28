@@ -4,209 +4,209 @@ CPlugCrystal 0x09003000
 0x000 // one layer only
 
 0x003 [MP4.v2, TM2020.v2] // materials
- version
- list<Material> Materials = empty
+  version
+  Material[] Materials = empty (list)
 
 0x004 (skippable) [MP4.v1, TM2020.v1]
- version
- data
- v1+
-  int? // DoData
+  version
+  data
+  v1+
+    int? // DoData
 
 0x005 [MP4, TM2020] // layers
 
 0x006 [MP4.v0, TM2020.v1] // lightmap UVs
 
 0x007 [MP4, TM2020] // smoothing groups
- version
- float[] SmoothingGroups // SCrystalSmoothingGroup array
- int[]
-
-enum ELayerType
- Geometry
- SubdivideSmooth
- Translation
- Rotation
- Scale
- Mirror
- MoveToGround
- Extrude
- Subdivide
- Chaos
- Smooth
- BorderTransition
- Deformation // BlocTransfo
- Cubes // Voxels
- Trigger // TriggerShape
- SpawnPosition // RespawnPos
- Light = 18
-
-enum EAxis
- X
- Y
- Z
-
-archive Material
- string MaterialName
- if MaterialName == null || MaterialName == ""
-  CPlugMaterialUserInst MaterialUserInst
-
-archive Layer (contextual)
- int Ver
- bool CrystalEnabled
- id LayerId
- string LayerName
- if Ver >= 1
-  bool IsEnabled = true
-
-archive ModifierLayer (inherits: Layer, contextual)
- base
- int ModifierVersion
- PartInLayer[] Mask
-
-archive PartInLayer
- int GroupIndex
- id LayerId
-
-archive GeometryLayer (inherits: Layer, contextual)
- base
- int GeometryVersion
- Crystal Crystal
- int[] U02 // ID for each group?
- if GeometryVersion >= 1
-  bool IsVisible = true
-  bool Collidable = true
-
-archive SubdivideSmoothLayer (inherits: ModifierLayer, contextual)
- base
- int SubdivideSmoothVersion
- int Subdivisions
-
-archive TranslationLayer (inherits: ModifierLayer, contextual)
- base
- int TranslationVersion
- vec3 Translation
-
-archive RotationLayer (inherits: ModifierLayer, contextual)
- base
- int RotationVersion
- float Rotation // in radians
- int<EAxis> Axis
- bool Independently
-
-archive ScaleLayer (inherits: ModifierLayer, contextual)
- base
- int ScaleVersion
- vec3 Scale
- bool Independently
-
-archive MirrorLayer (inherits: ModifierLayer, contextual)
- base
- int MirrorVersion
- int<EAxis> Axis
- float Distance
- bool Independently
-
-archive MoveToGroundLayer (inherits: ModifierLayer, contextual)
- base
- int MoveToGroundVersion
- bool
-
-archive ExtrudeLayer (inherits: ModifierLayer, contextual)
- base
- int ExtrudeVersion
- vec3 Size
- 
-archive SubdivideLayer (inherits: ModifierLayer, contextual)
- base
- int SubdivideVersion
- int Subdivisions
-
-archive ChaosLayer (inherits: ModifierLayer, contextual)
- base
- int ChaosVersion
- float MinDistance
- int
- if ChaosVersion >= 1
-  float MaxDistance
-
-archive SmoothLayer (inherits: ModifierLayer, contextual)
- base
- int SmoothVersion
- float // SmoothFactor?
- bool // Independently
-
-archive BorderTransitionLayer (inherits: ModifierLayer, contextual)
- base
- int BorderTransitionVersion
- float
- float
- CPlugVisual[] // interesting, but not sure what it is
-
-archive DeformationLayer (inherits: ModifierLayer, contextual)
- base
- int DeformationVersion
- boxaligned
- iso4
-
-archive CubesLayer (inherits: Layer, contextual)
- base
- int CubesVersion
- VoxelSpace Cubes
- if CubesVersion >= 2
-  bool IsVisible = true
-  bool Collidable = true
-
-archive TriggerLayer (inherits: Layer, contextual)
- base
- int TriggerVersion
- Crystal Crystal
- if TriggerVersion >= 1
+  version
+  float[] SmoothingGroups // SCrystalSmoothingGroup array
   int[]
 
+enum ELayerType
+  Geometry
+  SubdivideSmooth
+  Translation
+  Rotation
+  Scale
+  Mirror
+  MoveToGround
+  Extrude
+  Subdivide
+  Chaos
+  Smooth
+  BorderTransition
+  Deformation // BlocTransfo
+  Cubes // Voxels
+  Trigger // TriggerShape
+  SpawnPosition // RespawnPos
+  Light = 18
+
+enum EAxis
+  X
+  Y
+  Z
+
+archive Material
+  string MaterialName
+  if MaterialName == null || MaterialName == ""
+    CPlugMaterialUserInst MaterialUserInst
+
+archive Layer (contextual)
+  int Ver
+  bool CrystalEnabled
+  id LayerId
+  string LayerName
+  if Ver >= 1
+    bool IsEnabled = true
+
+archive ModifierLayer (inherits: Layer, contextual)
+  base
+  int ModifierVersion
+  PartInLayer[] Mask
+
+archive PartInLayer
+  int GroupIndex
+  id LayerId
+
+archive GeometryLayer (inherits: Layer, contextual)
+  base
+  int GeometryVersion
+  Crystal Crystal
+  int[] U02 // ID for each group?
+  if GeometryVersion >= 1
+    bool IsVisible = true
+    bool Collidable = true
+
+archive SubdivideSmoothLayer (inherits: ModifierLayer, contextual)
+  base
+  int SubdivideSmoothVersion
+  int Subdivisions
+
+archive TranslationLayer (inherits: ModifierLayer, contextual)
+  base
+  int TranslationVersion
+  vec3 Translation
+
+archive RotationLayer (inherits: ModifierLayer, contextual)
+  base
+  int RotationVersion
+  float Rotation // in radians
+  int<EAxis> Axis
+  bool Independently
+
+archive ScaleLayer (inherits: ModifierLayer, contextual)
+  base
+  int ScaleVersion
+  vec3 Scale
+  bool Independently
+
+archive MirrorLayer (inherits: ModifierLayer, contextual)
+  base
+  int MirrorVersion
+  int<EAxis> Axis
+  float Distance
+  bool Independently
+
+archive MoveToGroundLayer (inherits: ModifierLayer, contextual)
+  base
+  int MoveToGroundVersion
+  bool
+
+archive ExtrudeLayer (inherits: ModifierLayer, contextual)
+  base
+  int ExtrudeVersion
+  vec3 Size
+ 
+archive SubdivideLayer (inherits: ModifierLayer, contextual)
+  base
+  int SubdivideVersion
+  int Subdivisions
+
+archive ChaosLayer (inherits: ModifierLayer, contextual)
+  base
+  int ChaosVersion
+  float MinDistance
+  int
+  if ChaosVersion >= 1
+    float MaxDistance
+
+archive SmoothLayer (inherits: ModifierLayer, contextual)
+  base
+  int SmoothVersion
+  float // SmoothFactor?
+  bool // Independently
+
+archive BorderTransitionLayer (inherits: ModifierLayer, contextual)
+  base
+  int BorderTransitionVersion
+  float
+  float
+  CPlugVisual[] // interesting, but not sure what it is
+
+archive DeformationLayer (inherits: ModifierLayer, contextual)
+  base
+  int DeformationVersion
+  boxaligned
+  iso4
+
+archive CubesLayer (inherits: Layer, contextual)
+  base
+  int CubesVersion
+  VoxelSpace Cubes
+  if CubesVersion >= 2
+    bool IsVisible = true
+    bool Collidable = true
+
+archive TriggerLayer (inherits: Layer, contextual)
+  base
+  int TriggerVersion
+  Crystal Crystal
+  if TriggerVersion >= 1
+    int[]
+
 archive SpawnPositionLayer (inherits: ModifierLayer, contextual)
- base
- int SpawnPositionVersion
- vec3 SpawnPosition
- float HorizontalAngle
- float VerticalAngle
- if SpawnPositionVersion >= 1
-  float RollAngle
+  base
+  int SpawnPositionVersion
+  vec3 SpawnPosition
+  float HorizontalAngle
+  float VerticalAngle
+  if SpawnPositionVersion >= 1
+    float RollAngle
 
 archive LightLayer (inherits: ModifierLayer, contextual)
- base
- int LightVersion
- CPlugLightUserModel[] Lights
- LightPos[] LightPositions
+  base
+  int LightVersion
+  CPlugLightUserModel[] Lights
+  LightPos[] LightPositions
 
 archive VoxelSpace
- throw
+  throw
 
 archive Crystal (contextual)
 
 archive VisualLevel
- int
- float
+  int
+  float
 
 archive AnchorInfo
- bool
- bool
- iso4
- string
- int
+  bool
+  bool
+  iso4
+  string
+  int
 
 archive Part
- v31+
-  int U01
- v36+
-  byte U02
- v35-
-  int U02
- int U03
- string Name
- int U04
- int[] U05
+  v31+
+    int U01
+  v36+
+    byte U02
+  v35-
+    int U02
+  int U03
+  string Name
+  int U04
+  int[] U05
 
 archive LightPos
- int
- iso4
+  int
+  iso4

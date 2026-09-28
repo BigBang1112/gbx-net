@@ -2,4 +2,4 @@ CFuncKeysNatural 0x05030000
 - inherits: CFuncKeys
 
 0x000
- int[] Naturals
+  int[] Naturals

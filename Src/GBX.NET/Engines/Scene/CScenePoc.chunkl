@@ -3,4 +3,4 @@ CScenePoc 0x0A009000
 - abstract
 
 0x000
- bool IsActive
+  bool IsActive

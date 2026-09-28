@@ -4,15 +4,15 @@ CCtnMediaBlockUiTMSimpleEvtsDisplay 0x24092000
 0x000
 
 0x001
- bool StuntFigures
- bool Checkpoints
- bool EndOfRace
- bool EndOfLaps
- bool GhostsName
+  bool StuntFigures
+  bool Checkpoints
+  bool EndOfRace
+  bool EndOfLaps
+  bool GhostsName
 
 0x002
 
 enum EDisplayMode
- OnlyTarget
- Always
- Never
+  OnlyTarget
+  Always
+  Never

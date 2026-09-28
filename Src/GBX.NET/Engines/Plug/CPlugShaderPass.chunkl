@@ -2,58 +2,58 @@ CPlugShaderPass 0x09067000
 - inherits: CPlug
 
 0x006
- CPlugBitmapSampler[] VertexTextures
+  CPlugBitmapSampler[] VertexTextures
 
 0x007
- uint
+  uint
 
 0x008
- CPlugFileGPU VHlslGpu (external)
- if VHlslGpu != null || VHlslGpuFile != null
-  GpuLoadFx[] VHlslGpuLoadFxs1
-  vec4[] VHlslU01
- CPlugFileGPU PHlslGpu (external)
- if PHlslGpu != null || PHlslGpuFile != null
-  GpuLoadFx[] PHlslGpuLoadFxs2
-  vec4[] PHlslU01
+  CPlugFileGPU VHlslGpu (external)
+  if VHlslGpu != null || VHlslGpuFile != null
+    GpuLoadFx[] VHlslGpuLoadFxs1
+    vec4[] VHlslU01
+  CPlugFileGPU PHlslGpu (external)
+  if PHlslGpu != null || PHlslGpuFile != null
+    GpuLoadFx[] PHlslGpuLoadFxs2
+    vec4[] PHlslU01
 
 0x00A
- id[]
- PipelineGpu VHlsl
- PipelineGpu PHlsl
+  id[]
+  PipelineGpu VHlsl
+  PipelineGpu PHlsl
 
 0x00B
- version
- PipelineGpu
- PipelineGpu
- v1+
+  version
   PipelineGpu
+  PipelineGpu
+  v1+
+    PipelineGpu
 
 0x00C
- uint
+  uint
 
 0x00D
- UnknownStruct[]
- UnknownStruct[]
- UnknownStruct[]
- UnknownStruct[]
- UnknownStruct[]
+  UnknownStruct[]
+  UnknownStruct[]
+  UnknownStruct[]
+  UnknownStruct[]
+  UnknownStruct[]
 
 archive PipelineGpu
- bool U01
- CMwNod Script (external)
- if !U01
-  return
- GpuLoadFx[] GpuLoadFxs
- vec4[] U02
+  bool U01
+  CMwNod Script (external)
+  if !U01
+    return
+  GpuLoadFx[] GpuLoadFxs
+  vec4[] U02
 
 archive GpuLoadFx
- id
- int
- int
- int
- int
+  id
+  int
+  int
+  int
+  int
 
 archive UnknownStruct
- CPlugBitmap (external)
- id
+  CPlugBitmap (external)
+  id

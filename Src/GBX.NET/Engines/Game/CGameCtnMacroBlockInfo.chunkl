@@ -2,143 +2,143 @@ CGameCtnMacroBlockInfo 0x0310D000
 - inherits: CGameCtnCollector
 
 0x000 [MP4, TM2020] // block spawns
- list<BlockSpawn> BlockSpawns
+  BlockSpawn[] BlockSpawns (list)
 
 0x001 [MP4, TM2020] // block skin spawns
- list<BlockSkinSpawn> BlockSkinSpawns
+  BlockSkinSpawn[] BlockSkinSpawns (list)
 
 0x002 [MP4, TM2020] // card events spawns
- list<CardEventsSpawn> CardEventsSpawns
+  CardEventsSpawn[] CardEventsSpawns (list)
 
 0x006 [MP4, TM2020]
- int = 2
- data SceneDecals
+  int = 2
+  data SceneDecals
 
 0x007
- CGameCtnMediaClipGroup
- CGameCtnMediaClipGroup
- CMwNod
+  CGameCtnMediaClipGroup
+  CGameCtnMediaClipGroup
+  CMwNod
 
 0x008 [MP4, TM2020]
- CGameCtnAutoTerrain[]_deprec AutoTerrains
- int
- int
+  CGameCtnAutoTerrain[] AutoTerrains (deprec)
+  int
+  int
 
 0x00B (skippable) [MP4, TM2020] // script metadata
 
 0x00C (skippable) [MP4.v2, TM2020.v2] // splines
- version = 2
- v0=
-  CMwNod[]_deprec
-  CPlugSpline3D[]_deprec
-  CMwNod[]_deprec
-  CMwNod[]_deprec
-  int
-  int
-  int
- v2+
-  return
- CMwNod[]_deprec
+  version = 2
+  v0=
+    CMwNod[] (deprec)
+    CPlugSpline3D[] (deprec)
+    CMwNod[] (deprec)
+    CMwNod[] (deprec)
+    int
+    int
+    int
+  v2+
+    return
+  CMwNod[] (deprec)
 
 0x00D
- version
+  version
 
 0x00E [MP4.v2, TM2020.v2] // object spawns
- version
- list<ObjectSpawn> ObjectSpawns
- v2-
-  v1+
-   int2[]
- v3+
-  int4[]
+  version
+  ObjectSpawn[] ObjectSpawns (list)
+  v2-
+    v1+
+      int2[]
+  v3+
+    int4[]
 
 0x00F [MP4, TM2020]
- version
- int3
- int3 OffzoneTriggerSize = (3, 1, 3)
- boxint3[] Offzones
+  version
+  int3
+  int3 OffzoneTriggerSize = (3, 1, 3)
+  boxint3[] Offzones
 
 0x010 (skippable) [MP4, TM2020]
- version
- int IconSize
+  version
+  int IconSize
 
 0x011 (skippable) [MP4, TM2020] // mediatracker
 
 archive BlockSpawn
- int Version
- ident BlockModel
- if Version < 2
-  int3 Coord
-  int<Direction> Direction
- if Version >= 2
-  if Version < 5
-   byte3 Coord
-   byte<Direction> Direction
-  int Flags
-  if Version >= 3
-   if Version >= 5
-    if ((Flags >> 26) & 1) != 0
-     vec3 AbsolutePositionInMap
-     vec3 PitchYawRoll
-    if ((Flags >> 26) & 1) == 0
-     byte3 Coord
-     byte<Direction> Direction
-   CGameWaypointSpecialProperty Waypoint
-   if Version >= 4
-    if Version < 6
-     CMwNod
-    if Version >= 8
-     short
+  int Version
+  ident BlockModel
+  if Version < 2
+    int3 Coord
+    int<Direction> Direction
+  if Version >= 2
+    if Version < 5
+      byte3 Coord
+      byte<Direction> Direction
+    int Flags
+    if Version >= 3
+      if Version >= 5
+        if ((Flags >> 26) & 1) != 0
+          vec3 AbsolutePositionInMap
+          vec3 PitchYawRoll
+        if ((Flags >> 26) & 1) == 0
+          byte3 Coord
+          byte<Direction> Direction
+      CGameWaypointSpecialProperty Waypoint
+      if Version >= 4
+        if Version < 6
+          CMwNod
+        if Version >= 8
+          short
 
 archive BlockSkinSpawn
- int Version
- CGameCtnBlockSkin Skin
- if Version == 0
-  int3 // its position?
- int BlockSpawnIndex
+  int Version
+  CGameCtnBlockSkin Skin
+  if Version == 0
+    int3 // its position?
+  int BlockSpawnIndex
 
 archive CardEventsSpawn
- int Version
- ident[]
- int3
+  int Version
+  ident[]
+  int3
 
 archive ObjectSpawn
- int Version
- ident ItemModel
- if Version < 3
-  byte QuarterY
-  if Version >= 1
-   byte AdditionalDir
- if Version >= 3
-  vec3 PitchYawRoll
- int3 BlockCoord
- id AnchorTreeId
- vec3 AbsolutePositionInMap
- if Version < 5
-  int U01
- if Version < 6
-  int U02
- if Version >= 6
-  short U03
-  if Version >= 7
-   vec3 PivotPosition
-   if Version >= 8
-    CGameWaypointSpecialProperty Waypoint
-    if Version >= 9
-     float Scale
-     if Version >= 10
-      int3 U04
-      if Version >= 11
-       byte U05
-       byte U06
-       if Version >= 12
-        byte U07
-        if Version >= 13
-         boolbyte HasPackDesc
-         boolbyte HasForegroundPackDesc
-         if HasPackDesc
-          packdesc PackDesc
-         if HasForegroundPackDesc
-          packdesc ForegroundPackDesc
-         if Version >= 14
-          int U10
+  int Version
+  ident ItemModel
+  if Version < 3
+    byte QuarterY
+    if Version >= 1
+      byte AdditionalDir
+  if Version >= 3
+    vec3 PitchYawRoll
+  int3 BlockCoord
+  id AnchorTreeId
+  vec3 AbsolutePositionInMap
+  if Version < 5
+    int U01
+  if Version < 6
+    int U02
+  if Version >= 6
+    short U03
+    if Version >= 7
+      vec3 PivotPosition
+      if Version >= 8
+        CGameWaypointSpecialProperty Waypoint
+        if Version >= 9
+          float Scale
+          if Version >= 10
+            int3 U04
+            if Version >= 11
+              byte U05
+              byte U06
+              if Version >= 12
+                byte U07
+                if Version >= 13
+                  boolbyte HasPackDesc
+                  boolbyte HasForegroundPackDesc
+                  if HasPackDesc
+                    packdesc PackDesc
+                  if HasForegroundPackDesc
+                    packdesc ForegroundPackDesc
+                  if Version >= 14
+                    int U10
