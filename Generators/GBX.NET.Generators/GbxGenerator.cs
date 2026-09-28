@@ -1,5 +1,6 @@
 using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
+using GBX.NET.Generators.Generation;
 using Microsoft.CodeAnalysis;
 
 namespace GBX.NET.Generators;
@@ -41,28 +42,18 @@ public sealed class GbxGenerator : IIncrementalGenerator
         var generationInputs = existingTypes.Combine(chunklFiles)
             .WithTrackingName("GenerationInputs");
 
-        // Register a terminal step so both stages run before code generation exists.
-        context.RegisterSourceOutput(generationInputs, static (_, _) =>
+        var generationPlan = generationInputs.Select(static (inputs, token) => GenerationPlan.Create(inputs, token))
+            .WithTrackingName("PlannedEngineTypes");
+        context.RegisterSourceOutput(generationPlan, EngineWriter.Generate);
+
+        var resources = context.AdditionalTextsProvider
+            .Where(static file => file.Path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+            .Select(static (file, token) => new KeyValuePair<string, string>(System.IO.Path.GetFileName(file.Path), file.GetText(token)?.ToString() ?? ""))
+            .Collect();
+        context.RegisterSourceOutput(generationPlan.Combine(resources), static (sourceContext, input) =>
         {
-            // Next: match each parsed layout's TypeKey to the existing type index, then
-            // match ChunkXXXXXXXX / HeaderChunkXXXXXXXX,
-            // named archives and enums within that class. A nameless archive uses the
-            // class's own members. Keep C# types without a matching .chunkl file too.
-            // Run ChunkL's local semantic analysis as part of planning, and resolve
-            // external types using both parsed layouts and existing implementations.
-            //
-            // Build a generation plan before emitting source: reuse existing properties
-            // and fields independently, respect attributes and declared base types,
-            // and compare method signatures (including overloads and explicit interface
-            // implementations). An empty partial chunk/archive still needs generated
-            // members; a custom Read, Write or ReadWrite can replace only that method.
-            // Check constructors, Id, Version and chunk factories in the same way.
-            //
-            // The index deliberately contains syntax, not resolved symbols. Resolve
-            // supported aliases/qualified names and source-declared inheritance in that
-            // later matching stage, or report ambiguity rather than assuming a match.
-            // Emit only missing declarations into compatible partial types; diagnose
-            // incompatible/non-partial declarations instead of generating duplicates.
+            if (!input.Right.Any(static x => x.Key == "CollectionId.txt")) return;
+            ManagerWriter.Generate(sourceContext, input.Left.Layouts, input.Right);
         });
     }
 }

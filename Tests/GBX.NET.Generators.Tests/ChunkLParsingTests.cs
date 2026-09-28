@@ -14,7 +14,7 @@ namespace GBX.NET.Generators.Tests;
 public class ChunkLParsingTests(ITestOutputHelper output)
 {
     [Fact]
-    public void ParsesLayoutsAndCombinesThemWithExistingTypesWithoutEmittingSource()
+    public void ParsesLayoutsAndCombinesThemWithExistingTypes()
     {
         const string source = """
             Example 0x03043000
@@ -26,7 +26,7 @@ public class ChunkLParsingTests(ITestOutputHelper output)
 
             0x003 (skippable)
               version
-              list<Key> Keys
+              Key[] Keys (list)
               v2+
                 bool Enabled
 
@@ -131,7 +131,7 @@ public class ChunkLParsingTests(ITestOutputHelper output)
     }
 
     [Fact]
-    public void ProcessesRealLayoutsAndReportsLegacySyntaxThroughDiagnostics()
+    public void GeneratesEveryRealLayoutWithoutParserOrGenerationDiagnostics()
     {
         var directory = Path.GetFullPath(Path.Combine(GetTestDirectory(), "../../Src/GBX.NET/Engines"));
         var files = Directory.EnumerateFiles(directory, "*.chunkl", SearchOption.AllDirectories)
@@ -142,6 +142,8 @@ public class ChunkLParsingTests(ITestOutputHelper output)
             .Select(x => Assert.IsType<Parsing.ChunkLParseResult>(x.Value)).ToArray();
 
         Assert.Equal(files.Length, parseResults.Length);
+        Assert.Empty(result.Diagnostics);
+        Assert.Equal(files.Length, result.GeneratedSources.Count(x => x.HintName.StartsWith("Engines/", StringComparison.Ordinal)));
         Assert.All(parseResults, x => Assert.True(x.File is not null ||
             x.Diagnostics.Any(d => d.Severity == DiagnosticSeverity.Error)));
         Assert.Equal(parseResults.Count(x => x.File is not null), GetFiles(result).Length);
@@ -164,7 +166,6 @@ public class ChunkLParsingTests(ITestOutputHelper output)
     {
         var result = Assert.Single(driver.RunGenerators(CreateCompilation()).GetRunResult().Results);
         Assert.Null(result.Exception);
-        Assert.Empty(result.GeneratedSources);
         return result;
     }
 
