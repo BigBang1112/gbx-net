@@ -3,7 +3,7 @@ GxFogBlender 0x04008000
 0x000
   bool
   int
-  list<Key> Keys
+  Key[] Keys (list)
 
 archive Key
   timefloat Time

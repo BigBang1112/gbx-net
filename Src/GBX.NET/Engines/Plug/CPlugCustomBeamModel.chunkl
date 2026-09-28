@@ -2,8 +2,8 @@ CPlugCustomBeamModel 0x09107000
 
 archive
   string BulletName
-  CPlugBeamEmitterSubModel[]_deprec
-  CPlugParticleEmitterSubModel[]_deprec
+  CPlugBeamEmitterSubModel[] (deprec)
+  CPlugParticleEmitterSubModel[] (deprec)
   id
   id
   id

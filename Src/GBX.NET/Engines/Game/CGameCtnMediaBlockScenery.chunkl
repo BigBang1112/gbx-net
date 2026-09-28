@@ -3,7 +3,7 @@ CGameCtnMediaBlockScenery 0x03188000
 
 0x000
   version
-  list<Key> Keys (version: Version)
+  Key[] Keys (version: Version, list)
 
 0x001
   version

@@ -49,9 +49,9 @@
   bool IsShowPlayerGhost
 
 0x047
-  CGameNetOnlineMessage[]_deprec InboxMessages
-  CGameNetOnlineMessage[]_deprec ReadMessages
-  CGameNetOnlineMessage[]_deprec OutboxMessages
+  CGameNetOnlineMessage[] InboxMessages (deprec)
+  CGameNetOnlineMessage[] ReadMessages (deprec)
+  CGameNetOnlineMessage[] OutboxMessages (deprec)
 
 0x04A
   CSceneMobil[] // might be false
@@ -66,7 +66,7 @@
   bool U03
   if U03
     systemtime
-    CGameLeague[]_deprec Leagues
+    CGameLeague[] Leagues (deprec)
 
 0x04D
   systemtime
@@ -208,7 +208,7 @@
   bool
 
 0x240B500B (not-remapped)
-  CGameCtnCampaign[]_deprec
+  CGameCtnCampaign[] (deprec)
 
 0x240B500C (not-remapped)
   ident[]

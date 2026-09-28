@@ -3,7 +3,7 @@ CGameCtnMediaBlockFxCameraBlend 0x0316D000
 
 0x000
   version
-  list<Key> Keys
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time

@@ -3,7 +3,7 @@ CGameCtnMediaBlockSound 0x030A7000
 
 0x001
   packdesc Sound
-  list<Key> Keys
+  Key[] Keys (list)
 
 0x002
   int PlayCount
@@ -22,8 +22,8 @@ CGameCtnMediaBlockSound 0x030A7000
 
 0x004
   packdesc Sound
-  version Version
-  list<Key> Keys (version: Version)
+  version
+  Key[] Keys (version: Version, list)
 
 archive Key (inherits: IKey)
   timefloat Time

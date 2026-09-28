@@ -2,4 +2,4 @@ CFuncShaders 0x05014000
 - inherits: CFuncShader
 
 0x000
-  list<CFuncShader> FuncShaders
+  CFuncShader[] FuncShaders (list)

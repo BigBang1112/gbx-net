@@ -5,7 +5,7 @@ CGameActionModel 0x2E008000
   v31+
     bool UseVehicleGuns
   v30+
-    CPlugBulletModel[]_deprec BulletModels_Nadeo
+    CPlugBulletModel[] BulletModels_Nadeo (deprec)
   v25+
     CPlugShieldModel
   v24=

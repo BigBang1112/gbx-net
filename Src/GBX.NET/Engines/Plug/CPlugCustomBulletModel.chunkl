@@ -28,8 +28,8 @@ archive
   id BulletAliveSound
   id BulletExplosionSound
   id BulletShootingSound
-  CPlugParticleEmitterSubModel[]_deprec AliveParticleEmitterSubModels
-  CPlugParticleEmitterSubModel[]_deprec ExplosionParticleEmitterSubModels
+  CPlugParticleEmitterSubModel[] AliveParticleEmitterSubModels (deprec)
+  CPlugParticleEmitterSubModel[] ExplosionParticleEmitterSubModels (deprec)
   v1+
     float
     int

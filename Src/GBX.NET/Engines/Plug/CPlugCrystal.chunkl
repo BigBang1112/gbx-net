@@ -5,7 +5,7 @@ CPlugCrystal 0x09003000
 
 0x003 [MP4.v2, TM2020.v2] // materials
   version
-  list<Material> Materials = empty
+  Material[] Materials = empty (list)
 
 0x004 (skippable) [MP4.v1, TM2020.v1]
   version

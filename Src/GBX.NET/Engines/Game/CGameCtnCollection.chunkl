@@ -63,7 +63,7 @@ CGameCtnCollection 0x03033000
 
 0x009
   id Collection
-  CGameCtnZone[]_deprec CompleteListZoneList (external)
+  CGameCtnZone[] CompleteListZoneList (deprec, external)
   CGameCtnZone DefaultZone (external)
   bool NeedUnlock
   float SquareSize
@@ -127,7 +127,7 @@ CGameCtnCollection 0x03033000
 
 0x01D
   ZoneString[] ZoneStrings
-  CGameCtnDecorationTerrainModifier[]_deprec ReplacementTerrainModifiers (external)
+  CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec, external)
 
 0x01E // camera
   float WaterTop

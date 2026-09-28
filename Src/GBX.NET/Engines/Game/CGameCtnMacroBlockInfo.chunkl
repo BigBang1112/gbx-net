@@ -2,13 +2,13 @@ CGameCtnMacroBlockInfo 0x0310D000
 - inherits: CGameCtnCollector
 
 0x000 [MP4, TM2020] // block spawns
-  list<BlockSpawn> BlockSpawns
+  BlockSpawn[] BlockSpawns (list)
 
 0x001 [MP4, TM2020] // block skin spawns
-  list<BlockSkinSpawn> BlockSkinSpawns
+  BlockSkinSpawn[] BlockSkinSpawns (list)
 
 0x002 [MP4, TM2020] // card events spawns
-  list<CardEventsSpawn> CardEventsSpawns
+  CardEventsSpawn[] CardEventsSpawns (list)
 
 0x006 [MP4, TM2020]
   int = 2
@@ -20,7 +20,7 @@ CGameCtnMacroBlockInfo 0x0310D000
   CMwNod
 
 0x008 [MP4, TM2020]
-  CGameCtnAutoTerrain[]_deprec AutoTerrains
+  CGameCtnAutoTerrain[] AutoTerrains (deprec)
   int
   int
 
@@ -29,23 +29,23 @@ CGameCtnMacroBlockInfo 0x0310D000
 0x00C (skippable) [MP4.v2, TM2020.v2] // splines
   version = 2
   v0=
-    CMwNod[]_deprec
-    CPlugSpline3D[]_deprec
-    CMwNod[]_deprec
-    CMwNod[]_deprec
+    CMwNod[] (deprec)
+    CPlugSpline3D[] (deprec)
+    CMwNod[] (deprec)
+    CMwNod[] (deprec)
     int
     int
     int
   v2+
     return
-  CMwNod[]_deprec
+  CMwNod[] (deprec)
 
 0x00D
   version
 
 0x00E [MP4.v2, TM2020.v2] // object spawns
   version
-  list<ObjectSpawn> ObjectSpawns
+  ObjectSpawn[] ObjectSpawns (list)
   v2-
     v1+
       int2[]

@@ -3,7 +3,7 @@ CGameCtnMediaBlockSkel 0x0314A000
 
 0x000
   version
-  list<Key> Keys
+  Key[] Keys (list)
   v1+
     int
     v4=

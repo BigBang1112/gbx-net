@@ -716,9 +716,9 @@ CPlugVehicleCarPhyTuning 0x090ED000
   version
   v5+
     throw
-  CPlugCamControlModel[]_deprec (external)
+  CPlugCamControlModel[] (deprec, external)
   v1+
-    CPlugCamControlModel[]_deprec (external)
+    CPlugCamControlModel[] (deprec, external)
     v2+
       CPlugCamControlModel (external)
       v3+

@@ -6,4 +6,4 @@ CMotionPlayer 0x08034000
   int // SavePlayState?
   bool // IsPlaying?
   id
-  list<CMotionTrack> Tracks
+  CMotionTrack[] Tracks (list)

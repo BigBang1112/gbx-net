@@ -3,7 +3,7 @@ CGameCtnMediaBlockFog 0x03199000
 
 0x000
   version
-  list<Key> Keys (version: Version)
+  Key[] Keys (version: Version, list)
 
 archive Key (inherits: IKey)
   timefloat Time

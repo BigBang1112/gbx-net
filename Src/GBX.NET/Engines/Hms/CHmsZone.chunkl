@@ -1,7 +1,7 @@
 CHmsZone 0x06004000
 
 0x002
-  CHmsFogPlane[]_deprec FogPlanes
+  CHmsFogPlane[] FogPlanes (deprec)
   data[28]
 
 0x003
@@ -11,7 +11,7 @@ CHmsZone 0x06004000
     vec3 MRNormal
 
 0x005
-  CHmsPrecalcRender[]_deprec PrecalcRenders
+  CHmsPrecalcRender[] PrecalcRenders (deprec)
 
 0x006
   CPlugBitmap BitmapCubeReflectHardSpecA (external)

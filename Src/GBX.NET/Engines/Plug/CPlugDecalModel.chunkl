@@ -52,7 +52,7 @@ CPlugDecalModel 0x090A7000
             v7+
               int MinAngleN3d
               v8+
-                CPlugDecalModel[]_deprec DecalModels
+                CPlugDecalModel[] DecalModels (deprec)
                 MacroDecalSet[] MacroDecalSets
 
 0x006

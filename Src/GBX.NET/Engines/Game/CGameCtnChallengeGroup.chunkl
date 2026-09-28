@@ -18,7 +18,7 @@ CGameCtnChallengeGroup 0x0308F000
 
 0x006
   bool
-  list<MapInfo> MapInfos
+  MapInfo[] MapInfos (list)
 
 0x007
   int
@@ -32,11 +32,11 @@ CGameCtnChallengeGroup 0x0308F000
   id
 
 0x00A
-  list<MapInfo> MapInfos (version: 1)
+  MapInfo[] MapInfos (version: 1, list)
 
 0x00B
   version
-  list<MapInfo> MapInfos (version: Version + 2)
+  MapInfo[] MapInfos (version: Version + 2, list)
 
 archive MapInfo
   ident Metadata

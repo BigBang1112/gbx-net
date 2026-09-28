@@ -66,7 +66,7 @@ CGameCtnBlockInfo 0x0304E000
   int<EWayPointType> WayPointType
 
 0x027 [MP3, TMT, MP4]
-  CGameCtnBlockInfoVariantGround[]_deprec AdditionalVariantsGround
+  CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround (deprec)
 
 0x028 [MP3, TMT, MP4]
   id SymmetricalBlockInfoId
@@ -95,7 +95,7 @@ CGameCtnBlockInfo 0x0304E000
     throw
 
 0x02C [MP3, TMT, MP4]
-  CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
+  CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
 
 0x02E [MP3]
 

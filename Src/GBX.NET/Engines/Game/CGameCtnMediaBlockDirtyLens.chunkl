@@ -3,7 +3,7 @@ CGameCtnMediaBlockDirtyLens 0x03165000
 
 0x000
   version
-  list<Key> Keys
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time

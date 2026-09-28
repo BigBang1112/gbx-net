@@ -94,8 +94,8 @@ CPlugSolid 0x09005000
 
 0x019 [MP3.v0, TMT.v0, MP4.v3]
   version
-  CPlugSound[]_deprec
-  CPlugParticleEmitterModel[]_deprec
+  CPlugSound[] (deprec)
+  CPlugParticleEmitterModel[] (deprec)
   LocatedInstance[]
   LocatedInstance[]
   v1+

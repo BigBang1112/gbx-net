@@ -10,7 +10,7 @@ CGameCtnMediaBlockGhost 0x030E5000
 0x002
   version
   v3+
-    list<Key> Keys
+    Key[] Keys (list)
   v2-
     timefloat Start
     timefloat End

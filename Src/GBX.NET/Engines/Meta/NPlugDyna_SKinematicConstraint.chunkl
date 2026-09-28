@@ -8,7 +8,7 @@ archive
   int<EShaderTcType> ShaderTcType
   int ShaderTcVersion
   AnimFuncNat[] ShaderTcAnimFunc
-  if (int)ShaderTcType == 1
+  if ShaderTcType == EShaderTcType::TransSubTexture
     TransSubTextureIn ShaderTcDataTransSub
   byte<EAxis> TransAxis
   float TransMin

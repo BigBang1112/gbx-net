@@ -1,7 +1,7 @@
 CPlugParticleEmitterModel 0x090B3000
 
 0x000
-  CPlugParticleEmitterSubModel[]_deprec ParticleEmitterSubModels (external)
+  CPlugParticleEmitterSubModel[] ParticleEmitterSubModels (deprec, external)
 
 0x001
   id

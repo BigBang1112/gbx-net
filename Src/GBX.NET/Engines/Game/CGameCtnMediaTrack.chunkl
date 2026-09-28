@@ -2,7 +2,7 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
 
 0x001 [TMSX, TMNESWC, TMU, TMF, MP3, MP4, TM2020] // name and blocks
   string Name
-  list<CGameCtnMediaBlock>_deprec Blocks
+  CGameCtnMediaBlock[] Blocks (deprec, list)
   int = -1
 
 0x002 [TMSX, TMNESWC, TMU] // TMS/TMU IsKeepPlaying

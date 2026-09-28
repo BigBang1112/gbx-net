@@ -81,7 +81,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x00F [TM10] // TM1.0 block data
   ident MapInfo = empty
   int3 Size
-  list<CGameCtnBlock*>_deprec Blocks
+  CGameCtnBlock*[] Blocks (deprec, list)
   bool NeedUnlock
   ident Decoration
 
@@ -99,7 +99,7 @@ CGameCtnChallenge 0x03043000 // A map.
   ident Decoration
   int3 Size
   bool
-  list<CGameCtnBlock> Blocks
+  CGameCtnBlock[] Blocks (list)
 
 0x014 (skippable) [TMPU, TMS, TMO, TMSX, TMNESWC, TMU] // legacy password
   int
@@ -109,7 +109,7 @@ CGameCtnChallenge 0x03043000 // A map.
   int // code says DoBool, likely IsPlatform (Mode == 1), but maps yield something like 1698004
 
 0x017 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF] // checkpoints
-  list<int3> Checkpoints
+  int3[] Checkpoints (list)
 
 0x018 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // laps
   bool IsLapRace
@@ -124,7 +124,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01B // OldIgs
   int
   if U01 > 0
-    throw NotSupportedException("SOldIgs count > 0")
+    throw (type: NotSupportedException, message: SOldIgs count > 0)
 
 0x01C (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF] // play mode
   int<PlayMode> Mode
@@ -214,7 +214,7 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   v1+
     throw
-  CSceneVehicleCarMarksSamples[]_deprec CarMarksBuffer
+  CSceneVehicleCarMarksSamples[] CarMarksBuffer (deprec)
 
 0x040 (skippable) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
 
@@ -266,7 +266,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x050 (skippable) [MP3, TMT, MP4, TM2020] // offzones
   version
   int3 OffzoneTriggerSize
-  list<boxint3> Offzones
+  boxint3[] Offzones (list)
 
 0x051 (skippable) [MP3, TMT, MP4, TM2020] // title info
   version
@@ -279,7 +279,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x053 (skippable) [MP3, TMT, MP4, TM2020] // bot paths
   version
-  list<BotPath> BotPaths
+  BotPath[] BotPaths (list)
 
 0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
 
@@ -369,7 +369,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 archive BotPath
   int Clan
-  list<vec3> Path
+  vec3[] Path (list)
   bool IsFlying
   CGameWaypointSpecialProperty WaypointSpecialProperty
   bool IsAutonomous

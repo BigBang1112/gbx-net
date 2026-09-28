@@ -4,7 +4,7 @@ CGameCtnMediaBlockColoringCapturable 0x0316C000
 0x000
   version
   int
-  list<Key> Keys
+  Key[] Keys (list)
   v1+
     int CapturableIndex
 

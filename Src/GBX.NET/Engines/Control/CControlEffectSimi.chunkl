@@ -2,21 +2,21 @@ CControlEffectSimi 0x07010000
 - inherits: CControlEffect
 
 0x001
-  list<Key> Keys (version: 1)
+  Key[] Keys (version: 1, list)
   bool Centered
 
 0x002
-  list<Key> Keys (version: 2)
+  Key[] Keys (version: 2, list)
   bool Centered
 
 0x004
-  list<Key> Keys (version: 4)
+  Key[] Keys (version: 4, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode
   bool IsContinousEffect
 
 0x005
-  list<Key> Keys (version: 5)
+  Key[] Keys (version: 5, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode
   bool IsContinousEffect

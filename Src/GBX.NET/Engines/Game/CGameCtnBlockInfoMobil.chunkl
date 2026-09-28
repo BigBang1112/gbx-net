@@ -1,7 +1,7 @@
 CGameCtnBlockInfoMobil 0x03122000
 
 0x002 [MP3, TMT, MP4]
-  CGameCtnSolidDecals[]_deprec SolidDecals
+  CGameCtnSolidDecals[] SolidDecals (deprec)
   int
 
 0x003 [MP3.v0, TMT.v3, MP4.v6]
@@ -42,7 +42,7 @@ CGameCtnBlockInfoMobil 0x03122000
                     int U05
                   v9+
                     v22-
-                      CPlugRoadChunk[]_deprec RoadChunks
+                      CPlugRoadChunk[] RoadChunks (deprec)
                     v23+
                       CPlugRoadChunk[] RoadChunks
                     v10+
@@ -75,4 +75,4 @@ CGameCtnBlockInfoMobil 0x03122000
 
 0x004 [MP3, TMT, MP4]
   version
-  CGameCtnBlockInfoMobilLink[]_deprec DynaLinks
+  CGameCtnBlockInfoMobilLink[] DynaLinks (deprec)

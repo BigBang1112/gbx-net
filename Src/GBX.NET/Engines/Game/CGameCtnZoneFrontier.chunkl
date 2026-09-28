@@ -20,4 +20,4 @@ CGameCtnZoneFrontier 0x0305E000
   bool FrontierStraightMiddle_AcceptPylons
 
 0x005 (skippable)
-  CGameCtnZoneFusionInfo[]_deprec CompatibleZones
+  CGameCtnZoneFusionInfo[] CompatibleZones (deprec)

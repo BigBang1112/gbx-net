@@ -21,14 +21,14 @@ CGameCtnMediaBlockEntity 0x0329F000
         int
       ident PlayerModel = empty
       vec3? // some rgb, new light trail color?
-      list<PackDesc> SkinNames // name assumed from getter
+      PackDesc[] SkinNames (list) // name assumed from getter
       bool HasBadges
       if HasBadges
         SBadge Badge
       v4+
         v11+
           string? SkinOptions
-        list<Key> Keys (version: Version)
+        Key[] Keys (version: Version, list)
         v5=
           float
         v7+
@@ -53,8 +53,8 @@ archive SBadge
   v0=
     int
     string
-  list<SSticker> Stickers
-  list<string> Layers
+  SSticker[] Stickers (list)
+  string[] Layers (list)
 
 archive SSticker
   string

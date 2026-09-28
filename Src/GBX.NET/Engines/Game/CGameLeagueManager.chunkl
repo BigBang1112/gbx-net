@@ -6,4 +6,4 @@ CGameLeagueManager 0x03049000
   bool Updated
   if Updated
     systemtime Timestamp
-    CGameLeague[]_deprec Leagues
+    CGameLeague[] Leagues (deprec)

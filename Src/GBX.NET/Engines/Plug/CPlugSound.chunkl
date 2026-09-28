@@ -102,7 +102,7 @@ CPlugSound 0x0901A000
 
 0x010
   version
-  CPlugSound[]_deprec OldSubSources
+  CPlugSound[] OldSubSources (deprec)
 
 0x011
   version

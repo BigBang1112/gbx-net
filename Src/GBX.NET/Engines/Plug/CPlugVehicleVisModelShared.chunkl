@@ -18,7 +18,7 @@ CPlugVehicleVisModelShared 0x090E8000
 0x010
 
 0x012
-  CPlugVehicleMaterialGroup[]_deprec VehicleMaterialGroups
+  CPlugVehicleMaterialGroup[] VehicleMaterialGroups (deprec)
 
 0x013
   CFuncKeysReal
@@ -26,7 +26,7 @@ CPlugVehicleVisModelShared 0x090E8000
   CFuncKeysReal
 
 0x014
-  CPlugVehicleVisEmitterModel[]_deprec VehicleEmitters
+  CPlugVehicleVisEmitterModel[] VehicleEmitters (deprec)
 
 0x015
 
@@ -76,7 +76,7 @@ CPlugVehicleVisModelShared 0x090E8000
         v4+
           CPlugParticleEmitterModel (external)
           v5+
-            CPlugVehicleVisEmitterModel[]_deprec
+            CPlugVehicleVisEmitterModel[] (deprec)
             CPlugParticleEmitterModel (external)
             CPlugParticleEmitterModel (external)
             v6=

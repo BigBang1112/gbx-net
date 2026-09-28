@@ -1,15 +1,15 @@
 CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
 
 0x001 (demonstration)
-  CGameCtnMediaClip[]_deprec Clips
+  CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 1)
 
 0x002 (demonstration)
-  CGameCtnMediaClip[]_deprec Clips
+  CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 2)
 
 0x003 (demonstration)
-  CGameCtnMediaClip[]_deprec Clips
+  CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 3)
 
 0x004 (skippable)
@@ -19,7 +19,7 @@ archive Trigger
   v0=
     return
   v2-
-    list<int3> Coords
+    int3[] Coords (list)
   v2+
     int
     int
@@ -28,7 +28,7 @@ archive Trigger
     v3+
       int<ECondition> Condition
       float ConditionValue
-      list<int3> Coords
+      int3[] Coords (list)
 
 enum ECondition
   None

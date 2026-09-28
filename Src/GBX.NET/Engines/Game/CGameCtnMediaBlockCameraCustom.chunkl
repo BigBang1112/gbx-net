@@ -2,17 +2,17 @@ CGameCtnMediaBlockCameraCustom 0x030A2000 // MediaTracker block - Custom camera.
 - inherits: CGameCtnMediaBlockCamera
 
 0x001
-  list<Key> Keys (version: 1)
+  Key[] Keys (version: 1, list)
 
 0x002
-  list<Key> Keys (version: 2)
+  Key[] Keys (version: 2, list)
 
 0x005 // TMUF
-  list<Key> Keys (version: 5)
+  Key[] Keys (version: 5, list)
 
 0x006 // ManiaPlanet
   version
-  list<Key> Keys (version: 6 + Version)
+  Key[] Keys (version: 6 + Version, list)
 
 enum Interpolation
   None

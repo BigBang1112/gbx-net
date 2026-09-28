@@ -3,7 +3,7 @@ CGameCtnBlockInfoVariantGround 0x0315C000
 
 0x001 [TMT.v0, MP4.v2]
   version
-  CGameCtnAutoTerrain[]_deprec AutoTerrains
+  CGameCtnAutoTerrain[] AutoTerrains (deprec)
   int AutoTerrainHeightOffset
   int<EAutoTerrainPlaceType> AutoTerrainPlaceType
 

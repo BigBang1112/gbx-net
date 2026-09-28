@@ -25,9 +25,9 @@ archive
   int
   CGameBuddy[] Buddies
   ulong
-  CGameNetOnlineMessage[]_deprec InboxMessages
-  CGameNetOnlineMessage[]_deprec ReadMessages
-  CGameNetOnlineMessage[]_deprec OutboxMessages
+  CGameNetOnlineMessage[] InboxMessages (deprec)
+  CGameNetOnlineMessage[] ReadMessages (deprec)
+  CGameNetOnlineMessage[] OutboxMessages (deprec)
   byte Flags2
   v3+
     string

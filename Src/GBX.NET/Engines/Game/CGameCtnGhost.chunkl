@@ -7,7 +7,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     int AppearanceVersion
   ident PlayerModel
   vec3 LightTrailColor
-  list<packdesc> SkinPackDescs
+  packdesc[] SkinPackDescs (list)
   bool HasBadges // boolnode?
   if HasBadges
     SBadge Badge
@@ -98,7 +98,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   id GhostNickname
 
 0x017 (skippable) [TMF, MP3] // ghost metadata
-  list<packdesc> SkinPackDescs
+  packdesc[] SkinPackDescs (list)
   string GhostNickname
   string GhostAvatarName
 
@@ -205,8 +205,8 @@ archive SBadge
   if Version == 0
     int
     string
-  list<SSticker> Stickers
-  list<string> Layers
+  SSticker[] Stickers (list)
+  string[] Layers (list)
 
 archive SSticker
   string

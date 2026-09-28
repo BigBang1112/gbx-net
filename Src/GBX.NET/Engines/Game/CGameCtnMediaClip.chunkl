@@ -1,12 +1,12 @@
 CGameCtnMediaClip 0x03079000
 
 0x002 // tracks
-  list<CGameCtnMediaTrack>_deprec Tracks
+  CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name
   bool
 
 0x003 [TMSX, TMNESWC, TMU] // tracks with sorting
-  list<CGameCtnMediaTrack>_deprec Tracks
+  CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name
 
 0x004 [TMU, TMF] // Scene
@@ -34,7 +34,7 @@ CGameCtnMediaClip 0x03079000
 
 0x00D [MP4.v0, TM2020.v1] // MP tracks
   version
-  list<CGameCtnMediaTrack>_deprec Tracks
+  CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name
   bool StopWhenLeave
   bool

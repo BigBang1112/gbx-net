@@ -4,7 +4,7 @@ CPlugFxLightning 0x090D8000
 0x000
   version
   CPlugSound Sound (external)
-  CFuncKeysReal[]_deprec (external)
+  CFuncKeysReal[] (deprec, external)
   float
   float
   float

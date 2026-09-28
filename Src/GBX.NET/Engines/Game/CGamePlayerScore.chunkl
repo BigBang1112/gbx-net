@@ -21,7 +21,7 @@ CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameSc
 0x00F
   CGamePlayerOfficialScores PlayerOfficialScores
   TrainingMedalsScore[] TrainingMedalsScores
-  CGameCampaignPlayerScores[]_deprec CampaignPlayerScores
+  CGameCampaignPlayerScores[] CampaignPlayerScores (deprec)
 
 0x010
   byte

@@ -17,24 +17,24 @@ CSceneLayout 0x0A003000
 0x017 (ignore)
 
 0x018
-  CSceneSector[]_deprec Sectors
+  CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene
   SceneLoc[] SceneLocations
-  CSceneObject[]_deprec
+  CSceneObject[] (deprec)
   SceneLoc[]
-  CSceneLight[]_deprec Lights (external)
+  CSceneLight[] Lights (deprec, external)
   SceneLoc[] LightLocations
-  CSceneObject[]_deprec Sounds
+  CSceneObject[] Sounds (deprec)
   SceneLoc[] SoundLocations
-  CSceneObject[]_deprec Locations
+  CSceneObject[] Locations (deprec)
   SceneLoc[] LocationLocations
-  CSceneObject[]_deprec Fields
+  CSceneObject[] Fields (deprec)
   SceneLoc[] FieldLocations
-  CSceneGate[]_deprec Gates
-  CScenePath[]_deprec Paths
+  CSceneGate[] Gates (deprec)
+  CScenePath[] Paths (deprec)
   CSceneTrafficGraph TrafficGraph
-  CSceneTrafficPath[]_deprec TrafficPaths
+  CSceneTrafficPath[] TrafficPaths (deprec)
   CSceneFxNod SceneFxNod (external)
 
 0x019
@@ -52,17 +52,17 @@ CSceneLayout 0x0A003000
   float
 
 0x01B
-  CSceneSector[]_deprec Sectors
+  CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene
   SceneLoc[] SceneLocations
-  CSceneObject[]_deprec
+  CSceneObject[] (deprec)
   SceneLoc[] 
-  CSceneLight[]_deprec Lights
+  CSceneLight[] Lights (deprec)
   SceneLoc[] LightLocations
-  CSceneObject[]_deprec Sounds
+  CSceneObject[] Sounds (deprec)
   SceneLoc[] SoundLocations
-  CSceneObject[]_deprec Locations
+  CSceneObject[] Locations (deprec)
   SceneLoc[] LocationLocations
   int
   int
@@ -71,14 +71,14 @@ CSceneLayout 0x0A003000
 0x01C
   version
   v2-
-    CSceneObject[]_deprec Objects
+    CSceneObject[] Objects (deprec)
     iso4[] ObjectLocations
   v3+
     Unknown2[]
     Unknown3[] (version: Version)
   CSceneConfig
   v1-
-    CPlugWeatherModel[]_deprec WeatherModels (external)
+    CPlugWeatherModel[] WeatherModels (deprec, external)
   v2+
     CPlugWeatherModel WeatherModel (external)
   uint[]

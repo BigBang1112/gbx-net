@@ -5,7 +5,7 @@ CGameCtnMediaBlockDecal2d 0x031AA000
   timefloat Start
   timefloat End
   packdesc[] Images
-  list<Decal> Decals
+  Decal[] Decals (list)
 
 archive Decal
   iso4
