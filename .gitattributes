@@ -63,4 +63,4 @@
 #*.RTF   diff=astextplain
 
 # Keep generated source exactly as emitted without whitespace check noise.
-Src/*/Generated/** whitespace=-blank-at-eol
+Src/*/Generated/** -text whitespace=-blank-at-eol
