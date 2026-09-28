@@ -2,11 +2,11 @@ CPlugProbe 0x09106000
 - inherits: CPlug
 
 0x000
- int
- vec3
- float
- float
- float
- float
- float
- float
+  int
+  vec3
+  float
+  float
+  float
+  float
+  float
+  float

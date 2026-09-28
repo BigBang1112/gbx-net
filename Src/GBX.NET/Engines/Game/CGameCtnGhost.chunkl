@@ -2,108 +2,108 @@ CGameCtnGhost 0x03092000 // A ghost.
 - inherits: CGameGhost
 
 0x000 (skippable) [TMT.v2, MP4.v2, TM2020.v9]
- version
- v9+
-  int AppearanceVersion
- ident PlayerModel
- vec3 LightTrailColor
- list<packdesc> SkinPackDescs
- bool HasBadges // boolnode?
- if HasBadges
-  SBadge Badge
- if AppearanceVersion >= 1
-  string
- string GhostNickname
- string GhostAvatarName
- v2+
-  string RecordingContext
-  v4+
-   bool
-   v5+
-    CPlugEntRecordData RecordData
-    int[]
-    v6+
-     string GhostTrigram
-     v7+
-      string GhostZone
-      v8+
-       string GhostClubTag
+  version
+  v9+
+    int AppearanceVersion
+  ident PlayerModel
+  vec3 LightTrailColor
+  list<packdesc> SkinPackDescs
+  bool HasBadges // boolnode?
+  if HasBadges
+    SBadge Badge
+  if AppearanceVersion >= 1
+    string
+  string GhostNickname
+  string GhostAvatarName
+  v2+
+    string RecordingContext
+    v4+
+      bool
+      v5+
+        CPlugEntRecordData RecordData
+        int[]
+        v6+
+          string GhostTrigram
+          v7+
+            string GhostZone
+            v8+
+              string GhostClubTag
   
 0x003 [TM10, TMPU]
- ident PlayerModel
- string SkinFile
- string GhostNickname
+  ident PlayerModel
+  string SkinFile
+  string GhostNickname
 
 0x004 (skippable) [TMPU] // checkpoints TMPU
- Checkpoint[] Checkpoints
+  Checkpoint[] Checkpoints
 
 0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
- timeint? RaceTime
+  timeint? RaceTime
 
 0x006 [TMS, TMSX, TMNESWC]
- ident PlayerModel
- string SkinFile
- int
- string GhostNickname
+  ident PlayerModel
+  string SkinFile
+  int
+  string GhostNickname
 
 0x007 // old light trail color
- vec3 LightTrailColor
+  vec3 LightTrailColor
 
 0x008 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // respawns
- int? Respawns
+  int? Respawns
 
 0x009 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3] // light trail color
- vec3 LightTrailColor
+  vec3 LightTrailColor
 
 0x00A (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // stunt score
- int? StuntScore
+  int? StuntScore
 
 0x00B (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // checkpoint times
- Checkpoint[] Checkpoints (version: 1)
+  Checkpoint[] Checkpoints (version: 1)
 
 0x00C [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
- int
+  int
 
 0x00D [TMU]
- ident PlayerModel
- string SkinFile
- int
- int
- int
- int
- string GhostNickname
+  ident PlayerModel
+  string SkinFile
+  int
+  int
+  int
+  int
+  string GhostNickname
 
 0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
 
 0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
- string GhostLogin
+  string GhostLogin
 
 0x010 [TMU, TMF, MP3, TMT, MP4, TM2020] // validation map UID
- id Validate_ChallengeUid
+  id Validate_ChallengeUid
 
 0x011 [TMU] // validation TMU
 
 0x012 [TMU, TMF] // old security key
- uint32
- uint128? SecurityKey128
+  uint32
+  uint128? SecurityKey128
 
 0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
- int
- int
+  int
+  int
 
 0x014 (skippable) [TMF, MP3, TMT, MP4, TM2020] // ghost version
- int? GhostVersion
+  int? GhostVersion
 
 0x015 [TMF] // ghost nickname
- id GhostNickname
+  id GhostNickname
 
 0x017 (skippable) [TMF, MP3] // ghost metadata
- list<packdesc> SkinPackDescs
- string GhostNickname
- string GhostAvatarName
+  list<packdesc> SkinPackDescs
+  string GhostNickname
+  string GhostAvatarName
 
 0x018 [TMF, MP3] // PlayerModel TMF-MP3
- ident PlayerModel
+  ident PlayerModel
 
 0x019 (base: 0x011) [TMF] // validation TMUF
 
@@ -112,133 +112,133 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
 
 0x01C [MP3, TMT, MP4, TM2020] // security key
- uint256? SecurityKey256
+  uint256? SecurityKey256
 
 0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
- version
- PlayerInputData[] PlayerInputs (version: Version)
+  version
+  PlayerInputData[] PlayerInputs (version: Version)
 
 0x01F (skippable, ignore) [MP4] // OldColorHistory
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
 0x022 (skippable) [MP3, TMT, MP4, TM2020] // settings info
- version
- v1-
-  OldSettingsInfos[] OldSettings
- v2+
-  SettingsInfos[] Settings
+  version
+  v1-
+    OldSettingsInfos[] OldSettings
+  v2+
+    SettingsInfos[] Settings
 
 0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat data
- version
- string
- int
- string
- int
- int
- string
- int
- string
- v2+
-  byte
+  version
+  string
+  int
+  string
   int
   int
-  v3+
-   byte
-   byte
+  string
+  int
+  string
+  v2+
+    byte
+    int
+    int
+    v3+
+      byte
+      byte
 
 0x024 (skippable) [MP3, TMT, MP4, TM2020] // match replay separators
- version
- MatchReplaySeparator[] MatchReplaySeparators
+  version
+  MatchReplaySeparator[] MatchReplaySeparators
 
 0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
- checksum128? GhostUid128
+  checksum128? GhostUid128
 
 0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
- version
- CPlugTimedPixelArray[]
- v1+
-  int[]
-  v3+
-   CPlugTimedPixelArray[]
+  version
+  CPlugTimedPixelArray[]
+  v1+
+    int[]
+    v3+
+      CPlugTimedPixelArray[]
 
 0x028 (skippable) [MP4, TM2020] // title id
 
 0x029 (skippable) [TM2020]
- version
- int
- string
- string
- string
+  version
+  int
+  string
+  string
+  string
 
 0x02A (skippable) [TM2020]
- int
- int
+  int
+  int
 
 0x02B (skippable, ignore) [TM2020]
 
 0x02C (skippable) [TM2020]
- version
- unixtime? WalltimeStartTimestamp
- unixtime? WalltimeEndTimestamp
+  version
+  unixtime? WalltimeStartTimestamp
+  unixtime? WalltimeEndTimestamp
 
 0x02D (skippable) [TM2020]
 
 0x02E (skippable) [TM2020]
- string
+  string
 
 0x0304F001 (skippable, ignore, not-remapped) [TMF] // TMCP
 
 archive PlayerInputData
- int<EVersion> Version // 8 in ShootMania, 12 in TM2020
- int
- v4+ // chunk version, NOT archive version
-  timeint? StartOffset
- int Ticks
- data Data
+  int<EVersion> Version // 8 in ShootMania, 12 in TM2020
+  int
+  v4+ // chunk version, NOT archive version
+    timeint? StartOffset
+  int Ticks
+  data Data
 
 archive SBadge
- int Version
- vec3 Color
- if Version == 0
-  int
-  string
- list<SSticker> Stickers
- list<string> Layers
+  int Version
+  vec3 Color
+  if Version == 0
+    int
+    string
+  list<SSticker> Stickers
+  list<string> Layers
 
 archive SSticker
- string
- string
+  string
+  string
 
 archive Checkpoint
- timeint? Time
- v0=
-  float? Speed
- v1=
-  int? StuntsScore
+  timeint? Time
+  v0=
+    float? Speed
+  v1=
+    int? StuntsScore
  
 archive OldSettingsInfos
- int
- int
- int
+  int
+  int
+  int
 
 archive SettingsInfos
- bool
- bool
- byte
- bool
- float
- bool
- float
- float[]
- string
- v3+
-  int3
-  v4+
-   float
+  bool
+  bool
+  byte
+  bool
+  float
+  bool
+  float
+  float[]
+  string
+  v3+
+    int3
+    v4+
+      float
 
 archive MatchReplaySeparator
- int
- int
+  int
+  int

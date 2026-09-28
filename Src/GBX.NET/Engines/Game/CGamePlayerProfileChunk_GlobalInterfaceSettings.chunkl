@@ -2,31 +2,31 @@ CGamePlayerProfileChunk_GlobalInterfaceSettings 0x03179000
 - inherits: CGamePlayerProfileChunk
 
 0x001 (skippable)
- version
- SPluginSettings[] PluginSettings
+  version
+  SPluginSettings[] PluginSettings
 
 0x002 (skippable)
- version
- byte
+  version
+  byte
  
 0x003 (skippable)
- version
- byte
+  version
+  byte
  
 0x004 (skippable)
- version
- bool OpenWebLinksInSteamOverlay
- v1+
-  bool SynchonizeSteamWorkshopFiles
-  v2+
-   bool PreferSteamScreenshots
+  version
+  bool OpenWebLinksInSteamOverlay
+  v1+
+    bool SynchonizeSteamWorkshopFiles
+    v2+
+      bool PreferSteamScreenshots
 
 0x005 (skippable)
- version
- int
+  version
+  int
 
 archive SPluginSettings
- string
- float
- float
- float
+  string
+  float
+  float
+  float

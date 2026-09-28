@@ -2,157 +2,157 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- int OpponentsVersionLast
- SChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
- bool
+  version
+  int OpponentsVersionLast
+  SChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
+  bool
 
 0x001 (skippable)
- version
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- byte
- byte
- byte
- byte
- byte
- int
- int
+  version
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  byte
+  byte
+  byte
+  byte
+  byte
+  int
+  int
 
 0x002 (skippable)
- version
- string ServerName
- string ServerComment
- int NetworkGameMode
- byte MaxSpectatorCount
- byte
- byte
- byte
- byte
- v3+
-  byte OpponentVisibility
+  version
+  string ServerName
+  string ServerComment
+  int NetworkGameMode
+  byte MaxSpectatorCount
+  byte
+  byte
+  byte
+  byte
+  v3+
+    byte OpponentVisibility
 
 0x003 (skippable)
- version
- byte
- v2+
-  bool EditorHelp
+  version
+  byte
+  v2+
+    bool EditorHelp
 
 0x004 (skippable)
- version
- float
- bool
- v2-
-  float MouseSensitivity_Default
- bool
- float MouseAccelQuantity
- v2+
+  version
   float
-  v3+
-   bool
-   float MouseSensitivity_Default
-   float
-   v4+
+  bool
+  v2-
+    float MouseSensitivity_Default
+  bool
+  float MouseAccelQuantity
+  v2+
     float
+    v3+
+      bool
+      float MouseSensitivity_Default
+      float
+      v4+
+        float
 
 0x005 (skippable)
- version
- float StereoscopyStrength01
- float
- float StereoscopyAdvancedScreenDist
- CGameCtnMediaShootParams ShootParamsVideo (direct)
- CGameCtnMediaShootParams (direct)
+  version
+  float StereoscopyStrength01
+  float
+  float StereoscopyAdvancedScreenDist
+  CGameCtnMediaShootParams ShootParamsVideo (direct)
+  CGameCtnMediaShootParams (direct)
 
 0x006 (skippable)
- version
- byte
+  version
+  byte
 
 0x007 (skippable)
- version
- bool
- float
- float
- float
- v1+
-  string
-  v2+
-   bool
-   float
-   bool
-   float
-   v3+
-    float
-    v4+
-     float
-     float
-     v5+
+  version
+  bool
+  float
+  float
+  float
+  v1+
+    string
+    v2+
+      bool
       float
-      v6+
-       float
+      bool
+      float
+      v3+
+        float
+        v4+
+          float
+          float
+          v5+
+            float
+            v6+
+              float
 
 0x008 (skippable)
- version
- int
- v1+
-  float
+  version
+  int
+  v1+
+    float
 
 0x009 (skippable)
- version
- int
+  version
+  int
 
 0x00A (skippable)
- version
- float
+  version
+  float
 
 0x00B (skippable)
- version
- int
- Unknown[]
+  version
+  int
+  Unknown[]
 
 0x00C (skippable)
- version
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
 0x00D (skippable)
- uint
- int
- string
+  uint
+  int
+  string
 
 archive SChallengeOpponents
- ident
- v0=
-  id[]
- int
- string
+  ident
+  v0=
+    id[]
+  int
+  string
 
 archive Unknown
- id
- int
+  id
+  int

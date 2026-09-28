@@ -2,39 +2,39 @@ GxLightBall 0x04002000
 - inherits: GxLightPoint
 
 0x002 [TM10]
- float Radius
- float Attenuation1
- float Attenuation2
- float EmittingRadius
- vec3 AmbientRGB
+  float Radius
+  float Attenuation1
+  float Attenuation2
+  float EmittingRadius
+  vec3 AmbientRGB
 
 0x006
- uint Flags
- float Radius
- float RadiusSpecular
- float RadiusShadow
- float RadiusFlare
- float EmittingRadius
- float Attenuation1
- float Attenuation2
- vec3 AmbientRGB
+  uint Flags
+  float Radius
+  float RadiusSpecular
+  float RadiusShadow
+  float RadiusFlare
+  float EmittingRadius
+  float Attenuation1
+  float Attenuation2
+  vec3 AmbientRGB
 
 0x008
- uint Flags
- float Radius
- float RadiusSpecular
- float RadiusShadow
- float RadiusFlare
- float EmittingRadius
- float EmittingCylinderLenZ
- float AttHTnLR
- float AttHTnLR2
- vec3 AmbientRGB
- float AttHyper2DerivAt0
- float AttHyper2Tension
+  uint Flags
+  float Radius
+  float RadiusSpecular
+  float RadiusShadow
+  float RadiusFlare
+  float EmittingRadius
+  float EmittingCylinderLenZ
+  float AttHTnLR
+  float AttHTnLR2
+  vec3 AmbientRGB
+  float AttHyper2DerivAt0
+  float AttHyper2Tension
 
 0x009
- float
+  float
 
 0x00A
- float
+  float

@@ -1,105 +1,105 @@
 CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
 0x003 (header, struct: SHeaderDesc) [TM10.v3, TMSX.v4, TMF.v5, MP3.v7, TMT.v8, MP4.v8, TM2020.v8] // desc
- ident Ident = empty
- version
- string PageName
- v5=
-  id
- v4+
-  id ParentCollectorId
- v3+
-  int<ECollectorFlags> Flags
-  short CatalogPosition
-  v5-
-   byte NbAvailableMin
-   int CopperPrice
-   short NbAvailableMax
-  v7+
-   string Name
-   v8+
-    byte<EProdState> ProdState
+  ident Ident = empty
+  version
+  string PageName
+  v5=
+    id
+  v4+
+    id ParentCollectorId
+  v3+
+    int<ECollectorFlags> Flags
+    short CatalogPosition
+    v5-
+      byte NbAvailableMin
+      int CopperPrice
+      short NbAvailableMax
+    v7+
+      string Name
+      v8+
+        byte<EProdState> ProdState
 
 0x004 (header, struct: SHeaderIcon) [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020] // icon
 
 0x006 (header, struct: SHeaderLightMap) [TMT, MP3, MP4, TM2020] // lightmap compute time
- filetime? LightmapComputeTime
+  filetime? LightmapComputeTime
 
 0x008 (header, struct: SHeaderDefaultSkin) // default skin
- versionb
- string DefaultSkinName
+  versionb
+  string DefaultSkinName
 
 0x002 [TM10, TMSX] // Ident
- ident Ident
+  ident Ident
 
 0x006 [TM10, TMSX, TMF]
- int<ESkinKind> SkinKind
+  int<ESkinKind> SkinKind
 
 0x007 [TM10, TMSX, TMF]
- bool IsInternal
- bool NeedUnlock
- int CatalogPosition
- int NbAvailableMin
- int CopperPrice
- int NbAvailableMax
+  bool IsInternal
+  bool NeedUnlock
+  int CatalogPosition
+  int NbAvailableMin
+  int CopperPrice
+  int NbAvailableMax
 
 0x008
- CPlugGameSkin
+  CPlugGameSkin
 
 0x009 [TMSX, TMF, MP3, TMT, MP4, TM2020]
 
 0x00A [TMF]
- id
+  id
 
 0x00B [TMF, MP3, TMT, MP4, TM2020] // ident
- ident Ident
+  ident Ident
 
 0x00C [MP3, TMT, MP4, TM2020] // collector name
- string Name
+  string Name
 
 0x00D [MP3, TMT, MP4, TM2020] // description
- string Description
+  string Description
 
 0x00E [MP3, TMT, MP4] // icon render
- bool IconUseAutoRender
- int IconQuarterRotationY
+  bool IconUseAutoRender
+  int IconQuarterRotationY
 
 0x010 [MP3.v2, TMT.v2, MP4.v2, TM2020.v4]
- version
- CPlugFileZip DefaultSkin (external)
- string SkinDirectory
- v2+
-  if SkinDirectory == null || SkinDirectory == ""
-   CMwNod
+  version
+  CPlugFileZip DefaultSkin (external)
+  string SkinDirectory
+  v2+
+    if SkinDirectory == null || SkinDirectory == ""
+      CMwNod
 
 0x011 [MP3.v0, TMT.v1, MP4.v1, TM2020.v1]
- version
- bool IsInternal
- bool IsAdvanced
- int CatalogPosition
- v1+
-  byte<EProdState> ProdState
+  version
+  bool IsInternal
+  bool IsAdvanced
+  int CatalogPosition
+  v1+
+    byte<EProdState> ProdState
 
 0x012 [TM2020]
- int
- int
- int
- int
+  int
+  int
+  int
+  int
 
 enum ECollectorFlags
- None
- UnknownValue
- IsInternal
- IsAdvanced = 4
+  None
+  UnknownValue
+  IsInternal
+  IsAdvanced = 4
 
 enum EProdState
- Aborted
- GameBox
- DevBuild
- Release
+  Aborted
+  GameBox
+  DevBuild
+  Release
 
 enum ESkinKind
- None
- Text
- Image
- Vehicle
+  None
+  Text
+  Image
+  Vehicle

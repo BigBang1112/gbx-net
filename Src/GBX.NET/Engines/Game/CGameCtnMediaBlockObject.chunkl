@@ -2,18 +2,18 @@ CGameCtnMediaBlockObject 0x03196000
 - inherits: CGameCtnMediaBlock
 
 0x000
- version = 1
- timefloat Start
- timefloat End
- v0=
-  AnchoredObjectInfo[] AnchoredObjectInfos
- v1+
-  CGameReplayObjectVisData VisData
+  version = 1
+  timefloat Start
+  timefloat End
+  v0=
+    AnchoredObjectInfo[] AnchoredObjectInfos
+  v1+
+    CGameReplayObjectVisData VisData
 
 archive AnchoredObjectInfo
- bool
- int
- float
- float
- float
- int
+  bool
+  int
+  float
+  float
+  float
+  int

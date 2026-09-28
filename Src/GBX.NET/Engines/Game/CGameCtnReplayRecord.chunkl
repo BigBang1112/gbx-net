@@ -71,10 +71,10 @@ CGameCtnReplayRecord 0x03093000
 0x029 (skippable) [TM2020]
 
 archive InterfaceScriptInfo
- string[]
- int
+  string[]
+  int
 
 archive EntDataSceneUIdsToGhost
- int
- int
- int
+  int
+  int
+  int

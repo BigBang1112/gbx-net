@@ -2,11 +2,11 @@ CGameCtnMediaBlockColorGrading 0x03186000
 - inherits: CGameCtnMediaBlock
 
 0x000
- packdesc Image
+  packdesc Image
 
 0x001
- list<Key> Keys
+  list<Key> Keys
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
+  timefloat Time
+  float Intensity

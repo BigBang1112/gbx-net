@@ -2,9 +2,9 @@ CGameCtnMediaBlockFxBloom 0x03083000
 - inherits: CGameCtnMediaBlockFx
 
 0x001
- list<Key> Keys
+  list<Key> Keys
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
- float Sensitivity
+  timefloat Time
+  float Intensity
+  float Sensitivity

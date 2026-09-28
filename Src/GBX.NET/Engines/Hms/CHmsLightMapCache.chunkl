@@ -1,224 +1,224 @@
 CHmsLightMapCache 0x06022000
 
 0x00B (skippable)
- int[] MapT3s
+  int[] MapT3s
 
 0x00F (skippable)
- int<EQuality> Quality
- int
+  int<EQuality> Quality
+  int
 
 0x013 (skippable)
- bool
- bool
- filetime? TimeWrite
+  bool
+  bool
+  filetime? TimeWrite
 
 0x015 (skippable)
- version
- ulong LightmapCacheUid
- id Collection
- id Decoration
- int
- v3-
-  bool
- v2+
+  version
+  ulong LightmapCacheUid
+  id Collection
+  id Decoration
   int
-  timeofday?
-  v3+
-   int
-   timeofday?
-   v5+
-    string
+  v3-
+    bool
+  v2+
+    int
+    timeofday?
+    v3+
+      int
+      timeofday?
+      v5+
+        string
 
 0x016 (skippable)
- int<EVersion> Version
+  int<EVersion> Version
 
 0x017 (skippable)
- int Decal2D
- int Decal3D
+  int Decal2D
+  int Decal3D
 
 0x018 (skippable)
- ulong
+  ulong
 
 0x019 (skippable)
- int<EQualityVer> QualityVer
+  int<EQualityVer> QualityVer
 
 0x01A (skippable)
- version
- SMap[] Maps
- int AmbSample
- int DirSamples
- int PntSamples
- int<ESortMode> SortMode
- int<EAllocMode> AllocMode
- int
- int<ECompressMode> CompressMode
- int
- v6+
-  int<EBump> Bump
- v2-
-  float
-  float
-  float
-  float
-  float
- v3+
-  SFrame[] Frames (version: Version)
- bool
- bool SpriteOriginY_WasWronglyTop
- SMapping Mapping
- v1+
-  int<EPlugGpuPlatform> GpuPlatform
-  v2=
-   vec3_6
-  v5+
-   float AllocatedTexelByMeter
-   v11+
-    int
-    int
-    v15+
-     int
+  version
+  SMap[] Maps
+  int AmbSample
+  int DirSamples
+  int PntSamples
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int
+  int<ECompressMode> CompressMode
+  int
+  v6+
+    int<EBump> Bump
+  v2-
+    float
+    float
+    float
+    float
+    float
+  v3+
+    SFrame[] Frames (version: Version)
+  bool
+  bool SpriteOriginY_WasWronglyTop
+  SMapping Mapping
+  v1+
+    int<EPlugGpuPlatform> GpuPlatform
+    v2=
+      vec3_6
+    v5+
+      float AllocatedTexelByMeter
+      v11+
+        int
+        int
+        v15+
+          int
 
 enum EQuality
- VFast
- Fast
- Default
- High
- Ultra
+  VFast
+  Fast
+  Default
+  High
+  Ultra
 
 enum EVersion
- Invalid
- _2011_07_19_Beta1
- _2011_07_21_Beta1
- _2011_07_26_Beta1d
- _2011_08_04_Beta2a
- _2011_08_08_Beta3a
- _2014_03_14_Update3_Storm
- _2017_03_07_ManiaPlanet4
- _2020_03_25_Beta1
+  Invalid
+  _2011_07_19_Beta1
+  _2011_07_21_Beta1
+  _2011_07_26_Beta1d
+  _2011_08_04_Beta2a
+  _2011_08_08_Beta3a
+  _2014_03_14_Update3_Storm
+  _2017_03_07_ManiaPlanet4
+  _2020_03_25_Beta1
 
 enum EQualityVer
- UltraMapperUnalignWith1k
- BounceShadowFiltered
- TinyAlloc_16b
- ShadowCube_GeomToEyeLengthBias
- BlockLight_WrongRotations
- R11G11B10F_No_BounceFactor
- HBasis_LQ_SignSqrt_BIntensScales
- ProbeGrid_HdrScaleAmbient
- ModelSplit2_GmPackReal2_V0
- ShadowLQ
- UnmappedBlock_FullCovering
- StadiumColorisableBounces
- Item_Prefab_MultiMesh
- ShaderQLow_NeedTgtPixel
- Current
+  UltraMapperUnalignWith1k
+  BounceShadowFiltered
+  TinyAlloc_16b
+  ShadowCube_GeomToEyeLengthBias
+  BlockLight_WrongRotations
+  R11G11B10F_No_BounceFactor
+  HBasis_LQ_SignSqrt_BIntensScales
+  ProbeGrid_HdrScaleAmbient
+  ModelSplit2_GmPackReal2_V0
+  ShadowLQ
+  UnmappedBlock_FullCovering
+  StadiumColorisableBounces
+  Item_Prefab_MultiMesh
+  ShaderQLow_NeedTgtPixel
+  Current
 
 enum ESortMode
- None
- HDiagCenter
+  None
+  HDiagCenter
 
 enum EAllocMode
- _64_2
- _64_2PUseFree
- BestSizePUseFree
+  _64_2
+  _64_2PUseFree
+  BestSizePUseFree
 
 enum ECompressMode
- Ldr_DXT1
- sRGB_Hyper_DXT1
- Hyper_sRGB_DXT1
- Scale_sRGB_DXT1
+  Ldr_DXT1
+  sRGB_Hyper_DXT1
+  Hyper_sRGB_DXT1
+  Scale_sRGB_DXT1
 
 enum EBump
- TxTyTz
- TxTyTz_Intens
- None
- HBasis_Color
- HBasis_Intens
+  TxTyTz
+  TxTyTz_Intens
+  None
+  HBasis_Color
+  HBasis_Intens
 
 enum EPlugGpuPlatform
- _00
- D3D11
- pf3
- pf4
- pf5
- pf6
+  _00
+  D3D11
+  pf3
+  pf4
+  pf5
+  pf6
 
 archive SMap
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int
 
 archive SFrame
- int
- timeofday?
- v10+
+  int
+  timeofday?
+  v10+
+    float
   float
- float
- float
- float
- float
- bool
- vec3_6
- v4+
-  int
-  int
-  v12+
-   int = 2
-  v6+
-   v7-
-    float
-    float
-    float
-  v8=
-   float
-   float
-   float
-   float
-  v9+
-   float
-   float
-   float
-  v7+
-   int
+  float
+  float
+  float
+  bool
+  vec3_6
+  v4+
+    int
+    int
+    v12+
+      int = 2
+    v6+
+      v7-
+        float
+        float
+        float
+    v8=
+      float
+      float
+      float
+      float
+    v9+
+      float
+      float
+      float
+    v7+
+      int
 
 archive SMapping
 
 archive Frame
- data Data
- v3+
-  data Data2
-  v6+
-   data Data3
+  data Data
+  v3+
+    data Data2
+    v6+
+      data Data3
    
 archive ProbeGridBoxOld
- int
- int
- int
- int
- int
- int
- int
- int
- int
- float
- float
- float
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  float
+  float
+  float
 
 archive ProbeGridBox
- int
- int
- int
- int
- int
- int
- int
- int
- int
- float
- float
- float
- float
- float
- float
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  float
+  float
+  float
+  float
+  float
+  float

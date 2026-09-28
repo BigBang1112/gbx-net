@@ -1,8 +1,8 @@
 CPlugFogMatter 0x090D3000
 
 0x000
- version
- float
- float
- float
- float
+  version
+  float
+  float
+  float
+  float

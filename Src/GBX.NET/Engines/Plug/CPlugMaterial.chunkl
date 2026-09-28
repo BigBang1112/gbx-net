@@ -2,36 +2,36 @@ CPlugMaterial 0x09079000
 - inherits: CPlug
 
 0x001
- CMwNod
+  CMwNod
 
 0x002
- int
+  int
 
 0x004
- DeviceMat[] DeviceMaterials (version: 0x004)
+  DeviceMat[] DeviceMaterials (version: 0x004)
 
 0x007
- CPlugMaterialCustom CustomMaterial
+  CPlugMaterialCustom CustomMaterial
 
 0x009
 
 0x00A
- int
+  int
 
 0x00D
 
 0x00E
- short<CPlugSurface.MaterialId> SurfaceId
- short
+  short<CPlugSurface.MaterialId> SurfaceId
+  short
 
 0x00F
- int
+  int
 
 0x010
- float
+  float
 
 0x011
- id[]
+  id[]
 
 0x012 (skippable, ignore)
 
@@ -40,40 +40,40 @@ CPlugMaterial 0x09079000
 0x014 (skippable, ignore)
 
 0x015
- version
- CPlug Shader (external)
- if Shader == null && ShaderFile == null
-  DeviceMat[] DeviceMaterials (version: 0x015)
-  int[]
-  v3+
-   int
- if Shader != null || ShaderFile != null
-  CPlugMaterialColorTargetTable[] (external)
-  v7+
-   CMwNod
+  version
+  CPlug Shader (external)
+  if Shader == null && ShaderFile == null
+    DeviceMat[] DeviceMaterials (version: 0x015)
+    int[]
+    v3+
+      int
+  if Shader != null || ShaderFile != null
+    CPlugMaterialColorTargetTable[] (external)
+    v7+
+      CMwNod
 
 0x016
- version
- uint
+  version
+  uint
 
 0x017
- version
- v1+
-  byte<CPlugSurface.MaterialId> SurfaceId
-  byte<CPlugSurface.GameplayId> GameplayId
-  int
-  int
-  short
-  string
+  version
+  v1+
+    byte<CPlugSurface.MaterialId> SurfaceId
+    byte<CPlugSurface.GameplayId> GameplayId
+    int
+    int
+    short
+    string
 
 0x019 (skippable, ignore)
 
 archive DeviceMat
- short
- short
- v4+
-  bool
- CPlugShader Shader1 (external)
- v9+
-  CPlugShader Shader2 (external)
-  CPlugShader Shader3 (external)
+  short
+  short
+  v4+
+    bool
+  CPlugShader Shader1 (external)
+  v9+
+    CPlugShader Shader2 (external)
+    CPlugShader Shader3 (external)

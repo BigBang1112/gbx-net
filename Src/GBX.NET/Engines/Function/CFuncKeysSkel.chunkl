@@ -2,10 +2,10 @@ CFuncKeysSkel 0x05006000
 - inherits: CFuncKeys
 
 0x000
- CFuncSkel Skel
+  CFuncSkel Skel
 
 0x001
 
 archive Loc
- quat
- vec3
+  quat
+  vec3

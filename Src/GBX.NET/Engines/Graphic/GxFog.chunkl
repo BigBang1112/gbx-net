@@ -1,18 +1,18 @@
 GxFog 0x04004000
 
 0x000
- bool
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  bool
+  int
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
 0x001
- version
- vec3
+  version
+  vec3

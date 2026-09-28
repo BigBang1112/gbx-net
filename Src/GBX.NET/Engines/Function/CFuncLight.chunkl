@@ -3,10 +3,10 @@ CFuncLight 0x05018000
 - abstract
 
 0x000
- int<EFctType> FctType
- float FlickPeriod
- int FlickCount
+  int<EFctType> FctType
+  float FlickPeriod
+  int FlickCount
 
 enum EFctType
- Sinus
- Flick
+  Sinus
+  Flick

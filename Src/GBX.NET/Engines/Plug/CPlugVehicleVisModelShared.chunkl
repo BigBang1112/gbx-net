@@ -1,7 +1,7 @@
 CPlugVehicleVisModelShared 0x090E8000
 
 0x005
- SimulationWheel[] SimulationWheels
+  SimulationWheel[] SimulationWheels
 
 0x006
 
@@ -18,203 +18,203 @@ CPlugVehicleVisModelShared 0x090E8000
 0x010
 
 0x012
- CPlugVehicleMaterialGroup[]_deprec VehicleMaterialGroups
+  CPlugVehicleMaterialGroup[]_deprec VehicleMaterialGroups
 
 0x013
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
+  CFuncKeysReal
+  CFuncKeysReal
+  CFuncKeysReal
 
 0x014
- CPlugVehicleVisEmitterModel[]_deprec VehicleEmitters
+  CPlugVehicleVisEmitterModel[]_deprec VehicleEmitters
 
 0x015
 
 0x016
- CFuncKeysReal
- float
+  CFuncKeysReal
+  float
 
 0x018
- CPlugParticleEmitterModel
+  CPlugParticleEmitterModel
 
 0x01E
- version
- CPlugMaterial (external)
- v1+
-  v2-
-   CPlugMaterial (external)
-  v3+
-   CPlugMaterial[] (external)
-  v1-
-   CPlugMaterial
-   CPlugMaterial
-   CPlugMaterial
-   CPlugMaterial
-   CPlugMaterial
-   CPlugMaterial
-   CPlugMaterial
-  CPlugLight (external)
-  CPlugLight (external)
-  CPlugLight (external)
-  CPlugLight (external)
-  CPlugLight (external)
-  CPlugLight (external)
-  float
-  float
-  v4+
-   CPlugSolid2Model (external)
+  version
+  CPlugMaterial (external)
+  v1+
+    v2-
+      CPlugMaterial (external)
+    v3+
+      CPlugMaterial[] (external)
+    v1-
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+    CPlugLight (external)
+    CPlugLight (external)
+    CPlugLight (external)
+    CPlugLight (external)
+    CPlugLight (external)
+    CPlugLight (external)
+    float
+    float
+    v4+
+      CPlugSolid2Model (external)
 
 0x01F
- version
- CPlugParticleEmitterModel (external)
- v1+
-  CPlugParticleEmitterModel
-  v2+
-   CPlugParticleEmitterModel (external)
-   v3+
-    CPlugParticleEmitterModel (external)
-    v4+
-     CPlugParticleEmitterModel (external)
-     v5+
-      CPlugVehicleVisEmitterModel[]_deprec
+  version
+  CPlugParticleEmitterModel (external)
+  v1+
+    CPlugParticleEmitterModel
+    v2+
       CPlugParticleEmitterModel (external)
-      CPlugParticleEmitterModel (external)
-      v6=
-       CPlugVisEntFxModel
-       CPlugParticleEmitterModel
-       CPlugParticleEmitterModel
-       CPlugParticleEmitterModel
-       CPlugParticleEmitterModel
-      v7+
-       CPlugVisEntFxModel
-       v8+
+      v3+
         CPlugParticleEmitterModel (external)
-        v9+
-         CPlugParticleEmitterModel (external)
-         v10+
+        v4+
           CPlugParticleEmitterModel (external)
-          v11+
-           CPlugParticleEmitterModel (external)
-           v12+
+          v5+
+            CPlugVehicleVisEmitterModel[]_deprec
             CPlugParticleEmitterModel (external)
-            v13+
-             CPlugParticleEmitterModel (external)
-             v14+
-              CPlugParticleEmitterModel (external)
+            CPlugParticleEmitterModel (external)
+            v6=
+              CPlugVisEntFxModel
+              CPlugParticleEmitterModel
+              CPlugParticleEmitterModel
+              CPlugParticleEmitterModel
+              CPlugParticleEmitterModel
+            v7+
+              CPlugVisEntFxModel
+              v8+
+                CPlugParticleEmitterModel (external)
+                v9+
+                  CPlugParticleEmitterModel (external)
+                  v10+
+                    CPlugParticleEmitterModel (external)
+                    v11+
+                      CPlugParticleEmitterModel (external)
+                      v12+
+                        CPlugParticleEmitterModel (external)
+                        v13+
+                          CPlugParticleEmitterModel (external)
+                          v14+
+                            CPlugParticleEmitterModel (external)
 
 0x020
- version
- float
- float
- v1+
+  version
   float
   float
+  v1+
+    float
+    float
 
 0x021
- version
- CFuncKeysReal
- CFuncKeysReal
+  version
+  CFuncKeysReal
+  CFuncKeysReal
 
 0x022
- version
- CPlugLocatedSound
- CPlugLocatedSound
- CPlugLocatedSound
- v2+
+  version
   CPlugLocatedSound
-  v2-
-   CPlugLocatedSound
-  v3+
-   CPlugLocatedSound
-   CPlugLocatedSound
-   CPlugLocatedSound
-   v4+
+  CPlugLocatedSound
+  CPlugLocatedSound
+  v2+
     CPlugLocatedSound
-    CPlugLocatedSound
-    v5+
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     CPlugLocatedSound
-     v6+
+    v2-
       CPlugLocatedSound
-      v7+
-       CPlugLocatedSound
+    v3+
+      CPlugLocatedSound
+      CPlugLocatedSound
+      CPlugLocatedSound
+      v4+
+        CPlugLocatedSound
+        CPlugLocatedSound
+        v5+
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          CPlugLocatedSound
+          v6+
+            CPlugLocatedSound
+            v7+
+              CPlugLocatedSound
 
 0x023
- version
- CPlugParticleMaterialImpactModel (external)
- CPlugParticleMaterialImpactModel (external)
- v1+
-  int
-  int
-  int
-  int
+  version
+  CPlugParticleMaterialImpactModel (external)
+  CPlugParticleMaterialImpactModel (external)
+  v1+
+    int
+    int
+    int
+    int
 
 archive SimulationWheel
- bool
- bool
- id Name
+  bool
+  bool
+  id Name
 
 archive VisualArm
- VisualId
- VisualId
- VisualId
- bool
- bool
- int
+  VisualId
+  VisualId
+  VisualId
+  bool
+  bool
+  int
 
 archive VisualLight
- VisualId
- bool
+  VisualId
+  bool
 
 archive VisualWheel
- VisualId
- VisualId
- VisualId
- VisualId
- v1+
   VisualId
- int
- bool
+  VisualId
+  VisualId
+  VisualId
+  v1+
+    VisualId
+  int
+  bool
 
 archive VisualId
- id Name
- bool
+  id Name
+  bool
 
 archive Emitter
- int
- CPlugParticleEmitterModel EmitterModel (external)
- int
- int
- int
- bool
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  int
+  CPlugParticleEmitterModel EmitterModel (external)
+  int
+  int
+  int
+  bool
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float

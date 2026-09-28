@@ -1,53 +1,53 @@
 CGameCtnMediaShootParams 0x03060000
 
 0x001
- int VideoFps
- int SizeX
- int SizeY
- bool Hq
- int HqSampleCountPerAxe
- bool
- bool HqSoftShadows
- bool HqAmbientOcc
- bool IsAudioStream
- int<EStereo3d> Stereo3d
+  int VideoFps
+  int SizeX
+  int SizeY
+  bool Hq
+  int HqSampleCountPerAxe
+  bool
+  bool HqSoftShadows
+  bool HqAmbientOcc
+  bool IsAudioStream
+  int<EStereo3d> Stereo3d
 
 0x002
- version
- int VideoFps
- int SizeX
- int SizeY
- bool Hq
- int HqSampleCountPerAxe
- int
- int
- bool
- bool
- bool
- bool
- bool HqSoftShadows
- bool HqAmbientOcc
- bool IsAudioStream
- int<EStereo3d> Stereo3d
- int
- int
- bool
- int
- VideoEnc VideoEncoding
- AudioEnc AudioEncoding
+  version
+  int VideoFps
+  int SizeX
+  int SizeY
+  bool Hq
+  int HqSampleCountPerAxe
+  int
+  int
+  bool
+  bool
+  bool
+  bool
+  bool HqSoftShadows
+  bool HqAmbientOcc
+  bool IsAudioStream
+  int<EStereo3d> Stereo3d
+  int
+  int
+  bool
+  int
+  VideoEnc VideoEncoding
+  AudioEnc AudioEncoding
 
 enum EStereo3d
- None
- RedNCyan
- LeftNRight
+  None
+  RedNCyan
+  LeftNRight
 
 archive VideoEnc
- int Version
- int
- int
- int
- int
+  int Version
+  int
+  int
+  int
+  int
 
 archive AudioEnc
- int Version
- float
+  int Version
+  float

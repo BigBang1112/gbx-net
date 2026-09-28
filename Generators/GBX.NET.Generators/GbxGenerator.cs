@@ -1,4 +1,5 @@
 using GBX.NET.Generators.Analysis;
+using GBX.NET.Generators.Parsing;
 using Microsoft.CodeAnalysis;
 
 namespace GBX.NET.Generators;
@@ -17,13 +18,38 @@ public sealed class GbxGenerator : IIncrementalGenerator
             .Select(static (declarations, token) => ExistingTypeAnalysis.Merge(declarations, token))
             .WithTrackingName("ExistingEngineTypes");
 
-        // Register a terminal step so the analysis runs even before code generation exists.
-        context.RegisterSourceOutput(existingTypes, static (_, _) =>
+        var parseResults = context.AdditionalTextsProvider
+            .Where(static file => file.Path.EndsWith(".chunkl", StringComparison.OrdinalIgnoreCase))
+            .Select(static (file, token) => ChunkLParsing.Parse(file, token))
+            .WithTrackingName("ChunkLParseResults");
+
+        context.RegisterSourceOutput(parseResults, static (sourceContext, result) =>
         {
-            // Next: parse .chunkl AdditionalTexts and combine them with this index. Match
-            // engine namespace + class name, then ChunkXXXXXXXX / HeaderChunkXXXXXXXX,
+            foreach (var diagnostic in result.Diagnostics)
+            {
+                sourceContext.CancellationToken.ThrowIfCancellationRequested();
+                sourceContext.ReportDiagnostic(diagnostic);
+            }
+        });
+
+        var chunklFiles = parseResults
+            .Where(static result => result.File is not null)
+            .Select(static (result, _) => result.File!)
+            .Collect()
+            .WithTrackingName("ParsedChunkLFiles");
+
+        var generationInputs = existingTypes.Combine(chunklFiles)
+            .WithTrackingName("GenerationInputs");
+
+        // Register a terminal step so both stages run before code generation exists.
+        context.RegisterSourceOutput(generationInputs, static (_, _) =>
+        {
+            // Next: match each parsed layout's TypeKey to the existing type index, then
+            // match ChunkXXXXXXXX / HeaderChunkXXXXXXXX,
             // named archives and enums within that class. A nameless archive uses the
             // class's own members. Keep C# types without a matching .chunkl file too.
+            // Run ChunkL's local semantic analysis as part of planning, and resolve
+            // external types using both parsed layouts and existing implementations.
             //
             // Build a generation plan before emitting source: reuse existing properties
             // and fields independently, respect attributes and declared base types,
