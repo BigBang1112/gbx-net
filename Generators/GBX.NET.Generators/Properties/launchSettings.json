@@ -2,7 +2,7 @@
   "profiles": {
     "GBX.NET.Generators": {
       "commandName": "DebugRoslynComponent",
-      "targetProject": "..\\..\\Src\\GBX.NET\\GBX.NET.csproj"
+      "targetProject": "..\\..\\Samples\\Generators\\GBX.NET.Generators.Sample\\GBX.NET.Generators.Sample.csproj"
     }
   }
 }

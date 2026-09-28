@@ -5,8 +5,6 @@
   <Folder Name="/Generators/">
     <File Path="Generators/LICENSE" />
     <Project Path="Generators/GBX.NET.Generators/GBX.NET.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Lua.Generators/GBX.NET.Lua.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Tests.Generators/GBX.NET.Tests.Generators.csproj" />
   </Folder>
   <Folder Name="/Položky řešení/">
     <File Path=".dockerignore" />
@@ -51,6 +49,9 @@
     <Project Path="Samples/Beginner/FullMapInfo/FullMapInfo.csproj" />
     <Project Path="Samples/Beginner/Legomania/Legomania.csproj" />
     <Project Path="Samples/Beginner/SolidExtract/SolidExtract.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Generators/">
+    <Project Path="Samples/Generators/GBX.NET.Generators.Sample/GBX.NET.Generators.Sample.csproj" />
   </Folder>
   <Folder Name="/Samples/NativeAOT/" />
   <Folder Name="/Samples/Tool/">
