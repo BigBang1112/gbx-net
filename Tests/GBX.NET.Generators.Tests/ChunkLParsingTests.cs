@@ -5,7 +5,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -133,7 +132,7 @@ public class ChunkLParsingTests(ITestOutputHelper output)
     [Fact]
     public void GeneratesEveryRealLayoutWithoutParserOrGenerationDiagnostics()
     {
-        var directory = Path.GetFullPath(Path.Combine(GetTestDirectory(), "../../Src/GBX.NET/Engines"));
+        var directory = TestPaths.GetEngineDirectory();
         var files = Directory.EnumerateFiles(directory, "*.chunkl", SearchOption.AllDirectories)
             .OrderBy(x => x, StringComparer.Ordinal)
             .Select(path => new MemoryAdditionalText(path, File.ReadAllText(path))).ToArray();
@@ -151,8 +150,6 @@ public class ChunkLParsingTests(ITestOutputHelper output)
         output.WriteLine($"Parsed {GetFiles(result).Length}/{files.Length} layouts successfully; " +
             $"reported {result.Diagnostics.Length} parser diagnostics for the current corpus.");
     }
-
-    private static string GetTestDirectory([CallerFilePath] string path = "") => Path.GetDirectoryName(path)!;
 
     private static CSharpCompilation CreateCompilation() => CSharpCompilation.Create("ParsingOnly",
         new[] { CSharpSyntaxTree.ParseText("namespace GBX.NET.Engines.Game; public partial class Example;",

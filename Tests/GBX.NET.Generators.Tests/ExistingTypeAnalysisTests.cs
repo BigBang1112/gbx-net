@@ -2,7 +2,6 @@ using GBX.NET.Generators.Analysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace GBX.NET.Generators.Tests;
@@ -135,7 +134,7 @@ public class ExistingTypeAnalysisTests
     [Fact]
     public void AnalyzesRealEngineSourcesWithoutMetadataReferences()
     {
-        var directory = Path.GetFullPath(Path.Combine(GetTestDirectory(), "../../Src/GBX.NET/Engines"));
+        var directory = TestPaths.GetEngineDirectory();
         var trees = Directory.EnumerateFiles(directory, "*.cs", SearchOption.AllDirectories)
             .OrderBy(x => x, StringComparer.Ordinal)
             .Select(path => Parse(File.ReadAllText(path), path)).ToArray();
@@ -150,8 +149,6 @@ public class ExistingTypeAnalysisTests
         Assert.Contains(types["GBX.NET.Engines.Plug.CPlugVertexStream+Chunk09056000"].Methods,
             x => x.Identifier.ValueText == "ReadWrite");
     }
-
-    private static string GetTestDirectory([CallerFilePath] string path = "") => Path.GetDirectoryName(path)!;
 
     private static SyntaxTree Parse(string source, string path = "Source.cs") =>
         CSharpSyntaxTree.ParseText(source, new CSharpParseOptions(LanguageVersion.Preview), path);
