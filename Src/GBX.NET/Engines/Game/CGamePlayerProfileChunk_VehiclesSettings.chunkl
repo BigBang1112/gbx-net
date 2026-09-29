@@ -14,7 +14,7 @@ CGamePlayerProfileChunk_VehiclesSettings 0x03130000
 
 0x002 (skippable) // VehicleProfiles
   version
-  VehicleProfile[] VehicleProfiles (version: Version)
+  VehicleProfile[] VehicleProfiles
 
 0x003 (skippable)
   version

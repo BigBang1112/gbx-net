@@ -20,7 +20,7 @@ CGameActionModel 0x2E008000
       int
   v19+
     int SpriteBlockVersion
-    SpriteBlock[] SpriteBlocks
+    SpriteBlock[] SpriteBlocks (version: SpriteBlockVersion)
   v17+
     string Description
   v16+
@@ -67,8 +67,8 @@ CGameActionModel 0x2E008000
     string Icon
     string Crosshair
   v1+
-    ParticleBlock[] ParticleBlocks (version: Version)
-    SoundBlock[] SoundBlocks (version: Version)
+    ParticleBlock[] ParticleBlocks
+    SoundBlock[] SoundBlocks
   v20+
     bool
   v28=
@@ -192,7 +192,7 @@ archive ProjScriptEffect
   float
 
 archive ParticleBlock
-  ParticleKey[] Keys (version: v)
+  ParticleKey[] Keys
   id[]
   v1-
     bool

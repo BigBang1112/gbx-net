@@ -6,7 +6,7 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
 
 0x001
   version
-  Key[] Keys (version: Version, list)
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time

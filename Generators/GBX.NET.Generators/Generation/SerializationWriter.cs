@@ -36,7 +36,18 @@ internal sealed class SerializationWriter
                     break;
 
                 case VersionCondition version:
-                    var variable = chunk || scope.HasVersion ? "Version" : "v";
+                    var archiveVersion = LayoutModel.Has(version.Attributes, "archive");
+                    var chunkVersion = LayoutModel.Has(version.Attributes, "chunk");
+                    if (archiveVersion && chunkVersion)
+                        throw new InvalidOperationException("A version condition cannot select both archive and chunk versions.");
+                    if (!chunk && scope.HasVersion && !archiveVersion && !chunkVersion)
+                        throw new InvalidOperationException("A version condition with archive and inherited versions must select (archive) or (chunk).");
+                    if (chunk && archiveVersion)
+                        throw new InvalidOperationException("A chunk version condition cannot select an archive version.");
+                    if (archiveVersion && !scope.HasVersion)
+                        throw new InvalidOperationException("An (archive) version condition requires a version field in that archive.");
+
+                    var variable = chunk || archiveVersion || (scope.HasVersion && !chunkVersion) ? "Version" : "v";
                     var condition = version.Kind switch
                     {
                         VersionConditionKind.Exact => $"{variable} == {version.Version}",
@@ -213,6 +224,10 @@ internal sealed class SerializationWriter
         {
             arguments.Add("version: " + ExpressionText(version));
         }
+        else if (IsArchive(declaration) && (chunk ? scope.HasVersion : true))
+        {
+            arguments.Add("version: " + (scope.HasVersion ? "Version" : "v"));
+        }
 
         if (declaration.Type.Name == "boolbyte")
         {
@@ -319,8 +334,7 @@ internal sealed class SerializationWriter
 
         if (!WireTypes.Primitive(name))
         {
-            var archive = layout.Archives.ContainsKey(name) ||
-                (!field.Type.ChunkPreference && layouts.TryGetValue(name, out var referenced) && referenced.SelfArchive is not null);
+            var archive = IsArchive(field);
             method = archive ? mode switch
             {
                 SerializationMode.Read => "Readable",
@@ -368,6 +382,13 @@ internal sealed class SerializationWriter
 
     public string Expression(Expression expression)
         => ExpressionText(ChunkLParser.WriteExpression(expression));
+
+    private bool IsArchive(FieldDeclaration field)
+    {
+        var name = field.Type.Name;
+        return layout.Archives.ContainsKey(name) ||
+            (!field.Type.ChunkPreference && layouts.TryGetValue(name, out var referenced) && referenced.SelfArchive is not null);
+    }
 
     private void Throw(AttributeList? attributes)
     {

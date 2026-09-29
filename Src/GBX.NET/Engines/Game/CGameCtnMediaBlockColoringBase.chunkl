@@ -5,7 +5,7 @@ CGameCtnMediaBlockColoringBase 0x03172000
   version
   v2+
     int = 2
-  Key[] Keys (version: Version, list)
+  Key[] Keys (list)
   v1+
     int BaseIndex
 

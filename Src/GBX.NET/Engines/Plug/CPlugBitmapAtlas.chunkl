@@ -3,7 +3,7 @@ CPlugBitmapAtlas 0x090A8000
 
 0x002
   version
-  SubTex[] SubTextures (version: Version)
+  SubTex[] SubTextures
 
 archive SubTex
   id

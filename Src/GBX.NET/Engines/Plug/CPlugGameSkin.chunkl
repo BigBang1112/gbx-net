@@ -6,7 +6,7 @@ CPlugGameSkin 0x090F4000
   v1+
     string PainterTextureName
     string PainterSceneId
-  HeaderFid[] HeaderFids (prefix: byte, version: Version)
+  HeaderFid[] HeaderFids (prefix: byte)
   v4+
     string DirNameAlt
     v5+
@@ -32,7 +32,7 @@ CPlugGameSkin 0x090F4000
   v1+
     string PainterTextureName
     string PainterSceneId
-  Fid[] CustomizableFids (prefix: byte, version: Version)
+  Fid[] CustomizableFids (prefix: byte)
   v4+
     string DirNameAlt
     v5+

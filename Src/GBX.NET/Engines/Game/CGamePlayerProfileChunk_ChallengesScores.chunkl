@@ -7,7 +7,7 @@ CGamePlayerProfileChunk_ChallengesScores 0x03149000
 
 0x002 (skippable)
   version
-  SContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
+  SContextMapRecordForProfile[] ContextMapRecordsForProfile
 
 archive SContextMapRecordForProfile
   v2+

@@ -28,7 +28,7 @@ CGameCtnGhost 0x03092000 // A ghost.
             string GhostZone
             v8+
               string GhostClubTag
-  
+
 0x003 [TM10, TMPU]
   ident PlayerModel
   string SkinFile
@@ -116,7 +116,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x01D (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v4] // player input data
   version
-  PlayerInputData[] PlayerInputs (version: Version)
+  PlayerInputData[] PlayerInputs
 
 0x01F (skippable, ignore) [MP4] // OldColorHistory
 
@@ -218,7 +218,7 @@ archive Checkpoint
     float? Speed
   v1=
     int? StuntsScore
- 
+
 archive OldSettingsInfos
   int
   int

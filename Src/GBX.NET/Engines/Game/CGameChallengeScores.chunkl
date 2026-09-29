@@ -8,7 +8,7 @@ CGameChallengeScores 0x03064000
   bool
   int
   systemtime
-  Unknown[] (version: Version)
+  Unknown[]
 
 archive Unknown
   string
@@ -19,7 +19,7 @@ archive Unknown
   systemtime
   byte
   systemtime
-  ChampionRanking[ScoreCount] (version: v)
+  ChampionRanking[ScoreCount]
 
 archive RecordsBuffer
   int Version

@@ -3,7 +3,7 @@ CPlugAudioBalance 0x09034000
 
 0x000
   version
-  Group[] Groups (version: Version)
+  Group[] Groups
   v1+
     float
     v2+
@@ -39,8 +39,8 @@ CPlugAudioBalance 0x09034000
   bool
 
 archive Group
-  Line (version: v)
-  Line (version: v)
+  Line
+  Line
 
 archive Line
   float

@@ -217,18 +217,18 @@ CGameCtnCollection 0x03033000
         float
         float
       v1+
-        Water Water1 (version: Version)
-        Water Water2 (version: Version)
+        Water Water1
+        Water Water2
     v4+
-      Water Water1 (version: Version)
-      Water Water2 (version: Version)
-      Water Water3 (version: Version)
-      Water Water4 (version: Version)
+      Water Water1
+      Water Water2
+      Water Water3
+      Water Water4
   v8+
     CPlugMaterialWaterArray WaterArray
     if WaterArray == null
       int
-      Water Water1 (version: Version)
+      Water Water1
   v5+
     CPlugBitmap WaterGBitmapNormal (external)
     float WaterGBumpSpeedUV

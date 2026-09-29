@@ -3,7 +3,7 @@ CPlugImageArray 0x0914C000
 0x000
   version
   string Folder
-  Elem[] Layers (version: Version)
+  Elem[] Layers
   v4+
     CMwNod Material_VId
     v5+

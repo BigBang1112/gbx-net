@@ -23,7 +23,7 @@ CGameCtnMediaBlockSound 0x030A7000
 0x004
   packdesc Sound
   version
-  Key[] Keys (version: Version, list)
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time

@@ -72,7 +72,7 @@ CGameUserProfile 0x031CC000
 
 0x006 (skippable)
   version
-  ContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
+  ContextMapRecordForProfile[] ContextMapRecordsForProfile
 
 0x007 (skippable)
   version
@@ -193,7 +193,7 @@ CGameUserProfile 0x031CC000
 
 0x015 (skippable)
   version
-  Unknown8 (version: Version)
+  Unknown8
 
 0x016 (skippable)
   version
@@ -245,7 +245,7 @@ CGameUserProfile 0x031CC000
 
 0x020 (skippable)
   version
-  Unknown8 (version: Version)
+  Unknown8
   ulong
 
 0x021 (skippable)

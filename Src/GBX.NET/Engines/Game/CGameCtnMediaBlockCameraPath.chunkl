@@ -12,7 +12,7 @@ CGameCtnMediaBlockCameraPath 0x030A1000
 
 0x003
   version
-  Key[] Keys (version: Version, list)
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time

@@ -226,9 +226,13 @@ internal static class EngineWriter
         var contextual = LayoutModel.Has(scope.Attributes, "contextual") ? "<" + layout.Name + ">" : "";
 
         if (scope.Separate || contextual.Length > 0)
-            return ["IReadable" + contextual, "IWritable" + contextual];
+            return scope.HasVersion
+                ? ["IReadable" + contextual, "IWritable" + contextual, "IVersionable"]
+                : ["IReadable" + contextual, "IWritable" + contextual];
         
-        return ["IReadableWritable", "IReadable", "IWritable"];
+        return scope.HasVersion
+            ? ["IReadableWritable", "IReadable", "IWritable", "IVersionable"]
+            : ["IReadableWritable", "IReadable", "IWritable"];
     }
 
     private static void Properties(CodeWriter code, LayoutModel layout, ScopeModel scope, bool chunk)

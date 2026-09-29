@@ -146,6 +146,73 @@ public class GenerationTests
     }
 
     [Fact]
+    public void PassesCurrentVersionToArchivesAndHonorsExplicitOverrides()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version
+              Outer Data
+              Outer Legacy (version: 0)
+            archive Outer
+              version
+              v1+ (archive)
+                int OwnField
+              v2+ (chunk)
+                int CallerField
+              Inner Child
+            archive Inner
+              v1+
+                int ChildField
+            """));
+
+        Assert.Empty(result.Diagnostics);
+        var generated = Engine(result).ToString();
+        Assert.Contains("rw.ReadableWritable<Outer>(ref n.data, version: Version)", generated);
+        Assert.Contains("rw.ReadableWritable<Outer>(ref n.legacy, version: 0)", generated);
+        Assert.Contains("partial class Outer : IReadableWritable, IReadable, IWritable, IVersionable", generated);
+        Assert.Contains("if (Version >= 1)", generated);
+        Assert.Contains("if (v >= 2)", generated);
+        Assert.Contains("rw.ReadableWritable<Inner>(ref this.child, version: Version)", generated);
+    }
+
+    [Fact]
+    public void PassesInheritedArchiveVersionToNestedArchives()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            archive
+              Outer Data
+            archive Outer
+              Inner Child
+            archive Inner
+              v1+
+                int Value
+            """));
+
+        Assert.Empty(result.Diagnostics);
+        var generated = Engine(result).ToString();
+        Assert.Contains("rw.ReadableWritable<Outer>(ref this.data, version: v)", generated);
+        Assert.Contains("rw.ReadableWritable<Inner>(ref this.child, version: v)", generated);
+        Assert.Contains("if (v >= 1)", generated);
+    }
+
+    [Fact]
+    public void RequiresVersionSourceWhenAnArchiveHasTwoVersions()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            archive Named
+              version
+              v1+
+                int Value
+            """));
+
+        Assert.Contains(result.Diagnostics, x => x.Id == "GBXNETGEN200" &&
+            x.GetMessage().Contains("must select (archive) or (chunk)"));
+    }
+
+    [Fact]
     public void ReportsInvalidOverlapAndDuplicateLayoutsWithoutCrashingSiblingGenerationOrManagers()
     {
         var (result, _) = Run("namespace GBX.NET.Engines.Game; public class Bad { }",

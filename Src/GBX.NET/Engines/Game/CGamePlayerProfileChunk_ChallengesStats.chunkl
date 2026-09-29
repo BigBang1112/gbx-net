@@ -7,7 +7,7 @@ CGamePlayerProfileChunk_ChallengesStats 0x03148000
 
 0x001 (skippable)
   version
-  SChallengeStats[] ChallengeStats (version: Version)
+  SChallengeStats[] ChallengeStats
 
 archive SChallengeStats
   ident
@@ -24,7 +24,7 @@ archive SChallengeStats
   int
   int
   int
-  int 
+  int
   int
   int
   bool

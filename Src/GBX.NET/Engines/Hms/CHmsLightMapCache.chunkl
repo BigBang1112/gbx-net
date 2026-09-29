@@ -62,7 +62,7 @@ CHmsLightMapCache 0x06022000
     float
     float
   v3+
-    SFrame[] Frames (version: Version)
+    SFrame[] Frames
   bool
   bool SpriteOriginY_WasWronglyTop
   SMapping Mapping
@@ -191,7 +191,7 @@ archive Frame
     data Data2
     v6+
       data Data3
-   
+
 archive ProbeGridBoxOld
   int
   int

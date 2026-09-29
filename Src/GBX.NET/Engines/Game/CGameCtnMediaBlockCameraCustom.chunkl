@@ -39,8 +39,8 @@ archive Key (inherits: IKey)
       float? // 60
       float? // 30
       return
-    InterpVal? LeftTangent (version: v)
-    InterpVal? RightTangent (version: v)
+    InterpVal? LeftTangent
+    InterpVal? RightTangent
     v3=
       float?
       quat?
@@ -51,8 +51,8 @@ archive Key (inherits: IKey)
     vec3 TargetPosition
     v7+
       float? NearZ
-    InterpVal? LeftTangent (version: v)
-    InterpVal? RightTangent (version: v)
+    InterpVal? LeftTangent
+    InterpVal? RightTangent
     v8=
       int?
       int?

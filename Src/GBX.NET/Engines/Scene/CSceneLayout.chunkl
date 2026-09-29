@@ -57,7 +57,7 @@ CSceneLayout 0x0A003000
   SceneMobil[] Scene
   SceneLoc[] SceneLocations
   CSceneObject[] (deprec)
-  SceneLoc[] 
+  SceneLoc[]
   CSceneLight[] Lights (deprec)
   SceneLoc[] LightLocations
   CSceneObject[] Sounds (deprec)
@@ -75,7 +75,7 @@ CSceneLayout 0x0A003000
     iso4[] ObjectLocations
   v3+
     Unknown2[]
-    Unknown3[] (version: Version)
+    Unknown3[]
   CSceneConfig
   v1-
     CPlugWeatherModel[] WeatherModels (deprec, external)

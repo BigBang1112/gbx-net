@@ -10,7 +10,7 @@ CPlugVehiclePhyModel 0x090EA000
   version
   CPlugVehicleCarPhyShape PhyShape
   v1+
-    OccupantSlot[] OccupantSlots (version: Version)
+    OccupantSlot[] OccupantSlots
   v6+
     vec3[]
     v10+

@@ -3,7 +3,7 @@ CGamePlayerProfileChunk_ManiaPlanetStations 0x03180000
 
 0x000 (skippable) // OldStations
   version
-  OldGameStationDesc[] OldStations (version: Version)
+  OldGameStationDesc[] OldStations
 
 0x001 (skippable)
   version

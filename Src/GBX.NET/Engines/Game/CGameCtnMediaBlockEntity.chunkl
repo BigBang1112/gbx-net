@@ -24,11 +24,11 @@ CGameCtnMediaBlockEntity 0x0329F000
       PackDesc[] SkinNames (list) // name assumed from getter
       bool HasBadges
       if HasBadges
-        SBadge Badge
+        SBadge Badge (version: 0)
       v4+
         v11+
           string? SkinOptions
-        Key[] Keys (version: Version, list)
+        Key[] Keys (list)
         v5=
           float
         v7+
@@ -48,9 +48,9 @@ enum ELights
   Off
  
 archive SBadge
-  int Version
+  version
   vec3 Color
-  v0=
+  v0= (archive)
     int
     string
   SSticker[] Stickers (list)
