@@ -60,7 +60,7 @@ jobs:
           set -euo pipefail
           for project in Tests/*/*.csproj; do
             project_name="$(basename "$(dirname "$project")")"
-            dotnet test --project "$project" -c Release -- \
+            dotnet test --project "$project" -c Release \
               --coverage \
               --coverage-output-format cobertura \
               --results-directory "$PWD/coverage/$project_name"
