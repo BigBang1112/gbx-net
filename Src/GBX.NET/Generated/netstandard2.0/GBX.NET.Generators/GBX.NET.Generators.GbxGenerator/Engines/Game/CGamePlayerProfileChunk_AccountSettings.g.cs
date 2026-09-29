@@ -175,6 +175,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private CGameNetOnlineMessage[]? inboxMessages;
+    [AppliedWithChunk<Chunk0312C005>]
     public CGameNetOnlineMessage[]? InboxMessages
     {
         get => this.inboxMessages;
@@ -182,6 +183,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private CGameNetOnlineMessage[]? readMessages;
+    [AppliedWithChunk<Chunk0312C005>]
     public CGameNetOnlineMessage[]? ReadMessages
     {
         get => this.readMessages;
@@ -189,6 +191,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private CGameNetOnlineMessage[]? outboxMessages;
+    [AppliedWithChunk<Chunk0312C005>]
     public CGameNetOnlineMessage[]? OutboxMessages
     {
         get => this.outboxMessages;
@@ -520,9 +523,34 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     [Chunk(0x0312C005)]
-    public partial class Chunk0312C005 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>
+    public partial class Chunk0312C005 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C005;
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version <= 1)
+            {
+                n.receivedMessagesAt = rw.SystemTime(n.receivedMessagesAt);
+                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
+                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
+                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Encapsulated(rw =>
+                {
+                    n.receivedMessagesAt = rw.SystemTime(n.receivedMessagesAt);
+                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
+                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
+                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
+                });
+            }
+        }
     }
 
     [Chunk(0x0312C006)]

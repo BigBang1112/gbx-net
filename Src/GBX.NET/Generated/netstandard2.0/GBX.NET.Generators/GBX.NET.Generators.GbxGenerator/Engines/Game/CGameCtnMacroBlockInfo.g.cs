@@ -215,6 +215,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     {
         public override uint Id => 0x0310D00B;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.Encapsulated(rw =>
+            {
+                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata);
+            });
+        }
     }
 
     /// <summary>
@@ -343,10 +351,25 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     /// </summary>
     [Chunk(0x0310D011, "mediatracker")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0310D011 : SkippableChunk<CGameCtnMacroBlockInfo>
+    public partial class Chunk0310D011 : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
     {
         public override uint Id => 0x0310D011;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+        public Int3 U02;
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.Int3(ref U02);
+                rw.Int3(ref n.clipTriggerSize);
+                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
+                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+            });
+        }
     }
 
     public partial class BlockSpawn : IReadableWritable, IReadable, IWritable

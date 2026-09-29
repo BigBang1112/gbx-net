@@ -54,14 +54,6 @@ public partial class CGameGhost : CMwNod, IClass
         set => this.uncompressedSize = value;
     }
 
-    private bool isReplaying;
-    [AppliedWithChunk<Chunk0303F006>]
-    public bool IsReplaying
-    {
-        get => this.isReplaying;
-        set => this.isReplaying = value;
-    }
-
     public CGameGhost()
     {
     }
@@ -97,14 +89,15 @@ public partial class CGameGhost : CMwNod, IClass
 
     [Chunk(0x0303F006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0303F006 : Chunk0303F005
+    public partial class Chunk0303F006 : Chunk0303F005, IVersionable
     {
         public override uint Id => 0x0303F006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         public override void ReadWrite(CGameGhost n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref n.isReplaying);
+            rw.VersionInt32(this);
             base.ReadWrite(n, rw);
         }
     }

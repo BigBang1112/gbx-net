@@ -369,6 +369,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     public partial class Chunk0305B00F : SkippableChunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B00F;
+
+        public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
+        {
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
+            });
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
