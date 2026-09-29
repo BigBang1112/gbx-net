@@ -87,9 +87,22 @@ internal sealed class SerializationWriter
 
                 case BlockStatement block:
                     code.BlankLine();
-                    code.Open("");
+                    var encapsulated = LayoutModel.Has(block.Attributes, "encapsulated");
+                    var io = mode switch
+                    {
+                        SerializationMode.Read => "r",
+                        SerializationMode.Write => "w",
+                        _ => "rw"
+                    };
+                    var method = mode switch
+                    {
+                        SerializationMode.Read => "ReadEncapsulated",
+                        SerializationMode.Write => "WriteEncapsulated",
+                        _ => "Encapsulated"
+                    };
+                    code.Open(encapsulated ? $"{io}.{method}({io} =>" : "");
                     Write(block.Body);
-                    code.Close();
+                    code.Close(encapsulated ? ");" : "");
                     code.BlankLine();
                     break;
 

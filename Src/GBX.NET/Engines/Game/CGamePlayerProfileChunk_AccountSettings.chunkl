@@ -97,6 +97,18 @@ archive
   string
 
 0x005 (skippable)
+  version
+  v1-
+    systemtime ReceivedMessagesAt
+    CGameNetOnlineMessage[] InboxMessages (deprec)
+    CGameNetOnlineMessage[] ReadMessages (deprec)
+    CGameNetOnlineMessage[] OutboxMessages (deprec)
+  v2+
+    block (encapsulated)
+      systemtime ReceivedMessagesAt
+      CGameNetOnlineMessage[] InboxMessages (deprec)
+      CGameNetOnlineMessage[] ReadMessages (deprec)
+      CGameNetOnlineMessage[] OutboxMessages (deprec)
 
 0x006 (skippable)
   version

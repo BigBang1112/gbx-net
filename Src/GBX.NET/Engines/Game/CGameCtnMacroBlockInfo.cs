@@ -18,36 +18,4 @@ public partial class CGameCtnMacroBlockInfo
 
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
-
-    public partial class Chunk0310D00B
-    {
-        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
-        {
-            rw.Encapsulated(rw =>
-            {
-                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata);
-            });
-        }
-    }
-
-    public partial class Chunk0310D011 : IVersionable
-    {
-        public int Version { get; set; }
-
-        public Int3 U02;
-
-        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-            rw.Encapsulated(rw =>
-            {
-                // SMediaTrackSpawns
-                rw.Int3(ref U02);
-                rw.Int3(ref n.clipTriggerSize);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
-                //
-            });
-        }
-    }
 }

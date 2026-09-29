@@ -1753,17 +1753,6 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    public partial class Chunk03043044
-    {
-        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
-        {
-            rw.Encapsulated(rw =>
-            {
-                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata!);
-            });
-        }
-    }
-
     public partial class Chunk03043048 : IVersionable
     {
         public int Version { get; set; }

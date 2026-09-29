@@ -25,6 +25,8 @@ CGameCtnMacroBlockInfo 0x0310D000
   int
 
 0x00B (skippable) [MP4, TM2020] // script metadata
+  block (encapsulated)
+    CScriptTraitsMetadata ScriptMetadata (direct)
 
 0x00C (skippable) [MP4.v2, TM2020.v2] // splines
   version = 2
@@ -63,6 +65,12 @@ CGameCtnMacroBlockInfo 0x0310D000
   int IconSize
 
 0x011 (skippable) [MP4, TM2020] // mediatracker
+  version
+  block (encapsulated)
+    int3 U02 // SMediaTrackSpawns
+    int3 ClipTriggerSize
+    CGameCtnMediaClipGroup ClipGroupInGame
+    CGameCtnMediaClipGroup ClipGroupEndRace
 
 archive BlockSpawn
   int Version

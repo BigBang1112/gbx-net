@@ -231,6 +231,8 @@ CGameCtnChallenge 0x03043000 // A map.
 0x043 (skippable) [MP3, TMT, MP4, TM2020] // genealogies
 
 0x044 (skippable) [MP3, TMT, MP4, TM2020] // metadata
+  block (encapsulated)
+    CScriptTraitsMetadata ScriptMetadata (direct)
 
 0x047 (skippable) [MP3, TMT]
   version

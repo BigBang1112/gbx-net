@@ -198,6 +198,34 @@ public class GenerationTests
     }
 
     [Fact]
+    public void EmitsEncapsulatedBlocksForCombinedAndSeparateSerialization()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
+                public partial class Chunk03043002 { }
+            }
+            """;
+        var (result, _) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              block (encapsulated)
+                int Value
+            0x002
+              block (encapsulated)
+                int Other
+            """));
+
+        Assert.Empty(result.Diagnostics);
+        var generated = Engine(result).ToString();
+        Assert.Contains("rw.Encapsulated(rw =>", generated);
+        Assert.Contains("r.ReadEncapsulated(r =>", generated);
+        Assert.Contains("w.WriteEncapsulated(w =>", generated);
+    }
+
+    [Fact]
     public void RequiresVersionSourceWhenAnArchiveHasTwoVersions()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
