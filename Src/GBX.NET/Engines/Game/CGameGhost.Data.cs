@@ -41,7 +41,9 @@ public partial class CGameGhost
         public int Version { get; set; }
 
         public int? U01 { get; set; }
-        public int? U02 { get; set; }
+
+        public TimeInt32? FirstSampleTime { get; set; }
+        
         public int[]? Offsets { get; set; }
 
         public int? FirstSampleOffset { get; set; }
@@ -51,7 +53,7 @@ public partial class CGameGhost
             switch (v)
             {
                 case 0: ReadOld(r); break;
-                case 1: ReadNew(r); break;
+                case 1: ReadNew(r, version: 1); break;
                 default: throw new NotSupportedException($"Version {v} is not supported.");
             }
         }
@@ -61,7 +63,7 @@ public partial class CGameGhost
             switch (v)
             {
                 case 0: WriteOld(w); break;
-                case 1: WriteNew(w); break;
+                case 1: WriteNew(w, version: 1); break;
                 default: throw new NotSupportedException($"Version {v} is not supported.");
             }
         }
@@ -125,11 +127,11 @@ public partial class CGameGhost
             }
         }
 
-        private void ReadNew(GbxReader r)
+        internal void ReadNew(GbxReader r, int version)
         {
             SavedMobilClassId = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
 
-            if (SavedMobilClassId == uint.MaxValue)
+            if (SavedMobilClassId == uint.MaxValue && version != 0)
             {
                 return;
             }
@@ -166,14 +168,23 @@ public partial class CGameGhost
             {
                 // CGameGhostTMData::ArchiveStateTimes
                 stateTimes = r.ReadArray<int>();
+
+                if (version != 0)
+                {
+                    for (var i = 1; i < stateTimes.Length; i++)
+                    {
+                        stateTimes[i] += stateTimes[i - 1];
+                    }
+                }
+
+                if (stateTimes.Length != numSamples)
+                {
+                    throw new InvalidDataException("The state-time count does not match the sample count.");
+                }
             }
 
-            // Fixed-timestep TM2 ghost-recorder streams store this extra value.
-            // Variable-timestep streams end after the state-times array.
-            if (Version >= 10 && IsFixedTimeStep)
-            {
-                U02 = r.ReadInt32();
-            }
+            // ArchiveStateTimes uses the containing chunk's version, not the vehicle-state version.
+            FirstSampleTime = IsFixedTimeStep && version != 0 ? r.ReadTimeInt32() : null;
 
             if (r.BaseStream.Position != r.BaseStream.Length)
             {
@@ -186,8 +197,6 @@ public partial class CGameGhost
             {
                 return;
             }
-
-            var currentTime = TimeInt32.Zero;
 
             using var stateBufferMs = new MemoryStream(stateBuffer);
             using var stateBufferR = new GbxReader(stateBufferMs);
@@ -205,24 +214,19 @@ public partial class CGameGhost
                     _ => stateBufferR.ReadBytes(sizePerSample)
                 };
 
-                if (stateTimes.Length == 0)
-                {
-                    currentTime = new TimeInt32(i * SamplePeriod.Milliseconds);
-                }
-                else
-                {
-                    currentTime += new TimeInt32(stateTimes[i]);
-                }
+                var currentTime = new TimeInt32(IsFixedTimeStep
+                    ? FirstSampleTime.GetValueOrDefault().TotalMilliseconds + i * SamplePeriod.TotalMilliseconds
+                    : stateTimes[i]);
 
                 Samples.Add(ReadSample(currentTime, sampleData));
             }
         }
 
-        private void WriteNew(GbxWriter w)
+        internal void WriteNew(GbxWriter w, int version)
         {
             w.Write(SavedMobilClassId);
 
-            if (SavedMobilClassId == uint.MaxValue)
+            if (SavedMobilClassId == uint.MaxValue && version != 0)
             {
                 return;
             }
@@ -284,12 +288,20 @@ public partial class CGameGhost
             if (!IsFixedTimeStep)
             {
                 // CGameGhostTMData::ArchiveStateTimes
-                w.WriteArray(stateTimes);
+                w.Write(numSamples);
+                var previousTime = 0;
+
+                foreach (var sample in Samples)
+                {
+                    var time = sample.Time.TotalMilliseconds;
+                    w.Write(version != 0 ? time - previousTime : time);
+                    previousTime = time;
+                }
             }
 
-            if (Version >= 10 && IsFixedTimeStep)
+            if (IsFixedTimeStep && version != 0)
             {
-                w.Write(U02.GetValueOrDefault());
+                w.Write(FirstSampleTime ?? (Samples.Count > 0 ? Samples[0].Time : TimeInt32.Zero));
             }
         }
 
@@ -352,7 +364,8 @@ public partial class CGameGhost
                 return null;
             }
 
-            var sampleKey = timestamp.TotalMilliseconds / SamplePeriod.TotalMilliseconds;
+            var sampleKey = (timestamp.TotalMilliseconds - Samples[0].Time.TotalMilliseconds)
+                / SamplePeriod.TotalMilliseconds;
             var a = Samples.ElementAtOrDefault((int)Math.Floor(sampleKey));
             var b = Samples.ElementAtOrDefault((int)Math.Ceiling(sampleKey));
 
