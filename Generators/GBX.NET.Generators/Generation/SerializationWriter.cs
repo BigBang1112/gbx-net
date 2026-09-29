@@ -36,6 +36,7 @@ internal sealed class SerializationWriter
                     break;
 
                 case VersionCondition version:
+                    code.BlankLine();
                     var archiveVersion = LayoutModel.Has(version.Attributes, "archive");
                     var chunkVersion = LayoutModel.Has(version.Attributes, "chunk");
                     if (archiveVersion && chunkVersion)
@@ -58,9 +59,11 @@ internal sealed class SerializationWriter
                     code.Open("if (" + condition + ")");
                     Write(version.Body);
                     code.Close();
+                    code.BlankLine();
                     break;
 
                 case IfStatement conditional:
+                    code.BlankLine();
                     code.Open("if (" + Expression(conditional.Condition) + ")");
                     Write(conditional.Body);
                     code.Close();
@@ -79,29 +82,37 @@ internal sealed class SerializationWriter
                         code.Close();
                     }
 
+                    code.BlankLine();
                     break;
 
                 case BlockStatement block:
+                    code.BlankLine();
                     code.Open("");
                     Write(block.Body);
                     code.Close();
+                    code.BlankLine();
                     break;
 
                 case WhileStatement loop:
+                    code.BlankLine();
                     code.Open("while (" + Expression(loop.Condition) + ")");
                     Write(loop.Body);
                     code.Close();
+                    code.BlankLine();
                     break;
 
                 case LoopStatement loop:
+                    code.BlankLine();
                     var index = "i" + ++loopCount;
 
                     code.Open($"for (var {index} = 0; {index} < {Expression(loop.CountExpression)}; {index}++)");
                     Write(loop.Body);
                     code.Close();
+                    code.BlankLine();
                     break;
 
                 case SwitchStatement selection:
+                    code.BlankLine();
                     code.Open("switch (" + Expression(selection.Expression) + ")");
 
                     foreach (var branch in selection.Cases)
@@ -123,6 +134,7 @@ internal sealed class SerializationWriter
                     }
 
                     code.Close();
+                    code.BlankLine();
                     break;
 
                 case ReturnStatement:
