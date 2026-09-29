@@ -41,13 +41,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Spectre.Console" Version="0.54.0" />
         <PackageReference Include="YamlDotNet" Version="16.3.0" />
     </ItemGroup>

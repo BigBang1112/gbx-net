@@ -88,7 +88,7 @@ public class CGameGhostDataTests
         await Assert.That(stream.Position).IsEqualTo(stream.Length);
     }
 
-    private static byte[] WriteSample(CSceneVehicleCar.Sample sample, int version)
+    private static byte[] WriteSample(CGameGhost.Data.Sample sample, int version)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -96,6 +96,36 @@ public class CGameGhostDataTests
             sample.Write(writer, version);
         }
 
+        return stream.ToArray();
+    }
+
+    private static byte[] WriteArchive(bool fixedTimeStep, int stateVersion, byte[][] samples, int[] times, int? firstTime)
+    {
+        using var stream = new MemoryStream();
+        using var writer = new GbxWriter(stream);
+        writer.Write(samples.Length == 0 ? 0u : 0x0A02B000u);
+        writer.Write(fixedTimeStep);
+        writer.Write(0);
+        writer.Write(samples.Length == 0 ? 0 : 100);
+        writer.Write(stateVersion);
+        writer.WriteData(samples.SelectMany(x => x).ToArray());
+        writer.Write(samples.Length);
+        if (samples.Length > 0)
+        {
+            writer.Write(0);
+            if (samples.Length > 1)
+            {
+                writer.Write(samples[0].Length);
+            }
+        }
+        if (!fixedTimeStep)
+        {
+            writer.WriteArray(times);
+        }
+        if (firstTime is not null)
+        {
+            writer.Write(firstTime.Value);
+        }
         return stream.ToArray();
     }
 }
