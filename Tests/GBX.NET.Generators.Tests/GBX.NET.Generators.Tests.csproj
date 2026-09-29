@@ -8,11 +8,8 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="ChunkL" Version="1.1.0" />
-        <PackageReference Include="coverlet.collector" Version="6.0.4" PrivateAssets="all" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="xunit" Version="2.9.3" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
+        <PackageReference Include="TUnit" Version="1.58.0" />
         <ProjectReference Include="../../Generators/GBX.NET.Generators/GBX.NET.Generators.csproj" />
     </ItemGroup>
 </Project>

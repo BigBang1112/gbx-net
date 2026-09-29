@@ -68,15 +68,37 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     }
 
     [Chunk(0x03146001)]
-    public partial class Chunk03146001 : SkippableChunk<CGamePlayerProfileChunk_GameScores>
+    public partial class Chunk03146001 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146001;
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CGamePlayerOfficialScores>(ref n.officialScores1);
+            });
+        }
     }
 
     [Chunk(0x03146004)]
-    public partial class Chunk03146004 : SkippableChunk<CGamePlayerProfileChunk_GameScores>
+    public partial class Chunk03146004 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146004;
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CGamePlayerOfficialScores>(ref n.officialScores2);
+            });
+        }
     }
 
     [Chunk(0x03146005)]
@@ -94,6 +116,17 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
     public partial class STrainingMedalsScores : IReadableWritable, IReadable, IWritable
     {
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.u01);
+            rw.Int32(ref this.u02);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CGamePlayerOfficialScores>(ref this.officialScores);
+            });
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

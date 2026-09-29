@@ -59,7 +59,16 @@ jobs:
         run: |
           set -euo pipefail
           for project in Tests/*/*.csproj; do
-            dotnet test "$project" -c Release --collect:"XPlat Code Coverage" --results-directory ./coverage
+            if [[ "$project" != Tests/GBX.NET.Tests/* ]]; then
+              project_name="$(basename "$(dirname "$project")")"
+              mkdir -p "./coverage/$project_name"
+              dotnet run --project "$project" -c Release -- \
+                --coverage \
+                --coverage-output "$PWD/coverage/$project_name/coverage.cobertura.xml" \
+                --coverage-output-format cobertura
+            else
+              dotnet test "$project" -c Release --collect:"XPlat Code Coverage" --results-directory ./coverage
+            fi
           done
 
       - name: Generate code coverage summary

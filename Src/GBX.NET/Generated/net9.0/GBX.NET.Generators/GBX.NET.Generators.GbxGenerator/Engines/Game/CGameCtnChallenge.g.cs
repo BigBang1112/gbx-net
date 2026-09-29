@@ -1260,6 +1260,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043044;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.Encapsulated(rw =>
+            {
+                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata);
+            });
+        }
     }
 
     [Chunk(0x03043047)]

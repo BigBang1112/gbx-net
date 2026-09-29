@@ -1,17 +1,19 @@
+using System.Collections.Immutable;
+using System.IO;
+using System.Threading.Tasks;
 using GBX.NET.Generators.Analysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using System.Collections.Immutable;
-using Xunit;
+using TUnit.Assertions.Enums;
 
 namespace GBX.NET.Generators.Tests;
 
 public class ExistingTypeAnalysisTests
 {
-    [Fact]
-    public void MergesPartialsAndKeepsMembersInTheirOwnScope()
+    [Test]
+    public async Task MergesPartialsAndKeepsMembersInTheirOwnScope()
     {
-        var types = Analyze(
+        var types = await Analyze(
             Parse("""
                 namespace GBX.NET.Engines.Game;
                 [Class(0x03043000)]
@@ -42,28 +44,29 @@ public class ExistingTypeAnalysisTests
                 """, "Example.More.cs"));
 
         var type = types["GBX.NET.Engines.Game.Example"];
-        Assert.Equal(2, type.Declarations.Length);
-        Assert.True(type.IsAbstract);
-        Assert.True(type.IsPartial);
-        Assert.Equal("CMwNod", Assert.Single(type.BaseTypes).ToString());
-        Assert.Equal("Class", Assert.Single(type.Attributes).Name.ToString());
-        Assert.True(type.MembersByName.ContainsKey("event"));
-        Assert.True(type.MembersByName.ContainsKey("version"));
-        Assert.Equal(2, type.Constructors.Count());
-        Assert.Equal("Create", Assert.Single(type.Methods).Identifier.ValueText);
-        Assert.NotNull(Assert.Single(type.Properties).AccessorList);
+        await Assert.That(type.Declarations.Length).IsEqualTo(2);
+        await Assert.That(type.IsAbstract).IsTrue();
+        await Assert.That(type.IsPartial).IsTrue();
+        await Assert.That(type.BaseTypes.Single().ToString()).IsEqualTo("CMwNod");
+        await Assert.That(type.Attributes.Single().Name.ToString()).IsEqualTo("Class");
+        await Assert.That(type.MembersByName.ContainsKey("event")).IsTrue();
+        await Assert.That(type.MembersByName.ContainsKey("version")).IsTrue();
+        await Assert.That(type.Constructors.Count()).IsEqualTo(2);
+        await Assert.That(type.Methods.Single().Identifier.ValueText).IsEqualTo("Create");
+        await Assert.That(type.Properties.Single().AccessorList).IsNotNull();
 
         var chunk = types["GBX.NET.Engines.Game.Example+Chunk03043000"];
-        Assert.Equal(type.Key, chunk.ContainingTypeKey);
-        Assert.Equal(2, chunk.Declarations.Length);
-        Assert.Equal(new[] { "Read", "Write" }, chunk.Methods.Select(x => x.Identifier.ValueText));
-        Assert.Equal(2, types["GBX.NET.Engines.Game.Example+Kind"].MembersByName.Count);
+        await Assert.That(chunk.ContainingTypeKey).IsEqualTo(type.Key);
+        await Assert.That(chunk.Declarations.Length).IsEqualTo(2);
+        await Assert.That(chunk.Methods.Select(x => x.Identifier.ValueText))
+            .IsEquivalentTo(new[] { "Read", "Write" }, CollectionOrdering.Matching);
+        await Assert.That(types["GBX.NET.Engines.Game.Example+Kind"].MembersByName.Count).IsEqualTo(2);
     }
 
-    [Fact]
-    public void PreservesOverloadsExplicitMembersAndGenerationOptions()
+    [Test]
+    public async Task PreservesOverloadsExplicitMembersAndGenerationOptions()
     {
-        var types = Analyze(Parse("""
+        var types = await Analyze(Parse("""
             namespace GBX.NET.Engines.Plug;
             public partial class Example
             {
@@ -82,23 +85,22 @@ public class ExistingTypeAnalysisTests
             """));
 
         var type = types["GBX.NET.Engines.Plug.Example"];
-        Assert.Equal(2, type.MembersByName["Read"].Length);
-        Assert.Single(type.MembersByName["IReadable.Read"]);
-        Assert.True(type.MembersByName.ContainsKey("IVersionable.Version"));
-        Assert.False(type.MembersByName.ContainsKey("Version"));
-        Assert.Equal(2, type.MembersByName["ReadWrite"].Length);
-        Assert.Contains(type.Methods, x => x.Body is null && x.ExpressionBody is null);
-        Assert.Single(types["GBX.NET.Engines.Plug.Example+HeaderChunk09000000"].Attributes);
-        Assert.Empty(types["GBX.NET.Engines.Plug.Example+HeaderChunk09000000"].Members);
-        Assert.Contains("PrivateSet = true",
-            Assert.Single(types["GBX.NET.Engines.Plug.Example+Archive"].Attributes).ToString());
-        Assert.Equal(1, types["GBX.NET.Engines.Plug.Example+Archive`1"].Arity);
+        await Assert.That(type.MembersByName["Read"].Length).IsEqualTo(2);
+        await Assert.That(type.MembersByName["IReadable.Read"]).HasSingleItem();
+        await Assert.That(type.MembersByName.ContainsKey("IVersionable.Version")).IsTrue();
+        await Assert.That(type.MembersByName.ContainsKey("Version")).IsFalse();
+        await Assert.That(type.MembersByName["ReadWrite"].Length).IsEqualTo(2);
+        await Assert.That(type.Methods).Contains(x => x.Body is null && x.ExpressionBody is null);
+        await Assert.That(types["GBX.NET.Engines.Plug.Example+HeaderChunk09000000"].Attributes).HasSingleItem();
+        await Assert.That(types["GBX.NET.Engines.Plug.Example+HeaderChunk09000000"].Members).IsEmpty();
+        await Assert.That(types["GBX.NET.Engines.Plug.Example+Archive"].Attributes.Single().ToString()).Contains("PrivateSet = true");
+        await Assert.That(types["GBX.NET.Engines.Plug.Example+Archive`1"].Arity).IsEqualTo(1);
     }
 
-    [Fact]
-    public void SeparatesNamespacesContainersAndGenericArities()
+    [Test]
+    public async Task SeparatesNamespacesContainersAndGenericArities()
     {
-        var types = Analyze(Parse("""
+        var types = await Analyze(Parse("""
             namespace GBX.NET.Engines.Game
             {
                 public partial class Example { public partial class Key; }
@@ -112,48 +114,46 @@ public class ExistingTypeAnalysisTests
             }
             """));
 
-        Assert.Equal(9, types.Count);
-        Assert.Equal("GBX.NET.Engines.Game.Example`1",
-            types["GBX.NET.Engines.Game.Example`1+Key"].ContainingTypeKey);
-        Assert.Single(types["GBX.NET.Engines.Game.Positional"].PrimaryConstructors);
+        await Assert.That(types.Count).IsEqualTo(9);
+        await Assert.That(types["GBX.NET.Engines.Game.Example`1+Key"].ContainingTypeKey).IsEqualTo("GBX.NET.Engines.Game.Example`1");
+        await Assert.That(types["GBX.NET.Engines.Game.Positional"].PrimaryConstructors).HasSingleItem();
     }
 
-    [Fact]
-    public void FiltersOtherNamespacesAndFileLocalTypes()
+    [Test]
+    public async Task FiltersOtherNamespacesAndFileLocalTypes()
     {
-        var types = Analyze(
+        var types = await Analyze(
             Parse("namespace GBX.NET.EnginesOther.Game; public partial class Example;"),
             Parse("namespace Other; public partial class Example;"),
             Parse("namespace GBX.NET.Engines.Game; file class Local { public partial class Nested; }"),
             Parse("namespace GBX.NET.Engines.Game; public class Custom { }"));
 
-        Assert.Equal("GBX.NET.Engines.Game.Custom", Assert.Single(types).Key);
-        Assert.False(Assert.Single(types).Value.IsPartial);
+        var type = types.Single();
+        await Assert.That(type.Key).IsEqualTo("GBX.NET.Engines.Game.Custom");
+        await Assert.That(type.Value.IsPartial).IsFalse();
     }
 
-    [Fact]
-    public void AnalyzesRealEngineSourcesWithoutMetadataReferences()
+    [Test]
+    public async Task AnalyzesRealEngineSourcesWithoutMetadataReferences()
     {
         var directory = TestPaths.GetEngineDirectory();
         var trees = Directory.EnumerateFiles(directory, "*.cs", SearchOption.AllDirectories)
             .OrderBy(x => x, StringComparer.Ordinal)
             .Select(path => Parse(File.ReadAllText(path), path)).ToArray();
-        var types = Analyze(trees);
+        var types = await Analyze(trees);
 
-        Assert.True(types.Count > 300);
-        Assert.Contains(types["GBX.NET.Engines.MwFoundations.CMwNod"].Attributes,
-            x => x.Name.ToString() == "Class");
-        Assert.True(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait"));
-        Assert.True(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait`1"));
-        Assert.Empty(types["GBX.NET.Engines.Plug.CPlugMaterialCustom+Chunk0903A00A"].Methods);
-        Assert.Contains(types["GBX.NET.Engines.Plug.CPlugVertexStream+Chunk09056000"].Methods,
-            x => x.Identifier.ValueText == "ReadWrite");
+        await Assert.That(types.Count > 300).IsTrue();
+        await Assert.That(types["GBX.NET.Engines.MwFoundations.CMwNod"].Attributes).Contains(x => x.Name.ToString() == "Class");
+        await Assert.That(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait")).IsTrue();
+        await Assert.That(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait`1")).IsTrue();
+        await Assert.That(types["GBX.NET.Engines.Plug.CPlugMaterialCustom+Chunk0903A00A"].Methods).IsEmpty();
+        await Assert.That(types["GBX.NET.Engines.Plug.CPlugVertexStream+Chunk09056000"].Methods).Contains(x => x.Identifier.ValueText == "ReadWrite");
     }
 
     private static SyntaxTree Parse(string source, string path = "Source.cs") =>
         CSharpSyntaxTree.ParseText(source, new CSharpParseOptions(LanguageVersion.Preview), path);
 
-    private static ImmutableDictionary<string, ExistingType> Analyze(params SyntaxTree[] trees)
+    private static async Task<ImmutableDictionary<string, ExistingType>> Analyze(params SyntaxTree[] trees)
     {
         // Intentionally supply no references. Engine bases, attributes and parameter
         // types are unresolved; analysis must still run and never emit C# source.
@@ -162,11 +162,11 @@ public class ExistingTypeAnalysisTests
             new[] { new GbxGenerator().AsSourceGenerator() },
             driverOptions: new GeneratorDriverOptions(default, trackIncrementalGeneratorSteps: true));
         driver = driver.RunGenerators(compilation);
-        var result = Assert.Single(driver.GetRunResult().Results);
-        Assert.Null(result.Exception);
-        Assert.Empty(result.Diagnostics);
-        Assert.Empty(result.GeneratedSources);
-        var step = Assert.Single(result.TrackedSteps["ExistingEngineTypes"]);
-        return Assert.IsType<ImmutableDictionary<string, ExistingType>>(Assert.Single(step.Outputs).Value);
+        var result = await Assert.That(driver.GetRunResult().Results).HasSingleItem();
+        await Assert.That(result.Exception).IsNull();
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await Assert.That(result.GeneratedSources).IsEmpty();
+        var step = await Assert.That(result.TrackedSteps["ExistingEngineTypes"]).HasSingleItem();
+        return (await Assert.That(step.Outputs.Single().Value).IsTypeOf<ImmutableDictionary<string, ExistingType>>())!;
     }
 }
