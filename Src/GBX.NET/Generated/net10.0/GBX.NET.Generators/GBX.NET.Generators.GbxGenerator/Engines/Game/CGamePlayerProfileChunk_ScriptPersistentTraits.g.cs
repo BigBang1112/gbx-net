@@ -39,9 +39,20 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
     }
 
     [Chunk(0x03170000)]
-    public partial class Chunk03170000 : SkippableChunk<CGamePlayerProfileChunk_ScriptPersistentTraits>
+    public partial class Chunk03170000 : SkippableChunk<CGamePlayerProfileChunk_ScriptPersistentTraits>, IVersionable
     {
         public override uint Id => 0x03170000;
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_ScriptPersistentTraits n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.Node<CScriptTraitsPersistent>(ref n.scriptPersistentTraits);
+            });
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

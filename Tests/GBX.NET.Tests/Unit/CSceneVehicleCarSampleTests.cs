@@ -6,22 +6,22 @@ namespace GBX.NET.Tests.Unit;
 
 public class CSceneVehicleCarSampleTests
 {
-    [Theory]
-    [InlineData(17, 74)]
-    [InlineData(18, 75)]
-    [InlineData(19, 76)]
-    [InlineData(20, 77)]
-    public void Write_StateFirstVersions_HasExpectedFixedSize(int version, int expectedSize)
+    [Test]
+    [Arguments(17, 74)]
+    [Arguments(18, 75)]
+    [Arguments(19, 76)]
+    [Arguments(20, 77)]
+    public async Task Write_StateFirstVersions_HasExpectedFixedSize(int version, int expectedSize)
     {
         var sample = new CSceneVehicleCar.Sample(new TimeInt32(0), []);
 
         var data = Write(sample, version);
 
-        Assert.Equal(expectedSize, data.Length);
+        await Assert.That(data.Length).IsEqualTo(expectedSize);
     }
 
-    [Fact]
-    public void Version20_ReadAndWrite_UsesStateFirstLayout()
+    [Test]
+    public async Task Version20_ReadAndWrite_UsesStateFirstLayout()
     {
         var sample = new CSceneVehicleCar.Sample(new TimeInt32(0), [])
         {
@@ -40,14 +40,14 @@ public class CSceneVehicleCarSampleTests
 
         var data = Write(sample, version: 20);
 
-        Assert.Equal((byte)0x22, data[0]);
-        Assert.Equal((byte)0x11, data[1]);
-        Assert.Equal(BitConverter.GetBytes(1f), data[47..51]);
-        Assert.Equal(BitConverter.GetBytes(0xA1B2C3D4u), data[65..69]);
-        Assert.Equal((byte)0xA9, data[73]);
-        Assert.Equal((byte)0xB8, data[74]);
-        Assert.Equal((byte)0xC7, data[75]);
-        Assert.Equal((byte)0xD6, data[76]);
+        await Assert.That(data[0]).IsEqualTo((byte)0x22);
+        await Assert.That(data[1]).IsEqualTo((byte)0x11);
+        await Assert.That(data[47..51]).IsEquivalentTo(BitConverter.GetBytes(1f), CollectionOrdering.Matching);
+        await Assert.That(data[65..69]).IsEquivalentTo(BitConverter.GetBytes(0xA1B2C3D4u), CollectionOrdering.Matching);
+        await Assert.That(data[73]).IsEqualTo((byte)0xA9);
+        await Assert.That(data[74]).IsEqualTo((byte)0xB8);
+        await Assert.That(data[75]).IsEqualTo((byte)0xC7);
+        await Assert.That(data[76]).IsEqualTo((byte)0xD6);
 
         var restored = new CSceneVehicleCar.Sample(new TimeInt32(0), []);
         using var input = new MemoryStream(data);
@@ -55,14 +55,14 @@ public class CSceneVehicleCarSampleTests
         restored.Read(reader, version: 20);
 
         var restoredRaw = (CSceneVehicleCar.ISampleRawData)restored;
-        Assert.Equal(raw.SpeedForward, restoredRaw.SpeedForward);
-        Assert.Equal(raw.Velocity, restoredRaw.Velocity);
-        Assert.Equal(raw.AngularVelocity, restoredRaw.AngularVelocity);
-        Assert.Equal(sample.U35_2, restored.U35_2);
-        Assert.Equal(sample.U41, restored.U41);
-        Assert.Equal(sample.U42, restored.U42);
-        Assert.Equal(sample.U44, restored.U44);
-        Assert.Equal(sample.U45, restored.U45);
+        await Assert.That(restoredRaw.SpeedForward).IsEqualTo(raw.SpeedForward);
+        await Assert.That(restoredRaw.Velocity).IsEqualTo(raw.Velocity);
+        await Assert.That(restoredRaw.AngularVelocity).IsEqualTo(raw.AngularVelocity);
+        await Assert.That(restored.U35_2).IsEqualTo(sample.U35_2);
+        await Assert.That(restored.U41).IsEqualTo(sample.U41);
+        await Assert.That(restored.U42).IsEqualTo(sample.U42);
+        await Assert.That(restored.U44).IsEqualTo(sample.U44);
+        await Assert.That(restored.U45).IsEqualTo(sample.U45);
     }
 
     private static byte[] Write(CSceneVehicleCar.Sample sample, int version)

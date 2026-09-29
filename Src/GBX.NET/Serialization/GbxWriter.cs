@@ -1431,7 +1431,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #else
                 Write(MemoryMarshal.Cast<int, byte>(value).ToArray());
 #endif
-                WriteArray(value);
                 break;
             case >= byte.MaxValue:
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
@@ -1468,13 +1467,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         switch ((uint)determineFrom.GetValueOrDefault(value.Length))
         {
             case >= ushort.MaxValue:
-                WriteArray(value);
+                WriteArray(value, value.Length);
                 break;
             case >= byte.MaxValue:
-                WriteArray(Array.ConvertAll(value, x => x.X & 0xFFFF | x.Y << 16));
+                WriteArray(Array.ConvertAll(value, x => x.X & 0xFFFF | x.Y << 16), value.Length);
                 break;
             default:
-                WriteArray(Array.ConvertAll(value, x => (ushort)(x.X & 0xFF | x.Y << 8)));
+                WriteArray(Array.ConvertAll(value, x => (ushort)(x.X & 0xFF | x.Y << 8)), value.Length);
                 break;
         }
     }

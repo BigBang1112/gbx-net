@@ -1413,7 +1413,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return (uint)determineFrom.GetValueOrDefault(length) switch
         {
             >= ushort.MaxValue => ReadArray<Int2>(length),
-            >= byte.MaxValue => Array.ConvertAll(ReadArray<int>(length), x => new Int2(x & 0xFFFF, x >> 16)),
+            >= byte.MaxValue => Array.ConvertAll(ReadArray<int>(length), x => new Int2(x & 0xFFFF, (x >> 16) & 0xFFFF)),
             _ => Array.ConvertAll(ReadArray<ushort>(length), x => new Int2(x & 0xFF, x >> 8))
         };
     }

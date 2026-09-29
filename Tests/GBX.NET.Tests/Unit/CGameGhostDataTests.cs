@@ -7,8 +7,8 @@ namespace GBX.NET.Tests.Unit;
 
 public class CGameGhostDataTests
 {
-    [Fact]
-    public void Read_Version13VariableTimeStep_DoesNotReadExtraValueAfterStateTimes()
+    [Test]
+    public async Task Read_Version13VariableTimeStep_DoesNotReadExtraValueAfterStateTimes()
     {
         var sample = new CSceneVehicleCar.Sample(TimeInt32.Zero, []);
         byte[] sampleData;
@@ -39,14 +39,14 @@ public class CGameGhostDataTests
         var data = new CGameGhost.Data();
         data.Read(reader, v: 1);
 
-        Assert.Equal(13, data.Version);
-        Assert.False(data.IsFixedTimeStep);
-        Assert.Single(data.Samples);
-        Assert.Equal(stream.Length, stream.Position);
+        await Assert.That(data.Version).IsEqualTo(13);
+        await Assert.That(data.IsFixedTimeStep).IsFalse();
+        await Assert.That(data.Samples).HasSingleItem();
+        await Assert.That(stream.Position).IsEqualTo(stream.Length);
     }
 
-    [Fact]
-    public void Read_UniformStateSize_ReadsFinalSampleAsStateBufferRemainder()
+    [Test]
+    public async Task Read_UniformStateSize_ReadsFinalSampleAsStateBufferRemainder()
     {
         var normalSample = new CSceneVehicleCar.Sample(TimeInt32.Zero, []);
         var finalSample = new CSceneVehicleCar.Sample(TimeInt32.Zero, [])
@@ -60,8 +60,8 @@ public class CGameGhostDataTests
         normalSampleData.CopyTo(stateBuffer, 0);
         finalSampleData.CopyTo(stateBuffer, normalSampleData.Length);
 
-        Assert.Equal(73, normalSampleData.Length);
-        Assert.Equal(92, finalSampleData.Length);
+        await Assert.That(normalSampleData.Length).IsEqualTo(73);
+        await Assert.That(finalSampleData.Length).IsEqualTo(92);
 
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -83,9 +83,9 @@ public class CGameGhostDataTests
         var data = new CGameGhost.Data();
         data.Read(reader, v: 1);
 
-        var parsedFinalSample = Assert.IsType<CSceneVehicleCar.Sample>(data.Samples[1]);
-        Assert.Single(parsedFinalSample.U35_1!);
-        Assert.Equal(stream.Length, stream.Position);
+        var parsedFinalSample = (await Assert.That(data.Samples[1]).IsTypeOf<CSceneVehicleCar.Sample>())!;
+        await Assert.That(parsedFinalSample.U35_1!).HasSingleItem();
+        await Assert.That(stream.Position).IsEqualTo(stream.Length);
     }
 
     private static byte[] WriteSample(CSceneVehicleCar.Sample sample, int version)

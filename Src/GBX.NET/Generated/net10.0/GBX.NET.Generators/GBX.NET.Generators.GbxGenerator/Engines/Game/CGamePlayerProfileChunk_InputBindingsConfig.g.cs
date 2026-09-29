@@ -39,9 +39,20 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     }
 
     [Chunk(0x0312F000)]
-    public partial class Chunk0312F000 : SkippableChunk<CGamePlayerProfileChunk_InputBindingsConfig>
+    public partial class Chunk0312F000 : SkippableChunk<CGamePlayerProfileChunk_InputBindingsConfig>, IVersionable
     {
         public override uint Id => 0x0312F000;
+        public int Version { get; set; }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_InputBindingsConfig n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CInputBindingsConfig>(ref n.config);
+            });
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
