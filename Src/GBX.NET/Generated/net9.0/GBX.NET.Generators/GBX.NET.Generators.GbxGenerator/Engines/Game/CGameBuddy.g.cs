@@ -62,6 +62,14 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         set => this.u04 = value;
     }
 
+    private string? nickName;
+    [SupportsFormatting]
+    public string? NickName
+    {
+        get => this.nickName;
+        set => this.nickName = value;
+    }
+
     private int u07;
     public int U07
     {
@@ -153,6 +161,7 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         ((CGameBuddy)clone).login = context.Clone(this.login)!;
         ((CGameBuddy)clone).u03 = context.Clone(this.u03)!;
         ((CGameBuddy)clone).u04 = context.Clone(this.u04)!;
+        ((CGameBuddy)clone).nickName = context.Clone(this.nickName)!;
         ((CGameBuddy)clone).u07 = context.Clone(this.u07)!;
         ((CGameBuddy)clone).u08 = context.Clone(this.u08)!;
         ((CGameBuddy)clone).skillsRank = context.Clone(this.skillsRank)!;
@@ -165,7 +174,6 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         ((CGameBuddy)clone).campaignMedals = context.CloneArray(this.campaignMedals)!;
         ((CGameBuddy)clone).path = context.Clone(this.path)!;
         ((CGameBuddy)clone).canReceiveMessages = context.Clone(this.canReceiveMessages)!;
-        ((CGameBuddy)clone).nickName = context.Clone(this.nickName)!;
     }
 
     public CGameBuddy()

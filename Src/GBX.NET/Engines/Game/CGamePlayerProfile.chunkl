@@ -100,7 +100,7 @@
 
 0x05B
   string ProfileName
-  string NickName
+  string NickName (formatted)
   id
   int
   int

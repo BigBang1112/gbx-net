@@ -34,6 +34,24 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     [Hexadecimal]
     public static new uint Id => 0x0312C000;
 
+    private string? description;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk0312C001>]
+    public string? Description
+    {
+        get => this.description;
+        set => this.description = value;
+    }
+
+    private string? nickName;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk0312C000>]
+    public string? NickName
+    {
+        get => this.nickName;
+        set => this.nickName = value;
+    }
+
     private byte flags;
     [AppliedWithChunk<Chunk0312C000>]
     public byte Flags
@@ -310,6 +328,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_AccountSettings)clone).description = context.Clone(this.description)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).flags = context.Clone(this.flags)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).onlineLogin = context.Clone(this.onlineLogin)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).onlinePassword = context.Clone(this.onlinePassword)!;
@@ -345,8 +365,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).clubLinkUrl = context.Clone(this.clubLinkUrl)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).fameStars = context.Clone(this.fameStars)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).youtubeUploads = context.CloneArray(this.youtubeUploads)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).nickName = context.Clone(this.nickName)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).description = context.Clone(this.description)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
     }
 

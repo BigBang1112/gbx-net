@@ -2,14 +2,6 @@
 
 public partial class CGamePlayerProfileChunk_AccountSettings
 {
-    private string? nickName;
-    [SupportsFormatting]
-    public string? NickName { get => nickName; set => nickName = value; }
-
-    private string? description;
-    [SupportsFormatting]
-    public string? Description { get => description; set => description = value; }
-
     public bool LoginValidated
     {
         get => BitHelper.GetBit(flags, 0);

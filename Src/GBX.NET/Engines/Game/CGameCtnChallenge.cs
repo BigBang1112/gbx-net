@@ -31,14 +31,6 @@ public partial class CGameCtnChallenge :
     public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     private string mapName = string.Empty;
-    [SupportsFormatting]
-    [AppliedWithChunk<HeaderChunk03043002>]
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk03043012>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public string MapName { get => mapName; set => mapName = value; }
-
 
     private Int3 size;
     [AppliedWithChunk<Chunk0304300F>]
@@ -60,12 +52,6 @@ public partial class CGameCtnChallenge :
             mapInfo = new Ident(mapInfo.Id, mapInfo.Collection, value);
         }
     }
-
-    private string? authorNickname;
-    [SupportsFormatting]
-    [AppliedWithChunk<HeaderChunk03043008>]
-    [AppliedWithChunk<Chunk03043042>]
-    public string? AuthorNickname { get => authorNickname; set => authorNickname = value; }
 
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
@@ -472,11 +458,6 @@ public partial class CGameCtnChallenge :
     public float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
 
     private string? comments;
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public string? Comments { get => comments; set => comments = value; }
 
     private Vec3 thumbnailPitchYawRoll;
     [AppliedWithChunk<Chunk0304302D>]

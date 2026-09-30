@@ -37,6 +37,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03043000;
 
+    [SupportsFormatting]
+    [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
+    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<Chunk03043012>]
+    [AppliedWithChunk<Chunk03043013>]
+    public string MapName
+    {
+        get => this.mapName;
+        set => this.mapName = value;
+    }
+
     private bool needUnlock;
     [AppliedWithChunk<HeaderChunk03043002>]
     [AppliedWithChunk<Chunk0304300F>]
@@ -183,6 +194,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.authorVersion = value;
     }
 
+    private string? authorNickname;
+    [SupportsFormatting]
+    [AppliedWithChunk<HeaderChunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
+    public string? AuthorNickname
+    {
+        get => this.authorNickname;
+        set => this.authorNickname = value;
+    }
+
     private string? authorZone;
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk03043042>]
@@ -302,6 +323,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         get => this.thumbnailRotationMatrix;
         set => this.thumbnailRotationMatrix = value;
+    }
+
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public string? Comments
+    {
+        get => this.comments;
+        set => this.comments = value;
     }
 
     private uint crc32;
@@ -478,6 +509,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnChallenge)clone).mapName = context.Clone(this.mapName)!;
         ((CGameCtnChallenge)clone).needUnlock = context.Clone(this.needUnlock)!;
         ((CGameCtnChallenge)clone).cost = context.Clone(this.cost)!;
         ((CGameCtnChallenge)clone).isLapRace = context.Clone(this.isLapRace)!;
@@ -495,6 +527,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).titleId = context.Clone(this.titleId)!;
         ((CGameCtnChallenge)clone).xml = context.Clone(this.xml)!;
         ((CGameCtnChallenge)clone).authorVersion = context.Clone(this.authorVersion)!;
+        ((CGameCtnChallenge)clone).authorNickname = context.Clone(this.authorNickname)!;
         ((CGameCtnChallenge)clone).authorZone = context.Clone(this.authorZone)!;
         ((CGameCtnChallenge)clone).authorExtraInfo = context.Clone(this.authorExtraInfo)!;
         ((CGameCtnChallenge)clone).playerModel = context.Clone(this.playerModel)!;
@@ -509,6 +542,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).customMusicPackDesc = context.Clone(this.customMusicPackDesc)!;
         ((CGameCtnChallenge)clone).clipGlobal = context.Clone(this.clipGlobal)!;
         ((CGameCtnChallenge)clone).thumbnailRotationMatrix = context.Clone(this.thumbnailRotationMatrix)!;
+        ((CGameCtnChallenge)clone).comments = context.Clone(this.comments)!;
         ((CGameCtnChallenge)clone).crc32 = context.Clone(this.crc32)!;
         ((CGameCtnChallenge)clone).challengeDecals = context.CloneArray(this.challengeDecals)!;
         ((CGameCtnChallenge)clone).challengeCardEventIds = context.CloneArray(this.challengeCardEventIds)!;
@@ -539,9 +573,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).mapType = context.Clone(this.mapType)!;
         ((CGameCtnChallenge)clone).mapStyle = context.Clone(this.mapStyle)!;
         ((CGameCtnChallenge)clone).mapInfo = context.Clone(this.mapInfo)!;
-        ((CGameCtnChallenge)clone).mapName = context.Clone(this.mapName)!;
         ((CGameCtnChallenge)clone).size = context.Clone(this.size)!;
-        ((CGameCtnChallenge)clone).authorNickname = context.Clone(this.authorNickname)!;
         ((CGameCtnChallenge)clone).thumbnail = context.CloneArray(this.thumbnail)!;
         ((CGameCtnChallenge)clone).decoration = context.Clone(this.decoration)!;
         ((CGameCtnChallenge)clone).blocks = context.CloneList(this.blocks)!;
@@ -559,7 +591,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).thumbnailFov = context.Clone(this.thumbnailFov)!;
         ((CGameCtnChallenge)clone).thumbnailNearClipPlane = context.Clone(this.thumbnailNearClipPlane)!;
         ((CGameCtnChallenge)clone).thumbnailFarClipPlane = context.Clone(this.thumbnailFarClipPlane)!;
-        ((CGameCtnChallenge)clone).comments = context.Clone(this.comments)!;
         ((CGameCtnChallenge)clone).thumbnailPitchYawRoll = context.Clone(this.thumbnailPitchYawRoll)!;
         ((CGameCtnChallenge)clone).tempOldTMUnlimiterClipData = context.CloneDictionary(this.tempOldTMUnlimiterClipData)!;
         ((CGameCtnChallenge)clone).LightmapVersion = context.Clone(this.LightmapVersion)!;

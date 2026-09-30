@@ -79,6 +79,32 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task AddsFormattingAttributeFromAnyFieldOccurrence()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              string DisplayName
+              string PlainName
+            0x002
+              string DisplayName (formatted)
+            archive Metadata
+              string Caption (formatted)
+            """));
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var properties = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText is "DisplayName" or "PlainName" or "Caption")
+            .ToDictionary(x => x.Identifier.ValueText);
+        await Assert.That(properties["DisplayName"].AttributeLists.SelectMany(x => x.Attributes)
+            .Count(x => x.Name.ToString() == "SupportsFormatting")).IsEqualTo(1);
+        await Assert.That(properties["Caption"].AttributeLists.SelectMany(x => x.Attributes)
+            .Count(x => x.Name.ToString() == "SupportsFormatting")).IsEqualTo(1);
+        await Assert.That(properties["PlainName"].AttributeLists.SelectMany(x => x.Attributes)
+            .Any(x => x.Name.ToString() == "SupportsFormatting")).IsFalse();
+    }
+
+    [Test]
     public async Task AnnotatesChunkPropertiesWithTheirSerializationVersionRanges()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """

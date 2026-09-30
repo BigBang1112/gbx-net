@@ -4,7 +4,7 @@ CGameNetOnlineMessage 0x03028000
   string ReceiverLogin
   string SenderLogin
   string Subject
-  string Message
+  string Message (formatted)
   int Donation
   bool
   systemtime? Date

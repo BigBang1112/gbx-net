@@ -4,7 +4,7 @@ CGameCtnChallenge 0x03043000 // A map.
   versionb
   v2-
     ident MapInfo = empty
-    string MapName = empty
+    string MapName = empty (formatted)
   bool NeedUnlock
   v1+
     timeint? BronzeTime
@@ -34,7 +34,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x003 (header, struct: SHeaderCommon) [TM10.v0, TMPU.v1, TMS.v1, TMO.v1, TMSX.v4, TMNESWC.v4, TMU.v5, TMF.v5, MP3.v11, TMT.v11, MP4.v11, TM2020.v11] // common
   versionb
   ident MapInfo
-  string MapName
+  string MapName (formatted)
   byte<MapKind> KindInHeader
   v1+
     uint
@@ -71,7 +71,7 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   int AuthorVersion
   string AuthorLogin
-  string AuthorNickname
+  string AuthorNickname (formatted)
   string AuthorZone
   string AuthorExtraInfo
 
@@ -91,11 +91,11 @@ CGameCtnChallenge 0x03043000 // A map.
   int<MapKind> Kind
 
 0x012 [TM10] // TM1.0 map name
-  string MapName
+  string MapName (formatted)
 
 0x013 [TMPU] // legacy block data
   ident MapInfo = empty
-  string MapName
+  string MapName (formatted)
   ident Decoration
   int3 Size
   bool
@@ -179,7 +179,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x028 (base: 0x027) [TMU, TMF, MP3, TMT, MP4, TM2020] // old realtime thumbnail + comments
   base
-  string Comments
+  string Comments (formatted)
 
 0x029 (skippable) [TMF, MP3, TMT, MP4, TM2020] // password
   checksum128 HashedPassword
@@ -196,7 +196,7 @@ CGameCtnChallenge 0x03043000 // A map.
   float // depth? 0 or 0.02
   float ThumbnailNearClipPlane = -1
   float ThumbnailFarClipPlane = -1
-  string Comments
+  string Comments (formatted)
 
 0x034 (skippable) [MP3, TMT, MP4, TM2020] // ChallengeDecals
   data ChallengeDecals
@@ -224,7 +224,7 @@ CGameCtnChallenge 0x03043000 // A map.
   version = 1
   int AuthorVersion
   string AuthorLogin
-  string AuthorNickname
+  string AuthorNickname (formatted)
   string AuthorZone
   string AuthorExtraInfo
 

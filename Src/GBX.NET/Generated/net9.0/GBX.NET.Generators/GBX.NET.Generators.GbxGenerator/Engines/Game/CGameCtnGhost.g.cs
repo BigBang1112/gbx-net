@@ -95,6 +95,20 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.badge = value;
     }
 
+    private string? ghostNickname;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092003>]
+    [AppliedWithChunk<Chunk03092006>]
+    [AppliedWithChunk<Chunk0309200D>]
+    [AppliedWithChunk<Chunk03092015>]
+    [AppliedWithChunk<Chunk03092017>]
+    public string? GhostNickname
+    {
+        get => this.ghostNickname;
+        set => this.ghostNickname = value;
+    }
+
     private string? ghostAvatarName;
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092017>]
@@ -134,6 +148,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     {
         get => this.ghostZone;
         set => this.ghostZone = value;
+    }
+
+    private string? ghostClubTag;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk03092000>(8)]
+    public string? GhostClubTag
+    {
+        get => this.ghostClubTag;
+        set => this.ghostClubTag = value;
     }
 
     private string? skinFile;
@@ -284,11 +307,13 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).skinPackDescs = context.CloneList(this.skinPackDescs)!;
         ((CGameCtnGhost)clone).hasBadges = context.Clone(this.hasBadges)!;
         ((CGameCtnGhost)clone).badge = context.Clone(this.badge)!;
+        ((CGameCtnGhost)clone).ghostNickname = context.Clone(this.ghostNickname)!;
         ((CGameCtnGhost)clone).ghostAvatarName = context.Clone(this.ghostAvatarName)!;
         ((CGameCtnGhost)clone).recordingContext = context.Clone(this.recordingContext)!;
         ((CGameCtnGhost)clone).recordData = context.Clone(this.recordData)!;
         ((CGameCtnGhost)clone).ghostTrigram = context.Clone(this.ghostTrigram)!;
         ((CGameCtnGhost)clone).ghostZone = context.Clone(this.ghostZone)!;
+        ((CGameCtnGhost)clone).ghostClubTag = context.Clone(this.ghostClubTag)!;
         ((CGameCtnGhost)clone).skinFile = context.Clone(this.skinFile)!;
         ((CGameCtnGhost)clone).checkpoints = context.CloneArray(this.checkpoints)!;
         ((CGameCtnGhost)clone).raceTime = context.Clone(this.raceTime)!;
@@ -317,8 +342,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
         ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
         ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
-        ((CGameCtnGhost)clone).GhostNickname = context.Clone(this.GhostNickname)!;
-        ((CGameCtnGhost)clone).GhostClubTag = context.Clone(this.GhostClubTag)!;
         ((CGameCtnGhost)clone).GhostUid = context.Clone(this.GhostUid)!;
     }
 
@@ -387,7 +410,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
                 rw.String(ref U01);
             }
 
-            n.GhostNickname = rw.String(n.GhostNickname);
+            rw.String(ref n.ghostNickname);
             rw.String(ref n.ghostAvatarName);
 
             if (Version >= 2)
@@ -413,7 +436,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                                 if (Version >= 8)
                                 {
-                                    n.GhostClubTag = rw.String(n.GhostClubTag);
+                                    rw.String(ref n.ghostClubTag);
                                 }
                             }
                         }
@@ -439,7 +462,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         {
             rw.Ident(ref n.playerModel);
             rw.String(ref n.skinFile);
-            n.GhostNickname = rw.String(n.GhostNickname);
+            rw.String(ref n.ghostNickname);
         }
     }
 
@@ -504,7 +527,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Ident(ref n.playerModel);
             rw.String(ref n.skinFile);
             rw.Int32(ref U01);
-            n.GhostNickname = rw.String(n.GhostNickname);
+            rw.String(ref n.ghostNickname);
         }
     }
 
@@ -659,7 +682,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Int32(ref U02);
             rw.Int32(ref U03);
             rw.Int32(ref U04);
-            n.GhostNickname = rw.String(n.GhostNickname);
+            rw.String(ref n.ghostNickname);
         }
     }
 
@@ -824,7 +847,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            n.GhostNickname = rw.Id(n.GhostNickname);
+            rw.Id(ref n.ghostNickname);
         }
     }
 
@@ -846,7 +869,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.ListPackDesc(ref n.skinPackDescs!);
-            n.GhostNickname = rw.String(n.GhostNickname);
+            rw.String(ref n.ghostNickname);
             rw.String(ref n.ghostAvatarName);
         }
     }

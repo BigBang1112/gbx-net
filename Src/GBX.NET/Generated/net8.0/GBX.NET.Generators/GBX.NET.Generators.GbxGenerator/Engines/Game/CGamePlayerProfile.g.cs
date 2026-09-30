@@ -141,6 +141,15 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.profileName = value;
     }
 
+    private string? nickName;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk0308C05B>]
+    public string? NickName
+    {
+        get => this.nickName;
+        set => this.nickName = value;
+    }
+
     private CGameCtnMediaShootParams? shootParams;
     [AppliedWithChunk<Chunk0308C05E>]
     public CGameCtnMediaShootParams? ShootParams
@@ -237,6 +246,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).askOpponents = context.Clone(this.askOpponents)!;
         ((CGamePlayerProfile)clone).lockHigherDifficulties = context.Clone(this.lockHigherDifficulties)!;
         ((CGamePlayerProfile)clone).profileName = context.Clone(this.profileName)!;
+        ((CGamePlayerProfile)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfile)clone).shootParams = context.Clone(this.shootParams)!;
         ((CGamePlayerProfile)clone).bindingsForCompatConfig = context.Clone(this.bindingsForCompatConfig)!;
         ((CGamePlayerProfile)clone).enableChat = context.Clone(this.enableChat)!;
@@ -248,7 +258,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).challengeOpponents = context.CloneArray(this.challengeOpponents)!;
         ((CGamePlayerProfile)clone).campaignUnlocks = context.CloneArray(this.campaignUnlocks)!;
         ((CGamePlayerProfile)clone).description = context.Clone(this.description)!;
-        ((CGamePlayerProfile)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfile)clone).cryptedPassword = context.Clone(this.cryptedPassword)!;
         ((CGamePlayerProfile)clone).loginValidated = context.Clone(this.loginValidated)!;
         ((CGamePlayerProfile)clone).rememberOnlinePassword = context.Clone(this.rememberOnlinePassword)!;

@@ -13,7 +13,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     SBadge Badge
   if AppearanceVersion >= 1
     string
-  string GhostNickname
+  string GhostNickname (formatted)
   string GhostAvatarName
   v2+
     string RecordingContext
@@ -27,12 +27,12 @@ CGameCtnGhost 0x03092000 // A ghost.
           v7+
             string GhostZone
             v8+
-              string GhostClubTag
+              string GhostClubTag (formatted)
 
 0x003 [TM10, TMPU]
   ident PlayerModel
   string SkinFile
-  string GhostNickname
+  string GhostNickname (formatted)
 
 0x004 (skippable) [TMPU] // checkpoints TMPU
   Checkpoint[] Checkpoints
@@ -44,7 +44,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   ident PlayerModel
   string SkinFile
   int
-  string GhostNickname
+  string GhostNickname (formatted)
 
 0x007 // old light trail color
   vec3 LightTrailColor
@@ -71,7 +71,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   int
   int
   int
-  string GhostNickname
+  string GhostNickname (formatted)
 
 0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
 
@@ -95,11 +95,11 @@ CGameCtnGhost 0x03092000 // A ghost.
   int? GhostVersion
 
 0x015 [TMF] // ghost nickname
-  id GhostNickname
+  id GhostNickname (formatted)
 
 0x017 (skippable) [TMF, MP3] // ghost metadata
   packdesc[] SkinPackDescs (list)
-  string GhostNickname
+  string GhostNickname (formatted)
   string GhostAvatarName
 
 0x018 [TMF, MP3] // PlayerModel TMF-MP3

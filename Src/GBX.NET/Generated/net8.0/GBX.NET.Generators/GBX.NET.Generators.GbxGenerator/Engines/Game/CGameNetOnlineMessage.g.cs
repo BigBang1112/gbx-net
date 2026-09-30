@@ -58,6 +58,15 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
         set => this.subject = value;
     }
 
+    private string? message;
+    [SupportsFormatting]
+    [AppliedWithChunk<Chunk03028000>]
+    public string? Message
+    {
+        get => this.message;
+        set => this.message = value;
+    }
+
     private int donation;
     [AppliedWithChunk<Chunk03028000>]
     public int Donation
@@ -80,9 +89,9 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
         ((CGameNetOnlineMessage)clone).receiverLogin = context.Clone(this.receiverLogin)!;
         ((CGameNetOnlineMessage)clone).senderLogin = context.Clone(this.senderLogin)!;
         ((CGameNetOnlineMessage)clone).subject = context.Clone(this.subject)!;
+        ((CGameNetOnlineMessage)clone).message = context.Clone(this.message)!;
         ((CGameNetOnlineMessage)clone).donation = context.Clone(this.donation)!;
         ((CGameNetOnlineMessage)clone).date = context.Clone(this.date)!;
-        ((CGameNetOnlineMessage)clone).message = context.Clone(this.message)!;
     }
 
     public CGameNetOnlineMessage()

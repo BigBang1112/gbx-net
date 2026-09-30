@@ -329,6 +329,9 @@ internal static class EngineWriter
 
                 Documentation(code, field.Declaration.TrailingComment?.Text);
 
+                if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "formatted")))
+                    code.Line("[SupportsFormatting]");
+
                 if (ReferenceEquals(scope, layout.Scope))
                 {
                     foreach (var applied in layout.Chunks)

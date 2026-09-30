@@ -8,7 +8,7 @@ archive
     filetime? U04
   if Version >= 1
     string Login
-    string NickName
+    string NickName (formatted)
     int U07
     int U08
     int SkillsRank

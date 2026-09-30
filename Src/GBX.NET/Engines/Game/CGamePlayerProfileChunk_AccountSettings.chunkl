@@ -2,8 +2,8 @@ CGamePlayerProfileChunk_AccountSettings 0x0312C000
 - inherits: CGamePlayerProfileChunk
 
 archive
-  string Description
-  string NickName
+  string Description (formatted)
+  string NickName (formatted)
   byte Flags
   if (Flags & 1) != 0
     string OnlineLogin
@@ -45,7 +45,7 @@ archive
 0x000 (skippable)
   version
   int EulaVersion
-  string NickName
+  string NickName (formatted)
   byte Flags
   if LoginValidated
     string OnlineLogin
@@ -69,7 +69,7 @@ archive
 
 0x001 (skippable)
   version
-  string Description
+  string Description (formatted)
   string AvatarName
   SPlayerTagsConfig PlayerTagsConfig
   v2+
