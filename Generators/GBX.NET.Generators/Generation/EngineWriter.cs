@@ -299,6 +299,8 @@ internal static class EngineWriter
             var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration) + (nullable ? "?" : "");
             var defaultDeclaration = field.Occurrences.FirstOrDefault(static x => x.DefaultValue is not null);
             var initial = Default(type, defaultDeclaration);
+            var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
+            var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
 
             if (!chunk)
                 code.BlankLine();
@@ -312,19 +314,26 @@ internal static class EngineWriter
 
             if (chunk)
             {
-                if (!SyntaxOverlap.Has(scope.Existing, field.Name))
+                if (partialProperty is not null)
+                {
+                    PartialProperty(code, partialProperty);
+                }
+                else if (!hasExisting)
                     code.Line("public " + type + " " + property + (initial is null ? "" : " = " + initial) + ";");
             }
-            else if (!SyntaxOverlap.Has(scope.Existing, field.Name))
+            else if (!hasExisting || partialProperty is not null)
             {
-                var existingBacking = SyntaxOverlap.MemberType(scope.Existing, backing.TrimStart('@'));
-                if (existingBacking is not null)
+                if (partialProperty is null)
                 {
-                    type = existingBacking;
-                }
-                else
-                {
-                    code.Line("private " + type + " " + backing + (initial is null ? "" : " = " + initial) + ";");
+                    var existingBacking = SyntaxOverlap.MemberType(scope.Existing, backing.TrimStart('@'));
+                    if (existingBacking is not null)
+                    {
+                        type = existingBacking;
+                    }
+                    else
+                    {
+                        code.Line("private " + type + " " + backing + (initial is null ? "" : " = " + initial) + ";");
+                    }
                 }
 
                 Documentation(code, field.Declaration.TrailingComment?.Text);
@@ -345,13 +354,20 @@ internal static class EngineWriter
                     }
                 }
 
-                var privateSet = SyntaxOverlap.Option(scope.Existing, "PrivateSet") == "true" ? "private " : "";
-                var external = LayoutModel.Has(field.Declaration.Attributes, "external") && field.Declaration.Type.ArrayDimensions == 0;
+                if (partialProperty is not null)
+                {
+                    PartialProperty(code, partialProperty);
+                }
+                else
+                {
+                    var privateSet = SyntaxOverlap.Option(scope.Existing, "PrivateSet") == "true" ? "private " : "";
+                    var external = LayoutModel.Has(field.Declaration.Attributes, "external") && field.Declaration.Type.ArrayDimensions == 0;
 
-                code.Open($"public {type} {property}");
-                code.Line($"get => {(external ? "this." + backing + "File?.GetNode(ref this." + backing + ") ?? " : "")}this.{backing};");
-                code.Line($"{privateSet}set => this.{backing} = value;");
-                code.Close();
+                    code.Open($"public {type} {property}");
+                    code.Line($"get => {(external ? "this." + backing + "File?.GetNode(ref this." + backing + ") ?? " : "")}this.{backing};");
+                    code.Line($"{privateSet}set => this.{backing} = value;");
+                    code.Close();
+                }
             }
 
             if (LayoutModel.Has(field.Declaration.Attributes, "external") && field.Declaration.Type.ArrayDimensions == 0)
@@ -379,6 +395,15 @@ internal static class EngineWriter
                 }
             }
         }
+    }
+
+    private static void PartialProperty(CodeWriter code, PropertyDeclarationSyntax property)
+    {
+        var modifiers = string.Join(" ", property.Modifiers.Select(static x => x.Text));
+        var accessors = string.Join(" ", property.AccessorList!.Accessors.Select(static x =>
+            (x.Modifiers.Count == 0 ? "" : string.Join(" ", x.Modifiers.Select(static y => y.Text)) + " ") + x.Keyword.Text + ";"));
+
+        code.Line($"{modifiers} {property.Type} {property.Identifier.Text} {{ {accessors} }}");
     }
 
     private static string? Default(string type, FieldDeclaration? field)

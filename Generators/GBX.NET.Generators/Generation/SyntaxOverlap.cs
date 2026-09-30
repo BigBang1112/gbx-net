@@ -98,4 +98,14 @@ internal static class SyntaxOverlap
 
         return type?.Fields.FirstOrDefault(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == name))?.Declaration.Type.ToString();
     }
+
+    public static PropertyDeclarationSyntax? PartialPropertyImplementation(ExistingType? type, string name)
+    {
+        var properties = type?.Properties.Where(x => x.ExplicitInterfaceSpecifier is null && x.Identifier.ValueText == name).ToArray();
+
+        return properties?.Length == 1 && properties[0].Modifiers.Any(SyntaxKind.PartialKeyword) &&
+            properties[0].AccessorList?.Accessors.All(x => x.Body is not null || x.ExpressionBody is not null) == true
+            ? properties[0]
+            : null;
+    }
 }

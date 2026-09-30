@@ -4,6 +4,25 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameCtnCollector
 {
+    private Ident collectorIdent = Ident.Empty;
+    private string? collectorName;
+
+    public partial Ident Ident
+    {
+        get => string.IsNullOrEmpty(collectorIdent.Id) && !string.IsNullOrEmpty(collectorName)
+            ? collectorIdent with { Id = collectorName! }
+            : collectorIdent;
+        set => collectorIdent = value;
+    }
+
+    public virtual partial string? Name
+    {
+        get => !string.IsNullOrEmpty(collectorName) || string.IsNullOrEmpty(collectorIdent.Id)
+            ? collectorName
+            : collectorIdent.Id;
+        set => collectorName = value;
+    }
+
     private int catalogPosition;
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 

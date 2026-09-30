@@ -132,6 +132,7 @@ public partial interface IGbxReader : IDisposable
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
+    External<T>[][] ReadJaggedArrayExternalNodeRef<T>() where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
@@ -1692,6 +1693,21 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadArrayExternalNodeRef<T>();
+    }
+
+    public External<T>[][] ReadJaggedArrayExternalNodeRef<T>() where T : CMwNod
+    {
+        var length = ReadInt32();
+        EnsureValidLength(length);
+
+        var array = new External<T>[length][];
+
+        for (var i = 0; i < array.Length; i++)
+        {
+            array[i] = ReadArrayExternalNodeRef<T>();
+        }
+
+        return array;
     }
 
     public List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod

@@ -79,6 +79,37 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task GeneratesAttributesOnHandwrittenPartialProperties()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private int storedValue;
+                public virtual partial int Value
+                {
+                    get => storedValue;
+                    set => storedValue = value;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("[AppliedWithChunk<Chunk03043001>]");
+        await Assert.That(generated).Contains("public virtual partial int Value { get; set; }");
+        await Assert.That(generated).Contains("n.Value = rw.Int32(n.Value)");
+        await Assert.That(generated).DoesNotContain("private int value;");
+    }
+
+    [Test]
     public async Task AddsFormattingAttributeFromAnyFieldOccurrence()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """

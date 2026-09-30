@@ -134,6 +134,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod;
     void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
     void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod;
+    void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value) where T : CMwNod;
     void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod;
     void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
     void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod;
@@ -1835,6 +1836,21 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         WriteDeprecVersion();
         WriteArrayExternalNodeRef(value);
+    }
+
+    public void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value) where T : CMwNod
+    {
+        Write(value?.Length ?? 0);
+
+        if (value is null)
+        {
+            return;
+        }
+
+        foreach (var array in value)
+        {
+            WriteArrayExternalNodeRef(array);
+        }
     }
 
     public void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod

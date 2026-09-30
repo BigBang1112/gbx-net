@@ -34,13 +34,77 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x0304E000;
 
+    /// <summary>
+    /// ChunkCrypted_Base stores only the Id part of Ident.
+    /// </summary>
+    [AppliedWithChunk<Chunk0304E005>]
+    public override partial string? Name { get; set; }
+
     private bool isPillar;
+    [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E009>]
     [AppliedWithChunk<Chunk0304E02F>]
     public bool IsPillar
     {
         get => this.isPillar;
         set => this.isPillar = value;
+    }
+
+    private ESelection selection;
+    [AppliedWithChunk<Chunk0304E005>]
+    public ESelection Selection
+    {
+        get => this.selection;
+        set => this.selection = value;
+    }
+
+    private CGameCtnBlockInfoClassic? pillar;
+    [AppliedWithChunk<Chunk0304E005>]
+    public CGameCtnBlockInfoClassic? Pillar
+    {
+        get => this.pillarFile?.GetNode(ref this.pillar) ?? this.pillar;
+        set => this.pillar = value;
+    }
+    private Components.GbxRefTableFile? pillarFile;
+
+    public Components.GbxRefTableFile? PillarFile
+    {
+        get => pillarFile;
+        set => pillarFile = value;
+    }
+
+    public CGameCtnBlockInfoClassic? GetPillar(GbxReadSettings settings = default, bool exceptions = false) => pillarFile?.GetNode(ref pillar, settings, exceptions) ?? pillar;
+
+    private CGameCtnBlockUnitInfo?[]? groundBlockUnitInfos;
+    [AppliedWithChunk<Chunk0304E005>]
+    public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos
+    {
+        get => this.groundBlockUnitInfos;
+        set => this.groundBlockUnitInfos = value;
+    }
+
+    private CGameCtnBlockUnitInfo?[]? airBlockUnitInfos;
+    [AppliedWithChunk<Chunk0304E005>]
+    public CGameCtnBlockUnitInfo?[]? AirBlockUnitInfos
+    {
+        get => this.airBlockUnitInfos;
+        set => this.airBlockUnitInfos = value;
+    }
+
+    private External<CSceneMobil>[][]? groundMobils;
+    [AppliedWithChunk<Chunk0304E005>]
+    public External<CSceneMobil>[][]? GroundMobils
+    {
+        get => this.groundMobils;
+        set => this.groundMobils = value;
+    }
+
+    private External<CSceneMobil>[][]? airMobils;
+    [AppliedWithChunk<Chunk0304E005>]
+    public External<CSceneMobil>[][]? AirMobils
+    {
+        get => this.airMobils;
+        set => this.airMobils = value;
     }
 
     private CSceneMobil? groundHelperMobil;
@@ -329,6 +393,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnBlockInfo)clone).isPillar = context.Clone(this.isPillar)!;
+        ((CGameCtnBlockInfo)clone).selection = context.Clone(this.selection)!;
+        ((CGameCtnBlockInfo)clone).pillar = context.Clone(this.pillar)!;
+        ((CGameCtnBlockInfo)clone).groundBlockUnitInfos = context.CloneArray(this.groundBlockUnitInfos)!;
+        ((CGameCtnBlockInfo)clone).airBlockUnitInfos = context.CloneArray(this.airBlockUnitInfos)!;
+        ((CGameCtnBlockInfo)clone).groundMobils = context.CloneArray(this.groundMobils)!;
+        ((CGameCtnBlockInfo)clone).airMobils = context.CloneArray(this.airMobils)!;
         ((CGameCtnBlockInfo)clone).groundHelperMobil = context.Clone(this.groundHelperMobil)!;
         ((CGameCtnBlockInfo)clone).airHelperMobil = context.Clone(this.airHelperMobil)!;
         ((CGameCtnBlockInfo)clone).constructionModeHelperMobil = context.Clone(this.constructionModeHelperMobil)!;
@@ -357,13 +427,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         ((CGameCtnBlockInfo)clone).pillarShapeMultiDir = context.Clone(this.pillarShapeMultiDir)!;
         ((CGameCtnBlockInfo)clone).materialModifier = context.Clone(this.materialModifier)!;
         ((CGameCtnBlockInfo)clone).materialModifier2 = context.Clone(this.materialModifier2)!;
-        ((CGameCtnBlockInfo)clone).pillar = context.Clone(this.pillar)!;
-        ((CGameCtnBlockInfo)clone).pillarFile = context.Clone(this.pillarFile)!;
-        ((CGameCtnBlockInfo)clone).groundBlockUnitInfos = context.CloneArray(this.groundBlockUnitInfos)!;
-        ((CGameCtnBlockInfo)clone).airBlockUnitInfos = context.CloneArray(this.airBlockUnitInfos)!;
-        ((CGameCtnBlockInfo)clone).groundMobils = context.CloneArray(this.groundMobils)!;
-        ((CGameCtnBlockInfo)clone).airMobils = context.CloneArray(this.airMobils)!;
-        ((CGameCtnBlockInfo)clone).Selection = context.Clone(this.Selection)!;
     }
 
     public CGameCtnBlockInfo()
@@ -376,6 +439,14 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         public override uint Id => 0x0304E005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF;
+        public int U02;
+        public int U03;
+        public int U04;
+        public int U06;
+        public byte U07;
+        public int U08;
+        public short U09;
+        public short U10;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -388,6 +459,26 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             ((Chunk0304E005)clone).U08 = context.Clone(this.U08)!;
             ((Chunk0304E005)clone).U09 = context.Clone(this.U09)!;
             ((Chunk0304E005)clone).U10 = context.Clone(this.U10)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            n.Name = rw.Id(n.Name);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+            rw.Boolean(ref n.isPillar);
+            rw.EnumInt32<ESelection>(ref n.selection);
+            rw.Int32(ref U06);
+            rw.NodeRef<CGameCtnBlockInfoClassic>(ref n.pillar, ref n.pillarFile);
+            rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos!);
+            rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos!);
+            rw.JaggedArrayExternalNodeRef<CSceneMobil>(ref n.groundMobils!);
+            rw.JaggedArrayExternalNodeRef<CSceneMobil>(ref n.airMobils!);
+            rw.Byte(ref U07);
+            rw.Int32(ref U08);
+            rw.Int16(ref U09);
+            rw.Int16(ref U10);
         }
     }
 

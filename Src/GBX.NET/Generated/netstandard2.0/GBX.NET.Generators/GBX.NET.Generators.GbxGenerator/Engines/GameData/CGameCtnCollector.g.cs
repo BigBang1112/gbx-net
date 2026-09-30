@@ -37,15 +37,10 @@ public partial class CGameCtnCollector : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E001000;
 
-    private Ident ident = Ident.Empty;
     [AppliedWithChunk<HeaderChunk2E001003>]
     [AppliedWithChunk<Chunk2E001002>]
     [AppliedWithChunk<Chunk2E00100B>]
-    public Ident Ident
-    {
-        get => this.ident;
-        set => this.ident = value;
-    }
+    public partial Ident Ident { get; set; }
 
     private string? pageName;
     [AppliedWithChunk<HeaderChunk2E001003>]
@@ -80,14 +75,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.copperPrice = value;
     }
 
-    private string? name;
     [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
-    public string? Name
-    {
-        get => this.name;
-        set => this.name = value;
-    }
+    public virtual partial string? Name { get; set; }
 
     private EProdState prodState;
     [AppliedWithChunk<HeaderChunk2E001003>(8)]
@@ -199,12 +189,10 @@ public partial class CGameCtnCollector : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnCollector)clone).ident = context.Clone(this.ident)!;
         ((CGameCtnCollector)clone).pageName = context.Clone(this.pageName)!;
         ((CGameCtnCollector)clone).parentCollectorId = context.Clone(this.parentCollectorId)!;
         ((CGameCtnCollector)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnCollector)clone).copperPrice = context.Clone(this.copperPrice)!;
-        ((CGameCtnCollector)clone).name = context.Clone(this.name)!;
         ((CGameCtnCollector)clone).prodState = context.Clone(this.prodState)!;
         ((CGameCtnCollector)clone).lightmapComputeTime = context.Clone(this.lightmapComputeTime)!;
         ((CGameCtnCollector)clone).defaultSkinName = context.Clone(this.defaultSkinName)!;
@@ -217,6 +205,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).defaultSkin = context.Clone(this.defaultSkin)!;
         ((CGameCtnCollector)clone).skinDirectory = context.Clone(this.skinDirectory)!;
         ((CGameCtnCollector)clone).isAdvanced = context.Clone(this.isAdvanced)!;
+        ((CGameCtnCollector)clone).collectorIdent = context.Clone(this.collectorIdent)!;
+        ((CGameCtnCollector)clone).collectorName = context.Clone(this.collectorName)!;
         ((CGameCtnCollector)clone).catalogPosition = context.Clone(this.catalogPosition)!;
         ((CGameCtnCollector)clone).nbAvailableMin = context.Clone(this.nbAvailableMin)!;
         ((CGameCtnCollector)clone).nbAvailableMax = context.Clone(this.nbAvailableMax)!;
@@ -251,7 +241,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            n.Ident = rw.Ident(n.Ident);
             rw.VersionInt32(this);
             rw.String(ref n.pageName);
 
@@ -279,7 +269,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
                 if (Version >= 7)
                 {
-                    rw.String(ref n.name);
+                    n.Name = rw.String(n.Name);
 
                     if (Version >= 8)
                     {
@@ -367,7 +357,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            n.Ident = rw.Ident(n.Ident);
         }
     }
 
@@ -480,7 +470,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            n.Ident = rw.Ident(n.Ident);
         }
     }
 
@@ -501,7 +491,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.String(ref n.name);
+            n.Name = rw.String(n.Name);
         }
     }
 

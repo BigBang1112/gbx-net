@@ -559,6 +559,10 @@ partial interface IGbxReaderWriter
     void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+
+    [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
     void ListExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
@@ -2209,6 +2213,16 @@ partial class GbxReaderWriter
     }
 
     public void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ArrayExternalNodeRef_deprec(value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayExternalNodeRef<T>();
+        Writer?.WriteJaggedArrayExternalNodeRef(value);
+        return value;
+    }
+
+    public void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = JaggedArrayExternalNodeRef(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod

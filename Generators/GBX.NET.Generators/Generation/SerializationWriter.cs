@@ -350,6 +350,11 @@ internal sealed class SerializationWriter
             return "Data";
         }
 
+        if (field.Type.ArrayDimensions == 2 && LayoutModel.Has(field.Attributes, "external") && !WireTypes.Primitive(field.Type.Name))
+        {
+            return "JaggedArrayExternalNodeRef<" + field.Type.Name + ">";
+        }
+
         var collection = field.Type.ArrayDimensions > 0;
         var list = LayoutModel.Has(field.Attributes, "list");
         var deprec = LayoutModel.Has(field.Attributes, "deprec") ? "_deprec" : "";

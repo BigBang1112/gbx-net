@@ -3,6 +3,22 @@ CGameCtnBlockInfo 0x0304E000
 - abstract
 
 0x005 [TM10, TMSX, TMF]
+  id Name
+  int U02 // always 0?
+  int U03 // always 0?
+  int U04 // always 0?
+  bool IsPillar
+  int<ESelection> Selection
+  int U06 // always 0?
+  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
+  CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
+  CSceneMobil[][] GroundMobils (external)
+  CSceneMobil[][] AirMobils (external)
+  byte U07 // always 0?
+  int U08 // always 0?
+  short U09 // always 0?
+  short U10 // always 0?
 
 0x009 [TM10, TMSX, TMF, MP3, TMT]
   bool IsPillar
