@@ -144,6 +144,25 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         set => this.officialRecordEnabled = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnCampaign)clone).challengeGroups = context.CloneList(this.challengeGroups)!;
+        ((CGameCtnCampaign)clone).iconId = context.Clone(this.iconId)!;
+        ((CGameCtnCampaign)clone).name = context.Clone(this.name)!;
+        ((CGameCtnCampaign)clone).@type = context.Clone(this.@type)!;
+        ((CGameCtnCampaign)clone).isInternal = context.Clone(this.isInternal)!;
+        ((CGameCtnCampaign)clone).campaignId = context.Clone(this.campaignId)!;
+        ((CGameCtnCampaign)clone).index = context.Clone(this.index)!;
+        ((CGameCtnCampaign)clone).unlockedByCampaign = context.Clone(this.unlockedByCampaign)!;
+        ((CGameCtnCampaign)clone).unlockType = context.Clone(this.unlockType)!;
+        ((CGameCtnCampaign)clone).requiredPlayersCount = context.Clone(this.requiredPlayersCount)!;
+        ((CGameCtnCampaign)clone).modeScriptName = context.Clone(this.modeScriptName)!;
+        ((CGameCtnCampaign)clone).scoreContext = context.Clone(this.scoreContext)!;
+        ((CGameCtnCampaign)clone).officialRecordEnabled = context.Clone(this.officialRecordEnabled)!;
+        ((CGameCtnCampaign)clone).CollectionId = context.Clone(this.CollectionId)!;
+    }
+
     public CGameCtnCampaign()
     {
     }
@@ -156,6 +175,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.ListNodeRef_deprec<CGameCtnChallengeGroup>(ref n.challengeGroups!);
@@ -167,6 +191,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090001;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -186,6 +216,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x03090002;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.Id(ref n.iconId);
@@ -204,6 +240,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x03090003;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090003)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
@@ -219,6 +261,13 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x03090004;
         public bool U01;
         public bool U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03090004)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -236,6 +285,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x03090005;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090005)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -250,6 +305,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.Id(ref n.campaignId);
@@ -261,6 +321,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090007;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090007)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -275,6 +341,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090008;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090008)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -291,6 +363,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x03090009;
         public byte U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090009)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.Byte(ref U01);
@@ -305,6 +383,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     public partial class Chunk0309000A : SkippableChunk<CGameCtnCampaign>
     {
         public override uint Id => 0x0309000A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -321,6 +404,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override uint Id => 0x0309000B;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0309000B)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.String(ref n.unlockedByCampaign);
@@ -336,6 +425,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x0309000C;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.Id(ref n.iconId);
@@ -349,6 +443,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     public partial class Chunk0309000D : Chunk<CGameCtnCampaign>
     {
         public override uint Id => 0x0309000D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -364,6 +463,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x0309000E;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.EnumInt32<ERequiredPlayersCount>(ref n.requiredPlayersCount);
@@ -378,6 +482,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x0309000F;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0309000F)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -395,6 +505,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090010;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090010)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
@@ -417,6 +533,18 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public string? U04;
         public bool? U05;
         public bool? U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03090012)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03090012)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03090012)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03090012)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03090012)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03090012)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03090012)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {

@@ -98,6 +98,19 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.maxAngle = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotionTrackMobilPitchin)clone).sea = context.Clone(this.sea)!;
+        ((CMotionTrackMobilPitchin)clone).flottaison = context.Clone(this.flottaison)!;
+        ((CMotionTrackMobilPitchin)clone).tangage = context.Clone(this.tangage)!;
+        ((CMotionTrackMobilPitchin)clone).roulis = context.Clone(this.roulis)!;
+        ((CMotionTrackMobilPitchin)clone).offsetHauteur = context.Clone(this.offsetHauteur)!;
+        ((CMotionTrackMobilPitchin)clone).pitchinMode = context.Clone(this.pitchinMode)!;
+        ((CMotionTrackMobilPitchin)clone).periodDelta = context.Clone(this.periodDelta)!;
+        ((CMotionTrackMobilPitchin)clone).maxAngle = context.Clone(this.maxAngle)!;
+    }
+
     public CMotionTrackMobilPitchin()
     {
     }
@@ -106,6 +119,11 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     public partial class Chunk08041002 : Chunk<CMotionTrackMobilPitchin>
     {
         public override uint Id => 0x08041002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
         {

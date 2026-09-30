@@ -66,6 +66,15 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.minDistToUpdate = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapRenderCubeMap)clone).cubeFaceCount = context.Clone(this.cubeFaceCount)!;
+        ((CPlugBitmapRenderCubeMap)clone).nearZ = context.Clone(this.nearZ)!;
+        ((CPlugBitmapRenderCubeMap)clone).farZ = context.Clone(this.farZ)!;
+        ((CPlugBitmapRenderCubeMap)clone).minDistToUpdate = context.Clone(this.minDistToUpdate)!;
+    }
+
     public CPlugBitmapRenderCubeMap()
     {
     }
@@ -75,6 +84,12 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     {
         public override uint Id => 0x09088001;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09088001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
         {
@@ -86,6 +101,11 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     public partial class Chunk09088002 : Chunk<CPlugBitmapRenderCubeMap>
     {
         public override uint Id => 0x09088002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
         {

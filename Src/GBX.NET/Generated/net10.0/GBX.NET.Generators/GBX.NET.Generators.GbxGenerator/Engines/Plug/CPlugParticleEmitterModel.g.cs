@@ -58,6 +58,14 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         set => this.shadowMapTexelSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugParticleEmitterModel)clone).particleEmitterSubModels = context.CloneArray(this.particleEmitterSubModels)!;
+        ((CPlugParticleEmitterModel)clone).isSplashMode = context.Clone(this.isSplashMode)!;
+        ((CPlugParticleEmitterModel)clone).shadowMapTexelSize = context.Clone(this.shadowMapTexelSize)!;
+    }
+
     public CPlugParticleEmitterModel()
     {
     }
@@ -66,6 +74,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     public partial class Chunk090B3000 : Chunk<CPlugParticleEmitterModel>
     {
         public override uint Id => 0x090B3000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
@@ -79,6 +92,12 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override uint Id => 0x090B3001;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B3001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
@@ -90,6 +109,12 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     {
         public override uint Id => 0x090B3002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B3002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
@@ -109,6 +134,13 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override uint Id => 0x090B3003;
         public int Version { get; set; }
         public string[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B3003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B3003)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
@@ -134,6 +166,24 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public bool U10;
         public int U11;
         public bool U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B3004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B3004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B3004)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk090B3004)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk090B3004)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B3004)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B3004)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B3004)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B3004)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B3004)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B3004)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B3004)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B3004)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {

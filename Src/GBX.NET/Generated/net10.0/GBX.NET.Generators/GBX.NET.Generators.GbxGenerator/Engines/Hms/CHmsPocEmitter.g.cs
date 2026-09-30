@@ -34,6 +34,11 @@ public partial class CHmsPocEmitter : CHmsPoc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0600B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CHmsPocEmitter()
     {
     }

@@ -42,6 +42,12 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
         set => this.keysSkel = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotionSkel)clone).keysSkel = context.Clone(this.keysSkel)!;
+    }
+
     public CMotionSkel()
     {
     }
@@ -50,6 +56,11 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
     public partial class Chunk08037000 : Chunk<CMotionSkel>
     {
         public override uint Id => 0x08037000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMotionSkel n, GbxReaderWriter rw)
         {

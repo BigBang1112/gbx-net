@@ -58,6 +58,14 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
         set => this.mergedZoneId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZoneFusionInfo)clone).compatibleZoneId = context.Clone(this.compatibleZoneId)!;
+        ((CGameCtnZoneFusionInfo)clone).fusionType = context.Clone(this.fusionType)!;
+        ((CGameCtnZoneFusionInfo)clone).mergedZoneId = context.Clone(this.mergedZoneId)!;
+    }
+
     public CGameCtnZoneFusionInfo()
     {
     }
@@ -66,6 +74,11 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     public partial class Chunk03151000 : Chunk<CGameCtnZoneFusionInfo>
     {
         public override uint Id => 0x03151000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFusionInfo n, GbxReaderWriter rw)
         {
@@ -79,6 +92,12 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     {
         public override uint Id => 0x03151001;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03151001)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnZoneFusionInfo n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CSceneToy : CSceneMobil, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A012000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CSceneToy()
     {
     }

@@ -74,6 +74,17 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
         set => this.date = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameNetOnlineMessage)clone).receiverLogin = context.Clone(this.receiverLogin)!;
+        ((CGameNetOnlineMessage)clone).senderLogin = context.Clone(this.senderLogin)!;
+        ((CGameNetOnlineMessage)clone).subject = context.Clone(this.subject)!;
+        ((CGameNetOnlineMessage)clone).donation = context.Clone(this.donation)!;
+        ((CGameNetOnlineMessage)clone).date = context.Clone(this.date)!;
+        ((CGameNetOnlineMessage)clone).message = context.Clone(this.message)!;
+    }
+
     public CGameNetOnlineMessage()
     {
     }
@@ -83,6 +94,12 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     {
         public override uint Id => 0x03028000;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03028000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameNetOnlineMessage n, GbxReaderWriter rw)
         {

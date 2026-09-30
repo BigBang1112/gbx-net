@@ -34,6 +34,11 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     [Hexadecimal]
     public static new uint Id => 0x09004000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugShaderGeneric()
     {
     }
@@ -43,6 +48,12 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     {
         public override uint Id => 0x09004001;
         public byte[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09004001)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
@@ -56,6 +67,12 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
         public override uint Id => 0x09004002;
         public byte[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09004002)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
             rw.Data(ref U01!, 88);
@@ -67,6 +84,12 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     {
         public override uint Id => 0x09004003;
         public byte[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09004003)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {

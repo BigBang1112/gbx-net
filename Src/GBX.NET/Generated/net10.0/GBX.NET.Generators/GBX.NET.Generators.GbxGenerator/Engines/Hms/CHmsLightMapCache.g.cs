@@ -212,6 +212,34 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.allocatedTexelByMeter = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CHmsLightMapCache)clone).mapT3s = context.CloneArray(this.mapT3s)!;
+        ((CHmsLightMapCache)clone).quality = context.Clone(this.quality)!;
+        ((CHmsLightMapCache)clone).timeWrite = context.Clone(this.timeWrite)!;
+        ((CHmsLightMapCache)clone).lightmapCacheUid = context.Clone(this.lightmapCacheUid)!;
+        ((CHmsLightMapCache)clone).decoration = context.Clone(this.decoration)!;
+        ((CHmsLightMapCache)clone).version = context.Clone(this.version)!;
+        ((CHmsLightMapCache)clone).decal2D = context.Clone(this.decal2D)!;
+        ((CHmsLightMapCache)clone).decal3D = context.Clone(this.decal3D)!;
+        ((CHmsLightMapCache)clone).qualityVer = context.Clone(this.qualityVer)!;
+        ((CHmsLightMapCache)clone).maps = context.CloneArray(this.maps)!;
+        ((CHmsLightMapCache)clone).ambSample = context.Clone(this.ambSample)!;
+        ((CHmsLightMapCache)clone).dirSamples = context.Clone(this.dirSamples)!;
+        ((CHmsLightMapCache)clone).pntSamples = context.Clone(this.pntSamples)!;
+        ((CHmsLightMapCache)clone).sortMode = context.Clone(this.sortMode)!;
+        ((CHmsLightMapCache)clone).allocMode = context.Clone(this.allocMode)!;
+        ((CHmsLightMapCache)clone).compressMode = context.Clone(this.compressMode)!;
+        ((CHmsLightMapCache)clone).bump = context.Clone(this.bump)!;
+        ((CHmsLightMapCache)clone).frames = context.CloneArray(this.frames)!;
+        ((CHmsLightMapCache)clone).spriteOriginY_WasWronglyTop = context.Clone(this.spriteOriginY_WasWronglyTop)!;
+        ((CHmsLightMapCache)clone).mapping = context.Clone(this.mapping)!;
+        ((CHmsLightMapCache)clone).gpuPlatform = context.Clone(this.gpuPlatform)!;
+        ((CHmsLightMapCache)clone).allocatedTexelByMeter = context.Clone(this.allocatedTexelByMeter)!;
+        ((CHmsLightMapCache)clone).Collection = context.Clone(this.Collection)!;
+    }
+
     public CHmsLightMapCache()
     {
     }
@@ -220,6 +248,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     public partial class Chunk0602200B : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x0602200B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -232,6 +265,12 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
         public override uint Id => 0x0602200F;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0602200F)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -246,6 +285,13 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override uint Id => 0x06022013;
         public bool U01;
         public bool U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022013)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022013)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -267,6 +313,19 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public int U05;
         public TimeSpan? U06;
         public string? U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022015)clone).Version = context.Clone(this.Version)!;
+            ((Chunk06022015)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022015)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022015)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022015)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk06022015)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk06022015)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk06022015)clone).U07 = context.Clone(this.U07)!;
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -305,6 +364,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
         public override uint Id => 0x06022016;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EVersion>(ref n.version);
@@ -315,6 +379,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     public partial class Chunk06022017 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -329,6 +398,12 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override uint Id => 0x06022018;
         public ulong U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022018)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.UInt64(ref U01);
@@ -339,6 +414,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     public partial class Chunk06022019 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022019;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -363,6 +443,24 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public int U10;
         public int U11;
         public int U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0602201A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0602201A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0602201A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0602201A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0602201A)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0602201A)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0602201A)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0602201A)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0602201A)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0602201A)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0602201A)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0602201A)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0602201A)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
@@ -428,7 +526,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class SMap : IReadableWritable, IReadable, IWritable
+    public partial class SMap : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -465,6 +563,23 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SMap)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SMap)clone).u01 = context.Clone(this.u01)!;
+            ((SMap)clone).u02 = context.Clone(this.u02)!;
+            ((SMap)clone).u03 = context.Clone(this.u03)!;
+            ((SMap)clone).u04 = context.Clone(this.u04)!;
+            ((SMap)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -487,7 +602,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class SFrame : IReadableWritable, IReadable, IWritable
+    public partial class SFrame : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -650,6 +765,41 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             set => this.u23 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SFrame)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SFrame)clone).u01 = context.Clone(this.u01)!;
+            ((SFrame)clone).u02 = context.Clone(this.u02)!;
+            ((SFrame)clone).u03 = context.Clone(this.u03)!;
+            ((SFrame)clone).u04 = context.Clone(this.u04)!;
+            ((SFrame)clone).u05 = context.Clone(this.u05)!;
+            ((SFrame)clone).u06 = context.Clone(this.u06)!;
+            ((SFrame)clone).u07 = context.Clone(this.u07)!;
+            ((SFrame)clone).u08 = context.Clone(this.u08)!;
+            ((SFrame)clone).u09 = context.Clone(this.u09)!;
+            ((SFrame)clone).u10 = context.Clone(this.u10)!;
+            ((SFrame)clone).u11 = context.Clone(this.u11)!;
+            ((SFrame)clone).u12 = context.Clone(this.u12)!;
+            ((SFrame)clone).u13 = context.Clone(this.u13)!;
+            ((SFrame)clone).u14 = context.Clone(this.u14)!;
+            ((SFrame)clone).u15 = context.Clone(this.u15)!;
+            ((SFrame)clone).u16 = context.Clone(this.u16)!;
+            ((SFrame)clone).u17 = context.Clone(this.u17)!;
+            ((SFrame)clone).u18 = context.Clone(this.u18)!;
+            ((SFrame)clone).u19 = context.Clone(this.u19)!;
+            ((SFrame)clone).u20 = context.Clone(this.u20)!;
+            ((SFrame)clone).u21 = context.Clone(this.u21)!;
+            ((SFrame)clone).u22 = context.Clone(this.u22)!;
+            ((SFrame)clone).u23 = context.Clone(this.u23)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -722,8 +872,50 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class SMapping : IReadableWritable, IReadable, IWritable
+    public partial class SMapping : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SMapping)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SMapping)clone).version = context.Clone(this.version)!;
+            ((SMapping)clone).u01 = context.Clone(this.u01)!;
+            ((SMapping)clone).u02 = context.Clone(this.u02)!;
+            ((SMapping)clone).u03 = context.Clone(this.u03)!;
+            ((SMapping)clone).u04 = context.Clone(this.u04)!;
+            ((SMapping)clone).u05 = context.Clone(this.u05)!;
+            ((SMapping)clone).u06 = context.Clone(this.u06)!;
+            ((SMapping)clone).u07 = context.Clone(this.u07)!;
+            ((SMapping)clone).u08 = context.Clone(this.u08)!;
+            ((SMapping)clone).u09 = context.Clone(this.u09)!;
+            ((SMapping)clone).u10 = context.Clone(this.u10)!;
+            ((SMapping)clone).count = context.Clone(this.count)!;
+            ((SMapping)clone).zlibData1 = context.Clone(this.zlibData1)!;
+            ((SMapping)clone).zlibData1Decompressed = context.CloneArray(this.zlibData1Decompressed)!;
+            ((SMapping)clone).zlibData2 = context.Clone(this.zlibData2)!;
+            ((SMapping)clone).zlibData2Decompressed1 = context.CloneArray(this.zlibData2Decompressed1)!;
+            ((SMapping)clone).zlibData2Decompressed2 = context.CloneArray(this.zlibData2Decompressed2)!;
+            ((SMapping)clone).zlibData2Decompressed3 = context.CloneArray(this.zlibData2Decompressed3)!;
+            ((SMapping)clone).zlibData3 = context.Clone(this.zlibData3)!;
+            ((SMapping)clone).zlibData3Decompressed = context.CloneArray(this.zlibData3Decompressed)!;
+            ((SMapping)clone).zlibData4 = context.Clone(this.zlibData4)!;
+            ((SMapping)clone).zlibData4Decompressed = context.CloneArray(this.zlibData4Decompressed)!;
+            ((SMapping)clone).u11 = context.Clone(this.u11)!;
+            ((SMapping)clone).zlibData5 = context.Clone(this.zlibData5)!;
+            ((SMapping)clone).zlibData5Decompressed1 = context.Clone(this.zlibData5Decompressed1)!;
+            ((SMapping)clone).zlibData5Decompressed2 = context.CloneArray(this.zlibData5Decompressed2)!;
+            ((SMapping)clone).zlibData5Decompressed3 = context.CloneArray(this.zlibData5Decompressed3)!;
+            ((SMapping)clone).zlibData5Decompressed4 = context.CloneArray(this.zlibData5Decompressed4)!;
+            ((SMapping)clone).zlibData6 = context.Clone(this.zlibData6)!;
+            ((SMapping)clone).zlibData6Decompressed = context.CloneArray(this.zlibData6Decompressed)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);
@@ -737,8 +929,66 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class Frame : IReadable, IWritable
+    public partial class Frame : IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Frame)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Frame)clone).Data = context.CloneArray(this.Data)!;
+            ((Frame)clone).Data2 = context.CloneArray(this.Data2)!;
+            ((Frame)clone).Data3 = context.CloneArray(this.Data3)!;
+            ((Frame)clone).U01 = context.CloneArray(this.U01)!;
+            ((Frame)clone).U02 = context.Clone(this.U02)!;
+            ((Frame)clone).Version = context.Clone(this.Version)!;
+            ((Frame)clone).U03 = context.Clone(this.U03)!;
+            ((Frame)clone).U04 = context.Clone(this.U04)!;
+            ((Frame)clone).U05 = context.Clone(this.U05)!;
+            ((Frame)clone).U06 = context.Clone(this.U06)!;
+            ((Frame)clone).U07 = context.Clone(this.U07)!;
+            ((Frame)clone).U08 = context.Clone(this.U08)!;
+            ((Frame)clone).U09 = context.Clone(this.U09)!;
+            ((Frame)clone).U10 = context.CloneArray(this.U10)!;
+            ((Frame)clone).U11 = context.Clone(this.U11)!;
+            ((Frame)clone).U12 = context.Clone(this.U12)!;
+            ((Frame)clone).U13 = context.Clone(this.U13)!;
+            ((Frame)clone).U14 = context.Clone(this.U14)!;
+            ((Frame)clone).U15 = context.Clone(this.U15)!;
+            ((Frame)clone).U16 = context.CloneArray(this.U16)!;
+            ((Frame)clone).U17 = context.CloneArray(this.U17)!;
+            ((Frame)clone).U18 = context.CloneArray(this.U18)!;
+            ((Frame)clone).U19 = context.CloneArray(this.U19)!;
+            ((Frame)clone).U20 = context.Clone(this.U20)!;
+            ((Frame)clone).U21 = context.Clone(this.U21)!;
+            ((Frame)clone).U22 = context.Clone(this.U22)!;
+            ((Frame)clone).U23 = context.Clone(this.U23)!;
+            ((Frame)clone).U24 = context.Clone(this.U24)!;
+            ((Frame)clone).U25 = context.Clone(this.U25)!;
+            ((Frame)clone).U26 = context.Clone(this.U26)!;
+            ((Frame)clone).U27 = context.Clone(this.U27)!;
+            ((Frame)clone).U28 = context.Clone(this.U28)!;
+            ((Frame)clone).U29 = context.Clone(this.U29)!;
+            ((Frame)clone).U30 = context.Clone(this.U30)!;
+            ((Frame)clone).U31 = context.Clone(this.U31)!;
+            ((Frame)clone).U32 = context.CloneArray(this.U32)!;
+            ((Frame)clone).U33 = context.Clone(this.U33)!;
+            ((Frame)clone).U34 = context.Clone(this.U34)!;
+            ((Frame)clone).U35 = context.Clone(this.U35)!;
+            ((Frame)clone).U36 = context.Clone(this.U36)!;
+            ((Frame)clone).U37 = context.Clone(this.U37)!;
+            ((Frame)clone).U38 = context.Clone(this.U38)!;
+            ((Frame)clone).U39 = context.Clone(this.U39)!;
+            ((Frame)clone).U40 = context.Clone(this.U40)!;
+            ((Frame)clone).U41 = context.Clone(this.U41)!;
+            ((Frame)clone).U42 = context.Clone(this.U42)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.Data = r.ReadData();
@@ -770,7 +1020,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class ProbeGridBoxOld : IReadableWritable, IReadable, IWritable
+    public partial class ProbeGridBoxOld : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -856,6 +1106,30 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             set => this.u12 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ProbeGridBoxOld)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ProbeGridBoxOld)clone).u01 = context.Clone(this.u01)!;
+            ((ProbeGridBoxOld)clone).u02 = context.Clone(this.u02)!;
+            ((ProbeGridBoxOld)clone).u03 = context.Clone(this.u03)!;
+            ((ProbeGridBoxOld)clone).u04 = context.Clone(this.u04)!;
+            ((ProbeGridBoxOld)clone).u05 = context.Clone(this.u05)!;
+            ((ProbeGridBoxOld)clone).u06 = context.Clone(this.u06)!;
+            ((ProbeGridBoxOld)clone).u07 = context.Clone(this.u07)!;
+            ((ProbeGridBoxOld)clone).u08 = context.Clone(this.u08)!;
+            ((ProbeGridBoxOld)clone).u09 = context.Clone(this.u09)!;
+            ((ProbeGridBoxOld)clone).u10 = context.Clone(this.u10)!;
+            ((ProbeGridBoxOld)clone).u11 = context.Clone(this.u11)!;
+            ((ProbeGridBoxOld)clone).u12 = context.Clone(this.u12)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -885,7 +1159,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class ProbeGridBox : IReadableWritable, IReadable, IWritable
+    public partial class ProbeGridBox : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -990,6 +1264,33 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         {
             get => this.u15;
             set => this.u15 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ProbeGridBox)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ProbeGridBox)clone).u01 = context.Clone(this.u01)!;
+            ((ProbeGridBox)clone).u02 = context.Clone(this.u02)!;
+            ((ProbeGridBox)clone).u03 = context.Clone(this.u03)!;
+            ((ProbeGridBox)clone).u04 = context.Clone(this.u04)!;
+            ((ProbeGridBox)clone).u05 = context.Clone(this.u05)!;
+            ((ProbeGridBox)clone).u06 = context.Clone(this.u06)!;
+            ((ProbeGridBox)clone).u07 = context.Clone(this.u07)!;
+            ((ProbeGridBox)clone).u08 = context.Clone(this.u08)!;
+            ((ProbeGridBox)clone).u09 = context.Clone(this.u09)!;
+            ((ProbeGridBox)clone).u10 = context.Clone(this.u10)!;
+            ((ProbeGridBox)clone).u11 = context.Clone(this.u11)!;
+            ((ProbeGridBox)clone).u12 = context.Clone(this.u12)!;
+            ((ProbeGridBox)clone).u13 = context.Clone(this.u13)!;
+            ((ProbeGridBox)clone).u14 = context.Clone(this.u14)!;
+            ((ProbeGridBox)clone).u15 = context.Clone(this.u15)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

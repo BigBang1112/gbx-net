@@ -74,6 +74,17 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi,
         set => this.ghostsName = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).stuntFigures = context.Clone(this.stuntFigures)!;
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).checkpoints = context.Clone(this.checkpoints)!;
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).endOfRace = context.Clone(this.endOfRace)!;
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).endOfLaps = context.Clone(this.endOfLaps)!;
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).ghostsName = context.Clone(this.ghostsName)!;
+        ((CCtnMediaBlockUiTMSimpleEvtsDisplay)clone).DisplayMode = context.Clone(this.DisplayMode)!;
+    }
+
     public CCtnMediaBlockUiTMSimpleEvtsDisplay()
     {
     }
@@ -82,12 +93,22 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi,
     public partial class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x24092001)]
     public partial class Chunk24092001 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GbxReaderWriter rw)
         {
@@ -103,6 +124,11 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi,
     public partial class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     public enum EDisplayMode

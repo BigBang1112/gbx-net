@@ -42,6 +42,12 @@ public partial class CMotions : CMotion, IClass
         set => this.motions = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotions)clone).motions = context.CloneList(this.motions)!;
+    }
+
     public CMotions()
     {
     }
@@ -50,6 +56,11 @@ public partial class CMotions : CMotion, IClass
     public partial class Chunk08028001 : Chunk<CMotions>
     {
         public override uint Id => 0x08028001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMotions n, GbxReaderWriter rw)
         {

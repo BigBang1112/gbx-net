@@ -105,6 +105,18 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
         set => this.volumicSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CHmsSoundSource)clone).plugSound = context.Clone(this.plugSound)!;
+        ((CHmsSoundSource)clone).volume = context.Clone(this.volume)!;
+        ((CHmsSoundSource)clone).pitch = context.Clone(this.pitch)!;
+        ((CHmsSoundSource)clone).priorityAdjustement = context.Clone(this.priorityAdjustement)!;
+        ((CHmsSoundSource)clone).useLowQuality = context.Clone(this.useLowQuality)!;
+        ((CHmsSoundSource)clone).rpmOrSpeed = context.Clone(this.rpmOrSpeed)!;
+        ((CHmsSoundSource)clone).volumicSize = context.Clone(this.volumicSize)!;
+    }
+
     public CHmsSoundSource()
     {
     }
@@ -113,6 +125,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     public partial class Chunk0600D000 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
@@ -125,6 +142,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     {
         public override uint Id => 0x0600D001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
             rw.Single(ref n.volume);
@@ -136,6 +158,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     public partial class Chunk0600D002 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
@@ -153,6 +180,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     {
         public override uint Id => 0x0600D003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
             rw.Single(ref n.volume);
@@ -169,6 +201,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     {
         public override uint Id => 0x0600D004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
             rw.Vec3(ref n.volumicSize);
@@ -179,6 +216,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     public partial class Chunk0600D005 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {

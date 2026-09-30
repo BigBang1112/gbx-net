@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         set => this.capturableIndex = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockColoringCapturable)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockColoringCapturable)clone).capturableIndex = context.Clone(this.capturableIndex)!;
+    }
+
     public CGameCtnMediaBlockColoringCapturable()
     {
     }
@@ -62,6 +69,13 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         public override uint Id => 0x0316C000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0316C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0316C000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GbxReaderWriter rw)
         {
@@ -76,7 +90,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -104,6 +118,22 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         {
             get => this.emblem;
             set => this.emblem = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).hue = context.Clone(this.hue)!;
+            ((Key)clone).gauge = context.Clone(this.gauge)!;
+            ((Key)clone).emblem = context.Clone(this.emblem)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

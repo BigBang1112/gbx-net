@@ -147,6 +147,24 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
 
     public NPlugItemPlacement_SClass? GetPlacementClass(GbxReadSettings settings = default, bool exceptions = false) => placementClassFile?.GetNode(ref placementClass, settings, exceptions) ?? placementClass;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameItemPlacementParam)clone).flags = context.Clone(this.flags)!;
+        ((CGameItemPlacementParam)clone).cubeCenter = context.Clone(this.cubeCenter)!;
+        ((CGameItemPlacementParam)clone).cubeSize = context.Clone(this.cubeSize)!;
+        ((CGameItemPlacementParam)clone).gridSnapHStep = context.Clone(this.gridSnapHStep)!;
+        ((CGameItemPlacementParam)clone).gridSnapVStep = context.Clone(this.gridSnapVStep)!;
+        ((CGameItemPlacementParam)clone).gridSnapHOffset = context.Clone(this.gridSnapHOffset)!;
+        ((CGameItemPlacementParam)clone).gridSnapVOffset = context.Clone(this.gridSnapVOffset)!;
+        ((CGameItemPlacementParam)clone).flyVStep = context.Clone(this.flyVStep)!;
+        ((CGameItemPlacementParam)clone).flyVOffset = context.Clone(this.flyVOffset)!;
+        ((CGameItemPlacementParam)clone).pivotSnapDistance = context.Clone(this.pivotSnapDistance)!;
+        ((CGameItemPlacementParam)clone).pivotPositions = context.CloneArray(this.pivotPositions)!;
+        ((CGameItemPlacementParam)clone).pivotRotations = context.CloneArray(this.pivotRotations)!;
+        ((CGameItemPlacementParam)clone).placementClass = context.Clone(this.placementClass)!;
+    }
+
     public CGameItemPlacementParam()
     {
     }
@@ -156,6 +174,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
         public override uint Id => 0x2E020000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E020000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
@@ -181,6 +205,11 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
         public override uint Id => 0x2E020001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.Array<Vec3>(ref n.pivotPositions!);
@@ -198,6 +227,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         public override bool Ignore => true;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E020003)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -209,12 +244,22 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
         public override uint Id => 0x2E020004;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x2E020005)]
     public partial class Chunk2E020005 : SkippableChunk<CGameItemPlacementParam>
     {
         public override uint Id => 0x2E020005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {

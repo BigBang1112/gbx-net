@@ -138,6 +138,20 @@ public partial class CPlugLight : CPlug, IClass
         set => this.animTimerName = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugLight)clone).light = context.Clone(this.light)!;
+        ((CPlugLight)clone).funcLight = context.Clone(this.funcLight)!;
+        ((CPlugLight)clone).bitmapFlare = context.Clone(this.bitmapFlare)!;
+        ((CPlugLight)clone).bitmapProjector = context.Clone(this.bitmapProjector)!;
+        ((CPlugLight)clone).flags = context.Clone(this.flags)!;
+        ((CPlugLight)clone).imageAnim = context.Clone(this.imageAnim)!;
+        ((CPlugLight)clone).animPeriodMin = context.Clone(this.animPeriodMin)!;
+        ((CPlugLight)clone).animPeriodMax = context.Clone(this.animPeriodMax)!;
+        ((CPlugLight)clone).animTimerName = context.Clone(this.animTimerName)!;
+    }
+
     public CPlugLight()
     {
     }
@@ -146,6 +160,11 @@ public partial class CPlugLight : CPlug, IClass
     public partial class Chunk0901D000 : Chunk<CPlugLight>
     {
         public override uint Id => 0x0901D000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
@@ -161,6 +180,11 @@ public partial class CPlugLight : CPlug, IClass
     {
         public override uint Id => 0x0901D002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -173,6 +197,12 @@ public partial class CPlugLight : CPlug, IClass
     {
         public override uint Id => 0x0901D003;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0901D003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
@@ -198,6 +228,17 @@ public partial class CPlugLight : CPlug, IClass
         public int U03;
         public int U04;
         public int U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0901D004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0901D004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0901D004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0901D004)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0901D004)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0901D004)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {

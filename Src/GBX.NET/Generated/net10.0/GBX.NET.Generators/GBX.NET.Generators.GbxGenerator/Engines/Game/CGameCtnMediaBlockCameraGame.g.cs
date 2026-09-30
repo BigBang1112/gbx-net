@@ -159,6 +159,22 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         set => this.gameCam = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCameraGame)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockCameraGame)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockCameraGame)clone).gameCamOld = context.Clone(this.gameCamOld)!;
+        ((CGameCtnMediaBlockCameraGame)clone).clipEntId = context.Clone(this.clipEntId)!;
+        ((CGameCtnMediaBlockCameraGame)clone).gameCamId = context.Clone(this.gameCamId)!;
+        ((CGameCtnMediaBlockCameraGame)clone).camPosition = context.Clone(this.camPosition)!;
+        ((CGameCtnMediaBlockCameraGame)clone).camPitchYawRoll = context.Clone(this.camPitchYawRoll)!;
+        ((CGameCtnMediaBlockCameraGame)clone).camFov = context.Clone(this.camFov)!;
+        ((CGameCtnMediaBlockCameraGame)clone).camNearClipPlane = context.Clone(this.camNearClipPlane)!;
+        ((CGameCtnMediaBlockCameraGame)clone).camFarClipPlane = context.Clone(this.camFarClipPlane)!;
+        ((CGameCtnMediaBlockCameraGame)clone).gameCam = context.Clone(this.gameCam)!;
+    }
+
     public CGameCtnMediaBlockCameraGame()
     {
     }
@@ -180,6 +196,11 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     {
         public override uint Id => 0x03084000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -193,6 +214,11 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     {
         public override uint Id => 0x03084001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -204,6 +230,11 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     public partial class Chunk03084003 : Chunk<CGameCtnMediaBlockCameraGame>
     {
         public override uint Id => 0x03084003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
@@ -220,6 +251,13 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         public override uint Id => 0x03084004;
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03084004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03084004)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
@@ -240,6 +278,12 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         public override uint Id => 0x03084005;
         public bool U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03084005)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -252,6 +296,12 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     {
         public override uint Id => 0x03084006;
         public bool U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03084006)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
@@ -272,6 +322,19 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         public bool U05;
         public float U06;
         public int U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03084007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03084007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03084007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03084007)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03084007)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03084007)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03084007)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk03084007)clone).U07 = context.Clone(this.U07)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {

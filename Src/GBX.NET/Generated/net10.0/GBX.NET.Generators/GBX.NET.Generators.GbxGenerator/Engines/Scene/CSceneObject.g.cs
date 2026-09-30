@@ -50,6 +50,13 @@ public abstract partial class CSceneObject : CMwNod, IClass
         set => this.motion = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneObject)clone).name = context.Clone(this.name)!;
+        ((CSceneObject)clone).motion = context.Clone(this.motion)!;
+    }
+
     public CSceneObject()
     {
     }
@@ -60,6 +67,11 @@ public abstract partial class CSceneObject : CMwNod, IClass
     {
         public override uint Id => 0x0A005001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {
@@ -72,6 +84,12 @@ public abstract partial class CSceneObject : CMwNod, IClass
     {
         public override uint Id => 0x0A005002;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A005002)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {
@@ -86,6 +104,11 @@ public abstract partial class CSceneObject : CMwNod, IClass
         public override uint Id => 0x0A005003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMotion>(ref n.motion);
@@ -99,6 +122,12 @@ public abstract partial class CSceneObject : CMwNod, IClass
         public override uint Id => 0x0A005004;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A005004)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {

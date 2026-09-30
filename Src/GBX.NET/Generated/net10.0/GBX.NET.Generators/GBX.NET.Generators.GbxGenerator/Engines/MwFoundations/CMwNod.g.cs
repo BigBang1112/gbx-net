@@ -43,6 +43,12 @@ public partial class CMwNod : IClass
         public override uint Id => 0x01001000;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk01001000)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CMwNod n, GbxReaderWriter rw)
         {
             rw.String(ref U01);

@@ -545,6 +545,84 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         set => this.u17 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugCustomBulletModel)clone).bulletName = context.Clone(this.bulletName)!;
+        ((CPlugCustomBulletModel)clone).bulletSpeed = context.Clone(this.bulletSpeed)!;
+        ((CPlugCustomBulletModel)clone).bulletMass = context.Clone(this.bulletMass)!;
+        ((CPlugCustomBulletModel)clone).bulletHitboxRadius = context.Clone(this.bulletHitboxRadius)!;
+        ((CPlugCustomBulletModel)clone).bulletFluidFriction = context.Clone(this.bulletFluidFriction)!;
+        ((CPlugCustomBulletModel)clone).bulletLifeTime = context.Clone(this.bulletLifeTime)!;
+        ((CPlugCustomBulletModel)clone).bulletExplodeOnEndLife = context.Clone(this.bulletExplodeOnEndLife)!;
+        ((CPlugCustomBulletModel)clone).bulletRebounds = context.Clone(this.bulletRebounds)!;
+        ((CPlugCustomBulletModel)clone).bulletBounceOnTechWall = context.Clone(this.bulletBounceOnTechWall)!;
+        ((CPlugCustomBulletModel)clone).bulletPattern = context.Clone(this.bulletPattern)!;
+        ((CPlugCustomBulletModel)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugCustomBulletModel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugCustomBulletModel)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugCustomBulletModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugCustomBulletModel)clone).patternBulletCount = context.Clone(this.patternBulletCount)!;
+        ((CPlugCustomBulletModel)clone).patternBulletRadius = context.Clone(this.patternBulletRadius)!;
+        ((CPlugCustomBulletModel)clone).patternBulletSpinSecond = context.Clone(this.patternBulletSpinSecond)!;
+        ((CPlugCustomBulletModel)clone).patternBulletBlendDuration = context.Clone(this.patternBulletBlendDuration)!;
+        ((CPlugCustomBulletModel)clone).patternBulletApexRegroup = context.Clone(this.patternBulletApexRegroup)!;
+        ((CPlugCustomBulletModel)clone).patternBulletMinApexTime = context.Clone(this.patternBulletMinApexTime)!;
+        ((CPlugCustomBulletModel)clone).patternBulletRandomRotations = context.Clone(this.patternBulletRandomRotations)!;
+        ((CPlugCustomBulletModel)clone).noPatternBulletCount = context.Clone(this.noPatternBulletCount)!;
+        ((CPlugCustomBulletModel)clone).noPatternBulletDispersionAngle = context.Clone(this.noPatternBulletDispersionAngle)!;
+        ((CPlugCustomBulletModel)clone).noPatternBulletSpeedCoef = context.Clone(this.noPatternBulletSpeedCoef)!;
+        ((CPlugCustomBulletModel)clone).bulletAliveSound = context.Clone(this.bulletAliveSound)!;
+        ((CPlugCustomBulletModel)clone).bulletExplosionSound = context.Clone(this.bulletExplosionSound)!;
+        ((CPlugCustomBulletModel)clone).bulletShootingSound = context.Clone(this.bulletShootingSound)!;
+        ((CPlugCustomBulletModel)clone).aliveParticleEmitterSubModels = context.CloneArray(this.aliveParticleEmitterSubModels)!;
+        ((CPlugCustomBulletModel)clone).explosionParticleEmitterSubModels = context.CloneArray(this.explosionParticleEmitterSubModels)!;
+        ((CPlugCustomBulletModel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugCustomBulletModel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugCustomBulletModel)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugCustomBulletModel)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugCustomBulletModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugCustomBulletModel)clone).u10 = context.Clone(this.u10)!;
+        ((CPlugCustomBulletModel)clone).bulletLifeTimeAfterFirstImpact = context.Clone(this.bulletLifeTimeAfterFirstImpact)!;
+        ((CPlugCustomBulletModel)clone).bulletImpactBouncingN = context.Clone(this.bulletImpactBouncingN)!;
+        ((CPlugCustomBulletModel)clone).bulletImpactBouncingT = context.Clone(this.bulletImpactBouncingT)!;
+        ((CPlugCustomBulletModel)clone).u11 = context.Clone(this.u11)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingDist = context.Clone(this.bulletHomingDist)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingAngularSpeed = context.Clone(this.bulletHomingAngularSpeed)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingPeriod = context.Clone(this.bulletHomingPeriod)!;
+        ((CPlugCustomBulletModel)clone).bulletShowPlayerExplosion = context.Clone(this.bulletShowPlayerExplosion)!;
+        ((CPlugCustomBulletModel)clone).u12 = context.Clone(this.u12)!;
+        ((CPlugCustomBulletModel)clone).bulletReboundSound = context.Clone(this.bulletReboundSound)!;
+        ((CPlugCustomBulletModel)clone).bulletAliveSoundVolume = context.Clone(this.bulletAliveSoundVolume)!;
+        ((CPlugCustomBulletModel)clone).bulletExplosionSoundVolume = context.Clone(this.bulletExplosionSoundVolume)!;
+        ((CPlugCustomBulletModel)clone).bulletShootingSoundVolume = context.Clone(this.bulletShootingSoundVolume)!;
+        ((CPlugCustomBulletModel)clone).bulletReboundSoundVolume = context.Clone(this.bulletReboundSoundVolume)!;
+        ((CPlugCustomBulletModel)clone).bulletShowDebris = context.Clone(this.bulletShowDebris)!;
+        ((CPlugCustomBulletModel)clone).bulletModifyFOV = context.Clone(this.bulletModifyFOV)!;
+        ((CPlugCustomBulletModel)clone).u13 = context.Clone(this.u13)!;
+        ((CPlugCustomBulletModel)clone).bulletIsFlare = context.Clone(this.bulletIsFlare)!;
+        ((CPlugCustomBulletModel)clone).bulletFlareAttractionRadius = context.Clone(this.bulletFlareAttractionRadius)!;
+        ((CPlugCustomBulletModel)clone).bulletFlareExplosionRadius = context.Clone(this.bulletFlareExplosionRadius)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingSound = context.Clone(this.bulletHomingSound)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingSoundVolume = context.Clone(this.bulletHomingSoundVolume)!;
+        ((CPlugCustomBulletModel)clone).u14 = context.Clone(this.u14)!;
+        ((CPlugCustomBulletModel)clone).bulletGuidedAngularSpeed = context.Clone(this.bulletGuidedAngularSpeed)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingLockDuration = context.Clone(this.bulletHomingLockDuration)!;
+        ((CPlugCustomBulletModel)clone).bulletIsWard = context.Clone(this.bulletIsWard)!;
+        ((CPlugCustomBulletModel)clone).bulletWardRadius = context.Clone(this.bulletWardRadius)!;
+        ((CPlugCustomBulletModel)clone).u15 = context.Clone(this.u15)!;
+        ((CPlugCustomBulletModel)clone).bulletGuidedMinLifeTime = context.Clone(this.bulletGuidedMinLifeTime)!;
+        ((CPlugCustomBulletModel)clone).bulletGunSpeedCoef = context.Clone(this.bulletGunSpeedCoef)!;
+        ((CPlugCustomBulletModel)clone).bulletType = context.Clone(this.bulletType)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingDamageMinAngle_Deg = context.Clone(this.bulletHomingDamageMinAngle_Deg)!;
+        ((CPlugCustomBulletModel)clone).bulletHomingDamageMaxAngle_Deg = context.Clone(this.bulletHomingDamageMaxAngle_Deg)!;
+        ((CPlugCustomBulletModel)clone).bulletRecoil = context.Clone(this.bulletRecoil)!;
+        ((CPlugCustomBulletModel)clone).bulletGunSpeedCoefRatioMin = context.Clone(this.bulletGunSpeedCoefRatioMin)!;
+        ((CPlugCustomBulletModel)clone).bulletGunSpeedCoefRatioMax = context.Clone(this.bulletGunSpeedCoefRatioMax)!;
+        ((CPlugCustomBulletModel)clone).u16 = context.Clone(this.u16)!;
+        ((CPlugCustomBulletModel)clone).u17 = context.Clone(this.u17)!;
+    }
+
     public CPlugCustomBulletModel()
     {
     }

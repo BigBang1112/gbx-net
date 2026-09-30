@@ -34,6 +34,13 @@ public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
     [Hexadecimal]
     public static new uint Id => 0x09185000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugCurveSimpleNod)clone).version2 = context.Clone(this.version2)!;
+        ((CPlugCurveSimpleNod)clone).count = context.Clone(this.count)!;
+    }
+
     public CPlugCurveSimpleNod()
     {
     }
@@ -42,6 +49,16 @@ public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
     public partial class Chunk09185000 : Chunk<CPlugCurveSimpleNod>
     {
         public override uint Id => 0x09185000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09185000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09185000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09185000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09185000)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk09185000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

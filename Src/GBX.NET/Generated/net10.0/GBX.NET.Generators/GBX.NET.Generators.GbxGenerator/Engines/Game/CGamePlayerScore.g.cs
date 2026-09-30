@@ -129,6 +129,22 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.ladderMatchResults = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerScore)clone).playerName = context.Clone(this.playerName)!;
+        ((CGamePlayerScore)clone).nickName = context.Clone(this.nickName)!;
+        ((CGamePlayerScore)clone).scoresVersion = context.Clone(this.scoresVersion)!;
+        ((CGamePlayerScore)clone).scores = context.CloneArray(this.scores)!;
+        ((CGamePlayerScore)clone).survivalScoresVersion = context.Clone(this.survivalScoresVersion)!;
+        ((CGamePlayerScore)clone).survivalScores = context.CloneArray(this.survivalScores)!;
+        ((CGamePlayerScore)clone).playerOfficialScores = context.Clone(this.playerOfficialScores)!;
+        ((CGamePlayerScore)clone).trainingMedalsScores = context.CloneArray(this.trainingMedalsScores)!;
+        ((CGamePlayerScore)clone).campaignPlayerScores = context.CloneArray(this.campaignPlayerScores)!;
+        ((CGamePlayerScore)clone).campaignRecordsStates = context.CloneArray(this.campaignRecordsStates)!;
+        ((CGamePlayerScore)clone).ladderMatchResults = context.CloneArray(this.ladderMatchResults)!;
+    }
+
     public CGamePlayerScore()
     {
     }
@@ -138,6 +154,12 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public override uint Id => 0x0308D003;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D003)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
@@ -155,6 +177,12 @@ public partial class CGamePlayerScore : CMwNod, IClass
         public override uint Id => 0x0308D004;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.String(ref n.playerName);
@@ -170,6 +198,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public override uint Id => 0x0308D006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.survivalScoresVersion);
@@ -181,6 +214,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
     public partial class Chunk0308D00F : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D00F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
@@ -195,6 +233,12 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public override uint Id => 0x0308D010;
         public byte U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D010)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
@@ -242,6 +286,45 @@ public partial class CGamePlayerScore : CMwNod, IClass
         public int U33;
         public int U34;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D011)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308D011)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0308D011)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0308D011)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0308D011)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0308D011)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0308D011)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0308D011)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0308D011)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0308D011)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0308D011)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0308D011)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0308D011)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk0308D011)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk0308D011)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk0308D011)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk0308D011)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk0308D011)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk0308D011)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk0308D011)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk0308D011)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk0308D011)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk0308D011)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk0308D011)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk0308D011)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk0308D011)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk0308D011)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk0308D011)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk0308D011)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk0308D011)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk0308D011)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk0308D011)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk0308D011)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk0308D011)clone).U34 = context.Clone(this.U34)!;
+        }
+
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -286,13 +369,18 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public override uint Id => 0x0308D012;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<LadderMatchResult>(ref n.ladderMatchResults!);
         }
     }
 
-    public partial class Score : IReadableWritable, IReadable, IWritable
+    public partial class Score : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? mapInfo;
         public Ident? MapInfo
@@ -553,6 +641,55 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u33 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Score)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Score)clone).mapInfo = context.Clone(this.mapInfo)!;
+            ((Score)clone).u01 = context.Clone(this.u01)!;
+            ((Score)clone).personalBest = context.Clone(this.personalBest)!;
+            ((Score)clone).u02 = context.Clone(this.u02)!;
+            ((Score)clone).u03 = context.Clone(this.u03)!;
+            ((Score)clone).u04 = context.Clone(this.u04)!;
+            ((Score)clone).u05 = context.Clone(this.u05)!;
+            ((Score)clone).u06 = context.Clone(this.u06)!;
+            ((Score)clone).u07 = context.Clone(this.u07)!;
+            ((Score)clone).u08 = context.Clone(this.u08)!;
+            ((Score)clone).u09 = context.Clone(this.u09)!;
+            ((Score)clone).u10 = context.Clone(this.u10)!;
+            ((Score)clone).u11 = context.Clone(this.u11)!;
+            ((Score)clone).u12 = context.Clone(this.u12)!;
+            ((Score)clone).u13 = context.Clone(this.u13)!;
+            ((Score)clone).u14 = context.Clone(this.u14)!;
+            ((Score)clone).u15 = context.Clone(this.u15)!;
+            ((Score)clone).u16 = context.Clone(this.u16)!;
+            ((Score)clone).u17 = context.Clone(this.u17)!;
+            ((Score)clone).u18 = context.Clone(this.u18)!;
+            ((Score)clone).deprecatedChallengeLeagueScores = context.CloneArray(this.deprecatedChallengeLeagueScores)!;
+            ((Score)clone).u19 = context.Clone(this.u19)!;
+            ((Score)clone).u20 = context.Clone(this.u20)!;
+            ((Score)clone).u21 = context.Clone(this.u21)!;
+            ((Score)clone).u22 = context.Clone(this.u22)!;
+            ((Score)clone).mapName = context.Clone(this.mapName)!;
+            ((Score)clone).u23 = context.Clone(this.u23)!;
+            ((Score)clone).u24 = context.Clone(this.u24)!;
+            ((Score)clone).u25 = context.Clone(this.u25)!;
+            ((Score)clone).u26 = context.Clone(this.u26)!;
+            ((Score)clone).u27 = context.Clone(this.u27)!;
+            ((Score)clone).u28 = context.Clone(this.u28)!;
+            ((Score)clone).u29 = context.Clone(this.u29)!;
+            ((Score)clone).u30 = context.Clone(this.u30)!;
+            ((Score)clone).u31 = context.Clone(this.u31)!;
+            ((Score)clone).u32 = context.Clone(this.u32)!;
+            ((Score)clone).u33 = context.Clone(this.u33)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Ident(ref this.mapInfo);
@@ -687,7 +824,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class DeprecatedChallengeLeagueScore : IReadableWritable, IReadable, IWritable
+    public partial class DeprecatedChallengeLeagueScore : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int version;
         public int Version
@@ -773,6 +910,30 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u11 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DeprecatedChallengeLeagueScore)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DeprecatedChallengeLeagueScore)clone).version = context.Clone(this.version)!;
+            ((DeprecatedChallengeLeagueScore)clone).u01 = context.Clone(this.u01)!;
+            ((DeprecatedChallengeLeagueScore)clone).u02 = context.Clone(this.u02)!;
+            ((DeprecatedChallengeLeagueScore)clone).u03 = context.Clone(this.u03)!;
+            ((DeprecatedChallengeLeagueScore)clone).u04 = context.Clone(this.u04)!;
+            ((DeprecatedChallengeLeagueScore)clone).u05 = context.CloneArray(this.u05)!;
+            ((DeprecatedChallengeLeagueScore)clone).u06 = context.Clone(this.u06)!;
+            ((DeprecatedChallengeLeagueScore)clone).u07 = context.Clone(this.u07)!;
+            ((DeprecatedChallengeLeagueScore)clone).u08 = context.Clone(this.u08)!;
+            ((DeprecatedChallengeLeagueScore)clone).u09 = context.CloneArray(this.u09)!;
+            ((DeprecatedChallengeLeagueScore)clone).u10 = context.CloneArray(this.u10)!;
+            ((DeprecatedChallengeLeagueScore)clone).u11 = context.Clone(this.u11)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.version);
@@ -826,7 +987,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class SurvivalScore : IReadableWritable, IReadable, IWritable
+    public partial class SurvivalScore : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? mapUid;
         public string? MapUid
@@ -870,6 +1031,24 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SurvivalScore)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SurvivalScore)clone).mapUid = context.Clone(this.mapUid)!;
+            ((SurvivalScore)clone).u01 = context.Clone(this.u01)!;
+            ((SurvivalScore)clone).u02 = context.Clone(this.u02)!;
+            ((SurvivalScore)clone).u03 = context.Clone(this.u03)!;
+            ((SurvivalScore)clone).u04 = context.Clone(this.u04)!;
+            ((SurvivalScore)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.mapUid);
@@ -897,7 +1076,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class TrainingMedalsScore : IReadableWritable, IReadable, IWritable
+    public partial class TrainingMedalsScore : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? campaignId;
         public string? CampaignId
@@ -920,6 +1099,21 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.score = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (TrainingMedalsScore)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((TrainingMedalsScore)clone).campaignId = context.Clone(this.campaignId)!;
+            ((TrainingMedalsScore)clone).u01 = context.Clone(this.u01)!;
+            ((TrainingMedalsScore)clone).score = context.Clone(this.score)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.campaignId);
@@ -940,7 +1134,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class CampaignRecordsState : IReadableWritable, IReadable, IWritable
+    public partial class CampaignRecordsState : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? campaignId;
         public string? CampaignId
@@ -954,6 +1148,20 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             get => this.u01;
             set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CampaignRecordsState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CampaignRecordsState)clone).campaignId = context.Clone(this.campaignId)!;
+            ((CampaignRecordsState)clone).u01 = context.Clone(this.u01)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -975,7 +1183,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class LadderMatchResult : IReadableWritable, IReadable, IWritable
+    public partial class LadderMatchResult : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private DateTime? u01;
         public DateTime? U01
@@ -1010,6 +1218,23 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LadderMatchResult)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LadderMatchResult)clone).u01 = context.Clone(this.u01)!;
+            ((LadderMatchResult)clone).u02 = context.Clone(this.u02)!;
+            ((LadderMatchResult)clone).u03 = context.Clone(this.u03)!;
+            ((LadderMatchResult)clone).u04 = context.Clone(this.u04)!;
+            ((LadderMatchResult)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

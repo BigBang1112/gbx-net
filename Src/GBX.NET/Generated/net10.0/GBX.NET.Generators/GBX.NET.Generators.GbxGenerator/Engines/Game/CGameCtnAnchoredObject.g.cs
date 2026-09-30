@@ -114,6 +114,30 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.packDesc = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnAnchoredObject)clone).itemModel = context.Clone(this.itemModel)!;
+        ((CGameCtnAnchoredObject)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
+        ((CGameCtnAnchoredObject)clone).blockUnitCoord = context.Clone(this.blockUnitCoord)!;
+        ((CGameCtnAnchoredObject)clone).anchorTreeId = context.Clone(this.anchorTreeId)!;
+        ((CGameCtnAnchoredObject)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
+        ((CGameCtnAnchoredObject)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
+        ((CGameCtnAnchoredObject)clone).flags = context.Clone(this.flags)!;
+        ((CGameCtnAnchoredObject)clone).pivotPosition = context.Clone(this.pivotPosition)!;
+        ((CGameCtnAnchoredObject)clone).scale = context.Clone(this.scale)!;
+        ((CGameCtnAnchoredObject)clone).packDesc = context.Clone(this.packDesc)!;
+        ((CGameCtnAnchoredObject)clone).SnappedOnBlock = context.Clone(this.SnappedOnBlock)!;
+        ((CGameCtnAnchoredObject)clone).SnappedOnItem = context.Clone(this.SnappedOnItem)!;
+        ((CGameCtnAnchoredObject)clone).PlacedOnItem = context.Clone(this.PlacedOnItem)!;
+        ((CGameCtnAnchoredObject)clone).SnappedOnGroup = context.Clone(this.SnappedOnGroup)!;
+        ((CGameCtnAnchoredObject)clone).Color = context.Clone(this.Color)!;
+        ((CGameCtnAnchoredObject)clone).AnimPhaseOffset = context.Clone(this.AnimPhaseOffset)!;
+        ((CGameCtnAnchoredObject)clone).ForegroundPackDesc = context.Clone(this.ForegroundPackDesc)!;
+        ((CGameCtnAnchoredObject)clone).LightmapQuality = context.Clone(this.LightmapQuality)!;
+        ((CGameCtnAnchoredObject)clone).MacroblockReference = context.Clone(this.MacroblockReference)!;
+    }
+
     public CGameCtnAnchoredObject()
     {
     }
@@ -126,6 +150,15 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         public int U01;
         public Vec3? U02;
         public Vec3? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03101002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03101002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03101002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03101002)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
         {
@@ -180,6 +213,13 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         public int Version { get; set; }
         public int U01 = -1;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03101004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03101004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -192,6 +232,11 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     {
         public override uint Id => 0x03101005;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     public enum EPhaseOffset

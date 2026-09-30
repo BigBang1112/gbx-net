@@ -66,6 +66,15 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         set => this.visData = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockObject)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockObject)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockObject)clone).anchoredObjectInfos = context.CloneArray(this.anchoredObjectInfos)!;
+        ((CGameCtnMediaBlockObject)clone).visData = context.Clone(this.visData)!;
+    }
+
     public CGameCtnMediaBlockObject()
     {
     }
@@ -88,6 +97,12 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         public override uint Id => 0x03196000;
         public int Version { get; set; } = 1;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03196000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockObject n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -106,7 +121,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         }
     }
 
-    public partial class AnchoredObjectInfo : IReadableWritable, IReadable, IWritable
+    public partial class AnchoredObjectInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -148,6 +163,24 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         {
             get => this.u06;
             set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AnchoredObjectInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AnchoredObjectInfo)clone).u01 = context.Clone(this.u01)!;
+            ((AnchoredObjectInfo)clone).u02 = context.Clone(this.u02)!;
+            ((AnchoredObjectInfo)clone).u03 = context.Clone(this.u03)!;
+            ((AnchoredObjectInfo)clone).u04 = context.Clone(this.u04)!;
+            ((AnchoredObjectInfo)clone).u05 = context.Clone(this.u05)!;
+            ((AnchoredObjectInfo)clone).u06 = context.Clone(this.u06)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

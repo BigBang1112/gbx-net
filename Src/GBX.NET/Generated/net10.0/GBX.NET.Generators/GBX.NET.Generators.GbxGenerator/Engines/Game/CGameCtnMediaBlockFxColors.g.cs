@@ -45,6 +45,12 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxColors)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockFxColors()
     {
     }
@@ -56,6 +62,11 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
     {
         public override uint Id => 0x03080000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockFxColors n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
@@ -66,21 +77,36 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
     public partial class Chunk03080001 : Chunk03080000
     {
         public override uint Id => 0x03080001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03080002)]
     public partial class Chunk03080002 : Chunk03080000
     {
         public override uint Id => 0x03080002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03080003)]
     public partial class Chunk03080003 : Chunk03080000
     {
         public override uint Id => 0x03080003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -273,6 +299,43 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         {
             get => this.farU04;
             set => this.farU04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).intensity = context.Clone(this.intensity)!;
+            ((Key)clone).blendZ = context.Clone(this.blendZ)!;
+            ((Key)clone).distance = context.Clone(this.distance)!;
+            ((Key)clone).farDistance = context.Clone(this.farDistance)!;
+            ((Key)clone).inverse = context.Clone(this.inverse)!;
+            ((Key)clone).hue = context.Clone(this.hue)!;
+            ((Key)clone).saturation = context.Clone(this.saturation)!;
+            ((Key)clone).brightness = context.Clone(this.brightness)!;
+            ((Key)clone).contrast = context.Clone(this.contrast)!;
+            ((Key)clone).rgb = context.Clone(this.rgb)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).u04 = context.Clone(this.u04)!;
+            ((Key)clone).farInverse = context.Clone(this.farInverse)!;
+            ((Key)clone).farHue = context.Clone(this.farHue)!;
+            ((Key)clone).farSaturation = context.Clone(this.farSaturation)!;
+            ((Key)clone).farBrightness = context.Clone(this.farBrightness)!;
+            ((Key)clone).farContrast = context.Clone(this.farContrast)!;
+            ((Key)clone).farRgb = context.Clone(this.farRgb)!;
+            ((Key)clone).farU01 = context.Clone(this.farU01)!;
+            ((Key)clone).farU02 = context.Clone(this.farU02)!;
+            ((Key)clone).farU03 = context.Clone(this.farU03)!;
+            ((Key)clone).farU04 = context.Clone(this.farU04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

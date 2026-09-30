@@ -34,6 +34,11 @@ public abstract partial class CFuncShader : CFuncPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x05011000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CFuncShader()
     {
     }

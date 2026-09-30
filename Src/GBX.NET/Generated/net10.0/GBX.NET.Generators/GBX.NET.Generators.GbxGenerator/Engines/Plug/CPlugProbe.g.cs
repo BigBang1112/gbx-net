@@ -34,6 +34,11 @@ public partial class CPlugProbe : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09106000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugProbe()
     {
     }
@@ -50,6 +55,19 @@ public partial class CPlugProbe : CPlug, IClass
         public float U06;
         public float U07;
         public float U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09106000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09106000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09106000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09106000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09106000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09106000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09106000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk09106000)clone).U08 = context.Clone(this.U08)!;
+        }
 
         public override void ReadWrite(CPlugProbe n, GbxReaderWriter rw)
         {

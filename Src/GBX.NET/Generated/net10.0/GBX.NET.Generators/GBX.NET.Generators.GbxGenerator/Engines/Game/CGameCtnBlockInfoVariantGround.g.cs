@@ -58,6 +58,14 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         set => this.autoTerrainPlaceType = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoVariantGround)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
+        ((CGameCtnBlockInfoVariantGround)clone).autoTerrainHeightOffset = context.Clone(this.autoTerrainHeightOffset)!;
+        ((CGameCtnBlockInfoVariantGround)clone).autoTerrainPlaceType = context.Clone(this.autoTerrainPlaceType)!;
+    }
+
     public CGameCtnBlockInfoVariantGround()
     {
     }
@@ -69,6 +77,12 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         public override uint Id => 0x0315C001;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315C001)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariantGround n, GbxReaderWriter rw)
         {

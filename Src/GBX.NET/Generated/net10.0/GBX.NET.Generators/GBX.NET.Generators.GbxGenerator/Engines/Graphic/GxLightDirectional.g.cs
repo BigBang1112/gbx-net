@@ -108,6 +108,20 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
         set => this.flareAngularSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLightDirectional)clone).useBoundaryHint = context.Clone(this.useBoundaryHint)!;
+        ((GxLightDirectional)clone).boundaryHintPos = context.Clone(this.boundaryHintPos)!;
+        ((GxLightDirectional)clone).dazzleAngleMax = context.Clone(this.dazzleAngleMax)!;
+        ((GxLightDirectional)clone).dazzleIntensity = context.Clone(this.dazzleIntensity)!;
+        ((GxLightDirectional)clone).dblSidedRGB = context.Clone(this.dblSidedRGB)!;
+        ((GxLightDirectional)clone).reverseRGB = context.Clone(this.reverseRGB)!;
+        ((GxLightDirectional)clone).reverseIntens = context.Clone(this.reverseIntens)!;
+        ((GxLightDirectional)clone).emittAngularSize = context.Clone(this.emittAngularSize)!;
+        ((GxLightDirectional)clone).flareAngularSize = context.Clone(this.flareAngularSize)!;
+    }
+
     public GxLightDirectional()
     {
     }
@@ -116,6 +130,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     public partial class Chunk04007001 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightDirectional n, GbxReaderWriter rw)
         {
@@ -128,6 +147,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     public partial class Chunk04007002 : Chunk04007001
     {
         public override uint Id => 0x04007002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightDirectional n, GbxReaderWriter rw)
         {
@@ -142,6 +166,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     {
         public override uint Id => 0x04007003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(GxLightDirectional n, GbxReaderWriter rw)
         {
             rw.Vec3(ref n.dblSidedRGB);
@@ -152,6 +181,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     public partial class Chunk04007004 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightDirectional n, GbxReaderWriter rw)
         {
@@ -164,6 +198,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     public partial class Chunk04007005 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightDirectional n, GbxReaderWriter rw)
         {

@@ -50,6 +50,13 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         set => this.visList = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameReplayObjectVisData)clone).keys = context.CloneList(this.keys)!;
+        ((CGameReplayObjectVisData)clone).visList = context.CloneList(this.visList)!;
+    }
+
     public CGameReplayObjectVisData()
     {
     }
@@ -60,6 +67,12 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         public override uint Id => 0x031A8000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk031A8000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameReplayObjectVisData n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -68,7 +81,7 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         }
     }
 
-    public partial class ObjectVisKey : IReadableWritable, IReadable, IWritable
+    public partial class ObjectVisKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -140,6 +153,28 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
             set => this.u10 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ObjectVisKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ObjectVisKey)clone).u01 = context.Clone(this.u01)!;
+            ((ObjectVisKey)clone).u02 = context.Clone(this.u02)!;
+            ((ObjectVisKey)clone).u03 = context.Clone(this.u03)!;
+            ((ObjectVisKey)clone).u04 = context.Clone(this.u04)!;
+            ((ObjectVisKey)clone).u05 = context.Clone(this.u05)!;
+            ((ObjectVisKey)clone).u06 = context.Clone(this.u06)!;
+            ((ObjectVisKey)clone).u07 = context.Clone(this.u07)!;
+            ((ObjectVisKey)clone).u08 = context.Clone(this.u08)!;
+            ((ObjectVisKey)clone).u09 = context.Clone(this.u09)!;
+            ((ObjectVisKey)clone).u10 = context.Clone(this.u10)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -167,7 +202,7 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         }
     }
 
-    public partial class ObjectVis : IReadableWritable, IReadable, IWritable
+    public partial class ObjectVis : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -202,6 +237,23 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ObjectVis)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ObjectVis)clone).u01 = context.Clone(this.u01)!;
+            ((ObjectVis)clone).u02 = context.Clone(this.u02)!;
+            ((ObjectVis)clone).u03 = context.Clone(this.u03)!;
+            ((ObjectVis)clone).u04 = context.Clone(this.u04)!;
+            ((ObjectVis)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

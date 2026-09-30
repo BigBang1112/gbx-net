@@ -34,6 +34,13 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0900F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSurfaceGeom)clone).Surf = context.Clone(this.Surf)!;
+        ((CPlugSurfaceGeom)clone).SurfaceId = context.Clone(this.SurfaceId)!;
+    }
+
     public CPlugSurfaceGeom()
     {
     }
@@ -45,6 +52,12 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         public override uint Id => 0x0900C000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900C000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugSurfaceGeom n, GbxReaderWriter rw)
         {
@@ -60,6 +73,12 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900C001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugSurfaceGeom n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -72,12 +91,22 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     {
         public override uint Id => 0x0900D002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0900F002)]
     public partial class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900F002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0900F004)]
@@ -86,6 +115,13 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     {
         public override uint Id => 0x0900F004;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900F004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0900F004)clone).U02 = context.Clone(this.U02)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

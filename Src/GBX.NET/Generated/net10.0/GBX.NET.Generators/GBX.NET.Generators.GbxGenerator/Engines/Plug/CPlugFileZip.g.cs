@@ -34,6 +34,11 @@ public partial class CPlugFileZip : CPlugFileFidContainer, IClass
     [Hexadecimal]
     public static new uint Id => 0x09084000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFileZip()
     {
     }

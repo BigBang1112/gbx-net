@@ -34,6 +34,11 @@ public abstract partial class CMotionManaged : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x0804E000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionManaged()
     {
     }

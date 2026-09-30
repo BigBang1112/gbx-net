@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxBlurMotion)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockFxBlurMotion)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockFxBlurMotion()
     {
     }
@@ -70,6 +77,11 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
     public partial class Chunk03082000 : Chunk<CGameCtnMediaBlockFxBlurMotion>
     {
         public override uint Id => 0x03082000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockFxBlurMotion n, GbxReaderWriter rw)
         {

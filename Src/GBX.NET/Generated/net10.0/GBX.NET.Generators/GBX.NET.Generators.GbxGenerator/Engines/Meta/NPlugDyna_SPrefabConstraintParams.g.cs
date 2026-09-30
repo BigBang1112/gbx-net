@@ -62,6 +62,16 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
         set => this.pos2 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugDyna_SPrefabConstraintParams)clone).ent1 = context.Clone(this.ent1)!;
+        ((NPlugDyna_SPrefabConstraintParams)clone).ent2 = context.Clone(this.ent2)!;
+        ((NPlugDyna_SPrefabConstraintParams)clone).pos1 = context.Clone(this.pos1)!;
+        ((NPlugDyna_SPrefabConstraintParams)clone).pos2 = context.Clone(this.pos2)!;
+        ((NPlugDyna_SPrefabConstraintParams)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugDyna_SPrefabConstraintParams()
     {
     }

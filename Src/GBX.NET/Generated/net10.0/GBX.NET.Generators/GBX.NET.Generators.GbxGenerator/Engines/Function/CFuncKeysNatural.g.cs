@@ -42,6 +42,12 @@ public partial class CFuncKeysNatural : CFuncKeys, IClass
         set => this.naturals = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncKeysNatural)clone).naturals = context.CloneArray(this.naturals)!;
+    }
+
     public CFuncKeysNatural()
     {
     }
@@ -50,6 +56,11 @@ public partial class CFuncKeysNatural : CFuncKeys, IClass
     public partial class Chunk05030000 : Chunk<CFuncKeysNatural>
     {
         public override uint Id => 0x05030000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncKeysNatural n, GbxReaderWriter rw)
         {

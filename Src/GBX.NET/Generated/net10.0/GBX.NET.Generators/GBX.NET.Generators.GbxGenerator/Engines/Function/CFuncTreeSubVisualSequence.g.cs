@@ -67,6 +67,15 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
         set => this.simpleModeEndIndex = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncTreeSubVisualSequence)clone).subKeys = context.Clone(this.subKeys)!;
+        ((CFuncTreeSubVisualSequence)clone).simpleModeIsLooping = context.Clone(this.simpleModeIsLooping)!;
+        ((CFuncTreeSubVisualSequence)clone).simpleModeStartIndex = context.Clone(this.simpleModeStartIndex)!;
+        ((CFuncTreeSubVisualSequence)clone).simpleModeEndIndex = context.Clone(this.simpleModeEndIndex)!;
+    }
+
     public CFuncTreeSubVisualSequence()
     {
     }
@@ -75,6 +84,11 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     public partial class Chunk05031000 : Chunk<CFuncTreeSubVisualSequence>
     {
         public override uint Id => 0x05031000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GbxReaderWriter rw)
         {
@@ -88,6 +102,12 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
         public override uint Id => 0x05031001;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05031001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
@@ -99,6 +119,11 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     {
         public override uint Id => 0x05031002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysNatural>(ref n.subKeys);
@@ -109,6 +134,11 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     public partial class Chunk05031003 : Chunk<CFuncTreeSubVisualSequence>
     {
         public override uint Id => 0x05031003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GbxReaderWriter rw)
         {

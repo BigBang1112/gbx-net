@@ -82,6 +82,27 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         set => this.soundLocPermanent = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameObjectVisModel)clone).soundRefSpawn = context.Clone(this.soundRefSpawn)!;
+        ((CGameObjectVisModel)clone).soundRefUnspawn = context.Clone(this.soundRefUnspawn)!;
+        ((CGameObjectVisModel)clone).soundRefGrab = context.Clone(this.soundRefGrab)!;
+        ((CGameObjectVisModel)clone).soundRefSmashed = context.Clone(this.soundRefSmashed)!;
+        ((CGameObjectVisModel)clone).soundRefPermanent = context.Clone(this.soundRefPermanent)!;
+        ((CGameObjectVisModel)clone).soundLocPermanent = context.Clone(this.soundLocPermanent)!;
+        ((CGameObjectVisModel)clone).meshShaded = context.Clone(this.meshShaded)!;
+        ((CGameObjectVisModel)clone).meshShadedFile = context.Clone(this.meshShadedFile)!;
+        ((CGameObjectVisModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CGameObjectVisModel)clone).smashParticleRef = context.Clone(this.smashParticleRef)!;
+        ((CGameObjectVisModel)clone).visEntFx = context.Clone(this.visEntFx)!;
+        ((CGameObjectVisModel)clone).meshShadedFid = context.Clone(this.meshShadedFid)!;
+        ((CGameObjectVisModel)clone).domeShaderColor = context.Clone(this.domeShaderColor)!;
+        ((CGameObjectVisModel)clone).locAnim = context.Clone(this.locAnim)!;
+        ((CGameObjectVisModel)clone).solid = context.Clone(this.solid)!;
+        ((CGameObjectVisModel)clone).solidRef = context.Clone(this.solidRef)!;
+    }
+
     public CGameObjectVisModel()
     {
     }
@@ -90,6 +111,34 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     public partial class Chunk2E007001 : Chunk<CGameObjectVisModel>
     {
         public override uint Id => 0x2E007001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E007001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E007001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E007001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E007001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E007001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk2E007001)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk2E007001)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E007001)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk2E007001)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk2E007001)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk2E007001)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk2E007001)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk2E007001)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk2E007001)clone).U14File = context.Clone(this.U14File)!;
+            ((Chunk2E007001)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk2E007001)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk2E007001)clone).U16File = context.Clone(this.U16File)!;
+            ((Chunk2E007001)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk2E007001)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk2E007001)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk2E007001)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk2E007001)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk2E007001)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x2E007002)]
@@ -97,6 +146,12 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     {
         public override uint Id => 0x2E007002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E007002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {

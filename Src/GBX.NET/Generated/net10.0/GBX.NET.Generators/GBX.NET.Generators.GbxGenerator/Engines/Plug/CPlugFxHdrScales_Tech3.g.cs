@@ -34,6 +34,11 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F5000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFxHdrScales_Tech3()
     {
     }
@@ -47,6 +52,16 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
         public float U02;
         public float U03;
         public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F5000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F5000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F5000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F5000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F5000)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugFxHdrScales_Tech3 n, GbxReaderWriter rw)
         {

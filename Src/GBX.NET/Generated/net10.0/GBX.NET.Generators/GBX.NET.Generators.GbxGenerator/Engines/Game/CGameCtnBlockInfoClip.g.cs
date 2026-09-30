@@ -130,6 +130,23 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         set => this.symmetricalClipGroupId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoClip)clone).aSymmetricalClipId = context.Clone(this.aSymmetricalClipId)!;
+        ((CGameCtnBlockInfoClip)clone).isFullFreeClip = context.Clone(this.isFullFreeClip)!;
+        ((CGameCtnBlockInfoClip)clone).isExclusiveFreeClip = context.Clone(this.isExclusiveFreeClip)!;
+        ((CGameCtnBlockInfoClip)clone).clipType = context.Clone(this.clipType)!;
+        ((CGameCtnBlockInfoClip)clone).canBeDeletedByFullFreeClip = context.Clone(this.canBeDeletedByFullFreeClip)!;
+        ((CGameCtnBlockInfoClip)clone).topBottomMultiDir = context.Clone(this.topBottomMultiDir)!;
+        ((CGameCtnBlockInfoClip)clone).hasPassingPoint = context.Clone(this.hasPassingPoint)!;
+        ((CGameCtnBlockInfoClip)clone).passingPointPos = context.Clone(this.passingPointPos)!;
+        ((CGameCtnBlockInfoClip)clone).passingPointRoll = context.Clone(this.passingPointRoll)!;
+        ((CGameCtnBlockInfoClip)clone).passingPointPitch = context.Clone(this.passingPointPitch)!;
+        ((CGameCtnBlockInfoClip)clone).clipGroupId = context.Clone(this.clipGroupId)!;
+        ((CGameCtnBlockInfoClip)clone).symmetricalClipGroupId = context.Clone(this.symmetricalClipGroupId)!;
+    }
+
     public CGameCtnBlockInfoClip()
     {
     }
@@ -138,6 +155,11 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     public partial class Chunk03053002 : Chunk<CGameCtnBlockInfoClip>
     {
         public override uint Id => 0x03053002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
@@ -150,6 +172,11 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     {
         public override uint Id => 0x03053004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.isFullFreeClip);
@@ -161,6 +188,11 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     public partial class Chunk03053005 : Chunk<CGameCtnBlockInfoClip>
     {
         public override uint Id => 0x03053005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
@@ -176,6 +208,15 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         public byte? U01;
         public byte? U02;
         public byte? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03053006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03053006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03053006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03053006)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
@@ -210,6 +251,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         public override uint Id => 0x03053007;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03053007)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -231,6 +278,14 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         public int Version { get; set; }
         public string? U01;
         public string? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03053008)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03053008)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03053008)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {

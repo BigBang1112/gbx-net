@@ -93,6 +93,15 @@ public partial class CSceneVehicle : CSceneMobil, IClass
 
     public CPlugVehicleVisModelShared? GetVehicleStruct(GbxReadSettings settings = default, bool exceptions = false) => vehicleStructFile?.GetNode(ref vehicleStruct, settings, exceptions) ?? vehicleStruct;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneVehicle)clone).vehicleTunings = context.Clone(this.vehicleTunings)!;
+        ((CSceneVehicle)clone).vehicleMaterials = context.Clone(this.vehicleMaterials)!;
+        ((CSceneVehicle)clone).environment = context.Clone(this.environment)!;
+        ((CSceneVehicle)clone).vehicleStruct = context.Clone(this.vehicleStruct)!;
+    }
+
     public CSceneVehicle()
     {
     }
@@ -102,6 +111,12 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     {
         public override uint Id => 0x0A060000;
         public CMwNod? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A060000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneVehicle n, GbxReaderWriter rw)
         {

@@ -102,6 +102,19 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         set => this.audioToSpeechTarget = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockSound)clone).sound = context.Clone(this.sound)!;
+        ((CGameCtnMediaBlockSound)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockSound)clone).playCount = context.Clone(this.playCount)!;
+        ((CGameCtnMediaBlockSound)clone).isLooping = context.Clone(this.isLooping)!;
+        ((CGameCtnMediaBlockSound)clone).isMusic = context.Clone(this.isMusic)!;
+        ((CGameCtnMediaBlockSound)clone).stopWithClip = context.Clone(this.stopWithClip)!;
+        ((CGameCtnMediaBlockSound)clone).audioToSpeech = context.Clone(this.audioToSpeech)!;
+        ((CGameCtnMediaBlockSound)clone).audioToSpeechTarget = context.Clone(this.audioToSpeechTarget)!;
+    }
+
     public CGameCtnMediaBlockSound()
     {
     }
@@ -112,6 +125,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     public partial class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
     {
         public override uint Id => 0x030A7001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
         {
@@ -125,6 +143,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     {
         public override uint Id => 0x030A7002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.playCount);
@@ -137,6 +160,12 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     {
         public override uint Id => 0x030A7003;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A7003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
         {
@@ -164,6 +193,12 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         public override uint Id => 0x030A7004;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A7004)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
         {
             rw.PackDesc(ref n.sound);
@@ -172,7 +207,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -200,6 +235,22 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         {
             get => this.position;
             set => this.position = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).volume = context.Clone(this.volume)!;
+            ((Key)clone).pan = context.Clone(this.pan)!;
+            ((Key)clone).position = context.Clone(this.position)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

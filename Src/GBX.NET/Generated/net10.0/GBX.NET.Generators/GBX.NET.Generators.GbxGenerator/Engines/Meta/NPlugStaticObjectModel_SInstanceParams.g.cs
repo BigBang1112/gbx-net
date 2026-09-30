@@ -41,6 +41,13 @@ public partial class NPlugStaticObjectModel_SInstanceParams : SMetaPtr, IClass, 
         set => this.phase01 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugStaticObjectModel_SInstanceParams)clone).phase01 = context.Clone(this.phase01)!;
+        ((NPlugStaticObjectModel_SInstanceParams)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugStaticObjectModel_SInstanceParams()
     {
     }

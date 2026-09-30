@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFog)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockFog()
     {
     }
@@ -54,6 +60,12 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
         public override uint Id => 0x03199000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03199000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -61,7 +73,7 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -117,6 +129,26 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
         {
             get => this.cloudsSpeed;
             set => this.cloudsSpeed = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).intensity = context.Clone(this.intensity)!;
+            ((Key)clone).skyIntensity = context.Clone(this.skyIntensity)!;
+            ((Key)clone).distance = context.Clone(this.distance)!;
+            ((Key)clone).coefficient = context.Clone(this.coefficient)!;
+            ((Key)clone).color = context.Clone(this.color)!;
+            ((Key)clone).cloudsOpacity = context.Clone(this.cloudsOpacity)!;
+            ((Key)clone).cloudsSpeed = context.Clone(this.cloudsSpeed)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

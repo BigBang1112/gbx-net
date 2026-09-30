@@ -58,6 +58,14 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         set => this.manialinkUrl = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockManialink)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockManialink)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockManialink)clone).manialinkUrl = context.Clone(this.manialinkUrl)!;
+    }
+
     public CGameCtnMediaBlockManialink()
     {
     }
@@ -79,6 +87,12 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     {
         public override uint Id => 0x0312A001;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312A001)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockManialink n, GbxReaderWriter rw)
         {

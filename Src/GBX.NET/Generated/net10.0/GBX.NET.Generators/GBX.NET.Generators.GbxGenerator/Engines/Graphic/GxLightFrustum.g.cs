@@ -34,6 +34,11 @@ public partial class GxLightFrustum : GxLightBall, IClass
     [Hexadecimal]
     public static new uint Id => 0x0400A000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public GxLightFrustum()
     {
     }
@@ -50,6 +55,19 @@ public partial class GxLightFrustum : GxLightBall, IClass
         public float U06;
         public float U07;
         public int U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0400A004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0400A004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0400A004)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0400A004)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0400A004)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0400A004)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0400A004)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0400A004)clone).U08 = context.Clone(this.U08)!;
+        }
 
         public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
         {
@@ -71,6 +89,14 @@ public partial class GxLightFrustum : GxLightBall, IClass
         public bool U01;
         public BoxAligned U02;
         public uint U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0400A006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0400A006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0400A006)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
         {

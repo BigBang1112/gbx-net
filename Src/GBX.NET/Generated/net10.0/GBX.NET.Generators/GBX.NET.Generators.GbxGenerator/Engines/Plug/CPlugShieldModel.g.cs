@@ -154,6 +154,26 @@ public partial class CPlugShieldModel : CMwNod, IClass
         set => this.shapeVisModel = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugShieldModel)clone).shieldActiveSound = context.Clone(this.shieldActiveSound)!;
+        ((CPlugShieldModel)clone).shieldTouchSound = context.Clone(this.shieldTouchSound)!;
+        ((CPlugShieldModel)clone).shieldDestroySound = context.Clone(this.shieldDestroySound)!;
+        ((CPlugShieldModel)clone).shieldTouchParticleRef = context.Clone(this.shieldTouchParticleRef)!;
+        ((CPlugShieldModel)clone).shieldTouchParticle = context.Clone(this.shieldTouchParticle)!;
+        ((CPlugShieldModel)clone).textureNotches = context.Clone(this.textureNotches)!;
+        ((CPlugShieldModel)clone).relativePos = context.Clone(this.relativePos)!;
+        ((CPlugShieldModel)clone).needActivation = context.Clone(this.needActivation)!;
+        ((CPlugShieldModel)clone).isBouncing = context.Clone(this.isBouncing)!;
+        ((CPlugShieldModel)clone).shieldArmor = context.Clone(this.shieldArmor)!;
+        ((CPlugShieldModel)clone).shieldDuration = context.Clone(this.shieldDuration)!;
+        ((CPlugShieldModel)clone).shapeRef = context.Clone(this.shapeRef)!;
+        ((CPlugShieldModel)clone).shape = context.Clone(this.shape)!;
+        ((CPlugShieldModel)clone).shapeVisModelRef = context.Clone(this.shapeVisModelRef)!;
+        ((CPlugShieldModel)clone).shapeVisModel = context.Clone(this.shapeVisModel)!;
+    }
+
     public CPlugShieldModel()
     {
     }
@@ -170,6 +190,19 @@ public partial class CPlugShieldModel : CMwNod, IClass
         public float U05;
         public bool U06;
         public bool U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09111000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09111000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09111000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09111000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09111000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09111000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09111000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09111000)clone).U07 = context.Clone(this.U07)!;
+        }
 
         public override void ReadWrite(CPlugShieldModel n, GbxReaderWriter rw)
         {

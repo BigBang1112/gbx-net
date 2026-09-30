@@ -66,6 +66,15 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCameraEffectScript)clone).script = context.Clone(this.script)!;
+        ((CGameCtnMediaBlockCameraEffectScript)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockCameraEffectScript)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockCameraEffectScript)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockCameraEffectScript()
     {
     }
@@ -90,6 +99,12 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         public override uint Id => 0x03161000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03161000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectScript n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -105,7 +120,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -133,6 +148,22 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         {
             get => this.c;
             set => this.c = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).a = context.Clone(this.a)!;
+            ((Key)clone).b = context.Clone(this.b)!;
+            ((Key)clone).c = context.Clone(this.c)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

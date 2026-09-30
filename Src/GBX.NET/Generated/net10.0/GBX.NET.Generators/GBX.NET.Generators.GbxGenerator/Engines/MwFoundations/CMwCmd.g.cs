@@ -34,6 +34,11 @@ public abstract partial class CMwCmd : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x01005000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMwCmd()
     {
     }

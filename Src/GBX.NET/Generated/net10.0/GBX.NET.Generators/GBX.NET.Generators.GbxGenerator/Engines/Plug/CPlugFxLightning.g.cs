@@ -51,6 +51,12 @@ public partial class CPlugFxLightning : CPlug, IClass
 
     public CPlugSound? GetSound(GbxReadSettings settings = default, bool exceptions = false) => soundFile?.GetNode(ref sound, settings, exceptions) ?? sound;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugFxLightning)clone).sound = context.Clone(this.sound)!;
+    }
+
     public CPlugFxLightning()
     {
     }
@@ -69,6 +75,21 @@ public partial class CPlugFxLightning : CPlug, IClass
         public float U07;
         public float U08;
         public float U09;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090D8000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090D8000)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090D8000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090D8000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090D8000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090D8000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090D8000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090D8000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090D8000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090D8000)clone).U09 = context.Clone(this.U09)!;
+        }
 
         public override void ReadWrite(CPlugFxLightning n, GbxReaderWriter rw)
         {

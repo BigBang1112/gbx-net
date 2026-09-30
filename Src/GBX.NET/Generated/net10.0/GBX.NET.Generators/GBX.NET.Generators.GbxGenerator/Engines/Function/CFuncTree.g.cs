@@ -34,6 +34,11 @@ public abstract partial class CFuncTree : CFuncPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0501C000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CFuncTree()
     {
     }

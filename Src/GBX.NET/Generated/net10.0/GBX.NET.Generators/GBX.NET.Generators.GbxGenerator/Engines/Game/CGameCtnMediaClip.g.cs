@@ -71,6 +71,18 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         set => this.stopWhenRespawn = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaClip)clone).scene = context.Clone(this.scene)!;
+        ((CGameCtnMediaClip)clone).localPlayerClipEntIndex = context.Clone(this.localPlayerClipEntIndex)!;
+        ((CGameCtnMediaClip)clone).stopWhenLeave = context.Clone(this.stopWhenLeave)!;
+        ((CGameCtnMediaClip)clone).stopWhenRespawn = context.Clone(this.stopWhenRespawn)!;
+        ((CGameCtnMediaClip)clone).name = context.Clone(this.name)!;
+        ((CGameCtnMediaClip)clone).tracks = context.CloneList(this.tracks)!;
+        ((CGameCtnMediaClip)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
+    }
+
     public CGameCtnMediaClip()
     {
     }
@@ -83,6 +95,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x03079002;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03079002)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
@@ -102,6 +120,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override uint Id => 0x03079003;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
@@ -119,6 +142,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override uint Id => 0x03079004;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.NodeRef<CSceneLayout>(ref n.scene);
@@ -134,6 +162,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x03079005;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -145,6 +178,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x03079007;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
@@ -160,6 +198,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3;
         public float U01 = 0.2f;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03079008)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -173,6 +217,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override uint Id => 0x03079009;
         public override GameVersion GameVersion => GameVersion.MP3;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03079009)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
@@ -190,6 +240,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override uint Id => 0x0307900A;
         public override GameVersion GameVersion => GameVersion.MP3;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.stopWhenLeave);
@@ -204,6 +259,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0307900B)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -215,6 +276,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x0307900C;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0307900C)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
@@ -235,6 +302,15 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public bool U01;
         public string? U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0307900D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0307900D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0307900D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0307900D)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
@@ -258,6 +334,13 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0307900E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0307900E)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {

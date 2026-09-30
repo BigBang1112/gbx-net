@@ -34,6 +34,11 @@ public partial class CMwCmdExpClass : CMwCmdExp, IClass
     [Hexadecimal]
     public static new uint Id => 0x01056000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMwCmdExpClass()
     {
     }
@@ -43,6 +48,12 @@ public partial class CMwCmdExpClass : CMwCmdExp, IClass
     {
         public override uint Id => 0x01056000;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk01056000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CMwCmdExpClass n, GbxReaderWriter rw)
         {

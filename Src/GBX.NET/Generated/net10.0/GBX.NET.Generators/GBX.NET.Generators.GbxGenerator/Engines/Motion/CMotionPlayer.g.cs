@@ -50,6 +50,13 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.tracks = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotionPlayer)clone).@base = context.Clone(this.@base)!;
+        ((CMotionPlayer)clone).tracks = context.CloneList(this.tracks)!;
+    }
+
     public CMotionPlayer()
     {
     }
@@ -61,6 +68,14 @@ public partial class CMotionPlayer : CMotion, IClass
         public int U01;
         public bool U02;
         public string? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk08034004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk08034004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk08034004)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {

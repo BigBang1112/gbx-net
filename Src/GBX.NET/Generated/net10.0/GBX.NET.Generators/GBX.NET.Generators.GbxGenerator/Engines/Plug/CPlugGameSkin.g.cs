@@ -88,6 +88,18 @@ public partial class CPlugGameSkin : CMwNod, IClass
         set => this.customizableFids = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugGameSkin)clone).dirName = context.Clone(this.dirName)!;
+        ((CPlugGameSkin)clone).painterTextureName = context.Clone(this.painterTextureName)!;
+        ((CPlugGameSkin)clone).painterSceneId = context.Clone(this.painterSceneId)!;
+        ((CPlugGameSkin)clone).headerFids = context.CloneArray(this.headerFids)!;
+        ((CPlugGameSkin)clone).dirNameAlt = context.Clone(this.dirNameAlt)!;
+        ((CPlugGameSkin)clone).customizableFids = context.CloneArray(this.customizableFids)!;
+        ((CPlugGameSkin)clone).CustomizableFids2 = context.CloneArray(this.CustomizableFids2)!;
+    }
+
     public CPlugGameSkin()
     {
     }
@@ -103,6 +115,16 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public string? U02;
         public int U03;
         public byte U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk090F4000)clone).Version = context.Clone(this.Version)!;
+            ((HeaderChunk090F4000)clone).U01 = context.Clone(this.U01)!;
+            ((HeaderChunk090F4000)clone).U02 = context.Clone(this.U02)!;
+            ((HeaderChunk090F4000)clone).U03 = context.Clone(this.U03)!;
+            ((HeaderChunk090F4000)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
@@ -148,18 +170,33 @@ public partial class CPlugGameSkin : CMwNod, IClass
     public partial class Chunk090F4000 : Chunk<CPlugGameSkin>
     {
         public override uint Id => 0x090F4000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090F4001)]
     public partial class Chunk090F4001 : Chunk<CPlugGameSkin>
     {
         public override uint Id => 0x090F4001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090F4003)]
     public partial class Chunk090F4003 : Chunk<CPlugGameSkin>
     {
         public override uint Id => 0x090F4003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
@@ -176,6 +213,15 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public bool U01;
         public string? U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F4004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F4004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F4004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F4004)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
@@ -212,7 +258,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
-    public partial class HeaderFid : IReadableWritable, IReadable, IWritable
+    public partial class HeaderFid : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private uint classId;
         public uint ClassId
@@ -242,6 +288,22 @@ public partial class CPlugGameSkin : CMwNod, IClass
             set => this.mipMaps = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (HeaderFid)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((HeaderFid)clone).classId = context.Clone(this.classId)!;
+            ((HeaderFid)clone).name = context.Clone(this.name)!;
+            ((HeaderFid)clone).directory = context.Clone(this.directory)!;
+            ((HeaderFid)clone).mipMaps = context.Clone(this.mipMaps)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.UInt32(ref this.classId);
@@ -267,8 +329,26 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
-    public partial class Fid : IReadableWritable, IReadable, IWritable
+    public partial class Fid : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Fid)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Fid)clone).classId = context.Clone(this.classId)!;
+            ((Fid)clone).name = context.Clone(this.name)!;
+            ((Fid)clone).node = context.Clone(this.node)!;
+            ((Fid)clone).directory = context.Clone(this.directory)!;
+            ((Fid)clone).mipMaps = context.Clone(this.mipMaps)!;
+            ((Fid)clone).nodeFile = context.Clone(this.nodeFile)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

@@ -34,6 +34,11 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09094000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVehicleGearBox()
     {
     }
@@ -55,6 +60,24 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
         public float U10;
         public float? U11;
         public float? U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09094001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09094001)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk09094001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09094001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09094001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09094001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09094001)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09094001)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk09094001)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk09094001)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09094001)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk09094001)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk09094001)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CPlugVehicleGearBox n, GbxReaderWriter rw)
         {

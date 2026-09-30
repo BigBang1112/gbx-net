@@ -530,6 +530,73 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
         set => this.mostNetted = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimePlay = context.Clone(this.totalTimePlay)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSolo = context.Clone(this.totalTimeInSolo)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSoloRace = context.Clone(this.totalTimeInSoloRace)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSoloPuzzle = context.Clone(this.totalTimeInSoloPuzzle)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSoloPlatform = context.Clone(this.totalTimeInSoloPlatform)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSoloScript = context.Clone(this.totalTimeInSoloScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInSplitScreen = context.Clone(this.totalTimeInSplitScreen)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInHotSeat = context.Clone(this.totalTimeInHotSeat)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetwork = context.Clone(this.totalTimeInNetwork)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkTimeAttack = context.Clone(this.totalTimeInNetworkTimeAttack)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkRounds = context.Clone(this.totalTimeInNetworkRounds)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkLaps = context.Clone(this.totalTimeInNetworkLaps)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkStunts = context.Clone(this.totalTimeInNetworkStunts)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkCup = context.Clone(this.totalTimeInNetworkCup)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInNetworkScript = context.Clone(this.totalTimeInNetworkScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInEditChallenge = context.Clone(this.totalTimeInEditChallenge)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInEditReplay = context.Clone(this.totalTimeInEditReplay)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInEditSkin = context.Clone(this.totalTimeInEditSkin)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalTimeInManiaLink = context.Clone(this.totalTimeInManiaLink)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalNbReset = context.Clone(this.totalNbReset)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalNbFinish = context.Clone(this.totalNbFinish)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).totalNbChallenges = context.Clone(this.totalNbChallenges)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimePlay = context.Clone(this.averageTimePlay)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSolo = context.Clone(this.averageTimeInSolo)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSoloRace = context.Clone(this.averageTimeInSoloRace)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSoloPuzzle = context.Clone(this.averageTimeInSoloPuzzle)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSoloPlatform = context.Clone(this.averageTimeInSoloPlatform)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSoloScript = context.Clone(this.averageTimeInSoloScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInSplitScreen = context.Clone(this.averageTimeInSplitScreen)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInHotSeat = context.Clone(this.averageTimeInHotSeat)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetwork = context.Clone(this.averageTimeInNetwork)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkTimeAttack = context.Clone(this.averageTimeInNetworkTimeAttack)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkRounds = context.Clone(this.averageTimeInNetworkRounds)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkLaps = context.Clone(this.averageTimeInNetworkLaps)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkStunts = context.Clone(this.averageTimeInNetworkStunts)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkCup = context.Clone(this.averageTimeInNetworkCup)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInNetworkScript = context.Clone(this.averageTimeInNetworkScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageTimeInEditChallenge = context.Clone(this.averageTimeInEditChallenge)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageNbReset = context.Clone(this.averageNbReset)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).averageNbFinish = context.Clone(this.averageNbFinish)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimePlay = context.Clone(this.maxTimePlay)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSolo = context.Clone(this.maxTimeInSolo)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSoloRace = context.Clone(this.maxTimeInSoloRace)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSoloPuzzle = context.Clone(this.maxTimeInSoloPuzzle)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSoloPlatform = context.Clone(this.maxTimeInSoloPlatform)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSoloScript = context.Clone(this.maxTimeInSoloScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInSplitScreen = context.Clone(this.maxTimeInSplitScreen)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInHotSeat = context.Clone(this.maxTimeInHotSeat)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetwork = context.Clone(this.maxTimeInNetwork)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkTimeAttack = context.Clone(this.maxTimeInNetworkTimeAttack)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkRounds = context.Clone(this.maxTimeInNetworkRounds)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkLaps = context.Clone(this.maxTimeInNetworkLaps)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkStunts = context.Clone(this.maxTimeInNetworkStunts)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkCup = context.Clone(this.maxTimeInNetworkCup)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInNetworkScript = context.Clone(this.maxTimeInNetworkScript)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxTimeInEditChallenge = context.Clone(this.maxTimeInEditChallenge)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxNbReset = context.Clone(this.maxNbReset)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).maxNbFinish = context.Clone(this.maxNbFinish)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).mostPlayed = context.Clone(this.mostPlayed)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).mostRaced = context.Clone(this.mostRaced)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).mostEdited = context.Clone(this.mostEdited)!;
+        ((CGamePlayerProfileChunk_GameStats)clone).mostNetted = context.Clone(this.mostNetted)!;
+    }
+
     public CGamePlayerProfileChunk_GameStats()
     {
     }
@@ -540,6 +607,13 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
         public override uint Id => 0x03147000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03147000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03147000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_GameStats n, GbxReaderWriter rw)
         {

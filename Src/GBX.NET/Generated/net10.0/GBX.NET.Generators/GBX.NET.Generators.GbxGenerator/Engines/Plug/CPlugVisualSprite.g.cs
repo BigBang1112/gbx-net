@@ -42,6 +42,12 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         set => this.spriteParam = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisualSprite)clone).spriteParam = context.Clone(this.spriteParam)!;
+    }
+
     public CPlugVisualSprite()
     {
     }
@@ -56,6 +62,17 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         public float U04;
         public float U05;
         public float U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09010005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09010005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09010005)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09010005)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09010005)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09010005)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
@@ -75,6 +92,13 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         public short U01;
         public short U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09010006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09010006)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
             rw.Int16(ref U01);
@@ -87,6 +111,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     {
         public override uint Id => 0x09010008;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
             rw.Node<CPlugSpriteParam>(ref n.spriteParam);
@@ -98,6 +127,12 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     {
         public override uint Id => 0x09010009;
         public Rect[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09010009)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {

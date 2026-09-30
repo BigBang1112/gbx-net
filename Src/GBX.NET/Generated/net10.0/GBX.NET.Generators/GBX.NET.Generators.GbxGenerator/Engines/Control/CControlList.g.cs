@@ -34,6 +34,11 @@ public partial class CControlList : CControlContainer, IClass
     [Hexadecimal]
     public static new uint Id => 0x0700F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CControlList()
     {
     }
@@ -50,6 +55,19 @@ public partial class CControlList : CControlContainer, IClass
         public int U06;
         public int U07;
         public Unknown[]? U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700F007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0700F007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0700F007)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0700F007)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0700F007)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0700F007)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0700F007)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0700F007)clone).U08 = context.CloneArray(this.U08)!;
+        }
 
         public override void ReadWrite(CControlList n, GbxReaderWriter rw)
         {
@@ -79,6 +97,21 @@ public partial class CControlList : CControlContainer, IClass
         public float U09;
         public bool U10;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700F00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0700F00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0700F00A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0700F00A)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0700F00A)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0700F00A)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0700F00A)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0700F00A)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0700F00A)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0700F00A)clone).U10 = context.Clone(this.U10)!;
+        }
+
         public override void ReadWrite(CControlList n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -99,7 +132,7 @@ public partial class CControlList : CControlContainer, IClass
         }
     }
 
-    public partial class Unknown : IReadableWritable, IReadable, IWritable
+    public partial class Unknown : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -134,6 +167,23 @@ public partial class CControlList : CControlContainer, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Unknown)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Unknown)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown)clone).u02 = context.Clone(this.u02)!;
+            ((Unknown)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown)clone).u04 = context.Clone(this.u04)!;
+            ((Unknown)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

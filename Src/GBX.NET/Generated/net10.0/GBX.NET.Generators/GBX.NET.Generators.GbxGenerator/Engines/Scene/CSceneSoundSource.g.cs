@@ -45,6 +45,12 @@ public partial class CSceneSoundSource : CScenePoc, IClass
         set => this.soundSource = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneSoundSource)clone).soundSource = context.Clone(this.soundSource)!;
+    }
+
     public CSceneSoundSource()
     {
     }
@@ -53,6 +59,11 @@ public partial class CSceneSoundSource : CScenePoc, IClass
     public partial class Chunk0A00E000 : Chunk<CSceneSoundSource>
     {
         public override uint Id => 0x0A00E000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneSoundSource n, GbxReaderWriter rw)
         {

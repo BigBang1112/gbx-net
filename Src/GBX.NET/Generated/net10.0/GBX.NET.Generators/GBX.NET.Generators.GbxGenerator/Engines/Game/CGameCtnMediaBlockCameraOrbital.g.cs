@@ -43,6 +43,12 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCameraOrbital)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockCameraOrbital()
     {
     }
@@ -53,6 +59,11 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
     public partial class Chunk030A0000 : Chunk<CGameCtnMediaBlockCameraOrbital>
     {
         public override uint Id => 0x030A0000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraOrbital n, GbxReaderWriter rw)
         {
@@ -66,6 +77,12 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         public override uint Id => 0x030A0001;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A0001)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraOrbital n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -73,7 +90,7 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -171,6 +188,32 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         {
             get => this.u06;
             set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).radius = context.Clone(this.radius)!;
+            ((Key)clone).longitude = context.Clone(this.longitude)!;
+            ((Key)clone).latitude = context.Clone(this.latitude)!;
+            ((Key)clone).targetPosition = context.Clone(this.targetPosition)!;
+            ((Key)clone).fov = context.Clone(this.fov)!;
+            ((Key)clone).minRenderDistance = context.Clone(this.minRenderDistance)!;
+            ((Key)clone).maxRenderDistance = context.Clone(this.maxRenderDistance)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).u04 = context.Clone(this.u04)!;
+            ((Key)clone).u05 = context.Clone(this.u05)!;
+            ((Key)clone).u06 = context.Clone(this.u06)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

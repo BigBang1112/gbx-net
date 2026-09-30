@@ -42,6 +42,12 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
         set => this.value = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMwCmdAffectIdent)clone).value = context.Clone(this.value)!;
+    }
+
     public CMwCmdAffectIdent()
     {
     }
@@ -52,6 +58,13 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
         public override uint Id => 0x01032000;
         public string? U01;
         public bool U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk01032000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk01032000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CMwCmdAffectIdent n, GbxReaderWriter rw)
         {

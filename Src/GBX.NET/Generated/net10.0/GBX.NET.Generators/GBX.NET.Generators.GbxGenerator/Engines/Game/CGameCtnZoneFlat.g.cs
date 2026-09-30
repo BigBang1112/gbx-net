@@ -118,6 +118,17 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
         set => this.autoSimplifyGenealogy = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZoneFlat)clone).blockInfoFlat = context.Clone(this.blockInfoFlat)!;
+        ((CGameCtnZoneFlat)clone).blockInfoClip = context.Clone(this.blockInfoClip)!;
+        ((CGameCtnZoneFlat)clone).blockInfoRoad = context.Clone(this.blockInfoRoad)!;
+        ((CGameCtnZoneFlat)clone).blockInfoPylon = context.Clone(this.blockInfoPylon)!;
+        ((CGameCtnZoneFlat)clone).groundOnly = context.Clone(this.groundOnly)!;
+        ((CGameCtnZoneFlat)clone).autoSimplifyGenealogy = context.Clone(this.autoSimplifyGenealogy)!;
+    }
+
     public CGameCtnZoneFlat()
     {
     }
@@ -126,6 +137,11 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     public partial class Chunk0305D001 : Chunk<CGameCtnZoneFlat>
     {
         public override uint Id => 0x0305D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFlat n, GbxReaderWriter rw)
         {
@@ -143,6 +159,13 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
         public int U01;
         public bool U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305D002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0305D002)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGameCtnZoneFlat n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -155,6 +178,11 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     public partial class Chunk0305D003 : SkippableChunk<CGameCtnZoneFlat>
     {
         public override uint Id => 0x0305D003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFlat n, GbxReaderWriter rw)
         {

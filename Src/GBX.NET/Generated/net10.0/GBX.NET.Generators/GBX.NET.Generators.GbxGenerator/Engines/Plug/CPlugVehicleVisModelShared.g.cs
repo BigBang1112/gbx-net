@@ -58,6 +58,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         set => this.vehicleEmitters = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehicleVisModelShared)clone).simulationWheels = context.CloneArray(this.simulationWheels)!;
+        ((CPlugVehicleVisModelShared)clone).vehicleMaterialGroups = context.CloneArray(this.vehicleMaterialGroups)!;
+        ((CPlugVehicleVisModelShared)clone).vehicleEmitters = context.CloneArray(this.vehicleEmitters)!;
+        ((CPlugVehicleVisModelShared)clone).visualVehicles = context.CloneArray(this.visualVehicles)!;
+    }
+
     public CPlugVehicleVisModelShared()
     {
     }
@@ -66,6 +75,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8005 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -77,48 +91,89 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8006 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E8009)]
     public partial class Chunk090E8009 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E800A)]
     public partial class Chunk090E800A : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E800C)]
     public partial class Chunk090E800C : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E800C)clone).U01 = context.CloneArray(this.U01)!;
+        }
     }
 
     [Chunk(0x090E800D)]
     public partial class Chunk090E800D : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E800F)]
     public partial class Chunk090E800F : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E8010)]
     public partial class Chunk090E8010 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E8012)]
     public partial class Chunk090E8012 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -134,6 +189,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public CFuncKeysReal? U02;
         public CFuncKeysReal? U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8013)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8013)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E8013)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref U01);
@@ -147,6 +210,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     {
         public override uint Id => 0x090E8014;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef_deprec<CPlugVehicleVisEmitterModel>(ref n.vehicleEmitters!);
@@ -157,6 +225,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8015 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x090E8016)]
@@ -165,6 +238,13 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override uint Id => 0x090E8016;
         public CFuncKeysReal? U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8016)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8016)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -178,6 +258,12 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     {
         public override uint Id => 0x090E8018;
         public CPlugParticleEmitterModel? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8018)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -218,6 +304,31 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public float U18;
         public CPlugSolid2Model? U19;
         public Components.GbxRefTableFile? U19File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E801E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E801E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E801E)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E801E)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk090E801E)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090E801E)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E801E)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090E801E)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090E801E)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E801E)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090E801E)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090E801E)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090E801E)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090E801E)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090E801E)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090E801E)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090E801E)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090E801E)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090E801E)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090E801E)clone).U19 = context.Clone(this.U19)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -303,6 +414,33 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public Components.GbxRefTableFile? U20File;
         public CPlugParticleEmitterModel? U21;
         public Components.GbxRefTableFile? U21File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E801F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E801F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E801F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E801F)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E801F)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090E801F)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E801F)clone).U06 = context.CloneArray(this.U06)!;
+            ((Chunk090E801F)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090E801F)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E801F)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090E801F)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090E801F)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090E801F)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090E801F)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090E801F)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090E801F)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090E801F)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090E801F)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090E801F)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090E801F)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090E801F)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090E801F)clone).U21 = context.Clone(this.U21)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -397,6 +535,16 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public float U03;
         public float U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8020)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E8020)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8020)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E8020)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E8020)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -418,6 +566,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public int Version { get; set; }
         public CFuncKeysReal? U01;
         public CFuncKeysReal? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8021)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E8021)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8021)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -458,6 +614,38 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public CPlugLocatedSound? U24;
         public CPlugLocatedSound? U25;
         public CPlugLocatedSound? U26;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8022)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E8022)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8022)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E8022)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E8022)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090E8022)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E8022)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090E8022)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090E8022)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E8022)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090E8022)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090E8022)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090E8022)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090E8022)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090E8022)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090E8022)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090E8022)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090E8022)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090E8022)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090E8022)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090E8022)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090E8022)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090E8022)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090E8022)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090E8022)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090E8022)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090E8022)clone).U26 = context.Clone(this.U26)!;
+        }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
@@ -533,6 +721,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public int U05;
         public int U06;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E8023)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E8023)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8023)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E8023)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E8023)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090E8023)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E8023)clone).U06 = context.Clone(this.U06)!;
+        }
+
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -549,7 +749,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class SimulationWheel : IReadableWritable, IReadable, IWritable
+    public partial class SimulationWheel : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -572,6 +772,21 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => this.name = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SimulationWheel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SimulationWheel)clone).u01 = context.Clone(this.u01)!;
+            ((SimulationWheel)clone).u02 = context.Clone(this.u02)!;
+            ((SimulationWheel)clone).name = context.Clone(this.name)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Boolean(ref this.u01);
@@ -592,7 +807,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class VisualArm : IReadable, IWritable
+    public partial class VisualArm : IReadable, IWritable, IDeepCloneable
     {
         private VisualId? u01;
         public VisualId? U01
@@ -636,6 +851,24 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => this.u06 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VisualArm)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VisualArm)clone).u01 = context.Clone(this.u01)!;
+            ((VisualArm)clone).u02 = context.Clone(this.u02)!;
+            ((VisualArm)clone).u03 = context.Clone(this.u03)!;
+            ((VisualArm)clone).u04 = context.Clone(this.u04)!;
+            ((VisualArm)clone).u05 = context.Clone(this.u05)!;
+            ((VisualArm)clone).u06 = context.Clone(this.u06)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.u01 = r.ReadReadable<VisualId>(version: v);
@@ -657,7 +890,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class VisualLight : IReadable, IWritable
+    public partial class VisualLight : IReadable, IWritable, IDeepCloneable
     {
         private VisualId? u01;
         public VisualId? U01
@@ -673,6 +906,20 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VisualLight)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VisualLight)clone).u01 = context.Clone(this.u01)!;
+            ((VisualLight)clone).u02 = context.Clone(this.u02)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.u01 = r.ReadReadable<VisualId>(version: v);
@@ -686,7 +933,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class VisualWheel : IReadable, IWritable
+    public partial class VisualWheel : IReadable, IWritable, IDeepCloneable
     {
         private VisualId? u01;
         public VisualId? U01
@@ -737,6 +984,25 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => this.u07 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VisualWheel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VisualWheel)clone).u01 = context.Clone(this.u01)!;
+            ((VisualWheel)clone).u02 = context.Clone(this.u02)!;
+            ((VisualWheel)clone).u03 = context.Clone(this.u03)!;
+            ((VisualWheel)clone).u04 = context.Clone(this.u04)!;
+            ((VisualWheel)clone).u05 = context.Clone(this.u05)!;
+            ((VisualWheel)clone).u06 = context.Clone(this.u06)!;
+            ((VisualWheel)clone).u07 = context.Clone(this.u07)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.u01 = r.ReadReadable<VisualId>(version: v);
@@ -770,7 +1036,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class VisualId : IReadable, IWritable
+    public partial class VisualId : IReadable, IWritable, IDeepCloneable
     {
         private string? name;
         public string? Name
@@ -786,6 +1052,20 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => this.u01 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VisualId)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VisualId)clone).name = context.Clone(this.name)!;
+            ((VisualId)clone).u01 = context.Clone(this.u01)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.name = r.ReadId();
@@ -799,7 +1079,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
-    public partial class Emitter : IReadable, IWritable
+    public partial class Emitter : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -983,6 +1263,43 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         {
             get => this.u24;
             set => this.u24 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Emitter)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Emitter)clone).u01 = context.Clone(this.u01)!;
+            ((Emitter)clone).emitterModel = context.Clone(this.emitterModel)!;
+            ((Emitter)clone).u02 = context.Clone(this.u02)!;
+            ((Emitter)clone).u03 = context.Clone(this.u03)!;
+            ((Emitter)clone).u04 = context.Clone(this.u04)!;
+            ((Emitter)clone).u05 = context.Clone(this.u05)!;
+            ((Emitter)clone).u06 = context.Clone(this.u06)!;
+            ((Emitter)clone).u07 = context.Clone(this.u07)!;
+            ((Emitter)clone).u08 = context.Clone(this.u08)!;
+            ((Emitter)clone).u09 = context.Clone(this.u09)!;
+            ((Emitter)clone).u10 = context.Clone(this.u10)!;
+            ((Emitter)clone).u11 = context.Clone(this.u11)!;
+            ((Emitter)clone).u12 = context.Clone(this.u12)!;
+            ((Emitter)clone).u13 = context.Clone(this.u13)!;
+            ((Emitter)clone).u14 = context.Clone(this.u14)!;
+            ((Emitter)clone).u15 = context.Clone(this.u15)!;
+            ((Emitter)clone).u16 = context.Clone(this.u16)!;
+            ((Emitter)clone).u17 = context.Clone(this.u17)!;
+            ((Emitter)clone).u18 = context.Clone(this.u18)!;
+            ((Emitter)clone).u19 = context.Clone(this.u19)!;
+            ((Emitter)clone).u20 = context.Clone(this.u20)!;
+            ((Emitter)clone).u21 = context.Clone(this.u21)!;
+            ((Emitter)clone).u22 = context.Clone(this.u22)!;
+            ((Emitter)clone).u23 = context.Clone(this.u23)!;
+            ((Emitter)clone).u24 = context.Clone(this.u24)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

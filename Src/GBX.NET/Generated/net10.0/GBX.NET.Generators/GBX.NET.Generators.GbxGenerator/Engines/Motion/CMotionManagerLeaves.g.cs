@@ -42,6 +42,12 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
         set => this.mobilLeaves = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotionManagerLeaves)clone).mobilLeaves = context.Clone(this.mobilLeaves)!;
+    }
+
     public CMotionManagerLeaves()
     {
     }
@@ -50,6 +56,11 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
     public partial class Chunk0804C000 : Chunk<CMotionManagerLeaves>
     {
         public override uint Id => 0x0804C000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMotionManagerLeaves n, GbxReaderWriter rw)
         {

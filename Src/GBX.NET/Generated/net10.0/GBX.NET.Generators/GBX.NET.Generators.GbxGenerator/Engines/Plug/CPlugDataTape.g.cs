@@ -34,6 +34,11 @@ public partial class CPlugDataTape : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090CE000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugDataTape()
     {
     }
@@ -49,6 +54,18 @@ public partial class CPlugDataTape : CMwNod, IClass
         public byte[]? U04;
         public int U05;
         public byte[]? U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CE001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CE001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090CE001)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk090CE001)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk090CE001)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk090CE001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090CE001)clone).U06 = context.CloneArray(this.U06)!;
+        }
 
         public override void ReadWrite(CPlugDataTape n, GbxReaderWriter rw)
         {

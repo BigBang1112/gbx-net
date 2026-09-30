@@ -134,6 +134,21 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
     public CFuncKeysReal? GetVolumeFromInput(GbxReadSettings settings = default, bool exceptions = false) => volumeFromInputFile?.GetNode(ref volumeFromInput, settings, exceptions) ?? volumeFromInput;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSoundMulti)clone).additionalSounds = context.Clone(this.additionalSounds)!;
+        ((CPlugSoundMulti)clone).inputMapping = context.Clone(this.inputMapping)!;
+        ((CPlugSoundMulti)clone).additionalSounds2 = context.CloneArray(this.additionalSounds2)!;
+        ((CPlugSoundMulti)clone).pitchVariancePos = context.Clone(this.pitchVariancePos)!;
+        ((CPlugSoundMulti)clone).volumeVariance = context.Clone(this.volumeVariance)!;
+        ((CPlugSoundMulti)clone).avoidDuplicates = context.Clone(this.avoidDuplicates)!;
+        ((CPlugSoundMulti)clone).alternateParity = context.Clone(this.alternateParity)!;
+        ((CPlugSoundMulti)clone).pitchVarianceNeg = context.Clone(this.pitchVarianceNeg)!;
+        ((CPlugSoundMulti)clone).preferedDistances = context.CloneArray(this.preferedDistances)!;
+        ((CPlugSoundMulti)clone).volumeFromInput = context.Clone(this.volumeFromInput)!;
+    }
+
     public CPlugSoundMulti()
     {
     }
@@ -142,6 +157,11 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     public partial class Chunk09064000 : Chunk<CPlugSoundMulti>
     {
         public override uint Id => 0x09064000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
@@ -155,6 +175,11 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     {
         public override uint Id => 0x09064001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef_deprec<CMwNod>(ref n.additionalSounds2!);
@@ -167,6 +192,12 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     {
         public override uint Id => 0x09064002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09064002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
@@ -197,6 +228,13 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         public override uint Id => 0x09064003;
         public int Version { get; set; }
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09064003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09064003)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {

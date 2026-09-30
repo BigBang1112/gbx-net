@@ -66,6 +66,15 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         set => this.triggerShape = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCommonItemEntityModel)clone).phyModel = context.Clone(this.phyModel)!;
+        ((CGameCommonItemEntityModel)clone).visModel = context.Clone(this.visModel)!;
+        ((CGameCommonItemEntityModel)clone).staticObject = context.Clone(this.staticObject)!;
+        ((CGameCommonItemEntityModel)clone).triggerShape = context.Clone(this.triggerShape)!;
+    }
+
     public CGameCommonItemEntityModel()
     {
     }
@@ -89,6 +98,26 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public Iso4 U12;
         public int U13;
         public byte U14;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E027000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E027000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E027000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E027000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E027000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E027000)clone).U05 = context.CloneArray(this.U05)!;
+            ((Chunk2E027000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk2E027000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E027000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk2E027000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk2E027000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk2E027000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk2E027000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk2E027000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk2E027000)clone).U14 = context.Clone(this.U14)!;
+        }
 
         public override void ReadWrite(CGameCommonItemEntityModel n, GbxReaderWriter rw)
         {

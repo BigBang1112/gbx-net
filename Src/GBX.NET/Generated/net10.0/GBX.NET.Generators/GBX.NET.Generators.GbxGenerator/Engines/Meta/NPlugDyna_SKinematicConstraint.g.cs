@@ -125,6 +125,25 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         set => this.angleMaxDeg = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugDyna_SKinematicConstraint)clone).subVersion = context.Clone(this.subVersion)!;
+        ((NPlugDyna_SKinematicConstraint)clone).transAnimFunc = context.Clone(this.transAnimFunc)!;
+        ((NPlugDyna_SKinematicConstraint)clone).rotAnimFunc = context.Clone(this.rotAnimFunc)!;
+        ((NPlugDyna_SKinematicConstraint)clone).shaderTcType = context.Clone(this.shaderTcType)!;
+        ((NPlugDyna_SKinematicConstraint)clone).shaderTcVersion = context.Clone(this.shaderTcVersion)!;
+        ((NPlugDyna_SKinematicConstraint)clone).shaderTcAnimFunc = context.CloneArray(this.shaderTcAnimFunc)!;
+        ((NPlugDyna_SKinematicConstraint)clone).shaderTcDataTransSub = context.Clone(this.shaderTcDataTransSub)!;
+        ((NPlugDyna_SKinematicConstraint)clone).transAxis = context.Clone(this.transAxis)!;
+        ((NPlugDyna_SKinematicConstraint)clone).transMin = context.Clone(this.transMin)!;
+        ((NPlugDyna_SKinematicConstraint)clone).transMax = context.Clone(this.transMax)!;
+        ((NPlugDyna_SKinematicConstraint)clone).rotAxis = context.Clone(this.rotAxis)!;
+        ((NPlugDyna_SKinematicConstraint)clone).angleMinDeg = context.Clone(this.angleMinDeg)!;
+        ((NPlugDyna_SKinematicConstraint)clone).angleMaxDeg = context.Clone(this.angleMaxDeg)!;
+        ((NPlugDyna_SKinematicConstraint)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugDyna_SKinematicConstraint()
     {
     }
@@ -164,7 +183,7 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         ReadWrite(rw, v);
     }
 
-    public partial class AnimFunc : IReadableWritable, IReadable, IWritable
+    public partial class AnimFunc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool isDuration;
         public bool IsDuration
@@ -178,6 +197,20 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         {
             get => this.subFuncs;
             set => this.subFuncs = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AnimFunc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AnimFunc)clone).isDuration = context.Clone(this.isDuration)!;
+            ((AnimFunc)clone).subFuncs = context.CloneArray(this.subFuncs)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -199,7 +232,7 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         }
     }
 
-    public partial class SubAnimFunc : IReadableWritable, IReadable, IWritable
+    public partial class SubAnimFunc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private AnimEase ease;
         public AnimEase Ease
@@ -222,6 +255,21 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
             set => this.duration = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubAnimFunc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubAnimFunc)clone).ease = context.Clone(this.ease)!;
+            ((SubAnimFunc)clone).reverse = context.Clone(this.reverse)!;
+            ((SubAnimFunc)clone).duration = context.Clone(this.duration)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.EnumByte<AnimEase>(ref this.ease);
@@ -242,7 +290,7 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         }
     }
 
-    public partial class AnimFuncNat : IReadableWritable, IReadable, IWritable
+    public partial class AnimFuncNat : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeInt32 duration;
         public TimeInt32 Duration
@@ -256,6 +304,20 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         {
             get => this.textureId;
             set => this.textureId = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AnimFuncNat)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AnimFuncNat)clone).duration = context.Clone(this.duration)!;
+            ((AnimFuncNat)clone).textureId = context.Clone(this.textureId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -277,7 +339,7 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         }
     }
 
-    public partial class TransSubTextureIn : IReadableWritable, IReadable, IWritable
+    public partial class TransSubTextureIn : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int nbSubTexture;
         public int NbSubTexture
@@ -305,6 +367,22 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
         {
             get => this.topToBottom;
             set => this.topToBottom = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (TransSubTextureIn)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((TransSubTextureIn)clone).nbSubTexture = context.Clone(this.nbSubTexture)!;
+            ((TransSubTextureIn)clone).nbSubTexturePerLine = context.Clone(this.nbSubTexturePerLine)!;
+            ((TransSubTextureIn)clone).nbSubTexturePerColumn = context.Clone(this.nbSubTexturePerColumn)!;
+            ((TransSubTextureIn)clone).topToBottom = context.Clone(this.topToBottom)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

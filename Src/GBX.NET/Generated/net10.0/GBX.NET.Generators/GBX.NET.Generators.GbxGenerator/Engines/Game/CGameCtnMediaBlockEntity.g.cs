@@ -169,6 +169,27 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.ghostName = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockEntity)clone).recordData = context.Clone(this.recordData)!;
+        ((CGameCtnMediaBlockEntity)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockEntity)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockEntity)clone).startOffset = context.Clone(this.startOffset)!;
+        ((CGameCtnMediaBlockEntity)clone).noticeRecords = context.CloneArray(this.noticeRecords)!;
+        ((CGameCtnMediaBlockEntity)clone).noDamage = context.Clone(this.noDamage)!;
+        ((CGameCtnMediaBlockEntity)clone).forceLight = context.Clone(this.forceLight)!;
+        ((CGameCtnMediaBlockEntity)clone).forceHue = context.Clone(this.forceHue)!;
+        ((CGameCtnMediaBlockEntity)clone).lightTrailColor = context.Clone(this.lightTrailColor)!;
+        ((CGameCtnMediaBlockEntity)clone).playerModel = context.Clone(this.playerModel)!;
+        ((CGameCtnMediaBlockEntity)clone).skinNames = context.CloneList(this.skinNames)!;
+        ((CGameCtnMediaBlockEntity)clone).hasBadges = context.Clone(this.hasBadges)!;
+        ((CGameCtnMediaBlockEntity)clone).badge = context.Clone(this.badge)!;
+        ((CGameCtnMediaBlockEntity)clone).skinOptions = context.Clone(this.skinOptions)!;
+        ((CGameCtnMediaBlockEntity)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockEntity)clone).ghostName = context.Clone(this.ghostName)!;
+    }
+
     public CGameCtnMediaBlockEntity()
     {
     }
@@ -199,6 +220,19 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         public int U05;
         public int U06;
         public int U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0329F000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0329F000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0329F000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0329F000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0329F000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0329F000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0329F000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0329F000)clone).U07 = context.Clone(this.U07)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
         {
@@ -286,13 +320,18 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     {
         public override uint Id => 0x0329F002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
         {
             rw.String(ref n.skinOptions);
         }
     }
 
-    public partial class SBadge : IReadableWritable, IReadable, IWritable, IVersionable
+    public partial class SBadge : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
         public int Version { get; set; }
 
@@ -331,6 +370,24 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
             set => this.layers = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SBadge)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SBadge)clone).Version = context.Clone(this.Version)!;
+            ((SBadge)clone).color = context.Clone(this.color)!;
+            ((SBadge)clone).u01 = context.Clone(this.u01)!;
+            ((SBadge)clone).u02 = context.Clone(this.u02)!;
+            ((SBadge)clone).stickers = context.CloneList(this.stickers)!;
+            ((SBadge)clone).layers = context.CloneList(this.layers)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
@@ -359,7 +416,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         }
     }
 
-    public partial class SSticker : IReadableWritable, IReadable, IWritable
+    public partial class SSticker : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -373,6 +430,20 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SSticker)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SSticker)clone).u01 = context.Clone(this.u01)!;
+            ((SSticker)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -394,7 +465,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -443,6 +514,25 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         {
             get => this.selfIllumIntensity;
             set => this.selfIllumIntensity = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).lights = context.Clone(this.lights)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).trailIntensity = context.Clone(this.trailIntensity)!;
+            ((Key)clone).selfIllumIntensity = context.Clone(this.selfIllumIntensity)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

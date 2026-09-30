@@ -114,6 +114,21 @@ public partial class CPlugLightUserModel : CMwNod, IClass
         set => this.nightOnly = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugLightUserModel)clone).color = context.Clone(this.color)!;
+        ((CPlugLightUserModel)clone).intensity = context.Clone(this.intensity)!;
+        ((CPlugLightUserModel)clone).distance = context.Clone(this.distance)!;
+        ((CPlugLightUserModel)clone).pointEmissionRadius = context.Clone(this.pointEmissionRadius)!;
+        ((CPlugLightUserModel)clone).pointEmissionLength = context.Clone(this.pointEmissionLength)!;
+        ((CPlugLightUserModel)clone).spotInnerAngle = context.Clone(this.spotInnerAngle)!;
+        ((CPlugLightUserModel)clone).spotOuterAngle = context.Clone(this.spotOuterAngle)!;
+        ((CPlugLightUserModel)clone).spotEmissionSizeX = context.Clone(this.spotEmissionSizeX)!;
+        ((CPlugLightUserModel)clone).spotEmissionSizeY = context.Clone(this.spotEmissionSizeY)!;
+        ((CPlugLightUserModel)clone).nightOnly = context.Clone(this.nightOnly)!;
+    }
+
     public CPlugLightUserModel()
     {
     }
@@ -124,6 +139,13 @@ public partial class CPlugLightUserModel : CMwNod, IClass
         public override uint Id => 0x090F9000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F9000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F9000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugLightUserModel n, GbxReaderWriter rw)
         {

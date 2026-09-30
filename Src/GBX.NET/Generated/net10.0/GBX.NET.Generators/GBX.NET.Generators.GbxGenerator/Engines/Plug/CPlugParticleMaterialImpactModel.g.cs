@@ -34,6 +34,11 @@ public partial class CPlugParticleMaterialImpactModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B7000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugParticleMaterialImpactModel()
     {
     }

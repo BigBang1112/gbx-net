@@ -101,6 +101,18 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.angleOuterShadow = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLightSpot)clone).angleInner = context.Clone(this.angleInner)!;
+        ((GxLightSpot)clone).angleOuter = context.Clone(this.angleOuter)!;
+        ((GxLightSpot)clone).angleFlare = context.Clone(this.angleFlare)!;
+        ((GxLightSpot)clone).falloffExponent = context.Clone(this.falloffExponent)!;
+        ((GxLightSpot)clone).flags = context.Clone(this.flags)!;
+        ((GxLightSpot)clone).angleInnerShadow = context.Clone(this.angleInnerShadow)!;
+        ((GxLightSpot)clone).angleOuterShadow = context.Clone(this.angleOuterShadow)!;
+    }
+
     public GxLightSpot()
     {
     }
@@ -109,6 +121,11 @@ public partial class GxLightSpot : GxLightBall, IClass
     public partial class Chunk0400B001 : Chunk<GxLightSpot>
     {
         public override uint Id => 0x0400B001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
         {
@@ -123,6 +140,11 @@ public partial class GxLightSpot : GxLightBall, IClass
     public partial class Chunk0400B002 : Chunk<GxLightSpot>
     {
         public override uint Id => 0x0400B002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
         {
@@ -144,6 +166,15 @@ public partial class GxLightSpot : GxLightBall, IClass
         public byte U01;
         public byte U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0400B003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0400B003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0400B003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0400B003)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
         {

@@ -131,6 +131,22 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.audioEncoding = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaShootParams)clone).videoFps = context.Clone(this.videoFps)!;
+        ((CGameCtnMediaShootParams)clone).sizeX = context.Clone(this.sizeX)!;
+        ((CGameCtnMediaShootParams)clone).sizeY = context.Clone(this.sizeY)!;
+        ((CGameCtnMediaShootParams)clone).hq = context.Clone(this.hq)!;
+        ((CGameCtnMediaShootParams)clone).hqSampleCountPerAxe = context.Clone(this.hqSampleCountPerAxe)!;
+        ((CGameCtnMediaShootParams)clone).hqSoftShadows = context.Clone(this.hqSoftShadows)!;
+        ((CGameCtnMediaShootParams)clone).hqAmbientOcc = context.Clone(this.hqAmbientOcc)!;
+        ((CGameCtnMediaShootParams)clone).isAudioStream = context.Clone(this.isAudioStream)!;
+        ((CGameCtnMediaShootParams)clone).stereo3d = context.Clone(this.stereo3d)!;
+        ((CGameCtnMediaShootParams)clone).videoEncoding = context.Clone(this.videoEncoding)!;
+        ((CGameCtnMediaShootParams)clone).audioEncoding = context.Clone(this.audioEncoding)!;
+    }
+
     public CGameCtnMediaShootParams()
     {
     }
@@ -140,6 +156,12 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     {
         public override uint Id => 0x03060001;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03060001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
         {
@@ -172,6 +194,22 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         public bool U09;
         public int U10;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03060002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03060002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03060002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03060002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03060002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03060002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03060002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk03060002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk03060002)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk03060002)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk03060002)clone).U10 = context.Clone(this.U10)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -199,7 +237,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         }
     }
 
-    public partial class VideoEnc : IReadableWritable, IReadable, IWritable
+    public partial class VideoEnc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int version;
         public int Version
@@ -236,6 +274,23 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
             set => this.u04 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VideoEnc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VideoEnc)clone).version = context.Clone(this.version)!;
+            ((VideoEnc)clone).u01 = context.Clone(this.u01)!;
+            ((VideoEnc)clone).u02 = context.Clone(this.u02)!;
+            ((VideoEnc)clone).u03 = context.Clone(this.u03)!;
+            ((VideoEnc)clone).u04 = context.Clone(this.u04)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.version);
@@ -258,7 +313,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         }
     }
 
-    public partial class AudioEnc : IReadableWritable, IReadable, IWritable
+    public partial class AudioEnc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int version;
         public int Version
@@ -272,6 +327,20 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         {
             get => this.u01;
             set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AudioEnc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AudioEnc)clone).version = context.Clone(this.version)!;
+            ((AudioEnc)clone).u01 = context.Clone(this.u01)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -74,6 +74,16 @@ public partial class CGameSpawnModel : CMwNod, IClass
         set => this.defaultGravitySpawn = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameSpawnModel)clone).loc = context.Clone(this.loc)!;
+        ((CGameSpawnModel)clone).underground = context.Clone(this.underground)!;
+        ((CGameSpawnModel)clone).torqueX = context.Clone(this.torqueX)!;
+        ((CGameSpawnModel)clone).torqueDuration = context.Clone(this.torqueDuration)!;
+        ((CGameSpawnModel)clone).defaultGravitySpawn = context.Clone(this.defaultGravitySpawn)!;
+    }
+
     public CGameSpawnModel()
     {
     }
@@ -83,6 +93,12 @@ public partial class CGameSpawnModel : CMwNod, IClass
     {
         public override uint Id => 0x2E00E000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E00E000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameSpawnModel n, GbxReaderWriter rw)
         {

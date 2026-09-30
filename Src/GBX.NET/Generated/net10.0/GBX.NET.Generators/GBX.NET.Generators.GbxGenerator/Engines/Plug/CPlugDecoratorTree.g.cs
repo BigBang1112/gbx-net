@@ -149,6 +149,22 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         set => this.collidableCond = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugDecoratorTree)clone).treeId = context.Clone(this.treeId)!;
+        ((CPlugDecoratorTree)clone).material = context.Clone(this.material)!;
+        ((CPlugDecoratorTree)clone).treeLight = context.Clone(this.treeLight)!;
+        ((CPlugDecoratorTree)clone).visibleCond = context.Clone(this.visibleCond)!;
+        ((CPlugDecoratorTree)clone).visibleApplyOnChilds = context.Clone(this.visibleApplyOnChilds)!;
+        ((CPlugDecoratorTree)clone).shadowCasterCond = context.Clone(this.shadowCasterCond)!;
+        ((CPlugDecoratorTree)clone).shadowCasterApplyOnChilds = context.Clone(this.shadowCasterApplyOnChilds)!;
+        ((CPlugDecoratorTree)clone).transformVisualToSurface = context.Clone(this.transformVisualToSurface)!;
+        ((CPlugDecoratorTree)clone).existCond = context.Clone(this.existCond)!;
+        ((CPlugDecoratorTree)clone).noLocation = context.Clone(this.noLocation)!;
+        ((CPlugDecoratorTree)clone).collidableCond = context.Clone(this.collidableCond)!;
+    }
+
     public CPlugDecoratorTree()
     {
     }
@@ -157,6 +173,11 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     public partial class Chunk090A2006 : Chunk<CPlugDecoratorTree>
     {
         public override uint Id => 0x090A2006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
@@ -175,6 +196,11 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     public partial class Chunk090A2007 : Chunk<CPlugDecoratorTree>
     {
         public override uint Id => 0x090A2007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
@@ -195,6 +221,11 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     {
         public override uint Id => 0x090A2008;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -206,6 +237,11 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     public partial class Chunk090A2009 : Chunk090A2008
     {
         public override uint Id => 0x090A2009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
