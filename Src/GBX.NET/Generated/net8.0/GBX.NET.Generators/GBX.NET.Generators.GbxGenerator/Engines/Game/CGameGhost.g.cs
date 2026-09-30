@@ -51,7 +51,6 @@ public partial class CGameGhost : CMwNod, IClass
         ((CGameGhost)clone).savedMobilClassId = context.Clone(this.savedMobilClassId)!;
         ((CGameGhost)clone).sampleData = context.Clone(this.sampleData)!;
         ((CGameGhost)clone).sampleDataVersion = context.Clone(this.sampleDataVersion)!;
-        ((CGameGhost)clone).UncompressedSize = context.Clone(this.UncompressedSize)!;
         ((CGameGhost)clone).RawData = context.Clone(this.RawData)!;
         ((CGameGhost)clone).CompressedData = context.Clone(this.CompressedData)!;
     }

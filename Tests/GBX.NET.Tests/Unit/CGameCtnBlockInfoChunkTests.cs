@@ -78,18 +78,20 @@ public class CGameCtnBlockInfoChunkTests
 
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
+        using (var writerWriter = new GbxReaderWriter(writer))
         {
-            chunk.Write(original, writer);
+            chunk.ReadWrite(original, writerWriter);
         }
 
         stream.Position = 0;
         using var reader = new GbxReader(stream);
+        using var readerWriter = new GbxReaderWriter(reader);
         var restored = new CGameCtnBlockInfoClassic
         {
             Ident = new("PreviousId", new Id("Stadium"), "Author")
         };
         var restoredChunk = new CGameCtnBlockInfo.Chunk0304E005();
-        restoredChunk.Read(restored, reader);
+        restoredChunk.ReadWrite(restored, readerWriter);
 
         await Assert.That(restored.Ident.Id).IsEqualTo("PreviousId");
         await Assert.That(restored.Name).IsEqualTo("BlockId");
@@ -125,14 +127,16 @@ public class CGameCtnBlockInfoChunkTests
 
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
+        using (var writerWriter = new GbxReaderWriter(writer))
         {
-            new CGameCtnBlockInfo.Chunk0304E005().Write(original, writer);
+            new CGameCtnBlockInfo.Chunk0304E005().ReadWrite(original, writerWriter);
         }
 
         stream.Position = 0;
         using var reader = new GbxReader(stream);
+        using var readerWriter = new GbxReaderWriter(reader);
         var restored = new CGameCtnBlockInfoClassic();
-        new CGameCtnBlockInfo.Chunk0304E005().Read(restored, reader);
+        new CGameCtnBlockInfo.Chunk0304E005().ReadWrite(restored, readerWriter);
 
         await Assert.That(original.Ident.Id).IsEqualTo("BlockName");
         await Assert.That(restored.Name).IsEqualTo("BlockName");
