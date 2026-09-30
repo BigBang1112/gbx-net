@@ -2,16 +2,6 @@
 
 public partial class CGameCtnBlockInfo
 {
-    public override partial string? Name
-    {
-        get => base.Name;
-        set
-        {
-            base.Name = value;
-            base.Ident = base.Ident with { Id = value ?? string.Empty };
-        }
-    }
-
     public partial class Chunk0304E02E : IVersionable
     {
         public int Version { get; set; }

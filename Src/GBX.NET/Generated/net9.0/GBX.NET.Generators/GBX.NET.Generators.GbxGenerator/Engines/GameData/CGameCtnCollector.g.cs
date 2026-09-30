@@ -77,7 +77,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
-    public virtual partial string? Name { get; set; }
+    public partial string? Name { get; set; }
 
     private EProdState prodState;
     [AppliedWithChunk<HeaderChunk2E001003>(8)]
@@ -289,12 +289,6 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         public override uint Id => 0x2E001004;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((HeaderChunk2E001004)clone).U01 = context.Clone(this.U01)!;
-        }
     }
 
     /// <summary>

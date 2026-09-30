@@ -20,7 +20,14 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
       v8+
         byte<EProdState> ProdState
 
-0x004 (header, struct: SHeaderIcon) [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020] // icon
+0x004 (header, struct: SHeaderIcon, demonstration) [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020] // icon
+  short IconWidth // high bit marks WebP
+  short IconHeight // high bit marks WebP
+  if (IconWidth & 0x8000) != 0 && (IconHeight & 0x8000) != 0
+    short U01 = 1
+    data IconWebP
+  else
+    int[IconWidth * IconHeight] IconData // ARGB pixels, flipped vertically when mapped to Icon
 
 0x006 (header, struct: SHeaderLightMap) [TMT, MP3, MP4, TM2020] // lightmap compute time
   filetime? LightmapComputeTime

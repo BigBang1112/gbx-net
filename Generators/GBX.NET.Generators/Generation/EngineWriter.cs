@@ -292,6 +292,7 @@ internal static class EngineWriter
         foreach (var field in scope.Fields)
         {
             if (chunk && !field.IsUnknown && !field.IsVersion) continue;
+            if (!chunk && field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited"))) continue;
 
             var property = SyntaxOverlap.Escape(field.Name);
             var backing = chunk ? property : SyntaxOverlap.Backing(field.Name);
@@ -482,9 +483,13 @@ internal static class EngineWriter
             code.Line("public override GameVersion GameVersion => " + string.Join(" | ", chunk.Declaration.VersionQualifiers.Select(static x => "GameVersion." + x.Label)) + ";");
         }
 
-        Properties(code, layout, chunk.Scope, true);
+        var demonstration = LayoutModel.Has(chunk.Declaration.Attributes, "demonstration");
+        var omitMembers = LayoutModel.OmitsDemonstrationMembers(chunk.Declaration.Attributes);
 
-        if (!SyntaxOverlap.Method(chunk.Scope.Existing, "DeepCloneFields", "Chunk", "DeepCloneContext"))
+        if (!omitMembers)
+            Properties(code, layout, chunk.Scope, true);
+
+        if (!omitMembers && !SyntaxOverlap.Method(chunk.Scope.Existing, "DeepCloneFields", "Chunk", "DeepCloneContext"))
         {
             code.BlankLine();
             code.Open("internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)");
@@ -493,7 +498,7 @@ internal static class EngineWriter
             code.Close();
         }
         
-        if (!LayoutModel.Has(chunk.Declaration.Attributes, "demonstration") && chunk.Declaration.Body.Count > 0)
+        if (!demonstration && chunk.Declaration.Body.Count > 0)
         {
             foreach (var mode in chunk.Scope.Separate ? new[] { SerializationMode.Read, SerializationMode.Write } : new[] { SerializationMode.ReadWrite })
             {
@@ -534,6 +539,7 @@ internal static class EngineWriter
 
         foreach (var field in scope.Fields)
         {
+            if (!chunk && field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited"))) continue;
             if (!chunk && SyntaxOverlap.Has(scope.Existing, field.Name)) continue;
             if (chunk && !field.IsUnknown && !field.IsVersion) continue;
 

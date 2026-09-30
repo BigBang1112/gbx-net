@@ -34,9 +34,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x0304E000;
 
-    [AppliedWithChunk<Chunk0304E005>]
-    public override partial string? Name { get; set; }
-
     private bool isPillar;
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E009>]

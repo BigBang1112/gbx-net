@@ -15,7 +15,8 @@ public partial class CGameCtnCollector
         set => ident = value;
     }
 
-    public virtual partial string? Name
+    [AppliedWithChunk<GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
+    public partial string? Name
     {
         get => !string.IsNullOrEmpty(name) || string.IsNullOrEmpty(ident.Id)
             ? name
@@ -50,6 +51,12 @@ public partial class CGameCtnCollector
     public partial class HeaderChunk2E001004
     {
         public short U01 = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk2E001004)clone).U01 = context.Clone(U01)!;
+        }
 
         public override void Read(CGameCtnCollector n, GbxReader r)
         {

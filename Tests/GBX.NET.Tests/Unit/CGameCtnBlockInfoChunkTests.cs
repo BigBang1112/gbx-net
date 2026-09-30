@@ -21,7 +21,7 @@ public class CGameCtnBlockInfoChunkTests
     }
 
     [Test]
-    public async Task BlockInfo_NameOverrideUpdatesIdentThroughCollectorReference()
+    public async Task BlockInfo_NameUsesCollectorPropertyWithoutChangingIdent()
     {
         CGameCtnCollector collector = new CGameCtnBlockInfoClassic
         {
@@ -30,15 +30,17 @@ public class CGameCtnBlockInfoChunkTests
 
         collector.Name = "NewId";
 
-        await Assert.That(collector.Ident.Id).IsEqualTo("NewId");
+        await Assert.That(collector.Name).IsEqualTo("NewId");
+        await Assert.That(collector.Ident.Id).IsEqualTo("OldId");
         await Assert.That(collector.Ident.Collection).IsEqualTo(new Id("Stadium"));
         await Assert.That(collector.Ident.Author).IsEqualTo("Author");
     }
 
     [Test]
-    public async Task BlockInfo_NameOverrideRetainsCollectorChunkAttributes()
+    public async Task BlockInfo_InheritedNameRetainsCollectorChunkAttributes()
     {
         var property = typeof(CGameCtnBlockInfo).GetProperty(nameof(CGameCtnBlockInfo.Name))!;
+        await Assert.That(property.DeclaringType).IsEqualTo(typeof(CGameCtnCollector));
         var chunkTypes = Attribute.GetCustomAttributes(property, typeof(AppliedWithChunkAttribute), inherit: true)
             .Cast<AppliedWithChunkAttribute>()
             .Select(attribute => attribute.ChunkType)
@@ -89,7 +91,7 @@ public class CGameCtnBlockInfoChunkTests
         var restoredChunk = new CGameCtnBlockInfo.Chunk0304E005();
         restoredChunk.Read(restored, reader);
 
-        await Assert.That(restored.Ident.Id).IsEqualTo("BlockId");
+        await Assert.That(restored.Ident.Id).IsEqualTo("PreviousId");
         await Assert.That(restored.Name).IsEqualTo("BlockId");
         await Assert.That(restored.Ident.Collection).IsEqualTo(new Id("Stadium"));
         await Assert.That(restored.Ident.Author).IsEqualTo("Author");

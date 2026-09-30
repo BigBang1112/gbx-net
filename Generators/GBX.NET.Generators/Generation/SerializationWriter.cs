@@ -228,7 +228,8 @@ internal sealed class SerializationWriter
         var prefix = chunk ? field.IsUnknown ? "" : "n." : "this.";
         var backing = chunk && field.IsUnknown ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name);
         var property = SyntaxOverlap.Escape(field.Name);
-        var hasBacking = !SyntaxOverlap.Has(owner.Existing, field.Name) || SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@'));
+        var hasBacking = !field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited")) &&
+            (!SyntaxOverlap.Has(owner.Existing, field.Name) || SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@')));
         var target = prefix + (hasBacking ? backing : property);
         var storageType = SyntaxOverlap.MemberType(owner.Existing, (hasBacking ? backing : property).TrimStart('@')) ??
             WireTypes.CSharp(field.Declaration);

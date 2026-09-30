@@ -45,22 +45,13 @@ public partial class CGameGhost : CMwNod, IClass
         set => this.savedMobilClassId = value;
     }
 
-    private int uncompressedSize;
-    [AppliedWithChunk<Chunk0303F005>]
-    [AppliedWithChunk<Chunk0303F006>]
-    public int UncompressedSize
-    {
-        get => this.uncompressedSize;
-        set => this.uncompressedSize = value;
-    }
-
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameGhost)clone).savedMobilClassId = context.Clone(this.savedMobilClassId)!;
-        ((CGameGhost)clone).uncompressedSize = context.Clone(this.uncompressedSize)!;
         ((CGameGhost)clone).sampleData = context.Clone(this.sampleData)!;
         ((CGameGhost)clone).sampleDataVersion = context.Clone(this.sampleDataVersion)!;
+        ((CGameGhost)clone).UncompressedSize = context.Clone(this.UncompressedSize)!;
         ((CGameGhost)clone).RawData = context.Clone(this.RawData)!;
         ((CGameGhost)clone).CompressedData = context.Clone(this.CompressedData)!;
     }
@@ -106,11 +97,6 @@ public partial class CGameGhost : CMwNod, IClass
     {
         public override uint Id => 0x0303F005;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
     }
 
     [Chunk(0x0303F006)]

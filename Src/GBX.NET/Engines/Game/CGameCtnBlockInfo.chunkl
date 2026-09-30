@@ -3,7 +3,7 @@ CGameCtnBlockInfo 0x0304E000
 - abstract
 
 0x005 [TM10, TMSX, TMF]
-  id Name
+  id Name (inherited)
   int U02 // always 0?
   int U03 // always 0?
   int U04 // always 0?

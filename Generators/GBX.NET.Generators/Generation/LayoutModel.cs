@@ -48,7 +48,7 @@ internal sealed class LayoutModel
             
             Chunks.Add(model);
 
-            foreach (var field in model.Scope.Fields.Where(static x => !x.IsUnknown && !x.IsVersion))
+            foreach (var field in model.Scope.Fields.Where(x => !OmitsDemonstrationMembers(chunk.Attributes) && !x.IsUnknown && !x.IsVersion))
             {
                 foreach (var occurrence in field.Occurrences)
                 {
@@ -71,6 +71,11 @@ internal sealed class LayoutModel
     public static bool Has(AttributeList? attributes, string name)
     {
         return attributes?.Entries.Any(x => x.Name == name) == true;
+    }
+
+    public static bool OmitsDemonstrationMembers(AttributeList? attributes)
+    {
+        return Has(attributes, "demonstration") && Attribute(attributes, "demonstration") != "partial";
     }
 
     public static string? Attribute(AttributeList? attributes, string name)

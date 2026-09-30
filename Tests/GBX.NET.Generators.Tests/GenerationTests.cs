@@ -79,6 +79,47 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task DemonstrationChunksDoNotGenerateFieldsOrProperties()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 (demonstration)
+              int Demonstrated
+              int
+            0x002
+              int Serialized
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).DoesNotContain("Demonstrated");
+        await Assert.That(generated).DoesNotContain("U01");
+        await Assert.That(generated).Contains("public int Serialized");
+        await Assert.That(generated).Contains("n.serialized");
+    }
+
+    [Test]
+    public async Task PartialDemonstrationGeneratesMembersWithoutSerialization()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 (demonstration: partial)
+              int Shown
+              int
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public int Shown");
+        await Assert.That(generated).Contains("public int U01;");
+        await Assert.That(generated).DoesNotContain("rw.Int32");
+    }
+
+    [Test]
     public async Task GeneratesAttributesOnHandwrittenPartialProperties()
     {
         const string source = """
@@ -107,6 +148,33 @@ public class GenerationTests
         await Assert.That(generated).Contains("public virtual partial int Value { get; set; }");
         await Assert.That(generated).Contains("n.Value = rw.Int32(n.Value)");
         await Assert.That(generated).DoesNotContain("private int value;");
+    }
+
+    [Test]
+    public async Task UsesInheritedPropertyWithoutGeneratingDuplicateStorage()
+    {
+        var (result, compilation) = Run("", true,
+        [
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03043000
+                0x001
+                  int Name
+                """),
+            new Text("Engines/Game/Derived.chunkl", """
+                Derived 0x03044000
+                - inherits: Base
+                0x001
+                  int Name (inherited)
+                """)
+        ]);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Derived.g.cs").SourceText.ToString();
+        await Assert.That(generated).Contains("n.Name = rw.Int32(n.Name)");
+        await Assert.That(generated).DoesNotContain("int Name");
+        await Assert.That(generated).DoesNotContain("name = context.Clone");
     }
 
     [Test]
