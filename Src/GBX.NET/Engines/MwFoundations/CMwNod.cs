@@ -427,7 +427,12 @@ public partial class CMwNod : IClass
         {
             return;
         }
-        
+
+        if (dest is CMwNod destNode)
+        {
+            destNode.chunks = new ChunkSet(destNode);
+        }
+
         foreach (var chunk in chunks)
         {
             var chunkClone = chunk.DeepClone();

@@ -16,10 +16,11 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         get => vertices;
         set
         {
-            if (vertices is null || value.Length != vertices.Length)
-            {
-                vertices ??= value;
+            var sizeChanged = vertices is null || value.Length != vertices.Length;
+            vertices = value;
 
+            if (sizeChanged)
+            {
                 foreach (var key in Keys)
                 {
                     var positions = key.Positions;
@@ -29,8 +30,6 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
 
                 RemoveTrianglesOutOfRange();
             }
-
-            vertices = value;
         }
     }
 
