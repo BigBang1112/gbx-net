@@ -74,6 +74,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.autoTerrains = value;
     }
 
+    [AppliedWithChunk<Chunk0310D00B>]
+    public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
+
     private List<ObjectSpawn>? objectSpawns;
     [AppliedWithChunk<Chunk0310D00E>]
     public List<ObjectSpawn>? ObjectSpawns
@@ -105,6 +108,15 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         get => this.iconSize;
         set => this.iconSize = value;
     }
+
+    [AppliedWithChunk<Chunk0310D011>]
+    public partial Int3 ClipTriggerSize { get; set; }
+
+    [AppliedWithChunk<Chunk0310D011>]
+    public partial CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
+
+    [AppliedWithChunk<Chunk0310D011>]
+    public partial CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {

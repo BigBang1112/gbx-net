@@ -34,6 +34,9 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     [Hexadecimal]
     public static new uint Id => 0x0312F000;
 
+    [AppliedWithChunk<Chunk0312F000>]
+    public partial CInputBindingsConfig? Config { get; set; }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

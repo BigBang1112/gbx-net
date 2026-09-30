@@ -205,8 +205,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).defaultSkin = context.Clone(this.defaultSkin)!;
         ((CGameCtnCollector)clone).skinDirectory = context.Clone(this.skinDirectory)!;
         ((CGameCtnCollector)clone).isAdvanced = context.Clone(this.isAdvanced)!;
-        ((CGameCtnCollector)clone).collectorIdent = context.Clone(this.collectorIdent)!;
-        ((CGameCtnCollector)clone).collectorName = context.Clone(this.collectorName)!;
+        ((CGameCtnCollector)clone).ident = context.Clone(this.ident)!;
+        ((CGameCtnCollector)clone).name = context.Clone(this.name)!;
         ((CGameCtnCollector)clone).catalogPosition = context.Clone(this.catalogPosition)!;
         ((CGameCtnCollector)clone).nbAvailableMin = context.Clone(this.nbAvailableMin)!;
         ((CGameCtnCollector)clone).nbAvailableMax = context.Clone(this.nbAvailableMax)!;
@@ -241,7 +241,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            n.Ident = rw.Ident(n.Ident);
+            rw.Ident(ref n.ident);
             rw.VersionInt32(this);
             rw.String(ref n.pageName);
 
@@ -269,7 +269,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
                 if (Version >= 7)
                 {
-                    n.Name = rw.String(n.Name);
+                    rw.String(ref n.name);
 
                     if (Version >= 8)
                     {
@@ -357,7 +357,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            n.Ident = rw.Ident(n.Ident);
+            rw.Ident(ref n.ident);
         }
     }
 
@@ -470,7 +470,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            n.Ident = rw.Ident(n.Ident);
+            rw.Ident(ref n.ident);
         }
     }
 
@@ -491,7 +491,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            n.Name = rw.String(n.Name);
+            rw.String(ref n.name);
         }
     }
 

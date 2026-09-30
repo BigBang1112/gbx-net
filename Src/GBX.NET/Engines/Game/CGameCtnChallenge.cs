@@ -56,8 +56,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? BronzeTime
+    public partial TimeInt32? BronzeTime
     {
         get => ChallengeParameters?.BronzeTime ?? bronzeTime;
         set
@@ -71,8 +70,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? SilverTime
+    public partial TimeInt32? SilverTime
     {
         get => ChallengeParameters?.SilverTime ?? silverTime;
         set
@@ -86,8 +84,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? GoldTime
+    public partial TimeInt32? GoldTime
     {
         get => ChallengeParameters?.GoldTime ?? goldTime;
         set
@@ -101,8 +98,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? AuthorTime
+    public partial TimeInt32? AuthorTime
     {
         get => ChallengeParameters?.AuthorTime ?? authorTime;
         set
@@ -116,8 +112,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 10)]
-    public int AuthorScore
+    public partial int AuthorScore
     {
         get => ChallengeParameters?.AuthorScore ?? authorScore;
         set
@@ -238,8 +233,7 @@ public partial class CGameCtnChallenge :
     public int? NbBlocks => Blocks?.Count;
 
     private Checksum128? hashedPassword;
-    [AppliedWithChunk<Chunk03043029>]
-    public Checksum128? HashedPassword
+    public partial Checksum128? HashedPassword
     {
         get => hashedPassword;
         set
@@ -401,8 +395,7 @@ public partial class CGameCtnChallenge :
     }
 
     private CScriptTraitsMetadata? scriptMetadata;
-    [AppliedWithChunk<Chunk03043044>]
-    public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
+    public partial CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
     [AppliedWithChunk<Chunk03043048>]
     public int? NbBakedBlocks => bakedBlocks?.Count;
@@ -425,44 +418,24 @@ public partial class CGameCtnChallenge :
     public List<MacroblockInstance>? MacroblockInstances { get; set; }
 
     private bool hasCustomCamThumbnail;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    public bool HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
+    public partial bool HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     private Vec3 thumbnailPosition;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
+    public partial Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
 
     private float thumbnailFov;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
+    public partial float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
 
     private float thumbnailNearClipPlane;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
+    public partial float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
 
     private float thumbnailFarClipPlane;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
+    public partial float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
 
     private string? comments;
 
     private Vec3 thumbnailPitchYawRoll;
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
+    public partial Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
 
     /// <summary>
     /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used by the game to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is constructed from scratch again using the actual ZIP data.

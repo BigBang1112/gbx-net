@@ -7,15 +7,11 @@ public partial class CGameCtnMacroBlockInfo
     private CGameCtnMediaClipGroup? clipGroupInGame;
     private CGameCtnMediaClipGroup? clipGroupEndRace;
 
-    [AppliedWithChunk<Chunk0310D00B>]
-    public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
+    public partial CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
-    [AppliedWithChunk<Chunk0310D011>]
-    public Int3 ClipTriggerSize { get => clipTriggerSize; set => clipTriggerSize = value; }
+    public partial Int3 ClipTriggerSize { get => clipTriggerSize; set => clipTriggerSize = value; }
 
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
+    public partial CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
 
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
+    public partial CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
 }

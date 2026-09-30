@@ -57,6 +57,18 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.needUnlock = value;
     }
 
+    [AppliedWithChunk<HeaderChunk03043002>(1)]
+    public partial TimeInt32? BronzeTime { get; set; }
+
+    [AppliedWithChunk<HeaderChunk03043002>(1)]
+    public partial TimeInt32? SilverTime { get; set; }
+
+    [AppliedWithChunk<HeaderChunk03043002>(1)]
+    public partial TimeInt32? GoldTime { get; set; }
+
+    [AppliedWithChunk<HeaderChunk03043002>(1)]
+    public partial TimeInt32? AuthorTime { get; set; }
+
     private int cost;
     [AppliedWithChunk<HeaderChunk03043002>(4)]
     public int Cost
@@ -90,6 +102,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         get => this.hasClones;
         set => this.hasClones = value;
     }
+
+    [AppliedWithChunk<HeaderChunk03043002>(10)]
+    public partial int AuthorScore { get; set; }
 
     private EditorMode editor;
     [AppliedWithChunk<HeaderChunk03043002>(11)]
@@ -316,6 +331,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.clipGlobal = value;
     }
 
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    public partial bool HasCustomCamThumbnail { get; set; }
+
     private Mat3 thumbnailRotationMatrix;
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
@@ -324,6 +343,30 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         get => this.thumbnailRotationMatrix;
         set => this.thumbnailRotationMatrix = value;
     }
+
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public partial Vec3 ThumbnailPosition { get; set; }
+
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public partial float ThumbnailFov { get; set; }
+
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public partial float ThumbnailNearClipPlane { get; set; }
+
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public partial float ThumbnailFarClipPlane { get; set; }
 
     [SupportsFormatting]
     [AppliedWithChunk<Chunk03043028>]
@@ -335,6 +378,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.comments = value;
     }
 
+    [AppliedWithChunk<Chunk03043029>]
+    public partial Checksum128? HashedPassword { get; set; }
+
     private uint crc32;
     [AppliedWithChunk<Chunk03043029>]
     public uint Crc32
@@ -342,6 +388,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         get => this.crc32;
         set => this.crc32 = value;
     }
+
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
+    public partial Vec3 ThumbnailPitchYawRoll { get; set; }
 
     private byte[]? challengeDecals;
     [AppliedWithChunk<Chunk03043034>]
@@ -366,6 +416,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         get => this.carMarksBuffer;
         set => this.carMarksBuffer = value;
     }
+
+    [AppliedWithChunk<Chunk03043044>]
+    public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
 
     private CGameCtnMediaClip? clipPodium;
     [AppliedWithChunk<Chunk03043049>]

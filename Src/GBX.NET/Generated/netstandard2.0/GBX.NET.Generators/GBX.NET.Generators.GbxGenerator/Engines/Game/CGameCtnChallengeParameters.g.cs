@@ -100,6 +100,10 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorScore = value;
     }
 
+    [AppliedWithChunk<Chunk0305B00D>]
+    [AppliedWithChunk<Chunk0305B00F>]
+    public partial CGameCtnGhost? RaceValidateGhost { get; set; }
+
     private string? mapType;
     [AppliedWithChunk<Chunk0305B00E>]
     public string? MapType

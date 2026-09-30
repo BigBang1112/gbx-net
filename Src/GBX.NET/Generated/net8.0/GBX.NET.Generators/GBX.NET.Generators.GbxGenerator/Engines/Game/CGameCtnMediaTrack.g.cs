@@ -45,6 +45,9 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         set => this.name = value;
     }
 
+    [AppliedWithChunk<Chunk03078001>]
+    public partial List<CGameCtnMediaBlock> Blocks { get; set; }
+
     private bool isKeepPlaying;
     [AppliedWithChunk<Chunk03078002>]
     [AppliedWithChunk<Chunk03078004>]

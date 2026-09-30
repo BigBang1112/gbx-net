@@ -3,6 +3,5 @@
 public partial class CGamePlayerProfileChunk_InputBindingsConfig
 {
     private CInputBindingsConfig? config;
-    [AppliedWithChunk<Chunk0312F000>]
-    public CInputBindingsConfig? Config { get => config; set => config = value; }
+    public partial CInputBindingsConfig? Config { get => config; set => config = value; }
 }

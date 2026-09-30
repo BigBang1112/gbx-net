@@ -34,6 +34,18 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03079000;
 
+    [AppliedWithChunk<Chunk03079002>]
+    [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public partial List<CGameCtnMediaTrack> Tracks { get; set; }
+
+    [AppliedWithChunk<Chunk03079002>]
+    [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public partial string? Name { get; set; }
+
     private CSceneLayout? scene;
     [AppliedWithChunk<Chunk03079004>]
     public CSceneLayout? Scene
