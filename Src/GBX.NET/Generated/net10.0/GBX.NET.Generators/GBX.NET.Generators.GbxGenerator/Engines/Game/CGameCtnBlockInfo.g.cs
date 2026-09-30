@@ -34,9 +34,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x0304E000;
 
-    /// <summary>
-    /// ChunkCrypted_Base stores only the Id part of Ident.
-    /// </summary>
     [AppliedWithChunk<Chunk0304E005>]
     public override partial string? Name { get; set; }
 

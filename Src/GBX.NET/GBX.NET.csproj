@@ -47,10 +47,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2" />
-        <PackageReference Include="System.IO.Hashing" Version="10.0.2" />
-        <PackageReference Include="TmEssentials" Version="2.7.0" />
-        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.7">
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
+        <PackageReference Include="System.IO.Hashing" Version="10.0.12" />
+        <PackageReference Include="TmEssentials" Version="2.8.0" />
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.56">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

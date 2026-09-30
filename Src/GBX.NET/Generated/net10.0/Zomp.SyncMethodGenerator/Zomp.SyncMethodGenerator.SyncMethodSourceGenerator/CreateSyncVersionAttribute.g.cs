@@ -28,6 +28,11 @@ namespace Zomp.SyncMethodGenerator
         /// Gets or sets a value indicating whether <see cref="System.IProgress{T}"/> parameters will be preserved in the generated code. False by default.
         /// </summary>
         public bool PreserveProgress { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether <see cref="System.Threading.CancellationToken"/> parameters will be preserved in the generated code. False by default.
+        /// </summary>
+        public bool PreserveCancellationToken { get; set; }
     }
 #endif
 }

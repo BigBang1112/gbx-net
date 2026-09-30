@@ -20,3 +20,7 @@ Do not edit generated files directly.
 
 - Follow [.agents/coding-style.md](.agents/coding-style.md) for coding conventions
 - Follow [.agents/writing-style.md](.agents/writing-style.md) for Markdown documentation
+
+## Development notes
+
+- [.agents/generator-verification.md](.agents/generator-verification.md) lists build and test commands for generator changes

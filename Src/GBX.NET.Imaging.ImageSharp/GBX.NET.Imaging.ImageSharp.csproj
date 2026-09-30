@@ -40,7 +40,7 @@
 
     <ItemGroup>
         <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.7">
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.56">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
