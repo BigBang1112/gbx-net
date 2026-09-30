@@ -4,7 +4,7 @@ namespace GBX.NET.PAK;
 public partial class Pak
 {
     /// <summary>
-    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="NotAGbxException"/> is thrown.
+    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="global::GBX.NET.Exceptions.NotAGbxException"/> is thrown.
     /// </summary>
     /// <param name="file"></param>
     /// <param name="settings"></param>

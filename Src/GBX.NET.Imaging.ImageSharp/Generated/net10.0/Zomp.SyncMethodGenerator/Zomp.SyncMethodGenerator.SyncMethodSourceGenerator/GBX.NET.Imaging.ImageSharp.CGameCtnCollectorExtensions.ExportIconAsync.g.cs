@@ -9,7 +9,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
     /// <param name="encoder">Image encoder to use.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this global::GBX.NET.Engines.GameData.CGameCtnCollector node, global::System.IO.Stream stream, global::SixLabors.ImageSharp.Formats.IImageEncoder encoder)
     {
         using var icon = global::GBX.NET.Imaging.ImageSharp.CGameCtnCollectorExtensions.GetIconImage(node);

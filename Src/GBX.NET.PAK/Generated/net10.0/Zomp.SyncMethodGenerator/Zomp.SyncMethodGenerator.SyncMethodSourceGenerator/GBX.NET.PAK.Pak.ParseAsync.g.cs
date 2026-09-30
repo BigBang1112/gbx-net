@@ -11,7 +11,7 @@ public partial class Pak
     /// <param name="keyType">Type of the key provided.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    /// <exception cref="global::GBX.NET.PAK.Exceptions.NotAPakException">Stream is not Pak-formatted.</exception>
     public static global::GBX.NET.PAK.Pak Parse(global::System.IO.Stream stream, byte[]? key = null, global::GBX.NET.PAK.KeyType keyType = global::GBX.NET.PAK.KeyType.BaseKey)
     {
         global::System.ArgumentNullException.ThrowIfNull(stream);

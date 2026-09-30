@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRazorPages();
-
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;

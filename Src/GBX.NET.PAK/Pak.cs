@@ -101,7 +101,7 @@ public partial class Pak : IDisposable
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    /// <exception cref="global::GBX.NET.PAK.Exceptions.NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
@@ -206,7 +206,7 @@ public partial class Pak : IDisposable
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    /// <exception cref="global::GBX.NET.PAK.Exceptions.NotAPakException">Stream is not Pak-formatted.</exception>
     public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
@@ -406,7 +406,7 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
-    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="NotAGbxException"/> is thrown.
+    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="global::GBX.NET.Exceptions.NotAGbxException"/> is thrown.
     /// </summary>
     /// <param name="file"></param>
     /// <param name="settings"></param>

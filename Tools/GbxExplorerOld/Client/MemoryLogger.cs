@@ -13,7 +13,7 @@ public class MemoryLogger : ILogger
         _log = log;
     }
 
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable BeginScope<TState>(TState state) where TState : notnull
     {
         if (state is string stateStr)
         {

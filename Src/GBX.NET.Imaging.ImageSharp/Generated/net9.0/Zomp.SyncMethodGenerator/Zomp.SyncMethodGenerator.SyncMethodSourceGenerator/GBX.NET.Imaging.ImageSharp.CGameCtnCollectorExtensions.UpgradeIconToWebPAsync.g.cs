@@ -7,7 +7,7 @@ public static partial class CGameCtnCollectorExtensions
     /// Replaces the collector's raw RGB icon with a WebP encoded icon. WebP is only accepted in TM2020.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> is <see langword="null" />.</returns>
     public static bool UpgradeIconToWebP(this global::GBX.NET.Engines.GameData.CGameCtnCollector node)
     {
         if (node.Icon is null)

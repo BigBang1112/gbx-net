@@ -8,7 +8,7 @@ public static partial class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this global::GBX.NET.Engines.GameData.CGameCtnCollector node, string fileName)
     {
         return ExportIcon(node, fileName, new global::SixLabors.ImageSharp.Formats.Png.PngEncoder());

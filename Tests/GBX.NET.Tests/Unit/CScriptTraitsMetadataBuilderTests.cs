@@ -47,7 +47,7 @@ public class CScriptTraitsMetadataBuilderTests
 
         await Assert.That(trait.Type.ToString()).IsEqualTo("Vehicle");
         await Assert.That(trait.Value.Count).IsEqualTo(5);
-        await Assert.That(trait.Value["Active"].GetValue()).IsEqualTo(true);
+        await Assert.That((bool)trait.Value["Active"].GetValue()!).IsTrue();
         await Assert.That(trait.Value["Lap"].GetValue()).IsEqualTo(3);
         await Assert.That(trait.Value["Speed"].GetValue()).IsEqualTo(12.5f);
         await Assert.That(trait.Value["Driver"].GetValue()).IsEqualTo("Alice");

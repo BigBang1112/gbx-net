@@ -10,6 +10,7 @@ Put `using` directives above the namespace.
 
 - Separate members and logical groups of statements with a blank line. Related fields and simple properties can stay together.
 - Keep short signatures on one line. Break long parameter lists into one parameter per line.
+- Prefer `var` for local variable declarations.
 - Keep imports together. The reference projects do not consistently put `System` first.
 - Put each class in its own file, named after the class. An interface may share its matching class's file. For a larger partial type, use a name such as `BinaryReader.Header.cs` to identify the part.
 
