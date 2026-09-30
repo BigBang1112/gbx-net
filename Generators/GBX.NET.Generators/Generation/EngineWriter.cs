@@ -333,7 +333,7 @@ internal static class EngineWriter
                 {
                     foreach (var applied in layout.Chunks)
                     {
-                        foreach (var range in AppliedWithChunkRanges.Get(applied, field.Name, layout.Chunks))
+                        foreach (var range in AppliedWithChunkRanges.Get(applied, field.Name, layout.Chunks, layout.Id))
                         {
                             var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
                                 range.Start > 0 ? $"({range.Start})" : "";

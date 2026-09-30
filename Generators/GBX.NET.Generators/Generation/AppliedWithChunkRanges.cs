@@ -16,14 +16,14 @@ internal static class AppliedWithChunkRanges
 
     private static readonly Range All = new(0, int.MaxValue);
 
-    public static IReadOnlyList<Range> Get(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks)
+    public static IReadOnlyList<Range> Get(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId)
     {
         var result = new List<Range>();
-        Collect(chunk, field, chunks, [All], result, new HashSet<uint>());
+        Collect(chunk, field, chunks, classId, [All], result, new HashSet<uint>());
         return Normalize(result);
     }
 
-    private static void Collect(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks,
+    private static void Collect(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId,
         IReadOnlyList<Range> versions, List<Range> result, HashSet<uint> visited)
     {
         if (!visited.Add(chunk.Id)) return;
@@ -33,13 +33,13 @@ internal static class AppliedWithChunkRanges
         if (inherited is not null)
         {
             var id = LayoutModel.Hex(inherited);
-            if (id <= 0xFFF) id |= chunk.Id & 0xFFFFF000;
+            if (id <= 0xFFF) id |= classId;
             parent = chunks.FirstOrDefault(x => x.Id == id);
         }
 
         if (chunk.Scope.Body.Count == 0 && parent is not null)
         {
-            Collect(parent, field, chunks, versions, result, visited);
+            Collect(parent, field, chunks, classId, versions, result, visited);
         }
         else
         {
@@ -57,7 +57,7 @@ internal static class AppliedWithChunkRanges
                 switch (statement)
                 {
                     case FieldDeclaration declaration when declaration.IsSpecialKeyword && declaration.Type.Name == "base":
-                        if (parent is not null) Collect(parent, field, chunks, current, result, visited);
+                        if (parent is not null) Collect(parent, field, chunks, classId, current, result, visited);
                         break;
 
                     case FieldDeclaration declaration when declaration.Name == field &&

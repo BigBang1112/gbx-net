@@ -1,4 +1,5 @@
 using GBX.NET.Attributes;
+using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
 using GBX.NET.Engines.Plug;
 using System.Reflection;
@@ -33,5 +34,28 @@ public class AppliedWithChunkGeneratedTests
         await Assert.That(applied.Applies(new CPlugAnimFile.Chunk090B0003 { Version = 3 })).IsTrue();
         await Assert.That(applied.Applies(new CPlugAnimFile.Chunk090B0003 { Version = 9 })).IsTrue();
         await Assert.That(applied.Applies(new CPlugAnimFile.Chunk090B0003 { Version = 10 })).IsFalse();
+    }
+
+    [Test]
+    public async Task BaseChunkMembersHaveAnnotationsForEachSerializingDerivedChunk()
+    {
+        var applied = typeof(CControlIconIndex).GetProperty(nameof(CControlIconIndex.IndexOff))!
+            .GetCustomAttributes<AppliedWithChunkAttribute>()
+            .ToDictionary(x => x.ChunkType);
+
+        await Assert.That(applied.Keys).IsEquivalentTo(new[]
+        {
+            typeof(CControlIconIndex.Chunk0702B000),
+            typeof(CControlIconIndex.Chunk0702B001),
+            typeof(CControlIconIndex.Chunk0702B002)
+        });
+        await Assert.That(applied[typeof(CControlIconIndex.Chunk0702B000)]
+            .Applies(new CControlIconIndex.Chunk0702B000())).IsTrue();
+        await Assert.That(applied[typeof(CControlIconIndex.Chunk0702B000)]
+            .Applies(new CControlIconIndex.Chunk0702B001())).IsFalse();
+        await Assert.That(applied[typeof(CControlIconIndex.Chunk0702B001)]
+            .Applies(new CControlIconIndex.Chunk0702B001())).IsTrue();
+        await Assert.That(applied[typeof(CControlIconIndex.Chunk0702B002)]
+            .Applies(new CControlIconIndex.Chunk0702B002())).IsTrue();
     }
 }

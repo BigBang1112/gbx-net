@@ -113,6 +113,12 @@ public class GenerationTests
               v4+
                 int Extra
             0x003 (base: 0x001)
+            0x004 (base: 0x001)
+              v4+
+                base
+            0x04000000 (base: 0x001)
+            0x005 (base: 0x001)
+              int ChildOnly
             """), compile: true);
 
         await Assert.That(result.Diagnostics).IsEmpty();
@@ -126,14 +132,18 @@ public class GenerationTests
 
         await Assert.That(properties["Always"]).IsEquivalentTo(new[]
         {
-            "AppliedWithChunk<Chunk03043001>", "AppliedWithChunk<Chunk03043002>", "AppliedWithChunk<Chunk03043003>"
+            "AppliedWithChunk<Chunk03043001>", "AppliedWithChunk<Chunk03043002>", "AppliedWithChunk<Chunk03043003>",
+            "AppliedWithChunk<Chunk03043004>(4)", "AppliedWithChunk<Chunk04000000>"
         });
         await Assert.That(properties["Legacy"]).IsEquivalentTo(new[]
         {
-            "AppliedWithChunk<Chunk03043001>(0, 2)", "AppliedWithChunk<Chunk03043002>(0, 2)", "AppliedWithChunk<Chunk03043003>(0, 2)"
+            "AppliedWithChunk<Chunk03043001>(0, 2)", "AppliedWithChunk<Chunk03043002>(0, 2)",
+            "AppliedWithChunk<Chunk03043003>(0, 2)", "AppliedWithChunk<Chunk04000000>(0, 2)"
         });
         await Assert.That(properties["Modern"]).Contains("AppliedWithChunk<Chunk03043001>(3)");
+        await Assert.That(properties["Modern"]).Contains("AppliedWithChunk<Chunk03043004>(4)");
         await Assert.That(properties["Middle"]).Contains("AppliedWithChunk<Chunk03043001>(3, 5)");
+        await Assert.That(properties["Middle"]).Contains("AppliedWithChunk<Chunk03043004>(4, 5)");
         await Assert.That(properties["Exact"]).Contains("AppliedWithChunk<Chunk03043001>(4, 4)");
         await Assert.That(properties["Repeated"]).Contains("AppliedWithChunk<Chunk03043001>(0, 0)");
         await Assert.That(properties["Repeated"]).Contains("AppliedWithChunk<Chunk03043001>(3)");
@@ -143,6 +153,7 @@ public class GenerationTests
         await Assert.That(properties["MiddleBranch"]).Contains("AppliedWithChunk<Chunk03043001>(2, 4)");
         await Assert.That(properties["LastBranch"]).Contains("AppliedWithChunk<Chunk03043001>(5)");
         await Assert.That(properties["Extra"]).IsEquivalentTo(new[] { "AppliedWithChunk<Chunk03043002>(4)" });
+        await Assert.That(properties["ChildOnly"]).IsEquivalentTo(new[] { "AppliedWithChunk<Chunk03043005>" });
     }
 
     [Test]
