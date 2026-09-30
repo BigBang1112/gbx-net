@@ -34,6 +34,11 @@ public partial class CSceneTrafficGraph : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A062000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CSceneTrafficGraph()
     {
     }
@@ -42,12 +47,22 @@ public partial class CSceneTrafficGraph : CMwNod, IClass
     public partial class Chunk0A062004 : Chunk<CSceneTrafficGraph>
     {
         public override uint Id => 0x0A062004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0A062005)]
     public partial class Chunk0A062005 : Chunk<CSceneTrafficGraph>
     {
         public override uint Id => 0x0A062005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

@@ -67,6 +67,14 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
 
     public CPlugBitmap? GetBitmapToModulate(GbxReadSettings settings = default, bool exceptions = false) => bitmapToModulateFile?.GetNode(ref bitmapToModulate, settings, exceptions) ?? bitmapToModulate;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapRenderLightOcc)clone).fovY = context.Clone(this.fovY)!;
+        ((CPlugBitmapRenderLightOcc)clone).opacity = context.Clone(this.opacity)!;
+        ((CPlugBitmapRenderLightOcc)clone).bitmapToModulate = context.Clone(this.bitmapToModulate)!;
+    }
+
     public CPlugBitmapRenderLightOcc()
     {
     }
@@ -75,6 +83,11 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     public partial class Chunk0909F000 : Chunk<CPlugBitmapRenderLightOcc>
     {
         public override uint Id => 0x0909F000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugBitmapRenderLightOcc n, GbxReaderWriter rw)
         {

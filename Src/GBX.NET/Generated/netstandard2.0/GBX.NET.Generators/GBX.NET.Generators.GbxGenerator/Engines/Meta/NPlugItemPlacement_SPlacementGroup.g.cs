@@ -55,6 +55,15 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
         set => this.u02 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugItemPlacement_SPlacementGroup)clone).placements = context.CloneArray(this.placements)!;
+        ((NPlugItemPlacement_SPlacementGroup)clone).u01 = context.CloneArray(this.u01)!;
+        ((NPlugItemPlacement_SPlacementGroup)clone).u02 = context.CloneArray(this.u02)!;
+        ((NPlugItemPlacement_SPlacementGroup)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugItemPlacement_SPlacementGroup()
     {
     }

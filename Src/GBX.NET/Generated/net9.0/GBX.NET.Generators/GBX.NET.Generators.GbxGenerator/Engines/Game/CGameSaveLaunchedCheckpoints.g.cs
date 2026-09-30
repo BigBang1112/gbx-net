@@ -34,6 +34,11 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03262000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameSaveLaunchedCheckpoints()
     {
     }
@@ -43,6 +48,11 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     {
         public override uint Id => 0x03262000;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

@@ -561,6 +561,61 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.buttonDefaultIconId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlStyle)clone).focusGainedScript = context.Clone(this.focusGainedScript)!;
+        ((CControlStyle)clone).focusLostScript = context.Clone(this.focusLostScript)!;
+        ((CControlStyle)clone).focusSound = context.Clone(this.focusSound)!;
+        ((CControlStyle)clone).entrySound = context.Clone(this.entrySound)!;
+        ((CControlStyle)clone).defaultShader = context.Clone(this.defaultShader)!;
+        ((CControlStyle)clone).fitTextSize = context.Clone(this.fitTextSize)!;
+        ((CControlStyle)clone).enumSound = context.Clone(this.enumSound)!;
+        ((CControlStyle)clone).enumListShader = context.Clone(this.enumListShader)!;
+        ((CControlStyle)clone).enumMaxElemCount = context.Clone(this.enumMaxElemCount)!;
+        ((CControlStyle)clone).enumIconWidth = context.Clone(this.enumIconWidth)!;
+        ((CControlStyle)clone).enumIconHeight = context.Clone(this.enumIconHeight)!;
+        ((CControlStyle)clone).actionSound = context.Clone(this.actionSound)!;
+        ((CControlStyle)clone).buttonIconWidth = context.Clone(this.buttonIconWidth)!;
+        ((CControlStyle)clone).buttonIconHeight = context.Clone(this.buttonIconHeight)!;
+        ((CControlStyle)clone).buttonDefaultIcons = context.Clone(this.buttonDefaultIcons)!;
+        ((CControlStyle)clone).enumForceDisplayType = context.Clone(this.enumForceDisplayType)!;
+        ((CControlStyle)clone).enumForceIcons = context.Clone(this.enumForceIcons)!;
+        ((CControlStyle)clone).quadIsLines = context.Clone(this.quadIsLines)!;
+        ((CControlStyle)clone).quadIsFill = context.Clone(this.quadIsFill)!;
+        ((CControlStyle)clone).quadZ = context.Clone(this.quadZ)!;
+        ((CControlStyle)clone).quadZLines = context.Clone(this.quadZLines)!;
+        ((CControlStyle)clone).quadGradientColor0 = context.Clone(this.quadGradientColor0)!;
+        ((CControlStyle)clone).quadGradientColor1 = context.Clone(this.quadGradientColor1)!;
+        ((CControlStyle)clone).quadLinesColor = context.Clone(this.quadLinesColor)!;
+        ((CControlStyle)clone).quad_UvTopLeft = context.Clone(this.quad_UvTopLeft)!;
+        ((CControlStyle)clone).quad_UvBottomRight = context.Clone(this.quad_UvBottomRight)!;
+        ((CControlStyle)clone).effectMaster = context.Clone(this.effectMaster)!;
+        ((CControlStyle)clone).skew = context.Clone(this.skew)!;
+        ((CControlStyle)clone).lineGradientColor0 = context.Clone(this.lineGradientColor0)!;
+        ((CControlStyle)clone).lineGradientColor1 = context.Clone(this.lineGradientColor1)!;
+        ((CControlStyle)clone).font = context.Clone(this.font)!;
+        ((CControlStyle)clone).sliderBarWidth = context.Clone(this.sliderBarWidth)!;
+        ((CControlStyle)clone).sliderBarHeight = context.Clone(this.sliderBarHeight)!;
+        ((CControlStyle)clone).sliderCursorWidth = context.Clone(this.sliderCursorWidth)!;
+        ((CControlStyle)clone).sliderCursorHeight = context.Clone(this.sliderCursorHeight)!;
+        ((CControlStyle)clone).sliderSound = context.Clone(this.sliderSound)!;
+        ((CControlStyle)clone).sliderBarIcons = context.Clone(this.sliderBarIcons)!;
+        ((CControlStyle)clone).sliderCursorIcons = context.Clone(this.sliderCursorIcons)!;
+        ((CControlStyle)clone).focusAreaEnable = context.Clone(this.focusAreaEnable)!;
+        ((CControlStyle)clone).focusAreaMaterial = context.Clone(this.focusAreaMaterial)!;
+        ((CControlStyle)clone).focusAreaMaterialReadOnly = context.Clone(this.focusAreaMaterialReadOnly)!;
+        ((CControlStyle)clone).focusAreaMaterialSelected = context.Clone(this.focusAreaMaterialSelected)!;
+        ((CControlStyle)clone).focusAreaMaterialFocused = context.Clone(this.focusAreaMaterialFocused)!;
+        ((CControlStyle)clone).focusAreaMinWidth = context.Clone(this.focusAreaMinWidth)!;
+        ((CControlStyle)clone).focusAreaMinHeight = context.Clone(this.focusAreaMinHeight)!;
+        ((CControlStyle)clone).focusAreaXMargin = context.Clone(this.focusAreaXMargin)!;
+        ((CControlStyle)clone).focusAreaYMargin = context.Clone(this.focusAreaYMargin)!;
+        ((CControlStyle)clone).focusAreaSolid = context.Clone(this.focusAreaSolid)!;
+        ((CControlStyle)clone).focusAreaZOffset = context.Clone(this.focusAreaZOffset)!;
+        ((CControlStyle)clone).buttonDefaultIconId = context.Clone(this.buttonDefaultIconId)!;
+    }
+
     public CControlStyle()
     {
     }
@@ -571,6 +626,13 @@ public partial class CControlStyle : CMwNod, IClass
         public override uint Id => 0x07017000;
         public CMwNod? U01;
         public CMwNod? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07017000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07017000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -587,6 +649,11 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x07017004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugSound>(ref n.entrySound);
@@ -597,6 +664,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk07017009 : Chunk<CControlStyle>
     {
         public override uint Id => 0x07017009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -610,6 +682,13 @@ public partial class CControlStyle : CMwNod, IClass
         public override uint Id => 0x0701700B;
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701700B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0701700B)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -625,6 +704,12 @@ public partial class CControlStyle : CMwNod, IClass
         public override uint Id => 0x0701700C;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701700C)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
@@ -635,6 +720,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk0701700D : Chunk<CControlStyle>
     {
         public override uint Id => 0x0701700D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -651,6 +741,11 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x0701700E;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugSound>(ref n.actionSound, ref n.actionSoundFile);
@@ -664,6 +759,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk07017010 : Chunk<CControlStyle>
     {
         public override uint Id => 0x07017010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -682,6 +782,11 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x07017014;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.quadIsLines);
@@ -698,6 +803,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk07017015 : Chunk<CControlStyle>
     {
         public override uint Id => 0x07017015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -717,6 +827,11 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x07017016;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.NodeRef<CControlEffectMaster>(ref n.effectMaster, ref n.effectMasterFile);
@@ -727,6 +842,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk07017017 : Chunk<CControlStyle>
     {
         public override uint Id => 0x07017017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -747,6 +867,11 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x07017018;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.Vec4(ref n.lineGradientColor0);
@@ -764,6 +889,16 @@ public partial class CControlStyle : CMwNod, IClass
         public STextSettings_ColorAndChars? U04;
         public STextSettings_ColorAndChars? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701701B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0701701B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0701701B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0701701B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0701701B)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugFont>(ref n.font, ref n.fontFile);
@@ -779,6 +914,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk0701701C : Chunk<CControlStyle>
     {
         public override uint Id => 0x0701701C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -796,6 +936,11 @@ public partial class CControlStyle : CMwNod, IClass
     public partial class Chunk0701701D : Chunk<CControlStyle>
     {
         public override uint Id => 0x0701701D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
@@ -818,13 +963,18 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x0701701E;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.Id(ref n.buttonDefaultIconId);
         }
     }
 
-    public partial class STextSettings_ColorAndChars : IReadableWritable, IReadable, IWritable
+    public partial class STextSettings_ColorAndChars : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -873,6 +1023,25 @@ public partial class CControlStyle : CMwNod, IClass
         {
             get => this.u07;
             set => this.u07 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (STextSettings_ColorAndChars)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((STextSettings_ColorAndChars)clone).u01 = context.Clone(this.u01)!;
+            ((STextSettings_ColorAndChars)clone).u02 = context.Clone(this.u02)!;
+            ((STextSettings_ColorAndChars)clone).u03 = context.Clone(this.u03)!;
+            ((STextSettings_ColorAndChars)clone).u04 = context.Clone(this.u04)!;
+            ((STextSettings_ColorAndChars)clone).u05 = context.Clone(this.u05)!;
+            ((STextSettings_ColorAndChars)clone).u06 = context.Clone(this.u06)!;
+            ((STextSettings_ColorAndChars)clone).u07 = context.Clone(this.u07)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

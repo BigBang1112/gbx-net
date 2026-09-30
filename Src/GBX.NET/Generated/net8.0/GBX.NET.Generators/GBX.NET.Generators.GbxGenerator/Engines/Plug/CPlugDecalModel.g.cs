@@ -256,6 +256,32 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.macroDecalSets = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugDecalModel)clone).diffuseA = context.Clone(this.diffuseA)!;
+        ((CPlugDecalModel)clone).normal = context.Clone(this.normal)!;
+        ((CPlugDecalModel)clone).texelByMeter = context.Clone(this.texelByMeter)!;
+        ((CPlugDecalModel)clone).fadeNormalAndZ = context.Clone(this.fadeNormalAndZ)!;
+        ((CPlugDecalModel)clone).specular = context.Clone(this.specular)!;
+        ((CPlugDecalModel)clone).diffuseARef = context.Clone(this.diffuseARef)!;
+        ((CPlugDecalModel)clone).normalRef = context.Clone(this.normalRef)!;
+        ((CPlugDecalModel)clone).specularRef = context.Clone(this.specularRef)!;
+        ((CPlugDecalModel)clone).roughnessRef = context.Clone(this.roughnessRef)!;
+        ((CPlugDecalModel)clone).roughness = context.Clone(this.roughness)!;
+        ((CPlugDecalModel)clone).icon = context.Clone(this.icon)!;
+        ((CPlugDecalModel)clone).randomInstances = context.Clone(this.randomInstances)!;
+        ((CPlugDecalModel)clone).sprite3dBitmap = context.Clone(this.sprite3dBitmap)!;
+        ((CPlugDecalModel)clone).sprite3dGroupId = context.Clone(this.sprite3dGroupId)!;
+        ((CPlugDecalModel)clone).svgRef = context.Clone(this.svgRef)!;
+        ((CPlugDecalModel)clone).svg = context.Clone(this.svg)!;
+        ((CPlugDecalModel)clone).svgSize = context.Clone(this.svgSize)!;
+        ((CPlugDecalModel)clone).svgAlpha = context.Clone(this.svgAlpha)!;
+        ((CPlugDecalModel)clone).minAngleN3d = context.Clone(this.minAngleN3d)!;
+        ((CPlugDecalModel)clone).decalModels = context.CloneArray(this.decalModels)!;
+        ((CPlugDecalModel)clone).macroDecalSets = context.CloneArray(this.macroDecalSets)!;
+    }
+
     public CPlugDecalModel()
     {
     }
@@ -266,6 +292,13 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override uint Id => 0x090A7002;
         public int Version { get; set; }
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090A7002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090A7002)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
@@ -338,6 +371,11 @@ public partial class CPlugDecalModel : CPlug, IClass
     {
         public override uint Id => 0x090A7003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugBitmap>(ref n.icon, ref n.iconFile);
@@ -351,6 +389,14 @@ public partial class CPlugDecalModel : CPlug, IClass
         public int Version { get; set; }
         public CPlugSolid? U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090A7004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090A7004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090A7004)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
@@ -409,6 +455,13 @@ public partial class CPlugDecalModel : CPlug, IClass
         public int Version { get; set; }
         public uint U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090A7006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090A7006)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -416,7 +469,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         }
     }
 
-    public partial class MacroDecalSet : IReadableWritable, IReadable, IWritable
+    public partial class MacroDecalSet : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -439,6 +492,21 @@ public partial class CPlugDecalModel : CPlug, IClass
             set => this.decals = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MacroDecalSet)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MacroDecalSet)clone).u01 = context.Clone(this.u01)!;
+            ((MacroDecalSet)clone).u02 = context.Clone(this.u02)!;
+            ((MacroDecalSet)clone).decals = context.CloneArray(this.decals)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.u01);
@@ -459,7 +527,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         }
     }
 
-    public partial class MacroDecal3d : IReadableWritable, IReadable, IWritable
+    public partial class MacroDecal3d : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -494,6 +562,23 @@ public partial class CPlugDecalModel : CPlug, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MacroDecal3d)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MacroDecal3d)clone).u01 = context.Clone(this.u01)!;
+            ((MacroDecal3d)clone).u02 = context.Clone(this.u02)!;
+            ((MacroDecal3d)clone).u03 = context.Clone(this.u03)!;
+            ((MacroDecal3d)clone).u04 = context.Clone(this.u04)!;
+            ((MacroDecal3d)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

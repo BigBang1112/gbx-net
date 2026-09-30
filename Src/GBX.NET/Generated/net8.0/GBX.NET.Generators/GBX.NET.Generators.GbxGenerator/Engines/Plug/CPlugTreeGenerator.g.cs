@@ -34,6 +34,11 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09051000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugTreeGenerator()
     {
     }
@@ -43,6 +48,12 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     {
         public override uint Id => 0x09051000;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09051000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugTreeGenerator n, GbxReaderWriter rw)
         {

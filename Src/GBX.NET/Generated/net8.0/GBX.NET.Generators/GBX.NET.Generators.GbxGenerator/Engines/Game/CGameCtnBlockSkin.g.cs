@@ -69,6 +69,15 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         set => this.foregroundPackDesc = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockSkin)clone).text = context.Clone(this.text)!;
+        ((CGameCtnBlockSkin)clone).packDesc = context.Clone(this.packDesc)!;
+        ((CGameCtnBlockSkin)clone).parentPackDesc = context.Clone(this.parentPackDesc)!;
+        ((CGameCtnBlockSkin)clone).foregroundPackDesc = context.Clone(this.foregroundPackDesc)!;
+    }
+
     public CGameCtnBlockSkin()
     {
     }
@@ -81,6 +90,12 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     {
         public override uint Id => 0x03059000;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03059000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {
@@ -96,6 +111,11 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     public partial class Chunk03059001 : Chunk<CGameCtnBlockSkin>
     {
         public override uint Id => 0x03059001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {
@@ -114,6 +134,11 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         public override uint Id => 0x03059002;
         public override GameVersion GameVersion => GameVersion.TMF;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {
             rw.String(ref n.text);
@@ -130,6 +155,12 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     {
         public override uint Id => 0x03059003;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03059003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {

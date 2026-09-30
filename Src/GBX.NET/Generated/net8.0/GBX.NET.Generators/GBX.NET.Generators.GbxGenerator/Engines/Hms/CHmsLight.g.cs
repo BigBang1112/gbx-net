@@ -80,6 +80,14 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
 
     public CPlugBitmap? GetBitmapSprite(GbxReadSettings settings = default, bool exceptions = false) => bitmapSpriteFile?.GetNode(ref bitmapSprite, settings, exceptions) ?? bitmapSprite;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CHmsLight)clone).mainGxLight = context.Clone(this.mainGxLight)!;
+        ((CHmsLight)clone).bitmapFlare = context.Clone(this.bitmapFlare)!;
+        ((CHmsLight)clone).bitmapSprite = context.Clone(this.bitmapSprite)!;
+    }
+
     public CHmsLight()
     {
     }
@@ -89,6 +97,12 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     {
         public override uint Id => 0x0600C000;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0600C000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
@@ -102,6 +116,11 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     {
         public override uint Id => 0x0600C001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -112,6 +131,11 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     public partial class Chunk0600C002 : Chunk0600C001
     {
         public override uint Id => 0x0600C002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
@@ -124,6 +148,11 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     public partial class Chunk0600C003 : Chunk0600C002
     {
         public override uint Id => 0x0600C003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {

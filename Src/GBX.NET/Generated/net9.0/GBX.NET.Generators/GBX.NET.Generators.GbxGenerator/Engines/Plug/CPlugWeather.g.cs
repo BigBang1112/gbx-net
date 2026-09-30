@@ -293,6 +293,31 @@ public partial class CPlugWeather : CMwNod, IClass
 
     public GxFogBlender? GetFogBlender(GbxReadSettings settings = default, bool exceptions = false) => fogBlenderFile?.GetNode(ref fogBlender, settings, exceptions) ?? fogBlender;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugWeather)clone).lDirSpecIntens = context.Clone(this.lDirSpecIntens)!;
+        ((CPlugWeather)clone).lDirSpecPower = context.Clone(this.lDirSpecPower)!;
+        ((CPlugWeather)clone).seaTwkWaterColor_Night = context.Clone(this.seaTwkWaterColor_Night)!;
+        ((CPlugWeather)clone).seaTwkWaterColor_Day = context.Clone(this.seaTwkWaterColor_Day)!;
+        ((CPlugWeather)clone).imageLightAmb = context.Clone(this.imageLightAmb)!;
+        ((CPlugWeather)clone).imageLightDirSun = context.Clone(this.imageLightDirSun)!;
+        ((CPlugWeather)clone).imageLightDirMoon = context.Clone(this.imageLightDirMoon)!;
+        ((CPlugWeather)clone).bitmapFlareSun = context.Clone(this.bitmapFlareSun)!;
+        ((CPlugWeather)clone).bitmapFlareMoon = context.Clone(this.bitmapFlareMoon)!;
+        ((CPlugWeather)clone).flareAngularSizeSun = context.Clone(this.flareAngularSizeSun)!;
+        ((CPlugWeather)clone).flareAngularSizeMoon = context.Clone(this.flareAngularSizeMoon)!;
+        ((CPlugWeather)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
+        ((CPlugWeather)clone).bitmapRainFid = context.Clone(this.bitmapRainFid)!;
+        ((CPlugWeather)clone).sceneFxFid = context.Clone(this.sceneFxFid)!;
+        ((CPlugWeather)clone).imageLightDirDblSided = context.Clone(this.imageLightDirDblSided)!;
+        ((CPlugWeather)clone).bitmapSkyGradV = context.Clone(this.bitmapSkyGradV)!;
+        ((CPlugWeather)clone).imageFogColor = context.Clone(this.imageFogColor)!;
+        ((CPlugWeather)clone).imageSeaColor = context.Clone(this.imageSeaColor)!;
+        ((CPlugWeather)clone).clouds = context.Clone(this.clouds)!;
+        ((CPlugWeather)clone).fogBlender = context.Clone(this.fogBlender)!;
+    }
+
     public CPlugWeather()
     {
     }
@@ -301,6 +326,11 @@ public partial class CPlugWeather : CMwNod, IClass
     public partial class Chunk0917E007 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0917E00B)]
@@ -313,6 +343,17 @@ public partial class CPlugWeather : CMwNod, IClass
         public int U04;
         public int U05;
         public int U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E00B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E00B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E00B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E00B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E00B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0917E00B)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
@@ -333,6 +374,15 @@ public partial class CPlugWeather : CMwNod, IClass
         public Vec2 U02;
         public Vec2 U03;
         public Vec2 U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E00D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E00D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E00D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E00D)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
@@ -357,6 +407,17 @@ public partial class CPlugWeather : CMwNod, IClass
         public float U04;
         public float U05;
         public float U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E00E)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0917E00E)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0917E00E)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E00E)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E00E)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0917E00E)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
@@ -384,6 +445,11 @@ public partial class CPlugWeather : CMwNod, IClass
     {
         public override uint Id => 0x0917E00F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugFileImg>(ref n.imageLightDirDblSided, ref n.imageLightDirDblSidedFile);
@@ -394,6 +460,11 @@ public partial class CPlugWeather : CMwNod, IClass
     public partial class Chunk0917E011 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E011;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
@@ -406,6 +477,11 @@ public partial class CPlugWeather : CMwNod, IClass
     {
         public override uint Id => 0x0917E013;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugFileImg>(ref n.imageFogColor, ref n.imageFogColorFile);
@@ -416,6 +492,11 @@ public partial class CPlugWeather : CMwNod, IClass
     public partial class Chunk0917E014 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E014;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
@@ -428,6 +509,11 @@ public partial class CPlugWeather : CMwNod, IClass
     {
         public override uint Id => 0x0917E016;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugClouds>(ref n.clouds, ref n.cloudsFile);
@@ -438,6 +524,11 @@ public partial class CPlugWeather : CMwNod, IClass
     public partial class Chunk0917E017 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {

@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
         set => this.color = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTransitionFade)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockTransitionFade)clone).color = context.Clone(this.color)!;
+    }
+
     public CGameCtnMediaBlockTransitionFade()
     {
     }
@@ -62,6 +69,12 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
         public override uint Id => 0x030AB000;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030AB000)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
@@ -70,7 +83,7 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -84,6 +97,20 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
         {
             get => this.opacity;
             set => this.opacity = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).opacity = context.Clone(this.opacity)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

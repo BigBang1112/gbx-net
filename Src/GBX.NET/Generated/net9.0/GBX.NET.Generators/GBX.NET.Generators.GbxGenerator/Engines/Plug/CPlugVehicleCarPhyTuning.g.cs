@@ -1566,6 +1566,200 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.engineAutoGearMinRPMs = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehicleCarPhyTuning)clone).steerRadiusMin = context.Clone(this.steerRadiusMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerRadiusCoef = context.Clone(this.steerRadiusCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).maxSpeed = context.Clone(this.maxSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbingValKi = context.Clone(this.absorbingValKi)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbingValKa = context.Clone(this.absorbingValKa)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbingValMin = context.Clone(this.absorbingValMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbingValMax = context.Clone(this.absorbingValMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbingValRest = context.Clone(this.absorbingValRest)!;
+        ((CPlugVehicleCarPhyTuning)clone).relSpeedMultCoef = context.Clone(this.relSpeedMultCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).debugAbsorbCoef = context.Clone(this.debugAbsorbCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).name = context.Clone(this.name)!;
+        ((CPlugVehicleCarPhyTuning)clone).mass = context.Clone(this.mass)!;
+        ((CPlugVehicleCarPhyTuning)clone).cMAftForce = context.Clone(this.cMAftForce)!;
+        ((CPlugVehicleCarPhyTuning)clone).cMDownUp = context.Clone(this.cMDownUp)!;
+        ((CPlugVehicleCarPhyTuning)clone).isFakeEngine = context.Clone(this.isFakeEngine)!;
+        ((CPlugVehicleCarPhyTuning)clone).gravityCoef = context.Clone(this.gravityCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerSpeed = context.Clone(this.steerSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).reverseMaxSpeed = context.Clone(this.reverseMaxSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).turboBoost = context.Clone(this.turboBoost)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeBase = context.Clone(this.brakeBase)!;
+        ((CPlugVehicleCarPhyTuning)clone).linearFluidFrictionCoef = context.Clone(this.linearFluidFrictionCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).angularFluidFrictionCoef1 = context.Clone(this.angularFluidFrictionCoef1)!;
+        ((CPlugVehicleCarPhyTuning)clone).inertiaMass = context.Clone(this.inertiaMass)!;
+        ((CPlugVehicleCarPhyTuning)clone).inertiaHalfDiag = context.Clone(this.inertiaHalfDiag)!;
+        ((CPlugVehicleCarPhyTuning)clone).tireMaterial = context.Clone(this.tireMaterial)!;
+        ((CPlugVehicleCarPhyTuning)clone).shockModel = context.Clone(this.shockModel)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerModel = context.Clone(this.steerModel)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerGroundTorque = context.Clone(this.steerGroundTorque)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundEngineVolume = context.Clone(this.soundEngineVolume)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundSkidSandVolume = context.Clone(this.soundSkidSandVolume)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundImpactVolume = context.Clone(this.soundImpactVolume)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundBodyImpact_Hard_Threshold = context.Clone(this.soundBodyImpact_Hard_Threshold)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundSkidConcreteVolume = context.Clone(this.soundSkidConcreteVolume)!;
+        ((CPlugVehicleCarPhyTuning)clone).displaySteerRadiusMin = context.Clone(this.displaySteerRadiusMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).displaySteerRadiusCoef = context.Clone(this.displaySteerRadiusCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).decrepitudeImpactVal = context.Clone(this.decrepitudeImpactVal)!;
+        ((CPlugVehicleCarPhyTuning)clone).decrepitudeCoef = context.Clone(this.decrepitudeCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).vibrationPeriodSpeedCoef = context.Clone(this.vibrationPeriodSpeedCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).angularFluidFrictionCoef2 = context.Clone(this.angularFluidFrictionCoef2)!;
+        ((CPlugVehicleCarPhyTuning)clone).bodyFrictionCoef = context.Clone(this.bodyFrictionCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).bodyFrictionCoef_Metal = context.Clone(this.bodyFrictionCoef_Metal)!;
+        ((CPlugVehicleCarPhyTuning)clone).bodyRestCoef_Metal = context.Clone(this.bodyRestCoef_Metal)!;
+        ((CPlugVehicleCarPhyTuning)clone).bodyRestCoef = context.Clone(this.bodyRestCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).wheelFrictionCoef_Concrete = context.Clone(this.wheelFrictionCoef_Concrete)!;
+        ((CPlugVehicleCarPhyTuning)clone).wheelRestCoef_Concrete = context.Clone(this.wheelRestCoef_Concrete)!;
+        ((CPlugVehicleCarPhyTuning)clone).wheelFrictionCoef_Metal = context.Clone(this.wheelFrictionCoef_Metal)!;
+        ((CPlugVehicleCarPhyTuning)clone).wheelRestCoef_Metal = context.Clone(this.wheelRestCoef_Metal)!;
+        ((CPlugVehicleCarPhyTuning)clone).gravityCoefAir = context.Clone(this.gravityCoefAir)!;
+        ((CPlugVehicleCarPhyTuning)clone).rolloverAxial = context.Clone(this.rolloverAxial)!;
+        ((CPlugVehicleCarPhyTuning)clone).airControlDuration = context.Clone(this.airControlDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerAngleMax = context.Clone(this.steerAngleMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).slipAngleForceMax = context.Clone(this.slipAngleForceMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).slipAngleForceCoef1 = context.Clone(this.slipAngleForceCoef1)!;
+        ((CPlugVehicleCarPhyTuning)clone).slipAngleForceCoef2 = context.Clone(this.slipAngleForceCoef2)!;
+        ((CPlugVehicleCarPhyTuning)clone).angularSpeedYImpulseScale = context.Clone(this.angularSpeedYImpulseScale)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerLowSpeed = context.Clone(this.steerLowSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).accelCurve = context.Clone(this.accelCurve)!;
+        ((CPlugVehicleCarPhyTuning)clone).lateralSlopeAdherenceMin = context.Clone(this.lateralSlopeAdherenceMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).lateralSlopeAdherenceMax = context.Clone(this.lateralSlopeAdherenceMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).axialSlopeAdherenceMin = context.Clone(this.axialSlopeAdherenceMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).axialSlopeAdherenceMax = context.Clone(this.axialSlopeAdherenceMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerGroundTorqueSlippingCoef = context.Clone(this.steerGroundTorqueSlippingCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).maxSideFrictionBlendCoef = context.Clone(this.maxSideFrictionBlendCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).maxSideFriction = context.Clone(this.maxSideFriction)!;
+        ((CPlugVehicleCarPhyTuning)clone).maxSideFrictionSliding = context.Clone(this.maxSideFrictionSliding)!;
+        ((CPlugVehicleCarPhyTuning)clone).groundSlowDownBase = context.Clone(this.groundSlowDownBase)!;
+        ((CPlugVehicleCarPhyTuning)clone).absorbTension = context.Clone(this.absorbTension)!;
+        ((CPlugVehicleCarPhyTuning)clone).sideFriction1 = context.Clone(this.sideFriction1)!;
+        ((CPlugVehicleCarPhyTuning)clone).rolloverLateral = context.Clone(this.rolloverLateral)!;
+        ((CPlugVehicleCarPhyTuning)clone).lateralContactSlowDown = context.Clone(this.lateralContactSlowDown)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerSlowDown = context.Clone(this.steerSlowDown)!;
+        ((CPlugVehicleCarPhyTuning)clone).sideFriction2 = context.Clone(this.sideFriction2)!;
+        ((CPlugVehicleCarPhyTuning)clone).rubberBallElasticity = context.Clone(this.rubberBallElasticity)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerSlowDownFadeInDuration = context.Clone(this.steerSlowDownFadeInDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).rolloverLateralFromAngle = context.Clone(this.rolloverLateralFromAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).maxAngularSpeedYAirControl = context.Clone(this.maxAngularSpeedYAirControl)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeCoef = context.Clone(this.brakeCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeMax = context.Clone(this.brakeMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeMaxDynamic = context.Clone(this.brakeMaxDynamic)!;
+        ((CPlugVehicleCarPhyTuning)clone).groundSlowDownCoef = context.Clone(this.groundSlowDownCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerSlowDownFadeOutDuration = context.Clone(this.steerSlowDownFadeOutDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerSlowDownCoef = context.Clone(this.steerSlowDownCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).turboDuration = context.Clone(this.turboDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerDriveTorque = context.Clone(this.steerDriveTorque)!;
+        ((CPlugVehicleCarPhyTuning)clone).limitToMaxSpeedForce = context.Clone(this.limitToMaxSpeedForce)!;
+        ((CPlugVehicleCarPhyTuning)clone).slopeSpeedGainLimit = context.Clone(this.slopeSpeedGainLimit)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundWheelImpact_Hard_Threshold = context.Clone(this.soundWheelImpact_Hard_Threshold)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundWheelImpact_Soft_Threshold = context.Clone(this.soundWheelImpact_Soft_Threshold)!;
+        ((CPlugVehicleCarPhyTuning)clone).soundBodyImpact_Soft_Threshold = context.Clone(this.soundBodyImpact_Soft_Threshold)!;
+        ((CPlugVehicleCarPhyTuning)clone).angularSpeedClamp = context.Clone(this.angularSpeedClamp)!;
+        ((CPlugVehicleCarPhyTuning)clone).linearSpeed2PositiveDeltaMax = context.Clone(this.linearSpeed2PositiveDeltaMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).noSteerSlowDownWhenSlipping = context.Clone(this.noSteerSlowDownWhenSlipping)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4LateralFrictionSquareForce = context.Clone(this.m4LateralFrictionSquareForce)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4LateralFrictionTorque = context.Clone(this.m4LateralFrictionTorque)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4LateralFrictionForce = context.Clone(this.m4LateralFrictionForce)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4SteerRadiusFromSpeed = context.Clone(this.m4SteerRadiusFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4MaxFrictionTorqueFromSpeed = context.Clone(this.m4MaxFrictionTorqueFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4MaxFrictionTorqueWhenSlippingCoef = context.Clone(this.m4MaxFrictionTorqueWhenSlippingCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4MaxFrictionForceFromSpeed = context.Clone(this.m4MaxFrictionForceFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4MaxFrictionForceWhenSlipping = context.Clone(this.m4MaxFrictionForceWhenSlipping)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4SteerRadiusWhenSlippingCoef = context.Clone(this.m4SteerRadiusWhenSlippingCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4LateralFrictionSquareTorque = context.Clone(this.m4LateralFrictionSquareTorque)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4SlipAngleSpeed = context.Clone(this.m4SlipAngleSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4SteerRadiusCoefFromSlipAngle = context.Clone(this.m4SteerRadiusCoefFromSlipAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4LeaveSlippingSpeed = context.Clone(this.m4LeaveSlippingSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m4SteerAngleWhenSlippingMax = context.Clone(this.m4SteerAngleWhenSlippingMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5SlippingAccelCurve = context.Clone(this.m5SlippingAccelCurve)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5LateralConstantSlowDownDuration = context.Clone(this.m5LateralConstantSlowDownDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5SteerCoefFromSpeed = context.Clone(this.m5SteerCoefFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5SmoothInputSteerDurationFromSpeed = context.Clone(this.m5SmoothInputSteerDurationFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5MaxAxialRolloverTorque = context.Clone(this.m5MaxAxialRolloverTorque)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5KeepSlidingAccelDuration = context.Clone(this.m5KeepSlidingAccelDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5KeepSteerSlowDownDurarion = context.Clone(this.m5KeepSteerSlowDownDurarion)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5KeepNoSteerSlowDownWhenSlippingDuration = context.Clone(this.m5KeepNoSteerSlowDownWhenSlippingDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).m5AccelSlipCoefMax = context.Clone(this.m5AccelSlipCoefMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterGravity = context.Clone(this.waterGravity)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterReboundMinHSpeed = context.Clone(this.waterReboundMinHSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterBumpMinSpeed = context.Clone(this.waterBumpMinSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterBumpSlowDownFromSpeedRatio = context.Clone(this.waterBumpSlowDownFromSpeedRatio)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterFrictionFromSpeed = context.Clone(this.waterFrictionFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterReboundFromSpeedRatio = context.Clone(this.waterReboundFromSpeedRatio)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterAngularFriction = context.Clone(this.waterAngularFriction)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterSplashFromSpeed = context.Clone(this.waterSplashFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).modulationFromWheelCompression = context.Clone(this.modulationFromWheelCompression)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6InertialMass = context.Clone(this.m6InertialMass)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6ForceEpsilon = context.Clone(this.m6ForceEpsilon)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6InertialTorqueModualtionX = context.Clone(this.m6InertialTorqueModualtionX)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6InertialTorqueModulationZ = context.Clone(this.m6InertialTorqueModulationZ)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxSpeed4Burnout = context.Clone(this.m6MaxSpeed4Burnout)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutRadius = context.Clone(this.m6BurnoutRadius)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutFricMod = context.Clone(this.m6BurnoutFricMod)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RolloverLateralFromSpeedRatio = context.Clone(this.m6RolloverLateralFromSpeedRatio)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutCenterForceCoeff2 = context.Clone(this.m6BurnoutCenterForceCoeff2)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutRpmAcc = context.Clone(this.m6BurnoutRpmAcc)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6AirRpmAcc = context.Clone(this.m6AirRpmAcc)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6AirRpmDeadening = context.Clone(this.m6AirRpmDeadening)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RpmWantedOnGearUp = context.CloneArray(this.m6RpmWantedOnGearUp)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RpmLossCoefOnGearUp = context.Clone(this.m6RpmLossCoefOnGearUp)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RpmGainCoefOnGearDown = context.Clone(this.m6RpmGainCoefOnGearDown)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitPositiveForTakeOffFront = context.Clone(this.m6SpeedLimitPositiveForTakeOffFront)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RpmGainOnTakeOff = context.Clone(this.m6RpmGainOnTakeOff)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6RpmLossOnTakeOffFinished = context.Clone(this.m6RpmLossOnTakeOffFinished)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitPositiveForTakeOffRear = context.Clone(this.m6SpeedLimitPositiveForTakeOffRear)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitNegForTakeOffFront = context.Clone(this.m6SpeedLimitNegForTakeOffFront)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitNegTakeOffRear = context.Clone(this.m6SpeedLimitNegTakeOffRear)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeHeatSpeedFromFBrake = context.Clone(this.brakeHeatSpeedFromFBrake)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeCoolingSpeed = context.Clone(this.brakeCoolingSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxRear = context.Clone(this.m6BrakeMaxRear)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxDynamicRear = context.Clone(this.m6BrakeMaxDynamicRear)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxDiffBtwnPropulsionAndSpeed = context.Clone(this.m6MaxDiffBtwnPropulsionAndSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).accelCurveRearGear = context.Clone(this.accelCurveRearGear)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutLateralSpeed = context.Clone(this.m6BurnoutLateralSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutLateralSpeedCoeff = context.Clone(this.m6BurnoutLateralSpeedCoeff)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MinSpeed4Burnout = context.Clone(this.m6MinSpeed4Burnout)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutSteerCoeff = context.Clone(this.m6BurnoutSteerCoeff)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutCenterForceCoeff = context.Clone(this.m6BurnoutCenterForceCoeff)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutRadiusMax = context.Clone(this.m6BurnoutRadiusMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutLateralSpeedMax = context.Clone(this.m6BurnoutLateralSpeedMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutSteerCoeff2 = context.Clone(this.m6BurnoutSteerCoeff2)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutSteerCoeff3 = context.Clone(this.m6BurnoutSteerCoeff3)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BrakeModulationWhenSlipping = context.Clone(this.m6BrakeModulationWhenSlipping)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutDuration = context.Clone(this.m6BurnoutDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutAccMod = context.Clone(this.m6BurnoutAccMod)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6AfterBurnoutAccMod = context.Clone(this.m6AfterBurnoutAccMod)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6AfterBurnoutDuration = context.Clone(this.m6AfterBurnoutDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6FrictionModulationWhenSlipNBrake = context.Clone(this.m6FrictionModulationWhenSlipNBrake)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BrakeSmokeIntensity = context.Clone(this.m6BrakeSmokeIntensity)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutSmokeVelocity = context.Clone(this.m6BurnoutSmokeVelocity)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutSmokeIntensity = context.Clone(this.m6BurnoutSmokeIntensity)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutRolloverFromSpeed = context.Clone(this.m6BurnoutRolloverFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6DonutRolloverFromSpeed = context.Clone(this.m6DonutRolloverFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxDiffBtwGroundNormal = context.Clone(this.m6MaxDiffBtwGroundNormal)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6BurnoutWheelAngularRotation = context.Clone(this.m6BurnoutWheelAngularRotation)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxPosAngle4Burnout = context.Clone(this.m6MaxPosAngle4Burnout)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxNegAngle4Burnout = context.Clone(this.m6MaxNegAngle4Burnout)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6AfterBurnoutImpulse = context.Clone(this.m6AfterBurnoutImpulse)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxRpm = context.Clone(this.m6MaxRpm)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6GearRatio = context.CloneArray(this.m6GearRatio)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MaxRPM = context.CloneArray(this.m6MaxRPM)!;
+        ((CPlugVehicleCarPhyTuning)clone).m6MinRPM = context.CloneArray(this.m6MinRPM)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerDurationBeforeSteerSlowDown = context.Clone(this.steerDurationBeforeSteerSlowDown)!;
+        ((CPlugVehicleCarPhyTuning)clone).airControlZCoefFromAngularSpeed = context.Clone(this.airControlZCoefFromAngularSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterAngularFrictionSq = context.Clone(this.waterAngularFrictionSq)!;
+        ((CPlugVehicleCarPhyTuning)clone).turbo2Boost = context.Clone(this.turbo2Boost)!;
+        ((CPlugVehicleCarPhyTuning)clone).turbo2Duration = context.Clone(this.turbo2Duration)!;
+        ((CPlugVehicleCarPhyTuning)clone).visualSteerAngleFromSpeed = context.Clone(this.visualSteerAngleFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineGearRatios = context.CloneArray(this.engineGearRatios)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineAutoGearMaxRPMs = context.CloneArray(this.engineAutoGearMaxRPMs)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineAutoGearMinRPMs = context.CloneArray(this.engineAutoGearMinRPMs)!;
+    }
+
     public CPlugVehicleCarPhyTuning()
     {
     }
@@ -1576,6 +1770,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED000;
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1599,6 +1800,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Id(ref n.name);
@@ -1609,6 +1815,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED002 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1623,6 +1834,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.isFakeEngine);
@@ -1633,6 +1849,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED005 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1649,6 +1870,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U03;
         public float U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED006)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED006)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1663,6 +1893,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED007;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.steerSpeed);
@@ -1673,6 +1908,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED008 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1686,6 +1926,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED009;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.brakeBase);
@@ -1696,6 +1941,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED00A : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED00A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1708,6 +1958,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED00B : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED00B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1722,6 +1977,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED00C;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED00C)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -1732,6 +1993,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED00D : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED00D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1744,6 +2010,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED00E;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EShockModel>(ref n.shockModel);
@@ -1754,6 +2025,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED010 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1776,6 +2052,20 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U08;
         public float U09;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED011)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED011)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED011)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED011)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED011)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED011)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED011)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED011)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED011)clone).U09 = context.Clone(this.U09)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1794,6 +2084,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED012 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1821,6 +2116,23 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U11;
         public float U12;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED013)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED013)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED013)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED013)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED013)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED013)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED013)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED013)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED013)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED013)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED013)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED013)clone).U12 = context.Clone(this.U12)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1845,6 +2157,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED014)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED014)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1856,6 +2175,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED015 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1871,6 +2195,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED016 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED016;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1888,6 +2217,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U03;
         public float U04;
         public float U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED017)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED017)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED017)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED017)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED017)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1907,6 +2246,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED018;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.linearFluidFrictionCoef);
@@ -1919,6 +2263,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED019 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED019;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1939,6 +2288,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED01A;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED01A)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1951,6 +2306,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED01B;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED01B)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -1961,6 +2322,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED01D : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED01D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1973,6 +2339,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED01E : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED01E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -1988,6 +2359,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U02;
         public float U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED01F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED01F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED01F)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2000,6 +2379,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED020 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2016,6 +2400,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED021;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED021)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2029,6 +2419,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED022)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED022)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2040,6 +2437,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED023 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED023;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2053,6 +2455,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED024;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.accelCurve);
@@ -2063,6 +2470,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED026 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED026;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2078,6 +2490,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED027;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.steerGroundTorqueSlippingCoef);
@@ -2091,6 +2508,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED028;
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED028)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED028)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2108,6 +2532,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED029;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.sideFriction1);
@@ -2120,6 +2549,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED02A;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.lateralContactSlowDown);
@@ -2130,6 +2564,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED02B : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED02B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2144,6 +2583,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED02C : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED02C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2161,6 +2605,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED02D;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.steerSlowDownFadeOutDuration);
@@ -2172,6 +2621,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED02E;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED02E)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2185,6 +2640,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED02F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.turboDuration);
@@ -2195,6 +2655,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED030 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED030;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2207,6 +2672,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED031;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.limitToMaxSpeedForce);
@@ -2218,6 +2688,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED032 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED032;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2237,6 +2712,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED033;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.angularSpeedClamp);
@@ -2247,6 +2727,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED034 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED034;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2259,6 +2744,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED035;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.noSteerSlowDownWhenSlipping);
@@ -2269,6 +2759,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED036 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED036;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2284,6 +2779,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED037;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.m4MaxFrictionTorqueFromSpeed);
@@ -2294,6 +2794,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED038 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED038;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2310,6 +2815,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED039;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED039)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m4LateralFrictionSquareTorque);
@@ -2321,6 +2832,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED03A : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED03A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2334,6 +2850,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED03B;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m4LeaveSlippingSpeed);
@@ -2344,6 +2865,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED03C : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED03C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2356,6 +2882,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED03D;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.m5SlippingAccelCurve);
@@ -2366,6 +2897,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED03E : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED03E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2378,6 +2914,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED03F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.m5SteerCoefFromSpeed);
@@ -2389,6 +2930,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED040;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.m5SmoothInputSteerDurationFromSpeed);
@@ -2399,6 +2945,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED041 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED041;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2412,6 +2963,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED042;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.m5KeepSteerSlowDownDurarion);
@@ -2423,6 +2979,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED043;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.m5KeepNoSteerSlowDownWhenSlippingDuration);
@@ -2433,6 +2994,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED044 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED044;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2448,6 +3014,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U02;
         public float U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED045)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED045)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED045)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.waterGravity);
@@ -2462,6 +3036,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED046 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED046;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2479,6 +3058,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED047;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.waterAngularFriction);
@@ -2490,6 +3074,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED048;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.waterSplashFromSpeed);
@@ -2500,6 +3089,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED049 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED049;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2513,6 +3107,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED04A;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED04A)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2525,6 +3125,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED04D;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6ForceEpsilon);
@@ -2535,6 +3140,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED04E : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED04E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2548,6 +3158,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED04F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6MaxSpeed4Burnout);
@@ -2560,6 +3175,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED051;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6BurnoutFricMod);
@@ -2570,6 +3190,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED052 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED052;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2582,6 +3207,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED053;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6BurnoutCenterForceCoeff2);
@@ -2592,6 +3222,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED056 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED056;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2606,6 +3241,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED057;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Array<float>(ref n.m6RpmWantedOnGearUp!);
@@ -2617,6 +3257,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED058;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6RpmLossCoefOnGearUp);
@@ -2627,6 +3272,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED059 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED059;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2642,6 +3292,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED05A;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6SpeedLimitPositiveForTakeOffRear);
@@ -2655,6 +3310,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED05B;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.brakeHeatSpeedFromFBrake);
@@ -2667,6 +3327,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED05C;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6BrakeMaxRear);
@@ -2678,6 +3343,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED05D : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED05D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2722,6 +3392,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED05E;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.airControlZCoefFromAngularSpeed);
@@ -2733,6 +3408,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED05F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.waterAngularFrictionSq);
@@ -2743,6 +3423,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED060 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED060;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2759,6 +3444,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED061;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncKeysReal>(ref n.visualSteerAngleFromSpeed);
@@ -2770,6 +3460,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED062;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED062)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2783,6 +3479,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED063;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED063)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2794,6 +3496,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED064;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED064)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2807,6 +3515,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED065;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED065)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2818,6 +3532,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED066;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED066)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2832,6 +3552,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED06A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED06A)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2844,6 +3571,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED06E;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED06E)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2859,6 +3592,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U02;
         public float U03;
         public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED072)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED072)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED072)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED072)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2879,6 +3621,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U04;
         public CFuncKeysReal? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED077)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED077)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED077)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED077)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED077)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2895,6 +3647,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED078;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED078)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -2909,6 +3667,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public CFuncKeysReal? U02;
         public CFuncKeysReal? U03;
         public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED079)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED079)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED079)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED079)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2926,6 +3693,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U01;
         public float U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED07D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED07D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED07D)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2945,6 +3720,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public CFuncKeysReal? U04;
         public CFuncKeysReal? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED082)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED082)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED082)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED082)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED082)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -2962,6 +3747,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED084)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED084)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED084)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -2982,6 +3775,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U05;
         public float U06;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED085)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED085)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED085)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED085)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED085)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED085)clone).U06 = context.Clone(this.U06)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -3000,6 +3804,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED086)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED086)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -3012,6 +3823,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED088;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED088)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3046,6 +3863,34 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U20;
         public Keys? U21;
         public Keys? U22;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED089)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED089)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED089)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED089)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED089)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED089)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED089)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED089)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED089)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED089)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED089)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED089)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED089)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED089)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED089)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED089)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED089)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED089)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED089)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED089)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED089)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED089)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED089)clone).U22 = context.Clone(this.U22)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3124,6 +3969,28 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U14;
         public Keys? U15;
         public bool? U16;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED08A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED08A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED08A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED08A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08A)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED08A)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED08A)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED08A)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED08A)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED08A)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED08A)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED08A)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED08A)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED08A)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED08A)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED08A)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED08A)clone).U16 = context.Clone(this.U16)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3245,6 +4112,78 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool U64;
         public Keys? U65;
         public CFuncKeysReal? U66;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED08B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED08B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED08B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED08B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED08B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED08B)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED08B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED08B)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED08B)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED08B)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED08B)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED08B)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED08B)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED08B)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED08B)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED08B)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED08B)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED08B)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED08B)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED08B)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED08B)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED08B)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED08B)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED08B)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED08B)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED08B)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED08B)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED08B)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED08B)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED08B)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED08B)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED08B)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED08B)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED08B)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090ED08B)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090ED08B)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090ED08B)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090ED08B)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk090ED08B)clone).U39 = context.Clone(this.U39)!;
+            ((Chunk090ED08B)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090ED08B)clone).U41 = context.Clone(this.U41)!;
+            ((Chunk090ED08B)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090ED08B)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090ED08B)clone).U44 = context.Clone(this.U44)!;
+            ((Chunk090ED08B)clone).U45 = context.Clone(this.U45)!;
+            ((Chunk090ED08B)clone).U46 = context.Clone(this.U46)!;
+            ((Chunk090ED08B)clone).U47 = context.Clone(this.U47)!;
+            ((Chunk090ED08B)clone).U48 = context.Clone(this.U48)!;
+            ((Chunk090ED08B)clone).U49 = context.Clone(this.U49)!;
+            ((Chunk090ED08B)clone).U50 = context.Clone(this.U50)!;
+            ((Chunk090ED08B)clone).U51 = context.Clone(this.U51)!;
+            ((Chunk090ED08B)clone).U52 = context.Clone(this.U52)!;
+            ((Chunk090ED08B)clone).U53 = context.Clone(this.U53)!;
+            ((Chunk090ED08B)clone).U54 = context.Clone(this.U54)!;
+            ((Chunk090ED08B)clone).U55 = context.Clone(this.U55)!;
+            ((Chunk090ED08B)clone).U56 = context.Clone(this.U56)!;
+            ((Chunk090ED08B)clone).U57 = context.Clone(this.U57)!;
+            ((Chunk090ED08B)clone).U58 = context.Clone(this.U58)!;
+            ((Chunk090ED08B)clone).U59 = context.Clone(this.U59)!;
+            ((Chunk090ED08B)clone).U60 = context.Clone(this.U60)!;
+            ((Chunk090ED08B)clone).U61 = context.Clone(this.U61)!;
+            ((Chunk090ED08B)clone).U62 = context.Clone(this.U62)!;
+            ((Chunk090ED08B)clone).U63 = context.Clone(this.U63)!;
+            ((Chunk090ED08B)clone).U64 = context.Clone(this.U64)!;
+            ((Chunk090ED08B)clone).U65 = context.Clone(this.U65)!;
+            ((Chunk090ED08B)clone).U66 = context.Clone(this.U66)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3501,6 +4440,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U04;
         public float? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED08C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED08C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED08C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED08C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08C)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED08C)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3536,6 +4486,21 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U07;
         public float U08;
         public bool? U09;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED08D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED08D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED08D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED08D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08D)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED08D)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED08D)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED08D)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED08D)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED08D)clone).U09 = context.Clone(this.U09)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3596,6 +4561,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Components.GbxRefTableFile? U04File;
         public External<CPlugCamControlModel>[]? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED08E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED08E)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090ED08E)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk090ED08E)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08E)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED08E)clone).U05 = context.CloneArray(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3648,6 +4624,26 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int? U12;
         public int? U13;
         public int U14;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED094)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED094)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED094)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED094)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED094)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED094)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED094)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED094)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED094)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED094)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED094)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED094)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED094)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED094)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED094)clone).U14 = context.Clone(this.U14)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3714,6 +4710,30 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U16;
         public int? U17;
         public Keys? U18;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED095)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED095)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED095)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED095)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED095)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED095)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED095)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED095)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED095)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED095)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED095)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED095)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED095)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED095)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED095)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED095)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED095)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED095)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED095)clone).U18 = context.Clone(this.U18)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3794,6 +4814,31 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool U18;
         public float U19;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED096)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED096)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED096)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED096)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED096)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED096)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED096)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED096)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED096)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED096)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED096)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED096)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED096)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED096)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED096)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED096)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED096)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED096)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED096)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED096)clone).U19 = context.Clone(this.U19)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3859,6 +4904,20 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool U07;
         public CMwNod? U08;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED097)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED097)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED097)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED097)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED097)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED097)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED097)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED097)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED097)clone).U08 = context.Clone(this.U08)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3892,6 +4951,21 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U08;
         public bool U09;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED098)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED098)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED098)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED098)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED098)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED098)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED098)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED098)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED098)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED098)clone).U09 = context.Clone(this.U09)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3918,6 +4992,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED099)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED099)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -3932,6 +5013,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public CPlugVehicleGearBox? U01;
         public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09A)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -3976,6 +5064,43 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U29;
         public float? U30;
         public Keys? U31;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED09B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED09B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED09B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED09B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED09B)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED09B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED09B)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED09B)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09B)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED09B)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED09B)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED09B)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED09B)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED09B)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED09B)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED09B)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED09B)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED09B)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED09B)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED09B)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED09B)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED09B)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED09B)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED09B)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED09B)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED09B)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED09B)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED09B)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED09B)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED09B)clone).U31 = context.Clone(this.U31)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4070,6 +5195,47 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U33;
         public Keys? U34;
         public float? U35;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED09C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED09C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED09C)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED09C)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED09C)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED09C)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED09C)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED09C)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09C)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED09C)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED09C)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED09C)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED09C)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED09C)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED09C)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED09C)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED09C)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED09C)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED09C)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED09C)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED09C)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED09C)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED09C)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED09C)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED09C)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED09C)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED09C)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED09C)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED09C)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED09C)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED09C)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED09C)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED09C)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090ED09C)clone).U35 = context.Clone(this.U35)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4246,6 +5412,63 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U50;
         public CPlugDynaWaterModel? U51;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED09D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED09D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED09D)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED09D)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED09D)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED09D)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED09D)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED09D)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09D)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED09D)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED09D)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED09D)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED09D)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED09D)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED09D)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED09D)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED09D)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED09D)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED09D)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED09D)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED09D)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED09D)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED09D)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED09D)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED09D)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED09D)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED09D)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED09D)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED09D)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED09D)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED09D)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED09D)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED09D)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090ED09D)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090ED09D)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090ED09D)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090ED09D)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk090ED09D)clone).U39 = context.Clone(this.U39)!;
+            ((Chunk090ED09D)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090ED09D)clone).U41 = context.Clone(this.U41)!;
+            ((Chunk090ED09D)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090ED09D)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090ED09D)clone).U44 = context.Clone(this.U44)!;
+            ((Chunk090ED09D)clone).U45 = context.Clone(this.U45)!;
+            ((Chunk090ED09D)clone).U46 = context.Clone(this.U46)!;
+            ((Chunk090ED09D)clone).U47 = context.Clone(this.U47)!;
+            ((Chunk090ED09D)clone).U48 = context.Clone(this.U48)!;
+            ((Chunk090ED09D)clone).U49 = context.Clone(this.U49)!;
+            ((Chunk090ED09D)clone).U50 = context.Clone(this.U50)!;
+            ((Chunk090ED09D)clone).U51 = context.Clone(this.U51)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -4418,6 +5641,26 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U13;
         public float? U14;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED09E)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED09E)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED09E)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED09E)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED09E)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED09E)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED09E)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED09E)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09E)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED09E)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED09E)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED09E)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED09E)clone).U14 = context.Clone(this.U14)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -4508,6 +5751,45 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int? U31;
         public int? U32;
         public int? U33;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED09F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED09F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED09F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED09F)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED09F)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED09F)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED09F)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED09F)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED09F)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED09F)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09F)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED09F)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED09F)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED09F)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED09F)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED09F)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED09F)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED09F)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED09F)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED09F)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED09F)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED09F)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED09F)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED09F)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED09F)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED09F)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED09F)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED09F)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED09F)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED09F)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED09F)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED09F)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED09F)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED09F)clone).U33 = context.Clone(this.U33)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4616,6 +5898,22 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U09;
         public float U10;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A0)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A0)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A0)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A0)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A0)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A0)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A0)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A0)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A0)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A0)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A0)clone).U10 = context.Clone(this.U10)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -4658,6 +5956,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U11;
         public Keys? U12;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A1)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A1)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A1)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A1)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A1)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A1)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A1)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A1)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A1)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A1)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A1)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A1)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A1)clone).U12 = context.Clone(this.U12)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -4693,6 +6009,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U10;
         public Keys? U11;
         public Keys? U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A2)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A2)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A2)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A2)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A2)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A2)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A2)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A2)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A2)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A2)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A2)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A2)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A2)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4746,6 +6080,41 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U27;
         public Keys? U28;
         public Keys? U29;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A3)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A3)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A3)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A3)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A3)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A3)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A3)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A3)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A3)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A3)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A3)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A3)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A3)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A3)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A3)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0A3)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0A3)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0A3)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0A3)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A3)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0A3)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A3)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0A3)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0A3)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0A3)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0A3)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0A3)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED0A3)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED0A3)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED0A3)clone).U29 = context.Clone(this.U29)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4861,6 +6230,38 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U24;
         public float U25;
         public int U26;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A4)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A4)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A4)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A4)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A4)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A4)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A4)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A4)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A4)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A4)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A4)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A4)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A4)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A4)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A4)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0A4)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0A4)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0A4)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0A4)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A4)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0A4)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A4)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0A4)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0A4)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0A4)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0A4)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0A4)clone).U26 = context.Clone(this.U26)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -4995,6 +6396,37 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U24;
         public Keys? U25;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A5)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A5)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A5)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A5)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A5)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A5)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A5)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A5)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A5)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A5)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A5)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A5)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A5)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A5)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A5)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0A5)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0A5)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0A5)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0A5)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A5)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0A5)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A5)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0A5)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0A5)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0A5)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0A5)clone).U25 = context.Clone(this.U25)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5084,6 +6516,40 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U26;
         public int U27;
         public Keys? U28;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A6)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A6)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A6)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A6)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A6)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A6)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A6)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A6)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A6)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A6)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A6)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A6)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A6)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A6)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A6)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0A6)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0A6)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0A6)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0A6)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A6)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0A6)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A6)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0A6)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0A6)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0A6)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0A6)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0A6)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED0A6)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED0A6)clone).U28 = context.Clone(this.U28)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -5228,6 +6694,50 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U37;
         public float U38;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A7)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A7)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A7)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A7)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A7)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A7)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A7)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A7)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A7)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A7)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A7)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A7)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A7)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A7)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A7)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0A7)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0A7)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0A7)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0A7)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A7)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0A7)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A7)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0A7)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0A7)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0A7)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0A7)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0A7)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED0A7)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED0A7)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED0A7)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED0A7)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED0A7)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED0A7)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED0A7)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED0A7)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090ED0A7)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090ED0A7)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090ED0A7)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090ED0A7)clone).U38 = context.Clone(this.U38)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5364,6 +6874,26 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U13;
         public Keys? U14;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A8)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A8)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A8)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A8)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A8)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A8)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A8)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A8)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A8)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A8)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A8)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0A8)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A8)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0A8)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0A8)clone).U14 = context.Clone(this.U14)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5436,6 +6966,22 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U09;
         public Keys? U10;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0A9)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0A9)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0A9)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0A9)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0A9)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0A9)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0A9)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0A9)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0A9)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0A9)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0A9)clone).U10 = context.Clone(this.U10)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5471,6 +7017,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AA)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AA)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5488,6 +7041,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U03;
         public Keys? U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AB)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AB)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0AB)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0AB)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0AB)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5504,6 +7067,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0AC;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AC)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AC)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -5551,6 +7121,46 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U32;
         public float U33;
         public int U34;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AD)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AD)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0AD)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0AD)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0AD)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0AD)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0AD)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0AD)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0AD)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0AD)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0AD)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0AD)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0AD)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0AD)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0AD)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0AD)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0AD)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0AD)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0AD)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0AD)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0AD)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0AD)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0AD)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0AD)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0AD)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0AD)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0AD)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED0AD)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED0AD)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED0AD)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED0AD)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED0AD)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED0AD)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED0AD)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED0AD)clone).U34 = context.Clone(this.U34)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -5640,6 +7250,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U01;
         public Keys? U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AE)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AE)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0AE)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0AE)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
@@ -5738,6 +7357,90 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public Keys? U77;
         public Keys? U78;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0AF)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0AF)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0AF)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090ED0AF)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED0AF)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090ED0AF)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0AF)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090ED0AF)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED0AF)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0AF)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED0AF)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0AF)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0AF)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090ED0AF)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0AF)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0AF)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090ED0AF)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0AF)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090ED0AF)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0AF)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090ED0AF)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0AF)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090ED0AF)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED0AF)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090ED0AF)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090ED0AF)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090ED0AF)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED0AF)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090ED0AF)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090ED0AF)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090ED0AF)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090ED0AF)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED0AF)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090ED0AF)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090ED0AF)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090ED0AF)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090ED0AF)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090ED0AF)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090ED0AF)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk090ED0AF)clone).U39 = context.Clone(this.U39)!;
+            ((Chunk090ED0AF)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090ED0AF)clone).U41 = context.Clone(this.U41)!;
+            ((Chunk090ED0AF)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090ED0AF)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090ED0AF)clone).U44 = context.Clone(this.U44)!;
+            ((Chunk090ED0AF)clone).U45 = context.Clone(this.U45)!;
+            ((Chunk090ED0AF)clone).U46 = context.Clone(this.U46)!;
+            ((Chunk090ED0AF)clone).U47 = context.Clone(this.U47)!;
+            ((Chunk090ED0AF)clone).U48 = context.Clone(this.U48)!;
+            ((Chunk090ED0AF)clone).U49 = context.Clone(this.U49)!;
+            ((Chunk090ED0AF)clone).U50 = context.Clone(this.U50)!;
+            ((Chunk090ED0AF)clone).U51 = context.Clone(this.U51)!;
+            ((Chunk090ED0AF)clone).U52 = context.Clone(this.U52)!;
+            ((Chunk090ED0AF)clone).U53 = context.Clone(this.U53)!;
+            ((Chunk090ED0AF)clone).U54 = context.Clone(this.U54)!;
+            ((Chunk090ED0AF)clone).U55 = context.Clone(this.U55)!;
+            ((Chunk090ED0AF)clone).U56 = context.Clone(this.U56)!;
+            ((Chunk090ED0AF)clone).U57 = context.Clone(this.U57)!;
+            ((Chunk090ED0AF)clone).U58 = context.Clone(this.U58)!;
+            ((Chunk090ED0AF)clone).U59 = context.Clone(this.U59)!;
+            ((Chunk090ED0AF)clone).U60 = context.Clone(this.U60)!;
+            ((Chunk090ED0AF)clone).U61 = context.Clone(this.U61)!;
+            ((Chunk090ED0AF)clone).U62 = context.Clone(this.U62)!;
+            ((Chunk090ED0AF)clone).U63 = context.Clone(this.U63)!;
+            ((Chunk090ED0AF)clone).U64 = context.Clone(this.U64)!;
+            ((Chunk090ED0AF)clone).U65 = context.Clone(this.U65)!;
+            ((Chunk090ED0AF)clone).U66 = context.Clone(this.U66)!;
+            ((Chunk090ED0AF)clone).U67 = context.Clone(this.U67)!;
+            ((Chunk090ED0AF)clone).U68 = context.Clone(this.U68)!;
+            ((Chunk090ED0AF)clone).U69 = context.Clone(this.U69)!;
+            ((Chunk090ED0AF)clone).U70 = context.Clone(this.U70)!;
+            ((Chunk090ED0AF)clone).U71 = context.Clone(this.U71)!;
+            ((Chunk090ED0AF)clone).U72 = context.Clone(this.U72)!;
+            ((Chunk090ED0AF)clone).U73 = context.Clone(this.U73)!;
+            ((Chunk090ED0AF)clone).U74 = context.Clone(this.U74)!;
+            ((Chunk090ED0AF)clone).U75 = context.Clone(this.U75)!;
+            ((Chunk090ED0AF)clone).U76 = context.Clone(this.U76)!;
+            ((Chunk090ED0AF)clone).U77 = context.Clone(this.U77)!;
+            ((Chunk090ED0AF)clone).U78 = context.Clone(this.U78)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5830,6 +7533,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090ED0B0)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090ED0B0)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED0B0)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -5842,8 +7553,27 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         }
     }
 
-    public partial class Keys : IReadableWritable, IReadable, IWritable
+    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Keys)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Keys)clone).u01 = context.Clone(this.u01)!;
+            ((Keys)clone).u02 = context.Clone(this.u02)!;
+            ((Keys)clone).count = context.Clone(this.count)!;
+            ((Keys)clone).u03 = context.Clone(this.u03)!;
+            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
+            ((Keys)clone).u05 = context.Clone(this.u05)!;
+            ((Keys)clone).u06 = context.Clone(this.u06)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

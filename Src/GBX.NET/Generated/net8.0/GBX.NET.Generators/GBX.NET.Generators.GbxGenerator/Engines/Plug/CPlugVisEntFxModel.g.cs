@@ -34,6 +34,11 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09115000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVisEntFxModel()
     {
     }
@@ -59,6 +64,22 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         public float U08;
         public float U09;
         public GxLightBall? U10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09115000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09115000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09115000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09115000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09115000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09115000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09115000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09115000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk09115000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk09115000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09115000)clone).U10 = context.Clone(this.U10)!;
+        }
 
         public override void ReadWrite(CPlugVisEntFxModel n, GbxReaderWriter rw)
         {

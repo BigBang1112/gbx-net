@@ -42,6 +42,12 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         set => this.contextMapRecordsForProfile = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ChallengesScores)clone).contextMapRecordsForProfile = context.CloneArray(this.contextMapRecordsForProfile)!;
+    }
+
     public CGamePlayerProfileChunk_ChallengesScores()
     {
     }
@@ -52,6 +58,13 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override uint Id => 0x03149000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03149000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03149000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
@@ -66,6 +79,12 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override uint Id => 0x03149002;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03149002)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -73,7 +92,7 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         }
     }
 
-    public partial class SContextMapRecordForProfile : IReadableWritable, IReadable, IWritable
+    public partial class SContextMapRecordForProfile : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -192,6 +211,35 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         {
             get => this.u17;
             set => this.u17 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SContextMapRecordForProfile)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SContextMapRecordForProfile)clone).u01 = context.Clone(this.u01)!;
+            ((SContextMapRecordForProfile)clone).u02 = context.Clone(this.u02)!;
+            ((SContextMapRecordForProfile)clone).u03 = context.Clone(this.u03)!;
+            ((SContextMapRecordForProfile)clone).u04 = context.Clone(this.u04)!;
+            ((SContextMapRecordForProfile)clone).u05 = context.Clone(this.u05)!;
+            ((SContextMapRecordForProfile)clone).u06 = context.Clone(this.u06)!;
+            ((SContextMapRecordForProfile)clone).u07 = context.Clone(this.u07)!;
+            ((SContextMapRecordForProfile)clone).u08 = context.Clone(this.u08)!;
+            ((SContextMapRecordForProfile)clone).u09 = context.Clone(this.u09)!;
+            ((SContextMapRecordForProfile)clone).u10 = context.Clone(this.u10)!;
+            ((SContextMapRecordForProfile)clone).u11 = context.Clone(this.u11)!;
+            ((SContextMapRecordForProfile)clone).u12 = context.Clone(this.u12)!;
+            ((SContextMapRecordForProfile)clone).u13 = context.Clone(this.u13)!;
+            ((SContextMapRecordForProfile)clone).u14 = context.Clone(this.u14)!;
+            ((SContextMapRecordForProfile)clone).u15 = context.Clone(this.u15)!;
+            ((SContextMapRecordForProfile)clone).u16 = context.Clone(this.u16)!;
+            ((SContextMapRecordForProfile)clone).u17 = context.Clone(this.u17)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

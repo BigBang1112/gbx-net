@@ -102,6 +102,18 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         set => this.baseHeightOffset = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnDecorationSize)clone).editionZoneMin = context.Clone(this.editionZoneMin)!;
+        ((CGameCtnDecorationSize)clone).editionZoneMax = context.Clone(this.editionZoneMax)!;
+        ((CGameCtnDecorationSize)clone).baseHeightBase = context.Clone(this.baseHeightBase)!;
+        ((CGameCtnDecorationSize)clone).size = context.Clone(this.size)!;
+        ((CGameCtnDecorationSize)clone).scene = context.Clone(this.scene)!;
+        ((CGameCtnDecorationSize)clone).offsetBlockY = context.Clone(this.offsetBlockY)!;
+        ((CGameCtnDecorationSize)clone).baseHeightOffset = context.Clone(this.baseHeightOffset)!;
+    }
+
     public CGameCtnDecorationSize()
     {
     }
@@ -111,6 +123,12 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     {
         public override uint Id => 0x0303B000;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303B000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationSize n, GbxReaderWriter rw)
         {
@@ -125,6 +143,11 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     {
         public override uint Id => 0x0303B001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnDecorationSize n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.baseHeightBase);
@@ -137,6 +160,11 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     public partial class Chunk0303B002 : Chunk<CGameCtnDecorationSize>
     {
         public override uint Id => 0x0303B002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationSize n, GbxReaderWriter rw)
         {
@@ -152,6 +180,12 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     {
         public override uint Id => 0x0303B003;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303B003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationSize n, GbxReaderWriter rw)
         {

@@ -74,6 +74,16 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
         set => this.autoFocus = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCameraEffectInertialTracking)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockCameraEffectInertialTracking)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockCameraEffectInertialTracking)clone).tracking = context.Clone(this.tracking)!;
+        ((CGameCtnMediaBlockCameraEffectInertialTracking)clone).autoZoom = context.Clone(this.autoZoom)!;
+        ((CGameCtnMediaBlockCameraEffectInertialTracking)clone).autoFocus = context.Clone(this.autoFocus)!;
+    }
+
     public CGameCtnMediaBlockCameraEffectInertialTracking()
     {
     }
@@ -95,6 +105,12 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     {
         public override uint Id => 0x03166000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03166000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectInertialTracking n, GbxReaderWriter rw)
         {

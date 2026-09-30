@@ -42,6 +42,12 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
         set => this.verticalClipGroupId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoClipVertical)clone).verticalClipGroupId = context.Clone(this.verticalClipGroupId)!;
+    }
+
     public CGameCtnBlockInfoClipVertical()
     {
     }
@@ -51,6 +57,12 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
     {
         public override uint Id => 0x03340000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03340000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoClipVertical n, GbxReaderWriter rw)
         {

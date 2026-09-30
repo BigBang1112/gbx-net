@@ -124,6 +124,20 @@ public partial class CPlugShaderPass : CPlug, IClass
         set => this.pHlsl = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugShaderPass)clone).vertexTextures = context.CloneArray(this.vertexTextures)!;
+        ((CPlugShaderPass)clone).vHlslGpu = context.Clone(this.vHlslGpu)!;
+        ((CPlugShaderPass)clone).vHlslGpuLoadFxs1 = context.CloneArray(this.vHlslGpuLoadFxs1)!;
+        ((CPlugShaderPass)clone).vHlslU01 = context.CloneArray(this.vHlslU01)!;
+        ((CPlugShaderPass)clone).pHlslGpu = context.Clone(this.pHlslGpu)!;
+        ((CPlugShaderPass)clone).pHlslGpuLoadFxs2 = context.CloneArray(this.pHlslGpuLoadFxs2)!;
+        ((CPlugShaderPass)clone).pHlslU01 = context.CloneArray(this.pHlslU01)!;
+        ((CPlugShaderPass)clone).vHlsl = context.Clone(this.vHlsl)!;
+        ((CPlugShaderPass)clone).pHlsl = context.Clone(this.pHlsl)!;
+    }
+
     public CPlugShaderPass()
     {
     }
@@ -132,6 +146,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     public partial class Chunk09067006 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
@@ -145,6 +164,12 @@ public partial class CPlugShaderPass : CPlug, IClass
         public override uint Id => 0x09067007;
         public uint U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09067007)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.UInt32(ref U01);
@@ -155,6 +180,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     public partial class Chunk09067008 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
@@ -182,6 +212,12 @@ public partial class CPlugShaderPass : CPlug, IClass
         public override uint Id => 0x0906700A;
         public string[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0906700A)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.ArrayId(ref U01!);
@@ -198,6 +234,15 @@ public partial class CPlugShaderPass : CPlug, IClass
         public PipelineGpu? U01;
         public PipelineGpu? U02;
         public PipelineGpu? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0906700B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0906700B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0906700B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0906700B)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
@@ -218,6 +263,12 @@ public partial class CPlugShaderPass : CPlug, IClass
         public override uint Id => 0x0906700C;
         public uint U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0906700C)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.UInt32(ref U01);
@@ -234,6 +285,16 @@ public partial class CPlugShaderPass : CPlug, IClass
         public UnknownStruct[]? U04;
         public UnknownStruct[]? U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0906700D)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0906700D)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0906700D)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk0906700D)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0906700D)clone).U05 = context.CloneArray(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<UnknownStruct>(ref U01!);
@@ -244,7 +305,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
-    public partial class PipelineGpu : IReadableWritable, IReadable, IWritable
+    public partial class PipelineGpu : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -283,6 +344,22 @@ public partial class CPlugShaderPass : CPlug, IClass
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PipelineGpu)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PipelineGpu)clone).u01 = context.Clone(this.u01)!;
+            ((PipelineGpu)clone).script = context.Clone(this.script)!;
+            ((PipelineGpu)clone).gpuLoadFxs = context.CloneArray(this.gpuLoadFxs)!;
+            ((PipelineGpu)clone).u02 = context.CloneArray(this.u02)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Boolean(ref this.u01);
@@ -310,7 +387,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
-    public partial class GpuLoadFx : IReadableWritable, IReadable, IWritable
+    public partial class GpuLoadFx : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -347,6 +424,23 @@ public partial class CPlugShaderPass : CPlug, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GpuLoadFx)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GpuLoadFx)clone).u01 = context.Clone(this.u01)!;
+            ((GpuLoadFx)clone).u02 = context.Clone(this.u02)!;
+            ((GpuLoadFx)clone).u03 = context.Clone(this.u03)!;
+            ((GpuLoadFx)clone).u04 = context.Clone(this.u04)!;
+            ((GpuLoadFx)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.u01);
@@ -369,7 +463,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
-    public partial class UnknownStruct : IReadableWritable, IReadable, IWritable
+    public partial class UnknownStruct : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private CPlugBitmap? u01;
         public CPlugBitmap? U01
@@ -392,6 +486,20 @@ public partial class CPlugShaderPass : CPlug, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (UnknownStruct)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((UnknownStruct)clone).u01 = context.Clone(this.u01)!;
+            ((UnknownStruct)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

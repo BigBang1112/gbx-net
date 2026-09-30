@@ -42,6 +42,16 @@ public partial class CPlugSurface : CPlug, IClass
         set => this.geom = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSurface)clone).geom = context.Clone(this.geom)!;
+        ((CPlugSurface)clone).surfVersion = context.Clone(this.surfVersion)!;
+        ((CPlugSurface)clone).skel = context.Clone(this.skel)!;
+        ((CPlugSurface)clone).materials = context.CloneArray(this.materials)!;
+        ((CPlugSurface)clone).Surf = context.Clone(this.Surf)!;
+    }
+
     public CPlugSurface()
     {
     }
@@ -52,6 +62,11 @@ public partial class CPlugSurface : CPlug, IClass
     {
         public override uint Id => 0x0900C000;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
@@ -66,10 +81,37 @@ public partial class CPlugSurface : CPlug, IClass
     {
         public override uint Id => 0x0900C003;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900C003)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0900C003)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0900C003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0900C003)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0900C003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0900C003)clone).U06 = context.CloneArray(this.U06)!;
+            ((Chunk0900C003)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
-    public partial class SurfMaterial : IReadableWritable, IReadable, IWritable
+    public partial class SurfMaterial : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SurfMaterial)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SurfMaterial)clone).material = context.Clone(this.material)!;
+            ((SurfMaterial)clone).materialFile = context.Clone(this.materialFile)!;
+            ((SurfMaterial)clone).SurfaceId = context.Clone(this.SurfaceId)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);
@@ -83,7 +125,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Sphere : IReadable, IWritable
+    public partial class Sphere : IReadable, IWritable, IDeepCloneable
     {
         private float size;
         public float Size
@@ -100,6 +142,21 @@ public partial class CPlugSurface : CPlug, IClass
         {
             get => this.surfaceIndex;
             set => this.surfaceIndex = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Sphere)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Sphere)clone).size = context.Clone(this.size)!;
+            ((Sphere)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((Sphere)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
         }
 
         public void Read(GbxReader r, int v = 0)
@@ -123,7 +180,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Ellipsoid : IReadable, IWritable
+    public partial class Ellipsoid : IReadable, IWritable, IDeepCloneable
     {
         private Vec3 size;
         public Vec3 Size
@@ -140,6 +197,21 @@ public partial class CPlugSurface : CPlug, IClass
         {
             get => this.surfaceIndex;
             set => this.surfaceIndex = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Ellipsoid)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Ellipsoid)clone).size = context.Clone(this.size)!;
+            ((Ellipsoid)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((Ellipsoid)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
         }
 
         public void Read(GbxReader r, int v = 0)
@@ -163,7 +235,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Box : IReadable, IWritable
+    public partial class Box : IReadable, IWritable, IDeepCloneable
     {
         private BoxAligned transform;
         public BoxAligned Transform
@@ -180,6 +252,21 @@ public partial class CPlugSurface : CPlug, IClass
         {
             get => this.surfaceIndex;
             set => this.surfaceIndex = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Box)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Box)clone).transform = context.Clone(this.transform)!;
+            ((Box)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((Box)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
         }
 
         public void Read(GbxReader r, int v = 0)
@@ -203,7 +290,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class SphereLocated : IReadable, IWritable
+    public partial class SphereLocated : IReadable, IWritable, IDeepCloneable
     {
         private Vec3 center;
         public Vec3 Center
@@ -226,6 +313,22 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.surfaceIndex = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SphereLocated)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SphereLocated)clone).center = context.Clone(this.center)!;
+            ((SphereLocated)clone).radius = context.Clone(this.radius)!;
+            ((SphereLocated)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((SphereLocated)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.center = r.ReadVec3();
@@ -241,7 +344,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class VCylinder : IReadable, IWritable
+    public partial class VCylinder : IReadable, IWritable, IDeepCloneable
     {
         private float radius;
         public float Radius
@@ -264,6 +367,22 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.surfaceIndex = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VCylinder)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VCylinder)clone).radius = context.Clone(this.radius)!;
+            ((VCylinder)clone).height = context.Clone(this.height)!;
+            ((VCylinder)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((VCylinder)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.radius = r.ReadSingle();
@@ -279,7 +398,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Cylinder : IReadable, IWritable
+    public partial class Cylinder : IReadable, IWritable, IDeepCloneable
     {
         private float radiusY;
         public float RadiusY
@@ -302,6 +421,22 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.surfaceIndex = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Cylinder)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Cylinder)clone).radiusY = context.Clone(this.radiusY)!;
+            ((Cylinder)clone).radiusXZ = context.Clone(this.radiusXZ)!;
+            ((Cylinder)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((Cylinder)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.radiusY = r.ReadSingle();
@@ -317,7 +452,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Circle : IReadable, IWritable
+    public partial class Circle : IReadable, IWritable, IDeepCloneable
     {
         private Vec3 center;
         public Vec3 Center
@@ -340,6 +475,22 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.radius = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Circle)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Circle)clone).center = context.Clone(this.center)!;
+            ((Circle)clone).normal = context.Clone(this.normal)!;
+            ((Circle)clone).radius = context.Clone(this.radius)!;
+            ((Circle)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.center = r.ReadVec3();
@@ -355,7 +506,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Capsule : IReadable, IWritable
+    public partial class Capsule : IReadable, IWritable, IDeepCloneable
     {
         private Vec3 sphereCenter;
         public Vec3 SphereCenter
@@ -388,6 +539,23 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.surfaceIndex = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Capsule)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Capsule)clone).sphereCenter = context.Clone(this.sphereCenter)!;
+            ((Capsule)clone).dir = context.Clone(this.dir)!;
+            ((Capsule)clone).length = context.Clone(this.length)!;
+            ((Capsule)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((Capsule)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.sphereCenter = r.ReadVec3();
@@ -405,7 +573,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class SphericalShell : IReadable, IWritable
+    public partial class SphericalShell : IReadable, IWritable, IDeepCloneable
     {
         private float innerRadius;
         public float InnerRadius
@@ -435,6 +603,23 @@ public partial class CPlugSurface : CPlug, IClass
             set => this.surfaceIndex = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SphericalShell)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SphericalShell)clone).innerRadius = context.Clone(this.innerRadius)!;
+            ((SphericalShell)clone).outerRadius = context.Clone(this.outerRadius)!;
+            ((SphericalShell)clone).skipInToOut = context.Clone(this.skipInToOut)!;
+            ((SphericalShell)clone).surfaceIndex = context.Clone(this.surfaceIndex)!;
+            ((SphericalShell)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             this.innerRadius = r.ReadSingle();
@@ -452,8 +637,21 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class CompoundInstance : IReadable, IWritable
+    public partial class CompoundInstance : IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CompoundInstance)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CompoundInstance)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
         }
@@ -463,8 +661,21 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Voxel : IReadable, IWritable
+    public partial class Voxel : IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Voxel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Voxel)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
         }
@@ -474,7 +685,7 @@ public partial class CPlugSurface : CPlug, IClass
         }
     }
 
-    public partial class Diggable : IReadable, IWritable
+    public partial class Diggable : IReadable, IWritable, IDeepCloneable
     {
         private BoxAligned bounds;
         public BoxAligned Bounds
@@ -516,6 +727,25 @@ public partial class CPlugSurface : CPlug, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Diggable)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Diggable)clone).bounds = context.Clone(this.bounds)!;
+            ((Diggable)clone).u01 = context.Clone(this.u01)!;
+            ((Diggable)clone).u02 = context.Clone(this.u02)!;
+            ((Diggable)clone).u03 = context.Clone(this.u03)!;
+            ((Diggable)clone).u04 = context.Clone(this.u04)!;
+            ((Diggable)clone).u05 = context.Clone(this.u05)!;
+            ((Diggable)clone).GameplayMainDir = context.Clone(this.GameplayMainDir)!;
         }
 
         public void Read(GbxReader r, int v = 0)

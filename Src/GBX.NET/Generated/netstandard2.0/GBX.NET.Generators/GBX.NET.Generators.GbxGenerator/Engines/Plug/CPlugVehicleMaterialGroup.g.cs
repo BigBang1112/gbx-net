@@ -34,6 +34,11 @@ public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E9000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVehicleMaterialGroup()
     {
     }
@@ -43,6 +48,12 @@ public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
     {
         public override uint Id => 0x090E9000;
         public int[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E9000)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleMaterialGroup n, GbxReaderWriter rw)
         {

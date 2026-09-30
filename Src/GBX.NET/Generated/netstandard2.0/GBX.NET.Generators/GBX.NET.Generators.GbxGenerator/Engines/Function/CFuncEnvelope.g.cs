@@ -98,6 +98,19 @@ public partial class CFuncEnvelope : CFunc, IClass
         set => this.modFunc = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncEnvelope)clone).keyFrameValue0 = context.Clone(this.keyFrameValue0)!;
+        ((CFuncEnvelope)clone).keyFrameValue1 = context.Clone(this.keyFrameValue1)!;
+        ((CFuncEnvelope)clone).keyFrameValue2 = context.Clone(this.keyFrameValue2)!;
+        ((CFuncEnvelope)clone).keyFrameValue3 = context.Clone(this.keyFrameValue3)!;
+        ((CFuncEnvelope)clone).keyFramePos1 = context.Clone(this.keyFramePos1)!;
+        ((CFuncEnvelope)clone).frequency = context.Clone(this.frequency)!;
+        ((CFuncEnvelope)clone).amplitude = context.Clone(this.amplitude)!;
+        ((CFuncEnvelope)clone).modFunc = context.Clone(this.modFunc)!;
+    }
+
     public CFuncEnvelope()
     {
     }
@@ -106,6 +119,11 @@ public partial class CFuncEnvelope : CFunc, IClass
     public partial class Chunk05036000 : Chunk<CFuncEnvelope>
     {
         public override uint Id => 0x05036000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncEnvelope n, GbxReaderWriter rw)
         {

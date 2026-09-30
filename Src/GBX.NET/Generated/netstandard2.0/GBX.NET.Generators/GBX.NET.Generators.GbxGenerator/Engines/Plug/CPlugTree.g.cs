@@ -100,6 +100,20 @@ public partial class CPlugTree : CPlug, IClass
         set => this.generator = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTree)clone).children = context.CloneList(this.children)!;
+        ((CPlugTree)clone).funcTree = context.Clone(this.funcTree)!;
+        ((CPlugTree)clone).visual = context.Clone(this.visual)!;
+        ((CPlugTree)clone).shader = context.Clone(this.shader)!;
+        ((CPlugTree)clone).surface = context.Clone(this.surface)!;
+        ((CPlugTree)clone).generator = context.Clone(this.generator)!;
+        ((CPlugTree)clone).Name = context.Clone(this.Name)!;
+        ((CPlugTree)clone).Flags = context.Clone(this.Flags)!;
+        ((CPlugTree)clone).Location = context.Clone(this.Location)!;
+    }
+
     public CPlugTree()
     {
     }
@@ -110,6 +124,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F006;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
@@ -124,6 +143,12 @@ public partial class CPlugTree : CPlug, IClass
         public override uint Id => 0x0904F00C;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0904F00C)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
@@ -143,6 +168,12 @@ public partial class CPlugTree : CPlug, IClass
         public override uint Id => 0x0904F00D;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0904F00D)clone).U01 = context.Clone(this.U01)!;
+        }
     }
 
     /// <summary>
@@ -154,6 +185,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F011;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
@@ -170,6 +206,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F015;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -181,6 +222,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F016;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
@@ -197,6 +243,12 @@ public partial class CPlugTree : CPlug, IClass
         public override uint Id => 0x0904F017;
         public CPlugVisual? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0904F017)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugVisual>(ref U01);
@@ -210,6 +262,11 @@ public partial class CPlugTree : CPlug, IClass
     public partial class Chunk0904F018 : Chunk<CPlugTree>
     {
         public override uint Id => 0x0904F018;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -221,6 +278,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F019;
         public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -232,6 +294,11 @@ public partial class CPlugTree : CPlug, IClass
     {
         public override uint Id => 0x0904F01A;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

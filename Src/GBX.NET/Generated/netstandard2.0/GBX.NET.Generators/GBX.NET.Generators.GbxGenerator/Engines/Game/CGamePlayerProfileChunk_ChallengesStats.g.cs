@@ -42,6 +42,12 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         set => this.challengeStats = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ChallengesStats)clone).challengeStats = context.CloneArray(this.challengeStats)!;
+    }
+
     public CGamePlayerProfileChunk_ChallengesStats()
     {
     }
@@ -52,6 +58,13 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         public override uint Id => 0x03148000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03148000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03148000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesStats n, GbxReaderWriter rw)
         {
@@ -66,6 +79,12 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         public override uint Id => 0x03148001;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03148001)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesStats n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -73,7 +92,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         }
     }
 
-    public partial class SChallengeStats : IReadableWritable, IReadable, IWritable
+    public partial class SChallengeStats : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? u01;
         public Ident? U01
@@ -290,6 +309,49 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         {
             get => this.u30;
             set => this.u30 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SChallengeStats)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SChallengeStats)clone).u01 = context.Clone(this.u01)!;
+            ((SChallengeStats)clone).u02 = context.Clone(this.u02)!;
+            ((SChallengeStats)clone).u03 = context.Clone(this.u03)!;
+            ((SChallengeStats)clone).u04 = context.Clone(this.u04)!;
+            ((SChallengeStats)clone).u05 = context.Clone(this.u05)!;
+            ((SChallengeStats)clone).u06 = context.Clone(this.u06)!;
+            ((SChallengeStats)clone).u07 = context.Clone(this.u07)!;
+            ((SChallengeStats)clone).u08 = context.Clone(this.u08)!;
+            ((SChallengeStats)clone).u09 = context.Clone(this.u09)!;
+            ((SChallengeStats)clone).u10 = context.Clone(this.u10)!;
+            ((SChallengeStats)clone).u11 = context.Clone(this.u11)!;
+            ((SChallengeStats)clone).u12 = context.Clone(this.u12)!;
+            ((SChallengeStats)clone).u13 = context.Clone(this.u13)!;
+            ((SChallengeStats)clone).u14 = context.Clone(this.u14)!;
+            ((SChallengeStats)clone).u15 = context.Clone(this.u15)!;
+            ((SChallengeStats)clone).u16 = context.Clone(this.u16)!;
+            ((SChallengeStats)clone).u17 = context.Clone(this.u17)!;
+            ((SChallengeStats)clone).needsSynchro = context.Clone(this.needsSynchro)!;
+            ((SChallengeStats)clone).u18 = context.Clone(this.u18)!;
+            ((SChallengeStats)clone).u19 = context.Clone(this.u19)!;
+            ((SChallengeStats)clone).u20 = context.Clone(this.u20)!;
+            ((SChallengeStats)clone).u21 = context.Clone(this.u21)!;
+            ((SChallengeStats)clone).u22 = context.Clone(this.u22)!;
+            ((SChallengeStats)clone).u23 = context.Clone(this.u23)!;
+            ((SChallengeStats)clone).u24 = context.Clone(this.u24)!;
+            ((SChallengeStats)clone).u25 = context.Clone(this.u25)!;
+            ((SChallengeStats)clone).u26 = context.Clone(this.u26)!;
+            ((SChallengeStats)clone).u27 = context.Clone(this.u27)!;
+            ((SChallengeStats)clone).u28 = context.Clone(this.u28)!;
+            ((SChallengeStats)clone).u29 = context.Clone(this.u29)!;
+            ((SChallengeStats)clone).u30 = context.Clone(this.u30)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

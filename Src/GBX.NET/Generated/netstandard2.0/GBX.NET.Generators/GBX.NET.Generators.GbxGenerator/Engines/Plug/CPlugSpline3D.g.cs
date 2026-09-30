@@ -34,6 +34,11 @@ public partial class CPlugSpline3D : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090CF000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugSpline3D()
     {
     }

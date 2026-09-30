@@ -51,6 +51,13 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
         set => this.flareBiasZ = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLightPoint)clone).flareSize = context.Clone(this.flareSize)!;
+        ((GxLightPoint)clone).flareBiasZ = context.Clone(this.flareBiasZ)!;
+    }
+
     public GxLightPoint()
     {
     }
@@ -59,6 +66,11 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     public partial class Chunk04003003 : Chunk<GxLightPoint>
     {
         public override uint Id => 0x04003003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightPoint n, GbxReaderWriter rw)
         {
@@ -70,6 +82,11 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     public partial class Chunk04003004 : Chunk<GxLightPoint>
     {
         public override uint Id => 0x04003004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightPoint n, GbxReaderWriter rw)
         {

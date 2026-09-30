@@ -90,6 +90,20 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         set => this.groupCurPatchLayouts = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugItemPlacement_SClass)clone).sizeGroup = context.Clone(this.sizeGroup)!;
+        ((NPlugItemPlacement_SClass)clone).compatibleGroupsIds = context.CloneArray(this.compatibleGroupsIds)!;
+        ((NPlugItemPlacement_SClass)clone).alwaysUp = context.Clone(this.alwaysUp)!;
+        ((NPlugItemPlacement_SClass)clone).alignToInterior = context.Clone(this.alignToInterior)!;
+        ((NPlugItemPlacement_SClass)clone).alignToWorldDir = context.Clone(this.alignToWorldDir)!;
+        ((NPlugItemPlacement_SClass)clone).worldDir = context.Clone(this.worldDir)!;
+        ((NPlugItemPlacement_SClass)clone).patchLayouts = context.CloneArray(this.patchLayouts)!;
+        ((NPlugItemPlacement_SClass)clone).groupCurPatchLayouts = context.CloneArray(this.groupCurPatchLayouts)!;
+        ((NPlugItemPlacement_SClass)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugItemPlacement_SClass()
     {
     }
@@ -119,7 +133,7 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         ReadWrite(rw, v);
     }
 
-    public partial class PatchLayout : IReadableWritable, IReadable, IWritable
+    public partial class PatchLayout : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int itemCount;
         public int ItemCount
@@ -188,6 +202,27 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PatchLayout)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PatchLayout)clone).itemCount = context.Clone(this.itemCount)!;
+            ((PatchLayout)clone).itemSpacing = context.Clone(this.itemSpacing)!;
+            ((PatchLayout)clone).fillAlign = context.Clone(this.fillAlign)!;
+            ((PatchLayout)clone).fillDir = context.Clone(this.fillDir)!;
+            ((PatchLayout)clone).normedPos = context.Clone(this.normedPos)!;
+            ((PatchLayout)clone).u01 = context.Clone(this.u01)!;
+            ((PatchLayout)clone).onlyOnGroups = context.CloneArray(this.onlyOnGroups)!;
+            ((PatchLayout)clone).altitude = context.Clone(this.altitude)!;
+            ((PatchLayout)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

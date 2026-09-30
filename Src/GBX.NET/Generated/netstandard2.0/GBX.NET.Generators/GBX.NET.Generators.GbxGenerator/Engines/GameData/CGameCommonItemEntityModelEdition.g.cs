@@ -98,6 +98,19 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         set => this.inventoryOccupation = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCommonItemEntityModelEdition)clone).itemType = context.Clone(this.itemType)!;
+        ((CGameCommonItemEntityModelEdition)clone).meshCrystal = context.Clone(this.meshCrystal)!;
+        ((CGameCommonItemEntityModelEdition)clone).spriteParams = context.CloneArray(this.spriteParams)!;
+        ((CGameCommonItemEntityModelEdition)clone).mass = context.Clone(this.mass)!;
+        ((CGameCommonItemEntityModelEdition)clone).inventoryName = context.Clone(this.inventoryName)!;
+        ((CGameCommonItemEntityModelEdition)clone).inventoryDescription = context.Clone(this.inventoryDescription)!;
+        ((CGameCommonItemEntityModelEdition)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
+        ((CGameCommonItemEntityModelEdition)clone).inventoryOccupation = context.Clone(this.inventoryOccupation)!;
+    }
+
     public CGameCommonItemEntityModelEdition()
     {
     }
@@ -129,6 +142,34 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public int U20;
         public CMwNod? U21;
         public bool U22;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E026000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E026000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E026000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E026000)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk2E026000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E026000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk2E026000)clone).U06 = context.CloneArray(this.U06)!;
+            ((Chunk2E026000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E026000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk2E026000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk2E026000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk2E026000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk2E026000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk2E026000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk2E026000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk2E026000)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk2E026000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk2E026000)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk2E026000)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk2E026000)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk2E026000)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk2E026000)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk2E026000)clone).U22 = context.Clone(this.U22)!;
+        }
 
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
         {
@@ -212,9 +253,14 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     {
         public override uint Id => 0x2E026001;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class SpriteParam : IReadableWritable, IReadable, IWritable
+    public partial class SpriteParam : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Vec3 u01;
         public Vec3 U01
@@ -237,6 +283,21 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
             set => this.u03 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SpriteParam)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SpriteParam)clone).u01 = context.Clone(this.u01)!;
+            ((SpriteParam)clone).u02 = context.Clone(this.u02)!;
+            ((SpriteParam)clone).u03 = context.Clone(this.u03)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Vec3(ref this.u01);
@@ -257,7 +318,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         }
     }
 
-    public partial class LightBallStateSimple : IReadableWritable, IReadable, IWritable
+    public partial class LightBallStateSimple : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -313,6 +374,26 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         {
             get => this.u08;
             set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LightBallStateSimple)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LightBallStateSimple)clone).u01 = context.Clone(this.u01)!;
+            ((LightBallStateSimple)clone).u02 = context.Clone(this.u02)!;
+            ((LightBallStateSimple)clone).u03 = context.Clone(this.u03)!;
+            ((LightBallStateSimple)clone).u04 = context.Clone(this.u04)!;
+            ((LightBallStateSimple)clone).u05 = context.Clone(this.u05)!;
+            ((LightBallStateSimple)clone).u06 = context.Clone(this.u06)!;
+            ((LightBallStateSimple)clone).u07 = context.Clone(this.u07)!;
+            ((LightBallStateSimple)clone).u08 = context.Clone(this.u08)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

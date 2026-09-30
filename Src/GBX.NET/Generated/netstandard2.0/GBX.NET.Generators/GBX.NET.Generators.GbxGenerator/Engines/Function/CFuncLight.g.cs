@@ -58,6 +58,14 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
         set => this.flickCount = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncLight)clone).fctType = context.Clone(this.fctType)!;
+        ((CFuncLight)clone).flickPeriod = context.Clone(this.flickPeriod)!;
+        ((CFuncLight)clone).flickCount = context.Clone(this.flickCount)!;
+    }
+
     public CFuncLight()
     {
     }
@@ -66,6 +74,11 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
     public partial class Chunk05018000 : Chunk<CFuncLight>
     {
         public override uint Id => 0x05018000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncLight n, GbxReaderWriter rw)
         {

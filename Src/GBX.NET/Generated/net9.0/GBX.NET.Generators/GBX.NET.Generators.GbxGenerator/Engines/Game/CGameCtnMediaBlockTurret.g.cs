@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
         set => this.dataTape = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTurret)clone).dataTape = context.Clone(this.dataTape)!;
+    }
+
     public CGameCtnMediaBlockTurret()
     {
     }
@@ -51,6 +57,12 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
     {
         public override uint Id => 0x03294000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03294000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockTurret n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CMwCmdAffectIdentClass : CMwCmdAffectIdent, IClass
     [Hexadecimal]
     public static new uint Id => 0x01072000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMwCmdAffectIdentClass()
     {
     }

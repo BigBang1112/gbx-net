@@ -399,6 +399,47 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.editorHelperHdrScale = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnDecorationMood)clone).latitude = context.Clone(this.latitude)!;
+        ((CGameCtnDecorationMood)clone).longitude = context.Clone(this.longitude)!;
+        ((CGameCtnDecorationMood)clone).deltaGMT = context.Clone(this.deltaGMT)!;
+        ((CGameCtnDecorationMood)clone).timeSunRise = context.Clone(this.timeSunRise)!;
+        ((CGameCtnDecorationMood)clone).timeSunFall = context.Clone(this.timeSunFall)!;
+        ((CGameCtnDecorationMood)clone).remappedStartDayTime = context.Clone(this.remappedStartDayTime)!;
+        ((CGameCtnDecorationMood)clone).remapping = context.Clone(this.remapping)!;
+        ((CGameCtnDecorationMood)clone).remapFolder = context.Clone(this.remapFolder)!;
+        ((CGameCtnDecorationMood)clone).shadowCountCarHuman = context.Clone(this.shadowCountCarHuman)!;
+        ((CGameCtnDecorationMood)clone).shadowCountCarOpponent = context.Clone(this.shadowCountCarOpponent)!;
+        ((CGameCtnDecorationMood)clone).shadowCarIntensity = context.Clone(this.shadowCarIntensity)!;
+        ((CGameCtnDecorationMood)clone).shadowScene = context.Clone(this.shadowScene)!;
+        ((CGameCtnDecorationMood)clone).backgroundIsLocallyLighted = context.Clone(this.backgroundIsLocallyLighted)!;
+        ((CGameCtnDecorationMood)clone).solidLightAreSkinned = context.Clone(this.solidLightAreSkinned)!;
+        ((CGameCtnDecorationMood)clone).hmsLightMap = context.Clone(this.hmsLightMap)!;
+        ((CGameCtnDecorationMood)clone).hmsAmbientOcc = context.Clone(this.hmsAmbientOcc)!;
+        ((CGameCtnDecorationMood)clone).sunMoonIntensity = context.Clone(this.sunMoonIntensity)!;
+        ((CGameCtnDecorationMood)clone).localLightScale = context.Clone(this.localLightScale)!;
+        ((CGameCtnDecorationMood)clone).toneMapExposureStaticBase = context.Clone(this.toneMapExposureStaticBase)!;
+        ((CGameCtnDecorationMood)clone).toneMapFilmCurve = context.Clone(this.toneMapFilmCurve)!;
+        ((CGameCtnDecorationMood)clone).toneMapAutoExp_FidAvgLumiToKeyValue = context.Clone(this.toneMapAutoExp_FidAvgLumiToKeyValue)!;
+        ((CGameCtnDecorationMood)clone).tech3SpecularFake_ExpScaleMax = context.Clone(this.tech3SpecularFake_ExpScaleMax)!;
+        ((CGameCtnDecorationMood)clone).tech3SpecularLocal = context.Clone(this.tech3SpecularLocal)!;
+        ((CGameCtnDecorationMood)clone).tech3Bloom = context.Clone(this.tech3Bloom)!;
+        ((CGameCtnDecorationMood)clone).tech3ToneMapAutoExp = context.Clone(this.tech3ToneMapAutoExp)!;
+        ((CGameCtnDecorationMood)clone).fxBloom_FidFuncIntensAtHdrNorm = context.Clone(this.fxBloom_FidFuncIntensAtHdrNorm)!;
+        ((CGameCtnDecorationMood)clone).waterReflectFakeCube = context.Clone(this.waterReflectFakeCube)!;
+        ((CGameCtnDecorationMood)clone).fxHdrScalesT3 = context.Clone(this.fxHdrScalesT3)!;
+        ((CGameCtnDecorationMood)clone).moodBlender = context.Clone(this.moodBlender)!;
+        ((CGameCtnDecorationMood)clone).enableStars = context.Clone(this.enableStars)!;
+        ((CGameCtnDecorationMood)clone).cloudsSolids = context.Clone(this.cloudsSolids)!;
+        ((CGameCtnDecorationMood)clone).fxLightning = context.Clone(this.fxLightning)!;
+        ((CGameCtnDecorationMood)clone).fxWindOnDecal = context.Clone(this.fxWindOnDecal)!;
+        ((CGameCtnDecorationMood)clone).fxWindOnTreeSprite = context.Clone(this.fxWindOnTreeSprite)!;
+        ((CGameCtnDecorationMood)clone).editorHelperHdrScale = context.Clone(this.editorHelperHdrScale)!;
+        ((CGameCtnDecorationMood)clone).isNight = context.Clone(this.isNight)!;
+    }
+
     public CGameCtnDecorationMood()
     {
     }
@@ -407,6 +448,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public partial class Chunk0303A000 : Chunk<CGameCtnDecorationMood>
     {
         public override uint Id => 0x0303A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -423,6 +469,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.Single(ref n.remappedStartDayTime);
@@ -435,6 +486,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public partial class Chunk0303A002 : Chunk<CGameCtnDecorationMood>
     {
         public override uint Id => 0x0303A002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -451,6 +507,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.solidLightAreSkinned);
@@ -461,6 +522,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public partial class Chunk0303A004 : Chunk<CGameCtnDecorationMood>
     {
         public override uint Id => 0x0303A004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -473,6 +539,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A005;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.NodeRef<CHmsAmbientOcc>(ref n.hmsAmbientOcc, ref n.hmsAmbientOccFile);
@@ -484,6 +555,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.Single(ref n.sunMoonIntensity);
@@ -494,6 +570,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public partial class Chunk0303A007 : Chunk<CGameCtnDecorationMood>
     {
         public override uint Id => 0x0303A007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -507,6 +588,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A00C;
         public Vec3 U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303A00C)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -522,6 +609,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A00F;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303A00F)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
@@ -555,6 +648,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override uint Id => 0x0303A012;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303A012)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -579,6 +678,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         public override uint Id => 0x0303A013;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303A013)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {

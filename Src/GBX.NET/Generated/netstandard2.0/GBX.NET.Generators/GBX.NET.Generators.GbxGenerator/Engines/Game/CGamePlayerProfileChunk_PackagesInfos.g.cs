@@ -42,6 +42,12 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
         set => this.packagesInfos = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_PackagesInfos)clone).packagesInfos = context.CloneArray(this.packagesInfos)!;
+    }
+
     public CGamePlayerProfileChunk_PackagesInfos()
     {
     }
@@ -52,6 +58,12 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
         public override uint Id => 0x03140000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03140000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_PackagesInfos n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -59,7 +71,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
         }
     }
 
-    public partial class PackageInfo : IReadableWritable, IReadable, IWritable
+    public partial class PackageInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private byte[]? checksum;
         public byte[]? Checksum
@@ -87,6 +99,22 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
         {
             get => this.endTimestamp;
             set => this.endTimestamp = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PackageInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
+            ((PackageInfo)clone).key = context.Clone(this.key)!;
+            ((PackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
+            ((PackageInfo)clone).endTimestamp = context.Clone(this.endTimestamp)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

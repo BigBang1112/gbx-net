@@ -85,6 +85,17 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
         set => this.forcedTangentMaxX = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncKeysReal)clone).ys = context.CloneArray(this.ys)!;
+        ((CFuncKeysReal)clone).realInterp = context.Clone(this.realInterp)!;
+        ((CFuncKeysReal)clone).forceTangentMinX = context.Clone(this.forceTangentMinX)!;
+        ((CFuncKeysReal)clone).forceTangentMaxX = context.Clone(this.forceTangentMaxX)!;
+        ((CFuncKeysReal)clone).forcedTangentMinX = context.Clone(this.forcedTangentMinX)!;
+        ((CFuncKeysReal)clone).forcedTangentMaxX = context.Clone(this.forcedTangentMaxX)!;
+    }
+
     public CFuncKeysReal()
     {
     }
@@ -93,6 +104,11 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     public partial class Chunk0501A000 : Chunk<CFuncKeysReal>
     {
         public override uint Id => 0x0501A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncKeysReal n, GbxReaderWriter rw)
         {
@@ -105,6 +121,11 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     {
         public override uint Id => 0x0501A001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CFuncKeysReal n, GbxReaderWriter rw)
         {
             rw.Array<float>(ref n.ys!);
@@ -116,6 +137,11 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     public partial class Chunk0501A002 : Chunk0501A001
     {
         public override uint Id => 0x0501A002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncKeysReal n, GbxReaderWriter rw)
         {

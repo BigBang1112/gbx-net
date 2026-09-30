@@ -90,6 +90,19 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u08 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugDynaPointModel)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugDynaPointModel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugDynaPointModel)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugDynaPointModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugDynaPointModel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugDynaPointModel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugDynaPointModel)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugDynaPointModel)clone).u08 = context.Clone(this.u08)!;
+    }
+
     public CPlugDynaPointModel()
     {
     }

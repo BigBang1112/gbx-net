@@ -34,6 +34,11 @@ public partial class CPlugFxWindOnTreeSprite : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E1000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFxWindOnTreeSprite()
     {
     }

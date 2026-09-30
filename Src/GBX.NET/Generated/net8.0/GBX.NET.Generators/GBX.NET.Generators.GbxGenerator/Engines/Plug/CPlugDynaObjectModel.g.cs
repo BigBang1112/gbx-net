@@ -34,6 +34,38 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09144000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugDynaObjectModel)clone).isStatic = context.Clone(this.isStatic)!;
+        ((CPlugDynaObjectModel)clone).dynamizeOnSpawn = context.Clone(this.dynamizeOnSpawn)!;
+        ((CPlugDynaObjectModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugDynaObjectModel)clone).meshFile = context.Clone(this.meshFile)!;
+        ((CPlugDynaObjectModel)clone).dynaShape = context.Clone(this.dynaShape)!;
+        ((CPlugDynaObjectModel)clone).dynaShapeFile = context.Clone(this.dynaShapeFile)!;
+        ((CPlugDynaObjectModel)clone).staticShape = context.Clone(this.staticShape)!;
+        ((CPlugDynaObjectModel)clone).staticShapeFile = context.Clone(this.staticShapeFile)!;
+        ((CPlugDynaObjectModel)clone).breakSpeedKmh = context.Clone(this.breakSpeedKmh)!;
+        ((CPlugDynaObjectModel)clone).mass = context.Clone(this.mass)!;
+        ((CPlugDynaObjectModel)clone).lightAliveDurationScMin = context.Clone(this.lightAliveDurationScMin)!;
+        ((CPlugDynaObjectModel)clone).lightAliveDurationScMax = context.Clone(this.lightAliveDurationScMax)!;
+        ((CPlugDynaObjectModel)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugDynaObjectModel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugDynaObjectModel)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugDynaObjectModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugDynaObjectModel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugDynaObjectModel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugDynaObjectModel)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugDynaObjectModel)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugDynaObjectModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugDynaObjectModel)clone).locAnim = context.Clone(this.locAnim)!;
+        ((CPlugDynaObjectModel)clone).locAnimFile = context.Clone(this.locAnimFile)!;
+        ((CPlugDynaObjectModel)clone).u10 = context.Clone(this.u10)!;
+        ((CPlugDynaObjectModel)clone).locAnimIsPhysical = context.Clone(this.locAnimIsPhysical)!;
+        ((CPlugDynaObjectModel)clone).waterModel = context.Clone(this.waterModel)!;
+        ((CPlugDynaObjectModel)clone).Version = context.Clone(this.Version)!;
+    }
+
     public CPlugDynaObjectModel()
     {
     }

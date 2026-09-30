@@ -42,6 +42,12 @@ public partial class CMwCmdBlock : CMwNod, IClass
         set => this.cmds = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMwCmdBlock)clone).cmds = context.CloneArray(this.cmds)!;
+    }
+
     public CMwCmdBlock()
     {
     }
@@ -50,6 +56,11 @@ public partial class CMwCmdBlock : CMwNod, IClass
     public partial class Chunk01030004 : Chunk<CMwCmdBlock>
     {
         public override uint Id => 0x01030004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMwCmdBlock n, GbxReaderWriter rw)
         {

@@ -68,6 +68,15 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
         set => this.currentZoneId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZoneGenealogy)clone).currentIndex = context.Clone(this.currentIndex)!;
+        ((CGameCtnZoneGenealogy)clone).dir = context.Clone(this.dir)!;
+        ((CGameCtnZoneGenealogy)clone).zoneIds = context.CloneArray(this.zoneIds)!;
+        ((CGameCtnZoneGenealogy)clone).currentZoneId = context.Clone(this.currentZoneId)!;
+    }
+
     public CGameCtnZoneGenealogy()
     {
     }
@@ -76,6 +85,11 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     public partial class Chunk0311D001 : Chunk<CGameCtnZoneGenealogy>
     {
         public override uint Id => 0x0311D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneGenealogy n, GbxReaderWriter rw)
         {
@@ -90,6 +104,11 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     {
         public override uint Id => 0x0311D002;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneGenealogy n, GbxReaderWriter rw)
         {

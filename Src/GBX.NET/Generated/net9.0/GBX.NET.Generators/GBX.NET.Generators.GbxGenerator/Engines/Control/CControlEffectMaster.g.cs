@@ -230,6 +230,22 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
     public CMwRefBuffer? GetSpecialEffect(GbxReadSettings settings = default, bool exceptions = false) => specialEffectFile?.GetNode(ref specialEffect, settings, exceptions) ?? specialEffect;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlEffectMaster)clone).focusEffect = context.Clone(this.focusEffect)!;
+        ((CControlEffectMaster)clone).focusGainedEffect = context.Clone(this.focusGainedEffect)!;
+        ((CControlEffectMaster)clone).focusLostEffect = context.Clone(this.focusLostEffect)!;
+        ((CControlEffectMaster)clone).focusGainedByAnotherEffect = context.Clone(this.focusGainedByAnotherEffect)!;
+        ((CControlEffectMaster)clone).focusLostByAnotherEffect = context.Clone(this.focusLostByAnotherEffect)!;
+        ((CControlEffectMaster)clone).sleepingEffect = context.Clone(this.sleepingEffect)!;
+        ((CControlEffectMaster)clone).showingEffect = context.Clone(this.showingEffect)!;
+        ((CControlEffectMaster)clone).hidingEffect = context.Clone(this.hidingEffect)!;
+        ((CControlEffectMaster)clone).actionEffect = context.Clone(this.actionEffect)!;
+        ((CControlEffectMaster)clone).managedEffect = context.Clone(this.managedEffect)!;
+        ((CControlEffectMaster)clone).specialEffect = context.Clone(this.specialEffect)!;
+    }
+
     public CControlEffectMaster()
     {
     }
@@ -238,6 +254,11 @@ public partial class CControlEffectMaster : CMwNod, IClass
     public partial class Chunk0701C000 : Chunk<CControlEffectMaster>
     {
         public override uint Id => 0x0701C000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
@@ -260,6 +281,13 @@ public partial class CControlEffectMaster : CMwNod, IClass
         public bool U01;
         public int U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701C001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0701C001)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -271,6 +299,11 @@ public partial class CControlEffectMaster : CMwNod, IClass
     public partial class Chunk0701C002 : Chunk<CControlEffectMaster>
     {
         public override uint Id => 0x0701C002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
@@ -291,6 +324,11 @@ public partial class CControlEffectMaster : CMwNod, IClass
     public partial class Chunk0701C003 : Chunk<CControlEffectMaster>
     {
         public override uint Id => 0x0701C003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {

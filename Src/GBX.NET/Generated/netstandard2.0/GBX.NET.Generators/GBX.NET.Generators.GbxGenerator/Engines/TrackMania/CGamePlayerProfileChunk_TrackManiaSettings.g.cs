@@ -34,6 +34,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     [Hexadecimal]
     public static new uint Id => 0x240D5000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGamePlayerProfileChunk_TrackManiaSettings()
     {
     }
@@ -44,6 +49,13 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public override uint Id => 0x240D5000;
         public int Version { get; set; }
         public byte U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk240D5000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk240D5000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
@@ -59,6 +71,13 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public int Version { get; set; }
         public byte[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk240D5001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk240D5001)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -73,6 +92,13 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public int Version { get; set; }
         public byte[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk240D5002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk240D5002)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -85,6 +111,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     {
         public override uint Id => 0x240D5003;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x240D5004)]
@@ -94,6 +125,14 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public int Version { get; set; }
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk240D5004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk240D5004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk240D5004)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {

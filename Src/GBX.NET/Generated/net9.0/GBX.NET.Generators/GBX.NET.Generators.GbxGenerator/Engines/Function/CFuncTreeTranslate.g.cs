@@ -58,6 +58,14 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
         set => this.flags = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncTreeTranslate)clone).startPoint = context.Clone(this.startPoint)!;
+        ((CFuncTreeTranslate)clone).endPoint = context.Clone(this.endPoint)!;
+        ((CFuncTreeTranslate)clone).flags = context.Clone(this.flags)!;
+    }
+
     public CFuncTreeTranslate()
     {
     }
@@ -66,6 +74,11 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     public partial class Chunk0500D000 : Chunk<CFuncTreeTranslate>
     {
         public override uint Id => 0x0500D000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncTreeTranslate n, GbxReaderWriter rw)
         {
@@ -78,6 +91,11 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     public partial class Chunk0500D001 : Chunk<CFuncTreeTranslate>
     {
         public override uint Id => 0x0500D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncTreeTranslate n, GbxReaderWriter rw)
         {

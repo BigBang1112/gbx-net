@@ -42,6 +42,12 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         set => this.groups = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugAudioBalance)clone).groups = context.CloneArray(this.groups)!;
+    }
+
     public CPlugAudioBalance()
     {
     }
@@ -73,6 +79,29 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         public float U15;
         public float U16;
         public float U17;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09034000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09034000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09034000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09034000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09034000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09034000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09034000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09034000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk09034000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk09034000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09034000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk09034000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk09034000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk09034000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk09034000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk09034000)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk09034000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk09034000)clone).U17 = context.Clone(this.U17)!;
+        }
 
         public override void ReadWrite(CPlugAudioBalance n, GbxReaderWriter rw)
         {
@@ -144,6 +173,16 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         public float U03;
         public bool U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09034001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09034001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09034001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09034001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09034001)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CPlugAudioBalance n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -154,7 +193,7 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         }
     }
 
-    public partial class Group : IReadableWritable, IReadable, IWritable
+    public partial class Group : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Line? u01;
         public Line? U01
@@ -168,6 +207,20 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Group)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Group)clone).u01 = context.Clone(this.u01)!;
+            ((Group)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -189,7 +242,7 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         }
     }
 
-    public partial class Line : IReadableWritable, IReadable, IWritable
+    public partial class Line : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private float u01;
         public float U01
@@ -224,6 +277,23 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Line)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Line)clone).u01 = context.Clone(this.u01)!;
+            ((Line)clone).u02 = context.Clone(this.u02)!;
+            ((Line)clone).u03 = context.Clone(this.u03)!;
+            ((Line)clone).u04 = context.Clone(this.u04)!;
+            ((Line)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -34,6 +34,11 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F6000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVehicleCameraRace2Model()
     {
     }
@@ -104,6 +109,73 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         public float U60;
         public float U61;
         public float U62;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F6000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F6000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F6000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F6000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090F6000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090F6000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090F6000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090F6000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090F6000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090F6000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090F6000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090F6000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090F6000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090F6000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090F6000)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090F6000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090F6000)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090F6000)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090F6000)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090F6000)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090F6000)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090F6000)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090F6000)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090F6000)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090F6000)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090F6000)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090F6000)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090F6000)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090F6000)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090F6000)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090F6000)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090F6000)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090F6000)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090F6000)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090F6000)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090F6000)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090F6000)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090F6000)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk090F6000)clone).U39 = context.Clone(this.U39)!;
+            ((Chunk090F6000)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090F6000)clone).U41 = context.Clone(this.U41)!;
+            ((Chunk090F6000)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090F6000)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090F6000)clone).U44 = context.Clone(this.U44)!;
+            ((Chunk090F6000)clone).U45 = context.Clone(this.U45)!;
+            ((Chunk090F6000)clone).U46 = context.Clone(this.U46)!;
+            ((Chunk090F6000)clone).U47 = context.Clone(this.U47)!;
+            ((Chunk090F6000)clone).U48 = context.Clone(this.U48)!;
+            ((Chunk090F6000)clone).U49 = context.Clone(this.U49)!;
+            ((Chunk090F6000)clone).U50 = context.Clone(this.U50)!;
+            ((Chunk090F6000)clone).U51 = context.Clone(this.U51)!;
+            ((Chunk090F6000)clone).U52 = context.Clone(this.U52)!;
+            ((Chunk090F6000)clone).U53 = context.Clone(this.U53)!;
+            ((Chunk090F6000)clone).U54 = context.Clone(this.U54)!;
+            ((Chunk090F6000)clone).U55 = context.Clone(this.U55)!;
+            ((Chunk090F6000)clone).U56 = context.Clone(this.U56)!;
+            ((Chunk090F6000)clone).U57 = context.Clone(this.U57)!;
+            ((Chunk090F6000)clone).U58 = context.Clone(this.U58)!;
+            ((Chunk090F6000)clone).U59 = context.Clone(this.U59)!;
+            ((Chunk090F6000)clone).U60 = context.Clone(this.U60)!;
+            ((Chunk090F6000)clone).U61 = context.Clone(this.U61)!;
+            ((Chunk090F6000)clone).U62 = context.Clone(this.U62)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {
@@ -178,6 +250,12 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         public override uint Id => 0x090F6001;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F6001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -201,6 +279,24 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         public float U10;
         public int U11;
         public int U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F6002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F6002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F6002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F6002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F6002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090F6002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090F6002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090F6002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090F6002)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090F6002)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090F6002)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090F6002)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090F6002)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {

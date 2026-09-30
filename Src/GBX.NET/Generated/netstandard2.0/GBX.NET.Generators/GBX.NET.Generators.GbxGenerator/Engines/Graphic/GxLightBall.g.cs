@@ -158,6 +158,25 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.attHyper2Tension = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLightBall)clone).radius = context.Clone(this.radius)!;
+        ((GxLightBall)clone).attenuation1 = context.Clone(this.attenuation1)!;
+        ((GxLightBall)clone).attenuation2 = context.Clone(this.attenuation2)!;
+        ((GxLightBall)clone).emittingRadius = context.Clone(this.emittingRadius)!;
+        ((GxLightBall)clone).ambientRGB = context.Clone(this.ambientRGB)!;
+        ((GxLightBall)clone).flags = context.Clone(this.flags)!;
+        ((GxLightBall)clone).radiusSpecular = context.Clone(this.radiusSpecular)!;
+        ((GxLightBall)clone).radiusShadow = context.Clone(this.radiusShadow)!;
+        ((GxLightBall)clone).radiusFlare = context.Clone(this.radiusFlare)!;
+        ((GxLightBall)clone).emittingCylinderLenZ = context.Clone(this.emittingCylinderLenZ)!;
+        ((GxLightBall)clone).attHTnLR = context.Clone(this.attHTnLR)!;
+        ((GxLightBall)clone).attHTnLR2 = context.Clone(this.attHTnLR2)!;
+        ((GxLightBall)clone).attHyper2DerivAt0 = context.Clone(this.attHyper2DerivAt0)!;
+        ((GxLightBall)clone).attHyper2Tension = context.Clone(this.attHyper2Tension)!;
+    }
+
     public GxLightBall()
     {
     }
@@ -168,6 +187,11 @@ public partial class GxLightBall : GxLightPoint, IClass
     {
         public override uint Id => 0x04002002;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
@@ -183,6 +207,11 @@ public partial class GxLightBall : GxLightPoint, IClass
     public partial class Chunk04002006 : Chunk<GxLightBall>
     {
         public override uint Id => 0x04002006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
@@ -202,6 +231,11 @@ public partial class GxLightBall : GxLightPoint, IClass
     public partial class Chunk04002008 : Chunk<GxLightBall>
     {
         public override uint Id => 0x04002008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
@@ -226,6 +260,12 @@ public partial class GxLightBall : GxLightPoint, IClass
         public override uint Id => 0x04002009;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk04002009)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -237,6 +277,12 @@ public partial class GxLightBall : GxLightPoint, IClass
     {
         public override uint Id => 0x0400200A;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0400200A)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {

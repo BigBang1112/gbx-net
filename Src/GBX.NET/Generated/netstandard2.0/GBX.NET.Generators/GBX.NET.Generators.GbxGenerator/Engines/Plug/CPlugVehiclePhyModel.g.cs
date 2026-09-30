@@ -84,6 +84,15 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         set => this.occupantSlots = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehiclePhyModel)clone).refBuffer = context.Clone(this.refBuffer)!;
+        ((CPlugVehiclePhyModel)clone).tunings = context.Clone(this.tunings)!;
+        ((CPlugVehiclePhyModel)clone).phyShape = context.Clone(this.phyShape)!;
+        ((CPlugVehiclePhyModel)clone).occupantSlots = context.CloneArray(this.occupantSlots)!;
+    }
+
     public CPlugVehiclePhyModel()
     {
     }
@@ -92,6 +101,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     public partial class Chunk090EA002 : Chunk<CPlugVehiclePhyModel>
     {
         public override uint Id => 0x090EA002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
@@ -103,6 +117,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     public partial class Chunk090EA003 : Chunk<CPlugVehiclePhyModel>
     {
         public override uint Id => 0x090EA003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
@@ -118,6 +137,15 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public Vec3[]? U01;
         public int U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EA008)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090EA008)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090EA008)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090EA008)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
@@ -158,6 +186,14 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public CMwRefBuffer? U02;
         public Components.GbxRefTableFile? U02File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EA009)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090EA009)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090EA009)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -170,7 +206,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         }
     }
 
-    public partial class OccupantSlot : IReadableWritable, IReadable, IWritable
+    public partial class OccupantSlot : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private byte u01;
         public byte U01
@@ -254,6 +290,30 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         {
             get => this.u12;
             set => this.u12 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OccupantSlot)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OccupantSlot)clone).u01 = context.Clone(this.u01)!;
+            ((OccupantSlot)clone).u02 = context.Clone(this.u02)!;
+            ((OccupantSlot)clone).u03 = context.Clone(this.u03)!;
+            ((OccupantSlot)clone).u04 = context.Clone(this.u04)!;
+            ((OccupantSlot)clone).u05 = context.Clone(this.u05)!;
+            ((OccupantSlot)clone).u06 = context.Clone(this.u06)!;
+            ((OccupantSlot)clone).u07 = context.Clone(this.u07)!;
+            ((OccupantSlot)clone).u08 = context.Clone(this.u08)!;
+            ((OccupantSlot)clone).u09 = context.Clone(this.u09)!;
+            ((OccupantSlot)clone).u10 = context.Clone(this.u10)!;
+            ((OccupantSlot)clone).u11 = context.Clone(this.u11)!;
+            ((OccupantSlot)clone).u12 = context.Clone(this.u12)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

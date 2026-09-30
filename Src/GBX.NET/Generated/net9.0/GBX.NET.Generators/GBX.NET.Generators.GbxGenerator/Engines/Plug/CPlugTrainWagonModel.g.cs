@@ -181,6 +181,26 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => this.animFile = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTrainWagonModel)clone).shape = context.Clone(this.shape)!;
+        ((CPlugTrainWagonModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugTrainWagonModel)clone).isLoco = context.Clone(this.isLoco)!;
+        ((CPlugTrainWagonModel)clone).soundEngine = context.Clone(this.soundEngine)!;
+        ((CPlugTrainWagonModel)clone).soundBrake = context.Clone(this.soundBrake)!;
+        ((CPlugTrainWagonModel)clone).soundRailContact = context.Clone(this.soundRailContact)!;
+        ((CPlugTrainWagonModel)clone).soundCollision = context.Clone(this.soundCollision)!;
+        ((CPlugTrainWagonModel)clone).wagonLength = context.Clone(this.wagonLength)!;
+        ((CPlugTrainWagonModel)clone).wagonColOffset = context.Clone(this.wagonColOffset)!;
+        ((CPlugTrainWagonModel)clone).genLengthFromShape = context.Clone(this.genLengthFromShape)!;
+        ((CPlugTrainWagonModel)clone).accelCurve = context.Clone(this.accelCurve)!;
+        ((CPlugTrainWagonModel)clone).smokeEmitterModel = context.Clone(this.smokeEmitterModel)!;
+        ((CPlugTrainWagonModel)clone).dustEmitterModel = context.Clone(this.dustEmitterModel)!;
+        ((CPlugTrainWagonModel)clone).sparkleParticle = context.Clone(this.sparkleParticle)!;
+        ((CPlugTrainWagonModel)clone).animFile = context.Clone(this.animFile)!;
+    }
+
     public CPlugTrainWagonModel()
     {
     }
@@ -193,6 +213,15 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         public Vec3 U01;
         public CFuncKeysReal? U02;
         public CMwNod? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0911C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0911C000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0911C000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0911C000)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugTrainWagonModel n, GbxReaderWriter rw)
         {

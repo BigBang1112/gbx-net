@@ -34,6 +34,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     [Hexadecimal]
     public static new uint Id => 0x0905E000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugSoundSurface()
     {
     }
@@ -43,6 +48,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     {
         public override uint Id => 0x0905E000;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0905E002)]
@@ -55,6 +65,17 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         public float U03;
         public float U04;
         public bool U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0905E002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0905E002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0905E002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0905E002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0905E002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0905E002)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CPlugSoundSurface n, GbxReaderWriter rw)
         {
@@ -76,6 +97,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     {
         public override uint Id => 0x0905E003;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

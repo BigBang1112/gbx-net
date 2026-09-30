@@ -519,6 +519,68 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
     public CPlugSolid2Model? GetSolid2Model(GbxReadSettings settings = default, bool exceptions = false) => solid2ModelFile?.GetNode(ref solid2Model, settings, exceptions) ?? solid2Model;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugParticleEmitterSubModel)clone).material = context.Clone(this.material)!;
+        ((CPlugParticleEmitterSubModel)clone).shader = context.Clone(this.shader)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirthRatioXY = context.Clone(this.sizeBirthRatioXY)!;
+        ((CPlugParticleEmitterSubModel)clone).spritePivotPoint = context.Clone(this.spritePivotPoint)!;
+        ((CPlugParticleEmitterSubModel)clone).colorGradient = context.Clone(this.colorGradient)!;
+        ((CPlugParticleEmitterSubModel)clone).colorGradientUse = context.Clone(this.colorGradientUse)!;
+        ((CPlugParticleEmitterSubModel)clone).colorModulateWithTransparency = context.Clone(this.colorModulateWithTransparency)!;
+        ((CPlugParticleEmitterSubModel)clone).maxParticleCount = context.Clone(this.maxParticleCount)!;
+        ((CPlugParticleEmitterSubModel)clone).spawnPeriod = context.Clone(this.spawnPeriod)!;
+        ((CPlugParticleEmitterSubModel)clone).life = context.Clone(this.life)!;
+        ((CPlugParticleEmitterSubModel)clone).lifeVariation = context.Clone(this.lifeVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirth = context.Clone(this.sizeBirth)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirthVariation = context.Clone(this.sizeBirthVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).weightBirth = context.Clone(this.weightBirth)!;
+        ((CPlugParticleEmitterSubModel)clone).weightBirthVariation = context.Clone(this.weightBirthVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).rollSpeedBirth = context.Clone(this.rollSpeedBirth)!;
+        ((CPlugParticleEmitterSubModel)clone).rollSpeedBirthVariation = context.Clone(this.rollSpeedBirthVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).transparencyBirth = context.Clone(this.transparencyBirth)!;
+        ((CPlugParticleEmitterSubModel)clone).transparencyBirthVariation = context.Clone(this.transparencyBirthVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeOverLife = context.Clone(this.sizeOverLife)!;
+        ((CPlugParticleEmitterSubModel)clone).transparencyOverLife = context.Clone(this.transparencyOverLife)!;
+        ((CPlugParticleEmitterSubModel)clone).particleEmitterSubModel = context.Clone(this.particleEmitterSubModel)!;
+        ((CPlugParticleEmitterSubModel)clone).multiStateRenderMode = context.Clone(this.multiStateRenderMode)!;
+        ((CPlugParticleEmitterSubModel)clone).spawnCond = context.Clone(this.spawnCond)!;
+        ((CPlugParticleEmitterSubModel)clone).spawnMinDist = context.Clone(this.spawnMinDist)!;
+        ((CPlugParticleEmitterSubModel)clone).uScaleDist = context.Clone(this.uScaleDist)!;
+        ((CPlugParticleEmitterSubModel)clone).standardRenderMode = context.Clone(this.standardRenderMode)!;
+        ((CPlugParticleEmitterSubModel)clone).vScaleDist = context.Clone(this.vScaleDist)!;
+        ((CPlugParticleEmitterSubModel)clone).fluidFrictionBirth = context.Clone(this.fluidFrictionBirth)!;
+        ((CPlugParticleEmitterSubModel)clone).fluidFrictionBirthVariation = context.Clone(this.fluidFrictionBirthVariation)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeXOverLife = context.Clone(this.sizeXOverLife)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeUseSizeX = context.Clone(this.sizeUseSizeX)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirthUseEmissionZone = context.Clone(this.sizeBirthUseEmissionZone)!;
+        ((CPlugParticleEmitterSubModel)clone).circularTrailVertPerPartCount = context.Clone(this.circularTrailVertPerPartCount)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirthUseIntensity = context.Clone(this.sizeBirthUseIntensity)!;
+        ((CPlugParticleEmitterSubModel)clone).colorBirthUseIntensity = context.Clone(this.colorBirthUseIntensity)!;
+        ((CPlugParticleEmitterSubModel)clone).transparencyBirthUseIntensity = context.Clone(this.transparencyBirthUseIntensity)!;
+        ((CPlugParticleEmitterSubModel)clone).sizeBirthEmissionZoneScale = context.Clone(this.sizeBirthEmissionZoneScale)!;
+        ((CPlugParticleEmitterSubModel)clone).fluidFrictionBirthIntensityBase = context.Clone(this.fluidFrictionBirthIntensityBase)!;
+        ((CPlugParticleEmitterSubModel)clone).fluidFrictionBirthUseIntensity = context.Clone(this.fluidFrictionBirthUseIntensity)!;
+        ((CPlugParticleEmitterSubModel)clone).intensityFilter = context.Clone(this.intensityFilter)!;
+        ((CPlugParticleEmitterSubModel)clone).multiState_IsAsyncLink = context.Clone(this.multiState_IsAsyncLink)!;
+        ((CPlugParticleEmitterSubModel)clone).textureAtlas = context.Clone(this.textureAtlas)!;
+        ((CPlugParticleEmitterSubModel)clone).textureAtlasDimX = context.Clone(this.textureAtlasDimX)!;
+        ((CPlugParticleEmitterSubModel)clone).textureAtlasDimY = context.Clone(this.textureAtlasDimY)!;
+        ((CPlugParticleEmitterSubModel)clone).textureAtlasFixedIndex = context.Clone(this.textureAtlasFixedIndex)!;
+        ((CPlugParticleEmitterSubModel)clone).beamLengthSpeedScale = context.Clone(this.beamLengthSpeedScale)!;
+        ((CPlugParticleEmitterSubModel)clone).precalcEnabled = context.Clone(this.precalcEnabled)!;
+        ((CPlugParticleEmitterSubModel)clone).precalcPartCount = context.Clone(this.precalcPartCount)!;
+        ((CPlugParticleEmitterSubModel)clone).precalcSampleRate = context.Clone(this.precalcSampleRate)!;
+        ((CPlugParticleEmitterSubModel)clone).collisionEnabled = context.Clone(this.collisionEnabled)!;
+        ((CPlugParticleEmitterSubModel)clone).collisionBounce = context.Clone(this.collisionBounce)!;
+        ((CPlugParticleEmitterSubModel)clone).collisionRadius = context.Clone(this.collisionRadius)!;
+        ((CPlugParticleEmitterSubModel)clone).collisionDamper = context.Clone(this.collisionDamper)!;
+        ((CPlugParticleEmitterSubModel)clone).sortSprites = context.Clone(this.sortSprites)!;
+        ((CPlugParticleEmitterSubModel)clone).visual = context.Clone(this.visual)!;
+        ((CPlugParticleEmitterSubModel)clone).solid2Model = context.Clone(this.solid2Model)!;
+    }
+
     public CPlugParticleEmitterSubModel()
     {
     }
@@ -538,6 +600,22 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U09;
         public int U10;
         public int U11;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2011)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2011)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2011)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2011)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2011)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2011)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2011)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2011)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2011)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2011)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2011)clone).U11 = context.Clone(this.U11)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -608,6 +686,20 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U08;
         public float U09;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2013)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2013)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2013)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2013)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2013)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2013)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2013)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2013)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2013)clone).U09 = context.Clone(this.U09)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -630,6 +722,14 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U02;
         public float U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2015)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2015)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2015)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.sizeBirthUseIntensity);
@@ -647,6 +747,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override uint Id => 0x090B2016;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2016)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Single(ref n.sizeBirthEmissionZoneScale);
@@ -658,6 +764,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     public partial class Chunk090B2017 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -671,6 +782,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         public override uint Id => 0x090B2018;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncEnvelope>(ref n.intensityFilter);
@@ -682,6 +798,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         public override uint Id => 0x090B2019;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2019)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -695,6 +817,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override uint Id => 0x090B201A;
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B201A)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwNod>(ref U01);
@@ -707,6 +835,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override uint Id => 0x090B201B;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B201B)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.multiState_IsAsyncLink);
@@ -718,6 +852,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     public partial class Chunk090B201C : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -735,6 +874,13 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B201D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B201D)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -748,6 +894,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override uint Id => 0x090B201E;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B201E)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -759,6 +911,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         public override uint Id => 0x090B201F;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Single(ref n.beamLengthSpeedScale);
@@ -769,6 +926,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     public partial class Chunk090B2020 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -786,6 +948,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         public override uint Id => 0x090B2021;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.Single(ref n.collisionDamper);
@@ -796,6 +963,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     public partial class Chunk090B2022 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2022;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -808,6 +980,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         public override uint Id => 0x090B2023;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2023)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -831,6 +1009,23 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U09;
         public string? U10;
         public float U11;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B202D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B202D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B202D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B202D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B202D)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B202D)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B202D)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B202D)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B202D)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B202D)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B202D)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B202D)clone).U11 = context.Clone(this.U11)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -873,6 +1068,13 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int Version { get; set; }
         public CPlugParticleSplashModel? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B202E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B202E)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -894,6 +1096,17 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U03;
         public Iso4 U04;
         public CFuncEnvelope? U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B202F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B202F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B202F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B202F)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B202F)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B202F)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -926,6 +1139,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U01;
         public float U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2030)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2030)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2030)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2030)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -960,6 +1182,31 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public CFuncKeysReal? U17;
         public CFuncKeysReal? U18;
         public CFuncKeysReal? U19;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2031)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2031)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2031)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2031)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2031)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2031)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2031)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2031)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2031)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2031)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2031)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2031)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B2031)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090B2031)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090B2031)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090B2031)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090B2031)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B2031)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090B2031)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090B2031)clone).U19 = context.Clone(this.U19)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -1054,6 +1301,20 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int U07;
         public bool U08;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2032)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2032)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2032)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2032)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2032)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2032)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2032)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2032)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2032)clone).U08 = context.Clone(this.U08)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1099,6 +1360,38 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U24;
         public float U25;
         public CFuncKeysReal? U26;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2033)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2033)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2033)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2033)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2033)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2033)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2033)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2033)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2033)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2033)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2033)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2033)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B2033)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090B2033)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090B2033)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090B2033)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090B2033)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B2033)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090B2033)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090B2033)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090B2033)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090B2033)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090B2033)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090B2033)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090B2033)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090B2033)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090B2033)clone).U26 = context.Clone(this.U26)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -1163,6 +1456,17 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U04;
         public bool U05;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2034)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2034)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2034)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2034)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2034)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2034)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1189,6 +1493,13 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int Version { get; set; }
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2035)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2035)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1210,6 +1521,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U01;
         public int U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2036)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2036)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2036)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2036)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -1244,6 +1564,30 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U17;
         public float U18;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2037)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2037)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2037)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2037)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2037)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2037)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2037)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2037)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2037)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2037)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2037)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2037)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B2037)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090B2037)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090B2037)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090B2037)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090B2037)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B2037)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090B2037)clone).U18 = context.Clone(this.U18)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1276,6 +1620,14 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2038)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2038)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2038)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1301,6 +1653,23 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U10;
         public bool U11;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B2039)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B2039)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B2039)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B2039)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B2039)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2039)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2039)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2039)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B2039)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B2039)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2039)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2039)clone).U11 = context.Clone(this.U11)!;
+        }
+
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1325,6 +1694,14 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int Version { get; set; }
         public CPlugParticleGpuSpawn? U01;
         public CPlugParticleGpuModel? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B203A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B203A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B203A)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
@@ -1354,6 +1731,23 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U09;
         public float U10;
         public float U11;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B203B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B203B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B203B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B203B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B203B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B203B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B203B)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B203B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B203B)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B203B)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B203B)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B203B)clone).U11 = context.Clone(this.U11)!;
+        }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {

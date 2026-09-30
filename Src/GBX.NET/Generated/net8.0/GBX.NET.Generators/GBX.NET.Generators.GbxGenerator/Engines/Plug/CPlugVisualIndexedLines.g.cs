@@ -34,6 +34,11 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     [Hexadecimal]
     public static new uint Id => 0x09009000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVisualIndexedLines()
     {
     }
@@ -43,6 +48,12 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     {
         public override uint Id => 0x09009001;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09009001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisualIndexedLines n, GbxReaderWriter rw)
         {

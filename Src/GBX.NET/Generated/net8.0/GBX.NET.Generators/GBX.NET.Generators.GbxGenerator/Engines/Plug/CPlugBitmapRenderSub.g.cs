@@ -42,6 +42,12 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
         set => this.shaderToForce = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapRenderSub)clone).shaderToForce = context.Clone(this.shaderToForce)!;
+    }
+
     public CPlugBitmapRenderSub()
     {
     }
@@ -50,6 +56,11 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
     public partial class Chunk09091000 : Chunk<CPlugBitmapRenderSub>
     {
         public override uint Id => 0x09091000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugBitmapRenderSub n, GbxReaderWriter rw)
         {

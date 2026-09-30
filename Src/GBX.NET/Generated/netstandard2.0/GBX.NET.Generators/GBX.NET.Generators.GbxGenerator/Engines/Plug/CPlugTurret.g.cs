@@ -402,6 +402,57 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.onFireParticle = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTurret)clone).skelRef = context.Clone(this.skelRef)!;
+        ((CPlugTurret)clone).skel = context.Clone(this.skel)!;
+        ((CPlugTurret)clone).bulletModelRef = context.Clone(this.bulletModelRef)!;
+        ((CPlugTurret)clone).bulletModel = context.Clone(this.bulletModel)!;
+        ((CPlugTurret)clone).meshRef = context.Clone(this.meshRef)!;
+        ((CPlugTurret)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugTurret)clone).visEntFxRef = context.Clone(this.visEntFxRef)!;
+        ((CPlugTurret)clone).visEntFx = context.Clone(this.visEntFx)!;
+        ((CPlugTurret)clone).shapeRef = context.Clone(this.shapeRef)!;
+        ((CPlugTurret)clone).shape = context.Clone(this.shape)!;
+        ((CPlugTurret)clone).joint0Name = context.Clone(this.joint0Name)!;
+        ((CPlugTurret)clone).joint1Name = context.Clone(this.joint1Name)!;
+        ((CPlugTurret)clone).jointFireName = context.Clone(this.jointFireName)!;
+        ((CPlugTurret)clone).joint0LocalAxis = context.Clone(this.joint0LocalAxis)!;
+        ((CPlugTurret)clone).joint1LocalAxis = context.Clone(this.joint1LocalAxis)!;
+        ((CPlugTurret)clone).jointFireLocalAxis = context.Clone(this.jointFireLocalAxis)!;
+        ((CPlugTurret)clone).joint0MinAngleDeg = context.Clone(this.joint0MinAngleDeg)!;
+        ((CPlugTurret)clone).joint0MaxAngleDeg = context.Clone(this.joint0MaxAngleDeg)!;
+        ((CPlugTurret)clone).joint1MinAngleDeg = context.Clone(this.joint1MinAngleDeg)!;
+        ((CPlugTurret)clone).joint1MaxAngleDeg = context.Clone(this.joint1MaxAngleDeg)!;
+        ((CPlugTurret)clone).joint0SpeedDegPerS = context.Clone(this.joint0SpeedDegPerS)!;
+        ((CPlugTurret)clone).joint1SpeedDegPerS = context.Clone(this.joint1SpeedDegPerS)!;
+        ((CPlugTurret)clone).aimDetectRadius = context.Clone(this.aimDetectRadius)!;
+        ((CPlugTurret)clone).aimDetectFOVDeg = context.Clone(this.aimDetectFOVDeg)!;
+        ((CPlugTurret)clone).aimMaxTrackDist = context.Clone(this.aimMaxTrackDist)!;
+        ((CPlugTurret)clone).aimAnticipation = context.Clone(this.aimAnticipation)!;
+        ((CPlugTurret)clone).aimKeepAimingDurationMs = context.Clone(this.aimKeepAimingDurationMs)!;
+        ((CPlugTurret)clone).aimFireTargetChangeDelayMs = context.Clone(this.aimFireTargetChangeDelayMs)!;
+        ((CPlugTurret)clone).aimFireMaxAngleDeg = context.Clone(this.aimFireMaxAngleDeg)!;
+        ((CPlugTurret)clone).fixedAngleSignal = context.Clone(this.fixedAngleSignal)!;
+        ((CPlugTurret)clone).fixedAnglePeriodMs = context.Clone(this.fixedAnglePeriodMs)!;
+        ((CPlugTurret)clone).fixedAngleMinDeg = context.Clone(this.fixedAngleMinDeg)!;
+        ((CPlugTurret)clone).fixedAngleMaxDeg = context.Clone(this.fixedAngleMaxDeg)!;
+        ((CPlugTurret)clone).firePeriodMs = context.Clone(this.firePeriodMs)!;
+        ((CPlugTurret)clone).rotateSound1Ref = context.Clone(this.rotateSound1Ref)!;
+        ((CPlugTurret)clone).rotateSound1 = context.Clone(this.rotateSound1)!;
+        ((CPlugTurret)clone).joint0NextJointUpdateAngleMaxDeg = context.Clone(this.joint0NextJointUpdateAngleMaxDeg)!;
+        ((CPlugTurret)clone).joint1NextJointUpdateAngleMaxDeg = context.Clone(this.joint1NextJointUpdateAngleMaxDeg)!;
+        ((CPlugTurret)clone).aimFireMaxDist = context.Clone(this.aimFireMaxDist)!;
+        ((CPlugTurret)clone).aimEnabled = context.Clone(this.aimEnabled)!;
+        ((CPlugTurret)clone).jointRadarName = context.Clone(this.jointRadarName)!;
+        ((CPlugTurret)clone).lifeArmorMax = context.Clone(this.lifeArmorMax)!;
+        ((CPlugTurret)clone).lifeOnArmorEmtpy = context.Clone(this.lifeOnArmorEmtpy)!;
+        ((CPlugTurret)clone).lifeDisabledDuration = context.Clone(this.lifeDisabledDuration)!;
+        ((CPlugTurret)clone).isControllable = context.Clone(this.isControllable)!;
+        ((CPlugTurret)clone).onFireParticle = context.Clone(this.onFireParticle)!;
+    }
+
     public CPlugTurret()
     {
     }
@@ -419,6 +470,20 @@ public partial class CPlugTurret : CMwNod, IClass
         public string[]? U06;
         public int[]? U07;
         public int U36;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0910F000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0910F000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0910F000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0910F000)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk0910F000)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0910F000)clone).U05 = context.CloneArray(this.U05)!;
+            ((Chunk0910F000)clone).U06 = context.CloneArray(this.U06)!;
+            ((Chunk0910F000)clone).U07 = context.CloneArray(this.U07)!;
+            ((Chunk0910F000)clone).U36 = context.Clone(this.U36)!;
+        }
 
         public override void ReadWrite(CPlugTurret n, GbxReaderWriter rw)
         {

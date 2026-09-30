@@ -115,6 +115,20 @@ public partial class CGameObjectModel : CMwNod, IClass
         set => this.scriptId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameObjectModel)clone).phy = context.Clone(this.phy)!;
+        ((CGameObjectModel)clone).vis = context.Clone(this.vis)!;
+        ((CGameObjectModel)clone).inventoryName = context.Clone(this.inventoryName)!;
+        ((CGameObjectModel)clone).inventoryDescription = context.Clone(this.inventoryDescription)!;
+        ((CGameObjectModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
+        ((CGameObjectModel)clone).inventoryOccupation = context.Clone(this.inventoryOccupation)!;
+        ((CGameObjectModel)clone).slaveHealDome = context.Clone(this.slaveHealDome)!;
+        ((CGameObjectModel)clone).slaveShieldDome = context.Clone(this.slaveShieldDome)!;
+        ((CGameObjectModel)clone).scriptId = context.Clone(this.scriptId)!;
+    }
+
     public CGameObjectModel()
     {
     }
@@ -125,6 +139,13 @@ public partial class CGameObjectModel : CMwNod, IClass
         public override uint Id => 0x2E01D000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E01D000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E01D000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameObjectModel n, GbxReaderWriter rw)
         {

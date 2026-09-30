@@ -66,6 +66,15 @@ public partial class CMwRefBuffer : CMwNod, IClass
         set => this.bufferId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMwRefBuffer)clone).nodClassId = context.Clone(this.nodClassId)!;
+        ((CMwRefBuffer)clone).useAddRefRelease = context.Clone(this.useAddRefRelease)!;
+        ((CMwRefBuffer)clone).nods = context.CloneArray(this.nods)!;
+        ((CMwRefBuffer)clone).bufferId = context.Clone(this.bufferId)!;
+    }
+
     public CMwRefBuffer()
     {
     }
@@ -74,6 +83,11 @@ public partial class CMwRefBuffer : CMwNod, IClass
     public partial class Chunk01026000 : Chunk<CMwRefBuffer>
     {
         public override uint Id => 0x01026000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMwRefBuffer n, GbxReaderWriter rw)
         {
@@ -87,6 +101,11 @@ public partial class CMwRefBuffer : CMwNod, IClass
     public partial class Chunk01026001 : Chunk<CMwRefBuffer>
     {
         public override uint Id => 0x01026001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMwRefBuffer n, GbxReaderWriter rw)
         {

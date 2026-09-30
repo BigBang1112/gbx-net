@@ -34,6 +34,11 @@ public partial class CPlugFileVHlsl : CPlugFileGPUV, IClass
     [Hexadecimal]
     public static new uint Id => 0x09074000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFileVHlsl()
     {
     }

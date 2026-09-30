@@ -50,6 +50,13 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         set => this.gameModeScores = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCampaignPlayerScores)clone).campaignId = context.Clone(this.campaignId)!;
+        ((CGameCampaignPlayerScores)clone).gameModeScores = context.CloneArray(this.gameModeScores)!;
+    }
+
     public CGameCampaignPlayerScores()
     {
     }
@@ -63,6 +70,16 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         public byte U03;
         public DateTime? U04;
         public TransactionalNatural? U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030EA001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk030EA001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk030EA001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk030EA001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk030EA001)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CGameCampaignPlayerScores n, GbxReaderWriter rw)
         {
@@ -81,7 +98,7 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         }
     }
 
-    public partial class SGameModeScores : IReadableWritable, IReadable, IWritable
+    public partial class SGameModeScores : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -95,6 +112,20 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SGameModeScores)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SGameModeScores)clone).u01 = context.Clone(this.u01)!;
+            ((SGameModeScores)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -116,7 +147,7 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         }
     }
 
-    public partial class TransactionalNatural : IReadableWritable, IReadable, IWritable
+    public partial class TransactionalNatural : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -151,6 +182,23 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (TransactionalNatural)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((TransactionalNatural)clone).u01 = context.Clone(this.u01)!;
+            ((TransactionalNatural)clone).u02 = context.Clone(this.u02)!;
+            ((TransactionalNatural)clone).value = context.Clone(this.value)!;
+            ((TransactionalNatural)clone).u03 = context.Clone(this.u03)!;
+            ((TransactionalNatural)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

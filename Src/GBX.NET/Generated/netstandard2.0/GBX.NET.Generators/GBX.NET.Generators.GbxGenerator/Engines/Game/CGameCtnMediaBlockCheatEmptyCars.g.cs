@@ -58,6 +58,14 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
         set => this.dataTape = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCheatEmptyCars)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockCheatEmptyCars)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockCheatEmptyCars)clone).dataTape = context.Clone(this.dataTape)!;
+    }
+
     public CGameCtnMediaBlockCheatEmptyCars()
     {
     }
@@ -78,6 +86,11 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     public partial class Chunk0325E000 : Chunk<CGameCtnMediaBlockCheatEmptyCars>
     {
         public override uint Id => 0x0325E000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCheatEmptyCars n, GbxReaderWriter rw)
         {

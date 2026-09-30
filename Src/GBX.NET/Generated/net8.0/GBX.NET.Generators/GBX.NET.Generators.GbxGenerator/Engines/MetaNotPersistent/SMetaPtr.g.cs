@@ -34,6 +34,11 @@ public abstract partial class SMetaPtr : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x300E5000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public SMetaPtr()
     {
     }

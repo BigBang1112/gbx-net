@@ -80,6 +80,15 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
 
     public CPlugSurface? GetShape(GbxReadSettings settings = default, bool exceptions = false) => shapeFile?.GetNode(ref shape, settings, exceptions) ?? shape;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugStaticObjectModel)clone).version = context.Clone(this.version)!;
+        ((CPlugStaticObjectModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugStaticObjectModel)clone).isMeshCollidable = context.Clone(this.isMeshCollidable)!;
+        ((CPlugStaticObjectModel)clone).shape = context.Clone(this.shape)!;
+    }
+
     public CPlugStaticObjectModel()
     {
     }

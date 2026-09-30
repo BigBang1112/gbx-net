@@ -42,6 +42,12 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
         set => this.subTextures = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapAtlas)clone).subTextures = context.CloneArray(this.subTextures)!;
+    }
+
     public CPlugBitmapAtlas()
     {
     }
@@ -52,6 +58,12 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
         public override uint Id => 0x090A8002;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090A8002)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CPlugBitmapAtlas n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -59,7 +71,7 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
         }
     }
 
-    public partial class SubTex : IReadableWritable, IReadable, IWritable
+    public partial class SubTex : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -143,6 +155,30 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
         {
             get => this.u12;
             set => this.u12 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubTex)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubTex)clone).u01 = context.Clone(this.u01)!;
+            ((SubTex)clone).u02 = context.Clone(this.u02)!;
+            ((SubTex)clone).u03 = context.Clone(this.u03)!;
+            ((SubTex)clone).u04 = context.Clone(this.u04)!;
+            ((SubTex)clone).u05 = context.Clone(this.u05)!;
+            ((SubTex)clone).u06 = context.Clone(this.u06)!;
+            ((SubTex)clone).u07 = context.Clone(this.u07)!;
+            ((SubTex)clone).u08 = context.Clone(this.u08)!;
+            ((SubTex)clone).u09 = context.Clone(this.u09)!;
+            ((SubTex)clone).u10 = context.Clone(this.u10)!;
+            ((SubTex)clone).u11 = context.Clone(this.u11)!;
+            ((SubTex)clone).u12 = context.Clone(this.u12)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -66,6 +66,15 @@ public partial class CGameTurbineModel : CMwNod, IClass
         set => this.silencerBubble_OnlyPlayerSounds = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameTurbineModel)clone).loc = context.Clone(this.loc)!;
+        ((CGameTurbineModel)clone).silencerBubble_RadiusMute = context.Clone(this.silencerBubble_RadiusMute)!;
+        ((CGameTurbineModel)clone).silencerBubble_RadiusFade = context.Clone(this.silencerBubble_RadiusFade)!;
+        ((CGameTurbineModel)clone).silencerBubble_OnlyPlayerSounds = context.Clone(this.silencerBubble_OnlyPlayerSounds)!;
+    }
+
     public CGameTurbineModel()
     {
     }
@@ -75,6 +84,12 @@ public partial class CGameTurbineModel : CMwNod, IClass
     {
         public override uint Id => 0x2E010000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E010000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameTurbineModel n, GbxReaderWriter rw)
         {

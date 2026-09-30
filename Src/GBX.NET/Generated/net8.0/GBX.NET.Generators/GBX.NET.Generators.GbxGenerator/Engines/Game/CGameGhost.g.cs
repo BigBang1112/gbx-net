@@ -54,6 +54,17 @@ public partial class CGameGhost : CMwNod, IClass
         set => this.uncompressedSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameGhost)clone).savedMobilClassId = context.Clone(this.savedMobilClassId)!;
+        ((CGameGhost)clone).uncompressedSize = context.Clone(this.uncompressedSize)!;
+        ((CGameGhost)clone).sampleData = context.Clone(this.sampleData)!;
+        ((CGameGhost)clone).sampleDataVersion = context.Clone(this.sampleDataVersion)!;
+        ((CGameGhost)clone).RawData = context.Clone(this.RawData)!;
+        ((CGameGhost)clone).CompressedData = context.Clone(this.CompressedData)!;
+    }
+
     public CGameGhost()
     {
     }
@@ -64,6 +75,11 @@ public partial class CGameGhost : CMwNod, IClass
     {
         public override uint Id => 0x0303F003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0303F004)]
@@ -72,6 +88,11 @@ public partial class CGameGhost : CMwNod, IClass
     {
         public override uint Id => 0x0303F004;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameGhost n, GbxReaderWriter rw)
         {
@@ -85,6 +106,11 @@ public partial class CGameGhost : CMwNod, IClass
     {
         public override uint Id => 0x0303F005;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0303F006)]
@@ -94,6 +120,12 @@ public partial class CGameGhost : CMwNod, IClass
         public override uint Id => 0x0303F006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303F006)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameGhost n, GbxReaderWriter rw)
         {
@@ -109,6 +141,11 @@ public partial class CGameGhost : CMwNod, IClass
         public override uint Id => 0x0303F007;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

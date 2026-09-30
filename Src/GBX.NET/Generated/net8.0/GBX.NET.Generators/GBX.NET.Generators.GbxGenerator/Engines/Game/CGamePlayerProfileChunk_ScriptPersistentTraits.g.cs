@@ -34,6 +34,12 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
     [Hexadecimal]
     public static new uint Id => 0x03170000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ScriptPersistentTraits)clone).scriptPersistentTraits = context.Clone(this.scriptPersistentTraits)!;
+    }
+
     public CGamePlayerProfileChunk_ScriptPersistentTraits()
     {
     }
@@ -43,6 +49,12 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
     {
         public override uint Id => 0x03170000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03170000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_ScriptPersistentTraits n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CPlugTimedPixelArray : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090BD000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugTimedPixelArray()
     {
     }

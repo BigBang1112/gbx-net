@@ -50,6 +50,13 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
         set => this.tuningIndex = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehiclePhyTunings)clone).tuning = context.CloneArray(this.tuning)!;
+        ((CPlugVehiclePhyTunings)clone).tuningIndex = context.Clone(this.tuningIndex)!;
+    }
+
     public CPlugVehiclePhyTunings()
     {
     }
@@ -58,6 +65,11 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
     public partial class Chunk090EC000 : Chunk<CPlugVehiclePhyTunings>
     {
         public override uint Id => 0x090EC000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehiclePhyTunings n, GbxReaderWriter rw)
         {

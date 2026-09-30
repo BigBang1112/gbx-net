@@ -34,6 +34,11 @@ public partial class CMwCmdExpClassParam : CMwCmdExpClass, IClass
     [Hexadecimal]
     public static new uint Id => 0x01058000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMwCmdExpClassParam()
     {
     }
@@ -43,6 +48,11 @@ public partial class CMwCmdExpClassParam : CMwCmdExpClass, IClass
     {
         public override uint Id => 0x01058001;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

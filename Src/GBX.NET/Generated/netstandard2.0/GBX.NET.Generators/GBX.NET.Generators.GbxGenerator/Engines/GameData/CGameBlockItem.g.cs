@@ -34,6 +34,14 @@ public partial class CGameBlockItem : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E025000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameBlockItem)clone).archetypeBlockInfoId = context.Clone(this.archetypeBlockInfoId)!;
+        ((CGameBlockItem)clone).archetypeBlockInfoCollectionId = context.Clone(this.archetypeBlockInfoCollectionId)!;
+        ((CGameBlockItem)clone).customizedVariants = context.CloneList(this.customizedVariants)!;
+    }
+
     public CGameBlockItem()
     {
     }
@@ -42,9 +50,15 @@ public partial class CGameBlockItem : CMwNod, IClass
     public partial class Chunk2E025000 : Chunk<CGameBlockItem>
     {
         public override uint Id => 0x2E025000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E025000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
-    public partial class Mobil : IReadableWritable, IReadable, IWritable
+    public partial class Mobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int id;
         public int Id
@@ -58,6 +72,21 @@ public partial class CGameBlockItem : CMwNod, IClass
         {
             get => this.crystal;
             set => this.crystal = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Mobil)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Mobil)clone).id = context.Clone(this.id)!;
+            ((Mobil)clone).crystal = context.Clone(this.crystal)!;
+            ((Mobil)clone).Properties = context.Clone(this.Properties)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -79,7 +108,7 @@ public partial class CGameBlockItem : CMwNod, IClass
         }
     }
 
-    public partial class MobilProperties : IReadableWritable, IReadable, IWritable
+    public partial class MobilProperties : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private byte flags;
         public byte Flags
@@ -114,6 +143,23 @@ public partial class CGameBlockItem : CMwNod, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MobilProperties)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MobilProperties)clone).flags = context.Clone(this.flags)!;
+            ((MobilProperties)clone).staticObject = context.Clone(this.staticObject)!;
+            ((MobilProperties)clone).shape = context.Clone(this.shape)!;
+            ((MobilProperties)clone).u01 = context.Clone(this.u01)!;
+            ((MobilProperties)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

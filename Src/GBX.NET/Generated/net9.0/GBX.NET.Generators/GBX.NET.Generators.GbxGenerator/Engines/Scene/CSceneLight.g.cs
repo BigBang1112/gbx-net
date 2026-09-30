@@ -42,6 +42,12 @@ public partial class CSceneLight : CScenePoc, IClass
         set => this.light = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneLight)clone).light = context.Clone(this.light)!;
+    }
+
     public CSceneLight()
     {
     }
@@ -50,6 +56,11 @@ public partial class CSceneLight : CScenePoc, IClass
     public partial class Chunk0A00B000 : Chunk<CSceneLight>
     {
         public override uint Id => 0x0A00B000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneLight n, GbxReaderWriter rw)
         {

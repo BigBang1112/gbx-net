@@ -66,6 +66,15 @@ public partial class CGameLeagueManager : CMwNod, IClass
         set => this.leagues = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameLeagueManager)clone).cacheDuration = context.Clone(this.cacheDuration)!;
+        ((CGameLeagueManager)clone).updated = context.Clone(this.updated)!;
+        ((CGameLeagueManager)clone).timestamp = context.Clone(this.timestamp)!;
+        ((CGameLeagueManager)clone).leagues = context.CloneArray(this.leagues)!;
+    }
+
     public CGameLeagueManager()
     {
     }
@@ -75,6 +84,12 @@ public partial class CGameLeagueManager : CMwNod, IClass
     {
         public override uint Id => 0x03049000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03049000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameLeagueManager n, GbxReaderWriter rw)
         {

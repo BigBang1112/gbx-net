@@ -34,6 +34,11 @@ public partial class CMotionWeather : CMotionManaged, IClass
     [Hexadecimal]
     public static new uint Id => 0x08054000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionWeather()
     {
     }

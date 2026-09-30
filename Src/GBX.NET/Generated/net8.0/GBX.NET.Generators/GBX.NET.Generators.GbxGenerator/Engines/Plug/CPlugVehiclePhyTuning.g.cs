@@ -42,6 +42,12 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         set => this.name = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehiclePhyTuning)clone).name = context.Clone(this.name)!;
+    }
+
     public CPlugVehiclePhyTuning()
     {
     }
@@ -52,6 +58,13 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         public override uint Id => 0x090EB000;
         public CFuncKeysReal? U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EB000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090EB000)clone).U02 = context.Clone(this.U02)!;
+        }
     }
 
     [Chunk(0x090EB001)]
@@ -59,6 +72,12 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     {
         public override uint Id => 0x090EB001;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EB001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehiclePhyTuning n, GbxReaderWriter rw)
         {

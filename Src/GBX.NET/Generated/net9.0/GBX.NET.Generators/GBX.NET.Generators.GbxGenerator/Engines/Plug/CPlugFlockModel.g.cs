@@ -310,6 +310,41 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.soundEventTakeOff = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugFlockModel)clone).range = context.Clone(this.range)!;
+        ((CPlugFlockModel)clone).cosViewAngle = context.Clone(this.cosViewAngle)!;
+        ((CPlugFlockModel)clone).minSpeed = context.Clone(this.minSpeed)!;
+        ((CPlugFlockModel)clone).maxSpeed = context.Clone(this.maxSpeed)!;
+        ((CPlugFlockModel)clone).updateFrequency = context.Clone(this.updateFrequency)!;
+        ((CPlugFlockModel)clone).variance = context.Clone(this.variance)!;
+        ((CPlugFlockModel)clone).vAvoidance = context.Clone(this.vAvoidance)!;
+        ((CPlugFlockModel)clone).kAvoidance = context.Clone(this.kAvoidance)!;
+        ((CPlugFlockModel)clone).vGrouping = context.Clone(this.vGrouping)!;
+        ((CPlugFlockModel)clone).kGrouping = context.Clone(this.kGrouping)!;
+        ((CPlugFlockModel)clone).vMatching = context.Clone(this.vMatching)!;
+        ((CPlugFlockModel)clone).kMatching = context.Clone(this.kMatching)!;
+        ((CPlugFlockModel)clone).volatility = context.Clone(this.volatility)!;
+        ((CPlugFlockModel)clone).vGroundAvoid = context.Clone(this.vGroundAvoid)!;
+        ((CPlugFlockModel)clone).kGroundAvoid = context.Clone(this.kGroundAvoid)!;
+        ((CPlugFlockModel)clone).standingDuration = context.Clone(this.standingDuration)!;
+        ((CPlugFlockModel)clone).flockType = context.Clone(this.flockType)!;
+        ((CPlugFlockModel)clone).animFileFid = context.Clone(this.animFileFid)!;
+        ((CPlugFlockModel)clone).defSpawnCount = context.Clone(this.defSpawnCount)!;
+        ((CPlugFlockModel)clone).birdModel = context.Clone(this.birdModel)!;
+        ((CPlugFlockModel)clone).birdModelFid = context.Clone(this.birdModelFid)!;
+        ((CPlugFlockModel)clone).animPeriod = context.Clone(this.animPeriod)!;
+        ((CPlugFlockModel)clone).animStandingStart = context.Clone(this.animStandingStart)!;
+        ((CPlugFlockModel)clone).animStandingEnd = context.Clone(this.animStandingEnd)!;
+        ((CPlugFlockModel)clone).animGlidingStart = context.Clone(this.animGlidingStart)!;
+        ((CPlugFlockModel)clone).animGlidingEnd = context.Clone(this.animGlidingEnd)!;
+        ((CPlugFlockModel)clone).animFlappingStart = context.Clone(this.animFlappingStart)!;
+        ((CPlugFlockModel)clone).animFlappingEnd = context.Clone(this.animFlappingEnd)!;
+        ((CPlugFlockModel)clone).soundLoop = context.Clone(this.soundLoop)!;
+        ((CPlugFlockModel)clone).soundEventTakeOff = context.Clone(this.soundEventTakeOff)!;
+    }
+
     public CPlugFlockModel()
     {
     }
@@ -320,6 +355,13 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override uint Id => 0x090E5000;
         public int Version { get; set; }
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E5000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E5000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
@@ -374,6 +416,12 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override uint Id => 0x090E5001;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E5001)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -397,6 +445,12 @@ public partial class CPlugFlockModel : CMwNod, IClass
     {
         public override uint Id => 0x090E5002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E5002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {

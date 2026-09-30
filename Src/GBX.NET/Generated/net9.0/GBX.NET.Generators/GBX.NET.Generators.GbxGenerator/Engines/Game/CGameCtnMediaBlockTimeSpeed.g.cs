@@ -43,6 +43,12 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTimeSpeed)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockTimeSpeed()
     {
     }
@@ -53,6 +59,11 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     public partial class Chunk03085000 : Chunk<CGameCtnMediaBlockTimeSpeed>
     {
         public override uint Id => 0x03085000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockTimeSpeed n, GbxReaderWriter rw)
         {
@@ -65,13 +76,18 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     {
         public override uint Id => 0x03129000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockTimeSpeed n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -85,6 +101,20 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
         {
             get => this.speed;
             set => this.speed = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).speed = context.Clone(this.speed)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

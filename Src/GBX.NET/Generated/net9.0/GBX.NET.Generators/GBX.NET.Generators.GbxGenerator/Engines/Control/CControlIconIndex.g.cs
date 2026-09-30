@@ -129,6 +129,21 @@ public partial class CControlIconIndex : CMwNod, IClass
         set => this.marginSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlIconIndex)clone).name = context.Clone(this.name)!;
+        ((CControlIconIndex)clone).indexOff = context.Clone(this.indexOff)!;
+        ((CControlIconIndex)clone).indexOffFocused = context.Clone(this.indexOffFocused)!;
+        ((CControlIconIndex)clone).indexOffGrayed = context.Clone(this.indexOffGrayed)!;
+        ((CControlIconIndex)clone).indexOn = context.Clone(this.indexOn)!;
+        ((CControlIconIndex)clone).indexOnFocused = context.Clone(this.indexOnFocused)!;
+        ((CControlIconIndex)clone).indexOnGrayed = context.Clone(this.indexOnGrayed)!;
+        ((CControlIconIndex)clone).marginPercentU = context.Clone(this.marginPercentU)!;
+        ((CControlIconIndex)clone).marginPercentV = context.Clone(this.marginPercentV)!;
+        ((CControlIconIndex)clone).marginSize = context.Clone(this.marginSize)!;
+    }
+
     public CControlIconIndex()
     {
     }
@@ -137,6 +152,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     public partial class Chunk0702B000 : Chunk<CControlIconIndex>
     {
         public override uint Id => 0x0702B000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlIconIndex n, GbxReaderWriter rw)
         {
@@ -155,6 +175,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     {
         public override uint Id => 0x0702B001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlIconIndex n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -166,6 +191,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     public partial class Chunk0702B002 : Chunk0702B001
     {
         public override uint Id => 0x0702B002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlIconIndex n, GbxReaderWriter rw)
         {

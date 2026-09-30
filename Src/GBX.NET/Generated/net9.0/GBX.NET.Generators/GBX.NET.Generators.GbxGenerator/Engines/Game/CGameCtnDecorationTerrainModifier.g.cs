@@ -67,6 +67,14 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
         set => this.idName = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnDecorationTerrainModifier)clone).remapping = context.Clone(this.remapping)!;
+        ((CGameCtnDecorationTerrainModifier)clone).remapFolder = context.Clone(this.remapFolder)!;
+        ((CGameCtnDecorationTerrainModifier)clone).idName = context.Clone(this.idName)!;
+    }
+
     public CGameCtnDecorationTerrainModifier()
     {
     }
@@ -75,6 +83,11 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     public partial class Chunk0303C000 : Chunk<CGameCtnDecorationTerrainModifier>
     {
         public override uint Id => 0x0303C000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationTerrainModifier n, GbxReaderWriter rw)
         {
@@ -87,6 +100,11 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     public partial class Chunk0303C001 : Chunk<CGameCtnDecorationTerrainModifier>
     {
         public override uint Id => 0x0303C001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationTerrainModifier n, GbxReaderWriter rw)
         {

@@ -34,6 +34,12 @@ public partial class CScriptTraitsPersistent : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x11001000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CScriptTraitsPersistent)clone).PersistentTraits = context.CloneDictionary(this.PersistentTraits)!;
+    }
+
     public CScriptTraitsPersistent()
     {
     }
@@ -42,6 +48,12 @@ public partial class CScriptTraitsPersistent : CMwNod, IClass
     public partial class Chunk11001000 : Chunk<CScriptTraitsPersistent>
     {
         public override uint Id => 0x11001000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk11001000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

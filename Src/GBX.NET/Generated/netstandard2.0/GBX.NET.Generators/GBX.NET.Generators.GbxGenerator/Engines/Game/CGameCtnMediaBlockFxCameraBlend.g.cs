@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxCameraBlend)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockFxCameraBlend()
     {
     }
@@ -54,6 +60,12 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
         public override uint Id => 0x0316D000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0316D000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -61,7 +73,7 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -75,6 +87,20 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
         {
             get => this.captureWeight;
             set => this.captureWeight = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).captureWeight = context.Clone(this.captureWeight)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

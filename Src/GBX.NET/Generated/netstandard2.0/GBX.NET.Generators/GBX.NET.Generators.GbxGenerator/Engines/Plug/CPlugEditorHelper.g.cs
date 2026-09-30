@@ -50,6 +50,13 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
 
     public CPlugPrefab? GetPrefab(GbxReadSettings settings = default, bool exceptions = false) => prefabFile?.GetNode(ref prefab, settings, exceptions) ?? prefab;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugEditorHelper)clone).prefab = context.Clone(this.prefab)!;
+        ((CPlugEditorHelper)clone).Version = context.Clone(this.Version)!;
+    }
+
     public CPlugEditorHelper()
     {
     }

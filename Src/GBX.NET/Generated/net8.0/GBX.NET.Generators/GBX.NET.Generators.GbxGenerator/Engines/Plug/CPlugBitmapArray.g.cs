@@ -34,6 +34,11 @@ public partial class CPlugBitmapArray : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090AB000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugBitmapArray()
     {
     }

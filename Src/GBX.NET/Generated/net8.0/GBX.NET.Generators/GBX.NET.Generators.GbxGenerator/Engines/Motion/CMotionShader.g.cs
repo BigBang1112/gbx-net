@@ -34,6 +34,11 @@ public partial class CMotionShader : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x0802B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionShader()
     {
     }
@@ -45,6 +50,14 @@ public partial class CMotionShader : CMotionTrack, IClass
         public int U01;
         public int U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0802B000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0802B000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0802B000)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CMotionShader n, GbxReaderWriter rw)
         {

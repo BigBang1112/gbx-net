@@ -82,6 +82,16 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         set => this.isInterpolated = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlEffectSimi)clone).keys = context.CloneList(this.keys)!;
+        ((CControlEffectSimi)clone).centered = context.Clone(this.centered)!;
+        ((CControlEffectSimi)clone).colorBlendMode = context.Clone(this.colorBlendMode)!;
+        ((CControlEffectSimi)clone).isContinousEffect = context.Clone(this.isContinousEffect)!;
+        ((CControlEffectSimi)clone).isInterpolated = context.Clone(this.isInterpolated)!;
+    }
+
     public CControlEffectSimi()
     {
     }
@@ -90,6 +100,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     public partial class Chunk07010001 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlEffectSimi n, GbxReaderWriter rw)
         {
@@ -103,6 +118,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     {
         public override uint Id => 0x07010002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlEffectSimi n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!, version: 2);
@@ -114,6 +134,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     public partial class Chunk07010004 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CControlEffectSimi n, GbxReaderWriter rw)
         {
@@ -129,6 +154,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     {
         public override uint Id => 0x07010005;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CControlEffectSimi n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!, version: 5);
@@ -139,7 +169,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -209,6 +239,28 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).position = context.Clone(this.position)!;
+            ((Key)clone).rotation = context.Clone(this.rotation)!;
+            ((Key)clone).scale = context.Clone(this.scale)!;
+            ((Key)clone).opacity = context.Clone(this.opacity)!;
+            ((Key)clone).depth = context.Clone(this.depth)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

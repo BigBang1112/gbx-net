@@ -79,6 +79,16 @@ public partial class CGameLeague : CMwNod, IClass
         set => this.flagUrl = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameLeague)clone).path = context.Clone(this.path)!;
+        ((CGameLeague)clone).name = context.Clone(this.name)!;
+        ((CGameLeague)clone).description = context.Clone(this.description)!;
+        ((CGameLeague)clone).login = context.Clone(this.login)!;
+        ((CGameLeague)clone).flagUrl = context.Clone(this.flagUrl)!;
+    }
+
     public CGameLeague()
     {
     }
@@ -88,6 +98,12 @@ public partial class CGameLeague : CMwNod, IClass
     {
         public override uint Id => 0x0308E001;
         public byte U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308E001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameLeague n, GbxReaderWriter rw)
         {
@@ -108,6 +124,15 @@ public partial class CGameLeague : CMwNod, IClass
         public string? U01;
         public string? U02;
         public byte U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308E002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0308E002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308E002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0308E002)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameLeague n, GbxReaderWriter rw)
         {

@@ -58,6 +58,14 @@ public partial class CSceneMobil : CSceneObject, IClass
         set => this.messageHandler = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneMobil)clone).objectLink = context.CloneArray(this.objectLink)!;
+        ((CSceneMobil)clone).item = context.Clone(this.item)!;
+        ((CSceneMobil)clone).messageHandler = context.Clone(this.messageHandler)!;
+    }
+
     public CSceneMobil()
     {
     }
@@ -68,6 +76,11 @@ public partial class CSceneMobil : CSceneObject, IClass
     {
         public override uint Id => 0x0A011003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {
@@ -83,6 +96,12 @@ public partial class CSceneMobil : CSceneObject, IClass
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A011004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwNod>(ref U01);
@@ -96,6 +115,11 @@ public partial class CSceneMobil : CSceneObject, IClass
         public override uint Id => 0x0A011005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {
             rw.Node<CHmsItem>(ref n.item);
@@ -108,6 +132,11 @@ public partial class CSceneMobil : CSceneObject, IClass
     {
         public override uint Id => 0x0A011006;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {

@@ -316,6 +316,44 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         set => this.lateReverbGain = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugAudioEnvironment)clone).eAXPreset = context.Clone(this.eAXPreset)!;
+        ((CPlugAudioEnvironment)clone).sizeFactor = context.Clone(this.sizeFactor)!;
+        ((CPlugAudioEnvironment)clone).diffusion = context.Clone(this.diffusion)!;
+        ((CPlugAudioEnvironment)clone).room = context.Clone(this.room)!;
+        ((CPlugAudioEnvironment)clone).roomHFRatio = context.Clone(this.roomHFRatio)!;
+        ((CPlugAudioEnvironment)clone).roomLFRatio = context.Clone(this.roomLFRatio)!;
+        ((CPlugAudioEnvironment)clone).decayTime = context.Clone(this.decayTime)!;
+        ((CPlugAudioEnvironment)clone).decayHFRatio = context.Clone(this.decayHFRatio)!;
+        ((CPlugAudioEnvironment)clone).decayLFRatio = context.Clone(this.decayLFRatio)!;
+        ((CPlugAudioEnvironment)clone).reflections = context.Clone(this.reflections)!;
+        ((CPlugAudioEnvironment)clone).reflectionsDelay = context.Clone(this.reflectionsDelay)!;
+        ((CPlugAudioEnvironment)clone).reverb = context.Clone(this.reverb)!;
+        ((CPlugAudioEnvironment)clone).reverbDelay = context.Clone(this.reverbDelay)!;
+        ((CPlugAudioEnvironment)clone).echoTime = context.Clone(this.echoTime)!;
+        ((CPlugAudioEnvironment)clone).echoDepth = context.Clone(this.echoDepth)!;
+        ((CPlugAudioEnvironment)clone).modulationTime = context.Clone(this.modulationTime)!;
+        ((CPlugAudioEnvironment)clone).modulationDepth = context.Clone(this.modulationDepth)!;
+        ((CPlugAudioEnvironment)clone).rolloffFactor = context.Clone(this.rolloffFactor)!;
+        ((CPlugAudioEnvironment)clone).airAbsorbtionHF = context.Clone(this.airAbsorbtionHF)!;
+        ((CPlugAudioEnvironment)clone).hFReference = context.Clone(this.hFReference)!;
+        ((CPlugAudioEnvironment)clone).lFReference = context.Clone(this.lFReference)!;
+        ((CPlugAudioEnvironment)clone).decayTimeScale = context.Clone(this.decayTimeScale)!;
+        ((CPlugAudioEnvironment)clone).reflectionsScale = context.Clone(this.reflectionsScale)!;
+        ((CPlugAudioEnvironment)clone).reflectionsDelayScale = context.Clone(this.reflectionsDelayScale)!;
+        ((CPlugAudioEnvironment)clone).reverbScale = context.Clone(this.reverbScale)!;
+        ((CPlugAudioEnvironment)clone).reverbDelayScale = context.Clone(this.reverbDelayScale)!;
+        ((CPlugAudioEnvironment)clone).echoTimeScale = context.Clone(this.echoTimeScale)!;
+        ((CPlugAudioEnvironment)clone).modulationTimeScale = context.Clone(this.modulationTimeScale)!;
+        ((CPlugAudioEnvironment)clone).decayHFLimitScale = context.Clone(this.decayHFLimitScale)!;
+        ((CPlugAudioEnvironment)clone).dopplerFactor = context.Clone(this.dopplerFactor)!;
+        ((CPlugAudioEnvironment)clone).gain = context.Clone(this.gain)!;
+        ((CPlugAudioEnvironment)clone).reflectionsGain = context.Clone(this.reflectionsGain)!;
+        ((CPlugAudioEnvironment)clone).lateReverbGain = context.Clone(this.lateReverbGain)!;
+    }
+
     public CPlugAudioEnvironment()
     {
     }
@@ -324,6 +362,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     public partial class Chunk09039000 : Chunk<CPlugAudioEnvironment>
     {
         public override uint Id => 0x09039000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {
@@ -364,6 +407,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     {
         public override uint Id => 0x09039001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {
             rw.Single(ref n.dopplerFactor);
@@ -374,6 +422,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     public partial class Chunk09039002 : Chunk<CPlugAudioEnvironment>
     {
         public override uint Id => 0x09039002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {
@@ -420,6 +473,26 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         public float U12;
         public float U13;
         public float U14;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09039004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09039004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09039004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09039004)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09039004)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09039004)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk09039004)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09039004)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk09039004)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk09039004)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09039004)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk09039004)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk09039004)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk09039004)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk09039004)clone).U14 = context.Clone(this.U14)!;
+        }
 
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {

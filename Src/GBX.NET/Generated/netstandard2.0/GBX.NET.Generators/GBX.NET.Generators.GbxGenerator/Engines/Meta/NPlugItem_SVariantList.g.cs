@@ -41,6 +41,13 @@ public partial class NPlugItem_SVariantList : CMwNod, IClass, IReadableWritable,
         set => this.variants = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugItem_SVariantList)clone).variants = context.CloneArray(this.variants)!;
+        ((NPlugItem_SVariantList)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugItem_SVariantList()
     {
     }

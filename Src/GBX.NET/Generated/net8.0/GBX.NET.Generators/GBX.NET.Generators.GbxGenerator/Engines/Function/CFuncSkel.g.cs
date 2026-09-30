@@ -42,6 +42,12 @@ public partial class CFuncSkel : CMwNod, IClass
         set => this.bones = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncSkel)clone).bones = context.CloneArray(this.bones)!;
+    }
+
     public CFuncSkel()
     {
     }
@@ -50,6 +56,11 @@ public partial class CFuncSkel : CMwNod, IClass
     public partial class Chunk05005002 : Chunk<CFuncSkel>
     {
         public override uint Id => 0x05005002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncSkel n, GbxReaderWriter rw)
         {

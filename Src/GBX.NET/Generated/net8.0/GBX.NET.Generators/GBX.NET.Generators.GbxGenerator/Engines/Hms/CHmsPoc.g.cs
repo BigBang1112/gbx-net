@@ -34,6 +34,11 @@ public partial class CHmsPoc : CHmsZoneElem, IClass
     [Hexadecimal]
     public static new uint Id => 0x06007000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CHmsPoc()
     {
     }

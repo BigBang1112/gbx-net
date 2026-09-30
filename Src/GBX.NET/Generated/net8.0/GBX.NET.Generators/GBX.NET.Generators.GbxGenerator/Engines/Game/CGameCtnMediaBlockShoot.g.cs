@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, IClass, CGame
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockShoot)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockShoot)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockShoot()
     {
     }
@@ -70,6 +77,11 @@ public partial class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, IClass, CGame
     public partial class Chunk03145000 : Chunk<CGameCtnMediaBlockShoot>
     {
         public override uint Id => 0x03145000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockShoot n, GbxReaderWriter rw)
         {

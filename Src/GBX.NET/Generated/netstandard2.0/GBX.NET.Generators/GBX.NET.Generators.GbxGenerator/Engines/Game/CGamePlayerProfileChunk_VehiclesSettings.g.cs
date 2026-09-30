@@ -42,6 +42,12 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         set => this.vehicleProfiles = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).vehicleProfiles = context.CloneArray(this.vehicleProfiles)!;
+    }
+
     public CGamePlayerProfileChunk_VehiclesSettings()
     {
     }
@@ -53,6 +59,14 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public int Version { get; set; }
         public string? U01;
         public byte[]? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03130000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03130000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03130000)clone).U02 = context.CloneArray(this.U02)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
@@ -69,6 +83,14 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public int Version { get; set; }
         public Vec3 U01;
         public float U02 = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03130001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03130001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03130001)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
@@ -90,6 +112,12 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     {
         public override uint Id => 0x03130002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03130002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
@@ -115,6 +143,24 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public ushort[]? U10;
         public TransQuat[]? U11;
         public TransQuat[]? U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03130003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03130003)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk03130003)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk03130003)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk03130003)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk03130003)clone).U05 = context.CloneArray(this.U05)!;
+            ((Chunk03130003)clone).U06 = context.CloneArray(this.U06)!;
+            ((Chunk03130003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk03130003)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk03130003)clone).U09 = context.CloneArray(this.U09)!;
+            ((Chunk03130003)clone).U10 = context.CloneArray(this.U10)!;
+            ((Chunk03130003)clone).U11 = context.CloneArray(this.U11)!;
+            ((Chunk03130003)clone).U12 = context.CloneArray(this.U12)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
@@ -167,6 +213,13 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public int Version { get; set; }
         public Unknown[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03130004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03130004)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -174,7 +227,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         }
     }
 
-    public partial class VehicleProfile : IReadableWritable, IReadable, IWritable
+    public partial class VehicleProfile : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? playerModel;
         public Ident? PlayerModel
@@ -239,6 +292,27 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
             set => this.u07 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VehicleProfile)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VehicleProfile)clone).playerModel = context.Clone(this.playerModel)!;
+            ((VehicleProfile)clone).u01 = context.Clone(this.u01)!;
+            ((VehicleProfile)clone).u02 = context.Clone(this.u02)!;
+            ((VehicleProfile)clone).u03 = context.CloneArray(this.u03)!;
+            ((VehicleProfile)clone).gameCamera = context.Clone(this.gameCamera)!;
+            ((VehicleProfile)clone).u04 = context.Clone(this.u04)!;
+            ((VehicleProfile)clone).u05 = context.Clone(this.u05)!;
+            ((VehicleProfile)clone).u06 = context.Clone(this.u06)!;
+            ((VehicleProfile)clone).u07 = context.Clone(this.u07)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Ident(ref this.playerModel);
@@ -273,7 +347,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         }
     }
 
-    public partial class Unknown : IReadableWritable, IReadable, IWritable
+    public partial class Unknown : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? u01;
         public Ident? U01
@@ -350,6 +424,29 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         {
             get => this.u11;
             set => this.u11 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Unknown)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Unknown)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown)clone).u02 = context.Clone(this.u02)!;
+            ((Unknown)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown)clone).u04 = context.CloneArray(this.u04)!;
+            ((Unknown)clone).u05 = context.Clone(this.u05)!;
+            ((Unknown)clone).u06 = context.Clone(this.u06)!;
+            ((Unknown)clone).u07 = context.Clone(this.u07)!;
+            ((Unknown)clone).u08 = context.Clone(this.u08)!;
+            ((Unknown)clone).u09 = context.Clone(this.u09)!;
+            ((Unknown)clone).u10 = context.Clone(this.u10)!;
+            ((Unknown)clone).u11 = context.Clone(this.u11)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -50,6 +50,13 @@ public partial class CGameArmorModel : CMwNod, IClass
         set => this.replenishDelayAfterDamage = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameArmorModel)clone).armorMax = context.Clone(this.armorMax)!;
+        ((CGameArmorModel)clone).replenishDelayAfterDamage = context.Clone(this.replenishDelayAfterDamage)!;
+    }
+
     public CGameArmorModel()
     {
     }
@@ -59,6 +66,12 @@ public partial class CGameArmorModel : CMwNod, IClass
     {
         public override uint Id => 0x2E00D000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E00D000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameArmorModel n, GbxReaderWriter rw)
         {

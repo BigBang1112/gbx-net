@@ -34,6 +34,18 @@ public partial class CPlugFileGen : CPlugFileImg, IClass
     [Hexadecimal]
     public static new uint Id => 0x0902F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugFileGen)clone).genKind = context.Clone(this.genKind)!;
+        ((CPlugFileGen)clone).u01 = context.CloneArray(this.u01)!;
+        ((CPlugFileGen)clone).u02 = context.CloneArray(this.u02)!;
+        ((CPlugFileGen)clone).u03 = context.CloneArray(this.u03)!;
+        ((CPlugFileGen)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugFileGen)clone).u05 = context.CloneArray(this.u05)!;
+        ((CPlugFileGen)clone).Version = context.Clone(this.Version)!;
+    }
+
     public CPlugFileGen()
     {
     }

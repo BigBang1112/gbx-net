@@ -272,6 +272,36 @@ public partial class CGameControlCamera : CSceneController, IClass
         set => this.maxFarZ = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameControlCamera)clone).relativeTargetPos = context.Clone(this.relativeTargetPos)!;
+        ((CGameControlCamera)clone).isFirstPerson = context.Clone(this.isFirstPerson)!;
+        ((CGameControlCamera)clone).canCameraMove = context.Clone(this.canCameraMove)!;
+        ((CGameControlCamera)clone).isFollowing = context.Clone(this.isFollowing)!;
+        ((CGameControlCamera)clone).maxSpeed = context.Clone(this.maxSpeed)!;
+        ((CGameControlCamera)clone).planeDist = context.Clone(this.planeDist)!;
+        ((CGameControlCamera)clone).minDist = context.Clone(this.minDist)!;
+        ((CGameControlCamera)clone).maxDist = context.Clone(this.maxDist)!;
+        ((CGameControlCamera)clone).fov = context.Clone(this.fov)!;
+        ((CGameControlCamera)clone).defaultFov = context.Clone(this.defaultFov)!;
+        ((CGameControlCamera)clone).useForcedLocation = context.Clone(this.useForcedLocation)!;
+        ((CGameControlCamera)clone).forcedLocation = context.Clone(this.forcedLocation)!;
+        ((CGameControlCamera)clone).useOnlyFollowedMobilPosition = context.Clone(this.useOnlyFollowedMobilPosition)!;
+        ((CGameControlCamera)clone).name = context.Clone(this.name)!;
+        ((CGameControlCamera)clone).relativeFollowedPos = context.Clone(this.relativeFollowedPos)!;
+        ((CGameControlCamera)clone).minFov = context.Clone(this.minFov)!;
+        ((CGameControlCamera)clone).maxFov = context.Clone(this.maxFov)!;
+        ((CGameControlCamera)clone).useForcedUp = context.Clone(this.useForcedUp)!;
+        ((CGameControlCamera)clone).forcedUp = context.Clone(this.forcedUp)!;
+        ((CGameControlCamera)clone).defaultNearZ = context.Clone(this.defaultNearZ)!;
+        ((CGameControlCamera)clone).minNearZ = context.Clone(this.minNearZ)!;
+        ((CGameControlCamera)clone).maxNearZ = context.Clone(this.maxNearZ)!;
+        ((CGameControlCamera)clone).defaultFarZ = context.Clone(this.defaultFarZ)!;
+        ((CGameControlCamera)clone).minFarZ = context.Clone(this.minFarZ)!;
+        ((CGameControlCamera)clone).maxFarZ = context.Clone(this.maxFarZ)!;
+    }
+
     public CGameControlCamera()
     {
     }
@@ -280,6 +310,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     public partial class Chunk0306B001 : Chunk<CGameControlCamera>
     {
         public override uint Id => 0x0306B001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
@@ -303,6 +338,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
         public override uint Id => 0x0306B002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.useOnlyFollowedMobilPosition);
@@ -313,6 +353,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     public partial class Chunk0306B003 : Chunk<CGameControlCamera>
     {
         public override uint Id => 0x0306B003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
@@ -325,6 +370,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
         public override uint Id => 0x0306B004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
@@ -336,6 +386,12 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
         public override uint Id => 0x0306B009;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306B009)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
@@ -373,6 +429,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
         public override uint Id => 0x0306B00A;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {
             rw.Id(ref n.name);
@@ -384,6 +445,12 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
         public override uint Id => 0x0306B00B;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306B00B)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
         {

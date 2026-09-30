@@ -46,6 +46,12 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockToneMapping)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockToneMapping()
     {
     }
@@ -57,6 +63,11 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
     {
         public override uint Id => 0x03127000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
@@ -67,27 +78,47 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
     public partial class Chunk03127001 : Chunk03127000
     {
         public override uint Id => 0x03127001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03127002)]
     public partial class Chunk03127002 : Chunk03127000
     {
         public override uint Id => 0x03127002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03127003)]
     public partial class Chunk03127003 : Chunk03127000
     {
         public override uint Id => 0x03127003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03127004)]
     public partial class Chunk03127004 : Chunk03127000
     {
         public override uint Id => 0x03127004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -122,6 +153,23 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         {
             get => this.u01;
             set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).exposure = context.Clone(this.exposure)!;
+            ((Key)clone).maxHDR = context.Clone(this.maxHDR)!;
+            ((Key)clone).lightTrailScale = context.Clone(this.lightTrailScale)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

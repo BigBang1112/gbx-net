@@ -59,6 +59,13 @@ public partial class CSceneFxNod : CMwNod, IClass
         set => this.nodInputs = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneFxNod)clone).fx = context.Clone(this.fx)!;
+        ((CSceneFxNod)clone).nodInputs = context.CloneArray(this.nodInputs)!;
+    }
+
     public CSceneFxNod()
     {
     }
@@ -67,6 +74,11 @@ public partial class CSceneFxNod : CMwNod, IClass
     public partial class Chunk0A03A000 : Chunk<CSceneFxNod>
     {
         public override uint Id => 0x0A03A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
@@ -79,6 +91,12 @@ public partial class CSceneFxNod : CMwNod, IClass
     {
         public override uint Id => 0x0A03A001;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A03A001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
@@ -95,6 +113,14 @@ public partial class CSceneFxNod : CMwNod, IClass
         public CMwNod? U01;
         public CMwNod? U02;
         public Components.GbxRefTableFile? U02File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A03A002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0A03A002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A03A002)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {

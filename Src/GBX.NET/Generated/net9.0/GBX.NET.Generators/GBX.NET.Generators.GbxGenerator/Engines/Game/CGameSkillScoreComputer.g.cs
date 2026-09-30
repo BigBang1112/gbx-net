@@ -34,6 +34,11 @@ public partial class CGameSkillScoreComputer : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03062000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameSkillScoreComputer()
     {
     }
@@ -43,6 +48,12 @@ public partial class CGameSkillScoreComputer : CMwNod, IClass
     {
         public override uint Id => 0x03062000;
         public DateTime? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03062000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameSkillScoreComputer n, GbxReaderWriter rw)
         {

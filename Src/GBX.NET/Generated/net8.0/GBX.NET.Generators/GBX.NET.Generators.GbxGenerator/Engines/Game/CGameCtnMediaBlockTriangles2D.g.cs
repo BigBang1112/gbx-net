@@ -34,6 +34,11 @@ public partial class CGameCtnMediaBlockTriangles2D : CGameCtnMediaBlockTriangles
     [Hexadecimal]
     public static new uint Id => 0x0304B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnMediaBlockTriangles2D()
     {
     }

@@ -124,6 +124,22 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.isValidatedForScriptModes = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnChallengeParameters)clone).tip = context.Clone(this.tip)!;
+        ((CGameCtnChallengeParameters)clone).bronzeTime = context.Clone(this.bronzeTime)!;
+        ((CGameCtnChallengeParameters)clone).silverTime = context.Clone(this.silverTime)!;
+        ((CGameCtnChallengeParameters)clone).goldTime = context.Clone(this.goldTime)!;
+        ((CGameCtnChallengeParameters)clone).authorTime = context.Clone(this.authorTime)!;
+        ((CGameCtnChallengeParameters)clone).timeLimit = context.Clone(this.timeLimit)!;
+        ((CGameCtnChallengeParameters)clone).authorScore = context.Clone(this.authorScore)!;
+        ((CGameCtnChallengeParameters)clone).mapType = context.Clone(this.mapType)!;
+        ((CGameCtnChallengeParameters)clone).mapStyle = context.Clone(this.mapStyle)!;
+        ((CGameCtnChallengeParameters)clone).isValidatedForScriptModes = context.Clone(this.isValidatedForScriptModes)!;
+        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
+    }
+
     public CGameCtnChallengeParameters()
     {
     }
@@ -140,6 +156,19 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public int U06;
         public int U07;
         public int U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0305B000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0305B000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0305B000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0305B000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0305B000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0305B000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0305B000)clone).U08 = context.Clone(this.U08)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -161,6 +190,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     public partial class Chunk0305B001 : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -191,6 +225,27 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public int U14;
         public int U15;
         public int U16;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0305B002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0305B002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0305B002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0305B002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0305B002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0305B002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0305B002)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0305B002)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0305B002)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0305B002)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0305B002)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0305B002)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk0305B002)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk0305B002)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk0305B002)clone).U16 = context.Clone(this.U16)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -224,6 +279,17 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public int U05;
         public int U06;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0305B003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0305B003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0305B003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0305B003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0305B003)clone).U06 = context.Clone(this.U06)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -244,6 +310,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public override uint Id => 0x0305B004;
         public uint U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.TimeInt32Nullable(ref n.bronzeTime);
@@ -262,6 +334,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public int U02;
         public int U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0305B005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0305B005)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -279,6 +359,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public override uint Id => 0x0305B006;
         public uint[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B006)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.Array<uint>(ref U01!);
@@ -290,6 +376,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         public override uint Id => 0x0305B007;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B007)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -305,6 +397,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         public override uint Id => 0x0305B008;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.TimeInt32(ref n.timeLimit);
@@ -319,6 +416,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     public partial class Chunk0305B00A : SkippableChunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B00A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -340,6 +442,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         public override uint Id => 0x0305B00D;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
@@ -353,6 +460,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     public partial class Chunk0305B00E : SkippableChunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B00E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
@@ -369,6 +481,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     public partial class Chunk0305B00F : SkippableChunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B00F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {

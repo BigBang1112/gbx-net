@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxBlurDepth)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockFxBlurDepth()
     {
     }
@@ -53,13 +59,18 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
     {
         public override uint Id => 0x03081001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockFxBlurDepth n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -87,6 +98,22 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
         {
             get => this.focusZ;
             set => this.focusZ = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).lensSize = context.Clone(this.lensSize)!;
+            ((Key)clone).forceFocus = context.Clone(this.forceFocus)!;
+            ((Key)clone).focusZ = context.Clone(this.focusZ)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

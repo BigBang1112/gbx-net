@@ -47,6 +47,13 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         set => this.triggers = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaClipGroup)clone).triggers = context.CloneArray(this.triggers)!;
+        ((CGameCtnMediaClipGroup)clone).clips = context.CloneList(this.clips)!;
+    }
+
     public CGameCtnMediaClipGroup()
     {
     }
@@ -55,18 +62,33 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     public partial class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0307A002)]
     public partial class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0307A003)]
     public partial class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0307A004)]
@@ -75,13 +97,19 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         public override uint Id => 0x0307A004;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0307A004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
         }
     }
 
-    public partial class Trigger : IReadable, IWritable
+    public partial class Trigger : IReadable, IWritable, IDeepCloneable
     {
         private List<Int3>? coords;
         public List<Int3>? Coords
@@ -130,6 +158,25 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         {
             get => this.conditionValue;
             set => this.conditionValue = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Trigger)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Trigger)clone).coords = context.CloneList(this.coords)!;
+            ((Trigger)clone).u01 = context.Clone(this.u01)!;
+            ((Trigger)clone).u02 = context.Clone(this.u02)!;
+            ((Trigger)clone).u03 = context.Clone(this.u03)!;
+            ((Trigger)clone).u04 = context.Clone(this.u04)!;
+            ((Trigger)clone).condition = context.Clone(this.condition)!;
+            ((Trigger)clone).conditionValue = context.Clone(this.conditionValue)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

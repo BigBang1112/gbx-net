@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, IClass, CGam
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTrails)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockTrails)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockTrails()
     {
     }
@@ -70,6 +77,11 @@ public partial class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, IClass, CGam
     public partial class Chunk030A9000 : Chunk<CGameCtnMediaBlockTrails>
     {
         public override uint Id => 0x030A9000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockTrails n, GbxReaderWriter rw)
         {

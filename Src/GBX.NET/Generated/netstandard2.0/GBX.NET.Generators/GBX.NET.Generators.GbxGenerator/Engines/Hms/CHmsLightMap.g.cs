@@ -34,6 +34,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06021000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CHmsLightMap()
     {
     }
@@ -44,6 +49,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021001;
         public CPlugPointsInSphereOpt? U01;
         public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06021001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
@@ -58,6 +69,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         public CMwNod? U01;
         public Components.GbxRefTableFile? U01File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06021002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwNod>(ref U01, ref U01File);
@@ -70,6 +87,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021003;
         public CHmsLightMapMood? U01;
         public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06021003)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {

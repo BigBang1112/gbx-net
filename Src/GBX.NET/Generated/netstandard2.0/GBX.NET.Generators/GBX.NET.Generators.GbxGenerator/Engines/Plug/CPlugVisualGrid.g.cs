@@ -66,6 +66,15 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
         set => this.rangeZ = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisualGrid)clone).nbPointX = context.Clone(this.nbPointX)!;
+        ((CPlugVisualGrid)clone).nbPointZ = context.Clone(this.nbPointZ)!;
+        ((CPlugVisualGrid)clone).rangeX = context.Clone(this.rangeX)!;
+        ((CPlugVisualGrid)clone).rangeZ = context.Clone(this.rangeZ)!;
+    }
+
     public CPlugVisualGrid()
     {
     }
@@ -74,6 +83,11 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     public partial class Chunk0903B000 : Chunk<CPlugVisualGrid>
     {
         public override uint Id => 0x0903B000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVisualGrid n, GbxReaderWriter rw)
         {

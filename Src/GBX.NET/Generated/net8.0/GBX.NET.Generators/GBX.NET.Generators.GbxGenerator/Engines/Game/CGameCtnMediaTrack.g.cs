@@ -89,6 +89,18 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         set => this.repeatingSegmentEnd = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaTrack)clone).name = context.Clone(this.name)!;
+        ((CGameCtnMediaTrack)clone).isKeepPlaying = context.Clone(this.isKeepPlaying)!;
+        ((CGameCtnMediaTrack)clone).isReadOnly = context.Clone(this.isReadOnly)!;
+        ((CGameCtnMediaTrack)clone).isCycling = context.Clone(this.isCycling)!;
+        ((CGameCtnMediaTrack)clone).repeatingSegmentStart = context.Clone(this.repeatingSegmentStart)!;
+        ((CGameCtnMediaTrack)clone).repeatingSegmentEnd = context.Clone(this.repeatingSegmentEnd)!;
+        ((CGameCtnMediaTrack)clone).blocks = context.CloneList(this.blocks)!;
+    }
+
     public CGameCtnMediaTrack()
     {
     }
@@ -103,6 +115,12 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override uint Id => 0x03078001;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
         public int U01 = -1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03078001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
@@ -122,6 +140,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override uint Id => 0x03078002;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.isKeepPlaying);
@@ -138,6 +161,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override uint Id => 0x03078003;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.isReadOnly);
@@ -153,6 +181,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
         public override uint Id => 0x03078004;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
@@ -171,6 +204,12 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override uint Id => 0x03078005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03078005)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {

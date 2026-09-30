@@ -67,6 +67,14 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
         set => this.radius = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CMotionEmitterLeaves)clone).managerModel = context.Clone(this.managerModel)!;
+        ((CMotionEmitterLeaves)clone).pos = context.Clone(this.pos)!;
+        ((CMotionEmitterLeaves)clone).radius = context.Clone(this.radius)!;
+    }
+
     public CMotionEmitterLeaves()
     {
     }
@@ -75,6 +83,11 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     public partial class Chunk0804C001 : Chunk<CMotionEmitterLeaves>
     {
         public override uint Id => 0x0804C001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
         {

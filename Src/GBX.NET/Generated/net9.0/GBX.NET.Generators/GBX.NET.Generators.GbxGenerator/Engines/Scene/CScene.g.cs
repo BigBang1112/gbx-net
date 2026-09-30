@@ -58,6 +58,14 @@ public abstract partial class CScene : CMwNod, IClass
         set => this.oldMobils = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CScene)clone).sceneConfig = context.Clone(this.sceneConfig)!;
+        ((CScene)clone).motionManagerModels = context.CloneArray(this.motionManagerModels)!;
+        ((CScene)clone).oldMobils = context.CloneArray(this.oldMobils)!;
+    }
+
     public CScene()
     {
     }
@@ -66,6 +74,11 @@ public abstract partial class CScene : CMwNod, IClass
     public partial class Chunk0A001003 : Chunk<CScene>
     {
         public override uint Id => 0x0A001003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
@@ -79,6 +92,12 @@ public abstract partial class CScene : CMwNod, IClass
         public override uint Id => 0x0A001004;
         public uint[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A001004)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
             rw.Array<uint>(ref U01!);
@@ -89,6 +108,11 @@ public abstract partial class CScene : CMwNod, IClass
     public partial class Chunk0A001005 : Chunk<CScene>
     {
         public override uint Id => 0x0A001005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
@@ -102,13 +126,18 @@ public abstract partial class CScene : CMwNod, IClass
         public override uint Id => 0x0A001006;
         public override bool Ignore => true;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<OldSceneMobil>(ref n.oldMobils!);
         }
     }
 
-    public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable
+    public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private CMwNod? u01;
         public CMwNod? U01
@@ -141,6 +170,20 @@ public abstract partial class CScene : CMwNod, IClass
         }
 
         public CMwNod? GetU02(GbxReadSettings settings = default, bool exceptions = false) => u02File?.GetNode(ref u02, settings, exceptions) ?? u02;
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldSceneMobil)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldSceneMobil)clone).u01 = context.Clone(this.u01)!;
+            ((OldSceneMobil)clone).u02 = context.Clone(this.u02)!;
+        }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {

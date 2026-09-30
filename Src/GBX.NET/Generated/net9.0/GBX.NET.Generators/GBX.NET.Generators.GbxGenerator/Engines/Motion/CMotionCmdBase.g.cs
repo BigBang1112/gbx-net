@@ -34,6 +34,11 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     [Hexadecimal]
     public static new uint Id => 0x08029000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionCmdBase()
     {
     }
@@ -48,6 +53,17 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         public int U04;
         public int U05;
         public int U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk08029002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk08029002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk08029002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk08029002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk08029002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk08029002)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
         {

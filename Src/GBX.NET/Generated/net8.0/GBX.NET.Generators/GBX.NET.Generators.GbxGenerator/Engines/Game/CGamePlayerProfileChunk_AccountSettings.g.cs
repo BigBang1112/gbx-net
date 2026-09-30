@@ -307,6 +307,49 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.youtubeUploads = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_AccountSettings)clone).flags = context.Clone(this.flags)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlineLogin = context.Clone(this.onlineLogin)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlinePassword = context.Clone(this.onlinePassword)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlineValidationKey = context.Clone(this.onlineValidationKey)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlineSupportKey = context.Clone(this.onlineSupportKey)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).lastUsedMSAddress = context.Clone(this.lastUsedMSAddress)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).lastUsedMSPath = context.Clone(this.lastUsedMSPath)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).lastSessionId = context.Clone(this.lastSessionId)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).league = context.Clone(this.league)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u01 = context.Clone(this.u01)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlineRemainingNickNamesChangesCount = context.Clone(this.onlineRemainingNickNamesChangesCount)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).onlinePlanets = context.Clone(this.onlinePlanets)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).rSAPublicKey = context.Clone(this.rSAPublicKey)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).rSAPrivateKey = context.Clone(this.rSAPrivateKey)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u02 = context.Clone(this.u02)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u03 = context.Clone(this.u03)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).buddies = context.CloneArray(this.buddies)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u04 = context.Clone(this.u04)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).inboxMessages = context.CloneArray(this.inboxMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).readMessages = context.CloneArray(this.readMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).outboxMessages = context.CloneArray(this.outboxMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).flags2 = context.Clone(this.flags2)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u05 = context.Clone(this.u05)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).avatarName = context.Clone(this.avatarName)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).playerTagsConfig = context.Clone(this.playerTagsConfig)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).receiveNews = context.Clone(this.receiveNews)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u06 = context.Clone(this.u06)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).eulaVersion = context.Clone(this.eulaVersion)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).u07 = context.Clone(this.u07)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).privacyPolicyVersion = context.Clone(this.privacyPolicyVersion)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).age = context.Clone(this.age)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).trigram = context.Clone(this.trigram)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).clubLinkUrl = context.Clone(this.clubLinkUrl)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).fameStars = context.Clone(this.fameStars)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).youtubeUploads = context.CloneArray(this.youtubeUploads)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).nickName = context.Clone(this.nickName)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).description = context.Clone(this.description)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
+    }
+
     public CGamePlayerProfileChunk_AccountSettings()
     {
     }
@@ -398,6 +441,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public ulong U01;
         public bool U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C000)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -442,6 +493,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C001;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C001)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -462,6 +519,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C002;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C002)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -479,6 +542,17 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public string[]? U03;
         public byte[]? U04;
         public byte[]? U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0312C003)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk0312C003)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0312C003)clone).U05 = context.CloneArray(this.U05)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
@@ -515,6 +589,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int Version { get; set; }
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -527,6 +608,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C005;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C005)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
@@ -559,6 +646,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C006;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C006)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -583,6 +676,23 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public float U10;
         public string? U11;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0312C007)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0312C007)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0312C007)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0312C007)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0312C007)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0312C007)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0312C007)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0312C007)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0312C007)clone).U11 = context.Clone(this.U11)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -606,6 +716,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C008;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C008)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -618,6 +734,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C009;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C009)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
@@ -643,6 +765,24 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public float U10;
         public float U11;
         public float U12;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0312C00A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0312C00A)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0312C00A)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0312C00A)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0312C00A)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0312C00A)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0312C00A)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0312C00A)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0312C00A)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0312C00A)clone).U12 = context.Clone(this.U12)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
@@ -680,6 +820,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int U01;
         public float U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C00B)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -699,6 +847,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int Version { get; set; }
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00C)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -714,6 +869,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int Version { get; set; }
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C00D)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
@@ -731,6 +894,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public ulong U01;
         public bool U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00E)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0312C00E)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -746,6 +917,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int Version { get; set; }
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312C00F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0312C00F)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -753,7 +931,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         }
     }
 
-    public partial class SPlayerTagsConfig : IReadableWritable, IReadable, IWritable
+    public partial class SPlayerTagsConfig : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -776,6 +954,21 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SPlayerTagsConfig)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SPlayerTagsConfig)clone).u01 = context.Clone(this.u01)!;
+            ((SPlayerTagsConfig)clone).playerTags = context.CloneArray(this.playerTags)!;
+            ((SPlayerTagsConfig)clone).u02 = context.CloneArray(this.u02)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -796,7 +989,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         }
     }
 
-    public partial class PlayerTagConfig : IReadableWritable, IReadable, IWritable
+    public partial class PlayerTagConfig : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? tagId;
         public string? TagId
@@ -810,6 +1003,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         {
             get => this.isVisibleByOtherPlayers;
             set => this.isVisibleByOtherPlayers = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PlayerTagConfig)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PlayerTagConfig)clone).tagId = context.Clone(this.tagId)!;
+            ((PlayerTagConfig)clone).isVisibleByOtherPlayers = context.Clone(this.isVisibleByOtherPlayers)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -831,7 +1038,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         }
     }
 
-    public partial class YoutubeUpload : IReadableWritable, IReadable, IWritable
+    public partial class YoutubeUpload : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -845,6 +1052,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (YoutubeUpload)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((YoutubeUpload)clone).u01 = context.Clone(this.u01)!;
+            ((YoutubeUpload)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

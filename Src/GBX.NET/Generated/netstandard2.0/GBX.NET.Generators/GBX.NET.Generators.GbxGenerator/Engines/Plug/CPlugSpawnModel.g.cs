@@ -66,6 +66,15 @@ public partial class CPlugSpawnModel : CMwNod, IClass
         set => this.defaultGravitySpawn = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSpawnModel)clone).loc = context.Clone(this.loc)!;
+        ((CPlugSpawnModel)clone).torqueX = context.Clone(this.torqueX)!;
+        ((CPlugSpawnModel)clone).torqueDuration = context.Clone(this.torqueDuration)!;
+        ((CPlugSpawnModel)clone).defaultGravitySpawn = context.Clone(this.defaultGravitySpawn)!;
+    }
+
     public CPlugSpawnModel()
     {
     }
@@ -76,6 +85,13 @@ public partial class CPlugSpawnModel : CMwNod, IClass
         public override uint Id => 0x0917A000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917A000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0917A000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugSpawnModel n, GbxReaderWriter rw)
         {

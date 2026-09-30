@@ -74,6 +74,16 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
         set => this.canUseRelativeTargetLocation = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameControlCameraTarget)clone).location = context.Clone(this.location)!;
+        ((CGameControlCameraTarget)clone).isUpLinked = context.Clone(this.isUpLinked)!;
+        ((CGameControlCameraTarget)clone).interpolate = context.Clone(this.interpolate)!;
+        ((CGameControlCameraTarget)clone).lookAtFactor = context.Clone(this.lookAtFactor)!;
+        ((CGameControlCameraTarget)clone).canUseRelativeTargetLocation = context.Clone(this.canUseRelativeTargetLocation)!;
+    }
+
     public CGameControlCameraTarget()
     {
     }
@@ -82,6 +92,11 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     public partial class Chunk03072001 : Chunk<CGameControlCameraTarget>
     {
         public override uint Id => 0x03072001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCameraTarget n, GbxReaderWriter rw)
         {
@@ -96,6 +111,11 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     public partial class Chunk03072002 : Chunk<CGameControlCameraTarget>
     {
         public override uint Id => 0x03072002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCameraTarget n, GbxReaderWriter rw)
         {

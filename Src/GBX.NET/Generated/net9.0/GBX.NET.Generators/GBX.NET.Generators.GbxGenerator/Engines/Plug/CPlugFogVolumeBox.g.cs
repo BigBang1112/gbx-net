@@ -34,6 +34,11 @@ public partial class CPlugFogVolumeBox : CPlugFogVolume, IClass
     [Hexadecimal]
     public static new uint Id => 0x090D5000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFogVolumeBox()
     {
     }

@@ -34,6 +34,11 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F2000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugCharPhySpecialProperty()
     {
     }
@@ -59,6 +64,28 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
         public float U14;
         public int U15;
         public bool U16;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F2000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F2000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F2000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F2000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F2000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090F2000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090F2000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090F2000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090F2000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090F2000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090F2000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090F2000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090F2000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090F2000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090F2000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090F2000)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090F2000)clone).U16 = context.Clone(this.U16)!;
+        }
 
         public override void ReadWrite(CPlugCharPhySpecialProperty n, GbxReaderWriter rw)
         {

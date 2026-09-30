@@ -34,6 +34,11 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0915E000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugMaterialColorTargetTable()
     {
     }

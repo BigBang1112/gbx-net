@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         set => this.dataTape = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockScenery)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockScenery)clone).dataTape = context.Clone(this.dataTape)!;
+    }
+
     public CGameCtnMediaBlockScenery()
     {
     }
@@ -61,6 +68,12 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     {
         public override uint Id => 0x03188000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03188000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GbxReaderWriter rw)
         {
@@ -76,6 +89,13 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         public int Version { get; set; }
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03188001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03188001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -84,7 +104,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -112,6 +132,22 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         {
             get => this.u03;
             set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

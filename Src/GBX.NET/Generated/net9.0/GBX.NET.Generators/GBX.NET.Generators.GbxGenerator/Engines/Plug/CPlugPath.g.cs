@@ -53,6 +53,13 @@ public partial class CPlugPath : CMwNod, IClass
         set => this.lineGroups = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugPath)clone).polyLines = context.CloneArray(this.polyLines)!;
+        ((CPlugPath)clone).lineGroups = context.CloneArray(this.lineGroups)!;
+    }
+
     public CPlugPath()
     {
     }
@@ -64,6 +71,14 @@ public partial class CPlugPath : CMwNod, IClass
         public int Version { get; set; } = 2;
         public bool U01;
         public byte U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09119000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09119000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09119000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugPath n, GbxReaderWriter rw)
         {

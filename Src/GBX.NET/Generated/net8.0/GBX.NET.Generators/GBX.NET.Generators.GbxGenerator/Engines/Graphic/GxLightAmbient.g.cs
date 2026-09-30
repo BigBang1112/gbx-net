@@ -50,6 +50,13 @@ public partial class GxLightAmbient : GxLight, IClass
         set => this.shadeMaxY = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLightAmbient)clone).shadeMinY = context.Clone(this.shadeMinY)!;
+        ((GxLightAmbient)clone).shadeMaxY = context.Clone(this.shadeMaxY)!;
+    }
+
     public GxLightAmbient()
     {
     }
@@ -58,6 +65,11 @@ public partial class GxLightAmbient : GxLight, IClass
     public partial class Chunk04005000 : Chunk<GxLightAmbient>
     {
         public override uint Id => 0x04005000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLightAmbient n, GbxReaderWriter rw)
         {

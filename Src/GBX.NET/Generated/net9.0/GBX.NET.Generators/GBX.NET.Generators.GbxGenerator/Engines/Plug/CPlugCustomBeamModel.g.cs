@@ -244,6 +244,41 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.laserShowAdvancedCrosshair = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugCustomBeamModel)clone).bulletName = context.Clone(this.bulletName)!;
+        ((CPlugCustomBeamModel)clone).u01 = context.CloneArray(this.u01)!;
+        ((CPlugCustomBeamModel)clone).u02 = context.CloneArray(this.u02)!;
+        ((CPlugCustomBeamModel)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugCustomBeamModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugCustomBeamModel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugCustomBeamModel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugCustomBeamModel)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugCustomBeamModel)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugCustomBeamModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugCustomBeamModel)clone).u10 = context.Clone(this.u10)!;
+        ((CPlugCustomBeamModel)clone).u11 = context.Clone(this.u11)!;
+        ((CPlugCustomBeamModel)clone).u12 = context.Clone(this.u12)!;
+        ((CPlugCustomBeamModel)clone).u13 = context.Clone(this.u13)!;
+        ((CPlugCustomBeamModel)clone).laserDamage = context.Clone(this.laserDamage)!;
+        ((CPlugCustomBeamModel)clone).laserRadiusDamage = context.Clone(this.laserRadiusDamage)!;
+        ((CPlugCustomBeamModel)clone).bulletVsRadius = context.Clone(this.bulletVsRadius)!;
+        ((CPlugCustomBeamModel)clone).visualOffsetFirstPerson = context.Clone(this.visualOffsetFirstPerson)!;
+        ((CPlugCustomBeamModel)clone).beamType = context.Clone(this.beamType)!;
+        ((CPlugCustomBeamModel)clone).laserDispersionAngle = context.Clone(this.laserDispersionAngle)!;
+        ((CPlugCustomBeamModel)clone).damageAttenuationWithDist = context.Clone(this.damageAttenuationWithDist)!;
+        ((CPlugCustomBeamModel)clone).u14 = context.Clone(this.u14)!;
+        ((CPlugCustomBeamModel)clone).u15 = context.Clone(this.u15)!;
+        ((CPlugCustomBeamModel)clone).damageAttenuationFromDist = context.Clone(this.damageAttenuationFromDist)!;
+        ((CPlugCustomBeamModel)clone).maxDistance = context.Clone(this.maxDistance)!;
+        ((CPlugCustomBeamModel)clone).u16 = context.Clone(this.u16)!;
+        ((CPlugCustomBeamModel)clone).laserRadius = context.Clone(this.laserRadius)!;
+        ((CPlugCustomBeamModel)clone).blowRadius = context.Clone(this.blowRadius)!;
+        ((CPlugCustomBeamModel)clone).blowValue = context.Clone(this.blowValue)!;
+        ((CPlugCustomBeamModel)clone).laserShowAdvancedCrosshair = context.Clone(this.laserShowAdvancedCrosshair)!;
+    }
+
     public CPlugCustomBeamModel()
     {
     }

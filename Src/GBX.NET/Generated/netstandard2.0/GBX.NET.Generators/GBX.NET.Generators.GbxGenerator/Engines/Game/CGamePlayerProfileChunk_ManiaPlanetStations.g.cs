@@ -66,6 +66,17 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         set => this.latestTitleIdLoaded = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).oldStations = context.CloneArray(this.oldStations)!;
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).displayInfos = context.CloneArray(this.displayInfos)!;
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).isFirstLaunch = context.Clone(this.isFirstLaunch)!;
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).latestTitleIdLoaded = context.Clone(this.latestTitleIdLoaded)!;
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).stations = context.CloneArray(this.stations)!;
+        ((CGamePlayerProfileChunk_ManiaPlanetStations)clone).hasSeenWelcomePage = context.Clone(this.hasSeenWelcomePage)!;
+    }
+
     public CGamePlayerProfileChunk_ManiaPlanetStations()
     {
     }
@@ -78,6 +89,12 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     {
         public override uint Id => 0x03180000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03180000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_ManiaPlanetStations n, GbxReaderWriter rw)
         {
@@ -92,6 +109,13 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         public override uint Id => 0x03180001;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03180001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03180001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_ManiaPlanetStations n, GbxReaderWriter rw)
         {
@@ -117,6 +141,16 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>
     {
         public override uint Id => 0x03180002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03180002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03180002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03180002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03180002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03180002)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -128,6 +162,12 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         public override uint Id => 0x03180003;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03180003)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGamePlayerProfileChunk_ManiaPlanetStations n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -135,7 +175,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         }
     }
 
-    public partial class OldGameStationDesc : IReadableWritable, IReadable, IWritable
+    public partial class OldGameStationDesc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -186,6 +226,25 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
             set => this.u07 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldGameStationDesc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldGameStationDesc)clone).u01 = context.Clone(this.u01)!;
+            ((OldGameStationDesc)clone).u02 = context.Clone(this.u02)!;
+            ((OldGameStationDesc)clone).u03 = context.Clone(this.u03)!;
+            ((OldGameStationDesc)clone).u04 = context.Clone(this.u04)!;
+            ((OldGameStationDesc)clone).u05 = context.Clone(this.u05)!;
+            ((OldGameStationDesc)clone).u06 = context.Clone(this.u06)!;
+            ((OldGameStationDesc)clone).u07 = context.Clone(this.u07)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -218,7 +277,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         }
     }
 
-    public partial class GameStationDesc : IReadableWritable, IReadable, IWritable
+    public partial class GameStationDesc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -276,6 +335,30 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
             set => this.u06 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GameStationDesc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GameStationDesc)clone).u01 = context.Clone(this.u01)!;
+            ((GameStationDesc)clone).u02 = context.Clone(this.u02)!;
+            ((GameStationDesc)clone).titleId = context.Clone(this.titleId)!;
+            ((GameStationDesc)clone).checksum = context.CloneArray(this.checksum)!;
+            ((GameStationDesc)clone).u03 = context.Clone(this.u03)!;
+            ((GameStationDesc)clone).u04 = context.Clone(this.u04)!;
+            ((GameStationDesc)clone).u05 = context.Clone(this.u05)!;
+            ((GameStationDesc)clone).u06 = context.Clone(this.u06)!;
+            ((GameStationDesc)clone).U07 = context.Clone(this.U07)!;
+            ((GameStationDesc)clone).U08 = context.Clone(this.U08)!;
+            ((GameStationDesc)clone).U09 = context.Clone(this.U09)!;
+            ((GameStationDesc)clone).DownloadUrl = context.Clone(this.DownloadUrl)!;
+        }
+
         public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -301,7 +384,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         }
     }
 
-    public partial class DisplayInfo : IReadableWritable, IReadable, IWritable
+    public partial class DisplayInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -329,6 +412,22 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DisplayInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DisplayInfo)clone).u01 = context.Clone(this.u01)!;
+            ((DisplayInfo)clone).u02 = context.Clone(this.u02)!;
+            ((DisplayInfo)clone).u03 = context.Clone(this.u03)!;
+            ((DisplayInfo)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

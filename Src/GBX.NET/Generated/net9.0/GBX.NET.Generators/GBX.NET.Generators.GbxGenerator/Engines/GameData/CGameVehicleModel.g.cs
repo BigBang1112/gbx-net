@@ -76,6 +76,14 @@ public partial class CGameVehicleModel : CMwNod, IClass
         set => this.itemOccupantSlotModels = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameVehicleModel)clone).phyModel = context.Clone(this.phyModel)!;
+        ((CGameVehicleModel)clone).visModel = context.Clone(this.visModel)!;
+        ((CGameVehicleModel)clone).itemOccupantSlotModels = context.CloneArray(this.itemOccupantSlotModels)!;
+    }
+
     public CGameVehicleModel()
     {
     }
@@ -87,6 +95,14 @@ public partial class CGameVehicleModel : CMwNod, IClass
         public int Version { get; set; }
         public CGameObjectModel[]? U01;
         public CMwNod? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E01C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E01C000)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk2E01C000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameVehicleModel n, GbxReaderWriter rw)
         {
@@ -107,7 +123,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
         }
     }
 
-    public partial class ItemOccupantSlotModel : IReadableWritable, IReadable, IWritable
+    public partial class ItemOccupantSlotModel : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? id;
         public string? Id
@@ -121,6 +137,20 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             get => this.actions;
             set => this.actions = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ItemOccupantSlotModel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ItemOccupantSlotModel)clone).id = context.Clone(this.id)!;
+            ((ItemOccupantSlotModel)clone).actions = context.CloneArray(this.actions)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

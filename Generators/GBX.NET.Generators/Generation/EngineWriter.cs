@@ -4,6 +4,7 @@ using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Immutable;
 
 namespace GBX.NET.Generators.Generation;
@@ -97,6 +98,15 @@ internal static class EngineWriter
         code.BlankLine();
         Properties(code, layout, layout.Scope, false);
 
+        if (layout.Name != "CMwNod" && !SyntaxOverlap.Method(layout.Existing, "DeepCloneFields", "CMwNod", "DeepCloneContext"))
+        {
+            code.BlankLine();
+            code.Open("internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)");
+            code.Line("base.DeepCloneFields(clone, context);");
+            CloneFields(code, layout.Name, layout.Scope, false);
+            code.Close();
+        }
+
         foreach (var property in layout.File.Syntax.Properties)
         {
             if (SyntaxOverlap.Has(layout.Existing, property.Name)) continue;
@@ -167,16 +177,35 @@ internal static class EngineWriter
 
             var inherited = LayoutModel.Attribute(archive.Value.Attributes, "inherits");
             var archiveBases = ArchiveInterfaces(layout, archive.Value).ToList();
+            var inheritedArchive = inherited is not null && layout.Archives.ContainsKey(inherited);
 
             if (!string.IsNullOrEmpty(inherited)) archiveBases.Insert(0, inherited!);
+            if (!inheritedArchive) archiveBases.Add("IDeepCloneable");
 
             code.Open($"public partial class {archive.Key} : {string.Join(", ", archiveBases)}");
 
             Properties(code, layout, archive.Value, false);
 
+            if (!inheritedArchive && archive.Value.Existing?.Methods.Any(static x => x.Identifier.ValueText == "DeepClone") != true)
+            {
+                code.BlankLine();
+                code.Open("object IDeepCloneable.DeepClone(DeepCloneContext context)");
+                code.Line($"var clone = ({archive.Key})MemberwiseClone();");
+                code.Line("context.Register(this, clone);");
+                code.Line("DeepCloneArchiveFields(clone, context);");
+                code.Line("return clone;");
+                code.Close();
+            }
+
+            code.BlankLine();
+            code.Open($"internal {(inheritedArchive ? "override" : archive.Value.Existing?.Declarations.Any(static x => x.Modifiers.Any(SyntaxKind.SealedKeyword)) == true ? "" : "virtual")} void DeepCloneArchiveFields(object clone, DeepCloneContext context)");
+            if (inheritedArchive) code.Line("base.DeepCloneArchiveFields(clone, context);");
+            CloneFields(code, archive.Key, archive.Value, false);
+            code.Close();
+
             code.BlankLine();
             ArchiveMethods(code, layout, archive.Value, layouts,
-                inherited is not null && layout.Archives.ContainsKey(inherited) ? "override " : "virtual ");
+                inheritedArchive ? "override " : "virtual ");
             
             code.Close();
         }
@@ -421,6 +450,15 @@ internal static class EngineWriter
         }
 
         Properties(code, layout, chunk.Scope, true);
+
+        if (!SyntaxOverlap.Method(chunk.Scope.Existing, "DeepCloneFields", "Chunk", "DeepCloneContext"))
+        {
+            code.BlankLine();
+            code.Open("internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)");
+            code.Line("base.DeepCloneFields(clone, context);");
+            CloneFields(code, chunk.Name, chunk.Scope, true);
+            code.Close();
+        }
         
         if (!LayoutModel.Has(chunk.Declaration.Attributes, "demonstration") && chunk.Declaration.Body.Count > 0)
         {
@@ -455,6 +493,69 @@ internal static class EngineWriter
         }
 
         code.Close();
+    }
+
+    private static void CloneFields(CodeWriter code, string className, ScopeModel scope, bool chunk)
+    {
+        var copied = new HashSet<string>(StringComparer.Ordinal);
+
+        foreach (var field in scope.Fields)
+        {
+            if (!chunk && SyntaxOverlap.Has(scope.Existing, field.Name)) continue;
+            if (chunk && !field.IsUnknown && !field.IsVersion) continue;
+
+            var name = field.IsVersion ? "Version" : chunk ? field.Name : SyntaxOverlap.Backing(field.Name);
+            if (!copied.Add(name)) continue;
+
+            var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration);
+            code.Line($"(({className})clone).{SyntaxOverlap.Escape(name)} = {CloneExpression(type, "this." + SyntaxOverlap.Escape(name))};");
+        }
+
+        if (scope.Existing is null) return;
+
+        foreach (var field in scope.Existing.Fields)
+        {
+            if (field.Modifiers.Any(SyntaxKind.StaticKeyword) ||
+                field.Modifiers.Any(SyntaxKind.ConstKeyword) ||
+                field.Modifiers.Any(SyntaxKind.ReadOnlyKeyword)) continue;
+
+            foreach (var variable in field.Declaration.Variables)
+            {
+                var name = variable.Identifier.ValueText;
+                if (!copied.Add(name)) continue;
+
+                var escaped = SyntaxOverlap.Escape(name);
+                code.Line($"(({className})clone).{escaped} = {CloneExpression(field.Declaration.Type.ToString(), "this." + escaped)};");
+            }
+        }
+
+        foreach (var property in scope.Existing.Properties)
+        {
+            if (property.ExplicitInterfaceSpecifier is not null ||
+                property.Modifiers.Any(SyntaxKind.StaticKeyword) ||
+                property.AccessorList?.Accessors.Any(x => x.IsKind(SyntaxKind.SetAccessorDeclaration)) != true ||
+                property.AccessorList.Accessors.Any(x => x.Body is not null || x.ExpressionBody is not null)) continue;
+
+            var name = property.Identifier.ValueText;
+            if (!copied.Add(name)) continue;
+
+            var escaped = SyntaxOverlap.Escape(name);
+            code.Line($"(({className})clone).{escaped} = {CloneExpression(property.Type.ToString(), "this." + escaped)};");
+        }
+    }
+
+    private static string CloneExpression(string type, string value)
+    {
+        var name = type.TrimEnd('?').Split('<')[0].Split('.').Last();
+
+        if (type.TrimEnd('?').EndsWith("[]", StringComparison.Ordinal)) return $"context.CloneArray({value})!";
+        if (name is "List" or "IList" or "IReadOnlyList" or "ICollection" or "IReadOnlyCollection" or "IEnumerable")
+            return $"context.CloneList({value})!";
+        if (name is "Dictionary" or "IDictionary" or "IReadOnlyDictionary")
+            return $"context.CloneDictionary({value})!";
+        if (name is "HashSet" or "ISet") return $"context.CloneHashSet({value})!";
+
+        return $"context.Clone({value})!";
     }
 
     private static void ArchiveMethods(CodeWriter code, LayoutModel layout, ScopeModel scope, IReadOnlyDictionary<string, LayoutModel> layouts, string modifier)

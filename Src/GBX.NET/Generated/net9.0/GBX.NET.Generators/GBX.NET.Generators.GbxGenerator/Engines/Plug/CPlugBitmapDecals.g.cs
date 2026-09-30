@@ -58,6 +58,14 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         set => this.matterId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapDecals)clone).decalModels = context.CloneArray(this.decalModels)!;
+        ((CPlugBitmapDecals)clone).decalSets = context.CloneArray(this.decalSets)!;
+        ((CPlugBitmapDecals)clone).matterId = context.Clone(this.matterId)!;
+    }
+
     public CPlugBitmapDecals()
     {
     }
@@ -67,6 +75,12 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     {
         public override uint Id => 0x09078000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09078000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void Read(CPlugBitmapDecals n, GbxReader r)
         {
@@ -101,6 +115,14 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         public int U02;
         public int U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09078001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09078001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09078001)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CPlugBitmapDecals n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -109,11 +131,23 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         }
     }
 
-    public partial class DecalSet : IReadable, IWritable
+    public partial class DecalSet : IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DecalSet)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DecalSet)clone).Decals = context.CloneArray(this.Decals)!;
+        }
     }
 
-    public partial class Decal : IReadable, IWritable
+    public partial class Decal : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -239,6 +273,36 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         {
             get => this.u18;
             set => this.u18 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Decal)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Decal)clone).u01 = context.Clone(this.u01)!;
+            ((Decal)clone).u02 = context.Clone(this.u02)!;
+            ((Decal)clone).u03 = context.Clone(this.u03)!;
+            ((Decal)clone).u04 = context.Clone(this.u04)!;
+            ((Decal)clone).u05 = context.Clone(this.u05)!;
+            ((Decal)clone).u06 = context.Clone(this.u06)!;
+            ((Decal)clone).u07 = context.Clone(this.u07)!;
+            ((Decal)clone).u08 = context.Clone(this.u08)!;
+            ((Decal)clone).u09 = context.Clone(this.u09)!;
+            ((Decal)clone).u10 = context.Clone(this.u10)!;
+            ((Decal)clone).u11 = context.Clone(this.u11)!;
+            ((Decal)clone).u12 = context.Clone(this.u12)!;
+            ((Decal)clone).u13 = context.Clone(this.u13)!;
+            ((Decal)clone).u14 = context.Clone(this.u14)!;
+            ((Decal)clone).u15 = context.Clone(this.u15)!;
+            ((Decal)clone).u16 = context.Clone(this.u16)!;
+            ((Decal)clone).u17 = context.Clone(this.u17)!;
+            ((Decal)clone).u18 = context.Clone(this.u18)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

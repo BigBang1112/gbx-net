@@ -34,6 +34,11 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0910B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugCamShakeModel()
     {
     }
@@ -57,6 +62,26 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
         public float? U12;
         public float? U13;
         public float? U14;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0910B000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0910B000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0910B000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0910B000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0910B000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0910B000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0910B000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0910B000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0910B000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0910B000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0910B000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0910B000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0910B000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0910B000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk0910B000)clone).U14 = context.Clone(this.U14)!;
+        }
 
         public override void ReadWrite(CPlugCamShakeModel n, GbxReaderWriter rw)
         {

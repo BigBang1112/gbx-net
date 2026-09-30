@@ -34,6 +34,11 @@ public partial class CMotionDayTime : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x08055000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionDayTime()
     {
     }
@@ -45,6 +50,14 @@ public partial class CMotionDayTime : CMotion, IClass
         public int U01;
         public int U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk08055000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk08055000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk08055000)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CMotionDayTime n, GbxReaderWriter rw)
         {

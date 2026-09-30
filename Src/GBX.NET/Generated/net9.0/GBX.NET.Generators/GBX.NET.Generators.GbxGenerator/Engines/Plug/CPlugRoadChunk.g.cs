@@ -34,6 +34,11 @@ public partial class CPlugRoadChunk : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09128000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugRoadChunk()
     {
     }
@@ -42,6 +47,31 @@ public partial class CPlugRoadChunk : CMwNod, IClass
     public partial class Chunk09128000 : Chunk<CPlugRoadChunk>
     {
         public override uint Id => 0x09128000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09128000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09128000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09128000)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk09128000)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk09128000)clone).U05 = context.CloneArray(this.U05)!;
+            ((Chunk09128000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk09128000)clone).U07 = context.CloneArray(this.U07)!;
+            ((Chunk09128000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk09128000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09128000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk09128000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk09128000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk09128000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk09128000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk09128000)clone).U15 = context.CloneArray(this.U15)!;
+            ((Chunk09128000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk09128000)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk09128000)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk09128000)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk09128000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

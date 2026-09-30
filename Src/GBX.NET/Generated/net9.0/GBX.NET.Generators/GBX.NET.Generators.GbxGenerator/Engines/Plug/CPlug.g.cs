@@ -34,6 +34,11 @@ public partial class CPlug : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0902B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlug()
     {
     }

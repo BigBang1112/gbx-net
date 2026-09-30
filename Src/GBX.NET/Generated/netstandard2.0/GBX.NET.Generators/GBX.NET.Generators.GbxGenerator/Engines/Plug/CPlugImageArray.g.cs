@@ -74,6 +74,16 @@ public partial class CPlugImageArray : CMwNod, IClass
         set => this.folder_TextureDecals = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugImageArray)clone).folder = context.Clone(this.folder)!;
+        ((CPlugImageArray)clone).layers = context.CloneArray(this.layers)!;
+        ((CPlugImageArray)clone).material_VId = context.Clone(this.material_VId)!;
+        ((CPlugImageArray)clone).maskScale = context.Clone(this.maskScale)!;
+        ((CPlugImageArray)clone).folder_TextureDecals = context.Clone(this.folder_TextureDecals)!;
+    }
+
     public CPlugImageArray()
     {
     }
@@ -84,6 +94,13 @@ public partial class CPlugImageArray : CMwNod, IClass
         public override uint Id => 0x0914C000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0914C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0914C000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugImageArray n, GbxReaderWriter rw)
         {
@@ -113,7 +130,7 @@ public partial class CPlugImageArray : CMwNod, IClass
         }
     }
 
-    public partial class Elem : IReadableWritable, IReadable, IWritable
+    public partial class Elem : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -225,6 +242,34 @@ public partial class CPlugImageArray : CMwNod, IClass
         {
             get => this.u16;
             set => this.u16 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Elem)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Elem)clone).u01 = context.Clone(this.u01)!;
+            ((Elem)clone).u02 = context.Clone(this.u02)!;
+            ((Elem)clone).u03 = context.Clone(this.u03)!;
+            ((Elem)clone).u04 = context.Clone(this.u04)!;
+            ((Elem)clone).u05 = context.Clone(this.u05)!;
+            ((Elem)clone).u06 = context.Clone(this.u06)!;
+            ((Elem)clone).u07 = context.Clone(this.u07)!;
+            ((Elem)clone).u08 = context.Clone(this.u08)!;
+            ((Elem)clone).u09 = context.Clone(this.u09)!;
+            ((Elem)clone).u10 = context.Clone(this.u10)!;
+            ((Elem)clone).u11 = context.Clone(this.u11)!;
+            ((Elem)clone).u12 = context.Clone(this.u12)!;
+            ((Elem)clone).u13 = context.Clone(this.u13)!;
+            ((Elem)clone).u14 = context.Clone(this.u14)!;
+            ((Elem)clone).u15 = context.Clone(this.u15)!;
+            ((Elem)clone).u16 = context.Clone(this.u16)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

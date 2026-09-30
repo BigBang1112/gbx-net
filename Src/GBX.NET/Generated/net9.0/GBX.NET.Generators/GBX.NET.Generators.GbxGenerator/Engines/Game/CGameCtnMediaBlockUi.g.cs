@@ -60,6 +60,14 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockUi)clone).userInterface = context.Clone(this.userInterface)!;
+        ((CGameCtnMediaBlockUi)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockUi)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockUi()
     {
     }
@@ -81,6 +89,11 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     {
         public override uint Id => 0x0307D000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockUi n, GbxReaderWriter rw)
         {
             rw.NodeRef<CControlContainer>(ref n.userInterface);
@@ -93,6 +106,11 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     public partial class Chunk0307D001 : Chunk<CGameCtnMediaBlockUi>
     {
         public override uint Id => 0x0307D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockUi n, GbxReaderWriter rw)
         {

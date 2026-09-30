@@ -57,6 +57,14 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
         set => this.isMergeable = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugTrigger_SSpecial)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((NPlugTrigger_SSpecial)clone).isMergeable = context.Clone(this.isMergeable)!;
+        ((NPlugTrigger_SSpecial)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugTrigger_SSpecial()
     {
     }

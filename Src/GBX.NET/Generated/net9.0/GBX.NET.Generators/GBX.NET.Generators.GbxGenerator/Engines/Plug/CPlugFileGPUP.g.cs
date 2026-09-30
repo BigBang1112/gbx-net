@@ -34,6 +34,11 @@ public abstract partial class CPlugFileGPUP : CPlugFileGPU, IClass
     [Hexadecimal]
     public static new uint Id => 0x09076000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFileGPUP()
     {
     }

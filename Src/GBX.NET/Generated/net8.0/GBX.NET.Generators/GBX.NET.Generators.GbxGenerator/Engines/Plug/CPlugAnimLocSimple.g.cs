@@ -98,6 +98,19 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
         set => this.rotAngle = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugAnimLocSimple)clone).rotPeriod = context.Clone(this.rotPeriod)!;
+        ((CPlugAnimLocSimple)clone).transPeriod = context.Clone(this.transPeriod)!;
+        ((CPlugAnimLocSimple)clone).transY = context.Clone(this.transY)!;
+        ((CPlugAnimLocSimple)clone).axis = context.Clone(this.axis)!;
+        ((CPlugAnimLocSimple)clone).rotPeriodMax = context.Clone(this.rotPeriodMax)!;
+        ((CPlugAnimLocSimple)clone).transPeriodMax = context.Clone(this.transPeriodMax)!;
+        ((CPlugAnimLocSimple)clone).rotFunc = context.Clone(this.rotFunc)!;
+        ((CPlugAnimLocSimple)clone).rotAngle = context.Clone(this.rotAngle)!;
+    }
+
     public CPlugAnimLocSimple()
     {
     }
@@ -108,6 +121,13 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
         public override uint Id => 0x090F8000;
         public int U01;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F8000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F8000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugAnimLocSimple n, GbxReaderWriter rw)
         {

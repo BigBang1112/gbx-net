@@ -66,6 +66,15 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         set => this.samples = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneVehicleCarMarksSamples)clone).stops = context.CloneArray(this.stops)!;
+        ((CSceneVehicleCarMarksSamples)clone).name = context.Clone(this.name)!;
+        ((CSceneVehicleCarMarksSamples)clone).disabled = context.Clone(this.disabled)!;
+        ((CSceneVehicleCarMarksSamples)clone).samples = context.CloneArray(this.samples)!;
+    }
+
     public CSceneVehicleCarMarksSamples()
     {
     }
@@ -74,6 +83,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     public partial class Chunk0A083002 : Chunk<CSceneVehicleCarMarksSamples>
     {
         public override uint Id => 0x0A083002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneVehicleCarMarksSamples n, GbxReaderWriter rw)
         {
@@ -86,6 +100,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     {
         public override uint Id => 0x0A083003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CSceneVehicleCarMarksSamples n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
@@ -96,6 +115,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     public partial class Chunk0A083004 : Chunk<CSceneVehicleCarMarksSamples>
     {
         public override uint Id => 0x0A083004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneVehicleCarMarksSamples n, GbxReaderWriter rw)
         {
@@ -108,6 +132,12 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     {
         public override uint Id => 0x0A083006;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A083006)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CSceneVehicleCarMarksSamples n, GbxReaderWriter rw)
         {
@@ -122,7 +152,7 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         }
     }
 
-    public partial class Sample : IReadableWritable, IReadable, IWritable
+    public partial class Sample : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -192,6 +222,28 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         {
             get => this.u10;
             set => this.u10 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Sample)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Sample)clone).u01 = context.Clone(this.u01)!;
+            ((Sample)clone).u02 = context.Clone(this.u02)!;
+            ((Sample)clone).u03 = context.Clone(this.u03)!;
+            ((Sample)clone).u04 = context.Clone(this.u04)!;
+            ((Sample)clone).u05 = context.Clone(this.u05)!;
+            ((Sample)clone).u06 = context.Clone(this.u06)!;
+            ((Sample)clone).u07 = context.Clone(this.u07)!;
+            ((Sample)clone).u08 = context.Clone(this.u08)!;
+            ((Sample)clone).u09 = context.Clone(this.u09)!;
+            ((Sample)clone).u10 = context.Clone(this.u10)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

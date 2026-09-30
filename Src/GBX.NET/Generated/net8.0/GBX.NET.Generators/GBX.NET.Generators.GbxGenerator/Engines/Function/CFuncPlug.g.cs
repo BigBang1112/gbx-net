@@ -81,6 +81,16 @@ public partial class CFuncPlug : CFunc, IClass
         set => this.inputValId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncPlug)clone).period = context.Clone(this.period)!;
+        ((CFuncPlug)clone).phase = context.Clone(this.phase)!;
+        ((CFuncPlug)clone).autoCreateMotion = context.Clone(this.autoCreateMotion)!;
+        ((CFuncPlug)clone).randomizePhase = context.Clone(this.randomizePhase)!;
+        ((CFuncPlug)clone).inputValId = context.Clone(this.inputValId)!;
+    }
+
     public CFuncPlug()
     {
     }
@@ -91,6 +101,11 @@ public partial class CFuncPlug : CFunc, IClass
     {
         public override uint Id => 0x0500B003;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncPlug n, GbxReaderWriter rw)
         {
@@ -105,6 +120,11 @@ public partial class CFuncPlug : CFunc, IClass
     {
         public override uint Id => 0x0500B004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CFuncPlug n, GbxReaderWriter rw)
         {
             rw.Single(ref n.period);
@@ -118,6 +138,11 @@ public partial class CFuncPlug : CFunc, IClass
     public partial class Chunk0500B005 : Chunk<CFuncPlug>
     {
         public override uint Id => 0x0500B005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncPlug n, GbxReaderWriter rw)
         {

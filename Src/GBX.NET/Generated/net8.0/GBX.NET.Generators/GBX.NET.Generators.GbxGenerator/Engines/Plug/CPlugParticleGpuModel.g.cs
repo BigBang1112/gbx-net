@@ -51,6 +51,12 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
     public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugParticleGpuModel)clone).bitmap = context.Clone(this.bitmap)!;
+    }
+
     public CPlugParticleGpuModel()
     {
     }
@@ -69,6 +75,21 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public float U07;
         public bool U08;
         public bool U09;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C6000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C6000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C6000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C6000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C6000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C6000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C6000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C6000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C6000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C6000)clone).U09 = context.Clone(this.U09)!;
+        }
 
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
@@ -111,6 +132,17 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U03;
         public bool U04;
         public bool U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C6001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C6001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C6001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C6001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C6001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C6001)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
@@ -166,6 +198,42 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U28;
         public float U29;
         public bool U30;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C6002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C6002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C6002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C6002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C6002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C6002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C6002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C6002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C6002)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C6002)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C6002)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090C6002)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090C6002)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090C6002)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090C6002)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C6002)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C6002)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C6002)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C6002)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090C6002)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090C6002)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090C6002)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C6002)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090C6002)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090C6002)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090C6002)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090C6002)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090C6002)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090C6002)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090C6002)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090C6002)clone).U30 = context.Clone(this.U30)!;
+        }
 
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
@@ -270,6 +338,14 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public int Version { get; set; }
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C6003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C6003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C6003)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {

@@ -58,6 +58,14 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
         set => this.visibility = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockOpponentVisibility)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockOpponentVisibility)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockOpponentVisibility)clone).visibility = context.Clone(this.visibility)!;
+    }
+
     public CGameCtnMediaBlockOpponentVisibility()
     {
     }
@@ -79,6 +87,11 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     {
         public override uint Id => 0x0338B000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockOpponentVisibility n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -90,6 +103,11 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     public partial class Chunk0338B001 : Chunk<CGameCtnMediaBlockOpponentVisibility>
     {
         public override uint Id => 0x0338B001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockOpponentVisibility n, GbxReaderWriter rw)
         {

@@ -42,6 +42,12 @@ public partial class CPlugMediaClipList : CMwNod, IClass
         set => this.mediaClipFids = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugMediaClipList)clone).mediaClipFids = context.CloneArray(this.mediaClipFids)!;
+    }
+
     public CPlugMediaClipList()
     {
     }
@@ -51,6 +57,12 @@ public partial class CPlugMediaClipList : CMwNod, IClass
     {
         public override uint Id => 0x09189000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09189000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugMediaClipList n, GbxReaderWriter rw)
         {

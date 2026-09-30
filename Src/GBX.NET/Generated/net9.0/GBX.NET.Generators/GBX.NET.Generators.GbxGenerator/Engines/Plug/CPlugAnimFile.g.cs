@@ -82,6 +82,17 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.skelEditionStateVersion = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugAnimFile)clone).skelVersion = context.Clone(this.skelVersion)!;
+        ((CPlugAnimFile)clone).timingFixedPeriodVersion = context.Clone(this.timingFixedPeriodVersion)!;
+        ((CPlugAnimFile)clone).skelEditionVersion = context.Clone(this.skelEditionVersion)!;
+        ((CPlugAnimFile)clone).clipFlagsVersion = context.Clone(this.clipFlagsVersion)!;
+        ((CPlugAnimFile)clone).graphVersion = context.Clone(this.graphVersion)!;
+        ((CPlugAnimFile)clone).skelEditionStateVersion = context.Clone(this.skelEditionStateVersion)!;
+    }
+
     public CPlugAnimFile()
     {
     }
@@ -126,6 +137,47 @@ public partial class CPlugAnimFile : CMwNod, IClass
         public CPlugAnimSpotModel[]? U33;
         public string? U34;
         public string? U35;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B0003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B0003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B0003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B0003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B0003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B0003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B0003)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B0003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B0003)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B0003)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B0003)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B0003)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B0003)clone).U12 = context.CloneArray(this.U12)!;
+            ((Chunk090B0003)clone).U13 = context.CloneArray(this.U13)!;
+            ((Chunk090B0003)clone).U14 = context.CloneArray(this.U14)!;
+            ((Chunk090B0003)clone).U15 = context.CloneArray(this.U15)!;
+            ((Chunk090B0003)clone).U16 = context.CloneArray(this.U16)!;
+            ((Chunk090B0003)clone).U17 = context.CloneArray(this.U17)!;
+            ((Chunk090B0003)clone).U18 = context.CloneArray(this.U18)!;
+            ((Chunk090B0003)clone).U19 = context.CloneArray(this.U19)!;
+            ((Chunk090B0003)clone).U20 = context.CloneArray(this.U20)!;
+            ((Chunk090B0003)clone).U21 = context.CloneArray(this.U21)!;
+            ((Chunk090B0003)clone).U22 = context.CloneArray(this.U22)!;
+            ((Chunk090B0003)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090B0003)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090B0003)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090B0003)clone).U26 = context.CloneArray(this.U26)!;
+            ((Chunk090B0003)clone).U27 = context.CloneArray(this.U27)!;
+            ((Chunk090B0003)clone).U28 = context.CloneArray(this.U28)!;
+            ((Chunk090B0003)clone).U29 = context.CloneArray(this.U29)!;
+            ((Chunk090B0003)clone).U30 = context.CloneArray(this.U30)!;
+            ((Chunk090B0003)clone).U31 = context.CloneArray(this.U31)!;
+            ((Chunk090B0003)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090B0003)clone).U33 = context.CloneArray(this.U33)!;
+            ((Chunk090B0003)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090B0003)clone).U35 = context.Clone(this.U35)!;
+        }
 
         public override void ReadWrite(CPlugAnimFile n, GbxReaderWriter rw)
         {

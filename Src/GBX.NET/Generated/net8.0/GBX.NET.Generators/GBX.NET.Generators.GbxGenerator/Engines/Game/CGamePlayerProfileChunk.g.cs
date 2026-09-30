@@ -34,6 +34,18 @@ public partial class CGamePlayerProfileChunk : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0312B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk)clone).ChunkName = context.Clone(this.ChunkName)!;
+        ((CGamePlayerProfileChunk)clone).GameName = context.Clone(this.GameName)!;
+        ((CGamePlayerProfileChunk)clone).Checksum = context.Clone(this.Checksum)!;
+        ((CGamePlayerProfileChunk)clone).LastUpdatedAt = context.Clone(this.LastUpdatedAt)!;
+        ((CGamePlayerProfileChunk)clone).ArchiveVersion = context.Clone(this.ArchiveVersion)!;
+        ((CGamePlayerProfileChunk)clone).SkipArchiveVersion = context.Clone(this.SkipArchiveVersion)!;
+        ((CGamePlayerProfileChunk)clone).CreatedAt = context.Clone(this.CreatedAt)!;
+    }
+
     public CGamePlayerProfileChunk()
     {
     }

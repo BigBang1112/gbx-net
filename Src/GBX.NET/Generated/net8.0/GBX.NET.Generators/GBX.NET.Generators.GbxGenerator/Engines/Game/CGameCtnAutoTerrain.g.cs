@@ -50,6 +50,13 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
         set => this.genealogy = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnAutoTerrain)clone).offset = context.Clone(this.offset)!;
+        ((CGameCtnAutoTerrain)clone).genealogy = context.Clone(this.genealogy)!;
+    }
+
     public CGameCtnAutoTerrain()
     {
     }
@@ -60,6 +67,11 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     {
         public override uint Id => 0x03120001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnAutoTerrain n, GbxReaderWriter rw)
         {

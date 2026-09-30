@@ -50,6 +50,13 @@ public partial class CScene2d : CScene, IClass
         set => this.sector = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CScene2d)clone).overlay = context.Clone(this.overlay)!;
+        ((CScene2d)clone).sector = context.Clone(this.sector)!;
+    }
+
     public CScene2d()
     {
     }
@@ -58,6 +65,11 @@ public partial class CScene2d : CScene, IClass
     public partial class Chunk0A002000 : Chunk<CScene2d>
     {
         public override uint Id => 0x0A002000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CScene2d n, GbxReaderWriter rw)
         {
@@ -71,6 +83,11 @@ public partial class CScene2d : CScene, IClass
     {
         public override uint Id => 0x0A002003;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

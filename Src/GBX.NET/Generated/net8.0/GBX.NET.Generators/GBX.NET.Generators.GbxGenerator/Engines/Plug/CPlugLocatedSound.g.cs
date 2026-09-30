@@ -59,6 +59,13 @@ public partial class CPlugLocatedSound : CMwNod, IClass
         set => this.loc = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugLocatedSound)clone).sound = context.Clone(this.sound)!;
+        ((CPlugLocatedSound)clone).loc = context.Clone(this.loc)!;
+    }
+
     public CPlugLocatedSound()
     {
     }
@@ -67,6 +74,11 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     public partial class Chunk09061000 : Chunk<CPlugLocatedSound>
     {
         public override uint Id => 0x09061000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugLocatedSound n, GbxReaderWriter rw)
         {

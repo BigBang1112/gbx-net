@@ -151,7 +151,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         }
     }
 
-    public partial class Key
+    public partial class Key : IDeepCloneable
     {
         private readonly CGameCtnMediaBlockTriangles node;
 
@@ -181,6 +181,14 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         {
             this.node = node;
             positions = new Vec3[node.vertices.Length];
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = new Key(context.Clone(node)!) { Time = Time };
+            context.Register(this, clone);
+            clone.positions = context.CloneArray(positions)!;
+            return clone;
         }
     }
 }

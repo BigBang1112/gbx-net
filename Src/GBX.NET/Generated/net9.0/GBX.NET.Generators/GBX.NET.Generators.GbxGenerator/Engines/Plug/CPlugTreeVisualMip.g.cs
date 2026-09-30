@@ -34,6 +34,12 @@ public partial class CPlugTreeVisualMip : CPlugTree, IClass
     [Hexadecimal]
     public static new uint Id => 0x09015000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTreeVisualMip)clone).levels = context.CloneList(this.levels)!;
+    }
+
     public CPlugTreeVisualMip()
     {
     }
@@ -44,6 +50,11 @@ public partial class CPlugTreeVisualMip : CPlugTree, IClass
     {
         public override uint Id => 0x09015002;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

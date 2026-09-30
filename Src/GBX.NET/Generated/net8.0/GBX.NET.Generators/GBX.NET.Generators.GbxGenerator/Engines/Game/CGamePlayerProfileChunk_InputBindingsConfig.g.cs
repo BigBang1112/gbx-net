@@ -34,6 +34,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     [Hexadecimal]
     public static new uint Id => 0x0312F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_InputBindingsConfig)clone).config = context.Clone(this.config)!;
+    }
+
     public CGamePlayerProfileChunk_InputBindingsConfig()
     {
     }
@@ -43,6 +49,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     {
         public override uint Id => 0x0312F000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0312F000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePlayerProfileChunk_InputBindingsConfig n, GbxReaderWriter rw)
         {

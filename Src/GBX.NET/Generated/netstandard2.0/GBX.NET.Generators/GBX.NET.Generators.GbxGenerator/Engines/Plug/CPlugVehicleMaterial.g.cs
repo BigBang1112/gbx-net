@@ -155,6 +155,23 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
     public CPlugFlockModel? GetTrailManagerModel(GbxReadSettings settings = default, bool exceptions = false) => trailManagerModelFile?.GetNode(ref trailManagerModel, settings, exceptions) ?? trailManagerModel;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehicleMaterial)clone).materialId = context.Clone(this.materialId)!;
+        ((CPlugVehicleMaterial)clone).trailIsOnlyWhenSliding = context.Clone(this.trailIsOnlyWhenSliding)!;
+        ((CPlugVehicleMaterial)clone).trailShader = context.Clone(this.trailShader)!;
+        ((CPlugVehicleMaterial)clone).vibrationSpeedCoef = context.Clone(this.vibrationSpeedCoef)!;
+        ((CPlugVehicleMaterial)clone).vibrationMax = context.Clone(this.vibrationMax)!;
+        ((CPlugVehicleMaterial)clone).materialHeightDetailBitmap = context.Clone(this.materialHeightDetailBitmap)!;
+        ((CPlugVehicleMaterial)clone).materialHeightDetailScale = context.Clone(this.materialHeightDetailScale)!;
+        ((CPlugVehicleMaterial)clone).speed = context.Clone(this.speed)!;
+        ((CPlugVehicleMaterial)clone).grip = context.Clone(this.grip)!;
+        ((CPlugVehicleMaterial)clone).accelerationCoef = context.Clone(this.accelerationCoef)!;
+        ((CPlugVehicleMaterial)clone).brakeCoef = context.Clone(this.brakeCoef)!;
+        ((CPlugVehicleMaterial)clone).trailManagerModel = context.Clone(this.trailManagerModel)!;
+    }
+
     public CPlugVehicleMaterial()
     {
     }
@@ -163,6 +180,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     public partial class Chunk090F1001 : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F1001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -179,6 +201,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     {
         public override uint Id => 0x090F1004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugBitmap>(ref n.materialHeightDetailBitmap, ref n.materialHeightDetailBitmapFile);
@@ -190,6 +217,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     public partial class Chunk090F1005 : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F1005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -204,6 +236,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     public partial class Chunk090F1006 : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F1006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -226,6 +263,16 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public CPlugParticleEmitterModel? U05;
         public Components.GbxRefTableFile? U05File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F1009)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F1009)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F1009)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F1009)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090F1009)clone).U05 = context.Clone(this.U05)!;
+        }
+
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.Byte(ref n.materialId);
@@ -247,6 +294,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public CPlugParticleEmitterModel? U01;
         public Components.GbxRefTableFile? U01File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F100A)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugParticleEmitterModel>(ref U01, ref U01File);
@@ -259,6 +312,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100B;
         public CPlugParticleEmitterModel? U01;
         public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F100B)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -273,6 +332,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public CPlugParticleEmitterModel? U01;
         public Components.GbxRefTableFile? U01File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F100C)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugParticleEmitterModel>(ref U01, ref U01File);
@@ -286,6 +351,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public CPlugParticleEmitterModel? U01;
         public Components.GbxRefTableFile? U01File;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F100D)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugParticleEmitterModel>(ref U01, ref U01File);
@@ -296,6 +367,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     public partial class Chunk090F100E : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F100E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -311,6 +387,13 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100F;
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F100F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F100F)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -356,6 +439,44 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public float U30;
         public Keys? U31;
         public int U32;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F1010)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F1010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F1010)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F1010)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F1010)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090F1010)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090F1010)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090F1010)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090F1010)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090F1010)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090F1010)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090F1010)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090F1010)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090F1010)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090F1010)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090F1010)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090F1010)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090F1010)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090F1010)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090F1010)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090F1010)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090F1010)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090F1010)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090F1010)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090F1010)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090F1010)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090F1010)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090F1010)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090F1010)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090F1010)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090F1010)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090F1010)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090F1010)clone).U32 = context.Clone(this.U32)!;
+        }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
@@ -455,8 +576,27 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
-    public partial class Keys : IReadableWritable, IReadable, IWritable
+    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Keys)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Keys)clone).u01 = context.Clone(this.u01)!;
+            ((Keys)clone).u02 = context.Clone(this.u02)!;
+            ((Keys)clone).count = context.Clone(this.count)!;
+            ((Keys)clone).u03 = context.Clone(this.u03)!;
+            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
+            ((Keys)clone).u05 = context.Clone(this.u05)!;
+            ((Keys)clone).u06 = context.Clone(this.u06)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

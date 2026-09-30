@@ -43,6 +43,12 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockCameraSimple)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockCameraSimple()
     {
     }
@@ -53,6 +59,11 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     public partial class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraSimple>
     {
         public override uint Id => 0x030A1000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraSimple n, GbxReaderWriter rw)
         {
@@ -65,6 +76,12 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     {
         public override uint Id => 0x030A1001;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A1001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraSimple n, GbxReaderWriter rw)
         {
@@ -81,6 +98,15 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         public int U02;
         public bool U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A1002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk030A1002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk030A1002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk030A1002)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraSimple n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -95,7 +121,7 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -137,6 +163,24 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).u04 = context.Clone(this.u04)!;
+            ((Key)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

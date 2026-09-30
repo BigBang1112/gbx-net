@@ -58,6 +58,14 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         set => this.dataTape = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockBulletFx)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockBulletFx)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockBulletFx)clone).dataTape = context.Clone(this.dataTape)!;
+    }
+
     public CGameCtnMediaBlockBulletFx()
     {
     }
@@ -78,6 +86,11 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
     public partial class Chunk03169000 : Chunk<CGameCtnMediaBlockBulletFx>
     {
         public override uint Id => 0x03169000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockBulletFx n, GbxReaderWriter rw)
         {

@@ -37,6 +37,11 @@ public abstract partial class CGameCtnMediaBlockFx : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x0307E000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnMediaBlockFx()
     {
     }

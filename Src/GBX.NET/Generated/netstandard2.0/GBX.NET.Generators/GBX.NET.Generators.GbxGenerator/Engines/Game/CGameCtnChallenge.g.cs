@@ -475,6 +475,104 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.palette = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnChallenge)clone).needUnlock = context.Clone(this.needUnlock)!;
+        ((CGameCtnChallenge)clone).cost = context.Clone(this.cost)!;
+        ((CGameCtnChallenge)clone).isLapRace = context.Clone(this.isLapRace)!;
+        ((CGameCtnChallenge)clone).mode = context.Clone(this.mode)!;
+        ((CGameCtnChallenge)clone).hasClones = context.Clone(this.hasClones)!;
+        ((CGameCtnChallenge)clone).editor = context.Clone(this.editor)!;
+        ((CGameCtnChallenge)clone).nbCheckpoints = context.Clone(this.nbCheckpoints)!;
+        ((CGameCtnChallenge)clone).nbLaps = context.Clone(this.nbLaps)!;
+        ((CGameCtnChallenge)clone).kindInHeader = context.Clone(this.kindInHeader)!;
+        ((CGameCtnChallenge)clone).password = context.Clone(this.password)!;
+        ((CGameCtnChallenge)clone).mapCoordOrigin = context.Clone(this.mapCoordOrigin)!;
+        ((CGameCtnChallenge)clone).mapCoordTarget = context.Clone(this.mapCoordTarget)!;
+        ((CGameCtnChallenge)clone).packMask = context.Clone(this.packMask)!;
+        ((CGameCtnChallenge)clone).lightmapCacheUid = context.Clone(this.lightmapCacheUid)!;
+        ((CGameCtnChallenge)clone).titleId = context.Clone(this.titleId)!;
+        ((CGameCtnChallenge)clone).xml = context.Clone(this.xml)!;
+        ((CGameCtnChallenge)clone).authorVersion = context.Clone(this.authorVersion)!;
+        ((CGameCtnChallenge)clone).authorZone = context.Clone(this.authorZone)!;
+        ((CGameCtnChallenge)clone).authorExtraInfo = context.Clone(this.authorExtraInfo)!;
+        ((CGameCtnChallenge)clone).playerModel = context.Clone(this.playerModel)!;
+        ((CGameCtnChallenge)clone).blockStock = context.Clone(this.blockStock)!;
+        ((CGameCtnChallenge)clone).challengeParameters = context.Clone(this.challengeParameters)!;
+        ((CGameCtnChallenge)clone).kind = context.Clone(this.kind)!;
+        ((CGameCtnChallenge)clone).checkpoints = context.CloneList(this.checkpoints)!;
+        ((CGameCtnChallenge)clone).modPackDesc = context.Clone(this.modPackDesc)!;
+        ((CGameCtnChallenge)clone).clipIntro = context.Clone(this.clipIntro)!;
+        ((CGameCtnChallenge)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
+        ((CGameCtnChallenge)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
+        ((CGameCtnChallenge)clone).customMusicPackDesc = context.Clone(this.customMusicPackDesc)!;
+        ((CGameCtnChallenge)clone).clipGlobal = context.Clone(this.clipGlobal)!;
+        ((CGameCtnChallenge)clone).thumbnailRotationMatrix = context.Clone(this.thumbnailRotationMatrix)!;
+        ((CGameCtnChallenge)clone).crc32 = context.Clone(this.crc32)!;
+        ((CGameCtnChallenge)clone).challengeDecals = context.CloneArray(this.challengeDecals)!;
+        ((CGameCtnChallenge)clone).challengeCardEventIds = context.CloneArray(this.challengeCardEventIds)!;
+        ((CGameCtnChallenge)clone).carMarksBuffer = context.CloneArray(this.carMarksBuffer)!;
+        ((CGameCtnChallenge)clone).clipPodium = context.Clone(this.clipPodium)!;
+        ((CGameCtnChallenge)clone).clipAmbiance = context.Clone(this.clipAmbiance)!;
+        ((CGameCtnChallenge)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
+        ((CGameCtnChallenge)clone).objectiveTextAuthor = context.Clone(this.objectiveTextAuthor)!;
+        ((CGameCtnChallenge)clone).objectiveTextGold = context.Clone(this.objectiveTextGold)!;
+        ((CGameCtnChallenge)clone).objectiveTextSilver = context.Clone(this.objectiveTextSilver)!;
+        ((CGameCtnChallenge)clone).objectiveTextBronze = context.Clone(this.objectiveTextBronze)!;
+        ((CGameCtnChallenge)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
+        ((CGameCtnChallenge)clone).offzones = context.CloneList(this.offzones)!;
+        ((CGameCtnChallenge)clone).buildVersion = context.Clone(this.buildVersion)!;
+        ((CGameCtnChallenge)clone).decoBaseHeightOffset = context.Clone(this.decoBaseHeightOffset)!;
+        ((CGameCtnChallenge)clone).botPaths = context.CloneList(this.botPaths)!;
+        ((CGameCtnChallenge)clone).dayTime = context.Clone(this.dayTime)!;
+        ((CGameCtnChallenge)clone).dynamicDaylight = context.Clone(this.dynamicDaylight)!;
+        ((CGameCtnChallenge)clone).dayDuration = context.Clone(this.dayDuration)!;
+        ((CGameCtnChallenge)clone).worldDistortion = context.Clone(this.worldDistortion)!;
+        ((CGameCtnChallenge)clone).palette = context.Clone(this.palette)!;
+        ((CGameCtnChallenge)clone).authorLogin = context.Clone(this.authorLogin)!;
+        ((CGameCtnChallenge)clone).bronzeTime = context.Clone(this.bronzeTime)!;
+        ((CGameCtnChallenge)clone).silverTime = context.Clone(this.silverTime)!;
+        ((CGameCtnChallenge)clone).goldTime = context.Clone(this.goldTime)!;
+        ((CGameCtnChallenge)clone).authorTime = context.Clone(this.authorTime)!;
+        ((CGameCtnChallenge)clone).authorScore = context.Clone(this.authorScore)!;
+        ((CGameCtnChallenge)clone).mapType = context.Clone(this.mapType)!;
+        ((CGameCtnChallenge)clone).mapStyle = context.Clone(this.mapStyle)!;
+        ((CGameCtnChallenge)clone).mapInfo = context.Clone(this.mapInfo)!;
+        ((CGameCtnChallenge)clone).mapName = context.Clone(this.mapName)!;
+        ((CGameCtnChallenge)clone).size = context.Clone(this.size)!;
+        ((CGameCtnChallenge)clone).authorNickname = context.Clone(this.authorNickname)!;
+        ((CGameCtnChallenge)clone).thumbnail = context.CloneArray(this.thumbnail)!;
+        ((CGameCtnChallenge)clone).decoration = context.Clone(this.decoration)!;
+        ((CGameCtnChallenge)clone).blocks = context.CloneList(this.blocks)!;
+        ((CGameCtnChallenge)clone).hashedPassword = context.Clone(this.hashedPassword)!;
+        ((CGameCtnChallenge)clone).hasLightmaps = context.Clone(this.hasLightmaps)!;
+        ((CGameCtnChallenge)clone).lightmapCache = context.Clone(this.lightmapCache)!;
+        ((CGameCtnChallenge)clone).lightmapFrames = context.CloneArray(this.lightmapFrames)!;
+        ((CGameCtnChallenge)clone).lightmapCacheSmall = context.Clone(this.lightmapCacheSmall)!;
+        ((CGameCtnChallenge)clone).anchoredObjects = context.CloneList(this.anchoredObjects)!;
+        ((CGameCtnChallenge)clone).zoneGenealogy = context.CloneList(this.zoneGenealogy)!;
+        ((CGameCtnChallenge)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
+        ((CGameCtnChallenge)clone).bakedBlocks = context.CloneList(this.bakedBlocks)!;
+        ((CGameCtnChallenge)clone).hasCustomCamThumbnail = context.Clone(this.hasCustomCamThumbnail)!;
+        ((CGameCtnChallenge)clone).thumbnailPosition = context.Clone(this.thumbnailPosition)!;
+        ((CGameCtnChallenge)clone).thumbnailFov = context.Clone(this.thumbnailFov)!;
+        ((CGameCtnChallenge)clone).thumbnailNearClipPlane = context.Clone(this.thumbnailNearClipPlane)!;
+        ((CGameCtnChallenge)clone).thumbnailFarClipPlane = context.Clone(this.thumbnailFarClipPlane)!;
+        ((CGameCtnChallenge)clone).comments = context.Clone(this.comments)!;
+        ((CGameCtnChallenge)clone).thumbnailPitchYawRoll = context.Clone(this.thumbnailPitchYawRoll)!;
+        ((CGameCtnChallenge)clone).tempOldTMUnlimiterClipData = context.CloneDictionary(this.tempOldTMUnlimiterClipData)!;
+        ((CGameCtnChallenge)clone).LightmapVersion = context.Clone(this.LightmapVersion)!;
+        ((CGameCtnChallenge)clone).LightmapCacheData = context.Clone(this.LightmapCacheData)!;
+        ((CGameCtnChallenge)clone).ZoneGenealogyData = context.Clone(this.ZoneGenealogyData)!;
+        ((CGameCtnChallenge)clone).BakedClipsAdditionalData = context.CloneList(this.BakedClipsAdditionalData)!;
+        ((CGameCtnChallenge)clone).EmbeddedZipData = context.CloneArray(this.EmbeddedZipData)!;
+        ((CGameCtnChallenge)clone).Textures = context.CloneList(this.Textures)!;
+        ((CGameCtnChallenge)clone).MacroblockInstances = context.CloneList(this.MacroblockInstances)!;
+        ((CGameCtnChallenge)clone).ExpectedEmbeddedItemModels = context.Clone(this.ExpectedEmbeddedItemModels)!;
+        ((CGameCtnChallenge)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
+    }
+
     public CGameCtnChallenge()
     {
     }
@@ -491,6 +589,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public int Version { get; set; }
         public byte U02;
         public int U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk03043002)clone).Version = context.Clone(this.Version)!;
+            ((HeaderChunk03043002)clone).U02 = context.Clone(this.U02)!;
+            ((HeaderChunk03043002)clone).U05 = context.Clone(this.U05)!;
+        }
     }
 
     /// <summary>
@@ -505,6 +611,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public int Version { get; set; }
         public uint U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk03043003)clone).Version = context.Clone(this.Version)!;
+            ((HeaderChunk03043003)clone).U01 = context.Clone(this.U01)!;
+            ((HeaderChunk03043003)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -578,6 +692,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk03043004)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -594,6 +714,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043005;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.String(ref n.xml);
@@ -609,6 +734,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043007;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk03043007)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -621,6 +752,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043008;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk03043008)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -643,6 +780,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304300D;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Ident(ref n.playerModel);
@@ -658,6 +800,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304300F;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -679,6 +826,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043011;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.NodeRef<CGameCtnCollectorList>(ref n.blockStock);
@@ -697,6 +849,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043012;
         public override GameVersion GameVersion => GameVersion.TM10;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.String(ref n.mapName);
@@ -713,6 +870,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043013;
         public override GameVersion GameVersion => GameVersion.TMPU;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043013)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
@@ -746,6 +909,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043014)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -760,6 +929,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043016;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043016)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -777,6 +952,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043017;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.List<Int3>(ref n.checkpoints!);
@@ -792,6 +972,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043018;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -810,6 +995,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043019;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.PackDesc(ref n.modPackDesc);
@@ -821,6 +1011,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301A;
         public CMwNod? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304301A)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -836,6 +1032,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301B;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304301B)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -858,6 +1060,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304301C;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.EnumInt32<PlayMode>(ref n.mode);
@@ -870,6 +1077,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304301D;
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304301D)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwNod>(ref U01);
@@ -881,6 +1094,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301E;
         public CMwNod? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304301E)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -897,6 +1116,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301F;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304301F)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -908,6 +1133,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043020;
         public CGameCtnMediaClip? U01;
         public CGameCtnMediaClip? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043020)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043020)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -929,6 +1161,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043021;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
@@ -945,6 +1182,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01 = 1;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043022)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -958,6 +1201,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043023 : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x03043023;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -976,6 +1224,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043024;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.PackDesc(ref n.customMusicPackDesc);
@@ -991,6 +1244,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043025;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1009,6 +1267,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043026;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipGlobal);
@@ -1023,6 +1286,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043027;
         public byte U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043027)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1052,6 +1321,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043028;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -1068,6 +1342,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043029;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1086,6 +1365,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304302A;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             n.CreatedWithSimpleEditor = rw.Boolean(n.CreatedWithSimpleEditor);
@@ -1101,6 +1385,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304302D;
         public float U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304302D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304302D)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1125,6 +1416,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043034;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Data(ref n.challengeDecals);
@@ -1140,6 +1436,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043036;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1152,6 +1453,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043038;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<SChallengeCardEventIds>(ref n.challengeCardEventIds!);
@@ -1163,6 +1469,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304303A;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1174,6 +1485,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304303D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1186,6 +1502,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304303E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304303E)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1209,6 +1531,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043040;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043040)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk03043040)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x03043041)]
@@ -1216,6 +1545,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043041;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1228,6 +1562,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043042;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043042)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1249,6 +1589,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043043;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1260,6 +1605,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043044;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1278,6 +1628,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043047)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043047)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1300,6 +1657,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043048;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043048)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043048)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043048)clone).BlocksVersion = context.Clone(this.BlocksVersion)!;
+        }
     }
 
     /// <summary>
@@ -1312,6 +1677,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043049;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 2;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043049)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1343,6 +1714,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304304B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.String(ref n.objectiveTextAuthor);
@@ -1359,6 +1735,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304304D;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0304304E)]
@@ -1366,6 +1747,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304304E;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0304304F)]
@@ -1374,6 +1760,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304304F;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304304F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0304304F)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0304304F)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1386,6 +1780,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043050;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043050)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1406,6 +1806,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043051)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1425,6 +1831,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043052)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1443,6 +1855,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043053)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1459,6 +1877,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043054;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043054)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x03043055)]
@@ -1467,6 +1891,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043055;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043055)clone).TMUnlimiterChunk = context.Clone(this.TMUnlimiterChunk)!;
+        }
     }
 
     /// <summary>
@@ -1481,6 +1911,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public int Version { get; set; } = 3;
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043056)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043056)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043056)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1500,6 +1938,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043057;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1513,6 +1956,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043058)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043058)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1540,6 +1990,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public bool U02;
         public int U03;
         public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043059)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043059)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043059)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03043059)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03043059)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1578,6 +2038,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public int U01;
         public int U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304305A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304305A)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -1594,6 +2061,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304305B;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304305B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304305B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0304305B)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x0304305C)]
@@ -1603,6 +2078,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304305C;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0304305D)]
@@ -1612,6 +2092,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304305D;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0304305E)]
@@ -1621,6 +2106,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304305E;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1632,6 +2122,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304305F;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304305F)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x03043060)]
@@ -1642,6 +2138,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043060)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043060)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1657,6 +2160,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043061;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1668,6 +2176,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043062;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043062)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1679,6 +2193,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043063;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043063)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1691,6 +2211,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043064;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1702,6 +2227,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043065;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043065)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1714,6 +2245,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043067;
         public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     /// <summary>
@@ -1725,6 +2261,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043068;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043068)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1736,6 +2278,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043069;
         public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03043069)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -1749,6 +2297,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304306B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304306B)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
@@ -1771,6 +2326,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304306C)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -1784,6 +2345,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x3F001000;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk3F001000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk3F001000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x3F001001)]
@@ -1792,6 +2360,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x3F001001;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk3F001001)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x3F001002)]
@@ -1800,6 +2374,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x3F001002;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x3F001003)]
@@ -1808,9 +2387,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x3F001003;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class BotPath : IReadableWritable, IReadable, IWritable
+    public partial class BotPath : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int clan;
         public int Clan
@@ -1847,6 +2431,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.isAutonomous = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BotPath)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BotPath)clone).clan = context.Clone(this.clan)!;
+            ((BotPath)clone).path = context.CloneList(this.path)!;
+            ((BotPath)clone).isFlying = context.Clone(this.isFlying)!;
+            ((BotPath)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
+            ((BotPath)clone).isAutonomous = context.Clone(this.isAutonomous)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.clan);
@@ -1869,7 +2470,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
-    public partial class SBakedClipsAdditionalData : IReadable, IWritable
+    public partial class SBakedClipsAdditionalData : IReadable, IWritable, IDeepCloneable
     {
         private Ident? clip1;
         public Ident? Clip1
@@ -1906,6 +2507,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.coord = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SBakedClipsAdditionalData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SBakedClipsAdditionalData)clone).clip1 = context.Clone(this.clip1)!;
+            ((SBakedClipsAdditionalData)clone).clip2 = context.Clone(this.clip2)!;
+            ((SBakedClipsAdditionalData)clone).clip3 = context.Clone(this.clip3)!;
+            ((SBakedClipsAdditionalData)clone).clip4 = context.Clone(this.clip4)!;
+            ((SBakedClipsAdditionalData)clone).coord = context.Clone(this.coord)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.clip1 = r.ReadIdent();
@@ -1925,7 +2543,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
-    public partial class SChallengeCardEventIds : IReadableWritable, IReadable, IWritable
+    public partial class SChallengeCardEventIds : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1946,6 +2564,21 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             get => this.u03;
             set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SChallengeCardEventIds)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SChallengeCardEventIds)clone).u01 = context.Clone(this.u01)!;
+            ((SChallengeCardEventIds)clone).u02 = context.Clone(this.u02)!;
+            ((SChallengeCardEventIds)clone).u03 = context.CloneArray(this.u03)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

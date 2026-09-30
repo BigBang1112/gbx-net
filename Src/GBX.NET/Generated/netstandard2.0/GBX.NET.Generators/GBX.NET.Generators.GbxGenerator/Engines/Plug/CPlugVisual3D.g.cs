@@ -34,6 +34,14 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     [Hexadecimal]
     public static new uint Id => 0x0902C000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisual3D)clone).Vertices = context.CloneArray(this.Vertices)!;
+        ((CPlugVisual3D)clone).Tangents = context.CloneArray(this.Tangents)!;
+        ((CPlugVisual3D)clone).BiTangents = context.CloneArray(this.BiTangents)!;
+    }
+
     public CPlugVisual3D()
     {
     }
@@ -45,6 +53,12 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
         public override uint Id => 0x0902C002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public CMwNod? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0902C002)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
         {
@@ -58,6 +72,11 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     {
         public override uint Id => 0x0902C003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0902C004)]
@@ -66,6 +85,15 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     {
         public override uint Id => 0x0902C004;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0902C004)clone).Tangents1Count = context.Clone(this.Tangents1Count)!;
+            ((Chunk0902C004)clone).Tangents1 = context.CloneArray(this.Tangents1)!;
+            ((Chunk0902C004)clone).Tangents2Count = context.Clone(this.Tangents2Count)!;
+            ((Chunk0902C004)clone).Tangents2 = context.CloneArray(this.Tangents2)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

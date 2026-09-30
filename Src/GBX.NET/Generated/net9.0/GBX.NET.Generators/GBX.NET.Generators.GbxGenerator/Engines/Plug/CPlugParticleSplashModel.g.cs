@@ -34,6 +34,11 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B5000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugParticleSplashModel()
     {
     }
@@ -72,6 +77,41 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
         public float U27;
         public float U28;
         public float U29;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090B5000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B5000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B5000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090B5000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090B5000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B5000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B5000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B5000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090B5000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090B5000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B5000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B5000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090B5000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090B5000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090B5000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090B5000)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090B5000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B5000)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090B5000)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090B5000)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090B5000)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090B5000)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090B5000)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090B5000)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090B5000)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090B5000)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090B5000)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090B5000)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090B5000)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090B5000)clone).U29 = context.Clone(this.U29)!;
+        }
 
         public override void ReadWrite(CPlugParticleSplashModel n, GbxReaderWriter rw)
         {

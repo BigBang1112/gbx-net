@@ -122,6 +122,22 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
         set => this.segmentCastLength = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameControlCameraTrackManiaRace)clone).coneAperture = context.Clone(this.coneAperture)!;
+        ((CGameControlCameraTrackManiaRace)clone).coneMinSpeed = context.Clone(this.coneMinSpeed)!;
+        ((CGameControlCameraTrackManiaRace)clone).coneMaxSpeed = context.Clone(this.coneMaxSpeed)!;
+        ((CGameControlCameraTrackManiaRace)clone).useSpeedDir = context.Clone(this.useSpeedDir)!;
+        ((CGameControlCameraTrackManiaRace)clone).carCameraHeight = context.Clone(this.carCameraHeight)!;
+        ((CGameControlCameraTrackManiaRace)clone).carCameraDistance = context.Clone(this.carCameraDistance)!;
+        ((CGameControlCameraTrackManiaRace)clone).carCameraTargetDistance = context.Clone(this.carCameraTargetDistance)!;
+        ((CGameControlCameraTrackManiaRace)clone).carCameraAlign = context.Clone(this.carCameraAlign)!;
+        ((CGameControlCameraTrackManiaRace)clone).isSegmentCast = context.Clone(this.isSegmentCast)!;
+        ((CGameControlCameraTrackManiaRace)clone).segmentCastMinDist = context.Clone(this.segmentCastMinDist)!;
+        ((CGameControlCameraTrackManiaRace)clone).segmentCastLength = context.Clone(this.segmentCastLength)!;
+    }
+
     public CGameControlCameraTrackManiaRace()
     {
     }
@@ -133,6 +149,14 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
         public float U01;
         public float U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk24085000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk24085000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk24085000)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameControlCameraTrackManiaRace n, GbxReaderWriter rw)
         {

@@ -66,6 +66,15 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
         set => this.blockHeightOffset = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoPylon)clone).pylonOffset = context.Clone(this.pylonOffset)!;
+        ((CGameCtnBlockInfoPylon)clone).pylonAmount = context.Clone(this.pylonAmount)!;
+        ((CGameCtnBlockInfoPylon)clone).pylonPlacement = context.Clone(this.pylonPlacement)!;
+        ((CGameCtnBlockInfoPylon)clone).blockHeightOffset = context.Clone(this.blockHeightOffset)!;
+    }
+
     public CGameCtnBlockInfoPylon()
     {
     }
@@ -77,6 +86,14 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
         public CMwNod? U01;
         public CMwNod? U02;
         public CMwNod? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03055000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03055000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03055000)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoPylon n, GbxReaderWriter rw)
         {
@@ -90,6 +107,11 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     public partial class Chunk03055002 : Chunk<CGameCtnBlockInfoPylon>
     {
         public override uint Id => 0x03055002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoPylon n, GbxReaderWriter rw)
         {

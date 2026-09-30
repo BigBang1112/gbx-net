@@ -34,6 +34,11 @@ public partial class CPlugMaterialWaterArray : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0917D000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugMaterialWaterArray()
     {
     }

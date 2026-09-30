@@ -73,6 +73,22 @@ public partial class CPlugVisual : CPlug, IClass
         set => this.morphCount = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisual)clone).subVisuals = context.CloneArray(this.subVisuals)!;
+        ((CPlugVisual)clone).splits = context.CloneArray(this.splits)!;
+        ((CPlugVisual)clone).bitmapElemToPacks = context.CloneArray(this.bitmapElemToPacks)!;
+        ((CPlugVisual)clone).morphCount = context.Clone(this.morphCount)!;
+        ((CPlugVisual)clone).Flags = context.Clone(this.Flags)!;
+        ((CPlugVisual)clone).Count = context.Clone(this.Count)!;
+        ((CPlugVisual)clone).VertexStreams = context.CloneList(this.VertexStreams)!;
+        ((CPlugVisual)clone).TexCoords = context.CloneArray(this.TexCoords)!;
+        ((CPlugVisual)clone).BoundingBox = context.Clone(this.BoundingBox)!;
+        ((CPlugVisual)clone).SkinData = context.Clone(this.SkinData)!;
+        ((CPlugVisual)clone).UvGroups = context.CloneArray(this.UvGroups)!;
+    }
+
     public CPlugVisual()
     {
     }
@@ -84,6 +100,12 @@ public partial class CPlugVisual : CPlug, IClass
         public override uint Id => 0x09006001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
@@ -99,6 +121,12 @@ public partial class CPlugVisual : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public CMwNod? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwNod>(ref U01);
@@ -112,6 +140,11 @@ public partial class CPlugVisual : CPlug, IClass
         public override uint Id => 0x09006005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             rw.Array<Int3>(ref n.subVisuals!);
@@ -124,6 +157,11 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x09006006;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x09006007)]
@@ -133,6 +171,12 @@ public partial class CPlugVisual : CPlug, IClass
         public override uint Id => 0x09006007;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006007)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
@@ -146,6 +190,12 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x09006008;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006008)clone).U01 = context.CloneArray(this.U01)!;
+        }
     }
 
     [Chunk(0x09006009)]
@@ -155,6 +205,12 @@ public partial class CPlugVisual : CPlug, IClass
         public override uint Id => 0x09006009;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006009)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
@@ -168,6 +224,12 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x0900600A;
         public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900600A)clone).U01 = context.CloneArray(this.U01)!;
+        }
     }
 
     [Chunk(0x0900600B)]
@@ -176,6 +238,11 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x0900600B;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
@@ -189,12 +256,22 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x0900600C;
         public override GameVersion GameVersion => GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0900600D)]
     public partial class Chunk0900600D : Chunk<CPlugVisual>
     {
         public override uint Id => 0x0900600D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0900600E)]
@@ -203,6 +280,11 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x0900600E;
         public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void Read(CPlugVisual n, GbxReader r)
         {
@@ -223,6 +305,15 @@ public partial class CPlugVisual : CPlug, IClass
     {
         public override uint Id => 0x0900600F;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900600F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0900600F)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0900600F)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0900600F)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x09006010)]
@@ -232,6 +323,12 @@ public partial class CPlugVisual : CPlug, IClass
         public override uint Id => 0x09006010;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09006010)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
@@ -245,7 +342,7 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    public partial class Split : IReadableWritable, IReadable, IWritable
+    public partial class Split : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -268,6 +365,21 @@ public partial class CPlugVisual : CPlug, IClass
             set => this.boundingBox = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Split)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Split)clone).u01 = context.Clone(this.u01)!;
+            ((Split)clone).u02 = context.Clone(this.u02)!;
+            ((Split)clone).boundingBox = context.Clone(this.boundingBox)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -288,7 +400,7 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    public partial class BitmapElemToPack : IReadable, IWritable
+    public partial class BitmapElemToPack : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -323,6 +435,23 @@ public partial class CPlugVisual : CPlug, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BitmapElemToPack)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BitmapElemToPack)clone).u01 = context.Clone(this.u01)!;
+            ((BitmapElemToPack)clone).u02 = context.Clone(this.u02)!;
+            ((BitmapElemToPack)clone).u03 = context.Clone(this.u03)!;
+            ((BitmapElemToPack)clone).u04 = context.Clone(this.u04)!;
+            ((BitmapElemToPack)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

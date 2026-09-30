@@ -34,6 +34,11 @@ public abstract partial class CGameCtnMediaBlockFxBlur : CGameCtnMediaBlockFx, I
     [Hexadecimal]
     public static new uint Id => 0x0307F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnMediaBlockFxBlur()
     {
     }

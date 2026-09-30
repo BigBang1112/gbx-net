@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockDirtyLens)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockDirtyLens()
     {
     }
@@ -54,6 +60,12 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
         public override uint Id => 0x03165000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03165000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockDirtyLens n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -61,7 +73,7 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -75,6 +87,20 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
         {
             get => this.intensity;
             set => this.intensity = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).intensity = context.Clone(this.intensity)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -34,6 +34,11 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0915D000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugGameSkinAndFolder()
     {
     }
@@ -43,6 +48,11 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     {
         public override uint Id => 0x0915D000;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0915D001)]
@@ -50,6 +60,12 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     {
         public override uint Id => 0x0915D001;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0915D001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugGameSkinAndFolder n, GbxReaderWriter rw)
         {

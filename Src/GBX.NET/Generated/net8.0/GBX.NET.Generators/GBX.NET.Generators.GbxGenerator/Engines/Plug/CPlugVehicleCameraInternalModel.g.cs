@@ -138,6 +138,24 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
         set => this.superBulletTimeFovSmoothMultiplier_m_TimeDown = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehicleCameraInternalModel)clone).name = context.Clone(this.name)!;
+        ((CPlugVehicleCameraInternalModel)clone).relativePos = context.Clone(this.relativePos)!;
+        ((CPlugVehicleCameraInternalModel)clone).fov = context.Clone(this.fov)!;
+        ((CPlugVehicleCameraInternalModel)clone).isFirstPerson = context.Clone(this.isFirstPerson)!;
+        ((CPlugVehicleCameraInternalModel)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
+        ((CPlugVehicleCameraInternalModel)clone).camBlendEnabled = context.Clone(this.camBlendEnabled)!;
+        ((CPlugVehicleCameraInternalModel)clone).pilotHeadCoef = context.Clone(this.pilotHeadCoef)!;
+        ((CPlugVehicleCameraInternalModel)clone).bulletTimeFovSmoothDelta_m_Delta = context.Clone(this.bulletTimeFovSmoothDelta_m_Delta)!;
+        ((CPlugVehicleCameraInternalModel)clone).bulletTimeFovSmoothDelta_m_TimeDown = context.Clone(this.bulletTimeFovSmoothDelta_m_TimeDown)!;
+        ((CPlugVehicleCameraInternalModel)clone).bulletTimeFovSmoothDelta_m_TimeUp = context.Clone(this.bulletTimeFovSmoothDelta_m_TimeUp)!;
+        ((CPlugVehicleCameraInternalModel)clone).superBulletTimeFovSmoothMultiplier = context.Clone(this.superBulletTimeFovSmoothMultiplier)!;
+        ((CPlugVehicleCameraInternalModel)clone).superBulletTimeFovSmoothMultiplier_m_TimeUp = context.Clone(this.superBulletTimeFovSmoothMultiplier_m_TimeUp)!;
+        ((CPlugVehicleCameraInternalModel)clone).superBulletTimeFovSmoothMultiplier_m_TimeDown = context.Clone(this.superBulletTimeFovSmoothMultiplier_m_TimeDown)!;
+    }
+
     public CPlugVehicleCameraInternalModel()
     {
     }
@@ -148,6 +166,13 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
         public override uint Id => 0x090F7000;
         public int Version { get; set; }
         public Vec3 U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F7000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F7000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugVehicleCameraInternalModel n, GbxReaderWriter rw)
         {

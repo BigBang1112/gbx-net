@@ -51,6 +51,12 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
 
     public CGameCtnBlockInfoSlope? GetSlope(GbxReadSettings settings = default, bool exceptions = false) => slopeFile?.GetNode(ref slope, settings, exceptions) ?? slope;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoRoad)clone).slope = context.Clone(this.slope)!;
+    }
+
     public CGameCtnBlockInfoRoad()
     {
     }
@@ -59,6 +65,11 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
     public partial class Chunk03052000 : Chunk<CGameCtnBlockInfoRoad>
     {
         public override uint Id => 0x03052000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoRoad n, GbxReaderWriter rw)
         {

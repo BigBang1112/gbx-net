@@ -51,6 +51,12 @@ public partial class CPlugTreeLight : CPlugTree, IClass
 
     public CPlugLight? GetPlugLight(GbxReadSettings settings = default, bool exceptions = false) => plugLightFile?.GetNode(ref plugLight, settings, exceptions) ?? plugLight;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTreeLight)clone).plugLight = context.Clone(this.plugLight)!;
+    }
+
     public CPlugTreeLight()
     {
     }
@@ -61,6 +67,11 @@ public partial class CPlugTreeLight : CPlugTree, IClass
     {
         public override uint Id => 0x09062004;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugTreeLight n, GbxReaderWriter rw)
         {

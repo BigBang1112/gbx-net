@@ -96,6 +96,18 @@ public partial class CFuncColorGradient : CFunc, IClass
         set => this.colorSpace = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncColorGradient)clone).keyFrameValue0 = context.Clone(this.keyFrameValue0)!;
+        ((CFuncColorGradient)clone).keyFrameValue1 = context.Clone(this.keyFrameValue1)!;
+        ((CFuncColorGradient)clone).keyFrameValue2 = context.Clone(this.keyFrameValue2)!;
+        ((CFuncColorGradient)clone).keyFrameValue3 = context.Clone(this.keyFrameValue3)!;
+        ((CFuncColorGradient)clone).keyFramePos1 = context.Clone(this.keyFramePos1)!;
+        ((CFuncColorGradient)clone).keyFramePos2 = context.Clone(this.keyFramePos2)!;
+        ((CFuncColorGradient)clone).colorSpace = context.Clone(this.colorSpace)!;
+    }
+
     public CFuncColorGradient()
     {
     }
@@ -104,6 +116,11 @@ public partial class CFuncColorGradient : CFunc, IClass
     public partial class Chunk05038000 : Chunk<CFuncColorGradient>
     {
         public override uint Id => 0x05038000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncColorGradient n, GbxReaderWriter rw)
         {
@@ -120,6 +137,11 @@ public partial class CFuncColorGradient : CFunc, IClass
     public partial class Chunk05038001 : Chunk05038000
     {
         public override uint Id => 0x05038001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncColorGradient n, GbxReaderWriter rw)
         {

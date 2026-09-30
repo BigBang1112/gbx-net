@@ -327,6 +327,44 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.waterVolumes = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfoVariant)clone).blockUnitModels = context.CloneArray(this.blockUnitModels)!;
+        ((CGameCtnBlockInfoVariant)clone).hasManualSymmetryH = context.Clone(this.hasManualSymmetryH)!;
+        ((CGameCtnBlockInfoVariant)clone).hasManualSymmetryV = context.Clone(this.hasManualSymmetryV)!;
+        ((CGameCtnBlockInfoVariant)clone).hasManualSymmetryD1 = context.Clone(this.hasManualSymmetryD1)!;
+        ((CGameCtnBlockInfoVariant)clone).hasManualSymmetryD2 = context.Clone(this.hasManualSymmetryD2)!;
+        ((CGameCtnBlockInfoVariant)clone).spawnLoc = context.Clone(this.spawnLoc)!;
+        ((CGameCtnBlockInfoVariant)clone).name = context.Clone(this.name)!;
+        ((CGameCtnBlockInfoVariant)clone).multiDir = context.Clone(this.multiDir)!;
+        ((CGameCtnBlockInfoVariant)clone).symmetricalVariantIndex = context.Clone(this.symmetricalVariantIndex)!;
+        ((CGameCtnBlockInfoVariant)clone).cardinalDir = context.Clone(this.cardinalDir)!;
+        ((CGameCtnBlockInfoVariant)clone).variantBaseType = context.Clone(this.variantBaseType)!;
+        ((CGameCtnBlockInfoVariant)clone).noPillarBelowIndex = context.Clone(this.noPillarBelowIndex)!;
+        ((CGameCtnBlockInfoVariant)clone).screenInteractionTriggerSolid = context.Clone(this.screenInteractionTriggerSolid)!;
+        ((CGameCtnBlockInfoVariant)clone).waypointTriggerSolid = context.Clone(this.waypointTriggerSolid)!;
+        ((CGameCtnBlockInfoVariant)clone).gate = context.Clone(this.gate)!;
+        ((CGameCtnBlockInfoVariant)clone).teleporter = context.Clone(this.teleporter)!;
+        ((CGameCtnBlockInfoVariant)clone).turbine = context.Clone(this.turbine)!;
+        ((CGameCtnBlockInfoVariant)clone).flockModel = context.Clone(this.flockModel)!;
+        ((CGameCtnBlockInfoVariant)clone).flockEmmiter = context.Clone(this.flockEmmiter)!;
+        ((CGameCtnBlockInfoVariant)clone).spawnModel = context.Clone(this.spawnModel)!;
+        ((CGameCtnBlockInfoVariant)clone).entitySpawners = context.CloneArray(this.entitySpawners)!;
+        ((CGameCtnBlockInfoVariant)clone).probe = context.Clone(this.probe)!;
+        ((CGameCtnBlockInfoVariant)clone).spawnTrans = context.Clone(this.spawnTrans)!;
+        ((CGameCtnBlockInfoVariant)clone).spawnYaw = context.Clone(this.spawnYaw)!;
+        ((CGameCtnBlockInfoVariant)clone).spawnPitch = context.Clone(this.spawnPitch)!;
+        ((CGameCtnBlockInfoVariant)clone).compoundModel = context.Clone(this.compoundModel)!;
+        ((CGameCtnBlockInfoVariant)clone).compoundLoc = context.Clone(this.compoundLoc)!;
+        ((CGameCtnBlockInfoVariant)clone).waterVolumes = context.CloneArray(this.waterVolumes)!;
+        ((CGameCtnBlockInfoVariant)clone).helperSolidFid = context.Clone(this.helperSolidFid)!;
+        ((CGameCtnBlockInfoVariant)clone).helperSolidFidFile = context.Clone(this.helperSolidFidFile)!;
+        ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFid = context.Clone(this.facultativeHelperSolidFid)!;
+        ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFidFile = context.Clone(this.facultativeHelperSolidFidFile)!;
+        ((CGameCtnBlockInfoVariant)clone).Mobils = context.CloneArray(this.Mobils)!;
+    }
+
     public CGameCtnBlockInfoVariant()
     {
     }
@@ -338,6 +376,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override uint Id => 0x0315B000;
         public override GameVersion GameVersion => GameVersion.MP3;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -359,6 +403,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override uint Id => 0x0315B002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EMultiDir>(ref n.multiDir);
@@ -372,6 +421,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override uint Id => 0x0315B003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -404,6 +459,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public short U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B004)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.Int16(ref U01);
@@ -416,6 +477,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     {
         public override uint Id => 0x0315B005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0315B005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0315B005)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0315B005)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     [Chunk(0x0315B006)]
@@ -432,6 +502,17 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public Components.GbxRefTableFile? U03File;
         public int U04;
         public CGameCaptureZoneModel? U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0315B006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0315B006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0315B006)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0315B006)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0315B006)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -506,6 +587,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B007)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -522,6 +609,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public int Version { get; set; }
         public int U01;
         public BoxAligned U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B008)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0315B008)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0315B008)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -559,6 +654,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public PlacedPillarParam[]? U01;
         public ReplacedPillarParam[]? U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B009)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0315B009)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0315B009)clone).U02 = context.CloneArray(this.U02)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -581,6 +684,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public CMwNod? U01;
         public CMwNod? U02;
         public Iso4? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B00A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0315B00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0315B00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0315B00A)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -617,6 +729,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B00B)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -632,6 +750,13 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B00C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0315B00C)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
@@ -652,6 +777,13 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public int U01;
         public int U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B00D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0315B00D)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -659,7 +791,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         }
     }
 
-    public partial class PlacedPillarParam : IReadableWritable, IReadable, IWritable
+    public partial class PlacedPillarParam : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private CMwNod? u01;
         public CMwNod? U01
@@ -705,6 +837,23 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PlacedPillarParam)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PlacedPillarParam)clone).u01 = context.Clone(this.u01)!;
+            ((PlacedPillarParam)clone).u02 = context.Clone(this.u02)!;
+            ((PlacedPillarParam)clone).u03 = context.Clone(this.u03)!;
+            ((PlacedPillarParam)clone).u04 = context.Clone(this.u04)!;
+            ((PlacedPillarParam)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.NodeRef<CMwNod>(ref this.u01, ref this.u01File);
@@ -736,6 +885,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             set => this.u06 = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((ReplacedPillarParam)clone).u06 = context.Clone(this.u06)!;
+        }
+
         public override void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             base.ReadWrite(rw, v);
@@ -755,7 +910,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         }
     }
 
-    public partial class WaterVolume : IReadableWritable, IReadable, IWritable
+    public partial class WaterVolume : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private BoxInt3[]? u01;
         public BoxInt3[]? U01
@@ -820,6 +975,27 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             set => this.u09 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (WaterVolume)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((WaterVolume)clone).u01 = context.CloneArray(this.u01)!;
+            ((WaterVolume)clone).u02 = context.Clone(this.u02)!;
+            ((WaterVolume)clone).u03 = context.Clone(this.u03)!;
+            ((WaterVolume)clone).u04 = context.Clone(this.u04)!;
+            ((WaterVolume)clone).u05 = context.Clone(this.u05)!;
+            ((WaterVolume)clone).u06 = context.Clone(this.u06)!;
+            ((WaterVolume)clone).u07 = context.Clone(this.u07)!;
+            ((WaterVolume)clone).u08 = context.Clone(this.u08)!;
+            ((WaterVolume)clone).u09 = context.Clone(this.u09)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Array<BoxInt3>(ref this.u01!);
@@ -850,7 +1026,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         }
     }
 
-    public partial class FlockEmitterState : IReadableWritable, IReadable, IWritable
+    public partial class FlockEmitterState : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int version;
         public int Version
@@ -918,6 +1094,26 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             get => this.position;
             set => this.position = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (FlockEmitterState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((FlockEmitterState)clone).version = context.Clone(this.version)!;
+            ((FlockEmitterState)clone).u01 = context.Clone(this.u01)!;
+            ((FlockEmitterState)clone).u02 = context.Clone(this.u02)!;
+            ((FlockEmitterState)clone).u03 = context.Clone(this.u03)!;
+            ((FlockEmitterState)clone).u04 = context.Clone(this.u04)!;
+            ((FlockEmitterState)clone).u05 = context.Clone(this.u05)!;
+            ((FlockEmitterState)clone).matrix = context.Clone(this.matrix)!;
+            ((FlockEmitterState)clone).position = context.Clone(this.position)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

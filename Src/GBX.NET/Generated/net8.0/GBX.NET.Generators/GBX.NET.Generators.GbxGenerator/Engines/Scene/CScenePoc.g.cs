@@ -42,6 +42,12 @@ public abstract partial class CScenePoc : CSceneObject, IClass
         set => this.isActive = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CScenePoc)clone).isActive = context.Clone(this.isActive)!;
+    }
+
     public CScenePoc()
     {
     }
@@ -50,6 +56,11 @@ public abstract partial class CScenePoc : CSceneObject, IClass
     public partial class Chunk0A009000 : Chunk<CScenePoc>
     {
         public override uint Id => 0x0A009000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CScenePoc n, GbxReaderWriter rw)
         {

@@ -570,6 +570,78 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         set => this.flyingLookDownFactorFromSpeedRatio = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeed = context.Clone(this.slerpSpeed)!;
+        ((CGameControlCameraTrackManiaRace3)clone).up = context.Clone(this.up)!;
+        ((CGameControlCameraTrackManiaRace3)clone).far = context.Clone(this.far)!;
+        ((CGameControlCameraTrackManiaRace3)clone).flyDurationBeforeFlyingBehavior = context.Clone(this.flyDurationBeforeFlyingBehavior)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputNoSteerDurationBeforeReset = context.Clone(this.inputNoSteerDurationBeforeReset)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputSteerDurationBeforeBurnoutShowView = context.Clone(this.inputSteerDurationBeforeBurnoutShowView)!;
+        ((CGameControlCameraTrackManiaRace3)clone).minSpeed = context.Clone(this.minSpeed)!;
+        ((CGameControlCameraTrackManiaRace3)clone).minSpeed2 = context.Clone(this.minSpeed2)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosNormalBehaviorDelta = context.Clone(this.slerpTargetPosNormalBehaviorDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosNormalBehaviorTimeUp = context.Clone(this.slerpTargetPosNormalBehaviorTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosNormalBehaviorTimeDown = context.Clone(this.slerpTargetPosNormalBehaviorTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosFlyingDelta = context.Clone(this.slerpTargetPosFlyingDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosFlyingTimeUp = context.Clone(this.slerpTargetPosFlyingTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosFlyingTimeDown = context.Clone(this.slerpTargetPosFlyingTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosDelta = context.Clone(this.slerpTargetPosDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosTimeUp = context.Clone(this.slerpTargetPosTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetPosTimeDown = context.Clone(this.slerpTargetPosTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetCamUpDelta = context.Clone(this.slerpTargetCamUpDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetCamUpTimeUp = context.Clone(this.slerpTargetCamUpTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpTargetCamUpTimeDown = context.Clone(this.slerpTargetCamUpTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedFlyingBehavior = context.Clone(this.slerpSpeedFlyingBehavior)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedDelta = context.Clone(this.slerpSpeedDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedTimeUp = context.Clone(this.slerpSpeedTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedTimeDown = context.Clone(this.slerpSpeedTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedCamUp = context.Clone(this.slerpSpeedCamUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedCamUpFlyingBehavior = context.Clone(this.slerpSpeedCamUpFlyingBehavior)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedCamUpDelta = context.Clone(this.slerpSpeedCamUpDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedCamUpTimeUp = context.Clone(this.slerpSpeedCamUpTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedCamUpTimeDown = context.Clone(this.slerpSpeedCamUpTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingLookAtFactorDelta = context.Clone(this.stateFlyingLookAtFactorDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingLookAtFactorTimeUp = context.Clone(this.stateFlyingLookAtFactorTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingLookAtFactorTimeDown = context.Clone(this.stateFlyingLookAtFactorTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingLookAtStep = context.Clone(this.stateFlyingLookAtStep)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingRadiusDelta = context.Clone(this.stateFlyingRadiusDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingRadiusTimeUp = context.Clone(this.stateFlyingRadiusTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).stateFlyingRadiusTimeDown = context.Clone(this.stateFlyingRadiusTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).constantFlyingLookDownFactor = context.Clone(this.constantFlyingLookDownFactor)!;
+        ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorKi = context.Clone(this.flyingLookDownFactorKi)!;
+        ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorKa = context.Clone(this.flyingLookDownFactorKa)!;
+        ((CGameControlCameraTrackManiaRace3)clone).radiusDamperKi = context.Clone(this.radiusDamperKi)!;
+        ((CGameControlCameraTrackManiaRace3)clone).radiusDamperKa = context.Clone(this.radiusDamperKa)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputGasFarDelta = context.Clone(this.inputGasFarDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputGasFarTimeUp = context.Clone(this.inputGasFarTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputGasFarTimeDown = context.Clone(this.inputGasFarTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputBrakeFarDelta = context.Clone(this.inputBrakeFarDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputBrakeFarTimeUp = context.Clone(this.inputBrakeFarTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputBrakeFarTimeDown = context.Clone(this.inputBrakeFarTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputSteerFarDelta = context.Clone(this.inputSteerFarDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputSteerFarTimeUp = context.Clone(this.inputSteerFarTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).inputSteerFarTimeDown = context.Clone(this.inputSteerFarTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFovDelta = context.Clone(this.eventTurboFovDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFovTimeUp = context.Clone(this.eventTurboFovTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFovTimeDown = context.Clone(this.eventTurboFovTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFarDelta = context.Clone(this.eventTurboFarDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFarTimeUp = context.Clone(this.eventTurboFarTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventTurboFarTimeDown = context.Clone(this.eventTurboFarTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventChangeGearFarDelta = context.Clone(this.eventChangeGearFarDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventChangeGearFarTimeUp = context.Clone(this.eventChangeGearFarTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventChangeGearFarTimeDown = context.Clone(this.eventChangeGearFarTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventBurningLookAtFactorDelta = context.Clone(this.eventBurningLookAtFactorDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventBurningLookAtFactorTimeDown = context.Clone(this.eventBurningLookAtFactorTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusDelta = context.Clone(this.eventBurningRadiusDelta)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusTimeUp = context.Clone(this.eventBurningRadiusTimeUp)!;
+        ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusTimeDown = context.Clone(this.eventBurningRadiusTimeDown)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedModulationFromSpeed = context.Clone(this.slerpSpeedModulationFromSpeed)!;
+        ((CGameControlCameraTrackManiaRace3)clone).lookAtFactorFromUpSpeedRatio = context.Clone(this.lookAtFactorFromUpSpeedRatio)!;
+        ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorFromSpeedRatio = context.Clone(this.flyingLookDownFactorFromSpeedRatio)!;
+    }
+
     public CGameControlCameraTrackManiaRace3()
     {
     }
@@ -579,6 +651,12 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
     {
         public override uint Id => 0x24087000;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk24087000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameControlCameraTrackManiaRace3 n, GbxReaderWriter rw)
         {
@@ -658,6 +736,12 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
     {
         public override uint Id => 0x24087001;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk24087001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameControlCameraTrackManiaRace3 n, GbxReaderWriter rw)
         {

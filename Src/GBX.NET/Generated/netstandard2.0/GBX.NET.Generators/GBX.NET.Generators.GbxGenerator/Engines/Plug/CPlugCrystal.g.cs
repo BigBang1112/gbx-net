@@ -53,6 +53,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         set => this.smoothingGroups = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugCrystal)clone).materials = context.CloneList(this.materials)!;
+        ((CPlugCrystal)clone).smoothingGroups = context.CloneArray(this.smoothingGroups)!;
+        ((CPlugCrystal)clone).layers = context.CloneList(this.layers)!;
+    }
+
     public CPlugCrystal()
     {
     }
@@ -64,6 +72,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     public partial class Chunk09003000 : Chunk<CPlugCrystal>
     {
         public override uint Id => 0x09003000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -76,6 +90,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public override uint Id => 0x09003003;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003003)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
         {
@@ -93,6 +113,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public int Version { get; set; }
         public byte[]? U01;
         public int? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09003004)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk09003004)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
         {
@@ -115,6 +143,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     {
         public override uint Id => 0x09003005;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003005)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -126,6 +160,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     {
         public override uint Id => 0x09003006;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003006)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     /// <summary>
@@ -140,6 +180,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public int Version { get; set; }
         public int[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09003007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09003007)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -148,7 +195,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class Material : IReadableWritable, IReadable, IWritable
+    public partial class Material : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? materialName;
         public string? MaterialName
@@ -162,6 +209,20 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.materialUserInst;
             set => this.materialUserInst = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Material)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Material)clone).materialName = context.Clone(this.materialName)!;
+            ((Material)clone).materialUserInst = context.Clone(this.materialUserInst)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -187,7 +248,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class Layer : IReadable<CPlugCrystal>, IWritable<CPlugCrystal>
+    public partial class Layer : IReadable<CPlugCrystal>, IWritable<CPlugCrystal>, IDeepCloneable
     {
         private int ver;
         public int Ver
@@ -222,6 +283,23 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.isEnabled;
             set => this.isEnabled = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Layer)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Layer)clone).ver = context.Clone(this.ver)!;
+            ((Layer)clone).crystalEnabled = context.Clone(this.crystalEnabled)!;
+            ((Layer)clone).layerId = context.Clone(this.layerId)!;
+            ((Layer)clone).layerName = context.Clone(this.layerName)!;
+            ((Layer)clone).isEnabled = context.Clone(this.isEnabled)!;
         }
 
         public virtual void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -266,9 +344,16 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             get => this.mask;
             set => this.mask = value;
         }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((ModifierLayer)clone).modifierVersion = context.Clone(this.modifierVersion)!;
+            ((ModifierLayer)clone).mask = context.CloneArray(this.mask)!;
+        }
     }
 
-    public partial class PartInLayer : IReadable, IWritable
+    public partial class PartInLayer : IReadable, IWritable, IDeepCloneable
     {
         private int groupIndex;
         public int GroupIndex
@@ -282,6 +367,20 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.layerId;
             set => this.layerId = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PartInLayer)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PartInLayer)clone).groupIndex = context.Clone(this.groupIndex)!;
+            ((PartInLayer)clone).layerId = context.Clone(this.layerId)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -337,6 +436,16 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.collidable = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((GeometryLayer)clone).geometryVersion = context.Clone(this.geometryVersion)!;
+            ((GeometryLayer)clone).crystal = context.Clone(this.crystal)!;
+            ((GeometryLayer)clone).u02 = context.CloneArray(this.u02)!;
+            ((GeometryLayer)clone).isVisible = context.Clone(this.isVisible)!;
+            ((GeometryLayer)clone).collidable = context.Clone(this.collidable)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -382,6 +491,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.subdivisions = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((SubdivideSmoothLayer)clone).subdivideSmoothVersion = context.Clone(this.subdivideSmoothVersion)!;
+            ((SubdivideSmoothLayer)clone).subdivisions = context.Clone(this.subdivisions)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -411,6 +527,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.translation;
             set => this.translation = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((TranslationLayer)clone).translationVersion = context.Clone(this.translationVersion)!;
+            ((TranslationLayer)clone).translation = context.Clone(this.translation)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -461,6 +584,15 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.independently = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((RotationLayer)clone).rotationVersion = context.Clone(this.rotationVersion)!;
+            ((RotationLayer)clone).rotation = context.Clone(this.rotation)!;
+            ((RotationLayer)clone).axis = context.Clone(this.axis)!;
+            ((RotationLayer)clone).independently = context.Clone(this.independently)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -501,6 +633,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.independently;
             set => this.independently = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((ScaleLayer)clone).scaleVersion = context.Clone(this.scaleVersion)!;
+            ((ScaleLayer)clone).scale = context.Clone(this.scale)!;
+            ((ScaleLayer)clone).independently = context.Clone(this.independently)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -550,6 +690,15 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.independently = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((MirrorLayer)clone).mirrorVersion = context.Clone(this.mirrorVersion)!;
+            ((MirrorLayer)clone).axis = context.Clone(this.axis)!;
+            ((MirrorLayer)clone).distance = context.Clone(this.distance)!;
+            ((MirrorLayer)clone).independently = context.Clone(this.independently)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -585,6 +734,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u01 = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((MoveToGroundLayer)clone).moveToGroundVersion = context.Clone(this.moveToGroundVersion)!;
+            ((MoveToGroundLayer)clone).u01 = context.Clone(this.u01)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -616,6 +772,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.size = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((ExtrudeLayer)clone).extrudeVersion = context.Clone(this.extrudeVersion)!;
+            ((ExtrudeLayer)clone).size = context.Clone(this.size)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -645,6 +808,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.subdivisions;
             set => this.subdivisions = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((SubdivideLayer)clone).subdivideVersion = context.Clone(this.subdivideVersion)!;
+            ((SubdivideLayer)clone).subdivisions = context.Clone(this.subdivisions)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -690,6 +860,15 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.maxDistance;
             set => this.maxDistance = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((ChaosLayer)clone).chaosVersion = context.Clone(this.chaosVersion)!;
+            ((ChaosLayer)clone).minDistance = context.Clone(this.minDistance)!;
+            ((ChaosLayer)clone).u01 = context.Clone(this.u01)!;
+            ((ChaosLayer)clone).maxDistance = context.Clone(this.maxDistance)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -748,6 +927,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u02 = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((SmoothLayer)clone).smoothVersion = context.Clone(this.smoothVersion)!;
+            ((SmoothLayer)clone).u01 = context.Clone(this.u01)!;
+            ((SmoothLayer)clone).u02 = context.Clone(this.u02)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -798,6 +985,15 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u03 = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((BorderTransitionLayer)clone).borderTransitionVersion = context.Clone(this.borderTransitionVersion)!;
+            ((BorderTransitionLayer)clone).u01 = context.Clone(this.u01)!;
+            ((BorderTransitionLayer)clone).u02 = context.Clone(this.u02)!;
+            ((BorderTransitionLayer)clone).u03 = context.CloneArray(this.u03)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -838,6 +1034,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((DeformationLayer)clone).deformationVersion = context.Clone(this.deformationVersion)!;
+            ((DeformationLayer)clone).u01 = context.Clone(this.u01)!;
+            ((DeformationLayer)clone).u02 = context.Clone(this.u02)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -885,6 +1089,15 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.collidable;
             set => this.collidable = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((CubesLayer)clone).cubesVersion = context.Clone(this.cubesVersion)!;
+            ((CubesLayer)clone).cubes = context.Clone(this.cubes)!;
+            ((CubesLayer)clone).isVisible = context.Clone(this.isVisible)!;
+            ((CubesLayer)clone).collidable = context.Clone(this.collidable)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -935,6 +1148,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.u01;
             set => this.u01 = value;
+        }
+
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((TriggerLayer)clone).triggerVersion = context.Clone(this.triggerVersion)!;
+            ((TriggerLayer)clone).crystal = context.Clone(this.crystal)!;
+            ((TriggerLayer)clone).u01 = context.CloneArray(this.u01)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -999,6 +1220,16 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.rollAngle = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((SpawnPositionLayer)clone).spawnPositionVersion = context.Clone(this.spawnPositionVersion)!;
+            ((SpawnPositionLayer)clone).spawnPosition = context.Clone(this.spawnPosition)!;
+            ((SpawnPositionLayer)clone).horizontalAngle = context.Clone(this.horizontalAngle)!;
+            ((SpawnPositionLayer)clone).verticalAngle = context.Clone(this.verticalAngle)!;
+            ((SpawnPositionLayer)clone).rollAngle = context.Clone(this.rollAngle)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -1051,6 +1282,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.lightPositions = value;
         }
 
+        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            base.DeepCloneArchiveFields(clone, context);
+            ((LightLayer)clone).lightVersion = context.Clone(this.lightVersion)!;
+            ((LightLayer)clone).lights = context.CloneArray(this.lights)!;
+            ((LightLayer)clone).lightPositions = context.CloneArray(this.lightPositions)!;
+        }
+
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
             base.Read(r, n, v);
@@ -1068,8 +1307,20 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class VoxelSpace : IReadable, IWritable
+    public partial class VoxelSpace : IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VoxelSpace)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             throw new NotSupportedException();
@@ -1081,11 +1332,37 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class Crystal : IReadable<CPlugCrystal>, IWritable<CPlugCrystal>
+    public partial class Crystal : IReadable<CPlugCrystal>, IWritable<CPlugCrystal>, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Crystal)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Crystal)clone).Version = context.Clone(this.Version)!;
+            ((Crystal)clone).U01 = context.Clone(this.U01)!;
+            ((Crystal)clone).VisualLevels = context.CloneArray(this.VisualLevels)!;
+            ((Crystal)clone).AnchorInfos = context.CloneArray(this.AnchorInfos)!;
+            ((Crystal)clone).Groups = context.CloneArray(this.Groups)!;
+            ((Crystal)clone).IsEmbeddedCrystal = context.Clone(this.IsEmbeddedCrystal)!;
+            ((Crystal)clone).U02 = context.Clone(this.U02)!;
+            ((Crystal)clone).U03 = context.Clone(this.U03)!;
+            ((Crystal)clone).Positions = context.CloneArray(this.Positions)!;
+            ((Crystal)clone).Edges = context.CloneArray(this.Edges)!;
+            ((Crystal)clone).Faces = context.CloneArray(this.Faces)!;
+            ((Crystal)clone).U04 = context.Clone(this.U04)!;
+            ((Crystal)clone).U05 = context.Clone(this.U05)!;
+            ((Crystal)clone).U06 = context.Clone(this.U06)!;
+            ((Crystal)clone).U07 = context.Clone(this.U07)!;
+        }
     }
 
-    public partial class VisualLevel : IReadable, IWritable
+    public partial class VisualLevel : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1101,6 +1378,20 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VisualLevel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VisualLevel)clone).u01 = context.Clone(this.u01)!;
+            ((VisualLevel)clone).u02 = context.Clone(this.u02)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.u01 = r.ReadInt32();
@@ -1114,7 +1405,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class AnchorInfo : IReadable, IWritable
+    public partial class AnchorInfo : IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -1151,6 +1442,23 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AnchorInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AnchorInfo)clone).u01 = context.Clone(this.u01)!;
+            ((AnchorInfo)clone).u02 = context.Clone(this.u02)!;
+            ((AnchorInfo)clone).u03 = context.Clone(this.u03)!;
+            ((AnchorInfo)clone).u04 = context.Clone(this.u04)!;
+            ((AnchorInfo)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             this.u01 = r.ReadBoolean();
@@ -1170,7 +1478,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class Part : IReadable, IWritable
+    public partial class Part : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1205,6 +1513,24 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Part)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Part)clone).u01 = context.Clone(this.u01)!;
+            ((Part)clone).u03 = context.Clone(this.u03)!;
+            ((Part)clone).name = context.Clone(this.name)!;
+            ((Part)clone).u04 = context.Clone(this.u04)!;
+            ((Part)clone).u05 = context.CloneArray(this.u05)!;
+            ((Part)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1254,7 +1580,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         }
     }
 
-    public partial class LightPos : IReadable, IWritable
+    public partial class LightPos : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1268,6 +1594,20 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LightPos)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LightPos)clone).u01 = context.Clone(this.u01)!;
+            ((LightPos)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

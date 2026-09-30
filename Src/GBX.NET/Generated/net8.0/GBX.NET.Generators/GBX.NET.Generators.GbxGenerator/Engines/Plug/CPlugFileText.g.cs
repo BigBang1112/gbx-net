@@ -34,6 +34,11 @@ public partial class CPlugFileText : CPlugFile, IClass
     [Hexadecimal]
     public static new uint Id => 0x09041000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFileText()
     {
     }

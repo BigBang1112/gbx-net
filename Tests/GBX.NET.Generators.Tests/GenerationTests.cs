@@ -45,9 +45,12 @@ public class GenerationTests
         await Assert.That(root.DescendantNodes().OfType<FieldDeclarationSyntax>())
             .DoesNotContain(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == "count"));
         var chunks = root.DescendantNodes().OfType<ClassDeclarationSyntax>().Where(x => x.Identifier.ValueText.StartsWith("Chunk")).ToArray();
-        await Assert.That(chunks[0].Members.OfType<MethodDeclarationSyntax>()).IsEmpty();
-        await Assert.That(chunks[1].Members.OfType<MethodDeclarationSyntax>()).HasSingleItem();
+        await Assert.That(chunks[0].Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText == "ReadWrite")).IsEmpty();
+        await Assert.That(chunks[1].Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText == "ReadWrite")).HasSingleItem();
         await Assert.That(Engine(result).ToString()).Contains("rw.Int32(ref n.count)");
+        await Assert.That(Engine(result).ToString()).Contains("internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)");
+        await Assert.That(Engine(result).ToString()).Contains("((Example)clone).Custom = context.Clone(this.Custom)!");
+        await Assert.That(Engine(result).ToString()).Contains("((Example)clone).count = context.Clone(this.count)!");
     }
 
     [Test]
@@ -141,6 +144,7 @@ public class GenerationTests
         await Assert.That(generated).Contains("partial class Derived : Base, IReadableWritable");
         await Assert.That(generated).Contains("public override void ReadWrite(GbxReaderWriter rw, int v = 0)");
         await Assert.That(generated).Contains("base.ReadWrite(rw, v)");
+        await Assert.That(generated).Contains("base.DeepCloneArchiveFields(clone, context)");
         await Assert.That(generated).Contains("if (v >= 2)");
         await Assert.That(generated).Contains("throw new InvalidOperationException(\"Unsupported format\")");
         await Assert.That(generated).Contains("First = 1,");
@@ -195,6 +199,7 @@ public class GenerationTests
         var generated = Engine(result).ToString();
         await Assert.That(generated).Contains("rw.ReadableWritable<Outer>(ref this.data, version: v)");
         await Assert.That(generated).Contains("rw.ReadableWritable<Inner>(ref this.child, version: v)");
+        await Assert.That(generated).Contains("object IDeepCloneable.DeepClone(DeepCloneContext context)");
         await Assert.That(generated).Contains("if (v >= 1)");
     }
 
@@ -388,6 +393,16 @@ public class GenerationTests
         {
             public class GbxReader { }
             public class GbxWriter { }
+            public interface IDeepCloneable { object DeepClone(DeepCloneContext context); }
+            public class DeepCloneContext
+            {
+                public void Register(object source, object clone) { }
+                public T Clone<T>(T source) => source;
+                public T[] CloneArray<T>(T[] source) => source;
+                public System.Collections.Generic.List<T> CloneList<T>(System.Collections.Generic.IEnumerable<T> source) => new(source);
+                public System.Collections.Generic.Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>> source) where TKey : notnull => new();
+                public System.Collections.Generic.HashSet<T> CloneHashSet<T>(System.Collections.Generic.ISet<T> source) => new(source);
+            }
             public class GbxReaderWriter
             {
                 public void Int32(ref int value) { }
@@ -398,7 +413,11 @@ public class GenerationTests
         namespace GBX.NET.Serialization.Chunking
         {
             public interface IChunk { }
-            public class Chunk<T> : IChunk
+            public class Chunk : IChunk
+            {
+                internal virtual void DeepCloneFields(Chunk clone, GBX.NET.Serialization.DeepCloneContext context) { }
+            }
+            public class Chunk<T> : Chunk
             {
                 public virtual uint Id => 0;
                 public virtual void ReadWrite(T node, GBX.NET.Serialization.GbxReaderWriter rw) { }
@@ -409,6 +428,7 @@ public class GenerationTests
             public class CMwNod : GBX.NET.IClass
             {
                 internal virtual GBX.NET.Serialization.Chunking.IChunk? NewChunk(uint id) => null;
+                internal virtual void DeepCloneFields(CMwNod clone, GBX.NET.Serialization.DeepCloneContext context) { }
             }
         }
         """;

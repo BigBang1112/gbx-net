@@ -50,6 +50,13 @@ public partial class CControlBase : CSceneToy, IClass
         set => this.layout = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlBase)clone).stackText = context.Clone(this.stackText)!;
+        ((CControlBase)clone).layout = context.Clone(this.layout)!;
+    }
+
     public CControlBase()
     {
     }
@@ -62,6 +69,15 @@ public partial class CControlBase : CSceneToy, IClass
         public int U02;
         public int U03;
         public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700100C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0700100C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0700100C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0700100C)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
@@ -81,6 +97,14 @@ public partial class CControlBase : CSceneToy, IClass
         public int U02;
         public int U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700100E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0700100E)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0700100E)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
             rw.BoxAligned(ref U01);
@@ -96,6 +120,12 @@ public partial class CControlBase : CSceneToy, IClass
         public override uint Id => 0x0700100F;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700100F)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
             rw.String(ref U01);
@@ -108,6 +138,13 @@ public partial class CControlBase : CSceneToy, IClass
         public override uint Id => 0x07001010;
         public CMwNod? U01;
         public int? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07001010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07001010)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {

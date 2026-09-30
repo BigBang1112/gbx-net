@@ -138,6 +138,21 @@ public partial class CPlugClouds : CMwNod, IClass
         set => this.speedScale = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugClouds)clone).solidFids = context.CloneArray(this.solidFids)!;
+        ((CPlugClouds)clone).bottomNearZ = context.Clone(this.bottomNearZ)!;
+        ((CPlugClouds)clone).bottomFarZ = context.Clone(this.bottomFarZ)!;
+        ((CPlugClouds)clone).imageColorMin = context.Clone(this.imageColorMin)!;
+        ((CPlugClouds)clone).imageColorMax = context.Clone(this.imageColorMax)!;
+        ((CPlugClouds)clone).lighting = context.Clone(this.lighting)!;
+        ((CPlugClouds)clone).pointHeights = context.CloneArray(this.pointHeights)!;
+        ((CPlugClouds)clone).heightCenter = context.Clone(this.heightCenter)!;
+        ((CPlugClouds)clone).heightCenterXZ = context.Clone(this.heightCenterXZ)!;
+        ((CPlugClouds)clone).speedScale = context.Clone(this.speedScale)!;
+    }
+
     public CPlugClouds()
     {
     }
@@ -146,6 +161,11 @@ public partial class CPlugClouds : CMwNod, IClass
     public partial class Chunk09180000 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
         {
@@ -163,6 +183,11 @@ public partial class CPlugClouds : CMwNod, IClass
     {
         public override uint Id => 0x09180002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
         {
             rw.Array<Vec2>(ref n.pointHeights!);
@@ -173,6 +198,11 @@ public partial class CPlugClouds : CMwNod, IClass
     public partial class Chunk09180003 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
         {
@@ -185,6 +215,11 @@ public partial class CPlugClouds : CMwNod, IClass
     public partial class Chunk09180004 : Chunk09180000
     {
         public override uint Id => 0x09180004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
         {

@@ -34,6 +34,13 @@ public partial class CPlugIndexBuffer : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09057000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugIndexBuffer)clone).Flags = context.Clone(this.Flags)!;
+        ((CPlugIndexBuffer)clone).Indices = context.CloneArray(this.Indices)!;
+    }
+
     public CPlugIndexBuffer()
     {
     }
@@ -42,12 +49,22 @@ public partial class CPlugIndexBuffer : CPlug, IClass
     public partial class Chunk09057000 : Chunk<CPlugIndexBuffer>
     {
         public override uint Id => 0x09057000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x09057001)]
     public partial class Chunk09057001 : Chunk<CPlugIndexBuffer>
     {
         public override uint Id => 0x09057001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

@@ -66,6 +66,15 @@ public partial class CGameAdvertising : CGameNod, IClass
         set => this.radial_Config = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameAdvertising)clone).files = context.CloneArray(this.files)!;
+        ((CGameAdvertising)clone).filesOrig = context.CloneArray(this.filesOrig)!;
+        ((CGameAdvertising)clone).mode = context.Clone(this.mode)!;
+        ((CGameAdvertising)clone).radial_Config = context.Clone(this.radial_Config)!;
+    }
+
     public CGameAdvertising()
     {
     }
@@ -74,6 +83,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     public partial class Chunk0303D001 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {
@@ -86,6 +100,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     {
         public override uint Id => 0x0303D002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef<CMwNod>(ref n.filesOrig!);
@@ -97,6 +116,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     {
         public override uint Id => 0x0303D003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EMode>(ref n.mode);
@@ -107,6 +131,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     public partial class Chunk0303D004 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {

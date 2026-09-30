@@ -34,6 +34,12 @@ public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
     [Hexadecimal]
     public static new uint Id => 0x0906A000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisualIndexed)clone).IndexBuffer = context.Clone(this.IndexBuffer)!;
+    }
+
     public CPlugVisualIndexed()
     {
     }
@@ -44,6 +50,11 @@ public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
     {
         public override uint Id => 0x0906A000;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0906A001)]
@@ -52,6 +63,11 @@ public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
     {
         public override uint Id => 0x0906A001;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

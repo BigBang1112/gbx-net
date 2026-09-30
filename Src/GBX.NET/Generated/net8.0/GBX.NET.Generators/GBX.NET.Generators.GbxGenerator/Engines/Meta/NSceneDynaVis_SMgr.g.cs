@@ -34,6 +34,11 @@ public partial class NSceneDynaVis_SMgr : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2F0CB000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public NSceneDynaVis_SMgr()
     {
     }

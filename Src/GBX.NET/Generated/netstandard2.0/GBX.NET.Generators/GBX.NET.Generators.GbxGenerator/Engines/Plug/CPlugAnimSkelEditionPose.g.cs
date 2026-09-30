@@ -34,6 +34,11 @@ public partial class CPlugAnimSkelEditionPose : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0913A000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugAnimSkelEditionPose()
     {
     }

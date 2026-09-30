@@ -48,6 +48,14 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
         set => this.options = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugItemPlacement_SPlacement)clone).iLayout = context.Clone(this.iLayout)!;
+        ((NPlugItemPlacement_SPlacement)clone).options = context.CloneArray(this.options)!;
+        ((NPlugItemPlacement_SPlacement)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugItemPlacement_SPlacement()
     {
     }

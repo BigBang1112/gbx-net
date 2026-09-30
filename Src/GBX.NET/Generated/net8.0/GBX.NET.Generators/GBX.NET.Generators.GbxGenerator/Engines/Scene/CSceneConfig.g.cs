@@ -34,6 +34,11 @@ public partial class CSceneConfig : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A040000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CSceneConfig()
     {
     }

@@ -37,6 +37,19 @@ public partial class CPlugEntRecordData : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0911F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugEntRecordData)clone).start = context.Clone(this.start)!;
+        ((CPlugEntRecordData)clone).end = context.Clone(this.end)!;
+        ((CPlugEntRecordData)clone).entRecordDescs = context.CloneArray(this.entRecordDescs)!;
+        ((CPlugEntRecordData)clone).noticeRecordDescs = context.CloneArray(this.noticeRecordDescs)!;
+        ((CPlugEntRecordData)clone).entList = context.CloneList(this.entList)!;
+        ((CPlugEntRecordData)clone).bulkNoticeList = context.CloneList(this.bulkNoticeList)!;
+        ((CPlugEntRecordData)clone).customModulesDeltaLists = context.CloneList(this.customModulesDeltaLists)!;
+        ((CPlugEntRecordData)clone).compressedData = context.Clone(this.compressedData)!;
+    }
+
     public CPlugEntRecordData()
     {
     }
@@ -45,9 +58,15 @@ public partial class CPlugEntRecordData : CMwNod, IClass
     public partial class Chunk0911F000 : Chunk<CPlugEntRecordData>
     {
         public override uint Id => 0x0911F000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0911F000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
-    public partial class EntRecordDesc : IReadableWritable, IReadable, IWritable
+    public partial class EntRecordDesc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private uint classId;
         public uint ClassId
@@ -91,6 +110,24 @@ public partial class CPlugEntRecordData : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EntRecordDesc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EntRecordDesc)clone).classId = context.Clone(this.classId)!;
+            ((EntRecordDesc)clone).u01 = context.Clone(this.u01)!;
+            ((EntRecordDesc)clone).u02 = context.Clone(this.u02)!;
+            ((EntRecordDesc)clone).u03 = context.Clone(this.u03)!;
+            ((EntRecordDesc)clone).u04 = context.CloneArray(this.u04)!;
+            ((EntRecordDesc)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.UInt32(ref this.classId);
@@ -114,7 +151,7 @@ public partial class CPlugEntRecordData : CMwNod, IClass
         }
     }
 
-    public partial class NoticeRecordDesc : IReadableWritable, IReadable, IWritable
+    public partial class NoticeRecordDesc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -135,6 +172,21 @@ public partial class CPlugEntRecordData : CMwNod, IClass
         {
             get => this.classId;
             set => this.classId = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (NoticeRecordDesc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((NoticeRecordDesc)clone).u01 = context.Clone(this.u01)!;
+            ((NoticeRecordDesc)clone).u02 = context.Clone(this.u02)!;
+            ((NoticeRecordDesc)clone).classId = context.Clone(this.classId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

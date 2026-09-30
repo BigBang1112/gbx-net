@@ -117,6 +117,20 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         set => this.compatibleZones = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZoneFrontier)clone).blockInfoFrontier = context.Clone(this.blockInfoFrontier)!;
+        ((CGameCtnZoneFrontier)clone).parentZoneId = context.Clone(this.parentZoneId)!;
+        ((CGameCtnZoneFrontier)clone).childZoneId = context.Clone(this.childZoneId)!;
+        ((CGameCtnZoneFrontier)clone).blockYOffsetFromParent = context.Clone(this.blockYOffsetFromParent)!;
+        ((CGameCtnZoneFrontier)clone).frontierParentBorder_AcceptPylons = context.Clone(this.frontierParentBorder_AcceptPylons)!;
+        ((CGameCtnZoneFrontier)clone).frontierChildBorder_AcceptPylons = context.Clone(this.frontierChildBorder_AcceptPylons)!;
+        ((CGameCtnZoneFrontier)clone).frontierTransitionMiddle_AcceptPylons = context.Clone(this.frontierTransitionMiddle_AcceptPylons)!;
+        ((CGameCtnZoneFrontier)clone).frontierStraightMiddle_AcceptPylons = context.Clone(this.frontierStraightMiddle_AcceptPylons)!;
+        ((CGameCtnZoneFrontier)clone).compatibleZones = context.CloneArray(this.compatibleZones)!;
+    }
+
     public CGameCtnZoneFrontier()
     {
     }
@@ -125,6 +139,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     public partial class Chunk0305E001 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
@@ -140,6 +159,12 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         public override uint Id => 0x0305E002;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305E002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -151,6 +176,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     public partial class Chunk0305E003 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
@@ -164,6 +194,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     {
         public override uint Id => 0x0305E004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
@@ -176,6 +211,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     public partial class Chunk0305E005 : SkippableChunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CMotionTrack : CMwCmdContainer, IClass
     [Hexadecimal]
     public static new uint Id => 0x08033000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMotionTrack()
     {
     }

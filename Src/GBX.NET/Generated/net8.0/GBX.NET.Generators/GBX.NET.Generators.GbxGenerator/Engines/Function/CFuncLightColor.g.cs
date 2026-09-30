@@ -69,6 +69,14 @@ public partial class CFuncLightColor : CFuncLight, IClass
 
     public CPlugFileImg? GetImage(GbxReadSettings settings = default, bool exceptions = false) => imageFile?.GetNode(ref image, settings, exceptions) ?? image;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncLightColor)clone).color0 = context.Clone(this.color0)!;
+        ((CFuncLightColor)clone).color1 = context.Clone(this.color1)!;
+        ((CFuncLightColor)clone).image = context.Clone(this.image)!;
+    }
+
     public CFuncLightColor()
     {
     }
@@ -77,6 +85,11 @@ public partial class CFuncLightColor : CFuncLight, IClass
     public partial class Chunk05019001 : Chunk<CFuncLightColor>
     {
         public override uint Id => 0x05019001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncLightColor n, GbxReaderWriter rw)
         {
@@ -89,6 +102,11 @@ public partial class CFuncLightColor : CFuncLight, IClass
     public partial class Chunk05019002 : Chunk05019001
     {
         public override uint Id => 0x05019002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncLightColor n, GbxReaderWriter rw)
         {

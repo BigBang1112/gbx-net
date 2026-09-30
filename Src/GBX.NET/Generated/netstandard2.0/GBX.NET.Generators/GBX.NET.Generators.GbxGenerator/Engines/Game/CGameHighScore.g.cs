@@ -82,6 +82,17 @@ public partial class CGameHighScore : CMwNod, IClass
         set => this.ghostUrl = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameHighScore)clone).time = context.Clone(this.time)!;
+        ((CGameHighScore)clone).rank = context.Clone(this.rank)!;
+        ((CGameHighScore)clone).count = context.Clone(this.count)!;
+        ((CGameHighScore)clone).name = context.Clone(this.name)!;
+        ((CGameHighScore)clone).score = context.Clone(this.score)!;
+        ((CGameHighScore)clone).ghostUrl = context.Clone(this.ghostUrl)!;
+    }
+
     public CGameHighScore()
     {
     }
@@ -91,6 +102,12 @@ public partial class CGameHighScore : CMwNod, IClass
     {
         public override uint Id => 0x03047002;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03047002)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameHighScore n, GbxReaderWriter rw)
         {
@@ -108,6 +125,12 @@ public partial class CGameHighScore : CMwNod, IClass
     {
         public override uint Id => 0x03047004;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03047004)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameHighScore n, GbxReaderWriter rw)
         {

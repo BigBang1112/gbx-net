@@ -162,6 +162,27 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         set => this.isNatural = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugMaterialUserInst)clone).isUsingGameMaterial = context.Clone(this.isUsingGameMaterial)!;
+        ((CPlugMaterialUserInst)clone).materialName = context.Clone(this.materialName)!;
+        ((CPlugMaterialUserInst)clone).model = context.Clone(this.model)!;
+        ((CPlugMaterialUserInst)clone).baseTexture = context.Clone(this.baseTexture)!;
+        ((CPlugMaterialUserInst)clone).surfacePhysicId = context.Clone(this.surfacePhysicId)!;
+        ((CPlugMaterialUserInst)clone).surfaceGameplayId = context.Clone(this.surfaceGameplayId)!;
+        ((CPlugMaterialUserInst)clone).link = context.Clone(this.link)!;
+        ((CPlugMaterialUserInst)clone).csts = context.CloneArray(this.csts)!;
+        ((CPlugMaterialUserInst)clone).color = context.CloneArray(this.color)!;
+        ((CPlugMaterialUserInst)clone).uvAnims = context.CloneArray(this.uvAnims)!;
+        ((CPlugMaterialUserInst)clone).userTextures = context.CloneArray(this.userTextures)!;
+        ((CPlugMaterialUserInst)clone).hidingGroup = context.Clone(this.hidingGroup)!;
+        ((CPlugMaterialUserInst)clone).tilingU = context.Clone(this.tilingU)!;
+        ((CPlugMaterialUserInst)clone).tilingV = context.Clone(this.tilingV)!;
+        ((CPlugMaterialUserInst)clone).textureSizeInMeters = context.Clone(this.textureSizeInMeters)!;
+        ((CPlugMaterialUserInst)clone).isNatural = context.Clone(this.isNatural)!;
+    }
+
     public CPlugMaterialUserInst()
     {
     }
@@ -174,6 +195,13 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090FD000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090FD000)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
@@ -261,6 +289,14 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public CPlugBitmapAtlas? U01;
         public int? U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090FD001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090FD001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090FD001)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -299,6 +335,13 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public int Version { get; set; }
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090FD002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090FD002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -306,7 +349,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         }
     }
 
-    public partial class Cst : IReadableWritable, IReadable, IWritable
+    public partial class Cst : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -329,6 +372,21 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
             set => this.u03 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Cst)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Cst)clone).u01 = context.Clone(this.u01)!;
+            ((Cst)clone).u02 = context.Clone(this.u02)!;
+            ((Cst)clone).u03 = context.Clone(this.u03)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.u01);
@@ -349,7 +407,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         }
     }
 
-    public partial class UvAnim : IReadableWritable, IReadable, IWritable
+    public partial class UvAnim : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -386,6 +444,23 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (UvAnim)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((UvAnim)clone).u01 = context.Clone(this.u01)!;
+            ((UvAnim)clone).u02 = context.Clone(this.u02)!;
+            ((UvAnim)clone).u03 = context.Clone(this.u03)!;
+            ((UvAnim)clone).u04 = context.Clone(this.u04)!;
+            ((UvAnim)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.u01);
@@ -412,7 +487,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         }
     }
 
-    public partial class UserTexture : IReadableWritable, IReadable, IWritable
+    public partial class UserTexture : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -426,6 +501,20 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         {
             get => this.texture;
             set => this.texture = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (UserTexture)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((UserTexture)clone).u01 = context.Clone(this.u01)!;
+            ((UserTexture)clone).texture = context.Clone(this.texture)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

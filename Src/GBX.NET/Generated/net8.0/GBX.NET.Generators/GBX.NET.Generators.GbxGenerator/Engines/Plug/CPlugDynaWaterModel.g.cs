@@ -34,6 +34,11 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0915F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugDynaWaterModel()
     {
     }
@@ -53,6 +58,22 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass
         public Keys? U08;
         public float U09;
         public CPlugSurface? U10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0915F000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0915F000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0915F000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0915F000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0915F000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0915F000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0915F000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0915F000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0915F000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0915F000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0915F000)clone).U10 = context.Clone(this.U10)!;
+        }
 
         public override void ReadWrite(CPlugDynaWaterModel n, GbxReaderWriter rw)
         {
@@ -74,8 +95,27 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass
         }
     }
 
-    public partial class Keys : IReadableWritable, IReadable, IWritable
+    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Keys)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Keys)clone).u01 = context.Clone(this.u01)!;
+            ((Keys)clone).u02 = context.Clone(this.u02)!;
+            ((Keys)clone).count = context.Clone(this.count)!;
+            ((Keys)clone).u03 = context.Clone(this.u03)!;
+            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
+            ((Keys)clone).u05 = context.Clone(this.u05)!;
+            ((Keys)clone).u06 = context.Clone(this.u06)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

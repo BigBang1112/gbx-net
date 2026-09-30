@@ -34,6 +34,11 @@ public partial class CGameCaptureZoneModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E00F000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCaptureZoneModel()
     {
     }

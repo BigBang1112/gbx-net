@@ -34,6 +34,11 @@ public partial class CPlugVisualQuads2D : CPlugVisual2D, IClass
     [Hexadecimal]
     public static new uint Id => 0x0904B000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugVisualQuads2D()
     {
     }

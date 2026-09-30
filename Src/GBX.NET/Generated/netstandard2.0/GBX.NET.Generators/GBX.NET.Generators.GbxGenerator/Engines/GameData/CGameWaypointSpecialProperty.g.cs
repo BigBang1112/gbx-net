@@ -58,6 +58,15 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
         set => this.tag = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameWaypointSpecialProperty)clone).spawn = context.Clone(this.spawn)!;
+        ((CGameWaypointSpecialProperty)clone).order = context.Clone(this.order)!;
+        ((CGameWaypointSpecialProperty)clone).tag = context.Clone(this.tag)!;
+        ((CGameWaypointSpecialProperty)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
+    }
+
     public CGameWaypointSpecialProperty()
     {
     }
@@ -67,6 +76,12 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     {
         public override uint Id => 0x2E009000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E009000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameWaypointSpecialProperty n, GbxReaderWriter rw)
         {
@@ -90,6 +105,12 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     public partial class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>
     {
         public override uint Id => 0x2E009001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E009001)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

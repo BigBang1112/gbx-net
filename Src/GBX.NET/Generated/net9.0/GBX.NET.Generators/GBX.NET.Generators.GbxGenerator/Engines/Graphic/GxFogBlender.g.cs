@@ -42,6 +42,12 @@ public partial class GxFogBlender : CMwNod, IClass
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxFogBlender)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public GxFogBlender()
     {
     }
@@ -53,6 +59,13 @@ public partial class GxFogBlender : CMwNod, IClass
         public bool U01;
         public int U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk04008000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk04008000)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(GxFogBlender n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
@@ -61,7 +74,7 @@ public partial class GxFogBlender : CMwNod, IClass
         }
     }
 
-    public partial class Key : IReadableWritable, IReadable, IWritable
+    public partial class Key : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -75,6 +88,20 @@ public partial class GxFogBlender : CMwNod, IClass
         {
             get => this.fog;
             set => this.fog = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).fog = context.Clone(this.fog)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, IClass, CG
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlock3dStereo)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlock3dStereo()
     {
     }
@@ -53,13 +59,18 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, IClass, CG
     {
         public override uint Id => 0x03024000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -80,6 +91,21 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, IClass, CG
         {
             get => this.screenDist;
             set => this.screenDist = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).upToMax = context.Clone(this.upToMax)!;
+            ((Key)clone).screenDist = context.Clone(this.screenDist)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -58,6 +58,14 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
         set => this.gravityCoef = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehiclePhyModelCustom)clone).accelCoef = context.Clone(this.accelCoef)!;
+        ((CPlugVehiclePhyModelCustom)clone).controlCoef = context.Clone(this.controlCoef)!;
+        ((CPlugVehiclePhyModelCustom)clone).gravityCoef = context.Clone(this.gravityCoef)!;
+    }
+
     public CPlugVehiclePhyModelCustom()
     {
     }
@@ -67,6 +75,12 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     {
         public override uint Id => 0x0911E000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0911E000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugVehiclePhyModelCustom n, GbxReaderWriter rw)
         {

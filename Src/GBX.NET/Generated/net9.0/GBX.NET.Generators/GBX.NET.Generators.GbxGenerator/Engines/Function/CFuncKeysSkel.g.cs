@@ -42,6 +42,12 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
         set => this.skel = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncKeysSkel)clone).skel = context.Clone(this.skel)!;
+    }
+
     public CFuncKeysSkel()
     {
     }
@@ -50,6 +56,11 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
     public partial class Chunk05006000 : Chunk<CFuncKeysSkel>
     {
         public override uint Id => 0x05006000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncKeysSkel n, GbxReaderWriter rw)
         {
@@ -61,9 +72,15 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
     public partial class Chunk05006001 : Chunk<CFuncKeysSkel>
     {
         public override uint Id => 0x05006001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05006001)clone).U01 = context.CloneArray(this.U01)!;
+        }
     }
 
-    public partial class Loc : IReadable, IWritable
+    public partial class Loc : IReadable, IWritable, IDeepCloneable
     {
         private Quat u01;
         public Quat U01
@@ -77,6 +94,20 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Loc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Loc)clone).u01 = context.Clone(this.u01)!;
+            ((Loc)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -34,6 +34,11 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     [Hexadecimal]
     public static new uint Id => 0x21085000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CVskCollection()
     {
     }
@@ -44,6 +49,13 @@ public partial class CVskCollection : CGameCtnCollection, IClass
         public override uint Id => 0x21085000;
         public CMwNod? U01;
         public CMwNod? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk21085000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk21085000)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CVskCollection n, GbxReaderWriter rw)
         {
@@ -60,6 +72,15 @@ public partial class CVskCollection : CGameCtnCollection, IClass
         public float U02;
         public float U03;
         public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk21085001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk21085001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk21085001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk21085001)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CVskCollection n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06026000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CHmsAmbientOcc()
     {
     }
@@ -48,6 +53,17 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
         public float U04;
         public float U05;
         public float U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06026000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06026000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06026000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06026000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk06026000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk06026000)clone).U06 = context.Clone(this.U06)!;
+        }
 
         public override void ReadWrite(CHmsAmbientOcc n, GbxReaderWriter rw)
         {

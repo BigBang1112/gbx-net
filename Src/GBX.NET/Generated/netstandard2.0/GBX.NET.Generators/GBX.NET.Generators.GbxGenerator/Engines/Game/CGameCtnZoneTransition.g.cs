@@ -123,6 +123,21 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         set => this.genealogy_West = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZoneTransition)clone).blockInfoTransition = context.Clone(this.blockInfoTransition)!;
+        ((CGameCtnZoneTransition)clone).replacementZoneId = context.Clone(this.replacementZoneId)!;
+        ((CGameCtnZoneTransition)clone).border_North = context.Clone(this.border_North)!;
+        ((CGameCtnZoneTransition)clone).genealogy_North = context.Clone(this.genealogy_North)!;
+        ((CGameCtnZoneTransition)clone).border_East = context.Clone(this.border_East)!;
+        ((CGameCtnZoneTransition)clone).genealogy_East = context.Clone(this.genealogy_East)!;
+        ((CGameCtnZoneTransition)clone).border_South = context.Clone(this.border_South)!;
+        ((CGameCtnZoneTransition)clone).genealogy_South = context.Clone(this.genealogy_South)!;
+        ((CGameCtnZoneTransition)clone).border_West = context.Clone(this.border_West)!;
+        ((CGameCtnZoneTransition)clone).genealogy_West = context.Clone(this.genealogy_West)!;
+    }
+
     public CGameCtnZoneTransition()
     {
     }
@@ -131,6 +146,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     public partial class Chunk0314D000 : Chunk<CGameCtnZoneTransition>
     {
         public override uint Id => 0x0314D000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
@@ -143,6 +163,12 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     {
         public override uint Id => 0x0314D005;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0314D005)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
@@ -157,6 +183,13 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override uint Id => 0x0314D006;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0314D006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0314D006)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
@@ -174,6 +207,15 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public string? U02;
         public string? U03;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0314D007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0314D007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0314D007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0314D007)clone).U03 = context.Clone(this.U03)!;
+        }
+
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -188,6 +230,12 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     {
         public override uint Id => 0x0314D008;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0314D008)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {

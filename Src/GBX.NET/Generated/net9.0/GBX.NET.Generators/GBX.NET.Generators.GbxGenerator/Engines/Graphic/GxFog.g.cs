@@ -34,6 +34,11 @@ public partial class GxFog : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04004000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public GxFog()
     {
     }
@@ -53,6 +58,22 @@ public partial class GxFog : CMwNod, IClass
         public float U09;
         public float U10;
         public float U11;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk04004000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk04004000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk04004000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk04004000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk04004000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk04004000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk04004000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk04004000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk04004000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk04004000)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk04004000)clone).U11 = context.Clone(this.U11)!;
+        }
 
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
@@ -76,6 +97,13 @@ public partial class GxFog : CMwNod, IClass
         public override uint Id => 0x04004001;
         public int Version { get; set; }
         public Vec3 U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk04004001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk04004001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {

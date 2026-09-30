@@ -34,6 +34,11 @@ public partial class CInputReplay : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x1300D000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CInputReplay()
     {
     }
@@ -42,6 +47,11 @@ public partial class CInputReplay : CMwNod, IClass
     public partial class Chunk1300D000 : Chunk<CInputReplay>
     {
         public override uint Id => 0x1300D000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

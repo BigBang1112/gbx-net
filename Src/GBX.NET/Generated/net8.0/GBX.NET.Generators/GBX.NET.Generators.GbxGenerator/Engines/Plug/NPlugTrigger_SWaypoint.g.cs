@@ -64,6 +64,15 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
         set => this.noRespawn = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugTrigger_SWaypoint)clone).@type = context.Clone(this.@type)!;
+        ((NPlugTrigger_SWaypoint)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((NPlugTrigger_SWaypoint)clone).noRespawn = context.Clone(this.noRespawn)!;
+        ((NPlugTrigger_SWaypoint)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugTrigger_SWaypoint()
     {
     }

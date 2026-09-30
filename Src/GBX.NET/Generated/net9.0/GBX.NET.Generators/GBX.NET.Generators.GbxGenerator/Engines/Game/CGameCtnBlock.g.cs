@@ -72,6 +72,30 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         set => this.decalVariant = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnBlock)clone).author = context.Clone(this.author)!;
+        ((CGameCtnBlock)clone).phyCharSpecialProperty = context.Clone(this.phyCharSpecialProperty)!;
+        ((CGameCtnBlock)clone).squareCardEventIds = context.CloneArray(this.squareCardEventIds)!;
+        ((CGameCtnBlock)clone).decalIntensity = context.Clone(this.decalIntensity)!;
+        ((CGameCtnBlock)clone).decalVariant = context.Clone(this.decalVariant)!;
+        ((CGameCtnBlock)clone).name = context.Clone(this.name)!;
+        ((CGameCtnBlock)clone).blockModel = context.Clone(this.blockModel)!;
+        ((CGameCtnBlock)clone).coord = context.Clone(this.coord)!;
+        ((CGameCtnBlock)clone).flags = context.Clone(this.flags)!;
+        ((CGameCtnBlock)clone).skin = context.Clone(this.skin)!;
+        ((CGameCtnBlock)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
+        ((CGameCtnBlock)clone).decalId = context.Clone(this.decalId)!;
+        ((CGameCtnBlock)clone).Direction = context.Clone(this.Direction)!;
+        ((CGameCtnBlock)clone).AbsolutePositionInMap = context.Clone(this.AbsolutePositionInMap)!;
+        ((CGameCtnBlock)clone).YawPitchRoll = context.Clone(this.YawPitchRoll)!;
+        ((CGameCtnBlock)clone).Color = context.Clone(this.Color)!;
+        ((CGameCtnBlock)clone).LightmapQuality = context.Clone(this.LightmapQuality)!;
+        ((CGameCtnBlock)clone).MacroblockReference = context.Clone(this.MacroblockReference)!;
+        ((CGameCtnBlock)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
+    }
+
     public virtual void Read(GbxReader r, int v = 0)
     {
         this.name = r.ReadId();
@@ -174,9 +198,14 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     {
         public override uint Id => 0x03057002;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class SSquareCardEventIds : IReadable, IWritable
+    public partial class SSquareCardEventIds : IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -197,6 +226,21 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         {
             get => this.u03;
             set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SSquareCardEventIds)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SSquareCardEventIds)clone).u01 = context.Clone(this.u01)!;
+            ((SSquareCardEventIds)clone).u02 = context.Clone(this.u02)!;
+            ((SSquareCardEventIds)clone).u03 = context.CloneArray(this.u03)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

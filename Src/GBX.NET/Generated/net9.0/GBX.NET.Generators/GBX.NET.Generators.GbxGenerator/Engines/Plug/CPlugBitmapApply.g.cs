@@ -34,6 +34,11 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
     [Hexadecimal]
     public static new uint Id => 0x09012000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugBitmapApply()
     {
     }
@@ -44,6 +49,13 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
         public override uint Id => 0x09012003;
         public int U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09012003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09012003)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugBitmapApply n, GbxReaderWriter rw)
         {
@@ -57,6 +69,12 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
     {
         public override uint Id => 0x09012004;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09012004)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugBitmapApply n, GbxReaderWriter rw)
         {

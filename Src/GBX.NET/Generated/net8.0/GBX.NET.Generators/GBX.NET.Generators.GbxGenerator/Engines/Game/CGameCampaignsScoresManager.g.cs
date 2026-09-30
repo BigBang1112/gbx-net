@@ -66,6 +66,15 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
         set => this.skillScoreComputer = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCampaignsScoresManager)clone).challengeScores = context.CloneArray(this.challengeScores)!;
+        ((CGameCampaignsScoresManager)clone).campaignScores = context.CloneArray(this.campaignScores)!;
+        ((CGameCampaignsScoresManager)clone).generalScores = context.Clone(this.generalScores)!;
+        ((CGameCampaignsScoresManager)clone).skillScoreComputer = context.Clone(this.skillScoreComputer)!;
+    }
+
     public CGameCampaignsScoresManager()
     {
     }
@@ -74,6 +83,11 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     public partial class Chunk03061000 : Chunk<CGameCampaignsScoresManager>
     {
         public override uint Id => 0x03061000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCampaignsScoresManager n, GbxReaderWriter rw)
         {
@@ -89,6 +103,12 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     {
         public override uint Id => 0x03061001;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03061001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCampaignsScoresManager n, GbxReaderWriter rw)
         {

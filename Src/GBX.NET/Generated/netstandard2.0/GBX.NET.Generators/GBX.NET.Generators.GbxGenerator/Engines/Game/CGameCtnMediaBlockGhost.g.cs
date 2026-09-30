@@ -102,6 +102,19 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         set => this.forceHue = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockGhost)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockGhost)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockGhost)clone).ghostModel = context.Clone(this.ghostModel)!;
+        ((CGameCtnMediaBlockGhost)clone).startOffset = context.Clone(this.startOffset)!;
+        ((CGameCtnMediaBlockGhost)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockGhost)clone).noDamage = context.Clone(this.noDamage)!;
+        ((CGameCtnMediaBlockGhost)clone).forceLight = context.Clone(this.forceLight)!;
+        ((CGameCtnMediaBlockGhost)clone).forceHue = context.Clone(this.forceHue)!;
+    }
+
     public CGameCtnMediaBlockGhost()
     {
     }
@@ -125,6 +138,11 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     {
         public override uint Id => 0x030E5001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockGhost n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -139,6 +157,12 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     {
         public override uint Id => 0x030E5002;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030E5002)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockGhost n, GbxReaderWriter rw)
         {
@@ -163,7 +187,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -177,6 +201,20 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             get => this.lightIntensity;
             set => this.lightIntensity = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).lightIntensity = context.Clone(this.lightIntensity)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

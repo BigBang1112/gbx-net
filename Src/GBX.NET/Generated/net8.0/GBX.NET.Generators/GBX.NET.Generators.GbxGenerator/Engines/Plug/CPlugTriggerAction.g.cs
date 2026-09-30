@@ -146,6 +146,27 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
         set => this.u16 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugTriggerAction)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugTriggerAction)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugTriggerAction)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugTriggerAction)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugTriggerAction)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugTriggerAction)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugTriggerAction)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugTriggerAction)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugTriggerAction)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugTriggerAction)clone).u10 = context.Clone(this.u10)!;
+        ((CPlugTriggerAction)clone).u11 = context.Clone(this.u11)!;
+        ((CPlugTriggerAction)clone).u12 = context.Clone(this.u12)!;
+        ((CPlugTriggerAction)clone).u13 = context.Clone(this.u13)!;
+        ((CPlugTriggerAction)clone).u14 = context.Clone(this.u14)!;
+        ((CPlugTriggerAction)clone).u15 = context.Clone(this.u15)!;
+        ((CPlugTriggerAction)clone).u16 = context.Clone(this.u16)!;
+    }
+
     public CPlugTriggerAction()
     {
     }

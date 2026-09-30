@@ -101,6 +101,16 @@ public partial class CPlugWeatherModel : CMwNod, IClass
 
     public CPlugMoodSetting? GetMoodSetting(GbxReadSettings settings = default, bool exceptions = false) => moodSettingFile?.GetNode(ref moodSetting, settings, exceptions) ?? moodSetting;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugWeatherModel)clone).weathers = context.CloneArray(this.weathers)!;
+        ((CPlugWeatherModel)clone).bitmapSpecularDir = context.Clone(this.bitmapSpecularDir)!;
+        ((CPlugWeatherModel)clone).funcDayTime = context.Clone(this.funcDayTime)!;
+        ((CPlugWeatherModel)clone).bitmapWaterFog = context.Clone(this.bitmapWaterFog)!;
+        ((CPlugWeatherModel)clone).moodSetting = context.Clone(this.moodSetting)!;
+    }
+
     public CPlugWeatherModel()
     {
     }
@@ -109,6 +119,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     public partial class Chunk090BF001 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
@@ -122,6 +137,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     {
         public override uint Id => 0x090BF002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncDayTime>(ref n.funcDayTime, ref n.funcDayTimeFile);
@@ -133,6 +153,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     {
         public override uint Id => 0x090BF003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugBitmap>(ref n.bitmapWaterFog, ref n.bitmapWaterFogFile);
@@ -143,6 +168,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     public partial class Chunk090BF004 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {

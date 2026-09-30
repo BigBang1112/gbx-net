@@ -34,6 +34,11 @@ public partial class CGameCtnBlockInfoClassic : CGameCtnBlockInfo, IClass
     [Hexadecimal]
     public static new uint Id => 0x03051000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnBlockInfoClassic()
     {
     }

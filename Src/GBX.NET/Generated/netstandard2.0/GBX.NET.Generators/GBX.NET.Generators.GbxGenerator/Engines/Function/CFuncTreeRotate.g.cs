@@ -58,6 +58,14 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
         set => this.angleMax = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncTreeRotate)clone).axis = context.Clone(this.axis)!;
+        ((CFuncTreeRotate)clone).angleMin = context.Clone(this.angleMin)!;
+        ((CFuncTreeRotate)clone).angleMax = context.Clone(this.angleMax)!;
+    }
+
     public CFuncTreeRotate()
     {
     }
@@ -68,6 +76,11 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
     {
         public override uint Id => 0x0501E001;
         public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncTreeRotate n, GbxReaderWriter rw)
         {

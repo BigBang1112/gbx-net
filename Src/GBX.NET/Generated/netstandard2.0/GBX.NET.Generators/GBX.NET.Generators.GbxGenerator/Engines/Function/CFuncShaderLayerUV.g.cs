@@ -42,6 +42,12 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         set => this.layerName = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncShaderLayerUV)clone).layerName = context.Clone(this.layerName)!;
+    }
+
     public CFuncShaderLayerUV()
     {
     }
@@ -51,6 +57,12 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     {
         public override uint Id => 0x05015005;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015005)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
@@ -66,6 +78,13 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public Vec2 U01;
         public Vec2 U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015009)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015009)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             rw.Vec2(ref U01);
@@ -78,6 +97,12 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     {
         public override uint Id => 0x0501500A;
         public Vec2 U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0501500A)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
@@ -93,6 +118,14 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public Vec2 U01;
         public Vec2 U02;
         public Vec2 U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0501500D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0501500D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0501500D)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
@@ -113,6 +146,17 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public bool U05;
         public CMwNod? U06;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015011)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015011)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk05015011)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk05015011)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk05015011)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk05015011)clone).U06 = context.Clone(this.U06)!;
+        }
+
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -131,6 +175,13 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public int U01;
         public int U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015012)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015012)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -142,6 +193,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     public partial class Chunk05015013 : Chunk0501500A
     {
         public override uint Id => 0x05015013;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x05015014)]
@@ -151,6 +207,14 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public Vec2 U01;
         public float U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015014)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015014)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk05015014)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
@@ -169,6 +233,15 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public int U03;
         public int U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015015)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015015)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk05015015)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk05015015)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -183,6 +256,12 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     {
         public override uint Id => 0x05015016;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015016)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {

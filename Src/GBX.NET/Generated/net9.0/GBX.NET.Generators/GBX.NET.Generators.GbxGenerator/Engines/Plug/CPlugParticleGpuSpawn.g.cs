@@ -42,6 +42,12 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
         set => this.spawn = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugParticleGpuSpawn)clone).spawn = context.Clone(this.spawn)!;
+    }
+
     public CPlugParticleGpuSpawn()
     {
     }
@@ -52,6 +58,13 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
         public override uint Id => 0x090C5000;
         public int Version { get; set; }
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C5000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C5000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugParticleGpuSpawn n, GbxReaderWriter rw)
         {
@@ -69,7 +82,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
         }
     }
 
-    public partial class ParticleGpuSpawn : IReadableWritable, IReadable, IWritable
+    public partial class ParticleGpuSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int version = 4;
         public int Version
@@ -300,6 +313,51 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
         {
             get => this.u32;
             set => this.u32 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ParticleGpuSpawn)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ParticleGpuSpawn)clone).version = context.Clone(this.version)!;
+            ((ParticleGpuSpawn)clone).u01 = context.Clone(this.u01)!;
+            ((ParticleGpuSpawn)clone).u02 = context.Clone(this.u02)!;
+            ((ParticleGpuSpawn)clone).u03 = context.Clone(this.u03)!;
+            ((ParticleGpuSpawn)clone).u04 = context.Clone(this.u04)!;
+            ((ParticleGpuSpawn)clone).u05 = context.Clone(this.u05)!;
+            ((ParticleGpuSpawn)clone).u06 = context.Clone(this.u06)!;
+            ((ParticleGpuSpawn)clone).u07 = context.Clone(this.u07)!;
+            ((ParticleGpuSpawn)clone).u08 = context.Clone(this.u08)!;
+            ((ParticleGpuSpawn)clone).u09 = context.Clone(this.u09)!;
+            ((ParticleGpuSpawn)clone).u10 = context.Clone(this.u10)!;
+            ((ParticleGpuSpawn)clone).u11 = context.Clone(this.u11)!;
+            ((ParticleGpuSpawn)clone).u12 = context.Clone(this.u12)!;
+            ((ParticleGpuSpawn)clone).u13 = context.Clone(this.u13)!;
+            ((ParticleGpuSpawn)clone).u14 = context.Clone(this.u14)!;
+            ((ParticleGpuSpawn)clone).u15 = context.Clone(this.u15)!;
+            ((ParticleGpuSpawn)clone).u16 = context.Clone(this.u16)!;
+            ((ParticleGpuSpawn)clone).u17 = context.Clone(this.u17)!;
+            ((ParticleGpuSpawn)clone).u18 = context.Clone(this.u18)!;
+            ((ParticleGpuSpawn)clone).u19 = context.Clone(this.u19)!;
+            ((ParticleGpuSpawn)clone).u20 = context.Clone(this.u20)!;
+            ((ParticleGpuSpawn)clone).u21 = context.Clone(this.u21)!;
+            ((ParticleGpuSpawn)clone).u22 = context.Clone(this.u22)!;
+            ((ParticleGpuSpawn)clone).u23 = context.Clone(this.u23)!;
+            ((ParticleGpuSpawn)clone).u24 = context.Clone(this.u24)!;
+            ((ParticleGpuSpawn)clone).u25 = context.Clone(this.u25)!;
+            ((ParticleGpuSpawn)clone).u26 = context.Clone(this.u26)!;
+            ((ParticleGpuSpawn)clone).u27 = context.Clone(this.u27)!;
+            ((ParticleGpuSpawn)clone).u28 = context.Clone(this.u28)!;
+            ((ParticleGpuSpawn)clone).u29 = context.Clone(this.u29)!;
+            ((ParticleGpuSpawn)clone).u30 = context.Clone(this.u30)!;
+            ((ParticleGpuSpawn)clone).u31 = context.Clone(this.u31)!;
+            ((ParticleGpuSpawn)clone).u32 = context.Clone(this.u32)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

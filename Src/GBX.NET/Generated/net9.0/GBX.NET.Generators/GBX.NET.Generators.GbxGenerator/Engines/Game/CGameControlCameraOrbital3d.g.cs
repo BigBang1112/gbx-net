@@ -185,6 +185,28 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         set => this.defaultRadius = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameControlCameraOrbital3d)clone).radiusScale = context.Clone(this.radiusScale)!;
+        ((CGameControlCameraOrbital3d)clone).rotateSpeed = context.Clone(this.rotateSpeed)!;
+        ((CGameControlCameraOrbital3d)clone).occlusionIsEnable = context.Clone(this.occlusionIsEnable)!;
+        ((CGameControlCameraOrbital3d)clone).mouseBorderMoveSize = context.Clone(this.mouseBorderMoveSize)!;
+        ((CGameControlCameraOrbital3d)clone).occlusionTargetRadius = context.Clone(this.occlusionTargetRadius)!;
+        ((CGameControlCameraOrbital3d)clone).occlusionDistFromHit = context.Clone(this.occlusionDistFromHit)!;
+        ((CGameControlCameraOrbital3d)clone).radius = context.Clone(this.radius)!;
+        ((CGameControlCameraOrbital3d)clone).latitude = context.Clone(this.latitude)!;
+        ((CGameControlCameraOrbital3d)clone).longitude = context.Clone(this.longitude)!;
+        ((CGameControlCameraOrbital3d)clone).radiusMin = context.Clone(this.radiusMin)!;
+        ((CGameControlCameraOrbital3d)clone).radiusMax = context.Clone(this.radiusMax)!;
+        ((CGameControlCameraOrbital3d)clone).latitudeMin = context.Clone(this.latitudeMin)!;
+        ((CGameControlCameraOrbital3d)clone).latitudeMax = context.Clone(this.latitudeMax)!;
+        ((CGameControlCameraOrbital3d)clone).wheelSensitivity = context.Clone(this.wheelSensitivity)!;
+        ((CGameControlCameraOrbital3d)clone).fovKeySensitivity = context.Clone(this.fovKeySensitivity)!;
+        ((CGameControlCameraOrbital3d)clone).zoomKeySensitivity = context.Clone(this.zoomKeySensitivity)!;
+        ((CGameControlCameraOrbital3d)clone).defaultRadius = context.Clone(this.defaultRadius)!;
+    }
+
     public CGameControlCameraOrbital3d()
     {
     }
@@ -197,6 +219,15 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         public bool U02;
         public float U03;
         public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306E001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0306E001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0306E001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0306E001)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
@@ -226,6 +257,12 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         public override uint Id => 0x0306E002;
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306E002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
@@ -237,6 +274,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     {
         public override uint Id => 0x0306E003;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
             rw.Single(ref n.wheelSensitivity);
@@ -247,6 +289,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     public partial class Chunk0306E004 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
@@ -261,6 +308,14 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         public bool U01;
         public bool U02;
         public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306E005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0306E005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0306E005)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
@@ -290,6 +345,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     {
         public override uint Id => 0x0306E006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {
             rw.Single(ref n.zoomKeySensitivity);
@@ -300,6 +360,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     public partial class Chunk0306E007 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
         {

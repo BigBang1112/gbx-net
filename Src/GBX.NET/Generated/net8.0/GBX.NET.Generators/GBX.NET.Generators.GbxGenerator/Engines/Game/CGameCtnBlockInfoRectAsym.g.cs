@@ -34,6 +34,11 @@ public partial class CGameCtnBlockInfoRectAsym : CGameCtnBlockInfo, IClass
     [Hexadecimal]
     public static new uint Id => 0x03056000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnBlockInfoRectAsym()
     {
     }

@@ -119,6 +119,20 @@ public partial class GxLight : CMwNod, IClass
         set => this.specularPower = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((GxLight)clone).color = context.Clone(this.color)!;
+        ((GxLight)clone).intensity = context.Clone(this.intensity)!;
+        ((GxLight)clone).flags = context.Clone(this.flags)!;
+        ((GxLight)clone).shadowIntensity = context.Clone(this.shadowIntensity)!;
+        ((GxLight)clone).flareIntensity = context.Clone(this.flareIntensity)!;
+        ((GxLight)clone).shadowRGB = context.Clone(this.shadowRGB)!;
+        ((GxLight)clone).diffuseIntensity = context.Clone(this.diffuseIntensity)!;
+        ((GxLight)clone).specularIntens = context.Clone(this.specularIntens)!;
+        ((GxLight)clone).specularPower = context.Clone(this.specularPower)!;
+    }
+
     public GxLight()
     {
     }
@@ -127,6 +141,11 @@ public partial class GxLight : CMwNod, IClass
     public partial class Chunk04001008 : Chunk<GxLight>
     {
         public override uint Id => 0x04001008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLight n, GbxReaderWriter rw)
         {
@@ -143,6 +162,11 @@ public partial class GxLight : CMwNod, IClass
     public partial class Chunk04001009 : Chunk<GxLight>
     {
         public override uint Id => 0x04001009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(GxLight n, GbxReaderWriter rw)
         {
@@ -163,6 +187,12 @@ public partial class GxLight : CMwNod, IClass
     {
         public override uint Id => 0x0400100A;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0400100A)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(GxLight n, GbxReaderWriter rw)
         {

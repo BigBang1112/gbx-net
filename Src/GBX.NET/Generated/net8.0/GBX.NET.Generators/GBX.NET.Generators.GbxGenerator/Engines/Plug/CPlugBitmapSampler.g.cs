@@ -69,6 +69,13 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
     public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapSampler)clone).name = context.Clone(this.name)!;
+        ((CPlugBitmapSampler)clone).bitmap = context.Clone(this.bitmap)!;
+    }
+
     public CPlugBitmapSampler()
     {
     }
@@ -79,6 +86,13 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         public override uint Id => 0x0907E002;
         public uint U01;
         public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907E002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0907E002)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
@@ -93,24 +107,45 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     public partial class Chunk0907E005 : Chunk0907E002
     {
         public override uint Id => 0x0907E005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0907E006)]
     public partial class Chunk0907E006 : Chunk0907E002
     {
         public override uint Id => 0x0907E006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0907E007)]
     public partial class Chunk0907E007 : Chunk0907E002
     {
         public override uint Id => 0x0907E007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0907E008)]
     public partial class Chunk0907E008 : Chunk0907E002
     {
         public override uint Id => 0x0907E008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907E008)clone).U04 = context.Clone(this.U04)!;
+        }
     }
 
     [Chunk(0x0907E00B)]
@@ -118,6 +153,12 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     {
         public override uint Id => 0x0907E00B;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907E00B)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {

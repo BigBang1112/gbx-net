@@ -43,6 +43,12 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockMusicEffect)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockMusicEffect()
     {
     }
@@ -53,6 +59,11 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
     public partial class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
     {
         public override uint Id => 0x030A6000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GbxReaderWriter rw)
         {
@@ -65,13 +76,18 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
     {
         public override uint Id => 0x030A6001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!, version: 1);
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -92,6 +108,21 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
         {
             get => this.soundVolume;
             set => this.soundVolume = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).musicVolume = context.Clone(this.musicVolume)!;
+            ((Key)clone).soundVolume = context.Clone(this.soundVolume)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

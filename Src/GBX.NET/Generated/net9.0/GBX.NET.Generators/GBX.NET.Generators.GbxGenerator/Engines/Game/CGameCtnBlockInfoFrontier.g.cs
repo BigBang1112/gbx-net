@@ -34,6 +34,11 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
     [Hexadecimal]
     public static new uint Id => 0x03050000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CGameCtnBlockInfoFrontier()
     {
     }
@@ -43,6 +48,12 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
     {
         public override uint Id => 0x03050000;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03050000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnBlockInfoFrontier n, GbxReaderWriter rw)
         {

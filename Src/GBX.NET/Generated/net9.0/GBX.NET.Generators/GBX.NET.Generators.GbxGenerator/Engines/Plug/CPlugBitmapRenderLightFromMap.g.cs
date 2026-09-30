@@ -114,6 +114,21 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
         set => this.remapMax_DayDir = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugBitmapRenderLightFromMap)clone).objectCountPerAxisMin = context.Clone(this.objectCountPerAxisMin)!;
+        ((CPlugBitmapRenderLightFromMap)clone).objectCountPerAxisMax = context.Clone(this.objectCountPerAxisMax)!;
+        ((CPlugBitmapRenderLightFromMap)clone).cameraNearZ_FactorInObject = context.Clone(this.cameraNearZ_FactorInObject)!;
+        ((CPlugBitmapRenderLightFromMap)clone).cameraFarZ_ToAdd = context.Clone(this.cameraFarZ_ToAdd)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMin_Night = context.Clone(this.remapMin_Night)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMax_Night = context.Clone(this.remapMax_Night)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMin_DayAmb = context.Clone(this.remapMin_DayAmb)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMax_DayAmb = context.Clone(this.remapMax_DayAmb)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMin_DayDir = context.Clone(this.remapMin_DayDir)!;
+        ((CPlugBitmapRenderLightFromMap)clone).remapMax_DayDir = context.Clone(this.remapMax_DayDir)!;
+    }
+
     public CPlugBitmapRenderLightFromMap()
     {
     }
@@ -122,6 +137,11 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     public partial class Chunk09021001 : Chunk<CPlugBitmapRenderLightFromMap>
     {
         public override uint Id => 0x09021001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugBitmapRenderLightFromMap n, GbxReaderWriter rw)
         {

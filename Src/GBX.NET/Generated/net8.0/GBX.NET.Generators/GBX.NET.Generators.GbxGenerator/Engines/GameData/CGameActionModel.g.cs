@@ -202,6 +202,32 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.soundBlocks = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameActionModel)clone).useVehicleGuns = context.Clone(this.useVehicleGuns)!;
+        ((CGameActionModel)clone).bulletModels_Nadeo = context.CloneArray(this.bulletModels_Nadeo)!;
+        ((CGameActionModel)clone).actionName = context.Clone(this.actionName)!;
+        ((CGameActionModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
+        ((CGameActionModel)clone).spriteBlockVersion = context.Clone(this.spriteBlockVersion)!;
+        ((CGameActionModel)clone).spriteBlocks = context.CloneArray(this.spriteBlocks)!;
+        ((CGameActionModel)clone).description = context.Clone(this.description)!;
+        ((CGameActionModel)clone).beamVersion = context.Clone(this.beamVersion)!;
+        ((CGameActionModel)clone).beams = context.CloneArray(this.beams)!;
+        ((CGameActionModel)clone).cooldown = context.Clone(this.cooldown)!;
+        ((CGameActionModel)clone).scriptParamsVersion = context.Clone(this.scriptParamsVersion)!;
+        ((CGameActionModel)clone).actionScriptEffectVersion = context.Clone(this.actionScriptEffectVersion)!;
+        ((CGameActionModel)clone).actionScriptEffects = context.CloneArray(this.actionScriptEffects)!;
+        ((CGameActionModel)clone).customBulletVersion = context.Clone(this.customBulletVersion)!;
+        ((CGameActionModel)clone).projectiles = context.CloneArray(this.projectiles)!;
+        ((CGameActionModel)clone).anim = context.Clone(this.anim)!;
+        ((CGameActionModel)clone).script = context.Clone(this.script)!;
+        ((CGameActionModel)clone).icon = context.Clone(this.icon)!;
+        ((CGameActionModel)clone).crosshair = context.Clone(this.crosshair)!;
+        ((CGameActionModel)clone).particleBlocks = context.CloneArray(this.particleBlocks)!;
+        ((CGameActionModel)clone).soundBlocks = context.CloneArray(this.soundBlocks)!;
+    }
+
     public CGameActionModel()
     {
     }
@@ -233,6 +259,34 @@ public partial class CGameActionModel : CMwNod, IClass
         public int U20;
         public int U21;
         public bool U22;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E008000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E008000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E008000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E008000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E008000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E008000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk2E008000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk2E008000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E008000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk2E008000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk2E008000)clone).U10 = context.CloneArray(this.U10)!;
+            ((Chunk2E008000)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk2E008000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk2E008000)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk2E008000)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk2E008000)clone).U99 = context.Clone(this.U99)!;
+            ((Chunk2E008000)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk2E008000)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk2E008000)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk2E008000)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk2E008000)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk2E008000)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk2E008000)clone).U22 = context.Clone(this.U22)!;
+        }
 
         public override void ReadWrite(CGameActionModel n, GbxReaderWriter rw)
         {
@@ -420,7 +474,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class SpriteBlock : IReadableWritable, IReadable, IWritable
+    public partial class SpriteBlock : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private SpriteKey[]? keys;
         public SpriteKey[]? Keys
@@ -441,6 +495,21 @@ public partial class CGameActionModel : CMwNod, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SpriteBlock)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SpriteBlock)clone).keys = context.CloneArray(this.keys)!;
+            ((SpriteBlock)clone).u01 = context.Clone(this.u01)!;
+            ((SpriteBlock)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -467,7 +536,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class SpriteKey : IReadableWritable, IReadable, IWritable
+    public partial class SpriteKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private float u01;
         public float U01
@@ -504,6 +573,23 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u05 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SpriteKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SpriteKey)clone).u01 = context.Clone(this.u01)!;
+            ((SpriteKey)clone).u02 = context.Clone(this.u02)!;
+            ((SpriteKey)clone).u03 = context.Clone(this.u03)!;
+            ((SpriteKey)clone).u04 = context.Clone(this.u04)!;
+            ((SpriteKey)clone).u05 = context.Clone(this.u05)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Single(ref this.u01);
@@ -526,7 +612,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ScriptParams : IReadableWritable, IReadable, IWritable
+    public partial class ScriptParams : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -724,6 +810,46 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u28 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ScriptParams)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ScriptParams)clone).u01 = context.Clone(this.u01)!;
+            ((ScriptParams)clone).u02 = context.Clone(this.u02)!;
+            ((ScriptParams)clone).u03 = context.Clone(this.u03)!;
+            ((ScriptParams)clone).u04 = context.Clone(this.u04)!;
+            ((ScriptParams)clone).u05 = context.Clone(this.u05)!;
+            ((ScriptParams)clone).u06 = context.Clone(this.u06)!;
+            ((ScriptParams)clone).u07 = context.Clone(this.u07)!;
+            ((ScriptParams)clone).u08 = context.Clone(this.u08)!;
+            ((ScriptParams)clone).u09 = context.Clone(this.u09)!;
+            ((ScriptParams)clone).u10 = context.Clone(this.u10)!;
+            ((ScriptParams)clone).u11 = context.Clone(this.u11)!;
+            ((ScriptParams)clone).u12 = context.Clone(this.u12)!;
+            ((ScriptParams)clone).u13 = context.Clone(this.u13)!;
+            ((ScriptParams)clone).u14 = context.Clone(this.u14)!;
+            ((ScriptParams)clone).u15 = context.Clone(this.u15)!;
+            ((ScriptParams)clone).u16 = context.Clone(this.u16)!;
+            ((ScriptParams)clone).u17 = context.Clone(this.u17)!;
+            ((ScriptParams)clone).u18 = context.Clone(this.u18)!;
+            ((ScriptParams)clone).u19 = context.Clone(this.u19)!;
+            ((ScriptParams)clone).u20 = context.Clone(this.u20)!;
+            ((ScriptParams)clone).u21 = context.Clone(this.u21)!;
+            ((ScriptParams)clone).u22 = context.Clone(this.u22)!;
+            ((ScriptParams)clone).u23 = context.Clone(this.u23)!;
+            ((ScriptParams)clone).u24 = context.Clone(this.u24)!;
+            ((ScriptParams)clone).u25 = context.Clone(this.u25)!;
+            ((ScriptParams)clone).u26 = context.Clone(this.u26)!;
+            ((ScriptParams)clone).u27 = context.Clone(this.u27)!;
+            ((ScriptParams)clone).u28 = context.Clone(this.u28)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v <= 2)
@@ -787,7 +913,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ActionScriptEffect : IReadableWritable, IReadable, IWritable
+    public partial class ActionScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int @type;
         public int Type
@@ -822,6 +948,23 @@ public partial class CGameActionModel : CMwNod, IClass
         {
             get => this.projEffect;
             set => this.projEffect = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ActionScriptEffect)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ActionScriptEffect)clone).@type = context.Clone(this.@type)!;
+            ((ActionScriptEffect)clone).animEffect = context.Clone(this.animEffect)!;
+            ((ActionScriptEffect)clone).effectEffect = context.Clone(this.effectEffect)!;
+            ((ActionScriptEffect)clone).buffEffect = context.Clone(this.buffEffect)!;
+            ((ActionScriptEffect)clone).projEffect = context.Clone(this.projEffect)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -862,7 +1005,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class AnimScriptEffect : IReadableWritable, IReadable, IWritable
+    public partial class AnimScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -920,6 +1063,26 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u08 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (AnimScriptEffect)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((AnimScriptEffect)clone).u01 = context.Clone(this.u01)!;
+            ((AnimScriptEffect)clone).u02 = context.Clone(this.u02)!;
+            ((AnimScriptEffect)clone).u03 = context.Clone(this.u03)!;
+            ((AnimScriptEffect)clone).u04 = context.Clone(this.u04)!;
+            ((AnimScriptEffect)clone).u05 = context.Clone(this.u05)!;
+            ((AnimScriptEffect)clone).u06 = context.Clone(this.u06)!;
+            ((AnimScriptEffect)clone).u07 = context.Clone(this.u07)!;
+            ((AnimScriptEffect)clone).u08 = context.Clone(this.u08)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -945,7 +1108,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class EffectScriptEffect : IReadableWritable, IReadable, IWritable
+    public partial class EffectScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool u01;
         public bool U01
@@ -1066,6 +1229,35 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u17 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EffectScriptEffect)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EffectScriptEffect)clone).u01 = context.Clone(this.u01)!;
+            ((EffectScriptEffect)clone).u02 = context.Clone(this.u02)!;
+            ((EffectScriptEffect)clone).u03 = context.Clone(this.u03)!;
+            ((EffectScriptEffect)clone).u04 = context.Clone(this.u04)!;
+            ((EffectScriptEffect)clone).u05 = context.Clone(this.u05)!;
+            ((EffectScriptEffect)clone).u06 = context.Clone(this.u06)!;
+            ((EffectScriptEffect)clone).u07 = context.Clone(this.u07)!;
+            ((EffectScriptEffect)clone).u08 = context.Clone(this.u08)!;
+            ((EffectScriptEffect)clone).u09 = context.Clone(this.u09)!;
+            ((EffectScriptEffect)clone).u10 = context.Clone(this.u10)!;
+            ((EffectScriptEffect)clone).u11 = context.Clone(this.u11)!;
+            ((EffectScriptEffect)clone).u12 = context.Clone(this.u12)!;
+            ((EffectScriptEffect)clone).u13 = context.Clone(this.u13)!;
+            ((EffectScriptEffect)clone).u14 = context.Clone(this.u14)!;
+            ((EffectScriptEffect)clone).u15 = context.Clone(this.u15)!;
+            ((EffectScriptEffect)clone).u16 = context.Clone(this.u16)!;
+            ((EffectScriptEffect)clone).u17 = context.Clone(this.u17)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v >= 2)
@@ -1112,7 +1304,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class BuffScriptEffect : IReadableWritable, IReadable, IWritable
+    public partial class BuffScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1135,6 +1327,21 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u03 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BuffScriptEffect)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BuffScriptEffect)clone).u01 = context.Clone(this.u01)!;
+            ((BuffScriptEffect)clone).u02 = context.Clone(this.u02)!;
+            ((BuffScriptEffect)clone).u03 = context.Clone(this.u03)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -1155,7 +1362,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ProjScriptEffect : IReadableWritable, IReadable, IWritable
+    public partial class ProjScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -1220,6 +1427,27 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u09 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ProjScriptEffect)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ProjScriptEffect)clone).u01 = context.Clone(this.u01)!;
+            ((ProjScriptEffect)clone).u02 = context.Clone(this.u02)!;
+            ((ProjScriptEffect)clone).u03 = context.Clone(this.u03)!;
+            ((ProjScriptEffect)clone).u04 = context.Clone(this.u04)!;
+            ((ProjScriptEffect)clone).u05 = context.Clone(this.u05)!;
+            ((ProjScriptEffect)clone).u06 = context.Clone(this.u06)!;
+            ((ProjScriptEffect)clone).u07 = context.Clone(this.u07)!;
+            ((ProjScriptEffect)clone).u08 = context.Clone(this.u08)!;
+            ((ProjScriptEffect)clone).u09 = context.Clone(this.u09)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
@@ -1246,7 +1474,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ParticleBlock : IReadableWritable, IReadable, IWritable
+    public partial class ParticleBlock : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private ParticleKey[]? keys;
         public ParticleKey[]? Keys
@@ -1311,6 +1539,27 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.particleEmitter = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ParticleBlock)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ParticleBlock)clone).keys = context.CloneArray(this.keys)!;
+            ((ParticleBlock)clone).u01 = context.CloneArray(this.u01)!;
+            ((ParticleBlock)clone).u02 = context.Clone(this.u02)!;
+            ((ParticleBlock)clone).u03 = context.Clone(this.u03)!;
+            ((ParticleBlock)clone).u04 = context.Clone(this.u04)!;
+            ((ParticleBlock)clone).u05 = context.Clone(this.u05)!;
+            ((ParticleBlock)clone).u06 = context.Clone(this.u06)!;
+            ((ParticleBlock)clone).u07 = context.Clone(this.u07)!;
+            ((ParticleBlock)clone).particleEmitter = context.Clone(this.particleEmitter)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.ArrayReadableWritable<ParticleKey>(ref this.keys!, version: v);
@@ -1361,7 +1610,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ParticleKey : IReadableWritable, IReadable, IWritable
+    public partial class ParticleKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private float u01;
         public float U01
@@ -1440,6 +1689,29 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u11 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ParticleKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ParticleKey)clone).u01 = context.Clone(this.u01)!;
+            ((ParticleKey)clone).u02 = context.Clone(this.u02)!;
+            ((ParticleKey)clone).u03 = context.Clone(this.u03)!;
+            ((ParticleKey)clone).u04 = context.Clone(this.u04)!;
+            ((ParticleKey)clone).u05 = context.Clone(this.u05)!;
+            ((ParticleKey)clone).u06 = context.Clone(this.u06)!;
+            ((ParticleKey)clone).u07 = context.Clone(this.u07)!;
+            ((ParticleKey)clone).u08 = context.Clone(this.u08)!;
+            ((ParticleKey)clone).u09 = context.Clone(this.u09)!;
+            ((ParticleKey)clone).u10 = context.Clone(this.u10)!;
+            ((ParticleKey)clone).u11 = context.Clone(this.u11)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Single(ref this.u01);
@@ -1476,7 +1748,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class SoundBlock : IReadableWritable, IReadable, IWritable
+    public partial class SoundBlock : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private SoundKey[]? keys;
         public SoundKey[]? Keys
@@ -1597,6 +1869,35 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u16 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SoundBlock)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SoundBlock)clone).keys = context.CloneArray(this.keys)!;
+            ((SoundBlock)clone).u01 = context.Clone(this.u01)!;
+            ((SoundBlock)clone).u02 = context.Clone(this.u02)!;
+            ((SoundBlock)clone).u03 = context.Clone(this.u03)!;
+            ((SoundBlock)clone).u04 = context.Clone(this.u04)!;
+            ((SoundBlock)clone).u05 = context.Clone(this.u05)!;
+            ((SoundBlock)clone).u06 = context.Clone(this.u06)!;
+            ((SoundBlock)clone).u07 = context.Clone(this.u07)!;
+            ((SoundBlock)clone).u08 = context.Clone(this.u08)!;
+            ((SoundBlock)clone).u09 = context.Clone(this.u09)!;
+            ((SoundBlock)clone).u10 = context.Clone(this.u10)!;
+            ((SoundBlock)clone).u11 = context.Clone(this.u11)!;
+            ((SoundBlock)clone).u12 = context.Clone(this.u12)!;
+            ((SoundBlock)clone).u13 = context.Clone(this.u13)!;
+            ((SoundBlock)clone).u14 = context.Clone(this.u14)!;
+            ((SoundBlock)clone).u15 = context.Clone(this.u15)!;
+            ((SoundBlock)clone).u16 = context.Clone(this.u16)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.ArrayReadableWritable<SoundKey>(ref this.keys!, version: v);
@@ -1643,7 +1944,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class SoundKey : IReadableWritable, IReadable, IWritable
+    public partial class SoundKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private float u01;
         public float U01
@@ -1678,6 +1979,23 @@ public partial class CGameActionModel : CMwNod, IClass
         {
             get => this.u05;
             set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SoundKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SoundKey)clone).u01 = context.Clone(this.u01)!;
+            ((SoundKey)clone).u02 = context.Clone(this.u02)!;
+            ((SoundKey)clone).u03 = context.Clone(this.u03)!;
+            ((SoundKey)clone).u04 = context.Clone(this.u04)!;
+            ((SoundKey)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

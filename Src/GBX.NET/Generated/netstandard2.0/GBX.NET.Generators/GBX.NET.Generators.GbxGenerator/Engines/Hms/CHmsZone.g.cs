@@ -109,6 +109,18 @@ public partial class CHmsZone : CMwNod, IClass
 
     public CPlugBitmap? GetBitmapCubeReflectHdrAlpha2(GbxReadSettings settings = default, bool exceptions = false) => bitmapCubeReflectHdrAlpha2File?.GetNode(ref bitmapCubeReflectHdrAlpha2, settings, exceptions) ?? bitmapCubeReflectHdrAlpha2;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CHmsZone)clone).fogPlanes = context.CloneArray(this.fogPlanes)!;
+        ((CHmsZone)clone).mRIsForced = context.Clone(this.mRIsForced)!;
+        ((CHmsZone)clone).mRPoint = context.Clone(this.mRPoint)!;
+        ((CHmsZone)clone).mRNormal = context.Clone(this.mRNormal)!;
+        ((CHmsZone)clone).precalcRenders = context.CloneArray(this.precalcRenders)!;
+        ((CHmsZone)clone).bitmapCubeReflectHardSpecA = context.Clone(this.bitmapCubeReflectHardSpecA)!;
+        ((CHmsZone)clone).bitmapCubeReflectHdrAlpha2 = context.Clone(this.bitmapCubeReflectHdrAlpha2)!;
+    }
+
     public CHmsZone()
     {
     }
@@ -118,6 +130,12 @@ public partial class CHmsZone : CMwNod, IClass
     {
         public override uint Id => 0x06004002;
         public byte[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06004002)clone).U01 = context.CloneArray(this.U01)!;
+        }
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
@@ -130,6 +148,11 @@ public partial class CHmsZone : CMwNod, IClass
     public partial class Chunk06004003 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
@@ -148,6 +171,11 @@ public partial class CHmsZone : CMwNod, IClass
     {
         public override uint Id => 0x06004005;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef_deprec<CHmsPrecalcRender>(ref n.precalcRenders!);
@@ -159,6 +187,11 @@ public partial class CHmsZone : CMwNod, IClass
     {
         public override uint Id => 0x06004006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHardSpecA, ref n.bitmapCubeReflectHardSpecAFile);
@@ -169,6 +202,11 @@ public partial class CHmsZone : CMwNod, IClass
     public partial class Chunk06004008 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {

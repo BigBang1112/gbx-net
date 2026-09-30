@@ -34,6 +34,14 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03029000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTriangles)clone).vertices = context.CloneArray(this.vertices)!;
+        ((CGameCtnMediaBlockTriangles)clone).triangles = context.CloneArray(this.triangles)!;
+        ((CGameCtnMediaBlockTriangles)clone).Keys = context.CloneList(this.Keys)!;
+    }
+
     public CGameCtnMediaBlockTriangles()
     {
     }
@@ -42,6 +50,17 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     public partial class Chunk03029001 : Chunk<CGameCtnMediaBlockTriangles>
     {
         public override uint Id => 0x03029001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03029001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03029001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03029001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03029001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03029001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03029001)clone).U06 = context.Clone(this.U06)!;
+        }
     }
 
     [Chunk(0x03029002)]
@@ -50,19 +69,31 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
         public override uint Id => 0x03029002;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03029002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockTriangles n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
         {
             get => this.time;
             set => this.time = value;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).positions = context.CloneArray(this.positions)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

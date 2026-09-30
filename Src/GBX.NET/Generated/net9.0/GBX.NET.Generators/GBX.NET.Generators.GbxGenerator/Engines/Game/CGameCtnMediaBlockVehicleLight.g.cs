@@ -58,6 +58,14 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
         set => this.target = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockVehicleLight)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockVehicleLight)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockVehicleLight)clone).target = context.Clone(this.target)!;
+    }
+
     public CGameCtnMediaBlockVehicleLight()
     {
     }
@@ -79,6 +87,11 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     {
         public override uint Id => 0x03133000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -93,6 +106,11 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     public partial class Chunk03133001 : Chunk<CGameCtnMediaBlockVehicleLight>
     {
         public override uint Id => 0x03133001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GbxReaderWriter rw)
         {

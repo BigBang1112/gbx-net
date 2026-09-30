@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
         set => this.image = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockImage)clone).effect = context.Clone(this.effect)!;
+        ((CGameCtnMediaBlockImage)clone).image = context.Clone(this.image)!;
+    }
+
     public CGameCtnMediaBlockImage()
     {
     }
@@ -58,6 +65,11 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     public partial class Chunk030A5000 : Chunk<CGameCtnMediaBlockImage>
     {
         public override uint Id => 0x030A5000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockImage n, GbxReaderWriter rw)
         {
@@ -71,6 +83,12 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     {
         public override uint Id => 0x030A5001;
         public float U01 = 0.2f;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A5001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockImage n, GbxReaderWriter rw)
         {

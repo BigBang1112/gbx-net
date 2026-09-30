@@ -42,6 +42,12 @@ public partial class CFuncShaders : CFuncShader, IClass
         set => this.funcShaders = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncShaders)clone).funcShaders = context.CloneList(this.funcShaders)!;
+    }
+
     public CFuncShaders()
     {
     }
@@ -50,6 +56,11 @@ public partial class CFuncShaders : CFuncShader, IClass
     public partial class Chunk05014000 : Chunk<CFuncShaders>
     {
         public override uint Id => 0x05014000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncShaders n, GbxReaderWriter rw)
         {

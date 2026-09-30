@@ -66,6 +66,15 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
         set => this.decals = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockDecal2d)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockDecal2d)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockDecal2d)clone).images = context.CloneArray(this.images)!;
+        ((CGameCtnMediaBlockDecal2d)clone).decals = context.CloneList(this.decals)!;
+    }
+
     public CGameCtnMediaBlockDecal2d()
     {
     }
@@ -87,6 +96,11 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     {
         public override uint Id => 0x031AA000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockDecal2d n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -96,7 +110,7 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
         }
     }
 
-    public partial class Decal : IReadableWritable, IReadable, IWritable
+    public partial class Decal : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Iso4 u01;
         public Iso4 U01
@@ -131,6 +145,23 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Decal)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Decal)clone).u01 = context.Clone(this.u01)!;
+            ((Decal)clone).scale = context.Clone(this.scale)!;
+            ((Decal)clone).u02 = context.Clone(this.u02)!;
+            ((Decal)clone).u03 = context.Clone(this.u03)!;
+            ((Decal)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -42,6 +42,12 @@ public partial class CGameUserFileList : CMwNod, IClass
         set => this.files = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameUserFileList)clone).files = context.CloneArray(this.files)!;
+    }
+
     public CGameUserFileList()
     {
     }
@@ -52,6 +58,12 @@ public partial class CGameUserFileList : CMwNod, IClass
         public override uint Id => 0x031B7000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk031B7000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameUserFileList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -59,8 +71,28 @@ public partial class CGameUserFileList : CMwNod, IClass
         }
     }
 
-    public partial class FileInfo : IReadableWritable, IReadable, IWritable
+    public partial class FileInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (FileInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((FileInfo)clone).name = context.Clone(this.name)!;
+            ((FileInfo)clone).mapUid = context.Clone(this.mapUid)!;
+            ((FileInfo)clone).mapName = context.Clone(this.mapName)!;
+            ((FileInfo)clone).ghostKind = context.Clone(this.ghostKind)!;
+            ((FileInfo)clone).@type = context.Clone(this.@type)!;
+            ((FileInfo)clone).U01 = context.Clone(this.U01)!;
+            ((FileInfo)clone).U02 = context.Clone(this.U02)!;
+            ((FileInfo)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

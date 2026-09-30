@@ -42,6 +42,12 @@ public partial class CGamePodiumInfo : CMwNod, IClass
         set => this.mediaClipFids = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGamePodiumInfo)clone).mediaClipFids = context.CloneArray(this.mediaClipFids)!;
+    }
+
     public CGamePodiumInfo()
     {
     }
@@ -51,6 +57,12 @@ public partial class CGamePodiumInfo : CMwNod, IClass
     {
         public override uint Id => 0x03168000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03168000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGamePodiumInfo n, GbxReaderWriter rw)
         {

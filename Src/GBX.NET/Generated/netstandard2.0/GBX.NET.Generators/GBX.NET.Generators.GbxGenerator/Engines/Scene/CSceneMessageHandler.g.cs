@@ -68,6 +68,13 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
     public CMwNod? GetOnContactScript(GbxReadSettings settings = default, bool exceptions = false) => onContactScriptFile?.GetNode(ref onContactScript, settings, exceptions) ?? onContactScript;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneMessageHandler)clone).onClickScript = context.Clone(this.onClickScript)!;
+        ((CSceneMessageHandler)clone).onContactScript = context.Clone(this.onContactScript)!;
+    }
+
     public CSceneMessageHandler()
     {
     }
@@ -76,6 +83,11 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     public partial class Chunk0A01F000 : Chunk<CSceneMessageHandler>
     {
         public override uint Id => 0x0A01F000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {
@@ -87,6 +99,11 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     public partial class Chunk0A01F001 : Chunk<CSceneMessageHandler>
     {
         public override uint Id => 0x0A01F001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {

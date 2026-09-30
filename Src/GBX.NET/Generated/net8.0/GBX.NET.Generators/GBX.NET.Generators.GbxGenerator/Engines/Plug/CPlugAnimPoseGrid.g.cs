@@ -34,6 +34,11 @@ public partial class CPlugAnimPoseGrid : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09136000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugAnimPoseGrid()
     {
     }

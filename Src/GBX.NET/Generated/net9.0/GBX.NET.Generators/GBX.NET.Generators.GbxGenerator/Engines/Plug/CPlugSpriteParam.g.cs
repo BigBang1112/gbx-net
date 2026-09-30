@@ -85,6 +85,17 @@ public partial class CPlugSpriteParam : CPlug, IClass
         set => this.visibleMinScreenHeight01 = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSpriteParam)clone).globalDirection = context.Clone(this.globalDirection)!;
+        ((CPlugSpriteParam)clone).pivotPoint = context.Clone(this.pivotPoint)!;
+        ((CPlugSpriteParam)clone).globalDirTiltFactor = context.Clone(this.globalDirTiltFactor)!;
+        ((CPlugSpriteParam)clone).textureHeightInWorld = context.Clone(this.textureHeightInWorld)!;
+        ((CPlugSpriteParam)clone).visibleMaxDistAtFov90 = context.Clone(this.visibleMaxDistAtFov90)!;
+        ((CPlugSpriteParam)clone).visibleMinScreenHeight01 = context.Clone(this.visibleMinScreenHeight01)!;
+    }
+
     public CPlugSpriteParam()
     {
     }
@@ -94,6 +105,12 @@ public partial class CPlugSpriteParam : CPlug, IClass
     {
         public override uint Id => 0x090AC000;
         public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090AC000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugSpriteParam n, GbxReaderWriter rw)
         {
@@ -109,6 +126,12 @@ public partial class CPlugSpriteParam : CPlug, IClass
     {
         public override uint Id => 0x090AC001;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090AC001)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugSpriteParam n, GbxReaderWriter rw)
         {

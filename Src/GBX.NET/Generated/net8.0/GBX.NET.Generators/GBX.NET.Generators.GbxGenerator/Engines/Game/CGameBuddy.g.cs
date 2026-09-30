@@ -146,6 +146,28 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         set => this.canReceiveMessages = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameBuddy)clone).version = context.Clone(this.version)!;
+        ((CGameBuddy)clone).login = context.Clone(this.login)!;
+        ((CGameBuddy)clone).u03 = context.Clone(this.u03)!;
+        ((CGameBuddy)clone).u04 = context.Clone(this.u04)!;
+        ((CGameBuddy)clone).u07 = context.Clone(this.u07)!;
+        ((CGameBuddy)clone).u08 = context.Clone(this.u08)!;
+        ((CGameBuddy)clone).skillsRank = context.Clone(this.skillsRank)!;
+        ((CGameBuddy)clone).skillsPoints = context.Clone(this.skillsPoints)!;
+        ((CGameBuddy)clone).ladderRank = context.Clone(this.ladderRank)!;
+        ((CGameBuddy)clone).ladderPoints = context.Clone(this.ladderPoints)!;
+        ((CGameBuddy)clone).u13 = context.Clone(this.u13)!;
+        ((CGameBuddy)clone).invited = context.Clone(this.invited)!;
+        ((CGameBuddy)clone).waitingConfimation = context.Clone(this.waitingConfimation)!;
+        ((CGameBuddy)clone).campaignMedals = context.CloneArray(this.campaignMedals)!;
+        ((CGameBuddy)clone).path = context.Clone(this.path)!;
+        ((CGameBuddy)clone).canReceiveMessages = context.Clone(this.canReceiveMessages)!;
+        ((CGameBuddy)clone).nickName = context.Clone(this.nickName)!;
+    }
+
     public CGameBuddy()
     {
     }
@@ -208,7 +230,7 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         ReadWrite(rw, v);
     }
 
-    public partial class CampaignMedal : IReadableWritable, IReadable, IWritable
+    public partial class CampaignMedal : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -229,6 +251,21 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         {
             get => this.u03;
             set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CampaignMedal)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CampaignMedal)clone).u01 = context.Clone(this.u01)!;
+            ((CampaignMedal)clone).u02 = context.Clone(this.u02)!;
+            ((CampaignMedal)clone).u03 = context.Clone(this.u03)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

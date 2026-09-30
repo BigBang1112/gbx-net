@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockLightmap : CGameCtnMediaBlock, IClass, CG
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockLightmap)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockLightmap)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockLightmap()
     {
     }
@@ -72,6 +79,13 @@ public partial class CGameCtnMediaBlockLightmap : CGameCtnMediaBlock, IClass, CG
         public override uint Id => 0x030C0000;
         public int Version { get; set; }
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030C0000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk030C0000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockLightmap n, GbxReaderWriter rw)
         {

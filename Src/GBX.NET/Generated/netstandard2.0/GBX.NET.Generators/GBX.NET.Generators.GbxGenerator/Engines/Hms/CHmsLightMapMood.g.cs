@@ -34,6 +34,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06023000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CHmsLightMapMood()
     {
     }
@@ -47,6 +52,16 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         public float U03;
         public float U04;
         public float U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06023000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06023000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06023000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06023000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk06023000)clone).U05 = context.Clone(this.U05)!;
+        }
 
         public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
         {

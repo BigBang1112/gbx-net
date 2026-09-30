@@ -217,6 +217,28 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         set => this.curvature = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneMobilLeaves)clone).leafShader = context.Clone(this.leafShader)!;
+        ((CSceneMobilLeaves)clone).leafRadiusBase = context.Clone(this.leafRadiusBase)!;
+        ((CSceneMobilLeaves)clone).leafRadiusRandom = context.Clone(this.leafRadiusRandom)!;
+        ((CSceneMobilLeaves)clone).leafMaxCount = context.Clone(this.leafMaxCount)!;
+        ((CSceneMobilLeaves)clone).leafFallingSpeedBase = context.Clone(this.leafFallingSpeedBase)!;
+        ((CSceneMobilLeaves)clone).leafAlphaSpeedMax = context.Clone(this.leafAlphaSpeedMax)!;
+        ((CSceneMobilLeaves)clone).leafBetaSpeedlMax = context.Clone(this.leafBetaSpeedlMax)!;
+        ((CSceneMobilLeaves)clone).wind = context.Clone(this.wind)!;
+        ((CSceneMobilLeaves)clone).respawnPeriod = context.Clone(this.respawnPeriod)!;
+        ((CSceneMobilLeaves)clone).leafFallingSpeedRandom = context.Clone(this.leafFallingSpeedRandom)!;
+        ((CSceneMobilLeaves)clone).leafOscillationAmplitudeBase = context.Clone(this.leafOscillationAmplitudeBase)!;
+        ((CSceneMobilLeaves)clone).leafOscillationAmplitudeRandom = context.Clone(this.leafOscillationAmplitudeRandom)!;
+        ((CSceneMobilLeaves)clone).leafOscillationPeriodBase = context.Clone(this.leafOscillationPeriodBase)!;
+        ((CSceneMobilLeaves)clone).leafOscillationPeriodRandom = context.Clone(this.leafOscillationPeriodRandom)!;
+        ((CSceneMobilLeaves)clone).farZ = context.Clone(this.farZ)!;
+        ((CSceneMobilLeaves)clone).leafEmitterMaxCount = context.Clone(this.leafEmitterMaxCount)!;
+        ((CSceneMobilLeaves)clone).curvature = context.Clone(this.curvature)!;
+    }
+
     public CSceneMobilLeaves()
     {
     }
@@ -235,6 +257,21 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         public float U08;
         public float U09;
         public float U10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A05E000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A05E000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A05E000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A05E000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0A05E000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0A05E000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0A05E000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0A05E000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0A05E000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0A05E000)clone).U10 = context.Clone(this.U10)!;
+        }
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
@@ -265,6 +302,11 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     {
         public override uint Id => 0x0A05E001;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
@@ -290,6 +332,11 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     {
         public override uint Id => 0x0A05E002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
@@ -313,6 +360,11 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     public partial class Chunk0A05E003 : Chunk<CSceneMobilLeaves>
     {
         public override uint Id => 0x0A05E003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {

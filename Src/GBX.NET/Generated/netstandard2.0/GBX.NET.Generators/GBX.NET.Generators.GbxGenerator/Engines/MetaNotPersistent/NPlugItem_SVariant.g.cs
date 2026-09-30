@@ -34,6 +34,15 @@ public partial class NPlugItem_SVariant : CMwNod, IClass, IReadableWritable, IRe
     [Hexadecimal]
     public static new uint Id => 0x301AD000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugItem_SVariant)clone).entityModel = context.Clone(this.entityModel)!;
+        ((NPlugItem_SVariant)clone).entityModelFile = context.Clone(this.entityModelFile)!;
+        ((NPlugItem_SVariant)clone).hiddenInManualCycle = context.Clone(this.hiddenInManualCycle)!;
+        ((NPlugItem_SVariant)clone).Tags = context.CloneDictionary(this.Tags)!;
+    }
+
     public NPlugItem_SVariant()
     {
     }

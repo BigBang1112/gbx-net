@@ -50,6 +50,13 @@ public partial class CControlContainer : CControlBase, IClass
         set => this.useScript = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CControlContainer)clone).acceptOwnControls = context.Clone(this.acceptOwnControls)!;
+        ((CControlContainer)clone).useScript = context.Clone(this.useScript)!;
+    }
+
     public CControlContainer()
     {
     }
@@ -61,6 +68,14 @@ public partial class CControlContainer : CControlBase, IClass
         public int U01;
         public int U02;
         public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07002005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07002005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk07002005)clone).U03 = context.Clone(this.U03)!;
+        }
 
         public override void ReadWrite(CControlContainer n, GbxReaderWriter rw)
         {

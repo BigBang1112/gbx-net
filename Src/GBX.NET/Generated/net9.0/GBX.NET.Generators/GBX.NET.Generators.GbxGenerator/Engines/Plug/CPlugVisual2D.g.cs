@@ -42,6 +42,12 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
         set => this.vertices2D = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVisual2D)clone).vertices2D = context.CloneArray(this.vertices2D)!;
+    }
+
     public CPlugVisual2D()
     {
     }
@@ -51,13 +57,18 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
     {
         public override uint Id => 0x0904A000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugVisual2D n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<Vertex2D>(ref n.vertices2D!);
         }
     }
 
-    public partial class Vertex2D : IReadableWritable, IReadable, IWritable
+    public partial class Vertex2D : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private float u01;
         public float U01
@@ -113,6 +124,26 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
         {
             get => this.u08;
             set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Vertex2D)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Vertex2D)clone).u01 = context.Clone(this.u01)!;
+            ((Vertex2D)clone).u02 = context.Clone(this.u02)!;
+            ((Vertex2D)clone).u03 = context.Clone(this.u03)!;
+            ((Vertex2D)clone).u04 = context.Clone(this.u04)!;
+            ((Vertex2D)clone).u05 = context.Clone(this.u05)!;
+            ((Vertex2D)clone).u06 = context.Clone(this.u06)!;
+            ((Vertex2D)clone).u07 = context.Clone(this.u07)!;
+            ((Vertex2D)clone).u08 = context.Clone(this.u08)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

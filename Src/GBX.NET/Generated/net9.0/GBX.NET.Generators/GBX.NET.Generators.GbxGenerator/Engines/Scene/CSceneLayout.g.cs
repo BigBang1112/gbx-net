@@ -291,6 +291,36 @@ public partial class CSceneLayout : CScene, IClass
 
     public CPlugBitmap? GetBitmapCubeReflectHdrAlpha2(GbxReadSettings settings = default, bool exceptions = false) => bitmapCubeReflectHdrAlpha2File?.GetNode(ref bitmapCubeReflectHdrAlpha2, settings, exceptions) ?? bitmapCubeReflectHdrAlpha2;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneLayout)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
+        ((CSceneLayout)clone).cameraClearColor = context.Clone(this.cameraClearColor)!;
+        ((CSceneLayout)clone).sectors = context.CloneArray(this.sectors)!;
+        ((CSceneLayout)clone).scene = context.CloneArray(this.scene)!;
+        ((CSceneLayout)clone).sceneLocations = context.CloneArray(this.sceneLocations)!;
+        ((CSceneLayout)clone).lights = context.CloneArray(this.lights)!;
+        ((CSceneLayout)clone).lightLocations = context.CloneArray(this.lightLocations)!;
+        ((CSceneLayout)clone).sounds = context.CloneArray(this.sounds)!;
+        ((CSceneLayout)clone).soundLocations = context.CloneArray(this.soundLocations)!;
+        ((CSceneLayout)clone).locations = context.CloneArray(this.locations)!;
+        ((CSceneLayout)clone).locationLocations = context.CloneArray(this.locationLocations)!;
+        ((CSceneLayout)clone).fields = context.CloneArray(this.fields)!;
+        ((CSceneLayout)clone).fieldLocations = context.CloneArray(this.fieldLocations)!;
+        ((CSceneLayout)clone).gates = context.CloneArray(this.gates)!;
+        ((CSceneLayout)clone).paths = context.CloneArray(this.paths)!;
+        ((CSceneLayout)clone).trafficGraph = context.Clone(this.trafficGraph)!;
+        ((CSceneLayout)clone).trafficPaths = context.CloneArray(this.trafficPaths)!;
+        ((CSceneLayout)clone).sceneFxNod = context.Clone(this.sceneFxNod)!;
+        ((CSceneLayout)clone).objects = context.CloneArray(this.objects)!;
+        ((CSceneLayout)clone).objectLocations = context.CloneArray(this.objectLocations)!;
+        ((CSceneLayout)clone).weatherModels = context.CloneArray(this.weatherModels)!;
+        ((CSceneLayout)clone).weatherModel = context.Clone(this.weatherModel)!;
+        ((CSceneLayout)clone).bitmapWaterFog = context.Clone(this.bitmapWaterFog)!;
+        ((CSceneLayout)clone).bitmapCubeReflectHardSpecA = context.Clone(this.bitmapCubeReflectHardSpecA)!;
+        ((CSceneLayout)clone).bitmapCubeReflectHdrAlpha2 = context.Clone(this.bitmapCubeReflectHdrAlpha2)!;
+    }
+
     public CSceneLayout()
     {
     }
@@ -300,6 +330,12 @@ public partial class CSceneLayout : CScene, IClass
     {
         public override uint Id => 0x0A00300C;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A00300C)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
@@ -311,6 +347,11 @@ public partial class CSceneLayout : CScene, IClass
     public partial class Chunk0A003010 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
@@ -328,6 +369,15 @@ public partial class CSceneLayout : CScene, IClass
         public BoxAligned U03;
         public Iso4 U04;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003014)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A003014)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A003014)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A003014)clone).U04 = context.Clone(this.U04)!;
+        }
+
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -342,6 +392,11 @@ public partial class CSceneLayout : CScene, IClass
     {
         public override uint Id => 0x0A003017;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0A003018)]
@@ -351,6 +406,14 @@ public partial class CSceneLayout : CScene, IClass
         public int Version { get; set; }
         public CSceneObject[]? U01;
         public SceneLoc[]? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003018)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0A003018)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0A003018)clone).U02 = context.CloneArray(this.U02)!;
+        }
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
@@ -393,6 +456,23 @@ public partial class CSceneLayout : CScene, IClass
         public float U11;
         public float U12;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003019)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A003019)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A003019)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A003019)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0A003019)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0A003019)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0A003019)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0A003019)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0A003019)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0A003019)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0A003019)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0A003019)clone).U12 = context.Clone(this.U12)!;
+        }
+
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -419,6 +499,16 @@ public partial class CSceneLayout : CScene, IClass
         public SceneLoc[]? U02;
         public int U03;
         public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A00301B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0A00301B)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0A00301B)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0A00301B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A00301B)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
@@ -464,6 +554,31 @@ public partial class CSceneLayout : CScene, IClass
         public float U17;
         public float U18;
         public float U19;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A00301C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0A00301C)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0A00301C)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0A00301C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A00301C)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0A00301C)clone).U05 = context.CloneArray(this.U05)!;
+            ((Chunk0A00301C)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0A00301C)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0A00301C)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0A00301C)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0A00301C)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0A00301C)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0A00301C)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0A00301C)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk0A00301C)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk0A00301C)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk0A00301C)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk0A00301C)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk0A00301C)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk0A00301C)clone).U19 = context.Clone(this.U19)!;
+        }
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
@@ -522,7 +637,7 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
-    public partial class SceneMobil : IReadableWritable, IReadable, IWritable
+    public partial class SceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -536,6 +651,20 @@ public partial class CSceneLayout : CScene, IClass
         {
             get => this.mobil;
             set => this.mobil = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SceneMobil)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SceneMobil)clone).u01 = context.Clone(this.u01)!;
+            ((SceneMobil)clone).mobil = context.Clone(this.mobil)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -561,7 +690,7 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
-    public partial class SceneLoc : IReadableWritable, IReadable, IWritable
+    public partial class SceneLoc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private CMwNod? u01;
         public CMwNod? U01
@@ -575,6 +704,20 @@ public partial class CSceneLayout : CScene, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SceneLoc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SceneLoc)clone).u01 = context.Clone(this.u01)!;
+            ((SceneLoc)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -596,7 +739,7 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
-    public partial class Unknown : IReadableWritable, IReadable, IWritable
+    public partial class Unknown : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private CMwNod? u01;
         public CMwNod? U01
@@ -654,6 +797,26 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u08 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Unknown)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Unknown)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown)clone).u02 = context.Clone(this.u02)!;
+            ((Unknown)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown)clone).u04 = context.Clone(this.u04)!;
+            ((Unknown)clone).u05 = context.Clone(this.u05)!;
+            ((Unknown)clone).u06 = context.Clone(this.u06)!;
+            ((Unknown)clone).u07 = context.Clone(this.u07)!;
+            ((Unknown)clone).u08 = context.Clone(this.u08)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.NodeRef<CMwNod>(ref this.u01);
@@ -679,7 +842,7 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
-    public partial class Unknown2 : IReadableWritable, IReadable, IWritable
+    public partial class Unknown2 : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -764,6 +927,26 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u08 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Unknown2)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Unknown2)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown2)clone).u02 = context.Clone(this.u02)!;
+            ((Unknown2)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown2)clone).u04 = context.Clone(this.u04)!;
+            ((Unknown2)clone).u05 = context.Clone(this.u05)!;
+            ((Unknown2)clone).u06 = context.Clone(this.u06)!;
+            ((Unknown2)clone).u07 = context.Clone(this.u07)!;
+            ((Unknown2)clone).u08 = context.Clone(this.u08)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.u01);
@@ -789,7 +972,7 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
-    public partial class Unknown3 : IReadableWritable, IReadable, IWritable
+    public partial class Unknown3 : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -847,6 +1030,25 @@ public partial class CSceneLayout : CScene, IClass
         {
             get => this.u07;
             set => this.u07 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Unknown3)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Unknown3)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown3)clone).u02 = context.Clone(this.u02)!;
+            ((Unknown3)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown3)clone).u04 = context.Clone(this.u04)!;
+            ((Unknown3)clone).u05 = context.Clone(this.u05)!;
+            ((Unknown3)clone).u06 = context.Clone(this.u06)!;
+            ((Unknown3)clone).u07 = context.Clone(this.u07)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

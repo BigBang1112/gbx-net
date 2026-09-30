@@ -75,6 +75,15 @@ public partial class CGameTeleporterModel : CMwNod, IClass
         set => this.centerPos = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameTeleporterModel)clone).spawnLoc = context.Clone(this.spawnLoc)!;
+        ((CGameTeleporterModel)clone).spawn = context.Clone(this.spawn)!;
+        ((CGameTeleporterModel)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((CGameTeleporterModel)clone).centerPos = context.Clone(this.centerPos)!;
+    }
+
     public CGameTeleporterModel()
     {
     }
@@ -84,6 +93,12 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     {
         public override uint Id => 0x2E00C000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E00C000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameTeleporterModel n, GbxReaderWriter rw)
         {

@@ -34,6 +34,11 @@ public partial class CPlugFogVolume : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090D4000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugFogVolume()
     {
     }
@@ -44,6 +49,13 @@ public partial class CPlugFogVolume : CPlug, IClass
         public override uint Id => 0x090D4001;
         public int Version { get; set; }
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090D4001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090D4001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugFogVolume n, GbxReaderWriter rw)
         {

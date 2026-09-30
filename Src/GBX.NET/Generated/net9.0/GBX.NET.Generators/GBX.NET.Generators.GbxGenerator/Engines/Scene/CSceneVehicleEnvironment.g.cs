@@ -42,6 +42,12 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
         set => this.materials = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneVehicleEnvironment)clone).materials = context.CloneArray(this.materials)!;
+    }
+
     public CSceneVehicleEnvironment()
     {
     }
@@ -51,6 +57,12 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     {
         public override uint Id => 0x0A033000;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A033000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneVehicleEnvironment n, GbxReaderWriter rw)
         {
@@ -62,6 +74,11 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     public partial class Chunk0A033002 : Chunk<CSceneVehicleEnvironment>
     {
         public override uint Id => 0x0A033002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneVehicleEnvironment n, GbxReaderWriter rw)
         {

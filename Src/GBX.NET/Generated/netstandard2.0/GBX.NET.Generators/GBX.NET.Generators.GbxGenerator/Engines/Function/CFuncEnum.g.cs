@@ -115,6 +115,20 @@ public partial class CFuncEnum : CFunc, IClass
         set => this.texSize = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CFuncEnum)clone).wantedCount = context.Clone(this.wantedCount)!;
+        ((CFuncEnum)clone).values = context.CloneArray(this.values)!;
+        ((CFuncEnum)clone).name = context.Clone(this.name)!;
+        ((CFuncEnum)clone).atlas = context.Clone(this.atlas)!;
+        ((CFuncEnum)clone).valuesAtlasYx = context.CloneArray(this.valuesAtlasYx)!;
+        ((CFuncEnum)clone).minTexCoord = context.Clone(this.minTexCoord)!;
+        ((CFuncEnum)clone).maxTexCoord = context.Clone(this.maxTexCoord)!;
+        ((CFuncEnum)clone).iconIndexs = context.Clone(this.iconIndexs)!;
+        ((CFuncEnum)clone).texSize = context.Clone(this.texSize)!;
+    }
+
     public CFuncEnum()
     {
     }
@@ -123,6 +137,11 @@ public partial class CFuncEnum : CFunc, IClass
     public partial class Chunk0500E005 : Chunk<CFuncEnum>
     {
         public override uint Id => 0x0500E005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {
@@ -141,6 +160,11 @@ public partial class CFuncEnum : CFunc, IClass
     {
         public override uint Id => 0x0500E006;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {
             rw.NodeRef<CMwRefBuffer>(ref n.iconIndexs, ref n.iconIndexsFile);
@@ -151,6 +175,11 @@ public partial class CFuncEnum : CFunc, IClass
     public partial class Chunk0500E007 : Chunk<CFuncEnum>
     {
         public override uint Id => 0x0500E007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {

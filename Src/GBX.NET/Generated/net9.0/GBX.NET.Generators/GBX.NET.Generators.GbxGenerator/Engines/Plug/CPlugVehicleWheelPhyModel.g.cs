@@ -55,6 +55,14 @@ public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritab
         set => this.wheelId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVehicleWheelPhyModel)clone).isDriving = context.Clone(this.isDriving)!;
+        ((CPlugVehicleWheelPhyModel)clone).isSteering = context.Clone(this.isSteering)!;
+        ((CPlugVehicleWheelPhyModel)clone).wheelId = context.Clone(this.wheelId)!;
+    }
+
     public CPlugVehicleWheelPhyModel()
     {
     }

@@ -34,6 +34,23 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     [Hexadecimal]
     public static new uint Id => 0x090BA000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugSkel)clone).name = context.Clone(this.name)!;
+        ((CPlugSkel)clone).joints = context.CloneArray(this.joints)!;
+        ((CPlugSkel)clone).sockets = context.CloneArray(this.sockets)!;
+        ((CPlugSkel)clone).jointExprs = context.CloneArray(this.jointExprs)!;
+        ((CPlugSkel)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugSkel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugSkel)clone).u03 = context.CloneArray(this.u03)!;
+        ((CPlugSkel)clone).u04 = context.CloneArray(this.u04)!;
+        ((CPlugSkel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugSkel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugSkel)clone).u07 = context.CloneArray(this.u07)!;
+        ((CPlugSkel)clone).u08 = context.CloneArray(this.u08)!;
+    }
+
     public CPlugSkel()
     {
     }
@@ -54,9 +71,15 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     public partial class Chunk090BA000 : Chunk<CPlugSkel>
     {
         public override uint Id => 0x090BA000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090BA000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
-    public partial class Joint : IReadableWritable, IReadable, IWritable
+    public partial class Joint : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? name;
         public string? Name
@@ -93,6 +116,23 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Joint)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Joint)clone).name = context.Clone(this.name)!;
+            ((Joint)clone).parentIndex = context.Clone(this.parentIndex)!;
+            ((Joint)clone).globalJoint = context.Clone(this.globalJoint)!;
+            ((Joint)clone).u01 = context.Clone(this.u01)!;
+            ((Joint)clone).u02 = context.Clone(this.u02)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.name);
@@ -123,7 +163,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         }
     }
 
-    public partial class Socket : IReadableWritable, IReadable, IWritable
+    public partial class Socket : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? name;
         public string? Name
@@ -146,6 +186,21 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.u02 = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Socket)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Socket)clone).name = context.Clone(this.name)!;
+            ((Socket)clone).u01 = context.Clone(this.u01)!;
+            ((Socket)clone).u02 = context.Clone(this.u02)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.name);
@@ -166,8 +221,20 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         }
     }
 
-    public partial class JointExpr : IReadableWritable, IReadable, IWritable
+    public partial class JointExpr : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (JointExpr)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
         }

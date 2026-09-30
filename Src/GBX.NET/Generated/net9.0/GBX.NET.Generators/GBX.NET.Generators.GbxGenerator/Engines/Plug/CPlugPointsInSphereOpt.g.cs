@@ -42,6 +42,12 @@ public partial class CPlugPointsInSphereOpt : CMwNod, IClass
         set => this.packs = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugPointsInSphereOpt)clone).packs = context.CloneArray(this.packs)!;
+    }
+
     public CPlugPointsInSphereOpt()
     {
     }
@@ -52,6 +58,12 @@ public partial class CPlugPointsInSphereOpt : CMwNod, IClass
         public override uint Id => 0x09066000;
         public Vec3[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09066000)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugPointsInSphereOpt n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<Pack>(ref n.packs!);
@@ -59,7 +71,7 @@ public partial class CPlugPointsInSphereOpt : CMwNod, IClass
         }
     }
 
-    public partial class Pack : IReadableWritable, IReadable, IWritable
+    public partial class Pack : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -73,6 +85,20 @@ public partial class CPlugPointsInSphereOpt : CMwNod, IClass
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Pack)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Pack)clone).u01 = context.Clone(this.u01)!;
+            ((Pack)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

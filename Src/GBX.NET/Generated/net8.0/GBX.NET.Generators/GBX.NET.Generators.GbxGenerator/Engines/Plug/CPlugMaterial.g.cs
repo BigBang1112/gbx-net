@@ -76,6 +76,16 @@ public partial class CPlugMaterial : CPlug, IClass
         set => this.gameplayId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugMaterial)clone).customMaterial = context.Clone(this.customMaterial)!;
+        ((CPlugMaterial)clone).surfaceId = context.Clone(this.surfaceId)!;
+        ((CPlugMaterial)clone).shader = context.Clone(this.shader)!;
+        ((CPlugMaterial)clone).gameplayId = context.Clone(this.gameplayId)!;
+        ((CPlugMaterial)clone).deviceMaterials = context.CloneArray(this.deviceMaterials)!;
+    }
+
     public CPlugMaterial()
     {
     }
@@ -85,6 +95,12 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079001;
         public CMwNod? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -98,6 +114,12 @@ public partial class CPlugMaterial : CPlug, IClass
         public override uint Id => 0x09079002;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -108,6 +130,11 @@ public partial class CPlugMaterial : CPlug, IClass
     public partial class Chunk09079004 : Chunk<CPlugMaterial>
     {
         public override uint Id => 0x09079004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -120,6 +147,11 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079007;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef<CPlugMaterialCustom>(ref n.customMaterial);
@@ -130,6 +162,11 @@ public partial class CPlugMaterial : CPlug, IClass
     public partial class Chunk09079009 : Chunk<CPlugMaterial>
     {
         public override uint Id => 0x09079009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x0907900A)]
@@ -137,6 +174,12 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x0907900A;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907900A)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -148,6 +191,12 @@ public partial class CPlugMaterial : CPlug, IClass
     public partial class Chunk0907900D : Chunk<CPlugMaterial>
     {
         public override uint Id => 0x0907900D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907900D)clone).U01 = context.CloneArray(this.U01)!;
+        }
     }
 
     [Chunk(0x0907900E)]
@@ -155,6 +204,12 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x0907900E;
         public short U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907900E)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -169,6 +224,12 @@ public partial class CPlugMaterial : CPlug, IClass
         public override uint Id => 0x0907900F;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0907900F)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -180,6 +241,12 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079010;
         public float U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079010)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -193,6 +260,12 @@ public partial class CPlugMaterial : CPlug, IClass
         public override uint Id => 0x09079011;
         public string[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079011)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.ArrayId(ref U01!);
@@ -204,6 +277,11 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079012;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x09079013)]
@@ -211,6 +289,11 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079013;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x09079014)]
@@ -218,6 +301,11 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079014;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x09079015)]
@@ -229,6 +317,16 @@ public partial class CPlugMaterial : CPlug, IClass
         public int U02;
         public External<CPlugMaterialColorTargetTable>[]? U03;
         public CMwNod? U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079015)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09079015)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk09079015)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09079015)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk09079015)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -265,6 +363,13 @@ public partial class CPlugMaterial : CPlug, IClass
         public int Version { get; set; }
         public uint U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079016)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09079016)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -281,6 +386,16 @@ public partial class CPlugMaterial : CPlug, IClass
         public int U02;
         public short U03;
         public string? U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09079017)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09079017)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09079017)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09079017)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09079017)clone).U04 = context.Clone(this.U04)!;
+        }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
@@ -303,9 +418,14 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079019;
         public override bool Ignore => true;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
-    public partial class DeviceMat : IReadableWritable, IReadable, IWritable
+    public partial class DeviceMat : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private short u01;
         public short U01
@@ -375,6 +495,24 @@ public partial class CPlugMaterial : CPlug, IClass
         }
 
         public CPlugShader? GetShader3(GbxReadSettings settings = default, bool exceptions = false) => shader3File?.GetNode(ref shader3, settings, exceptions) ?? shader3;
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DeviceMat)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DeviceMat)clone).u01 = context.Clone(this.u01)!;
+            ((DeviceMat)clone).u02 = context.Clone(this.u02)!;
+            ((DeviceMat)clone).u03 = context.Clone(this.u03)!;
+            ((DeviceMat)clone).shader1 = context.Clone(this.shader1)!;
+            ((DeviceMat)clone).shader2 = context.Clone(this.shader2)!;
+            ((DeviceMat)clone).shader3 = context.Clone(this.shader3)!;
+        }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {

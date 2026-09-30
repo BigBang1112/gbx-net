@@ -45,6 +45,12 @@ public partial class CGameCtnCollectorList : CMwNod, IClass
         set => this.collectorStock = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnCollectorList)clone).collectorStock = context.CloneList(this.collectorStock)!;
+    }
+
     public CGameCtnCollectorList()
     {
     }
@@ -54,13 +60,18 @@ public partial class CGameCtnCollectorList : CMwNod, IClass
     {
         public override uint Id => 0x0301B000;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnCollectorList n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<SCollectorStock>(ref n.collectorStock!);
         }
     }
 
-    public partial class SCollectorStock : IReadableWritable, IReadable, IWritable
+    public partial class SCollectorStock : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? blockModel;
         public Ident? BlockModel
@@ -74,6 +85,20 @@ public partial class CGameCtnCollectorList : CMwNod, IClass
         {
             get => this.count;
             set => this.count = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SCollectorStock)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SCollectorStock)clone).blockModel = context.Clone(this.blockModel)!;
+            ((SCollectorStock)clone).count = context.Clone(this.count)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

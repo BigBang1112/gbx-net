@@ -42,6 +42,12 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.solid = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CHmsItem)clone).solid = context.Clone(this.solid)!;
+    }
+
     public CHmsItem()
     {
     }
@@ -55,6 +61,11 @@ public partial class CHmsItem : CMwNod, IClass
     {
         public override uint Id => 0x06003001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
@@ -70,6 +81,13 @@ public partial class CHmsItem : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM10;
         public ulong U01;
         public short U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0600300E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0600300E)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
@@ -87,6 +105,13 @@ public partial class CHmsItem : CMwNod, IClass
         public ulong U01;
         public short U02;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06003010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06003010)clone).U02 = context.Clone(this.U02)!;
+        }
+
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
             rw.UInt64(ref U01);
@@ -102,6 +127,13 @@ public partial class CHmsItem : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
         public ulong U01;
         public short U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06003011)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06003011)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {

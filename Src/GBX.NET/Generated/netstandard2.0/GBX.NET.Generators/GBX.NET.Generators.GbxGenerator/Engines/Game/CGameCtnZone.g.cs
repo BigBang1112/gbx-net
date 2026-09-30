@@ -115,6 +115,21 @@ public partial class CGameCtnZone : CMwNod, IClass
         set => this.forcedParentZoneFrontierId = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnZone)clone).height = context.Clone(this.height)!;
+        ((CGameCtnZone)clone).zoneId = context.Clone(this.zoneId)!;
+        ((CGameCtnZone)clone).surfaceId = context.Clone(this.surfaceId)!;
+        ((CGameCtnZone)clone).depth = context.Clone(this.depth)!;
+        ((CGameCtnZone)clone).oldZone = context.Clone(this.oldZone)!;
+        ((CGameCtnZone)clone).hasWater = context.Clone(this.hasWater)!;
+        ((CGameCtnZone)clone).isLargeZone = context.Clone(this.isLargeZone)!;
+        ((CGameCtnZone)clone).visualTopGroundHeight = context.Clone(this.visualTopGroundHeight)!;
+        ((CGameCtnZone)clone).waterId = context.Clone(this.waterId)!;
+        ((CGameCtnZone)clone).forcedParentZoneFrontierId = context.Clone(this.forcedParentZoneFrontierId)!;
+    }
+
     public CGameCtnZone()
     {
     }
@@ -124,6 +139,12 @@ public partial class CGameCtnZone : CMwNod, IClass
     {
         public override uint Id => 0x0305C003;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305C003)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
@@ -139,6 +160,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     {
         public override uint Id => 0x0305C004;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.depth);
@@ -151,6 +177,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     {
         public override uint Id => 0x0305C005;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.hasWater);
@@ -161,6 +192,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     public partial class Chunk0305C006 : Chunk<CGameCtnZone>
     {
         public override uint Id => 0x0305C006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
@@ -173,6 +209,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     {
         public override uint Id => 0x0305C007;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
             rw.Single(ref n.visualTopGroundHeight);
@@ -183,6 +224,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     public partial class Chunk0305C008 : Chunk<CGameCtnZone>
     {
         public override uint Id => 0x0305C008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
@@ -195,6 +241,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     {
         public override uint Id => 0x0305C00B;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {
             rw.Id(ref n.waterId);
@@ -205,6 +256,11 @@ public partial class CGameCtnZone : CMwNod, IClass
     public partial class Chunk0305C00C : Chunk<CGameCtnZone>
     {
         public override uint Id => 0x0305C00C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnZone n, GbxReaderWriter rw)
         {

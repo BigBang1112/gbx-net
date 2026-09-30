@@ -50,6 +50,13 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
         set => this.end = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxCameraMap)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).end = context.Clone(this.end)!;
+    }
+
     public CGameCtnMediaBlockFxCameraMap()
     {
     }
@@ -70,6 +77,11 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     public partial class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
     {
         public override uint Id => 0x03139000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockFxCameraMap n, GbxReaderWriter rw)
         {
@@ -99,6 +111,28 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
         public int U15;
         public int U16;
         public PackDesc? U17;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03139001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03139001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03139001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03139001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03139001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03139001)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk03139001)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk03139001)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk03139001)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk03139001)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk03139001)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk03139001)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk03139001)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk03139001)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk03139001)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk03139001)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk03139001)clone).U17 = context.Clone(this.U17)!;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockFxCameraMap n, GbxReaderWriter rw)
         {

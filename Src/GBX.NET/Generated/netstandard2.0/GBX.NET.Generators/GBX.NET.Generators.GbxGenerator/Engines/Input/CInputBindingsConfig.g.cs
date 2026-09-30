@@ -43,6 +43,12 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         set => this.bindings = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CInputBindingsConfig)clone).bindings = context.CloneArray(this.bindings)!;
+    }
+
     public CInputBindingsConfig()
     {
     }
@@ -52,6 +58,12 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
         public override uint Id => 0x13006000;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk13006000)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
@@ -66,6 +78,12 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         public override uint Id => 0x13006001;
         public string[]? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk13006001)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
             rw.ArrayId(ref U01!);
@@ -78,6 +96,13 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         public override uint Id => 0x13006002;
         public string? U01;
         public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk13006002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk13006002)clone).U02 = context.Clone(this.U02)!;
+        }
 
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
@@ -92,6 +117,12 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         public override uint Id => 0x13006003;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk13006003)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -99,7 +130,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         }
     }
 
-    public partial class Binding : IReadableWritable, IReadable, IWritable
+    public partial class Binding : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -141,6 +172,24 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         {
             get => this.name;
             set => this.name = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Binding)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Binding)clone).u01 = context.Clone(this.u01)!;
+            ((Binding)clone).deviceId = context.Clone(this.deviceId)!;
+            ((Binding)clone).u02 = context.Clone(this.u02)!;
+            ((Binding)clone).isAnalog = context.Clone(this.isAnalog)!;
+            ((Binding)clone).u03 = context.Clone(this.u03)!;
+            ((Binding)clone).name = context.Clone(this.name)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

@@ -68,6 +68,15 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         set => this.events = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CCtnMediaBlockEventTrackMania)clone).start = context.Clone(this.start)!;
+        ((CCtnMediaBlockEventTrackMania)clone).end = context.Clone(this.end)!;
+        ((CCtnMediaBlockEventTrackMania)clone).stunts = context.CloneArray(this.stunts)!;
+        ((CCtnMediaBlockEventTrackMania)clone).events = context.CloneArray(this.events)!;
+    }
+
     public CCtnMediaBlockEventTrackMania()
     {
     }
@@ -90,6 +99,12 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         public override uint Id => 0x2407F000;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2407F000)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -105,6 +120,12 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         public override uint Id => 0x2407F003;
         public bool U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2407F003)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GbxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
@@ -114,7 +135,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         }
     }
 
-    public partial class Stunt : IReadableWritable, IReadable, IWritable
+    public partial class Stunt : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -193,6 +214,29 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
             set => this.totalScore = value;
         }
 
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Stunt)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Stunt)clone).time = context.Clone(this.time)!;
+            ((Stunt)clone).figure = context.Clone(this.figure)!;
+            ((Stunt)clone).angle = context.Clone(this.angle)!;
+            ((Stunt)clone).score = context.Clone(this.score)!;
+            ((Stunt)clone).factor = context.Clone(this.factor)!;
+            ((Stunt)clone).straight = context.Clone(this.straight)!;
+            ((Stunt)clone).u01 = context.Clone(this.u01)!;
+            ((Stunt)clone).u02 = context.Clone(this.u02)!;
+            ((Stunt)clone).u03 = context.Clone(this.u03)!;
+            ((Stunt)clone).combo = context.Clone(this.combo)!;
+            ((Stunt)clone).totalScore = context.Clone(this.totalScore)!;
+        }
+
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v == 0)
@@ -225,7 +269,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         }
     }
 
-    public partial class Checkpoint : IReadableWritable, IReadable, IWritable
+    public partial class Checkpoint : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -260,6 +304,23 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Checkpoint)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Checkpoint)clone).u01 = context.Clone(this.u01)!;
+            ((Checkpoint)clone).time = context.Clone(this.time)!;
+            ((Checkpoint)clone).u02 = context.Clone(this.u02)!;
+            ((Checkpoint)clone).u03 = context.Clone(this.u03)!;
+            ((Checkpoint)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -290,7 +351,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         }
     }
 
-    public partial class EndOfLap : IReadableWritable, IReadable, IWritable
+    public partial class EndOfLap : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -325,6 +386,23 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         {
             get => this.u04;
             set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EndOfLap)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EndOfLap)clone).u01 = context.Clone(this.u01)!;
+            ((EndOfLap)clone).time = context.Clone(this.time)!;
+            ((EndOfLap)clone).u02 = context.Clone(this.u02)!;
+            ((EndOfLap)clone).u03 = context.Clone(this.u03)!;
+            ((EndOfLap)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -359,7 +437,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         }
     }
 
-    public partial class EndOfRace : IReadableWritable, IReadable, IWritable
+    public partial class EndOfRace : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int u01;
         public int U01
@@ -380,6 +458,21 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         {
             get => this.u02;
             set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EndOfRace)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EndOfRace)clone).u01 = context.Clone(this.u01)!;
+            ((EndOfRace)clone).time = context.Clone(this.time)!;
+            ((EndOfRace)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -408,8 +501,29 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock, IClass,
         }
     }
 
-    public partial class Event : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Event : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Event)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Event)clone).version = context.Clone(this.version)!;
+            ((Event)clone).u01 = context.Clone(this.u01)!;
+            ((Event)clone).u02 = context.Clone(this.u02)!;
+            ((Event)clone).@type = context.Clone(this.@type)!;
+            ((Event)clone).time = context.Clone(this.time)!;
+            ((Event)clone).stunt = context.Clone(this.stunt)!;
+            ((Event)clone).checkpoint = context.Clone(this.checkpoint)!;
+            ((Event)clone).endOfLap = context.Clone(this.endOfLap)!;
+            ((Event)clone).endOfRace = context.Clone(this.endOfRace)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

@@ -42,6 +42,12 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
         set => this.keys = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockSpectators)clone).keys = context.CloneList(this.keys)!;
+    }
+
     public CGameCtnMediaBlockSpectators()
     {
     }
@@ -54,6 +60,12 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
         public override uint Id => 0x030EB000;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030EB000)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnMediaBlockSpectators n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -61,7 +73,7 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
         }
     }
 
-    public partial class Key : IKey, IReadableWritable, IReadable, IWritable
+    public partial class Key : IKey, IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
         public TimeSingle Time
@@ -75,6 +87,20 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
         {
             get => this.spectators;
             set => this.spectators = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Key)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Key)clone).time = context.Clone(this.time)!;
+            ((Key)clone).spectators = context.Clone(this.spectators)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

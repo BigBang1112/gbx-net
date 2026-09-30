@@ -119,6 +119,16 @@ public partial class CGameGateModel : CMwNod, IClass
 
     public CPlugSound? GetGateSound(GbxReadSettings settings = default, bool exceptions = false) => gateSoundFile?.GetNode(ref gateSound, settings, exceptions) ?? gateSound;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameGateModel)clone).armor = context.Clone(this.armor)!;
+        ((CGameGateModel)clone).shape = context.Clone(this.shape)!;
+        ((CGameGateModel)clone).gateOpenSound = context.Clone(this.gateOpenSound)!;
+        ((CGameGateModel)clone).gateCloseSound = context.Clone(this.gateCloseSound)!;
+        ((CGameGateModel)clone).gateSound = context.Clone(this.gateSound)!;
+    }
+
     public CGameGateModel()
     {
     }
@@ -128,6 +138,12 @@ public partial class CGameGateModel : CMwNod, IClass
     {
         public override uint Id => 0x2E00B000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E00B000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
@@ -142,6 +158,12 @@ public partial class CGameGateModel : CMwNod, IClass
     {
         public override uint Id => 0x2E00B001;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E00B001)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {

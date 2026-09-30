@@ -34,12 +34,41 @@ public partial class CPlugPrefab : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09145000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugPrefab)clone).fileWriteTime = context.Clone(this.fileWriteTime)!;
+        ((CPlugPrefab)clone).url = context.Clone(this.url)!;
+        ((CPlugPrefab)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugPrefab)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugPrefab)clone).ents = context.CloneArray(this.ents)!;
+        ((CPlugPrefab)clone).Version = context.Clone(this.Version)!;
+    }
+
     public CPlugPrefab()
     {
     }
 
-    public partial class EntRef : IReadableWritable, IReadable, IWritable
+    public partial class EntRef : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EntRef)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EntRef)clone).model = context.Clone(this.model)!;
+            ((EntRef)clone).modelFile = context.Clone(this.modelFile)!;
+            ((EntRef)clone).rotation = context.Clone(this.rotation)!;
+            ((EntRef)clone).position = context.Clone(this.position)!;
+            ((EntRef)clone).@params = context.Clone(this.@params)!;
+            ((EntRef)clone).u01 = context.Clone(this.u01)!;
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

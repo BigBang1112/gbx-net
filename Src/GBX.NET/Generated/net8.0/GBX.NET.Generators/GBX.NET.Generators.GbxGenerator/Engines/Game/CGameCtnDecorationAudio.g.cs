@@ -484,6 +484,42 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
     public CPlugFileText? GetModifierXmlFile(GbxReadSettings settings = default, bool exceptions = false) => modifierXmlFileFile?.GetNode(ref modifierXmlFile, settings, exceptions) ?? modifierXmlFile;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnDecorationAudio)clone).audioEnvOutsideOpen = context.Clone(this.audioEnvOutsideOpen)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvOutsideEnclosed = context.Clone(this.audioEnvOutsideEnclosed)!;
+        ((CGameCtnDecorationAudio)clone).soundAttenuationInEditor = context.Clone(this.soundAttenuationInEditor)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundLoud = context.Clone(this.audioBalance_PlaygroundLoud)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_ReplayLoud = context.Clone(this.audioBalance_ReplayLoud)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_Podium = context.Clone(this.audioBalance_Podium)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundSoft = context.Clone(this.audioBalance_PlaygroundSoft)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_ReplaySoft = context.Clone(this.audioBalance_ReplaySoft)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtStartLine = context.Clone(this.audioBalance_TM_EvtStartLine)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCheckpoint = context.Clone(this.audioBalance_TM_EvtCheckpoint)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtRespawn = context.Clone(this.audioBalance_TM_EvtRespawn)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCrash = context.Clone(this.audioBalance_TM_EvtCrash)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtFlying = context.Clone(this.audioBalance_TM_EvtFlying)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtSwimming = context.Clone(this.audioBalance_TM_EvtSwimming)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtSpawn = context.Clone(this.audioBalance_SM_EvtSpawn)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_Underground = context.Clone(this.audioBalance_Overlay_Underground)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_Far = context.Clone(this.audioBalance_Overlay_Far)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtUnspawn = context.Clone(this.audioBalance_SM_EvtUnspawn)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHit = context.Clone(this.audioBalance_SM_EvtHit)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtFire = context.Clone(this.audioBalance_SM_EvtFire)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHitEliminated = context.Clone(this.audioBalance_SM_EvtHitEliminated)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtBulletTime = context.Clone(this.audioBalance_SM_EvtBulletTime)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundOpen = context.Clone(this.audioEnvUndergroundOpen)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundEnclosed = context.Clone(this.audioEnvUndergroundEnclosed)!;
+        ((CGameCtnDecorationAudio)clone).cameraWooshMinSpeedKmh = context.Clone(this.cameraWooshMinSpeedKmh)!;
+        ((CGameCtnDecorationAudio)clone).reverbMinBlockDist = context.Clone(this.reverbMinBlockDist)!;
+        ((CGameCtnDecorationAudio)clone).reverbMaxBlockDist = context.Clone(this.reverbMaxBlockDist)!;
+        ((CGameCtnDecorationAudio)clone).reverbMaterialGains = context.CloneArray(this.reverbMaterialGains)!;
+        ((CGameCtnDecorationAudio)clone).modifierXmlFile = context.Clone(this.modifierXmlFile)!;
+        ((CGameCtnDecorationAudio)clone).Sounds = context.CloneDictionary(this.Sounds)!;
+        ((CGameCtnDecorationAudio)clone).Musics = context.CloneDictionary(this.Musics)!;
+    }
+
     public CGameCtnDecorationAudio()
     {
     }
@@ -492,12 +528,22 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public partial class Chunk03039000 : Chunk<CGameCtnDecorationAudio>
     {
         public override uint Id => 0x03039000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
     }
 
     [Chunk(0x03039001)]
     public partial class Chunk03039001 : Chunk<CGameCtnDecorationAudio>
     {
         public override uint Id => 0x03039001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
@@ -510,6 +556,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public partial class Chunk03039002 : Chunk<CGameCtnDecorationAudio>
     {
         public override uint Id => 0x03039002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
@@ -529,6 +580,19 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public CPlugAudioBalance? U05;
         public CPlugAudioBalance? U06;
         public CPlugAudioBalance? U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03039003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03039003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03039003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03039003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03039003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk03039003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk03039003)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk03039003)clone).U07 = context.Clone(this.U07)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
@@ -615,6 +679,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override uint Id => 0x03039004;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03039004)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -632,6 +702,13 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public int Version { get; set; }
         public float U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03039005)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03039005)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -648,6 +725,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     {
         public override uint Id => 0x03039006;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03039006)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {

@@ -52,6 +52,13 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.mapInfos = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CGameCtnChallengeGroup)clone).name = context.Clone(this.name)!;
+        ((CGameCtnChallengeGroup)clone).mapInfos = context.CloneList(this.mapInfos)!;
+    }
+
     public CGameCtnChallengeGroup()
     {
     }
@@ -64,6 +71,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F002;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
@@ -75,6 +87,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F003;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F003)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
@@ -89,6 +107,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F004;
         public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F004)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
@@ -107,6 +131,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         public override uint Id => 0x0308F005;
         public int U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F005)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -118,6 +148,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F006;
         public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F006)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
@@ -137,6 +173,17 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         public int U05;
         public int U06;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308F007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0308F007)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0308F007)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0308F007)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0308F007)clone).U06 = context.Clone(this.U06)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
@@ -154,6 +201,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         public override uint Id => 0x0308F009;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F009)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
@@ -164,6 +217,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     public partial class Chunk0308F00A : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F00A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
@@ -177,6 +235,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         public override uint Id => 0x0308F00B;
         public int Version { get; set; }
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308F00B)clone).Version = context.Clone(this.Version)!;
+        }
+
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
@@ -184,7 +248,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         }
     }
 
-    public partial class MapInfo : IReadableWritable, IReadable, IWritable
+    public partial class MapInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private Ident? metadata;
         public Ident? Metadata
@@ -205,6 +269,21 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         {
             get => this.u01;
             set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MapInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MapInfo)clone).metadata = context.Clone(this.metadata)!;
+            ((MapInfo)clone).filePath = context.Clone(this.filePath)!;
+            ((MapInfo)clone).u01 = context.Clone(this.u01)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

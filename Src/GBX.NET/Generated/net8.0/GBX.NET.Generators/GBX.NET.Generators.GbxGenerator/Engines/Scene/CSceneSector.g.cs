@@ -50,6 +50,13 @@ public partial class CSceneSector : CMwNod, IClass
         set => this.zone = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CSceneSector)clone).scene = context.Clone(this.scene)!;
+        ((CSceneSector)clone).zone = context.Clone(this.zone)!;
+    }
+
     public CSceneSector()
     {
     }
@@ -58,6 +65,11 @@ public partial class CSceneSector : CMwNod, IClass
     public partial class Chunk0A004000 : Chunk<CSceneSector>
     {
         public override uint Id => 0x0A004000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {
@@ -72,6 +84,12 @@ public partial class CSceneSector : CMwNod, IClass
         public override uint Id => 0x0A004001;
         public Iso4 U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A004001)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {
             rw.Iso4(ref U01);
@@ -84,6 +102,12 @@ public partial class CSceneSector : CMwNod, IClass
         public override uint Id => 0x0A004002;
         public string? U01;
 
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A004002)clone).U01 = context.Clone(this.U01)!;
+        }
+
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
@@ -95,6 +119,12 @@ public partial class CSceneSector : CMwNod, IClass
     {
         public override uint Id => 0x0A004004;
         public BoxAligned U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A004004)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {

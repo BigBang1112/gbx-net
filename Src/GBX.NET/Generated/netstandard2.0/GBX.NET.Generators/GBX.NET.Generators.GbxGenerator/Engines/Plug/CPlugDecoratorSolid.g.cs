@@ -42,6 +42,12 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
         set => this.treeDecorators = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugDecoratorSolid)clone).treeDecorators = context.CloneArray(this.treeDecorators)!;
+    }
+
     public CPlugDecoratorSolid()
     {
     }
@@ -50,6 +56,11 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
     public partial class Chunk090A3000 : Chunk<CPlugDecoratorSolid>
     {
         public override uint Id => 0x090A3000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
 
         public override void ReadWrite(CPlugDecoratorSolid n, GbxReaderWriter rw)
         {

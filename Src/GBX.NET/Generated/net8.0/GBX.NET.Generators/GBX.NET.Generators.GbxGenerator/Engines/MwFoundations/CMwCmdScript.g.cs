@@ -34,6 +34,11 @@ public partial class CMwCmdScript : CMwCmd, IClass
     [Hexadecimal]
     public static new uint Id => 0x01052000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CMwCmdScript()
     {
     }

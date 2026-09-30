@@ -34,6 +34,11 @@ public abstract partial class CPlugAudio : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09001000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+    }
+
     public CPlugAudio()
     {
     }
@@ -43,6 +48,12 @@ public abstract partial class CPlugAudio : CPlug, IClass
     {
         public override uint Id => 0x09001001;
         public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09001001)clone).U01 = context.Clone(this.U01)!;
+        }
 
         public override void ReadWrite(CPlugAudio n, GbxReaderWriter rw)
         {

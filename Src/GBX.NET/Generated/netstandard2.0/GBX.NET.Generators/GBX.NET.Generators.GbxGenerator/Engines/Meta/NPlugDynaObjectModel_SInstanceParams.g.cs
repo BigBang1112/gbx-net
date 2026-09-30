@@ -83,6 +83,19 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
         set => this.castStaticShadow = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((NPlugDynaObjectModel_SInstanceParams)clone).periodSc = context.Clone(this.periodSc)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).textureId = context.Clone(this.textureId)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).isKinematic = context.Clone(this.isKinematic)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).periodScMax = context.Clone(this.periodScMax)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).phase01 = context.Clone(this.phase01)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).phase01Max = context.Clone(this.phase01Max)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).castStaticShadow = context.Clone(this.castStaticShadow)!;
+        ((NPlugDynaObjectModel_SInstanceParams)clone).Version = context.Clone(this.Version)!;
+    }
+
     public NPlugDynaObjectModel_SInstanceParams()
     {
     }

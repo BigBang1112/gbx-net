@@ -34,6 +34,26 @@ public partial class CPlugVertexStream : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09056000;
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugVertexStream)clone).count = context.Clone(this.count)!;
+        ((CPlugVertexStream)clone).flags = context.Clone(this.flags)!;
+        ((CPlugVertexStream)clone).streamModel = context.Clone(this.streamModel)!;
+        ((CPlugVertexStream)clone).streamModelFile = context.Clone(this.streamModelFile)!;
+        ((CPlugVertexStream)clone).dataDecls = context.CloneArray(this.dataDecls)!;
+        ((CPlugVertexStream)clone).uvs = context.Clone(this.uvs)!;
+        ((CPlugVertexStream)clone).blendWeight = context.CloneArray(this.blendWeight)!;
+        ((CPlugVertexStream)clone).positions = context.CloneArray(this.positions)!;
+        ((CPlugVertexStream)clone).positions2 = context.CloneArray(this.positions2)!;
+        ((CPlugVertexStream)clone).normals = context.CloneArray(this.normals)!;
+        ((CPlugVertexStream)clone).normals2 = context.CloneArray(this.normals2)!;
+        ((CPlugVertexStream)clone).colors = context.Clone(this.colors)!;
+        ((CPlugVertexStream)clone).blendIndices = context.CloneArray(this.blendIndices)!;
+        ((CPlugVertexStream)clone).tangentUs = context.CloneArray(this.tangentUs)!;
+        ((CPlugVertexStream)clone).tangentVs = context.CloneArray(this.tangentVs)!;
+    }
+
     public CPlugVertexStream()
     {
     }
@@ -42,10 +62,34 @@ public partial class CPlugVertexStream : CPlug, IClass
     public partial class Chunk09056000 : Chunk<CPlugVertexStream>
     {
         public override uint Id => 0x09056000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09056000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09056000)clone).Version = context.Clone(this.Version)!;
+        }
     }
 
-    public partial class DataDecl : IReadableWritable, IReadable, IWritable
+    public partial class DataDecl : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DataDecl)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DataDecl)clone).flags1 = context.Clone(this.flags1)!;
+            ((DataDecl)clone).flags2 = context.Clone(this.flags2)!;
+            ((DataDecl)clone).u01 = context.CloneArray(this.u01)!;
+            ((DataDecl)clone).u02 = context.Clone(this.u02)!;
+            ((DataDecl)clone).offset = context.Clone(this.offset)!;
+        }
+
         public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);

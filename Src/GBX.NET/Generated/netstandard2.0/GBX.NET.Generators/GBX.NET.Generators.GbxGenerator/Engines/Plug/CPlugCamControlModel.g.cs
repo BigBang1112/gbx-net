@@ -42,6 +42,12 @@ public partial class CPlugCamControlModel : CMwNod, IClass
         set => this.shake = value;
     }
 
+    internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
+    {
+        base.DeepCloneFields(clone, context);
+        ((CPlugCamControlModel)clone).shake = context.Clone(this.shake)!;
+    }
+
     public CPlugCamControlModel()
     {
     }
@@ -51,6 +57,12 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     {
         public override uint Id => 0x0910C000;
         public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0910C000)clone).Version = context.Clone(this.Version)!;
+        }
 
         public override void ReadWrite(CPlugCamControlModel n, GbxReaderWriter rw)
         {
