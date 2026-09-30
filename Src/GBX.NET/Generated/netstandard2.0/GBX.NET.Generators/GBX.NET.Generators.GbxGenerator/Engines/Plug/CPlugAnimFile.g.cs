@@ -35,7 +35,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     public static new uint Id => 0x090B0000;
 
     private int skelVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int SkelVersion
     {
         get => this.skelVersion;
@@ -43,7 +43,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int timingFixedPeriodVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int TimingFixedPeriodVersion
     {
         get => this.timingFixedPeriodVersion;
@@ -51,7 +51,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int skelEditionVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(3, 9)]
     public int SkelEditionVersion
     {
         get => this.skelEditionVersion;
@@ -59,7 +59,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int clipFlagsVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int ClipFlagsVersion
     {
         get => this.clipFlagsVersion;
@@ -67,7 +67,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int graphVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int GraphVersion
     {
         get => this.graphVersion;
@@ -75,7 +75,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int skelEditionStateVersion;
-    [AppliedWithChunk<Chunk090B0003>]
+    [AppliedWithChunk<Chunk090B0003>(8, 9)]
     public int SkelEditionStateVersion
     {
         get => this.skelEditionStateVersion;

@@ -70,7 +70,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float? visibleMaxDistAtFov90;
-    [AppliedWithChunk<Chunk090AC001>]
+    [AppliedWithChunk<Chunk090AC001>(1)]
     public float? VisibleMaxDistAtFov90
     {
         get => this.visibleMaxDistAtFov90;
@@ -78,7 +78,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float? visibleMinScreenHeight01;
-    [AppliedWithChunk<Chunk090AC001>]
+    [AppliedWithChunk<Chunk090AC001>(1)]
     public float? VisibleMinScreenHeight01
     {
         get => this.visibleMinScreenHeight01;

@@ -213,7 +213,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string? imageArraySuffix;
-    [AppliedWithChunk<Chunk09011034>]
+    [AppliedWithChunk<Chunk09011034>(1)]
     public string? ImageArraySuffix
     {
         get => this.imageArraySuffix;
@@ -221,7 +221,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string[]? imageArrayFids;
-    [AppliedWithChunk<Chunk09011034>]
+    [AppliedWithChunk<Chunk09011034>(2)]
     public string[]? ImageArrayFids
     {
         get => this.imageArrayFids;
@@ -229,7 +229,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private CPlugBitmapArray? bitmapArray;
-    [AppliedWithChunk<Chunk09011034>]
+    [AppliedWithChunk<Chunk09011034>(3)]
     public CPlugBitmapArray? BitmapArray
     {
         get => this.bitmapArray;
@@ -237,7 +237,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string? bitmapArrayElemName;
-    [AppliedWithChunk<Chunk09011034>]
+    [AppliedWithChunk<Chunk09011034>(3)]
     public string? BitmapArrayElemName
     {
         get => this.bitmapArrayElemName;

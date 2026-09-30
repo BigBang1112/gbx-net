@@ -131,7 +131,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
-    [AppliedWithChunk<Chunk0304E020>]
+    [AppliedWithChunk<Chunk0304E020>(2)]
     public CMwNod? PodiumInfo
     {
         get => this.podiumInfo;
@@ -142,7 +142,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
-    [AppliedWithChunk<Chunk0304E020>]
+    [AppliedWithChunk<Chunk0304E020>(3)]
     public CMwNod? IntroInfo
     {
         get => this.introInfo;
@@ -150,7 +150,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool charPhySpecialPropertyCustomizable;
-    [AppliedWithChunk<Chunk0304E020>]
+    [AppliedWithChunk<Chunk0304E020>(4)]
     public bool CharPhySpecialPropertyCustomizable
     {
         get => this.charPhySpecialPropertyCustomizable;
@@ -309,7 +309,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// not verified
     /// </summary>
-    [AppliedWithChunk<Chunk0304E031>]
+    [AppliedWithChunk<Chunk0304E031>(1)]
     public CPlugGameSkinAndFolder? MaterialModifier2
     {
         get => this.materialModifier2File?.GetNode(ref this.materialModifier2) ?? this.materialModifier2;

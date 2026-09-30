@@ -35,7 +35,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     public static new uint Id => 0x2E009000;
 
     private int spawn;
-    [AppliedWithChunk<Chunk2E009000>]
+    [AppliedWithChunk<Chunk2E009000>(1, 1)]
     public int Spawn
     {
         get => this.spawn;
@@ -43,7 +43,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     private int order;
-    [AppliedWithChunk<Chunk2E009000>]
+    [AppliedWithChunk<Chunk2E009000>(1, 2)]
     public int Order
     {
         get => this.order;
@@ -51,7 +51,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     private string? tag;
-    [AppliedWithChunk<Chunk2E009000>]
+    [AppliedWithChunk<Chunk2E009000>(2, 2)]
     public string? Tag
     {
         get => this.tag;

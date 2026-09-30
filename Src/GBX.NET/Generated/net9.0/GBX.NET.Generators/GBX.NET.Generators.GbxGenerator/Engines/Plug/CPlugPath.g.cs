@@ -46,7 +46,7 @@ public partial class CPlugPath : CMwNod, IClass
     /// <summary>
     /// length must equal PolyLines
     /// </summary>
-    [AppliedWithChunk<Chunk09119000>]
+    [AppliedWithChunk<Chunk09119000>(2)]
     public byte[]? LineGroups
     {
         get => this.lineGroups;

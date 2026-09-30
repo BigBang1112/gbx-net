@@ -107,7 +107,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private bool nightOnly;
-    [AppliedWithChunk<Chunk090F9000>]
+    [AppliedWithChunk<Chunk090F9000>(1)]
     public bool NightOnly
     {
         get => this.nightOnly;

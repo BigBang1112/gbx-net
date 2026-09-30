@@ -200,7 +200,7 @@ public partial class CSceneLayout : CScene, IClass
     public CSceneFxNod? GetSceneFxNod(GbxReadSettings settings = default, bool exceptions = false) => sceneFxNodFile?.GetNode(ref sceneFxNod, settings, exceptions) ?? sceneFxNod;
 
     private CSceneObject[]? objects;
-    [AppliedWithChunk<Chunk0A00301C>]
+    [AppliedWithChunk<Chunk0A00301C>(0, 2)]
     public CSceneObject[]? Objects
     {
         get => this.objects;
@@ -208,7 +208,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private Iso4[]? objectLocations;
-    [AppliedWithChunk<Chunk0A00301C>]
+    [AppliedWithChunk<Chunk0A00301C>(0, 2)]
     public Iso4[]? ObjectLocations
     {
         get => this.objectLocations;
@@ -216,7 +216,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private External<CPlugWeatherModel>[]? weatherModels;
-    [AppliedWithChunk<Chunk0A00301C>]
+    [AppliedWithChunk<Chunk0A00301C>(0, 1)]
     public External<CPlugWeatherModel>[]? WeatherModels
     {
         get => this.weatherModels;
@@ -224,7 +224,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private CPlugWeatherModel? weatherModel;
-    [AppliedWithChunk<Chunk0A00301C>]
+    [AppliedWithChunk<Chunk0A00301C>(2)]
     public CPlugWeatherModel? WeatherModel
     {
         get => this.weatherModelFile?.GetNode(ref this.weatherModel) ?? this.weatherModel;

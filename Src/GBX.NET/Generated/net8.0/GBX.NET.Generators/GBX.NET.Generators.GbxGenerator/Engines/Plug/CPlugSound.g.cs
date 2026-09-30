@@ -216,7 +216,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
     private float rolloffFactor;
     [AppliedWithChunk<Chunk0901A00C>]
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(1)]
     public float RolloffFactor
     {
         get => this.rolloffFactor;
@@ -225,7 +225,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
     private float roomRolloffFactor;
     [AppliedWithChunk<Chunk0901A00C>]
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(4)]
     public float RoomRolloffFactor
     {
         get => this.roomRolloffFactor;
@@ -234,7 +234,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
     private float airAbsorptionFactor;
     [AppliedWithChunk<Chunk0901A00C>]
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(4)]
     public float AirAbsorptionFactor
     {
         get => this.airAbsorptionFactor;
@@ -242,7 +242,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private bool useLowPassFilter;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(1)]
     public bool UseLowPassFilter
     {
         get => this.useLowPassFilter;
@@ -250,7 +250,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int maxDuplicates;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(2)]
     public int MaxDuplicates
     {
         get => this.maxDuplicates;
@@ -258,7 +258,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int balanceGroup;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(3)]
     public int BalanceGroup
     {
         get => this.balanceGroup;
@@ -266,7 +266,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int duplicatesIntervalMin;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(4)]
     public int DuplicatesIntervalMin
     {
         get => this.duplicatesIntervalMin;
@@ -274,7 +274,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float fadeStopDuration;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(5)]
     public float FadeStopDuration
     {
         get => this.fadeStopDuration;
@@ -282,7 +282,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float pitch;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(6)]
     public float Pitch
     {
         get => this.pitch;
@@ -290,7 +290,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float fadePlayDuration;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(7)]
     public float FadePlayDuration
     {
         get => this.fadePlayDuration;
@@ -298,7 +298,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private string? groupDuplicate;
-    [AppliedWithChunk<Chunk0901A00E>]
+    [AppliedWithChunk<Chunk0901A00E>(9)]
     public string? GroupDuplicate
     {
         get => this.groupDuplicate;
@@ -314,7 +314,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private CFuncKeysReal? volumeFromDistance;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(2)]
     public CFuncKeysReal? VolumeFromDistance
     {
         get => this.volumeFromDistance;
@@ -322,7 +322,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int roomFxSend;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(3)]
     public int RoomFxSend
     {
         get => this.roomFxSend;
@@ -330,7 +330,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int pitchFromDistMode;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(7)]
     public int PitchFromDistMode
     {
         get => this.pitchFromDistMode;
@@ -338,7 +338,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int ignoreSourceProperties;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(7)]
     public int IgnoreSourceProperties
     {
         get => this.ignoreSourceProperties;
@@ -346,7 +346,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private CFuncKeysReal? pitchFromDistance;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(8)]
     public CFuncKeysReal? PitchFromDistance
     {
         get => this.pitchFromDistance;
@@ -354,7 +354,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private CFuncKeysReal? volumeFormSpeedKmh;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(9)]
     public CFuncKeysReal? VolumeFormSpeedKmh
     {
         get => this.volumeFormSpeedKmh;
@@ -362,7 +362,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float radius;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(10)]
     public float Radius
     {
         get => this.radius;
@@ -370,7 +370,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float panAngleDeg;
-    [AppliedWithChunk<Chunk0901A00F>]
+    [AppliedWithChunk<Chunk0901A00F>(11)]
     public float PanAngleDeg
     {
         get => this.panAngleDeg;

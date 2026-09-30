@@ -146,7 +146,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private bool isWaterOutsidePlayField;
-    [AppliedWithChunk<Chunk03038017>]
+    [AppliedWithChunk<Chunk03038017>(1)]
     public bool IsWaterOutsidePlayField
     {
         get => this.isWaterOutsidePlayField;
@@ -179,7 +179,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private CPlugSound? decoAudioAmbient;
-    [AppliedWithChunk<Chunk03038019>]
+    [AppliedWithChunk<Chunk03038019>(1)]
     public CPlugSound? DecoAudioAmbient
     {
         get => this.decoAudioAmbientFile?.GetNode(ref this.decoAudioAmbient) ?? this.decoAudioAmbient;
@@ -224,7 +224,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// <summary>
     /// Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
     /// </summary>
-    [AppliedWithChunk<Chunk0303801B>]
+    [AppliedWithChunk<Chunk0303801B>(1)]
     public CMwNod? DecoMapLightMap
     {
         get => this.decoMapLightMapFile?.GetNode(ref this.decoMapLightMap) ?? this.decoMapLightMap;

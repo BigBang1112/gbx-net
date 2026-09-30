@@ -79,7 +79,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool stopWithClip;
-    [AppliedWithChunk<Chunk030A7003>]
+    [AppliedWithChunk<Chunk030A7003>(1)]
     public bool StopWithClip
     {
         get => this.stopWithClip;
@@ -87,7 +87,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool audioToSpeech;
-    [AppliedWithChunk<Chunk030A7003>]
+    [AppliedWithChunk<Chunk030A7003>(2)]
     public bool AudioToSpeech
     {
         get => this.audioToSpeech;
@@ -95,7 +95,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private int audioToSpeechTarget;
-    [AppliedWithChunk<Chunk030A7003>]
+    [AppliedWithChunk<Chunk030A7003>(2)]
     public int AudioToSpeechTarget
     {
         get => this.audioToSpeechTarget;

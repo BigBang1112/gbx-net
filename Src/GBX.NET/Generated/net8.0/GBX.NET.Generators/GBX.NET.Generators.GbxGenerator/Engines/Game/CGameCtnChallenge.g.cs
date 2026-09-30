@@ -47,7 +47,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int cost;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(4)]
     public int Cost
     {
         get => this.cost;
@@ -55,7 +55,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool isLapRace;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(5)]
     [AppliedWithChunk<Chunk03043018>]
     public bool IsLapRace
     {
@@ -64,7 +64,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private PlayMode mode;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(6)]
     [AppliedWithChunk<Chunk0304301C>]
     public PlayMode Mode
     {
@@ -73,7 +73,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool hasClones;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(9)]
     public bool HasClones
     {
         get => this.hasClones;
@@ -81,7 +81,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private EditorMode editor;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(11)]
     public EditorMode Editor
     {
         get => this.editor;
@@ -89,7 +89,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int nbCheckpoints;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(13)]
     public int NbCheckpoints
     {
         get => this.nbCheckpoints;
@@ -97,7 +97,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int nbLaps;
-    [AppliedWithChunk<HeaderChunk03043002>]
+    [AppliedWithChunk<HeaderChunk03043002>(13)]
     [AppliedWithChunk<Chunk03043018>]
     public int NbLaps
     {
@@ -114,7 +114,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? password;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(1)]
     [AppliedWithChunk<Chunk03043014>]
     public string? Password
     {
@@ -123,7 +123,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Vec2 mapCoordOrigin;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(3)]
     [AppliedWithChunk<Chunk03043023>]
     [AppliedWithChunk<Chunk03043025>]
     public Vec2 MapCoordOrigin
@@ -133,7 +133,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Vec2 mapCoordTarget;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(4)]
     [AppliedWithChunk<Chunk03043025>]
     public Vec2 MapCoordTarget
     {
@@ -142,7 +142,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private UInt128 packMask;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(5)]
     public UInt128 PackMask
     {
         get => this.packMask;
@@ -150,7 +150,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private ulong lightmapCacheUid;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(8)]
     public ulong LightmapCacheUid
     {
         get => this.lightmapCacheUid;
@@ -158,7 +158,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? titleId;
-    [AppliedWithChunk<HeaderChunk03043003>]
+    [AppliedWithChunk<HeaderChunk03043003>(11)]
     [AppliedWithChunk<Chunk03043051>]
     public string? TitleId
     {
@@ -345,7 +345,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private CGameCtnMediaClip? clipAmbiance;
-    [AppliedWithChunk<Chunk03043049>]
+    [AppliedWithChunk<Chunk03043049>(2)]
     public CGameCtnMediaClip? ClipAmbiance
     {
         get => this.clipAmbiance;
@@ -353,7 +353,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Int3 clipTriggerSize = (1, 1, 1);
-    [AppliedWithChunk<Chunk03043049>]
+    [AppliedWithChunk<Chunk03043049>(1)]
     public Int3 ClipTriggerSize
     {
         get => this.clipTriggerSize;

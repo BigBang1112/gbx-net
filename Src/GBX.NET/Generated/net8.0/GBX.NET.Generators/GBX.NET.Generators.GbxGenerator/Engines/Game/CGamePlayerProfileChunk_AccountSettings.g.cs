@@ -260,7 +260,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int privacyPolicyVersion;
-    [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithChunk<Chunk0312C000>(3)]
     public int PrivacyPolicyVersion
     {
         get => this.privacyPolicyVersion;
@@ -268,7 +268,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int age;
-    [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithChunk<Chunk0312C000>(3)]
     public int Age
     {
         get => this.age;
@@ -276,7 +276,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? trigram;
-    [AppliedWithChunk<Chunk0312C001>]
+    [AppliedWithChunk<Chunk0312C001>(2)]
     public string? Trigram
     {
         get => this.trigram;

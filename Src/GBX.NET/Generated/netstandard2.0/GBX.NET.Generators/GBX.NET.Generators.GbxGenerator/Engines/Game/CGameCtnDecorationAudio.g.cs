@@ -130,7 +130,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_Podium(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_PodiumFile?.GetNode(ref audioBalance_Podium, settings, exceptions) ?? audioBalance_Podium;
 
     private CPlugAudioBalance? audioBalance_PlaygroundSoft;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_PlaygroundSoft
     {
         get => this.audioBalance_PlaygroundSoftFile?.GetNode(ref this.audioBalance_PlaygroundSoft) ?? this.audioBalance_PlaygroundSoft;
@@ -147,7 +147,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_PlaygroundSoft(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_PlaygroundSoftFile?.GetNode(ref audioBalance_PlaygroundSoft, settings, exceptions) ?? audioBalance_PlaygroundSoft;
 
     private CPlugAudioBalance? audioBalance_ReplaySoft;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_ReplaySoft
     {
         get => this.audioBalance_ReplaySoftFile?.GetNode(ref this.audioBalance_ReplaySoft) ?? this.audioBalance_ReplaySoft;
@@ -249,7 +249,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_TM_EvtFlying(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtFlyingFile?.GetNode(ref audioBalance_TM_EvtFlying, settings, exceptions) ?? audioBalance_TM_EvtFlying;
 
     private CPlugAudioBalance? audioBalance_TM_EvtSwimming;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(7)]
     public CPlugAudioBalance? AudioBalance_TM_EvtSwimming
     {
         get => this.audioBalance_TM_EvtSwimmingFile?.GetNode(ref this.audioBalance_TM_EvtSwimming) ?? this.audioBalance_TM_EvtSwimming;
@@ -283,7 +283,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_SM_EvtSpawn(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtSpawnFile?.GetNode(ref audioBalance_SM_EvtSpawn, settings, exceptions) ?? audioBalance_SM_EvtSpawn;
 
     private CPlugAudioBalance? audioBalance_Overlay_Underground;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Underground
     {
         get => this.audioBalance_Overlay_UndergroundFile?.GetNode(ref this.audioBalance_Overlay_Underground) ?? this.audioBalance_Overlay_Underground;
@@ -300,7 +300,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_Overlay_Underground(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_Overlay_UndergroundFile?.GetNode(ref audioBalance_Overlay_Underground, settings, exceptions) ?? audioBalance_Overlay_Underground;
 
     private CPlugAudioBalance? audioBalance_Overlay_Far;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Far
     {
         get => this.audioBalance_Overlay_FarFile?.GetNode(ref this.audioBalance_Overlay_Far) ?? this.audioBalance_Overlay_Far;
@@ -317,7 +317,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_Overlay_Far(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_Overlay_FarFile?.GetNode(ref audioBalance_Overlay_Far, settings, exceptions) ?? audioBalance_Overlay_Far;
 
     private CPlugAudioBalance? audioBalance_SM_EvtUnspawn;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtUnspawn
     {
         get => this.audioBalance_SM_EvtUnspawnFile?.GetNode(ref this.audioBalance_SM_EvtUnspawn) ?? this.audioBalance_SM_EvtUnspawn;
@@ -334,7 +334,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_SM_EvtUnspawn(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtUnspawnFile?.GetNode(ref audioBalance_SM_EvtUnspawn, settings, exceptions) ?? audioBalance_SM_EvtUnspawn;
 
     private CPlugAudioBalance? audioBalance_SM_EvtHit;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHit
     {
         get => this.audioBalance_SM_EvtHitFile?.GetNode(ref this.audioBalance_SM_EvtHit) ?? this.audioBalance_SM_EvtHit;
@@ -351,7 +351,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_SM_EvtHit(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtHitFile?.GetNode(ref audioBalance_SM_EvtHit, settings, exceptions) ?? audioBalance_SM_EvtHit;
 
     private CPlugAudioBalance? audioBalance_SM_EvtFire;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(3)]
     public CPlugAudioBalance? AudioBalance_SM_EvtFire
     {
         get => this.audioBalance_SM_EvtFireFile?.GetNode(ref this.audioBalance_SM_EvtFire) ?? this.audioBalance_SM_EvtFire;
@@ -368,7 +368,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_SM_EvtFire(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtFireFile?.GetNode(ref audioBalance_SM_EvtFire, settings, exceptions) ?? audioBalance_SM_EvtFire;
 
     private CPlugAudioBalance? audioBalance_SM_EvtHitEliminated;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(4)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHitEliminated
     {
         get => this.audioBalance_SM_EvtHitEliminatedFile?.GetNode(ref this.audioBalance_SM_EvtHitEliminated) ?? this.audioBalance_SM_EvtHitEliminated;
@@ -385,7 +385,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public CPlugAudioBalance? GetAudioBalance_SM_EvtHitEliminated(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtHitEliminatedFile?.GetNode(ref audioBalance_SM_EvtHitEliminated, settings, exceptions) ?? audioBalance_SM_EvtHitEliminated;
 
     private CPlugAudioBalance? audioBalance_SM_EvtBulletTime;
-    [AppliedWithChunk<Chunk03039003>]
+    [AppliedWithChunk<Chunk03039003>(8)]
     public CPlugAudioBalance? AudioBalance_SM_EvtBulletTime
     {
         get => this.audioBalance_SM_EvtBulletTimeFile?.GetNode(ref this.audioBalance_SM_EvtBulletTime) ?? this.audioBalance_SM_EvtBulletTime;

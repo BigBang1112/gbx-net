@@ -51,7 +51,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private CMwNod? material_VId;
-    [AppliedWithChunk<Chunk0914C000>]
+    [AppliedWithChunk<Chunk0914C000>(4)]
     public CMwNod? Material_VId
     {
         get => this.material_VId;
@@ -59,7 +59,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private float maskScale;
-    [AppliedWithChunk<Chunk0914C000>]
+    [AppliedWithChunk<Chunk0914C000>(5)]
     public float MaskScale
     {
         get => this.maskScale;
@@ -67,7 +67,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private string? folder_TextureDecals;
-    [AppliedWithChunk<Chunk0914C000>]
+    [AppliedWithChunk<Chunk0914C000>(6)]
     public string? Folder_TextureDecals
     {
         get => this.folder_TextureDecals;

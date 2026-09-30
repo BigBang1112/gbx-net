@@ -419,7 +419,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private CGameItemPlacementParam? defaultPlacement;
-    [AppliedWithChunk<Chunk2E00201C>]
+    [AppliedWithChunk<Chunk2E00201C>(5)]
     public CGameItemPlacementParam? DefaultPlacement
     {
         get => this.defaultPlacementFile?.GetNode(ref this.defaultPlacement) ?? this.defaultPlacement;
@@ -436,7 +436,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public CGameItemPlacementParam? GetDefaultPlacement(GbxReadSettings settings = default, bool exceptions = false) => defaultPlacementFile?.GetNode(ref defaultPlacement, settings, exceptions) ?? defaultPlacement;
 
     private string? archetypeRef;
-    [AppliedWithChunk<Chunk2E00201E>]
+    [AppliedWithChunk<Chunk2E00201E>(2)]
     public string? ArchetypeRef
     {
         get => this.archetypeRef;
@@ -444,7 +444,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private CGameItemModel? archetypeFid;
-    [AppliedWithChunk<Chunk2E00201E>]
+    [AppliedWithChunk<Chunk2E00201E>(5)]
     public CGameItemModel? ArchetypeFid
     {
         get => this.archetypeFid;
@@ -460,7 +460,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private bool disableLightmap;
-    [AppliedWithChunk<Chunk2E00201F>]
+    [AppliedWithChunk<Chunk2E00201F>(6)]
     public bool DisableLightmap
     {
         get => this.disableLightmap;

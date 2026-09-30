@@ -44,9 +44,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterTextureName;
-    [AppliedWithChunk<HeaderChunk090F4000>]
+    [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
-    [AppliedWithChunk<Chunk090F4004>]
+    [AppliedWithChunk<Chunk090F4004>(1)]
     public string? PainterTextureName
     {
         get => this.painterTextureName;
@@ -54,9 +54,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterSceneId;
-    [AppliedWithChunk<HeaderChunk090F4000>]
+    [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
-    [AppliedWithChunk<Chunk090F4004>]
+    [AppliedWithChunk<Chunk090F4004>(1)]
     public string? PainterSceneId
     {
         get => this.painterSceneId;
@@ -72,8 +72,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? dirNameAlt;
-    [AppliedWithChunk<HeaderChunk090F4000>]
-    [AppliedWithChunk<Chunk090F4004>]
+    [AppliedWithChunk<HeaderChunk090F4000>(4)]
+    [AppliedWithChunk<Chunk090F4004>(4)]
     public string? DirNameAlt
     {
         get => this.dirNameAlt;

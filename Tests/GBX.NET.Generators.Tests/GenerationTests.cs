@@ -79,6 +79,73 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task AnnotatesChunkPropertiesWithTheirSerializationVersionRanges()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version = 8
+              int Always
+              v2-
+                int Legacy
+              v3+
+                int Modern
+                v5-
+                  int Middle
+              v4=
+                int Exact
+              v0=
+                int Repeated
+              v3+
+                int Repeated
+              if Version >= 7
+                int Late
+              else
+                int Early
+              if Version < 2
+                int FirstBranch
+              else if Version < 5
+                int MiddleBranch
+              else
+                int LastBranch
+            0x002 (base: 0x001)
+              base
+              v4+
+                int Extra
+            0x003 (base: 0x001)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generatedClass = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "Example");
+        var properties = generatedClass.Members.OfType<PropertyDeclarationSyntax>()
+            .ToDictionary(x => x.Identifier.ValueText, x => x.AttributeLists.SelectMany(y => y.Attributes)
+                .Where(y => y.Name.ToString().StartsWith("AppliedWithChunk<", StringComparison.Ordinal))
+                .Select(y => y.ToString()).ToArray());
+
+        await Assert.That(properties["Always"]).IsEquivalentTo(new[]
+        {
+            "AppliedWithChunk<Chunk03043001>", "AppliedWithChunk<Chunk03043002>", "AppliedWithChunk<Chunk03043003>"
+        });
+        await Assert.That(properties["Legacy"]).IsEquivalentTo(new[]
+        {
+            "AppliedWithChunk<Chunk03043001>(0, 2)", "AppliedWithChunk<Chunk03043002>(0, 2)", "AppliedWithChunk<Chunk03043003>(0, 2)"
+        });
+        await Assert.That(properties["Modern"]).Contains("AppliedWithChunk<Chunk03043001>(3)");
+        await Assert.That(properties["Middle"]).Contains("AppliedWithChunk<Chunk03043001>(3, 5)");
+        await Assert.That(properties["Exact"]).Contains("AppliedWithChunk<Chunk03043001>(4, 4)");
+        await Assert.That(properties["Repeated"]).Contains("AppliedWithChunk<Chunk03043001>(0, 0)");
+        await Assert.That(properties["Repeated"]).Contains("AppliedWithChunk<Chunk03043001>(3)");
+        await Assert.That(properties["Late"]).Contains("AppliedWithChunk<Chunk03043001>(7)");
+        await Assert.That(properties["Early"]).Contains("AppliedWithChunk<Chunk03043001>(0, 6)");
+        await Assert.That(properties["FirstBranch"]).Contains("AppliedWithChunk<Chunk03043001>(0, 1)");
+        await Assert.That(properties["MiddleBranch"]).Contains("AppliedWithChunk<Chunk03043001>(2, 4)");
+        await Assert.That(properties["LastBranch"]).Contains("AppliedWithChunk<Chunk03043001>(5)");
+        await Assert.That(properties["Extra"]).IsEquivalentTo(new[] { "AppliedWithChunk<Chunk03043002>(4)" });
+    }
+
+    [Test]
     public async Task PreservesWireWidthsDataIdentifiersContextualArchivesAndGameVersions()
     {
         const string source = """
@@ -387,7 +454,12 @@ public class GenerationTests
             public class ClassAttribute(uint id) : System.Attribute { }
             public class ChunkAttribute(uint id) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
-            public class AppliedWithChunkAttribute<T> : System.Attribute { }
+            [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+            public class AppliedWithChunkAttribute<T> : System.Attribute
+            {
+                public AppliedWithChunkAttribute(int sinceVersion = 0) { }
+                public AppliedWithChunkAttribute(int sinceVersion, int upToVersion) { }
+            }
         }
         namespace GBX.NET.Serialization
         {

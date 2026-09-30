@@ -36,7 +36,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
 
     private TimeSingle start;
     [AppliedWithChunk<Chunk030E5001>]
-    [AppliedWithChunk<Chunk030E5002>]
+    [AppliedWithChunk<Chunk030E5002>(0, 2)]
     public TimeSingle Start
     {
         get => this.start;
@@ -45,7 +45,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
 
     private TimeSingle end;
     [AppliedWithChunk<Chunk030E5001>]
-    [AppliedWithChunk<Chunk030E5002>]
+    [AppliedWithChunk<Chunk030E5002>(0, 2)]
     public TimeSingle End
     {
         get => this.end;
@@ -71,7 +71,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private List<Key>? keys;
-    [AppliedWithChunk<Chunk030E5002>]
+    [AppliedWithChunk<Chunk030E5002>(3)]
     public List<Key>? Keys
     {
         get => this.keys;

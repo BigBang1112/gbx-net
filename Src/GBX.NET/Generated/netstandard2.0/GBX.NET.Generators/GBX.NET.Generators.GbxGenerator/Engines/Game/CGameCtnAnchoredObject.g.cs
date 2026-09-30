@@ -83,7 +83,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private short flags;
-    [AppliedWithChunk<Chunk03101002>]
+    [AppliedWithChunk<Chunk03101002>(4)]
     public short Flags
     {
         get => this.flags;
@@ -91,7 +91,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private Vec3 pivotPosition;
-    [AppliedWithChunk<Chunk03101002>]
+    [AppliedWithChunk<Chunk03101002>(5)]
     public Vec3 PivotPosition
     {
         get => this.pivotPosition;
@@ -99,7 +99,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private float scale;
-    [AppliedWithChunk<Chunk03101002>]
+    [AppliedWithChunk<Chunk03101002>(6)]
     public float Scale
     {
         get => this.scale;
@@ -107,7 +107,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private PackDesc? packDesc;
-    [AppliedWithChunk<Chunk03101002>]
+    [AppliedWithChunk<Chunk03101002>(7)]
     public PackDesc? PackDesc
     {
         get => this.packDesc;

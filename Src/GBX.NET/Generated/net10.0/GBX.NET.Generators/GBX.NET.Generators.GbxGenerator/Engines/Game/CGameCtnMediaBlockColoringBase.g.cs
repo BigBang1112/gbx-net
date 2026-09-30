@@ -43,7 +43,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     }
 
     private int baseIndex;
-    [AppliedWithChunk<Chunk03172000>]
+    [AppliedWithChunk<Chunk03172000>(1)]
     public int BaseIndex
     {
         get => this.baseIndex;

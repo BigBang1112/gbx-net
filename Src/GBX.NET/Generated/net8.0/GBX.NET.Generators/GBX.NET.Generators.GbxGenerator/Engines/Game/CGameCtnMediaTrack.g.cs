@@ -74,7 +74,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private TimeSingle? repeatingSegmentStart;
-    [AppliedWithChunk<Chunk03078005>]
+    [AppliedWithChunk<Chunk03078005>(1)]
     public TimeSingle? RepeatingSegmentStart
     {
         get => this.repeatingSegmentStart;
@@ -82,7 +82,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private TimeSingle? repeatingSegmentEnd;
-    [AppliedWithChunk<Chunk03078005>]
+    [AppliedWithChunk<Chunk03078005>(1)]
     public TimeSingle? RepeatingSegmentEnd
     {
         get => this.repeatingSegmentEnd;

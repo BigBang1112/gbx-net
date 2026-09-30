@@ -77,7 +77,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     private OccupantSlot[]? occupantSlots;
-    [AppliedWithChunk<Chunk090EA008>]
+    [AppliedWithChunk<Chunk090EA008>(1)]
     public OccupantSlot[]? OccupantSlots
     {
         get => this.occupantSlots;

@@ -59,7 +59,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private float mass;
-    [AppliedWithChunk<Chunk2E026000>]
+    [AppliedWithChunk<Chunk2E026000>(3)]
     public float Mass
     {
         get => this.mass;
@@ -67,7 +67,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? inventoryName;
-    [AppliedWithChunk<Chunk2E026000>]
+    [AppliedWithChunk<Chunk2E026000>(1)]
     public string? InventoryName
     {
         get => this.inventoryName;
@@ -75,7 +75,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? inventoryDescription;
-    [AppliedWithChunk<Chunk2E026000>]
+    [AppliedWithChunk<Chunk2E026000>(1)]
     public string? InventoryDescription
     {
         get => this.inventoryDescription;
@@ -83,7 +83,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private int inventoryItemClass;
-    [AppliedWithChunk<Chunk2E026000>]
+    [AppliedWithChunk<Chunk2E026000>(1)]
     public int InventoryItemClass
     {
         get => this.inventoryItemClass;
@@ -91,7 +91,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private int inventoryOccupation;
-    [AppliedWithChunk<Chunk2E026000>]
+    [AppliedWithChunk<Chunk2E026000>(1)]
     public int InventoryOccupation
     {
         get => this.inventoryOccupation;

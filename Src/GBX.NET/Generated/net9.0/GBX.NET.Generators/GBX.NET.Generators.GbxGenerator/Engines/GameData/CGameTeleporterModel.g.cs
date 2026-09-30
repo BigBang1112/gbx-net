@@ -35,7 +35,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     public static new uint Id => 0x2E00C000;
 
     private Iso4 spawnLoc;
-    [AppliedWithChunk<Chunk2E00C000>]
+    [AppliedWithChunk<Chunk2E00C000>(0, 0)]
     public Iso4 SpawnLoc
     {
         get => this.spawnLoc;
@@ -43,7 +43,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     }
 
     private CGameSpawnModel? spawn;
-    [AppliedWithChunk<Chunk2E00C000>]
+    [AppliedWithChunk<Chunk2E00C000>(1)]
     public CGameSpawnModel? Spawn
     {
         get => this.spawn;
@@ -68,7 +68,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     public CPlugSurface? GetTriggerShape(GbxReadSettings settings = default, bool exceptions = false) => triggerShapeFile?.GetNode(ref triggerShape, settings, exceptions) ?? triggerShape;
 
     private Vec3 centerPos;
-    [AppliedWithChunk<Chunk2E00C000>]
+    [AppliedWithChunk<Chunk2E00C000>(2)]
     public Vec3 CenterPos
     {
         get => this.centerPos;

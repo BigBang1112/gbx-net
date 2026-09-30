@@ -75,9 +75,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EVersion version;
-    [AppliedWithChunk<Chunk06022015>]
     [AppliedWithChunk<Chunk06022016>]
-    [AppliedWithChunk<Chunk0602201A>]
     public EVersion Version
     {
         get => this.version;
@@ -165,7 +163,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EBump bump;
-    [AppliedWithChunk<Chunk0602201A>]
+    [AppliedWithChunk<Chunk0602201A>(6)]
     public EBump Bump
     {
         get => this.bump;
@@ -173,7 +171,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private SFrame[]? frames;
-    [AppliedWithChunk<Chunk0602201A>]
+    [AppliedWithChunk<Chunk0602201A>(3)]
     public SFrame[]? Frames
     {
         get => this.frames;
@@ -197,7 +195,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EPlugGpuPlatform gpuPlatform;
-    [AppliedWithChunk<Chunk0602201A>]
+    [AppliedWithChunk<Chunk0602201A>(1)]
     public EPlugGpuPlatform GpuPlatform
     {
         get => this.gpuPlatform;
@@ -205,7 +203,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float allocatedTexelByMeter;
-    [AppliedWithChunk<Chunk0602201A>]
+    [AppliedWithChunk<Chunk0602201A>(5)]
     public float AllocatedTexelByMeter
     {
         get => this.allocatedTexelByMeter;

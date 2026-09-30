@@ -274,7 +274,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private bool waterReflectFakeCube;
-    [AppliedWithChunk<Chunk0303A00F>]
+    [AppliedWithChunk<Chunk0303A00F>(1)]
     public bool WaterReflectFakeCube
     {
         get => this.waterReflectFakeCube;
@@ -282,7 +282,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private CPlugFxHdrScales_Tech3? fxHdrScalesT3;
-    [AppliedWithChunk<Chunk0303A00F>]
+    [AppliedWithChunk<Chunk0303A00F>(2)]
     public CPlugFxHdrScales_Tech3? FxHdrScalesT3
     {
         get => this.fxHdrScalesT3File?.GetNode(ref this.fxHdrScalesT3) ?? this.fxHdrScalesT3;
@@ -299,7 +299,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public CPlugFxHdrScales_Tech3? GetFxHdrScalesT3(GbxReadSettings settings = default, bool exceptions = false) => fxHdrScalesT3File?.GetNode(ref fxHdrScalesT3, settings, exceptions) ?? fxHdrScalesT3;
 
     private CPlugMoodBlender? moodBlender;
-    [AppliedWithChunk<Chunk0303A00F>]
+    [AppliedWithChunk<Chunk0303A00F>(3)]
     public CPlugMoodBlender? MoodBlender
     {
         get => this.moodBlenderFile?.GetNode(ref this.moodBlender) ?? this.moodBlender;
@@ -375,7 +375,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public CPlugFxWindOnDecal? GetFxWindOnDecal(GbxReadSettings settings = default, bool exceptions = false) => fxWindOnDecalFile?.GetNode(ref fxWindOnDecal, settings, exceptions) ?? fxWindOnDecal;
 
     private CPlugFxWindOnTreeSprite? fxWindOnTreeSprite;
-    [AppliedWithChunk<Chunk0303A012>]
+    [AppliedWithChunk<Chunk0303A012>(1)]
     public CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
     {
         get => this.fxWindOnTreeSpriteFile?.GetNode(ref this.fxWindOnTreeSprite) ?? this.fxWindOnTreeSprite;

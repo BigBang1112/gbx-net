@@ -51,7 +51,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     }
 
     private string? matterId;
-    [AppliedWithChunk<Chunk09078000>]
+    [AppliedWithChunk<Chunk09078000>(4)]
     public string? MatterId
     {
         get => this.matterId;

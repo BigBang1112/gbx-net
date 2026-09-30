@@ -495,7 +495,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private CPlugVisual? visual;
-    [AppliedWithChunk<Chunk090B2031>]
+    [AppliedWithChunk<Chunk090B2031>(0, 4)]
     public CPlugVisual? Visual
     {
         get => this.visual;

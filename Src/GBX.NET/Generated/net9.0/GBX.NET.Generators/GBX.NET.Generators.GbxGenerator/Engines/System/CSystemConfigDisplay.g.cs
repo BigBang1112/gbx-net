@@ -317,7 +317,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private string? adapter;
-    [AppliedWithChunk<Chunk0B013036>]
+    [AppliedWithChunk<Chunk0B013036>(3)]
     public string? Adapter
     {
         get => this.adapter;

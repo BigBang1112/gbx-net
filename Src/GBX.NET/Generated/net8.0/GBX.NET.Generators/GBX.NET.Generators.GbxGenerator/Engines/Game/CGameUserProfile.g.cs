@@ -35,7 +35,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     public static new uint Id => 0x031CC000;
 
     private Sticker[]? stickers;
-    [AppliedWithChunk<Chunk031CC000>]
+    [AppliedWithChunk<Chunk031CC000>(3)]
     public Sticker[]? Stickers
     {
         get => this.stickers;
@@ -43,7 +43,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private string[]? layers;
-    [AppliedWithChunk<Chunk031CC000>]
+    [AppliedWithChunk<Chunk031CC000>(3)]
     public string[]? Layers
     {
         get => this.layers;
@@ -51,7 +51,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private string? clubTag;
-    [AppliedWithChunk<Chunk031CC000>]
+    [AppliedWithChunk<Chunk031CC000>(7)]
     public string? ClubTag
     {
         get => this.clubTag;

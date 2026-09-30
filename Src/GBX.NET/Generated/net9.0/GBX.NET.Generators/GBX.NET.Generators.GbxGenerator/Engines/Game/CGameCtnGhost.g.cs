@@ -38,7 +38,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public static new uint Id => 0x03092000;
 
     private int appearanceVersion;
-    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092000>(9)]
     public int AppearanceVersion
     {
         get => this.appearanceVersion;
@@ -105,7 +105,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? recordingContext;
-    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092000>(2)]
     public string? RecordingContext
     {
         get => this.recordingContext;
@@ -113,7 +113,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private CPlugEntRecordData? recordData;
-    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092000>(5)]
     public CPlugEntRecordData? RecordData
     {
         get => this.recordData;
@@ -121,7 +121,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostTrigram;
-    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092000>(6)]
     public string? GhostTrigram
     {
         get => this.ghostTrigram;
@@ -129,7 +129,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostZone;
-    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092000>(7)]
     public string? GhostZone
     {
         get => this.ghostZone;
@@ -228,7 +228,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private OldSettingsInfos[]? oldSettings;
-    [AppliedWithChunk<Chunk03092022>]
+    [AppliedWithChunk<Chunk03092022>(0, 1)]
     public OldSettingsInfos[]? OldSettings
     {
         get => this.oldSettings;
@@ -236,7 +236,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private SettingsInfos[]? settings;
-    [AppliedWithChunk<Chunk03092022>]
+    [AppliedWithChunk<Chunk03092022>(2)]
     public SettingsInfos[]? Settings
     {
         get => this.settings;

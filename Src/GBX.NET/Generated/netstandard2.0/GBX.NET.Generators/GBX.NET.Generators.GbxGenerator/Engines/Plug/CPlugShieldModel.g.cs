@@ -35,7 +35,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     public static new uint Id => 0x09111000;
 
     private CPlugSound? shieldActiveSound;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldActiveSound
     {
         get => this.shieldActiveSound;
@@ -43,7 +43,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private CPlugSound? shieldTouchSound;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldTouchSound
     {
         get => this.shieldTouchSound;
@@ -51,7 +51,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private CPlugSound? shieldDestroySound;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldDestroySound
     {
         get => this.shieldDestroySound;
@@ -59,7 +59,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private string? shieldTouchParticleRef;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(7)]
     public string? ShieldTouchParticleRef
     {
         get => this.shieldTouchParticleRef;
@@ -67,7 +67,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private CPlugParticleEmitterModel? shieldTouchParticle;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugParticleEmitterModel? ShieldTouchParticle
     {
         get => this.shieldTouchParticle;
@@ -75,7 +75,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int textureNotches;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(4)]
     public int TextureNotches
     {
         get => this.textureNotches;
@@ -83,7 +83,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private Vec3 relativePos;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(3)]
     public Vec3 RelativePos
     {
         get => this.relativePos;
@@ -91,7 +91,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private bool needActivation;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(2)]
     public bool NeedActivation
     {
         get => this.needActivation;
@@ -99,7 +99,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private bool isBouncing;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(1)]
     public bool IsBouncing
     {
         get => this.isBouncing;
@@ -107,7 +107,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int shieldArmor;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(1)]
     public int ShieldArmor
     {
         get => this.shieldArmor;
@@ -115,7 +115,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int shieldDuration;
-    [AppliedWithChunk<Chunk09111000>]
+    [AppliedWithChunk<Chunk09111000>(1)]
     public int ShieldDuration
     {
         get => this.shieldDuration;

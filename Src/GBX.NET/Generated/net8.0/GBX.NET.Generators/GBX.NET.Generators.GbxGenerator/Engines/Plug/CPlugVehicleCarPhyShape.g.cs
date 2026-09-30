@@ -35,7 +35,7 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     public static new uint Id => 0x0910E000;
 
     private CPlugSurface? moveShape;
-    [AppliedWithChunk<Chunk0910E000>]
+    [AppliedWithChunk<Chunk0910E000>(1)]
     public CPlugSurface? MoveShape
     {
         get => this.moveShapeFile?.GetNode(ref this.moveShape) ?? this.moveShape;

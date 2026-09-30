@@ -75,7 +75,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private EMultiDir topBottomMultiDir;
-    [AppliedWithChunk<Chunk03053006>]
+    [AppliedWithChunk<Chunk03053006>(1)]
     public EMultiDir TopBottomMultiDir
     {
         get => this.topBottomMultiDir;

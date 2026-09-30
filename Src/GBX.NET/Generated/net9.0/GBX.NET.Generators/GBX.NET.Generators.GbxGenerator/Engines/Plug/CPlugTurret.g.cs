@@ -35,7 +35,7 @@ public partial class CPlugTurret : CMwNod, IClass
     public static new uint Id => 0x0910F000;
 
     private string? skelRef;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(5)]
     public string? SkelRef
     {
         get => this.skelRef;
@@ -43,7 +43,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugSkel? skel;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugSkel? Skel
     {
         get => this.skel;
@@ -51,7 +51,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? bulletModelRef;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(5)]
     public string? BulletModelRef
     {
         get => this.bulletModelRef;
@@ -59,7 +59,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugBulletModel? bulletModel;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugBulletModel? BulletModel
     {
         get => this.bulletModel;
@@ -67,7 +67,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? meshRef;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(6)]
     public string? MeshRef
     {
         get => this.meshRef;
@@ -75,7 +75,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugSolid2Model? mesh;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(6)]
     public CPlugSolid2Model? Mesh
     {
         get => this.mesh;
@@ -83,7 +83,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? visEntFxRef;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(7)]
     public string? VisEntFxRef
     {
         get => this.visEntFxRef;
@@ -91,7 +91,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugVisEntFxModel? visEntFx;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(7)]
     public CPlugVisEntFxModel? VisEntFx
     {
         get => this.visEntFx;
@@ -99,7 +99,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? shapeRef;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(8)]
     public string? ShapeRef
     {
         get => this.shapeRef;
@@ -107,7 +107,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugSurface? shape;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(8)]
     public CPlugSurface? Shape
     {
         get => this.shape;
@@ -115,7 +115,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? joint0Name;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(9)]
     public string? Joint0Name
     {
         get => this.joint0Name;
@@ -123,7 +123,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? joint1Name;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(9)]
     public string? Joint1Name
     {
         get => this.joint1Name;
@@ -131,7 +131,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? jointFireName;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public string? JointFireName
     {
         get => this.jointFireName;
@@ -139,7 +139,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 joint0LocalAxis;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 Joint0LocalAxis
     {
         get => this.joint0LocalAxis;
@@ -147,7 +147,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 joint1LocalAxis;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 Joint1LocalAxis
     {
         get => this.joint1LocalAxis;
@@ -155,7 +155,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 jointFireLocalAxis;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 JointFireLocalAxis
     {
         get => this.jointFireLocalAxis;
@@ -163,7 +163,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0MinAngleDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint0MinAngleDeg
     {
         get => this.joint0MinAngleDeg;
@@ -171,7 +171,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0MaxAngleDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint0MaxAngleDeg
     {
         get => this.joint0MaxAngleDeg;
@@ -179,7 +179,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1MinAngleDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint1MinAngleDeg
     {
         get => this.joint1MinAngleDeg;
@@ -187,7 +187,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1MaxAngleDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint1MaxAngleDeg
     {
         get => this.joint1MaxAngleDeg;
@@ -195,7 +195,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0SpeedDegPerS;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(11)]
     public float Joint0SpeedDegPerS
     {
         get => this.joint0SpeedDegPerS;
@@ -203,7 +203,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1SpeedDegPerS;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(11)]
     public float Joint1SpeedDegPerS
     {
         get => this.joint1SpeedDegPerS;
@@ -211,7 +211,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimDetectRadius;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimDetectRadius
     {
         get => this.aimDetectRadius;
@@ -219,7 +219,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimDetectFOVDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimDetectFOVDeg
     {
         get => this.aimDetectFOVDeg;
@@ -227,7 +227,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimMaxTrackDist;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimMaxTrackDist
     {
         get => this.aimMaxTrackDist;
@@ -235,7 +235,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimAnticipation;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimAnticipation
     {
         get => this.aimAnticipation;
@@ -243,7 +243,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int aimKeepAimingDurationMs;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public int AimKeepAimingDurationMs
     {
         get => this.aimKeepAimingDurationMs;
@@ -251,7 +251,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int aimFireTargetChangeDelayMs;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public int AimFireTargetChangeDelayMs
     {
         get => this.aimFireTargetChangeDelayMs;
@@ -259,7 +259,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimFireMaxAngleDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimFireMaxAngleDeg
     {
         get => this.aimFireMaxAngleDeg;
@@ -267,7 +267,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private ETurretFixedAngleSignal fixedAngleSignal;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public ETurretFixedAngleSignal FixedAngleSignal
     {
         get => this.fixedAngleSignal;
@@ -275,7 +275,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int fixedAnglePeriodMs;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public int FixedAnglePeriodMs
     {
         get => this.fixedAnglePeriodMs;
@@ -283,7 +283,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float fixedAngleMinDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float FixedAngleMinDeg
     {
         get => this.fixedAngleMinDeg;
@@ -291,7 +291,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float fixedAngleMaxDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public float FixedAngleMaxDeg
     {
         get => this.fixedAngleMaxDeg;
@@ -299,7 +299,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int firePeriodMs;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(12)]
     public int FirePeriodMs
     {
         get => this.firePeriodMs;
@@ -307,7 +307,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? rotateSound1Ref;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(13)]
     public string? RotateSound1Ref
     {
         get => this.rotateSound1Ref;
@@ -315,7 +315,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CMwNod? rotateSound1;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(13)]
     public CMwNod? RotateSound1
     {
         get => this.rotateSound1;
@@ -323,7 +323,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0NextJointUpdateAngleMaxDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(14)]
     public float Joint0NextJointUpdateAngleMaxDeg
     {
         get => this.joint0NextJointUpdateAngleMaxDeg;
@@ -331,7 +331,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1NextJointUpdateAngleMaxDeg;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(14)]
     public float Joint1NextJointUpdateAngleMaxDeg
     {
         get => this.joint1NextJointUpdateAngleMaxDeg;
@@ -339,7 +339,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimFireMaxDist;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(14)]
     public float AimFireMaxDist
     {
         get => this.aimFireMaxDist;
@@ -347,7 +347,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private bool aimEnabled;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(15)]
     public bool AimEnabled
     {
         get => this.aimEnabled;
@@ -355,7 +355,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? jointRadarName;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(16)]
     public string? JointRadarName
     {
         get => this.jointRadarName;
@@ -363,7 +363,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int lifeArmorMax;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(17)]
     public int LifeArmorMax
     {
         get => this.lifeArmorMax;
@@ -371,7 +371,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private EOnArmorEmtpy lifeOnArmorEmtpy;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(17)]
     public EOnArmorEmtpy LifeOnArmorEmtpy
     {
         get => this.lifeOnArmorEmtpy;
@@ -379,7 +379,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int lifeDisabledDuration;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(17)]
     public int LifeDisabledDuration
     {
         get => this.lifeDisabledDuration;
@@ -387,7 +387,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private bool isControllable;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(18)]
     public bool IsControllable
     {
         get => this.isControllable;
@@ -395,7 +395,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private CPlugParticleEmitterModel? onFireParticle;
-    [AppliedWithChunk<Chunk0910F000>]
+    [AppliedWithChunk<Chunk0910F000>(19)]
     public CPlugParticleEmitterModel? OnFireParticle
     {
         get => this.onFireParticle;

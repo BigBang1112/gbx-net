@@ -43,7 +43,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private Vec3 relativePos;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(2)]
     public Vec3 RelativePos
     {
         get => this.relativePos;
@@ -51,7 +51,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private float? fov;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(2)]
     public float? Fov
     {
         get => this.fov;
@@ -59,7 +59,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private bool isFirstPerson;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(4)]
     public bool IsFirstPerson
     {
         get => this.isFirstPerson;
@@ -67,7 +67,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private Vec3 pitchYawRoll;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(4)]
     public Vec3 PitchYawRoll
     {
         get => this.pitchYawRoll;
@@ -75,7 +75,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private bool camBlendEnabled;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(5)]
     public bool CamBlendEnabled
     {
         get => this.camBlendEnabled;
@@ -83,7 +83,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private float pilotHeadCoef;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(6)]
     public float PilotHeadCoef
     {
         get => this.pilotHeadCoef;
@@ -91,7 +91,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private float bulletTimeFovSmoothDelta_m_Delta;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(7)]
     public float BulletTimeFovSmoothDelta_m_Delta
     {
         get => this.bulletTimeFovSmoothDelta_m_Delta;
@@ -99,7 +99,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private int bulletTimeFovSmoothDelta_m_TimeDown;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(7)]
     public int BulletTimeFovSmoothDelta_m_TimeDown
     {
         get => this.bulletTimeFovSmoothDelta_m_TimeDown;
@@ -107,7 +107,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private int bulletTimeFovSmoothDelta_m_TimeUp;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(7)]
     public int BulletTimeFovSmoothDelta_m_TimeUp
     {
         get => this.bulletTimeFovSmoothDelta_m_TimeUp;
@@ -115,7 +115,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private float superBulletTimeFovSmoothMultiplier;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(8)]
     public float SuperBulletTimeFovSmoothMultiplier
     {
         get => this.superBulletTimeFovSmoothMultiplier;
@@ -123,7 +123,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private int superBulletTimeFovSmoothMultiplier_m_TimeUp;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(8)]
     public int SuperBulletTimeFovSmoothMultiplier_m_TimeUp
     {
         get => this.superBulletTimeFovSmoothMultiplier_m_TimeUp;
@@ -131,7 +131,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     }
 
     private int superBulletTimeFovSmoothMultiplier_m_TimeDown;
-    [AppliedWithChunk<Chunk090F7000>]
+    [AppliedWithChunk<Chunk090F7000>(8)]
     public int SuperBulletTimeFovSmoothMultiplier_m_TimeDown
     {
         get => this.superBulletTimeFovSmoothMultiplier_m_TimeDown;

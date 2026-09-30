@@ -44,7 +44,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? iconFullName;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(1)]
     public string? IconFullName
     {
         get => this.iconFullName;
@@ -52,7 +52,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? iconSmallFullName;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(1)]
     public string? IconSmallFullName
     {
         get => this.iconSmallFullName;
@@ -60,7 +60,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int sortIndex;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(2)]
     [AppliedWithChunk<Chunk0303300E>]
     public int SortIndex
     {
@@ -69,7 +69,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? defaultZoneId;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(3)]
     public string? DefaultZoneId
     {
         get => this.defaultZoneId;
@@ -77,7 +77,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicle;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(4)]
     [AppliedWithChunk<Chunk03033009>]
     public Ident? Vehicle
     {
@@ -86,7 +86,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? mapFullName;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(5)]
     public string? MapFullName
     {
         get => this.mapFullName;
@@ -94,7 +94,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Rect mapRect;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(5)]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
     public Rect MapRect
@@ -104,7 +104,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordElem;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(5)]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
     public Vec2 MapCoordElem
@@ -114,7 +114,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordIcon;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(6)]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
     public Vec2 MapCoordIcon
@@ -124,7 +124,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? loadScreen;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(7)]
     public string? LoadScreen
     {
         get => this.loadScreen;
@@ -132,7 +132,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordDesc;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(8)]
     [AppliedWithChunk<Chunk0303301A>]
     public Vec2 MapCoordDesc
     {
@@ -141,7 +141,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? longDesc;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(8)]
     [AppliedWithChunk<Chunk0303301A>]
     public string? LongDesc
     {
@@ -150,7 +150,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? displayName;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(9)]
     [AppliedWithChunk<Chunk03033021>]
     public string? DisplayName
     {
@@ -159,7 +159,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool isEditable;
-    [AppliedWithChunk<HeaderChunk03033001>]
+    [AppliedWithChunk<HeaderChunk03033001>(10)]
     [AppliedWithChunk<Chunk0303300C>]
     public bool IsEditable
     {
@@ -195,7 +195,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderCardEventInfo;
-    [AppliedWithChunk<HeaderChunk03033002>]
+    [AppliedWithChunk<HeaderChunk03033002>(2)]
     public string? FolderCardEventInfo
     {
         get => this.folderCardEventInfo;
@@ -203,7 +203,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMacroBlockInfo;
-    [AppliedWithChunk<HeaderChunk03033002>]
+    [AppliedWithChunk<HeaderChunk03033002>(3)]
     public string? FolderMacroBlockInfo
     {
         get => this.folderMacroBlockInfo;
@@ -211,7 +211,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMacroDecals;
-    [AppliedWithChunk<HeaderChunk03033002>]
+    [AppliedWithChunk<HeaderChunk03033002>(4)]
     [AppliedWithChunk<Chunk03033031>]
     public string? FolderMacroDecals
     {
@@ -523,7 +523,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int decalFadeCBlockFullDensity;
-    [AppliedWithChunk<Chunk03033033>]
+    [AppliedWithChunk<Chunk03033033>(1)]
     public int DecalFadeCBlockFullDensity
     {
         get => this.decalFadeCBlockFullDensity;
@@ -565,7 +565,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugBitmap? GetFidPlugBitmapCloudsX2(GbxReadSettings settings = default, bool exceptions = false) => fidPlugBitmapCloudsX2File?.GetNode(ref fidPlugBitmapCloudsX2, settings, exceptions) ?? fidPlugBitmapCloudsX2;
 
     private CPlugBitmap? vehicleEnvLayerFidBitmap;
-    [AppliedWithChunk<Chunk03033034>]
+    [AppliedWithChunk<Chunk03033034>(1)]
     public CPlugBitmap? VehicleEnvLayerFidBitmap
     {
         get => this.vehicleEnvLayerFidBitmapFile?.GetNode(ref this.vehicleEnvLayerFidBitmap) ?? this.vehicleEnvLayerFidBitmap;
@@ -582,7 +582,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugBitmap? GetVehicleEnvLayerFidBitmap(GbxReadSettings settings = default, bool exceptions = false) => vehicleEnvLayerFidBitmapFile?.GetNode(ref vehicleEnvLayerFidBitmap, settings, exceptions) ?? vehicleEnvLayerFidBitmap;
 
     private EVehicleEnvLayer vehicleEnvLayer;
-    [AppliedWithChunk<Chunk03033034>]
+    [AppliedWithChunk<Chunk03033034>(1)]
     public EVehicleEnvLayer VehicleEnvLayer
     {
         get => this.vehicleEnvLayer;
@@ -615,7 +615,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water1;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(1)]
     public Water? Water1
     {
         get => this.water1;
@@ -623,7 +623,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water2;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(1, 7)]
     public Water? Water2
     {
         get => this.water2;
@@ -631,7 +631,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water3;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(4, 7)]
     public Water? Water3
     {
         get => this.water3;
@@ -639,7 +639,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water4;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(4, 7)]
     public Water? Water4
     {
         get => this.water4;
@@ -647,7 +647,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private CPlugMaterialWaterArray? waterArray;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(8)]
     public CPlugMaterialWaterArray? WaterArray
     {
         get => this.waterArray;
@@ -655,7 +655,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private CPlugBitmap? waterGBitmapNormal;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(5)]
     public CPlugBitmap? WaterGBitmapNormal
     {
         get => this.waterGBitmapNormalFile?.GetNode(ref this.waterGBitmapNormal) ?? this.waterGBitmapNormal;
@@ -672,7 +672,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugBitmap? GetWaterGBitmapNormal(GbxReadSettings settings = default, bool exceptions = false) => waterGBitmapNormalFile?.GetNode(ref waterGBitmapNormal, settings, exceptions) ?? waterGBitmapNormal;
 
     private float waterGBumpSpeedUV;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterGBumpSpeedUV
     {
         get => this.waterGBumpSpeedUV;
@@ -680,7 +680,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterGBumpScaleUV;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterGBumpScaleUV
     {
         get => this.waterGBumpScaleUV;
@@ -688,7 +688,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterGBumpScale;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterGBumpScale
     {
         get => this.waterGBumpScale;
@@ -696,7 +696,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterGRefracPertub;
-    [AppliedWithChunk<Chunk03033038>]
+    [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterGRefracPertub
     {
         get => this.waterGRefracPertub;
@@ -712,7 +712,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private CMwNod? itemPlacementGroups;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(2)]
     public CMwNod? ItemPlacementGroups
     {
         get => this.itemPlacementGroupsFile?.GetNode(ref this.itemPlacementGroups) ?? this.itemPlacementGroups;
@@ -729,7 +729,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CMwNod? GetItemPlacementGroups(GbxReadSettings settings = default, bool exceptions = false) => itemPlacementGroupsFile?.GetNode(ref itemPlacementGroups, settings, exceptions) ?? itemPlacementGroups;
 
     private CMwNod? adnRandomGenList;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(3)]
     public CMwNod? AdnRandomGenList
     {
         get => this.adnRandomGenList;
@@ -737,7 +737,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private CMwNod? fidBlockInfoGroups;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(4)]
     public CMwNod? FidBlockInfoGroups
     {
         get => this.fidBlockInfoGroupsFile?.GetNode(ref this.fidBlockInfoGroups) ?? this.fidBlockInfoGroups;
@@ -754,7 +754,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CMwNod? GetFidBlockInfoGroups(GbxReadSettings settings = default, bool exceptions = false) => fidBlockInfoGroupsFile?.GetNode(ref fidBlockInfoGroups, settings, exceptions) ?? fidBlockInfoGroups;
 
     private CMwNod? fidBlockInfoInventory;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(6)]
     public CMwNod? FidBlockInfoInventory
     {
         get => this.fidBlockInfoInventoryFile?.GetNode(ref this.fidBlockInfoInventory) ?? this.fidBlockInfoInventory;
@@ -771,7 +771,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CMwNod? GetFidBlockInfoInventory(GbxReadSettings settings = default, bool exceptions = false) => fidBlockInfoInventoryFile?.GetNode(ref fidBlockInfoInventory, settings, exceptions) ?? fidBlockInfoInventory;
 
     private CMwNod? fidItemModelInventory;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(10)]
     public CMwNod? FidItemModelInventory
     {
         get => this.fidItemModelInventoryFile?.GetNode(ref this.fidItemModelInventory) ?? this.fidItemModelInventory;
@@ -788,7 +788,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CMwNod? GetFidItemModelInventory(GbxReadSettings settings = default, bool exceptions = false) => fidItemModelInventoryFile?.GetNode(ref fidItemModelInventory, settings, exceptions) ?? fidItemModelInventory;
 
     private CPlugFileImg? blockSkins_Default_FidAdvertisement1x1;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement1x1
     {
         get => this.blockSkins_Default_FidAdvertisement1x1File?.GetNode(ref this.blockSkins_Default_FidAdvertisement1x1) ?? this.blockSkins_Default_FidAdvertisement1x1;
@@ -805,7 +805,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidAdvertisement1x1(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidAdvertisement1x1File?.GetNode(ref blockSkins_Default_FidAdvertisement1x1, settings, exceptions) ?? blockSkins_Default_FidAdvertisement1x1;
 
     private CPlugFileImg? blockSkins_Default_FidAdvertisement2x1;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x1
     {
         get => this.blockSkins_Default_FidAdvertisement2x1File?.GetNode(ref this.blockSkins_Default_FidAdvertisement2x1) ?? this.blockSkins_Default_FidAdvertisement2x1;
@@ -822,7 +822,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidAdvertisement2x1(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidAdvertisement2x1File?.GetNode(ref blockSkins_Default_FidAdvertisement2x1, settings, exceptions) ?? blockSkins_Default_FidAdvertisement2x1;
 
     private CPlugFileImg? blockSkins_Default_FidAdvertisement2x3;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x3
     {
         get => this.blockSkins_Default_FidAdvertisement2x3File?.GetNode(ref this.blockSkins_Default_FidAdvertisement2x3) ?? this.blockSkins_Default_FidAdvertisement2x3;
@@ -839,7 +839,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidAdvertisement2x3(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidAdvertisement2x3File?.GetNode(ref blockSkins_Default_FidAdvertisement2x3, settings, exceptions) ?? blockSkins_Default_FidAdvertisement2x3;
 
     private CPlugFileImg? blockSkins_Default_FidAdvertisement4x1;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement4x1
     {
         get => this.blockSkins_Default_FidAdvertisement4x1File?.GetNode(ref this.blockSkins_Default_FidAdvertisement4x1) ?? this.blockSkins_Default_FidAdvertisement4x1;
@@ -856,7 +856,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidAdvertisement4x1(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidAdvertisement4x1File?.GetNode(ref blockSkins_Default_FidAdvertisement4x1, settings, exceptions) ?? blockSkins_Default_FidAdvertisement4x1;
 
     private CPlugFileImg? blockSkins_Default_FidItemFlag;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidItemFlag
     {
         get => this.blockSkins_Default_FidItemFlagFile?.GetNode(ref this.blockSkins_Default_FidItemFlag) ?? this.blockSkins_Default_FidItemFlag;
@@ -873,7 +873,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidItemFlag(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidItemFlagFile?.GetNode(ref blockSkins_Default_FidItemFlag, settings, exceptions) ?? blockSkins_Default_FidItemFlag;
 
     private CPlugFileImg? blockSkins_Default_FidAdvertisement16x9;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement16x9
     {
         get => this.blockSkins_Default_FidAdvertisement16x9File?.GetNode(ref this.blockSkins_Default_FidAdvertisement16x9) ?? this.blockSkins_Default_FidAdvertisement16x9;
@@ -890,7 +890,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugFileImg? GetBlockSkins_Default_FidAdvertisement16x9(GbxReadSettings settings = default, bool exceptions = false) => blockSkins_Default_FidAdvertisement16x9File?.GetNode(ref blockSkins_Default_FidAdvertisement16x9, settings, exceptions) ?? blockSkins_Default_FidAdvertisement16x9;
 
     private CMwNod? fidMacroBlockInfoInventory;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(13)]
     public CMwNod? FidMacroBlockInfoInventory
     {
         get => this.fidMacroBlockInfoInventoryFile?.GetNode(ref this.fidMacroBlockInfoInventory) ?? this.fidMacroBlockInfoInventory;
@@ -907,7 +907,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CMwNod? GetFidMacroBlockInfoInventory(GbxReadSettings settings = default, bool exceptions = false) => fidMacroBlockInfoInventoryFile?.GetNode(ref fidMacroBlockInfoInventory, settings, exceptions) ?? fidMacroBlockInfoInventory;
 
     private CPlugMediaClipList? defaultSpawnClipList;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(14)]
     public CPlugMediaClipList? DefaultSpawnClipList
     {
         get => this.defaultSpawnClipListFile?.GetNode(ref this.defaultSpawnClipList) ?? this.defaultSpawnClipList;
@@ -924,7 +924,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     public CPlugMediaClipList? GetDefaultSpawnClipList(GbxReadSettings settings = default, bool exceptions = false) => defaultSpawnClipListFile?.GetNode(ref defaultSpawnClipList, settings, exceptions) ?? defaultSpawnClipList;
 
     private Ident? vehicleTransform_CarSnow;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(16)]
     public Ident? VehicleTransform_CarSnow
     {
         get => this.vehicleTransform_CarSnow;
@@ -932,7 +932,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicleTransform_CarRally;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(17)]
     public Ident? VehicleTransform_CarRally
     {
         get => this.vehicleTransform_CarRally;
@@ -940,7 +940,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicleTransform_CarDesert;
-    [AppliedWithChunk<Chunk03033039>]
+    [AppliedWithChunk<Chunk03033039>(18)]
     public Ident? VehicleTransform_CarDesert
     {
         get => this.vehicleTransform_CarDesert;
@@ -980,7 +980,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint? turboColorTurbo;
-    [AppliedWithChunk<Chunk0303303B>]
+    [AppliedWithChunk<Chunk0303303B>(1)]
     public uint? TurboColorTurbo
     {
         get => this.turboColorTurbo;
@@ -988,7 +988,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint? turboColorTurbo2;
-    [AppliedWithChunk<Chunk0303303B>]
+    [AppliedWithChunk<Chunk0303303B>(1)]
     public uint? TurboColorTurbo2
     {
         get => this.turboColorTurbo2;

@@ -331,9 +331,14 @@ internal static class EngineWriter
 
                 if (ReferenceEquals(scope, layout.Scope))
                 {
-                    foreach (var applied in layout.Chunks.Where(x => Applies(x, field.Name, layout.Chunks)))
+                    foreach (var applied in layout.Chunks)
                     {
-                        code.Line("[AppliedWithChunk<" + applied.Name + ">]");
+                        foreach (var range in AppliedWithChunkRanges.Get(applied, field.Name, layout.Chunks))
+                        {
+                            var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
+                                range.Start > 0 ? $"({range.Start})" : "";
+                            code.Line("[AppliedWithChunk<" + applied.Name + ">" + arguments + "]");
+                        }
                     }
                 }
 
@@ -636,41 +641,6 @@ internal static class EngineWriter
             {
                 return false;
             }
-        }
-
-        return false;
-    }
-
-    private static bool Applies(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks)
-    {
-        var visited = new HashSet<uint>();
-
-        while (visited.Add(chunk.Id))
-        {
-            if (chunk.Scope.Fields.Any(x => x.Name == field && !x.IsUnknown))
-            {
-                return true;
-            }
-
-            var inherited = LayoutModel.Attribute(chunk.Declaration.Attributes, "base");
-            if (inherited is null)
-            {
-                return false;
-            }
-
-            var id = LayoutModel.Hex(inherited);
-            if (id <= 0xFFF)
-            {
-                id |= chunk.Id & 0xFFFFF000;
-            }
-
-            var parent = chunks.FirstOrDefault(x => x.Id == id);
-            if (parent is null)
-            {
-                return false;
-            }
-            
-            chunk = parent;
         }
 
         return false;

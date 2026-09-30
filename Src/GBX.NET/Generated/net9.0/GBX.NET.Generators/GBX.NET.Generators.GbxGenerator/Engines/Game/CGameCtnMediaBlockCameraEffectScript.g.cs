@@ -43,7 +43,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private TimeSingle? start;
-    [AppliedWithChunk<Chunk03161000>]
+    [AppliedWithChunk<Chunk03161000>(0, 0)]
     public TimeSingle? Start
     {
         get => this.start;
@@ -51,7 +51,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private TimeSingle? end;
-    [AppliedWithChunk<Chunk03161000>]
+    [AppliedWithChunk<Chunk03161000>(0, 0)]
     public TimeSingle? End
     {
         get => this.end;

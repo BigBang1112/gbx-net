@@ -35,7 +35,7 @@ public partial class CGameActionModel : CMwNod, IClass
     public static new uint Id => 0x2E008000;
 
     private bool useVehicleGuns;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(31)]
     public bool UseVehicleGuns
     {
         get => this.useVehicleGuns;
@@ -43,7 +43,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugBulletModel[]? bulletModels_Nadeo;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(30)]
     public CPlugBulletModel[]? BulletModels_Nadeo
     {
         get => this.bulletModels_Nadeo;
@@ -51,7 +51,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? actionName;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(14)]
     public string? ActionName
     {
         get => this.actionName;
@@ -59,7 +59,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int inventoryItemClass;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(22)]
     public int InventoryItemClass
     {
         get => this.inventoryItemClass;
@@ -67,7 +67,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int spriteBlockVersion;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(19)]
     public int SpriteBlockVersion
     {
         get => this.spriteBlockVersion;
@@ -75,7 +75,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private SpriteBlock[]? spriteBlocks;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(19)]
     public SpriteBlock[]? SpriteBlocks
     {
         get => this.spriteBlocks;
@@ -83,7 +83,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? description;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(17)]
     public string? Description
     {
         get => this.description;
@@ -91,7 +91,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int beamVersion = 1;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(16)]
     public int BeamVersion
     {
         get => this.beamVersion;
@@ -99,7 +99,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugCustomBeamModel[]? beams;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(16)]
     public CPlugCustomBeamModel[]? Beams
     {
         get => this.beams;
@@ -115,7 +115,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int scriptParamsVersion = 2;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(10)]
     public int ScriptParamsVersion
     {
         get => this.scriptParamsVersion;
@@ -123,7 +123,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int actionScriptEffectVersion;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(10)]
     public int ActionScriptEffectVersion
     {
         get => this.actionScriptEffectVersion;
@@ -131,7 +131,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private ActionScriptEffect[]? actionScriptEffects;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(10)]
     public ActionScriptEffect[]? ActionScriptEffects
     {
         get => this.actionScriptEffects;
@@ -139,7 +139,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int customBulletVersion;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(7)]
     public int CustomBulletVersion
     {
         get => this.customBulletVersion;
@@ -147,7 +147,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugCustomBulletModel[]? projectiles;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(6)]
     public CPlugCustomBulletModel[]? Projectiles
     {
         get => this.projectiles;
@@ -171,7 +171,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? icon;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(12)]
     public string? Icon
     {
         get => this.icon;
@@ -179,7 +179,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? crosshair;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(12)]
     public string? Crosshair
     {
         get => this.crosshair;
@@ -187,7 +187,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private ParticleBlock[]? particleBlocks;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(1)]
     public ParticleBlock[]? ParticleBlocks
     {
         get => this.particleBlocks;
@@ -195,7 +195,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private SoundBlock[]? soundBlocks;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(1)]
     public SoundBlock[]? SoundBlocks
     {
         get => this.soundBlocks;

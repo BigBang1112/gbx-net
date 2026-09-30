@@ -51,7 +51,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private float torqueX;
-    [AppliedWithChunk<Chunk2E00E000>]
+    [AppliedWithChunk<Chunk2E00E000>(1)]
     public float TorqueX
     {
         get => this.torqueX;
@@ -59,7 +59,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private int torqueDuration;
-    [AppliedWithChunk<Chunk2E00E000>]
+    [AppliedWithChunk<Chunk2E00E000>(2)]
     public int TorqueDuration
     {
         get => this.torqueDuration;
@@ -67,7 +67,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private Vec3 defaultGravitySpawn;
-    [AppliedWithChunk<Chunk2E00E000>]
+    [AppliedWithChunk<Chunk2E00E000>(3)]
     public Vec3 DefaultGravitySpawn
     {
         get => this.defaultGravitySpawn;

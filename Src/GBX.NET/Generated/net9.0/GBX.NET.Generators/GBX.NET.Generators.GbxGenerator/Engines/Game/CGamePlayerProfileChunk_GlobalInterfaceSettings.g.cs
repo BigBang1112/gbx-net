@@ -51,7 +51,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     }
 
     private bool synchonizeSteamWorkshopFiles;
-    [AppliedWithChunk<Chunk03179004>]
+    [AppliedWithChunk<Chunk03179004>(1)]
     public bool SynchonizeSteamWorkshopFiles
     {
         get => this.synchonizeSteamWorkshopFiles;
@@ -59,7 +59,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     }
 
     private bool preferSteamScreenshots;
-    [AppliedWithChunk<Chunk03179004>]
+    [AppliedWithChunk<Chunk03179004>(2)]
     public bool PreferSteamScreenshots
     {
         get => this.preferSteamScreenshots;

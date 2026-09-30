@@ -51,7 +51,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     }
 
     private float shadowMapTexelSize;
-    [AppliedWithChunk<Chunk090B3002>]
+    [AppliedWithChunk<Chunk090B3002>(3)]
     public float ShadowMapTexelSize
     {
         get => this.shadowMapTexelSize;

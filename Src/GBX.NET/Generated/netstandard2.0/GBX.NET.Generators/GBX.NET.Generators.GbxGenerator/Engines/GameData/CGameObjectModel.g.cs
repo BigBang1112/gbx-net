@@ -60,7 +60,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     public CGameObjectVisModel? GetVis(GbxReadSettings settings = default, bool exceptions = false) => visFile?.GetNode(ref vis, settings, exceptions) ?? vis;
 
     private string? inventoryName;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(1)]
     public string? InventoryName
     {
         get => this.inventoryName;
@@ -68,7 +68,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private string? inventoryDescription;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(1)]
     public string? InventoryDescription
     {
         get => this.inventoryDescription;
@@ -76,7 +76,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private EGameInventoryItemClass inventoryItemClass;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(1)]
     public EGameInventoryItemClass InventoryItemClass
     {
         get => this.inventoryItemClass;
@@ -84,7 +84,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private int? inventoryOccupation;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(1)]
     public int? InventoryOccupation
     {
         get => this.inventoryOccupation;
@@ -92,7 +92,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private CGameObjectModel? slaveHealDome;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(2)]
     public CGameObjectModel? SlaveHealDome
     {
         get => this.slaveHealDome;
@@ -100,7 +100,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private CGameObjectModel? slaveShieldDome;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(3)]
     public CGameObjectModel? SlaveShieldDome
     {
         get => this.slaveShieldDome;
@@ -108,7 +108,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private string? scriptId;
-    [AppliedWithChunk<Chunk2E01D000>]
+    [AppliedWithChunk<Chunk2E01D000>(4)]
     public string? ScriptId
     {
         get => this.scriptId;

@@ -83,7 +83,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private byte opponentVisibility;
-    [AppliedWithChunk<Chunk0312D002>]
+    [AppliedWithChunk<Chunk0312D002>(3)]
     public byte OpponentVisibility
     {
         get => this.opponentVisibility;
@@ -91,7 +91,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private bool editorHelp;
-    [AppliedWithChunk<Chunk0312D003>]
+    [AppliedWithChunk<Chunk0312D003>(2)]
     public bool EditorHelp
     {
         get => this.editorHelp;

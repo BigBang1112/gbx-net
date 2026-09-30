@@ -43,7 +43,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     }
 
     private int capturableIndex;
-    [AppliedWithChunk<Chunk0316C000>]
+    [AppliedWithChunk<Chunk0316C000>(1)]
     public int CapturableIndex
     {
         get => this.capturableIndex;

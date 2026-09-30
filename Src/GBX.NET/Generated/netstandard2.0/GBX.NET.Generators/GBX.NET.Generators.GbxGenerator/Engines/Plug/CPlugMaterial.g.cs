@@ -44,7 +44,7 @@ public partial class CPlugMaterial : CPlug, IClass
 
     private CPlugSurface.MaterialId surfaceId;
     [AppliedWithChunk<Chunk0907900E>]
-    [AppliedWithChunk<Chunk09079017>]
+    [AppliedWithChunk<Chunk09079017>(1)]
     public CPlugSurface.MaterialId SurfaceId
     {
         get => this.surfaceId;
@@ -69,7 +69,7 @@ public partial class CPlugMaterial : CPlug, IClass
     public CPlug? GetShader(GbxReadSettings settings = default, bool exceptions = false) => shaderFile?.GetNode(ref shader, settings, exceptions) ?? shader;
 
     private CPlugSurface.GameplayId gameplayId;
-    [AppliedWithChunk<Chunk09079017>]
+    [AppliedWithChunk<Chunk09079017>(1)]
     public CPlugSurface.GameplayId GameplayId
     {
         get => this.gameplayId;

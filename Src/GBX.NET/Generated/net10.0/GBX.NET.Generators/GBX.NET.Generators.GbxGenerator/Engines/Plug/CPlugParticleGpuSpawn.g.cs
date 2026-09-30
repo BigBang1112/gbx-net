@@ -35,7 +35,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
     public static new uint Id => 0x090C5000;
 
     private ParticleGpuSpawn? spawn;
-    [AppliedWithChunk<Chunk090C5000>]
+    [AppliedWithChunk<Chunk090C5000>(1)]
     public ParticleGpuSpawn? Spawn
     {
         get => this.spawn;

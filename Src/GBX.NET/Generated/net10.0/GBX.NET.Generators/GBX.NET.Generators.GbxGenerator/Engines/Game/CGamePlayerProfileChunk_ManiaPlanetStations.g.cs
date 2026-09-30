@@ -51,7 +51,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     private bool isFirstLaunch;
-    [AppliedWithChunk<Chunk03180001>]
+    [AppliedWithChunk<Chunk03180001>(2)]
     public bool IsFirstLaunch
     {
         get => this.isFirstLaunch;

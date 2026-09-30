@@ -69,7 +69,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     public CPlugSolid2Model? GetMesh(GbxReadSettings settings = default, bool exceptions = false) => meshFile?.GetNode(ref mesh, settings, exceptions) ?? mesh;
 
     private bool isLoco;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(2)]
     public bool IsLoco
     {
         get => this.isLoco;
@@ -77,7 +77,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugSound? soundEngine;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundEngine
     {
         get => this.soundEngine;
@@ -85,7 +85,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugSound? soundBrake;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundBrake
     {
         get => this.soundBrake;
@@ -93,7 +93,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugSound? soundRailContact;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundRailContact
     {
         get => this.soundRailContactFile?.GetNode(ref this.soundRailContact) ?? this.soundRailContact;
@@ -110,7 +110,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     public CPlugSound? GetSoundRailContact(GbxReadSettings settings = default, bool exceptions = false) => soundRailContactFile?.GetNode(ref soundRailContact, settings, exceptions) ?? soundRailContact;
 
     private CPlugSound? soundCollision;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundCollision
     {
         get => this.soundCollision;
@@ -118,7 +118,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private float wagonLength;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(5)]
     public float WagonLength
     {
         get => this.wagonLength;
@@ -126,7 +126,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private float wagonColOffset;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(5)]
     public float WagonColOffset
     {
         get => this.wagonColOffset;
@@ -134,7 +134,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private bool genLengthFromShape;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(5)]
     public bool GenLengthFromShape
     {
         get => this.genLengthFromShape;
@@ -142,7 +142,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CFuncKeysReal? accelCurve;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(6)]
     public CFuncKeysReal? AccelCurve
     {
         get => this.accelCurve;
@@ -150,7 +150,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugParticleEmitterModel? smokeEmitterModel;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(7)]
     public CPlugParticleEmitterModel? SmokeEmitterModel
     {
         get => this.smokeEmitterModel;
@@ -158,7 +158,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugParticleEmitterModel? dustEmitterModel;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? DustEmitterModel
     {
         get => this.dustEmitterModel;
@@ -166,7 +166,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugParticleEmitterModel? sparkleParticle;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? SparkleParticle
     {
         get => this.sparkleParticle;
@@ -174,7 +174,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private CPlugAnimFile? animFile;
-    [AppliedWithChunk<Chunk0911C000>]
+    [AppliedWithChunk<Chunk0911C000>(10)]
     public CPlugAnimFile? AnimFile
     {
         get => this.animFile;

@@ -131,7 +131,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private string? animTimerName;
-    [AppliedWithChunk<Chunk0901D003>]
+    [AppliedWithChunk<Chunk0901D003>(1)]
     public string? AnimTimerName
     {
         get => this.animTimerName;

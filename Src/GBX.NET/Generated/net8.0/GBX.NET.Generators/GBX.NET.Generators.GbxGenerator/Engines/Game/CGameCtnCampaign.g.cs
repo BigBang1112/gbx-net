@@ -129,7 +129,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? scoreContext;
-    [AppliedWithChunk<Chunk03090012>]
+    [AppliedWithChunk<Chunk03090012>(0, 1)]
     public string? ScoreContext
     {
         get => this.scoreContext;

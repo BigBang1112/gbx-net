@@ -121,7 +121,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private EVariantBaseType variantBaseType;
-    [AppliedWithChunk<Chunk0315B003>]
+    [AppliedWithChunk<Chunk0315B003>(1)]
     public EVariantBaseType VariantBaseType
     {
         get => this.variantBaseType;
@@ -129,7 +129,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private byte noPillarBelowIndex;
-    [AppliedWithChunk<Chunk0315B003>]
+    [AppliedWithChunk<Chunk0315B003>(2)]
     public byte NoPillarBelowIndex
     {
         get => this.noPillarBelowIndex;
@@ -171,7 +171,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CMwNod? GetWaypointTriggerSolid(GbxReadSettings settings = default, bool exceptions = false) => waypointTriggerSolidFile?.GetNode(ref waypointTriggerSolid, settings, exceptions) ?? waypointTriggerSolid;
 
     private CGameGateModel? gate;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(2)]
     public CGameGateModel? Gate
     {
         get => this.gateFile?.GetNode(ref this.gate) ?? this.gate;
@@ -188,7 +188,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CGameGateModel? GetGate(GbxReadSettings settings = default, bool exceptions = false) => gateFile?.GetNode(ref gate, settings, exceptions) ?? gate;
 
     private CGameTeleporterModel? teleporter;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(3)]
     public CGameTeleporterModel? Teleporter
     {
         get => this.teleporter;
@@ -196,7 +196,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private CGameTurbineModel? turbine;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(6)]
     public CGameTurbineModel? Turbine
     {
         get => this.turbineFile?.GetNode(ref this.turbine) ?? this.turbine;
@@ -213,7 +213,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CGameTurbineModel? GetTurbine(GbxReadSettings settings = default, bool exceptions = false) => turbineFile?.GetNode(ref turbine, settings, exceptions) ?? turbine;
 
     private CPlugFlockModel? flockModel;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(7)]
     public CPlugFlockModel? FlockModel
     {
         get => this.flockModelFile?.GetNode(ref this.flockModel) ?? this.flockModel;
@@ -230,7 +230,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CPlugFlockModel? GetFlockModel(GbxReadSettings settings = default, bool exceptions = false) => flockModelFile?.GetNode(ref flockModel, settings, exceptions) ?? flockModel;
 
     private FlockEmitterState? flockEmmiter;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(7)]
     public FlockEmitterState? FlockEmmiter
     {
         get => this.flockEmmiter;
@@ -238,7 +238,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private CGameSpawnModel? spawnModel;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(8)]
     public CGameSpawnModel? SpawnModel
     {
         get => this.spawnModelFile?.GetNode(ref this.spawnModel) ?? this.spawnModel;
@@ -255,7 +255,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CGameSpawnModel? GetSpawnModel(GbxReadSettings settings = default, bool exceptions = false) => spawnModelFile?.GetNode(ref spawnModel, settings, exceptions) ?? spawnModel;
 
     private CPlugEntitySpawner[]? entitySpawners;
-    [AppliedWithChunk<Chunk0315B006>]
+    [AppliedWithChunk<Chunk0315B006>(10)]
     public CPlugEntitySpawner[]? EntitySpawners
     {
         get => this.entitySpawners;
@@ -280,7 +280,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public CPlugProbe? GetProbe(GbxReadSettings settings = default, bool exceptions = false) => probeFile?.GetNode(ref probe, settings, exceptions) ?? probe;
 
     private Vec3 spawnTrans;
-    [AppliedWithChunk<Chunk0315B008>]
+    [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public Vec3 SpawnTrans
     {
         get => this.spawnTrans;
@@ -288,7 +288,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private float spawnYaw;
-    [AppliedWithChunk<Chunk0315B008>]
+    [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public float SpawnYaw
     {
         get => this.spawnYaw;
@@ -296,7 +296,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private float spawnPitch;
-    [AppliedWithChunk<Chunk0315B008>]
+    [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public float SpawnPitch
     {
         get => this.spawnPitch;
@@ -304,7 +304,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private CGameObjectPhyCompoundModel? compoundModel;
-    [AppliedWithChunk<Chunk0315B00A>]
+    [AppliedWithChunk<Chunk0315B00A>(2)]
     public CGameObjectPhyCompoundModel? CompoundModel
     {
         get => this.compoundModel;
@@ -312,7 +312,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private Iso4 compoundLoc;
-    [AppliedWithChunk<Chunk0315B00A>]
+    [AppliedWithChunk<Chunk0315B00A>(2, 2)]
     public Iso4 CompoundLoc
     {
         get => this.compoundLoc;

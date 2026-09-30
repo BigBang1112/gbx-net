@@ -54,7 +54,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     private ESoundInputMapping inputMapping;
     [AppliedWithChunk<Chunk09064000>]
     [AppliedWithChunk<Chunk09064001>]
-    [AppliedWithChunk<Chunk09064003>]
+    [AppliedWithChunk<Chunk09064003>(2)]
     public ESoundInputMapping InputMapping
     {
         get => this.inputMapping;
@@ -86,7 +86,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private bool avoidDuplicates;
-    [AppliedWithChunk<Chunk09064002>]
+    [AppliedWithChunk<Chunk09064002>(1)]
     public bool AvoidDuplicates
     {
         get => this.avoidDuplicates;
@@ -94,7 +94,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private bool alternateParity;
-    [AppliedWithChunk<Chunk09064002>]
+    [AppliedWithChunk<Chunk09064002>(2)]
     public bool AlternateParity
     {
         get => this.alternateParity;
@@ -102,7 +102,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private float pitchVarianceNeg;
-    [AppliedWithChunk<Chunk09064002>]
+    [AppliedWithChunk<Chunk09064002>(3)]
     public float PitchVarianceNeg
     {
         get => this.pitchVarianceNeg;
@@ -118,7 +118,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private CFuncKeysReal? volumeFromInput;
-    [AppliedWithChunk<Chunk09064003>]
+    [AppliedWithChunk<Chunk09064003>(1)]
     public CFuncKeysReal? VolumeFromInput
     {
         get => this.volumeFromInputFile?.GetNode(ref this.volumeFromInput) ?? this.volumeFromInput;

@@ -69,7 +69,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public CPlugBitmap? GetNormal(GbxReadSettings settings = default, bool exceptions = false) => normalFile?.GetNode(ref normal, settings, exceptions) ?? normal;
 
     private float texelByMeter;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(1)]
     public float TexelByMeter
     {
         get => this.texelByMeter;
@@ -77,7 +77,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private bool fadeNormalAndZ;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(2)]
     public bool FadeNormalAndZ
     {
         get => this.fadeNormalAndZ;
@@ -85,7 +85,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private CPlugBitmap? specular;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(4)]
     public CPlugBitmap? Specular
     {
         get => this.specularFile?.GetNode(ref this.specular) ?? this.specular;
@@ -102,7 +102,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public CPlugBitmap? GetSpecular(GbxReadSettings settings = default, bool exceptions = false) => specularFile?.GetNode(ref specular, settings, exceptions) ?? specular;
 
     private string? diffuseARef;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(5)]
     public string? DiffuseARef
     {
         get => this.diffuseARef;
@@ -110,7 +110,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string? normalRef;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(5)]
     public string? NormalRef
     {
         get => this.normalRef;
@@ -118,7 +118,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string? specularRef;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(5)]
     public string? SpecularRef
     {
         get => this.specularRef;
@@ -126,7 +126,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string? roughnessRef;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(6)]
     public string? RoughnessRef
     {
         get => this.roughnessRef;
@@ -134,7 +134,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private CPlugBitmap? roughness;
-    [AppliedWithChunk<Chunk090A7002>]
+    [AppliedWithChunk<Chunk090A7002>(6)]
     public CPlugBitmap? Roughness
     {
         get => this.roughness;
@@ -167,7 +167,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private CPlugBitmap? sprite3dBitmap;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(3)]
     public CPlugBitmap? Sprite3dBitmap
     {
         get => this.sprite3dBitmapFile?.GetNode(ref this.sprite3dBitmap) ?? this.sprite3dBitmap;
@@ -184,7 +184,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public CPlugBitmap? GetSprite3dBitmap(GbxReadSettings settings = default, bool exceptions = false) => sprite3dBitmapFile?.GetNode(ref sprite3dBitmap, settings, exceptions) ?? sprite3dBitmap;
 
     private string? sprite3dGroupId;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(3)]
     public string? Sprite3dGroupId
     {
         get => this.sprite3dGroupId;
@@ -192,7 +192,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string? svgRef;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(4)]
     public string? SvgRef
     {
         get => this.svgRef;
@@ -200,7 +200,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private CMwNod? svg;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(4)]
     public CMwNod? Svg
     {
         get => this.svgFile?.GetNode(ref this.svg) ?? this.svg;
@@ -217,7 +217,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public CMwNod? GetSvg(GbxReadSettings settings = default, bool exceptions = false) => svgFile?.GetNode(ref svg, settings, exceptions) ?? svg;
 
     private float svgSize;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(5)]
     public float SvgSize
     {
         get => this.svgSize;
@@ -225,7 +225,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float svgAlpha;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(6)]
     public float SvgAlpha
     {
         get => this.svgAlpha;
@@ -233,7 +233,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private int minAngleN3d;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(7)]
     public int MinAngleN3d
     {
         get => this.minAngleN3d;
@@ -241,7 +241,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private CPlugDecalModel[]? decalModels;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(8)]
     public CPlugDecalModel[]? DecalModels
     {
         get => this.decalModels;
@@ -249,7 +249,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private MacroDecalSet[]? macroDecalSets;
-    [AppliedWithChunk<Chunk090A7004>]
+    [AppliedWithChunk<Chunk090A7004>(8)]
     public MacroDecalSet[]? MacroDecalSets
     {
         get => this.macroDecalSets;

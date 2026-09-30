@@ -103,7 +103,7 @@ public partial class CGameGateModel : CMwNod, IClass
     public CPlugSound? GetGateCloseSound(GbxReadSettings settings = default, bool exceptions = false) => gateCloseSoundFile?.GetNode(ref gateCloseSound, settings, exceptions) ?? gateCloseSound;
 
     private CPlugSound? gateSound;
-    [AppliedWithChunk<Chunk2E00B001>]
+    [AppliedWithChunk<Chunk2E00B001>(1)]
     public CPlugSound? GateSound
     {
         get => this.gateSoundFile?.GetNode(ref this.gateSound) ?? this.gateSound;

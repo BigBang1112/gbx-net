@@ -89,7 +89,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
-    [AppliedWithChunk<Chunk03084007>]
+    [AppliedWithChunk<Chunk03084007>(0, 1)]
     public string? GameCamId
     {
         get => this.gameCamId;
@@ -152,7 +152,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private EGameCam gameCam;
-    [AppliedWithChunk<Chunk03084007>]
+    [AppliedWithChunk<Chunk03084007>(2)]
     public EGameCam GameCam
     {
         get => this.gameCam;

@@ -35,7 +35,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     public static new uint Id => 0x090FD000;
 
     private bool isUsingGameMaterial;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(11)]
     public bool IsUsingGameMaterial
     {
         get => this.isUsingGameMaterial;
@@ -75,7 +75,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private CPlugSurface.GameplayId surfaceGameplayId;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(10)]
     public CPlugSurface.GameplayId SurfaceGameplayId
     {
         get => this.surfaceGameplayId;
@@ -83,7 +83,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? link;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(1)]
     public string? Link
     {
         get => this.link;
@@ -91,7 +91,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private Cst[]? csts;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(2)]
     public Cst[]? Csts
     {
         get => this.csts;
@@ -99,7 +99,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private int[]? color;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(2)]
     public int[]? Color
     {
         get => this.color;
@@ -107,7 +107,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private UvAnim[]? uvAnims;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(3)]
     public UvAnim[]? UvAnims
     {
         get => this.uvAnims;
@@ -115,7 +115,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private UserTexture[]? userTextures;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(6)]
     public UserTexture[]? UserTextures
     {
         get => this.userTextures;
@@ -123,7 +123,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? hidingGroup;
-    [AppliedWithChunk<Chunk090FD000>]
+    [AppliedWithChunk<Chunk090FD000>(7)]
     public string? HidingGroup
     {
         get => this.hidingGroup;
@@ -131,7 +131,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private ETexAddress tilingU;
-    [AppliedWithChunk<Chunk090FD001>]
+    [AppliedWithChunk<Chunk090FD001>(3)]
     public ETexAddress TilingU
     {
         get => this.tilingU;
@@ -139,7 +139,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private ETexAddress tilingV;
-    [AppliedWithChunk<Chunk090FD001>]
+    [AppliedWithChunk<Chunk090FD001>(3)]
     public ETexAddress TilingV
     {
         get => this.tilingV;
@@ -147,7 +147,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private float textureSizeInMeters;
-    [AppliedWithChunk<Chunk090FD001>]
+    [AppliedWithChunk<Chunk090FD001>(3)]
     public float TextureSizeInMeters
     {
         get => this.textureSizeInMeters;
@@ -155,7 +155,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private bool isNatural;
-    [AppliedWithChunk<Chunk090FD001>]
+    [AppliedWithChunk<Chunk090FD001>(5)]
     public bool IsNatural
     {
         get => this.isNatural;

@@ -35,7 +35,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     public static new uint Id => 0x090E5000;
 
     private float range;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Range
     {
         get => this.range;
@@ -43,7 +43,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float cosViewAngle;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float CosViewAngle
     {
         get => this.cosViewAngle;
@@ -51,7 +51,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float minSpeed;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float MinSpeed
     {
         get => this.minSpeed;
@@ -59,7 +59,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float maxSpeed;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float MaxSpeed
     {
         get => this.maxSpeed;
@@ -67,7 +67,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int updateFrequency;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public int UpdateFrequency
     {
         get => this.updateFrequency;
@@ -75,7 +75,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float variance;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Variance
     {
         get => this.variance;
@@ -83,7 +83,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vAvoidance;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VAvoidance
     {
         get => this.vAvoidance;
@@ -91,7 +91,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kAvoidance;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KAvoidance
     {
         get => this.kAvoidance;
@@ -99,7 +99,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vGrouping;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VGrouping
     {
         get => this.vGrouping;
@@ -107,7 +107,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kGrouping;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KGrouping
     {
         get => this.kGrouping;
@@ -115,7 +115,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vMatching;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VMatching
     {
         get => this.vMatching;
@@ -123,7 +123,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kMatching;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KMatching
     {
         get => this.kMatching;
@@ -131,7 +131,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float volatility;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Volatility
     {
         get => this.volatility;
@@ -139,7 +139,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vGroundAvoid;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VGroundAvoid
     {
         get => this.vGroundAvoid;
@@ -147,7 +147,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kGroundAvoid;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KGroundAvoid
     {
         get => this.kGroundAvoid;
@@ -155,7 +155,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int standingDuration;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public int StandingDuration
     {
         get => this.standingDuration;
@@ -163,7 +163,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private EFlockType flockType;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(2, 5)]
     public EFlockType FlockType
     {
         get => this.flockType;
@@ -171,7 +171,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private CMwNod? animFileFid;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(3, 5)]
     public CMwNod? AnimFileFid
     {
         get => this.animFileFidFile?.GetNode(ref this.animFileFid) ?? this.animFileFid;
@@ -188,7 +188,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     public CMwNod? GetAnimFileFid(GbxReadSettings settings = default, bool exceptions = false) => animFileFidFile?.GetNode(ref animFileFid, settings, exceptions) ?? animFileFid;
 
     private int defSpawnCount;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(4, 5)]
     public int DefSpawnCount
     {
         get => this.defSpawnCount;
@@ -196,7 +196,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private CMwNod? birdModel;
-    [AppliedWithChunk<Chunk090E5000>]
+    [AppliedWithChunk<Chunk090E5000>(5, 5)]
     public CMwNod? BirdModel
     {
         get => this.birdModelFile?.GetNode(ref this.birdModel) ?? this.birdModel;
@@ -238,7 +238,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animStandingStart;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimStandingStart
     {
         get => this.animStandingStart;
@@ -246,7 +246,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animStandingEnd;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimStandingEnd
     {
         get => this.animStandingEnd;
@@ -254,7 +254,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animGlidingStart;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimGlidingStart
     {
         get => this.animGlidingStart;
@@ -262,7 +262,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animGlidingEnd;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimGlidingEnd
     {
         get => this.animGlidingEnd;
@@ -270,7 +270,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animFlappingStart;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimFlappingStart
     {
         get => this.animFlappingStart;
@@ -278,7 +278,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animFlappingEnd;
-    [AppliedWithChunk<Chunk090E5001>]
+    [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimFlappingEnd
     {
         get => this.animFlappingEnd;
@@ -303,7 +303,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     public CPlugSound? GetSoundLoop(GbxReadSettings settings = default, bool exceptions = false) => soundLoopFile?.GetNode(ref soundLoop, settings, exceptions) ?? soundLoop;
 
     private CPlugSound? soundEventTakeOff;
-    [AppliedWithChunk<Chunk090E5002>]
+    [AppliedWithChunk<Chunk090E5002>(2)]
     public CPlugSound? SoundEventTakeOff
     {
         get => this.soundEventTakeOff;

@@ -61,7 +61,7 @@ public partial class CPlugSolid : CPlug, IClass
     public CPlug? GetTree(GbxReadSettings settings = default, bool exceptions = false) => treeFile?.GetNode(ref tree, settings, exceptions) ?? tree;
 
     private PreLightGen? solidPreLightGen;
-    [AppliedWithChunk<Chunk09005017>]
+    [AppliedWithChunk<Chunk09005017>(3)]
     public PreLightGen? SolidPreLightGen
     {
         get => this.solidPreLightGen;
@@ -69,7 +69,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private DateTime? fileWriteTime;
-    [AppliedWithChunk<Chunk09005017>]
+    [AppliedWithChunk<Chunk09005017>(2)]
     public DateTime? FileWriteTime
     {
         get => this.fileWriteTime;

@@ -59,7 +59,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int axis;
-    [AppliedWithChunk<Chunk090F8000>]
+    [AppliedWithChunk<Chunk090F8000>(1)]
     public int Axis
     {
         get => this.axis;
@@ -67,7 +67,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int rotPeriodMax;
-    [AppliedWithChunk<Chunk090F8000>]
+    [AppliedWithChunk<Chunk090F8000>(2)]
     public int RotPeriodMax
     {
         get => this.rotPeriodMax;
@@ -75,7 +75,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int transPeriodMax;
-    [AppliedWithChunk<Chunk090F8000>]
+    [AppliedWithChunk<Chunk090F8000>(2)]
     public int TransPeriodMax
     {
         get => this.transPeriodMax;
@@ -83,7 +83,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private byte rotFunc;
-    [AppliedWithChunk<Chunk090F8000>]
+    [AppliedWithChunk<Chunk090F8000>(3)]
     public byte RotFunc
     {
         get => this.rotFunc;
@@ -91,7 +91,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private float rotAngle;
-    [AppliedWithChunk<Chunk090F8000>]
+    [AppliedWithChunk<Chunk090F8000>(3)]
     public float RotAngle
     {
         get => this.rotAngle;

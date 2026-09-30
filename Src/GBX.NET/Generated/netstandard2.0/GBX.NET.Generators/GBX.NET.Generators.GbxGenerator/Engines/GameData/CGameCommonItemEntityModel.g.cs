@@ -35,7 +35,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     public static new uint Id => 0x2E027000;
 
     private CMwNod? phyModel;
-    [AppliedWithChunk<Chunk2E027000>]
+    [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? PhyModel
     {
         get => this.phyModel;
@@ -43,7 +43,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private CMwNod? visModel;
-    [AppliedWithChunk<Chunk2E027000>]
+    [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? VisModel
     {
         get => this.visModel;
@@ -51,7 +51,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private CPlugStaticObjectModel? staticObject;
-    [AppliedWithChunk<Chunk2E027000>]
+    [AppliedWithChunk<Chunk2E027000>(4)]
     public CPlugStaticObjectModel? StaticObject
     {
         get => this.staticObject;
@@ -59,7 +59,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private CMwNod? triggerShape;
-    [AppliedWithChunk<Chunk2E027000>]
+    [AppliedWithChunk<Chunk2E027000>(2)]
     public CMwNod? TriggerShape
     {
         get => this.triggerShape;

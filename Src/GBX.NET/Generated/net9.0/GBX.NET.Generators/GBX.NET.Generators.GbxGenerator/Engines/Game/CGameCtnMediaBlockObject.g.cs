@@ -51,7 +51,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private AnchoredObjectInfo[]? anchoredObjectInfos;
-    [AppliedWithChunk<Chunk03196000>]
+    [AppliedWithChunk<Chunk03196000>(0, 0)]
     public AnchoredObjectInfo[]? AnchoredObjectInfos
     {
         get => this.anchoredObjectInfos;
@@ -59,7 +59,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private CGameReplayObjectVisData? visData;
-    [AppliedWithChunk<Chunk03196000>]
+    [AppliedWithChunk<Chunk03196000>(1)]
     public CGameReplayObjectVisData? VisData
     {
         get => this.visData;

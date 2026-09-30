@@ -56,7 +56,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? parentCollectorId;
-    [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<HeaderChunk2E001003>(4)]
     public string? ParentCollectorId
     {
         get => this.parentCollectorId;
@@ -64,7 +64,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private ECollectorFlags flags;
-    [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<HeaderChunk2E001003>(3)]
     public ECollectorFlags Flags
     {
         get => this.flags;
@@ -72,7 +72,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private int copperPrice;
-    [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<HeaderChunk2E001003>(3, 5)]
     [AppliedWithChunk<Chunk2E001007>]
     public int CopperPrice
     {
@@ -81,7 +81,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? name;
-    [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
     public string? Name
     {
@@ -90,8 +90,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private EProdState prodState;
-    [AppliedWithChunk<HeaderChunk2E001003>]
-    [AppliedWithChunk<Chunk2E001011>]
+    [AppliedWithChunk<HeaderChunk2E001003>(8)]
+    [AppliedWithChunk<Chunk2E001011>(1)]
     public EProdState ProdState
     {
         get => this.prodState;

@@ -43,7 +43,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle? start;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(0, 3)]
     public TimeSingle? Start
     {
         get => this.start;
@@ -51,7 +51,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle? end;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(0, 3)]
     public TimeSingle? End
     {
         get => this.end;
@@ -78,7 +78,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool noDamage;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(2)]
     public bool NoDamage
     {
         get => this.noDamage;
@@ -86,7 +86,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool forceLight;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceLight
     {
         get => this.forceLight;
@@ -94,7 +94,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool forceHue;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceHue
     {
         get => this.forceHue;
@@ -102,7 +102,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private Vec3 lightTrailColor;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(2, 5)]
     public Vec3 LightTrailColor
     {
         get => this.lightTrailColor;
@@ -110,7 +110,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private Ident playerModel = Ident.Empty;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(3)]
     public Ident PlayerModel
     {
         get => this.playerModel;
@@ -121,7 +121,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// <summary>
     /// name assumed from getter
     /// </summary>
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(3)]
     public List<PackDesc>? SkinNames
     {
         get => this.skinNames;
@@ -129,7 +129,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool hasBadges;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(3)]
     public bool HasBadges
     {
         get => this.hasBadges;
@@ -137,7 +137,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private SBadge? badge;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(3)]
     public SBadge? Badge
     {
         get => this.badge;
@@ -145,7 +145,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? skinOptions;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(11)]
     [AppliedWithChunk<Chunk0329F002>]
     public string? SkinOptions
     {
@@ -154,7 +154,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private List<Key>? keys;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(4)]
     public List<Key>? Keys
     {
         get => this.keys;
@@ -162,7 +162,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? ghostName;
-    [AppliedWithChunk<Chunk0329F000>]
+    [AppliedWithChunk<Chunk0329F000>(7)]
     public string? GhostName
     {
         get => this.ghostName;

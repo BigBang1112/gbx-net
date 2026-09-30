@@ -43,7 +43,7 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     }
 
     private Vec3[]? lefts;
-    [AppliedWithChunk<Chunk09118000>]
+    [AppliedWithChunk<Chunk09118000>(2)]
     public Vec3[]? Lefts
     {
         get => this.lefts;

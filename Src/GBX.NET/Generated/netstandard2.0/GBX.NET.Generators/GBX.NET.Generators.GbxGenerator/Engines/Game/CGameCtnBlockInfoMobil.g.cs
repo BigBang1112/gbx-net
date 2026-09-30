@@ -43,7 +43,8 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private CSceneMobil? oldMobil;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(0, 0)]
+    [AppliedWithChunk<Chunk03122003>(2)]
     public CSceneMobil? OldMobil
     {
         get => this.oldMobilFile?.GetNode(ref this.oldMobil) ?? this.oldMobil;
@@ -68,7 +69,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private bool hasGeomTransformation;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(1)]
     public bool HasGeomTransformation
     {
         get => this.hasGeomTransformation;
@@ -76,7 +77,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 geomTranslation;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(1)]
     public Vec3 GeomTranslation
     {
         get => this.geomTranslation;
@@ -84,7 +85,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 geomRotation;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(1)]
     public Vec3 GeomRotation
     {
         get => this.geomRotation;
@@ -92,7 +93,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private CPlugSolid? solidFid;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(2)]
     public CPlugSolid? SolidFid
     {
         get => this.solidFidFile?.GetNode(ref this.solidFid) ?? this.solidFid;
@@ -109,7 +110,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public CPlugSolid? GetSolidFid(GbxReadSettings settings = default, bool exceptions = false) => solidFidFile?.GetNode(ref solidFid, settings, exceptions) ?? solidFid;
 
     private CPlugPrefab? prefabFid;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(14)]
     public CPlugPrefab? PrefabFid
     {
         get => this.prefabFidFile?.GetNode(ref this.prefabFid) ?? this.prefabFid;
@@ -126,7 +127,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public CPlugPrefab? GetPrefabFid(GbxReadSettings settings = default, bool exceptions = false) => prefabFidFile?.GetNode(ref prefabFid, settings, exceptions) ?? prefabFid;
 
     private CPlugSolid? oldSolidAggreg;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(3)]
     public CPlugSolid? OldSolidAggreg
     {
         get => this.oldSolidAggregFile?.GetNode(ref this.oldSolidAggreg) ?? this.oldSolidAggreg;
@@ -143,7 +144,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public CPlugSolid? GetOldSolidAggreg(GbxReadSettings settings = default, bool exceptions = false) => oldSolidAggregFile?.GetNode(ref oldSolidAggreg, settings, exceptions) ?? oldSolidAggreg;
 
     private CPlugPath? railPath;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(6)]
     public CPlugPath? RailPath
     {
         get => this.railPathFile?.GetNode(ref this.railPath) ?? this.railPath;
@@ -160,7 +161,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public CPlugPath? GetRailPath(GbxReadSettings settings = default, bool exceptions = false) => railPathFile?.GetNode(ref railPath, settings, exceptions) ?? railPath;
 
     private CPlugPath? trafficPath;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(7, 22)]
     public CPlugPath? TrafficPath
     {
         get => this.trafficPathFile?.GetNode(ref this.trafficPath) ?? this.trafficPath;
@@ -177,7 +178,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public CPlugPath? GetTrafficPath(GbxReadSettings settings = default, bool exceptions = false) => trafficPathFile?.GetNode(ref trafficPath, settings, exceptions) ?? trafficPath;
 
     private CPlugRoadChunk[]? roadChunks;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(9)]
     public CPlugRoadChunk[]? RoadChunks
     {
         get => this.roadChunks;
@@ -188,7 +189,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     /// <summary>
     /// QuestMania confirmed
     /// </summary>
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(16, 22)]
     public CPlugPath? CitizenNetworkPath
     {
         get => this.citizenNetworkPath;
@@ -196,7 +197,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private CMwNod? vFXs;
-    [AppliedWithChunk<Chunk03122003>]
+    [AppliedWithChunk<Chunk03122003>(18)]
     public CMwNod? VFXs
     {
         get => this.vFXs;
