@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.ZLib</PackageId>
-        <VersionPrefix>1.1.2</VersionPrefix>
+        <VersionPrefix>1.1.3</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Support for zlib compressed parts of Gbx, integrated with GBX.NET. This official implementation uses Iconic.Zlib.Netstandard.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Crypto</PackageId>
-        <VersionPrefix>1.2.2</VersionPrefix>
+        <VersionPrefix>1.2.3</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Cryptographic features for GBX.NET 2.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>

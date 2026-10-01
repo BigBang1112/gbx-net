@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Tool</PackageId>
-        <VersionPrefix>0.3.3</VersionPrefix>
+        <VersionPrefix>0.3.4</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Base library for creating rich tools for different environments with GBX.NET.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
