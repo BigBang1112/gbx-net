@@ -40,8 +40,6 @@ public partial class CGameCtnBlockInfoMobilLink : CMwNod, IClass
         ((CGameCtnBlockInfoMobilLink)clone).version = context.Clone(this.version)!;
         ((CGameCtnBlockInfoMobilLink)clone).socketId = context.Clone(this.socketId)!;
         ((CGameCtnBlockInfoMobilLink)clone).model = context.Clone(this.model)!;
-        ((CGameCtnBlockInfoMobilLink)clone).u01 = context.Clone(this.u01)!;
-        ((CGameCtnBlockInfoMobilLink)clone).u01File = context.Clone(this.u01File)!;
     }
 
     public CGameCtnBlockInfoMobilLink()
