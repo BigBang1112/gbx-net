@@ -114,6 +114,8 @@ CGameCtnBlockInfo 0x0304E000
   CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
 
 0x02E [MP3]
+  version
+  int<CGameCtnCollector.EProdState> ProdState (inherited)
 
 0x02F [MP4.v0]
   version
