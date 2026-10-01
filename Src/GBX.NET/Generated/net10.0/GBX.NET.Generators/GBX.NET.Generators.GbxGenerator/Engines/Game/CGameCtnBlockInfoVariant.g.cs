@@ -136,6 +136,48 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.noPillarBelowIndex = value;
     }
 
+    private CGameCtnBlockInfoMobil[][]? mobils;
+    [AppliedWithChunk<Chunk0315B005>]
+    public CGameCtnBlockInfoMobil[][]? Mobils
+    {
+        get => this.mobils;
+        set => this.mobils = value;
+    }
+
+    private CPlugSolid? helperSolidFid;
+    [AppliedWithChunk<Chunk0315B005>(2)]
+    public CPlugSolid? HelperSolidFid
+    {
+        get => this.helperSolidFidFile?.GetNode(ref this.helperSolidFid) ?? this.helperSolidFid;
+        set => this.helperSolidFid = value;
+    }
+    private Components.GbxRefTableFile? helperSolidFidFile;
+
+    public Components.GbxRefTableFile? HelperSolidFidFile
+    {
+        get => helperSolidFidFile;
+        set => helperSolidFidFile = value;
+    }
+
+    public CPlugSolid? GetHelperSolidFid(GbxReadSettings settings = default, bool exceptions = false) => helperSolidFidFile?.GetNode(ref helperSolidFid, settings, exceptions) ?? helperSolidFid;
+
+    private CPlugSolid? facultativeHelperSolidFid;
+    [AppliedWithChunk<Chunk0315B005>(2)]
+    public CPlugSolid? FacultativeHelperSolidFid
+    {
+        get => this.facultativeHelperSolidFidFile?.GetNode(ref this.facultativeHelperSolidFid) ?? this.facultativeHelperSolidFid;
+        set => this.facultativeHelperSolidFid = value;
+    }
+    private Components.GbxRefTableFile? facultativeHelperSolidFidFile;
+
+    public Components.GbxRefTableFile? FacultativeHelperSolidFidFile
+    {
+        get => facultativeHelperSolidFidFile;
+        set => facultativeHelperSolidFidFile = value;
+    }
+
+    public CPlugSolid? GetFacultativeHelperSolidFid(GbxReadSettings settings = default, bool exceptions = false) => facultativeHelperSolidFidFile?.GetNode(ref facultativeHelperSolidFid, settings, exceptions) ?? facultativeHelperSolidFid;
+
     private CMwNod? screenInteractionTriggerSolid;
     [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? ScreenInteractionTriggerSolid
@@ -342,6 +384,9 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         ((CGameCtnBlockInfoVariant)clone).cardinalDir = context.Clone(this.cardinalDir)!;
         ((CGameCtnBlockInfoVariant)clone).variantBaseType = context.Clone(this.variantBaseType)!;
         ((CGameCtnBlockInfoVariant)clone).noPillarBelowIndex = context.Clone(this.noPillarBelowIndex)!;
+        ((CGameCtnBlockInfoVariant)clone).mobils = context.CloneArray(this.mobils)!;
+        ((CGameCtnBlockInfoVariant)clone).helperSolidFid = context.Clone(this.helperSolidFid)!;
+        ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFid = context.Clone(this.facultativeHelperSolidFid)!;
         ((CGameCtnBlockInfoVariant)clone).screenInteractionTriggerSolid = context.Clone(this.screenInteractionTriggerSolid)!;
         ((CGameCtnBlockInfoVariant)clone).waypointTriggerSolid = context.Clone(this.waypointTriggerSolid)!;
         ((CGameCtnBlockInfoVariant)clone).gate = context.Clone(this.gate)!;
@@ -358,11 +403,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         ((CGameCtnBlockInfoVariant)clone).compoundModel = context.Clone(this.compoundModel)!;
         ((CGameCtnBlockInfoVariant)clone).compoundLoc = context.Clone(this.compoundLoc)!;
         ((CGameCtnBlockInfoVariant)clone).waterVolumes = context.CloneArray(this.waterVolumes)!;
-        ((CGameCtnBlockInfoVariant)clone).helperSolidFid = context.Clone(this.helperSolidFid)!;
-        ((CGameCtnBlockInfoVariant)clone).helperSolidFidFile = context.Clone(this.helperSolidFidFile)!;
-        ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFid = context.Clone(this.facultativeHelperSolidFid)!;
-        ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFidFile = context.Clone(this.facultativeHelperSolidFidFile)!;
-        ((CGameCtnBlockInfoVariant)clone).Mobils = context.CloneArray(this.Mobils)!;
     }
 
     public CGameCtnBlockInfoVariant()
@@ -473,18 +513,45 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
     [Chunk(0x0315B005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 2, 2)]
-    public partial class Chunk0315B005 : Chunk<CGameCtnBlockInfoVariant>
+    public partial class Chunk0315B005 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public int Version { get; set; }
+        public CSceneMobil? U01;
+        public CSceneMobil? U02;
+        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0315B005)clone).Version = context.Clone(this.Version)!;
             ((Chunk0315B005)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0315B005)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0315B005)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0315B005)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.JaggedArrayNodeRef<CGameCtnBlockInfoMobil>(ref n.mobils!);
+
+            if (Version <= 1)
+            {
+                rw.NodeRef<CSceneMobil>(ref U01);
+                rw.NodeRef<CSceneMobil>(ref U02);
+            }
+
+            if (Version >= 2)
+            {
+                rw.NodeRef<CPlugSolid>(ref n.helperSolidFid, ref n.helperSolidFidFile);
+                rw.NodeRef<CPlugSolid>(ref n.facultativeHelperSolidFid, ref n.facultativeHelperSolidFidFile);
+
+                if (Version >= 3)
+                {
+                    rw.Int32(ref U03);
+                }
+            }
         }
     }
 

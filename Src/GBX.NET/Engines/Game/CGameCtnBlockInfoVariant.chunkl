@@ -28,6 +28,16 @@ CGameCtnBlockInfoVariant 0x0315B000
   short
 
 0x005 [MP3.v0, TMT.v2, MP4.v2]
+  version
+  CGameCtnBlockInfoMobil[][] Mobils
+  v1-
+    CSceneMobil
+    CSceneMobil
+  v2+
+    CPlugSolid HelperSolidFid (external)
+    CPlugSolid FacultativeHelperSolidFid (external)
+    v3+
+      int
 
 0x006 [MP3.v6, TMT.v8, MP4.v10]
   version
