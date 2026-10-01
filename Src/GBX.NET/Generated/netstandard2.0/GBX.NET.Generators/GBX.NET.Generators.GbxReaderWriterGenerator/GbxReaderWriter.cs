@@ -511,6 +511,10 @@ partial interface IGbxReaderWriter
     void Array_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool lengthInBytes = false) where T : struct;
 
     [return: NotNullIfNotNull(nameof(value))]
+    T[][]? JaggedArray<T>(T[][]? value, int? innerLength = default, int? outerLength = default) where T : struct;
+    void JaggedArray<T>([NotNullIfNotNull(nameof(value))] ref T[][]? value, int? innerLength = default, int? outerLength = default) where T : struct;
+
+    [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<T>? List<T>(System.Collections.Generic.List<T>? value, int length, bool lengthInBytes = false) where T : struct;
     void List<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T>? value, int length, bool lengthInBytes = false) where T : struct;
 
@@ -533,6 +537,10 @@ partial interface IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     T?[]? ArrayNodeRef_deprec<T>(T?[]? value = default) where T : GBX.NET.IClass;
     void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref T?[]? value) where T : GBX.NET.IClass;
+
+    [return: NotNullIfNotNull(nameof(value))]
+    T?[][]? JaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
+    void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass;
@@ -559,8 +567,8 @@ partial interface IGbxReaderWriter
     void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
-    GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
-    void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
@@ -585,6 +593,22 @@ partial interface IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     string[]? ArrayId_deprec(string[]? value = default);
     void ArrayId_deprec([NotNullIfNotNull(nameof(value))] ref string[]? value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    string[][]? JaggedArrayId(string[][]? value, int? innerLength = default, int? outerLength = default);
+    void JaggedArrayId([NotNullIfNotNull(nameof(value))] ref string[][]? value, int? innerLength = default, int? outerLength = default);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    string[][]? JaggedArrayString(string[][]? value, int? innerLength = default, int? outerLength = default);
+    void JaggedArrayString([NotNullIfNotNull(nameof(value))] ref string[][]? value, int? innerLength = default, int? outerLength = default);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.Ident[][]? JaggedArrayIdent(GBX.NET.Ident[][]? value, int? innerLength = default, int? outerLength = default);
+    void JaggedArrayIdent([NotNullIfNotNull(nameof(value))] ref GBX.NET.Ident[][]? value, int? innerLength = default, int? outerLength = default);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.PackDesc[][]? JaggedArrayPackDesc(GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default);
+    void JaggedArrayPackDesc([NotNullIfNotNull(nameof(value))] ref GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default);
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<string>? ListId(System.Collections.Generic.List<string>? value, int length);
@@ -2095,6 +2119,16 @@ partial class GbxReaderWriter
     public void Array_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool lengthInBytes = false) where T : struct => value = Array_deprec(value, lengthInBytes);
 
     [return: NotNullIfNotNull(nameof(value))]
+    public T[][]? JaggedArray<T>(T[][]? value, int? innerLength = default, int? outerLength = default) where T : struct
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArray<T>(innerLength, outerLength);
+        Writer?.WriteJaggedArray(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArray<T>([NotNullIfNotNull(nameof(value))] ref T[][]? value, int? innerLength = default, int? outerLength = default) where T : struct => value = JaggedArray(value, innerLength, outerLength);
+
+    [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<T>? List<T>(System.Collections.Generic.List<T>? value, int length, bool lengthInBytes = false) where T : struct
     {
         if (Reader is not null) value = Reader.ReadList<T>(length, lengthInBytes);
@@ -2153,6 +2187,16 @@ partial class GbxReaderWriter
     }
 
     public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref T?[]? value) where T : GBX.NET.IClass => value = ArrayNodeRef_deprec(value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T?[][]? JaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayNodeRef<T>(innerLength, outerLength);
+        Writer?.WriteJaggedArrayNodeRef(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass => value = JaggedArrayNodeRef(value, innerLength, outerLength);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass
@@ -2215,14 +2259,14 @@ partial class GbxReaderWriter
     public void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ArrayExternalNodeRef_deprec(value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
+    public GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
-        if (Reader is not null) value = Reader.ReadJaggedArrayExternalNodeRef<T>();
-        Writer?.WriteJaggedArrayExternalNodeRef(value);
+        if (Reader is not null) value = Reader.ReadJaggedArrayExternalNodeRef<T>(innerLength, outerLength);
+        Writer?.WriteJaggedArrayExternalNodeRef(value, innerLength, outerLength);
         return value;
     }
 
-    public void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = JaggedArrayExternalNodeRef(value);
+    public void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = JaggedArrayExternalNodeRef(value, innerLength, outerLength);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod
@@ -2283,6 +2327,46 @@ partial class GbxReaderWriter
     }
 
     public void ArrayId_deprec([NotNullIfNotNull(nameof(value))] ref string[]? value) => value = ArrayId_deprec(value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public string[][]? JaggedArrayId(string[][]? value, int? innerLength = default, int? outerLength = default)
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayId(innerLength, outerLength);
+        Writer?.WriteJaggedArrayId(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArrayId([NotNullIfNotNull(nameof(value))] ref string[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayId(value, innerLength, outerLength);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public string[][]? JaggedArrayString(string[][]? value, int? innerLength = default, int? outerLength = default)
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayString(innerLength, outerLength);
+        Writer?.WriteJaggedArrayString(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArrayString([NotNullIfNotNull(nameof(value))] ref string[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayString(value, innerLength, outerLength);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.Ident[][]? JaggedArrayIdent(GBX.NET.Ident[][]? value, int? innerLength = default, int? outerLength = default)
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayIdent(innerLength, outerLength);
+        Writer?.WriteJaggedArrayIdent(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArrayIdent([NotNullIfNotNull(nameof(value))] ref GBX.NET.Ident[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayIdent(value, innerLength, outerLength);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.PackDesc[][]? JaggedArrayPackDesc(GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default)
+    {
+        if (Reader is not null) value = Reader.ReadJaggedArrayPackDesc(innerLength, outerLength);
+        Writer?.WriteJaggedArrayPackDesc(value, innerLength, outerLength);
+        return value;
+    }
+
+    public void JaggedArrayPackDesc([NotNullIfNotNull(nameof(value))] ref GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayPackDesc(value, innerLength, outerLength);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<string>? ListId(System.Collections.Generic.List<string>? value, int length)

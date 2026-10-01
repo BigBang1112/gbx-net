@@ -106,6 +106,35 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task CompilesJaggedArrayVariants()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+
+            0x001
+              int[][] Values
+              id[][] Ids
+              string[][] Names
+              Example[][] Nodes
+              Example[][] ExternalNodes (external)
+              Item[][] Rows
+
+            archive Item
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("rw.JaggedArray<int>(ref n.values!)");
+        await Assert.That(generated).Contains("rw.JaggedArrayId(ref n.ids!)");
+        await Assert.That(generated).Contains("rw.JaggedArrayString(ref n.names!)");
+        await Assert.That(generated).Contains("rw.JaggedArrayNodeRef<Example>(ref n.nodes!)");
+        await Assert.That(generated).Contains("rw.JaggedArrayExternalNodeRef<Example>(ref n.externalNodes!)");
+        await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Item>(ref n.rows!)");
+    }
+
+    [Test]
     public async Task DemonstrationChunksDoNotGenerateFieldsOrProperties()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -611,6 +640,7 @@ public class GenerationTests
         {
             public interface IClass { }
             public interface IVersionable { int Version { get; set; } }
+            public class External<T> where T : GBX.NET.Engines.Game.CMwNod { }
         }
         namespace GBX.NET.Attributes
         {
@@ -652,6 +682,11 @@ public class GenerationTests
                 public void ArrayReadableWritable<T>(ref T[]? value) where T : IReadableWritable, new() { }
                 public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
                     where T : IReadable, IWritable, new() { }
+                public void JaggedArray<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null) where T : struct { }
+                public void JaggedArrayId(ref string[][]? value, int? innerLength = null, int? outerLength = null) { }
+                public void JaggedArrayString(ref string[][]? value, int? innerLength = null, int? outerLength = null) { }
+                public void JaggedArrayNodeRef<T>(ref T?[][]? value, int? innerLength = null, int? outerLength = null) where T : GBX.NET.IClass { }
+                public void JaggedArrayExternalNodeRef<T>(ref GBX.NET.External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod { }
                 public void Dispose() { }
             }
         }

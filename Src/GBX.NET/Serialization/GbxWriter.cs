@@ -121,6 +121,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
     void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct;
     void WriteArray_deprec<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
+    void WriteJaggedArray<T>(T[][]? value, int? innerLength = null, int? outerLength = null) where T : struct;
     void WriteList<T>(List<T>? value, bool lengthInBytes = false) where T : struct;
     void WriteList<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct;
     void WriteList_deprec<T>(List<T>? value, bool lengthInBytes = false) where T : struct;
@@ -128,13 +129,14 @@ public partial interface IGbxWriter : IDisposable
     void WriteArrayNodeRef<T>(T?[]? value) where T : IClass;
     void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass;
     void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass;
+    void WriteJaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = null, int? outerLength = null) where T : IClass;
     void WriteListNodeRef<T>(List<T?>? value) where T : IClass;
     void WriteListNodeRef<T>(List<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(List<T?>? value) where T : IClass;
     void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod;
     void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
     void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod;
-    void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value) where T : CMwNod;
+    void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod;
     void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod;
     void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
     void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod;
@@ -149,6 +151,10 @@ public partial interface IGbxWriter : IDisposable
     void WriteArrayId(string[]? value);
     void WriteArrayId(string[]? value, int length);
     void WriteArrayId_deprec(string[]? value);
+    void WriteJaggedArrayId(string[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayString(string[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayIdent(Ident[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null);
     void WriteListId(List<string>? value);
     void WriteListId(List<string>? value, int length);
     void WriteListId_deprec(List<string>? value);
@@ -1721,6 +1727,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteArray(value, length, lengthInBytes);
     }
 
+    public void WriteJaggedArray<T>(T[][]? value, int? innerLength = null, int? outerLength = null) where T : struct
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
     public void WriteList<T>(List<T>? value, bool lengthInBytes = false) where T : struct
     {
         if (value is null || value.Count == 0)
@@ -1786,6 +1795,15 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteArrayNodeRef(value);
     }
 
+    public void WriteJaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = null, int? outerLength = null) where T : IClass
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
+        {
+            foreach (var item in row)
+            {
+                WriteNodeRef(item);
+            }
+        });
+
     public void WriteListNodeRef<T>(List<T?>? value) where T : IClass
     {
         if (value is null)
@@ -1840,20 +1858,14 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteArrayExternalNodeRef(value);
     }
 
-    public void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value) where T : CMwNod
-    {
-        Write(value?.Length ?? 0);
-
-        if (value is null)
+    public void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
         {
-            return;
-        }
-
-        foreach (var array in value)
-        {
-            WriteArrayExternalNodeRef(array);
-        }
-    }
+            foreach (var item in row)
+            {
+                WriteNodeRef(item?.Node, item?.File);
+            }
+        });
 
     public void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod
     {
@@ -1912,6 +1924,15 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     }
 
     public void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new()
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
+        {
+            foreach (var item in row)
+            {
+                WriteWritable(item, version);
+            }
+        });
+
+    private void WriteJaggedArrayRows<T>(T[][]? value, int? innerLength, int? outerLength, Action<T[]> writeRow)
     {
         if (innerLength is < 0)
         {
@@ -1924,6 +1945,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
 
         var count = value?.Length ?? 0;
+        EnsureValidLength(count);
+
+        if (innerLength.HasValue)
+        {
+            EnsureValidLength(innerLength.Value);
+        }
 
         if (outerLength.HasValue && count != outerLength.Value)
         {
@@ -1937,6 +1964,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
                 if (innerLength.HasValue && row?.Length != innerLength.Value)
                 {
                     throw new InvalidOperationException("Invalid inner array length.");
+                }
+
+                if (row is not null)
+                {
+                    EnsureValidLength(row.Length);
                 }
             }
         }
@@ -1960,10 +1992,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
                     continue;
                 }
 
-                foreach (var item in row)
-                {
-                    WriteWritable(item, version);
-                }
+                writeRow(row);
             }
         }
     }
@@ -2062,6 +2091,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteDeprecVersion();
         WriteArrayId(value);
     }
+
+    public void WriteJaggedArrayId(string[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArrayId(row, row.Length));
+
+    public void WriteJaggedArrayString(string[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
+    public void WriteJaggedArrayIdent(Ident[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
+    public void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
 
     public void WriteListId(List<string>? value)
     {

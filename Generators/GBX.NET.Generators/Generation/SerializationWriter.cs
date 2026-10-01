@@ -292,12 +292,12 @@ internal sealed class SerializationWriter
         {
             var writeMethod = method == "Id" ? "IdAsString" : method;
 
-            if (declaration.Type.ArrayDimensions > 0 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref")
+            if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref")
             {
                 writeMethod = (LayoutModel.Has(declaration.Attributes, "list") ? "List" : "Array") + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
             }
 
-            if (declaration.Type.CastTarget is not null)
+            if (declaration.Type.CastTarget is not null && declaration.Type.ArrayDimensions == 0)
             {
                 writeMethod = WireTypes.Method(declaration.Type.Name);
             }
@@ -351,19 +351,39 @@ internal sealed class SerializationWriter
             return "Data";
         }
 
-        if (field.Type.ArrayDimensions == 2 && field.Type.FixedArrayCount is { Length: > 0 } && IsArchive(field))
+        if (field.Type.ArrayDimensions == 2 && !LayoutModel.Has(field.Attributes, "list"))
         {
-            return "JaggedArray" + (mode switch
-            {
-                SerializationMode.Read => "Readable<" + field.Type.Name + ">",
-                SerializationMode.Write => "Writable<" + field.Type.Name + ">",
-                _ => "ReadableWritable<" + field.Type.Name + ">"
-            });
-        }
+            var jaggedName = field.Type.Name;
 
-        if (field.Type.ArrayDimensions == 2 && LayoutModel.Has(field.Attributes, "external") && !WireTypes.Primitive(field.Type.Name))
-        {
-            return "JaggedArrayExternalNodeRef<" + field.Type.Name + ">";
+            if (LayoutModel.Has(field.Attributes, "deprec"))
+            {
+                throw new NotSupportedException("Jagged arrays do not support deprec.");
+            }
+
+            if (IsArchive(field))
+            {
+                return "JaggedArray" + (mode switch
+                {
+                    SerializationMode.Read => "Readable",
+                    SerializationMode.Write => "Writable",
+                    _ => "ReadableWritable"
+                }) + "<" + jaggedName + ">";
+            }
+
+            if (!WireTypes.Primitive(jaggedName))
+            {
+                return "JaggedArray" + (LayoutModel.Has(field.Attributes, "external") ? "External" : "") + "NodeRef<" + jaggedName + ">";
+            }
+
+            return jaggedName switch
+            {
+                "id" or "lookbackstring" => "JaggedArrayId",
+                "string" => "JaggedArrayString",
+                "ident" or "meta" => "JaggedArrayIdent",
+                "packdesc" or "fileref" => "JaggedArrayPackDesc",
+                _ when WireTypes.Value(jaggedName) && jaggedName != "optimizedint" => "JaggedArray<" + WireTypes.Map(jaggedName) + ">",
+                _ => throw new NotSupportedException("Unsupported jagged array element: " + jaggedName)
+            };
         }
 
         var collection = field.Type.ArrayDimensions > 0;

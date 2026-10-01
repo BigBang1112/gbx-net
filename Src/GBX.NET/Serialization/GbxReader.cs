@@ -120,19 +120,21 @@ public partial interface IGbxReader : IDisposable
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct;
+    T[][] ReadJaggedArray<T>(int? innerLength = null, int? outerLength = null) where T : struct;
     List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
     List<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
     List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
     T?[] ReadArrayNodeRef<T>(int length) where T : IClass;
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
+    T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass;
     List<T?> ReadListNodeRef<T>(int length) where T : IClass;
     List<T?> ReadListNodeRef<T>() where T : IClass;
     List<T?> ReadListNodeRef_deprec<T>() where T : IClass;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
-    External<T>[][] ReadJaggedArrayExternalNodeRef<T>() where T : CMwNod;
+    External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
@@ -148,6 +150,10 @@ public partial interface IGbxReader : IDisposable
     string[] ReadArrayId(int length);
     string[] ReadArrayId();
     string[] ReadArrayId_deprec();
+    string[][] ReadJaggedArrayId(int? innerLength = null, int? outerLength = null);
+    string[][] ReadJaggedArrayString(int? innerLength = null, int? outerLength = null);
+    Ident[][] ReadJaggedArrayIdent(int? innerLength = null, int? outerLength = null);
+    PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null);
     List<string> ReadListId(int length);
     List<string> ReadListId();
     List<string> ReadListId_deprec();
@@ -1486,24 +1492,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         => ReadArrayReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
     public T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new()
-    {
-        var count = outerLength ?? ReadInt32();
-        EnsureValidLength(count);
-
-        if (innerLength.HasValue)
-        {
-            EnsureValidLength(innerLength.Value);
-        }
-
-        var array = new T[count][];
-
-        for (var i = 0; i < count; i++)
-        {
-            array[i] = ReadArrayReadable<T>(innerLength ?? ReadInt32(), version);
-        }
-
-        return array;
-    }
+        => ReadJaggedArrayRows(length => ReadArrayReadable<T>(length, version), innerLength, outerLength);
 
     public T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {
@@ -1586,6 +1575,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct => ReadArray_deprec<T>(ReadInt32(), lengthInBytes);
 
+    public T[][] ReadJaggedArray<T>(int? innerLength = null, int? outerLength = null) where T : struct
+        => ReadJaggedArrayRows(length => ReadArray<T>(length), innerLength, outerLength);
+
     public List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct
     {
         if (length == 0)
@@ -1662,6 +1654,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayNodeRef<T>();
     }
 
+    public T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass
+        => ReadJaggedArrayRows(length => ReadArrayNodeRef<T>(length), innerLength, outerLength);
+
     public List<T?> ReadListNodeRef<T>(int length) where T : IClass
     {
         if (length == 0)
@@ -1717,20 +1712,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayExternalNodeRef<T>();
     }
 
-    public External<T>[][] ReadJaggedArrayExternalNodeRef<T>() where T : CMwNod
-    {
-        var length = ReadInt32();
-        EnsureValidLength(length);
-
-        var array = new External<T>[length][];
-
-        for (var i = 0; i < array.Length; i++)
-        {
-            array[i] = ReadArrayExternalNodeRef<T>();
-        }
-
-        return array;
-    }
+    public External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod
+        => ReadJaggedArrayRows(length => ReadArrayExternalNodeRef<T>(length), innerLength, outerLength);
 
     public List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod
     {
@@ -1785,6 +1768,38 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadArrayId();
+    }
+
+    public string[][] ReadJaggedArrayId(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayId, innerLength, outerLength);
+
+    public string[][] ReadJaggedArrayString(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayString, innerLength, outerLength);
+
+    public Ident[][] ReadJaggedArrayIdent(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayIdent, innerLength, outerLength);
+
+    public PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayPackDesc, innerLength, outerLength);
+
+    private T[][] ReadJaggedArrayRows<T>(Func<int, T[]> readRow, int? innerLength, int? outerLength)
+    {
+        var count = outerLength ?? ReadInt32();
+        EnsureValidLength(count);
+
+        if (innerLength.HasValue)
+        {
+            EnsureValidLength(innerLength.Value);
+        }
+
+        var array = new T[count][];
+
+        for (var i = 0; i < count; i++)
+        {
+            array[i] = readRow(innerLength ?? ReadInt32());
+        }
+
+        return array;
     }
 
     public List<string> ReadListId(int length)
