@@ -141,6 +141,8 @@ public partial interface IGbxWriter : IDisposable
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
+    /// <summary>Writes an array of rows. A null length writes an Int32 length prefix for that dimension.</summary>
+    void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new();
     void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
 
@@ -1906,6 +1908,63 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         foreach (var item in value)
         {
             WriteWritable(item, version);
+        }
+    }
+
+    public void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new()
+    {
+        if (innerLength is < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(innerLength));
+        }
+
+        if (outerLength is < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(outerLength));
+        }
+
+        var count = value?.Length ?? 0;
+
+        if (outerLength.HasValue && count != outerLength.Value)
+        {
+            throw new InvalidOperationException("Invalid outer array length.");
+        }
+
+        if (value is not null)
+        {
+            foreach (var row in value)
+            {
+                if (innerLength.HasValue && row?.Length != innerLength.Value)
+                {
+                    throw new InvalidOperationException("Invalid inner array length.");
+                }
+            }
+        }
+
+        if (!outerLength.HasValue)
+        {
+            Write(count);
+        }
+
+        if (value is not null)
+        {
+            foreach (var row in value)
+            {
+                if (!innerLength.HasValue)
+                {
+                    Write(row?.Length ?? 0);
+                }
+
+                if (row is null)
+                {
+                    continue;
+                }
+
+                foreach (var item in row)
+                {
+                    WriteWritable(item, version);
+                }
+            }
         }
     }
 

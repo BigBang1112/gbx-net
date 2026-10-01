@@ -66,6 +66,10 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
@@ -426,6 +430,22 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ArrayReadableWritable(value, byteLengthPrefix, version);
+
+    public T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+    {
+        if (Reader is not null)
+        {
+            value = Reader.ReadJaggedArrayReadable<T>(innerLength, outerLength, version);
+        }
+
+        Writer?.WriteJaggedArrayWritable(value, innerLength, outerLength, version);
+        return value;
+    }
+
+    public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+        => value = JaggedArrayReadableWritable(value, innerLength, outerLength, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()

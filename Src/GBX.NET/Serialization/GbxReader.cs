@@ -139,6 +139,8 @@ public partial interface IGbxReader : IDisposable
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    /// <summary>Reads an array of rows. A null length reads an Int32 length prefix for that dimension.</summary>
+    T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
@@ -1482,6 +1484,26 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
         => ReadArrayReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
+
+    public T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new()
+    {
+        var count = outerLength ?? ReadInt32();
+        EnsureValidLength(count);
+
+        if (innerLength.HasValue)
+        {
+            EnsureValidLength(innerLength.Value);
+        }
+
+        var array = new T[count][];
+
+        for (var i = 0; i < count; i++)
+        {
+            array[i] = ReadArrayReadable<T>(innerLength ?? ReadInt32(), version);
+        }
+
+        return array;
+    }
 
     public T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {

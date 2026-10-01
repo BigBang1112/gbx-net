@@ -243,7 +243,7 @@ internal sealed class SerializationWriter
 
         if (declaration.Type.FixedArrayCount is { Length: > 0 } length)
         {
-            arguments.Add(ExpressionText(length));
+            arguments.Add(ExpressionText(length, nullSafeCount: true));
         }
 
         if (LayoutModel.Attribute(declaration.Attributes, "version") is string version)
@@ -351,6 +351,16 @@ internal sealed class SerializationWriter
             return "Data";
         }
 
+        if (field.Type.ArrayDimensions == 2 && field.Type.FixedArrayCount is { Length: > 0 } && IsArchive(field))
+        {
+            return "JaggedArray" + (mode switch
+            {
+                SerializationMode.Read => "Readable<" + field.Type.Name + ">",
+                SerializationMode.Write => "Writable<" + field.Type.Name + ">",
+                _ => "ReadableWritable<" + field.Type.Name + ">"
+            });
+        }
+
         if (field.Type.ArrayDimensions == 2 && LayoutModel.Has(field.Attributes, "external") && !WireTypes.Primitive(field.Type.Name))
         {
             return "JaggedArrayExternalNodeRef<" + field.Type.Name + ">";
@@ -414,6 +424,9 @@ internal sealed class SerializationWriter
     public string Expression(Expression expression)
         => ExpressionText(ChunkLParser.WriteExpression(expression));
 
+    public string CountExpression(Expression expression)
+        => ExpressionText(ChunkLParser.WriteExpression(expression), nullSafeCount: true);
+
     private bool IsArchive(FieldDeclaration field)
     {
         var name = field.Type.Name;
@@ -429,8 +442,28 @@ internal sealed class SerializationWriter
         code.Line("throw new " + type + "(" + (message is null ? "" : Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(message, true)) + ");");
     }
 
-    private string ExpressionText(string text)
+    private string ExpressionText(string text, bool nullSafeCount = false)
     {
+        if (nullSafeCount)
+        {
+            var separator = text.IndexOf("::", StringComparison.Ordinal);
+
+            if (separator > 0 && text.IndexOf("::", separator + 2, StringComparison.Ordinal) < 0)
+            {
+                var owner = text.Substring(0, separator);
+                var member = text.Substring(separator + 2);
+                var field = layout.Scope.Fields.FirstOrDefault(x => x.Name == owner);
+
+                // A missing referenced node or array contributes zero elements to a fixed count.
+                if (Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsValidIdentifier(owner) &&
+                    Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsValidIdentifier(member) &&
+                    field is not null && WireTypes.Nullable(field))
+                {
+                    text = owner + "?." + member + " ?? 0";
+                }
+            }
+        }
+
         var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(text.Replace("::", "."));
         return new IdentifierRewriter(Identifier).Visit(expression)!.ToString();
     }

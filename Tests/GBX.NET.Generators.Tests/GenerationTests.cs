@@ -79,6 +79,33 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task CompilesFixedInnerJaggedArchiveArray()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+
+            property int ItemCount
+              get = Items::Length
+
+            0x001
+              Item[] Items
+
+            0x002
+              Item[Items::Length][] Rows
+
+            archive Item
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public Item[][]? Rows");
+        await Assert.That(generated).Contains("get => Items?.Length?? 0;");
+        await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Item>(ref n.rows!, n.Items?.Length?? 0)");
+    }
+
+    [Test]
     public async Task DemonstrationChunksDoNotGenerateFieldsOrProperties()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -601,6 +628,9 @@ public class GenerationTests
         {
             public class GbxReader { }
             public class GbxWriter { }
+            public interface IReadable { void Read(GbxReader reader, int version = 0); }
+            public interface IWritable { void Write(GbxWriter writer, int version = 0); }
+            public interface IReadableWritable { void ReadWrite(GbxReaderWriter readerWriter, int version = 0); }
             public interface IDeepCloneable { object DeepClone(DeepCloneContext context); }
             public class DeepCloneContext
             {
@@ -611,11 +641,18 @@ public class GenerationTests
                 public System.Collections.Generic.Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>> source) where TKey : notnull => new();
                 public System.Collections.Generic.HashSet<T> CloneHashSet<T>(System.Collections.Generic.ISet<T> source) => new(source);
             }
-            public class GbxReaderWriter
+            public class GbxReaderWriter : System.IDisposable
             {
+                public GbxReaderWriter() { }
+                public GbxReaderWriter(GbxReader reader) { }
+                public GbxReaderWriter(GbxWriter writer) { }
                 public void Int32(ref int value) { }
                 public int Int32(int value) => value;
                 public void VersionInt32(GBX.NET.IVersionable value) { }
+                public void ArrayReadableWritable<T>(ref T[]? value) where T : IReadableWritable, new() { }
+                public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+                    where T : IReadable, IWritable, new() { }
+                public void Dispose() { }
             }
         }
         namespace GBX.NET.Serialization.Chunking

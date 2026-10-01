@@ -42,10 +42,19 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
         set => this.skel = value;
     }
 
+    private Loc[][]? locations;
+    [AppliedWithChunk<Chunk05006001>]
+    public Loc[][]? Locations
+    {
+        get => this.locations;
+        set => this.locations = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CFuncKeysSkel)clone).skel = context.Clone(this.skel)!;
+        ((CFuncKeysSkel)clone).locations = context.CloneArray(this.locations)!;
     }
 
     public CFuncKeysSkel()
@@ -76,24 +85,28 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05006001)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
+        public override void ReadWrite(CFuncKeysSkel n, GbxReaderWriter rw)
+        {
+            rw.JaggedArrayReadableWritable<Loc>(ref n.locations!, n.Skel?.BonesCount?? 0);
         }
     }
 
-    public partial class Loc : IReadable, IWritable, IDeepCloneable
+    public partial class Loc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Quat u01;
-        public Quat U01
+        private Quat rotation;
+        public Quat Rotation
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.rotation;
+            set => this.rotation = value;
         }
 
-        private Vec3 u02;
-        public Vec3 U02
+        private Vec3 position;
+        public Vec3 Position
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.position;
+            set => this.position = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -106,20 +119,26 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Loc)clone).u01 = context.Clone(this.u01)!;
-            ((Loc)clone).u02 = context.Clone(this.u02)!;
+            ((Loc)clone).rotation = context.Clone(this.rotation)!;
+            ((Loc)clone).position = context.Clone(this.position)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Quat(ref this.rotation);
+            rw.Vec3(ref this.position);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadQuat();
-            this.u02 = r.ReadVec3();
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.Write(this.u01);
-            w.Write(this.u02);
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

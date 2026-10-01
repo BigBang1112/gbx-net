@@ -120,7 +120,8 @@ internal static class EngineWriter
             
             foreach (var accessor in property.Accessors)
             {
-                if (accessor is GetterAccessor getter) code.Line("get => " + writer.Expression(getter.Expression) + ";");
+                if (accessor is GetterAccessor getter)
+                    code.Line("get => " + (property.Type.Name == "int" ? writer.CountExpression(getter.Expression) : writer.Expression(getter.Expression)) + ";");
                 else if (accessor is SetterAccessor setter) { code.Open("set"); writer.Write(setter.Body); code.Close(); }
             }
 
