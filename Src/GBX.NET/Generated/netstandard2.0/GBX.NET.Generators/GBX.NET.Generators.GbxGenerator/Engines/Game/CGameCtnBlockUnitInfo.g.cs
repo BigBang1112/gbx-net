@@ -610,19 +610,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x0303600C)]
-    public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>
+    public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600C;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk0303600C)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0303600C)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0303600C)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0303600C)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0303600C)clone).Version = context.Clone(this.Version)!;
-        }
     }
 
     [Chunk(0x0303600D)]

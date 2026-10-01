@@ -69,7 +69,30 @@ CGameCtnBlockUnitInfo 0x03036000
   int<Direction>? BottomClipDir
   int<Direction>? TopClipDir
 
-0x00C
+0x00C (demonstration)
+  version
+  v0=
+    ushort ClipCountBits // Six 2-bit counts: north, east, south, west, top, bottom.
+    CGameCtnBlockInfoClip[ClipCountBits & 3] ClipsNorth (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 2) & 3] ClipsEast (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 4) & 3] ClipsSouth (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 6) & 3] ClipsWest (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 8) & 3] ClipsTop (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 10) & 3] ClipsBottom (external)
+  v1+
+    int ClipCountBits // Six 3-bit counts in the same order.
+    CGameCtnBlockInfoClip[ClipCountBits & 7] ClipsNorth (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 3) & 7] ClipsEast (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 6) & 7] ClipsSouth (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 9) & 7] ClipsWest (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 12) & 7] ClipsTop (external)
+    CGameCtnBlockInfoClip[(ClipCountBits >> 15) & 7] ClipsBottom (external)
+  v2+
+    short
+    short
+  v1-
+    int
+    int
 
 0x00D
   version

@@ -22,20 +22,17 @@ public partial class CGameCtnBlockUnitInfo
         {
             Version = r.ReadInt32();
 
-            if (Version == 0)
-            {
-                //rw.Int16();
-                throw new ChunkVersionNotSupportedException(Version);
-            }
+            // Version 0 packs six 2-bit counts into a UInt16; later versions use 3-bit counts.
+            var bitsPerClipCount = Version == 0 ? 2 : 3;
+            var clipCountMask = (1 << bitsPerClipCount) - 1;
+            var clipCountBits = Version == 0 ? r.ReadUInt16() : r.ReadInt32();
 
-            var clipCountBits = r.ReadInt32();
-
-            var clipCountNorth = clipCountBits & 7;
-            var clipCountEast = clipCountBits >> 3 & 7;
-            var clipCountSouth = clipCountBits >> 6 & 7;
-            var clipCountWest = clipCountBits >> 9 & 7;
-            var clipCountTop = clipCountBits >> 12 & 7;
-            var clipCountBottom = clipCountBits >> 15 & 7;
+            var clipCountNorth = clipCountBits & clipCountMask;
+            var clipCountEast = clipCountBits >> bitsPerClipCount & clipCountMask;
+            var clipCountSouth = clipCountBits >> (bitsPerClipCount * 2) & clipCountMask;
+            var clipCountWest = clipCountBits >> (bitsPerClipCount * 3) & clipCountMask;
+            var clipCountTop = clipCountBits >> (bitsPerClipCount * 4) & clipCountMask;
+            var clipCountBottom = clipCountBits >> (bitsPerClipCount * 5) & clipCountMask;
 
             n.ClipsNorth = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountNorth)!;
             n.ClipsEast = r.ReadArrayExternalNodeRef<CGameCtnBlockInfoClip>(clipCountEast)!;
@@ -58,15 +55,34 @@ public partial class CGameCtnBlockUnitInfo
 
         public override void Write(CGameCtnBlockUnitInfo n, GbxWriter w)
         {
+            if (Version == 0 && (n.ClipsNorth?.Length > 3
+                || n.ClipsEast?.Length > 3
+                || n.ClipsSouth?.Length > 3
+                || n.ClipsWest?.Length > 3
+                || n.ClipsTop?.Length > 3
+                || n.ClipsBottom?.Length > 3))
+            {
+                throw new InvalidOperationException("Version 0 supports at most 3 clips per direction.");
+            }
+
             w.Write(Version);
 
+            var bitsPerClipCount = Version == 0 ? 2 : 3;
             var clipCountBits = (n.ClipsNorth?.Length ?? 0)
-                | (n.ClipsEast?.Length ?? 0) << 3
-                | (n.ClipsSouth?.Length ?? 0) << 6
-                | (n.ClipsWest?.Length ?? 0) << 9
-                | (n.ClipsTop?.Length ?? 0) << 12
-                | (n.ClipsBottom?.Length ?? 0) << 15;
-            w.Write(clipCountBits);
+                | (n.ClipsEast?.Length ?? 0) << bitsPerClipCount
+                | (n.ClipsSouth?.Length ?? 0) << (bitsPerClipCount * 2)
+                | (n.ClipsWest?.Length ?? 0) << (bitsPerClipCount * 3)
+                | (n.ClipsTop?.Length ?? 0) << (bitsPerClipCount * 4)
+                | (n.ClipsBottom?.Length ?? 0) << (bitsPerClipCount * 5);
+
+            if (Version == 0)
+            {
+                w.Write((ushort)clipCountBits);
+            }
+            else
+            {
+                w.Write(clipCountBits);
+            }
 
             foreach (var clip in n.ClipsNorth ?? [])
             {
