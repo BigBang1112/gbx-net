@@ -20,6 +20,12 @@ partial interface IGbxWriter
     void WriteList(List<GBX.NET.PackDesc>? value, int length);
     void WriteList(List<GBX.NET.PackDesc>? value);
     void WriteList_deprec(List<GBX.NET.PackDesc>? value);
+    void WriteArray(System.Net.IPAddress[]? value, int length);
+    void WriteArray(System.Net.IPAddress[]? value);
+    void WriteArray_deprec(System.Net.IPAddress[]? value);
+    void WriteList(List<System.Net.IPAddress>? value, int length);
+    void WriteList(List<System.Net.IPAddress>? value);
+    void WriteList_deprec(List<System.Net.IPAddress>? value);
 }
 
 partial class GbxWriter
@@ -265,6 +271,88 @@ partial class GbxWriter
     }
 
     public void WriteList_deprec(List<GBX.NET.PackDesc>? value)
+    {
+        WriteDeprecVersion();
+        WriteList(value);
+    }
+
+    public void WriteArray(System.Net.IPAddress[]? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            Write(item);
+        }
+    }
+
+    public void WriteArray(System.Net.IPAddress[]? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                Write(item);
+            }
+        }
+
+        if (value is null || length > value.Length)
+        {
+            for (var i = value?.Length ?? 0; i < length; i++)
+            {
+                Write(default(System.Net.IPAddress));
+            }
+        }
+    }
+
+    public void WriteArray_deprec(System.Net.IPAddress[]? value)
+    {
+        WriteDeprecVersion();
+        WriteArray(value);
+    }
+
+    public void WriteList(List<System.Net.IPAddress>? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            Write(item);
+        }
+    }
+
+    public void WriteList(List<System.Net.IPAddress>? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                Write(item);
+            }
+        }
+
+        if (value is null || length > value.Count)
+        {
+            for (var i = value?.Count ?? 0; i < length; i++)
+            {
+                Write(default(System.Net.IPAddress));
+            }
+        }
+    }
+
+    public void WriteList_deprec(List<System.Net.IPAddress>? value)
     {
         WriteDeprecVersion();
         WriteList(value);

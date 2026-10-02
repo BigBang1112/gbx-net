@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
 using System.Text;
+using System.Net;
+using System.Net.Sockets;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
@@ -93,6 +95,8 @@ public partial interface IGbxWriter : IDisposable
     void WriteFileTime(DateTime? value);
     void WriteSystemTime(DateTime? value);
     void WriteUnixTime(DateTimeOffset value);
+    /// <summary>Writes an IPv4 address as a UInt32, with the first address octet in the least significant byte. Null writes 0.0.0.0.</summary>
+    void Write(IPAddress? value);
     void WriteSmallLen(int value);
     void WriteSmallString(string? value);
     void WriteMarker(string value);
@@ -156,6 +160,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteJaggedArrayString(string[][]? value, int? innerLength = null, int? outerLength = null);
     void WriteJaggedArrayIdent(Ident[][]? value, int? innerLength = null, int? outerLength = null);
     void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayIPAddress(IPAddress[][]? value, int? innerLength = null, int? outerLength = null);
     void WriteListId(List<string>? value);
     void WriteListId(List<string>? value, int length);
     void WriteListId_deprec(List<string>? value);
@@ -1182,6 +1187,24 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write((uint)value.ToUnixTimeSeconds());
     }
 
+    /// <inheritdoc cref="IGbxWriter.Write(IPAddress)"/>
+    public void Write(IPAddress? value)
+    {
+        if (value is null)
+        {
+            Write(0u);
+            return;
+        }
+
+        if (value.AddressFamily != AddressFamily.InterNetwork)
+        {
+            throw new ArgumentException("Only IPv4 addresses can be serialized as a UInt32.", nameof(value));
+        }
+
+        var bytes = value.GetAddressBytes();
+        Write((uint)bytes[0] | ((uint)bytes[1] << 8) | ((uint)bytes[2] << 16) | ((uint)bytes[3] << 24));
+    }
+
     public void WriteSmallLen(int value)
     {
         if (value < 128)
@@ -2130,6 +2153,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
 
     public void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
+    public void WriteJaggedArrayIPAddress(IPAddress[][]? value, int? innerLength = null, int? outerLength = null)
         => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
 
     public void WriteListId(List<string>? value)

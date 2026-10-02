@@ -9,6 +9,83 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task SupportsIPv4FieldsAndCollectionsInChunksAndArchives()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class Chunk03043002 { }
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class SeparateMetadata { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public System.Net.IPAddress ReadIPAddress() => System.Net.IPAddress.Any;
+                    public System.Net.IPAddress[] ReadArrayIPAddress(int length = 0) => [];
+                    public System.Net.IPAddress[] ReadArrayIPAddress_deprec() => [];
+                    public System.Collections.Generic.List<System.Net.IPAddress> ReadListIPAddress(int length = 0) => [];
+                    public System.Net.IPAddress[][] ReadJaggedArrayIPAddress(int? innerLength = null, int? outerLength = null) => [];
+                }
+                public partial class GbxWriter
+                {
+                    public void Write(System.Net.IPAddress? value) { }
+                    public void WriteArray(System.Net.IPAddress[]? value, int length = 0) { }
+                    public void WriteArray_deprec(System.Net.IPAddress[]? value) { }
+                    public void WriteList(System.Collections.Generic.List<System.Net.IPAddress>? value, int length = 0) { }
+                    public void WriteJaggedArrayIPAddress(System.Net.IPAddress[][]? value, int? innerLength = null, int? outerLength = null) { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public System.Net.IPAddress? IPAddress(System.Net.IPAddress? value) => value;
+                    public void IPAddress(ref System.Net.IPAddress? value) { }
+                    public void ArrayIPAddress(ref System.Net.IPAddress[]? value, int length = 0) { }
+                    public void ArrayIPAddress_deprec(ref System.Net.IPAddress[]? value) { }
+                    public void ListIPAddress(ref System.Collections.Generic.List<System.Net.IPAddress>? value, int length = 0) { }
+                    public void JaggedArrayIPAddress(ref System.Net.IPAddress[][]? value, int? innerLength = null, int? outerLength = null) { }
+                }
+            }
+            """;
+        const string fields = """
+              ipv4 Address
+              ipv4? OptionalAddress
+              ipv4
+              ipv4[] Addresses
+              ipv4[2] FixedAddresses
+              ipv4[] OldAddresses (deprec)
+              ipv4[] AddressList (list)
+              ipv4[][] Rows
+              ipv4 Temporary (local, write: Address)
+
+            """;
+        var layout = "Example 0x03043000\n0x001\n" + fields + "0x002\n" + fields +
+            "archive Metadata\n" + fields + "archive SeparateMetadata\n" + fields;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", layout), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public global::System.Net.IPAddress? Address");
+        await Assert.That(generated).Contains("public global::System.Net.IPAddress? OptionalAddress");
+        await Assert.That(generated).Contains("rw.IPAddress(ref n.address);");
+        await Assert.That(generated).Contains("n.address = r.ReadIPAddress();");
+        await Assert.That(generated).Contains("w.Write(n.address);");
+        await Assert.That(generated).Contains("rw.ArrayIPAddress(ref n.fixedAddresses!, 2);");
+        await Assert.That(generated).Contains("w.WriteArray(n.fixedAddresses, 2);");
+        await Assert.That(generated).Contains("rw.ArrayIPAddress_deprec(ref n.oldAddresses!);");
+        await Assert.That(generated).Contains("w.WriteArray_deprec(n.oldAddresses);");
+        await Assert.That(generated).Contains("rw.ListIPAddress(ref n.addressList!);");
+        await Assert.That(generated).Contains("w.WriteList(n.addressList);");
+        await Assert.That(generated).Contains("rw.JaggedArrayIPAddress(ref n.rows!);");
+        await Assert.That(generated).Contains("w.WriteJaggedArrayIPAddress(n.rows);");
+    }
+
+    [Test]
     public async Task KeepsLocalFieldsInSerializationScopeAndUsesWriteExpressionsOnlyWhenWriting()
     {
         const string source = """
@@ -1058,13 +1135,13 @@ public class GenerationTests
         }
         namespace GBX.NET.Serialization
         {
-            public class GbxReader(params int[] values)
+            public partial class GbxReader(params int[] values)
             {
                 private readonly System.Collections.Generic.Queue<int> values = new(values);
                 public int ReadInt32() => values.Dequeue();
                 public T[] ReadArray<T>(int length) where T : struct => new T[length];
             }
-            public class GbxWriter
+            public partial class GbxWriter
             {
                 public System.Collections.Generic.List<int> Values { get; } = new();
                 public void Write(int value) => Values.Add(value);
@@ -1083,7 +1160,7 @@ public class GenerationTests
                 public System.Collections.Generic.Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>> source) where TKey : notnull => new();
                 public System.Collections.Generic.HashSet<T> CloneHashSet<T>(System.Collections.Generic.ISet<T> source) => new(source);
             }
-            public class GbxReaderWriter : System.IDisposable
+            public partial class GbxReaderWriter : System.IDisposable
             {
                 public GbxReaderWriter() { }
                 public GbxReader? Reader { get; }

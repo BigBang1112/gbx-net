@@ -5,6 +5,7 @@ using GBX.NET.Components;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Numerics;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;

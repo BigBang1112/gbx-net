@@ -1,5 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
+using System.Net;
+using System.Net.Sockets;
 using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Serialization;
@@ -46,6 +48,15 @@ internal sealed class DeepCloneContext
         if (source is IDeepCloneable cloneable)
         {
             return (T)cloneable.DeepClone(this);
+        }
+
+        if (source is IPAddress address)
+        {
+            var clone = address.AddressFamily == AddressFamily.InterNetworkV6
+                ? new IPAddress(address.GetAddressBytes(), address.ScopeId)
+                : new IPAddress(address.GetAddressBytes());
+            Register(source, clone);
+            return (T)(object)clone;
         }
 
         if (source is Array array)

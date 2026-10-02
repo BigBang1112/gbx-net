@@ -45,6 +45,7 @@ internal static class WireTypes
         ["filetime"] = "DateTime",
         ["systemtime"] = "DateTime",
         ["unixtime"] = "DateTimeOffset",
+        ["ipv4"] = "global::System.Net.IPAddress",
         ["ident"] = "Ident",
         ["meta"] = "Ident",
         ["id"] = "string",
@@ -90,6 +91,7 @@ internal static class WireTypes
         ["filetime"] = "FileTime",
         ["systemtime"] = "SystemTime",
         ["unixtime"] = "UnixTime",
+        ["ipv4"] = "IPAddress",
         ["datauint"] = "DataUInt32",
         ["datauint32"] = "DataUInt32",
         ["dataint"] = "DataInt32",
@@ -109,7 +111,7 @@ internal static class WireTypes
 
     public static bool Value(string name)
     {
-        return Map(name) is not ("string" or "Ident" or "PackDesc" or "byte[]" or "CMwNod") && Primitive(name);
+        return Map(name) is not ("string" or "Ident" or "PackDesc" or "byte[]" or "CMwNod" or "global::System.Net.IPAddress") && Primitive(name);
     }
 
     public static string Method(string name)

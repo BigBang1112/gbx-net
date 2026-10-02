@@ -321,7 +321,7 @@ internal sealed class SerializationWriter
             }
             var writeMethod = method == "Id" ? "IdAsString" : method;
 
-            if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref")
+            if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref" or "ipv4")
             {
                 writeMethod = (LayoutModel.Has(declaration.Attributes, "list") ? "List" : "Array") + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
             }
@@ -418,6 +418,7 @@ internal sealed class SerializationWriter
                 "string" => "JaggedArrayString",
                 "ident" or "meta" => "JaggedArrayIdent",
                 "packdesc" or "fileref" => "JaggedArrayPackDesc",
+                "ipv4" => "JaggedArrayIPAddress",
                 _ when WireTypes.Value(jaggedName) && jaggedName != "optimizedint" => "JaggedArray<" + WireTypes.Map(jaggedName) + ">",
                 _ => throw new NotSupportedException("Unsupported jagged array element: " + jaggedName)
             };

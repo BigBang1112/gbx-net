@@ -149,7 +149,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   int GpuDeviceId
   int GpuVendorId
   string HardwareUid
-  int NetworkAddress // IPv4 address in network byte order
+  ipv4 NetworkAddress
   string LoggedUserName
   v2+
     byte GpuCount

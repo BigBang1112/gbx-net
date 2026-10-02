@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Numerics;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -95,6 +96,8 @@ public partial interface IGbxReader : IDisposable
     DateTime? ReadFileTime();
     DateTime? ReadSystemTime();
     DateTimeOffset ReadUnixTime();
+    /// <summary>Reads an IPv4 address stored as a UInt32, with the first address octet in the least significant byte.</summary>
+    IPAddress ReadIPAddress();
     int ReadSmallLen();
     string ReadSmallString();
     void ReadMarker(string value);
@@ -154,6 +157,7 @@ public partial interface IGbxReader : IDisposable
     string[][] ReadJaggedArrayString(int? innerLength = null, int? outerLength = null);
     Ident[][] ReadJaggedArrayIdent(int? innerLength = null, int? outerLength = null);
     PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null);
+    IPAddress[][] ReadJaggedArrayIPAddress(int? innerLength = null, int? outerLength = null);
     List<string> ReadListId(int length);
     List<string> ReadListId();
     List<string> ReadListId_deprec();
@@ -1273,6 +1277,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return DateTimeOffset.FromUnixTimeSeconds(ReadUInt32());
     }
 
+    /// <inheritdoc cref="IGbxReader.ReadIPAddress"/>
+    public IPAddress ReadIPAddress() => new(ReadUInt32());
+
     public int ReadSmallLen()
     {
         var firstByte = ReadByte();
@@ -1790,6 +1797,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null)
         => ReadJaggedArrayRows(ReadArrayPackDesc, innerLength, outerLength);
+
+    public IPAddress[][] ReadJaggedArrayIPAddress(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayIPAddress, innerLength, outerLength);
 
     private T[][] ReadJaggedArrayRows<T>(Func<int, T[]> readRow, int? innerLength, int? outerLength)
     {

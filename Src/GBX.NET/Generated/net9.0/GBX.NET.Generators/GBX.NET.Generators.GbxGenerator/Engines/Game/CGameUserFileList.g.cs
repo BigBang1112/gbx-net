@@ -82,14 +82,14 @@ public partial class CGameUserFileList : CMwNod, IClass
             set => this.name = value;
         }
 
-        private byte nameTerminator;
+        private byte u01;
         /// <summary>
-        /// SFileName includes a trailing byte outside the string length.
+        /// Name terminator
         /// </summary>
-        public byte NameTerminator
+        public byte U01
         {
-            get => this.nameTerminator;
-            set => this.nameTerminator = value;
+            get => this.u01;
+            set => this.u01 = value;
         }
 
         private DateTime? fileWriteTime;
@@ -127,25 +127,11 @@ public partial class CGameUserFileList : CMwNod, IClass
             set => this.mapName = value;
         }
 
-        private byte mapNameTerminator;
-        public byte MapNameTerminator
-        {
-            get => this.mapNameTerminator;
-            set => this.mapNameTerminator = value;
-        }
-
         private string? recordingContext;
         public string? RecordingContext
         {
             get => this.recordingContext;
             set => this.recordingContext = value;
-        }
-
-        private byte recordingContextTerminator;
-        public byte RecordingContextTerminator
-        {
-            get => this.recordingContextTerminator;
-            set => this.recordingContextTerminator = value;
         }
 
         private TimeInt32? raceTime;
@@ -166,22 +152,20 @@ public partial class CGameUserFileList : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((FileInfo)clone).name = context.Clone(this.name)!;
-            ((FileInfo)clone).nameTerminator = context.Clone(this.nameTerminator)!;
+            ((FileInfo)clone).u01 = context.Clone(this.u01)!;
             ((FileInfo)clone).fileWriteTime = context.Clone(this.fileWriteTime)!;
             ((FileInfo)clone).fileSize = context.Clone(this.fileSize)!;
             ((FileInfo)clone).@type = context.Clone(this.@type)!;
             ((FileInfo)clone).mapUid = context.Clone(this.mapUid)!;
             ((FileInfo)clone).mapName = context.Clone(this.mapName)!;
-            ((FileInfo)clone).mapNameTerminator = context.Clone(this.mapNameTerminator)!;
             ((FileInfo)clone).recordingContext = context.Clone(this.recordingContext)!;
-            ((FileInfo)clone).recordingContextTerminator = context.Clone(this.recordingContextTerminator)!;
             ((FileInfo)clone).raceTime = context.Clone(this.raceTime)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.String(ref this.name);
-            rw.Byte(ref this.nameTerminator);
+            rw.Byte(ref this.u01);
             this.fileWriteTime = rw.FileTime(this.fileWriteTime);
             rw.UInt64(ref this.fileSize);
             rw.EnumInt32<FileType>(ref this.@type);
@@ -191,11 +175,11 @@ public partial class CGameUserFileList : CMwNod, IClass
                 case FileType.Map:
                     rw.Id(ref this.mapUid);
                     rw.String(ref this.mapName);
-                    rw.Byte(ref this.mapNameTerminator);
+                    this.U02 = (ulong)rw.Byte((byte)this.U02);
                     break;
                 case FileType.Ghost:
                     rw.String(ref this.recordingContext);
-                    rw.Byte(ref this.recordingContextTerminator);
+                    this.U03 = (ulong)rw.Byte((byte)this.U03);
                     rw.Id(ref this.mapUid);
                     rw.TimeInt32Nullable(ref this.raceTime);
                     break;

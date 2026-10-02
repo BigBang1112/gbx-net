@@ -3,6 +3,8 @@
 
 using System.Numerics;
 using System.Text;
+using System.Net;
+using System.Net.Sockets;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
