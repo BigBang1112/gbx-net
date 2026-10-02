@@ -15,6 +15,12 @@ public partial class CGameCtnGhost
     [AppliedWithChunk<Chunk03092025>]
     public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
 
+    /// <summary>
+    /// Elapsed walltime between <see cref="WalltimeStartTimestamp"/> and <see cref="WalltimeEndTimestamp"/>.
+    /// </summary>
+    [AppliedWithChunk<Chunk0309202C>]
+    public TimeSpan? WalltimeDuration => WalltimeEndTimestamp - WalltimeStartTimestamp;
+
     private string? validate_ExeVersion;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
