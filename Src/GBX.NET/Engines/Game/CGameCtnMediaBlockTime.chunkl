@@ -2,9 +2,9 @@ CGameCtnMediaBlockTime 0x03085000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float TimeValue
- float Tangent
+  timefloat Time
+  float TimeValue
+  float Tangent

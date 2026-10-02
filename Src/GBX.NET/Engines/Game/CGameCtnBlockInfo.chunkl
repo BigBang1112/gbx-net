@@ -3,140 +3,158 @@ CGameCtnBlockInfo 0x0304E000
 - abstract
 
 0x005 [TM10, TMSX, TMF]
+  id Name (inherited)
+  int U02 // always 0?
+  int U03 // always 0?
+  int U04 // always 0?
+  bool IsPillar
+  int<ESelection> Selection
+  int U06 // always 0?
+  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
+  CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
+  CSceneMobil[][] GroundMobils (external)
+  CSceneMobil[][] AirMobils (external)
+  byte U07 // always 0?
+  int U08 // always 0?
+  short U09 // always 0?
+  short U10 // always 0?
 
 0x009 [TM10, TMSX, TMF, MP3, TMT]
- bool IsPillar
+  bool IsPillar
 
 0x00B [TM10, TMSX]
- int
- CSceneMobil GroundHelperMobil
- CSceneMobil AirHelperMobil
- CSceneMobil ConstructionModeHelperMobil
+  int
+  CSceneMobil GroundHelperMobil
+  CSceneMobil AirHelperMobil
+  CSceneMobil ConstructionModeHelperMobil
 
 0x00C [TM10, TMSX, TMF]
- iso4? SpawnLocGround
- iso4? SpawnLocAir
+  iso4? SpawnLocGround
+  iso4? SpawnLocAir
 
 0x00D [TMSX, TMF]
- bool IsReplacement
+  bool IsReplacement
 
 0x00E [TMF]
- int<EWayPointType> WayPointType
- CSceneMobil GroundHelperMobil
- CSceneMobil AirHelperMobil
- CSceneMobil ConstructionModeHelperMobil
+  int<EWayPointType> WayPointType
+  CSceneMobil GroundHelperMobil
+  CSceneMobil AirHelperMobil
+  CSceneMobil ConstructionModeHelperMobil
 
 0x00F [TMF, MP3, TMT, MP4]
- bool NoRespawn
+  bool NoRespawn
 
 0x013 [MP3, TMT, MP4]
- bool IconAutoUseGround
+  bool IconAutoUseGround
 
 0x015 [MP3, TMT, MP4]
- int // node ref
- iso4
+  int // node ref
+  iso4
 
 0x017 [MP3, TMT, MP4]
- bool
+  bool
 
 0x020 [MP3.v5, TMT.v5, MP4.v6]
- version
- CPlugCharPhySpecialProperty CharPhySpecialProperty
- v6-
-  CGameWaypointSpecialProperty U01
- v2+
-  CMwNod PodiumInfo // CGamePodiumInfo or CPlugMediaClipList
-  v3+
-   CMwNod IntroInfo // CGamePodiumInfo or CPlugMediaClipList
-   v4+
-    bool CharPhySpecialPropertyCustomizable
-    v5=
-     bool U02
-    v8+
-     bool U03
-     if U03
-      string // MatModifier
-      string // Grass
+  version
+  CPlugCharPhySpecialProperty CharPhySpecialProperty
+  v6-
+    CGameWaypointSpecialProperty U01
+  v2+
+    CMwNod PodiumInfo // CGamePodiumInfo or CPlugMediaClipList
+    v3+
+      CMwNod IntroInfo // CGamePodiumInfo or CPlugMediaClipList
+      v4+
+        bool CharPhySpecialPropertyCustomizable
+        v5=
+          bool U02
+        v8+
+          bool U03
+          if U03
+            string // MatModifier
+            string // Grass
 
 0x023 [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
- CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
+  CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
+  CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
 
 0x026 [MP3, TMT, MP4]
- int<EWayPointType> WayPointType
+  int<EWayPointType> WayPointType
 
 0x027 [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantGround[]_deprec AdditionalVariantsGround
+  CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround (deprec)
 
 0x028 [MP3, TMT, MP4]
- id SymmetricalBlockInfoId
- int<Direction> Dir
+  id SymmetricalBlockInfoId
+  int<Direction> Dir
 
 0x029 [MP3, TMT, MP4]
- CPlugFogVolumeBox FogVolumeBox (external)
+  CPlugFogVolumeBox FogVolumeBox (external)
 
 0x02A [MP3.v1, TMT.v1, MP4.v2]
- version
- CPlugSound Sound1 (external)
- CPlugSound Sound2 (external)
- v2-
-  iso4 Sound1Loc
-  iso4 Sound2Loc
- v3+
-  if Sound1 != null || Sound1File != null
-   iso4 Sound1Loc
-  if Sound2 != null || Sound2File != null
-   iso4 Sound2Loc
+  version
+  CPlugSound Sound1 (external)
+  CPlugSound Sound2 (external)
+  v2-
+    iso4 Sound1Loc
+    iso4 Sound2Loc
+  v3+
+    if Sound1 != null || Sound1File != null
+      iso4 Sound1Loc
+    if Sound2 != null || Sound2File != null
+      iso4 Sound2Loc
 
 0x02B [MP3.v1, TMT.v1, MP4.v1]
- version
- int<EBaseType> BaseType
- v0=
-  throw
+  version
+  int<EBaseType> BaseType
+  v0=
+    throw
 
 0x02C [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
+  CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
 
 0x02E [MP3]
+  version
+  int<CGameCtnCollector.EProdState> ProdState (inherited)
 
 0x02F [MP4.v0]
- version
- boolbyte IsPillar
- byte<EMultiDir> PillarShapeMultiDir
- v1+
-  byte
+  version
+  boolbyte IsPillar
+  byte<EMultiDir> PillarShapeMultiDir
+  v1+
+    byte
 
 0x031
- version
- CMwNod (external)
- CPlugGameSkinAndFolder MaterialModifier (external)
- v1+
-  CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
+  version
+  CMwNod (external)
+  CPlugGameSkinAndFolder MaterialModifier (external)
+  v1+
+    CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
 
 enum EWayPointType
- Start
- Finish
- Checkpoint
- None
- StartFinish
- Dispenser
+  Start
+  Finish
+  Checkpoint
+  None
+  StartFinish
+  Dispenser
 
 enum EMultiDir
- SameDir
- SymmetricalDirs
- AllDir
- OpposedDirOnly
- PerpendicularDirsOnly
- NextDirOnly
- PreviousDirOnly
+  SameDir
+  SymmetricalDirs
+  AllDir
+  OpposedDirOnly
+  PerpendicularDirsOnly
+  NextDirOnly
+  PreviousDirOnly
 
 enum ESelection
- Random
- Obsolete
- AutoRotate
+  Random
+  Obsolete
+  AutoRotate
 
 enum EBaseType
- None
- Conductor
- Generator
- Collector
+  None
+  Conductor
+  Generator
+  Collector

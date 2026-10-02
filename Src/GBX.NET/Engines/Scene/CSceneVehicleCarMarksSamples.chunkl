@@ -1,28 +1,28 @@
 CSceneVehicleCarMarksSamples 0x0A083000
 
 0x002
- uint[] Stops
+  uint[] Stops
 
 0x003
- string Name
+  string Name
 
 0x004
- bool Disabled
+  bool Disabled
 
 0x006
- version
- v1+
-  throw
- Sample[] Samples
+  version
+  v1+
+    throw
+  Sample[] Samples
 
 archive Sample // SSceneVehicleCarkMarkSample typo lol
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int

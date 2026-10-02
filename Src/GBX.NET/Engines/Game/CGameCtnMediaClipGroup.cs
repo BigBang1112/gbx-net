@@ -6,7 +6,7 @@ public partial class CGameCtnMediaClipGroup
     public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger);
 
     private List<ClipTrigger>? clips;
-    public List<ClipTrigger> Clips
+    public partial List<ClipTrigger> Clips
     {
         get => clips ??= [];
         set => clips = value;

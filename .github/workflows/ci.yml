@@ -19,3 +19,4 @@ jobs:
         9.0.x
         8.0.x
       workloads: wasm-tools
+      use-microsoft-testing-platform: true

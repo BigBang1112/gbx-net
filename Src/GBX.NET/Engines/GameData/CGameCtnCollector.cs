@@ -4,6 +4,26 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameCtnCollector
 {
+    private Ident ident = Ident.Empty;
+    private string? name;
+
+    public partial Ident Ident
+    {
+        get => string.IsNullOrEmpty(ident.Id) && !string.IsNullOrEmpty(name)
+            ? ident with { Id = name! }
+            : ident;
+        set => ident = value;
+    }
+
+    [AppliedWithChunk<GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
+    public partial string? Name
+    {
+        get => !string.IsNullOrEmpty(name) || string.IsNullOrEmpty(ident.Id)
+            ? name
+            : ident.Id;
+        set => name = value;
+    }
+
     private int catalogPosition;
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
@@ -31,6 +51,12 @@ public partial class CGameCtnCollector
     public partial class HeaderChunk2E001004
     {
         public short U01 = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk2E001004)clone).U01 = context.Clone(U01)!;
+        }
 
         public override void Read(CGameCtnCollector n, GbxReader r)
         {
@@ -110,21 +136,6 @@ public partial class CGameCtnCollector
                     w.Write(n.Icon[x, height - 1 - y].ToArgb());
                 }
             }
-        }
-    }
-
-    public partial class Chunk2E001009
-    {
-        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
-        {
-            rw.String(ref n.pageName);
-
-            if (rw.Boolean(n.IconFid is not null))
-            {
-                rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
-            }
-
-            rw.Id(ref n.parentCollectorId);
         }
     }
 }

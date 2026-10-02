@@ -2,56 +2,56 @@ CPlugShaderApply 0x09026000
 - inherits: CPlugShaderGeneric
 
 0x001
- int
- int
- CPlugBitmapAddress[] BitmapAddresses
- uint
+  int
+  int
+  CPlugBitmapAddress[] BitmapAddresses
+  uint
 
 0x09063002 (not-remapped)
- dataint
- int
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
+  dataint
+  int
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
 
 0x002
- CPlugBitmapAddress[] BitmapAddresses
+  CPlugBitmapAddress[] BitmapAddresses
 
 0x004
- int
+  int
 
 0x006
- int
+  int
 
 0x007
- int
+  int
 
 0x008
- int
- int
+  int
+  int
 
 0x00A
- uint
- uint
- uint
+  uint
+  uint
+  uint
 
 0x00C
- CPlugBitmapAddress[]_deprec BitmapAddresses
+  CPlugBitmapAddress[] BitmapAddresses (deprec)
 
 0x00D
- byte // DoData
+  byte // DoData
 
 0x010
- byte // DoData
+  byte // DoData
 
 0x011
- version
- CMwNod (external)
+  version
+  CMwNod (external)
 
 0x012
- version
- uint
- uint
- uint
+  version
+  uint
+  uint
+  uint

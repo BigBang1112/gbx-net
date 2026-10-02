@@ -2,11 +2,11 @@ CVskCollection 0x21085000
 - inherits: CGameCtnCollection
 
 0x000
- CMwNod
- CMwNod
+  CMwNod
+  CMwNod
 
 0x001
- float
- float
- float
- float
+  float
+  float
+  float
+  float

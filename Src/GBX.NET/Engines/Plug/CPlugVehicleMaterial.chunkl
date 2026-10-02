@@ -1,105 +1,105 @@
 CPlugVehicleMaterial 0x090F1000
 
 0x001
- byte MaterialId
- bool TrailIsOnlyWhenSliding
- CPlugShader TrailShader
- float VibrationSpeedCoef
- float VibrationMax
+  byte MaterialId
+  bool TrailIsOnlyWhenSliding
+  CPlugShader TrailShader
+  float VibrationSpeedCoef
+  float VibrationMax
 
 0x004
- CPlugBitmap MaterialHeightDetailBitmap (external)
- vec2 MaterialHeightDetailScale
+  CPlugBitmap MaterialHeightDetailBitmap (external)
+  vec2 MaterialHeightDetailScale
 
 0x005
- float Speed
- float Grip
- float AccelerationCoef
- float BrakeCoef
+  float Speed
+  float Grip
+  float AccelerationCoef
+  float BrakeCoef
 
 0x006
- CPlugFlockModel TrailManagerModel (external)
+  CPlugFlockModel TrailManagerModel (external)
 
 0x009
- byte MaterialId
- float VibrationSpeedCoef
- float VibrationMax
- bool TrailIsOnlyWhenSliding
- CMwNod (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
+  byte MaterialId
+  float VibrationSpeedCoef
+  float VibrationMax
+  bool TrailIsOnlyWhenSliding
+  CMwNod (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
 0x00A
- CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
 0x00B
- CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
 0x00C
- CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
 0x00D
- CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
 0x00E
- byte MaterialId
- float VibrationSpeedCoef
- float VibrationMax
+  byte MaterialId
+  float VibrationSpeedCoef
+  float VibrationMax
 
 0x00F
- float
- float
+  float
+  float
 
 0x010
- version
- float
- float
- float
- float
- byte
- v1=
-  float
-  float
- v7+
-  float
-  float
- v1+
+  version
   float
   float
   float
- v2+
   float
- v3+
-  float
-  float
-  float
- v4+
-  bool
-  vec2
- v5+
-  float
- v6+
-  float
- v8+
-  float
-  v13-
-   float
- v9+
-  Keys (version: Version - 12)
- v10+
-  Keys (version: Version - 12)
- v11+
-  float
- v13+
-  Keys (version: Version - 12)
-  Keys (version: Version - 12)
-  float
-  float
-  float
- v14+
-  Keys (version: Version - 12)
-  int
+  byte
+  v1=
+    float
+    float
+  v7+
+    float
+    float
+  v1+
+    float
+    float
+    float
+  v2+
+    float
+  v3+
+    float
+    float
+    float
+  v4+
+    bool
+    vec2
+  v5+
+    float
+  v6+
+    float
+  v8+
+    float
+    v13-
+      float
+  v9+
+    Keys (version: Version - 12)
+  v10+
+    Keys (version: Version - 12)
+  v11+
+    float
+  v13+
+    Keys (version: Version - 12)
+    Keys (version: Version - 12)
+    float
+    float
+    float
+  v14+
+    Keys (version: Version - 12)
+    int
 
 archive Keys

@@ -6,36 +6,16 @@ using System.IO.Compression;
 
 namespace GBX.NET.Tests.Unit;
 
-[CollectionDefinition(nameof(CGameGhostTests), DisableParallelization = true)]
-public class GhostCompressionCollection;
-
-[Collection(nameof(CGameGhostTests))]
-public class CGameGhostTests : IDisposable
+public class CGameGhostTests
 {
-    private readonly IZLib? originalZLib;
-
-    public CGameGhostTests()
+    [Test]
+    [Arguments(false, 0, 16)]
+    [Arguments(true, 0, 16)]
+    [Arguments(true, 1, 0)]
+    [Arguments(true, 2, 0)]
+    public async Task SampleData_ChunkReadAndWrite_PreservesChunkVersion(bool versionedChunk, int archiveVersion, int stateVersion)
     {
-        try
-        {
-            originalZLib = Gbx.ZLib;
-        }
-        catch (ZLibNotDefinedException)
-        {
-        }
-
-        Gbx.ZLib = new TestZLib();
-    }
-
-    public void Dispose() => Gbx.ZLib = originalZLib!;
-
-    [Theory]
-    [InlineData(false, 0, 16)]
-    [InlineData(true, 0, 16)]
-    [InlineData(true, 1, 0)]
-    [InlineData(true, 2, 0)]
-    public void SampleData_ChunkReadAndWrite_PreservesChunkVersion(bool versionedChunk, int archiveVersion, int stateVersion)
-    {
+        using var zLibScope = new TestZLibScope();
         var payload = CreateEmptyArchive(archiveVersion, stateVersion);
         using var input = new MemoryStream();
         using (var writer = new GbxWriter(input))
@@ -61,12 +41,12 @@ public class CGameGhostTests : IDisposable
 
         if (chunk is CGameGhost.Chunk0303F006 versioned)
         {
-            Assert.Equal(archiveVersion, versioned.Version);
+            await Assert.That(versioned.Version).IsEqualTo(archiveVersion);
         }
-        Assert.Empty(data.Samples);
-        Assert.True(ghost.CompressedData!.Parsed);
-        Assert.Null(ghost.CompressedData.Exception);
-        Assert.Same(data, ghost.SampleData);
+        await Assert.That(data.Samples).IsEmpty();
+        await Assert.That(ghost.CompressedData!.Parsed).IsTrue();
+        await Assert.That(ghost.CompressedData.Exception).IsNull();
+        await Assert.That(ReferenceEquals(data, ghost.SampleData)).IsTrue();
 
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output))
@@ -78,16 +58,17 @@ public class CGameGhostTests : IDisposable
         using var outputReader = new GbxReader(output);
         if (versionedChunk)
         {
-            Assert.Equal(archiveVersion, outputReader.ReadInt32());
+            await Assert.That(outputReader.ReadInt32()).IsEqualTo(archiveVersion);
         }
         using var decompressed = outputReader.ReadZlibData().OpenDecompressedReader();
-        Assert.Equal(payload, decompressed.ReadToEnd());
-        Assert.Equal(output.Length, output.Position);
+        await Assert.That(decompressed.ReadToEnd()).IsEquivalentTo(payload, CollectionOrdering.Matching);
+        await Assert.That(output.Position).IsEqualTo(output.Length);
     }
 
-    [Fact]
-    public void SampleData_FailedRead_DoesNotCachePartialDataAndCanRetry()
+    [Test]
+    public async Task SampleData_FailedRead_DoesNotCachePartialDataAndCanRetry()
     {
+        using var zLibScope = new TestZLibScope();
         var payload = CreateEmptyArchive(1, 0);
         byte[] invalidPayload = [.. payload, 1, 0, 0, 0];
         var ghost = new CGameGhost();
@@ -104,25 +85,25 @@ public class CGameGhostTests : IDisposable
             new CGameGhost.Chunk0303F006().ReadWrite(ghost, rw);
         }
 
-        var compressedData = Assert.IsType<ZlibData>(ghost.CompressedData);
-        var first = Assert.Throws<InvalidDataException>(() => ghost.SampleData);
-        Assert.False(compressedData.Parsed);
-        Assert.Same(first, compressedData.Exception);
+        var compressedData = (await Assert.That(ghost.CompressedData).IsTypeOf<ZlibData>())!;
+        var first = Assert.Throws<InvalidDataException>(() => _ = ghost.SampleData);
+        await Assert.That(compressedData.Parsed).IsFalse();
+        await Assert.That(ReferenceEquals(first, compressedData.Exception)).IsTrue();
 
-        var second = Assert.Throws<InvalidDataException>(() => ghost.SampleData);
-        Assert.False(compressedData.Parsed);
-        Assert.Same(second, compressedData.Exception);
+        var second = Assert.Throws<InvalidDataException>(() => _ = ghost.SampleData);
+        await Assert.That(compressedData.Parsed).IsFalse();
+        await Assert.That(ReferenceEquals(second, compressedData.Exception)).IsTrue();
 
         // A successful retry on the same compressed-data object must clear the stored failure.
         var validCompressedData = Compress(payload);
-        Assert.True(validCompressedData.Data.Length <= compressedData.Data.Length);
+        await Assert.That(validCompressedData.Data.Length <= compressedData.Data.Length).IsTrue();
         validCompressedData.Data.CopyTo(compressedData.Data, 0);
         var parsed = ghost.SampleData;
 
-        Assert.Empty(parsed.Samples);
-        Assert.True(compressedData.Parsed);
-        Assert.Null(compressedData.Exception);
-        Assert.Same(parsed, ghost.SampleData);
+        await Assert.That(parsed.Samples).IsEmpty();
+        await Assert.That(compressedData.Parsed).IsTrue();
+        await Assert.That(compressedData.Exception).IsNull();
+        await Assert.That(ReferenceEquals(parsed, ghost.SampleData)).IsTrue();
     }
 
     private static byte[] CreateEmptyArchive(int archiveVersion, int stateVersion)
@@ -156,6 +137,33 @@ public class CGameGhostTests : IDisposable
         var compressed = Compress(payload);
         writer.Write(compressed.UncompressedSize);
         writer.WriteData(compressed.Data);
+    }
+
+    private sealed class TestZLibScope : IDisposable
+    {
+        private static readonly SemaphoreSlim mutex = new(1, 1);
+        private readonly IZLib? originalZLib;
+
+        public TestZLibScope()
+        {
+            mutex.Wait();
+
+            try
+            {
+                originalZLib = Gbx.ZLib;
+            }
+            catch (ZLibNotDefinedException)
+            {
+            }
+
+            Gbx.ZLib = new TestZLib();
+        }
+
+        public void Dispose()
+        {
+            Gbx.ZLib = originalZLib!;
+            mutex.Release();
+        }
     }
 
     private sealed class TestZLib : IZLib

@@ -1,43 +1,43 @@
 GxLight 0x04001000
 
 0x008
- vec3 Color
- float Intensity
- int<EFlags> Flags
- float ShadowIntensity
- float FlareIntensity
- vec3 ShadowRGB
+  vec3 Color
+  float Intensity
+  int<EFlags> Flags
+  float ShadowIntensity
+  float FlareIntensity
+  vec3 ShadowRGB
 
 0x009
- vec3 Color
- int<EFlags> Flags
- float Intensity
- float DiffuseIntensity
- float SpecularIntens
- float SpecularPower
- float ShadowIntensity
- float FlareIntensity
- vec3 ShadowRGB
+  vec3 Color
+  int<EFlags> Flags
+  float Intensity
+  float DiffuseIntensity
+  float SpecularIntens
+  float SpecularPower
+  float ShadowIntensity
+  float FlareIntensity
+  vec3 ShadowRGB
 
 0x00A
- version
- vec3 Color
- int<EFlags> Flags
- float Intensity
- float DiffuseIntensity
- float ShadowIntensity
- float FlareIntensity
- vec3 ShadowRGB
+  version
+  vec3 Color
+  int<EFlags> Flags
+  float Intensity
+  float DiffuseIntensity
+  float ShadowIntensity
+  float FlareIntensity
+  vec3 ShadowRGB
 
 enum EFlags
- None
- DoLighting
- LightMapOnly
- ShadowGen = 4
- Specular = 8
- LensFlare = 16
- Sprite = 32
- EnableGroup0 = 64
- EnableGroup1 = 128
- EnableGroup2 = 256
- EnableGroup3 = 512
+  None
+  DoLighting
+  LightMapOnly
+  ShadowGen = 4
+  Specular = 8
+  LensFlare = 16
+  Sprite = 32
+  EnableGroup0 = 64
+  EnableGroup1 = 128
+  EnableGroup2 = 256
+  EnableGroup3 = 512

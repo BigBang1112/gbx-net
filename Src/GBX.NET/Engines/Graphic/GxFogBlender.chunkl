@@ -1,10 +1,10 @@
 GxFogBlender 0x04008000
 
 0x000
- bool
- int
- list<Key> Keys
+  bool
+  int
+  Key[] Keys (list)
 
 archive Key
- timefloat Time
- GxFog Fog
+  timefloat Time
+  GxFog Fog

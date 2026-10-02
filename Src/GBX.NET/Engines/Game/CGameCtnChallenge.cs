@@ -23,35 +23,14 @@ public partial class CGameCtnChallenge :
     private string? mapStyle; // Only used if ChallengeParameters is null
 
     private Ident mapInfo = Ident.Empty;
-    [AppliedWithChunk<HeaderChunk03043002>]
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
+    public partial Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     private string mapName = string.Empty;
-    [SupportsFormatting]
-    [AppliedWithChunk<HeaderChunk03043002>]
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk03043012>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public string MapName { get => mapName; set => mapName = value; }
-
 
     private Int3 size;
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public Int3 Size { get => size; set => size = value; }
+    public partial Int3 Size { get => size; set => size = value; }
 
-    [AppliedWithChunk<HeaderChunk03043008>]
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    [AppliedWithChunk<Chunk03043042>]
-    public string AuthorLogin
+    public partial string AuthorLogin
     {
         get => authorLogin is null ? mapInfo.Author : authorLogin;
         set
@@ -61,17 +40,10 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    private string? authorNickname;
-    [SupportsFormatting]
-    [AppliedWithChunk<HeaderChunk03043008>]
-    [AppliedWithChunk<Chunk03043042>]
-    public string? AuthorNickname { get => authorNickname; set => authorNickname = value; }
-
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? BronzeTime
+    public partial TimeInt32? BronzeTime
     {
         get => ChallengeParameters?.BronzeTime ?? bronzeTime;
         set
@@ -85,8 +57,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? SilverTime
+    public partial TimeInt32? SilverTime
     {
         get => ChallengeParameters?.SilverTime ?? silverTime;
         set
@@ -100,8 +71,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? GoldTime
+    public partial TimeInt32? GoldTime
     {
         get => ChallengeParameters?.GoldTime ?? goldTime;
         set
@@ -115,8 +85,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 1)]
-    public TimeInt32? AuthorTime
+    public partial TimeInt32? AuthorTime
     {
         get => ChallengeParameters?.AuthorTime ?? authorTime;
         set
@@ -130,8 +99,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>(sinceVersion: 10)]
-    public int AuthorScore
+    public partial int AuthorScore
     {
         get => ChallengeParameters?.AuthorScore ?? authorScore;
         set
@@ -145,8 +113,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Map type, the expected mode. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
-    public string? MapType
+    public partial string? MapType
     {
         get => ChallengeParameters?.MapType ?? mapType;
         set
@@ -160,8 +127,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Map style. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 3)]
-    public string? MapStyle
+    public partial string? MapStyle
     {
         get => ChallengeParameters?.MapStyle ?? mapStyle;
         set
@@ -175,12 +141,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// The map's UID.
     /// </summary>
-    [AppliedWithChunk<HeaderChunk03043002>]
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public string MapUid
+    public partial string MapUid
     {
         get => mapInfo.Id;
         set
@@ -223,37 +184,20 @@ public partial class CGameCtnChallenge :
 
     private byte[]? thumbnail;
     [JpegData]
-    [AppliedWithChunk<HeaderChunk03043007>]
-    public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
+    public partial byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
-    [AppliedWithChunk<HeaderChunk03043002>]
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public Id? Collection => mapInfo?.Collection;
+    public partial Id? Collection { get => mapInfo?.Collection; }
 
     private Ident decoration = Ident.Empty;
-    [AppliedWithChunk<HeaderChunk03043003>]
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public Ident Decoration { get => decoration; set => decoration = value; }
+    public partial Ident Decoration { get => decoration; set => decoration = value; }
 
     private List<CGameCtnBlock>? blocks;
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public List<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
+    public partial List<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
-    [AppliedWithChunk<Chunk0304300F>]
-    [AppliedWithChunk<Chunk03043013>]
-    [AppliedWithChunk<Chunk0304301F>]
-    public int? NbBlocks => Blocks?.Count;
+    public partial int? NbBlocks { get => Blocks?.Count; }
 
     private Checksum128? hashedPassword;
-    [AppliedWithChunk<Chunk03043029>]
-    public Checksum128? HashedPassword
+    public partial Checksum128? HashedPassword
     {
         get => hashedPassword;
         set
@@ -268,18 +212,13 @@ public partial class CGameCtnChallenge :
     }
 
     private bool hasLightmaps;
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public bool HasLightmaps { get => hasLightmaps; set => hasLightmaps = value; }
+    public partial bool HasLightmaps { get => hasLightmaps; set => hasLightmaps = value; }
 
-    [AppliedWithChunk<HeaderChunk03043003>(sinceVersion: 9)]
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public int? LightmapVersion { get; set; }
+    private int? lightmapVersion;
+    public partial int? LightmapVersion { get => lightmapVersion; set => lightmapVersion = value; }
 
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public ZlibData? LightmapCacheData { get; set; }
+    private ZlibData? lightmapCacheData;
+    public partial ZlibData? LightmapCacheData { get => lightmapCacheData; set => lightmapCacheData = value; }
 
 #if NET9_0_OR_GREATER
     private readonly Lock LightmapCacheDataLock = new();
@@ -289,9 +228,7 @@ public partial class CGameCtnChallenge :
 
     private CHmsLightMapCache? lightmapCache;
     /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public CHmsLightMapCache? LightmapCache
+    public partial CHmsLightMapCache? LightmapCache
     {
         get
         {
@@ -316,9 +253,7 @@ public partial class CGameCtnChallenge :
     }
 
     private CHmsLightMapCache.Frame[]? lightmapFrames;
-    [AppliedWithChunk<Chunk0304303D>]
-    [AppliedWithChunk<Chunk0304305B>]
-    public CHmsLightMapCache.Frame[]? LightmapFrames
+    public partial CHmsLightMapCache.Frame[]? LightmapFrames
     {
         get
         {
@@ -365,8 +300,7 @@ public partial class CGameCtnChallenge :
     }
 
     private List<CGameCtnAnchoredObject>? anchoredObjects;
-    [AppliedWithChunk<Chunk03043040>]
-    public List<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
+    public partial List<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
 #if NET9_0_OR_GREATER
     private readonly Lock ZoneGenealogyDataLock = new();
@@ -377,8 +311,7 @@ public partial class CGameCtnChallenge :
     public RawData? ZoneGenealogyData { get; set; }
 
     private List<CGameCtnZoneGenealogy>? zoneGenealogy;
-    [AppliedWithChunk<Chunk03043043>]
-    public List<CGameCtnZoneGenealogy>? ZoneGenealogy
+    public partial List<CGameCtnZoneGenealogy>? ZoneGenealogy
     {
         get
         {
@@ -415,73 +348,45 @@ public partial class CGameCtnChallenge :
     }
 
     private CScriptTraitsMetadata? scriptMetadata;
-    [AppliedWithChunk<Chunk03043044>]
-    public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
+    public partial CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
 
-    [AppliedWithChunk<Chunk03043048>]
-    public int? NbBakedBlocks => bakedBlocks?.Count;
+    public partial int? NbBakedBlocks { get => bakedBlocks?.Count; }
 
     private List<CGameCtnBlock>? bakedBlocks;
-    [AppliedWithChunk<Chunk03043048>]
-    public List<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
+    public partial List<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
-    [AppliedWithChunk<Chunk03043048>]
-    public List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
+    private List<SBakedClipsAdditionalData>? bakedClipsAdditionalData;
+    public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get => bakedClipsAdditionalData; set => bakedClipsAdditionalData = value; }
 
+    private byte[]? embeddedZipData;
     [ZipData]
-    [AppliedWithChunk<Chunk03043054>]
-    public byte[]? EmbeddedZipData { get; set; }
+    public partial byte[]? EmbeddedZipData { get => embeddedZipData; set => embeddedZipData = value; }
 
-    [AppliedWithChunk<Chunk03043054>]
-    private List<string>? Textures { get; set; }
+    private List<string>? textures;
+    private partial List<string>? Textures { get => textures; set => textures = value; }
 
-    [AppliedWithChunk<Chunk03043069>]
-    public List<MacroblockInstance>? MacroblockInstances { get; set; }
+    private List<MacroblockInstance>? macroblockInstances;
+    public partial List<MacroblockInstance>? MacroblockInstances { get => macroblockInstances; set => macroblockInstances = value; }
 
     private bool hasCustomCamThumbnail;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    public bool HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
+    public partial bool HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     private Vec3 thumbnailPosition;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
+    public partial Vec3 ThumbnailPosition { get => thumbnailPosition; set => thumbnailPosition = value; }
 
     private float thumbnailFov;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
+    public partial float ThumbnailFov { get => thumbnailFov; set => thumbnailFov = value; }
 
     private float thumbnailNearClipPlane;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
+    public partial float ThumbnailNearClipPlane { get => thumbnailNearClipPlane; set => thumbnailNearClipPlane = value; }
 
     private float thumbnailFarClipPlane;
-    [AppliedWithChunk<Chunk03043027>]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
+    public partial float ThumbnailFarClipPlane { get => thumbnailFarClipPlane; set => thumbnailFarClipPlane = value; }
 
     private string? comments;
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03043028>]
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public string? Comments { get => comments; set => comments = value; }
 
     private Vec3 thumbnailPitchYawRoll;
-    [AppliedWithChunk<Chunk0304302D>]
-    [AppliedWithChunk<Chunk03043036>]
-    public Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
+    public partial Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
 
     /// <summary>
     /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used by the game to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is constructed from scratch again using the actual ZIP data.
@@ -1749,17 +1654,6 @@ public partial class CGameCtnChallenge :
             w.WriteEncapsulated(n.ZoneGenealogyData, w =>
             {
                 w.WriteListNodeRef<CGameCtnZoneGenealogy>(n.ZoneGenealogy!);
-            });
-        }
-    }
-
-    public partial class Chunk03043044
-    {
-        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
-        {
-            rw.Encapsulated(rw =>
-            {
-                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata!);
             });
         }
     }

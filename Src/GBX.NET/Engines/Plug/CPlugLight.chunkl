@@ -2,35 +2,35 @@ CPlugLight 0x0901D000
 - inherits: CPlug
 
 0x000
- GxLight Light
- CFuncLight FuncLight
- CPlugBitmap BitmapFlare (external)
- CPlugBitmap BitmapProjector (external)
+  GxLight Light
+  CFuncLight FuncLight
+  CPlugBitmap BitmapFlare (external)
+  CPlugBitmap BitmapProjector (external)
 
 0x002 (base: 0x000)
- base
- int<EFlags> Flags
+  base
+  int<EFlags> Flags
 
 0x003
- version
- CPlugFileImg ImageAnim (external)
- float AnimPeriodMin
- float AnimPeriodMax
- v1+
-  id AnimTimerName
+  version
+  CPlugFileImg ImageAnim (external)
+  float AnimPeriodMin
+  float AnimPeriodMax
+  v1+
+    id AnimTimerName
 
 0x004
- version
- GxLight Light
- int
- int
- int
- int
- int
+  version
+  GxLight Light
+  int
+  int
+  int
+  int
+  int
 
 enum EFlags
- None
- NightOnly
- ReflectByGround
- DuplicateGxLight = 4
- SceneLightOnlyWhenTreeVisible = 8
+  None
+  NightOnly
+  ReflectByGround
+  DuplicateGxLight = 4
+  SceneLightOnlyWhenTreeVisible = 8

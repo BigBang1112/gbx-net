@@ -2,10 +2,10 @@ CPlugShaderGeneric 0x09004000
 - inherits: CPlugShader
 
 0x001
- data[88]
+  data[88]
 
 0x002
- data[88]
+  data[88]
 
 0x003
- data[88]
+  data[88]

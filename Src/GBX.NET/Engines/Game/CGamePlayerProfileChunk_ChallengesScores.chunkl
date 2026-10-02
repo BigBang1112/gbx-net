@@ -2,30 +2,30 @@ CGamePlayerProfileChunk_ChallengesScores 0x03149000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- int
+  version
+  int
 
 0x002 (skippable)
- version
- SContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
+  version
+  SContextMapRecordForProfile[] ContextMapRecordsForProfile
 
 archive SContextMapRecordForProfile
- v2+
-  string
- v1-
+  v2+
+    string
+  v1-
+    id
   id
- id
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- bool
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  bool

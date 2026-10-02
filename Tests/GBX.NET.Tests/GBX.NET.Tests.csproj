@@ -17,26 +17,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
-        <PackageReference Include="BlazorMonaco" Version="3.4.0" />
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.2" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="Neovolve.Logging.Xunit" Version="6.3.0" />
-        <PackageReference Include="NSubstitute" Version="5.3.0" />
-        <PackageReference Include="xunit" Version="2.9.3" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="6.0.4">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
+        <PackageReference Include="TUnit" Version="1.72.4" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Generators\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj" />
         <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
         <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>

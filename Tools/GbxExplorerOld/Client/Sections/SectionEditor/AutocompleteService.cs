@@ -33,7 +33,7 @@ public class AutocompleteService
     {
         public LinePosition Start { get; init; }
         public LinePosition End { get; init; }
-        public string Message { get; init; }
+        public string Message { get; init; } = string.Empty;
         public int Severity { get; init; }
     }
 
@@ -46,7 +46,7 @@ public class AutocompleteService
             updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
         } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
 
-        var document = updatedSolution.GetDocument(completionProject.DocumentId);
+        var document = updatedSolution.GetDocument(completionProject.DocumentId) ?? throw new InvalidOperationException("Completion document was not found.");
         var completionResponse = await completionService.Handle(completionRequest, document);
         
         return completionResponse;
@@ -54,13 +54,13 @@ public class AutocompleteService
 
     public async Task<CompletionResolveResponse> GetCompletionResolveAsync(CompletionResolveRequest completionResolveRequest)
     {
-        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId);
+        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId) ?? throw new InvalidOperationException("Completion document was not found.");
         var completionResponse = await completionService.Handle(completionResolveRequest, document);
 
         return completionResponse;
     }
 
-    public async Task<SignatureHelpResponse> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
+    public async Task<SignatureHelpResponse?> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
     {
         Solution updatedSolution;
 
@@ -69,7 +69,7 @@ public class AutocompleteService
             updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
         } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
 
-        var document = updatedSolution.GetDocument(completionProject.DocumentId);
+        var document = updatedSolution.GetDocument(completionProject.DocumentId) ?? throw new InvalidOperationException("Completion document was not found.");
         var signatureHelpResponse = await signatureService.Handle(signatureHelpRequest, document);
 
         return signatureHelpResponse;
@@ -77,7 +77,7 @@ public class AutocompleteService
 
     public async Task<QuickInfoResponse> GetQuickInfoAsync(QuickInfoRequest quickInfoRequest)
     {
-        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId);
+        var document = completionProject.Workspace.CurrentSolution.GetDocument(completionProject.DocumentId) ?? throw new InvalidOperationException("Completion document was not found.");
         var quickInfoResponse = await quickInfoProvider.Handle(quickInfoRequest, document);
 
         return quickInfoResponse;
@@ -92,7 +92,7 @@ public class AutocompleteService
             updatedSolution = completionProject.Workspace.CurrentSolution.WithDocumentText(completionProject.DocumentId, SourceText.From(code));
         } while (!completionProject.Workspace.TryApplyChanges(updatedSolution));
 
-        var compilation = await updatedSolution.Projects.First().GetCompilationAsync();
+        var compilation = await updatedSolution.Projects.First().GetCompilationAsync() ?? throw new InvalidOperationException("Completion compilation was not created.");
         var dotnetDiagnostics = compilation.GetDiagnostics();
 
         var diagnostics = dotnetDiagnostics.Select(current => {

@@ -62,6 +62,8 @@ public abstract class Chunk : IReadableWritableChunk
 #endif
     public abstract Chunk DeepClone();
 
+    internal virtual void DeepCloneFields(Chunk clone, DeepCloneContext context) { }
+
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif

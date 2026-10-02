@@ -2,68 +2,68 @@ CGamePlayerProfileChunk_VehiclesSettings 0x03130000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- string
- data[32]
+  version
+  string
+  data[32]
 
 0x001 (skippable)
- version
- vec3
- v2+
-  float = 1
+  version
+  vec3
+  v2+
+    float = 1
 
 0x002 (skippable) // VehicleProfiles
- version
- VehicleProfile[] VehicleProfiles (version: Version)
+  version
+  VehicleProfile[] VehicleProfiles
 
 0x003 (skippable)
- version
- transquat[]
- v2+
-  v4-
-   data[32]
-   data[32]
-  v3+
-   transquat[]
-   v4=
-    data[32]
-    data[32]
-   v5+
-    v5=
-     uint128
-     uint128
-    v6=
-     ushort[]
-     ushort[]
-     transquat[]
-     transquat[]
+  version
+  transquat[]
+  v2+
+    v4-
+      data[32]
+      data[32]
+    v3+
+      transquat[]
+      v4=
+        data[32]
+        data[32]
+      v5+
+        v5=
+          uint128
+          uint128
+        v6=
+          ushort[]
+          ushort[]
+          transquat[]
+          transquat[]
 
 0x004 (skippable)
- version
- Unknown[]
+  version
+  Unknown[]
 
 archive VehicleProfile
- ident PlayerModel
- string
- string
- data[32]
- int GameCamera
- float
- float
- v2+
-  bool
-  v3+
-   bool
+  ident PlayerModel
+  string
+  string
+  data[32]
+  int GameCamera
+  float
+  float
+  v2+
+    bool
+    v3+
+      bool
 
 archive Unknown
- ident
- string
- string
- data[32]
- bool
- int
- float
- float
- bool
- float
- float
+  ident
+  string
+  string
+  data[32]
+  bool
+  int
+  float
+  float
+  bool
+  float
+  float

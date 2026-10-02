@@ -1,8 +1,8 @@
-﻿using GBX.NET.Serialization;
+using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
-public class EncapsulationTests
+public class EncapsulationTests : IDisposable
 {
     private readonly MemoryStream ms;
     private readonly GbxReader reader;
@@ -17,59 +17,106 @@ public class EncapsulationTests
         readerWriter = new GbxReaderWriter(reader, writer);
     }
 
-    [Fact]
-    public void Constructor_WithNonNullReader_SetsEncapsulation()
+    public void Dispose()
+    {
+        readerWriter.Dispose();
+        reader.Dispose();
+        writer.Dispose();
+        ms.Dispose();
+    }
+
+    [Test]
+    public async Task Constructor_WithNonNullReader_SetsEncapsulation()
     {
         var encapsulation = new Encapsulation(reader);
-        Assert.Equal(encapsulation, reader.Encapsulation);
+        await Assert.That(reader.Encapsulation).IsEqualTo(encapsulation);
     }
 
-    [Fact]
-    public void Constructor_WithNonNullWriter_SetsEncapsulation()
+    [Test]
+    public async Task Constructor_WithNonNullWriter_SetsEncapsulation()
     {
         var encapsulation = new Encapsulation(writer);
-        Assert.Equal(encapsulation, writer.Encapsulation);
+        await Assert.That(writer.Encapsulation).IsEqualTo(encapsulation);
     }
 
-    [Fact]
-    public void Constructor_WithNonNullReaderWriter_SetsEncapsulations()
+    [Test]
+    public async Task Constructor_WithNonNullReaderWriter_SetsEncapsulations()
     {
         var encapsulation = new Encapsulation(readerWriter);
-        Assert.Equal(encapsulation, reader.Encapsulation);
-        Assert.Equal(encapsulation, writer.Encapsulation);
+        await Assert.That(reader.Encapsulation).IsEqualTo(encapsulation);
+        await Assert.That(writer.Encapsulation).IsEqualTo(encapsulation);
     }
 
-    [Fact]
+    [Test]
     public void Constructor_WithNullReader_ThrowsArgumentNullException()
     {
         Assert.Throws<ArgumentNullException>(() => new Encapsulation(default(GbxReader)!));
     }
 
-    [Fact]
+    [Test]
     public void Constructor_WithNullWriter_ThrowsArgumentNullException()
     {
         Assert.Throws<ArgumentNullException>(() => new Encapsulation(default(GbxWriter)!));
     }
 
-    [Fact]
+    [Test]
     public void Constructor_WithNullReaderWriter_ThrowsArgumentNullException()
     {
         Assert.Throws<ArgumentNullException>(() => new Encapsulation(default(GbxReaderWriter)!));
     }
 
-    [Fact]
-    public void Dispose_SetsReaderEncapsulationToNull()
+    [Test]
+    public async Task Dispose_SetsReaderEncapsulationToNull()
     {
         var encapsulation = new Encapsulation(reader);
         encapsulation.Dispose();
-        Assert.Null(reader.Encapsulation);
+        await Assert.That(reader.Encapsulation).IsNull();
     }
 
-    [Fact]
-    public void Dispose_SetsWriterEncapsulationToNull()
+    [Test]
+    public async Task Dispose_SetsWriterEncapsulationToNull()
     {
         var encapsulation = new Encapsulation(writer);
         encapsulation.Dispose();
-        Assert.Null(writer.Encapsulation);
+        await Assert.That(writer.Encapsulation).IsNull();
+    }
+
+    [Test]
+    public async Task Dispose_ReleasesBothSidesAndAllowsAnotherScope()
+    {
+        var encapsulation = new Encapsulation(readerWriter);
+        encapsulation.Dispose();
+        encapsulation.Dispose();
+
+        await Assert.That(reader.Encapsulation).IsNull();
+        await Assert.That(writer.Encapsulation).IsNull();
+
+        using var nextScope = new Encapsulation(readerWriter);
+        await Assert.That(reader.Encapsulation).IsEqualTo(nextScope);
+        await Assert.That(writer.Encapsulation).IsEqualTo(nextScope);
+    }
+
+    [Test]
+    public async Task FailedConstructionDoesNotAttachTheOtherSide()
+    {
+        using var existingScope = new Encapsulation(writer);
+
+        Assert.Throws<InvalidOperationException>(() => new Encapsulation(readerWriter));
+
+        await Assert.That(reader.Encapsulation).IsNull();
+        await Assert.That(writer.Encapsulation).IsEqualTo(existingScope);
+    }
+
+    [Test]
+    public async Task ExceptionInsideScopeRestoresBothSides()
+    {
+        Assert.Throws<IOException>(() =>
+        {
+            using var scope = new Encapsulation(readerWriter);
+            throw new IOException("Interrupted payload");
+        });
+
+        await Assert.That(reader.Encapsulation).IsNull();
+        await Assert.That(writer.Encapsulation).IsNull();
     }
 }

@@ -13,6 +13,19 @@ public partial class CScriptTraitsMetadata
             Value = value;
         }
 
+        internal override void DeepCloneFields(ScriptTrait clone, DeepCloneContext context)
+        {
+            var copiedValue = Value switch
+            {
+                IList<ScriptTrait> list => (T)(object)context.CloneList(list)!,
+                IDictionary<string, ScriptTrait> dictionary => (T)(object)context.CloneDictionary(dictionary)!,
+                IDictionary<ScriptTrait, ScriptTrait> dictionary => (T)(object)context.CloneDictionary(dictionary)!,
+                _ => context.Clone(Value)!
+            };
+
+            ((ScriptTrait<T>)clone).Value = copiedValue;
+        }
+
         public override int GetHashCode()
         {
             return base.GetHashCode() + Value.GetHashCode();

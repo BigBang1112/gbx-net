@@ -1,73 +1,78 @@
 CGameCtnDecorationMood 0x0303A000
 
 0x000
- float Latitude
- float Longitude
- float DeltaGMT
- timeint TimeSunRise
- timeint TimeSunFall
+  float Latitude
+  float Longitude
+  float DeltaGMT
+  timeint TimeSunRise
+  timeint TimeSunFall
 
 0x001
- float RemappedStartDayTime
- CPlugGameSkin? Remapping (external)
- string? RemapFolder
+  float RemappedStartDayTime
+  CPlugGameSkin? Remapping (external)
+  string? RemapFolder
 
 0x002
- int ShadowCountCarHuman
- int ShadowCountCarOpponent
- float ShadowCarIntensity
- bool ShadowScene
- bool BackgroundIsLocallyLighted
+  int ShadowCountCarHuman
+  int ShadowCountCarOpponent
+  float ShadowCarIntensity
+  bool ShadowScene
+  bool BackgroundIsLocallyLighted
 
 0x003
- bool SolidLightAreSkinned
+  bool SolidLightAreSkinned
 
 0x004
- CHmsLightMap HmsLightMap (external)
+  CHmsLightMap HmsLightMap (external)
 
 0x005
- CHmsAmbientOcc HmsAmbientOcc (external)
+  CHmsAmbientOcc HmsAmbientOcc (external)
 
 0x006
- float SunMoonIntensity
+  float SunMoonIntensity
 
 0x007
- float SunMoonIntensity
- float LocalLightScale
+  float SunMoonIntensity
+  float LocalLightScale
 
 0x00C
- vec3
- float ToneMapExposureStaticBase
- int ToneMapFilmCurve
- CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
+  vec3
+  float ToneMapExposureStaticBase
+  int ToneMapFilmCurve
+  CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
 
 0x00F
- version
- vec3 Tech3SpecularFake_ExpScaleMax
- vec2 Tech3SpecularLocal
- vec3 Tech3Bloom
- vec4 Tech3ToneMapAutoExp
- CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
- v1+
-  bool WaterReflectFakeCube
-  v2+
-   CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
-   v3+
-    CPlugMoodBlender MoodBlender (external)
+  version
+  vec3 Tech3SpecularFake_ExpScaleMax
+  vec2 Tech3SpecularLocal
+  vec3 Tech3Bloom
+  vec4 Tech3ToneMapAutoExp
+  CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
+  v1+
+    bool WaterReflectFakeCube
+    v2+
+      CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
+      v3+
+        CPlugMoodBlender MoodBlender (external)
 
 0x012
- version
- float RemappedStartDayTime
- bool IsNight
- CPlugGameSkin Remapping (external)
- string RemapFolder
- bool EnableStars
- CFuncCloudsSolids CloudsSolids (external)
- CPlugFxLightning FxLightning (external)
- CPlugFxWindOnDecal FxWindOnDecal (external)
- v1+
-  CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
+  version
+  float RemappedStartDayTime
+  bool IsNight
+  CPlugGameSkin Remapping (external)
+  string RemapFolder
+  bool EnableStars
+  CFuncCloudsSolids CloudsSolids (external)
+  CPlugFxLightning FxLightning (external)
+  CPlugFxWindOnDecal FxWindOnDecal (external)
+  v1+
+    CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
 
 0x013
- version
- float EditorHelperHdrScale
+  version
+  float EditorHelperHdrScale
+
+property bool IsNight
+  get = isNight == true || (isNight == null && RemappedStartDayTime > 0.25 && RemappedStartDayTime < 0.75)
+  set
+    isNight = value

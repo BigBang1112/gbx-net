@@ -1,11 +1,28 @@
 CGameUserFileList 0x031B7000
 
 0x000
- version
- FileInfo[] Files (version: Version)
+  version
+  FileInfo[] Files
 
 archive FileInfo
+  string Name = empty
+  byte
+  ulong
+  ulong
+  int<FileType> Type
+  switch Type
+    case FileType.Map
+      id MapUid = empty
+      string? MapName
+      byte
+    case FileType.Ghost
+      string? GhostKind
+      byte
+      id MapUid = empty
+      int?
+    default
+      throw (type: ThisShouldNotHappenException)
 
 enum FileType
- Map
- Ghost
+  Map
+  Ghost

@@ -2,9 +2,9 @@ CGameCtnMediaBlockDirtyLens 0x03165000
 - inherits: CGameCtnMediaBlock
 
 0x000
- version
- list<Key> Keys
+  version
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
+  timefloat Time
+  float Intensity

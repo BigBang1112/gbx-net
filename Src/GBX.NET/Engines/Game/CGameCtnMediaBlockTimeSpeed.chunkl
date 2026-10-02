@@ -2,11 +2,11 @@ CGameCtnMediaBlockTimeSpeed 0x03129000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys
+  Key[] Keys (list)
 
 0x03085000
- list<Key> Keys
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Speed
+  timefloat Time
+  float Speed

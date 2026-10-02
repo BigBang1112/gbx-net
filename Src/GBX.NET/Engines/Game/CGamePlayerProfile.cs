@@ -8,11 +8,6 @@ public partial class CGamePlayerProfile
     [SupportsFormatting]
     public string? Description { get => description; set => description = value; }
 
-    private string? nickName;
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk0308C05B>]
-    public string? NickName { get => nickName; set => nickName = value; }
-
     private Checksum128 cryptedPassword;
     public Checksum128 CryptedPassword { get => cryptedPassword; set => cryptedPassword = value; }
 

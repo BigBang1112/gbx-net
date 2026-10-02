@@ -2,53 +2,53 @@ CPlugVisual 0x09006000
 - inherits: CPlug
 
 0x001 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- id
+  id
 
 0x004 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- CMwNod
+  CMwNod
 
 0x005 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- int3[] SubVisuals // SSubVisual?
+  int3[] SubVisuals // SSubVisual?
 
 0x006 [TM10, TMSX, TMNESWC]
 
 0x007 [TM10, TMSX]
- bool
+  bool
 
 0x008 [TM10]
 
 0x009 [TMSX, TMNESWC, TMF, TMT, MP4]
- float
+  float
 
 0x00A [TMSX]
 
 0x00B [TMSX, TMNESWC, TMF, TMT, MP4]
- Split[] Splits // SSplit array
+  Split[] Splits // SSplit array
 
 0x00C [TMNESWC]
 
 0x00D
 
 0x00E (base: 0x00D) [TMF]
- base
- BitmapElemToPack[] BitmapElemToPacks
+  base
+  BitmapElemToPack[] BitmapElemToPacks
 
 0x00F (base: 0x00E) [TMT.v4, MP4.v5]
 
 0x010 [TMT.v0, MP4.v0]
- version
- int MorphCount
- if MorphCount > 0
-  throw
+  version
+  int MorphCount
+  if MorphCount > 0
+    throw
 
 archive Split
- int
- int
- box BoundingBox
+  int
+  int
+  box BoundingBox
 
 archive BitmapElemToPack
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int

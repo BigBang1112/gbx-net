@@ -2,7 +2,7 @@ CFuncKeys 0x05002000
 - inherits: CFunc
 
 0x001
- float[] Xs
+  float[] Xs
 
 0x003
- id
+  id

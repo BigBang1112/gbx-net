@@ -1,417 +1,417 @@
 CSystemConfig 0x0B005000
 
 0x002 (skippable) [TM10, TMPU]
- string
+  string
 
 0x004 (skippable) [TM10, TMPU]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- bool AudioAllowEFX
- int
- int
- int
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int
+  int
+  bool AudioAllowEFX
+  int
+  int
+  int
 
 0x005 (skippable)
- int
- int
- int
+  int
+  int
+  int
 
 0x007 (skippable) [TM10, TMPU]
- string
- string
- string
- bool
- filetime
+  string
+  string
+  string
+  bool
+  filetime
 
 0x008 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- string DesiredLanguageId
+  string DesiredLanguageId
 
 0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- string U01
- string U01
- string U01
- string U01
- string U01
- string U01
+  string U01
+  string U01
+  string U01
+  string U01
+  string U01
+  string U01
 
 0x00A (skippable) [TM10, TMPU]
- int2
- int
- int
- int
- int
- int
- bool
- bool
- int
- int
- int
- bool
+  int2
+  int
+  int
+  int
+  int
+  int
+  bool
+  bool
+  int
+  int
+  int
+  bool
 
 0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- base
- int U04
+  base
+  int U04
 
 0x00C (skippable) [TM10, TMPU]
- bool IsIgnorePlayerSkins
+  bool IsIgnorePlayerSkins
 
 0x00D (skippable) [TM10, TMPU]
- string
- string
- bool NetworkUseProxy
- string
- string
- string
- int NetworkServerPort
- int NetworkClientPort
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
+  string
+  string
+  bool NetworkUseProxy
+  string
+  string
+  string
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int
 
 0x00E (skippable) [TM10, TMPU]
- int TmCarQuality
- int
- int TmOpponents
+  int TmCarQuality
+  int
+  int TmOpponents
 
 0x00F (skippable) [TM10, TMPU]
- float
- float
+  float
+  float
 
 0x012 (skippable) [TMO, TMSX, TMNESWC]
- string
- string
- string
- bool
- int
+  string
+  string
+  string
+  bool
+  int
 
 0x01D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
 
 0x020 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- bool IsSafeMode
- CSystemConfigDisplay Display (direct)
+  bool IsSafeMode
+  CSystemConfigDisplay Display (direct)
 
 0x022 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- float
- float
- bool InputsAlternateMethod
- bool InputsFreezeUnusedAxes
+  float
+  float
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
 
 0x027 (skippable) [TMO, TMSX]
- bool
+  bool
 
 0x028 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- int
- bool AudioAllowEFX
- bool AudioDisableDoppler
- int AudioGlobalQuality
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int
+  int
+  int
+  bool AudioAllowEFX
+  bool AudioDisableDoppler
+  int AudioGlobalQuality
 
 0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- int
- bool Advertising_DisabledByUser
- float Advertising_TunningCoef
+  int
+  bool Advertising_DisabledByUser
+  float Advertising_TunningCoef
 
 0x02C (skippable) [TMO, TMSX]
- int TmCarQuality
- int
- int
- int TmOpponents
- int TmMaxOpponents
- bool
+  int TmCarQuality
+  int
+  int
+  int TmOpponents
+  int TmMaxOpponents
+  bool
 
 0x030 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
- bool FileTransferEnableDownload
- bool FileTransferEnableUpload
- int
- bool
- bool EnableLocators
- bool AutoUpdateFromLocator
- bool AutoUpdateFromLocatorAtInternetConnection
- string AutoUpdateLocatorDBUrl
- string BlackListUrl
- bool EnableCrashLogUpload
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  int
+  bool
+  bool EnableLocators
+  bool AutoUpdateFromLocator
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload
 
 0x031 (skippable) [TMO, TMSX]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkClientPort
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
- bool NetworkUseNatUPnP
+  bool NetworkUseProxy
+  string
+  string
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int
+  bool NetworkUseNatUPnP
 
 0x034 (skippable) [TMNESWC, TMU, VSK5, TMF]
- int TmCarQuality
- int
- int
- int TmOpponents
- int TmMaxOpponents
- bool
- int TmBackgroundQuality
+  int TmCarQuality
+  int
+  int
+  int TmOpponents
+  int TmMaxOpponents
+  bool
+  int TmBackgroundQuality
 
 0x035 (skippable) [TMNESWC, TMU, VSK5]
- bool
- bool NetworkTestInternetConnection
+  bool
+  bool NetworkTestInternetConnection
 
 0x036 (skippable) [TMNESWC]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
- bool NetworkUseNatUPnP
+  bool NetworkUseProxy
+  string
+  string
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int
+  bool NetworkUseNatUPnP
 
 0x037 (skippable) [TMU, VSK5]
- string
+  string
 
 0x038 (skippable) [TMU, VSK5]
- bool GameProfileEnableMulti
- id GameProfileName
+  bool GameProfileEnableMulti
+  id GameProfileName
 
 0x039 (skippable) [TMU, VSK5, TMF]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
+  bool NetworkUseProxy
+  string
+  string
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownload
+  int NetworkUpload
+  bool NetworkUseNatUPnP
 
 0x03A (skippable) [TMF, MP3, MP4]
- string
- string
- int
- filetime
+  string
+  string
+  int
+  filetime
 
 0x03D (skippable)
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
- int
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
+  int
 
 0x03E (skippable) [TMF, MP3, MP4]
- filetime
- uint128
+  filetime
+  uint128
 
 0x041 (skippable) [TMF]
- string
+  string
 
 0x043 (skippable)
- bool
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
+  bool
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
 
 0x044 (skippable) [TMF]
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  int[]
 
 0x045 (skippable) [TMF, MP3, MP4]
- bool InputsAlternateMethod
- bool InputsFreezeUnusedAxes
- bool InputsEnableRumble
- bool InputsCaptureKeyboard
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
+  bool InputsEnableRumble
+  bool InputsCaptureKeyboard
 
 0x047 (skippable) [TMF, MP3, MP4]
- bool
+  bool
 
 0x048 (skippable) [TMF, MP3, MP4]
- bool GameProfileEnableMulti
- string GameProfileName
+  bool GameProfileEnableMulti
+  string GameProfileName
 
 0x049 (skippable) [TMF, MP3, MP4]
- filetime
+  filetime
 
 0x04A (skippable) [TMF, MP3, MP4]
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
- int
- int
- int
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
+  int
+  int
+  int
 
 0x04C (skippable) [TMF]
- bool
- bool
+  bool
+  bool
 
 0x04D (skippable) [TMF]
- string
- bool
- bool
- bool
+  string
+  bool
+  bool
+  bool
 
 0x04E (skippable) [TMF, MP3]
- string[]
+  string[]
 
 0x04F (skippable) [TMF, MP3, MP4]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- int
- bool AudioAllowEFX
- bool AudioDisableDoppler
- bool
- int AudioGlobalQuality
- string AudioDevice_Oal
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int
+  int
+  int
+  bool AudioAllowEFX
+  bool AudioDisableDoppler
+  bool
+  int AudioGlobalQuality
+  string AudioDevice_Oal
 
 0x050 (skippable) [MP3, MP4]
- bool
+  bool
 
 0x051 (skippable) [MP3, MP4]
- string
+  string
 
 0x052 (skippable) [MP3, MP4]
- int TmCarQuality
- int
- int PlayerShadow
- int
- int TmOpponents
- int TmMaxOpponents
- int TmBackgroundQuality
+  int TmCarQuality
+  int
+  int PlayerShadow
+  int
+  int TmOpponents
+  int TmMaxOpponents
+  int TmBackgroundQuality
 
 0x053 (skippable)
- bool AudioSoundHdr
+  bool AudioSoundHdr
 
 0x054 (skippable) [MP3, MP4]
- bool FileTransferEnableDownload
- bool FileTransferEnableUpload
- ulong
- bool
- bool EnableLocators
- bool AutoUpdateFromLocator
- bool AutoUpdateFromLocatorAtInternetConnection
- string AutoUpdateLocatorDBUrl
- string BlackListUrl
- bool EnableCrashLogUpload
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  ulong
+  bool
+  bool EnableLocators
+  bool AutoUpdateFromLocator
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload
 
 0x055 (skippable) [MP3, MP4]
- string
- bool
- bool
- bool
- bool
+  string
+  bool
+  bool
+  bool
+  bool
 
 0x056 (skippable) [MP3, MP4]
- bool
- bool AudioAllowHRTF
- int AudioDontMuteWhenApplicationUnfocused
- int
- bool AudioSoundHdr
- bool
+  bool
+  bool AudioAllowHRTF
+  int AudioDontMuteWhenApplicationUnfocused
+  int
+  bool AudioSoundHdr
+  bool
 
 0x057 (skippable)
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
- int NetworkSpeed
+  bool NetworkUseProxy
+  string
+  string
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownload
+  int NetworkUpload
+  bool NetworkUseNatUPnP
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  int[]
+  int NetworkSpeed
 
 0x058 (skippable) [MP3, MP4]
- int
+  int
 
 0x059 (skippable) [MP3, MP4]
- bool FileTransferEnableAvatarDownload
- bool FileTransferEnableAvatarUpload
- bool FileTransferEnableAvatarLocators
- bool FileTransferEnableMapDownload
- bool FileTransferEnableMapUpload
- bool FileTransferEnableMapLocators
- bool FileTransferEnableMapModDownload
- bool FileTransferEnableMapModUpload
- bool FileTransferEnableMapModLocators
- bool FileTransferEnableMapSkinDownload
- bool FileTransferEnableMapSkinUpload
- bool FileTransferEnableMapSkinLocators
- bool FileTransferEnableTagDownload
- bool FileTransferEnableTagUpload
- bool FileTransferEnableTagLocators
- bool FileTransferEnableVehicleSkinDownload
- bool FileTransferEnableVehicleSkinUpload
- bool FileTransferEnableVehicleSkinLocators
- bool FileTransferEnableUnknownTypeDownload
- bool FileTransferEnableUnknownTypeUpload
- bool FileTransferEnableUnknownTypeLocators
+  bool FileTransferEnableAvatarDownload
+  bool FileTransferEnableAvatarUpload
+  bool FileTransferEnableAvatarLocators
+  bool FileTransferEnableMapDownload
+  bool FileTransferEnableMapUpload
+  bool FileTransferEnableMapLocators
+  bool FileTransferEnableMapModDownload
+  bool FileTransferEnableMapModUpload
+  bool FileTransferEnableMapModLocators
+  bool FileTransferEnableMapSkinDownload
+  bool FileTransferEnableMapSkinUpload
+  bool FileTransferEnableMapSkinLocators
+  bool FileTransferEnableTagDownload
+  bool FileTransferEnableTagUpload
+  bool FileTransferEnableTagLocators
+  bool FileTransferEnableVehicleSkinDownload
+  bool FileTransferEnableVehicleSkinUpload
+  bool FileTransferEnableVehicleSkinLocators
+  bool FileTransferEnableUnknownTypeDownload
+  bool FileTransferEnableUnknownTypeUpload
+  bool FileTransferEnableUnknownTypeLocators
 
 0x05A (skippable) [MP3, MP4]
- bool DisableReplayRecording
- bool
- bool
- bool
- int
- int
- int
- string
- string
- float
- float
+  bool DisableReplayRecording
+  bool
+  bool
+  bool
+  int
+  int
+  int
+  string
+  string
+  float
+  float
 
 0x05B (skippable) [MP3, MP4]
- version
- string AntiCheatServerUrl
+  version
+  string AntiCheatServerUrl
 
 0x05C (skippable) [MP3, MP4]
- version
- int SmMaxPlayerResimStepPerFrame
+  version
+  int SmMaxPlayerResimStepPerFrame
 
 0x05D (skippable) [MP3, MP4]
- version
- string
+  version
+  string
 
 0x05E (skippable) [MP3, MP4]
- version
- bool NetworkUseProxy
- string NetworkProxyLogin
- string NetworkProxyPassword
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
- int NetworkSpeed
+  version
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownload
+  int NetworkUpload
+  bool NetworkUseNatUPnP
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  int[]
+  int NetworkSpeed
 
 0x05F (skippable) [MP4]
- bool NetworkUseProxy
- string NetworkProxyAddress
+  bool NetworkUseProxy
+  string NetworkProxyAddress

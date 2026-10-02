@@ -15,11 +15,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GBX.NET" Version="2.3.2" />
+        <PackageReference Include="GBX.NET" Version="2.4.5" />
         <PackageReference Include="GBX.NET.LZO" Version="2.1.4" Condition="'$(EnableLzo)' == 'true'" />
         <PackageReference Include="GBX.NET.ZLib" Version="1.1.2" Condition="'$(EnableZlib)' == 'true'" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.2" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.12" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.12" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>

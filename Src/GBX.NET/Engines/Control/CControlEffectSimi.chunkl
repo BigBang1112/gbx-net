@@ -2,41 +2,41 @@ CControlEffectSimi 0x07010000
 - inherits: CControlEffect
 
 0x001
- list<Key> Keys (version: 1)
- bool Centered
+  Key[] Keys (version: 1, list)
+  bool Centered
 
 0x002
- list<Key> Keys (version: 2)
- bool Centered
+  Key[] Keys (version: 2, list)
+  bool Centered
 
 0x004
- list<Key> Keys (version: 4)
- bool Centered
- int<EColorBlendMode> ColorBlendMode
- bool IsContinousEffect
+  Key[] Keys (version: 4, list)
+  bool Centered
+  int<EColorBlendMode> ColorBlendMode
+  bool IsContinousEffect
 
 0x005
- list<Key> Keys (version: 5)
- bool Centered
- int<EColorBlendMode> ColorBlendMode
- bool IsContinousEffect
- bool IsInterpolated
+  Key[] Keys (version: 5, list)
+  bool Centered
+  int<EColorBlendMode> ColorBlendMode
+  bool IsContinousEffect
+  bool IsInterpolated
 
 enum EColorBlendMode
- Set
- Mult
+  Set
+  Mult
 
 archive Key (inherits: IKey)
- timefloat Time
- vec2 Position
- float Rotation
- vec2 Scale
- v1+
-  float Opacity = 1
-  v2+
-   float Depth = 0.5f
-   v3+
-    float
-    float
-    float
-    float
+  timefloat Time
+  vec2 Position
+  float Rotation
+  vec2 Scale
+  v1+
+    float Opacity = 1
+    v2+
+      float Depth = 0.5f
+      v3+
+        float
+        float
+        float
+        float

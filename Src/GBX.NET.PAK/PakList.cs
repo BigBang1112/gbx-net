@@ -157,7 +157,7 @@ public sealed partial class PakList : IReadOnlyDictionary<string, PakListItem>
     /// <summary>
     /// Creates a dictionary of case-insensitive Pak identifiers as their decryption keys.
     /// </summary>
-    /// <returns>A dictionary of <see langword="string"/> and <see cref="PakKeyInfo"/>.</returns>
+    /// <returns>A dictionary of <see langword="string"/> Pak identifiers and their key bytes.</returns>
     public Dictionary<string, byte[]?> ToKeyInfoDictionary()
     {
         var keys = new Dictionary<string, byte[]?>(packs.Count, StringComparer.OrdinalIgnoreCase);

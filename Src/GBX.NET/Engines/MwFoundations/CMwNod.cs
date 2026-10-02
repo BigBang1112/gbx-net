@@ -401,21 +401,28 @@ public partial class CMwNod : IClass
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    public virtual CMwNod DeepClone()
-    {
-        var clone = (CMwNod)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
-    }
+    public virtual CMwNod DeepClone() => new DeepCloneContext().CloneNode(this);
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    IClass IClass.DeepClone()
+    IClass IClass.DeepClone() => DeepClone();
+
+    internal CMwNod CreateCloneShell() => (CMwNod)MemberwiseClone();
+
+    internal virtual void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
-        var clone = (IClass)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
+        if (chunks is null)
+        {
+            return;
+        }
+
+        clone.chunks = new ChunkSet(clone);
+
+        foreach (var chunk in chunks)
+        {
+            clone.chunks.Add(context.CloneChunk(chunk));
+        }
     }
 
 #if NET8_0_OR_GREATER
@@ -427,7 +434,12 @@ public partial class CMwNod : IClass
         {
             return;
         }
-        
+
+        if (dest is CMwNod destNode)
+        {
+            destNode.chunks = new ChunkSet(destNode);
+        }
+
         foreach (var chunk in chunks)
         {
             var chunkClone = chunk.DeepClone();

@@ -3,16 +3,16 @@ CGameObjectPhyModel 0x2E006000
 0x001
 
 0x003
- bool
- if U01
-  throw
+  bool
+  if U01
+    throw
 
 enum EPersistence
- OnPlayerUnspawn
- OnPlayerRemoved
- NeverRemove
+  OnPlayerUnspawn
+  OnPlayerRemoved
+  NeverRemove
 
 enum EProgram
- None
- Target
- Turret
+  None
+  Target
+  Turret

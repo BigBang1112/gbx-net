@@ -1,21 +1,21 @@
 CHmsZone 0x06004000
 
 0x002
- CHmsFogPlane[]_deprec FogPlanes
- data[28]
+  CHmsFogPlane[] FogPlanes (deprec)
+  data[28]
 
 0x003
- bool MRIsForced
- if MRIsForced
-  vec3 MRPoint
-  vec3 MRNormal
+  bool MRIsForced
+  if MRIsForced
+    vec3 MRPoint
+    vec3 MRNormal
 
 0x005
- CHmsPrecalcRender[]_deprec PrecalcRenders
+  CHmsPrecalcRender[] PrecalcRenders (deprec)
 
 0x006
- CPlugBitmap BitmapCubeReflectHardSpecA (external)
+  CPlugBitmap BitmapCubeReflectHardSpecA (external)
 
 0x008
- CPlugBitmap BitmapCubeReflectHardSpecA (external)
- CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+  CPlugBitmap BitmapCubeReflectHardSpecA (external)
+  CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)

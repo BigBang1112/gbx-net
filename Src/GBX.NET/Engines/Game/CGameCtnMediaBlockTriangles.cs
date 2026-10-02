@@ -16,10 +16,11 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         get => vertices;
         set
         {
-            if (vertices is null || value.Length != vertices.Length)
-            {
-                vertices ??= value;
+            var sizeChanged = vertices is null || value.Length != vertices.Length;
+            vertices = value;
 
+            if (sizeChanged)
+            {
                 foreach (var key in Keys)
                 {
                     var positions = key.Positions;
@@ -29,8 +30,6 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
 
                 RemoveTrianglesOutOfRange();
             }
-
-            vertices = value;
         }
     }
 
@@ -152,7 +151,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         }
     }
 
-    public partial class Key
+    public partial class Key : IDeepCloneable
     {
         private readonly CGameCtnMediaBlockTriangles node;
 
@@ -182,6 +181,14 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         {
             this.node = node;
             positions = new Vec3[node.vertices.Length];
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = new Key(context.Clone(node)!) { Time = Time };
+            context.Register(this, clone);
+            clone.positions = context.CloneArray(positions)!;
+            return clone;
         }
     }
 }

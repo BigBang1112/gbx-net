@@ -2,144 +2,144 @@ CSceneLayout 0x0A003000
 - inherits: CScene
 
 0x00C
- int
+  int
 
 0x010
- float CameraFarZ
- vec3 CameraClearColor
+  float CameraFarZ
+  vec3 CameraClearColor
 
 0x014
- int
- bool
- box
- iso4
+  int
+  bool
+  box
+  iso4
 
 0x017 (ignore)
 
 0x018
- CSceneSector[]_deprec Sectors
- version
- SceneMobil[] Scene
- SceneLoc[] SceneLocations
- CSceneObject[]_deprec
- SceneLoc[]
- CSceneLight[]_deprec Lights (external)
- SceneLoc[] LightLocations
- CSceneObject[]_deprec Sounds
- SceneLoc[] SoundLocations
- CSceneObject[]_deprec Locations
- SceneLoc[] LocationLocations
- CSceneObject[]_deprec Fields
- SceneLoc[] FieldLocations
- CSceneGate[]_deprec Gates
- CScenePath[]_deprec Paths
- CSceneTrafficGraph TrafficGraph
- CSceneTrafficPath[]_deprec TrafficPaths
- CSceneFxNod SceneFxNod (external)
+  CSceneSector[] Sectors (deprec)
+  version
+  SceneMobil[] Scene
+  SceneLoc[] SceneLocations
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec, external)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CSceneGate[] Gates (deprec)
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod (external)
 
 0x019
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  int
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
 0x01B
- CSceneSector[]_deprec Sectors
- version
- SceneMobil[] Scene
- SceneLoc[] SceneLocations
- CSceneObject[]_deprec
- SceneLoc[] 
- CSceneLight[]_deprec Lights
- SceneLoc[] LightLocations
- CSceneObject[]_deprec Sounds
- SceneLoc[] SoundLocations
- CSceneObject[]_deprec Locations
- SceneLoc[] LocationLocations
- int
- int
- CSceneFxNod SceneFxNod (external)
+  CSceneSector[] Sectors (deprec)
+  version
+  SceneMobil[] Scene
+  SceneLoc[] SceneLocations
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  int
+  int
+  CSceneFxNod SceneFxNod (external)
 
 0x01C
- version
- v2-
-  CSceneObject[]_deprec Objects
-  iso4[] ObjectLocations
- v3+
-  Unknown2[]
-  Unknown3[] (version: Version)
- CSceneConfig
- v1-
-  CPlugWeatherModel[]_deprec WeatherModels (external)
- v2+
-  CPlugWeatherModel WeatherModel (external)
- uint[]
- CPlugBitmap BitmapWaterFog (external)
- CPlugBitmap BitmapCubeReflectHardSpecA (external)
- CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
- v0=
-  CSceneLocation[]
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float CameraFarZ
- float
- float
- float
- CSceneFxNod SceneFxNod (external)
+  version
+  v2-
+    CSceneObject[] Objects (deprec)
+    iso4[] ObjectLocations
+  v3+
+    Unknown2[]
+    Unknown3[]
+  CSceneConfig
+  v1-
+    CPlugWeatherModel[] WeatherModels (deprec, external)
+  v2+
+    CPlugWeatherModel WeatherModel (external)
+  uint[]
+  CPlugBitmap BitmapWaterFog (external)
+  CPlugBitmap BitmapCubeReflectHardSpecA (external)
+  CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+  v0=
+    CSceneLocation[]
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float CameraFarZ
+  float
+  float
+  float
+  CSceneFxNod SceneFxNod (external)
 
 archive SceneMobil
- int U01
- if U01 == -2
-  CMwNod Mobil
+  int U01
+  if U01 == -2
+    CMwNod Mobil
 
 archive SceneLoc
- CMwNod
- iso4
+  CMwNod
+  iso4
 
 archive Unknown
- CMwNod
- id
- int
- CMwNod
- id
- int
- iso4
- iso4
+  CMwNod
+  id
+  int
+  CMwNod
+  id
+  int
+  iso4
+  iso4
 
 archive Unknown2
- id
- transquat
- int
- CPlugBitmap (external)
- CPlugBitmap (external)
- CPlugBitmap (external)
- GxLight
- int
+  id
+  transquat
+  int
+  CPlugBitmap (external)
+  CPlugBitmap (external)
+  CPlugBitmap (external)
+  GxLight
+  int
 
 archive Unknown3
- id
- transquat
- short
- ulong
- CPlugSolid (external)
- v4+
-  CPlugSolid2Model
-  v5+
-   CPlugPrefab
+  id
+  transquat
+  short
+  ulong
+  CPlugSolid (external)
+  v4+
+    CPlugSolid2Model
+    v5+
+      CPlugPrefab

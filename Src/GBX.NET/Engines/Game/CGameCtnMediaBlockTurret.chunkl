@@ -2,5 +2,5 @@ CGameCtnMediaBlockTurret 0x03294000
 - inherits: CGameCtnMediaBlock
 
 0x000
- version
- CPlugDataTape DataTape
+  version
+  CPlugDataTape DataTape

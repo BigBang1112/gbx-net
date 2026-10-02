@@ -2,20 +2,20 @@ CGamePlayerProfileChunk_TrackManiaSettings 0x240D5000
 - inherits: CGamePlayerProfileChunk
 
 0x000 (skippable)
- version
- byte
+  version
+  byte
 
 0x001 (skippable)
- version
- byte[]
+  version
+  byte[]
 
 0x002 (skippable)
- version
- byte[]
+  version
+  byte[]
 
 0x003 (skippable, ignore)
 
 0x004 (skippable)
- version
- int
- int
+  version
+  int
+  int

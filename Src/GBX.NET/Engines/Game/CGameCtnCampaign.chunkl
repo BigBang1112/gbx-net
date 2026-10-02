@@ -1,111 +1,111 @@
 CGameCtnCampaign 0x03090000
 
 0x000 // map groups
- list<CGameCtnChallengeGroup>_deprec ChallengeGroups
+  CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
 0x001
- id CollectionId
- int U01
- if U01 > 0
-  throw
+  id CollectionId
+  int U01
+  if U01 > 0
+    throw
 
 0x002
- id IconId
- int U01
- int U01
- int U01
- int U01
- int U01
- int U01
+  id IconId
+  int U01
+  int U01
+  int U01
+  int U01
+  int U01
+  int U01
 
 0x003
- string Name
- int<EType> Type
- bool IsInternal
- bool
+  string Name
+  int<EType> Type
+  bool IsInternal
+  bool
 
 0x004
- string Name
- int<EType> Type
- bool IsInternal
- bool
- bool
+  string Name
+  int<EType> Type
+  bool IsInternal
+  bool
+  bool
 
 0x005
- bool
+  bool
 
 0x006 // campaign ID
- id CampaignId
+  id CampaignId
 
 0x007
- int U01
- int U01
- int U01
+  int U01
+  int U01
+  int U01
 
 0x008
- int
+  int
 
 0x009 (skippable) // collection ID
- byte
- id CollectionId
+  byte
+  id CollectionId
 
 0x00A (skippable) // index
- int Index
+  int Index
 
 0x00B (skippable) // unlocked by campaign
- string UnlockedByCampaign
- int
+  string UnlockedByCampaign
+  int
 
 0x00C (skippable) // icon ID
- id IconId
+  id IconId
 
 0x00D // unlock type
- int<EUnlockType> UnlockType
+  int<EUnlockType> UnlockType
 
 0x00E // required players count
- int<ERequiredPlayersCount> RequiredPlayersCount
+  int<ERequiredPlayersCount> RequiredPlayersCount
 
 0x00F (skippable) // name
- string Name
- int
- int<EType> Type
+  string Name
+  int
+  int<EType> Type
 
 0x010 // mode script name
- version
- string ModeScriptName
+  version
+  string ModeScriptName
 
 0x012 (skippable) // official mode
- version
- v1-
-  string ScoreContext
- v2+
-  int?
-  string
-  string
-  string
- bool OfficialRecordEnabled
- v0=
-  bool?
-  bool?
+  version
+  v1-
+    string ScoreContext
+  v2+
+    int?
+    string
+    string
+    string
+  bool OfficialRecordEnabled
+  v0=
+    bool?
+    bool?
 
 enum EType
- None
- Race
- Puzzle
- Survival
- Platform
- Stunts
- Training
+  None
+  Race
+  Puzzle
+  Survival
+  Platform
+  Stunts
+  Training
 
 enum ERequiredPlayersCount
- SoloOnly
- MultiOnly
- DuoOnly
- TrioOnly
- QuatuorOnly
- All
+  SoloOnly
+  MultiOnly
+  DuoOnly
+  TrioOnly
+  QuatuorOnly
+  All
 
 enum EUnlockType
- ByRow
- ByColumn
- Custom
+  ByRow
+  ByColumn
+  Custom

@@ -1,4 +1,4 @@
-﻿using GBX.NET.Exceptions;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using GBX.NET.Tests.Mocks;
 using System.Text;
@@ -7,8 +7,8 @@ namespace GBX.NET.Tests.Unit.Serialization;
 
 public class GbxReaderTests
 {
-    [Fact]
-    public void Contructor_Input_BaseStreamIsInput()
+    [Test]
+    public async Task Contructor_Input_BaseStreamIsInput()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -17,11 +17,11 @@ public class GbxReaderTests
         using var r = new GbxReader(ms);
 
         // Assert
-        Assert.Same(expected: ms, actual: r.BaseStream);
+        await Assert.That(r.BaseStream).IsSameReferenceAs(ms);
     }
 
-    [Fact]
-    public void Contructor_InputLeaveOpen_BaseStreamIsInput()
+    [Test]
+    public async Task Contructor_InputLeaveOpen_BaseStreamIsInput()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -30,11 +30,11 @@ public class GbxReaderTests
         using var r = new GbxReader(ms);
 
         // Assert
-        Assert.Same(expected: ms, actual: r.BaseStream);
+        await Assert.That(r.BaseStream).IsSameReferenceAs(ms);
     }
 
-    [Fact]
-    public void ReadGbxMagic_HasCorrectMagic()
+    [Test]
+    public async Task ReadGbxMagic_HasCorrectMagic()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -47,12 +47,12 @@ public class GbxReaderTests
         var result = r.ReadGbxMagic();
 
         // Assert
-        Assert.True(result, "GBX magic is invalid.");
-        Assert.Equal(expected: 3, actual: ms.Position);
+        await Assert.That(result).IsTrue().Because("GBX magic is invalid.");
+        await Assert.That(ms.Position).IsEqualTo(3);
     }
 
-    [Fact]
-    public void ReadGbxMagic_HasIncorrectMagic()
+    [Test]
+    public async Task ReadGbxMagic_HasIncorrectMagic()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -65,11 +65,11 @@ public class GbxReaderTests
         var result = r.ReadGbxMagic();
 
         // Assert
-        Assert.False(result, "GBX magic is valid but it shouldn't be.");
-        Assert.Equal(expected: 3, actual: ms.Position);
+        await Assert.That(result).IsFalse().Because("GBX magic is valid but it shouldn't be.");
+        await Assert.That(ms.Position).IsEqualTo(3);
     }
 
-    [Fact]
+    [Test]
     public void ReadGbxMagic_MissingData_ThrowsEndOfStream()
     {
         // Arrange
@@ -83,11 +83,9 @@ public class GbxReaderTests
         Assert.Throws<EndOfStreamException>(() => r.ReadGbxMagic());
     }
 
-    [Fact]
-    public void ReadBoolean_Int32_IsCleanTrue()
+    [Test]
+    public async Task ReadBoolean_Int32_IsCleanTrue()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -99,15 +97,13 @@ public class GbxReaderTests
         var value = r.ReadBoolean();
 
         // Assert
-        Assert.True(value);
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(value).IsTrue();
+        await Assert.That(ms.Position).IsEqualTo(4);
     }
 
-    [Fact]
-    public void ReadBoolean_Int32_IsCleanFalse()
+    [Test]
+    public async Task ReadBoolean_Int32_IsCleanFalse()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -119,15 +115,13 @@ public class GbxReaderTests
         var value = r.ReadBoolean();
 
         // Assert
-        Assert.False(value);
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(value).IsFalse();
+        await Assert.That(ms.Position).IsEqualTo(4);
     }
 
-    [Fact]
+    [Test]
     public void ReadBoolean_Int32_IsDirtyThrows()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -139,11 +133,9 @@ public class GbxReaderTests
         Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean());
     }
 
-    [Fact]
-    public void ReadBoolean_Int32_AsByteFalse()
+    [Test]
+    public async Task ReadBoolean_Int32_AsByteFalse()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -155,15 +147,13 @@ public class GbxReaderTests
         var value = r.ReadBoolean(asByte: false);
 
         // Assert
-        Assert.False(value);
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(value).IsFalse();
+        await Assert.That(ms.Position).IsEqualTo(4);
     }
 
-    [Fact]
-    public void ReadBoolean_Byte_IsCleanTrue()
+    [Test]
+    public async Task ReadBoolean_Byte_IsCleanTrue()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -176,15 +166,13 @@ public class GbxReaderTests
         var value = r.ReadBoolean(asByte: true);
 
         // Assert
-        Assert.True(value);
-        Assert.Equal(expected: 1, actual: ms.Position);
+        await Assert.That(value).IsTrue();
+        await Assert.That(ms.Position).IsEqualTo(1);
     }
 
-    [Fact]
-    public void ReadBoolean_Byte_IsCleanFalse()
+    [Test]
+    public async Task ReadBoolean_Byte_IsCleanFalse()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -197,15 +185,13 @@ public class GbxReaderTests
         var value = r.ReadBoolean(asByte: true);
 
         // Assert
-        Assert.False(value);
-        Assert.Equal(expected: 1, actual: ms.Position);
+        await Assert.That(value).IsFalse();
+        await Assert.That(ms.Position).IsEqualTo(1);
     }
 
-    [Fact]
+    [Test]
     public void ReadBoolean_Byte_IsDirtyThrows()
     {
-        Gbx.StrictBooleans = true;
-
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
@@ -218,8 +204,8 @@ public class GbxReaderTests
         Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean(asByte: true));
     }
 
-    [Fact]
-    public void ReadString_Int32()
+    [Test]
+    public async Task ReadString_Int32()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -232,12 +218,12 @@ public class GbxReaderTests
         var value = r.ReadString();
 
         // Assert
-        Assert.Equal(expected: "Test", actual: value);
-        Assert.Equal(expected: 8, actual: ms.Position);
+        await Assert.That(value).IsEqualTo("Test");
+        await Assert.That(ms.Position).IsEqualTo(8);
     }
 
-    [Fact]
-    public void ReadString_Int32_Empty()
+    [Test]
+    public async Task ReadString_Int32_Empty()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -250,11 +236,11 @@ public class GbxReaderTests
         var value = r.ReadString();
 
         // Assert
-        Assert.Equal(expected: string.Empty, actual: value);
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(value).IsEqualTo(string.Empty);
+        await Assert.That(ms.Position).IsEqualTo(4);
     }
 
-    [Fact]
+    [Test]
     public void ReadString_Int32_NegativeLength_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
@@ -268,7 +254,7 @@ public class GbxReaderTests
         Assert.Throws<ArgumentOutOfRangeException>(() => r.ReadString());
     }
 
-    [Fact]
+    [Test]
     public void ReadString_Int32_TooLong_ThrowsLengthLimitException()
     {
         // Arrange
@@ -282,8 +268,8 @@ public class GbxReaderTests
         Assert.Throws<LengthLimitException>(() => r.ReadString());
     }
 
-    [Fact]
-    public void ReadString_StringLengthPrefix_Byte()
+    [Test]
+    public async Task ReadString_StringLengthPrefix_Byte()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -296,12 +282,12 @@ public class GbxReaderTests
         var value = r.ReadString(StringLengthPrefix.Byte);
 
         // Assert
-        Assert.Equal(expected: "Test", actual: value);
-        Assert.Equal(expected: 5, actual: ms.Position);
+        await Assert.That(value).IsEqualTo("Test");
+        await Assert.That(ms.Position).IsEqualTo(5);
     }
 
-    [Fact]
-    public void ReadString_StringLengthPrefix_Int32()
+    [Test]
+    public async Task ReadString_StringLengthPrefix_Int32()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -314,11 +300,11 @@ public class GbxReaderTests
         var value = r.ReadString(StringLengthPrefix.Int32);
 
         // Assert
-        Assert.Equal(expected: "Test", actual: value);
-        Assert.Equal(expected: 8, actual: ms.Position);
+        await Assert.That(value).IsEqualTo("Test");
+        await Assert.That(ms.Position).IsEqualTo(8);
     }
 
-    [Fact]
+    [Test]
     public void ReadString_StringLengthPrefix_Unknown_ThrowsArgumentException()
     {
         // Arrange
@@ -332,7 +318,7 @@ public class GbxReaderTests
         Assert.Throws<ArgumentException>(() => r.ReadString((StringLengthPrefix)69));
     }
 
-    [Fact]
+    [Test]
     public void ReadString_StringLengthPrefix_NegativeLength_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
@@ -346,7 +332,7 @@ public class GbxReaderTests
         Assert.Throws<ArgumentOutOfRangeException>(() => r.ReadString(StringLengthPrefix.Int32));
     }
 
-    [Fact]
+    [Test]
     public void ReadString_StringLengthPrefix_TooLong_ThrowsLengthLimitException()
     {
         // Arrange
@@ -360,7 +346,7 @@ public class GbxReaderTests
         Assert.Throws<LengthLimitException>(() => r.ReadString(StringLengthPrefix.Int32));
     }
 
-    [Fact]
+    [Test]
     public void ReadData_NoCount_TooLong_Throws()
     {
         // Arrange
@@ -374,7 +360,7 @@ public class GbxReaderTests
         Assert.Throws<LengthLimitException>(() => r.ReadData());
     }
 
-    [Fact]
+    [Test]
     public void ReadBytes_WithCount_TooLong_ThrowsWithLength()
     {
         // Arrange
@@ -385,8 +371,8 @@ public class GbxReaderTests
         Assert.Throws<LengthLimitException>(() => r.ReadBytes(GbxReader.MaxDataSize + 1));
     }
 
-    [Fact]
-    public void ReadData_NoCount_ReadsBytes()
+    [Test]
+    public async Task ReadData_NoCount_ReadsBytes()
     {
         // Arrange
         using var ms = new MemoryStream([3, 0, 0, 0, 1, 2, 3, 69]);
@@ -396,11 +382,11 @@ public class GbxReaderTests
         var bytes = r.ReadData();
 
         // Assert
-        Assert.Equal(expected: [1, 2, 3], actual: bytes);
+        await Assert.That(bytes).IsEquivalentTo((byte[])[1, 2, 3], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void ReadBytes_WithCount_ReadsBytes()
+    [Test]
+    public async Task ReadBytes_WithCount_ReadsBytes()
     {
         // Arrange
         using var ms = new MemoryStream([1, 2, 3, 69]);
@@ -410,11 +396,11 @@ public class GbxReaderTests
         var bytes = r.ReadBytes(3);
 
         // Assert
-        Assert.Equal(expected: [1, 2, 3], actual: bytes);
+        await Assert.That(bytes).IsEquivalentTo((byte[])[1, 2, 3], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void ReadId_VersionNotSupported_Throws()
+    [Test]
+    public async Task ReadId_VersionNotSupported_Throws()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -425,11 +411,11 @@ public class GbxReaderTests
 
         // Act & Assert
         Assert.Throws<NotSupportedException>(() => r.ReadId());
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(4);
     }
 
-    [Fact]
-    public void ReadId_HasIdString_ReturnsIdWithString()
+    [Test]
+    public async Task ReadId_HasIdString_ReturnsIdWithString()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -442,18 +428,17 @@ public class GbxReaderTests
         var id = r.ReadId();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: "Hi!", actual: id.String);
-        Assert.Null(id.Number);
-        Assert.NotNull(r.IdDict);
-        Assert.Single(r.IdDict);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.Equal(expected: 15, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(id.String).IsEqualTo("Hi!");
+        await Assert.That(id.Number).IsNull();
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict).HasSingleItem();
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(ms.Position).IsEqualTo(15);
     }
 
-    [Fact]
-    public void ReadId_HasIdCollection_ReturnsIdWithCorrectNumber()
+    [Test]
+    public async Task ReadId_HasIdCollection_ReturnsIdWithCorrectNumber()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -466,15 +451,15 @@ public class GbxReaderTests
         var id = r.ReadId();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: 4, actual: id.Number);
-        Assert.Null(id.String);
-        Assert.NotNull(r.IdDict);
-        Assert.Equal(expected: 8, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(id.Number).IsEqualTo(4);
+        await Assert.That(id.String).IsNull();
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(ms.Position).IsEqualTo(8);
     }
 
-    [Fact]
-    public void ReadId_HasReusedIdString_ReturnsSameIdWithString()
+    [Test]
+    public async Task ReadId_HasReusedIdString_ReturnsSameIdWithString()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -489,18 +474,17 @@ public class GbxReaderTests
         var reusedId = r.ReadId();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: id, actual: reusedId);
-        Assert.Null(reusedId.Number);
-        Assert.NotNull(r.IdDict);
-        Assert.Single(r.IdDict);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.Equal(expected: 19, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(reusedId).IsEqualTo(id);
+        await Assert.That(reusedId.Number).IsNull();
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict).HasSingleItem();
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(ms.Position).IsEqualTo(19);
     }
 
-    [Fact]
-    public void ReadId_Has2IdStrings_ReturnsIdsWithString()
+    [Test]
+    public async Task ReadId_Has2IdStrings_ReturnsIdsWithString()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -541,22 +525,20 @@ public class GbxReaderTests
         var anotherId = r.ReadId();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: "Hi!", actual: id.String);
-        Assert.Equal(expected: "TM", actual: anotherId.String);
-        Assert.Null(id.Number);
-        Assert.Null(anotherId.Number);
-        Assert.NotNull(r.IdDict);
-        Assert.Equal(expected: 2, actual: r.IdDict.Count);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.True(r.IdDict.TryGetValue(0x40000002, out var val2) && val2 == "TM",
-            @"IdList does not contain (0x40000002, ""TM"")");
-        Assert.Equal(expected: 25, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(id.String).IsEqualTo("Hi!");
+        await Assert.That(anotherId.String).IsEqualTo("TM");
+        await Assert.That(id.Number).IsNull();
+        await Assert.That(anotherId.Number).IsNull();
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict.Count).IsEqualTo(2);
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(r.IdDict.TryGetValue(0x40000002, out var val2) && val2 == "TM").IsTrue().Because(@"IdList does not contain (0x40000002, ""TM"")");
+        await Assert.That(ms.Position).IsEqualTo(25);
     }
 
-    [Fact]
-    public void ReadIdAsString_HasIdString_ReturnsIdWithString()
+    [Test]
+    public async Task ReadIdAsString_HasIdString_ReturnsIdWithString()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -569,17 +551,16 @@ public class GbxReaderTests
         var str = r.ReadIdAsString();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: "Hi!", actual: str);
-        Assert.NotNull(r.IdDict);
-        Assert.Single(r.IdDict);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.Equal(expected: 15, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(str).IsEqualTo("Hi!");
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict).HasSingleItem();
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(ms.Position).IsEqualTo(15);
     }
 
-    [Fact]
-    public void ReadIdAsString_HasIdCollection_ToStringifiedIndex()
+    [Test]
+    public async Task ReadIdAsString_HasIdCollection_ToStringifiedIndex()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -592,14 +573,14 @@ public class GbxReaderTests
         var str = r.ReadIdAsString();
 
         // Assert
-        Assert.Equal(expected: "4", actual: str);
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.NotNull(r.IdDict);
-        Assert.Equal(expected: 8, actual: ms.Position);
+        await Assert.That(str).IsEqualTo("4");
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(ms.Position).IsEqualTo(8);
     }
 
-    [Fact]
-    public void ReadIdAsString_HasReusedIdString_ReturnsSameIdWithString()
+    [Test]
+    public async Task ReadIdAsString_HasReusedIdString_ReturnsSameIdWithString()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -614,17 +595,16 @@ public class GbxReaderTests
         var reusedId = r.ReadIdAsString();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: id, actual: reusedId);
-        Assert.NotNull(r.IdDict);
-        Assert.Single(r.IdDict);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.Equal(expected: 19, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(reusedId).IsEqualTo(id);
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict).HasSingleItem();
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(ms.Position).IsEqualTo(19);
     }
 
-    [Fact]
-    public void ReadIdent_Reads3Ids()
+    [Test]
+    public async Task ReadIdent_Reads3Ids()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -660,17 +640,16 @@ public class GbxReaderTests
         var ident = r.ReadIdent();
 
         // Assert
-        Assert.Equal(expected: 3, actual: r.IdVersion);
-        Assert.Equal(expected: ("Hi!", new(4), "Hi!"), actual: ident);
-        Assert.NotNull(r.IdDict);
-        Assert.Single(r.IdDict);
-        Assert.True(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!",
-            @"IdList does not contain (0x40000001, ""Hi!"")");
-        Assert.Equal(expected: 23, actual: ms.Position);
+        await Assert.That(r.IdVersion).IsEqualTo(3);
+        await Assert.That(ident).IsEqualTo(("Hi!", new(4), "Hi!"));
+        await Assert.That(r.IdDict).IsNotNull();
+        await Assert.That(r.IdDict).HasSingleItem();
+        await Assert.That(r.IdDict.TryGetValue(0x40000001, out var val) && val == "Hi!").IsTrue().Because(@"IdList does not contain (0x40000001, ""Hi!"")");
+        await Assert.That(ms.Position).IsEqualTo(23);
     }
 
-    [Fact]
-    public void SkipData_WhenBaseStreamCanSeek_ShouldSeekCorrectly()
+    [Test]
+    public async Task SkipData_WhenBaseStreamCanSeek_ShouldSeekCorrectly()
     {
         // Arrange
         using var ms = new MemoryStream([1, 2, 3, 4, 5, 6, 7]);
@@ -682,11 +661,11 @@ public class GbxReaderTests
         r.SkipData(5);
 
         // Assert
-        Assert.Equal(7, ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(7);
     }
 
-    [Fact]
-    public void SkipData_WhenBaseStreamCannotSeek_ShouldSkipCorrectly()
+    [Test]
+    public async Task SkipData_WhenBaseStreamCannotSeek_ShouldSkipCorrectly()
     {
         // Arrange
         using var stream = new NonSeekableStream([1, 2, 3, 4, 5, 6, 7], position: 2);
@@ -696,22 +675,22 @@ public class GbxReaderTests
         r.SkipData(5);
 
         // Assert
-        Assert.Equal(7, stream.Position);
+        await Assert.That(stream.Position).IsEqualTo(7);
     }
 
-    [Fact]
-    public void IdVersion_InitiallyNull()
+    [Test]
+    public async Task IdVersion_InitiallyNull()
     {
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
         // Act & Assert
-        Assert.Null(r.IdVersion);
+        await Assert.That(r.IdVersion).IsNull();
     }
 
-    [Fact]
-    public void IdVersion_SetAndGetWithoutEncapsulation()
+    [Test]
+    public async Task IdVersion_SetAndGetWithoutEncapsulation()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -722,11 +701,11 @@ public class GbxReaderTests
         var actual = r.IdVersion;
 
         // Assert
-        Assert.Equal(expected: 3, actual);
+        await Assert.That(actual).IsEqualTo(3);
     }
 
-    [Fact]
-    public void IdVersion_SetAndGetWithEncapsulation()
+    [Test]
+    public async Task IdVersion_SetAndGetWithEncapsulation()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -738,22 +717,22 @@ public class GbxReaderTests
         var actual = r.Encapsulation?.IdVersion;
 
         // Assert
-        Assert.Equal(expected: 3, actual);
+        await Assert.That(actual).IsEqualTo(3);
     }
 
-    [Fact]
-    public void IdDict_InitiallyNotNull()
+    [Test]
+    public async Task IdDict_InitiallyNotNull()
     {
         // Arrange
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
         // Act & Assert
-        Assert.NotNull(r.IdDict);
+        await Assert.That(r.IdDict).IsNotNull();
     }
 
-    [Fact]
-    public void ReadPackDesc_Version3_NoLocatorUrl()
+    [Test]
+    public async Task ReadPackDesc_Version3_NoLocatorUrl()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -774,15 +753,15 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: checksum256, actual: result.Checksum);
-        Assert.Equal(expected: filePath, actual: result.FilePath);
-        Assert.NotNull(result.LocatorUrl);
-        Assert.Empty(result.LocatorUrl);
-        Assert.Equal(expected: 56, actual: ms.Position);
+        await Assert.That(result.Checksum).IsEqualTo(checksum256);
+        await Assert.That(result.FilePath).IsEqualTo(filePath);
+        await Assert.That(result.LocatorUrl).IsNotNull();
+        await Assert.That(result.LocatorUrl).IsEmpty();
+        await Assert.That(ms.Position).IsEqualTo(56);
     }
 
-    [Fact]
-    public void ReadPackDesc_Version3_WithLocatorUrl()
+    [Test]
+    public async Task ReadPackDesc_Version3_WithLocatorUrl()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -805,14 +784,14 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: checksum256, actual: result.Checksum);
-        Assert.Equal(expected: filePath, actual: result.FilePath);
-        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
-        Assert.Equal(expected: 74, actual: ms.Position);
+        await Assert.That(result.Checksum).IsEqualTo(checksum256);
+        await Assert.That(result.FilePath).IsEqualTo(filePath);
+        await Assert.That(result.LocatorUrl).IsEqualTo(locatorUrl);
+        await Assert.That(ms.Position).IsEqualTo(74);
     }
 
-    [Fact]
-    public void ReadPackDesc_Version3_NoFilePath()
+    [Test]
+    public async Task ReadPackDesc_Version3_NoFilePath()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -833,16 +812,16 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Equal(expected: checksum256, actual: result.Checksum);
-        Assert.Empty(result.FilePath);
-        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
-        Assert.Equal(expected: 59, actual: ms.Position);
+        await Assert.That(result.Checksum).IsEqualTo(checksum256);
+        await Assert.That(result.FilePath).IsEmpty();
+        await Assert.That(result.LocatorUrl).IsEqualTo(locatorUrl);
+        await Assert.That(ms.Position).IsEqualTo(59);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    public void ReadPackDesc_Version1And2_NoLocatorUrl_WithFilePath(byte version)
+    [Test]
+    [Arguments(1)]
+    [Arguments(2)]
+    public async Task ReadPackDesc_Version1And2_NoLocatorUrl_WithFilePath(byte version)
     {
         // Arrange
         var filePath = "folder\\test.txt";
@@ -859,17 +838,17 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
-        Assert.Equal(expected: filePath, actual: result.FilePath);
-        Assert.NotNull(result.LocatorUrl);
-        Assert.Empty(result.LocatorUrl);
-        Assert.Equal(expected: 24, actual: ms.Position);
+        await Assert.That(result.Checksum).IsNull();
+        await Assert.That(result.FilePath).IsEqualTo(filePath);
+        await Assert.That(result.LocatorUrl).IsNotNull();
+        await Assert.That(result.LocatorUrl).IsEmpty();
+        await Assert.That(ms.Position).IsEqualTo(24);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    public void ReadPackDesc_Version1And2_WithLocatorUrl_WithFilePath(byte version)
+    [Test]
+    [Arguments(1)]
+    [Arguments(2)]
+    public async Task ReadPackDesc_Version1And2_WithLocatorUrl_WithFilePath(byte version)
     {
         // Arrange
         var filePath = "folder\\test.txt";
@@ -888,16 +867,16 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
-        Assert.Equal(expected: filePath, actual: result.FilePath);
-        Assert.Equal(expected: locatorUrl, actual: result.LocatorUrl);
-        Assert.Equal(expected: 42, actual: ms.Position);
+        await Assert.That(result.Checksum).IsNull();
+        await Assert.That(result.FilePath).IsEqualTo(filePath);
+        await Assert.That(result.LocatorUrl).IsEqualTo(locatorUrl);
+        await Assert.That(ms.Position).IsEqualTo(42);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    public void ReadPackDesc_Version1And2_NoFilePath(byte version)
+    [Test]
+    [Arguments(1)]
+    [Arguments(2)]
+    public async Task ReadPackDesc_Version1And2_NoFilePath(byte version)
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] { version }
@@ -910,16 +889,16 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
-        Assert.NotNull(result.FilePath);
-        Assert.Empty(result.FilePath);
-        Assert.NotNull(result.LocatorUrl);
-        Assert.Empty(result.LocatorUrl);
-        Assert.Equal(expected: 5, actual: ms.Position);
+        await Assert.That(result.Checksum).IsNull();
+        await Assert.That(result.FilePath).IsNotNull();
+        await Assert.That(result.FilePath).IsEmpty();
+        await Assert.That(result.LocatorUrl).IsNotNull();
+        await Assert.That(result.LocatorUrl).IsEmpty();
+        await Assert.That(ms.Position).IsEqualTo(5);
     }
 
-    [Fact]
-    public void ReadPackDesc_Version0()
+    [Test]
+    public async Task ReadPackDesc_Version0()
     {
         // Arrange
         var filePath = "folder\\test.txt";
@@ -935,10 +914,10 @@ public class GbxReaderTests
         var result = r.ReadPackDesc();
 
         // Assert
-        Assert.Null(result.Checksum);
-        Assert.Equal(expected: filePath, actual: result.FilePath);
-        Assert.NotNull(result.LocatorUrl);
-        Assert.Empty(result.LocatorUrl);
-        Assert.Equal(expected: 20, actual: ms.Position);
+        await Assert.That(result.Checksum).IsNull();
+        await Assert.That(result.FilePath).IsEqualTo(filePath);
+        await Assert.That(result.LocatorUrl).IsNotNull();
+        await Assert.That(result.LocatorUrl).IsEmpty();
+        await Assert.That(ms.Position).IsEqualTo(20);
     }
 }

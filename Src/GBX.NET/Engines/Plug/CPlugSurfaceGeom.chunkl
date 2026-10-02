@@ -2,10 +2,10 @@ CPlugSurfaceGeom 0x0900F000
 - inherits: CPlug
 
 0x0900C000 [TM10, TMSX, TMNESWC]
- id
+  id
 
 0x0900C001 [TM10, TMSX]
- bool
+  bool
 
 0x0900D002 (not-remapped) [TM10, TMSX, TMNESWC]
 

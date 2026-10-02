@@ -6,57 +6,31 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03092000>]
-    [AppliedWithChunk<Chunk03092003>]
-    [AppliedWithChunk<Chunk03092006>]
-    [AppliedWithChunk<Chunk0309200D>]
-    [AppliedWithChunk<Chunk03092015>]
-    [AppliedWithChunk<Chunk03092017>]
-    public string? GhostNickname { get; set; }
-
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03092000>(sinceVersion: 8)]
-    public string? GhostClubTag { get; set; }
-
-    [AppliedWithChunk<Chunk0309200E>]
-    public Id? GhostUid { get; set; }
+    private Id? ghostUid;
+    public partial Id? GhostUid { get => ghostUid; set => ghostUid = value; }
 
     private TimeInt32 eventsDuration;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
+    public partial TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
+
+    /// <summary>
+    /// Elapsed walltime between <see cref="WalltimeStartTimestamp"/> and <see cref="WalltimeEndTimestamp"/>.
+    /// </summary>
+    public partial TimeSpan? WalltimeDuration { get => WalltimeEndTimestamp - WalltimeStartTimestamp; }
 
     private string? validate_ExeVersion;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
+    public partial string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
 
     private uint validate_ExeChecksum;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
+    public partial uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
 
     private int validate_OsKind;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
+    public partial int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
 
     private int validate_CpuKind;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
+    public partial int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
 
     private string? validate_RaceSettings;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
+    public partial string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
 
     private ImmutableArray<IInput> inputs = [];
     [AppliedWithChunk<Chunk03092011>]
@@ -65,21 +39,16 @@ public partial class CGameCtnGhost
     public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
 
     private bool steeringWheelSensitivity;
-    [AppliedWithChunk<Chunk03092025>]
-    public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
+    public partial bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
 
     private string? validate_TitleId;
-    [AppliedWithChunk<Chunk03092028>]
-    public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
+    public partial string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
     private Checksum256? validate_TitleChecksum;
-    [AppliedWithChunk<Chunk03092028>]
-    public Checksum256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
+    public partial Checksum256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
 
     private int? validate_ValidationSeed;
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
+    public partial int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
 
     public string GhostVersionString
     {
@@ -172,21 +141,21 @@ public partial class CGameCtnGhost
 
     public partial class Chunk0309200E
     {
-        public override void Read(CGameCtnGhost n, GbxReader r)
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            n.GhostUid = r.ReadId();
-        }
+            if (rw.Reader is not null)
+            {
+                n.GhostUid = rw.Reader.ReadId();
+            }
 
-        public override void Write(CGameCtnGhost n, GbxWriter w)
-        {
-            w.Write(n.GhostUid.GetValueOrDefault());
+            rw.Writer?.Write(n.GhostUid.GetValueOrDefault());
         }
     }
 
     public partial class Chunk03092011
     {
-        public int U01;
-        public int U02;
+        public int InputStoreVersion;
+        public int InputCountLimit;
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
@@ -201,7 +170,7 @@ public partial class CGameCtnGhost
         internal void ReadWriteInputs(CGameCtnGhost n, GbxReaderWriter rw)
         {
             // CInputEventsStore::Archive
-            rw.Int32(ref U01); // always 0 now
+            rw.Int32(ref InputStoreVersion); // always 0 now
 
             if (rw.Reader is not null)
             {
@@ -228,7 +197,7 @@ public partial class CGameCtnGhost
             Span<string> inputNames = r.ReadArrayId();
 
             var numInputs = r.ReadInt32();
-            U02 = r.ReadInt32(); // CountLimit?
+            InputCountLimit = r.ReadInt32();
 
             if (numInputs == 0)
             {
@@ -271,7 +240,7 @@ public partial class CGameCtnGhost
             w.WriteListId(inputNames);
 
             w.Write(n.inputs.Length);
-            w.Write(U02);
+            w.Write(InputCountLimit);
 
             foreach (var input in n.inputs)
             {
@@ -350,21 +319,18 @@ public partial class CGameCtnGhost
 
     public partial class Chunk0309202D
     {
-        private readonly Chunk03092019 chunk019 = new();
-
-        public int U01;
+        public int HasInputs;
         public int U02; // same as 02A
         public int U03; // same as 02A
-        public int U04;
+        public int SimulationFlags; // bit 0 is SteeringWheelSensitivity
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref HasInputs);
 
-            if (U01 >= 1)
+            if (HasInputs >= 1)
             {
                 throw new Exception("Inputs stored separately");
-                //chunk019.ReadWriteInputs(n, rw);
             }
 
             rw.String(ref n.validate_ExeVersion);
@@ -378,7 +344,7 @@ public partial class CGameCtnGhost
             rw.Int32(ref U02);
             rw.Int32(ref U03);
             rw.Int32(ref n.validate_ValidationSeed);
-            rw.Int32(ref U04);
+            rw.Int32(ref SimulationFlags);
             rw.String(ref n.validate_RaceSettings);
         }
     }

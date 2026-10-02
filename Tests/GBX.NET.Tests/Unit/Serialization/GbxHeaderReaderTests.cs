@@ -1,4 +1,4 @@
-﻿using GBX.NET.Components;
+using GBX.NET.Components;
 using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
@@ -7,8 +7,8 @@ namespace GBX.NET.Tests.Unit.Serialization;
 
 public class GbxHeaderReaderTests
 {
-    [Fact]
-    public void ReadUserData_EmptyUserData_ReturnsFalse()
+    [Test]
+    public async Task ReadUserData_EmptyUserData_ReturnsFalse()
     {
         // Arrange
         using var ms = new MemoryStream(BitConverter.GetBytes(0).ToArray());
@@ -20,11 +20,11 @@ public class GbxHeaderReaderTests
         var result = parser.ReadUserData(node: null, unknownHeader: null);
 
         // Assert
-        Assert.False(result);
+        await Assert.That(result).IsFalse();
     }
 
-    [Fact]
-    public void ReadUserData_UserDataWithZeroHeaderChunks_ReturnsFalse()
+    [Test]
+    public async Task ReadUserData_UserDataWithZeroHeaderChunks_ReturnsFalse()
     {
         // Arrange
         using var ms = new MemoryStream(
@@ -39,10 +39,10 @@ public class GbxHeaderReaderTests
         var result = parser.ReadUserData(node: null, unknownHeader: null);
 
         // Assert
-        Assert.False(result);
+        await Assert.That(result).IsFalse();
     }
 
-    [Fact]
+    [Test]
     public void ReadUserData_UnknownNodeAndNoHeaderObject_Throws()
     {
         // Arrange
@@ -61,8 +61,8 @@ public class GbxHeaderReaderTests
         Assert.Throws<Exception>(() => parser.ReadUserData(node: null, unknownHeader: null));
     }
 
-    [Fact]
-    public void ReadUserData_UnknownNode_ReadsAndAddsUnknownHeaderChunk()
+    [Test]
+    public async Task ReadUserData_UnknownNode_ReadsAndAddsUnknownHeaderChunk()
     {
         // Arrange
         using var ms = new MemoryStream(
@@ -82,16 +82,16 @@ public class GbxHeaderReaderTests
         var result = parser.ReadUserData(node: null, unknownHeader);
 
         // Assert
-        Assert.True(result);
-        Assert.Single(unknownHeader.UserData);
-        Assert.False(unknownHeader.UserData.First().IsHeavy, "Header chunk is heavy but should not be.");
-        Assert.Equal(expected: (uint)0x03043069, actual: unknownHeader.UserData.First().Id);
-        Assert.Equal(expected: [6, 0, 0, 0], actual: ((HeaderChunk)unknownHeader.UserData.First()).Data);
-        Assert.Equal(expected: 20, actual: ms.Position);
+        await Assert.That(result).IsTrue();
+        await Assert.That(unknownHeader.UserData).HasSingleItem();
+        await Assert.That(unknownHeader.UserData.First().IsHeavy).IsFalse().Because("Header chunk is heavy but should not be.");
+        await Assert.That(unknownHeader.UserData.First().Id).IsEqualTo((uint)0x03043069);
+        await Assert.That(((HeaderChunk)unknownHeader.UserData.First()).Data).IsEquivalentTo((byte[])[6, 0, 0, 0], CollectionOrdering.Matching);
+        await Assert.That(ms.Position).IsEqualTo(20);
     }
 
-    [Fact]
-    public void ReadUserData_KnownNode_ReadsAndAddsUnknownHeaderChunk()
+    [Test]
+    public async Task ReadUserData_KnownNode_ReadsAndAddsUnknownHeaderChunk()
     {
         // Arrange
         using var ms = new MemoryStream(
@@ -111,17 +111,17 @@ public class GbxHeaderReaderTests
         var result = parser.ReadUserData(node, unknownHeader: null);
 
         // Assert
-        Assert.True(result);
-        Assert.Single(node.Chunks);
-        Assert.IsType<HeaderChunk>(node.Chunks.First());
-        Assert.False(((HeaderChunk)node.Chunks.First()).IsHeavy, "Header chunk is heavy but should not be.");
-        Assert.Equal(expected: (uint)0x03043069, actual: node.Chunks.First().Id);
-        Assert.Equal(expected: [6, 0, 0, 0], actual: ((HeaderChunk)node.Chunks.First()).Data);
-        Assert.Equal(expected: 20, actual: ms.Position);
+        await Assert.That(result).IsTrue();
+        await Assert.That(node!.Chunks).HasSingleItem();
+        await Assert.That(node.Chunks.First()).IsTypeOf<HeaderChunk>();
+        await Assert.That(((HeaderChunk)node.Chunks.First()).IsHeavy).IsFalse().Because("Header chunk is heavy but should not be.");
+        await Assert.That(node.Chunks.First().Id).IsEqualTo((uint)0x03043069);
+        await Assert.That(((HeaderChunk)node.Chunks.First()).Data).IsEquivalentTo((byte[])[6, 0, 0, 0], CollectionOrdering.Matching);
+        await Assert.That(ms.Position).IsEqualTo(20);
     }
 
-    [Fact]
-    public void ReadUserData_KnownNode_CreatesAndReadsKnownHeaderChunk()
+    [Test]
+    public async Task ReadUserData_KnownNode_CreatesAndReadsKnownHeaderChunk()
     {
         // Arrange
         using var ms = new MemoryStream(
@@ -141,16 +141,16 @@ public class GbxHeaderReaderTests
         var result = parser.ReadUserData(node, unknownHeader: null);
 
         // Assert
-        Assert.True(result);
-        Assert.Single(node.Chunks);
-        Assert.IsType<CGameCtnChallenge.HeaderChunk03043004>(node.Chunks.First());
-        Assert.False(((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).IsHeavy, "Header chunk is heavy but should not be.");
-        Assert.Equal(expected: 6, actual: ((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).Version);
-        Assert.Equal(expected: 20, actual: ms.Position);
+        await Assert.That(result).IsTrue();
+        await Assert.That(node!.Chunks).HasSingleItem();
+        await Assert.That(node.Chunks.First()).IsTypeOf<CGameCtnChallenge.HeaderChunk03043004>();
+        await Assert.That(((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).IsHeavy).IsFalse().Because("Header chunk is heavy but should not be.");
+        await Assert.That(((CGameCtnChallenge.HeaderChunk03043004)node.Chunks.First()).Version).IsEqualTo(6);
+        await Assert.That(ms.Position).IsEqualTo(20);
     }
 
-    [Fact]
-    public void Parse_KnownNode_Version6_ParsesCorrectly()
+    [Test]
+    public async Task Parse_KnownNode_Version6_ParsesCorrectly()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -178,20 +178,20 @@ public class GbxHeaderReaderTests
         var header = parser.Parse(out var node);
 
         // Assert
-        Assert.Equal(expected: 6, actual: header.Basic.Version);
-        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
-        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
-        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
-        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
-        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
-        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
-        Assert.IsType<CGameCtnChallenge>(node);
-        Assert.Single(node.Chunks);
-        Assert.Equal(expected: 69, actual: header.NumNodes);
+        await Assert.That(header.Basic.Version).IsEqualTo((ushort)6);
+        await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
+        await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
+        await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
+        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.ClassId).IsEqualTo((uint)0x03043000);
+        await Assert.That(header).IsTypeOf<GbxHeader<CGameCtnChallenge>>();
+        await Assert.That((object?)node).IsTypeOf<CGameCtnChallenge>();
+        await Assert.That(node!.Chunks).HasSingleItem();
+        await Assert.That(header.NumNodes).IsEqualTo(69);
     }
 
-    [Fact]
-    public void Parse_KnownNode_VersionLowerThan6_ParsesCorrectly()
+    [Test]
+    public async Task Parse_KnownNode_VersionLowerThan6_ParsesCorrectly()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -214,20 +214,20 @@ public class GbxHeaderReaderTests
         var header = parser.Parse(out var node);
 
         // Assert
-        Assert.Equal(expected: 4, actual: header.Basic.Version);
-        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
-        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
-        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
-        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
-        Assert.Equal(expected: (uint)0x03043000, actual: header.ClassId);
-        Assert.IsType<GbxHeader<CGameCtnChallenge>>(header);
-        Assert.IsType<CGameCtnChallenge>(node);
-        Assert.Empty(node.Chunks);
-        Assert.Equal(expected: 69, actual: header.NumNodes);
+        await Assert.That(header.Basic.Version).IsEqualTo((ushort)4);
+        await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
+        await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
+        await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
+        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.ClassId).IsEqualTo((uint)0x03043000);
+        await Assert.That(header).IsTypeOf<GbxHeader<CGameCtnChallenge>>();
+        await Assert.That((object?)node).IsTypeOf<CGameCtnChallenge>();
+        await Assert.That(node!.Chunks).IsEmpty();
+        await Assert.That(header.NumNodes).IsEqualTo(69);
     }
 
-    [Fact]
-    public void Parse_UnknownNode_Version6_ParsesCorrectly()
+    [Test]
+    public async Task Parse_UnknownNode_Version6_ParsesCorrectly()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -255,20 +255,20 @@ public class GbxHeaderReaderTests
         var header = parser.Parse(out var node);
 
         // Assert
-        Assert.Equal(expected: 6, actual: header.Basic.Version);
-        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
-        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
-        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
-        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
-        Assert.Equal(expected: (uint)0x03999000, actual: header.ClassId);
-        Assert.IsType<GbxHeaderUnknown>(header);
-        Assert.Single(((GbxHeaderUnknown)header).UserData);
-        Assert.Null(node);
-        Assert.Equal(expected: 69, actual: header.NumNodes);
+        await Assert.That(header.Basic.Version).IsEqualTo((ushort)6);
+        await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
+        await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
+        await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
+        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.ClassId).IsEqualTo((uint)0x03999000);
+        await Assert.That(header).IsTypeOf<GbxHeaderUnknown>();
+        await Assert.That(((GbxHeaderUnknown)header).UserData).HasSingleItem();
+        await Assert.That((object?)node).IsNull();
+        await Assert.That(header.NumNodes).IsEqualTo(69);
     }
 
-    [Fact]
-    public void Parse_UnknownNode_VersionLowerThan6_ParsesCorrectly()
+    [Test]
+    public async Task Parse_UnknownNode_VersionLowerThan6_ParsesCorrectly()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -291,15 +291,15 @@ public class GbxHeaderReaderTests
         var header = parser.Parse(out var node);
 
         // Assert
-        Assert.Equal(expected: 4, actual: header.Basic.Version);
-        Assert.Equal(expected: GbxFormat.Binary, actual: header.Basic.Format);
-        Assert.Equal(expected: GbxCompression.Uncompressed, actual: header.Basic.CompressionOfRefTable);
-        Assert.Equal(expected: GbxCompression.Compressed, actual: header.Basic.CompressionOfBody);
-        Assert.Equal(expected: GbxUnknownByte.R, actual: header.Basic.UnknownByte);
-        Assert.Equal(expected: (uint)0x03999000, actual: header.ClassId);
-        Assert.IsType<GbxHeaderUnknown>(header);
-        Assert.Empty(((GbxHeaderUnknown)header).UserData);
-        Assert.Null(node);
-        Assert.Equal(expected: 69, actual: header.NumNodes);
+        await Assert.That(header.Basic.Version).IsEqualTo((ushort)4);
+        await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
+        await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
+        await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
+        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.ClassId).IsEqualTo((uint)0x03999000);
+        await Assert.That(header).IsTypeOf<GbxHeaderUnknown>();
+        await Assert.That(((GbxHeaderUnknown)header).UserData).IsEmpty();
+        await Assert.That((object?)node).IsNull();
+        await Assert.That(header.NumNodes).IsEqualTo(69);
     }
 }
