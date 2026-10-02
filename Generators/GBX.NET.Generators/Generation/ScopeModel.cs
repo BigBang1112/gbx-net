@@ -36,6 +36,18 @@ internal sealed class ScopeModel
             return;
         }
 
+        var local = LayoutModel.Has(declaration.Attributes, "local");
+        var write = LayoutModel.WriteExpression(declaration.Attributes);
+        if (local && !LayoutModel.Has(declaration.Attributes, "write"))
+        {
+            throw new InvalidOperationException("A local field requires a write expression.");
+        }
+        if (LayoutModel.Has(declaration.Attributes, "write") &&
+            (string.IsNullOrWhiteSpace(write) || Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(write!.Replace("::", ".")).ContainsDiagnostics))
+        {
+            throw new InvalidOperationException("The write flag requires a valid expression.");
+        }
+
         var isVersion = declaration.Type.Name is "version" or "versionb";
 
         if (declaration.IsSpecialKeyword && !isVersion)
@@ -53,11 +65,14 @@ internal sealed class ScopeModel
         
         var name = isVersion ? "Version" : string.IsNullOrEmpty(declaration.Name) ? $"U{unknownCount:00}" : declaration.Name!;
         
-        var model = Fields.FirstOrDefault(x => x.Name == name);
+        var model = local ? null : Fields.FirstOrDefault(x => x.Name == name);
         if (model is null)
         {
-            model = new FieldModel(name, declaration, unknown && !isVersion, isVersion);
-            Fields.Add(model);
+            model = new FieldModel(name, declaration, unknown && !isVersion, isVersion && !local);
+            if (!local)
+            {
+                Fields.Add(model);
+            }
         }
 
         model.Occurrences.Add(declaration);

@@ -64,7 +64,7 @@ internal static class AppliedWithChunkRanges
                         break;
 
                     case FieldDeclaration declaration when declaration.Name == field &&
-                        chunk.Scope.Occurrences.TryGetValue(declaration, out var occurrence) && !occurrence.IsUnknown:
+                        chunk.Scope.Occurrences.TryGetValue(declaration, out var occurrence) && !occurrence.IsUnknown && !occurrence.IsLocal:
                         result.AddRange(current);
                         break;
 

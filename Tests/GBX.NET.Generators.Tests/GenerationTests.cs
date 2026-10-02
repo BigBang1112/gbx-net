@@ -9,6 +9,160 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task KeepsLocalFieldsInSerializationScopeAndUsesWriteExpressionsOnlyWhenWriting()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public int WriteCount() => 2;
+                public int WriteValue() => throw new System.InvalidOperationException("Read evaluated a write expression");
+
+                public static string Verify()
+                {
+                    var node = new Example();
+                    var chunk = new Chunk03043001();
+                    chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(2, 7, 8, 9)));
+                    var readValue = node.Value;
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    new Chunk03043002().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer));
+                    return readValue + ":" + string.Join(",", writer.Values) + ":" + node.Value;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Count (local, write: "WriteCount()")
+              loop Count
+                int Item (local, write: 5)
+                Value = Item
+              int Value (write: "WriteValue()")
+            0x002
+              int Count (local, write: "WriteCount()")
+              loop Count
+                int Item (local, write: 5)
+              int Value (write: "Value + 1")
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("int Count = default!;");
+        await Assert.That(generated).Contains("Count = r.ReadInt32();");
+        await Assert.That(generated).Contains("Count = (n.WriteCount());");
+        await Assert.That(generated).Contains("i1 < Count");
+        await Assert.That(generated).Contains("n.Value = Item;");
+        await Assert.That(generated).Contains("w.Write((n.Value+ 1));");
+        var root = Engine(result).GetRoot();
+        await Assert.That(root.DescendantNodes().OfType<PropertyDeclarationSyntax>())
+            .DoesNotContain(x => x.Identifier.ValueText is "Count" or "Item");
+        await Assert.That(root.DescendantNodes().OfType<FieldDeclarationSyntax>())
+            .DoesNotContain(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText is "Count" or "count" or "Item" or "item"));
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("9:2,5,5,10:9");
+    }
+
+    [Test]
+    public async Task SupportsLocalAndWriteFieldsInSeparateChunksAndArchives()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                public partial class Chunk03043001 { }
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                public partial class Metadata { }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Count (local, write: 2)
+              loop Count
+                int Item (local, write: 5)
+                Value = Item
+              int Value (write: "Value + 1")
+            archive Metadata
+              int Count (local, write: 2)
+              int Value (write: "Count + 1")
+            archive
+              int Count (local, write: 2)
+              int Value (write: "Count + 1")
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("var Count = r.ReadInt32();");
+        await Assert.That(generated).Contains("var Item = r.ReadInt32();");
+        await Assert.That(generated).Contains("int Count = (2);");
+        await Assert.That(generated).Contains("w.Write((Count+ 1));");
+        await Assert.That(generated).DoesNotContain("public int Count");
+    }
+
+    [Test]
+    public async Task ReportsLocalFieldsWithoutWriteAndInvalidWriteExpressions()
+    {
+        foreach (var flags in new[] { "local", "local, write", "write", "write: \"\"", "write: \"Value +\"" })
+        {
+            var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  int Value ({flags})\n"));
+            await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("write"));
+            await Assert.That(result.GeneratedSources.Where(x => x.HintName.StartsWith("Engines/"))).IsEmpty();
+        }
+    }
+
+    [Test]
+    public async Task TracksLocalScopeForConditionsArrayLengthsAndPropertyAttributes()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version (write: 3)
+              block
+                int Count (local, write: Count)
+                if Count > 0
+                  int[Count] Items (local, write: "new int[Count]")
+              block
+                int Count (local, write: 3)
+                int (local, write: Count)
+              int Value (write: Count)
+              switch Value
+                case 1
+                  int Count (local, write: 1)
+                case 2
+                  int Count (local, write: 2)
+                default
+                  int Count (local, write: 3)
+            0x002
+              int Count
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("if (Count> 0)");
+        await Assert.That(generated).Contains("w.Write((3));");
+        await Assert.That(generated).Contains("Count = (n.Count);");
+        await Assert.That(generated).Contains("Items = r.ReadArray<int>(Count);");
+        await Assert.That(generated).Contains("Items = (new int[Count]);");
+        await Assert.That(generated).Contains("w.WriteArray<int>(Items, Count);");
+        await Assert.That(generated).Contains("U01 = (Count);");
+        await Assert.That(generated).Contains("w.Write((n.Count));");
+        await Assert.That(generated).DoesNotContain("public int U01");
+        await Assert.That(generated).DoesNotContain("public int[]? Items");
+        var count = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Count");
+        await Assert.That(count.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043002>");
+        await Assert.That(count.AttributeLists.ToString()).DoesNotContain("Chunk03043001");
+    }
+
+    [Test]
     public async Task CompilesWithCustomPropertiesBackingFieldsOverloadsAndAliasedSerializationMethods()
     {
         const string source = """
@@ -700,6 +854,10 @@ public class GenerationTests
             public class ClassAttribute(uint id) : System.Attribute { }
             public class ChunkAttribute(uint id) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
+            public class ChunkGenerationOptionsAttribute : System.Attribute
+            {
+                public int StructureKind { get; set; }
+            }
             [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
             public class AppliedWithChunkAttribute<T> : System.Attribute
             {
@@ -709,8 +867,18 @@ public class GenerationTests
         }
         namespace GBX.NET.Serialization
         {
-            public class GbxReader { }
-            public class GbxWriter { }
+            public class GbxReader(params int[] values)
+            {
+                private readonly System.Collections.Generic.Queue<int> values = new(values);
+                public int ReadInt32() => values.Dequeue();
+                public T[] ReadArray<T>(int length) where T : struct => new T[length];
+            }
+            public class GbxWriter
+            {
+                public System.Collections.Generic.List<int> Values { get; } = new();
+                public void Write(int value) => Values.Add(value);
+                public void WriteArray<T>(T[]? value, int length) where T : struct { }
+            }
             public interface IReadable { void Read(GbxReader reader, int version = 0); }
             public interface IWritable { void Write(GbxWriter writer, int version = 0); }
             public interface IReadableWritable { void ReadWrite(GbxReaderWriter readerWriter, int version = 0); }
@@ -727,10 +895,17 @@ public class GenerationTests
             public class GbxReaderWriter : System.IDisposable
             {
                 public GbxReaderWriter() { }
-                public GbxReaderWriter(GbxReader reader) { }
-                public GbxReaderWriter(GbxWriter writer) { }
-                public void Int32(ref int value) { }
-                public int Int32(int value) => value;
+                public GbxReader? Reader { get; }
+                public GbxWriter? Writer { get; }
+                public GbxReaderWriter(GbxReader reader) { Reader = reader; }
+                public GbxReaderWriter(GbxWriter writer) { Writer = writer; }
+                public void Int32(ref int value) { value = Int32(value); }
+                public int Int32(int value)
+                {
+                    if (Reader is not null) value = Reader.ReadInt32();
+                    Writer?.Write(value);
+                    return value;
+                }
                 public void VersionInt32(GBX.NET.IVersionable value) { }
                 public void ArrayReadableWritable<T>(ref T[]? value) where T : IReadableWritable, new() { }
                 public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
@@ -754,6 +929,8 @@ public class GenerationTests
             {
                 public virtual uint Id => 0;
                 public virtual void ReadWrite(T node, GBX.NET.Serialization.GbxReaderWriter rw) { }
+                public virtual void Read(T node, GBX.NET.Serialization.GbxReader r) { }
+                public virtual void Write(T node, GBX.NET.Serialization.GbxWriter w) { }
             }
         }
         namespace GBX.NET.Engines.Game

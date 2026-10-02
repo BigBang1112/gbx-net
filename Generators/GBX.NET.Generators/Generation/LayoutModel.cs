@@ -82,4 +82,14 @@ internal sealed class LayoutModel
     {
         return attributes?.Entries.FirstOrDefault(x => x.Name == name)?.Value;
     }
+
+    public static string? WriteExpression(AttributeList? attributes)
+    {
+        var value = Attribute(attributes, "write");
+        if (value is null) return null;
+
+        var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(value);
+        return expression is Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax literal && literal.Token.Value is string text
+            ? text : value;
+    }
 }
