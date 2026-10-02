@@ -1,25 +1,25 @@
 CGameUserFileList 0x031B7000
 
-0x000
-  version
+0x000 [MP4.v1]
+  version = 1
   FileInfo[] Files
 
 archive FileInfo
   string Name = empty
-  byte
-  ulong
-  ulong
+  byte // Name terminator
+  filetime? FileWriteTime
+  ulong FileSize
   int<FileType> Type
   switch Type
     case FileType.Map
       id MapUid = empty
       string? MapName
-      byte
+      byte // MapName terminator
     case FileType.Ghost
-      string? GhostKind
-      byte
+      string? RecordingContext
+      byte // RecordingContext terminator
       id MapUid = empty
-      int?
+      timeint? RaceTime
     default
       throw (type: ThisShouldNotHappenException)
 
