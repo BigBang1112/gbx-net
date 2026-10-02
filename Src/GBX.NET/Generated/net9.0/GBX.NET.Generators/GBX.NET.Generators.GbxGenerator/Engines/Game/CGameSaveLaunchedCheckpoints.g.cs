@@ -34,9 +34,36 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03262000;
 
+    private int recordVersion = 33;
+    [AppliedWithChunk<Chunk03262000>(3)]
+    public int RecordVersion
+    {
+        get => this.recordVersion;
+        set => this.recordVersion = value;
+    }
+
+    private Checkpoint[]? checkpoints;
+    [AppliedWithChunk<Chunk03262000>]
+    public Checkpoint[]? Checkpoints
+    {
+        get => this.checkpoints;
+        set => this.checkpoints = value;
+    }
+
+    private Snapshot[]? snapshots;
+    [AppliedWithChunk<Chunk03262000>(1)]
+    public Snapshot[]? Snapshots
+    {
+        get => this.snapshots;
+        set => this.snapshots = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameSaveLaunchedCheckpoints)clone).recordVersion = context.Clone(this.recordVersion)!;
+        ((CGameSaveLaunchedCheckpoints)clone).checkpoints = context.CloneArray(this.checkpoints)!;
+        ((CGameSaveLaunchedCheckpoints)clone).snapshots = context.CloneArray(this.snapshots)!;
     }
 
     public CGameSaveLaunchedCheckpoints()
@@ -44,14 +71,1701 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     }
 
     [Chunk(0x03262000)]
-    public partial class Chunk03262000 : Chunk<CGameSaveLaunchedCheckpoints>
+    [ChunkGameVersion(GameVersion.TM2020, 7)]
+    public partial class Chunk03262000 : Chunk<CGameSaveLaunchedCheckpoints>, IVersionable
     {
         public override uint Id => 0x03262000;
-        public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 7;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03262000)clone).Version = context.Clone(this.Version)!;
+        }
+    }
+
+    public partial class Checkpoint : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CheckpointState? state;
+        public CheckpointState? State
+        {
+            get => this.state;
+            set => this.state = value;
+        }
+
+        private int snapshotCount;
+        public int SnapshotCount
+        {
+            get => this.snapshotCount;
+            set => this.snapshotCount = value;
+        }
+
+        private int legacyModelIndex;
+        public int LegacyModelIndex
+        {
+            get => this.legacyModelIndex;
+            set => this.legacyModelIndex = value;
+        }
+
+        private int legacyModelFlags;
+        public int LegacyModelFlags
+        {
+            get => this.legacyModelFlags;
+            set => this.legacyModelFlags = value;
+        }
+
+        private int modelIndex;
+        public int ModelIndex
+        {
+            get => this.modelIndex;
+            set => this.modelIndex = value;
+        }
+
+        private Ident? model;
+        public Ident? Model
+        {
+            get => this.model;
+            set => this.model = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Checkpoint)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Checkpoint)clone).state = context.Clone(this.state)!;
+            ((Checkpoint)clone).snapshotCount = context.Clone(this.snapshotCount)!;
+            ((Checkpoint)clone).legacyModelIndex = context.Clone(this.legacyModelIndex)!;
+            ((Checkpoint)clone).legacyModelFlags = context.Clone(this.legacyModelFlags)!;
+            ((Checkpoint)clone).modelIndex = context.Clone(this.modelIndex)!;
+            ((Checkpoint)clone).model = context.Clone(this.model)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class CheckpointState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int time;
+        public int Time
+        {
+            get => this.time;
+            set => this.time = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int classId;
+        public int ClassId
+        {
+            get => this.classId;
+            set => this.classId = value;
+        }
+
+        private VehicleState? vehicle;
+        public VehicleState? Vehicle
+        {
+            get => this.vehicle;
+            set => this.vehicle = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private byte u11;
+        public byte U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private byte u12;
+        public byte U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private int u13;
+        public int U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private Event[]? events;
+        public Event[]? Events
+        {
+            get => this.events;
+            set => this.events = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CheckpointState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CheckpointState)clone).u01 = context.Clone(this.u01)!;
+            ((CheckpointState)clone).u02 = context.Clone(this.u02)!;
+            ((CheckpointState)clone).time = context.Clone(this.time)!;
+            ((CheckpointState)clone).u03 = context.Clone(this.u03)!;
+            ((CheckpointState)clone).u04 = context.Clone(this.u04)!;
+            ((CheckpointState)clone).u05 = context.Clone(this.u05)!;
+            ((CheckpointState)clone).u06 = context.Clone(this.u06)!;
+            ((CheckpointState)clone).u07 = context.Clone(this.u07)!;
+            ((CheckpointState)clone).classId = context.Clone(this.classId)!;
+            ((CheckpointState)clone).vehicle = context.Clone(this.vehicle)!;
+            ((CheckpointState)clone).u08 = context.Clone(this.u08)!;
+            ((CheckpointState)clone).u09 = context.Clone(this.u09)!;
+            ((CheckpointState)clone).u10 = context.Clone(this.u10)!;
+            ((CheckpointState)clone).u11 = context.Clone(this.u11)!;
+            ((CheckpointState)clone).u12 = context.Clone(this.u12)!;
+            ((CheckpointState)clone).u13 = context.Clone(this.u13)!;
+            ((CheckpointState)clone).events = context.CloneArray(this.events)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v == 0)
+            {
+                rw.Int32(ref this.u01);
+                rw.Int32(ref this.u02);
+            }
+
+            rw.Int32(ref this.time);
+
+            if (v >= 2)
+            {
+                rw.Int32(ref this.u03);
+            }
+
+            if (v >= 1)
+            {
+                rw.Int32(ref this.u04);
+            }
+
+            rw.Int32(ref this.u05);
+            rw.Int32(ref this.u06);
+            rw.Int32(ref this.u07);
+            rw.Int32(ref this.classId);
+            rw.ReadableWritable<VehicleState>(ref this.vehicle, version: v);
+            rw.Int32(ref this.u08);
+            rw.Int32(ref this.u09);
+            rw.Int32(ref this.u10);
+
+            if (v <= 4)
+            {
+                rw.Byte(ref this.u11);
+            }
+
+            rw.Byte(ref this.u12);
+            rw.Int32(ref this.u13);
+            rw.ArrayReadableWritable<Event>(ref this.events!, 2, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Event : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte[]? data;
+        public byte[]? Data
+        {
+            get => this.data;
+            set => this.data = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Event)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Event)clone).data = context.CloneArray(this.data)!;
+            ((Event)clone).u01 = context.Clone(this.u01)!;
+            ((Event)clone).u02 = context.Clone(this.u02)!;
+            ((Event)clone).u03 = context.Clone(this.u03)!;
+            ((Event)clone).u04 = context.Clone(this.u04)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Data(ref this.data!, 4);
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Int32(ref this.u04);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class VehicleState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private Quat rotation;
+        public Quat Rotation
+        {
+            get => this.rotation;
+            set => this.rotation = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private int u11;
+        public int U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private int u12;
+        public int U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private int u13;
+        public int U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private int u14;
+        public int U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private int u15;
+        public int U15
+        {
+            get => this.u15;
+            set => this.u15 = value;
+        }
+
+        private int u16;
+        public int U16
+        {
+            get => this.u16;
+            set => this.u16 = value;
+        }
+
+        private int u17;
+        public int U17
+        {
+            get => this.u17;
+            set => this.u17 = value;
+        }
+
+        private int u18;
+        public int U18
+        {
+            get => this.u18;
+            set => this.u18 = value;
+        }
+
+        private int u19;
+        public int U19
+        {
+            get => this.u19;
+            set => this.u19 = value;
+        }
+
+        private byte u20;
+        public byte U20
+        {
+            get => this.u20;
+            set => this.u20 = value;
+        }
+
+        private int u21;
+        public int U21
+        {
+            get => this.u21;
+            set => this.u21 = value;
+        }
+
+        private int u22;
+        public int U22
+        {
+            get => this.u22;
+            set => this.u22 = value;
+        }
+
+        private int u23;
+        public int U23
+        {
+            get => this.u23;
+            set => this.u23 = value;
+        }
+
+        private int u24;
+        public int U24
+        {
+            get => this.u24;
+            set => this.u24 = value;
+        }
+
+        private byte u25;
+        public byte U25
+        {
+            get => this.u25;
+            set => this.u25 = value;
+        }
+
+        private byte u26;
+        public byte U26
+        {
+            get => this.u26;
+            set => this.u26 = value;
+        }
+
+        private int u27;
+        public int U27
+        {
+            get => this.u27;
+            set => this.u27 = value;
+        }
+
+        private int u28;
+        public int U28
+        {
+            get => this.u28;
+            set => this.u28 = value;
+        }
+
+        private int u29;
+        public int U29
+        {
+            get => this.u29;
+            set => this.u29 = value;
+        }
+
+        private int u30;
+        public int U30
+        {
+            get => this.u30;
+            set => this.u30 = value;
+        }
+
+        private int u31;
+        public int U31
+        {
+            get => this.u31;
+            set => this.u31 = value;
+        }
+
+        private int u32;
+        public int U32
+        {
+            get => this.u32;
+            set => this.u32 = value;
+        }
+
+        private int u33;
+        public int U33
+        {
+            get => this.u33;
+            set => this.u33 = value;
+        }
+
+        private int u34;
+        public int U34
+        {
+            get => this.u34;
+            set => this.u34 = value;
+        }
+
+        private int u35;
+        public int U35
+        {
+            get => this.u35;
+            set => this.u35 = value;
+        }
+
+        private int u36;
+        public int U36
+        {
+            get => this.u36;
+            set => this.u36 = value;
+        }
+
+        private int u37;
+        public int U37
+        {
+            get => this.u37;
+            set => this.u37 = value;
+        }
+
+        private int u38;
+        public int U38
+        {
+            get => this.u38;
+            set => this.u38 = value;
+        }
+
+        private int u39;
+        public int U39
+        {
+            get => this.u39;
+            set => this.u39 = value;
+        }
+
+        private int u40;
+        public int U40
+        {
+            get => this.u40;
+            set => this.u40 = value;
+        }
+
+        private byte u41;
+        public byte U41
+        {
+            get => this.u41;
+            set => this.u41 = value;
+        }
+
+        private byte u42;
+        public byte U42
+        {
+            get => this.u42;
+            set => this.u42 = value;
+        }
+
+        private int u43;
+        public int U43
+        {
+            get => this.u43;
+            set => this.u43 = value;
+        }
+
+        private int u44;
+        public int U44
+        {
+            get => this.u44;
+            set => this.u44 = value;
+        }
+
+        private int u45;
+        public int U45
+        {
+            get => this.u45;
+            set => this.u45 = value;
+        }
+
+        private int u46;
+        public int U46
+        {
+            get => this.u46;
+            set => this.u46 = value;
+        }
+
+        private byte u47;
+        public byte U47
+        {
+            get => this.u47;
+            set => this.u47 = value;
+        }
+
+        private int u48;
+        public int U48
+        {
+            get => this.u48;
+            set => this.u48 = value;
+        }
+
+        private int u49;
+        public int U49
+        {
+            get => this.u49;
+            set => this.u49 = value;
+        }
+
+        private int u50;
+        public int U50
+        {
+            get => this.u50;
+            set => this.u50 = value;
+        }
+
+        private ulong u51;
+        public ulong U51
+        {
+            get => this.u51;
+            set => this.u51 = value;
+        }
+
+        private ulong u52;
+        public ulong U52
+        {
+            get => this.u52;
+            set => this.u52 = value;
+        }
+
+        private int u53;
+        public int U53
+        {
+            get => this.u53;
+            set => this.u53 = value;
+        }
+
+        private int u54;
+        public int U54
+        {
+            get => this.u54;
+            set => this.u54 = value;
+        }
+
+        private int u55;
+        public int U55
+        {
+            get => this.u55;
+            set => this.u55 = value;
+        }
+
+        private int u56;
+        public int U56
+        {
+            get => this.u56;
+            set => this.u56 = value;
+        }
+
+        private int u57;
+        public int U57
+        {
+            get => this.u57;
+            set => this.u57 = value;
+        }
+
+        private ulong u58;
+        public ulong U58
+        {
+            get => this.u58;
+            set => this.u58 = value;
+        }
+
+        private ulong u59;
+        public ulong U59
+        {
+            get => this.u59;
+            set => this.u59 = value;
+        }
+
+        private ulong u60;
+        public ulong U60
+        {
+            get => this.u60;
+            set => this.u60 = value;
+        }
+
+        private int u61;
+        public int U61
+        {
+            get => this.u61;
+            set => this.u61 = value;
+        }
+
+        private int u62;
+        public int U62
+        {
+            get => this.u62;
+            set => this.u62 = value;
+        }
+
+        private int u63;
+        public int U63
+        {
+            get => this.u63;
+            set => this.u63 = value;
+        }
+
+        private int u64;
+        public int U64
+        {
+            get => this.u64;
+            set => this.u64 = value;
+        }
+
+        private int u65;
+        public int U65
+        {
+            get => this.u65;
+            set => this.u65 = value;
+        }
+
+        private int u66;
+        public int U66
+        {
+            get => this.u66;
+            set => this.u66 = value;
+        }
+
+        private int u67;
+        public int U67
+        {
+            get => this.u67;
+            set => this.u67 = value;
+        }
+
+        private int u68;
+        public int U68
+        {
+            get => this.u68;
+            set => this.u68 = value;
+        }
+
+        private int u69;
+        public int U69
+        {
+            get => this.u69;
+            set => this.u69 = value;
+        }
+
+        private int u70;
+        public int U70
+        {
+            get => this.u70;
+            set => this.u70 = value;
+        }
+
+        private ulong u71;
+        public ulong U71
+        {
+            get => this.u71;
+            set => this.u71 = value;
+        }
+
+        private int u72;
+        public int U72
+        {
+            get => this.u72;
+            set => this.u72 = value;
+        }
+
+        private int u73;
+        public int U73
+        {
+            get => this.u73;
+            set => this.u73 = value;
+        }
+
+        private WheelState[]? wheels;
+        public WheelState[]? Wheels
+        {
+            get => this.wheels;
+            set => this.wheels = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (VehicleState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((VehicleState)clone).u01 = context.Clone(this.u01)!;
+            ((VehicleState)clone).rotation = context.Clone(this.rotation)!;
+            ((VehicleState)clone).u02 = context.Clone(this.u02)!;
+            ((VehicleState)clone).u03 = context.Clone(this.u03)!;
+            ((VehicleState)clone).u04 = context.Clone(this.u04)!;
+            ((VehicleState)clone).u05 = context.Clone(this.u05)!;
+            ((VehicleState)clone).u06 = context.Clone(this.u06)!;
+            ((VehicleState)clone).u07 = context.Clone(this.u07)!;
+            ((VehicleState)clone).u08 = context.Clone(this.u08)!;
+            ((VehicleState)clone).u09 = context.Clone(this.u09)!;
+            ((VehicleState)clone).u10 = context.Clone(this.u10)!;
+            ((VehicleState)clone).u11 = context.Clone(this.u11)!;
+            ((VehicleState)clone).u12 = context.Clone(this.u12)!;
+            ((VehicleState)clone).u13 = context.Clone(this.u13)!;
+            ((VehicleState)clone).u14 = context.Clone(this.u14)!;
+            ((VehicleState)clone).u15 = context.Clone(this.u15)!;
+            ((VehicleState)clone).u16 = context.Clone(this.u16)!;
+            ((VehicleState)clone).u17 = context.Clone(this.u17)!;
+            ((VehicleState)clone).u18 = context.Clone(this.u18)!;
+            ((VehicleState)clone).u19 = context.Clone(this.u19)!;
+            ((VehicleState)clone).u20 = context.Clone(this.u20)!;
+            ((VehicleState)clone).u21 = context.Clone(this.u21)!;
+            ((VehicleState)clone).u22 = context.Clone(this.u22)!;
+            ((VehicleState)clone).u23 = context.Clone(this.u23)!;
+            ((VehicleState)clone).u24 = context.Clone(this.u24)!;
+            ((VehicleState)clone).u25 = context.Clone(this.u25)!;
+            ((VehicleState)clone).u26 = context.Clone(this.u26)!;
+            ((VehicleState)clone).u27 = context.Clone(this.u27)!;
+            ((VehicleState)clone).u28 = context.Clone(this.u28)!;
+            ((VehicleState)clone).u29 = context.Clone(this.u29)!;
+            ((VehicleState)clone).u30 = context.Clone(this.u30)!;
+            ((VehicleState)clone).u31 = context.Clone(this.u31)!;
+            ((VehicleState)clone).u32 = context.Clone(this.u32)!;
+            ((VehicleState)clone).u33 = context.Clone(this.u33)!;
+            ((VehicleState)clone).u34 = context.Clone(this.u34)!;
+            ((VehicleState)clone).u35 = context.Clone(this.u35)!;
+            ((VehicleState)clone).u36 = context.Clone(this.u36)!;
+            ((VehicleState)clone).u37 = context.Clone(this.u37)!;
+            ((VehicleState)clone).u38 = context.Clone(this.u38)!;
+            ((VehicleState)clone).u39 = context.Clone(this.u39)!;
+            ((VehicleState)clone).u40 = context.Clone(this.u40)!;
+            ((VehicleState)clone).u41 = context.Clone(this.u41)!;
+            ((VehicleState)clone).u42 = context.Clone(this.u42)!;
+            ((VehicleState)clone).u43 = context.Clone(this.u43)!;
+            ((VehicleState)clone).u44 = context.Clone(this.u44)!;
+            ((VehicleState)clone).u45 = context.Clone(this.u45)!;
+            ((VehicleState)clone).u46 = context.Clone(this.u46)!;
+            ((VehicleState)clone).u47 = context.Clone(this.u47)!;
+            ((VehicleState)clone).u48 = context.Clone(this.u48)!;
+            ((VehicleState)clone).u49 = context.Clone(this.u49)!;
+            ((VehicleState)clone).u50 = context.Clone(this.u50)!;
+            ((VehicleState)clone).u51 = context.Clone(this.u51)!;
+            ((VehicleState)clone).u52 = context.Clone(this.u52)!;
+            ((VehicleState)clone).u53 = context.Clone(this.u53)!;
+            ((VehicleState)clone).u54 = context.Clone(this.u54)!;
+            ((VehicleState)clone).u55 = context.Clone(this.u55)!;
+            ((VehicleState)clone).u56 = context.Clone(this.u56)!;
+            ((VehicleState)clone).u57 = context.Clone(this.u57)!;
+            ((VehicleState)clone).u58 = context.Clone(this.u58)!;
+            ((VehicleState)clone).u59 = context.Clone(this.u59)!;
+            ((VehicleState)clone).u60 = context.Clone(this.u60)!;
+            ((VehicleState)clone).u61 = context.Clone(this.u61)!;
+            ((VehicleState)clone).u62 = context.Clone(this.u62)!;
+            ((VehicleState)clone).u63 = context.Clone(this.u63)!;
+            ((VehicleState)clone).u64 = context.Clone(this.u64)!;
+            ((VehicleState)clone).u65 = context.Clone(this.u65)!;
+            ((VehicleState)clone).u66 = context.Clone(this.u66)!;
+            ((VehicleState)clone).u67 = context.Clone(this.u67)!;
+            ((VehicleState)clone).u68 = context.Clone(this.u68)!;
+            ((VehicleState)clone).u69 = context.Clone(this.u69)!;
+            ((VehicleState)clone).u70 = context.Clone(this.u70)!;
+            ((VehicleState)clone).u71 = context.Clone(this.u71)!;
+            ((VehicleState)clone).u72 = context.Clone(this.u72)!;
+            ((VehicleState)clone).u73 = context.Clone(this.u73)!;
+            ((VehicleState)clone).wheels = context.CloneArray(this.wheels)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v >= 1)
+            {
+                rw.Int32(ref this.u01);
+            }
+
+            rw.Quat(ref this.rotation);
+            rw.Int32(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Int32(ref this.u04);
+            rw.Int32(ref this.u05);
+            rw.Int32(ref this.u06);
+            rw.Int32(ref this.u07);
+            rw.Int32(ref this.u08);
+            rw.Int32(ref this.u09);
+            rw.Int32(ref this.u10);
+            rw.Int32(ref this.u11);
+            rw.Int32(ref this.u12);
+            rw.Int32(ref this.u13);
+            rw.Int32(ref this.u14);
+            rw.Int32(ref this.u15);
+            rw.Int32(ref this.u16);
+            rw.Int32(ref this.u17);
+            rw.Int32(ref this.u18);
+            rw.Int32(ref this.u19);
+            rw.Byte(ref this.u20);
+            rw.Int32(ref this.u21);
+            rw.Int32(ref this.u22);
+            rw.Int32(ref this.u23);
+            rw.Int32(ref this.u24);
+            rw.Byte(ref this.u25);
+            rw.Byte(ref this.u26);
+            rw.Int32(ref this.u27);
+            rw.Int32(ref this.u28);
+            rw.Int32(ref this.u29);
+            rw.Int32(ref this.u30);
+            rw.Int32(ref this.u31);
+            rw.Int32(ref this.u32);
+            rw.Int32(ref this.u33);
+
+            if (v == 0)
+            {
+                rw.Int32(ref this.u34);
+            }
+
+            rw.Int32(ref this.u35);
+            rw.Int32(ref this.u36);
+            rw.Int32(ref this.u37);
+            rw.Int32(ref this.u38);
+            rw.Int32(ref this.u39);
+            rw.Int32(ref this.u40);
+            rw.Byte(ref this.u41);
+            rw.Byte(ref this.u42);
+
+            if (v >= 4)
+            {
+                rw.Int32(ref this.u43);
+            }
+
+            rw.Int32(ref this.u44);
+            rw.Int32(ref this.u45);
+            rw.Int32(ref this.u46);
+            rw.Byte(ref this.u47);
+            rw.Int32(ref this.u48);
+            rw.Int32(ref this.u49);
+
+            if (v >= 1)
+            {
+                rw.Int32(ref this.u50);
+                rw.UInt64(ref this.u51);
+                rw.UInt64(ref this.u52);
+                rw.Int32(ref this.u53);
+                rw.Int32(ref this.u54);
+                rw.Int32(ref this.u55);
+                rw.Int32(ref this.u56);
+                rw.Int32(ref this.u57);
+                rw.UInt64(ref this.u58);
+                rw.UInt64(ref this.u59);
+                rw.UInt64(ref this.u60);
+                rw.Int32(ref this.u61);
+                rw.Int32(ref this.u62);
+                rw.Int32(ref this.u63);
+                rw.Int32(ref this.u64);
+                rw.Int32(ref this.u65);
+                rw.Int32(ref this.u66);
+                rw.Int32(ref this.u67);
+                rw.Int32(ref this.u68);
+                rw.Int32(ref this.u69);
+                rw.Int32(ref this.u70);
+                rw.UInt64(ref this.u71);
+                rw.Int32(ref this.u72);
+                rw.Int32(ref this.u73);
+            }
+
+            rw.ArrayReadableWritable<WheelState>(ref this.wheels!, 4, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class WheelState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private byte u03;
+        public byte U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private int u11;
+        public int U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private int u12;
+        public int U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private byte u13;
+        public byte U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private int u14;
+        public int U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private int u15;
+        public int U15
+        {
+            get => this.u15;
+            set => this.u15 = value;
+        }
+
+        private int u16;
+        public int U16
+        {
+            get => this.u16;
+            set => this.u16 = value;
+        }
+
+        private int u17;
+        public int U17
+        {
+            get => this.u17;
+            set => this.u17 = value;
+        }
+
+        private int u18;
+        public int U18
+        {
+            get => this.u18;
+            set => this.u18 = value;
+        }
+
+        private int u19;
+        public int U19
+        {
+            get => this.u19;
+            set => this.u19 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (WheelState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((WheelState)clone).u01 = context.Clone(this.u01)!;
+            ((WheelState)clone).u02 = context.Clone(this.u02)!;
+            ((WheelState)clone).u03 = context.Clone(this.u03)!;
+            ((WheelState)clone).u04 = context.Clone(this.u04)!;
+            ((WheelState)clone).u05 = context.Clone(this.u05)!;
+            ((WheelState)clone).u06 = context.Clone(this.u06)!;
+            ((WheelState)clone).u07 = context.Clone(this.u07)!;
+            ((WheelState)clone).u08 = context.Clone(this.u08)!;
+            ((WheelState)clone).u09 = context.Clone(this.u09)!;
+            ((WheelState)clone).u10 = context.Clone(this.u10)!;
+            ((WheelState)clone).u11 = context.Clone(this.u11)!;
+            ((WheelState)clone).u12 = context.Clone(this.u12)!;
+            ((WheelState)clone).u13 = context.Clone(this.u13)!;
+            ((WheelState)clone).u14 = context.Clone(this.u14)!;
+            ((WheelState)clone).u15 = context.Clone(this.u15)!;
+            ((WheelState)clone).u16 = context.Clone(this.u16)!;
+            ((WheelState)clone).u17 = context.Clone(this.u17)!;
+            ((WheelState)clone).u18 = context.Clone(this.u18)!;
+            ((WheelState)clone).u19 = context.Clone(this.u19)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Byte(ref this.u03);
+            rw.Byte(ref this.u04);
+            rw.Int32(ref this.u05);
+            rw.Int32(ref this.u06);
+            rw.Int32(ref this.u07);
+            rw.Int32(ref this.u08);
+            rw.Int32(ref this.u09);
+            rw.Int32(ref this.u10);
+            rw.Int32(ref this.u11);
+            rw.Int32(ref this.u12);
+            rw.Byte(ref this.u13);
+            rw.Int32(ref this.u14);
+            rw.Int32(ref this.u15);
+            rw.Int32(ref this.u16);
+            rw.Int32(ref this.u17);
+
+            if (v >= 1)
+            {
+                rw.Int32(ref this.u18);
+                rw.Int32(ref this.u19);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Snapshot : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte[]? vehicleData;
+        public byte[]? VehicleData
+        {
+            get => this.vehicleData;
+            set => this.vehicleData = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private byte u10;
+        public byte U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private int[]? u11;
+        /// <summary>
+        /// One value per wheel, serialized in a four-wheel loop.
+        /// </summary>
+        public int[]? U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private int u12;
+        public int U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private int u13;
+        public int U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private int[]? u14;
+        /// <summary>
+        /// One value per wheel, serialized in a four-wheel loop.
+        /// </summary>
+        public int[]? U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private int u15;
+        public int U15
+        {
+            get => this.u15;
+            set => this.u15 = value;
+        }
+
+        private int u16;
+        public int U16
+        {
+            get => this.u16;
+            set => this.u16 = value;
+        }
+
+        private PackedWheelState[]? wheels;
+        public PackedWheelState[]? Wheels
+        {
+            get => this.wheels;
+            set => this.wheels = value;
+        }
+
+        private byte u17;
+        public byte U17
+        {
+            get => this.u17;
+            set => this.u17 = value;
+        }
+
+        private byte u18;
+        public byte U18
+        {
+            get => this.u18;
+            set => this.u18 = value;
+        }
+
+        private int u19;
+        public int U19
+        {
+            get => this.u19;
+            set => this.u19 = value;
+        }
+
+        private byte u20;
+        public byte U20
+        {
+            get => this.u20;
+            set => this.u20 = value;
+        }
+
+        private int u21;
+        public int U21
+        {
+            get => this.u21;
+            set => this.u21 = value;
+        }
+
+        private int u22;
+        public int U22
+        {
+            get => this.u22;
+            set => this.u22 = value;
+        }
+
+        private TimeInt32 time;
+        public TimeInt32 Time
+        {
+            get => this.time;
+            set => this.time = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Snapshot)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Snapshot)clone).vehicleData = context.CloneArray(this.vehicleData)!;
+            ((Snapshot)clone).u01 = context.Clone(this.u01)!;
+            ((Snapshot)clone).u02 = context.Clone(this.u02)!;
+            ((Snapshot)clone).u03 = context.Clone(this.u03)!;
+            ((Snapshot)clone).u04 = context.Clone(this.u04)!;
+            ((Snapshot)clone).u05 = context.Clone(this.u05)!;
+            ((Snapshot)clone).u06 = context.Clone(this.u06)!;
+            ((Snapshot)clone).u07 = context.Clone(this.u07)!;
+            ((Snapshot)clone).u08 = context.Clone(this.u08)!;
+            ((Snapshot)clone).u09 = context.Clone(this.u09)!;
+            ((Snapshot)clone).u10 = context.Clone(this.u10)!;
+            ((Snapshot)clone).u11 = context.CloneArray(this.u11)!;
+            ((Snapshot)clone).u12 = context.Clone(this.u12)!;
+            ((Snapshot)clone).u13 = context.Clone(this.u13)!;
+            ((Snapshot)clone).u14 = context.CloneArray(this.u14)!;
+            ((Snapshot)clone).u15 = context.Clone(this.u15)!;
+            ((Snapshot)clone).u16 = context.Clone(this.u16)!;
+            ((Snapshot)clone).wheels = context.CloneArray(this.wheels)!;
+            ((Snapshot)clone).u17 = context.Clone(this.u17)!;
+            ((Snapshot)clone).u18 = context.Clone(this.u18)!;
+            ((Snapshot)clone).u19 = context.Clone(this.u19)!;
+            ((Snapshot)clone).u20 = context.Clone(this.u20)!;
+            ((Snapshot)clone).u21 = context.Clone(this.u21)!;
+            ((Snapshot)clone).u22 = context.Clone(this.u22)!;
+            ((Snapshot)clone).time = context.Clone(this.time)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v <= 16)
+            {
+                throw new NotSupportedException();
+            }
+
+            if (v >= 34)
+            {
+                throw new NotSupportedException();
+            }
+
+            if (v == 17)
+            {
+                rw.Data(ref this.vehicleData!, 74);
+            }
+
+            if (v == 18)
+            {
+                rw.Data(ref this.vehicleData!, 75);
+            }
+
+            if (v == 19)
+            {
+                rw.Data(ref this.vehicleData!, 76);
+            }
+
+            if (v == 20)
+            {
+                rw.Data(ref this.vehicleData!, 77);
+            }
+
+            if (v >= 21)
+            {
+                if (v <= 22)
+                {
+                    rw.Data(ref this.vehicleData!, 81);
+                }
+            }
+
+            if (v >= 23)
+            {
+                rw.Data(ref this.vehicleData!, 85);
+            }
+
+            if (v >= 22)
+            {
+                rw.Int32(ref this.u01);
+            }
+
+            if (v <= 29)
+            {
+                if (v >= 24)
+                {
+                    rw.Int32(ref this.u02);
+                    rw.Int32(ref this.u03);
+                    rw.Int32(ref this.u04);
+                    rw.Int32(ref this.u05);
+                    rw.Int32(ref this.u06);
+                    rw.Int32(ref this.u07);
+                    rw.Int32(ref this.u08);
+                    rw.Int32(ref this.u09);
+                    rw.Byte(ref this.u10);
+                }
+
+                if (v >= 25)
+                {
+                    rw.Array<int>(ref this.u11!, 4);
+                }
+
+                if (v >= 26)
+                {
+                    rw.Int32(ref this.u12);
+                }
+
+                if (v >= 27)
+                {
+                    rw.Int32(ref this.u13);
+                }
+
+                if (v >= 28)
+                {
+                    rw.Array<int>(ref this.u14!, 4);
+                }
+
+                if (v >= 29)
+                {
+                    rw.Int32(ref this.u15);
+                }
+            }
+
+            if (v >= 30)
+            {
+                rw.Int32(ref this.u16);
+                rw.ArrayReadableWritable<PackedWheelState>(ref this.wheels!, 4, version: v);
+                rw.Byte(ref this.u17);
+                rw.Byte(ref this.u18);
+            }
+
+            if (v >= 31)
+            {
+                rw.Int32(ref this.u19);
+            }
+
+            if (v >= 32)
+            {
+                rw.Byte(ref this.u20);
+                rw.Int32(ref this.u21);
+            }
+
+            if (v >= 33)
+            {
+                rw.Int32(ref this.u22);
+            }
+
+            rw.TimeInt32(ref this.time);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class PackedWheelState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte u01;
+        public byte U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private byte u02;
+        public byte U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (PackedWheelState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((PackedWheelState)clone).u01 = context.Clone(this.u01)!;
+            ((PackedWheelState)clone).u02 = context.Clone(this.u02)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Byte(ref this.u01);
+            rw.Byte(ref this.u02);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

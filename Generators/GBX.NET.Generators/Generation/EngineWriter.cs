@@ -109,10 +109,19 @@ internal static class EngineWriter
 
         foreach (var property in layout.File.Syntax.Properties)
         {
-            if (SyntaxOverlap.Has(layout.Existing, property.Name)) continue;
+            var partialProperty = SyntaxOverlap.PartialPropertyImplementation(layout.Existing, property.Name);
+            if (SyntaxOverlap.Has(layout.Existing, property.Name) && partialProperty is null) continue;
+            if (layout.Scope.Fields.Any(x => x.Name == property.Name)) continue;
 
             code.BlankLine();
             Documentation(code, property.TrailingComment?.Text);
+
+            if (partialProperty is not null)
+            {
+                AppliedWithChunkAttributes(code, layout, property.Name);
+                PartialProperty(code, partialProperty);
+                continue;
+            }
 
             code.Open("public " + WireTypes.CSharp(property.Type) + (property.Type.IsNullable && property.Type.ArrayDimensions == 0 ? "?" : "") + " " + SyntaxOverlap.Escape(property.Name));
             
@@ -345,15 +354,7 @@ internal static class EngineWriter
 
                 if (ReferenceEquals(scope, layout.Scope))
                 {
-                    foreach (var applied in layout.Chunks)
-                    {
-                        foreach (var range in AppliedWithChunkRanges.Get(applied, field.Name, layout.Chunks, layout.Id))
-                        {
-                            var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
-                                range.Start > 0 ? $"({range.Start})" : "";
-                            code.Line("[AppliedWithChunk<" + applied.Name + ">" + arguments + "]");
-                        }
-                    }
+                    AppliedWithChunkAttributes(code, layout, field.Name);
                 }
 
                 if (partialProperty is not null)
@@ -395,6 +396,35 @@ internal static class EngineWriter
                     code.BlankLine();
                     code.Line($"public {type} Get{field.Name}(GbxReadSettings settings = default, bool exceptions = false) => {fileField}?.GetNode(ref {backing}, settings, exceptions) ?? {backing};");
                 }
+            }
+        }
+    }
+
+    private static void AppliedWithChunkAttributes(CodeWriter code, LayoutModel layout, string propertyName)
+    {
+        var fields = new HashSet<string>(StringComparer.Ordinal) { propertyName };
+        var property = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == propertyName);
+        if (property is not null)
+        {
+            foreach (var getter in property.Accessors.OfType<GetterAccessor>())
+            {
+                var expression = SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(getter.Expression).Replace("::", "."));
+                foreach (var identifier in expression.DescendantNodesAndSelf().OfType<IdentifierNameSyntax>())
+                {
+                    if (identifier.Parent is MemberAccessExpressionSyntax member && member.Name == identifier) continue;
+                    if (layout.Scope.Fields.Any(x => x.Name == identifier.Identifier.ValueText))
+                        fields.Add(identifier.Identifier.ValueText);
+                }
+            }
+        }
+
+        foreach (var applied in layout.Chunks)
+        {
+            foreach (var range in AppliedWithChunkRanges.Get(applied, fields, layout.Chunks, layout.Id))
+            {
+                var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
+                    range.Start > 0 ? $"({range.Start})" : "";
+                code.Line("[AppliedWithChunk<" + applied.Name + ">" + arguments + "]");
             }
         }
     }

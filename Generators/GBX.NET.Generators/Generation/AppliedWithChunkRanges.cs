@@ -23,6 +23,9 @@ internal static class AppliedWithChunkRanges
         return Normalize(result);
     }
 
+    public static IReadOnlyList<Range> Get(ChunkModel chunk, IEnumerable<string> fields, IReadOnlyList<ChunkModel> chunks, uint classId)
+        => Normalize(fields.SelectMany(field => Get(chunk, field, chunks, classId)));
+
     private static void Collect(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId,
         IReadOnlyList<Range> versions, List<Range> result, HashSet<uint> visited)
     {

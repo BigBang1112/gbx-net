@@ -1,3 +1,210 @@
 CGameSaveLaunchedCheckpoints 0x03262000
 
-0x000 (ignore)
+0x000 (demonstration: partial) [TM2020.v7]
+  version = 7
+  v3+
+    int RecordVersion = 33
+  Checkpoint[] Checkpoints (version: Version)
+  v1+
+    Snapshot[] Snapshots (version: RecordVersion)
+  // Snapshot counts and model identifiers follow both arrays, one per checkpoint.
+
+archive Checkpoint
+  CheckpointState State
+  int SnapshotCount
+  int LegacyModelIndex
+  int LegacyModelFlags
+  int ModelIndex
+  ident Model
+
+archive CheckpointState
+  v0=
+    int
+    int
+  int Time
+  v2+
+    int
+  v1+
+    int
+  int
+  int
+  int
+  int ClassId
+  VehicleState Vehicle (version: v)
+  int
+  int
+  int
+  v4-
+    byte
+  byte
+  int
+  Event[2] Events
+
+archive Event
+  data[4] Data
+  int
+  int
+  int
+  int
+
+archive VehicleState
+  v1+
+    int
+  quat Rotation
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  byte
+  int
+  int
+  int
+  int
+  byte
+  byte
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  v0=
+    int
+  int
+  int
+  int
+  int
+  int
+  int
+  byte
+  byte
+  v4+
+    int
+  int
+  int
+  int
+  byte
+  int
+  int
+  v1+
+    int
+    ulong
+    ulong
+    int
+    int
+    int
+    int
+    int
+    ulong
+    ulong
+    ulong
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    ulong
+    int
+    int
+  WheelState[4] Wheels (version: v)
+
+archive WheelState
+  int
+  int
+  byte
+  byte
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  byte
+  int
+  int
+  int
+  int
+  v1+
+    int
+    int
+
+archive Snapshot
+  v16-
+    throw
+  v34+
+    throw
+  v17=
+    data[74] VehicleData
+  v18=
+    data[75] VehicleData
+  v19=
+    data[76] VehicleData
+  v20=
+    data[77] VehicleData
+  v21+
+    v22-
+      data[81] VehicleData
+  v23+
+    data[85] VehicleData
+  v22+
+    int
+  v29-
+    v24+
+      int
+      int
+      int
+      int
+      int
+      int
+      int
+      int
+      byte
+    v25+
+      int[4] // One value per wheel, serialized in a four-wheel loop.
+    v26+
+      int
+    v27+
+      int
+    v28+
+      int[4] // One value per wheel, serialized in a four-wheel loop.
+    v29+
+      int
+  v30+
+    int
+    PackedWheelState[4] Wheels
+    byte
+    byte
+  v31+
+    int
+  v32+
+    byte
+    int
+  v33+
+    int
+  timeint Time
+
+archive PackedWheelState
+  byte
+  byte
