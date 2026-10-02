@@ -262,6 +262,54 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         set => this.topClipDir = value;
     }
 
+    private External<CGameCtnBlockInfoClip>[]? clipsNorth;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsNorth
+    {
+        get => this.clipsNorth;
+        set => this.clipsNorth = value;
+    }
+
+    private External<CGameCtnBlockInfoClip>[]? clipsEast;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsEast
+    {
+        get => this.clipsEast;
+        set => this.clipsEast = value;
+    }
+
+    private External<CGameCtnBlockInfoClip>[]? clipsSouth;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsSouth
+    {
+        get => this.clipsSouth;
+        set => this.clipsSouth = value;
+    }
+
+    private External<CGameCtnBlockInfoClip>[]? clipsWest;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsWest
+    {
+        get => this.clipsWest;
+        set => this.clipsWest = value;
+    }
+
+    private External<CGameCtnBlockInfoClip>[]? clipsTop;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsTop
+    {
+        get => this.clipsTop;
+        set => this.clipsTop = value;
+    }
+
+    private External<CGameCtnBlockInfoClip>[]? clipsBottom;
+    [AppliedWithChunk<Chunk0303600C>]
+    public External<CGameCtnBlockInfoClip>[]? ClipsBottom
+    {
+        get => this.clipsBottom;
+        set => this.clipsBottom = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -285,12 +333,12 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         ((CGameCtnBlockUnitInfo)clone).topClip = context.Clone(this.topClip)!;
         ((CGameCtnBlockUnitInfo)clone).bottomClipDir = context.Clone(this.bottomClipDir)!;
         ((CGameCtnBlockUnitInfo)clone).topClipDir = context.Clone(this.topClipDir)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsNorth = context.CloneArray(this.ClipsNorth)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsEast = context.CloneArray(this.ClipsEast)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsSouth = context.CloneArray(this.ClipsSouth)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsWest = context.CloneArray(this.ClipsWest)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsTop = context.CloneArray(this.ClipsTop)!;
-        ((CGameCtnBlockUnitInfo)clone).ClipsBottom = context.CloneArray(this.ClipsBottom)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsNorth = context.CloneArray(this.clipsNorth)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsEast = context.CloneArray(this.clipsEast)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsSouth = context.CloneArray(this.clipsSouth)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsWest = context.CloneArray(this.clipsWest)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsTop = context.CloneArray(this.clipsTop)!;
+        ((CGameCtnBlockUnitInfo)clone).clipsBottom = context.CloneArray(this.clipsBottom)!;
     }
 
     public CGameCtnBlockUnitInfo()
@@ -613,6 +661,91 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600C;
+        public int Version { get; set; }
+        public short? U01;
+        public short? U02;
+        public int? U03;
+        public int? U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0303600C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0303600C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0303600C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0303600C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0303600C)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
+        {
+            if (rw.Reader is not null)
+            {
+                var r = rw.Reader;
+                Version = r.ReadInt32();
+            }
+            if (rw.Writer is not null)
+            {
+                var w = rw.Writer;
+                w.Write((ValidateClipCounts(n)));
+            }
+
+            if (Version == 0)
+            {
+                ushort ClipCountBits = default!;
+                if (rw.Reader is not null)
+                {
+                    var r = rw.Reader;
+                    ClipCountBits = r.ReadUInt16();
+                }
+                if (rw.Writer is not null)
+                {
+                    var w = rw.Writer;
+                    ClipCountBits = ((ushort)((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 2 | (n.ClipsSouth?.Length?? 0) << 4 | (n.ClipsWest?.Length?? 0) << 6 | (n.ClipsTop?.Length?? 0) << 8 | (n.ClipsBottom?.Length?? 0) << 10));
+                    w.Write(ClipCountBits);
+                }
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, ClipCountBits& 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (ClipCountBits>> 2) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (ClipCountBits>> 4) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (ClipCountBits>> 6) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (ClipCountBits>> 8) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (ClipCountBits>> 10) & 3);
+            }
+
+            if (Version >= 1)
+            {
+                int ClipCountBits = default!;
+                if (rw.Reader is not null)
+                {
+                    var r = rw.Reader;
+                    ClipCountBits = r.ReadInt32();
+                }
+                if (rw.Writer is not null)
+                {
+                    var w = rw.Writer;
+                    ClipCountBits = ((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 3 | (n.ClipsSouth?.Length?? 0) << 6 | (n.ClipsWest?.Length?? 0) << 9 | (n.ClipsTop?.Length?? 0) << 12 | (n.ClipsBottom?.Length?? 0) << 15);
+                    w.Write(ClipCountBits);
+                }
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, ClipCountBits& 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (ClipCountBits>> 3) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (ClipCountBits>> 6) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (ClipCountBits>> 9) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (ClipCountBits>> 12) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (ClipCountBits>> 15) & 7);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Int16(ref U01);
+                rw.Int16(ref U02);
+            }
+
+            if (Version <= 1)
+            {
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+            }
+        }
     }
 
     [Chunk(0x0303600D)]

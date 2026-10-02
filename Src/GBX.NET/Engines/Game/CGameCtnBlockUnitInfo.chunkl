@@ -69,10 +69,10 @@ CGameCtnBlockUnitInfo 0x03036000
   int<Direction>? BottomClipDir
   int<Direction>? TopClipDir
 
-0x00C (demonstration)
-  version
+0x00C
+  version (write: "ValidateClipCounts(n)")
   v0=
-    ushort ClipCountBits // Six 2-bit counts: north, east, south, west, top, bottom.
+    ushort ClipCountBits (local, write: "(ushort)((ClipsNorth?.Length ?? 0) | (ClipsEast?.Length ?? 0) << 2 | (ClipsSouth?.Length ?? 0) << 4 | (ClipsWest?.Length ?? 0) << 6 | (ClipsTop?.Length ?? 0) << 8 | (ClipsBottom?.Length ?? 0) << 10)") // Six 2-bit counts: north, east, south, west, top, bottom.
     CGameCtnBlockInfoClip[ClipCountBits & 3] ClipsNorth (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 2) & 3] ClipsEast (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 4) & 3] ClipsSouth (external)
@@ -80,7 +80,7 @@ CGameCtnBlockUnitInfo 0x03036000
     CGameCtnBlockInfoClip[(ClipCountBits >> 8) & 3] ClipsTop (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 10) & 3] ClipsBottom (external)
   v1+
-    int ClipCountBits // Six 3-bit counts in the same order.
+    int ClipCountBits (local, write: "(ClipsNorth?.Length ?? 0) | (ClipsEast?.Length ?? 0) << 3 | (ClipsSouth?.Length ?? 0) << 6 | (ClipsWest?.Length ?? 0) << 9 | (ClipsTop?.Length ?? 0) << 12 | (ClipsBottom?.Length ?? 0) << 15") // Six 3-bit counts in the same order.
     CGameCtnBlockInfoClip[ClipCountBits & 7] ClipsNorth (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 3) & 7] ClipsEast (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 6) & 7] ClipsSouth (external)
@@ -88,11 +88,11 @@ CGameCtnBlockUnitInfo 0x03036000
     CGameCtnBlockInfoClip[(ClipCountBits >> 12) & 7] ClipsTop (external)
     CGameCtnBlockInfoClip[(ClipCountBits >> 15) & 7] ClipsBottom (external)
   v2+
-    short
-    short
+    short?
+    short?
   v1-
-    int
-    int
+    int?
+    int?
 
 0x00D
   version

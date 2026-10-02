@@ -53,7 +53,8 @@ public class CGameCtnBlockUnitInfoChunkTests
         reader.LoadRefTable(files);
         var restored = new CGameCtnBlockUnitInfo();
         var chunk = new CGameCtnBlockUnitInfo.Chunk0303600C();
-        chunk.Read(restored, reader);
+        using var readWrite = new GbxReaderWriter(reader);
+        chunk.ReadWrite(restored, readWrite);
 
         await Assert.That(chunk.Version).IsEqualTo(version);
         var directions = new[] { restored.ClipsNorth!, restored.ClipsEast!, restored.ClipsSouth!,
@@ -83,7 +84,8 @@ public class CGameCtnBlockUnitInfoChunkTests
         using var rewritten = new MemoryStream();
         using (var writer = new GbxWriter(rewritten))
         {
-            chunk.Write(restored, writer);
+            using var rw = new GbxReaderWriter(writer);
+            chunk.ReadWrite(restored, rw);
         }
         await Assert.That(rewritten.ToArray().SequenceEqual(stream.ToArray().Take((int)payloadLength))).IsTrue();
     }
@@ -102,7 +104,8 @@ public class CGameCtnBlockUnitInfoChunkTests
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
         {
-            chunk.Write(original, writer);
+            using var rw = new GbxReaderWriter(writer);
+            chunk.ReadWrite(original, rw);
         }
 
         stream.Position = 0;
@@ -133,7 +136,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public void Chunk0303600C_Version0RejectsMoreThanThreeClips(int direction)
+    public async Task Chunk0303600C_Version0RejectsMoreThanThreeClips(int direction)
     {
         var clips = Enumerable.Range(0, 4).Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray();
         var original = new CGameCtnBlockUnitInfo
@@ -147,8 +150,10 @@ public class CGameCtnBlockUnitInfoChunkTests
         };
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
+        using var rw = new GbxReaderWriter(writer);
         var chunk = new CGameCtnBlockUnitInfo.Chunk0303600C { Version = 0 };
-        Assert.Throws<InvalidOperationException>(() => chunk.Write(original, writer));
+        Assert.Throws<InvalidOperationException>(() => chunk.ReadWrite(original, rw));
+        await Assert.That(stream.Length).IsEqualTo(0);
     }
 
     [Test]
@@ -157,7 +162,8 @@ public class CGameCtnBlockUnitInfoChunkTests
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
         {
-            new CGameCtnBlockUnitInfo.Chunk0303600C { Version = 0 }.Write(new CGameCtnBlockUnitInfo(), writer);
+            using var rw = new GbxReaderWriter(writer);
+            new CGameCtnBlockUnitInfo.Chunk0303600C { Version = 0 }.ReadWrite(new CGameCtnBlockUnitInfo(), rw);
         }
         await Assert.That(stream.ToArray().SequenceEqual(new byte[14])).IsTrue();
     }
