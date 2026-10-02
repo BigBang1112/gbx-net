@@ -260,6 +260,59 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task CompilesPartialComputedPropertiesWithMergedChunkMetadata()
+    {
+        const string source = """
+            using System.Collections.Generic;
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private int value;
+                private List<string>? names;
+                public partial int Value { get => value; set => this.value = value; }
+                public partial int Combined { get => value; set => this.value = value; }
+                public partial int? Derived { get => value; }
+                private partial List<string>? Names { get => names; set => names = value; }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            property int Combined
+              get = Value
+            property int? Derived
+              get = Value
+            0x001 (demonstration: partial)
+              version
+              v1-
+                int Value
+              v2-
+                int Combined
+              v3+
+                int Value
+              v1+
+                string[] Names (list)
+            0x002 (base: 0x001)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var root = Engine(result).GetRoot();
+        var properties = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().ToArray();
+        var combined = properties.Single(x => x.Identifier.ValueText == "Combined");
+        await Assert.That(combined.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043001>");
+        await Assert.That(combined.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043002>");
+        await Assert.That(combined.AttributeLists.SelectMany(x => x.Attributes)).Count().IsEqualTo(2);
+        var derived = properties.Single(x => x.Identifier.ValueText == "Derived");
+        await Assert.That(derived.ToString()).Contains("public partial int? Derived { get; }");
+        await Assert.That(derived.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043001>(0, 1)");
+        await Assert.That(derived.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043001>(3)");
+        await Assert.That(derived.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043002>(0, 1)");
+        await Assert.That(derived.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043002>(3)");
+        await Assert.That(Engine(result).ToString()).Contains("private partial List<string>? Names { get; set; }");
+        await Assert.That(Engine(result).ToString()).DoesNotContain("rw.Int32");
+    }
+
+    [Test]
     public async Task AnnotatesChunkPropertiesWithTheirSerializationVersionRanges()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """

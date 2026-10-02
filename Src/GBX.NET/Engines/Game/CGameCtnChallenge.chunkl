@@ -65,7 +65,11 @@ CGameCtnChallenge 0x03043000 // A map.
 0x005 (header, struct: SHeaderCommunity) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // xml
   string Xml
 
-0x007 (header, struct: SHeaderThumbnail) [TMU, TMF, MP3, TMT, MP4, TM2020] // thumbnail
+0x007 (header, struct: SHeaderThumbnail, demonstration: partial) [TMU, TMF, MP3, TMT, MP4, TM2020] // thumbnail
+  version = 1
+  v1+
+    data Thumbnail
+    string Comments (formatted)
 
 0x008 (header, struct: SHeaderAuthorInfo) [MP3, TMT, MP4, TM2020] // author info
   version
@@ -135,7 +139,14 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01E
   CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
-0x01F [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
+0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
+  ident MapInfo = empty
+  string MapName (formatted)
+  ident Decoration
+  int3 Size
+  bool NeedUnlock
+  version = 6
+  CGameCtnBlock[] Blocks (list, version: Version) // Coordinates are offset by (1, 0, 1) in version 6 and above.
 
 0x020 // legacy legacy mediatracker
   CGameCtnMediaClip ClipIntro
@@ -206,9 +217,18 @@ CGameCtnChallenge 0x03043000 // A map.
 0x038 (skippable) [MP3, TMT, MP4, TM2020] // ChallengeCardEventIds
   SChallengeCardEventIds[] ChallengeCardEventIds
 
-0x03A (skippable, ignore)
+0x03A (skippable)
+  int
+  data
+  ident[]
 
-0x03D (skippable) [MP3, TMT, MP4] // lightmaps
+0x03D (skippable, demonstration: partial) [MP3, TMT, MP4] // lightmaps
+  bool HasLightmaps
+  if HasLightmaps
+    int? LightmapVersion
+    CHmsLightMapCache LightmapCache
+    Frame[] LightmapFrames
+    ZlibData LightmapCacheData
 
 0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
   version
@@ -216,9 +236,14 @@ CGameCtnChallenge 0x03043000 // A map.
     throw
   CSceneVehicleCarMarksSamples[] CarMarksBuffer (deprec)
 
-0x040 (skippable) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
+0x040 (skippable, demonstration: partial) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
+  version = 4
+  block (encapsulated)
+    CGameCtnAnchoredObject[] AnchoredObjects (deprec, list)
 
-0x041 (skippable, ignore)
+0x041 (skippable)
+  block (encapsulated)
+    CMwNod (external)
 
 0x042 (skippable) [MP3, TMT, MP4, TM2020] // author
   version = 1
@@ -228,7 +253,9 @@ CGameCtnChallenge 0x03043000 // A map.
   string AuthorZone
   string AuthorExtraInfo
 
-0x043 (skippable) [MP3, TMT, MP4, TM2020] // genealogies
+0x043 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // genealogies
+  block (encapsulated)
+    CGameCtnZoneGenealogy[] ZoneGenealogy (list)
 
 0x044 (skippable) [MP3, TMT, MP4, TM2020] // metadata
   block (encapsulated)
@@ -240,7 +267,11 @@ CGameCtnChallenge 0x03043000 // A map.
   v1+
     throw
 
-0x048 (skippable) [MP3, TMT, MP4, TM2020] // baked blocks
+0x048 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // baked blocks
+  version
+  int = 6
+  CGameCtnBlock*[] BakedBlocks (list) // Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
+  SBakedClipsAdditionalData[] BakedClipsAdditionalData (list) // Preceded by U01.
 
 0x049 [MP3, TMT, MP4, TM2020] // mediatracker
   version = 2
@@ -259,9 +290,23 @@ CGameCtnChallenge 0x03043000 // A map.
   string ObjectiveTextSilver
   string ObjectiveTextBronze
 
-0x04D (skippable, ignore) [MP3, TMT, MP4]
+0x04D (skippable) [MP3.v2, TMT, MP4]
+  version = 2
+  block (encapsulated)
+    CMwNod[] (deprec, external)
+    CMwNod[] (deprec, external)
+    v1+
+      CMwNod[] (deprec, external)
+    v2+
+      CMwNod[] (deprec, external)
 
-0x04E (skippable, ignore)
+0x04E (skippable, demonstration: partial) [MP4, TM2020] // animation triggers
+  version
+  block (encapsulated)
+    CPlugAnimFile ChallengeAnimation (external)
+    int U01
+    int U02 = 5
+    CPlugTriggerAction[U01] AnimationTriggers (version: U02)
 
 0x04F (skippable) [MP3, TMT, MP4, TM2020]
 
@@ -283,7 +328,12 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   BotPath[] BotPaths (list)
 
-0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
+0x054 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // embedded objects
+  version
+  block (encapsulated)
+    data EmbeddedZipData // Preceded by the expected embedded item model identifiers.
+    v1+
+      string[] Textures (list)
 
 0x055 (skippable) [MP3, TMT, MP4, TM2020]
 
@@ -295,7 +345,14 @@ CGameCtnChallenge 0x03043000 // A map.
   bool DynamicDaylight
   timeint? DayDuration
 
-0x057 (skippable, ignore) [MP4, TM2020]
+0x057 (skippable) [MP4.v3, TM2020.v5] // recorded bot paths
+  version = 5
+  v6+
+    throw
+  v1-
+    LegacyRecordedBotPath[] LegacyRecordedBotPaths
+  v1+
+    RecordedBotPath[] RecordedBotPaths (version: Version)
 
 0x058 (skippable) [MP4] // SubMapsInfos
   version
@@ -320,13 +377,27 @@ CGameCtnChallenge 0x03043000 // A map.
   int
   int
 
-0x05B (skippable, base: 0x03D) [TM2020] // lightmaps TM2020
+0x05B (skippable, base: 0x03D, demonstration: partial) [TM2020] // lightmaps TM2020
+  version
+  base // Two additional booleans follow HasLightmaps before the lightmap payload.
 
-0x05C (skippable, ignore) [TM2020]
+0x05C (skippable) [TM2020.v1]
+  version = 1
+  v0=
+    uint[]
+    uint[]
 
-0x05D (skippable, ignore) [TM2020]
+0x05D (skippable) [TM2020.v1] // block octree
+  version = 1
+  bool HasBlockOctree
+  if HasBlockOctree
+    BlockOctreeData BlockOctree (version: Version)
 
-0x05E (skippable, ignore) [TM2020]
+0x05E (skippable) [TM2020.v1] // legacy macroblocks
+  version = 1
+  block (encapsulated)
+    MacroblockData[] LegacyMacroblocks
+    int // Native archive reserves a count without serializing any elements.
 
 0x05F (skippable) [TM2020] // free blocks
 
@@ -334,21 +405,36 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   int
 
-0x061 (skippable, ignore) [TM2020]
+0x061 (skippable) [TM2020.v1] // temporary editor data
+  version = 1
+  int
+  uint[]
+  data
+  v1+
+    int
 
 0x062 (skippable) [TM2020] // MapElemColor
 
 0x063 (skippable) [TM2020] // AnimPhaseOffset
 
-0x064 (skippable, ignore) [TM2020] // MT groups?
+0x064 (skippable) [TM2020] // mediatracker groups
+  version
+  block (encapsulated)
+    CGameCtnMediaClipGroup[] ClipGroups
 
 0x065 (skippable) [TM2020] // foreground pack desc
 
-0x067 (skippable, ignore) [TM2020] // launched checkpoints
+0x067 (skippable) [TM2020] // launched checkpoints
+  version
+  block (encapsulated)
+    CGameSaveLaunchedCheckpoints LaunchedCheckpoints (external)
 
 0x068 (skippable) [TM2020] // MapElemLmQuality
 
-0x069 (skippable) [TM2020] // macroblock instances
+0x069 (skippable, demonstration: partial) [TM2020] // macroblock instances
+  version
+  v0=
+    int2[] MacroblockInstances // Instance ID and flags pairs, preceded by an instance ID for each block and item.
 
 0x06B (skippable) [TM2020] // light settings 2
   int
@@ -368,6 +454,149 @@ CGameCtnChallenge 0x03043000 // A map.
 0x3F001002 (skippable, base: 0x3F001001) [TMF]
 
 0x3F001003 (skippable, base: 0x3F001001) [TMF]
+
+property string MapUid
+  get = MapInfo::Id
+
+property id? Collection
+  get = MapInfo::Collection
+
+property string AuthorLogin
+  get = MapInfo::Author
+
+property int? NbBlocks
+  get = Blocks::Count
+
+property int? NbBakedBlocks
+  get = BakedBlocks::Count
+
+archive BlockOctreeData
+  int RootNodeSize
+  int3 Size
+  BlockOctreeNode[] Nodes
+
+archive BlockOctreeNode
+  int ParentIndex // BlockOctreeData selects node form: 0 for branches, 1 for current leaves, 2 for legacy leaves.
+  v0=
+    uint[8] Children
+  v1+
+    byte Value
+  v2=
+    int LegacyValue
+
+archive MacroblockData
+  version = 1
+  MacroblockBlock[] Blocks
+  MacroblockSkin[] Skins
+  MacroblockItem[] Items
+  v0= (archive)
+    uint128[]
+  MacroblockReferences References
+
+archive MacroblockBlock
+  version = 8
+  ident BlockModel
+  v1- (archive)
+    int3 Coord
+    int<Direction> Direction
+    int Flags
+    int U01
+    bool U03
+    v0= (archive)
+      U02 = 0
+    v1+ (archive)
+      int U02
+  v2+ (archive)
+    v4- (archive)
+      byte3 Coord
+      byte<Direction> Direction
+    int Flags
+    v5+ (archive)
+      if (Flags & (1 << 26)) == 0
+        byte3 Coord
+        byte<Direction> Direction
+      if (Flags & (1 << 26)) != 0
+        vec3 AbsolutePositionInMap
+        vec3 PitchYawRoll
+  v3+ (archive)
+    CGameWaypointSpecialProperty Waypoint (external)
+  v4+ (archive)
+    v5- (archive)
+      CGameCtnChallenge (external)
+  v7+ (archive)
+    byte Color
+  v8+ (archive)
+    byte LightmapQuality
+
+archive MacroblockSkin
+  version = 1
+  CGameCtnBlockSkin Skin (external)
+  v0= (archive)
+    int3
+  v1+ (archive)
+    int BlockIndex
+
+archive MacroblockItem
+  version = 14
+  ident ItemModel
+  v2- (archive)
+    byte QuarterY
+    v1+ (archive)
+      byte AdditionalDir
+  v3+ (archive)
+    vec3 PitchYawRoll
+  int3 BlockCoord
+  id AnchorTreeId
+  vec3 AbsolutePositionInMap
+  v2+ (archive)
+    v4- (archive)
+      int U01
+  v4+ (archive)
+    v6- (archive)
+      int U02
+  v6+ (archive)
+    short Flags
+  v7+ (archive)
+    vec3 PivotPosition
+  v8+ (archive)
+    CGameWaypointSpecialProperty Waypoint (external)
+  v9+ (archive)
+    float Scale
+  v10+ (archive)
+    int3 U03
+  v11+ (archive)
+    byte Color
+    byte AnimPhaseOffset
+  v12+ (archive)
+    byte LightmapQuality
+  v13+ (archive)
+    boolbyte HasPackDesc
+    boolbyte HasForegroundPackDesc
+    if HasPackDesc
+      packdesc PackDesc
+    if HasForegroundPackDesc
+      packdesc ForegroundPackDesc
+  v14+ (archive)
+    int U04
+
+archive MacroblockReferences
+  version
+  int
+  CMwNod[] Nodes (external)
+
+archive LegacyRecordedBotPath
+  vec3[] Path
+  uint[] Times
+
+archive RecordedBotPath
+  int BotPathIndex
+  vec3[] Path
+  v4-
+    uint[] Times
+  v3+
+    quat[] Rotations
+  v4+
+    ident Model
 
 archive BotPath
   int Clan
