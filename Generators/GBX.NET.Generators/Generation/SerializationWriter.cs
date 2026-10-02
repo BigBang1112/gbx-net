@@ -187,9 +187,8 @@ internal sealed class SerializationWriter
         locals.Pop();
     }
 
-    private void Field(FieldDeclaration declaration, SerializationMode? fieldMode = null, bool declareLocal = true)
+    private void Field(FieldDeclaration declaration)
     {
-        var mode = fieldMode ?? this.mode;
         if (declaration.IsSpecialKeyword && declaration.Type.Name is not ("version" or "versionb"))
         {
             if (declaration.Type.Name == "base")
@@ -225,15 +224,11 @@ internal sealed class SerializationWriter
         var write = LayoutModel.WriteExpression(declaration.Attributes);
         if (field.IsVersion)
         {
-            if (mode == SerializationMode.ReadWrite && write is not null)
-            {
-                ReadWriteField(declaration);
-                return;
-            }
             code.Line(mode switch
             {
                 SerializationMode.Read => $"Version = r.Read{(declaration.Type.Name == "versionb" ? "Byte" : "Int32")}();",
                 SerializationMode.Write => $"w.Write({(declaration.Type.Name == "versionb" ? "(byte)" : "")}{(write is null ? "Version" : "(" + ExpressionText(write) + ")")});",
+                SerializationMode.ReadWrite when write is not null => $"Version = rw.{(declaration.Type.Name == "versionb" ? "Byte" : "Int32")}({WriteArgument(write)});",
                 _ => $"rw.Version{(declaration.Type.Name == "versionb" ? "Byte" : "Int32")}(this);"
             });
 
@@ -243,7 +238,7 @@ internal sealed class SerializationWriter
         var owner = chunk && !field.IsUnknown ? layout.Scope : scope;
         var prefix = field.IsLocal ? "" : chunk ? field.IsUnknown ? "" : "n." : "this.";
         var backing = chunk && field.IsUnknown ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name);
-        var property = SyntaxOverlap.Escape(field.Name);
+        var property = field.IsLocal ? SyntaxOverlap.Backing(field.Name) : SyntaxOverlap.Escape(field.Name);
         var hasBacking = !field.IsLocal && !field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited")) &&
             (!SyntaxOverlap.Has(owner.Existing, field.Name) || SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@')));
         var target = prefix + (hasBacking ? backing : property);
@@ -255,20 +250,9 @@ internal sealed class SerializationWriter
         }
         var external = LayoutModel.Has(declaration.Attributes, "external") && declaration.Type.ArrayDimensions == 0;
 
-        if (field.IsLocal && declareLocal && external)
+        if (field.IsLocal && external)
         {
             code.Line($"Components.GbxRefTableFile? {property.TrimStart('@')}File = null;");
-        }
-
-        if (mode == SerializationMode.ReadWrite && write is not null)
-        {
-            if (field.IsLocal)
-            {
-                code.Line($"{storageType} {target} = default!;");
-            }
-            ReadWriteField(declaration);
-            if (field.IsLocal) locals.Peek().Add(field.Name);
-            return;
         }
 
         var method = Method(declaration, storageType, mode);
@@ -322,14 +306,14 @@ internal sealed class SerializationWriter
                 SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)) &&
                     WireTypes.Value(declaration.Type.Name) && declaration.Type.ArrayDimensions == 0 ? "(" + storageType + ")" : "";
 
-            code.Line($"{(field.IsLocal && declareLocal ? "var " : "")}{target} = {cast}r.Read{readMethod}({string.Join(", ", arguments)});");
+            code.Line($"{(field.IsLocal ? "var " : "")}{target} = {cast}r.Read{readMethod}({string.Join(", ", arguments)});");
         }
         else if (mode == SerializationMode.Write)
         {
             var value = write is null ? target : "(" + ExpressionText(write) + ")";
             if (field.IsLocal)
             {
-                code.Line($"{(declareLocal ? storageType + " " : "")}{target} = {value};");
+                code.Line($"{storageType} {target} = {value};");
                 value = target;
             }
             var writeMethod = method == "Id" ? "IdAsString" : method;
@@ -366,38 +350,33 @@ internal sealed class SerializationWriter
             var wireType = WireTypes.Map(declaration.Type.Name);
             var numeric = SyntaxOverlap.Normalize(storageType) is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" or "float" or "double";
             var conversion = numeric && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
+            var value = write is null ? target : WriteArgument(write);
+            var assignment = (field.IsLocal ? "var " : "") + target;
 
             if (conversion)
             {
-                code.Line($"{target} = ({storageType})rw.{method}(({wireType}{(storageType.EndsWith("?", StringComparison.Ordinal) ? "?" : "")}){target}{argumentSuffix});");
+                code.Line($"{assignment} = ({storageType})rw.{method}(({wireType}{(storageType.EndsWith("?", StringComparison.Ordinal) ? "?" : "")}){value}{argumentSuffix});");
             }
             else if (declaration.Type.Name is "systemtime" or "filetime" or "unixtime" or "timeofday")
             {
-                code.Line($"{target} = rw.{method}({target}{argumentSuffix}){(declaration.Type.Name == "unixtime" || storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")};");
+                code.Line($"{assignment} = rw.{method}({value}{argumentSuffix}){(declaration.Type.Name == "unixtime" || storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")};");
             }
-            else if (hasBacking)
+            else if (hasBacking && write is null)
             {
                 code.Line($"rw.{method}(ref {target}{(declaration.Type.ArrayDimensions > 0 ? "!" : "")}{argumentSuffix});");
             }
             else
             {
-                code.Line($"{target} = rw.{method}({target}{argumentSuffix});");
+                var cast = write is not null && declaration.Type.ArrayDimensions == 0 && ((numeric && storageType != "int") || declaration.Type.CastTarget is not null)
+                    ? "(" + storageType + ")" : "";
+                code.Line($"{assignment} = rw.{method}({cast}{value}{argumentSuffix});");
             }
         }
-        if (field.IsLocal && fieldMode is null) locals.Peek().Add(field.Name);
+        if (field.IsLocal) locals.Peek().Add(field.Name);
     }
 
-    private void ReadWriteField(FieldDeclaration declaration)
-    {
-        code.Open("if (rw.Reader is not null)");
-        code.Line("var r = rw.Reader;");
-        Field(declaration, SerializationMode.Read, declareLocal: false);
-        code.Close();
-        code.Open("if (rw.Writer is not null)");
-        code.Line("var w = rw.Writer;");
-        Field(declaration, SerializationMode.Write, declareLocal: false);
-        code.Close();
-    }
+    private string WriteArgument(string expression)
+        => "(rw.Writer is null ? default : (" + ExpressionText(expression) + "))";
 
     private string Method(FieldDeclaration field, string storageType, SerializationMode mode)
     {
@@ -547,7 +526,7 @@ internal sealed class SerializationWriter
     {
         if (locals.Any(x => x.Contains(name)))
         {
-            return SyntaxOverlap.Escape(name);
+            return SyntaxOverlap.Backing(name);
         }
         if (!chunk)
         {

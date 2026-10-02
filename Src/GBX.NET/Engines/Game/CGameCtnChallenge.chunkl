@@ -300,13 +300,13 @@ CGameCtnChallenge 0x03043000 // A map.
     v2+
       CMwNod[] (deprec, external)
 
-0x04E (skippable, demonstration: partial) [MP4, TM2020] // animation triggers
+0x04E (skippable) [MP4, TM2020] // animation triggers
   version
   block (encapsulated)
     CPlugAnimFile ChallengeAnimation (external)
-    int U01
-    int U02 = 5
-    CPlugTriggerAction[U01] AnimationTriggers (version: U02)
+    int AnimationTriggerCount (local, write: "AnimationTriggers?.Length ?? 0")
+    int U01 = 5
+    CPlugTriggerAction[AnimationTriggerCount] AnimationTriggers (version: U01)
 
 0x04F (skippable) [MP3, TMT, MP4, TM2020]
 

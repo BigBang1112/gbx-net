@@ -100,9 +100,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorScore = value;
     }
 
+    private CGameCtnGhost? raceValidateGhost;
     [AppliedWithChunk<Chunk0305B00D>]
     [AppliedWithChunk<Chunk0305B00F>]
-    public partial CGameCtnGhost? RaceValidateGhost { get; set; }
+    public CGameCtnGhost? RaceValidateGhost
+    {
+        get => this.raceValidateGhost;
+        set => this.raceValidateGhost = value;
+    }
 
     private string? mapType;
     [AppliedWithChunk<Chunk0305B00E>]
@@ -138,10 +143,10 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         ((CGameCtnChallengeParameters)clone).authorTime = context.Clone(this.authorTime)!;
         ((CGameCtnChallengeParameters)clone).timeLimit = context.Clone(this.timeLimit)!;
         ((CGameCtnChallengeParameters)clone).authorScore = context.Clone(this.authorScore)!;
+        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
         ((CGameCtnChallengeParameters)clone).mapType = context.Clone(this.mapType)!;
         ((CGameCtnChallengeParameters)clone).mapStyle = context.Clone(this.mapStyle)!;
         ((CGameCtnChallengeParameters)clone).isValidatedForScriptModes = context.Clone(this.isValidatedForScriptModes)!;
-        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
     }
 
     public CGameCtnChallengeParameters()

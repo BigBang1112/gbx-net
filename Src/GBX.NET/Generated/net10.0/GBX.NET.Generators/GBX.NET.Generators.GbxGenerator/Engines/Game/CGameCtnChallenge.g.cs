@@ -2107,15 +2107,26 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304304E;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int U02 = 5;
+        public int U01 = 5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304304E)clone).Version = context.Clone(this.Version)!;
             ((Chunk0304304E)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0304304E)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef<CPlugAnimFile>(ref n.challengeAnimation, ref n.challengeAnimationFile);
+                var animationTriggerCount = rw.Int32((rw.Writer is null ? default : (n.AnimationTriggers?.Length?? 0)));
+                rw.Int32(ref U01);
+                rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.animationTriggers!, animationTriggerCount, version: U01);
+            });
         }
     }
 

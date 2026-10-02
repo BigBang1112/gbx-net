@@ -26,7 +26,10 @@ public class GenerationTests
                     var readValue = node.Value;
                     var writer = new GBX.NET.Serialization.GbxWriter();
                     new Chunk03043002().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer));
-                    return readValue + ":" + string.Join(",", writer.Values) + ":" + node.Value;
+                    var writtenValue = node.Value;
+                    var copyWriter = new GBX.NET.Serialization.GbxWriter();
+                    new Chunk03043002().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(2, 7, 8, 9), copyWriter));
+                    return readValue + ":" + string.Join(",", writer.Values) + ":" + writtenValue + ":" + string.Join(",", copyWriter.Values) + ":" + node.Value;
                 }
             }
             """;
@@ -48,12 +51,13 @@ public class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
         var generated = Engine(result).ToString();
-        await Assert.That(generated).Contains("int Count = default!;");
-        await Assert.That(generated).Contains("Count = r.ReadInt32();");
-        await Assert.That(generated).Contains("Count = (n.WriteCount());");
-        await Assert.That(generated).Contains("i1 < Count");
-        await Assert.That(generated).Contains("n.Value = Item;");
-        await Assert.That(generated).Contains("w.Write((n.Value+ 1));");
+        await Assert.That(generated).Contains("var count = rw.Int32((rw.Writer is null ? default : (n.WriteCount())));");
+        await Assert.That(generated).Contains("var item = rw.Int32((rw.Writer is null ? default : (5)));");
+        await Assert.That(generated).Contains("i1 < count");
+        await Assert.That(generated).Contains("n.Value = item;");
+        await Assert.That(generated).Contains("n.value = rw.Int32((rw.Writer is null ? default : (n.Value+ 1)));");
+        await Assert.That(generated).DoesNotContain("if (rw.Reader is not null)");
+        await Assert.That(generated).DoesNotContain("if (rw.Writer is not null)");
         var root = Engine(result).GetRoot();
         await Assert.That(root.DescendantNodes().OfType<PropertyDeclarationSyntax>())
             .DoesNotContain(x => x.Identifier.ValueText is "Count" or "Item");
@@ -64,7 +68,35 @@ public class GenerationTests
         var emitted = compilation.Emit(stream);
         await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
         var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
-        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("9:2,5,5,10:9");
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("9:2,5,5,10:10:2,7,8,9:9");
+    }
+
+    [Test]
+    public async Task CombinesWriteArgumentsForByteVersionsNarrowNumbersAndExternalLocals()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              versionb (write: 3)
+              short Count (local, write: 2)
+              int Event (local, write: 1)
+              CMwNod Node (local, external, write: null)
+              int[Count] Items (local, write: "new int[Count]")
+              int Value (write: Event)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("Version = rw.Byte((rw.Writer is null ? default : (3)));");
+        await Assert.That(generated).Contains("var count = rw.Int16((short)(rw.Writer is null ? default : (2)));");
+        await Assert.That(generated).Contains("var @event = rw.Int32((rw.Writer is null ? default : (1)));");
+        await Assert.That(generated).Contains("Components.GbxRefTableFile? nodeFile = null;");
+        await Assert.That(generated).Contains("var node = rw.NodeRef<CMwNod>((rw.Writer is null ? default : (null)), ref nodeFile);");
+        await Assert.That(generated).Contains("var items = rw.Array<int>((rw.Writer is null ? default : (new int[count])), count);");
+        await Assert.That(generated).Contains("n.value = rw.Int32((rw.Writer is null ? default : (@event)));");
+        await Assert.That(generated).DoesNotContain("if (rw.Reader is not null)");
+        await Assert.That(generated).DoesNotContain("if (rw.Writer is not null)");
     }
 
     [Test]
@@ -100,10 +132,10 @@ public class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
         var generated = Engine(result).ToString();
-        await Assert.That(generated).Contains("var Count = r.ReadInt32();");
-        await Assert.That(generated).Contains("var Item = r.ReadInt32();");
-        await Assert.That(generated).Contains("int Count = (2);");
-        await Assert.That(generated).Contains("w.Write((Count+ 1));");
+        await Assert.That(generated).Contains("var count = r.ReadInt32();");
+        await Assert.That(generated).Contains("var item = r.ReadInt32();");
+        await Assert.That(generated).Contains("int count = (2);");
+        await Assert.That(generated).Contains("w.Write((count+ 1));");
         await Assert.That(generated).DoesNotContain("public int Count");
     }
 
@@ -147,14 +179,12 @@ public class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
         var generated = Engine(result).ToString();
-        await Assert.That(generated).Contains("if (Count> 0)");
-        await Assert.That(generated).Contains("w.Write((3));");
-        await Assert.That(generated).Contains("Count = (n.Count);");
-        await Assert.That(generated).Contains("Items = r.ReadArray<int>(Count);");
-        await Assert.That(generated).Contains("Items = (new int[Count]);");
-        await Assert.That(generated).Contains("w.WriteArray<int>(Items, Count);");
-        await Assert.That(generated).Contains("U01 = (Count);");
-        await Assert.That(generated).Contains("w.Write((n.Count));");
+        await Assert.That(generated).Contains("if (count> 0)");
+        await Assert.That(generated).Contains("Version = rw.Int32((rw.Writer is null ? default : (3)));");
+        await Assert.That(generated).Contains("var count = rw.Int32((rw.Writer is null ? default : (n.Count)));");
+        await Assert.That(generated).Contains("var items = rw.Array<int>((rw.Writer is null ? default : (new int[count])), count);");
+        await Assert.That(generated).Contains("var u01 = rw.Int32((rw.Writer is null ? default : (count)));");
+        await Assert.That(generated).Contains("n.value = rw.Int32((rw.Writer is null ? default : (n.Count)));");
         await Assert.That(generated).DoesNotContain("public int U01");
         await Assert.That(generated).DoesNotContain("public int[]? Items");
         var count = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Count");
@@ -843,6 +873,7 @@ public class GenerationTests
 
     private const string Support = """
         namespace TmEssentials { }
+        namespace GBX.NET.Components { public class GbxRefTableFile { } }
         namespace GBX.NET
         {
             public interface IClass { }
@@ -899,6 +930,10 @@ public class GenerationTests
                 public GbxWriter? Writer { get; }
                 public GbxReaderWriter(GbxReader reader) { Reader = reader; }
                 public GbxReaderWriter(GbxWriter writer) { Writer = writer; }
+                public GbxReaderWriter(GbxReader reader, GbxWriter writer) { Reader = reader; Writer = writer; }
+                public int Byte(int value) => Int32(value);
+                public short Int16(short value) => (short)Int32(value);
+                public T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.Engines.Game.CMwNod => value;
                 public void Int32(ref int value) { value = Int32(value); }
                 public int Int32(int value)
                 {
@@ -907,6 +942,12 @@ public class GenerationTests
                     return value;
                 }
                 public void VersionInt32(GBX.NET.IVersionable value) { }
+                public T[]? Array<T>(T[]? value, int length) where T : struct
+                {
+                    if (Reader is not null) value = Reader.ReadArray<T>(length);
+                    Writer?.WriteArray(value, length);
+                    return value;
+                }
                 public void ArrayReadableWritable<T>(ref T[]? value) where T : IReadableWritable, new() { }
                 public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
                     where T : IReadable, IWritable, new() { }

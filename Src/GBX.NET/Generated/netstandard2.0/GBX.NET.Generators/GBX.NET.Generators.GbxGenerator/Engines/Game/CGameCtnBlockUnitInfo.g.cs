@@ -679,59 +679,28 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
-            if (rw.Reader is not null)
-            {
-                var r = rw.Reader;
-                Version = r.ReadInt32();
-            }
-            if (rw.Writer is not null)
-            {
-                var w = rw.Writer;
-                w.Write((ValidateClipCounts(n)));
-            }
+            Version = rw.Int32((rw.Writer is null ? default : (ValidateClipCounts(n))));
 
             if (Version == 0)
             {
-                ushort ClipCountBits = default!;
-                if (rw.Reader is not null)
-                {
-                    var r = rw.Reader;
-                    ClipCountBits = r.ReadUInt16();
-                }
-                if (rw.Writer is not null)
-                {
-                    var w = rw.Writer;
-                    ClipCountBits = ((ushort)((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 2 | (n.ClipsSouth?.Length?? 0) << 4 | (n.ClipsWest?.Length?? 0) << 6 | (n.ClipsTop?.Length?? 0) << 8 | (n.ClipsBottom?.Length?? 0) << 10));
-                    w.Write(ClipCountBits);
-                }
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, ClipCountBits& 3);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (ClipCountBits>> 2) & 3);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (ClipCountBits>> 4) & 3);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (ClipCountBits>> 6) & 3);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (ClipCountBits>> 8) & 3);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (ClipCountBits>> 10) & 3);
+                var clipCountBits = rw.UInt16((ushort)(rw.Writer is null ? default : ((ushort)((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 2 | (n.ClipsSouth?.Length?? 0) << 4 | (n.ClipsWest?.Length?? 0) << 6 | (n.ClipsTop?.Length?? 0) << 8 | (n.ClipsBottom?.Length?? 0) << 10))));
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, clipCountBits& 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (clipCountBits>> 2) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (clipCountBits>> 4) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (clipCountBits>> 6) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (clipCountBits>> 8) & 3);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (clipCountBits>> 10) & 3);
             }
 
             if (Version >= 1)
             {
-                int ClipCountBits = default!;
-                if (rw.Reader is not null)
-                {
-                    var r = rw.Reader;
-                    ClipCountBits = r.ReadInt32();
-                }
-                if (rw.Writer is not null)
-                {
-                    var w = rw.Writer;
-                    ClipCountBits = ((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 3 | (n.ClipsSouth?.Length?? 0) << 6 | (n.ClipsWest?.Length?? 0) << 9 | (n.ClipsTop?.Length?? 0) << 12 | (n.ClipsBottom?.Length?? 0) << 15);
-                    w.Write(ClipCountBits);
-                }
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, ClipCountBits& 7);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (ClipCountBits>> 3) & 7);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (ClipCountBits>> 6) & 7);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (ClipCountBits>> 9) & 7);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (ClipCountBits>> 12) & 7);
-                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (ClipCountBits>> 15) & 7);
+                var clipCountBits = rw.Int32((rw.Writer is null ? default : ((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 3 | (n.ClipsSouth?.Length?? 0) << 6 | (n.ClipsWest?.Length?? 0) << 9 | (n.ClipsTop?.Length?? 0) << 12 | (n.ClipsBottom?.Length?? 0) << 15)));
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsNorth!, clipCountBits& 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsEast!, (clipCountBits>> 3) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsSouth!, (clipCountBits>> 6) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsWest!, (clipCountBits>> 9) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsTop!, (clipCountBits>> 12) & 7);
+                rw.ArrayNodeRef<CGameCtnBlockInfoClip>(ref n.clipsBottom!, (clipCountBits>> 15) & 7);
             }
 
             if (Version >= 2)
