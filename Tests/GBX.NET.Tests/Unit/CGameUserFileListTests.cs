@@ -11,7 +11,7 @@ public class CGameUserFileListTests
     [Arguments(CGameUserFileList.FileType.Ghost, 0)]
     [Arguments(CGameUserFileList.FileType.Map, 127)]
     [Arguments(CGameUserFileList.FileType.Ghost, 127)]
-    public async Task FileInfo_ReadsNativeLayoutAndWritesZeroTerminators(CGameUserFileList.FileType type, int terminator)
+    public async Task FileInfo_ReadsNativeLayoutAndPreservesTerminators(CGameUserFileList.FileType type, int terminator)
     {
         var payload = Payload(type, (byte)terminator);
         using var stream = new MemoryStream();
@@ -25,21 +25,24 @@ public class CGameUserFileListTests
 
         await Assert.That(file.Name).IsEqualTo("Example.Gbx");
         await Assert.That(file.ToString()).IsEqualTo("Example.Gbx");
-        await Assert.That(file.U01).IsEqualTo(123ul);
-        await Assert.That(file.U02).IsEqualTo(456ul);
+        await Assert.That(file.U01).IsEqualTo((byte)terminator);
+        await Assert.That(file.U02).IsEqualTo(123ul);
+        await Assert.That(file.U03).IsEqualTo(456ul);
         await Assert.That(file.Type).IsEqualTo(type);
         await Assert.That(file.MapUid).IsEqualTo("MapUid");
         if (type == CGameUserFileList.FileType.Map)
         {
             await Assert.That(file.MapName).IsEqualTo("Map Name");
             await Assert.That(file.GhostKind).IsNull();
-            await Assert.That(file.U04).IsNull();
+            await Assert.That(file.U04).IsEqualTo((byte)terminator);
+            await Assert.That(file.U06).IsNull();
         }
         else
         {
             await Assert.That(file.GhostKind).IsEqualTo("Race");
             await Assert.That(file.MapName).IsNull();
-            await Assert.That(file.U04).IsEqualTo(789);
+            await Assert.That(file.U05).IsEqualTo((byte)terminator);
+            await Assert.That(file.U06).IsEqualTo(789);
         }
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
@@ -50,7 +53,7 @@ public class CGameUserFileListTests
         {
             file.ReadWrite(writerWriter, 7);
         }
-        await Assert.That(rewritten.ToArray().SequenceEqual(Payload(type, 0))).IsTrue();
+        await Assert.That(rewritten.ToArray().SequenceEqual(payload)).IsTrue();
     }
 
     [Test]

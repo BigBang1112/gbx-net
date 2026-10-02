@@ -18,7 +18,7 @@ public class JaggedArraySerializationTests
 
         foreach (var (innerLength, outerLength) in lengths)
         {
-            Value[][] original = innerLength.HasValue
+            Value[][]? original = innerLength.HasValue
                 ? [[new(1), new(2)], [new(3), new(4)]]
                 : [[new(1), new(2)], [new(3)]];
 
@@ -59,7 +59,7 @@ public class JaggedArraySerializationTests
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
         using var rw = new GbxReaderWriter(writer);
-        Value[][] values = [[new(1)]];
+        Value[][]? values = [[new(1)]];
 
         Assert.Throws<InvalidOperationException>(() => rw.JaggedArrayReadableWritable(ref values, outerLength: 2));
         Assert.Throws<InvalidOperationException>(() => rw.JaggedArrayReadableWritable(ref values, innerLength: 2));
