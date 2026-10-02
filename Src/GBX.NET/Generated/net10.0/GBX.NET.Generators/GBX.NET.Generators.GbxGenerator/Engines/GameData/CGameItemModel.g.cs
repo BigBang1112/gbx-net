@@ -418,6 +418,109 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.itemTypeE = value;
     }
 
+    private CMwNod? phyModelCustom;
+    [AppliedWithChunk<Chunk2E002019>]
+    public CMwNod? PhyModelCustom
+    {
+        get => this.phyModelCustomFile?.GetNode(ref this.phyModelCustom) ?? this.phyModelCustom;
+        set => this.phyModelCustom = value;
+    }
+    private Components.GbxRefTableFile? phyModelCustomFile;
+
+    public Components.GbxRefTableFile? PhyModelCustomFile
+    {
+        get => phyModelCustomFile;
+        set => phyModelCustomFile = value;
+    }
+
+    private CMwNod? visModelCustom;
+    [AppliedWithChunk<Chunk2E002019>]
+    public CMwNod? VisModelCustom
+    {
+        get => this.visModelCustomFile?.GetNode(ref this.visModelCustom) ?? this.visModelCustom;
+        set => this.visModelCustom = value;
+    }
+    private Components.GbxRefTableFile? visModelCustomFile;
+
+    public Components.GbxRefTableFile? VisModelCustomFile
+    {
+        get => visModelCustomFile;
+        set => visModelCustomFile = value;
+    }
+
+    private string? defaultWeaponName;
+    [AppliedWithChunk<Chunk2E002019>(3)]
+    public string? DefaultWeaponName
+    {
+        get => this.defaultWeaponName;
+        set => this.defaultWeaponName = value;
+    }
+
+    private CGameActionModel[]? actions;
+    [AppliedWithChunk<Chunk2E002019>(6)]
+    public CGameActionModel[]? Actions
+    {
+        get => this.actions;
+        set => this.actions = value;
+    }
+
+    private EDefaultCam defaultCam;
+    [AppliedWithChunk<Chunk2E002019>(7)]
+    public EDefaultCam DefaultCam
+    {
+        get => this.defaultCam;
+        set => this.defaultCam = value;
+    }
+
+    private CMwNod? entityModelEdition;
+    /// <summary>
+    /// CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
+    /// </summary>
+    [AppliedWithChunk<Chunk2E002019>(8)]
+    public CMwNod? EntityModelEdition
+    {
+        get => this.entityModelEditionFile?.GetNode(ref this.entityModelEdition) ?? this.entityModelEdition;
+        set => this.entityModelEdition = value;
+    }
+    private Components.GbxRefTableFile? entityModelEditionFile;
+
+    public Components.GbxRefTableFile? EntityModelEditionFile
+    {
+        get => entityModelEditionFile;
+        set => entityModelEditionFile = value;
+    }
+
+    private CMwNod? entityModel;
+    [AppliedWithChunk<Chunk2E002019>(8)]
+    public CMwNod? EntityModel
+    {
+        get => this.entityModel;
+        set => this.entityModel = value;
+    }
+
+    private CPlugVFXFile? vFX;
+    [AppliedWithChunk<Chunk2E002019>(13)]
+    public CPlugVFXFile? VFX
+    {
+        get => this.vFX;
+        set => this.vFX = value;
+    }
+
+    private CPlugGameSkinAndFolder? materialModifier;
+    [AppliedWithChunk<Chunk2E002019>(15)]
+    public CPlugGameSkinAndFolder? MaterialModifier
+    {
+        get => this.materialModifierFile?.GetNode(ref this.materialModifier) ?? this.materialModifier;
+        set => this.materialModifier = value;
+    }
+    private Components.GbxRefTableFile? materialModifierFile;
+
+    public Components.GbxRefTableFile? MaterialModifierFile
+    {
+        get => materialModifierFile;
+        set => materialModifierFile = value;
+    }
+
     private CGameItemPlacementParam? defaultPlacement;
     [AppliedWithChunk<Chunk2E00201C>(5)]
     public CGameItemPlacementParam? DefaultPlacement
@@ -515,6 +618,15 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         ((CGameItemModel)clone).orbitalPreviewAngle = context.Clone(this.orbitalPreviewAngle)!;
         ((CGameItemModel)clone).audioEnvironmentInCar = context.Clone(this.audioEnvironmentInCar)!;
         ((CGameItemModel)clone).itemTypeE = context.Clone(this.itemTypeE)!;
+        ((CGameItemModel)clone).phyModelCustom = context.Clone(this.phyModelCustom)!;
+        ((CGameItemModel)clone).visModelCustom = context.Clone(this.visModelCustom)!;
+        ((CGameItemModel)clone).defaultWeaponName = context.Clone(this.defaultWeaponName)!;
+        ((CGameItemModel)clone).actions = context.CloneArray(this.actions)!;
+        ((CGameItemModel)clone).defaultCam = context.Clone(this.defaultCam)!;
+        ((CGameItemModel)clone).entityModelEdition = context.Clone(this.entityModelEdition)!;
+        ((CGameItemModel)clone).entityModel = context.Clone(this.entityModel)!;
+        ((CGameItemModel)clone).vFX = context.Clone(this.vFX)!;
+        ((CGameItemModel)clone).materialModifier = context.Clone(this.materialModifier)!;
         ((CGameItemModel)clone).defaultPlacement = context.Clone(this.defaultPlacement)!;
         ((CGameItemModel)clone).archetypeRef = context.Clone(this.archetypeRef)!;
         ((CGameItemModel)clone).archetypeFid = context.Clone(this.archetypeFid)!;
@@ -522,19 +634,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         ((CGameItemModel)clone).disableLightmap = context.Clone(this.disableLightmap)!;
         ((CGameItemModel)clone).iconFid = context.Clone(this.iconFid)!;
         ((CGameItemModel)clone).itemGroupElements = context.CloneArray(this.itemGroupElements)!;
-        ((CGameItemModel)clone).phyModelCustom = context.Clone(this.phyModelCustom)!;
-        ((CGameItemModel)clone).phyModelCustomFile = context.Clone(this.phyModelCustomFile)!;
-        ((CGameItemModel)clone).visModelCustom = context.Clone(this.visModelCustom)!;
-        ((CGameItemModel)clone).visModelCustomFile = context.Clone(this.visModelCustomFile)!;
-        ((CGameItemModel)clone).defaultWeaponName = context.Clone(this.defaultWeaponName)!;
-        ((CGameItemModel)clone).actions = context.CloneArray(this.actions)!;
-        ((CGameItemModel)clone).defaultCam = context.Clone(this.defaultCam)!;
-        ((CGameItemModel)clone).entityModelEdition = context.Clone(this.entityModelEdition)!;
-        ((CGameItemModel)clone).entityModelEditionFile = context.Clone(this.entityModelEditionFile)!;
-        ((CGameItemModel)clone).entityModel = context.Clone(this.entityModel)!;
-        ((CGameItemModel)clone).vfx = context.Clone(this.vfx)!;
-        ((CGameItemModel)clone).materialModifier = context.Clone(this.materialModifier)!;
-        ((CGameItemModel)clone).materialModifierFile = context.Clone(this.materialModifierFile)!;
     }
 
     public CGameItemModel()
@@ -963,14 +1062,109 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// model
     /// </summary>
     [Chunk(0x2E002019, "model")]
-    public partial class Chunk2E002019 : Chunk<CGameItemModel>
+    public partial class Chunk2E002019 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002019;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002019)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (n.ItemType== EItemType.Ornament || n.ItemType== EItemType.PickUp || n.ItemType== EItemType.Spot)
+            {
+                if (Version <= 8)
+                {
+                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
+                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                }
+            }
+            else if (n.ItemType== EItemType.Vehicle)
+            {
+                if (Version <= 9)
+                {
+                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
+                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                }
+            }
+            else if (n.ItemType!= EItemType.Block)
+            {
+                if (Version <= 11)
+                {
+                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
+                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                }
+            }
+
+            if (Version >= 3)
+            {
+                rw.Id(ref n.defaultWeaponName);
+            }
+
+            if (Version >= 4)
+            {
+                if (n.phyModelCustom != null)
+                {
+                    var phyModelCustomIndex = rw.Int32((rw.Writer is null ? default : (- 1)));
+                }
+                else
+                {
+                    rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                }
+            }
+
+            if (Version >= 5)
+            {
+                if (n.visModelCustom != null)
+                {
+                    var visModelCustomIndex = rw.Int32((rw.Writer is null ? default : (- 1)));
+                }
+                else
+                {
+                    rw.NodeRef<CMwNod>(ref n.visModelCustom);
+                }
+            }
+
+            if (Version >= 6)
+            {
+                rw.ArrayNodeRef<CGameActionModel>(ref n.actions!);
+            }
+
+            if (Version >= 7)
+            {
+                rw.EnumInt32<EDefaultCam>(ref n.defaultCam);
+            }
+
+            if (Version >= 8)
+            {
+                rw.NodeRef<CMwNod>(ref n.entityModelEdition, ref n.entityModelEditionFile);
+
+                if (n.entityModelEdition == null && n.EntityModelEditionFile== null)
+                {
+                    if (n.ItemType== EItemType.Block)
+                    {
+                        throw new Exception("EntityModel cannot exist for Block");
+                    }
+
+                    rw.NodeRef<CMwNod>(ref n.entityModel);
+                }
+            }
+
+            if (Version >= 13)
+            {
+                rw.NodeRef<CPlugVFXFile>(ref n.vFX);
+            }
+
+            if (Version >= 15)
+            {
+                rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier, ref n.materialModifierFile);
+            }
         }
     }
 

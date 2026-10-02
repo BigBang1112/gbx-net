@@ -86,6 +86,45 @@ CGameItemModel 0x2E002000
   int<EItemType> ItemTypeE
 
 0x019 // model
+  version
+  if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
+    v8-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  else if ItemType == EItemType.Vehicle
+    v9-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  else if ItemType != EItemType.Block
+    v11-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  v3+
+    id DefaultWeaponName
+  v4+
+    if n.phyModelCustom != null
+      int PhyModelCustomIndex (local, write: -1)
+    else
+      CMwNod PhyModelCustom
+  v5+
+    if n.visModelCustom != null
+      int VisModelCustomIndex (local, write: -1)
+    else
+      CMwNod VisModelCustom
+  v6+
+    CGameActionModel[] Actions
+  v7+
+    int<EDefaultCam> DefaultCam
+  v8+
+    CMwNod EntityModelEdition (external) // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
+    if n.entityModelEdition == null && EntityModelEditionFile == null
+      if ItemType == EItemType.Block
+        throw (type: Exception, message: EntityModel cannot exist for Block)
+      CMwNod EntityModel
+  v13+
+    CPlugVFXFile VFX
+  v15+
+    CPlugGameSkinAndFolder MaterialModifier (external)
 
 0x01A
   CMwNod
