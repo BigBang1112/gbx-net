@@ -74,8 +74,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.autoTerrains = value;
     }
 
+    private CScriptTraitsMetadata? scriptMetadata;
     [AppliedWithChunk<Chunk0310D00B>]
-    public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
+    public CScriptTraitsMetadata? ScriptMetadata
+    {
+        get => this.scriptMetadata;
+        set => this.scriptMetadata = value;
+    }
 
     private List<ObjectSpawn>? objectSpawns;
     [AppliedWithChunk<Chunk0310D00E>]
@@ -112,11 +117,21 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     [AppliedWithChunk<Chunk0310D011>]
     public partial Int3 ClipTriggerSize { get; set; }
 
+    private CGameCtnMediaClipGroup? clipGroupInGame;
     [AppliedWithChunk<Chunk0310D011>]
-    public partial CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
+    public CGameCtnMediaClipGroup? ClipGroupInGame
+    {
+        get => this.clipGroupInGame;
+        set => this.clipGroupInGame = value;
+    }
 
+    private CGameCtnMediaClipGroup? clipGroupEndRace;
     [AppliedWithChunk<Chunk0310D011>]
-    public partial CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
+    public CGameCtnMediaClipGroup? ClipGroupEndRace
+    {
+        get => this.clipGroupEndRace;
+        set => this.clipGroupEndRace = value;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
@@ -126,14 +141,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         ((CGameCtnMacroBlockInfo)clone).cardEventsSpawns = context.CloneList(this.cardEventsSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).sceneDecals = context.CloneArray(this.sceneDecals)!;
         ((CGameCtnMacroBlockInfo)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
+        ((CGameCtnMacroBlockInfo)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
         ((CGameCtnMacroBlockInfo)clone).objectSpawns = context.CloneList(this.objectSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
         ((CGameCtnMacroBlockInfo)clone).offzones = context.CloneArray(this.offzones)!;
         ((CGameCtnMacroBlockInfo)clone).iconSize = context.Clone(this.iconSize)!;
-        ((CGameCtnMacroBlockInfo)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
-        ((CGameCtnMacroBlockInfo)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
         ((CGameCtnMacroBlockInfo)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
         ((CGameCtnMacroBlockInfo)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
+        ((CGameCtnMacroBlockInfo)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
     }
 
     public CGameCtnMacroBlockInfo()

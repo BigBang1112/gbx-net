@@ -48,6 +48,7 @@ public partial class CFuncSkel : CMwNod, IClass
         ((CFuncSkel)clone).bones = context.CloneArray(this.bones)!;
     }
 
+    [AppliedWithChunk<Chunk05005002>]
     public int BonesCount
     {
         get => Bones?.Length?? 0;

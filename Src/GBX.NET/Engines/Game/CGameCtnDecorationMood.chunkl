@@ -71,3 +71,8 @@ CGameCtnDecorationMood 0x0303A000
 0x013
   version
   float EditorHelperHdrScale
+
+property bool IsNight
+  get = isNight == true || (isNight == null && RemappedStartDayTime > 0.25 && RemappedStartDayTime < 0.75)
+  set
+    isNight = value

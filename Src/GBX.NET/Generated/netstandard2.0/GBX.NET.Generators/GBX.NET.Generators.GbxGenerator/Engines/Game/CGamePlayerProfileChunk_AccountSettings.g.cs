@@ -301,6 +301,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.trigram = value;
     }
 
+    private DateTime? receivedMessagesAt;
+    [AppliedWithChunk<Chunk0312C005>]
+    public DateTime? ReceivedMessagesAt
+    {
+        get => this.receivedMessagesAt;
+        set => this.receivedMessagesAt = value;
+    }
+
     private string? clubLinkUrl;
     [AppliedWithChunk<Chunk0312C008>]
     public string? ClubLinkUrl
@@ -362,10 +370,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).privacyPolicyVersion = context.Clone(this.privacyPolicyVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).age = context.Clone(this.age)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).trigram = context.Clone(this.trigram)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).clubLinkUrl = context.Clone(this.clubLinkUrl)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).fameStars = context.Clone(this.fameStars)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).youtubeUploads = context.CloneArray(this.youtubeUploads)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
     }
 
     public CGamePlayerProfileChunk_AccountSettings()

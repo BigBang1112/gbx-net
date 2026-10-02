@@ -111,14 +111,14 @@ internal static class EngineWriter
         {
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(layout.Existing, property.Name);
             if (SyntaxOverlap.Has(layout.Existing, property.Name) && partialProperty is null) continue;
-            if (layout.Scope.Fields.Any(x => x.Name == property.Name)) continue;
+            if (partialProperty is not null && layout.Scope.Fields.Any(x => x.Name == property.Name)) continue;
 
             code.BlankLine();
             Documentation(code, property.TrailingComment?.Text);
+            AppliedWithChunkAttributes(code, layout, property.Name);
 
             if (partialProperty is not null)
             {
-                AppliedWithChunkAttributes(code, layout, property.Name);
                 PartialProperty(code, partialProperty);
                 continue;
             }
@@ -312,6 +312,8 @@ internal static class EngineWriter
             var initial = Default(type, defaultDeclaration);
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
             var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
+            var customProperty = !chunk && ReferenceEquals(scope, layout.Scope) &&
+                layout.File.Syntax.Properties.Any(x => x.Name == field.Name);
 
             if (!chunk)
                 code.BlankLine();
@@ -331,6 +333,13 @@ internal static class EngineWriter
                 }
                 else if (!hasExisting)
                     code.Line("public " + type + " " + property + (initial is null ? "" : " = " + initial) + ";");
+            }
+            else if (!hasExisting && customProperty)
+            {
+                if (!SyntaxOverlap.Has(scope.Existing, backing.TrimStart('@')))
+                {
+                    code.Line("private " + type + " " + backing + (initial is null ? "" : " = " + initial) + ";");
+                }
             }
             else if (!hasExisting || partialProperty is not null)
             {

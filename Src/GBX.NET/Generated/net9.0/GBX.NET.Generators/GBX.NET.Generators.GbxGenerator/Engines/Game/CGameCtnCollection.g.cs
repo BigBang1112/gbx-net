@@ -306,6 +306,40 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.collectionType = value;
     }
 
+    private CPlugBitmap? iconFid;
+    [AppliedWithChunk<Chunk0303300D>]
+    public CPlugBitmap? IconFid
+    {
+        get => this.iconFidFile?.GetNode(ref this.iconFid) ?? this.iconFid;
+        set => this.iconFid = value;
+    }
+    private Components.GbxRefTableFile? iconFidFile;
+
+    public Components.GbxRefTableFile? IconFidFile
+    {
+        get => iconFidFile;
+        set => iconFidFile = value;
+    }
+
+    public CPlugBitmap? GetIconFid(GbxReadSettings settings = default, bool exceptions = false) => iconFidFile?.GetNode(ref iconFid, settings, exceptions) ?? iconFid;
+
+    private CPlugBitmap? iconSmallFid;
+    [AppliedWithChunk<Chunk0303300D>]
+    public CPlugBitmap? IconSmallFid
+    {
+        get => this.iconSmallFidFile?.GetNode(ref this.iconSmallFid) ?? this.iconSmallFid;
+        set => this.iconSmallFid = value;
+    }
+    private Components.GbxRefTableFile? iconSmallFidFile;
+
+    public Components.GbxRefTableFile? IconSmallFidFile
+    {
+        get => iconSmallFidFile;
+        set => iconSmallFidFile = value;
+    }
+
+    public CPlugBitmap? GetIconSmallFid(GbxReadSettings settings = default, bool exceptions = false) => iconSmallFidFile?.GetNode(ref iconSmallFid, settings, exceptions) ?? iconSmallFid;
+
     private float waterTop;
     [AppliedWithChunk<Chunk03033013>]
     [AppliedWithChunk<Chunk0303301E>]
@@ -1146,6 +1180,8 @@ public partial class CGameCtnCollection : CMwNod, IClass
         ((CGameCtnCollection)clone).squareHeight = context.Clone(this.squareHeight)!;
         ((CGameCtnCollection)clone).blocksShadow = context.Clone(this.blocksShadow)!;
         ((CGameCtnCollection)clone).collectionType = context.Clone(this.collectionType)!;
+        ((CGameCtnCollection)clone).iconFid = context.Clone(this.iconFid)!;
+        ((CGameCtnCollection)clone).iconSmallFid = context.Clone(this.iconSmallFid)!;
         ((CGameCtnCollection)clone).waterTop = context.Clone(this.waterTop)!;
         ((CGameCtnCollection)clone).waterBottom = context.Clone(this.waterBottom)!;
         ((CGameCtnCollection)clone).cameraMinHeight = context.Clone(this.cameraMinHeight)!;
@@ -1216,10 +1252,6 @@ public partial class CGameCtnCollection : CMwNod, IClass
         ((CGameCtnCollection)clone).bitmapDisplayControlDefaultTVProgram2x3 = context.Clone(this.bitmapDisplayControlDefaultTVProgram2x3)!;
         ((CGameCtnCollection)clone).colorBlindnessModifier = context.Clone(this.colorBlindnessModifier)!;
         ((CGameCtnCollection)clone).globalMaterialModifier = context.Clone(this.globalMaterialModifier)!;
-        ((CGameCtnCollection)clone).iconFid = context.Clone(this.iconFid)!;
-        ((CGameCtnCollection)clone).iconFidFile = context.Clone(this.iconFidFile)!;
-        ((CGameCtnCollection)clone).iconSmallFid = context.Clone(this.iconSmallFid)!;
-        ((CGameCtnCollection)clone).iconSmallFidFile = context.Clone(this.iconSmallFidFile)!;
         ((CGameCtnCollection)clone).collection = context.Clone(this.collection)!;
     }
 
@@ -1495,6 +1527,23 @@ public partial class CGameCtnCollection : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
+        {
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFid is not null || n.iconFidFile is not null)));
+
+            if (hasIconFid)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidFile);
+            }
+
+            var hasIconSmallFid = rw.Boolean((rw.Writer is null ? default : (n.iconSmallFid is not null || n.iconSmallFidFile is not null)));
+
+            if (hasIconSmallFid)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.iconSmallFid, ref n.iconSmallFidFile);
+            }
         }
     }
 

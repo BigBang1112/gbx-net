@@ -78,6 +78,12 @@ CGameCtnCollection 0x03033000
   int<ECollectionType> CollectionType
 
 0x00D //IconFid, IconSmallFid
+  bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
+  if HasIconFid
+    CPlugBitmap IconFid (external)
+  bool HasIconSmallFid (local, write: "n.iconSmallFid is not null || n.iconSmallFidFile is not null")
+  if HasIconSmallFid
+    CPlugBitmap IconSmallFid (external)
 
 0x00E
   int SortIndex

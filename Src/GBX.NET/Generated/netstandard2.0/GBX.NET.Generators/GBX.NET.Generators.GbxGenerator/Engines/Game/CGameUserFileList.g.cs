@@ -73,6 +73,83 @@ public partial class CGameUserFileList : CMwNod, IClass
 
     public partial class FileInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private string name = string.Empty;
+        public string Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private byte u01;
+        public byte U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private ulong u02;
+        public ulong U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private ulong u03;
+        public ulong U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private FileType @type;
+        public FileType Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private string mapUid = string.Empty;
+        public string MapUid
+        {
+            get => this.mapUid;
+            set => this.mapUid = value;
+        }
+
+        private string? mapName;
+        public string? MapName
+        {
+            get => this.mapName;
+            set => this.mapName = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private string? ghostKind;
+        public string? GhostKind
+        {
+            get => this.ghostKind;
+            set => this.ghostKind = value;
+        }
+
+        private byte u05;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int? u06;
+        public int? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (FileInfo)MemberwiseClone();
@@ -84,13 +161,42 @@ public partial class CGameUserFileList : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((FileInfo)clone).name = context.Clone(this.name)!;
+            ((FileInfo)clone).u01 = context.Clone(this.u01)!;
+            ((FileInfo)clone).u02 = context.Clone(this.u02)!;
+            ((FileInfo)clone).u03 = context.Clone(this.u03)!;
+            ((FileInfo)clone).@type = context.Clone(this.@type)!;
             ((FileInfo)clone).mapUid = context.Clone(this.mapUid)!;
             ((FileInfo)clone).mapName = context.Clone(this.mapName)!;
+            ((FileInfo)clone).u04 = context.Clone(this.u04)!;
             ((FileInfo)clone).ghostKind = context.Clone(this.ghostKind)!;
-            ((FileInfo)clone).@type = context.Clone(this.@type)!;
-            ((FileInfo)clone).U01 = context.Clone(this.U01)!;
-            ((FileInfo)clone).U02 = context.Clone(this.U02)!;
-            ((FileInfo)clone).U04 = context.Clone(this.U04)!;
+            ((FileInfo)clone).u05 = context.Clone(this.u05)!;
+            ((FileInfo)clone).u06 = context.Clone(this.u06)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.name);
+            rw.Byte(ref this.u01);
+            rw.UInt64(ref this.u02);
+            rw.UInt64(ref this.u03);
+            rw.EnumInt32<FileType>(ref this.@type);
+
+            switch (Type)
+            {
+                case FileType.Map:
+                    rw.Id(ref this.mapUid);
+                    rw.String(ref this.mapName);
+                    rw.Byte(ref this.u04);
+                    break;
+                case FileType.Ghost:
+                    rw.String(ref this.ghostKind);
+                    rw.Byte(ref this.u05);
+                    rw.Id(ref this.mapUid);
+                    rw.Int32(ref this.u06);
+                    break;
+                default:
+                    throw new ThisShouldNotHappenException();
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

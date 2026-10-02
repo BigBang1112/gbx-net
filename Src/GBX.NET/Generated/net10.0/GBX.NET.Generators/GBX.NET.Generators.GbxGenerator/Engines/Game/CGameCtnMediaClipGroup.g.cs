@@ -37,6 +37,11 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0307A000;
 
+    [AppliedWithChunk<Chunk0307A001>]
+    [AppliedWithChunk<Chunk0307A002>]
+    [AppliedWithChunk<Chunk0307A003>]
+    public partial List<ClipTrigger> Clips { get; set; }
+
     private Trigger[]? triggers;
     [AppliedWithChunk<Chunk0307A001>]
     [AppliedWithChunk<Chunk0307A002>]

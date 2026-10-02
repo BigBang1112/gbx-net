@@ -37,7 +37,4 @@ public partial class CGamePlayerProfileChunk_AccountSettings
         get => BitHelper.GetBit(flags2, 1);
         set => flags2 = BitHelper.SetBit(flags2, 1, value);
     }
-
-    private DateTime? receivedMessagesAt;
-    public DateTime? ReceivedMessagesAt { get => receivedMessagesAt; set => receivedMessagesAt = value; }
 }

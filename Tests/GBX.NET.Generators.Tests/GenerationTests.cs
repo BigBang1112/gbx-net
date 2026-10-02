@@ -647,6 +647,38 @@ public class GenerationTests
     }
 
     [Test]
+    [Arguments("return")]
+    [Arguments("throw (type: System.InvalidOperationException)")]
+    public async Task OmitsUnreachableSwitchBreaksAfterReturnOrThrow(string defaultExit)
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001
+              int Value
+              switch Value
+                case 0
+                  int Other
+                case 1
+                  int Count (local, write: 0)
+                  return
+                case 2
+                  int Count (local, write: 0)
+                  throw (type: System.InvalidOperationException)
+                default
+                  int Count (local, write: 0)
+                  {{defaultExit}}
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(compilation.GetDiagnostics().Where(x => x.Id == "CS0162")).IsEmpty();
+        var selection = Engine(result).GetRoot().DescendantNodes().OfType<SwitchStatementSyntax>().Single();
+        await Assert.That(selection.Sections.Count).IsEqualTo(4);
+        await Assert.That(selection.Sections[0].Statements.Last()).IsTypeOf<BreakStatementSyntax>();
+        await Assert.That(selection.DescendantNodes().OfType<BreakStatementSyntax>()).HasSingleItem();
+    }
+
+    [Test]
     public async Task PassesCurrentVersionToArchivesAndHonorsExplicitOverrides()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -840,6 +872,72 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task UsesLayoutAccessorsForSerializedPropertiesWithNullableBackingFields()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private bool? isNight;
+
+                public static string Verify()
+                {
+                    var node = new Example { DayTime = 50 };
+                    var inferred = node.IsNight;
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    var chunk = new Chunk03043002();
+                    chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer));
+                    var afterWrite = node.IsNight;
+                    chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(0)));
+                    var explicitFalse = node.IsNight;
+                    node.IsNight = true;
+                    node.DayTime = 0;
+                    return inferred + ":" + string.Join(",", writer.Values) + ":" + afterWrite + ":" + explicitFalse + ":" + node.IsNight;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int DayTime
+            0x002
+              bool IsNight
+            0x003
+              int Score
+            property bool IsNight
+              get = isNight == true || (isNight == null && DayTime > 25 && DayTime < 75)
+              set
+                isNight = value
+            property int Score
+              get = score * 2
+              set
+                score = value / 2
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        var property = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "IsNight");
+        await Assert.That(property.Type.ToString()).IsEqualTo("bool");
+        await Assert.That(property.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043001>");
+        await Assert.That(property.AttributeLists.ToString()).Contains("AppliedWithChunk<Chunk03043002>");
+        await Assert.That(generated).Contains("get => isNight== true || (isNight== null && DayTime> 25 && DayTime< 75);");
+        await Assert.That(generated).Contains("isNight = value;");
+        await Assert.That(generated).Contains("rw.Boolean(ref n.isNight);");
+        await Assert.That(generated).DoesNotContain("private bool isNight;");
+        await Assert.That(generated).Contains("private int score;");
+        await Assert.That(generated).Contains("get => score* 2;");
+        await Assert.That(generated).Contains("rw.Int32(ref n.score);");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("True:0:True:False:True");
+    }
+
+    [Test]
     public async Task SupportingGeneratorsHandleUnrelatedCompilations()
     {
         var compilation = CSharpCompilation.Create("Empty");
@@ -935,6 +1033,11 @@ public class GenerationTests
                 public short Int16(short value) => (short)Int32(value);
                 public T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.Engines.Game.CMwNod => value;
                 public void Int32(ref int value) { value = Int32(value); }
+                public void Boolean(ref bool? value)
+                {
+                    if (Reader is not null) value = Reader.ReadInt32() != 0;
+                    Writer?.Write(value.GetValueOrDefault() ? 1 : 0);
+                }
                 public int Int32(int value)
                 {
                     if (Reader is not null) value = Reader.ReadInt32();

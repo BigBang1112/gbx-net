@@ -137,7 +137,7 @@ internal sealed class SerializationWriter
                         var hasLocals = branch.Body.OfType<FieldDeclaration>().Any(static x => LayoutModel.Has(x.Attributes, "local"));
                         if (hasLocals) code.Open("");
                         Write(branch.Body);
-                        code.Line("break;");
+                        if (!EndsWithExit(branch.Body)) code.Line("break;");
                         if (hasLocals) code.Close();
                         code.Indent--;
                     }
@@ -149,7 +149,7 @@ internal sealed class SerializationWriter
                         var hasLocals = selection.Default.Body.OfType<FieldDeclaration>().Any(static x => LayoutModel.Has(x.Attributes, "local"));
                         if (hasLocals) code.Open("");
                         Write(selection.Default.Body);
-                        code.Line("break;");
+                        if (!EndsWithExit(selection.Default.Body)) code.Line("break;");
                         if (hasLocals) code.Close();
                         code.Indent--;
                     }
@@ -186,6 +186,9 @@ internal sealed class SerializationWriter
         }
         locals.Pop();
     }
+
+    private static bool EndsWithExit(IEnumerable<IBodyStatement> statements) => statements.LastOrDefault() is
+        ReturnStatement or ThrowStatement or FieldDeclaration { IsSpecialKeyword: true, Type.Name: "return" or "throw" };
 
     private void Field(FieldDeclaration declaration)
     {

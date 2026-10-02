@@ -431,13 +431,24 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         ((CGameCtnDecorationMood)clone).waterReflectFakeCube = context.Clone(this.waterReflectFakeCube)!;
         ((CGameCtnDecorationMood)clone).fxHdrScalesT3 = context.Clone(this.fxHdrScalesT3)!;
         ((CGameCtnDecorationMood)clone).moodBlender = context.Clone(this.moodBlender)!;
+        ((CGameCtnDecorationMood)clone).isNight = context.Clone(this.isNight)!;
         ((CGameCtnDecorationMood)clone).enableStars = context.Clone(this.enableStars)!;
         ((CGameCtnDecorationMood)clone).cloudsSolids = context.Clone(this.cloudsSolids)!;
         ((CGameCtnDecorationMood)clone).fxLightning = context.Clone(this.fxLightning)!;
         ((CGameCtnDecorationMood)clone).fxWindOnDecal = context.Clone(this.fxWindOnDecal)!;
         ((CGameCtnDecorationMood)clone).fxWindOnTreeSprite = context.Clone(this.fxWindOnTreeSprite)!;
         ((CGameCtnDecorationMood)clone).editorHelperHdrScale = context.Clone(this.editorHelperHdrScale)!;
-        ((CGameCtnDecorationMood)clone).isNight = context.Clone(this.isNight)!;
+    }
+
+    [AppliedWithChunk<Chunk0303A001>]
+    [AppliedWithChunk<Chunk0303A012>]
+    public bool IsNight
+    {
+        get => isNight== true || (isNight== null && RemappedStartDayTime> 0.25 && RemappedStartDayTime< 0.75);
+        set
+        {
+            isNight = value;
+        }
     }
 
     public CGameCtnDecorationMood()
