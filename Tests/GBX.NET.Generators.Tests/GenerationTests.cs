@@ -9,7 +9,7 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
-    public async Task SupportsIPv4FieldsAndCollectionsInChunksAndArchives()
+    public async Task SupportsIPv4FieldsInChunksAndArchives()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -26,28 +26,16 @@ public class GenerationTests
             {
                 public partial class GbxReader
                 {
-                    public System.Net.IPAddress ReadIPAddress() => System.Net.IPAddress.Any;
-                    public System.Net.IPAddress[] ReadArrayIPAddress(int length = 0) => [];
-                    public System.Net.IPAddress[] ReadArrayIPAddress_deprec() => [];
-                    public System.Collections.Generic.List<System.Net.IPAddress> ReadListIPAddress(int length = 0) => [];
-                    public System.Net.IPAddress[][] ReadJaggedArrayIPAddress(int? innerLength = null, int? outerLength = null) => [];
+                    public System.Net.IPAddress ReadIPv4() => System.Net.IPAddress.Any;
                 }
                 public partial class GbxWriter
                 {
-                    public void Write(System.Net.IPAddress? value) { }
-                    public void WriteArray(System.Net.IPAddress[]? value, int length = 0) { }
-                    public void WriteArray_deprec(System.Net.IPAddress[]? value) { }
-                    public void WriteList(System.Collections.Generic.List<System.Net.IPAddress>? value, int length = 0) { }
-                    public void WriteJaggedArrayIPAddress(System.Net.IPAddress[][]? value, int? innerLength = null, int? outerLength = null) { }
+                    public void WriteIPv4(System.Net.IPAddress? value) { }
                 }
                 public partial class GbxReaderWriter
                 {
-                    public System.Net.IPAddress? IPAddress(System.Net.IPAddress? value) => value;
-                    public void IPAddress(ref System.Net.IPAddress? value) { }
-                    public void ArrayIPAddress(ref System.Net.IPAddress[]? value, int length = 0) { }
-                    public void ArrayIPAddress_deprec(ref System.Net.IPAddress[]? value) { }
-                    public void ListIPAddress(ref System.Collections.Generic.List<System.Net.IPAddress>? value, int length = 0) { }
-                    public void JaggedArrayIPAddress(ref System.Net.IPAddress[][]? value, int? innerLength = null, int? outerLength = null) { }
+                    public System.Net.IPAddress? IPv4(System.Net.IPAddress? value) => value;
+                    public void IPv4(ref System.Net.IPAddress? value) { }
                 }
             }
             """;
@@ -55,11 +43,6 @@ public class GenerationTests
               ipv4 Address
               ipv4? OptionalAddress
               ipv4
-              ipv4[] Addresses
-              ipv4[2] FixedAddresses
-              ipv4[] OldAddresses (deprec)
-              ipv4[] AddressList (list)
-              ipv4[][] Rows
               ipv4 Temporary (local, write: Address)
 
             """;
@@ -72,17 +55,20 @@ public class GenerationTests
         var generated = Engine(result).ToString();
         await Assert.That(generated).Contains("public global::System.Net.IPAddress? Address");
         await Assert.That(generated).Contains("public global::System.Net.IPAddress? OptionalAddress");
-        await Assert.That(generated).Contains("rw.IPAddress(ref n.address);");
-        await Assert.That(generated).Contains("n.address = r.ReadIPAddress();");
-        await Assert.That(generated).Contains("w.Write(n.address);");
-        await Assert.That(generated).Contains("rw.ArrayIPAddress(ref n.fixedAddresses!, 2);");
-        await Assert.That(generated).Contains("w.WriteArray(n.fixedAddresses, 2);");
-        await Assert.That(generated).Contains("rw.ArrayIPAddress_deprec(ref n.oldAddresses!);");
-        await Assert.That(generated).Contains("w.WriteArray_deprec(n.oldAddresses);");
-        await Assert.That(generated).Contains("rw.ListIPAddress(ref n.addressList!);");
-        await Assert.That(generated).Contains("w.WriteList(n.addressList);");
-        await Assert.That(generated).Contains("rw.JaggedArrayIPAddress(ref n.rows!);");
-        await Assert.That(generated).Contains("w.WriteJaggedArrayIPAddress(n.rows);");
+        await Assert.That(generated).Contains("rw.IPv4(ref n.address);");
+        await Assert.That(generated).Contains("n.address = r.ReadIPv4();");
+        await Assert.That(generated).Contains("w.WriteIPv4(n.address);");
+    }
+
+    [Test]
+    public async Task ReportsIPv4CollectionsAsUnsupported()
+    {
+        foreach (var field in new[] { "ipv4[] Addresses", "ipv4[2] Addresses", "ipv4[][] Addresses", "ipv4[] Addresses (list)" })
+        {
+            var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  {field}\n"));
+            await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("IPv4 fields do not support arrays or lists"));
+            await Assert.That(result.GeneratedSources.Where(x => x.HintName.StartsWith("Engines/"))).IsEmpty();
+        }
     }
 
     [Test]

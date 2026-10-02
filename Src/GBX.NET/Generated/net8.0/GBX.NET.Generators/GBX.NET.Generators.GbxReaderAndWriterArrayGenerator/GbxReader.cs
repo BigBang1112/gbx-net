@@ -20,12 +20,6 @@ partial interface IGbxReader
     List<GBX.NET.PackDesc> ReadListPackDesc(int length);
     List<GBX.NET.PackDesc> ReadListPackDesc();
     List<GBX.NET.PackDesc> ReadListPackDesc_deprec();
-    System.Net.IPAddress[] ReadArrayIPAddress(int length);
-    System.Net.IPAddress[] ReadArrayIPAddress();
-    System.Net.IPAddress[] ReadArrayIPAddress_deprec();
-    List<System.Net.IPAddress> ReadListIPAddress(int length);
-    List<System.Net.IPAddress> ReadListIPAddress();
-    List<System.Net.IPAddress> ReadListIPAddress_deprec();
     GBX.NET.ZlibData[] ReadArrayZlibData(int length);
     GBX.NET.ZlibData[] ReadArrayZlibData();
     GBX.NET.ZlibData[] ReadArrayZlibData_deprec();
@@ -196,60 +190,6 @@ partial class GbxReader
     {
         ReadDeprecVersion();
         return ReadListPackDesc();
-    }
-
-    public System.Net.IPAddress[] ReadArrayIPAddress(int length)
-    {
-        if (length == 0)
-        {
-            return [];
-        }
-
-        EnsureValidLength(length);
-
-        var array = new System.Net.IPAddress[length];
-
-        for (int i = 0; i < length; i++)
-        {
-            array[i] = ReadIPAddress();
-        }
-
-        return array;
-    }
-
-    public System.Net.IPAddress[] ReadArrayIPAddress() => ReadArrayIPAddress(ReadInt32());
-
-    public System.Net.IPAddress[] ReadArrayIPAddress_deprec()
-    {
-        ReadDeprecVersion();
-        return ReadArrayIPAddress();
-    }
-
-    public List<System.Net.IPAddress> ReadListIPAddress(int length)
-    {
-        if (length == 0)
-        {
-            return new List<System.Net.IPAddress>();
-        }
-
-        EnsureValidLength(length);
-
-        var list = new List<System.Net.IPAddress>(length);
-
-        for (int i = 0; i < length; i++)
-        {
-            list.Add(ReadIPAddress());
-        }
-
-        return list;
-    }
-
-    public List<System.Net.IPAddress> ReadListIPAddress() => ReadListIPAddress(ReadInt32());
-
-    public List<System.Net.IPAddress> ReadListIPAddress_deprec()
-    {
-        ReadDeprecVersion();
-        return ReadListIPAddress();
     }
 
     public GBX.NET.ZlibData[] ReadArrayZlibData(int length)

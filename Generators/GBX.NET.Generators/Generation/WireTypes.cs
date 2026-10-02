@@ -91,7 +91,7 @@ internal static class WireTypes
         ["filetime"] = "FileTime",
         ["systemtime"] = "SystemTime",
         ["unixtime"] = "UnixTime",
-        ["ipv4"] = "IPAddress",
+        ["ipv4"] = "IPv4",
         ["datauint"] = "DataUInt32",
         ["datauint32"] = "DataUInt32",
         ["dataint"] = "DataInt32",

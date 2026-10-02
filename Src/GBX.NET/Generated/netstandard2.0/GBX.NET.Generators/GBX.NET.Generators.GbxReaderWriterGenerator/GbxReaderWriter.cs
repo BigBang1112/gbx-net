@@ -460,20 +460,8 @@ partial interface IGbxReaderWriter
     void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
-    System.Net.IPAddress? IPAddress(System.Net.IPAddress? value = default);
-    void IPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress? value);
-    System.Net.IPAddress[]? ArrayIPAddress(System.Net.IPAddress[]? value = default);
-    System.Net.IPAddress[]? ArrayIPAddress(System.Net.IPAddress[]? value, int length);
-    System.Net.IPAddress[]? ArrayIPAddress_deprec(System.Net.IPAddress[]? value);
-    List<System.Net.IPAddress>? ListIPAddress(List<System.Net.IPAddress>? value = default);
-    List<System.Net.IPAddress>? ListIPAddress(List<System.Net.IPAddress>? value, int length);
-    List<System.Net.IPAddress>? ListIPAddress_deprec(List<System.Net.IPAddress>? value);
-    void ArrayIPAddress(ref System.Net.IPAddress[]? value);
-    void ArrayIPAddress(ref System.Net.IPAddress[]? value, int length);
-    void ArrayIPAddress_deprec(ref System.Net.IPAddress[]? value);
-    void ListIPAddress(ref List<System.Net.IPAddress>? value);
-    void ListIPAddress(ref List<System.Net.IPAddress>? value, int length);
-    void ListIPAddress_deprec(ref List<System.Net.IPAddress>? value);
+    System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default);
+    void IPv4([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress? value);
 
     [return: NotNullIfNotNull(nameof(value))]
     int SmallLen(int value = default);
@@ -625,10 +613,6 @@ partial interface IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.PackDesc[][]? JaggedArrayPackDesc(GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default);
     void JaggedArrayPackDesc([NotNullIfNotNull(nameof(value))] ref GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    System.Net.IPAddress[][]? JaggedArrayIPAddress(System.Net.IPAddress[][]? value, int? innerLength = default, int? outerLength = default);
-    void JaggedArrayIPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress[][]? value, int? innerLength = default, int? outerLength = default);
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<string>? ListId(System.Collections.Generic.List<string>? value, int length);
@@ -2003,74 +1987,14 @@ partial class GbxReaderWriter
     public void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default) => value = UnixTime(value, defaultValue);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.Net.IPAddress? IPAddress(System.Net.IPAddress? value = default)
+    public System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default)
     {
-        if (Reader is not null) value = Reader.ReadIPAddress();
-        Writer?.Write(value);
+        if (Reader is not null) value = Reader.ReadIPv4();
+        Writer?.WriteIPv4(value);
         return value;
     }
 
-    public void IPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress? value) => value = IPAddress(value);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Net.IPAddress[]? ArrayIPAddress(System.Net.IPAddress[]? value = default)
-    {
-        if (Reader is not null) value = Reader.ReadArrayIPAddress();
-        Writer?.WriteArray(value);
-        return value;
-    }
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Net.IPAddress[]? ArrayIPAddress(System.Net.IPAddress[]? value, int length)
-    {
-        if (Reader is not null) value = Reader.ReadArrayIPAddress(length);
-        Writer?.WriteArray(value, length);
-        return value;
-    }
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Net.IPAddress[]? ArrayIPAddress_deprec(System.Net.IPAddress[]? value = default)
-    {
-        if (Reader is not null) value = Reader.ReadArrayIPAddress_deprec();
-        Writer?.WriteArray_deprec(value);
-        return value;
-    }
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public List<System.Net.IPAddress>? ListIPAddress(List<System.Net.IPAddress>? value = default)
-    {
-        if (Reader is not null) value = Reader.ReadListIPAddress();
-        Writer?.WriteList(value);
-        return value;
-    }
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public List<System.Net.IPAddress>? ListIPAddress(List<System.Net.IPAddress>? value, int length)
-    {
-        if (Reader is not null) value = Reader.ReadListIPAddress(length);
-        Writer?.WriteList(value, length);
-        return value;
-    }
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public List<System.Net.IPAddress>? ListIPAddress_deprec(List<System.Net.IPAddress>? value = default)
-    {
-        if (Reader is not null) value = Reader.ReadListIPAddress_deprec();
-        Writer?.WriteList_deprec(value);
-        return value;
-    }
-
-    public void ArrayIPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress[]? value) => value = ArrayIPAddress(value);
-
-    public void ArrayIPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress[]? value, int length) => value = ArrayIPAddress(value, length);
-
-    public void ArrayIPAddress_deprec([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress[]? value) => value = ArrayIPAddress_deprec(value);
-
-    public void ListIPAddress([NotNullIfNotNull(nameof(value))] ref List<System.Net.IPAddress>? value) => value = ListIPAddress(value);
-
-    public void ListIPAddress([NotNullIfNotNull(nameof(value))] ref List<System.Net.IPAddress>? value, int length) => value = ListIPAddress(value, length);
-
-    public void ListIPAddress_deprec([NotNullIfNotNull(nameof(value))] ref List<System.Net.IPAddress>? value) => value = ListIPAddress_deprec(value);
+    public void IPv4([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress? value) => value = IPv4(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public int SmallLen(int value = default)
@@ -2457,16 +2381,6 @@ partial class GbxReaderWriter
     }
 
     public void JaggedArrayPackDesc([NotNullIfNotNull(nameof(value))] ref GBX.NET.PackDesc[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayPackDesc(value, innerLength, outerLength);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Net.IPAddress[][]? JaggedArrayIPAddress(System.Net.IPAddress[][]? value, int? innerLength = default, int? outerLength = default)
-    {
-        if (Reader is not null) value = Reader.ReadJaggedArrayIPAddress(innerLength, outerLength);
-        Writer?.WriteJaggedArrayIPAddress(value, innerLength, outerLength);
-        return value;
-    }
-
-    public void JaggedArrayIPAddress([NotNullIfNotNull(nameof(value))] ref System.Net.IPAddress[][]? value, int? innerLength = default, int? outerLength = default) => value = JaggedArrayIPAddress(value, innerLength, outerLength);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<string>? ListId(System.Collections.Generic.List<string>? value, int length)

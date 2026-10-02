@@ -354,12 +354,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.hardwareUid = value;
     }
 
-    private int networkAddress;
-    /// <summary>
-    /// IPv4 address in network byte order
-    /// </summary>
+    private global::System.Net.IPAddress? networkAddress;
     [AppliedWithChunk<Chunk03092023>]
-    public int NetworkAddress
+    public global::System.Net.IPAddress? NetworkAddress
     {
         get => this.networkAddress;
         set => this.networkAddress = value;
@@ -1263,7 +1260,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Int32(ref n.gpuDeviceId);
             rw.Int32(ref n.gpuVendorId);
             rw.String(ref n.hardwareUid);
-            rw.Int32(ref n.networkAddress);
+            rw.IPv4(ref n.networkAddress);
             rw.String(ref n.loggedUserName);
 
             if (Version >= 2)

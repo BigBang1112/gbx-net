@@ -321,7 +321,7 @@ internal sealed class SerializationWriter
             }
             var writeMethod = method == "Id" ? "IdAsString" : method;
 
-            if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref" or "ipv4")
+            if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref")
             {
                 writeMethod = (LayoutModel.Has(declaration.Attributes, "list") ? "List" : "Array") + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
             }
@@ -336,7 +336,7 @@ internal sealed class SerializationWriter
                 ? "(" + WireTypes.Map(declaration.Type.Name) + ")" : "";
 
             if (declaration.Type.ArrayDimensions == 0 && WireTypes.Primitive(declaration.Type.Name) &&
-                declaration.Type.Name is not ("id" or "lookbackstring" or "data" or "optimizedint" or "vec3_6" or "filetime" or "systemtime" or "unixtime" or "timeofday"))
+                declaration.Type.Name is not ("id" or "lookbackstring" or "data" or "optimizedint" or "vec3_6" or "filetime" or "systemtime" or "unixtime" or "timeofday" or "ipv4"))
             {
                 writeMethod = "";
             }
@@ -383,6 +383,11 @@ internal sealed class SerializationWriter
 
     private string Method(FieldDeclaration field, string storageType, SerializationMode mode)
     {
+        if (field.Type.Name == "ipv4" && field.Type.ArrayDimensions > 0)
+        {
+            throw new NotSupportedException("IPv4 fields do not support arrays or lists.");
+        }
+
         if (field.Type.Name == "data")
         {
             return "Data";
@@ -418,7 +423,6 @@ internal sealed class SerializationWriter
                 "string" => "JaggedArrayString",
                 "ident" or "meta" => "JaggedArrayIdent",
                 "packdesc" or "fileref" => "JaggedArrayPackDesc",
-                "ipv4" => "JaggedArrayIPAddress",
                 _ when WireTypes.Value(jaggedName) && jaggedName != "optimizedint" => "JaggedArray<" + WireTypes.Map(jaggedName) + ">",
                 _ => throw new NotSupportedException("Unsupported jagged array element: " + jaggedName)
             };
