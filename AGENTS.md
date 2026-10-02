@@ -23,4 +23,5 @@ Do not edit generated files directly.
 
 ## Development notes
 
+- Prefer combined `ReadWrite` serialization. Remove separate `Read`/`Write` implementations and `SeparateReadAndWrite` options whenever a combined method can preserve the behavior, including after generator improvements.
 - [.agents/generator-verification.md](.agents/generator-verification.md) lists build and test commands for generator changes

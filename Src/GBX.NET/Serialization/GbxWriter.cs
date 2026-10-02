@@ -3,6 +3,7 @@ using System.Text;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
 
@@ -226,6 +227,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public GbxWriter(Stream output, GbxWriteSettings settings = default) : base(output, encoding, !settings.CloseStream)
     {
+        Settings = settings;
     }
 
     public GbxWriter(XmlWriter output) : base(Stream.Null, encoding)
@@ -1668,9 +1670,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        EnsureValidLength(value.Length);
+        var byteLength = GetCollectionByteLength<T>(value.Length, lengthInBytes: false);
 
-        Write(value.Length);
+        Write(lengthInBytes ? byteLength : value.Length);
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
         Write(MemoryMarshal.Cast<T, byte>(value));
 #else
@@ -1680,39 +1682,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct
     {
-        if (value is null || value.Length == 0)
-        {
-            return;
-        }
-
-        EnsureValidLength(length);
-
-        if (value.Length == length)
-        {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-            Write(MemoryMarshal.Cast<T, byte>(value));
-#else
-            Write(MemoryMarshal.Cast<T, byte>(value).ToArray());
-#endif
-            return;
-        }
-
-        if (value.Length > length)
-        {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length));
-#else
-            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length).ToArray());
-#endif
-            return;
-        }
-
-        // Can be improved
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()));
-#else
-        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()).ToArray());
-#endif
+        WriteCollection<T>(value, length, lengthInBytes);
     }
 
     public void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct
@@ -1738,14 +1708,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        EnsureValidLength(value.Count);
+        var byteLength = GetCollectionByteLength<T>(value.Count, lengthInBytes: false);
 
-        Write(value.Count);
+        Write(lengthInBytes ? byteLength : value.Count);
 #if NET6_0_OR_GREATER
-        if (value is List<T> list)
-        {
-            Write(MemoryMarshal.Cast<T, byte>(CollectionsMarshal.AsSpan(list)));
-        }
+        Write(MemoryMarshal.Cast<T, byte>(CollectionsMarshal.AsSpan(value)));
 #else
         Write(MemoryMarshal.Cast<T, byte>(value.ToArray()).ToArray());
 #endif
@@ -1753,7 +1720,46 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteList<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+#if NET6_0_OR_GREATER
+        WriteCollection<T>(CollectionsMarshal.AsSpan(value), length, lengthInBytes);
+#else
+        WriteCollection<T>(value?.ToArray(), length, lengthInBytes);
+#endif
+    }
+
+    private int GetCollectionByteLength<T>(int length, bool lengthInBytes) where T : struct
+    {
+        EnsureValidLength(length);
+        var byteLength = lengthInBytes ? length : checked(length * Unsafe.SizeOf<T>());
+        EnsureValidLength(byteLength);
+        return byteLength;
+    }
+
+    private void WriteCollection<T>(ReadOnlySpan<T> value, int length, bool lengthInBytes) where T : struct
+    {
+        var byteLength = GetCollectionByteLength<T>(length, lengthInBytes);
+        var bytes = MemoryMarshal.Cast<T, byte>(value);
+        var count = Math.Min(bytes.Length, byteLength);
+
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        Write(bytes.Slice(0, count));
+#else
+        Write(bytes.Slice(0, count).ToArray());
+#endif
+
+        var remaining = byteLength - count;
+        if (remaining == 0)
+        {
+            return;
+        }
+
+        var padding = new byte[Math.Min(remaining, 4096)];
+        while (remaining > 0)
+        {
+            var paddingLength = Math.Min(remaining, padding.Length);
+            Write(padding, 0, paddingLength);
+            remaining -= paddingLength;
+        }
     }
 
     public void WriteList_deprec<T>(List<T>? value, bool lengthInBytes = false) where T : struct
@@ -1786,7 +1792,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteNodeRef(value is not null && i < value.Length ? value[i] : default);
+        }
     }
 
     public void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass
@@ -1822,7 +1833,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteListNodeRef<T>(List<T?>? value, int length) where T : IClass
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteNodeRef(value is not null && i < value.Count ? value[i] : default);
+        }
     }
 
     public void WriteListNodeRef_deprec<T>(List<T?>? value) where T : IClass
@@ -1849,7 +1865,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var item = value is not null && i < value.Length ? value[i] : null;
+            WriteNodeRef(item?.Node, item?.File);
+        }
     }
 
     public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod
@@ -1885,7 +1907,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var item = value is not null && i < value.Count ? value[i] : null;
+            WriteNodeRef(item?.Node, item?.File);
+        }
     }
 
     public void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod

@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
 using System.Buffers;

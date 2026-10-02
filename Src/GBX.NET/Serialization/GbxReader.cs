@@ -1546,9 +1546,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return [];
         }
 
-        var l = lengthInBytes ? length : length * Unsafe.SizeOf<T>();
-
-        EnsureValidLength(l);
+        var l = GetCollectionByteLength<T>(length, lengthInBytes);
 
         if (l > 1_000_000)
         {
@@ -1557,7 +1555,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         Span<byte> bytes = stackalloc byte[l];
-        Read(bytes);
+        BaseStream.ReadExactly(bytes);
 #else
         var bytes = ReadBytes(l);
 #endif
@@ -1573,7 +1571,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArray<T>(length, lengthInBytes);
     }
 
-    public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct => ReadArray_deprec<T>(ReadInt32(), lengthInBytes);
+    public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct
+    {
+        ReadDeprecVersion();
+        return ReadArray<T>(lengthInBytes);
+    }
 
     public T[][] ReadJaggedArray<T>(int? innerLength = null, int? outerLength = null) where T : struct
         => ReadJaggedArrayRows(length => ReadArray<T>(length), innerLength, outerLength);
@@ -1585,10 +1587,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return [];
         }
 
-        var l = lengthInBytes ? length : length * Unsafe.SizeOf<T>();
-        EnsureValidLength(l);
+        var l = GetCollectionByteLength<T>(length, lengthInBytes);
 
-        var list = new List<T>(l);
+        var list = new List<T>(l / Unsafe.SizeOf<T>());
 
         if (l > 1_000_000)
         {
@@ -1604,7 +1605,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         Span<byte> bytes = stackalloc byte[l];
-        Read(bytes);
+        BaseStream.ReadExactly(bytes);
 #else
         var bytes = ReadBytes(l);
 #endif
@@ -1620,6 +1621,14 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     }
 
     public List<T> ReadList<T>(bool lengthInBytes = false) where T : struct => ReadList<T>(ReadInt32(), lengthInBytes);
+
+    private int GetCollectionByteLength<T>(int length, bool lengthInBytes) where T : struct
+    {
+        EnsureValidLength(length);
+        var byteLength = lengthInBytes ? length : checked(length * Unsafe.SizeOf<T>());
+        EnsureValidLength(byteLength);
+        return byteLength;
+    }
 
     public List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct
     {
