@@ -5,7 +5,7 @@ CFuncKeysSkel 0x05006000
   CFuncSkel Skel
 
 0x001
-  Loc[Skel::BonesCount][] Locations
+  Loc[Skel.BonesCount][] Locations
 
 archive Loc
   quat Rotation

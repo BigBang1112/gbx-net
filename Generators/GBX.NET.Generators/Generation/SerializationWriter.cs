@@ -503,12 +503,12 @@ internal sealed class SerializationWriter
     {
         if (nullSafeCount)
         {
-            var separator = text.IndexOf("::", StringComparison.Ordinal);
+            var separator = text.IndexOf('.');
 
-            if (separator > 0 && text.IndexOf("::", separator + 2, StringComparison.Ordinal) < 0)
+            if (separator > 0 && text.IndexOf('.', separator + 1) < 0)
             {
                 var owner = text.Substring(0, separator);
-                var member = text.Substring(separator + 2);
+                var member = text.Substring(separator + 1);
                 var field = layout.Scope.Fields.FirstOrDefault(x => x.Name == owner);
 
                 // A missing referenced node or array contributes zero elements to a fixed count.
@@ -521,7 +521,7 @@ internal sealed class SerializationWriter
             }
         }
 
-        var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(text.Replace("::", "."));
+        var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(text);
         return new IdentifierRewriter(Identifier).Visit(expression)!.ToString();
     }
 

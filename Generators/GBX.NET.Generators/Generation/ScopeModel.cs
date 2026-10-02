@@ -43,7 +43,7 @@ internal sealed class ScopeModel
             throw new InvalidOperationException("A local field requires a write expression.");
         }
         if (LayoutModel.Has(declaration.Attributes, "write") &&
-            (string.IsNullOrWhiteSpace(write) || Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(write!.Replace("::", ".")).ContainsDiagnostics))
+            (string.IsNullOrWhiteSpace(write) || Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(write!).ContainsDiagnostics))
         {
             throw new InvalidOperationException("The write flag requires a valid expression.");
         }

@@ -417,7 +417,7 @@ internal static class EngineWriter
         {
             foreach (var getter in property.Accessors.OfType<GetterAccessor>())
             {
-                var expression = SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(getter.Expression).Replace("::", "."));
+                var expression = SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(getter.Expression));
                 foreach (var identifier in expression.DescendantNodesAndSelf().OfType<IdentifierNameSyntax>())
                 {
                     if (identifier.Parent is MemberAccessExpressionSyntax member && member.Name == identifier) continue;
@@ -451,7 +451,7 @@ internal static class EngineWriter
     {
         if (field?.DefaultValue is null) return null;
 
-        var value = ChunkLParser.WriteExpression(field.DefaultValue).Replace("::", ".");
+        var value = ChunkLParser.WriteExpression(field.DefaultValue);
         if (value != "empty") return value;
 
         type = type.TrimEnd('?');

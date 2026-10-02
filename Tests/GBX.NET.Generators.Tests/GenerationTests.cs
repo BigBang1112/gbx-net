@@ -269,13 +269,13 @@ public class GenerationTests
             Example 0x03043000
 
             property int ItemCount
-              get = Items::Length
+              get = Items.Length
 
             0x001
               Item[] Items
 
             0x002
-              Item[Items::Length][] Rows
+              Item[Items.Length][] Rows
 
             archive Item
             """), compile: true);
@@ -287,6 +287,68 @@ public class GenerationTests
         await Assert.That(generated).Contains("public Item[][]? Rows");
         await Assert.That(generated).Contains("get => Items?.Length?? 0;");
         await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Item>(ref n.rows!, n.Items?.Length?? 0)");
+    }
+
+    [Test]
+    public async Task CompilesDottedEnumAndNestedMemberExpressionsWithoutChangingStringLiterals()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public HeaderInfo Header { get; } = new();
+                public class HeaderInfo { public SizeInfo Size { get; } = new(); }
+                public class SizeInfo { public int Count => 2; }
+
+                public static string Verify()
+                {
+                    var node = new Example();
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    new Chunk03043001().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer));
+                    return node.Label + ":" + node.HeaderCount + ":" + string.Join(",", writer.Values);
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+
+            property int HeaderCount
+              get = Header.Size.Count
+
+            0x001
+              int<Kind> ItemType = Kind.First
+              assert Header is not null
+              if ItemType is Kind.First
+                int Count (local, write: "Header.Size.Count")
+                int[Header.Size.Count] Items (local, write: "new int[Count]")
+              switch ItemType
+                case Kind.First
+                  int Value (write: "Header.Size.Count")
+              assert !!(ItemType == Kind.First)
+
+            0x002 (demonstration: partial)
+              string Label = "literal::value"
+
+            enum Kind
+              First
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("private Kind itemType = Kind.First;");
+        await Assert.That(generated).Contains("get => Header.Size.Count;");
+        await Assert.That(generated).Contains("if (n.ItemType is Kind.First)");
+        await Assert.That(generated).Contains("case Kind.First:");
+        await Assert.That(generated).Contains("var count = rw.Int32((rw.Writer is null ? default : (n.Header.Size.Count)));");
+        await Assert.That(generated).Contains("rw.Array<int>((rw.Writer is null ? default : (new int[count])), n.Header.Size.Count)");
+        await Assert.That(generated).Contains("private string label = \"literal::value\";");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("literal::value:2:0,2,2");
     }
 
     [Test]
@@ -1033,6 +1095,10 @@ public class GenerationTests
                 public short Int16(short value) => (short)Int32(value);
                 public T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.Engines.Game.CMwNod => value;
                 public void Int32(ref int value) { value = Int32(value); }
+                public void EnumInt32<T>(ref T value) where T : struct, System.Enum
+                {
+                    value = (T)System.Enum.ToObject(typeof(T), Int32(System.Convert.ToInt32(value)));
+                }
                 public void Boolean(ref bool? value)
                 {
                     if (Reader is not null) value = Reader.ReadInt32() != 0;

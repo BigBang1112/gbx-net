@@ -456,19 +456,19 @@ CGameCtnChallenge 0x03043000 // A map.
 0x3F001003 (skippable, base: 0x3F001001) [TMF]
 
 property string MapUid
-  get = MapInfo::Id
+  get = MapInfo.Id
 
 property id? Collection
-  get = MapInfo::Collection
+  get = MapInfo.Collection
 
 property string AuthorLogin
-  get = MapInfo::Author
+  get = MapInfo.Author
 
 property int? NbBlocks
-  get = Blocks::Count
+  get = Blocks.Count
 
 property int? NbBakedBlocks
-  get = BakedBlocks::Count
+  get = BakedBlocks.Count
 
 archive BlockOctreeData
   int RootNodeSize

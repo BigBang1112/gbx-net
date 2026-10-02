@@ -11,11 +11,11 @@ archive FileInfo
   ulong
   int<FileType> Type
   switch Type
-    case FileType::Map
+    case FileType.Map
       id MapUid = empty
       string? MapName
       byte
-    case FileType::Ghost
+    case FileType.Ghost
       string? GhostKind
       byte
       id MapUid = empty

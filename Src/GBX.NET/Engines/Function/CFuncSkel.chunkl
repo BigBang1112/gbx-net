@@ -1,7 +1,7 @@
 CFuncSkel 0x05005000
 
 property int BonesCount
-  get = Bones::Length
+  get = Bones.Length
 
 0x002
   id[] Bones
