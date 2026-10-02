@@ -138,19 +138,4 @@ public partial class CGameCtnCollector
             }
         }
     }
-
-    public partial class Chunk2E001009
-    {
-        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
-        {
-            rw.String(ref n.pageName);
-
-            if (rw.Boolean(n.IconFid is not null))
-            {
-                rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
-            }
-
-            rw.Id(ref n.parentCollectorId);
-        }
-    }
 }

@@ -44,6 +44,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     private string? pageName;
     [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<Chunk2E001009>]
     public string? PageName
     {
         get => this.pageName;
@@ -52,6 +53,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     private string? parentCollectorId;
     [AppliedWithChunk<HeaderChunk2E001003>(4)]
+    [AppliedWithChunk<Chunk2E001009>]
     public string? ParentCollectorId
     {
         get => this.parentCollectorId;
@@ -128,6 +130,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
         get => this.needUnlock;
         set => this.needUnlock = value;
     }
+
+    public Components.GbxRefTableFile? IconFidFile
+    {
+        get => iconFidFile;
+        set => iconFidFile = value;
+    }
+
+    public CMwNod? GetIconFid(GbxReadSettings settings = default, bool exceptions = false) => iconFidFile?.GetNode(ref iconFid, settings, exceptions) ?? iconFid;
 
     private string? description;
     [AppliedWithChunk<Chunk2E00100D>]
@@ -424,6 +434,19 @@ public partial class CGameCtnCollector : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.pageName);
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null)));
+
+            if (hasIconFid)
+            {
+                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+            }
+
+            rw.Id(ref n.parentCollectorId);
         }
     }
 

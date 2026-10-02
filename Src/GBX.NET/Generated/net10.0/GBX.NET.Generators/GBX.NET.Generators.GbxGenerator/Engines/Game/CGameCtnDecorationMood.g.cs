@@ -315,6 +315,8 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
     public CPlugMoodBlender? GetMoodBlender(GbxReadSettings settings = default, bool exceptions = false) => moodBlenderFile?.GetNode(ref moodBlender, settings, exceptions) ?? moodBlender;
 
+    private bool isNight;
+
     private bool enableStars;
     [AppliedWithChunk<Chunk0303A012>]
     public bool EnableStars

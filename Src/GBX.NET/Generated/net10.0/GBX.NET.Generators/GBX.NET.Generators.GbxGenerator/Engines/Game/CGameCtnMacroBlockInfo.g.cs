@@ -114,8 +114,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.iconSize = value;
     }
 
+    private Int3 clipTriggerSize = (3, 1, 3);
     [AppliedWithChunk<Chunk0310D011>]
-    public partial Int3 ClipTriggerSize { get; set; }
+    public Int3 ClipTriggerSize
+    {
+        get => this.clipTriggerSize;
+        set => this.clipTriggerSize = value;
+    }
 
     private CGameCtnMediaClipGroup? clipGroupInGame;
     [AppliedWithChunk<Chunk0310D011>]
@@ -146,9 +151,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         ((CGameCtnMacroBlockInfo)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
         ((CGameCtnMacroBlockInfo)clone).offzones = context.CloneArray(this.offzones)!;
         ((CGameCtnMacroBlockInfo)clone).iconSize = context.Clone(this.iconSize)!;
+        ((CGameCtnMacroBlockInfo)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
         ((CGameCtnMacroBlockInfo)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
         ((CGameCtnMacroBlockInfo)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
-        ((CGameCtnMacroBlockInfo)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
     }
 
     public CGameCtnMacroBlockInfo()

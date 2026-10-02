@@ -54,6 +54,11 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   CPlugGameSkin
 
 0x009 [TMSX, TMF, MP3, TMT, MP4, TM2020]
+  string PageName
+  bool HasIconFid (local, write: "n.IconFid is not null")
+  if HasIconFid
+    CMwNod IconFid (external)
+  id ParentCollectorId
 
 0x00A [TMF]
   id
