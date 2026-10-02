@@ -8,7 +8,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   ident PlayerModel
   vec3 LightTrailColor
   packdesc[] SkinPackDescs (list)
-  bool HasBadges // boolnode?
+  bool HasBadges
   if HasBadges
     SBadge Badge
   if AppearanceVersion >= 1
@@ -74,6 +74,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   string GhostNickname (formatted)
 
 0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
+  id? GhostUid
 
 0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
   string GhostLogin
@@ -81,7 +82,15 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x010 [TMU, TMF, MP3, TMT, MP4, TM2020] // validation map UID
   id Validate_ChallengeUid
 
-0x011 [TMU] // validation TMU
+0x011 (demonstration: partial) [TMU] // validation TMU
+  timeint EventsDuration
+  if EventsDuration != 0
+    // CInputEventsStore is handled in C# before the validation fields.
+    string Validate_ExeVersion
+    uint32 Validate_ExeChecksum
+    int Validate_OsKind
+    int Validate_CpuKind
+    string Validate_RaceSettings
 
 0x012 [TMU, TMF] // old security key
   uint32
@@ -106,6 +115,9 @@ CGameCtnGhost 0x03092000 // A ghost.
   ident PlayerModel
 
 0x019 (base: 0x011) [TMF] // validation TMUF
+  base
+  if EventsDuration != 0
+    int? Validate_ValidationSeed
 
 0x01A (skippable) [MP3, TMT, MP4, TM2020] // checkpoint count
 
@@ -129,42 +141,56 @@ CGameCtnGhost 0x03092000 // A ghost.
   v2+
     SettingsInfos[] Settings
 
-0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat data
+0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat system info
   version
-  string
-  int
-  string
-  int
-  int
-  string
-  int
-  string
+  string CpuDescription
+  int CpuKind
+  string GpuDescription
+  int GpuDeviceId
+  int GpuVendorId
+  string HardwareUid
+  int NetworkAddress // IPv4 address in network byte order
+  string LoggedUserName
   v2+
-    byte
+    byte GpuCount
     int
     int
     v3+
-      byte
+      byte HasHmd
       byte
 
 0x024 (skippable) [MP3, TMT, MP4, TM2020] // match replay separators
   version
   MatchReplaySeparator[] MatchReplaySeparators
 
-0x025 (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
+0x025 (skippable, demonstration: partial) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
+  version
+  timeint EventsDuration
+  if Version >= 1 || EventsDuration != 0
+    // CInputEventsStore is handled in C# before the validation fields.
+    string Validate_ExeVersion
+    uint32 Validate_ExeChecksum
+    int Validate_OsKind
+    int Validate_CpuKind
+    string Validate_RaceSettings
+    int? Validate_ValidationSeed
+    bool SteeringWheelSensitivity
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
   checksum128? GhostUid128
 
-0x027 (skippable) [MP3, TMT, MP4, TM2020] // timed pixel array
+0x027 (skippable) [MP3, TMT, MP4, TM2020] // screen captures
   version
-  CPlugTimedPixelArray[]
+  CPlugTimedPixelArray[] ScreenCaptures
   v1+
-    int[]
+    int[] ScreenCaptureKeyframeIndices
     v3+
-      CPlugTimedPixelArray[]
+      CPlugTimedPixelArray[] ScreenCaptures_Difference
 
 0x028 (skippable) [MP4, TM2020] // title id
+  if EventsDuration != 0
+    string Validate_TitleId
+    checksum256? Validate_TitleChecksum
 
 0x029 (skippable) [TM2020]
   version
@@ -174,8 +200,8 @@ CGameCtnGhost 0x03092000 // A ghost.
   string
 
 0x02A (skippable) [TM2020]
-  int
-  int
+  int // also serialized in 0x02D
+  int // also serialized in 0x02D
 
 0x02B (skippable, ignore) [TM2020]
 
@@ -184,12 +210,28 @@ CGameCtnGhost 0x03092000 // A ghost.
   unixtime? WalltimeStartTimestamp
   unixtime? WalltimeEndTimestamp
 
-0x02D (skippable) [TM2020]
+0x02D (skippable, demonstration: partial) [TM2020]
+  // HasInputs and the optional CInputEventsStore are handled in C#.
+  string Validate_ExeVersion
+  uint32 Validate_ExeChecksum
+  int Validate_OsKind
+  int Validate_CpuKind
+  unixtime? WalltimeStartTimestamp
+  unixtime? WalltimeEndTimestamp
+  string Validate_TitleId
+  checksum256? Validate_TitleChecksum
+  // The two values shared with 0x02A are handled in C#.
+  int? Validate_ValidationSeed
+  // SimulationFlags is handled in C#.
+  string Validate_RaceSettings
 
 0x02E (skippable) [TM2020]
   string
 
 0x0304F001 (skippable, ignore, not-remapped) [TMF] // TMCP
+
+property TimeSpan? WalltimeDuration
+  get = WalltimeEndTimestamp - WalltimeStartTimestamp
 
 archive PlayerInputData
   int<EVersion> Version // 8 in ShootMania, 12 in TM2020
@@ -228,16 +270,18 @@ archive SettingsInfos
   bool
   bool
   byte
-  bool
-  float
-  bool
-  float
-  float[]
-  string
+  bool MouseAccelEnabled
+  float MouseAccelQuantity
+  bool U06
+  float U07
+  float[] MouseSensitivities // default and laser sensitivities
+  string U09
   v3+
-    int3
+    int ScreenWidth
+    int ScreenHeight
+    timeint Time
     v4+
-      float
+      float U11
 
 archive MatchReplaySeparator
   int

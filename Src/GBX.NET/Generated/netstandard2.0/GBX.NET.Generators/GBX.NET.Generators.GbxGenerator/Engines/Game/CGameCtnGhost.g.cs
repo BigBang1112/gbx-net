@@ -77,9 +77,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private bool hasBadges;
-    /// <summary>
-    /// boolnode?
-    /// </summary>
     [AppliedWithChunk<Chunk03092000>]
     public bool HasBadges
     {
@@ -202,6 +199,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.stuntScore = value;
     }
 
+    [AppliedWithChunk<Chunk0309200E>]
+    public partial Id? GhostUid { get; set; }
+
     private string? ghostLogin;
     [AppliedWithChunk<Chunk0309200F>]
     public string? GhostLogin
@@ -218,6 +218,41 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_ChallengeUid = value;
     }
 
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    public partial TimeInt32 EventsDuration { get; set; }
+
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial string? Validate_ExeVersion { get; set; }
+
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial uint Validate_ExeChecksum { get; set; }
+
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial int Validate_OsKind { get; set; }
+
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial int Validate_CpuKind { get; set; }
+
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial string? Validate_RaceSettings { get; set; }
+
     private UInt128? securityKey128;
     [AppliedWithChunk<Chunk03092012>]
     public UInt128? SecurityKey128
@@ -233,6 +268,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         get => this.ghostVersion;
         set => this.ghostVersion = value;
     }
+
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial int? Validate_ValidationSeed { get; set; }
 
     private UInt256? securityKey256;
     [AppliedWithChunk<Chunk0309201C>]
@@ -266,6 +306,89 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.settings = value;
     }
 
+    private string? cpuDescription;
+    [AppliedWithChunk<Chunk03092023>]
+    public string? CpuDescription
+    {
+        get => this.cpuDescription;
+        set => this.cpuDescription = value;
+    }
+
+    private int cpuKind;
+    [AppliedWithChunk<Chunk03092023>]
+    public int CpuKind
+    {
+        get => this.cpuKind;
+        set => this.cpuKind = value;
+    }
+
+    private string? gpuDescription;
+    [AppliedWithChunk<Chunk03092023>]
+    public string? GpuDescription
+    {
+        get => this.gpuDescription;
+        set => this.gpuDescription = value;
+    }
+
+    private int gpuDeviceId;
+    [AppliedWithChunk<Chunk03092023>]
+    public int GpuDeviceId
+    {
+        get => this.gpuDeviceId;
+        set => this.gpuDeviceId = value;
+    }
+
+    private int gpuVendorId;
+    [AppliedWithChunk<Chunk03092023>]
+    public int GpuVendorId
+    {
+        get => this.gpuVendorId;
+        set => this.gpuVendorId = value;
+    }
+
+    private string? hardwareUid;
+    [AppliedWithChunk<Chunk03092023>]
+    public string? HardwareUid
+    {
+        get => this.hardwareUid;
+        set => this.hardwareUid = value;
+    }
+
+    private int networkAddress;
+    /// <summary>
+    /// IPv4 address in network byte order
+    /// </summary>
+    [AppliedWithChunk<Chunk03092023>]
+    public int NetworkAddress
+    {
+        get => this.networkAddress;
+        set => this.networkAddress = value;
+    }
+
+    private string? loggedUserName;
+    [AppliedWithChunk<Chunk03092023>]
+    public string? LoggedUserName
+    {
+        get => this.loggedUserName;
+        set => this.loggedUserName = value;
+    }
+
+    private byte gpuCount;
+    [AppliedWithChunk<Chunk03092023>(2)]
+    public byte GpuCount
+    {
+        get => this.gpuCount;
+        set => this.gpuCount = value;
+    }
+
+    private byte hasHmd;
+    [AppliedWithChunk<Chunk03092023>(3)]
+    public byte HasHmd
+    {
+        get => this.hasHmd;
+        set => this.hasHmd = value;
+    }
+
     private MatchReplaySeparator[]? matchReplaySeparators;
     [AppliedWithChunk<Chunk03092024>]
     public MatchReplaySeparator[]? MatchReplaySeparators
@@ -273,6 +396,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         get => this.matchReplaySeparators;
         set => this.matchReplaySeparators = value;
     }
+
+    [AppliedWithChunk<Chunk03092025>]
+    public partial bool SteeringWheelSensitivity { get; set; }
 
     private Checksum128? ghostUid128;
     [AppliedWithChunk<Chunk03092026>]
@@ -282,8 +408,41 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.ghostUid128 = value;
     }
 
+    private CPlugTimedPixelArray[]? screenCaptures;
+    [AppliedWithChunk<Chunk03092027>]
+    public CPlugTimedPixelArray[]? ScreenCaptures
+    {
+        get => this.screenCaptures;
+        set => this.screenCaptures = value;
+    }
+
+    private int[]? screenCaptureKeyframeIndices;
+    [AppliedWithChunk<Chunk03092027>(1)]
+    public int[]? ScreenCaptureKeyframeIndices
+    {
+        get => this.screenCaptureKeyframeIndices;
+        set => this.screenCaptureKeyframeIndices = value;
+    }
+
+    private CPlugTimedPixelArray[]? screenCaptures_Difference;
+    [AppliedWithChunk<Chunk03092027>(3)]
+    public CPlugTimedPixelArray[]? ScreenCaptures_Difference
+    {
+        get => this.screenCaptures_Difference;
+        set => this.screenCaptures_Difference = value;
+    }
+
+    [AppliedWithChunk<Chunk03092028>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial string? Validate_TitleId { get; set; }
+
+    [AppliedWithChunk<Chunk03092028>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial Checksum256? Validate_TitleChecksum { get; set; }
+
     private DateTimeOffset? walltimeStartTimestamp;
     [AppliedWithChunk<Chunk0309202C>]
+    [AppliedWithChunk<Chunk0309202D>]
     public DateTimeOffset? WalltimeStartTimestamp
     {
         get => this.walltimeStartTimestamp;
@@ -292,6 +451,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     private DateTimeOffset? walltimeEndTimestamp;
     [AppliedWithChunk<Chunk0309202C>]
+    [AppliedWithChunk<Chunk0309202D>]
     public DateTimeOffset? WalltimeEndTimestamp
     {
         get => this.walltimeEndTimestamp;
@@ -327,10 +487,24 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).playerInputs = context.CloneArray(this.playerInputs)!;
         ((CGameCtnGhost)clone).oldSettings = context.CloneArray(this.oldSettings)!;
         ((CGameCtnGhost)clone).settings = context.CloneArray(this.settings)!;
+        ((CGameCtnGhost)clone).cpuDescription = context.Clone(this.cpuDescription)!;
+        ((CGameCtnGhost)clone).cpuKind = context.Clone(this.cpuKind)!;
+        ((CGameCtnGhost)clone).gpuDescription = context.Clone(this.gpuDescription)!;
+        ((CGameCtnGhost)clone).gpuDeviceId = context.Clone(this.gpuDeviceId)!;
+        ((CGameCtnGhost)clone).gpuVendorId = context.Clone(this.gpuVendorId)!;
+        ((CGameCtnGhost)clone).hardwareUid = context.Clone(this.hardwareUid)!;
+        ((CGameCtnGhost)clone).networkAddress = context.Clone(this.networkAddress)!;
+        ((CGameCtnGhost)clone).loggedUserName = context.Clone(this.loggedUserName)!;
+        ((CGameCtnGhost)clone).gpuCount = context.Clone(this.gpuCount)!;
+        ((CGameCtnGhost)clone).hasHmd = context.Clone(this.hasHmd)!;
         ((CGameCtnGhost)clone).matchReplaySeparators = context.CloneArray(this.matchReplaySeparators)!;
         ((CGameCtnGhost)clone).ghostUid128 = context.Clone(this.ghostUid128)!;
+        ((CGameCtnGhost)clone).screenCaptures = context.CloneArray(this.screenCaptures)!;
+        ((CGameCtnGhost)clone).screenCaptureKeyframeIndices = context.CloneArray(this.screenCaptureKeyframeIndices)!;
+        ((CGameCtnGhost)clone).screenCaptures_Difference = context.CloneArray(this.screenCaptures_Difference)!;
         ((CGameCtnGhost)clone).walltimeStartTimestamp = context.Clone(this.walltimeStartTimestamp)!;
         ((CGameCtnGhost)clone).walltimeEndTimestamp = context.Clone(this.walltimeEndTimestamp)!;
+        ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
         ((CGameCtnGhost)clone).eventsDuration = context.Clone(this.eventsDuration)!;
         ((CGameCtnGhost)clone).validate_ExeVersion = context.Clone(this.validate_ExeVersion)!;
         ((CGameCtnGhost)clone).validate_ExeChecksum = context.Clone(this.validate_ExeChecksum)!;
@@ -342,8 +516,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
         ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
         ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
-        ((CGameCtnGhost)clone).GhostUid = context.Clone(this.GhostUid)!;
     }
+
+    [AppliedWithChunk<Chunk0309202C>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial TimeSpan? WalltimeDuration { get; }
 
     public CGameCtnGhost()
     {
@@ -757,8 +934,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03092011)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03092011)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03092011)clone).InputStoreVersion = context.Clone(this.InputStoreVersion)!;
+            ((Chunk03092011)clone).InputCountLimit = context.Clone(this.InputCountLimit)!;
         }
     }
 
@@ -1055,28 +1232,18 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// anticheat data
+    /// anticheat system info
     /// </summary>
-    [Chunk(0x03092023, "anticheat data")]
+    [Chunk(0x03092023, "anticheat system info")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03092023 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092023;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public string? U01;
+        public int U01;
         public int U02;
-        public string? U03;
-        public int U04;
-        public int U05;
-        public string? U06;
-        public int U07;
-        public string? U08;
-        public byte U09;
-        public int U10;
-        public int U11;
-        public byte U12;
-        public byte U13;
+        public byte U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1085,40 +1252,30 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             ((Chunk03092023)clone).U01 = context.Clone(this.U01)!;
             ((Chunk03092023)clone).U02 = context.Clone(this.U02)!;
             ((Chunk03092023)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03092023)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03092023)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03092023)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03092023)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk03092023)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk03092023)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk03092023)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk03092023)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk03092023)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk03092023)clone).U13 = context.Clone(this.U13)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.String(ref U01);
-            rw.Int32(ref U02);
-            rw.String(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.String(ref U06);
-            rw.Int32(ref U07);
-            rw.String(ref U08);
+            rw.String(ref n.cpuDescription);
+            rw.Int32(ref n.cpuKind);
+            rw.String(ref n.gpuDescription);
+            rw.Int32(ref n.gpuDeviceId);
+            rw.Int32(ref n.gpuVendorId);
+            rw.String(ref n.hardwareUid);
+            rw.Int32(ref n.networkAddress);
+            rw.String(ref n.loggedUserName);
 
             if (Version >= 2)
             {
-                rw.Byte(ref U09);
-                rw.Int32(ref U10);
-                rw.Int32(ref U11);
+                rw.Byte(ref n.gpuCount);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
 
                 if (Version >= 3)
                 {
-                    rw.Byte(ref U12);
-                    rw.Byte(ref U13);
+                    rw.Byte(ref n.hasHmd);
+                    rw.Byte(ref U03);
                 }
             }
         }
@@ -1153,7 +1310,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// </summary>
     [Chunk(0x03092025, "validation TM2")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
-    public partial class Chunk03092025 : SkippableChunk<CGameCtnGhost>
+    public partial class Chunk03092025 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092025;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
@@ -1187,40 +1344,34 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// timed pixel array
+    /// screen captures
     /// </summary>
-    [Chunk(0x03092027, "timed pixel array")]
+    [Chunk(0x03092027, "screen captures")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03092027 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092027;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugTimedPixelArray[]? U01;
-        public int[]? U02;
-        public CPlugTimedPixelArray[]? U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03092027)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03092027)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk03092027)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk03092027)clone).U03 = context.CloneArray(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugTimedPixelArray>(ref U01!);
+            rw.ArrayNodeRef<CPlugTimedPixelArray>(ref n.screenCaptures!);
 
             if (Version >= 1)
             {
-                rw.Array<int>(ref U02!);
+                rw.Array<int>(ref n.screenCaptureKeyframeIndices!);
 
                 if (Version >= 3)
                 {
-                    rw.ArrayNodeRef<CPlugTimedPixelArray>(ref U03!);
+                    rw.ArrayNodeRef<CPlugTimedPixelArray>(ref n.screenCaptures_Difference!);
                 }
             }
         }
@@ -1343,10 +1494,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309202D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0309202D)clone).HasInputs = context.Clone(this.HasInputs)!;
             ((Chunk0309202D)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0309202D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0309202D)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0309202D)clone).SimulationFlags = context.Clone(this.SimulationFlags)!;
         }
     }
 
@@ -1742,18 +1893,18 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.u03 = value;
         }
 
-        private bool u04;
-        public bool U04
+        private bool mouseAccelEnabled;
+        public bool MouseAccelEnabled
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.mouseAccelEnabled;
+            set => this.mouseAccelEnabled = value;
         }
 
-        private float u05;
-        public float U05
+        private float mouseAccelQuantity;
+        public float MouseAccelQuantity
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.mouseAccelQuantity;
+            set => this.mouseAccelQuantity = value;
         }
 
         private bool u06;
@@ -1770,11 +1921,14 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.u07 = value;
         }
 
-        private float[]? u08;
-        public float[]? U08
+        private float[]? mouseSensitivities;
+        /// <summary>
+        /// default and laser sensitivities
+        /// </summary>
+        public float[]? MouseSensitivities
         {
-            get => this.u08;
-            set => this.u08 = value;
+            get => this.mouseSensitivities;
+            set => this.mouseSensitivities = value;
         }
 
         private string? u09;
@@ -1784,11 +1938,25 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.u09 = value;
         }
 
-        private Int3 u10;
-        public Int3 U10
+        private int screenWidth;
+        public int ScreenWidth
         {
-            get => this.u10;
-            set => this.u10 = value;
+            get => this.screenWidth;
+            set => this.screenWidth = value;
+        }
+
+        private int screenHeight;
+        public int ScreenHeight
+        {
+            get => this.screenHeight;
+            set => this.screenHeight = value;
+        }
+
+        private TimeInt32 time;
+        public TimeInt32 Time
+        {
+            get => this.time;
+            set => this.time = value;
         }
 
         private float u11;
@@ -1811,13 +1979,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             ((SettingsInfos)clone).u01 = context.Clone(this.u01)!;
             ((SettingsInfos)clone).u02 = context.Clone(this.u02)!;
             ((SettingsInfos)clone).u03 = context.Clone(this.u03)!;
-            ((SettingsInfos)clone).u04 = context.Clone(this.u04)!;
-            ((SettingsInfos)clone).u05 = context.Clone(this.u05)!;
+            ((SettingsInfos)clone).mouseAccelEnabled = context.Clone(this.mouseAccelEnabled)!;
+            ((SettingsInfos)clone).mouseAccelQuantity = context.Clone(this.mouseAccelQuantity)!;
             ((SettingsInfos)clone).u06 = context.Clone(this.u06)!;
             ((SettingsInfos)clone).u07 = context.Clone(this.u07)!;
-            ((SettingsInfos)clone).u08 = context.CloneArray(this.u08)!;
+            ((SettingsInfos)clone).mouseSensitivities = context.CloneArray(this.mouseSensitivities)!;
             ((SettingsInfos)clone).u09 = context.Clone(this.u09)!;
-            ((SettingsInfos)clone).u10 = context.Clone(this.u10)!;
+            ((SettingsInfos)clone).screenWidth = context.Clone(this.screenWidth)!;
+            ((SettingsInfos)clone).screenHeight = context.Clone(this.screenHeight)!;
+            ((SettingsInfos)clone).time = context.Clone(this.time)!;
             ((SettingsInfos)clone).u11 = context.Clone(this.u11)!;
         }
 
@@ -1826,16 +1996,18 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Boolean(ref this.u01);
             rw.Boolean(ref this.u02);
             rw.Byte(ref this.u03);
-            rw.Boolean(ref this.u04);
-            rw.Single(ref this.u05);
+            rw.Boolean(ref this.mouseAccelEnabled);
+            rw.Single(ref this.mouseAccelQuantity);
             rw.Boolean(ref this.u06);
             rw.Single(ref this.u07);
-            rw.Array<float>(ref this.u08!);
+            rw.Array<float>(ref this.mouseSensitivities!);
             rw.String(ref this.u09);
 
             if (v >= 3)
             {
-                rw.Int3(ref this.u10);
+                rw.Int32(ref this.screenWidth);
+                rw.Int32(ref this.screenHeight);
+                rw.TimeInt32(ref this.time);
 
                 if (v >= 4)
                 {

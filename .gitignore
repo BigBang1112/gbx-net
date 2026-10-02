@@ -365,3 +365,8 @@ FodyWeavers.xsd
 
 .idea
 /Tools/GbxExplorerOld/Client/wwwroot/refs/*
+
+Docs/ManiaPlanetFields.md
+Docs/ManiaPlanetReflectionRecovery.md
+
+tmp/*
