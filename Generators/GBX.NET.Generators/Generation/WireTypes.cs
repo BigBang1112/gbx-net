@@ -155,7 +155,7 @@ internal static class WireTypes
     public static bool Nullable(FieldModel field)
     {
         return field.Occurrences.Any(static x => x.Type.IsNullable) ||
-            field.Declaration.Type.Name is "systemtime" or "filetime" or "timeofday" ||
+            field.Declaration.Type.Name is "systemtime" or "filetime" or "unixtime" or "timeofday" ||
             ((field.Declaration.Type.ArrayDimensions > 0 || (!Value(field.Declaration.Type.Name) && field.Declaration.Type.CastTarget is null)) &&
                 field.Declaration.DefaultValue is null);
     }

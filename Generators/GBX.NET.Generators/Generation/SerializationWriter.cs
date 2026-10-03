@@ -362,7 +362,7 @@ internal sealed class SerializationWriter
             }
             else if (declaration.Type.Name is "systemtime" or "filetime" or "unixtime" or "timeofday")
             {
-                code.Line($"{assignment} = rw.{method}({value}{argumentSuffix}){(declaration.Type.Name == "unixtime" || storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")};");
+                code.Line($"{assignment} = rw.{method}({value}{argumentSuffix}){(storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")};");
             }
             else if (hasBacking && write is null)
             {

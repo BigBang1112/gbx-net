@@ -453,11 +453,8 @@ partial interface IGbxReaderWriter
     void SystemTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    System.DateTimeOffset UnixTime(System.DateTimeOffset value = default);
-    [return: NotNullIfNotNull(nameof(value))]
-    System.DateTimeOffset? UnixTime(System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default);
-    void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset value);
-    void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default);
+    System.DateTimeOffset? UnixTime(System.DateTimeOffset? value = default);
+    void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value);
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default);
@@ -1967,24 +1964,14 @@ partial class GbxReaderWriter
     public void SystemTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value) => value = SystemTime(value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.DateTimeOffset UnixTime(System.DateTimeOffset value = default)
+    public System.DateTimeOffset? UnixTime(System.DateTimeOffset? value = default)
     {
         if (Reader is not null) value = Reader.ReadUnixTime();
         Writer?.WriteUnixTime(value);
         return value;
     }
 
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.DateTimeOffset? UnixTime(System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default)
-    {
-        if (Reader is not null) value = Reader.ReadUnixTime();
-        Writer?.WriteUnixTime(value.GetValueOrDefault(defaultValue));
-        return value;
-    }
-
-    public void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset value) => value = UnixTime(value);
-
-    public void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value, System.DateTimeOffset defaultValue = default) => value = UnixTime(value, defaultValue);
+    public void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value) => value = UnixTime(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default)

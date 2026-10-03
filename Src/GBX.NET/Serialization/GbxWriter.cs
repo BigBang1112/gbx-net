@@ -94,7 +94,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeOfDay(TimeSpan? value);
     void WriteFileTime(DateTime? value);
     void WriteSystemTime(DateTime? value);
-    void WriteUnixTime(DateTimeOffset value);
+    void WriteUnixTime(DateTimeOffset? value);
     /// <summary>Writes an IPv4 address as a UInt32, with the first address octet in the most significant byte. Null writes 0.0.0.0.</summary>
     void WriteIPv4(IPAddress? value);
     void WriteSmallLen(int value);
@@ -1181,9 +1181,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(data);
     }
 
-    public void WriteUnixTime(DateTimeOffset value)
+    public void WriteUnixTime(DateTimeOffset? value)
     {
-        Write((uint)value.ToUnixTimeSeconds());
+        Write(value is null ? uint.MaxValue : (uint)value.Value.ToUnixTimeSeconds());
     }
 
     /// <inheritdoc cref="IGbxWriter.WriteIPv4"/>

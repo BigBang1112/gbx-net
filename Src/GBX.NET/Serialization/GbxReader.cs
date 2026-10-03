@@ -95,7 +95,7 @@ public partial interface IGbxReader : IDisposable
     TimeSpan? ReadTimeOfDay();
     DateTime? ReadFileTime();
     DateTime? ReadSystemTime();
-    DateTimeOffset ReadUnixTime();
+    DateTimeOffset? ReadUnixTime();
     /// <summary>Reads an IPv4 address stored as a UInt32, with the first address octet in the most significant byte.</summary>
     IPAddress ReadIPv4();
     int ReadSmallLen();
@@ -1271,9 +1271,10 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
     }
 
-    public DateTimeOffset ReadUnixTime()
+    public DateTimeOffset? ReadUnixTime()
     {
-        return DateTimeOffset.FromUnixTimeSeconds(ReadUInt32());
+        var value = ReadUInt32();
+        return value == uint.MaxValue ? null : DateTimeOffset.FromUnixTimeSeconds(value);
     }
 
     /// <inheritdoc cref="IGbxReader.ReadIPv4"/>

@@ -87,15 +87,15 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
             set => this.key = value;
         }
 
-        private DateTimeOffset startTimestamp;
-        public DateTimeOffset StartTimestamp
+        private DateTimeOffset? startTimestamp;
+        public DateTimeOffset? StartTimestamp
         {
             get => this.startTimestamp;
             set => this.startTimestamp = value;
         }
 
-        private DateTimeOffset endTimestamp;
-        public DateTimeOffset EndTimestamp
+        private DateTimeOffset? endTimestamp;
+        public DateTimeOffset? EndTimestamp
         {
             get => this.endTimestamp;
             set => this.endTimestamp = value;

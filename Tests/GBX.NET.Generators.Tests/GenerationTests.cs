@@ -9,6 +9,55 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task SupportsNullableUnixTimeFieldsInChunksAndArchives()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class Chunk03043002 { }
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class SeparateMetadata { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public System.DateTimeOffset? ReadUnixTime() => null;
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteUnixTime(System.DateTimeOffset? value) { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public System.DateTimeOffset? UnixTime(System.DateTimeOffset? value) => value;
+                }
+            }
+            """;
+        const string fields = """
+              unixtime Timestamp
+              unixtime? OptionalTimestamp
+
+            """;
+        var layout = "Example 0x03043000\n0x001\n" + fields + "0x002\n" + fields +
+            "archive Metadata\n" + fields + "archive SeparateMetadata\n" + fields;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", layout), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public DateTimeOffset? Timestamp");
+        await Assert.That(generated).Contains("public DateTimeOffset? OptionalTimestamp");
+        await Assert.That(generated).Contains("n.timestamp = rw.UnixTime(n.timestamp);");
+        await Assert.That(generated).Contains("n.timestamp = r.ReadUnixTime();");
+        await Assert.That(generated).Contains("w.WriteUnixTime(n.timestamp);");
+    }
+
+    [Test]
     public async Task SupportsIPv4FieldsInChunksAndArchives()
     {
         const string source = """
