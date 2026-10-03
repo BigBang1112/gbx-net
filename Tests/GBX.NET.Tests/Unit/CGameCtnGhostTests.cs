@@ -6,6 +6,31 @@ namespace GBX.NET.Tests.Unit;
 public class CGameCtnGhostTests
 {
     [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task GhostUid_PreservesStringAndNumericIds(bool numeric)
+    {
+        var uid = numeric ? new Id(26) : new Id("GhostUid");
+        var payload = Payload(w => w.Write(uid));
+        using var stream = new MemoryStream(payload);
+        using var reader = new GbxReader(stream);
+        using var rw = new GbxReaderWriter(reader);
+        var ghost = new CGameCtnGhost();
+        var chunk = new CGameCtnGhost.Chunk0309200E();
+
+        chunk.ReadWrite(ghost, rw);
+
+        await Assert.That(ghost.GhostUid).IsEqualTo(uid);
+        await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
+        var rewritten = Payload(w =>
+        {
+            using var writerWriter = new GbxReaderWriter(w);
+            chunk.ReadWrite(ghost, writerWriter);
+        });
+        await Assert.That(rewritten.SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     public async Task RecordContext_ReadsScopeAndGameMode(int scope)
@@ -36,9 +61,10 @@ public class CGameCtnGhostTests
     [Arguments(120100)]
     public async Task ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime)
     {
+        const int gameRules = unchecked((int)0xFEDCBA98);
         var payload = Payload(w =>
         {
-            w.Write(0xFEDCBA98u);
+            w.Write(gameRules);
             w.Write(startTime);
         });
         using var stream = new MemoryStream(payload);
@@ -47,7 +73,7 @@ public class CGameCtnGhostTests
         var ghost = new CGameCtnGhost();
         new CGameCtnGhost.Chunk0309202A().ReadWrite(ghost, rw);
 
-        await Assert.That(ghost.Validate_GameRules).IsEqualTo(0xFEDCBA98u);
+        await Assert.That(ghost.Validate_GameRules).IsEqualTo(gameRules);
         await Assert.That(ghost.Validate_RaceStartTime?.TotalMilliseconds).IsEqualTo(startTime == -1 ? null : (int?)startTime);
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
 
@@ -69,7 +95,7 @@ public class CGameCtnGhostTests
             w.Write(-1); // walltime end
             w.Write(""); // title ID
             w.Write(new byte[32]); // title checksum
-            w.Write(0xFEDCBA98u);
+            w.Write(gameRules);
             w.Write(startTime);
             w.Write(-1); // validation seed
             w.Write(0); // simulation flags

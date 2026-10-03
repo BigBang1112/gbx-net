@@ -222,40 +222,70 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_ChallengeUid = value;
     }
 
+    private TimeInt32 eventsDuration;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
-    public partial TimeInt32 EventsDuration { get; set; }
+    public TimeInt32 EventsDuration
+    {
+        get => this.eventsDuration;
+        set => this.eventsDuration = value;
+    }
 
+    private string? validate_ExeVersion;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial string? Validate_ExeVersion { get; set; }
+    public string? Validate_ExeVersion
+    {
+        get => this.validate_ExeVersion;
+        set => this.validate_ExeVersion = value;
+    }
 
+    private uint validate_ExeChecksum;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial uint Validate_ExeChecksum { get; set; }
+    public uint Validate_ExeChecksum
+    {
+        get => this.validate_ExeChecksum;
+        set => this.validate_ExeChecksum = value;
+    }
 
+    private int validate_OsKind;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial int Validate_OsKind { get; set; }
+    public int Validate_OsKind
+    {
+        get => this.validate_OsKind;
+        set => this.validate_OsKind = value;
+    }
 
+    private int validate_CpuKind;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial int Validate_CpuKind { get; set; }
+    public int Validate_CpuKind
+    {
+        get => this.validate_CpuKind;
+        set => this.validate_CpuKind = value;
+    }
 
+    private string? validate_RaceSettings;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial string? Validate_RaceSettings { get; set; }
+    public string? Validate_RaceSettings
+    {
+        get => this.validate_RaceSettings;
+        set => this.validate_RaceSettings = value;
+    }
 
     private UInt128? securityKey128;
     [AppliedWithChunk<Chunk03092012>]
@@ -273,10 +303,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.ghostVersion = value;
     }
 
+    private int? validate_ValidationSeed;
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial int? Validate_ValidationSeed { get; set; }
+    public int? Validate_ValidationSeed
+    {
+        get => this.validate_ValidationSeed;
+        set => this.validate_ValidationSeed = value;
+    }
 
     private UInt256? securityKey256;
     [AppliedWithChunk<Chunk0309201C>]
@@ -398,8 +433,13 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.matchReplaySeparators = value;
     }
 
+    private bool steeringWheelSensitivity;
     [AppliedWithChunk<Chunk03092025>]
-    public partial bool SteeringWheelSensitivity { get; set; }
+    public bool SteeringWheelSensitivity
+    {
+        get => this.steeringWheelSensitivity;
+        set => this.steeringWheelSensitivity = value;
+    }
 
     private Checksum128? ghostUid128;
     [AppliedWithChunk<Chunk03092026>]
@@ -433,13 +473,23 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.screenCaptures_Difference = value;
     }
 
+    private string? validate_TitleId;
     [AppliedWithChunk<Chunk03092028>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial string? Validate_TitleId { get; set; }
+    public string? Validate_TitleId
+    {
+        get => this.validate_TitleId;
+        set => this.validate_TitleId = value;
+    }
 
+    private Checksum256? validate_TitleChecksum;
     [AppliedWithChunk<Chunk03092028>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial Checksum256? Validate_TitleChecksum { get; set; }
+    public Checksum256? Validate_TitleChecksum
+    {
+        get => this.validate_TitleChecksum;
+        set => this.validate_TitleChecksum = value;
+    }
 
     private ScopeType validate_ScopeType;
     [AppliedWithChunk<Chunk03092029>]
@@ -473,19 +523,29 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_GameModeCustomData = value;
     }
 
+    private int validate_GameRules = 1;
     /// <summary>
     /// packed gameplay settings, also serialized in 0x02D
     /// </summary>
     [AppliedWithChunk<Chunk0309202A>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial uint Validate_GameRules { get; set; }
+    public int Validate_GameRules
+    {
+        get => this.validate_GameRules;
+        set => this.validate_GameRules = value;
+    }
 
+    private TimeInt32? validate_RaceStartTime;
     /// <summary>
     /// simulation time, also serialized in 0x02D
     /// </summary>
     [AppliedWithChunk<Chunk0309202A>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial TimeInt32? Validate_RaceStartTime { get; set; }
+    public TimeInt32? Validate_RaceStartTime
+    {
+        get => this.validate_RaceStartTime;
+        set => this.validate_RaceStartTime = value;
+    }
 
     private DateTimeOffset? walltimeStartTimestamp;
     [AppliedWithChunk<Chunk0309202C>]
@@ -528,8 +588,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).stuntScore = context.Clone(this.stuntScore)!;
         ((CGameCtnGhost)clone).ghostLogin = context.Clone(this.ghostLogin)!;
         ((CGameCtnGhost)clone).validate_ChallengeUid = context.Clone(this.validate_ChallengeUid)!;
+        ((CGameCtnGhost)clone).eventsDuration = context.Clone(this.eventsDuration)!;
+        ((CGameCtnGhost)clone).validate_ExeVersion = context.Clone(this.validate_ExeVersion)!;
+        ((CGameCtnGhost)clone).validate_ExeChecksum = context.Clone(this.validate_ExeChecksum)!;
+        ((CGameCtnGhost)clone).validate_OsKind = context.Clone(this.validate_OsKind)!;
+        ((CGameCtnGhost)clone).validate_CpuKind = context.Clone(this.validate_CpuKind)!;
+        ((CGameCtnGhost)clone).validate_RaceSettings = context.Clone(this.validate_RaceSettings)!;
         ((CGameCtnGhost)clone).securityKey128 = context.Clone(this.securityKey128)!;
         ((CGameCtnGhost)clone).ghostVersion = context.Clone(this.ghostVersion)!;
+        ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
         ((CGameCtnGhost)clone).securityKey256 = context.Clone(this.securityKey256)!;
         ((CGameCtnGhost)clone).playerInputs = context.CloneArray(this.playerInputs)!;
         ((CGameCtnGhost)clone).oldSettings = context.CloneArray(this.oldSettings)!;
@@ -545,35 +612,31 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).gpuCount = context.Clone(this.gpuCount)!;
         ((CGameCtnGhost)clone).hasHmd = context.Clone(this.hasHmd)!;
         ((CGameCtnGhost)clone).matchReplaySeparators = context.CloneArray(this.matchReplaySeparators)!;
+        ((CGameCtnGhost)clone).steeringWheelSensitivity = context.Clone(this.steeringWheelSensitivity)!;
         ((CGameCtnGhost)clone).ghostUid128 = context.Clone(this.ghostUid128)!;
         ((CGameCtnGhost)clone).screenCaptures = context.CloneArray(this.screenCaptures)!;
         ((CGameCtnGhost)clone).screenCaptureKeyframeIndices = context.CloneArray(this.screenCaptureKeyframeIndices)!;
         ((CGameCtnGhost)clone).screenCaptures_Difference = context.CloneArray(this.screenCaptures_Difference)!;
+        ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
+        ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
         ((CGameCtnGhost)clone).validate_ScopeType = context.Clone(this.validate_ScopeType)!;
         ((CGameCtnGhost)clone).validate_ScopeId = context.Clone(this.validate_ScopeId)!;
         ((CGameCtnGhost)clone).validate_GameMode = context.Clone(this.validate_GameMode)!;
         ((CGameCtnGhost)clone).validate_GameModeCustomData = context.Clone(this.validate_GameModeCustomData)!;
+        ((CGameCtnGhost)clone).validate_GameRules = context.Clone(this.validate_GameRules)!;
+        ((CGameCtnGhost)clone).validate_RaceStartTime = context.Clone(this.validate_RaceStartTime)!;
         ((CGameCtnGhost)clone).walltimeStartTimestamp = context.Clone(this.walltimeStartTimestamp)!;
         ((CGameCtnGhost)clone).walltimeEndTimestamp = context.Clone(this.walltimeEndTimestamp)!;
         ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
-        ((CGameCtnGhost)clone).eventsDuration = context.Clone(this.eventsDuration)!;
-        ((CGameCtnGhost)clone).validate_ExeVersion = context.Clone(this.validate_ExeVersion)!;
-        ((CGameCtnGhost)clone).validate_ExeChecksum = context.Clone(this.validate_ExeChecksum)!;
-        ((CGameCtnGhost)clone).validate_OsKind = context.Clone(this.validate_OsKind)!;
-        ((CGameCtnGhost)clone).validate_CpuKind = context.Clone(this.validate_CpuKind)!;
-        ((CGameCtnGhost)clone).validate_RaceSettings = context.Clone(this.validate_RaceSettings)!;
         ((CGameCtnGhost)clone).inputs = context.Clone(this.inputs)!;
-        ((CGameCtnGhost)clone).steeringWheelSensitivity = context.Clone(this.steeringWheelSensitivity)!;
-        ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
-        ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
-        ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
-        ((CGameCtnGhost)clone).validate_GameRules = context.Clone(this.validate_GameRules)!;
-        ((CGameCtnGhost)clone).validate_RaceStartTime = context.Clone(this.validate_RaceStartTime)!;
     }
 
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
-    public partial TimeSpan? WalltimeDuration { get; }
+    public TimeSpan? WalltimeDuration
+    {
+        get => WalltimeEndTimestamp- WalltimeStartTimestamp;
+    }
 
     public CGameCtnGhost()
     {
@@ -1490,15 +1553,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref n.validate_GameRules);
+            rw.Int32(ref n.validate_GameRules);
             rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
         }
     }
 
     /// <summary>
-    /// race result, using archive format 4
+    /// race result TM2020
     /// </summary>
-    [Chunk(0x0309202B, "race result, using archive format 4")]
+    [Chunk(0x0309202B, "race result TM2020")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0309202B : SkippableChunk<CGameCtnGhost>, IVersionable
     {

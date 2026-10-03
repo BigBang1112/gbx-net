@@ -9,52 +9,11 @@ public partial class CGameCtnGhost
     private Id? ghostUid;
     public partial Id? GhostUid { get => ghostUid; set => ghostUid = value; }
 
-    private TimeInt32 eventsDuration;
-    public partial TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
-
-    /// <summary>
-    /// Elapsed walltime between <see cref="WalltimeStartTimestamp"/> and <see cref="WalltimeEndTimestamp"/>.
-    /// </summary>
-    public partial TimeSpan? WalltimeDuration { get => WalltimeEndTimestamp - WalltimeStartTimestamp; }
-
-    private string? validate_ExeVersion;
-    public partial string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
-
-    private uint validate_ExeChecksum;
-    public partial uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
-
-    private int validate_OsKind;
-    public partial int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
-
-    private int validate_CpuKind;
-    public partial int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
-
-    private string? validate_RaceSettings;
-    public partial string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
-
     private ImmutableArray<IInput> inputs = [];
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
-
-    private bool steeringWheelSensitivity;
-    public partial bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
-
-    private string? validate_TitleId;
-    public partial string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
-
-    private Checksum256? validate_TitleChecksum;
-    public partial Checksum256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
-
-    private int? validate_ValidationSeed;
-    public partial int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
-
-    private uint validate_GameRules = 1;
-    public partial uint Validate_GameRules { get => validate_GameRules; set => validate_GameRules = value; }
-
-    private TimeInt32? validate_RaceStartTime;
-    public partial TimeInt32? Validate_RaceStartTime { get => validate_RaceStartTime; set => validate_RaceStartTime = value; }
 
     public string GhostVersionString
     {
@@ -345,7 +304,7 @@ public partial class CGameCtnGhost
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);
             rw.Checksum256(ref n.validate_TitleChecksum);
-            rw.UInt32(ref n.validate_GameRules);
+            rw.Int32(ref n.validate_GameRules);
             rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
             rw.Int32(ref n.validate_ValidationSeed);
             rw.Int32(ref SimulationFlags);
