@@ -1,10 +1,66 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
+using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit;
 
 public class CGameCtnChallengeTests
 {
+    [Test]
+    [Arguments(5, false)]
+    [Arguments(8, false)]
+    [Arguments(9, false)]
+    [Arguments(10, false)]
+    [Arguments(5, true)]
+    [Arguments(8, true)]
+    [Arguments(9, true)]
+    [Arguments(10, true)]
+    public async Task EmptyLightmapFramesOmitCachePayload(int version, bool modernChunk)
+    {
+        using var stream = new MemoryStream();
+        using (var writer = new GbxWriter(stream))
+        {
+            if (modernChunk) writer.Write(0);
+            writer.Write(1);
+            if (modernChunk)
+            {
+                writer.Write(0);
+                writer.Write(0);
+            }
+            writer.Write(version);
+            writer.Write(0);
+        }
+        var payload = stream.ToArray();
+
+        using var input = new MemoryStream();
+        input.Write(payload);
+        using (var writer = new GbxWriter(input)) writer.Write(0x12345678);
+        input.Position = 0;
+        using var reader = new GbxReader(input);
+        using var rw = new GbxReaderWriter(reader);
+        var map = new CGameCtnChallenge();
+        var chunk = modernChunk
+            ? new CGameCtnChallenge.Chunk0304305B()
+            : new CGameCtnChallenge.Chunk0304303D();
+
+        chunk.ReadWrite(map, rw);
+
+        await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
+        await Assert.That(map.HasLightmaps).IsTrue();
+        await Assert.That(map.LightmapVersion).IsEqualTo(version);
+        await Assert.That(map.LightmapFrames).IsNotNull();
+        await Assert.That(map.LightmapFrames).IsEmpty();
+        await Assert.That(map.LightmapCacheData).IsNull();
+
+        using var output = new MemoryStream();
+        using (var writer = new GbxWriter(output))
+        using (var writerWriter = new GbxReaderWriter(writer))
+        {
+            chunk.ReadWrite(map, writerWriter);
+        }
+        await Assert.That(output.ToArray().SequenceEqual(payload)).IsTrue();
+    }
+
     [Test]
     public async Task EmptyMapQueriesReturnNoElements()
     {

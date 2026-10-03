@@ -1332,6 +1332,11 @@ public partial class CGameCtnChallenge :
 
                 n.lightmapFrames = r.ReadArrayReadable<CHmsLightMapCache.Frame>(frameCount, n.LightmapVersion.GetValueOrDefault(8));
 
+                if (frameCount == 0)
+                {
+                    return;
+                }
+
                 var isUncompressedEmpty = false;
                 if (n.LightmapVersion < 9)
                 {
