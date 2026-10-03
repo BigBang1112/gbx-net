@@ -316,7 +316,20 @@ public partial class CGameCtnGhost
     {
         public override string ToString()
         {
-            return $"{Time.ToTmString()} ({(Speed.HasValue ? $"{Speed}km/h, " : "")}{StuntsScore} pts.)";
+            var details = new List<string>(3);
+
+            if (CheckpointId.HasValue)
+                details.Add($"ID: {CheckpointId.Value}");
+
+            if (Speed.HasValue)
+                details.Add($"{Speed.Value}km/h");
+
+            if (StuntsScore.HasValue)
+                details.Add($"{StuntsScore.Value} pts.");
+
+            return details.Count > 0
+                ? $"{Time.ToTmString()} ({string.Join(", ", details)})"
+                : Time.ToTmString();
         }
     }
 
