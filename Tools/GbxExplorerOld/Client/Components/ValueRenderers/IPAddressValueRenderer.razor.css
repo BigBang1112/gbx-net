@@ -1,0 +1,5 @@
+.public-ip {
+    display: inline-block;
+    filter: blur(5px);
+    user-select: none;
+}

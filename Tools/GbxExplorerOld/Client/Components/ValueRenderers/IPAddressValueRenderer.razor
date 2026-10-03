@@ -1,0 +1,26 @@
+@using System.Net
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(IPAddress))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified.">null</span>
+}
+else if (Value is IPAddress address)
+{
+    var isPublic = address.IsPublic();
+
+    <span class="element-box" data-title="This value cannot be modified.">
+        <span class="@(isPublic ? "public-ip" : null)">@address</span>
+    </span>
+
+    @if (isPublic)
+    {
+        <span class="element-box utility">(public IP detected)</span>
+    }
+}
+
+@code {
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+}
