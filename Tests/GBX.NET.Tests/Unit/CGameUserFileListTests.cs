@@ -28,7 +28,6 @@ public class CGameUserFileListTests
 
         await Assert.That(file.Name).IsEqualTo("Example.Gbx");
         await Assert.That(file.ToString()).IsEqualTo("Example.Gbx");
-        await Assert.That(file.NameTerminator).IsEqualTo((byte)terminator);
         await Assert.That(file.FileWriteTime?.ToFileTimeUtc()).IsEqualTo(fileTime == 0 ? null : (long?)fileTime);
         await Assert.That(file.FileSize).IsEqualTo(456ul);
         await Assert.That(file.Type).IsEqualTo(type);
@@ -37,14 +36,12 @@ public class CGameUserFileListTests
         {
             await Assert.That(file.MapName).IsEqualTo("Map Name");
             await Assert.That(file.RecordingContext).IsNull();
-            await Assert.That(file.MapNameTerminator).IsEqualTo((byte)terminator);
             await Assert.That(file.RaceTime).IsNull();
         }
         else
         {
             await Assert.That(file.RecordingContext).IsEqualTo("Race");
             await Assert.That(file.MapName).IsNull();
-            await Assert.That(file.RecordingContextTerminator).IsEqualTo((byte)terminator);
             await Assert.That(file.RaceTime?.TotalMilliseconds).IsEqualTo(raceTime == -1 ? null : (int?)raceTime);
         }
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);

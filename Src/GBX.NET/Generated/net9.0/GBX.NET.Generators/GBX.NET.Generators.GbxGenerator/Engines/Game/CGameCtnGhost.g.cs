@@ -169,6 +169,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     private Checkpoint[]? checkpoints;
     [AppliedWithChunk<Chunk03092004>]
     [AppliedWithChunk<Chunk0309200B>]
+    [AppliedWithChunk<Chunk0309202B>]
     public Checkpoint[]? Checkpoints
     {
         get => this.checkpoints;
@@ -177,6 +178,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     private TimeInt32? raceTime;
     [AppliedWithChunk<Chunk03092005>]
+    [AppliedWithChunk<Chunk0309202B>]
     public TimeInt32? RaceTime
     {
         get => this.raceTime;
@@ -185,6 +187,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     private int? respawns;
     [AppliedWithChunk<Chunk03092008>]
+    [AppliedWithChunk<Chunk0309202B>]
     public int? Respawns
     {
         get => this.respawns;
@@ -193,6 +196,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     private int? stuntScore;
     [AppliedWithChunk<Chunk0309200A>]
+    [AppliedWithChunk<Chunk0309202B>]
     public int? StuntScore
     {
         get => this.stuntScore;
@@ -437,6 +441,52 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     [AppliedWithChunk<Chunk0309202D>]
     public partial Checksum256? Validate_TitleChecksum { get; set; }
 
+    private ScopeType validate_ScopeType;
+    [AppliedWithChunk<Chunk03092029>]
+    public ScopeType Validate_ScopeType
+    {
+        get => this.validate_ScopeType;
+        set => this.validate_ScopeType = value;
+    }
+
+    private string? validate_ScopeId;
+    [AppliedWithChunk<Chunk03092029>]
+    public string? Validate_ScopeId
+    {
+        get => this.validate_ScopeId;
+        set => this.validate_ScopeId = value;
+    }
+
+    private string? validate_GameMode;
+    [AppliedWithChunk<Chunk03092029>]
+    public string? Validate_GameMode
+    {
+        get => this.validate_GameMode;
+        set => this.validate_GameMode = value;
+    }
+
+    private string? validate_GameModeCustomData;
+    [AppliedWithChunk<Chunk03092029>]
+    public string? Validate_GameModeCustomData
+    {
+        get => this.validate_GameModeCustomData;
+        set => this.validate_GameModeCustomData = value;
+    }
+
+    /// <summary>
+    /// packed gameplay settings, also serialized in 0x02D
+    /// </summary>
+    [AppliedWithChunk<Chunk0309202A>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial uint Validate_GameRules { get; set; }
+
+    /// <summary>
+    /// simulation time, also serialized in 0x02D
+    /// </summary>
+    [AppliedWithChunk<Chunk0309202A>]
+    [AppliedWithChunk<Chunk0309202D>]
+    public partial TimeInt32? Validate_RaceStartTime { get; set; }
+
     private DateTimeOffset? walltimeStartTimestamp;
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
@@ -499,6 +549,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).screenCaptures = context.CloneArray(this.screenCaptures)!;
         ((CGameCtnGhost)clone).screenCaptureKeyframeIndices = context.CloneArray(this.screenCaptureKeyframeIndices)!;
         ((CGameCtnGhost)clone).screenCaptures_Difference = context.CloneArray(this.screenCaptures_Difference)!;
+        ((CGameCtnGhost)clone).validate_ScopeType = context.Clone(this.validate_ScopeType)!;
+        ((CGameCtnGhost)clone).validate_ScopeId = context.Clone(this.validate_ScopeId)!;
+        ((CGameCtnGhost)clone).validate_GameMode = context.Clone(this.validate_GameMode)!;
+        ((CGameCtnGhost)clone).validate_GameModeCustomData = context.Clone(this.validate_GameModeCustomData)!;
         ((CGameCtnGhost)clone).walltimeStartTimestamp = context.Clone(this.walltimeStartTimestamp)!;
         ((CGameCtnGhost)clone).walltimeEndTimestamp = context.Clone(this.walltimeEndTimestamp)!;
         ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
@@ -513,6 +567,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
         ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
         ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
+        ((CGameCtnGhost)clone).validate_GameRules = context.Clone(this.validate_GameRules)!;
+        ((CGameCtnGhost)clone).validate_RaceStartTime = context.Clone(this.validate_RaceStartTime)!;
     }
 
     [AppliedWithChunk<Chunk0309202C>]
@@ -1390,72 +1446,91 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
-    [Chunk(0x03092029)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    /// <summary>
+    /// record context
+    /// </summary>
+    [Chunk(0x03092029, "record context")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk03092029 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092029;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; }
-        public int U01;
-        public string? U02;
-        public string? U03;
-        public string? U04;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03092029)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03092029)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03092029)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03092029)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03092029)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
-            rw.String(ref U02);
-            rw.String(ref U03);
-            rw.String(ref U04);
+            rw.EnumInt32<ScopeType>(ref n.validate_ScopeType);
+            rw.String(ref n.validate_ScopeId);
+            rw.String(ref n.validate_GameMode);
+            rw.String(ref n.validate_GameModeCustomData);
         }
     }
 
-    [Chunk(0x0309202A)]
+    /// <summary>
+    /// validation game rules and race start time
+    /// </summary>
+    [Chunk(0x0309202A, "validation game rules and race start time")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0309202A : SkippableChunk<CGameCtnGhost>
     {
         public override uint Id => 0x0309202A;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309202A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0309202A)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.UInt32(ref n.validate_GameRules);
+            rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
         }
     }
 
-    [Chunk(0x0309202B)]
-    [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk0309202B : SkippableChunk<CGameCtnGhost>
+    /// <summary>
+    /// race result, using archive format 4
+    /// </summary>
+    [Chunk(0x0309202B, "race result, using archive format 4")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk0309202B : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309202B;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
+        public int U01 = -1;
+        public int U02 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0309202B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0309202B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0309202B)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version >= 2)
+            {
+                return;
+            }
+
+            rw.TimeInt32Nullable(ref n.raceTime);
+            rw.Int32(ref n.stuntScore);
+            rw.Int32(ref n.respawns);
+            rw.Int32(ref U01);
+            rw.ArrayReadableWritable<Checkpoint>(ref n.checkpoints!, version: 2);
+            rw.Int32(ref U02);
         }
     }
 
@@ -1492,8 +1567,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0309202D)clone).HasInputs = context.Clone(this.HasInputs)!;
-            ((Chunk0309202D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0309202D)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0309202D)clone).SimulationFlags = context.Clone(this.SimulationFlags)!;
         }
     }
@@ -1766,6 +1839,16 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.stuntsScore = value;
         }
 
+        private int? checkpointId;
+        /// <summary>
+        /// inferred from recorded checkpoint identifiers
+        /// </summary>
+        public int? CheckpointId
+        {
+            get => this.checkpointId;
+            set => this.checkpointId = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Checkpoint)MemberwiseClone();
@@ -1779,6 +1862,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             ((Checkpoint)clone).time = context.Clone(this.time)!;
             ((Checkpoint)clone).speed = context.Clone(this.speed)!;
             ((Checkpoint)clone).stuntsScore = context.Clone(this.stuntsScore)!;
+            ((Checkpoint)clone).checkpointId = context.Clone(this.checkpointId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -1793,6 +1877,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             if (v == 1)
             {
                 rw.Int32(ref this.stuntsScore);
+            }
+
+            if (v == 2)
+            {
+                rw.Int32(ref this.checkpointId);
             }
         }
 
@@ -2073,6 +2162,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum ScopeType
+    {
+        PersonalBest,
+        Season,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

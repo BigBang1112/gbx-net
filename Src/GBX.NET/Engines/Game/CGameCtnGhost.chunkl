@@ -87,13 +87,13 @@ CGameCtnGhost 0x03092000 // A ghost.
   if EventsDuration != 0
     // CInputEventsStore is handled in C# before the validation fields.
     string Validate_ExeVersion
-    uint32 Validate_ExeChecksum
+    uint Validate_ExeChecksum
     int Validate_OsKind
     int Validate_CpuKind
     string Validate_RaceSettings
 
 0x012 [TMU, TMF] // old security key
-  uint32
+  uint
   uint128? SecurityKey128
 
 0x013 (skippable) [TMF, MP3, TMT, MP4, TM2020]
@@ -169,7 +169,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   if Version >= 1 || EventsDuration != 0
     // CInputEventsStore is handled in C# before the validation fields.
     string Validate_ExeVersion
-    uint32 Validate_ExeChecksum
+    uint Validate_ExeChecksum
     int Validate_OsKind
     int Validate_CpuKind
     string Validate_RaceSettings
@@ -192,18 +192,27 @@ CGameCtnGhost 0x03092000 // A ghost.
     string Validate_TitleId
     checksum256? Validate_TitleChecksum
 
-0x029 (skippable) [TM2020]
-  version
-  int
-  string
-  string
-  string
+0x029 (skippable) [TM2020.v1] // record context
+  version = 1
+  int<ScopeType> Validate_ScopeType
+  string Validate_ScopeId
+  string Validate_GameMode
+  string Validate_GameModeCustomData
 
-0x02A (skippable) [TM2020]
-  int // also serialized in 0x02D
-  int // also serialized in 0x02D
+0x02A (skippable) [TM2020] // validation game rules and race start time
+  int Validate_GameRules = 1 // packed gameplay settings, also serialized in 0x02D
+  timeint? Validate_RaceStartTime // simulation time, also serialized in 0x02D
 
-0x02B (skippable, ignore) [TM2020]
+0x02B (skippable) [TM2020.v1] // race result TM2020
+  version = 1
+  v2+
+    return
+  timeint? RaceTime
+  int? StuntScore
+  int? Respawns
+  int = -1 // extra race-result field
+  Checkpoint[] Checkpoints (version: 2)
+  int = -1 // also serialized in 0x01B version 2
 
 0x02C (skippable) [TM2020]
   version
@@ -213,14 +222,15 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x02D (skippable, demonstration: partial) [TM2020]
   // HasInputs and the optional CInputEventsStore are handled in C#.
   string Validate_ExeVersion
-  uint32 Validate_ExeChecksum
+  uint Validate_ExeChecksum
   int Validate_OsKind
   int Validate_CpuKind
   unixtime? WalltimeStartTimestamp
   unixtime? WalltimeEndTimestamp
   string Validate_TitleId
   checksum256? Validate_TitleChecksum
-  // The two values shared with 0x02A are handled in C#.
+  int Validate_GameRules
+  timeint? Validate_RaceStartTime
   int? Validate_ValidationSeed
   // SimulationFlags is handled in C#.
   string Validate_RaceSettings
@@ -260,6 +270,8 @@ archive Checkpoint
     float? Speed
   v1=
     int? StuntsScore
+  v2=
+    int? CheckpointId // inferred from recorded checkpoint identifiers
 
 archive OldSettingsInfos
   int
@@ -286,3 +298,7 @@ archive SettingsInfos
 archive MatchReplaySeparator
   int
   int
+
+enum ScopeType
+  PersonalBest
+  Season

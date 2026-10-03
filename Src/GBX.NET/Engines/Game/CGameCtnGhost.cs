@@ -50,6 +50,12 @@ public partial class CGameCtnGhost
     private int? validate_ValidationSeed;
     public partial int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
 
+    private uint validate_GameRules = 1;
+    public partial uint Validate_GameRules { get => validate_GameRules; set => validate_GameRules = value; }
+
+    private TimeInt32? validate_RaceStartTime;
+    public partial TimeInt32? Validate_RaceStartTime { get => validate_RaceStartTime; set => validate_RaceStartTime = value; }
+
     public string GhostVersionString
     {
         get
@@ -320,8 +326,6 @@ public partial class CGameCtnGhost
     public partial class Chunk0309202D
     {
         public int HasInputs;
-        public int U02; // same as 02A
-        public int U03; // same as 02A
         public int SimulationFlags; // bit 0 is SteeringWheelSensitivity
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
@@ -341,8 +345,8 @@ public partial class CGameCtnGhost
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);
             rw.Checksum256(ref n.validate_TitleChecksum);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.UInt32(ref n.validate_GameRules);
+            rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
             rw.Int32(ref n.validate_ValidationSeed);
             rw.Int32(ref SimulationFlags);
             rw.String(ref n.validate_RaceSettings);
