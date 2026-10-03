@@ -10,17 +10,22 @@
 else if (Value is IPAddress address)
 {
     var isPublic = address.IsPublic();
+    var isHidden = isPublic && !address.Equals(revealedAddress);
 
     <span class="element-box" data-title="This value cannot be modified.">
-        <span class="@(isPublic ? "public-ip" : null)">@address</span>
+        <span class="@(isHidden ? "public-ip" : null)">@address</span>
     </span>
 
     @if (isPublic)
     {
-        <span class="element-box utility">(public IP detected)</span>
+        <button type="button" class="element-box hoverable utility" data-title="@(isHidden ? "Click to reveal the public IP." : "Click to hide the public IP.")" @onclick="() => revealedAddress = isHidden ? address : null">
+            @(isHidden ? "(public IP detected)" : "(hide public IP)")
+        </button>
     }
 }
 
 @code {
+    private IPAddress? revealedAddress;
+
     public override bool ShowPropertyInTree(PropertyInfo prop) => false;
 }

@@ -3,3 +3,9 @@
     filter: blur(5px);
     user-select: none;
 }
+
+button.element-box:focus-visible {
+    background-color: #42495188;
+    outline: 2px solid var(--text-anchor);
+    outline-offset: 2px;
+}
