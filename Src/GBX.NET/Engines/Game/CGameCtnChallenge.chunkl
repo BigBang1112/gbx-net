@@ -478,7 +478,7 @@ archive BlockOctreeData
 archive BlockOctreeNode
   int ParentIndex // BlockOctreeData selects node form: 0 for branches, 1 for current leaves, 2 for legacy leaves.
   v0=
-    uint[8] Children
+    int[8] Children
   v1+
     byte Value
   v2=

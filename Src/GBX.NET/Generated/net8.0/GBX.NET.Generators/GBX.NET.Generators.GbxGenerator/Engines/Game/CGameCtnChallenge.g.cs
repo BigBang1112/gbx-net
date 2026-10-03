@@ -2952,8 +2952,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.parentIndex = value;
         }
 
-        private uint[]? children;
-        public uint[]? Children
+        private int[]? children;
+        public int[]? Children
         {
             get => this.children;
             set => this.children = value;
@@ -2995,7 +2995,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             if (v == 0)
             {
-                rw.Array<uint>(ref this.children!, 8);
+                rw.Array<int>(ref this.children!, 8);
             }
 
             if (v >= 1)

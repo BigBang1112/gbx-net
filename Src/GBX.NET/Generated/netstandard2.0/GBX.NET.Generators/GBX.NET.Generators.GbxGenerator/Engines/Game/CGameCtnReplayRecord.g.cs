@@ -63,6 +63,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         ((CGameCtnReplayRecord)clone).Inputs = context.Clone(this.Inputs)!;
         ((CGameCtnReplayRecord)clone).EntDataSceneUIdsToGhosts = context.Clone(this.EntDataSceneUIdsToGhosts)!;
         ((CGameCtnReplayRecord)clone).ChallengeParameters = context.Clone(this.ChallengeParameters)!;
+        ((CGameCtnReplayRecord)clone).ActionModels = context.Clone(this.ActionModels)!;
+        ((CGameCtnReplayRecord)clone).ActionNames = context.Clone(this.ActionNames)!;
+        ((CGameCtnReplayRecord)clone).ItemNames = context.Clone(this.ItemNames)!;
+        ((CGameCtnReplayRecord)clone).ItemSkins = context.Clone(this.ItemSkins)!;
+        ((CGameCtnReplayRecord)clone).SceneryObjects = context.Clone(this.SceneryObjects)!;
+        ((CGameCtnReplayRecord)clone).BonusBumpKeys = context.Clone(this.BonusBumpKeys)!;
     }
 
     public CGameCtnReplayRecord()
@@ -184,6 +190,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03093005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093005)clone).U02 = context.CloneArray(this.U02)!;
         }
     }
 
@@ -214,7 +221,50 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03093008)clone).ExeVersion = context.Clone(this.ExeVersion)!;
             ((Chunk03093008)clone).U01 = context.CloneArray(this.U01)!;
+        }
+    }
+
+    [Chunk(0x03093009)]
+    public partial class Chunk03093009 : Chunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x03093009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03093009)clone).U01 = context.CloneArray(this.U01)!;
+        }
+    }
+
+    /// <summary>
+    /// legacy tracks
+    /// </summary>
+    [Chunk(0x0309300A, "legacy tracks")]
+    public partial class Chunk0309300A : Chunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x0309300A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0309300A)clone).U01 = context.CloneArray(this.U01)!;
+        }
+    }
+
+    /// <summary>
+    /// human time to game time function
+    /// </summary>
+    [Chunk(0x0309300B, "human time to game time function")]
+    public partial class Chunk0309300B : Chunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x0309300B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0309300B)clone).HumanTimeToGameTimeFunc = context.Clone(this.HumanTimeToGameTimeFunc)!;
         }
     }
 
@@ -308,17 +358,30 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    [Chunk(0x03093012)]
+    public partial class Chunk03093012 : Chunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x03093012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03093012)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093012)clone).U02 = context.CloneArray(this.U02)!;
+        }
+    }
+
     [Chunk(0x03093013)]
     [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03093013 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093013;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03093013)clone).U01 = context.CloneArray(this.U01)!;
         }
     }
 
@@ -356,6 +419,40 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
+    /// legacy data tapes
+    /// </summary>
+    [Chunk(0x03093016, "legacy data tapes")]
+    public partial class Chunk03093016 : Chunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x03093016;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03093016)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093016)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03093016)clone).U03 = context.Clone(this.U03)!;
+        }
+    }
+
+    /// <summary>
+    /// encapsulated legacy data tapes
+    /// </summary>
+    [Chunk(0x03093017, "encapsulated legacy data tapes")]
+    public partial class Chunk03093017 : SkippableChunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x03093017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03093017)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093017)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03093017)clone).U03 = context.Clone(this.U03)!;
+        }
+    }
+
+    /// <summary>
     /// author
     /// </summary>
     [Chunk(0x03093018, "author")]
@@ -372,11 +469,27 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
+    /// legacy scenery vortex keys
+    /// </summary>
+    [Chunk(0x03093019, "legacy scenery vortex keys")]
+    public partial class Chunk03093019 : SkippableChunk<CGameCtnReplayRecord>
+    {
+        public override uint Id => 0x03093019;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03093019)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093019)clone).Version = context.Clone(this.Version)!;
+        }
+    }
+
+    /// <summary>
     /// scenery vortex key
     /// </summary>
     [Chunk(0x0309301A, "scenery vortex key")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0309301A : SkippableChunk<CGameCtnReplayRecord>
+    public partial class Chunk0309301A : Chunk03093019
     {
         public override uint Id => 0x0309301A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
@@ -384,7 +497,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309301A)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0309301A)clone).U02 = context.Clone(this.U02)!;
         }
     }
@@ -446,12 +558,13 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     public partial class Chunk0309301E : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301E;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0309301E)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0309301E)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -463,12 +576,13 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     public partial class Chunk0309301F : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301F;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0309301F)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0309301F)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -480,12 +594,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     public partial class Chunk03093020 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093020;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03093020)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -508,16 +622,17 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// TimedCamVal
     /// </summary>
     [Chunk(0x03093022, "TimedCamVal")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093022 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093022;
-        public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03093022)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk03093022)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -525,16 +640,17 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// BonusBumpKey
     /// </summary>
     [Chunk(0x03093023, "BonusBumpKey")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093023 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093023;
-        public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03093023)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093023)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -738,16 +854,23 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         0x03093005 => new Chunk03093005(),
         0x03093007 => new Chunk03093007(),
         0x03093008 => new Chunk03093008(),
+        0x03093009 => new Chunk03093009(),
+        0x0309300A => new Chunk0309300A(),
+        0x0309300B => new Chunk0309300B(),
         0x0309300C => new Chunk0309300C(),
         0x0309300D => new Chunk0309300D(),
         0x0309300E => new Chunk0309300E(),
         0x0309300F => new Chunk0309300F(),
         0x03093010 => new Chunk03093010(),
         0x03093011 => new Chunk03093011(),
+        0x03093012 => new Chunk03093012(),
         0x03093013 => new Chunk03093013(),
         0x03093014 => new Chunk03093014(),
         0x03093015 => new Chunk03093015(),
+        0x03093016 => new Chunk03093016(),
+        0x03093017 => new Chunk03093017(),
         0x03093018 => new Chunk03093018(),
+        0x03093019 => new Chunk03093019(),
         0x0309301A => new Chunk0309301A(),
         0x0309301B => new Chunk0309301B(),
         0x0309301C => new Chunk0309301C(),
