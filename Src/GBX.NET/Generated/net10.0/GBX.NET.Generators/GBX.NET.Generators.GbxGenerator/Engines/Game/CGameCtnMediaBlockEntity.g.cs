@@ -169,6 +169,17 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.ghostName = value;
     }
 
+    private float timeScale = 1;
+    /// <summary>
+    /// Record time = StartOffset + (clip time - Start) * TimeScale.
+    /// </summary>
+    [AppliedWithChunk<Chunk0329F003>]
+    public float TimeScale
+    {
+        get => this.timeScale;
+        set => this.timeScale = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -188,6 +199,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         ((CGameCtnMediaBlockEntity)clone).skinOptions = context.Clone(this.skinOptions)!;
         ((CGameCtnMediaBlockEntity)clone).keys = context.CloneList(this.keys)!;
         ((CGameCtnMediaBlockEntity)clone).ghostName = context.Clone(this.ghostName)!;
+        ((CGameCtnMediaBlockEntity)clone).timeScale = context.Clone(this.timeScale)!;
     }
 
     public CGameCtnMediaBlockEntity()
@@ -328,6 +340,22 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
         {
             rw.String(ref n.skinOptions);
+        }
+    }
+
+    [Chunk(0x0329F003)]
+    public partial class Chunk0329F003 : SkippableChunk<CGameCtnMediaBlockEntity>
+    {
+        public override uint Id => 0x0329F003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.timeScale);
         }
     }
 
@@ -578,6 +606,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     {
         0x0329F000 => new Chunk0329F000(),
         0x0329F002 => new Chunk0329F002(),
+        0x0329F003 => new Chunk0329F003(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -3082,6 +3082,7 @@ public static partial class ClassManager
         0x03294000 => new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000(),
         0x0329F000 => new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(),
         0x0329F002 => new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002(),
+        0x0329F003 => new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003(),
         0x03340000 => new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical.Chunk03340000(),
         0x0335B000 => new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipHorizontal.Chunk0335B000(),
         0x0338B000 => new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000(),
