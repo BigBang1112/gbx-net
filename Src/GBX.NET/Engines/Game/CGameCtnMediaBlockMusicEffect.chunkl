@@ -4,7 +4,7 @@ CGameCtnMediaBlockMusicEffect 0x030A6000
 0x000
   Key[] Keys (list)
 
-0x001
+0x001 [TM2020]
   Key[] Keys (version: 1, list)
 
 archive Key (inherits: IKey)

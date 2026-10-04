@@ -13,6 +13,8 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class Checkpoint
     {
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+
         public override string ToString()
         {
             return $"[{Time}] Checkpoint";
@@ -21,6 +23,8 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class EndOfLap
     {
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+
         public override string ToString()
         {
             return $"[{Time}] End of lap";
@@ -29,84 +33,45 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class EndOfRace
     {
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+
         public override string ToString()
         {
             return $"[{Time}] End of race";
         }
     }
 
-    public partial class Event : IReadableWritable
+    public partial class Event
     {
-        private byte version;
-        private int? u01;
-        private byte? u02;
-        private EventType type;
-        private TimeSingle time;
-        private Stunt? stunt;
-        private Checkpoint? checkpoint;
-        private EndOfLap? endOfLap;
-        private EndOfRace? endOfRace;
+        private Stunt? eventStunt;
 
-        public TimeSingle Time { get => time; set => time = value; }
-        public byte Version { get => version; set => version = value; }
-        public int? U01 { get => u01; set => u01 = value; }
-        public byte? U02 { get => u02; set => u02 = value; }
-        public EventType Type { get => type; set => type = value; }
-        public Stunt? Stunt { get => stunt; set => stunt = value; }
-        public Checkpoint? Checkpoint { get => checkpoint; set => checkpoint = value; }
-        public EndOfLap? EndOfLap { get => endOfLap; set => endOfLap = value; }
-        public EndOfRace? EndOfRace { get => endOfRace; set => endOfRace = value; }
+        public byte Version { get; set; }
 
-        public void ReadWrite(GbxReaderWriter rw, int version = 0)
+        int IVersionable.Version
         {
-            rw.TimeSingle(ref time);
-            rw.Byte(ref version);
+            get => Version;
+            set => Version = (byte)value;
+        }
 
-            if (version == 0)
+        public Stunt? Stunt
+        {
+            get => eventStunt;
+            set
             {
-                throw new VersionNotSupportedException(version);
-            }
-
-            if (version < 3)
-            {
-                rw.Int32(ref u01);
-            }
-            else
-            {
-                rw.Byte(ref u02);
-            }
-
-            rw.EnumInt32<EventType>(ref type);
-
-            switch (type)
-            {
-                case EventType.Stunt:
-                    rw.ReadableWritable<Stunt>(ref stunt, version: 1);
-
-                    if (rw.Reader is not null && stunt is not null) // ???
-                    {
-                        stunt.Time = time;
-                    }
-
-                    break;
-                case EventType.Checkpoint:
-                    rw.ReadableWritable<Checkpoint>(ref checkpoint);
-                    break;
-                case EventType.EndOfLap:
-                    rw.ReadableWritable<EndOfLap>(ref endOfLap, version: version == 1 ? 0 : 1);
-                    break;
-                case EventType.EndOfRace:
-                    rw.ReadableWritable<EndOfRace>(ref endOfRace);
-                    break;
+                eventStunt = value;
+                if (value is not null)
+                {
+                    value.Time = Time;
+                }
             }
         }
 
-        public override string ToString() => type switch
+        public override string ToString() => Type switch
         {
-            EventType.Stunt => stunt?.ToString() ?? "",
-            EventType.Checkpoint => checkpoint?.ToString() ?? "",
-            EventType.EndOfLap => endOfLap?.ToString() ?? "",
-            EventType.EndOfRace => endOfRace?.ToString() ?? "",
+            EventType.Stunt => Stunt?.ToString() ?? "",
+            EventType.Checkpoint => Checkpoint?.ToString() ?? "",
+            EventType.EndOfLap => EndOfLap?.ToString() ?? "",
+            EventType.EndOfRace => EndOfRace?.ToString() ?? "",
             _ => "Unknown event",
         };
     }

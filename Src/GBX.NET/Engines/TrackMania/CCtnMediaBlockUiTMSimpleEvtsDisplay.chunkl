@@ -1,7 +1,8 @@
 CCtnMediaBlockUiTMSimpleEvtsDisplay 0x24092000
-- inherits: CGameCtnMediaBlockUi
+- inherits: CGameCtnMediaBlockUiSimpleEvtsDisplay
 
 0x000
+  bool U01
 
 0x001
   bool StuntFigures
@@ -11,6 +12,7 @@ CCtnMediaBlockUiTMSimpleEvtsDisplay 0x24092000
   bool GhostsName
 
 0x002
+  bool U01
 
 enum EDisplayMode
   OnlyTarget

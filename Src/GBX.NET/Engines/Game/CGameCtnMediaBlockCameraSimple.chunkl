@@ -7,18 +7,22 @@ CGameCtnMediaBlockCameraSimple 0x0309F000
 0x030A1001
   int
 
-0x030A1002
+0x030A1002 [TM2020.v3]
   version
   Key[] Keys (list)
   int
   int
   v2+
-    bool
+    bool UseSmoothInterpolation = true // Applies 3*t*t - 2*t*t*t.
+
+0x001 (base: 0x030A1001)
+
+0x002 (base: 0x030A1002) [TM2020.v3]
 
 archive Key (inherits: IKey)
   timefloat Time
-  byte
-  iso4
-  float
-  float
-  float
+  byte ArchiveMarker // GmCamVal marker, written as zero and ignored on load.
+  iso4 Transform = Iso4.Identity
+  float Fov = 90 // Degrees.
+  float NearZ = -1
+  float FarZ = -1

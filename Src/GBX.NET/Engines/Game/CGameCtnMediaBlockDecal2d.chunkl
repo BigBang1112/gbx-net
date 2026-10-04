@@ -1,15 +1,15 @@
 CGameCtnMediaBlockDecal2d 0x031AA000
 - inherits: CGameCtnMediaBlock
 
-0x000
+0x000 [TM2020]
   timefloat Start
   timefloat End
   packdesc[] Images
   Decal[] Decals (list)
 
 archive Decal
-  iso4
+  iso4 Transform // Decal oriented-box transform.
   vec3 Scale
-  float
-  bool
-  int
+  float Opacity
+  bool FlipU // Mirrors the decal image along its U texture coordinate.
+  int ImageIndex

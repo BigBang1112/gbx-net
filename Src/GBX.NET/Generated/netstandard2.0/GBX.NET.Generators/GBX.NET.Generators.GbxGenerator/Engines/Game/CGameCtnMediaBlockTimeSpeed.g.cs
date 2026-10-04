@@ -56,9 +56,11 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x03085000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03085000 : Chunk<CGameCtnMediaBlockTimeSpeed>
     {
         public override uint Id => 0x03085000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -72,9 +74,11 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     }
 
     [Chunk(0x03129000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03129000 : Chunk<CGameCtnMediaBlockTimeSpeed>
     {
         public override uint Id => 0x03129000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

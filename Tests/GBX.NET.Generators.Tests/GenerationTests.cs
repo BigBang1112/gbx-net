@@ -1015,8 +1015,28 @@ public class GenerationTests
     public async Task ReusesNamedArchivesFromAnotherLayout()
     {
         const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class Chunk03043002 { }
+                }
+            }
             namespace GBX.NET.Serialization
             {
+                public partial class GbxReader
+                {
+                    public T ReadReadable<T>(int version = 0) where T : IReadable, new() => new();
+                    public T[] ReadArrayReadable<T>(int version = 0) where T : IReadable, new() => [];
+                    public System.Collections.Generic.List<T> ReadListReadable<T>(int version = 0) where T : IReadable, new() => [];
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable { }
+                    public void WriteArrayWritable<T>(T[]? value, int version = 0) where T : IWritable { }
+                    public void WriteListWritable<T>(System.Collections.Generic.List<T>? value, int version = 0) where T : IWritable { }
+                }
                 public partial class GbxReaderWriter
                 {
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
@@ -1037,11 +1057,16 @@ public class GenerationTests
                 Example 0x03043000
                 0x001
                   version
-                  Spawn Data (archive: Shared)
-                  Spawn[] Entries (archive: Shared)
-                  Spawn[] ListEntries (list, archive: Shared)
+                  Shared.Spawn Data
+                  Shared.Spawn[] Entries
+                  Shared.Spawn[] ListEntries (list)
+                0x002
+                  version
+                  Shared.Spawn Data
+                  Shared.Spawn[] Entries
+                  Shared.Spawn[] ListEntries (list)
                 archive Container
-                  Spawn[][] Entries (archive: Shared)
+                  Shared.Spawn[][] Entries
                 """)
         ]);
 
@@ -1054,19 +1079,31 @@ public class GenerationTests
         await Assert.That(generated).Contains("rw.ArrayReadableWritable<Shared.Spawn>(ref n.entries!, version: Version)");
         await Assert.That(generated).Contains("rw.ListReadableWritable<Shared.Spawn>(ref n.listEntries!, version: Version)");
         await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Shared.Spawn>(ref this.entries!, version: v)");
+        await Assert.That(generated).Contains("n.data = r.ReadReadable<Shared.Spawn>(version: Version)");
+        await Assert.That(generated).Contains("n.entries = r.ReadArrayReadable<Shared.Spawn>(version: Version)");
+        await Assert.That(generated).Contains("n.listEntries = r.ReadListReadable<Shared.Spawn>(version: Version)");
+        await Assert.That(generated).Contains("w.WriteWritable<Shared.Spawn>(n.data, version: Version)");
+        await Assert.That(generated).Contains("w.WriteArrayWritable<Shared.Spawn>(n.entries, version: Version)");
+        await Assert.That(generated).Contains("w.WriteListWritable<Shared.Spawn>(n.listEntries, version: Version)");
     }
 
     [Test]
-    public async Task ReportsUnknownSharedArchive()
+    [Arguments("Missing.Spawn")]
+    [Arguments("Shared.Missing")]
+    public async Task ReportsUnknownSharedArchive(string typeName)
     {
-        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+        var (result, _) = Run("", new Text("Engines/Game/Shared.chunkl", """
+            Shared 0x0310D000
+            archive Spawn
+              int Value
+            """), new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
             0x001
-              Spawn[] Entries (archive: Missing)
+              {{typeName}}[] Entries
             """));
 
         await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" &&
-            x.GetMessage().Contains("Unknown archive: Missing.Spawn"));
+            x.GetMessage().Contains("Unknown archive: " + typeName));
     }
 
     [Test]

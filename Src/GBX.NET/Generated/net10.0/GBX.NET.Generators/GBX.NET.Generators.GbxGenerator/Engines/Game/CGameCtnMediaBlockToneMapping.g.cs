@@ -70,7 +70,7 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
 
         public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
         {
-            rw.ListReadableWritable<Key>(ref n.keys!);
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 0);
         }
     }
 
@@ -83,6 +83,11 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 1);
+        }
     }
 
     [Chunk(0x03127002)]
@@ -93,6 +98,11 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 2);
         }
     }
 
@@ -105,16 +115,28 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 3);
+        }
     }
 
     [Chunk(0x03127004)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03127004 : Chunk03127000
     {
         public override uint Id => 0x03127004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 4);
         }
     }
 
@@ -127,11 +149,25 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
             set => this.time = value;
         }
 
-        private float exposure;
-        public float Exposure
+        private bool u02;
+        public bool U02
         {
-            get => this.exposure;
-            set => this.exposure = value;
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float exposureBias;
+        public float ExposureBias
+        {
+            get => this.exposureBias;
+            set => this.exposureBias = value;
+        }
+
+        private float u03;
+        public float U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
         }
 
         private float maxHDR;
@@ -141,18 +177,25 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
             set => this.maxHDR = value;
         }
 
-        private float lightTrailScale;
+        private float u04;
+        public float U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private float lightTrailScale = 8;
         public float LightTrailScale
         {
             get => this.lightTrailScale;
             set => this.lightTrailScale = value;
         }
 
-        private int u01;
-        public int U01
+        private EFilmCurve filmCurve;
+        public EFilmCurve FilmCurve
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.filmCurve;
+            set => this.filmCurve = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -166,19 +209,50 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).exposure = context.Clone(this.exposure)!;
+            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).exposureBias = context.Clone(this.exposureBias)!;
+            ((Key)clone).u03 = context.Clone(this.u03)!;
             ((Key)clone).maxHDR = context.Clone(this.maxHDR)!;
+            ((Key)clone).u04 = context.Clone(this.u04)!;
             ((Key)clone).lightTrailScale = context.Clone(this.lightTrailScale)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).filmCurve = context.Clone(this.filmCurve)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Single(ref this.exposure);
-            rw.Single(ref this.maxHDR);
-            rw.Single(ref this.lightTrailScale);
-            rw.Int32(ref this.u01);
+
+            if (v == 3)
+            {
+                rw.Boolean(ref this.u02);
+            }
+
+            rw.Single(ref this.exposureBias);
+
+            if (v <= 3)
+            {
+                rw.Single(ref this.u03);
+            }
+
+            if (v >= 1)
+            {
+                rw.Single(ref this.maxHDR);
+            }
+
+            if (v== 2 || v== 3)
+            {
+                rw.Single(ref this.u04);
+            }
+
+            if (v >= 4)
+            {
+                rw.Single(ref this.lightTrailScale);
+            }
+
+            if (v >= 3)
+            {
+                rw.EnumInt32<EFilmCurve>(ref this.filmCurve);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -192,6 +266,15 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EFilmCurve
+    {
+        Disable,
+        Preset1,
+        Preset2,
+        Preset3,
+        Preset4,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

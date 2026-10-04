@@ -1,6 +1,12 @@
 CGameCtnMediaBlockSound 0x030A7000
 - inherits: CGameCtnMediaBlock
 
+0x000
+  timefloat Start
+  timefloat End
+  int U01
+  Key[] Keys (version: 0, list)
+
 0x001
   packdesc Sound
   Key[] Keys (list)
@@ -9,7 +15,7 @@ CGameCtnMediaBlockSound 0x030A7000
   int PlayCount
   bool IsLooping
 
-0x003
+0x003 [TM2020.v2]
   version
   int PlayCount
   bool IsLooping
@@ -20,7 +26,7 @@ CGameCtnMediaBlockSound 0x030A7000
       bool AudioToSpeech
       int AudioToSpeechTarget
 
-0x004
+0x004 [TM2020.v1]
   packdesc Sound
   version
   Key[] Keys (list)

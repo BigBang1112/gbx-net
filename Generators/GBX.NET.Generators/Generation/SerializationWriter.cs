@@ -395,7 +395,7 @@ internal sealed class SerializationWriter
 
         if (field.Type.ArrayDimensions == 2 && !LayoutModel.Has(field.Attributes, "list"))
         {
-            var jaggedName = WireTypes.QualifiedName(field.Type, field.Attributes);
+            var jaggedName = field.Type.Name;
 
             if (LayoutModel.Has(field.Attributes, "deprec"))
             {
@@ -431,7 +431,7 @@ internal sealed class SerializationWriter
         var collection = field.Type.ArrayDimensions > 0;
         var list = LayoutModel.Has(field.Attributes, "list");
         var deprec = LayoutModel.Has(field.Attributes, "deprec") ? "_deprec" : "";
-        var name = WireTypes.QualifiedName(field.Type, field.Attributes);
+        var name = field.Type.Name;
         var generic = "";
         string method;
 
@@ -492,11 +492,14 @@ internal sealed class SerializationWriter
     private bool IsArchive(FieldDeclaration field)
     {
         var name = field.Type.Name;
-        if (LayoutModel.Attribute(field.Attributes, "archive") is string ownerName)
+        var separator = name.IndexOf('.');
+        if (separator >= 0)
         {
-            if (!layouts.TryGetValue(ownerName, out var owner) || !owner.Archives.ContainsKey(name))
+            var ownerName = name.Substring(0, separator);
+            var archiveName = name.Substring(separator + 1);
+            if (!layouts.TryGetValue(ownerName, out var owner) || !owner.Archives.ContainsKey(archiveName))
             {
-                throw new InvalidOperationException("Unknown archive: " + ownerName + "." + name);
+                throw new InvalidOperationException("Unknown archive: " + name);
             }
 
             return true;

@@ -10,6 +10,15 @@ CGameCtnMediaBlockCameraGame 0x03084000
   base
   int ClipEntId
 
+0x002
+  timefloat Start
+  timefloat End
+  id GameCamId
+  id AnchorId // Legacy anchor identifier, used only to decide whether ClipEntId is present.
+  if AnchorId is null or ""
+    return
+  int ClipEntId
+
 0x003
   timefloat Start
   timefloat End
@@ -21,20 +30,20 @@ CGameCtnMediaBlockCameraGame 0x03084000
   vec3 CamPosition
   vec3 CamPitchYawRoll
   float CamFov = 90
-  float U01 // always 10
-  float U02 // depth? 0 or 0.02
+  float FocusZ = 10
+  float LensSize
   float CamNearClipPlane = -1
   float CamFarClipPlane = -1
 
 0x005 (base: 0x004)
   base
-  bool U03
+  bool ShowHUD = true
 
 0x006 (base: 0x005)
   base
-  bool U04
+  bool ShowPing = true
 
-0x007
+0x007 [TM2020.v4]
   version
   timefloat Start
   timefloat End
@@ -46,17 +55,17 @@ CGameCtnMediaBlockCameraGame 0x03084000
   vec3 CamPosition
   vec3 CamPitchYawRoll
   float CamFov = 90
-  float U01 // always 10
-  float U02 // depth? 0 or 0.02
+  float FocusZ = 10
+  float LensSize
   float CamNearClipPlane = -1
   float CamFarClipPlane = -1
-  bool
-  bool
-  bool
+  bool ShowHUD = true
+  bool ShowPing = true
+  bool ShowCrossHair = true
   v1+
-    float
+    float CrossHairSizeScale = 1
     v3+
-      int
+      int LegacySceneUId // Discarded scene UID, written as 0x0FF00000.
 
 enum EGameCamOld
   Behind

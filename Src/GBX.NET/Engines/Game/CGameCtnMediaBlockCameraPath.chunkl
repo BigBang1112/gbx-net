@@ -10,7 +10,7 @@ CGameCtnMediaBlockCameraPath 0x030A1000
 0x002
   Key[] Keys (version: 2, list)
 
-0x003
+0x003 [TM2020.v5]
   version
   Key[] Keys (list)
 
@@ -22,12 +22,21 @@ archive Key (inherits: IKey)
   v3+
     float NearZ
   bool AnchorRot
-  int Anchor
+  if v == 1
+    id AnchorId
+  else
+    int Anchor
   bool AnchorVis
-  int Target
+  if v == 1
+    id TargetId
+  else
+    int Target
   vec3 TargetPosition
   float Weight
-  quat // some rotation (yaw + pitch + roll + squad)
-  v4+
-    int // 5 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId
-    int // 1699124 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId
+  quat Rotation // Orientation quaternion used for squad interpolation.
+  v4=
+    int LegacyTargetSceneUId // Converted to a clip entity ID on load.
+    int LegacyAnchorSceneUId // Converted to a clip entity ID on load.
+  v5=
+    int LegacyTargetSceneUId = -1 // Discarded legacy scene UID.
+    int LegacyAnchorSceneUId = -1 // Discarded legacy scene UID.

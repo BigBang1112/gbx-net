@@ -59,7 +59,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private List<Key>? keys;
-    [AppliedWithChunk<Chunk03161000>]
+    [AppliedWithChunk<Chunk03161000>(1)]
     public List<Key>? Keys
     {
         get => this.keys;
@@ -116,7 +116,10 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
                 rw.TimeSingleNullable(ref n.end);
             }
 
-            rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
+            if (Version >= 1)
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
+            }
         }
     }
 

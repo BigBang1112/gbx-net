@@ -33,6 +33,8 @@ The generated class exposes `Value`, `IsEnabled`, and `Version`, then emits read
 
 Use an unnamed `archive` for a class self-archive, and named `archive` declarations for reusable value layouts. Layouts can also declare enums, flags, properties, constructor defaults, fixed or variable arrays, nullable values, casts, version blocks, and control flow. See the language specification for their syntax and constraints.
 
+Reference a named archive from another class with its dotted type name, such as `CGameCtnMacroBlockInfo.BlockSpawn[] Blocks`. The generator uses the enclosing class layout to resolve the archive and its serialization.
+
 ## GBX.NET attributes
 
 ChunkL attributes describe how GBX.NET should generate a chunk:
@@ -47,6 +49,37 @@ ChunkL attributes describe how GBX.NET should generate a chunk:
 At the class level, `inherits: ParentClass` creates the C# inheritance relationship and makes inherited chunks available. Named archives can use `inherits: BaseArchive` and `contextual` when their serialization needs the enclosing class node.
 
 Version lists such as `[TM10.v3, TMF.v11, TM2020.v13]` are format research metadata. Keep them accurate when adding or changing a layout, but do not treat them as generated runtime conditions.
+
+## Game-version qualifiers
+
+Use game-version qualifiers to record the games that write a chunk. A game that only reads a legacy chunk should not be added to that chunk's version list. Keep qualifiers for earlier games that wrote it.
+
+Use the write bit (`0x02`) from [GetChunkInfo](ManiaPlanetGetChunkInfo.md#flags) to make this distinction. For a binary verified as ManiaPlanet 4, common results translate as follows:
+
+| `GetChunkInfo` result | ChunkL declaration | Game-version qualifier |
+| --- | --- | --- |
+| `1` (`0x01`) | Keep the legacy chunk's layout. | Do not add `MP4` merely because it can read the chunk. |
+| `3` (`0x03`) | `0x002 [MP4]` | Add `MP4` because the game writes the chunk. |
+| `7` (`0x07`) | `0x002 [MP4]` | Add `MP4`. Release exclusion does not exclude the game, since other archive modes can write it. |
+| `0x13` | `0x002 (skippable) [MP4]` | Add `MP4` and mark the chunk as skippable. |
+
+Replace the chunk offset and game label with the verified values, and preserve any existing qualifiers. The skippable bit (`0x10`) applies independently of the write bit. For example, `0x11` means a skippable legacy chunk that is readable but not written, so it needs `(skippable)` without adding the current game. Editor exclusion (`0x08`) also restricts the archive mode rather than the game-version list.
+
+If an earlier game writes a chunk and MP4 only reads it, keep the earlier game's qualifier:
+
+```chunkl
+0x002 [TMF] // MP4 can still read this legacy chunk.
+```
+
+If both games write the chunk, list both:
+
+```chunkl
+0x002 [TMF, MP4]
+```
+
+Add a `.vN` suffix only when the payload serializer or a Gbx sample establishes the highest observed chunk version for that game. For example, `[MP3.v3, MP4.v5]` records payload versions 3 and 5. **The `GetChunkInfo` mask is not the chunk version**, so a return value of `3` does not imply `[MP3.v3]`. When the payload version is unknown or the chunk is unversioned, use `[MP3]`.
+
+The qualifiers generate `ChunkGameVersion` metadata and the chunk's `GameVersion` flags. They do not control serialization by game or archive mode. Read the payload's version with `version` or `versionb` when needed, and document release or editor exclusions separately. If write support has not been verified, leave the game's qualifier unset rather than inferring it from a readable layout.
 
 ## References
 

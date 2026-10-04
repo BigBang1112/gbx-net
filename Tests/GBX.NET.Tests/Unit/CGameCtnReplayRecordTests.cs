@@ -97,7 +97,8 @@ public class CGameCtnReplayRecordTests
         var replay = await ReadChunk(payload, chunk);
         await Assert.That(replay.SceneryVortexKeys!.Count).IsEqualTo(2);
         await Assert.That(replay.SceneryVortexKeys[1].Time.TotalSeconds).IsEqualTo(4.25f);
-        await Assert.That(replay.SceneryVortexKeys[1].U03).IsEqualTo(7.25f);
+        await Assert.That(replay.SceneryVortexKeys[1].VortexRadius).IsEqualTo(5.25f);
+        await Assert.That(replay.SceneryVortexKeys[1].VortexCenterXZ).IsEqualTo(new Vec2(6.25f, 7.25f));
         await Assert.That(chunk.U01).IsEqualTo(10.5f);
         await Assert.That(replay.SceneryCapturableCount).IsEqualTo(hasTape ? 17 : 0);
     }

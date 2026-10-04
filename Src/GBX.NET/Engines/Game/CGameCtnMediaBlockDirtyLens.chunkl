@@ -1,7 +1,7 @@
 CGameCtnMediaBlockDirtyLens 0x03165000
 - inherits: CGameCtnMediaBlock
 
-0x000
+0x000 [TM2020]
   version
   Key[] Keys (list)
 

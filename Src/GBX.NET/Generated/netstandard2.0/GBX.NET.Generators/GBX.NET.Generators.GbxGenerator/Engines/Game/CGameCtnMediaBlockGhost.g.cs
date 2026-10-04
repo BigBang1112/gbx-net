@@ -35,6 +35,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     public static new uint Id => 0x030E5000;
 
     private TimeSingle start;
+    [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>(0, 2)]
     public TimeSingle Start
@@ -44,6 +45,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private TimeSingle end;
+    [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>(0, 2)]
     public TimeSingle End
@@ -53,6 +55,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private CGameCtnGhost? ghostModel;
+    [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>]
     public CGameCtnGhost? GhostModel
@@ -87,7 +90,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool forceLight;
-    [AppliedWithChunk<Chunk030E5002>]
+    [AppliedWithChunk<Chunk030E5002>(1)]
     public bool ForceLight
     {
         get => this.forceLight;
@@ -95,11 +98,19 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool forceHue;
-    [AppliedWithChunk<Chunk030E5002>]
+    [AppliedWithChunk<Chunk030E5002>(2)]
     public bool ForceHue
     {
         get => this.forceHue;
         set => this.forceHue = value;
+    }
+
+    private float trailIntensity;
+    [AppliedWithChunk<Chunk030E5002>(5)]
+    public float TrailIntensity
+    {
+        get => this.trailIntensity;
+        set => this.trailIntensity = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -113,6 +124,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         ((CGameCtnMediaBlockGhost)clone).noDamage = context.Clone(this.noDamage)!;
         ((CGameCtnMediaBlockGhost)clone).forceLight = context.Clone(this.forceLight)!;
         ((CGameCtnMediaBlockGhost)clone).forceHue = context.Clone(this.forceHue)!;
+        ((CGameCtnMediaBlockGhost)clone).trailIntensity = context.Clone(this.trailIntensity)!;
     }
 
     public CGameCtnMediaBlockGhost()
@@ -131,6 +143,24 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     {
         get => End;
         set => End = value;
+    }
+
+    [Chunk(0x030E5000)]
+    public partial class Chunk030E5000 : Chunk<CGameCtnMediaBlockGhost>
+    {
+        public override uint Id => 0x030E5000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockGhost n, GbxReaderWriter rw)
+        {
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
+            rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+        }
     }
 
     [Chunk(0x030E5001)]
@@ -153,9 +183,11 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030E5002)]
+    [ChunkGameVersion(GameVersion.TM2020, 5)]
     public partial class Chunk030E5002 : Chunk<CGameCtnMediaBlockGhost>, IVersionable
     {
         public override uint Id => 0x030E5002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -182,8 +214,21 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
             rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
             rw.Single(ref n.startOffset);
             rw.Boolean(ref n.noDamage);
-            rw.Boolean(ref n.forceLight);
-            rw.Boolean(ref n.forceHue);
+
+            if (Version >= 1)
+            {
+                rw.Boolean(ref n.forceLight);
+
+                if (Version >= 2)
+                {
+                    rw.Boolean(ref n.forceHue);
+                }
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.trailIntensity);
+            }
         }
     }
 
@@ -203,6 +248,13 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
             set => this.lightIntensity = value;
         }
 
+        private int lights;
+        public int Lights
+        {
+            get => this.lights;
+            set => this.lights = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Key)MemberwiseClone();
@@ -215,12 +267,22 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             ((Key)clone).time = context.Clone(this.time)!;
             ((Key)clone).lightIntensity = context.Clone(this.lightIntensity)!;
+            ((Key)clone).lights = context.Clone(this.lights)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Single(ref this.lightIntensity);
+
+            if (v <= 3)
+            {
+                rw.Single(ref this.lightIntensity);
+            }
+
+            if (v >= 4)
+            {
+                rw.Int32(ref this.lights);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -238,6 +300,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x030E5000 => new Chunk030E5000(),
         0x030E5001 => new Chunk030E5001(),
         0x030E5002 => new Chunk030E5002(),
         _ => base.NewChunk(chunkId),

@@ -72,9 +72,11 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
     }
 
     [Chunk(0x030A0001)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk030A0001 : Chunk<CGameCtnMediaBlockCameraOrbital>, IVersionable
     {
         public override uint Id => 0x030A0001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -99,11 +101,14 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
             set => this.time = value;
         }
 
-        private byte u01;
-        public byte U01
+        private byte archiveMarker;
+        /// <summary>
+        /// GmCamOrbitVal marker, written as zero and ignored on load.
+        /// </summary>
+        public byte ArchiveMarker
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.archiveMarker;
+            set => this.archiveMarker = value;
         }
 
         private float radius;
@@ -155,39 +160,31 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
             set => this.maxRenderDistance = value;
         }
 
-        private int u02;
-        public int U02
+        private int clipEntId;
+        /// <summary>
+        /// SGameClipEntityId.
+        /// </summary>
+        public int ClipEntId
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.clipEntId;
+            set => this.clipEntId = value;
         }
 
-        private int u03;
-        public int U03
+        private float u03;
+        public float U03
         {
             get => this.u03;
             set => this.u03 = value;
         }
 
-        private int u04;
-        public int U04
+        private Vec3 targetOffset;
+        /// <summary>
+        /// Offset added to the tracked entity's position.
+        /// </summary>
+        public Vec3 TargetOffset
         {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private int u05;
-        public int U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
-        }
-
-        private int u06;
-        public int U06
-        {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.targetOffset;
+            set => this.targetOffset = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -201,7 +198,7 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).archiveMarker = context.Clone(this.archiveMarker)!;
             ((Key)clone).radius = context.Clone(this.radius)!;
             ((Key)clone).longitude = context.Clone(this.longitude)!;
             ((Key)clone).latitude = context.Clone(this.latitude)!;
@@ -209,17 +206,15 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
             ((Key)clone).fov = context.Clone(this.fov)!;
             ((Key)clone).minRenderDistance = context.Clone(this.minRenderDistance)!;
             ((Key)clone).maxRenderDistance = context.Clone(this.maxRenderDistance)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
+            ((Key)clone).clipEntId = context.Clone(this.clipEntId)!;
             ((Key)clone).u03 = context.Clone(this.u03)!;
-            ((Key)clone).u04 = context.Clone(this.u04)!;
-            ((Key)clone).u05 = context.Clone(this.u05)!;
-            ((Key)clone).u06 = context.Clone(this.u06)!;
+            ((Key)clone).targetOffset = context.Clone(this.targetOffset)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Byte(ref this.u01);
+            rw.Byte(ref this.archiveMarker);
             rw.Single(ref this.radius);
             rw.Single(ref this.longitude);
             rw.Single(ref this.latitude);
@@ -230,15 +225,13 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
 
             if (v >= 0)
             {
-                rw.Int32(ref this.u02);
+                rw.Int32(ref this.clipEntId);
+            }
 
-                if (v >= 1)
-                {
-                    rw.Int32(ref this.u03);
-                    rw.Int32(ref this.u04);
-                    rw.Int32(ref this.u05);
-                    rw.Int32(ref this.u06);
-                }
+            if (v >= 1)
+            {
+                rw.Single(ref this.u03);
+                rw.Vec3(ref this.targetOffset);
             }
         }
 

@@ -42,10 +42,52 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
         set => this.keys = value;
     }
 
+    private float legacyRootTranslationX = 100;
+    /// <summary>
+    /// Root-transform composition in version 3. Discarded in version 4.
+    /// </summary>
+    [AppliedWithChunk<Chunk0314A000>(3, 4)]
+    public float LegacyRootTranslationX
+    {
+        get => this.legacyRootTranslationX;
+        set => this.legacyRootTranslationX = value;
+    }
+
+    private float legacyRootTranslationY = 1;
+    [AppliedWithChunk<Chunk0314A000>(3, 4)]
+    public float LegacyRootTranslationY
+    {
+        get => this.legacyRootTranslationY;
+        set => this.legacyRootTranslationY = value;
+    }
+
+    private float legacyRootTranslationZ = 100;
+    [AppliedWithChunk<Chunk0314A000>(3, 4)]
+    public float LegacyRootTranslationZ
+    {
+        get => this.legacyRootTranslationZ;
+        set => this.legacyRootTranslationZ = value;
+    }
+
+    private float legacyRootYaw = 1;
+    /// <summary>
+    /// Radians.
+    /// </summary>
+    [AppliedWithChunk<Chunk0314A000>(3, 4)]
+    public float LegacyRootYaw
+    {
+        get => this.legacyRootYaw;
+        set => this.legacyRootYaw = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockSkel)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockSkel)clone).legacyRootTranslationX = context.Clone(this.legacyRootTranslationX)!;
+        ((CGameCtnMediaBlockSkel)clone).legacyRootTranslationY = context.Clone(this.legacyRootTranslationY)!;
+        ((CGameCtnMediaBlockSkel)clone).legacyRootTranslationZ = context.Clone(this.legacyRootTranslationZ)!;
+        ((CGameCtnMediaBlockSkel)clone).legacyRootYaw = context.Clone(this.legacyRootYaw)!;
     }
 
     public CGameCtnMediaBlockSkel()
@@ -58,13 +100,9 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     public partial class Chunk0314A000 : Chunk<CGameCtnMediaBlockSkel>, IVersionable
     {
         public override uint Id => 0x0314A000;
-        public int Version { get; set; }
-        public int U01;
+        public int Version { get; set; } = 5;
+        public int U01 = 8;
         public int U02;
-        public float U03 = 100;
-        public float U04 = 1;
-        public float U05 = 100;
-        public float U06 = 1;
         public float U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -73,10 +111,6 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
             ((Chunk0314A000)clone).Version = context.Clone(this.Version)!;
             ((Chunk0314A000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0314A000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0314A000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0314A000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0314A000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0314A000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk0314A000)clone).U07 = context.Clone(this.U07)!;
         }
 
@@ -94,14 +128,14 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
                     rw.Int32(ref U02);
                 }
 
-                if (Version >= 3)
+                if (Version== 3 || Version== 4)
                 {
-                    rw.Single(ref U03);
-                    rw.Single(ref U04);
-                    rw.Single(ref U05);
-                    rw.Single(ref U06);
+                    rw.Single(ref n.legacyRootTranslationX);
+                    rw.Single(ref n.legacyRootTranslationY);
+                    rw.Single(ref n.legacyRootTranslationZ);
+                    rw.Single(ref n.legacyRootYaw);
 
-                    if (Version >= 4)
+                    if (Version == 4)
                     {
                         rw.Single(ref U07);
                     }
@@ -119,39 +153,31 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
             set => this.time = value;
         }
 
-        private float u01;
-        public float U01
+        private Vec3 rootTranslation;
+        public Vec3 RootTranslation
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.rootTranslation;
+            set => this.rootTranslation = value;
         }
 
-        private float u02;
-        public float U02
+        private float rootYaw;
+        /// <summary>
+        /// Radians.
+        /// </summary>
+        public float RootYaw
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.rootYaw;
+            set => this.rootYaw = value;
         }
 
-        private float u03;
-        public float U03
+        private TransQuat[]? jointTransforms;
+        /// <summary>
+        /// Joint-local transforms, converted to global transforms through CPlugSkel::LocalToGlobal.
+        /// </summary>
+        public TransQuat[]? JointTransforms
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private TransQuat[]? u05;
-        public TransQuat[]? U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.jointTransforms;
+            set => this.jointTransforms = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -165,11 +191,9 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
-            ((Key)clone).u04 = context.Clone(this.u04)!;
-            ((Key)clone).u05 = context.CloneArray(this.u05)!;
+            ((Key)clone).rootTranslation = context.Clone(this.rootTranslation)!;
+            ((Key)clone).rootYaw = context.Clone(this.rootYaw)!;
+            ((Key)clone).jointTransforms = context.CloneArray(this.jointTransforms)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -178,13 +202,11 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
 
             if (v >= 2)
             {
-                rw.Single(ref this.u01);
-                rw.Single(ref this.u02);
-                rw.Single(ref this.u03);
-                rw.Single(ref this.u04);
+                rw.Vec3(ref this.rootTranslation);
+                rw.Single(ref this.rootYaw);
             }
 
-            rw.Array<TransQuat>(ref this.u05!);
+            rw.Array<TransQuat>(ref this.jointTransforms!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

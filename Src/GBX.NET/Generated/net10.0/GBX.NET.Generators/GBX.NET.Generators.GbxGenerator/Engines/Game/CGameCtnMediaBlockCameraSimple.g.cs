@@ -37,16 +37,30 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030A1000>]
     [AppliedWithChunk<Chunk030A1002>]
+    [AppliedWithChunk<Chunk0309F002>]
     public List<Key>? Keys
     {
         get => this.keys;
         set => this.keys = value;
     }
 
+    private bool useSmoothInterpolation = true;
+    /// <summary>
+    /// Applies 3*t*t - 2*t*t*t.
+    /// </summary>
+    [AppliedWithChunk<Chunk030A1002>(2)]
+    [AppliedWithChunk<Chunk0309F002>(2)]
+    public bool UseSmoothInterpolation
+    {
+        get => this.useSmoothInterpolation;
+        set => this.useSmoothInterpolation = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockCameraSimple)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockCameraSimple)clone).useSmoothInterpolation = context.Clone(this.useSmoothInterpolation)!;
     }
 
     public CGameCtnMediaBlockCameraSimple()
@@ -54,6 +68,30 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     }
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
+
+    [Chunk(0x0309F001)]
+    public partial class Chunk0309F001 : Chunk030A1001
+    {
+        public override uint Id => 0x0309F001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    [Chunk(0x0309F002)]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
+    public partial class Chunk0309F002 : Chunk030A1002
+    {
+        public override uint Id => 0x0309F002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
 
     [Chunk(0x030A1000)]
     public partial class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraSimple>
@@ -90,13 +128,14 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     }
 
     [Chunk(0x030A1002)]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraSimple>, IVersionable
     {
         public override uint Id => 0x030A1002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;
-        public bool U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -104,7 +143,6 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
             ((Chunk030A1002)clone).Version = context.Clone(this.Version)!;
             ((Chunk030A1002)clone).U01 = context.Clone(this.U01)!;
             ((Chunk030A1002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk030A1002)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraSimple n, GbxReaderWriter rw)
@@ -116,7 +154,7 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
 
             if (Version >= 2)
             {
-                rw.Boolean(ref U03);
+                rw.Boolean(ref n.useSmoothInterpolation);
             }
         }
     }
@@ -130,39 +168,45 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
             set => this.time = value;
         }
 
-        private byte u01;
-        public byte U01
+        private byte archiveMarker;
+        /// <summary>
+        /// GmCamVal marker, written as zero and ignored on load.
+        /// </summary>
+        public byte ArchiveMarker
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.archiveMarker;
+            set => this.archiveMarker = value;
         }
 
-        private Iso4 u02;
-        public Iso4 U02
+        private Iso4 transform = Iso4.Identity;
+        public Iso4 Transform
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.transform;
+            set => this.transform = value;
         }
 
-        private float u03;
-        public float U03
+        private float fov = 90;
+        /// <summary>
+        /// Degrees.
+        /// </summary>
+        public float Fov
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.fov;
+            set => this.fov = value;
         }
 
-        private float u04;
-        public float U04
+        private float nearZ = -1;
+        public float NearZ
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.nearZ;
+            set => this.nearZ = value;
         }
 
-        private float u05;
-        public float U05
+        private float farZ = -1;
+        public float FarZ
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.farZ;
+            set => this.farZ = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -176,21 +220,21 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
-            ((Key)clone).u04 = context.Clone(this.u04)!;
-            ((Key)clone).u05 = context.Clone(this.u05)!;
+            ((Key)clone).archiveMarker = context.Clone(this.archiveMarker)!;
+            ((Key)clone).transform = context.Clone(this.transform)!;
+            ((Key)clone).fov = context.Clone(this.fov)!;
+            ((Key)clone).nearZ = context.Clone(this.nearZ)!;
+            ((Key)clone).farZ = context.Clone(this.farZ)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Byte(ref this.u01);
-            rw.Iso4(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
+            rw.Byte(ref this.archiveMarker);
+            rw.Iso4(ref this.transform);
+            rw.Single(ref this.fov);
+            rw.Single(ref this.nearZ);
+            rw.Single(ref this.farZ);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -208,6 +252,8 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0309F001 => new Chunk0309F001(),
+        0x0309F002 => new Chunk0309F002(),
         0x030A1000 => new Chunk030A1000(),
         0x030A1001 => new Chunk030A1001(),
         0x030A1002 => new Chunk030A1002(),

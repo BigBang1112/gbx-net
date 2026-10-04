@@ -92,9 +92,11 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     }
 
     [Chunk(0x031AA000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031AA000 : Chunk<CGameCtnMediaBlockDecal2d>
     {
         public override uint Id => 0x031AA000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -112,11 +114,14 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
 
     public partial class Decal : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Iso4 u01;
-        public Iso4 U01
+        private Iso4 transform;
+        /// <summary>
+        /// Decal oriented-box transform.
+        /// </summary>
+        public Iso4 Transform
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.transform;
+            set => this.transform = value;
         }
 
         private Vec3 scale;
@@ -126,25 +131,28 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
             set => this.scale = value;
         }
 
-        private float u02;
-        public float U02
+        private float opacity;
+        public float Opacity
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.opacity;
+            set => this.opacity = value;
         }
 
-        private bool u03;
-        public bool U03
+        private bool flipU;
+        /// <summary>
+        /// Mirrors the decal image along its U texture coordinate.
+        /// </summary>
+        public bool FlipU
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.flipU;
+            set => this.flipU = value;
         }
 
-        private int u04;
-        public int U04
+        private int imageIndex;
+        public int ImageIndex
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.imageIndex;
+            set => this.imageIndex = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -157,20 +165,20 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Decal)clone).u01 = context.Clone(this.u01)!;
+            ((Decal)clone).transform = context.Clone(this.transform)!;
             ((Decal)clone).scale = context.Clone(this.scale)!;
-            ((Decal)clone).u02 = context.Clone(this.u02)!;
-            ((Decal)clone).u03 = context.Clone(this.u03)!;
-            ((Decal)clone).u04 = context.Clone(this.u04)!;
+            ((Decal)clone).opacity = context.Clone(this.opacity)!;
+            ((Decal)clone).flipU = context.Clone(this.flipU)!;
+            ((Decal)clone).imageIndex = context.Clone(this.imageIndex)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Iso4(ref this.u01);
+            rw.Iso4(ref this.transform);
             rw.Vec3(ref this.scale);
-            rw.Single(ref this.u02);
-            rw.Boolean(ref this.u03);
-            rw.Int32(ref this.u04);
+            rw.Single(ref this.opacity);
+            rw.Boolean(ref this.flipU);
+            rw.Int32(ref this.imageIndex);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

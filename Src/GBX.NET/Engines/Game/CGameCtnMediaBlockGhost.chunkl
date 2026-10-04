@@ -1,13 +1,18 @@
 CGameCtnMediaBlockGhost 0x030E5000
 - inherits: CGameCtnMediaBlock
 
+0x000
+  timefloat Start
+  timefloat End
+  CGameCtnGhost GhostModel
+
 0x001
   timefloat Start
   timefloat End
   CGameCtnGhost GhostModel
   float StartOffset
 
-0x002
+0x002 [TM2020.v5]
   version
   v3+
     Key[] Keys (list)
@@ -17,9 +22,16 @@ CGameCtnMediaBlockGhost 0x030E5000
   CGameCtnGhost GhostModel
   float StartOffset
   bool NoDamage
-  bool ForceLight
-  bool ForceHue
+  v1+
+    bool ForceLight
+    v2+
+      bool ForceHue
+  v5+
+    float TrailIntensity
  
 archive Key (inherits: IKey)
   timefloat Time
-  float LightIntensity
+  v3-
+    float LightIntensity
+  v4+
+    int Lights

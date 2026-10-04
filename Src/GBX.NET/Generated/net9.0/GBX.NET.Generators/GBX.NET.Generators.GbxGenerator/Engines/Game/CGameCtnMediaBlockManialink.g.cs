@@ -35,6 +35,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     public static new uint Id => 0x0312A000;
 
     private TimeSingle start;
+    [AppliedWithChunk<Chunk0312A000>]
     [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle Start
     {
@@ -43,11 +44,20 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     }
 
     private TimeSingle end;
+    [AppliedWithChunk<Chunk0312A000>]
     [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle End
     {
         get => this.end;
         set => this.end = value;
+    }
+
+    private CPlugFileTextScript? script;
+    [AppliedWithChunk<Chunk0312A000>]
+    public CPlugFileTextScript? Script
+    {
+        get => this.script;
+        set => this.script = value;
     }
 
     private string? manialinkUrl;
@@ -63,6 +73,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockManialink)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockManialink)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockManialink)clone).script = context.Clone(this.script)!;
         ((CGameCtnMediaBlockManialink)clone).manialinkUrl = context.Clone(this.manialinkUrl)!;
     }
 
@@ -82,10 +93,30 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         set => End = value;
     }
 
+    [Chunk(0x0312A000)]
+    public partial class Chunk0312A000 : Chunk<CGameCtnMediaBlockManialink>
+    {
+        public override uint Id => 0x0312A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockManialink n, GbxReaderWriter rw)
+        {
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
+            rw.NodeRef<CPlugFileTextScript>(ref n.script);
+        }
+    }
+
     [Chunk(0x0312A001)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0312A001 : Chunk<CGameCtnMediaBlockManialink>, IVersionable
     {
         public override uint Id => 0x0312A001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -105,6 +136,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0312A000 => new Chunk0312A000(),
         0x0312A001 => new Chunk0312A001(),
         _ => base.NewChunk(chunkId),
     };

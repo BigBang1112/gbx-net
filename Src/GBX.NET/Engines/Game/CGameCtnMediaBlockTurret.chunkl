@@ -1,6 +1,6 @@
 CGameCtnMediaBlockTurret 0x03294000
 - inherits: CGameCtnMediaBlock
 
-0x000
+0x000 [TM2020]
   version
   CPlugDataTape DataTape

@@ -34,6 +34,14 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03172000;
 
+    private int keyArchiveVersion = 2;
+    [AppliedWithChunk<Chunk03172000>(2)]
+    public int KeyArchiveVersion
+    {
+        get => this.keyArchiveVersion;
+        set => this.keyArchiveVersion = value;
+    }
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03172000>]
     public List<Key>? Keys
@@ -53,6 +61,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockColoringBase)clone).keyArchiveVersion = context.Clone(this.keyArchiveVersion)!;
         ((CGameCtnMediaBlockColoringBase)clone).keys = context.CloneList(this.keys)!;
         ((CGameCtnMediaBlockColoringBase)clone).baseIndex = context.Clone(this.baseIndex)!;
     }
@@ -64,17 +73,17 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x03172000)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>, IVersionable
     {
         public override uint Id => 0x03172000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01 = 2;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03172000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03172000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GbxReaderWriter rw)
@@ -83,10 +92,17 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
 
             if (Version >= 2)
             {
-                rw.Int32(ref U01);
+                rw.Int32(ref n.keyArchiveVersion);
             }
 
-            rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
+            if (Version< 2)
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: - 1);
+            }
+            else
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: n.KeyArchiveVersion);
+            }
 
             if (Version >= 1)
             {
@@ -111,18 +127,21 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
             set => this.hue = value;
         }
 
-        private float intensity;
+        private float intensity = 1;
         public float Intensity
         {
             get => this.intensity;
             set => this.intensity = value;
         }
 
-        private short u01;
-        public short U01
+        private ushort emblem;
+        /// <summary>
+        /// Index of the base's subtexture in the team-emblem atlas.
+        /// </summary>
+        public ushort Emblem
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.emblem;
+            set => this.emblem = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -138,7 +157,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
             ((Key)clone).time = context.Clone(this.time)!;
             ((Key)clone).hue = context.Clone(this.hue)!;
             ((Key)clone).intensity = context.Clone(this.intensity)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
+            ((Key)clone).emblem = context.Clone(this.emblem)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -146,14 +165,14 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
             rw.TimeSingle(ref this.time);
             rw.Single(ref this.hue);
 
-            if (v >= 1)
+            if (v >= 0)
             {
                 rw.Single(ref this.intensity);
+            }
 
-                if (v >= 2)
-                {
-                    rw.Int16(ref this.u01);
-                }
+            if (v >= 2)
+            {
+                rw.UInt16(ref this.emblem);
             }
         }
 

@@ -69,7 +69,7 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
 
         public override void ReadWrite(CGameCtnMediaBlockFxColors n, GbxReaderWriter rw)
         {
-            rw.ListReadableWritable<Key>(ref n.keys!);
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 0);
         }
     }
 
@@ -82,6 +82,11 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnMediaBlockFxColors n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 1);
+        }
     }
 
     [Chunk(0x03080002)]
@@ -93,16 +98,28 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnMediaBlockFxColors n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 2);
+        }
     }
 
     [Chunk(0x03080003)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03080003 : Chunk03080000
     {
         public override uint Id => 0x03080003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockFxColors n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 3);
         }
     }
 
@@ -115,18 +132,21 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
             set => this.time = value;
         }
 
-        private float intensity;
+        private float intensity = 1;
         public float Intensity
         {
             get => this.intensity;
             set => this.intensity = value;
         }
 
-        private float blendZ;
-        public float BlendZ
+        private float farIntensity;
+        /// <summary>
+        /// CSceneFxColors::ZFarIntensity.
+        /// </summary>
+        public float FarIntensity
         {
-            get => this.blendZ;
-            set => this.blendZ = value;
+            get => this.farIntensity;
+            set => this.farIntensity = value;
         }
 
         private float distance;
@@ -187,39 +207,25 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
             set => this.contrast = value;
         }
 
-        private Vec3 rgb;
-        public Vec3 Rgb
+        private Vec3 modulateRgb;
+        public Vec3 ModulateRgb
         {
-            get => this.rgb;
-            set => this.rgb = value;
+            get => this.modulateRgb;
+            set => this.modulateRgb = value;
         }
 
-        private float u01;
-        public float U01
+        private Vec3 blendRgb;
+        public Vec3 BlendRgb
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.blendRgb;
+            set => this.blendRgb = value;
         }
 
-        private float u02;
-        public float U02
+        private float blendAlpha;
+        public float BlendAlpha
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private float u03;
-        public float U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.blendAlpha;
+            set => this.blendAlpha = value;
         }
 
         private float farInverse;
@@ -266,39 +272,25 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
             set => this.farContrast = value;
         }
 
-        private Vec3 farRgb;
-        public Vec3 FarRgb
+        private Vec3 farModulateRgb;
+        public Vec3 FarModulateRgb
         {
-            get => this.farRgb;
-            set => this.farRgb = value;
+            get => this.farModulateRgb;
+            set => this.farModulateRgb = value;
         }
 
-        private float farU01;
-        public float FarU01
+        private Vec3 farBlendRgb;
+        public Vec3 FarBlendRgb
         {
-            get => this.farU01;
-            set => this.farU01 = value;
+            get => this.farBlendRgb;
+            set => this.farBlendRgb = value;
         }
 
-        private float farU02;
-        public float FarU02
+        private float farBlendAlpha;
+        public float FarBlendAlpha
         {
-            get => this.farU02;
-            set => this.farU02 = value;
-        }
-
-        private float farU03;
-        public float FarU03
-        {
-            get => this.farU03;
-            set => this.farU03 = value;
-        }
-
-        private float farU04;
-        public float FarU04
-        {
-            get => this.farU04;
-            set => this.farU04 = value;
+            get => this.farBlendAlpha;
+            set => this.farBlendAlpha = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -313,7 +305,7 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         {
             ((Key)clone).time = context.Clone(this.time)!;
             ((Key)clone).intensity = context.Clone(this.intensity)!;
-            ((Key)clone).blendZ = context.Clone(this.blendZ)!;
+            ((Key)clone).farIntensity = context.Clone(this.farIntensity)!;
             ((Key)clone).distance = context.Clone(this.distance)!;
             ((Key)clone).farDistance = context.Clone(this.farDistance)!;
             ((Key)clone).inverse = context.Clone(this.inverse)!;
@@ -321,50 +313,59 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
             ((Key)clone).saturation = context.Clone(this.saturation)!;
             ((Key)clone).brightness = context.Clone(this.brightness)!;
             ((Key)clone).contrast = context.Clone(this.contrast)!;
-            ((Key)clone).rgb = context.Clone(this.rgb)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
-            ((Key)clone).u04 = context.Clone(this.u04)!;
+            ((Key)clone).modulateRgb = context.Clone(this.modulateRgb)!;
+            ((Key)clone).blendRgb = context.Clone(this.blendRgb)!;
+            ((Key)clone).blendAlpha = context.Clone(this.blendAlpha)!;
             ((Key)clone).farInverse = context.Clone(this.farInverse)!;
             ((Key)clone).farHue = context.Clone(this.farHue)!;
             ((Key)clone).farSaturation = context.Clone(this.farSaturation)!;
             ((Key)clone).farBrightness = context.Clone(this.farBrightness)!;
             ((Key)clone).farContrast = context.Clone(this.farContrast)!;
-            ((Key)clone).farRgb = context.Clone(this.farRgb)!;
-            ((Key)clone).farU01 = context.Clone(this.farU01)!;
-            ((Key)clone).farU02 = context.Clone(this.farU02)!;
-            ((Key)clone).farU03 = context.Clone(this.farU03)!;
-            ((Key)clone).farU04 = context.Clone(this.farU04)!;
+            ((Key)clone).farModulateRgb = context.Clone(this.farModulateRgb)!;
+            ((Key)clone).farBlendRgb = context.Clone(this.farBlendRgb)!;
+            ((Key)clone).farBlendAlpha = context.Clone(this.farBlendAlpha)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Single(ref this.intensity);
-            rw.Single(ref this.blendZ);
-            rw.Single(ref this.distance);
-            rw.Single(ref this.farDistance);
+
+            if (v >= 1)
+            {
+                rw.Single(ref this.intensity);
+            }
+
+            if (v >= 3)
+            {
+                rw.Single(ref this.farIntensity);
+                rw.Single(ref this.distance);
+                rw.Single(ref this.farDistance);
+            }
+
             rw.Single(ref this.inverse);
             rw.Single(ref this.hue);
             rw.Single(ref this.saturation);
             rw.Single(ref this.brightness);
             rw.Single(ref this.contrast);
-            rw.Vec3(ref this.rgb);
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.farInverse);
-            rw.Single(ref this.farHue);
-            rw.Single(ref this.farSaturation);
-            rw.Single(ref this.farBrightness);
-            rw.Single(ref this.farContrast);
-            rw.Vec3(ref this.farRgb);
-            rw.Single(ref this.farU01);
-            rw.Single(ref this.farU02);
-            rw.Single(ref this.farU03);
-            rw.Single(ref this.farU04);
+            rw.Vec3(ref this.modulateRgb);
+
+            if (v >= 2)
+            {
+                rw.Vec3(ref this.blendRgb);
+                rw.Single(ref this.blendAlpha);
+            }
+
+            if (v >= 3)
+            {
+                rw.Single(ref this.farInverse);
+                rw.Single(ref this.farHue);
+                rw.Single(ref this.farSaturation);
+                rw.Single(ref this.farBrightness);
+                rw.Single(ref this.farContrast);
+                rw.Vec3(ref this.farModulateRgb);
+                rw.Vec3(ref this.farBlendRgb);
+                rw.Single(ref this.farBlendAlpha);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

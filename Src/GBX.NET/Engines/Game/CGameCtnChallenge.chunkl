@@ -486,9 +486,9 @@ archive BlockOctreeNode
 
 archive MacroblockData
   version = 1
-  BlockSpawn[] Blocks (archive: CGameCtnMacroBlockInfo)
-  BlockSkinSpawn[] Skins (archive: CGameCtnMacroBlockInfo)
-  ObjectSpawn[] Items (archive: CGameCtnMacroBlockInfo)
+  CGameCtnMacroBlockInfo.BlockSpawn[] Blocks
+  CGameCtnMacroBlockInfo.BlockSkinSpawn[] Skins
+  CGameCtnMacroBlockInfo.ObjectSpawn[] Items
   v0= (archive)
     uint128[]
   MacroblockReferences References

@@ -1,7 +1,11 @@
 CGameCtnMediaBlockFxBlurDepth 0x03081000
 - inherits: CGameCtnMediaBlockFx
 
-0x001
+0x000
+  timefloat Start
+  timefloat End
+
+0x001 [TM2020]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

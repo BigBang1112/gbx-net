@@ -106,9 +106,11 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
     }
 
     [Chunk(0x030A1003)]
+    [ChunkGameVersion(GameVersion.TM2020, 5)]
     public partial class Chunk030A1003 : Chunk<CGameCtnMediaBlockCameraPath>, IVersionable
     {
         public override uint Id => 0x030A1003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -171,6 +173,13 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
             set => this.anchorRot = value;
         }
 
+        private string? anchorId;
+        public string? AnchorId
+        {
+            get => this.anchorId;
+            set => this.anchorId = value;
+        }
+
         private int anchor;
         public int Anchor
         {
@@ -183,6 +192,13 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
         {
             get => this.anchorVis;
             set => this.anchorVis = value;
+        }
+
+        private string? targetId;
+        public string? TargetId
+        {
+            get => this.targetId;
+            set => this.targetId = value;
         }
 
         private int target;
@@ -206,34 +222,34 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
             set => this.weight = value;
         }
 
-        private Quat u01;
+        private Quat rotation;
         /// <summary>
-        /// some rotation (yaw + pitch + roll + squad)
+        /// Orientation quaternion used for squad interpolation.
         /// </summary>
-        public Quat U01
+        public Quat Rotation
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.rotation;
+            set => this.rotation = value;
         }
 
-        private int u02;
+        private int legacyTargetSceneUId = -1;
         /// <summary>
-        /// 5 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId
+        /// Converted to a clip entity ID on load.
         /// </summary>
-        public int U02
+        public int LegacyTargetSceneUId
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.legacyTargetSceneUId;
+            set => this.legacyTargetSceneUId = value;
         }
 
-        private int u03;
+        private int legacyAnchorSceneUId = -1;
         /// <summary>
-        /// 1699124 or -1, on v4 related to NSceneEntityIdAllocator::GetClientIdFromSceneUId
+        /// Converted to a clip entity ID on load.
         /// </summary>
-        public int U03
+        public int LegacyAnchorSceneUId
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.legacyAnchorSceneUId;
+            set => this.legacyAnchorSceneUId = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -252,14 +268,16 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
             ((Key)clone).fov = context.Clone(this.fov)!;
             ((Key)clone).nearZ = context.Clone(this.nearZ)!;
             ((Key)clone).anchorRot = context.Clone(this.anchorRot)!;
+            ((Key)clone).anchorId = context.Clone(this.anchorId)!;
             ((Key)clone).anchor = context.Clone(this.anchor)!;
             ((Key)clone).anchorVis = context.Clone(this.anchorVis)!;
+            ((Key)clone).targetId = context.Clone(this.targetId)!;
             ((Key)clone).target = context.Clone(this.target)!;
             ((Key)clone).targetPosition = context.Clone(this.targetPosition)!;
             ((Key)clone).weight = context.Clone(this.weight)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).rotation = context.Clone(this.rotation)!;
+            ((Key)clone).legacyTargetSceneUId = context.Clone(this.legacyTargetSceneUId)!;
+            ((Key)clone).legacyAnchorSceneUId = context.Clone(this.legacyAnchorSceneUId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -275,17 +293,41 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
             }
 
             rw.Boolean(ref this.anchorRot);
-            rw.Int32(ref this.anchor);
+
+            if (v== 1)
+            {
+                rw.Id(ref this.anchorId);
+            }
+            else
+            {
+                rw.Int32(ref this.anchor);
+            }
+
             rw.Boolean(ref this.anchorVis);
-            rw.Int32(ref this.target);
+
+            if (v== 1)
+            {
+                rw.Id(ref this.targetId);
+            }
+            else
+            {
+                rw.Int32(ref this.target);
+            }
+
             rw.Vec3(ref this.targetPosition);
             rw.Single(ref this.weight);
-            rw.Quat(ref this.u01);
+            rw.Quat(ref this.rotation);
 
-            if (v >= 4)
+            if (v == 4)
             {
-                rw.Int32(ref this.u02);
-                rw.Int32(ref this.u03);
+                rw.Int32(ref this.legacyTargetSceneUId);
+                rw.Int32(ref this.legacyAnchorSceneUId);
+            }
+
+            if (v == 5)
+            {
+                rw.Int32(ref this.legacyTargetSceneUId);
+                rw.Int32(ref this.legacyAnchorSceneUId);
             }
         }
 

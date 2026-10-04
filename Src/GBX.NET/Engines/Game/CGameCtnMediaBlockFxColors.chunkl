@@ -2,37 +2,40 @@ CGameCtnMediaBlockFxColors 0x03080000
 - inherits: CGameCtnMediaBlockFx
 
 0x000
-  Key[] Keys (list)
+  Key[] Keys (version: 0, list)
 
 0x001 (base: 0x000)
+  Key[] Keys (version: 1, list)
 
 0x002 (base: 0x000)
+  Key[] Keys (version: 2, list)
 
-0x003 (base: 0x000)
+0x003 (base: 0x000) [TM2020]
+  Key[] Keys (version: 3, list)
 
 archive Key (inherits: IKey)
   timefloat Time
-  float Intensity
-  float BlendZ
-  float Distance
-  float FarDistance
+  v1+
+    float Intensity = 1
+  v3+
+    float FarIntensity // CSceneFxColors::ZFarIntensity.
+    float Distance
+    float FarDistance
   float Inverse
   float Hue
   float Saturation // from center
   float Brightness // from center
   float Contrast // from center
-  vec3 Rgb
-  float U01
-  float U02
-  float U03
-  float U04
-  float FarInverse
-  float FarHue
-  float FarSaturation // from center
-  float FarBrightness // from center
-  float FarContrast // from center
-  vec3 FarRgb
-  float FarU01
-  float FarU02
-  float FarU03
-  float FarU04
+  vec3 ModulateRgb
+  v2+
+    vec3 BlendRgb
+    float BlendAlpha
+  v3+
+    float FarInverse
+    float FarHue
+    float FarSaturation // from center
+    float FarBrightness // from center
+    float FarContrast // from center
+    vec3 FarModulateRgb
+    vec3 FarBlendRgb
+    float FarBlendAlpha

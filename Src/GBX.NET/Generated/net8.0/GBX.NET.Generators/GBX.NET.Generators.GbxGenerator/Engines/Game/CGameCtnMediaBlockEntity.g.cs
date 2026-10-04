@@ -85,6 +85,17 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.noDamage = value;
     }
 
+    private bool forceTrail;
+    /// <summary>
+    /// Legacy trail override, converted to intensity 0.6 by TM2020.
+    /// </summary>
+    [AppliedWithChunk<Chunk0329F000>(2)]
+    public bool ForceTrail
+    {
+        get => this.forceTrail;
+        set => this.forceTrail = value;
+    }
+
     private bool forceLight;
     [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceLight
@@ -101,12 +112,12 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.forceHue = value;
     }
 
-    private Vec3 lightTrailColor;
-    [AppliedWithChunk<Chunk0329F000>(2, 5)]
-    public Vec3 LightTrailColor
+    private int appearanceArchiveVersion = 1;
+    [AppliedWithChunk<Chunk0329F000>(11)]
+    public int AppearanceArchiveVersion
     {
-        get => this.lightTrailColor;
-        set => this.lightTrailColor = value;
+        get => this.appearanceArchiveVersion;
+        set => this.appearanceArchiveVersion = value;
     }
 
     private Ident playerModel = Ident.Empty;
@@ -117,10 +128,15 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.playerModel = value;
     }
 
+    private Vec3? appearanceColor;
+    [AppliedWithChunk<Chunk0329F000>(3)]
+    public Vec3? AppearanceColor
+    {
+        get => this.appearanceColor;
+        set => this.appearanceColor = value;
+    }
+
     private List<PackDesc>? skinNames;
-    /// <summary>
-    /// name assumed from getter
-    /// </summary>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public List<PackDesc>? SkinNames
     {
@@ -145,7 +161,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? skinOptions;
-    [AppliedWithChunk<Chunk0329F000>(11)]
+    [AppliedWithChunk<Chunk0329F000>(3)]
     [AppliedWithChunk<Chunk0329F002>]
     public string? SkinOptions
     {
@@ -161,12 +177,31 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.keys = value;
     }
 
+    private float legacyTrailIntensity = 1;
+    /// <summary>
+    /// Copied into each key on load.
+    /// </summary>
+    [AppliedWithChunk<Chunk0329F000>(5, 5)]
+    public float LegacyTrailIntensity
+    {
+        get => this.legacyTrailIntensity;
+        set => this.legacyTrailIntensity = value;
+    }
+
     private string? ghostName;
     [AppliedWithChunk<Chunk0329F000>(7)]
     public string? GhostName
     {
         get => this.ghostName;
         set => this.ghostName = value;
+    }
+
+    private TimeInt32? raceTime;
+    [AppliedWithChunk<Chunk0329F000>(8)]
+    public TimeInt32? RaceTime
+    {
+        get => this.raceTime;
+        set => this.raceTime = value;
     }
 
     private float timeScale = 1;
@@ -189,17 +224,22 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         ((CGameCtnMediaBlockEntity)clone).startOffset = context.Clone(this.startOffset)!;
         ((CGameCtnMediaBlockEntity)clone).noticeRecords = context.CloneArray(this.noticeRecords)!;
         ((CGameCtnMediaBlockEntity)clone).noDamage = context.Clone(this.noDamage)!;
+        ((CGameCtnMediaBlockEntity)clone).forceTrail = context.Clone(this.forceTrail)!;
         ((CGameCtnMediaBlockEntity)clone).forceLight = context.Clone(this.forceLight)!;
         ((CGameCtnMediaBlockEntity)clone).forceHue = context.Clone(this.forceHue)!;
-        ((CGameCtnMediaBlockEntity)clone).lightTrailColor = context.Clone(this.lightTrailColor)!;
+        ((CGameCtnMediaBlockEntity)clone).appearanceArchiveVersion = context.Clone(this.appearanceArchiveVersion)!;
         ((CGameCtnMediaBlockEntity)clone).playerModel = context.Clone(this.playerModel)!;
+        ((CGameCtnMediaBlockEntity)clone).appearanceColor = context.Clone(this.appearanceColor)!;
         ((CGameCtnMediaBlockEntity)clone).skinNames = context.CloneList(this.skinNames)!;
         ((CGameCtnMediaBlockEntity)clone).hasBadges = context.Clone(this.hasBadges)!;
         ((CGameCtnMediaBlockEntity)clone).badge = context.Clone(this.badge)!;
         ((CGameCtnMediaBlockEntity)clone).skinOptions = context.Clone(this.skinOptions)!;
         ((CGameCtnMediaBlockEntity)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockEntity)clone).legacyTrailIntensity = context.Clone(this.legacyTrailIntensity)!;
         ((CGameCtnMediaBlockEntity)clone).ghostName = context.Clone(this.ghostName)!;
+        ((CGameCtnMediaBlockEntity)clone).raceTime = context.Clone(this.raceTime)!;
         ((CGameCtnMediaBlockEntity)clone).timeScale = context.Clone(this.timeScale)!;
+        ((CGameCtnMediaBlockEntity)clone).LightTrailColor = context.Clone(this.LightTrailColor)!;
     }
 
     public CGameCtnMediaBlockEntity()
@@ -221,15 +261,12 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     [Chunk(0x0329F000)]
+    [ChunkGameVersion(GameVersion.TM2020, 11)]
     public partial class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
     {
         public override uint Id => 0x0329F000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
-        public int U02;
-        public Vec3? U03;
-        public float U04;
-        public int U05;
         public int U06;
         public int U07;
 
@@ -237,11 +274,6 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0329F000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0329F000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0329F000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0329F000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0329F000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0329F000)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0329F000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk0329F000)clone).U07 = context.Clone(this.U07)!;
         }
@@ -263,63 +295,63 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
             if (Version >= 2)
             {
                 rw.Boolean(ref n.noDamage);
-                rw.Boolean(ref U01);
+                rw.Boolean(ref n.forceTrail);
                 rw.Boolean(ref n.forceLight);
                 rw.Boolean(ref n.forceHue);
 
                 if (Version <= 5)
                 {
-                    rw.Vec3(ref n.lightTrailColor);
+                    n.LightTrailColor = rw.Vec3(n.LightTrailColor);
                 }
+            }
 
-                if (Version >= 3)
+            if (Version >= 3)
+            {
+                if (Version >= 11)
                 {
-                    if (Version >= 11)
-                    {
-                        rw.Int32(ref U02);
-                    }
-
-                    rw.Ident(ref n.playerModel);
-                    rw.Vec3(ref U03);
-                    rw.ListPackDesc(ref n.skinNames!);
-                    rw.Boolean(ref n.hasBadges);
-
-                    if (n.HasBadges)
-                    {
-                        rw.ReadableWritable<SBadge>(ref n.badge, version: 0);
-                    }
-
-                    if (Version >= 4)
-                    {
-                        if (Version >= 11)
-                        {
-                            rw.String(ref n.skinOptions);
-                        }
-
-                        rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
-
-                        if (Version == 5)
-                        {
-                            rw.Single(ref U04);
-                        }
-
-                        if (Version >= 7)
-                        {
-                            rw.String(ref n.ghostName);
-
-                            if (Version >= 8)
-                            {
-                                rw.Int32(ref U05);
-
-                                if (Version >= 11)
-                                {
-                                    rw.Int32(ref U06);
-                                    rw.Int32(ref U07);
-                                }
-                            }
-                        }
-                    }
+                    rw.Int32(ref n.appearanceArchiveVersion);
                 }
+
+                rw.Ident(ref n.playerModel);
+                rw.Vec3(ref n.appearanceColor);
+                rw.ListPackDesc(ref n.skinNames!);
+                rw.Boolean(ref n.hasBadges);
+
+                if (n.HasBadges)
+                {
+                    rw.ReadableWritable<SBadge>(ref n.badge, version: Version);
+                }
+
+                if (Version>= 11 && n.AppearanceArchiveVersion!= 0)
+                {
+                    rw.String(ref n.skinOptions);
+                }
+            }
+
+            if (Version >= 4)
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
+            }
+
+            if (Version == 5)
+            {
+                rw.Single(ref n.legacyTrailIntensity);
+            }
+
+            if (Version >= 7)
+            {
+                rw.String(ref n.ghostName);
+            }
+
+            if (Version >= 8)
+            {
+                rw.TimeInt32Nullable(ref n.raceTime);
+            }
+
+            if (Version >= 10)
+            {
+                rw.Int32(ref U06);
+                rw.Int32(ref U07);
             }
         }
     }
@@ -328,9 +360,11 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// SkinOptions
     /// </summary>
     [Chunk(0x0329F002, "SkinOptions")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0329F002 : Chunk<CGameCtnMediaBlockEntity>
     {
         public override uint Id => 0x0329F002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -344,9 +378,11 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     [Chunk(0x0329F003)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0329F003 : SkippableChunk<CGameCtnMediaBlockEntity>
     {
         public override uint Id => 0x0329F003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -362,13 +398,6 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     public partial class SBadge : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
         public int Version { get; set; }
-
-        private Vec3 color;
-        public Vec3 Color
-        {
-            get => this.color;
-            set => this.color = value;
-        }
 
         private int u01;
         public int U01
@@ -409,17 +438,17 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((SBadge)clone).Version = context.Clone(this.Version)!;
-            ((SBadge)clone).color = context.Clone(this.color)!;
             ((SBadge)clone).u01 = context.Clone(this.u01)!;
             ((SBadge)clone).u02 = context.Clone(this.u02)!;
             ((SBadge)clone).stickers = context.CloneList(this.stickers)!;
             ((SBadge)clone).layers = context.CloneList(this.layers)!;
+            ((SBadge)clone).Color = context.Clone(this.Color)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.Vec3(ref this.color);
+            this.Color = rw.Vec3(this.Color);
 
             if (Version == 0)
             {
@@ -446,18 +475,24 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
     public partial class SSticker : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? name;
+        /// <summary>
+        /// Sticker image directory under Stickers.
+        /// </summary>
+        public string? Name
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.name;
+            set => this.name = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? slot;
+        /// <summary>
+        /// Destination slot in the badge mesh.
+        /// </summary>
+        public string? Slot
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.slot;
+            set => this.slot = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -470,14 +505,14 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SSticker)clone).u01 = context.Clone(this.u01)!;
-            ((SSticker)clone).u02 = context.Clone(this.u02)!;
+            ((SSticker)clone).name = context.Clone(this.name)!;
+            ((SSticker)clone).slot = context.Clone(this.slot)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.String(ref this.u01);
-            rw.String(ref this.u02);
+            rw.String(ref this.name);
+            rw.String(ref this.slot);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -509,35 +544,14 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
             set => this.lights = value;
         }
 
-        private float? u01;
-        public float? U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
-
-        private int? u02;
-        public int? U02
-        {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private int? u03;
-        public int? U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float trailIntensity;
+        private float trailIntensity = 1;
         public float TrailIntensity
         {
             get => this.trailIntensity;
             set => this.trailIntensity = value;
         }
 
-        private float selfIllumIntensity;
+        private float selfIllumIntensity = 1;
         public float SelfIllumIntensity
         {
             get => this.selfIllumIntensity;
@@ -556,11 +570,9 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         {
             ((Key)clone).time = context.Clone(this.time)!;
             ((Key)clone).lights = context.Clone(this.lights)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
             ((Key)clone).trailIntensity = context.Clone(this.trailIntensity)!;
             ((Key)clone).selfIllumIntensity = context.Clone(this.selfIllumIntensity)!;
+            ((Key)clone).TrailColor = context.Clone(this.TrailColor)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -570,9 +582,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
             if (v >= 6)
             {
-                rw.Single(ref this.u01);
-                rw.Int32(ref this.u02);
-                rw.Int32(ref this.u03);
+                this.TrailColor = rw.Vec3(this.TrailColor);
                 rw.Single(ref this.trailIntensity);
 
                 if (v >= 9)

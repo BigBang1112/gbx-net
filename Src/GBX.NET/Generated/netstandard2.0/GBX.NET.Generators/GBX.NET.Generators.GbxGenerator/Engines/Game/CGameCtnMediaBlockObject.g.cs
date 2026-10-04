@@ -50,6 +50,14 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         set => this.end = value;
     }
 
+    private bool showObjects = true;
+    [AppliedWithChunk<Chunk03196000>]
+    public bool ShowObjects
+    {
+        get => this.showObjects;
+        set => this.showObjects = value;
+    }
+
     private AnchoredObjectInfo[]? anchoredObjectInfos;
     [AppliedWithChunk<Chunk03196000>(0, 0)]
     public AnchoredObjectInfo[]? AnchoredObjectInfos
@@ -71,6 +79,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockObject)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockObject)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockObject)clone).showObjects = context.Clone(this.showObjects)!;
         ((CGameCtnMediaBlockObject)clone).anchoredObjectInfos = context.CloneArray(this.anchoredObjectInfos)!;
         ((CGameCtnMediaBlockObject)clone).visData = context.Clone(this.visData)!;
     }
@@ -92,9 +101,11 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     [Chunk(0x03196000)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk03196000 : Chunk<CGameCtnMediaBlockObject>, IVersionable
     {
         public override uint Id => 0x03196000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -108,6 +119,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
             rw.VersionInt32(this);
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
+            rw.Boolean(ref n.showObjects);
 
             if (Version == 0)
             {

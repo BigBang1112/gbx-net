@@ -29,7 +29,7 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.TrackMania;
 
 [Class(0x24092000)]
-public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi, IClass
+public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiSimpleEvtsDisplay, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x24092000;
@@ -93,10 +93,12 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi,
     public partial class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092000;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk24092000)clone).U01 = context.Clone(this.U01)!;
         }
     }
 
@@ -124,10 +126,12 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi,
     public partial class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092002;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk24092002)clone).U01 = context.Clone(this.U01)!;
         }
     }
 

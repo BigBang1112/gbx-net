@@ -55,9 +55,11 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x03199000)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>, IVersionable
     {
         public override uint Id => 0x03199000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -42,6 +42,17 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         set => this.keys = value;
     }
 
+    private int capturableCount;
+    /// <summary>
+    /// Passed to ImportCapturables(DataTape, CapturableCount).
+    /// </summary>
+    [AppliedWithChunk<Chunk03188001>]
+    public int CapturableCount
+    {
+        get => this.capturableCount;
+        set => this.capturableCount = value;
+    }
+
     private CPlugDataTape? dataTape;
     [AppliedWithChunk<Chunk03188001>]
     public CPlugDataTape? DataTape
@@ -54,6 +65,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockScenery)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockScenery)clone).capturableCount = context.Clone(this.capturableCount)!;
         ((CGameCtnMediaBlockScenery)clone).dataTape = context.Clone(this.dataTape)!;
     }
 
@@ -64,9 +76,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x03188000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03188000 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -83,23 +97,23 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     }
 
     [Chunk(0x03188001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03188001 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03188001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03188001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.capturableCount);
             rw.NodeRef<CPlugDataTape>(ref n.dataTape);
         }
     }
@@ -113,25 +127,21 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
             set => this.time = value;
         }
 
-        private float u01;
-        public float U01
+        private float vortexRadius = -1;
+        public float VortexRadius
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.vortexRadius;
+            set => this.vortexRadius = value;
         }
 
-        private float u02;
-        public float U02
+        private Vec2 vortexCenterXZ;
+        /// <summary>
+        /// World X/Z coordinates, stored in the vector's X/Y components.
+        /// </summary>
+        public Vec2 VortexCenterXZ
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private float u03;
-        public float U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.vortexCenterXZ;
+            set => this.vortexCenterXZ = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -145,17 +155,15 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
+            ((Key)clone).vortexRadius = context.Clone(this.vortexRadius)!;
+            ((Key)clone).vortexCenterXZ = context.Clone(this.vortexCenterXZ)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
+            rw.Single(ref this.vortexRadius);
+            rw.Vec2(ref this.vortexCenterXZ);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -1,5 +1,5 @@
 CCtnMediaBlockEventTrackMania 0x2407F000
-- inherits: CGameCtnMediaBlock
+- inherits: CGameCtnMediaBlockEvent
 
 0x000
   timefloat Start
@@ -7,11 +7,29 @@ CCtnMediaBlockEventTrackMania 0x2407F000
   bool
   Stunt[] Stunts
 
+0x001
+  timefloat Start
+  timefloat End
+  bool U01
+  Event[] Events (version: 0)
+
+0x002
+  timefloat Start
+  timefloat End
+  bool U01
+  Event[] Events (version: 1)
+
 0x003
   timefloat Start
   timefloat End
   bool
-  Event[] Events
+  Event[] Events (version: 2)
+
+0x004
+  timefloat Start
+  timefloat End
+  bool U01
+  Event[] Events (version: 3)
 
 archive Stunt
   v0= // More of a hack
@@ -31,7 +49,7 @@ archive Checkpoint
   int U01
   if U01 != 0
     return
-  timefloat Time
+  timeint RaceTime
   int U02
   int U03
   int U04
@@ -40,20 +58,45 @@ archive EndOfLap
   int U01
   if U01 >= 2
     return
-  timefloat Time
+  timeint RaceTime
   int U02
   int U03
-  v1=
+  if U01 == 1
     int U04
 
 archive EndOfRace
   int U01
   if U01 != 0
     return
-  timefloat Time
+  timeint RaceTime
   int U02
 
 archive Event (inherits: IKey)
+  timefloat Time
+  versionb
+  if Version == 0
+    int<EventType> Type
+    byte? U02
+    string? U03
+    string? U04
+  else
+    if Version < 3
+      int? U01
+    else
+      byte? U02
+    int<EventType> Type
+  switch Type
+    case EventType.Stunt
+      Stunt Stunt (version: 1)
+    case EventType.Checkpoint
+      Checkpoint Checkpoint (version: 0)
+    case EventType.EndOfLap
+      if Version < 2
+        EndOfLap EndOfLap (version: 0)
+      else
+        EndOfLap EndOfLap (version: 1)
+    case EventType.EndOfRace
+      EndOfRace EndOfRace (version: 0)
 
 enum EventType
   Stunt

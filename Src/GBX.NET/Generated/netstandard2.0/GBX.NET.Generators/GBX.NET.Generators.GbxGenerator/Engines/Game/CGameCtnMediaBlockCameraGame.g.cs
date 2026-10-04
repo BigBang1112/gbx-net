@@ -37,6 +37,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     private TimeSingle start;
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
@@ -51,6 +52,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     private TimeSingle end;
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
@@ -73,6 +75,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
 
     private int clipEntId;
     [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
@@ -85,6 +88,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private string? gameCamId;
+    [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
@@ -94,6 +98,17 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     {
         get => this.gameCamId;
         set => this.gameCamId = value;
+    }
+
+    private string? anchorId;
+    /// <summary>
+    /// Legacy anchor identifier, used only to decide whether ClipEntId is present.
+    /// </summary>
+    [AppliedWithChunk<Chunk03084002>]
+    public string? AnchorId
+    {
+        get => this.anchorId;
+        set => this.anchorId = value;
     }
 
     private Vec3 camPosition;
@@ -129,6 +144,28 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         set => this.camFov = value;
     }
 
+    private float focusZ = 10;
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
+    public float FocusZ
+    {
+        get => this.focusZ;
+        set => this.focusZ = value;
+    }
+
+    private float lensSize;
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
+    public float LensSize
+    {
+        get => this.lensSize;
+        set => this.lensSize = value;
+    }
+
     private float camNearClipPlane = -1;
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
@@ -151,12 +188,58 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         set => this.camFarClipPlane = value;
     }
 
+    private bool showHUD = true;
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
+    public bool ShowHUD
+    {
+        get => this.showHUD;
+        set => this.showHUD = value;
+    }
+
+    private bool showPing = true;
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
+    public bool ShowPing
+    {
+        get => this.showPing;
+        set => this.showPing = value;
+    }
+
     private EGameCam gameCam;
     [AppliedWithChunk<Chunk03084007>(2)]
     public EGameCam GameCam
     {
         get => this.gameCam;
         set => this.gameCam = value;
+    }
+
+    private bool showCrossHair = true;
+    [AppliedWithChunk<Chunk03084007>]
+    public bool ShowCrossHair
+    {
+        get => this.showCrossHair;
+        set => this.showCrossHair = value;
+    }
+
+    private float crossHairSizeScale = 1;
+    [AppliedWithChunk<Chunk03084007>(1)]
+    public float CrossHairSizeScale
+    {
+        get => this.crossHairSizeScale;
+        set => this.crossHairSizeScale = value;
+    }
+
+    private int legacySceneUId;
+    /// <summary>
+    /// Discarded scene UID, written as 0x0FF00000.
+    /// </summary>
+    [AppliedWithChunk<Chunk03084007>(3)]
+    public int LegacySceneUId
+    {
+        get => this.legacySceneUId;
+        set => this.legacySceneUId = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -167,12 +250,20 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         ((CGameCtnMediaBlockCameraGame)clone).gameCamOld = context.Clone(this.gameCamOld)!;
         ((CGameCtnMediaBlockCameraGame)clone).clipEntId = context.Clone(this.clipEntId)!;
         ((CGameCtnMediaBlockCameraGame)clone).gameCamId = context.Clone(this.gameCamId)!;
+        ((CGameCtnMediaBlockCameraGame)clone).anchorId = context.Clone(this.anchorId)!;
         ((CGameCtnMediaBlockCameraGame)clone).camPosition = context.Clone(this.camPosition)!;
         ((CGameCtnMediaBlockCameraGame)clone).camPitchYawRoll = context.Clone(this.camPitchYawRoll)!;
         ((CGameCtnMediaBlockCameraGame)clone).camFov = context.Clone(this.camFov)!;
+        ((CGameCtnMediaBlockCameraGame)clone).focusZ = context.Clone(this.focusZ)!;
+        ((CGameCtnMediaBlockCameraGame)clone).lensSize = context.Clone(this.lensSize)!;
         ((CGameCtnMediaBlockCameraGame)clone).camNearClipPlane = context.Clone(this.camNearClipPlane)!;
         ((CGameCtnMediaBlockCameraGame)clone).camFarClipPlane = context.Clone(this.camFarClipPlane)!;
+        ((CGameCtnMediaBlockCameraGame)clone).showHUD = context.Clone(this.showHUD)!;
+        ((CGameCtnMediaBlockCameraGame)clone).showPing = context.Clone(this.showPing)!;
         ((CGameCtnMediaBlockCameraGame)clone).gameCam = context.Clone(this.gameCam)!;
+        ((CGameCtnMediaBlockCameraGame)clone).showCrossHair = context.Clone(this.showCrossHair)!;
+        ((CGameCtnMediaBlockCameraGame)clone).crossHairSizeScale = context.Clone(this.crossHairSizeScale)!;
+        ((CGameCtnMediaBlockCameraGame)clone).legacySceneUId = context.Clone(this.legacySceneUId)!;
     }
 
     public CGameCtnMediaBlockCameraGame()
@@ -226,6 +317,32 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    [Chunk(0x03084002)]
+    public partial class Chunk03084002 : Chunk<CGameCtnMediaBlockCameraGame>
+    {
+        public override uint Id => 0x03084002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
+        {
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
+            rw.Id(ref n.gameCamId);
+            rw.Id(ref n.anchorId);
+
+            if (n.AnchorId is null or "")
+            {
+                return;
+            }
+
+            rw.Int32(ref n.clipEntId);
+        }
+    }
+
     [Chunk(0x03084003)]
     public partial class Chunk03084003 : Chunk<CGameCtnMediaBlockCameraGame>
     {
@@ -249,14 +366,10 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     public partial class Chunk03084004 : Chunk03084003
     {
         public override uint Id => 0x03084004;
-        public float U01;
-        public float U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03084004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03084004)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
@@ -265,8 +378,8 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
             rw.Vec3(ref n.camPosition);
             rw.Vec3(ref n.camPitchYawRoll);
             rw.Single(ref n.camFov);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.focusZ);
+            rw.Single(ref n.lensSize);
             rw.Single(ref n.camNearClipPlane);
             rw.Single(ref n.camFarClipPlane);
         }
@@ -276,18 +389,16 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     public partial class Chunk03084005 : Chunk03084004
     {
         public override uint Id => 0x03084005;
-        public bool U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03084005)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.Boolean(ref U03);
+            rw.Boolean(ref n.showHUD);
         }
     }
 
@@ -295,45 +406,31 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     public partial class Chunk03084006 : Chunk03084005
     {
         public override uint Id => 0x03084006;
-        public bool U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03084006)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.Boolean(ref U04);
+            rw.Boolean(ref n.showPing);
         }
     }
 
     [Chunk(0x03084007)]
+    [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>, IVersionable
     {
         public override uint Id => 0x03084007;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public bool U03;
-        public bool U04;
-        public bool U05;
-        public float U06;
-        public int U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03084007)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03084007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03084007)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03084007)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03084007)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03084007)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03084007)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03084007)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GbxReaderWriter rw)
@@ -356,21 +453,21 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
             rw.Vec3(ref n.camPosition);
             rw.Vec3(ref n.camPitchYawRoll);
             rw.Single(ref n.camFov);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.focusZ);
+            rw.Single(ref n.lensSize);
             rw.Single(ref n.camNearClipPlane);
             rw.Single(ref n.camFarClipPlane);
-            rw.Boolean(ref U03);
-            rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
+            rw.Boolean(ref n.showHUD);
+            rw.Boolean(ref n.showPing);
+            rw.Boolean(ref n.showCrossHair);
 
             if (Version >= 1)
             {
-                rw.Single(ref U06);
+                rw.Single(ref n.crossHairSizeScale);
 
                 if (Version >= 3)
                 {
-                    rw.Int32(ref U07);
+                    rw.Int32(ref n.legacySceneUId);
                 }
             }
         }
@@ -399,6 +496,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     {
         0x03084000 => new Chunk03084000(),
         0x03084001 => new Chunk03084001(),
+        0x03084002 => new Chunk03084002(),
         0x03084003 => new Chunk03084003(),
         0x03084004 => new Chunk03084004(),
         0x03084005 => new Chunk03084005(),

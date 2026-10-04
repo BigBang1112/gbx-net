@@ -1,10 +1,20 @@
 CGameCtnMediaBlockTriangles 0x03029000
 - inherits: CGameCtnMediaBlock
 
-0x001
+0x000 // Key times, rectangular position matrix, colors and triangle indices are handled in C#.
 
-0x002 (skippable)
-  int
+0x001 (base: 0x000) [TM2020]
+  base
+  int<E3DPickMode> PickMode3D = E3DPickMode.Plane // Editor vertex picking mode.
+  vec3 PickPlaneNormal = (0, 0, 1)
+  vec3 PickPlanePosition // A point on the editor picking plane.
+
+0x002 (skippable) [TM2020]
+  int ClipEntId // SGameClipEntityId.
 
 archive Key (inherits: IKey)
   timefloat Time
+
+enum E3DPickMode
+  Ground
+  Plane

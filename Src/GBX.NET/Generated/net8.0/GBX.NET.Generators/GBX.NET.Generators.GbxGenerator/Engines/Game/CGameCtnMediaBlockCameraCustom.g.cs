@@ -38,8 +38,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     public static new uint Id => 0x030A2000;
 
     private List<Key>? keys;
+    [AppliedWithChunk<Chunk030A2000>]
     [AppliedWithChunk<Chunk030A2001>]
     [AppliedWithChunk<Chunk030A2002>]
+    [AppliedWithChunk<Chunk030A2003>]
+    [AppliedWithChunk<Chunk030A2004>]
     [AppliedWithChunk<Chunk030A2005>]
     [AppliedWithChunk<Chunk030A2006>]
     public List<Key>? Keys
@@ -59,6 +62,22 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     }
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
+
+    [Chunk(0x030A2000)]
+    public partial class Chunk030A2000 : Chunk<CGameCtnMediaBlockCameraCustom>
+    {
+        public override uint Id => 0x030A2000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 0);
+        }
+    }
 
     [Chunk(0x030A2001)]
     public partial class Chunk030A2001 : Chunk<CGameCtnMediaBlockCameraCustom>
@@ -92,6 +111,41 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
     }
 
+    [Chunk(0x030A2003)]
+    public partial class Chunk030A2003 : Chunk<CGameCtnMediaBlockCameraCustom>
+    {
+        public override uint Id => 0x030A2003;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A2003)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 3);
+            rw.Int32(ref U01);
+        }
+    }
+
+    [Chunk(0x030A2004)]
+    public partial class Chunk030A2004 : Chunk<CGameCtnMediaBlockCameraCustom>
+    {
+        public override uint Id => 0x030A2004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GbxReaderWriter rw)
+        {
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 4);
+        }
+    }
+
     /// <summary>
     /// TMUF
     /// </summary>
@@ -115,9 +169,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     /// ManiaPlanet
     /// </summary>
     [Chunk(0x030A2006, "ManiaPlanet")]
+    [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>, IVersionable
     {
         public override uint Id => 0x030A2006;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -194,9 +250,16 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             set => this.anchorRot = value;
         }
 
+        private string? anchorId;
+        public string? AnchorId
+        {
+            get => this.anchorId;
+            set => this.anchorId = value;
+        }
+
         private int anchor;
         /// <summary>
-        /// -1, entity number (SGameClipEntityId) or Id if 0x004
+        /// -1 or entity number (SGameClipEntityId).
         /// </summary>
         public int Anchor
         {
@@ -211,9 +274,16 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             set => this.anchorVis = value;
         }
 
+        private string? targetId;
+        public string? TargetId
+        {
+            get => this.targetId;
+            set => this.targetId = value;
+        }
+
         private int target;
         /// <summary>
-        /// -1, entity number (SGameClipEntityId) or Id if 0x004
+        /// -1 or entity number (SGameClipEntityId).
         /// </summary>
         public int Target
         {
@@ -229,9 +299,6 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
 
         private float? u03;
-        /// <summary>
-        /// 60
-        /// </summary>
         public float? U03
         {
             get => this.u03;
@@ -239,9 +306,6 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
 
         private float? u04;
-        /// <summary>
-        /// 30
-        /// </summary>
         public float? U04
         {
             get => this.u04;
@@ -283,25 +347,34 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             set => this.nearZ = value;
         }
 
-        private int? u07;
-        public int? U07
+        private float? pssmDistScale = 1;
+        /// <summary>
+        /// Shadow distance scale.
+        /// </summary>
+        public float? PssmDistScale
         {
-            get => this.u07;
-            set => this.u07 = value;
+            get => this.pssmDistScale;
+            set => this.pssmDistScale = value;
         }
 
-        private int? u08;
-        public int? U08
+        private int? legacyTargetSceneUId;
+        /// <summary>
+        /// Converted to a clip entity ID on load.
+        /// </summary>
+        public int? LegacyTargetSceneUId
         {
-            get => this.u08;
-            set => this.u08 = value;
+            get => this.legacyTargetSceneUId;
+            set => this.legacyTargetSceneUId = value;
         }
 
-        private int? u09;
-        public int? U09
+        private int? legacyAnchorSceneUId;
+        /// <summary>
+        /// Converted to a clip entity ID on load.
+        /// </summary>
+        public int? LegacyAnchorSceneUId
         {
-            get => this.u09;
-            set => this.u09 = value;
+            get => this.legacyAnchorSceneUId;
+            set => this.legacyAnchorSceneUId = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -322,8 +395,10 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             ((Key)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
             ((Key)clone).fov = context.Clone(this.fov)!;
             ((Key)clone).anchorRot = context.Clone(this.anchorRot)!;
+            ((Key)clone).anchorId = context.Clone(this.anchorId)!;
             ((Key)clone).anchor = context.Clone(this.anchor)!;
             ((Key)clone).anchorVis = context.Clone(this.anchorVis)!;
+            ((Key)clone).targetId = context.Clone(this.targetId)!;
             ((Key)clone).target = context.Clone(this.target)!;
             ((Key)clone).targetPosition = context.Clone(this.targetPosition)!;
             ((Key)clone).u03 = context.Clone(this.u03)!;
@@ -333,9 +408,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             ((Key)clone).u05 = context.Clone(this.u05)!;
             ((Key)clone).u06 = context.Clone(this.u06)!;
             ((Key)clone).nearZ = context.Clone(this.nearZ)!;
-            ((Key)clone).u07 = context.Clone(this.u07)!;
-            ((Key)clone).u08 = context.Clone(this.u08)!;
-            ((Key)clone).u09 = context.Clone(this.u09)!;
+            ((Key)clone).pssmDistScale = context.Clone(this.pssmDistScale)!;
+            ((Key)clone).legacyTargetSceneUId = context.Clone(this.legacyTargetSceneUId)!;
+            ((Key)clone).legacyAnchorSceneUId = context.Clone(this.legacyAnchorSceneUId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -353,9 +428,26 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             }
 
             rw.Boolean(ref this.anchorRot);
-            rw.Int32(ref this.anchor);
+
+            if (v== 4)
+            {
+                rw.Id(ref this.anchorId);
+            }
+            else
+            {
+                rw.Int32(ref this.anchor);
+            }
+
             rw.Boolean(ref this.anchorVis);
-            rw.Int32(ref this.target);
+
+            if (v== 4)
+            {
+                rw.Id(ref this.targetId);
+            }
+            else
+            {
+                rw.Int32(ref this.target);
+            }
 
             if (v <= 5)
             {
@@ -368,8 +460,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
                     return;
                 }
 
-                rw.ReadableWritable<InterpVal>(ref this.leftTangent, version: v);
-                rw.ReadableWritable<InterpVal>(ref this.rightTangent, version: v);
+                if (v >= 2)
+                {
+                    rw.ReadableWritable<InterpVal>(ref this.leftTangent, version: v);
+                    rw.ReadableWritable<InterpVal>(ref this.rightTangent, version: v);
+                }
 
                 if (v == 3)
                 {
@@ -390,18 +485,18 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
                     rw.Single(ref this.nearZ);
                 }
 
+                if (v >= 10)
+                {
+                    rw.Single(ref this.pssmDistScale);
+                }
+
                 rw.ReadableWritable<InterpVal>(ref this.leftTangent, version: v);
                 rw.ReadableWritable<InterpVal>(ref this.rightTangent, version: v);
 
                 if (v == 8)
                 {
-                    rw.Int32(ref this.u07);
-                    rw.Int32(ref this.u08);
-                }
-
-                if (v >= 10)
-                {
-                    rw.Int32(ref this.u09);
+                    rw.Int32(ref this.legacyTargetSceneUId);
+                    rw.Int32(ref this.legacyAnchorSceneUId);
                 }
             }
         }
@@ -435,13 +530,6 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             set => this.pitchYawRoll = value;
         }
 
-        private int? u01;
-        public int? U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
-
         private float? fov;
         public float? Fov
         {
@@ -463,6 +551,16 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             set => this.nearZ = value;
         }
 
+        private float? pssmDistScale = 1;
+        /// <summary>
+        /// Shadow distance scale tangent.
+        /// </summary>
+        public float? PssmDistScale
+        {
+            get => this.pssmDistScale;
+            set => this.pssmDistScale = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (InterpVal)MemberwiseClone();
@@ -475,10 +573,10 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         {
             ((InterpVal)clone).position = context.Clone(this.position)!;
             ((InterpVal)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
-            ((InterpVal)clone).u01 = context.Clone(this.u01)!;
             ((InterpVal)clone).fov = context.Clone(this.fov)!;
             ((InterpVal)clone).targetPosition = context.Clone(this.targetPosition)!;
             ((InterpVal)clone).nearZ = context.Clone(this.nearZ)!;
+            ((InterpVal)clone).pssmDistScale = context.Clone(this.pssmDistScale)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -491,18 +589,17 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
             }
 
             rw.Vec3(ref this.pitchYawRoll);
-
-            if (v >= 10)
-            {
-                rw.Int32(ref this.u01);
-            }
-
             rw.Single(ref this.fov);
             rw.Vec3(ref this.targetPosition);
 
             if (v >= 7)
             {
                 rw.Single(ref this.nearZ);
+            }
+
+            if (v >= 10)
+            {
+                rw.Single(ref this.pssmDistScale);
             }
         }
 
@@ -529,8 +626,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x030A2000 => new Chunk030A2000(),
         0x030A2001 => new Chunk030A2001(),
         0x030A2002 => new Chunk030A2002(),
+        0x030A2003 => new Chunk030A2003(),
+        0x030A2004 => new Chunk030A2004(),
         0x030A2005 => new Chunk030A2005(),
         0x030A2006 => new Chunk030A2006(),
         _ => base.NewChunk(chunkId),

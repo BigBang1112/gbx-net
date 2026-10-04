@@ -34,6 +34,14 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     [Hexadecimal]
     public static new uint Id => 0x0316C000;
 
+    private int keyArchiveVersion = 2;
+    [AppliedWithChunk<Chunk0316C000>(2)]
+    public int KeyArchiveVersion
+    {
+        get => this.keyArchiveVersion;
+        set => this.keyArchiveVersion = value;
+    }
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk0316C000>]
     public List<Key>? Keys
@@ -53,6 +61,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockColoringCapturable)clone).keyArchiveVersion = context.Clone(this.keyArchiveVersion)!;
         ((CGameCtnMediaBlockColoringCapturable)clone).keys = context.CloneList(this.keys)!;
         ((CGameCtnMediaBlockColoringCapturable)clone).capturableIndex = context.Clone(this.capturableIndex)!;
     }
@@ -64,24 +73,36 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x0316C000)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>, IVersionable
     {
         public override uint Id => 0x0316C000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0316C000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0316C000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
-            rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
+
+            if (Version >= 2)
+            {
+                rw.Int32(ref n.keyArchiveVersion);
+            }
+
+            if (Version< 2)
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: - 1);
+            }
+            else
+            {
+                rw.ListReadableWritable<Key>(ref n.keys!, version: n.KeyArchiveVersion);
+            }
 
             if (Version >= 1)
             {
@@ -99,13 +120,6 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
             set => this.time = value;
         }
 
-        private float hue;
-        public float Hue
-        {
-            get => this.hue;
-            set => this.hue = value;
-        }
-
         private float gauge;
         public float Gauge
         {
@@ -113,11 +127,35 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
             set => this.gauge = value;
         }
 
-        private int emblem;
-        public int Emblem
+        private float hue;
+        public float Hue
+        {
+            get => this.hue;
+            set => this.hue = value;
+        }
+
+        private ushort emblem;
+        public ushort Emblem
         {
             get => this.emblem;
             set => this.emblem = value;
+        }
+
+        private bool emblemBlink;
+        public bool EmblemBlink
+        {
+            get => this.emblemBlink;
+            set => this.emblemBlink = value;
+        }
+
+        private bool fullIntensity;
+        /// <summary>
+        /// False selects intensity 0.5; true selects intensity 1.
+        /// </summary>
+        public bool FullIntensity
+        {
+            get => this.fullIntensity;
+            set => this.fullIntensity = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -131,17 +169,34 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).hue = context.Clone(this.hue)!;
             ((Key)clone).gauge = context.Clone(this.gauge)!;
+            ((Key)clone).hue = context.Clone(this.hue)!;
             ((Key)clone).emblem = context.Clone(this.emblem)!;
+            ((Key)clone).emblemBlink = context.Clone(this.emblemBlink)!;
+            ((Key)clone).fullIntensity = context.Clone(this.fullIntensity)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.Single(ref this.hue);
-            rw.Single(ref this.gauge);
-            rw.Int32(ref this.emblem);
+
+            if (v< 0)
+            {
+                rw.Single(ref this.gauge);
+                rw.Single(ref this.hue);
+            }
+            else
+            {
+                rw.Single(ref this.hue);
+                rw.Single(ref this.gauge);
+                rw.UInt16(ref this.emblem);
+                rw.Boolean(ref this.emblemBlink, asByte: true);
+
+                if (v >= 1)
+                {
+                    rw.Boolean(ref this.fullIntensity, asByte: true);
+                }
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

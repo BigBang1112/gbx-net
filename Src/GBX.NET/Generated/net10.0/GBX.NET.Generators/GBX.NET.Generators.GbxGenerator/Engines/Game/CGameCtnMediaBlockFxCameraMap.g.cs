@@ -50,11 +50,71 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
         set => this.end = value;
     }
 
+    private byte archiveMarker;
+    /// <summary>
+    /// GmCamVal marker precedes the transform.
+    /// </summary>
+    [AppliedWithChunk<Chunk03139001>]
+    public byte ArchiveMarker
+    {
+        get => this.archiveMarker;
+        set => this.archiveMarker = value;
+    }
+
+    private Iso4 transform = Iso4.Identity;
+    [AppliedWithChunk<Chunk03139001>]
+    public Iso4 Transform
+    {
+        get => this.transform;
+        set => this.transform = value;
+    }
+
+    private float fov = 90;
+    /// <summary>
+    /// Degrees.
+    /// </summary>
+    [AppliedWithChunk<Chunk03139001>]
+    public float Fov
+    {
+        get => this.fov;
+        set => this.fov = value;
+    }
+
+    private float nearZ = -1;
+    [AppliedWithChunk<Chunk03139001>]
+    public float NearZ
+    {
+        get => this.nearZ;
+        set => this.nearZ = value;
+    }
+
+    private float farZ = -1;
+    [AppliedWithChunk<Chunk03139001>]
+    public float FarZ
+    {
+        get => this.farZ;
+        set => this.farZ = value;
+    }
+
+    private PackDesc? image;
+    [AppliedWithChunk<Chunk03139001>]
+    public PackDesc? Image
+    {
+        get => this.image;
+        set => this.image = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockFxCameraMap)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockFxCameraMap)clone).end = context.Clone(this.end)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).archiveMarker = context.Clone(this.archiveMarker)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).transform = context.Clone(this.transform)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).fov = context.Clone(this.fov)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).nearZ = context.Clone(this.nearZ)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).farZ = context.Clone(this.farZ)!;
+        ((CGameCtnMediaBlockFxCameraMap)clone).image = context.Clone(this.image)!;
     }
 
     public CGameCtnMediaBlockFxCameraMap()
@@ -74,9 +134,11 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     [Chunk(0x03139000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
     {
         public override uint Id => 0x03139000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -91,68 +153,25 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     [Chunk(0x03139001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03139001 : Chunk<CGameCtnMediaBlockFxCameraMap>
     {
         public override uint Id => 0x03139001;
-        public float U01;
-        public int U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public int U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public int U10;
-        public float U11;
-        public float U12;
-        public byte U13;
-        public int U14;
-        public int U15;
-        public int U16;
-        public PackDesc? U17;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03139001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03139001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03139001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03139001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03139001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03139001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03139001)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk03139001)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk03139001)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk03139001)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk03139001)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk03139001)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk03139001)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk03139001)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk03139001)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk03139001)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk03139001)clone).U17 = context.Clone(this.U17)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockFxCameraMap n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Int32(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Int32(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Byte(ref U13);
-            rw.Int32(ref U14);
-            rw.Int32(ref U15);
-            rw.Int32(ref U16);
-            rw.PackDesc(ref U17);
+            rw.Byte(ref n.archiveMarker);
+            rw.Iso4(ref n.transform);
+            rw.Single(ref n.fov);
+            rw.Single(ref n.nearZ);
+            rw.Single(ref n.farZ);
+            rw.PackDesc(ref n.image);
         }
     }
 

@@ -29,10 +29,36 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Game;
 
 [Class(0x030A7000)]
-public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
     [Hexadecimal]
     public static new uint Id => 0x030A7000;
+
+    private TimeSingle start;
+    [AppliedWithChunk<Chunk030A7000>]
+    public TimeSingle Start
+    {
+        get => this.start;
+        set => this.start = value;
+    }
+
+    private TimeSingle end;
+    [AppliedWithChunk<Chunk030A7000>]
+    public TimeSingle End
+    {
+        get => this.end;
+        set => this.end = value;
+    }
+
+    private List<Key>? keys;
+    [AppliedWithChunk<Chunk030A7000>]
+    [AppliedWithChunk<Chunk030A7001>]
+    [AppliedWithChunk<Chunk030A7004>]
+    public List<Key>? Keys
+    {
+        get => this.keys;
+        set => this.keys = value;
+    }
 
     private PackDesc? sound;
     [AppliedWithChunk<Chunk030A7001>]
@@ -41,15 +67,6 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     {
         get => this.sound;
         set => this.sound = value;
-    }
-
-    private List<Key>? keys;
-    [AppliedWithChunk<Chunk030A7001>]
-    [AppliedWithChunk<Chunk030A7004>]
-    public List<Key>? Keys
-    {
-        get => this.keys;
-        set => this.keys = value;
     }
 
     private int playCount;
@@ -105,8 +122,10 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaBlockSound)clone).sound = context.Clone(this.sound)!;
+        ((CGameCtnMediaBlockSound)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockSound)clone).end = context.Clone(this.end)!;
         ((CGameCtnMediaBlockSound)clone).keys = context.CloneList(this.keys)!;
+        ((CGameCtnMediaBlockSound)clone).sound = context.Clone(this.sound)!;
         ((CGameCtnMediaBlockSound)clone).playCount = context.Clone(this.playCount)!;
         ((CGameCtnMediaBlockSound)clone).isLooping = context.Clone(this.isLooping)!;
         ((CGameCtnMediaBlockSound)clone).isMusic = context.Clone(this.isMusic)!;
@@ -120,6 +139,39 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
+
+    TimeSingle CGameCtnMediaBlock.IHasTwoKeys.Start
+    {
+        get => Start;
+        set => Start = value;
+    }
+
+    TimeSingle CGameCtnMediaBlock.IHasTwoKeys.End
+    {
+        get => End;
+        set => End = value;
+    }
+
+    [Chunk(0x030A7000)]
+    public partial class Chunk030A7000 : Chunk<CGameCtnMediaBlockSound>
+    {
+        public override uint Id => 0x030A7000;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk030A7000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
+        {
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
+            rw.Int32(ref U01);
+            rw.ListReadableWritable<Key>(ref n.keys!, version: 0);
+        }
+    }
 
     [Chunk(0x030A7001)]
     public partial class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
@@ -156,9 +208,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030A7003)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         public override uint Id => 0x030A7003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -188,9 +242,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030A7004)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         public override uint Id => 0x030A7004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -280,6 +336,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x030A7000 => new Chunk030A7000(),
         0x030A7001 => new Chunk030A7001(),
         0x030A7002 => new Chunk030A7002(),
         0x030A7003 => new Chunk030A7003(),

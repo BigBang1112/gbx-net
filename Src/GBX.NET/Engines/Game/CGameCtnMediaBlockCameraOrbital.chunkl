@@ -4,13 +4,13 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
 0x000
   Key[] Keys (version: -1, list)
 
-0x001
+0x001 [TM2020.v1]
   version
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
   timefloat Time
-  byte
+  byte ArchiveMarker // GmCamOrbitVal marker, written as zero and ignored on load.
   float Radius
   float Longitude
   float Latitude
@@ -19,9 +19,7 @@ archive Key (inherits: IKey)
   float MinRenderDistance
   float MaxRenderDistance
   v0+
-    int
-    v1+
-      int
-      int
-      int
-      int
+    int ClipEntId // SGameClipEntityId.
+  v1+
+    float U03
+    vec3 TargetOffset // Offset added to the tracked entity's position.

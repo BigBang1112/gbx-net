@@ -34,9 +34,54 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03029000;
 
+    private E3DPickMode pickMode3D = E3DPickMode.Plane;
+    /// <summary>
+    /// Editor vertex picking mode.
+    /// </summary>
+    [AppliedWithChunk<Chunk03029001>]
+    public E3DPickMode PickMode3D
+    {
+        get => this.pickMode3D;
+        set => this.pickMode3D = value;
+    }
+
+    private Vec3 pickPlaneNormal = (0, 0, 1);
+    [AppliedWithChunk<Chunk03029001>]
+    public Vec3 PickPlaneNormal
+    {
+        get => this.pickPlaneNormal;
+        set => this.pickPlaneNormal = value;
+    }
+
+    private Vec3 pickPlanePosition;
+    /// <summary>
+    /// A point on the editor picking plane.
+    /// </summary>
+    [AppliedWithChunk<Chunk03029001>]
+    public Vec3 PickPlanePosition
+    {
+        get => this.pickPlanePosition;
+        set => this.pickPlanePosition = value;
+    }
+
+    private int clipEntId;
+    /// <summary>
+    /// SGameClipEntityId.
+    /// </summary>
+    [AppliedWithChunk<Chunk03029002>]
+    public int ClipEntId
+    {
+        get => this.clipEntId;
+        set => this.clipEntId = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockTriangles)clone).pickMode3D = context.Clone(this.pickMode3D)!;
+        ((CGameCtnMediaBlockTriangles)clone).pickPlaneNormal = context.Clone(this.pickPlaneNormal)!;
+        ((CGameCtnMediaBlockTriangles)clone).pickPlanePosition = context.Clone(this.pickPlanePosition)!;
+        ((CGameCtnMediaBlockTriangles)clone).clipEntId = context.Clone(this.clipEntId)!;
         ((CGameCtnMediaBlockTriangles)clone).vertices = context.CloneArray(this.vertices)!;
         ((CGameCtnMediaBlockTriangles)clone).triangles = context.CloneArray(this.triangles)!;
         ((CGameCtnMediaBlockTriangles)clone).Keys = context.CloneList(this.Keys)!;
@@ -46,38 +91,56 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     {
     }
 
-    [Chunk(0x03029001)]
-    public partial class Chunk03029001 : Chunk<CGameCtnMediaBlockTriangles>
+    /// <summary>
+    /// Key times, rectangular position matrix, colors and triangle indices are handled in C#.
+    /// </summary>
+    [Chunk(0x03029000, "Key times, rectangular position matrix, colors and triangle indices are handled in C#.")]
+    public partial class Chunk03029000 : Chunk<CGameCtnMediaBlockTriangles>
     {
-        public override uint Id => 0x03029001;
+        public override uint Id => 0x03029000;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03029001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03029001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03029001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03029001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03029001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03029001)clone).U06 = context.Clone(this.U06)!;
         }
     }
 
-    [Chunk(0x03029002)]
-    public partial class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
+    [Chunk(0x03029001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk03029001 : Chunk03029000
     {
-        public override uint Id => 0x03029002;
-        public int U01;
+        public override uint Id => 0x03029001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03029002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockTriangles n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            base.ReadWrite(n, rw);
+            rw.EnumInt32<E3DPickMode>(ref n.pickMode3D);
+            rw.Vec3(ref n.pickPlaneNormal);
+            rw.Vec3(ref n.pickPlanePosition);
+        }
+    }
+
+    [Chunk(0x03029002)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
+    {
+        public override uint Id => 0x03029002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockTriangles n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.clipEntId);
         }
     }
 
@@ -114,8 +177,15 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
         }
     }
 
+    public enum E3DPickMode
+    {
+        Ground,
+        Plane,
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03029000 => new Chunk03029000(),
         0x03029001 => new Chunk03029001(),
         0x03029002 => new Chunk03029002(),
         _ => base.NewChunk(chunkId),

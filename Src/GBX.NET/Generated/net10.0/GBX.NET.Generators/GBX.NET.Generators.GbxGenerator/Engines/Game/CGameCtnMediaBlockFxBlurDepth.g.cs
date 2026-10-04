@@ -29,10 +29,26 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Game;
 
 [Class(0x03081000)]
-public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClass, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
     [Hexadecimal]
     public static new uint Id => 0x03081000;
+
+    private TimeSingle start;
+    [AppliedWithChunk<Chunk03081000>]
+    public TimeSingle Start
+    {
+        get => this.start;
+        set => this.start = value;
+    }
+
+    private TimeSingle end;
+    [AppliedWithChunk<Chunk03081000>]
+    public TimeSingle End
+    {
+        get => this.end;
+        set => this.end = value;
+    }
 
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03081001>]
@@ -45,6 +61,8 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaBlockFxBlurDepth)clone).start = context.Clone(this.start)!;
+        ((CGameCtnMediaBlockFxBlurDepth)clone).end = context.Clone(this.end)!;
         ((CGameCtnMediaBlockFxBlurDepth)clone).keys = context.CloneList(this.keys)!;
     }
 
@@ -54,10 +72,41 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    TimeSingle CGameCtnMediaBlock.IHasTwoKeys.Start
+    {
+        get => Start;
+        set => Start = value;
+    }
+
+    TimeSingle CGameCtnMediaBlock.IHasTwoKeys.End
+    {
+        get => End;
+        set => End = value;
+    }
+
+    [Chunk(0x03081000)]
+    public partial class Chunk03081000 : Chunk<CGameCtnMediaBlockFxBlurDepth>
+    {
+        public override uint Id => 0x03081000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockFxBlurDepth n, GbxReaderWriter rw)
+        {
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
+        }
+    }
+
     [Chunk(0x03081001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
     {
         public override uint Id => 0x03081001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -139,6 +188,7 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03081000 => new Chunk03081000(),
         0x03081001 => new Chunk03081001(),
         _ => base.NewChunk(chunkId),
     };

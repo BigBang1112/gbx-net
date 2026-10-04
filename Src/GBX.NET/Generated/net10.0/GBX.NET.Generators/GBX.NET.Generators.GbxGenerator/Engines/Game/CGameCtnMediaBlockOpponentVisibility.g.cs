@@ -83,9 +83,11 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     }
 
     [Chunk(0x0338B000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0338B000 : Chunk<CGameCtnMediaBlockOpponentVisibility>
     {
         public override uint Id => 0x0338B000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -100,9 +102,11 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     }
 
     [Chunk(0x0338B001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0338B001 : Chunk<CGameCtnMediaBlockOpponentVisibility>
     {
         public override uint Id => 0x0338B001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

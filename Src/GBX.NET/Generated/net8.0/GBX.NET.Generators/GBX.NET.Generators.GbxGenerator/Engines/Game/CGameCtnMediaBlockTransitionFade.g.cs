@@ -42,9 +42,9 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
         set => this.keys = value;
     }
 
-    private Vec3 color;
+    private Vec4 color;
     [AppliedWithChunk<Chunk030AB000>]
-    public Vec3 Color
+    public Vec4 Color
     {
         get => this.color;
         set => this.color = value;
@@ -64,22 +64,21 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x030AB000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>
     {
         public override uint Id => 0x030AB000;
-        public float U01;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk030AB000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GbxReaderWriter rw)
         {
             rw.ListReadableWritable<Key>(ref n.keys!);
-            rw.Vec3(ref n.color);
-            rw.Single(ref U01);
+            rw.Vec4(ref n.color);
         }
     }
 

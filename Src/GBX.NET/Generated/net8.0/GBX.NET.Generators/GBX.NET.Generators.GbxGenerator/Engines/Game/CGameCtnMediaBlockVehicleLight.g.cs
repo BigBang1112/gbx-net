@@ -83,9 +83,11 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     }
 
     [Chunk(0x03133000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03133000 : Chunk<CGameCtnMediaBlockVehicleLight>
     {
         public override uint Id => 0x03133000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -103,9 +105,11 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     /// target
     /// </summary>
     [Chunk(0x03133001, "target")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03133001 : Chunk<CGameCtnMediaBlockVehicleLight>
     {
         public override uint Id => 0x03133001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
