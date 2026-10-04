@@ -215,7 +215,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   timeint? RaceTime
   int? StuntScore
   int? Respawns
-  int = -1 // extra race-result field
+  int? SpawnLandmarkId = -1 // extra race-result field
   Checkpoint[] Checkpoints (version: 2)
   timeint? RaceStartTime
 
@@ -305,5 +305,6 @@ archive MatchReplaySeparator
   int
 
 enum ScopeType
+  Unknown = -1
   PersonalBest
   Season

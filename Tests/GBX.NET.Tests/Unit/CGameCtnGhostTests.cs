@@ -215,7 +215,7 @@ public class CGameCtnGhostTests
         await Assert.That(ghost.RaceTime?.TotalMilliseconds).IsEqualTo(12345);
         await Assert.That(ghost.StuntScore).IsEqualTo(0);
         await Assert.That(ghost.Respawns).IsEqualTo(2);
-        await Assert.That(chunk.U01).IsEqualTo(0x12345678);
+        await Assert.That(ghost.SpawnLandmarkId).IsEqualTo(0x12345678);
         await Assert.That(ghost.Checkpoints!.Length).IsEqualTo(2);
         await Assert.That(ghost.Checkpoints[0].Time?.TotalMilliseconds).IsEqualTo(4567);
         await Assert.That(ghost.Checkpoints[0].CheckpointId).IsEqualTo(37);

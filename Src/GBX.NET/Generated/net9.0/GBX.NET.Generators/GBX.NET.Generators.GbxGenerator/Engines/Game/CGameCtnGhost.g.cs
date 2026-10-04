@@ -565,6 +565,17 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_RaceStartTime = value;
     }
 
+    private int? spawnLandmarkId = -1;
+    /// <summary>
+    /// extra race-result field
+    /// </summary>
+    [AppliedWithChunk<Chunk0309202B>]
+    public int? SpawnLandmarkId
+    {
+        get => this.spawnLandmarkId;
+        set => this.spawnLandmarkId = value;
+    }
+
     private DateTimeOffset? walltimeStartTimestamp;
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
@@ -645,6 +656,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).validate_GameModeCustomData = context.Clone(this.validate_GameModeCustomData)!;
         ((CGameCtnGhost)clone).validate_GameRules = context.Clone(this.validate_GameRules)!;
         ((CGameCtnGhost)clone).validate_RaceStartTime = context.Clone(this.validate_RaceStartTime)!;
+        ((CGameCtnGhost)clone).spawnLandmarkId = context.Clone(this.spawnLandmarkId)!;
         ((CGameCtnGhost)clone).walltimeStartTimestamp = context.Clone(this.walltimeStartTimestamp)!;
         ((CGameCtnGhost)clone).walltimeEndTimestamp = context.Clone(this.walltimeEndTimestamp)!;
         ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
@@ -1593,13 +1605,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override uint Id => 0x0309202B;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; } = 1;
-        public int U01 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0309202B)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0309202B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
@@ -1614,7 +1624,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.TimeInt32Nullable(ref n.raceTime);
             rw.Int32(ref n.stuntScore);
             rw.Int32(ref n.respawns);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.spawnLandmarkId);
             rw.ArrayReadableWritable<Checkpoint>(ref n.checkpoints!, version: 2);
             rw.TimeInt32Nullable(ref n.raceStartTime);
         }
@@ -2250,6 +2260,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     public enum ScopeType
     {
+        Unknown = -1,
         PersonalBest,
         Season,
     }

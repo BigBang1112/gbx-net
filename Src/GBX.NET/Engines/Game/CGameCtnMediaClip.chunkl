@@ -2,7 +2,7 @@ CGameCtnMediaClip 0x03079000
 
 0x002 // tracks
   CGameCtnMediaTrack[] Tracks (deprec, list)
-  string Name
+  string Name (formatted)
   bool
 
 0x003 [TMSX, TMNESWC, TMU] // tracks with sorting

@@ -40,6 +40,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [AppliedWithChunk<Chunk0307900D>]
     public partial List<CGameCtnMediaTrack> Tracks { get; set; }
 
+    [SupportsFormatting]
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
