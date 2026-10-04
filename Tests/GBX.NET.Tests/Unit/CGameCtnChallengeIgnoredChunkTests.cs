@@ -218,6 +218,16 @@ public class CGameCtnChallengeIgnoredChunkTests
         var node = await RoundTrip(payload, new CGameCtnChallenge.Chunk0304305E());
         await Assert.That(node.LegacyMacroblocks![0].Blocks![0].Version).IsEqualTo(blockVersion);
         await Assert.That(node.LegacyMacroblocks[0].Items![0].Version).IsEqualTo(itemVersion);
+        await Assert.That(node.LegacyMacroblocks[0].Blocks![0]).IsTypeOf<CGameCtnMacroBlockInfo.BlockSpawn>();
+        await Assert.That(node.LegacyMacroblocks[0].Skins![0]).IsTypeOf<CGameCtnMacroBlockInfo.BlockSkinSpawn>();
+        await Assert.That(node.LegacyMacroblocks[0].Items![0]).IsTypeOf<CGameCtnMacroBlockInfo.ObjectSpawn>();
+        await Assert.That(node.LegacyMacroblocks[0].Skins![0].BlockSpawnIndex).IsEqualTo(0);
+        if (blockVersion < 2)
+        {
+            await Assert.That(node.LegacyMacroblocks[0].Blocks![0].MobilIndex).IsEqualTo(2);
+            await Assert.That(node.LegacyMacroblocks[0].Blocks![0].MobilVariantIndex).IsEqualTo(3);
+            await Assert.That(node.LegacyMacroblocks[0].Blocks![0].IsGround).IsTrue();
+        }
     }
 
     [Test]

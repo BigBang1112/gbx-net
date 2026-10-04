@@ -749,16 +749,34 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         private CGameWaypointSpecialProperty? waypoint;
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => this.waypoint;
+            get => this.waypointFile?.GetNode(ref this.waypoint) ?? this.waypoint;
             set => this.waypoint = value;
         }
+        private Components.GbxRefTableFile? waypointFile;
+
+        public Components.GbxRefTableFile? WaypointFile
+        {
+            get => waypointFile;
+            set => waypointFile = value;
+        }
+
+        public CGameWaypointSpecialProperty? GetWaypoint(GbxReadSettings settings = default, bool exceptions = false) => waypointFile?.GetNode(ref waypoint, settings, exceptions) ?? waypoint;
 
         private CGameCtnChallenge? challenge;
         public CGameCtnChallenge? Challenge
         {
-            get => this.challenge;
+            get => this.challengeFile?.GetNode(ref this.challenge) ?? this.challenge;
             set => this.challenge = value;
         }
+        private Components.GbxRefTableFile? challengeFile;
+
+        public Components.GbxRefTableFile? ChallengeFile
+        {
+            get => challengeFile;
+            set => challengeFile = value;
+        }
+
+        public CGameCtnChallenge? GetChallenge(GbxReadSettings settings = default, bool exceptions = false) => challengeFile?.GetNode(ref challenge, settings, exceptions) ?? challenge;
 
         private byte color;
         public byte Color
@@ -847,13 +865,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                         }
                     }
 
-                    rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
+                    rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint, ref this.waypointFile);
 
                     if (Version >= 4)
                     {
                         if (Version <= 5)
                         {
-                            rw.NodeRef<CGameCtnChallenge>(ref this.challenge);
+                            rw.NodeRef<CGameCtnChallenge>(ref this.challenge, ref this.challengeFile);
                         }
 
                         if (Version >= 7)
@@ -890,9 +908,18 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         private CGameCtnBlockSkin? skin;
         public CGameCtnBlockSkin? Skin
         {
-            get => this.skin;
+            get => this.skinFile?.GetNode(ref this.skin) ?? this.skin;
             set => this.skin = value;
         }
+        private Components.GbxRefTableFile? skinFile;
+
+        public Components.GbxRefTableFile? SkinFile
+        {
+            get => skinFile;
+            set => skinFile = value;
+        }
+
+        public CGameCtnBlockSkin? GetSkin(GbxReadSettings settings = default, bool exceptions = false) => skinFile?.GetNode(ref skin, settings, exceptions) ?? skin;
 
         private Int3 coord;
         public Int3 Coord
@@ -927,7 +954,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnBlockSkin>(ref this.skin);
+            rw.NodeRef<CGameCtnBlockSkin>(ref this.skin, ref this.skinFile);
 
             if (Version == 0)
             {
@@ -1088,9 +1115,18 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         private CGameWaypointSpecialProperty? waypoint;
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => this.waypoint;
+            get => this.waypointFile?.GetNode(ref this.waypoint) ?? this.waypoint;
             set => this.waypoint = value;
         }
+        private Components.GbxRefTableFile? waypointFile;
+
+        public Components.GbxRefTableFile? WaypointFile
+        {
+            get => waypointFile;
+            set => waypointFile = value;
+        }
+
+        public CGameWaypointSpecialProperty? GetWaypoint(GbxReadSettings settings = default, bool exceptions = false) => waypointFile?.GetNode(ref waypoint, settings, exceptions) ?? waypoint;
 
         private float scale = 1;
         public float Scale
@@ -1247,7 +1283,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
                     if (Version >= 8)
                     {
-                        rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
+                        rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint, ref this.waypointFile);
 
                         if (Version >= 9)
                         {

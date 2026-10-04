@@ -130,7 +130,7 @@ internal static class WireTypes
             return "byte[]";
         }
 
-        var element = Cast(type) ?? Map(type.Name);
+        var element = Cast(type) ?? Map(QualifiedName(type, attributes));
         var array = type.ArrayDimensions > 0;
 
         if (array && LayoutModel.Has(attributes, "external"))
@@ -165,4 +165,7 @@ internal static class WireTypes
         return type.CastTarget is null ? null :
             (string.IsNullOrEmpty(type.CastTarget.QualifyingType) ? "" : type.CastTarget.QualifyingType + ".") + type.CastTarget.Name;
     }
+
+    public static string QualifiedName(TypeReference type, AttributeList? attributes)
+        => LayoutModel.Attribute(attributes, "archive") is string owner ? owner + "." + type.Name : type.Name;
 }

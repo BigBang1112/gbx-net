@@ -486,98 +486,12 @@ archive BlockOctreeNode
 
 archive MacroblockData
   version = 1
-  MacroblockBlock[] Blocks
-  MacroblockSkin[] Skins
-  MacroblockItem[] Items
+  BlockSpawn[] Blocks (archive: CGameCtnMacroBlockInfo)
+  BlockSkinSpawn[] Skins (archive: CGameCtnMacroBlockInfo)
+  ObjectSpawn[] Items (archive: CGameCtnMacroBlockInfo)
   v0= (archive)
     uint128[]
   MacroblockReferences References
-
-archive MacroblockBlock
-  version = 8
-  ident BlockModel
-  v1- (archive)
-    int3 Coord
-    int<Direction> Direction
-    int Flags
-    int U01
-    bool U03
-    v0= (archive)
-      U02 = 0
-    v1+ (archive)
-      int U02
-  v2+ (archive)
-    v4- (archive)
-      byte3 Coord
-      byte<Direction> Direction
-    int Flags
-    v5+ (archive)
-      if (Flags & (1 << 26)) == 0
-        byte3 Coord
-        byte<Direction> Direction
-      if (Flags & (1 << 26)) != 0
-        vec3 AbsolutePositionInMap
-        vec3 PitchYawRoll
-  v3+ (archive)
-    CGameWaypointSpecialProperty Waypoint (external)
-  v4+ (archive)
-    v5- (archive)
-      CGameCtnChallenge (external)
-  v7+ (archive)
-    byte Color
-  v8+ (archive)
-    byte LightmapQuality
-
-archive MacroblockSkin
-  version = 1
-  CGameCtnBlockSkin Skin (external)
-  v0= (archive)
-    int3
-  v1+ (archive)
-    int BlockIndex
-
-archive MacroblockItem
-  version = 14
-  ident ItemModel
-  v2- (archive)
-    byte QuarterY
-    v1+ (archive)
-      byte AdditionalDir
-  v3+ (archive)
-    vec3 PitchYawRoll
-  int3 BlockCoord
-  id AnchorTreeId
-  vec3 AbsolutePositionInMap
-  v2+ (archive)
-    v4- (archive)
-      int U01
-  v4+ (archive)
-    v6- (archive)
-      int U02
-  v6+ (archive)
-    short Flags
-  v7+ (archive)
-    vec3 PivotPosition
-  v8+ (archive)
-    CGameWaypointSpecialProperty Waypoint (external)
-  v9+ (archive)
-    float Scale
-  v10+ (archive)
-    int3 U03
-  v11+ (archive)
-    byte Color
-    byte AnimPhaseOffset
-  v12+ (archive)
-    byte LightmapQuality
-  v13+ (archive)
-    boolbyte HasPackDesc
-    boolbyte HasForegroundPackDesc
-    if HasPackDesc
-      packdesc PackDesc
-    if HasForegroundPackDesc
-      packdesc ForegroundPackDesc
-  v14+ (archive)
-    int U04
 
 archive MacroblockReferences
   version

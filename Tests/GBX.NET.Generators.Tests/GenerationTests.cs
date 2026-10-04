@@ -1012,6 +1012,64 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task ReusesNamedArchivesFromAnotherLayout()
+    {
+        const string source = """
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public void ArrayReadableWritable<T>(ref T[]? value, int version = 0) where T : IReadableWritable, new() { }
+                    public void ListReadableWritable<T>(ref System.Collections.Generic.List<T>? value, int version = 0) where T : IReadableWritable, new() { }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, true,
+        [
+            new Text("Engines/Game/Shared.chunkl", """
+                Shared 0x0310D000
+                archive Spawn
+                  version
+                  int Value
+                """),
+            new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                0x001
+                  version
+                  Spawn Data (archive: Shared)
+                  Spawn[] Entries (archive: Shared)
+                  Spawn[] ListEntries (list, archive: Shared)
+                archive Container
+                  Spawn[][] Entries (archive: Shared)
+                """)
+        ]);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Example.g.cs").SourceText.ToString();
+        await Assert.That(generated).Contains("public Shared.Spawn? Data");
+        await Assert.That(generated).Contains("public Shared.Spawn[]? Entries");
+        await Assert.That(generated).Contains("rw.ReadableWritable<Shared.Spawn>(ref n.data, version: Version)");
+        await Assert.That(generated).Contains("rw.ArrayReadableWritable<Shared.Spawn>(ref n.entries!, version: Version)");
+        await Assert.That(generated).Contains("rw.ListReadableWritable<Shared.Spawn>(ref n.listEntries!, version: Version)");
+        await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Shared.Spawn>(ref this.entries!, version: v)");
+    }
+
+    [Test]
+    public async Task ReportsUnknownSharedArchive()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              Spawn[] Entries (archive: Missing)
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" &&
+            x.GetMessage().Contains("Unknown archive: Missing.Spawn"));
+    }
+
+    [Test]
     public async Task EmitsEncapsulatedBlocksForCombinedAndSeparateSerialization()
     {
         const string source = """
