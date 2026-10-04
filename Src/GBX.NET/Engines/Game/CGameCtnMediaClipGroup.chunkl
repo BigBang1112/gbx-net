@@ -1,4 +1,8 @@
-CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
+CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group. Clips and triggers are matched by array index.
+
+0x000 (demonstration: partial)
+  CGameCtnMediaClip[] Clips (deprec)
+  Trigger[] Triggers (version: 0)
 
 0x001 (demonstration: partial)
   CGameCtnMediaClip[] Clips (deprec)
@@ -8,23 +12,22 @@ CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 2)
 
-0x003 (demonstration: partial)
+0x003 (demonstration: partial) [TM2020]
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 3)
 
 0x004 (skippable)
-  int
+  int = -1
 
 archive Trigger
   v0=
-    return
-  v2-
-    int3[] Coords (list)
+    int3[1] Coords (list)
+  v1+
+    v2-
+      int3[] Coords (list)
   v2+
-    int
-    int
-    int
-    int
+    int3 RefCoord = (-1, -1, -1)
+    int<Direction> RefDir
     v3+
       int<ECondition> Condition
       float ConditionValue

@@ -28,9 +28,6 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
-/// <summary>
-/// Deprecated UI block; uses the inherited UI chunks.
-/// </summary>
 [Class(0x030AC000)]
 public partial class CGameCtnMediaBlockUiSimpleEvtsDisplay : CGameCtnMediaBlockUi, IClass
 {

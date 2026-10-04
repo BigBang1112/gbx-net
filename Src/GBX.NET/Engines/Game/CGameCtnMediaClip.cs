@@ -14,6 +14,13 @@ public partial class CGameCtnMediaClip
 
     public TMUnlimiter? TMUnlimiterData { get; set; }
 
+    [AppliedWithChunk<Chunk0307900E>]
+    public bool TriggersBeforeRaceStart
+    {
+        get => (Flags & 1) != 0;
+        set => Flags = value ? Flags | 1 : Flags & ~1;
+    }
+
     public override string ToString()
     {
         return $"{nameof(CGameCtnMediaClip)}: {(string.IsNullOrEmpty(Name) ? "(unnamed)" : Name)}";

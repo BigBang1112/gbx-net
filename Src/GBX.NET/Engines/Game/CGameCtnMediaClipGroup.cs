@@ -80,6 +80,18 @@ public partial class CGameCtnMediaClipGroup
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Trigger
     {
+        [Obsolete("Use RefCoord.X instead.")]
+        public int U01 { get => RefCoord.X; set => RefCoord = RefCoord with { X = value }; }
+
+        [Obsolete("Use RefCoord.Y instead.")]
+        public int U02 { get => RefCoord.Y; set => RefCoord = RefCoord with { Y = value }; }
+
+        [Obsolete("Use RefCoord.Z instead.")]
+        public int U03 { get => RefCoord.Z; set => RefCoord = RefCoord with { Z = value }; }
+
+        [Obsolete("Use RefDir instead.")]
+        public int U04 { get => (int)RefDir; set => RefDir = (Direction)value; }
+
         public override string ToString()
         {
             return $"Trigger: {Coords?.Count ?? 0} coords";

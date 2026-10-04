@@ -29,7 +29,7 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker clip group.
+/// MediaTracker clip group. Clips and triggers are matched by array index.
 /// </summary>
 [Class(0x0307A000)]
 public partial class CGameCtnMediaClipGroup : CMwNod, IClass
@@ -37,30 +37,47 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0307A000;
 
+    [AppliedWithChunk<Chunk0307A000>]
     [AppliedWithChunk<Chunk0307A001>]
     [AppliedWithChunk<Chunk0307A002>]
     [AppliedWithChunk<Chunk0307A003>]
-    public partial List<ClipTrigger> Clips { get; set; }
+    public partial CGameCtnMediaClip[] Clips { get; set; }
 
-    private Trigger[]? triggers;
+    [AppliedWithChunk<Chunk0307A000>]
     [AppliedWithChunk<Chunk0307A001>]
     [AppliedWithChunk<Chunk0307A002>]
     [AppliedWithChunk<Chunk0307A003>]
-    public Trigger[]? Triggers
-    {
-        get => this.triggers;
-        set => this.triggers = value;
-    }
+    public partial Trigger[] Triggers { get; set; }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnMediaClipGroup)clone).clips = context.CloneArray(this.clips)!;
         ((CGameCtnMediaClipGroup)clone).triggers = context.CloneArray(this.triggers)!;
-        ((CGameCtnMediaClipGroup)clone).clips = context.CloneList(this.clips)!;
     }
 
     public CGameCtnMediaClipGroup()
     {
+    }
+
+    /// <summary>
+    /// One coordinate per trigger.
+    /// </summary>
+    [Chunk(0x0307A000, "One coordinate per trigger.")]
+    public partial class Chunk0307A000 : Chunk<CGameCtnMediaClipGroup>
+    {
+        public override uint Id => 0x0307A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
+            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 0);
+        }
     }
 
     [Chunk(0x0307A001)]
@@ -71,6 +88,12 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
+            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 1);
         }
     }
 
@@ -83,16 +106,30 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
+            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 2);
+        }
     }
 
     [Chunk(0x0307A003)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
+            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 3);
         }
     }
 
@@ -100,7 +137,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     public partial class Chunk0307A004 : SkippableChunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A004;
-        public int U01;
+        public int U01 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -114,7 +151,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         }
     }
 
-    public partial class Trigger : IReadable, IWritable, IDeepCloneable
+    public partial class Trigger : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private List<Int3>? coords;
         public List<Int3>? Coords
@@ -123,32 +160,18 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
             set => this.coords = value;
         }
 
-        private int u01;
-        public int U01
+        private Int3 refCoord = (-1, -1, -1);
+        public Int3 RefCoord
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.refCoord;
+            set => this.refCoord = value;
         }
 
-        private int u02;
-        public int U02
+        private Direction refDir;
+        public Direction RefDir
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private int u03;
-        public int U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private int u04;
-        public int U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.refDir;
+            set => this.refDir = value;
         }
 
         private ECondition condition;
@@ -176,68 +199,51 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Trigger)clone).coords = context.CloneList(this.coords)!;
-            ((Trigger)clone).u01 = context.Clone(this.u01)!;
-            ((Trigger)clone).u02 = context.Clone(this.u02)!;
-            ((Trigger)clone).u03 = context.Clone(this.u03)!;
-            ((Trigger)clone).u04 = context.Clone(this.u04)!;
+            ((Trigger)clone).refCoord = context.Clone(this.refCoord)!;
+            ((Trigger)clone).refDir = context.Clone(this.refDir)!;
             ((Trigger)clone).condition = context.Clone(this.condition)!;
             ((Trigger)clone).conditionValue = context.Clone(this.conditionValue)!;
         }
 
-        public virtual void Read(GbxReader r, int v = 0)
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v == 0)
             {
-                return;
+                rw.List<Int3>(ref this.coords!, 1);
             }
 
-            if (v <= 2)
+            if (v >= 1)
             {
-                this.coords = r.ReadList<Int3>();
+                if (v <= 2)
+                {
+                    rw.List<Int3>(ref this.coords!);
+                }
             }
 
             if (v >= 2)
             {
-                this.u01 = r.ReadInt32();
-                this.u02 = r.ReadInt32();
-                this.u03 = r.ReadInt32();
-                this.u04 = r.ReadInt32();
+                rw.Int3(ref this.refCoord);
+                rw.EnumInt32<Direction>(ref this.refDir);
 
                 if (v >= 3)
                 {
-                    this.condition = (ECondition)r.ReadInt32();
-                    this.conditionValue = r.ReadSingle();
-                    this.coords = r.ReadList<Int3>();
+                    rw.EnumInt32<ECondition>(ref this.condition);
+                    rw.Single(ref this.conditionValue);
+                    rw.List<Int3>(ref this.coords!);
                 }
             }
         }
 
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            if (v == 0)
-            {
-                return;
-            }
-
-            if (v <= 2)
-            {
-                w.WriteList<Int3>(this.coords);
-            }
-
-            if (v >= 2)
-            {
-                w.Write(this.u01);
-                w.Write(this.u02);
-                w.Write(this.u03);
-                w.Write(this.u04);
-
-                if (v >= 3)
-                {
-                    w.Write((int)this.condition);
-                    w.Write(this.conditionValue);
-                    w.WriteList<Int3>(this.coords);
-                }
-            }
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -257,6 +263,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0307A000 => new Chunk0307A000(),
         0x0307A001 => new Chunk0307A001(),
         0x0307A002 => new Chunk0307A002(),
         0x0307A003 => new Chunk0307A003(),

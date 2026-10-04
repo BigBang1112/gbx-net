@@ -53,7 +53,7 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
     }
 
     [Chunk(0x03294000)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03294000 : Chunk<CGameCtnMediaBlockTurret>, IVersionable
     {
         public override uint Id => 0x03294000;

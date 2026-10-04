@@ -34,6 +34,8 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03079000;
 
+    [AppliedWithChunk<Chunk03079000>]
+    [AppliedWithChunk<Chunk03079001>]
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
@@ -41,15 +43,16 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     public partial List<CGameCtnMediaTrack> Tracks { get; set; }
 
     [SupportsFormatting]
+    [AppliedWithChunk<Chunk03079001>]
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
     [AppliedWithChunk<Chunk0307900D>]
     public partial string? Name { get; set; }
 
-    private CSceneLayout? scene;
+    private CScene? scene;
     [AppliedWithChunk<Chunk03079004>]
-    public CSceneLayout? Scene
+    public CScene? Scene
     {
         get => this.scene;
         set => this.scene = value;
@@ -67,6 +70,24 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         set => this.localPlayerClipEntIndex = value;
     }
 
+    private float stereoSepMax = 0.2f;
+    [AppliedWithChunk<Chunk03079008>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public float StereoSepMax
+    {
+        get => this.stereoSepMax;
+        set => this.stereoSepMax = value;
+    }
+
+    private string configScript = "";
+    [AppliedWithChunk<Chunk03079009>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public string ConfigScript
+    {
+        get => this.configScript;
+        set => this.configScript = value;
+    }
+
     private bool stopWhenLeave;
     [AppliedWithChunk<Chunk0307900A>]
     [AppliedWithChunk<Chunk0307900D>]
@@ -74,6 +95,18 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         get => this.stopWhenLeave;
         set => this.stopWhenLeave = value;
+    }
+
+    private bool isScriptEvent;
+    /// <summary>
+    /// Discarded by Trackmania.
+    /// </summary>
+    [AppliedWithChunk<Chunk0307900B>]
+    [AppliedWithChunk<Chunk0307900D>]
+    public bool IsScriptEvent
+    {
+        get => this.isScriptEvent;
+        set => this.isScriptEvent = value;
     }
 
     private bool stopWhenRespawn;
@@ -84,13 +117,28 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         set => this.stopWhenRespawn = value;
     }
 
+    private int flags;
+    /// <summary>
+    /// Bit 0: TriggersBeforeRaceStart.
+    /// </summary>
+    [AppliedWithChunk<Chunk0307900E>]
+    public int Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaClip)clone).scene = context.Clone(this.scene)!;
         ((CGameCtnMediaClip)clone).localPlayerClipEntIndex = context.Clone(this.localPlayerClipEntIndex)!;
+        ((CGameCtnMediaClip)clone).stereoSepMax = context.Clone(this.stereoSepMax)!;
+        ((CGameCtnMediaClip)clone).configScript = context.Clone(this.configScript)!;
         ((CGameCtnMediaClip)clone).stopWhenLeave = context.Clone(this.stopWhenLeave)!;
+        ((CGameCtnMediaClip)clone).isScriptEvent = context.Clone(this.isScriptEvent)!;
         ((CGameCtnMediaClip)clone).stopWhenRespawn = context.Clone(this.stopWhenRespawn)!;
+        ((CGameCtnMediaClip)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnMediaClip)clone).name = context.Clone(this.name)!;
         ((CGameCtnMediaClip)clone).tracks = context.CloneList(this.tracks)!;
         ((CGameCtnMediaClip)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
@@ -98,6 +146,45 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
     public CGameCtnMediaClip()
     {
+    }
+
+    /// <summary>
+    /// legacy tracks
+    /// </summary>
+    [Chunk(0x03079000, "legacy tracks")]
+    public partial class Chunk03079000 : Chunk<CGameCtnMediaClip>
+    {
+        public override uint Id => 0x03079000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
+        {
+            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+        }
+    }
+
+    /// <summary>
+    /// legacy tracks and name
+    /// </summary>
+    [Chunk(0x03079001, "legacy tracks and name")]
+    public partial class Chunk03079001 : Chunk<CGameCtnMediaClip>
+    {
+        public override uint Id => 0x03079001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
+        {
+            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            rw.String(ref n.name);
+        }
     }
 
     /// <summary>
@@ -162,7 +249,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneLayout>(ref n.scene);
+            rw.NodeRef<CScene>(ref n.scene);
         }
     }
 
@@ -179,6 +266,27 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// discarded legacy ID
+    /// </summary>
+    [Chunk(0x03079006, "discarded legacy ID")]
+    public partial class Chunk03079006 : Chunk<CGameCtnMediaClip>
+    {
+        public override uint Id => 0x03079006;
+        public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03079006)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
+        {
+            rw.Id(ref U01);
         }
     }
 
@@ -209,17 +317,15 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x03079008;
         public override GameVersion GameVersion => GameVersion.MP3;
-        public float U01 = 0.2f;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03079008)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
+            rw.Single(ref n.stereoSepMax);
         }
     }
 
@@ -229,17 +335,15 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x03079009;
         public override GameVersion GameVersion => GameVersion.MP3;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03079009)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.configScript);
         }
     }
 
@@ -270,17 +374,15 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x0307900B;
         public override GameVersion GameVersion => GameVersion.MP3;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0307900B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.isScriptEvent);
         }
     }
 
@@ -311,18 +413,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x0307900D;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; }
-        public bool U01;
-        public string? U02;
-        public float U03;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0307900D)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0307900D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0307900D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0307900D)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
@@ -331,43 +427,44 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
             rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
             rw.String(ref n.name);
             rw.Boolean(ref n.stopWhenLeave);
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.isScriptEvent);
             rw.Boolean(ref n.stopWhenRespawn);
-            rw.String(ref U02);
-            rw.Single(ref U03);
+            rw.String(ref n.configScript);
+            rw.Single(ref n.stereoSepMax);
             rw.Int32(ref n.localPlayerClipEntIndex);
         }
     }
 
     [Chunk(0x0307900E)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0307900E : SkippableChunk<CGameCtnMediaClip>, IVersionable
     {
         public override uint Id => 0x0307900E;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; }
-        public int U01;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0307900E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0307900E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.flags);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03079000 => new Chunk03079000(),
+        0x03079001 => new Chunk03079001(),
         0x03079002 => new Chunk03079002(),
         0x03079003 => new Chunk03079003(),
         0x03079004 => new Chunk03079004(),
         0x03079005 => new Chunk03079005(),
+        0x03079006 => new Chunk03079006(),
         0x03079007 => new Chunk03079007(),
         0x03079008 => new Chunk03079008(),
         0x03079009 => new Chunk03079009(),

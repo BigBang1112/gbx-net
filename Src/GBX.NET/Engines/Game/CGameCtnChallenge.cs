@@ -1024,8 +1024,8 @@ public partial class CGameCtnChallenge :
         void AppendMediaTrackerDeps(StringBuilder sb)
         {
             foreach (var block in ClipIntro?.Tracks
-                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
-                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
+                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Tracks) ?? [])
+                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Tracks) ?? [])
                 .Concat(ClipGlobal?.Tracks ?? [])
                 .Concat(ClipAmbiance?.Tracks ?? [])
                 .SelectMany(x => x.Blocks) ?? [])
