@@ -12,7 +12,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   if HasBadges
     SBadge Badge
   if AppearanceVersion >= 1
-    string
+    string SkinCustomization
   string GhostNickname (formatted)
   string GhostAvatarName
   v2+
@@ -25,7 +25,7 @@ CGameCtnGhost 0x03092000 // A ghost.
         v6+
           string GhostTrigram
           v7+
-            string GhostZone
+            string GhostCountryPath
             v8+
               string GhostClubTag (formatted)
 
@@ -121,7 +121,12 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x01A (skippable) [MP3, TMT, MP4, TM2020] // checkpoint count
 
-0x01B (skippable, ignore) [MP3, TMT, MP4, TM2020] // race result
+0x01B (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // race result
+  version = 2
+  // RaceTime, StuntScore, Respawns and checkpoint times are handled in C#.
+  // v0 uses raw times, v1 uses reverse deltas, v2 uses forward deltas.
+  v2=
+    timeint? RaceStartTime
 
 0x01C [MP3, TMT, MP4, TM2020] // security key
   uint256? SecurityKey256
@@ -130,7 +135,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   version
   PlayerInputData[] PlayerInputs
 
-0x01F (skippable, ignore) [MP4] // OldColorHistory
+0x01F (skippable, ignore) // OldColorHistory
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
@@ -212,7 +217,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   int? Respawns
   int = -1 // extra race-result field
   Checkpoint[] Checkpoints (version: 2)
-  int = -1 // also serialized in 0x01B version 2
+  timeint? RaceStartTime
 
 0x02C (skippable) [TM2020]
   version
@@ -233,10 +238,10 @@ CGameCtnGhost 0x03092000 // A ghost.
   timeint? Validate_RaceStartTime
   int? Validate_ValidationSeed
   // SimulationFlags is handled in C#.
-  string Validate_RaceSettings
+  string Validate_RaceSettings // native m_ValidationData.ExtraTool_Info in TM2020
 
 0x02E (skippable) [TM2020]
-  string
+  string SkinCustomization
 
 0x0304F001 (skippable, ignore, not-remapped) [TMF] // TMCP
 
@@ -284,8 +289,8 @@ archive SettingsInfos
   byte
   bool MouseAccelEnabled
   float MouseAccelQuantity
-  bool U06
-  float U07
+  bool MouseSensitivitiesEnableSpecific
+  float MouseScaleY
   float[] MouseSensitivities // default and laser sensitivities
   string U09
   v3+
@@ -293,7 +298,7 @@ archive SettingsInfos
     int ScreenHeight
     timeint Time
     v4+
-      float U11
+      float MouseScaleFreeLook
 
 archive MatchReplaySeparator
   int

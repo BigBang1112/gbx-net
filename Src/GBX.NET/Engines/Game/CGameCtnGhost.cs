@@ -15,6 +15,9 @@ public partial class CGameCtnGhost
     [AppliedWithChunk<Chunk03092025>]
     public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
 
+    [Obsolete("Use GhostCountryPath instead.")]
+    public string? GhostZone { get => GhostCountryPath; set => GhostCountryPath = value; }
+
     public string GhostVersionString
     {
         get
@@ -237,6 +240,106 @@ public partial class CGameCtnGhost
         }
     }
 
+    public partial class Chunk0309201B : IVersionable
+    {
+        public int Version { get; set; } = 2;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version is < 0 or > 2)
+            {
+                throw new VersionNotSupportedException(Version);
+            }
+
+            var count = 0;
+            if (Version == 2)
+            {
+                count = ReadWriteCheckpointCount(n, rw);
+            }
+            else
+            {
+                rw.TimeInt32Nullable(ref n.raceTime);
+            }
+
+            if (Version == 0)
+            {
+                rw.Int32(ref n.stuntScore);
+                rw.Int32(ref n.respawns, defaultValue: -1);
+            }
+            else
+            {
+                // Earlier chunks can contain -1; do not convert their values while reading.
+                var score = rw.Writer is null ? (ushort)0
+                    : n.stuntScore == -1 ? ushort.MaxValue : checked((ushort)(n.stuntScore ?? 0));
+                n.stuntScore = rw.UInt16(score);
+                var storedRespawns = rw.Writer is null || n.respawns is null or -1
+                    ? ushort.MaxValue : checked((ushort)n.respawns.Value);
+                var respawns = rw.UInt16(storedRespawns);
+                n.respawns = respawns == ushort.MaxValue ? -1 : respawns;
+            }
+
+            if (Version == 2)
+            {
+                rw.TimeInt32Nullable(ref n.raceTime);
+            }
+            else
+            {
+                count = ReadWriteCheckpointCount(n, rw);
+            }
+
+            if (rw.Reader is not null)
+            {
+                n.checkpoints = new Checkpoint[count];
+            }
+
+            // Version 1 stores differences backwards from the race time.
+            var previousTime = Version == 1 ? n.raceTime?.TotalMilliseconds ?? -1 : 0;
+            if (Version == 1 && previousTime == 0) previousTime = -1;
+
+            for (var i = 0; i < count; i++)
+            {
+                var index = Version == 1 ? count - i - 1 : i;
+                var checkpoint = n.checkpoints![index] ??= new Checkpoint();
+                var time = checkpoint.Time?.TotalMilliseconds ?? -1;
+
+                if (Version == 0)
+                {
+                    checkpoint.Time = rw.TimeInt32Nullable(checkpoint.Time);
+                }
+                else
+                {
+                    var delta = rw.Int32(unchecked(Version == 1 ? previousTime - time : time - previousTime));
+                    previousTime = unchecked(Version == 1 ? previousTime - delta : previousTime + delta);
+                    checkpoint.Time = previousTime == -1 ? null : TimeInt32.FromMilliseconds(previousTime);
+                }
+            }
+
+            if (Version == 2)
+            {
+                rw.TimeInt32Nullable(ref n.raceStartTime);
+            }
+            else if (rw.Reader is not null)
+            {
+                n.raceStartTime = null;
+            }
+        }
+
+        private int ReadWriteCheckpointCount(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            var count = rw.Writer is null ? 0 : n.checkpoints?.Length ?? 0;
+            count = Version == 0 ? rw.Int32(count) : rw.UInt16(checked((ushort)count));
+
+            if (count < 0 || (Version != 0 && count > 10000))
+            {
+                throw new LengthLimitException(count);
+            }
+
+            return count;
+        }
+    }
+
     public partial class Chunk03092025 : IVersionable
     {
         public int Version { get; set; }
@@ -268,20 +371,6 @@ public partial class CGameCtnGhost
         }
     }
 
-    public partial class Chunk03092028
-    {
-        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
-        {
-            if (n.EventsDuration == TimeInt32.Zero)
-            {
-                return;
-            }
-
-            rw.String(ref n.validate_TitleId);
-            rw.Checksum256(ref n.validate_TitleChecksum);
-        }
-    }
-
     public partial class Chunk0309202D
     {
         public int HasInputs;
@@ -310,6 +399,18 @@ public partial class CGameCtnGhost
             rw.Int32(ref SimulationFlags);
             rw.String(ref n.validate_RaceSettings);
         }
+    }
+
+    public partial class SettingsInfos
+    {
+        [Obsolete("Use MouseSensitivitiesEnableSpecific instead.")]
+        public bool U06 { get => MouseSensitivitiesEnableSpecific; set => MouseSensitivitiesEnableSpecific = value; }
+
+        [Obsolete("Use MouseScaleY instead.")]
+        public float U07 { get => MouseScaleY; set => MouseScaleY = value; }
+
+        [Obsolete("Use MouseScaleFreeLook instead.")]
+        public float U11 { get => MouseScaleFreeLook; set => MouseScaleFreeLook = value; }
     }
 
     public partial class Checkpoint

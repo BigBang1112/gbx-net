@@ -13,7 +13,7 @@ internal sealed class SerializationWriter
     private readonly bool chunk;
 
     private int loopCount;
-    private readonly Stack<HashSet<string>> locals = new();
+    private readonly Stack<Dictionary<string, FieldModel>> locals = new();
 
     public SerializationWriter(CodeWriter code, LayoutModel layout, ScopeModel scope,
         IReadOnlyDictionary<string, LayoutModel> layouts, SerializationMode mode, bool chunk)
@@ -28,7 +28,7 @@ internal sealed class SerializationWriter
 
     public void Write(IEnumerable<IBodyStatement> statements)
     {
-        locals.Push(new HashSet<string>(StringComparer.Ordinal));
+        locals.Push(new Dictionary<string, FieldModel>(StringComparer.Ordinal));
         foreach (var statement in statements)
         {
             switch (statement)
@@ -375,7 +375,7 @@ internal sealed class SerializationWriter
                 code.Line($"{assignment} = rw.{method}({cast}{value}{argumentSuffix});");
             }
         }
-        if (field.IsLocal) locals.Peek().Add(field.Name);
+        if (field.IsLocal) locals.Peek()[field.Name] = field;
     }
 
     private string WriteArgument(string expression)
@@ -527,12 +527,31 @@ internal sealed class SerializationWriter
         }
 
         var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(text);
-        return new IdentifierRewriter(Identifier).Visit(expression)!.ToString();
+        return new IdentifierRewriter(Identifier, IsTimeInt32).Visit(expression)!.ToString();
+    }
+
+    private bool IsTimeInt32(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax expression)
+    {
+        while (expression is Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax parentheses)
+            expression = parentheses.Expression;
+        if (expression is not Microsoft.CodeAnalysis.CSharp.Syntax.IdentifierNameSyntax identifier) return false;
+
+        var name = identifier.Identifier.ValueText;
+        foreach (var localScope in locals)
+        {
+            if (localScope.TryGetValue(name, out var local))
+                return SyntaxOverlap.Normalize(WireTypes.CSharp(local.Declaration)) == "TimeInt32";
+        }
+
+        var field = scope.Fields.FirstOrDefault(x => x.Name == name) ?? layout.Scope.Fields.FirstOrDefault(x => x.Name == name);
+        var owner = chunk && field?.IsUnknown != true && field?.IsVersion != true ? layout.Scope : scope;
+        var type = SyntaxOverlap.MemberType(owner.Existing, name) ?? (field is null ? null : WireTypes.CSharp(field.Declaration));
+        return type is not null && SyntaxOverlap.Normalize(type) == "TimeInt32";
     }
 
     private string Identifier(string name)
     {
-        if (locals.Any(x => x.Contains(name)))
+        if (locals.Any(x => x.ContainsKey(name)))
         {
             return SyntaxOverlap.Backing(name);
         }

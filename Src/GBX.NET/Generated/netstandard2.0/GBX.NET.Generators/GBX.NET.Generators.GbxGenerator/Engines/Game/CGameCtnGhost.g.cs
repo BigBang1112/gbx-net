@@ -92,6 +92,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.badge = value;
     }
 
+    private string? skinCustomization;
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk0309202E>]
+    public string? SkinCustomization
+    {
+        get => this.skinCustomization;
+        set => this.skinCustomization = value;
+    }
+
     private string? ghostNickname;
     [SupportsFormatting]
     [AppliedWithChunk<Chunk03092000>]
@@ -139,12 +148,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.ghostTrigram = value;
     }
 
-    private string? ghostZone;
+    private string? ghostCountryPath;
     [AppliedWithChunk<Chunk03092000>(7)]
-    public string? GhostZone
+    public string? GhostCountryPath
     {
-        get => this.ghostZone;
-        set => this.ghostZone = value;
+        get => this.ghostCountryPath;
+        set => this.ghostCountryPath = value;
     }
 
     private string? ghostClubTag;
@@ -311,6 +320,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     {
         get => this.validate_ValidationSeed;
         set => this.validate_ValidationSeed = value;
+    }
+
+    private TimeInt32? raceStartTime;
+    [AppliedWithChunk<Chunk0309201B>(2, 2)]
+    [AppliedWithChunk<Chunk0309202B>]
+    public TimeInt32? RaceStartTime
+    {
+        get => this.raceStartTime;
+        set => this.raceStartTime = value;
     }
 
     private UInt256? securityKey256;
@@ -574,12 +592,13 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).skinPackDescs = context.CloneList(this.skinPackDescs)!;
         ((CGameCtnGhost)clone).hasBadges = context.Clone(this.hasBadges)!;
         ((CGameCtnGhost)clone).badge = context.Clone(this.badge)!;
+        ((CGameCtnGhost)clone).skinCustomization = context.Clone(this.skinCustomization)!;
         ((CGameCtnGhost)clone).ghostNickname = context.Clone(this.ghostNickname)!;
         ((CGameCtnGhost)clone).ghostAvatarName = context.Clone(this.ghostAvatarName)!;
         ((CGameCtnGhost)clone).recordingContext = context.Clone(this.recordingContext)!;
         ((CGameCtnGhost)clone).recordData = context.Clone(this.recordData)!;
         ((CGameCtnGhost)clone).ghostTrigram = context.Clone(this.ghostTrigram)!;
-        ((CGameCtnGhost)clone).ghostZone = context.Clone(this.ghostZone)!;
+        ((CGameCtnGhost)clone).ghostCountryPath = context.Clone(this.ghostCountryPath)!;
         ((CGameCtnGhost)clone).ghostClubTag = context.Clone(this.ghostClubTag)!;
         ((CGameCtnGhost)clone).skinFile = context.Clone(this.skinFile)!;
         ((CGameCtnGhost)clone).checkpoints = context.CloneArray(this.checkpoints)!;
@@ -597,6 +616,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).securityKey128 = context.Clone(this.securityKey128)!;
         ((CGameCtnGhost)clone).ghostVersion = context.Clone(this.ghostVersion)!;
         ((CGameCtnGhost)clone).validate_ValidationSeed = context.Clone(this.validate_ValidationSeed)!;
+        ((CGameCtnGhost)clone).raceStartTime = context.Clone(this.raceStartTime)!;
         ((CGameCtnGhost)clone).securityKey256 = context.Clone(this.securityKey256)!;
         ((CGameCtnGhost)clone).playerInputs = context.CloneArray(this.playerInputs)!;
         ((CGameCtnGhost)clone).oldSettings = context.CloneArray(this.oldSettings)!;
@@ -666,17 +686,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override uint Id => 0x03092000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public string? U01;
-        public bool U02;
-        public int[]? U03;
+        public bool U01;
+        public int[]? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03092000)clone).Version = context.Clone(this.Version)!;
             ((Chunk03092000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03092000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03092000)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk03092000)clone).U02 = context.CloneArray(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
@@ -700,7 +718,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
             if (n.AppearanceVersion>= 1)
             {
-                rw.String(ref U01);
+                rw.String(ref n.skinCustomization);
             }
 
             rw.String(ref n.ghostNickname);
@@ -712,12 +730,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                 if (Version >= 4)
                 {
-                    rw.Boolean(ref U02);
+                    rw.Boolean(ref U01);
 
                     if (Version >= 5)
                     {
                         rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
-                        rw.Array<int>(ref U03!);
+                        rw.Array<int>(ref U02!);
 
                         if (Version >= 6)
                         {
@@ -725,7 +743,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                             if (Version >= 7)
                             {
-                                rw.String(ref n.ghostZone);
+                                rw.String(ref n.ghostCountryPath);
 
                                 if (Version >= 8)
                                 {
@@ -1225,15 +1243,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// </summary>
     [Chunk(0x0309201B, "race result")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0309201B : SkippableChunk<CGameCtnGhost>
+    public partial class Chunk0309201B : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309201B;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0309201B)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -1286,12 +1304,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// OldColorHistory
     /// </summary>
     [Chunk(0x0309201F, "OldColorHistory")]
-    [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk0309201F : SkippableChunk<CGameCtnGhost>
     {
         public override uint Id => 0x0309201F;
         public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1507,6 +1523,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            if (n.EventsDuration!= TimeInt32.Zero)
+            {
+                rw.String(ref n.validate_TitleId);
+                rw.Checksum256(ref n.validate_TitleChecksum);
+            }
+        }
     }
 
     /// <summary>
@@ -1569,14 +1594,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; } = 1;
         public int U01 = -1;
-        public int U02 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0309202B)clone).Version = context.Clone(this.Version)!;
             ((Chunk0309202B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0309202B)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
@@ -1593,7 +1616,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Int32(ref n.respawns);
             rw.Int32(ref U01);
             rw.ArrayReadableWritable<Checkpoint>(ref n.checkpoints!, version: 2);
-            rw.Int32(ref U02);
+            rw.TimeInt32Nullable(ref n.raceStartTime);
         }
     }
 
@@ -1640,17 +1663,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     {
         public override uint Id => 0x0309202E;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309202E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.skinCustomization);
         }
     }
 
@@ -2056,18 +2077,18 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.mouseAccelQuantity = value;
         }
 
-        private bool u06;
-        public bool U06
+        private bool mouseSensitivitiesEnableSpecific;
+        public bool MouseSensitivitiesEnableSpecific
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.mouseSensitivitiesEnableSpecific;
+            set => this.mouseSensitivitiesEnableSpecific = value;
         }
 
-        private float u07;
-        public float U07
+        private float mouseScaleY;
+        public float MouseScaleY
         {
-            get => this.u07;
-            set => this.u07 = value;
+            get => this.mouseScaleY;
+            set => this.mouseScaleY = value;
         }
 
         private float[]? mouseSensitivities;
@@ -2108,11 +2129,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.time = value;
         }
 
-        private float u11;
-        public float U11
+        private float mouseScaleFreeLook;
+        public float MouseScaleFreeLook
         {
-            get => this.u11;
-            set => this.u11 = value;
+            get => this.mouseScaleFreeLook;
+            set => this.mouseScaleFreeLook = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2130,14 +2151,14 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             ((SettingsInfos)clone).u03 = context.Clone(this.u03)!;
             ((SettingsInfos)clone).mouseAccelEnabled = context.Clone(this.mouseAccelEnabled)!;
             ((SettingsInfos)clone).mouseAccelQuantity = context.Clone(this.mouseAccelQuantity)!;
-            ((SettingsInfos)clone).u06 = context.Clone(this.u06)!;
-            ((SettingsInfos)clone).u07 = context.Clone(this.u07)!;
+            ((SettingsInfos)clone).mouseSensitivitiesEnableSpecific = context.Clone(this.mouseSensitivitiesEnableSpecific)!;
+            ((SettingsInfos)clone).mouseScaleY = context.Clone(this.mouseScaleY)!;
             ((SettingsInfos)clone).mouseSensitivities = context.CloneArray(this.mouseSensitivities)!;
             ((SettingsInfos)clone).u09 = context.Clone(this.u09)!;
             ((SettingsInfos)clone).screenWidth = context.Clone(this.screenWidth)!;
             ((SettingsInfos)clone).screenHeight = context.Clone(this.screenHeight)!;
             ((SettingsInfos)clone).time = context.Clone(this.time)!;
-            ((SettingsInfos)clone).u11 = context.Clone(this.u11)!;
+            ((SettingsInfos)clone).mouseScaleFreeLook = context.Clone(this.mouseScaleFreeLook)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -2147,8 +2168,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             rw.Byte(ref this.u03);
             rw.Boolean(ref this.mouseAccelEnabled);
             rw.Single(ref this.mouseAccelQuantity);
-            rw.Boolean(ref this.u06);
-            rw.Single(ref this.u07);
+            rw.Boolean(ref this.mouseSensitivitiesEnableSpecific);
+            rw.Single(ref this.mouseScaleY);
             rw.Array<float>(ref this.mouseSensitivities!);
             rw.String(ref this.u09);
 
@@ -2160,7 +2181,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                 if (v >= 4)
                 {
-                    rw.Single(ref this.u11);
+                    rw.Single(ref this.mouseScaleFreeLook);
                 }
             }
         }

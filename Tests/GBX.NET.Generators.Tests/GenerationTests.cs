@@ -9,6 +9,112 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task MapsZeroToTimeInt32ZeroUsingTheComparedFieldType()
+    {
+        const string source = """
+            namespace TmEssentials
+            {
+                public readonly record struct TimeInt32(int TotalMilliseconds)
+                {
+                    public static TimeInt32 Zero => new(0);
+                    public static bool operator <(TimeInt32 left, TimeInt32 right) => left.TotalMilliseconds < right.TotalMilliseconds;
+                    public static bool operator >(TimeInt32 left, TimeInt32 right) => left.TotalMilliseconds > right.TotalMilliseconds;
+                    public static bool operator <=(TimeInt32 left, TimeInt32 right) => left.TotalMilliseconds <= right.TotalMilliseconds;
+                    public static bool operator >=(TimeInt32 left, TimeInt32 right) => left.TotalMilliseconds >= right.TotalMilliseconds;
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public TmEssentials.TimeInt32 CustomDuration => TmEssentials.TimeInt32.Zero;
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class Chunk03043003 { }
+
+                    public static string Verify(int duration)
+                    {
+                        var node = new Example { Duration = new(duration), Value = 42 };
+                        var writer = new GBX.NET.Serialization.GbxWriter();
+                        new Chunk03043002().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer));
+                        return string.Join(",", writer.Values);
+                    }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public TmEssentials.TimeInt32 TimeInt32(TmEssentials.TimeInt32 value) => new(Int32(value.TotalMilliseconds));
+                    public void TimeInt32(ref TmEssentials.TimeInt32 value) => value = TimeInt32(value);
+                    public void TimeInt32Nullable(ref TmEssentials.TimeInt32? value)
+                    {
+                        var milliseconds = Int32(value?.TotalMilliseconds ?? -1);
+                        value = milliseconds == -1 ? null : new TmEssentials.TimeInt32(milliseconds);
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              timeint Duration
+              timeint? OptionalDuration
+              int Counter
+            0x002
+              if Duration != 0
+                int Value
+            0x003
+              if 0 == Duration
+                int AtZero
+              if (Duration) > 0
+                int Positive
+              if OptionalDuration != 0
+                int OptionalValue
+              if CustomDuration == 0
+                int CustomValue
+              if Counter != 0
+                int CounterValue
+              if Duration.TotalMilliseconds != 0
+                int MillisecondsValue
+            0x004
+              timeint32 Temporary (local, write: Duration)
+              if Temporary == 0
+                int LocalValue
+              if Counter == 0
+                int Duration (local, write: 0)
+                if Duration != 0
+                  int ShadowedValue
+            archive Metadata
+              timeint Duration
+              if Duration != 0
+                int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var comparisons = Engine(result).GetRoot().DescendantNodes().OfType<IfStatementSyntax>()
+            .Select(x => x.Condition.NormalizeWhitespace().ToString()).ToArray();
+        await Assert.That(comparisons).Contains("n.Duration != TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("TimeInt32.Zero == n.Duration");
+        await Assert.That(comparisons).Contains("(n.Duration) > TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("n.OptionalDuration != TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("n.CustomDuration == TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("temporary == TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("Duration != TimeInt32.Zero");
+        await Assert.That(comparisons).Contains("n.Counter != 0");
+        await Assert.That(comparisons).Contains("n.Duration.TotalMilliseconds != 0");
+        await Assert.That(comparisons).Contains("duration != 0");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, [0])).IsEqualTo("");
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, [5])).IsEqualTo("42");
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, [-5])).IsEqualTo("42");
+    }
+
+    [Test]
     public async Task SupportsNullableUnixTimeFieldsInChunksAndArchives()
     {
         const string source = """
