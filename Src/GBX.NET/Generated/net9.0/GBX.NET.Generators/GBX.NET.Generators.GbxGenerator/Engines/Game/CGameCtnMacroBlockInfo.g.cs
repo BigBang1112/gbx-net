@@ -58,12 +58,62 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.cardEventsSpawns = value;
     }
 
+    private CGameCtnAnchoredObject[]? legacyAnchoredObjects;
+    [AppliedWithChunk<Chunk0310D003>]
+    public CGameCtnAnchoredObject[]? LegacyAnchoredObjects
+    {
+        get => this.legacyAnchoredObjects;
+        set => this.legacyAnchoredObjects = value;
+    }
+
+    private CGameCtnMacroBlockInfo[]? legacyMacroBlocks;
+    [AppliedWithChunk<Chunk0310D004>]
+    public CGameCtnMacroBlockInfo[]? LegacyMacroBlocks
+    {
+        get => this.legacyMacroBlocks;
+        set => this.legacyMacroBlocks = value;
+    }
+
+    private string[]? legacyDecalModelPaths;
+    [AppliedWithChunk<Chunk0310D005>]
+    public string[]? LegacyDecalModelPaths
+    {
+        get => this.legacyDecalModelPaths;
+        set => this.legacyDecalModelPaths = value;
+    }
+
+    private LegacyDecal[]? legacyDecals;
+    [AppliedWithChunk<Chunk0310D005>]
+    public LegacyDecal[]? LegacyDecals
+    {
+        get => this.legacyDecals;
+        set => this.legacyDecals = value;
+    }
+
     private byte[]? sceneDecals;
     [AppliedWithChunk<Chunk0310D006>]
     public byte[]? SceneDecals
     {
         get => this.sceneDecals;
         set => this.sceneDecals = value;
+    }
+
+    private CGameCtnMediaClipGroup? clipGroupInGame;
+    [AppliedWithChunk<Chunk0310D007>]
+    [AppliedWithChunk<Chunk0310D011>]
+    public CGameCtnMediaClipGroup? ClipGroupInGame
+    {
+        get => this.clipGroupInGame;
+        set => this.clipGroupInGame = value;
+    }
+
+    private CGameCtnMediaClipGroup? clipGroupEndRace;
+    [AppliedWithChunk<Chunk0310D007>]
+    [AppliedWithChunk<Chunk0310D011>]
+    public CGameCtnMediaClipGroup? ClipGroupEndRace
+    {
+        get => this.clipGroupEndRace;
+        set => this.clipGroupEndRace = value;
     }
 
     private CGameCtnAutoTerrain[]? autoTerrains;
@@ -90,6 +140,30 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.objectSpawns = value;
     }
 
+    private Int2[]? objectNeighbourPairsLegacy;
+    [AppliedWithChunk<Chunk0310D00E>(1, 2)]
+    public Int2[]? ObjectNeighbourPairsLegacy
+    {
+        get => this.objectNeighbourPairsLegacy;
+        set => this.objectNeighbourPairsLegacy = value;
+    }
+
+    private Int4[]? objectNeighbourPairs;
+    [AppliedWithChunk<Chunk0310D00E>(3)]
+    public Int4[]? ObjectNeighbourPairs
+    {
+        get => this.objectNeighbourPairs;
+        set => this.objectNeighbourPairs = value;
+    }
+
+    private Int3 offzoneOffset;
+    [AppliedWithChunk<Chunk0310D00F>]
+    public Int3 OffzoneOffset
+    {
+        get => this.offzoneOffset;
+        set => this.offzoneOffset = value;
+    }
+
     private Int3 offzoneTriggerSize = (3, 1, 3);
     [AppliedWithChunk<Chunk0310D00F>]
     public Int3 OffzoneTriggerSize
@@ -114,6 +188,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.iconSize = value;
     }
 
+    private Int3 clipOffset;
+    [AppliedWithChunk<Chunk0310D011>]
+    public Int3 ClipOffset
+    {
+        get => this.clipOffset;
+        set => this.clipOffset = value;
+    }
+
     private Int3 clipTriggerSize = (3, 1, 3);
     [AppliedWithChunk<Chunk0310D011>]
     public Int3 ClipTriggerSize
@@ -122,38 +204,30 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.clipTriggerSize = value;
     }
 
-    private CGameCtnMediaClipGroup? clipGroupInGame;
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupInGame
-    {
-        get => this.clipGroupInGame;
-        set => this.clipGroupInGame = value;
-    }
-
-    private CGameCtnMediaClipGroup? clipGroupEndRace;
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupEndRace
-    {
-        get => this.clipGroupEndRace;
-        set => this.clipGroupEndRace = value;
-    }
-
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMacroBlockInfo)clone).blockSpawns = context.CloneList(this.blockSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).blockSkinSpawns = context.CloneList(this.blockSkinSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).cardEventsSpawns = context.CloneList(this.cardEventsSpawns)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyAnchoredObjects = context.CloneArray(this.legacyAnchoredObjects)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyMacroBlocks = context.CloneArray(this.legacyMacroBlocks)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyDecalModelPaths = context.CloneArray(this.legacyDecalModelPaths)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyDecals = context.CloneArray(this.legacyDecals)!;
         ((CGameCtnMacroBlockInfo)clone).sceneDecals = context.CloneArray(this.sceneDecals)!;
+        ((CGameCtnMacroBlockInfo)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
+        ((CGameCtnMacroBlockInfo)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
         ((CGameCtnMacroBlockInfo)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
         ((CGameCtnMacroBlockInfo)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
         ((CGameCtnMacroBlockInfo)clone).objectSpawns = context.CloneList(this.objectSpawns)!;
+        ((CGameCtnMacroBlockInfo)clone).objectNeighbourPairsLegacy = context.CloneArray(this.objectNeighbourPairsLegacy)!;
+        ((CGameCtnMacroBlockInfo)clone).objectNeighbourPairs = context.CloneArray(this.objectNeighbourPairs)!;
+        ((CGameCtnMacroBlockInfo)clone).offzoneOffset = context.Clone(this.offzoneOffset)!;
         ((CGameCtnMacroBlockInfo)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
         ((CGameCtnMacroBlockInfo)clone).offzones = context.CloneArray(this.offzones)!;
         ((CGameCtnMacroBlockInfo)clone).iconSize = context.Clone(this.iconSize)!;
+        ((CGameCtnMacroBlockInfo)clone).clipOffset = context.Clone(this.clipOffset)!;
         ((CGameCtnMacroBlockInfo)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
-        ((CGameCtnMacroBlockInfo)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
-        ((CGameCtnMacroBlockInfo)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
     }
 
     public CGameCtnMacroBlockInfo()
@@ -223,6 +297,62 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// legacy object spawns
+    /// </summary>
+    [Chunk(0x0310D003, "legacy object spawns")]
+    public partial class Chunk0310D003 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public override uint Id => 0x0310D003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnAnchoredObject>(ref n.legacyAnchoredObjects!);
+        }
+    }
+
+    /// <summary>
+    /// legacy nested macroblocks
+    /// </summary>
+    [Chunk(0x0310D004, "legacy nested macroblocks")]
+    public partial class Chunk0310D004 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public override uint Id => 0x0310D004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnMacroBlockInfo>(ref n.legacyMacroBlocks!);
+        }
+    }
+
+    /// <summary>
+    /// legacy scene decals
+    /// </summary>
+    [Chunk(0x0310D005, "legacy scene decals")]
+    public partial class Chunk0310D005 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public override uint Id => 0x0310D005;
+        public int U01;
+        public int U02 = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0310D005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0310D005)clone).U02 = context.Clone(this.U02)!;
+        }
+    }
+
     [Chunk(0x0310D006)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
@@ -248,23 +378,22 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     public partial class Chunk0310D007 : Chunk<CGameCtnMacroBlockInfo>
     {
         public override uint Id => 0x0310D007;
-        public CGameCtnMediaClipGroup? U01;
-        public CGameCtnMediaClipGroup? U02;
-        public CMwNod? U03;
+        public int U01 = 3;
+        public CMwNod? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D007)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0310D007)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0310D007)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref U01);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref U02);
-            rw.NodeRef<CMwNod>(ref U03);
+            rw.Int32(ref U01);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+            rw.NodeRef<CMwNod>(ref U02);
         }
     }
 
@@ -289,6 +418,45 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             rw.ArrayNodeRef_deprec<CGameCtnAutoTerrain>(ref n.autoTerrains!);
             rw.Int32(ref U01);
             rw.Int32(ref U02);
+        }
+    }
+
+    /// <summary>
+    /// legacy macroblock junctions
+    /// </summary>
+    [Chunk(0x0310D009, "legacy macroblock junctions")]
+    public partial class Chunk0310D009 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public override uint Id => 0x0310D009;
+        public CMwNod[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0310D009)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CMwNod>(ref U01!);
+        }
+    }
+
+    [Chunk(0x0310D00A)]
+    public partial class Chunk0310D00A : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public override uint Id => 0x0310D00A;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0310D00A)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
         }
     }
 
@@ -362,6 +530,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                 rw.Int32(ref U05);
                 rw.Int32(ref U06);
                 rw.Int32(ref U07);
+                return;
             }
 
             if (Version >= 2)
@@ -374,7 +543,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     [Chunk(0x0310D00D)]
-    public partial class Chunk0310D00D : Chunk<CGameCtnMacroBlockInfo>, IVersionable
+    public partial class Chunk0310D00D : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
     {
         public override uint Id => 0x0310D00D;
         public int Version { get; set; }
@@ -401,15 +570,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D00E;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Int2[]? U01;
-        public Int4[]? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D00E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0310D00E)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0310D00E)clone).U02 = context.CloneArray(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
@@ -421,13 +586,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             {
                 if (Version >= 1)
                 {
-                    rw.Array<Int2>(ref U01!);
+                    rw.Array<Int2>(ref n.objectNeighbourPairsLegacy!);
                 }
             }
 
             if (Version >= 3)
             {
-                rw.Array<Int4>(ref U02!);
+                rw.Array<Int4>(ref n.objectNeighbourPairs!);
             }
         }
     }
@@ -439,19 +604,17 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D00F;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Int3 U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D00F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0310D00F)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int3(ref U01);
+            rw.Int3(ref n.offzoneOffset);
             rw.Int3(ref n.offzoneTriggerSize);
             rw.Array<BoxInt3>(ref n.offzones!);
         }
@@ -488,13 +651,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D011;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Int3 U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D011)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0310D011)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
@@ -503,7 +664,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.Int3(ref U02);
+                rw.Int3(ref n.clipOffset);
                 rw.Int3(ref n.clipTriggerSize);
                 rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
                 rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
@@ -511,14 +672,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    public partial class BlockSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class BlockSpawn : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private Ident? blockModel;
         public Ident? BlockModel
@@ -541,6 +697,34 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.direction = value;
         }
 
+        private int mobilIndex;
+        public int MobilIndex
+        {
+            get => this.mobilIndex;
+            set => this.mobilIndex = value;
+        }
+
+        private int mobilVariantIndex;
+        public int MobilVariantIndex
+        {
+            get => this.mobilVariantIndex;
+            set => this.mobilVariantIndex = value;
+        }
+
+        private bool isGround;
+        public bool IsGround
+        {
+            get => this.isGround;
+            set => this.isGround = value;
+        }
+
+        private int blockInfoVariantIndex;
+        public int BlockInfoVariantIndex
+        {
+            get => this.blockInfoVariantIndex;
+            set => this.blockInfoVariantIndex = value;
+        }
+
         private int flags;
         public int Flags
         {
@@ -555,11 +739,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.absolutePositionInMap = value;
         }
 
-        private Vec3 pitchYawRoll;
-        public Vec3 PitchYawRoll
+        private Vec3 yawPitchRoll;
+        public Vec3 YawPitchRoll
         {
-            get => this.pitchYawRoll;
-            set => this.pitchYawRoll = value;
+            get => this.yawPitchRoll;
+            set => this.yawPitchRoll = value;
         }
 
         private CGameWaypointSpecialProperty? waypoint;
@@ -569,18 +753,25 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.waypoint = value;
         }
 
-        private CMwNod? u01;
-        public CMwNod? U01
+        private CGameCtnChallenge? challenge;
+        public CGameCtnChallenge? Challenge
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.challenge;
+            set => this.challenge = value;
         }
 
-        private short u02;
-        public short U02
+        private byte color;
+        public byte Color
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.color;
+            set => this.color = value;
+        }
+
+        private byte lightmapQuality;
+        public byte LightmapQuality
+        {
+            get => this.lightmapQuality;
+            set => this.lightmapQuality = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -593,32 +784,45 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((BlockSpawn)clone).version = context.Clone(this.version)!;
+            ((BlockSpawn)clone).Version = context.Clone(this.Version)!;
             ((BlockSpawn)clone).blockModel = context.Clone(this.blockModel)!;
             ((BlockSpawn)clone).coord = context.Clone(this.coord)!;
             ((BlockSpawn)clone).direction = context.Clone(this.direction)!;
+            ((BlockSpawn)clone).mobilIndex = context.Clone(this.mobilIndex)!;
+            ((BlockSpawn)clone).mobilVariantIndex = context.Clone(this.mobilVariantIndex)!;
+            ((BlockSpawn)clone).isGround = context.Clone(this.isGround)!;
+            ((BlockSpawn)clone).blockInfoVariantIndex = context.Clone(this.blockInfoVariantIndex)!;
             ((BlockSpawn)clone).flags = context.Clone(this.flags)!;
             ((BlockSpawn)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
-            ((BlockSpawn)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
+            ((BlockSpawn)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
             ((BlockSpawn)clone).waypoint = context.Clone(this.waypoint)!;
-            ((BlockSpawn)clone).u01 = context.Clone(this.u01)!;
-            ((BlockSpawn)clone).u02 = context.Clone(this.u02)!;
+            ((BlockSpawn)clone).challenge = context.Clone(this.challenge)!;
+            ((BlockSpawn)clone).color = context.Clone(this.color)!;
+            ((BlockSpawn)clone).lightmapQuality = context.Clone(this.lightmapQuality)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Ident(ref this.blockModel);
 
-            if (Version< 2)
+            if (Version <= 1)
             {
                 rw.Int3(ref this.coord);
                 rw.EnumInt32<Direction>(ref this.direction);
+                rw.Int32(ref this.mobilIndex);
+                rw.Int32(ref this.mobilVariantIndex);
+                rw.Boolean(ref this.isGround);
+
+                if (Version >= 1)
+                {
+                    rw.Int32(ref this.blockInfoVariantIndex);
+                }
             }
 
-            if (Version>= 2)
+            if (Version >= 2)
             {
-                if (Version< 5)
+                if (Version <= 4)
                 {
                     rw.Byte3(ref this.coord);
                     rw.EnumByte<Direction>(ref this.direction);
@@ -626,14 +830,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
                 rw.Int32(ref this.flags);
 
-                if (Version>= 3)
+                if (Version >= 3)
                 {
-                    if (Version>= 5)
+                    if (Version >= 5)
                     {
                         if (((Flags>> 26) & 1) != 0)
                         {
                             rw.Vec3(ref this.absolutePositionInMap);
-                            rw.Vec3(ref this.pitchYawRoll);
+                            rw.Vec3(ref this.yawPitchRoll);
                         }
 
                         if (((Flags>> 26) & 1) == 0)
@@ -645,16 +849,21 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
                     rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
 
-                    if (Version>= 4)
+                    if (Version >= 4)
                     {
-                        if (Version< 6)
+                        if (Version <= 5)
                         {
-                            rw.NodeRef<CMwNod>(ref this.u01);
+                            rw.NodeRef<CGameCtnChallenge>(ref this.challenge);
                         }
 
-                        if (Version>= 8)
+                        if (Version >= 7)
                         {
-                            rw.Int16(ref this.u02);
+                            rw.Byte(ref this.color);
+                        }
+
+                        if (Version >= 8)
+                        {
+                            rw.Byte(ref this.lightmapQuality);
                         }
                     }
                 }
@@ -674,14 +883,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    public partial class BlockSkinSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class BlockSkinSpawn : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private CGameCtnBlockSkin? skin;
         public CGameCtnBlockSkin? Skin
@@ -690,14 +894,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.skin = value;
         }
 
-        private Int3 u01;
-        /// <summary>
-        /// its position?
-        /// </summary>
-        public Int3 U01
+        private Int3 coord;
+        public Int3 Coord
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.coord;
+            set => this.coord = value;
         }
 
         private int blockSpawnIndex;
@@ -717,20 +918,21 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((BlockSkinSpawn)clone).version = context.Clone(this.version)!;
+            ((BlockSkinSpawn)clone).Version = context.Clone(this.Version)!;
             ((BlockSkinSpawn)clone).skin = context.Clone(this.skin)!;
-            ((BlockSkinSpawn)clone).u01 = context.Clone(this.u01)!;
+            ((BlockSkinSpawn)clone).coord = context.Clone(this.coord)!;
             ((BlockSkinSpawn)clone).blockSpawnIndex = context.Clone(this.blockSpawnIndex)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.NodeRef<CGameCtnBlockSkin>(ref this.skin);
 
-            if (Version== 0)
+            if (Version == 0)
             {
-                rw.Int3(ref this.u01);
+                rw.Int3(ref this.coord);
+                return;
             }
 
             rw.Int32(ref this.blockSpawnIndex);
@@ -749,27 +951,22 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    public partial class CardEventsSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class CardEventsSpawn : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
+        public int Version { get; set; }
+
+        private Ident[]? cardEvents;
+        public Ident[]? CardEvents
         {
-            get => this.version;
-            set => this.version = value;
+            get => this.cardEvents;
+            set => this.cardEvents = value;
         }
 
-        private Ident[]? u01;
-        public Ident[]? U01
+        private Int3 coord;
+        public Int3 Coord
         {
-            get => this.u01;
-            set => this.u01 = value;
-        }
-
-        private Int3 u02;
-        public Int3 U02
-        {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.coord;
+            set => this.coord = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -782,16 +979,16 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((CardEventsSpawn)clone).version = context.Clone(this.version)!;
-            ((CardEventsSpawn)clone).u01 = context.CloneArray(this.u01)!;
-            ((CardEventsSpawn)clone).u02 = context.Clone(this.u02)!;
+            ((CardEventsSpawn)clone).Version = context.Clone(this.Version)!;
+            ((CardEventsSpawn)clone).cardEvents = context.CloneArray(this.cardEvents)!;
+            ((CardEventsSpawn)clone).coord = context.Clone(this.coord)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
-            rw.ArrayIdent(ref this.u01!);
-            rw.Int3(ref this.u02);
+            rw.VersionInt32(this);
+            rw.ArrayIdent(ref this.cardEvents!);
+            rw.Int3(ref this.coord);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -807,14 +1004,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    public partial class ObjectSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class ObjectSpawn : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private Ident? itemModel;
         public Ident? ItemModel
@@ -837,11 +1029,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.additionalDir = value;
         }
 
-        private Vec3 pitchYawRoll;
-        public Vec3 PitchYawRoll
+        private Vec3 yawPitchRoll;
+        public Vec3 YawPitchRoll
         {
-            get => this.pitchYawRoll;
-            set => this.pitchYawRoll = value;
+            get => this.yawPitchRoll;
+            set => this.yawPitchRoll = value;
         }
 
         private Int3 blockCoord;
@@ -865,11 +1057,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.absolutePositionInMap = value;
         }
 
-        private int u01;
-        public int U01
+        private int neighbourSpawnIndex = -1;
+        public int NeighbourSpawnIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.neighbourSpawnIndex;
+            set => this.neighbourSpawnIndex = value;
         }
 
         private int u02;
@@ -879,11 +1071,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.u02 = value;
         }
 
-        private short u03;
-        public short U03
+        private short flags;
+        public short Flags
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.flags;
+            set => this.flags = value;
         }
 
         private Vec3 pivotPosition;
@@ -900,7 +1092,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.waypoint = value;
         }
 
-        private float scale;
+        private float scale = 1;
         public float Scale
         {
             get => this.scale;
@@ -914,25 +1106,25 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.u04 = value;
         }
 
-        private byte u05;
-        public byte U05
+        private byte color;
+        public byte Color
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.color;
+            set => this.color = value;
         }
 
-        private byte u06;
-        public byte U06
+        private byte animPhaseOffset;
+        public byte AnimPhaseOffset
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.animPhaseOffset;
+            set => this.animPhaseOffset = value;
         }
 
-        private byte u07;
-        public byte U07
+        private byte lightmapQuality;
+        public byte LightmapQuality
         {
-            get => this.u07;
-            set => this.u07 = value;
+            get => this.lightmapQuality;
+            set => this.lightmapQuality = value;
         }
 
         private bool hasPackDesc;
@@ -980,24 +1172,24 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((ObjectSpawn)clone).version = context.Clone(this.version)!;
+            ((ObjectSpawn)clone).Version = context.Clone(this.Version)!;
             ((ObjectSpawn)clone).itemModel = context.Clone(this.itemModel)!;
             ((ObjectSpawn)clone).quarterY = context.Clone(this.quarterY)!;
             ((ObjectSpawn)clone).additionalDir = context.Clone(this.additionalDir)!;
-            ((ObjectSpawn)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
+            ((ObjectSpawn)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
             ((ObjectSpawn)clone).blockCoord = context.Clone(this.blockCoord)!;
             ((ObjectSpawn)clone).anchorTreeId = context.Clone(this.anchorTreeId)!;
             ((ObjectSpawn)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
-            ((ObjectSpawn)clone).u01 = context.Clone(this.u01)!;
+            ((ObjectSpawn)clone).neighbourSpawnIndex = context.Clone(this.neighbourSpawnIndex)!;
             ((ObjectSpawn)clone).u02 = context.Clone(this.u02)!;
-            ((ObjectSpawn)clone).u03 = context.Clone(this.u03)!;
+            ((ObjectSpawn)clone).flags = context.Clone(this.flags)!;
             ((ObjectSpawn)clone).pivotPosition = context.Clone(this.pivotPosition)!;
             ((ObjectSpawn)clone).waypoint = context.Clone(this.waypoint)!;
             ((ObjectSpawn)clone).scale = context.Clone(this.scale)!;
             ((ObjectSpawn)clone).u04 = context.Clone(this.u04)!;
-            ((ObjectSpawn)clone).u05 = context.Clone(this.u05)!;
-            ((ObjectSpawn)clone).u06 = context.Clone(this.u06)!;
-            ((ObjectSpawn)clone).u07 = context.Clone(this.u07)!;
+            ((ObjectSpawn)clone).color = context.Clone(this.color)!;
+            ((ObjectSpawn)clone).animPhaseOffset = context.Clone(this.animPhaseOffset)!;
+            ((ObjectSpawn)clone).lightmapQuality = context.Clone(this.lightmapQuality)!;
             ((ObjectSpawn)clone).hasPackDesc = context.Clone(this.hasPackDesc)!;
             ((ObjectSpawn)clone).hasForegroundPackDesc = context.Clone(this.hasForegroundPackDesc)!;
             ((ObjectSpawn)clone).packDesc = context.Clone(this.packDesc)!;
@@ -1007,68 +1199,74 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Ident(ref this.itemModel);
 
-            if (Version< 3)
+            if (Version <= 2)
             {
                 rw.Byte(ref this.quarterY);
 
-                if (Version>= 1)
+                if (Version >= 1)
                 {
                     rw.Byte(ref this.additionalDir);
                 }
             }
 
-            if (Version>= 3)
+            if (Version >= 3)
             {
-                rw.Vec3(ref this.pitchYawRoll);
+                rw.Vec3(ref this.yawPitchRoll);
             }
 
             rw.Int3(ref this.blockCoord);
             rw.Id(ref this.anchorTreeId);
             rw.Vec3(ref this.absolutePositionInMap);
 
-            if (Version< 5)
+            if (Version >= 2)
             {
-                rw.Int32(ref this.u01);
+                if (Version <= 4)
+                {
+                    rw.Int32(ref this.neighbourSpawnIndex);
+                }
             }
 
-            if (Version< 6)
+            if (Version >= 4)
             {
-                rw.Int32(ref this.u02);
+                if (Version <= 6)
+                {
+                    rw.Int32(ref this.u02);
+                }
             }
 
-            if (Version>= 6)
+            if (Version >= 6)
             {
-                rw.Int16(ref this.u03);
+                rw.Int16(ref this.flags);
 
-                if (Version>= 7)
+                if (Version >= 7)
                 {
                     rw.Vec3(ref this.pivotPosition);
 
-                    if (Version>= 8)
+                    if (Version >= 8)
                     {
                         rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
 
-                        if (Version>= 9)
+                        if (Version >= 9)
                         {
                             rw.Single(ref this.scale);
 
-                            if (Version>= 10)
+                            if (Version >= 10)
                             {
                                 rw.Int3(ref this.u04);
 
-                                if (Version>= 11)
+                                if (Version >= 11)
                                 {
-                                    rw.Byte(ref this.u05);
-                                    rw.Byte(ref this.u06);
+                                    rw.Byte(ref this.color);
+                                    rw.Byte(ref this.animPhaseOffset);
 
-                                    if (Version>= 12)
+                                    if (Version >= 12)
                                     {
-                                        rw.Byte(ref this.u07);
+                                        rw.Byte(ref this.lightmapQuality);
 
-                                        if (Version>= 13)
+                                        if (Version >= 13)
                                         {
                                             rw.Boolean(ref this.hasPackDesc, asByte: true);
                                             rw.Boolean(ref this.hasForegroundPackDesc, asByte: true);
@@ -1083,7 +1281,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                                                 rw.PackDesc(ref this.foregroundPackDesc);
                                             }
 
-                                            if (Version>= 14)
+                                            if (Version >= 14)
                                             {
                                                 rw.Int32(ref this.u10);
                                             }
@@ -1110,14 +1308,86 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    public partial class LegacyDecal : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int modelIndex;
+        public int ModelIndex
+        {
+            get => this.modelIndex;
+            set => this.modelIndex = value;
+        }
+
+        private string? groupId;
+        public string? GroupId
+        {
+            get => this.groupId;
+            set => this.groupId = value;
+        }
+
+        private Iso4 location;
+        public Iso4 Location
+        {
+            get => this.location;
+            set => this.location = value;
+        }
+
+        private Vec3 u01;
+        public Vec3 U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyDecal)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyDecal)clone).modelIndex = context.Clone(this.modelIndex)!;
+            ((LegacyDecal)clone).groupId = context.Clone(this.groupId)!;
+            ((LegacyDecal)clone).location = context.Clone(this.location)!;
+            ((LegacyDecal)clone).u01 = context.Clone(this.u01)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.modelIndex);
+            rw.Id(ref this.groupId);
+            rw.Iso4(ref this.location);
+            rw.Vec3(ref this.u01);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0310D000 => new Chunk0310D000(),
         0x0310D001 => new Chunk0310D001(),
         0x0310D002 => new Chunk0310D002(),
+        0x0310D003 => new Chunk0310D003(),
+        0x0310D004 => new Chunk0310D004(),
+        0x0310D005 => new Chunk0310D005(),
         0x0310D006 => new Chunk0310D006(),
         0x0310D007 => new Chunk0310D007(),
         0x0310D008 => new Chunk0310D008(),
+        0x0310D009 => new Chunk0310D009(),
+        0x0310D00A => new Chunk0310D00A(),
         0x0310D00B => new Chunk0310D00B(),
         0x0310D00C => new Chunk0310D00C(),
         0x0310D00D => new Chunk0310D00D(),
