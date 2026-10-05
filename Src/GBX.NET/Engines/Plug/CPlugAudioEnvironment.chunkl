@@ -32,10 +32,10 @@ CPlugAudioEnvironment 0x09039000
   bool ModulationTimeScale
   bool DecayHFLimitScale
 
-0x001
+0x001 [TMF]
   float DopplerFactor
 
-0x002 
+0x002 [TMF]
   float SizeFactor
   float Diffusion
   float Gain

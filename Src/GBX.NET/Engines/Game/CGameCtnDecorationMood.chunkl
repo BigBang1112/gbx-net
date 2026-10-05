@@ -1,18 +1,18 @@
 CGameCtnDecorationMood 0x0303A000
 
-0x000
+0x000 [TMF]
   float Latitude
   float Longitude
   float DeltaGMT
   timeint TimeSunRise
   timeint TimeSunFall
 
-0x001
+0x001 [TMF]
   float RemappedStartDayTime
   CPlugGameSkin? Remapping (external)
   string? RemapFolder
 
-0x002
+0x002 [TMF]
   int ShadowCountCarHuman
   int ShadowCountCarOpponent
   float ShadowCarIntensity
@@ -22,10 +22,10 @@ CGameCtnDecorationMood 0x0303A000
 0x003
   bool SolidLightAreSkinned
 
-0x004
+0x004 [TMF]
   CHmsLightMap HmsLightMap (external)
 
-0x005
+0x005 [TMF]
   CHmsAmbientOcc HmsAmbientOcc (external)
 
 0x006

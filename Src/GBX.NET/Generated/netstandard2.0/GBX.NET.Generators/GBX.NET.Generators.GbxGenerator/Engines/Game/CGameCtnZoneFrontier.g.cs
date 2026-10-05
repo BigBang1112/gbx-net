@@ -136,9 +136,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0305E001 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

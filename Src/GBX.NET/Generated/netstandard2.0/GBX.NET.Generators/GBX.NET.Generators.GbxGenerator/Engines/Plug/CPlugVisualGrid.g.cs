@@ -80,9 +80,11 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     }
 
     [Chunk(0x0903B000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0903B000 : Chunk<CPlugVisualGrid>
     {
         public override uint Id => 0x0903B000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

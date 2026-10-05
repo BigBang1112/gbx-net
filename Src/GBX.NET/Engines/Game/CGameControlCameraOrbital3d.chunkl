@@ -29,7 +29,7 @@ CGameControlCameraOrbital3d 0x0306E000
 0x004
   float FovKeySensitivity
 
-0x005
+0x005 [TMF]
   vec3 RadiusScale
   vec2 RotateSpeed
   bool OcclusionIsEnable
@@ -49,8 +49,8 @@ CGameControlCameraOrbital3d 0x0306E000
   float WheelSensitivity
   float FovKeySensitivity
 
-0x006
+0x006 [TMF]
   float ZoomKeySensitivity
 
-0x007
+0x007 [TMF]
   float DefaultRadius

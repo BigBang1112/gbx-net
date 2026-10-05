@@ -5,7 +5,7 @@ CGameCtnMediaBlockFxBloom 0x03083000
   timefloat Start
   timefloat End
 
-0x001
+0x001 [TMF]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

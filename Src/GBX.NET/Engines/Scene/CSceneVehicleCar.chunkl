@@ -20,7 +20,7 @@ CSceneVehicleCar 0x0A02B000
   CMwNod
   CMwNod
 
-0x00C
+0x00C [TMF]
   float
   float
   box

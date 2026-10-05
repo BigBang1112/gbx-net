@@ -80,9 +80,11 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     }
 
     [Chunk(0x0A01F000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A01F000 : Chunk<CSceneMessageHandler>
     {
         public override uint Id => 0x0A01F000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -96,9 +98,11 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     }
 
     [Chunk(0x0A01F001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A01F001 : Chunk<CSceneMessageHandler>
     {
         public override uint Id => 0x0A01F001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

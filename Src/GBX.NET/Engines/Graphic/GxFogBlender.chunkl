@@ -1,6 +1,6 @@
 GxFogBlender 0x04008000
 
-0x000
+0x000 [TMF]
   bool
   int
   Key[] Keys (list)

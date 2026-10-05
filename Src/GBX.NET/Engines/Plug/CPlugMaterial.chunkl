@@ -1,7 +1,7 @@
 CPlugMaterial 0x09079000
 - inherits: CPlug
 
-0x001
+0x001 [TMF]
   CMwNod
 
 0x002
@@ -10,7 +10,7 @@ CPlugMaterial 0x09079000
 0x004
   DeviceMat[] DeviceMaterials (version: 0x004)
 
-0x007
+0x007 [TMF]
   CPlugMaterialCustom CustomMaterial
 
 0x009
@@ -18,13 +18,13 @@ CPlugMaterial 0x09079000
 0x00A
   int
 
-0x00D
+0x00D [TMF]
 
-0x00E
+0x00E [TMF]
   short<CPlugSurface.MaterialId> SurfaceId
   short
 
-0x00F
+0x00F [TMF]
   int
 
 0x010

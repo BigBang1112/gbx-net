@@ -350,9 +350,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     [Chunk(0x090E5000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E5000 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
         public float U01;
 
@@ -411,9 +413,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     [Chunk(0x090E5001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E5001 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

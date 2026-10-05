@@ -1,5 +1,5 @@
 CMotions 0x08028000
 - inherits: CMotion
 
-0x001
+0x001 [TMF]
   CMotion[] Motions (list)

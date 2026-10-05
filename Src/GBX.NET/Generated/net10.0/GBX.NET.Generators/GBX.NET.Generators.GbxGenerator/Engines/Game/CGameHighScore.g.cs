@@ -98,9 +98,11 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     [Chunk(0x03047002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03047002 : Chunk<CGameHighScore>
     {
         public override uint Id => 0x03047002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

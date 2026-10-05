@@ -176,9 +176,11 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     [Chunk(0x0901D002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901D002 : Chunk0901D000
     {
         public override uint Id => 0x0901D002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

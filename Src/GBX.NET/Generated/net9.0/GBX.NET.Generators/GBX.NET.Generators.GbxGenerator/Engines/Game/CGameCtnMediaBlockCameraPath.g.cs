@@ -90,9 +90,11 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
     }
 
     [Chunk(0x030A1002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraPath>
     {
         public override uint Id => 0x030A1002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

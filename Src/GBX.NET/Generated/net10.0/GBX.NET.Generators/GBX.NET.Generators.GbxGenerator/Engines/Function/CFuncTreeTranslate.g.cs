@@ -71,9 +71,11 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     }
 
     [Chunk(0x0500D000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0500D000 : Chunk<CFuncTreeTranslate>
     {
         public override uint Id => 0x0500D000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -88,9 +90,11 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     }
 
     [Chunk(0x0500D001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0500D001 : Chunk<CFuncTreeTranslate>
     {
         public override uint Id => 0x0500D001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

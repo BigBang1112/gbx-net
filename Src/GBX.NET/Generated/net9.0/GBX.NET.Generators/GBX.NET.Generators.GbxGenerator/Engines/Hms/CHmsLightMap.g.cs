@@ -44,9 +44,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06021001 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CPlugPointsInSphereOpt? U01;
         public Components.GbxRefTableFile? U01File;
 
@@ -63,9 +65,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06021002 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CMwNod? U01;
         public Components.GbxRefTableFile? U01File;
 
@@ -82,9 +86,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06021003 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021003;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CHmsLightMapMood? U01;
         public Components.GbxRefTableFile? U01File;
 

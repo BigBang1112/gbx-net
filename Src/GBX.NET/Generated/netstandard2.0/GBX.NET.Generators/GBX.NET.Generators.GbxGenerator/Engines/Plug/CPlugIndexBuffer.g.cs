@@ -46,9 +46,11 @@ public partial class CPlugIndexBuffer : CPlug, IClass
     }
 
     [Chunk(0x09057000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09057000 : Chunk<CPlugIndexBuffer>
     {
         public override uint Id => 0x09057000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

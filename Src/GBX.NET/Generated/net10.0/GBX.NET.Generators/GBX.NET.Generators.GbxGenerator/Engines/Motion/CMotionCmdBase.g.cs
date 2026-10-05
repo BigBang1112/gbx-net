@@ -44,9 +44,11 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     [Chunk(0x08029002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk08029002 : Chunk<CMotionCmdBase>
     {
         public override uint Id => 0x08029002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public float U02;
         public int U03;

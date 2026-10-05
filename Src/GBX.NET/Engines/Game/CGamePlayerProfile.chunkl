@@ -4,7 +4,7 @@
   string OnlineLogin
   string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 
-0x038
+0x038 [TMF]
   string CurrentSoloPlaylistName
   string CurrentSoloPlaylistPath
   bool
@@ -14,7 +14,7 @@
   vec3
   vec3
 
-0x03B // crypted
+0x03B [TMF] // crypted
   byte
   byte
   int
@@ -36,31 +36,31 @@
   string
   bool
 
-0x040
+0x040 [TMF]
   systemtime
 
-0x041
+0x041 [TMF]
   bool AutoConnect
 
-0x043
+0x043 [TMF]
   VehicleProfile[] VehicleProfiles
 
-0x044
+0x044 [TMF]
   bool IsShowPlayerGhost
 
-0x047
+0x047 [TMF]
   CGameNetOnlineMessage[] InboxMessages (deprec)
   CGameNetOnlineMessage[] ReadMessages (deprec)
   CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x04A
+0x04A [TMF]
   CSceneMobil[] // might be false
   int
 
-0x04B
+0x04B [TMF]
   CInputBindingsConfig BindingsConfig
 
-0x04C // LeagueManager
+0x04C [TMF] // LeagueManager
   byte U01
   int U02
   bool U03
@@ -68,62 +68,62 @@
     systemtime
     CGameLeague[] Leagues (deprec)
 
-0x04D
+0x04D [TMF]
   systemtime
 
-0x050
+0x050 [TMF]
   int
   int
 
-0x052 (skippable)
+0x052 (skippable) [TMF]
   string
   string
 
-0x053
+0x053 [TMF]
   string
 
-0x054
+0x054 [TMF]
   bool
 
-0x056
+0x056 [TMF]
   version
   CGameBuddy[] Buddies
 
-0x058
+0x058 [TMF]
   bool AskOpponents
 
-0x059
+0x059 [TMF]
   bool LockHigherDifficulties
 
-0x05A (skippable)
+0x05A (skippable) [TMF]
   float
 
-0x05B
+0x05B [TMF]
   string ProfileName
   string NickName (formatted)
   id
   int
   int
 
-0x05E
+0x05E [TMF]
   CGameCtnMediaShootParams ShootParams
 
-0x05F
+0x05F [TMF]
   int
 
-0x060 (skippable)
+0x060 (skippable) [TMF]
   float
   float = 1
   float
 
-0x061
+0x061 [TMF]
   string
 
-0x062 // ArchiveBindingsForCompat
+0x062 [TMF] // ArchiveBindingsForCompat
   int
   CInputBindingsConfig BindingsForCompatConfig
 
-0x063 (skippable)
+0x063 (skippable) [TMF]
   bool EnableChat
   bool EnableAvatars
   bool EnableCarSkinGeom
@@ -135,35 +135,35 @@
   bool UnlockAllCheat
   bool
 
-0x064 // PlayerTagsConfig
+0x064 [TMF] // PlayerTagsConfig
   int
   PlayerTagConfig[] PlayerTags
   int[]
 
-0x065
+0x065 [TMF]
   int
 
 0x066
   bool
 
-0x068
+0x068 [TMF]
 
-0x069
+0x069 [TMF]
 
-0x06A
+0x06A [TMF]
   bool
 
-0x06B
+0x06B [TMF]
   bool
 
-0x06C
+0x06C [TMF]
   int
 
 0x07C (skippable)
 
 0x07E (skippable)
 
-0x240B5003 (not-remapped)
+0x240B5003 (not-remapped) [TMF]
   string
   string
   string
@@ -181,16 +181,16 @@
   id
   id
 
-0x240B5004 (not-remapped)
+0x240B5004 (not-remapped) [TMF]
   CGameCtnChallenge[]
 
-0x240B5006 (not-remapped)
+0x240B5006 (not-remapped) [TMF]
   ChallengeOpponent[] ChallengeOpponents
 
-0x240B5007 (not-remapped)
+0x240B5007 (not-remapped) [TMF]
   CampaignUnlock[] CampaignUnlocks
 
-0x240B5009 (not-remapped)
+0x240B5009 (not-remapped) [TMF]
   bool U01
   bool U02
   int U03
@@ -207,44 +207,44 @@
   int
   bool
 
-0x240B500B (not-remapped)
+0x240B500B (not-remapped) [TMF]
   CGameCtnCampaign[] (deprec)
 
-0x240B500C (not-remapped)
+0x240B500C (not-remapped) [TMF]
   ident[]
 
-0x240B500D (not-remapped)
+0x240B500D (not-remapped) [TMF]
   bool
   bool
   bool
 
-0x240B500E (not-remapped)
+0x240B500E (not-remapped) [TMF]
   int
   int
 
-0x240B500F (not-remapped)
+0x240B500F (not-remapped) [TMF]
   int[]
 
-0x240B5010 (not-remapped)
+0x240B5010 (not-remapped) [TMF]
   bool
 
-0x240B5011 (not-remapped)
+0x240B5011 (not-remapped) [TMF]
   int[]
 
-0x240B5012 (not-remapped)
+0x240B5012 (not-remapped) [TMF]
   bool
 
-0x240B5013 (not-remapped)
+0x240B5013 (not-remapped) [TMF]
   bool
   bool
   bool
   bool
   bool
 
-0x240B5014 (not-remapped)
+0x240B5014 (not-remapped) [TMF]
   int
 
-0x240B5015 (not-remapped)
+0x240B5015 (not-remapped) [TMF]
   SoloChallengesCurrentPage[]
 
 archive VehicleProfile

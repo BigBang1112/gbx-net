@@ -1,16 +1,16 @@
 CGameAdvertising 0x0303D000
 - inherits: CGameNod
 
-0x001
+0x001 [TMF]
   CMwNod[] Files (external)
 
 0x002
   CMwNod[] FilesOrig (external)
 
-0x003
+0x003 [TMF]
   int<EMode> Mode
 
-0x004
+0x004 [TMF]
   string Radial_Config
 
 enum EMode

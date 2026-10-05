@@ -6,7 +6,7 @@ CPlugShader 0x09002000
   CPlugShaderPass[] Passes
   CMwNod U01
 
-0x00E (base: 0x007)
+0x00E (base: 0x007) [TMF]
   base
   CMwNod[] U02 (external)
 

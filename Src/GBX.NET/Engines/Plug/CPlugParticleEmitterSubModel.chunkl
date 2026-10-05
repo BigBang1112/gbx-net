@@ -1,6 +1,6 @@
 CPlugParticleEmitterSubModel 0x090B2000
 
-0x011
+0x011 [TMF]
   CPlugMaterial Material (external)
   if Material == null && MaterialFile == null
     CPlugShader Shader (external)
@@ -48,7 +48,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   int CircularTrailVertPerPartCount
   int
 
-0x013
+0x013 [TMF]
   int
   float
   float
@@ -59,7 +59,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
 
-0x015
+0x015 [TMF]
   bool SizeBirthUseIntensity
   bool ColorBirthUseIntensity
   bool TransparencyBirthUseIntensity
@@ -67,44 +67,44 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
 
-0x016
+0x016 [TMF]
   float SizeBirthEmissionZoneScale
   int
 
-0x017
+0x017 [TMF]
   float FluidFrictionBirthIntensityBase
   bool FluidFrictionBirthUseIntensity
 
-0x018
+0x018 [TMF]
   CFuncEnvelope IntensityFilter
 
-0x019
+0x019 [TMF]
   id
 
-0x01A
+0x01A [TMF]
   CMwNod
 
-0x01B
+0x01B [TMF]
   bool MultiState_IsAsyncLink
   bool
 
-0x01C
+0x01C [TMF]
   int TextureAtlas
   int TextureAtlasDimX
   int TextureAtlasDimY
   int TextureAtlasFixedIndex
 
-0x01D
+0x01D [TMF]
   float
   float
 
-0x01E
+0x01E [TMF]
   float
 
-0x01F
+0x01F [TMF]
   float BeamLengthSpeedScale
 
-0x020
+0x020 [TMF]
   bool PrecalcEnabled
   int PrecalcPartCount
   int PrecalcSampleRate
@@ -112,13 +112,13 @@ CPlugParticleEmitterSubModel 0x090B2000
   float CollisionBounce
   float CollisionRadius
 
-0x021
+0x021 [TMF]
   float CollisionDamper
 
-0x022
+0x022 [TMF]
   bool SortSprites
 
-0x023
+0x023 [TMF]
   bool
 
 0x02D

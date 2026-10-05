@@ -53,9 +53,11 @@ public partial class CFuncShaders : CFuncShader, IClass
     }
 
     [Chunk(0x05014000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05014000 : Chunk<CFuncShaders>
     {
         public override uint Id => 0x05014000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

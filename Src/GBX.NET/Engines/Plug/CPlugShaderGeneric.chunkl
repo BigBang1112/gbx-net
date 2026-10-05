@@ -7,5 +7,5 @@ CPlugShaderGeneric 0x09004000
 0x002
   data[88]
 
-0x003
+0x003 [TMF]
   data[88]

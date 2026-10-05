@@ -1,40 +1,40 @@
 CControlStyle 0x07017000
 
-0x000
+0x000 [TMF]
   CMwCmdBlockMain FocusGainedScript
   CMwCmdBlockMain FocusLostScript
   CPlugSound FocusSound (external)
   CMwNod
   CMwNod
 
-0x004
+0x004 [TMF]
   CPlugSound EntrySound
 
-0x009
+0x009 [TMF]
   CPlugShader DefaultShader
 
-0x00B
+0x00B [TMF]
   bool FitTextSize
   int
   int
 
-0x00C
+0x00C [TMF]
   id
 
-0x00D
+0x00D [TMF]
   CPlugSound EnumSound
   CPlugShader EnumListShader
   int EnumMaxElemCount
   float EnumIconWidth
   float EnumIconHeight
 
-0x00E
+0x00E [TMF]
   CPlugSound ActionSound (external)
   float ButtonIconWidth
   float ButtonIconHeight
   CFuncEnum ButtonDefaultIcons (external)
 
-0x010
+0x010 [TMF]
   CPlugSound EnumSound
   CPlugShader EnumListShader
   int EnumMaxElemCount
@@ -43,7 +43,7 @@ CControlStyle 0x07017000
   int EnumForceDisplayType
   CFuncEnum EnumForceIcons (external)
 
-0x014
+0x014 [TMF]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -52,7 +52,7 @@ CControlStyle 0x07017000
   vec4 QuadGradientColor1
   vec4 QuadLinesColor
 
-0x015
+0x015 [TMF]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -62,10 +62,10 @@ CControlStyle 0x07017000
   vec2 Quad_UvTopLeft
   vec2 Quad_UvBottomRight
 
-0x016
+0x016 [TMF]
   CControlEffectMaster EffectMaster (external)
 
-0x017
+0x017 [TMF]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -76,11 +76,11 @@ CControlStyle 0x07017000
   vec2 Quad_UvBottomRight
   float Skew
 
-0x018
+0x018 [TMF]
   vec4 LineGradientColor0
   vec4 LineGradientColor1
 
-0x01B
+0x01B [TMF]
   CPlugFont Font (external)
   float
   float
@@ -88,7 +88,7 @@ CControlStyle 0x07017000
   STextSettings_ColorAndChars
   STextSettings_ColorAndChars
 
-0x01C
+0x01C [TMF]
   float SliderBarWidth
   float SliderBarHeight
   float SliderCursorWidth
@@ -97,7 +97,7 @@ CControlStyle 0x07017000
   CFuncEnum SliderBarIcons (external)
   CFuncEnum SliderCursorIcons (external)
 
-0x01D
+0x01D [TMF]
   bool FocusAreaEnable
   CPlugMaterial FocusAreaMaterial (external)
   CPlugMaterial FocusAreaMaterialReadOnly (external)
@@ -110,7 +110,7 @@ CControlStyle 0x07017000
   CPlugSolid FocusAreaSolid
   float FocusAreaZOffset
 
-0x01E
+0x01E [TMF]
   id ButtonDefaultIconId
 
 archive STextSettings_ColorAndChars

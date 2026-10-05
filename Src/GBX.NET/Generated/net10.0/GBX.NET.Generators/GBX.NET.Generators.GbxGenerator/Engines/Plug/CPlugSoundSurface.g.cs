@@ -44,10 +44,12 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     [Chunk(0x0905E000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0905E000 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E000;
         public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

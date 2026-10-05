@@ -79,10 +79,12 @@ public partial class CScene2d : CScene, IClass
     }
 
     [Chunk(0x0A002003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A002003 : Chunk<CScene2d>
     {
         public override uint Id => 0x0A002003;
         public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

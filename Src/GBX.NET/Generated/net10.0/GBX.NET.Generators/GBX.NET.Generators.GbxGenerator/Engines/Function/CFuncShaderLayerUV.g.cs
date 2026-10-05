@@ -53,9 +53,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015005 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015005;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -72,9 +74,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015009)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015009 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015009;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Vec2 U01;
         public Vec2 U02;
 
@@ -93,9 +97,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x0501500A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0501500A : Chunk05015009
     {
         public override uint Id => 0x0501500A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Vec2 U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -112,9 +118,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x0501500D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0501500D : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x0501500D;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Vec2 U01;
         public Vec2 U02;
         public Vec2 U03;
@@ -136,9 +144,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015011)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015011 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015011;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public bool U03;
@@ -190,9 +200,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015013)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015013 : Chunk0501500A
     {
         public override uint Id => 0x05015013;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -201,9 +213,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015014)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015014 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015014;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Vec2 U01;
         public float U02;
         public float U03;
@@ -225,9 +239,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015015)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015015 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015015;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public int U03;
@@ -252,9 +268,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     [Chunk(0x05015016)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05015016 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015016;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

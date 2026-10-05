@@ -54,9 +54,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     [Chunk(0x13006000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk13006000 : Chunk<CInputBindingsConfig>
     {
         public override uint Id => 0x13006000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -73,9 +75,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     [Chunk(0x13006001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk13006001 : Chunk<CInputBindingsConfig>
     {
         public override uint Id => 0x13006001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

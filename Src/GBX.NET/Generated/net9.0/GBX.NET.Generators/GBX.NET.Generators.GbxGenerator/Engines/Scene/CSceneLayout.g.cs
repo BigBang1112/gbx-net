@@ -326,9 +326,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A00300C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A00300C : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A00300C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -344,9 +346,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003010)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A003010 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003010;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -361,9 +365,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003014)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A003014 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003014;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public bool U02;
         public BoxAligned U03;
@@ -400,9 +406,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003018)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A003018 : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A003018;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
         public CSceneObject[]? U01;
         public SceneLoc[]? U02;

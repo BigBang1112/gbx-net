@@ -1,11 +1,11 @@
 CGameCtnDecorationSize 0x0303B000
 
-0x000
+0x000 [TMF]
   vec2 EditionZoneMin
   vec2 EditionZoneMax
   float
 
-0x001
+0x001 [TMF]
   int BaseHeightBase
   int3 Size
   CSceneLayout Scene (external)

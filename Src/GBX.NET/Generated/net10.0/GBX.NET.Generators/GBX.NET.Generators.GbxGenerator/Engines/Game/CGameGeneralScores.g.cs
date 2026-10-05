@@ -44,9 +44,11 @@ public partial class CGameGeneralScores : CMwNod, IClass
     }
 
     [Chunk(0x03065001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03065001 : Chunk<CGameGeneralScores>, IVersionable
     {
         public override uint Id => 0x03065001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
         public Unknown[]? U01;
 

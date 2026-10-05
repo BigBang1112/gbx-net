@@ -425,9 +425,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     [Chunk(0x0306B00A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306B00A : Chunk<CGameControlCamera>
     {
         public override uint Id => 0x0306B00A;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -441,9 +443,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     [Chunk(0x0306B00B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306B00B : Chunk<CGameControlCamera>
     {
         public override uint Id => 0x0306B00B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

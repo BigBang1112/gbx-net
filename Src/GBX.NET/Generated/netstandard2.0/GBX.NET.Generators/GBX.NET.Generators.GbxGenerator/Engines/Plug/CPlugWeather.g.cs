@@ -323,9 +323,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E007 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E007;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -334,9 +336,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E00B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E00B : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E00B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public int U03;
@@ -367,9 +371,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E00D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E00D : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E00D;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Vec2 U01;
         public Vec2 U02;
         public Vec2 U03;
@@ -398,9 +404,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E00E)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E00E : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E00E;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public byte[]? U01;
         public byte[]? U02;
         public string? U03;
@@ -441,9 +449,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E00F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E00F : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E00F;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -457,9 +467,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E011)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E011 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E011;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -473,9 +485,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E013)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E013 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E013;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -489,9 +503,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E014)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E014 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E014;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -505,9 +521,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E016)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E016 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E016;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -521,9 +539,11 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     [Chunk(0x0917E017)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0917E017 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E017;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

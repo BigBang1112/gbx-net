@@ -99,9 +99,11 @@ public partial class CFuncLightColor : CFuncLight, IClass
     }
 
     [Chunk(0x05019002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk05019002 : Chunk05019001
     {
         public override uint Id => 0x05019002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

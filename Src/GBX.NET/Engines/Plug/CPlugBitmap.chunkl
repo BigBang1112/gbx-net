@@ -31,13 +31,13 @@ CPlugBitmap 0x09011000
   if Image != null
     CMwNod
 
-0x019
+0x019 [TMF]
   float BumpScaleMipLevel
 
 0x01B
   uint Flags2
 
-0x01C
+0x01C [TMF]
   vec2 DefaultTexCoordScale
   vec2 DefaultTexCoordTrans
   float DefaultTexCoordRotate
@@ -46,24 +46,24 @@ CPlugBitmap 0x09011000
   int16
   int16
 
-0x01E
+0x01E [TMF]
   vec2[] AtlasCountUVs
 
 0x01F
   uint Flags2
 
-0x020
+0x020 [TMF]
   float[] MipMapFadeAlphas
 
 0x021
   uint
 
-0x022 (base: 0x018)
+0x022 (base: 0x018) [TMF]
 
-0x023
+0x023 [TMF]
   uint
 
-0x024
+0x024 [TMF]
   uint Flags2
 
 0x025 (base: 0x01C)

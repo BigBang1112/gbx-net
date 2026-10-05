@@ -53,9 +53,11 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
     }
 
     [Chunk(0x08037000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk08037000 : Chunk<CMotionSkel>
     {
         public override uint Id => 0x08037000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

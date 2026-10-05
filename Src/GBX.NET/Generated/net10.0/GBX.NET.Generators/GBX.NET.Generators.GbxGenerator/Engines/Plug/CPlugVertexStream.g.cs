@@ -59,9 +59,11 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     [Chunk(0x09056000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09056000 : Chunk<CPlugVertexStream>
     {
         public override uint Id => 0x09056000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

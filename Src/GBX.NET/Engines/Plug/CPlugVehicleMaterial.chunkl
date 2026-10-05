@@ -7,11 +7,11 @@ CPlugVehicleMaterial 0x090F1000
   float VibrationSpeedCoef
   float VibrationMax
 
-0x004
+0x004 [TMF]
   CPlugBitmap MaterialHeightDetailBitmap (external)
   vec2 MaterialHeightDetailScale
 
-0x005
+0x005 [TMF]
   float Speed
   float Grip
   float AccelerationCoef
@@ -43,12 +43,12 @@ CPlugVehicleMaterial 0x090F1000
 0x00D
   CPlugParticleEmitterModel (external)
 
-0x00E
+0x00E [TMF]
   byte MaterialId
   float VibrationSpeedCoef
   float VibrationMax
 
-0x00F
+0x00F [TMF]
   float
   float
 

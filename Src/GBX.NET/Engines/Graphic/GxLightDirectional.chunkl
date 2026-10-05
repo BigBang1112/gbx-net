@@ -5,18 +5,18 @@ GxLightDirectional 0x04007000
   bool UseBoundaryHint
   vec3 BoundaryHintPos
 
-0x002 (base: 0x001)
+0x002 (base: 0x001) [TMF]
   base
   float DazzleAngleMax
   float DazzleIntensity
 
-0x003
+0x003 [TMF]
   vec3 DblSidedRGB
 
-0x004
+0x004 [TMF]
   vec3 ReverseRGB
   float ReverseIntens
 
-0x005
+0x005 [TMF]
   float EmittAngularSize
   float FlareAngularSize

@@ -302,9 +302,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306E005 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E005;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public bool U02;
         public float U03;
@@ -341,9 +343,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306E006 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -357,9 +361,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306E007 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E007;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

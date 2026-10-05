@@ -1,7 +1,7 @@
 CGameCtnBlockInfoClip 0x03053000
 - inherits: CGameCtnBlockInfo
 
-0x002
+0x002 [TMF]
   id ASymmetricalClipId
 
 0x004

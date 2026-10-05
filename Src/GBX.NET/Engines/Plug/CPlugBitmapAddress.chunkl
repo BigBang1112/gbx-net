@@ -14,7 +14,7 @@ CPlugBitmapAddress 0x09047000
 
 0x005 (base: 0x004)
 
-0x007
+0x007 [TMF]
   uint
   int
   byte
@@ -27,5 +27,5 @@ CPlugBitmapAddress 0x09047000
   int
   float
 
-0x009
+0x009 [TMF]
   float BumpEnvScale

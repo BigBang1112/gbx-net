@@ -1,6 +1,6 @@
 CPlugCharPhySpecialProperty 0x090F2000
 
-0x000
+0x000 [TMF]
   version
   int
   v1-

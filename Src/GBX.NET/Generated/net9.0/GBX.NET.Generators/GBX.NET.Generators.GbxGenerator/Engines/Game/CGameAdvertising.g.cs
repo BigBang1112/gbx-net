@@ -80,9 +80,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303D001 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -112,9 +114,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303D003 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -128,9 +132,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303D004 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D004;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

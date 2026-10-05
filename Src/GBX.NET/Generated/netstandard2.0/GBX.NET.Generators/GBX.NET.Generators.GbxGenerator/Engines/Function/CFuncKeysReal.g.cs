@@ -117,9 +117,11 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     [Chunk(0x0501A001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0501A001 : Chunk<CFuncKeysReal>
     {
         public override uint Id => 0x0501A001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

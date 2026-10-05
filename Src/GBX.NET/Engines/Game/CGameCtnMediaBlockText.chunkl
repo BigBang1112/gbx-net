@@ -1,11 +1,11 @@
 CGameCtnMediaBlockText 0x030A8000
 - inherits: CGameCtnMediaBlock
 
-0x001 [TM2020] // text
+0x001 [TMF, TM2020] // text
   string Text
   CControlEffectSimi Effect
 
-0x002 [TM2020] // color
+0x002 [TMF, TM2020] // color
   vec3 Color
 
 0x003

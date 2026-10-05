@@ -1,6 +1,6 @@
 CGameHighScore 0x03047000
 
-0x002
+0x002 [TMF]
   int Time
   int Rank
   int Count

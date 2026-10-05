@@ -1,5 +1,5 @@
 CGameCtnBlockInfoRoad 0x03052000
 - inherits: CGameCtnBlockInfo
 
-0x000
+0x000 [TMF]
   CGameCtnBlockInfoSlope Slope (external)

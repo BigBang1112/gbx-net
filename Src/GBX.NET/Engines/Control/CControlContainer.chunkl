@@ -1,7 +1,7 @@
 CControlContainer 0x07002000
 - inherits: CControlBase
 
-0x005
+0x005 [TMF]
   bool AcceptOwnControls
   bool UseScript
   int

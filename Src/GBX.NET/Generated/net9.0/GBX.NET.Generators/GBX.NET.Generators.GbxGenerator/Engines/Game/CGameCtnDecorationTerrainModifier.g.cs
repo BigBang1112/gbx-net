@@ -80,9 +80,11 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     }
 
     [Chunk(0x0303C000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303C000 : Chunk<CGameCtnDecorationTerrainModifier>
     {
         public override uint Id => 0x0303C000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -97,9 +99,11 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     }
 
     [Chunk(0x0303C001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303C001 : Chunk<CGameCtnDecorationTerrainModifier>
     {
         public override uint Id => 0x0303C001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

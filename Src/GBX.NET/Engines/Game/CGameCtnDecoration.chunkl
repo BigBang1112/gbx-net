@@ -7,22 +7,22 @@ CGameCtnDecoration 0x03038000
   versionb
   int // CHmsLightMap Tech
 
-0x011 // DecoSize
+0x011 [TMF] // DecoSize
   CGameCtnDecorationSize DecoSize (external)
 
-0x012 // DecoAudio
+0x012 [TMF] // DecoAudio
   CGameCtnDecorationAudio DecoAudio (external)
 
-0x013 // DecoMood
+0x013 [TMF] // DecoMood
   CGameCtnDecorationMood DecoMood (external)
 
-0x014 // DecoratorSolidWarp
+0x014 [TMF] // DecoratorSolidWarp
   CPlugDecoratorSolid DecoratorSolidWarp (external)
 
-0x015 // TerrainModifierCovered
+0x015 [TMF] // TerrainModifierCovered
   CGameCtnDecorationTerrainModifier TerrainModifierCovered (external)
 
-0x016 // TerrainModifierBase
+0x016 [TMF] // TerrainModifierBase
   CGameCtnDecorationTerrainModifier TerrainModifierBase (external)
 
 0x017

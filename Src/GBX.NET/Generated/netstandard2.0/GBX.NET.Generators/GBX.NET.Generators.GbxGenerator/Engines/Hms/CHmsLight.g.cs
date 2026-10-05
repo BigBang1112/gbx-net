@@ -145,9 +145,11 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     }
 
     [Chunk(0x0600C003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0600C003 : Chunk0600C002
     {
         public override uint Id => 0x0600C003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

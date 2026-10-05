@@ -1,7 +1,7 @@
 CMotionPlayer 0x08034000
 - inherits: CMotion
 
-0x004
+0x004 [TMF]
   CMotionCmdBase Base (direct)
   int // SavePlayState?
   bool // IsPlaying?

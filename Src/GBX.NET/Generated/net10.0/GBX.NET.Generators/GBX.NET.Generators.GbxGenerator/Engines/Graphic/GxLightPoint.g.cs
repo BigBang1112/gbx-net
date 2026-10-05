@@ -79,9 +79,11 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     }
 
     [Chunk(0x04003004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04003004 : Chunk<GxLightPoint>
     {
         public override uint Id => 0x04003004;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

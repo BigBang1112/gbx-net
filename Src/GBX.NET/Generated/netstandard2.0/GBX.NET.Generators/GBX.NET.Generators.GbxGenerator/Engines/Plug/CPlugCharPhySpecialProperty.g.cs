@@ -44,9 +44,11 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     [Chunk(0x090F2000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090F2000 : Chunk<CPlugCharPhySpecialProperty>, IVersionable
     {
         public override uint Id => 0x090F2000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
         public int U01;
         public float U02;

@@ -13,15 +13,15 @@ CHmsSoundSource 0x0600D000
   float PriorityAdjustement
   bool UseLowQuality
 
-0x003 // volume, pitch, speed
+0x003 [TMF] // volume, pitch, speed
   float Volume
   float Pitch
   float RpmOrSpeed
 
-0x004 // VolumicSize
+0x004 [TMF] // VolumicSize
   vec3 VolumicSize
 
-0x005
+0x005 [TMF]
   CPlugSound PlugSound (external)
   float PriorityAdjustement
   bool UseLowQuality

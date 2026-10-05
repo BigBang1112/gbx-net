@@ -1,7 +1,7 @@
 CMotionEmitterLeaves 0x0804C000
 - inherits: CMotionManaged
 
-0x001
+0x001 [TMF]
   CMotionManagerLeaves ManagerModel (external)
   vec3 Pos
   vec3 Radius

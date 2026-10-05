@@ -44,9 +44,11 @@ public abstract partial class CPlugAudio : CPlug, IClass
     }
 
     [Chunk(0x09001001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09001001 : Chunk<CPlugAudio>
     {
         public override uint Id => 0x09001001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

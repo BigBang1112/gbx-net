@@ -53,9 +53,11 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
     }
 
     [Chunk(0x01032000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk01032000 : Chunk<CMwCmdAffectIdent>
     {
         public override uint Id => 0x01032000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
         public bool U02;
 

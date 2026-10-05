@@ -1,19 +1,19 @@
 CHmsZone 0x06004000
 
-0x002
+0x002 [TMF]
   CHmsFogPlane[] FogPlanes (deprec)
   data[28]
 
-0x003
+0x003 [TMF]
   bool MRIsForced
   if MRIsForced
     vec3 MRPoint
     vec3 MRNormal
 
-0x005
+0x005 [TMF]
   CHmsPrecalcRender[] PrecalcRenders (deprec)
 
-0x006
+0x006 [TMF]
   CPlugBitmap BitmapCubeReflectHardSpecA (external)
 
 0x008

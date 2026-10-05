@@ -1,7 +1,7 @@
 CPlugBitmapRenderLightFromMap 0x09021000
 - inherits: CPlugBitmapRender
 
-0x001
+0x001 [TMF]
   int ObjectCountPerAxisMin
   int ObjectCountPerAxisMax
   float CameraNearZ_FactorInObject

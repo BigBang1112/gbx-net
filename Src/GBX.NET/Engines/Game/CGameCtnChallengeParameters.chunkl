@@ -10,7 +10,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
   int
 
-0x001 // tips
+0x001 [TMF] // tips
   string Tip
   string Tip
   string Tip
@@ -42,7 +42,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
   int
 
-0x004 // medals
+0x004 [TMF] // medals
   timeint? BronzeTime
   timeint? SilverTime
   timeint? GoldTime
@@ -60,7 +60,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
 0x007
   uint
 
-0x008 // stunts
+0x008 [TMF] // stunts
   timeint TimeLimit
   int AuthorScore
 

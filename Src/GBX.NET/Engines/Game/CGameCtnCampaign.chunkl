@@ -1,6 +1,6 @@
 CGameCtnCampaign 0x03090000
 
-0x000 // map groups
+0x000 [TMF] // map groups
   CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
 0x001
@@ -24,7 +24,7 @@ CGameCtnCampaign 0x03090000
   bool IsInternal
   bool
 
-0x004
+0x004 [TMF]
   string Name
   int<EType> Type
   bool IsInternal
@@ -34,7 +34,7 @@ CGameCtnCampaign 0x03090000
 0x005
   bool
 
-0x006 // campaign ID
+0x006 [TMF] // campaign ID
   id CampaignId
 
 0x007
@@ -45,21 +45,21 @@ CGameCtnCampaign 0x03090000
 0x008
   int
 
-0x009 (skippable) // collection ID
+0x009 (skippable) [TMF] // collection ID
   byte
   id CollectionId
 
-0x00A (skippable) // index
+0x00A (skippable) [TMF] // index
   int Index
 
-0x00B (skippable) // unlocked by campaign
+0x00B (skippable) [TMF] // unlocked by campaign
   string UnlockedByCampaign
   int
 
-0x00C (skippable) // icon ID
+0x00C (skippable) [TMF] // icon ID
   id IconId
 
-0x00D // unlock type
+0x00D [TMF] // unlock type
   int<EUnlockType> UnlockType
 
 0x00E // required players count

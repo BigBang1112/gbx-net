@@ -14,7 +14,7 @@ CGameCtnMediaShootParams 0x03060000
   float
   float
 
-0x001
+0x001 [TMF]
   int VideoFps
   int SizeX
   int SizeY

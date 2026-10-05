@@ -44,9 +44,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     [Chunk(0x06023000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06023000 : Chunk<CHmsLightMapMood>
     {
         public override uint Id => 0x06023000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;

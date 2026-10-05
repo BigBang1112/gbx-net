@@ -62,9 +62,11 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
     }
 
     [Chunk(0x090EC000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090EC000 : Chunk<CPlugVehiclePhyTunings>
     {
         public override uint Id => 0x090EC000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

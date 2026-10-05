@@ -119,9 +119,11 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     [Chunk(0x0303B000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303B000 : Chunk<CGameCtnDecorationSize>
     {
         public override uint Id => 0x0303B000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -139,9 +141,11 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     [Chunk(0x0303B001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303B001 : Chunk<CGameCtnDecorationSize>
     {
         public override uint Id => 0x0303B001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -280,9 +280,11 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     [Chunk(0x03060001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03060001 : Chunk<CGameCtnMediaShootParams>
     {
         public override uint Id => 0x03060001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -80,9 +80,11 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     [Chunk(0x01026000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk01026000 : Chunk<CMwRefBuffer>
     {
         public override uint Id => 0x01026000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

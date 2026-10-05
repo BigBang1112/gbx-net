@@ -116,9 +116,11 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     [Chunk(0x08041002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk08041002 : Chunk<CMotionTrackMobilPitchin>
     {
         public override uint Id => 0x08041002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

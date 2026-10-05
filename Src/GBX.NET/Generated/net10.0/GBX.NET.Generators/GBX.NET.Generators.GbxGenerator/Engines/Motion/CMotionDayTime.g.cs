@@ -44,9 +44,11 @@ public partial class CMotionDayTime : CMotion, IClass
     }
 
     [Chunk(0x08055000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk08055000 : Chunk<CMotionDayTime>
     {
         public override uint Id => 0x08055000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public int U03;

@@ -150,9 +150,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     [Chunk(0x07010005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk07010005 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010005;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

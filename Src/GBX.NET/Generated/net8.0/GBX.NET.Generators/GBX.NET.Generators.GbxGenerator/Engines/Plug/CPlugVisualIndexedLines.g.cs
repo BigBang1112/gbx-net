@@ -44,9 +44,11 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     }
 
     [Chunk(0x09009001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09009001 : Chunk<CPlugVisualIndexedLines>
     {
         public override uint Id => 0x09009001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

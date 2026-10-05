@@ -143,9 +143,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x09067006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09067006 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -159,9 +161,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x09067007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09067007 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067007;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -207,9 +211,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x0906700A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0906700A : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

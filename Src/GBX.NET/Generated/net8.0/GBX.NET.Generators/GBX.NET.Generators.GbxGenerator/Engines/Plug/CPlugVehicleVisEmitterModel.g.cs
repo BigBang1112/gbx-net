@@ -44,9 +44,11 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     [Chunk(0x090E6002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E6002 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -62,9 +64,11 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     [Chunk(0x090E6003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E6003 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6003;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -95,9 +99,11 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     [Chunk(0x090E6004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E6004 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public CPlugParticleEmitterModel? U02;
         public Components.GbxRefTableFile? U02File;
@@ -188,9 +194,11 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     [Chunk(0x090E6005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E6005 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6005;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

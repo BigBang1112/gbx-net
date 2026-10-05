@@ -1,5 +1,5 @@
 CFuncKeysNatural 0x05030000
 - inherits: CFuncKeys
 
-0x000
+0x000 [TMF]
   int[] Naturals

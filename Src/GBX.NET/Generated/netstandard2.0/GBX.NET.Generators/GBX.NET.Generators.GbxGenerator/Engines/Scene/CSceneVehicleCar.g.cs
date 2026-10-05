@@ -154,9 +154,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B00C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A02B00C : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B00C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public BoxAligned U03;

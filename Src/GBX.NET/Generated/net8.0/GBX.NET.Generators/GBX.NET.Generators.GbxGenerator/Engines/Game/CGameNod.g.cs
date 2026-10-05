@@ -53,9 +53,11 @@ public partial class CGameNod : CMwNod, IClass
     }
 
     [Chunk(0x03008000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03008000 : Chunk<CGameNod>
     {
         public override uint Id => 0x03008000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

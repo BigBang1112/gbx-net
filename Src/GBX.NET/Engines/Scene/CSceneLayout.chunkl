@@ -1,14 +1,14 @@
 CSceneLayout 0x0A003000
 - inherits: CScene
 
-0x00C
+0x00C [TMF]
   int
 
-0x010
+0x010 [TMF]
   float CameraFarZ
   vec3 CameraClearColor
 
-0x014
+0x014 [TMF]
   int
   bool
   box
@@ -16,7 +16,7 @@ CSceneLayout 0x0A003000
 
 0x017 (ignore)
 
-0x018
+0x018 [TMF]
   CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene

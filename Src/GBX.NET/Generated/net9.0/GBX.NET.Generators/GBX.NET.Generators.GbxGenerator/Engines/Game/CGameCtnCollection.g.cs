@@ -1462,9 +1462,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x03033009)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033009 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033009;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1500,9 +1502,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x0303300C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303300C : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303300C;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1520,9 +1524,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// IconFid, IconSmallFid
     /// </summary>
     [Chunk(0x0303300D, "IconFid, IconSmallFid")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303300D : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303300D;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1548,9 +1554,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x0303300E)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303300E : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303300E;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1564,9 +1572,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x03033011)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033011 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033011;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1642,9 +1652,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// LoadScreenFid
     /// </summary>
     [Chunk(0x03033019, "LoadScreenFid")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033019 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033019;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1658,9 +1670,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x0303301A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303301A : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303301A;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1701,9 +1715,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x0303301D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303301D : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303301D;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1721,9 +1737,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// camera
     /// </summary>
     [Chunk(0x0303301E, "camera")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303301E : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303301E;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1743,9 +1761,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// ParticleEmitterModelsFids
     /// </summary>
     [Chunk(0x0303301F, "ParticleEmitterModelsFids")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0303301F : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x0303301F;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1762,9 +1782,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// folders
     /// </summary>
     [Chunk(0x03033020, "folders")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033020 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033020;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1784,9 +1806,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// display name
     /// </summary>
     [Chunk(0x03033021, "display name")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033021 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033021;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1803,9 +1827,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// is water multi-height
     /// </summary>
     [Chunk(0x03033022, "is water multi-height")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033022 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033022;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1822,9 +1848,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// CarCanBeDirty
     /// </summary>
     [Chunk(0x03033023, "CarCanBeDirty")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033023 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033023;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1838,9 +1866,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     [Chunk(0x03033024)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033024 : Chunk<CGameCtnCollection>
     {
         public override uint Id => 0x03033024;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

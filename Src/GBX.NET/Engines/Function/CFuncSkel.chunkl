@@ -3,5 +3,5 @@ CFuncSkel 0x05005000
 property int BonesCount
   get = Bones.Length
 
-0x002
+0x002 [TMF]
   id[] Bones

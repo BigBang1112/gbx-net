@@ -1,10 +1,10 @@
 CFuncKeysSkel 0x05006000
 - inherits: CFuncKeys
 
-0x000
+0x000 [TMF]
   CFuncSkel Skel
 
-0x001
+0x001 [TMF]
   Loc[Skel.BonesCount][] Locations
 
 archive Loc

@@ -196,9 +196,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     /// tips
     /// </summary>
     [Chunk(0x0305B001, "tips")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0305B001 : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -314,9 +316,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     /// medals
     /// </summary>
     [Chunk(0x0305B004, "medals")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0305B004 : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -402,9 +406,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     /// stunts
     /// </summary>
     [Chunk(0x0305B008, "stunts")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0305B008 : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B008;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

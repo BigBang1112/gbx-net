@@ -62,9 +62,11 @@ public partial class CSceneSector : CMwNod, IClass
     }
 
     [Chunk(0x0A004000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A004000 : Chunk<CSceneSector>
     {
         public override uint Id => 0x0A004000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -79,9 +81,11 @@ public partial class CSceneSector : CMwNod, IClass
     }
 
     [Chunk(0x0A004001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A004001 : Chunk<CSceneSector>
     {
         public override uint Id => 0x0A004001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Iso4 U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -97,9 +101,11 @@ public partial class CSceneSector : CMwNod, IClass
     }
 
     [Chunk(0x0A004002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A004002 : Chunk<CSceneSector>
     {
         public override uint Id => 0x0A004002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -115,9 +121,11 @@ public partial class CSceneSector : CMwNod, IClass
     }
 
     [Chunk(0x0A004004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A004004 : Chunk<CSceneSector>
     {
         public override uint Id => 0x0A004004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public BoxAligned U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

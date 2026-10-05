@@ -1,7 +1,7 @@
 CPlugVisualGrid 0x0903B000
 - inherits: CPlugVisual3D
 
-0x000
+0x000 [TMF]
   int NbPointX
   int NbPointZ
   float RangeX

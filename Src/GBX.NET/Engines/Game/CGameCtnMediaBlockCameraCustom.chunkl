@@ -17,7 +17,7 @@ CGameCtnMediaBlockCameraCustom 0x030A2000 // MediaTracker block - Custom camera.
 0x004
   Key[] Keys (version: 4, list)
 
-0x005 // TMUF
+0x005 [TMF] // TMUF
   Key[] Keys (version: 5, list)
 
 0x006 [TM2020.v4] // ManiaPlanet

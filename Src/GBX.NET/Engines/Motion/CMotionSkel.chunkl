@@ -1,5 +1,5 @@
 CMotionSkel 0x08037000
 - inherits: CMotionSkelSimple
 
-0x000
+0x000 [TMF]
   CFuncKeysSkel KeysSkel

@@ -52,10 +52,10 @@ CGameControlCamera 0x0306B000
   float MaxFarZ
   bool
 
-0x00A
+0x00A [TMF]
   id Name
 
-0x00B
+0x00B [TMF]
   vec3 RelativeFollowedPos
   bool IsFirstPerson
   bool CanCameraMove

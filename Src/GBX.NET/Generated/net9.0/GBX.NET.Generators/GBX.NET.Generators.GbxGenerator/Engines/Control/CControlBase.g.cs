@@ -62,9 +62,11 @@ public partial class CControlBase : CSceneToy, IClass
     }
 
     [Chunk(0x0700100C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0700100C : Chunk<CControlBase>
     {
         public override uint Id => 0x0700100C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public int U03;
@@ -90,9 +92,11 @@ public partial class CControlBase : CSceneToy, IClass
     }
 
     [Chunk(0x0700100E)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0700100E : Chunk<CControlBase>
     {
         public override uint Id => 0x0700100E;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public BoxAligned U01;
         public int U02;
         public int U03;
@@ -115,9 +119,11 @@ public partial class CControlBase : CSceneToy, IClass
     }
 
     [Chunk(0x0700100F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0700100F : Chunk<CControlBase>
     {
         public override uint Id => 0x0700100F;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -133,9 +139,11 @@ public partial class CControlBase : CSceneToy, IClass
     }
 
     [Chunk(0x07001010)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk07001010 : Chunk<CControlBase>
     {
         public override uint Id => 0x07001010;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CMwNod? U01;
         public int? U02;
 

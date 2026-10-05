@@ -1,7 +1,7 @@
 CPlugVisualSprite 0x09010000
 - inherits: CPlugVisual3D
 
-0x005
+0x005 [TMF]
   int
   float
   float
@@ -9,7 +9,7 @@ CPlugVisualSprite 0x09010000
   float
   float
 
-0x006
+0x006 [TMF]
   int16
   int16
 

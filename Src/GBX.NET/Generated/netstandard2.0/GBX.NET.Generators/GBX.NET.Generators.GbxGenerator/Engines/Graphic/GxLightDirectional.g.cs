@@ -144,9 +144,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     [Chunk(0x04007002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04007002 : Chunk04007001
     {
         public override uint Id => 0x04007002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -162,9 +164,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     [Chunk(0x04007003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04007003 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -178,9 +182,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     [Chunk(0x04007004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04007004 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007004;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -195,9 +201,11 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     [Chunk(0x04007005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04007005 : Chunk<GxLightDirectional>
     {
         public override uint Id => 0x04007005;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

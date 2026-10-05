@@ -189,9 +189,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     [Chunk(0x090F4003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090F4003 : Chunk<CPlugGameSkin>
     {
         public override uint Id => 0x090F4003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -206,9 +208,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     [Chunk(0x090F4004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090F4004 : Chunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
         public bool U01;
         public string? U02;

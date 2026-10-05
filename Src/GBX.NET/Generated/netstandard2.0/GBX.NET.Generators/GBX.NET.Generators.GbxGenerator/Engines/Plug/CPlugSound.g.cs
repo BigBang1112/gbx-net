@@ -471,9 +471,11 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     [Chunk(0x0901A000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A000 : Chunk<CPlugSound>
     {
         public override uint Id => 0x0901A000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -487,9 +489,11 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     [Chunk(0x0901A002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A002 : Chunk<CPlugSound>
     {
         public override uint Id => 0x0901A002;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -525,9 +529,11 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     [Chunk(0x0901A00B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A00B : Chunk<CPlugSound>
     {
         public override uint Id => 0x0901A00B;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -545,9 +551,11 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     [Chunk(0x0901A00C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A00C : Chunk<CPlugSound>
     {
         public override uint Id => 0x0901A00C;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -571,9 +579,11 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     [Chunk(0x0901A00D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A00D : Chunk<CPlugSound>
     {
         public override uint Id => 0x0901A00D;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

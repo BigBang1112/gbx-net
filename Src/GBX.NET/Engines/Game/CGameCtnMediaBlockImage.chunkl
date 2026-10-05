@@ -1,7 +1,7 @@
 CGameCtnMediaBlockImage 0x030A5000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TM2020]
+0x000 [TMF, TM2020]
   CControlEffectSimi Effect
   packdesc Image
 

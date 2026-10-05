@@ -1,14 +1,14 @@
 CSceneSector 0x0A004000
 
-0x000
+0x000 [TMF]
   int Scene
   CHmsZone Zone
 
-0x001
+0x001 [TMF]
   iso4
 
-0x002
+0x002 [TMF]
   id
 
-0x004
+0x004 [TMF]
   box

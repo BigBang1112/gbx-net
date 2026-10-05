@@ -65,9 +65,11 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
     }
 
     [Chunk(0x09012004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09012004 : Chunk<CPlugBitmapApply>
     {
         public override uint Id => 0x09012004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

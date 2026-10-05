@@ -1,6 +1,6 @@
 GxFog 0x04004000
 
-0x000
+0x000 [TMF]
   bool
   int
   float

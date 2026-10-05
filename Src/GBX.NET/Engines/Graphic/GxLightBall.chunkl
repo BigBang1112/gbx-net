@@ -8,7 +8,7 @@ GxLightBall 0x04002000
   float EmittingRadius
   vec3 AmbientRGB
 
-0x006
+0x006 [TMF]
   uint Flags
   float Radius
   float RadiusSpecular

@@ -80,9 +80,11 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     }
 
     [Chunk(0x0804C001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0804C001 : Chunk<CMotionEmitterLeaves>
     {
         public override uint Id => 0x0804C001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

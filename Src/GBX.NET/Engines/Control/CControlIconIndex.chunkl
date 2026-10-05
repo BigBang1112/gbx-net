@@ -13,7 +13,7 @@ CControlIconIndex 0x0702B000
   base
   int MarginPercentU
 
-0x002 (base: 0x001)
+0x002 (base: 0x001) [TMF]
   base
   int MarginPercentV
   vec2 MarginSize

@@ -296,9 +296,11 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     [Chunk(0x0701C002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0701C002 : Chunk<CControlEffectMaster>
     {
         public override uint Id => 0x0701C002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -321,9 +323,11 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     [Chunk(0x0701C003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0701C003 : Chunk<CControlEffectMaster>
     {
         public override uint Id => 0x0701C003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -305,9 +305,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// DecoSize
     /// </summary>
     [Chunk(0x03038011, "DecoSize")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038011 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038011;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -324,9 +326,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// DecoAudio
     /// </summary>
     [Chunk(0x03038012, "DecoAudio")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038012 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038012;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -343,9 +347,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// DecoMood
     /// </summary>
     [Chunk(0x03038013, "DecoMood")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038013 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038013;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -362,9 +368,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// DecoratorSolidWarp
     /// </summary>
     [Chunk(0x03038014, "DecoratorSolidWarp")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038014 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038014;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -381,9 +389,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// TerrainModifierCovered
     /// </summary>
     [Chunk(0x03038015, "TerrainModifierCovered")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038015 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038015;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -400,9 +410,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// TerrainModifierBase
     /// </summary>
     [Chunk(0x03038016, "TerrainModifierBase")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03038016 : Chunk<CGameCtnDecoration>
     {
         public override uint Id => 0x03038016;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

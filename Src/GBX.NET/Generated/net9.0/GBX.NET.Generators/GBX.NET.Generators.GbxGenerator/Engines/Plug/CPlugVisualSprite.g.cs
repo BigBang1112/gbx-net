@@ -53,9 +53,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09010005 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010005;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public float U02;
         public float U03;
@@ -86,9 +88,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09010006 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010006;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public short U01;
         public short U02;
 

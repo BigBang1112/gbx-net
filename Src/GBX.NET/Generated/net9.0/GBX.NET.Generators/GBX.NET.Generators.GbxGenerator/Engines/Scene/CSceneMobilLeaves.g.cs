@@ -357,9 +357,11 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     [Chunk(0x0A05E003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A05E003 : Chunk<CSceneMobilLeaves>
     {
         public override uint Id => 0x0A05E003;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

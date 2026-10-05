@@ -1,6 +1,6 @@
 CPlugParticleEmitterModel 0x090B3000
 
-0x000
+0x000 [TMF]
   CPlugParticleEmitterSubModel[] ParticleEmitterSubModels (deprec, external)
 
 0x001

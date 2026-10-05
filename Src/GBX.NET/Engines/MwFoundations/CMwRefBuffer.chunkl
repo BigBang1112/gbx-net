@@ -1,6 +1,6 @@
 CMwRefBuffer 0x01026000
 
-0x000
+0x000 [TMF]
   uint NodClassId
   bool UseAddRefRelease
   CMwNod[] Nods (deprec, external)

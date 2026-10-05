@@ -1,6 +1,6 @@
 CGameCtnChallengeGroup 0x0308F000
 
-0x002 // name
+0x002 [TMF] // name
   string Name
 
 0x003
@@ -16,7 +16,7 @@ CGameCtnChallengeGroup 0x0308F000
 0x005
   int
 
-0x006
+0x006 [TMF]
   bool
   MapInfo[] MapInfos (list)
 

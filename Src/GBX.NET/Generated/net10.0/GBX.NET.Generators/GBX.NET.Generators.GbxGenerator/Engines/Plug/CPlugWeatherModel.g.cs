@@ -116,9 +116,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     [Chunk(0x090BF001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090BF001 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

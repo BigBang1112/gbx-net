@@ -1,10 +1,10 @@
 CInputBindingsConfig 0x13006000
 
-0x000
+0x000 [TMF]
   string
   Binding[] Bindings
 
-0x001
+0x001 [TMF]
   id[]
 
 0x002 (skippable)

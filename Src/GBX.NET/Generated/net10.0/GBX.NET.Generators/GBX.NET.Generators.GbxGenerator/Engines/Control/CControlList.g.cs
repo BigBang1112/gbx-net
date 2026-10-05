@@ -44,9 +44,11 @@ public partial class CControlList : CControlContainer, IClass
     }
 
     [Chunk(0x0700F007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0700F007 : Chunk<CControlList>
     {
         public override uint Id => 0x0700F007;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
         public int U03;
@@ -83,9 +85,11 @@ public partial class CControlList : CControlContainer, IClass
     }
 
     [Chunk(0x0700F00A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0700F00A : Chunk<CControlList>
     {
         public override uint Id => 0x0700F00A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;

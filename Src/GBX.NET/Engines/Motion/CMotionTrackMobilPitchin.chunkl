@@ -1,7 +1,7 @@
 CMotionTrackMobilPitchin 0x08041000
 - inherits: CMotionTrack
 
-0x002
+0x002 [TMF]
   CMwNod Sea
   float Flottaison
   float Tangage

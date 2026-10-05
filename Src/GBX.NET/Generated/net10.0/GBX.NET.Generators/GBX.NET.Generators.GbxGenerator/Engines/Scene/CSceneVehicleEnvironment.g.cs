@@ -53,9 +53,11 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     }
 
     [Chunk(0x0A033000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A033000 : Chunk<CSceneVehicleEnvironment>
     {
         public override uint Id => 0x0A033000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -71,9 +73,11 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     }
 
     [Chunk(0x0A033002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A033002 : Chunk<CSceneVehicleEnvironment>
     {
         public override uint Id => 0x0A033002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

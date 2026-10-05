@@ -44,9 +44,11 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     }
 
     [Chunk(0x09051000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09051000 : Chunk<CPlugTreeGenerator>
     {
         public override uint Id => 0x09051000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

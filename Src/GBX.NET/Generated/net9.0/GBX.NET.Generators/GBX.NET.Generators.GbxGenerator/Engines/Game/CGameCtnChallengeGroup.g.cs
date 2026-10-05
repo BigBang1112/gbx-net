@@ -67,9 +67,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     /// name
     /// </summary>
     [Chunk(0x0308F002, "name")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308F002 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -144,9 +146,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     [Chunk(0x0308F006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308F006 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F006;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

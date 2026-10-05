@@ -80,9 +80,11 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     [Chunk(0x09088001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09088001 : Chunk<CPlugBitmapRenderCubeMap>
     {
         public override uint Id => 0x09088001;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -98,9 +100,11 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     [Chunk(0x09088002)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09088002 : Chunk<CPlugBitmapRenderCubeMap>
     {
         public override uint Id => 0x09088002;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

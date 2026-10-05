@@ -1,6 +1,6 @@
 CPlugFlockModel 0x090E5000
 
-0x000
+0x000 [TMF]
   version
   v5-
     float Range
@@ -29,7 +29,7 @@ CPlugFlockModel 0x090E5000
           v5+
             CMwNod BirdModel (external)
 
-0x001
+0x001 [TMF]
   version
   CMwNod BirdModelFid (external)
   int AnimPeriod

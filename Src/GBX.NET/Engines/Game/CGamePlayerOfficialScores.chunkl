@@ -4,7 +4,7 @@ CGamePlayerOfficialScores 0x03095000
   TransactionalNatural GlobalScore
   FilteredPlayerRank[] FilteredPlayerRanks
 
-0x001
+0x001 [TMF]
   TransactionalNatural GlobalScore
   boolbyte U02
   if U02

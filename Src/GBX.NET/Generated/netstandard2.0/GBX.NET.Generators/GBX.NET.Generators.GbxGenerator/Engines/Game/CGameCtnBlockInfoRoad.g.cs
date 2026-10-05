@@ -62,9 +62,11 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
     }
 
     [Chunk(0x03052000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03052000 : Chunk<CGameCtnBlockInfoRoad>
     {
         public override uint Id => 0x03052000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

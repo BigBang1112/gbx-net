@@ -71,11 +71,11 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
     }
 
     [Chunk(0x0501E001)]
-    [ChunkGameVersion(GameVersion.TM10)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMF)]
     public partial class Chunk0501E001 : Chunk<CFuncTreeRotate>
     {
         public override uint Id => 0x0501E001;
-        public override GameVersion GameVersion => GameVersion.TM10;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

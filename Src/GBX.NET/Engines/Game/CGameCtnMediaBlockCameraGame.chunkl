@@ -19,7 +19,7 @@ CGameCtnMediaBlockCameraGame 0x03084000
     return
   int ClipEntId
 
-0x003
+0x003 [TMF]
   timefloat Start
   timefloat End
   id GameCamId

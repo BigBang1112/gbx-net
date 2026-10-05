@@ -1,9 +1,9 @@
 CPlugCrystal 0x09003000
 - inherits: CPlugTreeGenerator
 
-0x000 // one layer only
+0x000 [TMF] // one layer only
 
-0x003 [MP4.v2, TM2020.v2] // materials
+0x003 [TMF, MP4.v2, TM2020.v2] // materials
   version
   Material[] Materials = empty (list)
 

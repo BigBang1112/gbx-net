@@ -53,9 +53,11 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     }
 
     [Chunk(0x090EB000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090EB000 : Chunk<CPlugVehiclePhyTuning>
     {
         public override uint Id => 0x090EB000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CFuncKeysReal? U01;
         public float U02;
 

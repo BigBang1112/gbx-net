@@ -53,9 +53,11 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
     }
 
     [Chunk(0x0904A000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0904A000 : Chunk<CPlugVisual2D>
     {
         public override uint Id => 0x0904A000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

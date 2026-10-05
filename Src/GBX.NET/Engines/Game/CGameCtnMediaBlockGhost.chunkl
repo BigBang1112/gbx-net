@@ -6,7 +6,7 @@ CGameCtnMediaBlockGhost 0x030E5000
   timefloat End
   CGameCtnGhost GhostModel
 
-0x001
+0x001 [TMF]
   timefloat Start
   timefloat End
   CGameCtnGhost GhostModel

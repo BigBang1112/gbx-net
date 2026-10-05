@@ -150,9 +150,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     /// TMUF
     /// </summary>
     [Chunk(0x030A2005, "TMUF")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk030A2005 : Chunk<CGameCtnMediaBlockCameraCustom>
     {
         public override uint Id => 0x030A2005;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

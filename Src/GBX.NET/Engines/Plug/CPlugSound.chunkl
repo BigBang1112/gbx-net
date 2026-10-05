@@ -1,10 +1,10 @@
 CPlugSound 0x0901A000
 - inherits: CPlugAudio
 
-0x000
+0x000 [TMF]
   CMwNod PlugFile (external) // CPlugFileSnd
 
-0x002
+0x002 [TMF]
   id
 
 0x009
@@ -14,14 +14,14 @@ CPlugSound 0x0901A000
   bool IsContinuous
   float Priority
 
-0x00B
+0x00B [TMF]
   int<ESoundKind> SoundKind
   int InsideConeAngle
   int OutsideConeAngle
   float ConeOutsideAttenuation
   float ConeOutsideAttenuationHF
 
-0x00C
+0x00C [TMF]
   float RefDistance
   float MaxDistanceOmni
   bool EnableDoppler
@@ -34,7 +34,7 @@ CPlugSound 0x0901A000
   float RoomRolloffFactor
   float AirAbsorptionFactor
 
-0x00D
+0x00D [TMF]
   int<EMode> Mode
   float Volume
   bool IsLooping

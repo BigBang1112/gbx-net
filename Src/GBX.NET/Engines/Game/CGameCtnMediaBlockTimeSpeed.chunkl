@@ -4,7 +4,7 @@ CGameCtnMediaBlockTimeSpeed 0x03129000
 0x000 [TM2020]
   Key[] Keys (list)
 
-0x03085000 [TM2020]
+0x03085000 [TMF, TM2020]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

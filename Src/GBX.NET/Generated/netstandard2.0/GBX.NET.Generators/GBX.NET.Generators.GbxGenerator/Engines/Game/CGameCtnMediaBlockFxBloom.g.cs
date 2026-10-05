@@ -102,9 +102,11 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, IClass, C
     }
 
     [Chunk(0x03083001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03083001 : Chunk<CGameCtnMediaBlockFxBloom>
     {
         public override uint Id => 0x03083001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

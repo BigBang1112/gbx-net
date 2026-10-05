@@ -50,7 +50,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int CopperPrice
   int NbAvailableMax
 
-0x008
+0x008 [TMF]
   CPlugGameSkin
 
 0x009 [TMSX, TMF, MP3, TMT, MP4, TM2020]

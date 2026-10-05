@@ -300,9 +300,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C038)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C038 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C038;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public Vec3 U02;
         public Vec3 U03;
@@ -338,9 +340,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// crypted
     /// </summary>
     [Chunk(0x0308C03B, "crypted")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C03B : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C03B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public byte U01;
         public byte U02;
         public int U03;
@@ -413,9 +417,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C040)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C040 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C040;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public DateTime? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -431,9 +437,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C041)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C041 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C041;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -447,9 +455,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C043)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C043 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C043;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -463,9 +473,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C044)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C044 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C044;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -479,9 +491,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C047)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C047 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C047;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -497,9 +511,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C04A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C04A : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C04A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CSceneMobil[]? U01;
         public int U02;
 
@@ -518,9 +534,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C04B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C04B : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C04B;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -537,9 +555,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// LeagueManager
     /// </summary>
     [Chunk(0x0308C04C, "LeagueManager")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C04C : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C04C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public byte U01;
         public int U02;
         public bool U03;
@@ -569,9 +589,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C04D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C04D : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C04D;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public DateTime? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -587,9 +609,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C050)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C050 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C050;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
 
@@ -608,9 +632,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C052)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C052 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C052;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
         public string? U02;
 
@@ -629,9 +655,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C053)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C053 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C053;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -647,9 +675,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C054)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C054 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C054;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -665,9 +695,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C056)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C056 : Chunk<CGamePlayerProfile>, IVersionable
     {
         public override uint Id => 0x0308C056;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -684,9 +716,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C058)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C058 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C058;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -700,9 +734,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C059)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C059 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C059;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -716,9 +752,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C05A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05A : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C05A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -734,9 +772,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C05B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05B : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C05B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
         public int U02;
         public int U03;
@@ -760,9 +800,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C05E)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05E : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C05E;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -776,9 +818,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C05F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05F : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C05F;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -794,9 +838,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C060)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C060 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C060;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02 = 1;
         public float U03;
@@ -818,9 +864,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C061)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C061 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C061;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -839,9 +887,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// ArchiveBindingsForCompat
     /// </summary>
     [Chunk(0x0308C062, "ArchiveBindingsForCompat")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C062 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C062;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -858,9 +908,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C063)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C063 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C063;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -896,9 +948,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// PlayerTagsConfig
     /// </summary>
     [Chunk(0x0308C064, "PlayerTagsConfig")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C064 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C064;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int[]? U02;
 
@@ -918,9 +972,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C065)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C065 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C065;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -954,9 +1010,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C068)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C068 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C068;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -966,9 +1024,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C069)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C069 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C069;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -989,9 +1049,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C06A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06A : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C06A;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1007,9 +1069,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C06B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06B : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C06B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1025,9 +1089,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x0308C06C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06C : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C06C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1068,9 +1134,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5003)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5003 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5003;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public string? U01;
         public string? U02;
         public string? U03;
@@ -1131,9 +1199,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5004 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CGameCtnChallenge[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1149,9 +1219,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5006 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1165,9 +1237,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5007 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5007;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1181,9 +1255,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5009)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5009 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5009;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public bool U02;
         public int U03;
@@ -1244,9 +1320,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B500B)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500B : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500B;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CGameCtnCampaign[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1262,9 +1340,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B500C)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500C : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500C;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public Ident[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1280,9 +1360,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B500D)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500D : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500D;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public bool U02;
         public bool U03;
@@ -1304,9 +1386,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B500E)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500E : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500E;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
         public int U02;
 
@@ -1325,9 +1409,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B500F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500F : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500F;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1343,9 +1429,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5010)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5010 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5010;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1361,9 +1449,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5011)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5011 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5011;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1379,9 +1469,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5012)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5012 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5012;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1397,9 +1489,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5013)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5013 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5013;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public bool U02;
         public bool U03;
@@ -1427,9 +1521,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5014)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5014 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5014;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1445,9 +1541,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     [Chunk(0x240B5015)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5015 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5015;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public SoloChallengesCurrentPage[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

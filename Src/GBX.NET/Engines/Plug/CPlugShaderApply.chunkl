@@ -16,10 +16,10 @@ CPlugShaderApply 0x09026000
   CPlugBitmapAddress
   CPlugBitmapAddress
 
-0x002
+0x002 [TMF]
   CPlugBitmapAddress[] BitmapAddresses
 
-0x004
+0x004 [TMF]
   int
 
 0x006
@@ -28,7 +28,7 @@ CPlugShaderApply 0x09026000
 0x007
   int
 
-0x008
+0x008 [TMF]
   int
   int
 

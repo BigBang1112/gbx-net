@@ -10,7 +10,7 @@ CGameCtnMediaBlockFxColors 0x03080000
 0x002 (base: 0x000)
   Key[] Keys (version: 2, list)
 
-0x003 (base: 0x000) [TM2020]
+0x003 (base: 0x000) [TMF, TM2020]
   Key[] Keys (version: 3, list)
 
 archive Key (inherits: IKey)

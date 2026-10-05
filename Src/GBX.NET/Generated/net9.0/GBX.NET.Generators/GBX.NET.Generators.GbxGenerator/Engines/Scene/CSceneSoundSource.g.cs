@@ -56,9 +56,11 @@ public partial class CSceneSoundSource : CScenePoc, IClass
     }
 
     [Chunk(0x0A00E000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A00E000 : Chunk<CSceneSoundSource>
     {
         public override uint Id => 0x0A00E000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

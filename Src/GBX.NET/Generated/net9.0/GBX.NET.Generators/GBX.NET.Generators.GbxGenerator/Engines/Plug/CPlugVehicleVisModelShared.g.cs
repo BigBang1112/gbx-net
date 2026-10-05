@@ -72,9 +72,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8005)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8005 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8005;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -88,9 +90,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8006)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8006 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -99,9 +103,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8009)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8009 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8009;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -110,9 +116,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E800A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E800A : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800A;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -144,9 +152,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E800F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E800F : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800F;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -155,9 +165,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8010)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8010 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8010;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -166,9 +178,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8012)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8012 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8012;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -182,9 +196,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8013)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8013 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8013;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public CFuncKeysReal? U01;
         public CFuncKeysReal? U02;
         public CFuncKeysReal? U03;
@@ -206,9 +222,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8014)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090E8014 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8014;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

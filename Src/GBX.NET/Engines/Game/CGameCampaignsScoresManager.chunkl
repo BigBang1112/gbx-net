@@ -1,6 +1,6 @@
 CGameCampaignsScoresManager 0x03061000
 
-0x000
+0x000 [TMF]
   CGameChallengeScores[] ChallengeScores (deprec)
   CGameCampaignScores[] CampaignScores (deprec)
   CGameGeneralScores GeneralScores

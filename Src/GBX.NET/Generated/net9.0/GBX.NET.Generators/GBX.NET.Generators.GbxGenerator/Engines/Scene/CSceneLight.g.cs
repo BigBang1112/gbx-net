@@ -53,9 +53,11 @@ public partial class CSceneLight : CScenePoc, IClass
     }
 
     [Chunk(0x0A00B000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A00B000 : Chunk<CSceneLight>
     {
         public override uint Id => 0x0A00B000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

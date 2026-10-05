@@ -1,12 +1,12 @@
 CGameCtnDecorationAudio 0x03039000
 
-0x000
+0x000 [TMF]
 
-0x001
+0x001 [TMF]
   CPlugAudioEnvironment AudioEnvOutsideOpen (external)
   CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
 
-0x002
+0x002 [TMF]
   float SoundAttenuationInEditor
 
 0x003

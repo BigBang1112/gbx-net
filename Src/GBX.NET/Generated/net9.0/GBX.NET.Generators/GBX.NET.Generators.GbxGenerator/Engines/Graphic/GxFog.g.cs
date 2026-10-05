@@ -44,9 +44,11 @@ public partial class GxFog : CMwNod, IClass
     }
 
     [Chunk(0x04004000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk04004000 : Chunk<GxFog>
     {
         public override uint Id => 0x04004000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public int U02;
         public float U03;

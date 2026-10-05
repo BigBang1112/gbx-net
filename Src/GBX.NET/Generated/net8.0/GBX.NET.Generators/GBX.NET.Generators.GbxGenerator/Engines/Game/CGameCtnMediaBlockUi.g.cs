@@ -103,9 +103,11 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     }
 
     [Chunk(0x0307D001)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0307D001 : Chunk<CGameCtnMediaBlockUi>
     {
         public override uint Id => 0x0307D001;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

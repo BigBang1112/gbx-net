@@ -143,9 +143,11 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     [Chunk(0x24085000)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk24085000 : Chunk<CGameControlCameraTrackManiaRace>
     {
         public override uint Id => 0x24085000;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
