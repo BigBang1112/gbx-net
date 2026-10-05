@@ -2,6 +2,8 @@ CGameSaveLaunchedCheckpoints 0x03262000
 
 0x000 (demonstration: partial) [TM2020.v7]
   version = 7
+  v8+
+    throw
   v3+
     int RecordVersion = 33
   Checkpoint[] Checkpoints (version: Version)
@@ -11,33 +13,33 @@ CGameSaveLaunchedCheckpoints 0x03262000
 
 archive Checkpoint
   CheckpointState State
-  int SnapshotCount
+  uint SnapshotCount
   int LegacyModelIndex
   int LegacyModelFlags
   int ModelIndex
-  ident Model
+  ident Model = empty
 
 archive CheckpointState
   v0=
-    int
-    int
-  int Time
+    int U01
+    int U02
+  uint CheckpointIndex
   v2+
-    int
+    int U03
   v1+
-    int
-  int
-  int
-  int
-  int ClassId
+    uint CaptureTime
+  int U05
+  int U06
+  int U07
+  uint ClassId
   VehicleState Vehicle (version: v)
-  int
-  int
-  int
+  int U08
+  int U09
+  int U10
   v4-
-    byte
-  byte
-  int
+    byte U11
+  byte U12
+  int U13
   Event[2] Events
 
 archive Event
@@ -192,17 +194,17 @@ archive Snapshot
     v29+
       int
   v30+
-    int
+    uint PackedVehicleState // Vehicle flags, small states and quantized values share this word.
     PackedWheelState[4] Wheels
-    byte
-    byte
+    byte U17
+    byte U18
   v31+
-    int
+    int U19
   v32+
-    byte
-    int
+    byte U20
+    int U21
   v33+
-    int
+    int U22
   timeint Time
 
 archive PackedWheelState

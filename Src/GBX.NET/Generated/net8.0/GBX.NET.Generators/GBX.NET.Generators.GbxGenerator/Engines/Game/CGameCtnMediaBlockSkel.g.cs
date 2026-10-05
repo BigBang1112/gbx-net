@@ -128,7 +128,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
                     rw.Int32(ref U02);
                 }
 
-                if (Version== 3 || Version== 4)
+                if (Version >= 3 && Version <= 4)
                 {
                     rw.Single(ref n.legacyRootTranslationX);
                     rw.Single(ref n.legacyRootTranslationY);

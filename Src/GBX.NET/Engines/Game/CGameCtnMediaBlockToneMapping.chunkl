@@ -25,7 +25,7 @@ archive Key (inherits: IKey)
     float U03
   v1+
     float MaxHDR
-  if v == 2 || v == 3
+  v2..3
     float U04
   v4+
     float LightTrailScale = 8

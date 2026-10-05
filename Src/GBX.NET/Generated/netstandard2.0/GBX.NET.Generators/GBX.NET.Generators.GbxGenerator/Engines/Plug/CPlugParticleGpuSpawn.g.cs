@@ -82,14 +82,9 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
         }
     }
 
-    public partial class ParticleGpuSpawn : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class ParticleGpuSpawn : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version = 4;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; } = 4;
 
         private int u01;
         public int U01
@@ -325,7 +320,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((ParticleGpuSpawn)clone).version = context.Clone(this.version)!;
+            ((ParticleGpuSpawn)clone).Version = context.Clone(this.Version)!;
             ((ParticleGpuSpawn)clone).u01 = context.Clone(this.u01)!;
             ((ParticleGpuSpawn)clone).u02 = context.Clone(this.u02)!;
             ((ParticleGpuSpawn)clone).u03 = context.Clone(this.u03)!;
@@ -362,10 +357,10 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Int32(ref this.u01);
 
-            if (Version>= 2)
+            if (Version >= 2)
             {
                 rw.Int32(ref this.u02);
             }
@@ -373,12 +368,12 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
             rw.Int32(ref this.u03);
             rw.Single(ref this.u04);
 
-            if (Version>= 3)
+            if (Version >= 3)
             {
                 rw.Single(ref this.u05);
             }
 
-            if (Version>= 4)
+            if (Version >= 4)
             {
                 rw.Boolean(ref this.u06);
                 rw.Single(ref this.u07);
@@ -408,7 +403,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
                 rw.Single(ref this.u22);
                 rw.Single(ref this.u23);
 
-                if (Version>= 1)
+                if (Version >= 1)
                 {
                     rw.Single(ref this.u24);
                     rw.Single(ref this.u25);

@@ -666,20 +666,22 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
             rw.TimeSingle(ref this.time);
             rw.VersionByte(this);
 
-            if (Version== 0)
+            if (Version == 0)
             {
                 rw.EnumInt32<EventType>(ref this.@type);
                 rw.Byte(ref this.u02);
                 rw.String(ref this.u03);
                 rw.String(ref this.u04);
             }
-            else
+
+            if (Version >= 1)
             {
-                if (Version< 3)
+                if (Version >= 1 && Version <= 2)
                 {
                     rw.Int32(ref this.u01);
                 }
-                else
+
+                if (Version >= 3)
                 {
                     rw.Byte(ref this.u02);
                 }
@@ -697,11 +699,12 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
                     break;
                 case EventType.EndOfLap:
 
-                    if (Version< 2)
+                    if (Version >= 0 && Version <= 1)
                     {
                         rw.ReadableWritable<EndOfLap>(ref this.endOfLap, version: 0);
                     }
-                    else
+
+                    if (Version >= 2)
                     {
                         rw.ReadableWritable<EndOfLap>(ref this.endOfLap, version: 1);
                     }

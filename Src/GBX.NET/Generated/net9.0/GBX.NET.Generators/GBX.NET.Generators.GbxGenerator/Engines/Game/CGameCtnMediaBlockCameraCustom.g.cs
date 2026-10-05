@@ -258,9 +258,6 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
 
         private int anchor;
-        /// <summary>
-        /// -1 or entity number (SGameClipEntityId).
-        /// </summary>
         public int Anchor
         {
             get => this.anchor;
@@ -282,9 +279,6 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
 
         private int target;
-        /// <summary>
-        /// -1 or entity number (SGameClipEntityId).
-        /// </summary>
         public int Target
         {
             get => this.target;
@@ -429,22 +423,34 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
 
             rw.Boolean(ref this.anchorRot);
 
-            if (v== 4)
+            if (v == 4)
             {
                 rw.Id(ref this.anchorId);
             }
-            else
+
+            if (v <= 3)
+            {
+                rw.Int32(ref this.anchor);
+            }
+
+            if (v >= 5)
             {
                 rw.Int32(ref this.anchor);
             }
 
             rw.Boolean(ref this.anchorVis);
 
-            if (v== 4)
+            if (v == 4)
             {
                 rw.Id(ref this.targetId);
             }
-            else
+
+            if (v <= 3)
+            {
+                rw.Int32(ref this.target);
+            }
+
+            if (v >= 5)
             {
                 rw.Int32(ref this.target);
             }

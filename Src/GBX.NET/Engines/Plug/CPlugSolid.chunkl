@@ -113,7 +113,7 @@ CPlugSolid 0x09005000
 0x01A (skippable, ignore) // lod normal map
 
 archive PreLightGen
-  int Version
+  version
   int
   float
   bool
@@ -128,8 +128,8 @@ archive PreLightGen
   int
   int
   box[]
-  if Version >= 1
-    UvGroup[]
+  v1+ (archive)
+    UvGroup[] (version: v)
 
 archive UvGroup
   float

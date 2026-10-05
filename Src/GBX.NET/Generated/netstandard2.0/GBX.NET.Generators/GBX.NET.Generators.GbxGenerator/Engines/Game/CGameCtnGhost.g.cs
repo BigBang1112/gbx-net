@@ -1771,14 +1771,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
-    public partial class SBadge : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class SBadge : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private Vec3 color;
         public Vec3 Color
@@ -1825,7 +1820,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SBadge)clone).version = context.Clone(this.version)!;
+            ((SBadge)clone).Version = context.Clone(this.Version)!;
             ((SBadge)clone).color = context.Clone(this.color)!;
             ((SBadge)clone).u01 = context.Clone(this.u01)!;
             ((SBadge)clone).u02 = context.Clone(this.u02)!;
@@ -1835,10 +1830,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Vec3(ref this.color);
 
-            if (Version== 0)
+            if (Version == 0)
             {
                 rw.Int32(ref this.u01);
                 rw.String(ref this.u02);

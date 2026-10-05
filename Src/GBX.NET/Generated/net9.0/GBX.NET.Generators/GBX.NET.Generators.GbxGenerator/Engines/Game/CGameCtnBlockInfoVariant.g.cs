@@ -1093,14 +1093,9 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         }
     }
 
-    public partial class FlockEmitterState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class FlockEmitterState : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private float u01;
         /// <summary>
@@ -1173,7 +1168,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((FlockEmitterState)clone).version = context.Clone(this.version)!;
+            ((FlockEmitterState)clone).Version = context.Clone(this.Version)!;
             ((FlockEmitterState)clone).u01 = context.Clone(this.u01)!;
             ((FlockEmitterState)clone).u02 = context.Clone(this.u02)!;
             ((FlockEmitterState)clone).u03 = context.Clone(this.u03)!;
@@ -1185,14 +1180,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Single(ref this.u01);
             rw.Single(ref this.u02);
             rw.Int32(ref this.u03);
             rw.Boolean(ref this.u04);
             rw.Boolean(ref this.u05);
 
-            if (Version>= 1)
+            if (Version >= 1)
             {
                 rw.Mat3(ref this.matrix);
             }

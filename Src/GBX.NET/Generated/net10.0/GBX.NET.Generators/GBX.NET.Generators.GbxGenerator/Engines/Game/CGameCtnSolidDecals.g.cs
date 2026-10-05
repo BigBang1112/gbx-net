@@ -93,10 +93,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     {
     }
 
-    /// <summary>
-    /// Legacy parameters. The first three values are discarded by the native reader.
-    /// </summary>
-    [Chunk(0x03121000, "Legacy parameters. The first three values are discarded by the native reader.")]
+    [Chunk(0x03121000)]
     public partial class Chunk03121000 : Chunk<CGameCtnSolidDecals>
     {
         public override uint Id => 0x03121000;

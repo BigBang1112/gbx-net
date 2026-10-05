@@ -40,14 +40,18 @@ archive Key (inherits: IKey)
     vec3 PitchYawRoll // Pitch, yaw and roll in radians.
     float Fov
   bool AnchorRot
-  if v == 4
+  v4=
     id AnchorId
-  else
+  v3-
+    int Anchor
+  v5+
     int Anchor // -1 or entity number (SGameClipEntityId).
   bool AnchorVis
-  if v == 4
+  v4=
     id TargetId
-  else
+  v3-
+    int Target
+  v5+
     int Target // -1 or entity number (SGameClipEntityId).
   v5-
     vec3 TargetPosition

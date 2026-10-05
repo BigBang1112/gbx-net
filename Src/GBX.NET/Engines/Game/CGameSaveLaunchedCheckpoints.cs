@@ -25,9 +25,15 @@ public partial class CGameSaveLaunchedCheckpoints
             if (Version >= 1)
             {
                 rw.ArrayReadableWritable(ref n.snapshots, version: n.recordVersion);
+                var snapshotIndex = 0UL;
                 foreach (var checkpoint in n.checkpoints!)
                 {
-                    checkpoint.SnapshotCount = rw.Int32(checkpoint.SnapshotCount);
+                    checkpoint.SnapshotCount = rw.UInt32(checkpoint.SnapshotCount);
+                    snapshotIndex += checkpoint.SnapshotCount;
+                    if (rw.Reader is not null && snapshotIndex > (ulong)(n.snapshots?.Length ?? 0))
+                    {
+                        throw new InvalidDataException("Checkpoint snapshot counts exceed the snapshot array length.");
+                    }
                 }
             }
 
@@ -55,5 +61,20 @@ public partial class CGameSaveLaunchedCheckpoints
             // The containing chunk writes the other fields after the snapshot array.
             rw.ReadableWritable(ref state, v);
         }
+    }
+
+    public partial class CheckpointState
+    {
+        [Obsolete("Use CheckpointIndex instead.")]
+        public int Time { get => unchecked((int)CheckpointIndex); set => CheckpointIndex = unchecked((uint)value); }
+
+        [Obsolete("Use CaptureTime instead.")]
+        public int U04 { get => unchecked((int)CaptureTime); set => CaptureTime = unchecked((uint)value); }
+    }
+
+    public partial class Snapshot
+    {
+        [Obsolete("Use PackedVehicleState instead.")]
+        public int U16 { get => unchecked((int)PackedVehicleState); set => PackedVehicleState = unchecked((uint)value); }
     }
 }

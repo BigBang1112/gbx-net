@@ -235,14 +235,9 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         }
     }
 
-    public partial class PreLightGen : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class PreLightGen : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
         private int u01;
         public int U01
@@ -352,7 +347,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((PreLightGen)clone).version = context.Clone(this.version)!;
+            ((PreLightGen)clone).Version = context.Clone(this.Version)!;
             ((PreLightGen)clone).u01 = context.Clone(this.u01)!;
             ((PreLightGen)clone).u02 = context.Clone(this.u02)!;
             ((PreLightGen)clone).u03 = context.Clone(this.u03)!;
@@ -371,7 +366,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
             rw.Int32(ref this.u01);
             rw.Single(ref this.u02);
             rw.Boolean(ref this.u03);
@@ -386,7 +381,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             rw.Int2(ref this.spriteCount);
             rw.Array<BoxAligned>(ref this.u12!);
 
-            if (Version>= 1)
+            if (Version >= 1)
             {
                 rw.Array<Int4>(ref this.uvGroups!);
             }

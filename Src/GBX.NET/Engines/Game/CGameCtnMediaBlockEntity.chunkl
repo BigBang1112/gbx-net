@@ -25,8 +25,9 @@ CGameCtnMediaBlockEntity 0x0329F000
     bool HasBadges
     if HasBadges
       SBadge Badge
-    if Version >= 11 && AppearanceArchiveVersion != 0
-      string? SkinOptions
+    v11+
+      if AppearanceArchiveVersion != 0
+        string? SkinOptions
   v4+
     Key[] Keys (list)
   v5=

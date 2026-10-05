@@ -8,15 +8,15 @@ CPlugParticleGpuSpawn 0x090C5000
     ParticleGpuSpawn Spawn
   
 archive ParticleGpuSpawn
-  int Version = 4
+  version = 4
   int U01
-  if Version >= 2
+  v2+ (archive)
     int U02
   int U03
   float U04
-  if Version >= 3
+  v3+ (archive)
     float U05
-  if Version >= 4
+  v4+ (archive)
     bool U06
     float U07
     float U08
@@ -37,7 +37,7 @@ archive ParticleGpuSpawn
     float U21
     float U22
     float U23
-    if Version >= 1
+    v1+ (archive)
       float U24
       float U25
       float U26

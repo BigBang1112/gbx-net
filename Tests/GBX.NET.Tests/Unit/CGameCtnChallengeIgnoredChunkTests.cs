@@ -320,11 +320,12 @@ public class CGameCtnChallengeIgnoredChunkTests
             });
         });
         var node = await RoundTrip(payload, new CGameCtnChallenge.Chunk03043067());
-        await Assert.That(node.LaunchedCheckpoints!.Checkpoints![0].State!.Time).IsEqualTo(123);
+        await Assert.That(node.LaunchedCheckpoints!.Checkpoints![0].State!.CheckpointIndex).IsEqualTo(123u);
         if (version >= 1)
         {
+            await Assert.That(node.LaunchedCheckpoints.Checkpoints[0].State!.CaptureTime).IsEqualTo(789u);
             await Assert.That(node.LaunchedCheckpoints.Snapshots![0].Time.TotalMilliseconds).IsEqualTo(789);
-            await Assert.That(node.LaunchedCheckpoints.Checkpoints[0].SnapshotCount).IsEqualTo(1);
+            await Assert.That(node.LaunchedCheckpoints.Checkpoints[0].SnapshotCount).IsEqualTo(1u);
         }
     }
 

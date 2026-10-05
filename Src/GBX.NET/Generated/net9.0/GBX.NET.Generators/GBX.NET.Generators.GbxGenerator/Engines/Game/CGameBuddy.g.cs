@@ -29,17 +29,12 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Game;
 
 [Class(0x03153000)]
-public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, IWritable
+public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {
     [Hexadecimal]
     public static new uint Id => 0x03153000;
 
-    private int version;
-    public int Version
-    {
-        get => this.version;
-        set => this.version = value;
-    }
+    public int Version { get; set; }
 
     private string? login;
     public string? Login
@@ -157,7 +152,7 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameBuddy)clone).version = context.Clone(this.version)!;
+        ((CGameBuddy)clone).Version = context.Clone(this.Version)!;
         ((CGameBuddy)clone).login = context.Clone(this.login)!;
         ((CGameBuddy)clone).u03 = context.Clone(this.u03)!;
         ((CGameBuddy)clone).u04 = context.Clone(this.u04)!;
@@ -182,16 +177,16 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
-        rw.Int32(ref this.version);
+        rw.VersionInt32(this);
 
-        if (Version== 0)
+        if (Version == 0)
         {
             rw.String(ref this.login);
             rw.Int32(ref this.u03);
             this.u04 = rw.FileTime(this.u04);
         }
 
-        if (Version>= 1)
+        if (Version >= 1)
         {
             rw.String(ref this.login);
             rw.String(ref this.nickName);
@@ -203,20 +198,20 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
             rw.Int32(ref this.ladderPoints);
             rw.PackDesc(ref this.u13);
 
-            if (Version>= 2)
+            if (Version >= 2)
             {
                 rw.Boolean(ref this.invited);
                 rw.Boolean(ref this.waitingConfimation);
 
-                if (Version>= 3)
+                if (Version >= 3)
                 {
                     rw.ArrayReadableWritable<CampaignMedal>(ref this.campaignMedals!, version: v);
 
-                    if (Version>= 4)
+                    if (Version >= 4)
                     {
                         rw.String(ref this.path);
 
-                        if (Version>= 5)
+                        if (Version >= 5)
                         {
                             rw.Boolean(ref this.canReceiveMessages);
                         }

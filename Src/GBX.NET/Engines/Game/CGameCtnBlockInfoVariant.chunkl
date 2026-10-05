@@ -164,12 +164,12 @@ archive WaterVolume
     id
 
 archive FlockEmitterState
-  int Version
+  version
   float // 10 is a clear state
   float // 0x40000000 is a clear state
   int // 5 is a clear state
   bool
   bool // true is a clear state
-  if Version >= 1
+  v1+ (archive)
     mat3? Matrix
   vec3 Position

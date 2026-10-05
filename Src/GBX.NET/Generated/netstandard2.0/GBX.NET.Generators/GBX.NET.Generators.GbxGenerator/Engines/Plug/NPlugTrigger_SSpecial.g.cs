@@ -74,7 +74,7 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
         rw.VersionInt32(this);
         rw.NodeRef<CPlugSurface>(ref this.triggerShape, ref this.triggerShapeFile);
 
-        if (Version>= 2)
+        if (Version >= 2)
         {
             rw.Boolean(ref this.isMergeable);
         }

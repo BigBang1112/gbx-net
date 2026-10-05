@@ -6,9 +6,9 @@ archive
   float PeriodSc
   int TextureId
   bool IsKinematic
-  if Version >= 1
+  v1+ (archive)
     float PeriodScMax
     float Phase01
     float Phase01Max
-    if Version >= 2
+    v2+ (archive)
       bool CastStaticShadow

@@ -22,14 +22,18 @@ archive Key (inherits: IKey)
   v3+
     float NearZ
   bool AnchorRot
-  if v == 1
+  v1=
     id AnchorId
-  else
+  v0-
+    int Anchor
+  v2+
     int Anchor
   bool AnchorVis
-  if v == 1
+  v1=
     id TargetId
-  else
+  v0-
+    int Target
+  v2+
     int Target
   vec3 TargetPosition
   float Weight

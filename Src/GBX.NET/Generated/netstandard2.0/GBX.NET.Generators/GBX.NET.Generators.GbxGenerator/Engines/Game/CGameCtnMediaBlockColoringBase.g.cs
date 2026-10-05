@@ -95,11 +95,12 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
                 rw.Int32(ref n.keyArchiveVersion);
             }
 
-            if (Version< 2)
+            if (Version <= 1)
             {
                 rw.ListReadableWritable<Key>(ref n.keys!, version: - 1);
             }
-            else
+
+            if (Version >= 2)
             {
                 rw.ListReadableWritable<Key>(ref n.keys!, version: n.KeyArchiveVersion);
             }

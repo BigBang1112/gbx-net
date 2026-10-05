@@ -107,13 +107,13 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
         rw.Int32(ref this.textureId);
         rw.Boolean(ref this.isKinematic);
 
-        if (Version>= 1)
+        if (Version >= 1)
         {
             rw.Single(ref this.periodScMax);
             rw.Single(ref this.phase01);
             rw.Single(ref this.phase01Max);
 
-            if (Version>= 2)
+            if (Version >= 2)
             {
                 rw.Boolean(ref this.castStaticShadow);
             }

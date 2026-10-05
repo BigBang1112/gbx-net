@@ -5,9 +5,9 @@ CGameCtnMediaBlockColoringBase 0x03172000
   version
   v2+
     int KeyArchiveVersion = 2
-  if Version < 2
+  v1-
     Key[] Keys (version: -1, list)
-  else
+  v2+
     Key[] Keys (version: KeyArchiveVersion, list)
   v1+
     int BaseIndex

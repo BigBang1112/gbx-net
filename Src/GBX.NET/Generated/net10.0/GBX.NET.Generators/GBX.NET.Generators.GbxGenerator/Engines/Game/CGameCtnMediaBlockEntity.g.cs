@@ -161,7 +161,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? skinOptions;
-    [AppliedWithChunk<Chunk0329F000>(3)]
+    [AppliedWithChunk<Chunk0329F000>(11)]
     [AppliedWithChunk<Chunk0329F002>]
     public string? SkinOptions
     {
@@ -322,9 +322,12 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
                     rw.ReadableWritable<SBadge>(ref n.badge, version: Version);
                 }
 
-                if (Version>= 11 && n.AppearanceArchiveVersion!= 0)
+                if (Version >= 11)
                 {
-                    rw.String(ref n.skinOptions);
+                    if (n.AppearanceArchiveVersion!= 0)
+                    {
+                        rw.String(ref n.skinOptions);
+                    }
                 }
             }
 

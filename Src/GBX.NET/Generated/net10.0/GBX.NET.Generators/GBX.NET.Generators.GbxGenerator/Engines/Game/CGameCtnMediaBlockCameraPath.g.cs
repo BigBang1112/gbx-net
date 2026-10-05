@@ -294,22 +294,34 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
 
             rw.Boolean(ref this.anchorRot);
 
-            if (v== 1)
+            if (v == 1)
             {
                 rw.Id(ref this.anchorId);
             }
-            else
+
+            if (v <= 0)
+            {
+                rw.Int32(ref this.anchor);
+            }
+
+            if (v >= 2)
             {
                 rw.Int32(ref this.anchor);
             }
 
             rw.Boolean(ref this.anchorVis);
 
-            if (v== 1)
+            if (v == 1)
             {
                 rw.Id(ref this.targetId);
             }
-            else
+
+            if (v <= 0)
+            {
+                rw.Int32(ref this.target);
+            }
+
+            if (v >= 2)
             {
                 rw.Int32(ref this.target);
             }

@@ -94,8 +94,8 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.state = value;
         }
 
-        private int snapshotCount;
-        public int SnapshotCount
+        private uint snapshotCount;
+        public uint SnapshotCount
         {
             get => this.snapshotCount;
             set => this.snapshotCount = value;
@@ -122,8 +122,8 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.modelIndex = value;
         }
 
-        private Ident? model;
-        public Ident? Model
+        private Ident model = Ident.Empty;
+        public Ident Model
         {
             get => this.model;
             set => this.model = value;
@@ -176,11 +176,11 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.u02 = value;
         }
 
-        private int time;
-        public int Time
+        private uint checkpointIndex;
+        public uint CheckpointIndex
         {
-            get => this.time;
-            set => this.time = value;
+            get => this.checkpointIndex;
+            set => this.checkpointIndex = value;
         }
 
         private int u03;
@@ -190,11 +190,11 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.u03 = value;
         }
 
-        private int u04;
-        public int U04
+        private uint captureTime;
+        public uint CaptureTime
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.captureTime;
+            set => this.captureTime = value;
         }
 
         private int u05;
@@ -218,8 +218,8 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.u07 = value;
         }
 
-        private int classId;
-        public int ClassId
+        private uint classId;
+        public uint ClassId
         {
             get => this.classId;
             set => this.classId = value;
@@ -293,9 +293,9 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
         {
             ((CheckpointState)clone).u01 = context.Clone(this.u01)!;
             ((CheckpointState)clone).u02 = context.Clone(this.u02)!;
-            ((CheckpointState)clone).time = context.Clone(this.time)!;
+            ((CheckpointState)clone).checkpointIndex = context.Clone(this.checkpointIndex)!;
             ((CheckpointState)clone).u03 = context.Clone(this.u03)!;
-            ((CheckpointState)clone).u04 = context.Clone(this.u04)!;
+            ((CheckpointState)clone).captureTime = context.Clone(this.captureTime)!;
             ((CheckpointState)clone).u05 = context.Clone(this.u05)!;
             ((CheckpointState)clone).u06 = context.Clone(this.u06)!;
             ((CheckpointState)clone).u07 = context.Clone(this.u07)!;
@@ -318,7 +318,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
                 rw.Int32(ref this.u02);
             }
 
-            rw.Int32(ref this.time);
+            rw.UInt32(ref this.checkpointIndex);
 
             if (v >= 2)
             {
@@ -327,13 +327,13 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
 
             if (v >= 1)
             {
-                rw.Int32(ref this.u04);
+                rw.UInt32(ref this.captureTime);
             }
 
             rw.Int32(ref this.u05);
             rw.Int32(ref this.u06);
             rw.Int32(ref this.u07);
-            rw.Int32(ref this.classId);
+            rw.UInt32(ref this.classId);
             rw.ReadableWritable<VehicleState>(ref this.vehicle, version: v);
             rw.Int32(ref this.u08);
             rw.Int32(ref this.u09);
@@ -1489,11 +1489,14 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             set => this.u15 = value;
         }
 
-        private int u16;
-        public int U16
+        private uint packedVehicleState;
+        /// <summary>
+        /// Vehicle flags, small states and quantized values share this word.
+        /// </summary>
+        public uint PackedVehicleState
         {
-            get => this.u16;
-            set => this.u16 = value;
+            get => this.packedVehicleState;
+            set => this.packedVehicleState = value;
         }
 
         private PackedWheelState[]? wheels;
@@ -1578,7 +1581,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
             ((Snapshot)clone).u13 = context.Clone(this.u13)!;
             ((Snapshot)clone).u14 = context.CloneArray(this.u14)!;
             ((Snapshot)clone).u15 = context.Clone(this.u15)!;
-            ((Snapshot)clone).u16 = context.Clone(this.u16)!;
+            ((Snapshot)clone).packedVehicleState = context.Clone(this.packedVehicleState)!;
             ((Snapshot)clone).wheels = context.CloneArray(this.wheels)!;
             ((Snapshot)clone).u17 = context.Clone(this.u17)!;
             ((Snapshot)clone).u18 = context.Clone(this.u18)!;
@@ -1682,7 +1685,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
 
             if (v >= 30)
             {
-                rw.Int32(ref this.u16);
+                rw.UInt32(ref this.packedVehicleState);
                 rw.ArrayReadableWritable<PackedWheelState>(ref this.wheels!, 4, version: v);
                 rw.Byte(ref this.u17);
                 rw.Byte(ref this.u18);

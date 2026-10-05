@@ -19,7 +19,7 @@ archive ShadedGeom
       int
 
 archive PreLightGen
-  int Version
+  version
   int
   float
   bool
@@ -33,7 +33,7 @@ archive PreLightGen
   float
   int2 SpriteCount
   boxaligned[]
-  if Version >= 1
+  v1+ (archive)
     int4[] UvGroups
 
 archive Light

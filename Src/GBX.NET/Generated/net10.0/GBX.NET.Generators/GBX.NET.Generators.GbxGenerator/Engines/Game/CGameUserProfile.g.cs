@@ -34,6 +34,14 @@ public partial class CGameUserProfile : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x031CC000;
 
+    private Vec3 badgeColor = (1, 0, 0);
+    [AppliedWithChunk<Chunk031CC000>]
+    public Vec3 BadgeColor
+    {
+        get => this.badgeColor;
+        set => this.badgeColor = value;
+    }
+
     private Sticker[]? stickers;
     [AppliedWithChunk<Chunk031CC000>(3)]
     public Sticker[]? Stickers
@@ -50,12 +58,36 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => this.layers = value;
     }
 
+    private bool useBadge = true;
+    [AppliedWithChunk<Chunk031CC000>(4)]
+    public bool UseBadge
+    {
+        get => this.useBadge;
+        set => this.useBadge = value;
+    }
+
+    private string skinName = "";
+    [AppliedWithChunk<Chunk031CC000>(4)]
+    public string SkinName
+    {
+        get => this.skinName;
+        set => this.skinName = value;
+    }
+
     private string? clubTag;
     [AppliedWithChunk<Chunk031CC000>(7)]
     public string? ClubTag
     {
         get => this.clubTag;
         set => this.clubTag = value;
+    }
+
+    private CScriptTraitsPersistent? scriptPersistentTraits;
+    [AppliedWithChunk<Chunk031CC001>]
+    public CScriptTraitsPersistent? ScriptPersistentTraits
+    {
+        get => this.scriptPersistentTraits;
+        set => this.scriptPersistentTraits = value;
     }
 
     private ContextTime[]? contextTimes;
@@ -74,7 +106,168 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => this.contextMapRecordsForProfile = value;
     }
 
-    private bool editor_ShowHelp;
+    private CInputBindingsConfig[]? inputBindingsConfigs;
+    [AppliedWithChunk<Chunk031CC007>(0, 0)]
+    [AppliedWithChunk<Chunk031CC007>(2)]
+    public CInputBindingsConfig[]? InputBindingsConfigs
+    {
+        get => this.inputBindingsConfigs;
+        set => this.inputBindingsConfigs = value;
+    }
+
+    private CInputBindingsConfig? inputBindingsConfig;
+    [AppliedWithChunk<Chunk031CC007>(1, 1)]
+    public CInputBindingsConfig? InputBindingsConfig
+    {
+        get => this.inputBindingsConfig;
+        set => this.inputBindingsConfig = value;
+    }
+
+    private float rumbleIntensity = 1;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float RumbleIntensity
+    {
+        get => this.rumbleIntensity;
+        set => this.rumbleIntensity = value;
+    }
+
+    private float centerSpringIntensity;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float CenterSpringIntensity
+    {
+        get => this.centerSpringIntensity;
+        set => this.centerSpringIntensity = value;
+    }
+
+    private bool mouseLookInvertY;
+    [AppliedWithChunk<Chunk031CC007>]
+    public bool MouseLookInvertY
+    {
+        get => this.mouseLookInvertY;
+        set => this.mouseLookInvertY = value;
+    }
+
+    private EMouseReleaseKey mouseReleaseKey;
+    [AppliedWithChunk<Chunk031CC007>]
+    public EMouseReleaseKey MouseReleaseKey
+    {
+        get => this.mouseReleaseKey;
+        set => this.mouseReleaseKey = value;
+    }
+
+    private bool mouseAccel;
+    [AppliedWithChunk<Chunk031CC007>]
+    public bool MouseAccel
+    {
+        get => this.mouseAccel;
+        set => this.mouseAccel = value;
+    }
+
+    private float mouseScaleY = 1;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float MouseScaleY
+    {
+        get => this.mouseScaleY;
+        set => this.mouseScaleY = value;
+    }
+
+    private float mouseScaleFreeLook = 1;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float MouseScaleFreeLook
+    {
+        get => this.mouseScaleFreeLook;
+        set => this.mouseScaleFreeLook = value;
+    }
+
+    private float mouseAccelQuantity = 0.001f;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float MouseAccelQuantity
+    {
+        get => this.mouseAccelQuantity;
+        set => this.mouseAccelQuantity = value;
+    }
+
+    private bool mouseSensitivities_EnableSpecific = true;
+    [AppliedWithChunk<Chunk031CC007>]
+    public bool MouseSensitivities_EnableSpecific
+    {
+        get => this.mouseSensitivities_EnableSpecific;
+        set => this.mouseSensitivities_EnableSpecific = value;
+    }
+
+    private float mouseSensitivity_Default = 0.5f;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float MouseSensitivity_Default
+    {
+        get => this.mouseSensitivity_Default;
+        set => this.mouseSensitivity_Default = value;
+    }
+
+    private float mouseSensitivity_Laser = 0.4f;
+    [AppliedWithChunk<Chunk031CC007>]
+    public float MouseSensitivity_Laser
+    {
+        get => this.mouseSensitivity_Laser;
+        set => this.mouseSensitivity_Laser = value;
+    }
+
+    private Unknown[]? legacyVehicleSettings;
+    [AppliedWithChunk<Chunk031CC007>(0, 2)]
+    public Unknown[]? LegacyVehicleSettings
+    {
+        get => this.legacyVehicleSettings;
+        set => this.legacyVehicleSettings = value;
+    }
+
+    private uint camName;
+    [AppliedWithChunk<Chunk031CC008>]
+    public uint CamName
+    {
+        get => this.camName;
+        set => this.camName = value;
+    }
+
+    private uint totalMedals;
+    [AppliedWithChunk<Chunk031CC00A>(2)]
+    public uint TotalMedals
+    {
+        get => this.totalMedals;
+        set => this.totalMedals = value;
+    }
+
+    private uint authorMedalCount;
+    [AppliedWithChunk<Chunk031CC00A>(2)]
+    public uint AuthorMedalCount
+    {
+        get => this.authorMedalCount;
+        set => this.authorMedalCount = value;
+    }
+
+    private uint bronzeMedalCount;
+    [AppliedWithChunk<Chunk031CC00A>(2)]
+    public uint BronzeMedalCount
+    {
+        get => this.bronzeMedalCount;
+        set => this.bronzeMedalCount = value;
+    }
+
+    private uint goldMedalCount;
+    [AppliedWithChunk<Chunk031CC00A>(2)]
+    public uint GoldMedalCount
+    {
+        get => this.goldMedalCount;
+        set => this.goldMedalCount = value;
+    }
+
+    private uint silverMedalCount;
+    [AppliedWithChunk<Chunk031CC00A>(2)]
+    public uint SilverMedalCount
+    {
+        get => this.silverMedalCount;
+        set => this.silverMedalCount = value;
+    }
+
+    private bool editor_ShowHelp = true;
     [AppliedWithChunk<Chunk031CC00B>]
     public bool Editor_ShowHelp
     {
@@ -90,16 +283,58 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => this.vehicleSettings = value;
     }
 
+    private CGameCtnMediaShootParams? shootParamsVideo;
+    [AppliedWithChunk<Chunk031CC00E>]
+    public CGameCtnMediaShootParams? ShootParamsVideo
+    {
+        get => this.shootParamsVideo;
+        set => this.shootParamsVideo = value;
+    }
+
+    private CGameCtnMediaShootParams? shootParamsScreenshot;
+    [AppliedWithChunk<Chunk031CC00E>]
+    public CGameCtnMediaShootParams? ShootParamsScreenshot
+    {
+        get => this.shootParamsScreenshot;
+        set => this.shootParamsScreenshot = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameUserProfile)clone).badgeColor = context.Clone(this.badgeColor)!;
         ((CGameUserProfile)clone).stickers = context.CloneArray(this.stickers)!;
         ((CGameUserProfile)clone).layers = context.CloneArray(this.layers)!;
+        ((CGameUserProfile)clone).useBadge = context.Clone(this.useBadge)!;
+        ((CGameUserProfile)clone).skinName = context.Clone(this.skinName)!;
         ((CGameUserProfile)clone).clubTag = context.Clone(this.clubTag)!;
+        ((CGameUserProfile)clone).scriptPersistentTraits = context.Clone(this.scriptPersistentTraits)!;
         ((CGameUserProfile)clone).contextTimes = context.CloneArray(this.contextTimes)!;
         ((CGameUserProfile)clone).contextMapRecordsForProfile = context.CloneArray(this.contextMapRecordsForProfile)!;
+        ((CGameUserProfile)clone).inputBindingsConfigs = context.CloneArray(this.inputBindingsConfigs)!;
+        ((CGameUserProfile)clone).inputBindingsConfig = context.Clone(this.inputBindingsConfig)!;
+        ((CGameUserProfile)clone).rumbleIntensity = context.Clone(this.rumbleIntensity)!;
+        ((CGameUserProfile)clone).centerSpringIntensity = context.Clone(this.centerSpringIntensity)!;
+        ((CGameUserProfile)clone).mouseLookInvertY = context.Clone(this.mouseLookInvertY)!;
+        ((CGameUserProfile)clone).mouseReleaseKey = context.Clone(this.mouseReleaseKey)!;
+        ((CGameUserProfile)clone).mouseAccel = context.Clone(this.mouseAccel)!;
+        ((CGameUserProfile)clone).mouseScaleY = context.Clone(this.mouseScaleY)!;
+        ((CGameUserProfile)clone).mouseScaleFreeLook = context.Clone(this.mouseScaleFreeLook)!;
+        ((CGameUserProfile)clone).mouseAccelQuantity = context.Clone(this.mouseAccelQuantity)!;
+        ((CGameUserProfile)clone).mouseSensitivities_EnableSpecific = context.Clone(this.mouseSensitivities_EnableSpecific)!;
+        ((CGameUserProfile)clone).mouseSensitivity_Default = context.Clone(this.mouseSensitivity_Default)!;
+        ((CGameUserProfile)clone).mouseSensitivity_Laser = context.Clone(this.mouseSensitivity_Laser)!;
+        ((CGameUserProfile)clone).legacyVehicleSettings = context.CloneArray(this.legacyVehicleSettings)!;
+        ((CGameUserProfile)clone).camName = context.Clone(this.camName)!;
+        ((CGameUserProfile)clone).totalMedals = context.Clone(this.totalMedals)!;
+        ((CGameUserProfile)clone).authorMedalCount = context.Clone(this.authorMedalCount)!;
+        ((CGameUserProfile)clone).bronzeMedalCount = context.Clone(this.bronzeMedalCount)!;
+        ((CGameUserProfile)clone).goldMedalCount = context.Clone(this.goldMedalCount)!;
+        ((CGameUserProfile)clone).silverMedalCount = context.Clone(this.silverMedalCount)!;
         ((CGameUserProfile)clone).editor_ShowHelp = context.Clone(this.editor_ShowHelp)!;
         ((CGameUserProfile)clone).vehicleSettings = context.CloneArray(this.vehicleSettings)!;
+        ((CGameUserProfile)clone).shootParamsVideo = context.Clone(this.shootParamsVideo)!;
+        ((CGameUserProfile)clone).shootParamsScreenshot = context.Clone(this.shootParamsScreenshot)!;
     }
 
     public CGameUserProfile()
@@ -107,39 +342,36 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC000)]
+    [ChunkGameVersion(GameVersion.TM2020, 16)]
     public partial class Chunk031CC000 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC000;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 16;
         public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public int U05;
+        public int U02;
+        public string? U03;
+        public string? U04;
+        public string? U05;
         public string? U06;
         public string? U07;
-        public string? U08;
-        public bool U09;
+        public byte U08;
+        public string? U09;
         public string? U10;
-        public string? U11;
+        public float U11;
         public string? U12;
-        public byte U13;
-        public string? U14;
-        public string? U15;
-        public float U16;
-        public string? U17;
-        public string? U18;
-        public float U19;
-        public int U20;
-        public int U21;
+        public string? U13;
+        public float U14;
+        public int U15;
+        public int U16;
+        public int U17;
+        public int U18;
+        public byte U19;
+        public float U20;
+        public float U21;
         public int U22;
         public int U23;
-        public byte U24;
-        public float U25;
-        public float U26;
-        public int U27;
-        public int U28;
-        public string? U29;
+        public string? U24;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -169,38 +401,31 @@ public partial class CGameUserProfile : CMwNod, IClass
             ((Chunk031CC000)clone).U22 = context.Clone(this.U22)!;
             ((Chunk031CC000)clone).U23 = context.Clone(this.U23)!;
             ((Chunk031CC000)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk031CC000)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk031CC000)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk031CC000)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk031CC000)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk031CC000)clone).U29 = context.Clone(this.U29)!;
         }
 
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.Vec3(ref n.badgeColor);
 
             if (Version == 0)
             {
-                rw.Single(ref U04);
+                rw.Single(ref U01);
             }
 
             if (Version <= 3)
             {
-                rw.Int32(ref U05);
-                rw.String(ref U06);
+                rw.Int32(ref U02);
+                rw.String(ref U03);
             }
 
             if (Version <= 2)
             {
-                rw.String(ref U07);
+                rw.String(ref U04);
 
                 if (Version == 2)
                 {
-                    rw.String(ref U08);
+                    rw.String(ref U05);
                 }
             }
 
@@ -211,19 +436,19 @@ public partial class CGameUserProfile : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.Boolean(ref U09);
-                    rw.String(ref U10);
+                    rw.Boolean(ref n.useBadge);
+                    rw.String(ref n.skinName);
                 }
 
                 if (Version >= 5)
                 {
-                    rw.String(ref U11);
-                    rw.String(ref U12);
+                    rw.String(ref U06);
+                    rw.String(ref U07);
                 }
 
                 if (Version >= 6)
                 {
-                    rw.Byte(ref U13);
+                    rw.Byte(ref U08);
                 }
 
                 if (Version >= 7)
@@ -233,73 +458,87 @@ public partial class CGameUserProfile : CMwNod, IClass
 
                 if (Version >= 8)
                 {
-                    rw.String(ref U14);
-                    rw.String(ref U15);
-                    rw.Single(ref U16);
-                    rw.String(ref U17);
-                    rw.String(ref U18);
-                    rw.Single(ref U19);
-                    rw.Int32(ref U20);
-                    rw.Int32(ref U21);
+                    rw.String(ref U09);
+                    rw.String(ref U10);
+                    rw.Single(ref U11);
+                    rw.String(ref U12);
+                    rw.String(ref U13);
+                    rw.Single(ref U14);
+                    rw.Int32(ref U15);
+                    rw.Int32(ref U16);
                 }
 
                 if (Version >= 10)
                 {
-                    rw.Int32(ref U22);
+                    rw.Int32(ref U17);
                 }
 
                 if (Version >= 11)
                 {
-                    rw.Int32(ref U23);
+                    rw.Int32(ref U18);
                 }
 
                 if (Version >= 12)
                 {
-                    rw.Byte(ref U24);
+                    rw.Byte(ref U19);
                 }
 
                 if (Version >= 13)
                 {
-                    rw.Single(ref U25);
-                    rw.Single(ref U26);
+                    rw.Single(ref U20);
+                    rw.Single(ref U21);
                 }
 
                 if (Version >= 14)
                 {
-                    rw.Int32(ref U27);
+                    rw.Int32(ref U22);
                 }
 
                 if (Version >= 15)
                 {
-                    rw.Int32(ref U28);
+                    rw.Int32(ref U23);
                 }
 
                 if (Version >= 16)
                 {
-                    rw.String(ref U29);
+                    rw.String(ref U24);
                 }
             }
         }
     }
 
     [Chunk(0x031CC001)]
-    public partial class Chunk031CC001 : SkippableChunk<CGameUserProfile>
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk031CC001 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk031CC001)clone).U01 = context.Clone(this.U01)!;
             ((Chunk031CC001)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Encapsulated(rw =>
+            {
+                rw.Node<CScriptTraitsPersistent>(ref n.scriptPersistentTraits);
+            });
         }
     }
 
     [Chunk(0x031CC002)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC002 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC002;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -317,10 +556,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC003)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC003 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC003;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -341,7 +582,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC004 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC004;
-        public int Version { get; set; }
+        public int Version { get; set; } = 2;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -357,10 +598,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC005)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC005 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC005;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -381,7 +624,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC006 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC006;
-        public int Version { get; set; }
+        public int Version { get; set; } = 3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -397,74 +640,53 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC007)]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk031CC007 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC007;
-        public int Version { get; set; }
-        public CInputBindingsConfig? U01;
-        public CInputBindingsConfig[]? U02;
-        public float U03;
-        public float U04;
-        public bool U05;
-        public int U06;
-        public bool U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public bool U11;
-        public float U12;
-        public float U13;
-        public Unknown[]? U14;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk031CC007)clone).Version = context.Clone(this.Version)!;
-            ((Chunk031CC007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk031CC007)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk031CC007)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk031CC007)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk031CC007)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk031CC007)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk031CC007)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk031CC007)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk031CC007)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk031CC007)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk031CC007)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk031CC007)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk031CC007)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk031CC007)clone).U14 = context.CloneArray(this.U14)!;
         }
 
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
 
+            if (Version == 0)
+            {
+                rw.ArrayNodeRef<CInputBindingsConfig>(ref n.inputBindingsConfigs!);
+            }
+
             if (Version == 1)
             {
-                rw.NodeRef<CInputBindingsConfig>(ref U01);
+                rw.NodeRef<CInputBindingsConfig>(ref n.inputBindingsConfig);
             }
 
             if (Version >= 2)
             {
-                rw.ArrayNodeRef<CInputBindingsConfig>(ref U02!);
+                rw.ArrayNodeRef<CInputBindingsConfig>(ref n.inputBindingsConfigs!);
             }
 
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Boolean(ref U05);
-            rw.Int32(ref U06);
-            rw.Boolean(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Boolean(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
+            rw.Single(ref n.rumbleIntensity);
+            rw.Single(ref n.centerSpringIntensity);
+            rw.Boolean(ref n.mouseLookInvertY);
+            rw.EnumInt32<EMouseReleaseKey>(ref n.mouseReleaseKey);
+            rw.Boolean(ref n.mouseAccel);
+            rw.Single(ref n.mouseScaleY);
+            rw.Single(ref n.mouseScaleFreeLook);
+            rw.Single(ref n.mouseAccelQuantity);
+            rw.Boolean(ref n.mouseSensitivities_EnableSpecific);
+            rw.Single(ref n.mouseSensitivity_Default);
+            rw.Single(ref n.mouseSensitivity_Laser);
 
             if (Version <= 2)
             {
-                rw.ArrayReadableWritable<Unknown>(ref U14!, version: Version);
+                rw.ArrayReadableWritable<Unknown>(ref n.legacyVehicleSettings!, version: Version);
             }
         }
     }
@@ -473,27 +695,27 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC008 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC008;
-        public int Version { get; set; }
-        public int U01;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk031CC008)clone).Version = context.Clone(this.Version)!;
-            ((Chunk031CC008)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
+            rw.UInt32(ref n.camName);
         }
     }
 
     [Chunk(0x031CC009)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC009 : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC009;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -504,17 +726,14 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC00A)]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk031CC00A : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00A;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 3;
         public Unknown2[]? U01;
         public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -522,11 +741,6 @@ public partial class CGameUserProfile : CMwNod, IClass
             ((Chunk031CC00A)clone).Version = context.Clone(this.Version)!;
             ((Chunk031CC00A)clone).U01 = context.CloneArray(this.U01)!;
             ((Chunk031CC00A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk031CC00A)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk031CC00A)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk031CC00A)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk031CC00A)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk031CC00A)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
@@ -536,25 +750,27 @@ public partial class CGameUserProfile : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.Int32(ref U02);
-                rw.Int32(ref U03);
-                rw.Int32(ref U04);
-                rw.Int32(ref U05);
-                rw.Int32(ref U06);
+                rw.UInt32(ref n.totalMedals);
+                rw.UInt32(ref n.authorMedalCount);
+                rw.UInt32(ref n.bronzeMedalCount);
+                rw.UInt32(ref n.goldMedalCount);
+                rw.UInt32(ref n.silverMedalCount);
             }
 
             if (Version >= 3)
             {
-                rw.Int32(ref U07);
+                rw.Int32(ref U02);
             }
         }
     }
 
     [Chunk(0x031CC00B)]
+    [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk031CC00B : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00B;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 8;
         public string? U01;
         public string? U02;
         public string? U03;
@@ -576,7 +792,7 @@ public partial class CGameUserProfile : CMwNod, IClass
         public int U19;
         public int U20;
         public int U21;
-        public int U22;
+        public bool U22;
         public byte U23;
         public int U24;
         public int U25;
@@ -662,7 +878,7 @@ public partial class CGameUserProfile : CMwNod, IClass
 
                 if (Version == 6)
                 {
-                    rw.Int32(ref U22);
+                    rw.Boolean(ref U22);
                 }
 
                 if (Version >= 7)
@@ -681,10 +897,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC00C)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC00C : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00C;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -700,10 +918,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC00D)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC00D : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00D;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public int U01;
         public int U02;
 
@@ -728,22 +948,34 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC00E)]
-    public partial class Chunk031CC00E : SkippableChunk<CGameUserProfile>
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk031CC00E : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00E;
-        public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk031CC00E)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Node<CGameCtnMediaShootParams>(ref n.shootParamsVideo);
+            rw.Node<CGameCtnMediaShootParams>(ref n.shootParamsScreenshot);
         }
     }
 
     [Chunk(0x031CC00F)]
+    [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk031CC00F : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC00F;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 4;
         public Unknown6? U01;
         public byte U02;
         public int U03;
@@ -785,10 +1017,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC010)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC010 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC010;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public Unknown7[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -806,9 +1040,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC011)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC011 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC011;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;
@@ -833,9 +1069,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC012)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC012 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC012;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
 
@@ -857,7 +1095,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC014 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC014;
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -878,7 +1116,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC015 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC015;
-        public int Version { get; set; }
+        public int Version { get; set; } = 5;
         public Unknown8? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -896,9 +1134,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC016)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC016 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC016;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
 
@@ -917,10 +1157,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC017)]
+    [ChunkGameVersion(GameVersion.TM2020, 6)]
     public partial class Chunk031CC017 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC017;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 6;
         public Unknown8? U01;
         public ulong U02;
 
@@ -945,10 +1187,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC018)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC018 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC018;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public byte U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -966,9 +1210,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC019)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC019 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC019;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
 
@@ -987,9 +1233,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01A)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01A : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC01A;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
 
@@ -1008,9 +1256,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01B)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01B : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC01B;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1019,9 +1269,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01C)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01C : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC01C;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1037,10 +1289,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01D)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC01D : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC01D;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
         public int U01;
         public int U02;
         public int U03;
@@ -1091,9 +1345,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01E)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01E : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC01E;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1109,9 +1365,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC01F)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01F : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC01F;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1127,10 +1385,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC020)]
+    [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk031CC020 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC020;
-        public int Version { get; set; }
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 8;
         public Unknown8? U01;
         public ulong U02;
 
@@ -1151,9 +1411,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC021)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC021 : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC021;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1162,9 +1424,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC022)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC022 : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC022;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1180,9 +1444,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC023)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC023 : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC023;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1198,9 +1464,11 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     [Chunk(0x031CC024)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC024 : SkippableChunk<CGameUserProfile>
     {
         public override uint Id => 0x031CC024;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1217,18 +1485,18 @@ public partial class CGameUserProfile : CMwNod, IClass
 
     public partial class Sticker : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? stickerName;
+        public string? StickerName
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.stickerName;
+            set => this.stickerName = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? slotName;
+        public string? SlotName
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.slotName;
+            set => this.slotName = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1241,14 +1509,14 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Sticker)clone).u01 = context.Clone(this.u01)!;
-            ((Sticker)clone).u02 = context.Clone(this.u02)!;
+            ((Sticker)clone).stickerName = context.Clone(this.stickerName)!;
+            ((Sticker)clone).slotName = context.Clone(this.slotName)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.String(ref this.u01);
-            rw.String(ref this.u02);
+            rw.String(ref this.stickerName);
+            rw.String(ref this.slotName);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1266,25 +1534,32 @@ public partial class CGameUserProfile : CMwNod, IClass
 
     public partial class ContextTime : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? context;
+        public string? Context
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.context;
+            set => this.context = value;
         }
 
-        private int u02;
-        public int U02
+        private uint gameModeTimeSeconds;
+        public uint GameModeTimeSeconds
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.gameModeTimeSeconds;
+            set => this.gameModeTimeSeconds = value;
         }
 
-        private int u03;
-        public int U03
+        private uint u04;
+        public uint U04
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private uint playTimeSeconds;
+        public uint PlayTimeSeconds
+        {
+            get => this.playTimeSeconds;
+            set => this.playTimeSeconds = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1297,16 +1572,23 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((ContextTime)clone).u01 = context.Clone(this.u01)!;
-            ((ContextTime)clone).u02 = context.Clone(this.u02)!;
-            ((ContextTime)clone).u03 = context.Clone(this.u03)!;
+            ((ContextTime)clone).context = context.Clone(this.context)!;
+            ((ContextTime)clone).gameModeTimeSeconds = context.Clone(this.gameModeTimeSeconds)!;
+            ((ContextTime)clone).u04 = context.Clone(this.u04)!;
+            ((ContextTime)clone).playTimeSeconds = context.Clone(this.playTimeSeconds)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.String(ref this.u01);
-            rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
+            rw.String(ref this.context);
+            rw.UInt32(ref this.gameModeTimeSeconds);
+
+            if (v >= 2)
+            {
+                rw.UInt32(ref this.u04);
+            }
+
+            rw.UInt32(ref this.playTimeSeconds);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1359,11 +1641,11 @@ public partial class CGameUserProfile : CMwNod, IClass
             set => this.u02 = value;
         }
 
-        private string? u03;
-        public string? U03
+        private string? context;
+        public string? Context
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.context;
+            set => this.context = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1381,7 +1663,7 @@ public partial class CGameUserProfile : CMwNod, IClass
             ((ContextMapRecordForProfile)clone).personalBest = context.Clone(this.personalBest)!;
             ((ContextMapRecordForProfile)clone).u01 = context.Clone(this.u01)!;
             ((ContextMapRecordForProfile)clone).u02 = context.Clone(this.u02)!;
-            ((ContextMapRecordForProfile)clone).u03 = context.Clone(this.u03)!;
+            ((ContextMapRecordForProfile)clone).context = context.Clone(this.context)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -1401,7 +1683,7 @@ public partial class CGameUserProfile : CMwNod, IClass
 
                 if (v >= 3)
                 {
-                    rw.String(ref this.u03);
+                    rw.String(ref this.context);
                 }
             }
         }
@@ -1421,32 +1703,32 @@ public partial class CGameUserProfile : CMwNod, IClass
 
     public partial class Unknown : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private Ident vehicle = Ident.Empty;
+        public Ident Vehicle
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.vehicle;
+            set => this.vehicle = value;
         }
 
-        private float u02;
-        public float U02
+        private float analogSensitivity = 1;
+        public float AnalogSensitivity
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.analogSensitivity;
+            set => this.analogSensitivity = value;
         }
 
-        private float u03;
-        public float U03
+        private float analogDeadZone = 0.1f;
+        public float AnalogDeadZone
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.analogDeadZone;
+            set => this.analogDeadZone = value;
         }
 
-        private bool u04;
-        public bool U04
+        private bool analogSteerV2;
+        public bool AnalogSteerV2
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.analogSteerV2;
+            set => this.analogSteerV2 = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1459,18 +1741,18 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Unknown)clone).u01 = context.Clone(this.u01)!;
-            ((Unknown)clone).u02 = context.Clone(this.u02)!;
-            ((Unknown)clone).u03 = context.Clone(this.u03)!;
-            ((Unknown)clone).u04 = context.Clone(this.u04)!;
+            ((Unknown)clone).vehicle = context.Clone(this.vehicle)!;
+            ((Unknown)clone).analogSensitivity = context.Clone(this.analogSensitivity)!;
+            ((Unknown)clone).analogDeadZone = context.Clone(this.analogDeadZone)!;
+            ((Unknown)clone).analogSteerV2 = context.Clone(this.analogSteerV2)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Boolean(ref this.u04);
+            rw.Ident(ref this.vehicle);
+            rw.Single(ref this.analogSensitivity);
+            rw.Single(ref this.analogDeadZone);
+            rw.Boolean(ref this.analogSteerV2);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1564,11 +1846,11 @@ public partial class CGameUserProfile : CMwNod, IClass
 
     public partial class Unknown3 : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? mapUid;
+        public string? MapUid
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.mapUid;
+            set => this.mapUid = value;
         }
 
         private int u02;
@@ -1599,11 +1881,11 @@ public partial class CGameUserProfile : CMwNod, IClass
             set => this.u05 = value;
         }
 
-        private int u06;
-        public int U06
+        private int medal;
+        public int Medal
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.medal;
+            set => this.medal = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1616,22 +1898,22 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Unknown3)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown3)clone).mapUid = context.Clone(this.mapUid)!;
             ((Unknown3)clone).u02 = context.Clone(this.u02)!;
             ((Unknown3)clone).u03 = context.Clone(this.u03)!;
             ((Unknown3)clone).u04 = context.Clone(this.u04)!;
             ((Unknown3)clone).u05 = context.Clone(this.u05)!;
-            ((Unknown3)clone).u06 = context.Clone(this.u06)!;
+            ((Unknown3)clone).medal = context.Clone(this.medal)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
+            rw.Id(ref this.mapUid);
             rw.Int32(ref this.u02);
             rw.Int32(ref this.u03);
             rw.Int32(ref this.u04);
             rw.Int32(ref this.u05);
-            rw.Int32(ref this.u06);
+            rw.Int32(ref this.medal);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1647,14 +1929,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
-    public partial class Unknown4 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class Unknown4 : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int u01;
-        public int U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
+        public int Version { get; set; }
 
         private string? u02;
         public string? U02
@@ -1701,7 +1978,7 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Unknown4)clone).u01 = context.Clone(this.u01)!;
+            ((Unknown4)clone).Version = context.Clone(this.Version)!;
             ((Unknown4)clone).u02 = context.Clone(this.u02)!;
             ((Unknown4)clone).u03 = context.Clone(this.u03)!;
             ((Unknown4)clone).u04 = context.Clone(this.u04)!;
@@ -1711,7 +1988,7 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
+            rw.VersionInt32(this);
             rw.String(ref this.u02);
             rw.Int32(ref this.u03);
             rw.Int32(ref this.u04);
@@ -1858,14 +2135,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
-    public partial class Unknown6 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class Unknown6 : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; } = 1;
 
         private int u01;
         public int U01
@@ -1891,20 +2163,22 @@ public partial class CGameUserProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Unknown6)clone).version = context.Clone(this.version)!;
+            ((Unknown6)clone).Version = context.Clone(this.Version)!;
             ((Unknown6)clone).u01 = context.Clone(this.u01)!;
             ((Unknown6)clone).u02 = context.CloneArray(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
 
-            if (Version>= 1)
+            if (Version == 0)
             {
-                rw.Int32(ref this.u01);
-                rw.Array<Quat>(ref this.u02!);
+                return;
             }
+
+            rw.Int32(ref this.u01);
+            rw.Array<Quat>(ref this.u02!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -2167,6 +2441,14 @@ public partial class CGameUserProfile : CMwNod, IClass
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EMouseReleaseKey
+    {
+        LeftAlt,
+        RightAlt,
+        LeftControl,
+        RightControl,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

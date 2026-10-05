@@ -171,15 +171,17 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x025 (skippable, demonstration: partial) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
   version
   timeint EventsDuration
-  if Version >= 1 || EventsDuration != 0
-    // CInputEventsStore is handled in C# before the validation fields.
-    string Validate_ExeVersion
-    uint Validate_ExeChecksum
-    int Validate_OsKind
-    int Validate_CpuKind
-    string Validate_RaceSettings
-    int? Validate_ValidationSeed
-    bool SteeringWheelSensitivity
+  v0-
+    if EventsDuration == 0
+      return
+  // CInputEventsStore is handled in C# before the validation fields.
+  string Validate_ExeVersion
+  uint Validate_ExeChecksum
+  int Validate_OsKind
+  int Validate_CpuKind
+  string Validate_RaceSettings
+  int? Validate_ValidationSeed
+  bool SteeringWheelSensitivity
 
 0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
   checksum128? GhostUid128
@@ -257,12 +259,12 @@ archive PlayerInputData
   data Data
 
 archive SBadge
-  int Version
+  version
   vec3 Color
-  if Version == 0
+  v0= (archive)
     int
     string
-  SSticker[] Stickers (list)
+  SSticker[] Stickers (version: v, list)
   string[] Layers (list)
 
 archive SSticker

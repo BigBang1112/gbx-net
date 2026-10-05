@@ -110,10 +110,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
     }
 
-    /// <summary>
-    /// Legacy name and blocks, without the discarded trailing word.
-    /// </summary>
-    [Chunk(0x03078000, "Legacy name and blocks, without the discarded trailing word.")]
+    [Chunk(0x03078000)]
     public partial class Chunk03078000 : Chunk<CGameCtnMediaTrack>
     {
         public override uint Id => 0x03078000;

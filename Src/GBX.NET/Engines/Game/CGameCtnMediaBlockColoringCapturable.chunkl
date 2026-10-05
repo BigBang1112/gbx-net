@@ -5,22 +5,22 @@ CGameCtnMediaBlockColoringCapturable 0x0316C000
   version
   v2+
     int KeyArchiveVersion = 2
-  if Version < 2
+  v1-
     Key[] Keys (version: -1, list)
-  else
+  v2+
     Key[] Keys (version: KeyArchiveVersion, list)
   v1+
     int CapturableIndex
 
 archive Key (inherits: IKey)
   timefloat Time
-  if v < 0
-    float Gauge
-    float Hue
-  else
+  v0+
     float Hue
     float Gauge
     ushort Emblem
     boolbyte EmblemBlink
     v1+
       boolbyte FullIntensity // False selects intensity 0.5; true selects intensity 1.
+    return
+  float Gauge
+  float Hue

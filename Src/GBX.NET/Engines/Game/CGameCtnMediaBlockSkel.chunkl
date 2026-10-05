@@ -8,7 +8,7 @@ CGameCtnMediaBlockSkel 0x0314A000
     int = 8 // Unidentified native field, initialized to 8 in both binaries.
     v4=
       int
-    if Version == 3 || Version == 4
+    v3..4
       float LegacyRootTranslationX = 100 // Root-transform composition in version 3. Discarded in version 4.
       float LegacyRootTranslationY = 1
       float LegacyRootTranslationZ = 100

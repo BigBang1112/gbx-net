@@ -74,15 +74,15 @@ archive EndOfRace
 archive Event (inherits: IKey)
   timefloat Time
   versionb
-  if Version == 0
+  v0= (archive)
     int<EventType> Type
     byte? U02
     string? U03
     string? U04
-  else
-    if Version < 3
+  v1+ (archive)
+    v1..2 (archive)
       int? U01
-    else
+    v3+ (archive)
       byte? U02
     int<EventType> Type
   switch Type
@@ -91,9 +91,9 @@ archive Event (inherits: IKey)
     case EventType.Checkpoint
       Checkpoint Checkpoint (version: 0)
     case EventType.EndOfLap
-      if Version < 2
+      v0..1 (archive)
         EndOfLap EndOfLap (version: 0)
-      else
+      v2+ (archive)
         EndOfLap EndOfLap (version: 1)
     case EventType.EndOfRace
       EndOfRace EndOfRace (version: 0)

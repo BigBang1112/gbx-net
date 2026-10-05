@@ -239,7 +239,7 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
                 rw.Single(ref this.maxHDR);
             }
 
-            if (v== 2 || v== 3)
+            if (v >= 2 && v <= 3)
             {
                 rw.Single(ref this.u04);
             }

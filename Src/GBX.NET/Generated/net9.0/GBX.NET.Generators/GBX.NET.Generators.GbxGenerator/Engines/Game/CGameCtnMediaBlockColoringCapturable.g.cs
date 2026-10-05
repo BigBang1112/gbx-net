@@ -95,11 +95,12 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
                 rw.Int32(ref n.keyArchiveVersion);
             }
 
-            if (Version< 2)
+            if (Version <= 1)
             {
                 rw.ListReadableWritable<Key>(ref n.keys!, version: - 1);
             }
-            else
+
+            if (Version >= 2)
             {
                 rw.ListReadableWritable<Key>(ref n.keys!, version: n.KeyArchiveVersion);
             }
@@ -120,18 +121,18 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
             set => this.time = value;
         }
 
-        private float gauge;
-        public float Gauge
-        {
-            get => this.gauge;
-            set => this.gauge = value;
-        }
-
         private float hue;
         public float Hue
         {
             get => this.hue;
             set => this.hue = value;
+        }
+
+        private float gauge;
+        public float Gauge
+        {
+            get => this.gauge;
+            set => this.gauge = value;
         }
 
         private ushort emblem;
@@ -169,8 +170,8 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).gauge = context.Clone(this.gauge)!;
             ((Key)clone).hue = context.Clone(this.hue)!;
+            ((Key)clone).gauge = context.Clone(this.gauge)!;
             ((Key)clone).emblem = context.Clone(this.emblem)!;
             ((Key)clone).emblemBlink = context.Clone(this.emblemBlink)!;
             ((Key)clone).fullIntensity = context.Clone(this.fullIntensity)!;
@@ -180,12 +181,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         {
             rw.TimeSingle(ref this.time);
 
-            if (v< 0)
-            {
-                rw.Single(ref this.gauge);
-                rw.Single(ref this.hue);
-            }
-            else
+            if (v >= 0)
             {
                 rw.Single(ref this.hue);
                 rw.Single(ref this.gauge);
@@ -196,7 +192,12 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
                 {
                     rw.Boolean(ref this.fullIntensity, asByte: true);
                 }
+
+                return;
             }
+
+            rw.Single(ref this.gauge);
+            rw.Single(ref this.hue);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

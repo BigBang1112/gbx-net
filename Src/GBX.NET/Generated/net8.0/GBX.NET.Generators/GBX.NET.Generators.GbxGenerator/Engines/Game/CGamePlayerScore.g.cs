@@ -38,12 +38,49 @@ public partial class CGamePlayerScore : CMwNod, IClass
     public static new uint Id => 0x0308D000;
 
     private string? playerName;
+    [AppliedWithChunk<Chunk0308D000>]
+    [AppliedWithChunk<Chunk0308D001>]
+    [AppliedWithChunk<Chunk0308D002>]
     [AppliedWithChunk<Chunk0308D003>]
     [AppliedWithChunk<Chunk0308D004>]
     public string? PlayerName
     {
         get => this.playerName;
         set => this.playerName = value;
+    }
+
+    private Score[]? scores;
+    [AppliedWithChunk<Chunk0308D000>]
+    [AppliedWithChunk<Chunk0308D001>]
+    [AppliedWithChunk<Chunk0308D002>]
+    [AppliedWithChunk<Chunk0308D003>]
+    [AppliedWithChunk<Chunk0308D004>]
+    public Score[]? Scores
+    {
+        get => this.scores;
+        set => this.scores = value;
+    }
+
+    private string? playerId;
+    [AppliedWithChunk<Chunk0308D001>]
+    [AppliedWithChunk<Chunk0308D002>]
+    [AppliedWithChunk<Chunk0308D003>]
+    [AppliedWithChunk<Chunk0308D004>]
+    public string? PlayerId
+    {
+        get => this.playerId;
+        set => this.playerId = value;
+    }
+
+    private int scoresVersion = 18;
+    [AppliedWithChunk<Chunk0308D001>]
+    [AppliedWithChunk<Chunk0308D002>]
+    [AppliedWithChunk<Chunk0308D003>]
+    [AppliedWithChunk<Chunk0308D004>]
+    public int ScoresVersion
+    {
+        get => this.scoresVersion;
+        set => this.scoresVersion = value;
     }
 
     private string? nickName;
@@ -55,33 +92,8 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.nickName = value;
     }
 
-    private int scoresVersion;
-    [AppliedWithChunk<Chunk0308D003>]
-    [AppliedWithChunk<Chunk0308D004>]
-    public int ScoresVersion
-    {
-        get => this.scoresVersion;
-        set => this.scoresVersion = value;
-    }
-
-    private Score[]? scores;
-    [AppliedWithChunk<Chunk0308D003>]
-    [AppliedWithChunk<Chunk0308D004>]
-    public Score[]? Scores
-    {
-        get => this.scores;
-        set => this.scores = value;
-    }
-
-    private int survivalScoresVersion;
-    [AppliedWithChunk<Chunk0308D006>]
-    public int SurvivalScoresVersion
-    {
-        get => this.survivalScoresVersion;
-        set => this.survivalScoresVersion = value;
-    }
-
     private SurvivalScore[]? survivalScores;
+    [AppliedWithChunk<Chunk0308D005>]
     [AppliedWithChunk<Chunk0308D006>]
     public SurvivalScore[]? SurvivalScores
     {
@@ -89,7 +101,26 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.survivalScores = value;
     }
 
+    private int survivalScoresVersion = 2;
+    [AppliedWithChunk<Chunk0308D006>]
+    public int SurvivalScoresVersion
+    {
+        get => this.survivalScoresVersion;
+        set => this.survivalScoresVersion = value;
+    }
+
+    private CampaignRecordsState[]? campaignRecordsStates;
+    [AppliedWithChunk<Chunk0308D00B>]
+    [AppliedWithChunk<Chunk0308D010>]
+    public CampaignRecordsState[]? CampaignRecordsStates
+    {
+        get => this.campaignRecordsStates;
+        set => this.campaignRecordsStates = value;
+    }
+
     private CGamePlayerOfficialScores? playerOfficialScores;
+    [AppliedWithChunk<Chunk0308D00C>]
+    [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
     public CGamePlayerOfficialScores? PlayerOfficialScores
     {
@@ -98,6 +129,8 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private TrainingMedalsScore[]? trainingMedalsScores;
+    [AppliedWithChunk<Chunk0308D00C>]
+    [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
     public TrainingMedalsScore[]? TrainingMedalsScores
     {
@@ -106,6 +139,8 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private CGameCampaignPlayerScores[]? campaignPlayerScores;
+    [AppliedWithChunk<Chunk0308D00C>]
+    [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
     public CGameCampaignPlayerScores[]? CampaignPlayerScores
     {
@@ -113,15 +148,8 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.campaignPlayerScores = value;
     }
 
-    private CampaignRecordsState[]? campaignRecordsStates;
-    [AppliedWithChunk<Chunk0308D010>]
-    public CampaignRecordsState[]? CampaignRecordsStates
-    {
-        get => this.campaignRecordsStates;
-        set => this.campaignRecordsStates = value;
-    }
-
     private LadderMatchResult[]? ladderMatchResults;
+    [AppliedWithChunk<Chunk0308D00D>]
     [AppliedWithChunk<Chunk0308D012>]
     public LadderMatchResult[]? LadderMatchResults
     {
@@ -129,74 +157,464 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.ladderMatchResults = value;
     }
 
+    private byte campaignRecordsStateVersion = 1;
+    [AppliedWithChunk<Chunk0308D010>]
+    public byte CampaignRecordsStateVersion
+    {
+        get => this.campaignRecordsStateVersion;
+        set => this.campaignRecordsStateVersion = value;
+    }
+
+    private int soloRaceTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SoloRaceTimeSeconds
+    {
+        get => this.soloRaceTimeSeconds;
+        set => this.soloRaceTimeSeconds = value;
+    }
+
+    private int submittedSoloRaceTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedSoloRaceTimeSeconds
+    {
+        get => this.submittedSoloRaceTimeSeconds;
+        set => this.submittedSoloRaceTimeSeconds = value;
+    }
+
+    private int soloPuzzleTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SoloPuzzleTimeSeconds
+    {
+        get => this.soloPuzzleTimeSeconds;
+        set => this.soloPuzzleTimeSeconds = value;
+    }
+
+    private int submittedSoloPuzzleTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedSoloPuzzleTimeSeconds
+    {
+        get => this.submittedSoloPuzzleTimeSeconds;
+        set => this.submittedSoloPuzzleTimeSeconds = value;
+    }
+
+    private int soloPlatformTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SoloPlatformTimeSeconds
+    {
+        get => this.soloPlatformTimeSeconds;
+        set => this.soloPlatformTimeSeconds = value;
+    }
+
+    private int submittedSoloPlatformTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedSoloPlatformTimeSeconds
+    {
+        get => this.submittedSoloPlatformTimeSeconds;
+        set => this.submittedSoloPlatformTimeSeconds = value;
+    }
+
+    private int soloStuntsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SoloStuntsTimeSeconds
+    {
+        get => this.soloStuntsTimeSeconds;
+        set => this.soloStuntsTimeSeconds = value;
+    }
+
+    private int submittedSoloStuntsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedSoloStuntsTimeSeconds
+    {
+        get => this.submittedSoloStuntsTimeSeconds;
+        set => this.submittedSoloStuntsTimeSeconds = value;
+    }
+
+    private int hotSeatTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int HotSeatTimeSeconds
+    {
+        get => this.hotSeatTimeSeconds;
+        set => this.hotSeatTimeSeconds = value;
+    }
+
+    private int submittedHotSeatTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedHotSeatTimeSeconds
+    {
+        get => this.submittedHotSeatTimeSeconds;
+        set => this.submittedHotSeatTimeSeconds = value;
+    }
+
+    private int networkTimeAttackTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int NetworkTimeAttackTimeSeconds
+    {
+        get => this.networkTimeAttackTimeSeconds;
+        set => this.networkTimeAttackTimeSeconds = value;
+    }
+
+    private int submittedNetworkTimeAttackTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedNetworkTimeAttackTimeSeconds
+    {
+        get => this.submittedNetworkTimeAttackTimeSeconds;
+        set => this.submittedNetworkTimeAttackTimeSeconds = value;
+    }
+
+    private int networkRoundsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int NetworkRoundsTimeSeconds
+    {
+        get => this.networkRoundsTimeSeconds;
+        set => this.networkRoundsTimeSeconds = value;
+    }
+
+    private int submittedNetworkRoundsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedNetworkRoundsTimeSeconds
+    {
+        get => this.submittedNetworkRoundsTimeSeconds;
+        set => this.submittedNetworkRoundsTimeSeconds = value;
+    }
+
+    private int networkLapsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int NetworkLapsTimeSeconds
+    {
+        get => this.networkLapsTimeSeconds;
+        set => this.networkLapsTimeSeconds = value;
+    }
+
+    private int submittedNetworkLapsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedNetworkLapsTimeSeconds
+    {
+        get => this.submittedNetworkLapsTimeSeconds;
+        set => this.submittedNetworkLapsTimeSeconds = value;
+    }
+
+    private int networkStuntsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int NetworkStuntsTimeSeconds
+    {
+        get => this.networkStuntsTimeSeconds;
+        set => this.networkStuntsTimeSeconds = value;
+    }
+
+    private int submittedNetworkStuntsTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedNetworkStuntsTimeSeconds
+    {
+        get => this.submittedNetworkStuntsTimeSeconds;
+        set => this.submittedNetworkStuntsTimeSeconds = value;
+    }
+
+    private int networkCupTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int NetworkCupTimeSeconds
+    {
+        get => this.networkCupTimeSeconds;
+        set => this.networkCupTimeSeconds = value;
+    }
+
+    private int submittedNetworkCupTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedNetworkCupTimeSeconds
+    {
+        get => this.submittedNetworkCupTimeSeconds;
+        set => this.submittedNetworkCupTimeSeconds = value;
+    }
+
+    private int mapEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int MapEditorTimeSeconds
+    {
+        get => this.mapEditorTimeSeconds;
+        set => this.mapEditorTimeSeconds = value;
+    }
+
+    private int submittedMapEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedMapEditorTimeSeconds
+    {
+        get => this.submittedMapEditorTimeSeconds;
+        set => this.submittedMapEditorTimeSeconds = value;
+    }
+
+    private int replayEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int ReplayEditorTimeSeconds
+    {
+        get => this.replayEditorTimeSeconds;
+        set => this.replayEditorTimeSeconds = value;
+    }
+
+    private int submittedReplayEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedReplayEditorTimeSeconds
+    {
+        get => this.submittedReplayEditorTimeSeconds;
+        set => this.submittedReplayEditorTimeSeconds = value;
+    }
+
+    private int skinEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SkinEditorTimeSeconds
+    {
+        get => this.skinEditorTimeSeconds;
+        set => this.skinEditorTimeSeconds = value;
+    }
+
+    private int submittedSkinEditorTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedSkinEditorTimeSeconds
+    {
+        get => this.submittedSkinEditorTimeSeconds;
+        set => this.submittedSkinEditorTimeSeconds = value;
+    }
+
+    private int maniaLinkTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int ManiaLinkTimeSeconds
+    {
+        get => this.maniaLinkTimeSeconds;
+        set => this.maniaLinkTimeSeconds = value;
+    }
+
+    private int submittedManiaLinkTimeSeconds;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedManiaLinkTimeSeconds
+    {
+        get => this.submittedManiaLinkTimeSeconds;
+        set => this.submittedManiaLinkTimeSeconds = value;
+    }
+
+    private int mapCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int MapCount
+    {
+        get => this.mapCount;
+        set => this.mapCount = value;
+    }
+
+    private int submittedMapCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedMapCount
+    {
+        get => this.submittedMapCount;
+        set => this.submittedMapCount = value;
+    }
+
+    private int resetCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int ResetCount
+    {
+        get => this.resetCount;
+        set => this.resetCount = value;
+    }
+
+    private int submittedResetCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedResetCount
+    {
+        get => this.submittedResetCount;
+        set => this.submittedResetCount = value;
+    }
+
+    private int finishCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int FinishCount
+    {
+        get => this.finishCount;
+        set => this.finishCount = value;
+    }
+
+    private int submittedFinishCount;
+    [AppliedWithChunk<Chunk0308D011>]
+    public int SubmittedFinishCount
+    {
+        get => this.submittedFinishCount;
+        set => this.submittedFinishCount = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerScore)clone).playerName = context.Clone(this.playerName)!;
-        ((CGamePlayerScore)clone).nickName = context.Clone(this.nickName)!;
-        ((CGamePlayerScore)clone).scoresVersion = context.Clone(this.scoresVersion)!;
         ((CGamePlayerScore)clone).scores = context.CloneArray(this.scores)!;
-        ((CGamePlayerScore)clone).survivalScoresVersion = context.Clone(this.survivalScoresVersion)!;
+        ((CGamePlayerScore)clone).playerId = context.Clone(this.playerId)!;
+        ((CGamePlayerScore)clone).scoresVersion = context.Clone(this.scoresVersion)!;
+        ((CGamePlayerScore)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerScore)clone).survivalScores = context.CloneArray(this.survivalScores)!;
+        ((CGamePlayerScore)clone).survivalScoresVersion = context.Clone(this.survivalScoresVersion)!;
+        ((CGamePlayerScore)clone).campaignRecordsStates = context.CloneArray(this.campaignRecordsStates)!;
         ((CGamePlayerScore)clone).playerOfficialScores = context.Clone(this.playerOfficialScores)!;
         ((CGamePlayerScore)clone).trainingMedalsScores = context.CloneArray(this.trainingMedalsScores)!;
         ((CGamePlayerScore)clone).campaignPlayerScores = context.CloneArray(this.campaignPlayerScores)!;
-        ((CGamePlayerScore)clone).campaignRecordsStates = context.CloneArray(this.campaignRecordsStates)!;
         ((CGamePlayerScore)clone).ladderMatchResults = context.CloneArray(this.ladderMatchResults)!;
+        ((CGamePlayerScore)clone).campaignRecordsStateVersion = context.Clone(this.campaignRecordsStateVersion)!;
+        ((CGamePlayerScore)clone).soloRaceTimeSeconds = context.Clone(this.soloRaceTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedSoloRaceTimeSeconds = context.Clone(this.submittedSoloRaceTimeSeconds)!;
+        ((CGamePlayerScore)clone).soloPuzzleTimeSeconds = context.Clone(this.soloPuzzleTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedSoloPuzzleTimeSeconds = context.Clone(this.submittedSoloPuzzleTimeSeconds)!;
+        ((CGamePlayerScore)clone).soloPlatformTimeSeconds = context.Clone(this.soloPlatformTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedSoloPlatformTimeSeconds = context.Clone(this.submittedSoloPlatformTimeSeconds)!;
+        ((CGamePlayerScore)clone).soloStuntsTimeSeconds = context.Clone(this.soloStuntsTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedSoloStuntsTimeSeconds = context.Clone(this.submittedSoloStuntsTimeSeconds)!;
+        ((CGamePlayerScore)clone).hotSeatTimeSeconds = context.Clone(this.hotSeatTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedHotSeatTimeSeconds = context.Clone(this.submittedHotSeatTimeSeconds)!;
+        ((CGamePlayerScore)clone).networkTimeAttackTimeSeconds = context.Clone(this.networkTimeAttackTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedNetworkTimeAttackTimeSeconds = context.Clone(this.submittedNetworkTimeAttackTimeSeconds)!;
+        ((CGamePlayerScore)clone).networkRoundsTimeSeconds = context.Clone(this.networkRoundsTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedNetworkRoundsTimeSeconds = context.Clone(this.submittedNetworkRoundsTimeSeconds)!;
+        ((CGamePlayerScore)clone).networkLapsTimeSeconds = context.Clone(this.networkLapsTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedNetworkLapsTimeSeconds = context.Clone(this.submittedNetworkLapsTimeSeconds)!;
+        ((CGamePlayerScore)clone).networkStuntsTimeSeconds = context.Clone(this.networkStuntsTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedNetworkStuntsTimeSeconds = context.Clone(this.submittedNetworkStuntsTimeSeconds)!;
+        ((CGamePlayerScore)clone).networkCupTimeSeconds = context.Clone(this.networkCupTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedNetworkCupTimeSeconds = context.Clone(this.submittedNetworkCupTimeSeconds)!;
+        ((CGamePlayerScore)clone).mapEditorTimeSeconds = context.Clone(this.mapEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedMapEditorTimeSeconds = context.Clone(this.submittedMapEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).replayEditorTimeSeconds = context.Clone(this.replayEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedReplayEditorTimeSeconds = context.Clone(this.submittedReplayEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).skinEditorTimeSeconds = context.Clone(this.skinEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedSkinEditorTimeSeconds = context.Clone(this.submittedSkinEditorTimeSeconds)!;
+        ((CGamePlayerScore)clone).maniaLinkTimeSeconds = context.Clone(this.maniaLinkTimeSeconds)!;
+        ((CGamePlayerScore)clone).submittedManiaLinkTimeSeconds = context.Clone(this.submittedManiaLinkTimeSeconds)!;
+        ((CGamePlayerScore)clone).mapCount = context.Clone(this.mapCount)!;
+        ((CGamePlayerScore)clone).submittedMapCount = context.Clone(this.submittedMapCount)!;
+        ((CGamePlayerScore)clone).resetCount = context.Clone(this.resetCount)!;
+        ((CGamePlayerScore)clone).submittedResetCount = context.Clone(this.submittedResetCount)!;
+        ((CGamePlayerScore)clone).finishCount = context.Clone(this.finishCount)!;
+        ((CGamePlayerScore)clone).submittedFinishCount = context.Clone(this.submittedFinishCount)!;
     }
 
     public CGamePlayerScore()
     {
     }
 
-    [Chunk(0x0308D003)]
-    public partial class Chunk0308D003 : Chunk<CGamePlayerScore>
+    [Chunk(0x0308D000)]
+    public partial class Chunk0308D000 : Chunk<CGamePlayerScore>
     {
-        public override uint Id => 0x0308D003;
+        public override uint Id => 0x0308D000;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308D003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308D000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.playerName);
+            rw.String(ref U01);
+            rw.ArrayReadableWritable<Score>(ref n.scores!, version: 0);
+        }
+    }
+
+    [Chunk(0x0308D001)]
+    public partial class Chunk0308D001 : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.playerName);
+            rw.Id(ref n.playerId);
+            rw.Int32(ref n.scoresVersion);
+            rw.ArrayReadableWritable<Score>(ref n.scores!, version: n. ScoresVersion);
+        }
+    }
+
+    [Chunk(0x0308D002)]
+    public partial class Chunk0308D002 : SkippableChunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.playerName);
+            rw.Id(ref n.playerId);
+            rw.Int32(ref n.scoresVersion);
+            rw.ArrayReadableWritable<Score>(ref n.scores!, version: n. ScoresVersion);
+        }
+    }
+
+    [Chunk(0x0308D003)]
+    public partial class Chunk0308D003 : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.String(ref n.playerName);
             rw.String(ref n.nickName);
-            rw.Id(ref U01);
+            rw.Id(ref n.playerId);
             rw.Int32(ref n.scoresVersion);
             rw.ArrayReadableWritable<Score>(ref n.scores!, version: n. ScoresVersion);
         }
     }
 
     [Chunk(0x0308D004)]
+    [ChunkGameVersion(GameVersion.TMF, 18)]
     public partial class Chunk0308D004 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D004;
-        public string? U01;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308D004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
             rw.String(ref n.playerName);
             rw.String(ref n.nickName);
-            rw.Id(ref U01);
+            rw.Id(ref n.playerId);
             rw.Int32(ref n.scoresVersion);
             rw.ArrayReadableWritable<Score>(ref n.scores!, version: n. ScoresVersion);
         }
     }
 
+    [Chunk(0x0308D005)]
+    public partial class Chunk0308D005 : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<SurvivalScore>(ref n.survivalScores!, version: 0);
+        }
+    }
+
     [Chunk(0x0308D006)]
+    [ChunkGameVersion(GameVersion.TMF, 2)]
     public partial class Chunk0308D006 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -210,10 +628,128 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    [Chunk(0x0308D007)]
+    public partial class Chunk0308D007 : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D007;
+        public DeprecatedPlayerCampaignSkillScore[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D007)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<DeprecatedPlayerCampaignSkillScore>(ref U01!);
+        }
+    }
+
+    [Chunk(0x0308D008)]
+    public partial class Chunk0308D008 : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D008;
+        public DeprecatedPlayerCampaignSkillScore[]? U01;
+        public DateTime? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D008)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0308D008)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<DeprecatedPlayerCampaignSkillScore>(ref U01!);
+            U02 = rw.SystemTime(U02);
+        }
+    }
+
+    [Chunk(0x0308D00B)]
+    public partial class Chunk0308D00B : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D00B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<CampaignRecordsState>(ref n.campaignRecordsStates!);
+        }
+    }
+
+    [Chunk(0x0308D00C)]
+    public partial class Chunk0308D00C : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D00C;
+        public DateTime? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D00C)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGamePlayerOfficialScores>(ref n.playerOfficialScores);
+            rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
+            rw.ArrayNodeRef_deprec<CGameCampaignPlayerScores>(ref n.campaignPlayerScores!);
+            U01 = rw.SystemTime(U01);
+        }
+    }
+
+    [Chunk(0x0308D00D)]
+    public partial class Chunk0308D00D : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D00D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<LadderMatchResult>(ref n.ladderMatchResults!, version: 0);
+        }
+    }
+
+    [Chunk(0x0308D00E)]
+    public partial class Chunk0308D00E : Chunk<CGamePlayerScore>
+    {
+        public override uint Id => 0x0308D00E;
+        public DateTime? U01;
+        public DateTime? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308D00E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308D00E)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGamePlayerOfficialScores>(ref n.playerOfficialScores);
+            rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
+            rw.ArrayNodeRef_deprec<CGameCampaignPlayerScores>(ref n.campaignPlayerScores!);
+            U01 = rw.SystemTime(U01);
+            U02 = rw.SystemTime(U02);
+        }
+    }
+
     [Chunk(0x0308D00F)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D00F : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D00F;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -229,145 +765,84 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     [Chunk(0x0308D010)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D010 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D010;
-        public byte U01;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308D010)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.Byte(ref U01);
+            rw.Byte(ref n.campaignRecordsStateVersion);
             rw.ArrayReadableWritable<CampaignRecordsState>(ref n.campaignRecordsStates!);
         }
     }
 
-    [Chunk(0x0308D011)]
+    /// <summary>
+    /// Current totals interleaved with the last values submitted to the master server.
+    /// </summary>
+    [Chunk(0x0308D011, "Current totals interleaved with the last values submitted to the master server.")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D011 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D011;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
-        public int U08;
-        public int U09;
-        public int U10;
-        public int U11;
-        public int U12;
-        public int U13;
-        public int U14;
-        public int U15;
-        public int U16;
-        public int U17;
-        public int U18;
-        public int U19;
-        public int U20;
-        public int U21;
-        public int U22;
-        public int U23;
-        public int U24;
-        public int U25;
-        public int U26;
-        public int U27;
-        public int U28;
-        public int U29;
-        public int U30;
-        public int U31;
-        public int U32;
-        public int U33;
-        public int U34;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308D011)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0308D011)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0308D011)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0308D011)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0308D011)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0308D011)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0308D011)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0308D011)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0308D011)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0308D011)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk0308D011)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk0308D011)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk0308D011)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk0308D011)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk0308D011)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk0308D011)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk0308D011)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk0308D011)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk0308D011)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk0308D011)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk0308D011)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk0308D011)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk0308D011)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk0308D011)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk0308D011)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk0308D011)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk0308D011)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk0308D011)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk0308D011)clone).U29 = context.Clone(this.U29)!;
-            ((Chunk0308D011)clone).U30 = context.Clone(this.U30)!;
-            ((Chunk0308D011)clone).U31 = context.Clone(this.U31)!;
-            ((Chunk0308D011)clone).U32 = context.Clone(this.U32)!;
-            ((Chunk0308D011)clone).U33 = context.Clone(this.U33)!;
-            ((Chunk0308D011)clone).U34 = context.Clone(this.U34)!;
         }
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
-            rw.Int32(ref U08);
-            rw.Int32(ref U09);
-            rw.Int32(ref U10);
-            rw.Int32(ref U11);
-            rw.Int32(ref U12);
-            rw.Int32(ref U13);
-            rw.Int32(ref U14);
-            rw.Int32(ref U15);
-            rw.Int32(ref U16);
-            rw.Int32(ref U17);
-            rw.Int32(ref U18);
-            rw.Int32(ref U19);
-            rw.Int32(ref U20);
-            rw.Int32(ref U21);
-            rw.Int32(ref U22);
-            rw.Int32(ref U23);
-            rw.Int32(ref U24);
-            rw.Int32(ref U25);
-            rw.Int32(ref U26);
-            rw.Int32(ref U27);
-            rw.Int32(ref U28);
-            rw.Int32(ref U29);
-            rw.Int32(ref U30);
-            rw.Int32(ref U31);
-            rw.Int32(ref U32);
-            rw.Int32(ref U33);
-            rw.Int32(ref U34);
+            rw.Int32(ref n.soloRaceTimeSeconds);
+            rw.Int32(ref n.submittedSoloRaceTimeSeconds);
+            rw.Int32(ref n.soloPuzzleTimeSeconds);
+            rw.Int32(ref n.submittedSoloPuzzleTimeSeconds);
+            rw.Int32(ref n.soloPlatformTimeSeconds);
+            rw.Int32(ref n.submittedSoloPlatformTimeSeconds);
+            rw.Int32(ref n.soloStuntsTimeSeconds);
+            rw.Int32(ref n.submittedSoloStuntsTimeSeconds);
+            rw.Int32(ref n.hotSeatTimeSeconds);
+            rw.Int32(ref n.submittedHotSeatTimeSeconds);
+            rw.Int32(ref n.networkTimeAttackTimeSeconds);
+            rw.Int32(ref n.submittedNetworkTimeAttackTimeSeconds);
+            rw.Int32(ref n.networkRoundsTimeSeconds);
+            rw.Int32(ref n.submittedNetworkRoundsTimeSeconds);
+            rw.Int32(ref n.networkLapsTimeSeconds);
+            rw.Int32(ref n.submittedNetworkLapsTimeSeconds);
+            rw.Int32(ref n.networkStuntsTimeSeconds);
+            rw.Int32(ref n.submittedNetworkStuntsTimeSeconds);
+            rw.Int32(ref n.networkCupTimeSeconds);
+            rw.Int32(ref n.submittedNetworkCupTimeSeconds);
+            rw.Int32(ref n.mapEditorTimeSeconds);
+            rw.Int32(ref n.submittedMapEditorTimeSeconds);
+            rw.Int32(ref n.replayEditorTimeSeconds);
+            rw.Int32(ref n.submittedReplayEditorTimeSeconds);
+            rw.Int32(ref n.skinEditorTimeSeconds);
+            rw.Int32(ref n.submittedSkinEditorTimeSeconds);
+            rw.Int32(ref n.maniaLinkTimeSeconds);
+            rw.Int32(ref n.submittedManiaLinkTimeSeconds);
+            rw.Int32(ref n.mapCount);
+            rw.Int32(ref n.submittedMapCount);
+            rw.Int32(ref n.resetCount);
+            rw.Int32(ref n.submittedResetCount);
+            rw.Int32(ref n.finishCount);
+            rw.Int32(ref n.submittedFinishCount);
         }
     }
 
     [Chunk(0x0308D012)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D012 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D012;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -376,14 +851,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.ArrayReadableWritable<LadderMatchResult>(ref n.ladderMatchResults!);
+            rw.ArrayReadableWritable<LadderMatchResult>(ref n.ladderMatchResults!, version: 1);
         }
     }
 
     public partial class Score : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Ident? mapInfo;
-        public Ident? MapInfo
+        private Ident mapInfo = Ident.Empty;
+        public Ident MapInfo
         {
             get => this.mapInfo;
             set => this.mapInfo = value;
@@ -452,67 +927,67 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u08 = value;
         }
 
-        private int u09;
-        public int U09
+        private int editPlayTimeSeconds;
+        public int EditPlayTimeSeconds
         {
-            get => this.u09;
-            set => this.u09 = value;
+            get => this.editPlayTimeSeconds;
+            set => this.editPlayTimeSeconds = value;
         }
 
-        private int u10;
-        public int U10
+        private int racePlayTimeSeconds;
+        public int RacePlayTimeSeconds
         {
-            get => this.u10;
-            set => this.u10 = value;
+            get => this.racePlayTimeSeconds;
+            set => this.racePlayTimeSeconds = value;
         }
 
-        private int u11;
-        public int U11
+        private int netPlayTimeSeconds;
+        public int NetPlayTimeSeconds
         {
-            get => this.u11;
-            set => this.u11 = value;
+            get => this.netPlayTimeSeconds;
+            set => this.netPlayTimeSeconds = value;
         }
 
-        private short u12;
-        public short U12
+        private short resetCount;
+        public short ResetCount
         {
-            get => this.u12;
-            set => this.u12 = value;
+            get => this.resetCount;
+            set => this.resetCount = value;
         }
 
-        private short u13;
-        public short U13
+        private short finishCount;
+        public short FinishCount
         {
-            get => this.u13;
-            set => this.u13 = value;
+            get => this.finishCount;
+            set => this.finishCount = value;
         }
 
-        private int u14;
-        public int U14
+        private int platformBestResetCount = 999;
+        public int PlatformBestResetCount
         {
-            get => this.u14;
-            set => this.u14 = value;
+            get => this.platformBestResetCount;
+            set => this.platformBestResetCount = value;
         }
 
-        private int u15;
-        public int U15
+        private int platformMaxCompletedCount;
+        public int PlatformMaxCompletedCount
         {
-            get => this.u15;
-            set => this.u15 = value;
+            get => this.platformMaxCompletedCount;
+            set => this.platformMaxCompletedCount = value;
         }
 
-        private int u16;
-        public int U16
+        private int stuntsBestScore;
+        public int StuntsBestScore
         {
-            get => this.u16;
-            set => this.u16 = value;
+            get => this.stuntsBestScore;
+            set => this.stuntsBestScore = value;
         }
 
-        private DateTime? u17;
-        public DateTime? U17
+        private DateTime? officialRecordTime;
+        public DateTime? OfficialRecordTime
         {
-            get => this.u17;
-            set => this.u17 = value;
+            get => this.officialRecordTime;
+            set => this.officialRecordTime = value;
         }
 
         private DateTime? u18;
@@ -536,25 +1011,25 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u19 = value;
         }
 
-        private int u20;
+        private int u20 = -1;
         public int U20
         {
             get => this.u20;
             set => this.u20 = value;
         }
 
-        private int u21;
-        public int U21
+        private int officialMedal;
+        public int OfficialMedal
         {
-            get => this.u21;
-            set => this.u21 = value;
+            get => this.officialMedal;
+            set => this.officialMedal = value;
         }
 
-        private byte u22;
-        public byte U22
+        private EChallengePlayModeMS playMode = EChallengePlayModeMS.Unknown;
+        public EChallengePlayModeMS PlayMode
         {
-            get => this.u22;
-            set => this.u22 = value;
+            get => this.playMode;
+            set => this.playMode = value;
         }
 
         private string? mapName;
@@ -564,81 +1039,81 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.mapName = value;
         }
 
-        private int u23;
-        public int U23
+        private int officialBestRecord = -1;
+        public int OfficialBestRecord
         {
-            get => this.u23;
-            set => this.u23 = value;
+            get => this.officialBestRecord;
+            set => this.officialBestRecord = value;
         }
 
-        private int u24;
+        private int u24 = -1;
         public int U24
         {
             get => this.u24;
             set => this.u24 = value;
         }
 
-        private int u25;
+        private int u25 = -1;
         public int U25
         {
             get => this.u25;
             set => this.u25 = value;
         }
 
-        private int u26;
+        private int u26 = -1;
         public int U26
         {
             get => this.u26;
             set => this.u26 = value;
         }
 
-        private int u27;
+        private int u27 = -1;
         public int U27
         {
             get => this.u27;
             set => this.u27 = value;
         }
 
-        private int u28;
+        private int u28 = -1;
         public int U28
         {
             get => this.u28;
             set => this.u28 = value;
         }
 
-        private int u29;
-        public int U29
+        private int submittedEditPlayTimeSeconds;
+        public int SubmittedEditPlayTimeSeconds
         {
-            get => this.u29;
-            set => this.u29 = value;
+            get => this.submittedEditPlayTimeSeconds;
+            set => this.submittedEditPlayTimeSeconds = value;
         }
 
-        private int u30;
-        public int U30
+        private int submittedRacePlayTimeSeconds;
+        public int SubmittedRacePlayTimeSeconds
         {
-            get => this.u30;
-            set => this.u30 = value;
+            get => this.submittedRacePlayTimeSeconds;
+            set => this.submittedRacePlayTimeSeconds = value;
         }
 
-        private int u31;
-        public int U31
+        private int submittedNetPlayTimeSeconds;
+        public int SubmittedNetPlayTimeSeconds
         {
-            get => this.u31;
-            set => this.u31 = value;
+            get => this.submittedNetPlayTimeSeconds;
+            set => this.submittedNetPlayTimeSeconds = value;
         }
 
-        private short u32;
-        public short U32
+        private short submittedResetCount;
+        public short SubmittedResetCount
         {
-            get => this.u32;
-            set => this.u32 = value;
+            get => this.submittedResetCount;
+            set => this.submittedResetCount = value;
         }
 
-        private short u33;
-        public short U33
+        private short submittedFinishCount;
+        public short SubmittedFinishCount
         {
-            get => this.u33;
-            set => this.u33 = value;
+            get => this.submittedFinishCount;
+            set => this.submittedFinishCount = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -661,33 +1136,33 @@ public partial class CGamePlayerScore : CMwNod, IClass
             ((Score)clone).u06 = context.Clone(this.u06)!;
             ((Score)clone).u07 = context.Clone(this.u07)!;
             ((Score)clone).u08 = context.Clone(this.u08)!;
-            ((Score)clone).u09 = context.Clone(this.u09)!;
-            ((Score)clone).u10 = context.Clone(this.u10)!;
-            ((Score)clone).u11 = context.Clone(this.u11)!;
-            ((Score)clone).u12 = context.Clone(this.u12)!;
-            ((Score)clone).u13 = context.Clone(this.u13)!;
-            ((Score)clone).u14 = context.Clone(this.u14)!;
-            ((Score)clone).u15 = context.Clone(this.u15)!;
-            ((Score)clone).u16 = context.Clone(this.u16)!;
-            ((Score)clone).u17 = context.Clone(this.u17)!;
+            ((Score)clone).editPlayTimeSeconds = context.Clone(this.editPlayTimeSeconds)!;
+            ((Score)clone).racePlayTimeSeconds = context.Clone(this.racePlayTimeSeconds)!;
+            ((Score)clone).netPlayTimeSeconds = context.Clone(this.netPlayTimeSeconds)!;
+            ((Score)clone).resetCount = context.Clone(this.resetCount)!;
+            ((Score)clone).finishCount = context.Clone(this.finishCount)!;
+            ((Score)clone).platformBestResetCount = context.Clone(this.platformBestResetCount)!;
+            ((Score)clone).platformMaxCompletedCount = context.Clone(this.platformMaxCompletedCount)!;
+            ((Score)clone).stuntsBestScore = context.Clone(this.stuntsBestScore)!;
+            ((Score)clone).officialRecordTime = context.Clone(this.officialRecordTime)!;
             ((Score)clone).u18 = context.Clone(this.u18)!;
             ((Score)clone).deprecatedChallengeLeagueScores = context.CloneArray(this.deprecatedChallengeLeagueScores)!;
             ((Score)clone).u19 = context.Clone(this.u19)!;
             ((Score)clone).u20 = context.Clone(this.u20)!;
-            ((Score)clone).u21 = context.Clone(this.u21)!;
-            ((Score)clone).u22 = context.Clone(this.u22)!;
+            ((Score)clone).officialMedal = context.Clone(this.officialMedal)!;
+            ((Score)clone).playMode = context.Clone(this.playMode)!;
             ((Score)clone).mapName = context.Clone(this.mapName)!;
-            ((Score)clone).u23 = context.Clone(this.u23)!;
+            ((Score)clone).officialBestRecord = context.Clone(this.officialBestRecord)!;
             ((Score)clone).u24 = context.Clone(this.u24)!;
             ((Score)clone).u25 = context.Clone(this.u25)!;
             ((Score)clone).u26 = context.Clone(this.u26)!;
             ((Score)clone).u27 = context.Clone(this.u27)!;
             ((Score)clone).u28 = context.Clone(this.u28)!;
-            ((Score)clone).u29 = context.Clone(this.u29)!;
-            ((Score)clone).u30 = context.Clone(this.u30)!;
-            ((Score)clone).u31 = context.Clone(this.u31)!;
-            ((Score)clone).u32 = context.Clone(this.u32)!;
-            ((Score)clone).u33 = context.Clone(this.u33)!;
+            ((Score)clone).submittedEditPlayTimeSeconds = context.Clone(this.submittedEditPlayTimeSeconds)!;
+            ((Score)clone).submittedRacePlayTimeSeconds = context.Clone(this.submittedRacePlayTimeSeconds)!;
+            ((Score)clone).submittedNetPlayTimeSeconds = context.Clone(this.submittedNetPlayTimeSeconds)!;
+            ((Score)clone).submittedResetCount = context.Clone(this.submittedResetCount)!;
+            ((Score)clone).submittedFinishCount = context.Clone(this.submittedFinishCount)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -729,31 +1204,31 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
             if (v >= 5)
             {
-                rw.Int32(ref this.u09);
-                rw.Int32(ref this.u10);
-                rw.Int32(ref this.u11);
-                rw.Int16(ref this.u12);
-                rw.Int16(ref this.u13);
+                rw.Int32(ref this.editPlayTimeSeconds);
+                rw.Int32(ref this.racePlayTimeSeconds);
+                rw.Int32(ref this.netPlayTimeSeconds);
+                rw.Int16(ref this.resetCount);
+                rw.Int16(ref this.finishCount);
             }
 
             if (v >= 6)
             {
-                rw.Int32(ref this.u14);
+                rw.Int32(ref this.platformBestResetCount);
             }
 
             if (v >= 7)
             {
-                rw.Int32(ref this.u15);
+                rw.Int32(ref this.platformMaxCompletedCount);
             }
 
             if (v >= 8)
             {
-                rw.Int32(ref this.u16);
+                rw.Int32(ref this.stuntsBestScore);
             }
 
             if (v >= 9)
             {
-                this.u17 = rw.SystemTime(this.u17);
+                this.officialRecordTime = rw.SystemTime(this.officialRecordTime);
                 this.u18 = rw.SystemTime(this.u18);
 
                 if (v <= 15)
@@ -774,18 +1249,18 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
             if (v >= 12)
             {
-                rw.Int32(ref this.u21);
+                rw.Int32(ref this.officialMedal);
             }
 
             if (v >= 13)
             {
-                rw.Byte(ref this.u22);
+                rw.EnumByte<EChallengePlayModeMS>(ref this.playMode);
                 rw.String(ref this.mapName);
             }
 
             if (v >= 14)
             {
-                rw.Int32(ref this.u23);
+                rw.Int32(ref this.officialBestRecord);
             }
 
             if (v >= 15)
@@ -803,11 +1278,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
             if (v >= 18)
             {
-                rw.Int32(ref this.u29);
-                rw.Int32(ref this.u30);
-                rw.Int32(ref this.u31);
-                rw.Int16(ref this.u32);
-                rw.Int16(ref this.u33);
+                rw.Int32(ref this.submittedEditPlayTimeSeconds);
+                rw.Int32(ref this.submittedRacePlayTimeSeconds);
+                rw.Int32(ref this.submittedNetPlayTimeSeconds);
+                rw.Int16(ref this.submittedResetCount);
+                rw.Int16(ref this.submittedFinishCount);
             }
         }
 
@@ -824,14 +1299,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
-    public partial class DeprecatedChallengeLeagueScore : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class DeprecatedChallengeLeagueScore : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; } = 5;
 
         private CMwNod? u01;
         public CMwNod? U01
@@ -920,7 +1390,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((DeprecatedChallengeLeagueScore)clone).version = context.Clone(this.version)!;
+            ((DeprecatedChallengeLeagueScore)clone).Version = context.Clone(this.Version)!;
             ((DeprecatedChallengeLeagueScore)clone).u01 = context.Clone(this.u01)!;
             ((DeprecatedChallengeLeagueScore)clone).u02 = context.Clone(this.u02)!;
             ((DeprecatedChallengeLeagueScore)clone).u03 = context.Clone(this.u03)!;
@@ -936,41 +1406,232 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
+            rw.VersionInt32(this);
 
-            if (Version>= 5)
+            if (Version >= 5)
             {
                 rw.NodeRef<CMwNod>(ref this.u01);
                 rw.NodeRef<CMwNod>(ref this.u02);
             }
 
-            if (Version== 4)
+            if (Version == 4)
             {
                 rw.NodeRef<CMwNod>(ref this.u03);
                 rw.NodeRef<CMwNod>(ref this.u04);
-                rw.ArrayNodeRef<CGameHighScore>(ref this.u05!);
+                rw.ArrayNodeRef_deprec<CGameHighScore>(ref this.u05!);
             }
 
-            if (Version< 4)
+            if (Version <= 3)
             {
                 rw.Int32(ref this.u06);
                 rw.Int32(ref this.u07);
                 rw.String(ref this.u08);
 
-                if (Version< 2)
+                if (Version <= 1)
                 {
-                    rw.ArrayNodeRef<CMwNod>(ref this.u09!);
+                    rw.ArrayNodeRef_deprec<CMwNod>(ref this.u09!);
                 }
 
-                if (Version>= 2)
+                if (Version >= 2)
                 {
-                    rw.ArrayNodeRef<CGameHighScore>(ref this.u10!);
+                    rw.ArrayNodeRef_deprec<CGameHighScore>(ref this.u10!);
                 }
 
-                if (Version>= 3)
+                if (Version >= 3)
                 {
                     rw.String(ref this.u11);
                 }
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class DeprecatedPlayerCampaignSkillScore : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; } = 4;
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int filteredScoresVersion = 2;
+        public int FilteredScoresVersion
+        {
+            get => this.filteredScoresVersion;
+            set => this.filteredScoresVersion = value;
+        }
+
+        private DeprecatedPlayerCampaignFilteredSkillScore[]? filteredScores;
+        public DeprecatedPlayerCampaignFilteredSkillScore[]? FilteredScores
+        {
+            get => this.filteredScores;
+            set => this.filteredScores = value;
+        }
+
+        private int filteredMedalsScoresVersion = 2;
+        public int FilteredMedalsScoresVersion
+        {
+            get => this.filteredMedalsScoresVersion;
+            set => this.filteredMedalsScoresVersion = value;
+        }
+
+        private DeprecatedPlayerCampaignFilteredSkillScore[]? filteredMedalsScores;
+        public DeprecatedPlayerCampaignFilteredSkillScore[]? FilteredMedalsScores
+        {
+            get => this.filteredMedalsScores;
+            set => this.filteredMedalsScores = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DeprecatedPlayerCampaignSkillScore)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DeprecatedPlayerCampaignSkillScore)clone).Version = context.Clone(this.Version)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).u01 = context.Clone(this.u01)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).u02 = context.Clone(this.u02)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).u03 = context.Clone(this.u03)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).u04 = context.Clone(this.u04)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).filteredScoresVersion = context.Clone(this.filteredScoresVersion)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).filteredScores = context.CloneArray(this.filteredScores)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).filteredMedalsScoresVersion = context.Clone(this.filteredMedalsScoresVersion)!;
+            ((DeprecatedPlayerCampaignSkillScore)clone).filteredMedalsScores = context.CloneArray(this.filteredMedalsScores)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.Int32(ref this.u01);
+            rw.String(ref this.u02);
+
+            if (Version == 1)
+            {
+                rw.Int32(ref this.u03);
+                return;
+            }
+
+            if (Version <= 0)
+            {
+                rw.Int32(ref this.u04);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Int32(ref this.u04);
+            }
+
+            rw.Int32(ref this.filteredScoresVersion);
+            rw.ArrayReadableWritable<DeprecatedPlayerCampaignFilteredSkillScore>(ref this.filteredScores!, version: FilteredScoresVersion);
+
+            if (Version >= 4)
+            {
+                rw.Int32(ref this.filteredMedalsScoresVersion);
+                rw.ArrayReadableWritable<DeprecatedPlayerCampaignFilteredSkillScore>(ref this.filteredMedalsScores!, version: FilteredMedalsScoresVersion);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class DeprecatedPlayerCampaignFilteredSkillScore : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (DeprecatedPlayerCampaignFilteredSkillScore)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((DeprecatedPlayerCampaignFilteredSkillScore)clone).u01 = context.Clone(this.u01)!;
+            ((DeprecatedPlayerCampaignFilteredSkillScore)clone).u02 = context.Clone(this.u02)!;
+            ((DeprecatedPlayerCampaignFilteredSkillScore)clone).u03 = context.Clone(this.u03)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v >= 1)
+            {
+                rw.String(ref this.u01);
+                rw.Int32(ref this.u02);
+            }
+
+            if (v >= 2)
+            {
+                rw.Int32(ref this.u03);
             }
         }
 
@@ -1085,11 +1746,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.campaignId = value;
         }
 
-        private int u01;
-        public int U01
+        private CGameCtnChallenge.PlayMode playMode;
+        public CGameCtnChallenge.PlayMode PlayMode
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.playMode;
+            set => this.playMode = value;
         }
 
         private CGamePlayerOfficialScores? score;
@@ -1110,14 +1771,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((TrainingMedalsScore)clone).campaignId = context.Clone(this.campaignId)!;
-            ((TrainingMedalsScore)clone).u01 = context.Clone(this.u01)!;
+            ((TrainingMedalsScore)clone).playMode = context.Clone(this.playMode)!;
             ((TrainingMedalsScore)clone).score = context.Clone(this.score)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.campaignId);
-            rw.Int32(ref this.u01);
+            rw.EnumInt32<CGameCtnChallenge.PlayMode>(ref this.playMode);
             rw.NodeRef<CGamePlayerOfficialScores>(ref this.score);
         }
 
@@ -1143,11 +1804,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.campaignId = value;
         }
 
-        private DateTime? u01;
-        public DateTime? U01
+        private DateTime? lastUpdatedTime;
+        public DateTime? LastUpdatedTime
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.lastUpdatedTime;
+            set => this.lastUpdatedTime = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1161,13 +1822,13 @@ public partial class CGamePlayerScore : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((CampaignRecordsState)clone).campaignId = context.Clone(this.campaignId)!;
-            ((CampaignRecordsState)clone).u01 = context.Clone(this.u01)!;
+            ((CampaignRecordsState)clone).lastUpdatedTime = context.Clone(this.lastUpdatedTime)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.campaignId);
-            this.u01 = rw.SystemTime(this.u01);
+            this.lastUpdatedTime = rw.SystemTime(this.lastUpdatedTime);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1241,9 +1902,13 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             this.u01 = rw.SystemTime(this.u01);
             rw.Single(ref this.u02);
-            rw.Byte(ref this.u03);
-            rw.Byte(ref this.u04);
-            rw.Byte(ref this.u05);
+
+            if (v >= 1)
+            {
+                rw.Byte(ref this.u03);
+                rw.Byte(ref this.u04);
+                rw.Byte(ref this.u05);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1259,11 +1924,30 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    public enum EChallengePlayModeMS
+    {
+        Race,
+        Puzzle,
+        Platform,
+        Stunts,
+        Unknown = 255,
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0308D000 => new Chunk0308D000(),
+        0x0308D001 => new Chunk0308D001(),
+        0x0308D002 => new Chunk0308D002(),
         0x0308D003 => new Chunk0308D003(),
         0x0308D004 => new Chunk0308D004(),
+        0x0308D005 => new Chunk0308D005(),
         0x0308D006 => new Chunk0308D006(),
+        0x0308D007 => new Chunk0308D007(),
+        0x0308D008 => new Chunk0308D008(),
+        0x0308D00B => new Chunk0308D00B(),
+        0x0308D00C => new Chunk0308D00C(),
+        0x0308D00D => new Chunk0308D00D(),
+        0x0308D00E => new Chunk0308D00E(),
         0x0308D00F => new Chunk0308D00F(),
         0x0308D010 => new Chunk0308D010(),
         0x0308D011 => new Chunk0308D011(),
