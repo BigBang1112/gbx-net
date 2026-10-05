@@ -10,55 +10,55 @@ public partial class CGamePlayerScore
         }
 
         [Obsolete("Use EditPlayTimeSeconds instead.")]
-        public int U09 { get => unchecked((int)EditPlayTimeSeconds); set => EditPlayTimeSeconds = unchecked((uint)value); }
+        public int U09 { get => EditPlayTimeSeconds; set => EditPlayTimeSeconds = value; }
 
         [Obsolete("Use RacePlayTimeSeconds instead.")]
-        public int U10 { get => unchecked((int)RacePlayTimeSeconds); set => RacePlayTimeSeconds = unchecked((uint)value); }
+        public int U10 { get => RacePlayTimeSeconds; set => RacePlayTimeSeconds = value; }
 
         [Obsolete("Use NetPlayTimeSeconds instead.")]
-        public int U11 { get => unchecked((int)NetPlayTimeSeconds); set => NetPlayTimeSeconds = unchecked((uint)value); }
+        public int U11 { get => NetPlayTimeSeconds; set => NetPlayTimeSeconds = value; }
 
         [Obsolete("Use ResetCount instead.")]
-        public short U12 { get => unchecked((short)ResetCount); set => ResetCount = unchecked((ushort)value); }
+        public short U12 { get => ResetCount; set => ResetCount = value; }
 
         [Obsolete("Use FinishCount instead.")]
-        public short U13 { get => unchecked((short)FinishCount); set => FinishCount = unchecked((ushort)value); }
+        public short U13 { get => FinishCount; set => FinishCount = value; }
 
         [Obsolete("Use PlatformBestResetCount instead.")]
-        public int U14 { get => unchecked((int)PlatformBestResetCount); set => PlatformBestResetCount = unchecked((uint)value); }
+        public int U14 { get => PlatformBestResetCount; set => PlatformBestResetCount = value; }
 
         [Obsolete("Use PlatformMaxCompletedCount instead.")]
-        public int U15 { get => unchecked((int)PlatformMaxCompletedCount); set => PlatformMaxCompletedCount = unchecked((uint)value); }
+        public int U15 { get => PlatformMaxCompletedCount; set => PlatformMaxCompletedCount = value; }
 
         [Obsolete("Use StuntsBestScore instead.")]
-        public int U16 { get => unchecked((int)StuntsBestScore); set => StuntsBestScore = unchecked((uint)value); }
+        public int U16 { get => StuntsBestScore; set => StuntsBestScore = value; }
 
         [Obsolete("Use OfficialRecordTime instead.")]
         public DateTime? U17 { get => OfficialRecordTime; set => OfficialRecordTime = value; }
 
         [Obsolete("Use OfficialMedal instead.")]
-        public int U21 { get => unchecked((int)OfficialMedal); set => OfficialMedal = unchecked((uint)value); }
+        public int U21 { get => OfficialMedal; set => OfficialMedal = value; }
 
         [Obsolete("Use PlayMode instead.")]
         public byte U22 { get => unchecked((byte)PlayMode); set => PlayMode = unchecked((EChallengePlayModeMS)value); }
 
         [Obsolete("Use OfficialBestRecord instead.")]
-        public int U23 { get => unchecked((int)OfficialBestRecord); set => OfficialBestRecord = unchecked((uint)value); }
+        public int U23 { get => OfficialBestRecord; set => OfficialBestRecord = value; }
 
         [Obsolete("Use SubmittedEditPlayTimeSeconds instead.")]
-        public int U29 { get => unchecked((int)SubmittedEditPlayTimeSeconds); set => SubmittedEditPlayTimeSeconds = unchecked((uint)value); }
+        public int U29 { get => SubmittedEditPlayTimeSeconds; set => SubmittedEditPlayTimeSeconds = value; }
 
         [Obsolete("Use SubmittedRacePlayTimeSeconds instead.")]
-        public int U30 { get => unchecked((int)SubmittedRacePlayTimeSeconds); set => SubmittedRacePlayTimeSeconds = unchecked((uint)value); }
+        public int U30 { get => SubmittedRacePlayTimeSeconds; set => SubmittedRacePlayTimeSeconds = value; }
 
         [Obsolete("Use SubmittedNetPlayTimeSeconds instead.")]
-        public int U31 { get => unchecked((int)SubmittedNetPlayTimeSeconds); set => SubmittedNetPlayTimeSeconds = unchecked((uint)value); }
+        public int U31 { get => SubmittedNetPlayTimeSeconds; set => SubmittedNetPlayTimeSeconds = value; }
 
         [Obsolete("Use SubmittedResetCount instead.")]
-        public short U32 { get => unchecked((short)SubmittedResetCount); set => SubmittedResetCount = unchecked((ushort)value); }
+        public short U32 { get => SubmittedResetCount; set => SubmittedResetCount = value; }
 
         [Obsolete("Use SubmittedFinishCount instead.")]
-        public short U33 { get => unchecked((short)SubmittedFinishCount); set => SubmittedFinishCount = unchecked((ushort)value); }
+        public short U33 { get => SubmittedFinishCount; set => SubmittedFinishCount = value; }
     }
 
     public partial class TrainingMedalsScore

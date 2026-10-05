@@ -586,6 +586,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.receivedMessagesAt = value;
     }
 
+    [AppliedWithChunk<Chunk0308C050>]
+    public partial int? OnlineRemainingNickNamesChangesCount { get; set; }
+
     private string? avatarName;
     [AppliedWithChunk<Chunk0308C052>]
     public string? AvatarName
@@ -618,6 +621,22 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         get => this.legacyOnlineValidationKeyHexa;
         set => this.legacyOnlineValidationKeyHexa = value;
     }
+
+    [AppliedWithChunk<Chunk0308C055>]
+    [AppliedWithChunk<Chunk0308C057>]
+    [AppliedWithChunk<Chunk0308C05C>]
+    [AppliedWithChunk<Chunk0308C05D>]
+    [AppliedWithChunk<Chunk0308C069>]
+    [AppliedWithChunk<Chunk0308C078>]
+    public partial string? LastUsedMSAddress { get; set; }
+
+    [AppliedWithChunk<Chunk0308C055>]
+    [AppliedWithChunk<Chunk0308C057>]
+    [AppliedWithChunk<Chunk0308C05C>]
+    [AppliedWithChunk<Chunk0308C05D>]
+    [AppliedWithChunk<Chunk0308C069>]
+    [AppliedWithChunk<Chunk0308C078>]
+    public partial string? LastUsedMSPath { get; set; }
 
     private bool askOpponents = true;
     [AppliedWithChunk<Chunk0308C058>]
@@ -943,9 +962,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).lastUsedMSAddress = context.Clone(this.lastUsedMSAddress)!;
         ((CGamePlayerProfile)clone).lastUsedMSPath = context.Clone(this.lastUsedMSPath)!;
         ((CGamePlayerProfile)clone).onlineRemainingNickNamesChangesCount = context.Clone(this.onlineRemainingNickNamesChangesCount)!;
-        ((CGamePlayerProfile)clone).onlinePlanets = context.Clone(this.onlinePlanets)!;
-        ((CGamePlayerProfile)clone).rsaPublicKey = context.Clone(this.rsaPublicKey)!;
-        ((CGamePlayerProfile)clone).rsaPrivateKey = context.Clone(this.rsaPrivateKey)!;
         ((CGamePlayerProfile)clone).oldProfileChunks = context.CloneArray(this.oldProfileChunks)!;
         ((CGamePlayerProfile)clone).profileChunks = context.CloneArray(this.profileChunks)!;
     }

@@ -84,6 +84,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private string? nickName;
+    [SupportsFormatting]
     [AppliedWithChunk<Chunk0308D003>]
     [AppliedWithChunk<Chunk0308D004>]
     public string? NickName

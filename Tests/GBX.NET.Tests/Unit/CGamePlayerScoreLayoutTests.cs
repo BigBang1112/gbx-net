@@ -26,7 +26,7 @@ public class CGamePlayerScoreLayoutTests
     [Arguments(16)]
     [Arguments(17)]
     [Arguments(18)]
-    public async Task ScoreVersionsKeepNativeFieldOrderAndUnsignedStatistics(int version)
+    public async Task ScoreVersionsKeepNativeFieldOrderAndSignedStatistics(int version)
     {
         var payload = Payload(w =>
         {
@@ -116,11 +116,11 @@ public class CGamePlayerScoreLayoutTests
         await Assert.That(score.PersonalBest.TotalMilliseconds).IsEqualTo(12345);
         if (version >= 5)
         {
-            await Assert.That(score.EditPlayTimeSeconds).IsEqualTo(0xFEDCBA98u);
-            await Assert.That(score.RacePlayTimeSeconds).IsEqualTo(0x87654321u);
-            await Assert.That(score.NetPlayTimeSeconds).IsEqualTo(0x80000001u);
-            await Assert.That(score.ResetCount).IsEqualTo((ushort)0xFEDC);
-            await Assert.That(score.FinishCount).IsEqualTo((ushort)0x8765);
+            await Assert.That(score.EditPlayTimeSeconds).IsEqualTo(unchecked((int)0xFEDCBA98));
+            await Assert.That(score.RacePlayTimeSeconds).IsEqualTo(unchecked((int)0x87654321));
+            await Assert.That(score.NetPlayTimeSeconds).IsEqualTo(unchecked((int)0x80000001));
+            await Assert.That(score.ResetCount).IsEqualTo(unchecked((short)0xFEDC));
+            await Assert.That(score.FinishCount).IsEqualTo(unchecked((short)0x8765));
         }
         if (version >= 13)
         {
@@ -132,9 +132,9 @@ public class CGamePlayerScoreLayoutTests
         }
         if (version >= 18)
         {
-            await Assert.That(score.SubmittedEditPlayTimeSeconds).IsEqualTo(101u);
-            await Assert.That(score.SubmittedResetCount).IsEqualTo((ushort)0x8001);
-            await Assert.That(score.SubmittedFinishCount).IsEqualTo((ushort)0xFFFE);
+            await Assert.That(score.SubmittedEditPlayTimeSeconds).IsEqualTo(101);
+            await Assert.That(score.SubmittedResetCount).IsEqualTo(unchecked((short)0x8001));
+            await Assert.That(score.SubmittedFinishCount).IsEqualTo(unchecked((short)0xFFFE));
         }
     }
 
@@ -223,11 +223,11 @@ public class CGamePlayerScoreLayoutTests
         await Assert.That(chunk.U01![0].Version).IsEqualTo(version);
         if (version >= 2)
         {
-            await Assert.That(chunk.U01[0].FilteredScores![0].U02).IsEqualTo(125u);
+            await Assert.That(chunk.U01[0].FilteredScores![0].U02).IsEqualTo(125);
         }
         if (version >= 4)
         {
-            await Assert.That(chunk.U01[0].FilteredMedalsScores![0].U03).IsEqualTo(127u);
+            await Assert.That(chunk.U01[0].FilteredMedalsScores![0].U03).IsEqualTo(127);
         }
     }
 
@@ -274,12 +274,12 @@ public class CGamePlayerScoreLayoutTests
         var chunk = new CGamePlayerScore.Chunk0308D011();
 
         await RoundTrip(payload, rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.SoloRaceTimeSeconds).IsEqualTo(0x80000000u);
-        await Assert.That(node.SubmittedSoloRaceTimeSeconds).IsEqualTo(0xFEDCBA00u);
-        await Assert.That(node.MapEditorTimeSeconds).IsEqualTo(0x8000000Au);
-        await Assert.That(node.SubmittedMapEditorTimeSeconds).IsEqualTo(0xFEDCBA0Au);
-        await Assert.That(node.ResetCount).IsEqualTo(0x8000000Fu);
-        await Assert.That(node.SubmittedFinishCount).IsEqualTo(0xFEDCBA10u);
+        await Assert.That(node.SoloRaceTimeSeconds).IsEqualTo(unchecked((int)0x80000000));
+        await Assert.That(node.SubmittedSoloRaceTimeSeconds).IsEqualTo(unchecked((int)0xFEDCBA00));
+        await Assert.That(node.MapEditorTimeSeconds).IsEqualTo(unchecked((int)0x8000000A));
+        await Assert.That(node.SubmittedMapEditorTimeSeconds).IsEqualTo(unchecked((int)0xFEDCBA0A));
+        await Assert.That(node.ResetCount).IsEqualTo(unchecked((int)0x8000000F));
+        await Assert.That(node.SubmittedFinishCount).IsEqualTo(unchecked((int)0xFEDCBA10));
     }
 
     [Test]
@@ -318,9 +318,9 @@ public class CGamePlayerScoreLayoutTests
         await Assert.That(node.SurvivalScoresVersion).IsEqualTo(2);
         await Assert.That(node.CampaignRecordsStateVersion).IsEqualTo((byte)1);
         await Assert.That(score.PersonalBest.TotalMilliseconds).IsEqualTo(-1);
-        await Assert.That(score.PlatformBestResetCount).IsEqualTo(999u);
+        await Assert.That(score.PlatformBestResetCount).IsEqualTo(999);
         await Assert.That(score.PlayMode).IsEqualTo(CGamePlayerScore.EChallengePlayModeMS.Unknown);
-        await Assert.That(score.OfficialBestRecord).IsEqualTo(uint.MaxValue);
+        await Assert.That(score.OfficialBestRecord).IsEqualTo(-1);
         await Assert.That(new CGamePlayerScore.Chunk0308D003().GameVersion).IsEqualTo(GameVersion.Unspecified);
         await Assert.That(new CGamePlayerScore.Chunk0308D004().GameVersion).IsEqualTo(GameVersion.TMF);
         await Assert.That(new CGamePlayerScore.Chunk0308D006().GameVersion).IsEqualTo(GameVersion.TMF);

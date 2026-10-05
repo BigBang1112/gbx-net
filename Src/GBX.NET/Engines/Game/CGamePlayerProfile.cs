@@ -5,25 +5,19 @@ namespace GBX.NET.Engines.Game;
 public partial class CGamePlayerProfile
 {
     private string? lastUsedMSAddress;
-    public string? LastUsedMSAddress { get => lastUsedMSAddress; set => lastUsedMSAddress = value; }
+    public partial string? LastUsedMSAddress { get => lastUsedMSAddress; set => lastUsedMSAddress = value; }
     private string? lastUsedMSPath;
-    public string? LastUsedMSPath { get => lastUsedMSPath; set => lastUsedMSPath = value; }
+    public partial string? LastUsedMSPath { get => lastUsedMSPath; set => lastUsedMSPath = value; }
     private int? onlineRemainingNickNamesChangesCount = -1;
-    public int? OnlineRemainingNickNamesChangesCount { get => onlineRemainingNickNamesChangesCount; set => onlineRemainingNickNamesChangesCount = value; }
-
-    private int? onlinePlanets;
-    public int? OnlinePlanets { get => onlinePlanets; set => onlinePlanets = value; }
-
-    private string? rsaPublicKey;
-    public string? RSAPublicKey { get => rsaPublicKey; set => rsaPublicKey = value; }
-
-    private string? rsaPrivateKey;
-    public string? RSAPrivateKey { get => rsaPrivateKey; set => rsaPrivateKey = value; }
+    public partial int? OnlineRemainingNickNamesChangesCount { get => onlineRemainingNickNamesChangesCount; set => onlineRemainingNickNamesChangesCount = value; }
 
     private CGamePlayerProfileChunk[]? oldProfileChunks;
+    [AppliedWithChunk<Chunk0308C07C>]
     public CGamePlayerProfileChunk[]? OldProfileChunks { get => oldProfileChunks; set => oldProfileChunks = value; }
 
     private CGamePlayerProfileChunk[]? profileChunks;
+    [AppliedWithChunk<Chunk0308C07D>]
+    [AppliedWithChunk<Chunk0308C07E>]
     public CGamePlayerProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
 
     public partial class VehicleProfile

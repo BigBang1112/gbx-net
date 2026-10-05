@@ -19,14 +19,14 @@ CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameSc
 
 0x003
   string PlayerName
-  string NickName
+  string NickName (formatted)
   id PlayerId
   int ScoresVersion
   Score[] Scores (version: n.ScoresVersion)
 
 0x004 [TMF.v18]
   string PlayerName
-  string NickName
+  string NickName (formatted)
   id PlayerId
   int ScoresVersion
   Score[] Scores (version: n.ScoresVersion)
