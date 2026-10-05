@@ -4,12 +4,12 @@ CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 0x000 (skippable)
   version
   string MenuLeagueFilter
-  byte
+  byte MenuInternetView
   byte
 
 0x002 (skippable)
   version
-  int
+  int DynamicLoadScreenIndex
   Pair[]
 
 0x003 (skippable)

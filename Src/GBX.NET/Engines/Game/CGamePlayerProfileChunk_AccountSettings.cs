@@ -2,6 +2,15 @@
 
 public partial class CGamePlayerProfileChunk_AccountSettings
 {
+    public partial class SPlayerTagsConfig
+    {
+        [Obsolete("Use Version instead.")]
+        public int U01 { get => Version; set => Version = value; }
+
+        [Obsolete("Use TagDisplayList instead.")]
+        public int[]? U02 { get => TagDisplayList; set => TagDisplayList = value; }
+    }
+
     public bool LoginValidated
     {
         get => BitHelper.GetBit(flags, 0);

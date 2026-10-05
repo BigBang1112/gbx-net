@@ -183,7 +183,7 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
         {
             rw.String(ref this.login);
             rw.Int32(ref this.u03);
-            this.u04 = rw.FileTime(this.u04);
+            this.u04 = rw.SystemTime(this.u04);
         }
 
         if (Version >= 1)

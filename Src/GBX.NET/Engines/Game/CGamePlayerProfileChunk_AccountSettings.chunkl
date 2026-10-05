@@ -179,13 +179,14 @@ archive
   string
  
 archive SPlayerTagsConfig
-  int
-  PlayerTagConfig[] PlayerTags
-  int[]
+  version
+  v0= (archive)
+    PlayerTagConfig[] PlayerTags
+    int[] TagDisplayList
 
 archive PlayerTagConfig
   string TagId
-  bool IsVisibleByOtherPlayers
+  bool IsVisibleByOtherPlayers = true
 
 archive YoutubeUpload
   string

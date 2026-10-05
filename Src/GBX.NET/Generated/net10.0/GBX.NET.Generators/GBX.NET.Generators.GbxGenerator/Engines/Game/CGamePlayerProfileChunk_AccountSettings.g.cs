@@ -957,14 +957,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         }
     }
 
-    public partial class SPlayerTagsConfig : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class SPlayerTagsConfig : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int u01;
-        public int U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
+        public int Version { get; set; }
 
         private PlayerTagConfig[]? playerTags;
         public PlayerTagConfig[]? PlayerTags
@@ -973,11 +968,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             set => this.playerTags = value;
         }
 
-        private int[]? u02;
-        public int[]? U02
+        private int[]? tagDisplayList;
+        public int[]? TagDisplayList
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.tagDisplayList;
+            set => this.tagDisplayList = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -990,16 +985,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SPlayerTagsConfig)clone).u01 = context.Clone(this.u01)!;
+            ((SPlayerTagsConfig)clone).Version = context.Clone(this.Version)!;
             ((SPlayerTagsConfig)clone).playerTags = context.CloneArray(this.playerTags)!;
-            ((SPlayerTagsConfig)clone).u02 = context.CloneArray(this.u02)!;
+            ((SPlayerTagsConfig)clone).tagDisplayList = context.CloneArray(this.tagDisplayList)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.ArrayReadableWritable<PlayerTagConfig>(ref this.playerTags!, version: v);
-            rw.Array<int>(ref this.u02!);
+            rw.VersionInt32(this);
+
+            if (Version == 0)
+            {
+                rw.ArrayReadableWritable<PlayerTagConfig>(ref this.playerTags!, version: Version);
+                rw.Array<int>(ref this.tagDisplayList!);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1024,7 +1023,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             set => this.tagId = value;
         }
 
-        private bool isVisibleByOtherPlayers;
+        private bool isVisibleByOtherPlayers = true;
         public bool IsVisibleByOtherPlayers
         {
             get => this.isVisibleByOtherPlayers;

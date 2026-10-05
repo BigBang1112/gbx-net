@@ -42,6 +42,22 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
         set => this.menuLeagueFilter = value;
     }
 
+    private byte menuInternetView;
+    [AppliedWithChunk<Chunk0312E000>]
+    public byte MenuInternetView
+    {
+        get => this.menuInternetView;
+        set => this.menuInternetView = value;
+    }
+
+    private int dynamicLoadScreenIndex;
+    [AppliedWithChunk<Chunk0312E002>]
+    public int DynamicLoadScreenIndex
+    {
+        get => this.dynamicLoadScreenIndex;
+        set => this.dynamicLoadScreenIndex = value;
+    }
+
     private SCampaignSettings[]? campaignSettings;
     [AppliedWithChunk<Chunk0312E004>]
     public SCampaignSettings[]? CampaignSettings
@@ -54,6 +70,8 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerProfileChunk_InterfaceSettings)clone).menuLeagueFilter = context.Clone(this.menuLeagueFilter)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).menuInternetView = context.Clone(this.menuInternetView)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).dynamicLoadScreenIndex = context.Clone(this.dynamicLoadScreenIndex)!;
         ((CGamePlayerProfileChunk_InterfaceSettings)clone).campaignSettings = context.CloneArray(this.campaignSettings)!;
     }
 
@@ -67,22 +85,20 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
         public override uint Id => 0x0312E000;
         public int Version { get; set; }
         public byte U01;
-        public byte U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0312E000)clone).Version = context.Clone(this.Version)!;
             ((Chunk0312E000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0312E000)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGamePlayerProfileChunk_InterfaceSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.String(ref n.menuLeagueFilter);
+            rw.Byte(ref n.menuInternetView);
             rw.Byte(ref U01);
-            rw.Byte(ref U02);
         }
     }
 
@@ -91,22 +107,20 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     {
         public override uint Id => 0x0312E002;
         public int Version { get; set; }
-        public int U01;
-        public Pair[]? U02;
+        public Pair[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0312E002)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0312E002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0312E002)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0312E002)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerProfileChunk_InterfaceSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
-            rw.ArrayReadableWritable<Pair>(ref U02!, version: Version);
+            rw.Int32(ref n.dynamicLoadScreenIndex);
+            rw.ArrayReadableWritable<Pair>(ref U01!, version: Version);
         }
     }
 

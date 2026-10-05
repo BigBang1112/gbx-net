@@ -5,7 +5,7 @@ archive
   v0= (archive)
     string Login
     int U03
-    filetime? U04
+    systemtime U04
   v1+ (archive)
     string Login
     string NickName (formatted)
