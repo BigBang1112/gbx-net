@@ -70,7 +70,8 @@ internal sealed class LayoutModel
 
     public static bool Has(AttributeList? attributes, string name)
     {
-        return attributes?.Entries.Any(x => x.Name == name) == true;
+        // ChunkL formats hyphens in attribute names as subtraction operators.
+        return attributes?.Entries.Any(x => x.Name.Replace(" - ", "-") == name) == true;
     }
 
     public static bool OmitsDemonstrationMembers(AttributeList? attributes)
@@ -80,7 +81,7 @@ internal sealed class LayoutModel
 
     public static string? Attribute(AttributeList? attributes, string name)
     {
-        return attributes?.Entries.FirstOrDefault(x => x.Name == name)?.Value;
+        return attributes?.Entries.FirstOrDefault(x => x.Name.Replace(" - ", "-") == name)?.Value;
     }
 
     public static string? WriteExpression(AttributeList? attributes)

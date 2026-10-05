@@ -55,18 +55,16 @@ public class CGameCtnMediaClipGroupLayoutTests
         };
 
         await Assert.That(group.Clips).IsEmpty();
-        await Assert.That(group.Triggers).IsEmpty();
         await RoundTrip(payload, rw => chunk.ReadWrite(group, rw));
-        await Assert.That(group.Clips.Length).IsEqualTo(hasClips ? 3 : 0);
-        await Assert.That(group.Triggers.Length).IsEqualTo(hasClips ? 3 : 0);
+        await Assert.That(group.Clips.Count).IsEqualTo(hasClips ? 3 : 0);
         if (hasClips)
         {
-            await Assert.That(group.Clips[0]).IsNull();
-            await Assert.That(group.Clips[1].Name).IsEqualTo("Clip");
-            await Assert.That(group.Clips[2]).IsSameReferenceAs(group.Clips[1]);
+            await Assert.That(group.Clips[0].Clip).IsNull();
+            await Assert.That(group.Clips[1].Clip.Name).IsEqualTo("Clip");
+            await Assert.That(group.Clips[2].Clip).IsSameReferenceAs(group.Clips[1].Clip);
             for (var i = 0; i < 3; i++)
             {
-                await AssertTrigger(group.Triggers[i], version, i);
+                await AssertTrigger(group.Clips[i].Trigger, version, i);
             }
         }
     }
@@ -136,24 +134,23 @@ public class CGameCtnMediaClipGroupLayoutTests
         var clip = new CGameCtnMediaClip { Name = "Shared" };
         var group = new CGameCtnMediaClipGroup
         {
-            Clips = [clip, clip],
-            Triggers =
+            Clips =
             [
-                new() { RefCoord = (4, 5, 6), RefDir = Direction.West, Coords = [(1, 2, 3)] },
-                new() { Coords = [(7, 8, 9)] }
+                new(clip, new() { RefCoord = (4, 5, 6), RefDir = Direction.West, Coords = [(1, 2, 3)] }),
+                new(clip, new() { Coords = [(7, 8, 9)] })
             ]
         };
 #pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaClipGroup)group.DeepClone();
 #pragma warning restore GBXNET10001
 
-        await Assert.That(clone.Clips[0]).IsNotSameReferenceAs(clip);
-        await Assert.That(clone.Clips[1]).IsSameReferenceAs(clone.Clips[0]);
-        await Assert.That(clone.Triggers[0]).IsNotSameReferenceAs(group.Triggers[0]);
-        await Assert.That(clone.Triggers[0].RefCoord).IsEqualTo(new Int3(4, 5, 6));
-        await Assert.That(clone.Triggers[0].RefDir).IsEqualTo(Direction.West);
-        clone.Triggers[0].Coords![0] = (10, 11, 12);
-        await Assert.That(group.Triggers[0].Coords![0]).IsEqualTo(new Int3(1, 2, 3));
+        await Assert.That(clone.Clips[0].Clip).IsNotSameReferenceAs(clip);
+        await Assert.That(clone.Clips[1].Clip).IsSameReferenceAs(clone.Clips[0].Clip);
+        await Assert.That(clone.Clips[0].Trigger).IsNotSameReferenceAs(group.Clips[0].Trigger);
+        await Assert.That(clone.Clips[0].Trigger.RefCoord).IsEqualTo(new Int3(4, 5, 6));
+        await Assert.That(clone.Clips[0].Trigger.RefDir).IsEqualTo(Direction.West);
+        clone.Clips[0].Trigger.Coords![0] = (10, 11, 12);
+        await Assert.That(group.Clips[0].Trigger.Coords![0]).IsEqualTo(new Int3(1, 2, 3));
     }
 
     [Test]
@@ -185,19 +182,22 @@ public class CGameCtnMediaClipGroupLayoutTests
             w.Write(0); // Block group count.
             w.Write(0); // Block count.
         });
-        var group = new CGameCtnMediaClipGroup { Clips = [new(), new(), new(), new(), new()] };
+        var group = new CGameCtnMediaClipGroup
+        {
+            Clips = Enumerable.Range(0, 5).Select(_ => new CGameCtnMediaClipGroup.ClipTrigger(new(), new())).ToList()
+        };
         var map = new CGameCtnChallenge { ClipGroupInGame = group, Blocks = [] };
         var chunk = new CGameCtnChallenge.Chunk3F001001();
 
         await RoundTrip(payload, rw => chunk.ReadWrite(map, rw));
-        await Assert.That(group.Clips[0].TMUnlimiterData).IsNull();
-        await Assert.That(group.Clips[2].TMUnlimiterData).IsNull();
-        var parameterSet = (CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)group.Clips[1].TMUnlimiterData!.Resource!;
-        var script = (CGameCtnMediaClip.TMUnlimiter.LegacyScript)group.Clips[3].TMUnlimiterData!.Resource!;
+        await Assert.That(group.Clips[0].Clip.TMUnlimiterData).IsNull();
+        await Assert.That(group.Clips[2].Clip.TMUnlimiterData).IsNull();
+        var parameterSet = (CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)group.Clips[1].Clip.TMUnlimiterData!.Resource!;
+        var script = (CGameCtnMediaClip.TMUnlimiter.LegacyScript)group.Clips[3].Clip.TMUnlimiterData!.Resource!;
         await Assert.That(parameterSet.Name).IsEqualTo("Params");
         await Assert.That(script.Name).IsEqualTo("Script");
         await Assert.That(script.ByteCode).IsEquivalentTo(new byte[] { 1, 2, 3 }, CollectionOrdering.Matching);
-        await Assert.That(group.Clips[4].TMUnlimiterData!.Resource).IsSameReferenceAs(script);
+        await Assert.That(group.Clips[4].Clip.TMUnlimiterData!.Resource).IsSameReferenceAs(script);
     }
 
     private static void Trigger(BinaryWriter writer, int version, int index)

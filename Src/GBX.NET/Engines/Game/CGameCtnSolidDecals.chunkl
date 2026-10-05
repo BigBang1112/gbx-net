@@ -1,15 +1,22 @@
 CGameCtnSolidDecals 0x03121000
 
-0x001
-  int
-  data
+0x000
+  uint
+  uint
+  bool
+  id TypeId = empty
+  uint TypeIntensity = 1
 
-0x002
-  string Name
+0x001 [TM2020.v2]
+  version = 2
+  data SceneDecals = empty // CSceneDecalsManager::ArchiveDecals buffer.
 
-0x003
+0x002 [TM2020]
+  string Name = "Unnamed"
+
+0x003 [TM2020]
   id TypeId
-  int TypeIntensity
+  uint TypeIntensity
 
-0x004
-  int DecalFrequency
+0x004 [TM2020]
+  uint DecalFrequency = 1

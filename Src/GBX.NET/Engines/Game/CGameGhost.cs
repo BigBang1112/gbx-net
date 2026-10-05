@@ -8,6 +8,9 @@ public partial class CGameGhost
     public RawData? RawData { get; set; }
     public ZlibData? CompressedData { get; set; }
 
+    // Legacy track conversion only needs the timing metadata, not decoded vehicle states.
+    internal TimeInt32 GetDuration() => (sampleData ?? SampleData).GetDuration();
+
 #if NET9_0_OR_GREATER
     private readonly Lock SampleDataLock = new();
 #else

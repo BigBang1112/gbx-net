@@ -48,6 +48,17 @@ public partial class CGameGhost
 
         public int? FirstSampleOffset { get; set; }
 
+        internal TimeInt32 GetDuration()
+        {
+            if (IsFixedTimeStep)
+            {
+                var firstTime = FirstSampleTime?.TotalMilliseconds ?? (stateTimes.Length > 0 ? stateTimes[0] : 0);
+                return new TimeInt32((Offsets?.Length ?? Samples.Count) * SamplePeriod.TotalMilliseconds + firstTime);
+            }
+
+            return new TimeInt32(stateTimes.Length > 0 ? stateTimes[stateTimes.Length - 1] - stateTimes[0] : 0);
+        }
+
         public void Read(GbxReader r, int v = 0)
         {
             switch (v)

@@ -37,14 +37,16 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03078000;
 
-    private string? name;
+    private string name = string.Empty;
+    [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
-    public string? Name
+    public string Name
     {
         get => this.name;
         set => this.name = value;
     }
 
+    [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
     public partial List<CGameCtnMediaBlock> Blocks { get; set; }
 
@@ -109,6 +111,26 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
+    /// Legacy name and blocks, without the discarded trailing word.
+    /// </summary>
+    [Chunk(0x03078000, "Legacy name and blocks, without the discarded trailing word.")]
+    public partial class Chunk03078000 : Chunk<CGameCtnMediaTrack>
+    {
+        public override uint Id => 0x03078000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.name);
+            rw.ListNodeRef_deprec<CGameCtnMediaBlock>(ref n.blocks!);
+        }
+    }
+
+    /// <summary>
     /// name and blocks
     /// </summary>
     [Chunk(0x03078001, "name and blocks")]
@@ -146,11 +168,6 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-        }
-
-        public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
-        {
-            rw.Boolean(ref n.isKeepPlaying);
         }
     }
 
@@ -206,7 +223,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
         public override uint Id => 0x03078005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -229,13 +246,46 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// Legacy ghost track, converted to a read-only track containing a ghost block.
+    /// </summary>
+    [Chunk(0x0307B000, "Legacy ghost track, converted to a read-only track containing a ghost block.")]
+    public partial class Chunk0307B000 : Chunk<CGameCtnMediaTrack>
+    {
+        public override uint Id => 0x0307B000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    [Chunk(0x24062000)]
+    public partial class Chunk24062000 : Chunk0307B000
+    {
+        public override uint Id => 0x24062000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03078000 => new Chunk03078000(),
         0x03078001 => new Chunk03078001(),
         0x03078002 => new Chunk03078002(),
         0x03078003 => new Chunk03078003(),
         0x03078004 => new Chunk03078004(),
         0x03078005 => new Chunk03078005(),
+        0x0307B000 => new Chunk0307B000(),
+        0x24062000 => new Chunk24062000(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -34,33 +34,46 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03121000;
 
-    private string? name;
-    [AppliedWithChunk<Chunk03121002>]
-    public string? Name
-    {
-        get => this.name;
-        set => this.name = value;
-    }
-
-    private string? typeId;
+    private string typeId = string.Empty;
+    [AppliedWithChunk<Chunk03121000>]
     [AppliedWithChunk<Chunk03121003>]
-    public string? TypeId
+    public string TypeId
     {
         get => this.typeId;
         set => this.typeId = value;
     }
 
-    private int typeIntensity;
+    private uint typeIntensity = 1;
+    [AppliedWithChunk<Chunk03121000>]
     [AppliedWithChunk<Chunk03121003>]
-    public int TypeIntensity
+    public uint TypeIntensity
     {
         get => this.typeIntensity;
         set => this.typeIntensity = value;
     }
 
-    private int decalFrequency;
+    private byte[] sceneDecals = [];
+    /// <summary>
+    /// CSceneDecalsManager::ArchiveDecals buffer.
+    /// </summary>
+    [AppliedWithChunk<Chunk03121001>]
+    public byte[] SceneDecals
+    {
+        get => this.sceneDecals;
+        set => this.sceneDecals = value;
+    }
+
+    private string name = "Unnamed";
+    [AppliedWithChunk<Chunk03121002>]
+    public string Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private uint decalFrequency = 1;
     [AppliedWithChunk<Chunk03121004>]
-    public int DecalFrequency
+    public uint DecalFrequency
     {
         get => this.decalFrequency;
         set => this.decalFrequency = value;
@@ -69,9 +82,10 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnSolidDecals)clone).name = context.Clone(this.name)!;
         ((CGameCtnSolidDecals)clone).typeId = context.Clone(this.typeId)!;
         ((CGameCtnSolidDecals)clone).typeIntensity = context.Clone(this.typeIntensity)!;
+        ((CGameCtnSolidDecals)clone).sceneDecals = context.CloneArray(this.sceneDecals)!;
+        ((CGameCtnSolidDecals)clone).name = context.Clone(this.name)!;
         ((CGameCtnSolidDecals)clone).decalFrequency = context.Clone(this.decalFrequency)!;
     }
 
@@ -79,31 +93,62 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     {
     }
 
-    [Chunk(0x03121001)]
-    public partial class Chunk03121001 : Chunk<CGameCtnSolidDecals>
+    /// <summary>
+    /// Legacy parameters. The first three values are discarded by the native reader.
+    /// </summary>
+    [Chunk(0x03121000, "Legacy parameters. The first three values are discarded by the native reader.")]
+    public partial class Chunk03121000 : Chunk<CGameCtnSolidDecals>
     {
-        public override uint Id => 0x03121001;
-        public int U01;
-        public byte[]? U02;
+        public override uint Id => 0x03121000;
+        public uint U01;
+        public uint U02;
+        public bool U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03121001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03121001)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk03121000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03121000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03121000)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnSolidDecals n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Data(ref U02);
+            rw.UInt32(ref U01);
+            rw.UInt32(ref U02);
+            rw.Boolean(ref U03);
+            rw.Id(ref n.typeId);
+            rw.UInt32(ref n.typeIntensity);
+        }
+    }
+
+    [Chunk(0x03121001)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
+    public partial class Chunk03121001 : Chunk<CGameCtnSolidDecals>, IVersionable
+    {
+        public override uint Id => 0x03121001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 2;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03121001)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameCtnSolidDecals n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Data(ref n.sceneDecals);
         }
     }
 
     [Chunk(0x03121002)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03121002 : Chunk<CGameCtnSolidDecals>
     {
         public override uint Id => 0x03121002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -117,9 +162,11 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     }
 
     [Chunk(0x03121003)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03121003 : Chunk<CGameCtnSolidDecals>
     {
         public override uint Id => 0x03121003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -129,14 +176,16 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         public override void ReadWrite(CGameCtnSolidDecals n, GbxReaderWriter rw)
         {
             rw.Id(ref n.typeId);
-            rw.Int32(ref n.typeIntensity);
+            rw.UInt32(ref n.typeIntensity);
         }
     }
 
     [Chunk(0x03121004)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03121004 : Chunk<CGameCtnSolidDecals>
     {
         public override uint Id => 0x03121004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -145,12 +194,13 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnSolidDecals n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.decalFrequency);
+            rw.UInt32(ref n.decalFrequency);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03121000 => new Chunk03121000(),
         0x03121001 => new Chunk03121001(),
         0x03121002 => new Chunk03121002(),
         0x03121003 => new Chunk03121003(),

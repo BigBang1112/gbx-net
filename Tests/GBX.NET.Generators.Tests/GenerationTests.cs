@@ -1168,6 +1168,44 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task KeepsNotRemappedChunkIdsOutOfClassRemapping()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03078000
+            0x000
+              int Value
+            0x0307B000 (not-remapped)
+              int Value
+            0x24062000 (not-remapped, base: 0x0307B000)
+              base
+            """), new Text("Resources/CollectionId.txt", "1 Stadium"));
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var manager = result.GeneratedSources.Single(x => x.HintName == "Managers/ClassManager.g.cs").SyntaxTree;
+        var method = manager.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "IsChunkIdRemapped");
+        await Assert.That(method.ToString()).Contains("0x0307B000 => false");
+        await Assert.That(method.ToString()).Contains("0x24062000 => false");
+        await Assert.That(method.ToString()).DoesNotContain("0x03078000 => false");
+
+        var executableMethod = method.WithModifiers(SyntaxFactory.TokenList(
+            SyntaxFactory.Token(SyntaxKind.PublicKeyword), SyntaxFactory.Token(SyntaxKind.StaticKeyword)));
+        var executable = CSharpCompilation.Create("ChunkRemappingFixture",
+            [CSharpSyntaxTree.ParseText("public static class Mapping { " + executableMethod.NormalizeWhitespace() + " }")],
+            compilation.References, new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        await AssertNoErrors(executable);
+        using var stream = new MemoryStream();
+        var emitted = executable.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var mapping = System.Reflection.Assembly.Load(stream.ToArray()).GetType("Mapping")!
+            .GetMethod("IsChunkIdRemapped")!;
+        await Assert.That(mapping.Invoke(null, [0x0307B000u])).IsEqualTo(false);
+        await Assert.That(mapping.Invoke(null, [0x24062000u])).IsEqualTo(false);
+        await Assert.That(mapping.Invoke(null, [0x03078000u])).IsEqualTo(true);
+        await Assert.That(mapping.Invoke(null, [0x03078001u])).IsEqualTo(true);
+    }
+
+    [Test]
     public async Task PreservesChunkOffsetsInRemappingAndReadsExtensionsAfterClassNames()
     {
         var (result, _) = Run("",

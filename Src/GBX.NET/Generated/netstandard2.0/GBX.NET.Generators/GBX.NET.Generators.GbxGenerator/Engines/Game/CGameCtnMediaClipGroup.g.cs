@@ -41,19 +41,24 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     [AppliedWithChunk<Chunk0307A001>]
     [AppliedWithChunk<Chunk0307A002>]
     [AppliedWithChunk<Chunk0307A003>]
-    public partial CGameCtnMediaClip[] Clips { get; set; }
+    public partial List<ClipTrigger> Clips { get; set; }
 
+    private Trigger[]? triggers;
     [AppliedWithChunk<Chunk0307A000>]
     [AppliedWithChunk<Chunk0307A001>]
     [AppliedWithChunk<Chunk0307A002>]
     [AppliedWithChunk<Chunk0307A003>]
-    public partial Trigger[] Triggers { get; set; }
+    public Trigger[]? Triggers
+    {
+        get => this.triggers;
+        set => this.triggers = value;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaClipGroup)clone).clips = context.CloneArray(this.clips)!;
         ((CGameCtnMediaClipGroup)clone).triggers = context.CloneArray(this.triggers)!;
+        ((CGameCtnMediaClipGroup)clone).clips = context.CloneList(this.clips)!;
     }
 
     public CGameCtnMediaClipGroup()
@@ -69,12 +74,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
         }
-
-        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
-        {
-            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
-            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 0);
-        }
     }
 
     [Chunk(0x0307A001)]
@@ -86,12 +85,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
         }
-
-        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
-        {
-            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
-            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 1);
-        }
     }
 
     [Chunk(0x0307A002)]
@@ -102,12 +95,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-        }
-
-        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
-        {
-            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
-            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 2);
         }
     }
 
@@ -121,12 +108,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-        }
-
-        public override void ReadWrite(CGameCtnMediaClipGroup n, GbxReaderWriter rw)
-        {
-            rw.ArrayNodeRef_deprec<CGameCtnMediaClip>(ref n.clips!);
-            rw.ArrayReadableWritable<Trigger>(ref n.triggers!, version: 3);
         }
     }
 

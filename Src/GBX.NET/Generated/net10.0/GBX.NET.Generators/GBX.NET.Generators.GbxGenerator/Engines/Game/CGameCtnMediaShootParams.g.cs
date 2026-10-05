@@ -34,7 +34,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03060000;
 
-    private int videoFps;
+    private int videoFps = 30;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public int VideoFps
@@ -43,7 +44,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.videoFps = value;
     }
 
-    private int sizeX;
+    private int sizeX = 1920;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public int SizeX
@@ -52,7 +54,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.sizeX = value;
     }
 
-    private int sizeY;
+    private int sizeY = 1080;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public int SizeY
@@ -61,7 +64,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.sizeY = value;
     }
 
-    private bool hq;
+    private bool hq = true;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public bool Hq
@@ -70,7 +74,11 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.hq = value;
     }
 
-    private int hqSampleCountPerAxe;
+    private int hqSampleCountPerAxe = 1;
+    /// <summary>
+    /// Native default is 3 when the render device supports FX SSAA, otherwise 1.
+    /// </summary>
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public int HqSampleCountPerAxe
@@ -80,6 +88,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqSoftShadows;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public bool HqSoftShadows
@@ -89,6 +98,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqAmbientOcc;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public bool HqAmbientOcc
@@ -97,7 +107,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         set => this.hqAmbientOcc = value;
     }
 
-    private bool isAudioStream;
+    private bool isAudioStream = true;
+    [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public bool IsAudioStream
@@ -113,6 +124,86 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     {
         get => this.stereo3d;
         set => this.stereo3d = value;
+    }
+
+    private int dofSampleCount = 1;
+    [AppliedWithChunk<Chunk03060002>]
+    public int DofSampleCount
+    {
+        get => this.dofSampleCount;
+        set => this.dofSampleCount = value;
+    }
+
+    private EMotionBlur motionBlur;
+    [AppliedWithChunk<Chunk03060002>(1)]
+    public EMotionBlur MotionBlur
+    {
+        get => this.motionBlur;
+        set => this.motionBlur = value;
+    }
+
+    private bool hqDOF;
+    [AppliedWithChunk<Chunk03060002>]
+    public bool HqDOF
+    {
+        get => this.hqDOF;
+        set => this.hqDOF = value;
+    }
+
+    private bool hqCarReflects = true;
+    [AppliedWithChunk<Chunk03060002>]
+    public bool HqCarReflects
+    {
+        get => this.hqCarReflects;
+        set => this.hqCarReflects = value;
+    }
+
+    private bool reflectSubSample;
+    [AppliedWithChunk<Chunk03060002>]
+    public bool ReflectSubSample
+    {
+        get => this.reflectSubSample;
+        set => this.reflectSubSample = value;
+    }
+
+    private bool reflectRayCast;
+    [AppliedWithChunk<Chunk03060002>]
+    public bool ReflectRayCast
+    {
+        get => this.reflectRayCast;
+        set => this.reflectRayCast = value;
+    }
+
+    private EExtScreen extScreen;
+    [AppliedWithChunk<Chunk03060002>]
+    public EExtScreen ExtScreen
+    {
+        get => this.extScreen;
+        set => this.extScreen = value;
+    }
+
+    private EExtVideo extVideo = EExtVideo.Webm;
+    [AppliedWithChunk<Chunk03060002>]
+    public EExtVideo ExtVideo
+    {
+        get => this.extVideo;
+        set => this.extVideo = value;
+    }
+
+    private bool hud3d;
+    [AppliedWithChunk<Chunk03060002>]
+    public bool Hud3d
+    {
+        get => this.hud3d;
+        set => this.hud3d = value;
+    }
+
+    private EQualityPreset webmVideoAutoBitrate = EQualityPreset.Medium;
+    [AppliedWithChunk<Chunk03060002>]
+    public EQualityPreset WebmVideoAutoBitrate
+    {
+        get => this.webmVideoAutoBitrate;
+        set => this.webmVideoAutoBitrate = value;
     }
 
     private VideoEnc? videoEncoding;
@@ -143,24 +234,32 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         ((CGameCtnMediaShootParams)clone).hqAmbientOcc = context.Clone(this.hqAmbientOcc)!;
         ((CGameCtnMediaShootParams)clone).isAudioStream = context.Clone(this.isAudioStream)!;
         ((CGameCtnMediaShootParams)clone).stereo3d = context.Clone(this.stereo3d)!;
+        ((CGameCtnMediaShootParams)clone).dofSampleCount = context.Clone(this.dofSampleCount)!;
+        ((CGameCtnMediaShootParams)clone).motionBlur = context.Clone(this.motionBlur)!;
+        ((CGameCtnMediaShootParams)clone).hqDOF = context.Clone(this.hqDOF)!;
+        ((CGameCtnMediaShootParams)clone).hqCarReflects = context.Clone(this.hqCarReflects)!;
+        ((CGameCtnMediaShootParams)clone).reflectSubSample = context.Clone(this.reflectSubSample)!;
+        ((CGameCtnMediaShootParams)clone).reflectRayCast = context.Clone(this.reflectRayCast)!;
+        ((CGameCtnMediaShootParams)clone).extScreen = context.Clone(this.extScreen)!;
+        ((CGameCtnMediaShootParams)clone).extVideo = context.Clone(this.extVideo)!;
+        ((CGameCtnMediaShootParams)clone).hud3d = context.Clone(this.hud3d)!;
+        ((CGameCtnMediaShootParams)clone).webmVideoAutoBitrate = context.Clone(this.webmVideoAutoBitrate)!;
         ((CGameCtnMediaShootParams)clone).videoEncoding = context.Clone(this.videoEncoding)!;
         ((CGameCtnMediaShootParams)clone).audioEncoding = context.Clone(this.audioEncoding)!;
     }
 
-    public CGameCtnMediaShootParams()
+    [Chunk(0x03060000)]
+    public partial class Chunk03060000 : Chunk<CGameCtnMediaShootParams>
     {
-    }
-
-    [Chunk(0x03060001)]
-    public partial class Chunk03060001 : Chunk<CGameCtnMediaShootParams>
-    {
-        public override uint Id => 0x03060001;
-        public bool U01;
+        public override uint Id => 0x03060000;
+        public float U01;
+        public float U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03060001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03060000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03060000)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
@@ -170,7 +269,34 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
             rw.Int32(ref n.sizeY);
             rw.Boolean(ref n.hq);
             rw.Int32(ref n.hqSampleCountPerAxe);
-            rw.Boolean(ref U01);
+            n.LegacyMotionBlur = rw.Boolean(n.LegacyMotionBlur);
+            rw.Boolean(ref n.hqSoftShadows);
+            rw.Boolean(ref n.hqAmbientOcc);
+            rw.Boolean(ref n.isAudioStream);
+            n.LegacyStereo3d = rw.Boolean(n.LegacyStereo3d);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+        }
+    }
+
+    [Chunk(0x03060001)]
+    public partial class Chunk03060001 : Chunk<CGameCtnMediaShootParams>
+    {
+        public override uint Id => 0x03060001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.videoFps);
+            rw.Int32(ref n.sizeX);
+            rw.Int32(ref n.sizeY);
+            rw.Boolean(ref n.hq);
+            rw.Int32(ref n.hqSampleCountPerAxe);
+            n.LegacyMotionBlur = rw.Boolean(n.LegacyMotionBlur);
             rw.Boolean(ref n.hqSoftShadows);
             rw.Boolean(ref n.hqAmbientOcc);
             rw.Boolean(ref n.isAudioStream);
@@ -179,35 +305,17 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     [Chunk(0x03060002)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk03060002 : Chunk<CGameCtnMediaShootParams>, IVersionable
     {
         public override uint Id => 0x03060002;
-        public int Version { get; set; }
-        public int U01;
-        public int U02;
-        public bool U03;
-        public bool U04;
-        public bool U05;
-        public bool U06;
-        public int U07;
-        public int U08;
-        public bool U09;
-        public int U10;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03060002)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03060002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03060002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03060002)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03060002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03060002)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03060002)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03060002)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk03060002)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk03060002)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk03060002)clone).U10 = context.Clone(this.U10)!;
         }
 
         public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
@@ -218,60 +326,71 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
             rw.Int32(ref n.sizeY);
             rw.Boolean(ref n.hq);
             rw.Int32(ref n.hqSampleCountPerAxe);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Boolean(ref U03);
-            rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
-            rw.Boolean(ref U06);
+            rw.Int32(ref n.dofSampleCount);
+
+            if (Version == 0)
+            {
+                n.LegacyMotionBlur = rw.Boolean(n.LegacyMotionBlur);
+            }
+
+            if (Version >= 1)
+            {
+                rw.EnumInt32<EMotionBlur>(ref n.motionBlur);
+            }
+
+            rw.Boolean(ref n.hqDOF);
+            rw.Boolean(ref n.hqCarReflects);
+            rw.Boolean(ref n.reflectSubSample);
+            rw.Boolean(ref n.reflectRayCast);
             rw.Boolean(ref n.hqSoftShadows);
             rw.Boolean(ref n.hqAmbientOcc);
             rw.Boolean(ref n.isAudioStream);
             rw.EnumInt32<EStereo3d>(ref n.stereo3d);
-            rw.Int32(ref U07);
-            rw.Int32(ref U08);
-            rw.Boolean(ref U09);
-            rw.Int32(ref U10);
+            rw.EnumInt32<EExtScreen>(ref n.extScreen);
+            rw.EnumInt32<EExtVideo>(ref n.extVideo);
+            rw.Boolean(ref n.hud3d);
+            rw.EnumInt32<EQualityPreset>(ref n.webmVideoAutoBitrate);
             rw.ReadableWritable<VideoEnc>(ref n.videoEncoding, version: Version);
             rw.ReadableWritable<AudioEnc>(ref n.audioEncoding, version: Version);
         }
     }
 
-    public partial class VideoEnc : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class VideoEnc : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
+        public int Version { get; set; }
+
+        private EVideoCodec codec;
+        public EVideoCodec Codec
         {
-            get => this.version;
-            set => this.version = value;
+            get => this.codec;
+            set => this.codec = value;
         }
 
-        private int u01;
-        public int U01
+        private EVideoMode mode = EVideoMode.Cq;
+        public EVideoMode Mode
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.mode;
+            set => this.mode = value;
         }
 
-        private int u02;
-        public int U02
+        private int bitrate = 4096;
+        /// <summary>
+        /// Kilobits per second.
+        /// </summary>
+        public int Bitrate
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.bitrate;
+            set => this.bitrate = value;
         }
 
-        private int u03;
-        public int U03
+        private int cQLevel = 10;
+        /// <summary>
+        /// VP8 constant-quality quantizer, from 0 to 63.
+        /// </summary>
+        public int CQLevel
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private int u04;
-        public int U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.cQLevel;
+            set => this.cQLevel = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -284,20 +403,20 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((VideoEnc)clone).version = context.Clone(this.version)!;
-            ((VideoEnc)clone).u01 = context.Clone(this.u01)!;
-            ((VideoEnc)clone).u02 = context.Clone(this.u02)!;
-            ((VideoEnc)clone).u03 = context.Clone(this.u03)!;
-            ((VideoEnc)clone).u04 = context.Clone(this.u04)!;
+            ((VideoEnc)clone).Version = context.Clone(this.Version)!;
+            ((VideoEnc)clone).codec = context.Clone(this.codec)!;
+            ((VideoEnc)clone).mode = context.Clone(this.mode)!;
+            ((VideoEnc)clone).bitrate = context.Clone(this.bitrate)!;
+            ((VideoEnc)clone).cQLevel = context.Clone(this.cQLevel)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
-            rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Int32(ref this.u04);
+            rw.VersionInt32(this);
+            rw.EnumInt32<EVideoCodec>(ref this.codec);
+            rw.EnumInt32<EVideoMode>(ref this.mode);
+            rw.Int32(ref this.bitrate);
+            rw.Int32(ref this.cQLevel);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -313,20 +432,18 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         }
     }
 
-    public partial class AudioEnc : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class AudioEnc : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int version;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
+        public int Version { get; set; }
 
-        private float u01;
-        public float U01
+        private float vbrQuality = 0.1f;
+        /// <summary>
+        /// Vorbis variable-bitrate quality, from -0.1 to 1.
+        /// </summary>
+        public float VbrQuality
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.vbrQuality;
+            set => this.vbrQuality = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -339,14 +456,14 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((AudioEnc)clone).version = context.Clone(this.version)!;
-            ((AudioEnc)clone).u01 = context.Clone(this.u01)!;
+            ((AudioEnc)clone).Version = context.Clone(this.Version)!;
+            ((AudioEnc)clone).vbrQuality = context.Clone(this.vbrQuality)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.version);
-            rw.Single(ref this.u01);
+            rw.VersionInt32(this);
+            rw.Single(ref this.vbrQuality);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -369,8 +486,51 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         LeftNRight,
     }
 
+    public enum EMotionBlur
+    {
+        None,
+        Full,
+        Half,
+        Quarter,
+    }
+
+    public enum EExtScreen
+    {
+        Webp,
+        Tga,
+        Jpg,
+    }
+
+    public enum EExtVideo
+    {
+        Avi,
+        Webm,
+    }
+
+    public enum EQualityPreset
+    {
+        Custom,
+        Low,
+        Medium,
+        High,
+    }
+
+    public enum EVideoMode
+    {
+        Vbr,
+        Cbr,
+        Cq,
+    }
+
+    public enum EVideoCodec
+    {
+        Vp8,
+        Vp9,
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03060000 => new Chunk03060000(),
         0x03060001 => new Chunk03060001(),
         0x03060002 => new Chunk03060002(),
         _ => base.NewChunk(chunkId),

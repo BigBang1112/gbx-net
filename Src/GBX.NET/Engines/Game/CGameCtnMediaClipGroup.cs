@@ -3,7 +3,10 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMediaClipGroup
 {
-    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger);
+    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger) : IDeepCloneable
+    {
+        object IDeepCloneable.DeepClone(DeepCloneContext context) => new ClipTrigger(context.Clone(Clip)!, context.Clone(Trigger)!);
+    }
 
     private List<ClipTrigger>? clips;
     public partial List<ClipTrigger> Clips
@@ -36,6 +39,19 @@ public partial class CGameCtnMediaClipGroup
     {
         w.WriteListNodeRef_deprec(n.Clips.Select(x => x.Clip).ToList()!);
         w.WriteListWritable(n.Clips.Select(x => x.Trigger).ToList(), version: version);
+    }
+
+    public partial class Chunk0307A000
+    {
+        public override void Read(CGameCtnMediaClipGroup n, GbxReader r)
+        {
+            ReadClips(n, r, version: 0);
+        }
+
+        public override void Write(CGameCtnMediaClipGroup n, GbxWriter w)
+        {
+            WriteClips(n, w, version: 0);
+        }
     }
 
     public partial class Chunk0307A001
@@ -77,7 +93,6 @@ public partial class CGameCtnMediaClipGroup
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Trigger
     {
         [Obsolete("Use RefCoord.X instead.")]

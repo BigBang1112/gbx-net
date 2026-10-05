@@ -14,7 +14,7 @@ public partial class CGameCtnChallenge
         {
             foreach (var clipData in tempOldTMUnlimiterClipData)
             {
-                clipGroupInGame.Clips[clipData.Key].TMUnlimiterData = clipData.Value;
+                clipGroupInGame.Clips[clipData.Key].Clip.TMUnlimiterData = clipData.Value;
             }
 
             tempOldTMUnlimiterClipData = null;
@@ -154,10 +154,10 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            w.Write(n.clipGroupInGame?.Clips.Count(x => x.TMUnlimiterData is not null) ?? 0);
+            w.Write(n.clipGroupInGame?.Clips.Count(x => x.Clip.TMUnlimiterData is not null) ?? 0);
 
             foreach (var (clip, i) in n.clipGroupInGame?.Clips
-                .Select((clip, i) => (Clip: clip, i))
+                .Select((clip, i) => (clip.Clip, i))
                 .Where(x => x.Clip.TMUnlimiterData is not null) ?? [])
             {
                 w.Write(i);
@@ -617,14 +617,14 @@ public partial class CGameCtnChallenge
                 {
                     case 0: // Parameter Set
                         var parameterSet = parameterSets[r.ReadInt32()];
-                        n.clipGroupInGame?.Clips[mediaClipIndex].TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGame?.Clips[mediaClipIndex].Clip.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = parameterSet
                         };
                         break;
                     case 1: // Legacy Script
                         var legacyScript = legacyScripts[r.ReadInt32()];
-                        n.clipGroupInGame?.Clips[mediaClipIndex].TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGame?.Clips[mediaClipIndex].Clip.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = legacyScript
                         };
@@ -669,7 +669,7 @@ public partial class CGameCtnChallenge
             var clips = n.clipGroupInGame?.Clips ?? [];
 
             var legacyScripts = clips
-                .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
+                .Select(x => x.Clip.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
                 .Where(x => x is not null)
                 .Distinct()
                 .ToList();
@@ -682,7 +682,7 @@ public partial class CGameCtnChallenge
             }
 
             var parameterSets = clips
-                .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)
+                .Select(x => x.Clip.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)
                 .Where(x => x is not null)
                 .Distinct()
                 .ToList();
@@ -707,7 +707,7 @@ public partial class CGameCtnChallenge
             }
 
             var mappedClips = clips
-                .Select((x, i) => (Clip: x, i))
+                .Select((x, i) => (x.Clip, i))
                 .Where(x => x.Clip.TMUnlimiterData?.Resource is not null)
                 .ToList();
 
