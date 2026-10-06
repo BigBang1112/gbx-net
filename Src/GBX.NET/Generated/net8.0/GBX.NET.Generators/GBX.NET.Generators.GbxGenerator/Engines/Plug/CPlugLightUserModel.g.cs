@@ -134,9 +134,11 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     [Chunk(0x090F9000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F9000 : Chunk<CPlugLightUserModel>, IVersionable
     {
         public override uint Id => 0x090F9000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
 

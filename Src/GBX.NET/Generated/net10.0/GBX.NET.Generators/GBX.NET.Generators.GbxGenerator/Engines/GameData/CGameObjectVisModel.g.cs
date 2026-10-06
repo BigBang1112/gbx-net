@@ -405,9 +405,11 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     [Chunk(0x2E007002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E007002 : SkippableChunk<CGameObjectVisModel>, IVersionable
     {
         public override uint Id => 0x2E007002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

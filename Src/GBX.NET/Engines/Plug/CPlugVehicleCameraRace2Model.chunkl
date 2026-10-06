@@ -1,7 +1,7 @@
 CPlugVehicleCameraRace2Model 0x090F6000
 - inherits: CPlugCamControlModel
 
-0x000
+0x000 [MP4]
   float
   int
   int
@@ -65,10 +65,10 @@ CPlugVehicleCameraRace2Model 0x090F6000
   float
   float
 
-0x001
+0x001 [MP4, TM2020]
   bool
 
-0x002
+0x002 [MP4, TM2020]
   version
   id
   float

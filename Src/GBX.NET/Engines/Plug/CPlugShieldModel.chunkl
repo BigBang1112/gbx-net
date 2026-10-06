@@ -1,6 +1,6 @@
 CPlugShieldModel 0x09111000
 
-0x000
+0x000 [MP4, TM2020]
   version
   v7+
     CPlugSound ShieldActiveSound

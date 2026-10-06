@@ -1,6 +1,6 @@
 CPlugLightUserModel 0x090F9000
 
-0x000
+0x000 [MP4, TM2020]
   version
   int
   vec3 Color

@@ -1,18 +1,18 @@
 CHmsLightMapCache 0x06022000
 
-0x00B (skippable)
+0x00B (skippable) [MP4, TM2020]
   int[] MapT3s
 
-0x00F (skippable)
+0x00F (skippable) [MP4, TM2020]
   int<EQuality> Quality
   int
 
-0x013 (skippable)
+0x013 (skippable) [MP4, TM2020]
   bool
   bool
   filetime? TimeWrite
 
-0x015 (skippable)
+0x015 (skippable) [MP4, TM2020]
   version
   ulong LightmapCacheUid
   id Collection
@@ -29,20 +29,20 @@ CHmsLightMapCache 0x06022000
       v5+
         string
 
-0x016 (skippable)
+0x016 (skippable) [MP4, TM2020]
   int<EVersion> Version
 
-0x017 (skippable)
+0x017 (skippable) [MP4, TM2020]
   int Decal2D
   int Decal3D
 
-0x018 (skippable)
+0x018 (skippable) [MP4, TM2020]
   ulong
 
-0x019 (skippable)
+0x019 (skippable) [MP4, TM2020]
   int<EQualityVer> QualityVer
 
-0x01A (skippable)
+0x01A (skippable) [MP4, TM2020]
   version
   SMap[] Maps
   int AmbSample

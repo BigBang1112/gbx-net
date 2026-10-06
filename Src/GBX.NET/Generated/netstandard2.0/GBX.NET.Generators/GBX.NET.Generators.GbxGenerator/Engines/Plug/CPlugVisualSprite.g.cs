@@ -111,9 +111,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010008)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010008 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010008;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -127,9 +129,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010009)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010009 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010009;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public Rect[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

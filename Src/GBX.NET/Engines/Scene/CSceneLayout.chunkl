@@ -68,7 +68,7 @@ CSceneLayout 0x0A003000
   int
   CSceneFxNod SceneFxNod (external)
 
-0x01C
+0x01C [MP4, TM2020]
   version
   v2-
     CSceneObject[] Objects (deprec)

@@ -56,11 +56,11 @@ public partial class CHmsItem : CMwNod, IClass
     /// solid
     /// </summary>
     [Chunk(0x06003001, "solid")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06003001 : Chunk<CHmsItem>
     {
         public override uint Id => 0x06003001;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -120,11 +120,11 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     [Chunk(0x06003011)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06003011 : Chunk<CHmsItem>
     {
         public override uint Id => 0x06003011;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
         public ulong U01;
         public short U02;
 

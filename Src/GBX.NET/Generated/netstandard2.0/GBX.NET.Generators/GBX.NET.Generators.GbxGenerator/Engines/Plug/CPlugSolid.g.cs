@@ -90,11 +90,11 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     [Chunk(0x09005000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005000 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -350,11 +350,11 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     [Chunk(0x09005010)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005010 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005010;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public CMwNod? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -370,11 +370,11 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     [Chunk(0x09005011)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005011 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005011;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
         public bool? U03;
@@ -425,11 +425,11 @@ public partial class CPlugSolid : CPlug, IClass
     /// SolidPreLightGen
     /// </summary>
     [Chunk(0x09005017, "SolidPreLightGen")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 3, 3, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, -1)]
     public partial class Chunk09005017 : Chunk<CPlugSolid>, IVersionable
     {
         public override uint Id => 0x09005017;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public byte U02;
@@ -491,11 +491,11 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     [Chunk(0x09005019)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 0, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 3, -1)]
     public partial class Chunk09005019 : Chunk<CPlugSolid>, IVersionable
     {
         public override uint Id => 0x09005019;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugSound[]? U01;
         public CPlugParticleEmitterModel[]? U02;
@@ -564,10 +564,12 @@ public partial class CPlugSolid : CPlug, IClass
     /// lod normal map
     /// </summary>
     [Chunk(0x0900501A, "lod normal map")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900501A : SkippableChunk<CPlugSolid>
     {
         public override uint Id => 0x0900501A;
         public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

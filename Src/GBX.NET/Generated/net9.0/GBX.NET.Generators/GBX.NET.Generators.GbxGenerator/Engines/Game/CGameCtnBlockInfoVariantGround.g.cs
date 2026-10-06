@@ -71,11 +71,11 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     }
 
     [Chunk(0x0315C001)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 0, 2)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 2, -1)]
     public partial class Chunk0315C001 : Chunk<CGameCtnBlockInfoVariantGround>, IVersionable
     {
         public override uint Id => 0x0315C001;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

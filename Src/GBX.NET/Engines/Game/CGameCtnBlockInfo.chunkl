@@ -42,20 +42,20 @@ CGameCtnBlockInfo 0x0304E000
   CSceneMobil AirHelperMobil
   CSceneMobil ConstructionModeHelperMobil
 
-0x00F [TMF, MP3, TMT, MP4]
+0x00F [TMF, MP3, TMT, MP4, TM2020]
   bool NoRespawn
 
-0x013 [MP3, TMT, MP4]
+0x013 [MP3, TMT, MP4, TM2020]
   bool IconAutoUseGround
 
 0x015 [MP3, TMT, MP4]
   int // node ref
   iso4
 
-0x017 [MP3, TMT, MP4]
+0x017 [MP3, TMT, MP4, TM2020]
   bool
 
-0x020 [MP3.v5, TMT.v5, MP4.v6]
+0x020 [MP3.v5, TMT.v5, MP4.v6, TM2020]
   version
   CPlugCharPhySpecialProperty CharPhySpecialProperty
   v6-
@@ -74,24 +74,24 @@ CGameCtnBlockInfo 0x0304E000
             string // MatModifier
             string // Grass
 
-0x023 [MP3, TMT, MP4]
+0x023 [MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
   CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
 
-0x026 [MP3, TMT, MP4]
+0x026 [MP3, TMT, MP4, TM2020]
   int<EWayPointType> WayPointType
 
-0x027 [MP3, TMT, MP4]
+0x027 [MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround (deprec)
 
-0x028 [MP3, TMT, MP4]
+0x028 [MP3, TMT, MP4, TM2020]
   id SymmetricalBlockInfoId
   int<Direction> Dir
 
-0x029 [MP3, TMT, MP4]
+0x029 [MP3, TMT, MP4, TM2020]
   CPlugFogVolumeBox FogVolumeBox (external)
 
-0x02A [MP3.v1, TMT.v1, MP4.v2]
+0x02A [MP3.v1, TMT.v1, MP4.v2, TM2020]
   version
   CPlugSound Sound1 (external)
   CPlugSound Sound2 (external)
@@ -104,27 +104,27 @@ CGameCtnBlockInfo 0x0304E000
     if Sound2 != null || Sound2File != null
       iso4 Sound2Loc
 
-0x02B [MP3.v1, TMT.v1, MP4.v1]
+0x02B [MP3.v1, TMT.v1, MP4.v1, TM2020]
   version
   int<EBaseType> BaseType
   v0=
     throw
 
-0x02C [MP3, TMT, MP4]
+0x02C [MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
 
 0x02E [MP3]
   version
   int<CGameCtnCollector.EProdState> ProdState (inherited)
 
-0x02F [MP4.v0]
+0x02F [MP4.v0, TM2020]
   version
   boolbyte IsPillar
   byte<EMultiDir> PillarShapeMultiDir
   v1+
     byte
 
-0x031
+0x031 [TM2020]
   version
   CMwNod (external)
   CPlugGameSkinAndFolder MaterialModifier (external)

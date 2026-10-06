@@ -346,11 +346,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x03036000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036000 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 
@@ -372,11 +372,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x03036001)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036001 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036001;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -395,11 +395,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// Underground
     /// </summary>
     [Chunk(0x03036002, "Underground")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036002 : SkippableChunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -439,11 +439,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// AcceptPylons
     /// </summary>
     [Chunk(0x03036004, "AcceptPylons")]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036004 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036004;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -460,11 +460,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// TerrainModifierId
     /// </summary>
     [Chunk(0x03036005, "TerrainModifierId")]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036005 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036005;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -522,11 +522,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x03036007)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036007 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override uint Id => 0x03036007;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -658,9 +658,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x0303600C)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600C;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public short? U01;
         public short? U02;
@@ -718,9 +720,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     [Chunk(0x0303600D)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0303600D : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
 

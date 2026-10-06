@@ -1,8 +1,8 @@
 CFuncKeys 0x05002000
 - inherits: CFunc
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   float[] Xs
 
-0x003 [TMF]
+0x003 [TMF, MP4, TM2020]
   id

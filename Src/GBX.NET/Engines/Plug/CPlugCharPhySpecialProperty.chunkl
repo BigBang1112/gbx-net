@@ -1,6 +1,6 @@
 CPlugCharPhySpecialProperty 0x090F2000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   version
   int
   v1-

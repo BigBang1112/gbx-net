@@ -5,9 +5,9 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x006 [TMF]
 
-0x009 [TMF]
+0x009 [TMF, MP4, TM2020]
 
-0x00A [TMF]
+0x00A [TMF, MP4, TM2020]
 
 0x00C
 
@@ -17,7 +17,7 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x010 [TMF]
 
-0x012 [TMF]
+0x012 [TMF, MP4, TM2020]
   CPlugVehicleMaterialGroup[] VehicleMaterialGroups (deprec)
 
 0x013 [TMF]
@@ -28,16 +28,16 @@ CPlugVehicleVisModelShared 0x090E8000
 0x014 [TMF]
   CPlugVehicleVisEmitterModel[] VehicleEmitters (deprec)
 
-0x015
+0x015 [MP4, TM2020]
 
-0x016
+0x016 [MP4]
   CFuncKeysReal
   float
 
-0x018
+0x018 [MP4, TM2020]
   CPlugParticleEmitterModel
 
-0x01E
+0x01E [MP4, TM2020]
   version
   CPlugMaterial (external)
   v1+
@@ -64,7 +64,7 @@ CPlugVehicleVisModelShared 0x090E8000
     v4+
       CPlugSolid2Model (external)
 
-0x01F
+0x01F [MP4, TM2020]
   version
   CPlugParticleEmitterModel (external)
   v1+
@@ -102,7 +102,7 @@ CPlugVehicleVisModelShared 0x090E8000
                           v14+
                             CPlugParticleEmitterModel (external)
 
-0x020
+0x020 [MP4, TM2020]
   version
   float
   float
@@ -110,12 +110,12 @@ CPlugVehicleVisModelShared 0x090E8000
     float
     float
 
-0x021
+0x021 [MP4, TM2020]
   version
   CFuncKeysReal
   CFuncKeysReal
 
-0x022
+0x022 [MP4, TM2020]
   version
   CPlugLocatedSound
   CPlugLocatedSound
@@ -151,7 +151,7 @@ CPlugVehicleVisModelShared 0x090E8000
             v7+
               CPlugLocatedSound
 
-0x023
+0x023 [MP4, TM2020]
   version
   CPlugParticleMaterialImpactModel (external)
   CPlugParticleMaterialImpactModel (external)

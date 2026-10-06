@@ -1,7 +1,7 @@
 CGameCtnMediaBlockCameraEffectShake 0x030A4000
 - inherits: CGameCtnMediaBlockCameraEffect
 
-0x000 [TMF, TM2020]
+0x000 [TMF, MP4, TM2020]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

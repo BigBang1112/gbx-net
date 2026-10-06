@@ -61,7 +61,7 @@ CGameCtnCollection 0x03033000
 0x008 // DefaultDecoration
   CGameCtnDecoration DefaultDecoration (external)
 
-0x009 [TMF]
+0x009 [TMF, MP4, TM2020]
   id Collection
   CGameCtnZone[] CompleteListZoneList (deprec, external)
   CGameCtnZone DefaultZone (external)
@@ -73,11 +73,11 @@ CGameCtnCollection 0x03033000
 0x00B
   int BlocksShadow
 
-0x00C [TMF]
+0x00C [TMF, MP4, TM2020]
   bool IsEditable
   int<ECollectionType> CollectionType
 
-0x00D [TMF] //IconFid, IconSmallFid
+0x00D [TMF, MP4, TM2020] //IconFid, IconSmallFid
   bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
   if HasIconFid
     CPlugBitmap IconFid (external)
@@ -85,10 +85,10 @@ CGameCtnCollection 0x03033000
   if HasIconSmallFid
     CPlugBitmap IconSmallFid (external)
 
-0x00E [TMF]
+0x00E [TMF, MP4, TM2020]
   int SortIndex
 
-0x011 [TMF]
+0x011 [TMF, MP4, TM2020]
   CGameCtnDecoration DefaultDecoration (external)
 
 0x013
@@ -111,10 +111,10 @@ CGameCtnCollection 0x03033000
   vec2 MapCoordElem
   vec2 MapCoordIcon
 
-0x019 [TMF] // LoadScreenFid
+0x019 [TMF, MP4, TM2020] // LoadScreenFid
   CPlugBitmap LoadScreenFid (external)
 
-0x01A [TMF]
+0x01A [TMF, MP4, TM2020]
   CPlugBitmap MapFid
   rect MapRect
   vec2 MapCoordElem
@@ -131,7 +131,7 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x01D [TMF]
+0x01D [TMF, MP4, TM2020]
   ZoneString[] ZoneStrings
   CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec, external)
 
@@ -141,16 +141,16 @@ CGameCtnCollection 0x03033000
   float CameraMinHeight
   bool IsWaterOutsidePlayField
 
-0x01F [TMF] // ParticleEmitterModelsFids
+0x01F [TMF, MP4, TM2020] // ParticleEmitterModelsFids
   int[] ParticleEmitterModelsFids
 
-0x020 [TMF] // folders
+0x020 [TMF, MP4, TM2020] // folders
   string FolderBlockInfo
   string FolderItem
   string FolderDecoration
   string FolderMenusIcons
 
-0x021 [TMF] // display name
+0x021 [TMF, MP4, TM2020] // display name
   string DisplayName
 
 0x022 [TMF] // is water multi-height
@@ -168,38 +168,38 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x027 // board square
+0x027 [MP4, TM2020] // board square
   float BoardSquareHeight
   float BoardSquareBorder
 
-0x028 // FolderAdditionalItem1
+0x028 [MP4, TM2020] // FolderAdditionalItem1
   string FolderAdditionalItem1
 
-0x029 // FolderAdditionalItem2
+0x029 [MP4, TM2020] // FolderAdditionalItem2
   string FolderAdditionalItem2
 
-0x02A // FolderDecalModels
+0x02A [MP4, TM2020] // FolderDecalModels
   string FolderDecalModels
 
-0x02C
+0x02C [MP4]
   int128
 
-0x02F // Tech3TunnelSpecularExpScaleMax
+0x02F [MP4, TM2020] // Tech3TunnelSpecularExpScaleMax
   vec3? Tech3TunnelSpecularExpScaleMax
 
-0x030
+0x030 [MP4, TM2020]
   int
 
-0x031 // FolderMacroDecals
+0x031 [MP4, TM2020] // FolderMacroDecals
   string FolderMacroDecals
 
-0x033
+0x033 [MP4, TM2020]
   version
   id[]
   v1+
     int DecalFadeCBlockFullDensity
 
-0x034
+0x034 [MP4, TM2020]
   version
   CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
   CPlugBitmap FidPlugBitmapCloudsX2 (external)
@@ -207,14 +207,14 @@ CGameCtnCollection 0x03033000
     CPlugBitmap VehicleEnvLayerFidBitmap (external)
     int<EVehicleEnvLayer> VehicleEnvLayer
 
-0x036 // OffZone_FogMatter
+0x036 [MP4, TM2020] // OffZone_FogMatter
   version
   CPlugFogMatter OffZoneFogMatter (external)
 
-0x037 // TerrainHeightOffset
+0x037 [MP4, TM2020] // TerrainHeightOffset
   float TerrainHeightOffset
 
-0x038
+0x038 [MP4, TM2020]
   version
   v7-
     v3-
@@ -251,7 +251,7 @@ CGameCtnCollection 0x03033000
     float
   float WaterFogClampAboveDist
 
-0x039
+0x039 [MP4, TM2020]
   version
   v0=
     float?
@@ -310,7 +310,7 @@ CGameCtnCollection 0x03033000
                         v19+
                           int
 
-0x03A
+0x03A [MP4, TM2020]
   version
   int
   int<EBackgroundShadow> BackgroundShadow
@@ -326,7 +326,7 @@ CGameCtnCollection 0x03033000
   v3+
     int
 
-0x03B // turbo color
+0x03B [TM2020] // turbo color
   version
   uint? TurboColorRoulette1
   uint? TurboColorRoulette2
@@ -337,13 +337,13 @@ CGameCtnCollection 0x03033000
     v2+
       int?
 
-0x03C
+0x03C [TM2020]
   version
   string
   v1+
     int?
 
-0x03D // BitmapDisplayControlDefaultTVProgram
+0x03D [TM2020] // BitmapDisplayControlDefaultTVProgram
   version
   CPlugBitmap BitmapDisplayControlDefaultTVProgram16x9 (external)
   CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10A (external)
@@ -351,28 +351,28 @@ CGameCtnCollection 0x03033000
   CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C (external)
   CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3 (external)
 
-0x03E
+0x03E [TM2020]
   version
   int
 
-0x03F
+0x03F [TM2020]
   version
   int
 
-0x040 // ColorBlindnessModifier
+0x040 [TM2020] // ColorBlindnessModifier
   version
   CPlugGameSkinAndFolder ColorBlindnessModifier (external)
 
-0x041
+0x041 [TM2020]
   string
 
-0x042
+0x042 [TM2020]
   int
 
-0x043
+0x043 [TM2020]
   string
 
-0x044 // GlobalMaterialModifier
+0x044 [TM2020] // GlobalMaterialModifier
   version
   CPlugGameSkinAndFolder GlobalMaterialModifier (external)
 

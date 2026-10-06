@@ -1,7 +1,7 @@
 CPlugShaderPass 0x09067000
 - inherits: CPlug
 
-0x006 [TMF]
+0x006 [TMF, MP4]
   CPlugBitmapSampler[] VertexTextures
 
 0x007 [TMF]
@@ -17,22 +17,22 @@ CPlugShaderPass 0x09067000
     GpuLoadFx[] PHlslGpuLoadFxs2
     vec4[] PHlslU01
 
-0x00A [TMF]
+0x00A [TMF, MP4, TM2020]
   id[]
   PipelineGpu VHlsl
   PipelineGpu PHlsl
 
-0x00B
+0x00B [MP4, TM2020]
   version
   PipelineGpu
   PipelineGpu
   v1+
     PipelineGpu
 
-0x00C
+0x00C [MP4, TM2020]
   uint
 
-0x00D
+0x00D [TM2020]
   UnknownStruct[]
   UnknownStruct[]
   UnknownStruct[]

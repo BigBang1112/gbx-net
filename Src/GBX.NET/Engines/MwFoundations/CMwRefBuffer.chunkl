@@ -1,9 +1,9 @@
 CMwRefBuffer 0x01026000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   uint NodClassId
   bool UseAddRefRelease
   CMwNod[] Nods (deprec, external)
 
-0x001
+0x001 [MP4, TM2020]
   id BufferId

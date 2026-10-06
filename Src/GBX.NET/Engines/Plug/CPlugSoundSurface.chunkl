@@ -3,7 +3,7 @@ CPlugSoundSurface 0x0905E000
 
 0x000 (ignore) [TMF]
 
-0x002
+0x002 [MP4, TM2020]
   version
   float
   float
@@ -12,4 +12,4 @@ CPlugSoundSurface 0x0905E000
   v2+
     bool
 
-0x003 (ignore)
+0x003 (ignore) [MP4, TM2020]

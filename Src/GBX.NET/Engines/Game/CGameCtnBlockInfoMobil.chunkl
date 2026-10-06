@@ -1,10 +1,10 @@
 CGameCtnBlockInfoMobil 0x03122000
 
-0x002 [MP3, TMT, MP4]
+0x002 [MP3, TMT, MP4, TM2020]
   CGameCtnSolidDecals[] SolidDecals (deprec)
   int
 
-0x003 [MP3.v0, TMT.v3, MP4.v6]
+0x003 [MP3.v0, TMT.v3, MP4.v6, TM2020]
   version
   v1-
     bool U01
@@ -73,6 +73,6 @@ CGameCtnBlockInfoMobil 0x03122000
                               v21+
                                 CMwNod U17
 
-0x004 [MP3, TMT, MP4]
+0x004 [MP3, TMT, MP4, TM2020]
   version
   CGameCtnBlockInfoMobilLink[] DynaLinks (deprec)

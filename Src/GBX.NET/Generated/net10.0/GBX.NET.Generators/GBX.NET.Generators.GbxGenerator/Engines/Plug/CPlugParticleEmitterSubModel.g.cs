@@ -1028,9 +1028,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B202D)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202D : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202D;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;
@@ -1096,9 +1098,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B202E)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202E : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202E;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugParticleSplashModel? U01;
 
@@ -1121,9 +1125,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B202F)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202F : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202F;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -1166,9 +1172,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2030)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2030 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2030;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -1193,9 +1201,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2031)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2031 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2031;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;
@@ -1322,9 +1332,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2032)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2032 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2032;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;
@@ -1364,9 +1376,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2033)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2033 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2033;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -1480,9 +1494,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2034)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2034 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2034;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public GxLightBall? U01;
         public CFuncEnvelope? U02;
@@ -1521,9 +1537,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2035)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2035 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2035;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CMwNod? U01;
 
@@ -1548,9 +1566,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2036)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2036 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2036;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public int U02;
@@ -1575,9 +1595,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2037)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2037 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2037;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -1647,9 +1669,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2038)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2038 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2038;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -1671,9 +1695,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2039)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2039 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2039;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -1722,9 +1748,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B203A)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B203A : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203A;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugParticleGpuSpawn? U01;
         public CPlugParticleGpuModel? U02;
@@ -1750,9 +1778,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B203B)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B203B : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203B;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;

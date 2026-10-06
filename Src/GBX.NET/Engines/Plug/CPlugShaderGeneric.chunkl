@@ -7,5 +7,5 @@ CPlugShaderGeneric 0x09004000
 0x002
   data[88]
 
-0x003 [TMF]
+0x003 [TMF, MP4, TM2020]
   data[88]

@@ -1,7 +1,7 @@
 CPlugShader 0x09002000
 - inherits: CPlug
 
-0x007
+0x007 [MP4, TM2020]
   CFuncShader FuncShader (external)
   CPlugShaderPass[] Passes
   CMwNod U01
@@ -34,34 +34,34 @@ CPlugShader 0x09002000
   CMwNod
   ushort VisibleIdFlags
 
-0x018
+0x018 [MP4, TM2020]
   uint
 
 0x019
   UnknownStruct2[]
 
-0x01B
+0x01B [MP4, TM2020]
   version
   float
   float
 
-0x01C
+0x01C [MP4, TM2020]
   version
   CPlugFileText (external)
   CMwNod (external)
 
-0x01D
+0x01D [MP4, TM2020]
   uint
 
-0x01E
+0x01E [MP4, TM2020]
   version
   uint
 
-0x01F
+0x01F [MP4, TM2020]
   version
   UnknownStruct[]
 
-0x020
+0x020 [MP4, TM2020]
   version
   ulong
   float

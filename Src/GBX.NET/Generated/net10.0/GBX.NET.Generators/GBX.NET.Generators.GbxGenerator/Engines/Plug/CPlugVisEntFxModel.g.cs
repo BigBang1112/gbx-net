@@ -44,9 +44,11 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     [Chunk(0x09115000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09115000 : Chunk<CPlugVisEntFxModel>, IVersionable
     {
         public override uint Id => 0x09115000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugParticleEmitterModel? U01;
         public Components.GbxRefTableFile? U01File;

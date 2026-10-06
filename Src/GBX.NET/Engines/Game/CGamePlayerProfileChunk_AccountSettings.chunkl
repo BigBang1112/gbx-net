@@ -42,7 +42,7 @@ archive
       int
       CGameBuddy[] Buddies
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   int EulaVersion
   string NickName (formatted)
@@ -67,7 +67,7 @@ archive
       int PrivacyPolicyVersion
       int Age
 
-0x001 (skippable)
+0x001 (skippable) [MP4, TM2020]
   version
   string Description (formatted)
   string AvatarName
@@ -75,11 +75,11 @@ archive
   v2+
     string Trigram
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   version
   boolbyte ReceiveNews
 
-0x003 (skippable)
+0x003 (skippable) [MP4, TM2020]
   version
   int
   CGameBuddy[] Buddies
@@ -92,11 +92,11 @@ archive
       v7+
         data
 
-0x004 (skippable)
+0x004 (skippable) [MP4, TM2020]
   version
   string
 
-0x005 (skippable)
+0x005 (skippable) [MP4, TM2020]
   version
   v1-
     systemtime ReceivedMessagesAt
@@ -110,11 +110,11 @@ archive
       CGameNetOnlineMessage[] ReadMessages (deprec)
       CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x006 (skippable)
+0x006 (skippable) [MP4, TM2020]
   version
   byte Flags2
 
-0x007 (skippable)
+0x007 (skippable) [MP4, TM2020]
   version
   string
   int
@@ -128,15 +128,15 @@ archive
   float
   string
 
-0x008 (skippable)
+0x008 (skippable) [MP4, TM2020]
   version
   string ClubLinkUrl
 
-0x009 (skippable)
+0x009 (skippable) [MP4, TM2020]
   version
   byte FameStars
 
-0x00A (skippable)
+0x00A (skippable) [MP4, TM2020]
   version
   float
   float
@@ -153,28 +153,28 @@ archive
   float
   float
 
-0x00B (skippable)
+0x00B (skippable) [MP4, TM2020]
   version
   int
   v1+
     float
 
-0x00C (skippable)
+0x00C (skippable) [MP4]
   version
   string
   YoutubeUpload[] YoutubeUploads
 
-0x00D (skippable)
+0x00D (skippable) [MP4, TM2020]
   version
   int
   int
 
-0x00E (skippable)
+0x00E (skippable) [MP4, TM2020]
   version
   ulong
   bool
 
-0x00F (skippable)
+0x00F (skippable) [MP4, TM2020]
   version
   string
  

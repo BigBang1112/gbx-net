@@ -72,7 +72,7 @@ CGameObjectVisModel 0x2E007000
   v22+
     vec3 DomeShaderColor
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   version
   string SoundRefSpawn
   string SoundRefUnspawn

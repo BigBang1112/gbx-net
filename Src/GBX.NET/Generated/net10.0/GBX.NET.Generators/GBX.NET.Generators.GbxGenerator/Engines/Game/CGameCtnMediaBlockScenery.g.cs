@@ -76,11 +76,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x03188000)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03188000 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -97,11 +97,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     }
 
     [Chunk(0x03188001)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03188001 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188001;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

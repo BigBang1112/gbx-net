@@ -1,6 +1,6 @@
 CGameObjectModel 0x2E01D000
 
-0x000
+0x000 [MP4, TM2020]
   version
   CGameObjectPhyModel Phy
   CGameObjectVisModel Vis (external)

@@ -44,9 +44,11 @@ public partial class CInputReplay : CMwNod, IClass
     }
 
     [Chunk(0x1300D000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk1300D000 : Chunk<CInputReplay>
     {
         public override uint Id => 0x1300D000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

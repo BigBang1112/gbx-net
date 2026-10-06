@@ -1,24 +1,24 @@
 CControlStyle 0x07017000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   CMwCmdBlockMain FocusGainedScript
   CMwCmdBlockMain FocusLostScript
   CPlugSound FocusSound (external)
   CMwNod
   CMwNod
 
-0x004 [TMF]
+0x004 [TMF, MP4, TM2020]
   CPlugSound EntrySound
 
-0x009 [TMF]
+0x009 [TMF, MP4, TM2020]
   CPlugShader DefaultShader
 
-0x00B [TMF]
+0x00B [TMF, MP4, TM2020]
   bool FitTextSize
   int
   int
 
-0x00C [TMF]
+0x00C [TMF, MP4, TM2020]
   id
 
 0x00D [TMF]
@@ -34,7 +34,7 @@ CControlStyle 0x07017000
   float ButtonIconHeight
   CFuncEnum ButtonDefaultIcons (external)
 
-0x010 [TMF]
+0x010 [TMF, MP4, TM2020]
   CPlugSound EnumSound
   CPlugShader EnumListShader
   int EnumMaxElemCount
@@ -62,10 +62,10 @@ CControlStyle 0x07017000
   vec2 Quad_UvTopLeft
   vec2 Quad_UvBottomRight
 
-0x016 [TMF]
+0x016 [TMF, MP4, TM2020]
   CControlEffectMaster EffectMaster (external)
 
-0x017 [TMF]
+0x017 [TMF, MP4, TM2020]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -76,11 +76,11 @@ CControlStyle 0x07017000
   vec2 Quad_UvBottomRight
   float Skew
 
-0x018 [TMF]
+0x018 [TMF, MP4, TM2020]
   vec4 LineGradientColor0
   vec4 LineGradientColor1
 
-0x01B [TMF]
+0x01B [TMF, MP4, TM2020]
   CPlugFont Font (external)
   float
   float
@@ -88,7 +88,7 @@ CControlStyle 0x07017000
   STextSettings_ColorAndChars
   STextSettings_ColorAndChars
 
-0x01C [TMF]
+0x01C [TMF, MP4, TM2020]
   float SliderBarWidth
   float SliderBarHeight
   float SliderCursorWidth
@@ -97,7 +97,7 @@ CControlStyle 0x07017000
   CFuncEnum SliderBarIcons (external)
   CFuncEnum SliderCursorIcons (external)
 
-0x01D [TMF]
+0x01D [TMF, MP4, TM2020]
   bool FocusAreaEnable
   CPlugMaterial FocusAreaMaterial (external)
   CPlugMaterial FocusAreaMaterialReadOnly (external)

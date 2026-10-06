@@ -1,6 +1,6 @@
 CPlugParticleGpuModel 0x090C6000
 
-0x000
+0x000 [MP4, TM2020]
   version
   float
   float
@@ -16,7 +16,7 @@ CPlugParticleGpuModel 0x090C6000
         v6+
           bool
 
-0x001
+0x001 [MP4, TM2020]
   version
   float
   float
@@ -26,7 +26,7 @@ CPlugParticleGpuModel 0x090C6000
     v2+
       bool
 
-0x002
+0x002 [MP4, TM2020]
   version
   float U01
   v6-
@@ -75,7 +75,7 @@ CPlugParticleGpuModel 0x090C6000
               float
               bool
 
-0x003
+0x003 [MP4, TM2020]
   version
   float
   float

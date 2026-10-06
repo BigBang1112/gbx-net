@@ -80,11 +80,11 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     [Chunk(0x01026000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk01026000 : Chunk<CMwRefBuffer>
     {
         public override uint Id => 0x01026000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -100,9 +100,11 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     [Chunk(0x01026001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk01026001 : Chunk<CMwRefBuffer>
     {
         public override uint Id => 0x01026001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

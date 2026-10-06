@@ -83,11 +83,11 @@ public partial class GxLightFrustum : GxLightBall, IClass
     }
 
     [Chunk(0x0400A006)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0400A006 : Chunk<GxLightFrustum>
     {
         public override uint Id => 0x0400A006;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public BoxAligned U02;
         public uint U03;

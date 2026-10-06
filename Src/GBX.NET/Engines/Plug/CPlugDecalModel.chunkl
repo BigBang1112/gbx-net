@@ -1,7 +1,7 @@
 CPlugDecalModel 0x090A7000
 - inherits: CPlug
 
-0x002
+0x002 [MP4, TM2020]
   version
   v4-
     CPlugBitmap DiffuseA (external)
@@ -29,10 +29,10 @@ CPlugDecalModel 0x090A7000
             if RoughnessRef == null || RoughnessRef == ""
               CPlugBitmap Roughness
 
-0x003
+0x003 [MP4, TM2020]
   CPlugBitmap Icon (external)
 
-0x004
+0x004 [MP4, TM2020]
   version
   CPlugSolid
   bool RandomInstances
@@ -55,7 +55,7 @@ CPlugDecalModel 0x090A7000
                 CPlugDecalModel[] DecalModels (deprec)
                 MacroDecalSet[] MacroDecalSets
 
-0x006
+0x006 [MP4, TM2020]
   version
   uint
 

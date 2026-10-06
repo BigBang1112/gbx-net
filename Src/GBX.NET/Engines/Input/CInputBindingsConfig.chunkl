@@ -4,14 +4,14 @@ CInputBindingsConfig 0x13006000
   string
   Binding[] Bindings
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   id[]
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   string
   int
 
-0x003
+0x003 [MP4, TM2020]
   version
   Binding[] Bindings (version: Version + 1)
 

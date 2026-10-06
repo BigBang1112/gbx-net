@@ -44,11 +44,11 @@ public abstract partial class CMotion : CMwNod, IClass
     }
 
     [Chunk(0x08001000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk08001000 : Chunk<CMotion>
     {
         public override uint Id => 0x08001000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

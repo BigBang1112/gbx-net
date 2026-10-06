@@ -1,6 +1,6 @@
 CGameCtnDecorationAudio 0x03039000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
 
 0x001 [TMF]
   CPlugAudioEnvironment AudioEnvOutsideOpen (external)
@@ -9,7 +9,7 @@ CGameCtnDecorationAudio 0x03039000
 0x002 [TMF]
   float SoundAttenuationInEditor
 
-0x003
+0x003 [MP4, TM2020]
   version
   v1+
     v3-
@@ -51,14 +51,14 @@ CGameCtnDecorationAudio 0x03039000
             v8+
               CPlugAudioBalance AudioBalance_SM_EvtBulletTime (external)
 
-0x004
+0x004 [MP4, TM2020]
   version
   CPlugAudioEnvironment AudioEnvOutsideOpen (external)
   CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
   CPlugAudioEnvironment AudioEnvUndergroundOpen (external)
   CPlugAudioEnvironment AudioEnvUndergroundEnclosed (external)
 
-0x005
+0x005 [MP4, TM2020]
   version
   float
   float CameraWooshMinSpeedKmh
@@ -66,6 +66,6 @@ CGameCtnDecorationAudio 0x03039000
   float ReverbMaxBlockDist
   float[] ReverbMaterialGains
 
-0x006
+0x006 [MP4, TM2020]
   version
   CPlugFileText ModifierXmlFile (external)

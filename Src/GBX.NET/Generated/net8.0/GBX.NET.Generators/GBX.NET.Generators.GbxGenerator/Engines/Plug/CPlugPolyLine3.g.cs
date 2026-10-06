@@ -62,9 +62,11 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     }
 
     [Chunk(0x09118000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09118000 : Chunk<CPlugPolyLine3>, IVersionable
     {
         public override uint Id => 0x09118000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public int U02;

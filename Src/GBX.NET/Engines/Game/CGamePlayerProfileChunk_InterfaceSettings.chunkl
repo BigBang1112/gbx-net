@@ -1,18 +1,18 @@
 CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   string MenuLeagueFilter
   byte MenuInternetView
   byte
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   version
   int DynamicLoadScreenIndex
   Pair[]
 
-0x003 (skippable)
+0x003 (skippable) [MP4, TM2020]
   version
   vec3
   vec3
@@ -20,11 +20,11 @@ CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
   vec3
   vec3
 
-0x004 (skippable)
+0x004 (skippable) [MP4, TM2020]
   version
   SCampaignSettings[] CampaignSettings
 
-0x005 (skippable)
+0x005 (skippable) [MP4, TM2020]
   version
   string
   string
@@ -33,7 +33,7 @@ CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
   string
   string
 
-0x006 (skippable)
+0x006 (skippable) [MP4, TM2020]
   version
   int U01
   int U02

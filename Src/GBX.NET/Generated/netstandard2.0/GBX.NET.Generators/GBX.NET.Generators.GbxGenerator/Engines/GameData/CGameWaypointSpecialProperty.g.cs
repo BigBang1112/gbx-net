@@ -80,9 +80,11 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     [Chunk(0x2E009000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>, IVersionable
     {
         public override uint Id => 0x2E009000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -110,9 +112,11 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     [Chunk(0x2E009001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>, IVersionable
     {
         public override uint Id => 0x2E009001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

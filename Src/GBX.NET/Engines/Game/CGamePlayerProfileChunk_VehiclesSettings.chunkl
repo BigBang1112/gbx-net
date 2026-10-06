@@ -1,22 +1,22 @@
 CGamePlayerProfileChunk_VehiclesSettings 0x03130000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   string
   data[32]
 
-0x001 (skippable)
+0x001 (skippable) [MP4, TM2020]
   version
   vec3
   v2+
     float = 1
 
-0x002 (skippable) // VehicleProfiles
+0x002 (skippable) [MP4, TM2020] // VehicleProfiles
   version
   VehicleProfile[] VehicleProfiles
 
-0x003 (skippable)
+0x003 (skippable) [MP4, TM2020]
   version
   transquat[]
   v2+
@@ -38,7 +38,7 @@ CGamePlayerProfileChunk_VehiclesSettings 0x03130000
           transquat[]
           transquat[]
 
-0x004 (skippable)
+0x004 (skippable) [MP4, TM2020]
   version
   Unknown[]
 

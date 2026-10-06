@@ -15,6 +15,6 @@ CPlugBitmapSampler 0x0907E000
 
 0x008 (base: 0x002) [TMF]
 
-0x00B (base: 0x008)
+0x00B (base: 0x008) [MP4, TM2020]
   version
   base

@@ -171,11 +171,11 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     /// ManiaPlanet
     /// </summary>
     [Chunk(0x030A2006, "ManiaPlanet")]
-    [ChunkGameVersion(GameVersion.TM2020, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 4)]
     public partial class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>, IVersionable
     {
         public override uint Id => 0x030A2006;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

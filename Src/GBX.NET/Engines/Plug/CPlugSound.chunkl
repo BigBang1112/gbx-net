@@ -1,7 +1,7 @@
 CPlugSound 0x0901A000
 - inherits: CPlugAudio
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   CMwNod PlugFile (external) // CPlugFileSnd
 
 0x002 [TMF]
@@ -41,7 +41,7 @@ CPlugSound 0x0901A000
   bool IsContinuous
   float Priority
 
-0x00E
+0x00E [MP4, TM2020]
   version
   int<EMode> Mode
   float
@@ -65,7 +65,7 @@ CPlugSound 0x0901A000
                 v9+
                   id GroupDuplicate
 
-0x00F
+0x00F [MP4, TM2020]
   version
   float RefDistance
   float MaxDistance
@@ -104,18 +104,18 @@ CPlugSound 0x0901A000
   version
   CPlugSound[] OldSubSources (deprec)
 
-0x011
+0x011 [MP4, TM2020]
   version
   int<ESoundKind> SoundKind
   int InsideConeAngle
   int OutsideConeAngle
   float ConeOutsideAttenuation
 
-0x012
+0x012 [MP4, TM2020]
   version
   CPlugSound BackingSound (external)
 
-0x013
+0x013 [MP4, TM2020]
   version
   CPlugSound FocusedSound (external)
 

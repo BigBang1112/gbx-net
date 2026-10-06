@@ -159,11 +159,11 @@ public partial class GxLight : CMwNod, IClass
     }
 
     [Chunk(0x04001009)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk04001009 : Chunk<GxLight>
     {
         public override uint Id => 0x04001009;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -185,9 +185,11 @@ public partial class GxLight : CMwNod, IClass
     }
 
     [Chunk(0x0400100A)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0400100A : Chunk<GxLight>, IVersionable
     {
         public override uint Id => 0x0400100A;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

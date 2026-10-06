@@ -9,7 +9,7 @@ CFuncColorGradient 0x05038000
   float KeyFramePos1
   float KeyFramePos2
 
-0x001 (base: 0x000)
+0x001 (base: 0x000) [MP4, TM2020]
   base
   int<EColorSpace> ColorSpace
 

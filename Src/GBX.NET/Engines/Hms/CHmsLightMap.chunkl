@@ -1,10 +1,10 @@
 CHmsLightMap 0x06021000
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   CPlugPointsInSphereOpt (external)
 
-0x002 [TMF]
+0x002 [TMF, MP4, TM2020]
   CMwNod (external)
 
-0x003 [TMF]
+0x003 [TMF, MP4, TM2020]
   CHmsLightMapMood (external)

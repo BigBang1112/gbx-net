@@ -1,6 +1,6 @@
 CGameCommonItemEntityModel 0x2E027000
 
-0x000 [TM2020.v6]
+0x000 [MP4, TM2020.v6]
   version
   v0=
     CMwNod PhyModel (external) // CGameObjectPhyModel

@@ -1,6 +1,6 @@
 CGameCtnChallengeGroup 0x0308F000
 
-0x002 [TMF] // name
+0x002 [TMF, MP4, TM2020] // name
   string Name
 
 0x003
@@ -34,7 +34,7 @@ CGameCtnChallengeGroup 0x0308F000
 0x00A
   MapInfo[] MapInfos (version: 1, list)
 
-0x00B
+0x00B [MP4, TM2020]
   version
   MapInfo[] MapInfos (version: Version + 2, list)
 

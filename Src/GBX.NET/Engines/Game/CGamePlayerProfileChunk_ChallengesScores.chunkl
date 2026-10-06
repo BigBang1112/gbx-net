@@ -1,11 +1,11 @@
 CGamePlayerProfileChunk_ChallengesScores 0x03149000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4]
   version
   int
 
-0x002 (skippable)
+0x002 (skippable) [MP4]
   version
   SContextMapRecordForProfile[] ContextMapRecordsForProfile
 

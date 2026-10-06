@@ -1,7 +1,7 @@
 CPlugBitmapAtlas 0x090A8000
 - inherits: CPlug
 
-0x002
+0x002 [MP4, TM2020]
   version
   SubTex[] SubTextures
 

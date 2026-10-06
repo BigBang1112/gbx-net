@@ -44,11 +44,11 @@ public partial class GxFog : CMwNod, IClass
     }
 
     [Chunk(0x04004000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04004000 : Chunk<GxFog>
     {
         public override uint Id => 0x04004000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public int U02;
         public float U03;
@@ -94,9 +94,11 @@ public partial class GxFog : CMwNod, IClass
     }
 
     [Chunk(0x04004001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04004001 : Chunk<GxFog>, IVersionable
     {
         public override uint Id => 0x04004001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec3 U01;
 

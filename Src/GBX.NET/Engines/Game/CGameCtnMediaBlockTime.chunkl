@@ -1,7 +1,7 @@
 CGameCtnMediaBlockTime 0x03085000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TMF, TM2020]
+0x000 [TMF, MP4, TM2020]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

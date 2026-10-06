@@ -1,6 +1,6 @@
 CGameHighScore 0x03047000
 
-0x002 [TMF]
+0x002 [TMF, MP4]
   int Time
   int Rank
   int Count
@@ -8,6 +8,6 @@ CGameHighScore 0x03047000
   string Score
   string
 
-0x004 (skippable)
+0x004 (skippable) [MP4]
   string
   string GhostUrl

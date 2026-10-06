@@ -1,13 +1,13 @@
 CGamePlayerProfileChunk_GameSettings 0x0312D000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   int OpponentsVersionLast
   SChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
   bool
 
-0x001 (skippable)
+0x001 (skippable) [MP4, TM2020]
   version
   string
   string
@@ -33,7 +33,7 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
   int
   int
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   version
   string ServerName
   string ServerComment
@@ -46,13 +46,13 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
   v3+
     byte OpponentVisibility
 
-0x003 (skippable)
+0x003 (skippable) [MP4, TM2020]
   version
   byte
   v2+
     bool EditorHelp
 
-0x004 (skippable)
+0x004 (skippable) [MP4, TM2020]
   version
   float
   bool
@@ -69,7 +69,7 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
       v4+
         float
 
-0x005 (skippable)
+0x005 (skippable) [MP4, TM2020]
   version
   float StereoscopyStrength01
   float
@@ -77,11 +77,11 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
   CGameCtnMediaShootParams ShootParamsVideo (direct)
   CGameCtnMediaShootParams (direct)
 
-0x006 (skippable)
+0x006 (skippable) [MP4, TM2020]
   version
   byte
 
-0x007 (skippable)
+0x007 (skippable) [MP4, TM2020]
   version
   bool
   float
@@ -104,26 +104,26 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
             v6+
               float
 
-0x008 (skippable)
+0x008 (skippable) [MP4, TM2020]
   version
   int
   v1+
     float
 
-0x009 (skippable)
+0x009 (skippable) [MP4, TM2020]
   version
   int
 
-0x00A (skippable)
+0x00A (skippable) [MP4, TM2020]
   version
   float
 
-0x00B (skippable)
+0x00B (skippable) [MP4, TM2020]
   version
   int
   Unknown[]
 
-0x00C (skippable)
+0x00C (skippable) [MP4, TM2020]
   version
   float
   float
@@ -141,7 +141,7 @@ CGamePlayerProfileChunk_GameSettings 0x0312D000
   float
   float
 
-0x00D (skippable)
+0x00D (skippable) [MP4, TM2020]
   uint
   int
   string

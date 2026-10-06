@@ -7,7 +7,7 @@ GxLightSpot 0x0400B000
   float AngleFlare
   float FalloffExponent
 
-0x002 [TMF]
+0x002 [TMF, MP4]
   uint Flags
   float AngleInner
   float AngleOuter
@@ -16,7 +16,7 @@ GxLightSpot 0x0400B000
   float AngleOuterShadow
   float FalloffExponent
 
-0x003
+0x003 [TM2020]
   version
   uint Flags
   float AngleInner

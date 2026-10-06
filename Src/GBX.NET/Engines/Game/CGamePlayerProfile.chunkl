@@ -765,7 +765,7 @@
 0x07B (skippable)
   int
 
-0x07C (skippable) [TM2020]
+0x07C (skippable) [MP4, TM2020]
   id ProfileId
   string ProfileName
 
@@ -774,7 +774,7 @@
   id ProfileId
   string ProfileName
 
-0x07E (skippable) [TM2020.v2]
+0x07E (skippable) [MP4, TM2020.v2]
   version
   id ProfileId
   string ProfileName

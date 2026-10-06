@@ -690,11 +690,11 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     [Chunk(0x24086001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TM2020)]
     public partial class Chunk24086001 : Chunk<CGameControlCameraTrackManiaRace2>
     {
         public override uint Id => 0x24086001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

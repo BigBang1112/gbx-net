@@ -1,6 +1,6 @@
 CHmsAmbientOcc 0x06026000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   float
   float
   int

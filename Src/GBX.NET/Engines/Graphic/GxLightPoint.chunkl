@@ -4,6 +4,6 @@ GxLightPoint 0x04003000
 0x003
   float FlareSize
 
-0x004 [TMF]
+0x004 [TMF, MP4, TM2020]
   float FlareSize
   float FlareBiasZ

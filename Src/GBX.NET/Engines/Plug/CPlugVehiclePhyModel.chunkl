@@ -1,12 +1,12 @@
 CPlugVehiclePhyModel 0x090EA000
 
-0x002
+0x002 [MP4]
   CMwRefBuffer RefBuffer (external)
 
-0x003
+0x003 [MP4, TM2020]
   CPlugVehiclePhyTunings Tunings (external)
 
-0x008
+0x008 [MP4, TM2020]
   version
   CPlugVehicleCarPhyShape PhyShape
   v1+
@@ -19,7 +19,7 @@ CPlugVehiclePhyModel 0x090EA000
       v12+
         int
 
-0x009
+0x009 [TM2020]
   version
   v1-
     CMwRefBuffer

@@ -1,7 +1,7 @@
 CMotionShader 0x0802B000
 - inherits: CMotionTrack
 
-0x000 [TMF]
+0x000 [TMF, MP4]
   int
   int
   int

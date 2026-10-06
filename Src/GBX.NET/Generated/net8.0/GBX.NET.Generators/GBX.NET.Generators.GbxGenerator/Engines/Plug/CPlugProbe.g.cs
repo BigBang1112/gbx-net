@@ -44,9 +44,11 @@ public partial class CPlugProbe : CPlug, IClass
     }
 
     [Chunk(0x09106000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09106000 : Chunk<CPlugProbe>
     {
         public override uint Id => 0x09106000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
         public Vec3 U02;
         public float U03;

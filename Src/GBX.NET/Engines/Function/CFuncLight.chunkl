@@ -2,7 +2,7 @@ CFuncLight 0x05018000
 - inherits: CFuncPlug
 - abstract
 
-0x000 [TMF]
+0x000 [TMF, MP4]
   int<EFctType> FctType
   float FlickPeriod
   int FlickCount

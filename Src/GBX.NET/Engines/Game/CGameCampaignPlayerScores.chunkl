@@ -1,6 +1,6 @@
 CGameCampaignPlayerScores 0x030EA000
 
-0x001 [TMF]
+0x001 [TMF, MP4]
   id CampaignId
   boolbyte U01
   if U01

@@ -71,5 +71,5 @@ CGameControlCameraTrackManiaRace3 0x24087000
   CFuncKeysReal LookAtFactorFromUpSpeedRatio
   CFuncKeysReal FlyingLookDownFactorFromSpeedRatio
 
-0x001 [TMF]
+0x001 [TMF, TM2020]
   float

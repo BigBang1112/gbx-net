@@ -73,11 +73,11 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x0316C000)]
-    [ChunkGameVersion(GameVersion.TM2020, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 2)]
     public partial class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>, IVersionable
     {
         public override uint Id => 0x0316C000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

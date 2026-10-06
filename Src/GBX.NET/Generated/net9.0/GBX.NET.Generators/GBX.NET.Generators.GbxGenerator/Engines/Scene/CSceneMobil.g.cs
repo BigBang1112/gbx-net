@@ -71,11 +71,11 @@ public partial class CSceneMobil : CSceneObject, IClass
     }
 
     [Chunk(0x0A011003)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A011003 : Chunk<CSceneMobil>
     {
         public override uint Id => 0x0A011003;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -109,11 +109,11 @@ public partial class CSceneMobil : CSceneObject, IClass
     }
 
     [Chunk(0x0A011005)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A011005 : Chunk<CSceneMobil>
     {
         public override uint Id => 0x0A011005;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

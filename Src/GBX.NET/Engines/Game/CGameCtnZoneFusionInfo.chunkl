@@ -1,9 +1,9 @@
 CGameCtnZoneFusionInfo 0x03151000
 
-0x000
+0x000 [MP4, TM2020]
   id CompatibleZoneId
   int FusionType
 
-0x001
+0x001 [MP4, TM2020]
   version
   id MergedZoneId

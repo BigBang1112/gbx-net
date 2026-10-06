@@ -1,11 +1,11 @@
 CFuncShaderLayerUV 0x05015000
 - inherits: CFuncShader
 
-0x005 [TMF]
+0x005 [TMF, MP4, TM2020]
   string LayerName
   int
 
-0x009 [TMF]
+0x009 [TMF, MP4, TM2020]
   vec2
   vec2
 

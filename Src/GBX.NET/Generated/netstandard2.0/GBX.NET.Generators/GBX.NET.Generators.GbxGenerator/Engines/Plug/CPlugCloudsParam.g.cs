@@ -53,9 +53,11 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     [Chunk(0x09182001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09182001 : Chunk<CPlugCloudsParam>
     {
         public override uint Id => 0x09182001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -69,9 +71,11 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     [Chunk(0x09182002)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09182002 : Chunk<CPlugCloudsParam>
     {
         public override uint Id => 0x09182002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int U01;
         public int U02;
         public float U03;

@@ -138,9 +138,11 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// Stations
     /// </summary>
     [Chunk(0x03180002, "Stations")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>
     {
         public override uint Id => 0x03180002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -157,9 +159,11 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// LatestTitleIdLoaded
     /// </summary>
     [Chunk(0x03180003, "LatestTitleIdLoaded")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03180003 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
     {
         public override uint Id => 0x03180003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

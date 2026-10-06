@@ -110,9 +110,11 @@ public partial class CSceneFxNod : CMwNod, IClass
     }
 
     [Chunk(0x0A03A002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A03A002 : Chunk<CSceneFxNod>, IVersionable
     {
         public override uint Id => 0x0A03A002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CMwNod? U01;
         public CMwNod? U02;

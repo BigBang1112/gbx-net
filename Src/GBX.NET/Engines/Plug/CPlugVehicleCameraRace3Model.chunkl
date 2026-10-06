@@ -71,21 +71,21 @@ CPlugVehicleCameraRace3Model 0x090EF000
   CFuncKeysReal
   CFuncKeysReal
 
-0x001
+0x001 [MP4, TM2020]
   float
 
-0x002
+0x002 [MP4, TM2020]
   float
   float
 
-0x003
+0x003 [MP4, TM2020]
   bool
   bool
 
-0x004
+0x004 [MP4, TM2020]
   id
 
-0x005
+0x005 [MP4, TM2020]
   version
   float
   float

@@ -1,6 +1,6 @@
 CPlugVehicleCarPhyShape 0x0910E000
 
-0x000
+0x000 [MP4, TM2020]
   version
   float U01
   CPlugSolid U02

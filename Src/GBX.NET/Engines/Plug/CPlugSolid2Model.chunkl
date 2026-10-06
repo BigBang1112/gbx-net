@@ -3,9 +3,9 @@ CPlugSolid2Model 0x090BB000
 0x000 (header, struct: SHeaderFileVersion) // file version
   int FileVersion
 
-0x000
+0x000 [MP4, TM2020]
 
-0x002 (skippable) // fake occlusion
+0x002 (skippable) [MP4, TM2020] // fake occlusion
   data FileImageBytes
   FakeOccProj[] FakeOccProjs
 

@@ -19,7 +19,7 @@ GxLightBall 0x04002000
   float Attenuation2
   vec3 AmbientRGB
 
-0x008
+0x008 [MP4, TM2020]
   uint Flags
   float Radius
   float RadiusSpecular
@@ -33,8 +33,8 @@ GxLightBall 0x04002000
   float AttHyper2DerivAt0
   float AttHyper2Tension
 
-0x009
+0x009 [MP4, TM2020]
   float
 
-0x00A
+0x00A [MP4, TM2020]
   float

@@ -134,9 +134,11 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     [Chunk(0x2E00B000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00B000 : Chunk<CGameGateModel>, IVersionable
     {
         public override uint Id => 0x2E00B000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -154,9 +156,11 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     [Chunk(0x2E00B001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00B001 : Chunk<CGameGateModel>, IVersionable
     {
         public override uint Id => 0x2E00B001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

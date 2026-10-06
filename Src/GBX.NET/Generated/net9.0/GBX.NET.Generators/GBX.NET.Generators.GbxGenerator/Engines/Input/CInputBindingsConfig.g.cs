@@ -75,11 +75,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     [Chunk(0x13006001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk13006001 : Chunk<CInputBindingsConfig>
     {
         public override uint Id => 0x13006001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -95,9 +95,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     [Chunk(0x13006002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk13006002 : SkippableChunk<CInputBindingsConfig>
     {
         public override uint Id => 0x13006002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public string? U01;
         public int U02;
 
@@ -116,9 +118,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     [Chunk(0x13006003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk13006003 : Chunk<CInputBindingsConfig>, IVersionable
     {
         public override uint Id => 0x13006003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

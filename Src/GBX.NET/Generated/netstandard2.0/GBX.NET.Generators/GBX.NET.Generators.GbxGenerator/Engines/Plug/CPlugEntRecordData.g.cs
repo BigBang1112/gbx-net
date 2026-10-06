@@ -55,9 +55,11 @@ public partial class CPlugEntRecordData : CMwNod, IClass
     }
 
     [Chunk(0x0911F000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0911F000 : Chunk<CPlugEntRecordData>
     {
         public override uint Id => 0x0911F000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

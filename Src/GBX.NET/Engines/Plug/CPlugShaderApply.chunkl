@@ -16,10 +16,10 @@ CPlugShaderApply 0x09026000
   CPlugBitmapAddress
   CPlugBitmapAddress
 
-0x002 [TMF]
+0x002 [TMF, MP4, TM2020]
   CPlugBitmapAddress[] BitmapAddresses
 
-0x004 [TMF]
+0x004 [TMF, MP4, TM2020]
   int
 
 0x006
@@ -32,25 +32,25 @@ CPlugShaderApply 0x09026000
   int
   int
 
-0x00A
+0x00A [MP4]
   uint
   uint
   uint
 
-0x00C
+0x00C [MP4, TM2020]
   CPlugBitmapAddress[] BitmapAddresses (deprec)
 
 0x00D
   byte // DoData
 
-0x010
+0x010 [MP4, TM2020]
   byte // DoData
 
-0x011
+0x011 [MP4, TM2020]
   version
   CMwNod (external)
 
-0x012
+0x012 [TM2020]
   version
   uint
   uint

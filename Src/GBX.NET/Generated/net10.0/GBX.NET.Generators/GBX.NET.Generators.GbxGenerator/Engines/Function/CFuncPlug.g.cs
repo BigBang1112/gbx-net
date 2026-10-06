@@ -135,11 +135,11 @@ public partial class CFuncPlug : CFunc, IClass
     }
 
     [Chunk(0x0500B005)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0500B005 : Chunk<CFuncPlug>
     {
         public override uint Id => 0x0500B005;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

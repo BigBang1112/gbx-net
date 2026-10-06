@@ -4,13 +4,13 @@ CFuncTreeSubVisualSequence 0x05031000
 0x000
   CFuncKeysNatural SubKeys (direct)
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   id
 
-0x002 [TMF]
+0x002 [TMF, MP4, TM2020]
   CFuncKeysNatural SubKeys
 
-0x003 [TMF]
+0x003 [TMF, MP4, TM2020]
   bool SimpleModeIsLooping
   int SimpleModeStartIndex
   int SimpleModeEndIndex

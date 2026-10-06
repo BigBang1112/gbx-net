@@ -136,9 +136,11 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     [Chunk(0x05038001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05038001 : Chunk05038000
     {
         public override uint Id => 0x05038001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

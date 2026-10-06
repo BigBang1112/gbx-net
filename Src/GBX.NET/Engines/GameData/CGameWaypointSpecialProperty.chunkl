@@ -1,6 +1,6 @@
 CGameWaypointSpecialProperty 0x2E009000
 
-0x000
+0x000 [MP4, TM2020]
   version
   v1=
     int Spawn
@@ -9,7 +9,7 @@ CGameWaypointSpecialProperty 0x2E009000
     string Tag
     int Order
 
-0x001 (skippable)
+0x001 (skippable) [MP4, TM2020]
   version
   bool HasScriptMetadata (local, write: "n.ScriptMetadata is not null")
   if HasScriptMetadata

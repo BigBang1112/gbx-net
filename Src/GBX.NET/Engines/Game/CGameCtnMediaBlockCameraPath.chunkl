@@ -10,7 +10,7 @@ CGameCtnMediaBlockCameraPath 0x030A1000
 0x002 [TMF]
   Key[] Keys (version: 2, list)
 
-0x003 [TM2020.v5]
+0x003 [MP4, TM2020.v5]
   version
   Key[] Keys (list)
 

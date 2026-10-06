@@ -44,11 +44,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021001 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public CPlugPointsInSphereOpt? U01;
         public Components.GbxRefTableFile? U01File;
 
@@ -65,11 +65,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021002 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public CMwNod? U01;
         public Components.GbxRefTableFile? U01File;
 
@@ -86,11 +86,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     [Chunk(0x06021003)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021003 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021003;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public CHmsLightMapMood? U01;
         public Components.GbxRefTableFile? U01File;
 

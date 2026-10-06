@@ -101,9 +101,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     }
 
     [Chunk(0x090BB000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BB000 : Chunk<CPlugSolid2Model>
     {
         public override uint Id => 0x090BB000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -135,9 +137,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     /// fake occlusion
     /// </summary>
     [Chunk(0x090BB002, "fake occlusion")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BB002 : SkippableChunk<CPlugSolid2Model>
     {
         public override uint Id => 0x090BB002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

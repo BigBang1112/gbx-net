@@ -80,11 +80,11 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     }
 
     [Chunk(0x09004003)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09004003 : Chunk<CPlugShaderGeneric>
     {
         public override uint Id => 0x09004003;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

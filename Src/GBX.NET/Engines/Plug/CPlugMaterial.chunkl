@@ -1,7 +1,7 @@
 CPlugMaterial 0x09079000
 - inherits: CPlug
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   CMwNod
 
 0x002
@@ -10,7 +10,7 @@ CPlugMaterial 0x09079000
 0x004
   DeviceMat[] DeviceMaterials (version: 0x004)
 
-0x007 [TMF]
+0x007 [TMF, MP4, TM2020]
   CPlugMaterialCustom CustomMaterial
 
 0x009
@@ -18,28 +18,28 @@ CPlugMaterial 0x09079000
 0x00A
   int
 
-0x00D [TMF]
+0x00D [TMF, MP4]
 
-0x00E [TMF]
+0x00E [TMF, MP4]
   short<CPlugSurface.MaterialId> SurfaceId
   short
 
-0x00F [TMF]
+0x00F [TMF, MP4]
   int
 
-0x010
+0x010 [MP4, TM2020]
   float
 
-0x011
+0x011 [MP4, TM2020]
   id[]
 
-0x012 (skippable, ignore)
+0x012 (skippable, ignore) [MP4, TM2020]
 
-0x013 (skippable, ignore)
+0x013 (skippable, ignore) [MP4, TM2020]
 
-0x014 (skippable, ignore)
+0x014 (skippable, ignore) [MP4, TM2020]
 
-0x015
+0x015 [TM2020]
   version
   CPlug Shader (external)
   if Shader == null && ShaderFile == null
@@ -52,11 +52,11 @@ CPlugMaterial 0x09079000
     v7+
       CMwNod
 
-0x016
+0x016 [TM2020]
   version
   uint
 
-0x017
+0x017 [TM2020]
   version
   v1+
     byte<CPlugSurface.MaterialId> SurfaceId
@@ -66,7 +66,7 @@ CPlugMaterial 0x09079000
     short
     string
 
-0x019 (skippable, ignore)
+0x019 (skippable, ignore) [TM2020]
 
 archive DeviceMat
   short

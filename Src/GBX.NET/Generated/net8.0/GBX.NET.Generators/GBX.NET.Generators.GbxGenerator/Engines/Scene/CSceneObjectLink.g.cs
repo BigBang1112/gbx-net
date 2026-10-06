@@ -174,11 +174,11 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     [Chunk(0x0A014001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk0A014001 : Chunk<CSceneObjectLink>
     {
         public override uint Id => 0x0A014001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
         public bool U01;
         public int U02;
         public int U03;
@@ -224,11 +224,11 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     [Chunk(0x0A014002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk0A014002 : Chunk<CSceneObjectLink>
     {
         public override uint Id => 0x0A014002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
         public bool U01;
         public bool U02;
 
@@ -248,11 +248,11 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     [Chunk(0x0A014003)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk0A014003 : Chunk<CSceneObjectLink>
     {
         public override uint Id => 0x0A014003;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

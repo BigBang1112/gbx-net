@@ -1,6 +1,6 @@
 CGameVehicleModel 0x2E01C000
 
-0x000
+0x000 [MP4, TM2020]
   version
   CPlugVehiclePhyModel PhyModel (external)
   CPlugVehicleVisModel VisModel (external)

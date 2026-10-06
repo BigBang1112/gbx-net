@@ -1,7 +1,7 @@
 CMotionCmdBase 0x08029000
 - inherits: CMwCmd
 
-0x002 [TMF]
+0x002 [TMF, MP4]
   int
   float
   int

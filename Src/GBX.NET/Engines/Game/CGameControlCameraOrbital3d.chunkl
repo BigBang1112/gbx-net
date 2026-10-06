@@ -52,5 +52,5 @@ CGameControlCameraOrbital3d 0x0306E000
 0x006 [TMF]
   float ZoomKeySensitivity
 
-0x007 [TMF]
+0x007 [TMF, MP4, TM2020]
   float DefaultRadius

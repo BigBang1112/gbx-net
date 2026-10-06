@@ -44,9 +44,11 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
     }
 
     [Chunk(0x09094001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09094001 : Chunk<CPlugVehicleGearBox>, IVersionable
     {
         public override uint Id => 0x09094001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float[]? U01;
         public bool U02;

@@ -1,11 +1,11 @@
 CGameCtnMediaBlockScenery 0x03188000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TM2020]
+0x000 [MP4, TM2020]
   version
   Key[] Keys (list)
 
-0x001 [TM2020]
+0x001 [MP4, TM2020]
   version
   int CapturableCount // Passed to ImportCapturables(DataTape, CapturableCount).
   CPlugDataTape DataTape

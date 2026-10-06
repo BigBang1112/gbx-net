@@ -361,11 +361,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E007)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306E007 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E007;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

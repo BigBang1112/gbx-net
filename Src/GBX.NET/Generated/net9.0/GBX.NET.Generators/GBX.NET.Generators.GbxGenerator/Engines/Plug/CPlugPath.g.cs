@@ -65,9 +65,11 @@ public partial class CPlugPath : CMwNod, IClass
     }
 
     [Chunk(0x09119000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09119000 : Chunk<CPlugPath>, IVersionable
     {
         public override uint Id => 0x09119000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 2;
         public bool U01;
         public byte U02;

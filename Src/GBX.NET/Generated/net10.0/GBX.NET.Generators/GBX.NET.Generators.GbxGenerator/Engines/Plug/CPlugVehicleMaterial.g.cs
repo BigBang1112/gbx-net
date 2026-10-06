@@ -388,11 +388,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     [Chunk(0x090F100F)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F100F : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F100F;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public float U01;
         public float U02;
 
@@ -411,9 +411,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     [Chunk(0x090F1010)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F1010 : Chunk<CPlugVehicleMaterial>, IVersionable
     {
         public override uint Id => 0x090F1010;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;

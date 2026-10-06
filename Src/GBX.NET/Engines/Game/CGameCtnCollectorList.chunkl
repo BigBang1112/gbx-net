@@ -1,6 +1,6 @@
 CGameCtnCollectorList 0x0301B000 // A list of puzzle pieces.
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   SCollectorStock[] CollectorStock (list)
 
 archive SCollectorStock

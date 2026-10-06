@@ -98,7 +98,7 @@ CGameObjectPhyModel 0x2E006000
 0x002 (skippable)
   CMwNod (external)
 
-0x003
+0x003 [MP4, TM2020]
   bool U01 (write: "n.DynaModel is not null")
   if U01
     CPlugDynaModel DynaModel

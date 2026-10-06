@@ -116,11 +116,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     [Chunk(0x090BF001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF001 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -135,9 +135,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     [Chunk(0x090BF002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF002 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -151,9 +153,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     [Chunk(0x090BF003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF003 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -167,9 +171,11 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     [Chunk(0x090BF004)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF004 : Chunk<CPlugWeatherModel>
     {
         public override uint Id => 0x090BF004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1,7 +1,7 @@
 CGameCtnMediaBlockSkel 0x0314A000
 - inherits: CGameCtnMediaBlock
 
-0x000
+0x000 [MP4]
   version = 5
   Key[] Keys (list)
   v1+

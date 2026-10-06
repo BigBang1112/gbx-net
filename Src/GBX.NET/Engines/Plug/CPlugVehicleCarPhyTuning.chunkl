@@ -1,7 +1,7 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   float
   float SteerRadiusMin
   float SteerRadiusCoef
@@ -15,10 +15,10 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float DebugAbsorbCoef
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   id Name
 
-0x002 [TMF]
+0x002 [TMF, MP4, TM2020]
   float Mass
   float CMAftForce
   float CMDownUp
@@ -26,7 +26,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x004 [TMF]
   bool IsFakeEngine
 
-0x005 [TMF]
+0x005 [TMF, MP4, TM2020]
   float GravityCoef
 
 0x006
@@ -35,34 +35,34 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x007 [TMF]
+0x007 [TMF, MP4, TM2020]
   float SteerSpeed
 
 0x008
   float ReverseMaxSpeed
   float TurboBoost
 
-0x009 [TMF]
+0x009 [TMF, MP4, TM2020]
   float BrakeBase
 
 0x00A
   float LinearFluidFrictionCoef
   float AngularFluidFrictionCoef1
 
-0x00B [TMF]
+0x00B [TMF, MP4, TM2020]
   float InertiaMass
   Vec3 InertiaHalfDiag
 
 0x00C
   bool
 
-0x00D [TMF]
+0x00D [TMF, MP4, TM2020]
   int TireMaterial
 
-0x00E [TMF]
+0x00E [TMF, MP4, TM2020]
   int<EShockModel> ShockModel
 
-0x010 [TMF]
+0x010 [TMF, MP4, TM2020]
   int<ESteerModel> SteerModel
   float SteerGroundTorque
 
@@ -83,7 +83,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float SoundImpactVolume
   float SoundBodyImpact_Hard_Threshold
 
-0x013 [TMF]
+0x013 [TMF, MP4, TM2020]
   float
   float
   float
@@ -97,7 +97,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x014 [TMF]
+0x014 [TMF, MP4, TM2020]
   float
   float
 
@@ -112,7 +112,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float DisplaySteerRadiusMin
   float DisplaySteerRadiusCoef
 
-0x017 [TMF]
+0x017 [TMF, MP4, TM2020]
   float DecrepitudeImpactVal
   float DecrepitudeCoef
   float VibrationPeriodSpeedCoef
@@ -122,7 +122,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x018 [TMF]
+0x018 [TMF, MP4, TM2020]
   float LinearFluidFrictionCoef
   float AngularFluidFrictionCoef1
   float AngularFluidFrictionCoef2
@@ -143,19 +143,19 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x01B [TMF]
   float
 
-0x01D [TMF]
+0x01D [TMF, MP4, TM2020]
   float GravityCoefAir
   float RolloverAxial
 
 0x01E [TMF]
   int AirControlDuration
 
-0x01F [TMF]
+0x01F [TMF, MP4, TM2020]
   float
   float
   float
 
-0x020 [TMF]
+0x020 [TMF, MP4, TM2020]
   float SteerAngleMax
   float SlipAngleForceMax
   float SlipAngleForceCoef1
@@ -168,24 +168,24 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x023 [TMF]
+0x023 [TMF, MP4, TM2020]
   float AngularSpeedYImpulseScale
   float SteerLowSpeed
 
-0x024 [TMF]
+0x024 [TMF, MP4]
   CFuncKeysReal AccelCurve
 
-0x026 [TMF]
+0x026 [TMF, MP4, TM2020]
   float LateralSlopeAdherenceMin
   float LateralSlopeAdherenceMax
   float AxialSlopeAdherenceMin
   float AxialSlopeAdherenceMax
 
-0x027 [TMF]
+0x027 [TMF, MP4, TM2020]
   float SteerGroundTorqueSlippingCoef
   float MaxSideFrictionBlendCoef
 
-0x028 [TMF]
+0x028 [TMF, MP4]
   float
   CFuncKeysReal MaxSideFriction
   float MaxSideFrictionSliding
@@ -193,20 +193,20 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float GroundSlowDownBase
   float AbsorbTension
 
-0x029 [TMF]
+0x029 [TMF, MP4]
   float SideFriction1
   CFuncKeysReal RolloverLateral
 
-0x02A [TMF]
+0x02A [TMF, MP4]
   CFuncKeysReal LateralContactSlowDown
 
-0x02B [TMF]
+0x02B [TMF, MP4]
   CFuncKeysReal SteerSlowDown
   float SideFriction2
   float RubberBallElasticity
   int SteerSlowDownFadeInDuration
 
-0x02C [TMF]
+0x02C [TMF, MP4]
   CFuncKeysReal RolloverLateralFromAngle
   float MaxAngularSpeedYAirControl
   float BrakeCoef
@@ -217,17 +217,17 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x02D [TMF]
   int SteerSlowDownFadeOutDuration
 
-0x02E [TMF]
+0x02E [TMF, MP4, TM2020]
   float SteerSlowDownCoef
   float
 
 0x02F
   int TurboDuration
 
-0x030 [TMF]
+0x030 [TMF, MP4]
   CFuncKeysReal SteerDriveTorque // encryption trick here
 
-0x031 [TMF]
+0x031 [TMF, MP4, TM2020]
   float LimitToMaxSpeedForce
   float SlopeSpeedGainLimit
 
@@ -241,67 +241,67 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float SoundBodyImpact_Hard_Threshold
   float SoundBodyImpact_Soft_Threshold
 
-0x033 [TMF]
+0x033 [TMF, MP4, TM2020]
   float AngularSpeedClamp
 
-0x034 [TMF]
+0x034 [TMF, MP4, TM2020]
   float LinearSpeed2PositiveDeltaMax
 
-0x035 [TMF]
+0x035 [TMF, MP4, TM2020]
   bool NoSteerSlowDownWhenSlipping
 
-0x036 [TMF]
+0x036 [TMF, MP4]
   float M4LateralFrictionSquareForce
   float M4LateralFrictionTorque
   float M4LateralFrictionForce
   CFuncKeysReal M4SteerRadiusFromSpeed
 
-0x037 [TMF]
+0x037 [TMF, MP4]
   CFuncKeysReal M4MaxFrictionTorqueFromSpeed
 
-0x038 [TMF]
+0x038 [TMF, MP4]
   float M4MaxFrictionTorqueWhenSlippingCoef
   CFuncKeysReal M4MaxFrictionForceFromSpeed
   float M4MaxFrictionForceWhenSlipping
   float M4SteerRadiusWhenSlippingCoef
 
-0x039 [TMF]
+0x039 [TMF, MP4, TM2020]
   float M4LateralFrictionSquareTorque
   float
 
-0x03A [TMF]
+0x03A [TMF, MP4, TM2020]
   float M4SlipAngleSpeed
   float M4SteerRadiusCoefFromSlipAngle
 
-0x03B [TMF]
+0x03B [TMF, MP4, TM2020]
   float M4LeaveSlippingSpeed
 
-0x03C [TMF]
+0x03C [TMF, MP4, TM2020]
   float M4SteerAngleWhenSlippingMax
 
-0x03D [TMF]
+0x03D [TMF, MP4]
   CFuncKeysReal M5SlippingAccelCurve
 
-0x03E [TMF]
+0x03E [TMF, MP4, TM2020]
   int M5LateralConstantSlowDownDuration
 
-0x03F [TMF]
+0x03F [TMF, MP4]
   CFuncKeysReal M5SteerCoefFromSpeed
 
-0x040 [TMF]
+0x040 [TMF, MP4]
   CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
 
-0x041 [TMF]
+0x041 [TMF, MP4, TM2020]
   float M5MaxAxialRolloverTorque
   int M5KeepSlidingAccelDuration
 
-0x042 [TMF]
+0x042 [TMF, MP4, TM2020]
   int M5KeepSteerSlowDownDurarion
 
-0x043 [TMF]
+0x043 [TMF, MP4, TM2020]
   int M5KeepNoSteerSlowDownWhenSlippingDuration
 
-0x044 [TMF]
+0x044 [TMF, MP4, TM2020]
   float M5AccelSlipCoefMax
 
 0x045
@@ -311,7 +311,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float  WaterReboundMinHSpeed
   float
 
-0x046 [TMF]
+0x046 [TMF, MP4]
   float WaterGravity
   float WaterReboundMinHSpeed
   float WaterBumpMinSpeed
@@ -319,40 +319,40 @@ CPlugVehicleCarPhyTuning 0x090ED000
   CFuncKeysReal WaterFrictionFromSpeed
   CFuncKeysReal WaterReboundFromSpeedRatio
 
-0x047 [TMF]
+0x047 [TMF, MP4, TM2020]
   float WaterAngularFriction
 
 0x048
   CFuncKeysReal WaterSplashFromSpeed
 
-0x049 [TMF]
+0x049 [TMF, MP4]
   CFuncKeysReal ModulationFromWheelCompression
 
 0x04A
   float
   float M6InertialMass
 
-0x04D [TMF]
+0x04D [TMF, MP4, TM2020]
   float M6ForceEpsilon
 
-0x04E [TMF]
+0x04E [TMF, MP4, TM2020]
   float M6InertialTorqueModualtionX
   float M6InertialTorqueModulationZ
 
-0x04F [TMF]
+0x04F [TMF, MP4]
   float M6MaxSpeed4Burnout
   CFuncKeysReal M6BurnoutRadius
 
-0x051 [TMF]
+0x051 [TMF, MP4, TM2020]
   float M6BurnoutFricMod
 
-0x052 [TMF]
+0x052 [TMF, MP4]
   CFuncKeysReal M6RolloverLateralFromSpeedRatio
 
-0x053 [TMF]
+0x053 [TMF, MP4, TM2020]
   float M6BurnoutCenterForceCoeff2
 
-0x056 [TMF]
+0x056 [TMF, MP4, TM2020]
   float M6BurnoutRpmAcc
   float M6AirRpmAcc
   float M6AirRpmDeadening
@@ -378,11 +378,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
   CFuncKeysReal BrakeHeatSpeedFromFBrake
   float BrakeCoolingSpeed
 
-0x05C [TMF]
+0x05C [TMF, MP4, TM2020]
   float M6BrakeMaxRear
   float M6BrakeMaxDynamicRear
 
-0x05D [TMF]
+0x05D [TMF, MP4]
   float M6InertialMass
   float M6MaxDiffBtwnPropulsionAndSpeed
   CFuncKeysReal AccelCurveRearGear
@@ -420,7 +420,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x05E [TMF]
   CFuncKeysReal AirControlZCoefFromAngularSpeed
 
-0x05F [TMF]
+0x05F [TMF, MP4, TM2020]
   float WaterAngularFrictionSq
 
 0x060 [TMF]
@@ -430,71 +430,71 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int TurboDuration
   int Turbo2Duration
 
-0x061 [TMF]
+0x061 [TMF, MP4]
   CFuncKeysReal VisualSteerAngleFromSpeed
 
-0x062 [TMF]
+0x062 [TMF, MP4, TM2020]
   float
 
-0x063 [TMF]
+0x063 [TMF, MP4, TM2020]
   float
 
-0x064 [TMF]
+0x064 [TMF, MP4, TM2020]
   float
 
-0x065 [TMF]
+0x065 [TMF, MP4, TM2020]
   float
 
-0x066 [TMF]
+0x066 [TMF, MP4, TM2020]
   float
 
-0x06A
+0x06A [MP4, TM2020]
   float
   float
 
-0x06E
+0x06E [MP4, TM2020]
   float
 
-0x072
+0x072 [MP4, TM2020]
   float
   float
   float
   int
 
-0x077
+0x077 [MP4]
   float
   float
   float
   float
   CFuncKeysReal
 
-0x078
+0x078 [MP4, TM2020]
   float
 
-0x079
+0x079 [MP4]
   bool
   CFuncKeysReal
   CFuncKeysReal
   float
 
-0x07D
+0x07D [MP4, TM2020]
   int
   float
   float
 
-0x082
+0x082 [MP4]
   bool
   CFuncKeysReal
   CFuncKeysReal
   CFuncKeysReal
   CFuncKeysReal
 
-0x084
+0x084 [MP4, TM2020]
   float
   float
   float
 
-0x085
+0x085 [MP4, TM2020]
   bool
   float
   float
@@ -502,14 +502,14 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x086
+0x086 [MP4, TM2020]
   float
   float
 
-0x088
+0x088 [MP4, TM2020]
   float
 
-0x089
+0x089 [MP4, TM2020]
   version
   Keys (version: Version - 10)
   v2-
@@ -541,7 +541,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
             v9+
               Keys (version: Version - 10)
 
-0x08A
+0x08A [MP4, TM2020]
   version
   float
   float
@@ -567,7 +567,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v7+
           bool?
 
-0x08B
+0x08B [MP4, TM2020]
   version
   v2-
     float?
@@ -680,7 +680,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                                                   Keys (version: Version - 37)
                                                   CFuncKeysReal
 
-0x08C
+0x08C [MP4, TM2020]
   version
   v2+
     throw
@@ -691,7 +691,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v1+
     float?
 
-0x08D
+0x08D [MP4, TM2020]
   version
   v7+
     throw
@@ -712,7 +712,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     v5=
       U09 = false
 
-0x08E
+0x08E [MP4, TM2020]
   version
   v5+
     throw
@@ -726,7 +726,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v4+
           CPlugCamControlModel[] (external)
 
-0x094
+0x094 [MP4, TM2020]
   version
   v6+
     throw
@@ -749,7 +749,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v4+
         int
 
-0x095
+0x095 [MP4, TM2020]
   version
   v8+
     throw
@@ -778,7 +778,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
             v6+
               Keys (version: Version - 1)
 
-0x096
+0x096 [MP4, TM2020]
   version
   v6+
     throw
@@ -809,7 +809,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v5+
         float
 
-0x097
+0x097 [MP4, TM2020]
   version
   float
   float
@@ -821,7 +821,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v2+
     CMwNod
 
-0x098
+0x098 [MP4, TM2020]
   version
   float
   int
@@ -834,15 +834,15 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v2+
     bool
 
-0x099
+0x099 [MP4, TM2020]
   version
   CMwNod
 
-0x09A
+0x09A [MP4, TM2020]
   version
   CPlugVehicleGearBox (external)
 
-0x09B
+0x09B [MP4, TM2020]
   version
   float
   float
@@ -880,7 +880,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v4+
           Keys
 
-0x09C
+0x09C [MP4, TM2020]
   version
   v17-
     float?
@@ -937,7 +937,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                             v20+
                               float?
 
-0x09D
+0x09D [MP4, TM2020]
   version
   v0=
     bool?
@@ -1015,7 +1015,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v20+
     CPlugDynaWaterModel
 
-0x09E
+0x09E [MP4, TM2020]
   version
   float
   float
@@ -1040,7 +1040,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
               float?
               float?
 
-0x09F
+0x09F [MP4, TM2020]
   version
   Keys (version: Version - 14)
   float
@@ -1089,7 +1089,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                             int?
                             int?
 
-0x0A0
+0x0A0 [MP4, TM2020]
   version
   v1+
     float
@@ -1104,7 +1104,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       float
       float
 
-0x0A1
+0x0A1 [TM2020]
   version
   Keys
   Keys
@@ -1119,7 +1119,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   Keys
 
-0x0A2
+0x0A2 [TM2020]
   version
   Keys (version: Version - 2)
   Keys (version: Version - 2)
@@ -1134,7 +1134,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   Keys (version: Version - 2)
   Keys (version: Version - 2)
 
-0x0A3
+0x0A3 [TM2020]
   version
   float
   float
@@ -1178,7 +1178,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                           Keys (version: Version - 13)
                           Keys (version: Version - 13)
 
-0x0A4
+0x0A4 [TM2020]
   version
   float
   v1+
@@ -1225,7 +1225,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v18+
     int
 
-0x0A5
+0x0A5 [TM2020]
   version
   v1-
     int
@@ -1258,7 +1258,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     Keys (version: Version - 1)
   Keys (version: Version - 1)
 
-0x0A6
+0x0A6 [TM2020]
   version
   Keys (version: Version - 11)
   Keys (version: Version - 11)
@@ -1306,7 +1306,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v15+
     Keys
 
-0x0A7
+0x0A7 [TM2020]
   version
   int
   int
@@ -1365,7 +1365,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     float
     float
 
-0x0A8
+0x0A8 [TM2020]
   version
   int
   Keys (version: Version - 10)
@@ -1391,7 +1391,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v9+
     Keys (version: Version - 10)
 
-0x0A9
+0x0A9 [TM2020]
   version
   int
   int
@@ -1407,22 +1407,22 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v3+
     Keys (version: Version - 4)
 
-0x0AA
+0x0AA [TM2020]
   version
   float
 
-0x0AB
+0x0AB [TM2020]
   version
   int
   int
   float
   Keys (version: Version - 1)
 
-0x0AC
+0x0AC [TM2020]
   version
   int
 
-0x0AD
+0x0AD [TM2020]
   version
   Keys (version: Version - 10)
   int
@@ -1469,14 +1469,14 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v11+
     int
 
-0x0AE
+0x0AE [TM2020]
   version
   int
   Keys (version: Version - 2)
   v1+
     float
 
-0x0AF
+0x0AF [TM2020]
   version
   Keys
   float
@@ -1557,7 +1557,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   Keys
   Keys
 
-0x0B0
+0x0B0 [TM2020]
   version
   float
   v1+

@@ -44,10 +44,12 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     }
 
     [Chunk(0x0915D000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0915D000 : Chunk<CPlugGameSkinAndFolder>
     {
         public override uint Id => 0x0915D000;
         public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -56,9 +58,11 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     }
 
     [Chunk(0x0915D001)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0915D001 : Chunk<CPlugGameSkinAndFolder>
     {
         public override uint Id => 0x0915D001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

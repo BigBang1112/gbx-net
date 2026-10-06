@@ -136,11 +136,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E001 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -156,9 +156,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E002 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -175,9 +177,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E003 : Chunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -192,9 +196,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E004)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E004 : Chunk0305E003
     {
         public override uint Id => 0x0305E004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -210,9 +216,11 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     [Chunk(0x0305E005)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E005 : SkippableChunk<CGameCtnZoneFrontier>
     {
         public override uint Id => 0x0305E005;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

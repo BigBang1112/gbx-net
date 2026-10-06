@@ -31,7 +31,7 @@ CPlugBitmap 0x09011000
   if Image != null
     CMwNod
 
-0x019 [TMF]
+0x019 [TMF, MP4, TM2020]
   float BumpScaleMipLevel
 
 0x01B
@@ -52,7 +52,7 @@ CPlugBitmap 0x09011000
 0x01F
   uint Flags2
 
-0x020 [TMF]
+0x020 [TMF, MP4, TM2020]
   float[] MipMapFadeAlphas
 
 0x021
@@ -60,45 +60,45 @@ CPlugBitmap 0x09011000
 
 0x022 (base: 0x018) [TMF]
 
-0x023 [TMF]
+0x023 [TMF, MP4, TM2020]
   uint
 
 0x024 [TMF]
   uint Flags2
 
-0x025 (base: 0x01C)
+0x025 (base: 0x01C) [MP4, TM2020]
   base
   uint
 
-0x028
+0x028 [MP4, TM2020]
   int2
 
-0x02A
+0x02A [MP4, TM2020]
   CPlugSpriteParam SpriteParam
 
-0x02B
+0x02B [MP4]
   CPlugBitmapAtlas Atlas
 
-0x02C
+0x02C [MP4, TM2020]
   CPlugBitmapDecals Decals
 
-0x02D
+0x02D [MP4, TM2020]
   version
   int
 
 0x02E
   uint
 
-0x030
+0x030 [MP4, TM2020]
 
-0x032
+0x032 [MP4, TM2020]
   version
   uint
 
-0x033
+0x033 [MP4, TM2020]
   float HeightInMeters
 
-0x034
+0x034 [MP4, TM2020]
   version
   CPlugImageArray ImageArray
   v1+
@@ -111,11 +111,11 @@ CPlugBitmap 0x09011000
         v4=
           int
 
-0x035
+0x035 [TM2020]
   version
   short
 
-0x036
+0x036 [TM2020]
   version
   CMwNod U01
   v0=
@@ -129,7 +129,7 @@ CPlugBitmap 0x09011000
       int U05
   CMwNod U06
 
-0x037
+0x037 [TM2020]
   version
   int
   int
@@ -140,7 +140,7 @@ CPlugBitmap 0x09011000
   int
   int
 
-0x038
+0x038 [TM2020]
   version
   CPlugBitmapAtlas
   int

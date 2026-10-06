@@ -1,13 +1,13 @@
 CPlugMaterialCustom 0x0903A000
 - inherits: CPlug
 
-0x004 [TMF]
+0x004 [TMF, MP4, TM2020]
   int[]
 
 0x006 [TMF]
   Bitmap[] Textures
 
-0x00A [TMF]
+0x00A [TMF, MP4, TM2020]
   GpuFx[] GpuFxs1
   GpuFx[] GpuFxs2
 
@@ -18,17 +18,17 @@ CPlugMaterialCustom 0x0903A000
     short U03
     short U04
 
-0x00C [TMF]
+0x00C [TMF, MP4, TM2020]
   BitmapSkip[] SkipSamplers
 
-0x00D [TMF]
+0x00D [TMF, MP4]
   ulong U01
   ulong U02
   if (U01 & 1) != 0 // SPlugVisibleFilter
     short U03
     short U04
 
-0x00F (skippable)
+0x00F (skippable) [MP4, TM2020]
   version
   float
   float
@@ -40,21 +40,21 @@ CPlugMaterialCustom 0x0903A000
 0x010
   CPlugBitmap (external)
 
-0x011 (skippable)
+0x011 (skippable) [MP4, TM2020]
   int
 
-0x012
+0x012 [MP4, TM2020]
   CMwNod
 
-0x013
+0x013 [MP4, TM2020]
   version
   Bitmap[] Textures (version: 1)
 
-0x014
+0x014 [MP4, TM2020]
   version
   CBuffer[]
 
-0x015
+0x015 [MP4, TM2020]
   version
   v1+
     int U01
@@ -65,7 +65,7 @@ CPlugMaterialCustom 0x0903A000
       string
       string
 
-0x016
+0x016 [TM2020]
   version
   ulong U01
   ulong U02

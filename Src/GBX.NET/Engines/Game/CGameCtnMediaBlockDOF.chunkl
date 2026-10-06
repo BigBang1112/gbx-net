@@ -7,7 +7,7 @@ CGameCtnMediaBlockDOF 0x03126000
 0x001
   Key[] Keys (version: 1, list)
 
-0x002 [TM2020]
+0x002 [MP4, TM2020]
   Key[] Keys (version: 2, list)
 
 archive Key (inherits: IKey)

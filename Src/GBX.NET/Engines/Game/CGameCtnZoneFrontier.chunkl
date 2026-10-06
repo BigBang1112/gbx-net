@@ -1,23 +1,23 @@
 CGameCtnZoneFrontier 0x0305E000
 - inherits: CGameCtnZone
 
-0x001 [TMF]
+0x001 [TMF, MP4, TM2020]
   CGameCtnBlockInfoFrontier BlockInfoFrontier (external)
   id ParentZoneId
   id ChildZoneId
 
-0x002
+0x002 [MP4, TM2020]
   int
   int BlockYOffsetFromParent
 
-0x003
+0x003 [MP4, TM2020]
   bool FrontierParentBorder_AcceptPylons
   bool FrontierChildBorder_AcceptPylons
 
-0x004 (base: 0x003)
+0x004 (base: 0x003) [MP4, TM2020]
   base
   bool FrontierTransitionMiddle_AcceptPylons
   bool FrontierStraightMiddle_AcceptPylons
 
-0x005 (skippable)
+0x005 (skippable) [MP4, TM2020]
   CGameCtnZoneFusionInfo[] CompatibleZones (deprec)

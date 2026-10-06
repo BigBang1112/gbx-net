@@ -48,11 +48,11 @@ CPlugVehicleMaterial 0x090F1000
   float VibrationSpeedCoef
   float VibrationMax
 
-0x00F [TMF]
+0x00F [TMF, MP4, TM2020]
   float
   float
 
-0x010
+0x010 [MP4, TM2020]
   version
   float
   float

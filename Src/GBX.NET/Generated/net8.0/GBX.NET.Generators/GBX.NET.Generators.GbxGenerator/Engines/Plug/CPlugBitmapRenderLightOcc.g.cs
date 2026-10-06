@@ -80,11 +80,11 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     }
 
     [Chunk(0x0909F000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk0909F000 : Chunk<CPlugBitmapRenderLightOcc>
     {
         public override uint Id => 0x0909F000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1,6 +1,6 @@
 CGameCommonItemEntityModelEdition 0x2E026000
 
-0x000 [TM2020.v8]
+0x000 [MP4, TM2020.v8]
   version
   int<EItemType> ItemType
   CPlugCrystal MeshCrystal (external)

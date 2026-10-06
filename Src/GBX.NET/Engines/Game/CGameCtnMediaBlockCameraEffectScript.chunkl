@@ -1,7 +1,7 @@
 CGameCtnMediaBlockCameraEffectScript 0x03161000
 - inherits: CGameCtnMediaBlockCameraEffect
 
-0x000
+0x000 [MP4]
   version
   string Script = empty
   v0=

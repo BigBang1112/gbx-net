@@ -1,6 +1,6 @@
 GxFogBlender 0x04008000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   bool
   int
   Key[] Keys (list)

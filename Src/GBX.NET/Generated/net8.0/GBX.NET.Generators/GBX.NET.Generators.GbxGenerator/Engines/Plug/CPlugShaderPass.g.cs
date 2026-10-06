@@ -143,11 +143,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x09067006)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk09067006 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067006;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -211,11 +211,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x0906700A)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906700A : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700A;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -233,9 +233,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x0906700B)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906700B : Chunk<CPlugShaderPass>, IVersionable
     {
         public override uint Id => 0x0906700B;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public PipelineGpu? U01;
         public PipelineGpu? U02;
@@ -264,9 +266,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x0906700C)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906700C : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700C;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -282,9 +286,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     [Chunk(0x0906700D)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0906700D : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public UnknownStruct[]? U01;
         public UnknownStruct[]? U02;
         public UnknownStruct[]? U03;

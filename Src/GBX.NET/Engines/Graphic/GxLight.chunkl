@@ -8,7 +8,7 @@ GxLight 0x04001000
   float FlareIntensity
   vec3 ShadowRGB
 
-0x009 [TMF]
+0x009 [TMF, MP4]
   vec3 Color
   int<EFlags> Flags
   float Intensity
@@ -19,7 +19,7 @@ GxLight 0x04001000
   float FlareIntensity
   vec3 ShadowRGB
 
-0x00A
+0x00A [TM2020]
   version
   vec3 Color
   int<EFlags> Flags

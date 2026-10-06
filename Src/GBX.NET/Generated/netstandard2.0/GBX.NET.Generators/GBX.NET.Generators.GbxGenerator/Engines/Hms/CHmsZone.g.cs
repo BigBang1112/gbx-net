@@ -126,11 +126,11 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     [Chunk(0x06004002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004002 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -147,11 +147,11 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     [Chunk(0x06004003)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004003 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004003;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -171,11 +171,11 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     [Chunk(0x06004005)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004005 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004005;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -207,9 +207,11 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     [Chunk(0x06004008)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004008 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004008;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1,6 +1,6 @@
 CGameReplayObjectVisData 0x031A8000
 
-0x000
+0x000 [MP4, TM2020]
   version
   ObjectVisKey[] Keys (list)
   ObjectVis[] VisList (list)

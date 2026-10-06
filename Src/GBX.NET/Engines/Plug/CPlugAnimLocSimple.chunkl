@@ -1,6 +1,6 @@
 CPlugAnimLocSimple 0x090F8000
 
-0x000
+0x000 [MP4, TM2020]
   int
   version
   int RotPeriod

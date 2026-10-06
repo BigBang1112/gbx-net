@@ -30,10 +30,10 @@ CGameItemModel 0x2E002000
   CPlugMaterial MaterialGlass (external)
   CPlugMaterial MaterialDetails (external)
 
-0x008 [TMF] // Nadeo skin fids
+0x008 [TMF, MP4, TM2020] // Nadeo skin fids
   CMwNod?[] NadeoSkinFids (external)
 
-0x009 [TMF] // Cameras
+0x009 [TMF, MP4, TM2020] // Cameras
   CMwNod[] Cameras (deprec, external)
 
 0x00A [TMF] // DecoratorSolid
@@ -43,7 +43,7 @@ CGameItemModel 0x2E002000
   CPlugMaterial StemMaterial (external)
   CPlugMaterial StemBumpMaterial (external)
 
-0x00C [TMF] // race interface fid
+0x00C [TMF, MP4, TM2020] // race interface fid
   CScene2d RaceInterfaceFid
 
 0x00D (ForcedSkinsFids) [TMF]
@@ -69,23 +69,23 @@ CGameItemModel 0x2E002000
   CPlugLight ProjShadow (external)
   CPlugLight ProjFront (external)
 
-0x012 [TMF]
+0x012 [TMF, MP4, TM2020]
   vec3 GroundPoint
   float PainterGroundMargin
   float OrbitalCenterHeightFromGround
   float OrbitalRadiusBase
   float OrbitalPreviewAngle
 
-0x013 (AudioEnvironmentInCar) [TMF]
+0x013 (AudioEnvironmentInCar) [TMF, MP4]
   CPlugAudioEnvironment AudioEnvironmentInCar (external)
 
 0x014
   CMwNod
 
-0x015 // ItemTypeE
+0x015 [MP4, TM2020] // ItemTypeE
   int<EItemType> ItemTypeE
 
-0x019 // model
+0x019 [MP4, TM2020] // model
   version
   if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
     v8-
@@ -126,13 +126,13 @@ CGameItemModel 0x2E002000
   v15+
     CPlugGameSkinAndFolder MaterialModifier (external)
 
-0x01A
+0x01A [MP4, TM2020]
   CMwNod
 
 0x01B
   CMwNod
 
-0x01C // default placement
+0x01C [MP4, TM2020] // default placement
   version
   v5+
     CGameItemPlacementParam DefaultPlacement (external)
@@ -160,7 +160,7 @@ CGameItemModel 0x2E002000
 0x01D
   short
 
-0x01E
+0x01E [MP4, TM2020]
   version
   v2+
     string ArchetypeRef
@@ -172,7 +172,7 @@ CGameItemModel 0x2E002000
         v7+
           int // -1
 
-0x01F
+0x01F [MP4, TM2020]
   version
   v6-
     v5+
@@ -197,7 +197,7 @@ CGameItemModel 0x2E002000
           int?
           int?
 
-0x020
+0x020 [MP4, TM2020]
   version
   v1-
     string
@@ -207,7 +207,7 @@ CGameItemModel 0x2E002000
   v3+
     boolbyte // ArticlePtr? xD
 
-0x021
+0x021 [MP4]
   version
   ItemGroupElement[] ItemGroupElements
 
@@ -218,24 +218,24 @@ CGameItemModel 0x2E002000
   int
   ushort[]
 
-0x023
+0x023 [MP4]
   version
   byte
   int
 
-0x024 (skippable)
+0x024 (skippable) [MP4]
   version
   vec2[]
 
-0x025 (skippable)
+0x025 (skippable) [TM2020]
   version
   bool
 
-0x026 (skippable)
+0x026 (skippable) [TM2020]
   version
   vec3[]
 
-0x027 (skippable)
+0x027 (skippable) [TM2020]
   version
   float
 

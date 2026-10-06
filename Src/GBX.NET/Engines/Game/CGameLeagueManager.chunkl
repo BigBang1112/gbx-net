@@ -1,6 +1,6 @@
 CGameLeagueManager 0x03049000
 
-0x000
+0x000 [MP4, TM2020]
   versionb
   int CacheDuration
   bool Updated

@@ -1,7 +1,7 @@
 CPlugFxLightning 0x090D8000
 - inherits: CPlug
 
-0x000
+0x000 [MP4, TM2020]
   version
   CPlugSound Sound (external)
   CFuncKeysReal[] (deprec, external)

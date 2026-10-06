@@ -243,9 +243,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x0602200B)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602200B : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x0602200B;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -259,9 +261,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x0602200F)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602200F : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x0602200F;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -278,9 +282,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022013)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022013 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022013;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 
@@ -300,9 +306,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022015)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x06022015;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public bool U02;
@@ -358,9 +366,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022016)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022016 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022016;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -374,9 +384,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022017)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022017 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022017;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -391,9 +403,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022018)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022018 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022018;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public ulong U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -409,9 +423,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022019)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022019 : SkippableChunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022019;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -425,9 +441,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x0602201A)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x0602201A;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;

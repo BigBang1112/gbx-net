@@ -1,6 +1,6 @@
 CGameCtnDecorationSize 0x0303B000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   vec2 EditionZoneMin
   vec2 EditionZoneMax
   float
@@ -10,12 +10,12 @@ CGameCtnDecorationSize 0x0303B000
   int3 Size
   CSceneLayout Scene (external)
 
-0x002
+0x002 [MP4, TM2020]
   int BaseHeightBase
   int3 Size
   bool OffsetBlockY
   CSceneLayout Scene (external)
 
-0x003 (skippable)
+0x003 (skippable) [MP4, TM2020]
   version
   int BaseHeightOffset

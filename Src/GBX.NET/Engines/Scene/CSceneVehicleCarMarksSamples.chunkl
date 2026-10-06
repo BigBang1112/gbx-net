@@ -1,15 +1,15 @@
 CSceneVehicleCarMarksSamples 0x0A083000
 
-0x002
+0x002 [MP4, TM2020]
   uint[] Stops
 
-0x003
+0x003 [MP4, TM2020]
   string Name
 
-0x004
+0x004 [MP4, TM2020]
   bool Disabled
 
-0x006
+0x006 [MP4, TM2020]
   version
   v1+
     throw

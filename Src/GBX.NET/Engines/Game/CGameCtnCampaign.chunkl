@@ -1,6 +1,6 @@
 CGameCtnCampaign 0x03090000
 
-0x000 [TMF] // map groups
+0x000 [TMF, MP4, TM2020] // map groups
   CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
 0x001
@@ -34,7 +34,7 @@ CGameCtnCampaign 0x03090000
 0x005
   bool
 
-0x006 [TMF] // campaign ID
+0x006 [TMF, MP4, TM2020] // campaign ID
   id CampaignId
 
 0x007
@@ -45,36 +45,36 @@ CGameCtnCampaign 0x03090000
 0x008
   int
 
-0x009 (skippable) [TMF] // collection ID
+0x009 (skippable) [TMF, MP4, TM2020] // collection ID
   byte
   id CollectionId
 
-0x00A (skippable) [TMF] // index
+0x00A (skippable) [TMF, MP4, TM2020] // index
   int Index
 
-0x00B (skippable) [TMF] // unlocked by campaign
+0x00B (skippable) [TMF, MP4, TM2020] // unlocked by campaign
   string UnlockedByCampaign
   int
 
-0x00C (skippable) [TMF] // icon ID
+0x00C (skippable) [TMF, MP4, TM2020] // icon ID
   id IconId
 
-0x00D [TMF] // unlock type
+0x00D [TMF, MP4, TM2020] // unlock type
   int<EUnlockType> UnlockType
 
-0x00E // required players count
+0x00E [MP4, TM2020] // required players count
   int<ERequiredPlayersCount> RequiredPlayersCount
 
-0x00F (skippable) // name
+0x00F (skippable) [MP4, TM2020] // name
   string Name
   int
   int<EType> Type
 
-0x010 // mode script name
+0x010 [MP4, TM2020] // mode script name
   version
   string ModeScriptName
 
-0x012 (skippable) // official mode
+0x012 (skippable) [MP4, TM2020] // official mode
   version
   v1-
     string ScoreContext

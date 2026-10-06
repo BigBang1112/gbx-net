@@ -1,6 +1,6 @@
 CPlugCamShakeModel 0x0910B000
 
-0x000
+0x000 [MP4, TM2020]
   version
   int
   int

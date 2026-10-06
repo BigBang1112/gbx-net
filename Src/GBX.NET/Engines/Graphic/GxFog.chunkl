@@ -1,6 +1,6 @@
 GxFog 0x04004000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   bool
   int
   float
@@ -13,6 +13,6 @@ GxFog 0x04004000
   float
   float
 
-0x001
+0x001 [MP4, TM2020]
   version
   vec3

@@ -8,7 +8,7 @@ CGameLeague 0x0308E000
   byte
   string FlagUrl
 
-0x002
+0x002 [MP4, TM2020]
   version
   string
   string

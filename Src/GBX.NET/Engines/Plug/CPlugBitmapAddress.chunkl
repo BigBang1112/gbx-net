@@ -14,7 +14,7 @@ CPlugBitmapAddress 0x09047000
 
 0x005 (base: 0x004)
 
-0x007 [TMF]
+0x007 [TMF, MP4, TM2020]
   uint
   int
   byte

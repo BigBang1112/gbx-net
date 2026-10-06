@@ -67,11 +67,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     /// name
     /// </summary>
     [Chunk(0x0308F002, "name")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0308F002 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -234,9 +234,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     [Chunk(0x0308F00B)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>, IVersionable
     {
         public override uint Id => 0x0308F00B;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

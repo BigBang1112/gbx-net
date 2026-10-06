@@ -1,6 +1,6 @@
 CGameCtnBlockInfoClipVertical 0x03340000
 - inherits: CGameCtnBlockInfoClip
 
-0x000
+0x000 [TM2020]
   version
   id VerticalClipGroupId

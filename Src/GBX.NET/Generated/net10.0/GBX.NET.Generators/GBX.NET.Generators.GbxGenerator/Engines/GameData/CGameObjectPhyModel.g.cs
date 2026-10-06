@@ -402,9 +402,11 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     [Chunk(0x2E006003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E006003 : Chunk<CGameObjectPhyModel>
     {
         public override uint Id => 0x2E006003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

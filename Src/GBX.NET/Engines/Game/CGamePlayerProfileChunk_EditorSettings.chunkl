@@ -1,15 +1,15 @@
 CGamePlayerProfileChunk_EditorSettings 0x03163000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   PluginInfo[] PluginInfos
 
-0x001 (skippable)
+0x001 (skippable) [MP4, TM2020]
   version
   int MapEditorCoppersLimit
 
-0x002 (skippable)
+0x002 (skippable) [MP4, TM2020]
   bool
 
 archive PluginInfo

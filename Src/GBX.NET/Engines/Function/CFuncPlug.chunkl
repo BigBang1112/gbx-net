@@ -12,7 +12,7 @@ CFuncPlug 0x0500B000
   bool AutoCreateMotion
   bool RandomizePhase
 
-0x005 [TMF]
+0x005 [TMF, MP4, TM2020]
   float Period
   float Phase
   bool AutoCreateMotion

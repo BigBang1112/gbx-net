@@ -71,9 +71,11 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     }
 
     [Chunk(0x09061000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09061000 : Chunk<CPlugLocatedSound>
     {
         public override uint Id => 0x09061000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

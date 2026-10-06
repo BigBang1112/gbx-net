@@ -403,11 +403,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     [Chunk(0x09039001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09039001 : Chunk<CPlugAudioEnvironment>
     {
         public override uint Id => 0x09039001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -421,11 +421,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     [Chunk(0x09039002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09039002 : Chunk<CPlugAudioEnvironment>
     {
         public override uint Id => 0x09039002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -459,9 +459,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     [Chunk(0x09039004)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09039004 : Chunk<CPlugAudioEnvironment>, IVersionable
     {
         public override uint Id => 0x09039004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;

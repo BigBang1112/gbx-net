@@ -8,11 +8,11 @@ CGameCtnBlockSkin 0x03059000
   string Text
   packdesc PackDesc
 
-0x002 [TMF] // skin + parent skin
+0x002 [TMF, MP4, TM2020] // skin + parent skin
   string Text
   packdesc PackDesc
   packdesc ParentPackDesc
 
-0x003 // secondary skin
+0x003 [TM2020] // secondary skin
   version
   packdesc ForegroundPackDesc

@@ -1,5 +1,5 @@
 CGameCtnBlockInfoFrontier 0x03050000
 - inherits: CGameCtnBlockInfo
 
-0x000
+0x000 [MP4, TM2020]
   bool

@@ -1,17 +1,17 @@
 CGameCtnBlockInfoClip 0x03053000
 - inherits: CGameCtnBlockInfo
 
-0x002 [TMF]
+0x002 [TMF, MP4, TM2020]
   id ASymmetricalClipId
 
-0x004
+0x004 [MP4, TM2020]
   bool IsFullFreeClip
   bool IsExclusiveFreeClip
 
-0x005
+0x005 [MP4, TM2020]
   int<EClipType> ClipType
 
-0x006
+0x006 [MP4, TM2020]
   version
   bool CanBeDeletedByFullFreeClip
   v1+
@@ -23,7 +23,7 @@ CGameCtnBlockInfoClip 0x03053000
         v4+
           byte?
 
-0x007
+0x007 [MP4]
   version
   bool HasPassingPoint
   if HasPassingPoint
@@ -31,7 +31,7 @@ CGameCtnBlockInfoClip 0x03053000
     float PassingPointRoll
     float PassingPointPitch
 
-0x008 (skippable)
+0x008 (skippable) [MP4, TM2020]
   version
   id ClipGroupId
   id SymmetricalClipGroupId

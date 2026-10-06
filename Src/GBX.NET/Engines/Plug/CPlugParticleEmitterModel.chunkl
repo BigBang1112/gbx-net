@@ -1,22 +1,22 @@
 CPlugParticleEmitterModel 0x090B3000
 
-0x000 [TMF]
+0x000 [TMF, MP4, TM2020]
   CPlugParticleEmitterSubModel[] ParticleEmitterSubModels (deprec, external)
 
-0x001
+0x001 [MP4, TM2020]
   id
 
-0x002
+0x002 [MP4, TM2020]
   version
   bool IsSplashMode
   v3+
     float ShadowMapTexelSize
 
-0x003
+0x003 [MP4, TM2020]
   version
   string[]
 
-0x004
+0x004 [MP4, TM2020]
   version
   v1-
     v1=

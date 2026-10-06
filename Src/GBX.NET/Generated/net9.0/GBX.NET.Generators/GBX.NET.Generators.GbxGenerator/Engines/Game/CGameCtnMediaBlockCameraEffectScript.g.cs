@@ -94,9 +94,11 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     [Chunk(0x03161000)]
+    [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk03161000 : Chunk<CGameCtnMediaBlockCameraEffectScript>, IVersionable
     {
         public override uint Id => 0x03161000;
+        public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

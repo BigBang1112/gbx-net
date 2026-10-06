@@ -1,6 +1,6 @@
 CPlugAnimFile 0x090B0000
 
-0x003
+0x003 [MP4, TM2020]
   version
   v9-
     int SkelVersion

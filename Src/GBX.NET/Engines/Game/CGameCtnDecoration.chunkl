@@ -7,46 +7,46 @@ CGameCtnDecoration 0x03038000
   versionb
   int // CHmsLightMap Tech
 
-0x011 [TMF] // DecoSize
+0x011 [TMF, MP4, TM2020] // DecoSize
   CGameCtnDecorationSize DecoSize (external)
 
 0x012 [TMF] // DecoAudio
   CGameCtnDecorationAudio DecoAudio (external)
 
-0x013 [TMF] // DecoMood
+0x013 [TMF, MP4, TM2020] // DecoMood
   CGameCtnDecorationMood DecoMood (external)
 
-0x014 [TMF] // DecoratorSolidWarp
+0x014 [TMF, MP4, TM2020] // DecoratorSolidWarp
   CPlugDecoratorSolid DecoratorSolidWarp (external)
 
-0x015 [TMF] // TerrainModifierCovered
+0x015 [TMF, MP4] // TerrainModifierCovered
   CGameCtnDecorationTerrainModifier TerrainModifierCovered (external)
 
-0x016 [TMF] // TerrainModifierBase
+0x016 [TMF, MP4] // TerrainModifierBase
   CGameCtnDecorationTerrainModifier TerrainModifierBase (external)
 
-0x017
+0x017 [MP4, TM2020]
   version
   id? DecorationZoneFrontierId
   v1+
     bool IsWaterOutsidePlayField
 
-0x018
+0x018 [MP4, TM2020]
   version
   CPlugGameSkin VehicleFxSkin (external)
   string VehicleFxFolder
 
-0x019
+0x019 [MP4, TM2020]
   version
   CGameCtnDecorationAudio DecoAudio (external)
   v1+
     CPlugSound DecoAudioAmbient (external)
 
-0x01A
+0x01A [MP4, TM2020]
   version
   CGameCtnDecorationMaterialModifiers DecoMaterialModifiers
 
-0x01B
+0x01B [TM2020]
   version
   CGameCtnChallenge DecoMap (external)
   v1+

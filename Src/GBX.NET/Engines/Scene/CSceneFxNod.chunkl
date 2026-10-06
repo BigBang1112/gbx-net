@@ -7,7 +7,7 @@ CSceneFxNod 0x0A03A000
   CSceneFxNod[] NodInputs (deprec)
   int
 
-0x002
+0x002 [MP4, TM2020]
   version
   CMwNod
   CMwNod (external)

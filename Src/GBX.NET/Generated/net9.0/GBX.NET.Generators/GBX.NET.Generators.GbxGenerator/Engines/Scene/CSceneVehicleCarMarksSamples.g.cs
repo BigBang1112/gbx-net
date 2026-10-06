@@ -80,9 +80,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     [Chunk(0x0A083002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083002 : Chunk<CSceneVehicleCarMarksSamples>
     {
         public override uint Id => 0x0A083002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -96,9 +98,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     [Chunk(0x0A083003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083003 : Chunk<CSceneVehicleCarMarksSamples>
     {
         public override uint Id => 0x0A083003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -112,9 +116,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     [Chunk(0x0A083004)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083004 : Chunk<CSceneVehicleCarMarksSamples>
     {
         public override uint Id => 0x0A083004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -128,9 +134,11 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     [Chunk(0x0A083006)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083006 : Chunk<CSceneVehicleCarMarksSamples>, IVersionable
     {
         public override uint Id => 0x0A083006;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

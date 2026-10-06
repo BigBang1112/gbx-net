@@ -7,7 +7,7 @@ CPlugSpriteParam 0x090AC000
   vec2 PivotPoint
   float GlobalDirTiltFactor
 
-0x001 (base: 0x000)
+0x001 (base: 0x000) [MP4, TM2020]
   version
   base
   float TextureHeightInWorld

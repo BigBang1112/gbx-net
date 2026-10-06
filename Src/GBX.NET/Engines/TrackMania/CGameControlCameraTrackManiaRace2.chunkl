@@ -65,5 +65,5 @@ CGameControlCameraTrackManiaRace2 0x24086000
   float DeltaLookAtFactorDamperKi
   float DeltaLookAtFactorDamperKa
 
-0x001 [TMF]
+0x001 [TMF, TM2020]
   bool IsRollFromInput

@@ -89,11 +89,11 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, IClass, CGameCt
     }
 
     [Chunk(0x03126002)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
     {
         public override uint Id => 0x03126002;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

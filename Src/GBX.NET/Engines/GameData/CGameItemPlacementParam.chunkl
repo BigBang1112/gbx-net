@@ -1,6 +1,6 @@
 CGameItemPlacementParam 0x2E020000
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   if Version != 0
     throw (message: Unsupported item placement settings version.)
@@ -15,7 +15,7 @@ CGameItemPlacementParam 0x2E020000
   float FlyVOffset
   float PivotSnapDistance = -1
 
-0x001 (skippable) // pivot positions
+0x001 (skippable) [MP4, TM2020] // pivot positions
   vec3[] PivotPositions
   quat[] PivotRotations
 
@@ -26,7 +26,7 @@ CGameItemPlacementParam 0x2E020000
   version
   MagnetLoc[] MagnetLocs
 
-0x005 (skippable)
+0x005 (skippable) [TM2020]
   NPlugItemPlacement_SClass* PlacementClass (external)
 
 archive MagnetLoc

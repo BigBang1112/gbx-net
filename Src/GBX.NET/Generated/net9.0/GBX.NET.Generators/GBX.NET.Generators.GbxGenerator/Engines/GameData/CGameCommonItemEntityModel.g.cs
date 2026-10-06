@@ -228,11 +228,11 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     [Chunk(0x2E027000)]
-    [ChunkGameVersion(GameVersion.TM2020, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 6)]
     public partial class Chunk2E027000 : Chunk<CGameCommonItemEntityModel>, IVersionable
     {
         public override uint Id => 0x2E027000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public string? U02;

@@ -52,7 +52,7 @@ CGameControlCamera 0x0306B000
   float MaxFarZ
   bool
 
-0x00A [TMF]
+0x00A [TMF, MP4, TM2020]
   id Name
 
 0x00B [TMF]

@@ -46,9 +46,11 @@ public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
     }
 
     [Chunk(0x09185000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09185000 : Chunk<CPlugCurveSimpleNod>
     {
         public override uint Id => 0x09185000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

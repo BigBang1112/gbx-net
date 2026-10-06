@@ -80,9 +80,11 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     }
 
     [Chunk(0x0917A000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0917A000 : Chunk<CPlugSpawnModel>, IVersionable
     {
         public override uint Id => 0x0917A000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
 

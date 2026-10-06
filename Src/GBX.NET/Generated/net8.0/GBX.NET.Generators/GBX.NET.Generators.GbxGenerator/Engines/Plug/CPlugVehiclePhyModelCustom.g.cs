@@ -71,9 +71,11 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     }
 
     [Chunk(0x0911E000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0911E000 : Chunk<CPlugVehiclePhyModelCustom>, IVersionable
     {
         public override uint Id => 0x0911E000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

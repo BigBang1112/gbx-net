@@ -233,9 +233,11 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     [Chunk(0x2E008000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E008000 : SkippableChunk<CGameActionModel>, IVersionable
     {
         public override uint Id => 0x2E008000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugShieldModel? U01;
         public int U02;

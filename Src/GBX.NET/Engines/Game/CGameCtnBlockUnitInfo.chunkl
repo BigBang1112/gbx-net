@@ -1,18 +1,18 @@
 CGameCtnBlockUnitInfo 0x03036000
 
-0x000 [TM10, TMSX, TMF, MP3, TMT, MP4]
+0x000 [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020]
   int PlacePylons
   bool // AcceptPylons? true = 255, false = 0?
   bool
   int3 RelativeOffset
   CGameCtnBlockInfoClip[] Clips (external) // also called Junctions
 
-0x001 [TM10, TMSX, TMF, MP3, TMT, MP4]
+0x001 [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020]
   id Surface
   int Frontier
   int<Direction> Dir
 
-0x002 (skippable) [TMSX, TMF, MP3, TMT, MP4] // Underground
+0x002 (skippable) [TMSX, TMF, MP3, TMT, MP4, TM2020] // Underground
   bool Underground
 
 0x003 [TMSX, TMF]
@@ -21,10 +21,10 @@ CGameCtnBlockUnitInfo 0x03036000
   int<ReplacementDir> MultiDir
   int
 
-0x004 [TMF, MP3, TMT, MP4] // AcceptPylons
+0x004 [TMF, MP3, TMT, MP4, TM2020] // AcceptPylons
   int AcceptPylons
 
-0x005 [TMF, MP3, TMT, MP4] // TerrainModifierId
+0x005 [TMF, MP3, TMT, MP4, TM2020] // TerrainModifierId
   id TerrainModifierId
 
 0x006 [MP3, TMT, MP4]
@@ -38,7 +38,7 @@ CGameCtnBlockUnitInfo 0x03036000
   bool
   int
 
-0x007 [MP3, TMT, MP4]
+0x007 [MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoPylon PylonNorth (external)
   CGameCtnBlockInfoPylon PylonEast (external)
   CGameCtnBlockInfoPylon PylonSouth (external)
@@ -69,7 +69,7 @@ CGameCtnBlockUnitInfo 0x03036000
   int<Direction>? BottomClipDir
   int<Direction>? TopClipDir
 
-0x00C
+0x00C [TM2020]
   version (write: "ValidateClipCounts(n)")
   v0=
     ushort ClipCountBits (local, write: "(ushort)((ClipsNorth?.Length ?? 0) | (ClipsEast?.Length ?? 0) << 2 | (ClipsSouth?.Length ?? 0) << 4 | (ClipsWest?.Length ?? 0) << 6 | (ClipsTop?.Length ?? 0) << 8 | (ClipsBottom?.Length ?? 0) << 10)") // Six 2-bit counts: north, east, south, west, top, bottom.
@@ -94,7 +94,7 @@ CGameCtnBlockUnitInfo 0x03036000
     int?
     int?
 
-0x00D
+0x00D [TM2020]
   version
   data
 

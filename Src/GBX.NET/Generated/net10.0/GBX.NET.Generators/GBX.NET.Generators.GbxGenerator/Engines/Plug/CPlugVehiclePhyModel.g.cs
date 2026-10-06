@@ -98,9 +98,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     [Chunk(0x090EA002)]
+    [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk090EA002 : Chunk<CPlugVehiclePhyModel>
     {
         public override uint Id => 0x090EA002;
+        public override GameVersion GameVersion => GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -114,9 +116,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     [Chunk(0x090EA003)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EA003 : Chunk<CPlugVehiclePhyModel>
     {
         public override uint Id => 0x090EA003;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -130,9 +134,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     [Chunk(0x090EA008)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA008;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec3[]? U01;
         public int U02;
@@ -178,9 +184,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     [Chunk(0x090EA009)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090EA009 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA009;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public CMwRefBuffer? U01;
         public CMwRefBuffer? U02;

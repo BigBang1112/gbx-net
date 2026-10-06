@@ -1,7 +1,7 @@
 CGamePlayerProfileChunk_ScriptPersistentTraits 0x03170000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
+0x000 (skippable) [MP4, TM2020]
   version
   block (encapsulated)
     CScriptTraitsPersistent ScriptPersistentTraits (direct)

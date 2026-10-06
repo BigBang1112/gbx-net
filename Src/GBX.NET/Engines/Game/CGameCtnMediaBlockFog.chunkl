@@ -1,7 +1,7 @@
 CGameCtnMediaBlockFog 0x03199000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TM2020.v2]
+0x000 [MP4, TM2020.v2]
   version
   Key[] Keys (list)
 

@@ -15,7 +15,7 @@ CControlEffectSimi 0x07010000
   int<EColorBlendMode> ColorBlendMode
   bool IsContinousEffect
 
-0x005 [TMF]
+0x005 [TMF, MP4, TM2020]
   Key[] Keys (version: 5, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode

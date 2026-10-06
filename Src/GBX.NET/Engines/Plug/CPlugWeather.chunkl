@@ -1,8 +1,8 @@
 CPlugWeather 0x0917E000
 
-0x007 [TMF]
+0x007 [TMF, TM2020]
 
-0x00B [TMF]
+0x00B [TMF, TM2020]
   int
   int
   int
@@ -10,7 +10,7 @@ CPlugWeather 0x0917E000
   int
   int
 
-0x00D [TMF]
+0x00D [TMF, TM2020]
   vec2
   vec2 LDirSpecIntens
   vec2 LDirSpecPower
@@ -20,7 +20,7 @@ CPlugWeather 0x0917E000
   vec2
   vec2
 
-0x00E [TMF]
+0x00E [TMF, TM2020]
   data[28]
   data[28]
   id
@@ -38,20 +38,20 @@ CPlugWeather 0x0917E000
   CPlugBitmap BitmapRainFid
   CMwNod SceneFxFid
 
-0x00F [TMF]
+0x00F [TMF, TM2020]
   CPlugFileImg ImageLightDirDblSided (external)
 
-0x011 [TMF]
+0x011 [TMF, TM2020]
   CPlugFileImg BitmapSkyGradV (external)
 
-0x013 [TMF]
+0x013 [TMF, TM2020]
   CPlugFileImg ImageFogColor (external)
 
-0x014 [TMF]
+0x014 [TMF, TM2020]
   CPlugFileImg ImageSeaColor (external)
 
-0x016 [TMF]
+0x016 [TMF, TM2020]
   CPlugClouds Clouds (external)
 
-0x017 [TMF]
+0x017 [TMF, TM2020]
   GxFogBlender FogBlender (external)

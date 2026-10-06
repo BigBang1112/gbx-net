@@ -1,7 +1,7 @@
 CPlugAudioBalance 0x09034000
 - inherits: CPlugAudio
 
-0x000
+0x000 [MP4, TM2020]
   version
   Group[] Groups
   v1+
@@ -31,7 +31,7 @@ CPlugAudioBalance 0x09034000
                   v12+
                     float
 
-0x001
+0x001 [MP4, TM2020]
   version
   float
   float

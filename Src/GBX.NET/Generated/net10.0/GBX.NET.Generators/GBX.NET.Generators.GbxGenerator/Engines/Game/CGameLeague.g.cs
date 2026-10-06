@@ -119,9 +119,11 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     [Chunk(0x0308E002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0308E002 : Chunk<CGameLeague>, IVersionable
     {
         public override uint Id => 0x0308E002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public string? U02;

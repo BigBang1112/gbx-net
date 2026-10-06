@@ -13,9 +13,9 @@ CGamePlayerProfileChunk_ManiaPlanetStations 0x03180000
     v3+
       int
 
-0x002 (skippable) // Stations
+0x002 (skippable) [MP4, TM2020] // Stations
 
-0x003 (skippable) // LatestTitleIdLoaded
+0x003 (skippable) [MP4, TM2020] // LatestTitleIdLoaded
   version
   id LatestTitleIdLoaded
 

@@ -11,7 +11,7 @@ GxLightFrustum 0x0400A000
   float
   int
 
-0x006 [TMF]
+0x006 [TMF, MP4, TM2020]
   bool
   boxaligned
   uint

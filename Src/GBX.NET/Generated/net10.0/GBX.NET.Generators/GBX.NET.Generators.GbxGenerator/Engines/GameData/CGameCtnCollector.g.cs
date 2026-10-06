@@ -638,11 +638,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001008)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E001008 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001008;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
         public CPlugGameSkin? U01;
         public Components.GbxRefTableFile? U01File;
 

@@ -44,9 +44,11 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass
     }
 
     [Chunk(0x0915F000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0915F000 : Chunk<CPlugDynaWaterModel>, IVersionable
     {
         public override uint Id => 0x0915F000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
