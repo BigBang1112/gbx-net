@@ -69,11 +69,18 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         set => this.alignToWorldDir = value;
     }
 
-    private Vec3 worldDir;
+    private Vec3 worldDir = (0, 0, 1);
     public Vec3 WorldDir
     {
         get => this.worldDir;
         set => this.worldDir = value;
+    }
+
+    private LegacyPatchLayout[]? legacyPatchLayouts;
+    public LegacyPatchLayout[]? LegacyPatchLayouts
+    {
+        get => this.legacyPatchLayouts;
+        set => this.legacyPatchLayouts = value;
     }
 
     private PatchLayout[]? patchLayouts;
@@ -81,6 +88,16 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     {
         get => this.patchLayouts;
         set => this.patchLayouts = value;
+    }
+
+    private int u01;
+    /// <summary>
+    /// Deprecated group patch index, discarded by the native reader.
+    /// </summary>
+    public int U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
     }
 
     private int[]? groupCurPatchLayouts;
@@ -99,7 +116,9 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         ((NPlugItemPlacement_SClass)clone).alignToInterior = context.Clone(this.alignToInterior)!;
         ((NPlugItemPlacement_SClass)clone).alignToWorldDir = context.Clone(this.alignToWorldDir)!;
         ((NPlugItemPlacement_SClass)clone).worldDir = context.Clone(this.worldDir)!;
+        ((NPlugItemPlacement_SClass)clone).legacyPatchLayouts = context.CloneArray(this.legacyPatchLayouts)!;
         ((NPlugItemPlacement_SClass)clone).patchLayouts = context.CloneArray(this.patchLayouts)!;
+        ((NPlugItemPlacement_SClass)clone).u01 = context.Clone(this.u01)!;
         ((NPlugItemPlacement_SClass)clone).groupCurPatchLayouts = context.CloneArray(this.groupCurPatchLayouts)!;
         ((NPlugItemPlacement_SClass)clone).Version = context.Clone(this.Version)!;
     }
@@ -115,10 +134,35 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
         rw.ArrayId(ref this.compatibleGroupsIds!);
         rw.Boolean(ref this.alwaysUp);
         rw.Boolean(ref this.alignToInterior);
-        rw.Boolean(ref this.alignToWorldDir);
-        rw.Vec3(ref this.worldDir);
-        rw.ArrayReadableWritable<PatchLayout>(ref this.patchLayouts!, version: Version);
-        rw.Array<int>(ref this.groupCurPatchLayouts!);
+
+        if (Version >= 8)
+        {
+            rw.Boolean(ref this.alignToWorldDir);
+            rw.Vec3(ref this.worldDir);
+        }
+
+        if (Version <= 3)
+        {
+            rw.ArrayReadableWritable<LegacyPatchLayout>(ref this.legacyPatchLayouts!, version: Version);
+        }
+
+        if (Version >= 4)
+        {
+            rw.ArrayReadableWritable<PatchLayout>(ref this.patchLayouts!, version: Version);
+        }
+
+        if (Version >= 2)
+        {
+            if (Version <= 5)
+            {
+                rw.Int32(ref this.u01);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Array<int>(ref this.groupCurPatchLayouts!);
+            }
+        }
     }
 
     public virtual void Read(GbxReader r, int v = 0)
@@ -180,6 +224,13 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
             set => this.u01 = value;
         }
 
+        private string? onlyOnGroup;
+        public string? OnlyOnGroup
+        {
+            get => this.onlyOnGroup;
+            set => this.onlyOnGroup = value;
+        }
+
         private string[]? onlyOnGroups;
         public string[]? OnlyOnGroups
         {
@@ -220,6 +271,7 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
             ((PatchLayout)clone).fillDir = context.Clone(this.fillDir)!;
             ((PatchLayout)clone).normedPos = context.Clone(this.normedPos)!;
             ((PatchLayout)clone).u01 = context.Clone(this.u01)!;
+            ((PatchLayout)clone).onlyOnGroup = context.Clone(this.onlyOnGroup)!;
             ((PatchLayout)clone).onlyOnGroups = context.CloneArray(this.onlyOnGroups)!;
             ((PatchLayout)clone).altitude = context.Clone(this.altitude)!;
             ((PatchLayout)clone).u02 = context.Clone(this.u02)!;
@@ -232,10 +284,138 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
             rw.Int32(ref this.fillAlign);
             rw.Int32(ref this.fillDir);
             rw.Single(ref this.normedPos);
-            rw.Single(ref this.u01);
-            rw.ArrayId(ref this.onlyOnGroups!);
-            rw.Single(ref this.altitude);
-            rw.Single(ref this.u02);
+
+            if (v >= 5)
+            {
+                rw.Single(ref this.u01);
+            }
+
+            if (v <= 9)
+            {
+                rw.Id(ref this.onlyOnGroup);
+            }
+
+            if (v >= 10)
+            {
+                rw.ArrayId(ref this.onlyOnGroups!);
+            }
+
+            if (v >= 7)
+            {
+                rw.Single(ref this.altitude);
+            }
+
+            if (v >= 9)
+            {
+                rw.Single(ref this.u02);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyPatchLayout : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float u03;
+        public float U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private float u06;
+        public float U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private float u07;
+        public float U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private float u08;
+        public float U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyPatchLayout)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyPatchLayout)clone).u01 = context.Clone(this.u01)!;
+            ((LegacyPatchLayout)clone).u02 = context.Clone(this.u02)!;
+            ((LegacyPatchLayout)clone).u03 = context.Clone(this.u03)!;
+            ((LegacyPatchLayout)clone).u04 = context.Clone(this.u04)!;
+            ((LegacyPatchLayout)clone).u05 = context.Clone(this.u05)!;
+            ((LegacyPatchLayout)clone).u06 = context.Clone(this.u06)!;
+            ((LegacyPatchLayout)clone).u07 = context.Clone(this.u07)!;
+            ((LegacyPatchLayout)clone).u08 = context.Clone(this.u08)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Single(ref this.u03);
+            rw.Int32(ref this.u04);
+            rw.Int32(ref this.u05);
+            rw.Single(ref this.u06);
+            rw.Single(ref this.u07);
+
+            if (v >= 3)
+            {
+                rw.Single(ref this.u08);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

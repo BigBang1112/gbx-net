@@ -6,10 +6,18 @@ archive
   id[] CompatibleGroupsIds
   bool AlwaysUp
   bool AlignToInterior
-  bool AlignToWorldDir
-  vec3 WorldDir
-  PatchLayout[] PatchLayouts
-  int[] GroupCurPatchLayouts
+  v8+ (archive)
+    bool AlignToWorldDir
+    vec3 WorldDir = (0, 0, 1)
+  v3- (archive)
+    LegacyPatchLayout[] LegacyPatchLayouts
+  v4+ (archive)
+    PatchLayout[] PatchLayouts
+  v2+ (archive)
+    v5- (archive)
+      int U01 // Deprecated group patch index, discarded by the native reader.
+    v6+ (archive)
+      int[] GroupCurPatchLayouts
 
 archive PatchLayout
   int ItemCount
@@ -17,7 +25,24 @@ archive PatchLayout
   int FillAlign
   int FillDir
   float NormedPos
-  float // DistFromNormedPos?
-  id[] OnlyOnGroups
-  float Altitude
-  float // FillBorderOffset?
+  v5+
+    float U01 // DistFromNormedPos?
+  v9-
+    id OnlyOnGroup
+  v10+
+    id[] OnlyOnGroups
+  v7+
+    float Altitude
+  v9+
+    float U02 // FillBorderOffset?
+
+archive LegacyPatchLayout
+  int U01
+  int U02
+  float U03
+  int U04
+  int U05
+  float U06
+  float U07
+  v3+
+    float U08

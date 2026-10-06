@@ -34,7 +34,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E020000;
 
-    private short flags;
+    private short flags = 1;
     [AppliedWithChunk<Chunk2E020000>]
     public short Flags
     {
@@ -106,7 +106,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         set => this.flyVOffset = value;
     }
 
-    private float pivotSnapDistance;
+    private float pivotSnapDistance = -1;
     [AppliedWithChunk<Chunk2E020000>]
     public float PivotSnapDistance
     {
@@ -128,6 +128,14 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
         get => this.pivotRotations;
         set => this.pivotRotations = value;
+    }
+
+    private MagnetLoc[]? magnetLocs;
+    [AppliedWithChunk<Chunk2E020004>]
+    public MagnetLoc[]? MagnetLocs
+    {
+        get => this.magnetLocs;
+        set => this.magnetLocs = value;
     }
 
     private NPlugItemPlacement_SClass? placementClass;
@@ -162,6 +170,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         ((CGameItemPlacementParam)clone).pivotSnapDistance = context.Clone(this.pivotSnapDistance)!;
         ((CGameItemPlacementParam)clone).pivotPositions = context.CloneArray(this.pivotPositions)!;
         ((CGameItemPlacementParam)clone).pivotRotations = context.CloneArray(this.pivotRotations)!;
+        ((CGameItemPlacementParam)clone).magnetLocs = context.CloneArray(this.magnetLocs)!;
         ((CGameItemPlacementParam)clone).placementClass = context.Clone(this.placementClass)!;
     }
 
@@ -184,6 +193,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+
+            if (Version!= 0)
+            {
+                throw new NotSupportedException("Unsupported item placement settings version .");
+            }
+
             rw.Int16(ref n.flags);
             rw.Vec3(ref n.cubeCenter);
             rw.Single(ref n.cubeSize);
@@ -218,13 +233,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// PlacementClass
+    /// legacy PlacementClass
     /// </summary>
-    [Chunk(0x2E020003, "PlacementClass")]
+    [Chunk(0x2E020003, "legacy PlacementClass")]
     public partial class Chunk2E020003 : SkippableChunk<CGameItemPlacementParam>, IVersionable
     {
         public override uint Id => 0x2E020003;
-        public override bool Ignore => true;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -232,22 +246,29 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk2E020003)clone).Version = context.Clone(this.Version)!;
         }
-
-        public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-        }
     }
 
-    [Chunk(0x2E020004)]
-    public partial class Chunk2E020004 : SkippableChunk<CGameItemPlacementParam>
+    /// <summary>
+    /// magnet locations
+    /// </summary>
+    [Chunk(0x2E020004, "magnet locations")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk2E020004 : SkippableChunk<CGameItemPlacementParam>, IVersionable
     {
         public override uint Id => 0x2E020004;
-        public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk2E020004)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.ArrayReadableWritable<MagnetLoc>(ref n.magnetLocs!, version: Version);
         }
     }
 
@@ -264,6 +285,58 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.NodeRef<NPlugItemPlacement_SClass>(ref n.placementClass, ref n.placementClassFile);
+        }
+    }
+
+    public partial class MagnetLoc : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Vec3 position;
+        public Vec3 Position
+        {
+            get => this.position;
+            set => this.position = value;
+        }
+
+        private Vec3 yawPitchRoll;
+        /// <summary>
+        /// Degrees, unlike anchored-object rotations.
+        /// </summary>
+        public Vec3 YawPitchRoll
+        {
+            get => this.yawPitchRoll;
+            set => this.yawPitchRoll = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MagnetLoc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MagnetLoc)clone).position = context.Clone(this.position)!;
+            ((MagnetLoc)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Vec3(ref this.position);
+            rw.Vec3(ref this.yawPitchRoll);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
