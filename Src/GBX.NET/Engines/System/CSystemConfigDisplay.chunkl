@@ -2,55 +2,55 @@ CSystemConfigDisplay 0x0B013000
 
 0x001 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
   int2 ScreenSizeFS
-  int
-  int
-  int
+  int ScreenSizeWin // Window-size preset index. Available resolutions depend on the game.
+  int<EColorDepth> ColorDepth
+  int<EAntialiasing> Antialiasing
   int RefreshRate
-  bool // DisplaySync and DisplayMode
-  bool
+  bool VSync
+  bool FullScreen
 
 0x003 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
-  bool
-  int // something with GpuSync0
+  bool DisableShadowBuffer
+  int<EGpuSyncOld> GpuSync
   bool EmulateCursorGDI
-  int
+  int<EVertexProcess> VertexProcess
   bool OptimPartDynaGeom
-  bool
+  bool IgnoreDriverCrashes
 
 0x004 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
-  bool // sometimes weird number?
+  int DisableColorWMask // Native 32-bit boolean. Preserve noncanonical values.
 
 0x005 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
   bool EnableFullscreenGDI
 
 0x008 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
-  int
-  int
+  int<EZClip> ZClip
+  int<EZClipAuto> ZClipAuto
   int ZClipNbBlock
 
 0x009 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
-  int
+  int<EWaterReflect> WaterReflect // TMF stores the older WaterGeom boolean in this slot.
   int
   bool PostFx
   bool
 
 0x00A (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
-  bool
-  bool
+  bool ForceFxColors
+  bool ForceFxMotionBlur
 
 0x00B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
   bool DisableZBufferRange
   float AgpUseFactor
 
 0x00D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
-  int
+  int<EAutoScale> AutoScale
   bool Customize
-  int
-  int
-  int
-  int
-  int
-  int
+  int<EPresetOld> PresetOld
+  int<ETexturesQuality> TexturesQuality
+  int<EShaderQualityOld> ShaderQualityOld
+  int TextureFilterOld
+  int<EShadows> Shadows
+  int AnisoQualityOld // FilterAnisoQFromOld combines both legacy filtering values.
 
 0x00E (skippable) [TMO, TMSX, TMNESWC]
   bool
@@ -62,7 +62,7 @@ CSystemConfigDisplay 0x0B013000
   float GeomLodScaleZ
 
 0x011 (skippable) [TMU, VSK5, TMF]
-  bool
+  bool ForceFxBloom
 
 0x013 (skippable) [TMU, VSK5, TMF]
   int
@@ -74,29 +74,29 @@ CSystemConfigDisplay 0x0B013000
   bool EnableCheckLags
 
 0x017 (skippable) [TMU, VSK5, TMF, MP3, MP4]
-  int // bool but weird number
+  int EnableRenderReadBack // Native 32-bit boolean. Preserve noncanonical values.
 
 0x018 (skippable) [TMU, VSK5, TMF, MP3, MP4]
   int = 8
 
 0x019 (skippable) [TMU, VSK5, TMF, MP3, MP4]
-  int // bool but weird number
+  int<ELightMapCompute> LightMapCompute
 
 0x01A (skippable) [TMU, VSK5]
-  bool
+  bool LightMapQualityEnabled // Legacy boolean converted to a light-map quality enum.
 
 0x01B (skippable) [VSK5, TMU, TMF, MP3, MP4]
-  int
+  int<ELightFromMap> LightFromMap
 
 0x01C (skippable) [VSK5, TMF, MP3, MP4]
   bool MultiThread
   int ThreadCountMax
 
 0x01D (skippable) [TMF]
-  int
+  int<ELightMapQualityOld> LightMapQualityOld
 
 0x01E (skippable) [TMF]
-  bool
+  bool TreeAlwaysHq
 
 0x020 (skippable) [TMF, MP3, MP4]
   bool StereoByDefault
@@ -106,42 +106,42 @@ CSystemConfigDisplay 0x0B013000
   bool WaterGeomStadium
 
 0x022 (skippable) [TMF]
-  int
+  int<EAutoScale> AutoScale
   bool Customize
-  int
-  int
-  int
-  int
+  int<EPresetOld> PresetOld
+  int<ETexturesQuality> TexturesQuality
+  int<EShaderQualityOld> ShaderQualityOld
+  int<EShadows> Shadows
   int<EFilterAnisoQ> FilterAnisoQ
 
 0x025 (skippable) [MP3, MP4]
-  int
+  int<EDeferredAA> DeferredAA
   int<EFxBloomHdr> FxBloomHdr
 
 0x026 (skippable) [MP3, MP4]
-  int // bool but weird number
+  int DisableShadowBufferRaw // Deprecated native boolean. Preserve noncanonical values.
   int<EGpuSync> GpuSync0
   bool EmulateCursorGDI
-  int
+  int<EVertexProcess> VertexProcess
   bool OptimPartDynaGeom
-  int // bool but weird number
+  int IgnoreDriverCrashesRaw // Deprecated native boolean. Preserve noncanonical values.
 
 0x029 (skippable)
   int2 ScreenSizeFS
-  int
-  int
-  int
+  int ScreenSizeWin
+  int<EColorDepth> ColorDepth
+  int<EAntialiasing> Antialiasing
   int RefreshRate
   int<EDisplaySync> DisplaySync
-  bool
+  bool FullScreen
 
 0x02A (skippable) [MP3, MP4]
-  int
+  int<EAutoScale> AutoScale
   bool Customize
-  int
-  int
+  int<EPreset> Preset
+  int<ETexturesQuality> TexturesQuality
   int<EShaderQ> ShaderQuality
-  int
+  int<EShadows> Shadows
   int<EFilterAnisoQ> FilterAnisoQ
 
 0x02C (skippable) [MP3, MP4]
@@ -157,7 +157,7 @@ CSystemConfigDisplay 0x0B013000
   int MaxFps
 
 0x030 (skippable) [MP3, MP4]
-  int
+  int<ELightMapSizeMax> LightMapSizeMax
   int<ELightMapQuality> LM_Quality
   bool LM_QUltra
   bool LM_iLight
@@ -167,7 +167,7 @@ CSystemConfigDisplay 0x0B013000
   bool Decals_2D__TextureDecals
 
 0x032 (skippable) [MP3, MP4]
-  int
+  int // Native writer uses 3 in MP and 7 in TM2020. Meaning is not verified.
 
 0x033 (skippable) [MP3, MP4]
   bool DisableHdrCubeRenderMipMap
@@ -178,15 +178,15 @@ CSystemConfigDisplay 0x0B013000
 0x036 (skippable) [MP3, MP4]
   version
   int2 ScreenSizeFS
-  int
-  int
-  int
+  int ScreenSizeWin
+  int<EColorDepth> ColorDepth // Deprecated, written as zero by MP and TM2020.
+  int<EAntialiasing> Antialiasing
   int RefreshRate
   int<EDisplaySync> DisplaySync
   int<EDisplayMode> DisplayMode
-  int
+  int<ETripleBuffer> TripleBuffer
   v1+
-    int
+    int<ERenderingApi> RenderingApi
     v2+
       int
       int
@@ -202,7 +202,7 @@ CSystemConfigDisplay 0x0B013000
   int<EScreenShotExt> ScreenShotExt
 
 0x03A (skippable) [MP3, MP4]
-  int
+  int<EGeometryQuality> GeometryQuality
 
 0x03B (skippable) [MP3, MP4]
   float ParticleMaxGpuLoadMs
@@ -212,6 +212,148 @@ CSystemConfigDisplay 0x0B013000
 
 0x03D (skippable) [MP4]
   bool AsyncRender
+
+0x03E (skippable) [TM2020]
+  version = 1
+  v2+
+    throw
+  int<EFxBlur> FxBlur
+  v1+
+    int<EEverywhereReflect> ReflectEverywhere
+
+0x03F (skippable) [TM2020]
+  bool AutomaticEnabled
+  int AutomaticMinFps
+
+enum EColorDepth
+  _16Bits
+  _32Bits
+
+enum EAntialiasing
+  None
+  _2Samples
+  _4Samples
+  _6Samples
+  _8Samples
+  _16Samples
+
+enum EAutoScale
+  Faster
+  Normal
+  Nicer
+
+enum EPresetOld
+  None
+  MinimumQuality
+  LowQuality
+  MediumQuality
+  HighQuality
+  VeryHighQuality
+
+enum EPreset
+  None
+  VeryFast
+  Fast
+  Nice
+  VeryNice
+
+enum ETexturesQuality
+  VeryLow
+  Low
+  Medium
+  High
+
+enum EShaderQualityOld
+  PC0
+  PC1
+  PC2
+  PC3Low
+  PC3High
+
+enum EShadows
+  None
+  Minimum
+  Medium
+  High
+  VeryHigh
+  Complex // Legacy TMF value, absent from the MP reflection enum.
+
+enum EZClip
+  Disable
+  Auto
+  Fixed
+
+enum EZClipAuto
+  Near
+  Medium
+  Far
+
+enum EVertexProcess
+  Hardware
+  SoftwareVertexShader
+  Software
+
+enum EGpuSyncOld
+  None
+  _3Frames
+  _2AndHalfFrames
+  _2Frames
+  _1AndHalfFrames
+  _1Frame
+  _HalfFrame
+  Immediate
+
+enum ELightMapCompute
+  NoShadows
+  SafeMode
+  Normal
+
+enum ELightFromMap
+  None
+  MyVehicle
+  AllVehicles
+
+enum ELightMapQualityOld
+  None
+  _2k
+  _4k
+  _8k
+
+enum EDeferredAA
+  None
+  FXAA
+
+enum ELightMapSizeMax
+  Auto
+  _1024
+
+enum ETripleBuffer
+  Off
+  On
+
+enum ERenderingApi
+  D3D9
+  D3D11
+  Vulkan
+
+enum EWaterReflect
+  Low
+  Medium
+  High
+
+enum EGeometryQuality
+  VeryFast
+  Fast
+  Nice
+  VeryNice
+
+enum EFxBlur
+  Off
+  On
+
+enum EEverywhereReflect
+  None
+  Enabled
 
 enum EFxBloomHdr
   None

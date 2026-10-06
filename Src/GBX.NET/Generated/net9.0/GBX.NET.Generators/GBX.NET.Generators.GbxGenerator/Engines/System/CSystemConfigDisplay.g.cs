@@ -44,6 +44,39 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.screenSizeFS = value;
     }
 
+    private int screenSizeWin;
+    /// <summary>
+    /// Window-size preset index. Available resolutions depend on the game.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013001>]
+    [AppliedWithChunk<Chunk0B013029>]
+    [AppliedWithChunk<Chunk0B013036>]
+    public int ScreenSizeWin
+    {
+        get => this.screenSizeWin;
+        set => this.screenSizeWin = value;
+    }
+
+    private EColorDepth colorDepth;
+    [AppliedWithChunk<Chunk0B013001>]
+    [AppliedWithChunk<Chunk0B013029>]
+    [AppliedWithChunk<Chunk0B013036>]
+    public EColorDepth ColorDepth
+    {
+        get => this.colorDepth;
+        set => this.colorDepth = value;
+    }
+
+    private EAntialiasing antialiasing;
+    [AppliedWithChunk<Chunk0B013001>]
+    [AppliedWithChunk<Chunk0B013029>]
+    [AppliedWithChunk<Chunk0B013036>]
+    public EAntialiasing Antialiasing
+    {
+        get => this.antialiasing;
+        set => this.antialiasing = value;
+    }
+
     private int refreshRate;
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -52,6 +85,39 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.refreshRate;
         set => this.refreshRate = value;
+    }
+
+    private bool vSync;
+    [AppliedWithChunk<Chunk0B013001>]
+    public bool VSync
+    {
+        get => this.vSync;
+        set => this.vSync = value;
+    }
+
+    private bool fullScreen;
+    [AppliedWithChunk<Chunk0B013001>]
+    [AppliedWithChunk<Chunk0B013029>]
+    public bool FullScreen
+    {
+        get => this.fullScreen;
+        set => this.fullScreen = value;
+    }
+
+    private bool disableShadowBuffer;
+    [AppliedWithChunk<Chunk0B013003>]
+    public bool DisableShadowBuffer
+    {
+        get => this.disableShadowBuffer;
+        set => this.disableShadowBuffer = value;
+    }
+
+    private EGpuSyncOld gpuSync;
+    [AppliedWithChunk<Chunk0B013003>]
+    public EGpuSyncOld GpuSync
+    {
+        get => this.gpuSync;
+        set => this.gpuSync = value;
     }
 
     private bool emulateCursorGDI;
@@ -63,6 +129,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.emulateCursorGDI = value;
     }
 
+    private EVertexProcess vertexProcess;
+    [AppliedWithChunk<Chunk0B013003>]
+    [AppliedWithChunk<Chunk0B013026>]
+    public EVertexProcess VertexProcess
+    {
+        get => this.vertexProcess;
+        set => this.vertexProcess = value;
+    }
+
     private bool optimPartDynaGeom;
     [AppliedWithChunk<Chunk0B013003>]
     [AppliedWithChunk<Chunk0B013026>]
@@ -70,6 +145,25 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.optimPartDynaGeom;
         set => this.optimPartDynaGeom = value;
+    }
+
+    private bool ignoreDriverCrashes;
+    [AppliedWithChunk<Chunk0B013003>]
+    public bool IgnoreDriverCrashes
+    {
+        get => this.ignoreDriverCrashes;
+        set => this.ignoreDriverCrashes = value;
+    }
+
+    private int disableColorWMask;
+    /// <summary>
+    /// Native 32-bit boolean. Preserve noncanonical values.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013004>]
+    public int DisableColorWMask
+    {
+        get => this.disableColorWMask;
+        set => this.disableColorWMask = value;
     }
 
     private bool enableFullscreenGDI;
@@ -80,6 +174,22 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.enableFullscreenGDI = value;
     }
 
+    private EZClip zClip;
+    [AppliedWithChunk<Chunk0B013008>]
+    public EZClip ZClip
+    {
+        get => this.zClip;
+        set => this.zClip = value;
+    }
+
+    private EZClipAuto zClipAuto;
+    [AppliedWithChunk<Chunk0B013008>]
+    public EZClipAuto ZClipAuto
+    {
+        get => this.zClipAuto;
+        set => this.zClipAuto = value;
+    }
+
     private int zClipNbBlock;
     [AppliedWithChunk<Chunk0B013008>]
     public int ZClipNbBlock
@@ -88,12 +198,39 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.zClipNbBlock = value;
     }
 
+    private EWaterReflect waterReflect;
+    /// <summary>
+    /// TMF stores the older WaterGeom boolean in this slot.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013009>]
+    public EWaterReflect WaterReflect
+    {
+        get => this.waterReflect;
+        set => this.waterReflect = value;
+    }
+
     private bool postFx;
     [AppliedWithChunk<Chunk0B013009>]
     public bool PostFx
     {
         get => this.postFx;
         set => this.postFx = value;
+    }
+
+    private bool forceFxColors;
+    [AppliedWithChunk<Chunk0B01300A>]
+    public bool ForceFxColors
+    {
+        get => this.forceFxColors;
+        set => this.forceFxColors = value;
+    }
+
+    private bool forceFxMotionBlur;
+    [AppliedWithChunk<Chunk0B01300A>]
+    public bool ForceFxMotionBlur
+    {
+        get => this.forceFxMotionBlur;
+        set => this.forceFxMotionBlur = value;
     }
 
     private bool disableZBufferRange;
@@ -112,6 +249,16 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.agpUseFactor = value;
     }
 
+    private EAutoScale autoScale;
+    [AppliedWithChunk<Chunk0B01300D>]
+    [AppliedWithChunk<Chunk0B013022>]
+    [AppliedWithChunk<Chunk0B01302A>]
+    public EAutoScale AutoScale
+    {
+        get => this.autoScale;
+        set => this.autoScale = value;
+    }
+
     private bool customize;
     [AppliedWithChunk<Chunk0B01300D>]
     [AppliedWithChunk<Chunk0B013022>]
@@ -122,12 +269,77 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.customize = value;
     }
 
+    private EPresetOld presetOld;
+    [AppliedWithChunk<Chunk0B01300D>]
+    [AppliedWithChunk<Chunk0B013022>]
+    public EPresetOld PresetOld
+    {
+        get => this.presetOld;
+        set => this.presetOld = value;
+    }
+
+    private ETexturesQuality texturesQuality;
+    [AppliedWithChunk<Chunk0B01300D>]
+    [AppliedWithChunk<Chunk0B013022>]
+    [AppliedWithChunk<Chunk0B01302A>]
+    public ETexturesQuality TexturesQuality
+    {
+        get => this.texturesQuality;
+        set => this.texturesQuality = value;
+    }
+
+    private EShaderQualityOld shaderQualityOld;
+    [AppliedWithChunk<Chunk0B01300D>]
+    [AppliedWithChunk<Chunk0B013022>]
+    public EShaderQualityOld ShaderQualityOld
+    {
+        get => this.shaderQualityOld;
+        set => this.shaderQualityOld = value;
+    }
+
+    private int textureFilterOld;
+    [AppliedWithChunk<Chunk0B01300D>]
+    public int TextureFilterOld
+    {
+        get => this.textureFilterOld;
+        set => this.textureFilterOld = value;
+    }
+
+    private EShadows shadows;
+    [AppliedWithChunk<Chunk0B01300D>]
+    [AppliedWithChunk<Chunk0B013022>]
+    [AppliedWithChunk<Chunk0B01302A>]
+    public EShadows Shadows
+    {
+        get => this.shadows;
+        set => this.shadows = value;
+    }
+
+    private int anisoQualityOld;
+    /// <summary>
+    /// FilterAnisoQFromOld combines both legacy filtering values.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B01300D>]
+    public int AnisoQualityOld
+    {
+        get => this.anisoQualityOld;
+        set => this.anisoQualityOld = value;
+    }
+
     private float geomLodScaleZ;
     [AppliedWithChunk<Chunk0B013010>]
     public float GeomLodScaleZ
     {
         get => this.geomLodScaleZ;
         set => this.geomLodScaleZ = value;
+    }
+
+    private bool forceFxBloom;
+    [AppliedWithChunk<Chunk0B013011>]
+    public bool ForceFxBloom
+    {
+        get => this.forceFxBloom;
+        set => this.forceFxBloom = value;
     }
 
     private bool disableWindowedAntiAlias;
@@ -146,6 +358,44 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.enableCheckLags = value;
     }
 
+    private int enableRenderReadBack;
+    /// <summary>
+    /// Native 32-bit boolean. Preserve noncanonical values.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013017>]
+    public int EnableRenderReadBack
+    {
+        get => this.enableRenderReadBack;
+        set => this.enableRenderReadBack = value;
+    }
+
+    private ELightMapCompute lightMapCompute;
+    [AppliedWithChunk<Chunk0B013019>]
+    public ELightMapCompute LightMapCompute
+    {
+        get => this.lightMapCompute;
+        set => this.lightMapCompute = value;
+    }
+
+    private bool lightMapQualityEnabled;
+    /// <summary>
+    /// Legacy boolean converted to a light-map quality enum.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B01301A>]
+    public bool LightMapQualityEnabled
+    {
+        get => this.lightMapQualityEnabled;
+        set => this.lightMapQualityEnabled = value;
+    }
+
+    private ELightFromMap lightFromMap;
+    [AppliedWithChunk<Chunk0B01301B>]
+    public ELightFromMap LightFromMap
+    {
+        get => this.lightFromMap;
+        set => this.lightFromMap = value;
+    }
+
     private bool multiThread;
     [AppliedWithChunk<Chunk0B01301C>]
     public bool MultiThread
@@ -160,6 +410,22 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.threadCountMax;
         set => this.threadCountMax = value;
+    }
+
+    private ELightMapQualityOld lightMapQualityOld;
+    [AppliedWithChunk<Chunk0B01301D>]
+    public ELightMapQualityOld LightMapQualityOld
+    {
+        get => this.lightMapQualityOld;
+        set => this.lightMapQualityOld = value;
+    }
+
+    private bool treeAlwaysHq;
+    [AppliedWithChunk<Chunk0B01301E>]
+    public bool TreeAlwaysHq
+    {
+        get => this.treeAlwaysHq;
+        set => this.treeAlwaysHq = value;
     }
 
     private bool stereoByDefault;
@@ -195,12 +461,31 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.filterAnisoQ = value;
     }
 
+    private EDeferredAA deferredAA;
+    [AppliedWithChunk<Chunk0B013025>]
+    public EDeferredAA DeferredAA
+    {
+        get => this.deferredAA;
+        set => this.deferredAA = value;
+    }
+
     private EFxBloomHdr fxBloomHdr;
     [AppliedWithChunk<Chunk0B013025>]
     public EFxBloomHdr FxBloomHdr
     {
         get => this.fxBloomHdr;
         set => this.fxBloomHdr = value;
+    }
+
+    private int disableShadowBufferRaw;
+    /// <summary>
+    /// Deprecated native boolean. Preserve noncanonical values.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013026>]
+    public int DisableShadowBufferRaw
+    {
+        get => this.disableShadowBufferRaw;
+        set => this.disableShadowBufferRaw = value;
     }
 
     private EGpuSync gpuSync0;
@@ -211,6 +496,17 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.gpuSync0 = value;
     }
 
+    private int ignoreDriverCrashesRaw;
+    /// <summary>
+    /// Deprecated native boolean. Preserve noncanonical values.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B013026>]
+    public int IgnoreDriverCrashesRaw
+    {
+        get => this.ignoreDriverCrashesRaw;
+        set => this.ignoreDriverCrashesRaw = value;
+    }
+
     private EDisplaySync displaySync;
     [AppliedWithChunk<Chunk0B013029>]
     [AppliedWithChunk<Chunk0B013036>]
@@ -218,6 +514,14 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.displaySync;
         set => this.displaySync = value;
+    }
+
+    private EPreset preset;
+    [AppliedWithChunk<Chunk0B01302A>]
+    public EPreset Preset
+    {
+        get => this.preset;
+        set => this.preset = value;
     }
 
     private EShaderQ shaderQuality;
@@ -250,6 +554,14 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.maxFps;
         set => this.maxFps = value;
+    }
+
+    private ELightMapSizeMax lightMapSizeMax;
+    [AppliedWithChunk<Chunk0B013030>]
+    public ELightMapSizeMax LightMapSizeMax
+    {
+        get => this.lightMapSizeMax;
+        set => this.lightMapSizeMax = value;
     }
 
     private ELightMapQuality lM_Quality;
@@ -316,6 +628,22 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.displayMode = value;
     }
 
+    private ETripleBuffer tripleBuffer;
+    [AppliedWithChunk<Chunk0B013036>]
+    public ETripleBuffer TripleBuffer
+    {
+        get => this.tripleBuffer;
+        set => this.tripleBuffer = value;
+    }
+
+    private ERenderingApi renderingApi;
+    [AppliedWithChunk<Chunk0B013036>(1)]
+    public ERenderingApi RenderingApi
+    {
+        get => this.renderingApi;
+        set => this.renderingApi = value;
+    }
+
     private string? adapter;
     [AppliedWithChunk<Chunk0B013036>(3)]
     public string? Adapter
@@ -330,6 +658,14 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         get => this.screenShotExt;
         set => this.screenShotExt = value;
+    }
+
+    private EGeometryQuality geometryQuality;
+    [AppliedWithChunk<Chunk0B01303A>]
+    public EGeometryQuality GeometryQuality
+    {
+        get => this.geometryQuality;
+        set => this.geometryQuality = value;
     }
 
     private float particleMaxGpuLoadMs;
@@ -348,35 +684,101 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.asyncRender = value;
     }
 
+    private EFxBlur fxBlur;
+    [AppliedWithChunk<Chunk0B01303E>]
+    public EFxBlur FxBlur
+    {
+        get => this.fxBlur;
+        set => this.fxBlur = value;
+    }
+
+    private EEverywhereReflect reflectEverywhere;
+    [AppliedWithChunk<Chunk0B01303E>(1)]
+    public EEverywhereReflect ReflectEverywhere
+    {
+        get => this.reflectEverywhere;
+        set => this.reflectEverywhere = value;
+    }
+
+    private bool automaticEnabled;
+    [AppliedWithChunk<Chunk0B01303F>]
+    public bool AutomaticEnabled
+    {
+        get => this.automaticEnabled;
+        set => this.automaticEnabled = value;
+    }
+
+    private int automaticMinFps;
+    [AppliedWithChunk<Chunk0B01303F>]
+    public int AutomaticMinFps
+    {
+        get => this.automaticMinFps;
+        set => this.automaticMinFps = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CSystemConfigDisplay)clone).screenSizeFS = context.Clone(this.screenSizeFS)!;
+        ((CSystemConfigDisplay)clone).screenSizeWin = context.Clone(this.screenSizeWin)!;
+        ((CSystemConfigDisplay)clone).colorDepth = context.Clone(this.colorDepth)!;
+        ((CSystemConfigDisplay)clone).antialiasing = context.Clone(this.antialiasing)!;
         ((CSystemConfigDisplay)clone).refreshRate = context.Clone(this.refreshRate)!;
+        ((CSystemConfigDisplay)clone).vSync = context.Clone(this.vSync)!;
+        ((CSystemConfigDisplay)clone).fullScreen = context.Clone(this.fullScreen)!;
+        ((CSystemConfigDisplay)clone).disableShadowBuffer = context.Clone(this.disableShadowBuffer)!;
+        ((CSystemConfigDisplay)clone).gpuSync = context.Clone(this.gpuSync)!;
         ((CSystemConfigDisplay)clone).emulateCursorGDI = context.Clone(this.emulateCursorGDI)!;
+        ((CSystemConfigDisplay)clone).vertexProcess = context.Clone(this.vertexProcess)!;
         ((CSystemConfigDisplay)clone).optimPartDynaGeom = context.Clone(this.optimPartDynaGeom)!;
+        ((CSystemConfigDisplay)clone).ignoreDriverCrashes = context.Clone(this.ignoreDriverCrashes)!;
+        ((CSystemConfigDisplay)clone).disableColorWMask = context.Clone(this.disableColorWMask)!;
         ((CSystemConfigDisplay)clone).enableFullscreenGDI = context.Clone(this.enableFullscreenGDI)!;
+        ((CSystemConfigDisplay)clone).zClip = context.Clone(this.zClip)!;
+        ((CSystemConfigDisplay)clone).zClipAuto = context.Clone(this.zClipAuto)!;
         ((CSystemConfigDisplay)clone).zClipNbBlock = context.Clone(this.zClipNbBlock)!;
+        ((CSystemConfigDisplay)clone).waterReflect = context.Clone(this.waterReflect)!;
         ((CSystemConfigDisplay)clone).postFx = context.Clone(this.postFx)!;
+        ((CSystemConfigDisplay)clone).forceFxColors = context.Clone(this.forceFxColors)!;
+        ((CSystemConfigDisplay)clone).forceFxMotionBlur = context.Clone(this.forceFxMotionBlur)!;
         ((CSystemConfigDisplay)clone).disableZBufferRange = context.Clone(this.disableZBufferRange)!;
         ((CSystemConfigDisplay)clone).agpUseFactor = context.Clone(this.agpUseFactor)!;
+        ((CSystemConfigDisplay)clone).autoScale = context.Clone(this.autoScale)!;
         ((CSystemConfigDisplay)clone).customize = context.Clone(this.customize)!;
+        ((CSystemConfigDisplay)clone).presetOld = context.Clone(this.presetOld)!;
+        ((CSystemConfigDisplay)clone).texturesQuality = context.Clone(this.texturesQuality)!;
+        ((CSystemConfigDisplay)clone).shaderQualityOld = context.Clone(this.shaderQualityOld)!;
+        ((CSystemConfigDisplay)clone).textureFilterOld = context.Clone(this.textureFilterOld)!;
+        ((CSystemConfigDisplay)clone).shadows = context.Clone(this.shadows)!;
+        ((CSystemConfigDisplay)clone).anisoQualityOld = context.Clone(this.anisoQualityOld)!;
         ((CSystemConfigDisplay)clone).geomLodScaleZ = context.Clone(this.geomLodScaleZ)!;
+        ((CSystemConfigDisplay)clone).forceFxBloom = context.Clone(this.forceFxBloom)!;
         ((CSystemConfigDisplay)clone).disableWindowedAntiAlias = context.Clone(this.disableWindowedAntiAlias)!;
         ((CSystemConfigDisplay)clone).enableCheckLags = context.Clone(this.enableCheckLags)!;
+        ((CSystemConfigDisplay)clone).enableRenderReadBack = context.Clone(this.enableRenderReadBack)!;
+        ((CSystemConfigDisplay)clone).lightMapCompute = context.Clone(this.lightMapCompute)!;
+        ((CSystemConfigDisplay)clone).lightMapQualityEnabled = context.Clone(this.lightMapQualityEnabled)!;
+        ((CSystemConfigDisplay)clone).lightFromMap = context.Clone(this.lightFromMap)!;
         ((CSystemConfigDisplay)clone).multiThread = context.Clone(this.multiThread)!;
         ((CSystemConfigDisplay)clone).threadCountMax = context.Clone(this.threadCountMax)!;
+        ((CSystemConfigDisplay)clone).lightMapQualityOld = context.Clone(this.lightMapQualityOld)!;
+        ((CSystemConfigDisplay)clone).treeAlwaysHq = context.Clone(this.treeAlwaysHq)!;
         ((CSystemConfigDisplay)clone).stereoByDefault = context.Clone(this.stereoByDefault)!;
         ((CSystemConfigDisplay)clone).stereoAdvanced = context.Clone(this.stereoAdvanced)!;
         ((CSystemConfigDisplay)clone).waterGeomStadium = context.Clone(this.waterGeomStadium)!;
         ((CSystemConfigDisplay)clone).filterAnisoQ = context.Clone(this.filterAnisoQ)!;
+        ((CSystemConfigDisplay)clone).deferredAA = context.Clone(this.deferredAA)!;
         ((CSystemConfigDisplay)clone).fxBloomHdr = context.Clone(this.fxBloomHdr)!;
+        ((CSystemConfigDisplay)clone).disableShadowBufferRaw = context.Clone(this.disableShadowBufferRaw)!;
         ((CSystemConfigDisplay)clone).gpuSync0 = context.Clone(this.gpuSync0)!;
+        ((CSystemConfigDisplay)clone).ignoreDriverCrashesRaw = context.Clone(this.ignoreDriverCrashesRaw)!;
         ((CSystemConfigDisplay)clone).displaySync = context.Clone(this.displaySync)!;
+        ((CSystemConfigDisplay)clone).preset = context.Clone(this.preset)!;
         ((CSystemConfigDisplay)clone).shaderQuality = context.Clone(this.shaderQuality)!;
         ((CSystemConfigDisplay)clone).vehicleReflect = context.Clone(this.vehicleReflect)!;
         ((CSystemConfigDisplay)clone).fxMotionBlur = context.Clone(this.fxMotionBlur)!;
         ((CSystemConfigDisplay)clone).maxFps = context.Clone(this.maxFps)!;
+        ((CSystemConfigDisplay)clone).lightMapSizeMax = context.Clone(this.lightMapSizeMax)!;
         ((CSystemConfigDisplay)clone).lM_Quality = context.Clone(this.lM_Quality)!;
         ((CSystemConfigDisplay)clone).lM_QUltra = context.Clone(this.lM_QUltra)!;
         ((CSystemConfigDisplay)clone).lM_iLight = context.Clone(this.lM_iLight)!;
@@ -385,10 +787,17 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         ((CSystemConfigDisplay)clone).disableHdrCubeRenderMipMap = context.Clone(this.disableHdrCubeRenderMipMap)!;
         ((CSystemConfigDisplay)clone).fxMotionBlurIntens = context.Clone(this.fxMotionBlurIntens)!;
         ((CSystemConfigDisplay)clone).displayMode = context.Clone(this.displayMode)!;
+        ((CSystemConfigDisplay)clone).tripleBuffer = context.Clone(this.tripleBuffer)!;
+        ((CSystemConfigDisplay)clone).renderingApi = context.Clone(this.renderingApi)!;
         ((CSystemConfigDisplay)clone).adapter = context.Clone(this.adapter)!;
         ((CSystemConfigDisplay)clone).screenShotExt = context.Clone(this.screenShotExt)!;
+        ((CSystemConfigDisplay)clone).geometryQuality = context.Clone(this.geometryQuality)!;
         ((CSystemConfigDisplay)clone).particleMaxGpuLoadMs = context.Clone(this.particleMaxGpuLoadMs)!;
         ((CSystemConfigDisplay)clone).asyncRender = context.Clone(this.asyncRender)!;
+        ((CSystemConfigDisplay)clone).fxBlur = context.Clone(this.fxBlur)!;
+        ((CSystemConfigDisplay)clone).reflectEverywhere = context.Clone(this.reflectEverywhere)!;
+        ((CSystemConfigDisplay)clone).automaticEnabled = context.Clone(this.automaticEnabled)!;
+        ((CSystemConfigDisplay)clone).automaticMinFps = context.Clone(this.automaticMinFps)!;
     }
 
     public CSystemConfigDisplay()
@@ -401,31 +810,21 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013001;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public int U01;
-        public int U02;
-        public int U03;
-        public bool U04;
-        public bool U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B013001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B013001)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
             rw.Int2(ref n.screenSizeFS);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.screenSizeWin);
+            rw.EnumInt32<EColorDepth>(ref n.colorDepth);
+            rw.EnumInt32<EAntialiasing>(ref n.antialiasing);
             rw.Int32(ref n.refreshRate);
-            rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
+            rw.Boolean(ref n.vSync);
+            rw.Boolean(ref n.fullScreen);
         }
     }
 
@@ -435,28 +834,20 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013003;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public bool U01;
-        public int U02;
-        public int U03;
-        public bool U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013003)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B013003)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
+            rw.Boolean(ref n.disableShadowBuffer);
+            rw.EnumInt32<EGpuSyncOld>(ref n.gpuSync);
             rw.Boolean(ref n.emulateCursorGDI);
-            rw.Int32(ref U03);
+            rw.EnumInt32<EVertexProcess>(ref n.vertexProcess);
             rw.Boolean(ref n.optimPartDynaGeom);
-            rw.Boolean(ref U04);
+            rw.Boolean(ref n.ignoreDriverCrashes);
         }
     }
 
@@ -466,17 +857,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013004;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Int32(ref n.disableColorWMask);
         }
     }
 
@@ -504,20 +893,16 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013008;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013008)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013008)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.EnumInt32<EZClip>(ref n.zClip);
+            rw.EnumInt32<EZClipAuto>(ref n.zClipAuto);
             rw.Int32(ref n.zClipNbBlock);
         }
     }
@@ -529,23 +914,21 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         public override uint Id => 0x0B013009;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
         public int U01;
-        public int U02;
-        public bool U03;
+        public bool U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B013009)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0B013009)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013009)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
+            rw.EnumInt32<EWaterReflect>(ref n.waterReflect);
             rw.Int32(ref U01);
-            rw.Int32(ref U02);
             rw.Boolean(ref n.postFx);
-            rw.Boolean(ref U03);
+            rw.Boolean(ref U02);
         }
     }
 
@@ -555,20 +938,16 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01300A;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public bool U01;
-        public bool U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01300A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B01300A)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref n.forceFxColors);
+            rw.Boolean(ref n.forceFxMotionBlur);
         }
     }
 
@@ -597,36 +976,22 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01300D;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01300D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B01300D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B01300D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B01300D)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B01300D)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0B01300D)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0B01300D)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EAutoScale>(ref n.autoScale);
             rw.Boolean(ref n.customize);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
+            rw.EnumInt32<EPresetOld>(ref n.presetOld);
+            rw.EnumInt32<ETexturesQuality>(ref n.texturesQuality);
+            rw.EnumInt32<EShaderQualityOld>(ref n.shaderQualityOld);
+            rw.Int32(ref n.textureFilterOld);
+            rw.EnumInt32<EShadows>(ref n.shadows);
+            rw.Int32(ref n.anisoQualityOld);
         }
     }
 
@@ -694,17 +1059,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013011;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013011)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.forceFxBloom);
         }
     }
 
@@ -770,17 +1133,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013017;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013017)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.enableRenderReadBack);
         }
     }
 
@@ -810,17 +1171,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013019;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013019)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<ELightMapCompute>(ref n.lightMapCompute);
         }
     }
 
@@ -830,17 +1189,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01301A;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01301A)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.lightMapQualityEnabled);
         }
     }
 
@@ -850,17 +1207,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01301B;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01301B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<ELightFromMap>(ref n.lightFromMap);
         }
     }
 
@@ -889,17 +1244,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01301D;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01301D)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<ELightMapQualityOld>(ref n.lightMapQualityOld);
         }
     }
 
@@ -909,17 +1262,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01301E;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01301E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.treeAlwaysHq);
         }
     }
 
@@ -966,30 +1317,20 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013022;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013022)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013022)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013022)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B013022)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B013022)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EAutoScale>(ref n.autoScale);
             rw.Boolean(ref n.customize);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
+            rw.EnumInt32<EPresetOld>(ref n.presetOld);
+            rw.EnumInt32<ETexturesQuality>(ref n.texturesQuality);
+            rw.EnumInt32<EShaderQualityOld>(ref n.shaderQualityOld);
+            rw.EnumInt32<EShadows>(ref n.shadows);
             rw.EnumInt32<EFilterAnisoQ>(ref n.filterAnisoQ);
         }
     }
@@ -1000,17 +1341,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013025;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013025)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EDeferredAA>(ref n.deferredAA);
             rw.EnumInt32<EFxBloomHdr>(ref n.fxBloomHdr);
         }
     }
@@ -1021,26 +1360,20 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013026;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013026)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013026)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013026)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.disableShadowBufferRaw);
             rw.EnumInt32<EGpuSync>(ref n.gpuSync0);
             rw.Boolean(ref n.emulateCursorGDI);
-            rw.Int32(ref U02);
+            rw.EnumInt32<EVertexProcess>(ref n.vertexProcess);
             rw.Boolean(ref n.optimPartDynaGeom);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.ignoreDriverCrashesRaw);
         }
     }
 
@@ -1048,29 +1381,21 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     public partial class Chunk0B013029 : SkippableChunk<CSystemConfigDisplay>
     {
         public override uint Id => 0x0B013029;
-        public int U01;
-        public int U02;
-        public int U03;
-        public bool U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013029)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B013029)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B013029)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B013029)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
             rw.Int2(ref n.screenSizeFS);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.screenSizeWin);
+            rw.EnumInt32<EColorDepth>(ref n.colorDepth);
+            rw.EnumInt32<EAntialiasing>(ref n.antialiasing);
             rw.Int32(ref n.refreshRate);
             rw.EnumInt32<EDisplaySync>(ref n.displaySync);
-            rw.Boolean(ref U04);
+            rw.Boolean(ref n.fullScreen);
         }
     }
 
@@ -1080,28 +1405,20 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01302A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01302A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B01302A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B01302A)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B01302A)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EAutoScale>(ref n.autoScale);
             rw.Boolean(ref n.customize);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.EnumInt32<EPreset>(ref n.preset);
+            rw.EnumInt32<ETexturesQuality>(ref n.texturesQuality);
             rw.EnumInt32<EShaderQ>(ref n.shaderQuality);
-            rw.Int32(ref U04);
+            rw.EnumInt32<EShadows>(ref n.shadows);
             rw.EnumInt32<EFilterAnisoQ>(ref n.filterAnisoQ);
         }
     }
@@ -1186,17 +1503,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B013030;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B013030)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<ELightMapSizeMax>(ref n.lightMapSizeMax);
             rw.EnumInt32<ELightMapQuality>(ref n.lM_Quality);
             rw.Boolean(ref n.lM_QUltra);
             rw.Boolean(ref n.lM_iLight);
@@ -1289,11 +1604,6 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         public int U02;
         public int U03;
         public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
-        public int U08;
-        public int U09;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1303,35 +1613,30 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
             ((Chunk0B013036)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0B013036)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0B013036)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B013036)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0B013036)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0B013036)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0B013036)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0B013036)clone).U09 = context.Clone(this.U09)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.Int2(ref n.screenSizeFS);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.screenSizeWin);
+            rw.EnumInt32<EColorDepth>(ref n.colorDepth);
+            rw.EnumInt32<EAntialiasing>(ref n.antialiasing);
             rw.Int32(ref n.refreshRate);
             rw.EnumInt32<EDisplaySync>(ref n.displaySync);
             rw.EnumInt32<EDisplayMode>(ref n.displayMode);
-            rw.Int32(ref U04);
+            rw.EnumInt32<ETripleBuffer>(ref n.tripleBuffer);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U05);
+                rw.EnumInt32<ERenderingApi>(ref n.renderingApi);
 
                 if (Version >= 2)
                 {
-                    rw.Int32(ref U06);
-                    rw.Int32(ref U07);
-                    rw.Int32(ref U08);
-                    rw.Int32(ref U09);
+                    rw.Int32(ref U01);
+                    rw.Int32(ref U02);
+                    rw.Int32(ref U03);
+                    rw.Int32(ref U04);
 
                     if (Version >= 3)
                     {
@@ -1386,17 +1691,15 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     {
         public override uint Id => 0x0B01303A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B01303A)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EGeometryQuality>(ref n.geometryQuality);
         }
     }
 
@@ -1454,6 +1757,236 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         {
             rw.Boolean(ref n.asyncRender);
         }
+    }
+
+    [Chunk(0x0B01303E)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0B01303E : SkippableChunk<CSystemConfigDisplay>, IVersionable
+    {
+        public override uint Id => 0x0B01303E;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B01303E)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version >= 2)
+            {
+                throw new NotSupportedException();
+            }
+
+            rw.EnumInt32<EFxBlur>(ref n.fxBlur);
+
+            if (Version >= 1)
+            {
+                rw.EnumInt32<EEverywhereReflect>(ref n.reflectEverywhere);
+            }
+        }
+    }
+
+    [Chunk(0x0B01303F)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0B01303F : SkippableChunk<CSystemConfigDisplay>
+    {
+        public override uint Id => 0x0B01303F;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.automaticEnabled);
+            rw.Int32(ref n.automaticMinFps);
+        }
+    }
+
+    public enum EColorDepth
+    {
+        _16Bits,
+        _32Bits,
+    }
+
+    public enum EAntialiasing
+    {
+        None,
+        _2Samples,
+        _4Samples,
+        _6Samples,
+        _8Samples,
+        _16Samples,
+    }
+
+    public enum EAutoScale
+    {
+        Faster,
+        Normal,
+        Nicer,
+    }
+
+    public enum EPresetOld
+    {
+        None,
+        MinimumQuality,
+        LowQuality,
+        MediumQuality,
+        HighQuality,
+        VeryHighQuality,
+    }
+
+    public enum EPreset
+    {
+        None,
+        VeryFast,
+        Fast,
+        Nice,
+        VeryNice,
+    }
+
+    public enum ETexturesQuality
+    {
+        VeryLow,
+        Low,
+        Medium,
+        High,
+    }
+
+    public enum EShaderQualityOld
+    {
+        PC0,
+        PC1,
+        PC2,
+        PC3Low,
+        PC3High,
+    }
+
+    public enum EShadows
+    {
+        None,
+        Minimum,
+        Medium,
+        High,
+        VeryHigh,
+        /// <summary>
+        /// Legacy TMF value, absent from the MP reflection enum.
+        /// </summary>
+        Complex,
+    }
+
+    public enum EZClip
+    {
+        Disable,
+        Auto,
+        Fixed,
+    }
+
+    public enum EZClipAuto
+    {
+        Near,
+        Medium,
+        Far,
+    }
+
+    public enum EVertexProcess
+    {
+        Hardware,
+        SoftwareVertexShader,
+        Software,
+    }
+
+    public enum EGpuSyncOld
+    {
+        None,
+        _3Frames,
+        _2AndHalfFrames,
+        _2Frames,
+        _1AndHalfFrames,
+        _1Frame,
+        _HalfFrame,
+        Immediate,
+    }
+
+    public enum ELightMapCompute
+    {
+        NoShadows,
+        SafeMode,
+        Normal,
+    }
+
+    public enum ELightFromMap
+    {
+        None,
+        MyVehicle,
+        AllVehicles,
+    }
+
+    public enum ELightMapQualityOld
+    {
+        None,
+        _2k,
+        _4k,
+        _8k,
+    }
+
+    public enum EDeferredAA
+    {
+        None,
+        FXAA,
+    }
+
+    public enum ELightMapSizeMax
+    {
+        Auto,
+        _1024,
+    }
+
+    public enum ETripleBuffer
+    {
+        Off,
+        On,
+    }
+
+    public enum ERenderingApi
+    {
+        D3D9,
+        D3D11,
+        Vulkan,
+    }
+
+    public enum EWaterReflect
+    {
+        Low,
+        Medium,
+        High,
+    }
+
+    public enum EGeometryQuality
+    {
+        VeryFast,
+        Fast,
+        Nice,
+        VeryNice,
+    }
+
+    public enum EFxBlur
+    {
+        Off,
+        On,
+    }
+
+    public enum EEverywhereReflect
+    {
+        None,
+        Enabled,
     }
 
     public enum EFxBloomHdr
@@ -1584,6 +2117,8 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         0x0B01303B => new Chunk0B01303B(),
         0x0B01303C => new Chunk0B01303C(),
         0x0B01303D => new Chunk0B01303D(),
+        0x0B01303E => new Chunk0B01303E(),
+        0x0B01303F => new Chunk0B01303F(),
         _ => base.NewChunk(chunkId),
     };
 }

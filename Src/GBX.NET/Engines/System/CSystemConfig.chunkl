@@ -7,17 +7,17 @@ CSystemConfig 0x0B005000
   bool AudioEnabled
   float AudioSoundVolume
   float AudioMusicVolume
-  int
-  int
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
   bool AudioAllowEFX
   int
   int
   int
 
 0x005 (skippable)
-  int
-  int
-  int
+  int<EVsk3SeaQuality> Vsk3SeaQuality
+  int<EVsk3BoatVisibility> Vsk3TeamMate
+  int<EVsk3BoatVisibility> Vsk3Stem
 
 0x007 (skippable) [TM10, TMPU]
   string
@@ -31,11 +31,11 @@ CSystemConfig 0x0B005000
 
 0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
   string U01
-  string U01
-  string U01
-  string U01
-  string U01
-  string U01
+  string U02
+  string U03
+  string U04
+  string U05
+  string U06
 
 0x00A (skippable) [TM10, TMPU]
   int2
@@ -53,7 +53,7 @@ CSystemConfig 0x0B005000
 
 0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
   base
-  int U04
+  int<EVsk3BoatQuality> Vsk3BoatQuality
 
 0x00C (skippable) [TM10, TMPU]
   bool IsIgnorePlayerSkins
@@ -62,8 +62,8 @@ CSystemConfig 0x0B005000
   string
   string
   bool NetworkUseProxy
-  string
-  string
+  string NetworkProxyLogin
+  string NetworkProxyPassword
   string
   int NetworkServerPort
   int NetworkClientPort
@@ -73,7 +73,7 @@ CSystemConfig 0x0B005000
 
 0x00E (skippable) [TM10, TMPU]
   int TmCarQuality
-  int
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
   int TmOpponents
 
 0x00F (skippable) [TM10, TMPU]
@@ -108,30 +108,30 @@ CSystemConfig 0x0B005000
   bool AudioEnabled
   float AudioSoundVolume
   float AudioMusicVolume
-  int
-  int
-  int
+  int AudioGlobalQuality
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
   bool AudioAllowEFX
   bool AudioDisableDoppler
-  int AudioGlobalQuality
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
 
 0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
-  int
+  int<EAdvertisingEnabled> Advertising_Enabled
   bool Advertising_DisabledByUser
   float Advertising_TunningCoef
 
 0x02C (skippable) [TMO, TMSX]
   int TmCarQuality
-  int
-  int
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
   int TmOpponents
   int TmMaxOpponents
-  bool
+  bool TmOppShadows
 
 0x030 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
   bool FileTransferEnableDownload
   bool FileTransferEnableUpload
-  int
+  uint FileTransferMaxCacheSize32 // Legacy 32-bit cache size. Chunk 0x054 uses 64 bits.
   bool
   bool EnableLocators
   bool AutoUpdateFromLocator
@@ -142,8 +142,8 @@ CSystemConfig 0x0B005000
 
 0x031 (skippable) [TMO, TMSX]
   bool NetworkUseProxy
-  string
-  string
+  string NetworkProxyLogin
+  string NetworkProxyPassword
   int NetworkServerPort
   int NetworkClientPort
   bool NetworkForceUseLocalAddress
@@ -153,11 +153,11 @@ CSystemConfig 0x0B005000
 
 0x034 (skippable) [TMNESWC, TMU, VSK5, TMF]
   int TmCarQuality
-  int
-  int
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
   int TmOpponents
   int TmMaxOpponents
-  bool
+  bool TmOppShadows
   int TmBackgroundQuality
 
 0x035 (skippable) [TMNESWC, TMU, VSK5]
@@ -166,8 +166,8 @@ CSystemConfig 0x0B005000
 
 0x036 (skippable) [TMNESWC]
   bool NetworkUseProxy
-  string
-  string
+  string NetworkProxyLogin
+  string NetworkProxyPassword
   int NetworkServerPort
   int NetworkP2PServerPort
   int NetworkClientPort
@@ -178,7 +178,7 @@ CSystemConfig 0x0B005000
   bool NetworkUseNatUPnP
 
 0x037 (skippable) [TMU, VSK5]
-  string
+  string Key // Plaintext legacy key. Later chunks store an encrypted representation.
 
 0x038 (skippable) [TMU, VSK5]
   bool GameProfileEnableMulti
@@ -186,8 +186,8 @@ CSystemConfig 0x0B005000
 
 0x039 (skippable) [TMU, VSK5, TMF]
   bool NetworkUseProxy
-  string
-  string
+  string NetworkProxyLogin
+  string NetworkProxyPassword
   int NetworkServerPort
   int NetworkP2PServerPort
   int NetworkClientPort
@@ -199,7 +199,7 @@ CSystemConfig 0x0B005000
   bool NetworkUseNatUPnP
 
 0x03A (skippable) [TMF, MP3, MP4]
-  string
+  string // Launcher settings. The individual field meanings are not verified.
   string
   int
   filetime
@@ -208,13 +208,14 @@ CSystemConfig 0x0B005000
   bool IsIgnorePlayerSkins
   bool IsSkipRollingDemo
   int
+  int PlayerInfoDisplaySize
 
 0x03E (skippable) [TMF, MP3, MP4]
-  filetime
-  uint128
+  filetime ParentalLockLastUnlockedTime
+  uint128 ParentalLockPasswordHash
 
 0x041 (skippable) [TMF]
-  string
+  string MenuSkin
 
 0x043 (skippable)
   bool
@@ -226,7 +227,7 @@ CSystemConfig 0x0B005000
   bool NetworkTestInternetConnection
   string NetworkLastUsedMSAddress
   string NetworkLastUsedMSPath
-  int[]
+  uint[] NetworkFirewallTestedExeChecksums
 
 0x045 (skippable) [TMF, MP3, MP4]
   bool InputsAlternateMethod
@@ -248,46 +249,46 @@ CSystemConfig 0x0B005000
   bool IsIgnorePlayerSkins
   bool IsSkipRollingDemo
   int
-  int
-  int
+  int<EPlayerInfoDisplayType> PlayerInfoDisplayType
+  int PlayerInfoDisplaySize
 
 0x04C (skippable) [TMF]
   bool
   bool
 
 0x04D (skippable) [TMF]
-  string
+  string EncryptedKey // TMF serializes the encrypted bytes as hexadecimal text.
   bool
   bool
   bool
 
 0x04E (skippable) [TMF, MP3]
-  string[]
+  string[] KeyHashes
 
 0x04F (skippable) [TMF, MP3, MP4]
   bool AudioEnabled
   float AudioSoundVolume
   float AudioMusicVolume
-  int
-  int
-  int
+  int AudioGlobalQuality
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
   bool AudioAllowEFX
   bool AudioDisableDoppler
   bool
-  int AudioGlobalQuality
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
   string AudioDevice_Oal
 
 0x050 (skippable) [MP3, MP4]
-  bool
+  bool EdDontConnect
 
 0x051 (skippable) [MP3, MP4]
   string
 
 0x052 (skippable) [MP3, MP4]
   int TmCarQuality
-  int
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
   int PlayerShadow
-  int
+  int<EPlayerOcclusion> PlayerOcclusion
   int TmOpponents
   int TmMaxOpponents
   int TmBackgroundQuality
@@ -298,7 +299,7 @@ CSystemConfig 0x0B005000
 0x054 (skippable) [MP3, MP4]
   bool FileTransferEnableDownload
   bool FileTransferEnableUpload
-  ulong
+  ulong FileTransferMaxCacheSize
   bool
   bool EnableLocators
   bool AutoUpdateFromLocator
@@ -308,7 +309,7 @@ CSystemConfig 0x0B005000
   bool EnableCrashLogUpload
 
 0x055 (skippable) [MP3, MP4]
-  string
+  string EncryptedKey
   bool
   bool
   bool
@@ -324,8 +325,8 @@ CSystemConfig 0x0B005000
 
 0x057 (skippable)
   bool NetworkUseProxy
-  string
-  string
+  string NetworkProxyLogin
+  string NetworkProxyPassword
   int NetworkServerPort
   int NetworkP2PServerPort
   int NetworkClientPort
@@ -338,11 +339,11 @@ CSystemConfig 0x0B005000
   bool NetworkTestInternetConnection
   string NetworkLastUsedMSAddress
   string NetworkLastUsedMSPath
-  int[]
+  uint[] NetworkFirewallTestedExeChecksums
   int NetworkSpeed
 
 0x058 (skippable) [MP3, MP4]
-  int
+  int<EGamePackQuality> GamePackQuality
 
 0x059 (skippable) [MP3, MP4]
   bool FileTransferEnableAvatarDownload
@@ -380,9 +381,13 @@ CSystemConfig 0x0B005000
   float
   float
 
-0x05B (skippable) [MP3, MP4]
+0x05B (skippable) [MP3, MP4, TM2020]
   version
+  v3+
+    throw
   string AntiCheatServerUrl
+  v2+
+    string BadWordListUrl
 
 0x05C (skippable) [MP3, MP4]
   version
@@ -409,9 +414,90 @@ CSystemConfig 0x0B005000
   bool NetworkTestInternetConnection
   string NetworkLastUsedMSAddress
   string NetworkLastUsedMSPath
-  int[]
+  uint[] NetworkFirewallTestedExeChecksums
   int NetworkSpeed
 
 0x05F (skippable) [MP4]
   bool NetworkUseProxy
   string NetworkProxyAddress
+
+0x060 (skippable) [TM2020]
+  version
+  v1+
+    throw
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
+  bool InputsEnableRumble
+  bool InputsCaptureKeyboard
+  bool InputsEnableJoysticks
+
+enum EAudioAcceleration
+  Auto
+  HardwareOnly
+  SoftwareOnly
+
+enum EAudioQuality3d
+  NoHrtf
+  HrtfLight
+  HrtfFull
+
+enum EAudioSpeakerConfig
+  UseSystemConfig
+  Mono
+  Headphone
+  StereoMin
+  StereoNarrow
+  StereoWide
+  StereoMax
+  Quad
+  Surround
+  _5_1
+  _7_1
+  NoSpeakers
+
+enum EVsk3SeaQuality
+  Low
+  Medium
+  High
+  VeryHigh
+
+enum EVsk3BoatVisibility
+  None
+  MyBoat
+  AllBoats
+
+enum EVsk3BoatQuality
+  AllLow
+  LowOpponents
+  AllHigh
+
+enum ETmCarParticlesQuality
+  AllLow
+  AllMedium
+  HighMediumOpponents
+  AllHigh
+
+enum ETmCarProjector
+  None
+  MyCar
+  AllCars
+
+enum EAdvertisingEnabled
+  Disabled
+  Configurable
+  Forced
+
+enum EPlayerInfoDisplayType
+  Name
+  Avatar
+  AvatarAndName
+
+enum EPlayerOcclusion
+  None
+  Me
+  All
+
+enum EGamePackQuality
+  Unknown
+  LD
+  HD

@@ -64,6 +64,26 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioMusicVolume = value;
     }
 
+    private EAudioAcceleration audioAcceleration_Dx9;
+    [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00504F>]
+    public EAudioAcceleration AudioAcceleration_Dx9
+    {
+        get => this.audioAcceleration_Dx9;
+        set => this.audioAcceleration_Dx9 = value;
+    }
+
+    private EAudioQuality3d audioQuality3d_Dx9;
+    [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00504F>]
+    public EAudioQuality3d AudioQuality3d_Dx9
+    {
+        get => this.audioQuality3d_Dx9;
+        set => this.audioQuality3d_Dx9 = value;
+    }
+
     private bool audioAllowEFX;
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005028>]
@@ -74,12 +94,47 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioAllowEFX = value;
     }
 
+    private EVsk3SeaQuality vsk3SeaQuality;
+    [AppliedWithChunk<Chunk0B005005>]
+    [AppliedWithChunk<Chunk0B00500B>]
+    public EVsk3SeaQuality Vsk3SeaQuality
+    {
+        get => this.vsk3SeaQuality;
+        set => this.vsk3SeaQuality = value;
+    }
+
+    private EVsk3BoatVisibility vsk3TeamMate;
+    [AppliedWithChunk<Chunk0B005005>]
+    [AppliedWithChunk<Chunk0B00500B>]
+    public EVsk3BoatVisibility Vsk3TeamMate
+    {
+        get => this.vsk3TeamMate;
+        set => this.vsk3TeamMate = value;
+    }
+
+    private EVsk3BoatVisibility vsk3Stem;
+    [AppliedWithChunk<Chunk0B005005>]
+    [AppliedWithChunk<Chunk0B00500B>]
+    public EVsk3BoatVisibility Vsk3Stem
+    {
+        get => this.vsk3Stem;
+        set => this.vsk3Stem = value;
+    }
+
     private string? desiredLanguageId;
     [AppliedWithChunk<Chunk0B005008>]
     public string? DesiredLanguageId
     {
         get => this.desiredLanguageId;
         set => this.desiredLanguageId = value;
+    }
+
+    private EVsk3BoatQuality vsk3BoatQuality;
+    [AppliedWithChunk<Chunk0B00500B>]
+    public EVsk3BoatQuality Vsk3BoatQuality
+    {
+        get => this.vsk3BoatQuality;
+        set => this.vsk3BoatQuality = value;
     }
 
     private bool isIgnorePlayerSkins;
@@ -105,6 +160,32 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.networkUseProxy;
         set => this.networkUseProxy = value;
+    }
+
+    private string? networkProxyLogin;
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public string? NetworkProxyLogin
+    {
+        get => this.networkProxyLogin;
+        set => this.networkProxyLogin = value;
+    }
+
+    private string? networkProxyPassword;
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public string? NetworkProxyPassword
+    {
+        get => this.networkProxyPassword;
+        set => this.networkProxyPassword = value;
     }
 
     private int networkServerPort;
@@ -170,6 +251,17 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.tmCarQuality = value;
     }
 
+    private ETmCarParticlesQuality tmCarParticlesQuality;
+    [AppliedWithChunk<Chunk0B00500E>]
+    [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005034>]
+    [AppliedWithChunk<Chunk0B005052>]
+    public ETmCarParticlesQuality TmCarParticlesQuality
+    {
+        get => this.tmCarParticlesQuality;
+        set => this.tmCarParticlesQuality = value;
+    }
+
     private int tmOpponents;
     [AppliedWithChunk<Chunk0B00500E>]
     [AppliedWithChunk<Chunk0B00502C>]
@@ -210,6 +302,7 @@ public partial class CSystemConfig : CMwNod, IClass
     private bool inputsAlternateMethod;
     [AppliedWithChunk<Chunk0B005022>]
     [AppliedWithChunk<Chunk0B005045>]
+    [AppliedWithChunk<Chunk0B005060>]
     public bool InputsAlternateMethod
     {
         get => this.inputsAlternateMethod;
@@ -219,10 +312,20 @@ public partial class CSystemConfig : CMwNod, IClass
     private bool inputsFreezeUnusedAxes;
     [AppliedWithChunk<Chunk0B005022>]
     [AppliedWithChunk<Chunk0B005045>]
+    [AppliedWithChunk<Chunk0B005060>]
     public bool InputsFreezeUnusedAxes
     {
         get => this.inputsFreezeUnusedAxes;
         set => this.inputsFreezeUnusedAxes = value;
+    }
+
+    private int audioGlobalQuality;
+    [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00504F>]
+    public int AudioGlobalQuality
+    {
+        get => this.audioGlobalQuality;
+        set => this.audioGlobalQuality = value;
     }
 
     private bool audioDisableDoppler;
@@ -234,13 +337,21 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioDisableDoppler = value;
     }
 
-    private int audioGlobalQuality;
+    private EAudioSpeakerConfig audioSpeakerConfig;
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00504F>]
-    public int AudioGlobalQuality
+    public EAudioSpeakerConfig AudioSpeakerConfig
     {
-        get => this.audioGlobalQuality;
-        set => this.audioGlobalQuality = value;
+        get => this.audioSpeakerConfig;
+        set => this.audioSpeakerConfig = value;
+    }
+
+    private EAdvertisingEnabled advertising_Enabled;
+    [AppliedWithChunk<Chunk0B00502B>]
+    public EAdvertisingEnabled Advertising_Enabled
+    {
+        get => this.advertising_Enabled;
+        set => this.advertising_Enabled = value;
     }
 
     private bool advertising_DisabledByUser;
@@ -259,6 +370,15 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.advertising_TunningCoef = value;
     }
 
+    private ETmCarProjector tmCarProjector;
+    [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005034>]
+    public ETmCarProjector TmCarProjector
+    {
+        get => this.tmCarProjector;
+        set => this.tmCarProjector = value;
+    }
+
     private int tmMaxOpponents;
     [AppliedWithChunk<Chunk0B00502C>]
     [AppliedWithChunk<Chunk0B005034>]
@@ -267,6 +387,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.tmMaxOpponents;
         set => this.tmMaxOpponents = value;
+    }
+
+    private bool tmOppShadows;
+    [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005034>]
+    public bool TmOppShadows
+    {
+        get => this.tmOppShadows;
+        set => this.tmOppShadows = value;
     }
 
     private bool fileTransferEnableDownload;
@@ -285,6 +414,17 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.fileTransferEnableUpload;
         set => this.fileTransferEnableUpload = value;
+    }
+
+    private uint fileTransferMaxCacheSize32;
+    /// <summary>
+    /// Legacy 32-bit cache size. Chunk 0x054 uses 64 bits.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B005030>]
+    public uint FileTransferMaxCacheSize32
+    {
+        get => this.fileTransferMaxCacheSize32;
+        set => this.fileTransferMaxCacheSize32 = value;
     }
 
     private bool enableLocators;
@@ -396,6 +536,17 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkServerBroadcastLength = value;
     }
 
+    private string? key;
+    /// <summary>
+    /// Plaintext legacy key. Later chunks store an encrypted representation.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B005037>]
+    public string? Key
+    {
+        get => this.key;
+        set => this.key = value;
+    }
+
     private bool gameProfileEnableMulti;
     [AppliedWithChunk<Chunk0B005038>]
     [AppliedWithChunk<Chunk0B005048>]
@@ -434,6 +585,39 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkUpload = value;
     }
 
+    private int playerInfoDisplaySize;
+    [AppliedWithChunk<Chunk0B00503D>]
+    [AppliedWithChunk<Chunk0B00504A>]
+    public int PlayerInfoDisplaySize
+    {
+        get => this.playerInfoDisplaySize;
+        set => this.playerInfoDisplaySize = value;
+    }
+
+    private DateTime? parentalLockLastUnlockedTime;
+    [AppliedWithChunk<Chunk0B00503E>]
+    public DateTime? ParentalLockLastUnlockedTime
+    {
+        get => this.parentalLockLastUnlockedTime;
+        set => this.parentalLockLastUnlockedTime = value;
+    }
+
+    private UInt128 parentalLockPasswordHash;
+    [AppliedWithChunk<Chunk0B00503E>]
+    public UInt128 ParentalLockPasswordHash
+    {
+        get => this.parentalLockPasswordHash;
+        set => this.parentalLockPasswordHash = value;
+    }
+
+    private string? menuSkin;
+    [AppliedWithChunk<Chunk0B005041>]
+    public string? MenuSkin
+    {
+        get => this.menuSkin;
+        set => this.menuSkin = value;
+    }
+
     private string? networkLastUsedMSAddress;
     [AppliedWithChunk<Chunk0B005043>]
     [AppliedWithChunk<Chunk0B005044>]
@@ -456,8 +640,19 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkLastUsedMSPath = value;
     }
 
+    private uint[]? networkFirewallTestedExeChecksums;
+    [AppliedWithChunk<Chunk0B005044>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public uint[]? NetworkFirewallTestedExeChecksums
+    {
+        get => this.networkFirewallTestedExeChecksums;
+        set => this.networkFirewallTestedExeChecksums = value;
+    }
+
     private bool inputsEnableRumble;
     [AppliedWithChunk<Chunk0B005045>]
+    [AppliedWithChunk<Chunk0B005060>]
     public bool InputsEnableRumble
     {
         get => this.inputsEnableRumble;
@@ -466,10 +661,39 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private bool inputsCaptureKeyboard;
     [AppliedWithChunk<Chunk0B005045>]
+    [AppliedWithChunk<Chunk0B005060>]
     public bool InputsCaptureKeyboard
     {
         get => this.inputsCaptureKeyboard;
         set => this.inputsCaptureKeyboard = value;
+    }
+
+    private EPlayerInfoDisplayType playerInfoDisplayType;
+    [AppliedWithChunk<Chunk0B00504A>]
+    public EPlayerInfoDisplayType PlayerInfoDisplayType
+    {
+        get => this.playerInfoDisplayType;
+        set => this.playerInfoDisplayType = value;
+    }
+
+    private string? encryptedKey;
+    /// <summary>
+    /// TMF serializes the encrypted bytes as hexadecimal text.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B00504D>]
+    [AppliedWithChunk<Chunk0B005055>]
+    public string? EncryptedKey
+    {
+        get => this.encryptedKey;
+        set => this.encryptedKey = value;
+    }
+
+    private string[]? keyHashes;
+    [AppliedWithChunk<Chunk0B00504E>]
+    public string[]? KeyHashes
+    {
+        get => this.keyHashes;
+        set => this.keyHashes = value;
     }
 
     private string? audioDevice_Oal;
@@ -480,12 +704,28 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioDevice_Oal = value;
     }
 
+    private bool edDontConnect;
+    [AppliedWithChunk<Chunk0B005050>]
+    public bool EdDontConnect
+    {
+        get => this.edDontConnect;
+        set => this.edDontConnect = value;
+    }
+
     private int playerShadow;
     [AppliedWithChunk<Chunk0B005052>]
     public int PlayerShadow
     {
         get => this.playerShadow;
         set => this.playerShadow = value;
+    }
+
+    private EPlayerOcclusion playerOcclusion;
+    [AppliedWithChunk<Chunk0B005052>]
+    public EPlayerOcclusion PlayerOcclusion
+    {
+        get => this.playerOcclusion;
+        set => this.playerOcclusion = value;
     }
 
     private bool audioSoundHdr;
@@ -495,6 +735,14 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.audioSoundHdr;
         set => this.audioSoundHdr = value;
+    }
+
+    private ulong fileTransferMaxCacheSize;
+    [AppliedWithChunk<Chunk0B005054>]
+    public ulong FileTransferMaxCacheSize
+    {
+        get => this.fileTransferMaxCacheSize;
+        set => this.fileTransferMaxCacheSize = value;
     }
 
     private bool audioAllowHRTF;
@@ -520,6 +768,14 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.networkSpeed;
         set => this.networkSpeed = value;
+    }
+
+    private EGamePackQuality gamePackQuality;
+    [AppliedWithChunk<Chunk0B005058>]
+    public EGamePackQuality GamePackQuality
+    {
+        get => this.gamePackQuality;
+        set => this.gamePackQuality = value;
     }
 
     private bool fileTransferEnableAvatarDownload;
@@ -706,28 +962,20 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.antiCheatServerUrl = value;
     }
 
+    private string? badWordListUrl;
+    [AppliedWithChunk<Chunk0B00505B>(2)]
+    public string? BadWordListUrl
+    {
+        get => this.badWordListUrl;
+        set => this.badWordListUrl = value;
+    }
+
     private int smMaxPlayerResimStepPerFrame;
     [AppliedWithChunk<Chunk0B00505C>]
     public int SmMaxPlayerResimStepPerFrame
     {
         get => this.smMaxPlayerResimStepPerFrame;
         set => this.smMaxPlayerResimStepPerFrame = value;
-    }
-
-    private string? networkProxyLogin;
-    [AppliedWithChunk<Chunk0B00505E>]
-    public string? NetworkProxyLogin
-    {
-        get => this.networkProxyLogin;
-        set => this.networkProxyLogin = value;
-    }
-
-    private string? networkProxyPassword;
-    [AppliedWithChunk<Chunk0B00505E>]
-    public string? NetworkProxyPassword
-    {
-        get => this.networkProxyPassword;
-        set => this.networkProxyPassword = value;
     }
 
     private string? networkProxyAddress;
@@ -738,34 +986,56 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkProxyAddress = value;
     }
 
+    private bool inputsEnableJoysticks;
+    [AppliedWithChunk<Chunk0B005060>]
+    public bool InputsEnableJoysticks
+    {
+        get => this.inputsEnableJoysticks;
+        set => this.inputsEnableJoysticks = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CSystemConfig)clone).audioEnabled = context.Clone(this.audioEnabled)!;
         ((CSystemConfig)clone).audioSoundVolume = context.Clone(this.audioSoundVolume)!;
         ((CSystemConfig)clone).audioMusicVolume = context.Clone(this.audioMusicVolume)!;
+        ((CSystemConfig)clone).audioAcceleration_Dx9 = context.Clone(this.audioAcceleration_Dx9)!;
+        ((CSystemConfig)clone).audioQuality3d_Dx9 = context.Clone(this.audioQuality3d_Dx9)!;
         ((CSystemConfig)clone).audioAllowEFX = context.Clone(this.audioAllowEFX)!;
+        ((CSystemConfig)clone).vsk3SeaQuality = context.Clone(this.vsk3SeaQuality)!;
+        ((CSystemConfig)clone).vsk3TeamMate = context.Clone(this.vsk3TeamMate)!;
+        ((CSystemConfig)clone).vsk3Stem = context.Clone(this.vsk3Stem)!;
         ((CSystemConfig)clone).desiredLanguageId = context.Clone(this.desiredLanguageId)!;
+        ((CSystemConfig)clone).vsk3BoatQuality = context.Clone(this.vsk3BoatQuality)!;
         ((CSystemConfig)clone).isIgnorePlayerSkins = context.Clone(this.isIgnorePlayerSkins)!;
         ((CSystemConfig)clone).networkUseProxy = context.Clone(this.networkUseProxy)!;
+        ((CSystemConfig)clone).networkProxyLogin = context.Clone(this.networkProxyLogin)!;
+        ((CSystemConfig)clone).networkProxyPassword = context.Clone(this.networkProxyPassword)!;
         ((CSystemConfig)clone).networkServerPort = context.Clone(this.networkServerPort)!;
         ((CSystemConfig)clone).networkClientPort = context.Clone(this.networkClientPort)!;
         ((CSystemConfig)clone).networkForceUseLocalAddress = context.Clone(this.networkForceUseLocalAddress)!;
         ((CSystemConfig)clone).networkForceServerAddress = context.Clone(this.networkForceServerAddress)!;
         ((CSystemConfig)clone).tmCarQuality = context.Clone(this.tmCarQuality)!;
+        ((CSystemConfig)clone).tmCarParticlesQuality = context.Clone(this.tmCarParticlesQuality)!;
         ((CSystemConfig)clone).tmOpponents = context.Clone(this.tmOpponents)!;
         ((CSystemConfig)clone).isSkipRollingDemo = context.Clone(this.isSkipRollingDemo)!;
         ((CSystemConfig)clone).isSafeMode = context.Clone(this.isSafeMode)!;
         ((CSystemConfig)clone).display = context.Clone(this.display)!;
         ((CSystemConfig)clone).inputsAlternateMethod = context.Clone(this.inputsAlternateMethod)!;
         ((CSystemConfig)clone).inputsFreezeUnusedAxes = context.Clone(this.inputsFreezeUnusedAxes)!;
-        ((CSystemConfig)clone).audioDisableDoppler = context.Clone(this.audioDisableDoppler)!;
         ((CSystemConfig)clone).audioGlobalQuality = context.Clone(this.audioGlobalQuality)!;
+        ((CSystemConfig)clone).audioDisableDoppler = context.Clone(this.audioDisableDoppler)!;
+        ((CSystemConfig)clone).audioSpeakerConfig = context.Clone(this.audioSpeakerConfig)!;
+        ((CSystemConfig)clone).advertising_Enabled = context.Clone(this.advertising_Enabled)!;
         ((CSystemConfig)clone).advertising_DisabledByUser = context.Clone(this.advertising_DisabledByUser)!;
         ((CSystemConfig)clone).advertising_TunningCoef = context.Clone(this.advertising_TunningCoef)!;
+        ((CSystemConfig)clone).tmCarProjector = context.Clone(this.tmCarProjector)!;
         ((CSystemConfig)clone).tmMaxOpponents = context.Clone(this.tmMaxOpponents)!;
+        ((CSystemConfig)clone).tmOppShadows = context.Clone(this.tmOppShadows)!;
         ((CSystemConfig)clone).fileTransferEnableDownload = context.Clone(this.fileTransferEnableDownload)!;
         ((CSystemConfig)clone).fileTransferEnableUpload = context.Clone(this.fileTransferEnableUpload)!;
+        ((CSystemConfig)clone).fileTransferMaxCacheSize32 = context.Clone(this.fileTransferMaxCacheSize32)!;
         ((CSystemConfig)clone).enableLocators = context.Clone(this.enableLocators)!;
         ((CSystemConfig)clone).autoUpdateFromLocator = context.Clone(this.autoUpdateFromLocator)!;
         ((CSystemConfig)clone).autoUpdateFromLocatorAtInternetConnection = context.Clone(this.autoUpdateFromLocatorAtInternetConnection)!;
@@ -777,20 +1047,33 @@ public partial class CSystemConfig : CMwNod, IClass
         ((CSystemConfig)clone).networkTestInternetConnection = context.Clone(this.networkTestInternetConnection)!;
         ((CSystemConfig)clone).networkP2PServerPort = context.Clone(this.networkP2PServerPort)!;
         ((CSystemConfig)clone).networkServerBroadcastLength = context.Clone(this.networkServerBroadcastLength)!;
+        ((CSystemConfig)clone).key = context.Clone(this.key)!;
         ((CSystemConfig)clone).gameProfileEnableMulti = context.Clone(this.gameProfileEnableMulti)!;
         ((CSystemConfig)clone).gameProfileName = context.Clone(this.gameProfileName)!;
         ((CSystemConfig)clone).networkDownload = context.Clone(this.networkDownload)!;
         ((CSystemConfig)clone).networkUpload = context.Clone(this.networkUpload)!;
+        ((CSystemConfig)clone).playerInfoDisplaySize = context.Clone(this.playerInfoDisplaySize)!;
+        ((CSystemConfig)clone).parentalLockLastUnlockedTime = context.Clone(this.parentalLockLastUnlockedTime)!;
+        ((CSystemConfig)clone).parentalLockPasswordHash = context.Clone(this.parentalLockPasswordHash)!;
+        ((CSystemConfig)clone).menuSkin = context.Clone(this.menuSkin)!;
         ((CSystemConfig)clone).networkLastUsedMSAddress = context.Clone(this.networkLastUsedMSAddress)!;
         ((CSystemConfig)clone).networkLastUsedMSPath = context.Clone(this.networkLastUsedMSPath)!;
+        ((CSystemConfig)clone).networkFirewallTestedExeChecksums = context.CloneArray(this.networkFirewallTestedExeChecksums)!;
         ((CSystemConfig)clone).inputsEnableRumble = context.Clone(this.inputsEnableRumble)!;
         ((CSystemConfig)clone).inputsCaptureKeyboard = context.Clone(this.inputsCaptureKeyboard)!;
+        ((CSystemConfig)clone).playerInfoDisplayType = context.Clone(this.playerInfoDisplayType)!;
+        ((CSystemConfig)clone).encryptedKey = context.Clone(this.encryptedKey)!;
+        ((CSystemConfig)clone).keyHashes = context.CloneArray(this.keyHashes)!;
         ((CSystemConfig)clone).audioDevice_Oal = context.Clone(this.audioDevice_Oal)!;
+        ((CSystemConfig)clone).edDontConnect = context.Clone(this.edDontConnect)!;
         ((CSystemConfig)clone).playerShadow = context.Clone(this.playerShadow)!;
+        ((CSystemConfig)clone).playerOcclusion = context.Clone(this.playerOcclusion)!;
         ((CSystemConfig)clone).audioSoundHdr = context.Clone(this.audioSoundHdr)!;
+        ((CSystemConfig)clone).fileTransferMaxCacheSize = context.Clone(this.fileTransferMaxCacheSize)!;
         ((CSystemConfig)clone).audioAllowHRTF = context.Clone(this.audioAllowHRTF)!;
         ((CSystemConfig)clone).audioDontMuteWhenApplicationUnfocused = context.Clone(this.audioDontMuteWhenApplicationUnfocused)!;
         ((CSystemConfig)clone).networkSpeed = context.Clone(this.networkSpeed)!;
+        ((CSystemConfig)clone).gamePackQuality = context.Clone(this.gamePackQuality)!;
         ((CSystemConfig)clone).fileTransferEnableAvatarDownload = context.Clone(this.fileTransferEnableAvatarDownload)!;
         ((CSystemConfig)clone).fileTransferEnableAvatarUpload = context.Clone(this.fileTransferEnableAvatarUpload)!;
         ((CSystemConfig)clone).fileTransferEnableAvatarLocators = context.Clone(this.fileTransferEnableAvatarLocators)!;
@@ -814,10 +1097,10 @@ public partial class CSystemConfig : CMwNod, IClass
         ((CSystemConfig)clone).fileTransferEnableUnknownTypeLocators = context.Clone(this.fileTransferEnableUnknownTypeLocators)!;
         ((CSystemConfig)clone).disableReplayRecording = context.Clone(this.disableReplayRecording)!;
         ((CSystemConfig)clone).antiCheatServerUrl = context.Clone(this.antiCheatServerUrl)!;
+        ((CSystemConfig)clone).badWordListUrl = context.Clone(this.badWordListUrl)!;
         ((CSystemConfig)clone).smMaxPlayerResimStepPerFrame = context.Clone(this.smMaxPlayerResimStepPerFrame)!;
-        ((CSystemConfig)clone).networkProxyLogin = context.Clone(this.networkProxyLogin)!;
-        ((CSystemConfig)clone).networkProxyPassword = context.Clone(this.networkProxyPassword)!;
         ((CSystemConfig)clone).networkProxyAddress = context.Clone(this.networkProxyAddress)!;
+        ((CSystemConfig)clone).inputsEnableJoysticks = context.Clone(this.inputsEnableJoysticks)!;
     }
 
     public CSystemConfig()
@@ -853,8 +1136,6 @@ public partial class CSystemConfig : CMwNod, IClass
         public int U01;
         public int U02;
         public int U03;
-        public int U04;
-        public int U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -862,8 +1143,6 @@ public partial class CSystemConfig : CMwNod, IClass
             ((Chunk0B005004)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0B005004)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0B005004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B005004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B005004)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -871,12 +1150,12 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.audioEnabled);
             rw.Single(ref n.audioSoundVolume);
             rw.Single(ref n.audioMusicVolume);
+            rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
+            rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
+            rw.Boolean(ref n.audioAllowEFX);
             rw.Int32(ref U01);
             rw.Int32(ref U02);
-            rw.Boolean(ref n.audioAllowEFX);
             rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
         }
     }
 
@@ -884,23 +1163,17 @@ public partial class CSystemConfig : CMwNod, IClass
     public partial class Chunk0B005005 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005005;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005005)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005005)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005005)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.EnumInt32<EVsk3SeaQuality>(ref n.vsk3SeaQuality);
+            rw.EnumInt32<EVsk3BoatVisibility>(ref n.vsk3TeamMate);
+            rw.EnumInt32<EVsk3BoatVisibility>(ref n.vsk3Stem);
         }
     }
 
@@ -961,21 +1234,31 @@ public partial class CSystemConfig : CMwNod, IClass
         public override uint Id => 0x0B005009;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
         public string? U01;
+        public string? U02;
+        public string? U03;
+        public string? U04;
+        public string? U05;
+        public string? U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005009)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0B005009)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0B005009)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0B005009)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0B005009)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0B005009)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.String(ref U01);
-            rw.String(ref U01);
-            rw.String(ref U01);
-            rw.String(ref U01);
-            rw.String(ref U01);
-            rw.String(ref U01);
+            rw.String(ref U02);
+            rw.String(ref U03);
+            rw.String(ref U04);
+            rw.String(ref U05);
+            rw.String(ref U06);
         }
     }
 
@@ -1038,18 +1321,16 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00500B;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00500B)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.Int32(ref U04);
+            rw.EnumInt32<EVsk3BoatQuality>(ref n.vsk3BoatQuality);
         }
     }
 
@@ -1080,9 +1361,7 @@ public partial class CSystemConfig : CMwNod, IClass
         public string? U01;
         public string? U02;
         public string? U03;
-        public string? U04;
-        public string? U05;
-        public int U06;
+        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1091,8 +1370,6 @@ public partial class CSystemConfig : CMwNod, IClass
             ((Chunk0B00500D)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0B00500D)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0B00500D)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B00500D)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0B00500D)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1100,14 +1377,14 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.String(ref U01);
             rw.String(ref U02);
             rw.Boolean(ref n.networkUseProxy);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
             rw.String(ref U03);
-            rw.String(ref U04);
-            rw.String(ref U05);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkClientPort);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U06);
+            rw.Int32(ref U04);
         }
     }
 
@@ -1117,18 +1394,16 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00500E;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00500E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref U01);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
             rw.Int32(ref n.tmOpponents);
         }
     }
@@ -1277,16 +1552,10 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005028;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005028)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005028)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005028)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1294,12 +1563,12 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.audioEnabled);
             rw.Single(ref n.audioSoundVolume);
             rw.Single(ref n.audioMusicVolume);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.audioGlobalQuality);
+            rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
+            rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
             rw.Boolean(ref n.audioAllowEFX);
             rw.Boolean(ref n.audioDisableDoppler);
-            rw.Int32(ref n.audioGlobalQuality);
+            rw.EnumInt32<EAudioSpeakerConfig>(ref n.audioSpeakerConfig);
         }
     }
 
@@ -1309,17 +1578,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00502B;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00502B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EAdvertisingEnabled>(ref n.advertising_Enabled);
             rw.Boolean(ref n.advertising_DisabledByUser);
             rw.Single(ref n.advertising_TunningCoef);
         }
@@ -1331,26 +1598,20 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00502C;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX;
-        public int U01;
-        public int U02;
-        public bool U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00502C)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00502C)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B00502C)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
             rw.Int32(ref n.tmOpponents);
             rw.Int32(ref n.tmMaxOpponents);
-            rw.Boolean(ref U03);
+            rw.Boolean(ref n.tmOppShadows);
         }
     }
 
@@ -1360,22 +1621,20 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005030;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public int U01;
-        public bool U02;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005030)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005030)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.fileTransferEnableDownload);
             rw.Boolean(ref n.fileTransferEnableUpload);
-            rw.Int32(ref U01);
-            rw.Boolean(ref U02);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.enableLocators);
             rw.Boolean(ref n.autoUpdateFromLocator);
             rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
@@ -1391,28 +1650,24 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005031;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX;
-        public string? U01;
-        public string? U02;
-        public int U03;
+        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005031)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005031)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005031)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref U01);
-            rw.String(ref U02);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkClientPort);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U03);
+            rw.Int32(ref U01);
             rw.Boolean(ref n.networkUseNatUPnP);
         }
     }
@@ -1423,26 +1678,20 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005034;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public int U01;
-        public int U02;
-        public bool U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005034)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005034)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005034)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
             rw.Int32(ref n.tmOpponents);
             rw.Int32(ref n.tmMaxOpponents);
-            rw.Boolean(ref U03);
+            rw.Boolean(ref n.tmOppShadows);
             rw.Int32(ref n.tmBackgroundQuality);
         }
     }
@@ -1474,30 +1723,26 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005036;
         public override GameVersion GameVersion => GameVersion.TMNESWC;
-        public string? U01;
-        public string? U02;
-        public int U03;
+        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005036)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005036)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005036)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref U01);
-            rw.String(ref U02);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkP2PServerPort);
             rw.Int32(ref n.networkClientPort);
             rw.Int32(ref n.networkServerBroadcastLength);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U03);
+            rw.Int32(ref U01);
             rw.Boolean(ref n.networkUseNatUPnP);
         }
     }
@@ -1508,17 +1753,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005037;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005037)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.key);
         }
     }
 
@@ -1547,21 +1790,17 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005039;
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
-        public string? U01;
-        public string? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005039)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005039)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref U01);
-            rw.String(ref U02);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkP2PServerPort);
             rw.Int32(ref n.networkClientPort);
@@ -1620,6 +1859,7 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.isIgnorePlayerSkins);
             rw.Boolean(ref n.isSkipRollingDemo);
             rw.Int32(ref U01);
+            rw.Int32(ref n.playerInfoDisplaySize);
         }
     }
 
@@ -1629,20 +1869,16 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00503E;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public DateTime? U01;
-        public UInt128 U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00503E)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00503E)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            U01 = rw.FileTime(U01);
-            rw.UInt128(ref U02);
+            n.parentalLockLastUnlockedTime = rw.FileTime(n.parentalLockLastUnlockedTime);
+            rw.UInt128(ref n.parentalLockPasswordHash);
         }
     }
 
@@ -1652,17 +1888,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005041;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005041)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.menuSkin);
         }
     }
 
@@ -1693,12 +1927,10 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005044;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005044)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1706,7 +1938,7 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
             rw.String(ref n.networkLastUsedMSPath);
-            rw.Array<int>(ref U01!);
+            rw.Array<uint>(ref n.networkFirewallTestedExeChecksums!);
         }
     }
 
@@ -1797,15 +2029,11 @@ public partial class CSystemConfig : CMwNod, IClass
         public override uint Id => 0x0B00504A;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
         public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B00504A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00504A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B00504A)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1813,8 +2041,8 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.isIgnorePlayerSkins);
             rw.Boolean(ref n.isSkipRollingDemo);
             rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.EnumInt32<EPlayerInfoDisplayType>(ref n.playerInfoDisplayType);
+            rw.Int32(ref n.playerInfoDisplaySize);
         }
     }
 
@@ -1847,10 +2075,9 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00504D;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public string? U01;
+        public bool U01;
         public bool U02;
         public bool U03;
-        public bool U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1858,15 +2085,14 @@ public partial class CSystemConfig : CMwNod, IClass
             ((Chunk0B00504D)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0B00504D)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0B00504D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B00504D)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.encryptedKey);
+            rw.Boolean(ref U01);
             rw.Boolean(ref U02);
             rw.Boolean(ref U03);
-            rw.Boolean(ref U04);
         }
     }
 
@@ -1876,17 +2102,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00504E;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
-        public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00504E)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.ArrayString(ref U01!);
+            rw.ArrayString(ref n.keyHashes!);
         }
     }
 
@@ -1896,18 +2120,12 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B00504F;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
-        public int U02;
-        public int U03;
-        public bool U04;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B00504F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00504F)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B00504F)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B00504F)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1915,13 +2133,13 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.audioEnabled);
             rw.Single(ref n.audioSoundVolume);
             rw.Single(ref n.audioMusicVolume);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.audioGlobalQuality);
+            rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
+            rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
             rw.Boolean(ref n.audioAllowEFX);
             rw.Boolean(ref n.audioDisableDoppler);
-            rw.Boolean(ref U04);
-            rw.Int32(ref n.audioGlobalQuality);
+            rw.Boolean(ref U01);
+            rw.EnumInt32<EAudioSpeakerConfig>(ref n.audioSpeakerConfig);
             rw.String(ref n.audioDevice_Oal);
         }
     }
@@ -1932,17 +2150,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005050;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005050)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.edDontConnect);
         }
     }
 
@@ -1972,22 +2188,18 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005052;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005052)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005052)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref U01);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
             rw.Int32(ref n.playerShadow);
-            rw.Int32(ref U02);
+            rw.EnumInt32<EPlayerOcclusion>(ref n.playerOcclusion);
             rw.Int32(ref n.tmOpponents);
             rw.Int32(ref n.tmMaxOpponents);
             rw.Int32(ref n.tmBackgroundQuality);
@@ -2016,22 +2228,20 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005054;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public ulong U01;
-        public bool U02;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005054)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005054)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.fileTransferEnableDownload);
             rw.Boolean(ref n.fileTransferEnableUpload);
-            rw.UInt64(ref U01);
-            rw.Boolean(ref U02);
+            rw.UInt64(ref n.fileTransferMaxCacheSize);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.enableLocators);
             rw.Boolean(ref n.autoUpdateFromLocator);
             rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
@@ -2047,11 +2257,10 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005055;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public string? U01;
+        public bool U01;
         public bool U02;
         public bool U03;
         public bool U04;
-        public bool U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2060,16 +2269,15 @@ public partial class CSystemConfig : CMwNod, IClass
             ((Chunk0B005055)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0B005055)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0B005055)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B005055)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.encryptedKey);
+            rw.Boolean(ref U01);
             rw.Boolean(ref U02);
             rw.Boolean(ref U03);
             rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
         }
     }
 
@@ -2106,23 +2314,17 @@ public partial class CSystemConfig : CMwNod, IClass
     public partial class Chunk0B005057 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005057;
-        public string? U01;
-        public string? U02;
-        public int[]? U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005057)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005057)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005057)clone).U03 = context.CloneArray(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref U01);
-            rw.String(ref U02);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkP2PServerPort);
             rw.Int32(ref n.networkClientPort);
@@ -2135,7 +2337,7 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
             rw.String(ref n.networkLastUsedMSPath);
-            rw.Array<int>(ref U03!);
+            rw.Array<uint>(ref n.networkFirewallTestedExeChecksums!);
             rw.Int32(ref n.networkSpeed);
         }
     }
@@ -2146,17 +2348,15 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         public override uint Id => 0x0B005058;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005058)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EGamePackQuality>(ref n.gamePackQuality);
         }
     }
 
@@ -2247,11 +2447,11 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     [Chunk(0x0B00505B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00505B : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505B;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -2263,7 +2463,18 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+
+            if (Version >= 3)
+            {
+                throw new NotSupportedException();
+            }
+
             rw.String(ref n.antiCheatServerUrl);
+
+            if (Version >= 2)
+            {
+                rw.String(ref n.badWordListUrl);
+            }
         }
     }
 
@@ -2318,13 +2529,11 @@ public partial class CSystemConfig : CMwNod, IClass
         public override uint Id => 0x0B00505E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4;
         public int Version { get; set; }
-        public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B00505E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0B00505E)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -2345,7 +2554,7 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
             rw.String(ref n.networkLastUsedMSPath);
-            rw.Array<int>(ref U01!);
+            rw.Array<uint>(ref n.networkFirewallTestedExeChecksums!);
             rw.Int32(ref n.networkSpeed);
         }
     }
@@ -2367,6 +2576,132 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.networkUseProxy);
             rw.String(ref n.networkProxyAddress);
         }
+    }
+
+    [Chunk(0x0B005060)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0B005060 : SkippableChunk<CSystemConfig>, IVersionable
+    {
+        public override uint Id => 0x0B005060;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B005060)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version >= 1)
+            {
+                throw new NotSupportedException();
+            }
+
+            rw.Boolean(ref n.inputsAlternateMethod);
+            rw.Boolean(ref n.inputsFreezeUnusedAxes);
+            rw.Boolean(ref n.inputsEnableRumble);
+            rw.Boolean(ref n.inputsCaptureKeyboard);
+            rw.Boolean(ref n.inputsEnableJoysticks);
+        }
+    }
+
+    public enum EAudioAcceleration
+    {
+        Auto,
+        HardwareOnly,
+        SoftwareOnly,
+    }
+
+    public enum EAudioQuality3d
+    {
+        NoHrtf,
+        HrtfLight,
+        HrtfFull,
+    }
+
+    public enum EAudioSpeakerConfig
+    {
+        UseSystemConfig,
+        Mono,
+        Headphone,
+        StereoMin,
+        StereoNarrow,
+        StereoWide,
+        StereoMax,
+        Quad,
+        Surround,
+        _5_1,
+        _7_1,
+        NoSpeakers,
+    }
+
+    public enum EVsk3SeaQuality
+    {
+        Low,
+        Medium,
+        High,
+        VeryHigh,
+    }
+
+    public enum EVsk3BoatVisibility
+    {
+        None,
+        MyBoat,
+        AllBoats,
+    }
+
+    public enum EVsk3BoatQuality
+    {
+        AllLow,
+        LowOpponents,
+        AllHigh,
+    }
+
+    public enum ETmCarParticlesQuality
+    {
+        AllLow,
+        AllMedium,
+        HighMediumOpponents,
+        AllHigh,
+    }
+
+    public enum ETmCarProjector
+    {
+        None,
+        MyCar,
+        AllCars,
+    }
+
+    public enum EAdvertisingEnabled
+    {
+        Disabled,
+        Configurable,
+        Forced,
+    }
+
+    public enum EPlayerInfoDisplayType
+    {
+        Name,
+        Avatar,
+        AvatarAndName,
+    }
+
+    public enum EPlayerOcclusion
+    {
+        None,
+        Me,
+        All,
+    }
+
+    public enum EGamePackQuality
+    {
+        Unknown,
+        LD,
+        HD,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
@@ -2430,6 +2765,7 @@ public partial class CSystemConfig : CMwNod, IClass
         0x0B00505D => new Chunk0B00505D(),
         0x0B00505E => new Chunk0B00505E(),
         0x0B00505F => new Chunk0B00505F(),
+        0x0B005060 => new Chunk0B005060(),
         _ => base.NewChunk(chunkId),
     };
 }
