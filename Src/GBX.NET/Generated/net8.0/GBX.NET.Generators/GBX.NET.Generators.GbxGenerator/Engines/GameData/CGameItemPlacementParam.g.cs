@@ -299,7 +299,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
 
         private Vec3 yawPitchRoll;
         /// <summary>
-        /// Degrees, unlike anchored-object rotations.
+        /// Degrees
         /// </summary>
         public Vec3 YawPitchRoll
         {

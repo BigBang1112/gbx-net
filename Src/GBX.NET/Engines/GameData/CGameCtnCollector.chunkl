@@ -8,36 +8,81 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
     id
   v4+
     id ParentCollectorId
+  v1..2
+    bool
+  v2=
+    bool HasInternalFlag (local, write: "(n.Flags & ECollectorFlags.IsInternal) != 0")
+    if HasInternalFlag
+      Flags = ECollectorFlags.IsInternal
+    else
+      Flags = ECollectorFlags.None
+  v1-
+    CatalogPosition = 1
+    Flags = ECollectorFlags.None
   v3+
-    int<ECollectorFlags> Flags
-    short CatalogPosition
-    v5-
-      byte NbAvailableMin
-      int CopperPrice
-      short NbAvailableMax
-    v7+
-      string Name
-      v8+
-        byte<EProdState> ProdState
+    int<ECollectorFlags> Flags = ECollectorFlags.IsInternal
+  v2+
+    short CatalogPosition = 1
+  v2..5
+    byte NbAvailableMin
+    int CopperPrice = 100
+    short NbAvailableMax = 10
+  v7+
+    string Name
+  v8+
+    byte<EProdState> ProdState = EProdState.Release
 
 0x004 (header, struct: SHeaderIcon, demonstration) [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020] // icon
   short IconWidth // high bit marks WebP
   short IconHeight // high bit marks WebP
   if (IconWidth & 0x8000) != 0 && (IconHeight & 0x8000) != 0
-    short U01 = 1
-    data IconWebP
+    short = 1 // encoding: 0 = raw ARGB, nonzero = WebP
+    IconWidth = IconWidth & 0x7FFF
+    IconHeight = IconHeight & 0x7FFF
+    if U01 != 0
+      data IconWebP
+    else
+      int[IconWidth * IconHeight] IconData
   else
     int[IconWidth * IconHeight] IconData // ARGB pixels, flipped vertically when mapped to Icon
 
 0x006 (header, struct: SHeaderLightMap) [TMT, MP3, MP4, TM2020] // lightmap compute time
   filetime? LightmapComputeTime
 
-0x008 (header, struct: SHeaderDefaultSkin) // default skin
+0x008 (header, struct: SHeaderDefaultSkin) [TM2020] // default skin
   versionb
   string DefaultSkinName
 
+0x000 // legacy icon node
+  string PageName
+  CMwNod (external)
+
+0x001 // legacy icon image
+  string PageName
+  CMwNod (external) // CMwRefBuffer in TMF, CPlugFileImg in MP4
+
 0x002 [TM10, TMSX] // Ident
   ident Ident
+
+0x003 // legacy icon fid
+  string PageName
+  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
+  if HasIconFid
+    CMwNod IconFid (external)
+
+0x004 // legacy page and icon
+  string PageName
+  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
+  if HasIconFid
+    CMwNod IconFid (external)
+  bool
+
+0x005 // legacy catalog availability
+  bool IsInternal
+  int CatalogPosition = 1
+  int NbAvailableMin
+  int CopperPrice
+  int NbAvailableMax
 
 0x006 [TM10, TMSX, TMF]
   int<ESkinKind> SkinKind
@@ -50,12 +95,12 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int CopperPrice
   int NbAvailableMax
 
-0x008 [TMF]
-  CPlugGameSkin
+0x008 [TMF, TM2020]
+  CPlugGameSkin (external)
 
 0x009 [TMSX, TMF, MP3, TMT, MP4, TM2020]
   string PageName
-  bool HasIconFid (local, write: "n.IconFid is not null")
+  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
   if HasIconFid
     CMwNod IconFid (external)
   id ParentCollectorId
@@ -76,13 +121,23 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   bool IconUseAutoRender
   int IconQuarterRotationY
 
+0x00F // legacy skin directory
+  string SkinDirectory
+
 0x010 [MP3.v2, TMT.v2, MP4.v2, TM2020.v4]
   version
   CPlugFileZip DefaultSkin (external)
-  string SkinDirectory
+  v1+
+    string SkinDirectory
   v2+
     if SkinDirectory == null || SkinDirectory == ""
-      CMwNod
+      CMwNod (external) // CPlugFileZip
+  if rw.Reader != null && !rw.Reader.IsRelease || rw.Writer != null && !rw.Writer.IsRelease
+    v3+
+      string // folder path, archived with DoFolderAsString
+    v4+
+      CMwNod ModelKitDb (external)
+      CMwNod ModelKitDbRelease (external)
 
 0x011 [MP3.v0, TMT.v1, MP4.v1, TM2020.v1]
   version
@@ -92,11 +147,11 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   v1+
     byte<EProdState> ProdState
 
-0x012 [TM2020]
-  int
-  int
-  int
-  int
+0x012 [TM2020] // icon render
+  version
+  bool IconUseAutoRender
+  int IconQuarterRotationY
+  float IconPhase01
 
 enum ECollectorFlags
   None

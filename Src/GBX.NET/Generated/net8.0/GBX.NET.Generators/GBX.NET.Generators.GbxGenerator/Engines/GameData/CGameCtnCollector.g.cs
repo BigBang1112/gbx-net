@@ -44,6 +44,10 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     private string? pageName;
     [AppliedWithChunk<HeaderChunk2E001003>]
+    [AppliedWithChunk<Chunk2E001000>]
+    [AppliedWithChunk<Chunk2E001001>]
+    [AppliedWithChunk<Chunk2E001003>]
+    [AppliedWithChunk<Chunk2E001004>]
     [AppliedWithChunk<Chunk2E001009>]
     public string? PageName
     {
@@ -60,7 +64,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.parentCollectorId = value;
     }
 
-    private ECollectorFlags flags;
+    private ECollectorFlags flags = ECollectorFlags.IsInternal;
     [AppliedWithChunk<HeaderChunk2E001003>(3)]
     public ECollectorFlags Flags
     {
@@ -68,8 +72,20 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.flags = value;
     }
 
-    private int copperPrice;
-    [AppliedWithChunk<HeaderChunk2E001003>(3, 5)]
+    [AppliedWithChunk<HeaderChunk2E001003>(2)]
+    [AppliedWithChunk<Chunk2E001005>]
+    [AppliedWithChunk<Chunk2E001007>]
+    [AppliedWithChunk<Chunk2E001011>]
+    public partial int CatalogPosition { get; set; }
+
+    [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
+    [AppliedWithChunk<Chunk2E001005>]
+    [AppliedWithChunk<Chunk2E001007>]
+    public partial int NbAvailableMin { get; set; }
+
+    private int copperPrice = 100;
+    [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
+    [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     public int CopperPrice
     {
@@ -77,11 +93,16 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.copperPrice = value;
     }
 
+    [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
+    [AppliedWithChunk<Chunk2E001005>]
+    [AppliedWithChunk<Chunk2E001007>]
+    public partial int NbAvailableMax { get; set; }
+
     [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
     public partial string? Name { get; set; }
 
-    private EProdState prodState;
+    private EProdState prodState = EProdState.Release;
     [AppliedWithChunk<HeaderChunk2E001003>(8)]
     [AppliedWithChunk<Chunk2E001011>(1)]
     public EProdState ProdState
@@ -106,21 +127,35 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.defaultSkinName = value;
     }
 
-    private ESkinKind skinKind;
-    [AppliedWithChunk<Chunk2E001006>]
-    public ESkinKind SkinKind
+    [AppliedWithChunk<Chunk2E001003>]
+    [AppliedWithChunk<Chunk2E001004>]
+    [AppliedWithChunk<Chunk2E001009>]
+    public partial CMwNod? IconFid { get; set; }
+
+    public Components.GbxRefTableFile? IconFidFile
     {
-        get => this.skinKind;
-        set => this.skinKind = value;
+        get => iconFidFile;
+        set => iconFidFile = value;
     }
 
+    public CMwNod? GetIconFid(GbxReadSettings settings = default, bool exceptions = false) => iconFidFile?.GetNode(ref iconFid, settings, exceptions) ?? iconFid;
+
     private bool isInternal;
+    [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     [AppliedWithChunk<Chunk2E001011>]
     public bool IsInternal
     {
         get => this.isInternal;
         set => this.isInternal = value;
+    }
+
+    private ESkinKind skinKind;
+    [AppliedWithChunk<Chunk2E001006>]
+    public ESkinKind SkinKind
+    {
+        get => this.skinKind;
+        set => this.skinKind = value;
     }
 
     private bool needUnlock;
@@ -130,14 +165,6 @@ public partial class CGameCtnCollector : CMwNod, IClass
         get => this.needUnlock;
         set => this.needUnlock = value;
     }
-
-    public Components.GbxRefTableFile? IconFidFile
-    {
-        get => iconFidFile;
-        set => iconFidFile = value;
-    }
-
-    public CMwNod? GetIconFid(GbxReadSettings settings = default, bool exceptions = false) => iconFidFile?.GetNode(ref iconFid, settings, exceptions) ?? iconFid;
 
     private string? description;
     [AppliedWithChunk<Chunk2E00100D>]
@@ -149,6 +176,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     private bool iconUseAutoRender;
     [AppliedWithChunk<Chunk2E00100E>]
+    [AppliedWithChunk<Chunk2E001012>]
     public bool IconUseAutoRender
     {
         get => this.iconUseAutoRender;
@@ -157,10 +185,20 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     private int iconQuarterRotationY;
     [AppliedWithChunk<Chunk2E00100E>]
+    [AppliedWithChunk<Chunk2E001012>]
     public int IconQuarterRotationY
     {
         get => this.iconQuarterRotationY;
         set => this.iconQuarterRotationY = value;
+    }
+
+    private string? skinDirectory;
+    [AppliedWithChunk<Chunk2E00100F>]
+    [AppliedWithChunk<Chunk2E001010>(1)]
+    public string? SkinDirectory
+    {
+        get => this.skinDirectory;
+        set => this.skinDirectory = value;
     }
 
     private CPlugFileZip? defaultSkin;
@@ -180,13 +218,39 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     public CPlugFileZip? GetDefaultSkin(GbxReadSettings settings = default, bool exceptions = false) => defaultSkinFile?.GetNode(ref defaultSkin, settings, exceptions) ?? defaultSkin;
 
-    private string? skinDirectory;
-    [AppliedWithChunk<Chunk2E001010>]
-    public string? SkinDirectory
+    private CMwNod? modelKitDb;
+    [AppliedWithChunk<Chunk2E001010>(4)]
+    public CMwNod? ModelKitDb
     {
-        get => this.skinDirectory;
-        set => this.skinDirectory = value;
+        get => this.modelKitDbFile?.GetNode(ref this.modelKitDb) ?? this.modelKitDb;
+        set => this.modelKitDb = value;
     }
+    private Components.GbxRefTableFile? modelKitDbFile;
+
+    public Components.GbxRefTableFile? ModelKitDbFile
+    {
+        get => modelKitDbFile;
+        set => modelKitDbFile = value;
+    }
+
+    public CMwNod? GetModelKitDb(GbxReadSettings settings = default, bool exceptions = false) => modelKitDbFile?.GetNode(ref modelKitDb, settings, exceptions) ?? modelKitDb;
+
+    private CMwNod? modelKitDbRelease;
+    [AppliedWithChunk<Chunk2E001010>(4)]
+    public CMwNod? ModelKitDbRelease
+    {
+        get => this.modelKitDbReleaseFile?.GetNode(ref this.modelKitDbRelease) ?? this.modelKitDbRelease;
+        set => this.modelKitDbRelease = value;
+    }
+    private Components.GbxRefTableFile? modelKitDbReleaseFile;
+
+    public Components.GbxRefTableFile? ModelKitDbReleaseFile
+    {
+        get => modelKitDbReleaseFile;
+        set => modelKitDbReleaseFile = value;
+    }
+
+    public CMwNod? GetModelKitDbRelease(GbxReadSettings settings = default, bool exceptions = false) => modelKitDbReleaseFile?.GetNode(ref modelKitDbRelease, settings, exceptions) ?? modelKitDbRelease;
 
     private bool isAdvanced;
     [AppliedWithChunk<Chunk2E001011>]
@@ -194,6 +258,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         get => this.isAdvanced;
         set => this.isAdvanced = value;
+    }
+
+    private float iconPhase01;
+    [AppliedWithChunk<Chunk2E001012>]
+    public float IconPhase01
+    {
+        get => this.iconPhase01;
+        set => this.iconPhase01 = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -206,15 +278,18 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).prodState = context.Clone(this.prodState)!;
         ((CGameCtnCollector)clone).lightmapComputeTime = context.Clone(this.lightmapComputeTime)!;
         ((CGameCtnCollector)clone).defaultSkinName = context.Clone(this.defaultSkinName)!;
-        ((CGameCtnCollector)clone).skinKind = context.Clone(this.skinKind)!;
         ((CGameCtnCollector)clone).isInternal = context.Clone(this.isInternal)!;
+        ((CGameCtnCollector)clone).skinKind = context.Clone(this.skinKind)!;
         ((CGameCtnCollector)clone).needUnlock = context.Clone(this.needUnlock)!;
         ((CGameCtnCollector)clone).description = context.Clone(this.description)!;
         ((CGameCtnCollector)clone).iconUseAutoRender = context.Clone(this.iconUseAutoRender)!;
         ((CGameCtnCollector)clone).iconQuarterRotationY = context.Clone(this.iconQuarterRotationY)!;
-        ((CGameCtnCollector)clone).defaultSkin = context.Clone(this.defaultSkin)!;
         ((CGameCtnCollector)clone).skinDirectory = context.Clone(this.skinDirectory)!;
+        ((CGameCtnCollector)clone).defaultSkin = context.Clone(this.defaultSkin)!;
+        ((CGameCtnCollector)clone).modelKitDb = context.Clone(this.modelKitDb)!;
+        ((CGameCtnCollector)clone).modelKitDbRelease = context.Clone(this.modelKitDbRelease)!;
         ((CGameCtnCollector)clone).isAdvanced = context.Clone(this.isAdvanced)!;
+        ((CGameCtnCollector)clone).iconPhase01 = context.Clone(this.iconPhase01)!;
         ((CGameCtnCollector)clone).ident = context.Clone(this.ident)!;
         ((CGameCtnCollector)clone).name = context.Clone(this.name)!;
         ((CGameCtnCollector)clone).catalogPosition = context.Clone(this.catalogPosition)!;
@@ -241,12 +316,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
+        public bool U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((HeaderChunk2E001003)clone).Version = context.Clone(this.Version)!;
             ((HeaderChunk2E001003)clone).U01 = context.Clone(this.U01)!;
+            ((HeaderChunk2E001003)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
@@ -265,27 +342,56 @@ public partial class CGameCtnCollector : CMwNod, IClass
                 rw.Id(ref n.parentCollectorId);
             }
 
+            if (Version >= 1 && Version <= 2)
+            {
+                rw.Boolean(ref U02);
+            }
+
+            if (Version == 2)
+            {
+                var hasInternalFlag = rw.Boolean((rw.Writer is null ? default : ((n.Flags & ECollectorFlags.IsInternal) != 0)));
+
+                if (hasInternalFlag)
+                {
+                    n.Flags = ECollectorFlags.IsInternal;
+                }
+                else
+                {
+                    n.Flags = ECollectorFlags.None;
+                }
+            }
+
+            if (Version <= 1)
+            {
+                n.CatalogPosition = 1;
+                n.Flags = ECollectorFlags.None;
+            }
+
             if (Version >= 3)
             {
                 rw.EnumInt32<ECollectorFlags>(ref n.flags);
+            }
+
+            if (Version >= 2)
+            {
                 n.catalogPosition = (int)rw.Int16((short)n.catalogPosition);
+            }
 
-                if (Version <= 5)
-                {
-                    n.nbAvailableMin = (int)rw.Byte((byte)n.nbAvailableMin);
-                    rw.Int32(ref n.copperPrice);
-                    n.nbAvailableMax = (int)rw.Int16((short)n.nbAvailableMax);
-                }
+            if (Version >= 2 && Version <= 5)
+            {
+                n.nbAvailableMin = (int)rw.Byte((byte)n.nbAvailableMin);
+                rw.Int32(ref n.copperPrice);
+                n.nbAvailableMax = (int)rw.Int16((short)n.nbAvailableMax);
+            }
 
-                if (Version >= 7)
-                {
-                    rw.String(ref n.name);
+            if (Version >= 7)
+            {
+                rw.String(ref n.name);
+            }
 
-                    if (Version >= 8)
-                    {
-                        rw.EnumByte<EProdState>(ref n.prodState);
-                    }
-                }
+            if (Version >= 8)
+            {
+                rw.EnumByte<EProdState>(ref n.prodState);
             }
         }
     }
@@ -326,9 +432,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// default skin
     /// </summary>
     [Chunk(0x2E001008, "default skin")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class HeaderChunk2E001008 : HeaderChunk<CGameCtnCollector>, IVersionable
     {
         public override uint Id => 0x2E001008;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -341,6 +449,52 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             rw.VersionByte(this);
             rw.String(ref n.defaultSkinName);
+        }
+    }
+
+    /// <summary>
+    /// legacy icon node
+    /// </summary>
+    [Chunk(0x2E001000, "legacy icon node")]
+    public partial class Chunk2E001000 : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E001000;
+        public CMwNod? U01;
+        public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E001000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.pageName);
+            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+        }
+    }
+
+    /// <summary>
+    /// legacy icon image
+    /// </summary>
+    [Chunk(0x2E001001, "legacy icon image")]
+    public partial class Chunk2E001001 : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E001001;
+        public CMwNod? U01;
+        public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E001001)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.pageName);
+            rw.NodeRef<CMwNod>(ref U01, ref U01File);
         }
     }
 
@@ -362,6 +516,83 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.Ident(ref n.ident);
+        }
+    }
+
+    /// <summary>
+    /// legacy icon fid
+    /// </summary>
+    [Chunk(0x2E001003, "legacy icon fid")]
+    public partial class Chunk2E001003 : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E001003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.pageName);
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
+
+            if (hasIconFid)
+            {
+                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy page and icon
+    /// </summary>
+    [Chunk(0x2E001004, "legacy page and icon")]
+    public partial class Chunk2E001004 : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E001004;
+        public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E001004)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.pageName);
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
+
+            if (hasIconFid)
+            {
+                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+            }
+
+            rw.Boolean(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// legacy catalog availability
+    /// </summary>
+    [Chunk(0x2E001005, "legacy catalog availability")]
+    public partial class Chunk2E001005 : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E001005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.isInternal);
+            rw.Int32(ref n.catalogPosition);
+            rw.Int32(ref n.nbAvailableMin);
+            rw.Int32(ref n.copperPrice);
+            rw.Int32(ref n.nbAvailableMax);
         }
     }
 
@@ -407,12 +638,13 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001008)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TM2020)]
     public partial class Chunk2E001008 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001008;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TM2020;
         public CPlugGameSkin? U01;
+        public Components.GbxRefTableFile? U01File;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -422,7 +654,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugGameSkin>(ref U01);
+            rw.NodeRef<CPlugGameSkin>(ref U01, ref U01File);
         }
     }
 
@@ -441,7 +673,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
 
             if (hasIconFid)
             {
@@ -557,6 +789,25 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// legacy skin directory
+    /// </summary>
+    [Chunk(0x2E00100F, "legacy skin directory")]
+    public partial class Chunk2E00100F : Chunk<CGameCtnCollector>
+    {
+        public override uint Id => 0x2E00100F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.skinDirectory);
+        }
+    }
+
     [Chunk(0x2E001010)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 4)]
     public partial class Chunk2E001010 : Chunk<CGameCtnCollector>, IVersionable
@@ -565,25 +816,46 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CMwNod? U01;
+        public Components.GbxRefTableFile? U01File;
+        public string? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E001010)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E001010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E001010)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.NodeRef<CPlugFileZip>(ref n.defaultSkin, ref n.defaultSkinFile);
-            rw.String(ref n.skinDirectory);
+
+            if (Version >= 1)
+            {
+                rw.String(ref n.skinDirectory);
+            }
 
             if (Version >= 2)
             {
                 if (n.SkinDirectory== null || n.SkinDirectory== "")
                 {
-                    rw.NodeRef<CMwNod>(ref U01);
+                    rw.NodeRef<CMwNod>(ref U01, ref U01File);
+                }
+            }
+
+            if (rw.Reader != null && !rw.Reader.IsRelease || rw.Writer != null && !rw.Writer.IsRelease)
+            {
+                if (Version >= 3)
+                {
+                    rw.String(ref U02);
+                }
+
+                if (Version >= 4)
+                {
+                    rw.NodeRef<CMwNod>(ref n.modelKitDb, ref n.modelKitDbFile);
+                    rw.NodeRef<CMwNod>(ref n.modelKitDbRelease, ref n.modelKitDbReleaseFile);
                 }
             }
         }
@@ -617,32 +889,29 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
-    [Chunk(0x2E001012)]
+    /// <summary>
+    /// icon render
+    /// </summary>
+    [Chunk(0x2E001012, "icon render")]
     [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk2E001012 : Chunk<CGameCtnCollector>
+    public partial class Chunk2E001012 : Chunk<CGameCtnCollector>, IVersionable
     {
         public override uint Id => 0x2E001012;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E001012)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E001012)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E001012)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk2E001012)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E001012)clone).Version = context.Clone(this.Version)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
+            rw.VersionInt32(this);
+            rw.Boolean(ref n.iconUseAutoRender);
+            rw.Int32(ref n.iconQuarterRotationY);
+            rw.Single(ref n.iconPhase01);
         }
     }
 
@@ -672,7 +941,12 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x2E001000 => new Chunk2E001000(),
+        0x2E001001 => new Chunk2E001001(),
         0x2E001002 => new Chunk2E001002(),
+        0x2E001003 => new Chunk2E001003(),
+        0x2E001004 => new Chunk2E001004(),
+        0x2E001005 => new Chunk2E001005(),
         0x2E001006 => new Chunk2E001006(),
         0x2E001007 => new Chunk2E001007(),
         0x2E001008 => new Chunk2E001008(),
@@ -682,6 +956,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         0x2E00100C => new Chunk2E00100C(),
         0x2E00100D => new Chunk2E00100D(),
         0x2E00100E => new Chunk2E00100E(),
+        0x2E00100F => new Chunk2E00100F(),
         0x2E001010 => new Chunk2E001010(),
         0x2E001011 => new Chunk2E001011(),
         0x2E001012 => new Chunk2E001012(),
