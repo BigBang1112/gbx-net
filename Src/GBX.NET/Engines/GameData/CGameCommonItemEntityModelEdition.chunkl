@@ -1,50 +1,76 @@
 CGameCommonItemEntityModelEdition 0x2E026000
 
-0x000
+0x000 [TM2020.v8]
   version
   int<EItemType> ItemType
-  CPlugCrystal MeshCrystal
-  string U01
-  CPlugSolid U02 // if U01 is empty probably
-  CPlugFileImg[] U03
+  CPlugCrystal MeshCrystal (external)
+  string SolidRef
+  if SolidRef == null || SolidRef.Length == 0
+    CPlugSolid Solid (external)
+  ImageRef[] Images
   SpriteParam[] SpriteParams
-  CPlugParticleEmitterModel U04
-  CPlugAnimLocSimple U05
-  LightBallStateSimple[] U06
-  float U07
-  float U08
-  float U09
-  float U10
-  float U11
-  float U12
-  float U13
-  iso4 U14
+  CPlugParticleEmitterModel DestroyParticleModel (external)
+  CPlugAnimLocSimple LocAnim (external)
+  LightBallStateSimple[] LightBallStates // Native CFixedDynArray capacity is one.
+  string ParticleModelAliveRef
+  if ParticleModelAliveRef != null && ParticleModelAliveRef.Length > 0
+    vec3 ParticleModelAlivePos
+  string SmashParticleRef
+  if SmashParticleRef != null && SmashParticleRef.Length > 0
+    id
+  string SoundRefSpawn
+  string SoundRefUnspawn
+  string SoundRefGrab
+  string SoundRefSmashed
+  string SoundRefPermanent
+  iso4 SoundLocPermanent = Iso4.Identity
+  v4-
+    if Version >= 3 || ItemType == EItemType.Ornament || ItemType == EItemType.Spot
+      bool UseMeshAsMoveShape = true
+      if !UseMeshAsMoveShape
+        CPlugCrystal CustomMoveShapeCrystal (external)
   v3+
     if ItemType == EItemType.PickUp
-      float Mass
-  bool U15
-  if !U15
-    CPlugCrystal U16
-  if ItemType != EItemType.Ornament
-    throw
-  bool U17
-  if U17
-    int? U18
-    iso4? U19
-  int U20
+      float Mass = 1
+  bool UseMeshAsHitShape = true
+  if !UseMeshAsHitShape
+    CPlugCrystal CustomHitShapeCrystal (external)
+  if ItemType == EItemType.PickUp
+    bool UseMeshAsTriggerShape = true
+    if !UseMeshAsTriggerShape
+      CPlugCrystal CustomTriggerShapeCrystal (external)
+    CGameActionModel PickupActionModel (external)
+  if ItemType == EItemType.Spot
+    CGameActionModel[] TriggeredActions (external)
+    int TriggerActionVersion = 5
+    CPlugTriggerAction[] Triggers (version: n.TriggerActionVersion)
+  bool HasDynaPointModel (local, write: "n.DynaPointModel is not null")
+  if HasDynaPointModel
+    CPlugDynaPointModel DynaPointModel
+  int<CGameObjectPhyModel.EProgram> Program
+  v3-
+    iso4 SpawnLoc = Iso4.Identity // Removed from the payload in version 4.
   v1+
     string InventoryName
     string InventoryDescription
     int InventoryItemClass
-    int InventoryOccupation
-    v6+
-      v7-
-        CMwNod U21
-      v7+
-        if ItemType == EItemType.PickUp
-          bool U22
+    int InventoryOccupation = 1000
+  v1-
+    CPlugSolid2Model (external) // Deprecated mesh reference.
+  v6..7
+    CMwNod (external) // Deprecated reference.
+  v7+
+    if ItemType == EItemType.PickUp
+      int
 
-0x001 (skippable, ignore)
+0x001 (skippable) [TM2020]
+  version
+  int
+
+archive ImageRef
+  string Ref
+  if Ref == null || Ref.Length == 0
+    CPlugFileImg Image (external)
 
 archive SpriteParam
   vec3
@@ -52,14 +78,14 @@ archive SpriteParam
   float
 
 archive LightBallStateSimple
-  int
-  float
-  float
-  float
-  float
-  float
-  float
-  float
+  version
+  float U02
+  float U03
+  float U04
+  float U05 = 1
+  float U06 = 1
+  float U07 = 1
+  float U08 = 1
 
 enum EItemType
   Undefined

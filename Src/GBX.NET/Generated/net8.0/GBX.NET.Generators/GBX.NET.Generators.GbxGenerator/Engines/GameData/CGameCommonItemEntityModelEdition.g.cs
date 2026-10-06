@@ -46,8 +46,50 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugCrystal? MeshCrystal
     {
-        get => this.meshCrystal;
+        get => this.meshCrystalFile?.GetNode(ref this.meshCrystal) ?? this.meshCrystal;
         set => this.meshCrystal = value;
+    }
+    private Components.GbxRefTableFile? meshCrystalFile;
+
+    public Components.GbxRefTableFile? MeshCrystalFile
+    {
+        get => meshCrystalFile;
+        set => meshCrystalFile = value;
+    }
+
+    public CPlugCrystal? GetMeshCrystal(GbxReadSettings settings = default, bool exceptions = false) => meshCrystalFile?.GetNode(ref meshCrystal, settings, exceptions) ?? meshCrystal;
+
+    private string? solidRef;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SolidRef
+    {
+        get => this.solidRef;
+        set => this.solidRef = value;
+    }
+
+    private CPlugSolid? solid;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugSolid? Solid
+    {
+        get => this.solidFile?.GetNode(ref this.solid) ?? this.solid;
+        set => this.solid = value;
+    }
+    private Components.GbxRefTableFile? solidFile;
+
+    public Components.GbxRefTableFile? SolidFile
+    {
+        get => solidFile;
+        set => solidFile = value;
+    }
+
+    public CPlugSolid? GetSolid(GbxReadSettings settings = default, bool exceptions = false) => solidFile?.GetNode(ref solid, settings, exceptions) ?? solid;
+
+    private ImageRef[]? images;
+    [AppliedWithChunk<Chunk2E026000>]
+    public ImageRef[]? Images
+    {
+        get => this.images;
+        set => this.images = value;
     }
 
     private SpriteParam[]? spriteParams;
@@ -58,12 +100,272 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         set => this.spriteParams = value;
     }
 
-    private float mass;
+    private CPlugParticleEmitterModel? destroyParticleModel;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugParticleEmitterModel? DestroyParticleModel
+    {
+        get => this.destroyParticleModelFile?.GetNode(ref this.destroyParticleModel) ?? this.destroyParticleModel;
+        set => this.destroyParticleModel = value;
+    }
+    private Components.GbxRefTableFile? destroyParticleModelFile;
+
+    public Components.GbxRefTableFile? DestroyParticleModelFile
+    {
+        get => destroyParticleModelFile;
+        set => destroyParticleModelFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetDestroyParticleModel(GbxReadSettings settings = default, bool exceptions = false) => destroyParticleModelFile?.GetNode(ref destroyParticleModel, settings, exceptions) ?? destroyParticleModel;
+
+    private CPlugAnimLocSimple? locAnim;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugAnimLocSimple? LocAnim
+    {
+        get => this.locAnimFile?.GetNode(ref this.locAnim) ?? this.locAnim;
+        set => this.locAnim = value;
+    }
+    private Components.GbxRefTableFile? locAnimFile;
+
+    public Components.GbxRefTableFile? LocAnimFile
+    {
+        get => locAnimFile;
+        set => locAnimFile = value;
+    }
+
+    public CPlugAnimLocSimple? GetLocAnim(GbxReadSettings settings = default, bool exceptions = false) => locAnimFile?.GetNode(ref locAnim, settings, exceptions) ?? locAnim;
+
+    private LightBallStateSimple[]? lightBallStates;
+    /// <summary>
+    /// Native CFixedDynArray capacity is one.
+    /// </summary>
+    [AppliedWithChunk<Chunk2E026000>]
+    public LightBallStateSimple[]? LightBallStates
+    {
+        get => this.lightBallStates;
+        set => this.lightBallStates = value;
+    }
+
+    private string? particleModelAliveRef;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? ParticleModelAliveRef
+    {
+        get => this.particleModelAliveRef;
+        set => this.particleModelAliveRef = value;
+    }
+
+    private Vec3 particleModelAlivePos;
+    [AppliedWithChunk<Chunk2E026000>]
+    public Vec3 ParticleModelAlivePos
+    {
+        get => this.particleModelAlivePos;
+        set => this.particleModelAlivePos = value;
+    }
+
+    private string? smashParticleRef;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SmashParticleRef
+    {
+        get => this.smashParticleRef;
+        set => this.smashParticleRef = value;
+    }
+
+    private string? soundRefSpawn;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SoundRefSpawn
+    {
+        get => this.soundRefSpawn;
+        set => this.soundRefSpawn = value;
+    }
+
+    private string? soundRefUnspawn;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SoundRefUnspawn
+    {
+        get => this.soundRefUnspawn;
+        set => this.soundRefUnspawn = value;
+    }
+
+    private string? soundRefGrab;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SoundRefGrab
+    {
+        get => this.soundRefGrab;
+        set => this.soundRefGrab = value;
+    }
+
+    private string? soundRefSmashed;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SoundRefSmashed
+    {
+        get => this.soundRefSmashed;
+        set => this.soundRefSmashed = value;
+    }
+
+    private string? soundRefPermanent;
+    [AppliedWithChunk<Chunk2E026000>]
+    public string? SoundRefPermanent
+    {
+        get => this.soundRefPermanent;
+        set => this.soundRefPermanent = value;
+    }
+
+    private Iso4 soundLocPermanent = Iso4.Identity;
+    [AppliedWithChunk<Chunk2E026000>]
+    public Iso4 SoundLocPermanent
+    {
+        get => this.soundLocPermanent;
+        set => this.soundLocPermanent = value;
+    }
+
+    private bool useMeshAsMoveShape = true;
+    [AppliedWithChunk<Chunk2E026000>(0, 4)]
+    public bool UseMeshAsMoveShape
+    {
+        get => this.useMeshAsMoveShape;
+        set => this.useMeshAsMoveShape = value;
+    }
+
+    private CPlugCrystal? customMoveShapeCrystal;
+    [AppliedWithChunk<Chunk2E026000>(0, 4)]
+    public CPlugCrystal? CustomMoveShapeCrystal
+    {
+        get => this.customMoveShapeCrystalFile?.GetNode(ref this.customMoveShapeCrystal) ?? this.customMoveShapeCrystal;
+        set => this.customMoveShapeCrystal = value;
+    }
+    private Components.GbxRefTableFile? customMoveShapeCrystalFile;
+
+    public Components.GbxRefTableFile? CustomMoveShapeCrystalFile
+    {
+        get => customMoveShapeCrystalFile;
+        set => customMoveShapeCrystalFile = value;
+    }
+
+    public CPlugCrystal? GetCustomMoveShapeCrystal(GbxReadSettings settings = default, bool exceptions = false) => customMoveShapeCrystalFile?.GetNode(ref customMoveShapeCrystal, settings, exceptions) ?? customMoveShapeCrystal;
+
+    private float mass = 1;
     [AppliedWithChunk<Chunk2E026000>(3)]
     public float Mass
     {
         get => this.mass;
         set => this.mass = value;
+    }
+
+    private bool useMeshAsHitShape = true;
+    [AppliedWithChunk<Chunk2E026000>]
+    public bool UseMeshAsHitShape
+    {
+        get => this.useMeshAsHitShape;
+        set => this.useMeshAsHitShape = value;
+    }
+
+    private CPlugCrystal? customHitShapeCrystal;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugCrystal? CustomHitShapeCrystal
+    {
+        get => this.customHitShapeCrystalFile?.GetNode(ref this.customHitShapeCrystal) ?? this.customHitShapeCrystal;
+        set => this.customHitShapeCrystal = value;
+    }
+    private Components.GbxRefTableFile? customHitShapeCrystalFile;
+
+    public Components.GbxRefTableFile? CustomHitShapeCrystalFile
+    {
+        get => customHitShapeCrystalFile;
+        set => customHitShapeCrystalFile = value;
+    }
+
+    public CPlugCrystal? GetCustomHitShapeCrystal(GbxReadSettings settings = default, bool exceptions = false) => customHitShapeCrystalFile?.GetNode(ref customHitShapeCrystal, settings, exceptions) ?? customHitShapeCrystal;
+
+    private bool useMeshAsTriggerShape = true;
+    [AppliedWithChunk<Chunk2E026000>]
+    public bool UseMeshAsTriggerShape
+    {
+        get => this.useMeshAsTriggerShape;
+        set => this.useMeshAsTriggerShape = value;
+    }
+
+    private CPlugCrystal? customTriggerShapeCrystal;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugCrystal? CustomTriggerShapeCrystal
+    {
+        get => this.customTriggerShapeCrystalFile?.GetNode(ref this.customTriggerShapeCrystal) ?? this.customTriggerShapeCrystal;
+        set => this.customTriggerShapeCrystal = value;
+    }
+    private Components.GbxRefTableFile? customTriggerShapeCrystalFile;
+
+    public Components.GbxRefTableFile? CustomTriggerShapeCrystalFile
+    {
+        get => customTriggerShapeCrystalFile;
+        set => customTriggerShapeCrystalFile = value;
+    }
+
+    public CPlugCrystal? GetCustomTriggerShapeCrystal(GbxReadSettings settings = default, bool exceptions = false) => customTriggerShapeCrystalFile?.GetNode(ref customTriggerShapeCrystal, settings, exceptions) ?? customTriggerShapeCrystal;
+
+    private CGameActionModel? pickupActionModel;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CGameActionModel? PickupActionModel
+    {
+        get => this.pickupActionModelFile?.GetNode(ref this.pickupActionModel) ?? this.pickupActionModel;
+        set => this.pickupActionModel = value;
+    }
+    private Components.GbxRefTableFile? pickupActionModelFile;
+
+    public Components.GbxRefTableFile? PickupActionModelFile
+    {
+        get => pickupActionModelFile;
+        set => pickupActionModelFile = value;
+    }
+
+    public CGameActionModel? GetPickupActionModel(GbxReadSettings settings = default, bool exceptions = false) => pickupActionModelFile?.GetNode(ref pickupActionModel, settings, exceptions) ?? pickupActionModel;
+
+    private External<CGameActionModel>[]? triggeredActions;
+    [AppliedWithChunk<Chunk2E026000>]
+    public External<CGameActionModel>[]? TriggeredActions
+    {
+        get => this.triggeredActions;
+        set => this.triggeredActions = value;
+    }
+
+    private int triggerActionVersion = 5;
+    [AppliedWithChunk<Chunk2E026000>]
+    public int TriggerActionVersion
+    {
+        get => this.triggerActionVersion;
+        set => this.triggerActionVersion = value;
+    }
+
+    private CPlugTriggerAction[]? triggers;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugTriggerAction[]? Triggers
+    {
+        get => this.triggers;
+        set => this.triggers = value;
+    }
+
+    private CPlugDynaPointModel? dynaPointModel;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CPlugDynaPointModel? DynaPointModel
+    {
+        get => this.dynaPointModel;
+        set => this.dynaPointModel = value;
+    }
+
+    private CGameObjectPhyModel.EProgram program;
+    [AppliedWithChunk<Chunk2E026000>]
+    public CGameObjectPhyModel.EProgram Program
+    {
+        get => this.program;
+        set => this.program = value;
+    }
+
+    private Iso4 spawnLoc = Iso4.Identity;
+    /// <summary>
+    /// Removed from the payload in version 4.
+    /// </summary>
+    [AppliedWithChunk<Chunk2E026000>(0, 3)]
+    public Iso4 SpawnLoc
+    {
+        get => this.spawnLoc;
+        set => this.spawnLoc = value;
     }
 
     private string? inventoryName;
@@ -90,7 +392,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         set => this.inventoryItemClass = value;
     }
 
-    private int inventoryOccupation;
+    private int inventoryOccupation = 1000;
     [AppliedWithChunk<Chunk2E026000>(1)]
     public int InventoryOccupation
     {
@@ -103,8 +405,36 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         base.DeepCloneFields(clone, context);
         ((CGameCommonItemEntityModelEdition)clone).itemType = context.Clone(this.itemType)!;
         ((CGameCommonItemEntityModelEdition)clone).meshCrystal = context.Clone(this.meshCrystal)!;
+        ((CGameCommonItemEntityModelEdition)clone).solidRef = context.Clone(this.solidRef)!;
+        ((CGameCommonItemEntityModelEdition)clone).solid = context.Clone(this.solid)!;
+        ((CGameCommonItemEntityModelEdition)clone).images = context.CloneArray(this.images)!;
         ((CGameCommonItemEntityModelEdition)clone).spriteParams = context.CloneArray(this.spriteParams)!;
+        ((CGameCommonItemEntityModelEdition)clone).destroyParticleModel = context.Clone(this.destroyParticleModel)!;
+        ((CGameCommonItemEntityModelEdition)clone).locAnim = context.Clone(this.locAnim)!;
+        ((CGameCommonItemEntityModelEdition)clone).lightBallStates = context.CloneArray(this.lightBallStates)!;
+        ((CGameCommonItemEntityModelEdition)clone).particleModelAliveRef = context.Clone(this.particleModelAliveRef)!;
+        ((CGameCommonItemEntityModelEdition)clone).particleModelAlivePos = context.Clone(this.particleModelAlivePos)!;
+        ((CGameCommonItemEntityModelEdition)clone).smashParticleRef = context.Clone(this.smashParticleRef)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundRefSpawn = context.Clone(this.soundRefSpawn)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundRefUnspawn = context.Clone(this.soundRefUnspawn)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundRefGrab = context.Clone(this.soundRefGrab)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundRefSmashed = context.Clone(this.soundRefSmashed)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundRefPermanent = context.Clone(this.soundRefPermanent)!;
+        ((CGameCommonItemEntityModelEdition)clone).soundLocPermanent = context.Clone(this.soundLocPermanent)!;
+        ((CGameCommonItemEntityModelEdition)clone).useMeshAsMoveShape = context.Clone(this.useMeshAsMoveShape)!;
+        ((CGameCommonItemEntityModelEdition)clone).customMoveShapeCrystal = context.Clone(this.customMoveShapeCrystal)!;
         ((CGameCommonItemEntityModelEdition)clone).mass = context.Clone(this.mass)!;
+        ((CGameCommonItemEntityModelEdition)clone).useMeshAsHitShape = context.Clone(this.useMeshAsHitShape)!;
+        ((CGameCommonItemEntityModelEdition)clone).customHitShapeCrystal = context.Clone(this.customHitShapeCrystal)!;
+        ((CGameCommonItemEntityModelEdition)clone).useMeshAsTriggerShape = context.Clone(this.useMeshAsTriggerShape)!;
+        ((CGameCommonItemEntityModelEdition)clone).customTriggerShapeCrystal = context.Clone(this.customTriggerShapeCrystal)!;
+        ((CGameCommonItemEntityModelEdition)clone).pickupActionModel = context.Clone(this.pickupActionModel)!;
+        ((CGameCommonItemEntityModelEdition)clone).triggeredActions = context.CloneArray(this.triggeredActions)!;
+        ((CGameCommonItemEntityModelEdition)clone).triggerActionVersion = context.Clone(this.triggerActionVersion)!;
+        ((CGameCommonItemEntityModelEdition)clone).triggers = context.CloneArray(this.triggers)!;
+        ((CGameCommonItemEntityModelEdition)clone).dynaPointModel = context.Clone(this.dynaPointModel)!;
+        ((CGameCommonItemEntityModelEdition)clone).program = context.Clone(this.program)!;
+        ((CGameCommonItemEntityModelEdition)clone).spawnLoc = context.Clone(this.spawnLoc)!;
         ((CGameCommonItemEntityModelEdition)clone).inventoryName = context.Clone(this.inventoryName)!;
         ((CGameCommonItemEntityModelEdition)clone).inventoryDescription = context.Clone(this.inventoryDescription)!;
         ((CGameCommonItemEntityModelEdition)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
@@ -116,32 +446,18 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     [Chunk(0x2E026000)]
+    [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>, IVersionable
     {
         public override uint Id => 0x2E026000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
-        public CPlugSolid? U02;
-        public CPlugFileImg[]? U03;
-        public CPlugParticleEmitterModel? U04;
-        public CPlugAnimLocSimple? U05;
-        public LightBallStateSimple[]? U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public Iso4 U14;
-        public bool U15;
-        public CPlugCrystal? U16;
-        public bool U17;
-        public int? U18;
-        public Iso4? U19;
-        public int U20;
-        public CMwNod? U21;
-        public bool U22;
+        public CPlugSolid2Model? U02;
+        public Components.GbxRefTableFile? U02File;
+        public CMwNod? U03;
+        public Components.GbxRefTableFile? U03File;
+        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -149,48 +465,60 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
             ((Chunk2E026000)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E026000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk2E026000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E026000)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk2E026000)clone).U03 = context.Clone(this.U03)!;
             ((Chunk2E026000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk2E026000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk2E026000)clone).U06 = context.CloneArray(this.U06)!;
-            ((Chunk2E026000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk2E026000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk2E026000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk2E026000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk2E026000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk2E026000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk2E026000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk2E026000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk2E026000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk2E026000)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk2E026000)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk2E026000)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk2E026000)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk2E026000)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk2E026000)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk2E026000)clone).U22 = context.Clone(this.U22)!;
         }
 
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.EnumInt32<EItemType>(ref n.itemType);
-            rw.NodeRef<CPlugCrystal>(ref n.meshCrystal);
-            rw.String(ref U01);
-            rw.NodeRef<CPlugSolid>(ref U02);
-            rw.ArrayNodeRef<CPlugFileImg>(ref U03!);
+            rw.NodeRef<CPlugCrystal>(ref n.meshCrystal, ref n.meshCrystalFile);
+            rw.String(ref n.solidRef);
+
+            if (n.SolidRef== null || n.SolidRef.Length == 0)
+            {
+                rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
+            }
+
+            rw.ArrayReadableWritable<ImageRef>(ref n.images!, version: Version);
             rw.ArrayReadableWritable<SpriteParam>(ref n.spriteParams!, version: Version);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U04);
-            rw.NodeRef<CPlugAnimLocSimple>(ref U05);
-            rw.ArrayReadableWritable<LightBallStateSimple>(ref U06!, version: Version);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-            rw.Iso4(ref U14);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.destroyParticleModel, ref n.destroyParticleModelFile);
+            rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim, ref n.locAnimFile);
+            rw.ArrayReadableWritable<LightBallStateSimple>(ref n.lightBallStates!, version: Version);
+            rw.String(ref n.particleModelAliveRef);
+
+            if (n.ParticleModelAliveRef!= null && n.ParticleModelAliveRef.Length > 0)
+            {
+                rw.Vec3(ref n.particleModelAlivePos);
+            }
+
+            rw.String(ref n.smashParticleRef);
+
+            if (n.SmashParticleRef!= null && n.SmashParticleRef.Length > 0)
+            {
+                rw.Id(ref U01);
+            }
+
+            rw.String(ref n.soundRefSpawn);
+            rw.String(ref n.soundRefUnspawn);
+            rw.String(ref n.soundRefGrab);
+            rw.String(ref n.soundRefSmashed);
+            rw.String(ref n.soundRefPermanent);
+            rw.Iso4(ref n.soundLocPermanent);
+
+            if (Version <= 4)
+            {
+                if (Version>= 3 || n.ItemType== EItemType.Ornament || n.ItemType== EItemType.Spot)
+                {
+                    rw.Boolean(ref n.useMeshAsMoveShape);
+
+                    if (!n.UseMeshAsMoveShape)
+                    {
+                        rw.NodeRef<CPlugCrystal>(ref n.customMoveShapeCrystal, ref n.customMoveShapeCrystalFile);
+                    }
+                }
+            }
 
             if (Version >= 3)
             {
@@ -200,27 +528,45 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
                 }
             }
 
-            rw.Boolean(ref U15);
+            rw.Boolean(ref n.useMeshAsHitShape);
 
-            if (!U15)
+            if (!n.UseMeshAsHitShape)
             {
-                rw.NodeRef<CPlugCrystal>(ref U16);
+                rw.NodeRef<CPlugCrystal>(ref n.customHitShapeCrystal, ref n.customHitShapeCrystalFile);
             }
 
-            if (n.ItemType!= EItemType.Ornament)
+            if (n.ItemType== EItemType.PickUp)
             {
-                throw new NotSupportedException();
+                rw.Boolean(ref n.useMeshAsTriggerShape);
+
+                if (!n.UseMeshAsTriggerShape)
+                {
+                    rw.NodeRef<CPlugCrystal>(ref n.customTriggerShapeCrystal, ref n.customTriggerShapeCrystalFile);
+                }
+
+                rw.NodeRef<CGameActionModel>(ref n.pickupActionModel, ref n.pickupActionModelFile);
             }
 
-            rw.Boolean(ref U17);
-
-            if (U17)
+            if (n.ItemType== EItemType.Spot)
             {
-                rw.Int32(ref U18);
-                rw.Iso4(ref U19);
+                rw.ArrayNodeRef<CGameActionModel>(ref n.triggeredActions!);
+                rw.Int32(ref n.triggerActionVersion);
+                rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.triggers!, version: n. TriggerActionVersion);
             }
 
-            rw.Int32(ref U20);
+            var hasDynaPointModel = rw.Boolean((rw.Writer is null ? default : (n.DynaPointModel is not null)));
+
+            if (hasDynaPointModel)
+            {
+                rw.ReadableWritable<CPlugDynaPointModel>(ref n.dynaPointModel, version: Version);
+            }
+
+            rw.EnumInt32<CGameObjectPhyModel.EProgram>(ref n.program);
+
+            if (Version <= 3)
+            {
+                rw.Iso4(ref n.spawnLoc);
+            }
 
             if (Version >= 1)
             {
@@ -228,35 +574,110 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
                 rw.String(ref n.inventoryDescription);
                 rw.Int32(ref n.inventoryItemClass);
                 rw.Int32(ref n.inventoryOccupation);
+            }
 
-                if (Version >= 6)
+            if (Version <= 1)
+            {
+                rw.NodeRef<CPlugSolid2Model>(ref U02, ref U02File);
+            }
+
+            if (Version >= 6 && Version <= 7)
+            {
+                rw.NodeRef<CMwNod>(ref U03, ref U03File);
+            }
+
+            if (Version >= 7)
+            {
+                if (n.ItemType== EItemType.PickUp)
                 {
-                    if (Version <= 7)
-                    {
-                        rw.NodeRef<CMwNod>(ref U21);
-                    }
-
-                    if (Version >= 7)
-                    {
-                        if (n.ItemType== EItemType.PickUp)
-                        {
-                            rw.Boolean(ref U22);
-                        }
-                    }
+                    rw.Int32(ref U04);
                 }
             }
         }
     }
 
     [Chunk(0x2E026001)]
-    public partial class Chunk2E026001 : SkippableChunk<CGameCommonItemEntityModelEdition>
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk2E026001 : SkippableChunk<CGameCommonItemEntityModelEdition>, IVersionable
     {
         public override uint Id => 0x2E026001;
-        public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk2E026001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E026001)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Int32(ref U01);
+        }
+    }
+
+    public partial class ImageRef : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? @ref;
+        public string? Ref
+        {
+            get => this.@ref;
+            set => this.@ref = value;
+        }
+
+        private CPlugFileImg? image;
+        public CPlugFileImg? Image
+        {
+            get => this.imageFile?.GetNode(ref this.image) ?? this.image;
+            set => this.image = value;
+        }
+        private Components.GbxRefTableFile? imageFile;
+
+        public Components.GbxRefTableFile? ImageFile
+        {
+            get => imageFile;
+            set => imageFile = value;
+        }
+
+        public CPlugFileImg? GetImage(GbxReadSettings settings = default, bool exceptions = false) => imageFile?.GetNode(ref image, settings, exceptions) ?? image;
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ImageRef)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ImageRef)clone).@ref = context.Clone(this.@ref)!;
+            ((ImageRef)clone).image = context.Clone(this.image)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.@ref);
+
+            if (Ref== null || Ref.Length == 0)
+            {
+                rw.NodeRef<CPlugFileImg>(ref this.image, ref this.imageFile);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -318,14 +739,9 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         }
     }
 
-    public partial class LightBallStateSimple : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class LightBallStateSimple : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int u01;
-        public int U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
+        public int Version { get; set; }
 
         private float u02;
         public float U02
@@ -348,28 +764,28 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
             set => this.u04 = value;
         }
 
-        private float u05;
+        private float u05 = 1;
         public float U05
         {
             get => this.u05;
             set => this.u05 = value;
         }
 
-        private float u06;
+        private float u06 = 1;
         public float U06
         {
             get => this.u06;
             set => this.u06 = value;
         }
 
-        private float u07;
+        private float u07 = 1;
         public float U07
         {
             get => this.u07;
             set => this.u07 = value;
         }
 
-        private float u08;
+        private float u08 = 1;
         public float U08
         {
             get => this.u08;
@@ -386,7 +802,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((LightBallStateSimple)clone).u01 = context.Clone(this.u01)!;
+            ((LightBallStateSimple)clone).Version = context.Clone(this.Version)!;
             ((LightBallStateSimple)clone).u02 = context.Clone(this.u02)!;
             ((LightBallStateSimple)clone).u03 = context.Clone(this.u03)!;
             ((LightBallStateSimple)clone).u04 = context.Clone(this.u04)!;
@@ -398,7 +814,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
+            rw.VersionInt32(this);
             rw.Single(ref this.u02);
             rw.Single(ref this.u03);
             rw.Single(ref this.u04);
