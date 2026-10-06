@@ -1,6 +1,76 @@
 CGameObjectVisModel 0x2E007000
 
-0x001
+0x000
+  CPlugSolid2Model MeshShaded (external)
+  CMwNod (external) // Deprecated CPlugAnimFile.
+
+0x001 [MP4.v21, TM2020.v22]
+  version
+  v1=
+    int U23
+    int U24
+    float U25
+  v7-
+    CMwNod U14 (external) // CPlugSolid2Model.
+  v9+
+    string Mesh
+    if Mesh == null || Mesh.Length == 0
+      CPlugSolid2Model MeshShaded (external)
+  v17-
+    CMwNod U16 (external) // Deprecated CPlugAnimFile.
+  v2+
+    v8-
+      string Mesh
+    v4-
+      LegacyLocAnim[] LegacyLocAnims
+    v5=
+      CPlugAnimLocSimple[] LegacyLocAnimRefs (external)
+    v6+
+      CPlugAnimLocSimple LocAnim (external)
+    int U03 (write: "n.LightBallStates?.Length ?? 0")
+    CGameCommonItemEntityModel.LightBallStateSimple[U03] LightBallStates
+  if Version >= 3 && Version <= 16
+    string SoundRefSpawn
+    string SoundRefUnspawn
+    string SoundRefGrab
+  v10+
+    string U07 // ParticleModel_Alive reference.
+    v11+
+      if U07 != null && U07.Length != 0
+        float U18
+        float U19
+        float U20
+  v12+
+    string SmashParticleRef
+    if SmashParticleRef != null && SmashParticleRef.Length != 0
+      id U21
+  v8=
+    if Mesh != null && Mesh.Length != 0
+      return
+    CPlugSolid2Model MeshShaded (external) // Version 8 moved this reference to the end.
+  v13+
+    int U08 (write: "n.Images?.Length ?? 0")
+    CGameCommonItemEntityModelEdition.ImageRef[U08.Value] Images
+    int U09 (write: "n.SpriteParams?.Length ?? 0")
+    CGameCommonItemEntityModelEdition.SpriteParam[U09.Value] SpriteParams
+  v14+
+    string SolidRef
+    if SolidRef == null || SolidRef.Length == 0
+      CPlugSolid Solid (external)
+  v15=
+    string U26 // Deprecated string, only in version 15.
+  v16+
+    CMwNod U10 (external) // CPlugParticleEmitterModel.
+  v19+
+    float U12
+  v20+
+    string VisEntFx
+    if VisEntFx == null || VisEntFx.Length == 0
+      CMwNod U13 (external) // CPlugVisEntFxModel.
+  v21+
+    CMwNod MeshShadedFid (external) // DoFid: an external file reference.
+  v22+
+    vec3 DomeShaderColor
 
 0x002 (skippable)
   version
@@ -10,3 +80,22 @@ CGameObjectVisModel 0x2E007000
   string SoundRefSmashed
   string SoundRefPermanent
   iso4 SoundLocPermanent
+
+0x003 (skippable)
+  CMwNod (external)
+
+archive LegacyLocAnim
+  version
+  int RotPeriod = 1000
+  int TransPeriod
+  float TransY
+  v1+ (archive)
+    int Axis = 1
+  v2+ (archive)
+    int RotPeriodMax
+    int TransPeriodMax
+  v3+ (archive)
+    byte RotFunc
+    float RotAngle
+  v4+ (archive)
+    int U01

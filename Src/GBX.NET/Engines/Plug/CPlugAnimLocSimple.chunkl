@@ -14,3 +14,5 @@ CPlugAnimLocSimple 0x090F8000
       v3+
         byte RotFunc
         float RotAngle
+        v4+
+          int U02

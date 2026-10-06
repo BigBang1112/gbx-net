@@ -121,12 +121,14 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
         public override uint Id => 0x090F8000;
         public int U01;
         public int Version { get; set; }
+        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090F8000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F8000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F8000)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugAnimLocSimple n, GbxReaderWriter rw)
@@ -150,6 +152,11 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
                     {
                         rw.Byte(ref n.rotFunc);
                         rw.Single(ref n.rotAngle);
+
+                        if (Version >= 4)
+                        {
+                            rw.Int32(ref U02);
+                        }
                     }
                 }
             }

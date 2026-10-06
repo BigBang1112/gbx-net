@@ -1,0 +1,27 @@
+CPlugDynaModel 0x0912F000
+
+archive
+  version = 4
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12
+  float U13
+  float U14
+  float U15
+  v1+ (archive)
+    bool U16 = true
+  v2+ (archive)
+    byte U17 = 1
+  v3+ (archive)
+    int U18
+  v4+ (archive)
+    CPlugDynaWaterModel WaterModel (external)
