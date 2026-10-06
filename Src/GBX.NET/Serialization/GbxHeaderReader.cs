@@ -18,7 +18,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         using var _ = logger?.BeginScope("Header");
 
         var basic = GbxHeaderBasic.Parse(reader);
-        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
+        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {Mode}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.Mode);
 
         var classId = ReadClassId(reader);
 

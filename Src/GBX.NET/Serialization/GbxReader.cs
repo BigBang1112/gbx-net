@@ -127,6 +127,7 @@ public partial interface IGbxReader : IDisposable
     List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
     List<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
     List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
+    T?[] ReadArrayNode<T>() where T : IClass, new();
     T?[] ReadArrayNodeRef<T>(int length) where T : IClass;
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
@@ -232,6 +233,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal bool IsRelease { get; set; } = true;
+
     internal GbxReadSettings Settings { get; }
 
     internal ILogger? Logger => logger;
@@ -260,6 +263,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (reader is GbxReader r)
         {
+            IsRelease = r.IsRelease;
             refTable = r.refTable;
             idVersion = r.idVersion;
             idDict = r.idDict;
@@ -1645,6 +1649,21 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadList<T>(lengthInBytes);
+    }
+
+    /// <summary>Reads a count followed by node bodies without reference indices or class IDs.</summary>
+    public T?[] ReadArrayNode<T>() where T : IClass, new()
+    {
+        var length = ReadInt32();
+        EnsureValidLength(length);
+        var array = new T?[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            array[i] = ReadNode<T>();
+        }
+
+        return array;
     }
 
     public T?[] ReadArrayNodeRef<T>(int length) where T : IClass

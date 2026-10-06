@@ -474,6 +474,7 @@ public partial class Gbx : IGbx
 
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { CloseStream = false })
             {
+                IsRelease = writer.IsRelease,
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
                 ClassIdRemapMode = classIdRemapMode

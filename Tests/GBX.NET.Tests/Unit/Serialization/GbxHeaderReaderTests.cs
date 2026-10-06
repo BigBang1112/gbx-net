@@ -182,7 +182,7 @@ public class GbxHeaderReaderTests
         await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
         await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
         await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
-        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.Basic.Mode).IsEqualTo(GbxMode.Release);
         await Assert.That(header.ClassId).IsEqualTo((uint)0x03043000);
         await Assert.That(header).IsTypeOf<GbxHeader<CGameCtnChallenge>>();
         await Assert.That((object?)node).IsTypeOf<CGameCtnChallenge>();
@@ -218,7 +218,7 @@ public class GbxHeaderReaderTests
         await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
         await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
         await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
-        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.Basic.Mode).IsEqualTo(GbxMode.Release);
         await Assert.That(header.ClassId).IsEqualTo((uint)0x03043000);
         await Assert.That(header).IsTypeOf<GbxHeader<CGameCtnChallenge>>();
         await Assert.That((object?)node).IsTypeOf<CGameCtnChallenge>();
@@ -259,7 +259,7 @@ public class GbxHeaderReaderTests
         await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
         await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
         await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
-        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.Basic.Mode).IsEqualTo(GbxMode.Release);
         await Assert.That(header.ClassId).IsEqualTo((uint)0x03999000);
         await Assert.That(header).IsTypeOf<GbxHeaderUnknown>();
         await Assert.That(((GbxHeaderUnknown)header).UserData).HasSingleItem();
@@ -295,7 +295,7 @@ public class GbxHeaderReaderTests
         await Assert.That(header.Basic.Format).IsEqualTo(GbxFormat.Binary);
         await Assert.That(header.Basic.CompressionOfRefTable).IsEqualTo(GbxCompression.Uncompressed);
         await Assert.That(header.Basic.CompressionOfBody).IsEqualTo(GbxCompression.Compressed);
-        await Assert.That(header.Basic.UnknownByte).IsEqualTo(GbxUnknownByte.R);
+        await Assert.That(header.Basic.Mode).IsEqualTo(GbxMode.Release);
         await Assert.That(header.ClassId).IsEqualTo((uint)0x03999000);
         await Assert.That(header).IsTypeOf<GbxHeaderUnknown>();
         await Assert.That(((GbxHeaderUnknown)header).UserData).IsEmpty();

@@ -131,6 +131,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteList<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct;
     void WriteList_deprec<T>(List<T>? value, bool lengthInBytes = false) where T : struct;
     void WriteList_deprec<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct;
+    void WriteArrayNode<T>(T?[]? value) where T : IClass;
     void WriteArrayNodeRef<T>(T?[]? value) where T : IClass;
     void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass;
     void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass;
@@ -225,6 +226,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal bool IsRelease { get; set; } = true;
+
     internal GbxWriteSettings Settings { get; }
 
     public ClassIdRemapMode ClassIdRemapMode { get; set; }
@@ -246,6 +249,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (writer is GbxWriter w)
         {
+            IsRelease = w.IsRelease;
             idVersion = w.idVersion;
             idDict = w.idDict;
             nodeDict = w.nodeDict;
@@ -1794,6 +1798,27 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         WriteDeprecVersion();
         WriteList(value, length, lengthInBytes);
+    }
+
+    /// <summary>Writes a count followed by node bodies without reference indices or class IDs. Null entries cannot be represented.</summary>
+    public void WriteArrayNode<T>(T?[]? value) where T : IClass
+    {
+        if (value is not null && value.Any(static item => item is null))
+        {
+            throw new ArgumentException("Direct node arrays cannot contain null entries.", nameof(value));
+        }
+
+        Write(value?.Length ?? 0);
+
+        if (value is null)
+        {
+            return;
+        }
+
+        foreach (var item in value)
+        {
+            WriteNode(item);
+        }
     }
 
     public void WriteArrayNodeRef<T>(T?[]? value) where T : IClass

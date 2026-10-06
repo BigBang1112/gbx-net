@@ -528,6 +528,10 @@ partial interface IGbxReaderWriter
     void List_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T>? value, bool lengthInBytes = false) where T : struct;
 
     [return: NotNullIfNotNull(nameof(value))]
+    T?[]? ArrayNode<T>(T?[]? value = default) where T : GBX.NET.IClass, new();
+    void ArrayNode<T>([NotNullIfNotNull(nameof(value))] ref T?[]? value) where T : GBX.NET.IClass, new();
+
+    [return: NotNullIfNotNull(nameof(value))]
     T?[]? ArrayNodeRef<T>(T?[]? value, int length) where T : GBX.NET.IClass;
     void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[]? value, int length) where T : GBX.NET.IClass;
 
@@ -2158,6 +2162,16 @@ partial class GbxReaderWriter
     }
 
     public void List_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T>? value, bool lengthInBytes = false) where T : struct => value = List_deprec(value, lengthInBytes);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T?[]? ArrayNode<T>(T?[]? value = default) where T : GBX.NET.IClass, new()
+    {
+        if (Reader is not null) value = Reader.ReadArrayNode<T>();
+        Writer?.WriteArrayNode(value);
+        return value;
+    }
+
+    public void ArrayNode<T>([NotNullIfNotNull(nameof(value))] ref T?[]? value) where T : GBX.NET.IClass, new() => value = ArrayNode(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T?[]? ArrayNodeRef<T>(T?[]? value, int length) where T : GBX.NET.IClass

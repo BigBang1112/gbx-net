@@ -10,7 +10,7 @@ public class GbxOfTTests
     public async Task ConstructorPreservesTypedNodeAndBasicHeader()
     {
         var node = new CGameCtnMediaClip();
-        var basic = GbxHeaderBasic.Create(unknownByte: GbxUnknownByte.E);
+        var basic = GbxHeaderBasic.Create(mode: GbxMode.Editor);
         var gbx = new Gbx<CGameCtnMediaClip>(node, basic);
         CGameCtnMediaClip convertedNode = gbx;
 
