@@ -3,101 +3,112 @@ CGamePlayerProfileChunk_AccountSettings 0x0312C000
 
 archive
   string Description (formatted)
-  string NickName (formatted)
-  byte Flags
-  if (Flags & 1) != 0
-    string OnlineLogin
-    string OnlinePassword
-    string OnlineValidationKey
-    string OnlineSupportKey
-    string LastUsedMSAddress
-    string LastUsedMSPath
-    string LastSessionId
-    string League
-    v3-
-      int
-    int OnlineRemainingNickNamesChangesCount
-    int OnlinePlanets
-    v1+
-      string RSAPublicKey
-  string RSAPrivateKey
-  ulong
-  int
-  CGameBuddy[] Buddies
-  ulong
-  CGameNetOnlineMessage[] InboxMessages (deprec)
-  CGameNetOnlineMessage[] ReadMessages (deprec)
-  CGameNetOnlineMessage[] OutboxMessages (deprec)
-  byte Flags2
+  if !IsOnlineSaveArchivation
+    string NickName (formatted)
+    byte Flags = 14
+    if LoginValidated
+      string OnlineLogin
+      if rw.Reader != null || RememberOnlinePassword
+        string OnlinePassword
+      else
+        string UnrememberedPassword (local, write: "string.Empty")
+      string OnlineValidationCode
+      string OnlineSupportKey
+      string LastUsedMSAddress
+      string LastUsedMSPath
+      string LastSessionId
+      string League (formatted)
+      v3-
+        int U01
+      int OnlineRemainingNickNamesChangesCount = -1
+      int OnlinePlanets
+      v1+
+        string RSAPublicKey
+    string RSAPrivateKey
+    ulong U02
+    int LegacyBuddyArchiveVersion = 5
+    CGameBuddy[] Buddies (version: LegacyBuddyArchiveVersion)
+    ulong ReceivedMessagesSystemTime
+    CGameNetOnlineMessage[] InboxMessages (deprec)
+    CGameNetOnlineMessage[] ReadMessages (deprec)
+    CGameNetOnlineMessage[] OutboxMessages (deprec)
+    byte Flags2
   v3+
-    string
-  string AvatarName
+    string U05
+  string AvatarName (formatted)
   SPlayerTagsConfig PlayerTagsConfig
   boolbyte ReceiveNews
   v1-
-    int
+    int U06
   v5+
     int EulaVersion
     v8+
-      int
-      CGameBuddy[] Buddies
+      int BuddyArchiveVersion = 5
+      CGameBuddy[] Buddies (version: BuddyArchiveVersion)
 
-0x000 (skippable) [MP4, TM2020]
-  version
+0x000 (skippable) [MP4.v3, TM2020.v3]
+  version = 3
   int EulaVersion
-  string NickName (formatted)
-  byte Flags
-  if LoginValidated
-    string OnlineLogin
-    string OnlinePassword
-    string OnlineValidationKey
-    string OnlineSupportKey
-    string LastUsedMSAddress
-    string LastUsedMSPath
-    string LastSessionId
-    string League
-    int OnlineRemainingNickNamesChangesCount
-    int OnlinePlanets
-    string RSAPublicKey
-  string RSAPrivateKey
-  ulong
-  v2+
-    bool
-    v3+
-      int PrivacyPolicyVersion
-      int Age
+  if !IsOnlineSaveArchivation
+    string NickName (formatted)
+    byte Flags = 14
+    if LoginValidated
+      string OnlineLogin
+      if rw.Reader != null || RememberOnlinePassword
+        string OnlinePassword
+      else
+        string UnrememberedPassword (local, write: "string.Empty")
+      string OnlineValidationCode
+      string OnlineSupportKey
+      string LastUsedMSAddress
+      string LastUsedMSPath
+      string LastSessionId
+      string League (formatted)
+      int OnlineRemainingNickNamesChangesCount = -1
+      int OnlinePlanets
+      string EncryptedKeyHexa
+    string RSAPrivateKey
+    ulong
+    v2+
+      bool = true
+  v3+
+    int PrivacyPolicyVersion
+    int Age
 
-0x001 (skippable) [MP4, TM2020]
-  version
+0x001 (skippable) [MP4.v1, TM2020.v2]
+  version = 2
   string Description (formatted)
-  string AvatarName
+  string AvatarName (formatted)
   SPlayerTagsConfig PlayerTagsConfig
   v2+
     string Trigram
 
-0x002 (skippable) [MP4, TM2020]
-  version
+0x002 (skippable) [MP4.v1, TM2020.v1]
+  version = 1
   boolbyte ReceiveNews
 
-0x003 (skippable) [MP4, TM2020]
-  version
-  int
-  CGameBuddy[] Buddies
+0x003 (skippable) [MP4.v7, TM2020.v7]
+  version = 7
+  int BuddyArchiveVersion = 5 (chunk)
+  CGameBuddy[] Buddies (version: BuddyArchiveVersion)
   v3+
     string
-    v4=
-      string[]
+  v4=
+    string[]
+  if !IsOnlineSaveArchivation
     v6+
       data
-      v7+
-        data
+    v7+
+      data
 
-0x004 (skippable) [MP4, TM2020]
-  version
+0x004 (skippable) [MP4.v1, TM2020.v1]
+  version = 1
   string
 
-0x005 (skippable) [MP4, TM2020]
-  version
+0x005 (skippable) [MP4.v2, TM2020.v2]
+  version = 2
+  if IsOnlineSaveArchivation
+    return
   v1-
     systemtime ReceivedMessagesAt
     CGameNetOnlineMessage[] InboxMessages (deprec)
@@ -110,58 +121,60 @@ archive
       CGameNetOnlineMessage[] ReadMessages (deprec)
       CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x006 (skippable) [MP4, TM2020]
-  version
-  byte Flags2
+0x006 (skippable) [MP4.v1, TM2020.v1]
+  version = 1
+  if !IsOnlineSaveArchivation
+    byte Flags2
 
 0x007 (skippable) [MP4, TM2020]
   version
-  string
-  int
-  int
-  int
-  int
-  int
-  int
-  bool
-  float
-  float
-  string
+  string BroadcastLogin
+  int BroadcastVideoWidth = 1280
+  int BroadcastVideoHeight = 720
+  int BroadcastVideoKbps = 1500
+  int BroadcastVideoMaxKbps = 1500
+  int BroadcastVideoTargetFps = 30
+  int BroadcastVideoCpuUsage
+  bool BroadcastAudioEnable = true
+  float BroadcastAudioVolumePlayback = 1
+  float BroadcastAudioVolumeRecorder = 1
+  if !IsOnlineSaveArchivation
+    string BroadcastPasswordEncryptedHexa
 
-0x008 (skippable) [MP4, TM2020]
-  version
+0x008 (skippable) [MP4.v1, TM2020.v1]
+  version = 1
   string ClubLinkUrl
 
-0x009 (skippable) [MP4, TM2020]
-  version
+0x009 (skippable) [MP4.v1, TM2020.v1]
+  version = 1
   byte FameStars
 
-0x00A (skippable) [MP4, TM2020]
-  version
-  float
-  float
+0x00A (skippable) [MP4.v3, TM2020.v3]
+  version = 3
+  float AnalogSensitivity = 1
+  float AnalogDeadZone = 0.1f
   v2+
     bool
-  float
-  bool
-  bool
-  float
-  float
-  bool
+  float RumbleIntensity = 1
+  bool MouseLookInvertY
+  bool MouseAccel
+  float MouseScaleY = 1
+  float MouseAccelQuantity = 0.001f
+  bool MouseSensitivities_EnableSpecific = true
   v3+
-    float
-  float
-  float
+    float MouseScaleFreeLook = 1
+  float MouseSensitivity_Default = 0.75f
+  float MouseSensitivity_Laser = 0.4f
 
-0x00B (skippable) [MP4, TM2020]
-  version
-  int
+0x00B (skippable) [MP4.v1, TM2020.v1]
+  version = 1
+  int MouseReleaseKey
   v1+
-    float
+    float CenterSpringIntensity
 
 0x00C (skippable) [MP4]
   version
-  string
+  string YoutubeRefreshToken
   YoutubeUpload[] YoutubeUploads
 
 0x00D (skippable) [MP4, TM2020]
@@ -171,13 +184,22 @@ archive
 
 0x00E (skippable) [MP4, TM2020]
   version
-  ulong
+  if IsOnlineSaveArchivation
+    return
+  ulong SteamId
   bool
 
 0x00F (skippable) [MP4, TM2020]
   version
-  string
- 
+  if !IsOnlineSaveArchivation
+    string
+
+0x010 (skippable) [TM2020]
+  version
+  int
+  int
+  ulong
+
 archive SPlayerTagsConfig
   version
   v0= (archive)
@@ -189,5 +211,5 @@ archive PlayerTagConfig
   bool IsVisibleByOtherPlayers = true
 
 archive YoutubeUpload
-  string
-  string
+  string FileName
+  string UploadUrl

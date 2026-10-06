@@ -3083,6 +3083,7 @@ public static partial class ClassManager
         0x0312C00D => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D(),
         0x0312C00E => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E(),
         0x0312C00F => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F(),
+        0x0312C010 => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C010(),
         0x0312D000 => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D000(),
         0x0312D001 => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D001(),
         0x0312D002 => new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D002(),
