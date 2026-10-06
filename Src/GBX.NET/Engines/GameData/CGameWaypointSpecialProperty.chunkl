@@ -10,3 +10,8 @@ CGameWaypointSpecialProperty 0x2E009000
     int Order
 
 0x001 (skippable)
+  version
+  bool HasScriptMetadata (local, write: "n.ScriptMetadata is not null")
+  if HasScriptMetadata
+    block (encapsulated)
+      CScriptTraitsMetadata ScriptMetadata (direct)

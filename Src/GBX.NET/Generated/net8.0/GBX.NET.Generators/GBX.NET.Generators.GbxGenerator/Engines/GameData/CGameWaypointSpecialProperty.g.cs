@@ -58,6 +58,14 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
         set => this.tag = value;
     }
 
+    private CScriptTraitsMetadata? scriptMetadata;
+    [AppliedWithChunk<Chunk2E009001>]
+    public CScriptTraitsMetadata? ScriptMetadata
+    {
+        get => this.scriptMetadata;
+        set => this.scriptMetadata = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -102,14 +110,29 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     [Chunk(0x2E009001)]
-    public partial class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>
+    public partial class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>, IVersionable
     {
         public override uint Id => 0x2E009001;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E009001)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameWaypointSpecialProperty n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            var hasScriptMetadata = rw.Boolean((rw.Writer is null ? default : (n.ScriptMetadata is not null)));
+
+            if (hasScriptMetadata)
+            {
+                rw.Encapsulated(rw =>
+                {
+                    rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata);
+                });
+            }
         }
     }
 
