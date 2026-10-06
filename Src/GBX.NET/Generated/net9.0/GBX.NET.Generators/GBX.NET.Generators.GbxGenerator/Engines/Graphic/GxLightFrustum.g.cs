@@ -34,51 +34,218 @@ public partial class GxLightFrustum : GxLightBall, IClass
     [Hexadecimal]
     public static new uint Id => 0x0400A000;
 
+    private FrustumData frustum = new();
+    [AppliedWithChunk<Chunk0400A000>]
+    [AppliedWithChunk<Chunk0400A001>]
+    [AppliedWithChunk<Chunk0400A002>]
+    [AppliedWithChunk<Chunk0400A003>]
+    [AppliedWithChunk<Chunk0400A004>]
+    [AppliedWithChunk<Chunk0400A005>]
+    [AppliedWithChunk<Chunk0400A006>]
+    public FrustumData Frustum
+    {
+        get => this.frustum;
+        set => this.frustum = value;
+    }
+
+    private uint flagsFrustum = 0x80010;
+    /// <summary>
+    /// Packed face, attenuation, apply-mode, technique and shadow-group bits
+    /// </summary>
+    [AppliedWithChunk<Chunk0400A001>]
+    public uint FlagsFrustum
+    {
+        get => this.flagsFrustum;
+        set => this.flagsFrustum = value;
+    }
+
+    private uint flags;
+    [AppliedWithChunk<Chunk0400A002>]
+    [AppliedWithChunk<Chunk0400A003>]
+    [AppliedWithChunk<Chunk0400A004>]
+    [AppliedWithChunk<Chunk0400A005>]
+    [AppliedWithChunk<Chunk0400A006>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private uint legacyBlendSource;
+    [AppliedWithChunk<Chunk0400A003>]
+    public uint LegacyBlendSource
+    {
+        get => this.legacyBlendSource;
+        set => this.legacyBlendSource = value;
+    }
+
+    private uint legacyBlendDestination;
+    [AppliedWithChunk<Chunk0400A003>]
+    public uint LegacyBlendDestination
+    {
+        get => this.legacyBlendDestination;
+        set => this.legacyBlendDestination = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((GxLightFrustum)clone).frustum = context.Clone(this.frustum)!;
+        ((GxLightFrustum)clone).flagsFrustum = context.Clone(this.flagsFrustum)!;
+        ((GxLightFrustum)clone).flags = context.Clone(this.flags)!;
+        ((GxLightFrustum)clone).legacyBlendSource = context.Clone(this.legacyBlendSource)!;
+        ((GxLightFrustum)clone).legacyBlendDestination = context.Clone(this.legacyBlendDestination)!;
     }
 
     public GxLightFrustum()
     {
+        AttHTnLR = 0;
+        AttHTnLR2 = 0;
     }
 
-    [Chunk(0x0400A004)]
-    public partial class Chunk0400A004 : Chunk<GxLightFrustum>
+    [Chunk(0x0400A000)]
+    public partial class Chunk0400A000 : Chunk<GxLightFrustum>
     {
-        public override uint Id => 0x0400A004;
-        public int U01;
-        public int U02;
-        public int U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public int U08;
+        public override uint Id => 0x0400A000;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0400A004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0400A004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0400A004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0400A004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0400A004)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0400A004)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0400A004)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0400A004)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Int32(ref U08);
+            rw.ReadableWritable<FrustumData>(ref n.frustum, version: 1);
+            var doAttenuationLegacy = rw.Boolean((rw.Writer is null ? default : ((n.Flags & 0x40) != 0)));
+            var useFaceNegZLegacy = rw.Boolean((rw.Writer is null ? default : ((n.Flags & 0x20) != 0)));
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFFC79F;
+
+                if (doAttenuationLegacy)
+                {
+                    n.Flags = n.Flags| 0x40;
+                }
+
+                if (useFaceNegZLegacy)
+                {
+                    n.Flags = n.Flags| 0x20;
+                }
+            }
+        }
+    }
+
+    [Chunk(0x0400A001)]
+    public partial class Chunk0400A001 : Chunk<GxLightFrustum>
+    {
+        public override uint Id => 0x0400A001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<FrustumData>(ref n.frustum, version: 1);
+            rw.UInt32(ref n.flagsFrustum);
+        }
+    }
+
+    [Chunk(0x0400A002)]
+    public partial class Chunk0400A002 : Chunk<GxLightFrustum>
+    {
+        public override uint Id => 0x0400A002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<FrustumData>(ref n.frustum);
+            rw.UInt32(ref n.flags);
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFFC7FF;
+            }
+        }
+    }
+
+    [Chunk(0x0400A003)]
+    public partial class Chunk0400A003 : Chunk0400A002
+    {
+        public override uint Id => 0x0400A003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.UInt32(ref n.legacyBlendSource);
+            rw.UInt32(ref n.legacyBlendDestination);
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFC007F;
+
+                if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 0)
+                {
+                    n.Flags = n.Flags| 0x80;
+                }
+                else if (n.LegacyBlendSource== 1 && n.LegacyBlendDestination== 1)
+                {
+                    n.Flags = n.Flags| 0x100;
+                }
+                else if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 2)
+                {
+                    n.Flags = n.Flags| 0x180;
+                }
+            }
+        }
+    }
+
+    [Chunk(0x0400A004)]
+    public partial class Chunk0400A004 : Chunk0400A002
+    {
+        public override uint Id => 0x0400A004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    [Chunk(0x0400A005)]
+    public partial class Chunk0400A005 : Chunk<GxLightFrustum>
+    {
+        public override uint Id => 0x0400A005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<FrustumData>(ref n.frustum);
+            rw.UInt32(ref n.flags);
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFC3FFF;
+            }
         }
     }
 
@@ -88,29 +255,160 @@ public partial class GxLightFrustum : GxLightBall, IClass
     {
         public override uint Id => 0x0400A006;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
-        public BoxAligned U02;
-        public uint U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0400A006)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0400A006)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0400A006)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.BoxAligned(ref U02);
-            rw.UInt32(ref U03);
+            rw.ReadableWritable<FrustumData>(ref n.frustum);
+            rw.UInt32(ref n.flags);
+        }
+    }
+
+    public partial class FrustumData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private bool isOrthographic;
+        public bool IsOrthographic
+        {
+            get => this.isOrthographic;
+            set => this.isOrthographic = value;
+        }
+
+        private float x = -0.2679492f;
+        /// <summary>
+        /// Perspective: left, bottom, near, right, top, far; orthographic: center XYZ, half-size XYZ
+        /// </summary>
+        public float X
+        {
+            get => this.x;
+            set => this.x = value;
+        }
+
+        private float y = -0.2679492f;
+        public float Y
+        {
+            get => this.y;
+            set => this.y = value;
+        }
+
+        private float z = 0.5f;
+        public float Z
+        {
+            get => this.z;
+            set => this.z = value;
+        }
+
+        private float x2 = 0.2679492f;
+        /// <summary>
+        /// 30-degree vertical field of view, aspect ratio 1
+        /// </summary>
+        public float X2
+        {
+            get => this.x2;
+            set => this.x2 = value;
+        }
+
+        private float y2 = 0.2679492f;
+        public float Y2
+        {
+            get => this.y2;
+            set => this.y2 = value;
+        }
+
+        private float z2 = 10;
+        public float Z2
+        {
+            get => this.z2;
+            set => this.z2 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (FrustumData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((FrustumData)clone).isOrthographic = context.Clone(this.isOrthographic)!;
+            ((FrustumData)clone).x = context.Clone(this.x)!;
+            ((FrustumData)clone).y = context.Clone(this.y)!;
+            ((FrustumData)clone).z = context.Clone(this.z)!;
+            ((FrustumData)clone).x2 = context.Clone(this.x2)!;
+            ((FrustumData)clone).y2 = context.Clone(this.y2)!;
+            ((FrustumData)clone).z2 = context.Clone(this.z2)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Boolean(ref this.isOrthographic);
+
+            if (v== 1)
+            {
+                var minX = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? X- X2: X)));
+                var minY = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Y- Y2: Y)));
+                var minZ = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Z- Z2: Z)));
+                var maxX = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? X+ X2: X2)));
+                var maxY = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Y+ Y2: Y2)));
+                var maxZ = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Z+ Z2: Z2)));
+
+                if (rw.Reader != null)
+                {
+                    X = (minX+ maxX) * 0.5f;
+                    Y = (minY+ maxY) * 0.5f;
+                    Z = (minZ+ maxZ) * 0.5f;
+                    X2 = (maxX- minX) * 0.5f;
+                    Y2 = (maxY- minY) * 0.5f;
+                    Z2 = (maxZ- minZ) * 0.5f;
+
+                    if (!IsOrthographic)
+                    {
+                        X = (minX+ maxX) * 0.5f - (maxX- minX) * 0.5f;
+                        Y = (minY+ maxY) * 0.5f - (maxY- minY) * 0.5f;
+                        Z = (minZ+ maxZ) * 0.5f - (maxZ- minZ) * 0.5f;
+                        X2 = (minX+ maxX) * 0.5f + (maxX- minX) * 0.5f;
+                        Y2 = (minY+ maxY) * 0.5f + (maxY- minY) * 0.5f;
+                        Z2 = (minZ+ maxZ) * 0.5f + (maxZ- minZ) * 0.5f;
+                    }
+                }
+            }
+            else
+            {
+                rw.Single(ref this.x);
+                rw.Single(ref this.y);
+                rw.Single(ref this.z);
+                rw.Single(ref this.x2);
+                rw.Single(ref this.y2);
+                rw.Single(ref this.z2);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0400A000 => new Chunk0400A000(),
+        0x0400A001 => new Chunk0400A001(),
+        0x0400A002 => new Chunk0400A002(),
+        0x0400A003 => new Chunk0400A003(),
         0x0400A004 => new Chunk0400A004(),
+        0x0400A005 => new Chunk0400A005(),
         0x0400A006 => new Chunk0400A006(),
         _ => base.NewChunk(chunkId),
     };

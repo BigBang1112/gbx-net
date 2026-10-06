@@ -1,0 +1,30 @@
+CHmsPortal 0x06006000
+- inherits: CMwNod
+
+0x000
+  bool NeedClipping2D
+  bool NeedClipping3D
+  bool IsVisualVisible = true
+  bool IsPickingPossible
+  bool CanPassThrough
+
+0x001 [TMF]
+  bool SoundCanPassThrough = true
+  bool IsDirectPathSet
+  int DirectOcclusion
+  float DirectOcclusionSpectralRatio = 0.25f
+  float DirectOcclusionRatio = 0.5f
+  int IndirectOcclusion
+  float IndirectOcclusionSpectralRatio = 0.25f
+  float IndirectOcclusionRatio = 0.5f
+  int IndirectObstruction
+  float IndirectObstructionSpectralRatio
+
+0x002 [TMF]
+  bool NeedClipping2D
+  bool NeedClipping3D
+  bool CanSeeThrough
+  float SeeThroughOpacity = 0.5f
+  bool IsVisualVisible
+  bool IsPickingPossible
+  bool CanPassThrough

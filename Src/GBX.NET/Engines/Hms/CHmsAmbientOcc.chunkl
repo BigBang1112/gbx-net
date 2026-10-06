@@ -1,9 +1,10 @@
 CHmsAmbientOcc 0x06026000
+- inherits: CMwNod
 
 0x000 [TMF, MP4, TM2020]
-  float
-  float
-  int
-  float
-  float
-  float
+  float ImageRadius = 0.1f // TM2020 default; 0.024 in TMF and Maniaplanet
+  float BlurPower = 1.5f // TM2020 default; 3 in TMF and Maniaplanet
+  uint BlurTexelCount = 15 // Gaussian blur kernel width, normalized to an odd value by the renderer
+  float = 0.5f
+  float = 0.5f
+  float = 0.5f

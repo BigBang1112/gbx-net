@@ -1,12 +1,81 @@
 GxLightBall 0x04002000
 - inherits: GxLightPoint
 
+0x000
+  float Radius = 10
+  float Attenuation1 = -1 // Legacy linear coefficient, scaled by Radius when loaded
+  float Attenuation2 = -1 // Legacy quadratic coefficient, scaled by Radius squared when loaded
+  if rw.Reader != null && Attenuation1 > -0.5f
+    AttHTnLR = Radius * Attenuation1
+    AttHTnLR2 = Attenuation2 * Radius * Radius
+
+0x001
+  float Radius
+  float Attenuation1
+  float Attenuation2
+  float EmittingRadius
+  if rw.Reader != null && Attenuation1 > -0.5f
+    AttHTnLR = Radius * Attenuation1
+    AttHTnLR2 = Attenuation2 * Radius * Radius
+
 0x002 [TM10]
   float Radius
   float Attenuation1
   float Attenuation2
   float EmittingRadius
   vec3 AmbientRGB
+  if rw.Reader != null
+    RadiusSpecular = Radius
+    if Attenuation1 > -0.5f
+      AttHTnLR = Radius * Attenuation1
+      AttHTnLR2 = Attenuation2 * Radius * Radius
+
+0x003
+  float Radius
+  float RadiusSpecular = 10
+  float EmittingRadius
+  float Attenuation1
+  float Attenuation2
+  vec3 AmbientRGB
+  if rw.Reader != null
+    if RadiusSpecular - Radius > 0.00001f || RadiusSpecular - Radius < -0.00001f // Compare against 1, |Radius| and |RadiusSpecular| for the native relative tolerance
+      if (RadiusSpecular - Radius > Radius * 0.00001f && RadiusSpecular - Radius > -Radius * 0.00001f) || (RadiusSpecular - Radius < Radius * 0.00001f && RadiusSpecular - Radius < -Radius * 0.00001f)
+        if (RadiusSpecular - Radius > RadiusSpecular * 0.00001f && RadiusSpecular - Radius > -RadiusSpecular * 0.00001f) || (RadiusSpecular - Radius < RadiusSpecular * 0.00001f && RadiusSpecular - Radius < -RadiusSpecular * 0.00001f)
+          Flags = Flags | 1
+    if Attenuation1 > -0.5f
+      AttHTnLR = Radius * Attenuation1
+      AttHTnLR2 = Attenuation2 * Radius * Radius
+
+0x004
+  uint Flags = 0x10 // Packed custom-radius, attenuation-type and HyperNorm2 tweak bits
+  float Radius
+  float RadiusSpecular
+  float RadiusShadow = 10
+  float EmittingRadius
+  float Attenuation1
+  float Attenuation2
+  vec3 AmbientRGB
+  if rw.Reader != null
+    Flags = Flags & 0xFFFFFFC3
+    if Attenuation1 > -0.5f
+      AttHTnLR = Radius * Attenuation1
+      AttHTnLR2 = Attenuation2 * Radius * Radius
+
+0x005
+  uint Flags
+  float Radius
+  float RadiusSpecular
+  float RadiusShadow
+  float RadiusFlare = 40
+  float EmittingRadius
+  float Attenuation1
+  float Attenuation2
+  vec3 AmbientRGB
+  if rw.Reader != null
+    Flags = Flags & 0xFFFFFFC7
+    if Attenuation1 > -0.5f
+      AttHTnLR = Radius * Attenuation1
+      AttHTnLR2 = Attenuation2 * Radius * Radius
 
 0x006 [TMF]
   uint Flags
@@ -18,6 +87,22 @@ GxLightBall 0x04002000
   float Attenuation1
   float Attenuation2
   vec3 AmbientRGB
+  if rw.Reader != null && Attenuation1 > -0.5f
+    AttHTnLR = Radius * Attenuation1
+    AttHTnLR2 = Attenuation2 * Radius * Radius
+
+0x007
+  uint Flags
+  float Radius
+  float RadiusSpecular
+  float RadiusShadow
+  float RadiusFlare
+  float EmittingRadius
+  float AttHTnLR = 10
+  float AttHTnLR2
+  vec3 AmbientRGB
+  float AttHyper2DerivAt0 = -1.5f
+  float AttHyper2Tension = 0.3f
 
 0x008 [MP4, TM2020]
   uint Flags
@@ -34,7 +119,7 @@ GxLightBall 0x04002000
   float AttHyper2Tension
 
 0x009 [MP4, TM2020]
-  float
+  float RadiusIndex = 10
 
 0x00A [MP4, TM2020]
-  float
+  float AttHdrRadiusCoef = 0.015625f

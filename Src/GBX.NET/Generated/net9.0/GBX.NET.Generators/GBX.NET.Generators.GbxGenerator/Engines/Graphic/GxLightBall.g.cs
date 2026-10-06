@@ -34,9 +34,15 @@ public partial class GxLightBall : GxLightPoint, IClass
     [Hexadecimal]
     public static new uint Id => 0x04002000;
 
-    private float radius;
+    private float radius = 10;
+    [AppliedWithChunk<Chunk04002000>]
+    [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float Radius
     {
@@ -44,8 +50,16 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.radius = value;
     }
 
-    private float attenuation1;
+    private float attenuation1 = -1;
+    /// <summary>
+    /// Legacy linear coefficient, scaled by Radius when loaded
+    /// </summary>
+    [AppliedWithChunk<Chunk04002000>]
+    [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
     public float Attenuation1
     {
@@ -53,8 +67,16 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.attenuation1 = value;
     }
 
-    private float attenuation2;
+    private float attenuation2 = -1;
+    /// <summary>
+    /// Legacy quadratic coefficient, scaled by Radius squared when loaded
+    /// </summary>
+    [AppliedWithChunk<Chunk04002000>]
+    [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
     public float Attenuation2
     {
@@ -63,8 +85,13 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float emittingRadius;
+    [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float EmittingRadius
     {
@@ -74,7 +101,11 @@ public partial class GxLightBall : GxLightPoint, IClass
 
     private Vec3 ambientRGB;
     [AppliedWithChunk<Chunk04002002>]
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public Vec3 AmbientRGB
     {
@@ -82,17 +113,12 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.ambientRGB = value;
     }
 
-    private uint flags;
+    private float radiusSpecular = 10;
+    [AppliedWithChunk<Chunk04002003>]
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
-    [AppliedWithChunk<Chunk04002008>]
-    public uint Flags
-    {
-        get => this.flags;
-        set => this.flags = value;
-    }
-
-    private float radiusSpecular;
-    [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float RadiusSpecular
     {
@@ -100,8 +126,26 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.radiusSpecular = value;
     }
 
-    private float radiusShadow;
+    private uint flags = 0x10;
+    /// <summary>
+    /// Packed custom-radius, attenuation-type and HyperNorm2 tweak bits
+    /// </summary>
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
+    [AppliedWithChunk<Chunk04002008>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private float radiusShadow = 10;
+    [AppliedWithChunk<Chunk04002004>]
+    [AppliedWithChunk<Chunk04002005>]
+    [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float RadiusShadow
     {
@@ -109,13 +153,51 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.radiusShadow = value;
     }
 
-    private float radiusFlare;
+    private float radiusFlare = 40;
+    [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
+    [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float RadiusFlare
     {
         get => this.radiusFlare;
         set => this.radiusFlare = value;
+    }
+
+    private float attHTnLR = 10;
+    [AppliedWithChunk<Chunk04002007>]
+    [AppliedWithChunk<Chunk04002008>]
+    public float AttHTnLR
+    {
+        get => this.attHTnLR;
+        set => this.attHTnLR = value;
+    }
+
+    private float attHTnLR2;
+    [AppliedWithChunk<Chunk04002007>]
+    [AppliedWithChunk<Chunk04002008>]
+    public float AttHTnLR2
+    {
+        get => this.attHTnLR2;
+        set => this.attHTnLR2 = value;
+    }
+
+    private float attHyper2DerivAt0 = -1.5f;
+    [AppliedWithChunk<Chunk04002007>]
+    [AppliedWithChunk<Chunk04002008>]
+    public float AttHyper2DerivAt0
+    {
+        get => this.attHyper2DerivAt0;
+        set => this.attHyper2DerivAt0 = value;
+    }
+
+    private float attHyper2Tension = 0.3f;
+    [AppliedWithChunk<Chunk04002007>]
+    [AppliedWithChunk<Chunk04002008>]
+    public float AttHyper2Tension
+    {
+        get => this.attHyper2Tension;
+        set => this.attHyper2Tension = value;
     }
 
     private float emittingCylinderLenZ;
@@ -126,36 +208,20 @@ public partial class GxLightBall : GxLightPoint, IClass
         set => this.emittingCylinderLenZ = value;
     }
 
-    private float attHTnLR;
-    [AppliedWithChunk<Chunk04002008>]
-    public float AttHTnLR
+    private float radiusIndex = 10;
+    [AppliedWithChunk<Chunk04002009>]
+    public float RadiusIndex
     {
-        get => this.attHTnLR;
-        set => this.attHTnLR = value;
+        get => this.radiusIndex;
+        set => this.radiusIndex = value;
     }
 
-    private float attHTnLR2;
-    [AppliedWithChunk<Chunk04002008>]
-    public float AttHTnLR2
+    private float attHdrRadiusCoef = 0.015625f;
+    [AppliedWithChunk<Chunk0400200A>]
+    public float AttHdrRadiusCoef
     {
-        get => this.attHTnLR2;
-        set => this.attHTnLR2 = value;
-    }
-
-    private float attHyper2DerivAt0;
-    [AppliedWithChunk<Chunk04002008>]
-    public float AttHyper2DerivAt0
-    {
-        get => this.attHyper2DerivAt0;
-        set => this.attHyper2DerivAt0 = value;
-    }
-
-    private float attHyper2Tension;
-    [AppliedWithChunk<Chunk04002008>]
-    public float AttHyper2Tension
-    {
-        get => this.attHyper2Tension;
-        set => this.attHyper2Tension = value;
+        get => this.attHdrRadiusCoef;
+        set => this.attHdrRadiusCoef = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -166,19 +232,70 @@ public partial class GxLightBall : GxLightPoint, IClass
         ((GxLightBall)clone).attenuation2 = context.Clone(this.attenuation2)!;
         ((GxLightBall)clone).emittingRadius = context.Clone(this.emittingRadius)!;
         ((GxLightBall)clone).ambientRGB = context.Clone(this.ambientRGB)!;
-        ((GxLightBall)clone).flags = context.Clone(this.flags)!;
         ((GxLightBall)clone).radiusSpecular = context.Clone(this.radiusSpecular)!;
+        ((GxLightBall)clone).flags = context.Clone(this.flags)!;
         ((GxLightBall)clone).radiusShadow = context.Clone(this.radiusShadow)!;
         ((GxLightBall)clone).radiusFlare = context.Clone(this.radiusFlare)!;
-        ((GxLightBall)clone).emittingCylinderLenZ = context.Clone(this.emittingCylinderLenZ)!;
         ((GxLightBall)clone).attHTnLR = context.Clone(this.attHTnLR)!;
         ((GxLightBall)clone).attHTnLR2 = context.Clone(this.attHTnLR2)!;
         ((GxLightBall)clone).attHyper2DerivAt0 = context.Clone(this.attHyper2DerivAt0)!;
         ((GxLightBall)clone).attHyper2Tension = context.Clone(this.attHyper2Tension)!;
+        ((GxLightBall)clone).emittingCylinderLenZ = context.Clone(this.emittingCylinderLenZ)!;
+        ((GxLightBall)clone).radiusIndex = context.Clone(this.radiusIndex)!;
+        ((GxLightBall)clone).attHdrRadiusCoef = context.Clone(this.attHdrRadiusCoef)!;
     }
 
     public GxLightBall()
     {
+    }
+
+    [Chunk(0x04002000)]
+    public partial class Chunk04002000 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.radius);
+            rw.Single(ref n.attenuation1);
+            rw.Single(ref n.attenuation2);
+
+            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            {
+                n.AttHTnLR = n.Radius* n.Attenuation1;
+                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+            }
+        }
+    }
+
+    [Chunk(0x04002001)]
+    public partial class Chunk04002001 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.radius);
+            rw.Single(ref n.attenuation1);
+            rw.Single(ref n.attenuation2);
+            rw.Single(ref n.emittingRadius);
+
+            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            {
+                n.AttHTnLR = n.Radius* n.Attenuation1;
+                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+            }
+        }
     }
 
     [Chunk(0x04002002)]
@@ -200,6 +317,127 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation2);
             rw.Single(ref n.emittingRadius);
             rw.Vec3(ref n.ambientRGB);
+
+            if (rw.Reader != null)
+            {
+                n.RadiusSpecular = n.Radius;
+
+                if (n.Attenuation1> -0.5f)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
+            }
+        }
+    }
+
+    [Chunk(0x04002003)]
+    public partial class Chunk04002003 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.radius);
+            rw.Single(ref n.radiusSpecular);
+            rw.Single(ref n.emittingRadius);
+            rw.Single(ref n.attenuation1);
+            rw.Single(ref n.attenuation2);
+            rw.Vec3(ref n.ambientRGB);
+
+            if (rw.Reader != null)
+            {
+                if (n.RadiusSpecular- n.Radius> 0.00001f || n.RadiusSpecular- n.Radius< -0.00001f)
+                {
+                    if ((n.RadiusSpecular- n.Radius> n.Radius* 0.00001f && n.RadiusSpecular- n.Radius> -n.Radius* 0.00001f) || (n.RadiusSpecular- n.Radius< n.Radius* 0.00001f && n.RadiusSpecular- n.Radius< -n.Radius* 0.00001f))
+                    {
+                        if ((n.RadiusSpecular- n.Radius> n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius> -n.RadiusSpecular* 0.00001f) || (n.RadiusSpecular- n.Radius< n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius< -n.RadiusSpecular* 0.00001f))
+                        {
+                            n.Flags = n.Flags| 1;
+                        }
+                    }
+                }
+
+                if (n.Attenuation1> -0.5f)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
+            }
+        }
+    }
+
+    [Chunk(0x04002004)]
+    public partial class Chunk04002004 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.flags);
+            rw.Single(ref n.radius);
+            rw.Single(ref n.radiusSpecular);
+            rw.Single(ref n.radiusShadow);
+            rw.Single(ref n.emittingRadius);
+            rw.Single(ref n.attenuation1);
+            rw.Single(ref n.attenuation2);
+            rw.Vec3(ref n.ambientRGB);
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFFFFC3;
+
+                if (n.Attenuation1> -0.5f)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
+            }
+        }
+    }
+
+    [Chunk(0x04002005)]
+    public partial class Chunk04002005 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.flags);
+            rw.Single(ref n.radius);
+            rw.Single(ref n.radiusSpecular);
+            rw.Single(ref n.radiusShadow);
+            rw.Single(ref n.radiusFlare);
+            rw.Single(ref n.emittingRadius);
+            rw.Single(ref n.attenuation1);
+            rw.Single(ref n.attenuation2);
+            rw.Vec3(ref n.ambientRGB);
+
+            if (rw.Reader != null)
+            {
+                n.Flags = n.Flags& 0xFFFFFFC7;
+
+                if (n.Attenuation1> -0.5f)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
+            }
         }
     }
 
@@ -226,6 +464,38 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation1);
             rw.Single(ref n.attenuation2);
             rw.Vec3(ref n.ambientRGB);
+
+            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            {
+                n.AttHTnLR = n.Radius* n.Attenuation1;
+                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+            }
+        }
+    }
+
+    [Chunk(0x04002007)]
+    public partial class Chunk04002007 : Chunk<GxLightBall>
+    {
+        public override uint Id => 0x04002007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.flags);
+            rw.Single(ref n.radius);
+            rw.Single(ref n.radiusSpecular);
+            rw.Single(ref n.radiusShadow);
+            rw.Single(ref n.radiusFlare);
+            rw.Single(ref n.emittingRadius);
+            rw.Single(ref n.attHTnLR);
+            rw.Single(ref n.attHTnLR2);
+            rw.Vec3(ref n.ambientRGB);
+            rw.Single(ref n.attHyper2DerivAt0);
+            rw.Single(ref n.attHyper2Tension);
         }
     }
 
@@ -264,17 +534,15 @@ public partial class GxLightBall : GxLightPoint, IClass
     {
         public override uint Id => 0x04002009;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk04002009)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
+            rw.Single(ref n.radiusIndex);
         }
     }
 
@@ -284,24 +552,28 @@ public partial class GxLightBall : GxLightPoint, IClass
     {
         public override uint Id => 0x0400200A;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0400200A)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(GxLightBall n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
+            rw.Single(ref n.attHdrRadiusCoef);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x04002000 => new Chunk04002000(),
+        0x04002001 => new Chunk04002001(),
         0x04002002 => new Chunk04002002(),
+        0x04002003 => new Chunk04002003(),
+        0x04002004 => new Chunk04002004(),
+        0x04002005 => new Chunk04002005(),
         0x04002006 => new Chunk04002006(),
+        0x04002007 => new Chunk04002007(),
         0x04002008 => new Chunk04002008(),
         0x04002009 => new Chunk04002009(),
         0x0400200A => new Chunk0400200A(),

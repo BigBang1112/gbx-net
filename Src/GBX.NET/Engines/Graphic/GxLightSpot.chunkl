@@ -1,23 +1,54 @@
 GxLightSpot 0x0400B000
 - inherits: GxLightBall
 
+constructor
+  LightMapOnly = true
+
+property bool CustomAngleFlare
+  get = (Flags & 1) != 0
+  set
+    if value
+      Flags = Flags | 1
+    else
+      Flags = Flags & 0xFFFFFFFE
+
+property bool CustomAngleShadow
+  get = (Flags & 2) != 0
+  set
+    if value
+      Flags = Flags | 2
+    else
+      Flags = Flags & 0xFFFFFFFD
+
+0x000
+  float AngleInner = 30
+  float AngleOuter = 45
+  float FalloffExponent = 1 // Retained for legacy archives; discarded by later native readers
+  if rw.Reader != null
+    AngleFlare = AngleOuter + AngleOuter
+
 0x001 [TMF]
   float AngleInner
   float AngleOuter
-  float AngleFlare
+  float AngleFlare = 45 // Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
   float FalloffExponent
+  if rw.Reader != null
+    if AngleFlare - AngleOuter > 0.00001f || AngleFlare - AngleOuter < -0.00001f // MP/TM2020 use 0.00001 * max(1, |AngleFlare|, |AngleOuter|); TMF used absolute tolerance
+      if (AngleFlare - AngleOuter > AngleFlare * 0.00001f && AngleFlare - AngleOuter > -AngleFlare * 0.00001f) || (AngleFlare - AngleOuter < AngleFlare * 0.00001f && AngleFlare - AngleOuter < -AngleFlare * 0.00001f)
+        if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
+          Flags = Flags | 1
 
 0x002 [TMF, MP4]
-  uint Flags
+  uint Flags = 0 // CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
   float AngleInner
   float AngleOuter
   float AngleFlare
-  float AngleInnerShadow
-  float AngleOuterShadow
+  float AngleInnerShadow = 30
+  float AngleOuterShadow = 45
   float FalloffExponent
 
-0x003 [TM2020]
-  version
+0x003 [TM2020.v1]
+  version = 1
   uint Flags
   float AngleInner
   float AngleOuter
@@ -26,7 +57,7 @@ GxLightSpot 0x0400B000
   float AngleOuterShadow
   float FalloffExponent
   v1+
-    byte
-    byte
+    byte SubLightCountX = 1
+    byte SubLightCountY = 1
   v0=
-    int
+    int LegacyValue // Discarded by the native v0 reader; purpose unknown

@@ -9,6 +9,109 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task PackedIntegerPropertiesConvertPromotedValuesAndRunTheirSettersFromChunks()
+    {
+        const string source = """
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void UInt64(ref ulong value) { }
+                    public void UInt16(ref ushort value) { }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify()
+                    {
+                        var node = new Example { Packed = 0xFEDC012345678900 };
+                        new Chunk03043001().ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader()));
+                        node.IsHidden = true;
+                        return $"{node.Decoded:X4},{node.ByteField:X2},{node.Visibility:X4},{node.Packed:X16}";
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            property byte ByteField
+              get = Packed & 0xFF
+              set
+                Packed = (Packed & 0xFFFFFFFFFFFFFF00) | value
+            property ushort Visibility
+              get = Packed >> 48
+              set
+                Packed = (Packed & 0xFFFFFFFFFFFF) | ((value & 0xFFFFFFFFFFFFFFFF) << 48)
+            property bool IsHidden
+              get = (Visibility & 1) != 0
+              set
+                if value
+                  Visibility = Visibility | 1
+                else
+                  Visibility = Visibility & 0xFFFE
+            0x001
+              ulong Packed
+              ushort Decoded
+              if rw.Reader != null
+                Decoded = Packed >> 48
+                ByteField = 7
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).GetText().ToString();
+        await Assert.That(generated).Contains("get => (byte)(Packed& 0xFF);");
+        await Assert.That(generated).Contains("n.Decoded = (ushort)(n.Packed>> 48);");
+        await Assert.That(generated).Contains("n.ByteField = 7;");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("FEDC,07,FEDD,FEDD012345678907");
+    }
+
+    [Test]
+    public async Task EmptyNamedArchiveCreatesIndependentInstancesWithArchiveDefaults()
+    {
+        const string source = """
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              Child Data = empty
+              Child? OptionalData = empty
+            archive Child
+              int Value = 7
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(Engine(result).GetText().ToString()).Contains("private Child data = new();");
+        await Assert.That(Engine(result).GetText().ToString()).Contains("private Child? optionalData = new();");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        var first = type.GetProperty("Data")!.GetValue(Activator.CreateInstance(type))!;
+        var second = type.GetProperty("Data")!.GetValue(Activator.CreateInstance(type))!;
+        await Assert.That(first).IsNotSameReferenceAs(second);
+        var value = first.GetType().GetProperty("Value")!;
+        value.SetValue(first, 42);
+        await Assert.That(value.GetValue(second)).IsEqualTo(7);
+    }
+
+    [Test]
     public async Task MapsZeroToTimeInt32ZeroUsingTheComparedFieldType()
     {
         const string source = """

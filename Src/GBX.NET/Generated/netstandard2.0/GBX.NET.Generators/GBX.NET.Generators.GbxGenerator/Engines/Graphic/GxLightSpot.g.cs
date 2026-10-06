@@ -34,7 +34,8 @@ public partial class GxLightSpot : GxLightBall, IClass
     [Hexadecimal]
     public static new uint Id => 0x0400B000;
 
-    private float angleInner;
+    private float angleInner = 30;
+    [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
@@ -44,7 +45,8 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.angleInner = value;
     }
 
-    private float angleOuter;
+    private float angleOuter = 45;
+    [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
@@ -54,17 +56,11 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.angleOuter = value;
     }
 
-    private float angleFlare;
-    [AppliedWithChunk<Chunk0400B001>]
-    [AppliedWithChunk<Chunk0400B002>]
-    [AppliedWithChunk<Chunk0400B003>]
-    public float AngleFlare
-    {
-        get => this.angleFlare;
-        set => this.angleFlare = value;
-    }
-
-    private float falloffExponent;
+    private float falloffExponent = 1;
+    /// <summary>
+    /// Retained for legacy archives; discarded by later native readers
+    /// </summary>
+    [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
@@ -74,7 +70,23 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.falloffExponent = value;
     }
 
-    private uint flags;
+    private float angleFlare = 45;
+    /// <summary>
+    /// Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
+    /// </summary>
+    [AppliedWithChunk<Chunk0400B001>]
+    [AppliedWithChunk<Chunk0400B002>]
+    [AppliedWithChunk<Chunk0400B003>]
+    public float AngleFlare
+    {
+        get => this.angleFlare;
+        set => this.angleFlare = value;
+    }
+
+    private uint flags = 0;
+    /// <summary>
+    /// CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
+    /// </summary>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public uint Flags
@@ -83,7 +95,7 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.flags = value;
     }
 
-    private float angleInnerShadow;
+    private float angleInnerShadow = 30;
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public float AngleInnerShadow
@@ -92,7 +104,7 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.angleInnerShadow = value;
     }
 
-    private float angleOuterShadow;
+    private float angleOuterShadow = 45;
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public float AngleOuterShadow
@@ -101,20 +113,110 @@ public partial class GxLightSpot : GxLightBall, IClass
         set => this.angleOuterShadow = value;
     }
 
+    private byte subLightCountX = 1;
+    [AppliedWithChunk<Chunk0400B003>(1)]
+    public byte SubLightCountX
+    {
+        get => this.subLightCountX;
+        set => this.subLightCountX = value;
+    }
+
+    private byte subLightCountY = 1;
+    [AppliedWithChunk<Chunk0400B003>(1)]
+    public byte SubLightCountY
+    {
+        get => this.subLightCountY;
+        set => this.subLightCountY = value;
+    }
+
+    private int legacyValue;
+    /// <summary>
+    /// Discarded by the native v0 reader; purpose unknown
+    /// </summary>
+    [AppliedWithChunk<Chunk0400B003>(0, 0)]
+    public int LegacyValue
+    {
+        get => this.legacyValue;
+        set => this.legacyValue = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((GxLightSpot)clone).angleInner = context.Clone(this.angleInner)!;
         ((GxLightSpot)clone).angleOuter = context.Clone(this.angleOuter)!;
-        ((GxLightSpot)clone).angleFlare = context.Clone(this.angleFlare)!;
         ((GxLightSpot)clone).falloffExponent = context.Clone(this.falloffExponent)!;
+        ((GxLightSpot)clone).angleFlare = context.Clone(this.angleFlare)!;
         ((GxLightSpot)clone).flags = context.Clone(this.flags)!;
         ((GxLightSpot)clone).angleInnerShadow = context.Clone(this.angleInnerShadow)!;
         ((GxLightSpot)clone).angleOuterShadow = context.Clone(this.angleOuterShadow)!;
+        ((GxLightSpot)clone).subLightCountX = context.Clone(this.subLightCountX)!;
+        ((GxLightSpot)clone).subLightCountY = context.Clone(this.subLightCountY)!;
+        ((GxLightSpot)clone).legacyValue = context.Clone(this.legacyValue)!;
+    }
+
+    [AppliedWithChunk<Chunk0400B002>]
+    [AppliedWithChunk<Chunk0400B003>]
+    public bool CustomAngleFlare
+    {
+        get => (Flags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 1;
+            }
+            else
+            {
+                Flags = Flags& 0xFFFFFFFE;
+            }
+        }
+    }
+
+    [AppliedWithChunk<Chunk0400B002>]
+    [AppliedWithChunk<Chunk0400B003>]
+    public bool CustomAngleShadow
+    {
+        get => (Flags& 2) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 2;
+            }
+            else
+            {
+                Flags = Flags& 0xFFFFFFFD;
+            }
+        }
     }
 
     public GxLightSpot()
     {
+        LightMapOnly = true;
+    }
+
+    [Chunk(0x0400B000)]
+    public partial class Chunk0400B000 : Chunk<GxLightSpot>
+    {
+        public override uint Id => 0x0400B000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.angleInner);
+            rw.Single(ref n.angleOuter);
+            rw.Single(ref n.falloffExponent);
+
+            if (rw.Reader != null)
+            {
+                n.AngleFlare = n.AngleOuter+ n.AngleOuter;
+            }
+        }
     }
 
     [Chunk(0x0400B001)]
@@ -135,6 +237,20 @@ public partial class GxLightSpot : GxLightBall, IClass
             rw.Single(ref n.angleOuter);
             rw.Single(ref n.angleFlare);
             rw.Single(ref n.falloffExponent);
+
+            if (rw.Reader != null)
+            {
+                if (n.AngleFlare- n.AngleOuter> 0.00001f || n.AngleFlare- n.AngleOuter< -0.00001f)
+                {
+                    if ((n.AngleFlare- n.AngleOuter> n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleFlare* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleFlare* 0.00001f))
+                    {
+                        if ((n.AngleFlare- n.AngleOuter> n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleOuter* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleOuter* 0.00001f))
+                        {
+                            n.Flags = n.Flags| 1;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -163,23 +279,17 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     [Chunk(0x0400B003)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0400B003 : Chunk<GxLightSpot>, IVersionable
     {
         public override uint Id => 0x0400B003;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; }
-        public byte U01;
-        public byte U02;
-        public int U03;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0400B003)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0400B003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0400B003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0400B003)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
@@ -195,19 +305,20 @@ public partial class GxLightSpot : GxLightBall, IClass
 
             if (Version >= 1)
             {
-                rw.Byte(ref U01);
-                rw.Byte(ref U02);
+                rw.Byte(ref n.subLightCountX);
+                rw.Byte(ref n.subLightCountY);
             }
 
             if (Version == 0)
             {
-                rw.Int32(ref U03);
+                rw.Int32(ref n.legacyValue);
             }
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0400B000 => new Chunk0400B000(),
         0x0400B001 => new Chunk0400B001(),
         0x0400B002 => new Chunk0400B002(),
         0x0400B003 => new Chunk0400B003(),

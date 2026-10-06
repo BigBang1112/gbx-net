@@ -34,9 +34,45 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06026000;
 
+    private float imageRadius = 0.1f;
+    /// <summary>
+    /// TM2020 default; 0.024 in TMF and Maniaplanet
+    /// </summary>
+    [AppliedWithChunk<Chunk06026000>]
+    public float ImageRadius
+    {
+        get => this.imageRadius;
+        set => this.imageRadius = value;
+    }
+
+    private float blurPower = 1.5f;
+    /// <summary>
+    /// TM2020 default; 3 in TMF and Maniaplanet
+    /// </summary>
+    [AppliedWithChunk<Chunk06026000>]
+    public float BlurPower
+    {
+        get => this.blurPower;
+        set => this.blurPower = value;
+    }
+
+    private uint blurTexelCount = 15;
+    /// <summary>
+    /// Gaussian blur kernel width, normalized to an odd value by the renderer
+    /// </summary>
+    [AppliedWithChunk<Chunk06026000>]
+    public uint BlurTexelCount
+    {
+        get => this.blurTexelCount;
+        set => this.blurTexelCount = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CHmsAmbientOcc)clone).imageRadius = context.Clone(this.imageRadius)!;
+        ((CHmsAmbientOcc)clone).blurPower = context.Clone(this.blurPower)!;
+        ((CHmsAmbientOcc)clone).blurTexelCount = context.Clone(this.blurTexelCount)!;
     }
 
     public CHmsAmbientOcc()
@@ -49,12 +85,9 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     {
         public override uint Id => 0x06026000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
-        public float U02;
-        public int U03;
-        public float U04;
-        public float U05;
-        public float U06;
+        public float U01 = 0.5f;
+        public float U02 = 0.5f;
+        public float U03 = 0.5f;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -62,19 +95,16 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
             ((Chunk06026000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk06026000)clone).U02 = context.Clone(this.U02)!;
             ((Chunk06026000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk06026000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk06026000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk06026000)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CHmsAmbientOcc n, GbxReaderWriter rw)
         {
+            rw.Single(ref n.imageRadius);
+            rw.Single(ref n.blurPower);
+            rw.UInt32(ref n.blurTexelCount);
             rw.Single(ref U01);
             rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.Single(ref U03);
         }
     }
 

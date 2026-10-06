@@ -1,10 +1,10 @@
 GxFogBlender 0x04008000
 
 0x000 [TMF, MP4, TM2020]
-  bool
-  int
+  bool Enabled = true
+  int LegacyMode = 1 // Copied to GxFog in TMF, written as 1 and ignored on read in later games
   Key[] Keys (list)
 
 archive Key
-  timefloat Time
+  timefloat Time // Native blending coordinate, wrapping over the interval 0 to 1
   GxFog Fog

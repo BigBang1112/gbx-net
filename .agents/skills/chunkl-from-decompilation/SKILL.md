@@ -23,6 +23,8 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using the verified 
 - Use unknown field names in archives when meaning is unverified, remove the unknown naming from chunks.
 - Set defaults when found in the constructor.
 
+Add `- inherits <BaseClass>` when the class inherits from another class.
+
 Use the verified `GetChunkInfo` write bit (`0x02`) to add the current game's qualifier.
 
 - Read support alone (`0x01`) does not qualify.
@@ -31,7 +33,7 @@ Use the verified `GetChunkInfo` write bit (`0x02`) to add the current game's qua
 - Use the skippable bit (`0x10`) independently of write support: `0x13` means a skippable writer, while `0x11` means a skippable reader only.
 - Add `(skippable)` accordingly.
 
-Do not change generator behaviour unless absolutely necessary.
+Do not change generator behaviour unless absolutely necessary, but also do not transition to C# code right away if you identify a problem.
 
 Build using `.agents/generator-verification.md`, inspect the diff, and use relevant fixtures when available. Report the binaries checked, changed chunks, verification and unresolved evidence.
 

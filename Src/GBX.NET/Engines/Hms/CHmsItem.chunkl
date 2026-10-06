@@ -1,16 +1,416 @@
 CHmsItem 0x06003000
+- inherits: CMwNod
 
-0x001 [TM10, TMSX, TMF, MP3, MP4, TM2020] // solid
+// Packed property names below follow Maniaplanet/TM2020; TMF also uses obsolete physics bits.
+property byte CountShadowTexCasted
+  get = (FlagsItem & 0xFF)
+  set
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFF00) | value
+    if value != 0 && (FlagsItem & 0x00000FFF00000000) == 0
+      FlagsItem = FlagsItem | 0x0000000100000000
+
+property bool IsVisionStatic
+  get = (FlagsItem & 0x100) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x20000100
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFDFFFFEFF
+
+property bool IsStatic
+  get = (FlagsItem & 0x20000000) != 0
+  set
+    if value || IsVisionStatic
+      FlagsItem = FlagsItem | 0x20000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFDFFFFFFF
+
+property bool IsBackground
+  get = (FlagsItem & 0x200) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x200
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+
+property bool UseAccurateBBoxTest
+  get = (FlagsItem & 0x400) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x400
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFBFF
+
+property bool CanSelfShadow
+  get = (FlagsItem & 0x800000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x800000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFFF7FFFFF
+
+property bool CopyCameraTranslationXZ
+  get = (FlagsItem & 0x2000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x2000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFFDFFFFFF
+
+property bool BackgroundZClipCullBefore
+  get = (FlagsItem & 0x4000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x4000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFFBFFFFFF
+
+property bool CanFakeShadow
+  get = (FlagsItem & 0x8000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x8000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFF7FFFFFF
+
+property bool LightLensFlareEnable
+  get = (FlagsItem & 0x10000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x10000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFFFFFEFFFFFFF
+
+property bool IsForcePointDynamicCollisionResponse
+  get = (FlagsItem & 0x100000000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x100000000000
+    else
+      FlagsItem = FlagsItem & 0xFFFFEFFFFFFFFFFF
+
+property bool IsVisible
+  get = (FlagsItem & 0x800000000000) != 0
+  set
+    if value
+      FlagsItem = FlagsItem | 0x800000000000
+    else
+      FlagsItem = FlagsItem & 0xFFFF7FFFFFFFFFFF
+
+property uint ShadowCasterGroupMask
+  get = ((FlagsItem >> 32) & 0xFFF)
+  set
+    FlagsItem = (FlagsItem & 0xFFFFF000FFFFFFFF) | (((value & 0xFFFFFFFFFFFFFFFF) & 0xFFF) << 32)
+    if (FlagsItem & 0xFF) != 0 && (FlagsItem & 0x00000FFF00000000) == 0
+      FlagsItem = FlagsItem | 0x0000000100000000
+
+property uint LightEmitterGroupMask
+  get = ((FlagsItem >> 48) & 0xF)
+  set
+    FlagsItem = (FlagsItem & 0xFFF0FFFFFFFFFFFF) | (((value & 0xFFFFFFFFFFFFFFFF) & 0xF) << 48)
+
+property uint ShadowReceiverGroupMask
+  get = ((FlagsItem >> 52) & 0xFFF)
+  set
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFF) | (((value & 0xFFFFFFFFFFFFFFFF) & 0xFFF) << 52)
+
+property bool VIdReflected
+  get = (VisibleId & 0x1) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x1)
+    else
+      VisibleId = (VisibleId & 0xFFFE)
+
+property bool VIdReflectMirror
+  get = (VisibleId & 0x2) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x2)
+    else
+      VisibleId = (VisibleId & 0xFFFD)
+
+property bool VIdRefracted
+  get = (VisibleId & 0x4) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x4)
+    else
+      VisibleId = (VisibleId & 0xFFFB)
+
+property bool VIdViewDepBump
+  get = (VisibleId & 0x8) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x8)
+    else
+      VisibleId = (VisibleId & 0xFFF7)
+
+property bool VIdViewDepOcclusion
+  get = (VisibleId & 0x10) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x10)
+    else
+      VisibleId = (VisibleId & 0xFFEF)
+
+property bool VIdOnlyRefracted
+  get = (VisibleId & 0x20) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x20)
+    else
+      VisibleId = (VisibleId & 0xFFDF)
+
+property bool VIdHideWhenUnderground
+  get = (VisibleId & 0x40) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x40)
+    else
+      VisibleId = (VisibleId & 0xFFBF)
+
+property bool VIdFoliage // Foilage in the native parameter table
+  get = (VisibleId & 0x80) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x80)
+    else
+      VisibleId = (VisibleId & 0xFF7F)
+
+property bool VIdHideAlways
+  get = (VisibleId & 0x100) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x100)
+    else
+      VisibleId = (VisibleId & 0xFEFF)
+
+property bool VIdHideButPick
+  get = (VisibleId & 0x200) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x200)
+    else
+      VisibleId = (VisibleId & 0xFDFF)
+
+property bool VIdBackground
+  get = (VisibleId & 0x400) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x400)
+    else
+      VisibleId = (VisibleId & 0xFBFF)
+
+property bool VIdGrassRGB
+  get = (VisibleId & 0x800) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x800)
+    else
+      VisibleId = (VisibleId & 0xF7FF)
+
+property bool VIdLightGenP
+  get = (VisibleId & 0x1000) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x1000)
+    else
+      VisibleId = (VisibleId & 0xEFFF)
+
+property bool VIdVehicle
+  get = (VisibleId & 0x2000) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x2000)
+    else
+      VisibleId = (VisibleId & 0xDFFF)
+
+property bool VIdHideOnlyDirect
+  get = (VisibleId & 0x4000) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x4000)
+    else
+      VisibleId = (VisibleId & 0xBFFF)
+
+property bool VIdInvisibleStopBounce
+  get = (VisibleId & 0x8000) != 0
+  set
+    if value
+      VisibleId = (VisibleId | 0x8000)
+    else
+      VisibleId = (VisibleId & 0x7FFF)
+
+property int ShadowCasterGroupIdLegacy
+  get = (FlagsLegacy64 >> 32) & 0xFFF
+
+0x000
+  uint // Discarded by the checked native readers
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+
+0x001 [TM10, TMSX, TMF, MP3, MP4, TM2020]
   CPlugSolid Solid
 
+0x002
+  CHmsPortal[] Portals = empty // Native readers discard these portals after loading
+
+0x003
+  uint
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  bool CastsShadowLegacy
+  if rw.Reader != null
+    if CastsShadowLegacy
+      CountShadowTexCasted = 2
+    else
+      CountShadowTexCasted = 0
+    FlagsItem = FlagsItem | 0x800000
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+
+0x004
+  uint
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  byte CountShadowTexCastedLegacy
+  if rw.Reader != null
+    CountShadowTexCasted = CountShadowTexCastedLegacy
+  if rw.Reader != null
+    FlagsItem = FlagsItem | 0x800000
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+
+0x005
+  uint
+  bool IsBackgroundLegacy
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  byte CountShadowTexCastedLegacy
+  if rw.Reader != null
+    CountShadowTexCasted = CountShadowTexCastedLegacy
+  if rw.Reader != null
+    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+    if IsBackgroundLegacy
+      FlagsItem = FlagsItem | 0x200
+    FlagsItem = FlagsItem | 0x800000
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+
+0x006
+  uint
+  bool LightEmitterLegacy // Used by TMF; discarded by Maniaplanet
+  bool IsBackgroundLegacy
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  byte CountShadowTexCastedLegacy
+  if rw.Reader != null
+    CountShadowTexCasted = CountShadowTexCastedLegacy
+  if rw.Reader != null
+    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+    if IsBackgroundLegacy
+      FlagsItem = FlagsItem | 0x200
+    FlagsItem = FlagsItem | 0x800000
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+
+0x007
+  uint
+  bool LightEmitterLegacy
+  bool IsBackgroundLegacy
+  bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
+  bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
+  bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
+  byte CountShadowTexCastedLegacy
+  if rw.Reader != null
+    CountShadowTexCasted = CountShadowTexCastedLegacy
+  if rw.Reader != null
+    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+    if IsBackgroundLegacy
+      FlagsItem = FlagsItem | 0x200
+    FlagsItem = FlagsItem | 0xFFF0000010800000
+
+0x008
+  uint
+  datauint FlagsLegacy32
+  bool ContactInterestLegacy
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFF60000) | (FlagsLegacy32 & 0x3FF) | ((FlagsLegacy32 & 0x100) << 11) | 0xFFF0000010000000
+    VisibleId = 0
+
+0x009
+  datauint FlagsLegacy32
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0x0000700000000000) | 0xFFF1800010000000 | (FlagsLegacy32 & 0xFFFE1BFF)
+    if (FlagsLegacy32 & 0xFF) != 0
+      FlagsItem = FlagsItem | 0x0000000100000000
+
+0x00A
+  dataulong FlagsLegacy64
+  if rw.Reader != null
+    FlagsItem = (FlagsLegacy64 & 0x000070002FFE1BFF) | 0xFFF1800010000000
+    if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
+      FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
+    else
+      FlagsItem = FlagsItem | 0x0000000100000000
+    VisibleId = ((FlagsLegacy64 >> 24) & 0xFF)
+
+0x00B
+  dataulong FlagsLegacy64
+  ushort VisibleId = 1 // SPlugVisibleId default in Maniaplanet/TM2020; 0 in TMF
+  if rw.Reader != null
+    FlagsItem = (FlagsLegacy64 & 0x00007000FFFE1BFF) | 0xFFF1800010000000
+    if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
+      FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
+    else
+      FlagsItem = FlagsItem | 0x0000000100000000
+
+0x00C
+  dataulong FlagsLegacy64
+  ushort VisibleId
+  if rw.Reader != null
+    FlagsItem = (FlagsLegacy64 & 0x00007FFFFFFE1BFF) | 0xFFF1800010000000
+
+0x00D
+  dataulong FlagsLegacy64
+  ushort VisibleId
+  if rw.Reader != null
+    FlagsItem = (FlagsLegacy64 & 0x0000FFFFFFFE1BFF) | 0xFFF1000010000000
+
 0x00E [TM10]
-  ulong
-  short
+  if rw.Writer != null
+    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
+  dataulong FlagsItem = 0xFFF1C00018800000 // Maniaplanet/TM2020 default; 0xFFF1C00019800000 in TMF
+  ushort VisibleId
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
+
+0x00F
+  if rw.Writer != null
+    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
+  dataulong FlagsItem
+  ushort VisibleId
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
 
 0x010 [TMSX]
-  ulong
-  short
+  if rw.Writer != null
+    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
+  dataulong FlagsItem
+  ushort VisibleId
+  if rw.Reader != null
+    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1FFF) | 0x10000000
 
 0x011 [TMF, MP3, MP4, TM2020]
-  ulong
-  short
+  if rw.Writer != null
+    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF // Clear runtime bits 30 and 31 in Maniaplanet/TM2020; TMF also clears bit 29
+  dataulong FlagsItem
+  ushort VisibleId

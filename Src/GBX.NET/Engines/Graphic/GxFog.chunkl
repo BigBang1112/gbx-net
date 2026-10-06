@@ -1,18 +1,22 @@
 GxFog 0x04004000
 
 0x000 [TMF, MP4, TM2020]
-  bool
-  int
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
+  bool Enabled = true
+  int LegacyMode = 1
+  float DepthMin
+  float DepthMax = 50000
+  float Exponent = 1 // Exponant in the native XML
+  float HeightYBottom
+  float HeightYTop = 1000
+  float HeightMulBottom = 1
+  float HeightMulTop = 1
+  float IntensityMin // IntensMin in the native XML
+  float IntensityMax = 1 // IntensMax in the native XML
 
-0x001 [MP4, TM2020]
+0x001 [MP4, TM2020.v0]
   version
-  vec3
+  vec3 Color = (1, 0, 0) // Linear RGB
+
+0x002 [TM2020.v0]
+  version
+  int FogVersion // Version attribute of the native fog XML

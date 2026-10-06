@@ -34,6 +34,25 @@ public partial class GxFogBlender : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04008000;
 
+    private bool enabled = true;
+    [AppliedWithChunk<Chunk04008000>]
+    public bool Enabled
+    {
+        get => this.enabled;
+        set => this.enabled = value;
+    }
+
+    private int legacyMode = 1;
+    /// <summary>
+    /// Copied to GxFog in TMF, written as 1 and ignored on read in later games
+    /// </summary>
+    [AppliedWithChunk<Chunk04008000>]
+    public int LegacyMode
+    {
+        get => this.legacyMode;
+        set => this.legacyMode = value;
+    }
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk04008000>]
     public List<Key>? Keys
@@ -45,6 +64,8 @@ public partial class GxFogBlender : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((GxFogBlender)clone).enabled = context.Clone(this.enabled)!;
+        ((GxFogBlender)clone).legacyMode = context.Clone(this.legacyMode)!;
         ((GxFogBlender)clone).keys = context.CloneList(this.keys)!;
     }
 
@@ -58,20 +79,16 @@ public partial class GxFogBlender : CMwNod, IClass
     {
         public override uint Id => 0x04008000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk04008000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk04008000)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(GxFogBlender n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
+            rw.Boolean(ref n.enabled);
+            rw.Int32(ref n.legacyMode);
             rw.ListReadableWritable<Key>(ref n.keys!);
         }
     }
@@ -79,6 +96,9 @@ public partial class GxFogBlender : CMwNod, IClass
     public partial class Key : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private TimeSingle time;
+        /// <summary>
+        /// Native blending coordinate, wrapping over the interval 0 to 1
+        /// </summary>
         public TimeSingle Time
         {
             get => this.time;

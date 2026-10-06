@@ -167,7 +167,12 @@ internal sealed class SerializationWriter
                     break;
 
                 case ComputedAssignment assignment:
-                    code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression) + ";");
+                    var assignmentField = scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName) ??
+                        layout.Scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName);
+                    var assignmentProperty = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == assignment.TargetName);
+                    var assignmentType = assignmentField is not null ? WireTypes.CSharp(assignmentField.Declaration) :
+                        assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
+                    code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
                     break;
 
                 case SkipStatement skip:
@@ -483,11 +488,67 @@ internal sealed class SerializationWriter
         return method + generic;
     }
 
-    public string Expression(Expression expression)
-        => ExpressionText(ChunkLParser.WriteExpression(expression));
+    public string Expression(Expression expression, string? targetType = null)
+        => IntegerResult(ChunkLParser.WriteExpression(expression), targetType);
 
-    public string CountExpression(Expression expression)
-        => ExpressionText(ChunkLParser.WriteExpression(expression), nullSafeCount: true);
+    public string CountExpression(Expression expression, string? targetType = null)
+        => IntegerResult(ChunkLParser.WriteExpression(expression), targetType, nullSafeCount: true);
+
+    private string IntegerResult(string expression, string? targetType, bool nullSafeCount = false)
+    {
+        var rewritten = ExpressionText(expression, nullSafeCount);
+        if (targetType is not ("byte" or "sbyte" or "short" or "ushort" or "int" or "uint")) return rewritten;
+
+        var syntax = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(expression);
+        // C# already converts in-range integer literals without a cast.
+        if (syntax is Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax) return rewritten;
+        var sourceType = IntegerType(syntax);
+        return sourceType is not null && sourceType != targetType
+            ? "(" + targetType + ")(" + rewritten + ")" : rewritten;
+    }
+
+    private string? IntegerType(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax expression)
+    {
+        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax parentheses)
+            return IntegerType(parentheses.Expression);
+        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax literal)
+            return literal.Token.Value switch { int => "int", uint => "uint", long => "long", ulong => "ulong", _ => null };
+        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.IdentifierNameSyntax identifier)
+        {
+            var name = identifier.Identifier.ValueText;
+            var field = locals.SelectMany(x => x.Values).FirstOrDefault(x => x.Name == name) ??
+                scope.Fields.FirstOrDefault(x => x.Name == name) ?? layout.Scope.Fields.FirstOrDefault(x => x.Name == name);
+            var property = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == name);
+            var type = field is not null ? WireTypes.CSharp(field.Declaration) :
+                property is not null ? WireTypes.CSharp(property.Type) : SyntaxOverlap.MemberType(scope.Existing, name);
+            return type is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" ? type : null;
+        }
+        if (expression is not Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax binary) return null;
+        var left = IntegerType(binary.Left);
+        var right = IntegerType(binary.Right);
+        if (binary.RawKind is (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.LeftShiftExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.RightShiftExpression)
+            return left is "byte" or "sbyte" or "short" or "ushort" ? "int" : left;
+        if (binary.RawKind is not ((int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.BitwiseAndExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.BitwiseOrExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.ExclusiveOrExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.AddExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.SubtractExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.MultiplyExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.DivideExpression or
+            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.ModuloExpression)) return null;
+        if (left is null || right is null) return null;
+        if (left == "ulong" || right == "ulong") return "ulong";
+        if (left == "long" || right == "long") return "long";
+        if (left == "uint" || right == "uint")
+        {
+            var other = left == "uint" ? binary.Right : binary.Left;
+            return IntegerType(other) == "int" &&
+                other is not Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax { Token.Value: int and >= 0 }
+                ? "long" : "uint";
+        }
+        return "int";
+    }
 
     private bool IsArchive(FieldDeclaration field)
     {
@@ -578,7 +639,8 @@ internal sealed class SerializationWriter
             return SyntaxOverlap.Escape(name);
         }
 
-        if (layout.Scope.Fields.Any(x => x.Name == name || x.Name + "File" == name) || SyntaxOverlap.Has(layout.Existing, name))
+        if (layout.Scope.Fields.Any(x => x.Name == name || x.Name + "File" == name) ||
+            layout.File.Syntax.Properties.Any(x => x.Name == name) || SyntaxOverlap.Has(layout.Existing, name))
         {
             return "n." + SyntaxOverlap.Escape(name);
         }

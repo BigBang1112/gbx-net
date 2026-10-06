@@ -34,9 +34,141 @@ public partial class GxFog : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04004000;
 
+    private bool enabled = true;
+    [AppliedWithChunk<Chunk04004000>]
+    public bool Enabled
+    {
+        get => this.enabled;
+        set => this.enabled = value;
+    }
+
+    private int legacyMode = 1;
+    [AppliedWithChunk<Chunk04004000>]
+    public int LegacyMode
+    {
+        get => this.legacyMode;
+        set => this.legacyMode = value;
+    }
+
+    private float depthMin;
+    [AppliedWithChunk<Chunk04004000>]
+    public float DepthMin
+    {
+        get => this.depthMin;
+        set => this.depthMin = value;
+    }
+
+    private float depthMax = 50000;
+    [AppliedWithChunk<Chunk04004000>]
+    public float DepthMax
+    {
+        get => this.depthMax;
+        set => this.depthMax = value;
+    }
+
+    private float exponent = 1;
+    /// <summary>
+    /// Exponant in the native XML
+    /// </summary>
+    [AppliedWithChunk<Chunk04004000>]
+    public float Exponent
+    {
+        get => this.exponent;
+        set => this.exponent = value;
+    }
+
+    private float heightYBottom;
+    [AppliedWithChunk<Chunk04004000>]
+    public float HeightYBottom
+    {
+        get => this.heightYBottom;
+        set => this.heightYBottom = value;
+    }
+
+    private float heightYTop = 1000;
+    [AppliedWithChunk<Chunk04004000>]
+    public float HeightYTop
+    {
+        get => this.heightYTop;
+        set => this.heightYTop = value;
+    }
+
+    private float heightMulBottom = 1;
+    [AppliedWithChunk<Chunk04004000>]
+    public float HeightMulBottom
+    {
+        get => this.heightMulBottom;
+        set => this.heightMulBottom = value;
+    }
+
+    private float heightMulTop = 1;
+    [AppliedWithChunk<Chunk04004000>]
+    public float HeightMulTop
+    {
+        get => this.heightMulTop;
+        set => this.heightMulTop = value;
+    }
+
+    private float intensityMin;
+    /// <summary>
+    /// IntensMin in the native XML
+    /// </summary>
+    [AppliedWithChunk<Chunk04004000>]
+    public float IntensityMin
+    {
+        get => this.intensityMin;
+        set => this.intensityMin = value;
+    }
+
+    private float intensityMax = 1;
+    /// <summary>
+    /// IntensMax in the native XML
+    /// </summary>
+    [AppliedWithChunk<Chunk04004000>]
+    public float IntensityMax
+    {
+        get => this.intensityMax;
+        set => this.intensityMax = value;
+    }
+
+    private Vec3 color = (1, 0, 0);
+    /// <summary>
+    /// Linear RGB
+    /// </summary>
+    [AppliedWithChunk<Chunk04004001>]
+    public Vec3 Color
+    {
+        get => this.color;
+        set => this.color = value;
+    }
+
+    private int fogVersion;
+    /// <summary>
+    /// Version attribute of the native fog XML
+    /// </summary>
+    [AppliedWithChunk<Chunk04004002>]
+    public int FogVersion
+    {
+        get => this.fogVersion;
+        set => this.fogVersion = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((GxFog)clone).enabled = context.Clone(this.enabled)!;
+        ((GxFog)clone).legacyMode = context.Clone(this.legacyMode)!;
+        ((GxFog)clone).depthMin = context.Clone(this.depthMin)!;
+        ((GxFog)clone).depthMax = context.Clone(this.depthMax)!;
+        ((GxFog)clone).exponent = context.Clone(this.exponent)!;
+        ((GxFog)clone).heightYBottom = context.Clone(this.heightYBottom)!;
+        ((GxFog)clone).heightYTop = context.Clone(this.heightYTop)!;
+        ((GxFog)clone).heightMulBottom = context.Clone(this.heightMulBottom)!;
+        ((GxFog)clone).heightMulTop = context.Clone(this.heightMulTop)!;
+        ((GxFog)clone).intensityMin = context.Clone(this.intensityMin)!;
+        ((GxFog)clone).intensityMax = context.Clone(this.intensityMax)!;
+        ((GxFog)clone).color = context.Clone(this.color)!;
+        ((GxFog)clone).fogVersion = context.Clone(this.fogVersion)!;
     }
 
     public GxFog()
@@ -49,70 +181,67 @@ public partial class GxFog : CMwNod, IClass
     {
         public override uint Id => 0x04004000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
-        public int U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk04004000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk04004000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk04004000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk04004000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk04004000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk04004000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk04004000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk04004000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk04004000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk04004000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk04004000)clone).U11 = context.Clone(this.U11)!;
         }
 
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
+            rw.Boolean(ref n.enabled);
+            rw.Int32(ref n.legacyMode);
+            rw.Single(ref n.depthMin);
+            rw.Single(ref n.depthMax);
+            rw.Single(ref n.exponent);
+            rw.Single(ref n.heightYBottom);
+            rw.Single(ref n.heightYTop);
+            rw.Single(ref n.heightMulBottom);
+            rw.Single(ref n.heightMulTop);
+            rw.Single(ref n.intensityMin);
+            rw.Single(ref n.intensityMax);
         }
     }
 
     [Chunk(0x04004001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
     public partial class Chunk04004001 : Chunk<GxFog>, IVersionable
     {
         public override uint Id => 0x04004001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Vec3 U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk04004001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk04004001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Vec3(ref U01);
+            rw.Vec3(ref n.color);
+        }
+    }
+
+    [Chunk(0x04004002)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    public partial class Chunk04004002 : Chunk<GxFog>, IVersionable
+    {
+        public override uint Id => 0x04004002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk04004002)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(GxFog n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Int32(ref n.fogVersion);
         }
     }
 
@@ -120,6 +249,7 @@ public partial class GxFog : CMwNod, IClass
     {
         0x04004000 => new Chunk04004000(),
         0x04004001 => new Chunk04004001(),
+        0x04004002 => new Chunk04004002(),
         _ => base.NewChunk(chunkId),
     };
 }

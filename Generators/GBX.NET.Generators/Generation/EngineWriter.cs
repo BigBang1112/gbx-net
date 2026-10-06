@@ -130,7 +130,7 @@ internal static class EngineWriter
             foreach (var accessor in property.Accessors)
             {
                 if (accessor is GetterAccessor getter)
-                    code.Line("get => " + (property.Type.Name == "int" ? writer.CountExpression(getter.Expression) : writer.Expression(getter.Expression)) + ";");
+                    code.Line("get => " + (property.Type.Name == "int" ? writer.CountExpression(getter.Expression, WireTypes.CSharp(property.Type)) : writer.Expression(getter.Expression, WireTypes.CSharp(property.Type))) + ";");
                 else if (accessor is SetterAccessor setter) { code.Open("set"); writer.Write(setter.Body); code.Close(); }
             }
 
@@ -309,7 +309,7 @@ internal static class EngineWriter
             var nullable = WireTypes.Nullable(field) && !field.IsVersion;
             var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration) + (nullable ? "?" : "");
             var defaultDeclaration = field.Occurrences.FirstOrDefault(static x => x.DefaultValue is not null);
-            var initial = Default(type, defaultDeclaration);
+            var initial = Default(layout, type, defaultDeclaration);
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
             var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
             var customProperty = !chunk && ReferenceEquals(scope, layout.Scope) &&
@@ -447,7 +447,7 @@ internal static class EngineWriter
         code.Line($"{modifiers} {property.Type} {property.Identifier.Text} {{ {accessors} }}");
     }
 
-    private static string? Default(string type, FieldDeclaration? field)
+    private static string? Default(LayoutModel layout, string type, FieldDeclaration? field)
     {
         if (field?.DefaultValue is null) return null;
 
@@ -459,6 +459,7 @@ internal static class EngineWriter
         if (type.StartsWith("List<", StringComparison.Ordinal)) return "new()";
         if (type.EndsWith("[]", StringComparison.Ordinal)) return "[]";
         if (type == "string") return "string.Empty";
+        if (layout.Archives.ContainsKey(type)) return "new()";
 
         return type + ".Empty";
     }
