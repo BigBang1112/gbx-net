@@ -1,5 +1,8 @@
 CMotions 0x08028000
 - inherits: CMotion
 
+0x000
+  CMotion[] Motions = empty (list)
+
 0x001 [TMF, MP4]
   CMotion[] Motions (list)

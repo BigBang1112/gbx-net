@@ -34,15 +34,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x08041000;
 
-    private CMwNod? sea;
-    [AppliedWithChunk<Chunk08041002>]
-    public CMwNod? Sea
-    {
-        get => this.sea;
-        set => this.sea = value;
-    }
-
-    private float flottaison;
+    private float flottaison = 500.01f;
+    [AppliedWithChunk<Chunk08041000>]
+    [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public float Flottaison
     {
@@ -50,7 +44,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.flottaison = value;
     }
 
-    private float tangage;
+    private float tangage = 1;
+    [AppliedWithChunk<Chunk08041000>]
+    [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public float Tangage
     {
@@ -58,7 +54,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.tangage = value;
     }
 
-    private float roulis;
+    private float roulis = 1;
+    [AppliedWithChunk<Chunk08041000>]
+    [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public float Roulis
     {
@@ -66,7 +64,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.roulis = value;
     }
 
-    private float offsetHauteur;
+    private float offsetHauteur = 0;
+    [AppliedWithChunk<Chunk08041000>]
+    [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public float OffsetHauteur
     {
@@ -74,7 +74,16 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.offsetHauteur = value;
     }
 
-    private EPitchinMode pitchinMode;
+    private CMwNod? sea;
+    [AppliedWithChunk<Chunk08041001>]
+    [AppliedWithChunk<Chunk08041002>]
+    public CMwNod? Sea
+    {
+        get => this.sea;
+        set => this.sea = value;
+    }
+
+    private EPitchinMode pitchinMode = EPitchinMode.Normal;
     [AppliedWithChunk<Chunk08041002>]
     public EPitchinMode PitchinMode
     {
@@ -82,7 +91,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.pitchinMode = value;
     }
 
-    private float periodDelta;
+    private float periodDelta = 0.5f;
     [AppliedWithChunk<Chunk08041002>]
     public float PeriodDelta
     {
@@ -90,7 +99,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.periodDelta = value;
     }
 
-    private float maxAngle;
+    private float maxAngle = 10;
     [AppliedWithChunk<Chunk08041002>]
     public float MaxAngle
     {
@@ -101,11 +110,11 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionTrackMobilPitchin)clone).sea = context.Clone(this.sea)!;
         ((CMotionTrackMobilPitchin)clone).flottaison = context.Clone(this.flottaison)!;
         ((CMotionTrackMobilPitchin)clone).tangage = context.Clone(this.tangage)!;
         ((CMotionTrackMobilPitchin)clone).roulis = context.Clone(this.roulis)!;
         ((CMotionTrackMobilPitchin)clone).offsetHauteur = context.Clone(this.offsetHauteur)!;
+        ((CMotionTrackMobilPitchin)clone).sea = context.Clone(this.sea)!;
         ((CMotionTrackMobilPitchin)clone).pitchinMode = context.Clone(this.pitchinMode)!;
         ((CMotionTrackMobilPitchin)clone).periodDelta = context.Clone(this.periodDelta)!;
         ((CMotionTrackMobilPitchin)clone).maxAngle = context.Clone(this.maxAngle)!;
@@ -113,6 +122,45 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
     public CMotionTrackMobilPitchin()
     {
+    }
+
+    [Chunk(0x08041000)]
+    public partial class Chunk08041000 : Chunk<CMotionTrackMobilPitchin>
+    {
+        public override uint Id => 0x08041000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.flottaison);
+            rw.Single(ref n.tangage);
+            rw.Single(ref n.roulis);
+            rw.Single(ref n.offsetHauteur);
+        }
+    }
+
+    [Chunk(0x08041001)]
+    public partial class Chunk08041001 : Chunk<CMotionTrackMobilPitchin>
+    {
+        public override uint Id => 0x08041001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMwNod>(ref n.sea);
+            rw.Single(ref n.flottaison);
+            rw.Single(ref n.tangage);
+            rw.Single(ref n.roulis);
+            rw.Single(ref n.offsetHauteur);
+        }
     }
 
     [Chunk(0x08041002)]
@@ -148,6 +196,8 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x08041000 => new Chunk08041000(),
+        0x08041001 => new Chunk08041001(),
         0x08041002 => new Chunk08041002(),
         _ => base.NewChunk(chunkId),
     };

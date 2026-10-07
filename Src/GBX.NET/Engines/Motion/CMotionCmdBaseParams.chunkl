@@ -1,0 +1,5 @@
+CMotionCmdBaseParams 0x0802D000
+
+0x000 [TMF, MP4]
+  timeint Period = 10000
+  float Phase = 0

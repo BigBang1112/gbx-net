@@ -34,7 +34,20 @@ public partial class CMotionPlayer : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x08034000;
 
+    private bool hasBaseLegacy;
+    [AppliedWithChunk<Chunk08034000>]
+    [AppliedWithChunk<Chunk08034001>]
+    public bool HasBaseLegacy
+    {
+        get => this.hasBaseLegacy;
+        set => this.hasBaseLegacy = value;
+    }
+
     private CMotionCmdBase? @base;
+    [AppliedWithChunk<Chunk08034000>]
+    [AppliedWithChunk<Chunk08034001>]
+    [AppliedWithChunk<Chunk08034002>]
+    [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
     public CMotionCmdBase? Base
     {
@@ -42,23 +55,152 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.@base = value;
     }
 
-    private List<CMotionTrack>? tracks;
+    private CMwNod? legacyModel;
+    /// <summary>
+    /// Discarded by the native reader.
+    /// </summary>
+    [AppliedWithChunk<Chunk08034002>]
+    public CMwNod? LegacyModel
+    {
+        get => this.legacyModel;
+        set => this.legacyModel = value;
+    }
+
+    private uint savePlayState = 2;
+    /// <summary>
+    /// 0: playing, 1: paused, 2: stopped, 3: save the current state.
+    /// </summary>
+    [AppliedWithChunk<Chunk08034002>]
+    [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
-    public List<CMotionTrack>? Tracks
+    public uint SavePlayState
+    {
+        get => this.savePlayState;
+        set => this.savePlayState = value;
+    }
+
+    private uint playState = 2;
+    [AppliedWithChunk<Chunk08034002>]
+    [AppliedWithChunk<Chunk08034003>]
+    [AppliedWithChunk<Chunk08034004>]
+    public uint PlayState
+    {
+        get => this.playState;
+        set => this.playState = value;
+    }
+
+    private List<CMotionTrack> tracks = new();
+    [AppliedWithChunk<Chunk08034002>]
+    [AppliedWithChunk<Chunk08034003>]
+    [AppliedWithChunk<Chunk08034004>]
+    public List<CMotionTrack> Tracks
     {
         get => this.tracks;
         set => this.tracks = value;
     }
 
+    private bool isPhysics = false;
+    [AppliedWithChunk<Chunk08034004>]
+    public bool IsPhysics
+    {
+        get => this.isPhysics;
+        set => this.isPhysics = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionPlayer)clone).hasBaseLegacy = context.Clone(this.hasBaseLegacy)!;
         ((CMotionPlayer)clone).@base = context.Clone(this.@base)!;
+        ((CMotionPlayer)clone).legacyModel = context.Clone(this.legacyModel)!;
+        ((CMotionPlayer)clone).savePlayState = context.Clone(this.savePlayState)!;
+        ((CMotionPlayer)clone).playState = context.Clone(this.playState)!;
         ((CMotionPlayer)clone).tracks = context.CloneList(this.tracks)!;
+        ((CMotionPlayer)clone).isPhysics = context.Clone(this.isPhysics)!;
     }
 
-    public CMotionPlayer()
+    [Chunk(0x08034000)]
+    public partial class Chunk08034000 : Chunk<CMotionPlayer>
     {
+        public override uint Id => 0x08034000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.hasBaseLegacy);
+
+            if (n.HasBaseLegacy)
+            {
+                rw.NodeRef<CMotionCmdBase>(ref n.@base);
+            }
+        }
+    }
+
+    [Chunk(0x08034001)]
+    public partial class Chunk08034001 : Chunk08034000
+    {
+        public override uint Id => 0x08034001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            n.Name = rw.Id(n.Name);
+        }
+    }
+
+    [Chunk(0x08034002)]
+    public partial class Chunk08034002 : Chunk08034003
+    {
+        public override uint Id => 0x08034002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMwNod>(ref n.legacyModel);
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    [Chunk(0x08034003)]
+    public partial class Chunk08034003 : Chunk<CMotionPlayer>
+    {
+        public override uint Id => 0x08034003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
+        {
+            rw.Node<CMotionCmdBase>(ref n.@base);
+            rw.UInt32(ref n.savePlayState);
+
+            if (n.SavePlayState== 3)
+            {
+                rw.UInt32(ref n.playState);
+            }
+            else if (rw.Reader != null)
+            {
+                n.PlayState = n.SavePlayState;
+            }
+
+            n.Name = rw.Id(n.Name);
+            rw.ListNodeRef<CMotionTrack>(ref n.tracks!);
+        }
     }
 
     [Chunk(0x08034004)]
@@ -67,30 +209,38 @@ public partial class CMotionPlayer : CMotion, IClass
     {
         public override uint Id => 0x08034004;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
-        public int U01;
-        public bool U02;
-        public string? U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk08034004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk08034004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk08034004)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
             rw.Node<CMotionCmdBase>(ref n.@base);
-            rw.Int32(ref U01);
-            rw.Boolean(ref U02);
-            rw.Id(ref U03);
+            rw.UInt32(ref n.savePlayState);
+
+            if (n.SavePlayState== 3)
+            {
+                rw.UInt32(ref n.playState);
+            }
+            else if (rw.Reader != null)
+            {
+                n.PlayState = n.SavePlayState;
+            }
+
+            rw.Boolean(ref n.isPhysics);
+            n.Name = rw.Id(n.Name);
             rw.ListNodeRef<CMotionTrack>(ref n.tracks!);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x08034000 => new Chunk08034000(),
+        0x08034001 => new Chunk08034001(),
+        0x08034002 => new Chunk08034002(),
+        0x08034003 => new Chunk08034003(),
         0x08034004 => new Chunk08034004(),
         _ => base.NewChunk(chunkId),
     };

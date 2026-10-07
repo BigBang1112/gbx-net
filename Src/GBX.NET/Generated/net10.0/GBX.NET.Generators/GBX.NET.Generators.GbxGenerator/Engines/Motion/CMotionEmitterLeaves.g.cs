@@ -35,6 +35,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     public static new uint Id => 0x0804C000;
 
     private CMotionManagerLeaves? managerModel;
+    [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public CMotionManagerLeaves? ManagerModel
     {
@@ -52,6 +53,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     public CMotionManagerLeaves? GetManagerModel(GbxReadSettings settings = default, bool exceptions = false) => managerModelFile?.GetNode(ref managerModel, settings, exceptions) ?? managerModel;
 
     private Vec3 pos;
+    [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public Vec3 Pos
     {
@@ -59,7 +61,15 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
         set => this.pos = value;
     }
 
-    private Vec3 radius;
+    private float uniformRadiusLegacy = 1;
+    [AppliedWithChunk<Chunk0804C000>]
+    public float UniformRadiusLegacy
+    {
+        get => this.uniformRadiusLegacy;
+        set => this.uniformRadiusLegacy = value;
+    }
+
+    private Vec3 radius = (1, 1, 1);
     [AppliedWithChunk<Chunk0804C001>]
     public Vec3 Radius
     {
@@ -72,11 +82,38 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
         base.DeepCloneFields(clone, context);
         ((CMotionEmitterLeaves)clone).managerModel = context.Clone(this.managerModel)!;
         ((CMotionEmitterLeaves)clone).pos = context.Clone(this.pos)!;
+        ((CMotionEmitterLeaves)clone).uniformRadiusLegacy = context.Clone(this.uniformRadiusLegacy)!;
         ((CMotionEmitterLeaves)clone).radius = context.Clone(this.radius)!;
     }
 
     public CMotionEmitterLeaves()
     {
+    }
+
+    /// <summary>
+    /// Legacy uniform emitter radius.
+    /// </summary>
+    [Chunk(0x0804C000, "Legacy uniform emitter radius.")]
+    public partial class Chunk0804C000 : Chunk<CMotionEmitterLeaves>
+    {
+        public override uint Id => 0x0804C000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMotionManagerLeaves>(ref n.managerModel, ref n.managerModelFile);
+            rw.Vec3(ref n.pos);
+            rw.Single(ref n.uniformRadiusLegacy);
+
+            if (rw.Reader != null)
+            {
+                n.Radius = (n.UniformRadiusLegacy, n.UniformRadiusLegacy, n.UniformRadiusLegacy);
+            }
+        }
     }
 
     [Chunk(0x0804C001)]
@@ -101,6 +138,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0804C000 => new Chunk0804C000(),
         0x0804C001 => new Chunk0804C001(),
         _ => base.NewChunk(chunkId),
     };

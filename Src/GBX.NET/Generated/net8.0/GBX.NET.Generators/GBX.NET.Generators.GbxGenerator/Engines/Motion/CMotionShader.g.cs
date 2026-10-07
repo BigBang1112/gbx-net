@@ -34,9 +34,36 @@ public partial class CMotionShader : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x0802B000;
 
+    private CPlugMaterial? material;
+    [AppliedWithChunk<Chunk0802B000>]
+    public CPlugMaterial? Material
+    {
+        get => this.material;
+        set => this.material = value;
+    }
+
+    private CPlugShader? shader;
+    [AppliedWithChunk<Chunk0802B000>]
+    public CPlugShader? Shader
+    {
+        get => this.shader;
+        set => this.shader = value;
+    }
+
+    private CFuncShader? funcShader;
+    [AppliedWithChunk<Chunk0802B000>]
+    public CFuncShader? FuncShader
+    {
+        get => this.funcShader;
+        set => this.funcShader = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionShader)clone).material = context.Clone(this.material)!;
+        ((CMotionShader)clone).shader = context.Clone(this.shader)!;
+        ((CMotionShader)clone).funcShader = context.Clone(this.funcShader)!;
     }
 
     public CMotionShader()
@@ -49,23 +76,26 @@ public partial class CMotionShader : CMotionTrack, IClass
     {
         public override uint Id => 0x0802B000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0802B000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0802B000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0802B000)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CMotionShader n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.NodeRef<CPlugMaterial>(ref n.material);
+
+            if (rw.Writer != null && n.Material!= null)
+            {
+                var unusedShader = rw.NodeRef<CPlugShader>((rw.Writer is null ? default : (null)));
+            }
+            else
+            {
+                rw.NodeRef<CPlugShader>(ref n.shader);
+            }
+
+            rw.NodeRef<CFuncShader>(ref n.funcShader);
         }
     }
 

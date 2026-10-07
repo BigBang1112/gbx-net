@@ -1,0 +1,6 @@
+CFuncSkelValues 0x05007000
+
+0x000 [TMF]
+  CFuncSkel Skel
+  if Skel != null
+    CFuncKeysSkel.Loc[Skel.BonesCount] Locations

@@ -1,9 +1,36 @@
 CMotionPlayer 0x08034000
 - inherits: CMotion
 
+0x000
+  bool HasBaseLegacy
+  if HasBaseLegacy
+    CMotionCmdBase Base
+
+0x001 (base: 0x000)
+  base
+  id Name (inherited)
+
+0x002 (base: 0x003)
+  CMwNod LegacyModel
+  base
+
+0x003
+  CMotionCmdBase Base (direct)
+  uint SavePlayState = 2 // 0: playing, 1: paused, 2: stopped, 3: save the current state.
+  if SavePlayState == 3
+    uint PlayState = 2
+  else if rw.Reader != null
+    PlayState = SavePlayState
+  id Name (inherited)
+  CMotionTrack[] Tracks = empty (list)
+
 0x004 [TMF, MP4]
   CMotionCmdBase Base (direct)
-  int // SavePlayState?
-  bool // IsPlaying?
-  id
+  uint SavePlayState
+  if SavePlayState == 3
+    uint PlayState
+  else if rw.Reader != null
+    PlayState = SavePlayState
+  bool IsPhysics = false
+  id Name (inherited)
   CMotionTrack[] Tracks (list)

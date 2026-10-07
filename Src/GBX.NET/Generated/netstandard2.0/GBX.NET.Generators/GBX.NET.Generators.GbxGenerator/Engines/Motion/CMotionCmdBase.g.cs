@@ -34,53 +34,276 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     [Hexadecimal]
     public static new uint Id => 0x08029000;
 
+    private uint period = 1000;
+    /// <summary>
+    /// Period in milliseconds.
+    /// </summary>
+    [AppliedWithChunk<Chunk08029000>]
+    [AppliedWithChunk<Chunk08029001>]
+    [AppliedWithChunk<Chunk08029002>]
+    public uint Period
+    {
+        get => this.period;
+        set => this.period = value;
+    }
+
+    private float phase = 0;
+    /// <summary>
+    /// Fraction of a period.
+    /// </summary>
+    [AppliedWithChunk<Chunk08029000>]
+    [AppliedWithChunk<Chunk08029001>]
+    [AppliedWithChunk<Chunk08029002>]
+    public float Phase
+    {
+        get => this.phase;
+        set => this.phase = value;
+    }
+
+    private EWaveType waveType = EWaveType.SawTooth;
+    [AppliedWithChunk<Chunk08029000>]
+    [AppliedWithChunk<Chunk08029001>]
+    [AppliedWithChunk<Chunk08029002>]
+    [AppliedWithChunk<Chunk0802A001>]
+    [AppliedWithChunk<Chunk0802A002>]
+    [AppliedWithChunk<Chunk0802A003>]
+    public EWaveType WaveType
+    {
+        get => this.waveType;
+        set => this.waveType = value;
+    }
+
+    private bool isOnce = false;
+    [AppliedWithChunk<Chunk08029000>]
+    [AppliedWithChunk<Chunk08029001>]
+    [AppliedWithChunk<Chunk08029002>]
+    [AppliedWithChunk<Chunk0802A002>]
+    [AppliedWithChunk<Chunk0802A003>]
+    public bool IsOnce
+    {
+        get => this.isOnce;
+        set => this.isOnce = value;
+    }
+
+    private bool isAbsolutePhase = false;
+    [AppliedWithChunk<Chunk08029001>]
+    [AppliedWithChunk<Chunk08029002>]
+    public bool IsAbsolutePhase
+    {
+        get => this.isAbsolutePhase;
+        set => this.isAbsolutePhase = value;
+    }
+
+    private CMotionCmdBaseParams? cmdBaseParams;
+    [AppliedWithChunk<Chunk08029002>]
+    public CMotionCmdBaseParams? CmdBaseParams
+    {
+        get => this.cmdBaseParams;
+        set => this.cmdBaseParams = value;
+    }
+
+    private uint legacyPeriod;
+    [AppliedWithChunk<Chunk0802A000>]
+    [AppliedWithChunk<Chunk0802A001>]
+    [AppliedWithChunk<Chunk0802A002>]
+    [AppliedWithChunk<Chunk0802A003>]
+    public uint LegacyPeriod
+    {
+        get => this.legacyPeriod;
+        set => this.legacyPeriod = value;
+    }
+
+    private float legacySpeed;
+    [AppliedWithChunk<Chunk0802A000>]
+    [AppliedWithChunk<Chunk0802A001>]
+    [AppliedWithChunk<Chunk0802A002>]
+    [AppliedWithChunk<Chunk0802A003>]
+    public float LegacySpeed
+    {
+        get => this.legacySpeed;
+        set => this.legacySpeed = value;
+    }
+
+    private int legacyPhase;
+    [AppliedWithChunk<Chunk0802A003>]
+    public int LegacyPhase
+    {
+        get => this.legacyPhase;
+        set => this.legacyPhase = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionCmdBase)clone).period = context.Clone(this.period)!;
+        ((CMotionCmdBase)clone).phase = context.Clone(this.phase)!;
+        ((CMotionCmdBase)clone).waveType = context.Clone(this.waveType)!;
+        ((CMotionCmdBase)clone).isOnce = context.Clone(this.isOnce)!;
+        ((CMotionCmdBase)clone).isAbsolutePhase = context.Clone(this.isAbsolutePhase)!;
+        ((CMotionCmdBase)clone).cmdBaseParams = context.Clone(this.cmdBaseParams)!;
+        ((CMotionCmdBase)clone).legacyPeriod = context.Clone(this.legacyPeriod)!;
+        ((CMotionCmdBase)clone).legacySpeed = context.Clone(this.legacySpeed)!;
+        ((CMotionCmdBase)clone).legacyPhase = context.Clone(this.legacyPhase)!;
     }
 
     public CMotionCmdBase()
     {
     }
 
-    [Chunk(0x08029002)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
-    public partial class Chunk08029002 : Chunk<CMotionCmdBase>
+    [Chunk(0x08029000)]
+    public partial class Chunk08029000 : Chunk<CMotionCmdBase>
     {
-        public override uint Id => 0x08029002;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
-        public int U01;
-        public float U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
+        public override uint Id => 0x08029000;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk08029002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk08029002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk08029002)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk08029002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk08029002)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk08029002)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
+            rw.UInt32(ref n.period);
+            rw.Single(ref n.phase);
+            rw.EnumInt32<EWaveType>(ref n.waveType);
+            rw.Boolean(ref n.isOnce);
         }
+    }
+
+    [Chunk(0x08029001)]
+    public partial class Chunk08029001 : Chunk08029000
+    {
+        public override uint Id => 0x08029001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.isAbsolutePhase);
+        }
+    }
+
+    [Chunk(0x08029002)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    public partial class Chunk08029002 : Chunk08029001
+    {
+        public override uint Id => 0x08029002;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.NodeRef<CMotionCmdBaseParams>(ref n.cmdBaseParams);
+        }
+    }
+
+    /// <summary>
+    /// Legacy period and speed pair.
+    /// </summary>
+    [Chunk(0x0802A000, "Legacy period and speed pair.")]
+    public partial class Chunk0802A000 : Chunk<CMotionCmdBase>
+    {
+        public override uint Id => 0x0802A000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.legacyPeriod);
+            rw.Single(ref n.legacySpeed);
+
+            if (rw.Reader != null)
+            {
+                n.Period = n.LegacyPeriodInMilliseconds;
+            }
+        }
+    }
+
+    [Chunk(0x0802A001)]
+    public partial class Chunk0802A001 : Chunk0802A000
+    {
+        public override uint Id => 0x0802A001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.EnumInt32<EWaveType>(ref n.waveType);
+        }
+    }
+
+    [Chunk(0x0802A002)]
+    public partial class Chunk0802A002 : Chunk0802A001
+    {
+        public override uint Id => 0x0802A002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.isOnce);
+        }
+    }
+
+    [Chunk(0x0802A003)]
+    public partial class Chunk0802A003 : Chunk0802A002
+    {
+        public override uint Id => 0x0802A003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Int32(ref n.legacyPhase);
+
+            if (rw.Reader != null)
+            {
+                n.Phase = n.LegacyNormalizedPhase;
+            }
+        }
+    }
+
+    public enum EWaveType
+    {
+        Sin,
+        Triangle,
+        Square,
+        SawTooth,
+        InverseSawTooth,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x08029000 => new Chunk08029000(),
+        0x08029001 => new Chunk08029001(),
         0x08029002 => new Chunk08029002(),
+        0x0802A000 => new Chunk0802A000(),
+        0x0802A001 => new Chunk0802A001(),
+        0x0802A002 => new Chunk0802A002(),
+        0x0802A003 => new Chunk0802A003(),
         _ => base.NewChunk(chunkId),
     };
 }

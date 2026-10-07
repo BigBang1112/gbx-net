@@ -1,7 +1,14 @@
 CMotionEmitterLeaves 0x0804C000
 - inherits: CMotionManaged
 
+0x000
+  CMotionManagerLeaves ManagerModel (external)
+  vec3 Pos
+  float UniformRadiusLegacy = 1
+  if rw.Reader != null
+    Radius = (UniformRadiusLegacy, UniformRadiusLegacy, UniformRadiusLegacy)
+
 0x001 [TMF]
   CMotionManagerLeaves ManagerModel (external)
   vec3 Pos
-  vec3 Radius
+  vec3 Radius = (1, 1, 1)

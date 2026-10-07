@@ -26,37 +26,46 @@ using global::System.Collections.Generic;
 using global::System.IO;
 using global::TmEssentials;
 
-namespace GBX.NET.Engines.Motion;
+namespace GBX.NET.Engines.Function;
 
-[Class(0x08036000)]
-public partial class CMotionSkelSimple : CMotionTrack, IClass
+[Class(0x05007000)]
+public partial class CFuncSkelValues : CMwNod, IClass
 {
     [Hexadecimal]
-    public static new uint Id => 0x08036000;
+    public static new uint Id => 0x05007000;
 
-    private CFuncSkelValues? skelValues;
-    [AppliedWithChunk<Chunk08036000>]
-    public CFuncSkelValues? SkelValues
+    private CFuncSkel? skel;
+    [AppliedWithChunk<Chunk05007000>]
+    public CFuncSkel? Skel
     {
-        get => this.skelValues;
-        set => this.skelValues = value;
+        get => this.skel;
+        set => this.skel = value;
+    }
+
+    private CFuncKeysSkel.Loc[]? locations;
+    [AppliedWithChunk<Chunk05007000>]
+    public CFuncKeysSkel.Loc[]? Locations
+    {
+        get => this.locations;
+        set => this.locations = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionSkelSimple)clone).skelValues = context.Clone(this.skelValues)!;
+        ((CFuncSkelValues)clone).skel = context.Clone(this.skel)!;
+        ((CFuncSkelValues)clone).locations = context.CloneArray(this.locations)!;
     }
 
-    public CMotionSkelSimple()
+    public CFuncSkelValues()
     {
     }
 
-    [Chunk(0x08036000)]
+    [Chunk(0x05007000)]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk08036000 : Chunk<CMotionSkelSimple>
+    public partial class Chunk05007000 : Chunk<CFuncSkelValues>
     {
-        public override uint Id => 0x08036000;
+        public override uint Id => 0x05007000;
         public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -64,15 +73,20 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
             base.DeepCloneFields(clone, context);
         }
 
-        public override void ReadWrite(CMotionSkelSimple n, GbxReaderWriter rw)
+        public override void ReadWrite(CFuncSkelValues n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncSkelValues>(ref n.skelValues);
+            rw.NodeRef<CFuncSkel>(ref n.skel);
+
+            if (n.Skel!= null)
+            {
+                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.Skel?.BonesCount?? 0);
+            }
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
-        0x08036000 => new Chunk08036000(),
+        0x05007000 => new Chunk05007000(),
         _ => base.NewChunk(chunkId),
     };
 }

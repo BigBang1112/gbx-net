@@ -1,2 +1,5 @@
 CMotionWeather 0x08054000
 - inherits: CMotionManaged
+
+0x000
+  CMwNod LegacyModel

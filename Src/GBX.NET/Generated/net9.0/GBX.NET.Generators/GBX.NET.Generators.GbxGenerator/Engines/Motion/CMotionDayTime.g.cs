@@ -29,14 +29,62 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Motion;
 
 [Class(0x08055000)]
-public partial class CMotionDayTime : CMotion, IClass
+public partial class CMotionDayTime : CMotionManaged, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x08055000;
 
+    private CMwNod? legacyModel;
+    /// <summary>
+    /// Discarded by the native reader.
+    /// </summary>
+    [AppliedWithChunk<Chunk08055000>]
+    public CMwNod? LegacyModel
+    {
+        get => this.legacyModel;
+        set => this.legacyModel = value;
+    }
+
+    private CPlugMaterial? dayMaterial;
+    [AppliedWithChunk<Chunk08055000>]
+    public CPlugMaterial? DayMaterial
+    {
+        get => this.dayMaterialFile?.GetNode(ref this.dayMaterial) ?? this.dayMaterial;
+        set => this.dayMaterial = value;
+    }
+    private Components.GbxRefTableFile? dayMaterialFile;
+
+    public Components.GbxRefTableFile? DayMaterialFile
+    {
+        get => dayMaterialFile;
+        set => dayMaterialFile = value;
+    }
+
+    public CPlugMaterial? GetDayMaterial(GbxReadSettings settings = default, bool exceptions = false) => dayMaterialFile?.GetNode(ref dayMaterial, settings, exceptions) ?? dayMaterial;
+
+    private CPlugMaterial? nightMaterial;
+    [AppliedWithChunk<Chunk08055000>]
+    public CPlugMaterial? NightMaterial
+    {
+        get => this.nightMaterialFile?.GetNode(ref this.nightMaterial) ?? this.nightMaterial;
+        set => this.nightMaterial = value;
+    }
+    private Components.GbxRefTableFile? nightMaterialFile;
+
+    public Components.GbxRefTableFile? NightMaterialFile
+    {
+        get => nightMaterialFile;
+        set => nightMaterialFile = value;
+    }
+
+    public CPlugMaterial? GetNightMaterial(GbxReadSettings settings = default, bool exceptions = false) => nightMaterialFile?.GetNode(ref nightMaterial, settings, exceptions) ?? nightMaterial;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionDayTime)clone).legacyModel = context.Clone(this.legacyModel)!;
+        ((CMotionDayTime)clone).dayMaterial = context.Clone(this.dayMaterial)!;
+        ((CMotionDayTime)clone).nightMaterial = context.Clone(this.nightMaterial)!;
     }
 
     public CMotionDayTime()
@@ -49,23 +97,17 @@ public partial class CMotionDayTime : CMotion, IClass
     {
         public override uint Id => 0x08055000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk08055000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk08055000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk08055000)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CMotionDayTime n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.NodeRef<CMwNod>(ref n.legacyModel);
+            rw.NodeRef<CPlugMaterial>(ref n.dayMaterial, ref n.dayMaterialFile);
+            rw.NodeRef<CPlugMaterial>(ref n.nightMaterial, ref n.nightMaterialFile);
         }
     }
 

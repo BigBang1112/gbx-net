@@ -25,7 +25,7 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using the verified 
 - Set defaults when found in the constructor.
 - Use comments to describe what it does, rather than how it is implemented.
 
-Add `- inherits <BaseClass>` when the class inherits from another class.
+Add `- inherits <BaseClass>` when the class inherits from another class, except for `CMwNod`.
 
 Use the verified `GetChunkInfo` write bit (`0x02`) to add the current game's qualifier.
 

@@ -34,12 +34,43 @@ public partial class CMotionWeather : CMotionManaged, IClass
     [Hexadecimal]
     public static new uint Id => 0x08054000;
 
+    private CMwNod? legacyModel;
+    [AppliedWithChunk<Chunk08054000>]
+    public CMwNod? LegacyModel
+    {
+        get => this.legacyModel;
+        set => this.legacyModel = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionWeather)clone).legacyModel = context.Clone(this.legacyModel)!;
     }
 
     public CMotionWeather()
     {
     }
+
+    [Chunk(0x08054000)]
+    public partial class Chunk08054000 : Chunk<CMotionWeather>
+    {
+        public override uint Id => 0x08054000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionWeather n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMwNod>(ref n.legacyModel);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x08054000 => new Chunk08054000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

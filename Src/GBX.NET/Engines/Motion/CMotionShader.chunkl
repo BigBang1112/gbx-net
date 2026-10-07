@@ -2,6 +2,9 @@ CMotionShader 0x0802B000
 - inherits: CMotionTrack
 
 0x000 [TMF, MP4]
-  int
-  int
-  int
+  CPlugMaterial Material
+  if rw.Writer != null && Material != null
+    CPlugShader UnusedShader (local, write: null)
+  else
+    CPlugShader Shader
+  CFuncShader FuncShader

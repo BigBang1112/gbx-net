@@ -1,7 +1,7 @@
 CMotionDayTime 0x08055000
-- inherits: CMotion
+- inherits: CMotionManaged
 
 0x000 [TMF, MP4, TM2020]
-  int
-  int
-  int
+  CMwNod LegacyModel
+  CPlugMaterial DayMaterial (external)
+  CPlugMaterial NightMaterial (external)

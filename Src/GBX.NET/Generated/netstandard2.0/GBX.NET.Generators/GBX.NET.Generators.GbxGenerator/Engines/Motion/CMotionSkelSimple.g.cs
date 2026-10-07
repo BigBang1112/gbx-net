@@ -34,12 +34,45 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x08036000;
 
+    private CFuncSkelValues? skelValues;
+    [AppliedWithChunk<Chunk08036000>]
+    public CFuncSkelValues? SkelValues
+    {
+        get => this.skelValues;
+        set => this.skelValues = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CMotionSkelSimple)clone).skelValues = context.Clone(this.skelValues)!;
     }
 
     public CMotionSkelSimple()
     {
     }
+
+    [Chunk(0x08036000)]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk08036000 : Chunk<CMotionSkelSimple>
+    {
+        public override uint Id => 0x08036000;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotionSkelSimple n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CFuncSkelValues>(ref n.skelValues);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x08036000 => new Chunk08036000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

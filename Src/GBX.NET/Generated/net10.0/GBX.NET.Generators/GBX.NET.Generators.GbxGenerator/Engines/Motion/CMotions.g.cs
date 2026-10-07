@@ -34,9 +34,10 @@ public partial class CMotions : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x08028000;
 
-    private List<CMotion>? motions;
+    private List<CMotion> motions = new();
+    [AppliedWithChunk<Chunk08028000>]
     [AppliedWithChunk<Chunk08028001>]
-    public List<CMotion>? Motions
+    public List<CMotion> Motions
     {
         get => this.motions;
         set => this.motions = value;
@@ -50,6 +51,22 @@ public partial class CMotions : CMotion, IClass
 
     public CMotions()
     {
+    }
+
+    [Chunk(0x08028000)]
+    public partial class Chunk08028000 : Chunk<CMotions>
+    {
+        public override uint Id => 0x08028000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CMotions n, GbxReaderWriter rw)
+        {
+            rw.ListNodeRef<CMotion>(ref n.motions!);
+        }
     }
 
     [Chunk(0x08028001)]
@@ -72,6 +89,7 @@ public partial class CMotions : CMotion, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x08028000 => new Chunk08028000(),
         0x08028001 => new Chunk08028001(),
         _ => base.NewChunk(chunkId),
     };

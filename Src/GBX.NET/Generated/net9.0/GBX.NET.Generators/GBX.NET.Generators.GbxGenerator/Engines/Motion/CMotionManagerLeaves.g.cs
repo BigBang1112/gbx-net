@@ -48,10 +48,6 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
         ((CMotionManagerLeaves)clone).mobilLeaves = context.Clone(this.mobilLeaves)!;
     }
 
-    public CMotionManagerLeaves()
-    {
-    }
-
     [Chunk(0x0804C000)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0804C000 : Chunk<CMotionManagerLeaves>

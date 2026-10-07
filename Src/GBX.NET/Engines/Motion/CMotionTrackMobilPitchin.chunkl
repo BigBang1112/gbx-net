@@ -1,15 +1,28 @@
 CMotionTrackMobilPitchin 0x08041000
 - inherits: CMotionTrack
 
+0x000
+  float Flottaison = 500.01f
+  float Tangage = 1
+  float Roulis = 1
+  float OffsetHauteur = 0
+
+0x001
+  CMwNod Sea
+  float Flottaison
+  float Tangage
+  float Roulis
+  float OffsetHauteur
+
 0x002 [TMF]
   CMwNod Sea
   float Flottaison
   float Tangage
   float Roulis
   float OffsetHauteur
-  int<EPitchinMode> PitchinMode
-  float PeriodDelta
-  float MaxAngle
+  int<EPitchinMode> PitchinMode = EPitchinMode.Normal
+  float PeriodDelta = 0.5f
+  float MaxAngle = 10
 
 enum EPitchinMode
   Normal
