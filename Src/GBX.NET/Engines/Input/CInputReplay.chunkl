@@ -1,3 +1,17 @@
 CInputReplay 0x1300D000
+- inherits: CMwNod
 
-0x000 [MP4, TM2020]
+0x000 [MP4.v1, TM2020.v1]
+  version = 1
+  uint (write: "0") // CInputEventsStore archive prefix, initialized to zero by the native writer.
+  id[] ActionIds
+  int EventCount (local, write: "n.Events?.Length ?? 0")
+  uint MaxEventCount // CFastBufferWheel capacity limit; zero allows an unbounded store.
+  Event[EventCount] Events
+
+archive Event
+  uint Time
+  byte ActionIndex
+  Value = Value & 0xFFFFFF
+  uint Value // Packed 24-bit input value; encoding depends on the action type.
+  Value = Value & 0xFFFFFF

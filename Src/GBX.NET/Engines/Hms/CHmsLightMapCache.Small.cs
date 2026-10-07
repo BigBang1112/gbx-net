@@ -188,7 +188,6 @@ public partial class CHmsLightMapCache
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Frame : IVersionable
     {
         public byte[]? U01 { get; set; }

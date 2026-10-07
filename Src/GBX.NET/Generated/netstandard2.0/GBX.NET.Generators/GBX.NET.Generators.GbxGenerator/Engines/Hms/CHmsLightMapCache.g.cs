@@ -34,15 +34,242 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06022000;
 
-    private int[]? mapT3s;
+    private string? challengeIdLegacy;
+    [AppliedWithChunk<Chunk06022000>]
+    [AppliedWithChunk<Chunk06022001>]
+    [AppliedWithChunk<Chunk06022002>]
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    public string? ChallengeIdLegacy
+    {
+        get => this.challengeIdLegacy;
+        set => this.challengeIdLegacy = value;
+    }
+
+    private Int2[]? mapSizesLegacy;
+    [AppliedWithChunk<Chunk06022000>]
+    [AppliedWithChunk<Chunk06022001>]
+    public Int2[]? MapSizesLegacy
+    {
+        get => this.mapSizesLegacy;
+        set => this.mapSizesLegacy = value;
+    }
+
+    private int lightDirSampleCount = 25;
+    [AppliedWithChunk<Chunk06022000>]
+    [AppliedWithChunk<Chunk06022001>]
+    [AppliedWithChunk<Chunk06022002>]
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public int LightDirSampleCount
+    {
+        get => this.lightDirSampleCount;
+        set => this.lightDirSampleCount = value;
+    }
+
+    private int lightPntSampleCount = 25;
+    [AppliedWithChunk<Chunk06022000>]
+    [AppliedWithChunk<Chunk06022001>]
+    [AppliedWithChunk<Chunk06022002>]
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public int LightPntSampleCount
+    {
+        get => this.lightPntSampleCount;
+        set => this.lightPntSampleCount = value;
+    }
+
+    private int lightAmbSampleCount = 32;
+    [AppliedWithChunk<Chunk06022001>]
+    [AppliedWithChunk<Chunk06022002>]
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public int LightAmbSampleCount
+    {
+        get => this.lightAmbSampleCount;
+        set => this.lightAmbSampleCount = value;
+    }
+
+    private SMapOld1[]? mapsLegacy;
+    [AppliedWithChunk<Chunk06022002>]
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    public SMapOld1[]? MapsLegacy
+    {
+        get => this.mapsLegacy;
+        set => this.mapsLegacy = value;
+    }
+
+    private ESortMode sortMode;
+    [AppliedWithChunk<Chunk06022003>]
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public ESortMode SortMode
+    {
+        get => this.sortMode;
+        set => this.sortMode = value;
+    }
+
+    private EAllocMode allocMode;
+    [AppliedWithChunk<Chunk06022004>]
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public EAllocMode AllocMode
+    {
+        get => this.allocMode;
+        set => this.allocMode = value;
+    }
+
+    private string? decoration;
+    [AppliedWithChunk<Chunk06022005>]
+    [AppliedWithChunk<Chunk06022006>]
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022015>]
+    public string? Decoration
+    {
+        get => this.decoration;
+        set => this.decoration = value;
+    }
+
+    private SMap[]? maps;
+    [AppliedWithChunk<Chunk06022007>]
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public SMap[]? Maps
+    {
+        get => this.maps;
+        set => this.maps = value;
+    }
+
+    private bool hasBumpLegacy;
+    [AppliedWithChunk<Chunk06022008>]
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022015>(0, 3)]
+    public bool HasBumpLegacy
+    {
+        get => this.hasBumpLegacy;
+        set => this.hasBumpLegacy = value;
+    }
+
+    private float maxHDRLegacy;
+    [AppliedWithChunk<Chunk06022009>]
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>(0, 2)]
+    public float MaxHDRLegacy
+    {
+        get => this.maxHDRLegacy;
+        set => this.maxHDRLegacy = value;
+    }
+
+    private int allocModeT3;
+    [AppliedWithChunk<Chunk0602200A>]
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public int AllocModeT3
+    {
+        get => this.allocModeT3;
+        set => this.allocModeT3 = value;
+    }
+
+    private float[]? mapT3s;
+    /// <summary>
+    /// SMapT3 contains TotalLmSurfaceMeter, stored as raw float records.
+    /// </summary>
     [AppliedWithChunk<Chunk0602200B>]
-    public int[]? MapT3s
+    public float[]? MapT3s
     {
         get => this.mapT3s;
         set => this.mapT3s = value;
     }
 
-    private EQuality quality;
+    private ECompressMode compressMode;
+    [AppliedWithChunk<Chunk0602200C>]
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public ECompressMode CompressMode
+    {
+        get => this.compressMode;
+        set => this.compressMode = value;
+    }
+
+    private EQuality quality = EQuality.Default;
+    [AppliedWithChunk<Chunk0602200D>]
     [AppliedWithChunk<Chunk0602200F>]
     public EQuality Quality
     {
@@ -50,12 +277,92 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.quality = value;
     }
 
-    private DateTime? timeWrite;
-    [AppliedWithChunk<Chunk06022013>]
-    public DateTime? TimeWrite
+    private int qualityLegacy;
+    [AppliedWithChunk<Chunk0602200E>]
+    public int QualityLegacy
     {
-        get => this.timeWrite;
-        set => this.timeWrite = value;
+        get => this.qualityLegacy;
+        set => this.qualityLegacy = value;
+    }
+
+    private int canFlipU = 1;
+    [AppliedWithChunk<Chunk0602200E>]
+    [AppliedWithChunk<Chunk0602200F>]
+    public int CanFlipU
+    {
+        get => this.canFlipU;
+        set => this.canFlipU = value;
+    }
+
+    private int bumpNorm = 1;
+    [AppliedWithChunk<Chunk06022010>]
+    [AppliedWithChunk<Chunk06022014>]
+    [AppliedWithChunk<Chunk0602201A>]
+    public int BumpNorm
+    {
+        get => this.bumpNorm;
+        set => this.bumpNorm = value;
+    }
+
+    private bool isOnlyIndirectDir0;
+    [AppliedWithChunk<Chunk06022011>]
+    [AppliedWithChunk<Chunk06022013>]
+    public bool IsOnlyIndirectDir0
+    {
+        get => this.isOnlyIndirectDir0;
+        set => this.isOnlyIndirectDir0 = value;
+    }
+
+    private bool isSpriteLDirInAlpha;
+    [AppliedWithChunk<Chunk06022012>]
+    [AppliedWithChunk<Chunk06022013>]
+    public bool IsSpriteLDirInAlpha
+    {
+        get => this.isSpriteLDirInAlpha;
+        set => this.isSpriteLDirInAlpha = value;
+    }
+
+    private DateTime? timeWriteMostRecentSolid;
+    [AppliedWithChunk<Chunk06022013>]
+    public DateTime? TimeWriteMostRecentSolid
+    {
+        get => this.timeWriteMostRecentSolid;
+        set => this.timeWriteMostRecentSolid = value;
+    }
+
+    private int mapperTexelCountX = 2048;
+    [AppliedWithChunk<Chunk06022014>(1, 1)]
+    public int MapperTexelCountX
+    {
+        get => this.mapperTexelCountX;
+        set => this.mapperTexelCountX = value;
+    }
+
+    private SMapping? mapping;
+    [AppliedWithChunk<Chunk06022014>(2)]
+    [AppliedWithChunk<Chunk0602201A>]
+    public SMapping? Mapping
+    {
+        get => this.mapping;
+        set => this.mapping = value;
+    }
+
+    private float maxHDRMoodLegacy;
+    [AppliedWithChunk<Chunk06022014>(5)]
+    [AppliedWithChunk<Chunk0602201A>(0, 2)]
+    public float MaxHDRMoodLegacy
+    {
+        get => this.maxHDRMoodLegacy;
+        set => this.maxHDRMoodLegacy = value;
+    }
+
+    private bool spriteOriginY_WasWronglyTop = true;
+    [AppliedWithChunk<Chunk06022014>(6)]
+    [AppliedWithChunk<Chunk0602201A>]
+    public bool SpriteOriginY_WasWronglyTop
+    {
+        get => this.spriteOriginY_WasWronglyTop;
+        set => this.spriteOriginY_WasWronglyTop = value;
     }
 
     private ulong lightmapCacheUid;
@@ -66,15 +373,58 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.lightmapCacheUid = value;
     }
 
-    private string? decoration;
+    private EBump bumpMode = EBump.None;
     [AppliedWithChunk<Chunk06022015>]
-    public string? Decoration
+    public EBump BumpMode
     {
-        get => this.decoration;
-        set => this.decoration = value;
+        get => this.bumpMode;
+        set => this.bumpMode = value;
     }
 
-    private EVersion version;
+    private int timeOfDayVersion;
+    [AppliedWithChunk<Chunk06022015>(2)]
+    public int TimeOfDayVersion
+    {
+        get => this.timeOfDayVersion;
+        set => this.timeOfDayVersion = value;
+    }
+
+    private TimeSpan? timeOfDay;
+    [AppliedWithChunk<Chunk06022015>(2)]
+    public TimeSpan? TimeOfDay
+    {
+        get => this.timeOfDay;
+        set => this.timeOfDay = value;
+    }
+
+    private int dynamicTimeVersion;
+    [AppliedWithChunk<Chunk06022015>(3)]
+    public int DynamicTimeVersion
+    {
+        get => this.dynamicTimeVersion;
+        set => this.dynamicTimeVersion = value;
+    }
+
+    private uint dynamicTime;
+    /// <summary>
+    /// Dynamic time uses an unrestricted uint, not a time-of-day value.
+    /// </summary>
+    [AppliedWithChunk<Chunk06022015>(3)]
+    public uint DynamicTime
+    {
+        get => this.dynamicTime;
+        set => this.dynamicTime = value;
+    }
+
+    private string? challengeMapUid;
+    [AppliedWithChunk<Chunk06022015>(5)]
+    public string? ChallengeMapUid
+    {
+        get => this.challengeMapUid;
+        set => this.challengeMapUid = value;
+    }
+
+    private EVersion version = EVersion._2011_07_19_Beta1;
     [AppliedWithChunk<Chunk06022016>]
     public EVersion Version
     {
@@ -98,7 +448,15 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.decal3D = value;
     }
 
-    private EQualityVer qualityVer;
+    private DateTime? timeWriteMostRecentBlock;
+    [AppliedWithChunk<Chunk06022018>]
+    public DateTime? TimeWriteMostRecentBlock
+    {
+        get => this.timeWriteMostRecentBlock;
+        set => this.timeWriteMostRecentBlock = value;
+    }
+
+    private EQualityVer qualityVer = EQualityVer.BounceShadowFiltered;
     [AppliedWithChunk<Chunk06022019>]
     public EQualityVer QualityVer
     {
@@ -106,68 +464,36 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.qualityVer = value;
     }
 
-    private SMap[]? maps;
-    [AppliedWithChunk<Chunk0602201A>]
-    public SMap[]? Maps
-    {
-        get => this.maps;
-        set => this.maps = value;
-    }
-
-    private int ambSample;
-    [AppliedWithChunk<Chunk0602201A>]
-    public int AmbSample
-    {
-        get => this.ambSample;
-        set => this.ambSample = value;
-    }
-
-    private int dirSamples;
-    [AppliedWithChunk<Chunk0602201A>]
-    public int DirSamples
-    {
-        get => this.dirSamples;
-        set => this.dirSamples = value;
-    }
-
-    private int pntSamples;
-    [AppliedWithChunk<Chunk0602201A>]
-    public int PntSamples
-    {
-        get => this.pntSamples;
-        set => this.pntSamples = value;
-    }
-
-    private ESortMode sortMode;
-    [AppliedWithChunk<Chunk0602201A>]
-    public ESortMode SortMode
-    {
-        get => this.sortMode;
-        set => this.sortMode = value;
-    }
-
-    private EAllocMode allocMode;
-    [AppliedWithChunk<Chunk0602201A>]
-    public EAllocMode AllocMode
-    {
-        get => this.allocMode;
-        set => this.allocMode = value;
-    }
-
-    private ECompressMode compressMode;
-    [AppliedWithChunk<Chunk0602201A>]
-    public ECompressMode CompressMode
-    {
-        get => this.compressMode;
-        set => this.compressMode = value;
-    }
-
-    private EBump bump;
+    private EBump bump = EBump.None;
     [AppliedWithChunk<Chunk0602201A>(6)]
     public EBump Bump
     {
         get => this.bump;
         set => this.bump = value;
+    }
+
+    private float bounceFactorLegacy;
+    [AppliedWithChunk<Chunk0602201A>(0, 2)]
+    public float BounceFactorLegacy
+    {
+        get => this.bounceFactorLegacy;
+        set => this.bounceFactorLegacy = value;
+    }
+
+    private float skyFactorLegacy;
+    [AppliedWithChunk<Chunk0602201A>(0, 2)]
+    public float SkyFactorLegacy
+    {
+        get => this.skyFactorLegacy;
+        set => this.skyFactorLegacy = value;
+    }
+
+    private bool skyUseCloudsLegacy;
+    [AppliedWithChunk<Chunk0602201A>(0, 2)]
+    public bool SkyUseCloudsLegacy
+    {
+        get => this.skyUseCloudsLegacy;
+        set => this.skyUseCloudsLegacy = value;
     }
 
     private SFrame[]? frames;
@@ -178,28 +504,20 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         set => this.frames = value;
     }
 
-    private bool spriteOriginY_WasWronglyTop;
-    [AppliedWithChunk<Chunk0602201A>]
-    public bool SpriteOriginY_WasWronglyTop
-    {
-        get => this.spriteOriginY_WasWronglyTop;
-        set => this.spriteOriginY_WasWronglyTop = value;
-    }
-
-    private SMapping? mapping;
-    [AppliedWithChunk<Chunk0602201A>]
-    public SMapping? Mapping
-    {
-        get => this.mapping;
-        set => this.mapping = value;
-    }
-
     private EPlugGpuPlatform gpuPlatform;
     [AppliedWithChunk<Chunk0602201A>(1)]
     public EPlugGpuPlatform GpuPlatform
     {
         get => this.gpuPlatform;
         set => this.gpuPlatform = value;
+    }
+
+    private Vec3 lAmbientLegacy;
+    [AppliedWithChunk<Chunk0602201A>(2, 2)]
+    public Vec3 LAmbientLegacy
+    {
+        get => this.lAmbientLegacy;
+        set => this.lAmbientLegacy = value;
     }
 
     private float allocatedTexelByMeter;
@@ -213,33 +531,363 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CHmsLightMapCache)clone).mapT3s = context.CloneArray(this.mapT3s)!;
-        ((CHmsLightMapCache)clone).quality = context.Clone(this.quality)!;
-        ((CHmsLightMapCache)clone).timeWrite = context.Clone(this.timeWrite)!;
-        ((CHmsLightMapCache)clone).lightmapCacheUid = context.Clone(this.lightmapCacheUid)!;
+        ((CHmsLightMapCache)clone).challengeIdLegacy = context.Clone(this.challengeIdLegacy)!;
+        ((CHmsLightMapCache)clone).mapSizesLegacy = context.CloneArray(this.mapSizesLegacy)!;
+        ((CHmsLightMapCache)clone).lightDirSampleCount = context.Clone(this.lightDirSampleCount)!;
+        ((CHmsLightMapCache)clone).lightPntSampleCount = context.Clone(this.lightPntSampleCount)!;
+        ((CHmsLightMapCache)clone).lightAmbSampleCount = context.Clone(this.lightAmbSampleCount)!;
+        ((CHmsLightMapCache)clone).mapsLegacy = context.CloneArray(this.mapsLegacy)!;
+        ((CHmsLightMapCache)clone).sortMode = context.Clone(this.sortMode)!;
+        ((CHmsLightMapCache)clone).allocMode = context.Clone(this.allocMode)!;
         ((CHmsLightMapCache)clone).decoration = context.Clone(this.decoration)!;
+        ((CHmsLightMapCache)clone).maps = context.CloneArray(this.maps)!;
+        ((CHmsLightMapCache)clone).hasBumpLegacy = context.Clone(this.hasBumpLegacy)!;
+        ((CHmsLightMapCache)clone).maxHDRLegacy = context.Clone(this.maxHDRLegacy)!;
+        ((CHmsLightMapCache)clone).allocModeT3 = context.Clone(this.allocModeT3)!;
+        ((CHmsLightMapCache)clone).mapT3s = context.CloneArray(this.mapT3s)!;
+        ((CHmsLightMapCache)clone).compressMode = context.Clone(this.compressMode)!;
+        ((CHmsLightMapCache)clone).quality = context.Clone(this.quality)!;
+        ((CHmsLightMapCache)clone).qualityLegacy = context.Clone(this.qualityLegacy)!;
+        ((CHmsLightMapCache)clone).canFlipU = context.Clone(this.canFlipU)!;
+        ((CHmsLightMapCache)clone).bumpNorm = context.Clone(this.bumpNorm)!;
+        ((CHmsLightMapCache)clone).isOnlyIndirectDir0 = context.Clone(this.isOnlyIndirectDir0)!;
+        ((CHmsLightMapCache)clone).isSpriteLDirInAlpha = context.Clone(this.isSpriteLDirInAlpha)!;
+        ((CHmsLightMapCache)clone).timeWriteMostRecentSolid = context.Clone(this.timeWriteMostRecentSolid)!;
+        ((CHmsLightMapCache)clone).mapperTexelCountX = context.Clone(this.mapperTexelCountX)!;
+        ((CHmsLightMapCache)clone).mapping = context.Clone(this.mapping)!;
+        ((CHmsLightMapCache)clone).maxHDRMoodLegacy = context.Clone(this.maxHDRMoodLegacy)!;
+        ((CHmsLightMapCache)clone).spriteOriginY_WasWronglyTop = context.Clone(this.spriteOriginY_WasWronglyTop)!;
+        ((CHmsLightMapCache)clone).lightmapCacheUid = context.Clone(this.lightmapCacheUid)!;
+        ((CHmsLightMapCache)clone).bumpMode = context.Clone(this.bumpMode)!;
+        ((CHmsLightMapCache)clone).timeOfDayVersion = context.Clone(this.timeOfDayVersion)!;
+        ((CHmsLightMapCache)clone).timeOfDay = context.Clone(this.timeOfDay)!;
+        ((CHmsLightMapCache)clone).dynamicTimeVersion = context.Clone(this.dynamicTimeVersion)!;
+        ((CHmsLightMapCache)clone).dynamicTime = context.Clone(this.dynamicTime)!;
+        ((CHmsLightMapCache)clone).challengeMapUid = context.Clone(this.challengeMapUid)!;
         ((CHmsLightMapCache)clone).version = context.Clone(this.version)!;
         ((CHmsLightMapCache)clone).decal2D = context.Clone(this.decal2D)!;
         ((CHmsLightMapCache)clone).decal3D = context.Clone(this.decal3D)!;
+        ((CHmsLightMapCache)clone).timeWriteMostRecentBlock = context.Clone(this.timeWriteMostRecentBlock)!;
         ((CHmsLightMapCache)clone).qualityVer = context.Clone(this.qualityVer)!;
-        ((CHmsLightMapCache)clone).maps = context.CloneArray(this.maps)!;
-        ((CHmsLightMapCache)clone).ambSample = context.Clone(this.ambSample)!;
-        ((CHmsLightMapCache)clone).dirSamples = context.Clone(this.dirSamples)!;
-        ((CHmsLightMapCache)clone).pntSamples = context.Clone(this.pntSamples)!;
-        ((CHmsLightMapCache)clone).sortMode = context.Clone(this.sortMode)!;
-        ((CHmsLightMapCache)clone).allocMode = context.Clone(this.allocMode)!;
-        ((CHmsLightMapCache)clone).compressMode = context.Clone(this.compressMode)!;
         ((CHmsLightMapCache)clone).bump = context.Clone(this.bump)!;
+        ((CHmsLightMapCache)clone).bounceFactorLegacy = context.Clone(this.bounceFactorLegacy)!;
+        ((CHmsLightMapCache)clone).skyFactorLegacy = context.Clone(this.skyFactorLegacy)!;
+        ((CHmsLightMapCache)clone).skyUseCloudsLegacy = context.Clone(this.skyUseCloudsLegacy)!;
         ((CHmsLightMapCache)clone).frames = context.CloneArray(this.frames)!;
-        ((CHmsLightMapCache)clone).spriteOriginY_WasWronglyTop = context.Clone(this.spriteOriginY_WasWronglyTop)!;
-        ((CHmsLightMapCache)clone).mapping = context.Clone(this.mapping)!;
         ((CHmsLightMapCache)clone).gpuPlatform = context.Clone(this.gpuPlatform)!;
+        ((CHmsLightMapCache)clone).lAmbientLegacy = context.Clone(this.lAmbientLegacy)!;
         ((CHmsLightMapCache)clone).allocatedTexelByMeter = context.Clone(this.allocatedTexelByMeter)!;
         ((CHmsLightMapCache)clone).Collection = context.Clone(this.Collection)!;
     }
 
     public CHmsLightMapCache()
     {
+    }
+
+    [Chunk(0x06022000)]
+    public partial class Chunk06022000 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Array<Int2>(ref n.mapSizesLegacy!);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+        }
+    }
+
+    [Chunk(0x06022001)]
+    public partial class Chunk06022001 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022001;
+        public bool U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022001)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Array<Int2>(ref n.mapSizesLegacy!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    [Chunk(0x06022002)]
+    public partial class Chunk06022002 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022002;
+        public bool U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022002)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.ArrayReadableWritable<SMapOld1>(ref n.mapsLegacy!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    [Chunk(0x06022003)]
+    public partial class Chunk06022003 : Chunk06022002
+    {
+        public override uint Id => 0x06022003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+        }
+    }
+
+    [Chunk(0x06022004)]
+    public partial class Chunk06022004 : Chunk06022003
+    {
+        public override uint Id => 0x06022004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+        }
+    }
+
+    [Chunk(0x06022005)]
+    public partial class Chunk06022005 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022005;
+        public bool U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022005)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMapOld1>(ref n.mapsLegacy!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+        }
+    }
+
+    [Chunk(0x06022006)]
+    public partial class Chunk06022006 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022006;
+        public bool U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022006)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022006)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMapOld1>(ref n.mapsLegacy!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref U04);
+        }
+    }
+
+    [Chunk(0x06022007)]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk06022007 : Chunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022007;
+        public override GameVersion GameVersion => GameVersion.TMF;
+        public bool U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022007)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022007)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMap>(ref n.maps!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref U04);
+        }
+    }
+
+    [Chunk(0x06022008)]
+    public partial class Chunk06022008 : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022008;
+        public bool U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022008)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022008)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022008)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022008)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMap>(ref n.maps!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref U04);
+            rw.Boolean(ref n.hasBumpLegacy);
+        }
+    }
+
+    [Chunk(0x06022009)]
+    public partial class Chunk06022009 : Chunk06022008
+    {
+        public override uint Id => 0x06022009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref n.maxHDRLegacy);
+        }
+    }
+
+    [Chunk(0x0602200A)]
+    public partial class Chunk0602200A : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x0602200A;
+        public bool U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0602200A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0602200A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0602200A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0602200A)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMap>(ref n.maps!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref n.allocModeT3);
+            rw.Int32(ref U04);
+            rw.Boolean(ref n.hasBumpLegacy);
+            rw.Single(ref n.maxHDRLegacy);
+        }
     }
 
     [Chunk(0x0602200B)]
@@ -256,7 +904,57 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
-            rw.Array<int>(ref n.mapT3s!);
+            rw.Array<float>(ref n.mapT3s!);
+        }
+    }
+
+    [Chunk(0x0602200C)]
+    public partial class Chunk0602200C : Chunk0602200A
+    {
+        public override uint Id => 0x0602200C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.EnumInt32<ECompressMode>(ref n.compressMode);
+        }
+    }
+
+    [Chunk(0x0602200D)]
+    public partial class Chunk0602200D : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x0602200D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EQuality>(ref n.quality);
+        }
+    }
+
+    [Chunk(0x0602200E)]
+    public partial class Chunk0602200E : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x0602200E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.qualityLegacy);
+            rw.Int32(ref n.canFlipU);
         }
     }
 
@@ -266,18 +964,88 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
         public override uint Id => 0x0602200F;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0602200F)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EQuality>(ref n.quality);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.canFlipU);
+        }
+    }
+
+    [Chunk(0x06022010)]
+    public partial class Chunk06022010 : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022010;
+        public bool U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022010)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022010)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022010)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.challengeIdLegacy);
+            rw.Id(ref n.decoration);
+            rw.ArrayReadableWritable<SMap>(ref n.maps!);
+            rw.Boolean(ref U01);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref n.allocModeT3);
+            rw.Int32(ref U04);
+            rw.Boolean(ref n.hasBumpLegacy);
+            rw.Single(ref n.maxHDRLegacy);
+            rw.EnumInt32<ECompressMode>(ref n.compressMode);
+            rw.Int32(ref n.bumpNorm);
+        }
+    }
+
+    [Chunk(0x06022011)]
+    public partial class Chunk06022011 : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022011;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.isOnlyIndirectDir0);
+        }
+    }
+
+    [Chunk(0x06022012)]
+    public partial class Chunk06022012 : SkippableChunk<CHmsLightMapCache>
+    {
+        public override uint Id => 0x06022012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.isSpriteLDirInAlpha);
         }
     }
 
@@ -287,50 +1055,96 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
         public override uint Id => 0x06022013;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
-        public bool U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk06022013)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk06022013)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
+            rw.Boolean(ref n.isOnlyIndirectDir0);
+            rw.Boolean(ref n.isSpriteLDirInAlpha);
+            n.timeWriteMostRecentSolid = rw.FileTime(n.timeWriteMostRecentSolid);
+        }
+    }
+
+    [Chunk(0x06022014)]
+    public partial class Chunk06022014 : SkippableChunk<CHmsLightMapCache>, IVersionable
+    {
+        public override uint Id => 0x06022014;
+        public int Version { get; set; }
+        public bool U01;
+        public float U02;
+        public float U03;
+        public bool U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06022014)clone).Version = context.Clone(this.Version)!;
+            ((Chunk06022014)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06022014)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06022014)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk06022014)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.ArrayReadableWritable<SMap>(ref n.maps!, version: Version);
             rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
-            n.timeWrite = rw.FileTime(n.timeWrite);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.EnumInt32<ESortMode>(ref n.sortMode);
+            rw.EnumInt32<EAllocMode>(ref n.allocMode);
+            rw.Int32(ref n.allocModeT3);
+            rw.Single(ref n.maxHDRLegacy);
+            rw.EnumInt32<ECompressMode>(ref n.compressMode);
+            rw.Int32(ref n.bumpNorm);
+
+            if (Version == 1)
+            {
+                rw.Int32(ref n.mapperTexelCountX);
+            }
+
+            if (Version >= 2)
+            {
+                rw.ReadableWritable<SMapping>(ref n.mapping, version: Version);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Boolean(ref U04);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.maxHDRMoodLegacy);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Boolean(ref n.spriteOriginY_WasWronglyTop);
+            }
         }
     }
 
     [Chunk(0x06022015)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x06022015;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public bool U02;
-        public int U03;
-        public TimeSpan? U04;
-        public int U05;
-        public TimeSpan? U06;
-        public string? U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk06022015)clone).Version = context.Clone(this.Version)!;
-            ((Chunk06022015)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk06022015)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk06022015)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk06022015)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk06022015)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk06022015)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk06022015)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
@@ -339,26 +1153,26 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             rw.UInt64(ref n.lightmapCacheUid);
             n.Collection = rw.Id(n.Collection);
             rw.Id(ref n.decoration);
-            rw.Int32(ref U01);
+            rw.EnumInt32<EBump>(ref n.bumpMode);
 
             if (Version <= 3)
             {
-                rw.Boolean(ref U02);
+                rw.Boolean(ref n.hasBumpLegacy);
             }
 
             if (Version >= 2)
             {
-                rw.Int32(ref U03);
-                U04 = rw.TimeOfDay(U04);
+                rw.Int32(ref n.timeOfDayVersion);
+                n.timeOfDay = rw.TimeOfDay(n.timeOfDay);
 
                 if (Version >= 3)
                 {
-                    rw.Int32(ref U05);
-                    U06 = rw.TimeOfDay(U06);
+                    rw.Int32(ref n.dynamicTimeVersion);
+                    rw.UInt32(ref n.dynamicTime);
 
                     if (Version >= 5)
                     {
-                        rw.String(ref U07);
+                        rw.String(ref n.challengeMapUid);
                     }
                 }
             }
@@ -408,17 +1222,15 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
         public override uint Id => 0x06022018;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public ulong U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk06022018)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
-            rw.UInt64(ref U01);
+            n.timeWriteMostRecentBlock = rw.FileTime(n.timeWriteMostRecentBlock);
         }
     }
 
@@ -441,24 +1253,16 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x0602201A)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 9, 13)]
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x0602201A;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
+        public bool U01;
         public int U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public bool U08;
-        public Vec3 U09;
-        public int U10;
-        public int U11;
-        public int U12;
+        public int U03;
+        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -468,28 +1272,20 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             ((Chunk0602201A)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0602201A)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0602201A)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0602201A)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0602201A)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0602201A)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0602201A)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0602201A)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0602201A)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk0602201A)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk0602201A)clone).U12 = context.Clone(this.U12)!;
         }
 
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.ArrayReadableWritable<SMap>(ref n.maps!, version: Version);
-            rw.Int32(ref n.ambSample);
-            rw.Int32(ref n.dirSamples);
-            rw.Int32(ref n.pntSamples);
+            rw.Int32(ref n.lightAmbSampleCount);
+            rw.Int32(ref n.lightDirSampleCount);
+            rw.Int32(ref n.lightPntSampleCount);
             rw.EnumInt32<ESortMode>(ref n.sortMode);
             rw.EnumInt32<EAllocMode>(ref n.allocMode);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.allocModeT3);
             rw.EnumInt32<ECompressMode>(ref n.compressMode);
-            rw.Int32(ref U02);
+            rw.Int32(ref n.bumpNorm);
 
             if (Version >= 6)
             {
@@ -498,11 +1294,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
             if (Version <= 2)
             {
-                rw.Single(ref U03);
-                rw.Single(ref U04);
-                rw.Single(ref U05);
-                rw.Single(ref U06);
-                rw.Single(ref U07);
+                rw.Single(ref n.maxHDRLegacy);
+                rw.Single(ref n.maxHDRMoodLegacy);
+                rw.Single(ref n.bounceFactorLegacy);
+                rw.Single(ref n.skyFactorLegacy);
+                rw.Boolean(ref n.skyUseCloudsLegacy);
             }
 
             if (Version >= 3)
@@ -510,7 +1306,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
                 rw.ArrayReadableWritable<SFrame>(ref n.frames!, version: Version);
             }
 
-            rw.Boolean(ref U08);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.spriteOriginY_WasWronglyTop);
             rw.ReadableWritable<SMapping>(ref n.mapping, version: Version);
 
@@ -520,7 +1316,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
                 if (Version == 2)
                 {
-                    rw.Vec3_6(ref U09);
+                    rw.Vec3_6(ref n.lAmbientLegacy);
                 }
 
                 if (Version >= 5)
@@ -529,12 +1325,12 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
                     if (Version >= 11)
                     {
-                        rw.Int32(ref U10);
-                        rw.Int32(ref U11);
+                        rw.Int32(ref U02);
+                        rw.Int32(ref U03);
 
                         if (Version >= 15)
                         {
-                            rw.Int32(ref U12);
+                            rw.Int32(ref U04);
                         }
                     }
                 }
@@ -542,41 +1338,76 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    public partial class SMapOld1 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Int2 blockPerMap;
+        public Int2 BlockPerMap
+        {
+            get => this.blockPerMap;
+            set => this.blockPerMap = value;
+        }
+
+        private int usedBlockCount;
+        public int UsedBlockCount
+        {
+            get => this.usedBlockCount;
+            set => this.usedBlockCount = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SMapOld1)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SMapOld1)clone).blockPerMap = context.Clone(this.blockPerMap)!;
+            ((SMapOld1)clone).usedBlockCount = context.Clone(this.usedBlockCount)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int2(ref this.blockPerMap);
+            rw.Int32(ref this.usedBlockCount);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     public partial class SMap : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private Int2 blockPerMap;
+        public Int2 BlockPerMap
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.blockPerMap;
+            set => this.blockPerMap = value;
         }
 
-        private int u02;
-        public int U02
+        private int usedBlockCount;
+        public int UsedBlockCount
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.usedBlockCount;
+            set => this.usedBlockCount = value;
         }
 
-        private int u03;
-        public int U03
+        private Int2 outsideBlockCount;
+        public Int2 OutsideBlockCount
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private int u04;
-        public int U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private int u05;
-        public int U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.outsideBlockCount;
+            set => this.outsideBlockCount = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -589,20 +1420,16 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SMap)clone).u01 = context.Clone(this.u01)!;
-            ((SMap)clone).u02 = context.Clone(this.u02)!;
-            ((SMap)clone).u03 = context.Clone(this.u03)!;
-            ((SMap)clone).u04 = context.Clone(this.u04)!;
-            ((SMap)clone).u05 = context.Clone(this.u05)!;
+            ((SMap)clone).blockPerMap = context.Clone(this.blockPerMap)!;
+            ((SMap)clone).usedBlockCount = context.Clone(this.usedBlockCount)!;
+            ((SMap)clone).outsideBlockCount = context.Clone(this.outsideBlockCount)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Int32(ref this.u04);
-            rw.Int32(ref this.u05);
+            rw.Int2(ref this.blockPerMap);
+            rw.Int32(ref this.usedBlockCount);
+            rw.Int2(ref this.outsideBlockCount);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -620,15 +1447,92 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
     public partial class SFrame : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int timeOfDayVersion;
+        public int TimeOfDayVersion
+        {
+            get => this.timeOfDayVersion;
+            set => this.timeOfDayVersion = value;
+        }
+
+        private TimeSpan? timeOfDay;
+        public TimeSpan? TimeOfDay
+        {
+            get => this.timeOfDay;
+            set => this.timeOfDay = value;
+        }
+
+        private float maxHDR_Mood;
+        public float MaxHDR_Mood
+        {
+            get => this.maxHDR_Mood;
+            set => this.maxHDR_Mood = value;
+        }
+
+        private float maxHDR;
+        public float MaxHDR
+        {
+            get => this.maxHDR;
+            set => this.maxHDR = value;
+        }
+
+        private float bounceFactor = -1;
+        public float BounceFactor
+        {
+            get => this.bounceFactor;
+            set => this.bounceFactor = value;
+        }
+
+        private float skyFactor = -1;
+        public float SkyFactor
+        {
+            get => this.skyFactor;
+            set => this.skyFactor = value;
+        }
+
+        private bool skyUseClouds = true;
+        public bool SkyUseClouds
+        {
+            get => this.skyUseClouds;
+            set => this.skyUseClouds = value;
+        }
+
+        private bool storeLAmbient;
+        public bool StoreLAmbient
+        {
+            get => this.storeLAmbient;
+            set => this.storeLAmbient = value;
+        }
+
+        private bool storeLocalLightsLegacy;
+        public bool StoreLocalLightsLegacy
+        {
+            get => this.storeLocalLightsLegacy;
+            set => this.storeLocalLightsLegacy = value;
+        }
+
+        private ELocalLightStorage localLight_Storage;
+        public ELocalLightStorage LocalLight_Storage
+        {
+            get => this.localLight_Storage;
+            set => this.localLight_Storage = value;
+        }
+
+        private ELocalLightSwitch localLight_Switch = ELocalLightSwitch.Unknown;
+        public ELocalLightSwitch LocalLight_Switch
+        {
+            get => this.localLight_Switch;
+            set => this.localLight_Switch = value;
+        }
+
+        private float u01;
+        public float U01
         {
             get => this.u01;
             set => this.u01 = value;
         }
 
-        private TimeSpan? u02;
-        public TimeSpan? U02
+        private float u02;
+        public float U02
         {
             get => this.u02;
             set => this.u02 = value;
@@ -669,116 +1573,28 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             set => this.u07 = value;
         }
 
-        private bool u08;
-        public bool U08
+        private Vec3 maxHDR_HBasisScaled234;
+        public Vec3 MaxHDR_HBasisScaled234
+        {
+            get => this.maxHDR_HBasisScaled234;
+            set => this.maxHDR_HBasisScaled234 = value;
+        }
+
+        private EBump bump = EBump.None;
+        public EBump Bump
+        {
+            get => this.bump;
+            set => this.bump = value;
+        }
+
+        private byte u08;
+        /// <summary>
+        /// Serialized per frame even though the native value is discarded.
+        /// </summary>
+        public byte U08
         {
             get => this.u08;
             set => this.u08 = value;
-        }
-
-        private Vec3 u09;
-        public Vec3 U09
-        {
-            get => this.u09;
-            set => this.u09 = value;
-        }
-
-        private int u10;
-        public int U10
-        {
-            get => this.u10;
-            set => this.u10 = value;
-        }
-
-        private int u11;
-        public int U11
-        {
-            get => this.u11;
-            set => this.u11 = value;
-        }
-
-        private int u12 = 2;
-        public int U12
-        {
-            get => this.u12;
-            set => this.u12 = value;
-        }
-
-        private float u13;
-        public float U13
-        {
-            get => this.u13;
-            set => this.u13 = value;
-        }
-
-        private float u14;
-        public float U14
-        {
-            get => this.u14;
-            set => this.u14 = value;
-        }
-
-        private float u15;
-        public float U15
-        {
-            get => this.u15;
-            set => this.u15 = value;
-        }
-
-        private float u16;
-        public float U16
-        {
-            get => this.u16;
-            set => this.u16 = value;
-        }
-
-        private float u17;
-        public float U17
-        {
-            get => this.u17;
-            set => this.u17 = value;
-        }
-
-        private float u18;
-        public float U18
-        {
-            get => this.u18;
-            set => this.u18 = value;
-        }
-
-        private float u19;
-        public float U19
-        {
-            get => this.u19;
-            set => this.u19 = value;
-        }
-
-        private float u20;
-        public float U20
-        {
-            get => this.u20;
-            set => this.u20 = value;
-        }
-
-        private float u21;
-        public float U21
-        {
-            get => this.u21;
-            set => this.u21 = value;
-        }
-
-        private float u22;
-        public float U22
-        {
-            get => this.u22;
-            set => this.u22 = value;
-        }
-
-        private int u23;
-        public int U23
-        {
-            get => this.u23;
-            set => this.u23 = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -791,6 +1607,17 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((SFrame)clone).timeOfDayVersion = context.Clone(this.timeOfDayVersion)!;
+            ((SFrame)clone).timeOfDay = context.Clone(this.timeOfDay)!;
+            ((SFrame)clone).maxHDR_Mood = context.Clone(this.maxHDR_Mood)!;
+            ((SFrame)clone).maxHDR = context.Clone(this.maxHDR)!;
+            ((SFrame)clone).bounceFactor = context.Clone(this.bounceFactor)!;
+            ((SFrame)clone).skyFactor = context.Clone(this.skyFactor)!;
+            ((SFrame)clone).skyUseClouds = context.Clone(this.skyUseClouds)!;
+            ((SFrame)clone).storeLAmbient = context.Clone(this.storeLAmbient)!;
+            ((SFrame)clone).storeLocalLightsLegacy = context.Clone(this.storeLocalLightsLegacy)!;
+            ((SFrame)clone).localLight_Storage = context.Clone(this.localLight_Storage)!;
+            ((SFrame)clone).localLight_Switch = context.Clone(this.localLight_Switch)!;
             ((SFrame)clone).u01 = context.Clone(this.u01)!;
             ((SFrame)clone).u02 = context.Clone(this.u02)!;
             ((SFrame)clone).u03 = context.Clone(this.u03)!;
@@ -798,80 +1625,81 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             ((SFrame)clone).u05 = context.Clone(this.u05)!;
             ((SFrame)clone).u06 = context.Clone(this.u06)!;
             ((SFrame)clone).u07 = context.Clone(this.u07)!;
+            ((SFrame)clone).maxHDR_HBasisScaled234 = context.Clone(this.maxHDR_HBasisScaled234)!;
+            ((SFrame)clone).bump = context.Clone(this.bump)!;
             ((SFrame)clone).u08 = context.Clone(this.u08)!;
-            ((SFrame)clone).u09 = context.Clone(this.u09)!;
-            ((SFrame)clone).u10 = context.Clone(this.u10)!;
-            ((SFrame)clone).u11 = context.Clone(this.u11)!;
-            ((SFrame)clone).u12 = context.Clone(this.u12)!;
-            ((SFrame)clone).u13 = context.Clone(this.u13)!;
-            ((SFrame)clone).u14 = context.Clone(this.u14)!;
-            ((SFrame)clone).u15 = context.Clone(this.u15)!;
-            ((SFrame)clone).u16 = context.Clone(this.u16)!;
-            ((SFrame)clone).u17 = context.Clone(this.u17)!;
-            ((SFrame)clone).u18 = context.Clone(this.u18)!;
-            ((SFrame)clone).u19 = context.Clone(this.u19)!;
-            ((SFrame)clone).u20 = context.Clone(this.u20)!;
-            ((SFrame)clone).u21 = context.Clone(this.u21)!;
-            ((SFrame)clone).u22 = context.Clone(this.u22)!;
-            ((SFrame)clone).u23 = context.Clone(this.u23)!;
+            ((SFrame)clone).ReplayTime = context.Clone(this.ReplayTime)!;
+            ((SFrame)clone).LAmbient = context.Clone(this.LAmbient)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            this.u02 = rw.TimeOfDay(this.u02);
+            rw.Int32(ref this.timeOfDayVersion);
+            this.timeOfDay = rw.TimeOfDay(this.timeOfDay);
 
             if (v >= 10)
             {
-                rw.Single(ref this.u03);
+                this.ReplayTime = rw.Single(this.ReplayTime);
             }
 
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
-            rw.Single(ref this.u06);
-            rw.Single(ref this.u07);
-            rw.Boolean(ref this.u08);
-            rw.Vec3_6(ref this.u09);
+            rw.Single(ref this.maxHDR_Mood);
+            rw.Single(ref this.maxHDR);
+            rw.Single(ref this.bounceFactor);
+            rw.Single(ref this.skyFactor);
+            rw.Boolean(ref this.skyUseClouds);
+            this.LAmbient = rw.Vec3_6(this.LAmbient);
 
             if (v >= 4)
             {
-                rw.Int32(ref this.u10);
-                rw.Int32(ref this.u11);
+                rw.Boolean(ref this.storeLAmbient);
 
-                if (v >= 12)
+                if (v <= 12)
                 {
-                    rw.Int32(ref this.u12);
+                    rw.Boolean(ref this.storeLocalLightsLegacy);
                 }
 
-                if (v >= 6)
+                if (v >= 13)
                 {
-                    if (v <= 7)
-                    {
-                        rw.Single(ref this.u13);
-                        rw.Single(ref this.u14);
-                        rw.Single(ref this.u15);
-                    }
+                    rw.EnumInt32<ELocalLightStorage>(ref this.localLight_Storage);
                 }
+            }
 
-                if (v == 8)
-                {
-                    rw.Single(ref this.u16);
-                    rw.Single(ref this.u17);
-                    rw.Single(ref this.u18);
-                    rw.Single(ref this.u19);
-                }
+            if (v >= 12)
+            {
+                rw.EnumInt32<ELocalLightSwitch>(ref this.localLight_Switch);
+            }
 
-                if (v >= 9)
+            if (v >= 6)
+            {
+                if (v <= 7)
                 {
-                    rw.Single(ref this.u20);
-                    rw.Single(ref this.u21);
-                    rw.Single(ref this.u22);
+                    rw.Single(ref this.u01);
+                    rw.Single(ref this.u02);
+                    rw.Single(ref this.u03);
                 }
+            }
 
-                if (v >= 7)
-                {
-                    rw.Int32(ref this.u23);
-                }
+            if (v == 8)
+            {
+                rw.Single(ref this.u04);
+                rw.Single(ref this.u05);
+                rw.Single(ref this.u06);
+                rw.Single(ref this.u07);
+            }
+
+            if (v >= 9)
+            {
+                rw.Vec3(ref this.maxHDR_HBasisScaled234);
+            }
+
+            if (v >= 7)
+            {
+                rw.EnumInt32<EBump>(ref this.bump);
+            }
+
+            if (v >= 14)
+            {
+                rw.Byte(ref this.u08);
             }
         }
 
@@ -888,7 +1716,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class SMapping : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class SMapping : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -918,6 +1746,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             ((SMapping)clone).zlibData2Decompressed1 = context.CloneArray(this.zlibData2Decompressed1)!;
             ((SMapping)clone).zlibData2Decompressed2 = context.CloneArray(this.zlibData2Decompressed2)!;
             ((SMapping)clone).zlibData2Decompressed3 = context.CloneArray(this.zlibData2Decompressed3)!;
+            ((SMapping)clone).zlibData2Decompressed4 = context.CloneArray(this.zlibData2Decompressed4)!;
             ((SMapping)clone).zlibData3 = context.Clone(this.zlibData3)!;
             ((SMapping)clone).zlibData3Decompressed = context.CloneArray(this.zlibData3Decompressed)!;
             ((SMapping)clone).zlibData4 = context.Clone(this.zlibData4)!;
@@ -945,7 +1774,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
-    public partial class Frame : IReadable, IWritable, IDeepCloneable
+    public partial class Frame : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -1005,34 +1834,31 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             ((Frame)clone).U42 = context.Clone(this.U42)!;
         }
 
-        public void Read(GbxReader r, int v = 0)
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            this.Data = r.ReadData();
+            this.Data = rw.Data(this.Data);
 
             if (v >= 3)
             {
-                this.Data2 = r.ReadData();
+                this.Data2 = rw.Data(this.Data2);
 
                 if (v >= 6)
                 {
-                    this.Data3 = r.ReadData();
+                    this.Data3 = rw.Data(this.Data3);
                 }
             }
         }
 
+        public void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
         public void Write(GbxWriter w, int v = 0)
         {
-            w.WriteData(this.Data);
-
-            if (v >= 3)
-            {
-                w.WriteData(this.Data2);
-
-                if (v >= 6)
-                {
-                    w.WriteData(this.Data3);
-                }
-            }
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -1422,11 +2248,43 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         pf6,
     }
 
+    public enum ELocalLightStorage
+    {
+        None,
+        All,
+        OnlyRgbAccum,
+    }
+
+    public enum ELocalLightSwitch
+    {
+        On,
+        Off,
+        Unknown,
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x06022000 => new Chunk06022000(),
+        0x06022001 => new Chunk06022001(),
+        0x06022002 => new Chunk06022002(),
+        0x06022003 => new Chunk06022003(),
+        0x06022004 => new Chunk06022004(),
+        0x06022005 => new Chunk06022005(),
+        0x06022006 => new Chunk06022006(),
+        0x06022007 => new Chunk06022007(),
+        0x06022008 => new Chunk06022008(),
+        0x06022009 => new Chunk06022009(),
+        0x0602200A => new Chunk0602200A(),
         0x0602200B => new Chunk0602200B(),
+        0x0602200C => new Chunk0602200C(),
+        0x0602200D => new Chunk0602200D(),
+        0x0602200E => new Chunk0602200E(),
         0x0602200F => new Chunk0602200F(),
+        0x06022010 => new Chunk06022010(),
+        0x06022011 => new Chunk06022011(),
+        0x06022012 => new Chunk06022012(),
         0x06022013 => new Chunk06022013(),
+        0x06022014 => new Chunk06022014(),
         0x06022015 => new Chunk06022015(),
         0x06022016 => new Chunk06022016(),
         0x06022017 => new Chunk06022017(),

@@ -1,8 +1,23 @@
 CHmsZone 0x06004000
+- inherits: CMwNod
 
-0x002 [TMF, MP4, TM2020]
+property bool FogByVertex
+  get = (FogFlags & 1) != 0
+  set
+    if value
+      FogFlags = FogFlags | 1
+    else
+      FogFlags = FogFlags & 0xFFFFFFFE
+
+0x002 [TMF, MP4, TM2020] // GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.
   CHmsFogPlane[] FogPlanes (deprec)
-  data[28]
+  FogFlags = FogFlags & 0xF
+  vec3 FogRGB = (1, 1, 1) // sRGB, verified by FogSetColorLinear converting into this field.
+  float FogLinearStart
+  float FogLinearEnd = 1
+  float FogExpDensity = 1
+  uint FogFlags = 6 // Bit 0: FogByVertex; bits 1-2: FogFormula; bit 3: FogSpace.
+  FogFlags = FogFlags & 0xF
 
 0x003 [TMF, MP4, TM2020]
   bool MRIsForced
@@ -19,3 +34,13 @@ CHmsZone 0x06004000
 0x008 [MP4, TM2020]
   CPlugBitmap BitmapCubeReflectHardSpecA (external)
   CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+
+enum EGxFogFormula
+  None
+  Exp
+  Exp2
+  Linear
+
+enum EGxFogSpace
+  CameraFarZ
+  World

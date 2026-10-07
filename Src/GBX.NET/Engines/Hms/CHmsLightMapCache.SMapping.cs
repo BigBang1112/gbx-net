@@ -81,6 +81,7 @@ public partial class CHmsLightMapCache
         private short[]? zlibData2Decompressed1;
         private short[]? zlibData2Decompressed2;
         private short[]? zlibData2Decompressed3;
+        private short[]? zlibData2Decompressed4;
         public ZlibData? ZlibData2 { get => zlibData2; set => zlibData2 = value; }
         public short[]? ZlibData2Decompressed1
         {
@@ -93,9 +94,8 @@ public partial class CHmsLightMapCache
                 {
                     if (zlibData2Decompressed1 is not null) return zlibData2Decompressed1;
                     using var r = zlibData2.OpenDecompressedReader();
-                    zlibData2Decompressed1 = r.ReadArray<short>(count);
-                    zlibData2Decompressed2 = r.ReadArray<short>(count);
-                    zlibData2Decompressed3 = r.ReadArray<short>(count);
+                    using var rw = new GbxReaderWriter(r);
+                    ReadWriteMappingCoordinates(rw);
                     zlibData2.Parsed = true;
                     return zlibData2Decompressed1;
                 }
@@ -119,9 +119,8 @@ public partial class CHmsLightMapCache
                 {
                     if (zlibData2Decompressed2 is not null) return zlibData2Decompressed2;
                     using var r = zlibData2.OpenDecompressedReader();
-                    zlibData2Decompressed1 = r.ReadArray<short>(count);
-                    zlibData2Decompressed2 = r.ReadArray<short>(count);
-                    zlibData2Decompressed3 = r.ReadArray<short>(count);
+                    using var rw = new GbxReaderWriter(r);
+                    ReadWriteMappingCoordinates(rw);
                     zlibData2.Parsed = true;
                     return zlibData2Decompressed2;
                 }
@@ -145,9 +144,8 @@ public partial class CHmsLightMapCache
                 {
                     if (zlibData2Decompressed3 is not null) return zlibData2Decompressed3;
                     using var r = zlibData2.OpenDecompressedReader();
-                    zlibData2Decompressed1 = r.ReadArray<short>(count);
-                    zlibData2Decompressed2 = r.ReadArray<short>(count);
-                    zlibData2Decompressed3 = r.ReadArray<short>(count);
+                    using var rw = new GbxReaderWriter(r);
+                    ReadWriteMappingCoordinates(rw);
                     zlibData2.Parsed = true;
                     return zlibData2Decompressed3;
                 }
@@ -157,6 +155,73 @@ public partial class CHmsLightMapCache
                 lock (ZlibData2Lock)
                 {
                     zlibData2Decompressed3 = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fourth 16-bit component of the packed mapping records, present from mapping version 7.
+        /// </summary>
+        public short[]? ZlibData2Decompressed4
+        {
+            get
+            {
+                if (version < 7) return null;
+                lock (ZlibData2Lock)
+                {
+                    if (zlibData2Decompressed4 is not null) return zlibData2Decompressed4;
+                    if (zlibData2 is null || zlibData2.Parsed) return null;
+                    using var r = zlibData2.OpenDecompressedReader();
+                    using var rw = new GbxReaderWriter(r);
+                    ReadWriteMappingCoordinates(rw);
+                    zlibData2.Parsed = true;
+                    return zlibData2Decompressed4;
+                }
+            }
+            set
+            {
+                lock (ZlibData2Lock)
+                {
+                    zlibData2Decompressed4 = value;
+                }
+            }
+        }
+
+        private void ReadWriteMappingCoordinates(GbxReaderWriter rw)
+        {
+            if (version < 7)
+            {
+                rw.Array<short>(ref zlibData2Decompressed1, count);
+                rw.Array<short>(ref zlibData2Decompressed2, count);
+                rw.Array<short>(ref zlibData2Decompressed3, count);
+                return;
+            }
+
+            // Versions 0-6 use three component planes. Version 7+ stores four shorts per texel.
+            if (rw.Reader is not null)
+            {
+                zlibData2Decompressed1 = new short[count];
+                zlibData2Decompressed2 = new short[count];
+                zlibData2Decompressed3 = new short[count];
+                zlibData2Decompressed4 = new short[count];
+            }
+
+            for (var i = 0; i < count; i++)
+            {
+                var x = zlibData2Decompressed1?[i] ?? 0;
+                var y = zlibData2Decompressed2?[i] ?? 0;
+                var z = zlibData2Decompressed3?[i] ?? 0;
+                var w = zlibData2Decompressed4?[i] ?? 0;
+                rw.Int16(ref x);
+                rw.Int16(ref y);
+                rw.Int16(ref z);
+                rw.Int16(ref w);
+                if (rw.Reader is not null)
+                {
+                    zlibData2Decompressed1![i] = x;
+                    zlibData2Decompressed2![i] = y;
+                    zlibData2Decompressed3![i] = z;
+                    zlibData2Decompressed4![i] = w;
                 }
             }
         }
@@ -391,7 +456,7 @@ public partial class CHmsLightMapCache
             // during write, there should be a constraint that all decompressed arrays must have the same length
             if (rw.Writer is not null)
             {
-                count = ZlibData1Decompressed?.Length ?? 0;
+                count = ZlibData1Decompressed?.Length ?? ZlibData2Decompressed1?.Length ?? count;
             }
 
             rw.Int32(ref count);
@@ -404,12 +469,7 @@ public partial class CHmsLightMapCache
                 }, lazyLoad: true);
             }
 
-            rw.ZlibData(ref zlibData2, rw =>
-            {
-                rw.Array<short>(ref zlibData2Decompressed1, count);
-                rw.Array<short>(ref zlibData2Decompressed2, count);
-                rw.Array<short>(ref zlibData2Decompressed3, count);
-            }, lazyLoad: true);
+            rw.ZlibData(ref zlibData2, ReadWriteMappingCoordinates, lazyLoad: true);
 
             rw.ZlibData(ref zlibData3, rw =>
             {

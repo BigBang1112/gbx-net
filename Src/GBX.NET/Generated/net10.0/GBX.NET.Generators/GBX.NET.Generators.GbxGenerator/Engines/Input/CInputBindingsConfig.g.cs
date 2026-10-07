@@ -34,19 +34,60 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x13006000;
 
+    private string name = "";
+    [AppliedWithChunk<Chunk13006000>]
+    [AppliedWithChunk<Chunk13006002>]
+    public string Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
     private Binding[]? bindings;
     [AppliedWithChunk<Chunk13006000>]
     [AppliedWithChunk<Chunk13006003>]
+    [AppliedWithChunk<Chunk13006005>]
     public Binding[]? Bindings
     {
         get => this.bindings;
         set => this.bindings = value;
     }
 
+    private string[]? configuredDevices;
+    [AppliedWithChunk<Chunk13006001>]
+    public string[]? ConfiguredDevices
+    {
+        get => this.configuredDevices;
+        set => this.configuredDevices = value;
+    }
+
+    private int version;
+    /// <summary>
+    /// Binding configuration revision, compared with the input map's default revision.
+    /// </summary>
+    [AppliedWithChunk<Chunk13006002>]
+    public int Version
+    {
+        get => this.version;
+        set => this.version = value;
+    }
+
+    private string[]? configuredDeviceModels;
+    [AppliedWithChunk<Chunk13006004>]
+    public string[]? ConfiguredDeviceModels
+    {
+        get => this.configuredDeviceModels;
+        set => this.configuredDeviceModels = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CInputBindingsConfig)clone).name = context.Clone(this.name)!;
         ((CInputBindingsConfig)clone).bindings = context.CloneArray(this.bindings)!;
+        ((CInputBindingsConfig)clone).configuredDevices = context.CloneArray(this.configuredDevices)!;
+        ((CInputBindingsConfig)clone).version = context.Clone(this.version)!;
+        ((CInputBindingsConfig)clone).configuredDeviceModels = context.CloneArray(this.configuredDeviceModels)!;
     }
 
     public CInputBindingsConfig()
@@ -59,17 +100,15 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
         public override uint Id => 0x13006000;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk13006000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.name);
             rw.ArrayReadableWritable<Binding>(ref n.bindings!);
         }
     }
@@ -80,17 +119,15 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
         public override uint Id => 0x13006001;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk13006001)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
-            rw.ArrayId(ref U01!);
+            rw.ArrayId(ref n.configuredDevices!);
         }
     }
 
@@ -100,30 +137,26 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
         public override uint Id => 0x13006002;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public string? U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk13006002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk13006002)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
-            rw.Int32(ref U02);
+            rw.String(ref n.name);
+            rw.Int32(ref n.version);
         }
     }
 
     [Chunk(0x13006003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk13006003 : Chunk<CInputBindingsConfig>, IVersionable
     {
         public override uint Id => 0x13006003;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -134,17 +167,75 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayReadableWritable<Binding>(ref n.bindings!, version: Version+ 1);
+            rw.ArrayReadableWritable<Binding>(ref n.bindings!, version: 1);
+        }
+    }
+
+    /// <summary>
+    /// Native serializer restores the previous ID dictionary count afterward.
+    /// </summary>
+    [Chunk(0x13006004, "Native serializer restores the previous ID dictionary count afterward.")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk13006004 : SkippableChunk<CInputBindingsConfig>
+    {
+        public override uint Id => 0x13006004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// Native serializer restores the previous ID dictionary count afterward.
+    /// </summary>
+    [Chunk(0x13006005, "Native serializer restores the previous ID dictionary count afterward.")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk13006005 : SkippableChunk<CInputBindingsConfig>
+    {
+        public override uint Id => 0x13006005;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    [Chunk(0x13006006)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk13006006 : SkippableChunk<CInputBindingsConfig>
+    {
+        public override uint Id => 0x13006006;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int U01;
+        public int U02;
+        public int U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk13006006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk13006006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk13006006)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            U02 = rw.Int32((rw.Writer is null ? default : (0)));
+            U03 = rw.Int32((rw.Writer is null ? default : (0)));
         }
     }
 
     public partial class Binding : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int objectIndex;
+        public int ObjectIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.objectIndex;
+            set => this.objectIndex = value;
         }
 
         private string? deviceId;
@@ -154,25 +245,38 @@ public partial class CInputBindingsConfig : CMwNod, IClass
             set => this.deviceId = value;
         }
 
-        private int u02;
-        public int U02
+        private string? deviceModelId;
+        /// <summary>
+        /// CInputDevice::DeviceModelId, absent from chunks 0x000 and 0x003.
+        /// </summary>
+        public string? DeviceModelId
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.deviceModelId;
+            set => this.deviceModelId = value;
         }
 
-        private int isAnalog;
-        public int IsAnalog
+        private int subDeviceIndex;
+        public int SubDeviceIndex
         {
-            get => this.isAnalog;
-            set => this.isAnalog = value;
+            get => this.subDeviceIndex;
+            set => this.subDeviceIndex = value;
         }
 
-        private int u03;
-        public int U03
+        private int actionType;
+        /// <summary>
+        /// SInputActionDesc::EActionType, not a boolean.
+        /// </summary>
+        public int ActionType
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.actionType;
+            set => this.actionType = value;
+        }
+
+        private int playerNumber;
+        public int PlayerNumber
+        {
+            get => this.playerNumber;
+            set => this.playerNumber = value;
         }
 
         private string? name;
@@ -192,11 +296,12 @@ public partial class CInputBindingsConfig : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Binding)clone).u01 = context.Clone(this.u01)!;
+            ((Binding)clone).objectIndex = context.Clone(this.objectIndex)!;
             ((Binding)clone).deviceId = context.Clone(this.deviceId)!;
-            ((Binding)clone).u02 = context.Clone(this.u02)!;
-            ((Binding)clone).isAnalog = context.Clone(this.isAnalog)!;
-            ((Binding)clone).u03 = context.Clone(this.u03)!;
+            ((Binding)clone).deviceModelId = context.Clone(this.deviceModelId)!;
+            ((Binding)clone).subDeviceIndex = context.Clone(this.subDeviceIndex)!;
+            ((Binding)clone).actionType = context.Clone(this.actionType)!;
+            ((Binding)clone).playerNumber = context.Clone(this.playerNumber)!;
             ((Binding)clone).name = context.Clone(this.name)!;
         }
 
@@ -204,19 +309,25 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         {
             if (v == 0)
             {
-                rw.Int32(ref this.u01);
+                rw.Int32(ref this.objectIndex);
+                SubDeviceIndex = 0;
             }
 
             rw.Id(ref this.deviceId);
 
-            if (v >= 1)
+            if (v >= 3)
             {
-                rw.Int32(ref this.u02);
-                rw.Int32(ref this.u01);
+                rw.Id(ref this.deviceModelId);
             }
 
-            rw.Int32(ref this.isAnalog);
-            rw.Int32(ref this.u03);
+            if (v >= 1)
+            {
+                rw.Int32(ref this.subDeviceIndex);
+                rw.Int32(ref this.objectIndex);
+            }
+
+            rw.Int32(ref this.actionType);
+            rw.Int32(ref this.playerNumber);
             rw.String(ref this.name);
         }
 
@@ -239,6 +350,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         0x13006001 => new Chunk13006001(),
         0x13006002 => new Chunk13006002(),
         0x13006003 => new Chunk13006003(),
+        0x13006004 => new Chunk13006004(),
+        0x13006005 => new Chunk13006005(),
+        0x13006006 => new Chunk13006006(),
         _ => base.NewChunk(chunkId),
     };
 }

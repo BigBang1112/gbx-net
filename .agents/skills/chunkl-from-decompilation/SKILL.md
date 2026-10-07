@@ -10,8 +10,9 @@ Work on the requested classes and chunks. Read the repository instructions, exis
 Check programs in this order using GhidraMCP:
 
 1. `Maniaplanet.exe`
-2. `Trackmania.exe`
-3. `TmForever.exe`
+2. `TmForever.exe`
+3. `Trackmania.exe`
+4. `ManiaPlanetLogs.exe`
 
 Check chunk serializers (`Chunk` function implementations) to verify field order, widths, counts, references, defaults and version branches.
 
@@ -22,6 +23,7 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using the verified 
 - Create obsolete members where possible in the current architecture.
 - Use unknown field names in archives when meaning is unverified, remove the unknown naming from chunks.
 - Set defaults when found in the constructor.
+- Use comments to describe what it does, rather than how it is implemented.
 
 Add `- inherits <BaseClass>` when the class inherits from another class.
 

@@ -1,10 +1,225 @@
 CHmsLightMap 0x06021000
+- inherits: CMwNod
+
+0x000
+  CMwNod (external)
+  CMwNod (external)
+  CMwNod[10] (external)
+  CMwNod (external)
 
 0x001 [TMF, MP4, TM2020]
-  CPlugPointsInSphereOpt (external)
+  CPlugPointsInSphereOpt PointsInSphereOpt (external)
 
 0x002 [TMF, MP4, TM2020]
   CMwNod (external)
 
 0x003 [TMF, MP4, TM2020]
-  CHmsLightMapMood (external)
+  CHmsLightMapMood Mood (external)
+
+0x004 [TMF]
+  CMwNod (external)
+  CMwNod (external)
+  CMwNod[12] (external)
+  CMwNod (external)
+
+0x005
+  CMwNod (external)
+
+0x006
+  CPlugBitmap[3] BitmapLightSumBumpLegacy (external)
+
+0x007
+  CMwNod[5] (external)
+
+0x008
+  bool ClampDir_PosY = false
+
+0x009
+  bool UseHDR = false
+  if rw.Reader != null
+    if UseHDR
+      CompressMode = ECompressMode.Scale_sRGB_DXT1
+    else
+      CompressMode = ECompressMode.Ldr_DXT1
+
+0x00A // Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node
+  CMwNod (external)
+  CMwNod (external)
+  CMwNod[16] (external)
+  CMwNod (external)
+
+0x00B
+  CMwNod[7] (external)
+
+0x00C
+  CPlugBitmap BitmapSM_ColorPeeled (external)
+  CPlugBitmap BitmapLM_ILightInput (external)
+  CPlugBitmap BitmapLM_ILightDir (external)
+
+0x00D
+  CPlugBitmap BitmapSM_ColorPeeled (external)
+  CPlugBitmap BitmapLM_ILightInput (external)
+  CPlugBitmap BitmapLM_ILightDir (external)
+  uint // Discarded by the native reader
+
+0x00E [TM2020]
+  bool ClampAmb_PosY = false
+  bool ClampDir_PosY
+
+0x00F [TM2020]
+  CPlugBitmap BitmapSM_ColorPeeled (external)
+  CPlugBitmap BitmapLM_ILightInput (external)
+  CPlugBitmap BitmapLM_ILightDir (external)
+  uint
+  uint
+
+0x010
+  CMwNod (external)
+  CMwNod (external)
+  CMwNod[18] (external)
+  CMwNod (external)
+
+0x011
+  CMwNod[8] (external)
+
+0x012
+  bool SRGB = true // Native member: sRGB
+  CMwNod (external)
+
+0x013 [TM2020]
+  CPlugBitmapArray BitmapArrayLightSH (external)
+
+0x014 [TM2020]
+  CPlugBitmapArray BitmapLightSumBump (external)
+
+0x015
+  CMwNod[9] (external)
+
+0x016
+  CMwNod[10] (external)
+
+0x017 [TM2020]
+  bool UseHDR
+  bool SRGB
+  int<ECompressMode> CompressMode = ECompressMode.Ldr_DXT1
+
+0x018
+  CPlugBitmap BitmapSprite3x3_Light (external)
+  CPlugBitmap BitmapSprite_PosAndRadius (external)
+  CPlugBitmap BitmapSprite_ILightDir (external)
+  CMwNod[3] (external)
+
+0x019 [TM2020]
+  CPlugBitmap BitmapShadow (external)
+  CPlugBitmap (external)
+
+0x01A
+  CMwNod[3] (external)
+
+0x01B
+  CMwNod (external)
+  CPlugBitmap BitmapLM_LListUV (external)
+  CMwNod[2] (external)
+
+0x01C
+  bool StoreLDir0Legacy
+  if rw.Reader != null
+    if StoreLDir0Legacy
+      StoreLDir0 = EStoreLDir0.HalfPlusHalfCos
+    else
+      StoreLDir0 = EStoreLDir0.Sinc
+
+0x01D [TM2020]
+  bool IsSpriteLDirInAlpha = false
+
+0x01E
+  CMwNod[11] (external)
+
+0x01F
+  CMwNod (external)
+
+0x020
+  CPlugBitmap BitmapLM_LListW (external)
+  CMwNod[3] (external)
+
+0x021
+  CPlugBitmap BitmapLM_LListUV (external)
+  CPlugBitmap BitmapLM_LListW (external)
+  CMwNod[5] (external)
+
+0x022 [TM2020]
+  CMwNod (external)
+
+0x023 [TM2020]
+  CPlugBitmap BitmapSM_DepthToPeel (external)
+
+0x024 [TM2020]
+  CPlugBitmap BitmapProbeGeom_BBoxInvHDiag_ThroughBounce (external)
+
+0x025 [TM2020]
+  int<EStoreLDir0> StoreLDir0 = EStoreLDir0.Sinc
+
+0x026
+  CPlugBitmap BitmapLM_LocalDirect (external)
+
+0x027 [TM2020]
+  bool BackgroundUseClouds = false
+  uint GameTimerSeconds = 250
+
+0x028 [TM2020]
+  CPlugBitmap BitmapLM_LListUV (external)
+  CPlugBitmap BitmapLM_LListW (external)
+  CPlugBitmap BitmapLM_LocalDirect (external)
+  CMwNod[3] (external)
+
+0x029 [TM2020.v7]
+  version = 7
+  CMwNod (external) // Obsolete FID reference
+  v1+
+    CMwNod (external)
+  v2+
+    CMwNod (external)
+  v3+
+    CMwNod (external)
+  v4+
+    CMwNod (external)
+  v5+
+    CMwNod (external)
+  v6+
+    CPlugBitmap BitmapProbeGridAmbSV (external)
+  v7+
+    CPlugBitmap BitmapProbeGridAmbSV_Spread1 (external)
+
+0x02A
+  version = 5
+  CMwNod (external) // CPlugFilePHlsl
+  v1+
+    CMwNod (external) // CPlugFilePHlsl
+  v2+
+    CMwNod[3] (external) // CPlugFilePHlsl
+  v3+
+    uint
+  v4+
+    CMwNod (external)
+  v5+
+    CPlugFileGPU (external)
+
+0x02B [TM2020.v1]
+  version = 1
+  CPlugBitmap BitmapSprite3x3_Light (external)
+  CPlugBitmap BitmapSprite_PosAndRadius (external)
+  CPlugBitmap BitmapSprite_ILightDir (external)
+  v1+
+    CMwNod (external)
+  CMwNod[4] (external)
+
+enum ECompressMode
+  Ldr_DXT1
+  sRGB_Hyper_DXT1
+  Hyper_sRGB_DXT1
+  Scale_sRGB_DXT1
+
+enum EStoreLDir0
+  Sinc
+  HalfPlusHalfCos // Native label: 0.5+0.5*Cos
+  Full

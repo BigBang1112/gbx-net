@@ -1,66 +1,240 @@
 CHmsLightMapCache 0x06022000
+- inherits: CMwNod
+
+0x000
+  id ChallengeIdLegacy
+  int2[] MapSizesLegacy
+  int LightDirSampleCount = 25
+  int LightPntSampleCount = 25
+
+0x001
+  id ChallengeIdLegacy
+  int2[] MapSizesLegacy
+  bool
+  int LightAmbSampleCount = 32
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+
+0x002
+  id ChallengeIdLegacy
+  SMapOld1[] MapsLegacy
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+
+0x003 (base: 0x002)
+  base
+  int<ESortMode> SortMode
+
+0x004 (base: 0x003)
+  base
+  int<EAllocMode> AllocMode
+
+0x005
+  id ChallengeIdLegacy
+  id Decoration
+  SMapOld1[] MapsLegacy
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+
+0x006
+  id ChallengeIdLegacy
+  id Decoration
+  SMapOld1[] MapsLegacy
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int
+
+0x007 [TMF]
+  id ChallengeIdLegacy
+  id Decoration
+  SMap[] Maps
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int
+
+0x008 (skippable)
+  id ChallengeIdLegacy
+  id Decoration
+  SMap[] Maps
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int
+  bool HasBumpLegacy
+
+0x009 (skippable, base: 0x008)
+  base
+  float MaxHDRLegacy
+
+0x00A (skippable)
+  id ChallengeIdLegacy
+  id Decoration
+  SMap[] Maps
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int AllocModeT3
+  int
+  bool HasBumpLegacy
+  float MaxHDRLegacy
 
 0x00B (skippable) [MP4, TM2020]
-  int[] MapT3s
+  float[] MapT3s // SMapT3 contains TotalLmSurfaceMeter, stored as raw float records.
+
+0x00C (skippable, base: 0x00A)
+  base
+  int<ECompressMode> CompressMode
+
+0x00D (skippable)
+  int<EQuality> Quality = EQuality.Default
+
+0x00E (skippable)
+  int QualityLegacy
+  int CanFlipU = 1
 
 0x00F (skippable) [MP4, TM2020]
   int<EQuality> Quality
+  int CanFlipU
+
+0x010 (skippable)
+  id ChallengeIdLegacy
+  id Decoration
+  SMap[] Maps
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int AllocModeT3
   int
+  bool HasBumpLegacy
+  float MaxHDRLegacy
+  int<ECompressMode> CompressMode
+  int BumpNorm = 1
+
+0x011 (skippable)
+  bool IsOnlyIndirectDir0
+
+0x012 (skippable)
+  bool IsSpriteLDirInAlpha
 
 0x013 (skippable) [MP4, TM2020]
-  bool
-  bool
-  filetime? TimeWrite
+  bool IsOnlyIndirectDir0
+  bool IsSpriteLDirInAlpha
+  filetime? TimeWriteMostRecentSolid
 
-0x015 (skippable) [MP4, TM2020]
+0x014 (skippable)
+  version
+  SMap[] Maps
+  bool
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
+  float
+  float
+  int<ESortMode> SortMode
+  int<EAllocMode> AllocMode
+  int AllocModeT3
+  float MaxHDRLegacy
+  int<ECompressMode> CompressMode
+  int BumpNorm
+  v1=
+    int MapperTexelCountX = 2048
+  v2+
+    SMapping Mapping
+  v4+
+    bool
+  v5+
+    float MaxHDRMoodLegacy
+  v6+
+    bool SpriteOriginY_WasWronglyTop = true
+
+0x015 (skippable) [MP4.v4, TM2020.v5]
   version
   ulong LightmapCacheUid
   id Collection
   id Decoration
-  int
+  int<EBump> BumpMode = EBump.None
   v3-
-    bool
+    bool HasBumpLegacy
   v2+
-    int
-    timeofday?
+    int TimeOfDayVersion
+    timeofday? TimeOfDay
     v3+
-      int
-      timeofday?
+      int DynamicTimeVersion
+      uint DynamicTime
       v5+
-        string
+        string ChallengeMapUid
 
 0x016 (skippable) [MP4, TM2020]
-  int<EVersion> Version
+  int<EVersion> Version = EVersion._2011_07_19_Beta1
 
 0x017 (skippable) [MP4, TM2020]
   int Decal2D
   int Decal3D
 
 0x018 (skippable) [MP4, TM2020]
-  ulong
+  filetime? TimeWriteMostRecentBlock
 
 0x019 (skippable) [MP4, TM2020]
-  int<EQualityVer> QualityVer
+  int<EQualityVer> QualityVer = EQualityVer.BounceShadowFiltered
 
-0x01A (skippable) [MP4, TM2020]
+0x01A (skippable) [MP4.v9, TM2020.v13]
   version
   SMap[] Maps
-  int AmbSample
-  int DirSamples
-  int PntSamples
+  int LightAmbSampleCount
+  int LightDirSampleCount
+  int LightPntSampleCount
   int<ESortMode> SortMode
   int<EAllocMode> AllocMode
-  int
+  int AllocModeT3
   int<ECompressMode> CompressMode
-  int
+  int BumpNorm
   v6+
-    int<EBump> Bump
+    int<EBump> Bump = EBump.None
   v2-
-    float
-    float
-    float
-    float
-    float
+    float MaxHDRLegacy
+    float MaxHDRMoodLegacy
+    float BounceFactorLegacy
+    float SkyFactorLegacy
+    bool SkyUseCloudsLegacy
   v3+
     SFrame[] Frames
   bool
@@ -69,7 +243,7 @@ CHmsLightMapCache 0x06022000
   v1+
     int<EPlugGpuPlatform> GpuPlatform
     v2=
-      vec3_6
+      vec3_6 LAmbientLegacy
     v5+
       float AllocatedTexelByMeter
       v11+
@@ -143,47 +317,75 @@ enum EPlugGpuPlatform
   pf5
   pf6
 
+archive SMapOld1
+  int2 BlockPerMap
+  int UsedBlockCount
+
 archive SMap
-  int
-  int
-  int
-  int
-  int
+  int2 BlockPerMap
+  int UsedBlockCount
+  int2 OutsideBlockCount
 
 archive SFrame
-  int
-  timeofday?
+  int TimeOfDayVersion
+  timeofday? TimeOfDay
   v10+
-    float
-  float
-  float
-  float
-  float
-  bool
-  vec3_6
+    float ReplayTime
+  float MaxHDR_Mood
+  float MaxHDR
+  float BounceFactor = -1
+  float SkyFactor = -1
+  bool SkyUseClouds = true
+  vec3_6 LAmbient
   v4+
-    int
-    int
-    v12+
-      int = 2
-    v6+
-      v7-
-        float
-        float
-        float
-    v8=
-      float
-      float
-      float
-      float
-    v9+
-      float
-      float
-      float
-    v7+
-      int
+    bool StoreLAmbient
+    v12-
+      bool StoreLocalLightsLegacy
+    v13+
+      int<ELocalLightStorage> LocalLight_Storage
+  v12+
+    int<ELocalLightSwitch> LocalLight_Switch = ELocalLightSwitch.Unknown
+  v6+
+    v7-
+      float U01
+      float U02
+      float U03
+  v8=
+    float U04
+    float U05
+    float U06
+    float U07
+  v9+
+    vec3 MaxHDR_HBasisScaled234
+  v7+
+    int<EBump> Bump = EBump.None
+  v14+
+    byte U08
+
+enum ELocalLightStorage
+  None
+  All
+  OnlyRgbAccum
+
+enum ELocalLightSwitch
+  On
+  Off
+  Unknown
 
 archive SMapping
+  version
+  v8+ (archive)
+    int U01
+  int U02
+  int U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  v6+ (archive)
+    int U10 = 1
 
 archive Frame
   data Data

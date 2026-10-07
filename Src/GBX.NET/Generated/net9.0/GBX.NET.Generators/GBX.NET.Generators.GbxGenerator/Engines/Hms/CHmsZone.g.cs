@@ -42,6 +42,52 @@ public partial class CHmsZone : CMwNod, IClass
         set => this.fogPlanes = value;
     }
 
+    private Vec3 fogRGB = (1, 1, 1);
+    /// <summary>
+    /// sRGB, verified by FogSetColorLinear converting into this field.
+    /// </summary>
+    [AppliedWithChunk<Chunk06004002>]
+    public Vec3 FogRGB
+    {
+        get => this.fogRGB;
+        set => this.fogRGB = value;
+    }
+
+    private float fogLinearStart;
+    [AppliedWithChunk<Chunk06004002>]
+    public float FogLinearStart
+    {
+        get => this.fogLinearStart;
+        set => this.fogLinearStart = value;
+    }
+
+    private float fogLinearEnd = 1;
+    [AppliedWithChunk<Chunk06004002>]
+    public float FogLinearEnd
+    {
+        get => this.fogLinearEnd;
+        set => this.fogLinearEnd = value;
+    }
+
+    private float fogExpDensity = 1;
+    [AppliedWithChunk<Chunk06004002>]
+    public float FogExpDensity
+    {
+        get => this.fogExpDensity;
+        set => this.fogExpDensity = value;
+    }
+
+    private uint fogFlags = 6;
+    /// <summary>
+    /// Bit 0: FogByVertex; bits 1-2: FogFormula; bit 3: FogSpace.
+    /// </summary>
+    [AppliedWithChunk<Chunk06004002>]
+    public uint FogFlags
+    {
+        get => this.fogFlags;
+        set => this.fogFlags = value;
+    }
+
     private bool mRIsForced;
     [AppliedWithChunk<Chunk06004003>]
     public bool MRIsForced
@@ -113,6 +159,11 @@ public partial class CHmsZone : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CHmsZone)clone).fogPlanes = context.CloneArray(this.fogPlanes)!;
+        ((CHmsZone)clone).fogRGB = context.Clone(this.fogRGB)!;
+        ((CHmsZone)clone).fogLinearStart = context.Clone(this.fogLinearStart)!;
+        ((CHmsZone)clone).fogLinearEnd = context.Clone(this.fogLinearEnd)!;
+        ((CHmsZone)clone).fogExpDensity = context.Clone(this.fogExpDensity)!;
+        ((CHmsZone)clone).fogFlags = context.Clone(this.fogFlags)!;
         ((CHmsZone)clone).mRIsForced = context.Clone(this.mRIsForced)!;
         ((CHmsZone)clone).mRPoint = context.Clone(this.mRPoint)!;
         ((CHmsZone)clone).mRNormal = context.Clone(this.mRNormal)!;
@@ -121,28 +172,52 @@ public partial class CHmsZone : CMwNod, IClass
         ((CHmsZone)clone).bitmapCubeReflectHdrAlpha2 = context.Clone(this.bitmapCubeReflectHdrAlpha2)!;
     }
 
+    [AppliedWithChunk<Chunk06004002>]
+    public bool FogByVertex
+    {
+        get => (FogFlags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                FogFlags = FogFlags| 1;
+            }
+            else
+            {
+                FogFlags = FogFlags& 0xFFFFFFFE;
+            }
+        }
+    }
+
     public CHmsZone()
     {
     }
 
-    [Chunk(0x06004002)]
+    /// <summary>
+    /// GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.
+    /// </summary>
+    [Chunk(0x06004002, "GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004002 : Chunk<CHmsZone>
     {
         public override uint Id => 0x06004002;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk06004002)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef_deprec<CHmsFogPlane>(ref n.fogPlanes!);
-            rw.Data(ref U01!, 28);
+            n.FogFlags = n.FogFlags& 0xF;
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            rw.UInt32(ref n.fogFlags);
+            n.FogFlags = n.FogFlags& 0xF;
         }
     }
 
@@ -223,6 +298,20 @@ public partial class CHmsZone : CMwNod, IClass
             rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHardSpecA, ref n.bitmapCubeReflectHardSpecAFile);
             rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHdrAlpha2, ref n.bitmapCubeReflectHdrAlpha2File);
         }
+    }
+
+    public enum EGxFogFormula
+    {
+        None,
+        Exp,
+        Exp2,
+        Linear,
+    }
+
+    public enum EGxFogSpace
+    {
+        CameraFarZ,
+        World,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

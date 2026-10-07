@@ -34,9 +34,76 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06023000;
 
+    private Vec2 ambientRange = (0.35f, 1);
+    /// <summary>
+    /// GPU constant uses Y-X as the ambient scale and X as the ambient offset
+    /// </summary>
+    [AppliedWithChunk<Chunk06023000>]
+    [AppliedWithChunk<Chunk06023001>]
+    public Vec2 AmbientRange
+    {
+        get => this.ambientRange;
+        set => this.ambientRange = value;
+    }
+
+    private float directionalScale = 1;
+    /// <summary>
+    /// Second scale component of FxLightGenP_ScaleAD_TransDA
+    /// </summary>
+    [AppliedWithChunk<Chunk06023000>]
+    [AppliedWithChunk<Chunk06023001>]
+    public float DirectionalScale
+    {
+        get => this.directionalScale;
+        set => this.directionalScale = value;
+    }
+
+    private float maxHDR = 3;
+    [AppliedWithChunk<Chunk06023001>]
+    [AppliedWithChunk<Chunk06023002>]
+    [AppliedWithChunk<Chunk06023003>]
+    [AppliedWithChunk<Chunk06023004>]
+    public float MaxHDR
+    {
+        get => this.maxHDR;
+        set => this.maxHDR = value;
+    }
+
+    private float bounceFactor = 1;
+    [AppliedWithChunk<Chunk06023003>]
+    [AppliedWithChunk<Chunk06023004>]
+    public float BounceFactor
+    {
+        get => this.bounceFactor;
+        set => this.bounceFactor = value;
+    }
+
+    private float skyFactor = 1;
+    [AppliedWithChunk<Chunk06023003>]
+    [AppliedWithChunk<Chunk06023004>]
+    public float SkyFactor
+    {
+        get => this.skyFactor;
+        set => this.skyFactor = value;
+    }
+
+    private bool skyUseClouds = true;
+    [AppliedWithChunk<Chunk06023004>]
+    public bool SkyUseClouds
+    {
+        get => this.skyUseClouds;
+        set => this.skyUseClouds = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CHmsLightMapMood)clone).ambientRange = context.Clone(this.ambientRange)!;
+        ((CHmsLightMapMood)clone).directionalScale = context.Clone(this.directionalScale)!;
+        ((CHmsLightMapMood)clone).maxHDR = context.Clone(this.maxHDR)!;
+        ((CHmsLightMapMood)clone).bounceFactor = context.Clone(this.bounceFactor)!;
+        ((CHmsLightMapMood)clone).skyFactor = context.Clone(this.skyFactor)!;
+        ((CHmsLightMapMood)clone).skyUseClouds = context.Clone(this.skyUseClouds)!;
     }
 
     public CHmsLightMapMood()
@@ -49,35 +116,144 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     {
         public override uint Id => 0x06023000;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
+        public float U01 = 2;
+        public float U02 = 2;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk06023000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk06023000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk06023000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk06023000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk06023000)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
             rw.Single(ref U02);
+            rw.Vec2(ref n.ambientRange);
+            rw.Single(ref n.directionalScale);
+        }
+    }
+
+    /// <summary>
+    /// Legacy ManiaPlanet payload; not advertised by Trackmania's GetChunkInfo
+    /// </summary>
+    [Chunk(0x06023001, "Legacy ManiaPlanet payload; not advertised by Trackmania's GetChunkInfo")]
+    public partial class Chunk06023001 : Chunk<CHmsLightMapMood>
+    {
+        public override uint Id => 0x06023001;
+        public float U01 = 2;
+        public float U02 = 2;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06023001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06023001)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Vec2(ref n.ambientRange);
+            rw.Single(ref n.directionalScale);
+            rw.Single(ref n.maxHDR);
+        }
+    }
+
+    [Chunk(0x06023002)]
+    public partial class Chunk06023002 : Chunk<CHmsLightMapMood>
+    {
+        public override uint Id => 0x06023002;
+        public float U01 = 1;
+        public float U02 = 0;
+        public float U03 = 0;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06023002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06023002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06023002)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.maxHDR);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
             rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
+        }
+    }
+
+    [Chunk(0x06023003)]
+    public partial class Chunk06023003 : Chunk<CHmsLightMapMood>
+    {
+        public override uint Id => 0x06023003;
+        public float U01 = 1;
+        public float U02 = 0;
+        public float U03 = 0;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06023003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06023003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06023003)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.maxHDR);
+            rw.Single(ref n.bounceFactor);
+            rw.Single(ref n.skyFactor);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    [Chunk(0x06023004)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    public partial class Chunk06023004 : Chunk<CHmsLightMapMood>, IVersionable
+    {
+        public override uint Id => 0x06023004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 0;
+        public float U01 = 1;
+        public float U02 = 0;
+        public float U03 = 0;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk06023004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk06023004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk06023004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk06023004)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Single(ref n.maxHDR);
+            rw.Single(ref n.bounceFactor);
+            rw.Single(ref n.skyFactor);
+            rw.Boolean(ref n.skyUseClouds);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x06023000 => new Chunk06023000(),
+        0x06023001 => new Chunk06023001(),
+        0x06023002 => new Chunk06023002(),
+        0x06023003 => new Chunk06023003(),
+        0x06023004 => new Chunk06023004(),
         _ => base.NewChunk(chunkId),
     };
 }
