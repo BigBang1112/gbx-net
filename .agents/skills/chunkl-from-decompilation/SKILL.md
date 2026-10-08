@@ -27,10 +27,15 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using the verified 
 - Update member names when the exact names are known or if better meaning is found.
 - Create obsolete members where possible in the current architecture.
 - Use unknown field names in archives when meaning is unverified, remove the unknown naming from chunks.
-- Set defaults when found in the constructor.
-- Use comments to describe what it does, rather than how it is implemented. On chunks, use short informative description, such as "legacy tracks and name". Do not use period for very short descriptions.
+- Set defaults when found in the constructor. Ignore them if it's the default value of the type.
+- Use comments to describe what it does, rather than how it is implemented. On chunks, use short informative description, such as "legacy tracks and name". Do not use period for very short descriptions. In case the chunk has just one member, use the member name as the comment.
+- Prefer signed types for integer fields unless there is a specific reason to use unsigned, such as flags.
 
 Add `- inherits <BaseClass>` when the class inherits from another class, except for `CMwNod`.
+
+Do not change generator behaviour unless absolutely necessary, but also do not transition to C# code right away if you identify a problem.
+
+Build using `.agents/generator-verification.md`, inspect the diff, and use relevant fixtures when available. Report the binaries checked, changed chunks, verification and unresolved evidence.
 
 ## Game versions
 
@@ -42,9 +47,7 @@ Use the verified `GetChunkInfo` write bit (`0x02`) to add the current game's qua
 - Use the skippable bit (`0x10`) independently of write support: `0x13` means a skippable writer, while `0x11` means a skippable reader only.
 - Add `(skippable)` accordingly.
 
-Do not change generator behaviour unless absolutely necessary, but also do not transition to C# code right away if you identify a problem.
-
-Build using `.agents/generator-verification.md`, inspect the diff, and use relevant fixtures when available. Report the binaries checked, changed chunks, verification and unresolved evidence.
+Enter individual chunk versions if the chunk is versioned, including version 0.
 
 - For `Trackmania.exe`, fill `TM2020`.
 - For `ManiaPlanetLogs.exe`, fill `MP4`.

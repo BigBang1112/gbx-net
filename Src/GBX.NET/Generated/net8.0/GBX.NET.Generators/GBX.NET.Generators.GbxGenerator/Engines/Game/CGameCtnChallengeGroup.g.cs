@@ -34,15 +34,44 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0308F000;
 
-    private string? name;
-    [AppliedWithChunk<Chunk0308F002>]
-    public string? Name
+    private int nbBronzeRequired;
+    [AppliedWithChunk<Chunk0308F000>]
+    [AppliedWithChunk<Chunk0308F001>]
+    public int NbBronzeRequired
     {
-        get => this.name;
-        set => this.name = value;
+        get => this.nbBronzeRequired;
+        set => this.nbBronzeRequired = value;
+    }
+
+    private int nbSilverRequired;
+    [AppliedWithChunk<Chunk0308F000>]
+    [AppliedWithChunk<Chunk0308F001>]
+    public int NbSilverRequired
+    {
+        get => this.nbSilverRequired;
+        set => this.nbSilverRequired = value;
+    }
+
+    private int nbGoldRequired;
+    [AppliedWithChunk<Chunk0308F000>]
+    [AppliedWithChunk<Chunk0308F001>]
+    public int NbGoldRequired
+    {
+        get => this.nbGoldRequired;
+        set => this.nbGoldRequired = value;
+    }
+
+    private List<External<CGameCtnChallenge>>? mapFiles;
+    [AppliedWithChunk<Chunk0308F000>]
+    [AppliedWithChunk<Chunk0308F006>]
+    public List<External<CGameCtnChallenge>>? MapFiles
+    {
+        get => this.mapFiles;
+        set => this.mapFiles = value;
     }
 
     private List<MapInfo>? mapInfos;
+    [AppliedWithChunk<Chunk0308F001>]
     [AppliedWithChunk<Chunk0308F006>]
     [AppliedWithChunk<Chunk0308F00A>]
     [AppliedWithChunk<Chunk0308F00B>]
@@ -52,15 +81,219 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.mapInfos = value;
     }
 
+    private string? name;
+    [AppliedWithChunk<Chunk0308F002>]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private int allBronzeValue;
+    /// <summary>
+    /// TM10 and TMPU initialize this to 100
+    /// </summary>
+    [AppliedWithChunk<Chunk0308F003>]
+    public int AllBronzeValue
+    {
+        get => this.allBronzeValue;
+        set => this.allBronzeValue = value;
+    }
+
+    private int allSilverValue;
+    /// <summary>
+    /// TM10 and TMPU initialize this to 200
+    /// </summary>
+    [AppliedWithChunk<Chunk0308F003>]
+    public int AllSilverValue
+    {
+        get => this.allSilverValue;
+        set => this.allSilverValue = value;
+    }
+
+    private int allGoldValue;
+    /// <summary>
+    /// TM10 and TMPU initialize this to 300
+    /// </summary>
+    [AppliedWithChunk<Chunk0308F003>]
+    public int AllGoldValue
+    {
+        get => this.allGoldValue;
+        set => this.allGoldValue = value;
+    }
+
+    private List<External<CMwNod>>? files;
+    [AppliedWithChunk<Chunk0308F004>]
+    public List<External<CMwNod>>? Files
+    {
+        get => this.files;
+        set => this.files = value;
+    }
+
+    private CGameCtnCampaign? linkedCampaign;
+    [AppliedWithChunk<Chunk0308F005>]
+    public CGameCtnCampaign? LinkedCampaign
+    {
+        get => this.linkedCampaign;
+        set => this.linkedCampaign = value;
+    }
+
+    private bool usesMapFiles = false;
+    [AppliedWithChunk<Chunk0308F006>]
+    public bool UsesMapFiles
+    {
+        get => this.usesMapFiles;
+        set => this.usesMapFiles = value;
+    }
+
+    private int nbBronzeMedalRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbBronzeMedalRequired
+    {
+        get => this.nbBronzeMedalRequired;
+        set => this.nbBronzeMedalRequired = value;
+    }
+
+    private int nbSilverMedalRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbSilverMedalRequired
+    {
+        get => this.nbSilverMedalRequired;
+        set => this.nbSilverMedalRequired = value;
+    }
+
+    private int nbGoldMedalRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbGoldMedalRequired
+    {
+        get => this.nbGoldMedalRequired;
+        set => this.nbGoldMedalRequired = value;
+    }
+
+    private int nbBronzeCupRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbBronzeCupRequired
+    {
+        get => this.nbBronzeCupRequired;
+        set => this.nbBronzeCupRequired = value;
+    }
+
+    private int nbSilverCupRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbSilverCupRequired
+    {
+        get => this.nbSilverCupRequired;
+        set => this.nbSilverCupRequired = value;
+    }
+
+    private int nbGoldCupRequired;
+    [AppliedWithChunk<Chunk0308F007>]
+    public int NbGoldCupRequired
+    {
+        get => this.nbGoldCupRequired;
+        set => this.nbGoldCupRequired = value;
+    }
+
+    private CGameCtnCollection? associatedCollection;
+    [AppliedWithChunk<Chunk0308F008>]
+    public CGameCtnCollection? AssociatedCollection
+    {
+        get => this.associatedCollectionFile?.GetNode(ref this.associatedCollection) ?? this.associatedCollection;
+        set => this.associatedCollection = value;
+    }
+    private Components.GbxRefTableFile? associatedCollectionFile;
+
+    public Components.GbxRefTableFile? AssociatedCollectionFile
+    {
+        get => associatedCollectionFile;
+        set => associatedCollectionFile = value;
+    }
+
+    public CGameCtnCollection? GetAssociatedCollection(GbxReadSettings settings = default, bool exceptions = false) => associatedCollectionFile?.GetNode(ref associatedCollection, settings, exceptions) ?? associatedCollection;
+
+    private string? associatedCollectionId;
+    [AppliedWithChunk<Chunk0308F009>]
+    public string? AssociatedCollectionId
+    {
+        get => this.associatedCollectionId;
+        set => this.associatedCollectionId = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnChallengeGroup)clone).name = context.Clone(this.name)!;
+        ((CGameCtnChallengeGroup)clone).nbBronzeRequired = context.Clone(this.nbBronzeRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbSilverRequired = context.Clone(this.nbSilverRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbGoldRequired = context.Clone(this.nbGoldRequired)!;
+        ((CGameCtnChallengeGroup)clone).mapFiles = context.CloneList(this.mapFiles)!;
         ((CGameCtnChallengeGroup)clone).mapInfos = context.CloneList(this.mapInfos)!;
+        ((CGameCtnChallengeGroup)clone).name = context.Clone(this.name)!;
+        ((CGameCtnChallengeGroup)clone).allBronzeValue = context.Clone(this.allBronzeValue)!;
+        ((CGameCtnChallengeGroup)clone).allSilverValue = context.Clone(this.allSilverValue)!;
+        ((CGameCtnChallengeGroup)clone).allGoldValue = context.Clone(this.allGoldValue)!;
+        ((CGameCtnChallengeGroup)clone).files = context.CloneList(this.files)!;
+        ((CGameCtnChallengeGroup)clone).linkedCampaign = context.Clone(this.linkedCampaign)!;
+        ((CGameCtnChallengeGroup)clone).usesMapFiles = context.Clone(this.usesMapFiles)!;
+        ((CGameCtnChallengeGroup)clone).nbBronzeMedalRequired = context.Clone(this.nbBronzeMedalRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbSilverMedalRequired = context.Clone(this.nbSilverMedalRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbGoldMedalRequired = context.Clone(this.nbGoldMedalRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbBronzeCupRequired = context.Clone(this.nbBronzeCupRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbSilverCupRequired = context.Clone(this.nbSilverCupRequired)!;
+        ((CGameCtnChallengeGroup)clone).nbGoldCupRequired = context.Clone(this.nbGoldCupRequired)!;
+        ((CGameCtnChallengeGroup)clone).associatedCollection = context.Clone(this.associatedCollection)!;
+        ((CGameCtnChallengeGroup)clone).associatedCollectionId = context.Clone(this.associatedCollectionId)!;
     }
 
     public CGameCtnChallengeGroup()
     {
+    }
+
+    /// <summary>
+    /// medal requirements + map files
+    /// </summary>
+    [Chunk(0x0308F000, "medal requirements + map files")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0308F000 : Chunk<CGameCtnChallengeGroup>
+    {
+        public override uint Id => 0x0308F000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbBronzeRequired);
+            rw.Int32(ref n.nbSilverRequired);
+            rw.Int32(ref n.nbGoldRequired);
+            rw.ListNodeRef<CGameCtnChallenge>(ref n.mapFiles!);
+        }
+    }
+
+    /// <summary>
+    /// medal requirements + map identifiers
+    /// </summary>
+    [Chunk(0x0308F001, "medal requirements + map identifiers ")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0308F001 : Chunk<CGameCtnChallengeGroup>
+    {
+        public override uint Id => 0x0308F001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbBronzeRequired);
+            rw.Int32(ref n.nbSilverRequired);
+            rw.Int32(ref n.nbGoldRequired);
+            rw.ListReadableWritable<MapInfo>(ref n.mapInfos!);
+        }
     }
 
     /// <summary>
@@ -84,148 +317,171 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0308F003)]
+    /// <summary>
+    /// medal values
+    /// </summary>
+    [Chunk(0x0308F003, "medal values")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308F003 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F003)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.allBronzeValue);
+            rw.Int32(ref n.allSilverValue);
+            rw.Int32(ref n.allGoldValue);
         }
     }
 
-    [Chunk(0x0308F004)]
+    /// <summary>
+    /// legacy file list
+    /// </summary>
+    [Chunk(0x0308F004, "legacy file list")]
     public partial class Chunk0308F004 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F004;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-
-            if (U01> 0)
-            {
-                throw new NotSupportedException();
-            }
+            rw.ListNodeRef<CMwNod>(ref n.files!);
         }
     }
 
-    [Chunk(0x0308F005)]
+    /// <summary>
+    /// LinkedCampaign
+    /// </summary>
+    [Chunk(0x0308F005, "LinkedCampaign")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308F005 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F005;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F005)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef<CGameCtnCampaign>(ref n.linkedCampaign);
         }
     }
 
-    [Chunk(0x0308F006)]
+    /// <summary>
+    /// map identifiers or map files
+    /// </summary>
+    [Chunk(0x0308F006, "map identifiers or map files")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk0308F006 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F006;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F006)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.ListReadableWritable<MapInfo>(ref n.mapInfos!);
+            rw.Boolean(ref n.usesMapFiles);
+
+            if (n.UsesMapFiles)
+            {
+                rw.ListNodeRef<CGameCtnChallenge>(ref n.mapFiles!);
+            }
+            else
+            {
+                rw.ListReadableWritable<MapInfo>(ref n.mapInfos!);
+            }
         }
     }
 
-    [Chunk(0x0308F007)]
+    /// <summary>
+    /// medal and cup requirements
+    /// </summary>
+    [Chunk(0x0308F007, "medal and cup requirements")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308F007 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F007;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0308F007)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0308F007)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0308F007)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0308F007)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0308F007)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
+            rw.Int32(ref n.nbBronzeMedalRequired);
+            rw.Int32(ref n.nbSilverMedalRequired);
+            rw.Int32(ref n.nbGoldMedalRequired);
+            rw.Int32(ref n.nbBronzeCupRequired);
+            rw.Int32(ref n.nbSilverCupRequired);
+            rw.Int32(ref n.nbGoldCupRequired);
         }
     }
 
-    [Chunk(0x0308F009)]
+    /// <summary>
+    /// AssociatedCollection
+    /// </summary>
+    [Chunk(0x0308F008, "AssociatedCollection")]
+    [ChunkGameVersion(GameVersion.TMSX)]
+    public partial class Chunk0308F008 : Chunk<CGameCtnChallengeGroup>
+    {
+        public override uint Id => 0x0308F008;
+        public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnCollection>(ref n.associatedCollection, ref n.associatedCollectionFile);
+        }
+    }
+
+    /// <summary>
+    /// AssociatedCollectionId
+    /// </summary>
+    [Chunk(0x0308F009, "AssociatedCollectionId")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308F009 : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F009;
         public override GameVersion GameVersion => GameVersion.TMNESWC;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308F009)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            rw.Id(ref n.associatedCollectionId);
         }
     }
 
-    [Chunk(0x0308F00A)]
+    /// <summary>
+    /// legacy map identifiers
+    /// </summary>
+    [Chunk(0x0308F00A, "legacy map identifiers")]
     public partial class Chunk0308F00A : Chunk<CGameCtnChallengeGroup>
     {
         public override uint Id => 0x0308F00A;
@@ -241,13 +497,16 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0308F00B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// map identifiers + file paths
+    /// </summary>
+    [Chunk(0x0308F00B, "map identifiers + file paths")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1, 1)]
     public partial class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>, IVersionable
     {
         public override uint Id => 0x0308F00B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -278,11 +537,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
             set => this.filePath = value;
         }
 
-        private bool u01;
-        public bool U01
+        private bool isTestReportSent;
+        public bool IsTestReportSent
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.isTestReportSent;
+            set => this.isTestReportSent = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -297,7 +556,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         {
             ((MapInfo)clone).metadata = context.Clone(this.metadata)!;
             ((MapInfo)clone).filePath = context.Clone(this.filePath)!;
-            ((MapInfo)clone).u01 = context.Clone(this.u01)!;
+            ((MapInfo)clone).isTestReportSent = context.Clone(this.isTestReportSent)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -309,12 +568,9 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
                 rw.String(ref this.filePath);
             }
 
-            if (v >= 1)
+            if (v >= 1 && v <= 2)
             {
-                if (v <= 2)
-                {
-                    rw.Boolean(ref this.u01);
-                }
+                rw.Boolean(ref this.isTestReportSent);
             }
         }
 
@@ -333,12 +589,15 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0308F000 => new Chunk0308F000(),
+        0x0308F001 => new Chunk0308F001(),
         0x0308F002 => new Chunk0308F002(),
         0x0308F003 => new Chunk0308F003(),
         0x0308F004 => new Chunk0308F004(),
         0x0308F005 => new Chunk0308F005(),
         0x0308F006 => new Chunk0308F006(),
         0x0308F007 => new Chunk0308F007(),
+        0x0308F008 => new Chunk0308F008(),
         0x0308F009 => new Chunk0308F009(),
         0x0308F00A => new Chunk0308F00A(),
         0x0308F00B => new Chunk0308F00B(),

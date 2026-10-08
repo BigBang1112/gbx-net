@@ -82,7 +82,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorTime = value;
     }
 
-    private TimeInt32 timeLimit;
+    [AppliedWithChunk<Chunk0305B006>]
+    public partial int[]? Items { get; set; }
+
+    private TimeInt32 timeLimit = new TimeInt32(60000);
+    [AppliedWithChunk<Chunk0305B007>]
     [AppliedWithChunk<Chunk0305B008>]
     [AppliedWithChunk<Chunk0305B00A>]
     public TimeInt32 TimeLimit
@@ -100,16 +104,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorScore = value;
     }
 
-    private CGameCtnGhost? raceValidateGhost;
-    [AppliedWithChunk<Chunk0305B00D>]
-    [AppliedWithChunk<Chunk0305B00F>]
-    public CGameCtnGhost? RaceValidateGhost
-    {
-        get => this.raceValidateGhost;
-        set => this.raceValidateGhost = value;
-    }
+    [AppliedWithChunk<Chunk0305B00B>]
+    public partial CGameCtnGhost?[]? LegacyValidateGhosts { get; set; }
 
     private string? mapType;
+    [AppliedWithChunk<Chunk0305B00C>]
     [AppliedWithChunk<Chunk0305B00E>]
     public string? MapType
     {
@@ -118,11 +117,21 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private string? mapStyle;
+    [AppliedWithChunk<Chunk0305B00C>]
     [AppliedWithChunk<Chunk0305B00E>]
     public string? MapStyle
     {
         get => this.mapStyle;
         set => this.mapStyle = value;
+    }
+
+    private CGameCtnGhost? raceValidateGhost;
+    [AppliedWithChunk<Chunk0305B00D>]
+    [AppliedWithChunk<Chunk0305B00F>]
+    public CGameCtnGhost? RaceValidateGhost
+    {
+        get => this.raceValidateGhost;
+        set => this.raceValidateGhost = value;
     }
 
     private bool isValidatedForScriptModes;
@@ -143,10 +152,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         ((CGameCtnChallengeParameters)clone).authorTime = context.Clone(this.authorTime)!;
         ((CGameCtnChallengeParameters)clone).timeLimit = context.Clone(this.timeLimit)!;
         ((CGameCtnChallengeParameters)clone).authorScore = context.Clone(this.authorScore)!;
-        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
         ((CGameCtnChallengeParameters)clone).mapType = context.Clone(this.mapType)!;
         ((CGameCtnChallengeParameters)clone).mapStyle = context.Clone(this.mapStyle)!;
+        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
         ((CGameCtnChallengeParameters)clone).isValidatedForScriptModes = context.Clone(this.isValidatedForScriptModes)!;
+        ((CGameCtnChallengeParameters)clone).items = context.CloneArray(this.items)!;
+        ((CGameCtnChallengeParameters)clone).legacyValidateGhosts = context.CloneArray(this.legacyValidateGhosts)!;
     }
 
     public CGameCtnChallengeParameters()
@@ -193,9 +204,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// tips
+    /// Tip
     /// </summary>
-    [Chunk(0x0305B001, "tips")]
+    [Chunk(0x0305B001, "Tip")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305B001 : Chunk<CGameCtnChallengeParameters>
     {
@@ -374,35 +385,34 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         public override uint Id => 0x0305B006;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
-        public uint[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0305B006)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
-            rw.Array<uint>(ref U01!);
+            rw.Array<int>(ref n.items!);
         }
     }
 
-    [Chunk(0x0305B007)]
+    /// <summary>
+    /// TimeLimit
+    /// </summary>
+    [Chunk(0x0305B007, "TimeLimit")]
     public partial class Chunk0305B007 : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B007;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0305B007)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.TimeInt32(ref n.timeLimit);
         }
     }
 
@@ -429,9 +439,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// medals
+    /// tip and medals
     /// </summary>
-    [Chunk(0x0305B00A, "medals")]
+    [Chunk(0x0305B00A, "tip and medals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305B00A : SkippableChunk<CGameCtnChallengeParameters>
     {
@@ -456,9 +466,51 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// race validate ghost
+    /// legacy validation ghosts
     /// </summary>
-    [Chunk(0x0305B00D, "race validate ghost")]
+    [Chunk(0x0305B00B, "legacy validation ghosts")]
+    public partial class Chunk0305B00B : Chunk<CGameCtnChallengeParameters>
+    {
+        public override uint Id => 0x0305B00B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnGhost>(ref n.legacyValidateGhosts!);
+        }
+    }
+
+    /// <summary>
+    /// legacy map type and style
+    /// </summary>
+    [Chunk(0x0305B00C, "legacy map type and style")]
+    public partial class Chunk0305B00C : Chunk<CGameCtnChallengeParameters>, IVersionable
+    {
+        public override uint Id => 0x0305B00C;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0305B00C)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.String(ref n.mapType);
+            rw.String(ref n.mapStyle);
+        }
+    }
+
+    /// <summary>
+    /// RaceValidateGhost
+    /// </summary>
+    [Chunk(0x0305B00D, "RaceValidateGhost")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0305B00D : Chunk<CGameCtnChallengeParameters>
     {
@@ -500,9 +552,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// race validate ghost TM2020
+    /// encapsulated RaceValidateGhost
     /// </summary>
-    [Chunk(0x0305B00F, "race validate ghost TM2020")]
+    [Chunk(0x0305B00F, "encapsulated RaceValidateGhost")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0305B00F : SkippableChunk<CGameCtnChallengeParameters>
     {
@@ -535,6 +587,8 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         0x0305B007 => new Chunk0305B007(),
         0x0305B008 => new Chunk0305B008(),
         0x0305B00A => new Chunk0305B00A(),
+        0x0305B00B => new Chunk0305B00B(),
+        0x0305B00C => new Chunk0305B00C(),
         0x0305B00D => new Chunk0305B00D(),
         0x0305B00E => new Chunk0305B00E(),
         0x0305B00F => new Chunk0305B00F(),

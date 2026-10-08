@@ -10,7 +10,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
   int
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // tips
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Tip
   string Tip
   string Tip
   string Tip
@@ -55,16 +55,16 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
 
 0x006 [TMSX, TMNESWC] // items
-  uint[]
+  int[] Items
 
-0x007
-  uint
+0x007 // TimeLimit
+  int TimeLimit = 60000 (time)
 
 0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // stunts
   int TimeLimit (time)
-  int AuthorScore
+  int? AuthorScore
 
-0x00A (skippable) [MP3, TMT, MP4, TM2020] // medals
+0x00A (skippable) [MP3, TMT, MP4, TM2020] // tip and medals
   string Tip
   int? BronzeTime (time)
   int? SilverTime (time)
@@ -73,7 +73,15 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int TimeLimit (time)
   int? AuthorScore
 
-0x00D [MP3, TMT, MP4] // race validate ghost
+0x00B // legacy validation ghosts
+  CGameCtnGhost[] LegacyValidateGhosts (deprec)
+
+0x00C // legacy map type and style
+  version
+  string MapType
+  string MapStyle
+
+0x00D [MP3, TMT, MP4] // RaceValidateGhost
   CGameCtnGhost RaceValidateGhost
 
 0x00E (skippable) [MP3, TMT, MP4, TM2020] // map type
@@ -81,6 +89,6 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   string MapStyle
   bool IsValidatedForScriptModes
 
-0x00F (skippable) [TM2020] // race validate ghost TM2020
+0x00F (skippable) [TM2020] // encapsulated RaceValidateGhost
   block (encapsulated)
     CGameCtnGhost RaceValidateGhost
