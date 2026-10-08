@@ -452,6 +452,11 @@ internal static class EngineWriter
         if (field?.DefaultValue is null) return null;
 
         var value = ChunkLParser.WriteExpression(field.DefaultValue);
+        if (LayoutModel.Has(field.Attributes, "time") && field.Type.ArrayDimensions == 0 && value is not ("null" or "default" or "empty"))
+        {
+            return "new " + WireTypes.Map(field.Type.Name, field.Attributes) + "(" + value + ")";
+        }
+
         if (value != "empty") return value;
 
         type = type.TrimEnd('?');

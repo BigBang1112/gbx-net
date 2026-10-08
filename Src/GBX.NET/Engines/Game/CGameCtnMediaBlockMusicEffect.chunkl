@@ -8,7 +8,7 @@ CGameCtnMediaBlockMusicEffect 0x030A6000
   Key[] Keys (version: 1, list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float MusicVolume
   v1+
     float SoundVolume

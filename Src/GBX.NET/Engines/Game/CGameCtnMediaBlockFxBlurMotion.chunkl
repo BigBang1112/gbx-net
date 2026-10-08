@@ -2,5 +2,5 @@ CGameCtnMediaBlockFxBlurMotion 0x03082000
 - inherits: CGameCtnMediaBlockFxBlur
 
 0x000 [TMSX, TMNESWC, TMF, TMT, MP4, TM2020]
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)

@@ -2,14 +2,14 @@ CGameCtnMediaBlockFxBlurDepth 0x03081000
 - inherits: CGameCtnMediaBlockFx
 
 0x000
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
 
 0x001 [TMSX, TMNESWC, TMF, TMT, MP4, TM2020]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float LensSize
   bool ForceFocus
   float FocusZ

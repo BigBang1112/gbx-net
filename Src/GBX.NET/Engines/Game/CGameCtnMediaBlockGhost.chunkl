@@ -2,13 +2,13 @@ CGameCtnMediaBlockGhost 0x030E5000
 - inherits: CGameCtnMediaBlock
 
 0x000
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   CGameCtnGhost GhostModel
 
 0x001 [TMF]
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   CGameCtnGhost GhostModel
   float StartOffset
 
@@ -17,8 +17,8 @@ CGameCtnMediaBlockGhost 0x030E5000
   v3+
     Key[] Keys (list)
   v2-
-    timefloat Start
-    timefloat End
+    float Start (time)
+    float End (time)
   CGameCtnGhost GhostModel
   float StartOffset
   bool NoDamage
@@ -30,7 +30,7 @@ CGameCtnMediaBlockGhost 0x030E5000
     float TrailIntensity
  
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   v3-
     float LightIntensity
   v4+

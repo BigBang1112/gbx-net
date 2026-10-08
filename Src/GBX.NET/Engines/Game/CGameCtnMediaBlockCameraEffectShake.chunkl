@@ -5,6 +5,6 @@ CGameCtnMediaBlockCameraEffectShake 0x030A4000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Intensity
   float Speed

@@ -2,8 +2,8 @@ CGameCtnMediaBlockDecal2d 0x031AA000
 - inherits: CGameCtnMediaBlock
 
 0x000 [TMT, MP4, TM2020]
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   packdesc[] Images
   Decal[] Decals (list)
 

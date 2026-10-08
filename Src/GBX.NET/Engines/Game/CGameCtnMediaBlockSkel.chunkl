@@ -17,7 +17,7 @@ CGameCtnMediaBlockSkel 0x0314A000
         float U07
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   v2+
     vec3 RootTranslation
     float RootYaw // Radians.

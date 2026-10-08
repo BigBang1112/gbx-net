@@ -13,7 +13,7 @@ CGameCtnMediaBlockColoringBase 0x03172000
     int BaseIndex
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Hue
   v0+
     float Intensity = 1

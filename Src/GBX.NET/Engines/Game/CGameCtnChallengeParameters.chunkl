@@ -43,10 +43,10 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
 
 0x004 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // medals
-  timeint? BronzeTime
-  timeint? SilverTime
-  timeint? GoldTime
-  timeint? AuthorTime
+  int? BronzeTime (time)
+  int? SilverTime (time)
+  int? GoldTime (time)
+  int? AuthorTime (time)
   uint
 
 0x005 [TMSX, TMNESWC]
@@ -61,16 +61,16 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   uint
 
 0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // stunts
-  timeint TimeLimit
+  int TimeLimit (time)
   int AuthorScore
 
 0x00A (skippable) [MP3, TMT, MP4, TM2020] // medals
   string Tip
-  timeint? BronzeTime
-  timeint? SilverTime
-  timeint? GoldTime
-  timeint? AuthorTime
-  timeint TimeLimit
+  int? BronzeTime (time)
+  int? SilverTime (time)
+  int? GoldTime (time)
+  int? AuthorTime (time)
+  int TimeLimit (time)
   int? AuthorScore
 
 0x00D [MP3, TMT, MP4] // race validate ghost

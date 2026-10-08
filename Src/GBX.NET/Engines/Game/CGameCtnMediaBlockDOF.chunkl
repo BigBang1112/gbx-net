@@ -11,7 +11,7 @@ CGameCtnMediaBlockDOF 0x03126000
   Key[] Keys (version: 2, list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float ZFocus
   float LensSize
   v1+

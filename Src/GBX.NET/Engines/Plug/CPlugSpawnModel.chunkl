@@ -4,6 +4,6 @@ CPlugSpawnModel 0x0917A000
   version
   iso4 Loc
   float TorqueX
-  timeint TorqueDuration
+  int TorqueDuration (time)
   vec3 DefaultGravitySpawn
   int

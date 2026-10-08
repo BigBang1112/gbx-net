@@ -6,5 +6,5 @@ GxFogBlender 0x04008000
   Key[] Keys (list)
 
 archive Key
-  timefloat Time // Native blending coordinate, wrapping over the interval 0 to 1
+  float Time (time) // Native blending coordinate, wrapping over the interval 0 to 1
   GxFog Fog

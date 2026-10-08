@@ -17,7 +17,7 @@ CGameCtnMediaBlockToneMapping 0x03127000
   Key[] Keys (version: 4, list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   v3=
     bool U02
   float ExposureBias

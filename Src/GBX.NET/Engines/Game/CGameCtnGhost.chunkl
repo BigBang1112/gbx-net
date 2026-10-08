@@ -38,7 +38,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   Checkpoint[] Checkpoints
 
 0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
-  timeint? RaceTime
+  int? RaceTime (time)
 
 0x006 [TMS, TMSX, TMNESWC]
   ident PlayerModel
@@ -83,7 +83,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   id Validate_ChallengeUid
 
 0x011 (demonstration: partial) [TMU] // validation TMU
-  timeint EventsDuration
+  int EventsDuration (time)
   if EventsDuration != 0
     // CInputEventsStore is handled in C# before the validation fields.
     string Validate_ExeVersion
@@ -126,7 +126,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   // RaceTime, StuntScore, Respawns and checkpoint times are handled in C#.
   // v0 uses raw times, v1 uses reverse deltas, v2 uses forward deltas.
   v2=
-    timeint? RaceStartTime
+    int? RaceStartTime (time)
 
 0x01C [MP3, TMT, MP4, TM2020] // security key
   uint256? SecurityKey256
@@ -170,7 +170,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x025 (skippable, demonstration: partial) [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // validation TM2
   version
-  timeint EventsDuration
+  int EventsDuration (time)
   v0-
     if EventsDuration == 0
       return
@@ -208,18 +208,18 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x02A (skippable) [TM2020] // validation game rules and race start time
   int Validate_GameRules = 1 // packed gameplay settings, also serialized in 0x02D
-  timeint? Validate_RaceStartTime // simulation time, also serialized in 0x02D
+  int? Validate_RaceStartTime (time) // simulation time, also serialized in 0x02D
 
 0x02B (skippable) [TM2020.v1] // race result TM2020
   version = 1
   v2+
     return
-  timeint? RaceTime
+  int? RaceTime (time)
   int? StuntScore
   int? Respawns
   int? SpawnLandmarkId = -1 // extra race-result field
   Checkpoint[] Checkpoints (version: 2)
-  timeint? RaceStartTime
+  int? RaceStartTime (time)
 
 0x02C (skippable) [TM2020]
   version
@@ -237,7 +237,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   string Validate_TitleId
   checksum256? Validate_TitleChecksum
   int Validate_GameRules
-  timeint? Validate_RaceStartTime
+  int? Validate_RaceStartTime (time)
   int? Validate_ValidationSeed
   // SimulationFlags is handled in C#.
   string Validate_RaceSettings // native m_ValidationData.ExtraTool_Info in TM2020
@@ -254,7 +254,7 @@ archive PlayerInputData
   int<EVersion> Version // 8 in ShootMania, 12 in TM2020
   int
   v4+ // chunk version, NOT archive version
-    timeint? StartOffset
+    int? StartOffset (time)
   int Ticks
   data Data
 
@@ -272,7 +272,7 @@ archive SSticker
   string
 
 archive Checkpoint
-  timeint? Time
+  int? Time (time)
   v0=
     float? Speed
   v1=
@@ -298,7 +298,7 @@ archive SettingsInfos
   v3+
     int ScreenWidth
     int ScreenHeight
-    timeint Time
+    int Time (time)
     v4+
       float MouseScaleFreeLook
 

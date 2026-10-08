@@ -11,6 +11,6 @@ CGameCtnMediaBlockScenery 0x03188000
   CPlugDataTape DataTape
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float VortexRadius = -1
   vec2 VortexCenterXZ // World X/Z coordinates, stored in the vector's X/Y components.

@@ -14,7 +14,7 @@ CGameCtnMediaBlockFxColors 0x03080000
   Key[] Keys (version: 3, list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   v1+
     float Intensity = 1
   v3+

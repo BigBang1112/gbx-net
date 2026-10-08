@@ -37,10 +37,6 @@ internal static class WireTypes
         ["color"] = "Color",
         ["rect"] = "Rect",
         ["transquat"] = "TransQuat",
-        ["timeint"] = "TimeInt32",
-        ["timeint32"] = "TimeInt32",
-        ["timefloat"] = "TimeSingle",
-        ["timesingle"] = "TimeSingle",
         ["timeofday"] = "TimeSpan",
         ["filetime"] = "DateTime",
         ["systemtime"] = "DateTime",
@@ -103,8 +99,21 @@ internal static class WireTypes
         ["optimizedint"] = "OptimizedInt"
     };
 
-    public static string Map(string name)
-        => Types.TryGetValue(name, out var mapped) ? mapped : name;
+    public static string Map(string name, AttributeList? attributes = null)
+    {
+        var mapped = Types.TryGetValue(name, out var type) ? type : name;
+        if (LayoutModel.Has(attributes, "time"))
+        {
+            return mapped switch
+            {
+                "int" => "TimeInt32",
+                "float" => "TimeSingle",
+                _ => throw new NotSupportedException("The time attribute requires an int or float field.")
+            };
+        }
+
+        return mapped;
+    }
 
     public static bool Primitive(string name)
         => Types.ContainsKey(name) || Methods.ContainsKey(name);
@@ -114,8 +123,13 @@ internal static class WireTypes
         return Map(name) is not ("string" or "Ident" or "PackDesc" or "byte[]" or "CMwNod" or "global::System.Net.IPAddress") && Primitive(name);
     }
 
-    public static string Method(string name)
+    public static string Method(string name, AttributeList? attributes = null)
     {
+        if (LayoutModel.Has(attributes, "time"))
+        {
+            return Map(name, attributes);
+        }
+
         return Methods.TryGetValue(name, out var method) ? method :
             Methods.TryGetValue(Map(name), out method) ? method : Map(name);
     }
@@ -130,7 +144,7 @@ internal static class WireTypes
             return "byte[]";
         }
 
-        var element = Cast(type) ?? Map(type.Name);
+        var element = Cast(type) ?? Map(type.Name, attributes);
         var array = type.ArrayDimensions > 0;
 
         if (array && LayoutModel.Has(attributes, "external"))

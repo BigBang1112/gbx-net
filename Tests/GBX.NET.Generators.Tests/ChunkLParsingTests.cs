@@ -30,7 +30,7 @@ public class ChunkLParsingTests
                 bool Enabled
 
             archive Key
-              timefloat Time
+              float Time (time)
 
             archive
               int Value

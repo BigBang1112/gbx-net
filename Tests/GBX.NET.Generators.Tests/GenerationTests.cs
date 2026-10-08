@@ -9,6 +9,104 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task TimeAttributesPreserveTypesAndSerializationMethods(int structureKind)
+    {
+        var source = $$"""
+            namespace TmEssentials
+            {
+                public readonly record struct TimeInt32(int TotalMilliseconds);
+                public readonly record struct TimeSingle(float TotalSeconds);
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043001 { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public TmEssentials.TimeInt32 ReadTimeInt32() => default;
+                    public TmEssentials.TimeInt32? ReadTimeInt32Nullable() => null;
+                    public TmEssentials.TimeSingle ReadTimeSingle() => default;
+                    public TmEssentials.TimeSingle? ReadTimeSingleNullable() => null;
+                    public T[][] ReadJaggedArray<T>() where T : struct => [];
+                    public System.Collections.Generic.List<T> ReadList<T>() where T : struct => [];
+                }
+                public partial class GbxWriter
+                {
+                    public void Write(TmEssentials.TimeInt32 value) { }
+                    public void Write(TmEssentials.TimeInt32? value) { }
+                    public void Write(TmEssentials.TimeSingle value) { }
+                    public void Write(TmEssentials.TimeSingle? value) { }
+                    public void WriteJaggedArray<T>(T[][]? value) where T : struct { }
+                    public void WriteList<T>(System.Collections.Generic.List<T>? value) where T : struct { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public TmEssentials.TimeInt32 TimeInt32(TmEssentials.TimeInt32 value) => value;
+                    public void TimeInt32(ref TmEssentials.TimeInt32 value) { }
+                    public void TimeInt32Nullable(ref TmEssentials.TimeInt32? value) { }
+                    public void TimeSingle(ref TmEssentials.TimeSingle value) { }
+                    public void TimeSingleNullable(ref TmEssentials.TimeSingle? value) { }
+                    public void Array<T>(ref T[]? value, int length) where T : struct { }
+                    public void List<T>(ref System.Collections.Generic.List<T>? value) where T : struct { }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Duration = 10000 (time)
+              int? OptionalDuration (time)
+              float Time = 1.5f (time)
+              float? OptionalTime (time)
+              int32 Temporary (time, local, write: Duration)
+              float[2] Keys (time)
+              int[][] Durations (time)
+              float[] Times = empty (time, list)
+              float (time)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("private TimeInt32 duration = new TimeInt32(10000);");
+        await Assert.That(generated).Contains("private TimeInt32? optionalDuration;");
+        await Assert.That(generated).Contains("private TimeSingle time = new TimeSingle(1.5f);");
+        await Assert.That(generated).Contains("private TimeSingle? optionalTime;");
+        await Assert.That(generated).Contains("private TimeSingle[]? keys;");
+        await Assert.That(generated).Contains("private TimeInt32[][]? durations;");
+        await Assert.That(generated).Contains("private List<TimeSingle> times = new();");
+        await Assert.That(generated).Contains("public TimeSingle U01;");
+        if (structureKind == 0)
+        {
+            await Assert.That(generated).Contains("rw.TimeInt32(ref n.duration);");
+            await Assert.That(generated).Contains("rw.TimeInt32Nullable(ref n.optionalDuration);");
+            await Assert.That(generated).Contains("rw.TimeSingle(ref n.time);");
+            await Assert.That(generated).Contains("rw.TimeSingleNullable(ref n.optionalTime);");
+            await Assert.That(generated).Contains("rw.Array<TimeSingle>(ref n.keys!, 2);");
+            await Assert.That(generated).Contains("rw.JaggedArray<TimeInt32>(ref n.durations!);");
+            await Assert.That(generated).Contains("rw.List<TimeSingle>(ref n.times!);");
+        }
+        else
+        {
+            await Assert.That(generated).Contains("n.duration = r.ReadTimeInt32();");
+            await Assert.That(generated).Contains("n.optionalDuration = r.ReadTimeInt32Nullable();");
+            await Assert.That(generated).Contains("n.time = r.ReadTimeSingle();");
+            await Assert.That(generated).Contains("n.optionalTime = r.ReadTimeSingleNullable();");
+            await Assert.That(generated).Contains("n.keys = r.ReadArray<TimeSingle>(2);");
+            await Assert.That(generated).Contains("n.times = r.ReadList<TimeSingle>();");
+            await Assert.That(generated).Contains("w.Write(n.time);");
+        }
+    }
+
+    [Test]
     public async Task PackedIntegerPropertiesConvertPromotedValuesAndRunTheirSettersFromChunks()
     {
         const string source = """
@@ -160,8 +258,8 @@ public class GenerationTests
         var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
             0x001
-              timeint Duration
-              timeint? OptionalDuration
+              int Duration (time)
+              int? OptionalDuration (time)
               int Counter
             0x002
               if Duration != 0
@@ -180,7 +278,7 @@ public class GenerationTests
               if Duration.TotalMilliseconds != 0
                 int MillisecondsValue
             0x004
-              timeint32 Temporary (local, write: Duration)
+              int Temporary (time, local, write: Duration)
               if Temporary == 0
                 int LocalValue
               if Counter == 0
@@ -188,7 +286,7 @@ public class GenerationTests
                 if Duration != 0
                   int ShadowedValue
             archive Metadata
-              timeint Duration
+              int Duration (time)
               if Duration != 0
                 int Value
             """), compile: true);

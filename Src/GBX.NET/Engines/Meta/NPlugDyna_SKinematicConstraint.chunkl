@@ -24,10 +24,10 @@ archive AnimFunc
 archive SubAnimFunc
   byte<AnimEase> Ease
   boolbyte Reverse
-  timeint Duration
+  int Duration (time)
 
 archive AnimFuncNat
-  timeint Duration
+  int Duration (time)
   int TextureId
 
 archive TransSubTextureIn

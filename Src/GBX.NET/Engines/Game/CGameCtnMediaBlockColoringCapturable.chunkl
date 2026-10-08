@@ -13,7 +13,7 @@ CGameCtnMediaBlockColoringCapturable 0x0316C000
     int CapturableIndex
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   v0+
     float Hue
     float Gauge

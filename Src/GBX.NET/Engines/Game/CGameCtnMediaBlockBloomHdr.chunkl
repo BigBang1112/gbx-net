@@ -11,7 +11,7 @@ CGameCtnMediaBlockBloomHdr 0x03128000
   Key[] Keys (version: 2, list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Intensity
   v1+
     float StreaksIntensity

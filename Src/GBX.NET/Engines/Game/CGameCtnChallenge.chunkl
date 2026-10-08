@@ -7,10 +7,10 @@ CGameCtnChallenge 0x03043000 // A map.
     string MapName = empty (formatted)
   bool NeedUnlock
   v1+
-    timeint? BronzeTime
-    timeint? SilverTime
-    timeint? GoldTime
-    timeint? AuthorTime
+    int? BronzeTime (time)
+    int? SilverTime (time)
+    int? GoldTime (time)
+    int? AuthorTime (time)
     v2=
       byte U02
     v4+
@@ -343,7 +343,7 @@ CGameCtnChallenge 0x03043000 // A map.
   timeofday? DayTime
   int
   bool DynamicDaylight
-  timeint? DayDuration
+  int? DayDuration (time)
 
 0x057 (skippable) [MP4.v3, TM2020.v5] // recorded bot paths
   version = 5
@@ -441,7 +441,7 @@ CGameCtnChallenge 0x03043000 // A map.
   timeofday? DayTime
   int
   bool DynamicDaylight
-  timeint? DayDuration
+  int? DayDuration (time)
 
 0x06C (skippable) [TM2020] // color palette
   version

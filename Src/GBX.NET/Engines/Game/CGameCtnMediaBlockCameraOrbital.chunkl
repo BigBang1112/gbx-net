@@ -9,7 +9,7 @@ CGameCtnMediaBlockCameraOrbital 0x030A0000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   byte ArchiveMarker // GmCamOrbitVal marker, written as zero and ignored on load.
   float Radius
   float Longitude

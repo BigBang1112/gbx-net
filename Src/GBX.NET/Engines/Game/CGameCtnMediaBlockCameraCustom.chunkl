@@ -31,7 +31,7 @@ enum Interpolation
   FixedTangent
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   int<Interpolation> Interpolation
   v5-
     int?

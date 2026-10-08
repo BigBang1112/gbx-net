@@ -5,6 +5,6 @@ CGameCtnMediaBlockTime 0x03085000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float TimeValue
   float Tangent

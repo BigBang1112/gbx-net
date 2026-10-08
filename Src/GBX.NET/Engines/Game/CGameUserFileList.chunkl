@@ -19,7 +19,7 @@ archive FileInfo
       string? RecordingContext
       byte // RecordingContext terminator
       id MapUid = empty
-      timeint? RaceTime
+      int? RaceTime (time)
     default
       throw (type: ThisShouldNotHappenException)
 

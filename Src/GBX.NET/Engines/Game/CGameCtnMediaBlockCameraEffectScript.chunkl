@@ -5,13 +5,13 @@ CGameCtnMediaBlockCameraEffectScript 0x03161000
   version
   string Script = empty
   v0=
-    timefloat? Start
-    timefloat? End
+    float? Start (time)
+    float? End (time)
   v1+
     Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float A
   float B
   float C

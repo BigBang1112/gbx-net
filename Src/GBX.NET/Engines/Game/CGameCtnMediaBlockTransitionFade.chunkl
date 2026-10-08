@@ -6,5 +6,5 @@ CGameCtnMediaBlockTransitionFade 0x030AB000
   vec4 Color
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Opacity

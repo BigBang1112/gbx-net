@@ -5,9 +5,9 @@ CGameCtnMediaBlockEntity 0x0329F000
   version
   CPlugEntRecordData RecordData
   v3-
-    timefloat? Start
-    timefloat? End
-  timefloat StartOffset
+    float? Start (time)
+    float? End (time)
+  float StartOffset (time)
   int[] NoticeRecords // SPlugEntRecord array
   v2+
     bool NoDamage
@@ -35,7 +35,7 @@ CGameCtnMediaBlockEntity 0x0329F000
   v7+
     string? GhostName
   v8+
-    timeint? RaceTime
+    int? RaceTime (time)
   v10+
     int U06
     int U07
@@ -65,7 +65,7 @@ archive SSticker
   string Slot // Destination slot in the badge mesh.
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   int<ELights> Lights
   v6+
     vec3? TrailColor

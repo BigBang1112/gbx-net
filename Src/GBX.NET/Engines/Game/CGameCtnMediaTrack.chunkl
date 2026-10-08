@@ -25,8 +25,8 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
   bool IsReadOnly
   bool IsCycling
   v1+
-    timefloat? RepeatingSegmentStart
-    timefloat? RepeatingSegmentEnd
+    float? RepeatingSegmentStart (time)
+    float? RepeatingSegmentEnd (time)
 
 0x0307B000 (not-remapped) // Legacy ghost track, converted to a read-only track containing a ghost block.
   CGameCtnGhost LegacyGhostModel

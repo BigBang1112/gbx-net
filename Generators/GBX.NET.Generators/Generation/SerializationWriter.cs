@@ -333,12 +333,12 @@ internal sealed class SerializationWriter
 
             if (declaration.Type.CastTarget is not null && declaration.Type.ArrayDimensions == 0)
             {
-                writeMethod = WireTypes.Method(declaration.Type.Name);
+                writeMethod = WireTypes.Method(declaration.Type.Name, declaration.Attributes);
             }
 
             var cast = declaration.Type.CastTarget is not null ||
                 (WireTypes.Value(declaration.Type.Name) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)))
-                ? "(" + WireTypes.Map(declaration.Type.Name) + ")" : "";
+                ? "(" + WireTypes.Map(declaration.Type.Name, declaration.Attributes) + ")" : "";
 
             if (declaration.Type.ArrayDimensions == 0 && WireTypes.Primitive(declaration.Type.Name) &&
                 declaration.Type.Name is not ("id" or "lookbackstring" or "data" or "optimizedint" or "vec3_6" or "filetime" or "systemtime" or "unixtime" or "timeofday" or "ipv4"))
@@ -352,10 +352,10 @@ internal sealed class SerializationWriter
         {
             if (declaration.Type.CastTarget is not null)
             {
-                method = "Enum" + WireTypes.Method(declaration.Type.Name) + "<" + WireTypes.Cast(declaration.Type) + ">";
+                method = "Enum" + WireTypes.Method(declaration.Type.Name, declaration.Attributes) + "<" + WireTypes.Cast(declaration.Type) + ">";
             }
 
-            var wireType = WireTypes.Map(declaration.Type.Name);
+            var wireType = WireTypes.Map(declaration.Type.Name, declaration.Attributes);
             var numeric = SyntaxOverlap.Normalize(storageType) is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" or "float" or "double";
             var conversion = numeric && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
             var value = write is null ? target : WriteArgument(write);
@@ -428,7 +428,7 @@ internal sealed class SerializationWriter
                 "string" => "JaggedArrayString",
                 "ident" or "meta" => "JaggedArrayIdent",
                 "packdesc" or "fileref" => "JaggedArrayPackDesc",
-                _ when WireTypes.Value(jaggedName) && jaggedName != "optimizedint" => "JaggedArray<" + WireTypes.Map(jaggedName) + ">",
+                _ when WireTypes.Value(jaggedName) && jaggedName != "optimizedint" => "JaggedArray<" + WireTypes.Map(jaggedName, field.Attributes) + ">",
                 _ => throw new NotSupportedException("Unsupported jagged array element: " + jaggedName)
             };
         }
@@ -460,7 +460,7 @@ internal sealed class SerializationWriter
         }
         else
         {
-            method = WireTypes.Method(name);
+            method = WireTypes.Method(name, field.Attributes);
         }
 
         if (collection)
@@ -474,7 +474,7 @@ internal sealed class SerializationWriter
 
             if (WireTypes.Value(name) && name != "optimizedint")
             {
-                return prefix + deprec + "<" + WireTypes.Map(name) + ">";
+                return prefix + deprec + "<" + WireTypes.Map(name, field.Attributes) + ">";
             }
 
             return prefix + method + deprec + generic;

@@ -6,7 +6,7 @@ CGameCtnMediaBlockFog 0x03199000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Intensity
   float SkyIntensity
   float Distance

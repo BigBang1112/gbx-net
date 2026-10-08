@@ -15,7 +15,7 @@ CGameCtnMediaBlockCameraPath 0x030A1000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   vec3 Position
   vec3 PitchYawRoll // Pitch, yaw and roll in radians.
   float Fov

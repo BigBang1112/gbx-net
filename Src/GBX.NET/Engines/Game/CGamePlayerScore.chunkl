@@ -116,7 +116,7 @@ archive Score
   ident MapInfo = empty
   v0=
     int U01
-  timeint PersonalBest
+  int PersonalBest (time)
   v4-
     v1+
       int U02

@@ -2,8 +2,8 @@ CGameCtnMediaBlockCameraGame 0x03084000
 - inherits: CGameCtnMediaBlockCamera
 
 0x000
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   int<EGameCamOld>? GameCamOld
 
 0x001 (base: 0x000) [TMSX, TMNESWC]
@@ -11,8 +11,8 @@ CGameCtnMediaBlockCameraGame 0x03084000
   int ClipEntId
 
 0x002
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   id GameCamId
   id AnchorId // Legacy anchor identifier, used only to decide whether ClipEntId is present.
   if AnchorId is null or ""
@@ -20,8 +20,8 @@ CGameCtnMediaBlockCameraGame 0x03084000
   int ClipEntId
 
 0x003 [TMF]
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   id GameCamId
   int ClipEntId
 
@@ -45,8 +45,8 @@ CGameCtnMediaBlockCameraGame 0x03084000
 
 0x007 [TMT, MP4, TM2020.v4]
   version
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   v1-
     id GameCamId
   v2+

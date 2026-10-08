@@ -13,7 +13,7 @@ CGameCtnMediaBlockTriangles 0x03029000
   int ClipEntId // SGameClipEntityId.
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
 
 enum E3DPickMode
   Ground

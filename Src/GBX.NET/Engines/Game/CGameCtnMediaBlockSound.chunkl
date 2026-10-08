@@ -2,8 +2,8 @@ CGameCtnMediaBlockSound 0x030A7000
 - inherits: CGameCtnMediaBlock
 
 0x000
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   int U01
   Key[] Keys (version: 0, list)
 
@@ -32,7 +32,7 @@ CGameCtnMediaBlockSound 0x030A7000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Volume
   float Pan
   v1+

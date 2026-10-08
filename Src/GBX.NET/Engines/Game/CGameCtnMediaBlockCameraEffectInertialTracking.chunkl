@@ -3,8 +3,8 @@ CGameCtnMediaBlockCameraEffectInertialTracking 0x03166000
 
 0x000 [TMT, MP4, TM2020]
   version
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   bool Tracking
   bool AutoZoom
   bool AutoFocus

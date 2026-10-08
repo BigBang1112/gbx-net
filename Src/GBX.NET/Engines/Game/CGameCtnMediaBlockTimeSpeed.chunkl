@@ -8,5 +8,5 @@ CGameCtnMediaBlockTimeSpeed 0x03129000
   Key[] Keys (list)
 
 archive Key (inherits: IKey)
-  timefloat Time
+  float Time (time)
   float Speed

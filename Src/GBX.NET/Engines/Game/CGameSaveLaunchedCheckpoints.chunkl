@@ -205,7 +205,7 @@ archive Snapshot
     int U21
   v33+
     int U22
-  timeint Time
+  int Time (time)
 
 archive PackedWheelState
   byte

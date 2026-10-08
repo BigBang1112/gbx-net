@@ -2,6 +2,6 @@ CGameCtnMediaBlockCheatEmptyCars 0x0325E000
 - inherits: CGameCtnMediaBlock
 
 0x000 [TMT, MP4]
-  timefloat Start
-  timefloat End
+  float Start (time)
+  float End (time)
   CPlugDataTape DataTape
