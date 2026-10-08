@@ -18,7 +18,7 @@ public partial class CGameCtnChallenge :
     private TimeInt32? silverTime; // Only used if ChallengeParameters is null
     private TimeInt32? goldTime; // Only used if ChallengeParameters is null
     private TimeInt32? authorTime; // Only used if ChallengeParameters is null
-    private int authorScore; // Only used if ChallengeParameters is null
+    private int? authorScore; // Only used if ChallengeParameters is null
     private string? mapType; // Only used if ChallengeParameters is null
     private string? mapStyle; // Only used if ChallengeParameters is null
 
@@ -99,7 +99,7 @@ public partial class CGameCtnChallenge :
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
-    public partial int AuthorScore
+    public partial int? AuthorScore
     {
         get => ChallengeParameters?.AuthorScore ?? authorScore;
         set
@@ -878,7 +878,7 @@ public partial class CGameCtnChallenge :
                     sb.Append("\" authortime=\"");
                     sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
                     sb.Append("\" authorscore=\"");
-                    sb.Append(AuthorScore);
+                    sb.Append(AuthorScore ?? -1);
                     sb.Append("\"/><deps>");
 
                     foreach (var dep in GetBlocks()
@@ -992,7 +992,7 @@ public partial class CGameCtnChallenge :
                     sb.Append("\" authortime=\"");
                     sb.Append(AuthorTime?.TotalMilliseconds ?? -1);
                     sb.Append("\" authorscore=\"");
-                    sb.Append(AuthorScore);
+                    sb.Append(AuthorScore ?? -1);
 
                     if (gameVersion is GameVersion.TM2020)
                     {
@@ -1145,7 +1145,7 @@ public partial class CGameCtnChallenge :
                                 rw.Boolean(ref n.hasClones);
                                 if (Version >= 10)
                                 {
-                                    rw.Int32(ref n.authorScore);
+                                    rw.Int32Nullable(ref n.authorScore);
                                     if (Version >= 11)
                                     {
                                         rw.EnumInt32<EditorMode>(ref n.editor);

@@ -11,6 +11,181 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
+    public async Task NullableSignedIntegerAttributesSelectSentinelMethods(int structureKind)
+    {
+        var source = $$"""
+            namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public int? Amount { get; set; }
+                    public int? Promoted { get; set; }
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043001 { }
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Metadata { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public sbyte? ReadSByteNullable() => null;
+                    public short? ReadInt16Nullable() => null;
+                    public int? ReadInt32Nullable() => null;
+                    public long? ReadInt64Nullable() => null;
+                    public System.Int128? ReadInt128Nullable() => null;
+                    public TmEssentials.TimeInt32? ReadTimeInt32Nullable() => null;
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteSByteNullable(sbyte? value) { }
+                    public void WriteInt16Nullable(short? value) { }
+                    public void WriteInt32Nullable(int? value) { }
+                    public void WriteInt64Nullable(long? value) { }
+                    public void WriteInt128Nullable(System.Int128? value) { }
+                    public void WriteTimeInt32Nullable(TmEssentials.TimeInt32? value) { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public void SByteNullable(ref sbyte? value) { }
+                    public void Int16Nullable(ref short? value) { }
+                    public short? Int16Nullable(short? value) => value;
+                    public void Int32Nullable(ref int? value) { }
+                    public int? Int32Nullable(int? value) => value;
+                    public void Int64Nullable(ref long? value) { }
+                    public void Int128Nullable(ref System.Int128? value) { }
+                    public void TimeInt32Nullable(ref TmEssentials.TimeInt32? value) { }
+                }
+            }
+            """;
+        const string fields = """
+              sbyte Tiny (nullable)
+              short Small (nullable)
+              int Score (nullable)
+              long Large (nullable)
+              int128 Huge (nullable)
+              int8 TinyAlias (nullable)
+              int16 SmallAlias (nullable)
+              int32 ScoreAlias (nullable)
+              int64 LargeAlias (nullable)
+              int? Explicit (nullable)
+              int Duration (nullable, time)
+              int Amount (nullable)
+              short Promoted (nullable)
+              int DefaultScore = 0 (nullable)
+              int Temporary (nullable, local, write: Score)
+              int (nullable)
+
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl",
+            "Example 0x03043000\n0x001\n" + fields + "archive Metadata\n" + fields), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        foreach (var (type, field, method) in new[]
+        {
+            ("sbyte", "tiny", "SByte"), ("short", "small", "Int16"), ("int", "score", "Int32"),
+            ("long", "large", "Int64"), ("Int128", "huge", "Int128"),
+            ("sbyte", "tinyAlias", "SByte"), ("short", "smallAlias", "Int16"),
+            ("int", "scoreAlias", "Int32"), ("long", "largeAlias", "Int64"),
+            ("int", "explicit", "Int32"), ("TimeInt32", "duration", "TimeInt32")
+        })
+        {
+            var escaped = field == "explicit" ? "@explicit" : field;
+            await Assert.That(generated).Contains($"private {type}? {escaped};");
+            if (structureKind == 0)
+            {
+                await Assert.That(generated).Contains($"rw.{method}Nullable(ref n.{escaped});");
+                await Assert.That(generated).Contains($"rw.{method}Nullable(ref this.{escaped});");
+            }
+            else
+            {
+                await Assert.That(generated).Contains($"n.{escaped} = r.Read{method}Nullable();");
+                await Assert.That(generated).Contains($"w.Write{method}Nullable(n.{escaped});");
+                await Assert.That(generated).Contains($"this.{escaped} = r.Read{method}Nullable();");
+            }
+        }
+        await Assert.That(generated).Contains("private int? defaultScore = 0;");
+        await Assert.That(generated).Contains("public int? U01;");
+        if (structureKind == 0)
+        {
+            await Assert.That(generated).Contains("n.Amount = rw.Int32Nullable(n.Amount);");
+            await Assert.That(generated).Contains("n.Promoted = (int?)rw.Int16Nullable((short?)n.Promoted);");
+            await Assert.That(generated).Contains("var temporary = rw.Int32Nullable((int?)(rw.Writer is null ? default : (n.Score)));");
+        }
+        else
+        {
+            await Assert.That(generated).Contains("n.Amount = r.ReadInt32Nullable();");
+            await Assert.That(generated).Contains("w.WriteInt32Nullable(n.Amount);");
+            await Assert.That(generated).Contains("n.Promoted = (int?)r.ReadInt16Nullable();");
+            await Assert.That(generated).Contains("w.WriteInt16Nullable((short?)n.Promoted);");
+        }
+    }
+
+    [Test]
+    [Arguments("uint Value (nullable)")]
+    [Arguments("float Value (nullable)")]
+    [Arguments("int[] Values (nullable)")]
+    [Arguments("short[] Values (nullable, list)")]
+    [Arguments("dataint Value (nullable)")]
+    [Arguments("int<Kind> Value (nullable)")]
+    public async Task ReportsUnsupportedNullableAttributes(string field)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", "Example 0x03043000\n0x001\n  " + field));
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" &&
+            x.GetMessage().Contains("nullable attribute requires a scalar signed integer"));
+    }
+
+    [Test]
+    public async Task SentinelReaderWriterMethodsAllowNullResultsFromNonNullInputs()
+    {
+        const string source = """
+            namespace GBX.NET.Serialization
+            {
+                public interface IGbxReader
+                {
+                    int ReadInt32();
+                    int? ReadInt32Nullable();
+                }
+                public interface IGbxWriter
+                {
+                    void Write(int value);
+                    void WriteInt32Nullable(int? value);
+                }
+                public partial class GbxReaderWriter
+                {
+                    public IGbxReader? Reader { get; }
+                    public IGbxWriter? Writer { get; }
+                }
+            }
+            """;
+        var options = new CSharpParseOptions(LanguageVersion.Preview);
+        var references = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator)
+            .Select(x => MetadataReference.CreateFromFile(x));
+        var compilation = CSharpCompilation.Create("Fixture", [CSharpSyntaxTree.ParseText(source, options)], references,
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        GeneratorDriver driver = CSharpGeneratorDriver.Create([new GbxReaderWriterGenerator().AsSourceGenerator()], parseOptions: options);
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var output, out _);
+
+        await Assert.That(driver.GetRunResult().Diagnostics).IsEmpty();
+        await AssertNoErrors(output);
+        var generated = driver.GetRunResult().Results.Single().GeneratedSources.Single().SyntaxTree;
+        var methods = generated.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "Int32Nullable").ToArray();
+        await Assert.That(methods.Length).IsEqualTo(4);
+        foreach (var method in methods)
+        {
+            await Assert.That(method.AttributeLists.ToString()).DoesNotContain("NotNullIfNotNull");
+            await Assert.That(method.ParameterList.ToString()).DoesNotContain("NotNullIfNotNull");
+        }
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
     public async Task TimeAttributesPreserveTypesAndSerializationMethods(int structureKind)
     {
         var source = $$"""

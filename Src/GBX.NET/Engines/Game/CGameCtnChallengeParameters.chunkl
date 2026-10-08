@@ -62,7 +62,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
 
 0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // stunts
   int TimeLimit (time)
-  int? AuthorScore
+  int? AuthorScore (nullable)
 
 0x00A (skippable) [MP3, TMT, MP4, TM2020] // tip and medals
   string Tip
@@ -71,7 +71,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int? GoldTime (time)
   int? AuthorTime (time)
   int TimeLimit (time)
-  int? AuthorScore
+  int? AuthorScore (nullable)
 
 0x00B // legacy validation ghosts
   CGameCtnGhost[] LegacyValidateGhosts (deprec)

@@ -22,7 +22,7 @@ CGameCtnChallenge 0x03043000 // A map.
           v9+
             bool HasClones
             v10+
-              int AuthorScore
+              int? AuthorScore (nullable)
               v11+
                 int<EditorMode> Editor
                 v12+

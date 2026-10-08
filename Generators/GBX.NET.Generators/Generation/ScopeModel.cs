@@ -36,6 +36,8 @@ internal sealed class ScopeModel
             return;
         }
 
+        WireTypes.ValidateNullable(declaration);
+
         var local = LayoutModel.Has(declaration.Attributes, "local");
         var write = LayoutModel.WriteExpression(declaration.Attributes);
         if (local && !LayoutModel.Has(declaration.Attributes, "write"))

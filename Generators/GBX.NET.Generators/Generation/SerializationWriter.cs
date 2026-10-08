@@ -338,9 +338,11 @@ internal sealed class SerializationWriter
 
             var cast = declaration.Type.CastTarget is not null ||
                 (WireTypes.Value(declaration.Type.Name) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)))
-                ? "(" + WireTypes.Map(declaration.Type.Name, declaration.Attributes) + ")" : "";
+                ? "(" + WireTypes.Map(declaration.Type.Name, declaration.Attributes) +
+                    (LayoutModel.Has(declaration.Attributes, "nullable") ? "?" : "") + ")" : "";
 
             if (declaration.Type.ArrayDimensions == 0 && WireTypes.Primitive(declaration.Type.Name) &&
+                !LayoutModel.Has(declaration.Attributes, "nullable") &&
                 declaration.Type.Name is not ("id" or "lookbackstring" or "data" or "optimizedint" or "vec3_6" or "filetime" or "systemtime" or "unixtime" or "timeofday" or "ipv4"))
             {
                 writeMethod = "";
@@ -480,7 +482,8 @@ internal sealed class SerializationWriter
             return prefix + method + deprec + generic;
         }
 
-        if (field.Type.IsNullable && method is "TimeInt32" or "TimeSingle")
+        if (LayoutModel.Has(field.Attributes, "nullable") ||
+            (field.Type.IsNullable && method is "TimeInt32" or "TimeSingle"))
         {
             method += "Nullable";
         }

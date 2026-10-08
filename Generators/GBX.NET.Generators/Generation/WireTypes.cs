@@ -168,7 +168,7 @@ internal static class WireTypes
 
     public static bool Nullable(FieldModel field)
     {
-        return field.Occurrences.Any(static x => x.Type.IsNullable) ||
+        return field.Occurrences.Any(static x => x.Type.IsNullable || LayoutModel.Has(x.Attributes, "nullable")) ||
             field.Declaration.Type.Name is "systemtime" or "filetime" or "unixtime" or "timeofday" ||
             ((field.Declaration.Type.ArrayDimensions > 0 || (!Value(field.Declaration.Type.Name) && field.Declaration.Type.CastTarget is null)) &&
                 field.Declaration.DefaultValue is null);
@@ -178,5 +178,16 @@ internal static class WireTypes
     {
         return type.CastTarget is null ? null :
             (string.IsNullOrEmpty(type.CastTarget.QualifyingType) ? "" : type.CastTarget.QualifyingType + ".") + type.CastTarget.Name;
+    }
+
+    public static void ValidateNullable(FieldDeclaration field)
+    {
+        if (!LayoutModel.Has(field.Attributes, "nullable")) return;
+
+        if (field.Type.ArrayDimensions != 0 || field.Type.CastTarget is not null ||
+            Method(field.Type.Name) is not ("SByte" or "Int16" or "Int32" or "Int64" or "Int128"))
+        {
+            throw new NotSupportedException("The nullable attribute requires a scalar signed integer field without a cast.");
+        }
     }
 }

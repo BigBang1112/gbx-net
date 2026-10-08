@@ -137,6 +137,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
         foreach (var (readerMethod, writerMethod, isNamed) in symbols)
         {
+            // A sentinel reader can return null even when the supplied value is non-null.
+            var preservesNonNull = readerMethod.ReturnType.OriginalDefinition.SpecialType != SpecialType.System_Nullable_T;
             var isNonNullableValueType = readerMethod.ReturnType.IsValueType
                 && readerMethod.ReturnType.NullableAnnotation != NullableAnnotation.Annotated
                 && !writerMethod.Parameters.IsEmpty;
@@ -150,7 +152,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             {
                 var isNullableVariant = i == 1;
 
-                if (!writerMethod.Parameters.IsEmpty)
+                if (!writerMethod.Parameters.IsEmpty && preservesNonNull)
                 {
                     sbInterface.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
                 }
@@ -327,7 +329,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                     }
 
 
-                    sbInterface.Append("([NotNullIfNotNull(nameof(value))] ref ");
+                    sbInterface.Append(preservesNonNull ? "([NotNullIfNotNull(nameof(value))] ref " : "(ref ");
 
                     var first = true;
 
@@ -516,7 +518,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             {
                 var isNullableVariant = i == 1;
 
-                if (!writerMethod.Parameters.IsEmpty)
+                if (!writerMethod.Parameters.IsEmpty && preservesNonNull)
                 {
                     sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
                 }
@@ -832,7 +834,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         sbClass.Append('>');
                     }
 
-                    sbClass.Append("([NotNullIfNotNull(nameof(value))] ref ");
+                    sbClass.Append(preservesNonNull ? "([NotNullIfNotNull(nameof(value))] ref " : "(ref ");
 
                     var first = true;
 

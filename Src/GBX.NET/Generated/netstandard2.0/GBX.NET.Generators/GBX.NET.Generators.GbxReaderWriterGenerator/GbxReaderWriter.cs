@@ -425,9 +425,8 @@ partial interface IGbxReaderWriter
     void TimeInt32([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeInt32 value);
     void TimeInt32([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeInt32? value, TmEssentials.TimeInt32 defaultValue = default);
 
-    [return: NotNullIfNotNull(nameof(value))]
     TmEssentials.TimeInt32? TimeInt32Nullable(TmEssentials.TimeInt32? value = default);
-    void TimeInt32Nullable([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeInt32? value);
+    void TimeInt32Nullable(ref TmEssentials.TimeInt32? value);
 
     [return: NotNullIfNotNull(nameof(value))]
     TmEssentials.TimeSingle TimeSingle(TmEssentials.TimeSingle value = default);
@@ -436,25 +435,20 @@ partial interface IGbxReaderWriter
     void TimeSingle([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeSingle value);
     void TimeSingle([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeSingle? value, TmEssentials.TimeSingle defaultValue = default);
 
-    [return: NotNullIfNotNull(nameof(value))]
     TmEssentials.TimeSingle? TimeSingleNullable(TmEssentials.TimeSingle? value = default);
-    void TimeSingleNullable([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeSingle? value);
+    void TimeSingleNullable(ref TmEssentials.TimeSingle? value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     System.TimeSpan? TimeOfDay(System.TimeSpan? value = default);
-    void TimeOfDay([NotNullIfNotNull(nameof(value))] ref System.TimeSpan? value);
+    void TimeOfDay(ref System.TimeSpan? value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     System.DateTime? FileTime(System.DateTime? value = default);
-    void FileTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value);
+    void FileTime(ref System.DateTime? value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     System.DateTime? SystemTime(System.DateTime? value = default);
-    void SystemTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value);
+    void SystemTime(ref System.DateTime? value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     System.DateTimeOffset? UnixTime(System.DateTimeOffset? value = default);
-    void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value);
+    void UnixTime(ref System.DateTimeOffset? value);
 
     [return: NotNullIfNotNull(nameof(value))]
     System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default);
@@ -626,6 +620,21 @@ partial interface IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<string>? ListId_deprec(System.Collections.Generic.List<string>? value = default);
     void ListId_deprec([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<string>? value);
+
+    sbyte? SByteNullable(sbyte? value = default);
+    void SByteNullable(ref sbyte? value);
+
+    short? Int16Nullable(short? value = default);
+    void Int16Nullable(ref short? value);
+
+    int? Int32Nullable(int? value = default);
+    void Int32Nullable(ref int? value);
+
+    long? Int64Nullable(long? value = default);
+    void Int64Nullable(ref long? value);
+
+    GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default);
+    void Int128Nullable(ref GBX.NET.Int128? value);
 
 }
 
@@ -1897,7 +1906,6 @@ partial class GbxReaderWriter
 
     public void TimeInt32([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeInt32? value, TmEssentials.TimeInt32 defaultValue = default) => value = TimeInt32(value, defaultValue);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public TmEssentials.TimeInt32? TimeInt32Nullable(TmEssentials.TimeInt32? value = default)
     {
         if (Reader is not null) value = Reader.ReadTimeInt32Nullable();
@@ -1905,7 +1913,7 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void TimeInt32Nullable([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeInt32? value) => value = TimeInt32Nullable(value);
+    public void TimeInt32Nullable(ref TmEssentials.TimeInt32? value) => value = TimeInt32Nullable(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public TmEssentials.TimeSingle TimeSingle(TmEssentials.TimeSingle value = default)
@@ -1927,7 +1935,6 @@ partial class GbxReaderWriter
 
     public void TimeSingle([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeSingle? value, TmEssentials.TimeSingle defaultValue = default) => value = TimeSingle(value, defaultValue);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public TmEssentials.TimeSingle? TimeSingleNullable(TmEssentials.TimeSingle? value = default)
     {
         if (Reader is not null) value = Reader.ReadTimeSingleNullable();
@@ -1935,9 +1942,8 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void TimeSingleNullable([NotNullIfNotNull(nameof(value))] ref TmEssentials.TimeSingle? value) => value = TimeSingleNullable(value);
+    public void TimeSingleNullable(ref TmEssentials.TimeSingle? value) => value = TimeSingleNullable(value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public System.TimeSpan? TimeOfDay(System.TimeSpan? value = default)
     {
         if (Reader is not null) value = Reader.ReadTimeOfDay();
@@ -1945,9 +1951,8 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void TimeOfDay([NotNullIfNotNull(nameof(value))] ref System.TimeSpan? value) => value = TimeOfDay(value);
+    public void TimeOfDay(ref System.TimeSpan? value) => value = TimeOfDay(value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public System.DateTime? FileTime(System.DateTime? value = default)
     {
         if (Reader is not null) value = Reader.ReadFileTime();
@@ -1955,9 +1960,8 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void FileTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value) => value = FileTime(value);
+    public void FileTime(ref System.DateTime? value) => value = FileTime(value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public System.DateTime? SystemTime(System.DateTime? value = default)
     {
         if (Reader is not null) value = Reader.ReadSystemTime();
@@ -1965,9 +1969,8 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void SystemTime([NotNullIfNotNull(nameof(value))] ref System.DateTime? value) => value = SystemTime(value);
+    public void SystemTime(ref System.DateTime? value) => value = SystemTime(value);
 
-    [return: NotNullIfNotNull(nameof(value))]
     public System.DateTimeOffset? UnixTime(System.DateTimeOffset? value = default)
     {
         if (Reader is not null) value = Reader.ReadUnixTime();
@@ -1975,7 +1978,7 @@ partial class GbxReaderWriter
         return value;
     }
 
-    public void UnixTime([NotNullIfNotNull(nameof(value))] ref System.DateTimeOffset? value) => value = UnixTime(value);
+    public void UnixTime(ref System.DateTimeOffset? value) => value = UnixTime(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public System.Net.IPAddress? IPv4(System.Net.IPAddress? value = default)
@@ -2412,5 +2415,50 @@ partial class GbxReaderWriter
     }
 
     public void ListId_deprec([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<string>? value) => value = ListId_deprec(value);
+
+    public sbyte? SByteNullable(sbyte? value = default)
+    {
+        if (Reader is not null) value = Reader.ReadSByteNullable();
+        Writer?.WriteSByteNullable(value);
+        return value;
+    }
+
+    public void SByteNullable(ref sbyte? value) => value = SByteNullable(value);
+
+    public short? Int16Nullable(short? value = default)
+    {
+        if (Reader is not null) value = Reader.ReadInt16Nullable();
+        Writer?.WriteInt16Nullable(value);
+        return value;
+    }
+
+    public void Int16Nullable(ref short? value) => value = Int16Nullable(value);
+
+    public int? Int32Nullable(int? value = default)
+    {
+        if (Reader is not null) value = Reader.ReadInt32Nullable();
+        Writer?.WriteInt32Nullable(value);
+        return value;
+    }
+
+    public void Int32Nullable(ref int? value) => value = Int32Nullable(value);
+
+    public long? Int64Nullable(long? value = default)
+    {
+        if (Reader is not null) value = Reader.ReadInt64Nullable();
+        Writer?.WriteInt64Nullable(value);
+        return value;
+    }
+
+    public void Int64Nullable(ref long? value) => value = Int64Nullable(value);
+
+    public GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default)
+    {
+        if (Reader is not null) value = Reader.ReadInt128Nullable();
+        Writer?.WriteInt128Nullable(value);
+        return value;
+    }
+
+    public void Int128Nullable(ref GBX.NET.Int128? value) => value = Int128Nullable(value);
 
 }

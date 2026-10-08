@@ -35,6 +35,20 @@ Use an unnamed `archive` for a class self-archive, and named `archive` declarati
 
 Reference a named archive from another class with its dotted type name, such as `CGameCtnMacroBlockInfo.BlockSpawn[] Blocks`. The generator uses the enclosing class layout to resolve the archive and its serialization.
 
+## Nullable signed integers
+
+Use `(nullable)` on a scalar signed integer field to read `-1` as `null` and write `null` as `-1`:
+
+```chunkl
+0x001
+  int AuthorScore (nullable)
+  short OptionalCount (nullable)
+```
+
+The generated properties are nullable. The flag supports `sbyte`, `short`, `int`, `long`, and `int128`, including their `int8`, `int16`, `int32`, and `int64` aliases. Other values, including negative values below `-1`, retain their values. It also works with `(time)` on an integer field.
+
+A `?` alone makes the C# type nullable without selecting the integer sentinel conversion. Add `(nullable)` when the wire format uses `-1` for a missing value. The flag does not support unsigned integers, arrays, lists, or casts.
+
 ## GBX.NET attributes
 
 ChunkL attributes describe how GBX.NET should generate a chunk:
