@@ -1,9 +1,9 @@
 CPlugBitmapApply 0x09012000
 - inherits: CPlugBitmapAddress
 
-0x003
+0x003 [TM10, TMPU, TMSX, TMNESWC]
   int
   int
 
-0x004 [TMF]
+0x004 [TMF, MP3, TMT]
   uint

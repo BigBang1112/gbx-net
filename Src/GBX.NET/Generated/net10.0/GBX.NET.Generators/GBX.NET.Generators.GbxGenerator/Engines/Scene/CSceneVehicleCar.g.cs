@@ -53,9 +53,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B003)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B003 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B003;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -64,9 +66,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B005)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B005 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B005;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public CMwNod? U01;
         public Vec3 U02;
 
@@ -85,9 +89,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B007)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B007 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B007;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public CMwNod? U01;
         public Vec3 U02;
 
@@ -106,9 +112,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B008)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B008 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B008;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -117,9 +125,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B009)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk0A02B009 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B009;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -133,9 +143,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B00B)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B00B : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B00B;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public CMwNod? U01;
         public CMwNod? U02;
 
@@ -154,11 +166,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B00C)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk0A02B00C : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B00C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public float U01;
         public float U02;
         public BoxAligned U03;
@@ -180,9 +192,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     }
 
     [Chunk(0x0A02B014)]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0A02B014 : Chunk<CSceneVehicleCar>
     {
         public override uint Id => 0x0A02B014;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

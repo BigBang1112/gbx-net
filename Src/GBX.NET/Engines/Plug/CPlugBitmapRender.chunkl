@@ -1,25 +1,25 @@
 CPlugBitmapRender 0x09086000
 - inherits: CPlug
 
-0x003 [TMF, MP4, TM2020]
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   short
   short
   short
   short
 
-0x00A [TMF, MP4, TM2020]
+0x00A [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   float FogCustomFarZ
 
-0x00B [TMF]
+0x00B [TMSX, TMNESWC, TMF]
   int
   uint
   CPlugBitmap BitmapClear
   vec2? BitmapClearUV
 
-0x00C [TMF, MP4, TM2020]
+0x00C [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugBitmapRenderSub RenderSub
 
-0x00D
+0x00D [TMNESWC]
   uint
 
 0x00E [TMF]

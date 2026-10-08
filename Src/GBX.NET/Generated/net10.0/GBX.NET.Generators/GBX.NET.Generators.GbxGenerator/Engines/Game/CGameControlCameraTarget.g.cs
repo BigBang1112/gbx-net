@@ -89,11 +89,11 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     [Chunk(0x03072001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03072001 : Chunk<CGameControlCameraTarget>
     {
         public override uint Id => 0x03072001;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -110,11 +110,11 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     [Chunk(0x03072002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk03072002 : Chunk<CGameControlCameraTarget>
     {
         public override uint Id => 0x03072002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

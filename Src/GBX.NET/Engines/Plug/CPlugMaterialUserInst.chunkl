@@ -1,6 +1,6 @@
 CPlugMaterialUserInst 0x090FD000
 
-0x000 [MP4.v9, TM2020.v11]
+0x000 [MP3, TMT, MP4.v9, TM2020.v11]
   version
   v11+
     boolbyte IsUsingGameMaterial

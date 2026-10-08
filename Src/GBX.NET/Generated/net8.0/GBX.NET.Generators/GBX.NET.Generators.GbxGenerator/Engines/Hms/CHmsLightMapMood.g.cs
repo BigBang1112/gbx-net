@@ -111,11 +111,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     [Chunk(0x06023000)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06023000 : Chunk<CHmsLightMapMood>
     {
         public override uint Id => 0x06023000;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01 = 2;
         public float U02 = 2;
 
@@ -135,10 +135,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         }
     }
 
-    /// <summary>
-    /// Legacy ManiaPlanet payload; not advertised by Trackmania's GetChunkInfo
-    /// </summary>
-    [Chunk(0x06023001, "Legacy ManiaPlanet payload; not advertised by Trackmania's GetChunkInfo")]
+    [Chunk(0x06023001)]
     public partial class Chunk06023001 : Chunk<CHmsLightMapMood>
     {
         public override uint Id => 0x06023001;
@@ -215,11 +212,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     [Chunk(0x06023004)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 0)]
     public partial class Chunk06023004 : Chunk<CHmsLightMapMood>, IVersionable
     {
         public override uint Id => 0x06023004;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
         public int Version { get; set; } = 0;
         public float U01 = 1;
         public float U02 = 0;

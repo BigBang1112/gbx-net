@@ -502,11 +502,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// Ident
     /// </summary>
     [Chunk(0x2E001002, "Ident")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk2E001002 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001002;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -548,9 +548,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// legacy page and icon
     /// </summary>
     [Chunk(0x2E001004, "legacy page and icon")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk2E001004 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001004;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -597,11 +599,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001006)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk2E001006 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001006;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -615,11 +617,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001007)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk2E001007 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001007;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -638,11 +640,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001008)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E001008 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001008;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public CPlugGameSkin? U01;
         public Components.GbxRefTableFile? U01File;
 
@@ -659,11 +661,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     [Chunk(0x2E001009)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E001009 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001009;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

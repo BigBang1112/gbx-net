@@ -128,11 +128,11 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     }
 
     [Chunk(0x030A1002)]
-    [ChunkGameVersion(GameVersion.TM2020, 3)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020, -1, 3)]
     public partial class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraSimple>, IVersionable
     {
         public override uint Id => 0x030A1002;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;

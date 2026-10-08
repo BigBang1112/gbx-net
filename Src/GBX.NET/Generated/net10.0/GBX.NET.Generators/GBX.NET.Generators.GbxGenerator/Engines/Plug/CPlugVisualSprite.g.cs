@@ -53,11 +53,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010005)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk09010005 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010005;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public int U01;
         public float U02;
         public float U03;
@@ -88,11 +88,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010006)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk09010006 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010006;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public short U01;
         public short U02;
 
@@ -111,11 +111,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010008 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010008;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -129,11 +129,11 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     [Chunk(0x09010009)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010009 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010009;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public Rect[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

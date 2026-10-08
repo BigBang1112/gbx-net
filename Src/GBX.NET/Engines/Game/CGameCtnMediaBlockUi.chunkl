@@ -6,6 +6,6 @@ CGameCtnMediaBlockUi 0x0307D000
   timefloat Start
   timefloat End
 
-0x001 [TMF, MP4]
+0x001 [TMNESWC, TMF, MP3, TMT, MP4]
   timefloat Start
   timefloat End

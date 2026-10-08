@@ -1,6 +1,6 @@
 CPlugPointsInSphereOpt 0x09066000
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   Pack[] Packs
   vec3[]
 

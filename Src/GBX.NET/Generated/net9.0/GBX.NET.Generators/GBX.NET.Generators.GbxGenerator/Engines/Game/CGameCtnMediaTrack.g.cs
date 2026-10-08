@@ -131,11 +131,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     /// name and blocks
     /// </summary>
     [Chunk(0x03078001, "name and blocks")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03078001 : Chunk<CGameCtnMediaTrack>
     {
         public override uint Id => 0x03078001;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -215,11 +215,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     /// MP parameters
     /// </summary>
     [Chunk(0x03078005, "MP parameters")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, -1, 1, 1)]
     public partial class Chunk03078005 : Chunk<CGameCtnMediaTrack>, IVersionable
     {
         public override uint Id => 0x03078005;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -258,9 +258,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     [Chunk(0x24062000)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk24062000 : Chunk0307B000
     {
         public override uint Id => 0x24062000;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

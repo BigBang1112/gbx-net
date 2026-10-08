@@ -80,11 +80,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D001 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D001;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -98,9 +98,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D002)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0303D002 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D002;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -114,11 +116,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D003)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D003 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D003;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -132,11 +134,11 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     [Chunk(0x0303D004)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D004 : Chunk<CGameAdvertising>
     {
         public override uint Id => 0x0303D004;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

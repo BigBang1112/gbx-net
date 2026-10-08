@@ -14,7 +14,7 @@ CMotionTrackMobilPitchin 0x08041000
   float Roulis
   float OffsetHauteur
 
-0x002 [TMF]
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   CMwNod Sea
   float Flottaison
   float Tangage

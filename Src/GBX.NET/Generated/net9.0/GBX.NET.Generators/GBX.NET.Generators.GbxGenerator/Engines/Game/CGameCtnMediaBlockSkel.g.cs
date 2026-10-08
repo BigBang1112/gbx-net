@@ -97,11 +97,11 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x0314A000)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0314A000 : Chunk<CGameCtnMediaBlockSkel>, IVersionable
     {
         public override uint Id => 0x0314A000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; } = 5;
         public int U01 = 8;
         public int U02;

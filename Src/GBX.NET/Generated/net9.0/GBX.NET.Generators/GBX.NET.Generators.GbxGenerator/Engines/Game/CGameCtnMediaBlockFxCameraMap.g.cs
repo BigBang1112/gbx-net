@@ -134,11 +134,11 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     [Chunk(0x03139000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
     {
         public override uint Id => 0x03139000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -153,11 +153,11 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     [Chunk(0x03139001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03139001 : Chunk<CGameCtnMediaBlockFxCameraMap>
     {
         public override uint Id => 0x03139001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

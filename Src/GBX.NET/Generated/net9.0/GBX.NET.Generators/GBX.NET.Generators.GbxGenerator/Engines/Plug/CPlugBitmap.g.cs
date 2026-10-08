@@ -186,9 +186,6 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private ulong flags = 0x10004E1200280000;
-    /// <summary>
-    /// Packed fields vary between legacy layouts; preserve their wire values.
-    /// </summary>
     [AppliedWithChunk<Chunk09011004>]
     [AppliedWithChunk<Chunk09011005>]
     [AppliedWithChunk<Chunk0901100B>]
@@ -316,9 +313,6 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private uint flags2 = 0x49000800;
-    /// <summary>
-    /// Legacy packed fields.
-    /// </summary>
     [AppliedWithChunk<Chunk09011016>]
     [AppliedWithChunk<Chunk09011017>]
     [AppliedWithChunk<Chunk0901101A>]
@@ -415,7 +409,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
     private uint defaultRenderClearColor = 0xFF000000;
     /// <summary>
-    /// BGRA.
+    /// BGRA
     /// </summary>
     [AppliedWithChunk<Chunk09011025>]
     public uint DefaultRenderClearColor
@@ -884,10 +878,7 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
-    /// <summary>
-    /// Obsolete individual bitmap options.
-    /// </summary>
-    [Chunk(0x09011007, "Obsolete individual bitmap options.")]
+    [Chunk(0x09011007)]
     public partial class Chunk09011007 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011007;
@@ -1287,9 +1278,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011014)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09011014 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011014;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1402,9 +1395,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011018)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09011018 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011018;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1443,11 +1438,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011019)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011019 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011019;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1479,9 +1474,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901101B)]
+    [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0901101B : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901101B;
+        public override GameVersion GameVersion => GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1495,11 +1492,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901101C)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk0901101C : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901101C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1515,9 +1512,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901101D)]
+    [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0901101D : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901101D;
+        public override GameVersion GameVersion => GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1532,11 +1531,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901101E)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk0901101E : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901101E;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1550,9 +1549,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901101F)]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0901101F : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901101F;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1566,11 +1567,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011020)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011020 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011020;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1600,11 +1601,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011022)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk09011022 : Chunk09011018
     {
         public override uint Id => 0x09011022;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1613,11 +1614,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011023)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011023 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011023;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1649,11 +1650,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011025)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011025 : Chunk0901101C
     {
         public override uint Id => 0x09011025;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1700,11 +1701,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011028)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011028 : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x09011028;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1735,11 +1736,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901102A)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901102A : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901102A;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1753,11 +1754,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901102B)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0901102B : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901102B;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1771,11 +1772,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901102C)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901102C : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901102C;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1789,11 +1790,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901102D)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0, 0)]
     public partial class Chunk0901102D : Chunk<CPlugBitmap>, IVersionable
     {
         public override uint Id => 0x0901102D;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1810,9 +1811,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x0901102E)]
+    [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0901102E : Chunk<CPlugBitmap>
     {
         public override uint Id => 0x0901102E;
+        public override GameVersion GameVersion => GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1842,11 +1845,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011030)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 5)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 5)]
     public partial class Chunk09011030 : Chunk<CPlugBitmap>, IVersionable
     {
         public override uint Id => 0x09011030;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1919,11 +1922,11 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     [Chunk(0x09011032)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0)]
     public partial class Chunk09011032 : Chunk<CPlugBitmap>, IVersionable
     {
         public override uint Id => 0x09011032;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

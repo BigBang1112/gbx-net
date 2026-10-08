@@ -161,11 +161,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D000 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
 
@@ -186,11 +186,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D001 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public string? U02;
@@ -275,11 +275,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D002 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
         public byte U02;
@@ -316,11 +316,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D003 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
 
@@ -344,11 +344,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D004 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public bool U02;
@@ -405,11 +405,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D005)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D005 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D005;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public CGameCtnMediaShootParams? U02;
@@ -434,11 +434,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D006)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D006 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D006;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
 
@@ -457,11 +457,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D007)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D007 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D007;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -543,11 +543,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D008 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D008;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -573,11 +573,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D009)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D009 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D009;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
 
@@ -596,11 +596,11 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     [Chunk(0x0312D00A)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312D00A : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D00A;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
 

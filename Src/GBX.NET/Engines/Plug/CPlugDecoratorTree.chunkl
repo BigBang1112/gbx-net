@@ -1,6 +1,6 @@
 CPlugDecoratorTree 0x090A2000
 
-0x006
+0x006 [TMNESWC]
   id TreeId
   CPlugMaterial Material
   CPlugTreeLight TreeLight
@@ -25,6 +25,6 @@ CPlugDecoratorTree 0x090A2000
   base
   bool NoLocation
 
-0x009 (base: 0x008) [TMF, MP4, TM2020]
+0x009 (base: 0x008) [TMF, MP3, TMT, MP4, TM2020]
   base
   int CollidableCond

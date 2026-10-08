@@ -39,7 +39,7 @@ constructor
     else if LegacyBlendSource == 6 && LegacyBlendDestination == 2
       Flags = Flags | 0x180
 
-0x004 (base: 0x002)
+0x004 (base: 0x002) [TM10, TMPU]
   base
 
 0x005
@@ -48,7 +48,7 @@ constructor
   if rw.Reader != null
     Flags = Flags & 0xFFFC3FFF
 
-0x006 [TMF, MP4, TM2020]
+0x006 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   FrustumData Frustum
   uint Flags
 

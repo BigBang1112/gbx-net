@@ -1,11 +1,11 @@
 CPlugShaderGeneric 0x09004000
 - inherits: CPlugShader
 
-0x001
+0x001 [TM10, TMPU]
   data[88]
 
 0x002
   data[88]
 
-0x003 [TMF, MP4, TM2020]
+0x003 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   data[88]

@@ -5,10 +5,10 @@ CPlugBitmapShader 0x09080000
   CPlugShader Shader (external)
   CPlugBitmap[] LegacyBitmaps
 
-0x001 (base: 0x000)
+0x001 (base: 0x000) [TM10, TMPU, TMSX]
   base
   CPlugBitmap BitmapToSwap
 
-0x002 [TMF, MP4, TM2020]
+0x002 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugShader Shader (external)
   CPlugBitmap BitmapToSwap

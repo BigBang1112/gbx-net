@@ -44,11 +44,11 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
     }
 
     [Chunk(0x0910B000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0910B000 : Chunk<CPlugCamShakeModel>, IVersionable
     {
         public override uint Id => 0x0910B000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;

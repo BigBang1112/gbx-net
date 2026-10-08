@@ -179,11 +179,11 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     [Chunk(0x09180002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk09180002 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

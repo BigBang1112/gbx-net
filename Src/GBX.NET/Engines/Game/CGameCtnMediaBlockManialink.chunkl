@@ -6,7 +6,7 @@ CGameCtnMediaBlockManialink 0x0312A000
   timefloat End
   CPlugFileTextScript Script
 
-0x001 [MP4, TM2020.v0]
+0x001 [TMT, MP4, TM2020.v0]
   version
   timefloat Start
   timefloat End

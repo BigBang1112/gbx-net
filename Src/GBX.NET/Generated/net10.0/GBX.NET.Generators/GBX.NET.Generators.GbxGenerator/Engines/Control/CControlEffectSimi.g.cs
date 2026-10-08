@@ -114,9 +114,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     [Chunk(0x07010002)]
+    [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk07010002 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010002;
+        public override GameVersion GameVersion => GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -131,9 +133,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     [Chunk(0x07010004)]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk07010004 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010004;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -150,11 +154,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     [Chunk(0x07010005)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07010005 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010005;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

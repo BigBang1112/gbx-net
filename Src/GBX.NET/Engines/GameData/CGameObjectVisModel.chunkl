@@ -4,7 +4,7 @@ CGameObjectVisModel 0x2E007000
   CPlugSolid2Model MeshShaded (external)
   CMwNod (external) // Deprecated CPlugAnimFile.
 
-0x001 [MP4.v21, TM2020.v22]
+0x001 [MP3, TMT, MP4.v21, TM2020.v22]
   version
   v1=
     int U23
@@ -72,7 +72,7 @@ CGameObjectVisModel 0x2E007000
   v22+
     vec3 DomeShaderColor
 
-0x002 (skippable) [MP4, TM2020]
+0x002 (skippable) [TMT, MP4, TM2020]
   version
   string SoundRefSpawn
   string SoundRefUnspawn

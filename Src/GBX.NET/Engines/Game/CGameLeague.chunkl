@@ -1,6 +1,6 @@
 CGameLeague 0x0308E000
 
-0x001 [TMF]
+0x001 [TMF, MP3, TMT]
   string Path
   string Name
   string Description

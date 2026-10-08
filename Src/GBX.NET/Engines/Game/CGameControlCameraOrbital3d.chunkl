@@ -1,7 +1,7 @@
 CGameControlCameraOrbital3d 0x0306E000
 - inherits: CGameControlCameraTarget
 
-0x001
+0x001 [TMSX]
   vec3 RadiusScale
   vec2 RotateSpeed
   bool OcclusionIsEnable
@@ -20,16 +20,16 @@ CGameControlCameraOrbital3d 0x0306E000
   float LatitudeMin
   float LatitudeMax
 
-0x002
+0x002 [TMSX]
   float
 
-0x003
+0x003 [TMSX]
   float WheelSensitivity
 
-0x004
+0x004 [TMSX]
   float FovKeySensitivity
 
-0x005 [TMF]
+0x005 [TMNESWC, TMF, MP3]
   vec3 RadiusScale
   vec2 RotateSpeed
   bool OcclusionIsEnable
@@ -49,8 +49,8 @@ CGameControlCameraOrbital3d 0x0306E000
   float WheelSensitivity
   float FovKeySensitivity
 
-0x006 [TMF]
+0x006 [TMNESWC, TMF]
   float ZoomKeySensitivity
 
-0x007 [TMF, MP4, TM2020]
+0x007 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   float DefaultRadius

@@ -4,7 +4,7 @@
   string OnlineLogin
   string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 
-0x000
+0x000 [TM10]
   string ProfileName
   string NickName (formatted)
   id ProfileId
@@ -29,10 +29,10 @@
   int
   int
 
-0x005
+0x005 [TM10, TMPU]
   LegacyVehicleSkin[]
 
-0x006
+0x006 [TM10, TMPU, TMSX, TMNESWC]
   CInputBindingsConfig BindingsForCompatConfig
 
 0x007
@@ -40,10 +40,10 @@
   id[]
   int[]
 
-0x008
+0x008 [TM10, TMPU, TMSX, TMNESWC]
   int
 
-0x009
+0x009 [TM10, TMPU, TMSX, TMNESWC]
   bool
   bool
   bool
@@ -51,7 +51,7 @@
   int
   int
 
-0x00A
+0x00A [TM10, TMPU, TMSX, TMNESWC]
   bool UnlockAllCheat
   bool
 
@@ -61,7 +61,7 @@
   int[]
   int[]
 
-0x00C
+0x00C [TM10]
   int
   id[]
   int[]
@@ -86,7 +86,7 @@
   bool
   bool
 
-0x00F
+0x00F [TMPU]
   string ProfileName
   string NickName (formatted)
   id ProfileId
@@ -96,13 +96,13 @@
   int[]
   int
 
-0x011
+0x011 [TMPU, TMSX, TMNESWC]
   int
 
 0x012 (skippable)
   id
 
-0x013 (skippable)
+0x013 (skippable) [TMPU, TMSX, TMNESWC]
   bool
   bool
   bool
@@ -116,7 +116,7 @@
   string ServerName
   bool
 
-0x014
+0x014 [TMPU, TMSX, TMNESWC]
   bool ShowEditorHelp = true
 
 0x015 (skippable)
@@ -126,7 +126,7 @@
   int
   int
 
-0x016 (skippable)
+0x016 (skippable) [TMPU, TMSX, TMNESWC]
   int
 
 0x017 (skippable)
@@ -141,24 +141,24 @@
   id
   bool EnableAvatars
 
-0x019 (skippable)
+0x019 (skippable) [TMPU]
   id
   bool EnableAvatars
   bool
 
-0x01A (skippable)
+0x01A (skippable) [TMPU, TMSX, TMNESWC]
   int
 
-0x01B
+0x01B [TMPU, TMSX, TMNESWC]
   id[]
   int[]
   int
 
-0x01C
+0x01C [TMPU]
   bool
   int
 
-0x01D (skippable)
+0x01D (skippable) [TMPU]
   byte MaxPlayerCount = 6
   int
   int
@@ -173,10 +173,10 @@
   int
   int
 
-0x01E
+0x01E [TMSX, TMNESWC]
   OldVehicleProfile[] (version: 0)
 
-0x01F
+0x01F [TMSX, TMNESWC]
   string ProfileName
   string NickName (formatted)
   id ProfileId
@@ -209,13 +209,13 @@
 0x022
   vec3 TrailColor = (1, 0, 0)
 
-0x023
+0x023 [TMSX, TMNESWC]
   string
 
 0x024
   bool
 
-0x025 (skippable)
+0x025 (skippable) [TMSX, TMNESWC]
   vec3 PainterCustomColor1
   vec3 PainterCustomColor2
   vec3 PainterCustomColor3
@@ -243,13 +243,13 @@
   int
   bool
 
-0x027 (skippable)
+0x027 (skippable) [TMSX, TMNESWC]
   id
   bool EnableAvatars
   bool
   bool EnableCarSkinGeom
 
-0x028 (skippable, demonstration) // Legacy crypted settings; TMF dispatch differs from later readers.
+0x028 (skippable, demonstration) [TMSX, TMNESWC] // Legacy crypted settings; TMF dispatch differs from later readers.
   byte
   byte
   int
@@ -270,29 +270,29 @@
   int
   bool
 
-0x029 (skippable)
+0x029 (skippable) [TMSX, TMNESWC]
   string Description (formatted)
 
-0x02A (skippable)
+0x02A (skippable) [TMSX, TMNESWC]
   int BindingsForCompatVersion = 7
 
-0x02B (skippable)
+0x02B (skippable) [TMNESWC]
   string
 
-0x02C (skippable)
+0x02C (skippable) [TMNESWC]
   string OnlineLogin
   string OnlinePassword
   bool LoginValidated
   bool RememberOnlinePassword = true
 
-0x02D (skippable)
+0x02D (skippable) [TMNESWC]
   CGameBuddy[] Buddies
   DeprecatedBuddy[]
 
-0x02E (skippable)
+0x02E (skippable) [TMNESWC]
   bool
 
-0x02F (skippable)
+0x02F (skippable) [TMNESWC]
   string[8]
   byte
   byte
@@ -302,20 +302,20 @@
   int
   bool
 
-0x030 (skippable)
+0x030 (skippable) [TMNESWC]
   int
 
-0x031 (skippable)
+0x031 (skippable) [TMNESWC]
   int
 
-0x032 (skippable)
+0x032 (skippable) [TMNESWC]
   string CurrentSoloPlaylistName
   string CurrentSoloPlaylistPath
 
-0x033 (skippable)
+0x033 (skippable) [TMNESWC]
   byte
 
-0x034 (skippable)
+0x034 (skippable) [TMNESWC]
   int
 
 0x035 (skippable, demonstration)
@@ -765,7 +765,7 @@
 0x07B (skippable)
   int
 
-0x07C (skippable) [MP4, TM2020]
+0x07C (skippable) [MP3, TMT, MP4, TM2020]
   id ProfileId
   string ProfileName
 
@@ -774,7 +774,7 @@
   id ProfileId
   string ProfileName
 
-0x07E (skippable) [MP4, TM2020.v2]
+0x07E (skippable) [MP3, TMT, MP4, TM2020.v2]
   version
   id ProfileId
   string ProfileName

@@ -1,7 +1,7 @@
 CPlugVehicleCameraInternalModel 0x090F7000
 - inherits: CPlugCamControlModel
 
-0x000 [MP4, TM2020]
+0x000 [MP3, TMT, MP4, TM2020]
   version
   id Name
   v2+

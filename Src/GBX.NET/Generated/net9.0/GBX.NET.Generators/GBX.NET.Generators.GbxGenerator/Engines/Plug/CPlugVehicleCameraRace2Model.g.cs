@@ -44,11 +44,11 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090F6000)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090F6000 : Chunk<CPlugVehicleCameraRace2Model>
     {
         public override uint Id => 0x090F6000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public float U01;
         public int U02;
         public int U03;
@@ -247,11 +247,11 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090F6001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F6001 : Chunk<CPlugVehicleCameraRace2Model>
     {
         public override uint Id => 0x090F6001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -267,11 +267,11 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090F6002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F6002 : Chunk<CPlugVehicleCameraRace2Model>, IVersionable
     {
         public override uint Id => 0x090F6002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public float U02;

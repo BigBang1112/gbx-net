@@ -1,14 +1,14 @@
 CSceneLayout 0x0A003000
 - inherits: CScene
 
-0x00C [TMF]
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   int
 
-0x010 [TMF]
+0x010 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   float CameraFarZ
   vec3 CameraClearColor
 
-0x014 [TMF]
+0x014 [TMSX, TMNESWC, TMF]
   int
   bool
   box
@@ -37,7 +37,7 @@ CSceneLayout 0x0A003000
   CSceneTrafficPath[] TrafficPaths (deprec)
   CSceneFxNod SceneFxNod (external)
 
-0x019
+0x019 [MP3, TMT]
   int
   float
   float
@@ -51,7 +51,7 @@ CSceneLayout 0x0A003000
   float
   float
 
-0x01B
+0x01B [MP3, TMT]
   CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene

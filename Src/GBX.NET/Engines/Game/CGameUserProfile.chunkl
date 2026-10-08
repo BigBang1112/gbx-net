@@ -1,6 +1,6 @@
 CGameUserProfile 0x031CC000
 
-0x000 (skippable) [MP4, TM2020.v16]
+0x000 (skippable) [TMT, MP4, TM2020.v16]
   version = 16
   vec3 BadgeColor = (1, 0, 0)
   v0=
@@ -50,32 +50,32 @@ CGameUserProfile 0x031CC000
     v16+
       string
 
-0x001 (skippable) [MP4, TM2020.v1]
+0x001 (skippable) [TMT, MP4, TM2020.v1]
   version = 1
   block (encapsulated)
     CScriptTraitsPersistent ScriptPersistentTraits (direct)
 
-0x002 (skippable) [MP4, TM2020.v1]
+0x002 (skippable) [TMT, MP4, TM2020.v1]
   version = 1
   data
 
-0x003 (skippable) [MP4, TM2020.v1]
+0x003 (skippable) [TMT, MP4, TM2020.v1]
   version = 1
   data
 
-0x004 (skippable) [MP4]
+0x004 (skippable) [TMT, MP4]
   version = 2
   ContextTime[] ContextTimes
 
-0x005 (skippable) [MP4, TM2020.v1]
+0x005 (skippable) [TMT, MP4, TM2020.v1]
   version = 1
   string
 
-0x006 (skippable) [MP4]
+0x006 (skippable) [TMT, MP4]
   version = 3
   ContextMapRecordForProfile[] ContextMapRecordsForProfile
 
-0x007 (skippable) [MP4, TM2020.v3]
+0x007 (skippable) [TMT, MP4, TM2020.v3]
   version = 3
   v0=
     CInputBindingsConfig[] InputBindingsConfigs
@@ -97,7 +97,7 @@ CGameUserProfile 0x031CC000
   v2-
     Unknown[] LegacyVehicleSettings
 
-0x008 (skippable) [MP4]
+0x008 (skippable) [TMT, MP4]
   version = 1
   uint CamName
 

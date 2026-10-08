@@ -62,11 +62,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     }
 
     [Chunk(0x090C6000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6000 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -125,11 +125,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     }
 
     [Chunk(0x090C6001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6001 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -168,11 +168,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     }
 
     [Chunk(0x090C6002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6002 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public bool U02;
@@ -338,11 +338,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     }
 
     [Chunk(0x090C6003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6003 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;

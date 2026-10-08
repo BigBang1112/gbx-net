@@ -45,9 +45,11 @@ public partial class CScriptTraitsMetadata : CMwNod, IClass
     }
 
     [Chunk(0x11001000)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk11001000 : Chunk11002000
     {
         public override uint Id => 0x11001000;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -56,11 +58,11 @@ public partial class CScriptTraitsMetadata : CMwNod, IClass
     }
 
     [Chunk(0x11002000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk11002000 : Chunk<CScriptTraitsMetadata>
     {
         public override uint Id => 0x11002000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

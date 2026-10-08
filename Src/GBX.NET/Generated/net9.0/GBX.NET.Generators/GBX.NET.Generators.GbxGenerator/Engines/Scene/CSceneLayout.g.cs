@@ -326,11 +326,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A00300C)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A00300C : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A00300C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -346,11 +346,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003010)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A003010 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003010;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -365,11 +365,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003014)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk0A003014 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003014;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public int U01;
         public bool U02;
         public BoxAligned U03;
@@ -448,9 +448,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A003019)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A003019 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003019;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int U01;
         public float U02;
         public float U03;
@@ -499,9 +501,11 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     [Chunk(0x0A00301B)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A00301B : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A00301B;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
         public CSceneObject[]? U01;
         public SceneLoc[]? U02;

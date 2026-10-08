@@ -1,6 +1,6 @@
 CGameActionModel 0x2E008000
 
-0x000 (skippable) [MP4, TM2020]
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
   version
   v31+
     bool UseVehicleGuns

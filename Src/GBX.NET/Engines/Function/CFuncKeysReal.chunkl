@@ -1,14 +1,14 @@
 CFuncKeysReal 0x0501A000
 - inherits: CFuncKeys
 
-0x000
+0x000 [TM10, TMPU]
   float[] Ys
 
-0x001 [TMF]
+0x001 [TMSX, TMNESWC, TMF]
   float[] Ys
   int<ERealInterp> RealInterp
 
-0x002 (base: 0x001) [MP4]
+0x002 (base: 0x001) [MP3, TMT, MP4]
   base
   bool ForceTangentMinX
   bool ForceTangentMaxX

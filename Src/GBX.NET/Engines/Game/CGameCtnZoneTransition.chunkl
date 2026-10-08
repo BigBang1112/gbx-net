@@ -1,24 +1,24 @@
 CGameCtnZoneTransition 0x0314D000
 - inherits: CGameCtnZone
 
-0x000 [MP4, TM2020]
+0x000 [MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoTransition BlockInfoTransition (external)
 
-0x005 [MP4, TM2020]
+0x005 [MP3, TMT, MP4, TM2020]
   version
   id ReplacementZoneId
 
-0x006 [MP4, TM2020]
+0x006 [MP3, TMT, MP4, TM2020]
   version
   int
 
-0x007 [MP4, TM2020]
+0x007 [MP3, TMT, MP4, TM2020]
   version
   id
   id
   id
 
-0x008 [MP4, TM2020]
+0x008 [MP3, TMT, MP4, TM2020]
   version
   int<EBorderType> Border_North
   CGameCtnZoneGenealogy Genealogy_North (direct)

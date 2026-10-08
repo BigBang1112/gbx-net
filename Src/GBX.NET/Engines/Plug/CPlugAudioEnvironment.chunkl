@@ -1,7 +1,7 @@
 CPlugAudioEnvironment 0x09039000
 - inherits: CPlugAudio
 
-0x000
+0x000 [TMPU, TMSX, TMNESWC]
   int<EEAXPreset> EAXPreset
   float SizeFactor
   float Diffusion
@@ -32,10 +32,10 @@ CPlugAudioEnvironment 0x09039000
   bool ModulationTimeScale
   bool DecayHFLimitScale
 
-0x001 [TMF, MP4, TM2020]
+0x001 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   float DopplerFactor
 
-0x002 [TMF, MP4, TM2020]
+0x002 [TMF, MP3, TMT, MP4, TM2020]
   float SizeFactor
   float Diffusion
   float Gain
@@ -58,7 +58,7 @@ CPlugAudioEnvironment 0x09039000
   float AirAbsorbtionHF //NOT REALLY SURE
   bool DecayHFLimitScale
 
-0x004 [MP4, TM2020]
+0x004 [MP3, TMT, MP4, TM2020]
   version
   float
   v1+

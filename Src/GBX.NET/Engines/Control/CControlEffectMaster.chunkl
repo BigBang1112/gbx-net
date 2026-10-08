@@ -15,7 +15,7 @@ CControlEffectMaster 0x0701C000
   bool
   int
 
-0x002 [TMF, MP4, TM2020]
+0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CControlEffect FocusEffect (external)
   CControlEffect FocusGainedEffect (external)
   CControlEffect FocusLostEffect (external)
@@ -27,5 +27,5 @@ CControlEffectMaster 0x0701C000
   CControlEffect ActionEffect (external)
   CControlEffect ManagedEffect (external)
 
-0x003 [TMF, MP4, TM2020]
+0x003 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CMwRefBuffer SpecialEffect (external)

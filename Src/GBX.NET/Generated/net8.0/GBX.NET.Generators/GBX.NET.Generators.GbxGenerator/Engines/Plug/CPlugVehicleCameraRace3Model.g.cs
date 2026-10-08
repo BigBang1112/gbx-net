@@ -44,9 +44,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090EF000)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk090EF000 : Chunk<CPlugVehicleCameraRace3Model>
     {
         public override uint Id => 0x090EF000;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public float U01;
         public float U02;
         public float U03;
@@ -263,11 +265,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090EF001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF001 : Chunk<CPlugVehicleCameraRace3Model>
     {
         public override uint Id => 0x090EF001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -283,11 +285,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090EF002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF002 : Chunk<CPlugVehicleCameraRace3Model>
     {
         public override uint Id => 0x090EF002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01;
         public float U02;
 
@@ -306,11 +308,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090EF003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF003 : Chunk<CPlugVehicleCameraRace3Model>
     {
         public override uint Id => 0x090EF003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 
@@ -329,11 +331,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     [Chunk(0x090EF004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF004 : Chunk<CPlugVehicleCameraRace3Model>
     {
         public override uint Id => 0x090EF004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

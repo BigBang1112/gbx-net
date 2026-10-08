@@ -1,7 +1,7 @@
 CControlList 0x0700F000
 - inherits: CControlContainer
 
-0x007 [TMF]
+0x007 [TMSX, TMNESWC, TMF, MP3, TMT]
   int
   int
   int
@@ -11,7 +11,7 @@ CControlList 0x0700F000
   int
   Unknown[]
 
-0x00A [TMF]
+0x00A [TMSX, TMNESWC, TMF, MP3, TMT]
   float
   float
   float

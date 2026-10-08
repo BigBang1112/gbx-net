@@ -1,14 +1,14 @@
 CPlugWeatherModel 0x090BF000
 
-0x001 [TMF, MP4, TM2020]
+0x001 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugWeather[] Weathers (deprec)
   CPlugBitmap BitmapSpecularDir
 
-0x002 [MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020]
   CFuncDayTime FuncDayTime (external)
 
-0x003 [MP4, TM2020]
+0x003 [MP3, TMT, MP4, TM2020]
   CPlugBitmap BitmapWaterFog (external)
 
-0x004 [MP4, TM2020]
+0x004 [MP3, TMT, MP4, TM2020]
   CPlugMoodSetting MoodSetting (external)

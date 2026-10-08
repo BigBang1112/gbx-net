@@ -94,11 +94,11 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     [Chunk(0x0308E001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0308E001 : Chunk<CGameLeague>
     {
         public override uint Id => 0x0308E001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
         public byte U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -5,17 +5,17 @@ CControlEffectSimi 0x07010000
   Key[] Keys (version: 1, list)
   bool Centered
 
-0x002
+0x002 [TMSX]
   Key[] Keys (version: 2, list)
   bool Centered
 
-0x004
+0x004 [TMNESWC]
   Key[] Keys (version: 4, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode
   bool IsContinousEffect
 
-0x005 [TMF, MP4, TM2020]
+0x005 [TMF, MP3, TMT, MP4, TM2020]
   Key[] Keys (version: 5, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode

@@ -1,7 +1,7 @@
 CGameCtnMediaBlockCameraPath 0x030A1000
 - inherits: CGameCtnMediaBlockCamera
 
-0x000
+0x000 [TMSX, TMNESWC]
   Key[] Keys (version: 0, list)
 
 0x001
@@ -10,7 +10,7 @@ CGameCtnMediaBlockCameraPath 0x030A1000
 0x002 [TMF]
   Key[] Keys (version: 2, list)
 
-0x003 [MP4, TM2020.v5]
+0x003 [TMT, MP4, TM2020.v5]
   version
   Key[] Keys (list)
 

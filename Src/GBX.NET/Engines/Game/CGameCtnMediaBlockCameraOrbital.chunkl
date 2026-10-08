@@ -1,7 +1,7 @@
 CGameCtnMediaBlockCameraOrbital 0x030A0000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TMF, MP4]
+0x000 [TMF, TMT, MP4]
   Key[] Keys (version: -1, list)
 
 0x001 [TM2020.v1]

@@ -1,18 +1,18 @@
 CInputBindingsConfig 0x13006000
 - inherits: CMwNod
 
-0x000 [TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
   string Name = ""
   Binding[] Bindings
 
-0x001 [TMF, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   id[] ConfiguredDevices
 
-0x002 (skippable) [MP4, TM2020]
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
   string Name = ""
   int Version // Binding configuration revision, compared with the input map's default revision.
 
-0x003 [MP4.v1, TM2020.v1]
+0x003 [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   Binding[] Bindings (version: 1) // Chunk versions 0 and 1 use the same binding layout.
 

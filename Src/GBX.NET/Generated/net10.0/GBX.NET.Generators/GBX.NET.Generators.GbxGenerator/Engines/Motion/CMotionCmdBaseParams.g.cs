@@ -34,12 +34,9 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0802D000;
 
-    private uint period = 10000;
-    /// <summary>
-    /// Period in milliseconds.
-    /// </summary>
+    private TimeInt32 period = 10000;
     [AppliedWithChunk<Chunk0802D000>]
-    public uint Period
+    public TimeInt32 Period
     {
         get => this.period;
         set => this.period = value;
@@ -65,11 +62,11 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
     }
 
     [Chunk(0x0802D000)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0802D000 : Chunk<CMotionCmdBaseParams>
     {
         public override uint Id => 0x0802D000;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -78,7 +75,7 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
 
         public override void ReadWrite(CMotionCmdBaseParams n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref n.period);
+            rw.TimeInt32(ref n.period);
             rw.Single(ref n.phase);
         }
     }

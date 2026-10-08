@@ -1,6 +1,6 @@
 CSystemConfigDisplay 0x0B013000
 
-0x001 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x001 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
   int2 ScreenSizeFS
   int ScreenSizeWin // Window-size preset index. Available resolutions depend on the game.
   int<EColorDepth> ColorDepth
@@ -9,7 +9,7 @@ CSystemConfigDisplay 0x0B013000
   bool VSync
   bool FullScreen
 
-0x003 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x003 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
   bool DisableShadowBuffer
   int<EGpuSyncOld> GpuSync
   bool EmulateCursorGDI
@@ -17,18 +17,18 @@ CSystemConfigDisplay 0x0B013000
   bool OptimPartDynaGeom
   bool IgnoreDriverCrashes
 
-0x004 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x004 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int DisableColorWMask // Native 32-bit boolean. Preserve noncanonical values.
 
-0x005 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x005 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool EnableFullscreenGDI
 
-0x008 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x008 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<EZClip> ZClip
   int<EZClipAuto> ZClipAuto
   int ZClipNbBlock
 
-0x009 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x009 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<EWaterReflect> WaterReflect // TMF stores the older WaterGeom boolean in this slot.
   int
   bool PostFx
@@ -38,7 +38,7 @@ CSystemConfigDisplay 0x0B013000
   bool ForceFxColors
   bool ForceFxMotionBlur
 
-0x00B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x00B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool DisableZBufferRange
   float AgpUseFactor
 
@@ -55,7 +55,7 @@ CSystemConfigDisplay 0x0B013000
 0x00E (skippable) [TMO, TMSX, TMNESWC]
   bool
 
-0x00F (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x00F (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool
 
 0x010 (skippable) [TMNESWC, TMU, VSK5, TMF]
@@ -67,28 +67,28 @@ CSystemConfigDisplay 0x0B013000
 0x013 (skippable) [TMU, VSK5, TMF]
   int
 
-0x015 (skippable) [TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x015 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool DisableWindowedAntiAlias
 
-0x016 (skippable) [TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x016 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool EnableCheckLags
 
-0x017 (skippable) [TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x017 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int EnableRenderReadBack // Native 32-bit boolean. Preserve noncanonical values.
 
-0x018 (skippable) [TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x018 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int = 8
 
-0x019 (skippable) [TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x019 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<ELightMapCompute> LightMapCompute
 
 0x01A (skippable) [TMU, VSK5]
   bool LightMapQualityEnabled // Legacy boolean converted to a light-map quality enum.
 
-0x01B (skippable) [VSK5, TMU, TMF, MP3, MP4, TM2020]
+0x01B (skippable) [VSK5, TMU, TMF, MP3, TMT, MP4, TM2020]
   int<ELightFromMap> LightFromMap
 
-0x01C (skippable) [VSK5, TMF, MP3, MP4, TM2020]
+0x01C (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool MultiThread
   int ThreadCountMax
 
@@ -98,11 +98,11 @@ CSystemConfigDisplay 0x0B013000
 0x01E (skippable) [TMF]
   bool TreeAlwaysHq
 
-0x020 (skippable) [TMF, MP3, MP4, TM2020]
+0x020 (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool StereoByDefault
   bool StereoAdvanced
 
-0x021 (skippable) [TMF, MP3, MP4, TM2020]
+0x021 (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool WaterGeomStadium
 
 0x022 (skippable) [TMF]
@@ -114,11 +114,11 @@ CSystemConfigDisplay 0x0B013000
   int<EShadows> Shadows
   int<EFilterAnisoQ> FilterAnisoQ
 
-0x025 (skippable) [MP3, MP4, TM2020]
+0x025 (skippable) [MP3, TMT, MP4, TM2020]
   int<EDeferredAA> DeferredAA
   int<EFxBloomHdr> FxBloomHdr
 
-0x026 (skippable) [MP3, MP4, TM2020]
+0x026 (skippable) [MP3, TMT, MP4, TM2020]
   int DisableShadowBufferRaw // Deprecated native boolean. Preserve noncanonical values.
   int<EGpuSync> GpuSync0
   bool EmulateCursorGDI
@@ -135,7 +135,7 @@ CSystemConfigDisplay 0x0B013000
   int<EDisplaySync> DisplaySync
   bool FullScreen
 
-0x02A (skippable) [MP3, MP4, TM2020]
+0x02A (skippable) [MP3, TMT, MP4, TM2020]
   int<EAutoScale> AutoScale
   bool Customize
   int<EPreset> Preset
@@ -144,38 +144,38 @@ CSystemConfigDisplay 0x0B013000
   int<EShadows> Shadows
   int<EFilterAnisoQ> FilterAnisoQ
 
-0x02C (skippable) [MP3, MP4, TM2020]
+0x02C (skippable) [MP3, TMT, MP4, TM2020]
   int<EVehicleReflect> VehicleReflect
 
-0x02D (skippable) [MP3, MP4, TM2020]
+0x02D (skippable) [MP3, TMT, MP4, TM2020]
   int<EFxMotionBlur> FxMotionBlur
 
-0x02E (skippable) [MP3, MP4]
+0x02E (skippable) [MP3, TMT, MP4]
   bool
 
-0x02F (skippable) [MP3, MP4, TM2020]
+0x02F (skippable) [MP3, TMT, MP4, TM2020]
   int MaxFps
 
-0x030 (skippable) [MP3, MP4, TM2020]
+0x030 (skippable) [MP3, TMT, MP4, TM2020]
   int<ELightMapSizeMax> LightMapSizeMax
   int<ELightMapQuality> LM_Quality
   bool LM_QUltra
   bool LM_iLight
 
-0x031 (skippable) [MP3, MP4, TM2020]
+0x031 (skippable) [MP3, TMT, MP4, TM2020]
   bool Decals_3D__TextureDecals
   bool Decals_2D__TextureDecals
 
-0x032 (skippable) [MP3, MP4, TM2020]
+0x032 (skippable) [MP3, TMT, MP4, TM2020]
   int // Native writer uses 3 in MP and 7 in TM2020. Meaning is not verified.
 
-0x033 (skippable) [MP3, MP4, TM2020]
+0x033 (skippable) [MP3, TMT, MP4, TM2020]
   bool DisableHdrCubeRenderMipMap
 
-0x035 (skippable) [MP3, MP4, TM2020]
+0x035 (skippable) [MP3, TMT, MP4, TM2020]
   float FxMotionBlurIntens
 
-0x036 (skippable) [MP3, MP4, TM2020]
+0x036 (skippable) [MP3, TMT, MP4, TM2020]
   version
   int2 ScreenSizeFS
   int ScreenSizeWin
@@ -195,16 +195,16 @@ CSystemConfigDisplay 0x0B013000
       v3+
         string Adapter
 
-0x038 (skippable) [MP3]
+0x038 (skippable) [MP3, TMT]
   bool
 
-0x039 (skippable) [MP3, MP4, TM2020]
+0x039 (skippable) [MP3, TMT, MP4, TM2020]
   int<EScreenShotExt> ScreenShotExt
 
-0x03A (skippable) [MP3, MP4, TM2020]
+0x03A (skippable) [MP3, TMT, MP4, TM2020]
   int<EGeometryQuality> GeometryQuality
 
-0x03B (skippable) [MP3, MP4, TM2020]
+0x03B (skippable) [MP3, TMT, MP4, TM2020]
   float ParticleMaxGpuLoadMs
 
 0x03C (skippable) [MP4, TM2020]

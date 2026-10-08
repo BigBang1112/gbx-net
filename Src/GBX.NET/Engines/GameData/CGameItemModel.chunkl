@@ -7,49 +7,49 @@ CGameItemModel 0x2E002000
 0x001 (header, struct: SHeaderFileVersion) // file version
   version
 
-0x000 [TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
   CSceneMobil Vehicle (external)
 
-0x001
+0x001 [TM10, TMPU]
   CPlugGameSkin GameSkin
 
-0x002 // old race interface fid
+0x002 [TM10, TMPU, TMSX] // old race interface fid
   CScene2d RaceInterfaceFid
 
-0x003 [TMF] // LowQualitySolid
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMF] // LowQualitySolid
   CPlugSolid LowQualitySolid (external)
 
-0x004
+0x004 [TMSX]
   CMwNod
 
-0x006 [TMF] // DefaultCamIndex
+0x006 [TMSX, TMNESWC, TMF, MP3] // DefaultCamIndex
   int DefaultCamIndex
 
-0x007 // old materials
+0x007 [TMSX] // old materials
   CPlugMaterial MaterialSkin (external)
   CPlugMaterial MaterialGlass (external)
   CPlugMaterial MaterialDetails (external)
 
-0x008 [TMF, MP4, TM2020] // Nadeo skin fids
+0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
   CMwNod?[] NadeoSkinFids (external)
 
-0x009 [TMF, MP4, TM2020] // Cameras
+0x009 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Cameras
   CMwNod[] Cameras (deprec, external)
 
-0x00A [TMF] // DecoratorSolid
+0x00A [TMNESWC, TMF, MP3] // DecoratorSolid
   CPlugDecoratorSolid DecoratorSolid (external)
 
-0x00B [TMF] // stem materials
+0x00B [TMNESWC, TMF] // stem materials
   CPlugMaterial StemMaterial (external)
   CPlugMaterial StemBumpMaterial (external)
 
-0x00C [TMF, MP4, TM2020] // race interface fid
+0x00C [TMNESWC, TMF, MP3, TMT, MP4, TM2020] // race interface fid
   CScene2d RaceInterfaceFid
 
-0x00D (ForcedSkinsFids) [TMF]
+0x00D (ForcedSkinsFids) [TMNESWC, TMF]
   CMwNod[] ForcedSkinsFids
 
-0x00E // StadiumCar materials
+0x00E [TMNESWC] // StadiumCar materials
   CPlugMaterial MaterialSkin (external)
   CPlugMaterial MaterialGlass (external)
   CPlugMaterial MaterialDetails (external)
@@ -69,23 +69,23 @@ CGameItemModel 0x2E002000
   CPlugLight ProjShadow (external)
   CPlugLight ProjFront (external)
 
-0x012 [TMF, MP4, TM2020]
+0x012 [TMF, MP3, TMT, MP4, TM2020]
   vec3 GroundPoint
   float PainterGroundMargin
   float OrbitalCenterHeightFromGround
   float OrbitalRadiusBase
   float OrbitalPreviewAngle
 
-0x013 (AudioEnvironmentInCar) [TMF, MP4]
+0x013 (AudioEnvironmentInCar) [TMF, MP3, TMT, MP4]
   CPlugAudioEnvironment AudioEnvironmentInCar (external)
 
 0x014
   CMwNod
 
-0x015 [MP4, TM2020] // ItemTypeE
+0x015 [MP3, TMT, MP4, TM2020] // ItemTypeE
   int<EItemType> ItemTypeE
 
-0x019 [MP4, TM2020] // model
+0x019 [MP3, TMT, MP4, TM2020] // model
   version
   if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
     v8-
@@ -126,13 +126,13 @@ CGameItemModel 0x2E002000
   v15+
     CPlugGameSkinAndFolder MaterialModifier (external)
 
-0x01A [MP4, TM2020]
+0x01A [MP3, TMT, MP4, TM2020]
   CMwNod
 
-0x01B
+0x01B [MP3, TMT]
   CMwNod
 
-0x01C [MP4, TM2020] // default placement
+0x01C [MP3, TMT, MP4, TM2020] // default placement
   version
   v5+
     CGameItemPlacementParam DefaultPlacement (external)
@@ -160,7 +160,7 @@ CGameItemModel 0x2E002000
 0x01D
   short
 
-0x01E [MP4, TM2020]
+0x01E [MP3, TMT, MP4, TM2020]
   version
   v2+
     string ArchetypeRef
@@ -172,7 +172,7 @@ CGameItemModel 0x2E002000
         v7+
           int // -1
 
-0x01F [MP4, TM2020]
+0x01F [MP3, TMT, MP4, TM2020]
   version
   v6-
     v5+
@@ -197,7 +197,7 @@ CGameItemModel 0x2E002000
           int?
           int?
 
-0x020 [MP4, TM2020]
+0x020 [MP3, TMT, MP4, TM2020]
   version
   v1-
     string
@@ -207,11 +207,11 @@ CGameItemModel 0x2E002000
   v3+
     boolbyte // ArticlePtr? xD
 
-0x021 [MP4]
+0x021 [TMT, MP4]
   version
   ItemGroupElement[] ItemGroupElements
 
-0x022 (skippable)
+0x022 (skippable) [TMT]
   version
   int
   id[]

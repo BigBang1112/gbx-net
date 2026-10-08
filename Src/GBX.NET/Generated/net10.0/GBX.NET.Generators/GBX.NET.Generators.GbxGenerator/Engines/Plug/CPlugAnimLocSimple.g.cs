@@ -116,11 +116,11 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     [Chunk(0x090F8000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F8000 : Chunk<CPlugAnimLocSimple>, IVersionable
     {
         public override uint Id => 0x090F8000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
         public int Version { get; set; }
         public int U02;

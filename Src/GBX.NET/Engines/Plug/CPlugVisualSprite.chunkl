@@ -1,7 +1,7 @@
 CPlugVisualSprite 0x09010000
 - inherits: CPlugVisual3D
 
-0x005 [TMF]
+0x005 [TMSX, TMNESWC, TMF]
   int
   float
   float
@@ -9,12 +9,12 @@ CPlugVisualSprite 0x09010000
   float
   float
 
-0x006 [TMF]
+0x006 [TMSX, TMNESWC, TMF]
   int16
   int16
 
-0x008 [MP4, TM2020]
+0x008 [MP3, TMT, MP4, TM2020]
   CPlugSpriteParam SpriteParam (direct)
 
-0x009 [MP4, TM2020]
+0x009 [MP3, TMT, MP4, TM2020]
   Rect[]

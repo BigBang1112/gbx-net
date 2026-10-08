@@ -1,13 +1,13 @@
 CSceneFxNod 0x0A03A000
 
-0x000 [TMF]
+0x000 [TMNESWC, TMF]
   CSceneFx Fx (external)
 
-0x001 [TMF]
+0x001 [TMNESWC, TMF]
   CSceneFxNod[] NodInputs (deprec)
   int
 
-0x002 [MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020]
   version
   CMwNod
   CMwNod (external)

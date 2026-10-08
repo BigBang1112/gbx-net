@@ -1,7 +1,7 @@
 CFuncEnvelope 0x05036000
 - inherits: CFunc
 
-0x000 [TMF, MP4]
+0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
   float KeyFrameValue0
   float KeyFrameValue1
   float KeyFrameValue2

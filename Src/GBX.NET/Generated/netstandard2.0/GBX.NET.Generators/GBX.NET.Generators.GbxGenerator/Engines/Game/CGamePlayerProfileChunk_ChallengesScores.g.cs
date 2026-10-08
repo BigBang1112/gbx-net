@@ -53,11 +53,11 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     }
 
     [Chunk(0x03149000)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03149000 : SkippableChunk<CGamePlayerProfileChunk_ChallengesScores>, IVersionable
     {
         public override uint Id => 0x03149000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
         public int U01;
 

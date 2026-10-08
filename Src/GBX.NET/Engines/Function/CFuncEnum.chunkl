@@ -1,7 +1,7 @@
 CFuncEnum 0x0500E000
 - inherits: CFunc
 
-0x005 [TMF, MP4, TM2020]
+0x005 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   int WantedCount
   CPlug[] Values (external)
   id Name
@@ -10,8 +10,8 @@ CFuncEnum 0x0500E000
   vec2 MinTexCoord
   vec2 MaxTexCoord
 
-0x006 [TMF, MP4, TM2020]
+0x006 [TMF, MP3, TMT, MP4, TM2020]
   CMwRefBuffer IconIndexs (external)
 
-0x007 [TMF, MP4, TM2020]
+0x007 [TMF, MP3, TMT, MP4, TM2020]
   vec2 TexSize

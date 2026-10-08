@@ -44,11 +44,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     [Chunk(0x240D5000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5000 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
 
@@ -67,11 +67,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     [Chunk(0x240D5001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5001 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
 
@@ -90,11 +90,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     [Chunk(0x240D5002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5002 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
 
@@ -113,12 +113,12 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     [Chunk(0x240D5003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5003 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>
     {
         public override uint Id => 0x240D5003;
         public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -127,11 +127,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     [Chunk(0x240D5004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5004 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public int U02;

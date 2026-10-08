@@ -1,7 +1,7 @@
 CPlugSolid 0x09005000
 - inherits: CPlug
 
-0x000 [TM10, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   int TypeAndIndex
 
 0x006
@@ -13,7 +13,7 @@ CPlugSolid 0x09005000
   float
   mat3
 
-0x007 [TM10, TMSX]
+0x007 [TM10, TMPU, TMSX]
   bool
 
 0x00B
@@ -45,12 +45,12 @@ CPlugSolid 0x09005000
   int
   int
 
-0x00D [TM10, TMSX, TMNESWC]
+0x00D [TM10, TMPU, TMSX, TMNESWC]
   bool
   bool
   CPlug Tree (external)
 
-0x00E [TM10, TMSX, TMNESWC, TMF]
+0x00E [TM10, TMPU, TMSX, TMNESWC, TMF]
   float
   float
   float

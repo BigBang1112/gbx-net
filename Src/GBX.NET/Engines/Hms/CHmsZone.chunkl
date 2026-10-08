@@ -9,7 +9,7 @@ property bool FogByVertex
     else
       FogFlags = FogFlags & 0xFFFFFFFE
 
-0x002 [TMF, MP4, TM2020] // GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.
   CHmsFogPlane[] FogPlanes (deprec)
   FogFlags = FogFlags & 0xF
   vec3 FogRGB = (1, 1, 1) // sRGB, verified by FogSetColorLinear converting into this field.
@@ -19,19 +19,19 @@ property bool FogByVertex
   uint FogFlags = 6 // Bit 0: FogByVertex; bits 1-2: FogFormula; bit 3: FogSpace.
   FogFlags = FogFlags & 0xF
 
-0x003 [TMF, MP4, TM2020]
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   bool MRIsForced
   if MRIsForced
     vec3 MRPoint
     vec3 MRNormal
 
-0x005 [TMF, MP4, TM2020]
+0x005 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CHmsPrecalcRender[] PrecalcRenders (deprec)
 
 0x006 [TMF]
   CPlugBitmap BitmapCubeReflectHardSpecA (external)
 
-0x008 [MP4, TM2020]
+0x008 [MP3, TMT, MP4, TM2020]
   CPlugBitmap BitmapCubeReflectHardSpecA (external)
   CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
 

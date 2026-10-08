@@ -1,7 +1,7 @@
 CGamePlayerProfileChunk_ChallengesScores 0x03149000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable) [MP4]
+0x000 (skippable) [MP3, TMT, MP4]
   version
   int
 

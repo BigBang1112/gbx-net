@@ -42,7 +42,7 @@ CGameCtnMediaClip 0x03079000
 0x00C
   int
 
-0x00D [MP4.v0, TM2020.v1] // MP tracks
+0x00D [TMT, MP4.v0, TM2020.v1] // MP tracks
   version = 1
   CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name

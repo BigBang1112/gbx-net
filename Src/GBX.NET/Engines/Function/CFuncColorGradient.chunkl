@@ -1,7 +1,7 @@
 CFuncColorGradient 0x05038000
 - inherits: CFunc
 
-0x000 [TMF]
+0x000 [TMSX, TMNESWC, TMF]
   vec3 KeyFrameValue0
   vec3 KeyFrameValue1
   vec3 KeyFrameValue2
@@ -9,7 +9,7 @@ CFuncColorGradient 0x05038000
   float KeyFramePos1
   float KeyFramePos2
 
-0x001 (base: 0x000) [MP4, TM2020]
+0x001 (base: 0x000) [MP3, TMT, MP4, TM2020]
   base
   int<EColorSpace> ColorSpace
 

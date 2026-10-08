@@ -12,6 +12,6 @@ CHmsLight 0x0600C000
   base
   CPlugBitmap BitmapFlare (external)
 
-0x003 (base: 0x002) [TMF, MP4, TM2020]
+0x003 (base: 0x002) [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   base
   CPlugBitmap BitmapSprite (external)

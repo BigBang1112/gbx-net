@@ -1,16 +1,16 @@
 CScene 0x0A001000
 - abstract
 
-0x003 [TMF]
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   CSceneConfig SceneConfig
 
-0x004 [TMF]
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   uint[]
 
-0x005 [TMF]
+0x005 [TMSX, TMNESWC, TMF, MP3, TMT]
   CMotionManager[] MotionManagerModels (deprec, external)
 
-0x006 (ignore)
+0x006 (ignore) [TMSX, TMNESWC]
   OldSceneMobil[] OldMobils
 
 archive OldSceneMobil

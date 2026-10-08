@@ -1,34 +1,34 @@
 CPlugTree 0x0904F000
 - inherits: CPlug
 
-0x006 [TM10, TMSX, TMNESWC, TMF, TMT, MP4, TM2020]
+0x006 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugTree[] Children = empty (deprec, list)
 
-0x00C [TM10, TMSX]
+0x00C [TM10, TMPU, TMSX]
   int // could be array of Ids
   if U01 > 0
     throw
 
-0x00D (demonstration: partial) [TM10, TMSX, TMNESWC, TMF, TMT, MP4, TM2020]
+0x00D (demonstration: partial) [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   id Name
   id
 
-0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4, TM2020] // FuncTree
+0x011 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // FuncTree
   CFuncTree FuncTree (external)
 
-0x015 (demonstration: partial) [TM10] // flags+location, TM1.0
+0x015 (demonstration: partial) [TM10, TMPU] // flags+location, TM1.0
   datauint Flags
   Flags = Flags & 0x1FFFF
   if (Flags & 4) != 0
     Iso4? Location
 
-0x016 [TM10, TMSX, TMNESWC, TMF, TMT, MP4, TM2020] // properties
+0x016 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // properties
   CPlugVisual Visual
   CPlug Shader (external)
   CPlug Surface
   CPlugTreeGenerator Generator
 
-0x017
+0x017 [TMSX, TMNESWC]
   CPlugVisual
 
 0x018 (demonstration: partial) // flags+location, unused
@@ -45,7 +45,7 @@ CPlugTree 0x0904F000
   Flags = Flags | 0x2800
   // Flags = Flags | 0x8000 (if Bucr3IsR)
 
-0x01A (demonstration: partial) [TMNESWC, TMF, TMT, MP4, TM2020] // flags+location, latest
+0x01A (demonstration: partial) [TMNESWC, TMF, MP3, TMT, MP4, TM2020] // flags+location, latest
   datauint Flags
   if (Flags & 4) != 0
     Iso4? Location

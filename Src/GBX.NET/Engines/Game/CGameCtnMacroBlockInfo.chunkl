@@ -1,13 +1,13 @@
 CGameCtnMacroBlockInfo 0x0310D000
 - inherits: CGameCtnCollector
 
-0x000 [MP4, TM2020] // block spawns
+0x000 [MP3, TMT, MP4, TM2020] // block spawns
   BlockSpawn[] BlockSpawns (list)
 
-0x001 [MP4, TM2020] // block skin spawns
+0x001 [MP3, TMT, MP4, TM2020] // block skin spawns
   BlockSkinSpawn[] BlockSkinSpawns (list)
 
-0x002 [MP4, TM2020] // card events spawns
+0x002 [MP3, TMT, MP4, TM2020] // card events spawns
   CardEventsSpawn[] CardEventsSpawns (list)
 
 0x003 // legacy object spawns
@@ -22,17 +22,17 @@ CGameCtnMacroBlockInfo 0x0310D000
   int = 1
   LegacyDecal[U01] LegacyDecals
 
-0x006 [MP4, TM2020]
+0x006 [MP3, TMT, MP4, TM2020]
   int = 2
   data SceneDecals
 
-0x007
+0x007 [MP3]
   int = 3
   CGameCtnMediaClipGroup ClipGroupInGame
   CGameCtnMediaClipGroup ClipGroupEndRace
   CMwNod
 
-0x008 [MP4, TM2020]
+0x008 [MP3, TMT, MP4, TM2020]
   CGameCtnAutoTerrain[] AutoTerrains (deprec)
   int
   int // native DoBool, but the MP4 fixture stores 2; preserve the raw value
@@ -43,11 +43,11 @@ CGameCtnMacroBlockInfo 0x0310D000
 0x00A
   int
 
-0x00B (skippable) [MP4, TM2020] // script metadata
+0x00B (skippable) [MP3, TMT, MP4, TM2020] // script metadata
   block (encapsulated)
     CScriptTraitsMetadata ScriptMetadata (direct)
 
-0x00C (skippable) [MP4.v2, TM2020.v2] // splines
+0x00C (skippable) [MP3, TMT, MP4.v2, TM2020.v2] // splines
   version = 2
   v0=
     CMwNod[] (deprec)
@@ -62,10 +62,10 @@ CGameCtnMacroBlockInfo 0x0310D000
     return
   CMwNod[] (deprec)
 
-0x00D (skippable)
+0x00D (skippable) [MP3]
   version
 
-0x00E [MP4.v2, TM2020.v2] // object spawns
+0x00E [MP3, TMT, MP4.v2, TM2020.v2] // object spawns
   version
   ObjectSpawn[] ObjectSpawns (list)
   v2-
@@ -74,17 +74,17 @@ CGameCtnMacroBlockInfo 0x0310D000
   v3+
     int4[] ObjectNeighbourPairs
 
-0x00F [MP4, TM2020]
+0x00F [MP3, TMT, MP4, TM2020]
   version
   int3 OffzoneOffset
   int3 OffzoneTriggerSize = (3, 1, 3)
   boxint3[] Offzones
 
-0x010 (skippable) [MP4, TM2020]
+0x010 (skippable) [TMT, MP4, TM2020]
   version
   int IconSize
 
-0x011 (skippable) [MP4, TM2020] // mediatracker
+0x011 (skippable) [TMT, MP4, TM2020] // mediatracker
   version
   block (encapsulated)
     int3 ClipOffset

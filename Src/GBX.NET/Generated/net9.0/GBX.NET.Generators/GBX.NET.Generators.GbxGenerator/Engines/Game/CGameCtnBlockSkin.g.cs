@@ -86,9 +86,11 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     /// text
     /// </summary>
     [Chunk(0x03059000, "text")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk03059000 : Chunk<CGameCtnBlockSkin>
     {
         public override uint Id => 0x03059000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -128,11 +130,11 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     /// skin + parent skin
     /// </summary>
     [Chunk(0x03059002, "skin + parent skin")]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03059002 : Chunk<CGameCtnBlockSkin>
     {
         public override uint Id => 0x03059002;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

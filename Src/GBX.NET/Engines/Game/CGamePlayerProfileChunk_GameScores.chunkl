@@ -1,21 +1,21 @@
 CGamePlayerProfileChunk_GameScores 0x03146000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable) [MP4]
+0x000 (skippable) [MP3, TMT, MP4]
   version
   STrainingMedalsScores[] TrainingMedalsScores
 
-0x001 (skippable) [MP4]
+0x001 (skippable) [MP3, TMT, MP4]
   version
   block (encapsulated)
     CGamePlayerOfficialScores OfficialScores1
 
-0x004 (skippable) [MP4]
+0x004 (skippable) [MP3, TMT, MP4]
   version
   block (encapsulated)
     CGamePlayerOfficialScores OfficialScores2
 
-0x005 (skippable) [MP4]
+0x005 (skippable) [MP3, TMT, MP4]
   version
   LadderMatchResult[] LadderMatchResults
 

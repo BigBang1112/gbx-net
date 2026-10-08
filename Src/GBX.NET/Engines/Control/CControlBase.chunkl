@@ -1,23 +1,23 @@
 CControlBase 0x07001000
 - inherits: CSceneToy
 
-0x00C [TMF, MP4, TM2020]
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   int
   int
   int
   int
   string StackText
 
-0x00E [TMF, MP4, TM2020]
+0x00E [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   boxaligned
   CControlLayout Layout
   int
   int
 
-0x00F [TMF, MP4, TM2020]
+0x00F [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   string
 
-0x010 [TMF, MP4, TM2020]
+0x010 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CMwNod U01
   if U01 == null
     int?

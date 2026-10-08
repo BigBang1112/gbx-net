@@ -12,7 +12,7 @@ CGameCtnMediaBlockGhost 0x030E5000
   CGameCtnGhost GhostModel
   float StartOffset
 
-0x002 [MP4, TM2020.v5]
+0x002 [TMT, MP4, TM2020.v5]
   version
   v3+
     Key[] Keys (list)

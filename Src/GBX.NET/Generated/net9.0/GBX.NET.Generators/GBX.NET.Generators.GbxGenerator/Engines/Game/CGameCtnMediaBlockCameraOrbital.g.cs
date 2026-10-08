@@ -56,11 +56,11 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
     [Chunk(0x030A0000)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk030A0000 : Chunk<CGameCtnMediaBlockCameraOrbital>
     {
         public override uint Id => 0x030A0000;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

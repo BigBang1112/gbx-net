@@ -1,14 +1,14 @@
 CPlugBitmapDecals 0x09078000
 - inherits: CPlug
 
-0x000 [MP4, TM2020]
+0x000 [MP3, TMT, MP4, TM2020]
   version
   CPlugDecalModel[] DecalModels (deprec, external)
   DecalSet[] DecalSets
   v4+
     id MatterId
 
-0x001 [MP4, TM2020]
+0x001 [MP3, TMT, MP4, TM2020]
   int
   int
   int

@@ -1,7 +1,7 @@
 CPlugProbe 0x09106000
 - inherits: CPlug
 
-0x000 [MP4, TM2020]
+0x000 [MP3, TMT, MP4, TM2020]
   int
   vec3
   float

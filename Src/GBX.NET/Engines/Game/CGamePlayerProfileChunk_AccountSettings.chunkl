@@ -46,7 +46,7 @@ archive
       int BuddyArchiveVersion = 5
       CGameBuddy[] Buddies (version: BuddyArchiveVersion)
 
-0x000 (skippable) [MP4.v3, TM2020.v3]
+0x000 (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
   version = 3
   int EulaVersion
   if !IsOnlineSaveArchivation
@@ -75,7 +75,7 @@ archive
     int PrivacyPolicyVersion
     int Age
 
-0x001 (skippable) [MP4.v1, TM2020.v2]
+0x001 (skippable) [MP3, TMT, MP4.v1, TM2020.v2]
   version = 2
   string Description (formatted)
   string AvatarName (formatted)
@@ -83,11 +83,11 @@ archive
   v2+
     string Trigram
 
-0x002 (skippable) [MP4.v1, TM2020.v1]
+0x002 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   boolbyte ReceiveNews
 
-0x003 (skippable) [MP4.v7, TM2020.v7]
+0x003 (skippable) [MP3, TMT, MP4.v7, TM2020.v7]
   version = 7
   int BuddyArchiveVersion = 5 (chunk)
   CGameBuddy[] Buddies (version: BuddyArchiveVersion)
@@ -101,11 +101,11 @@ archive
     v7+
       data
 
-0x004 (skippable) [MP4.v1, TM2020.v1]
+0x004 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   string
 
-0x005 (skippable) [MP4.v2, TM2020.v2]
+0x005 (skippable) [MP3, TMT, MP4.v2, TM2020.v2]
   version = 2
   if IsOnlineSaveArchivation
     return
@@ -121,12 +121,12 @@ archive
       CGameNetOnlineMessage[] ReadMessages (deprec)
       CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x006 (skippable) [MP4.v1, TM2020.v1]
+0x006 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   if !IsOnlineSaveArchivation
     byte Flags2
 
-0x007 (skippable) [MP4, TM2020]
+0x007 (skippable) [MP3, TMT, MP4, TM2020]
   version
   string BroadcastLogin
   int BroadcastVideoWidth = 1280
@@ -141,15 +141,15 @@ archive
   if !IsOnlineSaveArchivation
     string BroadcastPasswordEncryptedHexa
 
-0x008 (skippable) [MP4.v1, TM2020.v1]
+0x008 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   string ClubLinkUrl
 
-0x009 (skippable) [MP4.v1, TM2020.v1]
+0x009 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   byte FameStars
 
-0x00A (skippable) [MP4.v3, TM2020.v3]
+0x00A (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
   version = 3
   float AnalogSensitivity = 1
   float AnalogDeadZone = 0.1f
@@ -166,23 +166,23 @@ archive
   float MouseSensitivity_Default = 0.75f
   float MouseSensitivity_Laser = 0.4f
 
-0x00B (skippable) [MP4.v1, TM2020.v1]
+0x00B (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   int MouseReleaseKey
   v1+
     float CenterSpringIntensity
 
-0x00C (skippable) [MP4]
+0x00C (skippable) [MP3, TMT, MP4]
   version
   string YoutubeRefreshToken
   YoutubeUpload[] YoutubeUploads
 
-0x00D (skippable) [MP4, TM2020]
+0x00D (skippable) [MP3, TMT, MP4, TM2020]
   version
   int
   int
 
-0x00E (skippable) [MP4, TM2020]
+0x00E (skippable) [MP3, TMT, MP4, TM2020]
   version
   if IsOnlineSaveArchivation
     return

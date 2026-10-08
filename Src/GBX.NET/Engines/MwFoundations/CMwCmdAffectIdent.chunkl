@@ -1,7 +1,7 @@
 CMwCmdAffectIdent 0x01032000
 - inherits: CMwCmdInst
 
-0x000 [TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
   string
   CMwCmdExp Value
   bool

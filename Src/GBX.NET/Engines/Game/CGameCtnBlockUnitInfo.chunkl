@@ -1,27 +1,27 @@
 CGameCtnBlockUnitInfo 0x03036000
 
-0x000 [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   int PlacePylons
   bool // AcceptPylons? true = 255, false = 0?
   bool
   int3 RelativeOffset
   CGameCtnBlockInfoClip[] Clips (external) // also called Junctions
 
-0x001 [TM10, TMSX, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   id Surface
   int Frontier
   int<Direction> Dir
 
-0x002 (skippable) [TMSX, TMF, MP3, TMT, MP4, TM2020] // Underground
+0x002 (skippable) [TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Underground
   bool Underground
 
-0x003 [TMSX, TMF]
+0x003 [TMSX, TMNESWC, TMF]
   CGameCtnBlockInfo ReplacementBlockInfo (external)
   id ReplacementId
   int<ReplacementDir> MultiDir
   int
 
-0x004 [TMF, MP3, TMT, MP4, TM2020] // AcceptPylons
+0x004 [TMNESWC, TMF, MP3, TMT, MP4, TM2020] // AcceptPylons
   int AcceptPylons
 
 0x005 [TMF, MP3, TMT, MP4, TM2020] // TerrainModifierId

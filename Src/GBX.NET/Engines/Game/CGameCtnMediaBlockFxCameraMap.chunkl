@@ -1,11 +1,11 @@
 CGameCtnMediaBlockFxCameraMap 0x03139000
 - inherits: CGameCtnMediaBlock
 
-0x000 [MP4, TM2020]
+0x000 [TMT, MP4, TM2020]
   timefloat Start
   timefloat End
 
-0x001 [MP4, TM2020]
+0x001 [TMT, MP4, TM2020]
   byte ArchiveMarker // GmCamVal marker precedes the transform.
   iso4 Transform = Iso4.Identity
   float Fov = 90 // Degrees.

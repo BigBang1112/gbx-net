@@ -53,11 +53,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     }
 
     [Chunk(0x03130000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130000 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public byte[]? U02;
@@ -79,11 +79,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     }
 
     [Chunk(0x03130001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130001 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec3 U01;
         public float U02 = 1;
@@ -112,11 +112,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// VehicleProfiles
     /// </summary>
     [Chunk(0x03130002, "VehicleProfiles")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130002 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -133,11 +133,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     }
 
     [Chunk(0x03130003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130003 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public TransQuat[]? U01;
         public byte[]? U02;

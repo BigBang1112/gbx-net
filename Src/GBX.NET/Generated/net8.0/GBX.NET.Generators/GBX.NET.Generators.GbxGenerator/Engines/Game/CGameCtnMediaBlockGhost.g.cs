@@ -185,11 +185,11 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030E5002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 5)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 5)]
     public partial class Chunk030E5002 : Chunk<CGameCtnMediaBlockGhost>, IVersionable
     {
         public override uint Id => 0x030E5002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -1,27 +1,27 @@
 CPlugSound 0x0901A000
 - inherits: CPlugAudio
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CMwNod PlugFile (external) // CPlugFileSnd
 
-0x002 [TMF]
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMF]
   id
 
-0x009
+0x009 [TM10, TMPU, TMSX, TMNESWC]
   int<EMode> Mode
   float Volume
   bool IsLooping
   bool IsContinuous
   float Priority
 
-0x00B [TMF]
+0x00B [TM10, TMPU, TMSX, TMNESWC, TMF]
   int<ESoundKind> SoundKind
   int InsideConeAngle
   int OutsideConeAngle
   float ConeOutsideAttenuation
   float ConeOutsideAttenuationHF
 
-0x00C [TMF]
+0x00C [TMSX, TMNESWC, TMF]
   float RefDistance
   float MaxDistanceOmni
   bool EnableDoppler
@@ -41,7 +41,7 @@ CPlugSound 0x0901A000
   bool IsContinuous
   float Priority
 
-0x00E [MP4, TM2020]
+0x00E [MP3, TMT, MP4, TM2020]
   version
   int<EMode> Mode
   float
@@ -65,7 +65,7 @@ CPlugSound 0x0901A000
                 v9+
                   id GroupDuplicate
 
-0x00F [MP4, TM2020]
+0x00F [MP3, TMT, MP4, TM2020]
   version
   float RefDistance
   float MaxDistance
@@ -100,22 +100,22 @@ CPlugSound 0x0901A000
                     v12+
                       float
 
-0x010
+0x010 [MP3]
   version
   CPlugSound[] OldSubSources (deprec)
 
-0x011 [MP4, TM2020]
+0x011 [MP3, TMT, MP4, TM2020]
   version
   int<ESoundKind> SoundKind
   int InsideConeAngle
   int OutsideConeAngle
   float ConeOutsideAttenuation
 
-0x012 [MP4, TM2020]
+0x012 [MP3, TMT, MP4, TM2020]
   version
   CPlugSound BackingSound (external)
 
-0x013 [MP4, TM2020]
+0x013 [MP3, TMT, MP4, TM2020]
   version
   CPlugSound FocusedSound (external)
 

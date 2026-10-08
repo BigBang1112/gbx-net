@@ -46,11 +46,11 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     }
 
     [Chunk(0x0900C000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900C000 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900C000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -66,11 +66,11 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     }
 
     [Chunk(0x0900C001)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900C001 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900C001;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -86,11 +86,11 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     }
 
     [Chunk(0x0900D002)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900D002 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900D002;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -99,9 +99,11 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     }
 
     [Chunk(0x0900F002)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900F002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

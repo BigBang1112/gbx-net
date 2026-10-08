@@ -301,9 +301,11 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     [Chunk(0x03084001)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk03084001 : Chunk03084000
     {
         public override uint Id => 0x03084001;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -422,11 +424,11 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     [Chunk(0x03084007)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4)]
     public partial class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>, IVersionable
     {
         public override uint Id => 0x03084007;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

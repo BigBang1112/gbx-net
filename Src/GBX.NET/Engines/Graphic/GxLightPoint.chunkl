@@ -1,9 +1,9 @@
 GxLightPoint 0x04003000
 - inherits: GxLightNotAmbient
 
-0x003
+0x003 [TM10, TMPU]
   float FlareSize
 
-0x004 [TMF, MP4, TM2020]
+0x004 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   float FlareSize
   float FlareBiasZ

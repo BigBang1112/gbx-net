@@ -80,11 +80,11 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     }
 
     [Chunk(0x06026000)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06026000 : Chunk<CHmsAmbientOcc>
     {
         public override uint Id => 0x06026000;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01 = 0.5f;
         public float U02 = 0.5f;
         public float U03 = 0.5f;

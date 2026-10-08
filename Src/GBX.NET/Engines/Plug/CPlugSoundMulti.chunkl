@@ -1,15 +1,15 @@
 CPlugSoundMulti 0x09064000
 - inherits: CPlugSound
 
-0x000 [TMF]
+0x000 [TMSX, TMNESWC, TMF]
   CMwNod AdditionalSounds (external)
   int<ESoundInputMapping> InputMapping
 
-0x001 [MP4, TM2020]
+0x001 [MP3, TMT, MP4, TM2020]
   CMwNod[] AdditionalSounds2 (deprec, external)
   int<ESoundInputMapping> InputMapping
 
-0x002 [MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020]
   version
   float PitchVariancePos
   float VolumeVariance
@@ -20,7 +20,7 @@ CPlugSoundMulti 0x09064000
       v3+
         float PitchVarianceNeg
 
-0x003 [MP4, TM2020]
+0x003 [MP3, TMT, MP4, TM2020]
   version
   bool // is Distance from ESoundInputMapping
   vec3[] PreferedDistances

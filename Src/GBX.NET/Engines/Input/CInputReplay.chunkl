@@ -1,7 +1,7 @@
 CInputReplay 0x1300D000
 - inherits: CMwNod
 
-0x000 [MP4.v1, TM2020.v1]
+0x000 [MP3, TMT, MP4.v1, TM2020.v1]
   version = 1
   uint (write: "0") // CInputEventsStore archive prefix, initialized to zero by the native writer.
   id[] ActionIds

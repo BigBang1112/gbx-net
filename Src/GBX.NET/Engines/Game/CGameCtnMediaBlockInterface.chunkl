@@ -1,7 +1,7 @@
 CGameCtnMediaBlockInterface 0x03195000
 - inherits: CGameCtnMediaBlock
 
-0x000 [MP4, TM2020.v0]
+0x000 [TMT, MP4, TM2020.v0]
   version
   timefloat Start
   timefloat End

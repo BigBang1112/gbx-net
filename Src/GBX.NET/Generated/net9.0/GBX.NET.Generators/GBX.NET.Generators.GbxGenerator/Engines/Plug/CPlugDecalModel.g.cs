@@ -287,11 +287,11 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     [Chunk(0x090A7002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7002 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
 
@@ -369,11 +369,11 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     [Chunk(0x090A7003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7003 : Chunk<CPlugDecalModel>
     {
         public override uint Id => 0x090A7003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -387,11 +387,11 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     [Chunk(0x090A7004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7004 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugSolid? U01;
         public float U02;
@@ -455,11 +455,11 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     [Chunk(0x090A7006)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7006 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7006;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public uint U01;
 

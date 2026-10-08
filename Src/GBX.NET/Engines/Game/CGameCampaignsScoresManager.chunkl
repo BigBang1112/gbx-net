@@ -1,10 +1,10 @@
 CGameCampaignsScoresManager 0x03061000
 
-0x000 [TMF]
+0x000 [TMF, MP3]
   CGameChallengeScores[] ChallengeScores (deprec)
   CGameCampaignScores[] CampaignScores (deprec)
   CGameGeneralScores GeneralScores
   CGameSkillScoreComputer SkillScoreComputer
 
-0x001
+0x001 [MP3]
   string

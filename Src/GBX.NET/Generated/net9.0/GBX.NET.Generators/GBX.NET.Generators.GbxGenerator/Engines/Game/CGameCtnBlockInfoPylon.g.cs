@@ -80,11 +80,11 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     [Chunk(0x03055000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk03055000 : Chunk<CGameCtnBlockInfoPylon>
     {
         public override uint Id => 0x03055000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
         public CMwNod? U01;
         public CMwNod? U02;
         public CMwNod? U03;
@@ -106,11 +106,11 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     [Chunk(0x03055002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03055002 : Chunk<CGameCtnBlockInfoPylon>
     {
         public override uint Id => 0x03055002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

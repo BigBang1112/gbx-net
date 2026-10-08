@@ -56,9 +56,6 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private CMwNod? legacyModel;
-    /// <summary>
-    /// Discarded by the native reader.
-    /// </summary>
     [AppliedWithChunk<Chunk08034002>]
     public CMwNod? LegacyModel
     {
@@ -204,11 +201,11 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     [Chunk(0x08034004)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk08034004 : Chunk<CMotionPlayer>
     {
         public override uint Id => 0x08034004;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

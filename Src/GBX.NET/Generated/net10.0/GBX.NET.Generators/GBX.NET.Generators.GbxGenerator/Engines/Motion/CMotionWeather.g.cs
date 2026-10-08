@@ -53,9 +53,11 @@ public partial class CMotionWeather : CMotionManaged, IClass
     }
 
     [Chunk(0x08054000)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk08054000 : Chunk<CMotionWeather>
     {
         public override uint Id => 0x08054000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

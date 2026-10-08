@@ -1,6 +1,6 @@
 CPlugIndexBuffer 0x09057000
 - inherits: CPlug
 
-0x000 [TMF, MP4]
+0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
 
 0x001 [TM2020]

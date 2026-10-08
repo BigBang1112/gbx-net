@@ -1,6 +1,6 @@
 GxLight 0x04001000
 
-0x008
+0x008 [TM10, TMPU, TMSX, TMNESWC]
   vec3 Color
   float Intensity
   int<EFlags> Flags
@@ -8,7 +8,7 @@ GxLight 0x04001000
   float FlareIntensity
   vec3 ShadowRGB
 
-0x009 [TMF, MP4]
+0x009 [TMF, MP3, TMT, MP4]
   vec3 Color
   int<EFlags> Flags
   float Intensity

@@ -1,12 +1,12 @@
 CGameCtnBlockInfoPylon 0x03055000
 - inherits: CGameCtnBlockInfo
 
-0x000 [TMF]
+0x000 [TMNESWC, TMF]
   CMwNod
   CMwNod
   CMwNod
 
-0x002 [MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020]
   float PylonOffset
   int<EPylonAmount> PylonAmount
   int<EPylonPlacement> PylonPlacement

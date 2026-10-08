@@ -80,11 +80,11 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     }
 
     [Chunk(0x03061000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk03061000 : Chunk<CGameCampaignsScoresManager>
     {
         public override uint Id => 0x03061000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -101,9 +101,11 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     }
 
     [Chunk(0x03061001)]
+    [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk03061001 : Chunk<CGameCampaignsScoresManager>
     {
         public override uint Id => 0x03061001;
+        public override GameVersion GameVersion => GameVersion.MP3;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

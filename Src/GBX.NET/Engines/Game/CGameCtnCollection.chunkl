@@ -58,10 +58,10 @@ CGameCtnCollection 0x03033000
   versionb
   string FolderMenusIcons
 
-0x008 // DefaultDecoration
+0x008 [TM10, TMPU] // DefaultDecoration
   CGameCtnDecoration DefaultDecoration (external)
 
-0x009 [TMF, MP4, TM2020]
+0x009 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   id Collection
   CGameCtnZone[] CompleteListZoneList (deprec, external)
   CGameCtnZone DefaultZone (external)
@@ -70,14 +70,14 @@ CGameCtnCollection 0x03033000
   float SquareHeight
   ident Vehicle
 
-0x00B
+0x00B [TM10, TMPU]
   int BlocksShadow
 
-0x00C [TMF, MP4, TM2020]
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   bool IsEditable
   int<ECollectionType> CollectionType
 
-0x00D [TMF, MP4, TM2020] //IconFid, IconSmallFid
+0x00D [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] //IconFid, IconSmallFid
   bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
   if HasIconFid
     CPlugBitmap IconFid (external)
@@ -85,18 +85,18 @@ CGameCtnCollection 0x03033000
   if HasIconSmallFid
     CPlugBitmap IconSmallFid (external)
 
-0x00E [TMF, MP4, TM2020]
+0x00E [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   int SortIndex
 
-0x011 [TMF, MP4, TM2020]
+0x011 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CGameCtnDecoration DefaultDecoration (external)
 
-0x013
+0x013 [TMSX, TMNESWC]
   float WaterTop
   float WaterBottom
   float CameraMinHeight
 
-0x016
+0x016 [TMSX]
   int BlocksShadow
   bool ShadowCastBack
   int<EBackgroundShadow> BackgroundShadow
@@ -105,16 +105,16 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x018
+0x018 [TMSX]
   CPlugBitmap MapFid
   rect MapRect
   vec2 MapCoordElem
   vec2 MapCoordIcon
 
-0x019 [TMF, MP4, TM2020] // LoadScreenFid
+0x019 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // LoadScreenFid
   CPlugBitmap LoadScreenFid (external)
 
-0x01A [TMF, MP4, TM2020]
+0x01A [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugBitmap MapFid
   rect MapRect
   vec2 MapCoordElem
@@ -122,7 +122,7 @@ CGameCtnCollection 0x03033000
   vec2 MapCoordDesc
   string LongDesc
 
-0x01B
+0x01B [TMNESWC]
   int BlocksShadow
   bool ShadowCastBack
   int<EBackgroundShadow> BackgroundShadow
@@ -131,7 +131,7 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x01D [TMF, MP4, TM2020]
+0x01D [TMF, MP3, TMT, MP4, TM2020]
   ZoneString[] ZoneStrings
   CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec, external)
 
@@ -141,16 +141,16 @@ CGameCtnCollection 0x03033000
   float CameraMinHeight
   bool IsWaterOutsidePlayField
 
-0x01F [TMF, MP4, TM2020] // ParticleEmitterModelsFids
+0x01F [TMF, MP3, TMT, MP4, TM2020] // ParticleEmitterModelsFids
   int[] ParticleEmitterModelsFids
 
-0x020 [TMF, MP4, TM2020] // folders
+0x020 [TMF, MP3, TMT, MP4, TM2020] // folders
   string FolderBlockInfo
   string FolderItem
   string FolderDecoration
   string FolderMenusIcons
 
-0x021 [TMF, MP4, TM2020] // display name
+0x021 [TMF, MP3, TMT, MP4, TM2020] // display name
   string DisplayName
 
 0x022 [TMF] // is water multi-height
@@ -168,38 +168,38 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x027 [MP4, TM2020] // board square
+0x027 [MP3, TMT, MP4, TM2020] // board square
   float BoardSquareHeight
   float BoardSquareBorder
 
-0x028 [MP4, TM2020] // FolderAdditionalItem1
+0x028 [MP3, TMT, MP4, TM2020] // FolderAdditionalItem1
   string FolderAdditionalItem1
 
-0x029 [MP4, TM2020] // FolderAdditionalItem2
+0x029 [MP3, TMT, MP4, TM2020] // FolderAdditionalItem2
   string FolderAdditionalItem2
 
-0x02A [MP4, TM2020] // FolderDecalModels
+0x02A [MP3, TMT, MP4, TM2020] // FolderDecalModels
   string FolderDecalModels
 
-0x02C [MP4]
+0x02C [MP3, TMT, MP4]
   int128
 
-0x02F [MP4, TM2020] // Tech3TunnelSpecularExpScaleMax
+0x02F [MP3, TMT, MP4, TM2020] // Tech3TunnelSpecularExpScaleMax
   vec3? Tech3TunnelSpecularExpScaleMax
 
-0x030 [MP4, TM2020]
+0x030 [MP3, TMT, MP4, TM2020]
   int
 
-0x031 [MP4, TM2020] // FolderMacroDecals
+0x031 [MP3, TMT, MP4, TM2020] // FolderMacroDecals
   string FolderMacroDecals
 
-0x033 [MP4, TM2020]
+0x033 [MP3, TMT, MP4, TM2020]
   version
   id[]
   v1+
     int DecalFadeCBlockFullDensity
 
-0x034 [MP4, TM2020]
+0x034 [MP3, TMT, MP4, TM2020]
   version
   CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
   CPlugBitmap FidPlugBitmapCloudsX2 (external)
@@ -207,14 +207,14 @@ CGameCtnCollection 0x03033000
     CPlugBitmap VehicleEnvLayerFidBitmap (external)
     int<EVehicleEnvLayer> VehicleEnvLayer
 
-0x036 [MP4, TM2020] // OffZone_FogMatter
+0x036 [MP3, TMT, MP4, TM2020] // OffZone_FogMatter
   version
   CPlugFogMatter OffZoneFogMatter (external)
 
-0x037 [MP4, TM2020] // TerrainHeightOffset
+0x037 [MP3, TMT, MP4, TM2020] // TerrainHeightOffset
   float TerrainHeightOffset
 
-0x038 [MP4, TM2020]
+0x038 [MP3, TMT, MP4, TM2020]
   version
   v7-
     v3-
@@ -310,7 +310,7 @@ CGameCtnCollection 0x03033000
                         v19+
                           int
 
-0x03A [MP4, TM2020]
+0x03A [MP3, TMT, MP4, TM2020]
   version
   int
   int<EBackgroundShadow> BackgroundShadow

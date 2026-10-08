@@ -4,7 +4,7 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
   string Name = empty
   CGameCtnMediaBlock[] Blocks (deprec, list)
 
-0x001 [TMSX, TMNESWC, TMU, TMF, MP3, MP4, TM2020] // name and blocks
+0x001 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // name and blocks
   string Name
   CGameCtnMediaBlock[] Blocks (deprec, list)
   int = -1
@@ -19,7 +19,7 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
   bool IsKeepPlaying
   bool IsReadOnly
 
-0x005 [MP3.v1, MP4.v1, TM2020.v1] // MP parameters
+0x005 [MP3.v1, TMT, MP4.v1, TM2020.v1] // MP parameters
   version = 1
   bool IsKeepPlaying
   bool IsReadOnly
@@ -31,5 +31,5 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
 0x0307B000 (not-remapped) // Legacy ghost track, converted to a read-only track containing a ghost block.
   CGameCtnGhost LegacyGhostModel
 
-0x24062000 (not-remapped, base: 0x0307B000)
+0x24062000 (not-remapped, base: 0x0307B000) [TMSX, TMNESWC]
   base

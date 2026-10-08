@@ -83,11 +83,11 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     }
 
     [Chunk(0x0325E000)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0325E000 : Chunk<CGameCtnMediaBlockCheatEmptyCars>
     {
         public override uint Id => 0x0325E000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1,5 +1,5 @@
 CSceneSoundSource 0x0A00E000
 - inherits: CScenePoc
 
-0x000 [TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3]
   CHmsSoundSource SoundSource (direct) // Gliding/AfterBurnout/Burnout

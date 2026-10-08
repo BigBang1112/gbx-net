@@ -1,7 +1,7 @@
 CSceneVehicleEnvironment 0x0A033000
 
-0x000 [TMF]
+0x000 [TMPU, TMSX, TMNESWC, TMF]
   bool
 
-0x002 [TMF]
+0x002 [TMPU, TMSX, TMNESWC, TMF]
   CPlugMaterial[] Materials (external)

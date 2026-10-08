@@ -1,7 +1,7 @@
 CGameCtnAnchoredObject 0x03101000
 - chunk_Chunk03101002: Unexpected syntax
 
-0x002 [MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020]
   version
   ident ItemModel = empty
   vec3 YawPitchRoll
@@ -24,7 +24,7 @@ CGameCtnAnchoredObject 0x03101000
             vec3?
             vec3?
 
-0x004 (skippable) [MP4, TM2020]
+0x004 (skippable) [MP3, TMT, MP4, TM2020]
   version
   int = -1
 

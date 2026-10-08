@@ -112,7 +112,7 @@ CHmsLightMapCache 0x06022000
   bool HasBumpLegacy
   float MaxHDRLegacy
 
-0x00B (skippable) [MP4, TM2020]
+0x00B (skippable) [MP3, TMT, MP4, TM2020]
   float[] MapT3s // SMapT3 contains TotalLmSurfaceMeter, stored as raw float records.
 
 0x00C (skippable, base: 0x00A)
@@ -126,7 +126,7 @@ CHmsLightMapCache 0x06022000
   int QualityLegacy
   int CanFlipU = 1
 
-0x00F (skippable) [MP4, TM2020]
+0x00F (skippable) [MP3, TMT, MP4, TM2020]
   int<EQuality> Quality
   int CanFlipU
 
@@ -155,7 +155,7 @@ CHmsLightMapCache 0x06022000
 0x012 (skippable)
   bool IsSpriteLDirInAlpha
 
-0x013 (skippable) [MP4, TM2020]
+0x013 (skippable) [MP3, TMT, MP4, TM2020]
   bool IsOnlyIndirectDir0
   bool IsSpriteLDirInAlpha
   filetime? TimeWriteMostRecentSolid
@@ -186,7 +186,7 @@ CHmsLightMapCache 0x06022000
   v6+
     bool SpriteOriginY_WasWronglyTop = true
 
-0x015 (skippable) [MP4.v4, TM2020.v5]
+0x015 (skippable) [MP3, TMT, MP4.v4, TM2020.v5]
   version
   ulong LightmapCacheUid
   id Collection
@@ -203,20 +203,20 @@ CHmsLightMapCache 0x06022000
       v5+
         string ChallengeMapUid
 
-0x016 (skippable) [MP4, TM2020]
+0x016 (skippable) [MP3, TMT, MP4, TM2020]
   int<EVersion> Version = EVersion._2011_07_19_Beta1
 
-0x017 (skippable) [MP4, TM2020]
+0x017 (skippable) [MP3, TMT, MP4, TM2020]
   int Decal2D
   int Decal3D
 
-0x018 (skippable) [MP4, TM2020]
+0x018 (skippable) [MP3, TMT, MP4, TM2020]
   filetime? TimeWriteMostRecentBlock
 
-0x019 (skippable) [MP4, TM2020]
+0x019 (skippable) [MP3, TMT, MP4, TM2020]
   int<EQualityVer> QualityVer = EQualityVer.BounceShadowFiltered
 
-0x01A (skippable) [MP4.v9, TM2020.v13]
+0x01A (skippable) [MP3, TMT, MP4.v9, TM2020.v13]
   version
   SMap[] Maps
   int LightAmbSampleCount

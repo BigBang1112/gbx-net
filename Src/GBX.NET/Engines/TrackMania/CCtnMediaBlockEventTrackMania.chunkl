@@ -1,7 +1,7 @@
 CCtnMediaBlockEventTrackMania 0x2407F000
 - inherits: CGameCtnMediaBlockEvent
 
-0x000
+0x000 [TMSX]
   timefloat Start
   timefloat End
   bool
@@ -19,7 +19,7 @@ CCtnMediaBlockEventTrackMania 0x2407F000
   bool U01
   Event[] Events (version: 1)
 
-0x003
+0x003 [TMNESWC]
   timefloat Start
   timefloat End
   bool

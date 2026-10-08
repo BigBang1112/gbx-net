@@ -1,6 +1,6 @@
 CPlugParticleEmitterSubModel 0x090B2000
 
-0x011 [TMF]
+0x011 [TMSX, TMNESWC, TMF]
   CPlugMaterial Material (external)
   if Material == null && MaterialFile == null
     CPlugShader Shader (external)
@@ -48,7 +48,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   int CircularTrailVertPerPartCount
   int
 
-0x013 [TMF]
+0x013 [TMSX, TMNESWC, TMF]
   int
   float
   float
@@ -59,7 +59,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
 
-0x015 [TMF]
+0x015 [TMSX, TMNESWC, TMF]
   bool SizeBirthUseIntensity
   bool ColorBirthUseIntensity
   bool TransparencyBirthUseIntensity
@@ -67,24 +67,24 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
 
-0x016 [TMF]
+0x016 [TMSX, TMNESWC, TMF]
   float SizeBirthEmissionZoneScale
   int
 
-0x017 [TMF]
+0x017 [TMSX, TMNESWC, TMF]
   float FluidFrictionBirthIntensityBase
   bool FluidFrictionBirthUseIntensity
 
-0x018 [TMF]
+0x018 [TMSX, TMNESWC, TMF]
   CFuncEnvelope IntensityFilter
 
-0x019 [TMF]
+0x019 [TMSX, TMNESWC, TMF]
   id
 
-0x01A [TMF]
+0x01A [TMNESWC, TMF]
   CMwNod
 
-0x01B [TMF]
+0x01B [TMNESWC, TMF]
   bool MultiState_IsAsyncLink
   bool
 
@@ -121,7 +121,7 @@ CPlugParticleEmitterSubModel 0x090B2000
 0x023 [TMF]
   bool
 
-0x02D [MP4, TM2020]
+0x02D [MP3, TMT, MP4, TM2020]
   version
   int
   v3+
@@ -139,12 +139,12 @@ CPlugParticleEmitterSubModel 0x090B2000
   v4+
     float
 
-0x02E [MP4, TM2020]
+0x02E [MP3, TMT, MP4, TM2020]
   version
   v0=
     CPlugParticleSplashModel
 
-0x02F [MP4, TM2020]
+0x02F [MP3, TMT, MP4, TM2020]
   version
   v2-
     int
@@ -155,13 +155,13 @@ CPlugParticleEmitterSubModel 0x090B2000
     v2+
       CFuncEnvelope
 
-0x030 [MP4, TM2020]
+0x030 [MP3, TMT, MP4, TM2020]
   version
   float
   float
   int
 
-0x031 [MP4, TM2020]
+0x031 [MP3, TMT, MP4, TM2020]
   version
   int
   int
@@ -199,7 +199,7 @@ CPlugParticleEmitterSubModel 0x090B2000
                   CFuncKeysReal
                   CFuncKeysReal
 
-0x032 [MP4, TM2020]
+0x032 [MP3, TMT, MP4, TM2020]
   version
   int
   int
@@ -210,7 +210,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   int
   bool
 
-0x033 [MP4, TM2020]
+0x033 [MP3, TMT, MP4, TM2020]
   version
   float
   float
@@ -244,7 +244,7 @@ CPlugParticleEmitterSubModel 0x090B2000
     float
     CFuncKeysReal
 
-0x034 [MP4, TM2020]
+0x034 [MP3, TMT, MP4, TM2020]
   version
   GxLightBall
   CFuncEnvelope
@@ -254,19 +254,19 @@ CPlugParticleEmitterSubModel 0x090B2000
     v2+
       bool
 
-0x035 [MP4, TM2020]
+0x035 [MP3, TMT, MP4, TM2020]
   version
   v1+
     return
   CMwNod
 
-0x036 [MP4, TM2020]
+0x036 [MP3, TMT, MP4, TM2020]
   version
   bool
   int
   int
 
-0x037 [MP4, TM2020]
+0x037 [MP3, TMT, MP4, TM2020]
   version
   int
   float
@@ -287,12 +287,12 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
 
-0x038 [MP4, TM2020]
+0x038 [MP3, TMT, MP4, TM2020]
   version
   float
   float
 
-0x039 [MP4, TM2020]
+0x039 [MP3, TMT, MP4, TM2020]
   version
   float
   float
@@ -306,7 +306,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   bool
 
-0x03A [MP4, TM2020]
+0x03A [MP3, TMT, MP4, TM2020]
   version
   v1+
     CPlugParticleGpuSpawn

@@ -1,7 +1,7 @@
 CControlContainer 0x07002000
 - inherits: CControlBase
 
-0x005 [TMF, MP4, TM2020]
+0x005 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   bool AcceptOwnControls
   bool UseScript
   int

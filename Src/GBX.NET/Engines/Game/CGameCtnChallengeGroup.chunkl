@@ -1,9 +1,9 @@
 CGameCtnChallengeGroup 0x0308F000
 
-0x002 [TMF, MP4, TM2020] // name
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // name
   string Name
 
-0x003
+0x003 [TM10, TMPU, TMSX, TMNESWC]
   int U01
   int U01
   int U01
@@ -13,14 +13,14 @@ CGameCtnChallengeGroup 0x0308F000
   if U01 > 0
     throw
 
-0x005
+0x005 [TMSX, TMNESWC]
   int
 
-0x006 [TMF]
+0x006 [TMSX, TMNESWC, TMF]
   bool
   MapInfo[] MapInfos (list)
 
-0x007
+0x007 [TMSX, TMNESWC]
   int
   int
   int
@@ -28,13 +28,13 @@ CGameCtnChallengeGroup 0x0308F000
   int
   int
 
-0x009
+0x009 [TMNESWC]
   id
 
 0x00A
   MapInfo[] MapInfos (version: 1, list)
 
-0x00B [MP4, TM2020]
+0x00B [MP3, TMT, MP4, TM2020]
   version
   MapInfo[] MapInfos (version: Version + 2, list)
 

@@ -7,15 +7,15 @@ CGameCtnMediaBlockSound 0x030A7000
   int U01
   Key[] Keys (version: 0, list)
 
-0x001
+0x001 [TMSX, TMNESWC]
   packdesc Sound
   Key[] Keys (list)
 
-0x002
+0x002 [TMSX, TMNESWC]
   int PlayCount
   bool IsLooping
 
-0x003 [TMF, MP4, TM2020.v2]
+0x003 [TMF, TMT, MP4, TM2020.v2]
   version
   int PlayCount
   bool IsLooping
@@ -26,7 +26,7 @@ CGameCtnMediaBlockSound 0x030A7000
       bool AudioToSpeech
       int AudioToSpeechTarget
 
-0x004 [TMF, MP4, TM2020.v1]
+0x004 [TMF, TMT, MP4, TM2020.v1]
   packdesc Sound
   version
   Key[] Keys (list)

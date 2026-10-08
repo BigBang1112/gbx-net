@@ -123,11 +123,11 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
     }
 
     [Chunk(0x03127004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03127004 : Chunk03127000
     {
         public override uint Id => 0x03127004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

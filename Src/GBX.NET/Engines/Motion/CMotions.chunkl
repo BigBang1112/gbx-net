@@ -4,5 +4,5 @@ CMotions 0x08028000
 0x000
   CMotion[] Motions = empty (list)
 
-0x001 [TMF, MP4]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
   CMotion[] Motions (list)

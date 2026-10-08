@@ -1,7 +1,7 @@
 CGamePlayerProfileChunk_PackagesInfos 0x03140000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable) [MP4, TM2020]
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
   version
   PackageInfo[] PackagesInfos
 

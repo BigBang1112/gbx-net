@@ -6,7 +6,7 @@ CGameCtnMediaBlockCameraGame 0x03084000
   timefloat End
   int<EGameCamOld>? GameCamOld
 
-0x001 (base: 0x000)
+0x001 (base: 0x000) [TMSX, TMNESWC]
   base
   int ClipEntId
 
@@ -43,7 +43,7 @@ CGameCtnMediaBlockCameraGame 0x03084000
   base
   bool ShowPing = true
 
-0x007 [MP4, TM2020.v4]
+0x007 [TMT, MP4, TM2020.v4]
   version
   timefloat Start
   timefloat End

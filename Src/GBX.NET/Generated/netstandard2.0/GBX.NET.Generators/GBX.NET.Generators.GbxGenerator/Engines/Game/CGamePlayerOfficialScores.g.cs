@@ -81,11 +81,11 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
     }
 
     [Chunk(0x03095001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03095001 : Chunk<CGamePlayerOfficialScores>
     {
         public override uint Id => 0x03095001;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public bool U02;
         public DateTime? U03;
         public byte U04;

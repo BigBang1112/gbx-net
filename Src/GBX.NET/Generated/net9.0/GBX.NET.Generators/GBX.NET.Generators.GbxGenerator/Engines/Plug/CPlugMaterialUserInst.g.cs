@@ -188,11 +188,11 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     [Chunk(0x090FD000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 9, 11)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 11)]
     public partial class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
         public override uint Id => 0x090FD000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string[]? U01;
 

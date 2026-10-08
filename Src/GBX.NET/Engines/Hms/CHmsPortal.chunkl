@@ -8,7 +8,7 @@ CHmsPortal 0x06006000
   bool IsPickingPossible
   bool CanPassThrough
 
-0x001 [TMF]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   bool SoundCanPassThrough = true
   bool IsDirectPathSet
   int DirectOcclusion
@@ -20,7 +20,7 @@ CHmsPortal 0x06006000
   int IndirectObstruction
   float IndirectObstructionSpectralRatio
 
-0x002 [TMF]
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   bool NeedClipping2D
   bool NeedClipping3D
   bool CanSeeThrough

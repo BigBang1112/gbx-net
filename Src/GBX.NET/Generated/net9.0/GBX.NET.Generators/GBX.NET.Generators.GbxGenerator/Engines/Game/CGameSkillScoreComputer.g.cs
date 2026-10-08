@@ -44,11 +44,11 @@ public partial class CGameSkillScoreComputer : CMwNod, IClass
     }
 
     [Chunk(0x03062000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk03062000 : Chunk<CGameSkillScoreComputer>
     {
         public override uint Id => 0x03062000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
         public DateTime? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -74,11 +74,11 @@ public partial class CInputReplay : CMwNod, IClass
     }
 
     [Chunk(0x1300D000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1, 1)]
     public partial class Chunk1300D000 : Chunk<CInputReplay>, IVersionable
     {
         public override uint Id => 0x1300D000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 1;
         public uint U01;
 

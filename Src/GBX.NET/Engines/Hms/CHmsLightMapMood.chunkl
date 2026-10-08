@@ -1,7 +1,7 @@
 CHmsLightMapMood 0x06023000
 - inherits: CMwNod
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TMF, MP3, TMT, MP4, TM2020]
   float = 2
   float = 2
   vec2 AmbientRange = (0.35f, 1) // GPU constant uses Y-X as the ambient scale and X as the ambient offset
@@ -28,7 +28,7 @@ CHmsLightMapMood 0x06023000
   float = 0
   float = 0
 
-0x004 [TM2020.v0]
+0x004 [MP3, TMT, TM2020.v0]
   version = 0
   float MaxHDR
   float BounceFactor

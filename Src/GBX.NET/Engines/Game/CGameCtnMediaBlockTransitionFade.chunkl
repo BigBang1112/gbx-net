@@ -1,7 +1,7 @@
 CGameCtnMediaBlockTransitionFade 0x030AB000
 - inherits: CGameCtnMediaBlockTransition
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TMSX, TMNESWC, TMF, TMT, MP4, TM2020]
   Key[] Keys (list)
   vec4 Color
 

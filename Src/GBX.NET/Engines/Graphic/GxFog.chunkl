@@ -1,6 +1,6 @@
 GxFog 0x04004000
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TMF, MP3, TMT, MP4, TM2020]
   bool Enabled = true
   int LegacyMode = 1
   float DepthMin
@@ -13,7 +13,7 @@ GxFog 0x04004000
   float IntensityMin // IntensMin in the native XML
   float IntensityMax = 1 // IntensMax in the native XML
 
-0x001 [MP4, TM2020.v0]
+0x001 [MP3, TMT, MP4, TM2020.v0]
   version
   vec3 Color = (1, 0, 0) // Linear RGB
 

@@ -1,17 +1,17 @@
 CCtnMediaBlockUiTMSimpleEvtsDisplay 0x24092000
 - inherits: CGameCtnMediaBlockUiSimpleEvtsDisplay
 
-0x000
+0x000 [TMNESWC]
   bool U01
 
-0x001
+0x001 [TMNESWC]
   bool StuntFigures
   bool Checkpoints
   bool EndOfRace
   bool EndOfLaps
   bool GhostsName
 
-0x002
+0x002 [TMNESWC]
   bool U01
 
 enum EDisplayMode

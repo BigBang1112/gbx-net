@@ -8,7 +8,7 @@ CPlugClouds 0x09180000
   CPlugFileImg ImageColorMax (external)
   int Lighting
 
-0x002 [TMF]
+0x002 [TMNESWC, TMF]
   vec2[] PointHeights
 
 0x003 [TMF]

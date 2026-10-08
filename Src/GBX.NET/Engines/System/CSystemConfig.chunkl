@@ -26,10 +26,10 @@ CSystemConfig 0x0B005000
   bool
   filetime
 
-0x008 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x008 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   string DesiredLanguageId
 
-0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   string U01
   string U02
   string U03
@@ -51,7 +51,7 @@ CSystemConfig 0x0B005000
   int
   bool
 
-0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   base
   int<EVsk3BoatQuality> Vsk3BoatQuality
 
@@ -80,18 +80,18 @@ CSystemConfig 0x0B005000
   float
   float
 
-0x012 (skippable) [TMO, TMSX, TMNESWC]
+0x012 (skippable) [TMPU, TMO, TMSX, TMNESWC]
   string
   string
   string
   bool
   int
 
-0x01D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
+0x01D (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5]
   bool IsIgnorePlayerSkins
   bool IsSkipRollingDemo
 
-0x020 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x020 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool IsSafeMode
   CSystemConfigDisplay Display (direct)
 
@@ -115,7 +115,7 @@ CSystemConfig 0x0B005000
   bool AudioDisableDoppler
   int<EAudioSpeakerConfig> AudioSpeakerConfig
 
-0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4, TM2020]
+0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<EAdvertisingEnabled> Advertising_Enabled
   bool Advertising_DisabledByUser
   float Advertising_TunningCoef
@@ -198,7 +198,7 @@ CSystemConfig 0x0B005000
   int NetworkUpload
   bool NetworkUseNatUPnP
 
-0x03A (skippable) [TMF, MP3, MP4, TM2020]
+0x03A (skippable) [TMF, MP3, TMT, MP4, TM2020]
   string // Launcher settings. The individual field meanings are not verified.
   string
   int
@@ -210,7 +210,7 @@ CSystemConfig 0x0B005000
   int
   int PlayerInfoDisplaySize
 
-0x03E (skippable) [TMF, MP3, MP4, TM2020]
+0x03E (skippable) [TMF, MP3, TMT, MP4, TM2020]
   filetime ParentalLockLastUnlockedTime
   uint128 ParentalLockPasswordHash
 
@@ -229,23 +229,23 @@ CSystemConfig 0x0B005000
   string NetworkLastUsedMSPath
   uint[] NetworkFirewallTestedExeChecksums
 
-0x045 (skippable) [TMF, MP3, MP4]
+0x045 (skippable) [TMF, MP3, TMT, MP4]
   bool InputsAlternateMethod
   bool InputsFreezeUnusedAxes
   bool InputsEnableRumble
   bool InputsCaptureKeyboard
 
-0x047 (skippable) [TMF, MP3, MP4, TM2020]
+0x047 (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool
 
-0x048 (skippable) [TMF, MP3, MP4, TM2020]
+0x048 (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool GameProfileEnableMulti
   string GameProfileName
 
-0x049 (skippable) [TMF, MP3, MP4, TM2020]
+0x049 (skippable) [TMF, MP3, TMT, MP4, TM2020]
   filetime
 
-0x04A (skippable) [TMF, MP3, MP4, TM2020]
+0x04A (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool IsIgnorePlayerSkins
   bool IsSkipRollingDemo
   int
@@ -265,7 +265,7 @@ CSystemConfig 0x0B005000
 0x04E (skippable) [TMF, MP3]
   string[] KeyHashes
 
-0x04F (skippable) [TMF, MP3, MP4, TM2020]
+0x04F (skippable) [TMF, MP3, TMT, MP4, TM2020]
   bool AudioEnabled
   float AudioSoundVolume
   float AudioMusicVolume
@@ -278,13 +278,13 @@ CSystemConfig 0x0B005000
   int<EAudioSpeakerConfig> AudioSpeakerConfig
   string AudioDevice_Oal
 
-0x050 (skippable) [MP3, MP4, TM2020]
+0x050 (skippable) [MP3, TMT, MP4, TM2020]
   bool EdDontConnect
 
-0x051 (skippable) [MP3, MP4, TM2020]
+0x051 (skippable) [MP3, TMT, MP4, TM2020]
   string
 
-0x052 (skippable) [MP3, MP4, TM2020]
+0x052 (skippable) [MP3, TMT, MP4, TM2020]
   int TmCarQuality
   int<ETmCarParticlesQuality> TmCarParticlesQuality
   int PlayerShadow
@@ -296,7 +296,7 @@ CSystemConfig 0x0B005000
 0x053 (skippable)
   bool AudioSoundHdr
 
-0x054 (skippable) [MP3, MP4, TM2020]
+0x054 (skippable) [MP3, TMT, MP4, TM2020]
   bool FileTransferEnableDownload
   bool FileTransferEnableUpload
   ulong FileTransferMaxCacheSize
@@ -308,14 +308,14 @@ CSystemConfig 0x0B005000
   string BlackListUrl
   bool EnableCrashLogUpload
 
-0x055 (skippable) [MP3, MP4, TM2020]
+0x055 (skippable) [MP3, TMT, MP4, TM2020]
   string EncryptedKey
   bool
   bool
   bool
   bool
 
-0x056 (skippable) [MP3, MP4, TM2020]
+0x056 (skippable) [MP3, TMT, MP4, TM2020]
   bool
   bool AudioAllowHRTF
   int AudioDontMuteWhenApplicationUnfocused
@@ -342,10 +342,10 @@ CSystemConfig 0x0B005000
   uint[] NetworkFirewallTestedExeChecksums
   int NetworkSpeed
 
-0x058 (skippable) [MP3, MP4, TM2020]
+0x058 (skippable) [MP3, TMT, MP4, TM2020]
   int<EGamePackQuality> GamePackQuality
 
-0x059 (skippable) [MP3, MP4, TM2020]
+0x059 (skippable) [MP3, TMT, MP4, TM2020]
   bool FileTransferEnableAvatarDownload
   bool FileTransferEnableAvatarUpload
   bool FileTransferEnableAvatarLocators
@@ -368,7 +368,7 @@ CSystemConfig 0x0B005000
   bool FileTransferEnableUnknownTypeUpload
   bool FileTransferEnableUnknownTypeLocators
 
-0x05A (skippable) [MP3, MP4, TM2020]
+0x05A (skippable) [MP3, TMT, MP4, TM2020]
   bool DisableReplayRecording
   bool
   bool
@@ -381,7 +381,7 @@ CSystemConfig 0x0B005000
   float
   float
 
-0x05B (skippable) [MP3, MP4, TM2020]
+0x05B (skippable) [MP3, TMT, MP4, TM2020]
   version
   v3+
     throw
@@ -389,15 +389,15 @@ CSystemConfig 0x0B005000
   v2+
     string BadWordListUrl
 
-0x05C (skippable) [MP3, MP4, TM2020]
+0x05C (skippable) [MP3, TMT, MP4, TM2020]
   version
   int SmMaxPlayerResimStepPerFrame
 
-0x05D (skippable) [MP3, MP4, TM2020]
+0x05D (skippable) [MP3, TMT, MP4, TM2020]
   version
   string
 
-0x05E (skippable) [MP3, MP4, TM2020]
+0x05E (skippable) [MP3, TMT, MP4, TM2020]
   version
   bool NetworkUseProxy
   string NetworkProxyLogin

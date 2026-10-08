@@ -13,7 +13,7 @@ CGameCtnMediaBlockToneMapping 0x03127000
 0x003 (base: 0x000)
   Key[] Keys (version: 3, list)
 
-0x004 (base: 0x000) [MP4, TM2020]
+0x004 (base: 0x000) [TMT, MP4, TM2020]
   Key[] Keys (version: 4, list)
 
 archive Key (inherits: IKey)

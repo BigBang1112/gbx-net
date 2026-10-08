@@ -98,11 +98,11 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     [Chunk(0x03047002)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03047002 : Chunk<CGameHighScore>
     {
         public override uint Id => 0x03047002;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -123,11 +123,11 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     [Chunk(0x03047004)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03047004 : SkippableChunk<CGameHighScore>
     {
         public override uint Id => 0x03047004;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

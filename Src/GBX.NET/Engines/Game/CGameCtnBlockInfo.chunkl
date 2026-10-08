@@ -2,7 +2,7 @@ CGameCtnBlockInfo 0x0304E000
 - inherits: CGameCtnCollector
 - abstract
 
-0x005 [TM10, TMSX, TMF]
+0x005 [TM10, TMPU, TMSX, TMNESWC, TMF]
   id Name (inherited)
   int U02 // always 0?
   int U03 // always 0?
@@ -20,20 +20,20 @@ CGameCtnBlockInfo 0x0304E000
   short U09 // always 0?
   short U10 // always 0?
 
-0x009 [TM10, TMSX, TMF, MP3, TMT]
+0x009 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
   bool IsPillar
 
-0x00B [TM10, TMSX]
+0x00B [TM10, TMPU, TMSX, TMNESWC]
   int
   CSceneMobil GroundHelperMobil
   CSceneMobil AirHelperMobil
   CSceneMobil ConstructionModeHelperMobil
 
-0x00C [TM10, TMSX, TMF]
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMF]
   iso4? SpawnLocGround
   iso4? SpawnLocAir
 
-0x00D [TMSX, TMF]
+0x00D [TMSX, TMNESWC, TMF]
   bool IsReplacement
 
 0x00E [TMF]

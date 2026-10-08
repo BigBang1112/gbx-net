@@ -20,14 +20,14 @@ property bool CustomAngleShadow
     else
       Flags = Flags & 0xFFFFFFFD
 
-0x000
+0x000 [TM10, TMPU]
   float AngleInner = 30
   float AngleOuter = 45
   float FalloffExponent = 1 // Retained for legacy archives; discarded by later native readers
   if rw.Reader != null
     AngleFlare = AngleOuter + AngleOuter
 
-0x001 [TMF]
+0x001 [TMSX, TMNESWC, TMF, MP3, TMT]
   float AngleInner
   float AngleOuter
   float AngleFlare = 45 // Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
@@ -38,7 +38,7 @@ property bool CustomAngleShadow
         if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
           Flags = Flags | 1
 
-0x002 [TMF, MP4]
+0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
   uint Flags = 0 // CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
   float AngleInner
   float AngleOuter

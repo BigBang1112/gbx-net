@@ -44,12 +44,12 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     [Chunk(0x0905E000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0905E000 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E000;
         public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -58,11 +58,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     [Chunk(0x0905E002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0905E002 : Chunk<CPlugSoundSurface>, IVersionable
     {
         public override uint Id => 0x0905E002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -97,12 +97,12 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     [Chunk(0x0905E003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0905E003 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E003;
         public override bool Ignore => true;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

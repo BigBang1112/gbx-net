@@ -253,7 +253,7 @@ property int ShadowCasterGroupIdLegacy
   if rw.Reader != null
     FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
-0x001 [TM10, TMSX, TMF, MP3, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   CPlugSolid Solid
 
 0x002
@@ -393,7 +393,7 @@ property int ShadowCasterGroupIdLegacy
   if rw.Reader != null
     FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
 
-0x00F
+0x00F [TMPU]
   if rw.Writer != null
     FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
   dataulong FlagsItem
@@ -409,7 +409,7 @@ property int ShadowCasterGroupIdLegacy
   if rw.Reader != null
     FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1FFF) | 0x10000000
 
-0x011 [TMF, MP3, MP4, TM2020]
+0x011 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
   if rw.Writer != null
     FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF // Clear runtime bits 30 and 31 in Maniaplanet/TM2020; TMF also clears bit 29
   dataulong FlagsItem

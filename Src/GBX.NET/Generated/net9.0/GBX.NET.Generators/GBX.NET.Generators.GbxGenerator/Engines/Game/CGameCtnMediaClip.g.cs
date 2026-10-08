@@ -408,11 +408,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     /// MP tracks
     /// </summary>
     [Chunk(0x0307900D, "MP tracks")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 1)]
     public partial class Chunk0307900D : Chunk<CGameCtnMediaClip>, IVersionable
     {
         public override uint Id => 0x0307900D;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -3,7 +3,7 @@ CGameCtnMediaBlockTriangles 0x03029000
 
 0x000 // Key times, rectangular position matrix, colors and triangle indices are handled in C#.
 
-0x001 (base: 0x000) [TMF, MP4, TM2020]
+0x001 (base: 0x000) [TMF, MP3, TMT, MP4, TM2020]
   base
   int<E3DPickMode> PickMode3D = E3DPickMode.Plane // Editor vertex picking mode.
   vec3 PickPlaneNormal = (0, 0, 1)
