@@ -34,13 +34,47 @@ public abstract partial class CPlugAudio : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09001000;
 
+    private int canHaveFx;
+    [AppliedWithChunk<Chunk09001000>]
+    public int CanHaveFx
+    {
+        get => this.canHaveFx;
+        set => this.canHaveFx = value;
+    }
+
+    private string name = string.Empty;
+    [AppliedWithChunk<Chunk09001001>]
+    public string Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAudio)clone).canHaveFx = context.Clone(this.canHaveFx)!;
+        ((CPlugAudio)clone).name = context.Clone(this.name)!;
     }
 
     public CPlugAudio()
     {
+    }
+
+    [Chunk(0x09001000)]
+    public partial class Chunk09001000 : Chunk<CPlugAudio>
+    {
+        public override uint Id => 0x09001000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugAudio n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.canHaveFx);
+        }
     }
 
     [Chunk(0x09001001)]
@@ -49,22 +83,21 @@ public abstract partial class CPlugAudio : CPlug, IClass
     {
         public override uint Id => 0x09001001;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09001001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugAudio n, GbxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            rw.Id(ref n.name);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09001000 => new Chunk09001000(),
         0x09001001 => new Chunk09001001(),
         _ => base.NewChunk(chunkId),
     };

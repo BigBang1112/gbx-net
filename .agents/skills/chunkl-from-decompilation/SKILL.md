@@ -10,9 +10,14 @@ Work on the requested classes and chunks. Read the repository instructions, exis
 Check programs in this order using GhidraMCP:
 
 1. `Maniaplanet.exe`
-2. `TmForever.exe`
-3. `Trackmania.exe`
-4. `ManiaPlanetLogs.exe`
+1. `TmForever.exe`
+1. `Trackmania.exe`
+1. `ManiaPlanetLogs.exe`
+1. `TrackmaniaTurboLogs.exe` (ask first)
+1. `TmNationsESWC.exe` (ask first)
+1. `TmSunrise.exe` (ask first)
+1. `TrackManiaPU.exe` (ask first)
+1. `TrackMania2003.exe` (ask first)
 
 Check chunk serializers (`Chunk` function implementations) to verify field order, widths, counts, references, defaults and version branches.
 
@@ -23,9 +28,11 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using the verified 
 - Create obsolete members where possible in the current architecture.
 - Use unknown field names in archives when meaning is unverified, remove the unknown naming from chunks.
 - Set defaults when found in the constructor.
-- Use comments to describe what it does, rather than how it is implemented.
+- Use comments to describe what it does, rather than how it is implemented. On chunks, use short informative description, such as "legacy tracks and name". Do not use period for very short descriptions.
 
 Add `- inherits <BaseClass>` when the class inherits from another class, except for `CMwNod`.
+
+## Game versions
 
 Use the verified `GetChunkInfo` write bit (`0x02`) to add the current game's qualifier.
 
@@ -39,10 +46,13 @@ Do not change generator behaviour unless absolutely necessary, but also do not t
 
 Build using `.agents/generator-verification.md`, inspect the diff, and use relevant fixtures when available. Report the binaries checked, changed chunks, verification and unresolved evidence.
 
-## Maniaplanet.exe game versions
-
-**Do not fill game-version qualifiers for `Maniaplanet.exe` unless specified.** 
-
-- For `ManiaPlanetLogs.exe`, fill `MP4`.
 - For `Trackmania.exe`, fill `TM2020`.
+- For `ManiaPlanetLogs.exe`, fill `MP4`.
+- For `TrackmaniaTurboLogs.exe`, fill `TMT`.
 - For `TmForever.exe`, fill `TMF`.
+- For `TmNationsESWC.exe`, fill `TMNESWC`.
+- For `TmSunrise.exe`, fill `TMSX`.
+- For `TrackManiaPU.exe`, fill `TMPU`.
+- For `TrackMania2003.exe`, fill `TM10`.
+
+**Do not fill game version qualifiers for other executables unless specified.**
