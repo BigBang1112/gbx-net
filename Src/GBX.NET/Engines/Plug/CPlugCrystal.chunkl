@@ -3,24 +3,35 @@ CPlugCrystal 0x09003000
 
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT] // one layer only
 
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // legacy tree generation
+  int GenerateMode
+  float SpriteSize = 0.1f
+
 0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4.v2, TM2020.v2] // materials
   version
   Material[] Materials = empty (list)
 
-0x004 (skippable) [MP4.v1, TM2020.v1]
+0x004 (skippable) [MP4.v1, TM2020.v1] // editor data
   version
-  data
+  data EditorData
   v1+
-    int? // DoData
+    int EditorDataFlags
 
-0x005 [MP4, TM2020] // layers
-
-0x006 [MP4.v0, TM2020.v1] // lightmap UVs
-
-0x007 [MP4, TM2020] // smoothing groups
+0x005 [MP4.v0, TM2020.v0] // layers
   version
-  float[] SmoothingGroups // SCrystalSmoothingGroup array
-  int[]
+
+0x006 [MP4.v0, TM2020.v2] // lightmap UVs
+
+0x007 [MP4.v0, TM2020.v0] // smoothing groups
+  version
+  float[] SmoothingGroups
+  int[] FaceSmoothingGroupIndices
+
+0x008 // legacy voxel grid
+  version
+  bool HasLegacyVoxelSpace
+  if HasLegacyVoxelSpace
+    LegacyVoxelSpace LegacyVoxels
 
 enum ELayerType
   Geometry
@@ -39,7 +50,10 @@ enum ELayerType
   Cubes // Voxels
   Trigger // TriggerShape
   SpawnPosition // RespawnPos
+  Sector
+  ParticleEmitter
   Light = 18
+  WaterShape
 
 enum EAxis
   X
@@ -47,13 +61,18 @@ enum EAxis
   Z
 
 archive Material
-  string MaterialName
-  if MaterialName == null || MaterialName == ""
-    CPlugMaterialUserInst MaterialUserInst
+  v1+
+    string MaterialName
+    if MaterialName == null || MaterialName == ""
+      CPlugMaterialUserInst MaterialUserInst (external)
+  v0=
+    CPlugMaterialUserInst MaterialUserInst (direct)
 
 archive Layer (contextual)
-  int Ver
+  int Ver = 2
   bool CrystalEnabled
+  if CrystalEnabled
+    Crystal CachedCrystal
   id LayerId
   string LayerName
   if Ver >= 1
@@ -70,9 +89,9 @@ archive PartInLayer
 
 archive GeometryLayer (inherits: Layer, contextual)
   base
-  int GeometryVersion
+  int GeometryVersion = 1
   Crystal Crystal
-  int[] U02 // ID for each group?
+  int[] GroupIndices
   if GeometryVersion >= 1
     bool IsVisible = true
     bool Collidable = true
@@ -80,93 +99,96 @@ archive GeometryLayer (inherits: Layer, contextual)
 archive SubdivideSmoothLayer (inherits: ModifierLayer, contextual)
   base
   int SubdivideSmoothVersion
-  int Subdivisions
+  int Subdivisions = 1
 
 archive TranslationLayer (inherits: ModifierLayer, contextual)
   base
   int TranslationVersion
-  vec3 Translation
+  vec3 Translation = (1, 0, 0)
 
 archive RotationLayer (inherits: ModifierLayer, contextual)
   base
   int RotationVersion
-  float Rotation // in radians
-  int<EAxis> Axis
+  float Rotation = 1.5707964f // in radians
+  int<EAxis> Axis = EAxis.Y
   bool Independently
 
 archive ScaleLayer (inherits: ModifierLayer, contextual)
   base
   int ScaleVersion
-  vec3 Scale
+  vec3 Scale = (2, 2, 2)
   bool Independently
 
 archive MirrorLayer (inherits: ModifierLayer, contextual)
   base
   int MirrorVersion
   int<EAxis> Axis
-  float Distance
+  float Distance = 1f
   bool Independently
 
 archive MoveToGroundLayer (inherits: ModifierLayer, contextual)
   base
   int MoveToGroundVersion
-  bool
+  bool Independently
 
 archive ExtrudeLayer (inherits: ModifierLayer, contextual)
   base
   int ExtrudeVersion
-  vec3 Size
- 
+  vec3 Size = (0, 1, 0)
+
 archive SubdivideLayer (inherits: ModifierLayer, contextual)
   base
   int SubdivideVersion
-  int Subdivisions
+  int Subdivisions = 1
 
 archive ChaosLayer (inherits: ModifierLayer, contextual)
   base
-  int ChaosVersion
-  float MinDistance
-  int
+  int ChaosVersion = 1
+  float MaxDistance = 0.05f
+  int Seed
   if ChaosVersion >= 1
-    float MaxDistance
+    float MinDistance = -0.05f
 
 archive SmoothLayer (inherits: ModifierLayer, contextual)
   base
   int SmoothVersion
-  float // SmoothFactor?
-  bool // Independently
+  float SmoothFactor = 3f
+  bool Independently
 
 archive BorderTransitionLayer (inherits: ModifierLayer, contextual)
   base
   int BorderTransitionVersion
-  float
-  float
-  CPlugVisual[] // interesting, but not sure what it is
+  float U01 = 10f
+  float U02 = 10f
+  CPlugVisual[] U03 // legacy transition visuals
 
 archive DeformationLayer (inherits: ModifierLayer, contextual)
   base
   int DeformationVersion
-  boxaligned
-  iso4
+  boxaligned Box
+  iso4 Transform = Iso4.Identity
+  iso4[] Transforms
 
 archive CubesLayer (inherits: Layer, contextual)
   base
-  int CubesVersion
-  VoxelSpace Cubes
+  int CubesVersion = 8
+  VoxelSpace Cubes (version: CubesVersion)
   if CubesVersion >= 2
     bool IsVisible = true
     bool Collidable = true
+  if CubesVersion >= 4
+    int[] GroupIndices
 
 archive TriggerLayer (inherits: Layer, contextual)
   base
-  int TriggerVersion
+  int TriggerVersion = 1
   Crystal Crystal
   if TriggerVersion >= 1
-    int[]
+    int[] GroupIndices
 
 archive SpawnPositionLayer (inherits: ModifierLayer, contextual)
   base
-  int SpawnPositionVersion
+  int SpawnPositionVersion = 1
   vec3 SpawnPosition
   float HorizontalAngle
   float VerticalAngle
@@ -179,10 +201,86 @@ archive LightLayer (inherits: ModifierLayer, contextual)
   CPlugLightUserModel[] Lights
   LightPos[] LightPositions
 
+archive SectorLayer (inherits: ModifierLayer, contextual)
+  base
+  int SectorVersion
+  vec3 Position
+
+archive ParticleEmitterLayer (inherits: ModifierLayer, contextual)
+  base
+  int ParticleEmitterVersion
+  vec3 Position
+  vec3 Rotation
+  vec3 Scale = Vec3.One
+  float U01 = 1f
+  CPlugParticleEmitterModel ParticleEmitter
+
+archive WaterShapeLayer (inherits: Layer, contextual)
+  base
+  int WaterShapeVersion = 7
+  VoxelSpace Voxels (version: WaterShapeVersion)
+  int[] GroupIndices
+
 archive VoxelSpace
-  throw
+  v5-
+    byte Size = 64
+  v6+
+    int3 Dimensions = (64, 64, 64)
+  float Step = 0.5f
+  v3+
+    vec3 Center
+  v5+
+    int U01
+  v8+
+    iso4 Transform = Iso4.Identity
+  VoxelModel[] Models (version: v)
+
+archive LegacyVoxelSpace
+  byte Size = 64
+  float Step = 0.5f
+  bool HasVertexValues
+  int U01
+  LegacyVoxel[Size * Size * Size] Voxels (version: HasVertexValues ? 1 : 0)
+
+archive LegacyVoxel
+  bool IsActive
+  int ModelIndex
+  v1+
+    vec4 VertexValues
+
+archive VoxelModel
+  int ModelIndex
+  Voxel[] Voxels (version: v)
+
+archive Voxel
+  int Index
+  v6+
+    int U01
+  v7+
+    byte U02
+    byte U03
+    byte U04
+    byte U05
 
 archive Crystal (contextual)
+  version = 37
+  v13+ (archive)
+    int BaseVisualLevel = 4
+    VisualLevel[] VisualLevels
+  v23+ (archive)
+    AnchorInfo[] AnchorInfos
+  v22+ (archive)
+    Part[] Groups (version: Version)
+  if Version >= 25 && Version < 29
+    bool IsEmbeddedCrystal
+    bool IsEmbeddedCrystal
+  if Version >= 25 && Version < 34 // compressed geometry uses a flat mesh instead of element pools
+    bool IsEmbeddedCrystal
+  v34+ (archive)
+    boolbyte IsEmbeddedCrystal
+  v33+ (archive)
+    int MaxMaterialIndex
+    int MaxGroupIndex
 
 archive VisualLevel
   int
@@ -198,14 +296,15 @@ archive AnchorInfo
 archive Part
   v31+
     int U01
-  v36+
-    byte U02
-  v35-
-    int U02
-  int U03
+  v35+
+    boolbyte IsInUse
+  v34-
+    bool IsInUse
+  int ParentIndex = -1
   string Name
-  int U04
-  int[] U05
+  v23+
+    int AnchorIndex = -1
+  int[] Children
 
 archive LightPos
   int
