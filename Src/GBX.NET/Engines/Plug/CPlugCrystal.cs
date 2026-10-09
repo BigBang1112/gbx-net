@@ -188,120 +188,87 @@ public partial class CPlugCrystal
 
     public partial class Chunk09003006 : IVersionable
     {
+        private bool hasReadLightmapCoords;
+
         public int Version { get; set; }
+
+        /// <summary>
+        /// Lightmap UVs for the resulting geometry, which can differ from the editable layers.
+        /// </summary>
+        public Vec2[] LightmapCoords { get; set; } = [];
+        public int[] LightmapCoordIndices { get; set; } = [];
 
         public override void Read(CPlugCrystal n, GbxReader r)
         {
-            Version = r.ReadInt32();
-
-            var faces = n.Layers.OfType<GeometryLayer>()
-                .Where(x => x.IsEnabled && x.IsVisible)
-                .Select(x => x.Crystal)
-                .OfType<Crystal>()
-                .SelectMany(c => c.Faces);
-
-            var lightmapCoordCount = r.ReadInt32();
-            if (lightmapCoordCount == 0 && Version < 2) return;
-
-            if (Version == 0)
-            {
-                var counter = 0;
-                foreach (var face in faces)
-                {
-                    for (var i = 0; i < face.Vertices.Length; i++)
-                    {
-                        face.Vertices[i] = face.Vertices[i] with { LightmapCoord = r.ReadVec2() };
-                        counter++;
-
-                        if (counter > lightmapCoordCount)
-                        {
-                            throw new Exception("LightmapCoord count exceeded");
-                        }
-                    }
-                }
-
-                if (counter != lightmapCoordCount)
-                {
-                    throw new Exception("LightmapCoord count mismatch");
-                }
-            }
-
-            if (Version >= 1)
-            {
-                var lightmapCoords = new Vec2[lightmapCoordCount];
-
-                for (int i = 0; i < lightmapCoordCount; i++)
-                {
-                    lightmapCoords[i] = (r.ReadUInt16() / (float)ushort.MaxValue, r.ReadUInt16() / (float)ushort.MaxValue);
-                }
-
-                // indices of lightmap coords
-                var indices = Version >= 2 ? r.ReadArrayOptimizedInt() : null;
-
-                var lightmapCount = indices?.Length ?? lightmapCoordCount;
-
-                var counter = 0;
-                foreach (var face in faces)
-                {
-                    for (var i = 0; i < face.Vertices.Length; i++)
-                    {
-                        var index = indices is null ? counter : indices[counter];
-                        face.Vertices[i] = face.Vertices[i] with { LightmapCoord = lightmapCoords[index] };
-                        counter++;
-
-                        if (counter > lightmapCount)
-                        {
-                            throw new Exception("LightmapCoord count exceeded");
-                        }
-                    }
-                }
-
-                if (counter != lightmapCount)
-                {
-                    throw new Exception("LightmapCoord count mismatch");
-                }
-            }
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(n, rw);
         }
 
         public override void Write(CPlugCrystal n, GbxWriter w)
         {
-            w.Write(Version);
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(n, rw);
+        }
+
+        public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version < 0 || Version > 2) throw new VersionNotSupportedException(Version);
 
             var faces = n.Layers.OfType<GeometryLayer>()
                 .Where(x => x.IsEnabled && x.IsVisible)
                 .Select(x => x.Crystal)
                 .OfType<Crystal>()
-                .SelectMany(c => c.Faces);
-
-            var lightmapCoords = faces.SelectMany(f => f.Vertices.Select(v => v.LightmapCoord));
-
-            if (Version == 0)
+                .SelectMany(c => c.Faces).ToArray();
+            var vertexCount = faces.Sum(face => face.Vertices.Length);
+            var lightmapCount = Version >= 2 ? LightmapCoordIndices.Length : LightmapCoords.Length;
+            if (rw.Writer is not null && (lightmapCount == vertexCount || (!hasReadLightmapCoords && LightmapCoords.Length == 0)))
             {
-                w.WriteArray(lightmapCoords.ToArray());
+                var coords = faces.SelectMany(face => face.Vertices.Select(vertex => vertex.LightmapCoord)).ToArray();
+                var storedCoords = Version < 2 ? LightmapCoords.AsEnumerable()
+                    : LightmapCoordIndices.Select(index => LightmapCoords[index]);
+                if (!storedCoords.SequenceEqual(coords))
+                {
+                    LightmapCoords = Version < 2 ? coords : coords.Distinct().ToArray();
+                    if (Version >= 2)
+                    {
+                        var indices = LightmapCoords.Select((coord, index) => (coord, index)).ToDictionary(x => x.coord, x => x.index);
+                        LightmapCoordIndices = coords.Select(coord => indices[coord]).ToArray();
+                    }
+                }
             }
 
-            if (Version >= 1)
+            var count = rw.Int32(LightmapCoords.Length);
+            if (rw.Reader is not null)
             {
-                var lightmapCoordArray = Version == 1
-                    ? lightmapCoords.ToArray()
-                    : lightmapCoords.Distinct().ToArray();
-
-                w.Write(lightmapCoordArray.Length);
-
-                foreach (var lightmap in lightmapCoordArray)
+                hasReadLightmapCoords = true;
+                LightmapCoords = new Vec2[count];
+            }
+            for (var i = 0; i < count; i++)
+            {
+                if (Version == 0) LightmapCoords[i] = rw.Vec2(LightmapCoords[i]);
+                else
                 {
-                    w.Write((ushort)Math.Min(ushort.MaxValue, Math.Max(0, lightmap.X * ushort.MaxValue)));
-                    w.Write((ushort)Math.Min(ushort.MaxValue, Math.Max(0, lightmap.Y * ushort.MaxValue)));
+                    var coord = LightmapCoords[i];
+                    LightmapCoords[i] = new Vec2(
+                        rw.UInt16((ushort)Math.Min(ushort.MaxValue, Math.Max(0, coord.X * ushort.MaxValue))) / (float)ushort.MaxValue,
+                        rw.UInt16((ushort)Math.Min(ushort.MaxValue, Math.Max(0, coord.Y * ushort.MaxValue))) / (float)ushort.MaxValue);
                 }
+            }
+            if (Version >= 2) LightmapCoordIndices = rw.ArrayOptimizedInt(LightmapCoordIndices)!;
 
-                if (Version >= 2)
+            lightmapCount = Version >= 2 ? LightmapCoordIndices.Length : count;
+            if (rw.Reader is not null && lightmapCount == vertexCount)
+            {
+                var index = 0;
+                foreach (var face in faces)
                 {
-                    var lightmapCoordIndices = lightmapCoordArray
-                        .Select((x, i) => (x, i))
-                        .ToDictionary(x => x.x, x => x.i);
-                    var indices = faces.SelectMany(f => f.Vertices.Select(v => lightmapCoordIndices[v.LightmapCoord])).ToArray();
-
-                    w.WriteArrayOptimizedInt(indices);
+                    for (var i = 0; i < face.Vertices.Length; i++)
+                    {
+                        var coordIndex = Version < 2 ? index : LightmapCoordIndices[index];
+                        face.Vertices[i] = face.Vertices[i] with { LightmapCoord = LightmapCoords[coordIndex] };
+                        index++;
+                    }
                 }
             }
         }
@@ -358,7 +325,7 @@ public partial class CPlugCrystal
         /// <summary>
         /// Whether <see cref="Edges"/> includes edges belonging to faces.
         /// </summary>
-        public bool HasFacedEdges => Version < 35;
+        public bool HasFacedEdges => !IsEmbeddedCrystal || Version < 35;
 
         public void Read(GbxReader r, CPlugCrystal n, int v = 0)
         {
@@ -400,7 +367,7 @@ public partial class CPlugCrystal
                     IsEmbeddedCrystal = rw.Boolean(IsEmbeddedCrystal);
                     IsEmbeddedCrystal = rw.Boolean(IsEmbeddedCrystal);
                 }
-                IsEmbeddedCrystal = rw.Boolean(IsEmbeddedCrystal, asByte: Version >= 34);
+                IsEmbeddedCrystal = rw.Boolean(IsEmbeddedCrystal, asByte: Version >= 35);
             }
 
             if (Version >= 33)
@@ -415,118 +382,121 @@ public partial class CPlugCrystal
             }
             if (!IsEmbeddedCrystal)
             {
-                throw new NotSupportedException("Crystal.Gbx is not supported");
+                ReadWriteEditableGeometry(rw);
             }
-
-            Positions = rw.Array(Positions)!;
-            TotalEdgeCount = rw.Int32(HasFacedEdges ? Edges.Length : TotalEdgeCount);
-            if (rw.Reader is not null)
+            else
             {
-                Edges = Version < 34
-                    ? rw.Reader.ReadArray<Int2>(TotalEdgeCount)
-                    : rw.Reader.ReadArrayOptimizedInt2(Version < 35 ? TotalEdgeCount : rw.Reader.ReadInt32(), Positions.Length);
-            }
-            if (rw.Writer is not null)
-            {
-                if (Version < 34) rw.Writer.WriteArray(Edges, Edges.Length);
-                else rw.Writer.WriteArrayOptimizedInt2(Edges, Positions.Length, hasLengthPrefix: Version >= 35);
-            }
-
-            var faceCount = rw.Int32(Faces.Length);
-            var texCoords = Array.Empty<Vec2>();
-            var texCoordIndices = Array.Empty<int>();
-            if (Version >= 37)
-            {
-                if (rw.Writer is not null)
-                {
-                    texCoords = Faces.SelectMany(f => f.Vertices.Select(vertex => vertex.TexCoord)).Distinct().ToArray();
-                    var indices = texCoords.Select((coord, index) => (coord, index)).ToDictionary(x => x.coord, x => x.index);
-                    texCoordIndices = Faces.SelectMany(f => f.Vertices.Select(vertex => indices[vertex.TexCoord])).ToArray();
-                }
-                texCoords = rw.Array(texCoords)!;
-                texCoordIndices = rw.ArrayOptimizedInt(texCoordIndices)!;
-            }
-
-            var faceVertexIndex = 0;
-            if (rw.Reader is not null) Faces = new Face[faceCount];
-            for (var i = 0; i < faceCount; i++)
-            {
-                var face = rw.Writer is null ? null : Faces[i];
-                var vertexCount = Version >= 35
-                    ? rw.Byte((byte)((face?.Vertices.Length ?? 3) - 3)) + 3
-                    : rw.Int32(face?.Vertices.Length ?? 0);
-                var indices = face?.Vertices.Select(vertex => vertex.Index).ToArray() ?? [];
+                Positions = rw.Array(Positions)!;
+                TotalEdgeCount = rw.Int32(HasFacedEdges ? Edges.Length : TotalEdgeCount);
                 if (rw.Reader is not null)
                 {
-                    indices = Version >= 34
-                        ? rw.Reader.ReadArrayOptimizedInt(vertexCount, Positions.Length)
-                        : rw.Reader.ReadArray<int>(vertexCount);
+                    Edges = Version < 34
+                        ? rw.Reader.ReadArray<Int2>(TotalEdgeCount)
+                        : rw.Reader.ReadArrayOptimizedInt2(Version < 35 ? TotalEdgeCount : rw.Reader.ReadInt32(), Positions.Length);
                 }
                 if (rw.Writer is not null)
                 {
-                    if (Version >= 34) rw.Writer.WriteArrayOptimizedInt(indices, Positions.Length, hasLengthPrefix: false);
-                    else rw.Writer.WriteArray(indices, indices.Length);
+                    if (Version < 34) rw.Writer.WriteArray(Edges, Edges.Length);
+                    else rw.Writer.WriteArrayOptimizedInt2(Edges, Positions.Length, hasLengthPrefix: Version >= 35);
                 }
 
-                var vertices = face?.Vertices ?? new Vertex[vertexCount];
-                var uvLayers = face?.TexCoordLayers ?? [];
-                if (Version < 27)
+                var faceCount = rw.Int32(Faces.Length);
+                var texCoords = Array.Empty<Vec2>();
+                var texCoordIndices = Array.Empty<int>();
+                if (Version >= 37)
                 {
-                    var uvLayerCount = rw.Int32(uvLayers.Length == 0 ? 1 : uvLayers.Length);
-                    if (rw.Reader is not null) uvLayers = new Vec2[uvLayerCount][];
-                    for (var layer = 0; layer < uvLayerCount; layer++)
+                    if (rw.Writer is not null)
                     {
-                        var coords = rw.Writer is null ? null : uvLayers.Length == 0
-                            ? vertices.Select(vertex => vertex.TexCoord).ToArray() : uvLayers[layer];
-                        coords = rw.Array(coords, vertexCount)!;
-                        if (rw.Reader is not null) uvLayers[layer] = coords;
+                        texCoords = Faces.SelectMany(f => f.Vertices.Select(vertex => vertex.TexCoord)).Distinct().ToArray();
+                        var indices = texCoords.Select((coord, index) => (coord, index)).ToDictionary(x => x.coord, x => x.index);
+                        texCoordIndices = Faces.SelectMany(f => f.Vertices.Select(vertex => indices[vertex.TexCoord])).ToArray();
+                    }
+                    texCoords = rw.Array(texCoords)!;
+                    texCoordIndices = rw.ArrayOptimizedInt(texCoordIndices)!;
+                }
+
+                var faceVertexIndex = 0;
+                if (rw.Reader is not null) Faces = new Face[faceCount];
+                for (var i = 0; i < faceCount; i++)
+                {
+                    var face = rw.Writer is null ? null : Faces[i];
+                    var vertexCount = Version >= 35
+                        ? rw.Byte((byte)((face?.Vertices.Length ?? 3) - 3)) + 3
+                        : rw.Int32(face?.Vertices.Length ?? 0);
+                    var indices = face?.Vertices.Select(vertex => vertex.Index).ToArray() ?? [];
+                    if (rw.Reader is not null)
+                    {
+                        indices = Version >= 34
+                            ? rw.Reader.ReadArrayOptimizedInt(vertexCount, Positions.Length)
+                            : rw.Reader.ReadArray<int>(vertexCount);
+                    }
+                    if (rw.Writer is not null)
+                    {
+                        if (Version >= 34) rw.Writer.WriteArrayOptimizedInt(indices, Positions.Length, hasLengthPrefix: false);
+                        else rw.Writer.WriteArray(indices, indices.Length);
+                    }
+
+                    var vertices = face?.Vertices ?? new Vertex[vertexCount];
+                    var uvLayers = face?.TexCoordLayers ?? [];
+                    if (Version < 27)
+                    {
+                        var uvLayerCount = rw.Int32(uvLayers.Length == 0 ? 1 : uvLayers.Length);
+                        if (rw.Reader is not null) uvLayers = new Vec2[uvLayerCount][];
+                        for (var layer = 0; layer < uvLayerCount; layer++)
+                        {
+                            var coords = rw.Writer is null ? null : uvLayers.Length == 0
+                                ? vertices.Select(vertex => vertex.TexCoord).ToArray() : uvLayers[layer];
+                            coords = rw.Array(coords, vertexCount)!;
+                            if (rw.Reader is not null) uvLayers[layer] = coords;
+                        }
+                    }
+                    for (var j = 0; j < vertexCount; j++)
+                    {
+                        var texCoord = Version < 27 ? (uvLayers.Length == 0 ? default : uvLayers[0][j])
+                            : Version < 37 ? rw.Vec2(vertices[j].TexCoord)
+                            : texCoords[texCoordIndices[faceVertexIndex++]];
+                        vertices[j] = new Vertex(indices[j], texCoord, vertices[j].LightmapCoord);
+                    }
+                    var normal = Version < 27 ? rw.Vec3(face?.Normal ?? Vec3.Zero) : default(Vec3?);
+                    var materialIndex = face?.Material is null ? face?.MaterialIndex ?? -1 : n.Materials.IndexOf(face.Material);
+                    if (Version >= 25)
+                    {
+                        materialIndex = Version >= 33 ? FaceIndex(rw, materialIndex, MaxMaterialIndex) : rw.Int32(materialIndex);
+                    }
+                    var materialValues = Version >= 25 && Version < 28 ? rw.Vec4(face?.LegacyMaterialValues ?? default) : default;
+                    var groupIndex = face is null ? 0 : Array.IndexOf(Groups, face.Group);
+                    groupIndex = Version >= 33 ? FaceIndex(rw, groupIndex, MaxGroupIndex) : rw.Int32(groupIndex);
+                    if (rw.Reader is not null)
+                    {
+                        if (Groups.Length == 0) Groups = [new Part { Name = "part", IsInUse = true }];
+                        if (groupIndex == -1) groupIndex = 0;
+                        Faces[i] = new Face(vertices, Groups[groupIndex], materialIndex < 0 || n.Materials.Count == 0 ? null : n.Materials[materialIndex], normal)
+                        {
+                            MaterialIndex = materialIndex,
+                            TexCoordLayers = uvLayers,
+                            LegacyMaterialValues = materialValues
+                        };
                     }
                 }
-                for (var j = 0; j < vertexCount; j++)
+
+                for (var i = 0; i < Faces.Length; i++)
                 {
-                    var texCoord = Version < 27 ? (uvLayers.Length == 0 ? default : uvLayers[0][j])
-                        : Version < 37 ? rw.Vec2(vertices[j].TexCoord)
-                        : texCoords[texCoordIndices[faceVertexIndex++]];
-                    vertices[j] = new Vertex(indices[j], texCoord, vertices[j].LightmapCoord);
-                }
-                var normal = Version < 27 ? rw.Vec3(face?.Normal ?? Vec3.Zero) : default(Vec3?);
-                var materialIndex = face?.Material is null ? face?.MaterialIndex ?? -1 : n.Materials.IndexOf(face.Material);
-                if (Version >= 25)
-                {
-                    materialIndex = Version >= 33 ? FaceIndex(rw, materialIndex, MaxMaterialIndex) : rw.Int32(materialIndex);
-                }
-                var materialValues = Version >= 25 && Version < 28 ? rw.Vec4(face?.LegacyMaterialValues ?? default) : default;
-                var groupIndex = face is null ? 0 : Array.IndexOf(Groups, face.Group);
-                groupIndex = Version >= 33 ? FaceIndex(rw, groupIndex, MaxGroupIndex) : rw.Int32(groupIndex);
-                if (rw.Reader is not null)
-                {
-                    if (Groups.Length == 0) Groups = [new Part { Name = "part", IsInUse = true }];
-                    if (groupIndex == -1) groupIndex = 0;
-                    Faces[i] = new Face(vertices, Groups[groupIndex], materialIndex < 0 || n.Materials.Count == 0 ? null : n.Materials[materialIndex], normal)
+                    if (Version < 29)
                     {
-                        MaterialIndex = materialIndex,
-                        TexCoordLayers = uvLayers,
-                        LegacyMaterialValues = materialValues
-                    };
+                        FaceProperties = Resize(FaceProperties, Faces.Length);
+                        LegacyFaceValues = Resize(LegacyFaceValues, Faces.Length);
+                        FaceProperties[i] = rw.Int32(FaceProperties[i]);
+                        LegacyFaceValues[i] = rw.Int32(LegacyFaceValues[i]);
+                    }
+                    if (Version < 30)
+                    {
+                        FaceFlags = Resize(FaceFlags, Faces.Length);
+                        FaceFlags[i] = rw.Int32(FaceFlags[i]);
+                    }
                 }
+                if (Version < 29) VertexValues = rw.Array(VertexValues, Positions.Length)!;
             }
 
-            for (var i = 0; i < Faces.Length; i++)
-            {
-                if (Version < 29)
-                {
-                    FaceProperties = Resize(FaceProperties, Faces.Length);
-                    LegacyFaceValues = Resize(LegacyFaceValues, Faces.Length);
-                    FaceProperties[i] = rw.Int32(FaceProperties[i]);
-                    LegacyFaceValues[i] = rw.Int32(LegacyFaceValues[i]);
-                }
-                if (Version < 30)
-                {
-                    FaceFlags = Resize(FaceFlags, Faces.Length);
-                    FaceFlags[i] = rw.Int32(FaceFlags[i]);
-                }
-            }
-            if (Version < 29) VertexValues = rw.Array(VertexValues, Positions.Length)!;
             U04 = rw.Int32(U04);
             if (Version < 32)
             {
@@ -545,6 +515,19 @@ public partial class CPlugCrystal
                 U09 = rw.Array(U09, numEdges)!;
                 U10 = rw.Array(U10, numVerts)!;
                 U07 = rw.Int32(U07);
+            }
+
+            if (!IsEmbeddedCrystal && Version >= 24)
+            {
+                foreach (var face in Faces)
+                {
+                    face.MaterialIndex = rw.Int32(face.Material is null ? face.MaterialIndex : n.Materials.IndexOf(face.Material));
+                    face.LegacyMaterialValues = rw.Vec4(face.LegacyMaterialValues);
+                    if (rw.Reader is not null && face.MaterialIndex >= 0 && n.Materials.Count > 0)
+                    {
+                        face.Material = n.Materials[face.MaterialIndex];
+                    }
+                }
             }
         }
 

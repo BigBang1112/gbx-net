@@ -87,7 +87,7 @@ public class CGameCtnMediaShootParamsLayoutTests
             w.Write(0.875f); // Vorbis VBR quality.
         });
         var node = new CGameCtnMediaShootParams();
-        var chunk = new CGameCtnMediaShootParams.Chunk03060002();
+        var chunk = new CGameCtnMediaShootParams.Chunk03060002(GameVersion.TM2020);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
         await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);

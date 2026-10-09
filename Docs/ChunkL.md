@@ -29,7 +29,7 @@ CExample 0x03000000
     bool IsEnabled
 ```
 
-The generated class exposes `Value`, `IsEnabled`, and `Version`, then emits read/write code for chunk `0x03000002`. The version qualifier documents the observed game context and highest observed chunk version. It does not establish the runtime version, so the chunk body must read or write `version` or `versionb` before a version block.
+The generated class exposes `Value`, `IsEnabled`, and `Version`, then emits read/write code for chunk `0x03000002`. The version qualifier documents the observed game context and highest observed chunk version. A game-specific chunk constructor can select the initial version from these qualifiers. The chunk body must still read or write `version` or `versionb` before a version block.
 
 Use an unnamed `archive` for a class self-archive, and named `archive` declarations for reusable value layouts. Layouts can also declare enums, flags, properties, constructor defaults, fixed or variable arrays, nullable values, casts, version blocks, and control flow. See the language specification for their syntax and constraints.
 
@@ -56,26 +56,34 @@ ChunkL 1.2.2 can record defaults that differ between games. Put the game list af
 ```chunkl
 int AllBronzeValue [TM10 = 100, TMPU = 100]
 float ImageRadius = 0.1f [TMF = 0.024f, MP3 = 0.024f, MP4 = 0.024f]
-version [MP3 = 0, TMT = 0]
 ```
 
-Types with these defaults gain a constructor that accepts `GameVersion`, including named archives and chunks whose stored fields have game defaults. For example, `new CGameCtnChallengeGroup(GameVersion.TM10)` sets the legacy medal values, while `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP3)` starts at chunk version 0.
+Types with these defaults gain a constructor that accepts `GameVersion`, including named archives and chunks whose stored fields have game defaults. For example, `new CGameCtnChallengeGroup(GameVersion.TM10)` sets the legacy medal values.
 
 The context must match one game exactly. Parameterless construction, `Unspecified`, and unmatched contexts use the ordinary fallback or the type default. Only the selected expression is evaluated, in declaration order. Repeated members select their defaults across declarations, and constructor assignments suppress all inline defaults for their target. A named archive uses its own explicitly supplied context.
 
-The generator also records each game-specific value in a `GameVersionDefaultAttribute` on the corresponding property, including a chunk's `Version` property:
+The generator also records each game-specific field default in a `GameVersionDefaultAttribute` on the corresponding property:
 
 ```cs
-[GameVersionDefault(GameVersion.MP3, 0)]
-[GameVersionDefault(GameVersion.TMT, 0)]
-public int Version { get; set; }
+[GameVersionDefault(GameVersion.TM10, 100)]
+[GameVersionDefault(GameVersion.TMPU, 100)]
+public int AllBronzeValue { get; set; }
 ```
 
 The attribute exposes `Game` and `DefaultValue` for literal values. Non-literal defaults use `DefaultExpression` to record the unevaluated ChunkL expression, including `empty`. Metadata does not evaluate expressions or change serialization. `(time)` defaults record the numeric value from the layout.
 
 Repeated field declarations combine their game defaults on the shared property. Identical entries for the same game appear once, and conflicting entries produce a generator diagnostic. Named archives use the same property attributes. Anonymous chunk members are public fields and receive the attribute on the field. Handwritten properties can receive generated attributes through a partial property implementation, or declare the attributes directly.
 
-Game qualifiers and `.vN` annotations do not select defaults automatically. Reading still replaces the initial value with the serialized value. A partial type with a handwritten constructor must also supply its own `GameVersion` constructor to handle game-specific initialization.
+Declare chunk versions with `.vN` qualifiers instead of field defaults on `version` or `versionb`:
+
+```chunkl
+0x00B [MP3.v0, TMT.v0, MP4.v1, TM2020.v1]
+  version
+```
+
+The generated chunk constructor selects the version for an exact game context. For example, `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP4)` starts at version 1. Parameterless construction, `Unspecified`, games without an explicit version qualifier, and combinations of games leave `Version` unassigned. The qualifiers are recorded in `ChunkGameVersionAttribute` on the chunk type. A version field with game-specific defaults, or a plain version default combined with explicit chunk versions, produces a generator diagnostic.
+
+Reading replaces the initial value with the serialized version. A partial type with a handwritten constructor owns its initialization and must supply its own `GameVersion` constructor when handling game-specific defaults.
 
 ## GBX.NET attributes
 
@@ -90,7 +98,7 @@ ChunkL attributes describe how GBX.NET should generate a chunk:
 
 At the class level, `inherits: ParentClass` creates the C# inheritance relationship and makes inherited chunks available. Named archives can use `inherits: BaseArchive` and `contextual` when their serialization needs the enclosing class node.
 
-Version lists such as `[TM10.v3, TMF.v11, TM2020.v13]` are format research metadata. Keep them accurate when adding or changing a layout, but do not treat them as generated runtime conditions.
+Version lists such as `[TM10.v3, TMF.v11, TM2020.v13]` document the observed formats and select versions in generated chunk `GameVersion` constructors. Keep them accurate when adding or changing a layout. Serialization branches still use the stored version.
 
 ## Game-version qualifiers
 

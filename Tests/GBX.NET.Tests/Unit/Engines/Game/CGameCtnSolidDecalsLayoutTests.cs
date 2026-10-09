@@ -67,7 +67,7 @@ public class CGameCtnSolidDecalsLayoutTests
         await Assert.That(node.TypeId).IsEqualTo("");
         await Assert.That(node.TypeIntensity).IsEqualTo(1u);
         await Assert.That(node.DecalFrequency).IsEqualTo(1u);
-        await Assert.That(new CGameCtnSolidDecals.Chunk03121001().Version).IsEqualTo(2);
+        await Assert.That(new CGameCtnSolidDecals.Chunk03121001(GameVersion.TM2020).Version).IsEqualTo(2);
 
         await RoundTrip(payload, node);
         await Assert.That(node.SceneDecals).IsEquivalentTo(sceneDecals, CollectionOrdering.Matching);

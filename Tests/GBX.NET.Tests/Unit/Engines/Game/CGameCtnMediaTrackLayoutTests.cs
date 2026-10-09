@@ -103,7 +103,7 @@ public class CGameCtnMediaTrackLayoutTests
             }
         });
         var track = new CGameCtnMediaTrack();
-        var chunk = new CGameCtnMediaTrack.Chunk03078005();
+        var chunk = new CGameCtnMediaTrack.Chunk03078005(GameVersion.MP4);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
         await RoundTrip(payload, rw => chunk.ReadWrite(track, rw));

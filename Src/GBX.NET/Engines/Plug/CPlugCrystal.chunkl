@@ -274,9 +274,9 @@ archive Crystal (contextual)
   if Version >= 25 && Version < 29
     bool IsEmbeddedCrystal
     bool IsEmbeddedCrystal
-  if Version >= 25 && Version < 34 // compressed geometry uses a flat mesh instead of element pools
+  if Version >= 25 && Version < 35 // compressed geometry uses a flat mesh instead of element pools
     bool IsEmbeddedCrystal
-  v34+ (archive)
+  v35+ (archive)
     boolbyte IsEmbeddedCrystal
   v33+ (archive)
     int MaxMaterialIndex
@@ -285,6 +285,50 @@ archive Crystal (contextual)
 archive VisualLevel
   int
   float
+
+archive ElementPool // editable geometry handles
+  ElementHandle[] Handles = empty
+  int FirstFree = int.MaxValue
+  int FirstUsed = int.MaxValue
+
+archive ElementHandle
+  bool IsFree
+  int Generation
+  int Next = int.MaxValue
+
+archive EditableEdge
+  int2 VertexHandles
+  v31-
+    int U01
+    int U02
+    int U03
+    v25-
+      int U04
+      int GuideEdge = -1
+      if GuideEdge != -1
+        float U05
+        float U06
+    bool U07
+    vec4 U08
+
+archive CrystalMesh
+  version
+  vec3[] Positions = empty
+  vec3[] Normals = empty
+  CrystalMeshFace[] Faces = empty
+
+archive CrystalMeshFace
+  CrystalMeshVertex[] Vertices = empty
+  CrystalMeshTexCoordLayer[] TexCoordLayers = empty (version: Vertices.Length)
+
+archive CrystalMeshVertex
+  int PositionIndex
+  int NormalIndex
+  vec4 Color // alpha, red, green, blue
+
+archive CrystalMeshTexCoordLayer
+  int Channel
+  vec2[v] TexCoords = empty
 
 archive AnchorInfo
   bool

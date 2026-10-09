@@ -278,7 +278,10 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk09003006)clone).hasReadLightmapCoords = context.Clone(this.hasReadLightmapCoords)!;
             ((Chunk09003006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09003006)clone).LightmapCoords = context.CloneArray(this.LightmapCoords)!;
+            ((Chunk09003006)clone).LightmapCoordIndices = context.CloneArray(this.LightmapCoordIndices)!;
         }
     }
 
@@ -2122,6 +2125,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             ((Crystal)clone).U08 = context.CloneArray(this.U08)!;
             ((Crystal)clone).U09 = context.CloneArray(this.U09)!;
             ((Crystal)clone).U10 = context.CloneArray(this.U10)!;
+            ((Crystal)clone).VertexPool = context.Clone(this.VertexPool)!;
+            ((Crystal)clone).EdgePool = context.Clone(this.EdgePool)!;
+            ((Crystal)clone).FacePool = context.Clone(this.FacePool)!;
+            ((Crystal)clone).EditableEdges = context.CloneArray(this.EditableEdges)!;
+            ((Crystal)clone).EditableMesh = context.Clone(this.EditableMesh)!;
+            ((Crystal)clone).FaceTypes = context.CloneArray(this.FaceTypes)!;
         }
     }
 
@@ -2159,6 +2168,477 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             rw.Int32(ref this.u01);
             rw.Single(ref this.u02);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class ElementPool : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private ElementHandle[] handles = [];
+        public ElementHandle[] Handles
+        {
+            get => this.handles;
+            set => this.handles = value;
+        }
+
+        private int firstFree = int.MaxValue;
+        public int FirstFree
+        {
+            get => this.firstFree;
+            set => this.firstFree = value;
+        }
+
+        private int firstUsed = int.MaxValue;
+        public int FirstUsed
+        {
+            get => this.firstUsed;
+            set => this.firstUsed = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ElementPool)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ElementPool)clone).handles = context.CloneArray(this.handles)!;
+            ((ElementPool)clone).firstFree = context.Clone(this.firstFree)!;
+            ((ElementPool)clone).firstUsed = context.Clone(this.firstUsed)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayReadableWritable<ElementHandle>(ref this.handles!, version: v);
+            rw.Int32(ref this.firstFree);
+            rw.Int32(ref this.firstUsed);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class ElementHandle : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private bool isFree;
+        public bool IsFree
+        {
+            get => this.isFree;
+            set => this.isFree = value;
+        }
+
+        private int generation;
+        public int Generation
+        {
+            get => this.generation;
+            set => this.generation = value;
+        }
+
+        private int next = int.MaxValue;
+        public int Next
+        {
+            get => this.next;
+            set => this.next = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ElementHandle)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ElementHandle)clone).isFree = context.Clone(this.isFree)!;
+            ((ElementHandle)clone).generation = context.Clone(this.generation)!;
+            ((ElementHandle)clone).next = context.Clone(this.next)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Boolean(ref this.isFree);
+            rw.Int32(ref this.generation);
+            rw.Int32(ref this.next);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class EditableEdge : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Int2 vertexHandles;
+        public Int2 VertexHandles
+        {
+            get => this.vertexHandles;
+            set => this.vertexHandles = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int guideEdge = -1;
+        public int GuideEdge
+        {
+            get => this.guideEdge;
+            set => this.guideEdge = value;
+        }
+
+        private float u05;
+        public float U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private float u06;
+        public float U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private bool u07;
+        public bool U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private Vec4 u08;
+        public Vec4 U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (EditableEdge)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((EditableEdge)clone).vertexHandles = context.Clone(this.vertexHandles)!;
+            ((EditableEdge)clone).u01 = context.Clone(this.u01)!;
+            ((EditableEdge)clone).u02 = context.Clone(this.u02)!;
+            ((EditableEdge)clone).u03 = context.Clone(this.u03)!;
+            ((EditableEdge)clone).u04 = context.Clone(this.u04)!;
+            ((EditableEdge)clone).guideEdge = context.Clone(this.guideEdge)!;
+            ((EditableEdge)clone).u05 = context.Clone(this.u05)!;
+            ((EditableEdge)clone).u06 = context.Clone(this.u06)!;
+            ((EditableEdge)clone).u07 = context.Clone(this.u07)!;
+            ((EditableEdge)clone).u08 = context.Clone(this.u08)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int2(ref this.vertexHandles);
+
+            if (v <= 31)
+            {
+                rw.Int32(ref this.u01);
+                rw.Int32(ref this.u02);
+                rw.Int32(ref this.u03);
+
+                if (v <= 25)
+                {
+                    rw.Int32(ref this.u04);
+                    rw.Int32(ref this.guideEdge);
+
+                    if (GuideEdge!= -1)
+                    {
+                        rw.Single(ref this.u05);
+                        rw.Single(ref this.u06);
+                    }
+                }
+
+                rw.Boolean(ref this.u07);
+                rw.Vec4(ref this.u08);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class CrystalMesh : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; }
+
+        private Vec3[] positions = [];
+        public Vec3[] Positions
+        {
+            get => this.positions;
+            set => this.positions = value;
+        }
+
+        private Vec3[] normals = [];
+        public Vec3[] Normals
+        {
+            get => this.normals;
+            set => this.normals = value;
+        }
+
+        private CrystalMeshFace[] faces = [];
+        public CrystalMeshFace[] Faces
+        {
+            get => this.faces;
+            set => this.faces = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CrystalMesh)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CrystalMesh)clone).Version = context.Clone(this.Version)!;
+            ((CrystalMesh)clone).positions = context.CloneArray(this.positions)!;
+            ((CrystalMesh)clone).normals = context.CloneArray(this.normals)!;
+            ((CrystalMesh)clone).faces = context.CloneArray(this.faces)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.Array<Vec3>(ref this.positions!);
+            rw.Array<Vec3>(ref this.normals!);
+            rw.ArrayReadableWritable<CrystalMeshFace>(ref this.faces!, version: Version);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class CrystalMeshFace : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CrystalMeshVertex[] vertices = [];
+        public CrystalMeshVertex[] Vertices
+        {
+            get => this.vertices;
+            set => this.vertices = value;
+        }
+
+        private CrystalMeshTexCoordLayer[] texCoordLayers = [];
+        public CrystalMeshTexCoordLayer[] TexCoordLayers
+        {
+            get => this.texCoordLayers;
+            set => this.texCoordLayers = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CrystalMeshFace)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CrystalMeshFace)clone).vertices = context.CloneArray(this.vertices)!;
+            ((CrystalMeshFace)clone).texCoordLayers = context.CloneArray(this.texCoordLayers)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayReadableWritable<CrystalMeshVertex>(ref this.vertices!, version: v);
+            rw.ArrayReadableWritable<CrystalMeshTexCoordLayer>(ref this.texCoordLayers!, version: Vertices. Length);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class CrystalMeshVertex : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int positionIndex;
+        public int PositionIndex
+        {
+            get => this.positionIndex;
+            set => this.positionIndex = value;
+        }
+
+        private int normalIndex;
+        public int NormalIndex
+        {
+            get => this.normalIndex;
+            set => this.normalIndex = value;
+        }
+
+        private Vec4 color;
+        /// <summary>
+        /// alpha, red, green, blue
+        /// </summary>
+        public Vec4 Color
+        {
+            get => this.color;
+            set => this.color = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CrystalMeshVertex)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CrystalMeshVertex)clone).positionIndex = context.Clone(this.positionIndex)!;
+            ((CrystalMeshVertex)clone).normalIndex = context.Clone(this.normalIndex)!;
+            ((CrystalMeshVertex)clone).color = context.Clone(this.color)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.positionIndex);
+            rw.Int32(ref this.normalIndex);
+            rw.Vec4(ref this.color);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class CrystalMeshTexCoordLayer : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int channel;
+        public int Channel
+        {
+            get => this.channel;
+            set => this.channel = value;
+        }
+
+        private Vec2[] texCoords = [];
+        public Vec2[] TexCoords
+        {
+            get => this.texCoords;
+            set => this.texCoords = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CrystalMeshTexCoordLayer)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CrystalMeshTexCoordLayer)clone).channel = context.Clone(this.channel)!;
+            ((CrystalMeshTexCoordLayer)clone).texCoords = context.CloneArray(this.texCoords)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.channel);
+            rw.Array<Vec2>(ref this.texCoords!, v);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

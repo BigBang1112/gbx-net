@@ -72,7 +72,7 @@ public class CGameCtnMediaClipLayoutTests
             w.Write(-1);
         });
         var clip = new CGameCtnMediaClip();
-        var chunk = new CGameCtnMediaClip.Chunk0307900D();
+        var chunk = new CGameCtnMediaClip.Chunk0307900D(GameVersion.TM2020);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
         await Assert.That(clip.StereoSepMax).IsEqualTo(0.2f);
@@ -175,7 +175,7 @@ public class CGameCtnMediaClipLayoutTests
             w.Write(flags);
         });
         var clip = new CGameCtnMediaClip();
-        var chunk = new CGameCtnMediaClip.Chunk0307900E();
+        var chunk = new CGameCtnMediaClip.Chunk0307900E(GameVersion.TM2020);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
         await Assert.That(clip.TriggersBeforeRaceStart).IsFalse();

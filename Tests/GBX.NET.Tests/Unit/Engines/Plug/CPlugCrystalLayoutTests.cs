@@ -7,6 +7,37 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugCrystalLayoutTests
 {
     [Test]
+    [Arguments(25)]
+    [Arguments(26)]
+    [Arguments(28)]
+    [Arguments(31)]
+    [Arguments(32)]
+    [Arguments(34)]
+    [Arguments(35)]
+    [Arguments(37)]
+    public async Task EditableCrystalPreservesSparseHandlesAndMeshAttributes(int version)
+    {
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload)) WriteEditableCrystalPayload(writer, version);
+        payload.Position = 0;
+        var node = new CPlugCrystal();
+        var crystal = new CPlugCrystal.Crystal();
+        using (var reader = new GbxReader(payload)) crystal.Read(reader, node);
+
+        await Assert.That(payload.Position).IsEqualTo(payload.Length);
+        await Assert.That(crystal.Edges[0]).IsEqualTo(new Int2(0, 2));
+        await Assert.That(crystal.VertexPool.Handles[1].IsFree).IsTrue();
+        await Assert.That(crystal.Faces[0].Normal).IsEqualTo(new Vec3(0, 1, 0));
+        await Assert.That(crystal.Faces[0].Vertices[2].TexCoord).IsEqualTo(new Vec2(2, 3));
+        await Assert.That(crystal.EditableMesh.Faces[0].Vertices[0].Color).IsEqualTo(new Vec4(0.5f, 1, 2, 3));
+        await Assert.That(crystal.FaceFlags[0]).IsEqualTo(13);
+
+        using var saved = new MemoryStream();
+        using (var writer = new GbxWriter(saved)) crystal.Write(writer, node);
+        await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray(), CollectionOrdering.Matching);
+    }
+
+    [Test]
     [Arguments(26, 0, 3)]
     [Arguments(27, 0, 3)]
     [Arguments(28, 0, 3)]
@@ -221,6 +252,77 @@ public class CPlugCrystalLayoutTests
         await Assert.That(saved.Position).IsEqualTo(saved.Length);
     }
 
+    [Test]
+    [Arguments(0, 0)]
+    [Arguments(0, 2)]
+    [Arguments(0, 3)]
+    [Arguments(1, 0)]
+    [Arguments(1, 2)]
+    [Arguments(1, 3)]
+    [Arguments(2, 0)]
+    [Arguments(2, 2)]
+    [Arguments(2, 3)]
+    public async Task LightmapChunkPreservesIndependentTablesAndIndexOrder(int version, int lightmapCount)
+    {
+        var face = new CPlugCrystal.Face(
+            [new(0, default, default), new(1, default, default), new(2, default, default)],
+            new CPlugCrystal.Part(), null, null);
+        var node = new CPlugCrystal
+        {
+            Layers = [new CPlugCrystal.GeometryLayer { Crystal = new CPlugCrystal.Crystal { Faces = [face] } }]
+        };
+        var coordCount = version == 2 && lightmapCount > 0 ? 2 : lightmapCount;
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            writer.Write(version);
+            writer.Write(coordCount);
+            for (var i = 0; i < coordCount; i++)
+            {
+                if (version == 0) writer.Write(new Vec2(i / 2f, 1 - i / 2f));
+                else
+                {
+                    writer.Write((ushort)(i == 0 ? 0 : i == 1 ? 32768 : ushort.MaxValue));
+                    writer.Write((ushort)(i == 0 ? ushort.MaxValue : i == 1 ? 16384 : 0));
+                }
+            }
+            if (version == 2)
+            {
+                // The first used coordinate is not first in the shared table.
+                writer.WriteArrayOptimizedInt(Enumerable.Range(0, lightmapCount).Select(i => (i + 1) % 2).ToArray());
+            }
+        }
+        payload.Position = 0;
+        var chunk = new CPlugCrystal.Chunk09003006();
+        using (var reader = new GbxReader(payload)) chunk.Read(node, reader);
+        await Assert.That(payload.Position).IsEqualTo(payload.Length);
+        await Assert.That(chunk.LightmapCoords.Length).IsEqualTo(coordCount);
+        if (lightmapCount != face.Vertices.Length)
+        {
+            await Assert.That(face.Vertices.All(vertex => vertex.LightmapCoord == default)).IsTrue();
+        }
+        else
+        {
+            await Assert.That(face.Vertices[0].LightmapCoord).IsEqualTo(chunk.LightmapCoords[version == 2 ? 1 : 0]);
+        }
+
+        using var saved = new MemoryStream();
+        using (var writer = new GbxWriter(saved)) chunk.Write(node, writer);
+        await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray(), CollectionOrdering.Matching);
+
+        if (lightmapCount == face.Vertices.Length)
+        {
+            face.Vertices[0] = face.Vertices[0] with { LightmapCoord = new Vec2(0.25f, 0.75f) };
+            using var edited = new MemoryStream();
+            using (var writer = new GbxWriter(edited)) chunk.Write(node, writer);
+            face.Vertices[0] = face.Vertices[0] with { LightmapCoord = default };
+            edited.Position = 0;
+            using (var reader = new GbxReader(edited)) new CPlugCrystal.Chunk09003006().Read(node, reader);
+            var expected = version == 0 ? new Vec2(0.25f, 0.75f) : new Vec2(16383 / 65535f, 49151 / 65535f);
+            await Assert.That(face.Vertices[0].LightmapCoord).IsEqualTo(expected);
+        }
+    }
+
     private static void WriteCrystalPayload(GbxWriter writer, int version, int maximumMaterialIndex, int positionCount)
     {
         writer.Write(version);
@@ -239,7 +341,7 @@ public class CPlugCrystalLayoutTests
             writer.Write(true);
             writer.Write(true);
         }
-        writer.Write(true, asByte: version >= 34);
+        writer.Write(true, asByte: version >= 35);
         if (version >= 33)
         {
             writer.Write(maximumMaterialIndex);
@@ -310,6 +412,116 @@ public class CPlugCrystalLayoutTests
             for (var i = 0; i < positionCount; i++) writer.Write(23);
             writer.Write(24);
         }
+    }
+
+    private static void WriteEditableCrystalPayload(GbxWriter writer, int version)
+    {
+        writer.Write(version);
+        writer.Write(4);
+        writer.Write(0); // Visual levels.
+        writer.Write(0); // Anchors.
+        writer.Write(1); // Parts.
+        if (version >= 31) writer.Write(0);
+        writer.Write(true, asByte: version >= 35);
+        writer.Write(-1);
+        writer.Write("part");
+        writer.Write(-1);
+        writer.Write(0);
+        if (version < 29)
+        {
+            writer.Write(false);
+            writer.Write(false);
+        }
+        writer.Write(false, asByte: version >= 35);
+        if (version >= 33)
+        {
+            writer.Write(0);
+            writer.Write(0);
+        }
+
+        writer.Write(4); // Sparse vertex handles, used chain 2 -> 0 -> 3.
+        WriteHandle(writer, false, 3, 3);
+        WriteHandle(writer, true, 5, int.MaxValue);
+        WriteHandle(writer, false, 7, 0);
+        WriteHandle(writer, false, 9, int.MaxValue);
+        writer.Write(1); // First free.
+        writer.Write(2); // First used.
+        for (var i = 0; i < 2; i++) // Edge and face pools.
+        {
+            writer.Write(1);
+            WriteHandle(writer, false, 1, int.MaxValue);
+            writer.Write(int.MaxValue);
+            writer.Write(0);
+        }
+        writer.Write(new Int2((2 << 10) | 7, (3 << 10) | 9));
+        if (version < 32)
+        {
+            writer.Write(1);
+            writer.Write(0);
+            writer.Write(3);
+            if (version < 26)
+            {
+                writer.Write(4);
+                writer.Write(-1); // No guide edge.
+            }
+            writer.Write(true);
+            writer.Write(new Vec4(5, 6, 7, 8));
+        }
+        writer.Write(0); // Mesh version.
+        writer.Write(3);
+        for (var i = 0; i < 3; i++) writer.Write(new Vec3(i, 0, 0));
+        writer.Write(1);
+        writer.Write(new Vec3(0, 1, 0));
+        writer.Write(1); // Mesh faces.
+        writer.Write(3);
+        for (var i = 0; i < 3; i++)
+        {
+            writer.Write(i);
+            writer.Write(0); // Normal index.
+            writer.Write(new Vec4(0.5f, 1, 2, 3));
+        }
+        writer.Write(2); // UV layers.
+        for (var layer = 0; layer < 2; layer++)
+        {
+            writer.Write(layer + 4); // Preserve arbitrary channel IDs.
+            for (var i = 0; i < 3; i++) writer.Write(new Vec2(i + layer * 10, i + 1));
+        }
+        writer.Write(2); // Triangle face type.
+        if (version != 28) writer.Write(11);
+        if (version < 28) writer.Write(12);
+        writer.Write(13); // Face flags.
+        writer.Write(0); // Group.
+        if (version < 29)
+        {
+            for (var i = 0; i < 3; i++) writer.Write(i + 0.5f);
+        }
+        writer.Write(0x12345678);
+        if (version < 32)
+        {
+            writer.Write(0); // Links.
+            writer.Write(123);
+            writer.Write("legacy");
+        }
+        if (version < 30) writer.WriteArray(new[] { 0.75f });
+        if (version < 36)
+        {
+            writer.Write(1);
+            writer.Write(1);
+            writer.Write(3);
+            writer.Write(21);
+            writer.Write(22);
+            for (var i = 0; i < 3; i++) writer.Write(23);
+            writer.Write(24);
+        }
+        writer.Write(-1); // Material index.
+        writer.Write(new Vec4(1, 2, 3, 4));
+    }
+
+    private static void WriteHandle(GbxWriter writer, bool isFree, int generation, int next)
+    {
+        writer.Write(isFree);
+        writer.Write(generation);
+        writer.Write(next);
     }
 
     private static void WriteIndex(GbxWriter writer, int value, int maximum)

@@ -66,7 +66,7 @@ public class CInputReplayLayoutTests
     {
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output))
-        using (var rw = new GbxReaderWriter(writer)) new CInputReplay.Chunk1300D000().ReadWrite(new CInputReplay(), rw);
+        using (var rw = new GbxReaderWriter(writer)) new CInputReplay.Chunk1300D000(GameVersion.TM2020).ReadWrite(new CInputReplay(), rw);
         await Assert.That(output.ToArray()).IsEquivalentTo(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, CollectionOrdering.Matching);
     }
 

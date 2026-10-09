@@ -355,12 +355,12 @@ public class CGameUserProfileLayoutTests
     [Test]
     public async Task WriterMetadataExcludesReaderOnlyChunksAndUsesNativeVersions()
     {
-        await Assert.That(new CGameUserProfile.Chunk031CC000().Version).IsEqualTo(16);
-        await Assert.That(new CGameUserProfile.Chunk031CC007().Version).IsEqualTo(3);
-        await Assert.That(new CGameUserProfile.Chunk031CC00B().Version).IsEqualTo(8);
+        await Assert.That(new CGameUserProfile.Chunk031CC000(GameVersion.TM2020).Version).IsEqualTo(16);
+        await Assert.That(new CGameUserProfile.Chunk031CC007(GameVersion.TM2020).Version).IsEqualTo(3);
+        await Assert.That(new CGameUserProfile.Chunk031CC00B(GameVersion.TM2020).Version).IsEqualTo(8);
         await Assert.That(new CGameUserProfile.Chunk031CC012().Version).IsEqualTo(0);
         await Assert.That(new CGameUserProfile.Chunk031CC014().Version).IsEqualTo(1);
-        await Assert.That(new CGameUserProfile.Chunk031CC020().Version).IsEqualTo(8);
+        await Assert.That(new CGameUserProfile.Chunk031CC020(GameVersion.TM2020).Version).IsEqualTo(8);
         await Assert.That(new CGameUserProfile.Chunk031CC006().GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
         await Assert.That(new CGameUserProfile.Chunk031CC008().GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
         await Assert.That(new CGameUserProfile.Chunk031CC015().GameVersion).IsEqualTo(GameVersion.Unspecified);

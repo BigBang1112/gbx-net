@@ -164,9 +164,9 @@ public class CHmsLightMapLayoutTests
         await Assert.That(node.GameTimerSeconds).IsEqualTo(250u);
         await Assert.That(node.CompressMode).IsEqualTo(CHmsLightMap.ECompressMode.Ldr_DXT1);
         await Assert.That(node.StoreLDir0).IsEqualTo(CHmsLightMap.EStoreLDir0.Sinc);
-        await Assert.That(new CHmsLightMap.Chunk06021029().Version).IsEqualTo(7);
+        await Assert.That(new CHmsLightMap.Chunk06021029(GameVersion.TM2020).Version).IsEqualTo(7);
         await Assert.That(new CHmsLightMap.Chunk0602102A().Version).IsEqualTo(5);
-        await Assert.That(new CHmsLightMap.Chunk0602102B().Version).IsEqualTo(1);
+        await Assert.That(new CHmsLightMap.Chunk0602102B(GameVersion.TM2020).Version).IsEqualTo(1);
 
         await RoundTrip(Payload(w => { w.Write(1); w.Write(0); }),
             Files(0), rw => new CHmsLightMap.Chunk0602100E().ReadWrite(node, rw));

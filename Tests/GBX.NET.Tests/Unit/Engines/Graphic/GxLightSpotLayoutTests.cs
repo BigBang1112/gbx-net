@@ -93,7 +93,7 @@ public class GxLightSpotLayoutTests
             }
         });
         var node = new GxLightSpot();
-        var chunk = new GxLightSpot.Chunk0400B003();
+        var chunk = new GxLightSpot.Chunk0400B003(GameVersion.TM2020);
         await Assert.That(chunk.Version).IsEqualTo(1);
 
         await ReadPayload(payload, rw => chunk.ReadWrite(node, rw));

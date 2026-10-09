@@ -1,11 +1,66 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Engines.Hms;
+using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Tests.Integration;
 
 [Category("Integration")]
 public class GbxFixtureTests
 {
+    [Test]
+    [Arguments(GbxCompression.Uncompressed, false)]
+    [Arguments(GbxCompression.Uncompressed, true)]
+    [Arguments(GbxCompression.Compressed, false)]
+    [Arguments(GbxCompression.Compressed, true)]
+    public async Task ParseSaveParse_MP4Crystal_PreservesEditableGeometry(GbxCompression compression, bool async)
+    {
+        var path = TestFiles.Gbx("CPlugCrystal", "CPlugCrystal MP4 001.Crystal.Gbx");
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+        var original = async ? await Gbx.ParseAsync<CPlugCrystal>(path, settings) : Gbx.Parse<CPlugCrystal>(path, settings);
+        original.BodyCompression = compression;
+        var geometry = original.Node.Layers.OfType<CPlugCrystal.GeometryLayer>().First().Crystal!;
+
+        await Assert.That(original.Body.Exception).IsNull();
+        await Assert.That(geometry.IsEmbeddedCrystal).IsFalse();
+        await Assert.That(geometry.Positions).IsNotEmpty();
+        await Assert.That(geometry.Faces).IsNotEmpty();
+        // Saving may update serialization caches, so keep an independent expected graph.
+        var expected = Gbx.Parse<CPlugCrystal>(path, settings);
+        expected.BodyCompression = compression;
+
+        using var saved = new MemoryStream();
+        original.Save(saved);
+        saved.Position = 0;
+        var restored = async ? await Gbx.ParseAsync<CPlugCrystal>(saved, settings) : Gbx.Parse<CPlugCrystal>(saved, settings);
+        await Assert.That(restored.Body.Exception).IsNull();
+        await GbxAssert.HaveEqualSerializedData(expected, restored);
+        await Assert.That(restored.BodyCompression).IsEqualTo(compression);
+
+        using var secondSave = new MemoryStream();
+        restored.Save(secondSave);
+        await Assert.That(secondSave.ToArray()).IsEquivalentTo(saved.ToArray(), CollectionOrdering.Matching);
+    }
+
+    [Test]
+    public async Task Save_MP4Crystal_PreservesEditedPositionsAndTexCoords()
+    {
+        var path = TestFiles.Gbx("CPlugCrystal", "CPlugCrystal MP4 001.Crystal.Gbx");
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+        var original = Gbx.Parse<CPlugCrystal>(path, settings);
+        var geometry = original.Node.Layers.OfType<CPlugCrystal.GeometryLayer>().First().Crystal!;
+        geometry.Positions[0] = new Vec3(12, 34, 56);
+        var face = geometry.Faces[0];
+        face.Vertices[0] = face.Vertices[0] with { TexCoord = new Vec2(0.25f, 0.75f) };
+
+        using var saved = new MemoryStream();
+        original.Save(saved);
+        saved.Position = 0;
+        var restored = Gbx.Parse<CPlugCrystal>(saved, settings);
+        var restoredGeometry = restored.Node.Layers.OfType<CPlugCrystal.GeometryLayer>().First().Crystal!;
+        await Assert.That(restoredGeometry.Positions[0]).IsEqualTo(new Vec3(12, 34, 56));
+        await Assert.That(restoredGeometry.Faces[0].Vertices[0].TexCoord).IsEqualTo(new Vec2(0.25f, 0.75f));
+    }
+
     [Test]
     [Arguments("TMF", "Challenge")]
     [Arguments("MP3", "Map")]

@@ -27,10 +27,7 @@ public class GameSpecificDefaultsTests
             (typeof(CHmsAmbientOcc), nameof(CHmsAmbientOcc.BlurPower), GameVersion.MP3, 3f),
             (typeof(CHmsAmbientOcc), nameof(CHmsAmbientOcc.BlurPower), GameVersion.MP4, 3f),
             (typeof(CHmsItem), nameof(CHmsItem.VisibleId), GameVersion.TMF, 0),
-            (typeof(CHmsItem), nameof(CHmsItem.FlagsItem), GameVersion.TMF, 0xFFF1C00019800000UL),
-            (typeof(CGameCtnChallengeGroup.Chunk0308F00B), nameof(IVersionable.Version), GameVersion.MP3, 0),
-            (typeof(CGameCtnChallengeGroup.Chunk0308F00B), nameof(IVersionable.Version), GameVersion.TMT, 0),
-            (typeof(CGameCtnMediaClip.Chunk0307900D), nameof(IVersionable.Version), GameVersion.MP4, 0)
+            (typeof(CHmsItem), nameof(CHmsItem.FlagsItem), GameVersion.TMF, 0xFFF1C00019800000UL)
         };
 
         foreach (var (type, member, game, value) in expected)
@@ -46,6 +43,24 @@ public class GameSpecificDefaultsTests
                 .IsEqualTo(group.Count());
         }
         await Assert.That(typeof(CGameCtnChallengeGroup.Chunk0308F00B).GetCustomAttributes<GameVersionDefaultAttribute>()).IsEmpty();
+    }
+
+    [Test]
+    public async Task ChunkVersionsAreAvailableAsChunkMetadata()
+    {
+        var expected = new (Type Type, GameVersion Game, int[] Versions)[]
+        {
+            (typeof(CGameCtnChallengeGroup.Chunk0308F00B), GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, [0, 0, 1, 1]),
+            (typeof(CGameCtnMediaClip.Chunk0307900D), GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, [-1, 0, 1])
+        };
+
+        foreach (var (type, game, versions) in expected)
+        {
+            var attribute = type.GetCustomAttribute<ChunkGameVersionAttribute>()!;
+            await Assert.That(attribute.Game).IsEqualTo(game);
+            await Assert.That(attribute.Version).IsEquivalentTo(versions, CollectionOrdering.Matching);
+            await Assert.That(type.GetProperty(nameof(IVersionable.Version))!.GetCustomAttributes<GameVersionDefaultAttribute>()).IsEmpty();
+        }
     }
 
     [Test]
@@ -95,7 +110,9 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.TMT, 0)]
     [Arguments(GameVersion.MP4, 1)]
     [Arguments(GameVersion.TM2020, 1)]
-    [Arguments(GameVersion.Unspecified, 1)]
+    [Arguments(GameVersion.Unspecified, 0)]
+    [Arguments(GameVersion.TMF, 0)]
+    [Arguments(GameVersion.MP3 | GameVersion.MP4, 0)]
     public async Task MapInfoChunkWritesTheSelectedVersion(GameVersion gameVersion, int version)
     {
         var chunk = new CGameCtnChallengeGroup.Chunk0308F00B(gameVersion);
@@ -108,7 +125,7 @@ public class GameSpecificDefaultsTests
         await Assert.That(reader.ReadInt32()).IsEqualTo(version);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0);
         await Assert.That(stream.Position).IsEqualTo(stream.Length);
-        await Assert.That(new CGameCtnChallengeGroup.Chunk0308F00B().Version).IsEqualTo(1);
+        await Assert.That(new CGameCtnChallengeGroup.Chunk0308F00B().Version).IsEqualTo(0);
     }
 
     [Test]
@@ -131,10 +148,15 @@ public class GameSpecificDefaultsTests
     }
 
     [Test]
-    public async Task ClipVersionDefaultsKeepParameterlessConstructionCompatible()
+    [Arguments(GameVersion.MP4, 0)]
+    [Arguments(GameVersion.TM2020, 1)]
+    [Arguments(GameVersion.TMT, 0)]
+    [Arguments(GameVersion.TMF, 0)]
+    [Arguments(GameVersion.Unspecified, 0)]
+    [Arguments(GameVersion.MP4 | GameVersion.TM2020, 0)]
+    public async Task ClipVersionDefaultsRequireAnExactGameContext(GameVersion gameVersion, int version)
     {
-        await Assert.That(new CGameCtnMediaClip.Chunk0307900D(GameVersion.MP4).Version).IsEqualTo(0);
-        await Assert.That(new CGameCtnMediaClip.Chunk0307900D(GameVersion.TM2020).Version).IsEqualTo(1);
-        await Assert.That(new CGameCtnMediaClip.Chunk0307900D().Version).IsEqualTo(1);
+        await Assert.That(new CGameCtnMediaClip.Chunk0307900D(gameVersion).Version).IsEqualTo(version);
+        await Assert.That(new CGameCtnMediaClip.Chunk0307900D().Version).IsEqualTo(0);
     }
 }
