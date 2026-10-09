@@ -90,9 +90,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allBronzeValue;
-    /// <summary>
-    /// TM10 and TMPU initialize this to 100
-    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 100)]
+    [GameVersionDefault(GameVersion.TMPU, 100)]
     [AppliedWithChunk<Chunk0308F003>]
     public int AllBronzeValue
     {
@@ -101,9 +100,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allSilverValue;
-    /// <summary>
-    /// TM10 and TMPU initialize this to 200
-    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 200)]
+    [GameVersionDefault(GameVersion.TMPU, 200)]
     [AppliedWithChunk<Chunk0308F003>]
     public int AllSilverValue
     {
@@ -112,9 +110,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allGoldValue;
-    /// <summary>
-    /// TM10 and TMPU initialize this to 300
-    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 300)]
+    [GameVersionDefault(GameVersion.TMPU, 300)]
     [AppliedWithChunk<Chunk0308F003>]
     public int AllGoldValue
     {
@@ -138,7 +135,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.linkedCampaign = value;
     }
 
-    private bool usesMapFiles = false;
+    private bool usesMapFiles;
     [AppliedWithChunk<Chunk0308F006>]
     public bool UsesMapFiles
     {
@@ -244,8 +241,20 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         ((CGameCtnChallengeGroup)clone).associatedCollectionId = context.Clone(this.associatedCollectionId)!;
     }
 
-    public CGameCtnChallengeGroup()
+    public CGameCtnChallengeGroup() : this(GameVersion.Unspecified)
     {
+    }
+
+    public CGameCtnChallengeGroup(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU)
+        {
+            allBronzeValue = 100;
+            allSilverValue = 200;
+            allGoldValue = 300;
+        }
+
+        usesMapFiles = false;
     }
 
     /// <summary>
@@ -506,7 +515,25 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F00B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        [GameVersionDefault(GameVersion.MP3, 0)]
+        [GameVersionDefault(GameVersion.TMT, 0)]
+        public int Version { get; set; }
+
+        public Chunk0308F00B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0308F00B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

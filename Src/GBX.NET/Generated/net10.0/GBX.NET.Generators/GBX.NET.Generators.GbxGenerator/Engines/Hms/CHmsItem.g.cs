@@ -91,7 +91,7 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.solid = value;
     }
 
-    private CHmsPortal[] portals = [];
+    private CHmsPortal[] portals = default!;
     /// <summary>
     /// Native readers discard these portals after loading
     /// </summary>
@@ -163,10 +163,8 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.flagsLegacy64 = value;
     }
 
-    private ushort visibleId = 1;
-    /// <summary>
-    /// SPlugVisibleId default in Maniaplanet/TM2020; 0 in TMF
-    /// </summary>
+    private ushort visibleId;
+    [GameVersionDefault(GameVersion.TMF, 0)]
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -180,10 +178,8 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.visibleId = value;
     }
 
-    private ulong flagsItem = 0xFFF1C00018800000;
-    /// <summary>
-    /// Maniaplanet/TM2020 default; 0xFFF1C00019800000 in TMF
-    /// </summary>
+    private ulong flagsItem;
+    [GameVersionDefault(GameVersion.TMF, 0xFFF1C00019800000)]
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -874,8 +870,24 @@ public partial class CHmsItem : CMwNod, IClass
         get => (int)((FlagsLegacy64>> 32) & 0xFFF);
     }
 
-    public CHmsItem()
+    public CHmsItem() : this(GameVersion.Unspecified)
     {
+    }
+
+    public CHmsItem(GameVersion gameVersion)
+    {
+        portals = [];
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            visibleId = 0;
+            flagsItem = 0xFFF1C00019800000;
+        }
+        else
+        {
+            visibleId = 1;
+            flagsItem = 0xFFF1C00018800000;
+        }
     }
 
     [Chunk(0x06003000)]

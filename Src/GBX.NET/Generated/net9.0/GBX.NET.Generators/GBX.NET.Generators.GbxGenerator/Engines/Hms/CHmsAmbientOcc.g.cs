@@ -34,10 +34,10 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06026000;
 
-    private float imageRadius = 0.1f;
-    /// <summary>
-    /// TM2020 default; 0.024 in TMF and Maniaplanet
-    /// </summary>
+    private float imageRadius;
+    [GameVersionDefault(GameVersion.TMF, 0.024f)]
+    [GameVersionDefault(GameVersion.MP3, 0.024f)]
+    [GameVersionDefault(GameVersion.MP4, 0.024f)]
     [AppliedWithChunk<Chunk06026000>]
     public float ImageRadius
     {
@@ -45,10 +45,10 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
         set => this.imageRadius = value;
     }
 
-    private float blurPower = 1.5f;
-    /// <summary>
-    /// TM2020 default; 3 in TMF and Maniaplanet
-    /// </summary>
+    private float blurPower;
+    [GameVersionDefault(GameVersion.TMF, 3f)]
+    [GameVersionDefault(GameVersion.MP3, 3f)]
+    [GameVersionDefault(GameVersion.MP4, 3f)]
     [AppliedWithChunk<Chunk06026000>]
     public float BlurPower
     {
@@ -56,7 +56,7 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
         set => this.blurPower = value;
     }
 
-    private uint blurTexelCount = 15;
+    private uint blurTexelCount;
     /// <summary>
     /// Gaussian blur kernel width, normalized to an odd value by the renderer
     /// </summary>
@@ -75,8 +75,24 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
         ((CHmsAmbientOcc)clone).blurTexelCount = context.Clone(this.blurTexelCount)!;
     }
 
-    public CHmsAmbientOcc()
+    public CHmsAmbientOcc() : this(GameVersion.Unspecified)
     {
+    }
+
+    public CHmsAmbientOcc(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP3 || gameVersion == GameVersion.MP4)
+        {
+            imageRadius = 0.024f;
+            blurPower = 3f;
+        }
+        else
+        {
+            imageRadius = 0.1f;
+            blurPower = 1.5f;
+        }
+
+        blurTexelCount = 15;
     }
 
     [Chunk(0x06026000)]

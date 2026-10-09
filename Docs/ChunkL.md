@@ -49,6 +49,34 @@ The generated properties are nullable. The flag supports `sbyte`, `short`, `int`
 
 A `?` alone makes the C# type nullable without selecting the integer sentinel conversion. Add `(nullable)` when the wire format uses `-1` for a missing value. The flag does not support unsigned integers, arrays, lists, or casts.
 
+## Game-specific defaults
+
+ChunkL 1.2.2 can record defaults that differ between games. Put the game list after any field attributes:
+
+```chunkl
+int AllBronzeValue [TM10 = 100, TMPU = 100]
+float ImageRadius = 0.1f [TMF = 0.024f, MP3 = 0.024f, MP4 = 0.024f]
+version = 1 [MP3 = 0, TMT = 0]
+```
+
+Types with these defaults gain a constructor that accepts `GameVersion`, including named archives and chunks whose stored fields have game defaults. For example, `new CGameCtnChallengeGroup(GameVersion.TM10)` sets the legacy medal values, while `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP3)` starts at chunk version 0.
+
+The context must match one game exactly. Parameterless construction, `Unspecified`, and unmatched contexts use the ordinary fallback or the type default. Only the selected expression is evaluated, in declaration order. Repeated members select their defaults across declarations, and constructor assignments suppress all inline defaults for their target. A named archive uses its own explicitly supplied context.
+
+The generator also records each game-specific value in a `GameVersionDefaultAttribute` on the corresponding property, including a chunk's `Version` property:
+
+```cs
+[GameVersionDefault(GameVersion.MP3, 0)]
+[GameVersionDefault(GameVersion.TMT, 0)]
+public int Version { get; set; }
+```
+
+The attribute exposes `Game` and `DefaultValue` for literal values. Non-literal defaults use `DefaultExpression` to record the unevaluated ChunkL expression, including `empty`. Metadata does not evaluate expressions or change serialization. `(time)` defaults record the numeric value from the layout.
+
+Repeated field declarations combine their game defaults on the shared property. Identical entries for the same game appear once, and conflicting entries produce a generator diagnostic. Named archives use the same property attributes. Anonymous chunk members are public fields and receive the attribute on the field. Handwritten properties can receive generated attributes through a partial property implementation, or declare the attributes directly.
+
+Game qualifiers and `.vN` annotations do not select defaults automatically. Reading still replaces the initial value with the serialized value. A partial type with a handwritten constructor must also supply its own `GameVersion` constructor to handle game-specific initialization.
+
 ## GBX.NET attributes
 
 ChunkL attributes describe how GBX.NET should generate a chunk:

@@ -9,6 +9,322 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task GameDefaultConstructorsCombineEnumConditionsAndKeepExclusiveBranches()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify()
+                    {
+                        static string Values(Example node) => $"{node.First},{node.Second},{node.Third}";
+                        return Values(new Example()) + ";" + Values(new Example(GBX.NET.GameVersion.TM10))
+                            + ";" + Values(new Example(GBX.NET.GameVersion.TM2020))
+                            + ";" + Values(new Example(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.TM2020))
+                            + ";" + Values(new Example((GBX.NET.GameVersion)32));
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int First = 2 [TM10 = 5, TM2020 = 5]
+              int Second = First + 2 [TM10 = First + 10, TM2020 = First + 10]
+              int Third = 4 [TM10 = 6, TM2020 = 7]
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var constructor = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>()
+            .Single(x => x.ParameterList.Parameters.Count == 1);
+        var branches = constructor.Body!.Statements.OfType<IfStatementSyntax>().ToArray();
+        await Assert.That(branches.Length).IsEqualTo(2);
+        await Assert.That(branches[0].Condition.ToString()).IsEqualTo("gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TM2020");
+        await Assert.That(((BlockSyntax)branches[0].Statement).Statements.Count).IsEqualTo(2);
+        await Assert.That(((BlockSyntax)branches[0].Else!.Statement).Statements.Count).IsEqualTo(2);
+        await Assert.That(branches[1].Else!.Statement is IfStatementSyntax { Else.Statement: BlockSyntax }).IsTrue();
+        await Assert.That(constructor.ToString()).DoesNotContain("ToString()");
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("2,4,4;5,15,6;5,15,7;2,4,4;2,4,4");
+    }
+
+    [Test]
+    public async Task GameDefaultsSelectOneExpressionInSourceOrderAcrossStoredScopes()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    private static readonly System.Collections.Generic.List<string> trace = new();
+                    private static int Choose(string label, int value) { trace.Add(label); return value; }
+                    private static class Defaults
+                    {
+                        public static int Fallback => Choose("fallback", 1);
+                        public static int Legacy => Choose("legacy", 5);
+                        public static int Modern => Choose("modern", 8);
+                        public static int Skipped => Choose("skipped", 0);
+                        public static int SkippedGame => Choose("skipped-game", 4);
+                    }
+                    public static string Verify()
+                    {
+                        trace.Clear();
+                        var fallback = new Example();
+                        var fallbackTrace = string.Join(",", trace);
+                        trace.Clear();
+                        var legacy = new Example(GBX.NET.GameVersion.TM10);
+                        var legacyTrace = string.Join(",", trace);
+                        trace.Clear();
+                        var modern = new Example(GBX.NET.GameVersion.TM2020);
+                        var modernTrace = string.Join(",", trace);
+                        var combined = new Example(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.TM2020);
+                        var child = new Child(GBX.NET.GameVersion.TM10);
+                        var chunk = new Chunk03043001(GBX.NET.GameVersion.TM10);
+                        return $"{fallback.Shared},{fallback.First},{fallback.Later},{fallback.Skipped}:{fallbackTrace};"
+                            + $"{legacy.Shared},{legacy.First},{legacy.Later},{legacy.Skipped}:{legacyTrace};"
+                            + $"{modern.Shared},{modern.First},{modern.Later},{modern.Skipped}:{modernTrace};"
+                            + $"{combined.Shared};{child.Value};{chunk.Version},{chunk.U01};"
+                            + $"{new Chunk03043001().Version},{new Chunk03043001().U01}";
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            constructor
+              Skipped = 99
+            0x001
+              version = 4 [TM10 = 1]
+              int Shared = Defaults.Fallback [TM10 = Defaults.Legacy]
+              int First = Shared + 1
+              int Skipped = Defaults.Skipped [TM10 = Defaults.SkippedGame]
+              int Later = Shared + 10
+              int UnspecifiedOnly [Unspecified = Defaults.SkippedGame]
+              int = 3 [TM10 = 6]
+            0x002
+              short Shared [TM2020 = Defaults.Modern]
+            archive Child
+              int Value = 2 [TM10 = 12]
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        var attribute = type.GetProperty("Shared")!.GetCustomAttributes(false).Single(x => x.GetType().Name == "GameVersionDefaultAttribute"
+            && x.GetType().GetProperty("Game")!.GetValue(x)!.ToString() == "TM10");
+        await Assert.That(attribute.GetType().GetProperty("DefaultExpression")!.GetValue(attribute)).IsEqualTo("Defaults.Legacy");
+        var trace = type.GetField("trace", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!.GetValue(null)!;
+        await Assert.That(((System.Collections.ICollection)trace).Count).IsEqualTo(0);
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null))
+            .IsEqualTo("1,2,11,99:fallback;5,6,15,99:legacy;8,1,10,99:modern;1;12;1,6;4,3");
+    }
+
+    [Test]
+    public async Task GameDefaultsKeepArchiveEmptyInstancesAndTimeValuesIndependent()
+    {
+        const string source = """
+            namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void TimeInt32(ref TmEssentials.TimeInt32 value) { }
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify()
+                    {
+                        var first = new Example(GBX.NET.GameVersion.TM10);
+                        var second = new Example(GBX.NET.GameVersion.TM10);
+                        first.Data.Value = 42;
+                        return $"{first.Delay.TotalMilliseconds},{new Example().Delay.TotalMilliseconds},{second.Data.Value}";
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Delay = 10 (time) [TM10 = 20]
+              Child Data = empty [TM10 = empty]
+            archive Child
+              int Value = 7
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("20,10,7");
+    }
+
+    [Test]
+    public async Task InlineGameDefaultsInitializeStorageBeforeComputedPropertySetters()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify() => new Example(GBX.NET.GameVersion.TM10).Score + "," + new Example().Score;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Score = 2 [TM10 = 5]
+            property int Score
+              get = score * 2
+              set
+                score = value / 2
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("10,4");
+    }
+
+    [Test]
+    public async Task GameDefaultsGenerateMemberAttributesAlongsideContextConstructors()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify() => new Example().Shared + "," + new Child().Value + "," + new Chunk03043001().Version
+                        + ";" + new Example(GBX.NET.GameVersion.TM10).Shared + "," + new Child(GBX.NET.GameVersion.TM10).Value + "," + new Chunk03043001(GBX.NET.GameVersion.TM10).Version
+                        + ";" + new Example(GBX.NET.GameVersion.TM2020).Shared + "," + new Chunk03043001(GBX.NET.GameVersion.TM2020).Version;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version = 4 [TM10 = 1, TM2020 = 2]
+              int Shared = 3 [TM10 = 5]
+              int = 6 [TM10 = 7]
+            0x002
+              short Shared [TM10 = 5, TM2020 = 8]
+            archive Child
+              int Value = 2 [TM10 = 12]
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var root = Engine(result).GetRoot();
+        var shared = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Shared");
+        var defaults = shared.AttributeLists.SelectMany(x => x.Attributes).Where(x => x.Name.ToString() == "GameVersionDefault").ToArray();
+        await Assert.That(defaults.Length).IsEqualTo(2);
+        await Assert.That(defaults[0].ToString()).IsEqualTo("GameVersionDefault(GameVersion.TM10, 5)");
+        await Assert.That(defaults[1].ToString()).IsEqualTo("GameVersionDefault(GameVersion.TM2020, 8)");
+        var version = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Version");
+        await Assert.That(version.AttributeLists.SelectMany(x => x.Attributes).Count()).IsEqualTo(2);
+        var unknown = root.DescendantNodes().OfType<FieldDeclarationSyntax>().Single(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == "U01"));
+        await Assert.That(unknown.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 7)]");
+        var child = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Value");
+        await Assert.That(child.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 12)]");
+        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Count(x => x.ParameterList.Parameters.Count == 1)).IsEqualTo(3);
+        await Assert.That(root.DescendantNodes().OfType<ClassDeclarationSyntax>().SelectMany(x => x.AttributeLists).SelectMany(x => x.Attributes))
+            .All(x => x.Name.ToString() != "GameVersionDefault");
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("3,2,4;5,12,1;8,2");
+    }
+
+    [Test]
+    public async Task GameDefaultAttributesSupportTimeComputedAndPartialPropertiesWithHandwrittenConstructors()
+    {
+        const string source = """
+            namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void TimeInt32(ref TmEssentials.TimeInt32 value) { }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public Example() { }
+                    public Example(GBX.NET.GameVersion gameVersion) { }
+                    private int amount;
+                    public partial int Amount { get => amount; set => amount = value; }
+                    public static string Verify() => new Example().Score + "," + new Example().Delay.TotalMilliseconds;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Score = 2 [TM10 = 5]
+              int Delay = 10 (time) [TM10 = 20]
+              int Amount [TM10 = 15]
+            property int Score
+              get = score * 2
+              set
+                score = value / 2
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var root = Engine(result).GetRoot();
+        foreach (var name in new[] { "Score", "Delay", "Amount" })
+        {
+            var property = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == name);
+            await Assert.That(property.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10,");
+        }
+        await Assert.That(root.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 20)]");
+        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>()).IsEmpty();
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("4,10");
+    }
+
+    [Test]
+    [Arguments("int Shared [TM10 = 1]", "short Shared [TM10 = 2]")]
+    [Arguments("int Shared = 1 [TM10 = 3]", "short Shared = 2")]
+    public async Task ConflictingDefaultsAcrossRepeatedFieldsProduceAGenerationDiagnostic(string first, string second)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  {first}\n0x002\n  {second}\n"));
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("Conflicting defaults"));
+    }
+
+    [Test]
+    public async Task EmptyGameDefaultsAreRecordedAsExpressions()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int[] Values [TM10 = empty]
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await Assert.That(Engine(result).GetText().ToString()).Contains("[GameVersionDefault(GameVersion.TM10, DefaultExpression = \"empty\")]");
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     public async Task NullableSignedIntegerAttributesSelectSentinelMethods(int structureKind)
@@ -1763,6 +2079,8 @@ public class GenerationTests
         namespace GBX.NET.Components { public class GbxRefTableFile { } }
         namespace GBX.NET
         {
+            [System.Flags]
+            public enum GameVersion { Unspecified = 0, TM10 = 1, TM2020 = 2 }
             public interface IClass { }
             public interface IVersionable { int Version { get; set; } }
             public class External<T> where T : GBX.NET.Engines.Game.CMwNod { }
@@ -1772,6 +2090,13 @@ public class GenerationTests
             public class ClassAttribute(uint id) : System.Attribute { }
             public class ChunkAttribute(uint id) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
+            [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple = true)]
+            public class GameVersionDefaultAttribute(GBX.NET.GameVersion game, object? defaultValue = null) : System.Attribute
+            {
+                public GBX.NET.GameVersion Game { get; } = game;
+                public object? DefaultValue { get; } = defaultValue;
+                public string? DefaultExpression { get; set; }
+            }
             public class ChunkGenerationOptionsAttribute : System.Attribute
             {
                 public int StructureKind { get; set; }

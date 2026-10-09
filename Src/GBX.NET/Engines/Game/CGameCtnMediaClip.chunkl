@@ -43,7 +43,7 @@ CGameCtnMediaClip 0x03079000
   int
 
 0x00D [TMT, MP4.v0, TM2020.v1] // MP tracks
-  version = 1
+  version = 1 [MP4 = 0]
   CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name
   bool StopWhenLeave

@@ -116,6 +116,8 @@ internal static class EngineWriter
             code.BlankLine();
             Documentation(code, property.TrailingComment?.Text);
             AppliedWithChunkAttributes(code, layout, property.Name);
+            if (layout.Scope.Fields.FirstOrDefault(x => x.Name == property.Name) is { } field)
+                GameDefaultAttributesWriter.Write(code, field);
 
             if (partialProperty is not null)
             {
@@ -137,7 +139,8 @@ internal static class EngineWriter
             code.Close();
         }
 
-        if (layout.Existing?.Constructors.Any(static x => !x.Modifiers.Any(SyntaxKind.StaticKeyword) && x.ParameterList.Parameters.Count == 0) != true &&
+        if (!GameDefaultsWriter.Write(code, layout, layout.Scope, layout.Name, layouts, false, layout.File.Syntax.Constructor) &&
+            layout.Existing?.Constructors.Any(static x => !x.Modifiers.Any(SyntaxKind.StaticKeyword) && x.ParameterList.Parameters.Count == 0) != true &&
             layout.Existing?.PrimaryConstructors.Any() != true)
         {
             code.BlankLine();
@@ -195,6 +198,7 @@ internal static class EngineWriter
             code.Open($"public partial class {archive.Key} : {string.Join(", ", archiveBases)}");
 
             Properties(code, layout, archive.Value, false);
+            GameDefaultsWriter.Write(code, layout, archive.Value, archive.Key, layouts, false);
 
             if (!inheritedArchive && archive.Value.Existing?.Methods.Any(static x => x.Identifier.ValueText == "DeepClone") != true)
             {
@@ -299,6 +303,7 @@ internal static class EngineWriter
 
     private static void Properties(CodeWriter code, LayoutModel layout, ScopeModel scope, bool chunk)
     {
+        var gameDefaults = GameDefaultsWriter.Enabled(scope, chunk);
         foreach (var field in scope.Fields)
         {
             if (chunk && !field.IsUnknown && !field.IsVersion) continue;
@@ -309,7 +314,9 @@ internal static class EngineWriter
             var nullable = WireTypes.Nullable(field) && !field.IsVersion;
             var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration) + (nullable ? "?" : "");
             var defaultDeclaration = field.Occurrences.FirstOrDefault(static x => x.DefaultValue is not null);
-            var initial = Default(layout, type, defaultDeclaration);
+            var initial = gameDefaults ? null : Default(layout, type, defaultDeclaration);
+            if (gameDefaults && !nullable && !WireTypes.Value(field.Declaration.Type.Name) && field.Declaration.Type.CastTarget is null)
+                initial = "default!";
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
             var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
             var customProperty = !chunk && ReferenceEquals(scope, layout.Scope) &&
@@ -320,8 +327,16 @@ internal static class EngineWriter
 
             if (field.IsVersion)
             {
-                if (!SyntaxOverlap.Has(scope.Existing, "Version"))
+                if (partialProperty is not null)
+                {
+                    GameDefaultAttributesWriter.Write(code, field);
+                    PartialProperty(code, partialProperty);
+                }
+                else if (!hasExisting)
+                {
+                    GameDefaultAttributesWriter.Write(code, field);
                     code.Line("public int Version { get; set; }" + (initial is null ? "" : " = " + initial + ";"));
+                }
                 continue;
             }
 
@@ -329,10 +344,14 @@ internal static class EngineWriter
             {
                 if (partialProperty is not null)
                 {
+                    GameDefaultAttributesWriter.Write(code, field);
                     PartialProperty(code, partialProperty);
                 }
                 else if (!hasExisting)
+                {
+                    GameDefaultAttributesWriter.Write(code, field);
                     code.Line("public " + type + " " + property + (initial is null ? "" : " = " + initial) + ";");
+                }
             }
             else if (!hasExisting && customProperty)
             {
@@ -357,6 +376,7 @@ internal static class EngineWriter
                 }
 
                 Documentation(code, field.Declaration.TrailingComment?.Text);
+                GameDefaultAttributesWriter.Write(code, field);
 
                 if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "formatted")))
                     code.Line("[SupportsFormatting]");
@@ -448,10 +468,13 @@ internal static class EngineWriter
     }
 
     private static string? Default(LayoutModel layout, string type, FieldDeclaration? field)
-    {
-        if (field?.DefaultValue is null) return null;
+        => Default(layout, type, field, field?.DefaultValue);
 
-        var value = ChunkLParser.WriteExpression(field.DefaultValue);
+    internal static string? Default(LayoutModel layout, string type, FieldDeclaration? field, Expression? expression)
+    {
+        if (field is null || expression is null) return null;
+
+        var value = ChunkLParser.WriteExpression(expression);
         if (LayoutModel.Has(field.Attributes, "time") && field.Type.ArrayDimensions == 0 && value is not ("null" or "default" or "empty"))
         {
             return "new " + WireTypes.Map(field.Type.Name, field.Attributes) + "(" + value + ")";
@@ -533,7 +556,10 @@ internal static class EngineWriter
         var omitMembers = LayoutModel.OmitsDemonstrationMembers(chunk.Declaration.Attributes);
 
         if (!omitMembers)
+        {
             Properties(code, layout, chunk.Scope, true);
+            GameDefaultsWriter.Write(code, layout, chunk.Scope, chunk.Name, layouts, true);
+        }
 
         if (!omitMembers && !SyntaxOverlap.Method(chunk.Scope.Existing, "DeepCloneFields", "Chunk", "DeepCloneContext"))
         {

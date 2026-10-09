@@ -365,7 +365,7 @@ property int ShadowCasterGroupIdLegacy
 
 0x00B
   dataulong FlagsLegacy64
-  ushort VisibleId = 1 // SPlugVisibleId default in Maniaplanet/TM2020; 0 in TMF
+  ushort VisibleId = 1 [TMF = 0]
   if rw.Reader != null
     FlagsItem = (FlagsLegacy64 & 0x00007000FFFE1BFF) | 0xFFF1800010000000
     if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
@@ -388,7 +388,7 @@ property int ShadowCasterGroupIdLegacy
 0x00E [TM10]
   if rw.Writer != null
     FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
-  dataulong FlagsItem = 0xFFF1C00018800000 // Maniaplanet/TM2020 default; 0xFFF1C00019800000 in TMF
+  dataulong FlagsItem = 0xFFF1C00018800000 [TMF = 0xFFF1C00019800000]
   ushort VisibleId
   if rw.Reader != null
     FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000

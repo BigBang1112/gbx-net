@@ -16,9 +16,9 @@ CGameCtnChallengeGroup 0x0308F000
   string Name
 
 0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5] // medal values
-  int AllBronzeValue // TM10 and TMPU initialize this to 100
-  int AllSilverValue // TM10 and TMPU initialize this to 200
-  int AllGoldValue // TM10 and TMPU initialize this to 300
+  int AllBronzeValue [TM10 = 100, TMPU = 100]
+  int AllSilverValue [TM10 = 200, TMPU = 200]
+  int AllGoldValue [TM10 = 300, TMPU = 300]
 
 0x004 // legacy file list
   CMwNod[] Files (external, list)
@@ -51,7 +51,7 @@ CGameCtnChallengeGroup 0x0308F000
   MapInfo[] MapInfos (version: 1, list)
 
 0x00B [MP3.v0, TMT.v0, MP4.v1, TM2020.v1] // map identifiers + file paths
-  version = 1
+  version = 1 [MP3 = 0, TMT = 0]
   MapInfo[] MapInfos (version: Version + 2, list)
 
 archive MapInfo
