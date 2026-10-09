@@ -46,7 +46,7 @@ public class GxLightSpotLayoutTests
         await Assert.That(node.CustomAngleFlare).IsEqualTo(custom);
         await Assert.That(node.AngleFlare).IsEqualTo(flare);
         await Assert.That(node.FalloffExponent).IsEqualTo(2.5f);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT);
 
         node.Flags = 0x40;
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload, CollectionOrdering.Matching);
@@ -67,7 +67,7 @@ public class GxLightSpotLayoutTests
         await ReadPayload(payload, rw => chunk.ReadWrite(node, rw));
         await Assert.That(node.Flags).IsEqualTo(0xDEADBEEFu);
         await Assert.That(Angles(node)).IsEquivalentTo(new[] { 12f, 23f, 34f, 45f, 56f, 2.5f }, CollectionOrdering.Matching);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4);
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload, CollectionOrdering.Matching);
     }
 

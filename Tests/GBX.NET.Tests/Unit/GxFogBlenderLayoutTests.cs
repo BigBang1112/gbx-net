@@ -32,7 +32,7 @@ public class GxFogBlenderLayoutTests
         var chunk = new GxFogBlender.Chunk04008000();
         await Assert.That(node.Enabled).IsTrue();
         await Assert.That(node.LegacyMode).IsEqualTo(1);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
 
         input.Position = 0;
         using (var reader = new GbxReader(input))

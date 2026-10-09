@@ -62,7 +62,7 @@ public class CHmsLightMapMoodLayoutTests
         await Assert.That(node.SkyUseClouds).IsEqualTo(offset != 4 || skyUseClouds);
         await Assert.That(chunk.GameVersion).IsEqualTo(offset switch
         {
-            0 => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            0 => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
             4 => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020,
             _ => GameVersion.Unspecified
         });

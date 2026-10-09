@@ -148,7 +148,7 @@ public class CHmsItemLayoutTests
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw)))
             .IsEquivalentTo(expected, CollectionOrdering.Matching);
         await Assert.That(node.IsStatic).IsTrue(); // Bit 29 remains serializable in Maniaplanet/TM2020.
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
     }
 
     [Test]

@@ -59,7 +59,7 @@ public class GxLightFrustumLayoutTests
         await Assert.That(chunk.GameVersion).IsEqualTo(offset switch
         {
             4 => GameVersion.TM10 | GameVersion.TMPU,
-            6 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            6 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
             _ => GameVersion.Unspecified
         });
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw)))
