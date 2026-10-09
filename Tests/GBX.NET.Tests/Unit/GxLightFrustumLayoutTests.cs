@@ -16,6 +16,7 @@ public class GxLightFrustumLayoutTests
     {
         var payload = Payload(orthographic, offset == 0 ? 0x80050u : uint.MaxValue, legacyBooleans: offset == 0);
         var node = new GxLightFrustum();
+        ((GxLightBall)node).Flags = 0xDEADBEEF;
         var chunk = CreateChunk(offset);
 
         await ReadPayload(payload, rw => chunk.ReadWrite(node, rw));
@@ -23,9 +24,10 @@ public class GxLightFrustumLayoutTests
         await Assert.That(Geometry(node)).IsEquivalentTo(orthographic
             ? new[] { 2f, 2f, 5.5f, 4f, 6f, 5f }
             : new[] { -2f, -4f, 0.5f, 6f, 8f, 10.5f }, CollectionOrdering.Matching);
-        await Assert.That(node.FlagsFrustum).IsEqualTo(offset == 0 ? 0x80050u : uint.MaxValue);
+        await Assert.That(node.Flags).IsEqualTo(offset == 0 ? 0x80050u : uint.MaxValue);
         await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.Unspecified);
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload, CollectionOrdering.Matching);
+        await Assert.That(((GxLightBall)node).Flags).IsEqualTo(0xDEADBEEFu);
     }
 
     [Test]
@@ -40,6 +42,7 @@ public class GxLightFrustumLayoutTests
     public async Task ModernGeometryKeepsAllSixValuesAndAppliesLegacyFlagMasks(int offset, bool orthographic)
     {
         var node = new GxLightFrustum();
+        ((GxLightBall)node).Flags = 0xDEADBEEF;
         var chunk = CreateChunk(offset);
         var payload = Payload(orthographic, uint.MaxValue);
         var expectedFlags = offset switch
@@ -52,12 +55,16 @@ public class GxLightFrustumLayoutTests
         await ReadPayload(payload, rw => chunk.ReadWrite(node, rw));
         await Assert.That(node.Frustum!.IsOrthographic).IsEqualTo(orthographic);
         await Assert.That(Geometry(node)).IsEquivalentTo(new[] { -2f, -4f, 0.5f, 6f, 8f, 10.5f }, CollectionOrdering.Matching);
-        await Assert.That(node.FlagsFrustum).IsEqualTo(expectedFlags);
-        await Assert.That(chunk.GameVersion).IsEqualTo(offset == 6
-            ? GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020
-            : GameVersion.Unspecified);
+        await Assert.That(node.Flags).IsEqualTo(expectedFlags);
+        await Assert.That(chunk.GameVersion).IsEqualTo(offset switch
+        {
+            4 => GameVersion.TM10 | GameVersion.TMPU,
+            6 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.Unspecified
+        });
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw)))
             .IsEquivalentTo(Payload(orthographic, expectedFlags), CollectionOrdering.Matching);
+        await Assert.That(((GxLightBall)node).Flags).IsEqualTo(0xDEADBEEFu);
     }
 
     [Test]
@@ -69,17 +76,19 @@ public class GxLightFrustumLayoutTests
     public async Task LegacyBlendPairsMapToNativeApplyModes(uint source, uint destination, uint mode)
     {
         var node = new GxLightFrustum();
+        ((GxLightBall)node).Flags = 0xDEADBEEF;
         var chunk = new GxLightFrustum.Chunk0400A003();
         var payload = Payload(false, uint.MaxValue, source: source, destination: destination);
         var expectedFlags = 0xFFFC007Fu | (mode << 7);
 
         await ReadPayload(payload, rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.FlagsFrustum).IsEqualTo(expectedFlags);
+        await Assert.That(node.Flags).IsEqualTo(expectedFlags);
         await Assert.That(node.LegacyBlendSource).IsEqualTo(source);
         await Assert.That(node.LegacyBlendDestination).IsEqualTo(destination);
         await Assert.That(Geometry(node)).IsEquivalentTo(new[] { -2f, -4f, 0.5f, 6f, 8f, 10.5f }, CollectionOrdering.Matching);
         await Assert.That(WritePayload(rw => chunk.ReadWrite(node, rw)))
             .IsEquivalentTo(Payload(false, expectedFlags, source: source, destination: destination), CollectionOrdering.Matching);
+        await Assert.That(((GxLightBall)node).Flags).IsEqualTo(0xDEADBEEFu);
     }
 
     [Test]
@@ -91,10 +100,10 @@ public class GxLightFrustumLayoutTests
         await Assert.That(Geometry(node)).IsEquivalentTo(new[] { -0.2679492f, -0.2679492f, 0.5f, 0.2679492f, 0.2679492f, 10f }, CollectionOrdering.Matching);
         await Assert.That(node.AttHTnLR).IsEqualTo(0f);
         await Assert.That(node.AttHTnLR2).IsEqualTo(0f);
-        await Assert.That(node.FlagsFrustum).IsEqualTo(0x80010u);
+        await Assert.That(node.Flags).IsEqualTo(0x80010u);
         ((GxLightBall)node).Flags = 0xDEADBEEF;
         ((GxLight)node).Flags = GxLight.EFlags.DoLighting;
-        await Assert.That(node.FlagsFrustum).IsEqualTo(0x80010u);
+        await Assert.That(node.Flags).IsEqualTo(0x80010u);
         var other = new GxLightFrustum();
         node.Frustum.X = 42;
         await Assert.That(other.Frustum!.X).IsEqualTo(-0.2679492f);

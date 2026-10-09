@@ -48,18 +48,11 @@ public partial class GxLightFrustum : GxLightBall, IClass
         set => this.frustum = value;
     }
 
-    private uint flagsFrustum = 0x80010;
+    private uint flags = 0x80010;
     /// <summary>
     /// Packed face, attenuation, apply-mode, technique and shadow-group bits
     /// </summary>
     [AppliedWithChunk<Chunk0400A001>]
-    public uint FlagsFrustum
-    {
-        get => this.flagsFrustum;
-        set => this.flagsFrustum = value;
-    }
-
-    private uint flags;
     [AppliedWithChunk<Chunk0400A002>]
     [AppliedWithChunk<Chunk0400A003>]
     [AppliedWithChunk<Chunk0400A004>]
@@ -91,7 +84,6 @@ public partial class GxLightFrustum : GxLightBall, IClass
     {
         base.DeepCloneFields(clone, context);
         ((GxLightFrustum)clone).frustum = context.Clone(this.frustum)!;
-        ((GxLightFrustum)clone).flagsFrustum = context.Clone(this.flagsFrustum)!;
         ((GxLightFrustum)clone).flags = context.Clone(this.flags)!;
         ((GxLightFrustum)clone).legacyBlendSource = context.Clone(this.legacyBlendSource)!;
         ((GxLightFrustum)clone).legacyBlendDestination = context.Clone(this.legacyBlendDestination)!;
@@ -149,7 +141,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
         public override void ReadWrite(GxLightFrustum n, GbxReaderWriter rw)
         {
             rw.ReadableWritable<FrustumData>(ref n.frustum, version: 1);
-            rw.UInt32(ref n.flagsFrustum);
+            rw.UInt32(ref n.flags);
         }
     }
 

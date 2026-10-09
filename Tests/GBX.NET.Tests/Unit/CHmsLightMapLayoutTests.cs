@@ -98,7 +98,7 @@ public class CHmsLightMapLayoutTests
         await RoundTrip(payload, files, rw => chunk.ReadWrite(node, rw));
 
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020);
         await Assert.That(node.BitmapProbeGridAmbSVFile).IsSameReferenceAs(version >= 6 ? files[7] : null);
         await Assert.That(node.BitmapProbeGridAmbSV_Spread1File).IsSameReferenceAs(version >= 7 ? files[8] : null);
     }
@@ -126,7 +126,7 @@ public class CHmsLightMapLayoutTests
         var chunk = new CHmsLightMap.Chunk0602102A();
         await RoundTrip(payload, files, rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.Unspecified);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT);
     }
 
     [Test]

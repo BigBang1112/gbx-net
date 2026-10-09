@@ -3,6 +3,7 @@ using GBX.NET.Engines.Motion;
 using GBX.NET.Engines.Plug;
 using GBX.NET.Serialization;
 using System.Text;
+using TmEssentials;
 
 namespace GBX.NET.Tests.Unit;
 
@@ -58,7 +59,7 @@ public class CMotionLayoutTests
         await RoundTrip(payload, rw => chunk.ReadWrite(node, rw));
         await Assert.That(node.Period).IsEqualTo(2500u);
         await Assert.That(node.WaveType).IsEqualTo(CMotionCmdBase.EWaveType.InverseSawTooth);
-        await Assert.That(node.CmdBaseParams!.Period).IsEqualTo(9000u);
+        await Assert.That(node.CmdBaseParams!.Period).IsEqualTo(TimeInt32.FromMilliseconds(9000));
         await Assert.That(node.CmdBaseParams.Phase).IsEqualTo(0.75f);
     }
 

@@ -113,7 +113,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     [AppliedWithChunk<HeaderChunk03043002>(10)]
-    public partial int AuthorScore { get; set; }
+    public partial int? AuthorScore { get; set; }
 
     private EditorMode editor;
     [AppliedWithChunk<HeaderChunk03043002>(11)]

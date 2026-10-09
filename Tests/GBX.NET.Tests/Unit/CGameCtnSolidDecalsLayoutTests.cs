@@ -75,7 +75,7 @@ public class CGameCtnSolidDecalsLayoutTests
         await Assert.That(node.TypeIntensity).IsEqualTo(uint.MaxValue);
         await Assert.That(node.DecalFrequency).IsEqualTo(0x80000001u);
         await Assert.That(((CGameCtnSolidDecals.Chunk03121001)node.Chunks.First()).Version).IsEqualTo(version);
-        await Assert.That(node.Chunks).All(x => x.GameVersion == GameVersion.TM2020);
+        await Assert.That(node.Chunks).All(x => x.GameVersion == (GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020));
 
         if (hasData)
         {

@@ -18,7 +18,7 @@ constructor
 
 0x001
   FrustumData Frustum (version: 1)
-  uint FlagsFrustum = 0x80010 // Packed face, attenuation, apply-mode, technique and shadow-group bits
+  uint Flags = 0x80010 // Packed face, attenuation, apply-mode, technique and shadow-group bits
 
 0x002
   FrustumData Frustum

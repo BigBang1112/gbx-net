@@ -44,8 +44,8 @@ public class GxLightBallLayoutTests
         await Assert.That(node.Flags).IsEqualTo(expectedFlags);
         await Assert.That(chunk.GameVersion).IsEqualTo(offset switch
         {
-            2 => GameVersion.TM10,
-            6 => GameVersion.TMF,
+            2 => GameVersion.TM10 | GameVersion.TMPU,
+            6 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF,
             _ => GameVersion.Unspecified
         });
 

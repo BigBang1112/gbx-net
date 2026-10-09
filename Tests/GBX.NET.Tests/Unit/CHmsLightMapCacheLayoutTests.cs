@@ -285,7 +285,7 @@ public class CHmsLightMapCacheLayoutTests
                 typeof(CHmsLightMapCache).GetNestedType($"Chunk{0x06022000 + offset:X8}")!)!;
             await Assert.That(chunk is ISkippableChunk).IsEqualTo(offset >= 8);
             var writer = offset is 0xB or 0xF or 0x13 or >= 0x15;
-            var games = writer ? GameVersion.MP4 | GameVersion.TM2020
+            var games = writer ? GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020
                 : offset == 7 ? GameVersion.TMF : GameVersion.Unspecified;
             await Assert.That(chunk.GameVersion).IsEqualTo(games);
         }
@@ -372,6 +372,8 @@ public class CHmsLightMapCacheLayoutTests
         public void Compress(Stream input, Stream output)
         {
             using var stream = new ZLibStream(output, CompressionLevel.Optimal, leaveOpen: true);
+            // .NET 8 needs a write to emit an empty zlib stream; CopyTo skips empty input.
+            stream.Write(ReadOnlySpan<byte>.Empty);
             input.CopyTo(stream);
         }
 

@@ -37,7 +37,7 @@ public class CGameUserProfileLayoutTests
         await Assert.That(node.ContextTimes[1].GameModeTimeSeconds).IsEqualTo(0xFEDCBA98u);
         await Assert.That(node.ContextTimes[1].PlayTimeSeconds).IsEqualTo(0x80000001u);
         await Assert.That(node.ContextTimes[1].U04).IsEqualTo(version >= 2 ? 0x87654321u : 0u);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.Unspecified);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
     }
 
     [Test]
@@ -360,8 +360,8 @@ public class CGameUserProfileLayoutTests
         await Assert.That(new CGameUserProfile.Chunk031CC012().Version).IsEqualTo(0);
         await Assert.That(new CGameUserProfile.Chunk031CC014().Version).IsEqualTo(1);
         await Assert.That(new CGameUserProfile.Chunk031CC020().Version).IsEqualTo(8);
-        await Assert.That(new CGameUserProfile.Chunk031CC006().GameVersion).IsEqualTo(GameVersion.Unspecified);
-        await Assert.That(new CGameUserProfile.Chunk031CC008().GameVersion).IsEqualTo(GameVersion.Unspecified);
+        await Assert.That(new CGameUserProfile.Chunk031CC006().GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
+        await Assert.That(new CGameUserProfile.Chunk031CC008().GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
         await Assert.That(new CGameUserProfile.Chunk031CC015().GameVersion).IsEqualTo(GameVersion.Unspecified);
         await Assert.That(new CGameUserProfile.Chunk031CC024().GameVersion).IsEqualTo(GameVersion.TM2020);
     }

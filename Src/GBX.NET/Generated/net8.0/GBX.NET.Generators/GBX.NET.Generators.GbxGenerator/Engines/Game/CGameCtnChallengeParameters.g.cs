@@ -434,7 +434,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
             rw.TimeInt32(ref n.timeLimit);
-            rw.Int32(ref n.authorScore);
+            rw.Int32Nullable(ref n.authorScore);
         }
     }
 
@@ -461,7 +461,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
             rw.TimeInt32Nullable(ref n.goldTime);
             rw.TimeInt32Nullable(ref n.authorTime);
             rw.TimeInt32(ref n.timeLimit);
-            rw.Int32(ref n.authorScore);
+            rw.Int32Nullable(ref n.authorScore);
         }
     }
 

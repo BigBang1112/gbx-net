@@ -321,9 +321,9 @@ public class CGamePlayerScoreLayoutTests
         await Assert.That(score.PlatformBestResetCount).IsEqualTo(999);
         await Assert.That(score.PlayMode).IsEqualTo(CGamePlayerScore.EChallengePlayModeMS.Unknown);
         await Assert.That(score.OfficialBestRecord).IsEqualTo(-1);
-        await Assert.That(new CGamePlayerScore.Chunk0308D003().GameVersion).IsEqualTo(GameVersion.Unspecified);
-        await Assert.That(new CGamePlayerScore.Chunk0308D004().GameVersion).IsEqualTo(GameVersion.TMF);
-        await Assert.That(new CGamePlayerScore.Chunk0308D006().GameVersion).IsEqualTo(GameVersion.TMF);
+        await Assert.That(new CGamePlayerScore.Chunk0308D003().GameVersion).IsEqualTo(GameVersion.TM10 | GameVersion.TMPU);
+        await Assert.That(new CGamePlayerScore.Chunk0308D004().GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF);
+        await Assert.That(new CGamePlayerScore.Chunk0308D006().GameVersion).IsEqualTo(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF);
         await Assert.That(new CGamePlayerScore.Chunk0308D010().GameVersion).IsEqualTo(GameVersion.TMF);
         await Assert.That(new CGamePlayerScore.Chunk0308D011().GameVersion).IsEqualTo(GameVersion.TMF);
         await Assert.That(new CGamePlayerScore.Chunk0308D012().GameVersion).IsEqualTo(GameVersion.TMF);
