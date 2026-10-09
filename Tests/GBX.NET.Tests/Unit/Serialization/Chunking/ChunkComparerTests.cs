@@ -4,6 +4,7 @@ using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Tests.Unit.Serialization.Chunking;
 
+[Category("Unit")]
 public class ChunkComparerTests
 {
     private readonly ChunkComparer<IChunk> chunkComparer = new();

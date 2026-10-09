@@ -4,6 +4,7 @@ using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class GbxDeepCloneTests
 {
     [Test]

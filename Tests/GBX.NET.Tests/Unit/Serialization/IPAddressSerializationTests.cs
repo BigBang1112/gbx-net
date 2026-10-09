@@ -4,6 +4,7 @@ using System.Net.Sockets;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class IPAddressSerializationTests
 {
     [Test]

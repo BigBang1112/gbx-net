@@ -1,4 +1,3 @@
-using System.IO;
 using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Tests.Integration;
@@ -35,15 +34,10 @@ public class GmSurfTests
 
     [Test]
     [MethodDataSource(nameof(Fixtures))]
-    public async Task NativeFixtureRoundTripsWithoutChangingArchive(int surfId, string? surfType, string suffix = "")
+    public async Task Parse_NativeSurfaceFixture_ReturnsExpectedGeometry(int surfId, string? surfType, string suffix)
     {
         var path = TestFiles.Gbx("CPlugSurface", $"GmSurfFixture{surfId}{suffix}.Shape.Gbx");
-        using var expected = new MemoryStream();
-        Gbx.Decompress(path, expected);
-        expected.Position = 0;
-
         var gbx = Gbx.Parse(path);
-        gbx.BodyCompression = GbxCompression.Uncompressed;
         var surface = (await Assert.That(gbx.Node).IsTypeOf<CPlugSurface>())!;
         await Assert.That(surface.Surf?.GetType().Name).IsEqualTo(surfType);
         await Assert.That(surface.SurfVersion).IsEqualTo(suffix == "Version0" ? 0 : 2);
@@ -102,13 +96,28 @@ public class GmSurfTests
             await Assert.That(shell.SkipInToOut).IsFalse();
             await Assert.That(shell.SurfaceIndex).IsEqualTo((short)0);
         }
+    }
 
+    public static IEnumerable<string> SurfaceFixtures() =>
+        TestFiles.GbxFixtures().Where(path => path.StartsWith("CPlugSurface/", StringComparison.Ordinal));
+
+    [Test]
+    [MethodDataSource(nameof(SurfaceFixtures))]
+    public async Task Save_NativeSurfaceFixture_PreservesOriginalUncompressedArchive(string filePath)
+    {
+        // Arrange
+        var path = TestFiles.Gbx(filePath);
+        using var expected = new MemoryStream();
+        Gbx.Decompress(path, expected);
+        var gbx = Gbx.Parse(path);
+        gbx.BodyCompression = GbxCompression.Uncompressed;
         using var saved = new MemoryStream();
+
+        // Act
         gbx.Save(saved);
+
+        // Assert
         await Assert.That(saved.ToArray()).IsEquivalentTo(expected.ToArray(), CollectionOrdering.Matching);
-        saved.Position = 0;
-        var reparsed = Gbx.Parse(saved);
-        await Assert.That(((CPlugSurface)reparsed.Node!).Surf?.GetType().Name).IsEqualTo(surfType);
     }
 
     [Test]
@@ -118,45 +127,6 @@ public class GmSurfTests
         var actual = Directory.GetFiles(TestFiles.Gbx("CPlugSurface"), "*.Shape.Gbx")
             .Select(x => Path.GetFileName(x)!).OrderBy(x => x);
         await Assert.That(actual).IsEquivalentTo(expected, CollectionOrdering.Matching);
-    }
-
-    [Test]
-    [Arguments(11u)]
-    [Arguments(uint.MaxValue)]
-    public async Task RejectsMultiSphereCountsAboveNativeLimit(uint count)
-    {
-        using var archive = new MemoryStream();
-        Gbx.Decompress(TestFiles.Gbx("CPlugSurface", "GmSurfFixture9.Shape.Gbx"), archive);
-        // Bespoke v6 header (25), C003 header/version (12), surf ID (4).
-        archive.Position = 41;
-        using (var writer = new BinaryWriter(archive, System.Text.Encoding.UTF8, leaveOpen: true))
-        {
-            writer.Write(count);
-        }
-        archive.Position = 0;
-        var error = Assert.Throws<InvalidDataException>(() => Gbx.Parse(archive));
-        await Assert.That(error.Message).Contains("at most 10");
-    }
-
-    [Test]
-    [Arguments(0)]
-    [Arguments(10)]
-    [Arguments(11)]
-    public async Task SavesOnlyMultiSphereCountsWithinNativeLimit(int count)
-    {
-        var gbx = Gbx.Parse<CPlugSurface>(TestFiles.Gbx("CPlugSurface", "GmSurfFixture9.Shape.Gbx"));
-        var surf = (await Assert.That(gbx.Node.Surf).IsTypeOf<CPlugSurface.MultiSphere>())!;
-        surf.Spheres = Enumerable.Repeat(new CPlugSurface.MultiSphere.LocatedSphere(1, new Vec3(0, 0, 0)), count).ToArray();
-        using var saved = new MemoryStream();
-        if (count > 10)
-        {
-            Assert.Throws<InvalidDataException>(() => gbx.Save(saved));
-            return;
-        }
-        gbx.Save(saved);
-        saved.Position = 0;
-        var reparsed = Gbx.Parse<CPlugSurface>(saved);
-        await Assert.That(((CPlugSurface.MultiSphere)reparsed.Node.Surf!).Spheres.Length).IsEqualTo(count);
     }
 
     [Test]

@@ -2,6 +2,7 @@ using GBX.NET.Inputs;
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class InputTests
 {
     [Test]

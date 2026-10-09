@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class GbxWriterTests
 {
     [Test]

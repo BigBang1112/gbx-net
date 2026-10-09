@@ -2,6 +2,7 @@ using System.Numerics;
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class QuatTests
 {
     [Test]

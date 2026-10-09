@@ -2,6 +2,7 @@ using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class OptimizedArrayTests
 {
     public static IEnumerable<(int DetermineFrom, int Width, bool HasLengthPrefix)> Widths()

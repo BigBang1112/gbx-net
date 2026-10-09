@@ -2,6 +2,7 @@ using GBX.NET.Comparers;
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class Vec3EqualityComparerTests
 {
     [Test]

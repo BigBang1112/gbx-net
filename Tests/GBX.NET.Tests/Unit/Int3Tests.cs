@@ -1,6 +1,7 @@
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class Int3Tests
 {
     [Test]

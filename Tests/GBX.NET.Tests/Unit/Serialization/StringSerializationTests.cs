@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class StringSerializationTests
 {
     public static IEnumerable<(string? Value, StringLengthPrefix Prefix)> Strings()

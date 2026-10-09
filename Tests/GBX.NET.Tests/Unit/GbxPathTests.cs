@@ -1,5 +1,6 @@
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class GbxPathTests
 {
     [Test]

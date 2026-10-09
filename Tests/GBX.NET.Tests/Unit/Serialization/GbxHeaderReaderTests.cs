@@ -5,6 +5,7 @@ using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class GbxHeaderReaderTests
 {
     [Test]

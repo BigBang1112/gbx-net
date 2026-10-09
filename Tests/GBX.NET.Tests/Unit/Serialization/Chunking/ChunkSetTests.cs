@@ -4,6 +4,7 @@ using GBX.NET.Serialization.Chunking;
 
 namespace GBX.NET.Tests.Unit.Serialization.Chunking;
 
+[Category("Unit")]
 public class ChunkSetTests
 {
     [Test]

@@ -3,6 +3,7 @@ using GBX.NET.Tests.Mocks;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class BoundedStreamTests
 {
     [Test]

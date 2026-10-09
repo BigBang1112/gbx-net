@@ -4,6 +4,7 @@ using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Components;
 
+[Category("Unit")]
 public class GbxHeaderBasicTests
 {
     [Test]

@@ -8,6 +8,7 @@ public static class TestSetup
     public static void ConfigureGbx()
     {
         Gbx.LZO = new Lzo();
+        Gbx.ZLib = new TestZLib();
         Gbx.StrictBooleans = true;
     }
 }

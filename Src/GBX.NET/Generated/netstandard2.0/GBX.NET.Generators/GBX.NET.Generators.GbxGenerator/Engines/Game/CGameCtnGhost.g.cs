@@ -698,7 +698,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override uint Id => 0x03092000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
+        public int U01;
         public int[]? U02;
 
         public Chunk03092000() : this(GameVersion.Unspecified)
@@ -715,6 +715,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             {
                 Version = 9;
             }
+
+            U01 = 2;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -758,7 +760,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                 if (Version >= 4)
                 {
-                    rw.Boolean(ref U01);
+                    rw.Int32(ref U01);
 
                     if (Version >= 5)
                     {

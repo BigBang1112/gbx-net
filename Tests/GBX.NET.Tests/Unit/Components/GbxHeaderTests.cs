@@ -4,6 +4,7 @@ using GBX.NET.Tests.Mocks;
 
 namespace GBX.NET.Tests.Unit.Components;
 
+[Category("Unit")]
 public class GbxHeaderTests
 {
     [Test]

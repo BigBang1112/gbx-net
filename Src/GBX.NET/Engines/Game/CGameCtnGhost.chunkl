@@ -18,7 +18,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   v2+
     string RecordingContext
     v4+
-      bool
+      int = 2
       v5+
         CPlugEntRecordData RecordData
         int[]

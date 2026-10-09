@@ -6,6 +6,7 @@ using System.Reflection;
 
 namespace GBX.NET.Tests.Unit;
 
+[Category("Unit")]
 public class GameSpecificDefaultsTests
 {
     [Test]
