@@ -34,9 +34,50 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x0304E000;
 
+    private int sizeX;
+    /// <summary>
+    /// Legacy block width in units, discarded since Sunrise
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 1)]
+    [GameVersionDefault(GameVersion.TMPU, 1)]
+    [AppliedWithChunk<Chunk0304E005>]
+    public int SizeX
+    {
+        get => this.sizeX;
+        set => this.sizeX = value;
+    }
+
+    private int sizeY;
+    /// <summary>
+    /// Legacy block height in units, discarded since Sunrise
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 1)]
+    [GameVersionDefault(GameVersion.TMPU, 1)]
+    [AppliedWithChunk<Chunk0304E005>]
+    public int SizeY
+    {
+        get => this.sizeY;
+        set => this.sizeY = value;
+    }
+
+    private int sizeZ;
+    /// <summary>
+    /// Legacy block depth in units, discarded since Sunrise
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 1)]
+    [GameVersionDefault(GameVersion.TMPU, 1)]
+    [AppliedWithChunk<Chunk0304E005>]
+    public int SizeZ
+    {
+        get => this.sizeZ;
+        set => this.sizeZ = value;
+    }
+
     private bool isPillar;
     [AppliedWithChunk<Chunk0304E005>]
+    [AppliedWithChunk<Chunk0304E006>]
     [AppliedWithChunk<Chunk0304E009>]
+    [AppliedWithChunk<Chunk0304E01D>]
     [AppliedWithChunk<Chunk0304E02F>]
     public bool IsPillar
     {
@@ -54,6 +95,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
     private CGameCtnBlockInfoClassic? pillar;
     [AppliedWithChunk<Chunk0304E005>]
+    [AppliedWithChunk<Chunk0304E01D>]
     public CGameCtnBlockInfoClassic? Pillar
     {
         get => this.pillarFile?.GetNode(ref this.pillar) ?? this.pillar;
@@ -71,6 +113,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
     private CGameCtnBlockUnitInfo?[]? groundBlockUnitInfos;
     [AppliedWithChunk<Chunk0304E005>]
+    [AppliedWithChunk<Chunk0304E01D>]
     public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos
     {
         get => this.groundBlockUnitInfos;
@@ -79,6 +122,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
     private CGameCtnBlockUnitInfo?[]? airBlockUnitInfos;
     [AppliedWithChunk<Chunk0304E005>]
+    [AppliedWithChunk<Chunk0304E01D>]
     public CGameCtnBlockUnitInfo?[]? AirBlockUnitInfos
     {
         get => this.airBlockUnitInfos;
@@ -101,7 +145,28 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.airMobils = value;
     }
 
+    private Iso4? spawnLocGround;
+    [AppliedWithChunk<Chunk0304E007>]
+    [AppliedWithChunk<Chunk0304E00C>]
+    public Iso4? SpawnLocGround
+    {
+        get => this.spawnLocGround;
+        set => this.spawnLocGround = value;
+    }
+
+    private EWayPointType wayPointType;
+    [AppliedWithChunk<Chunk0304E00A>]
+    [AppliedWithChunk<Chunk0304E00B>]
+    [AppliedWithChunk<Chunk0304E00E>]
+    [AppliedWithChunk<Chunk0304E026>]
+    public EWayPointType WayPointType
+    {
+        get => this.wayPointType;
+        set => this.wayPointType = value;
+    }
+
     private CSceneMobil? groundHelperMobil;
+    [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? GroundHelperMobil
@@ -111,6 +176,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private CSceneMobil? airHelperMobil;
+    [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? AirHelperMobil
@@ -128,14 +194,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.constructionModeHelperMobil = value;
     }
 
-    private Iso4? spawnLocGround;
-    [AppliedWithChunk<Chunk0304E00C>]
-    public Iso4? SpawnLocGround
-    {
-        get => this.spawnLocGround;
-        set => this.spawnLocGround = value;
-    }
-
     private Iso4? spawnLocAir;
     [AppliedWithChunk<Chunk0304E00C>]
     public Iso4? SpawnLocAir
@@ -146,19 +204,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
     private bool isReplacement;
     [AppliedWithChunk<Chunk0304E00D>]
+    [AppliedWithChunk<Chunk0304E01A>]
     public bool IsReplacement
     {
         get => this.isReplacement;
         set => this.isReplacement = value;
-    }
-
-    private EWayPointType wayPointType;
-    [AppliedWithChunk<Chunk0304E00E>]
-    [AppliedWithChunk<Chunk0304E026>]
-    public EWayPointType WayPointType
-    {
-        get => this.wayPointType;
-        set => this.wayPointType = value;
     }
 
     private bool noRespawn;
@@ -169,6 +219,40 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.noRespawn = value;
     }
 
+    private CSceneMobil? screenInteractionTriggerGround;
+    [AppliedWithChunk<Chunk0304E012>]
+    public CSceneMobil? ScreenInteractionTriggerGround
+    {
+        get => this.screenInteractionTriggerGroundFile?.GetNode(ref this.screenInteractionTriggerGround) ?? this.screenInteractionTriggerGround;
+        set => this.screenInteractionTriggerGround = value;
+    }
+    private Components.GbxRefTableFile? screenInteractionTriggerGroundFile;
+
+    public Components.GbxRefTableFile? ScreenInteractionTriggerGroundFile
+    {
+        get => screenInteractionTriggerGroundFile;
+        set => screenInteractionTriggerGroundFile = value;
+    }
+
+    public CSceneMobil? GetScreenInteractionTriggerGround(GbxReadSettings settings = default, bool exceptions = false) => screenInteractionTriggerGroundFile?.GetNode(ref screenInteractionTriggerGround, settings, exceptions) ?? screenInteractionTriggerGround;
+
+    private CSceneMobil? screenInteractionTriggerAir;
+    [AppliedWithChunk<Chunk0304E012>]
+    public CSceneMobil? ScreenInteractionTriggerAir
+    {
+        get => this.screenInteractionTriggerAirFile?.GetNode(ref this.screenInteractionTriggerAir) ?? this.screenInteractionTriggerAir;
+        set => this.screenInteractionTriggerAir = value;
+    }
+    private Components.GbxRefTableFile? screenInteractionTriggerAirFile;
+
+    public Components.GbxRefTableFile? ScreenInteractionTriggerAirFile
+    {
+        get => screenInteractionTriggerAirFile;
+        set => screenInteractionTriggerAirFile = value;
+    }
+
+    public CSceneMobil? GetScreenInteractionTriggerAir(GbxReadSettings settings = default, bool exceptions = false) => screenInteractionTriggerAirFile?.GetNode(ref screenInteractionTriggerAir, settings, exceptions) ?? screenInteractionTriggerAir;
+
     private bool iconAutoUseGround;
     [AppliedWithChunk<Chunk0304E013>]
     public bool IconAutoUseGround
@@ -177,12 +261,78 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.iconAutoUseGround = value;
     }
 
+    private CGameCtnPrecalcPartParams? precalcPartParams;
+    [AppliedWithChunk<Chunk0304E015>]
+    public CGameCtnPrecalcPartParams? PrecalcPartParams
+    {
+        get => this.precalcPartParamsFile?.GetNode(ref this.precalcPartParams) ?? this.precalcPartParams;
+        set => this.precalcPartParams = value;
+    }
+    private Components.GbxRefTableFile? precalcPartParamsFile;
+
+    public Components.GbxRefTableFile? PrecalcPartParamsFile
+    {
+        get => precalcPartParamsFile;
+        set => precalcPartParamsFile = value;
+    }
+
+    public CGameCtnPrecalcPartParams? GetPrecalcPartParams(GbxReadSettings settings = default, bool exceptions = false) => precalcPartParamsFile?.GetNode(ref precalcPartParams, settings, exceptions) ?? precalcPartParams;
+
+    private Iso4 precalcPartLoc;
+    [AppliedWithChunk<Chunk0304E015>]
+    public Iso4 PrecalcPartLoc
+    {
+        get => this.precalcPartLoc;
+        set => this.precalcPartLoc = value;
+    }
+
+    private CGameCtnAutoTerrain[]? autoTerrainsGround;
+    [AppliedWithChunk<Chunk0304E01A>]
+    public CGameCtnAutoTerrain[]? AutoTerrainsGround
+    {
+        get => this.autoTerrainsGround;
+        set => this.autoTerrainsGround = value;
+    }
+
+    private int autoTerrainPlaceTypeGround;
+    [AppliedWithChunk<Chunk0304E01A>]
+    public int AutoTerrainPlaceTypeGround
+    {
+        get => this.autoTerrainPlaceTypeGround;
+        set => this.autoTerrainPlaceTypeGround = value;
+    }
+
+    private External<CGameCtnBlockInfoMobil>[][]? groundBlockInfoMobils;
+    [AppliedWithChunk<Chunk0304E01E>]
+    public External<CGameCtnBlockInfoMobil>[][]? GroundBlockInfoMobils
+    {
+        get => this.groundBlockInfoMobils;
+        set => this.groundBlockInfoMobils = value;
+    }
+
+    private External<CGameCtnBlockInfoMobil>[][]? airBlockInfoMobils;
+    [AppliedWithChunk<Chunk0304E01E>]
+    public External<CGameCtnBlockInfoMobil>[][]? AirBlockInfoMobils
+    {
+        get => this.airBlockInfoMobils;
+        set => this.airBlockInfoMobils = value;
+    }
+
     private CPlugCharPhySpecialProperty? charPhySpecialProperty;
+    [AppliedWithChunk<Chunk0304E01F>]
     [AppliedWithChunk<Chunk0304E020>]
     public CPlugCharPhySpecialProperty? CharPhySpecialProperty
     {
         get => this.charPhySpecialProperty;
         set => this.charPhySpecialProperty = value;
+    }
+
+    private CGameWaypointSpecialProperty? waypointSpecialProperty;
+    [AppliedWithChunk<Chunk0304E020>(0, 6)]
+    public CGameWaypointSpecialProperty? WaypointSpecialProperty
+    {
+        get => this.waypointSpecialProperty;
+        set => this.waypointSpecialProperty = value;
     }
 
     private CMwNod? podiumInfo;
@@ -215,6 +365,65 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.charPhySpecialPropertyCustomizable = value;
     }
 
+    private bool spawnUnderground;
+    [AppliedWithChunk<Chunk0304E020>(5, 5)]
+    public bool SpawnUnderground
+    {
+        get => this.spawnUnderground;
+        set => this.spawnUnderground = value;
+    }
+
+    private MaterialModifierPlacementTag? matModifierPlacementTag;
+    [AppliedWithChunk<Chunk0304E020>(8)]
+    public MaterialModifierPlacementTag? MatModifierPlacementTag
+    {
+        get => this.matModifierPlacementTag;
+        set => this.matModifierPlacementTag = value;
+    }
+
+    private Direction dir;
+    [AppliedWithChunk<Chunk0304E021>]
+    [AppliedWithChunk<Chunk0304E024>]
+    [AppliedWithChunk<Chunk0304E028>]
+    public Direction Dir
+    {
+        get => this.dir;
+        set => this.dir = value;
+    }
+
+    private SymmetryFlags? symmetryGround;
+    [AppliedWithChunk<Chunk0304E021>]
+    public SymmetryFlags? SymmetryGround
+    {
+        get => this.symmetryGround;
+        set => this.symmetryGround = value;
+    }
+
+    private SymmetryFlags? symmetryAir;
+    [AppliedWithChunk<Chunk0304E021>]
+    public SymmetryFlags? SymmetryAir
+    {
+        get => this.symmetryAir;
+        set => this.symmetryAir = value;
+    }
+
+    private CGameCtnMacroBlockInfo? iconMacroBlockInfo;
+    [AppliedWithChunk<Chunk0304E022>]
+    public CGameCtnMacroBlockInfo? IconMacroBlockInfo
+    {
+        get => this.iconMacroBlockInfoFile?.GetNode(ref this.iconMacroBlockInfo) ?? this.iconMacroBlockInfo;
+        set => this.iconMacroBlockInfo = value;
+    }
+    private Components.GbxRefTableFile? iconMacroBlockInfoFile;
+
+    public Components.GbxRefTableFile? IconMacroBlockInfoFile
+    {
+        get => iconMacroBlockInfoFile;
+        set => iconMacroBlockInfoFile = value;
+    }
+
+    public CGameCtnMacroBlockInfo? GetIconMacroBlockInfo(GbxReadSettings settings = default, bool exceptions = false) => iconMacroBlockInfoFile?.GetNode(ref iconMacroBlockInfo, settings, exceptions) ?? iconMacroBlockInfo;
+
     private CGameCtnBlockInfoVariantGround? variantBaseGround;
     [AppliedWithChunk<Chunk0304E023>]
     public CGameCtnBlockInfoVariantGround? VariantBaseGround
@@ -245,14 +454,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         get => this.symmetricalBlockInfoId;
         set => this.symmetricalBlockInfoId = value;
-    }
-
-    private Direction dir;
-    [AppliedWithChunk<Chunk0304E028>]
-    public Direction Dir
-    {
-        get => this.dir;
-        set => this.dir = value;
     }
 
     private CPlugFogVolumeBox? fogVolumeBox;
@@ -290,7 +491,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public CPlugSound? GetSound1(GbxReadSettings settings = default, bool exceptions = false) => sound1File?.GetNode(ref sound1, settings, exceptions) ?? sound1;
 
     private CPlugSound? sound2;
-    [AppliedWithChunk<Chunk0304E02A>]
+    [AppliedWithChunk<Chunk0304E02A>(1)]
     public CPlugSound? Sound2
     {
         get => this.sound2File?.GetNode(ref this.sound2) ?? this.sound2;
@@ -307,7 +508,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public CPlugSound? GetSound2(GbxReadSettings settings = default, bool exceptions = false) => sound2File?.GetNode(ref sound2, settings, exceptions) ?? sound2;
 
     private Iso4 sound1Loc;
-    [AppliedWithChunk<Chunk0304E02A>]
+    [AppliedWithChunk<Chunk0304E02A>(1)]
     public Iso4 Sound1Loc
     {
         get => this.sound1Loc;
@@ -315,7 +516,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4 sound2Loc;
-    [AppliedWithChunk<Chunk0304E02A>]
+    [AppliedWithChunk<Chunk0304E02A>(1)]
     public Iso4 Sound2Loc
     {
         get => this.sound2Loc;
@@ -346,6 +547,34 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.pillarShapeMultiDir = value;
     }
 
+    private bool isMultiHeightPillarOrVFC;
+    [AppliedWithChunk<Chunk0304E02F>(1)]
+    public bool IsMultiHeightPillarOrVFC
+    {
+        get => this.isMultiHeightPillarOrVFC;
+        set => this.isMultiHeightPillarOrVFC = value;
+    }
+
+    private CGameCtnBlockInfo? blockInfoModelFid;
+    /// <summary>
+    /// Source model copied when the concrete block classes match
+    /// </summary>
+    [AppliedWithChunk<Chunk0304E031>]
+    public CGameCtnBlockInfo? BlockInfoModelFid
+    {
+        get => this.blockInfoModelFidFile?.GetNode(ref this.blockInfoModelFid) ?? this.blockInfoModelFid;
+        set => this.blockInfoModelFid = value;
+    }
+    private Components.GbxRefTableFile? blockInfoModelFidFile;
+
+    public Components.GbxRefTableFile? BlockInfoModelFidFile
+    {
+        get => blockInfoModelFidFile;
+        set => blockInfoModelFidFile = value;
+    }
+
+    public CGameCtnBlockInfo? GetBlockInfoModelFid(GbxReadSettings settings = default, bool exceptions = false) => blockInfoModelFidFile?.GetNode(ref blockInfoModelFid, settings, exceptions) ?? blockInfoModelFid;
+
     private CPlugGameSkinAndFolder? materialModifier;
     [AppliedWithChunk<Chunk0304E031>]
     public CPlugGameSkinAndFolder? MaterialModifier
@@ -364,9 +593,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public CPlugGameSkinAndFolder? GetMaterialModifier(GbxReadSettings settings = default, bool exceptions = false) => materialModifierFile?.GetNode(ref materialModifier, settings, exceptions) ?? materialModifier;
 
     private CPlugGameSkinAndFolder? materialModifier2;
-    /// <summary>
-    /// not verified
-    /// </summary>
     [AppliedWithChunk<Chunk0304E031>(1)]
     public CPlugGameSkinAndFolder? MaterialModifier2
     {
@@ -386,6 +612,9 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnBlockInfo)clone).sizeX = context.Clone(this.sizeX)!;
+        ((CGameCtnBlockInfo)clone).sizeY = context.Clone(this.sizeY)!;
+        ((CGameCtnBlockInfo)clone).sizeZ = context.Clone(this.sizeZ)!;
         ((CGameCtnBlockInfo)clone).isPillar = context.Clone(this.isPillar)!;
         ((CGameCtnBlockInfo)clone).selection = context.Clone(this.selection)!;
         ((CGameCtnBlockInfo)clone).pillar = context.Clone(this.pillar)!;
@@ -393,24 +622,38 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         ((CGameCtnBlockInfo)clone).airBlockUnitInfos = context.CloneArray(this.airBlockUnitInfos)!;
         ((CGameCtnBlockInfo)clone).groundMobils = context.CloneArray(this.groundMobils)!;
         ((CGameCtnBlockInfo)clone).airMobils = context.CloneArray(this.airMobils)!;
+        ((CGameCtnBlockInfo)clone).spawnLocGround = context.Clone(this.spawnLocGround)!;
+        ((CGameCtnBlockInfo)clone).wayPointType = context.Clone(this.wayPointType)!;
         ((CGameCtnBlockInfo)clone).groundHelperMobil = context.Clone(this.groundHelperMobil)!;
         ((CGameCtnBlockInfo)clone).airHelperMobil = context.Clone(this.airHelperMobil)!;
         ((CGameCtnBlockInfo)clone).constructionModeHelperMobil = context.Clone(this.constructionModeHelperMobil)!;
-        ((CGameCtnBlockInfo)clone).spawnLocGround = context.Clone(this.spawnLocGround)!;
         ((CGameCtnBlockInfo)clone).spawnLocAir = context.Clone(this.spawnLocAir)!;
         ((CGameCtnBlockInfo)clone).isReplacement = context.Clone(this.isReplacement)!;
-        ((CGameCtnBlockInfo)clone).wayPointType = context.Clone(this.wayPointType)!;
         ((CGameCtnBlockInfo)clone).noRespawn = context.Clone(this.noRespawn)!;
+        ((CGameCtnBlockInfo)clone).screenInteractionTriggerGround = context.Clone(this.screenInteractionTriggerGround)!;
+        ((CGameCtnBlockInfo)clone).screenInteractionTriggerAir = context.Clone(this.screenInteractionTriggerAir)!;
         ((CGameCtnBlockInfo)clone).iconAutoUseGround = context.Clone(this.iconAutoUseGround)!;
+        ((CGameCtnBlockInfo)clone).precalcPartParams = context.Clone(this.precalcPartParams)!;
+        ((CGameCtnBlockInfo)clone).precalcPartLoc = context.Clone(this.precalcPartLoc)!;
+        ((CGameCtnBlockInfo)clone).autoTerrainsGround = context.CloneArray(this.autoTerrainsGround)!;
+        ((CGameCtnBlockInfo)clone).autoTerrainPlaceTypeGround = context.Clone(this.autoTerrainPlaceTypeGround)!;
+        ((CGameCtnBlockInfo)clone).groundBlockInfoMobils = context.CloneArray(this.groundBlockInfoMobils)!;
+        ((CGameCtnBlockInfo)clone).airBlockInfoMobils = context.CloneArray(this.airBlockInfoMobils)!;
         ((CGameCtnBlockInfo)clone).charPhySpecialProperty = context.Clone(this.charPhySpecialProperty)!;
+        ((CGameCtnBlockInfo)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
         ((CGameCtnBlockInfo)clone).podiumInfo = context.Clone(this.podiumInfo)!;
         ((CGameCtnBlockInfo)clone).introInfo = context.Clone(this.introInfo)!;
         ((CGameCtnBlockInfo)clone).charPhySpecialPropertyCustomizable = context.Clone(this.charPhySpecialPropertyCustomizable)!;
+        ((CGameCtnBlockInfo)clone).spawnUnderground = context.Clone(this.spawnUnderground)!;
+        ((CGameCtnBlockInfo)clone).matModifierPlacementTag = context.Clone(this.matModifierPlacementTag)!;
+        ((CGameCtnBlockInfo)clone).dir = context.Clone(this.dir)!;
+        ((CGameCtnBlockInfo)clone).symmetryGround = context.Clone(this.symmetryGround)!;
+        ((CGameCtnBlockInfo)clone).symmetryAir = context.Clone(this.symmetryAir)!;
+        ((CGameCtnBlockInfo)clone).iconMacroBlockInfo = context.Clone(this.iconMacroBlockInfo)!;
         ((CGameCtnBlockInfo)clone).variantBaseGround = context.Clone(this.variantBaseGround)!;
         ((CGameCtnBlockInfo)clone).variantBaseAir = context.Clone(this.variantBaseAir)!;
         ((CGameCtnBlockInfo)clone).additionalVariantsGround = context.CloneArray(this.additionalVariantsGround)!;
         ((CGameCtnBlockInfo)clone).symmetricalBlockInfoId = context.Clone(this.symmetricalBlockInfoId)!;
-        ((CGameCtnBlockInfo)clone).dir = context.Clone(this.dir)!;
         ((CGameCtnBlockInfo)clone).fogVolumeBox = context.Clone(this.fogVolumeBox)!;
         ((CGameCtnBlockInfo)clone).sound1 = context.Clone(this.sound1)!;
         ((CGameCtnBlockInfo)clone).sound2 = context.Clone(this.sound2)!;
@@ -419,64 +662,127 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         ((CGameCtnBlockInfo)clone).baseType = context.Clone(this.baseType)!;
         ((CGameCtnBlockInfo)clone).additionalVariantsAir = context.CloneArray(this.additionalVariantsAir)!;
         ((CGameCtnBlockInfo)clone).pillarShapeMultiDir = context.Clone(this.pillarShapeMultiDir)!;
+        ((CGameCtnBlockInfo)clone).isMultiHeightPillarOrVFC = context.Clone(this.isMultiHeightPillarOrVFC)!;
+        ((CGameCtnBlockInfo)clone).blockInfoModelFid = context.Clone(this.blockInfoModelFid)!;
         ((CGameCtnBlockInfo)clone).materialModifier = context.Clone(this.materialModifier)!;
         ((CGameCtnBlockInfo)clone).materialModifier2 = context.Clone(this.materialModifier2)!;
     }
 
-    public CGameCtnBlockInfo()
+    public CGameCtnBlockInfo() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x0304E005)]
+    public CGameCtnBlockInfo(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU)
+        {
+            sizeX = 1;
+            sizeY = 1;
+            sizeZ = 1;
+        }
+
+        precalcPartLoc = Iso4.Identity;
+        sound1Loc = Iso4.Identity;
+        sound2Loc = Iso4.Identity;
+        WayPointType = EWayPointType.None;
+    }
+
+    /// <summary>
+    /// legacy block units and mobils
+    /// </summary>
+    [Chunk(0x0304E005, "legacy block units and mobils")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
     {
         public override uint Id => 0x0304E005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public int U02;
+        public int U01;
+        public byte U02;
         public int U03;
-        public int U04;
-        public int U06;
-        public byte U07;
-        public int U08;
-        public short U09;
-        public short U10;
+        public short U04;
+        public short U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0304E005)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0304E005)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0304E005)clone).U03 = context.Clone(this.U03)!;
             ((Chunk0304E005)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0304E005)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0304E005)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0304E005)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0304E005)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0304E005)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0304E005)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             n.Name = rw.Id(n.Name);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
+            rw.Int32(ref n.sizeX);
+            rw.Int32(ref n.sizeY);
+            rw.Int32(ref n.sizeZ);
             rw.Boolean(ref n.isPillar);
             rw.EnumInt32<ESelection>(ref n.selection);
-            rw.Int32(ref U06);
+            rw.Int32(ref U01);
             rw.NodeRef<CGameCtnBlockInfoClassic>(ref n.pillar, ref n.pillarFile);
             rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos!);
             rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos!);
             rw.JaggedArrayExternalNodeRef<CSceneMobil>(ref n.groundMobils!);
             rw.JaggedArrayExternalNodeRef<CSceneMobil>(ref n.airMobils!);
-            rw.Byte(ref U07);
-            rw.Int32(ref U08);
-            rw.Int16(ref U09);
-            rw.Int16(ref U10);
+            rw.Byte(ref U02);
+            rw.Int32(ref U03);
+            rw.Int16(ref U04);
+            rw.Int16(ref U05);
         }
     }
 
-    [Chunk(0x0304E009)]
+    /// <summary>
+    /// legacy pillar flag and ID
+    /// </summary>
+    [Chunk(0x0304E006, "legacy pillar flag and ID")]
+    public partial class Chunk0304E006 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E006;
+        public string? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304E006)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.isPillar);
+            rw.Id(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// legacy shared spawn location
+    /// </summary>
+    [Chunk(0x0304E007, "legacy shared spawn location")]
+    public partial class Chunk0304E007 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.Iso4(ref n.spawnLocGround);
+
+            if (rw.Reader != null)
+            {
+                n.SpawnLocAir = n.SpawnLocGround;
+            }
+        }
+    }
+
+    /// <summary>
+    /// IsPillar
+    /// </summary>
+    [Chunk(0x0304E009, "IsPillar")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0304E009 : Chunk<CGameCtnBlockInfo>
     {
@@ -494,30 +800,55 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E00B)]
+    /// <summary>
+    /// legacy waypoint and helper mobils
+    /// </summary>
+    [Chunk(0x0304E00A, "legacy waypoint and helper mobils")]
+    public partial class Chunk0304E00A : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E00A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EWayPointType>(ref n.wayPointType);
+            rw.NodeRef<CSceneMobil>(ref n.groundHelperMobil);
+            rw.NodeRef<CSceneMobil>(ref n.airHelperMobil);
+        }
+    }
+
+    /// <summary>
+    /// legacy waypoint and helper mobils
+    /// </summary>
+    [Chunk(0x0304E00B, "legacy waypoint and helper mobils")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0304E00B : Chunk<CGameCtnBlockInfo>
     {
         public override uint Id => 0x0304E00B;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304E00B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<EWayPointType>(ref n.wayPointType);
             rw.NodeRef<CSceneMobil>(ref n.groundHelperMobil);
             rw.NodeRef<CSceneMobil>(ref n.airHelperMobil);
             rw.NodeRef<CSceneMobil>(ref n.constructionModeHelperMobil);
         }
     }
 
-    [Chunk(0x0304E00C)]
+    /// <summary>
+    /// legacy spawn locations
+    /// </summary>
+    [Chunk(0x0304E00C, "legacy spawn locations")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0304E00C : Chunk<CGameCtnBlockInfo>
     {
@@ -536,7 +867,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E00D)]
+    /// <summary>
+    /// IsReplacement
+    /// </summary>
+    [Chunk(0x0304E00D, "IsReplacement")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0304E00D : Chunk<CGameCtnBlockInfo>
     {
@@ -554,7 +888,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E00E)]
+    /// <summary>
+    /// legacy waypoint and helper mobils
+    /// </summary>
+    [Chunk(0x0304E00E, "legacy waypoint and helper mobils")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
     {
@@ -575,7 +912,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E00F)]
+    /// <summary>
+    /// NoRespawn
+    /// </summary>
+    [Chunk(0x0304E00F, "NoRespawn")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E00F : Chunk<CGameCtnBlockInfo>
     {
@@ -593,7 +933,30 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E013)]
+    /// <summary>
+    /// screen interaction triggers
+    /// </summary>
+    [Chunk(0x0304E012, "screen interaction triggers")]
+    public partial class Chunk0304E012 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CSceneMobil>(ref n.screenInteractionTriggerGround, ref n.screenInteractionTriggerGroundFile);
+            rw.NodeRef<CSceneMobil>(ref n.screenInteractionTriggerAir, ref n.screenInteractionTriggerAirFile);
+        }
+    }
+
+    /// <summary>
+    /// IconAutoUseGround
+    /// </summary>
+    [Chunk(0x0304E013, "IconAutoUseGround")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E013 : Chunk<CGameCtnBlockInfo>
     {
@@ -611,30 +974,32 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E015)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    /// <summary>
+    /// precalculated particle parameters and location
+    /// </summary>
+    [Chunk(0x0304E015, "precalculated particle parameters and location")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0304E015 : Chunk<CGameCtnBlockInfo>
     {
         public override uint Id => 0x0304E015;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public int U01;
-        public Iso4 U02;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304E015)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0304E015)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Iso4(ref U02);
+            rw.NodeRef<CGameCtnPrecalcPartParams>(ref n.precalcPartParams, ref n.precalcPartParamsFile);
+            rw.Iso4(ref n.precalcPartLoc);
         }
     }
 
-    [Chunk(0x0304E017)]
+    /// <summary>
+    /// block flag
+    /// </summary>
+    [Chunk(0x0304E017, "block flag")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E017 : Chunk<CGameCtnBlockInfo>
     {
@@ -654,18 +1019,110 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E020)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 6, -1)]
+    /// <summary>
+    /// legacy auto terrain placement
+    /// </summary>
+    [Chunk(0x0304E01A, "legacy auto terrain placement")]
+    public partial class Chunk0304E01A : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E01A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.ArrayNodeRef_deprec<CGameCtnAutoTerrain>(ref n.autoTerrainsGround!);
+            rw.Int32(ref n.autoTerrainPlaceTypeGround);
+            rw.Boolean(ref n.isReplacement);
+        }
+    }
+
+    /// <summary>
+    /// legacy block units
+    /// </summary>
+    [Chunk(0x0304E01D, "legacy block units")]
+    public partial class Chunk0304E01D : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E01D;
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304E01D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304E01D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0304E01D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0304E01D)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Boolean(ref n.isPillar);
+            rw.Int32(ref U04);
+            rw.NodeRef<CGameCtnBlockInfoClassic>(ref n.pillar, ref n.pillarFile);
+            rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos!);
+            rw.ArrayNodeRef<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos!);
+        }
+    }
+
+    /// <summary>
+    /// legacy block info mobils
+    /// </summary>
+    [Chunk(0x0304E01E, "legacy block info mobils")]
+    public partial class Chunk0304E01E : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E01E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.JaggedArrayExternalNodeRef<CGameCtnBlockInfoMobil>(ref n.groundBlockInfoMobils!);
+            rw.JaggedArrayExternalNodeRef<CGameCtnBlockInfoMobil>(ref n.airBlockInfoMobils!);
+        }
+    }
+
+    /// <summary>
+    /// CharPhySpecialProperty
+    /// </summary>
+    [Chunk(0x0304E01F, "CharPhySpecialProperty")]
+    public partial class Chunk0304E01F : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E01F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugCharPhySpecialProperty>(ref n.charPhySpecialProperty);
+        }
+    }
+
+    /// <summary>
+    /// special properties and presentation clips
+    /// </summary>
+    [Chunk(0x0304E020, "special properties and presentation clips")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 7, 8)]
     public partial class Chunk0304E020 : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E020;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CGameWaypointSpecialProperty? U01;
-        public bool U02;
-        public bool U03;
-        public string? U04;
-        public string? U05;
 
         public Chunk0304E020() : this(GameVersion.Unspecified)
         {
@@ -679,7 +1136,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             }
             else if (gameVersion == GameVersion.MP4)
             {
-                Version = 6;
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
             }
         }
 
@@ -687,11 +1148,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304E020)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0304E020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0304E020)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0304E020)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0304E020)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0304E020)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
@@ -701,43 +1157,91 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
             if (Version <= 6)
             {
-                rw.NodeRef<CGameWaypointSpecialProperty>(ref U01);
+                rw.NodeRef<CGameWaypointSpecialProperty>(ref n.waypointSpecialProperty);
             }
 
             if (Version >= 2)
             {
                 rw.NodeRef<CMwNod>(ref n.podiumInfo);
+            }
 
-                if (Version >= 3)
+            if (Version >= 3)
+            {
+                rw.NodeRef<CMwNod>(ref n.introInfo);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Boolean(ref n.charPhySpecialPropertyCustomizable);
+            }
+
+            if (Version == 5)
+            {
+                rw.Boolean(ref n.spawnUnderground);
+            }
+
+            if (Version >= 8)
+            {
+                var hasMatModifierPlacementTag = rw.Boolean((rw.Writer is null ? default : (n. MatModifierPlacementTag != null)));
+
+                if (hasMatModifierPlacementTag)
                 {
-                    rw.NodeRef<CMwNod>(ref n.introInfo);
-
-                    if (Version >= 4)
-                    {
-                        rw.Boolean(ref n.charPhySpecialPropertyCustomizable);
-
-                        if (Version == 5)
-                        {
-                            rw.Boolean(ref U02);
-                        }
-
-                        if (Version >= 8)
-                        {
-                            rw.Boolean(ref U03);
-
-                            if (U03)
-                            {
-                                rw.String(ref U04);
-                                rw.String(ref U05);
-                            }
-                        }
-                    }
+                    rw.ReadableWritable<MaterialModifierPlacementTag>(ref n.matModifierPlacementTag, version: Version);
                 }
             }
         }
     }
 
-    [Chunk(0x0304E023)]
+    /// <summary>
+    /// legacy symmetry reference, direction and flags
+    /// </summary>
+    [Chunk(0x0304E021, "legacy symmetry reference, direction and flags")]
+    public partial class Chunk0304E021 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E021;
+        public CMwNod? U01;
+        public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304E021)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.EnumInt32<Direction>(ref n.dir);
+            rw.ReadableWritable<SymmetryFlags>(ref n.symmetryGround);
+            rw.ReadableWritable<SymmetryFlags>(ref n.symmetryAir);
+        }
+    }
+
+    /// <summary>
+    /// IconMacroBlockInfo
+    /// </summary>
+    [Chunk(0x0304E022, "IconMacroBlockInfo")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0304E022 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E022;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnMacroBlockInfo>(ref n.iconMacroBlockInfo, ref n.iconMacroBlockInfoFile);
+        }
+    }
+
+    /// <summary>
+    /// base variants
+    /// </summary>
+    [Chunk(0x0304E023, "base variants")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E023 : Chunk<CGameCtnBlockInfo>
     {
@@ -756,7 +1260,33 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E026)]
+    /// <summary>
+    /// legacy symmetry reference and direction
+    /// </summary>
+    [Chunk(0x0304E024, "legacy symmetry reference and direction")]
+    public partial class Chunk0304E024 : Chunk<CGameCtnBlockInfo>
+    {
+        public override uint Id => 0x0304E024;
+        public CMwNod? U01;
+        public Components.GbxRefTableFile? U01File;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0304E024)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.EnumInt32<Direction>(ref n.dir);
+        }
+    }
+
+    /// <summary>
+    /// WayPointType
+    /// </summary>
+    [Chunk(0x0304E026, "WayPointType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E026 : Chunk<CGameCtnBlockInfo>
     {
@@ -774,7 +1304,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E027)]
+    /// <summary>
+    /// AdditionalVariantsGround
+    /// </summary>
+    [Chunk(0x0304E027, "AdditionalVariantsGround")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E027 : Chunk<CGameCtnBlockInfo>
     {
@@ -792,7 +1325,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E028)]
+    /// <summary>
+    /// symmetrical block ID and direction
+    /// </summary>
+    [Chunk(0x0304E028, "symmetrical block ID and direction")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E028 : Chunk<CGameCtnBlockInfo>
     {
@@ -811,7 +1347,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E029)]
+    /// <summary>
+    /// FogVolumeBox
+    /// </summary>
+    [Chunk(0x0304E029, "FogVolumeBox")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E029 : Chunk<CGameCtnBlockInfo>
     {
@@ -829,8 +1368,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E02A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 2, -1)]
+    /// <summary>
+    /// sounds and locations
+    /// </summary>
+    [Chunk(0x0304E02A, "sounds and locations")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 2, 3)]
     public partial class Chunk0304E02A : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02A;
@@ -851,6 +1393,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             {
                 Version = 2;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -863,36 +1409,44 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         {
             rw.VersionInt32(this);
             rw.NodeRef<CPlugSound>(ref n.sound1, ref n.sound1File);
-            rw.NodeRef<CPlugSound>(ref n.sound2, ref n.sound2File);
 
-            if (Version <= 2)
+            if (Version >= 1)
             {
-                rw.Iso4(ref n.sound1Loc);
-                rw.Iso4(ref n.sound2Loc);
-            }
+                rw.NodeRef<CPlugSound>(ref n.sound2, ref n.sound2File);
 
-            if (Version >= 3)
-            {
-                if (n.Sound1!= null || n.Sound1File!= null)
+                if (Version <= 2)
                 {
                     rw.Iso4(ref n.sound1Loc);
+                    rw.Iso4(ref n.sound2Loc);
                 }
 
-                if (n.Sound2!= null || n.Sound2File!= null)
+                if (Version >= 3)
                 {
-                    rw.Iso4(ref n.sound2Loc);
+                    if (n.Sound1!= null || n.Sound1File!= null)
+                    {
+                        rw.Iso4(ref n.sound1Loc);
+                    }
+
+                    if (n.Sound2!= null || n.Sound2File!= null)
+                    {
+                        rw.Iso4(ref n.sound2Loc);
+                    }
                 }
             }
         }
     }
 
-    [Chunk(0x0304E02B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, -1)]
+    /// <summary>
+    /// BaseType
+    /// </summary>
+    [Chunk(0x0304E02B, "BaseType")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0304E02B : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public int U01;
 
         public Chunk0304E02B() : this(GameVersion.Unspecified)
         {
@@ -900,7 +1454,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public Chunk0304E02B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -910,6 +1464,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304E02B)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0304E02B)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
@@ -919,12 +1474,20 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
             if (Version == 0)
             {
-                throw new NotSupportedException();
+                rw.Int32(ref U01);
+
+                if (rw.Reader != null && U01== 1)
+                {
+                    n.BaseType = EBaseType.Generator;
+                }
             }
         }
     }
 
-    [Chunk(0x0304E02C)]
+    /// <summary>
+    /// AdditionalVariantsAir
+    /// </summary>
+    [Chunk(0x0304E02C, "AdditionalVariantsAir")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304E02C : Chunk<CGameCtnBlockInfo>
     {
@@ -942,13 +1505,28 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E02E)]
-    [ChunkGameVersion(GameVersion.MP3)]
+    /// <summary>
+    /// ProdState
+    /// </summary>
+    [Chunk(0x0304E02E, "ProdState")]
+    [ChunkGameVersion(GameVersion.MP3, 0)]
     public partial class Chunk0304E02E : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02E;
         public override GameVersion GameVersion => GameVersion.MP3;
         public int Version { get; set; }
+
+        public Chunk0304E02E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304E02E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -963,14 +1541,16 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         }
     }
 
-    [Chunk(0x0304E02F)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, -1)]
+    /// <summary>
+    /// pillar shape
+    /// </summary>
+    [Chunk(0x0304E02F, "pillar shape")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
     public partial class Chunk0304E02F : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02F;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public byte U01;
 
         public Chunk0304E02F() : this(GameVersion.Unspecified)
         {
@@ -982,13 +1562,16 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             {
                 Version = 0;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304E02F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0304E02F)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
@@ -999,38 +1582,170 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
             if (Version >= 1)
             {
-                rw.Byte(ref U01);
+                rw.Boolean(ref n.isMultiHeightPillarOrVFC, asByte: true);
             }
         }
     }
 
-    [Chunk(0x0304E031)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    /// <summary>
+    /// block model and material modifiers
+    /// </summary>
+    [Chunk(0x0304E031, "block model and material modifiers")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0304E031 : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E031;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        public Chunk0304E031() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304E031(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304E031)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0304E031)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef<CGameCtnBlockInfo>(ref n.blockInfoModelFid, ref n.blockInfoModelFidFile);
             rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier, ref n.materialModifierFile);
 
             if (Version >= 1)
             {
                 rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier2, ref n.materialModifier2File);
             }
+        }
+    }
+
+    public partial class SymmetryFlags : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; }
+
+        private bool hasManualSymmetryH;
+        public bool HasManualSymmetryH
+        {
+            get => this.hasManualSymmetryH;
+            set => this.hasManualSymmetryH = value;
+        }
+
+        private bool hasManualSymmetryV;
+        public bool HasManualSymmetryV
+        {
+            get => this.hasManualSymmetryV;
+            set => this.hasManualSymmetryV = value;
+        }
+
+        private bool hasManualSymmetryD1;
+        public bool HasManualSymmetryD1
+        {
+            get => this.hasManualSymmetryD1;
+            set => this.hasManualSymmetryD1 = value;
+        }
+
+        private bool hasManualSymmetryD2;
+        public bool HasManualSymmetryD2
+        {
+            get => this.hasManualSymmetryD2;
+            set => this.hasManualSymmetryD2 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SymmetryFlags)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SymmetryFlags)clone).Version = context.Clone(this.Version)!;
+            ((SymmetryFlags)clone).hasManualSymmetryH = context.Clone(this.hasManualSymmetryH)!;
+            ((SymmetryFlags)clone).hasManualSymmetryV = context.Clone(this.hasManualSymmetryV)!;
+            ((SymmetryFlags)clone).hasManualSymmetryD1 = context.Clone(this.hasManualSymmetryD1)!;
+            ((SymmetryFlags)clone).hasManualSymmetryD2 = context.Clone(this.hasManualSymmetryD2)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.Boolean(ref this.hasManualSymmetryH);
+            rw.Boolean(ref this.hasManualSymmetryV);
+            rw.Boolean(ref this.hasManualSymmetryD1);
+            rw.Boolean(ref this.hasManualSymmetryD2);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class MaterialModifierPlacementTag : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? @group;
+        public string? Group
+        {
+            get => this.@group;
+            set => this.@group = value;
+        }
+
+        private string? tag;
+        public string? Tag
+        {
+            get => this.tag;
+            set => this.tag = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MaterialModifierPlacementTag)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MaterialModifierPlacementTag)clone).@group = context.Clone(this.@group)!;
+            ((MaterialModifierPlacementTag)clone).tag = context.Clone(this.tag)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.@group);
+            rw.String(ref this.tag);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -1058,8 +1773,15 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public enum ESelection
     {
         Random,
-        Obsolete,
-        AutoRotate,
+        /// <summary>
+        /// Weighted mobil selection, with at least eight mobils, the first four receive 75% of selections
+        /// </summary>
+        Medpi = 1,
+        /// <summary>
+        /// Compatibility alias for Medpi
+        /// </summary>
+        Obsolete = 1,
+        AutoRotate = 2,
     }
 
     public enum EBaseType
@@ -1073,17 +1795,28 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0304E005 => new Chunk0304E005(),
+        0x0304E006 => new Chunk0304E006(),
+        0x0304E007 => new Chunk0304E007(),
         0x0304E009 => new Chunk0304E009(),
+        0x0304E00A => new Chunk0304E00A(),
         0x0304E00B => new Chunk0304E00B(),
         0x0304E00C => new Chunk0304E00C(),
         0x0304E00D => new Chunk0304E00D(),
         0x0304E00E => new Chunk0304E00E(),
         0x0304E00F => new Chunk0304E00F(),
+        0x0304E012 => new Chunk0304E012(),
         0x0304E013 => new Chunk0304E013(),
         0x0304E015 => new Chunk0304E015(),
         0x0304E017 => new Chunk0304E017(),
+        0x0304E01A => new Chunk0304E01A(),
+        0x0304E01D => new Chunk0304E01D(),
+        0x0304E01E => new Chunk0304E01E(),
+        0x0304E01F => new Chunk0304E01F(),
         0x0304E020 => new Chunk0304E020(),
+        0x0304E021 => new Chunk0304E021(),
+        0x0304E022 => new Chunk0304E022(),
         0x0304E023 => new Chunk0304E023(),
+        0x0304E024 => new Chunk0304E024(),
         0x0304E026 => new Chunk0304E026(),
         0x0304E027 => new Chunk0304E027(),
         0x0304E028 => new Chunk0304E028(),

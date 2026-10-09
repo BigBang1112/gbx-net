@@ -57,6 +57,9 @@ public class CGameCtnBlockInfoChunkTests
         var original = new CGameCtnBlockInfoClassic
         {
             Ident = new("BlockId"),
+            SizeX = 2,
+            SizeY = 3,
+            SizeZ = 4,
             IsPillar = true,
             Selection = CGameCtnBlockInfo.ESelection.AutoRotate,
             GroundBlockUnitInfos = [],
@@ -66,14 +69,11 @@ public class CGameCtnBlockInfoChunkTests
         };
         var chunk = new CGameCtnBlockInfo.Chunk0304E005
         {
-            U02 = 2,
-            U03 = 3,
-            U04 = 4,
-            U06 = 6,
-            U07 = 7,
-            U08 = 8,
-            U09 = 9,
-            U10 = 10
+            U01 = 6,
+            U02 = 7,
+            U03 = 8,
+            U04 = 9,
+            U05 = 10
         };
 
         using var stream = new MemoryStream();
@@ -109,14 +109,14 @@ public class CGameCtnBlockInfoChunkTests
         await Assert.That(restored.AirMobils![0]).IsEmpty();
         await Assert.That(restored.AirMobils[1]).Count().IsEqualTo(1);
         await Assert.That(restored.AirMobils[1][0].Node).IsNull();
-        await Assert.That(restoredChunk.U02).IsEqualTo(2);
-        await Assert.That(restoredChunk.U03).IsEqualTo(3);
-        await Assert.That(restoredChunk.U04).IsEqualTo(4);
-        await Assert.That(restoredChunk.U06).IsEqualTo(6);
-        await Assert.That(restoredChunk.U07).IsEqualTo((byte)7);
-        await Assert.That(restoredChunk.U08).IsEqualTo(8);
-        await Assert.That(restoredChunk.U09).IsEqualTo((short)9);
-        await Assert.That(restoredChunk.U10).IsEqualTo((short)10);
+        await Assert.That(restored.SizeX).IsEqualTo(2);
+        await Assert.That(restored.SizeY).IsEqualTo(3);
+        await Assert.That(restored.SizeZ).IsEqualTo(4);
+        await Assert.That(restoredChunk.U01).IsEqualTo(6);
+        await Assert.That(restoredChunk.U02).IsEqualTo((byte)7);
+        await Assert.That(restoredChunk.U03).IsEqualTo(8);
+        await Assert.That(restoredChunk.U04).IsEqualTo((short)9);
+        await Assert.That(restoredChunk.U05).IsEqualTo((short)10);
         await Assert.That(stream.Position).IsEqualTo(stream.Length);
     }
 
