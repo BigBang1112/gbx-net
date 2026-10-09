@@ -156,7 +156,19 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
         public override uint Id => 0x13006003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk13006003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk13006003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

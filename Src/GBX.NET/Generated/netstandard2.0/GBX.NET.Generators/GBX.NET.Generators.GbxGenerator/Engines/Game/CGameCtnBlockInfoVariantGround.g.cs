@@ -78,6 +78,22 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk0315C001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0315C001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

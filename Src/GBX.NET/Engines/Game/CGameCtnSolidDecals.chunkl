@@ -8,7 +8,7 @@ CGameCtnSolidDecals 0x03121000
   uint TypeIntensity = 1
 
 0x001 [MP3, TMT, MP4, TM2020.v2]
-  version = 2
+  version
   data SceneDecals = empty // CSceneDecalsManager::ArchiveDecals buffer.
 
 0x002 [MP3, TMT, MP4, TM2020]

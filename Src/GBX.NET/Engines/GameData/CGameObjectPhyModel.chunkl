@@ -109,7 +109,7 @@ CGameObjectPhyModel 0x2E006000
   vec3
 
 0x005 [TM2020.v3]
-  version = 3
+  version
   bool ThrowableEnabled
   float ThrowableDamageCoef = 1
   v1+

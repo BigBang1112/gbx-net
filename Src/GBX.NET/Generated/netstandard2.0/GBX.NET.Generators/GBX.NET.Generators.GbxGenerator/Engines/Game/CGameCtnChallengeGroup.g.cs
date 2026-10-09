@@ -515,8 +515,6 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         public override uint Id => 0x0308F00B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        [GameVersionDefault(GameVersion.MP3, 0)]
-        [GameVersionDefault(GameVersion.TMT, 0)]
         public int Version { get; set; }
 
         public Chunk0308F00B() : this(GameVersion.Unspecified)
@@ -529,7 +527,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
             {
                 Version = 0;
             }
-            else
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

@@ -1,7 +1,7 @@
 CGameSaveLaunchedCheckpoints 0x03262000
 
 0x000 (demonstration: partial) [TM2020.v7]
-  version = 7
+  version
   v8+
     throw
   v3+

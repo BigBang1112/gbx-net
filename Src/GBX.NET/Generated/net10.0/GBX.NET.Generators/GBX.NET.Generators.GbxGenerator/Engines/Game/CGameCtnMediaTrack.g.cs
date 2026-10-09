@@ -220,7 +220,19 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
         public override uint Id => 0x03078005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk03078005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03078005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

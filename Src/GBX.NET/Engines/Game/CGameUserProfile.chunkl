@@ -1,7 +1,7 @@
 CGameUserProfile 0x031CC000
 
 0x000 (skippable) [TMT, MP4, TM2020.v16]
-  version = 16
+  version
   vec3 BadgeColor = (1, 0, 0)
   v0=
     float
@@ -51,16 +51,16 @@ CGameUserProfile 0x031CC000
       string
 
 0x001 (skippable) [TMT, MP4, TM2020.v1]
-  version = 1
+  version
   block (encapsulated)
     CScriptTraitsPersistent ScriptPersistentTraits (direct)
 
 0x002 (skippable) [TMT, MP4, TM2020.v1]
-  version = 1
+  version
   data
 
 0x003 (skippable) [TMT, MP4, TM2020.v1]
-  version = 1
+  version
   data
 
 0x004 (skippable) [TMT, MP4]
@@ -68,7 +68,7 @@ CGameUserProfile 0x031CC000
   ContextTime[] ContextTimes
 
 0x005 (skippable) [TMT, MP4, TM2020.v1]
-  version = 1
+  version
   string
 
 0x006 (skippable) [TMT, MP4]
@@ -76,7 +76,7 @@ CGameUserProfile 0x031CC000
   ContextMapRecordForProfile[] ContextMapRecordsForProfile
 
 0x007 (skippable) [TMT, MP4, TM2020.v3]
-  version = 3
+  version
   v0=
     CInputBindingsConfig[] InputBindingsConfigs
   v1=
@@ -104,7 +104,7 @@ CGameUserProfile 0x031CC000
 0x009 (skippable) [MP4, TM2020.v1]
 
 0x00A (skippable) [TM2020.v3]
-  version = 3
+  version
   Unknown2[]
   v2+
     uint TotalMedals
@@ -116,7 +116,7 @@ CGameUserProfile 0x031CC000
     int
 
 0x00B (skippable) [TM2020.v8]
-  version = 8
+  version
   bool Editor_ShowHelp = true
   v1+
     string
@@ -154,22 +154,22 @@ CGameUserProfile 0x031CC000
     int
 
 0x00C (skippable) [TM2020.v1]
-  version = 1
+  version
   DeviceSettings[] VehicleSettings
 
 0x00D (skippable) [TM2020.v1]
-  version = 1
+  version
   int
   v1+
     int
 
 0x00E (skippable) [TM2020.v1]
-  version = 1
+  version
   CGameCtnMediaShootParams ShootParamsVideo (direct)
   CGameCtnMediaShootParams ShootParamsScreenshot (direct)
 
 0x00F (skippable) [TM2020.v4]
-  version = 4
+  version
   Unknown6
   v2+
     byte
@@ -180,7 +180,7 @@ CGameUserProfile 0x031CC000
     int
 
 0x010 (skippable) [TM2020.v1]
-  version = 1
+  version
   Unknown7[]
 
 0x011 (skippable) [TM2020]
@@ -206,13 +206,13 @@ CGameUserProfile 0x031CC000
   byte
 
 0x017 (skippable) [TM2020.v6]
-  version = 6
+  version
   Unknown8 (version: 5)
   v6+
     ulong
 
 0x018 (skippable) [TM2020.v1]
-  version = 1
+  version
   byte
 
 0x019 (skippable) [TM2020]
@@ -229,7 +229,7 @@ CGameUserProfile 0x031CC000
   int
 
 0x01D (skippable) [TM2020.v1]
-  version = 1
+  version
   int
   int
   int
@@ -250,7 +250,7 @@ CGameUserProfile 0x031CC000
   int
 
 0x020 (skippable) [TM2020.v8]
-  version = 8
+  version
   Unknown8
   ulong
 

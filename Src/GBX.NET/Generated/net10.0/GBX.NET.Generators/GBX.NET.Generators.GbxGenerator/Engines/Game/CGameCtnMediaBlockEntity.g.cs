@@ -270,6 +270,18 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         public int U06;
         public int U07;
 
+        public Chunk0329F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0329F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

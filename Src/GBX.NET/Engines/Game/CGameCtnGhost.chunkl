@@ -200,7 +200,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     checksum256? Validate_TitleChecksum
 
 0x029 (skippable) [TM2020.v1] // record context
-  version = 1
+  version
   int<ScopeType> Validate_ScopeType
   string Validate_ScopeId
   string Validate_GameMode
@@ -211,7 +211,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   int? Validate_RaceStartTime (time) // simulation time, also serialized in 0x02D
 
 0x02B (skippable) [TM2020.v1] // race result TM2020
-  version = 1
+  version
   v2+
     return
   int? RaceTime (time)

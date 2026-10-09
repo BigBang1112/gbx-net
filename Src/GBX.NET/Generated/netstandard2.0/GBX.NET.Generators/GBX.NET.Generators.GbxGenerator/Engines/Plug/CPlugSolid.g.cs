@@ -440,6 +440,18 @@ public partial class CPlugSolid : CPlug, IClass
         public Int2 U07;
         public BoxAligned[]? U08;
 
+        public Chunk09005017() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09005017(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -507,6 +519,22 @@ public partial class CPlugSolid : CPlug, IClass
         public string? U08;
         public int U09;
         public CPlugPath? U10;
+
+        public Chunk09005019() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09005019(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1140,6 +1140,22 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk06022015() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk06022015(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1262,6 +1278,22 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public int U02;
         public int U03;
         public int U04;
+
+        public Chunk0602201A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0602201A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 9;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 13;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

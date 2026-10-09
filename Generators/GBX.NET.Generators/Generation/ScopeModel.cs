@@ -10,6 +10,7 @@ internal sealed class ScopeModel
     public List<IBodyStatement> Body { get; }
     public List<FieldModel> Fields { get; } = [];
     public Dictionary<FieldDeclaration, FieldModel> Occurrences { get; } = [];
+    public IReadOnlyDictionary<string, int> ChunkVersions { get; }
     public bool HasVersion => Fields.Any(static x => x.IsVersion);
     public bool Separate => SyntaxOverlap.Option(Existing, "StructureKind") == "SeparateReadAndWrite" ||
         SyntaxOverlap.Option(Existing, "StructureKind") == "1" ||
@@ -17,11 +18,13 @@ internal sealed class ScopeModel
     
     private int unknownCount;
 
-    public ScopeModel(ExistingType? existing, AttributeList? attributes, List<IBodyStatement> body)
+    public ScopeModel(ExistingType? existing, AttributeList? attributes, List<IBodyStatement> body, ChunkDeclaration? chunk = null)
     {
         Existing = existing;
         Attributes = attributes;
         Body = body;
+        ChunkVersions = chunk?.VersionQualifiers.Where(static x => x.MaxVersion.HasValue)
+            .ToDictionary(static x => x.Label, static x => x.MaxVersion!.Value, StringComparer.Ordinal) ?? new Dictionary<string, int>();
 
         foreach (var field in Walk(body).OfType<FieldDeclaration>())
         {
@@ -51,6 +54,14 @@ internal sealed class ScopeModel
         }
 
         var isVersion = declaration.Type.Name is "version" or "versionb";
+        if (isVersion && declaration.GameDefaults.Count > 0)
+        {
+            throw new InvalidOperationException("Game-specific version defaults are not supported. Specify versions on the chunk with game.vN qualifiers instead.");
+        }
+        if (isVersion && declaration.DefaultValue is not null && ChunkVersions.Count > 0)
+        {
+            throw new InvalidOperationException("A version default is not supported when the chunk declares explicit game versions. Use the game.vN qualifiers instead.");
+        }
 
         if (declaration.IsSpecialKeyword && !isVersion)
         {

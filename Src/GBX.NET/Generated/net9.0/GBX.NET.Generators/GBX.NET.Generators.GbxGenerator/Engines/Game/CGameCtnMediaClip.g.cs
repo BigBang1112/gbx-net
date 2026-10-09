@@ -413,7 +413,6 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x0307900D;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        [GameVersionDefault(GameVersion.MP4, 0)]
         public int Version { get; set; }
 
         public Chunk0307900D() : this(GameVersion.Unspecified)
@@ -426,7 +425,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
             {
                 Version = 0;
             }
-            else
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -458,7 +457,19 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         public override uint Id => 0x0307900E;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0307900E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0307900E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

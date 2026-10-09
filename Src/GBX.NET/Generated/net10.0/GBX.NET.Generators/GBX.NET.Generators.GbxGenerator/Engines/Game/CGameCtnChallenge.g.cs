@@ -893,6 +893,38 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public byte U02;
         public int U05;
 
+        public HeaderChunk03043002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public HeaderChunk03043002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM10)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TMPU)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU)
+            {
+                Version = 10;
+            }
+            else if (gameVersion == GameVersion.TMF)
+            {
+                Version = 11;
+            }
+            else if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 13;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -914,6 +946,34 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public int Version { get; set; }
         public uint U01;
         public int U02;
+
+        public HeaderChunk03043003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public HeaderChunk03043003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM10)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMPU || gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TMU || gameVersion == GameVersion.TMF)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -994,6 +1054,30 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043004;
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public HeaderChunk03043004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public HeaderChunk03043004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMPU)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TMU || gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1419,6 +1503,22 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301F;
         public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        public Chunk0304301F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304301F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU || gameVersion == GameVersion.TMF)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1847,6 +1947,26 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043040;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        public Chunk03043040() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03043040(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -2059,11 +2179,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304304D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 2;
+        public int Version { get; set; }
         public External<CMwNod>[]? U01;
         public External<CMwNod>[]? U02;
         public External<CMwNod>[]? U03;
         public External<CMwNod>[]? U04;
+
+        public Chunk0304304D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304304D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2316,7 +2448,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043057;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 5;
+        public int Version { get; set; }
+
+        public Chunk03043057() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03043057(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2477,9 +2625,21 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304305C;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
         public uint[]? U01;
         public uint[]? U02;
+
+        public Chunk0304305C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304305C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2510,7 +2670,19 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304305D;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0304305D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304305D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2539,8 +2711,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304305E;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
         public int U01;
+
+        public Chunk0304305E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304305E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2610,11 +2794,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043061;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
         public int U01;
         public uint[]? U02;
         public byte[]? U03;
         public int U04;
+
+        public Chunk03043061() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03043061(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

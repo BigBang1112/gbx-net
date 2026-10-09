@@ -282,6 +282,26 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public CMwNod[]? U16;
         public CMwNod? U17;
 
+        public Chunk03122003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03122003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 6;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

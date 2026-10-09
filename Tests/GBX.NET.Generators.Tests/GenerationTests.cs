@@ -9,6 +9,180 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments("version")]
+    [Arguments("versionb")]
+    public async Task VersionDefaultsAreRejectedForChunksWithExplicitVersions(string keyword)
+    {
+        foreach (var qualifiers in new[] { "TM2020.v7", "TM10, TM2020.v7" })
+        {
+            var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001 [{qualifiers}]\n  {keyword} = 7\n"));
+            var diagnostic = await Assert.That(result.Diagnostics).HasSingleItem();
+            await Assert.That(diagnostic.Id).IsEqualTo("GBXNETGEN200");
+            await Assert.That(diagnostic.GetMessage()).Contains("A version default is not supported when the chunk declares explicit game versions");
+            await Assert.That(result.GeneratedSources).IsEmpty();
+        }
+    }
+
+    [Test]
+    [Arguments("version")]
+    [Arguments("versionb")]
+    public async Task VersionDefaultsRemainSupportedWithoutExplicitQualifierVersions(string keyword)
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $"""
+            Example 0x03043000
+            0x001
+              {keyword} = 7
+            0x002 [TM2020]
+              {keyword} = 7
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var versions = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "Version").ToArray();
+        await Assert.That(versions.Length).IsEqualTo(2);
+        await Assert.That(versions).All(x => x.Initializer?.Value.ToString() == "7");
+    }
+
+    [Test]
+    public async Task ChunkVersionBranchesHaveNoFallbackAssignment()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify()
+                    {
+                        static string Values(GBX.NET.GameVersion game) => new Chunk03043001(game).Version + "," + new Chunk03043002(game).Version;
+                        return Values(GBX.NET.GameVersion.Unspecified) + ";" + Values(GBX.NET.GameVersion.TM10)
+                            + ";" + Values(GBX.NET.GameVersion.TM2020)
+                            + ";" + Values(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.TM2020);
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM2020.v7]
+              version
+            0x002 [TM10.v0, TM2020.v7]
+              version
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var constructors = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>()
+            .Where(x => x.ParameterList.Parameters.Count == 1).ToArray();
+        var constant = constructors.Single(x => x.Identifier.ValueText == "Chunk03043001");
+        await Assert.That(constant.Body!.Statements.Count).IsEqualTo(1);
+        var constantBranch = (IfStatementSyntax)constant.Body.Statements[0];
+        await Assert.That(constantBranch.Condition.ToString()).IsEqualTo("gameVersion == GameVersion.TM2020");
+        await Assert.That(constantBranch.Else).IsNull();
+        var mixed = constructors.Single(x => x.Identifier.ValueText == "Chunk03043002");
+        var branch = mixed.Body!.Statements.OfType<IfStatementSyntax>().Single();
+        await Assert.That(branch.Condition.ToString()).IsEqualTo("gameVersion == GameVersion.TM10");
+        var otherBranch = (IfStatementSyntax)branch.Else!.Statement;
+        await Assert.That(otherBranch.Condition.ToString()).IsEqualTo("gameVersion == GameVersion.TM2020");
+        await Assert.That(otherBranch.Else).IsNull();
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("0,0;0,0;7,7;0,0");
+    }
+
+    [Test]
+    [Arguments("version")]
+    [Arguments("versionb")]
+    public async Task GameSpecificVersionDefaultsAreRejected(string keyword)
+    {
+        foreach (var scope in new[] { "0x001 [TM10.v0]", "archive", "archive Child" })
+        {
+            var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n{scope}\n  {keyword} = 1 [TM10 = 0]\n"));
+            var diagnostic = await Assert.That(result.Diagnostics).HasSingleItem();
+            await Assert.That(diagnostic.Id).IsEqualTo("GBXNETGEN200");
+            await Assert.That(diagnostic.GetMessage()).Contains("Specify versions on the chunk with game.vN qualifiers instead");
+            await Assert.That(result.GeneratedSources).IsEmpty();
+        }
+    }
+
+    [Test]
+    [Arguments("version")]
+    [Arguments("versionb")]
+    public async Task ChunkConstructorsOnlyAssignExplicitQualifierVersions(string keyword)
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static string Verify()
+                    {
+                        static string Values(GBX.NET.GameVersion game) => new Chunk03043001(game).Version + "," + new Chunk03043002(game).Version;
+                        return new Chunk03043001().Version + ";" + Values(GBX.NET.GameVersion.TM10)
+                            + ";" + Values(GBX.NET.GameVersion.TM2020)
+                            + ";" + Values(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.TM2020)
+                            + ";" + Values((GBX.NET.GameVersion)32);
+                    }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", $"""
+            Example 0x03043000
+            0x001 [TM10.v0, TM2020.v2]
+              {keyword}
+            0x002 [TM10, TM2020.v3]
+              {keyword}
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var root = Engine(result).GetRoot();
+        var constructors = root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().ToArray();
+        await Assert.That(constructors.Count(x => x.ParameterList.Parameters.Count == 1)).IsEqualTo(2);
+        await Assert.That(constructors.Single(x => x.Identifier.ValueText == "Example").ParameterList.Parameters).IsEmpty();
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("0;0,0;2,3;0,0;0,0");
+    }
+
+    [Test]
+    public async Task ChunkVersionQualifiersKeepHandwrittenConstructors()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public partial class Chunk03043001 { public Chunk03043001() { Version = 9; } }
+                    public partial class Chunk03043002
+                    {
+                        public Chunk03043002() : this(GBX.NET.GameVersion.Unspecified) { }
+                        public Chunk03043002(GBX.NET.GameVersion gameVersion) { Version = 8; }
+                    }
+                    public static string Verify() => new Chunk03043001().Version + "," + new Chunk03043002(GBX.NET.GameVersion.TM10).Version;
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10.v0]
+              version
+            0x002 [TM10.v1]
+              version
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>())
+            .All(x => x.Identifier.ValueText == "Example");
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("9,8");
+    }
+
+    [Test]
     public async Task GameDefaultConstructorsCombineEnumConditionsAndKeepExclusiveBranches()
     {
         const string source = """
@@ -97,8 +271,8 @@ public class GenerationTests
             Example 0x03043000
             constructor
               Skipped = 99
-            0x001
-              version = 4 [TM10 = 1]
+            0x001 [TM10.v1]
+              version
               int Shared = Defaults.Fallback [TM10 = Defaults.Legacy]
               int First = Shared + 1
               int Skipped = Defaults.Skipped [TM10 = Defaults.SkippedGame]
@@ -123,7 +297,7 @@ public class GenerationTests
         var trace = type.GetField("trace", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!.GetValue(null)!;
         await Assert.That(((System.Collections.ICollection)trace).Count).IsEqualTo(0);
         await Assert.That(type.GetMethod("Verify")!.Invoke(null, null))
-            .IsEqualTo("1,2,11,99:fallback;5,6,15,99:legacy;8,1,10,99:modern;1;12;1,6;4,3");
+            .IsEqualTo("1,2,11,99:fallback;5,6,15,99:legacy;8,1,10,99:modern;1;12;1,6;0,3");
     }
 
     [Test]
@@ -216,8 +390,8 @@ public class GenerationTests
             """;
         var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
-            0x001
-              version = 4 [TM10 = 1, TM2020 = 2]
+            0x001 [TM10.v1, TM2020.v2]
+              version
               int Shared = 3 [TM10 = 5]
               int = 6 [TM10 = 7]
             0x002
@@ -235,7 +409,7 @@ public class GenerationTests
         await Assert.That(defaults[0].ToString()).IsEqualTo("GameVersionDefault(GameVersion.TM10, 5)");
         await Assert.That(defaults[1].ToString()).IsEqualTo("GameVersionDefault(GameVersion.TM2020, 8)");
         var version = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Version");
-        await Assert.That(version.AttributeLists.SelectMany(x => x.Attributes).Count()).IsEqualTo(2);
+        await Assert.That(version.AttributeLists.SelectMany(x => x.Attributes)).IsEmpty();
         var unknown = root.DescendantNodes().OfType<FieldDeclarationSyntax>().Single(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == "U01"));
         await Assert.That(unknown.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 7)]");
         var child = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Value");
@@ -248,7 +422,7 @@ public class GenerationTests
         var emitted = compilation.Emit(stream);
         await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
         var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
-        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("3,2,4;5,12,1;8,2");
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("3,2,0;5,12,1;8,2");
     }
 
     [Test]
@@ -2089,6 +2263,7 @@ public class GenerationTests
         {
             public class ClassAttribute(uint id) : System.Attribute { }
             public class ChunkAttribute(uint id) : System.Attribute { }
+            public class ChunkGameVersionAttribute(GBX.NET.GameVersion game, params int[] versions) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
             [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple = true)]
             public class GameVersionDefaultAttribute(GBX.NET.GameVersion game, object? defaultValue = null) : System.Attribute
@@ -2163,6 +2338,7 @@ public class GenerationTests
                     return value;
                 }
                 public void VersionInt32(GBX.NET.IVersionable value) { }
+                public void VersionByte(GBX.NET.IVersionable value) { }
                 public T[]? Array<T>(T[]? value, int length) where T : struct
                 {
                     if (Reader is not null) value = Reader.ReadArray<T>(length);
@@ -2190,6 +2366,7 @@ public class GenerationTests
             public class Chunk<T> : Chunk
             {
                 public virtual uint Id => 0;
+                public virtual GBX.NET.GameVersion GameVersion => GBX.NET.GameVersion.Unspecified;
                 public virtual void ReadWrite(T node, GBX.NET.Serialization.GbxReaderWriter rw) { }
                 public virtual void Read(T node, GBX.NET.Serialization.GbxReader r) { }
                 public virtual void Write(T node, GBX.NET.Serialization.GbxWriter w) { }

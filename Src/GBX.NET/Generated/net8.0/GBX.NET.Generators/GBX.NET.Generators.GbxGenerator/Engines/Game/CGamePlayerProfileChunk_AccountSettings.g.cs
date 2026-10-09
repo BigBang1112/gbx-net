@@ -716,9 +716,23 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 3;
+        public int Version { get; set; }
         public ulong U01;
-        public bool U02 = true;
+        public bool U02;
+
+        public Chunk0312C000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+
+            U02 = true;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -785,7 +799,23 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 2;
+        public int Version { get; set; }
+
+        public Chunk0312C001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -813,7 +843,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0312C002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -834,11 +876,23 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 7;
+        public int Version { get; set; }
         public string? U01;
         public string[]? U02;
         public byte[]? U03;
         public byte[]? U04;
+
+        public Chunk0312C003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -887,8 +941,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
         public string? U01;
+
+        public Chunk0312C004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -910,7 +976,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 2;
+        public int Version { get; set; }
+
+        public Chunk0312C005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -954,7 +1032,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0312C006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1014,7 +1104,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C008;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0312C008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1035,7 +1137,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C009;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0312C009() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C009(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1056,8 +1170,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C00A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 3;
+        public int Version { get; set; }
         public bool U01;
+
+        public Chunk0312C00A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C00A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1100,7 +1226,19 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         public override uint Id => 0x0312C00B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0312C00B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312C00B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

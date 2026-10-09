@@ -58,7 +58,19 @@ public partial class CGameUserFileList : CMwNod, IClass
     {
         public override uint Id => 0x031B7000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk031B7000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk031B7000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

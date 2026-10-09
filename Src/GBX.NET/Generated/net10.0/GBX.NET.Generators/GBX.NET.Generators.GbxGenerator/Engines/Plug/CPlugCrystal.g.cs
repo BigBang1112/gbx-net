@@ -93,6 +93,18 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk09003003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09003003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -115,6 +127,18 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public int Version { get; set; }
         public byte[]? U01;
         public int? U02;
+
+        public Chunk09003004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09003004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -286,7 +286,19 @@ public partial class GxLightSpot : GxLightBall, IClass
     {
         public override uint Id => 0x0400B003;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk0400B003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0400B003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -137,6 +137,18 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         public int U01;
         public int U02;
 
+        public Chunk030A1002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk030A1002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

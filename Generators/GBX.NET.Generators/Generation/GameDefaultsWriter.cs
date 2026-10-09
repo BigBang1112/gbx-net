@@ -2,6 +2,7 @@ using ChunkL;
 using ChunkL.Syntax;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using System.Globalization;
 
 namespace GBX.NET.Generators.Generation;
 
@@ -13,7 +14,8 @@ internal static class GameDefaultsWriter
 
     public static bool Enabled(ScopeModel scope, bool chunk)
     {
-        if (!StoredFields(scope, chunk).Any(static f => f.Occurrences.Any(static d => d.GameDefaults.Count > 0)))
+        var fieldDefaults = StoredFields(scope, chunk).Any(static f => f.Occurrences.Any(static d => d.GameDefaults.Count > 0));
+        if (!fieldDefaults && !(chunk && scope.HasVersion && scope.ChunkVersions.Count > 0))
             return false;
 
         // A handwritten game constructor owns initialization for its partial type.
@@ -23,7 +25,10 @@ internal static class GameDefaultsWriter
 
         if (scope.Existing?.Constructors.Any(static c => !c.Modifiers.Any(SyntaxKind.StaticKeyword) &&
             c.ParameterList.Parameters.Count == 0) == true || scope.Existing?.PrimaryConstructors.Any() == true)
+        {
+            if (!fieldDefaults) return false;
             throw new InvalidOperationException("Game-specific defaults on a type with a handwritten constructor require a handwritten GameVersion constructor.");
+        }
 
         return true;
     }
@@ -36,28 +41,32 @@ internal static class GameDefaultsWriter
         var assignments = constructor is null ? new HashSet<string>(StringComparer.Ordinal) :
             new HashSet<string>(ScopeModel.Walk(constructor.Body).OfType<ComputedAssignment>()
                 .Select(static a => a.TargetName), StringComparer.Ordinal);
-        var defaults = new List<(FieldModel Field, FieldDeclaration Declaration, string? Game, Expression Value)>();
+        var defaults = new List<(FieldModel Field, FieldDeclaration Declaration, string? Game, string Value, string Statement)>();
+        var writer = new SerializationWriter(code, layout, scope, layouts, SerializationMode.ReadWrite, chunk);
 
         foreach (var field in StoredFields(scope, chunk))
         {
-            var entries = new Dictionary<string, Expression>(StringComparer.Ordinal);
+            var entries = new Dictionary<string, string>(StringComparer.Ordinal);
             foreach (var declaration in field.Occurrences.OrderBy(static d => d.Position.Start.Line).ThenBy(static d => d.Position.Start.Column))
             {
-                var values = declaration.GameDefaults.Select(static d => (Game: d.Game, d.Value));
+                var values = declaration.GameDefaults.Select(d => (Game: d.Game, Value: ChunkLParser.WriteExpression(d.Value),
+                    Statement: Assignment(layout, scope, field, d.Value, writer, chunk)));
+                if (field.IsVersion)
+                    values = values.Concat(scope.ChunkVersions.Select(static d => (Game: d.Key,
+                        Value: d.Value.ToString(CultureInfo.InvariantCulture), Statement: "Version = " + d.Value.ToString(CultureInfo.InvariantCulture) + ";")));
                 if (declaration.DefaultValue is { } fallback)
-                    values = values.Prepend(("", fallback));
-                foreach (var (game, value) in values)
+                    values = values.Prepend(("", ChunkLParser.WriteExpression(fallback), Assignment(layout, scope, field, fallback, writer, chunk)));
+                foreach (var (game, value, statement) in values)
                 {
                     if (entries.TryGetValue(game, out var previous))
                     {
-                        if (!SyntaxFactory.AreEquivalent(SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(previous)),
-                            SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(value))))
+                        if (!SyntaxFactory.AreEquivalent(SyntaxFactory.ParseExpression(previous), SyntaxFactory.ParseExpression(value)))
                             throw new InvalidOperationException($"Conflicting defaults for {field.Name} in {(game.Length == 0 ? "the fallback" : game)}.");
                         continue;
                     }
                     entries.Add(game, value);
                     if (!assignments.Contains(field.Name))
-                        defaults.Add((field, declaration, game.Length == 0 ? null : game, value));
+                        defaults.Add((field, declaration, game.Length == 0 ? null : game, value, statement));
                 }
             }
         }
@@ -68,7 +77,6 @@ internal static class GameDefaultsWriter
         code.BlankLine();
         code.Open($"public {name}(GameVersion gameVersion)");
 
-        var writer = new SerializationWriter(code, layout, scope, layouts, SerializationMode.ReadWrite, chunk);
         // Only combine adjacent defaults so selected expressions retain their source order.
         var ordered = defaults.OrderBy(static d => d.Declaration.Position.Start.Line)
             .ThenBy(static d => d.Declaration.Position.Start.Column)
@@ -83,20 +91,21 @@ internal static class GameDefaultsWriter
             var branches = new List<(string? Condition, List<string> Statements)>();
 
             foreach (var group in entries.Where(static d => d.Game is not null)
-                .GroupBy(static d => ChunkLParser.WriteExpression(d.Value), StringComparer.Ordinal))
+                .GroupBy(static d => d.Value, StringComparer.Ordinal))
             {
                 var condition = string.Join(" || ", group.Select(static d => "gameVersion == GameVersion." + d.Game));
-                branches.Add((condition, [Assignment(layout, scope, field, group.First().Value, writer, chunk)]));
+                branches.Add((condition, [group.First().Statement]));
             }
 
             foreach (var entry in entries.Where(static d => d.Game is null))
             {
                 var games = field.Occurrences.SelectMany(static d => d.GameDefaults).Select(static d => d.Game)
+                    .Concat(field.IsVersion ? scope.ChunkVersions.Keys : Enumerable.Empty<string>())
                     .Where(static g => g != "Unspecified").Distinct(StringComparer.Ordinal).ToArray();
                 // A default declared later must still be selected at its own source position.
                 var condition = games.Length == entries.Count(static d => d.Game is not null) ? null :
                     string.Join(" && ", games.Select(static g => "gameVersion != GameVersion." + g));
-                branches.Add((condition, [Assignment(layout, scope, field, entry.Value, writer, chunk)]));
+                branches.Add((condition, [entry.Statement]));
             }
 
             if (blocks.Count > 0 && blocks.Last().Select(static b => b.Condition)

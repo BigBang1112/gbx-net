@@ -196,6 +196,22 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public int Version { get; set; }
         public string[]? U01;
 
+        public Chunk090FD000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090FD000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 9;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

@@ -575,6 +575,18 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public int U03;
         public byte U04;
 
+        public Chunk03036009() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03036009(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -614,6 +626,18 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public Components.GbxRefTableFile? U01File;
         public int U02;
 
+        public Chunk0303600A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0303600A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -640,6 +664,18 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override uint Id => 0x0303600B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk0303600B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0303600B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

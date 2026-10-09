@@ -76,7 +76,19 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     {
         public override uint Id => 0x03262000;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 7;
+        public int Version { get; set; }
+
+        public Chunk03262000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03262000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

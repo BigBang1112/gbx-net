@@ -145,7 +145,7 @@ CGameCtnChallenge 0x03043000 // A map.
   ident Decoration
   int3 Size
   bool NeedUnlock
-  version = 6
+  version
   CGameCtnBlock[] Blocks (list, version: Version) // Coordinates are offset by (1, 0, 1) in version 6 and above.
 
 0x020 // legacy legacy mediatracker
@@ -237,7 +237,7 @@ CGameCtnChallenge 0x03043000 // A map.
   CSceneVehicleCarMarksSamples[] CarMarksBuffer (deprec)
 
 0x040 (skippable, demonstration: partial) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
-  version = 4
+  version
   block (encapsulated)
     CGameCtnAnchoredObject[] AnchoredObjects (deprec, list)
 
@@ -291,7 +291,7 @@ CGameCtnChallenge 0x03043000 // A map.
   string ObjectiveTextBronze
 
 0x04D (skippable) [MP3.v2, TMT, MP4]
-  version = 2
+  version
   block (encapsulated)
     CMwNod[] (deprec, external)
     CMwNod[] (deprec, external)
@@ -346,7 +346,7 @@ CGameCtnChallenge 0x03043000 // A map.
   int? DayDuration (time)
 
 0x057 (skippable) [MP4.v3, TM2020.v5] // recorded bot paths
-  version = 5
+  version
   v6+
     throw
   v1-
@@ -382,19 +382,19 @@ CGameCtnChallenge 0x03043000 // A map.
   base // Two additional booleans follow HasLightmaps before the lightmap payload.
 
 0x05C (skippable) [TM2020.v1]
-  version = 1
+  version
   v0=
     uint[]
     uint[]
 
 0x05D (skippable) [TM2020.v1] // block octree
-  version = 1
+  version
   bool HasBlockOctree
   if HasBlockOctree
     BlockOctreeData BlockOctree (version: Version)
 
 0x05E (skippable) [TM2020.v1] // legacy macroblocks
-  version = 1
+  version
   block (encapsulated)
     MacroblockData[] LegacyMacroblocks
     int // Native archive reserves a count without serializing any elements.
@@ -406,7 +406,7 @@ CGameCtnChallenge 0x03043000 // A map.
   int
 
 0x061 (skippable) [TM2020.v1] // temporary editor data
-  version = 1
+  version
   int
   uint[]
   data

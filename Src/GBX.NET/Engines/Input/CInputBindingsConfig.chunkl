@@ -13,7 +13,7 @@ CInputBindingsConfig 0x13006000
   int Version // Binding configuration revision, compared with the input map's default revision.
 
 0x003 [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   Binding[] Bindings (version: 1) // Chunk versions 0 and 1 use the same binding layout.
 
 0x004 (skippable) [TM2020] // Native serializer restores the previous ID dictionary count afterward.

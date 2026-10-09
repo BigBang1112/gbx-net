@@ -3132,7 +3132,19 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         public override uint Id => 0x0308C056;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public int Version { get; set; } = 5;
+        public int Version { get; set; }
+
+        public Chunk0308C056() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0308C056(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF)
+            {
+                Version = 5;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -3981,6 +3993,18 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         public override uint Id => 0x0308C07E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        public Chunk0308C07E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0308C07E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

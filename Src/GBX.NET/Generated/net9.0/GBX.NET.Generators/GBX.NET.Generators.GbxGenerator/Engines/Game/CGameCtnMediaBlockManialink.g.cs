@@ -119,6 +119,18 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk0312A001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312A001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

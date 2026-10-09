@@ -173,7 +173,7 @@ CHmsLightMap 0x06021000
   CMwNod[3] (external)
 
 0x029 [MP3, TMT, TM2020.v7]
-  version = 7
+  version
   CMwNod (external) // Obsolete FID reference
   v1+
     CMwNod (external)
@@ -205,7 +205,7 @@ CHmsLightMap 0x06021000
     CPlugFileGPU (external)
 
 0x02B [MP3, TMT, TM2020.v1]
-  version = 1
+  version
   CPlugBitmap BitmapSprite3x3_Light (external)
   CPlugBitmap BitmapSprite_PosAndRadius (external)
   CPlugBitmap BitmapSprite_ILightDir (external)

@@ -56,7 +56,7 @@ ChunkL 1.2.2 can record defaults that differ between games. Put the game list af
 ```chunkl
 int AllBronzeValue [TM10 = 100, TMPU = 100]
 float ImageRadius = 0.1f [TMF = 0.024f, MP3 = 0.024f, MP4 = 0.024f]
-version = 1 [MP3 = 0, TMT = 0]
+version [MP3 = 0, TMT = 0]
 ```
 
 Types with these defaults gain a constructor that accepts `GameVersion`, including named archives and chunks whose stored fields have game defaults. For example, `new CGameCtnChallengeGroup(GameVersion.TM10)` sets the legacy medal values, while `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP3)` starts at chunk version 0.

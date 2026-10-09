@@ -218,6 +218,22 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         public Components.GbxRefTableFile? U10File;
         public Components.GbxRefTableFile? U13File;
 
+        public Chunk2E007001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E007001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 21;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 22;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

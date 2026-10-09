@@ -27,7 +27,7 @@ CGameCtnMediaShootParams 0x03060000
   int<EStereo3d> Stereo3d
 
 0x002 [MP3, TMT, MP4, TM2020.v1]
-  version = 1
+  version
   int VideoFps
   int SizeX
   int SizeY

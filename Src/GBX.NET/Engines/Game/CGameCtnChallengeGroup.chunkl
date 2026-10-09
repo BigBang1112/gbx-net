@@ -51,7 +51,7 @@ CGameCtnChallengeGroup 0x0308F000
   MapInfo[] MapInfos (version: 1, list)
 
 0x00B [MP3.v0, TMT.v0, MP4.v1, TM2020.v1] // map identifiers + file paths
-  version = 1 [MP3 = 0, TMT = 0]
+  version
   MapInfo[] MapInfos (version: Version + 2, list)
 
 archive MapInfo

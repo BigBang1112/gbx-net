@@ -217,10 +217,26 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     {
         public override uint Id => 0x06023004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
-        public int Version { get; set; } = 0;
-        public float U01 = 1;
-        public float U02 = 0;
-        public float U03 = 0;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+
+        public Chunk06023004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk06023004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+
+            U01 = 1;
+            U02 = 0;
+            U03 = 0;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

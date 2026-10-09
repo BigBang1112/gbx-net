@@ -312,7 +312,19 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     {
         public override uint Id => 0x03060002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk03060002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03060002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

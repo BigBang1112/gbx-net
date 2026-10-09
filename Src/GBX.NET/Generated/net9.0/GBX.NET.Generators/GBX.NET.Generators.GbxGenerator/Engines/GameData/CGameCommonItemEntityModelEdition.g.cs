@@ -459,6 +459,18 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public Components.GbxRefTableFile? U03File;
         public int U04;
 
+        public Chunk2E026000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E026000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

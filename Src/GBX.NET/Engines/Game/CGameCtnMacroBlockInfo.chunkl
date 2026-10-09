@@ -48,7 +48,7 @@ CGameCtnMacroBlockInfo 0x0310D000
     CScriptTraitsMetadata ScriptMetadata (direct)
 
 0x00C (skippable) [MP3, TMT, MP4.v2, TM2020.v2] // splines
-  version = 2
+  version
   v0=
     CMwNod[] (deprec)
     CPlugSpline3D[] (deprec)

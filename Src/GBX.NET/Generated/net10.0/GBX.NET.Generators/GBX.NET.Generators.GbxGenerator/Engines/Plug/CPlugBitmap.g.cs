@@ -1799,6 +1799,18 @@ public partial class CPlugBitmap : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk0901102D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901102D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1852,7 +1864,23 @@ public partial class CPlugBitmap : CPlug, IClass
     {
         public override uint Id => 0x09011030;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 5;
+        public int Version { get; set; }
+
+        public Chunk09011030() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011030(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1931,6 +1959,18 @@ public partial class CPlugBitmap : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk09011032() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011032(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1968,7 +2008,23 @@ public partial class CPlugBitmap : CPlug, IClass
     {
         public override uint Id => 0x09011034;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 4;
+        public int Version { get; set; }
+
+        public Chunk09011034() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011034(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2012,6 +2068,18 @@ public partial class CPlugBitmap : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk09011035() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011035(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -2031,7 +2099,19 @@ public partial class CPlugBitmap : CPlug, IClass
     {
         public override uint Id => 0x09011036;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk09011036() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011036(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2067,6 +2147,18 @@ public partial class CPlugBitmap : CPlug, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
 
+        public Chunk09011037() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011037(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -2087,6 +2179,18 @@ public partial class CPlugBitmap : CPlug, IClass
         public override uint Id => 0x09011038;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk09011038() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09011038(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

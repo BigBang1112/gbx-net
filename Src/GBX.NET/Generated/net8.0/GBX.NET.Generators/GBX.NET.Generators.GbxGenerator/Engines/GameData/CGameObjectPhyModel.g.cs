@@ -165,6 +165,22 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public Components.GbxRefTableFile? U15File;
         public Components.GbxRefTableFile? U26File;
 
+        public Chunk2E006001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E006001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 21;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 26;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -457,7 +473,19 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         public override uint Id => 0x2E006005;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int Version { get; set; } = 3;
+        public int Version { get; set; }
+
+        public Chunk2E006005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E006005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

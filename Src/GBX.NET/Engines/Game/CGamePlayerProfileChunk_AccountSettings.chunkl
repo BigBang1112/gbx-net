@@ -47,7 +47,7 @@ archive
       CGameBuddy[] Buddies (version: BuddyArchiveVersion)
 
 0x000 (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
-  version = 3
+  version
   int EulaVersion
   if !IsOnlineSaveArchivation
     string NickName (formatted)
@@ -76,7 +76,7 @@ archive
     int Age
 
 0x001 (skippable) [MP3, TMT, MP4.v1, TM2020.v2]
-  version = 2
+  version
   string Description (formatted)
   string AvatarName (formatted)
   SPlayerTagsConfig PlayerTagsConfig
@@ -84,11 +84,11 @@ archive
     string Trigram
 
 0x002 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   boolbyte ReceiveNews
 
 0x003 (skippable) [MP3, TMT, MP4.v7, TM2020.v7]
-  version = 7
+  version
   int BuddyArchiveVersion = 5 (chunk)
   CGameBuddy[] Buddies (version: BuddyArchiveVersion)
   v3+
@@ -102,11 +102,11 @@ archive
       data
 
 0x004 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   string
 
 0x005 (skippable) [MP3, TMT, MP4.v2, TM2020.v2]
-  version = 2
+  version
   if IsOnlineSaveArchivation
     return
   v1-
@@ -122,7 +122,7 @@ archive
       CGameNetOnlineMessage[] OutboxMessages (deprec)
 
 0x006 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   if !IsOnlineSaveArchivation
     byte Flags2
 
@@ -142,15 +142,15 @@ archive
     string BroadcastPasswordEncryptedHexa
 
 0x008 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   string ClubLinkUrl
 
 0x009 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   byte FameStars
 
 0x00A (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
-  version = 3
+  version
   float AnalogSensitivity = 1
   float AnalogDeadZone = 0.1f
   v2+
@@ -167,7 +167,7 @@ archive
   float MouseSensitivity_Laser = 0.4f
 
 0x00B (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
-  version = 1
+  version
   int MouseReleaseKey
   v1+
     float CenterSpringIntensity

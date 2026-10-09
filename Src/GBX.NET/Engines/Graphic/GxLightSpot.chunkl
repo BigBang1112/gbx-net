@@ -48,7 +48,7 @@ property bool CustomAngleShadow
   float FalloffExponent
 
 0x003 [TM2020.v1]
-  version = 1
+  version
   uint Flags
   float AngleInner
   float AngleOuter

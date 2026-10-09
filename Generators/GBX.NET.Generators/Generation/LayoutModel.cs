@@ -44,7 +44,7 @@ internal sealed class LayoutModel
 
             existing.TryGetValue(file.TypeKey + "+" + name, out var chunkType);
 
-            var model = new ChunkModel(id, name, chunk, new ScopeModel(chunkType, chunk.Attributes, chunk.Body));
+            var model = new ChunkModel(id, name, chunk, new ScopeModel(chunkType, chunk.Attributes, chunk.Body, chunk));
             
             Chunks.Add(model);
 

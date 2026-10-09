@@ -116,6 +116,26 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public int U03;
         public byte U04;
 
+        public HeaderChunk090F4000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public HeaderChunk090F4000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMSX)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TMF)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);

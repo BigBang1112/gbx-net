@@ -1,4 +1,4 @@
-﻿CGamePlayerProfile 0x0308C000
+CGamePlayerProfile 0x0308C000
 
 0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
   string OnlineLogin
@@ -562,7 +562,7 @@
   string LastUsedMSPath
 
 0x056 [TMF.v5]
-  version = 5
+  version
   v6+
     return
   CGameBuddy[] Buddies

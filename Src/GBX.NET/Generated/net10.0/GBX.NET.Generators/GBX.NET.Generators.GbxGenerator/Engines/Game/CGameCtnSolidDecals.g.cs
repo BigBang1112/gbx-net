@@ -125,7 +125,19 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     {
         public override uint Id => 0x03121001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int Version { get; set; } = 2;
+        public int Version { get; set; }
+
+        public Chunk03121001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03121001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
