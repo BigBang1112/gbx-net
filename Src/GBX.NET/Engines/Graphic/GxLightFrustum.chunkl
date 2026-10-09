@@ -48,7 +48,7 @@ constructor
   if rw.Reader != null
     Flags = Flags & 0xFFFC3FFF
 
-0x006 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   FrustumData Frustum
   uint Flags
 

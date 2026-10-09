@@ -1,6 +1,6 @@
 CGameNetOnlineMessage 0x03028000
 
-0x000 [TMF, MP3, TMT, MP4, TM2020]
+0x000 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   string ReceiverLogin
   string SenderLogin
   string Subject

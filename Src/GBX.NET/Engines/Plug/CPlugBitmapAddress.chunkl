@@ -14,7 +14,7 @@ CPlugBitmapAddress 0x09047000
 
 0x005 (base: 0x004) [TM10, TMPU]
 
-0x007 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   uint
   int
   byte
@@ -27,5 +27,5 @@ CPlugBitmapAddress 0x09047000
   int
   float
 
-0x009 [TMF, MP3, TMT]
+0x009 [VSK5, TMF, MP3, TMT]
   float BumpEnvScale

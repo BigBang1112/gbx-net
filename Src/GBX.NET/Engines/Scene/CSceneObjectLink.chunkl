@@ -1,6 +1,6 @@
 CSceneObjectLink 0x0A014000
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   bool U01
   if U01
     CSceneMobil Mobil (external)
@@ -28,7 +28,7 @@ CSceneObjectLink 0x0A014000
   float
   bool
 
-0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   id MobilTreeId
   bool
   bool
@@ -36,5 +36,5 @@ CSceneObjectLink 0x0A014000
 0x0A00F002 (not-remapped) [TMSX, TMNESWC]
   bool
 
-0x003 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x003 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   id

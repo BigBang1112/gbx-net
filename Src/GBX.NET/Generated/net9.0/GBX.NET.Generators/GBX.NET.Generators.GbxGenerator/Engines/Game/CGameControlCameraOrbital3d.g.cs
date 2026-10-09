@@ -310,11 +310,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E005)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0306E005 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E005;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
         public bool U01;
         public bool U02;
         public float U03;
@@ -351,11 +351,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E006)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0306E006 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E006;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -369,11 +369,11 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     [Chunk(0x0306E007)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306E007 : Chunk<CGameControlCameraOrbital3d>
     {
         public override uint Id => 0x0306E007;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

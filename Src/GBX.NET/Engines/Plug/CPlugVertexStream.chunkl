@@ -1,7 +1,7 @@
 CPlugVertexStream 0x09056000
 - inherits: CPlug
 
-0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
 
 enum EPlugVDclType
   U01

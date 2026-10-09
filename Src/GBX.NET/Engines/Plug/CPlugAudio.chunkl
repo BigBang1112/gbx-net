@@ -5,5 +5,5 @@ CPlugAudio 0x09001000
 0x000
   int CanHaveFx
 
-0x001 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Name = empty

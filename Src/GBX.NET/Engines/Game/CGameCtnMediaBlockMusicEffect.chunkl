@@ -1,7 +1,7 @@
 CGameCtnMediaBlockMusicEffect 0x030A6000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TMSX, TMNESWC]
+0x000 [TMSX, TMNESWC, VSK5]
   Key[] Keys (list)
 
 0x001 [TMF, TMT, MP4, TM2020]

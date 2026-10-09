@@ -10,7 +10,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
   int
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Tip
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Tip
   string Tip
   string Tip
   string Tip
@@ -42,25 +42,25 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   int
   int
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // medals
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // medals
   int? BronzeTime (time)
   int? SilverTime (time)
   int? GoldTime (time)
   int? AuthorTime (time)
   uint
 
-0x005 [TMSX, TMNESWC]
+0x005 [TMSX, TMNESWC, VSK5]
   int
   int
   int
 
-0x006 [TMSX, TMNESWC] // items
+0x006 [TMSX, TMNESWC, VSK5] // items
   int[] Items
 
 0x007 // TimeLimit
   int TimeLimit = 60000 (time)
 
-0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // stunts
+0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // stunts
   int TimeLimit (time)
   int? AuthorScore (nullable)
 

@@ -27,7 +27,7 @@ property bool CustomAngleShadow
   if rw.Reader != null
     AngleFlare = AngleOuter + AngleOuter
 
-0x001 [TMSX, TMNESWC, TMF, MP3, TMT]
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   float AngleInner
   float AngleOuter
   float AngleFlare = 45 // Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
@@ -38,7 +38,7 @@ property bool CustomAngleShadow
         if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
           Flags = Flags | 1
 
-0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   uint Flags = 0 // CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
   float AngleInner
   float AngleOuter

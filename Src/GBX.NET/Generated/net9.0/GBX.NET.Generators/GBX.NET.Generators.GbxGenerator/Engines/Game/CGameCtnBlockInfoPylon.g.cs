@@ -80,11 +80,11 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     [Chunk(0x03055000)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03055000 : Chunk<CGameCtnBlockInfoPylon>
     {
         public override uint Id => 0x03055000;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public CMwNod? U01;
         public CMwNod? U02;
         public CMwNod? U03;

@@ -61,7 +61,7 @@ CGameCtnCollection 0x03033000
 0x008 [TM10, TMPU] // DefaultDecoration
   CGameCtnDecoration DefaultDecoration (external)
 
-0x009 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Collection
   CGameCtnZone[] CompleteListZoneList (deprec, external)
   CGameCtnZone DefaultZone (external)
@@ -73,11 +73,11 @@ CGameCtnCollection 0x03033000
 0x00B [TM10, TMPU]
   int BlocksShadow
 
-0x00C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool IsEditable
   int<ECollectionType> CollectionType
 
-0x00D [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] //IconFid, IconSmallFid
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] //IconFid, IconSmallFid
   bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
   if HasIconFid
     CPlugBitmap IconFid (external)
@@ -85,10 +85,10 @@ CGameCtnCollection 0x03033000
   if HasIconSmallFid
     CPlugBitmap IconSmallFid (external)
 
-0x00E [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int SortIndex
 
-0x011 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x011 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CGameCtnDecoration DefaultDecoration (external)
 
 0x013 [TMSX, TMNESWC]
@@ -111,10 +111,10 @@ CGameCtnCollection 0x03033000
   vec2 MapCoordElem
   vec2 MapCoordIcon
 
-0x019 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // LoadScreenFid
+0x019 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // LoadScreenFid
   CPlugBitmap LoadScreenFid (external)
 
-0x01A [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x01A [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugBitmap MapFid
   rect MapRect
   vec2 MapCoordElem
@@ -122,7 +122,7 @@ CGameCtnCollection 0x03033000
   vec2 MapCoordDesc
   string LongDesc
 
-0x01B [TMNESWC]
+0x01B [TMNESWC, VSK5]
   int BlocksShadow
   bool ShadowCastBack
   int<EBackgroundShadow> BackgroundShadow
@@ -131,26 +131,26 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
-0x01D [TMF, MP3, TMT, MP4, TM2020]
+0x01D [VSK5, TMF, MP3, TMT, MP4, TM2020]
   ZoneString[] ZoneStrings
   CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec, external)
 
-0x01E [TMF] // camera
+0x01E [VSK5, TMF] // camera
   float WaterTop
   float WaterBottom
   float CameraMinHeight
   bool IsWaterOutsidePlayField
 
-0x01F [TMF, MP3, TMT, MP4, TM2020] // ParticleEmitterModelsFids
+0x01F [VSK5, TMF, MP3, TMT, MP4, TM2020] // ParticleEmitterModelsFids
   int[] ParticleEmitterModelsFids
 
-0x020 [TMF, MP3, TMT, MP4, TM2020] // folders
+0x020 [VSK5, TMF, MP3, TMT, MP4, TM2020] // folders
   string FolderBlockInfo
   string FolderItem
   string FolderDecoration
   string FolderMenusIcons
 
-0x021 [TMF, MP3, TMT, MP4, TM2020] // display name
+0x021 [VSK5, TMF, MP3, TMT, MP4, TM2020] // display name
   string DisplayName
 
 0x022 [TMF] // is water multi-height

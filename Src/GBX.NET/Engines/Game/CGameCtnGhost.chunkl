@@ -37,7 +37,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x004 (skippable) [TMPU] // checkpoints TMPU
   Checkpoint[] Checkpoints
 
-0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // race time
+0x005 (skippable) [TMPU, TMS, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // race time
   int? RaceTime (time)
 
 0x006 [TMS, TMSX, TMNESWC]
@@ -49,22 +49,22 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x007 // old light trail color
   vec3 LightTrailColor
 
-0x008 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // respawns
+0x008 (skippable) [TMS, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // respawns
   int? Respawns
 
-0x009 (skippable) [TMS, TMSX, TMNESWC, TMU, TMF, MP3] // light trail color
+0x009 (skippable) [TMS, TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // light trail color
   vec3 LightTrailColor
 
-0x00A (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // stunt score
+0x00A (skippable) [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // stunt score
   int? StuntScore
 
-0x00B (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // checkpoint times
+0x00B (skippable) [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // checkpoint times
   Checkpoint[] Checkpoints (version: 1)
 
-0x00C [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
+0x00C [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int
 
-0x00D [TMU]
+0x00D [TMU, VSK5]
   ident PlayerModel
   string SkinFile
   int
@@ -73,16 +73,16 @@ CGameCtnGhost 0x03092000 // A ghost.
   int
   string GhostNickname (formatted)
 
-0x00E [TMU, TMF, MP3, TMT, MP4, TM2020] // GhostUid
+0x00E [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // GhostUid
   id? GhostUid
 
-0x00F [TMU, TMF, MP3, TMT, MP4, TM2020] // ghost login
+0x00F [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // ghost login
   string GhostLogin
 
-0x010 [TMU, TMF, MP3, TMT, MP4, TM2020] // validation map UID
+0x010 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // validation map UID
   id Validate_ChallengeUid
 
-0x011 (demonstration: partial) [TMU] // validation TMU
+0x011 (demonstration: partial) [TMU, VSK5] // validation TMU
   int EventsDuration (time)
   if EventsDuration != 0
     // CInputEventsStore is handled in C# before the validation fields.
@@ -92,7 +92,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     int Validate_CpuKind
     string Validate_RaceSettings
 
-0x012 [TMU, TMF] // old security key
+0x012 [TMU, VSK5, TMF] // old security key
   uint
   uint128? SecurityKey128
 

@@ -1,6 +1,6 @@
 CGameCtnCampaign 0x03090000
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // map groups
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // map groups
   CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
 0x001 [TM10, TMPU, TMSX, TMNESWC]
@@ -9,7 +9,7 @@ CGameCtnCampaign 0x03090000
   if U01 > 0
     throw
 
-0x002 [TM10, TMPU, TMSX, TMNESWC]
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5]
   id IconId
   int U01
   int U01
@@ -24,35 +24,35 @@ CGameCtnCampaign 0x03090000
   bool IsInternal
   bool
 
-0x004 [TMSX, TMNESWC, TMF]
+0x004 [TMSX, TMNESWC, VSK5, TMF]
   string Name
   int<EType> Type
   bool IsInternal
   bool
   bool
 
-0x005 [TMSX, TMNESWC]
+0x005 [TMSX, TMNESWC, VSK5]
   bool
 
-0x006 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // campaign ID
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // campaign ID
   id CampaignId
 
-0x007 [TMSX, TMNESWC]
+0x007 [TMSX, TMNESWC, VSK5]
   int U01
   int U01
   int U01
 
-0x008 [TMNESWC]
+0x008 [TMNESWC, VSK5]
   int
 
-0x009 (skippable) [TMF, MP3, TMT, MP4, TM2020] // collection ID
+0x009 (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // collection ID
   byte
   id CollectionId
 
-0x00A (skippable) [TMF, MP3, TMT, MP4, TM2020] // index
+0x00A (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // index
   int Index
 
-0x00B (skippable) [TMF, MP3, TMT, MP4, TM2020] // unlocked by campaign
+0x00B (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // unlocked by campaign
   string UnlockedByCampaign
   int
 

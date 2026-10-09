@@ -1,11 +1,11 @@
 CGameControlCameraTarget 0x03072000
 - inherits: CGameControlCamera
 
-0x001 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   iso4 Location
   bool IsUpLinked
   bool Interpolate
   float LookAtFactor
 
-0x002 [TMSX, TMNESWC, TMF, MP3]
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3]
   bool CanUseRelativeTargetLocation

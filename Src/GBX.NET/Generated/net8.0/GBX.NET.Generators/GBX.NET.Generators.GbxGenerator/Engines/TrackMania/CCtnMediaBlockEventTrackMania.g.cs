@@ -168,11 +168,11 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     }
 
     [Chunk(0x2407F003)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>
     {
         public override uint Id => 0x2407F003;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -61,7 +61,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   string PageName
   CMwNod (external) // CMwRefBuffer in TMF, CPlugFileImg in MP4
 
-0x002 [TM10, TMPU, TMSX, TMNESWC] // Ident
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5] // Ident
   ident Ident
 
 0x003 // legacy icon fid
@@ -84,10 +84,10 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int CopperPrice
   int NbAvailableMax
 
-0x006 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x006 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int<ESkinKind> SkinKind
 
-0x007 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x007 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   bool IsInternal
   bool NeedUnlock
   int CatalogPosition
@@ -95,17 +95,17 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int CopperPrice
   int NbAvailableMax
 
-0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugGameSkin (external)
 
-0x009 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x009 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   string PageName
   bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
   if HasIconFid
     CMwNod IconFid (external)
   id ParentCollectorId
 
-0x00A [TMF]
+0x00A [VSK5, TMF]
   id
 
 0x00B [TMF, MP3, TMT, MP4, TM2020] // ident

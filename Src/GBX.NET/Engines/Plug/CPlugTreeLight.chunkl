@@ -1,5 +1,5 @@
 CPlugTreeLight 0x09062000
 - inherits: CPlugTree
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugLight PlugLight (external)

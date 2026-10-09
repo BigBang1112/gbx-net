@@ -1,5 +1,5 @@
 CMwCmdExpClass 0x01056000
 - inherits: CMwCmdExp
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int

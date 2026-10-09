@@ -1,7 +1,7 @@
 CGameControlCameraTrackManiaRace2 0x24086000
 - inherits: CGameControlCameraTarget
 
-0x000 [TMSX, TMNESWC, TMF]
+0x000 [TMSX, TMNESWC, VSK5, TMF]
   float InputGasDistDelta
   int InputGasDistTimeUp
   int InputGasDistTimeDown
@@ -65,5 +65,5 @@ CGameControlCameraTrackManiaRace2 0x24086000
   float DeltaLookAtFactorDamperKi
   float DeltaLookAtFactorDamperKa
 
-0x001 [TMNESWC, TMF, TM2020]
+0x001 [TMNESWC, VSK5, TMF, TM2020]
   bool IsRollFromInput

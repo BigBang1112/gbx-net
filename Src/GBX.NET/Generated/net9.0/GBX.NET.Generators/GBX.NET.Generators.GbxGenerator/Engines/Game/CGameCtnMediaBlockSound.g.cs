@@ -174,11 +174,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030A7001)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
     {
         public override uint Id => 0x030A7001;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -193,11 +193,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     [Chunk(0x030A7002)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A7002 : Chunk<CGameCtnMediaBlockSound>
     {
         public override uint Id => 0x030A7002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

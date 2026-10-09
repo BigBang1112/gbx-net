@@ -7,7 +7,7 @@ CGameCtnMediaBlockCameraCustom 0x030A2000 // MediaTracker block - Custom camera.
 0x001
   Key[] Keys (version: 1, list)
 
-0x002 [TMSX, TMNESWC]
+0x002 [TMSX, TMNESWC, VSK5]
   Key[] Keys (version: 2, list)
 
 0x003

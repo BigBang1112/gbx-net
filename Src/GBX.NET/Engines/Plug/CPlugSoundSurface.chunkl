@@ -1,7 +1,7 @@
 CPlugSoundSurface 0x0905E000
 - inherits: CPlugSound
 
-0x000 (ignore) [TMSX, TMNESWC, TMF, MP3]
+0x000 (ignore) [TMSX, TMNESWC, VSK5, TMF, MP3]
 
 0x002 [MP3, TMT, MP4, TM2020]
   version

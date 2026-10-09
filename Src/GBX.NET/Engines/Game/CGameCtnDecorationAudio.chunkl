@@ -1,12 +1,12 @@
 CGameCtnDecorationAudio 0x03039000
 
-0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
 
-0x001 [TMSX, TMNESWC, TMF]
+0x001 [TMSX, TMNESWC, VSK5, TMF]
   CPlugAudioEnvironment AudioEnvOutsideOpen (external)
   CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
 
-0x002 [TMSX, TMNESWC, TMF]
+0x002 [TMSX, TMNESWC, VSK5, TMF]
   float SoundAttenuationInEditor
 
 0x003 [MP3, TMT, MP4, TM2020]

@@ -4,7 +4,7 @@ CFuncKeysReal 0x0501A000
 0x000 [TM10, TMPU]
   float[] Ys
 
-0x001 [TMSX, TMNESWC, TMF]
+0x001 [TMSX, TMNESWC, VSK5, TMF]
   float[] Ys
   int<ERealInterp> RealInterp
 

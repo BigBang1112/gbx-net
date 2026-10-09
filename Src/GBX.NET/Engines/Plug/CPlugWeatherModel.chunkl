@@ -1,6 +1,6 @@
 CPlugWeatherModel 0x090BF000
 
-0x001 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugWeather[] Weathers (deprec)
   CPlugBitmap BitmapSpecularDir
 

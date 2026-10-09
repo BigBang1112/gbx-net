@@ -1,7 +1,7 @@
 CGameControlCameraTrackManiaRace3 0x24087000
 - inherits: CGameControlCameraTarget
 
-0x000 [TMSX, TMNESWC, TMF]
+0x000 [TMSX, TMNESWC, VSK5, TMF]
   float SlerpSpeed
   float Up
   float Far

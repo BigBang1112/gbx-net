@@ -91,11 +91,11 @@ public partial class CGameGhost : CMwNod, IClass
     }
 
     [Chunk(0x0303F005)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0303F005 : Chunk<CGameGhost>
     {
         public override uint Id => 0x0303F005;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
     }
 
     [Chunk(0x0303F006)]

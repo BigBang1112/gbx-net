@@ -5,7 +5,7 @@ CGameCtnMediaBlockFxBloom 0x03083000
   float Start (time)
   float End (time)
 
-0x001 [TMF, TMT, MP4]
+0x001 [VSK5, TMF, TMT, MP4]
   Key[] Keys (list)
 
 archive Key (inherits: IKey)

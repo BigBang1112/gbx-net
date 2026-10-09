@@ -1,9 +1,9 @@
 CPlugVehicleVisEmitterModel 0x090E6000
 
-0x002 [TMF, MP3, TMT, MP4, TM2020]
+0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool
 
-0x003 [TMF, MP3, TMT, MP4, TM2020]
+0x003 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
   float
   float
@@ -11,7 +11,7 @@ CPlugVehicleVisEmitterModel 0x090E6000
   float
   float
 
-0x004 [TMF, MP3, TMT, MP4, TM2020]
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   int
   CPlugParticleEmitterModel (external)
   CPlugParticleEmitterModel (external)
@@ -38,7 +38,7 @@ CPlugVehicleVisEmitterModel 0x090E6000
   float
   float
 
-0x005 [TMF, MP3, TMT, MP4, TM2020]
+0x005 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool
 
 0x006 [MP3, TMT, MP4, TM2020]

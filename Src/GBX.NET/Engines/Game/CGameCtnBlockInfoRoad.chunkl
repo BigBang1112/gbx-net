@@ -1,5 +1,5 @@
 CGameCtnBlockInfoRoad 0x03052000
 - inherits: CGameCtnBlockInfo
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CGameCtnBlockInfoSlope Slope (external)

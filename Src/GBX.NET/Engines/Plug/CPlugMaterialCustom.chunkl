@@ -1,24 +1,24 @@
 CPlugMaterialCustom 0x0903A000
 - inherits: CPlug
 
-0x004 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x004 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int[]
 
-0x006 [TMSX, TMNESWC, TMF, MP3, TMT]
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   Bitmap[] Textures
 
-0x00A [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   GpuFx[] GpuFxs1
   GpuFx[] GpuFxs2
 
-0x00B [TMNESWC]
+0x00B [TMNESWC, VSK5]
   uint U01
   ulong U02
   if (U01 & 1) != 0
     short U03
     short U04
 
-0x00C [TMF, MP3, TMT, MP4, TM2020]
+0x00C [VSK5, TMF, MP3, TMT, MP4, TM2020]
   BitmapSkip[] SkipSamplers
 
 0x00D [TMF, MP3, TMT, MP4]

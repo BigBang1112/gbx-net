@@ -1,5 +1,5 @@
 CMotionManagerLeaves 0x0804D000
 - inherits: CMotionManager
 
-0x0804C000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
+0x0804C000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   CSceneMobilLeaves MobilLeaves

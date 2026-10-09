@@ -22,11 +22,11 @@ CPlugGameSkin 0x090F4000
 
 0x001 [TM10, TMPU]
 
-0x003 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x003 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   string PainterTextureName
   string PainterSceneId
 
-0x004 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x004 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   versionb
   string DirName
   v1+

@@ -132,9 +132,11 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     [Chunk(0x0907E007)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0907E007 : Chunk0907E002
     {
         public override uint Id => 0x0907E007;
+        public override GameVersion GameVersion => GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

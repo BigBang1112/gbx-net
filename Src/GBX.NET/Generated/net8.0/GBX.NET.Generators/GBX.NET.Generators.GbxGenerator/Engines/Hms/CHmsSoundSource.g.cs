@@ -159,11 +159,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     [Chunk(0x0600D002)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0600D002 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -182,11 +182,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     /// volume, pitch, speed
     /// </summary>
     [Chunk(0x0600D003, "volume, pitch, speed")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0600D003 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D003;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -205,11 +205,11 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     /// VolumicSize
     /// </summary>
     [Chunk(0x0600D004, "VolumicSize")]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0600D004 : Chunk<CHmsSoundSource>
     {
         public override uint Id => 0x0600D004;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

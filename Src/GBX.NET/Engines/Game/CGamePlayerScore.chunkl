@@ -24,7 +24,7 @@ CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameSc
   int ScoresVersion
   Score[] Scores (version: n.ScoresVersion)
 
-0x004 [TMSX, TMNESWC, TMF.v18]
+0x004 [TMSX, TMNESWC, VSK5, TMF.v18]
   string PlayerName
   string NickName (formatted)
   id PlayerId
@@ -34,14 +34,14 @@ CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameSc
 0x005
   SurvivalScore[] SurvivalScores (version: 0)
 
-0x006 [TMSX, TMNESWC, TMF.v2]
+0x006 [TMSX, TMNESWC, VSK5, TMF.v2]
   int SurvivalScoresVersion = 2
   SurvivalScore[] SurvivalScores (version: n.SurvivalScoresVersion)
 
 0x007
   DeprecatedPlayerCampaignSkillScore[]
 
-0x008
+0x008 [VSK5]
   DeprecatedPlayerCampaignSkillScore[]
   systemtime
 

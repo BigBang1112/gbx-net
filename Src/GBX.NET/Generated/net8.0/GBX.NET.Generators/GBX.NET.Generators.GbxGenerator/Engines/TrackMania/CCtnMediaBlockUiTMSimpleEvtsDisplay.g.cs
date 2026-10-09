@@ -90,11 +90,11 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     [Chunk(0x24092000)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092000;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -105,11 +105,11 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     [Chunk(0x24092001)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092001 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092001;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -127,11 +127,11 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     [Chunk(0x24092002)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
         public override uint Id => 0x24092002;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

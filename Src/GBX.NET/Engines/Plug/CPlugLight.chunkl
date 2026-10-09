@@ -7,7 +7,7 @@ CPlugLight 0x0901D000
   CPlugBitmap BitmapFlare (external)
   CPlugBitmap BitmapProjector (external)
 
-0x002 (base: 0x000) [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x002 (base: 0x000) [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   base
   int<EFlags> Flags
 

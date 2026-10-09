@@ -24,7 +24,7 @@ CMotionPlayer 0x08034000
   id Name (inherited)
   CMotionTrack[] Tracks = empty (list)
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CMotionCmdBase Base (direct)
   uint SavePlayState
   if SavePlayState == 3

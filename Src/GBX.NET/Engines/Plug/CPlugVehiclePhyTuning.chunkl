@@ -1,6 +1,6 @@
 CPlugVehiclePhyTuning 0x090EB000
 
-0x000 [TMF, MP3, TMT, MP4, TM2020]
+0x000 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Name = empty
   CFuncKeysReal
   float

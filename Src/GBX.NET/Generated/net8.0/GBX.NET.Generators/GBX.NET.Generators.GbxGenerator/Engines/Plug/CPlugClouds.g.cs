@@ -179,11 +179,11 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     [Chunk(0x09180002)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180002 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180002;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -197,11 +197,11 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     [Chunk(0x09180003)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180003 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180003;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -216,11 +216,11 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     [Chunk(0x09180004)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180004 : Chunk09180000
     {
         public override uint Id => 0x09180004;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

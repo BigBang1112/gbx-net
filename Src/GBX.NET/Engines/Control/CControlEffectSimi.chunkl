@@ -9,7 +9,7 @@ CControlEffectSimi 0x07010000
   Key[] Keys (version: 2, list)
   bool Centered
 
-0x004 [TMNESWC]
+0x004 [TMNESWC, VSK5]
   Key[] Keys (version: 4, list)
   bool Centered
   int<EColorBlendMode> ColorBlendMode

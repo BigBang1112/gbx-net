@@ -1,7 +1,7 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
   float SteerRadiusMin
   float SteerRadiusCoef
@@ -15,18 +15,18 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float DebugAbsorbCoef
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Name
 
-0x002 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float Mass
   float CMAftForce
   float CMDownUp
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   bool IsFakeEngine
 
-0x005 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float GravityCoef
 
 0x006
@@ -35,34 +35,34 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x007 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x007 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float SteerSpeed
 
 0x008 [TM10, TMPU]
   float ReverseMaxSpeed
   float TurboBoost
 
-0x009 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float BrakeBase
 
 0x00A
   float LinearFluidFrictionCoef
   float AngularFluidFrictionCoef1
 
-0x00B [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float InertiaMass
   Vec3 InertiaHalfDiag
 
 0x00C
   bool
 
-0x00D [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int TireMaterial
 
-0x00E [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<EShockModel> ShockModel
 
-0x010 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int<ESteerModel> SteerModel
   float SteerGroundTorque
 
@@ -83,7 +83,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float SoundImpactVolume
   float SoundBodyImpact_Hard_Threshold
 
-0x013 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x013 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
   float
   float
@@ -97,7 +97,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x014 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
   float
 
@@ -112,7 +112,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float DisplaySteerRadiusMin
   float DisplaySteerRadiusCoef
 
-0x017 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x017 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float DecrepitudeImpactVal
   float DecrepitudeCoef
   float VibrationPeriodSpeedCoef
@@ -122,12 +122,12 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x018 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x018 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float LinearFluidFrictionCoef
   float AngularFluidFrictionCoef1
   float AngularFluidFrictionCoef2
 
-0x019 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x019 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   float BodyFrictionCoef
   float BodyFrictionCoef_Metal
   float BodyRestCoef_Metal
@@ -137,25 +137,25 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float WheelFrictionCoef_Metal
   float WheelRestCoef_Metal
 
-0x01A [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x01A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   float
 
-0x01B [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x01B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   float
 
-0x01D [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x01D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float GravityCoefAir
   float RolloverAxial
 
-0x01E [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x01E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int AirControlDuration
 
-0x01F [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x01F [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
   float
   float
 
-0x020 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x020 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float SteerAngleMax
   float SlipAngleForceMax
   float SlipAngleForceCoef1
@@ -168,24 +168,24 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
 
-0x023 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x023 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float AngularSpeedYImpulseScale
   float SteerLowSpeed
 
-0x024 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x024 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal AccelCurve
 
-0x026 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x026 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float LateralSlopeAdherenceMin
   float LateralSlopeAdherenceMax
   float AxialSlopeAdherenceMin
   float AxialSlopeAdherenceMax
 
-0x027 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x027 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float SteerGroundTorqueSlippingCoef
   float MaxSideFrictionBlendCoef
 
-0x028 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x028 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float
   CFuncKeysReal MaxSideFriction
   float MaxSideFrictionSliding
@@ -193,20 +193,20 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float GroundSlowDownBase
   float AbsorbTension
 
-0x029 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x029 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float SideFriction1
   CFuncKeysReal RolloverLateral
 
-0x02A [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x02A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal LateralContactSlowDown
 
-0x02B [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x02B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal SteerSlowDown
   float SideFriction2
   float RubberBallElasticity
   int SteerSlowDownFadeInDuration
 
-0x02C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x02C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal RolloverLateralFromAngle
   float MaxAngularSpeedYAirControl
   float BrakeCoef
@@ -214,24 +214,24 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float BrakeMaxDynamic
   float GroundSlowDownCoef
 
-0x02D [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x02D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int SteerSlowDownFadeOutDuration
 
-0x02E [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x02E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float SteerSlowDownCoef
   float
 
 0x02F [TM10, TMPU]
   int TurboDuration
 
-0x030 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x030 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal SteerDriveTorque // encryption trick here
 
-0x031 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x031 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float LimitToMaxSpeedForce
   float SlopeSpeedGainLimit
 
-0x032 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x032 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   float SoundEngineVolume
   float SoundSkidSandVolume
   float SoundSkidConcreteVolume
@@ -241,67 +241,67 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float SoundBodyImpact_Hard_Threshold
   float SoundBodyImpact_Soft_Threshold
 
-0x033 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x033 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float AngularSpeedClamp
 
-0x034 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x034 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float LinearSpeed2PositiveDeltaMax
 
-0x035 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x035 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool NoSteerSlowDownWhenSlipping
 
-0x036 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x036 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float M4LateralFrictionSquareForce
   float M4LateralFrictionTorque
   float M4LateralFrictionForce
   CFuncKeysReal M4SteerRadiusFromSpeed
 
-0x037 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x037 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal M4MaxFrictionTorqueFromSpeed
 
-0x038 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x038 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float M4MaxFrictionTorqueWhenSlippingCoef
   CFuncKeysReal M4MaxFrictionForceFromSpeed
   float M4MaxFrictionForceWhenSlipping
   float M4SteerRadiusWhenSlippingCoef
 
-0x039 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x039 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4LateralFrictionSquareTorque
   float
 
-0x03A [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x03A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4SlipAngleSpeed
   float M4SteerRadiusCoefFromSlipAngle
 
-0x03B [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x03B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4LeaveSlippingSpeed
 
-0x03C [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x03C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4SteerAngleWhenSlippingMax
 
-0x03D [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x03D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal M5SlippingAccelCurve
 
-0x03E [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x03E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int M5LateralConstantSlowDownDuration
 
-0x03F [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x03F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal M5SteerCoefFromSpeed
 
-0x040 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x040 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
 
-0x041 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x041 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M5MaxAxialRolloverTorque
   int M5KeepSlidingAccelDuration
 
-0x042 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x042 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int M5KeepSteerSlowDownDurarion
 
-0x043 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x043 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int M5KeepNoSteerSlowDownWhenSlippingDuration
 
-0x044 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x044 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M5AccelSlipCoefMax
 
 0x045
@@ -311,7 +311,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float  WaterReboundMinHSpeed
   float
 
-0x046 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x046 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float WaterGravity
   float WaterReboundMinHSpeed
   float WaterBumpMinSpeed
@@ -319,70 +319,70 @@ CPlugVehicleCarPhyTuning 0x090ED000
   CFuncKeysReal WaterFrictionFromSpeed
   CFuncKeysReal WaterReboundFromSpeedRatio
 
-0x047 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x047 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float WaterAngularFriction
 
 0x048 [TMSX, TMNESWC]
   CFuncKeysReal WaterSplashFromSpeed
 
-0x049 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x049 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal ModulationFromWheelCompression
 
 0x04A
   float
   float M6InertialMass
 
-0x04D [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x04D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6ForceEpsilon
 
-0x04E [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x04E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6InertialTorqueModualtionX
   float M6InertialTorqueModulationZ
 
-0x04F [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x04F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float M6MaxSpeed4Burnout
   CFuncKeysReal M6BurnoutRadius
 
-0x051 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x051 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6BurnoutFricMod
 
-0x052 [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x052 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal M6RolloverLateralFromSpeedRatio
 
-0x053 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x053 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6BurnoutCenterForceCoeff2
 
-0x056 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x056 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6BurnoutRpmAcc
   float M6AirRpmAcc
   float M6AirRpmDeadening
 
-0x057 [TMSX, TMNESWC, TMF]
+0x057 [TMSX, TMNESWC, VSK5, TMF]
   float[] M6RpmWantedOnGearUp
 
-0x058 [TMSX, TMNESWC, TMF]
+0x058 [TMSX, TMNESWC, VSK5, TMF]
   float M6RpmLossCoefOnGearUp
 
-0x059 [TMSX, TMNESWC, TMF]
+0x059 [TMSX, TMNESWC, VSK5, TMF]
   float M6RpmGainCoefOnGearDown
   float M6SpeedLimitPositiveForTakeOffFront
   float M6RpmGainOnTakeOff
   float M6RpmLossOnTakeOffFinished
 
-0x05A [TMSX, TMNESWC, TMF]
+0x05A [TMSX, TMNESWC, VSK5, TMF]
   float M6SpeedLimitPositiveForTakeOffRear
   float M6SpeedLimitNegForTakeOffFront
   float M6SpeedLimitNegTakeOffRear
 
-0x05B [TMSX, TMNESWC, TMF]
+0x05B [TMSX, TMNESWC, VSK5, TMF]
   CFuncKeysReal BrakeHeatSpeedFromFBrake
   float BrakeCoolingSpeed
 
-0x05C [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x05C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M6BrakeMaxRear
   float M6BrakeMaxDynamicRear
 
-0x05D [TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x05D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float M6InertialMass
   float M6MaxDiffBtwnPropulsionAndSpeed
   CFuncKeysReal AccelCurveRearGear
@@ -417,35 +417,35 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float[] M6MinRPM
   int SteerDurationBeforeSteerSlowDown
 
-0x05E [TMSX, TMNESWC, TMF]
+0x05E [TMSX, TMNESWC, VSK5, TMF]
   CFuncKeysReal AirControlZCoefFromAngularSpeed
 
-0x05F [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x05F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float WaterAngularFrictionSq
 
-0x060 [TMSX, TMNESWC, TMF]
+0x060 [TMSX, TMNESWC, VSK5, TMF]
   float ReverseMaxSpeed
   float TurboBoost
   float Turbo2Boost
   int TurboDuration
   int Turbo2Duration
 
-0x061 [TMNESWC, TMF, MP3, TMT, MP4]
+0x061 [TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   CFuncKeysReal VisualSteerAngleFromSpeed
 
-0x062 [TMF, MP3, TMT, MP4, TM2020]
+0x062 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
 
-0x063 [TMF, MP3, TMT, MP4, TM2020]
+0x063 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
 
-0x064 [TMF, MP3, TMT, MP4, TM2020]
+0x064 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
 
-0x065 [TMF, MP3, TMT, MP4, TM2020]
+0x065 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
 
-0x066 [TMF, MP3, TMT, MP4, TM2020]
+0x066 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
 
 0x06A [MP3, TMT, MP4, TM2020]

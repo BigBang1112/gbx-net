@@ -82,11 +82,11 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     [Chunk(0x09026002)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026002 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026002;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -100,11 +100,11 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     [Chunk(0x09026004)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026004 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026004;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -138,9 +138,11 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     [Chunk(0x09026007)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk09026007 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026007;
+        public override GameVersion GameVersion => GameVersion.VSK5;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

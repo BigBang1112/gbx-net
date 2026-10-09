@@ -5,5 +5,5 @@ CPlugBitmapApply 0x09012000
   int
   int
 
-0x004 [TMF, MP3, TMT]
+0x004 [VSK5, TMF, MP3, TMT]
   uint

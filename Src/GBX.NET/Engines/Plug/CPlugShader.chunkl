@@ -6,7 +6,7 @@ CPlugShader 0x09002000
   CPlugShaderPass[] Passes
   CMwNod U01
 
-0x00E (base: 0x007) [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x00E (base: 0x007) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   base
   CMwNod[] U02 (external)
 
@@ -22,7 +22,7 @@ CPlugShader 0x09002000
   CMwNod
   ushort VisibleIdFlags
 
-0x015 [TMNESWC]
+0x015 [TMNESWC, VSK5]
   dataulong RequirementFlags // SRequirement
   float
   CMwNod

@@ -1,7 +1,7 @@
 CPlugVisual2D 0x0904A000
 - inherits: CPlugVisual
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   Vertex2D[] Vertices2D
 
 archive Vertex2D

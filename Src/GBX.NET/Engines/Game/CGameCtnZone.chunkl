@@ -1,16 +1,16 @@
 CGameCtnZone 0x0305C000
 
-0x003 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int Height
   id ZoneId
   id SurfaceId
   int
 
-0x004 (skippable) [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x004 (skippable) [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int Depth
   bool OldZone
 
-0x005 [TMSX, TMNESWC, TMF]
+0x005 [TMSX, TMNESWC, VSK5, TMF]
   bool HasWater
 
 0x006 [MP3, TMT, MP4, TM2020]

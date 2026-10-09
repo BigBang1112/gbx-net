@@ -88,11 +88,11 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     }
 
     [Chunk(0x0307A002)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

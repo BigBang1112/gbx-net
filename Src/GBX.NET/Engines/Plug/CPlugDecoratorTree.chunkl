@@ -21,7 +21,7 @@ CPlugDecoratorTree 0x090A2000
   bool ShadowCasterApplyOnChilds
   bool TransformVisualToSurface
 
-0x008 (base: 0x007)
+0x008 (base: 0x007) [VSK5]
   base
   bool NoLocation
 

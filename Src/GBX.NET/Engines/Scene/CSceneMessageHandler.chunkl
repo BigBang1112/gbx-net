@@ -1,7 +1,7 @@
 CSceneMessageHandler 0x0A01F000
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   CMwNod OnClickScript (external)
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP4, TM2020]
   CMwNod OnContactScript (external)

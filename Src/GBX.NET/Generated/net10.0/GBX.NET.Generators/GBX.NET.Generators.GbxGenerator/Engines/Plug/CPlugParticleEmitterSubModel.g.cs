@@ -586,11 +586,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2011)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2011 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2011;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -675,11 +675,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2013)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2013 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2013;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public int U01;
         public float U02;
         public float U03;
@@ -719,11 +719,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2015)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2015 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2015;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -748,11 +748,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2016)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2016 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2016;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -769,11 +769,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2017)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2017 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2017;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -788,11 +788,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2018)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2018 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2018;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -806,11 +806,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2019)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2019 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2019;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -826,11 +826,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201A)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201A : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201A;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public CMwNod? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -846,11 +846,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201B)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201B : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201B;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -867,11 +867,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201C)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201C : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -888,11 +888,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201D)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201D : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201D;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
 
@@ -911,11 +911,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201E)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201E : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201E;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -931,11 +931,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B201F)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201F : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B201F;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -949,11 +949,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2020)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2020 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2020;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -972,11 +972,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2021)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2021 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2021;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -990,11 +990,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     [Chunk(0x090B2022)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2022 : Chunk<CPlugParticleEmitterSubModel>
     {
         public override uint Id => 0x090B2022;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

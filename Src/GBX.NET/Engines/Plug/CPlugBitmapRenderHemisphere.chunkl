@@ -1,7 +1,7 @@
 CPlugBitmapRenderHemisphere 0x09058000
 - inherits: CPlugBitmapRender
 
-0x001 [TMSX, TMNESWC, TMF]
+0x001 [TMSX, TMNESWC, VSK5, TMF]
   int<EHemiLayout> HemiLayout
   float
   float

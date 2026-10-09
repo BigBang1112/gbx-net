@@ -1,20 +1,20 @@
 CSceneLayout 0x0A003000
 - inherits: CScene
 
-0x00C [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
+0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int
 
-0x010 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
+0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   float CameraFarZ
   vec3 CameraClearColor
 
-0x014 [TMSX, TMNESWC, TMF]
+0x014 [TMSX, TMNESWC, VSK5, TMF]
   int
   bool
   box
   iso4
 
-0x017 (ignore)
+0x017 (ignore) [VSK5]
 
 0x018 [TMF]
   CSceneSector[] Sectors (deprec)

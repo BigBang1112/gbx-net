@@ -219,9 +219,11 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     [Chunk(0x090A2008)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk090A2008 : Chunk090A2007
     {
         public override uint Id => 0x090A2008;
+        public override GameVersion GameVersion => GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

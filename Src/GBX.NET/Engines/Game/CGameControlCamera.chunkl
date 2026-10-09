@@ -24,7 +24,7 @@ CGameControlCamera 0x0306B000
 0x004 [TMSX]
   string Name
 
-0x009 [TMNESWC]
+0x009 [TMNESWC, VSK5]
   vec3 RelativeFollowedPos
   bool IsFirstPerson
   bool CanCameraMove

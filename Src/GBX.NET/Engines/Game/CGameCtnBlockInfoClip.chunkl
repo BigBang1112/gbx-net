@@ -1,7 +1,7 @@
 CGameCtnBlockInfoClip 0x03053000
 - inherits: CGameCtnBlockInfo
 
-0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id ASymmetricalClipId
 
 0x004 [MP3, TMT, MP4, TM2020]

@@ -5,7 +5,7 @@ CGameGhost 0x0303F000 // Ghost data.
 0x004 [TMS, TMSX, TMNESWC]
   uint? SavedMobilClassId
 
-0x005 (demonstration) [TMU, TMF]
+0x005 (demonstration) [TMU, VSK5, TMF]
   int UncompressedSize
   data Data
 

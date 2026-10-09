@@ -693,9 +693,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     [Chunk(0x06022005)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk06022005 : Chunk<CHmsLightMapCache>
     {
         public override uint Id => 0x06022005;
+        public override GameVersion GameVersion => GameVersion.VSK5;
         public bool U01;
         public float U02;
         public float U03;

@@ -6,7 +6,7 @@ CGameCtnMediaBlockCameraGame 0x03084000
   float End (time)
   int<EGameCamOld>? GameCamOld
 
-0x001 (base: 0x000) [TMSX, TMNESWC]
+0x001 (base: 0x000) [TMSX, TMNESWC, VSK5]
   base
   int ClipEntId
 

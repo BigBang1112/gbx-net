@@ -79,7 +79,7 @@ CGameCtnChallenge 0x03043000 // A map.
   string AuthorZone
   string AuthorExtraInfo
 
-0x00D [TM10, TMPU, TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // vehicle
+0x00D [TM10, TMPU, TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // vehicle
   ident PlayerModel
 
 0x00F [TM10] // TM1.0 block data
@@ -89,7 +89,7 @@ CGameCtnChallenge 0x03043000 // A map.
   bool NeedUnlock
   ident Decoration
 
-0x011 [TM10, TMPU, TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // parameters
+0x011 [TM10, TMPU, TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // parameters
   CGameCtnCollectorList BlockStock
   CGameCtnChallengeParameters ChallengeParameters
   int<MapKind> Kind
@@ -105,21 +105,21 @@ CGameCtnChallenge 0x03043000 // A map.
   bool
   CGameCtnBlock[] Blocks (list)
 
-0x014 (skippable) [TMPU, TMS, TMO, TMSX, TMNESWC, TMU] // legacy password
+0x014 (skippable) [TMPU, TMS, TMO, TMSX, TMNESWC, TMU, VSK5] // legacy password
   int
   string Password
 
 0x016 (skippable) [TMS, TMO, TMSX, TMNESWC]
   int // code says DoBool, likely IsPlatform (Mode == 1), but maps yield something like 1698004
 
-0x017 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF] // checkpoints
+0x017 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // checkpoints
   int3[] Checkpoints (list)
 
-0x018 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // laps
+0x018 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // laps
   bool IsLapRace
   int NbLaps
 
-0x019 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // mod
+0x019 (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // mod
   packdesc ModPackDesc
 
 0x01A
@@ -130,7 +130,7 @@ CGameCtnChallenge 0x03043000 // A map.
   if U01 > 0
     throw (type: NotSupportedException, message: SOldIgs count > 0)
 
-0x01C (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, TMF] // play mode
+0x01C (skippable) [TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // play mode
   int<PlayMode> Mode
 
 0x01D
@@ -139,7 +139,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01E
   CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
-0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
+0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, VSK5, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
   ident MapInfo = empty
   string MapName (formatted)
   ident Decoration
@@ -155,26 +155,26 @@ CGameCtnChallenge 0x03043000 // A map.
   CGameCtnMediaClipGroup ClipGroupInGame
   CGameCtnMediaClipGroup ClipGroupEndRace
 
-0x021 [TMS, TMSX, TMNESWC, TMU, TMF] // legacy mediatracker
+0x021 [TMS, TMSX, TMNESWC, TMU, VSK5, TMF] // legacy mediatracker
   CGameCtnMediaClip ClipIntro
   CGameCtnMediaClipGroup ClipGroupInGame
   CGameCtnMediaClipGroup ClipGroupEndRace
 
-0x022 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
+0x022 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int = 1
 
 0x023 // map origin
   vec2 MapCoordOrigin
   MapCoordTarget = MapCoordOrigin
 
-0x024 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // music
+0x024 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // music
   packdesc CustomMusicPackDesc
 
-0x025 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // map origin and target
+0x025 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // map origin and target
   vec2 MapCoordOrigin
   vec2 MapCoordTarget
 
-0x026 [TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // clip global
+0x026 [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // clip global
   CGameCtnMediaClip ClipGlobal
 
 0x027 // old realtime thumbnail
@@ -188,7 +188,7 @@ CGameCtnChallenge 0x03043000 // A map.
   float ThumbnailNearClipPlane
   float ThumbnailFarClipPlane
 
-0x028 (base: 0x027) [TMU, TMF, MP3, TMT, MP4, TM2020] // old realtime thumbnail + comments
+0x028 (base: 0x027) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // old realtime thumbnail + comments
   base
   string Comments (formatted)
 

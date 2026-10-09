@@ -77,7 +77,7 @@ GxLightBall 0x04002000
       AttHTnLR = Radius * Attenuation1
       AttHTnLR2 = Attenuation2 * Radius * Radius
 
-0x006 [TMSX, TMNESWC, TMF]
+0x006 [TMSX, TMNESWC, VSK5, TMF]
   uint Flags
   float Radius
   float RadiusSpecular

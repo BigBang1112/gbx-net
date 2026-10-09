@@ -55,7 +55,7 @@ CSceneMobilLeaves 0x0A05E000
   vec3 Wind
   float RespawnPeriod
 
-0x003 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT]
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   CPlugShader LeafShader (external)
   float LeafRadiusBase
   float LeafRadiusRandom

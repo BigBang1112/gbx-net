@@ -121,11 +121,11 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     [Chunk(0x0900200E)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0900200E : Chunk09002007
     {
         public override uint Id => 0x0900200E;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
         public External<CMwNod>[]? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -186,11 +186,11 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     [Chunk(0x09002015)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk09002015 : Chunk<CPlugShader>
     {
         public override uint Id => 0x09002015;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
         public float U01;
         public CMwNod? U02;
 

@@ -72,11 +72,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8005)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E8005 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8005;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -90,11 +90,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8006)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8006 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8006;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -103,11 +103,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8009)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8009 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8009;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -116,11 +116,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E800A)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E800A : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800A;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -156,11 +156,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E800F)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E800F : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E800F;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -169,11 +169,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8010)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8010 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8010;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -182,11 +182,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8012)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8012 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8012;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -200,11 +200,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8013)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E8013 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8013;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
         public CFuncKeysReal? U01;
         public CFuncKeysReal? U02;
         public CFuncKeysReal? U03;
@@ -226,11 +226,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     [Chunk(0x090E8014)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8014 : Chunk<CPlugVehicleVisModelShared>
     {
         public override uint Id => 0x090E8014;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

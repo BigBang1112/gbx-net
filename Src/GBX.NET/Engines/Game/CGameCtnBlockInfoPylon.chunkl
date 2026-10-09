@@ -1,7 +1,7 @@
 CGameCtnBlockInfoPylon 0x03055000
 - inherits: CGameCtnBlockInfo
 
-0x000 [TMNESWC, TMF]
+0x000 [TMNESWC, VSK5, TMF]
   CMwNod
   CMwNod
   CMwNod

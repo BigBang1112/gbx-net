@@ -255,7 +255,7 @@ CPlugBitmap 0x09011000
   if PixelUpdate == 8
     uint ClearColor // BGRA clear color.
 
-0x019 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x019 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float BumpScaleMipLevel = 0.5f
 
 0x01A
@@ -266,7 +266,7 @@ CPlugBitmap 0x09011000
 0x01B [TMSX]
   uint Flags2
 
-0x01C [TMSX, TMNESWC, TMF]
+0x01C [TMSX, TMNESWC, VSK5, TMF]
   vec2 DefaultTexCoordScale = (1, 1)
   vec2 DefaultTexCoordTrans = (0, 0)
   float DefaultTexCoordRotate = 0
@@ -275,19 +275,19 @@ CPlugBitmap 0x09011000
   ushort AtlasCountU
   ushort AtlasCountV
 
-0x01E [TMNESWC, TMF]
+0x01E [TMNESWC, VSK5, TMF]
   AtlasCount[] AtlasCountUVs
 
 0x01F [TMNESWC]
   uint Flags2
 
-0x020 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x020 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float[] MipMapFadeAlphas = empty
 
-0x021
+0x021 [VSK5]
   uint Flags2
 
-0x022 (base: 0x018) [TMF, MP3]
+0x022 (base: 0x018) [VSK5, TMF, MP3]
 
 0x023 [TMF, MP3, TMT, MP4, TM2020]
   AdditionalParameters Additional

@@ -12,11 +12,11 @@ CGameCtnMediaClip 0x03079000
   string Name (formatted)
   bool
 
-0x003 [TMSX, TMNESWC, TMU] // tracks with sorting
+0x003 [TMSX, TMNESWC, TMU, VSK5] // tracks with sorting
   CGameCtnMediaTrack[] Tracks (deprec, list)
   string Name
 
-0x004 [TMU, TMF] // Scene
+0x004 [TMU, VSK5, TMF] // Scene
   CScene Scene
 
 0x005 (base: 0x003) [TMF, MP3] // tracks without sorting

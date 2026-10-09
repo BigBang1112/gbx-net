@@ -1,6 +1,6 @@
 GxFog 0x04004000
 
-0x000 [TMF, MP3, TMT, MP4, TM2020]
+0x000 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool Enabled = true
   int LegacyMode = 1
   float DepthMin

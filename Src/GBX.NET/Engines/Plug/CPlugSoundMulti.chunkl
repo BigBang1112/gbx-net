@@ -1,7 +1,7 @@
 CPlugSoundMulti 0x09064000
 - inherits: CPlugSound
 
-0x000 [TMSX, TMNESWC, TMF]
+0x000 [TMSX, TMNESWC, VSK5, TMF]
   CMwNod AdditionalSounds (external)
   int<ESoundInputMapping> InputMapping
 

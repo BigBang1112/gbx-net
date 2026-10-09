@@ -7,7 +7,7 @@ CGameItemModel 0x2E002000
 0x001 (header, struct: SHeaderFileVersion) // file version
   version
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   CSceneMobil Vehicle (external)
 
 0x001 [TM10, TMPU]
@@ -16,13 +16,13 @@ CGameItemModel 0x2E002000
 0x002 [TM10, TMPU, TMSX] // old race interface fid
   CScene2d RaceInterfaceFid
 
-0x003 [TM10, TMPU, TMSX, TMNESWC, TMF] // LowQualitySolid
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // LowQualitySolid
   CPlugSolid LowQualitySolid (external)
 
 0x004 [TMSX]
   CMwNod
 
-0x006 [TMSX, TMNESWC, TMF, MP3] // DefaultCamIndex
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3] // DefaultCamIndex
   int DefaultCamIndex
 
 0x007 [TMSX] // old materials
@@ -30,23 +30,23 @@ CGameItemModel 0x2E002000
   CPlugMaterial MaterialGlass (external)
   CPlugMaterial MaterialDetails (external)
 
-0x008 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
+0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
   CMwNod?[] NadeoSkinFids (external)
 
-0x009 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // Cameras
+0x009 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Cameras
   CMwNod[] Cameras (deprec, external)
 
-0x00A [TMNESWC, TMF, MP3] // DecoratorSolid
+0x00A [TMNESWC, VSK5, TMF, MP3] // DecoratorSolid
   CPlugDecoratorSolid DecoratorSolid (external)
 
-0x00B [TMNESWC, TMF] // stem materials
+0x00B [TMNESWC, VSK5, TMF] // stem materials
   CPlugMaterial StemMaterial (external)
   CPlugMaterial StemBumpMaterial (external)
 
-0x00C [TMNESWC, TMF, MP3, TMT, MP4, TM2020] // race interface fid
+0x00C [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // race interface fid
   CScene2d RaceInterfaceFid
 
-0x00D (ForcedSkinsFids) [TMNESWC, TMF]
+0x00D (ForcedSkinsFids) [TMNESWC, VSK5, TMF]
   CMwNod[] ForcedSkinsFids
 
 0x00E [TMNESWC] // StadiumCar materials
@@ -55,10 +55,10 @@ CGameItemModel 0x2E002000
   CPlugMaterial MaterialDetails (external)
   CPlugMaterial MaterialPilot (external)
 
-0x010 (BannerProfileFid) [TMF]
+0x010 (BannerProfileFid) [VSK5, TMF]
   CPlugBitmap BannerProfileFid (external)
 
-0x011 [TMF] // materials
+0x011 [VSK5, TMF] // materials
   CPlugMaterial MaterialSkin (external)
   CPlugMaterial MaterialGlass (external)
   CPlugMaterial MaterialDetails (external)
@@ -69,7 +69,7 @@ CGameItemModel 0x2E002000
   CPlugLight ProjShadow (external)
   CPlugLight ProjFront (external)
 
-0x012 [TMF, MP3, TMT, MP4, TM2020]
+0x012 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   vec3 GroundPoint
   float PainterGroundMargin
   float OrbitalCenterHeightFromGround

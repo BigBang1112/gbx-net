@@ -1,31 +1,31 @@
 CPlugVehicleVisModelShared 0x090E8000
 
-0x005 [TMNESWC, TMF]
+0x005 [TMNESWC, VSK5, TMF]
   SimulationWheel[] SimulationWheels
 
-0x006 [TMNESWC, TMF, MP3]
+0x006 [TMNESWC, VSK5, TMF, MP3]
 
-0x009 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x009 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
 
-0x00A [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x00A [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
 
 0x00C [TMNESWC]
 
 0x00D [TMNESWC]
 
-0x00F [TMNESWC, TMF]
+0x00F [TMNESWC, VSK5, TMF]
 
-0x010 [TMNESWC, TMF, MP3]
+0x010 [TMNESWC, VSK5, TMF, MP3]
 
-0x012 [TMF, MP3, TMT, MP4, TM2020]
+0x012 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugVehicleMaterialGroup[] VehicleMaterialGroups (deprec)
 
-0x013 [TMF]
+0x013 [VSK5, TMF]
   CFuncKeysReal
   CFuncKeysReal
   CFuncKeysReal
 
-0x014 [TMF, MP3]
+0x014 [VSK5, TMF, MP3]
   CPlugVehicleVisEmitterModel[] VehicleEmitters (deprec)
 
 0x015 [MP3, TMT, MP4, TM2020]

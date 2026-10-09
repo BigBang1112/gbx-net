@@ -11,7 +11,7 @@ CMotionCmdBase 0x08029000
   base
   bool IsAbsolutePhase = false
 
-0x002 (base: 0x001) [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4]
+0x002 (base: 0x001) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   base
   CMotionCmdBaseParams CmdBaseParams
 

@@ -6,7 +6,7 @@ CFuncPlug 0x0500B000
   float Phase
   bool AutoCreateMotion
 
-0x004 [TMPU, TMSX, TMNESWC]
+0x004 [TMPU, TMSX, TMNESWC, VSK5]
   float Period
   float Phase
   bool AutoCreateMotion

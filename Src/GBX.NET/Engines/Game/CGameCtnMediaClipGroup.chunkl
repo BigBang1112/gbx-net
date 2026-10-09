@@ -8,7 +8,7 @@ CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group. Clips and triggers
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 1)
 
-0x002 (demonstration: partial) [TMSX, TMNESWC]
+0x002 (demonstration: partial) [TMSX, TMNESWC, VSK5]
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 2)
 

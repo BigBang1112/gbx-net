@@ -1,7 +1,7 @@
 CGameCtnMediaBlockCameraPath 0x030A1000
 - inherits: CGameCtnMediaBlockCamera
 
-0x000 [TMSX, TMNESWC]
+0x000 [TMSX, TMNESWC, VSK5]
   Key[] Keys (version: 0, list)
 
 0x001

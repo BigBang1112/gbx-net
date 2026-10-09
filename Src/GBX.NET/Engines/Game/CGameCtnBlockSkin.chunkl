@@ -8,7 +8,7 @@ CGameCtnBlockSkin 0x03059000
   string Text
   packdesc PackDesc
 
-0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020] // skin + parent skin
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // skin + parent skin
   string Text
   packdesc PackDesc
   packdesc ParentPackDesc

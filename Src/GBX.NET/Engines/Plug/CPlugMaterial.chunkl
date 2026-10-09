@@ -1,7 +1,7 @@
 CPlugMaterial 0x09079000
 - inherits: CPlug
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwNod
 
 0x002 [TM10, TMPU]
@@ -10,15 +10,15 @@ CPlugMaterial 0x09079000
 0x004 [TM10, TMPU]
   DeviceMat[] DeviceMaterials (version: 0x004)
 
-0x007 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugMaterialCustom CustomMaterial
 
 0x009 [TMSX, TMNESWC]
 
-0x00A [TMSX, TMNESWC]
+0x00A [TMSX, TMNESWC, VSK5]
   int
 
-0x00D [TMF, MP3, TMT, MP4]
+0x00D [VSK5, TMF, MP3, TMT, MP4]
 
 0x00E [TMF, MP3, TMT, MP4]
   short<CPlugSurface.MaterialId> SurfaceId

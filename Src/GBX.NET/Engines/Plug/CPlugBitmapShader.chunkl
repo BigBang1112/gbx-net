@@ -9,6 +9,6 @@ CPlugBitmapShader 0x09080000
   base
   CPlugBitmap BitmapToSwap
 
-0x002 [TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x002 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugShader Shader (external)
   CPlugBitmap BitmapToSwap

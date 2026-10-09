@@ -7,11 +7,11 @@ CGameCtnMediaBlockSound 0x030A7000
   int U01
   Key[] Keys (version: 0, list)
 
-0x001 [TMSX, TMNESWC]
+0x001 [TMSX, TMNESWC, VSK5]
   packdesc Sound
   Key[] Keys (list)
 
-0x002 [TMSX, TMNESWC]
+0x002 [TMSX, TMNESWC, VSK5]
   int PlayCount
   bool IsLooping
 

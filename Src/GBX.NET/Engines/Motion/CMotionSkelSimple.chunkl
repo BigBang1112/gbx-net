@@ -1,5 +1,5 @@
 CMotionSkelSimple 0x08036000
 - inherits: CMotionTrack
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   CFuncSkelValues SkelValues

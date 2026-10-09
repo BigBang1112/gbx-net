@@ -9,7 +9,7 @@
   string NickName (formatted)
   id ProfileId
 
-0x001
+0x001 [VSK5]
   LegacyVehicleProfile[]
 
 0x002
@@ -29,7 +29,7 @@
   int
   int
 
-0x005 [TM10, TMPU]
+0x005 [TM10, TMPU, VSK5]
   LegacyVehicleSkin[]
 
 0x006 [TM10, TMPU, TMSX, TMNESWC]
@@ -351,7 +351,7 @@
   bool LoginValidated
   bool RememberOnlinePassword
 
-0x038 [TMF]
+0x038 [VSK5, TMF]
   string CurrentSoloPlaylistName
   string CurrentSoloPlaylistPath
   bool ShowEditorHelp = true
@@ -377,10 +377,10 @@
   vec3 TrailColor = (1, 0, 0)
   string
 
-0x03A
+0x03A [VSK5]
   int BindingsForCompatVersion = 7
 
-0x03B [TMF]
+0x03B [VSK5, TMF]
   byte MaxPlayerCount = 6
   byte MaxSpectatorCount = 6
   int = 1
@@ -414,14 +414,14 @@
   bool LoginValidated
   bool RememberOnlinePassword
 
-0x03D
+0x03D [VSK5]
   string ProfileName
   string NickName (formatted)
   id ProfileId
   int
   int
 
-0x03E
+0x03E [VSK5]
   CInputBindingsConfig BindingsForCompatConfig
   id
   bool EnableAvatars
@@ -436,20 +436,20 @@
 0x03F
   OldVehicleProfile[] (version: 1)
 
-0x040 [TMF]
+0x040 [VSK5, TMF]
   systemtime UpdatedAt
 
-0x041 [TMF]
+0x041 [VSK5, TMF]
   bool AutoConnect = true
 
-0x042 (skippable)
+0x042 (skippable) [VSK5]
   float
   float
 
-0x043 [TMF]
+0x043 [VSK5, TMF]
   VehicleProfile[] VehicleProfiles
 
-0x044 [TMF]
+0x044 [VSK5, TMF]
   bool IsShowPlayerGhost = true
 
 0x045
@@ -468,15 +468,15 @@
 0x046
   CGameNetOnlineMessage[] (deprec)
 
-0x047 [TMF]
+0x047 [VSK5, TMF]
   CGameNetOnlineMessage[] InboxMessages (deprec)
   CGameNetOnlineMessage[] ReadMessages (deprec)
   CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x048 (skippable)
+0x048 (skippable) [VSK5]
   bool EnableChat
 
-0x049
+0x049 [VSK5]
   string ServerComment
   string Description (formatted)
   CGameBuddy[] Buddies
@@ -489,11 +489,11 @@
   bool LoginValidated
   bool RememberOnlinePassword
 
-0x04A [TMF]
+0x04A [VSK5, TMF]
   MultiLocalProfileHeader[] MultiLocalProfileHeaders
   int U02 = 2
 
-0x04B [TMF]
+0x04B [VSK5, TMF]
   CInputBindingsConfig BindingsConfig
 
 0x04C [TMF] // LeagueManager
@@ -779,7 +779,7 @@
   id ProfileId
   string ProfileName
 
-0x240B5003 (not-remapped) [TMF]
+0x240B5003 (not-remapped) [VSK5, TMF]
   string
   string
   string
@@ -797,13 +797,13 @@
   id
   id
 
-0x240B5004 (not-remapped) [TMF]
+0x240B5004 (not-remapped) [VSK5, TMF]
   CGameCtnChallenge[]
 
-0x240B5006 (not-remapped) [TMF]
+0x240B5006 (not-remapped) [VSK5, TMF]
   ChallengeOpponent[] ChallengeOpponents
 
-0x240B5007 (not-remapped) [TMF]
+0x240B5007 (not-remapped) [VSK5, TMF]
   CampaignUnlock[] CampaignUnlocks
 
 0x240B5009 (not-remapped) [TMF]

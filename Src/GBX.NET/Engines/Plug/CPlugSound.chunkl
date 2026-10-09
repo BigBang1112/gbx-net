@@ -1,27 +1,27 @@
 CPlugSound 0x0901A000
 - inherits: CPlugAudio
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwNod PlugFile (external) // CPlugFileSnd
 
-0x002 [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   id
 
-0x009 [TM10, TMPU, TMSX, TMNESWC]
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5]
   int<EMode> Mode
   float Volume
   bool IsLooping
   bool IsContinuous
   float Priority
 
-0x00B [TM10, TMPU, TMSX, TMNESWC, TMF]
+0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int<ESoundKind> SoundKind
   int InsideConeAngle
   int OutsideConeAngle
   float ConeOutsideAttenuation
   float ConeOutsideAttenuationHF
 
-0x00C [TMSX, TMNESWC, TMF]
+0x00C [TMSX, TMNESWC, VSK5, TMF]
   float RefDistance
   float MaxDistanceOmni
   bool EnableDoppler

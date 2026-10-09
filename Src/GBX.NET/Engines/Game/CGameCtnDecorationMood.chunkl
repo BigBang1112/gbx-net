@@ -1,18 +1,18 @@
 CGameCtnDecorationMood 0x0303A000
 
-0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float Latitude
   float Longitude
   float DeltaGMT
   int TimeSunRise (time)
   int TimeSunFall (time)
 
-0x001 [TMSX, TMNESWC, TMF]
+0x001 [TMSX, TMNESWC, VSK5, TMF]
   float RemappedStartDayTime
   CPlugGameSkin? Remapping (external)
   string? RemapFolder
 
-0x002 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int ShadowCountCarHuman
   int ShadowCountCarOpponent
   float ShadowCarIntensity
@@ -22,7 +22,7 @@ CGameCtnDecorationMood 0x0303A000
 0x003 [TMSX, TMNESWC]
   bool SolidLightAreSkinned
 
-0x004 [TMF, MP3, TMT, MP4, TM2020]
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   CHmsLightMap HmsLightMap (external)
 
 0x005 [TMF, MP3, TMT, MP4, TM2020]

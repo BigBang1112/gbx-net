@@ -1,6 +1,6 @@
 CPlugParticleEmitterModel 0x090B3000
 
-0x000 [TMSX, TMNESWC, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugParticleEmitterSubModel[] ParticleEmitterSubModels (deprec, external)
 
 0x001 [MP3, TMT, MP4, TM2020]

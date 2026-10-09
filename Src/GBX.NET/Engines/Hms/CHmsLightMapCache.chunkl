@@ -35,7 +35,7 @@ CHmsLightMapCache 0x06022000
   base
   int<EAllocMode> AllocMode
 
-0x005
+0x005 [VSK5]
   id ChallengeIdLegacy
   id Decoration
   SMapOld1[] MapsLegacy

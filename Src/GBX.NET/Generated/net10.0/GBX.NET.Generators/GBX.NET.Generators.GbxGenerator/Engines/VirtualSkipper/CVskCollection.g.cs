@@ -44,9 +44,11 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     }
 
     [Chunk(0x21085000)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk21085000 : Chunk<CVskCollection>
     {
         public override uint Id => 0x21085000;
+        public override GameVersion GameVersion => GameVersion.VSK5;
         public CMwNod? U01;
         public CMwNod? U02;
 
@@ -65,9 +67,11 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     }
 
     [Chunk(0x21085001)]
+    [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk21085001 : Chunk<CVskCollection>
     {
         public override uint Id => 0x21085001;
+        public override GameVersion GameVersion => GameVersion.VSK5;
         public float U01;
         public float U02;
         public float U03;
