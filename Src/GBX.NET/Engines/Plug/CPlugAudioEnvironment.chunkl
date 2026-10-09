@@ -1,7 +1,7 @@
 CPlugAudioEnvironment 0x09039000
 - inherits: CPlugAudio
 
-0x000 [TMPU, TMSX, TMNESWC, VSK5]
+0x000 [TMPU, TMSX, TMNESWC, VSK5] // Legacy EAX parameters
   int<EEAXPreset> EAXPreset
   float SizeFactor
   float Diffusion
@@ -32,51 +32,51 @@ CPlugAudioEnvironment 0x09039000
   bool ModulationTimeScale
   bool DecayHFLimitScale
 
-0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  float DopplerFactor
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // DopplerFactor
+  float DopplerFactor = 1
 
-0x002 [TMF, MP3, TMT, MP4, TM2020]
-  float SizeFactor
-  float Diffusion
-  float Gain
-  float RoomHFRatio
-  float RoomLFRatio
-  float DecayTime
-  float DecayHFRatio
-  float DecayLFRatio
-  float ReflectionsGain
-  float ReflectionsDelay
-  float LateReverbGain
-  float ReverbDelay
-  float EchoTime
+0x002 [TMF, MP3, TMT, MP4, TM2020] // Reverb parameters
+  float Density = 1
+  float Diffusion = 1
+  float Gain = 0.3f [TMF = 0.32f]
+  float GainHF = 0.75f [TMF = 0.89f]
+  float GainLF = 1
+  float DecayTime = 1.49f
+  float DecayHFRatio = 0.83f
+  float DecayLFRatio = 1
+  float ReflectionsGain = 0.05f
+  float ReflectionsDelay = 0.007f
+  float LateReverbGain = 1.26f
+  float LateReverbDelay = 0.011f
+  float EchoTime = 0.25f
   float EchoDepth
-  float ModulationTime
+  float ModulationTime = 0.25f
   float ModulationDepth
-  float RolloffFactor
-  float HFReference
-  float LFReference
-  float AirAbsorbtionHF //NOT REALLY SURE
-  bool DecayHFLimitScale
+  float AirAbsorptionGainHF = 0.994f
+  float HFReference = 5000
+  float LFReference = 250
+  float RoomRolloffFactor
+  bool DecayHFLimit = true
 
-0x004 [MP3, TMT, MP4, TM2020]
+0x004 [MP3, TMT.v3, MP4.v3, TM2020.v3] // Room effect and low-pass gains
   version
-  float
+  float = 1
   v1+
     float
-    v2+
-      float
-      float
-      float
-      float
-      float
-      float
-      float
-      float
-      v3+
-        float
-        float
-        float
-        float
+  v2+
+    float RoomFxLowGain = 0.1f
+    float RoomFxLowGainHF = 1
+    float RoomFxMidGain = 0.25f
+    float RoomFxMidGainHF = 1
+    float RoomFxHighGain = 0.5f
+    float RoomFxHighGainHF = 1
+    float LowPassGain = 1
+    float LowPassGainHF = 0.7f
+  v3+
+    float RoomFxUIGain = 0.1f
+    float RoomFxUIGainHF = 1
+    float RoomFxMusicGain = 0.1f
+    float RoomFxMusicGainHF = 1
 
 enum EEAXPreset
   Generic

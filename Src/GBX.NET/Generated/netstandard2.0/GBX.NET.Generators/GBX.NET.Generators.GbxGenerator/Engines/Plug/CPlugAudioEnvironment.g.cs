@@ -44,7 +44,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float sizeFactor;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float SizeFactor
     {
         get => this.sizeFactor;
@@ -70,7 +69,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float roomHFRatio;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float RoomHFRatio
     {
         get => this.roomHFRatio;
@@ -79,7 +77,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float roomLFRatio;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float RoomLFRatio
     {
         get => this.roomLFRatio;
@@ -140,7 +137,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float reverbDelay;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float ReverbDelay
     {
         get => this.reverbDelay;
@@ -185,7 +181,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float rolloffFactor;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float RolloffFactor
     {
         get => this.rolloffFactor;
@@ -194,7 +189,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private float airAbsorbtionHF;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public float AirAbsorbtionHF
     {
         get => this.airAbsorbtionHF;
@@ -277,7 +271,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
     private bool decayHFLimitScale;
     [AppliedWithChunk<Chunk09039000>]
-    [AppliedWithChunk<Chunk09039002>]
     public bool DecayHFLimitScale
     {
         get => this.decayHFLimitScale;
@@ -292,12 +285,38 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         set => this.dopplerFactor = value;
     }
 
+    private float density;
+    [AppliedWithChunk<Chunk09039002>]
+    public float Density
+    {
+        get => this.density;
+        set => this.density = value;
+    }
+
     private float gain;
+    [GameVersionDefault(GameVersion.TMF, 0.32f)]
     [AppliedWithChunk<Chunk09039002>]
     public float Gain
     {
         get => this.gain;
         set => this.gain = value;
+    }
+
+    private float gainHF;
+    [GameVersionDefault(GameVersion.TMF, 0.89f)]
+    [AppliedWithChunk<Chunk09039002>]
+    public float GainHF
+    {
+        get => this.gainHF;
+        set => this.gainHF = value;
+    }
+
+    private float gainLF;
+    [AppliedWithChunk<Chunk09039002>]
+    public float GainLF
+    {
+        get => this.gainLF;
+        set => this.gainLF = value;
     }
 
     private float reflectionsGain;
@@ -314,6 +333,134 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     {
         get => this.lateReverbGain;
         set => this.lateReverbGain = value;
+    }
+
+    private float lateReverbDelay;
+    [AppliedWithChunk<Chunk09039002>]
+    public float LateReverbDelay
+    {
+        get => this.lateReverbDelay;
+        set => this.lateReverbDelay = value;
+    }
+
+    private float airAbsorptionGainHF;
+    [AppliedWithChunk<Chunk09039002>]
+    public float AirAbsorptionGainHF
+    {
+        get => this.airAbsorptionGainHF;
+        set => this.airAbsorptionGainHF = value;
+    }
+
+    private float roomRolloffFactor;
+    [AppliedWithChunk<Chunk09039002>]
+    public float RoomRolloffFactor
+    {
+        get => this.roomRolloffFactor;
+        set => this.roomRolloffFactor = value;
+    }
+
+    private bool decayHFLimit;
+    [AppliedWithChunk<Chunk09039002>]
+    public bool DecayHFLimit
+    {
+        get => this.decayHFLimit;
+        set => this.decayHFLimit = value;
+    }
+
+    private float roomFxLowGain;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxLowGain
+    {
+        get => this.roomFxLowGain;
+        set => this.roomFxLowGain = value;
+    }
+
+    private float roomFxLowGainHF;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxLowGainHF
+    {
+        get => this.roomFxLowGainHF;
+        set => this.roomFxLowGainHF = value;
+    }
+
+    private float roomFxMidGain;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxMidGain
+    {
+        get => this.roomFxMidGain;
+        set => this.roomFxMidGain = value;
+    }
+
+    private float roomFxMidGainHF;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxMidGainHF
+    {
+        get => this.roomFxMidGainHF;
+        set => this.roomFxMidGainHF = value;
+    }
+
+    private float roomFxHighGain;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxHighGain
+    {
+        get => this.roomFxHighGain;
+        set => this.roomFxHighGain = value;
+    }
+
+    private float roomFxHighGainHF;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float RoomFxHighGainHF
+    {
+        get => this.roomFxHighGainHF;
+        set => this.roomFxHighGainHF = value;
+    }
+
+    private float lowPassGain;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float LowPassGain
+    {
+        get => this.lowPassGain;
+        set => this.lowPassGain = value;
+    }
+
+    private float lowPassGainHF;
+    [AppliedWithChunk<Chunk09039004>(2)]
+    public float LowPassGainHF
+    {
+        get => this.lowPassGainHF;
+        set => this.lowPassGainHF = value;
+    }
+
+    private float roomFxUIGain;
+    [AppliedWithChunk<Chunk09039004>(3)]
+    public float RoomFxUIGain
+    {
+        get => this.roomFxUIGain;
+        set => this.roomFxUIGain = value;
+    }
+
+    private float roomFxUIGainHF;
+    [AppliedWithChunk<Chunk09039004>(3)]
+    public float RoomFxUIGainHF
+    {
+        get => this.roomFxUIGainHF;
+        set => this.roomFxUIGainHF = value;
+    }
+
+    private float roomFxMusicGain;
+    [AppliedWithChunk<Chunk09039004>(3)]
+    public float RoomFxMusicGain
+    {
+        get => this.roomFxMusicGain;
+        set => this.roomFxMusicGain = value;
+    }
+
+    private float roomFxMusicGainHF;
+    [AppliedWithChunk<Chunk09039004>(3)]
+    public float RoomFxMusicGainHF
+    {
+        get => this.roomFxMusicGainHF;
+        set => this.roomFxMusicGainHF = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -349,16 +496,83 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         ((CPlugAudioEnvironment)clone).modulationTimeScale = context.Clone(this.modulationTimeScale)!;
         ((CPlugAudioEnvironment)clone).decayHFLimitScale = context.Clone(this.decayHFLimitScale)!;
         ((CPlugAudioEnvironment)clone).dopplerFactor = context.Clone(this.dopplerFactor)!;
+        ((CPlugAudioEnvironment)clone).density = context.Clone(this.density)!;
         ((CPlugAudioEnvironment)clone).gain = context.Clone(this.gain)!;
+        ((CPlugAudioEnvironment)clone).gainHF = context.Clone(this.gainHF)!;
+        ((CPlugAudioEnvironment)clone).gainLF = context.Clone(this.gainLF)!;
         ((CPlugAudioEnvironment)clone).reflectionsGain = context.Clone(this.reflectionsGain)!;
         ((CPlugAudioEnvironment)clone).lateReverbGain = context.Clone(this.lateReverbGain)!;
+        ((CPlugAudioEnvironment)clone).lateReverbDelay = context.Clone(this.lateReverbDelay)!;
+        ((CPlugAudioEnvironment)clone).airAbsorptionGainHF = context.Clone(this.airAbsorptionGainHF)!;
+        ((CPlugAudioEnvironment)clone).roomRolloffFactor = context.Clone(this.roomRolloffFactor)!;
+        ((CPlugAudioEnvironment)clone).decayHFLimit = context.Clone(this.decayHFLimit)!;
+        ((CPlugAudioEnvironment)clone).roomFxLowGain = context.Clone(this.roomFxLowGain)!;
+        ((CPlugAudioEnvironment)clone).roomFxLowGainHF = context.Clone(this.roomFxLowGainHF)!;
+        ((CPlugAudioEnvironment)clone).roomFxMidGain = context.Clone(this.roomFxMidGain)!;
+        ((CPlugAudioEnvironment)clone).roomFxMidGainHF = context.Clone(this.roomFxMidGainHF)!;
+        ((CPlugAudioEnvironment)clone).roomFxHighGain = context.Clone(this.roomFxHighGain)!;
+        ((CPlugAudioEnvironment)clone).roomFxHighGainHF = context.Clone(this.roomFxHighGainHF)!;
+        ((CPlugAudioEnvironment)clone).lowPassGain = context.Clone(this.lowPassGain)!;
+        ((CPlugAudioEnvironment)clone).lowPassGainHF = context.Clone(this.lowPassGainHF)!;
+        ((CPlugAudioEnvironment)clone).roomFxUIGain = context.Clone(this.roomFxUIGain)!;
+        ((CPlugAudioEnvironment)clone).roomFxUIGainHF = context.Clone(this.roomFxUIGainHF)!;
+        ((CPlugAudioEnvironment)clone).roomFxMusicGain = context.Clone(this.roomFxMusicGain)!;
+        ((CPlugAudioEnvironment)clone).roomFxMusicGainHF = context.Clone(this.roomFxMusicGainHF)!;
     }
 
-    public CPlugAudioEnvironment()
+    public CPlugAudioEnvironment() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x09039000)]
+    public CPlugAudioEnvironment(GameVersion gameVersion)
+    {
+        dopplerFactor = 1;
+        density = 1;
+        diffusion = 1;
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            gain = 0.32f;
+            gainHF = 0.89f;
+        }
+        else
+        {
+            gain = 0.3f;
+            gainHF = 0.75f;
+        }
+
+        gainLF = 1;
+        decayTime = 1.49f;
+        decayHFRatio = 0.83f;
+        decayLFRatio = 1;
+        reflectionsGain = 0.05f;
+        reflectionsDelay = 0.007f;
+        lateReverbGain = 1.26f;
+        lateReverbDelay = 0.011f;
+        echoTime = 0.25f;
+        modulationTime = 0.25f;
+        airAbsorptionGainHF = 0.994f;
+        hFReference = 5000;
+        lFReference = 250;
+        decayHFLimit = true;
+        roomFxLowGain = 0.1f;
+        roomFxLowGainHF = 1;
+        roomFxMidGain = 0.25f;
+        roomFxMidGainHF = 1;
+        roomFxHighGain = 0.5f;
+        roomFxHighGainHF = 1;
+        lowPassGain = 1;
+        lowPassGainHF = 0.7f;
+        roomFxUIGain = 0.1f;
+        roomFxUIGainHF = 1;
+        roomFxMusicGain = 0.1f;
+        roomFxMusicGainHF = 1;
+    }
+
+    /// <summary>
+    /// Legacy EAX parameters
+    /// </summary>
+    [Chunk(0x09039000, "Legacy EAX parameters")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk09039000 : Chunk<CPlugAudioEnvironment>
     {
@@ -404,7 +618,10 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         }
     }
 
-    [Chunk(0x09039001)]
+    /// <summary>
+    /// DopplerFactor
+    /// </summary>
+    [Chunk(0x09039001, "DopplerFactor")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09039001 : Chunk<CPlugAudioEnvironment>
     {
@@ -422,7 +639,10 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         }
     }
 
-    [Chunk(0x09039002)]
+    /// <summary>
+    /// Reverb parameters
+    /// </summary>
+    [Chunk(0x09039002, "Reverb parameters")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09039002 : Chunk<CPlugAudioEnvironment>
     {
@@ -436,32 +656,35 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {
-            rw.Single(ref n.sizeFactor);
+            rw.Single(ref n.density);
             rw.Single(ref n.diffusion);
             rw.Single(ref n.gain);
-            rw.Single(ref n.roomHFRatio);
-            rw.Single(ref n.roomLFRatio);
+            rw.Single(ref n.gainHF);
+            rw.Single(ref n.gainLF);
             rw.Single(ref n.decayTime);
             rw.Single(ref n.decayHFRatio);
             rw.Single(ref n.decayLFRatio);
             rw.Single(ref n.reflectionsGain);
             rw.Single(ref n.reflectionsDelay);
             rw.Single(ref n.lateReverbGain);
-            rw.Single(ref n.reverbDelay);
+            rw.Single(ref n.lateReverbDelay);
             rw.Single(ref n.echoTime);
             rw.Single(ref n.echoDepth);
             rw.Single(ref n.modulationTime);
             rw.Single(ref n.modulationDepth);
-            rw.Single(ref n.rolloffFactor);
+            rw.Single(ref n.airAbsorptionGainHF);
             rw.Single(ref n.hFReference);
             rw.Single(ref n.lFReference);
-            rw.Single(ref n.airAbsorbtionHF);
-            rw.Boolean(ref n.decayHFLimitScale);
+            rw.Single(ref n.roomRolloffFactor);
+            rw.Boolean(ref n.decayHFLimit);
         }
     }
 
-    [Chunk(0x09039004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// Room effect and low-pass gains
+    /// </summary>
+    [Chunk(0x09039004, "Room effect and low-pass gains")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 3, 3, 3)]
     public partial class Chunk09039004 : Chunk<CPlugAudioEnvironment>, IVersionable
     {
         public override uint Id => 0x09039004;
@@ -469,18 +692,20 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         public int Version { get; set; }
         public float U01;
         public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
+
+        public Chunk09039004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09039004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+
+            U01 = 1;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -488,18 +713,6 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
             ((Chunk09039004)clone).Version = context.Clone(this.Version)!;
             ((Chunk09039004)clone).U01 = context.Clone(this.U01)!;
             ((Chunk09039004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09039004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09039004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09039004)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09039004)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09039004)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09039004)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09039004)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09039004)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk09039004)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk09039004)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk09039004)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk09039004)clone).U14 = context.Clone(this.U14)!;
         }
 
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
@@ -510,26 +723,26 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
             if (Version >= 1)
             {
                 rw.Single(ref U02);
+            }
 
-                if (Version >= 2)
-                {
-                    rw.Single(ref U03);
-                    rw.Single(ref U04);
-                    rw.Single(ref U05);
-                    rw.Single(ref U06);
-                    rw.Single(ref U07);
-                    rw.Single(ref U08);
-                    rw.Single(ref U09);
-                    rw.Single(ref U10);
+            if (Version >= 2)
+            {
+                rw.Single(ref n.roomFxLowGain);
+                rw.Single(ref n.roomFxLowGainHF);
+                rw.Single(ref n.roomFxMidGain);
+                rw.Single(ref n.roomFxMidGainHF);
+                rw.Single(ref n.roomFxHighGain);
+                rw.Single(ref n.roomFxHighGainHF);
+                rw.Single(ref n.lowPassGain);
+                rw.Single(ref n.lowPassGainHF);
+            }
 
-                    if (Version >= 3)
-                    {
-                        rw.Single(ref U11);
-                        rw.Single(ref U12);
-                        rw.Single(ref U13);
-                        rw.Single(ref U14);
-                    }
-                }
+            if (Version >= 3)
+            {
+                rw.Single(ref n.roomFxUIGain);
+                rw.Single(ref n.roomFxUIGainHF);
+                rw.Single(ref n.roomFxMusicGain);
+                rw.Single(ref n.roomFxMusicGainHF);
             }
         }
     }
