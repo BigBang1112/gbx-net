@@ -49,6 +49,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         ((CPlugSkel)clone).u06 = context.Clone(this.u06)!;
         ((CPlugSkel)clone).u07 = context.CloneArray(this.u07)!;
         ((CPlugSkel)clone).u08 = context.CloneArray(this.u08)!;
+        ((CPlugSkel)clone).setup = context.Clone(this.setup)!;
+        ((CPlugSkel)clone).extraJoints = context.Clone(this.extraJoints)!;
     }
 
     public CPlugSkel()
@@ -239,6 +241,394 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Setup : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private IK2[]? inverseKinematics;
+        public IK2[]? InverseKinematics
+        {
+            get => this.inverseKinematics;
+            set => this.inverseKinematics = value;
+        }
+
+        private JointInfo[]? jointInfos;
+        public JointInfo[]? JointInfos
+        {
+            get => this.jointInfos;
+            set => this.jointInfos = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int[]? globalTargets;
+        public int[]? GlobalTargets
+        {
+            get => this.globalTargets;
+            set => this.globalTargets = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private ushort u03;
+        public ushort U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private ushort u06;
+        public ushort U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Setup)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Setup)clone).inverseKinematics = context.CloneArray(this.inverseKinematics)!;
+            ((Setup)clone).jointInfos = context.CloneArray(this.jointInfos)!;
+            ((Setup)clone).u01 = context.Clone(this.u01)!;
+            ((Setup)clone).globalTargets = context.CloneArray(this.globalTargets)!;
+            ((Setup)clone).u02 = context.Clone(this.u02)!;
+            ((Setup)clone).u03 = context.Clone(this.u03)!;
+            ((Setup)clone).u04 = context.Clone(this.u04)!;
+            ((Setup)clone).u05 = context.Clone(this.u05)!;
+            ((Setup)clone).u06 = context.Clone(this.u06)!;
+            ((Setup)clone).u07 = context.Clone(this.u07)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayReadableWritable<IK2>(ref this.inverseKinematics!, version: v);
+            rw.ArrayReadableWritable<JointInfo>(ref this.jointInfos!, version: v);
+
+            if (v <= 10)
+            {
+                rw.Int32(ref this.u01);
+            }
+
+            if (v >= 3)
+            {
+                rw.Array<int>(ref this.globalTargets!);
+            }
+
+            if (v >= 5)
+            {
+                if (v <= 11)
+                {
+                    rw.Int32(ref this.u02);
+                }
+
+                if (v >= 12)
+                {
+                    rw.UInt16(ref this.u03);
+                }
+            }
+
+            if (v >= 7)
+            {
+                if (v <= 10)
+                {
+                    rw.Int32(ref this.u04);
+                }
+            }
+
+            if (v >= 8)
+            {
+                if (v <= 11)
+                {
+                    rw.Int32(ref this.u05);
+                }
+
+                if (v >= 12)
+                {
+                    rw.UInt16(ref this.u06);
+                }
+
+                if (v <= 10)
+                {
+                    rw.Int32(ref this.u07);
+                }
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class IK2 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private ushort u04;
+        public ushort U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private ushort u05;
+        public ushort U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private ushort u06;
+        public ushort U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (IK2)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((IK2)clone).u01 = context.Clone(this.u01)!;
+            ((IK2)clone).u02 = context.Clone(this.u02)!;
+            ((IK2)clone).u03 = context.Clone(this.u03)!;
+            ((IK2)clone).u04 = context.Clone(this.u04)!;
+            ((IK2)clone).u05 = context.Clone(this.u05)!;
+            ((IK2)clone).u06 = context.Clone(this.u06)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v <= 11)
+            {
+                rw.Int32(ref this.u01);
+                rw.Int32(ref this.u02);
+                rw.Int32(ref this.u03);
+            }
+
+            if (v >= 12)
+            {
+                rw.UInt16(ref this.u04);
+                rw.UInt16(ref this.u05);
+                rw.UInt16(ref this.u06);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class JointInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte[]? u04;
+        public byte[]? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (JointInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((JointInfo)clone).u01 = context.Clone(this.u01)!;
+            ((JointInfo)clone).u02 = context.Clone(this.u02)!;
+            ((JointInfo)clone).u03 = context.Clone(this.u03)!;
+            ((JointInfo)clone).u04 = context.CloneArray(this.u04)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Data(ref this.u04!, 4);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class ExtraJoints : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string[]? names;
+        public string[]? Names
+        {
+            get => this.names;
+            set => this.names = value;
+        }
+
+        private int[]? u01;
+        public int[]? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int[]? u02;
+        public int[]? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private Quat[]? u03;
+        public Quat[]? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ExtraJoints)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ExtraJoints)clone).names = context.CloneArray(this.names)!;
+            ((ExtraJoints)clone).u01 = context.CloneArray(this.u01)!;
+            ((ExtraJoints)clone).u02 = context.CloneArray(this.u02)!;
+            ((ExtraJoints)clone).u03 = context.CloneArray(this.u03)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayId(ref this.names!);
+            rw.Array<int>(ref this.u01!);
+            rw.Array<int>(ref this.u02!);
+            rw.Array<Quat>(ref this.u03!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -6,4 +6,4 @@ constructor
   CatalogPosition = -1
 
 0x000 [MP3, TMT, MP4, TM2020] // frontier flag
-  bool = true
+  bool (write: true)

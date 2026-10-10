@@ -26,51 +26,71 @@ using global::System.Collections.Generic;
 using global::System.IO;
 using global::TmEssentials;
 
-namespace GBX.NET.Engines.Game;
+namespace GBX.NET.Engines.Plug;
 
-[Class(0x03050000)]
-public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
+[Class(0x09157000)]
+public partial class CPlugAdnRandomGenList : CMwNod, IClass
 {
     [Hexadecimal]
-    public static new uint Id => 0x03050000;
+    public static new uint Id => 0x09157000;
+
+    private CPlugAdnRandomGen[]? datas;
+    [AppliedWithChunk<Chunk09157000>]
+    public CPlugAdnRandomGen[]? Datas
+    {
+        get => this.datas;
+        set => this.datas = value;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAdnRandomGenList)clone).datas = context.CloneArray(this.datas)!;
     }
 
-    public CGameCtnBlockInfoFrontier()
+    public CPlugAdnRandomGenList()
     {
-        IsInternal = true;
-        CatalogPosition = -1;
     }
 
     /// <summary>
-    /// frontier flag
+    /// random generators
     /// </summary>
-    [Chunk(0x03050000, "frontier flag")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk03050000 : Chunk<CGameCtnBlockInfoFrontier>
+    [Chunk(0x09157000, "random generators")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk09157000 : Chunk<CPlugAdnRandomGenList>, IVersionable
     {
-        public override uint Id => 0x03050000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
+        public override uint Id => 0x09157000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09157000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09157000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03050000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09157000)clone).Version = context.Clone(this.Version)!;
         }
 
-        public override void ReadWrite(CGameCtnBlockInfoFrontier n, GbxReaderWriter rw)
+        public override void ReadWrite(CPlugAdnRandomGenList n, GbxReaderWriter rw)
         {
-            U01 = rw.Boolean((rw.Writer is null ? default : (true)));
+            rw.VersionInt32(this);
+            rw.ArrayNodeRef<CPlugAdnRandomGen>(ref n.datas!);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
-        0x03050000 => new Chunk03050000(),
+        0x09157000 => new Chunk09157000(),
         _ => base.NewChunk(chunkId),
     };
 }

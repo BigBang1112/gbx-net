@@ -54,7 +54,7 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
     {
         public override uint Id => 0x03050000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01 = true;
+        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -64,7 +64,7 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoFrontier n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            U01 = rw.Boolean((rw.Writer is null ? default : (true)));
         }
     }
 

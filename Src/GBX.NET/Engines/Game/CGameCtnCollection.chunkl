@@ -1,7 +1,7 @@
 CGameCtnCollection 0x03033000
 
 0x000 (header, struct: SOldHeaderDesc) // old header
-  id
+  id Collection
 
 0x001 (header, struct: SHeaderDesc) // desc
   versionb
@@ -35,14 +35,14 @@ CGameCtnCollection 0x03033000
                   v10+
                     bool IsEditable
 
-0x002 (header, struct: SHeaderCollectorFolders)
+0x002 (header, struct: SHeaderCollectorFolders) // collector folders
   versionb
   string FolderBlockInfo
   string FolderItem
   string FolderDecoration
   v1+
     v2-
-      string
+      string LegacyFolderItem
     v2+
       string FolderCardEventInfo
       v3+
@@ -50,34 +50,52 @@ CGameCtnCollection 0x03033000
         v4+
           string FolderMacroDecals
           v5+
-            string
+            string FolderMacroblock
             v6+
-              string
+              string FolderMaterialModifiers
 
-0x003 (header, struct: SHeaderMenuIconsFolders)
+0x003 (header, struct: SHeaderMenuIconsFolders) // FolderMenusIcons
   versionb
   string FolderMenusIcons
 
+0x004 // legacy zones and collection
+  id Collection
+  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone DefaultZone
+
+0x006 // legacy zones and unlock
+  id Collection
+  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone DefaultZone
+  bool NeedUnlock
+
+0x007 // legacy zones and vehicle
+  id Collection
+  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone DefaultZone
+  bool NeedUnlock
+  ident Vehicle
+
 0x008 [TM10, TMPU] // DefaultDecoration
-  CGameCtnDecoration DefaultDecoration (external)
+  CGameCtnDecoration DefaultDecoration
 
 0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Collection
-  CGameCtnZone[] CompleteListZoneList (deprec, external)
-  CGameCtnZone DefaultZone (external)
+  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone DefaultZone
   bool NeedUnlock
-  float SquareSize
-  float SquareHeight
+  float SquareSize [TM2020 = 32f]
+  float SquareHeight [TM2020 = 8f]
   ident Vehicle
 
 0x00B [TM10, TMPU]
   int BlocksShadow
 
 0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  bool IsEditable
+  bool IsEditable = true
   int<ECollectionType> CollectionType
 
-0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] //IconFid, IconSmallFid
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // menu icons
   bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
   if HasIconFid
     CPlugBitmap IconFid (external)
@@ -92,22 +110,27 @@ CGameCtnCollection 0x03033000
   CGameCtnDecoration DefaultDecoration (external)
 
 0x013 [TMSX, TMNESWC]
-  float WaterTop
-  float WaterBottom
-  float CameraMinHeight
+  float WaterTop = -1000f
+  float WaterBottom = -1000f
+  float CameraMinHeight = -1000f
 
 0x016 [TMSX]
   int BlocksShadow
   bool ShadowCastBack
-  int<EBackgroundShadow> BackgroundShadow
-  float ShadowSoftSizeInWorld
-  int<EVertexLighting> VertexLighting
+  bool HasBackgroundShadow
+  float ShadowSoftSizeInWorld = 1f
+  bool HasVertexLighting
   float ColorVertexMin
-  float ColorVertexMax
+  float ColorVertexMax = 1f
+
+0x017 // legacy map coordinates
+  CPlugBitmap MapFid (external)
+  rect MapRect = (-1, -1, 1, 1)
+  vec2 MapCoordElem
 
 0x018 [TMSX]
-  CPlugBitmap MapFid
-  rect MapRect
+  CPlugBitmap MapFid (external)
+  rect MapRect = (-1, -1, 1, 1)
   vec2 MapCoordElem
   vec2 MapCoordIcon
 
@@ -115,8 +138,8 @@ CGameCtnCollection 0x03033000
   CPlugBitmap LoadScreenFid (external)
 
 0x01A [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CPlugBitmap MapFid
-  rect MapRect
+  CPlugBitmap MapFid (external)
+  rect MapRect = (-1, -1, 1, 1)
   vec2 MapCoordElem
   vec2 MapCoordIcon
   vec2 MapCoordDesc
@@ -125,11 +148,16 @@ CGameCtnCollection 0x03033000
 0x01B [TMNESWC, VSK5]
   int BlocksShadow
   bool ShadowCastBack
-  int<EBackgroundShadow> BackgroundShadow
-  float ShadowSoftSizeInWorld
+  bool HasBackgroundShadow
+  float ShadowSoftSizeInWorld = 1f
   int<EVertexLighting> VertexLighting
   float ColorVertexMin
-  float ColorVertexMax
+  float ColorVertexMax = 1f
+
+0x01C // legacy collector folders
+  string FolderBlockInfo
+  string FolderItem
+  string FolderDecoration
 
 0x01D [VSK5, TMF, MP3, TMT, MP4, TM2020]
   ZoneString[] ZoneStrings
@@ -139,10 +167,10 @@ CGameCtnCollection 0x03033000
   float WaterTop
   float WaterBottom
   float CameraMinHeight
-  bool IsWaterOutsidePlayField
+  bool IsWaterOutsidePlayField = true
 
 0x01F [VSK5, TMF, MP3, TMT, MP4, TM2020] // ParticleEmitterModelsFids
-  int[] ParticleEmitterModelsFids
+  CPlugParticleEmitterModel[] ParticleEmitterModelsFids (external)
 
 0x020 [VSK5, TMF, MP3, TMT, MP4, TM2020] // folders
   string FolderBlockInfo
@@ -150,10 +178,10 @@ CGameCtnCollection 0x03033000
   string FolderDecoration
   string FolderMenusIcons
 
-0x021 [VSK5, TMF, MP3, TMT, MP4, TM2020] // display name
-  string DisplayName
+0x021 [VSK5, TMF, MP3, TMT, MP4, TM2020] // DisplayName
+  string DisplayName = "Unassigned"
 
-0x022 [TMF] // is water multi-height
+0x022 [TMF] // IsWaterMultiHeight
   bool IsWaterMultiHeight
 
 0x023 [TMF] // CarCanBeDirty
@@ -168,6 +196,19 @@ CGameCtnCollection 0x03033000
   float ColorVertexMin
   float ColorVertexMax
 
+0x025 // legacy lighting and lightmap mapper
+  int BlocksShadow
+  int<EBackgroundShadow> BackgroundShadow
+  bool ShadowCastBack
+  float ShadowSoftSizeInWorld
+  int<EVertexLighting> VertexLighting
+  float ColorVertexMin
+  float ColorVertexMax
+  int LightMapMapper
+
+0x026 // legacy item folder
+  string LegacyFolderItem
+
 0x027 [MP3, TMT, MP4, TM2020] // board square
   float BoardSquareHeight
   float BoardSquareBorder
@@ -181,47 +222,65 @@ CGameCtnCollection 0x03033000
 0x02A [MP3, TMT, MP4, TM2020] // FolderDecalModels
   string FolderDecalModels
 
-0x02C [MP3, TMT, MP4]
-  int128
+0x02B // legacy decoration
+  CGameCtnDecoration LegacyDecoration
+
+0x02C [MP3, TMT, MP4] // CollectionPackMask
+  int128 CollectionPackMask
+
+0x02D // legacy water and fog
+  float WaterTop
+  float WaterBottom
+  float CameraMinHeight
+  bool IsWaterOutsidePlayField
+  bool IsWaterMultiHeight
+  float LegacyWaterFogDepthScale
+  float WaterFogClampAboveDist
+
+0x02E // legacy decal type names
+  string[] DecalsTypeNames
 
 0x02F [MP3, TMT, MP4, TM2020] // Tech3TunnelSpecularExpScaleMax
-  vec3? Tech3TunnelSpecularExpScaleMax
+  vec3 Tech3TunnelSpecularExpScaleMax = (1, 0, 0)
 
-0x030 [MP3, TMT, MP4, TM2020]
-  int
+0x030 [MP3, TMT, MP4, TM2020] // MarksModel
+  CSceneVehicleCarMarksModel MarksModel
 
 0x031 [MP3, TMT, MP4, TM2020] // FolderMacroDecals
   string FolderMacroDecals
 
-0x033 [MP3, TMT, MP4, TM2020]
-  version
-  id[]
-  v1+
-    int DecalFadeCBlockFullDensity
+0x032 // legacy cloud shader
+  CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
 
-0x034 [MP3, TMT, MP4, TM2020]
+0x033 [MP3, TMT.v0, MP4.v0, TM2020.v1] // decal types
+  version
+  id[] DecalsTypesId
+  v1+
+    int DecalFade_cBlock_FullDensity
+
+0x034 [MP3, TMT.v0, MP4.v0, TM2020.v1] // clouds and vehicle environment layer
   version
   CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
   CPlugBitmap FidPlugBitmapCloudsX2 (external)
   v1+
-    CPlugBitmap VehicleEnvLayerFidBitmap (external)
+    CPlugBitmap VehicleEnvLayer_FidBitmap (external)
     int<EVehicleEnvLayer> VehicleEnvLayer
 
-0x036 [MP3, TMT, MP4, TM2020] // OffZone_FogMatter
+0x036 [MP3, TMT.v0, MP4.v0, TM2020.v0] // OffZone_FogMatter
   version
-  CPlugFogMatter OffZoneFogMatter (external)
+  CPlugFogMatter OffZone_FogMatter (external)
 
 0x037 [MP3, TMT, MP4, TM2020] // TerrainHeightOffset
   float TerrainHeightOffset
 
-0x038 [MP3, TMT, MP4, TM2020]
+0x038 [MP3, TMT.v1, MP4.v5, TM2020.v8] // water and fog
   version
   v7-
     v3-
-      float
+      float WaterTop
       v0=
-        float
-        float
+        float WaterBottom
+        float LegacyWaterOffsetBottom
       v1+
         Water Water1
         Water Water2
@@ -233,148 +292,148 @@ CGameCtnCollection 0x03033000
   v8+
     CPlugMaterialWaterArray WaterArray
     if WaterArray == null
-      int
+      int Water0Version
       Water Water1
   v5+
-    CPlugBitmap WaterGBitmapNormal (external)
-    float WaterGBumpSpeedUV
-    float WaterGBumpScaleUV
-    float WaterGBumpScale
-    float WaterGRefracPertub
+    CPlugBitmap WaterG_BitmapNormal
+    float WaterG_BumpSpeedUV
+    float WaterG_BumpScaleUV
+    float WaterG_BumpScale
+    float WaterG_RefracPertub
     v7+
-      int // not seen in code
+      bool WaterG_FogUseRefractRay = true
   float CameraMinHeight
   v3-
-    bool // CSystemFidsFolder something?
+    bool IsWaterOutsidePlayField
   bool IsWaterMultiHeight
   v2-
-    float
-  float WaterFogClampAboveDist
+    float LegacyWaterFogDepthScale
+  float WaterFogClampAboveDist = 0.1f
 
-0x039 [MP4, TM2020]
+0x039 [MP4.v1, TM2020.v22] // vehicle styles and inventories
   version
   v0=
-    float?
-    float?
-    float?
-  v1+
-    int? // VehicleStyles?
-    v2+
-      CMwNod ItemPlacementGroups (external)
-      v3+
-        CMwNod AdnRandomGenList
-        v4+
-          CMwNod FidBlockInfoGroups (external)
-          v10-
-            CMwNod
-            v8+
-              CMwNod
-          v6+
-            CMwNod FidBlockInfoInventory (external)
-          v8-
-            CMwNod
-          v10+
-            CMwNod FidItemModelInventory (external)
-            v12+
-              CPlugBitmap (external)
-            v11+
-              CPlugBitmap (external)
-              CPlugBitmap (external)
-              CPlugBitmap (external)
-              CPlugBitmap (external)
-              CMwNod (external)
-              v20+
-                CMwNod
-                v21+
-                  CMwNod
-                  CMwNod
-                  CMwNod
-                  CMwNod
-                  v22+
-                    CPlugFileImg BlockSkins_Default_FidAdvertisement1x1 (external)
-                    CPlugFileImg BlockSkins_Default_FidAdvertisement2x1 (external)
-                    CPlugFileImg BlockSkins_Default_FidAdvertisement2x3 (external)
-                    CPlugFileImg BlockSkins_Default_FidAdvertisement4x1 (external)
-                    CPlugFileImg BlockSkins_Default_FidItemFlag (external)
-                    CPlugFileImg BlockSkins_Default_FidAdvertisement16x9 (external)
-              v13+
-                CMwNod FidMacroBlockInfoInventory (external)
-                v14+
-                  CPlugMediaClipList DefaultSpawnClipList (external)
-                  v16+
-                    ident VehicleTransform_CarSnow
-                    v17+
-                      ident VehicleTransform_CarRally
-                      v18+
-                        ident VehicleTransform_CarDesert
-                        v19+
-                          int
+    vec3 LegacyVehicleStyleColor
+  CPlugVehicleVisStyles VehicleStyles
+  v2+
+    CMwNod ItemPlacementGroups
+  v3+
+    CPlugAdnRandomGenList AdnRandomGenList
+  v4+
+    CMwNod FidBlockInfoGroups (external)
+  v5+
+    v10-
+      SCustomizableDeco CustomDeco
+      v8+
+        CPlugFileImg LegacyCustomDecoImage
+  v6+
+    CMwNod FidBlockInfoInventory (external)
+  v7+
+    v8-
+      CMwNod LegacyInventory
+  v10+
+    CMwNod FidItemModelInventory (external)
+  v12=
+    string LegacyFolderMaterial
+  v11+
+    SCustomizableDeco CustomDeco
+  v20+
+    CPlugFileImg CustomDeco_Default_FidDecalSponsor1x1Big (external)
+  v21+
+    CPlugFileImg CustomDeco_Default_FidDecalSponsor4x1 (external)
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x9 (external)
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen8x1 (external)
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x1 (external)
+  v22+
+    CPlugFileImg BlockSkins_Default_FidAdvertisement16x9 (external)
+    CPlugFileImg BlockSkins_Default_FidAdvertisement1x1 (external)
+    CPlugFileImg BlockSkins_Default_FidAdvertisement2x1 (external)
+    CPlugFileImg BlockSkins_Default_FidAdvertisement2x3 (external)
+    CPlugFileImg BlockSkins_Default_FidAdvertisement4x1 (external)
+    CPlugFileImg BlockSkins_Default_FidItemFlag (external)
+  v13+
+    CPlugMaterial DefaultMaterial (external)
+  v14+
+    CMwNod FidMacroBlockInfoInventory (external)
+  v15+
+    CPlugMediaClipList DefaultSpawnClipList (external)
+  v16+
+    ident VehicleTransform_CarSnow
+  v17+
+    ident VehicleTransform_CarRally
+  v18+
+    ident VehicleTransform_CarDesert
+  v19+
+    int LegacyVehicleTransformFlags
 
-0x03A [MP3, TMT, MP4, TM2020]
+0x03A [MP3, TMT.v0, MP4.v2, TM2020.v3] // lighting
   version
-  int
+  int BlocksShadow
   int<EBackgroundShadow> BackgroundShadow
-  bool
+  bool ShadowCastBack
   float ShadowSoftSizeInWorld
   int<EVertexLighting> VertexLighting
   float ColorVertexMin
   float ColorVertexMax
-  int
-  float? VisMeshLodDistScale
+  int LightMapMapper
+  float VisMeshLodDistScale = 1f
   v1=
-    int
+    CMwNod LegacyLightMap (external)
   v3+
-    int
+    float EditorHelperAmbientScale = -1f
 
-0x03B [TM2020] // turbo color
+0x03B [TM2020.v2] // turbo colors
   version
-  uint? TurboColorRoulette1
-  uint? TurboColorRoulette2
-  uint? TurboColorRoulette3
+  uint TurboColor_Roulette1 = 0xFF00FFFF
+  uint TurboColor_Roulette2 = 0xFF0000FF
+  uint TurboColor_Roulette3 = 0xFFFF00FF
   v1+
-    uint? TurboColorTurbo
-    uint? TurboColorTurbo2
+    uint TurboColor_Turbo = 0xFFFF00FF
+    uint TurboColor_Turbo2 = 0xFF0000FF
     v2+
-      int?
+      CPlugMaterialColorTargetTable FidColorTargetTable (external)
 
-0x03C [TM2020]
+0x03C [TM2020.v1] // spectator folders
   version
-  string
+  string FolderSpectators
   v1+
-    int?
+    string FolderSpectatorSkins
 
-0x03D [TM2020] // BitmapDisplayControlDefaultTVProgram
+0x03D [TM2020.v2] // default TV programs
   version
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram16x9 (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10A (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10B (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram64x10C (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram2x3 (external)
+  v1-
+    CPlugBitmap LegacyBitmapDisplayControlDefaultTVProgram (external)
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10A (external)
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10B (external)
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10C (external)
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_2x3 (external)
+  v1+
+    CPlugBitmap BitmapDisplayControlDefaultTVProgram_155 (external)
 
-0x03E [TM2020]
+0x03E [TM2020.v0] // FolderDefaultActions
   version
-  int
+  string FolderDefaultActions
 
-0x03F [TM2020]
+0x03F [TM2020.v0] // FolderDefaultActions2
   version
-  int
+  string FolderDefaultActions2
 
-0x040 [TM2020] // ColorBlindnessModifier
+0x040 [TM2020.v0] // ColorBlindnessModifier
   version
-  CPlugGameSkinAndFolder ColorBlindnessModifier (external)
+  CPlugGameSkinAndFolder ColorBlindnessModifier
 
-0x041 [TM2020]
-  string
+0x041 [TM2020] // FolderMacroblock
+  string FolderMacroblock
 
-0x042 [TM2020]
-  int
+0x042 [TM2020] // FolderAdditionalItem3
+  string FolderAdditionalItem3
 
-0x043 [TM2020]
-  string
+0x043 [TM2020] // FolderMaterialModifiers
+  string FolderMaterialModifiers
 
-0x044 [TM2020] // GlobalMaterialModifier
+0x044 [TM2020.v0] // GlobalMaterialModifier
   version
-  CPlugGameSkinAndFolder GlobalMaterialModifier (external)
+  CPlugGameSkinAndFolder GlobalMaterialModifier
 
 enum ECollectionType
   Environment
@@ -398,13 +457,21 @@ archive ZoneString
   id Base
   id Replacement
 
+archive SCustomizableDeco
+  CPlugBitmap DecalSponsor1x1Big
+  v11+
+    CPlugBitmap DecalSponsor4x1
+    CPlugBitmap DecorationScreen16x9
+    CPlugBitmap DecorationScreen8x1
+    CPlugBitmap DecorationScreen16x1
+
 archive Water
-  id
-  float
-  float
+  id Id
+  float OffsetTop
+  float OffsetBottom
   v3+
-    float?
+    float U04 = 1f
   v2+
-    CMwNod (external)
-    v7+
-      int? // not seen in code
+    CMwNod U05 (external)
+    v6+
+      CMwNod U06 (external)

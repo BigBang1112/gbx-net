@@ -19,3 +19,48 @@ archive Socket
   iso4
 
 archive JointExpr
+
+archive Setup
+  IK2[] InverseKinematics (version: v)
+  JointInfo[] JointInfos
+  v10-
+    int U01
+  v3+
+    int[] GlobalTargets
+  v5+
+    v11-
+      int U02
+    v12+
+      ushort U03
+  v7+
+    v10-
+      int U04
+  v8+
+    v11-
+      int U05
+    v12+
+      ushort U06
+    v10-
+      int U07
+
+archive IK2
+  v11-
+    int U01
+    int U02
+    int U03
+  v12+
+    ushort U04
+    ushort U05
+    ushort U06
+
+archive JointInfo
+  int U01
+  int U02
+  int U03
+  data[4] U04
+
+archive ExtraJoints
+  id[] Names
+  int[] U01
+  int[] U02
+  quat[] U03

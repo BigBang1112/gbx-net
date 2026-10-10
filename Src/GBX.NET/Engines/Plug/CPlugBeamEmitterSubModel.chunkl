@@ -1,1 +1,133 @@
 CPlugBeamEmitterSubModel 0x09105000
+
+0x001 [MP4.v11] // beam geometry
+  version
+  float UVScale
+  int CylinderSideCount
+  v2+
+    int Duration
+  v3+
+    float USpeed
+    float VSpeed
+  v4+
+    bool BackFace
+  v5+
+    int Helix_VerticesCountPerTurn
+    float Helix_TurnLength
+    float Helix_OutterRadius
+    float Helix_InnerRadius
+    float Helix_DistLOD
+    float Helix_CoeffLowDef
+  v6+
+    int Helix_MaxHelixCount
+  v7+
+    v9-
+      CPlugMaterial[] AdditionalMaterials (external)
+  v8+
+    float LightningDistStep
+    float LightningMaxJitterDistPerStep
+    float LightningJitterRadius
+    int LightningBeamCount
+    float LightningLenMax
+  v9+
+    float FadeTimeOffset
+    float FadeTimeScale
+  v10+
+    bool MaterialsAsStrings
+    if MaterialsAsStrings
+      string[] AdditionalMaterialPaths
+    else
+      CPlugMaterial[] AdditionalMaterials (external)
+  v11+
+    float DoubleHelix_StartAngle
+    bool DoubleHelix_ClockWise
+    int BeamWithCylinders_NbSubDiv
+    float BeamWithCylinders_StepSize
+    float BeamWithCylinders_InnerRadius
+    float BeamWithCylinders_OutterRadius
+    float BeamWithCylinders_HalfWidth
+    float BeamWithCylinders_FadeSpeed
+    float BeamWithCylinders_TimeStartFade
+    int
+    int BeamWithSpheres_NbVerticalSubDiv
+    int BeamWithSpheres_NbSpheresPerMeter
+    float BeamWithSpheres_Radius
+    float BeamWithSpheres_StartDistance
+    float BeamWithSpheres_EndDistance
+    float
+    float BeamWithSpheres_Speed
+    int LightningBeamCount
+    float LightningDistStep
+    float LightningMaxJitterDistPerStep
+    float LightningJitterRadius
+    float LightningLenMax
+    float FadeTimeOffset
+    float FadeTimeScale
+
+0x002 [MP4.v1] // material and radius
+  version
+  v2+
+    bool
+  if MaterialsAsStrings
+    string MaterialPath
+  else
+    CPlugMaterial Material (external)
+  float Radius
+  int DisplayType
+  v1+
+    id
+
+0x003 [MP4.v4] // laser appearance
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  v1+
+    float StartOffsetAtEndLife
+  v2+
+    bool EnableTriLaser
+    v3-
+      data[16]
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float LaserRadius
+  v3+
+    v3=
+      data[16]
+    bool EnableCenterLaser
+
+0x004 [MP4.v3] // sharp and bloom appearance
+  version
+  float SharpIntensity
+  float SharpScale
+  v1+
+    bool BloomEnabled
+    bool SharpEnabled
+    float BloomIntensity
+  v2+
+    bool SharpShrinkOverLife
+    bool SharpFadeOut
+    float SharpEnergy
+    float SharpFadeEndAtEndLife
+    float BloomScale
+    bool BloomShrinkOverLife
+    bool BloomFadeOut
+    float BloomEnergy
+    float BloomFadeEndAtEndLife
+  v3+
+    float BloomStartOffset
+    float SharpStartOffset
