@@ -2053,14 +2053,80 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy crypted settings; TMF dispatch differs from later readers.
+    /// Legacy server settings
     /// </summary>
-    [Chunk(0x0308C028, "Legacy crypted settings; TMF dispatch differs from later readers.")]
+    [Chunk(0x0308C028, "Legacy server settings")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C028 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C028;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public byte U01;
+        public byte U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+        public int U07;
+        public int U08;
+        public int U09;
+        public bool U10;
+        public bool U11;
+        public bool U12;
+        public int U13;
+        public int U14;
+        public int U15;
+        public int U16;
+        public bool U17;
+        public int U18;
+        public bool U19;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0308C028)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0308C028)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0308C028)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0308C028)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0308C028)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0308C028)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0308C028)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0308C028)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0308C028)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0308C028)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0308C028)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0308C028)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0308C028)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk0308C028)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk0308C028)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk0308C028)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk0308C028)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk0308C028)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk0308C028)clone).U19 = context.Clone(this.U19)!;
+        }
+
+        public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
+        {
+            rw.Byte(ref U01);
+            rw.Byte(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+            rw.Int32(ref U05);
+            rw.Int32(ref U06);
+            rw.Int32(ref U07);
+            rw.Int32(ref U08);
+            rw.Int32(ref U09);
+            rw.Boolean(ref U10);
+            rw.Boolean(ref U11);
+            rw.Boolean(ref U12);
+            rw.Int32(ref U13);
+            rw.Int32(ref U14);
+            rw.Int32(ref U15);
+            rw.Int32(ref U16);
+            rw.Boolean(ref U17);
+            rw.Int32(ref U18);
+            rw.Boolean(ref U19);
+        }
     }
 
     [Chunk(0x0308C029)]

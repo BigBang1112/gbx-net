@@ -249,7 +249,7 @@ CGamePlayerProfile 0x0308C000
   bool
   bool EnableCarSkinGeom
 
-0x028 (skippable, demonstration) [TMSX, TMNESWC] // Legacy crypted settings; TMF dispatch differs from later readers.
+0x028 (skippable) [TMSX, TMNESWC] // Legacy server settings
   byte
   byte
   int
