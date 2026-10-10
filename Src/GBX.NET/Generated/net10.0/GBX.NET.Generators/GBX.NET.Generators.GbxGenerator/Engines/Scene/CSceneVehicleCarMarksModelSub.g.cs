@@ -329,11 +329,11 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     /// width and opacity limits
     /// </summary>
     [Chunk(0x0A082003, "width and opacity limits")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A082003 : Chunk0A082002
     {
         public override uint Id => 0x0A082003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

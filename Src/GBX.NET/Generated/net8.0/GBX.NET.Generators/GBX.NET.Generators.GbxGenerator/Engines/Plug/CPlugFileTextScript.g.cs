@@ -29,7 +29,7 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x09054000)]
-public partial class CPlugFileTextScript : CMwNod, IClass
+public partial class CPlugFileTextScript : CPlugFileText, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x09054000;

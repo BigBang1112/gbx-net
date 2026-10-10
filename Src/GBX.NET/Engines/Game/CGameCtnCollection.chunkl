@@ -316,11 +316,11 @@ CGameCtnCollection 0x03033000
     vec3 LegacyVehicleStyleColor
   CPlugVehicleVisStyles VehicleStyles
   v2+
-    CMwNod ItemPlacementGroups
+    NPlugItemPlacement_SGroups* ItemPlacementGroups
   v3+
     CPlugAdnRandomGenList AdnRandomGenList
   v4+
-    CMwNod FidBlockInfoGroups (external)
+    CGameBlockInfoGroups FidBlockInfoGroups (external)
   v5+
     v10-
       SCustomizableDeco CustomDeco

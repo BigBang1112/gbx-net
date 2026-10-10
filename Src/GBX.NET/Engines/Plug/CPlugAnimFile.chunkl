@@ -1,61 +1,110 @@
 CPlugAnimFile 0x090B0000
 
-0x003 [MP3, TMT, MP4, TM2020]
+0x003 [MP3, TMT.v9, MP4.v11, TM2020]
   version
+  if Version > 11
+    throw
   v9-
     int SkelVersion
-    int
-    int
-    int
+    int JointGroupVersion
+    int LegacyRootMotionVersion
+    int BakedVersion
     int TimingFixedPeriodVersion
-    int
+    int ClipVersion
     v3+
       int SkelEditionVersion
       v4+
         int ClipFlagsVersion
-        int
-        int
+        int PoseGroupVersion
+        int PoseGridVersion
         int GraphVersion
         v5+
-          int
+          int VariantGroupVersion
           v6+
-            int
+            int SpotVersion
             v8+
               int SkelEditionStateVersion
-              int
+              int LegacyEditionVersion
     v0=
-      int
-      int
-    CPlugSkel[] (version: n.SkelVersion)
-    CPlugAnimSkelJointGroup[]
+      int LegacyVersion1
+      int LegacyVersion2
+    CPlugSkel[] Skels (version: n.SkelVersion)
+    LegacyJointGroup[] JointGroups (version: n.JointGroupVersion)
+    v6-
+      LegacyRootMotion[] LegacyRootMotions (version: n.TimingFixedPeriodVersion)
+    LegacyBaked[] BakedClips (version: n.BakedVersion)
     v3+
-      CPlugAnimSkelEdition[]
-    CPlugAnimClip[]
+      LegacyEdition[] EditionClips (version: n.SkelEditionVersion)
+    LegacyClip[] LegacyClips (version: n.ClipVersion)
     v4+
-      CPlugAnimPoseGroup[]
-      CPlugAnimPoseGrid[]
-      CPlugAnimGraph[]
-      CPlugAnimGraphStack[]
+      CPlugAnimPoseGroup[] PoseGroups
+      CPlugAnimPoseGrid[] PoseGrids
+      CPlugAnimGraph[] Graphs
+      CPlugAnimGraphStack[] GraphStacks
       v5+
-        CPlugAnimVariantGroup[]
+        CPlugAnimVariantGroup[] VariantGroups
         v6+
-          CPlugAnimSpotModel[]
+          CPlugAnimSpotModel[] Spots (version: n.SpotVersion)
           v8+
-            CPlugAnimSkelEditionPose[]
+            CPlugAnimSkelEditionPose[] EditionPoses
     v0=
-      int
+      int LegacyData
     v9+
-      string
-      string
+      string ImportString
+      string UpdateString
   v10+
     v11+
-      CPlugSkel[]
-    CPlugAnimClip[]
-    CPlugAnimVariantGroup[]
-    CPlugAnimPoseGroup[]
-    CPlugAnimPoseGrid[]
-    CPlugAnimGraphStack[]
-    int
-    CPlugAnimSpotModel[]
-    string
-    string
+      CPlugSkel*[] Skels
+    CPlugAnimClip[] Clips
+    CPlugAnimVariantGroup[] VariantGroups
+    CPlugAnimPoseGroup[] PoseGroups
+    CPlugAnimPoseGrid[] PoseGrids
+    CPlugAnimGraphStack[] GraphStacks
+    int SpotVersion
+    CPlugAnimSpotModel[] Spots (version: n.SpotVersion)
+    string ImportString
+    string UpdateString
+
+archive LegacyJointGroup
+  int SkelIndex
+  ushort[] OldJointIndexs
+  id Name
+  v1+
+    float[] JointWeights
+  v2+
+    id[] JointNames
+
+archive LegacyRootMotion
+  CPlugAnimSkelBaked.TimingFixedPeriod Timing (version: v)
+  RootMotionFrame[] Frames
+
+archive RootMotionFrame
+  vec3 Translation
+  float Yaw
+
+archive LegacyBaked (contextual)
+  CPlugAnimSkelBaked.TimingFixedPeriod Timing (version: n.TimingFixedPeriodVersion)
+  int JointGroupIndex
+  transquat[] LocalJointsData
+  v1=
+    int U01
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.ClipFlagsVersion)
+  v4+
+    RootMotionFrame[] RootMotionFrames
+  v5+
+    id[] FloatChannelIds
+    float[] FloatChannelData
+
+archive LegacyClip (contextual)
+  id Name
+  int BakedIndex
+  if n.HasLegacyRootMotion
+    int U01
+  v2+
+    int EditionIndex
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.ClipFlagsVersion)
+
+archive LegacyEdition (contextual)
+  int SkelIndex

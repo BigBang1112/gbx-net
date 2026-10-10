@@ -27,7 +27,7 @@ CSceneVehicleCarMarksModelSub 0x0A082000
   float WidthCoefForceZ
   float CondForceZGreaterThan
 
-0x003 (base: 0x002) [MP4, TM2020] // width and opacity limits
+0x003 (base: 0x002) [TMT, MP4, TM2020] // width and opacity limits
   base
   float WidthMax = 50f
   float AlphaCoefForceX

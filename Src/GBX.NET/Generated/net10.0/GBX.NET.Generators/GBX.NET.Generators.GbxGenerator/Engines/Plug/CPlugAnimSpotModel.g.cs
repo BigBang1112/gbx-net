@@ -29,17 +29,64 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x0913C000)]
-public partial class CPlugAnimSpotModel : CMwNod, IClass
+public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x0913C000;
 
+    private string? name;
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private string[]? clipNames;
+    public string[]? ClipNames
+    {
+        get => this.clipNames;
+        set => this.clipNames = value;
+    }
+
+    private int spotType;
+    public int SpotType
+    {
+        get => this.spotType;
+        set => this.spotType = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAnimSpotModel)clone).name = context.Clone(this.name)!;
+        ((CPlugAnimSpotModel)clone).clipNames = context.CloneArray(this.clipNames)!;
+        ((CPlugAnimSpotModel)clone).spotType = context.Clone(this.spotType)!;
     }
 
     public CPlugAnimSpotModel()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.Id(ref this.name);
+        rw.ArrayId(ref this.clipNames!, 3);
+
+        if (v >= 1)
+        {
+            rw.Int32(ref this.spotType);
+        }
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 }

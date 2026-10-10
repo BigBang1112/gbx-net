@@ -65,11 +65,11 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     /// mark models
     /// </summary>
     [Chunk(0x0A081000, "mark models")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A081000 : Chunk<CSceneVehicleCarMarksModel>
     {
         public override uint Id => 0x0A081000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -86,11 +86,11 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     /// Disabled
     /// </summary>
     [Chunk(0x0A081001, "Disabled")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A081001 : Chunk<CSceneVehicleCarMarksModel>
     {
         public override uint Id => 0x0A081001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

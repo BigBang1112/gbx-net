@@ -68,4 +68,4 @@ CGameCtnDecorationAudio 0x03039000
 
 0x006 [MP3, TMT, MP4, TM2020]
   version
-  CPlugFileText ModifierXmlFile (external)
+  CPlugFileText* ModifierXmlFile (external)

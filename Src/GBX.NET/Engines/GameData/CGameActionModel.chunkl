@@ -1,23 +1,24 @@
 CGameActionModel 0x2E008000
 
-0x000 (skippable) [MP3, TMT, MP4, TM2020]
+0x000 (skippable) [MP3, TMT.v22, MP4.v31, TM2020] // action, animation and script
   version
+  if Version > 31
+    throw
   v31+
-    bool UseVehicleGuns
+    bool UseVehicleGuns = true
   v30+
     CPlugBulletModel[] BulletModels_Nadeo (deprec)
   v25+
-    CPlugShieldModel
+    CPlugShieldModel ShieldModel
   v24=
-    throw // shield model but directly
+    LegacyShieldModel LegacyShield
   v23+
-    string ActionName
+    string Name
   v22+
     int InventoryItemClass
   v21+
     v23-
-      int
-      int
+      int[2] LegacyInventoryValues
   v19+
     int SpriteBlockVersion
     SpriteBlock[] SpriteBlocks (version: SpriteBlockVersion)
@@ -27,18 +28,19 @@ CGameActionModel 0x2E008000
     int BeamVersion = 1
     CPlugCustomBeamModel[] Beams (version: n.BeamVersion)
   v15+
-    bool
+    bool IsCustom
   v26+
-    string ActionName
+    string ActionName = "Action"
   v25-
     v14+
-      id ActionName
+      id ActionName = "Action"
   v13+
-    int
+    int ActionType
   v9+
-    id
+    id GaugeId = "FXGauge_Gauge_EnergyBall_Normal"
   v9-
-    ScriptParams Cooldown (version: 2)
+    v8+
+      ScriptParams Cooldown (version: 2)
   v10+
     int ScriptParamsVersion = 2
     int ActionScriptEffectVersion
@@ -49,46 +51,62 @@ CGameActionModel 0x2E008000
   v6+
     CPlugCustomBulletModel[] Projectiles (version: n.CustomBulletVersion)
   v5+
-    int = 2
-    int = 1
-  string
+    int SoundBlockVersion = 2
+    int ParticleBlockVersion = 1
+  string LegacyText
   v5-
-    CPlugBulletModel[]
+    CPlugBulletModel[] BulletModels
   CPlugAnimFile Anim
   v10-
-    CPlugFileTextScript
-    CPlugScriptWithSettings Script
+    CPlugFileTextScript LegacyScript
   v11+
     CPlugScriptWithSettings Script
-    CPlugFileTextScript
   v11-
-    CPlugBitmap
+    CPlugBitmap LegacyIcon
   v12+
-    string Icon
-    string Crosshair
+    string IconRef
+    if IconRef == null || IconRef == ""
+      CPlugFileImg Icon
+    string CrossHairRef
+    if CrossHairRef == null || CrossHairRef == ""
+      CPlugFileImg CrossHair
   v1+
-    ParticleBlock[] ParticleBlocks
-    SoundBlock[] SoundBlocks
+    ParticleBlock[] ParticleBlocks (version: n.ParticleBlockVersion)
+    SoundBlock[] SoundBlocks (version: n.SoundBlockVersion)
   v20+
-    bool
+    bool LegacyFlag
   v28=
-    bool U99
-    if U99
-      int
-      float
-      int
+    bool IsLockModeActive
+    if IsLockModeActive
+      LegacyLockModeData LegacyLockMode
   v27=
-    bool
-    int
-    int
+    bool IsLockModeActive
+    int[2] LegacyLockModeValues
   v29+
-    bool
+    bool IsLockModeActive
+
+archive LegacyShieldModel
+  string ShapeRef
+  if ShapeRef == null || ShapeRef == ""
+    CPlugSurface Shape
+  string ShapeVisModelRef
+  if ShapeVisModelRef == null || ShapeVisModelRef == ""
+    CPlugSolid2Model ShapeVisModel
+
+archive LegacyLockModeData
+  int
+  float
+  int
 
 archive SpriteBlock
   SpriteKey[] Keys
+  v0=
+    CPlugFileImg LegacyImage (external)
   bool
   v1+
-    CPlugFileImg
+    string ImageRef
+    if ImageRef == null || ImageRef == ""
+      CPlugFileImg Image
 
 archive SpriteKey
   float
@@ -99,13 +117,14 @@ archive SpriteKey
 
 archive ScriptParams
   v2-
-    int
-    int
-    int
-    bool
-    bool
-    int
-    bool
+    v1+
+      int U01 = 300
+      int U02 = 1600
+      int U03 = 6400
+      bool U04
+      bool U05
+      int U06
+      bool U07
   v2=
     int
     int
@@ -125,12 +144,12 @@ archive ScriptParams
     float
   v2+
     v3+
-      int
-      int
-      int
-      bool
+      int U24 = 300
+      int U25 = 1600
+      int U26 = 6400
+      bool U27
       v4+
-        bool
+        bool U28 = true
 
 archive ActionScriptEffect
   int Type
@@ -206,7 +225,7 @@ archive ParticleBlock
   v8+
     float
   v9+
-    CPlugParticleEmitterModel ParticleEmitter
+    CPlugParticleEmitterModel ParticleEmitter (direct)
   
 
 archive ParticleKey

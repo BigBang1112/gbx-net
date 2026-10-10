@@ -29,17 +29,656 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x09134000)]
-public partial class CPlugAnimSkelEdition : CMwNod, IClass
+public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x09134000;
 
+    private int flagsVersion;
+    [AppliedWithChunk<Chunk09134000>]
+    public int FlagsVersion
+    {
+        get => this.flagsVersion;
+        set => this.flagsVersion = value;
+    }
+
+    private CPlugSkel? skel;
+    [AppliedWithChunk<Chunk09134000>]
+    public CPlugSkel? Skel
+    {
+        get => this.skel;
+        set => this.skel = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAnimSkelEdition)clone).flagsVersion = context.Clone(this.flagsVersion)!;
+        ((CPlugAnimSkelEdition)clone).skel = context.Clone(this.skel)!;
+        ((CPlugAnimSkelEdition)clone).legacyData = context.Clone(this.legacyData)!;
+        ((CPlugAnimSkelEdition)clone).flags = context.Clone(this.flags)!;
+        ((CPlugAnimSkelEdition)clone).duration = context.Clone(this.duration)!;
+        ((CPlugAnimSkelEdition)clone).looping = context.Clone(this.looping)!;
+        ((CPlugAnimSkelEdition)clone).times = context.CloneArray(this.times)!;
+        ((CPlugAnimSkelEdition)clone).jointTrackVersion = context.Clone(this.jointTrackVersion)!;
+        ((CPlugAnimSkelEdition)clone).layers = context.CloneArray(this.layers)!;
+        ((CPlugAnimSkelEdition)clone).extraJointTracks = context.CloneArray(this.extraJointTracks)!;
+        ((CPlugAnimSkelEdition)clone).rootMotion = context.CloneArray(this.rootMotion)!;
+        ((CPlugAnimSkelEdition)clone).legacyRootMotionType = context.Clone(this.legacyRootMotionType)!;
+        ((CPlugAnimSkelEdition)clone).legacyRootMotion = context.Clone(this.legacyRootMotion)!;
+        ((CPlugAnimSkelEdition)clone).firstPersonCamera = context.CloneArray(this.firstPersonCamera)!;
+        ((CPlugAnimSkelEdition)clone).firstPersonCameraExtra = context.CloneArray(this.firstPersonCameraExtra)!;
+        ((CPlugAnimSkelEdition)clone).physicForce = context.CloneArray(this.physicForce)!;
+        ((CPlugAnimSkelEdition)clone).floatChannelCurves = context.CloneArray(this.floatChannelCurves)!;
+        ((CPlugAnimSkelEdition)clone).floatChannelIds = context.CloneArray(this.floatChannelIds)!;
+        ((CPlugAnimSkelEdition)clone).editionFlags = context.Clone(this.editionFlags)!;
     }
 
     public CPlugAnimSkelEdition()
     {
     }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
+    }
+
+    /// <summary>
+    /// editable animation
+    /// </summary>
+    [Chunk(0x09134000, "editable animation")]
+    public partial class Chunk09134000 : Chunk<CPlugAnimSkelEdition>, IVersionable
+    {
+        public override uint Id => 0x09134000;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09134000)clone).Version = context.Clone(this.Version)!;
+        }
+    }
+
+    public partial class Layer : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private JointTrack[]? jointTracks;
+        public JointTrack[]? JointTracks
+        {
+            get => this.jointTracks;
+            set => this.jointTracks = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Layer)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Layer)clone).jointTracks = context.CloneArray(this.jointTracks)!;
+            ((Layer)clone).Flags = context.Clone(this.Flags)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayReadableWritable<JointTrack>(ref this.jointTracks!, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class JointTrack : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private Curve[]? rotation;
+        public Curve[]? Rotation
+        {
+            get => this.rotation;
+            set => this.rotation = value;
+        }
+
+        private Curve[]? translation;
+        public Curve[]? Translation
+        {
+            get => this.translation;
+            set => this.translation = value;
+        }
+
+        private Curve[]? extra;
+        public Curve[]? Extra
+        {
+            get => this.extra;
+            set => this.extra = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (JointTrack)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((JointTrack)clone).name = context.Clone(this.name)!;
+            ((JointTrack)clone).rotation = context.CloneArray(this.rotation)!;
+            ((JointTrack)clone).translation = context.CloneArray(this.translation)!;
+            ((JointTrack)clone).extra = context.CloneArray(this.extra)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.ArrayReadableWritable<Curve>(ref this.rotation!, 4, version: v);
+            rw.ArrayReadableWritable<Curve>(ref this.translation!, 4, version: v);
+            rw.ArrayReadableWritable<Curve>(ref this.extra!, 2, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Curve : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int @type;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private RealCurve? real;
+        public RealCurve? Real
+        {
+            get => this.real;
+            set => this.real = value;
+        }
+
+        private BoolCurve? @bool;
+        public BoolCurve? Bool
+        {
+            get => this.@bool;
+            set => this.@bool = value;
+        }
+
+        private QuatCurve? quat;
+        public QuatCurve? Quat
+        {
+            get => this.quat;
+            set => this.quat = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Curve)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Curve)clone).@type = context.Clone(this.@type)!;
+            ((Curve)clone).real = context.Clone(this.real)!;
+            ((Curve)clone).@bool = context.Clone(this.@bool)!;
+            ((Curve)clone).quat = context.Clone(this.quat)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.@type);
+
+            if (Type== 1)
+            {
+                rw.ReadableWritable<RealCurve>(ref this.real, version: v);
+            }
+
+            if (Type== 2)
+            {
+                rw.ReadableWritable<BoolCurve>(ref this.@bool, version: v);
+            }
+
+            if (Type== 3)
+            {
+                rw.ReadableWritable<QuatCurve>(ref this.quat, version: v);
+            }
+
+            if (Type< 0 || Type> 3)
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class RealCurve : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private float value;
+        public float Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private ushort version;
+        public ushort Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private RealKey[]? keys;
+        public RealKey[]? Keys
+        {
+            get => this.keys;
+            set => this.keys = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (RealCurve)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((RealCurve)clone).value = context.Clone(this.value)!;
+            ((RealCurve)clone).version = context.Clone(this.version)!;
+            ((RealCurve)clone).keys = context.CloneArray(this.keys)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Single(ref this.value);
+            var keyCount = rw.Int32((rw.Writer is null ? default : (Keys?.Length?? 0)));
+            rw.UInt16(ref this.version);
+            rw.ArrayReadableWritable<RealKey>(ref this.keys!, keyCount, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class BoolCurve : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private bool value;
+        public bool Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private ushort version;
+        public ushort Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private BoolKey[]? keys;
+        public BoolKey[]? Keys
+        {
+            get => this.keys;
+            set => this.keys = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BoolCurve)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BoolCurve)clone).value = context.Clone(this.value)!;
+            ((BoolCurve)clone).version = context.Clone(this.version)!;
+            ((BoolCurve)clone).keys = context.CloneArray(this.keys)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Boolean(ref this.value);
+            var keyCount = rw.Int32((rw.Writer is null ? default : (Keys?.Length?? 0)));
+            rw.UInt16(ref this.version);
+            rw.ArrayReadableWritable<BoolKey>(ref this.keys!, keyCount, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class QuatCurve : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Quat value;
+        public Quat Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private ushort version;
+        public ushort Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private QuatKey[]? keys;
+        public QuatKey[]? Keys
+        {
+            get => this.keys;
+            set => this.keys = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (QuatCurve)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((QuatCurve)clone).value = context.Clone(this.value)!;
+            ((QuatCurve)clone).version = context.Clone(this.version)!;
+            ((QuatCurve)clone).keys = context.CloneArray(this.keys)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Quat(ref this.value);
+            var keyCount = rw.Int32((rw.Writer is null ? default : (Keys?.Length?? 0)));
+            rw.UInt16(ref this.version);
+            rw.ArrayReadableWritable<QuatKey>(ref this.keys!, keyCount, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class RealKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private float time;
+        public float Time
+        {
+            get => this.time;
+            set => this.time = value;
+        }
+
+        private float value;
+        public float Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private float tension;
+        public float Tension
+        {
+            get => this.tension;
+            set => this.tension = value;
+        }
+
+        private float continuity;
+        public float Continuity
+        {
+            get => this.continuity;
+            set => this.continuity = value;
+        }
+
+        private float bias;
+        public float Bias
+        {
+            get => this.bias;
+            set => this.bias = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (RealKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((RealKey)clone).time = context.Clone(this.time)!;
+            ((RealKey)clone).value = context.Clone(this.value)!;
+            ((RealKey)clone).tension = context.Clone(this.tension)!;
+            ((RealKey)clone).continuity = context.Clone(this.continuity)!;
+            ((RealKey)clone).bias = context.Clone(this.bias)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Single(ref this.time);
+            rw.Single(ref this.value);
+            rw.Single(ref this.tension);
+            rw.Single(ref this.continuity);
+            rw.Single(ref this.bias);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class BoolKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private float time;
+        public float Time
+        {
+            get => this.time;
+            set => this.time = value;
+        }
+
+        private bool value;
+        public bool Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BoolKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BoolKey)clone).time = context.Clone(this.time)!;
+            ((BoolKey)clone).value = context.Clone(this.value)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Single(ref this.time);
+            rw.Boolean(ref this.value);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class QuatKey : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private float time;
+        public float Time
+        {
+            get => this.time;
+            set => this.time = value;
+        }
+
+        private Quat value;
+        public Quat Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private float tension;
+        public float Tension
+        {
+            get => this.tension;
+            set => this.tension = value;
+        }
+
+        private float continuity;
+        public float Continuity
+        {
+            get => this.continuity;
+            set => this.continuity = value;
+        }
+
+        private float bias;
+        public float Bias
+        {
+            get => this.bias;
+            set => this.bias = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (QuatKey)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((QuatKey)clone).time = context.Clone(this.time)!;
+            ((QuatKey)clone).value = context.Clone(this.value)!;
+            ((QuatKey)clone).tension = context.Clone(this.tension)!;
+            ((QuatKey)clone).continuity = context.Clone(this.continuity)!;
+            ((QuatKey)clone).bias = context.Clone(this.bias)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Single(ref this.time);
+            rw.Quat(ref this.value);
+            rw.Single(ref this.tension);
+            rw.Single(ref this.continuity);
+            rw.Single(ref this.bias);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x09134000 => new Chunk09134000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

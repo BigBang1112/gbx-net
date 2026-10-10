@@ -1,5 +1,6 @@
 using GBX.NET.Components;
 using GBX.NET.Engines.Game;
+using GBX.NET.Engines.Meta;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Engines.Plug;
 using GBX.NET.Engines.Scene;
@@ -265,13 +266,18 @@ public class CGameCtnCollectionChunkTests
         {
             writer.Write(3);
             writer.WriteNodeRef(styles);
-            writer.Write(-1); // ItemPlacementGroups
+            writer.WriteNodeRef(new NPlugItemPlacement_SGroups
+            {
+                IdGroups = [new() { Name = "Traffic" }],
+                SizeGroups = [new() { Name = "Car", Size = new Vec3(2, 3, 4) }]
+            });
             writer.WriteNodeRef(generators);
             writer.Write(0x12345678);
         }
 
         var restored = await ReadAndRewrite(stream, new CGameCtnCollection.Chunk03033039());
         await Assert.That(restored.VehicleStyles?.RandomGroups?[0]?.Name).IsEqualTo("Traffic");
+        await Assert.That(restored.ItemPlacementGroups?.SizeGroups?[0].Size).IsEqualTo(new Vec3(2, 3, 4));
         await Assert.That(restored.VehicleStyles?.RandomGroups?[0]?.Styles?[0].Proba).IsEqualTo(0.25f);
         await Assert.That(restored.AdnRandomGenList?.Datas?[0]?.Sets[0].RequiredTags?[0].Value).IsEqualTo("Car");
     }
@@ -293,7 +299,7 @@ public class CGameCtnCollectionChunkTests
         }
 
         var restored = await ReadAndRewrite(stream, new CGameCtnCollection.Chunk03033030());
-        await Assert.That(restored.MarksModel?.Disabled).IsEqualTo(true);
+        await Assert.That(restored.MarksModel?.Disabled ?? false).IsTrue();
         await Assert.That(restored.MarksModel?.Models?[0]?.Width).IsEqualTo(0.6f);
         await Assert.That(restored.MarksModel?.Models?[0]?.WidthMax).IsEqualTo(25f);
         await Assert.That(restored.MarksModel?.Models?[0]?.CondMaterialId).IsEqualTo((byte)5);

@@ -47,7 +47,7 @@ CPlugShader 0x09002000
 
 0x01C [MP3, TMT, MP4, TM2020]
   version
-  CPlugFileText (external)
+  CPlugFileText* (external)
   CMwNod (external)
 
 0x01D [MP3, TMT, MP4, TM2020]

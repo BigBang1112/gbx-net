@@ -34,12 +34,274 @@ public partial class CPlugAnimClip : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09135000;
 
+    private int flagsVersion;
+    [AppliedWithChunk<Chunk09135000>]
+    public int FlagsVersion
+    {
+        get => this.flagsVersion;
+        set => this.flagsVersion = value;
+    }
+
+    private string? name;
+    [AppliedWithChunk<Chunk09135000>]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private CPlugAnimSkelBaked? baked;
+    [AppliedWithChunk<Chunk09135000>]
+    public CPlugAnimSkelBaked? Baked
+    {
+        get => this.baked;
+        set => this.baked = value;
+    }
+
+    private CPlugAnimSkelEdition? edition;
+    [AppliedWithChunk<Chunk09135000>(2)]
+    public CPlugAnimSkelEdition? Edition
+    {
+        get => this.edition;
+        set => this.edition = value;
+    }
+
+    private ClipFlags? flags;
+    [AppliedWithChunk<Chunk09135000>(3)]
+    public ClipFlags? Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAnimClip)clone).flagsVersion = context.Clone(this.flagsVersion)!;
+        ((CPlugAnimClip)clone).name = context.Clone(this.name)!;
+        ((CPlugAnimClip)clone).baked = context.Clone(this.baked)!;
+        ((CPlugAnimClip)clone).edition = context.Clone(this.edition)!;
+        ((CPlugAnimClip)clone).flags = context.Clone(this.flags)!;
     }
 
     public CPlugAnimClip()
     {
     }
+
+    /// <summary>
+    /// animation clip
+    /// </summary>
+    [Chunk(0x09135000, "animation clip")]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
+    public partial class Chunk09135000 : Chunk<CPlugAnimClip>, IVersionable
+    {
+        public override uint Id => 0x09135000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09135000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09135000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09135000)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugAnimClip n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Int32(ref n.flagsVersion);
+            rw.Id(ref n.name);
+            rw.NodeRef<CPlugAnimSkelBaked>(ref n.baked);
+
+            if (Version >= 2)
+            {
+                rw.NodeRef<CPlugAnimSkelEdition>(ref n.edition);
+            }
+
+            if (Version >= 3)
+            {
+                rw.ReadableWritable<ClipFlags>(ref n.flags, version: n. FlagsVersion);
+            }
+        }
+    }
+
+    public partial class ClipFlags : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private bool u01;
+        public bool U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float worldSpeedKmh;
+        public float WorldSpeedKmh
+        {
+            get => this.worldSpeedKmh;
+            set => this.worldSpeedKmh = value;
+        }
+
+        private float minPlaySpeed;
+        public float MinPlaySpeed
+        {
+            get => this.minPlaySpeed;
+            set => this.minPlaySpeed = value;
+        }
+
+        private float maxPlaySpeed;
+        public float MaxPlaySpeed
+        {
+            get => this.maxPlaySpeed;
+            set => this.maxPlaySpeed = value;
+        }
+
+        private bool u02;
+        public bool U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? differenceFromClip;
+        public string? DifferenceFromClip
+        {
+            get => this.differenceFromClip;
+            set => this.differenceFromClip = value;
+        }
+
+        private bool u03;
+        public bool U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private float playSpeed;
+        public float PlaySpeed
+        {
+            get => this.playSpeed;
+            set => this.playSpeed = value;
+        }
+
+        private bool u04;
+        public bool U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private byte u05;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int alignOffset;
+        public int AlignOffset
+        {
+            get => this.alignOffset;
+            set => this.alignOffset = value;
+        }
+
+        private bool isPartial;
+        public bool IsPartial
+        {
+            get => this.isPartial;
+            set => this.isPartial = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ClipFlags)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ClipFlags)clone).u01 = context.Clone(this.u01)!;
+            ((ClipFlags)clone).worldSpeedKmh = context.Clone(this.worldSpeedKmh)!;
+            ((ClipFlags)clone).minPlaySpeed = context.Clone(this.minPlaySpeed)!;
+            ((ClipFlags)clone).maxPlaySpeed = context.Clone(this.maxPlaySpeed)!;
+            ((ClipFlags)clone).u02 = context.Clone(this.u02)!;
+            ((ClipFlags)clone).differenceFromClip = context.Clone(this.differenceFromClip)!;
+            ((ClipFlags)clone).u03 = context.Clone(this.u03)!;
+            ((ClipFlags)clone).playSpeed = context.Clone(this.playSpeed)!;
+            ((ClipFlags)clone).u04 = context.Clone(this.u04)!;
+            ((ClipFlags)clone).u05 = context.Clone(this.u05)!;
+            ((ClipFlags)clone).alignOffset = context.Clone(this.alignOffset)!;
+            ((ClipFlags)clone).isPartial = context.Clone(this.isPartial)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Boolean(ref this.u01);
+            rw.Single(ref this.worldSpeedKmh);
+            rw.Single(ref this.minPlaySpeed);
+            rw.Single(ref this.maxPlaySpeed);
+            rw.Boolean(ref this.u02);
+            rw.Id(ref this.differenceFromClip);
+
+            if (v >= 1)
+            {
+                rw.Boolean(ref this.u03);
+            }
+
+            if (v >= 2)
+            {
+                rw.Single(ref this.playSpeed);
+            }
+
+            if (v >= 3)
+            {
+                rw.Boolean(ref this.u04);
+            }
+
+            if (v >= 4)
+            {
+                rw.Byte(ref this.u05);
+            }
+
+            if (v >= 5)
+            {
+                rw.Int32(ref this.alignOffset);
+            }
+
+            if (v >= 6)
+            {
+                rw.Boolean(ref this.isPartial);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x09135000 => new Chunk09135000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

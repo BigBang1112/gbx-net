@@ -1,1 +1,9 @@
 CPlugScriptWithSettings 0x09083000
+
+0x000 [MP4, TM2020] // script and settings
+  CPlugFileTextScript* Script
+  int SettingCount (local, write: "n.Settings?.Length ?? 0")
+  int SettingsVersion
+  if SettingsVersion != 0
+    throw
+  CScriptSetting[SettingCount] Settings

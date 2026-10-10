@@ -29,17 +29,42 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x09041000)]
-public partial class CPlugFileText : CPlugFile, IClass
+public partial class CPlugFileText : CPlugFile, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x09041000;
 
+    private string? text;
+    public string? Text
+    {
+        get => this.text;
+        set => this.text = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugFileText)clone).text = context.Clone(this.text)!;
     }
 
     public CPlugFileText()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.String(ref this.text);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 }

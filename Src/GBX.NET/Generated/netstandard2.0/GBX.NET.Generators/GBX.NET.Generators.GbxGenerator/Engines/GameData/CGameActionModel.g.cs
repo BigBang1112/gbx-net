@@ -34,7 +34,7 @@ public partial class CGameActionModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E008000;
 
-    private bool useVehicleGuns;
+    private bool useVehicleGuns = true;
     [AppliedWithChunk<Chunk2E008000>(31)]
     public bool UseVehicleGuns
     {
@@ -50,12 +50,28 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.bulletModels_Nadeo = value;
     }
 
-    private string? actionName;
-    [AppliedWithChunk<Chunk2E008000>(14)]
-    public string? ActionName
+    private CPlugShieldModel? shieldModel;
+    [AppliedWithChunk<Chunk2E008000>(25)]
+    public CPlugShieldModel? ShieldModel
     {
-        get => this.actionName;
-        set => this.actionName = value;
+        get => this.shieldModel;
+        set => this.shieldModel = value;
+    }
+
+    private LegacyShieldModel? legacyShield;
+    [AppliedWithChunk<Chunk2E008000>(24, 24)]
+    public LegacyShieldModel? LegacyShield
+    {
+        get => this.legacyShield;
+        set => this.legacyShield = value;
+    }
+
+    private string? name;
+    [AppliedWithChunk<Chunk2E008000>(23)]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
     }
 
     private int inventoryItemClass;
@@ -64,6 +80,14 @@ public partial class CGameActionModel : CMwNod, IClass
     {
         get => this.inventoryItemClass;
         set => this.inventoryItemClass = value;
+    }
+
+    private int[]? legacyInventoryValues;
+    [AppliedWithChunk<Chunk2E008000>(21, 23)]
+    public int[]? LegacyInventoryValues
+    {
+        get => this.legacyInventoryValues;
+        set => this.legacyInventoryValues = value;
     }
 
     private int spriteBlockVersion;
@@ -106,8 +130,40 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.beams = value;
     }
 
+    private bool isCustom;
+    [AppliedWithChunk<Chunk2E008000>(15)]
+    public bool IsCustom
+    {
+        get => this.isCustom;
+        set => this.isCustom = value;
+    }
+
+    private string actionName = "Action";
+    [AppliedWithChunk<Chunk2E008000>(14)]
+    public string ActionName
+    {
+        get => this.actionName;
+        set => this.actionName = value;
+    }
+
+    private int actionType;
+    [AppliedWithChunk<Chunk2E008000>(13)]
+    public int ActionType
+    {
+        get => this.actionType;
+        set => this.actionType = value;
+    }
+
+    private string gaugeId = "FXGauge_Gauge_EnergyBall_Normal";
+    [AppliedWithChunk<Chunk2E008000>(9)]
+    public string GaugeId
+    {
+        get => this.gaugeId;
+        set => this.gaugeId = value;
+    }
+
     private ScriptParams? cooldown;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(8)]
     public ScriptParams? Cooldown
     {
         get => this.cooldown;
@@ -154,6 +210,38 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.projectiles = value;
     }
 
+    private int soundBlockVersion = 2;
+    [AppliedWithChunk<Chunk2E008000>(5)]
+    public int SoundBlockVersion
+    {
+        get => this.soundBlockVersion;
+        set => this.soundBlockVersion = value;
+    }
+
+    private int particleBlockVersion = 1;
+    [AppliedWithChunk<Chunk2E008000>(5)]
+    public int ParticleBlockVersion
+    {
+        get => this.particleBlockVersion;
+        set => this.particleBlockVersion = value;
+    }
+
+    private string? legacyText;
+    [AppliedWithChunk<Chunk2E008000>]
+    public string? LegacyText
+    {
+        get => this.legacyText;
+        set => this.legacyText = value;
+    }
+
+    private CPlugBulletModel[]? bulletModels;
+    [AppliedWithChunk<Chunk2E008000>(0, 5)]
+    public CPlugBulletModel[]? BulletModels
+    {
+        get => this.bulletModels;
+        set => this.bulletModels = value;
+    }
+
     private CPlugAnimFile? anim;
     [AppliedWithChunk<Chunk2E008000>]
     public CPlugAnimFile? Anim
@@ -162,28 +250,60 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.anim = value;
     }
 
+    private CPlugFileTextScript? legacyScript;
+    [AppliedWithChunk<Chunk2E008000>(0, 10)]
+    public CPlugFileTextScript? LegacyScript
+    {
+        get => this.legacyScript;
+        set => this.legacyScript = value;
+    }
+
     private CPlugScriptWithSettings? script;
-    [AppliedWithChunk<Chunk2E008000>]
+    [AppliedWithChunk<Chunk2E008000>(11)]
     public CPlugScriptWithSettings? Script
     {
         get => this.script;
         set => this.script = value;
     }
 
-    private string? icon;
+    private CPlugBitmap? legacyIcon;
+    [AppliedWithChunk<Chunk2E008000>(0, 11)]
+    public CPlugBitmap? LegacyIcon
+    {
+        get => this.legacyIcon;
+        set => this.legacyIcon = value;
+    }
+
+    private string? iconRef;
     [AppliedWithChunk<Chunk2E008000>(12)]
-    public string? Icon
+    public string? IconRef
+    {
+        get => this.iconRef;
+        set => this.iconRef = value;
+    }
+
+    private CPlugFileImg? icon;
+    [AppliedWithChunk<Chunk2E008000>(12)]
+    public CPlugFileImg? Icon
     {
         get => this.icon;
         set => this.icon = value;
     }
 
-    private string? crosshair;
+    private string? crossHairRef;
     [AppliedWithChunk<Chunk2E008000>(12)]
-    public string? Crosshair
+    public string? CrossHairRef
     {
-        get => this.crosshair;
-        set => this.crosshair = value;
+        get => this.crossHairRef;
+        set => this.crossHairRef = value;
+    }
+
+    private CPlugFileImg? crossHair;
+    [AppliedWithChunk<Chunk2E008000>(12)]
+    public CPlugFileImg? CrossHair
+    {
+        get => this.crossHair;
+        set => this.crossHair = value;
     }
 
     private ParticleBlock[]? particleBlocks;
@@ -202,97 +322,128 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.soundBlocks = value;
     }
 
+    private bool legacyFlag;
+    [AppliedWithChunk<Chunk2E008000>(20)]
+    public bool LegacyFlag
+    {
+        get => this.legacyFlag;
+        set => this.legacyFlag = value;
+    }
+
+    private bool isLockModeActive;
+    [AppliedWithChunk<Chunk2E008000>(27)]
+    public bool IsLockModeActive
+    {
+        get => this.isLockModeActive;
+        set => this.isLockModeActive = value;
+    }
+
+    private LegacyLockModeData? legacyLockMode;
+    [AppliedWithChunk<Chunk2E008000>(28, 28)]
+    public LegacyLockModeData? LegacyLockMode
+    {
+        get => this.legacyLockMode;
+        set => this.legacyLockMode = value;
+    }
+
+    private int[]? legacyLockModeValues;
+    [AppliedWithChunk<Chunk2E008000>(27, 27)]
+    public int[]? LegacyLockModeValues
+    {
+        get => this.legacyLockModeValues;
+        set => this.legacyLockModeValues = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameActionModel)clone).useVehicleGuns = context.Clone(this.useVehicleGuns)!;
         ((CGameActionModel)clone).bulletModels_Nadeo = context.CloneArray(this.bulletModels_Nadeo)!;
-        ((CGameActionModel)clone).actionName = context.Clone(this.actionName)!;
+        ((CGameActionModel)clone).shieldModel = context.Clone(this.shieldModel)!;
+        ((CGameActionModel)clone).legacyShield = context.Clone(this.legacyShield)!;
+        ((CGameActionModel)clone).name = context.Clone(this.name)!;
         ((CGameActionModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
+        ((CGameActionModel)clone).legacyInventoryValues = context.CloneArray(this.legacyInventoryValues)!;
         ((CGameActionModel)clone).spriteBlockVersion = context.Clone(this.spriteBlockVersion)!;
         ((CGameActionModel)clone).spriteBlocks = context.CloneArray(this.spriteBlocks)!;
         ((CGameActionModel)clone).description = context.Clone(this.description)!;
         ((CGameActionModel)clone).beamVersion = context.Clone(this.beamVersion)!;
         ((CGameActionModel)clone).beams = context.CloneArray(this.beams)!;
+        ((CGameActionModel)clone).isCustom = context.Clone(this.isCustom)!;
+        ((CGameActionModel)clone).actionName = context.Clone(this.actionName)!;
+        ((CGameActionModel)clone).actionType = context.Clone(this.actionType)!;
+        ((CGameActionModel)clone).gaugeId = context.Clone(this.gaugeId)!;
         ((CGameActionModel)clone).cooldown = context.Clone(this.cooldown)!;
         ((CGameActionModel)clone).scriptParamsVersion = context.Clone(this.scriptParamsVersion)!;
         ((CGameActionModel)clone).actionScriptEffectVersion = context.Clone(this.actionScriptEffectVersion)!;
         ((CGameActionModel)clone).actionScriptEffects = context.CloneArray(this.actionScriptEffects)!;
         ((CGameActionModel)clone).customBulletVersion = context.Clone(this.customBulletVersion)!;
         ((CGameActionModel)clone).projectiles = context.CloneArray(this.projectiles)!;
+        ((CGameActionModel)clone).soundBlockVersion = context.Clone(this.soundBlockVersion)!;
+        ((CGameActionModel)clone).particleBlockVersion = context.Clone(this.particleBlockVersion)!;
+        ((CGameActionModel)clone).legacyText = context.Clone(this.legacyText)!;
+        ((CGameActionModel)clone).bulletModels = context.CloneArray(this.bulletModels)!;
         ((CGameActionModel)clone).anim = context.Clone(this.anim)!;
+        ((CGameActionModel)clone).legacyScript = context.Clone(this.legacyScript)!;
         ((CGameActionModel)clone).script = context.Clone(this.script)!;
+        ((CGameActionModel)clone).legacyIcon = context.Clone(this.legacyIcon)!;
+        ((CGameActionModel)clone).iconRef = context.Clone(this.iconRef)!;
         ((CGameActionModel)clone).icon = context.Clone(this.icon)!;
-        ((CGameActionModel)clone).crosshair = context.Clone(this.crosshair)!;
+        ((CGameActionModel)clone).crossHairRef = context.Clone(this.crossHairRef)!;
+        ((CGameActionModel)clone).crossHair = context.Clone(this.crossHair)!;
         ((CGameActionModel)clone).particleBlocks = context.CloneArray(this.particleBlocks)!;
         ((CGameActionModel)clone).soundBlocks = context.CloneArray(this.soundBlocks)!;
+        ((CGameActionModel)clone).legacyFlag = context.Clone(this.legacyFlag)!;
+        ((CGameActionModel)clone).isLockModeActive = context.Clone(this.isLockModeActive)!;
+        ((CGameActionModel)clone).legacyLockMode = context.Clone(this.legacyLockMode)!;
+        ((CGameActionModel)clone).legacyLockModeValues = context.CloneArray(this.legacyLockModeValues)!;
     }
 
     public CGameActionModel()
     {
     }
 
-    [Chunk(0x2E008000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// action, animation and script
+    /// </summary>
+    [Chunk(0x2E008000, "action, animation and script")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 22, 31, -1)]
     public partial class Chunk2E008000 : SkippableChunk<CGameActionModel>, IVersionable
     {
         public override uint Id => 0x2E008000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugShieldModel? U01;
-        public int U02;
-        public int U03;
-        public bool U04;
-        public int U05;
-        public string? U06;
-        public int U07 = 2;
-        public int U08 = 1;
-        public string? U09;
-        public CPlugBulletModel[]? U10;
-        public CPlugFileTextScript? U11;
-        public CPlugFileTextScript? U12;
-        public CPlugBitmap? U13;
-        public bool U14;
-        public bool U99;
-        public int U16;
-        public float U17;
-        public int U18;
-        public bool U19;
-        public int U20;
-        public int U21;
-        public bool U22;
+
+        public Chunk2E008000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E008000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 22;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 31;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E008000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E008000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E008000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E008000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk2E008000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk2E008000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk2E008000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk2E008000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk2E008000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk2E008000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk2E008000)clone).U10 = context.CloneArray(this.U10)!;
-            ((Chunk2E008000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk2E008000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk2E008000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk2E008000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk2E008000)clone).U99 = context.Clone(this.U99)!;
-            ((Chunk2E008000)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk2E008000)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk2E008000)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk2E008000)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk2E008000)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk2E008000)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk2E008000)clone).U22 = context.Clone(this.U22)!;
         }
 
         public override void ReadWrite(CGameActionModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+
+            if (Version> 31)
+            {
+                throw new NotSupportedException();
+            }
 
             if (Version >= 31)
             {
@@ -306,17 +457,17 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 25)
             {
-                rw.NodeRef<CPlugShieldModel>(ref U01);
+                rw.NodeRef<CPlugShieldModel>(ref n.shieldModel);
             }
 
             if (Version == 24)
             {
-                throw new NotSupportedException();
+                rw.ReadableWritable<LegacyShieldModel>(ref n.legacyShield, version: Version);
             }
 
             if (Version >= 23)
             {
-                rw.String(ref n.actionName);
+                rw.String(ref n.name);
             }
 
             if (Version >= 22)
@@ -328,8 +479,7 @@ public partial class CGameActionModel : CMwNod, IClass
             {
                 if (Version <= 23)
                 {
-                    rw.Int32(ref U02);
-                    rw.Int32(ref U03);
+                    rw.Array<int>(ref n.legacyInventoryValues!, 2);
                 }
             }
 
@@ -352,7 +502,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 15)
             {
-                rw.Boolean(ref U04);
+                rw.Boolean(ref n.isCustom);
             }
 
             if (Version >= 26)
@@ -370,17 +520,20 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 13)
             {
-                rw.Int32(ref U05);
+                rw.Int32(ref n.actionType);
             }
 
             if (Version >= 9)
             {
-                rw.Id(ref U06);
+                rw.Id(ref n.gaugeId);
             }
 
             if (Version <= 9)
             {
-                rw.ReadableWritable<ScriptParams>(ref n.cooldown, version: 2);
+                if (Version >= 8)
+                {
+                    rw.ReadableWritable<ScriptParams>(ref n.cooldown, version: 2);
+                }
             }
 
             if (Version >= 10)
@@ -403,76 +556,216 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.Int32(ref U07);
-                rw.Int32(ref U08);
+                rw.Int32(ref n.soundBlockVersion);
+                rw.Int32(ref n.particleBlockVersion);
             }
 
-            rw.String(ref U09);
+            rw.String(ref n.legacyText);
 
             if (Version <= 5)
             {
-                rw.ArrayNodeRef<CPlugBulletModel>(ref U10!);
+                rw.ArrayNodeRef<CPlugBulletModel>(ref n.bulletModels!);
             }
 
             rw.NodeRef<CPlugAnimFile>(ref n.anim);
 
             if (Version <= 10)
             {
-                rw.NodeRef<CPlugFileTextScript>(ref U11);
-                rw.NodeRef<CPlugScriptWithSettings>(ref n.script);
+                rw.NodeRef<CPlugFileTextScript>(ref n.legacyScript);
             }
 
             if (Version >= 11)
             {
                 rw.NodeRef<CPlugScriptWithSettings>(ref n.script);
-                rw.NodeRef<CPlugFileTextScript>(ref U12);
             }
 
             if (Version <= 11)
             {
-                rw.NodeRef<CPlugBitmap>(ref U13);
+                rw.NodeRef<CPlugBitmap>(ref n.legacyIcon);
             }
 
             if (Version >= 12)
             {
-                rw.String(ref n.icon);
-                rw.String(ref n.crosshair);
+                rw.String(ref n.iconRef);
+
+                if (n.IconRef== null || n.IconRef== "")
+                {
+                    rw.NodeRef<CPlugFileImg>(ref n.icon);
+                }
+
+                rw.String(ref n.crossHairRef);
+
+                if (n.CrossHairRef== null || n.CrossHairRef== "")
+                {
+                    rw.NodeRef<CPlugFileImg>(ref n.crossHair);
+                }
             }
 
             if (Version >= 1)
             {
-                rw.ArrayReadableWritable<ParticleBlock>(ref n.particleBlocks!, version: Version);
-                rw.ArrayReadableWritable<SoundBlock>(ref n.soundBlocks!, version: Version);
+                rw.ArrayReadableWritable<ParticleBlock>(ref n.particleBlocks!, version: n. ParticleBlockVersion);
+                rw.ArrayReadableWritable<SoundBlock>(ref n.soundBlocks!, version: n. SoundBlockVersion);
             }
 
             if (Version >= 20)
             {
-                rw.Boolean(ref U14);
+                rw.Boolean(ref n.legacyFlag);
             }
 
             if (Version == 28)
             {
-                rw.Boolean(ref U99);
+                rw.Boolean(ref n.isLockModeActive);
 
-                if (U99)
+                if (n.IsLockModeActive)
                 {
-                    rw.Int32(ref U16);
-                    rw.Single(ref U17);
-                    rw.Int32(ref U18);
+                    rw.ReadableWritable<LegacyLockModeData>(ref n.legacyLockMode, version: Version);
                 }
             }
 
             if (Version == 27)
             {
-                rw.Boolean(ref U19);
-                rw.Int32(ref U20);
-                rw.Int32(ref U21);
+                rw.Boolean(ref n.isLockModeActive);
+                rw.Array<int>(ref n.legacyLockModeValues!, 2);
             }
 
             if (Version >= 29)
             {
-                rw.Boolean(ref U22);
+                rw.Boolean(ref n.isLockModeActive);
             }
+        }
+    }
+
+    public partial class LegacyShieldModel : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? shapeRef;
+        public string? ShapeRef
+        {
+            get => this.shapeRef;
+            set => this.shapeRef = value;
+        }
+
+        private CPlugSurface? shape;
+        public CPlugSurface? Shape
+        {
+            get => this.shape;
+            set => this.shape = value;
+        }
+
+        private string? shapeVisModelRef;
+        public string? ShapeVisModelRef
+        {
+            get => this.shapeVisModelRef;
+            set => this.shapeVisModelRef = value;
+        }
+
+        private CPlugSolid2Model? shapeVisModel;
+        public CPlugSolid2Model? ShapeVisModel
+        {
+            get => this.shapeVisModel;
+            set => this.shapeVisModel = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyShieldModel)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyShieldModel)clone).shapeRef = context.Clone(this.shapeRef)!;
+            ((LegacyShieldModel)clone).shape = context.Clone(this.shape)!;
+            ((LegacyShieldModel)clone).shapeVisModelRef = context.Clone(this.shapeVisModelRef)!;
+            ((LegacyShieldModel)clone).shapeVisModel = context.Clone(this.shapeVisModel)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.shapeRef);
+
+            if (ShapeRef== null || ShapeRef== "")
+            {
+                rw.NodeRef<CPlugSurface>(ref this.shape);
+            }
+
+            rw.String(ref this.shapeVisModelRef);
+
+            if (ShapeVisModelRef== null || ShapeVisModelRef== "")
+            {
+                rw.NodeRef<CPlugSolid2Model>(ref this.shapeVisModel);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyLockModeData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyLockModeData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyLockModeData)clone).u01 = context.Clone(this.u01)!;
+            ((LegacyLockModeData)clone).u02 = context.Clone(this.u02)!;
+            ((LegacyLockModeData)clone).u03 = context.Clone(this.u03)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Single(ref this.u02);
+            rw.Int32(ref this.u03);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -485,6 +778,22 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.keys = value;
         }
 
+        private CPlugFileImg? legacyImage;
+        public CPlugFileImg? LegacyImage
+        {
+            get => this.legacyImageFile?.GetNode(ref this.legacyImage) ?? this.legacyImage;
+            set => this.legacyImage = value;
+        }
+        private Components.GbxRefTableFile? legacyImageFile;
+
+        public Components.GbxRefTableFile? LegacyImageFile
+        {
+            get => legacyImageFile;
+            set => legacyImageFile = value;
+        }
+
+        public CPlugFileImg? GetLegacyImage(GbxReadSettings settings = default, bool exceptions = false) => legacyImageFile?.GetNode(ref legacyImage, settings, exceptions) ?? legacyImage;
+
         private bool u01;
         public bool U01
         {
@@ -492,11 +801,18 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u01 = value;
         }
 
-        private CPlugFileImg? u02;
-        public CPlugFileImg? U02
+        private string? imageRef;
+        public string? ImageRef
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.imageRef;
+            set => this.imageRef = value;
+        }
+
+        private CPlugFileImg? image;
+        public CPlugFileImg? Image
+        {
+            get => this.image;
+            set => this.image = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -510,18 +826,31 @@ public partial class CGameActionModel : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((SpriteBlock)clone).keys = context.CloneArray(this.keys)!;
+            ((SpriteBlock)clone).legacyImage = context.Clone(this.legacyImage)!;
             ((SpriteBlock)clone).u01 = context.Clone(this.u01)!;
-            ((SpriteBlock)clone).u02 = context.Clone(this.u02)!;
+            ((SpriteBlock)clone).imageRef = context.Clone(this.imageRef)!;
+            ((SpriteBlock)clone).image = context.Clone(this.image)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.ArrayReadableWritable<SpriteKey>(ref this.keys!, version: v);
+
+            if (v == 0)
+            {
+                rw.NodeRef<CPlugFileImg>(ref this.legacyImage, ref this.legacyImageFile);
+            }
+
             rw.Boolean(ref this.u01);
 
             if (v >= 1)
             {
-                rw.NodeRef<CPlugFileImg>(ref this.u02);
+                rw.String(ref this.imageRef);
+
+                if (ImageRef== null || ImageRef== "")
+                {
+                    rw.NodeRef<CPlugFileImg>(ref this.image);
+                }
             }
         }
 
@@ -616,21 +945,21 @@ public partial class CGameActionModel : CMwNod, IClass
 
     public partial class ScriptParams : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
+        private int u01 = 300;
         public int U01
         {
             get => this.u01;
             set => this.u01 = value;
         }
 
-        private int u02;
+        private int u02 = 1600;
         public int U02
         {
             get => this.u02;
             set => this.u02 = value;
         }
 
-        private int u03;
+        private int u03 = 6400;
         public int U03
         {
             get => this.u03;
@@ -777,21 +1106,21 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u23 = value;
         }
 
-        private int u24;
+        private int u24 = 300;
         public int U24
         {
             get => this.u24;
             set => this.u24 = value;
         }
 
-        private int u25;
+        private int u25 = 1600;
         public int U25
         {
             get => this.u25;
             set => this.u25 = value;
         }
 
-        private int u26;
+        private int u26 = 6400;
         public int U26
         {
             get => this.u26;
@@ -805,7 +1134,7 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u27 = value;
         }
 
-        private bool u28;
+        private bool u28 = true;
         public bool U28
         {
             get => this.u28;
@@ -856,13 +1185,16 @@ public partial class CGameActionModel : CMwNod, IClass
         {
             if (v <= 2)
             {
-                rw.Int32(ref this.u01);
-                rw.Int32(ref this.u02);
-                rw.Int32(ref this.u03);
-                rw.Boolean(ref this.u04);
-                rw.Boolean(ref this.u05);
-                rw.Int32(ref this.u06);
-                rw.Boolean(ref this.u07);
+                if (v >= 1)
+                {
+                    rw.Int32(ref this.u01);
+                    rw.Int32(ref this.u02);
+                    rw.Int32(ref this.u03);
+                    rw.Boolean(ref this.u04);
+                    rw.Boolean(ref this.u05);
+                    rw.Int32(ref this.u06);
+                    rw.Boolean(ref this.u07);
+                }
             }
 
             if (v == 2)
@@ -1595,7 +1927,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (v >= 9)
             {
-                rw.NodeRef<CPlugParticleEmitterModel>(ref this.particleEmitter);
+                rw.Node<CPlugParticleEmitterModel>(ref this.particleEmitter);
             }
         }
 

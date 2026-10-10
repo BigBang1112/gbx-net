@@ -34,12 +34,75 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09083000;
 
+    private CPlugFileTextScript? script;
+    [AppliedWithChunk<Chunk09083000>]
+    public CPlugFileTextScript? Script
+    {
+        get => this.script;
+        set => this.script = value;
+    }
+
+    private int settingsVersion;
+    [AppliedWithChunk<Chunk09083000>]
+    public int SettingsVersion
+    {
+        get => this.settingsVersion;
+        set => this.settingsVersion = value;
+    }
+
+    private CScriptSetting[]? settings;
+    [AppliedWithChunk<Chunk09083000>]
+    public CScriptSetting[]? Settings
+    {
+        get => this.settings;
+        set => this.settings = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugScriptWithSettings)clone).script = context.Clone(this.script)!;
+        ((CPlugScriptWithSettings)clone).settingsVersion = context.Clone(this.settingsVersion)!;
+        ((CPlugScriptWithSettings)clone).settings = context.CloneArray(this.settings)!;
     }
 
     public CPlugScriptWithSettings()
     {
     }
+
+    /// <summary>
+    /// script and settings
+    /// </summary>
+    [Chunk(0x09083000, "script and settings")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09083000 : Chunk<CPlugScriptWithSettings>
+    {
+        public override uint Id => 0x09083000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugScriptWithSettings n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugFileTextScript>(ref n.script);
+            var settingCount = rw.Int32((rw.Writer is null ? default : (n.Settings?.Length?? 0)));
+            rw.Int32(ref n.settingsVersion);
+
+            if (n.SettingsVersion!= 0)
+            {
+                throw new NotSupportedException();
+            }
+
+            rw.ArrayReadableWritable<CScriptSetting>(ref n.settings!, settingCount);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x09083000 => new Chunk09083000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

@@ -880,9 +880,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.vehicleStyles = value;
     }
 
-    private CMwNod? itemPlacementGroups;
+    private NPlugItemPlacement_SGroups? itemPlacementGroups;
     [AppliedWithChunk<Chunk03033039>(2)]
-    public CMwNod? ItemPlacementGroups
+    public NPlugItemPlacement_SGroups? ItemPlacementGroups
     {
         get => this.itemPlacementGroups;
         set => this.itemPlacementGroups = value;
@@ -896,9 +896,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.adnRandomGenList = value;
     }
 
-    private CMwNod? fidBlockInfoGroups;
+    private CGameBlockInfoGroups? fidBlockInfoGroups;
     [AppliedWithChunk<Chunk03033039>(4)]
-    public CMwNod? FidBlockInfoGroups
+    public CGameBlockInfoGroups? FidBlockInfoGroups
     {
         get => this.fidBlockInfoGroupsFile?.GetNode(ref this.fidBlockInfoGroups) ?? this.fidBlockInfoGroups;
         set => this.fidBlockInfoGroups = value;
@@ -911,7 +911,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => fidBlockInfoGroupsFile = value;
     }
 
-    public CMwNod? GetFidBlockInfoGroups(GbxReadSettings settings = default, bool exceptions = false) => fidBlockInfoGroupsFile?.GetNode(ref fidBlockInfoGroups, settings, exceptions) ?? fidBlockInfoGroups;
+    public CGameBlockInfoGroups? GetFidBlockInfoGroups(GbxReadSettings settings = default, bool exceptions = false) => fidBlockInfoGroupsFile?.GetNode(ref fidBlockInfoGroups, settings, exceptions) ?? fidBlockInfoGroups;
 
     private SCustomizableDeco? customDeco;
     [AppliedWithChunk<Chunk03033039>(5)]
@@ -3024,7 +3024,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef<CMwNod>(ref n.itemPlacementGroups);
+                rw.NodeRef<NPlugItemPlacement_SGroups>(ref n.itemPlacementGroups);
             }
 
             if (Version >= 3)
@@ -3034,7 +3034,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef<CMwNod>(ref n.fidBlockInfoGroups, ref n.fidBlockInfoGroupsFile);
+                rw.NodeRef<CGameBlockInfoGroups>(ref n.fidBlockInfoGroups, ref n.fidBlockInfoGroupsFile);
             }
 
             if (Version >= 5)
