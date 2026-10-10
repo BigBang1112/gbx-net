@@ -53,6 +53,12 @@ public class CGameCommonItemEntityModelEditionLayoutTests
         await Assert.That(node.UseMeshAsHitShape).IsEqualTo(!details);
         if (details)
         {
+            await Assert.That(node.DynaPointModel!.Version).IsEqualTo(0);
+            await Assert.That(node.DynaPointModel.Center).IsEqualTo(new Vec3(1, 2, 3));
+            await Assert.That(node.DynaPointModel.Radius).IsEqualTo(0.5f);
+            await Assert.That(node.DynaPointModel.Friction).IsEqualTo(0.8f);
+            await Assert.That(node.DynaPointModel.Restitution).IsEqualTo(0.5f);
+            await Assert.That(node.DynaPointModel.GravityCoef).IsEqualTo(1f);
             await Assert.That(node.Images[0].ImageFile!.FilePath).IsEqualTo("Image.Gbx");
             await Assert.That(node.Images[1].Ref).IsEqualTo("Skin.dds");
             await Assert.That(node.SpriteParams[0].U01).IsEqualTo(new Vec3(1, 2, 3));

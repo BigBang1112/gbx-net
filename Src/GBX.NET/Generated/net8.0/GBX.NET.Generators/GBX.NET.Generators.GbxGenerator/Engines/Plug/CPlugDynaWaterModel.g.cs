@@ -29,76 +29,200 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x0915F000)]
-public partial class CPlugDynaWaterModel : CMwNod, IClass
+public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x0915F000;
 
+    private float gravity;
+    public float Gravity
+    {
+        get => this.gravity;
+        set => this.gravity = value;
+    }
+
+    private float u02 = 10;
+    public float U02
+    {
+        get => this.u02;
+        set => this.u02 = value;
+    }
+
+    private float u03 = 1;
+    public float U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
+    private Keys? u04;
+    public Keys? U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private Keys? u05;
+    public Keys? U05
+    {
+        get => this.u05;
+        set => this.u05 = value;
+    }
+
+    private Keys? u06;
+    public Keys? U06
+    {
+        get => this.u06;
+        set => this.u06 = value;
+    }
+
+    private float u07 = 1;
+    public float U07
+    {
+        get => this.u07;
+        set => this.u07 = value;
+    }
+
+    private Keys? u08;
+    public Keys? U08
+    {
+        get => this.u08;
+        set => this.u08 = value;
+    }
+
+    private float u09 = 1;
+    public float U09
+    {
+        get => this.u09;
+        set => this.u09 = value;
+    }
+
+    private CPlugSurface? surface;
+    public CPlugSurface? Surface
+    {
+        get => this.surfaceFile?.GetNode(ref this.surface) ?? this.surface;
+        set => this.surface = value;
+    }
+    private Components.GbxRefTableFile? surfaceFile;
+
+    public Components.GbxRefTableFile? SurfaceFile
+    {
+        get => surfaceFile;
+        set => surfaceFile = value;
+    }
+
+    public CPlugSurface? GetSurface(GbxReadSettings settings = default, bool exceptions = false) => surfaceFile?.GetNode(ref surface, settings, exceptions) ?? surface;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugDynaWaterModel)clone).gravity = context.Clone(this.gravity)!;
+        ((CPlugDynaWaterModel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugDynaWaterModel)clone).u03 = context.Clone(this.u03)!;
+        ((CPlugDynaWaterModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugDynaWaterModel)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugDynaWaterModel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugDynaWaterModel)clone).u07 = context.Clone(this.u07)!;
+        ((CPlugDynaWaterModel)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugDynaWaterModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugDynaWaterModel)clone).surface = context.Clone(this.surface)!;
     }
 
-    public CPlugDynaWaterModel()
+    public virtual void Read(GbxReader r, int v = 0)
     {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
     }
 
-    [Chunk(0x0915F000)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
+    }
+
+    /// <summary>
+    /// Water physics model
+    /// </summary>
+    [Chunk(0x0915F000, "Water physics model")]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk0915F000 : Chunk<CPlugDynaWaterModel>, IVersionable
     {
         public override uint Id => 0x0915F000;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public Keys? U04;
-        public Keys? U05;
-        public Keys? U06;
-        public float U07;
-        public Keys? U08;
-        public float U09;
-        public CPlugSurface? U10;
+
+        public Chunk0915F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0915F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0915F000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0915F000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0915F000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0915F000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0915F000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0915F000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0915F000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0915F000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0915F000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0915F000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0915F000)clone).U10 = context.Clone(this.U10)!;
-        }
-
-        public override void ReadWrite(CPlugDynaWaterModel n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.ReadableWritable<Keys>(ref U04, version: Version);
-            rw.ReadableWritable<Keys>(ref U05, version: Version);
-            rw.ReadableWritable<Keys>(ref U06, version: Version);
-            rw.Single(ref U07);
-            rw.ReadableWritable<Keys>(ref U08, version: Version);
-            rw.Single(ref U09);
-
-            if (Version >= 3)
-            {
-                rw.NodeRef<CPlugSurface>(ref U10);
-            }
         }
     }
 
     public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private CPlugCurveSimpleNod? curve;
+        public CPlugCurveSimpleNod? Curve
+        {
+            get => this.curveFile?.GetNode(ref this.curve) ?? this.curve;
+            set => this.curve = value;
+        }
+        private Components.GbxRefTableFile? curveFile;
+
+        public Components.GbxRefTableFile? CurveFile
+        {
+            get => curveFile;
+            set => curveFile = value;
+        }
+
+        public CPlugCurveSimpleNod? GetCurve(GbxReadSettings settings = default, bool exceptions = false) => curveFile?.GetNode(ref curve, settings, exceptions) ?? curve;
+
+        private int version = 3;
+        public int Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private byte flagsV1;
+        public byte FlagsV1
+        {
+            get => this.flagsV1;
+            set => this.flagsV1 = value;
+        }
+
+        private int capacity = 7;
+        public int Capacity
+        {
+            get => this.capacity;
+            set => this.capacity = value;
+        }
+
+        private ushort flags;
+        public ushort Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        private Vec2[]? values;
+        public Vec2[]? Values
+        {
+            get => this.values;
+            set => this.values = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Keys)MemberwiseClone();
@@ -109,13 +233,13 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Keys)clone).u01 = context.Clone(this.u01)!;
-            ((Keys)clone).u02 = context.Clone(this.u02)!;
+            ((Keys)clone).curve = context.Clone(this.curve)!;
+            ((Keys)clone).version = context.Clone(this.version)!;
+            ((Keys)clone).flagsV1 = context.Clone(this.flagsV1)!;
+            ((Keys)clone).capacity = context.Clone(this.capacity)!;
+            ((Keys)clone).flags = context.Clone(this.flags)!;
+            ((Keys)clone).values = context.CloneArray(this.values)!;
             ((Keys)clone).count = context.Clone(this.count)!;
-            ((Keys)clone).u03 = context.Clone(this.u03)!;
-            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
-            ((Keys)clone).u05 = context.Clone(this.u05)!;
-            ((Keys)clone).u06 = context.Clone(this.u06)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

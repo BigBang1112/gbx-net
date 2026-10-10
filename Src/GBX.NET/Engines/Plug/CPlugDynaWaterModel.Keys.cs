@@ -2,56 +2,52 @@
 
 public partial class CPlugDynaWaterModel
 {
-    public partial class Keys
+    public partial class Keys : IVersionable
     {
-        private CFuncKeysReal? u01;
-        public CFuncKeysReal? U01 { get => u01; set => u01 = value; }
-
-        private int u02;
-        /// <summary>
-        /// version
-        /// </summary>
-        public int U02 { get => u02; set => u02 = value; }
-
         private int count;
         public int Count { get => count; set => count = value; }
 
-        private short? u03;
-        public short? U03 { get => u03; set => u03 = value; }
-
-        private Vec2[]? u04;
-        public Vec2[]? U04 { get => u04; set => u04 = value; }
-
-        private int? u05;
-        public int? U05 { get => u05; set => u05 = value; }
-
-        private byte? u06;
-        public byte? U06 { get => u06; set => u06 = value; }
-
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (version >= 0)
+            if (version <= 0)
             {
-                rw.Int32(ref u02); // version
-                var count = rw.Int32(u04?.Length ?? 0);
-                switch (u02)
+                rw.NodeRef<CPlugCurveSimpleNod>(ref curve, ref curveFile);
+                if (rw.Reader is not null)
                 {
-                    case 1:
-                        rw.Byte(ref u06);
-                        break;
-                    case 2:
-                        rw.Int32(ref u05);
-                        break;
-                    case 3:
-                        rw.Int16(ref u03);
-                        break;
+                    var legacy = curve?.Chunks.Get<CPlugCurveSimpleNod.Chunk09185000>();
+                    Flags = curve?.Version2 switch
+                    {
+                        1 => (ushort)(legacy?.U01 > 0 ? 1 : 0),
+                        >= 3 => unchecked((ushort)(legacy?.U03 ?? 0)),
+                        _ => 0
+                    };
+                    Values = legacy?.U04 is null ? [] : Array.ConvertAll(legacy.U04, value => new Vec2(
+                        BitConverter.ToSingle(BitConverter.GetBytes((uint)value), 0),
+                        BitConverter.ToSingle(BitConverter.GetBytes((uint)(value >> 32)), 0)));
+                    count = Values.Length;
                 }
-                rw.Array<Vec2>(ref u04, count);
+                return;
             }
-            else
+
+            rw.VersionInt32(this);
+            count = rw.Int32(values?.Length ?? 0);
+            if (Version == 1)
             {
-                rw.NodeRef<CFuncKeysReal>(ref u01);
+                rw.Byte(ref flagsV1);
+                if (rw.Reader is not null)
+                {
+                    Flags = (ushort)(flagsV1 > 0 ? 1 : 0);
+                }
             }
+            if (Version == 2)
+            {
+                rw.Int32(ref capacity);
+            }
+            if (Version >= 3)
+            {
+                rw.UInt16(ref flags);
+            }
+            rw.Array<Vec2>(ref values, count);
         }
     }
 }

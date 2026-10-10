@@ -29,22 +29,245 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x09144000)]
-public partial class CPlugDynaObjectModel : CMwNod, IClass
+public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {
     [Hexadecimal]
     public static new uint Id => 0x09144000;
 
+    public int Version { get; set; } = 13;
+
+    private bool isStatic;
+    public bool IsStatic
+    {
+        get => this.isStatic;
+        set => this.isStatic = value;
+    }
+
+    private bool dynamizeOnSpawn;
+    public bool DynamizeOnSpawn
+    {
+        get => this.dynamizeOnSpawn;
+        set => this.dynamizeOnSpawn = value;
+    }
+
+    private CPlugSolid2Model? mesh;
+    public CPlugSolid2Model? Mesh
+    {
+        get => this.meshFile?.GetNode(ref this.mesh) ?? this.mesh;
+        set => this.mesh = value;
+    }
+    private Components.GbxRefTableFile? meshFile;
+
+    public Components.GbxRefTableFile? MeshFile
+    {
+        get => meshFile;
+        set => meshFile = value;
+    }
+
+    public CPlugSolid2Model? GetMesh(GbxReadSettings settings = default, bool exceptions = false) => meshFile?.GetNode(ref mesh, settings, exceptions) ?? mesh;
+
+    private CPlugSurface? dynaShape;
+    public CPlugSurface? DynaShape
+    {
+        get => this.dynaShapeFile?.GetNode(ref this.dynaShape) ?? this.dynaShape;
+        set => this.dynaShape = value;
+    }
+    private Components.GbxRefTableFile? dynaShapeFile;
+
+    public Components.GbxRefTableFile? DynaShapeFile
+    {
+        get => dynaShapeFile;
+        set => dynaShapeFile = value;
+    }
+
+    public CPlugSurface? GetDynaShape(GbxReadSettings settings = default, bool exceptions = false) => dynaShapeFile?.GetNode(ref dynaShape, settings, exceptions) ?? dynaShape;
+
+    private CPlugDynaModel? dynaModel;
+    public CPlugDynaModel? DynaModel
+    {
+        get => this.dynaModelFile?.GetNode(ref this.dynaModel) ?? this.dynaModel;
+        set => this.dynaModel = value;
+    }
+    private Components.GbxRefTableFile? dynaModelFile;
+
+    public Components.GbxRefTableFile? DynaModelFile
+    {
+        get => dynaModelFile;
+        set => dynaModelFile = value;
+    }
+
+    public CPlugDynaModel? GetDynaModel(GbxReadSettings settings = default, bool exceptions = false) => dynaModelFile?.GetNode(ref dynaModel, settings, exceptions) ?? dynaModel;
+
+    private CPlugSurface? staticShape;
+    public CPlugSurface? StaticShape
+    {
+        get => this.staticShapeFile?.GetNode(ref this.staticShape) ?? this.staticShape;
+        set => this.staticShape = value;
+    }
+    private Components.GbxRefTableFile? staticShapeFile;
+
+    public Components.GbxRefTableFile? StaticShapeFile
+    {
+        get => staticShapeFile;
+        set => staticShapeFile = value;
+    }
+
+    public CPlugSurface? GetStaticShape(GbxReadSettings settings = default, bool exceptions = false) => staticShapeFile?.GetNode(ref staticShape, settings, exceptions) ?? staticShape;
+
+    private float breakSpeedKmh = 100;
+    public float BreakSpeedKmh
+    {
+        get => this.breakSpeedKmh;
+        set => this.breakSpeedKmh = value;
+    }
+
+    private float mass = 10;
+    public float Mass
+    {
+        get => this.mass;
+        set => this.mass = value;
+    }
+
+    private float lightAliveDurationScMin = 5;
+    public float LightAliveDurationScMin
+    {
+        get => this.lightAliveDurationScMin;
+        set => this.lightAliveDurationScMin = value;
+    }
+
+    private float lightAliveDurationScMax = 7;
+    public float LightAliveDurationScMax
+    {
+        get => this.lightAliveDurationScMax;
+        set => this.lightAliveDurationScMax = value;
+    }
+
+    private int u01 = 1;
+    public int U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
+    private int u02 = 1;
+    public int U02
+    {
+        get => this.u02;
+        set => this.u02 = value;
+    }
+
+    private byte u03 = 4;
+    public byte U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
+    private byte u04;
+    public byte U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private int u05 = 1;
+    public int U05
+    {
+        get => this.u05;
+        set => this.u05 = value;
+    }
+
+    private int u06 = 10;
+    public int U06
+    {
+        get => this.u06;
+        set => this.u06 = value;
+    }
+
+    private byte u07;
+    public byte U07
+    {
+        get => this.u07;
+        set => this.u07 = value;
+    }
+
+    private int u08;
+    public int U08
+    {
+        get => this.u08;
+        set => this.u08 = value;
+    }
+
+    private int u09;
+    public int U09
+    {
+        get => this.u09;
+        set => this.u09 = value;
+    }
+
+    private CPlugAnimLocSimple? locAnim;
+    public CPlugAnimLocSimple? LocAnim
+    {
+        get => this.locAnimFile?.GetNode(ref this.locAnim) ?? this.locAnim;
+        set => this.locAnim = value;
+    }
+    private Components.GbxRefTableFile? locAnimFile;
+
+    public Components.GbxRefTableFile? LocAnimFile
+    {
+        get => locAnimFile;
+        set => locAnimFile = value;
+    }
+
+    public CPlugAnimLocSimple? GetLocAnim(GbxReadSettings settings = default, bool exceptions = false) => locAnimFile?.GetNode(ref locAnim, settings, exceptions) ?? locAnim;
+
+    private int u10;
+    public int U10
+    {
+        get => this.u10;
+        set => this.u10 = value;
+    }
+
+    private bool locAnimIsPhysical;
+    public bool LocAnimIsPhysical
+    {
+        get => this.locAnimIsPhysical;
+        set => this.locAnimIsPhysical = value;
+    }
+
+    private int u11;
+    public int U11
+    {
+        get => this.u11;
+        set => this.u11 = value;
+    }
+
+    private CPlugDynaWaterModel? waterModel;
+    public CPlugDynaWaterModel? WaterModel
+    {
+        get => this.waterModelFile?.GetNode(ref this.waterModel) ?? this.waterModel;
+        set => this.waterModel = value;
+    }
+    private Components.GbxRefTableFile? waterModelFile;
+
+    public Components.GbxRefTableFile? WaterModelFile
+    {
+        get => waterModelFile;
+        set => waterModelFile = value;
+    }
+
+    public CPlugDynaWaterModel? GetWaterModel(GbxReadSettings settings = default, bool exceptions = false) => waterModelFile?.GetNode(ref waterModel, settings, exceptions) ?? waterModel;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugDynaObjectModel)clone).Version = context.Clone(this.Version)!;
         ((CPlugDynaObjectModel)clone).isStatic = context.Clone(this.isStatic)!;
         ((CPlugDynaObjectModel)clone).dynamizeOnSpawn = context.Clone(this.dynamizeOnSpawn)!;
         ((CPlugDynaObjectModel)clone).mesh = context.Clone(this.mesh)!;
-        ((CPlugDynaObjectModel)clone).meshFile = context.Clone(this.meshFile)!;
         ((CPlugDynaObjectModel)clone).dynaShape = context.Clone(this.dynaShape)!;
-        ((CPlugDynaObjectModel)clone).dynaShapeFile = context.Clone(this.dynaShapeFile)!;
+        ((CPlugDynaObjectModel)clone).dynaModel = context.Clone(this.dynaModel)!;
         ((CPlugDynaObjectModel)clone).staticShape = context.Clone(this.staticShape)!;
-        ((CPlugDynaObjectModel)clone).staticShapeFile = context.Clone(this.staticShapeFile)!;
         ((CPlugDynaObjectModel)clone).breakSpeedKmh = context.Clone(this.breakSpeedKmh)!;
         ((CPlugDynaObjectModel)clone).mass = context.Clone(this.mass)!;
         ((CPlugDynaObjectModel)clone).lightAliveDurationScMin = context.Clone(this.lightAliveDurationScMin)!;
@@ -59,14 +282,139 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass
         ((CPlugDynaObjectModel)clone).u08 = context.Clone(this.u08)!;
         ((CPlugDynaObjectModel)clone).u09 = context.Clone(this.u09)!;
         ((CPlugDynaObjectModel)clone).locAnim = context.Clone(this.locAnim)!;
-        ((CPlugDynaObjectModel)clone).locAnimFile = context.Clone(this.locAnimFile)!;
         ((CPlugDynaObjectModel)clone).u10 = context.Clone(this.u10)!;
         ((CPlugDynaObjectModel)clone).locAnimIsPhysical = context.Clone(this.locAnimIsPhysical)!;
+        ((CPlugDynaObjectModel)clone).u11 = context.Clone(this.u11)!;
         ((CPlugDynaObjectModel)clone).waterModel = context.Clone(this.waterModel)!;
-        ((CPlugDynaObjectModel)clone).Version = context.Clone(this.Version)!;
     }
 
     public CPlugDynaObjectModel()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.VersionInt32(this);
+
+        if (Version >= 9)
+        {
+            rw.Boolean(ref this.isStatic);
+        }
+
+        if (Version >= 11)
+        {
+            rw.Boolean(ref this.dynamizeOnSpawn);
+        }
+
+        rw.NodeRef<CPlugSolid2Model>(ref this.mesh, ref this.meshFile);
+        rw.NodeRef<CPlugSurface>(ref this.dynaShape, ref this.dynaShapeFile);
+
+        if (Version >= 0 && Version <= 2)
+        {
+            rw.NodeRef<CPlugDynaModel>(ref this.dynaModel, ref this.dynaModelFile);
+
+            if (rw.Reader != null && dynaModel!= null)
+            {
+                if (rw.Reader is not null)
+                {
+                    Mass = dynaModel.LinearMass;
+                }
+            }
+        }
+
+        if (Version == 0)
+        {
+            if (rw.Reader is not null)
+            {
+                staticShape = dynaShape;
+            }
+            if (rw.Reader is not null)
+            {
+                staticShapeFile = dynaShapeFile;
+            }
+        }
+
+        if (Version >= 1)
+        {
+            rw.NodeRef<CPlugSurface>(ref this.staticShape, ref this.staticShapeFile);
+        }
+
+        if (Version >= 2)
+        {
+            rw.Single(ref this.breakSpeedKmh);
+        }
+
+        if (Version >= 3)
+        {
+            rw.Single(ref this.mass);
+        }
+
+        if (Version >= 5)
+        {
+            rw.Single(ref this.lightAliveDurationScMin);
+            rw.Single(ref this.lightAliveDurationScMax);
+        }
+
+        if (Version >= 4)
+        {
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Byte(ref this.u03);
+            rw.Byte(ref this.u04);
+            rw.Int32(ref this.u05);
+            rw.Int32(ref this.u06);
+        }
+
+        if (Version >= 6)
+        {
+            rw.Byte(ref this.u07);
+            rw.Int32(ref this.u08);
+            rw.Int32(ref this.u09);
+        }
+
+        if (Version >= 7)
+        {
+            rw.NodeRef<CPlugAnimLocSimple>(ref this.locAnim, ref this.locAnimFile);
+        }
+
+        if (Version >= 8)
+        {
+            rw.Int32(ref this.u10);
+        }
+
+        if (Version >= 10)
+        {
+            rw.Boolean(ref this.locAnimIsPhysical);
+        }
+
+        if (Version >= 0 && Version <= 9)
+        {
+            if (rw.Reader is not null)
+            {
+                LocAnimIsPhysical = false;
+            }
+        }
+
+        if (Version == 12)
+        {
+            rw.Int32(ref this.u11);
+        }
+
+        if (Version >= 13)
+        {
+            rw.NodeRef<CPlugDynaWaterModel>(ref this.waterModel, ref this.waterModelFile);
+        }
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 }

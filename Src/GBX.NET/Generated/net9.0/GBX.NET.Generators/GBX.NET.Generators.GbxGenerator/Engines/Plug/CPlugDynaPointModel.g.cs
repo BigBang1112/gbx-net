@@ -29,78 +29,57 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x090D7000)]
-public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
+public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {
     [Hexadecimal]
     public static new uint Id => 0x090D7000;
 
-    private int u01;
-    public int U01
+    public int Version { get; set; }
+
+    private Vec3 center;
+    public Vec3 Center
     {
-        get => this.u01;
-        set => this.u01 = value;
+        get => this.center;
+        set => this.center = value;
     }
 
-    private int u02;
-    public int U02
+    private float radius = 0.5f;
+    public float Radius
     {
-        get => this.u02;
-        set => this.u02 = value;
+        get => this.radius;
+        set => this.radius = value;
     }
 
-    private int u03;
-    public int U03
+    private float friction = 0.8f;
+    public float Friction
     {
-        get => this.u03;
-        set => this.u03 = value;
+        get => this.friction;
+        set => this.friction = value;
     }
 
-    private int u04;
-    public int U04
+    private float restitution = 0.5f;
+    public float Restitution
     {
-        get => this.u04;
-        set => this.u04 = value;
+        get => this.restitution;
+        set => this.restitution = value;
     }
 
-    private int u05;
-    public int U05
+    private float gravityCoef = 1;
+    public float GravityCoef
     {
-        get => this.u05;
-        set => this.u05 = value;
-    }
-
-    private int u06;
-    public int U06
-    {
-        get => this.u06;
-        set => this.u06 = value;
-    }
-
-    private int u07;
-    public int U07
-    {
-        get => this.u07;
-        set => this.u07 = value;
-    }
-
-    private int u08;
-    public int U08
-    {
-        get => this.u08;
-        set => this.u08 = value;
+        get => this.gravityCoef;
+        set => this.gravityCoef = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugDynaPointModel)clone).u01 = context.Clone(this.u01)!;
-        ((CPlugDynaPointModel)clone).u02 = context.Clone(this.u02)!;
-        ((CPlugDynaPointModel)clone).u03 = context.Clone(this.u03)!;
-        ((CPlugDynaPointModel)clone).u04 = context.Clone(this.u04)!;
-        ((CPlugDynaPointModel)clone).u05 = context.Clone(this.u05)!;
-        ((CPlugDynaPointModel)clone).u06 = context.Clone(this.u06)!;
-        ((CPlugDynaPointModel)clone).u07 = context.Clone(this.u07)!;
-        ((CPlugDynaPointModel)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugDynaPointModel)clone).Version = context.Clone(this.Version)!;
+        ((CPlugDynaPointModel)clone).center = context.Clone(this.center)!;
+        ((CPlugDynaPointModel)clone).radius = context.Clone(this.radius)!;
+        ((CPlugDynaPointModel)clone).friction = context.Clone(this.friction)!;
+        ((CPlugDynaPointModel)clone).restitution = context.Clone(this.restitution)!;
+        ((CPlugDynaPointModel)clone).gravityCoef = context.Clone(this.gravityCoef)!;
     }
 
     public CPlugDynaPointModel()
@@ -109,14 +88,12 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
-        rw.Int32(ref this.u01);
-        rw.Int32(ref this.u02);
-        rw.Int32(ref this.u03);
-        rw.Int32(ref this.u04);
-        rw.Int32(ref this.u05);
-        rw.Int32(ref this.u06);
-        rw.Int32(ref this.u07);
-        rw.Int32(ref this.u08);
+        rw.VersionInt32(this);
+        rw.Vec3(ref this.center);
+        rw.Single(ref this.radius);
+        rw.Single(ref this.friction);
+        rw.Single(ref this.restitution);
+        rw.Single(ref this.gravityCoef);
     }
 
     public virtual void Read(GbxReader r, int v = 0)

@@ -1,1 +1,49 @@
 CPlugDynaObjectModel 0x09144000
+
+archive
+  version = 13
+  v9+ (archive)
+    bool IsStatic
+  v11+ (archive)
+    bool DynamizeOnSpawn
+  CPlugSolid2Model Mesh (external)
+  CPlugSurface DynaShape (external)
+  v0..2 (archive)
+    CPlugDynaModel* DynaModel (external)
+    if rw.Reader != null && dynaModel != null
+      Mass = dynaModel.LinearMass
+  v0= (archive)
+    staticShape = dynaShape
+    staticShapeFile = dynaShapeFile
+  v1+ (archive)
+    CPlugSurface StaticShape (external)
+  v2+ (archive)
+    float BreakSpeedKmh = 100
+  v3+ (archive)
+    float Mass = 10
+  v5+ (archive)
+    float LightAliveDurationScMin = 5
+    float LightAliveDurationScMax = 7
+  v4+ (archive)
+    int U01 = 1
+    int U02 = 1
+    byte U03 = 4
+    byte U04
+    int U05 = 1
+    int U06 = 10
+  v6+ (archive)
+    byte U07
+    int U08
+    int U09
+  v7+ (archive)
+    CPlugAnimLocSimple LocAnim (external)
+  v8+ (archive)
+    int U10
+  v10+ (archive)
+    bool LocAnimIsPhysical
+  v0..9 (archive)
+    LocAnimIsPhysical = false
+  v12= (archive)
+    int U11
+  v13+ (archive)
+    CPlugDynaWaterModel* WaterModel (external)

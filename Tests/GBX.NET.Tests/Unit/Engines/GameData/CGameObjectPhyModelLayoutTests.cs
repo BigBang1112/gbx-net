@@ -89,7 +89,7 @@ public class CGameObjectPhyModelLayoutTests
             if (!paths)
             {
                 writer.Write(0); // Inline CPlugDynaPointModel archive version.
-                for (var i = 1; i < 8; i++) writer.Write(i * 10);
+                foreach (var value in new[] { 1f, 2f, 3f, 0.5f, 0.8f, 0.5f, 1f }) writer.Write(value);
             }
         }
         if (version >= 5) writer.Write(2); // EProgram.Turret.
@@ -166,6 +166,15 @@ public class CGameObjectPhyModelLayoutTests
         await Assert.That(node.Triggers!.Length).IsEqualTo(2);
         if (version >= 8) await Assert.That(node.TriggerActionVersion).IsEqualTo(triggerVersion);
         if (version >= 3) await Assert.That(node.DynaPointModel is not null).IsEqualTo(!paths);
+        if (version >= 3 && !paths)
+        {
+            await Assert.That(node.DynaPointModel!.Version).IsEqualTo(0);
+            await Assert.That(node.DynaPointModel.Center).IsEqualTo(new Vec3(1, 2, 3));
+            await Assert.That(node.DynaPointModel.Radius).IsEqualTo(0.5f);
+            await Assert.That(node.DynaPointModel.Friction).IsEqualTo(0.8f);
+            await Assert.That(node.DynaPointModel.Restitution).IsEqualTo(0.5f);
+            await Assert.That(node.DynaPointModel.GravityCoef).IsEqualTo(1f);
+        }
         if (version >= 9 && (version < 13 || !paths))
         {
             await Assert.That(node.Actions!.Length).IsEqualTo(2);

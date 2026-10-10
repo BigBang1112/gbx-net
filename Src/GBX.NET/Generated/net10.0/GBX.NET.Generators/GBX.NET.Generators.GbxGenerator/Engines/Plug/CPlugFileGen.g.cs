@@ -29,24 +29,153 @@ using global::TmEssentials;
 namespace GBX.NET.Engines.Plug;
 
 [Class(0x0902F000)]
-public partial class CPlugFileGen : CPlugFileImg, IClass
+public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x0902F000;
+
+    private int genKind;
+    [GameVersionDefault(GameVersion.TM2020, 54)]
+    public int GenKind
+    {
+        get => this.genKind;
+        set => this.genKind = value;
+    }
+
+    private int[]? intParams;
+    public int[]? IntParams
+    {
+        get => this.intParams;
+        set => this.intParams = value;
+    }
+
+    private Vec4[]? colorParams;
+    public Vec4[]? ColorParams
+    {
+        get => this.colorParams;
+        set => this.colorParams = value;
+    }
+
+    private float[]? realParams;
+    public float[]? RealParams
+    {
+        get => this.realParams;
+        set => this.realParams = value;
+    }
+
+    private string? script;
+    public string? Script
+    {
+        get => this.script;
+        set => this.script = value;
+    }
+
+    private CFuncKeysReal[]? functions;
+    public CFuncKeysReal[]? Functions
+    {
+        get => this.functions;
+        set => this.functions = value;
+    }
+
+    private CPlugFileImg[]? inputImages;
+    public CPlugFileImg[]? InputImages
+    {
+        get => this.inputImages;
+        set => this.inputImages = value;
+    }
+
+    private byte[]? pixelData;
+    public byte[]? PixelData
+    {
+        get => this.pixelData;
+        set => this.pixelData = value;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugFileGen)clone).genKind = context.Clone(this.genKind)!;
-        ((CPlugFileGen)clone).u01 = context.CloneArray(this.u01)!;
-        ((CPlugFileGen)clone).u02 = context.CloneArray(this.u02)!;
-        ((CPlugFileGen)clone).u03 = context.CloneArray(this.u03)!;
-        ((CPlugFileGen)clone).u04 = context.Clone(this.u04)!;
-        ((CPlugFileGen)clone).u05 = context.CloneArray(this.u05)!;
+        ((CPlugFileGen)clone).intParams = context.CloneArray(this.intParams)!;
+        ((CPlugFileGen)clone).colorParams = context.CloneArray(this.colorParams)!;
+        ((CPlugFileGen)clone).realParams = context.CloneArray(this.realParams)!;
+        ((CPlugFileGen)clone).script = context.Clone(this.script)!;
+        ((CPlugFileGen)clone).functions = context.CloneArray(this.functions)!;
+        ((CPlugFileGen)clone).inputImages = context.CloneArray(this.inputImages)!;
+        ((CPlugFileGen)clone).pixelData = context.CloneArray(this.pixelData)!;
         ((CPlugFileGen)clone).Version = context.Clone(this.Version)!;
     }
 
-    public CPlugFileGen()
+    public CPlugFileGen() : this(GameVersion.Unspecified)
     {
+    }
+
+    public CPlugFileGen(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TM2020)
+        {
+            genKind = 54;
+        }
+        else
+        {
+            genKind = 51;
+        }
+    }
+
+    public enum EGenKind
+    {
+        Checker,
+        LightMap,
+        Plain,
+        Point,
+        Shade,
+        Render,
+        RenderCube,
+        CubeNormals,
+        Identity,
+        Pixels,
+        Depth,
+        DepthCube,
+        RenderF,
+        Iradiance,
+        Specular,
+        TestNormal,
+        RandNormal,
+        SpecularCube,
+        HemiReflec,
+        CubeInvHemiReflec,
+        SpecularsLA,
+        HueGradient,
+        SLGradient,
+        VolumeRotate,
+        SpecularCubeVect,
+        TestMipMap,
+        SpecCubeVectRgb,
+        DdxInMipMap,
+        RandVolume,
+        Unalloc,
+        PotentialField,
+        RenderCubeF,
+        TestAnaglyph,
+        ACosSmoothInRange,
+        PerlinPerm,
+        PerlinPerm2D,
+        PerlinGrad3,
+        PerlinGrad3OfPerm,
+        Script,
+        Cube3x2_2d1RotCube,
+        Cube3x2_Ya1,
+        ShClampedCos,
+        Random,
+        HueSaturation,
+        SmEnergyHueIntens,
+        PerlinGrad3OfPerm2d,
+        PerlinGrad4OfPerm2d,
+        Simplex4,
+        InvalidData,
+        Callback,
+        Noise,
+        TransmittanceAccum,
+        Power,
+        HueMinMaxFromRGB,
     }
 }

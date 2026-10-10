@@ -1013,7 +1013,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v19+
     float?
   v20+
-    CPlugDynaWaterModel
+    CPlugDynaWaterModel*
 
 0x09E [MP4, TM2020]
   version
