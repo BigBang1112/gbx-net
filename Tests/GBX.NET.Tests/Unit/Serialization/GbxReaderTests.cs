@@ -121,6 +121,7 @@ public class GbxReaderTests
     }
 
     [Test]
+    [NotInParallel]
     public void ReadBoolean_Int32_IsDirtyThrows()
     {
         // Arrange
@@ -131,7 +132,16 @@ public class GbxReaderTests
         ms.Position = 0;
 
         // Act & Assert
-        Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean());
+        var strictBooleans = Gbx.StrictBooleans;
+        try
+        {
+            Gbx.StrictBooleans = true;
+            Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean());
+        }
+        finally
+        {
+            Gbx.StrictBooleans = strictBooleans;
+        }
     }
 
     [Test]
@@ -191,6 +201,7 @@ public class GbxReaderTests
     }
 
     [Test]
+    [NotInParallel]
     public void ReadBoolean_Byte_IsDirtyThrows()
     {
         // Arrange
@@ -202,7 +213,16 @@ public class GbxReaderTests
         ms.Position = 0;
 
         // Act & Assert
-        Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean(asByte: true));
+        var strictBooleans = Gbx.StrictBooleans;
+        try
+        {
+            Gbx.StrictBooleans = true;
+            Assert.Throws<BooleanOutOfRangeException>(() => r.ReadBoolean(asByte: true));
+        }
+        finally
+        {
+            Gbx.StrictBooleans = strictBooleans;
+        }
     }
 
     [Test]

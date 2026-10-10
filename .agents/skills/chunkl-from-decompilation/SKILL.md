@@ -33,7 +33,7 @@ Check chunk serializers (`Chunk` function implementations) to verify field order
 
 Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using verified decompilation findings. Investigate member names deeply and fill in as many as possible.
 
-- Add missing member names and update existing names when the exact name or a better meaning is verified.
+- Add missing member names and update existing names when the exact name or a better meaning is verified. **Prefer exact name.**
 - Create obsolete members where the current architecture allows it.
 - Keep unknown field names in archives when meaning is unverified. Remove unknown naming from chunks.
 - Set defaults found in constructors, except when they match the type's default value.

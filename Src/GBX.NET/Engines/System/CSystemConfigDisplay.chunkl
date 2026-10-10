@@ -1,6 +1,25 @@
 CSystemConfigDisplay 0x0B013000
 
-0x001 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x000 (skippable) // legacy display, quality and driver settings
+  int2 ScreenSizeFS
+  int ScreenSizeWin
+  int<ETexturesQuality> TexturesQuality
+  int<EColorDepth> ColorDepth
+  int<EShaderQualityOld> ShaderQualityOld
+  int<EAntialiasing> Antialiasing
+  int RefreshRate
+  bool VSync
+  bool FullScreen
+  int MaxFiltering
+  int<EShadows> Shadows
+  int HL_Quality // Legacy lighting quality, later converted to a graphics preset.
+  bool DisableShadowBuffer
+  int<EGpuSyncOld> GpuSync
+  bool EmulateCursorGDI
+  int<EVertexProcess> VertexProcess
+  bool OptimizePartialDynaGeom
+
+0x001 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // legacy display settings
   int2 ScreenSizeFS
   int ScreenSizeWin // Window-size preset index. Available resolutions depend on the game.
   int<EColorDepth> ColorDepth
@@ -9,124 +28,174 @@ CSystemConfigDisplay 0x0B013000
   bool VSync
   bool FullScreen
 
-0x003 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x002 (skippable) [TMPU] // legacy quality and lighting preset
+  int<ETexturesQuality> TexturesQuality
+  int<EShaderQualityOld> ShaderQualityOld
+  int MaxFiltering
+  int<EShadows> Shadows
+  int GfxQualityOld // Older lighting quality values converted to a graphics preset.
+
+0x003 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // legacy driver settings
   bool DisableShadowBuffer
   int<EGpuSyncOld> GpuSync
   bool EmulateCursorGDI
   int<EVertexProcess> VertexProcess
-  bool OptimPartDynaGeom
-  bool IgnoreDriverCrashes
+  bool OptimizePartialDynaGeom
+  bool IgnoreDriverCrashes [TMF = true]
 
-0x004 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int DisableColorWMask // Native 32-bit boolean. Preserve noncanonical values.
+0x004 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DisableColorWMask
+  bool DisableColorWMask
 
-0x005 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x005 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // EnableFullscreenGDI
   bool EnableFullscreenGDI
 
-0x008 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int<EZClip> ZClip
-  int<EZClipAuto> ZClipAuto
-  int ZClipNbBlock
+0x006 (skippable) // AnisoQuality
+  int AnisoQuality
 
-0x009 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x007 (skippable) // legacy quality, filtering and graphics preset
+  int<ETexturesQuality> TexturesQuality
+  int<EShaderQualityOld> ShaderQualityOld
+  int MaxFiltering
+  int<EShadows> Shadows
+  int GfxQuality
+  int AnisoQuality
+
+0x008 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // clipping distance
+  int<EZClip> ZClip
+  int<EZClipAuto> ZClipAuto [TMF = EZClipAuto.Medium, MP4 = EZClipAuto.Medium, TM2020 = EZClipAuto.Medium]
+  int ZClipNbBlock [TMF = 10, MP4 = 10, TM2020 = 10]
+
+0x009 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // water, post-processing and legacy background
   int<EWaterReflect> WaterReflect // TMF stores the older WaterGeom boolean in this slot.
   int
-  bool PostFx
-  bool
+  bool PostFxEnable
+  bool ShowBackground
 
-0x00A (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x00A (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // legacy color and motion-blur effects
   bool ForceFxColors
   bool ForceFxMotionBlur
 
-0x00B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x00B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // depth-buffer range and AGP memory usage
   bool DisableZBufferRange
   float AgpUseFactor
 
-0x00D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
-  int<EAutoScale> AutoScale
+0x00C (skippable) // legacy custom quality and filtering
   bool Customize
   int<EPresetOld> PresetOld
   int<ETexturesQuality> TexturesQuality
   int<EShaderQualityOld> ShaderQualityOld
-  int TextureFilterOld
+  int MaxFiltering
   int<EShadows> Shadows
-  int AnisoQualityOld // FilterAnisoQFromOld combines both legacy filtering values.
+  int AnisoQuality
 
-0x00E (skippable) [TMO, TMSX, TMNESWC]
-  bool
+0x00D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5] // legacy automatic and custom quality
+  int<EAutoScale> AutoScale [TMF = EAutoScale.Normal, MP4 = EAutoScale.Normal]
+  bool Customize
+  int<EPresetOld> PresetOld
+  int<ETexturesQuality> TexturesQuality
+  int<EShaderQualityOld> ShaderQualityOld
+  int MaxFiltering
+  int<EShadows> Shadows
+  int AnisoQuality // Combined with MaxFiltering to select FilterAnisoQ in newer games.
 
-0x00F (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  bool
+0x00E (skippable) [TMO, TMSX, TMNESWC] // WaterComplex
+  bool WaterComplex
 
-0x010 (skippable) [TMNESWC, TMU, VSK5, TMF]
-  float GeomLodScaleZ
+0x00F (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // FastLoad
+  bool FastLoad
 
-0x011 (skippable) [TMU, VSK5, TMF]
+0x010 (skippable) [TMNESWC, TMU, VSK5, TMF] // GeomLodScaleZ
+  float GeomLodScaleZ [TMF = 1.0f, MP4 = 1.0f, TM2020 = 1.0f]
+
+0x011 (skippable) [TMU, VSK5, TMF] // ForceFxBloom
   bool ForceFxBloom
 
-0x013 (skippable) [TMU, VSK5, TMF]
+0x013 (skippable) [TMU, VSK5, TMF] // legacy quality value
   int
 
-0x015 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x014 (skippable) // legacy light-map safe mode
+  bool LightMapSafeMode // Converted to SafeMode when true and Normal when false.
+
+0x015 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DisableWindowedAntiAlias
   bool DisableWindowedAntiAlias
 
-0x016 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  bool EnableCheckLags
+0x016 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // EnableCheckLags
+  bool EnableCheckLags [MP4 = true, TM2020 = true]
 
-0x017 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int EnableRenderReadBack // Native 32-bit boolean. Preserve noncanonical values.
+0x017 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // EnableRenderReadBack
+  bool EnableRenderReadBack [TMF = true]
 
-0x018 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x018 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy render value
   int = 8
 
-0x019 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int<ELightMapCompute> LightMapCompute
+0x019 (skippable) [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // LightMapCompute
+  int<ELightMapCompute> LightMapCompute [TMF = ELightMapCompute.Normal]
 
-0x01A (skippable) [TMU, VSK5]
-  bool LightMapQualityEnabled // Legacy boolean converted to a light-map quality enum.
+0x01A (skippable) [TMU, VSK5] // EnableLightMap
+  bool EnableLightMap // Legacy boolean converted to a light-map quality enum in TMF.
 
-0x01B (skippable) [VSK5, TMU, TMF, MP3, TMT, MP4, TM2020]
-  int<ELightFromMap> LightFromMap
+0x01B (skippable) [VSK5, TMU, TMF, MP3, TMT, MP4, TM2020] // LightFromMap
+  int<ELightFromMap> LightFromMap [TMF = ELightFromMap.AllVehicles, MP4 = ELightFromMap.AllVehicles, TM2020 = ELightFromMap.AllVehicles]
 
-0x01C (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020]
-  bool MultiThread
-  int ThreadCountMax
+0x01C (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // multithreaded rendering
+  bool MultiThreadEnable [TMF = true, MP4 = true, TM2020 = true]
+  int MultiThreadCountMax [TMF = 4, MP4 = 4, TM2020 = 4]
 
-0x01D (skippable) [TMF]
-  int<ELightMapQualityOld> LightMapQualityOld
+0x01D (skippable) [TMF] // LightMapQualityOld
+  int<ELightMapQualityOld> LightMapQualityOld [TMF = ELightMapQualityOld._2k]
 
-0x01E (skippable) [TMF]
+0x01E (skippable) [TMF] // TreeAlwaysHq
   bool TreeAlwaysHq
 
-0x020 (skippable) [TMF, MP3, TMT, MP4, TM2020]
-  bool StereoByDefault
-  bool StereoAdvanced
+0x01F (skippable) // StereoscopyByDefault
+  bool StereoscopyByDefault
 
-0x021 (skippable) [TMF, MP3, TMT, MP4, TM2020]
+0x020 (skippable) [TMF, MP3, TMT, MP4, TM2020] // stereoscopy
+  bool StereoscopyByDefault
+  bool StereoscopyAdvanced [TMF = true, MP4 = true, TM2020 = true]
+
+0x021 (skippable) [TMF, MP3, TMT, MP4, TM2020] // WaterGeomStadium
   bool WaterGeomStadium
 
-0x022 (skippable) [TMF]
+0x022 (skippable) [TMF] // legacy automatic and custom quality
   int<EAutoScale> AutoScale
   bool Customize
   int<EPresetOld> PresetOld
   int<ETexturesQuality> TexturesQuality
   int<EShaderQualityOld> ShaderQualityOld
   int<EShadows> Shadows
-  int<EFilterAnisoQ> FilterAnisoQ
+  int<EFilterAnisoQ> FilterAnisoQ [TMF = EFilterAnisoQ.Anisotropic__4x, MP4 = EFilterAnisoQ.Anisotropic_16x, TM2020 = EFilterAnisoQ.Anisotropic_16x]
 
-0x025 (skippable) [MP3, TMT, MP4, TM2020]
-  int<EDeferredAA> DeferredAA
+0x024 (skippable) // legacy light-map quality and light index
+  int<ELightMapQualityOld> LightMapQualityOld
+  bool LightMapQualityUltra
+  bool LightMapLightIndex
+
+0x025 (skippable) [MP3, TMT, MP4, TM2020] // deferred antialiasing and bloom
+  int<EDeferredAA> DeferredAA [TM2020 = EDeferredAA.FXAA]
   int<EFxBloomHdr> FxBloomHdr
 
-0x026 (skippable) [MP3, TMT, MP4, TM2020]
-  int DisableShadowBufferRaw // Deprecated native boolean. Preserve noncanonical values.
+0x026 (skippable) [MP3, TMT, MP4, TM2020] // driver settings
+  bool DisableShadowBufferRaw
   int<EGpuSync> GpuSync0
   bool EmulateCursorGDI
   int<EVertexProcess> VertexProcess
-  bool OptimPartDynaGeom
-  int IgnoreDriverCrashesRaw // Deprecated native boolean. Preserve noncanonical values.
+  bool OptimizePartialDynaGeom
+  bool IgnoreDriverCrashesRaw
 
-0x029 (skippable)
+0x027 (skippable) // LightMapQuality
+  int<ELightMapQuality> LightMapQuality [MP4 = ELightMapQuality.VeryFast, TM2020 = ELightMapQuality.VeryFast]
+
+0x028 (skippable) // legacy shader quality and modern preset
+  int<EAutoScale> AutoScale
+  bool Customize
+  int<EPreset> Preset
+  int<ETexturesQuality> TexturesQuality
+  int ShaderQualityIntermediate // Converted by ShaderQFromOld2 in MP4 and Turbo.
+  int<EShadows> Shadows
+  int<EFilterAnisoQ> FilterAnisoQ
+
+0x029 (skippable) // legacy display synchronization
   int2 ScreenSizeFS
   int ScreenSizeWin
   int<EColorDepth> ColorDepth
@@ -135,7 +204,7 @@ CSystemConfigDisplay 0x0B013000
   int<EDisplaySync> DisplaySync
   bool FullScreen
 
-0x02A (skippable) [MP3, TMT, MP4, TM2020]
+0x02A (skippable) [MP3, TMT, MP4, TM2020] // automatic and custom quality
   int<EAutoScale> AutoScale
   bool Customize
   int<EPreset> Preset
@@ -144,39 +213,50 @@ CSystemConfigDisplay 0x0B013000
   int<EShadows> Shadows
   int<EFilterAnisoQ> FilterAnisoQ
 
-0x02C (skippable) [MP3, TMT, MP4, TM2020]
+0x02C (skippable) [MP3, TMT, MP4, TM2020] // VehicleReflect
   int<EVehicleReflect> VehicleReflect
 
-0x02D (skippable) [MP3, TMT, MP4, TM2020]
+0x02D (skippable) [MP3, TMT, MP4, TM2020] // FxMotionBlur
   int<EFxMotionBlur> FxMotionBlur
 
-0x02E (skippable) [MP3, TMT, MP4]
-  bool
+0x02E (skippable) [MP3, TMT, MP4] // EnableD3D9Ex
+  bool EnableD3D9Ex
 
-0x02F (skippable) [MP3, TMT, MP4, TM2020]
-  int MaxFps
+0x02F (skippable) [MP3, TMT, MP4, TM2020] // MaxFps
+  int MaxFps [MP4 = 150, TM2020 = 150]
 
-0x030 (skippable) [MP3, TMT, MP4, TM2020]
+0x030 (skippable) [MP3, TMT, MP4, TM2020] // light-map settings
   int<ELightMapSizeMax> LightMapSizeMax
-  int<ELightMapQuality> LM_Quality
-  bool LM_QUltra
-  bool LM_iLight
+  int<ELightMapQuality> LightMapQuality
+  bool LightMapQualityUltra
+  bool LightMapLightIndex [TM2020 = true]
 
-0x031 (skippable) [MP3, TMT, MP4, TM2020]
-  bool Decals_3D__TextureDecals
-  bool Decals_2D__TextureDecals
+0x031 (skippable) [MP3, TMT, MP4, TM2020] // texture decals
+  bool TextureDecals_3D [MP4 = true, TM2020 = true]
+  bool TextureDecals_2D [MP4 = true, TM2020 = true]
 
-0x032 (skippable) [MP3, TMT, MP4, TM2020]
-  int // Native writer uses 3 in MP and 7 in TM2020. Meaning is not verified.
+0x032 (skippable) [MP3, TMT, MP4, TM2020] // ConfigVersion
+  int ConfigVersion // Selects settings migrations. Native writers use 3 in MP and 7 in TM2020.
 
-0x033 (skippable) [MP3, TMT, MP4, TM2020]
+0x033 (skippable) [MP3, TMT, MP4, TM2020] // DisableHdrCubeRenderMipMap
   bool DisableHdrCubeRenderMipMap
 
-0x035 (skippable) [MP3, TMT, MP4, TM2020]
+0x034 (skippable) // legacy display mode
+  int2 ScreenSizeFS
+  int ScreenSizeWin
+  int<EColorDepth> ColorDepth
+  int<EAntialiasing> Antialiasing
+  int RefreshRate
+  int<EDisplaySync> DisplaySync
+  int<EDisplayMode> DisplayMode
+
+0x035 (skippable) [MP3, TMT, MP4, TM2020] // FxMotionBlurIntens
   float FxMotionBlurIntens
 
-0x036 (skippable) [MP3, TMT, MP4, TM2020]
+0x036 (skippable) [MP3, TMT.v1, MP4.v3, TM2020.v3] // display settings and graphics adapter
   version
+  v4+
+    throw
   int2 ScreenSizeFS
   int ScreenSizeWin
   int<EColorDepth> ColorDepth // Deprecated, written as zero by MP and TM2020.
@@ -186,44 +266,49 @@ CSystemConfigDisplay 0x0B013000
   int<EDisplayMode> DisplayMode
   int<ETripleBuffer> TripleBuffer
   v1+
-    int<ERenderingApi> RenderingApi
+    int<ERenderingApi> RenderingApi [MP4 = ERenderingApi.D3D11, TM2020 = ERenderingApi.D3D11]
     v2+
       int
       int
       int
       int
       v3+
-        string Adapter
+        string AdapterDesc
 
-0x038 (skippable) [MP3, TMT]
-  bool
+0x037 (skippable) // synchronization with additional GPUs
+  int<EGpuSync> GpuSync1
+  int<EGpuSync> GpuSync2
+  int<EGpuSync> GpuSync3
 
-0x039 (skippable) [MP3, TMT, MP4, TM2020]
+0x038 (skippable) [MP3, TMT] // EnableD3D9_BC4_BC5
+  bool EnableD3D9_BC4_BC5
+
+0x039 (skippable) [MP3, TMT, MP4, TM2020] // ScreenShotExt
   int<EScreenShotExt> ScreenShotExt
 
-0x03A (skippable) [MP3, TMT, MP4, TM2020]
-  int<EGeometryQuality> GeometryQuality
+0x03A (skippable) [MP3, TMT, MP4, TM2020] // GeometryQuality
+  int<EGeometryQuality> GeometryQuality [MP4 = EGeometryQuality.VeryNice + 1, TM2020 = EGeometryQuality.Nice] // MP4 uses 4 for automatic selection before loading.
 
-0x03B (skippable) [MP3, TMT, MP4, TM2020]
-  float ParticleMaxGpuLoadMs
+0x03B (skippable) [MP3, TMT, MP4, TM2020] // ParticleMaxGpuLoadMs
+  float ParticleMaxGpuLoadMs [MP4 = 1.7f, TM2020 = 1.7f]
 
-0x03C (skippable) [MP4, TM2020]
-  bool
+0x03C (skippable) [MP4, TM2020] // ForceD3D11FeatureLevel10
+  bool ForceD3D11FeatureLevel10 // Caps the requested D3D11 feature level at 10_0 in MP4.
 
-0x03D (skippable) [MP4, TM2020]
-  bool AsyncRender
+0x03D (skippable) [MP4, TM2020] // AsyncRenderEnabled
+  bool AsyncRenderEnabled
 
-0x03E (skippable) [TM2020]
-  version = 1
+0x03E (skippable) [TM2020.v1] // blur and reflections
+  version
   v2+
     throw
   int<EFxBlur> FxBlur
   v1+
-    int<EEverywhereReflect> ReflectEverywhere
+    int<EEverywhereReflect> EverywhereReflect
 
-0x03F (skippable) [TM2020]
-  bool AutomaticEnabled
-  int AutomaticMinFps
+0x03F (skippable) [TM2020] // automatic quality and minimum frame rate
+  bool AutomaticEnabled [TM2020 = true]
+  int AutomaticMinFps [TM2020 = 30]
 
 enum EColorDepth
   _16Bits

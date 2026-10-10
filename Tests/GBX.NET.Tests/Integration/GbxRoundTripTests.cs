@@ -25,6 +25,7 @@ public class GbxRoundTripTests
         SkipReadOnlyReplay(filePath);
         using var input = File.OpenRead(TestFiles.Gbx(filePath));
         var original = await Parse(input, async);
+        original.Header.Basic = original.Header.Basic with { Format = GbxFormat.Binary };
         original.BodyCompression = compression;
         using var saved = new MemoryStream();
 
@@ -46,6 +47,7 @@ public class GbxRoundTripTests
         SkipReadOnlyReplay(filePath);
         using var input = File.OpenRead(TestFiles.Gbx(filePath));
         var original = await Parse(input, async);
+        original.Header.Basic = original.Header.Basic with { Format = GbxFormat.Binary };
         original.BodyCompression = compression;
         using var firstSave = new MemoryStream();
         original.Save(firstSave);

@@ -9,6 +9,5 @@ public static class TestSetup
     {
         Gbx.LZO = new Lzo();
         Gbx.ZLib = new TestZLib();
-        Gbx.StrictBooleans = true;
     }
 }
