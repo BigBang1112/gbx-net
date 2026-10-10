@@ -8,6 +8,8 @@ namespace GBX.NET.Generators.Generation;
 
 internal sealed class LayoutModel
 {
+    private readonly Dictionary<string, PropertyDeclaration> propertiesByName = new(StringComparer.Ordinal);
+
     public ParsedChunkLFile File { get; }
     public ExistingType? Existing { get; }
     public string Name => File.Syntax.Header.ClassName;
@@ -15,7 +17,7 @@ internal sealed class LayoutModel
     public uint Id { get; }
     public string? BaseName { get; }
     public bool IsAbstract { get; }
-    public ArchiveDeclaration? SelfArchive => File.Syntax.Archives.FirstOrDefault(static x => string.IsNullOrEmpty(x.Name));
+    public ArchiveDeclaration? SelfArchive { get; }
     public List<ChunkModel> Chunks { get; } = [];
     public ScopeModel Scope { get; }
     public Dictionary<string, ScopeModel> Archives { get; } = new(StringComparer.Ordinal);
@@ -23,6 +25,11 @@ internal sealed class LayoutModel
     public LayoutModel(ParsedChunkLFile file, ImmutableDictionary<string, ExistingType> existing)
     {
         File = file;
+        SelfArchive = file.Syntax.Archives.FirstOrDefault(static x => string.IsNullOrEmpty(x.Name));
+        foreach (var property in file.Syntax.Properties)
+        {
+            if (!propertiesByName.ContainsKey(property.Name)) propertiesByName.Add(property.Name, property);
+        }
 
         existing.TryGetValue(file.TypeKey, out var implemented);
         Existing = implemented;
@@ -62,6 +69,8 @@ internal sealed class LayoutModel
             Archives.Add(archive.Name!, new ScopeModel(archiveType, archive.Attributes, archive.Body));
         }
     }
+
+    public PropertyDeclaration? FindProperty(string name) => propertiesByName.TryGetValue(name, out var property) ? property : null;
 
     public static uint Hex(string value)
     {

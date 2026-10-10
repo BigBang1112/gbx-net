@@ -5,16 +5,19 @@ namespace GBX.NET.Generators.Generation;
 
 internal sealed class ScopeModel
 {
+    private const int FieldIndexThreshold = 8;
+
+    private readonly List<FieldModel> fields = [];
+    private Dictionary<string, FieldModel>? fieldsByName;
+
     public ExistingType? Existing { get; }
     public AttributeList? Attributes { get; }
     public List<IBodyStatement> Body { get; }
-    public List<FieldModel> Fields { get; } = [];
+    public IReadOnlyList<FieldModel> Fields => fields;
     public Dictionary<FieldDeclaration, FieldModel> Occurrences { get; } = [];
     public IReadOnlyDictionary<string, int> ChunkVersions { get; }
-    public bool HasVersion => Fields.Any(static x => x.IsVersion);
-    public bool Separate => SyntaxOverlap.Option(Existing, "StructureKind") == "SeparateReadAndWrite" ||
-        SyntaxOverlap.Option(Existing, "StructureKind") == "1" ||
-        (Existing?.Methods.Any(static x => x.Identifier.ValueText is "Read" or "Write" && x.Modifiers.Any(static t => t.ValueText == "override")) == true);
+    public bool HasVersion { get; private set; }
+    public bool Separate { get; }
     
     private int unknownCount;
 
@@ -23,6 +26,9 @@ internal sealed class ScopeModel
         Existing = existing;
         Attributes = attributes;
         Body = body;
+        Separate = SyntaxOverlap.Option(existing, "StructureKind") is "SeparateReadAndWrite" or "1" ||
+            existing?.Methods.Any(static x => x.Identifier.ValueText is "Read" or "Write" &&
+                x.Modifiers.Any(static t => t.ValueText == "override")) == true;
         ChunkVersions = chunk?.VersionQualifiers.Where(static x => x.MaxVersion.HasValue)
             .ToDictionary(static x => x.Label, static x => x.MaxVersion!.Value, StringComparer.Ordinal) ?? new Dictionary<string, int>();
 
@@ -31,6 +37,20 @@ internal sealed class ScopeModel
             Add(field);
         }
     }
+
+    public FieldModel? FindField(string name)
+    {
+        if (fieldsByName is not null) return fieldsByName.TryGetValue(name, out var indexed) ? indexed : null;
+        foreach (var field in fields)
+        {
+            if (field.Name == name) return field;
+        }
+
+        return null;
+    }
+
+    public bool HasFieldOrFile(string name) => FindField(name) is not null ||
+        name.EndsWith("File", StringComparison.Ordinal) && FindField(name.Substring(0, name.Length - 4)) is not null;
 
     public void Add(FieldDeclaration declaration)
     {
@@ -78,13 +98,24 @@ internal sealed class ScopeModel
         
         var name = isVersion ? "Version" : string.IsNullOrEmpty(declaration.Name) ? $"U{unknownCount:00}" : declaration.Name!;
         
-        var model = local ? null : Fields.FirstOrDefault(x => x.Name == name);
+        var model = local ? null : FindField(name);
         if (model is null)
         {
             model = new FieldModel(name, declaration, unknown && !isVersion, isVersion && !local);
             if (!local)
             {
-                Fields.Add(model);
+                fields.Add(model);
+                if (fieldsByName is not null)
+                {
+                    fieldsByName.Add(name, model);
+                }
+                else if (fields.Count == FieldIndexThreshold)
+                {
+                    // Small scopes avoid the allocation and hashing overhead of a name index.
+                    fieldsByName = new Dictionary<string, FieldModel>(fields.Count, StringComparer.Ordinal);
+                    foreach (var field in fields) fieldsByName.Add(field.Name, field);
+                }
+                HasVersion |= model.IsVersion;
             }
         }
 

@@ -6,6 +6,9 @@ namespace GBX.NET.Generators.Generation;
 
 internal sealed class IdentifierRewriter(Func<string, string> map, Func<ExpressionSyntax, bool>? isTimeInt32 = null) : CSharpSyntaxRewriter
 {
+    private static readonly ExpressionSyntax TimeZero = SyntaxFactory.MemberAccessExpression(
+        SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.IdentifierName("TimeInt32"), SyntaxFactory.IdentifierName("Zero"));
+
     public override SyntaxNode? VisitBinaryExpression(BinaryExpressionSyntax node)
     {
         var rewritten = (BinaryExpressionSyntax)base.VisitBinaryExpression(node)!;
@@ -14,9 +17,9 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
             SyntaxKind.GreaterThanExpression or SyntaxKind.GreaterThanOrEqualExpression)
         {
             if (IsZero(node.Left) && isTimeInt32(node.Right))
-                rewritten = rewritten.WithLeft(SyntaxFactory.ParseExpression("TimeInt32.Zero").WithTriviaFrom(rewritten.Left));
+                rewritten = rewritten.WithLeft(TimeZero.WithTriviaFrom(rewritten.Left));
             if (IsZero(node.Right) && isTimeInt32(node.Left))
-                rewritten = rewritten.WithRight(SyntaxFactory.ParseExpression("TimeInt32.Zero").WithTriviaFrom(rewritten.Right));
+                rewritten = rewritten.WithRight(TimeZero.WithTriviaFrom(rewritten.Right));
         }
 
         return node.IsKind(SyntaxKind.IsExpression)

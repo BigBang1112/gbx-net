@@ -21,23 +21,53 @@ internal static class SyntaxOverlap
 
     public static bool HasAttribute(ExistingType? type, string name)
     {
-        return type?.Attributes.Any(x => Simple(x.Name.ToString()).Replace("Attribute", "") == name) == true;
+        if (type is null) return false;
+        foreach (var attribute in type.Attributes)
+        {
+            var attributeName = AttributeName(attribute.Name);
+            if (attributeName == name || attributeName == name + "Attribute") return true;
+        }
+
+        return false;
     }
 
     public static string? Option(ExistingType? type, string name)
     {
-        return type?.Attributes
-            .Where(static x => x.Name.ToString().Contains("GenerationOptions"))
-            .SelectMany(static x => x.ArgumentList?.Arguments ?? default)
-            .FirstOrDefault(x => x.NameEquals?.Name.Identifier.ValueText == name)?.Expression.ToString().Split('.').Last();
+        if (type is null) return null;
+        foreach (var attribute in type.Attributes)
+        {
+            if (!AttributeName(attribute.Name).Contains("GenerationOptions") || attribute.ArgumentList is null) continue;
+            foreach (var argument in attribute.ArgumentList.Arguments)
+            {
+                if (argument.NameEquals?.Name.Identifier.ValueText != name) continue;
+                return argument.Expression is MemberAccessExpressionSyntax member
+                    ? member.Name.Identifier.ValueText : argument.Expression.ToString();
+            }
+        }
+
+        return null;
     }
 
+    private static string AttributeName(NameSyntax name) => name switch
+    {
+        QualifiedNameSyntax qualified => qualified.Right.Identifier.ValueText,
+        AliasQualifiedNameSyntax alias => alias.Name.Identifier.ValueText,
+        SimpleNameSyntax simple => simple.Identifier.ValueText,
+        _ => name.ToString()
+    };
+
     public static string Simple(string name)
-        => name.Replace("global::", "").Split('.').Last().TrimEnd('?');
+    {
+        var separator = name.LastIndexOf('.');
+        if (separator >= 0) name = name.Substring(separator + 1);
+        if (name.StartsWith("global::", StringComparison.Ordinal)) name = name.Substring(8);
+        return name.TrimEnd('?');
+    }
 
     public static string Normalize(string name)
     {
-        return Simple(name) switch
+        var simple = Simple(name);
+        return simple switch
         {
             "Int32" => "int",
             "UInt32" => "uint",
@@ -51,19 +81,36 @@ internal static class SyntaxOverlap
             "Double" => "double",
             "Boolean" => "bool",
             "String" => "string",
-            _ => Simple(name)
+            _ => simple
         };
     }
 
     public static bool Method(ExistingType? type, string name, params string[] parameters)
     {
-        return type?.Methods.Any(x =>
-            x.Identifier.ValueText == name && x.ExplicitInterfaceSpecifier is null &&
-            x.TypeParameterList is null && !x.Modifiers.Any(SyntaxKind.StaticKeyword) &&
-            x.ParameterList.Parameters.Count == parameters.Length &&
-            !x.ParameterList.Parameters.Any(static p => p.Modifiers.Any(SyntaxKind.RefKeyword) || p.Modifiers.Any(SyntaxKind.OutKeyword) || p.Modifiers.Any(SyntaxKind.InKeyword)) &&
-            x.ParameterList.Parameters.Select(static p => Normalize(ResolveAlias(p.Type)))
-                .SequenceEqual(parameters.Select(Normalize), StringComparer.Ordinal)) == true;
+        if (type is null || !type.MembersByName.TryGetValue(name, out var members)) return false;
+        foreach (var member in members)
+        {
+            if (member is not MethodDeclarationSyntax method || method.ExplicitInterfaceSpecifier is not null ||
+                method.TypeParameterList is not null || method.Modifiers.Any(SyntaxKind.StaticKeyword) ||
+                method.ParameterList.Parameters.Count != parameters.Length) continue;
+
+            if (ParametersMatch(method.ParameterList.Parameters, parameters)) return true;
+        }
+
+        return false;
+    }
+
+    private static bool ParametersMatch(SeparatedSyntaxList<ParameterSyntax> actual, string[] expected)
+    {
+        for (var i = 0; i < actual.Count; i++)
+        {
+            var parameter = actual[i];
+            if (parameter.Modifiers.Any(SyntaxKind.RefKeyword) || parameter.Modifiers.Any(SyntaxKind.OutKeyword) ||
+                parameter.Modifiers.Any(SyntaxKind.InKeyword) ||
+                Normalize(ResolveAlias(parameter.Type)) != Normalize(expected[i])) return false;
+        }
+
+        return true;
     }
 
     private static string ResolveAlias(TypeSyntax? syntax)
@@ -90,22 +137,34 @@ internal static class SyntaxOverlap
 
     public static string? MemberType(ExistingType? type, string name)
     {
-        var property = type?.Properties.FirstOrDefault(x => x.ExplicitInterfaceSpecifier is null && x.Identifier.ValueText == name);
-        if (property is not null)
+        if (type is null || !type.MembersByName.TryGetValue(name, out var members)) return null;
+        foreach (var member in members)
         {
-            return property.Type.ToString();
+            if (member is PropertyDeclarationSyntax { ExplicitInterfaceSpecifier: null } property)
+                return property.Type.ToString();
         }
 
-        return type?.Fields.FirstOrDefault(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == name))?.Declaration.Type.ToString();
+        foreach (var member in members)
+        {
+            if (member is FieldDeclarationSyntax field) return field.Declaration.Type.ToString();
+        }
+
+        return null;
     }
 
     public static PropertyDeclarationSyntax? PartialPropertyImplementation(ExistingType? type, string name)
     {
-        var properties = type?.Properties.Where(x => x.ExplicitInterfaceSpecifier is null && x.Identifier.ValueText == name).ToArray();
+        if (type is null || !type.MembersByName.TryGetValue(name, out var members)) return null;
+        PropertyDeclarationSyntax? property = null;
+        foreach (var member in members)
+        {
+            if (member is not PropertyDeclarationSyntax { ExplicitInterfaceSpecifier: null } candidate) continue;
+            if (property is not null) return null;
+            property = candidate;
+        }
 
-        return properties?.Length == 1 && properties[0].Modifiers.Any(SyntaxKind.PartialKeyword) &&
-            properties[0].AccessorList?.Accessors.All(x => x.Body is not null || x.ExpressionBody is not null) == true
-            ? properties[0]
-            : null;
+        return property?.Modifiers.Any(SyntaxKind.PartialKeyword) == true &&
+            property.AccessorList?.Accessors.All(x => x.Body is not null || x.ExpressionBody is not null) == true
+            ? property : null;
     }
 }

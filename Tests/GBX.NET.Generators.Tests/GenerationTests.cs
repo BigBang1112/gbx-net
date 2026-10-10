@@ -1350,6 +1350,70 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task IndexedMemberLookupsPreservePartialSettersAndIgnoreUnrelatedSerializationSignatures()
+    {
+        const string source = """
+            using IO = GBX.NET.Serialization.GbxReaderWriter;
+            namespace GBX.NET.Engines.Game;
+            public interface IFixture { void ReadWrite(Example node, IO rw); }
+            [global::GBX.NET.Attributes.ClassAttribute(0x03043000)]
+            public partial class Example
+            {
+                private int storedValue, other;
+                public int SetterCalls { get; private set; }
+                [global::GBX.NET.Attributes.ChunkGenerationOptionsAttribute(StructureKind = 0)]
+                public partial class Chunk03043001 : IFixture
+                {
+                    public void ReadWrite(ref Example node, IO rw) { }
+                    public void ReadWrite<T>(Example node, IO rw) { }
+                    void IFixture.ReadWrite(Example node, IO rw) { }
+                }
+
+                public static string Verify()
+                {
+                    var node = new Example();
+                    var chunk = new Chunk03043001();
+                    chunk.ReadWrite(node, new IO(new GBX.NET.Serialization.GbxReader(7, 9)));
+                    var read = node.Value + "," + node.Other + "," + node.SetterCalls;
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    chunk.ReadWrite(node, new IO(writer));
+                    return read + ";" + string.Join(",", writer.Values) + ";" + node.SetterCalls;
+                }
+            }
+            public partial class Example
+            {
+                public partial int Value
+                {
+                    get => storedValue;
+                    set { storedValue = value; SetterCalls++; }
+                }
+            }
+            """;
+        var (result, compilation) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value
+              int Other
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).DoesNotContain("[Class(");
+        await Assert.That(generated).Contains("public partial int Value { get; set; }");
+        await Assert.That(generated).Contains("n.Value = rw.Int32(n.Value);");
+        await Assert.That(generated).Contains("rw.Int32(ref n.other);");
+        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "ReadWrite")).HasSingleItem();
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo("7,9,1;7,9;2");
+    }
+
+    [Test]
     public async Task CompilesWithCustomPropertiesBackingFieldsOverloadsAndAliasedSerializationMethods()
     {
         const string source = """

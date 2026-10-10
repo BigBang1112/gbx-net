@@ -76,13 +76,13 @@ internal static class EngineWriter
         if (layout.Scope.HasVersion) bases.Add("IVersionable");
 
         var media = IsMedia(layout, layouts);
-        if (media && layout.Scope.Fields.Any(static x => x.Name == "Keys"))
+        if (media && layout.Scope.FindField("Keys") is not null)
         {
             bases.Add("CGameCtnMediaBlock.IHasKeys");
         }
         
-        if (media && layout.Scope.Fields.Any(static x => x.Name == "Start")
-            && layout.Scope.Fields.Any(static x => x.Name == "End"))
+        if (media && layout.Scope.FindField("Start") is not null
+            && layout.Scope.FindField("End") is not null)
         {
             bases.Add("CGameCtnMediaBlock.IHasTwoKeys");
         }
@@ -111,12 +111,12 @@ internal static class EngineWriter
         {
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(layout.Existing, property.Name);
             if (SyntaxOverlap.Has(layout.Existing, property.Name) && partialProperty is null) continue;
-            if (partialProperty is not null && layout.Scope.Fields.Any(x => x.Name == property.Name)) continue;
+            if (partialProperty is not null && layout.Scope.FindField(property.Name) is not null) continue;
 
             code.BlankLine();
             Documentation(code, property.TrailingComment?.Text);
             AppliedWithChunkAttributes(code, layout, property.Name);
-            if (layout.Scope.Fields.FirstOrDefault(x => x.Name == property.Name) is { } field)
+            if (layout.Scope.FindField(property.Name) is { } field)
                 GameDefaultAttributesWriter.Write(code, field);
 
             if (partialProperty is not null)
@@ -320,7 +320,7 @@ internal static class EngineWriter
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
             var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
             var customProperty = !chunk && ReferenceEquals(scope, layout.Scope) &&
-                layout.File.Syntax.Properties.Any(x => x.Name == field.Name);
+                layout.FindProperty(field.Name) is not null;
 
             if (!chunk)
                 code.BlankLine();
@@ -432,7 +432,7 @@ internal static class EngineWriter
     private static void AppliedWithChunkAttributes(CodeWriter code, LayoutModel layout, string propertyName)
     {
         var fields = new HashSet<string>(StringComparer.Ordinal) { propertyName };
-        var property = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == propertyName);
+        var property = layout.FindProperty(propertyName);
         if (property is not null)
         {
             foreach (var getter in property.Accessors.OfType<GetterAccessor>())
@@ -441,7 +441,7 @@ internal static class EngineWriter
                 foreach (var identifier in expression.DescendantNodesAndSelf().OfType<IdentifierNameSyntax>())
                 {
                     if (identifier.Parent is MemberAccessExpressionSyntax member && member.Name == identifier) continue;
-                    if (layout.Scope.Fields.Any(x => x.Name == identifier.Identifier.ValueText))
+                    if (layout.Scope.FindField(identifier.Identifier.ValueText) is not null)
                         fields.Add(identifier.Identifier.ValueText);
                 }
             }

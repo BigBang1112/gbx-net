@@ -1,5 +1,8 @@
 using ChunkL;
 using ChunkL.Syntax;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GBX.NET.Generators.Generation;
 
@@ -169,9 +172,9 @@ internal sealed class SerializationWriter
                 case ComputedAssignment assignment:
                     if (mode == SerializationMode.Write) break;
                     if (mode == SerializationMode.ReadWrite) code.Open("if (rw.Reader is not null)");
-                    var assignmentField = scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName) ??
-                        layout.Scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName);
-                    var assignmentProperty = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == assignment.TargetName);
+                    var assignmentField = scope.FindField(assignment.TargetName) ??
+                        layout.Scope.FindField(assignment.TargetName);
+                    var assignmentProperty = layout.FindProperty(assignment.TargetName);
                     var assignmentType = assignmentField is not null ? WireTypes.CSharp(assignmentField.Declaration) :
                         assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
                     code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
@@ -503,47 +506,47 @@ internal sealed class SerializationWriter
 
     private string IntegerResult(string expression, string? targetType, bool nullSafeCount = false)
     {
-        var rewritten = ExpressionText(expression, nullSafeCount);
+        var syntax = SyntaxFactory.ParseExpression(expression);
+        var rewritten = RewriteExpression(syntax, nullSafeCount);
         if (targetType is not ("byte" or "sbyte" or "short" or "ushort" or "int" or "uint")) return rewritten;
 
-        var syntax = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(expression);
         // C# already converts in-range integer literals without a cast.
-        if (syntax is Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax) return rewritten;
+        if (syntax is LiteralExpressionSyntax) return rewritten;
         var sourceType = IntegerType(syntax);
         return sourceType is not null && sourceType != targetType
             ? "(" + targetType + ")(" + rewritten + ")" : rewritten;
     }
 
-    private string? IntegerType(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax expression)
+    private string? IntegerType(ExpressionSyntax expression)
     {
-        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax parentheses)
+        if (expression is ParenthesizedExpressionSyntax parentheses)
             return IntegerType(parentheses.Expression);
-        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax literal)
+        if (expression is LiteralExpressionSyntax literal)
             return literal.Token.Value switch { int => "int", uint => "uint", long => "long", ulong => "ulong", _ => null };
-        if (expression is Microsoft.CodeAnalysis.CSharp.Syntax.IdentifierNameSyntax identifier)
+        if (expression is IdentifierNameSyntax identifier)
         {
             var name = identifier.Identifier.ValueText;
-            var field = locals.SelectMany(x => x.Values).FirstOrDefault(x => x.Name == name) ??
-                scope.Fields.FirstOrDefault(x => x.Name == name) ?? layout.Scope.Fields.FirstOrDefault(x => x.Name == name);
-            var property = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == name);
+            var field = FindLocal(name) ??
+                scope.FindField(name) ?? layout.Scope.FindField(name);
+            var property = layout.FindProperty(name);
             var type = field is not null ? WireTypes.CSharp(field.Declaration) :
                 property is not null ? WireTypes.CSharp(property.Type) : SyntaxOverlap.MemberType(scope.Existing, name);
             return type is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" ? type : null;
         }
-        if (expression is not Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax binary) return null;
+        if (expression is not BinaryExpressionSyntax binary) return null;
         var left = IntegerType(binary.Left);
         var right = IntegerType(binary.Right);
-        if (binary.RawKind is (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.LeftShiftExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.RightShiftExpression)
+        if (binary.RawKind is (int)SyntaxKind.LeftShiftExpression or
+            (int)SyntaxKind.RightShiftExpression)
             return left is "byte" or "sbyte" or "short" or "ushort" ? "int" : left;
-        if (binary.RawKind is not ((int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.BitwiseAndExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.BitwiseOrExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.ExclusiveOrExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.AddExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.SubtractExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.MultiplyExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.DivideExpression or
-            (int)Microsoft.CodeAnalysis.CSharp.SyntaxKind.ModuloExpression)) return null;
+        if (binary.RawKind is not ((int)SyntaxKind.BitwiseAndExpression or
+            (int)SyntaxKind.BitwiseOrExpression or
+            (int)SyntaxKind.ExclusiveOrExpression or
+            (int)SyntaxKind.AddExpression or
+            (int)SyntaxKind.SubtractExpression or
+            (int)SyntaxKind.MultiplyExpression or
+            (int)SyntaxKind.DivideExpression or
+            (int)SyntaxKind.ModuloExpression)) return null;
         if (left is null || right is null) return null;
         if (left == "ulong" || right == "ulong") return "ulong";
         if (left == "long" || right == "long") return "long";
@@ -551,7 +554,7 @@ internal sealed class SerializationWriter
         {
             var other = left == "uint" ? binary.Right : binary.Left;
             return IntegerType(other) == "int" &&
-                other is not Microsoft.CodeAnalysis.CSharp.Syntax.LiteralExpressionSyntax { Token.Value: int and >= 0 }
+                other is not LiteralExpressionSyntax { Token.Value: int and >= 0 }
                 ? "long" : "uint";
         }
         return "int";
@@ -582,49 +585,50 @@ internal sealed class SerializationWriter
         var type = LayoutModel.Attribute(attributes, "type") ?? "NotSupportedException";
         var message = LayoutModel.Attribute(attributes, "message");
 
-        code.Line("throw new " + type + "(" + (message is null ? "" : Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(message, true)) + ");");
+        code.Line("throw new " + type + "(" + (message is null ? "" : SymbolDisplay.FormatLiteral(message, true)) + ");");
     }
 
     private string ExpressionText(string text, bool nullSafeCount = false)
+        => RewriteExpression(SyntaxFactory.ParseExpression(text), nullSafeCount);
+
+    private string RewriteExpression(ExpressionSyntax expression, bool nullSafeCount = false)
     {
-        if (nullSafeCount)
-        {
-            var separator = text.IndexOf('.');
-
-            if (separator > 0 && text.IndexOf('.', separator + 1) < 0)
+        if (nullSafeCount && expression is MemberAccessExpressionSyntax
             {
-                var owner = text.Substring(0, separator);
-                var member = text.Substring(separator + 1);
-                var field = layout.Scope.Fields.FirstOrDefault(x => x.Name == owner);
-
-                // A missing referenced node or array contributes zero elements to a fixed count.
-                if (Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsValidIdentifier(owner) &&
-                    Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsValidIdentifier(member) &&
-                    field is not null && WireTypes.Nullable(field))
-                {
-                    text = owner + "?." + member + " ?? 0";
-                }
-            }
+                Expression: IdentifierNameSyntax owner,
+                Name: IdentifierNameSyntax member
+            } && SyntaxFacts.IsValidIdentifier(owner.Identifier.Text) &&
+            SyntaxFacts.IsValidIdentifier(member.Identifier.Text) &&
+            layout.Scope.FindField(owner.Identifier.ValueText) is { } field && WireTypes.Nullable(field))
+        {
+            // A missing referenced node or array contributes zero elements to a fixed count.
+            expression = SyntaxFactory.ParseExpression(owner.Identifier.Text + "?." + member.Identifier.Text + " ?? 0");
         }
 
-        var expression = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(text);
         return new IdentifierRewriter(Identifier, IsTimeInt32).Visit(expression)!.ToString();
     }
 
-    private bool IsTimeInt32(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax expression)
+    private FieldModel? FindLocal(string name)
     {
-        while (expression is Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax parentheses)
-            expression = parentheses.Expression;
-        if (expression is not Microsoft.CodeAnalysis.CSharp.Syntax.IdentifierNameSyntax identifier) return false;
-
-        var name = identifier.Identifier.ValueText;
         foreach (var localScope in locals)
         {
-            if (localScope.TryGetValue(name, out var local))
-                return SyntaxOverlap.Normalize(WireTypes.CSharp(local.Declaration)) == "TimeInt32";
+            if (localScope.TryGetValue(name, out var field)) return field;
         }
 
-        var field = scope.Fields.FirstOrDefault(x => x.Name == name) ?? layout.Scope.Fields.FirstOrDefault(x => x.Name == name);
+        return null;
+    }
+
+    private bool IsTimeInt32(ExpressionSyntax expression)
+    {
+        while (expression is ParenthesizedExpressionSyntax parentheses)
+            expression = parentheses.Expression;
+        if (expression is not IdentifierNameSyntax identifier) return false;
+
+        var name = identifier.Identifier.ValueText;
+        if (FindLocal(name) is { } local)
+            return SyntaxOverlap.Normalize(WireTypes.CSharp(local.Declaration)) == "TimeInt32";
+
+        var field = scope.FindField(name) ?? layout.Scope.FindField(name);
         var owner = chunk && field?.IsUnknown != true && field?.IsVersion != true ? layout.Scope : scope;
         var type = SyntaxOverlap.MemberType(owner.Existing, name) ?? (field is null ? null : WireTypes.CSharp(field.Declaration));
         return type is not null && SyntaxOverlap.Normalize(type) == "TimeInt32";
@@ -632,7 +636,7 @@ internal sealed class SerializationWriter
 
     private string Identifier(string name)
     {
-        if (locals.Any(x => x.ContainsKey(name)))
+        if (FindLocal(name) is not null)
         {
             return SyntaxOverlap.Backing(name);
         }
@@ -641,13 +645,13 @@ internal sealed class SerializationWriter
             return SyntaxOverlap.Escape(name);
         }
 
-        if (scope.Fields.Any(x => x.Name == name && (x.IsUnknown || x.IsVersion)))
+        if (scope.FindField(name) is { IsUnknown: true } or { IsVersion: true })
         {
             return SyntaxOverlap.Escape(name);
         }
 
-        if (layout.Scope.Fields.Any(x => x.Name == name || x.Name + "File" == name) ||
-            layout.File.Syntax.Properties.Any(x => x.Name == name) || SyntaxOverlap.Has(layout.Existing, name))
+        if (layout.Scope.HasFieldOrFile(name) ||
+            layout.FindProperty(name) is not null || SyntaxOverlap.Has(layout.Existing, name))
         {
             return "n." + SyntaxOverlap.Escape(name);
         }
