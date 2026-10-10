@@ -359,6 +359,7 @@ public partial class CGameCtnChallenge :
     public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get => bakedClipsAdditionalData; set => bakedClipsAdditionalData = value; }
 
     private byte[]? embeddedZipData;
+    private byte[]? originalEmbeddedZipData;
     [ZipData]
     public partial byte[]? EmbeddedZipData { get => embeddedZipData; set => embeddedZipData = value; }
 
@@ -389,7 +390,7 @@ public partial class CGameCtnChallenge :
     public partial Vec3 ThumbnailPitchYawRoll { get => thumbnailPitchYawRoll; set => thumbnailPitchYawRoll = value; }
 
     /// <summary>
-    /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used by the game to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is constructed from scratch again using the actual ZIP data.
+    /// List of embedded item models (includes items and blocks) that are expected in the original embedded data ZIP (will not match if modified!). This is used by the game to verify availability of item models without having to look into the ZIP directly. Upon serialization, this list is reused if the ZIP data is unchanged, otherwise it is reconstructed using the actual ZIP data.
     /// </summary>
     public ImmutableList<Ident>? ExpectedEmbeddedItemModels { get; private set; }
 
@@ -1798,6 +1799,7 @@ public partial class CGameCtnChallenge :
                 n.ExpectedEmbeddedItemModels = r.ReadArrayIdent().ToImmutableList();
 
                 n.EmbeddedZipData = r.ReadData();
+                n.originalEmbeddedZipData = (byte[])n.EmbeddedZipData.Clone();
 
                 if (Version >= 1)
                 {
@@ -1812,7 +1814,17 @@ public partial class CGameCtnChallenge :
 
             w.WriteEncapsulated(w =>
             {
-                if (n.EmbeddedZipData is null || n.EmbeddedZipData.Length == 0)
+                if (n.ExpectedEmbeddedItemModels is not null && n.originalEmbeddedZipData is not null
+                    && n.EmbeddedZipData is not null && n.EmbeddedZipData.AsSpan().SequenceEqual(n.originalEmbeddedZipData))
+                {
+                    w.Write(n.ExpectedEmbeddedItemModels.Count);
+                    foreach (var ident in n.ExpectedEmbeddedItemModels)
+                    {
+                        w.Write(ident);
+                    }
+                    w.WriteData(n.EmbeddedZipData);
+                }
+                else if (n.EmbeddedZipData is null || n.EmbeddedZipData.Length == 0)
                 {
                     w.Write(0);
                     w.Write(0);

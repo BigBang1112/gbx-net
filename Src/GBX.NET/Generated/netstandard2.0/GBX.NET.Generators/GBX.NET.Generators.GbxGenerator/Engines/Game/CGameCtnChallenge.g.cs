@@ -840,6 +840,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).bakedBlocks = context.CloneList(this.bakedBlocks)!;
         ((CGameCtnChallenge)clone).bakedClipsAdditionalData = context.CloneList(this.bakedClipsAdditionalData)!;
         ((CGameCtnChallenge)clone).embeddedZipData = context.CloneArray(this.embeddedZipData)!;
+        ((CGameCtnChallenge)clone).originalEmbeddedZipData = context.CloneArray(this.originalEmbeddedZipData)!;
         ((CGameCtnChallenge)clone).textures = context.CloneList(this.textures)!;
         ((CGameCtnChallenge)clone).macroblockInstances = context.CloneList(this.macroblockInstances)!;
         ((CGameCtnChallenge)clone).hasCustomCamThumbnail = context.Clone(this.hasCustomCamThumbnail)!;
