@@ -2,9 +2,9 @@ CFuncLightColor 0x05019000
 - inherits: CFuncLight
 
 0x001
- vec4 Color0
- vec4 Color1
+  vec4 Color0
+  vec4 Color1
 
-0x002 (base: 0x001)
- base
- CPlugFileImg Image (external)
+0x002 (base: 0x001) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  base
+  CPlugFileImg Image (external)

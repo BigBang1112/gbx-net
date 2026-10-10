@@ -1,20 +1,20 @@
 CPlugBitmapSampler 0x0907E000
 - inherits: CPlug
 
-0x002
- id Name
- CPlugBitmap Bitmap (external)
- uint
- float
+0x002 [TM10, TMPU]
+  id Name
+  CPlugBitmap Bitmap (external)
+  uint
+  float
 
-0x005 (base: 0x002)
+0x005 (base: 0x002) [TMSX]
 
-0x006 (base: 0x002)
+0x006 (base: 0x002) [TMNESWC]
 
-0x007 (base: 0x002)
+0x007 (base: 0x002) [VSK5]
 
-0x008 (base: 0x002)
+0x008 (base: 0x002) [TMF]
 
-0x00B (base: 0x008)
- version
- base
+0x00B (base: 0x008) [TMT, MP4, TM2020]
+  version
+  base

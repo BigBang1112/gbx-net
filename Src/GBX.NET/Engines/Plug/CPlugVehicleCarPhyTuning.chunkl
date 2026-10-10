@@ -1,1579 +1,1579 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
 
-0x000
- float
- float SteerRadiusMin
- float SteerRadiusCoef
- float MaxSpeed
- float AbsorbingValKi
- float AbsorbingValKa
- float AbsorbingValMin
- float AbsorbingValMax
- float AbsorbingValRest
- float RelSpeedMultCoef
- float
- float DebugAbsorbCoef
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float SteerRadiusMin
+  float SteerRadiusCoef
+  float MaxSpeed
+  float AbsorbingValKi
+  float AbsorbingValKa
+  float AbsorbingValMin
+  float AbsorbingValMax
+  float AbsorbingValRest
+  float RelSpeedMultCoef
+  float
+  float DebugAbsorbCoef
 
-0x001
- id Name
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  id Name
 
-0x002
- float Mass
- float CMAftForce
- float CMDownUp
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float Mass
+  float CMAftForce
+  float CMDownUp
 
-0x004
- bool IsFakeEngine
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  bool IsFakeEngine
 
-0x005
- float GravityCoef
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float GravityCoef
 
 0x006
- float
- float
- float
- float
+  float
+  float
+  float
+  float
 
-0x007
- float SteerSpeed
+0x007 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerSpeed
 
-0x008
- float ReverseMaxSpeed
- float TurboBoost
+0x008 [TM10, TMPU]
+  float ReverseMaxSpeed
+  float TurboBoost
 
-0x009
- float BrakeBase
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float BrakeBase
 
 0x00A
- float LinearFluidFrictionCoef
- float AngularFluidFrictionCoef1
+  float LinearFluidFrictionCoef
+  float AngularFluidFrictionCoef1
 
-0x00B
- float InertiaMass
- Vec3 InertiaHalfDiag
+0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float InertiaMass
+  Vec3 InertiaHalfDiag
 
 0x00C
- bool
+  bool
 
-0x00D
- int TireMaterial
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int TireMaterial
 
-0x00E
- int<EShockModel> ShockModel
+0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int<EShockModel> ShockModel
 
-0x010
- int<ESteerModel> SteerModel
- float SteerGroundTorque
+0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int<ESteerModel> SteerModel
+  float SteerGroundTorque
 
 0x011
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
 0x012
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundImpactVolume
- float SoundBodyImpact_Hard_Threshold
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundImpactVolume
+  float SoundBodyImpact_Hard_Threshold
 
-0x013
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+0x013 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
-0x014
- float
- float
+0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
 
 0x015
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundSkidConcreteVolume
- float SoundImpactVolume
- float SoundBodyImpact_Hard_Threshold
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundSkidConcreteVolume
+  float SoundImpactVolume
+  float SoundBodyImpact_Hard_Threshold
 
-0x016
- float DisplaySteerRadiusMin
- float DisplaySteerRadiusCoef
+0x016 [TM10, TMPU, TMSX]
+  float DisplaySteerRadiusMin
+  float DisplaySteerRadiusCoef
 
-0x017
- float DecrepitudeImpactVal
- float DecrepitudeCoef
- float VibrationPeriodSpeedCoef
- float
- float
- float
- float
- float
+0x017 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float DecrepitudeImpactVal
+  float DecrepitudeCoef
+  float VibrationPeriodSpeedCoef
+  float
+  float
+  float
+  float
+  float
 
-0x018
- float LinearFluidFrictionCoef
- float AngularFluidFrictionCoef1
- float AngularFluidFrictionCoef2
+0x018 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LinearFluidFrictionCoef
+  float AngularFluidFrictionCoef1
+  float AngularFluidFrictionCoef2
 
-0x019
- float BodyFrictionCoef
- float BodyFrictionCoef_Metal
- float BodyRestCoef_Metal
- float BodyRestCoef
- float WheelFrictionCoef_Concrete
- float WheelRestCoef_Concrete
- float WheelFrictionCoef_Metal
- float WheelRestCoef_Metal
+0x019 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float BodyFrictionCoef
+  float BodyFrictionCoef_Metal
+  float BodyRestCoef_Metal
+  float BodyRestCoef
+  float WheelFrictionCoef_Concrete
+  float WheelRestCoef_Concrete
+  float WheelFrictionCoef_Metal
+  float WheelRestCoef_Metal
 
-0x01A
- float
+0x01A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float
 
-0x01B
- float
+0x01B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float
 
-0x01D
- float GravityCoefAir
- float RolloverAxial
+0x01D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float GravityCoefAir
+  float RolloverAxial
 
-0x01E
- int AirControlDuration
+0x01E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  int AirControlDuration
 
-0x01F
- float
- float
- float
+0x01F [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
 
-0x020
- float SteerAngleMax
- float SlipAngleForceMax
- float SlipAngleForceCoef1
- float SlipAngleForceCoef2
+0x020 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerAngleMax
+  float SlipAngleForceMax
+  float SlipAngleForceCoef1
+  float SlipAngleForceCoef2
 
 0x021
- float
+  float
 
 0x022
- float
- float
+  float
+  float
 
-0x023
- float AngularSpeedYImpulseScale
- float SteerLowSpeed
+0x023 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float AngularSpeedYImpulseScale
+  float SteerLowSpeed
 
-0x024
- CFuncKeysReal AccelCurve
+0x024 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal AccelCurve
 
-0x026
- float LateralSlopeAdherenceMin
- float LateralSlopeAdherenceMax
- float AxialSlopeAdherenceMin
- float AxialSlopeAdherenceMax
+0x026 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LateralSlopeAdherenceMin
+  float LateralSlopeAdherenceMax
+  float AxialSlopeAdherenceMin
+  float AxialSlopeAdherenceMax
 
-0x027
- float SteerGroundTorqueSlippingCoef
- float MaxSideFrictionBlendCoef
+0x027 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerGroundTorqueSlippingCoef
+  float MaxSideFrictionBlendCoef
 
-0x028
- float
- CFuncKeysReal MaxSideFriction
- float MaxSideFrictionSliding
- float
- float GroundSlowDownBase
- float AbsorbTension
+0x028 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float
+  CFuncKeysReal MaxSideFriction
+  float MaxSideFrictionSliding
+  float
+  float GroundSlowDownBase
+  float AbsorbTension
 
-0x029
- float SideFriction1
- CFuncKeysReal RolloverLateral
+0x029 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float SideFriction1
+  CFuncKeysReal RolloverLateral
 
-0x02A
- CFuncKeysReal LateralContactSlowDown
+0x02A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal LateralContactSlowDown
 
-0x02B
- CFuncKeysReal SteerSlowDown
- float SideFriction2
- float RubberBallElasticity
- int SteerSlowDownFadeInDuration
+0x02B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal SteerSlowDown
+  float SideFriction2
+  float RubberBallElasticity
+  int SteerSlowDownFadeInDuration
 
-0x02C
- CFuncKeysReal RolloverLateralFromAngle
- float MaxAngularSpeedYAirControl
- float BrakeCoef
- float BrakeMax
- float BrakeMaxDynamic
- float GroundSlowDownCoef
+0x02C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal RolloverLateralFromAngle
+  float MaxAngularSpeedYAirControl
+  float BrakeCoef
+  float BrakeMax
+  float BrakeMaxDynamic
+  float GroundSlowDownCoef
 
-0x02D
- int SteerSlowDownFadeOutDuration
+0x02D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  int SteerSlowDownFadeOutDuration
 
-0x02E
- float SteerSlowDownCoef
- float
+0x02E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerSlowDownCoef
+  float
 
-0x02F
- int TurboDuration
+0x02F [TM10, TMPU]
+  int TurboDuration
 
-0x030
- CFuncKeysReal SteerDriveTorque // encryption trick here
+0x030 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal SteerDriveTorque // encryption trick here
 
-0x031
- float LimitToMaxSpeedForce
- float SlopeSpeedGainLimit
+0x031 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LimitToMaxSpeedForce
+  float SlopeSpeedGainLimit
 
-0x032
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundSkidConcreteVolume
- float SoundImpactVolume
- float SoundWheelImpact_Hard_Threshold
- float SoundWheelImpact_Soft_Threshold
- float SoundBodyImpact_Hard_Threshold
- float SoundBodyImpact_Soft_Threshold
+0x032 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundSkidConcreteVolume
+  float SoundImpactVolume
+  float SoundWheelImpact_Hard_Threshold
+  float SoundWheelImpact_Soft_Threshold
+  float SoundBodyImpact_Hard_Threshold
+  float SoundBodyImpact_Soft_Threshold
 
-0x033
- float AngularSpeedClamp
+0x033 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float AngularSpeedClamp
 
-0x034
- float LinearSpeed2PositiveDeltaMax
+0x034 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LinearSpeed2PositiveDeltaMax
 
-0x035
- bool NoSteerSlowDownWhenSlipping
+0x035 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  bool NoSteerSlowDownWhenSlipping
 
-0x036
- float M4LateralFrictionSquareForce
- float M4LateralFrictionTorque
- float M4LateralFrictionForce
- CFuncKeysReal M4SteerRadiusFromSpeed
+0x036 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M4LateralFrictionSquareForce
+  float M4LateralFrictionTorque
+  float M4LateralFrictionForce
+  CFuncKeysReal M4SteerRadiusFromSpeed
 
-0x037
- CFuncKeysReal M4MaxFrictionTorqueFromSpeed
+0x037 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M4MaxFrictionTorqueFromSpeed
 
-0x038
- float M4MaxFrictionTorqueWhenSlippingCoef
- CFuncKeysReal M4MaxFrictionForceFromSpeed
- float M4MaxFrictionForceWhenSlipping
- float M4SteerRadiusWhenSlippingCoef
+0x038 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M4MaxFrictionTorqueWhenSlippingCoef
+  CFuncKeysReal M4MaxFrictionForceFromSpeed
+  float M4MaxFrictionForceWhenSlipping
+  float M4SteerRadiusWhenSlippingCoef
 
-0x039
- float M4LateralFrictionSquareTorque
- float
+0x039 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4LateralFrictionSquareTorque
+  float
 
-0x03A
- float M4SlipAngleSpeed
- float M4SteerRadiusCoefFromSlipAngle
+0x03A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4SlipAngleSpeed
+  float M4SteerRadiusCoefFromSlipAngle
 
-0x03B
- float M4LeaveSlippingSpeed
+0x03B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4LeaveSlippingSpeed
 
-0x03C
- float M4SteerAngleWhenSlippingMax
+0x03C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4SteerAngleWhenSlippingMax
 
-0x03D
- CFuncKeysReal M5SlippingAccelCurve
+0x03D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SlippingAccelCurve
 
-0x03E
- int M5LateralConstantSlowDownDuration
+0x03E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5LateralConstantSlowDownDuration
 
-0x03F
- CFuncKeysReal M5SteerCoefFromSpeed
+0x03F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SteerCoefFromSpeed
 
-0x040
- CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
+0x040 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
 
-0x041
- float M5MaxAxialRolloverTorque
- int M5KeepSlidingAccelDuration
+0x041 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M5MaxAxialRolloverTorque
+  int M5KeepSlidingAccelDuration
 
-0x042
- int M5KeepSteerSlowDownDurarion
+0x042 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5KeepSteerSlowDownDurarion
 
-0x043
- int M5KeepNoSteerSlowDownWhenSlippingDuration
+0x043 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5KeepNoSteerSlowDownWhenSlippingDuration
 
-0x044
- float M5AccelSlipCoefMax
+0x044 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M5AccelSlipCoefMax
 
 0x045
- float  WaterGravity
- float
- float
- float  WaterReboundMinHSpeed
- float
+  float  WaterGravity
+  float
+  float
+  float  WaterReboundMinHSpeed
+  float
 
-0x046
- float WaterGravity
- float WaterReboundMinHSpeed
- float WaterBumpMinSpeed
- CFuncKeysReal WaterBumpSlowDownFromSpeedRatio
- CFuncKeysReal WaterFrictionFromSpeed
- CFuncKeysReal WaterReboundFromSpeedRatio
+0x046 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float WaterGravity
+  float WaterReboundMinHSpeed
+  float WaterBumpMinSpeed
+  CFuncKeysReal WaterBumpSlowDownFromSpeedRatio
+  CFuncKeysReal WaterFrictionFromSpeed
+  CFuncKeysReal WaterReboundFromSpeedRatio
 
-0x047
- float WaterAngularFriction
+0x047 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float WaterAngularFriction
 
-0x048
- CFuncKeysReal WaterSplashFromSpeed
+0x048 [TMSX, TMNESWC]
+  CFuncKeysReal WaterSplashFromSpeed
 
-0x049
- CFuncKeysReal ModulationFromWheelCompression
+0x049 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal ModulationFromWheelCompression
 
 0x04A
- float
- float M6InertialMass
-
-0x04D
- float M6ForceEpsilon
-
-0x04E
- float M6InertialTorqueModualtionX
- float M6InertialTorqueModulationZ
-
-0x04F
- float M6MaxSpeed4Burnout
- CFuncKeysReal M6BurnoutRadius
-
-0x051
- float M6BurnoutFricMod
-
-0x052
- CFuncKeysReal M6RolloverLateralFromSpeedRatio
-
-0x053
- float M6BurnoutCenterForceCoeff2
-
-0x056
- float M6BurnoutRpmAcc
- float M6AirRpmAcc
- float M6AirRpmDeadening
-
-0x057
- float[] M6RpmWantedOnGearUp
-
-0x058
- float M6RpmLossCoefOnGearUp
-
-0x059
- float M6RpmGainCoefOnGearDown
- float M6SpeedLimitPositiveForTakeOffFront
- float M6RpmGainOnTakeOff
- float M6RpmLossOnTakeOffFinished
-
-0x05A
- float M6SpeedLimitPositiveForTakeOffRear
- float M6SpeedLimitNegForTakeOffFront
- float M6SpeedLimitNegTakeOffRear
-
-0x05B
- CFuncKeysReal BrakeHeatSpeedFromFBrake
- float BrakeCoolingSpeed
-
-0x05C
- float M6BrakeMaxRear
- float M6BrakeMaxDynamicRear
-
-0x05D
- float M6InertialMass
- float M6MaxDiffBtwnPropulsionAndSpeed
- CFuncKeysReal AccelCurveRearGear
- CFuncKeysReal M6BurnoutLateralSpeed
- float M6BurnoutLateralSpeedCoeff
- float M6MinSpeed4Burnout
- float M6BurnoutSteerCoeff
- float M6BurnoutCenterForceCoeff
- float M6BurnoutRadiusMax
- float M6BurnoutLateralSpeedMax
- float M6BurnoutSteerCoeff2
- float M6BurnoutSteerCoeff3
- float M6BrakeModulationWhenSlipping
- int M6BurnoutDuration
- float M6BurnoutAccMod
- float M6AfterBurnoutAccMod
- int M6AfterBurnoutDuration
- float M6FrictionModulationWhenSlipNBrake
- float M6BrakeSmokeIntensity
- float M6BurnoutSmokeVelocity
- float M6BurnoutSmokeIntensity
- CFuncKeysReal M6BurnoutRolloverFromSpeed
- CFuncKeysReal M6DonutRolloverFromSpeed
- float M6MaxDiffBtwGroundNormal
- float M6BurnoutWheelAngularRotation
- float M6MaxPosAngle4Burnout
- float M6MaxNegAngle4Burnout
- float M6AfterBurnoutImpulse
- float M6MaxRpm
- float[] M6GearRatio
- float[] M6MaxRPM
- float[] M6MinRPM
- int SteerDurationBeforeSteerSlowDown
-
-0x05E
- CFuncKeysReal AirControlZCoefFromAngularSpeed
-
-0x05F
- float WaterAngularFrictionSq
-
-0x060
- float ReverseMaxSpeed
- float TurboBoost
- float Turbo2Boost
- int TurboDuration
- int Turbo2Duration
-
-0x061
- CFuncKeysReal VisualSteerAngleFromSpeed
-
-0x062
- float
-
-0x063
- float
-
-0x064
- float
-
-0x065
- float
-
-0x066
- float
-
-0x06A
- float
- float
-
-0x06E
- float
-
-0x072
- float
- float
- float
- int
-
-0x077
- float
- float
- float
- float
- CFuncKeysReal
-
-0x078
- float
-
-0x079
- bool
- CFuncKeysReal
- CFuncKeysReal
- float
-
-0x07D
- int
- float
- float
-
-0x082
- bool
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
-
-0x084
- float
- float
- float
-
-0x085
- bool
- float
- float
- float
- float
- float
-
-0x086
- float
- float
-
-0x088
- float
-
-0x089
- version
- Keys (version: Version - 10)
- v2-
-  CFuncKeysReal
- v2+
-  float?
-  float?
-  float?
-  float?
-  v4+
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   v6+
-    float?
-    v7+
-     bool?
-     v8+
-      Keys (version: Version - 10)
-      Keys (version: Version - 10)
-      v9+
-       Keys (version: Version - 10)
-
-0x08A
- version
- float
- float
- float
- float
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- v1+
-  v3-
-   float?
-   float?
-  v4+
-   Keys (version: Version - 8)
-   Keys (version: Version - 8)
-  v3+
-   int?
-   v5=
-    float?
-   v6+
-    Keys (version: Version - 8)
-    v7+
-     bool?
-
-0x08B
- version
- v2-
-  float?
- v10-
-  float?
-  CFuncKeysReal
- v9-
   float
- v8-
-  CFuncKeysReal
- float
- v9-
+  float M6InertialMass
+
+0x04D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6ForceEpsilon
+
+0x04E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6InertialTorqueModualtionX
+  float M6InertialTorqueModulationZ
+
+0x04F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M6MaxSpeed4Burnout
+  CFuncKeysReal M6BurnoutRadius
+
+0x051 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutFricMod
+
+0x052 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M6RolloverLateralFromSpeedRatio
+
+0x053 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutCenterForceCoeff2
+
+0x056 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutRpmAcc
+  float M6AirRpmAcc
+  float M6AirRpmDeadening
+
+0x057 [TMSX, TMNESWC, VSK5, TMF]
+  float[] M6RpmWantedOnGearUp
+
+0x058 [TMSX, TMNESWC, VSK5, TMF]
+  float M6RpmLossCoefOnGearUp
+
+0x059 [TMSX, TMNESWC, VSK5, TMF]
+  float M6RpmGainCoefOnGearDown
+  float M6SpeedLimitPositiveForTakeOffFront
+  float M6RpmGainOnTakeOff
+  float M6RpmLossOnTakeOffFinished
+
+0x05A [TMSX, TMNESWC, VSK5, TMF]
+  float M6SpeedLimitPositiveForTakeOffRear
+  float M6SpeedLimitNegForTakeOffFront
+  float M6SpeedLimitNegTakeOffRear
+
+0x05B [TMSX, TMNESWC, VSK5, TMF]
+  CFuncKeysReal BrakeHeatSpeedFromFBrake
+  float BrakeCoolingSpeed
+
+0x05C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BrakeMaxRear
+  float M6BrakeMaxDynamicRear
+
+0x05D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M6InertialMass
+  float M6MaxDiffBtwnPropulsionAndSpeed
+  CFuncKeysReal AccelCurveRearGear
+  CFuncKeysReal M6BurnoutLateralSpeed
+  float M6BurnoutLateralSpeedCoeff
+  float M6MinSpeed4Burnout
+  float M6BurnoutSteerCoeff
+  float M6BurnoutCenterForceCoeff
+  float M6BurnoutRadiusMax
+  float M6BurnoutLateralSpeedMax
+  float M6BurnoutSteerCoeff2
+  float M6BurnoutSteerCoeff3
+  float M6BrakeModulationWhenSlipping
+  int M6BurnoutDuration
+  float M6BurnoutAccMod
+  float M6AfterBurnoutAccMod
+  int M6AfterBurnoutDuration
+  float M6FrictionModulationWhenSlipNBrake
+  float M6BrakeSmokeIntensity
+  float M6BurnoutSmokeVelocity
+  float M6BurnoutSmokeIntensity
+  CFuncKeysReal M6BurnoutRolloverFromSpeed
+  CFuncKeysReal M6DonutRolloverFromSpeed
+  float M6MaxDiffBtwGroundNormal
+  float M6BurnoutWheelAngularRotation
+  float M6MaxPosAngle4Burnout
+  float M6MaxNegAngle4Burnout
+  float M6AfterBurnoutImpulse
+  float M6MaxRpm
+  float[] M6GearRatio
+  float[] M6MaxRPM
+  float[] M6MinRPM
+  int SteerDurationBeforeSteerSlowDown
+
+0x05E [TMSX, TMNESWC, VSK5, TMF]
+  CFuncKeysReal AirControlZCoefFromAngularSpeed
+
+0x05F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float WaterAngularFrictionSq
+
+0x060 [TMSX, TMNESWC, VSK5, TMF]
+  float ReverseMaxSpeed
+  float TurboBoost
+  float Turbo2Boost
+  int TurboDuration
+  int Turbo2Duration
+
+0x061 [TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal VisualSteerAngleFromSpeed
+
+0x062 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
- v10-
+
+0x063 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x064 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x065 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x066 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x06A [MP3, TMT, MP4, TM2020]
+  float
+  float
+
+0x06E [MP3, TMT, MP4, TM2020]
+  float
+
+0x072 [MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
+  int
+
+0x077 [MP3, TMT, MP4]
+  float
+  float
+  float
+  float
   CFuncKeysReal
- v1+
+
+0x078 [MP3, TMT, MP4, TM2020]
+  float
+
+0x079 [MP3, TMT, MP4]
   bool
- v3+
-  v9-
-   float
-   float
- v4+
-  Keys (version: Version - 37)
-  v5+
-   v9-
-    int
-    int
-   v9+
-    Keys (version: Version - 37)
-    v13+
-     v22-
-      float
-     v22+
-      Keys (version: Version - 37)
-     float
-   v6+
-    Keys (version: Version - 37)
-    v7+
-     float
-     v10+
-      Keys (version: Version - 37)
-      Keys (version: Version - 37)
-      Keys (version: Version - 37)
-      v11+
-       float
-       float
-       float
-       float
-       float
-       Keys (version: Version - 37)
-       v12+
-        float
-        v14+
-         Keys (version: Version - 37)
-         v15+
-          Keys (version: Version - 37)
-          v16+
-           Keys (version: Version - 37)
-           v17+
-            int
-            v18+
-             int
-             v19+
-              Keys (version: Version - 37)
-              v20+
-               float
-               float
-               float
-               v21+
-                int
-                int
-                int
-                v23+
-                 bool
-                 float
-                 float
-                 Keys (version: Version - 37)
-                 v24+
-                  int
-                  v25+
-                   bool
-                   float
-                   v26+
-                    float
-                    v27+
-                     v33-
-                      float
-                      float
-                      float
-                      CFuncKeysReal
-                     v28+
-                      v33-
-                       CFuncKeysReal
-                      v29+
-                       int
-                       float
-                       float
-                       v33-
-                        v30+
-                         CFuncKeysReal
-                        v31+
-                         CFuncKeysReal
-                        v32+
-                         float
-                         CFuncKeysReal
-                       v35+
-                        bool
-                        v36+
-                         bool
-                         Keys (version: Version - 37)
-                         CFuncKeysReal
-
-0x08C
- version
- v2+
-  throw
- float
- float
- float
- float
- v1+
-  float?
-
-0x08D
- version
- v7+
-  throw
- float
- bool
- v2+
-  bool?
- v1+
-  float?
-  float?
- v3=
-  float?
-  float?
- v4+
+  CFuncKeysReal
+  CFuncKeysReal
   float
- v5+
-  bool? U09
-  v5=
-   U09 = false
 
-0x08E
- version
- v5+
-  throw
- CPlugCamControlModel[]_deprec (external)
- v1+
-  CPlugCamControlModel[]_deprec (external)
+0x07D [MP3, TMT, MP4, TM2020]
+  int
+  float
+  float
+
+0x082 [MP3, TMT, MP4]
+  bool
+  CFuncKeysReal
+  CFuncKeysReal
+  CFuncKeysReal
+  CFuncKeysReal
+
+0x084 [MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
+
+0x085 [MP3, TMT, MP4, TM2020]
+  bool
+  float
+  float
+  float
+  float
+  float
+
+0x086 [MP3, TMT, MP4, TM2020]
+  float
+  float
+
+0x088 [MP3, TMT, MP4, TM2020]
+  float
+
+0x089 [MP3, TMT, MP4, TM2020]
+  version
+  Keys (version: Version - 10)
+  v2-
+    CFuncKeysReal
   v2+
-   CPlugCamControlModel (external)
-   v3+
-    CPlugCamControlModel (external)
+    float?
+    float?
+    float?
+    float?
     v4+
-     CPlugCamControlModel[] (external)
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      float?
+      v6+
+        float?
+        v7+
+          bool?
+          v8+
+            Keys (version: Version - 10)
+            Keys (version: Version - 10)
+            v9+
+              Keys (version: Version - 10)
 
-0x094
- version
- v6+
-  throw
- float
- Keys (version: Version - 3)
- int
- float
- Keys (version: Version - 3)
- int
- v1+
-  int?
-  int?
-  v2+
-   float?
-   Keys (version: Version - 3)
-   int?
-   int?
-   v3=
-    int?
-   v4+
-    int
-
-0x095
- version
- v8+
-  throw
- int
- float
- Keys (version: Version - 1)
- bool
- float
- float
- float
- v1+
-  int?
-  v2+
-   int?
-   Keys (version: Version - 1)
-   Keys (version: Version - 1)
-   v3+
-    Keys (version: Version - 1)
+0x08A [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float
+  float
+  float
+  Keys (version: Version - 8)
+  Keys (version: Version - 8)
+  Keys (version: Version - 8)
+  Keys (version: Version - 8)
+  v1+
+    v3-
+      float?
+      float?
     v4+
-     int?
-     v5+
+      Keys (version: Version - 8)
+      Keys (version: Version - 8)
+    v3+
       int?
+      v5=
+        float?
+      v6+
+        Keys (version: Version - 8)
+        v7+
+          bool?
+
+0x08B [MP3, TMT, MP4, TM2020]
+  version
+  v2-
+    float?
+  v10-
+    float?
+    CFuncKeysReal
+  v9-
+    float
+  v8-
+    CFuncKeysReal
+  float
+  v9-
+    float
+  v10-
+    CFuncKeysReal
+  v1+
+    bool
+  v3+
+    v9-
+      float
+      float
+  v4+
+    Keys (version: Version - 37)
+    v5+
+      v9-
+        int
+        int
+      v9+
+        Keys (version: Version - 37)
+        v13+
+          v22-
+            float
+          v22+
+            Keys (version: Version - 37)
+          float
+      v6+
+        Keys (version: Version - 37)
+        v7+
+          float
+          v10+
+            Keys (version: Version - 37)
+            Keys (version: Version - 37)
+            Keys (version: Version - 37)
+            v11+
+              float
+              float
+              float
+              float
+              float
+              Keys (version: Version - 37)
+              v12+
+                float
+                v14+
+                  Keys (version: Version - 37)
+                  v15+
+                    Keys (version: Version - 37)
+                    v16+
+                      Keys (version: Version - 37)
+                      v17+
+                        int
+                        v18+
+                          int
+                          v19+
+                            Keys (version: Version - 37)
+                            v20+
+                              float
+                              float
+                              float
+                              v21+
+                                int
+                                int
+                                int
+                                v23+
+                                  bool
+                                  float
+                                  float
+                                  Keys (version: Version - 37)
+                                  v24+
+                                    int
+                                    v25+
+                                      bool
+                                      float
+                                      v26+
+                                        float
+                                        v27+
+                                          v33-
+                                            float
+                                            float
+                                            float
+                                            CFuncKeysReal
+                                          v28+
+                                            v33-
+                                              CFuncKeysReal
+                                            v29+
+                                              int
+                                              float
+                                              float
+                                              v33-
+                                                v30+
+                                                  CFuncKeysReal
+                                                v31+
+                                                  CFuncKeysReal
+                                                v32+
+                                                  float
+                                                  CFuncKeysReal
+                                              v35+
+                                                bool
+                                                v36+
+                                                  bool
+                                                  Keys (version: Version - 37)
+                                                  CFuncKeysReal
+
+0x08C [MP3, TMT, MP4, TM2020]
+  version
+  v2+
+    throw
+  float
+  float
+  float
+  float
+  v1+
+    float?
+
+0x08D [MP3, TMT, MP4, TM2020]
+  version
+  v7+
+    throw
+  float
+  bool
+  v2+
+    bool?
+  v1+
+    float?
+    float?
+  v3=
+    float?
+    float?
+  v4+
+    float
+  v5+
+    bool? U09
+    v5=
+      U09 = false
+
+0x08E [MP3, TMT, MP4, TM2020]
+  version
+  v5+
+    throw
+  CPlugCamControlModel[] (deprec, external)
+  v1+
+    CPlugCamControlModel[] (deprec, external)
+    v2+
+      CPlugCamControlModel (external)
+      v3+
+        CPlugCamControlModel (external)
+        v4+
+          CPlugCamControlModel[] (external)
+
+0x094 [MP3, TMT, MP4, TM2020]
+  version
+  v6+
+    throw
+  float
+  Keys (version: Version - 3)
+  int
+  float
+  Keys (version: Version - 3)
+  int
+  v1+
+    int?
+    int?
+    v2+
+      float?
+      Keys (version: Version - 3)
+      int?
+      int?
+      v3=
+        int?
+      v4+
+        int
+
+0x095 [MP3, TMT, MP4, TM2020]
+  version
+  v8+
+    throw
+  int
+  float
+  Keys (version: Version - 1)
+  bool
+  float
+  float
+  float
+  v1+
+    int?
+    v2+
       int?
       Keys (version: Version - 1)
-      int?
-      v6+
-       Keys (version: Version - 1)
+      Keys (version: Version - 1)
+      v3+
+        Keys (version: Version - 1)
+        v4+
+          int?
+          v5+
+            int?
+            int?
+            Keys (version: Version - 1)
+            int?
+            v6+
+              Keys (version: Version - 1)
 
-0x096
- version
- v6+
-  throw
- float
- float
- float
- float
- float
- float
- float
- float
- float
- v2+
-  float?
- float
- float
- float
- float
- float
- float
- float[] EngineGearRatios
- float[] EngineAutoGearMaxRPMs
- float[] EngineAutoGearMinRPMs
- v3+
+0x096 [MP3, TMT, MP4, TM2020]
+  version
+  v6+
+    throw
   float
-  v4+
-   bool
-   v5+
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  v2+
+    float?
+  float
+  float
+  float
+  float
+  float
+  float
+  float[] EngineGearRatios
+  float[] EngineAutoGearMaxRPMs
+  float[] EngineAutoGearMinRPMs
+  v3+
     float
+    v4+
+      bool
+      v5+
+        float
 
-0x097
- version
- float
- float
- float
- float
- float
- float
- bool
- v2+
+0x097 [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  bool
+  v2+
+    CMwNod
+
+0x098 [TMT, MP4, TM2020]
+  version
+  float
+  int
+  float
+  float
+  int
+  float
+  float
+  float
+  v2+
+    bool
+
+0x099 [TMT, MP4, TM2020]
+  version
   CMwNod
 
-0x098
- version
- float
- int
- float
- float
- int
- float
- float
- float
- v2+
-  bool
+0x09A [TMT, MP4, TM2020]
+  version
+  CPlugVehicleGearBox (external)
 
-0x099
- version
- CMwNod
+0x09B [TMT, MP4, TM2020]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  int
+  int
+  int
+  v1+
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    float?
+    v2+
+      float?
+      v3+
+        float?
+        float?
+        float?
+        float?
+        float?
+        float?
+        float?
+        v4+
+          Keys
 
-0x09A
- version
- CPlugVehicleGearBox (external)
-
-0x09B
- version
- float
- float
- float
- float
- float
- float
- int
- int
- int
- v1+
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  v2+
-   float?
-   v3+
+0x09C [MP4, TM2020]
+  version
+  v17-
     float?
-    float?
-    float?
-    float?
-    float?
-    float?
-    float?
-    v4+
-     Keys
-
-0x09C
- version
- v17-
+  v18+
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
   float?
- v18+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- float?
- float?
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- Keys (version: Version - 21)
- Keys (version: Version - 21)
- v1+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v2+
   float?
- v3=
-  float?
- v4+
   CFuncKeysReal
-  v5+
-   float?
-   Keys (version: Version - 21)
-   float?
-   float?
-   float?
-   v6+
+  CFuncKeysReal
+  CFuncKeysReal
+  Keys (version: Version - 21)
+  Keys (version: Version - 21)
+  v1+
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+  v2+
     float?
-    v7+
-     int?
-     Keys (version: Version - 21)
-     v8+
+  v3=
+    float?
+  v4+
+    CFuncKeysReal
+    v5+
+      float?
       Keys (version: Version - 21)
-      v9+
-       float?
-       v10+
+      float?
+      float?
+      float?
+      v6+
         float?
-        v11+
-         Keys (version: Version - 21)
-         Keys (version: Version - 21)
-         v12+
+        v7+
+          int?
           Keys (version: Version - 21)
-          v13+
-           Keys (version: Version - 21)
-           v15+
-            float?
-            v16+
-             float?
-             v19+
-              Keys (version: Version - 21)
-              v20+
-               float?
+          v8+
+            Keys (version: Version - 21)
+            v9+
+              float?
+              v10+
+                float?
+                v11+
+                  Keys (version: Version - 21)
+                  Keys (version: Version - 21)
+                  v12+
+                    Keys (version: Version - 21)
+                    v13+
+                      Keys (version: Version - 21)
+                      v15+
+                        float?
+                        v16+
+                          float?
+                          v19+
+                            Keys (version: Version - 21)
+                            v20+
+                              float?
 
-0x09D
- version
- v0=
-  bool?
-  float?
-  float?
-  float
-  float
-  bool?
-  float
-  float
- v1+
-  v20-
-   Keys (version: Version - 21)
-   float?
-   Keys (version: Version - 21)
-   float?
-   float?
-  float
-  float
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v2+
-  v20-
-   Keys (version: Version - 21)
- v3+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v4+
-  float?
-  float?
- v5+
-  float?
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  v20-
-   Keys (version: Version - 21)
- v6+
-  Keys (version: Version - 21)
- v7-
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v8+
-  float?
-  Keys (version: Version - 21)
- v9+
-  float?
-  float?
-  float?
- v10+
-  Keys (version: Version - 21)
- v11+
-  float?
- v12+
-  Keys (version: Version - 21)
- v13+
-  Keys (version: Version - 21)
- v14+
-  Keys (version: Version - 21)
- v15+
-  float?
-  float?
- v16+
-  float?
- v17+
-  float?
- v18+
-  Keys (version: Version - 21)
- v19+
-  float?
- v20+
-  CPlugDynaWaterModel
-
-0x09E
- version
- float
- float
- float
- v1+
-  float?
-  v2+
-   int?
-   float?
-   v3+
+0x09D [MP4, TM2020]
+  version
+  v0=
+    bool?
     float?
-    v4+
-     float?
-     Keys (version: Version - 8)
-     v6-
-      float?
-     v7+
-      Keys
-     v5+
-      float?
-      v6+
-       float?
-       float?
-
-0x09F
- version
- Keys (version: Version - 14)
- float
- float
- float
- v1+
-  float?
-  v2+
-   Keys (version: Version - 14)
-   v3+
-    Keys (version: Version - 14)
-    v4+
-     float?
-     float?
-     float?
-     float?
-     float?
-     float?
-     v5+
-      float?
-      v6+
-       Keys (version: Version - 14)
-       v7+
-        float?
-        Keys (version: Version - 14)
-        Keys (version: Version - 14)
-        float?
-        v8+
-         float?
-         float?
-         float?
-         float?
-         v9+
-          vec3?
-          vec3?
-          v10+
-           Keys (version: Version - 14)
-           v11+
-            Keys (version: Version - 14)
-            v12+
-             bool?
-             v13+
-              int?
-              int?
-              int?
-              int?
-              int?
-
-0x0A0
- version
- v1+
-  float
-  float
-  float
-  float
-  float
-  v2+
-   float
-   float
-   float
-   float
-   float
-
-0x0A1
- version
- Keys
- Keys
- float
- float
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
-
-0x0A2
- version
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
-
-0x0A3
- version
- float
- float
- int
- int
- v1+
-  float
-  v2+
-   float
-   float
-   float
-   float
-   v3+
+    float?
     float
-    v4+
-     CFuncKeysReal
-     float
-     int
-     int
-     int
-     v5+
-      int
-      CFuncKeysReal
-      CFuncKeysReal
-      Keys (version: Version - 13)
-      Keys (version: Version - 13)
-      v6+
-       int
-       v7+
-        int
-        v8+
-         int
-         v9+
-          float
-          int
-          v10+
-           int
-           v11+
-            float
-            v12+
-             Keys (version: Version - 13)
-             Keys (version: Version - 13)
+    float
+    bool?
+    float
+    float
+  v1+
+    v20-
+      Keys (version: Version - 21)
+      float?
+      Keys (version: Version - 21)
+      float?
+      float?
+    float
+    float
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+  v2+
+    v20-
+      Keys (version: Version - 21)
+  v3+
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+  v4+
+    float?
+    float?
+  v5+
+    float?
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    v20-
+      Keys (version: Version - 21)
+  v6+
+    Keys (version: Version - 21)
+  v7-
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+    Keys (version: Version - 21)
+  v8+
+    float?
+    Keys (version: Version - 21)
+  v9+
+    float?
+    float?
+    float?
+  v10+
+    Keys (version: Version - 21)
+  v11+
+    float?
+  v12+
+    Keys (version: Version - 21)
+  v13+
+    Keys (version: Version - 21)
+  v14+
+    Keys (version: Version - 21)
+  v15+
+    float?
+    float?
+  v16+
+    float?
+  v17+
+    float?
+  v18+
+    Keys (version: Version - 21)
+  v19+
+    float?
+  v20+
+    CPlugDynaWaterModel
 
-0x0A4
- version
- float
- v1+
-  float
- v2+
-  int
- v3+
-  int
-  Keys (version: Version - 14)
+0x09E [MP4, TM2020]
+  version
   float
   float
- v4+
   float
-  int
-  float
- v5+
-  Keys (version: Version - 14)
- v6+
-  Keys (version: Version - 14)
- v7+
-  Keys (version: Version - 14)
-  int
- v8+
-  Keys (version: Version - 14)
-  Keys (version: Version - 14)
- v9+
-  int
- v10+
-  int
- v11+
-  v17-
-   int
-   int
-   int
- v12+
-  Keys (version: Version - 14)
- v13+
-  v17-
-   int
- v15+
-  int
- v16+
-  float
- v18+
-  int
+  v1+
+    float?
+    v2+
+      int?
+      float?
+      v3+
+        float?
+        v4+
+          float?
+          Keys (version: Version - 8)
+          v6-
+            float?
+          v7+
+            Keys
+          v5+
+            float?
+            v6+
+              float?
+              float?
 
-0x0A5
- version
- v1-
-  int
- int
- v1-
-  int
- int
- v1-
-  int
-  int
-  int
-  int
- float
- float
- float
- float
- float
- float
- v1-
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
- Keys
- v1-
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
- Keys (version: Version - 1)
+0x09F [MP4, TM2020]
+  version
+  Keys (version: Version - 14)
+  float
+  float
+  float
+  v1+
+    float?
+    v2+
+      Keys (version: Version - 14)
+      v3+
+        Keys (version: Version - 14)
+        v4+
+          float?
+          float?
+          float?
+          float?
+          float?
+          float?
+          v5+
+            float?
+            v6+
+              Keys (version: Version - 14)
+              v7+
+                float?
+                Keys (version: Version - 14)
+                Keys (version: Version - 14)
+                float?
+                v8+
+                  float?
+                  float?
+                  float?
+                  float?
+                  v9+
+                    vec3?
+                    vec3?
+                    v10+
+                      Keys (version: Version - 14)
+                      v11+
+                        Keys (version: Version - 14)
+                        v12+
+                          bool?
+                          v13+
+                            int?
+                            int?
+                            int?
+                            int?
+                            int?
 
-0x0A6
- version
- Keys (version: Version - 11)
- Keys (version: Version - 11)
- Keys (version: Version - 11)
- int
- int
- int
- v1+
+0x0A0 [MP4, TM2020]
+  version
+  v1+
+    float
+    float
+    float
+    float
+    float
+    v2+
+      float
+      float
+      float
+      float
+      float
+
+0x0A1 [TM2020]
+  version
+  Keys
+  Keys
   float
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
   float
-  Keys (version: Version - 11)
- v2+
+  Keys
+  Keys
   float
- v3+
-  Keys (version: Version - 11)
- v4+
-  Keys (version: Version - 11)
- v5+
-  int
-  int
- v6+
-  v13-
-   Keys (version: Version - 11)
- v7+
-  v13-
-   Keys (version: Version - 11)
- v8+
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
- v9+
-  Keys (version: Version - 11)
- v10+
-  Keys (version: Version - 11)
- v12+
-  v13-
-   int
-   int
- v13+
-  int
-  int
- v14=
-  int
- v15+
+  float
+  float
+  float
+  float
   Keys
 
-0x0A7
- version
- int
- int
- int
- float
- float
- float
- float
- Keys (version: Version - 19)
- Keys (version: Version - 19)
- v1+
-  int
- v2+
-  int
-  Keys (version: Version - 19)
- v3+
-  int
- v4+
-  float
-  float
-  int
-  int
- v5+
-  int
-  int
- v6+
-  CFuncKeysReal
- v7+
-  int
- v8+
-  Keys (version: Version - 19)
- v9+
-  Keys (version: Version - 19)
-  Keys (version: Version - 19)
-  int
- v10+
-  float
-  Keys (version: Version - 19)
- v11+
-  Keys (version: Version - 19)
- v12+
-  float
-  float
- v13+
-  Keys (version: Version - 19)
- v14+
-  Keys (version: Version - 19)
-  Keys (version: Version - 19)
- v15+
-  int
- v16+
-  Keys (version: Version - 19)
- v17+
-  Keys (version: Version - 19)
- v18+
-  float
-  float
+0x0A2 [TM2020]
+  version
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
+  Keys (version: Version - 2)
 
-0x0A8
- version
- int
- Keys (version: Version - 10)
- v1+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v2+
-  Keys (version: Version - 10)
- v3+
-  Keys (version: Version - 10)
- v4+
+0x0A3 [TM2020]
+  version
+  float
+  float
   int
- v5+
   int
-  float
- v6+
-  Keys (version: Version - 10)
- v7+
-  Keys (version: Version - 10)
- v8+
-  float
-  float
- v9+
-  Keys (version: Version - 10)
+  v1+
+    float
+    v2+
+      float
+      float
+      float
+      float
+      v3+
+        float
+        v4+
+          CFuncKeysReal
+          float
+          int
+          int
+          int
+          v5+
+            int
+            CFuncKeysReal
+            CFuncKeysReal
+            Keys (version: Version - 13)
+            Keys (version: Version - 13)
+            v6+
+              int
+              v7+
+                int
+                v8+
+                  int
+                  v9+
+                    float
+                    int
+                    v10+
+                      int
+                      v11+
+                        float
+                        v12+
+                          Keys (version: Version - 13)
+                          Keys (version: Version - 13)
 
-0x0A9
- version
- int
- int
- Keys (version: Version - 4)
- Keys (version: Version - 4)
- v1+
+0x0A4 [TM2020]
+  version
+  float
+  v1+
+    float
+  v2+
+    int
+  v3+
+    int
+    Keys (version: Version - 14)
+    float
+    float
+  v4+
+    float
+    int
+    float
+  v5+
+    Keys (version: Version - 14)
+  v6+
+    Keys (version: Version - 14)
+  v7+
+    Keys (version: Version - 14)
+    int
+  v8+
+    Keys (version: Version - 14)
+    Keys (version: Version - 14)
+  v9+
+    int
+  v10+
+    int
+  v11+
+    v17-
+      int
+      int
+      int
+  v12+
+    Keys (version: Version - 14)
+  v13+
+    v17-
+      int
+  v15+
+    int
+  v16+
+    float
+  v18+
+    int
+
+0x0A5 [TM2020]
+  version
+  v1-
+    int
   int
- v2+
+  v1-
+    int
+  int
+  v1-
+    int
+    int
+    int
+    int
+  float
+  float
+  float
+  float
+  float
+  float
+  v1-
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+  Keys
+  v1-
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+    Keys (version: Version - 1)
+  Keys (version: Version - 1)
+
+0x0A6 [TM2020]
+  version
+  Keys (version: Version - 11)
+  Keys (version: Version - 11)
+  Keys (version: Version - 11)
+  int
+  int
+  int
+  v1+
+    float
+    Keys (version: Version - 11)
+    Keys (version: Version - 11)
+    float
+    Keys (version: Version - 11)
+  v2+
+    float
+  v3+
+    Keys (version: Version - 11)
+  v4+
+    Keys (version: Version - 11)
+  v5+
+    int
+    int
+  v6+
+    v13-
+      Keys (version: Version - 11)
+  v7+
+    v13-
+      Keys (version: Version - 11)
+  v8+
+    Keys (version: Version - 11)
+    Keys (version: Version - 11)
+  v9+
+    Keys (version: Version - 11)
+  v10+
+    Keys (version: Version - 11)
+  v12+
+    v13-
+      int
+      int
+  v13+
+    int
+    int
+  v14=
+    int
+  v15+
+    Keys
+
+0x0A7 [TM2020]
+  version
+  int
+  int
   int
   float
+  float
+  float
+  float
+  Keys (version: Version - 19)
+  Keys (version: Version - 19)
+  v1+
+    int
+  v2+
+    int
+    Keys (version: Version - 19)
+  v3+
+    int
+  v4+
+    float
+    float
+    int
+    int
+  v5+
+    int
+    int
+  v6+
+    CFuncKeysReal
+  v7+
+    int
+  v8+
+    Keys (version: Version - 19)
+  v9+
+    Keys (version: Version - 19)
+    Keys (version: Version - 19)
+    int
+  v10+
+    float
+    Keys (version: Version - 19)
+  v11+
+    Keys (version: Version - 19)
+  v12+
+    float
+    float
+  v13+
+    Keys (version: Version - 19)
+  v14+
+    Keys (version: Version - 19)
+    Keys (version: Version - 19)
+  v15+
+    int
+  v16+
+    Keys (version: Version - 19)
+  v17+
+    Keys (version: Version - 19)
+  v18+
+    float
+    float
+
+0x0A8 [TM2020]
+  version
+  int
+  Keys (version: Version - 10)
+  v1+
+    Keys (version: Version - 10)
+    Keys (version: Version - 10)
+  v2+
+    Keys (version: Version - 10)
+  v3+
+    Keys (version: Version - 10)
+  v4+
+    int
+  v5+
+    int
+    float
+  v6+
+    Keys (version: Version - 10)
+  v7+
+    Keys (version: Version - 10)
+  v8+
+    float
+    float
+  v9+
+    Keys (version: Version - 10)
+
+0x0A9 [TM2020]
+  version
+  int
+  int
   Keys (version: Version - 4)
   Keys (version: Version - 4)
- v3+
-  Keys (version: Version - 4)
+  v1+
+    int
+  v2+
+    int
+    float
+    Keys (version: Version - 4)
+    Keys (version: Version - 4)
+  v3+
+    Keys (version: Version - 4)
 
-0x0AA
- version
- float
-
-0x0AB
- version
- int
- int
- float
- Keys (version: Version - 1)
-
-0x0AC
- version
- int
-
-0x0AD
- version
- Keys (version: Version - 10)
- int
- float
- int
- CFuncKeysReal
- int
- int
- int
- int
- CFuncKeysReal
- Keys (version: Version - 10)
- int
- int
- CFuncKeysReal
- Keys (version: Version - 10)
- CFuncKeysReal
- v1+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v2+
-  int
-  int
-  int
- v3+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v4+
-  Keys (version: Version - 10)
+0x0AA [TM2020]
+  version
   float
- v5+
+
+0x0AB [TM2020]
+  version
+  int
+  int
   float
- v6+
+  Keys (version: Version - 1)
+
+0x0AC [TM2020]
+  version
+  int
+
+0x0AD [TM2020]
+  version
   Keys (version: Version - 10)
- v7+
+  int
+  float
+  int
   CFuncKeysReal
-  CFuncKeysReal
- v8+
-  Keys (version: Version - 10)
- v9+
-  float
- v11+
   int
+  int
+  int
+  int
+  CFuncKeysReal
+  Keys (version: Version - 10)
+  int
+  int
+  CFuncKeysReal
+  Keys (version: Version - 10)
+  CFuncKeysReal
+  v1+
+    Keys (version: Version - 10)
+    Keys (version: Version - 10)
+    Keys (version: Version - 10)
+    Keys (version: Version - 10)
+  v2+
+    int
+    int
+    int
+  v3+
+    Keys (version: Version - 10)
+    Keys (version: Version - 10)
+  v4+
+    Keys (version: Version - 10)
+    float
+  v5+
+    float
+  v6+
+    Keys (version: Version - 10)
+  v7+
+    CFuncKeysReal
+    CFuncKeysReal
+  v8+
+    Keys (version: Version - 10)
+  v9+
+    float
+  v11+
+    int
 
-0x0AE
- version
- int
- Keys (version: Version - 2)
- v1+
+0x0AE [TM2020]
+  version
+  int
+  Keys (version: Version - 2)
+  v1+
+    float
+
+0x0AF [TM2020]
+  version
+  Keys
   float
-
-0x0AF
- version
- Keys
- float
- float
- float
- float
- Keys
- Keys
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
- float
- float
- float
- Keys
- Keys
- float
- Keys
- float
- float
- Keys
- Keys
- Keys
- float
- float
- float
- Keys
- Keys
- Keys
- Keys
- float
- Keys
- Keys
- float
- float
- Keys
- Keys
- Keys
- float
- float
- float
- float
- float
- float
- float
- float
- float
- int
- float
- float
- int
- float
- float
- float
- float
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
- float
- float
- Keys
- int
- Keys
- Keys
- float
- Keys
- Keys
- Keys
- Keys
-
-0x0B0
- version
- float
- v1+
   float
+  float
+  float
+  Keys
+  Keys
+  Keys
+  Keys
+  float
+  float
+  float
+  float
+  float
+  Keys
+  float
+  float
+  float
+  Keys
+  Keys
+  float
+  Keys
+  float
+  float
+  Keys
+  Keys
+  Keys
+  float
+  float
+  float
+  Keys
+  Keys
+  Keys
+  Keys
+  float
+  Keys
+  Keys
+  float
+  float
+  Keys
+  Keys
+  Keys
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  int
+  float
+  float
+  int
+  float
+  float
+  float
+  float
+  Keys
+  Keys
+  float
+  float
+  float
+  float
+  float
+  Keys
+  float
+  float
+  Keys
+  int
+  Keys
+  Keys
+  float
+  Keys
+  Keys
+  Keys
+  Keys
+
+0x0B0 [TM2020]
+  version
+  float
+  v1+
+    float
 
 enum EShockModel
- Demo01
- Demo02
- Demo03
+  Demo01
+  Demo02
+  Demo03
 
 enum ESteerModel
- Steer01
- Steer02
- Steer03
- Steer04
- Steer05
- Steer06
+  Steer01
+  Steer02
+  Steer03
+  Steer04
+  Steer05
+  Steer06
 
 archive Keys

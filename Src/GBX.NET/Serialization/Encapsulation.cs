@@ -29,14 +29,27 @@ internal sealed class Encapsulation : IDisposable
     {
         _ = rw ?? throw new ArgumentNullException(nameof(rw));
 
-        if (rw.Reader is not null)
+        if (rw.Reader?.Encapsulation is not null)
         {
-            EncapsulateReader(rw.Reader);
+            throw new InvalidOperationException("Reader already has an encapsulation.");
         }
 
-        if (rw.Writer is not null)
+        if (rw.Writer?.Encapsulation is not null)
         {
-            EncapsulateWriter(rw.Writer);
+            throw new InvalidOperationException("Writer already has an encapsulation.");
+        }
+
+        reader = rw.Reader;
+        writer = rw.Writer;
+
+        if (reader is not null)
+        {
+            EncapsulateReader(reader);
+        }
+
+        if (writer is not null)
+        {
+            EncapsulateWriter(writer);
         }
     }
 

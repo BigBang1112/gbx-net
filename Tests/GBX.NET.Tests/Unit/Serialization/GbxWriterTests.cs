@@ -1,13 +1,14 @@
-﻿using GBX.NET.Exceptions;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using System.Text;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class GbxWriterTests
 {
-    [Fact]
-    public void Contructor_Input_BaseStreamIsOutput()
+    [Test]
+    public async Task Contructor_Input_BaseStreamIsOutput()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -16,11 +17,11 @@ public class GbxWriterTests
         using var w = new GbxWriter(ms);
 
         // Assert
-        Assert.Same(expected: ms, actual: w.BaseStream);
+        await Assert.That(w.BaseStream).IsSameReferenceAs(ms);
     }
 
-    [Fact]
-    public void Contructor_InputLeaveOpen_BaseStreamIsOutput()
+    [Test]
+    public async Task Contructor_InputLeaveOpen_BaseStreamIsOutput()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -29,11 +30,11 @@ public class GbxWriterTests
         using var w = new GbxWriter(ms);
 
         // Assert
-        Assert.Same(expected: ms, actual: w.BaseStream);
+        await Assert.That(w.BaseStream).IsSameReferenceAs(ms);
     }
 
-    [Fact]
-    public void WriteGbxMagic_WritesCorrect()
+    [Test]
+    public async Task WriteGbxMagic_WritesCorrect()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -43,18 +44,18 @@ public class GbxWriterTests
         w.WriteGbxMagic();
 
         // Assert
-        Assert.Equal(expected: 3, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(3);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: 'G', actual: (char)data[0]);
-        Assert.Equal(expected: 'B', actual: (char)data[1]);
-        Assert.Equal(expected: 'X', actual: (char)data[2]);
+        await Assert.That((char)data[0]).IsEqualTo('G');
+        await Assert.That((char)data[1]).IsEqualTo('B');
+        await Assert.That((char)data[2]).IsEqualTo('X');
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void WriteBoolean_WritesCorrect(bool value)
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task WriteBoolean_WritesCorrect(bool value)
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -64,16 +65,16 @@ public class GbxWriterTests
         w.Write(value);
 
         // Assert
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(4);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [value ? (byte)1 : (byte)0, 0, 0, 0], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[value ? (byte)1 : (byte)0, 0, 0, 0], CollectionOrdering.Matching);
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void WriteBooleanAsByteFalse_WritesCorrect(bool value)
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task WriteBooleanAsByteFalse_WritesCorrect(bool value)
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -83,16 +84,16 @@ public class GbxWriterTests
         w.Write(value, asByte: false);
 
         // Assert
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(4);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [value ? (byte)1 : (byte)0, 0, 0, 0], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[value ? (byte)1 : (byte)0, 0, 0, 0], CollectionOrdering.Matching);
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void WriteBooleanAsByteTrue_WritesCorrect(bool value)
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task WriteBooleanAsByteTrue_WritesCorrect(bool value)
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -102,16 +103,16 @@ public class GbxWriterTests
         w.Write(value, asByte: true);
 
         // Assert
-        Assert.Equal(expected: 1, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(1);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [value ? (byte)1 : (byte)0], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[value ? (byte)1 : (byte)0], CollectionOrdering.Matching);
     }
 
-    [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    public void WriteString_BytePrefix_NullOrEmpty_WritesCorrect(string? value)
+    [Test]
+    [Arguments(null)]
+    [Arguments("")]
+    public async Task WriteString_BytePrefix_NullOrEmpty_WritesCorrect(string? value)
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -121,14 +122,14 @@ public class GbxWriterTests
         w.Write(value, StringLengthPrefix.Byte);
 
         // Assert
-        Assert.Equal(expected: 1, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(1);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [0], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[0], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void WriteString_BytePrefix_NonEmpty_WritesCorrect()
+    [Test]
+    public async Task WriteString_BytePrefix_NonEmpty_WritesCorrect()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -138,14 +139,14 @@ public class GbxWriterTests
         w.Write("Hi!", StringLengthPrefix.Byte);
 
         // Assert
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(4);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [3, (byte)'H', (byte)'i', (byte)'!'], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[3, (byte)'H', (byte)'i', (byte)'!'], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void WriteString_BytePrefix_LengthOver255_Throws()
+    [Test]
+    public async Task WriteString_BytePrefix_LengthOver255_Throws()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -153,11 +154,11 @@ public class GbxWriterTests
 
         // Act & Assert
         Assert.Throws<LengthLimitException>(() => w.Write(GetRandomString(256), StringLengthPrefix.Byte));
-        Assert.Equal(expected: 0, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(0);
     }
 
-    [Fact]
-    public void WriteString_BytePrefix_ByteLengthOver255_Throws()
+    [Test]
+    public async Task WriteString_BytePrefix_ByteLengthOver255_Throws()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -165,13 +166,13 @@ public class GbxWriterTests
 
         // Act & Assert
         Assert.Throws<LengthLimitException>(() => w.Write(GetRandomString(254) + "š", StringLengthPrefix.Byte));
-        Assert.Equal(expected: 0, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(0);
     }
 
-    [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    public void WriteString_Int32Prefix_NullOrEmpty_WritesCorrect(string? value)
+    [Test]
+    [Arguments(null)]
+    [Arguments("")]
+    public async Task WriteString_Int32Prefix_NullOrEmpty_WritesCorrect(string? value)
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -181,14 +182,14 @@ public class GbxWriterTests
         w.Write(value);
 
         // Assert
-        Assert.Equal(expected: 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(4);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [0, 0, 0, 0], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[0, 0, 0, 0], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void WriteString_Int32Prefix_NonEmpty_WritesCorrect()
+    [Test]
+    public async Task WriteString_Int32Prefix_NonEmpty_WritesCorrect()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -198,14 +199,14 @@ public class GbxWriterTests
         w.Write("Hi!", StringLengthPrefix.Int32);
 
         // Assert
-        Assert.Equal(expected: 7, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(7);
 
         var data = ms.ToArray();
-        Assert.Equal(expected: [3, 0, 0, 0, (byte)'H', (byte)'i', (byte)'!'], actual: data);
+        await Assert.That(data).IsEquivalentTo((byte[])[3, 0, 0, 0, (byte)'H', (byte)'i', (byte)'!'], CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void WriteString_Int32Prefix_LargerString_WritesCorrect()
+    [Test]
+    public async Task WriteString_Int32Prefix_LargerString_WritesCorrect()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -217,14 +218,14 @@ public class GbxWriterTests
         w.Write(str, StringLengthPrefix.Int32);
 
         // Assert
-        Assert.Equal(expected: 132, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(132);
 
         var data = ms.ToArray();
-        Assert.Equal(expected, actual: data);
+        await Assert.That(data).IsEquivalentTo(expected, CollectionOrdering.Matching);
     }
 
-    [Fact]
-    public void WriteString_Int32Prefix_MuchLargerString_WritesCorrect()
+    [Test]
+    public async Task WriteString_Int32Prefix_MuchLargerString_WritesCorrect()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -236,10 +237,10 @@ public class GbxWriterTests
         w.Write(str, StringLengthPrefix.Int32);
 
         // Assert
-        Assert.Equal(expected: ushort.MaxValue + 4, actual: ms.Position);
+        await Assert.That(ms.Position).IsEqualTo(ushort.MaxValue + 4);
 
         var data = ms.ToArray();
-        Assert.Equal(expected, actual: data);
+        await Assert.That(data).IsEquivalentTo(expected, CollectionOrdering.Matching);
     }
 
     private static string GetRandomString(int length)

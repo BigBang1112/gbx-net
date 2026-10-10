@@ -1,5 +1,5 @@
 CPlugLocatedSound 0x09061000
 
-0x000
- CPlugSound Sound (external)
- iso4 Loc
+0x000 [MP3, TMT, MP4, TM2020]
+  CPlugSound Sound (external)
+  iso4 Loc

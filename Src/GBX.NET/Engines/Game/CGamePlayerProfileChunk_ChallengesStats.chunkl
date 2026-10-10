@@ -1,35 +1,19 @@
 CGamePlayerProfileChunk_ChallengesStats 0x03148000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
- version
- int
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int
 
-0x001 (skippable)
- version
- SChallengeStats[] ChallengeStats (version: Version)
+0x001 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  SChallengeStats[] ChallengeStats
 
 archive SChallengeStats
- ident
- v2+
-  string
-  int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int 
- int
- int
- bool
- bool NeedsSynchro
- if NeedsSynchro
+  ident
+  v2+
+    string
+    int
   int
   int
   int
@@ -43,3 +27,19 @@ archive SChallengeStats
   int
   int
   int
+  bool
+  bool NeedsSynchro
+  if NeedsSynchro
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int
+    int

@@ -1,16 +1,16 @@
 CGameCtnZoneFlat 0x0305D000
 - inherits: CGameCtnZone
 
-0x001
- CGameCtnBlockInfoFlat BlockInfoFlat (external)
- CGameCtnBlockInfoClip BlockInfoClip (external)
- CGameCtnBlockInfoRoad BlockInfoRoad (external)
- CGameCtnBlockInfoPylon BlockInfoPylon (external)
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CGameCtnBlockInfoFlat BlockInfoFlat (external)
+  CGameCtnBlockInfoClip BlockInfoClip (external)
+  CGameCtnBlockInfoRoad BlockInfoRoad (external)
+  CGameCtnBlockInfoPylon BlockInfoPylon (external)
 
-0x002 (skippable)
- int
- bool GroundOnly
- bool
+0x002 (skippable) [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int
+  bool GroundOnly
+  bool
 
-0x003 (skippable)
- bool AutoSimplifyGenealogy
+0x003 (skippable) [MP3, TMT, MP4, TM2020]
+  bool AutoSimplifyGenealogy

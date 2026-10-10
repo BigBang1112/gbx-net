@@ -1,72 +1,74 @@
 CGameCtnMediaBlockEntity 0x0329F000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- CPlugEntRecordData RecordData
- v3-
-  timefloat? Start
-  timefloat? End
- timefloat StartOffset
- int[] NoticeRecords // SPlugEntRecord array
- v2+
-  bool NoDamage
-  bool
-  bool ForceLight
-  bool ForceHue
-  v5-
-   vec3 LightTrailColor
+0x000 [MP4, TM2020.v11]
+  version
+  CPlugEntRecordData RecordData
+  v3-
+    float? Start (time)
+    float? End (time)
+  float StartOffset (time)
+  int[] NoticeRecords // SPlugEntRecord array
+  v2+
+    bool NoDamage
+    bool ForceTrail // Legacy trail override, converted to intensity 0.6 by TM2020.
+    bool ForceLight
+    bool ForceHue
+    v5-
+      vec3 LightTrailColor
   v3+
-   v11+
-    int
-   ident PlayerModel = empty
-   vec3? // some rgb, new light trail color?
-   list<PackDesc> SkinNames // name assumed from getter
-   bool HasBadges
-   if HasBadges
-    SBadge Badge
-   v4+
     v11+
-     string? SkinOptions
-    list<Key> Keys (version: Version)
-    v5=
-     float
-    v7+
-     string? GhostName
-     v8+
-      int
-      v11+
-       int
-       int
+      int AppearanceArchiveVersion = 1
+    ident PlayerModel = empty
+    vec3? AppearanceColor
+    PackDesc[] SkinNames (list)
+    bool HasBadges
+    if HasBadges
+      SBadge Badge
+    v11+
+      if AppearanceArchiveVersion != 0
+        string? SkinOptions
+  v4+
+    Key[] Keys (list)
+  v5=
+    float LegacyTrailIntensity = 1 // Copied into each key on load.
+  v7+
+    string? GhostName
+  v8+
+    int? RaceTime (time)
+  v10+
+    int U06
+    int U07
 
-0x002 // SkinOptions
- string SkinOptions
+0x002 [TM2020] // SkinOptions
+  string SkinOptions
+
+0x003 (skippable) [TM2020]
+  float TimeScale = 1 // Record time = StartOffset + (clip time - Start) * TimeScale.
 
 enum ELights
- Auto
- On
- Off
+  Auto
+  On
+  Off
  
 archive SBadge
- int Version
- vec3 Color
- v0=
-  int
-  string
- list<SSticker> Stickers
- list<string> Layers
+  version
+  vec3 Color
+  v0= (archive)
+    int
+    string
+  SSticker[] Stickers (list)
+  string[] Layers (list)
 
 archive SSticker
- string
- string
+  string Name // Sticker image directory under Stickers.
+  string Slot // Destination slot in the badge mesh.
 
 archive Key (inherits: IKey)
- timefloat Time
- int<ELights> Lights
- v6+
-  float?
-  int?
-  int?
-  float TrailIntensity
-  v9+
-   float SelfIllumIntensity
+  float Time (time)
+  int<ELights> Lights
+  v6+
+    vec3? TrailColor
+    float TrailIntensity = 1
+    v9+
+      float SelfIllumIntensity = 1

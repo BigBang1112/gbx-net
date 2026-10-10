@@ -1,73 +1,78 @@
 CGameCtnDecorationMood 0x0303A000
 
-0x000
- float Latitude
- float Longitude
- float DeltaGMT
- timeint TimeSunRise
- timeint TimeSunFall
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float Latitude
+  float Longitude
+  float DeltaGMT
+  int TimeSunRise (time)
+  int TimeSunFall (time)
 
-0x001
- float RemappedStartDayTime
- CPlugGameSkin? Remapping (external)
- string? RemapFolder
+0x001 [TMSX, TMNESWC, VSK5, TMF]
+  float RemappedStartDayTime
+  CPlugGameSkin? Remapping (external)
+  string? RemapFolder
 
-0x002
- int ShadowCountCarHuman
- int ShadowCountCarOpponent
- float ShadowCarIntensity
- bool ShadowScene
- bool BackgroundIsLocallyLighted
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int ShadowCountCarHuman
+  int ShadowCountCarOpponent
+  float ShadowCarIntensity
+  bool ShadowScene
+  bool BackgroundIsLocallyLighted
 
-0x003
- bool SolidLightAreSkinned
+0x003 [TMSX, TMNESWC]
+  bool SolidLightAreSkinned
 
-0x004
- CHmsLightMap HmsLightMap (external)
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CHmsLightMap HmsLightMap (external)
 
-0x005
- CHmsAmbientOcc HmsAmbientOcc (external)
+0x005 [TMF, MP3, TMT, MP4, TM2020]
+  CHmsAmbientOcc HmsAmbientOcc (external)
 
 0x006
- float SunMoonIntensity
+  float SunMoonIntensity
 
-0x007
- float SunMoonIntensity
- float LocalLightScale
+0x007 [MP3, TMT, MP4, TM2020]
+  float SunMoonIntensity
+  float LocalLightScale
 
-0x00C
- vec3
- float ToneMapExposureStaticBase
- int ToneMapFilmCurve
- CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
+0x00C [MP3, TMT, MP4, TM2020]
+  vec3
+  float ToneMapExposureStaticBase
+  int ToneMapFilmCurve
+  CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
 
-0x00F
- version
- vec3 Tech3SpecularFake_ExpScaleMax
- vec2 Tech3SpecularLocal
- vec3 Tech3Bloom
- vec4 Tech3ToneMapAutoExp
- CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
- v1+
-  bool WaterReflectFakeCube
-  v2+
-   CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
-   v3+
-    CPlugMoodBlender MoodBlender (external)
+0x00F [MP3, TMT, MP4, TM2020]
+  version
+  vec3 Tech3SpecularFake_ExpScaleMax
+  vec2 Tech3SpecularLocal
+  vec3 Tech3Bloom
+  vec4 Tech3ToneMapAutoExp
+  CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
+  v1+
+    bool WaterReflectFakeCube
+    v2+
+      CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
+      v3+
+        CPlugMoodBlender MoodBlender (external)
 
-0x012
- version
- float RemappedStartDayTime
- bool IsNight
- CPlugGameSkin Remapping (external)
- string RemapFolder
- bool EnableStars
- CFuncCloudsSolids CloudsSolids (external)
- CPlugFxLightning FxLightning (external)
- CPlugFxWindOnDecal FxWindOnDecal (external)
- v1+
-  CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
+0x012 [MP3, TMT, MP4, TM2020]
+  version
+  float RemappedStartDayTime
+  bool IsNight
+  CPlugGameSkin Remapping (external)
+  string RemapFolder
+  bool EnableStars
+  CFuncCloudsSolids CloudsSolids (external)
+  CPlugFxLightning FxLightning (external)
+  CPlugFxWindOnDecal FxWindOnDecal (external)
+  v1+
+    CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
 
-0x013
- version
- float EditorHelperHdrScale
+0x013 [MP3, TMT, MP4, TM2020]
+  version
+  float EditorHelperHdrScale
+
+property bool IsNight
+  get = isNight == true || (isNight == null && RemappedStartDayTime > 0.25 && RemappedStartDayTime < 0.75)
+  set
+    isNight = value

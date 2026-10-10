@@ -1,27 +1,42 @@
 CInputBindingsConfig 0x13006000
+- inherits: CMwNod
 
-0x000
- string
- Binding[] Bindings
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  string Name = ""
+  Binding[] Bindings
 
-0x001
- id[]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  id[] ConfiguredDevices
 
-0x002 (skippable)
- string
- int
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
+  string Name = ""
+  int Version // Binding configuration revision, compared with the input map's default revision.
 
-0x003
- version
- Binding[] Bindings (version: Version + 1)
+0x003 [MP3, TMT, MP4.v1, TM2020.v1]
+  version
+  Binding[] Bindings (version: 1) // Chunk versions 0 and 1 use the same binding layout.
+
+0x004 (skippable) [TM2020] // Native serializer restores the previous ID dictionary count afterward.
+  id[] ConfiguredDeviceModels
+
+0x005 (skippable) [TM2020] // Native serializer restores the previous ID dictionary count afterward.
+  Binding[] Bindings (version: 3)
+
+0x006 (skippable) [TM2020]
+  int
+  int (write: "0")
+  int (write: "0")
 
 archive Binding
- v0=
-  int U01
- id DeviceId
- v1+
-  int U02
-  int U01
- int IsAnalog
- int U03
- string Name
+  v0=
+    int ObjectIndex
+    SubDeviceIndex = 0
+  id DeviceId
+  v3+
+    id DeviceModelId // CInputDevice::DeviceModelId, absent from chunks 0x000 and 0x003.
+  v1+
+    int SubDeviceIndex
+    int ObjectIndex
+  int ActionType // SInputActionDesc::EActionType, not a boolean.
+  int PlayerNumber
+  string Name

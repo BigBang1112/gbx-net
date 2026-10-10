@@ -1,45 +1,47 @@
-﻿namespace GBX.NET.Tests.Unit;
 
+namespace GBX.NET.Tests.Unit;
+
+[Category("Unit")]
 public class Int3Tests
 {
-    [Fact]
-    public void Contructor_XYZIsCorrect()
+    [Test]
+    public async Task Contructor_XYZIsCorrect()
     {
         // Arrange & Act
         var i = new Int3(1, 2, 3);
 
         // Assert
-        Assert.Equal(expected: 1, actual: i.X);
-        Assert.Equal(expected: 2, actual: i.Y);
-        Assert.Equal(expected: 3, actual: i.Z);
+        await Assert.That(i.X).IsEqualTo(1);
+        await Assert.That(i.Y).IsEqualTo(2);
+        await Assert.That(i.Z).IsEqualTo(3);
     }
 
-    [Fact]
-    public void Initializer_XYZIsCorrect()
+    [Test]
+    public async Task Initializer_XYZIsCorrect()
     {
         // Arrange & Act
         var i = new Int3 { X = 1, Y = 2, Z = 3 };
 
         // Assert
-        Assert.Equal(expected: 1, actual: i.X);
-        Assert.Equal(expected: 2, actual: i.Y);
-        Assert.Equal(expected: 3, actual: i.Z);
+        await Assert.That(i.X).IsEqualTo(1);
+        await Assert.That(i.Y).IsEqualTo(2);
+        await Assert.That(i.Z).IsEqualTo(3);
     }
 
-    [Fact]
-    public void Zero_IsCorrect()
+    [Test]
+    public async Task Zero_IsCorrect()
     {
         // Arrange & Act
         var i = Int3.Zero;
 
         // Assert
-        Assert.Equal(expected: 0, actual: i.X);
-        Assert.Equal(expected: 0, actual: i.Y);
-        Assert.Equal(expected: 0, actual: i.Z);
+        await Assert.That(i.X).IsEqualTo(0);
+        await Assert.That(i.Y).IsEqualTo(0);
+        await Assert.That(i.Z).IsEqualTo(0);
     }
 
-    [Fact]
-    public void ToString_ReturnsCorrect()
+    [Test]
+    public async Task ToString_ReturnsCorrect()
     {
         // Arrange
         var i = new Int3(1, 2, 3);
@@ -48,11 +50,11 @@ public class Int3Tests
         var s = i.ToString();
 
         // Assert
-        Assert.Equal(expected: "<1, 2, 3>", actual: s);
+        await Assert.That(s).IsEqualTo("<1, 2, 3>");
     }
 
-    [Fact]
-    public void ImplicitConversionFromTuple_IsCorrect()
+    [Test]
+    public async Task ImplicitConversionFromTuple_IsCorrect()
     {
         // Arrange
         var t = (1, 2, 3);
@@ -61,13 +63,13 @@ public class Int3Tests
         Int3 i = t;
 
         // Assert
-        Assert.Equal(expected: 1, actual: i.X);
-        Assert.Equal(expected: 2, actual: i.Y);
-        Assert.Equal(expected: 3, actual: i.Z);
+        await Assert.That(i.X).IsEqualTo(1);
+        await Assert.That(i.Y).IsEqualTo(2);
+        await Assert.That(i.Z).IsEqualTo(3);
     }
 
-    [Fact]
-    public void Equals_IsCorrect()
+    [Test]
+    public async Task Equals_IsCorrect()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -75,12 +77,12 @@ public class Int3Tests
         var i3 = new Int3(3, 2, 1);
 
         // Act & Assert
-        Assert.True(i1.Equals(i2));
-        Assert.False(i1.Equals(i3));
+        await Assert.That(i1.Equals(i2)).IsTrue();
+        await Assert.That(i1.Equals(i3)).IsFalse();
     }
 
-    [Fact]
-    public void EqualsObject_IsCorrect()
+    [Test]
+    public async Task EqualsObject_IsCorrect()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -88,12 +90,12 @@ public class Int3Tests
         var i3 = new Int3(3, 2, 1);
 
         // Act & Assert
-        Assert.True(i1.Equals((object)i2));
-        Assert.False(i1.Equals((object)i3));
+        await Assert.That(i1.Equals((object)i2)).IsTrue();
+        await Assert.That(i1.Equals((object)i3)).IsFalse();
     }
 
-    [Fact]
-    public void GetHashCode_IsCorrect()
+    [Test]
+    public async Task GetHashCode_IsCorrect()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -101,12 +103,12 @@ public class Int3Tests
         var i3 = new Int3(3, 2, 1);
 
         // Act & Assert
-        Assert.Equal(expected: i1.GetHashCode(), actual: i2.GetHashCode());
-        Assert.NotEqual(expected: i1.GetHashCode(), actual: i3.GetHashCode());
+        await Assert.That(i2.GetHashCode()).IsEqualTo(i1.GetHashCode());
+        await Assert.That(i3.GetHashCode()).IsNotEqualTo(i1.GetHashCode());
     }
 
-    [Fact]
-    public void EqualityOperator_IsCorrect()
+    [Test]
+    public async Task EqualityOperator_IsCorrect()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -114,7 +116,7 @@ public class Int3Tests
         var i3 = new Int3(3, 2, 1);
 
         // Act & Assert
-        Assert.True(i1 == i2);
-        Assert.False(i1 == i3);
+        await Assert.That(i1 == i2).IsTrue();
+        await Assert.That(i1 == i3).IsFalse();
     }
 }

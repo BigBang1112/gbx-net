@@ -1,62 +1,62 @@
 CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
- version
- string MenuLeagueFilter
- byte
- byte
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  string MenuLeagueFilter
+  byte MenuInternetView
+  byte
 
-0x002 (skippable)
- version
- int
- Pair[]
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int DynamicLoadScreenIndex
+  Pair[]
 
-0x003 (skippable)
- version
- vec3
- vec3
- vec3
- vec3
- vec3
+0x003 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  vec3
+  vec3
+  vec3
+  vec3
+  vec3
 
-0x004 (skippable)
- version
- SCampaignSettings[] CampaignSettings
+0x004 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  SCampaignSettings[] CampaignSettings
 
-0x005 (skippable)
- version
- string
- string
- string
- string
- string
- string
+0x005 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  string
+  string
+  string
+  string
+  string
+  string
 
-0x006 (skippable)
- version
- int U01
- int U02
- Unknown[] U03 (version: U02)
- bool
+0x006 (skippable) [MP4, TM2020]
+  version
+  int U01
+  int U02
+  Unknown[] U03 (version: U02)
+  bool
 
 archive Pair
- id
- int
+  id
+  int
 
 archive SCampaignSettings
- byte
- id
- int
- SSoloChallengesCurrentPage[] SoloChallengesCurrentPages
+  byte
+  id
+  int
+  SSoloChallengesCurrentPage[] SoloChallengesCurrentPages
 
 archive SSoloChallengesCurrentPage
- int
- int
+  int
+  int
 
 archive Unknown
- ident
- v0=
-  data
- int
- string
+  ident
+  v0=
+    data
+  int
+  string

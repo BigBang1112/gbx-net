@@ -2,256 +2,295 @@ CGameItemModel 0x2E002000
 - inherits: CGameCtnCollector
 
 0x000 (header, struct: SHeaderItemModelDesc) // item type
- int<EItemType> ItemType
+  int<EItemType> ItemType
 
 0x001 (header, struct: SHeaderFileVersion) // file version
- version
+  version
 
-0x000
- CSceneMobil Vehicle (external)
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  CSceneMobil Vehicle (external)
 
-0x001
- CPlugGameSkin GameSkin
+0x001 [TM10, TMPU]
+  CPlugGameSkin GameSkin
 
-0x002 // old race interface fid
- CScene2d RaceInterfaceFid
+0x002 [TM10, TMPU, TMSX] // old race interface fid
+  CScene2d RaceInterfaceFid
 
-0x003 // LowQualitySolid
- CPlugSolid LowQualitySolid (external)
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // LowQualitySolid
+  CPlugSolid LowQualitySolid (external)
 
-0x004
- CMwNod
+0x004 [TMSX]
+  CMwNod
 
-0x006 // DefaultCamIndex
- int DefaultCamIndex
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3] // DefaultCamIndex
+  int DefaultCamIndex
 
-0x007 // old materials
- CPlugMaterial MaterialSkin (external)
- CPlugMaterial MaterialGlass (external)
- CPlugMaterial MaterialDetails (external)
+0x007 [TMSX] // old materials
+  CPlugMaterial MaterialSkin (external)
+  CPlugMaterial MaterialGlass (external)
+  CPlugMaterial MaterialDetails (external)
 
-0x008 // Nadeo skin fids
- CMwNod?[] NadeoSkinFids (external)
+0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
+  CMwNod?[] NadeoSkinFids (external)
 
-0x009 // Cameras
- CMwNod[]_deprec Cameras (external)
+0x009 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Cameras
+  CMwNod[] Cameras (deprec, external)
 
-0x00A // DecoratorSolid
- CPlugDecoratorSolid DecoratorSolid (external)
+0x00A [TMNESWC, VSK5, TMF, MP3] // DecoratorSolid
+  CPlugDecoratorSolid DecoratorSolid (external)
 
-0x00B // stem materials
- CPlugMaterial StemMaterial (external)
- CPlugMaterial StemBumpMaterial (external)
+0x00B [TMNESWC, VSK5, TMF] // stem materials
+  CPlugMaterial StemMaterial (external)
+  CPlugMaterial StemBumpMaterial (external)
 
-0x00C // race interface fid
- CScene2d RaceInterfaceFid
+0x00C [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // race interface fid
+  CScene2d RaceInterfaceFid
 
-0x00D (ForcedSkinsFids)
- CMwNod[] ForcedSkinsFids
+0x00D (ForcedSkinsFids) [TMNESWC, VSK5, TMF]
+  CMwNod[] ForcedSkinsFids
 
-0x00E // StadiumCar materials
- CPlugMaterial MaterialSkin (external)
- CPlugMaterial MaterialGlass (external)
- CPlugMaterial MaterialDetails (external)
- CPlugMaterial MaterialPilot (external)
+0x00E [TMNESWC] // StadiumCar materials
+  CPlugMaterial MaterialSkin (external)
+  CPlugMaterial MaterialGlass (external)
+  CPlugMaterial MaterialDetails (external)
+  CPlugMaterial MaterialPilot (external)
 
-0x010 (BannerProfileFid)
- CPlugBitmap BannerProfileFid (external)
+0x010 (BannerProfileFid) [VSK5, TMF]
+  CPlugBitmap BannerProfileFid (external)
 
-0x011 // materials
- CPlugMaterial MaterialSkin (external)
- CPlugMaterial MaterialGlass (external)
- CPlugMaterial MaterialDetails (external)
- CPlugMaterial MaterialPilot (external)
- CPlugLight FrontLight (external)
- CPlugLight FrontLightSmall (external)
- CPlugLight RearLight (external)
- CPlugLight ProjShadow (external)
- CPlugLight ProjFront (external)
+0x011 [VSK5, TMF] // materials
+  CPlugMaterial MaterialSkin (external)
+  CPlugMaterial MaterialGlass (external)
+  CPlugMaterial MaterialDetails (external)
+  CPlugMaterial MaterialPilot (external)
+  CPlugLight FrontLight (external)
+  CPlugLight FrontLightSmall (external)
+  CPlugLight RearLight (external)
+  CPlugLight ProjShadow (external)
+  CPlugLight ProjFront (external)
 
-0x012
- vec3 GroundPoint
- float PainterGroundMargin
- float OrbitalCenterHeightFromGround
- float OrbitalRadiusBase
- float OrbitalPreviewAngle
+0x012 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  vec3 GroundPoint
+  float PainterGroundMargin
+  float OrbitalCenterHeightFromGround
+  float OrbitalRadiusBase
+  float OrbitalPreviewAngle
 
-0x013 (AudioEnvironmentInCar)
- CPlugAudioEnvironment AudioEnvironmentInCar (external)
+0x013 (AudioEnvironmentInCar) [TMF, MP3, TMT, MP4]
+  CPlugAudioEnvironment AudioEnvironmentInCar (external)
 
 0x014
- CMwNod
+  CMwNod
 
-0x015 // ItemTypeE
- int<EItemType> ItemTypeE
+0x015 [MP3, TMT, MP4, TM2020] // ItemTypeE
+  int<EItemType> ItemTypeE
 
-0x019 // model
+0x019 [MP3, TMT, MP4, TM2020] // model
+  version
+  if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
+    v8-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  else if ItemType == EItemType.Vehicle
+    v9-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  else if ItemType != EItemType.Block
+    v11-
+      CMwNod PhyModelCustom (external)
+      CMwNod VisModelCustom (external)
+  v3+
+    id DefaultWeaponName
+  v4+
+    if n.phyModelCustom != null
+      int PhyModelCustomIndex (local, write: -1)
+    else
+      CMwNod PhyModelCustom
+  v5+
+    if n.visModelCustom != null
+      int VisModelCustomIndex (local, write: -1)
+    else
+      CMwNod VisModelCustom
+  v6+
+    CGameActionModel[] Actions
+  v7+
+    int<EDefaultCam> DefaultCam
+  v8+
+    CMwNod EntityModelEdition (external) // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
+    if n.entityModelEdition == null && EntityModelEditionFile == null
+      if ItemType == EItemType.Block
+        throw (type: Exception, message: EntityModel cannot exist for Block)
+      CMwNod EntityModel
+  v13+
+    CPlugVFXFile VFX
+  v15+
+    CPlugGameSkinAndFolder MaterialModifier (external)
 
-0x01A
- CMwNod
+0x01A [MP3, TMT, MP4, TM2020]
+  CMwNod
 
-0x01B
- CMwNod
+0x01B [MP3, TMT]
+  CMwNod
 
-0x01C // default placement
- version
- v5+
-  CGameItemPlacementParam DefaultPlacement (external)
-  return
- vec3[]
- v1+
-  float
-  float
-  float
-  float
-  float
-  float
-  v2+
-   float
-   float
-   float
-   float
-   float
-   v3+
+0x01C [MP3, TMT, MP4, TM2020] // default placement
+  version
+  v5+
+    CGameItemPlacementParam DefaultPlacement (external)
+    return
+  vec3[]
+  v1+
     float
     float
-    v4+
-     float
+    float
+    float
+    float
+    float
+    v2+
+      float
+      float
+      float
+      float
+      float
+      v3+
+        float
+        float
+        v4+
+          float
 
 0x01D
- short
+  short
 
-0x01E
- version
- v2+
-  string ArchetypeRef
-  v5+
-   if ArchetypeRef == null || ArchetypeRef == ""
-    CGameItemModel ArchetypeFid
-   v6+
-    string // SkinDirNameCustom
-    v7+
-     int // -1
+0x01E [MP3, TMT, MP4, TM2020]
+  version
+  v2+
+    string ArchetypeRef
+    v5+
+      if ArchetypeRef == null || ArchetypeRef == ""
+        CGameItemModel ArchetypeFid
+      v6+
+        string // SkinDirNameCustom
+        v7+
+          int // -1
 
-0x01F
- version
- v6-
-  v5+
-   string?
-   string?
-   int?
-  v4+
-   int?
-  v2-
-   short?
- int<EWaypointType> WaypointType
- v7-
-  iso4
- v6+
-  bool DisableLightmap
-  v9+
-   v12-
-    CMwNod
-   v11+
-    byte?
-    v12+
-     int?
-     int?
+0x01F [MP3, TMT, MP4, TM2020]
+  version
+  v6-
+    v5+
+      string?
+      string?
+      int?
+    v4+
+      int?
+    v2-
+      short?
+  int<EWaypointType> WaypointType
+  v7-
+    iso4
+  v6+
+    bool DisableLightmap
+    v9+
+      v12-
+        CMwNod
+      v11+
+        byte?
+        v12+
+          int?
+          int?
 
-0x020
- version
- v1-
-  string
-  CMwNod // CPlugFileImg
-  return
- string IconFid
- v3+
-  boolbyte // ArticlePtr? xD
+0x020 [MP3, TMT, MP4, TM2020]
+  version
+  v1-
+    string
+    CMwNod // CPlugFileImg
+    return
+  string IconFid
+  v3+
+    boolbyte // ArticlePtr? xD
 
-0x021
- version
- ItemGroupElement[] ItemGroupElements
+0x021 [TMT, MP4]
+  version
+  ItemGroupElement[] ItemGroupElements
 
-0x022 (skippable)
- version
- int
- id[]
- int
- ushort[]
+0x022 (skippable) [TMT]
+  version
+  int
+  id[]
+  int
+  ushort[]
 
-0x023
- version
- byte
- int
+0x023 [MP4]
+  version
+  byte
+  int
 
-0x024 (skippable)
- version
- vec2[]
+0x024 (skippable) [MP4]
+  version
+  vec2[]
 
-0x025 (skippable)
- version
- bool
+0x025 (skippable) [TM2020]
+  version
+  bool
 
-0x026 (skippable)
- version
- vec3[]
+0x026 (skippable) [TM2020]
+  version
+  vec3[]
 
-0x027 (skippable)
- version
- float
+0x027 (skippable) [TM2020]
+  version
+  float
 
 archive ItemGroupElement
- iso4 Location
- string ItemRef
- if ItemRef == null || ItemRef == ""
-  CGameItemModel Item
+  iso4 Location
+  string ItemRef
+  if ItemRef == null || ItemRef == ""
+    CGameItemModel Item
 
 enum EItemType
- Undefined
- Ornament // StaticObject
- PickUp // DynaObject
- Character
- Vehicle
- Spot
- Cannon
- Group
- Decal
- Turret
- Wagon
- Block
- EntitySpawner
+  Undefined
+  Ornament // StaticObject
+  PickUp // DynaObject
+  Character
+  Vehicle
+  Spot
+  Cannon
+  Group
+  Decal
+  Turret
+  Wagon
+  Block
+  EntitySpawner
 
 enum EWaypointType
- Start
- Finish
- Checkpoint
- None
- StartFinish
- Dispenser
+  Start
+  Finish
+  Checkpoint
+  None
+  StartFinish
+  Dispenser
 
 enum EDefaultCam
- None
- Default
- Free
- Spectator
- Behind
- Close
- Internal
- Helico
- FirstPerson
- ThirdPerson
- ThirdPersonTop
- Iso
- IsoFocus
- Dia3
- Board
- MonoScreen
- Rear
- Debug
- _1
- _2
- _3
- Alt1
- Orbital
- Decals
- Snap
+  None
+  Default
+  Free
+  Spectator
+  Behind
+  Close
+  Internal
+  Helico
+  FirstPerson
+  ThirdPerson
+  ThirdPersonTop
+  Iso
+  IsoFocus
+  Dia3
+  Board
+  MonoScreen
+  Rear
+  Debug
+  _1
+  _2
+  _3
+  Alt1
+  Orbital
+  Decals
+  Snap

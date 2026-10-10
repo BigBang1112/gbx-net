@@ -1,50 +1,36 @@
-﻿namespace GBX.NET.Engines.Game;
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMacroBlockInfo
 {
-    private CScriptTraitsMetadata? scriptMetadata;
-    private CGameCtnMediaClipGroup? clipGroupInGame;
-    private CGameCtnMediaClipGroup? clipGroupEndRace;
-
-    [AppliedWithChunk<Chunk0310D00B>]
-    public CScriptTraitsMetadata? ScriptMetadata { get => scriptMetadata; set => scriptMetadata = value; }
-
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
-
-    [AppliedWithChunk<Chunk0310D011>]
-    public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
-
-    public partial class Chunk0310D00B
+    public partial class Chunk0310D005
     {
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.Encapsulated(rw =>
-            {
-                rw.Node<CScriptTraitsMetadata>(ref n.scriptMetadata);
-            });
+            rw.ArrayString(ref n.legacyDecalModelPaths!);
+            // The decal count precedes the version, rather than the decal array itself.
+            U01 = rw.Int32(n.legacyDecals?.Length ?? 0);
+            rw.Int32(ref U02);
+            rw.ArrayReadableWritable(ref n.legacyDecals!, U01);
         }
     }
 
-    public partial class Chunk0310D011 : IVersionable
+    public partial class BlockSpawn
     {
-        public int Version { get; set; }
-
-        public Int3 U02;
-        public Int3 U03;
-
-        public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
+        [Obsolete("Use YawPitchRoll instead. This property does not swap Pitch and Yaw.")]
+        public Vec3 PitchYawRoll
         {
-            rw.VersionInt32(this);
-            rw.Encapsulated(rw =>
-            {
-                // SMediaTrackSpawns
-                rw.Int3(ref U02);
-                rw.Int3(ref U03);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
-                //
-            });
+            get => YawPitchRoll;
+            set => YawPitchRoll = value;
+        }
+    }
+
+    public partial class ObjectSpawn
+    {
+        [Obsolete("Use YawPitchRoll instead. This property does not swap Pitch and Yaw.")]
+        public Vec3 PitchYawRoll
+        {
+            get => YawPitchRoll;
+            set => YawPitchRoll = value;
         }
     }
 }

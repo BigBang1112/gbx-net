@@ -2,141 +2,228 @@ CGameCtnBlockInfo 0x0304E000
 - inherits: CGameCtnCollector
 - abstract
 
-0x005 [TM10, TMSX, TMF]
+constructor
+  WayPointType = EWayPointType.None
 
-0x009 [TM10, TMSX, TMF, MP3, TMT]
- bool IsPillar
-
-0x00B [TM10, TMSX]
- int
- CSceneMobil GroundHelperMobil
- CSceneMobil AirHelperMobil
- CSceneMobil ConstructionModeHelperMobil
-
-0x00C [TM10, TMSX, TMF]
- iso4? SpawnLocGround
- iso4? SpawnLocAir
-
-0x00D [TMSX, TMF]
- bool IsReplacement
-
-0x00E [TMF]
- int<EWayPointType> WayPointType
- CSceneMobil GroundHelperMobil
- CSceneMobil AirHelperMobil
- CSceneMobil ConstructionModeHelperMobil
-
-0x00F [TMF, MP3, TMT, MP4]
- bool NoRespawn
-
-0x013 [MP3, TMT, MP4]
- bool IconAutoUseGround
-
-0x015 [MP3, TMT, MP4]
- int // node ref
- iso4
-
-0x017 [MP3, TMT, MP4]
- bool
-
-0x020 [MP3.v5, TMT.v5, MP4.v6]
- version
- CPlugCharPhySpecialProperty CharPhySpecialProperty
- v6-
-  CGameWaypointSpecialProperty U01
- v2+
-  CMwNod PodiumInfo // CGamePodiumInfo or CPlugMediaClipList
-  v3+
-   CMwNod IntroInfo // CGamePodiumInfo or CPlugMediaClipList
-   v4+
-    bool CharPhySpecialPropertyCustomizable
-    v5=
-     bool U02
-    v8+
-     bool U03
-     if U03
-      string // MatModifier
-      string // Grass
-
-0x023 [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
- CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
-
-0x026 [MP3, TMT, MP4]
- int<EWayPointType> WayPointType
-
-0x027 [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantGround[]_deprec AdditionalVariantsGround
-
-0x028 [MP3, TMT, MP4]
- id SymmetricalBlockInfoId
- int<Direction> Dir
-
-0x029 [MP3, TMT, MP4]
- CPlugFogVolumeBox FogVolumeBox (external)
-
-0x02A [MP3.v1, TMT.v1, MP4.v2]
- version
- CPlugSound Sound1 (external)
- CPlugSound Sound2 (external)
- v2-
-  iso4 Sound1Loc
-  iso4 Sound2Loc
- v3+
-  if Sound1 != null || Sound1File != null
-   iso4 Sound1Loc
-  if Sound2 != null || Sound2File != null
-   iso4 Sound2Loc
-
-0x02B [MP3.v1, TMT.v1, MP4.v1]
- version
- int<EBaseType> BaseType
- v0=
-  throw
-
-0x02C [MP3, TMT, MP4]
- CGameCtnBlockInfoVariantAir[]_deprec AdditionalVariantsAir
-
-0x02E [MP3]
-
-0x02F [MP4.v0]
- version
- boolbyte IsPillar
- byte<EMultiDir> PillarShapeMultiDir
- v1+
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // legacy block units and mobils
+  id Name (inherited)
+  int SizeX [TM10 = 1, TMPU = 1] // Legacy block width in units, discarded since Sunrise
+  int SizeY [TM10 = 1, TMPU = 1] // Legacy block height in units, discarded since Sunrise
+  int SizeZ [TM10 = 1, TMPU = 1] // Legacy block depth in units, discarded since Sunrise
+  bool IsPillar
+  int<ESelection> Selection
+  int
+  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
+  CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
+  CSceneMobil[][] GroundMobils (external)
+  CSceneMobil[][] AirMobils (external)
   byte
+  int
+  short
+  short
 
-0x031
- version
- CMwNod (external)
- CPlugGameSkinAndFolder MaterialModifier (external)
- v1+
-  CPlugGameSkinAndFolder MaterialModifier2 (external) // not verified
+0x006 // legacy pillar flag and ID
+  bool IsPillar
+  id
+
+0x007 // legacy shared spawn location
+  iso4? SpawnLocGround
+  SpawnLocAir = SpawnLocGround
+
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT] // IsPillar
+  bool IsPillar
+
+0x00A // legacy waypoint and helper mobils
+  int<EWayPointType> WayPointType
+  CSceneMobil GroundHelperMobil
+  CSceneMobil AirHelperMobil
+
+0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5] // legacy waypoint and helper mobils
+  int<EWayPointType> WayPointType
+  CSceneMobil GroundHelperMobil
+  CSceneMobil AirHelperMobil
+  CSceneMobil ConstructionModeHelperMobil
+
+0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // legacy spawn locations
+  iso4? SpawnLocGround
+  iso4? SpawnLocAir
+
+0x00D [TMSX, TMNESWC, VSK5, TMF] // IsReplacement
+  bool IsReplacement
+
+0x00E [TMF] // legacy waypoint and helper mobils
+  int<EWayPointType> WayPointType
+  CSceneMobil GroundHelperMobil
+  CSceneMobil AirHelperMobil
+  CSceneMobil ConstructionModeHelperMobil
+
+0x00F [TMF, MP3, TMT, MP4, TM2020] // NoRespawn
+  bool NoRespawn
+
+0x012 // screen interaction triggers
+  CSceneMobil ScreenInteractionTriggerGround (external)
+  CSceneMobil ScreenInteractionTriggerAir (external)
+
+0x013 [MP3, TMT, MP4, TM2020] // IconAutoUseGround
+  bool IconAutoUseGround
+
+0x015 [MP3, TMT] // precalculated particle parameters and location
+  CGameCtnPrecalcPartParams PrecalcPartParams (external)
+  iso4 PrecalcPartLoc = Iso4.Identity
+
+0x017 [MP3, TMT, MP4, TM2020] // block flag
+  bool
+
+0x01A // legacy auto terrain placement
+  CGameCtnAutoTerrain[] AutoTerrainsGround (deprec)
+  int AutoTerrainPlaceTypeGround
+  bool IsReplacement
+
+0x01D // legacy block units
+  int
+  int
+  int
+  bool IsPillar
+  int
+  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
+  CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
+
+0x01E // legacy block info mobils
+  CGameCtnBlockInfoMobil[][] GroundBlockInfoMobils (external)
+  CGameCtnBlockInfoMobil[][] AirBlockInfoMobils (external)
+
+0x01F // CharPhySpecialProperty
+  CPlugCharPhySpecialProperty CharPhySpecialProperty
+
+0x020 [MP3.v5, TMT.v5, MP4.v7, TM2020.v8] // special properties and presentation clips
+  version
+  CPlugCharPhySpecialProperty CharPhySpecialProperty
+  v6-
+    CGameWaypointSpecialProperty WaypointSpecialProperty
+  v2+
+    CMwNod PodiumInfo // CGamePodiumInfo or CPlugMediaClipList
+  v3+
+    CMwNod IntroInfo // CGamePodiumInfo or CPlugMediaClipList
+  v4+
+    bool CharPhySpecialPropertyCustomizable
+  v5=
+    bool SpawnUnderground
+  v8+
+    bool HasMatModifierPlacementTag (local, write: n.MatModifierPlacementTag != null)
+    if HasMatModifierPlacementTag
+      MaterialModifierPlacementTag MatModifierPlacementTag
+
+0x021 // legacy symmetry reference, direction and flags
+  CMwNod (external)
+  int<Direction> Dir
+  SymmetryFlags SymmetryGround
+  SymmetryFlags SymmetryAir
+
+0x022 [TMT, MP4, TM2020] // IconMacroBlockInfo
+  CGameCtnMacroBlockInfo IconMacroBlockInfo (external)
+
+0x023 [MP3, TMT, MP4, TM2020] // base variants
+  CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
+  CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
+
+0x024 // legacy symmetry reference and direction
+  CMwNod (external)
+  int<Direction> Dir
+
+0x026 [MP3, TMT, MP4, TM2020] // WayPointType
+  int<EWayPointType> WayPointType
+
+0x027 [MP3, TMT, MP4, TM2020] // AdditionalVariantsGround
+  CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround (deprec)
+
+0x028 [MP3, TMT, MP4, TM2020] // symmetrical block ID and direction
+  id SymmetricalBlockInfoId
+  int<Direction> Dir
+
+0x029 [MP3, TMT, MP4, TM2020] // FogVolumeBox
+  CPlugFogVolumeBox FogVolumeBox (external)
+
+0x02A [MP3.v1, TMT.v1, MP4.v2, TM2020.v3] // sounds and locations
+  version
+  CPlugSound Sound1 (external)
+  v1+
+    CPlugSound Sound2 (external)
+    v2-
+      iso4 Sound1Loc = Iso4.Identity
+      iso4 Sound2Loc = Iso4.Identity
+    v3+
+      if Sound1 != null || Sound1File != null
+        iso4 Sound1Loc = Iso4.Identity
+      if Sound2 != null || Sound2File != null
+        iso4 Sound2Loc = Iso4.Identity
+
+0x02B [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // BaseType
+  version
+  int<EBaseType> BaseType
+  v0=
+    int // Legacy generator override: only 1 selects Generator
+    if U01 == 1
+      BaseType = EBaseType.Generator
+
+0x02C [MP3, TMT, MP4, TM2020] // AdditionalVariantsAir
+  CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
+
+0x02E [MP3.v0] // ProdState
+  version
+  int<CGameCtnCollector.EProdState> ProdState (inherited)
+
+0x02F [MP4.v0, TM2020.v1] // pillar shape
+  version
+  boolbyte IsPillar
+  byte<EMultiDir> PillarShapeMultiDir
+  v1+
+    boolbyte IsMultiHeightPillarOrVFC
+
+0x031 [TM2020.v1] // block model and material modifiers
+  version
+  CGameCtnBlockInfo BlockInfoModelFid (external) // Source model copied when the concrete block classes match
+  CPlugGameSkinAndFolder MaterialModifier (external)
+  v1+
+    CPlugGameSkinAndFolder MaterialModifier2 (external)
+
+archive SymmetryFlags
+  version
+  bool HasManualSymmetryH
+  bool HasManualSymmetryV
+  bool HasManualSymmetryD1
+  bool HasManualSymmetryD2
+
+archive MaterialModifierPlacementTag
+  string Group
+  string Tag
 
 enum EWayPointType
- Start
- Finish
- Checkpoint
- None
- StartFinish
- Dispenser
+  Start
+  Finish
+  Checkpoint
+  None
+  StartFinish
+  Dispenser
 
 enum EMultiDir
- SameDir
- SymmetricalDirs
- AllDir
- OpposedDirOnly
- PerpendicularDirsOnly
- NextDirOnly
- PreviousDirOnly
+  SameDir
+  SymmetricalDirs
+  AllDir
+  OpposedDirOnly
+  PerpendicularDirsOnly
+  NextDirOnly
+  PreviousDirOnly
 
 enum ESelection
- Random
- Obsolete
- AutoRotate
+  Random
+  Medpi = 1 // Weighted mobil selection, with at least eight mobils, the first four receive 75% of selections
+  Obsolete = 1 // Compatibility alias for Medpi
+  AutoRotate = 2
 
 enum EBaseType
- None
- Conductor
- Generator
- Collector
+  None
+  Conductor
+  Generator
+  Collector

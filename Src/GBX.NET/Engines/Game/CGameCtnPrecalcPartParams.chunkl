@@ -1,0 +1,23 @@
+CGameCtnPrecalcPartParams 0x0311C000
+
+0x000 [TMT.v2] // precalculated particle physics and decals
+  version
+  float FluidFriction = 0.5f
+  float Mass = 1
+  float Friction = 0.8f
+  float Restitution = 0.2f
+  uint CollGroupFlags = 8
+  bool LeafMotion = true
+  float LeafMotionFreq = 10
+  float LeafMotionScale = 1
+  v2+
+    CPlugSurface CollSurf (external)
+  int IterCount = 500
+  float TimeStep = 0.01f
+  int RandValSeed = 15000
+  vec3 PhyZoneGravity = (0, -4, 0)
+  vec3 PhyZoneWind = (0, 0, 2)
+  CPlugDecalModel DecalModel (external)
+  float DecalSizeBase = 0.3f
+  float DecalSizeVar = 0.1f
+  float DecalBoxDepth = 0.05f

@@ -2,16 +2,16 @@ CHmsLight 0x0600C000
 - inherits: CHmsPocEmitter
 
 0x000
- int
- GxLight MainGxLight
+  int
+  GxLight MainGxLight
 
 0x001 (base: 0x000)
- base
+  base
 
 0x002 (base: 0x001)
- base
- CPlugBitmap BitmapFlare (external)
+  base
+  CPlugBitmap BitmapFlare (external)
 
-0x003 (base: 0x002)
- base
- CPlugBitmap BitmapSprite (external)
+0x003 (base: 0x002) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  base
+  CPlugBitmap BitmapSprite (external)

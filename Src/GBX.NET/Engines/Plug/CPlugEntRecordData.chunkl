@@ -1,17 +1,17 @@
 CPlugEntRecordData 0x0911F000 // Entity data in a timeline.
 
-0x000
+0x000 [MP4, TM2020]
 
 archive EntRecordDesc
- uint ClassId
- int
- int
- int
- data
- int
+  uint ClassId
+  int
+  int
+  int
+  data
+  int
 
 archive NoticeRecordDesc
- int
- int
- v4+
-  uint? ClassId
+  int
+  int
+  v4+
+    uint? ClassId

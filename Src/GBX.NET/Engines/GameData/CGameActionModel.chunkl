@@ -1,255 +1,274 @@
 CGameActionModel 0x2E008000
 
-0x000 (skippable)
- version
- v31+
-  bool UseVehicleGuns
- v30+
-  CPlugBulletModel[]_deprec BulletModels_Nadeo
- v25+
-  CPlugShieldModel
- v24=
-  throw // shield model but directly
- v23+
-  string ActionName
- v22+
-  int InventoryItemClass
- v21+
-  v23-
-   int
-   int
- v19+
-  int SpriteBlockVersion
-  SpriteBlock[] SpriteBlocks
- v17+
-  string Description
- v16+
-  int BeamVersion = 1
-  CPlugCustomBeamModel[] Beams (version: n.BeamVersion)
- v15+
-  bool
- v26+
-  string ActionName
- v25-
-  v14+
-   id ActionName
- v13+
+0x000 (skippable) [MP3, TMT.v22, MP4.v31, TM2020] // action, animation and script
+  version
+  if Version > 31
+    throw
+  v31+
+    bool UseVehicleGuns = true
+  v30+
+    CPlugBulletModel[] BulletModels_Nadeo (deprec)
+  v25+
+    CPlugShieldModel ShieldModel
+  v24=
+    LegacyShieldModel LegacyShield
+  v23+
+    string Name
+  v22+
+    int InventoryItemClass
+  v21+
+    v23-
+      int[2] LegacyInventoryValues
+  v19+
+    int SpriteBlockVersion
+    SpriteBlock[] SpriteBlocks (version: SpriteBlockVersion)
+  v17+
+    string Description
+  v16+
+    int BeamVersion = 1
+    CPlugCustomBeamModel[] Beams (version: n.BeamVersion)
+  v15+
+    bool IsCustom
+  v26+
+    string ActionName = "Action"
+  v25-
+    v14+
+      id ActionName = "Action"
+  v13+
+    int ActionType
+  v9+
+    id GaugeId = "FXGauge_Gauge_EnergyBall_Normal"
+  v9-
+    v8+
+      ScriptParams Cooldown (version: 2)
+  v10+
+    int ScriptParamsVersion = 2
+    int ActionScriptEffectVersion
+    ScriptParams Cooldown (version: n.ScriptParamsVersion)
+    ActionScriptEffect[] ActionScriptEffects (version: n.ActionScriptEffectVersion)
+  v7+
+    int CustomBulletVersion
+  v6+
+    CPlugCustomBulletModel[] Projectiles (version: n.CustomBulletVersion)
+  v5+
+    int SoundBlockVersion = 2
+    int ParticleBlockVersion = 1
+  string LegacyText
+  v5-
+    CPlugBulletModel[] BulletModels
+  CPlugAnimFile Anim
+  v10-
+    CPlugFileTextScript LegacyScript
+  v11+
+    CPlugScriptWithSettings Script
+  v11-
+    CPlugBitmap LegacyIcon
+  v12+
+    string IconRef
+    if IconRef == null || IconRef == ""
+      CPlugFileImg Icon
+    string CrossHairRef
+    if CrossHairRef == null || CrossHairRef == ""
+      CPlugFileImg CrossHair
+  v1+
+    ParticleBlock[] ParticleBlocks (version: n.ParticleBlockVersion)
+    SoundBlock[] SoundBlocks (version: n.SoundBlockVersion)
+  v20+
+    bool LegacyFlag
+  v28=
+    bool IsLockModeActive
+    if IsLockModeActive
+      LegacyLockModeData LegacyLockMode
+  v27=
+    bool IsLockModeActive
+    int[2] LegacyLockModeValues
+  v29+
+    bool IsLockModeActive
+
+archive LegacyShieldModel
+  string ShapeRef
+  if ShapeRef == null || ShapeRef == ""
+    CPlugSurface Shape
+  string ShapeVisModelRef
+  if ShapeVisModelRef == null || ShapeVisModelRef == ""
+    CPlugSolid2Model ShapeVisModel
+
+archive LegacyLockModeData
   int
- v9+
-  id
- v9-
-  ScriptParams Cooldown (version: 2)
- v10+
-  int ScriptParamsVersion = 2
-  int ActionScriptEffectVersion
-  ScriptParams Cooldown (version: n.ScriptParamsVersion)
-  ActionScriptEffect[] ActionScriptEffects (version: n.ActionScriptEffectVersion)
- v7+
-  int CustomBulletVersion
- v6+
-  CPlugCustomBulletModel[] Projectiles (version: n.CustomBulletVersion)
- v5+
-  int = 2
-  int = 1
- string
- v5-
-  CPlugBulletModel[]
- CPlugAnimFile Anim
- v10-
-  CPlugFileTextScript
-  CPlugScriptWithSettings Script
- v11+
-  CPlugScriptWithSettings Script
-  CPlugFileTextScript
- v11-
-  CPlugBitmap
- v12+
-  string Icon
-  string Crosshair
- v1+
-  ParticleBlock[] ParticleBlocks (version: Version)
-  SoundBlock[] SoundBlocks (version: Version)
- v20+
-  bool
- v28=
-  bool U99
-  if U99
-   int
-   float
-   int
- v27=
-  bool
+  float
   int
-  int
- v29+
-  bool
 
 archive SpriteBlock
- SpriteKey[] Keys
- bool
- v1+
-  CPlugFileImg
+  SpriteKey[] Keys
+  v0=
+    CPlugFileImg LegacyImage (external)
+  bool
+  v1+
+    string ImageRef
+    if ImageRef == null || ImageRef == ""
+      CPlugFileImg Image
 
 archive SpriteKey
- float
- float
- float
- float
- float
+  float
+  float
+  float
+  float
+  float
 
 archive ScriptParams
- v2-
-  int
-  int
-  int
-  bool
-  bool
-  int
-  bool
- v2=
-  int
-  int
-  bool
-  float
-  float
-  float
-  float
-  float
-  float
-  bool
-  float
-  float
-  float
-  float
-  float
-  float
- v2+
-  v3+
-   int
-   int
-   int
-   bool
-   v4+
+  v2-
+    v1+
+      int U01 = 300
+      int U02 = 1600
+      int U03 = 6400
+      bool U04
+      bool U05
+      int U06
+      bool U07
+  v2=
+    int
+    int
     bool
+    float
+    float
+    float
+    float
+    float
+    float
+    bool
+    float
+    float
+    float
+    float
+    float
+    float
+  v2+
+    v3+
+      int U24 = 300
+      int U25 = 1600
+      int U26 = 6400
+      bool U27
+      v4+
+        bool U28 = true
 
 archive ActionScriptEffect
- int Type
- if Type == 0
-  AnimScriptEffect AnimEffect
- if Type == 5
-  EffectScriptEffect EffectEffect
- if Type == 3
-  BuffScriptEffect BuffEffect
- if Type != 0 && Type != 5 && Type != 3
-  ProjScriptEffect ProjEffect
+  int Type
+  if Type == 0
+    AnimScriptEffect AnimEffect
+  if Type == 5
+    EffectScriptEffect EffectEffect
+  if Type == 3
+    BuffScriptEffect BuffEffect
+  if Type != 0 && Type != 5 && Type != 3
+    ProjScriptEffect ProjEffect
 
 archive AnimScriptEffect
- int
- bool
- float
- float
- float
- float
- float
- float
+  int
+  bool
+  float
+  float
+  float
+  float
+  float
+  float
 
 archive EffectScriptEffect
- v2+
+  v2+
+    bool
+    bool
+  v1+
+    float
+    bool
+    bool
+  int
+  int
+  int
+  int
+  string
   bool
-  bool
- v1+
-  float
-  bool
-  bool
- int
- int
- int
- int
- string
- bool
- float
- float
- float
- v0=
   float
   float
   float
+  v0=
+    float
+    float
+    float
 
 archive BuffScriptEffect
- int
- int
- string
+  int
+  int
+  string
 
 archive ProjScriptEffect
- int
- int
- bool
- float
- float
- float
- float
- float
- float
+  int
+  int
+  bool
+  float
+  float
+  float
+  float
+  float
+  float
 
 archive ParticleBlock
- ParticleKey[] Keys (version: v)
- id[]
- v1-
-  bool
-  bool
- v3+
-  bool
- v4+
-  bool
- v7+
-  bool
- v8+
-  float
- v9+
-  CPlugParticleEmitterModel ParticleEmitter
+  ParticleKey[] Keys
+  id[]
+  v1-
+    bool
+    bool
+  v3+
+    bool
+  v4+
+    bool
+  v7+
+    bool
+  v8+
+    float
+  v9+
+    CPlugParticleEmitterModel ParticleEmitter (direct)
   
 
 archive ParticleKey
- float
- iso4
- float
- float
- float
- float
- v5+
-  bool
-  bool = true
-  bool = true
- v6+
-  bool = true
-  bool = true
+  float
+  iso4
+  float
+  float
+  float
+  float
+  v5+
+    bool
+    bool = true
+    bool = true
+  v6+
+    bool = true
+    bool = true
 
 archive SoundBlock
- SoundKey[] Keys
- id
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- v2-
-  bool
- v1+
-  int
- v2+
-  bool = true
+  SoundKey[] Keys
+  id
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  v2-
+    bool
+  v1+
+    int
+  v2+
+    bool = true
 
 archive SoundKey
- float
- float
- float
- v4+
-  bool = true
-  bool = true
+  float
+  float
+  float
+  v4+
+    bool = true
+    bool = true

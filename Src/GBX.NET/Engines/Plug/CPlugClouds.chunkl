@@ -1,20 +1,20 @@
 CPlugClouds 0x09180000
 
 0x000
- CPlugSolid[] SolidFids (external)
- float BottomNearZ
- float BottomFarZ
- CPlugFileImg ImageColorMin (external)
- CPlugFileImg ImageColorMax (external)
- int Lighting
+  CPlugSolid[] SolidFids (external)
+  float BottomNearZ
+  float BottomFarZ
+  CPlugFileImg ImageColorMin (external)
+  CPlugFileImg ImageColorMax (external)
+  int Lighting
 
-0x002
- vec2[] PointHeights
+0x002 [TMNESWC, VSK5, TMF]
+  vec2[] PointHeights
 
-0x003
- int HeightCenter
- vec2 HeightCenterXZ
+0x003 [VSK5, TMF]
+  int HeightCenter
+  vec2 HeightCenterXZ
 
-0x004 (base: 0x000)
- base
- float SpeedScale
+0x004 (base: 0x000) [VSK5, TMF]
+  base
+  float SpeedScale

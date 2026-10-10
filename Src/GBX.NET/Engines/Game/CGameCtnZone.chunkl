@@ -1,29 +1,29 @@
 CGameCtnZone 0x0305C000
 
-0x003
- int Height
- id ZoneId
- id SurfaceId
- int
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int Height
+  id ZoneId
+  id SurfaceId
+  int
 
-0x004 (skippable)
- int Depth
- bool OldZone
+0x004 (skippable) [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int Depth
+  bool OldZone
 
-0x005
- bool HasWater
+0x005 [TMSX, TMNESWC, VSK5, TMF]
+  bool HasWater
 
-0x006
- bool IsLargeZone
+0x006 [MP3, TMT, MP4, TM2020]
+  bool IsLargeZone
 
-0x007
- float VisualTopGroundHeight
+0x007 [MP3, TMT, MP4, TM2020]
+  float VisualTopGroundHeight
 
 0x008
- int Height
+  int Height
 
-0x00B
- id WaterId
+0x00B [MP3, TMT, MP4, TM2020]
+  id WaterId
 
-0x00C
- id ForcedParentZoneFrontierId
+0x00C [MP3, TMT, MP4, TM2020]
+  id ForcedParentZoneFrontierId

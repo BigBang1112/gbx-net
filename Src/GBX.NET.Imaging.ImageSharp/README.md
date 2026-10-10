@@ -52,4 +52,8 @@ Quality should not be degraded as the icon is processed with either pure color b
 
 ## License
 
-GBX.NET.Imaging.SkiaSharp library is MIT Licensed.
+GBX.NET.Imaging.ImageSharp is MIT licensed.
+
+ImageSharp 4 requires a [Six Labors license](https://docs.sixlabors.com/articles/imagesharp/index.html#license) when building this project. Place your supplied `sixlabors.lic` file in this project directory. The file is ignored by Git. You can also set the `SixLaborsLicenseFile` MSBuild property to the path of a license file stored elsewhere, or set `SixLaborsLicenseKey` to the full license string. Keep the license file and key out of commits and build logs.
+
+If you need a license, apply for a [Community license key](https://licensing.sixlabors.com/) if the project qualifies, or use [Six Labors pricing](https://sixlabors.com/pricing/) for a commercial license. Use this project's public repository URL in an open source application.

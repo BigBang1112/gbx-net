@@ -1,26 +1,24 @@
 CGameCtnMediaBlockSkel 0x0314A000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- list<Key> Keys
- v1+
-  int
-  v4=
-   int
-  v3+
-   float = 100
-   float = 1
-   float = 100
-   float = 1
-   v4+
-    float
+0x000 [TMT, MP4]
+  version = 5
+  Key[] Keys (list)
+  v1+
+    int = 8 // Unidentified native field, initialized to 8 in both binaries.
+    v4=
+      int
+    v3..4
+      float LegacyRootTranslationX = 100 // Root-transform composition in version 3. Discarded in version 4.
+      float LegacyRootTranslationY = 1
+      float LegacyRootTranslationZ = 100
+      float LegacyRootYaw = 1 // Radians.
+      v4=
+        float U07
 
 archive Key (inherits: IKey)
- timefloat Time
- v2+
-  float
-  float
-  float
-  float
- transquat[]
+  float Time (time)
+  v2+
+    vec3 RootTranslation
+    float RootYaw // Radians.
+  transquat[] JointTransforms // Joint-local transforms, converted to global transforms through CPlugSkel::LocalToGlobal.

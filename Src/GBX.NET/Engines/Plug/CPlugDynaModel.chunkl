@@ -1,0 +1,29 @@
+CPlugDynaModel 0x0912F000
+
+archive
+  version = 4
+  float LinearMass = 1
+  float MaxDistPerStep = 0.3f
+  vec3 CenterOfMass
+  mat3 InverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f)
+  float AngularSpeedClamp = 10000
+  v1+ (archive)
+    bool UseTMSimulation = true
+  v0= (archive)
+    UseTMSimulation = true
+  v2+ (archive)
+    byte<ESleepingMethod> SleepingMethod = ESleepingMethod.LowLinearVel_AngularVel
+  v0..1 (archive)
+    SleepingMethod = ESleepingMethod.LowLinearVel_AngularVel
+  v3+ (archive)
+    bool EnableSubStepping
+  v0..2 (archive)
+    EnableSubStepping = false
+  v4+ (archive)
+    CPlugDynaWaterModel WaterModel (external)
+
+enum ESleepingMethod
+  None
+  LowLinearVel_AngularVel
+  LowLinearVel
+  Reserved0

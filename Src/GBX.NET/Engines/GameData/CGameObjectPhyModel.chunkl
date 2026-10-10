@@ -1,18 +1,130 @@
 CGameObjectPhyModel 0x2E006000
 
-0x001
+0x000
+  CPlugSurface TriggerShapeFid (external)
+  CPlugTriggerAction[] Triggers (version: 5)
+  CMwNod (external) // Deprecated CPlugAnimFile.
 
-0x003
- bool
- if U01
-  throw
+0x001 [MP3, TMT, MP4.v21, TM2020.v26]
+  version
+  v10-
+    CPlugSurface MoveShapeFid (external)
+    CPlugSurface HitShapeFid (external)
+    CPlugSurface TriggerShapeFid (external)
+  v8+
+    int TriggerActionVersion = 5
+  v7-
+    CPlugTriggerAction[] Triggers (version: 0)
+  v8+
+    CPlugTriggerAction[] Triggers (version: n.TriggerActionVersion)
+  v13-
+    CMwNod U03 (external) // Deprecated CPlugAnimFile.
+  v2+
+    string MoveShape
+  v4+
+    string HitShape
+  v3+
+    bool HasDynaPointModel (local, write: "n.DynaPointModel is not null")
+    if HasDynaPointModel
+      CPlugDynaPointModel DynaPointModel
+  v5+
+    int<EProgram> Program
+  v6+
+    v21-
+      iso4 U09
+    v22+
+      boolbyte U17
+      if U17
+        iso4 U09
+  v7+
+    string TriggerShape
+  v9+
+    v13+
+      string ActionModel
+    if Version < 13 || ActionModel == null || ActionModel.Length == 0
+      CGameActionModel[] Actions (direct) // Count followed by chunk bodies, without reference indices or class IDs.
+  v21+
+    CMwNod U01 (external) // DoFid: an external file reference.
+  v11+
+    if Version >= 21 && (U01 != null || U01File != null)
+      CMwNod U27 (external) // Deprecated CPlugSurface, present whenever the file reference exists.
+    else
+      if MoveShape == null || MoveShape.Length == 0
+        CPlugSurface MoveShapeFid (external)
+    if HitShape == null || HitShape.Length == 0
+      CPlugSurface HitShapeFid (external)
+    if TriggerShape == null || TriggerShape.Length == 0
+      CPlugSurface TriggerShapeFid (external)
+  v12+
+    string U14
+    if U14 == null || U14.Length == 0
+      CMwNod U15 (external) // CPlugSolid.
+  v15+
+    int U19
+  v16+
+    CMwNod SpecialProperties (external) // CPlugCharPhySpecialProperty.
+  v17+
+    int<EPersistence> Persistence = EPersistence.NeverRemove
+  v18+
+    bool CanStopEnemy
+    bool CanStopEnemyBullet
+  v19+
+    float ThrowSpeed = 30
+    float ThrowAngularSpeed = 10
+    int Armor = 100
+    bool HasALifeTime
+    int LifeTimeDuration = 7000
+    float ScaleCoefMax = 1
+    float StaminaSpawnCoef = 1
+    int TimeBeforeDome = 500
+    bool U20 // TeleportEnabled.
+    bool U21 // TeleportUseSuitcaseVel.
+    bool U22 // TeleportCanTpInAirState.
+    bool U23 // TeleportRemoveWhenTp.
+    bool U24 // TeleportUseOrientationWhenTp.
+    bool HealEnabled
+    int HealArmorGainPerSecond = 10
+    bool ShieldEnabled
+    int ShieldDomeArmor = 200
+  v20+
+    bool U25 // DontRemoveOwnerWhenDestroyed in Maniaplanet, deprecated in Trackmania.
+  v23+
+    bool BumperEnabled
+  v24+
+    bool MagnetEnabled
+  v25=
+    CMwNod U26 (external) // Removed in version 26.
+
+0x002 (skippable)
+  CMwNod (external)
+
+0x003 [MP4, TM2020]
+  bool U01 (write: "n.DynaModel is not null")
+  if U01
+    CPlugDynaModel DynaModel
+
+0x004
+  version
+  CMwNod (external)
+  vec3
+
+0x005 [TM2020.v3]
+  version
+  bool ThrowableEnabled
+  float ThrowableDamageCoef = 1
+  v1+
+    int ThrowableStunnedDuration = 1000
+  v2+
+    int ThrowableCooldownBetweenTakeAndThrow = 400
+  v3+
+    float StaminaThrowCost = 750
 
 enum EPersistence
- OnPlayerUnspawn
- OnPlayerRemoved
- NeverRemove
+  OnPlayerUnspawn
+  OnPlayerRemoved
+  NeverRemove
 
 enum EProgram
- None
- Target
- Turret
+  None
+  Target
+  Turret

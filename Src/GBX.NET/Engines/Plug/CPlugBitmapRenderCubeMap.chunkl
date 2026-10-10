@@ -1,11 +1,11 @@
 CPlugBitmapRenderCubeMap 0x09088000
 - inherits: CPlugBitmapRender
 
-0x001
- uint
+0x001 [TMF, MP3, TMT, MP4, TM2020]
+  uint
 
-0x002
- int CubeFaceCount
- float NearZ
- float FarZ
- float MinDistToUpdate
+0x002 [TMF, MP3, TMT, MP4, TM2020]
+  int CubeFaceCount
+  float NearZ
+  float FarZ
+  float MinDistToUpdate

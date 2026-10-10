@@ -1,20 +1,21 @@
-﻿namespace GBX.NET.Engines.Game;
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnChallengeParameters
 {
-    private CGameCtnGhost? raceValidateGhost;
-    [AppliedWithChunk<Chunk0305B00D>]
-    [AppliedWithChunk<Chunk0305B00F>]
-    public CGameCtnGhost? RaceValidateGhost { get => raceValidateGhost; set => raceValidateGhost = value; }
+    private int[]? items;
+    private CGameCtnGhost?[]? legacyValidateGhosts;
 
-    public partial class Chunk0305B00F
+    [Obsolete("This legacy item list is ignored by newer games.")]
+    public partial int[]? Items
     {
-        public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
-        {
-            rw.Encapsulated(rw =>
-            {
-                rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
-            });
-        }
+        get => items;
+        set => items = value;
+    }
+
+    [Obsolete("This legacy validation ghost list is ignored by newer games.")]
+    public partial CGameCtnGhost?[]? LegacyValidateGhosts
+    {
+        get => legacyValidateGhosts;
+        set => legacyValidateGhosts = value;
     }
 }

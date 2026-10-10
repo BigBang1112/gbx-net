@@ -1,53 +1,100 @@
 CGameCtnMediaShootParams 0x03060000
 
-0x001
- int VideoFps
- int SizeX
- int SizeY
- bool Hq
- int HqSampleCountPerAxe
- bool
- bool HqSoftShadows
- bool HqAmbientOcc
- bool IsAudioStream
- int<EStereo3d> Stereo3d
+0x000
+  int VideoFps = 30
+  int SizeX = 1920
+  int SizeY = 1080
+  bool Hq = true
+  int HqSampleCountPerAxe = 1 // Native default is 3 when the render device supports FX SSAA, otherwise 1.
+  bool LegacyMotionBlur
+  bool HqSoftShadows
+  bool HqAmbientOcc
+  bool IsAudioStream = true
+  bool LegacyStereo3d
+  float
+  float
 
-0x002
- version
- int VideoFps
- int SizeX
- int SizeY
- bool Hq
- int HqSampleCountPerAxe
- int
- int
- bool
- bool
- bool
- bool
- bool HqSoftShadows
- bool HqAmbientOcc
- bool IsAudioStream
- int<EStereo3d> Stereo3d
- int
- int
- bool
- int
- VideoEnc VideoEncoding
- AudioEnc AudioEncoding
+0x001 [TMF]
+  int VideoFps
+  int SizeX
+  int SizeY
+  bool Hq
+  int HqSampleCountPerAxe
+  bool LegacyMotionBlur
+  bool HqSoftShadows
+  bool HqAmbientOcc
+  bool IsAudioStream
+  int<EStereo3d> Stereo3d
+
+0x002 [MP3, TMT, MP4, TM2020.v1]
+  version
+  int VideoFps
+  int SizeX
+  int SizeY
+  bool Hq
+  int HqSampleCountPerAxe
+  int DofSampleCount = 1
+  v0=
+    bool LegacyMotionBlur
+  v1+
+    int<EMotionBlur> MotionBlur
+  bool HqDOF
+  bool HqCarReflects = true
+  bool ReflectSubSample
+  bool ReflectRayCast
+  bool HqSoftShadows
+  bool HqAmbientOcc
+  bool IsAudioStream
+  int<EStereo3d> Stereo3d
+  int<EExtScreen> ExtScreen
+  int<EExtVideo> ExtVideo = EExtVideo.Webm
+  bool Hud3d
+  int<EQualityPreset> WebmVideoAutoBitrate = EQualityPreset.Medium
+  VideoEnc VideoEncoding
+  AudioEnc AudioEncoding
 
 enum EStereo3d
- None
- RedNCyan
- LeftNRight
+  None
+  RedNCyan
+  LeftNRight
+
+enum EMotionBlur
+  None
+  Full
+  Half
+  Quarter
+
+enum EExtScreen
+  Webp
+  Tga
+  Jpg
+
+enum EExtVideo
+  Avi
+  Webm
+
+enum EQualityPreset
+  Custom
+  Low
+  Medium
+  High
+
+enum EVideoMode
+  Vbr
+  Cbr
+  Cq
+
+enum EVideoCodec
+  Vp8
+  Vp9
 
 archive VideoEnc
- int Version
- int
- int
- int
- int
+  version
+  int<EVideoCodec> Codec
+  int<EVideoMode> Mode = EVideoMode.Cq
+  int Bitrate = 4096 // Kilobits per second.
+  int CQLevel = 10 // VP8 constant-quality quantizer, from 0 to 63.
 
 archive AudioEnc
- int Version
- float
+  version
+  float VbrQuality = 0.1f // Vorbis variable-bitrate quality, from -0.1 to 1.

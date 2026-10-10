@@ -3,9 +3,13 @@
 public partial class CGameGhost
 {
     private Data? sampleData;
+    private int sampleDataVersion;
 
     public RawData? RawData { get; set; }
     public ZlibData? CompressedData { get; set; }
+
+    // Legacy track conversion only needs the timing metadata, not decoded vehicle states.
+    internal TimeInt32 GetDuration() => (sampleData ?? SampleData).GetDuration();
 
 #if NET9_0_OR_GREATER
     private readonly Lock SampleDataLock = new();
@@ -58,10 +62,12 @@ public partial class CGameGhost
                 try
                 {
                     using var reader = CompressedData.OpenDecompressedReader();
-                    sampleData = new Data();
-                    sampleData.Read(reader, v: 1);
+                    var data = new Data();
+                    data.ReadNew(reader, sampleDataVersion);
                     CompressedData.Parsed = true;
-                    return sampleData;
+                    CompressedData.Exception = null;
+                    sampleData = data;
+                    return data;
                 }
                 catch (Exception ex)
                 {
@@ -91,12 +97,15 @@ public partial class CGameGhost
     {
         public override void Read(CGameGhost n, GbxReader r)
         {
+            n.sampleDataVersion = (this as IVersionable)?.Version ?? 0;
+            n.sampleData = null;
             n.CompressedData = r.ReadZlibData();
         }
 
         public override void Write(CGameGhost n, GbxWriter w)
         {
-            w.WriteZlibData(n.CompressedData, n.sampleData, version: 1);
+            var version = (this as IVersionable)?.Version ?? 0;
+            w.WriteZlibData(n.CompressedData, writer => n.SampleData.WriteNew(writer, version));
         }
     }
 }

@@ -1,288 +1,958 @@
-﻿CGamePlayerProfile 0x0308C000
+CGamePlayerProfile 0x0308C000
 
 0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
- string OnlineLogin
- string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
+  string OnlineLogin
+  string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 
-0x038
- string CurrentSoloPlaylistName
- string CurrentSoloPlaylistPath
- bool
- vec3
- vec3
- vec3
- vec3
- vec3
+0x000 [TM10]
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
 
-0x03B // crypted
- byte
- byte
- int
- int
- bool
- int
- bool
- int
- bool
- int
- bool
- bool
- bool
- bool
- bool
- bool
- int
- bool
- string
- bool
+0x001 [VSK5]
+  LegacyVehicleProfile[]
 
-0x040
- systemtime
+0x002
+  int
+  int
+  int
+  int
 
-0x041
- bool AutoConnect
+0x003
+  int
+  int
 
-0x043
- VehicleProfile[] VehicleProfiles
+0x004
+  int
+  int
+  int
+  int
+  int
 
-0x044
- bool IsShowPlayerGhost
+0x005 [TM10, TMPU, VSK5]
+  LegacyVehicleSkin[]
 
-0x047
- CGameNetOnlineMessage[]_deprec InboxMessages
- CGameNetOnlineMessage[]_deprec ReadMessages
- CGameNetOnlineMessage[]_deprec OutboxMessages
+0x006 [TM10, TMPU, TMSX, TMNESWC]
+  CInputBindingsConfig BindingsForCompatConfig
 
-0x04A
- CSceneMobil[] // might be false
- int
+0x007
+  int
+  id[]
+  int[]
 
-0x04B
- CInputBindingsConfig BindingsConfig
+0x008 [TM10, TMPU, TMSX, TMNESWC]
+  int
 
-0x04C // LeagueManager
- byte U01
- int U02
- bool U03
- if U03
-  systemtime
-  CGameLeague[]_deprec Leagues
+0x009 [TM10, TMPU, TMSX, TMNESWC]
+  bool
+  bool
+  bool
+  bool
+  int
+  int
 
-0x04D
- systemtime
+0x00A [TM10, TMPU, TMSX, TMNESWC]
+  bool UnlockAllCheat
+  bool
 
-0x050
- int
- int
+0x00B
+  int
+  id[]
+  int[]
+  int[]
 
-0x052 (skippable)
- string
- string
+0x00C [TM10]
+  int
+  id[]
+  int[]
+  int[]
+  int[]
 
-0x053
- string
+0x00D
+  int
+  id[]
+  int[]
+  int[]
+  int[]
+  int
 
-0x054
- bool
+0x00E (skippable)
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
 
-0x056
- version
- CGameBuddy[] Buddies
+0x00F [TMPU]
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
 
-0x058
- bool AskOpponents
+0x010
+  id[]
+  int[]
+  int
 
-0x059
- bool LockHigherDifficulties
+0x011 [TMPU, TMSX, TMNESWC]
+  int
 
-0x05A (skippable)
- float
+0x012 (skippable)
+  id
 
-0x05B
- string ProfileName
- string NickName
- id
- int
- int
+0x013 (skippable) [TMPU, TMSX, TMNESWC]
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  int
+  bool AllowDownload = true
+  string ServerName
+  bool
 
-0x05E
- CGameCtnMediaShootParams ShootParams
+0x014 [TMPU, TMSX, TMNESWC]
+  bool ShowEditorHelp = true
 
-0x05F
- int
+0x015 (skippable)
+  byte MaxPlayerCount = 6
+  int
+  int
+  int
+  int
 
-0x060 (skippable)
- float
- float = 1
- float
+0x016 (skippable) [TMPU, TMSX, TMNESWC]
+  int
 
-0x061
- string
+0x017 (skippable)
+  byte MaxPlayerCount = 6
+  int
+  int
+  int
+  int
+  int
 
-0x062 // ArchiveBindingsForCompat
- int
- CInputBindingsConfig BindingsForCompatConfig
+0x018 (skippable)
+  id
+  bool EnableAvatars
 
-0x063 (skippable)
- bool EnableChat
- bool EnableAvatars
- bool EnableCarSkinGeom
- bool EnableUnlimitedHorns
- float
- float
- float
- bool
- bool UnlockAllCheat
- bool
+0x019 (skippable) [TMPU]
+  id
+  bool EnableAvatars
+  bool
 
-0x064 // PlayerTagsConfig
- int
- PlayerTagConfig[] PlayerTags
- int[]
+0x01A (skippable) [TMPU, TMSX, TMNESWC]
+  int
 
-0x065
- int
+0x01B [TMPU, TMSX, TMNESWC]
+  id[]
+  int[]
+  int
+
+0x01C [TMPU]
+  bool
+  int
+
+0x01D (skippable) [TMPU]
+  byte MaxPlayerCount = 6
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  bool
+  bool
+  bool
+  int
+  int
+
+0x01E [TMSX, TMNESWC]
+  OldVehicleProfile[] (version: 0)
+
+0x01F [TMSX, TMNESWC]
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
+  int
+
+0x020 (skippable)
+  byte MaxPlayerCount = 6
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  bool
+  bool
+  bool
+  int
+  int
+  int
+  int
+
+0x021
+  vec3 PainterCustomColor1
+  vec3 PainterCustomColor2
+  vec3 PainterCustomColor3
+  vec3 PainterCustomColor4
+  vec3 PainterCustomColor5
+
+0x022
+  vec3 TrailColor = (1, 0, 0)
+
+0x023 [TMSX, TMNESWC]
+  string
+
+0x024
+  bool
+
+0x025 (skippable) [TMSX, TMNESWC]
+  vec3 PainterCustomColor1
+  vec3 PainterCustomColor2
+  vec3 PainterCustomColor3
+  vec3 PainterCustomColor4
+  vec3 PainterCustomColor5
+  vec3 TrailColor = (1, 0, 0)
+
+0x026 (skippable)
+  byte MaxPlayerCount = 6
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  bool
+  bool
+  bool
+  int
+  int
+  int
+  int
+  bool
+  int
+  bool
+
+0x027 (skippable) [TMSX, TMNESWC]
+  id
+  bool EnableAvatars
+  bool
+  bool EnableCarSkinGeom
+
+0x028 (skippable, demonstration) [TMSX, TMNESWC] // Legacy crypted settings; TMF dispatch differs from later readers.
+  byte
+  byte
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  bool
+  bool
+  bool
+  int
+  int
+  int
+  int
+  bool
+  int
+  bool
+
+0x029 (skippable) [TMSX, TMNESWC]
+  string Description (formatted)
+
+0x02A (skippable) [TMSX, TMNESWC]
+  int BindingsForCompatVersion = 7
+
+0x02B (skippable) [TMNESWC]
+  string
+
+0x02C (skippable) [TMNESWC]
+  string OnlineLogin
+  string OnlinePassword
+  bool LoginValidated
+  bool RememberOnlinePassword = true
+
+0x02D (skippable) [TMNESWC]
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+
+0x02E (skippable) [TMNESWC]
+  bool
+
+0x02F (skippable) [TMNESWC]
+  string[8]
+  byte
+  byte
+  byte
+  byte
+  int
+  int
+  bool
+
+0x030 (skippable) [TMNESWC]
+  int
+
+0x031 (skippable) [TMNESWC]
+  int
+
+0x032 (skippable) [TMNESWC]
+  string CurrentSoloPlaylistName
+  string CurrentSoloPlaylistPath
+
+0x033 (skippable) [TMNESWC]
+  byte
+
+0x034 (skippable) [TMNESWC]
+  int
+
+0x035 (skippable, demonstration)
+  bool
+  int
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  int
+  bool
+  string
+  bool
+
+0x036
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
+  int
+  bool
+  int
+
+0x037
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+  int VehicleNetQuality
+  string OnlineLogin
+  string OnlinePassword
+  bool LoginValidated
+  bool RememberOnlinePassword
+
+0x038 [VSK5, TMF]
+  string CurrentSoloPlaylistName
+  string CurrentSoloPlaylistPath
+  bool ShowEditorHelp = true
+  vec3 PainterCustomColor1
+  vec3 PainterCustomColor2
+  vec3 PainterCustomColor3
+  vec3 PainterCustomColor4
+  vec3 PainterCustomColor5
+
+0x039
+  OldVehicleProfile[] (version: 0)
+  CInputBindingsConfig BindingsForCompatConfig
+  id
+  bool EnableAvatars
+  bool
+  bool EnableCarSkinGeom
+  id[]
+  int[]
+  int
+  int
+  bool UnlockAllCheat
+  bool
+  vec3 TrailColor = (1, 0, 0)
+  string
+
+0x03A [VSK5]
+  int BindingsForCompatVersion = 7
+
+0x03B [VSK5, TMF]
+  byte MaxPlayerCount = 6
+  byte MaxSpectatorCount = 6
+  int = 1
+  int = 10000
+  bool ShowAdvancedServerSettings
+  int NetworkGameMode = 1
+  bool = true
+  int
+  bool
+  int
+  bool
+  bool
+  bool = true
+  bool = true
+  bool
+  bool
+  int
+  bool AllowDownload = true
+  string ServerName
+  bool
+
+0x03C
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+  int VehicleNetQuality
+  string OnlineLogin
+  string OnlinePassword
+  string LegacyOnlineValidationCode
+  bool LoginValidated
+  bool RememberOnlinePassword
+
+0x03D [VSK5]
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
+  int
+  int
+
+0x03E [VSK5]
+  CInputBindingsConfig BindingsForCompatConfig
+  id
+  bool EnableAvatars
+  bool
+  bool EnableCarSkinGeom
+  int
+  bool UnlockAllCheat
+  bool
+  vec3 TrailColor = (1, 0, 0)
+  string
+
+0x03F
+  OldVehicleProfile[] (version: 1)
+
+0x040 [VSK5, TMF]
+  systemtime UpdatedAt
+
+0x041 [VSK5, TMF]
+  bool AutoConnect = true
+
+0x042 (skippable) [VSK5]
+  float
+  float
+
+0x043 [VSK5, TMF]
+  VehicleProfile[] VehicleProfiles
+
+0x044 [VSK5, TMF]
+  bool IsShowPlayerGhost = true
+
+0x045
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  string OnlinePassword
+  string LegacyOnlineValidationCode
+  bool LoginValidated
+  bool RememberOnlinePassword
+
+0x046
+  CGameNetOnlineMessage[] (deprec)
+
+0x047 [VSK5, TMF]
+  CGameNetOnlineMessage[] InboxMessages (deprec)
+  CGameNetOnlineMessage[] ReadMessages (deprec)
+  CGameNetOnlineMessage[] OutboxMessages (deprec)
+
+0x048 (skippable) [VSK5]
+  bool EnableChat
+
+0x049 [VSK5]
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string LegacyOnlineValidationCode
+  bool LoginValidated
+  bool RememberOnlinePassword
+
+0x04A [VSK5, TMF]
+  MultiLocalProfileHeader[] MultiLocalProfileHeaders
+  int U02 = 2
+
+0x04B [VSK5, TMF]
+  CInputBindingsConfig BindingsConfig
+
+0x04C [TMF] // LeagueManager
+  byte U01
+  int LeagueCacheDuration
+  bool HasLeagueCache
+  if HasLeagueCache
+    systemtime LeagueCacheUpdatedAt
+    CGameLeague[] Leagues (deprec)
+
+0x04D [TMF]
+  systemtime ReceivedMessagesAt
+
+0x04E
+  int
+
+0x04F
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  DeprecatedBuddy[]
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string LegacyOnlineValidationCode
+  bool LoginValidated
+  bool RememberOnlinePassword
+
+0x050 [TMF]
+  int = -1
+  int OnlineRemainingNickNamesChangesCount = -1
+
+0x051
+  CInputBindingsConfig BindingsForCompatConfig
+  bool EnableAvatars
+  bool
+  bool EnableCarSkinGeom
+  int
+  bool UnlockAllCheat
+  bool
+  vec3 TrailColor = (1, 0, 0)
+
+0x052 (skippable) [TMF]
+  string AvatarName
+  string HornName
+
+0x053 [TMF]
+  string LeaguePath
+
+0x054 [TMF]
+  bool
+
+0x055
+  string ServerComment
+  string Description (formatted)
+  CGameBuddy[] Buddies
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string LegacyOnlineValidationKeyHexa
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
+
+0x056 [TMF.v5]
+  version
+  v6+
+    return
+  CGameBuddy[] Buddies
+
+0x057
+  string ServerComment
+  string Description (formatted)
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string LegacyOnlineValidationKeyHexa
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
+
+0x058 [TMF]
+  bool AskOpponents = true
+
+0x059 [TMF]
+  bool LockHigherDifficulties = true
+
+0x05A (skippable) [TMF]
+  float RumbleIntensity = 1
+
+0x05B [TMF]
+  string ProfileName
+  string NickName (formatted)
+  id ProfileId
+  int
+  int
+
+0x05C
+  string ServerComment
+  string Description (formatted)
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string OnlineValidationCode
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
+
+0x05D
+  string ServerComment
+  string Description (formatted)
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  CryptedPasswordData
+  string OnlineValidationKeyHexa
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
+
+0x05E [TMF]
+  CGameCtnMediaShootParams ShootParams
+
+0x05F [TMF]
+  int PlayTime // Used to sort local profiles
+
+0x060 (skippable) [TMF]
+  float StereoscopyStrength01 = 1
+  float StereoscopyAdvancedSeparation = 0.05f
+  float StereoscopyAdvancedScreenDist = 8
+
+0x061 [TMF]
+  string MenuLeagueFilter // Last selected zone name
+
+0x062 [TMF] // ArchiveBindingsForCompat
+  int BindingsForCompatVersion = 7
+  CInputBindingsConfig BindingsForCompatConfig
+
+0x063 (skippable) [TMF]
+  bool EnableChat = true
+  bool EnableAvatars = true
+  bool EnableCarSkinGeom
+  bool EnableUnlimitedHorns = true
+  vec3 TrailColor = (1, 0, 0)
+  bool
+  bool UnlockAllCheat
+  bool
+
+0x064 [TMF] // PlayerTagsConfig
+  version
+  v0=
+    PlayerTagConfig[] PlayerTags
+    int[] TagDisplayList // Indices into PlayerTags, in display order; the menu allows up to three.
+
+0x065 [TMF]
+  int MenuInternetView = 2 // 0: All, 1: Favorites, 2: Suggested.
 
 0x066
- bool
+  bool
 
-0x068
+0x067
+  bool
+  bool
 
-0x069
+0x068 [TMF]
 
-0x06A
- bool
+0x069 [TMF]
+  string ServerComment
+  string Description (formatted)
+  int VehicleNetQuality
+  int LadderMode = 1
+  string OnlineLogin
+  int EncryptedPasswordLength
+  if EncryptedPasswordLength != 0
+    checksum128 CryptedPassword
+    data[EncryptedPasswordLength] EncryptedPassword
+  string OnlineValidationKeyHexa // Hexadecimal encrypted validation key, not an RSA key.
+  string OnlineSupportKeyHexa // Hexadecimal encrypted support key.
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
 
-0x06B
- bool
+0x06A [TMF]
+  bool AskForAccountConversion = true
 
-0x06C
- int
+0x06B [TMF]
+  bool ReceiveNews
 
-0x07C (skippable)
+0x06C [TMF]
+  int DynamicLoadScreenIndex // Next loading-screen tip page, resets to 1 when the resource is missing.
 
-0x07E (skippable)
+0x06D
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  bool
+  int
 
-0x240B5003 (not-remapped)
- string
- string
- string
- string
- string
- string
- string
- string
- id
- id
- id
- id
- id
- id
- id
- id
+0x06E
+  LegacyInterfaceText[8]
+  byte
+  byte
+  byte
+  byte
+  byte
+  int
+  int
 
-0x240B5004 (not-remapped)
- CGameCtnChallenge[]
+0x06F (skippable)
+  bool
 
-0x240B5006 (not-remapped)
- ChallengeOpponent[] ChallengeOpponents
+0x070
+  CInputBindingsConfig[]
 
-0x240B5007 (not-remapped)
- CampaignUnlock[] CampaignUnlocks
+0x071 (skippable)
+  SoloChallengesCurrentPage[]
 
-0x240B5009 (not-remapped)
- bool U01
- bool U02
- int U03
- if U03 < 5
-  data[44]
-  if U03 == 1
-   data[42]
- byte
- byte
- byte
- byte
- byte
- int
- int
- bool
+0x072
+  CGameCtnCampaign[] (deprec)
 
-0x240B500B (not-remapped)
- CGameCtnCampaign[]_deprec
+0x073
+  ident[]
 
-0x240B500C (not-remapped)
- ident[]
+0x074
+  string OnlineValidationCode
 
-0x240B500D (not-remapped)
- bool
- bool
- bool
+0x075 (skippable)
+  string OnlineValidationCode
 
-0x240B500E (not-remapped)
- int
- int
+0x076 (skippable)
+  VehicleProfile256[] (version: 2)
 
-0x240B500F (not-remapped)
- int[]
+0x077 (skippable)
+  string ServerComment
+  string NickName (formatted)
+  int VehicleNetQuality
+  int LadderMode = 1
 
-0x240B5010 (not-remapped)
- bool
+0x078 (skippable)
+  string OnlineLogin
+  string OnlinePassword
+  string OnlineValidationCode
+  string OnlineSupportKey
+  bool LoginValidated
+  bool RememberOnlinePassword
+  string LastUsedMSAddress
+  string LastUsedMSPath
 
-0x240B5011 (not-remapped)
- int[]
+0x079 (skippable)
+  version = 2
+  VehicleProfile256[] (version: Version)
 
-0x240B5012 (not-remapped)
- bool
+0x07A (skippable)
+  string LastSessionId
 
-0x240B5013 (not-remapped)
- bool
- bool
- bool
- bool
- bool
+0x07B (skippable)
+  int
 
-0x240B5014 (not-remapped)
- int
+0x07C (skippable) [MP3, TMT, MP4, TM2020]
+  id ProfileId
+  string ProfileName
 
-0x240B5015 (not-remapped)
- SoloChallengesCurrentPage[]
+0x07D (skippable)
+  version
+  id ProfileId
+  string ProfileName
+
+0x07E (skippable) [MP3, TMT, MP4, TM2020.v2]
+  version
+  id ProfileId
+  string ProfileName
+
+0x240B5003 (not-remapped) [VSK5, TMF]
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  id
+  id
+  id
+  id
+  id
+  id
+  id
+  id
+
+0x240B5004 (not-remapped) [VSK5, TMF]
+  CGameCtnChallenge[]
+
+0x240B5006 (not-remapped) [VSK5, TMF]
+  ChallengeOpponent[] ChallengeOpponents
+
+0x240B5007 (not-remapped) [VSK5, TMF]
+  CampaignUnlock[] CampaignUnlocks
+
+0x240B5009 (not-remapped) [TMF]
+  bool U01
+  bool U02
+  int U03
+  if U03 < 5
+    data[44]
+    if U03 == 1
+      data[42]
+  byte
+  byte
+  byte
+  byte
+  byte
+  int
+  int
+  bool
+
+0x240B500B (not-remapped) [TMF]
+  CGameCtnCampaign[] CustomCampaigns (deprec)
+
+0x240B500C (not-remapped) [TMF]
+  ident[]
+
+0x240B500D (not-remapped) [TMF]
+  bool
+  bool
+  bool
+
+0x240B500E (not-remapped) [TMF]
+  int
+  int
+
+0x240B500F (not-remapped) [TMF]
+  int[]
+
+0x240B5010 (not-remapped) [TMF]
+  bool ClickedOnShare
+
+0x240B5011 (not-remapped) [TMF]
+  int[]
+
+0x240B5012 (not-remapped) [TMF]
+  bool
+
+0x240B5013 (not-remapped) [TMF]
+  bool
+  bool
+  bool
+  bool
+  bool
+
+0x240B5014 (not-remapped) [TMF]
+  int
+
+0x240B5015 (not-remapped) [TMF]
+  SoloChallengesCurrentPage[]
 
 archive VehicleProfile
- ident
- string
- uint128
- int
- float
- float
-
+  ident VehicleIdent
+  string SkinName
+  uint128 SkinChecksum
+  int GameCamera
+  float AnalogSensitivity
+  float AnalogDeadZone
 archive PlayerTagConfig
- string TagId
- bool IsVisibleByOtherPlayers
-
+  string TagId
+  bool IsVisibleByOtherPlayers = true
 archive ChallengeOpponent
- byte U01
- if U01 < 2
+  byte U01
+  if U01 < 2
+    ident U02
+    int[] U03
+    return
   ident U02
-  int[] U03
-  return
- ident U02
- id[] U04
- if U01 >= 3
-  int U05
-
+  id[] U04
+  if U01 >= 3
+    int U05
 archive CampaignUnlock
- byte U01
- id U02
- string U03
- if U01 == 0
-  bool U04
-  bool U05
-  bool U06
-  bool U07
-  bool U08
-  bool U09
- if U01 != 0
-  int U10
-
+  byte U01
+  id U02
+  string U03
+  if U01 == 0
+    bool U04
+    bool U05
+    bool U06
+    bool U07
+    bool U08
+    bool U09
+  if U01 != 0
+    int U10
 archive SoloChallengesCurrentPage
- int3
+  int3
+
+archive LegacyVehicleProfile
+  string U01
+  string U02
+  string U03
+
+archive LegacyVehicleSkin
+  ident U01
+  string U02
+
+archive OldVehicleProfile
+  ident VehicleIdent
+  string SkinName
+  uint LegacySkinChecksum
+  v1+
+    int GameCamera
+    float AnalogSensitivity
+    float AnalogDeadZone
+
+archive DeprecatedBuddy
+  int U01
+  if U01 == 0
+    string U02
+    int U03
+    int U04
+    systemtime U05
+
+archive CryptedPasswordData
+  int EncryptedPasswordLength
+  if EncryptedPasswordLength != 0
+    checksum128 Checksum
+    data[EncryptedPasswordLength] EncryptedPassword
+
+archive MultiLocalProfileHeader
+  version = 2
+  v1..2 (archive)
+    string ProfileName
+    string NickName (formatted)
+    string AvatarName
+    v1= (archive)
+      CMwNod U02
+
+archive LegacyInterfaceText
+  string U01
+  string U02
+
+archive VehicleProfile256
+  ident VehicleIdent
+  string SkinName
+  v0=
+    uint LegacySkinChecksum
+  v1=
+    uint128 SkinChecksum128
+  v2+
+    data[32] SkinChecksum256
+  int GameCamera
+  float AnalogSensitivity
+  float AnalogDeadZone

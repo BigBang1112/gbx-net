@@ -1,52 +1,54 @@
-﻿namespace GBX.NET.Tests.Unit;
 
+namespace GBX.NET.Tests.Unit;
+
+[Category("Unit")]
 public class IdTests
 {
-    [Fact]
-    public void Constructor_String_IsCorrect()
+    [Test]
+    public async Task Constructor_String_IsCorrect()
     {
         // Arrange & Act
         var i = new Id("Test");
 
         // Assert
-        Assert.Equal(expected: "Test", actual: i.String);
+        await Assert.That(i.String).IsEqualTo("Test");
     }
 
-    [Fact]
-    public void Constructor_Number_IsCorrect()
+    [Test]
+    public async Task Constructor_Number_IsCorrect()
     {
         // Arrange & Act
         var i = new Id(12);
 
         // Assert
-        Assert.Equal(expected: 12, actual: i.Number);
+        await Assert.That(i.Number).IsEqualTo(12);
     }
 
-    [Fact]
-    public void Empty_IsCorrect()
+    [Test]
+    public async Task Empty_IsCorrect()
     {
         // Arrange & Act
         var i = Id.Empty;
 
         // Assert
-        Assert.Equal(expected: new Id(), actual: i);
+        await Assert.That(i).IsEqualTo(new Id());
     }
 
-    [Theory]
-    [InlineData("Speed", 32, 16, 32)]
-    [InlineData("Desert", 32, 16, 32)]
-    [InlineData("Alpine", 32, 16, 32)]
-    [InlineData("Snow", 32, 16, 32)]
-    [InlineData("Rally", 32, 8, 32)]
-    [InlineData("Island", 64, 8, 64)]
-    [InlineData("Bay", 32, 8, 32)]
-    [InlineData("Coast", 16, 4, 16)]
-    [InlineData("Stadium", 32, 8, 32)]
-    [InlineData("Canyon", 64, 16, 64)]
-    [InlineData("Valley", 32, 8, 32)]
-    [InlineData("Lagoon", 32, 8, 32)]
-    [InlineData("Stadium2020", 32, 8, 32)]
-    public void GetBlockSize_ByString_ReturnsCorrect(string collection, int x, int y, int z)
+    [Test]
+    [Arguments("Speed", 32, 16, 32)]
+    [Arguments("Desert", 32, 16, 32)]
+    [Arguments("Alpine", 32, 16, 32)]
+    [Arguments("Snow", 32, 16, 32)]
+    [Arguments("Rally", 32, 8, 32)]
+    [Arguments("Island", 64, 8, 64)]
+    [Arguments("Bay", 32, 8, 32)]
+    [Arguments("Coast", 16, 4, 16)]
+    [Arguments("Stadium", 32, 8, 32)]
+    [Arguments("Canyon", 64, 16, 64)]
+    [Arguments("Valley", 32, 8, 32)]
+    [Arguments("Lagoon", 32, 8, 32)]
+    [Arguments("Stadium2020", 32, 8, 32)]
+    public async Task GetBlockSize_ByString_ReturnsCorrect(string collection, int x, int y, int z)
     {
         // Arrange
         var i = new Id(collection);
@@ -55,10 +57,10 @@ public class IdTests
         var actual = i.GetBlockSize();
 
         // Assert
-        Assert.Equal(expected: new(x, y, z), actual);
+        await Assert.That(actual).IsEqualTo(new(x, y, z));
     }
 
-    [Fact]
+    [Test]
     public void GetBlockSize_ByString_Invalid_Throws()
     {
         // Arrange
@@ -68,19 +70,19 @@ public class IdTests
         Assert.Throws<NotSupportedException>(() => i.GetBlockSize());
     }
 
-    [Theory]
-    [InlineData(0, 32, 16, 32)]
-    [InlineData(1, 32, 16, 32)]
-    [InlineData(2, 32, 8, 32)]
-    [InlineData(3, 64, 8, 64)]
-    [InlineData(4, 32, 8, 32)]
-    [InlineData(5, 16, 4, 16)]
-    [InlineData(6, 32, 8, 32)]
-    [InlineData(12, 64, 16, 64)]
-    [InlineData(11, 32, 8, 32)]
-    [InlineData(13, 32, 8, 32)]
-    [InlineData(26, 32, 8, 32)]
-    public void GetBlockSize_ByIndex_ReturnsCorrect(int collection, int x, int y, int z)
+    [Test]
+    [Arguments(0, 32, 16, 32)]
+    [Arguments(1, 32, 16, 32)]
+    [Arguments(2, 32, 8, 32)]
+    [Arguments(3, 64, 8, 64)]
+    [Arguments(4, 32, 8, 32)]
+    [Arguments(5, 16, 4, 16)]
+    [Arguments(6, 32, 8, 32)]
+    [Arguments(12, 64, 16, 64)]
+    [Arguments(11, 32, 8, 32)]
+    [Arguments(13, 32, 8, 32)]
+    [Arguments(26, 32, 8, 32)]
+    public async Task GetBlockSize_ByIndex_ReturnsCorrect(int collection, int x, int y, int z)
     {
         // Arrange
         var i = new Id(collection);
@@ -89,10 +91,10 @@ public class IdTests
         var actual = i.GetBlockSize();
 
         // Assert
-        Assert.Equal(expected: new(x, y, z), actual);
+        await Assert.That(actual).IsEqualTo(new(x, y, z));
     }
 
-    [Fact]
+    [Test]
     public void GetBlockSize_ByIndex_Invalid_Throws()
     {
         // Arrange
@@ -102,8 +104,8 @@ public class IdTests
         Assert.Throws<NotSupportedException>(() => i.GetBlockSize());
     }
 
-    [Fact]
-    public void ImplicitConversionToString_IsCorrect()
+    [Test]
+    public async Task ImplicitConversionToString_IsCorrect()
     {
         // Arrange
         var i = new Id("Test");
@@ -112,11 +114,11 @@ public class IdTests
         string actual = i;
 
         // Assert
-        Assert.Equal(expected: "Test", actual);
+        await Assert.That(actual).IsEqualTo("Test");
     }
 
-    [Fact]
-    public void ToString_StringId_ReturnsCorrect()
+    [Test]
+    public async Task ToString_StringId_ReturnsCorrect()
     {
         // Arrange
         var i = new Id("Test");
@@ -125,11 +127,11 @@ public class IdTests
         var actual = i.ToString();
 
         // Assert
-        Assert.Equal(expected: "Test", actual);
+        await Assert.That(actual).IsEqualTo("Test");
     }
 
-    [Fact]
-    public void ToString_IndexId_ReturnsCorrect()
+    [Test]
+    public async Task ToString_IndexId_ReturnsCorrect()
     {
         // Arrange
         var i = new Id(26);
@@ -138,11 +140,11 @@ public class IdTests
         var actual = i.ToString();
 
         // Assert
-        Assert.Equal(expected: "Stadium2020", actual);
+        await Assert.That(actual).IsEqualTo("Stadium2020");
     }
 
-    [Fact]
-    public void ToString_IndexId_UnknownCollection_ReturnsCorrect()
+    [Test]
+    public async Task ToString_IndexId_UnknownCollection_ReturnsCorrect()
     {
         // Arrange
         var i = new Id(69);
@@ -151,11 +153,11 @@ public class IdTests
         var actual = i.ToString();
 
         // Assert
-        Assert.Equal(expected: "69", actual);
+        await Assert.That(actual).IsEqualTo("69");
     }
 
-    [Fact]
-    public void ImplicitConversionFromInt_IsCorrect()
+    [Test]
+    public async Task ImplicitConversionFromInt_IsCorrect()
     {
         // Arrange
         var i = 26;
@@ -164,6 +166,6 @@ public class IdTests
         Id actual = (Id)i;
 
         // Assert
-        Assert.Equal(expected: i, actual.Number);
+        await Assert.That(actual.Number).IsEqualTo(i);
     }
 }

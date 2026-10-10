@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Spectre.Console;
+using System.Runtime.CompilerServices;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -33,7 +34,14 @@ public class SpectreConsoleLogger : ILogger
 
         if (exception is not null)
         {
-            AnsiConsole.WriteException(exception);
+            if (RuntimeFeature.IsDynamicCodeSupported)
+            {
+                AnsiConsole.WriteException(exception);
+            }
+            else
+            {
+                AnsiConsole.WriteLine(exception.ToString());
+            }
         }
     }
 

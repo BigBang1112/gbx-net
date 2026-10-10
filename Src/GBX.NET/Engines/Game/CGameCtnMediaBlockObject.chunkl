@@ -1,19 +1,20 @@
 CGameCtnMediaBlockObject 0x03196000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version = 1
- timefloat Start
- timefloat End
- v0=
-  AnchoredObjectInfo[] AnchoredObjectInfos
- v1+
-  CGameReplayObjectVisData VisData
+0x000 [TMT, MP4, TM2020.v1]
+  version
+  float Start (time)
+  float End (time)
+  bool ShowObjects = true
+  v0=
+    AnchoredObjectInfo[] AnchoredObjectInfos
+  v1+
+    CGameReplayObjectVisData VisData
 
 archive AnchoredObjectInfo
- bool
- int
- float
- float
- float
- int
+  bool
+  int
+  float
+  float
+  float
+  int

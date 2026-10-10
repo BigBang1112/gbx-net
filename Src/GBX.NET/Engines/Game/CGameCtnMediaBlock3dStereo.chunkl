@@ -1,10 +1,10 @@
 CGameCtnMediaBlock3dStereo 0x03024000
 - inherits: CGameCtnMediaBlock
 
-0x000
- list<Key> Keys
+0x000 [TMF, TMT, MP4, TM2020]
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float UpToMax
- float ScreenDist
+  float Time (time)
+  float UpToMax
+  float ScreenDist

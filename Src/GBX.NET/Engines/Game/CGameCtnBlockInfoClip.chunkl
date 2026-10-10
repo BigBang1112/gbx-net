@@ -1,46 +1,66 @@
 CGameCtnBlockInfoClip 0x03053000
 - inherits: CGameCtnBlockInfo
 
-0x002
- id ASymmetricalClipId
+constructor
+  CatalogPosition = -1
 
-0x004
- bool IsFullFreeClip
- bool IsExclusiveFreeClip
+0x000 (skippable) // legacy symmetrical clip
+  CGameCtnCollector LegacySymmetricalClip (external)
+  if LegacySymmetricalClip != null
+    SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
-0x005
- int<EClipType> ClipType
+0x001 // legacy symmetrical clip
+  CGameCtnCollector LegacySymmetricalClip (external)
+  if LegacySymmetricalClip != null
+    SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
-0x006
- version
- bool CanBeDeletedByFullFreeClip
- v1+
-  int<EMultiDir> TopBottomMultiDir
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // SymmetricalClipId
+  id SymmetricalClipId
+
+0x003 // legacy free clip flag
+  bool IsFreeClip (local, write: "n.ClipType != EClipType.ClassicClip")
+  if IsFreeClip
+    ClipType = EClipType.FreeClipSide
+  else
+    ClipType = EClipType.ClassicClip
+
+0x004 [MP3, TMT, MP4, TM2020] // free clip restrictions
+  bool IsFullFreeClip
+  bool IsExclusiveFreeClip
+
+0x005 [MP3, TMT, MP4, TM2020] // ClipType
+  int<EClipType> ClipType
+
+0x006 [MP3, TMT.v1, MP4.v1, TM2020.v4] // free clip behavior and direction
+  version
+  bool CanBeDeletedByFullFreeClip = true
+  v1+
+    int<EMultiDir> TopBottomMultiDir
   v2+
-   byte?
-   v3+
-    byte?
-    v4+
-     byte?
+    boolbyte IsAlwaysVisibleFreeClip
+  v3+
+    boolbyte IsFCTOrFCBIgnoredByVFC
+  v4+
+    boolbyte IsAntiClip
 
-0x007
- version
- bool HasPassingPoint
- if HasPassingPoint
-  vec2 PassingPointPos
-  float PassingPointRoll
-  float PassingPointPitch
+0x007 [MP3, TMT.v0, MP4.v0] // passing point
+  version
+  bool HasPassingPoint
+  if HasPassingPoint
+    vec2 PassingPointPos
+    float PassingPointRoll
+    float PassingPointPitch
 
-0x008 (skippable)
- version
- id ClipGroupId
- id SymmetricalClipGroupId
- v1+
-  id
-  id
+0x008 (skippable) [TMT.v0, MP4.v0, TM2020.v1] // clip groups and symmetrical groups
+  version
+  id ClipGroupId
+  id SymmetricalClipGroupId
+  v1+
+    id ClipGroupId2
+    id SymmetricalClipGroupId2
 
 enum EClipType
- ClassicClip
- FreeClipSide
- FreeClipTop
- FreeClipBottom
+  ClassicClip
+  FreeClipSide
+  FreeClipTop
+  FreeClipBottom

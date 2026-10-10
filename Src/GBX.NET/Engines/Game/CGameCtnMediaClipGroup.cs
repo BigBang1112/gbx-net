@@ -3,10 +3,13 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMediaClipGroup
 {
-    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger);
+    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger) : IDeepCloneable
+    {
+        object IDeepCloneable.DeepClone(DeepCloneContext context) => new ClipTrigger(context.Clone(Clip)!, context.Clone(Trigger)!);
+    }
 
     private List<ClipTrigger>? clips;
-    public List<ClipTrigger> Clips
+    public partial List<ClipTrigger> Clips
     {
         get => clips ??= [];
         set => clips = value;
@@ -36,6 +39,19 @@ public partial class CGameCtnMediaClipGroup
     {
         w.WriteListNodeRef_deprec(n.Clips.Select(x => x.Clip).ToList()!);
         w.WriteListWritable(n.Clips.Select(x => x.Trigger).ToList(), version: version);
+    }
+
+    public partial class Chunk0307A000
+    {
+        public override void Read(CGameCtnMediaClipGroup n, GbxReader r)
+        {
+            ReadClips(n, r, version: 0);
+        }
+
+        public override void Write(CGameCtnMediaClipGroup n, GbxWriter w)
+        {
+            WriteClips(n, w, version: 0);
+        }
     }
 
     public partial class Chunk0307A001
@@ -77,9 +93,20 @@ public partial class CGameCtnMediaClipGroup
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Trigger
     {
+        [Obsolete("Use RefCoord.X instead.")]
+        public int U01 { get => RefCoord.X; set => RefCoord = RefCoord with { X = value }; }
+
+        [Obsolete("Use RefCoord.Y instead.")]
+        public int U02 { get => RefCoord.Y; set => RefCoord = RefCoord with { Y = value }; }
+
+        [Obsolete("Use RefCoord.Z instead.")]
+        public int U03 { get => RefCoord.Z; set => RefCoord = RefCoord with { Z = value }; }
+
+        [Obsolete("Use RefDir instead.")]
+        public int U04 { get => (int)RefDir; set => RefDir = (Direction)value; }
+
         public override string ToString()
         {
             return $"Trigger: {Coords?.Count ?? 0} coords";

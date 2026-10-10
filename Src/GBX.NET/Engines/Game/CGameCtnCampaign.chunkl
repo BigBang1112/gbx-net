@@ -1,111 +1,111 @@
 CGameCtnCampaign 0x03090000
 
-0x000 // map groups
- list<CGameCtnChallengeGroup>_deprec ChallengeGroups
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // map groups
+  CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
-0x001
- id CollectionId
- int U01
- if U01 > 0
-  throw
+0x001 [TM10, TMPU, TMSX, TMNESWC]
+  id CollectionId
+  int U01
+  if U01 > 0
+    throw
 
-0x002
- id IconId
- int U01
- int U01
- int U01
- int U01
- int U01
- int U01
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5]
+  id IconId
+  int U01
+  int U01
+  int U01
+  int U01
+  int U01
+  int U01
 
 0x003
- string Name
- int<EType> Type
- bool IsInternal
- bool
+  string Name
+  int<EType> Type
+  bool IsInternal
+  bool
 
-0x004
- string Name
- int<EType> Type
- bool IsInternal
- bool
- bool
+0x004 [TMSX, TMNESWC, VSK5, TMF]
+  string Name
+  int<EType> Type
+  bool IsInternal
+  bool
+  bool
 
-0x005
- bool
+0x005 [TMSX, TMNESWC, VSK5]
+  bool
 
-0x006 // campaign ID
- id CampaignId
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // campaign ID
+  id CampaignId
 
-0x007
- int U01
- int U01
- int U01
+0x007 [TMSX, TMNESWC, VSK5]
+  int U01
+  int U01
+  int U01
 
-0x008
- int
+0x008 [TMNESWC, VSK5]
+  int
 
-0x009 (skippable) // collection ID
- byte
- id CollectionId
+0x009 (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // collection ID
+  byte
+  id CollectionId
 
-0x00A (skippable) // index
- int Index
+0x00A (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // index
+  int Index
 
-0x00B (skippable) // unlocked by campaign
- string UnlockedByCampaign
- int
+0x00B (skippable) [VSK5, TMF, MP3, TMT, MP4, TM2020] // unlocked by campaign
+  string UnlockedByCampaign
+  int
 
-0x00C (skippable) // icon ID
- id IconId
+0x00C (skippable) [TMF, MP3, TMT, MP4, TM2020] // icon ID
+  id IconId
 
-0x00D // unlock type
- int<EUnlockType> UnlockType
+0x00D [TMF, MP3, TMT, MP4, TM2020] // unlock type
+  int<EUnlockType> UnlockType
 
-0x00E // required players count
- int<ERequiredPlayersCount> RequiredPlayersCount
+0x00E [MP3, TMT, MP4, TM2020] // required players count
+  int<ERequiredPlayersCount> RequiredPlayersCount
 
-0x00F (skippable) // name
- string Name
- int
- int<EType> Type
+0x00F (skippable) [MP3, TMT, MP4, TM2020] // name
+  string Name
+  int
+  int<EType> Type
 
-0x010 // mode script name
- version
- string ModeScriptName
+0x010 [MP3, TMT, MP4, TM2020] // mode script name
+  version
+  string ModeScriptName
 
-0x012 (skippable) // official mode
- version
- v1-
-  string ScoreContext
- v2+
-  int?
-  string
-  string
-  string
- bool OfficialRecordEnabled
- v0=
-  bool?
-  bool?
+0x012 (skippable) [MP4, TM2020] // official mode
+  version
+  v1-
+    string ScoreContext
+  v2+
+    int?
+    string
+    string
+    string
+  bool OfficialRecordEnabled
+  v0=
+    bool?
+    bool?
 
 enum EType
- None
- Race
- Puzzle
- Survival
- Platform
- Stunts
- Training
+  None
+  Race
+  Puzzle
+  Survival
+  Platform
+  Stunts
+  Training
 
 enum ERequiredPlayersCount
- SoloOnly
- MultiOnly
- DuoOnly
- TrioOnly
- QuatuorOnly
- All
+  SoloOnly
+  MultiOnly
+  DuoOnly
+  TrioOnly
+  QuatuorOnly
+  All
 
 enum EUnlockType
- ByRow
- ByColumn
- Custom
+  ByRow
+  ByColumn
+  Custom

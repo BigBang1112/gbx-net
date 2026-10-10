@@ -1,105 +1,105 @@
 CPlugVehicleMaterial 0x090F1000
 
-0x001
- byte MaterialId
- bool TrailIsOnlyWhenSliding
- CPlugShader TrailShader
- float VibrationSpeedCoef
- float VibrationMax
+0x001 [TM10, TMPU]
+  byte MaterialId
+  bool TrailIsOnlyWhenSliding
+  CPlugShader TrailShader
+  float VibrationSpeedCoef
+  float VibrationMax
 
-0x004
- CPlugBitmap MaterialHeightDetailBitmap (external)
- vec2 MaterialHeightDetailScale
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3]
+  CPlugBitmap MaterialHeightDetailBitmap (external)
+  vec2 MaterialHeightDetailScale
 
-0x005
- float Speed
- float Grip
- float AccelerationCoef
- float BrakeCoef
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float Speed
+  float Grip
+  float AccelerationCoef
+  float BrakeCoef
 
-0x006
- CPlugFlockModel TrailManagerModel (external)
+0x006 [TM10, TMPU]
+  CPlugFlockModel TrailManagerModel (external)
 
-0x009
- byte MaterialId
- float VibrationSpeedCoef
- float VibrationMax
- bool TrailIsOnlyWhenSliding
- CMwNod (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
+0x009 [TMSX]
+  byte MaterialId
+  float VibrationSpeedCoef
+  float VibrationMax
+  bool TrailIsOnlyWhenSliding
+  CMwNod (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel (external)
 
-0x00A
- CPlugParticleEmitterModel (external)
+0x00A [TMSX]
+  CPlugParticleEmitterModel (external)
 
-0x00B
- CPlugParticleEmitterModel (external)
+0x00B [TMSX]
+  CPlugParticleEmitterModel (external)
 
-0x00C
- CPlugParticleEmitterModel (external)
+0x00C [TMSX]
+  CPlugParticleEmitterModel (external)
 
-0x00D
- CPlugParticleEmitterModel (external)
+0x00D [TMSX]
+  CPlugParticleEmitterModel (external)
 
-0x00E
- byte MaterialId
- float VibrationSpeedCoef
- float VibrationMax
+0x00E [TMNESWC, VSK5, TMF]
+  byte MaterialId
+  float VibrationSpeedCoef
+  float VibrationMax
 
-0x00F
- float
- float
+0x00F [TMF, MP3, MP4, TM2020]
+  float
+  float
 
-0x010
- version
- float
- float
- float
- float
- byte
- v1=
-  float
-  float
- v7+
-  float
-  float
- v1+
+0x010 [MP3, MP4, TM2020]
+  version
   float
   float
   float
- v2+
   float
- v3+
-  float
-  float
-  float
- v4+
-  bool
-  vec2
- v5+
-  float
- v6+
-  float
- v8+
-  float
-  v13-
-   float
- v9+
-  Keys (version: Version - 12)
- v10+
-  Keys (version: Version - 12)
- v11+
-  float
- v13+
-  Keys (version: Version - 12)
-  Keys (version: Version - 12)
-  float
-  float
-  float
- v14+
-  Keys (version: Version - 12)
-  int
+  byte
+  v1=
+    float
+    float
+  v7+
+    float
+    float
+  v1+
+    float
+    float
+    float
+  v2+
+    float
+  v3+
+    float
+    float
+    float
+  v4+
+    bool
+    vec2
+  v5+
+    float
+  v6+
+    float
+  v8+
+    float
+    v13-
+      float
+  v9+
+    Keys (version: Version - 12)
+  v10+
+    Keys (version: Version - 12)
+  v11+
+    float
+  v13+
+    Keys (version: Version - 12)
+    Keys (version: Version - 12)
+    float
+    float
+    float
+  v14+
+    Keys (version: Version - 12)
+    int
 
 archive Keys

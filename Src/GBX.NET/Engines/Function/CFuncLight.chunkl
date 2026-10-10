@@ -2,11 +2,11 @@ CFuncLight 0x05018000
 - inherits: CFuncPlug
 - abstract
 
-0x000
- int<EFctType> FctType
- float FlickPeriod
- int FlickCount
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  int<EFctType> FctType
+  float FlickPeriod
+  int FlickCount
 
 enum EFctType
- Sinus
- Flick
+  Sinus
+  Flick

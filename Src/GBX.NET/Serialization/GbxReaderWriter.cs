@@ -67,6 +67,16 @@ public partial interface IGbxReaderWriter : IDisposable
     T[]? ArrayReadableWritable<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, int length, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
@@ -426,6 +436,70 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ArrayReadableWritable(value, byteLengthPrefix, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        if (length < 0 || length > 0x10000000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+        }
+
+        if (Reader is not null)
+        {
+            value = new T[length];
+            for (var i = 0; i < length; i++)
+            {
+                value[i] = Reader.ReadReadable<T, TNode>(node, version);
+            }
+        }
+
+        if (Writer is not null)
+        {
+            for (var i = 0; i < length; i++)
+            {
+                Writer.WriteWritable<T, TNode>(i < (value?.Length ?? 0) ? value![i] : new T(), node, version);
+            }
+        }
+
+        return value;
+    }
+
+    public void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, int length, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ArrayReadableWritable(value, node, length, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        var length = value?.Length ?? 0;
+        length = byteLengthPrefix ? Byte((byte)length) : Int32(length);
+        return ArrayReadableWritable(value, node, length, version);
+    }
+
+    public void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ArrayReadableWritable(value, node, byteLengthPrefix, version);
+
+    public T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+    {
+        if (Reader is not null)
+        {
+            value = Reader.ReadJaggedArrayReadable<T>(innerLength, outerLength, version);
+        }
+
+        Writer?.WriteJaggedArrayWritable(value, innerLength, outerLength, version);
+        return value;
+    }
+
+    public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+        => value = JaggedArrayReadableWritable(value, innerLength, outerLength, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()

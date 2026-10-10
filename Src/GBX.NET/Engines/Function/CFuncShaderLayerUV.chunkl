@@ -1,47 +1,47 @@
 CFuncShaderLayerUV 0x05015000
 - inherits: CFuncShader
 
-0x005
- string LayerName
- int
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  string LayerName
+  int
 
-0x009
- vec2
- vec2
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  vec2
+  vec2
 
-0x00A (base: 0x009)
- base
- vec2 U03
+0x00A (base: 0x009) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+  base
+  vec2 U03
 
-0x00D
- vec2
- vec2
- vec2
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+  vec2
+  vec2
+  vec2
 
-0x011
- int
- int
- bool
- bool
- bool
- CMwNod
+0x011 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+  int
+  int
+  bool
+  bool
+  bool
+  CMwNod
 
-0x012
- int
- int
+0x012 [TM10, TMPU, TMSX, TMNESWC, VSK5]
+  int
+  int
 
-0x013 (base: 0x00A)
+0x013 (base: 0x00A) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
 
-0x014
- vec2
- float
- float
+0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+  vec2
+  float
+  float
 
-0x015
- int
- int
- int
- int
+0x015 [TMF, MP3, TMT]
+  int
+  int
+  int
+  int
 
-0x016
- uint
+0x016 [TMF, MP3, TMT]
+  uint

@@ -1,55 +1,34 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using TmEssentials;
+
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameUserFileList
 {
     public partial class FileInfo
     {
-        private string name = "";
-        private string mapUid = "";
-        private string? mapName;
-        private string? ghostKind;
-        private FileType type;
-
-        public ulong U01;
-        public ulong U02;
-        public int? U04;
-
-        public string Name { get => name; set => name = value; }
-        public string MapUid { get => mapUid; set => mapUid = value; }
-        public string? MapName { get => mapName; set => mapName = value; }
-        public string? GhostKind { get => ghostKind; set => ghostKind = value; }
-        public FileType Type { get => type; set => type = value; }
-
-        public void ReadWrite(GbxReaderWriter rw, int v = 0)
+        [Obsolete("Use FileWriteTime instead.")]
+        public ulong U02
         {
-            rw.String(ref name!);
-            rw.Byte(0);
-
-            rw.UInt64(ref U01);
-            rw.UInt64(ref U02);
-            rw.EnumInt32<FileType>(ref type);
-
-            switch (type)
-            {
-                case FileType.Map:
-                    rw.Id(ref mapUid!);
-                    rw.String(ref mapName);
-                    rw.Byte(0);
-                    break;
-                case FileType.Ghost:
-                    rw.String(ref ghostKind);
-                    rw.Byte(0);
-                    rw.Id(ref mapUid!);
-                    rw.Int32(ref U04);
-                    break;
-                default:
-                    throw new ThisShouldNotHappenException();
-            }
+            get => (ulong)(FileWriteTime?.ToFileTimeUtc() ?? 0);
+            set => FileWriteTime = value == 0 ? null : DateTime.FromFileTime((long)value);
         }
+
+        [Obsolete("Use FileSize instead.")]
+        public ulong U03 { get => FileSize; set => FileSize = value; }
+
+        [Obsolete("Use RaceTime instead.")]
+        public int? U06
+        {
+            get => RaceTime?.TotalMilliseconds;
+            set => RaceTime = value is null ? null : new TimeInt32(value.Value);
+        }
+
+        [Obsolete("Use RecordingContext instead.")]
+        public string? GhostKind { get => RecordingContext; set => RecordingContext = value; }
 
         public override string ToString()
         {
-            return name ?? "[unknown file]";
+            return Name ?? "[unknown file]";
         }
     }
 }

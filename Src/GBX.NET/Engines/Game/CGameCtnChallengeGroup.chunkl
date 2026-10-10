@@ -1,47 +1,62 @@
 CGameCtnChallengeGroup 0x0308F000
 
-0x002 // name
- string Name
+0x000 [TM10, TMPU] // medal requirements + map files
+  int NbBronzeRequired
+  int NbSilverRequired
+  int NbGoldRequired
+  CGameCtnChallenge[] MapFiles (external, list)
 
-0x003
- int U01
- int U01
- int U01
+0x001 [TM10, TMPU] // medal requirements + map identifiers 
+  int NbBronzeRequired
+  int NbSilverRequired
+  int NbGoldRequired
+  MapInfo[] MapInfos (list)
 
-0x004
- int U01
- if U01 > 0
-  throw
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // name
+  string Name
 
-0x005
- int
+0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5] // medal values
+  int AllBronzeValue [TM10 = 100, TMPU = 100]
+  int AllSilverValue [TM10 = 200, TMPU = 200]
+  int AllGoldValue [TM10 = 300, TMPU = 300]
 
-0x006
- bool
- list<MapInfo> MapInfos
+0x004 // legacy file list
+  CMwNod[] Files (external, list)
 
-0x007
- int
- int
- int
- int
- int
- int
+0x005 [TMSX, TMNESWC, VSK5] // LinkedCampaign
+  CGameCtnCampaign LinkedCampaign
 
-0x009
- id
+0x006 [TMSX, TMNESWC, VSK5, TMF] // map identifiers or map files
+  bool UsesMapFiles = false
+  if UsesMapFiles
+    CGameCtnChallenge[] MapFiles (external, list)
+  else
+    MapInfo[] MapInfos (list)
 
-0x00A
- list<MapInfo> MapInfos (version: 1)
+0x007 [TMSX, TMNESWC, VSK5] // medal and cup requirements
+  int NbBronzeMedalRequired
+  int NbSilverMedalRequired
+  int NbGoldMedalRequired
+  int NbBronzeCupRequired
+  int NbSilverCupRequired
+  int NbGoldCupRequired
 
-0x00B
- version
- list<MapInfo> MapInfos (version: Version + 2)
+0x008 [TMSX] // AssociatedCollection
+  CGameCtnCollection AssociatedCollection (external)
+
+0x009 [TMNESWC, VSK5] // AssociatedCollectionId
+  id AssociatedCollectionId
+
+0x00A // legacy map identifiers
+  MapInfo[] MapInfos (version: 1, list)
+
+0x00B [MP3.v0, TMT.v0, MP4.v1, TM2020.v1] // map identifiers + file paths
+  version
+  MapInfo[] MapInfos (version: Version + 2, list)
 
 archive MapInfo
- ident Metadata
- v2+
-  string FilePath
- v1+
-  v2-
-   bool
+  ident Metadata
+  v2+
+    string FilePath
+  v1..2
+    bool IsTestReportSent

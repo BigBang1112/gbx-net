@@ -1,5 +1,5 @@
 CPlugVehiclePhyTunings 0x090EC000
 
-0x000
- CPlugVehiclePhyTuning[]_deprec Tuning
- int TuningIndex
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, MP4, TM2020]
+  CPlugVehiclePhyTuning[] Tuning (deprec)
+  int TuningIndex

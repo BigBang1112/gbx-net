@@ -1,8 +1,13 @@
 CGameCtnMediaBlockManialink 0x0312A000
 - inherits: CGameCtnMediaBlock
 
-0x001
- version
- timefloat Start
- timefloat End
- string ManialinkUrl
+0x000
+  float Start (time)
+  float End (time)
+  CPlugFileTextScript Script
+
+0x001 [TMT, MP4, TM2020.v0]
+  version
+  float Start (time)
+  float End (time)
+  string ManialinkUrl

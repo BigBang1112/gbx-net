@@ -1,16 +1,18 @@
 CPlugAnimLocSimple 0x090F8000
 
-0x000
- int
- version
- int RotPeriod
- int TransPeriod
- float TransY
- v1+
-  int Axis
-  v2+
-   int RotPeriodMax
-   int TransPeriodMax
-   v3+
-    byte RotFunc
-    float RotAngle
+0x000 [MP3, TMT, MP4, TM2020]
+  int
+  version
+  int RotPeriod
+  int TransPeriod
+  float TransY
+  v1+
+    int Axis
+    v2+
+      int RotPeriodMax
+      int TransPeriodMax
+      v3+
+        byte RotFunc
+        float RotAngle
+        v4+
+          int U02

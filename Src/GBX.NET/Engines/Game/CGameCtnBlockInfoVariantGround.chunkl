@@ -1,14 +1,14 @@
 CGameCtnBlockInfoVariantGround 0x0315C000
 - inherits: CGameCtnBlockInfoVariant
 
-0x001 [TMT.v0, MP4.v2]
- version
- CGameCtnAutoTerrain[]_deprec AutoTerrains
- int AutoTerrainHeightOffset
- int<EAutoTerrainPlaceType> AutoTerrainPlaceType
+0x001 [MP3, TMT.v0, MP4.v2, TM2020]
+  version
+  CGameCtnAutoTerrain[] AutoTerrains (deprec)
+  int AutoTerrainHeightOffset
+  int<EAutoTerrainPlaceType> AutoTerrainPlaceType
 
 enum EAutoTerrainPlaceType
- Auto
- Force
- DoNotPlace
- DoNotDestroy
+  Auto
+  Force
+  DoNotPlace
+  DoNotDestroy

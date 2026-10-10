@@ -1,158 +1,158 @@
 CGamePlayerProfileChunk_GameSettings 0x0312D000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
- version
- int OpponentsVersionLast
- SChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
- bool
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int OpponentsVersionLast
+  SChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
+  bool
 
-0x001 (skippable)
- version
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- string
- byte
- byte
- byte
- byte
- byte
- int
- int
-
-0x002 (skippable)
- version
- string ServerName
- string ServerComment
- int NetworkGameMode
- byte MaxSpectatorCount
- byte
- byte
- byte
- byte
- v3+
-  byte OpponentVisibility
-
-0x003 (skippable)
- version
- byte
- v2+
-  bool EditorHelp
-
-0x004 (skippable)
- version
- float
- bool
- v2-
-  float MouseSensitivity_Default
- bool
- float MouseAccelQuantity
- v2+
-  float
-  v3+
-   bool
-   float MouseSensitivity_Default
-   float
-   v4+
-    float
-
-0x005 (skippable)
- version
- float StereoscopyStrength01
- float
- float StereoscopyAdvancedScreenDist
- CGameCtnMediaShootParams ShootParamsVideo (direct)
- CGameCtnMediaShootParams (direct)
-
-0x006 (skippable)
- version
- byte
-
-0x007 (skippable)
- version
- bool
- float
- float
- float
- v1+
+0x001 (skippable) [MP3, TMT, MP4, TM2020]
+  version
   string
-  v2+
-   bool
-   float
-   bool
-   float
-   v3+
-    float
-    v4+
-     float
-     float
-     v5+
-      float
-      v6+
-       float
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  string
+  byte
+  byte
+  byte
+  byte
+  byte
+  int
+  int
 
-0x008 (skippable)
- version
- int
- v1+
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  string ServerName
+  string ServerComment
+  int NetworkGameMode
+  byte MaxSpectatorCount
+  byte
+  byte
+  byte
+  byte
+  v3+
+    byte OpponentVisibility
+
+0x003 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte
+  v2+
+    bool EditorHelp
+
+0x004 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  float
+  bool
+  v2-
+    float MouseSensitivity_Default
+  bool
+  float MouseAccelQuantity
+  v2+
+    float
+    v3+
+      bool
+      float MouseSensitivity_Default
+      float
+      v4+
+        float
+
+0x005 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  float StereoscopyStrength01
+  float
+  float StereoscopyAdvancedScreenDist
+  CGameCtnMediaShootParams ShootParamsVideo (direct)
+  CGameCtnMediaShootParams (direct)
+
+0x006 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte
+
+0x007 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  bool
+  float
+  float
+  float
+  v1+
+    string
+    v2+
+      bool
+      float
+      bool
+      float
+      v3+
+        float
+        v4+
+          float
+          float
+          v5+
+            float
+            v6+
+              float
+
+0x008 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int
+  v1+
+    float
+
+0x009 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int
+
+0x00A (skippable) [MP3, TMT, MP4, TM2020]
+  version
   float
 
-0x009 (skippable)
- version
- int
+0x00B (skippable) [MP4, TM2020]
+  version
+  int
+  Unknown[]
 
-0x00A (skippable)
- version
- float
+0x00C (skippable) [MP4, TM2020]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
-0x00B (skippable)
- version
- int
- Unknown[]
-
-0x00C (skippable)
- version
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
-
-0x00D (skippable)
- uint
- int
- string
+0x00D (skippable) [MP4, TM2020]
+  uint
+  int
+  string
 
 archive SChallengeOpponents
- ident
- v0=
-  id[]
- int
- string
+  ident
+  v0=
+    id[]
+  int
+  string
 
 archive Unknown
- id
- int
+  id
+  int

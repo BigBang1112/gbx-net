@@ -1,57 +1,57 @@
 CPlugShaderApply 0x09026000
 - inherits: CPlugShaderGeneric
 
-0x001
- int
- int
- CPlugBitmapAddress[] BitmapAddresses
- uint
+0x001 [TM10, TMPU, TMSX, TMNESWC]
+  int
+  int
+  CPlugBitmapAddress[] BitmapAddresses
+  uint
 
-0x09063002 (not-remapped)
- dataint
- int
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
+0x09063002 (not-remapped) [TM10, TMPU, TMSX, TMNESWC]
+  dataint
+  int
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
+  CPlugBitmapAddress
 
-0x002
- CPlugBitmapAddress[] BitmapAddresses
+0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CPlugBitmapAddress[] BitmapAddresses
 
-0x004
- int
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int
 
 0x006
- int
+  int
 
-0x007
- int
+0x007 [VSK5]
+  int
 
-0x008
- int
- int
+0x008 [TMF]
+  int
+  int
 
-0x00A
- uint
- uint
- uint
+0x00A [MP3, TMT, MP4]
+  uint
+  uint
+  uint
 
-0x00C
- CPlugBitmapAddress[]_deprec BitmapAddresses
+0x00C [MP3, TMT, MP4, TM2020]
+  CPlugBitmapAddress[] BitmapAddresses (deprec)
 
 0x00D
- byte // DoData
+  byte // DoData
 
-0x010
- byte // DoData
+0x010 [MP3, TMT, MP4, TM2020]
+  byte // DoData
 
-0x011
- version
- CMwNod (external)
+0x011 [MP3, TMT, MP4, TM2020]
+  version
+  CMwNod (external)
 
-0x012
- version
- uint
- uint
- uint
+0x012 [TM2020]
+  version
+  uint
+  uint
+  uint

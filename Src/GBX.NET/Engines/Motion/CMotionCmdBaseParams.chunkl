@@ -1,0 +1,5 @@
+CMotionCmdBaseParams 0x0802D000
+
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  int Period = 10000 (time)
+  float Phase = 0

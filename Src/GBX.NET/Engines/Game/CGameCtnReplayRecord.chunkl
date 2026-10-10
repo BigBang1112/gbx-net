@@ -6,39 +6,53 @@ CGameCtnReplayRecord 0x03093000
 
 0x002 (header, struct: SAuthorInfo) [MP3, TMT, MP4, TM2020] // author
 
-0x002 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // track
+0x002 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // track
 
 0x003 [TM10, TMPU] // validation TM1.0
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, TMU] // ghosts
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // ghosts
 
 0x005 [TM10]
 
-0x007 (skippable) [TMPU, TMSX, TMNESWC, TMU, TMF, MP3, TMT]
+0x007 (skippable) [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
 
 0x008 (skippable) [TMPU, TMSX, TMNESWC] // game
 
-0x00C [TMSX, TMNESWC, TMU] // clip
+0x009
+
+0x00A // legacy tracks
+
+0x00B // human time to game time function
+
+0x00C [TMSX, TMNESWC, TMU, VSK5] // clip
 
 0x00D [TMSX, TMNESWC] // validation
 
-0x00E [TMSX, TMNESWC, TMU] // events
+0x00E [TMSX, TMNESWC, TMU, VSK5] // events
 
 0x00F (skippable) [TMSX, TMNESWC]
 
 0x010 // simple events display
 
-0x011 [TMNESWC, TMU]
+0x011 [TMNESWC, TMU, VSK5]
 
-0x013 (skippable, ignore) [TMU]
+0x012
+
+0x013 (skippable) [TMU, VSK5]
 
 0x014 [TMF, MP3, TMT, MP4, TM2020] // ghosts
 
 0x015 [TMF, MP3, TMT, MP4, TM2020] // clip
 
+0x016 // legacy data tapes
+
+0x017 (skippable) // encapsulated legacy data tapes
+
 0x018 (skippable) [MP3, TMT, MP4, TM2020] // author
 
-0x01A (skippable) [MP3, TMT, MP4, TM2020] // scenery vortex key
+0x019 (skippable) // legacy scenery vortex keys
+
+0x01A (skippable, base: 0x019) [MP3, TMT, MP4, TM2020] // scenery vortex key
 
 0x01B (skippable) [MP3, TMT, MP4, TM2020] // player of interest
 
@@ -46,17 +60,17 @@ CGameCtnReplayRecord 0x03093000
 
 0x01D (skippable) [MP3, TMT, MP4, TM2020] // InterfaceScriptInfos
 
-0x01E (skippable, ignore) [MP3, TMT, MP4, TM2020] // actions
+0x01E (skippable) [MP3, TMT, MP4, TM2020] // actions
 
-0x01F (skippable, ignore) [MP3, TMT, MP4, TM2020] // AnchoredObjectInfos
+0x01F (skippable) [MP3, TMT, MP4, TM2020] // AnchoredObjectInfos
 
-0x020 (skippable, ignore) [MP3, TMT, MP4, TM2020] // item skins and names
+0x020 (skippable) [MP3, TMT, MP4, TM2020] // item skins and names
 
 0x021 (skippable) [MP3, TMT, MP4, TM2020]
 
-0x022 (skippable, ignore) [TMT, MP4] // TimedCamVal
+0x022 (skippable) [TMT, MP4, TM2020] // TimedCamVal
 
-0x023 (skippable, ignore) [TMT, MP4] // BonusBumpKey
+0x023 (skippable) [TMT, MP4, TM2020] // BonusBumpKey
 
 0x024 [MP4.v1, TM2020.v1] // record data
 
@@ -71,10 +85,10 @@ CGameCtnReplayRecord 0x03093000
 0x029 (skippable) [TM2020]
 
 archive InterfaceScriptInfo
- string[]
- int
+  string[]
+  int
 
 archive EntDataSceneUIdsToGhost
- int
- int
- int
+  int
+  int
+  int

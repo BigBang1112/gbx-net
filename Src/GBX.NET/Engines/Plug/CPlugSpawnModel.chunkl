@@ -1,9 +1,9 @@
 CPlugSpawnModel 0x0917A000
 
-0x000
- version
- iso4 Loc
- float TorqueX
- timeint TorqueDuration
- vec3 DefaultGravitySpawn
- int
+0x000 [TM2020]
+  version
+  iso4 Loc
+  float TorqueX
+  int TorqueDuration (time)
+  vec3 DefaultGravitySpawn
+  int

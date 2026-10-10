@@ -1,10 +1,14 @@
 CGameCtnMediaBlockFxBloom 0x03083000
 - inherits: CGameCtnMediaBlockFx
 
-0x001
- list<Key> Keys
+0x000
+  float Start (time)
+  float End (time)
+
+0x001 [VSK5, TMF, TMT, MP4]
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
- float Sensitivity
+  float Time (time)
+  float Intensity
+  float Sensitivity

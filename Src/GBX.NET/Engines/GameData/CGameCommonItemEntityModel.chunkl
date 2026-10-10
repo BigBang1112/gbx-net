@@ -1,28 +1,41 @@
 CGameCommonItemEntityModel 0x2E027000
 
-0x000
- version
- v0=
-  CMwNod PhyModel
-  CMwNod VisModel
- v3=
-  string
-  string
- v4+
-  CPlugStaticObjectModel* StaticObject
- v2+
-  CMwNod TriggerShape
-  iso4
-  CPlugParticleEmitterModel
-  CGameActionModel[]
-  v5-
-   CMwNod
-  string
-  string
-  string
-  string
-  string
-  iso4
-  int // ExprValidator
+0x000 [MP4, TM2020.v6]
+  version
+  v0=
+    CMwNod PhyModel (external) // CGameObjectPhyModel
+    CMwNod VisModel (external) // CGameObjectVisModel
+  v3=
+    string
+    string
+  v1+
+    v2-
+      CPlugStaticObjectModel* StaticObject (external)
+  v4+
+    CPlugStaticObjectModel* StaticObject (external)
+  v2+
+    CMwNod TriggerShape (external) // CPlugSurface
+    iso4 SpawnLoc = Iso4.Identity
+    CPlugParticleEmitterModel ParticleEmitterModel (external)
+    CGameActionModel[] Actions (external)
+    v5-
+      CMwNod (external) // Deprecated CMwNod reference.
+    string SoundRefSpawn
+    string SoundRefUnspawn
+    string SoundRefGrab
+    string SoundRefSmashed
+    string SoundRefPermanent
+    iso4 SoundLocPermanent = Iso4.Identity
+    LightBallStateSimple[] LightBallStates // Native CFixedDynArray capacity is one.
   v5+
-   byte
+    boolbyte
+
+archive LightBallStateSimple
+  version
+  float U01
+  float U02
+  float U03
+  float U04 = 1
+  float U05 = 1
+  float U06 = 1
+  float U07 = 1

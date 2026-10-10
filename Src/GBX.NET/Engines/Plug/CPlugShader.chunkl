@@ -1,103 +1,103 @@
 CPlugShader 0x09002000
 - inherits: CPlug
 
-0x007
- CFuncShader FuncShader (external)
- CPlugShaderPass[] Passes
- CMwNod U01
+0x007 [MP3, TMT, MP4, TM2020]
+  CFuncShader FuncShader (external)
+  CPlugShaderPass[] Passes
+  CMwNod U01
 
-0x00E (base: 0x007)
- base
- CMwNod[] U02 (external)
+0x00E (base: 0x007) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  base
+  CMwNod[] U02 (external)
 
-0x010
- ulong // SRequirementOld10 (old flags)
- float
- CMwNod
- ushort VisibleIdFlags
+0x010 [TM10, TMPU]
+  ulong // SRequirementOld10 (old flags)
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
-0x014
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+0x014 [TMSX]
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
-0x015
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+0x015 [TMNESWC, VSK5]
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
-0x016 // flags, latest TMF
- dataulong RequirementFlags // SRequirement
- float
- CMwNod
- ushort VisibleIdFlags
+0x016 [MP3] // flags, latest TMF
+  dataulong RequirementFlags // SRequirement
+  float
+  CMwNod
+  ushort VisibleIdFlags
 
-0x018
- uint
+0x018 [MP3, TMT, MP4, TM2020]
+  uint
 
 0x019
- UnknownStruct2[]
+  UnknownStruct2[]
 
-0x01B
- version
- float
- float
+0x01B [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float
 
-0x01C
- version
- CPlugFileText (external)
- CMwNod (external)
+0x01C [MP3, TMT, MP4, TM2020]
+  version
+  CPlugFileText* (external)
+  CMwNod (external)
 
-0x01D
- uint
+0x01D [MP3, TMT, MP4, TM2020]
+  uint
 
-0x01E
- version
- uint
+0x01E [MP3, TMT, MP4, TM2020]
+  version
+  uint
 
-0x01F
- version
- UnknownStruct[]
+0x01F [MP3, TMT, MP4, TM2020]
+  version
+  UnknownStruct[]
 
-0x020
- version
- ulong
- float
- CPlugMaterialFx
- short
+0x020 [TMT, MP4, TM2020]
+  version
+  ulong
+  float
+  CPlugMaterialFx
+  short
 
 archive UnknownStruct
- CMwNod U01 (external)
- if U01 == null && U01File == null
-  bool U02
-  if U02
-   CMwNod U03
+  CMwNod U01 (external)
+  if U01 == null && U01File == null
+    bool U02
+    if U02
+      CMwNod U03
 
 archive UnknownStruct2
- CMwNod U01 (external)
- if U01 == null && U01File == null
-  CMwNod U02
+  CMwNod U01 (external)
+  if U01 == null && U01File == null
+    CMwNod U02
 
 enum EFillMode
- Solid
- Wired
- LineWired
- SolidWired
+  Solid
+  Wired
+  LineWired
+  SolidWired
 
 enum EVertexSpace
- None
- Fixed
- PlaneY
+  None
+  Fixed
+  PlaneY
 
 enum ESpriteColor0
- Copy
- NHalfDiagInWorld
- TmFRallyTreeRGB
+  Copy
+  NHalfDiagInWorld
+  TmFRallyTreeRGB
 
 enum ESortPosition
- Begining
- BeforeAlpha01
- BeforeTrans
- Ending
+  Begining
+  BeforeAlpha01
+  BeforeTrans
+  Ending

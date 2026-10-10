@@ -1,25 +1,28 @@
-﻿namespace GBX.NET.Engines.Game;
+namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
 {
     private Vec4[] vertices = [];
     private Int3[] triangles = [];
 
+    [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public List<Key> Keys { get; set; } = [];
 
     IEnumerable<IKey> IHasKeys.Keys => Keys;
 
+    [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices
     {
         get => vertices;
         set
         {
-            if (vertices is null || value.Length != vertices.Length)
-            {
-                vertices ??= value;
+            var sizeChanged = vertices is null || value.Length != vertices.Length;
+            vertices = value;
 
+            if (sizeChanged)
+            {
                 foreach (var key in Keys)
                 {
                     var positions = key.Positions;
@@ -29,11 +32,10 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
 
                 RemoveTrianglesOutOfRange();
             }
-
-            vertices = value;
         }
     }
 
+    [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public Int3[] Triangles
     {
@@ -76,83 +78,48 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         triangles = triangles.Where(x => !trianglesToRemove.Contains(x)).ToArray();
     }
 
-    public partial class Chunk03029001
+    public partial class Chunk03029000
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public float U04;
-        public int U05;
-        public long U06;
-
-        public override void Read(CGameCtnMediaBlockTriangles n, GbxReader r)
+        public override void ReadWrite(CGameCtnMediaBlockTriangles n, GbxReaderWriter rw)
         {
-            var numKeys = r.ReadInt32();
-            n.Keys = new List<Key>(numKeys);
-            for (var i = 0; i < numKeys; i++)
+            var numKeys = rw.Int32(n.Keys.Count);
+            if (rw.Reader is not null)
             {
-                n.Keys.Add(new Key(n)
+                n.Keys = new List<Key>(numKeys);
+                for (var i = 0; i < numKeys; i++)
                 {
-                    Time = r.ReadTimeSingle()
-                });
-            }
-
-            numKeys = r.ReadInt32();
-            var numVerts = r.ReadInt32();
-
-            for (var i = 0; i < numKeys; i++)
-            {
-                n.Keys[i].Positions = new Vec3[numVerts];
-
-                for (var j = 0; j < numVerts; j++)
-                {
-                    n.Keys[i].Positions[j] = r.ReadVec3();
+                    n.Keys.Add(new Key(n));
                 }
             }
 
-            n.vertices = r.ReadArray<Vec4>();
-            n.triangles = r.ReadArray<Int3>();
-
-            U01 = r.ReadInt32();
-            U02 = r.ReadInt32();
-            U03 = r.ReadInt32();
-            U04 = r.ReadSingle();
-            U05 = r.ReadInt32();
-            U06 = r.ReadInt64();
-        }
-
-        public override void Write(CGameCtnMediaBlockTriangles n, GbxWriter w)
-        {
-            w.Write(n.Keys.Count);
             foreach (var key in n.Keys)
             {
-                w.Write(key.Time);
+                key.Time = rw.TimeSingle(key.Time);
             }
 
-            w.Write(n.Keys.Count);
-            w.Write(n.vertices.Length);
+            var numPositionKeys = rw.Int32(n.Keys.Count);
+            var numVerts = rw.Int32(n.vertices.Length);
+            if (numPositionKeys != n.Keys.Count)
+            {
+                throw new InvalidDataException("The position matrix must have one row per key.");
+            }
 
             foreach (var key in n.Keys)
             {
-                foreach (var pos in key.Positions)
+                if (rw.Writer is not null && key.Positions.Length != numVerts)
                 {
-                    w.Write(pos);
+                    throw new InvalidDataException("The position matrix must have one position per vertex.");
                 }
+
+                key.Positions = rw.Array(key.Positions, numVerts)!;
             }
 
-            w.WriteArray(n.vertices);
-            w.WriteArray(n.triangles);
-
-            w.Write(U01);
-            w.Write(U02);
-            w.Write(U03);
-            w.Write(U04);
-            w.Write(U05);
-            w.Write(U06);
+            rw.Array(ref n.vertices!);
+            rw.Array(ref n.triangles!);
         }
     }
 
-    public partial class Key
+    public partial class Key : IDeepCloneable
     {
         private readonly CGameCtnMediaBlockTriangles node;
 
@@ -182,6 +149,14 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         {
             this.node = node;
             positions = new Vec3[node.vertices.Length];
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = new Key(context.Clone(node)!) { Time = Time };
+            context.Register(this, clone);
+            clone.positions = context.CloneArray(positions)!;
+            return clone;
         }
     }
 }

@@ -1,357 +1,372 @@
 CGameUserProfile 0x031CC000
 
-0x000 (skippable)
- version
- float
- float
- float
- v0=
-  float
- v3-
-  int
-  string
- v2-
-  string
-  v2=
-   string
- v3+
-  Sticker[] Stickers
-  string[] Layers
-  v4+
-   bool
-   string
-  v5+
-   string
-   string
-  v6+
-   byte
-  v7+
-   string ClubTag
-  v8+
-   string
-   string
-   float
-   string
-   string
-   float
-   int
-   int
-  v10+
-   int
-  v11+
-   int
-  v12+
-   byte
-  v13+
-   float
-   float
-  v14+
-   int
-  v15+
-   int
-  v16+
-   string
-
-0x001 (skippable)
-
-0x002 (skippable)
- version
- data
-
-0x003 (skippable)
- version
- data
-
-0x004 (skippable)
- version
- ContextTime[] ContextTimes
-
-0x005 (skippable)
- version
- string
-
-0x006 (skippable)
- version
- ContextMapRecordForProfile[] ContextMapRecordsForProfile (version: Version)
-
-0x007 (skippable)
- version
- v1=
-  CInputBindingsConfig
- v2+
-  CInputBindingsConfig[]
- float
- float
- bool
- int
- bool
- float
- float
- float
- bool
- float
- float
- v2-
-  Unknown[]
-
-0x008 (skippable)
- version
- int
-
-0x009 (skippable)
-
-0x00A (skippable)
- version
- Unknown2[]
- v2+
-  int
-  int
-  int
-  int
-  int
- v3+
-  int
-
-0x00B (skippable)
- version
- bool Editor_ShowHelp
- v1+
-  string
-  string
-  string
-  string
-  string
-  string
- v2+
+0x000 (skippable) [TMT, MP4, TM2020.v16]
+  version
+  vec3 BadgeColor = (1, 0, 0)
+  v0=
+    float
   v3-
-   int3
-   int3
-   int3
-   int3
-   int3
- v4+
-  int3
-  int3
-  int3
-  int3
-  int3
-  int3
- v5+
-  Unknown4[]
+    int
+    string
+  v2-
+    string
+    v2=
+      string
+  v3+
+    Sticker[] Stickers
+    string[] Layers
+    v4+
+      bool UseBadge = true
+      string SkinName = ""
+    v5+
+      string
+      string
+    v6+
+      byte
+    v7+
+      string ClubTag
+    v8+
+      string
+      string
+      float
+      string
+      string
+      float
+      int
+      int
+    v10+
+      int
+    v11+
+      int
+    v12+
+      byte
+    v13+
+      float
+      float
+    v14+
+      int
+    v15+
+      int
+    v16+
+      string
+
+0x001 (skippable) [TMT, MP4, TM2020.v1]
+  version
+  block (encapsulated)
+    CScriptTraitsPersistent ScriptPersistentTraits (direct)
+
+0x002 (skippable) [TMT, MP4, TM2020.v1]
+  version
+  data
+
+0x003 (skippable) [TMT, MP4, TM2020.v1]
+  version
+  data
+
+0x004 (skippable) [TMT, MP4]
+  version = 2
+  ContextTime[] ContextTimes
+
+0x005 (skippable) [TMT, MP4, TM2020.v1]
+  version
+  string
+
+0x006 (skippable) [TMT, MP4]
+  version = 3
+  ContextMapRecordForProfile[] ContextMapRecordsForProfile
+
+0x007 (skippable) [TMT, MP4, TM2020.v3]
+  version
+  v0=
+    CInputBindingsConfig[] InputBindingsConfigs
+  v1=
+    CInputBindingsConfig InputBindingsConfig
+  v2+
+    CInputBindingsConfig[] InputBindingsConfigs
+  float RumbleIntensity = 1
+  float CenterSpringIntensity
+  bool MouseLookInvertY
+  int<EMouseReleaseKey> MouseReleaseKey
+  bool MouseAccel
+  float MouseScaleY = 1
+  float MouseScaleFreeLook = 1
+  float MouseAccelQuantity = 0.001f
+  bool MouseSensitivities_EnableSpecific = true
+  float MouseSensitivity_Default = 0.5f
+  float MouseSensitivity_Laser = 0.4f
+  v2-
+    Unknown[] LegacyVehicleSettings
+
+0x008 (skippable) [TMT, MP4]
+  version = 1
+  uint CamName
+
+0x009 (skippable) [MP4, TM2020.v1]
+
+0x00A (skippable) [TM2020.v3]
+  version
+  Unknown2[]
+  v2+
+    uint TotalMedals
+    uint AuthorMedalCount
+    uint BronzeMedalCount
+    uint GoldMedalCount
+    uint SilverMedalCount
+  v3+
+    int
+
+0x00B (skippable) [TM2020.v8]
+  version
+  bool Editor_ShowHelp = true
+  v1+
+    string
+    string
+    string
+    string
+    string
+    string
+  v2+
+    v3-
+      int3
+      int3
+      int3
+      int3
+      int3
+  v4+
+    int3
+    int3
+    int3
+    int3
+    int3
+    int3
+  v5+
+    Unknown4[]
+    int
+  v6+
+    int
+    int
+    v6=
+      bool
+    v7+
+      byte
+    int
+  v8+
+    int
+
+0x00C (skippable) [TM2020.v1]
+  version
+  DeviceSettings[] VehicleSettings
+
+0x00D (skippable) [TM2020.v1]
+  version
   int
- v6+
+  v1+
+    int
+
+0x00E (skippable) [TM2020.v1]
+  version
+  CGameCtnMediaShootParams ShootParamsVideo (direct)
+  CGameCtnMediaShootParams ShootParamsScreenshot (direct)
+
+0x00F (skippable) [TM2020.v4]
+  version
+  Unknown6
+  v2+
+    byte
+  v3+
+    int
+  v4+
+    int
+    int
+
+0x010 (skippable) [TM2020.v1]
+  version
+  Unknown7[]
+
+0x011 (skippable) [TM2020]
+  version
   int
   int
-  v6=
-   int
-  v7+
-   byte
-  int
- v8+
-  int
-
-0x00C (skippable)
- version
- DeviceSettings[] VehicleSettings
-
-0x00D (skippable)
- version
- int
- v1+
-  int
-
-0x00E (skippable, ignore)
-
-0x00F (skippable)
- version
- Unknown6
- v2+
-  byte
- v3+
-  int
- v4+
-  int
-  int
-
-0x010 (skippable)
- version
- Unknown7[]
-
-0x011 (skippable)
- version
- int
- int
- ulong
-
-0x012 (skippable)
- version
- int
-
-0x014 (skippable)
- version
- int
-
-0x015 (skippable)
- version
- Unknown8 (version: Version)
-
-0x016 (skippable)
- version
- byte
-
-0x017 (skippable)
- version
- Unknown8 (version: 5)
- v6+
   ulong
 
-0x018 (skippable)
- version
- byte
+0x012 (skippable) [TM2020]
+  version
+  int
 
-0x019 (skippable)
- version
- string
+0x014 (skippable)
+  version = 1
+  int
 
-0x01A (skippable)
- version
- string
+0x015 (skippable)
+  version = 5
+  Unknown8
 
-0x01B (skippable)
+0x016 (skippable) [TM2020]
+  version
+  byte
 
-0x01C (skippable)
- int
+0x017 (skippable) [TM2020.v6]
+  version
+  Unknown8 (version: 5)
+  v6+
+    ulong
 
-0x01D (skippable)
- version
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+0x018 (skippable) [TM2020.v1]
+  version
+  byte
 
-0x01E (skippable)
- int
+0x019 (skippable) [TM2020]
+  version
+  string
 
-0x01F (skippable)
- int
+0x01A (skippable) [TM2020]
+  version
+  string
 
-0x020 (skippable)
- version
- Unknown8 (version: Version)
- ulong
+0x01B (skippable) [TM2020]
 
-0x021 (skippable)
+0x01C (skippable) [TM2020]
+  int
 
-0x022 (skippable)
- data[20]
+0x01D (skippable) [TM2020.v1]
+  version
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
-0x023 (skippable)
- int
+0x01E (skippable) [TM2020]
+  int
 
-0x024 (skippable)
- int
+0x01F (skippable) [TM2020]
+  int
+
+0x020 (skippable) [TM2020.v8]
+  version
+  Unknown8
+  ulong
+
+0x021 (skippable) [TM2020]
+
+0x022 (skippable) [TM2020]
+  data[20]
+
+0x023 (skippable) [TM2020]
+  int
+
+0x024 (skippable) [TM2020]
+  int
 
 archive Sticker
- string
- string
+  string StickerName
+  string SlotName
 
 archive ContextTime
- string
- int
- int
+  string Context
+  uint GameModeTimeSeconds
+  v2+
+    uint U04
+  uint PlayTimeSeconds
 
 archive ContextMapRecordForProfile
- v2-
-  id TitleId
- id MapUid
- int PersonalBest
- v2+
-  int
-  int
-  v3+
-   string
+  v2-
+    id TitleId
+  id MapUid
+  int PersonalBest
+  v2+
+    int
+    int
+    v3+
+      string Context
 
 archive Unknown
- id
- float
- float
- bool
+  ident Vehicle = empty
+  float AnalogSensitivity = 1
+  float AnalogDeadZone = 0.1f
+  bool AnalogSteerV2
 
 archive Unknown2
- int
- string
- string
- string
- Unknown3[] InnerData
+  int
+  string
+  string
+  string
+  Unknown3[] InnerData
 
 archive Unknown3
- id
- int
- int
- int
- int
- int
+  id MapUid
+  int U02
+  int U03
+  int U04
+  int U05
+  int Medal
 
 archive Unknown4
- int
- string
- int
- int
- int
- int
+  version
+  string U02
+  int U03
+  int U04
+  int U05
+  int U06
 
 archive DeviceSettings
- ident Vehicle = empty
- float AnalogSensitivity = 1
- float AnalogDeadZone = 0.1f
- int
- float VibrationIntensity = 1
- float CenterSpringIntensity
- int
- string
- string
- int
+  ident Vehicle = empty
+  float AnalogSensitivity = 1
+  float AnalogDeadZone = 0.1f
+  int
+  float VibrationIntensity = 1
+  float CenterSpringIntensity
+  int
+  string
+  string
+  int
 
 archive Unknown6
- int Version
- if Version >= 1
+  version = 1
+  v0= (archive)
+    return
   int
   quat[]
 
 archive Unknown7
- string
- string
- string
- string
- string
- string
- data[32]
- int
+  string
+  string
+  string
+  string
+  string
+  string
+  data[32]
+  int
 
 archive Unknown8
- v1+
-  v4-
-   int
-  v5+
-   int
-  int
- v2+
-  v5-
-   int
-  v3-
-   byte
-  v2=
-   string
-   string
- v7+
-  int
- v8+
-  int
+  v1+
+    v4-
+      int
+    v5+
+      int
+    int
+  v2+
+    v5-
+      int
+    v3-
+      byte
+    v2=
+      string
+      string
+  v7+
+    int
+  v8+
+    int
+
+enum EMouseReleaseKey
+  LeftAlt
+  RightAlt
+  LeftControl
+  RightControl

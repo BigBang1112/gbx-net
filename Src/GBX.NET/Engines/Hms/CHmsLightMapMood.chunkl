@@ -1,8 +1,39 @@
 CHmsLightMapMood 0x06023000
+- inherits: CMwNod
 
-0x000
- float
- float
- float
- float
- float
+0x000 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float = 2
+  float = 2
+  vec2 AmbientRange = (0.35f, 1) // GPU constant uses Y-X as the ambient scale and X as the ambient offset
+  float DirectionalScale = 1 // Second scale component of FxLightGenP_ScaleAD_TransDA
+
+0x001
+  float = 2
+  float = 2
+  vec2 AmbientRange
+  float DirectionalScale
+  float MaxHDR = 3
+
+0x002
+  float MaxHDR
+  float = 1
+  float = 0
+  float = 0
+
+0x003
+  float MaxHDR
+  float BounceFactor = 1
+  float SkyFactor = 1
+  float = 1
+  float = 0
+  float = 0
+
+0x004 [MP3, TMT, TM2020.v0]
+  version
+  float MaxHDR
+  float BounceFactor
+  float SkyFactor
+  bool SkyUseClouds = true
+  float = 1
+  float = 0
+  float = 0

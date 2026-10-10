@@ -1,5 +1,5 @@
 CFuncKeysNatural 0x05030000
 - inherits: CFuncKeys
 
-0x000
- int[] Naturals
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int[] Naturals

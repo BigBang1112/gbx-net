@@ -1,14 +1,14 @@
 CGameCtnMediaBlockOpponentVisibility 0x0338B000
 - inherits: CGameCtnMediaBlock
 
-0x000
- timefloat Start
- timefloat End
+0x000 [TM2020]
+  float Start (time)
+  float End (time)
 
-0x001
- int<EVisibility> Visibility
+0x001 [TM2020]
+  int<EVisibility> Visibility
 
 enum EVisibility
- Hidden
- Ghost
- Opaque
+  Hidden
+  Ghost
+  Opaque

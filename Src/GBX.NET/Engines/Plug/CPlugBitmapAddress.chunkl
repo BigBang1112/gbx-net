@@ -1,31 +1,31 @@
 CPlugBitmapAddress 0x09047000
 - inherits: CPlugBitmapSampler
 
-0x002
- int // SBitmapElemToPack array?
+0x002 [TM10, TMPU]
+  int // SBitmapElemToPack array?
 
 0x004
- int
- byte
- int
- bool
- bool
- bool
+  int
+  byte
+  int
+  bool
+  bool
+  bool
 
-0x005 (base: 0x004)
+0x005 (base: 0x004) [TM10, TMPU]
 
-0x007
- uint
- int
- byte
- if U03 == 1
-  box? UVTransfoIso3
- if U03 == 2
-  mat4? UVTransfoMat4
+0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  uint
+  int
+  byte
+  if U03 == 1
+    box? UVTransfoIso3
+  if U03 == 2
+    mat4? UVTransfoMat4
 
-0x008
- int
- float
+0x008 [TMSX, TMNESWC]
+  int
+  float
 
-0x009
- float BumpEnvScale
+0x009 [VSK5, TMF, MP3, TMT]
+  float BumpEnvScale

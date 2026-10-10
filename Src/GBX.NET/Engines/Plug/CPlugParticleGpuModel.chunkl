@@ -1,81 +1,81 @@
 CPlugParticleGpuModel 0x090C6000
 
-0x000
- version
- float
- float
- float
- float
- v2+
+0x000 [MP3, TMT, MP4, TM2020]
+  version
   float
   float
-  v3+
-   float
-   v5+
-    bool
-    v6+
-     bool
+  float
+  float
+  v2+
+    float
+    float
+    v3+
+      float
+      v5+
+        bool
+        v6+
+          bool
 
-0x001
- version
- float
- float
- v1+
-  bool
+0x001 [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float
+  v1+
+    bool
+    bool
+    v2+
+      bool
+
+0x002 [MP3, TMT, MP4, TM2020]
+  version
+  float U01
+  v6-
+    CPlugBitmap Bitmap (external)
+  v7+
+    bool U02
+    if !U02
+      CPlugBitmap Bitmap (external)
+    if U02
+      string
+    v8+
+      bool
+      float
+  float
+  float
+  int
+  int
+  v2-
+    float
+  v3+
+    float
+    float
+    v4+
+      float
+  float
+  float
   bool
   v2+
-   bool
-
-0x002
- version
- float U01
- v6-
-  CPlugBitmap Bitmap (external)
- v7+
-  bool U02
-  if !U02
-   CPlugBitmap Bitmap (external)
-  if U02
-   string
-  v8+
-   bool
-   float
- float
- float
- int
- int
- v2-
-  float
- v3+
-  float
-  float
-  v4+
-   float
- float
- float
- bool
- v2+
-  bool
-  v5+
-   bool
-   v6+
     bool
-    float
-    v9+
-     CPlugBitmap
-     bool
-     bool
-     bool
-     bool
-     float
-     v10+
-      float
+    v5+
       bool
-      v11+
-       float
-       bool
+      v6+
+        bool
+        float
+        v9+
+          CPlugBitmap
+          bool
+          bool
+          bool
+          bool
+          float
+          v10+
+            float
+            bool
+            v11+
+              float
+              bool
 
-0x003
- version
- float
- float
+0x003 [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float

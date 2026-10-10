@@ -1,5 +1,5 @@
 CPlugBitmapRenderSub 0x09091000
 - inherits: CPlugBitmapRender
 
-0x000
- CPlugShader ShaderToForce
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CPlugShader ShaderToForce

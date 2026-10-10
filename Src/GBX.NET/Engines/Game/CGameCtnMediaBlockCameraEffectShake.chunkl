@@ -1,10 +1,10 @@
 CGameCtnMediaBlockCameraEffectShake 0x030A4000
 - inherits: CGameCtnMediaBlockCameraEffect
 
-0x000
- list<Key> Keys
+0x000 [TMSX, TMNESWC, VSK5, TMF, TMT, MP4, TM2020]
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Intensity
- float Speed
+  float Time (time)
+  float Intensity
+  float Speed

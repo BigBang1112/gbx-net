@@ -1,25 +1,35 @@
 CGameCtnMediaTrack 0x03078000 // MediaTracker track.
 
-0x001 [TMSX, TMNESWC, TMU, TMF, MP3, MP4, TM2020] // name and blocks
- string Name
- list<CGameCtnMediaBlock>_deprec Blocks
- int = -1
+0x000
+  string Name = empty
+  CGameCtnMediaBlock[] Blocks (deprec, list)
 
-0x002 [TMSX, TMNESWC, TMU] // TMS/TMU IsKeepPlaying
- bool IsKeepPlaying
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // name and blocks
+  string Name
+  CGameCtnMediaBlock[] Blocks (deprec, list)
+  int = -1
 
-0x003 [TMSX, TMNESWC, TMU] // TMS/TMU IsReadOnly
- bool IsReadOnly
+0x002 [TMSX, TMNESWC, TMU, VSK5] // TMS/TMU IsKeepPlaying
+  bool IsKeepPlaying
+
+0x003 [TMSX, TMNESWC, TMU, VSK5] // TMS/TMU IsReadOnly
+  bool IsReadOnly
 
 0x004 [TMF] // TMF parameters
- bool IsKeepPlaying
- bool IsReadOnly
+  bool IsKeepPlaying
+  bool IsReadOnly
 
-0x005 [MP3.v1, MP4.v1, TM2020.v1] // MP parameters
- version
- bool IsKeepPlaying
- bool IsReadOnly
- bool IsCycling
- v1+
-  timefloat? RepeatingSegmentStart
-  timefloat? RepeatingSegmentEnd
+0x005 [MP3.v1, TMT, MP4.v1, TM2020.v1] // MP parameters
+  version
+  bool IsKeepPlaying
+  bool IsReadOnly
+  bool IsCycling
+  v1+
+    float? RepeatingSegmentStart (time)
+    float? RepeatingSegmentEnd (time)
+
+0x0307B000 (not-remapped) // Legacy ghost track, converted to a read-only track containing a ghost block.
+  CGameCtnGhost LegacyGhostModel
+
+0x24062000 (not-remapped, base: 0x0307B000) [TMSX, TMNESWC, VSK5]
+  base

@@ -1,0 +1,43 @@
+CPlugRecastPolyMeshData 0x09150000
+
+0x000 [TM2020.v5] // navigation mesh and heightfield layers
+  version
+  v2+
+    int
+  v3..4
+    bool HasLegacyPolyMesh (local, write: false)
+    if rw.Reader != null && HasLegacyPolyMesh
+      int LegacyVertexCount (local, write: 0)
+      skip 4
+      int LegacyPolygonCapacity (local, write: 0)
+      int LegacyVerticesPerPolygon (local, write: 0)
+      skip 40
+      skip LegacyVertexCount * 6 + LegacyPolygonCapacity * LegacyVerticesPerPolygon * 4 + LegacyPolygonCapacity * 5
+    bool HasLegacyDetailMesh (local, write: false)
+    if rw.Reader != null && HasLegacyDetailMesh
+      int LegacyMeshCount (local, write: 0)
+      int LegacyVertexCount (local, write: 0)
+      int LegacyTriangleCount (local, write: 0)
+      skip LegacyMeshCount * 16 + LegacyVertexCount * 12 + LegacyTriangleCount * 4
+  int[]
+  v4+
+    bool HasHeightfieldLayers (local, write: "n.HeightfieldLayers != null")
+    if HasHeightfieldLayers
+      HeightfieldLayer[] HeightfieldLayers
+
+archive HeightfieldLayer
+  vec3 BoundsMin
+  vec3 BoundsMax
+  float CellSize
+  float CellHeight
+  int Width
+  int Height
+  int MinX
+  int MaxX
+  int MinY
+  int MaxY
+  int MinHeight
+  int MaxHeight
+  byte[Width * Height] Heights
+  byte[Width * Height] Areas
+  byte[Width * Height] Connections

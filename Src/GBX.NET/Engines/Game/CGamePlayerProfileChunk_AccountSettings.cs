@@ -2,13 +2,44 @@
 
 public partial class CGamePlayerProfileChunk_AccountSettings
 {
-    private string? nickName;
-    [SupportsFormatting]
-    public string? NickName { get => nickName; set => nickName = value; }
+    /// <summary>
+    /// Selects the native online-save payload, which omits local account data.
+    /// This context is supplied by the caller and is not stored in the payload.
+    /// </summary>
+    public bool IsOnlineSaveArchivation { get; set; }
 
-    private string? description;
-    [SupportsFormatting]
-    public string? Description { get => description; set => description = value; }
+    [Obsolete("Use OnlineValidationCode instead.")]
+    public string? OnlineValidationKey { get => OnlineValidationCode; set => OnlineValidationCode = value; }
+
+    [Obsolete("Use EncryptedKeyHexa instead. The serialized value is Blowfish ciphertext.")]
+    public string? RSAPublicKey { get => EncryptedKeyHexa; set => EncryptedKeyHexa = value; }
+
+    [Obsolete("Use LegacyBuddyArchiveVersion instead.")]
+    public int U03 { get => LegacyBuddyArchiveVersion; set => LegacyBuddyArchiveVersion = value; }
+
+    [Obsolete("Use ReceivedMessagesSystemTime instead.")]
+    public ulong U04 { get => ReceivedMessagesSystemTime; set => ReceivedMessagesSystemTime = value; }
+
+    [Obsolete("Use BuddyArchiveVersion instead.")]
+    public int U07 { get => BuddyArchiveVersion; set => BuddyArchiveVersion = value; }
+
+    public partial class SPlayerTagsConfig
+    {
+        [Obsolete("Use Version instead.")]
+        public int U01 { get => Version; set => Version = value; }
+
+        [Obsolete("Use TagDisplayList instead.")]
+        public int[]? U02 { get => TagDisplayList; set => TagDisplayList = value; }
+    }
+
+    public partial class YoutubeUpload
+    {
+        [Obsolete("Use FileName instead.")]
+        public string? U01 { get => FileName; set => FileName = value; }
+
+        [Obsolete("Use UploadUrl instead.")]
+        public string? U02 { get => UploadUrl; set => UploadUrl = value; }
+    }
 
     public bool LoginValidated
     {
@@ -34,7 +65,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings
         set => flags = BitHelper.SetBit(flags, 3, value);
     }
 
-    public bool UnlockAllCheats
+    public bool UnlockAllCheat
     {
         get => BitHelper.GetBit(flags2, 0);
         set => flags2 = BitHelper.SetBit(flags2, 0, value);
@@ -44,35 +75,5 @@ public partial class CGamePlayerProfileChunk_AccountSettings
     {
         get => BitHelper.GetBit(flags2, 1);
         set => flags2 = BitHelper.SetBit(flags2, 1, value);
-    }
-
-    private DateTime? receivedMessagesAt;
-    public DateTime? ReceivedMessagesAt { get => receivedMessagesAt; set => receivedMessagesAt = value; }
-
-    public partial class Chunk0312C005 : IVersionable
-    {
-        public int Version { get; set; }
-
-        public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-
-            if (Version < 2)
-            {
-                rw.SystemTime(ref n.receivedMessagesAt);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
-                return;
-            }
-
-            rw.Encapsulated(rw =>
-            {
-                rw.SystemTime(ref n.receivedMessagesAt);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
-            });
-        }
     }
 }

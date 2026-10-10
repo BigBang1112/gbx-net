@@ -1,235 +1,559 @@
 CPlugBitmap 0x09011000
 - inherits: CPlug
 
-0x014
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
+0x000
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+
+0x001
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+
+0x002
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x003
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x004
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x005
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x007
+  CPlugFileImg Image (external)
+  LegacyBitmapOptions LegacyOptions
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if LegacyOptions != null && LegacyOptions.Usage == EUsage.Render
+    AdditionalParameters LegacyRender
+
+0x008
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+
+0x009
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+
+0x00A
+  CPlugFileImg Image (external)
+  uint LegacyFlags32
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugShader LegacyShader (external)
+
+0x00B
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x00C
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x00D
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x00E
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x00F
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  int BorderRGB = 0
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+
+0x010
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
+
+0x011
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
+
+0x012
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color
+
+0x013
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
+
+0x014 [TM10, TMPU]
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
 
 0x015
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
+
+0x016
+  uint Flags2
 
 0x017
- uint Flags2
- vec2 DefaultTexCoordScale
+  uint Flags2
+  vec2 DefaultTexCoordScale = (1, 1)
 
-0x018
- CPlugFileImg Image (external)
- ulong Flags
- float MipMapLowerAlpha
- float BumpScaleFactor
- float MipMapLodBiasDefault
- int BorderRGB
- if Image != null
-  CMwNod
+0x018 [TMSX, TMNESWC]
+  CPlugFileImg Image (external)
+  ulong Flags
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
 
-0x019
- float BumpScaleMipLevel
+0x019 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float BumpScaleMipLevel = 0.5f
 
-0x01B
- uint Flags2
+0x01A
+  uint Flags2
+  vec2 DefaultTexCoordScale = (1, 1)
+  vec2 DefaultTexCoordTrans = (0, 0)
 
-0x01C
- vec2 DefaultTexCoordScale
- vec2 DefaultTexCoordTrans
- float DefaultTexCoordRotate
+0x01B [TMSX]
+  uint Flags2
 
-0x01D
- int16
- int16
+0x01C [TMSX, TMNESWC, VSK5, TMF]
+  vec2 DefaultTexCoordScale = (1, 1)
+  vec2 DefaultTexCoordTrans = (0, 0)
+  float DefaultTexCoordRotate = 0
 
-0x01E
- vec2[] AtlasCountUVs
+0x01D [TMSX]
+  ushort AtlasCountU
+  ushort AtlasCountV
 
-0x01F
- uint Flags2
+0x01E [TMNESWC, VSK5, TMF]
+  AtlasCount[] AtlasCountUVs
 
-0x020
- float[] MipMapFadeAlphas
+0x01F [TMNESWC]
+  uint Flags2
 
-0x021
- uint
+0x020 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float[] MipMapFadeAlphas = empty
 
-0x022 (base: 0x018)
+0x021 [VSK5]
+  uint Flags2
 
-0x023
- uint
+0x022 (base: 0x018) [VSK5, TMF, MP3]
 
-0x024
- uint Flags2
+0x023 [TMF, MP3, TMT, MP4, TM2020]
+  AdditionalParameters Additional
 
-0x025 (base: 0x01C)
- base
- uint
+0x024 [TMF]
+  uint Flags2
 
-0x028
- int2
+0x025 (base: 0x01C) [MP3, TMT, MP4, TM2020]
+  base
+  uint DefaultRenderClearColor = 0xFF000000 // BGRA
 
-0x02A
- CPlugSpriteParam SpriteParam
+0x026
+  CPlugBitmapAtlas Atlas (direct)
 
-0x02B
- CPlugBitmapAtlas Atlas
+0x027
+  uint Flags2
 
-0x02C
- CPlugBitmapDecals Decals
+0x028 [MP3, TMT, MP4, TM2020]
+  uint RenderSizeMul = 1
+  uint RenderSizeDiv = 1
 
-0x02D
- version
- int
+0x029
+  uint Flags3 = 0x3C00
 
-0x02E
- uint
+0x02A [MP3, TMT, MP4, TM2020]
+  CPlugSpriteParam SpriteParam
 
-0x030
+0x02B [MP3, TMT, MP4]
+  CPlugBitmapAtlas Atlas
 
-0x032
- version
- uint
+0x02C [MP3, TMT, MP4, TM2020]
+  CPlugBitmapDecals Decals
 
-0x033
- float HeightInMeters
+0x02D [MP3, TMT, MP4.v0, TM2020.v0]
+  version
+  uint Flags3 = 0x3C00
 
-0x034
- version
- CPlugImageArray ImageArray
- v1+
-  string ImageArraySuffix
+0x02E [MP3]
+  uint Flags2
+
+0x02F
+  LegacyShareSize ShareSize
+
+0x030 [TMT, MP4.v1, TM2020.v5]
+  version
+  CPlugFileImg Image (external)
+  v1+
+    ulong Flags = 0x10004E1200280000
+    uint FlagsHigh = 0x08000692 // Third word of the current packed fields.
+  v2=
+    CPlugFileImg GrassIdImage (external)
+  float MipMapLowerAlpha = 0
+  float BumpScaleFactor = 1
+  float MipMapLodBiasDefault = 0
+  int BorderRGB = 0
+  if PixelUpdate == 4
+    CPlugBitmapRender BitmapRender
+  if PixelUpdate == 5
+    CPlugBitmapShader BitmapShader (direct)
+  if PixelUpdate == 7
+    SpecularSubMapCat[] SpecularSubMapCats
+  if PixelUpdate == 8
+    uint ClearColor // BGRA clear color.
+
+0x031
+  version
+  ulong Flags
+  uint FlagsHigh
+
+0x032 [TMT, MP4.v0, TM2020.v0]
+  version
+  uint Flags2 = 0x49000800
+
+0x033 [MP4, TM2020]
+  float HeightInMeters = 1
+
+0x034 [MP4.v2, TM2020.v4]
+  version
+  CPlugImageArray ImageArray
+  v1+
+    string ImageArraySuffix = empty
   v2+
-   string[] ImageArrayFids
-   v3+
+    CPlugFileImg[] ImageArrayFids = empty (external)
+  v3+
     CPlugBitmapArray BitmapArray
-    string BitmapArrayElemName
-    v4=
-     int
+    string BitmapArrayElemName = empty
+  v4=
+    AdditionalParameters ImageArrayAdditional
 
-0x035
- version
- short
+0x035 [TM2020.v0]
+  version
+  TextureSettings TextureInfo
 
-0x036
- version
- CMwNod U01
- v0=
-  id U02
- v1+
-  if U01 == null
-   id U02
-  if U01 != null
-   vec2 U03
-   vec2 U04
-   int U05
- CMwNod U06
+0x036 [TM2020.v1]
+  version
+  CPlugFileImg GrassIdImage (external)
+  if Version == 0 || (GrassIdImageFile == null && GrassIdImage == null)
+    id GrassId = empty
+  else
+    vec2 GrassIdTexCoordSize = (1, 1)
+    vec2 GrassIdTexCoordTrans = (0, 0)
+    float GrassIdTexCoordRotate = 0
+  CMwNod GrassMatterArray
 
-0x037
- version
- int
- int
- int
- int
- int
- int
- int
- int
+0x037 [TM2020.v0]
+  version
+  ImageArraySettings ArraySettings
 
-0x038
- version
- CPlugBitmapAtlas
- int
+0x038 [TM2020.v0]
+  version
+  CPlugBitmapAtlas Atlas
+  uint AtlasCubeFlags // Bit 0 includes cube-atlas input.
+  if (AtlasCubeFlags & 1) != 0
+    CubeAtlasInput AtlasCubeIn
+
+0x03A
+  version
+  CPlugFileImg LegacyImage (external)
 
 enum EUsage
- Color
- Light
- Height2DuDv
- Render
- Height2DuDvLumi
- Height2NxNyNz
- Height2NxNy
- Depth
- DispH01
- Height2NormPal8b
- NxNyNz
- NxNy
- NormPal8b
- NormPal16b
- ColorFloat
- RenderFloat
- Height2DuDv1
- Alpha
- LightAlpha
- Height2RxG0BzAy
- NormRxG0BzAy
- TexCoord
- Render16b
- Vertex
- Height2BumpTxTy
- BumpTxTy
- Height2R0GyBzAx
- NormR0GyBzAx
- NormXYZ0YZX
+  Color
+  Light
+  Height2DuDv
+  Render
+  Height2DuDvLumi
+  Height2NxNyNz
+  Height2NxNy
+  Depth
+  DispH01
+  Height2NormPal8b
+  NxNyNz
+  NxNy
+  NormPal8b
+  NormPal16b
+  ColorFloat
+  RenderFloat
+  Height2DuDv1
+  Alpha
+  LightAlpha
+  Height2RxG0BzAy
+  NormRxG0BzAy
+  TexCoord
+  Render16b
+  Vertex
+  Height2BumpTxTy
+  BumpTxTy
+  Height2R0GyBzAx
+  NormR0GyBzAx
+  NormXYZ0YZX
 
 enum EColorDepth
- DefaultColorDepth
- Color16b
- Color32b
+  DefaultColorDepth
+  Color16b
+  Color32b
 
 enum ECubeFace
- None
- XPos
- XNeg
- YPos
- YNeg
- ZPos
- ZNeg
+  None
+  XPos
+  XNeg
+  YPos
+  YNeg
+  ZPos
+  ZNeg
 
 enum EGxTexFilter
- Point
- Bilinear
- Trilinear
- Anisotropic
+  Point
+  Bilinear
+  Trilinear
+  Anisotropic
 
 enum EGxTexAddress
- Wrap
- Mirror
- Clamp
- BorderSM3
+  Wrap
+  Mirror
+  Clamp
+  BorderSM3
 
 enum EGxUVGenerate
- NoGenerate
- CameraVertex
- WorldVertex
- WorldVertexXY
- WorldVertexXZ
- WorldVertexYZ
- CameraNormal
- WorldNormal
- CameraReflectionVector
- WorldReflectionVector
- WorldNormalNeg
- WaterReflectionVector
- Hack1Vertex
- MapTexel
- FogPlane0
- Vsk3SeaFoam
- ImageSpace
- LightDir0Reflect
- EyeNormal
- ShadowB1Pw01
- Tex3AsPosPrCamera
- FlatWaterReflect
- FlatWaterRefract
- FlatWaterFresnel
+  NoGenerate
+  CameraVertex
+  WorldVertex
+  WorldVertexXY
+  WorldVertexXZ
+  WorldVertexYZ
+  CameraNormal
+  WorldNormal
+  CameraReflectionVector
+  WorldReflectionVector
+  WorldNormalNeg
+  WaterReflectionVector
+  Hack1Vertex
+  MapTexel
+  FogPlane0
+  Vsk3SeaFoam
+  ImageSpace
+  LightDir0Reflect
+  EyeNormal
+  ShadowB1Pw01
+  Tex3AsPosPrCamera
+  FlatWaterReflect
+  FlatWaterRefract
+  FlatWaterFresnel
 
 archive SpecularSubMapCat
- float
- float
- float
- float
+  vec3 SpecularRGB
+  float SpecularExp
+
+archive AtlasCount
+  ushort U
+  ushort V
+
+archive AdditionalParameters
+  uint U01 = 0
+
+archive LegacyShareSize
+  uint U01 = 1
+
+archive TextureSettings
+  ushort U01 = 0
+
+archive ImageArraySettings
+  uint U01 = 0
+  uint U02 = 0
+  uint U03 = 0
+  uint U04 = 0
+  uint U05 = 0
+  uint U06 = 0
+  uint U07 = 0
+  uint U08 = 0
+
+archive CubeAtlasInput
+  version = 2
+  v1+ (archive)
+    uint U01 = 2
+  v0= (archive)
+    LegacyCubeSettings LegacySettings
+  uint SizeX = 4096
+  uint SizeY = 4096
+  CubeAtlasEntry[] Entries = empty
+  v2+ (archive)
+    CPlugFileImg Image (external)
+
+archive LegacyCubeSettings
+  uint U01 = 0
+  uint U02 = 0
+
+archive CubeAtlasEntry
+  uint U01
+  uint U02
+  uint U03
+  uint U04
+  uint U05
+  uint U06
+  uint U07
+  uint U08
+
+
+archive LegacyBitmapOptions
+  int<EUsage> Usage
+  bool U01
+  uint PixelUpdate // Legacy values 1 and 2 select current modes 6 and 7.
+  int<EColorDepth> WantedColorDepth
+  bool WantMipMapping
+  bool MipMapLowerAlphaEnable
+  bool U02
+  bool U03
+  bool U04
+  bool U05
+  bool U06
+  bool U07

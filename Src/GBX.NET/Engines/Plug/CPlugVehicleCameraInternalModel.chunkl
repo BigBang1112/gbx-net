@@ -1,26 +1,26 @@
 CPlugVehicleCameraInternalModel 0x090F7000
 - inherits: CPlugCamControlModel
 
-0x000
- version
- id Name
- v2+
-  vec3 RelativePos
-  float? Fov
-  v3+
-   vec3 U01 // U01 = RelativePos in v2-
- v4+
-  bool IsFirstPerson
-  vec3 PitchYawRoll
-  v5+
-   bool CamBlendEnabled
-   v6+
-    float PilotHeadCoef
-    v7+
-     float BulletTimeFovSmoothDelta_m_Delta
-     int BulletTimeFovSmoothDelta_m_TimeDown
-     int BulletTimeFovSmoothDelta_m_TimeUp
-     v8+
-      float SuperBulletTimeFovSmoothMultiplier
-      int SuperBulletTimeFovSmoothMultiplier_m_TimeUp
-      int SuperBulletTimeFovSmoothMultiplier_m_TimeDown
+0x000 [MP3, TMT, MP4, TM2020]
+  version
+  id Name
+  v2+
+    vec3 RelativePos
+    float? Fov
+    v3+
+      vec3 U01 // U01 = RelativePos in v2-
+  v4+
+    bool IsFirstPerson
+    vec3 PitchYawRoll
+    v5+
+      bool CamBlendEnabled
+      v6+
+        float PilotHeadCoef
+        v7+
+          float BulletTimeFovSmoothDelta_m_Delta
+          int BulletTimeFovSmoothDelta_m_TimeDown
+          int BulletTimeFovSmoothDelta_m_TimeUp
+          v8+
+            float SuperBulletTimeFovSmoothMultiplier
+            int SuperBulletTimeFovSmoothMultiplier_m_TimeUp
+            int SuperBulletTimeFovSmoothMultiplier_m_TimeDown

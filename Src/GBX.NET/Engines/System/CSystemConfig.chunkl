@@ -1,417 +1,762 @@
 CSystemConfig 0x0B005000
 
-0x002 (skippable) [TM10, TMPU]
- string
+0x000 (skippable) // legacy display resolution preset and quality
+  int DisplayResolutionPreset
+  int DisplayTexturesQuality
+  int DisplayColorDepth
+  int DisplayShaderQuality
+  int DisplayAntialiasing
+  int DisplayRefreshRate
+  bool DisplayVSync
+  bool DisplayFullScreen
+  int DisplayMaxFiltering
+  int DisplayShadows
 
-0x004 (skippable) [TM10, TMPU]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- bool AudioAllowEFX
- int
- int
- int
+0x001 (skippable) // legacy master-server credentials and network
+  string MasterServerLogin
+  string MasterServerPassword
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  string NetworkMasterServerAddress
+  int NetworkServerPort [TMF = 2350, MP4 = 2350]
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress [TMF = "0.0.0.0:0", MP4 = "0.0.0.0:0"]
 
-0x005 (skippable)
- int
- int
- int
+0x002 (skippable) [TM10, TMPU] // MasterServerKey
+  string MasterServerKey
 
-0x007 (skippable) [TM10, TMPU]
- string
- string
- string
- bool
- filetime
+0x004 (skippable) [TM10, TMPU] // legacy audio limits
+  bool AudioEnabled [TMF = true, MP4 = true]
+  float AudioSoundVolume [TMF = 1.0f, MP4 = 0.31622776f]
+  float AudioMusicVolume [TMF = 1.0f, MP4 = 0.31622776f]
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
+  bool AudioUseEAX [TMF = true]
+  int AudioMaxSounds
+  int AudioUpdatePeriod
+  int AudioSoundsPerUpdate
 
-0x008 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- string DesiredLanguageId
+0x005 (skippable) // legacy sea and boat visibility
+  int<EVsk3SeaQuality> Vsk3SeaQuality
+  int<EVsk3BoatVisibility> Vsk3TeamMate
+  int<EVsk3BoatVisibility> Vsk3Stem
 
-0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- string U01
- string U01
- string U01
- string U01
- string U01
- string U01
+0x006 (skippable) // legacy display resolution and quality
+  int2 DisplayScreenSizeFS
+  int DisplayTexturesQuality
+  int DisplayColorDepth
+  int DisplayShaderQuality
+  int DisplayAntialiasing
+  int DisplayRefreshRate
+  bool DisplayVSync
+  bool DisplayFullScreen
+  int DisplayMaxFiltering
+  int DisplayShadows
+  int DisplayHLQuality
 
-0x00A (skippable) [TM10, TMPU]
- int2
- int
- int
- int
- int
- int
- bool
- bool
- int
- int
- int
- bool
+0x007 (skippable) [TM10, TMPU] // legacy master server registration
+  string MasterServerLogin
+  string MasterServerPassword
+  string MasterServerKey
+  bool MasterServerIsRegistred
+  filetime
 
-0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- base
- int U04
+0x008 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DesiredLanguageId
+  string DesiredLanguageId
 
-0x00C (skippable) [TM10, TMPU]
- bool IsIgnorePlayerSkins
+0x009 (skippable) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy strings
+  string
+  string
+  string
+  string
+  string
+  string
 
-0x00D (skippable) [TM10, TMPU]
- string
- string
- bool NetworkUseProxy
- string
- string
- string
- int NetworkServerPort
- int NetworkClientPort
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
+0x00A (skippable, base: 0x006) [TM10, TMPU] // legacy display shadow buffer
+  base
+  bool DisplayDisableShadowBuffer
 
-0x00E (skippable) [TM10, TMPU]
- int TmCarQuality
- int
- int TmOpponents
+0x00B (skippable, base: 0x005) [TM10, TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy boat quality
+  base
+  int<EVsk3BoatQuality> Vsk3BoatQuality
 
-0x00F (skippable) [TM10, TMPU]
- float
- float
+0x00C (skippable) [TM10, TMPU] // IsIgnorePlayerSkins
+  bool IsIgnorePlayerSkins
 
-0x012 (skippable) [TMO, TMSX, TMNESWC]
- string
- string
- string
- bool
- int
+0x00D (skippable) [TM10, TMPU] // legacy master server credentials and connection
+  string MasterServerLogin
+  string MasterServerPassword
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  string NetworkMasterServerAddress
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
 
-0x01D (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
+0x00E (skippable) [TM10, TMPU] // legacy car quality and opponents
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int TmOpponents
 
-0x020 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- bool IsSafeMode
- CSystemConfigDisplay Display (direct)
+0x00F (skippable) [TM10, TMPU] // legacy input dead zone and sensitivity
+  float InputsDeadZone
+  float InputsSensitivity
 
-0x022 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- float
- float
- bool InputsAlternateMethod
- bool InputsFreezeUnusedAxes
+0x010 (skippable) // legacy car quality and opponents
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
 
-0x027 (skippable) [TMO, TMSX]
- bool
+0x011 (skippable) // legacy car quality and opponents
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
 
-0x028 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- int
- bool AudioAllowEFX
- bool AudioDisableDoppler
- int AudioGlobalQuality
+0x012 (skippable) [TMPU, TMO, TMSX, TMNESWC] // legacy master server registration
+  string MasterServerLogin
+  string MasterServerPassword
+  string MasterServerKey
+  bool MasterServerIsRegistred
+  int
 
-0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, MP4]
- int
- bool Advertising_DisabledByUser
- float Advertising_TunningCoef
+0x013 (skippable) // legacy car quality and opponent shadows
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  bool TmOppShadows
 
-0x02C (skippable) [TMO, TMSX]
- int TmCarQuality
- int
- int
- int TmOpponents
- int TmMaxOpponents
- bool
+0x014 (skippable, base: 0x00A) // legacy display GPU synchronization
+  base
+  int DisplayGpuSync
 
-0x030 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF]
- bool FileTransferEnableDownload
- bool FileTransferEnableUpload
- int
- bool
- bool EnableLocators
- bool AutoUpdateFromLocator
- bool AutoUpdateFromLocatorAtInternetConnection
- string AutoUpdateLocatorDBUrl
- string BlackListUrl
- bool EnableCrashLogUpload
+0x015 (skippable, base: 0x014) // legacy display cursor emulation
+  base
+  bool DisplayEmulateCursorGDI
 
-0x031 (skippable) [TMO, TMSX]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkClientPort
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
- bool NetworkUseNatUPnP
+0x016 (skippable, base: 0x015) // legacy display settings
+  base
 
-0x034 (skippable) [TMNESWC, TMU, VSK5, TMF]
- int TmCarQuality
- int
- int
- int TmOpponents
- int TmMaxOpponents
- bool
- int TmBackgroundQuality
+0x017 (skippable) // legacy display window size and quality
+  int2 DisplayScreenSizeFS
+  int DisplayScreenSizeWin
+  int DisplayTexturesQuality
+  int DisplayColorDepth
+  int DisplayShaderQuality
+  int DisplayAntialiasing
+  int DisplayRefreshRate
+  bool DisplayVSync
+  bool DisplayFullScreen
+  int DisplayMaxFiltering
+  int DisplayShadows
+  int DisplayHLQuality
+  bool DisplayDisableShadowBuffer
+  int DisplayGpuSync
+  bool DisplayEmulateCursorGDI
 
-0x035 (skippable) [TMNESWC, TMU, VSK5]
- bool
- bool NetworkTestInternetConnection
+0x018 (skippable, base: 0x017) // legacy display software vertex processing
+  base
+  bool DisplayForceSoftVP
 
-0x036 (skippable) [TMNESWC]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int
- bool NetworkUseNatUPnP
+0x019 (skippable, base: 0x017) // legacy display vertex processing
+  base
+  int DisplayVertexProcess
 
-0x037 (skippable) [TMU, VSK5]
- string
+0x01A (skippable, base: 0x00D) [TMPU] // legacy network avatar downloads
+  base
+  bool NetworkEnableAvatarDownload
 
-0x038 (skippable) [TMU, VSK5]
- bool GameProfileEnableMulti
- id GameProfileName
+0x01B (skippable) // legacy car quality and dynamic geometry
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  bool TmOppShadows
+  bool DisplayOptimPartDynaGeom
 
-0x039 (skippable) [TMU, VSK5, TMF]
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
+0x01C (skippable) // legacy car quality and dynamic geometry
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  bool TmOppShadows
+  bool DisplayOptimPartDynaGeom
 
-0x03A (skippable) [TMF, MP3, MP4]
- string
- string
- int
- filetime
+0x01D (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5] // legacy player skins and rolling demo
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
 
-0x03D (skippable)
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
- int
+0x01E (skippable) [TMPU] // legacy car quality and opponent shadows
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  bool TmOppShadows
 
-0x03E (skippable) [TMF, MP3, MP4]
- filetime
- uint128
+0x01F (skippable, base: 0x019) // legacy display dynamic geometry
+  base
+  bool DisplayOptimPartDynaGeom
 
-0x041 (skippable) [TMF]
- string
+0x020 (skippable) [TMPU, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // safe mode and display settings
+  bool IsSafeMode
+  CSystemConfigDisplay Display (direct)
 
-0x043 (skippable)
- bool
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
+0x021 (skippable) [TMPU] // legacy input dead zone and sensitivity
+  float InputsDeadZone
+  float InputsSensitivity
+  bool InputsAlternateMethod
 
-0x044 (skippable) [TMF]
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
+0x022 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5] // legacy input axes
+  float InputsDeadZone
+  float InputsSensitivity
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes [TMF = true, MP4 = true]
 
-0x045 (skippable) [TMF, MP3, MP4]
- bool InputsAlternateMethod
- bool InputsFreezeUnusedAxes
- bool InputsEnableRumble
- bool InputsCaptureKeyboard
+0x023 (skippable) // legacy file transfers and locator URLs
+  bool FileTransferEnableDownload [TMF = true, MP4 = true]
+  bool FileTransferEnableUpload [TMF = true, MP4 = true]
+  uint FileTransferMaxCacheSize32 [TMF = 629145600]
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
 
-0x047 (skippable) [TMF, MP3, MP4]
- bool
+0x024 (skippable) // legacy network master server address
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  string NetworkMasterServerAddress
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
 
-0x048 (skippable) [TMF, MP3, MP4]
- bool GameProfileEnableMulti
- string GameProfileName
+0x025 (skippable) // AudioSpeakerConfig
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
 
-0x049 (skippable) [TMF, MP3, MP4]
- filetime
+0x026 (skippable) // legacy audio quality
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int AudioGlobalQuality [TMF = 1, MP4 = 1]
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
+  bool AudioUseEAX
 
-0x04A (skippable) [TMF, MP3, MP4]
- bool IsIgnorePlayerSkins
- bool IsSkipRollingDemo
- int
- int
- int
+0x027 (skippable) [TMO, TMSX] // legacy network flag
+  bool
 
-0x04C (skippable) [TMF]
- bool
- bool
+0x028 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5] // legacy audio quality and speakers
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int AudioGlobalQuality
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
+  bool AudioUseEAX
+  bool AudioDisableDoppler
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
 
-0x04D (skippable) [TMF]
- string
- bool
- bool
- bool
+0x029 (skippable) // legacy file transfers and locator updates
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  uint FileTransferMaxCacheSize32
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
 
-0x04E (skippable) [TMF, MP3]
- string[]
+0x02A (skippable) // legacy file transfers and locators
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  uint FileTransferMaxCacheSize32
+  bool EnableLocators [TMF = true, MP4 = true]
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
 
-0x04F (skippable) [TMF, MP3, MP4]
- bool AudioEnabled
- float AudioSoundVolume
- float AudioMusicVolume
- int
- int
- int
- bool AudioAllowEFX
- bool AudioDisableDoppler
- bool
- int AudioGlobalQuality
- string AudioDevice_Oal
+0x02B (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // advertising
+  int<EAdvertisingEnabled> Advertising_Enabled [TMF = EAdvertisingEnabled.Configurable, MP4 = EAdvertisingEnabled.Configurable]
+  bool Advertising_DisabledByUser
+  float Advertising_TunningCoef
 
-0x050 (skippable) [MP3, MP4]
- bool
+0x02C (skippable) [TMO, TMSX] // legacy car quality and opponent limit
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  int TmMaxOpponents
+  bool TmOppShadows
 
-0x051 (skippable) [MP3, MP4]
- string
+0x02D (skippable) // legacy network connection
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
 
-0x052 (skippable) [MP3, MP4]
- int TmCarQuality
- int
- int PlayerShadow
- int
- int TmOpponents
- int TmMaxOpponents
- int TmBackgroundQuality
+0x02E (skippable) // legacy file transfers and crash logs
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  uint FileTransferMaxCacheSize32
+  bool EnableLocators
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload [TMF = true, MP4 = true]
 
-0x053 (skippable)
- bool AudioSoundHdr
+0x02F (skippable) // legacy file transfers and crash logs
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  uint FileTransferMaxCacheSize32
+  bool
+  bool EnableLocators
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload
 
-0x054 (skippable) [MP3, MP4]
- bool FileTransferEnableDownload
- bool FileTransferEnableUpload
- ulong
- bool
- bool EnableLocators
- bool AutoUpdateFromLocator
- bool AutoUpdateFromLocatorAtInternetConnection
- string AutoUpdateLocatorDBUrl
- string BlackListUrl
- bool EnableCrashLogUpload
+0x030 (skippable) [TMO, TMSX, TMNESWC, TMU, VSK5, TMF] // legacy file transfers and crash logs
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  uint FileTransferMaxCacheSize32 // Legacy 32-bit cache size. Chunk 0x054 uses 64 bits.
+  bool [TMF = true]
+  bool EnableLocators
+  bool AutoUpdateFromLocator [TMF = true, MP4 = true]
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload
 
-0x055 (skippable) [MP3, MP4]
- string
- bool
- bool
- bool
- bool
+0x031 (skippable) [TMO, TMSX] // legacy network UPnP
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
+  bool NetworkUseNatUPnP
 
-0x056 (skippable) [MP3, MP4]
- bool
- bool AudioAllowHRTF
- int AudioDontMuteWhenApplicationUnfocused
- int
- bool AudioSoundHdr
- bool
+0x032 (skippable) // legacy network P2P port
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort [TMF = 3450, MP4 = 3450]
+  int NetworkClientPort
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
+  bool NetworkUseNatUPnP
 
-0x057 (skippable)
- bool NetworkUseProxy
- string
- string
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
- int NetworkSpeed
+0x033 (skippable) // legacy car quality and opponent limit
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  int TmMaxOpponents
+  bool TmOppShadows
 
-0x058 (skippable) [MP3, MP4]
- int
+0x034 (skippable) [TMNESWC, TMU, VSK5, TMF] // legacy car quality and background
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int<ETmCarProjector> TmCarProjector
+  int TmOpponents
+  int TmMaxOpponents
+  bool TmOppShadows
+  int TmBackgroundQuality
 
-0x059 (skippable) [MP3, MP4]
- bool FileTransferEnableAvatarDownload
- bool FileTransferEnableAvatarUpload
- bool FileTransferEnableAvatarLocators
- bool FileTransferEnableMapDownload
- bool FileTransferEnableMapUpload
- bool FileTransferEnableMapLocators
- bool FileTransferEnableMapModDownload
- bool FileTransferEnableMapModUpload
- bool FileTransferEnableMapModLocators
- bool FileTransferEnableMapSkinDownload
- bool FileTransferEnableMapSkinUpload
- bool FileTransferEnableMapSkinLocators
- bool FileTransferEnableTagDownload
- bool FileTransferEnableTagUpload
- bool FileTransferEnableTagLocators
- bool FileTransferEnableVehicleSkinDownload
- bool FileTransferEnableVehicleSkinUpload
- bool FileTransferEnableVehicleSkinLocators
- bool FileTransferEnableUnknownTypeDownload
- bool FileTransferEnableUnknownTypeUpload
- bool FileTransferEnableUnknownTypeLocators
+0x035 (skippable) [TMNESWC, TMU, VSK5] // legacy internet connection test
+  bool
+  bool NetworkTestInternetConnection [TMF = true]
 
-0x05A (skippable) [MP3, MP4]
- bool DisableReplayRecording
- bool
- bool
- bool
- int
- int
- int
- string
- string
- float
- float
+0x036 (skippable) [TMNESWC] // legacy network server broadcast
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength [TMF = 10, MP4 = 50]
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkConnection
+  bool NetworkUseNatUPnP
 
-0x05B (skippable) [MP3, MP4]
- version
- string AntiCheatServerUrl
+0x037 (skippable) [TMU, VSK5] // legacy installation key
+  string InstallCdKey // Plaintext legacy key. Later chunks store an encrypted representation.
 
-0x05C (skippable) [MP3, MP4]
- version
- int SmMaxPlayerResimStepPerFrame
+0x038 (skippable) [TMU, VSK5] // legacy profile ID
+  bool ProfileEnableMulti [TMF = true]
+  id ProfileName
 
-0x05D (skippable) [MP3, MP4]
- version
- string
+0x039 (skippable) [TMU, VSK5, TMF] // legacy network transfer rates
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownloadRate [TMF = 1048576, MP4 = 688128]
+  int NetworkUploadRate [TMF = 65536, MP4 = 43008]
+  bool NetworkUseNatUPnP
 
-0x05E (skippable) [MP3, MP4]
- version
- bool NetworkUseProxy
- string NetworkProxyLogin
- string NetworkProxyPassword
- int NetworkServerPort
- int NetworkP2PServerPort
- int NetworkClientPort
- int NetworkServerBroadcastLength
- bool NetworkForceUseLocalAddress
- string NetworkForceServerAddress
- int NetworkDownload
- int NetworkUpload
- bool NetworkUseNatUPnP
- bool NetworkTestInternetConnection
- string NetworkLastUsedMSAddress
- string NetworkLastUsedMSPath
- int[]
- int NetworkSpeed
+0x03A (skippable) [TMF, MP3, TMT, MP4, TM2020] // launcher settings
+  string
+  string
+  int [TMF = 86400, MP4 = 86400]
+  filetime
 
-0x05F (skippable) [MP4]
- bool NetworkUseProxy
- string NetworkProxyAddress
+0x03B (skippable) // legacy versioned audio device
+  version
+  v1+
+    throw
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int AudioGlobalQuality
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
+  bool AudioUseEAX
+  bool AudioDisableDoppler
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
+  string AudioDevice_Oal [TMF = "|Device|Default", MP4 = "|Device|Default"]
+
+0x03C (skippable) // PlayerInfoDisplaySize
+  int PlayerInfoDisplaySize [TMF = 3, MP4 = 3]
+
+0x03D (skippable) // legacy player display size
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
+  int
+  int PlayerInfoDisplaySize
+
+0x03E (skippable) [TMF, MP3, TMT, MP4, TM2020] // parental lock
+  filetime ParentalLockLastUnlockedTime
+  uint128 ParentalLockPasswordHash
+
+0x03F (skippable) // legacy encrypted key
+  string EncryptedKey // Encrypted key as hexadecimal text.
+
+0x040 (skippable) // legacy input rumble
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
+  bool InputsEnableRumble [TMF = true, MP4 = true]
+
+0x041 (skippable) [TMF] // MenuSkin
+  string MenuSkin
+
+0x043 (skippable) // legacy master server addresses
+  bool
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+
+0x044 (skippable) [TMF] // legacy firewall checksums
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  uint[] NetworkFirewallTestedExeChecksums
+
+0x045 (skippable) [TMF, MP3, TMT, MP4] // input axes and rumble
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
+  bool InputsEnableRumble
+  bool InputsCaptureKeyboard
+
+0x046 (skippable) // legacy encrypted key and installation
+  string EncryptedKey // Encrypted key as hexadecimal text.
+  bool
+
+0x047 (skippable) [TMF, MP3, TMT, MP4, TM2020] // legacy game flag
+  bool
+
+0x048 (skippable) [TMF, MP3, TMT, MP4, TM2020] // profile settings
+  bool ProfileEnableMulti
+  string ProfileName
+
+0x049 (skippable) [TMF, MP3, TMT, MP4, TM2020] // legacy game timestamp
+  filetime
+
+0x04A (skippable) [TMF, MP3, TMT, MP4, TM2020] // player skins and display
+  bool IsIgnorePlayerSkins
+  bool IsSkipRollingDemo
+  int
+  int<EPlayerInfoDisplayType> PlayerInfoDisplayType [TMF = EPlayerInfoDisplayType.AvatarAndName, MP4 = EPlayerInfoDisplayType.AvatarAndName]
+  int PlayerInfoDisplaySize
+
+0x04B (skippable) // legacy encrypted key and installation
+  string EncryptedKey // Encrypted key as hexadecimal text.
+  bool
+  bool
+  bool
+  bool
+
+0x04C (skippable) [TMF] // legacy installation flags
+  bool [TMF = true]
+  bool
+
+0x04D (skippable) [TMF] // legacy encrypted key and installation
+  string EncryptedKey // Encrypted key as hexadecimal text.
+  bool
+  bool
+  bool
+
+0x04E (skippable) [TMF, MP3] // legacy key hashes
+  string[] KeyHashes
+
+0x04F (skippable) [TMF, MP3, TMT, MP4, TM2020] // audio device and quality
+  bool AudioEnabled
+  float AudioSoundVolume
+  float AudioMusicVolume
+  int AudioGlobalQuality
+  int<EAudioAcceleration> AudioAcceleration_Dx9
+  int<EAudioQuality3d> AudioQuality3d_Dx9
+  bool AudioAllowEFX [TMF = true, MP4 = true] // Legacy games use EAX.
+  bool AudioDisableDoppler
+  bool
+  int<EAudioSpeakerConfig> AudioSpeakerConfig
+  string AudioDevice_Oal
+
+0x050 (skippable) [MP3, TMT, MP4, TM2020] // EdDontConnect
+  bool EdDontConnect
+
+0x051 (skippable) [MP3, TMT, MP4, TM2020] // network string
+  string
+
+0x052 (skippable) [MP3, TMT, MP4, TM2020] // car quality and player visibility
+  int TmCarQuality
+  int<ETmCarParticlesQuality> TmCarParticlesQuality
+  int PlayerShadow
+  int<EPlayerOcclusion> PlayerOcclusion
+  int TmOpponents
+  int TmMaxOpponents
+  int TmBackgroundQuality
+
+0x053 (skippable) // AudioSoundHdr
+  bool AudioSoundHdr
+
+0x054 (skippable) [MP3, TMT, MP4, TM2020] // file transfers and crash logs
+  bool FileTransferEnableDownload
+  bool FileTransferEnableUpload
+  ulong FileTransferMaxCacheSize [MP4 = 629145600]
+  bool [MP4 = true]
+  bool EnableLocators
+  bool AutoUpdateFromLocator
+  bool AutoUpdateFromLocatorAtInternetConnection
+  string AutoUpdateLocatorDBUrl
+  string BlackListUrl
+  bool EnableCrashLogUpload
+
+0x055 (skippable) [MP3, TMT, MP4, TM2020] // encrypted key and installation
+  string EncryptedKey
+  bool
+  bool
+  bool
+  bool [MP4 = true]
+
+0x056 (skippable) [MP3, TMT, MP4, TM2020] // audio HRTF and HDR
+  bool
+  bool AudioAllowHRTF [MP4 = true]
+  int AudioDontMuteWhenApplicationUnfocused
+  int
+  bool AudioSoundHdr
+  bool [MP4 = true, TM2020 = true]
+
+0x057 (skippable) // legacy network speed
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownloadRate
+  int NetworkUploadRate
+  bool NetworkUseNatUPnP
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  uint[] NetworkFirewallTestedExeChecksums
+  int NetworkSpeed [MP4 = 3]
+
+0x058 (skippable) [MP3, TMT, MP4, TM2020] // GamePackQuality
+  int<EGamePackQuality> GamePackQuality
+
+0x059 (skippable) [MP3, TMT, MP4, TM2020] // file transfers by content type
+  bool FileTransferEnableAvatarDownload [MP4 = true]
+  bool FileTransferEnableAvatarUpload [MP4 = true]
+  bool FileTransferEnableAvatarLocators [MP4 = true]
+  bool FileTransferEnableMapDownload [MP4 = true]
+  bool FileTransferEnableMapUpload [MP4 = true]
+  bool FileTransferEnableMapLocators [MP4 = true]
+  bool FileTransferEnableMapModDownload [MP4 = true]
+  bool FileTransferEnableMapModUpload [MP4 = true]
+  bool FileTransferEnableMapModLocators [MP4 = true]
+  bool FileTransferEnableMapSkinDownload [MP4 = true]
+  bool FileTransferEnableMapSkinUpload [MP4 = true]
+  bool FileTransferEnableMapSkinLocators [MP4 = true]
+  bool FileTransferEnableTagSkinDownload [MP4 = true]
+  bool FileTransferEnableTagSkinUpload [MP4 = true]
+  bool FileTransferEnableTagSkinLocators [MP4 = true]
+  bool FileTransferEnableVehicleSkinDownload [MP4 = true]
+  bool FileTransferEnableVehicleSkinUpload [MP4 = true]
+  bool FileTransferEnableVehicleSkinLocators [MP4 = true]
+  bool FileTransferEnableUnknownTypeDownload [MP4 = true]
+  bool FileTransferEnableUnknownTypeUpload [MP4 = true]
+  bool FileTransferEnableUnknownTypeLocators [MP4 = true]
+
+0x05A (skippable) [MP3, TMT, MP4, TM2020] // replay recording and capture settings
+  bool DisableReplayRecording
+  bool
+  bool
+  bool
+  int
+  int
+  int
+  string
+  string
+  float
+  float
+
+0x05B (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v2] // anti-cheat and bad-word URLs
+  version
+  v3+
+    throw
+  string AntiCheatServerUrl
+  v2+
+    string BadWordListUrl
+
+0x05C (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // SmMaxPlayerResimStepPerFrame
+  version
+  v1+
+    throw
+  int SmMaxPlayerResimStepPerFrame [MP4 = 100]
+
+0x05D (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // InstallUid
+  version
+  v1+
+    throw
+  string InstallUid
+
+0x05E (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // network speed and firewall tests
+  version
+  v2+
+    throw
+  bool NetworkUseProxy
+  string NetworkProxyLogin
+  string NetworkProxyPassword
+  int NetworkServerPort
+  int NetworkP2PServerPort
+  int NetworkClientPort
+  int NetworkServerBroadcastLength
+  bool NetworkForceUseLocalAddress
+  string NetworkForceServerAddress
+  int NetworkDownloadRate
+  int NetworkUploadRate
+  bool NetworkUseNatUPnP
+  bool NetworkTestInternetConnection
+  string NetworkLastUsedMSAddress
+  string NetworkLastUsedMSPath
+  uint[] NetworkFirewallTestedExeChecksums
+  int NetworkSpeed
+
+0x05F (skippable) [MP4, TM2020] // proxy URL
+  bool NetworkUseProxy
+  string NetworkProxyUrl
+
+0x060 (skippable) [TM2020.v0] // input joysticks
+  version
+  v1+
+    throw
+  bool InputsAlternateMethod
+  bool InputsFreezeUnusedAxes
+  bool InputsEnableRumble
+  bool InputsCaptureKeyboard
+  bool InputsEnableJoysticks
+
+enum EAudioAcceleration
+  Auto
+  HardwareOnly
+  SoftwareOnly
+
+enum EAudioQuality3d
+  NoHrtf
+  HrtfLight
+  HrtfFull
+
+enum EAudioSpeakerConfig
+  UseSystemConfig
+  Mono
+  Headphone
+  StereoMin
+  StereoNarrow
+  StereoWide
+  StereoMax
+  Quad
+  Surround
+  _5_1
+  _7_1
+  NoSpeakers
+
+enum EVsk3SeaQuality
+  Low
+  Medium
+  High
+  VeryHigh
+
+enum EVsk3BoatVisibility
+  None
+  MyBoat
+  AllBoats
+
+enum EVsk3BoatQuality
+  AllLow
+  LowOpponents
+  AllHigh
+
+enum ETmCarParticlesQuality
+  AllLow
+  AllMedium
+  HighMediumOpponents
+  AllHigh
+
+enum ETmCarProjector
+  None
+  MyCar
+  AllCars
+
+enum EAdvertisingEnabled
+  Disabled
+  Configurable
+  Forced
+
+enum EPlayerInfoDisplayType
+  Name
+  Avatar
+  AvatarAndName
+
+enum EPlayerOcclusion
+  None
+  Me
+  All
+
+enum EGamePackQuality
+  Unknown
+  LD
+  HD

@@ -4,33 +4,61 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameCtnCollector
 {
-    private int catalogPosition;
-    public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
+    private Ident ident = Ident.Empty;
+    private string? name;
+
+    public partial Ident Ident
+    {
+        get => string.IsNullOrEmpty(ident.Id) && !string.IsNullOrEmpty(name)
+            ? ident with { Id = name! }
+            : ident;
+        set => ident = value;
+    }
+
+    [AppliedWithChunk<GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
+    public partial string? Name
+    {
+        get => !string.IsNullOrEmpty(name) || string.IsNullOrEmpty(ident.Id)
+            ? name
+            : ident.Id;
+        set => name = value;
+    }
+
+    private int catalogPosition = 1;
+    public partial int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
     private int nbAvailableMin;
-    public int NbAvailableMin { get => nbAvailableMin; set => nbAvailableMin = value; }
+    public partial int NbAvailableMin { get => nbAvailableMin; set => nbAvailableMin = value; }
 
-    private int nbAvailableMax;
-    public int NbAvailableMax { get => nbAvailableMax; set => nbAvailableMax = value; }
+    private int nbAvailableMax = 10;
+    public partial int NbAvailableMax { get => nbAvailableMax; set => nbAvailableMax = value; }
 
     /// <summary>
     /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
     /// </summary>
+    [AppliedWithChunk<HeaderChunk2E001004>]
     public Color[,]? Icon { get; set; }
 
     /// <summary>
     /// Icon of the collector in WebP format from TM2020 icons since April 2022 update.
     /// </summary>
     [WebpData]
+    [AppliedWithChunk<HeaderChunk2E001004>]
     public byte[]? IconWebP { get; set; }
 
     private CMwNod? iconFid;
     private GbxRefTableFile? iconFidFile;
-    public CMwNod? IconFid { get => iconFid; set => iconFid = value; }
+    public partial CMwNod? IconFid { get => iconFid; set => iconFid = value; }
 
     public partial class HeaderChunk2E001004
     {
         public short U01 = 1;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((HeaderChunk2E001004)clone).U01 = context.Clone(U01)!;
+        }
 
         public override void Read(CGameCtnCollector n, GbxReader r)
         {
@@ -61,7 +89,7 @@ public partial class CGameCtnCollector
             for (var y = 0; y < height; y++)
             {
                 for (var x = 0; x < width; x++)
-                {
+            {
                     n.Icon[x, height - 1 - y] = new Color(iconData[y * width + x]);
                 }
             }
@@ -110,21 +138,6 @@ public partial class CGameCtnCollector
                     w.Write(n.Icon[x, height - 1 - y].ToArgb());
                 }
             }
-        }
-    }
-
-    public partial class Chunk2E001009
-    {
-        public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
-        {
-            rw.String(ref n.pageName);
-
-            if (rw.Boolean(n.IconFid is not null))
-            {
-                rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
-            }
-
-            rw.Id(ref n.parentCollectorId);
         }
     }
 }

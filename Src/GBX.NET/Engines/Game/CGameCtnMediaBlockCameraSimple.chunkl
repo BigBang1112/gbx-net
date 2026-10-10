@@ -2,23 +2,27 @@ CGameCtnMediaBlockCameraSimple 0x0309F000
 - inherits: CGameCtnMediaBlockCamera
 
 0x030A1000
- list<Key> Keys
+  Key[] Keys (list)
 
 0x030A1001
- int
+  int
 
-0x030A1002
- version
- list<Key> Keys
- int
- int
- v2+
-  bool
+0x030A1002 [TMT, TM2020.v3]
+  version
+  Key[] Keys (list)
+  int
+  int
+  v2+
+    bool UseSmoothInterpolation = true // Applies 3*t*t - 2*t*t*t.
+
+0x001 (base: 0x030A1001)
+
+0x002 (base: 0x030A1002) [TM2020.v3]
 
 archive Key (inherits: IKey)
- timefloat Time
- byte
- iso4
- float
- float
- float
+  float Time (time)
+  byte ArchiveMarker // GmCamVal marker, written as zero and ignored on load.
+  iso4 Transform = Iso4.Identity
+  float Fov = 90 // Degrees.
+  float NearZ = -1
+  float FarZ = -1

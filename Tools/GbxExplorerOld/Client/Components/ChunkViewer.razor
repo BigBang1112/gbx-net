@@ -152,7 +152,7 @@
     public Action<IChunk>? Deletion { get; set; }
 
     [Parameter]
-    public GbxExplorerOld.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; }
+    public GbxExplorerOld.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; } = default!;
 
     private async Task OpenOrCloseChunkAsync(Type chunkType)
     {

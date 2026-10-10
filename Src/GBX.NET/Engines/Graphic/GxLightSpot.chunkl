@@ -1,32 +1,61 @@
 GxLightSpot 0x0400B000
 - inherits: GxLightBall
 
-0x001
- float AngleInner
- float AngleOuter
- float AngleFlare
- float FalloffExponent
+constructor
+  LightMapOnly = true
 
-0x002
- uint Flags
- float AngleInner
- float AngleOuter
- float AngleFlare
- float AngleInnerShadow
- float AngleOuterShadow
- float FalloffExponent
+property bool CustomAngleFlare
+  get = (Flags & 1) != 0
+  set
+    if value
+      Flags = Flags | 1
+    else
+      Flags = Flags & 0xFFFFFFFE
 
-0x003
- version
- uint Flags
- float AngleInner
- float AngleOuter
- float AngleFlare
- float AngleInnerShadow
- float AngleOuterShadow
- float FalloffExponent
- v1+
-  byte
-  byte
- v0=
-  int
+property bool CustomAngleShadow
+  get = (Flags & 2) != 0
+  set
+    if value
+      Flags = Flags | 2
+    else
+      Flags = Flags & 0xFFFFFFFD
+
+0x000 [TM10, TMPU]
+  float AngleInner = 30
+  float AngleOuter = 45
+  float FalloffExponent = 1 // Retained for legacy archives; discarded by later native readers
+  AngleFlare = AngleOuter + AngleOuter
+
+0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+  float AngleInner
+  float AngleOuter
+  float AngleFlare = 45 // Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
+  float FalloffExponent
+  if AngleFlare - AngleOuter > 0.00001f || AngleFlare - AngleOuter < -0.00001f // MP/TM2020 use 0.00001 * max(1, |AngleFlare|, |AngleOuter|); TMF used absolute tolerance
+    if (AngleFlare - AngleOuter > AngleFlare * 0.00001f && AngleFlare - AngleOuter > -AngleFlare * 0.00001f) || (AngleFlare - AngleOuter < AngleFlare * 0.00001f && AngleFlare - AngleOuter < -AngleFlare * 0.00001f)
+      if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
+        Flags = Flags | 1
+
+0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  uint Flags = 0 // CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
+  float AngleInner
+  float AngleOuter
+  float AngleFlare
+  float AngleInnerShadow = 30
+  float AngleOuterShadow = 45
+  float FalloffExponent
+
+0x003 [TM2020.v1]
+  version
+  uint Flags
+  float AngleInner
+  float AngleOuter
+  float AngleFlare
+  float AngleInnerShadow
+  float AngleOuterShadow
+  float FalloffExponent
+  v1+
+    byte SubLightCountX = 1
+    byte SubLightCountY = 1
+  v0=
+    int LegacyValue // Discarded by the native v0 reader; purpose unknown

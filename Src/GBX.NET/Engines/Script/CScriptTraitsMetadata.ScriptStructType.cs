@@ -2,17 +2,25 @@
 
 public partial class CScriptTraitsMetadata
 {
-    public sealed class ScriptStructType : IScriptType
+    public sealed class ScriptStructType : IScriptType, IDeepCloneable
     {
         public EScriptType Type => EScriptType.Struct;
         
         public string Name { get; }
-        public IDictionary<string, ScriptTrait> Members { get; }
+        public IDictionary<string, ScriptTrait> Members { get; private set; }
 
         public ScriptStructType(string name, IDictionary<string, ScriptTrait> members)
         {
             Name = name;
             Members = members;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = new ScriptStructType(Name, new Dictionary<string, ScriptTrait>());
+            context.Register(this, clone);
+            clone.Members = context.CloneDictionary(Members)!;
+            return clone;
         }
 
         public static ScriptStructTypeBuilder Create(string name) => new(name);

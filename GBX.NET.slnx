@@ -5,8 +5,6 @@
   <Folder Name="/Generators/">
     <File Path="Generators/LICENSE" />
     <Project Path="Generators/GBX.NET.Generators/GBX.NET.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Lua.Generators/GBX.NET.Lua.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Tests.Generators/GBX.NET.Tests.Generators.csproj" />
   </Folder>
   <Folder Name="/Položky řešení/">
     <File Path=".dockerignore" />
@@ -52,6 +50,9 @@
     <Project Path="Samples/Beginner/Legomania/Legomania.csproj" />
     <Project Path="Samples/Beginner/SolidExtract/SolidExtract.csproj" />
   </Folder>
+  <Folder Name="/Samples/Generators/">
+    <Project Path="Samples/Generators/GBX.NET.Generators.Sample/GBX.NET.Generators.Sample.csproj" />
+  </Folder>
   <Folder Name="/Samples/NativeAOT/" />
   <Folder Name="/Samples/Tool/">
     <Project Path="Samples/Tool/GhostExtract/GhostExtract.csproj" />
@@ -95,6 +96,7 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="Tests/GBX.NET.Crypto.Tests/GBX.NET.Crypto.Tests.csproj" />
+    <Project Path="Tests/GBX.NET.Generators.Tests/GBX.NET.Generators.Tests.csproj" />
     <Project Path="Tests/GBX.NET.PAK.Tests/GBX.NET.PAK.Tests.csproj" Id="e0d7028e-a295-4aa8-9b4c-93f37112ea53" />
     <Project Path="Tests/GBX.NET.Tests/GBX.NET.Tests.csproj" />
   </Folder>

@@ -1,3 +1,4 @@
+import io
 import json
 import os
 import subprocess
@@ -182,13 +183,43 @@ class PublishNugetTests(unittest.TestCase):
                     "RELEASE_URL": "https://github.com/owner/repo/releases/tag/v2.4.4",
                     "OPTIONAL_DESCRIPTION": "",
                 }
-                with patch.dict(os.environ, environment), patch.object(target.urllib.request, "urlopen") as urlopen:
+                with patch.dict(os.environ, environment), patch.object(target.urllib.request, "build_opener") as build_opener:
                     target.discord()
-                contents = [json.loads(call.args[0].data)["content"] for call in urlopen.call_args_list]
+                opener = build_opener.return_value
+                self.assertEqual([], opener.addheaders)
+                contents = [json.loads(call.args[0].data)["content"] for call in opener.open.call_args_list]
                 self.assertGreater(len(contents), 1)
                 self.assertNotIn("Continued from previous message", "".join(contents))
                 self.assertTrue(all(len(content.encode("utf-16-le")) // 2 <= 1900 for content in contents))
                 self.assertIn("NuGet: <https://www.nuget.org/packages/GBX.NET/2.4.4>", contents[-1])
+            finally:
+                os.chdir(old_directory)
+
+    def test_discord_reports_discord_error_details_without_webhook_url(self):
+        with tempfile.TemporaryDirectory() as directory:
+            old_directory = Path.cwd()
+            try:
+                os.chdir(directory)
+                Path("packages").mkdir()
+                package = {"id": "GBX.NET", "version": "2.4.4", "notes": "- Changed a thing"}
+                target.NEWLY_UPLOADED.write_text(json.dumps([package]), encoding="utf-8")
+                target.PUBLISH_RESULTS.write_text(json.dumps([
+                    {"id": "GBX.NET", "version": "2.4.4", "feeds": {"NuGet.org": "uploaded"}}
+                ]), encoding="utf-8")
+                environment = {
+                    "DISCORD_WEBHOOK_URL": "https://discord.example/private-webhook",
+                    "RELEASE_URL": "https://github.com/owner/repo/releases/tag/v2.4.4",
+                    "OPTIONAL_DESCRIPTION": "",
+                }
+                error = target.urllib.error.HTTPError(
+                    "https://discord.example/private-webhook", 403, "Forbidden", {}, io.BytesIO(b'{"message":"Missing Access"}')
+                )
+                opener = unittest.mock.MagicMock()
+                opener.open.side_effect = error
+                with patch.dict(os.environ, environment), patch.object(target.urllib.request, "build_opener", return_value=opener):
+                    with self.assertRaisesRegex(RuntimeError, "HTTP 403: Missing Access") as context:
+                        target.discord()
+                self.assertNotIn("private-webhook", str(context.exception))
             finally:
                 os.chdir(old_directory)
 
@@ -208,10 +239,10 @@ class PublishNugetTests(unittest.TestCase):
                     "RELEASE_URL": "https://github.com/owner/repo/releases/tag/v2.4.4",
                     "OPTIONAL_DESCRIPTION": "",
                 }
-                with patch.dict(os.environ, environment), patch.object(target.urllib.request, "urlopen") as urlopen:
+                with patch.dict(os.environ, environment), patch.object(target.urllib.request, "build_opener") as build_opener:
                     with self.assertRaisesRegex(ValueError, "cannot be split at a line break"):
                         target.discord()
-                urlopen.assert_not_called()
+                build_opener.assert_not_called()
             finally:
                 os.chdir(old_directory)
 

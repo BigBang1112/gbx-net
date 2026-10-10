@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Numerics;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -94,7 +95,9 @@ public partial interface IGbxReader : IDisposable
     TimeSpan? ReadTimeOfDay();
     DateTime? ReadFileTime();
     DateTime? ReadSystemTime();
-    DateTimeOffset ReadUnixTime();
+    DateTimeOffset? ReadUnixTime();
+    /// <summary>Reads an IPv4 address stored as a UInt32, with the first address octet in the most significant byte.</summary>
+    IPAddress ReadIPv4();
     int ReadSmallLen();
     string ReadSmallString();
     void ReadMarker(string value);
@@ -120,24 +123,30 @@ public partial interface IGbxReader : IDisposable
     T[] ReadArray<T>(bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(int length, bool lengthInBytes = false) where T : struct;
     T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct;
+    T[][] ReadJaggedArray<T>(int? innerLength = null, int? outerLength = null) where T : struct;
     List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct;
     List<T> ReadList<T>(bool lengthInBytes = false) where T : struct;
     List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct;
+    T?[] ReadArrayNode<T>() where T : IClass, new();
     T?[] ReadArrayNodeRef<T>(int length) where T : IClass;
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
+    T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass;
     List<T?> ReadListNodeRef<T>(int length) where T : IClass;
     List<T?> ReadListNodeRef<T>() where T : IClass;
     List<T?> ReadListNodeRef_deprec<T>() where T : IClass;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
+    External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
     List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    /// <summary>Reads an array of rows. A null length reads an Int32 length prefix for that dimension.</summary>
+    T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable<T>(int length, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     List<T> ReadListReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
@@ -145,6 +154,10 @@ public partial interface IGbxReader : IDisposable
     string[] ReadArrayId(int length);
     string[] ReadArrayId();
     string[] ReadArrayId_deprec();
+    string[][] ReadJaggedArrayId(int? innerLength = null, int? outerLength = null);
+    string[][] ReadJaggedArrayString(int? innerLength = null, int? outerLength = null);
+    Ident[][] ReadJaggedArrayIdent(int? innerLength = null, int? outerLength = null);
+    PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null);
     List<string> ReadListId(int length);
     List<string> ReadListId();
     List<string> ReadListId_deprec();
@@ -220,6 +233,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal bool IsRelease { get; set; } = true;
+
     internal GbxReadSettings Settings { get; }
 
     internal ILogger? Logger => logger;
@@ -248,6 +263,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (reader is GbxReader r)
         {
+            IsRelease = r.IsRelease;
             refTable = r.refTable;
             idVersion = r.idVersion;
             idDict = r.idDict;
@@ -1259,9 +1275,17 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         }
     }
 
-    public DateTimeOffset ReadUnixTime()
+    public DateTimeOffset? ReadUnixTime()
     {
-        return DateTimeOffset.FromUnixTimeSeconds(ReadUInt32());
+        var value = ReadUInt32();
+        return value == uint.MaxValue ? null : DateTimeOffset.FromUnixTimeSeconds(value);
+    }
+
+    /// <inheritdoc cref="IGbxReader.ReadIPv4"/>
+    public IPAddress ReadIPv4()
+    {
+        var value = ReadUInt32();
+        return new IPAddress([(byte)(value >> 24), (byte)(value >> 16), (byte)(value >> 8), (byte)value]);
     }
 
     public int ReadSmallLen()
@@ -1413,7 +1437,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return (uint)determineFrom.GetValueOrDefault(length) switch
         {
             >= ushort.MaxValue => ReadArray<Int2>(length),
-            >= byte.MaxValue => Array.ConvertAll(ReadArray<int>(length), x => new Int2(x & 0xFFFF, x >> 16)),
+            >= byte.MaxValue => Array.ConvertAll(ReadArray<int>(length), x => new Int2(x & 0xFFFF, (x >> 16) & 0xFFFF)),
             _ => Array.ConvertAll(ReadArray<ushort>(length), x => new Int2(x & 0xFF, x >> 8))
         };
     }
@@ -1482,6 +1506,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
         => ReadArrayReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
+    public T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new()
+        => ReadJaggedArrayRows(length => ReadArrayReadable<T>(length, version), innerLength, outerLength);
+
     public T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
     {
         ReadDeprecVersion();
@@ -1534,9 +1561,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return [];
         }
 
-        var l = lengthInBytes ? length : length * Unsafe.SizeOf<T>();
-
-        EnsureValidLength(l);
+        var l = GetCollectionByteLength<T>(length, lengthInBytes);
 
         if (l > 1_000_000)
         {
@@ -1545,7 +1570,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         Span<byte> bytes = stackalloc byte[l];
-        Read(bytes);
+        BaseStream.ReadExactly(bytes);
 #else
         var bytes = ReadBytes(l);
 #endif
@@ -1561,7 +1586,14 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArray<T>(length, lengthInBytes);
     }
 
-    public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct => ReadArray_deprec<T>(ReadInt32(), lengthInBytes);
+    public T[] ReadArray_deprec<T>(bool lengthInBytes = false) where T : struct
+    {
+        ReadDeprecVersion();
+        return ReadArray<T>(lengthInBytes);
+    }
+
+    public T[][] ReadJaggedArray<T>(int? innerLength = null, int? outerLength = null) where T : struct
+        => ReadJaggedArrayRows(length => ReadArray<T>(length), innerLength, outerLength);
 
     public List<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct
     {
@@ -1570,10 +1602,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return [];
         }
 
-        var l = lengthInBytes ? length : length * Unsafe.SizeOf<T>();
-        EnsureValidLength(l);
+        var l = GetCollectionByteLength<T>(length, lengthInBytes);
 
-        var list = new List<T>(l);
+        var list = new List<T>(l / Unsafe.SizeOf<T>());
 
         if (l > 1_000_000)
         {
@@ -1589,7 +1620,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         Span<byte> bytes = stackalloc byte[l];
-        Read(bytes);
+        BaseStream.ReadExactly(bytes);
 #else
         var bytes = ReadBytes(l);
 #endif
@@ -1606,10 +1637,33 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public List<T> ReadList<T>(bool lengthInBytes = false) where T : struct => ReadList<T>(ReadInt32(), lengthInBytes);
 
+    private int GetCollectionByteLength<T>(int length, bool lengthInBytes) where T : struct
+    {
+        EnsureValidLength(length);
+        var byteLength = lengthInBytes ? length : checked(length * Unsafe.SizeOf<T>());
+        EnsureValidLength(byteLength);
+        return byteLength;
+    }
+
     public List<T> ReadList_deprec<T>(bool lengthInBytes = false) where T : struct
     {
         ReadDeprecVersion();
         return ReadList<T>(lengthInBytes);
+    }
+
+    /// <summary>Reads a count followed by node bodies without reference indices or class IDs.</summary>
+    public T?[] ReadArrayNode<T>() where T : IClass, new()
+    {
+        var length = ReadInt32();
+        EnsureValidLength(length);
+        var array = new T?[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            array[i] = ReadNode<T>();
+        }
+
+        return array;
     }
 
     public T?[] ReadArrayNodeRef<T>(int length) where T : IClass
@@ -1638,6 +1692,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         ReadDeprecVersion();
         return ReadArrayNodeRef<T>();
     }
+
+    public T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass
+        => ReadJaggedArrayRows(length => ReadArrayNodeRef<T>(length), innerLength, outerLength);
 
     public List<T?> ReadListNodeRef<T>(int length) where T : IClass
     {
@@ -1694,6 +1751,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return ReadArrayExternalNodeRef<T>();
     }
 
+    public External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod
+        => ReadJaggedArrayRows(length => ReadArrayExternalNodeRef<T>(length), innerLength, outerLength);
+
     public List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod
     {
         if (length == 0)
@@ -1747,6 +1807,38 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadArrayId();
+    }
+
+    public string[][] ReadJaggedArrayId(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayId, innerLength, outerLength);
+
+    public string[][] ReadJaggedArrayString(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayString, innerLength, outerLength);
+
+    public Ident[][] ReadJaggedArrayIdent(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayIdent, innerLength, outerLength);
+
+    public PackDesc[][] ReadJaggedArrayPackDesc(int? innerLength = null, int? outerLength = null)
+        => ReadJaggedArrayRows(ReadArrayPackDesc, innerLength, outerLength);
+
+    private T[][] ReadJaggedArrayRows<T>(Func<int, T[]> readRow, int? innerLength, int? outerLength)
+    {
+        var count = outerLength ?? ReadInt32();
+        EnsureValidLength(count);
+
+        if (innerLength.HasValue)
+        {
+            EnsureValidLength(innerLength.Value);
+        }
+
+        var array = new T[count][];
+
+        for (var i = 0; i < count; i++)
+        {
+            array[i] = readRow(innerLength ?? ReadInt32());
+        }
+
+        return array;
     }
 
     public List<string> ReadListId(int length)

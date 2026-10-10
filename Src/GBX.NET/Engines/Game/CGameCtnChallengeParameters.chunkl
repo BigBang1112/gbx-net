@@ -1,84 +1,94 @@
 CGameCtnChallengeParameters 0x0305B000 // Map parameters.
 
 0x000
- int
- int
- int
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
-0x001 // tips
- string Tip
- string Tip
- string Tip
- string Tip
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Tip
+  string Tip
+  string Tip
+  string Tip
+  string Tip
 
 0x002
- int
- int
- int
- float
- float
- float
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  float
+  float
+  float
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
 
 0x003
- int
- float
- int
- int
- int
- int
+  int
+  float
+  int
+  int
+  int
+  int
 
-0x004 // medals
- timeint? BronzeTime
- timeint? SilverTime
- timeint? GoldTime
- timeint? AuthorTime
- uint
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // medals
+  int? BronzeTime (time)
+  int? SilverTime (time)
+  int? GoldTime (time)
+  int? AuthorTime (time)
+  uint
 
-0x005
- int
- int
- int
+0x005 [TMSX, TMNESWC, VSK5]
+  int
+  int
+  int
 
-0x006 // items
- uint[]
+0x006 [TMSX, TMNESWC, VSK5] // items
+  int[] Items
 
-0x007
- uint
+0x007 // TimeLimit
+  int TimeLimit = 60000 (time)
 
-0x008 // stunts
- timeint TimeLimit
- int AuthorScore
+0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // stunts
+  int TimeLimit (time)
+  int? AuthorScore (nullable)
 
-0x00A (skippable) // medals
- string Tip
- timeint? BronzeTime
- timeint? SilverTime
- timeint? GoldTime
- timeint? AuthorTime
- timeint TimeLimit
- int? AuthorScore
+0x00A (skippable) [MP3, TMT, MP4, TM2020] // tip and medals
+  string Tip
+  int? BronzeTime (time)
+  int? SilverTime (time)
+  int? GoldTime (time)
+  int? AuthorTime (time)
+  int TimeLimit (time)
+  int? AuthorScore (nullable)
 
-0x00D // race validate ghost
- CGameCtnGhost RaceValidateGhost
+0x00B // legacy validation ghosts
+  CGameCtnGhost[] LegacyValidateGhosts (deprec)
 
-0x00E (skippable) // map type
- string MapType
- string MapStyle
- bool IsValidatedForScriptModes
+0x00C // legacy map type and style
+  version
+  string MapType
+  string MapStyle
 
-0x00F (skippable) // race validate ghost TM2020
+0x00D [MP3, TMT, MP4] // RaceValidateGhost
+  CGameCtnGhost RaceValidateGhost
+
+0x00E (skippable) [MP3, TMT, MP4, TM2020] // map type
+  string MapType
+  string MapStyle
+  bool IsValidatedForScriptModes
+
+0x00F (skippable) [TM2020] // encapsulated RaceValidateGhost
+  block (encapsulated)
+    CGameCtnGhost RaceValidateGhost

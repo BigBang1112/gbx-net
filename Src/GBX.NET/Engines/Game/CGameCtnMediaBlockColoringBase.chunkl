@@ -1,18 +1,21 @@
 CGameCtnMediaBlockColoringBase 0x03172000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- v2+
-  int = 2
- list<Key> Keys (version: Version)
- v1+
-  int BaseIndex
+0x000 [TMT, MP4, TM2020.v2]
+  version
+  v2+
+    int KeyArchiveVersion = 2
+  v1-
+    Key[] Keys (version: -1, list)
+  v2+
+    Key[] Keys (version: KeyArchiveVersion, list)
+  v1+
+    int BaseIndex
 
 archive Key (inherits: IKey)
- timefloat Time
- float Hue
- v1+ // not 100% sure about this
-  float Intensity
+  float Time (time)
+  float Hue
+  v0+
+    float Intensity = 1
   v2+
-   short
+    ushort Emblem // Index of the base's subtexture in the team-emblem atlas.

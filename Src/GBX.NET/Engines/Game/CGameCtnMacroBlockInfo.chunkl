@@ -1,144 +1,188 @@
 CGameCtnMacroBlockInfo 0x0310D000
 - inherits: CGameCtnCollector
 
-0x000 [MP4, TM2020] // block spawns
- list<BlockSpawn> BlockSpawns
+0x000 [MP3, TMT, MP4, TM2020] // block spawns
+  BlockSpawn[] BlockSpawns (list)
 
-0x001 [MP4, TM2020] // block skin spawns
- list<BlockSkinSpawn> BlockSkinSpawns
+0x001 [MP3, TMT, MP4, TM2020] // block skin spawns
+  BlockSkinSpawn[] BlockSkinSpawns (list)
 
-0x002 [MP4, TM2020] // card events spawns
- list<CardEventsSpawn> CardEventsSpawns
+0x002 [MP3, TMT, MP4, TM2020] // card events spawns
+  CardEventsSpawn[] CardEventsSpawns (list)
 
-0x006 [MP4, TM2020]
- int = 2
- data // SceneDecals?
+0x003 // legacy object spawns
+  CGameCtnAnchoredObject[] LegacyAnchoredObjects (deprec)
 
-0x007
- CGameCtnMediaClipGroup
- CGameCtnMediaClipGroup
- CMwNod
+0x004 // legacy nested macroblocks
+  CGameCtnMacroBlockInfo[] LegacyMacroBlocks (deprec)
 
-0x008 [MP4, TM2020]
- CGameCtnAutoTerrain[]_deprec AutoTerrains
- int
- int
+0x005 // legacy scene decals
+  string[] LegacyDecalModelPaths
+  int U01 // decal count, written from LegacyDecals.Length
+  int = 1
+  LegacyDecal[U01] LegacyDecals
 
-0x00B (skippable) [MP4, TM2020] // script metadata
+0x006 [MP3, TMT, MP4, TM2020]
+  int = 2
+  data SceneDecals
 
-0x00C (skippable) [MP4.v2, TM2020.v2] // splines
- version = 2
- v0=
-  CMwNod[]_deprec
-  CPlugSpline3D[]_deprec
-  CMwNod[]_deprec
-  CMwNod[]_deprec
+0x007 [MP3]
+  int = 3
+  CGameCtnMediaClipGroup ClipGroupInGame
+  CGameCtnMediaClipGroup ClipGroupEndRace
+  CMwNod
+
+0x008 [MP3, TMT, MP4, TM2020]
+  CGameCtnAutoTerrain[] AutoTerrains (deprec)
   int
+  int // native DoBool, but the MP4 fixture stores 2; preserve the raw value
+
+0x009 // legacy macroblock junctions
+  CMwNod[] (deprec)
+
+0x00A
   int
-  int
- v2+
-  return
- CMwNod[]_deprec
 
-0x00D
- version
+0x00B (skippable) [MP3, TMT, MP4, TM2020] // script metadata
+  block (encapsulated)
+    CScriptTraitsMetadata ScriptMetadata (direct)
 
-0x00E [MP4.v2, TM2020.v2] // object spawns
- version
- list<ObjectSpawn> ObjectSpawns
- v2-
-  v1+
-   int2[]
- v3+
-  int4[]
+0x00C (skippable) [MP3, TMT, MP4.v2, TM2020.v2] // splines
+  version
+  v0=
+    CMwNod[] (deprec)
+    CPlugSpline3D[] (deprec)
+    CMwNod[] (deprec)
+    CMwNod[] (deprec)
+    int
+    int
+    int
+    return
+  v2+
+    return
+  CMwNod[] (deprec)
 
-0x00F [MP4, TM2020]
- version
- int3
- int3
- int3[]
+0x00D (skippable) [MP3]
+  version
 
-0x010 (skippable) [MP4, TM2020]
- version
- int IconSize
+0x00E [MP3, TMT, MP4.v2, TM2020.v2] // object spawns
+  version
+  ObjectSpawn[] ObjectSpawns (list)
+  v2-
+    v1+
+      int2[] ObjectNeighbourPairsLegacy
+  v3+
+    int4[] ObjectNeighbourPairs
 
-0x011 (skippable) [MP4, TM2020] // clips
+0x00F [MP3, TMT, MP4, TM2020]
+  version
+  int3 OffzoneOffset
+  int3 OffzoneTriggerSize = (3, 1, 3)
+  boxint3[] Offzones
+
+0x010 (skippable) [TMT, MP4, TM2020]
+  version
+  int IconSize
+
+0x011 (skippable) [TMT, MP4, TM2020] // mediatracker
+  version
+  block (encapsulated)
+    int3 ClipOffset
+    int3 ClipTriggerSize = (3, 1, 3)
+    CGameCtnMediaClipGroup ClipGroupInGame
+    CGameCtnMediaClipGroup ClipGroupEndRace
 
 archive BlockSpawn
- int Version
- ident BlockModel
- if Version < 2
-  int3 Coord
-  int<Direction> Direction
- if Version >= 2
-  if Version < 5
-   byte3 Coord
-   byte<Direction> Direction
-  int Flags
-  if Version >= 3
-   if Version >= 5
-    if ((Flags >> 26) & 1) != 0
-     vec3 AbsolutePositionInMap
-     vec3 PitchYawRoll
-    if ((Flags >> 26) & 1) == 0
-     byte3 Coord
-     byte<Direction> Direction
-   CGameWaypointSpecialProperty Waypoint
-   if Version >= 4
-    if Version < 6
-     CMwNod
-    if Version >= 8
-     short
+  version
+  ident BlockModel
+  v1- (archive)
+    int3 Coord
+    int<Direction> Direction
+    int MobilIndex
+    int MobilVariantIndex
+    bool IsGround
+    v1+ (archive)
+      int BlockInfoVariantIndex
+  v2+ (archive)
+    v4- (archive)
+      byte3 Coord
+      byte<Direction> Direction
+    int Flags
+    v3+ (archive)
+      v5+ (archive)
+        if ((Flags >> 26) & 1) != 0
+          vec3 AbsolutePositionInMap
+          vec3 YawPitchRoll
+        if ((Flags >> 26) & 1) == 0
+          byte3 Coord
+          byte<Direction> Direction
+      CGameWaypointSpecialProperty Waypoint
+      v4+ (archive)
+        v5- (archive)
+          CGameCtnChallenge Challenge
+        v7+ (archive)
+          byte Color
+        v8+ (archive)
+          byte LightmapQuality
 
 archive BlockSkinSpawn
- int Version
- CGameCtnBlockSkin Skin
- if Version == 0
-  int3 // its position?
- int BlockSpawnIndex
+  version
+  CGameCtnBlockSkin Skin
+  v0= (archive)
+    int3 Coord
+    return
+  int BlockSpawnIndex
 
 archive CardEventsSpawn
- int Version
- ident[]
- int3
+  version
+  ident[] CardEvents
+  int3 Coord
 
 archive ObjectSpawn
- int Version
- ident ItemModel
- if Version < 3
-  byte QuarterY
-  if Version >= 1
-   byte AdditionalDir
- if Version >= 3
-  vec3 PitchYawRoll
- int3 BlockCoord
- id AnchorTreeId
- vec3 AbsolutePositionInMap
- if Version < 5
-  int U01
- if Version < 6
-  int U02
- if Version >= 6
-  short U03
-  if Version >= 7
-   vec3 PivotPosition
-   if Version >= 8
-    CGameWaypointSpecialProperty Waypoint
-    if Version >= 9
-     float Scale
-     if Version >= 10
-      int3 U04
-      if Version >= 11
-       byte U05
-       byte U06
-       if Version >= 12
-        byte U07
-        if Version >= 13
-         boolbyte HasPackDesc
-         boolbyte HasForegroundPackDesc
-         if HasPackDesc
-          packdesc PackDesc
-         if HasForegroundPackDesc
-          packdesc ForegroundPackDesc
-         if Version >= 14
-          int U10
+  version
+  ident ItemModel
+  v2- (archive)
+    byte QuarterY
+    v1+ (archive)
+      byte AdditionalDir
+  v3+ (archive)
+    vec3 YawPitchRoll
+  int3 BlockCoord
+  id AnchorTreeId
+  vec3 AbsolutePositionInMap
+  v2+ (archive)
+    v4- (archive)
+      int NeighbourSpawnIndex = -1
+  v4+ (archive)
+    v6- (archive)
+      int U02
+  v6+ (archive)
+    short Flags
+    v7+ (archive)
+      vec3 PivotPosition
+      v8+ (archive)
+        CGameWaypointSpecialProperty Waypoint
+        v9+ (archive)
+          float Scale = 1
+          v10+ (archive)
+            int3 U04
+            v11+ (archive)
+              byte Color
+              byte AnimPhaseOffset
+              v12+ (archive)
+                byte LightmapQuality
+                v13+ (archive)
+                  boolbyte HasPackDesc
+                  boolbyte HasForegroundPackDesc
+                  if HasPackDesc
+                    packdesc PackDesc
+                  if HasForegroundPackDesc
+                    packdesc ForegroundPackDesc
+                  v14+ (archive)
+                    int U10
+
+archive LegacyDecal
+  int ModelIndex
+  id GroupId
+  iso4 Location
+  vec3 U01

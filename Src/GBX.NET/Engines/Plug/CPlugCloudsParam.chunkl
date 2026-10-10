@@ -1,15 +1,15 @@
 CPlugCloudsParam 0x09182000
 
-0x001
- vec2[] Points
+0x001 [MP3, TMT, TM2020]
+  vec2[] Points
 
-0x002
- int
- int
- float
- float
- float
- float
- float
- int
- int
+0x002 [MP3, TMT, TM2020]
+  int
+  int
+  float
+  float
+  float
+  float
+  float
+  int
+  int

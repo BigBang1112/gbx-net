@@ -1,11 +1,12 @@
 CFuncKeysSkel 0x05006000
 - inherits: CFuncKeys
 
-0x000
- CFuncSkel Skel
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  CFuncSkel Skel
 
-0x001
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  Loc[Skel.BonesCount][] Locations
 
 archive Loc
- quat
- vec3
+  quat Rotation
+  vec3 Position

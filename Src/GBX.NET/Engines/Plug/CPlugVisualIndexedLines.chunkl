@@ -1,5 +1,12 @@
 CPlugVisualIndexedLines 0x09009000
 - inherits: CPlugVisualIndexed
 
-0x001
- int
+0x000 (base: 0x0906A000) // legacy line indices
+
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // RenderMode
+  int<ERenderMode> RenderMode
+
+enum ERenderMode
+  Lines // Native line primitives
+  WideWorld // Wide lines with width in world units
+  WideScreen // Wide lines with width in pixels

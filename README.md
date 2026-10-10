@@ -604,6 +604,10 @@ You can also create a `nuget.config` file in your solution directory and put the
 
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
+## Benchmarks
+
+The [benchmark project](Benchmarks/README.md) measures source generator speed and Gbx fixture reads and writes, including compressed and uncompressed bodies.
+
 ## License
 
 GBX.NET 2 is licensed under multiple licenses, depending on the part of the project. Here are the licenses and their directories:

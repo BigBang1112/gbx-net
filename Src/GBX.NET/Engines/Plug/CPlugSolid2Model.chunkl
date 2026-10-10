@@ -1,83 +1,83 @@
 CPlugSolid2Model 0x090BB000
 
 0x000 (header, struct: SHeaderFileVersion) // file version
- int FileVersion
+  int FileVersion
 
-0x000
+0x000 [MP3, TMT, MP4, TM2020]
 
-0x002 (skippable) // fake occlusion
- data FileImageBytes
- FakeOccProj[] FakeOccProjs
+0x002 (skippable) [MP4, TM2020] // fake occlusion
+  data FileImageBytes
+  FakeOccProj[] FakeOccProjs
 
 archive ShadedGeom
- int VisualIndex
- int MaterialIndex
- int
- v1+
-  int LodMask
-  v32+
-   int
+  int VisualIndex
+  int MaterialIndex
+  int
+  v1+
+    int LodMask
+    v32+
+      int
 
 archive PreLightGen
- int Version
- int
- float
- bool
- float
- float
- float
- float
- float
- float
- float
- float
- int2 SpriteCount
- boxaligned[]
- if Version >= 1
-  int4[] UvGroups
+  version
+  int
+  float
+  bool
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  int2 SpriteCount
+  boxaligned[]
+  v1+ (archive)
+    int4[] UvGroups
 
 archive Light
- id U01
- bool U02
- if U02
-  CPlugLight U03 (external)
- if !U02
-  string U04
- iso4 U05
- int U06
- int U07
- int U08
- int U09
- int U10
- int U11
- v26+
-  int U12
-  int U13
-  int U14
- bool U15
- if U15
-  float U16
-  float U17
-  float U18
+  id U01
+  bool U02
+  if U02
+    CPlugLight U03 (external)
+  if !U02
+    string U04
+  iso4 U05
+  int U06
+  int U07
+  int U08
+  int U09
+  int U10
+  int U11
+  v26+
+    int U12
+    int U13
+    int U14
+  bool U15
+  if U15
+    float U16
+    float U17
+    float U18
 
 archive LightInst
- int ModelIndex
- int SocketIndex
+  int ModelIndex
+  int SocketIndex
 
 archive Material
- string MaterialName
- if MaterialName == null || MaterialName == ""
-  CPlugMaterialUserInst MaterialUserInst
+  string MaterialName
+  if MaterialName == null || MaterialName == ""
+    CPlugMaterialUserInst MaterialUserInst
 
 archive FakeOccProj
- int
- int
- int
- quat
- float
- float
- float
- float
- float
- float
- float
+  int
+  int
+  int
+  quat
+  float
+  float
+  float
+  float
+  float
+  float
+  float

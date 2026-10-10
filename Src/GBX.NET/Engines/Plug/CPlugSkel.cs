@@ -14,6 +14,8 @@ public partial class CPlugSkel
     private int? u06;
     private byte[]? u07;
     private Vec3[]? u08;
+    private Setup? setup;
+    private ExtraJoints? extraJoints;
 
     public string Name { get => name; set => name = value; }
     public bool U01 { get => u01; set => u01 = value; }
@@ -24,6 +26,8 @@ public partial class CPlugSkel
     public int? U06 { get => u06; set => u06 = value; }
     public byte[]? U07 { get => u07; set => u07 = value; }
     public Vec3[]? U08 { get => u08; set => u08 = value; }
+    public Setup? SkelSetup { get => setup; set => setup = value; }
+    public ExtraJoints? AdditionalJoints { get => extraJoints; set => extraJoints = value; }
 
     public void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
@@ -37,7 +41,7 @@ public partial class CPlugSkel
 
             if (u01)
             {
-                throw new Exception("u01 == true");
+                rw.ReadableWritable(ref setup, v);
             }
 
             if (v >= 6)
@@ -50,12 +54,7 @@ public partial class CPlugSkel
 
                     if (u02)
                     {
-                        /*var u07 = r.ReadArray(r => r.ReadId());
-                        var u08 = r.ReadArray<ulong>();
-                        var u09 = r.ReadArray<ulong>();
-                        var u10 = r.ReadArray<Quat>();*/
-
-                        throw new Exception("u02 == true");
+                        rw.ReadableWritable(ref extraJoints);
                     }
 
                     if (v >= 10)

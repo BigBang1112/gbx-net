@@ -171,17 +171,28 @@ public partial class Gbx : IGbx
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    public virtual Gbx DeepClone() => new(Header.DeepClone(), Body.DeepClone())
+    public virtual Gbx DeepClone()
+    {
+        var context = new DeepCloneContext();
+        var clone = CreateCloneShell();
+        context.Register(this, clone);
+        clone.Node = context.Clone(Node);
+        return clone;
+    }
+
+#pragma warning disable GBXNET10001
+    internal virtual Gbx CreateCloneShell() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
         RefTable = RefTable?.DeepClone(),
         ReadSettings = ReadSettings,
-        Node = Node?.DeepClone(),
+        Node = Node,
         IdVersion = IdVersion,
         PackDescVersion = PackDescVersion,
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
+#pragma warning restore GBXNET10001
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
@@ -463,6 +474,7 @@ public partial class Gbx : IGbx
 
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { CloseStream = false })
             {
+                IsRelease = writer.IsRelease,
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
                 ClassIdRemapMode = classIdRemapMode
@@ -902,10 +914,13 @@ public class Gbx<
     [Experimental("GBXNET10001")]
 #endif
 #if NETSTANDARD2_0
-    public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
+    public override Gbx DeepClone() => base.DeepClone();
 #else
-    public override Gbx<T> DeepClone() => new(Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
+    public override Gbx<T> DeepClone() => (Gbx<T>)base.DeepClone();
 #endif
+
+#pragma warning disable GBXNET10001
+    internal override Gbx CreateCloneShell() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), Node)
     {
         FilePath = FilePath,
         RefTable = RefTable?.DeepClone(),
@@ -915,6 +930,7 @@ public class Gbx<
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
+#pragma warning restore GBXNET10001
 
     /// <summary>
     /// Implicitly casts <see cref="Gbx{T}"/> to its <see cref="Gbx{T}.Node"/>.

@@ -1,21 +1,21 @@
 CGamePlayerProfileChunk_TrackManiaSettings 0x240D5000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable)
- version
- byte
+0x000 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte
 
-0x001 (skippable)
- version
- byte[]
+0x001 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte[]
 
-0x002 (skippable)
- version
- byte[]
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte[]
 
-0x003 (skippable, ignore)
+0x003 (skippable, ignore) [MP3, TMT, MP4, TM2020]
 
-0x004 (skippable)
- version
- int
- int
+0x004 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int
+  int

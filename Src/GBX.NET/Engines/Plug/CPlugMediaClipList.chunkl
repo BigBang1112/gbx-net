@@ -1,5 +1,5 @@
 CPlugMediaClipList 0x09189000
 
-0x000
- version
- CMwNod[] MediaClipFids (external)
+0x000 [TM2020]
+  version
+  CMwNod[] MediaClipFids (external)

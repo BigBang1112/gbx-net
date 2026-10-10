@@ -1,9 +1,11 @@
-﻿namespace GBX.NET.Tests.Unit;
 
+namespace GBX.NET.Tests.Unit;
+
+[Category("Unit")]
 public class PackDescTests
 {
-    [Fact]
-    public void GetLocatorUri_WhenLocatorUrlSpecified_ReturnsUri()
+    [Test]
+    public async Task GetLocatorUri_WhenLocatorUrlSpecified_ReturnsUri()
     {
         // Arrange
         var packDesc = new PackDesc("test.txt", default, "http://locator.url");
@@ -12,11 +14,11 @@ public class PackDescTests
         var result = packDesc.GetLocatorUri();
 
         // Assert
-        Assert.Equal(expected: new Uri("http://locator.url"), actual: result);
+        await Assert.That(result).IsEqualTo(new Uri("http://locator.url"));
     }
 
-    [Fact]
-    public void GetLocatorUri_LocatorUrlEmpty_ReturnsNull()
+    [Test]
+    public async Task GetLocatorUri_LocatorUrlEmpty_ReturnsNull()
     {
         // Arrange
         var packDesc = new PackDesc("test.txt");
@@ -25,6 +27,6 @@ public class PackDescTests
         var result = packDesc.GetLocatorUri();
 
         // Assert
-        Assert.Null(result);
+        await Assert.That(result).IsNull();
     }
 }

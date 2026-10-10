@@ -2,6 +2,7 @@
 using Spectre.Console;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
@@ -12,6 +13,7 @@ public sealed class SettingsManager
 {
     internal const string DynamicCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, this can cause serialization problems when AOT-compiled.";
     internal const string UnreferencedCodeMessage = "If JsonContext is not set, or YAML is used and YmlContext is not set, some members can get trimmed unexpectedly.";
+    internal const string ConfigPropertiesMessage = "The public properties of the runtime config type must be preserved for config population.";
     
     private readonly string runningDir;
     private readonly JsonSerializerContext? jsonContext;
@@ -63,7 +65,14 @@ public sealed class SettingsManager
                     throw;
                 }
 
-                AnsiConsole.WriteException(ex);
+                if (RuntimeFeature.IsDynamicCodeSupported)
+                {
+                    AnsiConsole.WriteException(ex);
+                }
+                else
+                {
+                    AnsiConsole.WriteLine(ex.ToString());
+                }
 
                 result = new();
             }
@@ -119,7 +128,14 @@ public sealed class SettingsManager
                     throw;
                 }
 
-                AnsiConsole.WriteException(ex);
+                if (RuntimeFeature.IsDynamicCodeSupported)
+                {
+                    AnsiConsole.WriteException(ex);
+                }
+                else
+                {
+                    AnsiConsole.WriteLine(ex.ToString());
+                }
 
                 result = new();
             }
@@ -148,7 +164,7 @@ public sealed class SettingsManager
     }
 
     [RequiresDynamicCode(DynamicCodeMessage)]
-    [RequiresUnreferencedCode(UnreferencedCodeMessage)]
+    [RequiresUnreferencedCode(UnreferencedCodeMessage + " " + ConfigPropertiesMessage)]
     public async Task PopulateConfigAsync(string configName, Config config, CancellationToken cancellationToken)
     {
         await PopulateConfigAsync(configName, config, async (stream, configType,  token) => jsonContext is null
@@ -168,6 +184,7 @@ public sealed class SettingsManager
             cancellationToken);
     }
 
+    [RequiresUnreferencedCode(ConfigPropertiesMessage)]
     public async Task PopulateConfigStaticallyAsync(string configName, Config config, CancellationToken cancellationToken)
     {
         if (jsonContext is null)
@@ -186,6 +203,7 @@ public sealed class SettingsManager
             cancellationToken);
     }
 
+    [RequiresUnreferencedCode(ConfigPropertiesMessage)]
     private async Task PopulateConfigAsync(string configName, Config config,
         Func<Stream, Type, CancellationToken, Task<object?>> deserializeJsonFunc,
         Func<Stream, Config, Type, CancellationToken, Task> serializeJsonFunc,

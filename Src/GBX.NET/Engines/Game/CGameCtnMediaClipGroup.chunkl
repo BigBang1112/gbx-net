@@ -1,43 +1,46 @@
-CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group.
+CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group. Clips and triggers are matched by array index.
 
-0x001 (demonstration)
- CGameCtnMediaClip[]_deprec Clips
- Trigger[] Triggers (version: 1)
+0x000 (demonstration: partial)
+  CGameCtnMediaClip[] Clips (deprec)
+  Trigger[] Triggers (version: 0)
 
-0x002 (demonstration)
- CGameCtnMediaClip[]_deprec Clips
- Trigger[] Triggers (version: 2)
+0x001 (demonstration: partial)
+  CGameCtnMediaClip[] Clips (deprec)
+  Trigger[] Triggers (version: 1)
 
-0x003 (demonstration)
- CGameCtnMediaClip[]_deprec Clips
- Trigger[] Triggers (version: 3)
+0x002 (demonstration: partial) [TMSX, TMNESWC, VSK5]
+  CGameCtnMediaClip[] Clips (deprec)
+  Trigger[] Triggers (version: 2)
+
+0x003 (demonstration: partial) [TMF, MP3, TMT, MP4, TM2020]
+  CGameCtnMediaClip[] Clips (deprec)
+  Trigger[] Triggers (version: 3)
 
 0x004 (skippable)
- int
+  int = -1
 
 archive Trigger
- v0=
-  return
- v2-
-  list<int3> Coords
- v2+
-  int
-  int
-  int
-  int
-  v3+
-   int<ECondition> Condition
-   float ConditionValue
-   list<int3> Coords
+  v0=
+    int3[1] Coords (list)
+  v1+
+    v2-
+      int3[] Coords (list)
+  v2+
+    int3 RefCoord = (-1, -1, -1)
+    int<Direction> RefDir
+    v3+
+      int<ECondition> Condition
+      float ConditionValue
+      int3[] Coords (list)
 
 enum ECondition
- None
- RaceTimeLessThan
- RaceTimeGreaterThan
- AlreadyTriggered
- SpeedLessThan
- SpeedGreaterThan
- NotAlreadyTriggered
- MaxPlayCount
- RandomOnce
- Random
+  None
+  RaceTimeLessThan
+  RaceTimeGreaterThan
+  AlreadyTriggered
+  SpeedLessThan
+  SpeedGreaterThan
+  NotAlreadyTriggered
+  MaxPlayCount
+  RandomOnce
+  Random

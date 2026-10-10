@@ -1,10 +1,41 @@
 CMotionCmdBase 0x08029000
 - inherits: CMwCmd
 
-0x002
- int
- float
- int
- int
- int
- int
+0x000
+  uint Period = 1000 // Period in milliseconds.
+  float Phase = 0 // Fraction of a period.
+  int<EWaveType> WaveType = EWaveType.SawTooth
+  bool IsOnce = false
+
+0x001 (base: 0x000)
+  base
+  bool IsAbsolutePhase = false
+
+0x002 (base: 0x001) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  base
+  CMotionCmdBaseParams CmdBaseParams
+
+0x0802A000 // Legacy period and speed pair.
+  uint LegacyPeriod
+  float LegacySpeed
+  Period = LegacyPeriodInMilliseconds
+
+0x0802A001 (base: 0x0802A000)
+  base
+  int<EWaveType> WaveType
+
+0x0802A002 (base: 0x0802A001)
+  base
+  bool IsOnce
+
+0x0802A003 (base: 0x0802A002)
+  base
+  int LegacyPhase
+  Phase = LegacyNormalizedPhase
+
+enum EWaveType
+  Sin
+  Triangle
+  Square
+  SawTooth
+  InverseSawTooth

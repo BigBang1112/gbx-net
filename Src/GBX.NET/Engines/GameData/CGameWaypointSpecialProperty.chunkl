@@ -1,12 +1,17 @@
 CGameWaypointSpecialProperty 0x2E009000
 
-0x000
- version
- v1=
-  int Spawn
-  int Order
- v2=
-  string Tag
-  int Order
+0x000 [MP3, TMT, MP4, TM2020]
+  version
+  v1=
+    int Spawn
+    int Order
+  v2=
+    string Tag
+    int Order
 
-0x001 (skippable)
+0x001 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  bool HasScriptMetadata (local, write: "n.ScriptMetadata is not null")
+  if HasScriptMetadata
+    block (encapsulated)
+      CScriptTraitsMetadata ScriptMetadata (direct)

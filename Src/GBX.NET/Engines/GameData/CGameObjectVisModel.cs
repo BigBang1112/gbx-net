@@ -1,4 +1,4 @@
-﻿using GBX.NET.Components;
+using GBX.NET.Components;
 
 namespace GBX.NET.Engines.GameData;
 
@@ -24,16 +24,28 @@ public partial class CGameObjectVisModel
     public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
 
     private CMwNod? meshShadedFid;
-    public CMwNod? MeshShadedFid { get => meshShadedFid; set => meshShadedFid = value; }
+    public CMwNod? MeshShadedFid
+    {
+        get => meshShadedFidFile?.GetNode(ref meshShadedFid) ?? meshShadedFid;
+        set => meshShadedFid = value;
+    }
 
     private Vec3? domeShaderColor;
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
 
     private CPlugAnimLocSimple? locAnim;
-    public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
+    public CPlugAnimLocSimple? LocAnim
+    {
+        get => locAnimFile?.GetNode(ref locAnim) ?? locAnim;
+        set => locAnim = value;
+    }
 
     private CPlugSolid? solid;
-    public CPlugSolid? Solid { get => solid; set => solid = value; }
+    public CPlugSolid? Solid
+    {
+        get => solidFile?.GetNode(ref solid) ?? solid;
+        set => solid = value;
+    }
 
     private string? solidRef;
     public string? SolidRef { get => solidRef; set => solidRef = value; }
@@ -64,117 +76,5 @@ public partial class CGameObjectVisModel
         public float? U20;
         public string? U21;
         public CMwNod? U22;
-
-        public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-
-            if (Version < 9)
-            {
-                rw.NodeRef(ref U14, ref U14File);
-            }
-            else
-            {
-                rw.String(ref n.mesh);
-
-                if (string.IsNullOrEmpty(n.mesh))
-                {
-                    rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
-                }
-            }
-
-            if (Version < 18) // CPlugParticleEmitterModel?
-            {
-                rw.NodeRef(ref U16); // CPlugAnimFile
-            }
-
-            if (Version >= 2)
-            {
-                if (Version < 9)
-                {
-                    rw.String(ref n.mesh);
-                }
-
-                rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim);
-
-                rw.Int32(ref U03); // SPlugLightBallStateSimple array
-            }
-
-            if (Version < 17)
-            {
-                rw.String(ref n.soundRefSpawn);
-                rw.String(ref n.soundRefUnspawn);
-                rw.String(ref n.soundRefGrab);
-            }
-
-            if (Version >= 10)
-            {
-                rw.String(ref U07);
-
-                if (Version >= 11 && !string.IsNullOrEmpty(U07))
-                {
-                    rw.Single(ref U18);
-                    rw.Single(ref U19);
-                    rw.Single(ref U20);
-                }
-
-                if (Version >= 12)
-                {
-                    rw.String(ref n.smashParticleRef);
-
-                    if (!string.IsNullOrEmpty(n.smashParticleRef))
-                    {
-                        rw.Id(ref U21);
-                    }
-
-                    if (Version >= 13)
-                    {
-                        rw.Int32(ref U08); // CPlugFileImg array
-                        rw.Int32(ref U09); // SSpriteParam array
-
-                        if (Version >= 14)
-                        {
-                            rw.String(ref n.solidRef);
-
-                            if (string.IsNullOrEmpty(n.solidRef))
-                            {
-                                rw.NodeRef<CPlugSolid>(ref n.solid); // CPlugSolid
-                            }
-
-                            if (Version >= 16)
-                            {
-                                rw.NodeRef(ref U10); // CPlugParticleEmitterModel
-
-                                if (Version >= 19)
-                                {
-                                    rw.Single(ref U12);
-
-                                    if (Version >= 20)
-                                    {
-                                        rw.String(ref n.visEntFx);
-                                        // if empty then maybe nodref? proly not
-
-                                        if (string.IsNullOrEmpty(n.visEntFx))
-                                        {
-                                            rw.NodeRef(ref U13);
-                                        }
-
-                                        if (Version >= 21)
-                                        {
-                                            rw.NodeRef(ref n.meshShadedFid);
-
-                                            if (Version >= 22)
-                                            {
-                                                rw.Vec3(ref n.domeShaderColor);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
