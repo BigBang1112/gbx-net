@@ -34,12 +34,30 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     [Hexadecimal]
     public static new uint Id => 0x03053000;
 
-    private string? aSymmetricalClipId;
-    [AppliedWithChunk<Chunk03053002>]
-    public string? ASymmetricalClipId
+    private CGameCtnCollector? legacySymmetricalClip;
+    [AppliedWithChunk<Chunk03053000>]
+    [AppliedWithChunk<Chunk03053001>]
+    public CGameCtnCollector? LegacySymmetricalClip
     {
-        get => this.aSymmetricalClipId;
-        set => this.aSymmetricalClipId = value;
+        get => this.legacySymmetricalClipFile?.GetNode(ref this.legacySymmetricalClip) ?? this.legacySymmetricalClip;
+        set => this.legacySymmetricalClip = value;
+    }
+    private Components.GbxRefTableFile? legacySymmetricalClipFile;
+
+    public Components.GbxRefTableFile? LegacySymmetricalClipFile
+    {
+        get => legacySymmetricalClipFile;
+        set => legacySymmetricalClipFile = value;
+    }
+
+    public CGameCtnCollector? GetLegacySymmetricalClip(GbxReadSettings settings = default, bool exceptions = false) => legacySymmetricalClipFile?.GetNode(ref legacySymmetricalClip, settings, exceptions) ?? legacySymmetricalClip;
+
+    private string? symmetricalClipId;
+    [AppliedWithChunk<Chunk03053002>]
+    public string? SymmetricalClipId
+    {
+        get => this.symmetricalClipId;
+        set => this.symmetricalClipId = value;
     }
 
     private bool isFullFreeClip;
@@ -66,7 +84,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         set => this.clipType = value;
     }
 
-    private bool canBeDeletedByFullFreeClip;
+    private bool canBeDeletedByFullFreeClip = true;
     [AppliedWithChunk<Chunk03053006>]
     public bool CanBeDeletedByFullFreeClip
     {
@@ -80,6 +98,30 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     {
         get => this.topBottomMultiDir;
         set => this.topBottomMultiDir = value;
+    }
+
+    private bool isAlwaysVisibleFreeClip;
+    [AppliedWithChunk<Chunk03053006>(2)]
+    public bool IsAlwaysVisibleFreeClip
+    {
+        get => this.isAlwaysVisibleFreeClip;
+        set => this.isAlwaysVisibleFreeClip = value;
+    }
+
+    private bool isFCTOrFCBIgnoredByVFC;
+    [AppliedWithChunk<Chunk03053006>(3)]
+    public bool IsFCTOrFCBIgnoredByVFC
+    {
+        get => this.isFCTOrFCBIgnoredByVFC;
+        set => this.isFCTOrFCBIgnoredByVFC = value;
+    }
+
+    private bool isAntiClip;
+    [AppliedWithChunk<Chunk03053006>(4)]
+    public bool IsAntiClip
+    {
+        get => this.isAntiClip;
+        set => this.isAntiClip = value;
     }
 
     private bool hasPassingPoint;
@@ -130,28 +172,102 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         set => this.symmetricalClipGroupId = value;
     }
 
+    private string? clipGroupId2;
+    [AppliedWithChunk<Chunk03053008>(1)]
+    public string? ClipGroupId2
+    {
+        get => this.clipGroupId2;
+        set => this.clipGroupId2 = value;
+    }
+
+    private string? symmetricalClipGroupId2;
+    [AppliedWithChunk<Chunk03053008>(1)]
+    public string? SymmetricalClipGroupId2
+    {
+        get => this.symmetricalClipGroupId2;
+        set => this.symmetricalClipGroupId2 = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnBlockInfoClip)clone).aSymmetricalClipId = context.Clone(this.aSymmetricalClipId)!;
+        ((CGameCtnBlockInfoClip)clone).legacySymmetricalClip = context.Clone(this.legacySymmetricalClip)!;
+        ((CGameCtnBlockInfoClip)clone).symmetricalClipId = context.Clone(this.symmetricalClipId)!;
         ((CGameCtnBlockInfoClip)clone).isFullFreeClip = context.Clone(this.isFullFreeClip)!;
         ((CGameCtnBlockInfoClip)clone).isExclusiveFreeClip = context.Clone(this.isExclusiveFreeClip)!;
         ((CGameCtnBlockInfoClip)clone).clipType = context.Clone(this.clipType)!;
         ((CGameCtnBlockInfoClip)clone).canBeDeletedByFullFreeClip = context.Clone(this.canBeDeletedByFullFreeClip)!;
         ((CGameCtnBlockInfoClip)clone).topBottomMultiDir = context.Clone(this.topBottomMultiDir)!;
+        ((CGameCtnBlockInfoClip)clone).isAlwaysVisibleFreeClip = context.Clone(this.isAlwaysVisibleFreeClip)!;
+        ((CGameCtnBlockInfoClip)clone).isFCTOrFCBIgnoredByVFC = context.Clone(this.isFCTOrFCBIgnoredByVFC)!;
+        ((CGameCtnBlockInfoClip)clone).isAntiClip = context.Clone(this.isAntiClip)!;
         ((CGameCtnBlockInfoClip)clone).hasPassingPoint = context.Clone(this.hasPassingPoint)!;
         ((CGameCtnBlockInfoClip)clone).passingPointPos = context.Clone(this.passingPointPos)!;
         ((CGameCtnBlockInfoClip)clone).passingPointRoll = context.Clone(this.passingPointRoll)!;
         ((CGameCtnBlockInfoClip)clone).passingPointPitch = context.Clone(this.passingPointPitch)!;
         ((CGameCtnBlockInfoClip)clone).clipGroupId = context.Clone(this.clipGroupId)!;
         ((CGameCtnBlockInfoClip)clone).symmetricalClipGroupId = context.Clone(this.symmetricalClipGroupId)!;
+        ((CGameCtnBlockInfoClip)clone).clipGroupId2 = context.Clone(this.clipGroupId2)!;
+        ((CGameCtnBlockInfoClip)clone).symmetricalClipGroupId2 = context.Clone(this.symmetricalClipGroupId2)!;
     }
 
     public CGameCtnBlockInfoClip()
     {
+        CatalogPosition = -1;
     }
 
-    [Chunk(0x03053002)]
+    /// <summary>
+    /// legacy symmetrical clip
+    /// </summary>
+    [Chunk(0x03053000, "legacy symmetrical clip")]
+    public partial class Chunk03053000 : SkippableChunk<CGameCtnBlockInfoClip>
+    {
+        public override uint Id => 0x03053000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnCollector>(ref n.legacySymmetricalClip, ref n.legacySymmetricalClipFile);
+
+            if (rw.Reader != null && n.LegacySymmetricalClip!= null)
+            {
+                n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy symmetrical clip
+    /// </summary>
+    [Chunk(0x03053001, "legacy symmetrical clip")]
+    public partial class Chunk03053001 : Chunk<CGameCtnBlockInfoClip>
+    {
+        public override uint Id => 0x03053001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnCollector>(ref n.legacySymmetricalClip, ref n.legacySymmetricalClipFile);
+
+            if (rw.Reader != null && n.LegacySymmetricalClip!= null)
+            {
+                n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+            }
+        }
+    }
+
+    /// <summary>
+    /// SymmetricalClipId
+    /// </summary>
+    [Chunk(0x03053002, "SymmetricalClipId")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03053002 : Chunk<CGameCtnBlockInfoClip>
     {
@@ -165,11 +281,45 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
-            rw.Id(ref n.aSymmetricalClipId);
+            rw.Id(ref n.symmetricalClipId);
         }
     }
 
-    [Chunk(0x03053004)]
+    /// <summary>
+    /// legacy free clip flag
+    /// </summary>
+    [Chunk(0x03053003, "legacy free clip flag")]
+    public partial class Chunk03053003 : Chunk<CGameCtnBlockInfoClip>
+    {
+        public override uint Id => 0x03053003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
+        {
+            var isFreeClip = rw.Boolean((rw.Writer is null ? default : (n.ClipType != EClipType.ClassicClip)));
+
+            if (rw.Reader != null)
+            {
+                if (isFreeClip)
+                {
+                    n.ClipType = EClipType.FreeClipSide;
+                }
+                else
+                {
+                    n.ClipType = EClipType.ClassicClip;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// free clip restrictions
+    /// </summary>
+    [Chunk(0x03053004, "free clip restrictions")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03053004 : Chunk<CGameCtnBlockInfoClip>
     {
@@ -188,7 +338,10 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         }
     }
 
-    [Chunk(0x03053005)]
+    /// <summary>
+    /// ClipType
+    /// </summary>
+    [Chunk(0x03053005, "ClipType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03053005 : Chunk<CGameCtnBlockInfoClip>
     {
@@ -206,24 +359,37 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         }
     }
 
-    [Chunk(0x03053006)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// free clip behavior and direction
+    /// </summary>
+    [Chunk(0x03053006, "free clip behavior and direction")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 4)]
     public partial class Chunk03053006 : Chunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public byte? U01;
-        public byte? U02;
-        public byte? U03;
+
+        public Chunk03053006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03053006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03053006)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03053006)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03053006)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03053006)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
@@ -234,32 +400,47 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
             if (Version >= 1)
             {
                 rw.EnumInt32<EMultiDir>(ref n.topBottomMultiDir);
+            }
 
-                if (Version >= 2)
-                {
-                    rw.Byte(ref U01);
+            if (Version >= 2)
+            {
+                rw.Boolean(ref n.isAlwaysVisibleFreeClip, asByte: true);
+            }
 
-                    if (Version >= 3)
-                    {
-                        rw.Byte(ref U02);
+            if (Version >= 3)
+            {
+                rw.Boolean(ref n.isFCTOrFCBIgnoredByVFC, asByte: true);
+            }
 
-                        if (Version >= 4)
-                        {
-                            rw.Byte(ref U03);
-                        }
-                    }
-                }
+            if (Version >= 4)
+            {
+                rw.Boolean(ref n.isAntiClip, asByte: true);
             }
         }
     }
 
-    [Chunk(0x03053007)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    /// <summary>
+    /// passing point
+    /// </summary>
+    [Chunk(0x03053007, "passing point")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, -1, 0, 0)]
     public partial class Chunk03053007 : Chunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053007;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03053007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03053007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -281,22 +462,37 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         }
     }
 
-    [Chunk(0x03053008)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// clip groups and symmetrical groups
+    /// </summary>
+    [Chunk(0x03053008, "clip groups and symmetrical groups")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1)]
     public partial class Chunk03053008 : SkippableChunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053008;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public string? U01;
-        public string? U02;
+
+        public Chunk03053008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03053008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03053008)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03053008)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03053008)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
@@ -307,8 +503,8 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
             if (Version >= 1)
             {
-                rw.Id(ref U01);
-                rw.Id(ref U02);
+                rw.Id(ref n.clipGroupId2);
+                rw.Id(ref n.symmetricalClipGroupId2);
             }
         }
     }
@@ -323,7 +519,10 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03053000 => new Chunk03053000(),
+        0x03053001 => new Chunk03053001(),
         0x03053002 => new Chunk03053002(),
+        0x03053003 => new Chunk03053003(),
         0x03053004 => new Chunk03053004(),
         0x03053005 => new Chunk03053005(),
         0x03053006 => new Chunk03053006(),

@@ -41,15 +41,20 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
 
     public CGameCtnBlockInfoFrontier()
     {
+        IsInternal = true;
+        CatalogPosition = -1;
     }
 
-    [Chunk(0x03050000)]
+    /// <summary>
+    /// frontier flag
+    /// </summary>
+    [Chunk(0x03050000, "frontier flag")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03050000 : Chunk<CGameCtnBlockInfoFrontier>
     {
         public override uint Id => 0x03050000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
+        public bool U01 = true;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

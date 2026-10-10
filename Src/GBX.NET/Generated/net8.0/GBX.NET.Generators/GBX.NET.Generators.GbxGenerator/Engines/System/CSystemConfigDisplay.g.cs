@@ -922,22 +922,22 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         set => this.everywhereReflect = value;
     }
 
-    private bool automatic_Enabled;
+    private bool automaticEnabled;
     [GameVersionDefault(GameVersion.TM2020, true)]
     [AppliedWithChunk<Chunk0B01303F>]
-    public bool Automatic_Enabled
+    public bool AutomaticEnabled
     {
-        get => this.automatic_Enabled;
-        set => this.automatic_Enabled = value;
+        get => this.automaticEnabled;
+        set => this.automaticEnabled = value;
     }
 
-    private int automatic_MinFps;
+    private int automaticMinFps;
     [GameVersionDefault(GameVersion.TM2020, 30)]
     [AppliedWithChunk<Chunk0B01303F>]
-    public int Automatic_MinFps
+    public int AutomaticMinFps
     {
-        get => this.automatic_MinFps;
-        set => this.automatic_MinFps = value;
+        get => this.automaticMinFps;
+        set => this.automaticMinFps = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -1035,8 +1035,8 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         ((CSystemConfigDisplay)clone).asyncRenderEnabled = context.Clone(this.asyncRenderEnabled)!;
         ((CSystemConfigDisplay)clone).fxBlur = context.Clone(this.fxBlur)!;
         ((CSystemConfigDisplay)clone).everywhereReflect = context.Clone(this.everywhereReflect)!;
-        ((CSystemConfigDisplay)clone).automatic_Enabled = context.Clone(this.automatic_Enabled)!;
-        ((CSystemConfigDisplay)clone).automatic_MinFps = context.Clone(this.automatic_MinFps)!;
+        ((CSystemConfigDisplay)clone).automaticEnabled = context.Clone(this.automaticEnabled)!;
+        ((CSystemConfigDisplay)clone).automaticMinFps = context.Clone(this.automaticMinFps)!;
     }
 
     public CSystemConfigDisplay() : this(GameVersion.Unspecified)
@@ -1142,8 +1142,8 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
 
         if (gameVersion == GameVersion.TM2020)
         {
-            automatic_Enabled = true;
-            automatic_MinFps = 30;
+            automaticEnabled = true;
+            automaticMinFps = 30;
         }
     }
 
@@ -2592,8 +2592,8 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
 
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref n.automatic_Enabled);
-            rw.Int32(ref n.automatic_MinFps);
+            rw.Boolean(ref n.automaticEnabled);
+            rw.Int32(ref n.automaticMinFps);
         }
     }
 

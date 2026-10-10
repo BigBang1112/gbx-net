@@ -44,6 +44,12 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         set => this.text = value;
     }
 
+    /// <summary>
+    /// Ignored by games from TMS onward
+    /// </summary>
+    [AppliedWithChunk<Chunk03059000>]
+    public partial string? SkinName { get; set; }
+
     private PackDesc? packDesc;
     [AppliedWithChunk<Chunk03059001>]
     [AppliedWithChunk<Chunk03059002>]
@@ -76,6 +82,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         ((CGameCtnBlockSkin)clone).packDesc = context.Clone(this.packDesc)!;
         ((CGameCtnBlockSkin)clone).parentPackDesc = context.Clone(this.parentPackDesc)!;
         ((CGameCtnBlockSkin)clone).foregroundPackDesc = context.Clone(this.foregroundPackDesc)!;
+        ((CGameCtnBlockSkin)clone).skinName = context.Clone(this.skinName)!;
     }
 
     public CGameCtnBlockSkin()
@@ -83,26 +90,24 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// text
+    /// legacy skin name
     /// </summary>
-    [Chunk(0x03059000, "text")]
+    [Chunk(0x03059000, "legacy skin name")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk03059000 : Chunk<CGameCtnBlockSkin>
     {
         public override uint Id => 0x03059000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03059000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {
             rw.String(ref n.text);
-            rw.String(ref U01);
+            rw.String(ref n.skinName);
         }
     }
 

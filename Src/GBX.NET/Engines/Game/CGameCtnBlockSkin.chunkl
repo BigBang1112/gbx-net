@@ -1,8 +1,8 @@
 CGameCtnBlockSkin 0x03059000
 
-0x000 [TM10, TMPU] // text
+0x000 [TM10, TMPU] // legacy skin name
   string Text
-  string
+  string SkinName // Ignored by games from TMS onward
 
 0x001 // skin
   string Text

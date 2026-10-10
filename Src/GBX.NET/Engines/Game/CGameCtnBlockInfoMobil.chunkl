@@ -1,78 +1,91 @@
 CGameCtnBlockInfoMobil 0x03122000
 
-0x002 [MP3, TMT, MP4, TM2020]
-  CGameCtnSolidDecals[] SolidDecals (deprec)
-  int
+0x000 // legacy mobil and frequency
+  CSceneMobil OldMobil (external)
+  int SolidFrequency = 1
 
-0x003 [MP3.v0, TMT.v3, MP4.v6, TM2020]
+0x001 // legacy solid decals
+  CGameCtnSolidDecals[] SolidDecals (deprec)
+
+0x002 [MP3, TMT, MP4, TM2020] // decals and frequency
+  CGameCtnSolidDecals[] SolidDecals (deprec)
+  int NoDecalFrequency
+
+0x003 [MP3.v0, TMT.v3, MP4.v14, TM2020.v23] // geometry, paths and effects
   version
-  v1-
-    bool U01
-    v0=
+  v0..1
+    bool (write: false) // Legacy reference kind, native writers select OldMobil
+    if !U01
       CSceneMobil OldMobil (external)
-  int SolidFrequency
+    else
+      CMwNod // Discarded legacy reference
+  int SolidFrequency = 1
   v1+
-    boolbyte HasGeomTransformation
+    boolbyte HasGeomTransformation (write: "n.ComputeHasGeomTransformation()")
     if HasGeomTransformation
       vec3 GeomTranslation
       vec3 GeomRotation
-    v2+
-      CPlugSolid SolidFid (external)
-      if SolidFid == null && SolidFidFile == null
-        CSceneMobil OldMobil
-      v14+
-        CPlugPrefab PrefabFid (external)
-      v3+
-        CPlugSolid OldSolidAggreg (external)
-        v4+
-          v5+
-            v5=
-              CPlugPolyLine3[] U02
-            v10-
-              bool U03
-            v6+
-              CPlugPath RailPath (external)
-              v7+
-                v22-
-                  CPlugPath TrafficPath (external)
-                v15+
-                  CMwNod U04
-                v8+
-                  v12-
-                    int U05
-                  v9+
-                    v22-
-                      CPlugRoadChunk[] RoadChunks (deprec)
-                    v23+
-                      CPlugRoadChunk[] RoadChunks
-                    v10+
-                      v12-
-                        int U06
-                        v12=
-                          int U07
-                      v16+
-                        v22-
-                          CPlugPath CitizenNetworkPath // QuestMania confirmed
-                        v17+
-                          CMwNod[] U08
-                          v18+
-                            CMwNod VFXs
-                            byte U09
-                            if U09 == 0
-                              float U10
-                            if U09 == 1
-                              float U11
-                            v18=
-                              iso4 U12
-                            v19+
-                              vec3 U13
-                              vec3 U14
-                            float U15
-                            v20+
-                              CMwNod[] U16
-                              v21+
-                                CMwNod U17
+  v2+
+    CPlugSolid SolidFid (external)
+    if SolidFid == null && SolidFidFile == null
+      CSceneMobil OldMobil (external)
+  v14+
+    CPlugPrefab PrefabFid (external)
+  v3+
+    CPlugSolid OldSolidAggreg (external)
+  v4..5
+    CPlugPolyLine3[] LegacyRailPolylines
+    if rw.Reader != null && LegacyRailPolylines != null && LegacyRailPolylines.Length > 0
+      RailPath = ConvertedRailPath
+  v5..10
+    bool // Discarded legacy rail flag
+  v6+
+    CPlugPath RailPath (external)
+  v7..22
+    CPlugPath TrafficPath (external)
+  v15+
+    CPlugRecastPolyMeshData RecastPolyMeshData
+  v8..12
+    int // Discarded legacy traffic value
+  v9..22
+    CPlugRoadChunk[] LegacyRoadChunks (deprec)
+  v23+
+    CPlugRoadChunkTraffic[] RoadChunks
+  v10..12
+    int // Discarded legacy road value
+  v12=
+    int // Discarded legacy road value
+  v16..22
+    CPlugPath CitizenNetworkPath
+  v17..22
+    CPlugRoadChunk[] LegacyCitizenRoadChunks (deprec)
+  v23+
+    CPlugRoadChunkCitizen[] CitizenRoadChunks
+  v18+
+    CPlugVFXFile VFXs
+    byte VFXScaleType = 3
+    if VFXScaleType == 0
+      float VFXScale
+      float VFXScale2
+    if VFXScaleType == 1
+      float VFXScale
+    v18=
+      iso4 LegacyVFXLoc = Iso4.Identity
+      if rw.Reader != null
+        VFXPosition = LegacyVFXLoc.Translation
+        VFXDirection = (LegacyVFXLoc.XZ, LegacyVFXLoc.YZ, LegacyVFXLoc.ZZ)
+    v19+
+      vec3 VFXPosition
+      vec3 VFXDirection = (0, 0, 1)
+    float VFXAngle
+  v20+
+    if Version < 23 || (Version == 23 && rw.Reader != null)
+      CPlugRoadChunk[] LegacyPlacementPatches (deprec) // Version 23 retains the legacy prefix only when reading
+    else
+      CPlugPlacementPatch[] PlacementPatches
+  v21+
+    CMwNod (external) // Additional external mobil asset
 
-0x004 [MP3, TMT, MP4, TM2020]
+0x004 [MP3, TMT, MP4, TM2020] // DynaLinks
   version
   CGameCtnBlockInfoMobilLink[] DynaLinks (deprec)
