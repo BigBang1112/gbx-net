@@ -19,7 +19,7 @@ CMotionPlayer 0x08034000
   uint SavePlayState = 2 // 0: playing, 1: paused, 2: stopped, 3: save the current state.
   if SavePlayState == 3
     uint PlayState = 2
-  else if rw.Reader != null
+  else
     PlayState = SavePlayState
   id Name (inherited)
   CMotionTrack[] Tracks = empty (list)
@@ -29,7 +29,7 @@ CMotionPlayer 0x08034000
   uint SavePlayState
   if SavePlayState == 3
     uint PlayState
-  else if rw.Reader != null
+  else
     PlayState = SavePlayState
   bool IsPhysics = false
   id Name (inherited)

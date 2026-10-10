@@ -127,7 +127,7 @@ internal static class EngineWriter
 
             code.Open("public " + WireTypes.CSharp(property.Type) + (property.Type.IsNullable && property.Type.ArrayDimensions == 0 ? "?" : "") + " " + SyntaxOverlap.Escape(property.Name));
             
-            var writer = new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.ReadWrite, false);
+            var writer = new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.None, false);
             
             foreach (var accessor in property.Accessors)
             {
@@ -147,7 +147,7 @@ internal static class EngineWriter
             code.Open("public " + layout.Name + "()");
 
             if (layout.File.Syntax.Constructor is { } constructor)
-                new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.ReadWrite, false).Write(constructor.Body);
+                new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.None, false).Write(constructor.Body);
             
             code.Close();
         }

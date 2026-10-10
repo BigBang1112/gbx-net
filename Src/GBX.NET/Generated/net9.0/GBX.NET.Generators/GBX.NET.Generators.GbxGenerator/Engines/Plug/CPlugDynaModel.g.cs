@@ -143,7 +143,10 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
         if (Version == 0)
         {
-            UseTMSimulation = true;
+            if (rw.Reader is not null)
+            {
+                UseTMSimulation = true;
+            }
         }
 
         if (Version >= 2)
@@ -153,7 +156,10 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
         if (Version >= 0 && Version <= 1)
         {
-            SleepingMethod = ESleepingMethod.LowLinearVel_AngularVel;
+            if (rw.Reader is not null)
+            {
+                SleepingMethod = ESleepingMethod.LowLinearVel_AngularVel;
+            }
         }
 
         if (Version >= 3)
@@ -163,7 +169,10 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
         if (Version >= 0 && Version <= 2)
         {
-            EnableSubStepping = false;
+            if (rw.Reader is not null)
+            {
+                EnableSubStepping = false;
+            }
         }
 
         if (Version >= 4)

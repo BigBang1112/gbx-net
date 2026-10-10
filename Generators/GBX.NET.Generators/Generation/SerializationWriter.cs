@@ -167,12 +167,15 @@ internal sealed class SerializationWriter
                     break;
 
                 case ComputedAssignment assignment:
+                    if (mode == SerializationMode.Write) break;
+                    if (mode == SerializationMode.ReadWrite) code.Open("if (rw.Reader is not null)");
                     var assignmentField = scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName) ??
                         layout.Scope.Fields.FirstOrDefault(x => x.Name == assignment.TargetName);
                     var assignmentProperty = layout.File.Syntax.Properties.FirstOrDefault(x => x.Name == assignment.TargetName);
                     var assignmentType = assignmentField is not null ? WireTypes.CSharp(assignmentField.Declaration) :
                         assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
                     code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
+                    if (mode == SerializationMode.ReadWrite) code.Close();
                     break;
 
                 case SkipStatement skip:

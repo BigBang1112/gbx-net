@@ -36,11 +36,10 @@ CHmsLightMap 0x06021000
 
 0x009
   bool UseHDR = false
-  if rw.Reader != null
-    if UseHDR
-      CompressMode = ECompressMode.Scale_sRGB_DXT1
-    else
-      CompressMode = ECompressMode.Ldr_DXT1
+  if UseHDR
+    CompressMode = ECompressMode.Scale_sRGB_DXT1
+  else
+    CompressMode = ECompressMode.Ldr_DXT1
 
 0x00A // Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node
   CMwNod (external)
@@ -123,11 +122,10 @@ CHmsLightMap 0x06021000
 
 0x01C
   bool StoreLDir0Legacy
-  if rw.Reader != null
-    if StoreLDir0Legacy
-      StoreLDir0 = EStoreLDir0.HalfPlusHalfCos
-    else
-      StoreLDir0 = EStoreLDir0.Sinc
+  if StoreLDir0Legacy
+    StoreLDir0 = EStoreLDir0.HalfPlusHalfCos
+  else
+    StoreLDir0 = EStoreLDir0.Sinc
 
 0x01D [MP3, TMT, TM2020]
   bool IsSpriteLDirInAlpha = false

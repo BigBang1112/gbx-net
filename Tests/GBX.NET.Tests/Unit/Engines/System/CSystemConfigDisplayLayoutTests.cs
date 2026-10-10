@@ -376,7 +376,7 @@ public class CSystemConfigDisplayLayoutTests
         await Assert.That(trackmania.FxMotionBlur).IsEqualTo(CSystemConfigDisplay.EFxMotionBlur.Off);
         await Assert.That(trackmania.FxBlur).IsEqualTo(CSystemConfigDisplay.EFxBlur.Off);
         await Assert.That(trackmania.AutomaticEnabled).IsTrue();
-        await Assert.That(trackmania.Automatic_MinFps).IsEqualTo(30);
+        await Assert.That(trackmania.AutomaticMinFps).IsEqualTo(30);
         await Assert.That(trackmania.LightMapLightIndex).IsTrue();
         await Assert.That(new CSystemConfigDisplay().AutomaticEnabled).IsFalse();
         await Assert.That(new CSystemConfigDisplay.Chunk0B013036(GameVersion.TMT).Version).IsEqualTo(1);

@@ -18,8 +18,7 @@ CMotionCmdBase 0x08029000
 0x0802A000 // Legacy period and speed pair.
   uint LegacyPeriod
   float LegacySpeed
-  if rw.Reader != null
-    Period = LegacyPeriodInMilliseconds
+  Period = LegacyPeriodInMilliseconds
 
 0x0802A001 (base: 0x0802A000)
   base
@@ -32,8 +31,7 @@ CMotionCmdBase 0x08029000
 0x0802A003 (base: 0x0802A002)
   base
   int LegacyPhase
-  if rw.Reader != null
-    Phase = LegacyNormalizedPhase
+  Phase = LegacyNormalizedPhase
 
 enum EWaveType
   Sin

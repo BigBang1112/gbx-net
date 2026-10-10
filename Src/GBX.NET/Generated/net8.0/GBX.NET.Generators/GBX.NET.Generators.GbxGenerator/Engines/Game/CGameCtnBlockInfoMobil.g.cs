@@ -515,9 +515,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
             {
                 rw.ArrayNodeRef<CPlugPolyLine3>(ref n.legacyRailPolylines!);
 
-                if (rw.Reader != null && n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Length > 0)
+                if (n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Length > 0)
                 {
-                    n.RailPath = n.ConvertedRailPath;
+                    if (rw.Reader is not null)
+                    {
+                        n.RailPath = n.ConvertedRailPath;
+                    }
                 }
             }
 
@@ -600,10 +603,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
                 if (Version == 18)
                 {
                     rw.Iso4(ref n.legacyVFXLoc);
-
-                    if (rw.Reader != null)
+                    if (rw.Reader is not null)
                     {
                         n.VFXPosition = n.LegacyVFXLoc.Translation;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         n.VFXDirection = (n.LegacyVFXLoc.XZ, n.LegacyVFXLoc.YZ, n.LegacyVFXLoc.ZZ);
                     }
                 }

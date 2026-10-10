@@ -120,7 +120,10 @@ public partial class CPlugDataTape : CMwNod, IClass
             rw.Array<int>(ref n.stateTimes!);
             rw.Array<int>(ref n.stateOffsets!);
             rw.Data(ref n.stateData);
-            n.NoticeCount = 0;
+            if (rw.Reader is not null)
+            {
+                n.NoticeCount = 0;
+            }
         }
     }
 

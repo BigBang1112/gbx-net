@@ -1613,7 +1613,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Vec2(ref n.mapCoordOrigin);
-            n.MapCoordTarget = n.MapCoordOrigin;
+            if (rw.Reader is not null)
+            {
+                n.MapCoordTarget = n.MapCoordOrigin;
+            }
         }
     }
 

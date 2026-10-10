@@ -24,19 +24,17 @@ property bool CustomAngleShadow
   float AngleInner = 30
   float AngleOuter = 45
   float FalloffExponent = 1 // Retained for legacy archives; discarded by later native readers
-  if rw.Reader != null
-    AngleFlare = AngleOuter + AngleOuter
+  AngleFlare = AngleOuter + AngleOuter
 
 0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   float AngleInner
   float AngleOuter
   float AngleFlare = 45 // Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
   float FalloffExponent
-  if rw.Reader != null
-    if AngleFlare - AngleOuter > 0.00001f || AngleFlare - AngleOuter < -0.00001f // MP/TM2020 use 0.00001 * max(1, |AngleFlare|, |AngleOuter|); TMF used absolute tolerance
-      if (AngleFlare - AngleOuter > AngleFlare * 0.00001f && AngleFlare - AngleOuter > -AngleFlare * 0.00001f) || (AngleFlare - AngleOuter < AngleFlare * 0.00001f && AngleFlare - AngleOuter < -AngleFlare * 0.00001f)
-        if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
-          Flags = Flags | 1
+  if AngleFlare - AngleOuter > 0.00001f || AngleFlare - AngleOuter < -0.00001f // MP/TM2020 use 0.00001 * max(1, |AngleFlare|, |AngleOuter|); TMF used absolute tolerance
+    if (AngleFlare - AngleOuter > AngleFlare * 0.00001f && AngleFlare - AngleOuter > -AngleFlare * 0.00001f) || (AngleFlare - AngleOuter < AngleFlare * 0.00001f && AngleFlare - AngleOuter < -AngleFlare * 0.00001f)
+      if (AngleFlare - AngleOuter > AngleOuter * 0.00001f && AngleFlare - AngleOuter > -AngleOuter * 0.00001f) || (AngleFlare - AngleOuter < AngleOuter * 0.00001f && AngleFlare - AngleOuter < -AngleOuter * 0.00001f)
+        Flags = Flags | 1
 
 0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   uint Flags = 0 // CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)

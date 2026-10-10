@@ -381,18 +381,30 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
                 if (hasInternalFlag)
                 {
-                    n.Flags = ECollectorFlags.IsInternal;
+                    if (rw.Reader is not null)
+                    {
+                        n.Flags = ECollectorFlags.IsInternal;
+                    }
                 }
                 else
                 {
-                    n.Flags = ECollectorFlags.None;
+                    if (rw.Reader is not null)
+                    {
+                        n.Flags = ECollectorFlags.None;
+                    }
                 }
             }
 
             if (Version <= 1)
             {
-                n.CatalogPosition = 1;
-                n.Flags = ECollectorFlags.None;
+                if (rw.Reader is not null)
+                {
+                    n.CatalogPosition = 1;
+                }
+                if (rw.Reader is not null)
+                {
+                    n.Flags = ECollectorFlags.None;
+                }
             }
 
             if (Version >= 3)

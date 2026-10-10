@@ -110,17 +110,22 @@ public partial class GxLightFrustum : GxLightBall, IClass
             rw.ReadableWritable<FrustumData>(ref n.frustum, version: 1);
             var doAttenuationLegacy = rw.Boolean((rw.Writer is null ? default : ((n.Flags & 0x40) != 0)));
             var useFaceNegZLegacy = rw.Boolean((rw.Writer is null ? default : ((n.Flags & 0x20) != 0)));
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFFC79F;
+            }
 
-                if (doAttenuationLegacy)
+            if (doAttenuationLegacy)
+            {
+                if (rw.Reader is not null)
                 {
                     n.Flags = n.Flags| 0x40;
                 }
+            }
 
-                if (useFaceNegZLegacy)
+            if (useFaceNegZLegacy)
+            {
+                if (rw.Reader is not null)
                 {
                     n.Flags = n.Flags| 0x20;
                 }
@@ -159,8 +164,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
         {
             rw.ReadableWritable<FrustumData>(ref n.frustum);
             rw.UInt32(ref n.flags);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFFC7FF;
             }
@@ -182,20 +186,28 @@ public partial class GxLightFrustum : GxLightBall, IClass
             base.ReadWrite(n, rw);
             rw.UInt32(ref n.legacyBlendSource);
             rw.UInt32(ref n.legacyBlendDestination);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFC007F;
+            }
 
-                if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 0)
+            if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 0)
+            {
+                if (rw.Reader is not null)
                 {
                     n.Flags = n.Flags| 0x80;
                 }
-                else if (n.LegacyBlendSource== 1 && n.LegacyBlendDestination== 1)
+            }
+            else if (n.LegacyBlendSource== 1 && n.LegacyBlendDestination== 1)
+            {
+                if (rw.Reader is not null)
                 {
                     n.Flags = n.Flags| 0x100;
                 }
-                else if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 2)
+            }
+            else if (n.LegacyBlendSource== 6 && n.LegacyBlendDestination== 2)
+            {
+                if (rw.Reader is not null)
                 {
                     n.Flags = n.Flags| 0x180;
                 }
@@ -235,8 +247,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
         {
             rw.ReadableWritable<FrustumData>(ref n.frustum);
             rw.UInt32(ref n.flags);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFC3FFF;
             }
@@ -350,23 +361,55 @@ public partial class GxLightFrustum : GxLightBall, IClass
                 var maxX = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? X+ X2: X2)));
                 var maxY = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Y+ Y2: Y2)));
                 var maxZ = rw.Single((float)(rw.Writer is null ? default : (IsOrthographic? Z+ Z2: Z2)));
-
-                if (rw.Reader != null)
+                if (rw.Reader is not null)
                 {
                     X = (minX+ maxX) * 0.5f;
+                }
+                if (rw.Reader is not null)
+                {
                     Y = (minY+ maxY) * 0.5f;
+                }
+                if (rw.Reader is not null)
+                {
                     Z = (minZ+ maxZ) * 0.5f;
+                }
+                if (rw.Reader is not null)
+                {
                     X2 = (maxX- minX) * 0.5f;
+                }
+                if (rw.Reader is not null)
+                {
                     Y2 = (maxY- minY) * 0.5f;
+                }
+                if (rw.Reader is not null)
+                {
                     Z2 = (maxZ- minZ) * 0.5f;
+                }
 
-                    if (!IsOrthographic)
+                if (!IsOrthographic)
+                {
+                    if (rw.Reader is not null)
                     {
                         X = (minX+ maxX) * 0.5f - (maxX- minX) * 0.5f;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         Y = (minY+ maxY) * 0.5f - (maxY- minY) * 0.5f;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         Z = (minZ+ maxZ) * 0.5f - (maxZ- minZ) * 0.5f;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         X2 = (minX+ maxX) * 0.5f + (maxX- minX) * 0.5f;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         Y2 = (minY+ maxY) * 0.5f + (maxY- minY) * 0.5f;
+                    }
+                    if (rw.Reader is not null)
+                    {
                         Z2 = (minZ+ maxZ) * 0.5f + (maxZ- minZ) * 0.5f;
                     }
                 }

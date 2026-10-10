@@ -105,8 +105,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
             rw.NodeRef<CMotionManagerLeaves>(ref n.managerModel, ref n.managerModelFile);
             rw.Vec3(ref n.pos);
             rw.Single(ref n.uniformRadiusLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Radius = (n.UniformRadiusLegacy, n.UniformRadiusLegacy, n.UniformRadiusLegacy);
             }

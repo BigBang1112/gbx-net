@@ -908,8 +908,7 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.collisionEnabledLegacy);
             rw.Boolean(ref n.contactInterestLegacy);
             rw.Boolean(ref n.dynamicTypeLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000;
             }
@@ -970,21 +969,26 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.dynamicTypeLegacy);
             rw.Boolean(ref n.castsShadowLegacy);
 
-            if (rw.Reader != null)
+            if (n.CastsShadowLegacy)
             {
-                if (n.CastsShadowLegacy)
+                if (rw.Reader is not null)
                 {
                     n.CountShadowTexCasted = 2;
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.CountShadowTexCasted = 0;
                 }
-
-                n.FlagsItem = n.FlagsItem| 0x800000;
             }
 
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
+            {
+                n.FlagsItem = n.FlagsItem| 0x800000;
+            }
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000;
             }
@@ -1010,18 +1014,15 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.contactInterestLegacy);
             rw.Boolean(ref n.dynamicTypeLegacy);
             rw.Byte(ref n.countShadowTexCastedLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.CountShadowTexCasted = n.CountShadowTexCastedLegacy;
             }
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = n.FlagsItem| 0x800000;
             }
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000;
             }
@@ -1048,25 +1049,28 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.contactInterestLegacy);
             rw.Boolean(ref n.dynamicTypeLegacy);
             rw.Byte(ref n.countShadowTexCastedLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.CountShadowTexCasted = n.CountShadowTexCastedLegacy;
             }
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = n.FlagsItem& 0xFFFFFFFFFFFFFDFF;
+            }
 
-                if (n.IsBackgroundLegacy)
+            if (n.IsBackgroundLegacy)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x200;
                 }
-
-                n.FlagsItem = n.FlagsItem| 0x800000;
             }
 
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
+            {
+                n.FlagsItem = n.FlagsItem| 0x800000;
+            }
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000;
             }
@@ -1094,25 +1098,28 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.contactInterestLegacy);
             rw.Boolean(ref n.dynamicTypeLegacy);
             rw.Byte(ref n.countShadowTexCastedLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.CountShadowTexCasted = n.CountShadowTexCastedLegacy;
             }
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = n.FlagsItem& 0xFFFFFFFFFFFFFDFF;
+            }
 
-                if (n.IsBackgroundLegacy)
+            if (n.IsBackgroundLegacy)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x200;
                 }
-
-                n.FlagsItem = n.FlagsItem| 0x800000;
             }
 
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
+            {
+                n.FlagsItem = n.FlagsItem| 0x800000;
+            }
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000;
             }
@@ -1140,21 +1147,25 @@ public partial class CHmsItem : CMwNod, IClass
             rw.Boolean(ref n.contactInterestLegacy);
             rw.Boolean(ref n.dynamicTypeLegacy);
             rw.Byte(ref n.countShadowTexCastedLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.CountShadowTexCasted = n.CountShadowTexCastedLegacy;
             }
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = n.FlagsItem& 0xFFFFFFFFFFFFFDFF;
+            }
 
-                if (n.IsBackgroundLegacy)
+            if (n.IsBackgroundLegacy)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x200;
                 }
+            }
 
+            if (rw.Reader is not null)
+            {
                 n.FlagsItem = n.FlagsItem| 0xFFF0000010800000;
             }
         }
@@ -1177,10 +1188,12 @@ public partial class CHmsItem : CMwNod, IClass
             rw.UInt32(ref U01);
             rw.DataUInt32(ref n.flagsLegacy32);
             rw.Boolean(ref n.contactInterestLegacy);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFF60000) | (n.FlagsLegacy32& 0x3FF) | ((n.FlagsLegacy32& 0x100) << 11) | 0xFFF0000010000000;
+            }
+            if (rw.Reader is not null)
+            {
                 n.VisibleId = 0;
             }
         }
@@ -1199,12 +1212,14 @@ public partial class CHmsItem : CMwNod, IClass
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
             rw.DataUInt32(ref n.flagsLegacy32);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0x0000700000000000) | 0xFFF1800010000000 | (n.FlagsLegacy32& 0xFFFE1BFF);
+            }
 
-                if ((n.FlagsLegacy32& 0xFF) != 0)
+            if ((n.FlagsLegacy32& 0xFF) != 0)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x0000000100000000;
                 }
@@ -1225,20 +1240,28 @@ public partial class CHmsItem : CMwNod, IClass
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
             rw.DataUInt64(ref n.flagsLegacy64);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsLegacy64& 0x000070002FFE1BFF) | 0xFFF1800010000000;
+            }
 
-                if (((n.FlagsLegacy64>> 32) & 0xFFF) < 12)
+            if (((n.FlagsLegacy64>> 32) & 0xFFF) < 12)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << n.ShadowCasterGroupIdLegacy);
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x0000000100000000;
                 }
+            }
 
+            if (rw.Reader is not null)
+            {
                 n.VisibleId = (ushort)(((n.FlagsLegacy64>> 24) & 0xFF));
             }
         }
@@ -1258,16 +1281,21 @@ public partial class CHmsItem : CMwNod, IClass
         {
             rw.DataUInt64(ref n.flagsLegacy64);
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsLegacy64& 0x00007000FFFE1BFF) | 0xFFF1800010000000;
+            }
 
-                if (((n.FlagsLegacy64>> 32) & 0xFFF) < 12)
+            if (((n.FlagsLegacy64>> 32) & 0xFFF) < 12)
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << n.ShadowCasterGroupIdLegacy);
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.FlagsItem = n.FlagsItem| 0x0000000100000000;
                 }
@@ -1289,8 +1317,7 @@ public partial class CHmsItem : CMwNod, IClass
         {
             rw.DataUInt64(ref n.flagsLegacy64);
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsLegacy64& 0x00007FFFFFFE1BFF) | 0xFFF1800010000000;
             }
@@ -1311,8 +1338,7 @@ public partial class CHmsItem : CMwNod, IClass
         {
             rw.DataUInt64(ref n.flagsLegacy64);
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsLegacy64& 0x0000FFFFFFFE1BFF) | 0xFFF1000010000000;
             }
@@ -1333,15 +1359,9 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            if (rw.Writer != null)
-            {
-                n.FlagsItem = n.FlagsItem& 0xFFFFFFFF3FFFFFFF;
-            }
-
-            rw.DataUInt64(ref n.flagsItem);
+            n.flagsItem = rw.DataUInt64((ulong)(rw.Writer is null ? default : (n.FlagsItem& 0xFFFFFFFF3FFFFFFF)));
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000;
             }
@@ -1362,15 +1382,9 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            if (rw.Writer != null)
-            {
-                n.FlagsItem = n.FlagsItem& 0xFFFFFFFF3FFFFFFF;
-            }
-
-            rw.DataUInt64(ref n.flagsItem);
+            n.flagsItem = rw.DataUInt64((ulong)(rw.Writer is null ? default : (n.FlagsItem& 0xFFFFFFFF3FFFFFFF)));
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000;
             }
@@ -1391,15 +1405,9 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            if (rw.Writer != null)
-            {
-                n.FlagsItem = n.FlagsItem& 0xFFFFFFFF3FFFFFFF;
-            }
-
-            rw.DataUInt64(ref n.flagsItem);
+            n.flagsItem = rw.DataUInt64((ulong)(rw.Writer is null ? default : (n.FlagsItem& 0xFFFFFFFF3FFFFFFF)));
             rw.UInt16(ref n.visibleId);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.FlagsItem = (n.FlagsItem& 0xFFFFFFFFFFFE1FFF) | 0x10000000;
             }
@@ -1420,12 +1428,7 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            if (rw.Writer != null)
-            {
-                n.FlagsItem = n.FlagsItem& 0xFFFFFFFF3FFFFFFF;
-            }
-
-            rw.DataUInt64(ref n.flagsItem);
+            n.flagsItem = rw.DataUInt64((ulong)(rw.Writer is null ? default : (n.FlagsItem& 0xFFFFFFFF3FFFFFFF)));
             rw.UInt16(ref n.visibleId);
         }
     }

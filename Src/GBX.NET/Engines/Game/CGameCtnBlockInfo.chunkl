@@ -29,8 +29,7 @@ constructor
 
 0x007 // legacy shared spawn location
   iso4? SpawnLocGround
-  if rw.Reader != null
-    SpawnLocAir = SpawnLocGround
+  SpawnLocAir = SpawnLocGround
 
 0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT] // IsPillar
   bool IsPillar
@@ -165,7 +164,7 @@ constructor
   int<EBaseType> BaseType
   v0=
     int // Legacy generator override: only 1 selects Generator
-    if rw.Reader != null && U01 == 1
+    if U01 == 1
       BaseType = EBaseType.Generator
 
 0x02C [MP3, TMT, MP4, TM2020] // AdditionalVariantsAir

@@ -42,7 +42,7 @@ internal static class GameDefaultsWriter
             new HashSet<string>(ScopeModel.Walk(constructor.Body).OfType<ComputedAssignment>()
                 .Select(static a => a.TargetName), StringComparer.Ordinal);
         var defaults = new List<(FieldModel Field, FieldDeclaration Declaration, string? Game, string Value, string Statement)>();
-        var writer = new SerializationWriter(code, layout, scope, layouts, SerializationMode.ReadWrite, chunk);
+        var writer = new SerializationWriter(code, layout, scope, layouts, SerializationMode.None, chunk);
 
         foreach (var field in StoredFields(scope, chunk))
         {

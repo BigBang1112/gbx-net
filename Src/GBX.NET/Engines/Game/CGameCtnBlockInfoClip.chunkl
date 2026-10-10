@@ -6,12 +6,12 @@ constructor
 
 0x000 (skippable) // legacy symmetrical clip
   CGameCtnCollector LegacySymmetricalClip (external)
-  if rw.Reader != null && LegacySymmetricalClip != null
+  if LegacySymmetricalClip != null
     SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
 0x001 // legacy symmetrical clip
   CGameCtnCollector LegacySymmetricalClip (external)
-  if rw.Reader != null && LegacySymmetricalClip != null
+  if LegacySymmetricalClip != null
     SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
 0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // SymmetricalClipId
@@ -19,11 +19,10 @@ constructor
 
 0x003 // legacy free clip flag
   bool IsFreeClip (local, write: "n.ClipType != EClipType.ClassicClip")
-  if rw.Reader != null
-    if IsFreeClip
-      ClipType = EClipType.FreeClipSide
-    else
-      ClipType = EClipType.ClassicClip
+  if IsFreeClip
+    ClipType = EClipType.FreeClipSide
+  else
+    ClipType = EClipType.ClassicClip
 
 0x004 [MP3, TMT, MP4, TM2020] // free clip restrictions
   bool IsFullFreeClip

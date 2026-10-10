@@ -771,8 +771,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.Iso4(ref n.spawnLocGround);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.SpawnLocAir = n.SpawnLocGround;
             }
@@ -1476,9 +1475,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             {
                 rw.Int32(ref U01);
 
-                if (rw.Reader != null && U01== 1)
+                if (U01== 1)
                 {
-                    n.BaseType = EBaseType.Generator;
+                    if (rw.Reader is not null)
+                    {
+                        n.BaseType = EBaseType.Generator;
+                    }
                 }
             }
         }

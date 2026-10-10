@@ -35,7 +35,7 @@ CGameCtnBlockInfoMobil 0x03122000
     CPlugSolid OldSolidAggreg (external)
   v4..5
     CPlugPolyLine3[] LegacyRailPolylines
-    if rw.Reader != null && LegacyRailPolylines != null && LegacyRailPolylines.Length > 0
+    if LegacyRailPolylines != null && LegacyRailPolylines.Length > 0
       RailPath = ConvertedRailPath
   v5..10
     bool // Discarded legacy rail flag
@@ -71,9 +71,8 @@ CGameCtnBlockInfoMobil 0x03122000
       float VFXScale
     v18=
       iso4 LegacyVFXLoc = Iso4.Identity
-      if rw.Reader != null
-        VFXPosition = LegacyVFXLoc.Translation
-        VFXDirection = (LegacyVFXLoc.XZ, LegacyVFXLoc.YZ, LegacyVFXLoc.ZZ)
+      VFXPosition = LegacyVFXLoc.Translation
+      VFXDirection = (LegacyVFXLoc.XZ, LegacyVFXLoc.YZ, LegacyVFXLoc.ZZ)
     v19+
       vec3 VFXPosition
       vec3 VFXDirection = (0, 0, 1)

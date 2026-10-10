@@ -60,7 +60,7 @@ public class CPlugDataTapeLayoutTests
         using (var writer = new GbxWriter(saved))
         using (var rw = new GbxReaderWriter(writer)) chunk.ReadWrite(node, rw);
         await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray(), CollectionOrdering.Matching);
-        await Assert.That(node.NoticeCount).IsEqualTo(legacy ? 0 : noticeCount);
+        await Assert.That(node.NoticeCount).IsEqualTo(legacy ? 99 : noticeCount);
     }
 
     [Test]

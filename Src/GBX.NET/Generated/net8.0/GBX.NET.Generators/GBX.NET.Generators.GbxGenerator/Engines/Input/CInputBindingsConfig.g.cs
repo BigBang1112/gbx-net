@@ -322,7 +322,10 @@ public partial class CInputBindingsConfig : CMwNod, IClass
             if (v == 0)
             {
                 rw.Int32(ref this.objectIndex);
-                SubDeviceIndex = 0;
+                if (rw.Reader is not null)
+                {
+                    SubDeviceIndex = 0;
+                }
             }
 
             rw.Id(ref this.deviceId);

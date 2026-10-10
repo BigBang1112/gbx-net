@@ -190,9 +190,12 @@ public partial class CMotionPlayer : CMotion, IClass
             {
                 rw.UInt32(ref n.playState);
             }
-            else if (rw.Reader != null)
+            else
             {
-                n.PlayState = n.SavePlayState;
+                if (rw.Reader is not null)
+                {
+                    n.PlayState = n.SavePlayState;
+                }
             }
 
             n.Name = rw.Id(n.Name);
@@ -221,9 +224,12 @@ public partial class CMotionPlayer : CMotion, IClass
             {
                 rw.UInt32(ref n.playState);
             }
-            else if (rw.Reader != null)
+            else
             {
-                n.PlayState = n.SavePlayState;
+                if (rw.Reader is not null)
+                {
+                    n.PlayState = n.SavePlayState;
+                }
             }
 
             rw.Boolean(ref n.isPhysics);

@@ -211,13 +211,15 @@ public partial class CHmsZone : CMwNod, IClass
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
             rw.ArrayNodeRef_deprec<CHmsFogPlane>(ref n.fogPlanes!);
-            n.FogFlags = n.FogFlags& 0xF;
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
             rw.Single(ref n.fogExpDensity);
-            rw.UInt32(ref n.fogFlags);
-            n.FogFlags = n.FogFlags& 0xF;
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
         }
     }
 

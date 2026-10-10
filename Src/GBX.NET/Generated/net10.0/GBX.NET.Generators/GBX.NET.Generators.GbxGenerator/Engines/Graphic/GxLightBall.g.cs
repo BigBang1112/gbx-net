@@ -265,10 +265,16 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation1);
             rw.Single(ref n.attenuation2);
 
-            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
             {
-                n.AttHTnLR = n.Radius* n.Attenuation1;
-                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
             }
         }
     }
@@ -290,10 +296,16 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation2);
             rw.Single(ref n.emittingRadius);
 
-            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
             {
-                n.AttHTnLR = n.Radius* n.Attenuation1;
-                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
             }
         }
     }
@@ -317,14 +329,19 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation2);
             rw.Single(ref n.emittingRadius);
             rw.Vec3(ref n.ambientRGB);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.RadiusSpecular = n.Radius;
+            }
 
-                if (n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
+            {
+                if (rw.Reader is not null)
                 {
                     n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
                     n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
                 }
             }
@@ -350,22 +367,28 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation2);
             rw.Vec3(ref n.ambientRGB);
 
-            if (rw.Reader != null)
+            if (n.RadiusSpecular- n.Radius> 0.00001f || n.RadiusSpecular- n.Radius< -0.00001f)
             {
-                if (n.RadiusSpecular- n.Radius> 0.00001f || n.RadiusSpecular- n.Radius< -0.00001f)
+                if ((n.RadiusSpecular- n.Radius> n.Radius* 0.00001f && n.RadiusSpecular- n.Radius> -n.Radius* 0.00001f) || (n.RadiusSpecular- n.Radius< n.Radius* 0.00001f && n.RadiusSpecular- n.Radius< -n.Radius* 0.00001f))
                 {
-                    if ((n.RadiusSpecular- n.Radius> n.Radius* 0.00001f && n.RadiusSpecular- n.Radius> -n.Radius* 0.00001f) || (n.RadiusSpecular- n.Radius< n.Radius* 0.00001f && n.RadiusSpecular- n.Radius< -n.Radius* 0.00001f))
+                    if ((n.RadiusSpecular- n.Radius> n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius> -n.RadiusSpecular* 0.00001f) || (n.RadiusSpecular- n.Radius< n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius< -n.RadiusSpecular* 0.00001f))
                     {
-                        if ((n.RadiusSpecular- n.Radius> n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius> -n.RadiusSpecular* 0.00001f) || (n.RadiusSpecular- n.Radius< n.RadiusSpecular* 0.00001f && n.RadiusSpecular- n.Radius< -n.RadiusSpecular* 0.00001f))
+                        if (rw.Reader is not null)
                         {
                             n.Flags = n.Flags| 1;
                         }
                     }
                 }
+            }
 
-                if (n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
+            {
+                if (rw.Reader is not null)
                 {
                     n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
                     n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
                 }
             }
@@ -392,14 +415,19 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation1);
             rw.Single(ref n.attenuation2);
             rw.Vec3(ref n.ambientRGB);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFFFFC3;
+            }
 
-                if (n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
+            {
+                if (rw.Reader is not null)
                 {
                     n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
                     n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
                 }
             }
@@ -427,14 +455,19 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation1);
             rw.Single(ref n.attenuation2);
             rw.Vec3(ref n.ambientRGB);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Flags = n.Flags& 0xFFFFFFC7;
+            }
 
-                if (n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
+            {
+                if (rw.Reader is not null)
                 {
                     n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
                     n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
                 }
             }
@@ -465,10 +498,16 @@ public partial class GxLightBall : GxLightPoint, IClass
             rw.Single(ref n.attenuation2);
             rw.Vec3(ref n.ambientRGB);
 
-            if (rw.Reader != null && n.Attenuation1> -0.5f)
+            if (n.Attenuation1> -0.5f)
             {
-                n.AttHTnLR = n.Radius* n.Attenuation1;
-                n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR = n.Radius* n.Attenuation1;
+                }
+                if (rw.Reader is not null)
+                {
+                    n.AttHTnLR2 = n.Attenuation2* n.Radius* n.Radius;
+                }
             }
         }
     }

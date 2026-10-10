@@ -213,8 +213,7 @@ public partial class GxLightSpot : GxLightBall, IClass
             rw.Single(ref n.angleInner);
             rw.Single(ref n.angleOuter);
             rw.Single(ref n.falloffExponent);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.AngleFlare = n.AngleOuter+ n.AngleOuter;
             }
@@ -240,13 +239,13 @@ public partial class GxLightSpot : GxLightBall, IClass
             rw.Single(ref n.angleFlare);
             rw.Single(ref n.falloffExponent);
 
-            if (rw.Reader != null)
+            if (n.AngleFlare- n.AngleOuter> 0.00001f || n.AngleFlare- n.AngleOuter< -0.00001f)
             {
-                if (n.AngleFlare- n.AngleOuter> 0.00001f || n.AngleFlare- n.AngleOuter< -0.00001f)
+                if ((n.AngleFlare- n.AngleOuter> n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleFlare* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleFlare* 0.00001f))
                 {
-                    if ((n.AngleFlare- n.AngleOuter> n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleFlare* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleFlare* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleFlare* 0.00001f))
+                    if ((n.AngleFlare- n.AngleOuter> n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleOuter* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleOuter* 0.00001f))
                     {
-                        if ((n.AngleFlare- n.AngleOuter> n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter> -n.AngleOuter* 0.00001f) || (n.AngleFlare- n.AngleOuter< n.AngleOuter* 0.00001f && n.AngleFlare- n.AngleOuter< -n.AngleOuter* 0.00001f))
+                        if (rw.Reader is not null)
                         {
                             n.Flags = n.Flags| 1;
                         }

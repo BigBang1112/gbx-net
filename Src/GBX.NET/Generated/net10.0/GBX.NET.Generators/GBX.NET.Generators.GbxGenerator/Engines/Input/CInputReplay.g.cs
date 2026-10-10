@@ -157,9 +157,11 @@ public partial class CInputReplay : CMwNod, IClass
         {
             rw.UInt32(ref this.time);
             rw.Byte(ref this.actionIndex);
-            Value = Value& 0xFFFFFF;
-            rw.UInt32(ref this.value);
-            Value = Value& 0xFFFFFF;
+            this.value = rw.UInt32((uint)(rw.Writer is null ? default : (Value& 0xFFFFFF)));
+            if (rw.Reader is not null)
+            {
+                Value = Value& 0xFFFFFF;
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -690,13 +690,16 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             rw.Boolean(ref n.useHDR);
 
-            if (rw.Reader != null)
+            if (n.UseHDR)
             {
-                if (n.UseHDR)
+                if (rw.Reader is not null)
                 {
                     n.CompressMode = ECompressMode.Scale_sRGB_DXT1;
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.CompressMode = ECompressMode.Ldr_DXT1;
                 }
@@ -1101,13 +1104,16 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             rw.Boolean(ref n.storeLDir0Legacy);
 
-            if (rw.Reader != null)
+            if (n.StoreLDir0Legacy)
             {
-                if (n.StoreLDir0Legacy)
+                if (rw.Reader is not null)
                 {
                     n.StoreLDir0 = EStoreLDir0.HalfPlusHalfCos;
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.StoreLDir0 = EStoreLDir0.Sinc;
                 }

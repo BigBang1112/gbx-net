@@ -12,6 +12,5 @@ CInputReplay 0x1300D000
 archive Event
   uint Time
   byte ActionIndex
-  Value = Value & 0xFFFFFF
-  uint Value // Packed 24-bit input value; encoding depends on the action type.
+  uint Value (write: "Value & 0xFFFFFF") // Packed 24-bit input value; encoding depends on the action type.
   Value = Value & 0xFFFFFF

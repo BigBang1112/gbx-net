@@ -4744,7 +4744,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                 if (Version == 5)
                 {
-                    U09 = false;
+                    if (rw.Reader is not null)
+                    {
+                        U09 = false;
+                    }
                 }
             }
         }

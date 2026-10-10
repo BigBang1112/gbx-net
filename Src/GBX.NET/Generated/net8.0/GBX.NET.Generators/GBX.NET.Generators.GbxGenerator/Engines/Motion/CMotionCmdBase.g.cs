@@ -222,8 +222,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         {
             rw.UInt32(ref n.legacyPeriod);
             rw.Single(ref n.legacySpeed);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Period = n.LegacyPeriodInMilliseconds;
             }
@@ -278,8 +277,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         {
             base.ReadWrite(n, rw);
             rw.Int32(ref n.legacyPhase);
-
-            if (rw.Reader != null)
+            if (rw.Reader is not null)
             {
                 n.Phase = n.LegacyNormalizedPhase;
             }

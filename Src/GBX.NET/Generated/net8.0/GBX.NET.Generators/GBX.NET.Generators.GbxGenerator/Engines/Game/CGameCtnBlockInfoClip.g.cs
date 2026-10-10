@@ -233,9 +233,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         {
             rw.NodeRef<CGameCtnCollector>(ref n.legacySymmetricalClip, ref n.legacySymmetricalClipFile);
 
-            if (rw.Reader != null && n.LegacySymmetricalClip!= null)
+            if (n.LegacySymmetricalClip!= null)
             {
-                n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+                if (rw.Reader is not null)
+                {
+                    n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+                }
             }
         }
     }
@@ -257,9 +260,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         {
             rw.NodeRef<CGameCtnCollector>(ref n.legacySymmetricalClip, ref n.legacySymmetricalClipFile);
 
-            if (rw.Reader != null && n.LegacySymmetricalClip!= null)
+            if (n.LegacySymmetricalClip!= null)
             {
-                n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+                if (rw.Reader is not null)
+                {
+                    n.SymmetricalClipId = n.LegacySymmetricalClip.Ident.Id;
+                }
             }
         }
     }
@@ -302,13 +308,16 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         {
             var isFreeClip = rw.Boolean((rw.Writer is null ? default : (n.ClipType != EClipType.ClassicClip)));
 
-            if (rw.Reader != null)
+            if (isFreeClip)
             {
-                if (isFreeClip)
+                if (rw.Reader is not null)
                 {
                     n.ClipType = EClipType.FreeClipSide;
                 }
-                else
+            }
+            else
+            {
+                if (rw.Reader is not null)
                 {
                     n.ClipType = EClipType.ClassicClip;
                 }

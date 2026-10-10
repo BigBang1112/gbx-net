@@ -250,8 +250,7 @@ property int ShadowCasterGroupIdLegacy
   bool CollisionEnabledLegacy // Obsolete collision-group switch, used by TMF
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
 0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugSolid Solid
@@ -265,14 +264,12 @@ property int ShadowCasterGroupIdLegacy
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
   bool CastsShadowLegacy
-  if rw.Reader != null
-    if CastsShadowLegacy
-      CountShadowTexCasted = 2
-    else
-      CountShadowTexCasted = 0
-    FlagsItem = FlagsItem | 0x800000
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+  if CastsShadowLegacy
+    CountShadowTexCasted = 2
+  else
+    CountShadowTexCasted = 0
+  FlagsItem = FlagsItem | 0x800000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
 0x004
   uint
@@ -280,12 +277,9 @@ property int ShadowCasterGroupIdLegacy
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
   byte CountShadowTexCastedLegacy
-  if rw.Reader != null
-    CountShadowTexCasted = CountShadowTexCastedLegacy
-  if rw.Reader != null
-    FlagsItem = FlagsItem | 0x800000
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+  CountShadowTexCasted = CountShadowTexCastedLegacy
+  FlagsItem = FlagsItem | 0x800000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
 0x005
   uint
@@ -294,15 +288,12 @@ property int ShadowCasterGroupIdLegacy
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
   byte CountShadowTexCastedLegacy
-  if rw.Reader != null
-    CountShadowTexCasted = CountShadowTexCastedLegacy
-  if rw.Reader != null
-    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
-    if IsBackgroundLegacy
-      FlagsItem = FlagsItem | 0x200
-    FlagsItem = FlagsItem | 0x800000
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+  CountShadowTexCasted = CountShadowTexCastedLegacy
+  FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+  if IsBackgroundLegacy
+    FlagsItem = FlagsItem | 0x200
+  FlagsItem = FlagsItem | 0x800000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
 0x006
   uint
@@ -312,15 +303,12 @@ property int ShadowCasterGroupIdLegacy
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
   byte CountShadowTexCastedLegacy
-  if rw.Reader != null
-    CountShadowTexCasted = CountShadowTexCastedLegacy
-  if rw.Reader != null
-    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
-    if IsBackgroundLegacy
-      FlagsItem = FlagsItem | 0x200
-    FlagsItem = FlagsItem | 0x800000
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
+  CountShadowTexCasted = CountShadowTexCastedLegacy
+  FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+  if IsBackgroundLegacy
+    FlagsItem = FlagsItem | 0x200
+  FlagsItem = FlagsItem | 0x800000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFFFBFF) | 0xFFF0000010000000
 
 0x007
   uint
@@ -330,87 +318,68 @@ property int ShadowCasterGroupIdLegacy
   bool ContactInterestLegacy // Obsolete contact-interest switch, used by TMF
   bool DynamicTypeLegacy // Obsolete dynamic-type switch, used by TMF
   byte CountShadowTexCastedLegacy
-  if rw.Reader != null
-    CountShadowTexCasted = CountShadowTexCastedLegacy
-  if rw.Reader != null
-    FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
-    if IsBackgroundLegacy
-      FlagsItem = FlagsItem | 0x200
-    FlagsItem = FlagsItem | 0xFFF0000010800000
+  CountShadowTexCasted = CountShadowTexCastedLegacy
+  FlagsItem = FlagsItem & 0xFFFFFFFFFFFFFDFF
+  if IsBackgroundLegacy
+    FlagsItem = FlagsItem | 0x200
+  FlagsItem = FlagsItem | 0xFFF0000010800000
 
 0x008
   uint
   datauint FlagsLegacy32
   bool ContactInterestLegacy
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFF60000) | (FlagsLegacy32 & 0x3FF) | ((FlagsLegacy32 & 0x100) << 11) | 0xFFF0000010000000
-    VisibleId = 0
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFF60000) | (FlagsLegacy32 & 0x3FF) | ((FlagsLegacy32 & 0x100) << 11) | 0xFFF0000010000000
+  VisibleId = 0
 
 0x009
   datauint FlagsLegacy32
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0x0000700000000000) | 0xFFF1800010000000 | (FlagsLegacy32 & 0xFFFE1BFF)
-    if (FlagsLegacy32 & 0xFF) != 0
-      FlagsItem = FlagsItem | 0x0000000100000000
+  FlagsItem = (FlagsItem & 0x0000700000000000) | 0xFFF1800010000000 | (FlagsLegacy32 & 0xFFFE1BFF)
+  if (FlagsLegacy32 & 0xFF) != 0
+    FlagsItem = FlagsItem | 0x0000000100000000
 
 0x00A
   dataulong FlagsLegacy64
-  if rw.Reader != null
-    FlagsItem = (FlagsLegacy64 & 0x000070002FFE1BFF) | 0xFFF1800010000000
-    if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
-      FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
-    else
-      FlagsItem = FlagsItem | 0x0000000100000000
-    VisibleId = ((FlagsLegacy64 >> 24) & 0xFF)
+  FlagsItem = (FlagsLegacy64 & 0x000070002FFE1BFF) | 0xFFF1800010000000
+  if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
+    FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
+  else
+    FlagsItem = FlagsItem | 0x0000000100000000
+  VisibleId = ((FlagsLegacy64 >> 24) & 0xFF)
 
 0x00B
   dataulong FlagsLegacy64
   ushort VisibleId = 1 [TMF = 0]
-  if rw.Reader != null
-    FlagsItem = (FlagsLegacy64 & 0x00007000FFFE1BFF) | 0xFFF1800010000000
-    if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
-      FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
-    else
-      FlagsItem = FlagsItem | 0x0000000100000000
+  FlagsItem = (FlagsLegacy64 & 0x00007000FFFE1BFF) | 0xFFF1800010000000
+  if ((FlagsLegacy64 >> 32) & 0xFFF) < 12
+    FlagsItem = FlagsItem | ((0x0000000100000000 & 0xFFFFFFFFFFFFFFFF) << ShadowCasterGroupIdLegacy)
+  else
+    FlagsItem = FlagsItem | 0x0000000100000000
 
 0x00C
   dataulong FlagsLegacy64
   ushort VisibleId
-  if rw.Reader != null
-    FlagsItem = (FlagsLegacy64 & 0x00007FFFFFFE1BFF) | 0xFFF1800010000000
+  FlagsItem = (FlagsLegacy64 & 0x00007FFFFFFE1BFF) | 0xFFF1800010000000
 
 0x00D
   dataulong FlagsLegacy64
   ushort VisibleId
-  if rw.Reader != null
-    FlagsItem = (FlagsLegacy64 & 0x0000FFFFFFFE1BFF) | 0xFFF1000010000000
+  FlagsItem = (FlagsLegacy64 & 0x0000FFFFFFFE1BFF) | 0xFFF1000010000000
 
 0x00E [TM10]
-  if rw.Writer != null
-    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
-  dataulong FlagsItem = 0xFFF1C00018800000 [TMF = 0xFFF1C00019800000]
+  dataulong FlagsItem = 0xFFF1C00018800000 (write: "FlagsItem & 0xFFFFFFFF3FFFFFFF") [TMF = 0xFFF1C00019800000]
   ushort VisibleId
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
 
 0x00F [TMPU]
-  if rw.Writer != null
-    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
-  dataulong FlagsItem
+  dataulong FlagsItem (write: "FlagsItem & 0xFFFFFFFF3FFFFFFF")
   ushort VisibleId
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1BFF) | 0xFFF0000010000000
 
 0x010 [TMSX]
-  if rw.Writer != null
-    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF
-  dataulong FlagsItem
+  dataulong FlagsItem (write: "FlagsItem & 0xFFFFFFFF3FFFFFFF")
   ushort VisibleId
-  if rw.Reader != null
-    FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1FFF) | 0x10000000
+  FlagsItem = (FlagsItem & 0xFFFFFFFFFFFE1FFF) | 0x10000000
 
 0x011 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  if rw.Writer != null
-    FlagsItem = FlagsItem & 0xFFFFFFFF3FFFFFFF // Clear runtime bits 30 and 31 in Maniaplanet/TM2020; TMF also clears bit 29
-  dataulong FlagsItem
+  dataulong FlagsItem (write: "FlagsItem & 0xFFFFFFFF3FFFFFFF") // Clear runtime bits 30 and 31 in Maniaplanet/TM2020; TMF also clears bit 29
   ushort VisibleId

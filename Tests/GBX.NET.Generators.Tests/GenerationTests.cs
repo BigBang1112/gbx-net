@@ -9,6 +9,79 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments(false, 0)]
+    [Arguments(false, 1)]
+    [Arguments(true, 0)]
+    [Arguments(true, 1)]
+    public async Task SerializationAssignmentsApplyOnlyWhenReading(bool archive, int structureKind)
+    {
+        var targetType = archive ? "Child" : "Example";
+        var write = archive ? "node.Write(writer)" : "chunk.Write(node, writer)";
+        var read = archive ? "node.Read(reader)" : "chunk.Read(node, reader)";
+        var readWrite = archive ? "node.ReadWrite(rw)" : "chunk.ReadWrite(node, rw)";
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Chunk03043001 { }
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Child { }
+
+                public static string Verify()
+                {
+                    var node = new {{targetType}} { Value = 7 };
+                    var chunk = new Chunk03043001();
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    var reader = new GBX.NET.Serialization.GbxReader(3);
+                    var rw = new GBX.NET.Serialization.GbxReaderWriter(writer);
+                    {{(structureKind == 0 ? readWrite : write)}};
+                    var afterWrite = node.Value + "," + node.Calls;
+                    {{(structureKind == 0 ? "rw = new GBX.NET.Serialization.GbxReaderWriter(); " + readWrite + ";" : "")}}
+                    var withoutReader = node.Value + "," + node.Calls;
+                    rw = new GBX.NET.Serialization.GbxReaderWriter(reader);
+                    {{(structureKind == 0 ? readWrite : read)}};
+                    var afterRead = node.Value + "," + node.Calls;
+                    {{(structureKind == 0 ? "rw = new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(4), writer); " + readWrite + ";" : write + ";")}}
+                    return afterWrite + ";" + withoutReader + ";" + afterRead + ";"
+                        + node.Value + "," + node.Calls + ";" + string.Join(",", writer.Values);
+                }
+            }
+            {{(archive ? "public partial class Example { public partial class Child" : "public partial class Example")}}
+            {
+                public int Calls { get; private set; }
+                public int AssignmentValue { get { Calls++; return Value * 2; } }
+            }
+            {{(archive ? "}" : "")}}
+            """, new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            {{(archive ? "archive Child" : "0x001")}}
+              int Value
+              Value = AssignmentValue
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var methods = Engine(result).GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>().ToArray();
+        if (structureKind == 0)
+        {
+            await Assert.That(methods.Single(x => x.Identifier.ValueText == "ReadWrite").ToString())
+                .Contains("if (rw.Reader is not null)");
+        }
+        else
+        {
+            await Assert.That(methods.Single(x => x.Identifier.ValueText == "Read").ToString()).Contains("AssignmentValue");
+            await Assert.That(methods.Single(x => x.Identifier.ValueText == "Write").ToString()).DoesNotContain("AssignmentValue");
+        }
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo(structureKind == 0
+            ? "7,0;7,0;6,1;8,2;7,4" : "7,0;7,0;6,1;6,1;7,6");
+    }
+
+    [Test]
     [Arguments("version")]
     [Arguments("versionb")]
     public async Task VersionDefaultsAreRejectedForChunksWithExplicitVersions(string keyword)
@@ -1140,7 +1213,7 @@ public class GenerationTests
         await Assert.That(generated).Contains("i1 < count");
         await Assert.That(generated).Contains("n.Value = item;");
         await Assert.That(generated).Contains("n.value = rw.Int32((rw.Writer is null ? default : (n.Value+ 1)));");
-        await Assert.That(generated).DoesNotContain("if (rw.Reader is not null)");
+        await Assert.That(generated).Contains("if (rw.Reader is not null)");
         await Assert.That(generated).DoesNotContain("if (rw.Writer is not null)");
         var root = Engine(result).GetRoot();
         await Assert.That(root.DescendantNodes().OfType<PropertyDeclarationSyntax>())
