@@ -350,7 +350,7 @@ internal static class ObjExporter
                 if (visual.VertexStreams.Count > 0)
                 {
                     var vStream = visual.VertexStreams[0];
-                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index], null, null, null, null, null);
+                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index]);
                 }
                 else
                 {

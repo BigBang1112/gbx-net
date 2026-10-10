@@ -1,72 +1,90 @@
 CPlugDecalModel 0x090A7000
 - inherits: CPlug
 
-0x002 [MP3, TMT, MP4, TM2020]
+property bool IsObsolete
+  get = (Flags & 1) != 0
+  set
+    if value
+      Flags = Flags | 1
+    else
+      Flags = Flags & 0xFFFFFFFE
+
+0x000 // legacy textures
+  CPlugBitmap DiffuseA (external)
+  CPlugBitmap Normal (external)
+
+0x001 // Solid
+  CPlugSolid Solid (external)
+
+0x002 [MP3, TMT.v5, MP4.v6, TM2020.v6] // textures and projection limits
   version
   v4-
     CPlugBitmap DiffuseA (external)
     CPlugBitmap Normal (external)
   v1+
-    float TexelByMeter
-    v2+
-      bool FadeNormalAndZ
-      v3+
-        float
-        v4=
-          CPlugBitmap Specular (external)
-        v5+
-          string DiffuseARef
-          if DiffuseARef == null || DiffuseARef == ""
-            CPlugBitmap DiffuseA (external)
-          string NormalRef
-          if NormalRef == null || NormalRef == ""
-            CPlugBitmap Normal (external)
-          string SpecularRef
-          if SpecularRef == null || SpecularRef == ""
-            CPlugBitmap Specular (external)
-          v6+
-            string RoughnessRef
-            if RoughnessRef == null || RoughnessRef == ""
-              CPlugBitmap Roughness
+    float TexelByMeter = 256
+  v2+
+    bool FadeNormalAndZ = true
+  v3+
+    float MaxAngleNCos = 0.087155804f
+  v4=
+    CPlugBitmap Specular (external)
+  v5+
+    string DiffuseARef = ""
+    if DiffuseARef == null || DiffuseARef == ""
+      CPlugBitmap DiffuseA (external)
+    string NormalRef = ""
+    if NormalRef == null || NormalRef == ""
+      CPlugBitmap Normal (external)
+    string SpecularRef = ""
+    if SpecularRef == null || SpecularRef == ""
+      CPlugBitmap Specular (external)
+  v6+
+    string RoughnessRef = ""
+    if RoughnessRef == null || RoughnessRef == ""
+      CPlugBitmap Roughness (external)
 
-0x003 [MP3, TMT, MP4, TM2020]
+0x003 [MP3, TMT, MP4, TM2020] // Icon
   CPlugBitmap Icon (external)
 
-0x004 [MP3, TMT, MP4, TM2020]
+0x004 [MP3, TMT.v7, MP4.v8, TM2020.v8] // solid, sprite, SVG, and macro decals
   version
-  CPlugSolid
-  bool RandomInstances
+  CPlugSolid Solid (external)
+  bool RandomInstances = true
   v2+
-    float
-    v3+
-      CPlugBitmap Sprite3dBitmap (external)
-      id Sprite3dGroupId
-      v4+
-        string SvgRef
-        if SvgRef == null || SvgRef == ""
-          CMwNod Svg (external)
-        v5+
-          float SvgSize
-          v6+
-            float SvgAlpha
-            v7+
-              int MinAngleN3d
-              v8+
-                CPlugDecalModel[] DecalModels (deprec)
-                MacroDecalSet[] MacroDecalSets
+    float MaxAngleN3dCos = 0.49999997f
+  v3+
+    CPlugBitmap Sprite3dBitmap (external)
+    id Sprite3dGroupId
+  v4+
+    string SvgRef = ""
+    if SvgRef == null || SvgRef == ""
+      CMwNod Svg (external)
+  v5+
+    float SvgSize = 1
+  v6+
+    float SvgAlpha = 1
+  v7+
+    int MinAngleN3d
+  v8+
+    CPlugDecalModel[] DecalModels = empty (deprec, external)
+    MacroDecalSet[] MacroDecalSets = empty
 
-0x006 [MP3, TMT, MP4, TM2020]
+0x005 // ImpactSize
   version
-  uint
+  float ImpactSize = 0.1f
+
+0x006 [MP3, TMT.v0, MP4.v0, TM2020.v0] // flags
+  version
+  uint Flags
 
 archive MacroDecalSet
-  id
-  box
-  MacroDecal3d[] Decals
+  id Id
+  box Bounds = DefaultBounds
+  MacroDecal3d[] Decals = empty
 
 archive MacroDecal3d
-  int
-  id
-  float
-  float
-  float
+  int DecalModelIndex
+  id SpriteGroupId
+  float Scale
+  vec2 Position // Editing-plane X and Z coordinates

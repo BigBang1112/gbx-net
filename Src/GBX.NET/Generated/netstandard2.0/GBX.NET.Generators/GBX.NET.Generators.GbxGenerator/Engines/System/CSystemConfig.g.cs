@@ -34,9 +34,350 @@ public partial class CSystemConfig : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0B005000;
 
+    private int displayResolutionPreset;
+    [AppliedWithChunk<Chunk0B005000>]
+    public int DisplayResolutionPreset
+    {
+        get => this.displayResolutionPreset;
+        set => this.displayResolutionPreset = value;
+    }
+
+    private int displayTexturesQuality;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayTexturesQuality
+    {
+        get => this.displayTexturesQuality;
+        set => this.displayTexturesQuality = value;
+    }
+
+    private int displayColorDepth;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayColorDepth
+    {
+        get => this.displayColorDepth;
+        set => this.displayColorDepth = value;
+    }
+
+    private int displayShaderQuality;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayShaderQuality
+    {
+        get => this.displayShaderQuality;
+        set => this.displayShaderQuality = value;
+    }
+
+    private int displayAntialiasing;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayAntialiasing
+    {
+        get => this.displayAntialiasing;
+        set => this.displayAntialiasing = value;
+    }
+
+    private int displayRefreshRate;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayRefreshRate
+    {
+        get => this.displayRefreshRate;
+        set => this.displayRefreshRate = value;
+    }
+
+    private bool displayVSync;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public bool DisplayVSync
+    {
+        get => this.displayVSync;
+        set => this.displayVSync = value;
+    }
+
+    private bool displayFullScreen;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public bool DisplayFullScreen
+    {
+        get => this.displayFullScreen;
+        set => this.displayFullScreen = value;
+    }
+
+    private int displayMaxFiltering;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayMaxFiltering
+    {
+        get => this.displayMaxFiltering;
+        set => this.displayMaxFiltering = value;
+    }
+
+    private int displayShadows;
+    [AppliedWithChunk<Chunk0B005000>]
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayShadows
+    {
+        get => this.displayShadows;
+        set => this.displayShadows = value;
+    }
+
+    private string? masterServerLogin;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B005007>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B005012>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    public string? MasterServerLogin
+    {
+        get => this.masterServerLogin;
+        set => this.masterServerLogin = value;
+    }
+
+    private string? masterServerPassword;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B005007>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B005012>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    public string? MasterServerPassword
+    {
+        get => this.masterServerPassword;
+        set => this.masterServerPassword = value;
+    }
+
+    private bool networkUseProxy;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    [AppliedWithChunk<Chunk0B00505F>]
+    public bool NetworkUseProxy
+    {
+        get => this.networkUseProxy;
+        set => this.networkUseProxy = value;
+    }
+
+    private string? networkProxyLogin;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public string? NetworkProxyLogin
+    {
+        get => this.networkProxyLogin;
+        set => this.networkProxyLogin = value;
+    }
+
+    private string? networkProxyPassword;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public string? NetworkProxyPassword
+    {
+        get => this.networkProxyPassword;
+        set => this.networkProxyPassword = value;
+    }
+
+    private string? networkMasterServerAddress;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    public string? NetworkMasterServerAddress
+    {
+        get => this.networkMasterServerAddress;
+        set => this.networkMasterServerAddress = value;
+    }
+
+    private int networkServerPort;
+    [GameVersionDefault(GameVersion.TMF, 2350)]
+    [GameVersionDefault(GameVersion.MP4, 2350)]
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public int NetworkServerPort
+    {
+        get => this.networkServerPort;
+        set => this.networkServerPort = value;
+    }
+
+    private int networkClientPort;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public int NetworkClientPort
+    {
+        get => this.networkClientPort;
+        set => this.networkClientPort = value;
+    }
+
+    private bool networkForceUseLocalAddress;
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public bool NetworkForceUseLocalAddress
+    {
+        get => this.networkForceUseLocalAddress;
+        set => this.networkForceUseLocalAddress = value;
+    }
+
+    private string? networkForceServerAddress;
+    [GameVersionDefault(GameVersion.TMF, "0.0.0.0:0")]
+    [GameVersionDefault(GameVersion.MP4, "0.0.0.0:0")]
+    [AppliedWithChunk<Chunk0B005001>]
+    [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
+    [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public string? NetworkForceServerAddress
+    {
+        get => this.networkForceServerAddress;
+        set => this.networkForceServerAddress = value;
+    }
+
+    private string? masterServerKey;
+    [AppliedWithChunk<Chunk0B005002>]
+    [AppliedWithChunk<Chunk0B005007>]
+    [AppliedWithChunk<Chunk0B005012>]
+    public string? MasterServerKey
+    {
+        get => this.masterServerKey;
+        set => this.masterServerKey = value;
+    }
+
     private bool audioEnabled;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public bool AudioEnabled
     {
@@ -45,8 +386,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float audioSoundVolume;
+    [GameVersionDefault(GameVersion.TMF, 1.0f)]
+    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public float AudioSoundVolume
     {
@@ -55,8 +400,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float audioMusicVolume;
+    [GameVersionDefault(GameVersion.TMF, 1.0f)]
+    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public float AudioMusicVolume
     {
@@ -66,7 +415,9 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private EAudioAcceleration audioAcceleration_Dx9;
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public EAudioAcceleration AudioAcceleration_Dx9
     {
@@ -76,7 +427,9 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private EAudioQuality3d audioQuality3d_Dx9;
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public EAudioQuality3d AudioQuality3d_Dx9
     {
@@ -84,14 +437,40 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioQuality3d_Dx9 = value;
     }
 
-    private bool audioAllowEFX;
+    private bool audioUseEAX;
+    [GameVersionDefault(GameVersion.TMF, true)]
     [AppliedWithChunk<Chunk0B005004>]
+    [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
-    [AppliedWithChunk<Chunk0B00504F>]
-    public bool AudioAllowEFX
+    [AppliedWithChunk<Chunk0B00503B>]
+    public bool AudioUseEAX
     {
-        get => this.audioAllowEFX;
-        set => this.audioAllowEFX = value;
+        get => this.audioUseEAX;
+        set => this.audioUseEAX = value;
+    }
+
+    private int audioMaxSounds;
+    [AppliedWithChunk<Chunk0B005004>]
+    public int AudioMaxSounds
+    {
+        get => this.audioMaxSounds;
+        set => this.audioMaxSounds = value;
+    }
+
+    private int audioUpdatePeriod;
+    [AppliedWithChunk<Chunk0B005004>]
+    public int AudioUpdatePeriod
+    {
+        get => this.audioUpdatePeriod;
+        set => this.audioUpdatePeriod = value;
+    }
+
+    private int audioSoundsPerUpdate;
+    [AppliedWithChunk<Chunk0B005004>]
+    public int AudioSoundsPerUpdate
+    {
+        get => this.audioSoundsPerUpdate;
+        set => this.audioSoundsPerUpdate = value;
     }
 
     private EVsk3SeaQuality vsk3SeaQuality;
@@ -121,12 +500,68 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.vsk3Stem = value;
     }
 
+    private Int2 displayScreenSizeFS;
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public Int2 DisplayScreenSizeFS
+    {
+        get => this.displayScreenSizeFS;
+        set => this.displayScreenSizeFS = value;
+    }
+
+    private int displayHLQuality;
+    [AppliedWithChunk<Chunk0B005006>]
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayHLQuality
+    {
+        get => this.displayHLQuality;
+        set => this.displayHLQuality = value;
+    }
+
+    private bool masterServerIsRegistred;
+    [AppliedWithChunk<Chunk0B005007>]
+    [AppliedWithChunk<Chunk0B005012>]
+    public bool MasterServerIsRegistred
+    {
+        get => this.masterServerIsRegistred;
+        set => this.masterServerIsRegistred = value;
+    }
+
     private string? desiredLanguageId;
     [AppliedWithChunk<Chunk0B005008>]
     public string? DesiredLanguageId
     {
         get => this.desiredLanguageId;
         set => this.desiredLanguageId = value;
+    }
+
+    private bool displayDisableShadowBuffer;
+    [AppliedWithChunk<Chunk0B00500A>]
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public bool DisplayDisableShadowBuffer
+    {
+        get => this.displayDisableShadowBuffer;
+        set => this.displayDisableShadowBuffer = value;
     }
 
     private EVsk3BoatQuality vsk3BoatQuality;
@@ -148,101 +583,30 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.isIgnorePlayerSkins = value;
     }
 
-    private bool networkUseProxy;
+    private int networkConnection;
     [AppliedWithChunk<Chunk0B00500D>]
+    [AppliedWithChunk<Chunk0B00501A>]
+    [AppliedWithChunk<Chunk0B005024>]
+    [AppliedWithChunk<Chunk0B00502D>]
     [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
     [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    [AppliedWithChunk<Chunk0B00505F>]
-    public bool NetworkUseProxy
+    public int NetworkConnection
     {
-        get => this.networkUseProxy;
-        set => this.networkUseProxy = value;
-    }
-
-    private string? networkProxyLogin;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public string? NetworkProxyLogin
-    {
-        get => this.networkProxyLogin;
-        set => this.networkProxyLogin = value;
-    }
-
-    private string? networkProxyPassword;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public string? NetworkProxyPassword
-    {
-        get => this.networkProxyPassword;
-        set => this.networkProxyPassword = value;
-    }
-
-    private int networkServerPort;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public int NetworkServerPort
-    {
-        get => this.networkServerPort;
-        set => this.networkServerPort = value;
-    }
-
-    private int networkClientPort;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public int NetworkClientPort
-    {
-        get => this.networkClientPort;
-        set => this.networkClientPort = value;
-    }
-
-    private bool networkForceUseLocalAddress;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public bool NetworkForceUseLocalAddress
-    {
-        get => this.networkForceUseLocalAddress;
-        set => this.networkForceUseLocalAddress = value;
-    }
-
-    private string? networkForceServerAddress;
-    [AppliedWithChunk<Chunk0B00500D>]
-    [AppliedWithChunk<Chunk0B005031>]
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public string? NetworkForceServerAddress
-    {
-        get => this.networkForceServerAddress;
-        set => this.networkForceServerAddress = value;
+        get => this.networkConnection;
+        set => this.networkConnection = value;
     }
 
     private int tmCarQuality;
     [AppliedWithChunk<Chunk0B00500E>]
+    [AppliedWithChunk<Chunk0B005010>]
+    [AppliedWithChunk<Chunk0B005011>]
+    [AppliedWithChunk<Chunk0B005013>]
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501E>]
     [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
     [AppliedWithChunk<Chunk0B005034>]
     [AppliedWithChunk<Chunk0B005052>]
     public int TmCarQuality
@@ -253,7 +617,14 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private ETmCarParticlesQuality tmCarParticlesQuality;
     [AppliedWithChunk<Chunk0B00500E>]
+    [AppliedWithChunk<Chunk0B005010>]
+    [AppliedWithChunk<Chunk0B005011>]
+    [AppliedWithChunk<Chunk0B005013>]
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501E>]
     [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
     [AppliedWithChunk<Chunk0B005034>]
     [AppliedWithChunk<Chunk0B005052>]
     public ETmCarParticlesQuality TmCarParticlesQuality
@@ -264,13 +635,143 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private int tmOpponents;
     [AppliedWithChunk<Chunk0B00500E>]
+    [AppliedWithChunk<Chunk0B005010>]
+    [AppliedWithChunk<Chunk0B005011>]
+    [AppliedWithChunk<Chunk0B005013>]
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501E>]
     [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
     [AppliedWithChunk<Chunk0B005034>]
     [AppliedWithChunk<Chunk0B005052>]
     public int TmOpponents
     {
         get => this.tmOpponents;
         set => this.tmOpponents = value;
+    }
+
+    private float inputsDeadZone;
+    [AppliedWithChunk<Chunk0B00500F>]
+    [AppliedWithChunk<Chunk0B005021>]
+    [AppliedWithChunk<Chunk0B005022>]
+    public float InputsDeadZone
+    {
+        get => this.inputsDeadZone;
+        set => this.inputsDeadZone = value;
+    }
+
+    private float inputsSensitivity;
+    [AppliedWithChunk<Chunk0B00500F>]
+    [AppliedWithChunk<Chunk0B005021>]
+    [AppliedWithChunk<Chunk0B005022>]
+    public float InputsSensitivity
+    {
+        get => this.inputsSensitivity;
+        set => this.inputsSensitivity = value;
+    }
+
+    private ETmCarProjector tmCarProjector;
+    [AppliedWithChunk<Chunk0B005010>]
+    [AppliedWithChunk<Chunk0B005011>]
+    [AppliedWithChunk<Chunk0B005013>]
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501E>]
+    [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
+    [AppliedWithChunk<Chunk0B005034>]
+    public ETmCarProjector TmCarProjector
+    {
+        get => this.tmCarProjector;
+        set => this.tmCarProjector = value;
+    }
+
+    private bool tmOppShadows;
+    [AppliedWithChunk<Chunk0B005013>]
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501E>]
+    [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
+    [AppliedWithChunk<Chunk0B005034>]
+    public bool TmOppShadows
+    {
+        get => this.tmOppShadows;
+        set => this.tmOppShadows = value;
+    }
+
+    private int displayGpuSync;
+    [AppliedWithChunk<Chunk0B005014>]
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayGpuSync
+    {
+        get => this.displayGpuSync;
+        set => this.displayGpuSync = value;
+    }
+
+    private bool displayEmulateCursorGDI;
+    [AppliedWithChunk<Chunk0B005015>]
+    [AppliedWithChunk<Chunk0B005016>]
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public bool DisplayEmulateCursorGDI
+    {
+        get => this.displayEmulateCursorGDI;
+        set => this.displayEmulateCursorGDI = value;
+    }
+
+    private int displayScreenSizeWin;
+    [AppliedWithChunk<Chunk0B005017>]
+    [AppliedWithChunk<Chunk0B005018>]
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayScreenSizeWin
+    {
+        get => this.displayScreenSizeWin;
+        set => this.displayScreenSizeWin = value;
+    }
+
+    private bool displayForceSoftVP;
+    [AppliedWithChunk<Chunk0B005018>]
+    public bool DisplayForceSoftVP
+    {
+        get => this.displayForceSoftVP;
+        set => this.displayForceSoftVP = value;
+    }
+
+    private int displayVertexProcess;
+    [AppliedWithChunk<Chunk0B005019>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public int DisplayVertexProcess
+    {
+        get => this.displayVertexProcess;
+        set => this.displayVertexProcess = value;
+    }
+
+    private bool networkEnableAvatarDownload;
+    [AppliedWithChunk<Chunk0B00501A>]
+    public bool NetworkEnableAvatarDownload
+    {
+        get => this.networkEnableAvatarDownload;
+        set => this.networkEnableAvatarDownload = value;
+    }
+
+    private bool displayOptimPartDynaGeom;
+    [AppliedWithChunk<Chunk0B00501B>]
+    [AppliedWithChunk<Chunk0B00501C>]
+    [AppliedWithChunk<Chunk0B00501F>]
+    public bool DisplayOptimPartDynaGeom
+    {
+        get => this.displayOptimPartDynaGeom;
+        set => this.displayOptimPartDynaGeom = value;
     }
 
     private bool isSkipRollingDemo;
@@ -300,7 +801,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsAlternateMethod;
+    [AppliedWithChunk<Chunk0B005021>]
     [AppliedWithChunk<Chunk0B005022>]
+    [AppliedWithChunk<Chunk0B005040>]
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
     public bool InputsAlternateMethod
@@ -310,7 +813,10 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsFreezeUnusedAxes;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005022>]
+    [AppliedWithChunk<Chunk0B005040>]
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
     public bool InputsFreezeUnusedAxes
@@ -319,8 +825,97 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.inputsFreezeUnusedAxes = value;
     }
 
-    private int audioGlobalQuality;
+    private bool fileTransferEnableDownload;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B005023>]
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public bool FileTransferEnableDownload
+    {
+        get => this.fileTransferEnableDownload;
+        set => this.fileTransferEnableDownload = value;
+    }
+
+    private bool fileTransferEnableUpload;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B005023>]
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public bool FileTransferEnableUpload
+    {
+        get => this.fileTransferEnableUpload;
+        set => this.fileTransferEnableUpload = value;
+    }
+
+    private uint fileTransferMaxCacheSize32;
+    [GameVersionDefault(GameVersion.TMF, 629145600)]
+    [AppliedWithChunk<Chunk0B005023>]
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    public uint FileTransferMaxCacheSize32
+    {
+        get => this.fileTransferMaxCacheSize32;
+        set => this.fileTransferMaxCacheSize32 = value;
+    }
+
+    private string? autoUpdateLocatorDBUrl;
+    [AppliedWithChunk<Chunk0B005023>]
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public string? AutoUpdateLocatorDBUrl
+    {
+        get => this.autoUpdateLocatorDBUrl;
+        set => this.autoUpdateLocatorDBUrl = value;
+    }
+
+    private string? blackListUrl;
+    [AppliedWithChunk<Chunk0B005023>]
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public string? BlackListUrl
+    {
+        get => this.blackListUrl;
+        set => this.blackListUrl = value;
+    }
+
+    private EAudioSpeakerConfig audioSpeakerConfig;
+    [AppliedWithChunk<Chunk0B005025>]
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
+    [AppliedWithChunk<Chunk0B00504F>]
+    public EAudioSpeakerConfig AudioSpeakerConfig
+    {
+        get => this.audioSpeakerConfig;
+        set => this.audioSpeakerConfig = value;
+    }
+
+    private int audioGlobalQuality;
+    [GameVersionDefault(GameVersion.TMF, 1)]
+    [GameVersionDefault(GameVersion.MP4, 1)]
+    [AppliedWithChunk<Chunk0B005026>]
+    [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public int AudioGlobalQuality
     {
@@ -330,6 +925,7 @@ public partial class CSystemConfig : CMwNod, IClass
 
     private bool audioDisableDoppler;
     [AppliedWithChunk<Chunk0B005028>]
+    [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
     public bool AudioDisableDoppler
     {
@@ -337,16 +933,36 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.audioDisableDoppler = value;
     }
 
-    private EAudioSpeakerConfig audioSpeakerConfig;
-    [AppliedWithChunk<Chunk0B005028>]
-    [AppliedWithChunk<Chunk0B00504F>]
-    public EAudioSpeakerConfig AudioSpeakerConfig
+    private bool autoUpdateFromLocatorAtInternetConnection;
+    [AppliedWithChunk<Chunk0B005029>]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public bool AutoUpdateFromLocatorAtInternetConnection
     {
-        get => this.audioSpeakerConfig;
-        set => this.audioSpeakerConfig = value;
+        get => this.autoUpdateFromLocatorAtInternetConnection;
+        set => this.autoUpdateFromLocatorAtInternetConnection = value;
+    }
+
+    private bool enableLocators;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B00502A>]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public bool EnableLocators
+    {
+        get => this.enableLocators;
+        set => this.enableLocators = value;
     }
 
     private EAdvertisingEnabled advertising_Enabled;
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EAdvertisingEnabled.Configurable")]
+    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EAdvertisingEnabled.Configurable")]
     [AppliedWithChunk<Chunk0B00502B>]
     public EAdvertisingEnabled Advertising_Enabled
     {
@@ -370,17 +986,9 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.advertising_TunningCoef = value;
     }
 
-    private ETmCarProjector tmCarProjector;
-    [AppliedWithChunk<Chunk0B00502C>]
-    [AppliedWithChunk<Chunk0B005034>]
-    public ETmCarProjector TmCarProjector
-    {
-        get => this.tmCarProjector;
-        set => this.tmCarProjector = value;
-    }
-
     private int tmMaxOpponents;
     [AppliedWithChunk<Chunk0B00502C>]
+    [AppliedWithChunk<Chunk0B005033>]
     [AppliedWithChunk<Chunk0B005034>]
     [AppliedWithChunk<Chunk0B005052>]
     public int TmMaxOpponents
@@ -389,90 +997,11 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.tmMaxOpponents = value;
     }
 
-    private bool tmOppShadows;
-    [AppliedWithChunk<Chunk0B00502C>]
-    [AppliedWithChunk<Chunk0B005034>]
-    public bool TmOppShadows
-    {
-        get => this.tmOppShadows;
-        set => this.tmOppShadows = value;
-    }
-
-    private bool fileTransferEnableDownload;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public bool FileTransferEnableDownload
-    {
-        get => this.fileTransferEnableDownload;
-        set => this.fileTransferEnableDownload = value;
-    }
-
-    private bool fileTransferEnableUpload;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public bool FileTransferEnableUpload
-    {
-        get => this.fileTransferEnableUpload;
-        set => this.fileTransferEnableUpload = value;
-    }
-
-    private uint fileTransferMaxCacheSize32;
-    /// <summary>
-    /// Legacy 32-bit cache size. Chunk 0x054 uses 64 bits.
-    /// </summary>
-    [AppliedWithChunk<Chunk0B005030>]
-    public uint FileTransferMaxCacheSize32
-    {
-        get => this.fileTransferMaxCacheSize32;
-        set => this.fileTransferMaxCacheSize32 = value;
-    }
-
-    private bool enableLocators;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public bool EnableLocators
-    {
-        get => this.enableLocators;
-        set => this.enableLocators = value;
-    }
-
-    private bool autoUpdateFromLocator;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public bool AutoUpdateFromLocator
-    {
-        get => this.autoUpdateFromLocator;
-        set => this.autoUpdateFromLocator = value;
-    }
-
-    private bool autoUpdateFromLocatorAtInternetConnection;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public bool AutoUpdateFromLocatorAtInternetConnection
-    {
-        get => this.autoUpdateFromLocatorAtInternetConnection;
-        set => this.autoUpdateFromLocatorAtInternetConnection = value;
-    }
-
-    private string? autoUpdateLocatorDBUrl;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public string? AutoUpdateLocatorDBUrl
-    {
-        get => this.autoUpdateLocatorDBUrl;
-        set => this.autoUpdateLocatorDBUrl = value;
-    }
-
-    private string? blackListUrl;
-    [AppliedWithChunk<Chunk0B005030>]
-    [AppliedWithChunk<Chunk0B005054>]
-    public string? BlackListUrl
-    {
-        get => this.blackListUrl;
-        set => this.blackListUrl = value;
-    }
-
     private bool enableCrashLogUpload;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B00502E>]
+    [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
     public bool EnableCrashLogUpload
@@ -481,8 +1010,20 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.enableCrashLogUpload = value;
     }
 
+    private bool autoUpdateFromLocator;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B005030>]
+    [AppliedWithChunk<Chunk0B005054>]
+    public bool AutoUpdateFromLocator
+    {
+        get => this.autoUpdateFromLocator;
+        set => this.autoUpdateFromLocator = value;
+    }
+
     private bool networkUseNatUPnP;
     [AppliedWithChunk<Chunk0B005031>]
+    [AppliedWithChunk<Chunk0B005032>]
     [AppliedWithChunk<Chunk0B005036>]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
@@ -491,6 +1032,20 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.networkUseNatUPnP;
         set => this.networkUseNatUPnP = value;
+    }
+
+    private int networkP2PServerPort;
+    [GameVersionDefault(GameVersion.TMF, 3450)]
+    [GameVersionDefault(GameVersion.MP4, 3450)]
+    [AppliedWithChunk<Chunk0B005032>]
+    [AppliedWithChunk<Chunk0B005036>]
+    [AppliedWithChunk<Chunk0B005039>]
+    [AppliedWithChunk<Chunk0B005057>]
+    [AppliedWithChunk<Chunk0B00505E>]
+    public int NetworkP2PServerPort
+    {
+        get => this.networkP2PServerPort;
+        set => this.networkP2PServerPort = value;
     }
 
     private int tmBackgroundQuality;
@@ -503,6 +1058,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkTestInternetConnection;
+    [GameVersionDefault(GameVersion.TMF, true)]
     [AppliedWithChunk<Chunk0B005035>]
     [AppliedWithChunk<Chunk0B005043>]
     [AppliedWithChunk<Chunk0B005044>]
@@ -514,18 +1070,9 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkTestInternetConnection = value;
     }
 
-    private int networkP2PServerPort;
-    [AppliedWithChunk<Chunk0B005036>]
-    [AppliedWithChunk<Chunk0B005039>]
-    [AppliedWithChunk<Chunk0B005057>]
-    [AppliedWithChunk<Chunk0B00505E>]
-    public int NetworkP2PServerPort
-    {
-        get => this.networkP2PServerPort;
-        set => this.networkP2PServerPort = value;
-    }
-
     private int networkServerBroadcastLength;
+    [GameVersionDefault(GameVersion.TMF, 10)]
+    [GameVersionDefault(GameVersion.MP4, 50)]
     [AppliedWithChunk<Chunk0B005036>]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
@@ -536,56 +1083,75 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkServerBroadcastLength = value;
     }
 
-    private string? key;
+    private string? installCdKey;
     /// <summary>
     /// Plaintext legacy key. Later chunks store an encrypted representation.
     /// </summary>
     [AppliedWithChunk<Chunk0B005037>]
-    public string? Key
+    public string? InstallCdKey
     {
-        get => this.key;
-        set => this.key = value;
+        get => this.installCdKey;
+        set => this.installCdKey = value;
     }
 
-    private bool gameProfileEnableMulti;
+    private bool profileEnableMulti;
+    [GameVersionDefault(GameVersion.TMF, true)]
     [AppliedWithChunk<Chunk0B005038>]
     [AppliedWithChunk<Chunk0B005048>]
-    public bool GameProfileEnableMulti
+    public bool ProfileEnableMulti
     {
-        get => this.gameProfileEnableMulti;
-        set => this.gameProfileEnableMulti = value;
+        get => this.profileEnableMulti;
+        set => this.profileEnableMulti = value;
     }
 
-    private string? gameProfileName;
+    private string? profileName;
     [AppliedWithChunk<Chunk0B005038>]
     [AppliedWithChunk<Chunk0B005048>]
-    public string? GameProfileName
+    public string? ProfileName
     {
-        get => this.gameProfileName;
-        set => this.gameProfileName = value;
+        get => this.profileName;
+        set => this.profileName = value;
     }
 
-    private int networkDownload;
+    private int networkDownloadRate;
+    [GameVersionDefault(GameVersion.TMF, 1048576)]
+    [GameVersionDefault(GameVersion.MP4, 688128)]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
-    public int NetworkDownload
+    public int NetworkDownloadRate
     {
-        get => this.networkDownload;
-        set => this.networkDownload = value;
+        get => this.networkDownloadRate;
+        set => this.networkDownloadRate = value;
     }
 
-    private int networkUpload;
+    private int networkUploadRate;
+    [GameVersionDefault(GameVersion.TMF, 65536)]
+    [GameVersionDefault(GameVersion.MP4, 43008)]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
-    public int NetworkUpload
+    public int NetworkUploadRate
     {
-        get => this.networkUpload;
-        set => this.networkUpload = value;
+        get => this.networkUploadRate;
+        set => this.networkUploadRate = value;
+    }
+
+    private string? audioDevice_Oal;
+    [GameVersionDefault(GameVersion.TMF, "|Device|Default")]
+    [GameVersionDefault(GameVersion.MP4, "|Device|Default")]
+    [AppliedWithChunk<Chunk0B00503B>]
+    [AppliedWithChunk<Chunk0B00504F>]
+    public string? AudioDevice_Oal
+    {
+        get => this.audioDevice_Oal;
+        set => this.audioDevice_Oal = value;
     }
 
     private int playerInfoDisplaySize;
+    [GameVersionDefault(GameVersion.TMF, 3)]
+    [GameVersionDefault(GameVersion.MP4, 3)]
+    [AppliedWithChunk<Chunk0B00503C>]
     [AppliedWithChunk<Chunk0B00503D>]
     [AppliedWithChunk<Chunk0B00504A>]
     public int PlayerInfoDisplaySize
@@ -608,6 +1174,33 @@ public partial class CSystemConfig : CMwNod, IClass
     {
         get => this.parentalLockPasswordHash;
         set => this.parentalLockPasswordHash = value;
+    }
+
+    private string? encryptedKey;
+    /// <summary>
+    /// Encrypted key as hexadecimal text.
+    /// </summary>
+    [AppliedWithChunk<Chunk0B00503F>]
+    [AppliedWithChunk<Chunk0B005046>]
+    [AppliedWithChunk<Chunk0B00504B>]
+    [AppliedWithChunk<Chunk0B00504D>]
+    [AppliedWithChunk<Chunk0B005055>]
+    public string? EncryptedKey
+    {
+        get => this.encryptedKey;
+        set => this.encryptedKey = value;
+    }
+
+    private bool inputsEnableRumble;
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
+    [AppliedWithChunk<Chunk0B005040>]
+    [AppliedWithChunk<Chunk0B005045>]
+    [AppliedWithChunk<Chunk0B005060>]
+    public bool InputsEnableRumble
+    {
+        get => this.inputsEnableRumble;
+        set => this.inputsEnableRumble = value;
     }
 
     private string? menuSkin;
@@ -650,15 +1243,6 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.networkFirewallTestedExeChecksums = value;
     }
 
-    private bool inputsEnableRumble;
-    [AppliedWithChunk<Chunk0B005045>]
-    [AppliedWithChunk<Chunk0B005060>]
-    public bool InputsEnableRumble
-    {
-        get => this.inputsEnableRumble;
-        set => this.inputsEnableRumble = value;
-    }
-
     private bool inputsCaptureKeyboard;
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
@@ -669,23 +1253,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EPlayerInfoDisplayType playerInfoDisplayType;
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EPlayerInfoDisplayType.AvatarAndName")]
+    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EPlayerInfoDisplayType.AvatarAndName")]
     [AppliedWithChunk<Chunk0B00504A>]
     public EPlayerInfoDisplayType PlayerInfoDisplayType
     {
         get => this.playerInfoDisplayType;
         set => this.playerInfoDisplayType = value;
-    }
-
-    private string? encryptedKey;
-    /// <summary>
-    /// TMF serializes the encrypted bytes as hexadecimal text.
-    /// </summary>
-    [AppliedWithChunk<Chunk0B00504D>]
-    [AppliedWithChunk<Chunk0B005055>]
-    public string? EncryptedKey
-    {
-        get => this.encryptedKey;
-        set => this.encryptedKey = value;
     }
 
     private string[]? keyHashes;
@@ -696,12 +1270,17 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.keyHashes = value;
     }
 
-    private string? audioDevice_Oal;
+    private bool audioAllowEFX;
+    /// <summary>
+    /// Legacy games use EAX.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B00504F>]
-    public string? AudioDevice_Oal
+    public bool AudioAllowEFX
     {
-        get => this.audioDevice_Oal;
-        set => this.audioDevice_Oal = value;
+        get => this.audioAllowEFX;
+        set => this.audioAllowEFX = value;
     }
 
     private bool edDontConnect;
@@ -738,6 +1317,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private ulong fileTransferMaxCacheSize;
+    [GameVersionDefault(GameVersion.MP4, 629145600)]
     [AppliedWithChunk<Chunk0B005054>]
     public ulong FileTransferMaxCacheSize
     {
@@ -746,6 +1326,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioAllowHRTF;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005056>]
     public bool AudioAllowHRTF
     {
@@ -762,6 +1343,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkSpeed;
+    [GameVersionDefault(GameVersion.MP4, 3)]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
     public int NetworkSpeed
@@ -779,6 +1361,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableAvatarDownload
     {
@@ -787,6 +1370,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableAvatarUpload
     {
@@ -795,6 +1379,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableAvatarLocators
     {
@@ -803,6 +1388,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapDownload
     {
@@ -811,6 +1397,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapUpload
     {
@@ -819,6 +1406,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapLocators
     {
@@ -827,6 +1415,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapModDownload
     {
@@ -835,6 +1424,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapModUpload
     {
@@ -843,6 +1433,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapModLocators
     {
@@ -851,6 +1442,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapSkinDownload
     {
@@ -859,6 +1451,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapSkinUpload
     {
@@ -867,6 +1460,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableMapSkinLocators
     {
@@ -874,31 +1468,35 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.fileTransferEnableMapSkinLocators = value;
     }
 
-    private bool fileTransferEnableTagDownload;
+    private bool fileTransferEnableTagSkinDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
-    public bool FileTransferEnableTagDownload
+    public bool FileTransferEnableTagSkinDownload
     {
-        get => this.fileTransferEnableTagDownload;
-        set => this.fileTransferEnableTagDownload = value;
+        get => this.fileTransferEnableTagSkinDownload;
+        set => this.fileTransferEnableTagSkinDownload = value;
     }
 
-    private bool fileTransferEnableTagUpload;
+    private bool fileTransferEnableTagSkinUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
-    public bool FileTransferEnableTagUpload
+    public bool FileTransferEnableTagSkinUpload
     {
-        get => this.fileTransferEnableTagUpload;
-        set => this.fileTransferEnableTagUpload = value;
+        get => this.fileTransferEnableTagSkinUpload;
+        set => this.fileTransferEnableTagSkinUpload = value;
     }
 
-    private bool fileTransferEnableTagLocators;
+    private bool fileTransferEnableTagSkinLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
-    public bool FileTransferEnableTagLocators
+    public bool FileTransferEnableTagSkinLocators
     {
-        get => this.fileTransferEnableTagLocators;
-        set => this.fileTransferEnableTagLocators = value;
+        get => this.fileTransferEnableTagSkinLocators;
+        set => this.fileTransferEnableTagSkinLocators = value;
     }
 
     private bool fileTransferEnableVehicleSkinDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableVehicleSkinDownload
     {
@@ -907,6 +1505,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableVehicleSkinUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableVehicleSkinUpload
     {
@@ -915,6 +1514,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableVehicleSkinLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableVehicleSkinLocators
     {
@@ -923,6 +1523,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeDownload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableUnknownTypeDownload
     {
@@ -931,6 +1532,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeUpload;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableUnknownTypeUpload
     {
@@ -939,6 +1541,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeLocators;
+    [GameVersionDefault(GameVersion.MP4, true)]
     [AppliedWithChunk<Chunk0B005059>]
     public bool FileTransferEnableUnknownTypeLocators
     {
@@ -971,6 +1574,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int smMaxPlayerResimStepPerFrame;
+    [GameVersionDefault(GameVersion.MP4, 100)]
     [AppliedWithChunk<Chunk0B00505C>]
     public int SmMaxPlayerResimStepPerFrame
     {
@@ -978,12 +1582,20 @@ public partial class CSystemConfig : CMwNod, IClass
         set => this.smMaxPlayerResimStepPerFrame = value;
     }
 
-    private string? networkProxyAddress;
-    [AppliedWithChunk<Chunk0B00505F>]
-    public string? NetworkProxyAddress
+    private string? installUid;
+    [AppliedWithChunk<Chunk0B00505D>]
+    public string? InstallUid
     {
-        get => this.networkProxyAddress;
-        set => this.networkProxyAddress = value;
+        get => this.installUid;
+        set => this.installUid = value;
+    }
+
+    private string? networkProxyUrl;
+    [AppliedWithChunk<Chunk0B00505F>]
+    public string? NetworkProxyUrl
+    {
+        get => this.networkProxyUrl;
+        set => this.networkProxyUrl = value;
     }
 
     private bool inputsEnableJoysticks;
@@ -997,74 +1609,106 @@ public partial class CSystemConfig : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CSystemConfig)clone).displayResolutionPreset = context.Clone(this.displayResolutionPreset)!;
+        ((CSystemConfig)clone).displayTexturesQuality = context.Clone(this.displayTexturesQuality)!;
+        ((CSystemConfig)clone).displayColorDepth = context.Clone(this.displayColorDepth)!;
+        ((CSystemConfig)clone).displayShaderQuality = context.Clone(this.displayShaderQuality)!;
+        ((CSystemConfig)clone).displayAntialiasing = context.Clone(this.displayAntialiasing)!;
+        ((CSystemConfig)clone).displayRefreshRate = context.Clone(this.displayRefreshRate)!;
+        ((CSystemConfig)clone).displayVSync = context.Clone(this.displayVSync)!;
+        ((CSystemConfig)clone).displayFullScreen = context.Clone(this.displayFullScreen)!;
+        ((CSystemConfig)clone).displayMaxFiltering = context.Clone(this.displayMaxFiltering)!;
+        ((CSystemConfig)clone).displayShadows = context.Clone(this.displayShadows)!;
+        ((CSystemConfig)clone).masterServerLogin = context.Clone(this.masterServerLogin)!;
+        ((CSystemConfig)clone).masterServerPassword = context.Clone(this.masterServerPassword)!;
+        ((CSystemConfig)clone).networkUseProxy = context.Clone(this.networkUseProxy)!;
+        ((CSystemConfig)clone).networkProxyLogin = context.Clone(this.networkProxyLogin)!;
+        ((CSystemConfig)clone).networkProxyPassword = context.Clone(this.networkProxyPassword)!;
+        ((CSystemConfig)clone).networkMasterServerAddress = context.Clone(this.networkMasterServerAddress)!;
+        ((CSystemConfig)clone).networkServerPort = context.Clone(this.networkServerPort)!;
+        ((CSystemConfig)clone).networkClientPort = context.Clone(this.networkClientPort)!;
+        ((CSystemConfig)clone).networkForceUseLocalAddress = context.Clone(this.networkForceUseLocalAddress)!;
+        ((CSystemConfig)clone).networkForceServerAddress = context.Clone(this.networkForceServerAddress)!;
+        ((CSystemConfig)clone).masterServerKey = context.Clone(this.masterServerKey)!;
         ((CSystemConfig)clone).audioEnabled = context.Clone(this.audioEnabled)!;
         ((CSystemConfig)clone).audioSoundVolume = context.Clone(this.audioSoundVolume)!;
         ((CSystemConfig)clone).audioMusicVolume = context.Clone(this.audioMusicVolume)!;
         ((CSystemConfig)clone).audioAcceleration_Dx9 = context.Clone(this.audioAcceleration_Dx9)!;
         ((CSystemConfig)clone).audioQuality3d_Dx9 = context.Clone(this.audioQuality3d_Dx9)!;
-        ((CSystemConfig)clone).audioAllowEFX = context.Clone(this.audioAllowEFX)!;
+        ((CSystemConfig)clone).audioUseEAX = context.Clone(this.audioUseEAX)!;
+        ((CSystemConfig)clone).audioMaxSounds = context.Clone(this.audioMaxSounds)!;
+        ((CSystemConfig)clone).audioUpdatePeriod = context.Clone(this.audioUpdatePeriod)!;
+        ((CSystemConfig)clone).audioSoundsPerUpdate = context.Clone(this.audioSoundsPerUpdate)!;
         ((CSystemConfig)clone).vsk3SeaQuality = context.Clone(this.vsk3SeaQuality)!;
         ((CSystemConfig)clone).vsk3TeamMate = context.Clone(this.vsk3TeamMate)!;
         ((CSystemConfig)clone).vsk3Stem = context.Clone(this.vsk3Stem)!;
+        ((CSystemConfig)clone).displayScreenSizeFS = context.Clone(this.displayScreenSizeFS)!;
+        ((CSystemConfig)clone).displayHLQuality = context.Clone(this.displayHLQuality)!;
+        ((CSystemConfig)clone).masterServerIsRegistred = context.Clone(this.masterServerIsRegistred)!;
         ((CSystemConfig)clone).desiredLanguageId = context.Clone(this.desiredLanguageId)!;
+        ((CSystemConfig)clone).displayDisableShadowBuffer = context.Clone(this.displayDisableShadowBuffer)!;
         ((CSystemConfig)clone).vsk3BoatQuality = context.Clone(this.vsk3BoatQuality)!;
         ((CSystemConfig)clone).isIgnorePlayerSkins = context.Clone(this.isIgnorePlayerSkins)!;
-        ((CSystemConfig)clone).networkUseProxy = context.Clone(this.networkUseProxy)!;
-        ((CSystemConfig)clone).networkProxyLogin = context.Clone(this.networkProxyLogin)!;
-        ((CSystemConfig)clone).networkProxyPassword = context.Clone(this.networkProxyPassword)!;
-        ((CSystemConfig)clone).networkServerPort = context.Clone(this.networkServerPort)!;
-        ((CSystemConfig)clone).networkClientPort = context.Clone(this.networkClientPort)!;
-        ((CSystemConfig)clone).networkForceUseLocalAddress = context.Clone(this.networkForceUseLocalAddress)!;
-        ((CSystemConfig)clone).networkForceServerAddress = context.Clone(this.networkForceServerAddress)!;
+        ((CSystemConfig)clone).networkConnection = context.Clone(this.networkConnection)!;
         ((CSystemConfig)clone).tmCarQuality = context.Clone(this.tmCarQuality)!;
         ((CSystemConfig)clone).tmCarParticlesQuality = context.Clone(this.tmCarParticlesQuality)!;
         ((CSystemConfig)clone).tmOpponents = context.Clone(this.tmOpponents)!;
+        ((CSystemConfig)clone).inputsDeadZone = context.Clone(this.inputsDeadZone)!;
+        ((CSystemConfig)clone).inputsSensitivity = context.Clone(this.inputsSensitivity)!;
+        ((CSystemConfig)clone).tmCarProjector = context.Clone(this.tmCarProjector)!;
+        ((CSystemConfig)clone).tmOppShadows = context.Clone(this.tmOppShadows)!;
+        ((CSystemConfig)clone).displayGpuSync = context.Clone(this.displayGpuSync)!;
+        ((CSystemConfig)clone).displayEmulateCursorGDI = context.Clone(this.displayEmulateCursorGDI)!;
+        ((CSystemConfig)clone).displayScreenSizeWin = context.Clone(this.displayScreenSizeWin)!;
+        ((CSystemConfig)clone).displayForceSoftVP = context.Clone(this.displayForceSoftVP)!;
+        ((CSystemConfig)clone).displayVertexProcess = context.Clone(this.displayVertexProcess)!;
+        ((CSystemConfig)clone).networkEnableAvatarDownload = context.Clone(this.networkEnableAvatarDownload)!;
+        ((CSystemConfig)clone).displayOptimPartDynaGeom = context.Clone(this.displayOptimPartDynaGeom)!;
         ((CSystemConfig)clone).isSkipRollingDemo = context.Clone(this.isSkipRollingDemo)!;
         ((CSystemConfig)clone).isSafeMode = context.Clone(this.isSafeMode)!;
         ((CSystemConfig)clone).display = context.Clone(this.display)!;
         ((CSystemConfig)clone).inputsAlternateMethod = context.Clone(this.inputsAlternateMethod)!;
         ((CSystemConfig)clone).inputsFreezeUnusedAxes = context.Clone(this.inputsFreezeUnusedAxes)!;
-        ((CSystemConfig)clone).audioGlobalQuality = context.Clone(this.audioGlobalQuality)!;
-        ((CSystemConfig)clone).audioDisableDoppler = context.Clone(this.audioDisableDoppler)!;
-        ((CSystemConfig)clone).audioSpeakerConfig = context.Clone(this.audioSpeakerConfig)!;
-        ((CSystemConfig)clone).advertising_Enabled = context.Clone(this.advertising_Enabled)!;
-        ((CSystemConfig)clone).advertising_DisabledByUser = context.Clone(this.advertising_DisabledByUser)!;
-        ((CSystemConfig)clone).advertising_TunningCoef = context.Clone(this.advertising_TunningCoef)!;
-        ((CSystemConfig)clone).tmCarProjector = context.Clone(this.tmCarProjector)!;
-        ((CSystemConfig)clone).tmMaxOpponents = context.Clone(this.tmMaxOpponents)!;
-        ((CSystemConfig)clone).tmOppShadows = context.Clone(this.tmOppShadows)!;
         ((CSystemConfig)clone).fileTransferEnableDownload = context.Clone(this.fileTransferEnableDownload)!;
         ((CSystemConfig)clone).fileTransferEnableUpload = context.Clone(this.fileTransferEnableUpload)!;
         ((CSystemConfig)clone).fileTransferMaxCacheSize32 = context.Clone(this.fileTransferMaxCacheSize32)!;
-        ((CSystemConfig)clone).enableLocators = context.Clone(this.enableLocators)!;
-        ((CSystemConfig)clone).autoUpdateFromLocator = context.Clone(this.autoUpdateFromLocator)!;
-        ((CSystemConfig)clone).autoUpdateFromLocatorAtInternetConnection = context.Clone(this.autoUpdateFromLocatorAtInternetConnection)!;
         ((CSystemConfig)clone).autoUpdateLocatorDBUrl = context.Clone(this.autoUpdateLocatorDBUrl)!;
         ((CSystemConfig)clone).blackListUrl = context.Clone(this.blackListUrl)!;
+        ((CSystemConfig)clone).audioSpeakerConfig = context.Clone(this.audioSpeakerConfig)!;
+        ((CSystemConfig)clone).audioGlobalQuality = context.Clone(this.audioGlobalQuality)!;
+        ((CSystemConfig)clone).audioDisableDoppler = context.Clone(this.audioDisableDoppler)!;
+        ((CSystemConfig)clone).autoUpdateFromLocatorAtInternetConnection = context.Clone(this.autoUpdateFromLocatorAtInternetConnection)!;
+        ((CSystemConfig)clone).enableLocators = context.Clone(this.enableLocators)!;
+        ((CSystemConfig)clone).advertising_Enabled = context.Clone(this.advertising_Enabled)!;
+        ((CSystemConfig)clone).advertising_DisabledByUser = context.Clone(this.advertising_DisabledByUser)!;
+        ((CSystemConfig)clone).advertising_TunningCoef = context.Clone(this.advertising_TunningCoef)!;
+        ((CSystemConfig)clone).tmMaxOpponents = context.Clone(this.tmMaxOpponents)!;
         ((CSystemConfig)clone).enableCrashLogUpload = context.Clone(this.enableCrashLogUpload)!;
+        ((CSystemConfig)clone).autoUpdateFromLocator = context.Clone(this.autoUpdateFromLocator)!;
         ((CSystemConfig)clone).networkUseNatUPnP = context.Clone(this.networkUseNatUPnP)!;
+        ((CSystemConfig)clone).networkP2PServerPort = context.Clone(this.networkP2PServerPort)!;
         ((CSystemConfig)clone).tmBackgroundQuality = context.Clone(this.tmBackgroundQuality)!;
         ((CSystemConfig)clone).networkTestInternetConnection = context.Clone(this.networkTestInternetConnection)!;
-        ((CSystemConfig)clone).networkP2PServerPort = context.Clone(this.networkP2PServerPort)!;
         ((CSystemConfig)clone).networkServerBroadcastLength = context.Clone(this.networkServerBroadcastLength)!;
-        ((CSystemConfig)clone).key = context.Clone(this.key)!;
-        ((CSystemConfig)clone).gameProfileEnableMulti = context.Clone(this.gameProfileEnableMulti)!;
-        ((CSystemConfig)clone).gameProfileName = context.Clone(this.gameProfileName)!;
-        ((CSystemConfig)clone).networkDownload = context.Clone(this.networkDownload)!;
-        ((CSystemConfig)clone).networkUpload = context.Clone(this.networkUpload)!;
+        ((CSystemConfig)clone).installCdKey = context.Clone(this.installCdKey)!;
+        ((CSystemConfig)clone).profileEnableMulti = context.Clone(this.profileEnableMulti)!;
+        ((CSystemConfig)clone).profileName = context.Clone(this.profileName)!;
+        ((CSystemConfig)clone).networkDownloadRate = context.Clone(this.networkDownloadRate)!;
+        ((CSystemConfig)clone).networkUploadRate = context.Clone(this.networkUploadRate)!;
+        ((CSystemConfig)clone).audioDevice_Oal = context.Clone(this.audioDevice_Oal)!;
         ((CSystemConfig)clone).playerInfoDisplaySize = context.Clone(this.playerInfoDisplaySize)!;
         ((CSystemConfig)clone).parentalLockLastUnlockedTime = context.Clone(this.parentalLockLastUnlockedTime)!;
         ((CSystemConfig)clone).parentalLockPasswordHash = context.Clone(this.parentalLockPasswordHash)!;
+        ((CSystemConfig)clone).encryptedKey = context.Clone(this.encryptedKey)!;
+        ((CSystemConfig)clone).inputsEnableRumble = context.Clone(this.inputsEnableRumble)!;
         ((CSystemConfig)clone).menuSkin = context.Clone(this.menuSkin)!;
         ((CSystemConfig)clone).networkLastUsedMSAddress = context.Clone(this.networkLastUsedMSAddress)!;
         ((CSystemConfig)clone).networkLastUsedMSPath = context.Clone(this.networkLastUsedMSPath)!;
         ((CSystemConfig)clone).networkFirewallTestedExeChecksums = context.CloneArray(this.networkFirewallTestedExeChecksums)!;
-        ((CSystemConfig)clone).inputsEnableRumble = context.Clone(this.inputsEnableRumble)!;
         ((CSystemConfig)clone).inputsCaptureKeyboard = context.Clone(this.inputsCaptureKeyboard)!;
         ((CSystemConfig)clone).playerInfoDisplayType = context.Clone(this.playerInfoDisplayType)!;
-        ((CSystemConfig)clone).encryptedKey = context.Clone(this.encryptedKey)!;
         ((CSystemConfig)clone).keyHashes = context.CloneArray(this.keyHashes)!;
-        ((CSystemConfig)clone).audioDevice_Oal = context.Clone(this.audioDevice_Oal)!;
+        ((CSystemConfig)clone).audioAllowEFX = context.Clone(this.audioAllowEFX)!;
         ((CSystemConfig)clone).edDontConnect = context.Clone(this.edDontConnect)!;
         ((CSystemConfig)clone).playerShadow = context.Clone(this.playerShadow)!;
         ((CSystemConfig)clone).playerOcclusion = context.Clone(this.playerOcclusion)!;
@@ -1086,9 +1730,9 @@ public partial class CSystemConfig : CMwNod, IClass
         ((CSystemConfig)clone).fileTransferEnableMapSkinDownload = context.Clone(this.fileTransferEnableMapSkinDownload)!;
         ((CSystemConfig)clone).fileTransferEnableMapSkinUpload = context.Clone(this.fileTransferEnableMapSkinUpload)!;
         ((CSystemConfig)clone).fileTransferEnableMapSkinLocators = context.Clone(this.fileTransferEnableMapSkinLocators)!;
-        ((CSystemConfig)clone).fileTransferEnableTagDownload = context.Clone(this.fileTransferEnableTagDownload)!;
-        ((CSystemConfig)clone).fileTransferEnableTagUpload = context.Clone(this.fileTransferEnableTagUpload)!;
-        ((CSystemConfig)clone).fileTransferEnableTagLocators = context.Clone(this.fileTransferEnableTagLocators)!;
+        ((CSystemConfig)clone).fileTransferEnableTagSkinDownload = context.Clone(this.fileTransferEnableTagSkinDownload)!;
+        ((CSystemConfig)clone).fileTransferEnableTagSkinUpload = context.Clone(this.fileTransferEnableTagSkinUpload)!;
+        ((CSystemConfig)clone).fileTransferEnableTagSkinLocators = context.Clone(this.fileTransferEnableTagSkinLocators)!;
         ((CSystemConfig)clone).fileTransferEnableVehicleSkinDownload = context.Clone(this.fileTransferEnableVehicleSkinDownload)!;
         ((CSystemConfig)clone).fileTransferEnableVehicleSkinUpload = context.Clone(this.fileTransferEnableVehicleSkinUpload)!;
         ((CSystemConfig)clone).fileTransferEnableVehicleSkinLocators = context.Clone(this.fileTransferEnableVehicleSkinLocators)!;
@@ -1099,50 +1743,221 @@ public partial class CSystemConfig : CMwNod, IClass
         ((CSystemConfig)clone).antiCheatServerUrl = context.Clone(this.antiCheatServerUrl)!;
         ((CSystemConfig)clone).badWordListUrl = context.Clone(this.badWordListUrl)!;
         ((CSystemConfig)clone).smMaxPlayerResimStepPerFrame = context.Clone(this.smMaxPlayerResimStepPerFrame)!;
-        ((CSystemConfig)clone).networkProxyAddress = context.Clone(this.networkProxyAddress)!;
+        ((CSystemConfig)clone).installUid = context.Clone(this.installUid)!;
+        ((CSystemConfig)clone).networkProxyUrl = context.Clone(this.networkProxyUrl)!;
         ((CSystemConfig)clone).inputsEnableJoysticks = context.Clone(this.inputsEnableJoysticks)!;
     }
 
-    public CSystemConfig()
+    public CSystemConfig() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x0B005002)]
+    public CSystemConfig(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP4)
+        {
+            networkServerPort = 2350;
+            networkForceServerAddress = "0.0.0.0:0";
+            audioEnabled = true;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            audioSoundVolume = 1.0f;
+            audioMusicVolume = 1.0f;
+        }
+        else if (gameVersion == GameVersion.MP4)
+        {
+            audioSoundVolume = 0.31622776f;
+            audioMusicVolume = 0.31622776f;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            audioUseEAX = true;
+        }
+
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP4)
+        {
+            inputsFreezeUnusedAxes = true;
+            fileTransferEnableDownload = true;
+            fileTransferEnableUpload = true;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            fileTransferMaxCacheSize32 = 629145600;
+        }
+
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP4)
+        {
+            audioGlobalQuality = 1;
+            enableLocators = true;
+            advertising_Enabled = EAdvertisingEnabled.Configurable;
+            enableCrashLogUpload = true;
+            autoUpdateFromLocator = true;
+            networkP2PServerPort = 3450;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            networkTestInternetConnection = true;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            networkServerBroadcastLength = 10;
+        }
+        else if (gameVersion == GameVersion.MP4)
+        {
+            networkServerBroadcastLength = 50;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            profileEnableMulti = true;
+        }
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            networkDownloadRate = 1048576;
+            networkUploadRate = 65536;
+        }
+        else if (gameVersion == GameVersion.MP4)
+        {
+            networkDownloadRate = 688128;
+            networkUploadRate = 43008;
+        }
+
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP4)
+        {
+            audioDevice_Oal = "|Device|Default";
+            playerInfoDisplaySize = 3;
+            inputsEnableRumble = true;
+            playerInfoDisplayType = EPlayerInfoDisplayType.AvatarAndName;
+            audioAllowEFX = true;
+        }
+
+        if (gameVersion == GameVersion.MP4)
+        {
+            fileTransferMaxCacheSize = 629145600;
+            audioAllowHRTF = true;
+            networkSpeed = 3;
+            fileTransferEnableAvatarDownload = true;
+            fileTransferEnableAvatarUpload = true;
+            fileTransferEnableAvatarLocators = true;
+            fileTransferEnableMapDownload = true;
+            fileTransferEnableMapUpload = true;
+            fileTransferEnableMapLocators = true;
+            fileTransferEnableMapModDownload = true;
+            fileTransferEnableMapModUpload = true;
+            fileTransferEnableMapModLocators = true;
+            fileTransferEnableMapSkinDownload = true;
+            fileTransferEnableMapSkinUpload = true;
+            fileTransferEnableMapSkinLocators = true;
+            fileTransferEnableTagSkinDownload = true;
+            fileTransferEnableTagSkinUpload = true;
+            fileTransferEnableTagSkinLocators = true;
+            fileTransferEnableVehicleSkinDownload = true;
+            fileTransferEnableVehicleSkinUpload = true;
+            fileTransferEnableVehicleSkinLocators = true;
+            fileTransferEnableUnknownTypeDownload = true;
+            fileTransferEnableUnknownTypeUpload = true;
+            fileTransferEnableUnknownTypeLocators = true;
+            smMaxPlayerResimStepPerFrame = 100;
+        }
+    }
+
+    /// <summary>
+    /// legacy display resolution preset and quality
+    /// </summary>
+    [Chunk(0x0B005000, "legacy display resolution preset and quality")]
+    public partial class Chunk0B005000 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.displayResolutionPreset);
+            rw.Int32(ref n.displayTexturesQuality);
+            rw.Int32(ref n.displayColorDepth);
+            rw.Int32(ref n.displayShaderQuality);
+            rw.Int32(ref n.displayAntialiasing);
+            rw.Int32(ref n.displayRefreshRate);
+            rw.Boolean(ref n.displayVSync);
+            rw.Boolean(ref n.displayFullScreen);
+            rw.Int32(ref n.displayMaxFiltering);
+            rw.Int32(ref n.displayShadows);
+        }
+    }
+
+    /// <summary>
+    /// legacy master-server credentials and network
+    /// </summary>
+    [Chunk(0x0B005001, "legacy master-server credentials and network")]
+    public partial class Chunk0B005001 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.masterServerLogin);
+            rw.String(ref n.masterServerPassword);
+            rw.Boolean(ref n.networkUseProxy);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
+            rw.String(ref n.networkMasterServerAddress);
+            rw.Int32(ref n.networkServerPort);
+            rw.Int32(ref n.networkClientPort);
+            rw.Boolean(ref n.networkForceUseLocalAddress);
+            rw.String(ref n.networkForceServerAddress);
+        }
+    }
+
+    /// <summary>
+    /// MasterServerKey
+    /// </summary>
+    [Chunk(0x0B005002, "MasterServerKey")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B005002 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
+            rw.String(ref n.masterServerKey);
         }
     }
 
-    [Chunk(0x0B005004)]
+    /// <summary>
+    /// legacy audio limits
+    /// </summary>
+    [Chunk(0x0B005004, "legacy audio limits")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B005004 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005004;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005004)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1152,14 +1967,17 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Single(ref n.audioMusicVolume);
             rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
             rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
-            rw.Boolean(ref n.audioAllowEFX);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Boolean(ref n.audioUseEAX);
+            rw.Int32(ref n.audioMaxSounds);
+            rw.Int32(ref n.audioUpdatePeriod);
+            rw.Int32(ref n.audioSoundsPerUpdate);
         }
     }
 
-    [Chunk(0x0B005005)]
+    /// <summary>
+    /// legacy sea and boat visibility
+    /// </summary>
+    [Chunk(0x0B005005, "legacy sea and boat visibility")]
     public partial class Chunk0B005005 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005005;
@@ -1177,39 +1995,66 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005007)]
+    /// <summary>
+    /// legacy display resolution and quality
+    /// </summary>
+    [Chunk(0x0B005006, "legacy display resolution and quality")]
+    public partial class Chunk0B005006 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int2(ref n.displayScreenSizeFS);
+            rw.Int32(ref n.displayTexturesQuality);
+            rw.Int32(ref n.displayColorDepth);
+            rw.Int32(ref n.displayShaderQuality);
+            rw.Int32(ref n.displayAntialiasing);
+            rw.Int32(ref n.displayRefreshRate);
+            rw.Boolean(ref n.displayVSync);
+            rw.Boolean(ref n.displayFullScreen);
+            rw.Int32(ref n.displayMaxFiltering);
+            rw.Int32(ref n.displayShadows);
+            rw.Int32(ref n.displayHLQuality);
+        }
+    }
+
+    /// <summary>
+    /// legacy master server registration
+    /// </summary>
+    [Chunk(0x0B005007, "legacy master server registration")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B005007 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005007;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public string? U01;
-        public string? U02;
-        public string? U03;
-        public bool U04;
-        public DateTime? U05;
+        public DateTime? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005007)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005007)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B005007)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B005007)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
-            rw.String(ref U02);
-            rw.String(ref U03);
-            rw.Boolean(ref U04);
-            U05 = rw.FileTime(U05);
+            rw.String(ref n.masterServerLogin);
+            rw.String(ref n.masterServerPassword);
+            rw.String(ref n.masterServerKey);
+            rw.Boolean(ref n.masterServerIsRegistred);
+            U01 = rw.FileTime(U01);
         }
     }
 
-    [Chunk(0x0B005008)]
+    /// <summary>
+    /// DesiredLanguageId
+    /// </summary>
+    [Chunk(0x0B005008, "DesiredLanguageId")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005008 : SkippableChunk<CSystemConfig>
     {
@@ -1227,7 +2072,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005009)]
+    /// <summary>
+    /// legacy strings
+    /// </summary>
+    [Chunk(0x0B005009, "legacy strings")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005009 : SkippableChunk<CSystemConfig>
     {
@@ -1262,60 +2110,32 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00500A)]
+    /// <summary>
+    /// legacy display shadow buffer
+    /// </summary>
+    [Chunk(0x0B00500A, "legacy display shadow buffer")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
-    public partial class Chunk0B00500A : SkippableChunk<CSystemConfig>
+    public partial class Chunk0B00500A : Chunk0B005006
     {
         public override uint Id => 0x0B00500A;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public Int2 U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public bool U07;
-        public bool U08;
-        public int U09;
-        public int U10;
-        public int U11;
-        public bool U12;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00500A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00500A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B00500A)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B00500A)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B00500A)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0B00500A)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0B00500A)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0B00500A)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0B00500A)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0B00500A)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk0B00500A)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk0B00500A)clone).U12 = context.Clone(this.U12)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Int2(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Boolean(ref U07);
-            rw.Boolean(ref U08);
-            rw.Int32(ref U09);
-            rw.Int32(ref U10);
-            rw.Int32(ref U11);
-            rw.Boolean(ref U12);
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.displayDisableShadowBuffer);
         }
     }
 
-    [Chunk(0x0B00500B)]
+    /// <summary>
+    /// legacy boat quality
+    /// </summary>
+    [Chunk(0x0B00500B, "legacy boat quality")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00500B : Chunk0B005005
     {
@@ -1334,7 +2154,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00500C)]
+    /// <summary>
+    /// IsIgnorePlayerSkins
+    /// </summary>
+    [Chunk(0x0B00500C, "IsIgnorePlayerSkins")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B00500C : SkippableChunk<CSystemConfig>
     {
@@ -1352,43 +2175,41 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00500D)]
+    /// <summary>
+    /// legacy master server credentials and connection
+    /// </summary>
+    [Chunk(0x0B00500D, "legacy master server credentials and connection")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B00500D : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B00500D;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public string? U01;
-        public string? U02;
-        public string? U03;
-        public int U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00500D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00500D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B00500D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B00500D)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
-            rw.String(ref U02);
+            rw.String(ref n.masterServerLogin);
+            rw.String(ref n.masterServerPassword);
             rw.Boolean(ref n.networkUseProxy);
             rw.String(ref n.networkProxyLogin);
             rw.String(ref n.networkProxyPassword);
-            rw.String(ref U03);
+            rw.String(ref n.networkMasterServerAddress);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkClientPort);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U04);
+            rw.Int32(ref n.networkConnection);
         }
     }
 
-    [Chunk(0x0B00500E)]
+    /// <summary>
+    /// legacy car quality and opponents
+    /// </summary>
+    [Chunk(0x0B00500E, "legacy car quality and opponents")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B00500E : SkippableChunk<CSystemConfig>
     {
@@ -1408,62 +2229,328 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00500F)]
+    /// <summary>
+    /// legacy input dead zone and sensitivity
+    /// </summary>
+    [Chunk(0x0B00500F, "legacy input dead zone and sensitivity")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0B00500F : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B00500F;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public float U01;
-        public float U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B00500F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B00500F)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.inputsDeadZone);
+            rw.Single(ref n.inputsSensitivity);
         }
     }
 
-    [Chunk(0x0B005012)]
+    /// <summary>
+    /// legacy car quality and opponents
+    /// </summary>
+    [Chunk(0x0B005010, "legacy car quality and opponents")]
+    public partial class Chunk0B005010 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+        }
+    }
+
+    /// <summary>
+    /// legacy car quality and opponents
+    /// </summary>
+    [Chunk(0x0B005011, "legacy car quality and opponents")]
+    public partial class Chunk0B005011 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005011;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+        }
+    }
+
+    /// <summary>
+    /// legacy master server registration
+    /// </summary>
+    [Chunk(0x0B005012, "legacy master server registration")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0B005012 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005012;
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC;
-        public string? U01;
-        public string? U02;
-        public string? U03;
-        public bool U04;
-        public int U05;
+        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B005012)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005012)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0B005012)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0B005012)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0B005012)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref U01);
-            rw.String(ref U02);
-            rw.String(ref U03);
-            rw.Boolean(ref U04);
-            rw.Int32(ref U05);
+            rw.String(ref n.masterServerLogin);
+            rw.String(ref n.masterServerPassword);
+            rw.String(ref n.masterServerKey);
+            rw.Boolean(ref n.masterServerIsRegistred);
+            rw.Int32(ref U01);
         }
     }
 
-    [Chunk(0x0B00501D)]
+    /// <summary>
+    /// legacy car quality and opponent shadows
+    /// </summary>
+    [Chunk(0x0B005013, "legacy car quality and opponent shadows")]
+    public partial class Chunk0B005013 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005013;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+            rw.Boolean(ref n.tmOppShadows);
+        }
+    }
+
+    /// <summary>
+    /// legacy display GPU synchronization
+    /// </summary>
+    [Chunk(0x0B005014, "legacy display GPU synchronization")]
+    public partial class Chunk0B005014 : Chunk0B00500A
+    {
+        public override uint Id => 0x0B005014;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Int32(ref n.displayGpuSync);
+        }
+    }
+
+    /// <summary>
+    /// legacy display cursor emulation
+    /// </summary>
+    [Chunk(0x0B005015, "legacy display cursor emulation")]
+    public partial class Chunk0B005015 : Chunk0B005014
+    {
+        public override uint Id => 0x0B005015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.displayEmulateCursorGDI);
+        }
+    }
+
+    /// <summary>
+    /// legacy display settings
+    /// </summary>
+    [Chunk(0x0B005016, "legacy display settings")]
+    public partial class Chunk0B005016 : Chunk0B005015
+    {
+        public override uint Id => 0x0B005016;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    /// <summary>
+    /// legacy display window size and quality
+    /// </summary>
+    [Chunk(0x0B005017, "legacy display window size and quality")]
+    public partial class Chunk0B005017 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005017;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int2(ref n.displayScreenSizeFS);
+            rw.Int32(ref n.displayScreenSizeWin);
+            rw.Int32(ref n.displayTexturesQuality);
+            rw.Int32(ref n.displayColorDepth);
+            rw.Int32(ref n.displayShaderQuality);
+            rw.Int32(ref n.displayAntialiasing);
+            rw.Int32(ref n.displayRefreshRate);
+            rw.Boolean(ref n.displayVSync);
+            rw.Boolean(ref n.displayFullScreen);
+            rw.Int32(ref n.displayMaxFiltering);
+            rw.Int32(ref n.displayShadows);
+            rw.Int32(ref n.displayHLQuality);
+            rw.Boolean(ref n.displayDisableShadowBuffer);
+            rw.Int32(ref n.displayGpuSync);
+            rw.Boolean(ref n.displayEmulateCursorGDI);
+        }
+    }
+
+    /// <summary>
+    /// legacy display software vertex processing
+    /// </summary>
+    [Chunk(0x0B005018, "legacy display software vertex processing")]
+    public partial class Chunk0B005018 : Chunk0B005017
+    {
+        public override uint Id => 0x0B005018;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.displayForceSoftVP);
+        }
+    }
+
+    /// <summary>
+    /// legacy display vertex processing
+    /// </summary>
+    [Chunk(0x0B005019, "legacy display vertex processing")]
+    public partial class Chunk0B005019 : Chunk0B005017
+    {
+        public override uint Id => 0x0B005019;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Int32(ref n.displayVertexProcess);
+        }
+    }
+
+    /// <summary>
+    /// legacy network avatar downloads
+    /// </summary>
+    [Chunk(0x0B00501A, "legacy network avatar downloads")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk0B00501A : Chunk0B00500D
+    {
+        public override uint Id => 0x0B00501A;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.networkEnableAvatarDownload);
+        }
+    }
+
+    /// <summary>
+    /// legacy car quality and dynamic geometry
+    /// </summary>
+    [Chunk(0x0B00501B, "legacy car quality and dynamic geometry")]
+    public partial class Chunk0B00501B : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00501B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+            rw.Boolean(ref n.tmOppShadows);
+            rw.Boolean(ref n.displayOptimPartDynaGeom);
+        }
+    }
+
+    /// <summary>
+    /// legacy car quality and dynamic geometry
+    /// </summary>
+    [Chunk(0x0B00501C, "legacy car quality and dynamic geometry")]
+    public partial class Chunk0B00501C : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00501C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+            rw.Boolean(ref n.tmOppShadows);
+            rw.Boolean(ref n.displayOptimPartDynaGeom);
+        }
+    }
+
+    /// <summary>
+    /// legacy player skins and rolling demo
+    /// </summary>
+    [Chunk(0x0B00501D, "legacy player skins and rolling demo")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B00501D : SkippableChunk<CSystemConfig>
     {
@@ -1482,7 +2569,55 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005020)]
+    /// <summary>
+    /// legacy car quality and opponent shadows
+    /// </summary>
+    [Chunk(0x0B00501E, "legacy car quality and opponent shadows")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk0B00501E : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00501E;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+            rw.Boolean(ref n.tmOppShadows);
+        }
+    }
+
+    /// <summary>
+    /// legacy display dynamic geometry
+    /// </summary>
+    [Chunk(0x0B00501F, "legacy display dynamic geometry")]
+    public partial class Chunk0B00501F : Chunk0B005019
+    {
+        public override uint Id => 0x0B00501F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.displayOptimPartDynaGeom);
+        }
+    }
+
+    /// <summary>
+    /// safe mode and display settings
+    /// </summary>
+    [Chunk(0x0B005020, "safe mode and display settings")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005020 : SkippableChunk<CSystemConfig>
     {
@@ -1501,32 +2636,151 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005022)]
+    /// <summary>
+    /// legacy input dead zone and sensitivity
+    /// </summary>
+    [Chunk(0x0B005021, "legacy input dead zone and sensitivity")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk0B005021 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005021;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.inputsDeadZone);
+            rw.Single(ref n.inputsSensitivity);
+            rw.Boolean(ref n.inputsAlternateMethod);
+        }
+    }
+
+    /// <summary>
+    /// legacy input axes
+    /// </summary>
+    [Chunk(0x0B005022, "legacy input axes")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B005022 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005022;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
-        public float U01;
-        public float U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005022)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0B005022)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.inputsDeadZone);
+            rw.Single(ref n.inputsSensitivity);
             rw.Boolean(ref n.inputsAlternateMethod);
             rw.Boolean(ref n.inputsFreezeUnusedAxes);
         }
     }
 
-    [Chunk(0x0B005027)]
+    /// <summary>
+    /// legacy file transfers and locator URLs
+    /// </summary>
+    [Chunk(0x0B005023, "legacy file transfers and locator URLs")]
+    public partial class Chunk0B005023 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005023;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.fileTransferEnableDownload);
+            rw.Boolean(ref n.fileTransferEnableUpload);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.String(ref n.autoUpdateLocatorDBUrl);
+            rw.String(ref n.blackListUrl);
+        }
+    }
+
+    /// <summary>
+    /// legacy network master server address
+    /// </summary>
+    [Chunk(0x0B005024, "legacy network master server address")]
+    public partial class Chunk0B005024 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005024;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.networkUseProxy);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
+            rw.String(ref n.networkMasterServerAddress);
+            rw.Int32(ref n.networkServerPort);
+            rw.Int32(ref n.networkClientPort);
+            rw.Boolean(ref n.networkForceUseLocalAddress);
+            rw.String(ref n.networkForceServerAddress);
+            rw.Int32(ref n.networkConnection);
+        }
+    }
+
+    /// <summary>
+    /// AudioSpeakerConfig
+    /// </summary>
+    [Chunk(0x0B005025, "AudioSpeakerConfig")]
+    public partial class Chunk0B005025 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005025;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EAudioSpeakerConfig>(ref n.audioSpeakerConfig);
+        }
+    }
+
+    /// <summary>
+    /// legacy audio quality
+    /// </summary>
+    [Chunk(0x0B005026, "legacy audio quality")]
+    public partial class Chunk0B005026 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005026;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.audioEnabled);
+            rw.Single(ref n.audioSoundVolume);
+            rw.Single(ref n.audioMusicVolume);
+            rw.Int32(ref n.audioGlobalQuality);
+            rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
+            rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
+            rw.Boolean(ref n.audioUseEAX);
+        }
+    }
+
+    /// <summary>
+    /// legacy network flag
+    /// </summary>
+    [Chunk(0x0B005027, "legacy network flag")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
     public partial class Chunk0B005027 : SkippableChunk<CSystemConfig>
     {
@@ -1546,7 +2800,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005028)]
+    /// <summary>
+    /// legacy audio quality and speakers
+    /// </summary>
+    [Chunk(0x0B005028, "legacy audio quality and speakers")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B005028 : SkippableChunk<CSystemConfig>
     {
@@ -1566,13 +2823,65 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.audioGlobalQuality);
             rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
             rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
-            rw.Boolean(ref n.audioAllowEFX);
+            rw.Boolean(ref n.audioUseEAX);
             rw.Boolean(ref n.audioDisableDoppler);
             rw.EnumInt32<EAudioSpeakerConfig>(ref n.audioSpeakerConfig);
         }
     }
 
-    [Chunk(0x0B00502B)]
+    /// <summary>
+    /// legacy file transfers and locator updates
+    /// </summary>
+    [Chunk(0x0B005029, "legacy file transfers and locator updates")]
+    public partial class Chunk0B005029 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005029;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.fileTransferEnableDownload);
+            rw.Boolean(ref n.fileTransferEnableUpload);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
+            rw.String(ref n.autoUpdateLocatorDBUrl);
+            rw.String(ref n.blackListUrl);
+        }
+    }
+
+    /// <summary>
+    /// legacy file transfers and locators
+    /// </summary>
+    [Chunk(0x0B00502A, "legacy file transfers and locators")]
+    public partial class Chunk0B00502A : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00502A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.fileTransferEnableDownload);
+            rw.Boolean(ref n.fileTransferEnableUpload);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.Boolean(ref n.enableLocators);
+            rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
+            rw.String(ref n.autoUpdateLocatorDBUrl);
+            rw.String(ref n.blackListUrl);
+        }
+    }
+
+    /// <summary>
+    /// advertising
+    /// </summary>
+    [Chunk(0x0B00502B, "advertising")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00502B : SkippableChunk<CSystemConfig>
     {
@@ -1592,7 +2901,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00502C)]
+    /// <summary>
+    /// legacy car quality and opponent limit
+    /// </summary>
+    [Chunk(0x0B00502C, "legacy car quality and opponent limit")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
     public partial class Chunk0B00502C : SkippableChunk<CSystemConfig>
     {
@@ -1615,13 +2927,110 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005030)]
+    /// <summary>
+    /// legacy network connection
+    /// </summary>
+    [Chunk(0x0B00502D, "legacy network connection")]
+    public partial class Chunk0B00502D : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00502D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.networkUseProxy);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
+            rw.Int32(ref n.networkServerPort);
+            rw.Int32(ref n.networkClientPort);
+            rw.Boolean(ref n.networkForceUseLocalAddress);
+            rw.String(ref n.networkForceServerAddress);
+            rw.Int32(ref n.networkConnection);
+        }
+    }
+
+    /// <summary>
+    /// legacy file transfers and crash logs
+    /// </summary>
+    [Chunk(0x0B00502E, "legacy file transfers and crash logs")]
+    public partial class Chunk0B00502E : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00502E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.fileTransferEnableDownload);
+            rw.Boolean(ref n.fileTransferEnableUpload);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.Boolean(ref n.enableLocators);
+            rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
+            rw.String(ref n.autoUpdateLocatorDBUrl);
+            rw.String(ref n.blackListUrl);
+            rw.Boolean(ref n.enableCrashLogUpload);
+        }
+    }
+
+    /// <summary>
+    /// legacy file transfers and crash logs
+    /// </summary>
+    [Chunk(0x0B00502F, "legacy file transfers and crash logs")]
+    public partial class Chunk0B00502F : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00502F;
+        public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B00502F)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.fileTransferEnableDownload);
+            rw.Boolean(ref n.fileTransferEnableUpload);
+            rw.UInt32(ref n.fileTransferMaxCacheSize32);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref n.enableLocators);
+            rw.Boolean(ref n.autoUpdateFromLocatorAtInternetConnection);
+            rw.String(ref n.autoUpdateLocatorDBUrl);
+            rw.String(ref n.blackListUrl);
+            rw.Boolean(ref n.enableCrashLogUpload);
+        }
+    }
+
+    /// <summary>
+    /// legacy file transfers and crash logs
+    /// </summary>
+    [Chunk(0x0B005030, "legacy file transfers and crash logs")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0B005030 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005030;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
+        [GameVersionDefault(GameVersion.TMF, true)]
         public bool U01;
+
+        public Chunk0B005030() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B005030(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF)
+            {
+                U01 = true;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1644,18 +3053,19 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005031)]
+    /// <summary>
+    /// legacy network UPnP
+    /// </summary>
+    [Chunk(0x0B005031, "legacy network UPnP")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
     public partial class Chunk0B005031 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005031;
         public override GameVersion GameVersion => GameVersion.TMO | GameVersion.TMSX;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005031)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1667,12 +3077,67 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.networkClientPort);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.networkConnection);
             rw.Boolean(ref n.networkUseNatUPnP);
         }
     }
 
-    [Chunk(0x0B005034)]
+    /// <summary>
+    /// legacy network P2P port
+    /// </summary>
+    [Chunk(0x0B005032, "legacy network P2P port")]
+    public partial class Chunk0B005032 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005032;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.networkUseProxy);
+            rw.String(ref n.networkProxyLogin);
+            rw.String(ref n.networkProxyPassword);
+            rw.Int32(ref n.networkServerPort);
+            rw.Int32(ref n.networkP2PServerPort);
+            rw.Int32(ref n.networkClientPort);
+            rw.Boolean(ref n.networkForceUseLocalAddress);
+            rw.String(ref n.networkForceServerAddress);
+            rw.Int32(ref n.networkConnection);
+            rw.Boolean(ref n.networkUseNatUPnP);
+        }
+    }
+
+    /// <summary>
+    /// legacy car quality and opponent limit
+    /// </summary>
+    [Chunk(0x0B005033, "legacy car quality and opponent limit")]
+    public partial class Chunk0B005033 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005033;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.tmCarQuality);
+            rw.EnumInt32<ETmCarParticlesQuality>(ref n.tmCarParticlesQuality);
+            rw.EnumInt32<ETmCarProjector>(ref n.tmCarProjector);
+            rw.Int32(ref n.tmOpponents);
+            rw.Int32(ref n.tmMaxOpponents);
+            rw.Boolean(ref n.tmOppShadows);
+        }
+    }
+
+    /// <summary>
+    /// legacy car quality and background
+    /// </summary>
+    [Chunk(0x0B005034, "legacy car quality and background")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0B005034 : SkippableChunk<CSystemConfig>
     {
@@ -1696,7 +3161,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005035)]
+    /// <summary>
+    /// legacy internet connection test
+    /// </summary>
+    [Chunk(0x0B005035, "legacy internet connection test")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B005035 : SkippableChunk<CSystemConfig>
     {
@@ -1717,18 +3185,19 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005036)]
+    /// <summary>
+    /// legacy network server broadcast
+    /// </summary>
+    [Chunk(0x0B005036, "legacy network server broadcast")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0B005036 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005036;
         public override GameVersion GameVersion => GameVersion.TMNESWC;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0B005036)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
@@ -1742,12 +3211,15 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.networkServerBroadcastLength);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.networkConnection);
             rw.Boolean(ref n.networkUseNatUPnP);
         }
     }
 
-    [Chunk(0x0B005037)]
+    /// <summary>
+    /// legacy installation key
+    /// </summary>
+    [Chunk(0x0B005037, "legacy installation key")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B005037 : SkippableChunk<CSystemConfig>
     {
@@ -1761,11 +3233,14 @@ public partial class CSystemConfig : CMwNod, IClass
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.String(ref n.key);
+            rw.String(ref n.installCdKey);
         }
     }
 
-    [Chunk(0x0B005038)]
+    /// <summary>
+    /// legacy profile ID
+    /// </summary>
+    [Chunk(0x0B005038, "legacy profile ID")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0B005038 : SkippableChunk<CSystemConfig>
     {
@@ -1779,12 +3254,15 @@ public partial class CSystemConfig : CMwNod, IClass
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref n.gameProfileEnableMulti);
-            rw.Id(ref n.gameProfileName);
+            rw.Boolean(ref n.profileEnableMulti);
+            rw.Id(ref n.profileName);
         }
     }
 
-    [Chunk(0x0B005039)]
+    /// <summary>
+    /// legacy network transfer rates
+    /// </summary>
+    [Chunk(0x0B005039, "legacy network transfer rates")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0B005039 : SkippableChunk<CSystemConfig>
     {
@@ -1807,13 +3285,16 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.networkServerBroadcastLength);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref n.networkDownload);
-            rw.Int32(ref n.networkUpload);
+            rw.Int32(ref n.networkDownloadRate);
+            rw.Int32(ref n.networkUploadRate);
             rw.Boolean(ref n.networkUseNatUPnP);
         }
     }
 
-    [Chunk(0x0B00503A)]
+    /// <summary>
+    /// launcher settings
+    /// </summary>
+    [Chunk(0x0B00503A, "launcher settings")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00503A : SkippableChunk<CSystemConfig>
     {
@@ -1821,8 +3302,22 @@ public partial class CSystemConfig : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public string? U01;
         public string? U02;
+        [GameVersionDefault(GameVersion.TMF, 86400)]
+        [GameVersionDefault(GameVersion.MP4, 86400)]
         public int U03;
         public DateTime? U04;
+
+        public Chunk0B00503A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00503A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP4)
+            {
+                U03 = 86400;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1842,7 +3337,66 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00503D)]
+    /// <summary>
+    /// legacy versioned audio device
+    /// </summary>
+    [Chunk(0x0B00503B, "legacy versioned audio device")]
+    public partial class Chunk0B00503B : SkippableChunk<CSystemConfig>, IVersionable
+    {
+        public override uint Id => 0x0B00503B;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B00503B)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version >= 1)
+            {
+                throw new NotSupportedException();
+            }
+
+            rw.Boolean(ref n.audioEnabled);
+            rw.Single(ref n.audioSoundVolume);
+            rw.Single(ref n.audioMusicVolume);
+            rw.Int32(ref n.audioGlobalQuality);
+            rw.EnumInt32<EAudioAcceleration>(ref n.audioAcceleration_Dx9);
+            rw.EnumInt32<EAudioQuality3d>(ref n.audioQuality3d_Dx9);
+            rw.Boolean(ref n.audioUseEAX);
+            rw.Boolean(ref n.audioDisableDoppler);
+            rw.EnumInt32<EAudioSpeakerConfig>(ref n.audioSpeakerConfig);
+            rw.String(ref n.audioDevice_Oal);
+        }
+    }
+
+    /// <summary>
+    /// PlayerInfoDisplaySize
+    /// </summary>
+    [Chunk(0x0B00503C, "PlayerInfoDisplaySize")]
+    public partial class Chunk0B00503C : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00503C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.playerInfoDisplaySize);
+        }
+    }
+
+    /// <summary>
+    /// legacy player display size
+    /// </summary>
+    [Chunk(0x0B00503D, "legacy player display size")]
     public partial class Chunk0B00503D : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B00503D;
@@ -1863,7 +3417,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00503E)]
+    /// <summary>
+    /// parental lock
+    /// </summary>
+    [Chunk(0x0B00503E, "parental lock")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00503E : SkippableChunk<CSystemConfig>
     {
@@ -1882,7 +3439,50 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005041)]
+    /// <summary>
+    /// legacy encrypted key
+    /// </summary>
+    [Chunk(0x0B00503F, "legacy encrypted key")]
+    public partial class Chunk0B00503F : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00503F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.encryptedKey);
+        }
+    }
+
+    /// <summary>
+    /// legacy input rumble
+    /// </summary>
+    [Chunk(0x0B005040, "legacy input rumble")]
+    public partial class Chunk0B005040 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005040;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.inputsAlternateMethod);
+            rw.Boolean(ref n.inputsFreezeUnusedAxes);
+            rw.Boolean(ref n.inputsEnableRumble);
+        }
+    }
+
+    /// <summary>
+    /// MenuSkin
+    /// </summary>
+    [Chunk(0x0B005041, "MenuSkin")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0B005041 : SkippableChunk<CSystemConfig>
     {
@@ -1900,7 +3500,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005043)]
+    /// <summary>
+    /// legacy master server addresses
+    /// </summary>
+    [Chunk(0x0B005043, "legacy master server addresses")]
     public partial class Chunk0B005043 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005043;
@@ -1921,7 +3524,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005044)]
+    /// <summary>
+    /// legacy firewall checksums
+    /// </summary>
+    [Chunk(0x0B005044, "legacy firewall checksums")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0B005044 : SkippableChunk<CSystemConfig>
     {
@@ -1942,7 +3548,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005045)]
+    /// <summary>
+    /// input axes and rumble
+    /// </summary>
+    [Chunk(0x0B005045, "input axes and rumble")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0B005045 : SkippableChunk<CSystemConfig>
     {
@@ -1963,7 +3572,32 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005047)]
+    /// <summary>
+    /// legacy encrypted key and installation
+    /// </summary>
+    [Chunk(0x0B005046, "legacy encrypted key and installation")]
+    public partial class Chunk0B005046 : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B005046;
+        public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B005046)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.encryptedKey);
+            rw.Boolean(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// legacy game flag
+    /// </summary>
+    [Chunk(0x0B005047, "legacy game flag")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005047 : SkippableChunk<CSystemConfig>
     {
@@ -1983,7 +3617,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005048)]
+    /// <summary>
+    /// profile settings
+    /// </summary>
+    [Chunk(0x0B005048, "profile settings")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005048 : SkippableChunk<CSystemConfig>
     {
@@ -1997,12 +3634,15 @@ public partial class CSystemConfig : CMwNod, IClass
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref n.gameProfileEnableMulti);
-            rw.String(ref n.gameProfileName);
+            rw.Boolean(ref n.profileEnableMulti);
+            rw.String(ref n.profileName);
         }
     }
 
-    [Chunk(0x0B005049)]
+    /// <summary>
+    /// legacy game timestamp
+    /// </summary>
+    [Chunk(0x0B005049, "legacy game timestamp")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005049 : SkippableChunk<CSystemConfig>
     {
@@ -2022,7 +3662,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00504A)]
+    /// <summary>
+    /// player skins and display
+    /// </summary>
+    [Chunk(0x0B00504A, "player skins and display")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00504A : SkippableChunk<CSystemConfig>
     {
@@ -2046,14 +3689,61 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00504C)]
+    /// <summary>
+    /// legacy encrypted key and installation
+    /// </summary>
+    [Chunk(0x0B00504B, "legacy encrypted key and installation")]
+    public partial class Chunk0B00504B : SkippableChunk<CSystemConfig>
+    {
+        public override uint Id => 0x0B00504B;
+        public bool U01;
+        public bool U02;
+        public bool U03;
+        public bool U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0B00504B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0B00504B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0B00504B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0B00504B)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.encryptedKey);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
+        }
+    }
+
+    /// <summary>
+    /// legacy installation flags
+    /// </summary>
+    [Chunk(0x0B00504C, "legacy installation flags")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0B00504C : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B00504C;
         public override GameVersion GameVersion => GameVersion.TMF;
+        [GameVersionDefault(GameVersion.TMF, true)]
         public bool U01;
         public bool U02;
+
+        public Chunk0B00504C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00504C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF)
+            {
+                U01 = true;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2069,7 +3759,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00504D)]
+    /// <summary>
+    /// legacy encrypted key and installation
+    /// </summary>
+    [Chunk(0x0B00504D, "legacy encrypted key and installation")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0B00504D : SkippableChunk<CSystemConfig>
     {
@@ -2096,7 +3789,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00504E)]
+    /// <summary>
+    /// legacy key hashes
+    /// </summary>
+    [Chunk(0x0B00504E, "legacy key hashes")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0B00504E : SkippableChunk<CSystemConfig>
     {
@@ -2114,7 +3810,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00504F)]
+    /// <summary>
+    /// audio device and quality
+    /// </summary>
+    [Chunk(0x0B00504F, "audio device and quality")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00504F : SkippableChunk<CSystemConfig>
     {
@@ -2144,7 +3843,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005050)]
+    /// <summary>
+    /// EdDontConnect
+    /// </summary>
+    [Chunk(0x0B005050, "EdDontConnect")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005050 : SkippableChunk<CSystemConfig>
     {
@@ -2162,7 +3864,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005051)]
+    /// <summary>
+    /// network string
+    /// </summary>
+    [Chunk(0x0B005051, "network string")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005051 : SkippableChunk<CSystemConfig>
     {
@@ -2182,7 +3887,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005052)]
+    /// <summary>
+    /// car quality and player visibility
+    /// </summary>
+    [Chunk(0x0B005052, "car quality and player visibility")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005052 : SkippableChunk<CSystemConfig>
     {
@@ -2206,7 +3914,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005053)]
+    /// <summary>
+    /// AudioSoundHdr
+    /// </summary>
+    [Chunk(0x0B005053, "AudioSoundHdr")]
     public partial class Chunk0B005053 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005053;
@@ -2222,13 +3933,29 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005054)]
+    /// <summary>
+    /// file transfers and crash logs
+    /// </summary>
+    [Chunk(0x0B005054, "file transfers and crash logs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005054 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005054;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        [GameVersionDefault(GameVersion.MP4, true)]
         public bool U01;
+
+        public Chunk0B005054() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B005054(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                U01 = true;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2251,7 +3978,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005055)]
+    /// <summary>
+    /// encrypted key and installation
+    /// </summary>
+    [Chunk(0x0B005055, "encrypted key and installation")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005055 : SkippableChunk<CSystemConfig>
     {
@@ -2260,7 +3990,20 @@ public partial class CSystemConfig : CMwNod, IClass
         public bool U01;
         public bool U02;
         public bool U03;
+        [GameVersionDefault(GameVersion.MP4, true)]
         public bool U04;
+
+        public Chunk0B005055() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B005055(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                U04 = true;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2281,7 +4024,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005056)]
+    /// <summary>
+    /// audio HRTF and HDR
+    /// </summary>
+    [Chunk(0x0B005056, "audio HRTF and HDR")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005056 : SkippableChunk<CSystemConfig>
     {
@@ -2289,7 +4035,21 @@ public partial class CSystemConfig : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public int U02;
+        [GameVersionDefault(GameVersion.MP4, true)]
+        [GameVersionDefault(GameVersion.TM2020, true)]
         public bool U03;
+
+        public Chunk0B005056() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B005056(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                U03 = true;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2310,7 +4070,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005057)]
+    /// <summary>
+    /// legacy network speed
+    /// </summary>
+    [Chunk(0x0B005057, "legacy network speed")]
     public partial class Chunk0B005057 : SkippableChunk<CSystemConfig>
     {
         public override uint Id => 0x0B005057;
@@ -2331,8 +4094,8 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.networkServerBroadcastLength);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref n.networkDownload);
-            rw.Int32(ref n.networkUpload);
+            rw.Int32(ref n.networkDownloadRate);
+            rw.Int32(ref n.networkUploadRate);
             rw.Boolean(ref n.networkUseNatUPnP);
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
@@ -2342,7 +4105,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005058)]
+    /// <summary>
+    /// GamePackQuality
+    /// </summary>
+    [Chunk(0x0B005058, "GamePackQuality")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005058 : SkippableChunk<CSystemConfig>
     {
@@ -2360,7 +4126,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B005059)]
+    /// <summary>
+    /// file transfers by content type
+    /// </summary>
+    [Chunk(0x0B005059, "file transfers by content type")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B005059 : SkippableChunk<CSystemConfig>
     {
@@ -2386,9 +4155,9 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Boolean(ref n.fileTransferEnableMapSkinDownload);
             rw.Boolean(ref n.fileTransferEnableMapSkinUpload);
             rw.Boolean(ref n.fileTransferEnableMapSkinLocators);
-            rw.Boolean(ref n.fileTransferEnableTagDownload);
-            rw.Boolean(ref n.fileTransferEnableTagUpload);
-            rw.Boolean(ref n.fileTransferEnableTagLocators);
+            rw.Boolean(ref n.fileTransferEnableTagSkinDownload);
+            rw.Boolean(ref n.fileTransferEnableTagSkinUpload);
+            rw.Boolean(ref n.fileTransferEnableTagSkinLocators);
             rw.Boolean(ref n.fileTransferEnableVehicleSkinDownload);
             rw.Boolean(ref n.fileTransferEnableVehicleSkinUpload);
             rw.Boolean(ref n.fileTransferEnableVehicleSkinLocators);
@@ -2398,7 +4167,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00505A)]
+    /// <summary>
+    /// replay recording and capture settings
+    /// </summary>
+    [Chunk(0x0B00505A, "replay recording and capture settings")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00505A : SkippableChunk<CSystemConfig>
     {
@@ -2446,13 +4218,32 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00505B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// anti-cheat and bad-word URLs
+    /// </summary>
+    [Chunk(0x0B00505B, "anti-cheat and bad-word URLs")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 2)]
     public partial class Chunk0B00505B : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0B00505B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00505B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2478,13 +4269,28 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00505C)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// SmMaxPlayerResimStepPerFrame
+    /// </summary>
+    [Chunk(0x0B00505C, "SmMaxPlayerResimStepPerFrame")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
     public partial class Chunk0B00505C : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505C;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0B00505C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00505C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2495,40 +4301,80 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+
+            if (Version >= 1)
+            {
+                throw new NotSupportedException();
+            }
+
             rw.Int32(ref n.smMaxPlayerResimStepPerFrame);
         }
     }
 
-    [Chunk(0x0B00505D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// InstallUid
+    /// </summary>
+    [Chunk(0x0B00505D, "InstallUid")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
     public partial class Chunk0B00505D : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public string? U01;
+
+        public Chunk0B00505D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00505D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0B00505D)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0B00505D)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.String(ref U01);
+
+            if (Version >= 1)
+            {
+                throw new NotSupportedException();
+            }
+
+            rw.String(ref n.installUid);
         }
     }
 
-    [Chunk(0x0B00505E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// network speed and firewall tests
+    /// </summary>
+    [Chunk(0x0B00505E, "network speed and firewall tests")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0B00505E : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0B00505E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B00505E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2539,6 +4385,12 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+
+            if (Version >= 2)
+            {
+                throw new NotSupportedException();
+            }
+
             rw.Boolean(ref n.networkUseProxy);
             rw.String(ref n.networkProxyLogin);
             rw.String(ref n.networkProxyPassword);
@@ -2548,8 +4400,8 @@ public partial class CSystemConfig : CMwNod, IClass
             rw.Int32(ref n.networkServerBroadcastLength);
             rw.Boolean(ref n.networkForceUseLocalAddress);
             rw.String(ref n.networkForceServerAddress);
-            rw.Int32(ref n.networkDownload);
-            rw.Int32(ref n.networkUpload);
+            rw.Int32(ref n.networkDownloadRate);
+            rw.Int32(ref n.networkUploadRate);
             rw.Boolean(ref n.networkUseNatUPnP);
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
@@ -2559,7 +4411,10 @@ public partial class CSystemConfig : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0B00505F)]
+    /// <summary>
+    /// proxy URL
+    /// </summary>
+    [Chunk(0x0B00505F, "proxy URL")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00505F : SkippableChunk<CSystemConfig>
     {
@@ -2574,17 +4429,32 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref n.networkProxyAddress);
+            rw.String(ref n.networkProxyUrl);
         }
     }
 
-    [Chunk(0x0B005060)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    /// <summary>
+    /// input joysticks
+    /// </summary>
+    [Chunk(0x0B005060, "input joysticks")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0B005060 : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B005060;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0B005060() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0B005060(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2706,9 +4576,12 @@ public partial class CSystemConfig : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0B005000 => new Chunk0B005000(),
+        0x0B005001 => new Chunk0B005001(),
         0x0B005002 => new Chunk0B005002(),
         0x0B005004 => new Chunk0B005004(),
         0x0B005005 => new Chunk0B005005(),
+        0x0B005006 => new Chunk0B005006(),
         0x0B005007 => new Chunk0B005007(),
         0x0B005008 => new Chunk0B005008(),
         0x0B005009 => new Chunk0B005009(),
@@ -2718,16 +4591,42 @@ public partial class CSystemConfig : CMwNod, IClass
         0x0B00500D => new Chunk0B00500D(),
         0x0B00500E => new Chunk0B00500E(),
         0x0B00500F => new Chunk0B00500F(),
+        0x0B005010 => new Chunk0B005010(),
+        0x0B005011 => new Chunk0B005011(),
         0x0B005012 => new Chunk0B005012(),
+        0x0B005013 => new Chunk0B005013(),
+        0x0B005014 => new Chunk0B005014(),
+        0x0B005015 => new Chunk0B005015(),
+        0x0B005016 => new Chunk0B005016(),
+        0x0B005017 => new Chunk0B005017(),
+        0x0B005018 => new Chunk0B005018(),
+        0x0B005019 => new Chunk0B005019(),
+        0x0B00501A => new Chunk0B00501A(),
+        0x0B00501B => new Chunk0B00501B(),
+        0x0B00501C => new Chunk0B00501C(),
         0x0B00501D => new Chunk0B00501D(),
+        0x0B00501E => new Chunk0B00501E(),
+        0x0B00501F => new Chunk0B00501F(),
         0x0B005020 => new Chunk0B005020(),
+        0x0B005021 => new Chunk0B005021(),
         0x0B005022 => new Chunk0B005022(),
+        0x0B005023 => new Chunk0B005023(),
+        0x0B005024 => new Chunk0B005024(),
+        0x0B005025 => new Chunk0B005025(),
+        0x0B005026 => new Chunk0B005026(),
         0x0B005027 => new Chunk0B005027(),
         0x0B005028 => new Chunk0B005028(),
+        0x0B005029 => new Chunk0B005029(),
+        0x0B00502A => new Chunk0B00502A(),
         0x0B00502B => new Chunk0B00502B(),
         0x0B00502C => new Chunk0B00502C(),
+        0x0B00502D => new Chunk0B00502D(),
+        0x0B00502E => new Chunk0B00502E(),
+        0x0B00502F => new Chunk0B00502F(),
         0x0B005030 => new Chunk0B005030(),
         0x0B005031 => new Chunk0B005031(),
+        0x0B005032 => new Chunk0B005032(),
+        0x0B005033 => new Chunk0B005033(),
         0x0B005034 => new Chunk0B005034(),
         0x0B005035 => new Chunk0B005035(),
         0x0B005036 => new Chunk0B005036(),
@@ -2735,16 +4634,22 @@ public partial class CSystemConfig : CMwNod, IClass
         0x0B005038 => new Chunk0B005038(),
         0x0B005039 => new Chunk0B005039(),
         0x0B00503A => new Chunk0B00503A(),
+        0x0B00503B => new Chunk0B00503B(),
+        0x0B00503C => new Chunk0B00503C(),
         0x0B00503D => new Chunk0B00503D(),
         0x0B00503E => new Chunk0B00503E(),
+        0x0B00503F => new Chunk0B00503F(),
+        0x0B005040 => new Chunk0B005040(),
         0x0B005041 => new Chunk0B005041(),
         0x0B005043 => new Chunk0B005043(),
         0x0B005044 => new Chunk0B005044(),
         0x0B005045 => new Chunk0B005045(),
+        0x0B005046 => new Chunk0B005046(),
         0x0B005047 => new Chunk0B005047(),
         0x0B005048 => new Chunk0B005048(),
         0x0B005049 => new Chunk0B005049(),
         0x0B00504A => new Chunk0B00504A(),
+        0x0B00504B => new Chunk0B00504B(),
         0x0B00504C => new Chunk0B00504C(),
         0x0B00504D => new Chunk0B00504D(),
         0x0B00504E => new Chunk0B00504E(),

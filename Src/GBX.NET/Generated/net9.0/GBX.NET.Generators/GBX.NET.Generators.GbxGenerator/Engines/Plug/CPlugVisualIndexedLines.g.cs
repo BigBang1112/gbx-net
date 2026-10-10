@@ -34,37 +34,78 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     [Hexadecimal]
     public static new uint Id => 0x09009000;
 
+    private ERenderMode renderMode;
+    [AppliedWithChunk<Chunk09009001>]
+    public ERenderMode RenderMode
+    {
+        get => this.renderMode;
+        set => this.renderMode = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVisualIndexedLines)clone).renderMode = context.Clone(this.renderMode)!;
     }
 
     public CPlugVisualIndexedLines()
     {
     }
 
-    [Chunk(0x09009001)]
+    /// <summary>
+    /// legacy line indices
+    /// </summary>
+    [Chunk(0x09009000, "legacy line indices")]
+    public partial class Chunk09009000 : Chunk0906A000
+    {
+        public override uint Id => 0x09009000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// RenderMode
+    /// </summary>
+    [Chunk(0x09009001, "RenderMode")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09009001 : Chunk<CPlugVisualIndexedLines>
     {
         public override uint Id => 0x09009001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09009001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVisualIndexedLines n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.EnumInt32<ERenderMode>(ref n.renderMode);
         }
+    }
+
+    public enum ERenderMode
+    {
+        /// <summary>
+        /// Native line primitives
+        /// </summary>
+        Lines,
+        /// <summary>
+        /// Wide lines with width in world units
+        /// </summary>
+        WideWorld,
+        /// <summary>
+        /// Wide lines with width in pixels
+        /// </summary>
+        WideScreen,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09009000 => new Chunk09009000(),
         0x09009001 => new Chunk09009001(),
         _ => base.NewChunk(chunkId),
     };

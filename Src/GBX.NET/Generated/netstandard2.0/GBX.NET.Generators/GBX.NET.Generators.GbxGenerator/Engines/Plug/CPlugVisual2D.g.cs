@@ -34,9 +34,9 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
     [Hexadecimal]
     public static new uint Id => 0x0904A000;
 
-    private Vertex2D[]? vertices2D;
+    private Vertex2D[] vertices2D = [];
     [AppliedWithChunk<Chunk0904A000>]
-    public Vertex2D[]? Vertices2D
+    public Vertex2D[] Vertices2D
     {
         get => this.vertices2D;
         set => this.vertices2D = value;
@@ -48,11 +48,10 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
         ((CPlugVisual2D)clone).vertices2D = context.CloneArray(this.vertices2D)!;
     }
 
-    public CPlugVisual2D()
-    {
-    }
-
-    [Chunk(0x0904A000)]
+    /// <summary>
+    /// Vertices2D
+    /// </summary>
+    [Chunk(0x0904A000, "Vertices2D")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0904A000 : Chunk<CPlugVisual2D>
     {
@@ -72,60 +71,25 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
 
     public partial class Vertex2D : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private float u01;
-        public float U01
+        private Vec2 position;
+        public Vec2 Position
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.position;
+            set => this.position = value;
         }
 
-        private float u02;
-        public float U02
+        private Vec2 normal;
+        public Vec2 Normal
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.normal;
+            set => this.normal = value;
         }
 
-        private float u03;
-        public float U03
+        private Color color;
+        public Color Color
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private float u05;
-        public float U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
-        }
-
-        private float u06;
-        public float U06
-        {
-            get => this.u06;
-            set => this.u06 = value;
-        }
-
-        private float u07;
-        public float U07
-        {
-            get => this.u07;
-            set => this.u07 = value;
-        }
-
-        private float u08;
-        public float U08
-        {
-            get => this.u08;
-            set => this.u08 = value;
+            get => this.color;
+            set => this.color = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -138,26 +102,16 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Vertex2D)clone).u01 = context.Clone(this.u01)!;
-            ((Vertex2D)clone).u02 = context.Clone(this.u02)!;
-            ((Vertex2D)clone).u03 = context.Clone(this.u03)!;
-            ((Vertex2D)clone).u04 = context.Clone(this.u04)!;
-            ((Vertex2D)clone).u05 = context.Clone(this.u05)!;
-            ((Vertex2D)clone).u06 = context.Clone(this.u06)!;
-            ((Vertex2D)clone).u07 = context.Clone(this.u07)!;
-            ((Vertex2D)clone).u08 = context.Clone(this.u08)!;
+            ((Vertex2D)clone).position = context.Clone(this.position)!;
+            ((Vertex2D)clone).normal = context.Clone(this.normal)!;
+            ((Vertex2D)clone).color = context.Clone(this.color)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
-            rw.Single(ref this.u06);
-            rw.Single(ref this.u07);
-            rw.Single(ref this.u08);
+            rw.Vec2(ref this.position);
+            rw.Vec2(ref this.normal);
+            rw.Color(ref this.color);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

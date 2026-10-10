@@ -1,221 +1,105 @@
-﻿namespace GBX.NET.Engines.Plug;
+namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugVisual3D
 {
     public Vertex[] Vertices { get; set; } = [];
-    public Vec3[]? Tangents { get; set; }
-    public Vec3[]? BiTangents { get; set; }
+    public Vec3[]? Tangents { get; set; } = [];
+    public Vec3[]? BiTangents { get; set; } = [];
 
-    public partial class Chunk0902C003
+    private static void ReadWriteVertices(CPlugVisual3D n, GbxReaderWriter rw, bool legacy)
     {
-        public override void Read(CPlugVisual3D n, GbxReader r)
+        if (n.Count < 0) throw new InvalidDataException("Vertex count cannot be negative.");
+        if (rw.Reader is not null) n.Vertices = new Vertex[n.Count];
+        if (n.Vertices.Length != n.Count) throw new InvalidDataException("Vertex count does not match the geometry header.");
+
+        var hasNormals = legacy || !n.IsFlagBitSet(22) || n.HasVertexNormals;
+        var hasColors = legacy || !n.IsFlagBitSet(22) || n.HasVertexColors;
+        // Sprites use the normal slot for size and rotation data.
+        var compressNormals = !legacy && n.IsFlagBitSet(20) && n is not CPlugVisualSprite;
+        var compressColors = !legacy && n.IsFlagBitSet(21);
+        using var binaryReader = rw.Reader?.ForceBinary();
+        for (var i = 0; i < n.Count; i++)
         {
-            n.Vertices = new Vertex[n.Count];
+            n.Vertices[i] = n.Vertices[i].ReadWrite(rw, hasNormals, hasColors, compressNormals, compressColors);
+        }
+    }
 
-            using (var _ = r.ForceBinary())
-            {
-                for (int i = 0; i < n.Count; i++)
-                {
-                    n.Vertices[i] = new Vertex
-                    {
-                        Position = r.ReadVec3(),
-                        Normal = r.ReadVec3(),
-                        U02 = r.ReadVec3(),
-                        U03 = r.ReadSingle()
-                    };
-                }
-            }
+    public partial class Chunk0902C001
+    {
+        public override GameVersion GameVersion => GameVersion.Unspecified;
 
-            n.Tangents = r.ReadArray<Vec3>();
-            n.BiTangents = r.ReadArray<Vec3>();
+        public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
+        {
+            ReadWriteVertices(n, rw, legacy: true);
+            n.Tangents = rw.Array(n.Tangents);
+        }
+    }
+
+    public partial class Chunk0902C002
+    {
+        private CMwNod? LegacyBlendShapes { get; set; }
+        private bool LegacyBlendShapesSet { get; set; }
+
+        [Obsolete("Use CPlugVisual3D.BlendShapes instead.")]
+        public CMwNod? U01
+        {
+            get => LegacyBlendShapes;
+            set { LegacyBlendShapes = value; LegacyBlendShapesSet = true; }
         }
 
-        public override void Write(CPlugVisual3D n, GbxWriter w)
+        public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
         {
-            foreach (var vertex in n.Vertices)
-            {
-                w.Write(vertex.Position);
-                w.Write(vertex.Normal.GetValueOrDefault());
-                w.Write(vertex.U02.GetValueOrDefault());
-                w.Write(vertex.U03.GetValueOrDefault());
-            }
-
-            w.WriteArray(n.Tangents);
-            w.WriteArray(n.BiTangents);
+            if (rw.Reader is null && LegacyBlendShapesSet) n.BlendShapes = LegacyBlendShapes;
+            n.BlendShapes = rw.NodeRef(n.BlendShapes);
+            LegacyBlendShapes = n.BlendShapes;
+            LegacyBlendShapesSet = false;
         }
     }
 
     public partial class Chunk0902C004
     {
-        public int Tangents1Count { get; set; }
-        public byte[]? Tangents1 { get; set; }
-        public int Tangents2Count { get; set; }
-        public byte[]? Tangents2 { get; set; }
+        public int TangentCount { get; set; }
+        public byte[]? TangentData { get; set; }
+        public int BitangentCount { get; set; }
+        public byte[]? BitangentData { get; set; }
 
-        public override void Read(CPlugVisual3D n, GbxReader r)
+        public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
         {
-            var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
-            var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
-            var u03 = n.IsFlagBitSet(20);
-            var u04 = n.IsFlagBitSet(21);
-            var isSprite = n is CPlugVisualSprite;
+            if (n.VertexStreams.Count == 0) ReadWriteVertices(n, rw, legacy: false);
+            else if (rw.Reader is not null) n.Vertices = [];
 
-            if (n.VertexStreams.Count == 0)
-            {
-                n.Vertices = new Vertex[n.Count];
-
-                for (var i = 0; i < n.Count; i++)
-                {
-                    n.Vertices[i] = Vertex.Read(r, u01, u02, u03, u04, isSprite);
-                }
-            }
-
-            (Tangents1Count, Tangents1) = ReadTangents(n, r);
-            (Tangents2Count, Tangents2) = ReadTangents(n, r);
+            (TangentCount, TangentData) = ReadWriteTangents(n, rw, TangentCount, TangentData);
+            (BitangentCount, BitangentData) = ReadWriteTangents(n, rw, BitangentCount, BitangentData);
         }
 
-        public override void Write(CPlugVisual3D n, GbxWriter w)
+        private static (int, byte[]?) ReadWriteTangents(CPlugVisual3D n, GbxReaderWriter rw, int count, byte[]? data)
         {
-            var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
-            var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
-            var u03 = n.IsFlagBitSet(20);
-            var u04 = n.IsFlagBitSet(21);
-            var isSprite = n is CPlugVisualSprite;
-
-            if (n.VertexStreams.Count == 0)
+            count = rw.Int32(count);
+            if (count < 0 || (count != 0 && count != n.Count))
             {
-                for (var i = 0; i < n.Count; i++)
-                {
-                    n.Vertices[i].Write(w, u01, u02, u03, u04, isSprite);
-                }
+                throw new InvalidDataException($"Tangent count must be zero or the vertex count ({count} != {n.Count}).");
             }
 
-            WriteTangents(w, Tangents1Count, Tangents1);
-            WriteTangents(w, Tangents2Count, Tangents2);
+            var length = checked(count * (n.IsFlagBitSet(20) ? 4 : 12));
+            if (rw.Writer is not null && (data?.Length ?? 0) != length)
+            {
+                throw new InvalidDataException("Tangent data length does not match its count and compression flags.");
+            }
+            data = rw.Data(data, length);
+            if ((data?.Length ?? 0) != length) throw new EndOfStreamException("Tangent data is truncated.");
+            return (count, data);
         }
 
-        private static (int, byte[]) ReadTangents(CPlugVisual3D n, GbxReader r)
-        {
-            // this is some weird bit trickery...
-            var numBytesPerTangent = (~(byte)((uint)n.Flags >> 17) & 8) | 4;
-            var numElems = r.ReadInt32();
+        [Obsolete("Use TangentCount instead.")]
+        public int Tangents1Count { get => TangentCount; set => TangentCount = value; }
 
-            if (numElems != 0 && numElems != n.Count)
-            {
-                throw new InvalidDataException($"num tangents is not equal to num vertices ({numElems} != {n.Count})");
-            }
+        [Obsolete("Use TangentData instead.")]
+        public byte[]? Tangents1 { get => TangentData; set => TangentData = value; }
 
-            return (numElems, r.ReadBytes(numElems * numBytesPerTangent));
-        }
+        [Obsolete("Use BitangentCount instead.")]
+        public int Tangents2Count { get => BitangentCount; set => BitangentCount = value; }
 
-        private static void WriteTangents(GbxWriter w, int tangentsCount, byte[]? tangents)
-        {
-            w.Write(tangentsCount);
-            w.Write(tangents);
-        }
-    }
-
-    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, Vec4? Color, float? U08, int? U09)
-    {
-        public static Vertex Read(GbxReader r, bool u01, bool u02, bool u03, bool u04, bool isSprite)
-        {
-            var pos = r.ReadVec3();
-            var normal = default(Vec3?);
-            var color = default(Vec4?);
-
-            if (u01)
-            {
-                if (u03)
-                {
-                    var normalInt = r.ReadInt32();
-                    normal = new Vec3(
-                        ((normalInt << 22) >> 22) / 511f,
-                        ((normalInt << 12) >> 22) / 511f,
-                        ((normalInt * 4) >> 22) / 511f);
-                }
-                else
-                {
-                    normal = r.ReadVec3();
-                }
-            }
-
-            if (u02)
-            {
-                if (u04)
-                {
-                    var colorInt = r.ReadInt32();
-                    color = new Vec4(
-                        (colorInt >> 0x10 & 0xFF) / 255f,
-                        (colorInt >> 8 & 0xFF) / 255f,
-                        (colorInt & 0xFF) / 255f,
-                        (colorInt >> 0x18 & 0xFF) / 255f
-                    );
-                }
-                else
-                {
-                    color = r.ReadVec4();
-                }
-            }
-
-            var vertU05 = default(float?);
-            var vertU06 = default(int?);
-
-            if (isSprite)
-            {
-                vertU05 = r.ReadSingle();
-                vertU06 = r.ReadInt32();
-            }
-
-            return new Vertex
-            {
-                Position = pos,
-                Normal = normal,
-                Color = color,
-                U08 = vertU05,
-                U09 = vertU06,
-            };
-        }
-
-        public void Write(GbxWriter w, bool u01, bool u02, bool u03, bool u04, bool isSprite)
-        {
-            w.Write(Position);
-
-            if (u01)
-            {
-                if (u03)
-                {
-                    w.Write(((int)(Normal.GetValueOrDefault().X * 511) & 0x3FF) // Mask to 10 bits
-                          | ((int)(Normal.GetValueOrDefault().Y * 511) & 0x3FF) << 10
-                          | ((int)(Normal.GetValueOrDefault().Z * 511) & 0x3FF) << 20);
-                }
-                else
-                {
-                    w.Write(Normal.GetValueOrDefault());
-                }
-            }
-
-            if (u02)
-            {
-                if (u04)
-                {
-                    w.Write(((int)(Color.GetValueOrDefault().W * 255) & 0xFF) << 0x18
-                          | ((int)(Color.GetValueOrDefault().X * 255) & 0xFF) << 0x10
-                          | ((int)(Color.GetValueOrDefault().Y * 255) & 0xFF) << 8
-                          | ((int)(Color.GetValueOrDefault().Z * 255) & 0xFF));
-                }
-                else
-                {
-                    w.Write(Color.GetValueOrDefault());
-                }
-            }
-
-            if (isSprite)
-            {
-                w.Write(U08.GetValueOrDefault());
-                w.Write(U09.GetValueOrDefault());
-            }
-        }
-
-        public override string ToString() => Position.ToString();
+        [Obsolete("Use BitangentData instead.")]
+        public byte[]? Tangents2 { get => BitangentData; set => BitangentData = value; }
     }
 }

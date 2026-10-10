@@ -34,6 +34,47 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     [Hexadecimal]
     public static new uint Id => 0x09010000;
 
+    private uint spriteFlags;
+    [AppliedWithChunk<Chunk09010002>]
+    [AppliedWithChunk<Chunk09010005>]
+    public uint SpriteFlags
+    {
+        get => this.spriteFlags;
+        set => this.spriteFlags = value;
+    }
+
+    private Vec3 globalDirection = (0, 1, 0);
+    [AppliedWithChunk<Chunk09010005>]
+    public Vec3 GlobalDirection
+    {
+        get => this.globalDirection;
+        set => this.globalDirection = value;
+    }
+
+    private Vec2 pivotPoint;
+    [AppliedWithChunk<Chunk09010005>]
+    public Vec2 PivotPoint
+    {
+        get => this.pivotPoint;
+        set => this.pivotPoint = value;
+    }
+
+    private ushort atlasGridCountU = 1;
+    [AppliedWithChunk<Chunk09010006>]
+    public ushort AtlasGridCountU
+    {
+        get => this.atlasGridCountU;
+        set => this.atlasGridCountU = value;
+    }
+
+    private ushort atlasGridCountV = 1;
+    [AppliedWithChunk<Chunk09010006>]
+    public ushort AtlasGridCountV
+    {
+        get => this.atlasGridCountV;
+        set => this.atlasGridCountV = value;
+    }
+
     private CPlugSpriteParam? spriteParam;
     [AppliedWithChunk<Chunk09010008>]
     public CPlugSpriteParam? SpriteParam
@@ -42,75 +83,189 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         set => this.spriteParam = value;
     }
 
+    private Rect[]? atlasTexCoords;
+    [AppliedWithChunk<Chunk09010009>]
+    public Rect[]? AtlasTexCoords
+    {
+        get => this.atlasTexCoords;
+        set => this.atlasTexCoords = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVisualSprite)clone).spriteFlags = context.Clone(this.spriteFlags)!;
+        ((CPlugVisualSprite)clone).globalDirection = context.Clone(this.globalDirection)!;
+        ((CPlugVisualSprite)clone).pivotPoint = context.Clone(this.pivotPoint)!;
+        ((CPlugVisualSprite)clone).atlasGridCountU = context.Clone(this.atlasGridCountU)!;
+        ((CPlugVisualSprite)clone).atlasGridCountV = context.Clone(this.atlasGridCountV)!;
         ((CPlugVisualSprite)clone).spriteParam = context.Clone(this.spriteParam)!;
+        ((CPlugVisualSprite)clone).atlasTexCoords = context.CloneArray(this.atlasTexCoords)!;
     }
 
-    public CPlugVisualSprite()
+    [AppliedWithChunk<Chunk09010002>]
+    [AppliedWithChunk<Chunk09010005>]
+    public bool RadiusInScreen
     {
+        get => (SpriteFlags& 8) != 0;
+        set
+        {
+            if (value)
+            {
+                SpriteFlags = SpriteFlags| 8;
+            }
+            else
+            {
+                SpriteFlags = SpriteFlags& 0xFFFFFFF7;
+            }
+        }
     }
 
-    [Chunk(0x09010005)]
+    [AppliedWithChunk<Chunk09010002>]
+    [AppliedWithChunk<Chunk09010005>]
+    public bool UseGlobalDir
+    {
+        get => (SpriteFlags& 0x20) != 0;
+        set
+        {
+            if (value)
+            {
+                SpriteFlags = SpriteFlags| 0x20;
+            }
+            else
+            {
+                SpriteFlags = SpriteFlags& 0xFFFFFFDF;
+            }
+        }
+    }
+
+    [AppliedWithChunk<Chunk09010002>]
+    [AppliedWithChunk<Chunk09010005>]
+    public bool UseTextureAtlas
+    {
+        get => (SpriteFlags& 0x40) != 0;
+        set
+        {
+            if (value)
+            {
+                SpriteFlags = SpriteFlags| 0x40;
+            }
+            else
+            {
+                SpriteFlags = SpriteFlags& 0xFFFFFFBF;
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy render mode
+    /// </summary>
+    [Chunk(0x09010000, "legacy render mode")]
+    public partial class Chunk09010000 : Chunk<CPlugVisualSprite>
+    {
+        public override uint Id => 0x09010000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
+        {
+            n.RenderMode = rw.EnumInt32<ERenderMode>(n.RenderMode);
+        }
+    }
+
+    /// <summary>
+    /// legacy render mode and sorting
+    /// </summary>
+    [Chunk(0x09010001, "legacy render mode and sorting")]
+    public partial class Chunk09010001 : Chunk<CPlugVisualSprite>
+    {
+        public override uint Id => 0x09010001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
+        {
+            n.RenderMode = rw.EnumInt32<ERenderMode>(n.RenderMode);
+            n.SortBackToFront = rw.Boolean(n.SortBackToFront);
+        }
+    }
+
+    /// <summary>
+    /// SpriteFlags
+    /// </summary>
+    [Chunk(0x09010002, "SpriteFlags")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk09010002 : Chunk<CPlugVisualSprite>
+    {
+        public override uint Id => 0x09010002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.spriteFlags);
+        }
+    }
+
+    /// <summary>
+    /// legacy sprite flags, direction, and pivot
+    /// </summary>
+    [Chunk(0x09010005, "legacy sprite flags, direction, and pivot")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09010005 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010005;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public int U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09010005)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09010005)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09010005)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09010005)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09010005)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09010005)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.UInt32(ref n.spriteFlags);
+            rw.Vec3(ref n.globalDirection);
+            rw.Vec2(ref n.pivotPoint);
         }
     }
 
-    [Chunk(0x09010006)]
+    /// <summary>
+    /// legacy atlas grid dimensions
+    /// </summary>
+    [Chunk(0x09010006, "legacy atlas grid dimensions")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09010006 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010006;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public short U01;
-        public short U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09010006)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09010006)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
-            rw.Int16(ref U01);
-            rw.Int16(ref U02);
+            rw.UInt16(ref n.atlasGridCountU);
+            rw.UInt16(ref n.atlasGridCountV);
         }
     }
 
-    [Chunk(0x09010008)]
+    /// <summary>
+    /// SpriteParam
+    /// </summary>
+    [Chunk(0x09010008, "SpriteParam")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010008 : Chunk<CPlugVisualSprite>
     {
@@ -128,28 +283,38 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         }
     }
 
-    [Chunk(0x09010009)]
+    /// <summary>
+    /// AtlasTexCoords
+    /// </summary>
+    [Chunk(0x09010009, "AtlasTexCoords")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09010009 : Chunk<CPlugVisualSprite>
     {
         public override uint Id => 0x09010009;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public Rect[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09010009)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVisualSprite n, GbxReaderWriter rw)
         {
-            rw.Array<Rect>(ref U01!);
+            rw.Array<Rect>(ref n.atlasTexCoords!);
         }
+    }
+
+    public enum ERenderMode
+    {
+        Quad,
+        RotatedQuad,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09010000 => new Chunk09010000(),
+        0x09010001 => new Chunk09010001(),
+        0x09010002 => new Chunk09010002(),
         0x09010005 => new Chunk09010005(),
         0x09010006 => new Chunk09010006(),
         0x09010008 => new Chunk09010008(),

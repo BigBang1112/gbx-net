@@ -36,130 +36,60 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
     public int Version { get; set; } = 4;
 
-    private float u01;
-    public float U01
+    private float linearMass = 1;
+    public float LinearMass
     {
-        get => this.u01;
-        set => this.u01 = value;
+        get => this.linearMass;
+        set => this.linearMass = value;
     }
 
-    private float u02;
-    public float U02
+    private float maxDistPerStep = 0.3f;
+    public float MaxDistPerStep
     {
-        get => this.u02;
-        set => this.u02 = value;
+        get => this.maxDistPerStep;
+        set => this.maxDistPerStep = value;
     }
 
-    private float u03;
-    public float U03
+    private Vec3 centerOfMass;
+    public Vec3 CenterOfMass
     {
-        get => this.u03;
-        set => this.u03 = value;
+        get => this.centerOfMass;
+        set => this.centerOfMass = value;
     }
 
-    private float u04;
-    public float U04
+    private Mat3 inverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f);
+    public Mat3 InverseInertiaMatrix
     {
-        get => this.u04;
-        set => this.u04 = value;
+        get => this.inverseInertiaMatrix;
+        set => this.inverseInertiaMatrix = value;
     }
 
-    private float u05;
-    public float U05
+    private float angularSpeedClamp = 10000;
+    public float AngularSpeedClamp
     {
-        get => this.u05;
-        set => this.u05 = value;
+        get => this.angularSpeedClamp;
+        set => this.angularSpeedClamp = value;
     }
 
-    private float u06;
-    public float U06
+    private bool useTMSimulation = true;
+    public bool UseTMSimulation
     {
-        get => this.u06;
-        set => this.u06 = value;
+        get => this.useTMSimulation;
+        set => this.useTMSimulation = value;
     }
 
-    private float u07;
-    public float U07
+    private ESleepingMethod sleepingMethod = ESleepingMethod.LowLinearVel_AngularVel;
+    public ESleepingMethod SleepingMethod
     {
-        get => this.u07;
-        set => this.u07 = value;
+        get => this.sleepingMethod;
+        set => this.sleepingMethod = value;
     }
 
-    private float u08;
-    public float U08
+    private bool enableSubStepping;
+    public bool EnableSubStepping
     {
-        get => this.u08;
-        set => this.u08 = value;
-    }
-
-    private float u09;
-    public float U09
-    {
-        get => this.u09;
-        set => this.u09 = value;
-    }
-
-    private float u10;
-    public float U10
-    {
-        get => this.u10;
-        set => this.u10 = value;
-    }
-
-    private float u11;
-    public float U11
-    {
-        get => this.u11;
-        set => this.u11 = value;
-    }
-
-    private float u12;
-    public float U12
-    {
-        get => this.u12;
-        set => this.u12 = value;
-    }
-
-    private float u13;
-    public float U13
-    {
-        get => this.u13;
-        set => this.u13 = value;
-    }
-
-    private float u14;
-    public float U14
-    {
-        get => this.u14;
-        set => this.u14 = value;
-    }
-
-    private float u15;
-    public float U15
-    {
-        get => this.u15;
-        set => this.u15 = value;
-    }
-
-    private bool u16 = true;
-    public bool U16
-    {
-        get => this.u16;
-        set => this.u16 = value;
-    }
-
-    private byte u17 = 1;
-    public byte U17
-    {
-        get => this.u17;
-        set => this.u17 = value;
-    }
-
-    private int u18;
-    public int U18
-    {
-        get => this.u18;
-        set => this.u18 = value;
+        get => this.enableSubStepping;
+        set => this.enableSubStepping = value;
     }
 
     private CPlugDynaWaterModel? waterModel;
@@ -182,24 +112,14 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     {
         base.DeepCloneFields(clone, context);
         ((CPlugDynaModel)clone).Version = context.Clone(this.Version)!;
-        ((CPlugDynaModel)clone).u01 = context.Clone(this.u01)!;
-        ((CPlugDynaModel)clone).u02 = context.Clone(this.u02)!;
-        ((CPlugDynaModel)clone).u03 = context.Clone(this.u03)!;
-        ((CPlugDynaModel)clone).u04 = context.Clone(this.u04)!;
-        ((CPlugDynaModel)clone).u05 = context.Clone(this.u05)!;
-        ((CPlugDynaModel)clone).u06 = context.Clone(this.u06)!;
-        ((CPlugDynaModel)clone).u07 = context.Clone(this.u07)!;
-        ((CPlugDynaModel)clone).u08 = context.Clone(this.u08)!;
-        ((CPlugDynaModel)clone).u09 = context.Clone(this.u09)!;
-        ((CPlugDynaModel)clone).u10 = context.Clone(this.u10)!;
-        ((CPlugDynaModel)clone).u11 = context.Clone(this.u11)!;
-        ((CPlugDynaModel)clone).u12 = context.Clone(this.u12)!;
-        ((CPlugDynaModel)clone).u13 = context.Clone(this.u13)!;
-        ((CPlugDynaModel)clone).u14 = context.Clone(this.u14)!;
-        ((CPlugDynaModel)clone).u15 = context.Clone(this.u15)!;
-        ((CPlugDynaModel)clone).u16 = context.Clone(this.u16)!;
-        ((CPlugDynaModel)clone).u17 = context.Clone(this.u17)!;
-        ((CPlugDynaModel)clone).u18 = context.Clone(this.u18)!;
+        ((CPlugDynaModel)clone).linearMass = context.Clone(this.linearMass)!;
+        ((CPlugDynaModel)clone).maxDistPerStep = context.Clone(this.maxDistPerStep)!;
+        ((CPlugDynaModel)clone).centerOfMass = context.Clone(this.centerOfMass)!;
+        ((CPlugDynaModel)clone).inverseInertiaMatrix = context.Clone(this.inverseInertiaMatrix)!;
+        ((CPlugDynaModel)clone).angularSpeedClamp = context.Clone(this.angularSpeedClamp)!;
+        ((CPlugDynaModel)clone).useTMSimulation = context.Clone(this.useTMSimulation)!;
+        ((CPlugDynaModel)clone).sleepingMethod = context.Clone(this.sleepingMethod)!;
+        ((CPlugDynaModel)clone).enableSubStepping = context.Clone(this.enableSubStepping)!;
         ((CPlugDynaModel)clone).waterModel = context.Clone(this.waterModel)!;
     }
 
@@ -210,35 +130,40 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.Single(ref this.u01);
-        rw.Single(ref this.u02);
-        rw.Single(ref this.u03);
-        rw.Single(ref this.u04);
-        rw.Single(ref this.u05);
-        rw.Single(ref this.u06);
-        rw.Single(ref this.u07);
-        rw.Single(ref this.u08);
-        rw.Single(ref this.u09);
-        rw.Single(ref this.u10);
-        rw.Single(ref this.u11);
-        rw.Single(ref this.u12);
-        rw.Single(ref this.u13);
-        rw.Single(ref this.u14);
-        rw.Single(ref this.u15);
+        rw.Single(ref this.linearMass);
+        rw.Single(ref this.maxDistPerStep);
+        rw.Vec3(ref this.centerOfMass);
+        rw.Mat3(ref this.inverseInertiaMatrix);
+        rw.Single(ref this.angularSpeedClamp);
 
         if (Version >= 1)
         {
-            rw.Boolean(ref this.u16);
+            rw.Boolean(ref this.useTMSimulation);
+        }
+
+        if (Version == 0)
+        {
+            UseTMSimulation = true;
         }
 
         if (Version >= 2)
         {
-            rw.Byte(ref this.u17);
+            rw.EnumByte<ESleepingMethod>(ref this.sleepingMethod);
+        }
+
+        if (Version >= 0 && Version <= 1)
+        {
+            SleepingMethod = ESleepingMethod.LowLinearVel_AngularVel;
         }
 
         if (Version >= 3)
         {
-            rw.Int32(ref this.u18);
+            rw.Boolean(ref this.enableSubStepping);
+        }
+
+        if (Version >= 0 && Version <= 2)
+        {
+            EnableSubStepping = false;
         }
 
         if (Version >= 4)
@@ -257,5 +182,13 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     {
         using var rw = new GbxReaderWriter(w);
         ReadWrite(rw, v);
+    }
+
+    public enum ESleepingMethod
+    {
+        None,
+        LowLinearVel_AngularVel,
+        LowLinearVel,
+        Reserved0,
     }
 }

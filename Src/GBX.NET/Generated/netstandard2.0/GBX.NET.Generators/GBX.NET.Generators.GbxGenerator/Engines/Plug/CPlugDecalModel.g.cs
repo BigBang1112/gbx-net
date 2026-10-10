@@ -35,6 +35,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public static new uint Id => 0x090A7000;
 
     private CPlugBitmap? diffuseA;
+    [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? DiffuseA
     {
@@ -52,6 +53,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     public CPlugBitmap? GetDiffuseA(GbxReadSettings settings = default, bool exceptions = false) => diffuseAFile?.GetNode(ref diffuseA, settings, exceptions) ?? diffuseA;
 
     private CPlugBitmap? normal;
+    [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? Normal
     {
@@ -68,7 +70,25 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     public CPlugBitmap? GetNormal(GbxReadSettings settings = default, bool exceptions = false) => normalFile?.GetNode(ref normal, settings, exceptions) ?? normal;
 
-    private float texelByMeter;
+    private CPlugSolid? solid;
+    [AppliedWithChunk<Chunk090A7001>]
+    [AppliedWithChunk<Chunk090A7004>]
+    public CPlugSolid? Solid
+    {
+        get => this.solidFile?.GetNode(ref this.solid) ?? this.solid;
+        set => this.solid = value;
+    }
+    private Components.GbxRefTableFile? solidFile;
+
+    public Components.GbxRefTableFile? SolidFile
+    {
+        get => solidFile;
+        set => solidFile = value;
+    }
+
+    public CPlugSolid? GetSolid(GbxReadSettings settings = default, bool exceptions = false) => solidFile?.GetNode(ref solid, settings, exceptions) ?? solid;
+
+    private float texelByMeter = 256;
     [AppliedWithChunk<Chunk090A7002>(1)]
     public float TexelByMeter
     {
@@ -76,12 +96,20 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.texelByMeter = value;
     }
 
-    private bool fadeNormalAndZ;
+    private bool fadeNormalAndZ = true;
     [AppliedWithChunk<Chunk090A7002>(2)]
     public bool FadeNormalAndZ
     {
         get => this.fadeNormalAndZ;
         set => this.fadeNormalAndZ = value;
+    }
+
+    private float maxAngleNCos = 0.087155804f;
+    [AppliedWithChunk<Chunk090A7002>(3)]
+    public float MaxAngleNCos
+    {
+        get => this.maxAngleNCos;
+        set => this.maxAngleNCos = value;
     }
 
     private CPlugBitmap? specular;
@@ -101,33 +129,33 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     public CPlugBitmap? GetSpecular(GbxReadSettings settings = default, bool exceptions = false) => specularFile?.GetNode(ref specular, settings, exceptions) ?? specular;
 
-    private string? diffuseARef;
+    private string diffuseARef = "";
     [AppliedWithChunk<Chunk090A7002>(5)]
-    public string? DiffuseARef
+    public string DiffuseARef
     {
         get => this.diffuseARef;
         set => this.diffuseARef = value;
     }
 
-    private string? normalRef;
+    private string normalRef = "";
     [AppliedWithChunk<Chunk090A7002>(5)]
-    public string? NormalRef
+    public string NormalRef
     {
         get => this.normalRef;
         set => this.normalRef = value;
     }
 
-    private string? specularRef;
+    private string specularRef = "";
     [AppliedWithChunk<Chunk090A7002>(5)]
-    public string? SpecularRef
+    public string SpecularRef
     {
         get => this.specularRef;
         set => this.specularRef = value;
     }
 
-    private string? roughnessRef;
+    private string roughnessRef = "";
     [AppliedWithChunk<Chunk090A7002>(6)]
-    public string? RoughnessRef
+    public string RoughnessRef
     {
         get => this.roughnessRef;
         set => this.roughnessRef = value;
@@ -137,9 +165,18 @@ public partial class CPlugDecalModel : CPlug, IClass
     [AppliedWithChunk<Chunk090A7002>(6)]
     public CPlugBitmap? Roughness
     {
-        get => this.roughness;
+        get => this.roughnessFile?.GetNode(ref this.roughness) ?? this.roughness;
         set => this.roughness = value;
     }
+    private Components.GbxRefTableFile? roughnessFile;
+
+    public Components.GbxRefTableFile? RoughnessFile
+    {
+        get => roughnessFile;
+        set => roughnessFile = value;
+    }
+
+    public CPlugBitmap? GetRoughness(GbxReadSettings settings = default, bool exceptions = false) => roughnessFile?.GetNode(ref roughness, settings, exceptions) ?? roughness;
 
     private CPlugBitmap? icon;
     [AppliedWithChunk<Chunk090A7003>]
@@ -158,12 +195,20 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     public CPlugBitmap? GetIcon(GbxReadSettings settings = default, bool exceptions = false) => iconFile?.GetNode(ref icon, settings, exceptions) ?? icon;
 
-    private bool randomInstances;
+    private bool randomInstances = true;
     [AppliedWithChunk<Chunk090A7004>]
     public bool RandomInstances
     {
         get => this.randomInstances;
         set => this.randomInstances = value;
+    }
+
+    private float maxAngleN3dCos = 0.49999997f;
+    [AppliedWithChunk<Chunk090A7004>(2)]
+    public float MaxAngleN3dCos
+    {
+        get => this.maxAngleN3dCos;
+        set => this.maxAngleN3dCos = value;
     }
 
     private CPlugBitmap? sprite3dBitmap;
@@ -191,9 +236,9 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.sprite3dGroupId = value;
     }
 
-    private string? svgRef;
+    private string svgRef = "";
     [AppliedWithChunk<Chunk090A7004>(4)]
-    public string? SvgRef
+    public string SvgRef
     {
         get => this.svgRef;
         set => this.svgRef = value;
@@ -216,7 +261,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     public CMwNod? GetSvg(GbxReadSettings settings = default, bool exceptions = false) => svgFile?.GetNode(ref svg, settings, exceptions) ?? svg;
 
-    private float svgSize;
+    private float svgSize = 1;
     [AppliedWithChunk<Chunk090A7004>(5)]
     public float SvgSize
     {
@@ -224,7 +269,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.svgSize = value;
     }
 
-    private float svgAlpha;
+    private float svgAlpha = 1;
     [AppliedWithChunk<Chunk090A7004>(6)]
     public float SvgAlpha
     {
@@ -240,20 +285,36 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.minAngleN3d = value;
     }
 
-    private CPlugDecalModel[]? decalModels;
+    private External<CPlugDecalModel>[] decalModels = [];
     [AppliedWithChunk<Chunk090A7004>(8)]
-    public CPlugDecalModel[]? DecalModels
+    public External<CPlugDecalModel>[] DecalModels
     {
         get => this.decalModels;
         set => this.decalModels = value;
     }
 
-    private MacroDecalSet[]? macroDecalSets;
+    private MacroDecalSet[] macroDecalSets = [];
     [AppliedWithChunk<Chunk090A7004>(8)]
-    public MacroDecalSet[]? MacroDecalSets
+    public MacroDecalSet[] MacroDecalSets
     {
         get => this.macroDecalSets;
         set => this.macroDecalSets = value;
+    }
+
+    private float impactSize = 0.1f;
+    [AppliedWithChunk<Chunk090A7005>]
+    public float ImpactSize
+    {
+        get => this.impactSize;
+        set => this.impactSize = value;
+    }
+
+    private uint flags;
+    [AppliedWithChunk<Chunk090A7006>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -261,8 +322,10 @@ public partial class CPlugDecalModel : CPlug, IClass
         base.DeepCloneFields(clone, context);
         ((CPlugDecalModel)clone).diffuseA = context.Clone(this.diffuseA)!;
         ((CPlugDecalModel)clone).normal = context.Clone(this.normal)!;
+        ((CPlugDecalModel)clone).solid = context.Clone(this.solid)!;
         ((CPlugDecalModel)clone).texelByMeter = context.Clone(this.texelByMeter)!;
         ((CPlugDecalModel)clone).fadeNormalAndZ = context.Clone(this.fadeNormalAndZ)!;
+        ((CPlugDecalModel)clone).maxAngleNCos = context.Clone(this.maxAngleNCos)!;
         ((CPlugDecalModel)clone).specular = context.Clone(this.specular)!;
         ((CPlugDecalModel)clone).diffuseARef = context.Clone(this.diffuseARef)!;
         ((CPlugDecalModel)clone).normalRef = context.Clone(this.normalRef)!;
@@ -271,6 +334,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         ((CPlugDecalModel)clone).roughness = context.Clone(this.roughness)!;
         ((CPlugDecalModel)clone).icon = context.Clone(this.icon)!;
         ((CPlugDecalModel)clone).randomInstances = context.Clone(this.randomInstances)!;
+        ((CPlugDecalModel)clone).maxAngleN3dCos = context.Clone(this.maxAngleN3dCos)!;
         ((CPlugDecalModel)clone).sprite3dBitmap = context.Clone(this.sprite3dBitmap)!;
         ((CPlugDecalModel)clone).sprite3dGroupId = context.Clone(this.sprite3dGroupId)!;
         ((CPlugDecalModel)clone).svgRef = context.Clone(this.svgRef)!;
@@ -280,26 +344,101 @@ public partial class CPlugDecalModel : CPlug, IClass
         ((CPlugDecalModel)clone).minAngleN3d = context.Clone(this.minAngleN3d)!;
         ((CPlugDecalModel)clone).decalModels = context.CloneArray(this.decalModels)!;
         ((CPlugDecalModel)clone).macroDecalSets = context.CloneArray(this.macroDecalSets)!;
+        ((CPlugDecalModel)clone).impactSize = context.Clone(this.impactSize)!;
+        ((CPlugDecalModel)clone).flags = context.Clone(this.flags)!;
+    }
+
+    [AppliedWithChunk<Chunk090A7006>]
+    public bool IsObsolete
+    {
+        get => (Flags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 1;
+            }
+            else
+            {
+                Flags = Flags& 0xFFFFFFFE;
+            }
+        }
     }
 
     public CPlugDecalModel()
     {
     }
 
-    [Chunk(0x090A7002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// legacy textures
+    /// </summary>
+    [Chunk(0x090A7000, "legacy textures")]
+    public partial class Chunk090A7000 : Chunk<CPlugDecalModel>
+    {
+        public override uint Id => 0x090A7000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
+            rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
+        }
+    }
+
+    /// <summary>
+    /// Solid
+    /// </summary>
+    [Chunk(0x090A7001, "Solid")]
+    public partial class Chunk090A7001 : Chunk<CPlugDecalModel>
+    {
+        public override uint Id => 0x090A7001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
+        }
+    }
+
+    /// <summary>
+    /// textures and projection limits
+    /// </summary>
+    [Chunk(0x090A7002, "textures and projection limits")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 5, 6, 6)]
     public partial class Chunk090A7002 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
+
+        public Chunk090A7002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090A7002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090A7002)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090A7002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
@@ -315,60 +454,63 @@ public partial class CPlugDecalModel : CPlug, IClass
             if (Version >= 1)
             {
                 rw.Single(ref n.texelByMeter);
+            }
 
-                if (Version >= 2)
+            if (Version >= 2)
+            {
+                rw.Boolean(ref n.fadeNormalAndZ);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref n.maxAngleNCos);
+            }
+
+            if (Version == 4)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
+            }
+
+            if (Version >= 5)
+            {
+                rw.String(ref n.diffuseARef);
+
+                if (n.DiffuseARef== null || n.DiffuseARef== "")
                 {
-                    rw.Boolean(ref n.fadeNormalAndZ);
+                    rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
+                }
 
-                    if (Version >= 3)
-                    {
-                        rw.Single(ref U01);
+                rw.String(ref n.normalRef);
 
-                        if (Version == 4)
-                        {
-                            rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
-                        }
+                if (n.NormalRef== null || n.NormalRef== "")
+                {
+                    rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
+                }
 
-                        if (Version >= 5)
-                        {
-                            rw.String(ref n.diffuseARef);
+                rw.String(ref n.specularRef);
 
-                            if (n.DiffuseARef== null || n.DiffuseARef== "")
-                            {
-                                rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
-                            }
+                if (n.SpecularRef== null || n.SpecularRef== "")
+                {
+                    rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
+                }
+            }
 
-                            rw.String(ref n.normalRef);
+            if (Version >= 6)
+            {
+                rw.String(ref n.roughnessRef);
 
-                            if (n.NormalRef== null || n.NormalRef== "")
-                            {
-                                rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
-                            }
-
-                            rw.String(ref n.specularRef);
-
-                            if (n.SpecularRef== null || n.SpecularRef== "")
-                            {
-                                rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
-                            }
-
-                            if (Version >= 6)
-                            {
-                                rw.String(ref n.roughnessRef);
-
-                                if (n.RoughnessRef== null || n.RoughnessRef== "")
-                                {
-                                    rw.NodeRef<CPlugBitmap>(ref n.roughness);
-                                }
-                            }
-                        }
-                    }
+                if (n.RoughnessRef== null || n.RoughnessRef== "")
+                {
+                    rw.NodeRef<CPlugBitmap>(ref n.roughness, ref n.roughnessFile);
                 }
             }
         }
     }
 
-    [Chunk(0x090A7003)]
+    /// <summary>
+    /// Icon
+    /// </summary>
+    [Chunk(0x090A7003, "Icon")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7003 : Chunk<CPlugDecalModel>
     {
@@ -386,115 +528,165 @@ public partial class CPlugDecalModel : CPlug, IClass
         }
     }
 
-    [Chunk(0x090A7004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// solid, sprite, SVG, and macro decals
+    /// </summary>
+    [Chunk(0x090A7004, "solid, sprite, SVG, and macro decals")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 7, 8, 8)]
     public partial class Chunk090A7004 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugSolid? U01;
-        public float U02;
+
+        public Chunk090A7004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090A7004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090A7004)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090A7004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090A7004)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSolid>(ref U01);
+            rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
             rw.Boolean(ref n.randomInstances);
 
             if (Version >= 2)
             {
-                rw.Single(ref U02);
+                rw.Single(ref n.maxAngleN3dCos);
+            }
 
-                if (Version >= 3)
+            if (Version >= 3)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.sprite3dBitmap, ref n.sprite3dBitmapFile);
+                rw.Id(ref n.sprite3dGroupId);
+            }
+
+            if (Version >= 4)
+            {
+                rw.String(ref n.svgRef);
+
+                if (n.SvgRef== null || n.SvgRef== "")
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.sprite3dBitmap, ref n.sprite3dBitmapFile);
-                    rw.Id(ref n.sprite3dGroupId);
-
-                    if (Version >= 4)
-                    {
-                        rw.String(ref n.svgRef);
-
-                        if (n.SvgRef== null || n.SvgRef== "")
-                        {
-                            rw.NodeRef<CMwNod>(ref n.svg, ref n.svgFile);
-                        }
-
-                        if (Version >= 5)
-                        {
-                            rw.Single(ref n.svgSize);
-
-                            if (Version >= 6)
-                            {
-                                rw.Single(ref n.svgAlpha);
-
-                                if (Version >= 7)
-                                {
-                                    rw.Int32(ref n.minAngleN3d);
-
-                                    if (Version >= 8)
-                                    {
-                                        rw.ArrayNodeRef_deprec<CPlugDecalModel>(ref n.decalModels!);
-                                        rw.ArrayReadableWritable<MacroDecalSet>(ref n.macroDecalSets!, version: Version);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    rw.NodeRef<CMwNod>(ref n.svg, ref n.svgFile);
                 }
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.svgSize);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Single(ref n.svgAlpha);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Int32(ref n.minAngleN3d);
+            }
+
+            if (Version >= 8)
+            {
+                rw.ArrayNodeRef_deprec<CPlugDecalModel>(ref n.decalModels!);
+                rw.ArrayReadableWritable<MacroDecalSet>(ref n.macroDecalSets!, version: Version);
             }
         }
     }
 
-    [Chunk(0x090A7006)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// ImpactSize
+    /// </summary>
+    [Chunk(0x090A7005, "ImpactSize")]
+    public partial class Chunk090A7005 : Chunk<CPlugDecalModel>, IVersionable
+    {
+        public override uint Id => 0x090A7005;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090A7005)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Single(ref n.impactSize);
+        }
+    }
+
+    /// <summary>
+    /// flags
+    /// </summary>
+    [Chunk(0x090A7006, "flags")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk090A7006 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public uint U01;
+
+        public Chunk090A7006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090A7006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090A7006)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090A7006)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.UInt32(ref U01);
+            rw.UInt32(ref n.flags);
         }
     }
 
     public partial class MacroDecalSet : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? id;
+        public string? Id
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.id;
+            set => this.id = value;
         }
 
-        private BoxAligned u02;
-        public BoxAligned U02
+        private BoxAligned bounds = DefaultBounds;
+        public BoxAligned Bounds
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.bounds;
+            set => this.bounds = value;
         }
 
-        private MacroDecal3d[]? decals;
-        public MacroDecal3d[]? Decals
+        private MacroDecal3d[] decals = [];
+        public MacroDecal3d[] Decals
         {
             get => this.decals;
             set => this.decals = value;
@@ -510,15 +702,15 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((MacroDecalSet)clone).u01 = context.Clone(this.u01)!;
-            ((MacroDecalSet)clone).u02 = context.Clone(this.u02)!;
+            ((MacroDecalSet)clone).id = context.Clone(this.id)!;
+            ((MacroDecalSet)clone).bounds = context.Clone(this.bounds)!;
             ((MacroDecalSet)clone).decals = context.CloneArray(this.decals)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
-            rw.BoxAligned(ref this.u02);
+            rw.Id(ref this.id);
+            rw.BoxAligned(ref this.bounds);
             rw.ArrayReadableWritable<MacroDecal3d>(ref this.decals!, version: v);
         }
 
@@ -537,39 +729,35 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     public partial class MacroDecal3d : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int decalModelIndex;
+        public int DecalModelIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.decalModelIndex;
+            set => this.decalModelIndex = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? spriteGroupId;
+        public string? SpriteGroupId
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.spriteGroupId;
+            set => this.spriteGroupId = value;
         }
 
-        private float u03;
-        public float U03
+        private float scale;
+        public float Scale
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.scale;
+            set => this.scale = value;
         }
 
-        private float u04;
-        public float U04
+        private Vec2 position;
+        /// <summary>
+        /// Editing-plane X and Z coordinates
+        /// </summary>
+        public Vec2 Position
         {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private float u05;
-        public float U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.position;
+            set => this.position = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -582,20 +770,18 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((MacroDecal3d)clone).u01 = context.Clone(this.u01)!;
-            ((MacroDecal3d)clone).u02 = context.Clone(this.u02)!;
-            ((MacroDecal3d)clone).u03 = context.Clone(this.u03)!;
-            ((MacroDecal3d)clone).u04 = context.Clone(this.u04)!;
-            ((MacroDecal3d)clone).u05 = context.Clone(this.u05)!;
+            ((MacroDecal3d)clone).decalModelIndex = context.Clone(this.decalModelIndex)!;
+            ((MacroDecal3d)clone).spriteGroupId = context.Clone(this.spriteGroupId)!;
+            ((MacroDecal3d)clone).scale = context.Clone(this.scale)!;
+            ((MacroDecal3d)clone).position = context.Clone(this.position)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.Id(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
+            rw.Int32(ref this.decalModelIndex);
+            rw.Id(ref this.spriteGroupId);
+            rw.Single(ref this.scale);
+            rw.Vec2(ref this.position);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -613,9 +799,12 @@ public partial class CPlugDecalModel : CPlug, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x090A7000 => new Chunk090A7000(),
+        0x090A7001 => new Chunk090A7001(),
         0x090A7002 => new Chunk090A7002(),
         0x090A7003 => new Chunk090A7003(),
         0x090A7004 => new Chunk090A7004(),
+        0x090A7005 => new Chunk090A7005(),
         0x090A7006 => new Chunk090A7006(),
         _ => base.NewChunk(chunkId),
     };

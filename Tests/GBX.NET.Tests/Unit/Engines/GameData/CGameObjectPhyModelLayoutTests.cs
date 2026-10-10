@@ -203,7 +203,7 @@ public class CGameObjectPhyModelLayoutTests
         for (var i = 1; i <= 15; i++) writer.Write(i + 0.5f);
         if (version >= 1) writer.Write(false);
         if (version >= 2) writer.Write((byte)7);
-        if (version >= 3) writer.Write(123);
+        if (version >= 3) writer.Write(true);
         if (version >= 4) payload.Reference("Water.Gbx");
         payload.Finish();
 
@@ -211,9 +211,14 @@ public class CGameObjectPhyModelLayoutTests
         var chunk = new CGameObjectPhyModel.Chunk2E006003();
         payload.Read(rw => chunk.ReadWrite(node, rw));
         await Assert.That(node.DynaModel!.Version).IsEqualTo(version);
-        await Assert.That(node.DynaModel.U15).IsEqualTo(15.5f);
-        await Assert.That(node.DynaModel.U16).IsEqualTo(version == 0);
-        await Assert.That(node.DynaModel.U17).IsEqualTo((byte)(version >= 2 ? 7 : 1));
+        await Assert.That(node.DynaModel.LinearMass).IsEqualTo(1.5f);
+        await Assert.That(node.DynaModel.MaxDistPerStep).IsEqualTo(2.5f);
+        await Assert.That(node.DynaModel.CenterOfMass).IsEqualTo(new Vec3(3.5f, 4.5f, 5.5f));
+        await Assert.That(node.DynaModel.InverseInertiaMatrix).IsEqualTo(new Mat3(6.5f, 7.5f, 8.5f, 9.5f, 10.5f, 11.5f, 12.5f, 13.5f, 14.5f));
+        await Assert.That(node.DynaModel.AngularSpeedClamp).IsEqualTo(15.5f);
+        await Assert.That(node.DynaModel.UseTMSimulation).IsEqualTo(version == 0);
+        await Assert.That((byte)node.DynaModel.SleepingMethod).IsEqualTo((byte)(version >= 2 ? 7 : 1));
+        await Assert.That(node.DynaModel.EnableSubStepping).IsEqualTo(version >= 3);
         if (version >= 4) await Assert.That(node.DynaModel.WaterModelFile!.FilePath).IsEqualTo("Water.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }

@@ -34,52 +34,84 @@ public partial class CPlugVisual : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09006000;
 
-    private Int3[]? subVisuals;
+    private string? visualId;
+    [AppliedWithChunk<Chunk09006001>]
+    public string? VisualId
+    {
+        get => this.visualId;
+        set => this.visualId = value;
+    }
+
+    private CMwNod? funcVisual;
+    [AppliedWithChunk<Chunk09006004>]
+    public CMwNod? FuncVisual
+    {
+        get => this.funcVisual;
+        set => this.funcVisual = value;
+    }
+
+    private Int3[] subVisuals = [];
     /// <summary>
-    /// SSubVisual?
+    /// SSubVisual records
     /// </summary>
     [AppliedWithChunk<Chunk09006005>]
-    public Int3[]? SubVisuals
+    public Int3[] SubVisuals
     {
         get => this.subVisuals;
         set => this.subVisuals = value;
     }
 
-    private Split[]? splits;
-    /// <summary>
-    /// SSplit array
-    /// </summary>
+    private bool isInverse;
+    [AppliedWithChunk<Chunk09006007>]
+    public bool IsInverse
+    {
+        get => this.isInverse;
+        set => this.isInverse = value;
+    }
+
+    private float nPatchTessLevel;
+    [AppliedWithChunk<Chunk09006009>]
+    public float NPatchTessLevel
+    {
+        get => this.nPatchTessLevel;
+        set => this.nPatchTessLevel = value;
+    }
+
+    private Split[] splits = [];
     [AppliedWithChunk<Chunk0900600B>]
-    public Split[]? Splits
+    public Split[] Splits
     {
         get => this.splits;
         set => this.splits = value;
     }
 
-    private BitmapElemToPack[]? bitmapElemToPacks;
+    private BitmapElemToPack[] bitmapElemToPacks = [];
     [AppliedWithChunk<Chunk0900600E>]
-    [AppliedWithChunk<Chunk0900600F>]
-    public BitmapElemToPack[]? BitmapElemToPacks
+    public BitmapElemToPack[] BitmapElemToPacks
     {
         get => this.bitmapElemToPacks;
         set => this.bitmapElemToPacks = value;
     }
 
-    private int morphCount;
+    private Morph[] morphs = [];
     [AppliedWithChunk<Chunk09006010>]
-    public int MorphCount
+    public Morph[] Morphs
     {
-        get => this.morphCount;
-        set => this.morphCount = value;
+        get => this.morphs;
+        set => this.morphs = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVisual)clone).visualId = context.Clone(this.visualId)!;
+        ((CPlugVisual)clone).funcVisual = context.Clone(this.funcVisual)!;
         ((CPlugVisual)clone).subVisuals = context.CloneArray(this.subVisuals)!;
+        ((CPlugVisual)clone).isInverse = context.Clone(this.isInverse)!;
+        ((CPlugVisual)clone).nPatchTessLevel = context.Clone(this.nPatchTessLevel)!;
         ((CPlugVisual)clone).splits = context.CloneArray(this.splits)!;
         ((CPlugVisual)clone).bitmapElemToPacks = context.CloneArray(this.bitmapElemToPacks)!;
-        ((CPlugVisual)clone).morphCount = context.Clone(this.morphCount)!;
+        ((CPlugVisual)clone).morphs = context.CloneArray(this.morphs)!;
         ((CPlugVisual)clone).Flags = context.Clone(this.Flags)!;
         ((CPlugVisual)clone).Count = context.Clone(this.Count)!;
         ((CPlugVisual)clone).VertexStreams = context.CloneList(this.VertexStreams)!;
@@ -93,47 +125,60 @@ public partial class CPlugVisual : CPlug, IClass
     {
     }
 
-    [Chunk(0x09006001)]
+    /// <summary>
+    /// VisualId
+    /// </summary>
+    [Chunk(0x09006001, "VisualId")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09006001 : Chunk<CPlugVisual>
     {
         public override uint Id => 0x09006001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09006001)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
-        {
-            rw.Id(ref U01);
+            ((Chunk09006001)clone).legacyVisualId = context.Clone(this.legacyVisualId)!;
+            ((Chunk09006001)clone).legacyVisualIdSet = context.Clone(this.legacyVisualIdSet)!;
         }
     }
 
-    [Chunk(0x09006004)]
+    /// <summary>
+    /// legacy geometry with raw 2D texture coordinates
+    /// </summary>
+    [Chunk(0x09006003, "legacy geometry with raw 2D texture coordinates")]
+    public partial class Chunk09006003 : Chunk09006008
+    {
+        public override uint Id => 0x09006003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// FuncVisual
+    /// </summary>
+    [Chunk(0x09006004, "FuncVisual")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk09006004 : Chunk<CPlugVisual>
     {
         public override uint Id => 0x09006004;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public CMwNod? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09006004)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
-        {
-            rw.NodeRef<CMwNod>(ref U01);
+            ((Chunk09006004)clone).legacyFuncVisual = context.Clone(this.legacyFuncVisual)!;
+            ((Chunk09006004)clone).legacyFuncVisualSet = context.Clone(this.legacyFuncVisualSet)!;
         }
     }
 
-    [Chunk(0x09006005)]
+    /// <summary>
+    /// SubVisuals
+    /// </summary>
+    [Chunk(0x09006005, "SubVisuals")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09006005 : Chunk<CPlugVisual>
     {
@@ -151,7 +196,10 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    [Chunk(0x09006006)]
+    /// <summary>
+    /// HasVertexNormals
+    /// </summary>
+    [Chunk(0x09006006, "HasVertexNormals")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09006006 : Chunk<CPlugVisual>
     {
@@ -164,27 +212,28 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    [Chunk(0x09006007)]
+    /// <summary>
+    /// legacy skin inverse flag
+    /// </summary>
+    [Chunk(0x09006007, "legacy skin inverse flag")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk09006007 : Chunk<CPlugVisual>
     {
         public override uint Id => 0x09006007;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09006007)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
-        {
-            rw.Boolean(ref U01);
+            ((Chunk09006007)clone).legacyInverse = context.Clone(this.legacyInverse)!;
+            ((Chunk09006007)clone).legacyInverseSet = context.Clone(this.legacyInverseSet)!;
         }
     }
 
-    [Chunk(0x09006008)]
+    /// <summary>
+    /// legacy geometry, texture coordinates, and skin transforms
+    /// </summary>
+    [Chunk(0x09006008, "legacy geometry, texture coordinates, and skin transforms")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09006008 : Chunk<CPlugVisual>
     {
@@ -194,33 +243,34 @@ public partial class CPlugVisual : CPlug, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09006008)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk09006008)clone).LegacyBoneTransforms = context.CloneArray(this.LegacyBoneTransforms)!;
         }
     }
 
-    [Chunk(0x09006009)]
+    /// <summary>
+    /// NPatchTessLevel
+    /// </summary>
+    [Chunk(0x09006009, "NPatchTessLevel")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09006009 : Chunk<CPlugVisual>
     {
         public override uint Id => 0x09006009;
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09006009)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
-        {
-            rw.Single(ref U01);
+            ((Chunk09006009)clone).legacyNPatchTessLevel = context.Clone(this.legacyNPatchTessLevel)!;
+            ((Chunk09006009)clone).legacyNPatchTessLevelSet = context.Clone(this.legacyNPatchTessLevelSet)!;
         }
     }
 
-    [Chunk(0x0900600A)]
+    /// <summary>
+    /// legacy vertex streams and skin transforms
+    /// </summary>
+    [Chunk(0x0900600A, "legacy vertex streams and skin transforms")]
     [ChunkGameVersion(GameVersion.TMSX)]
-    public partial class Chunk0900600A : Chunk<CPlugVisual>
+    public partial class Chunk0900600A : Chunk09006008
     {
         public override uint Id => 0x0900600A;
         public override GameVersion GameVersion => GameVersion.TMSX;
@@ -228,11 +278,13 @@ public partial class CPlugVisual : CPlug, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900600A)clone).U01 = context.CloneArray(this.U01)!;
         }
     }
 
-    [Chunk(0x0900600B)]
+    /// <summary>
+    /// Splits
+    /// </summary>
+    [Chunk(0x0900600B, "Splits")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900600B : Chunk<CPlugVisual>
     {
@@ -250,7 +302,10 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900600C)]
+    /// <summary>
+    /// legacy geometry, texture coordinates, skin, and bounds
+    /// </summary>
+    [Chunk(0x0900600C, "legacy geometry, texture coordinates, skin, and bounds")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0900600C : Chunk<CPlugVisual>
     {
@@ -263,7 +318,10 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900600D)]
+    /// <summary>
+    /// geometry flags, vertex streams, skin, and bounds
+    /// </summary>
+    [Chunk(0x0900600D, "geometry flags, vertex streams, skin, and bounds")]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0900600D : Chunk<CPlugVisual>
     {
@@ -276,7 +334,10 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900600E)]
+    /// <summary>
+    /// geometry and bitmap packing transforms
+    /// </summary>
+    [Chunk(0x0900600E, "geometry and bitmap packing transforms")]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0900600E : Chunk0900600D
     {
@@ -288,38 +349,58 @@ public partial class CPlugVisual : CPlug, IClass
             base.DeepCloneFields(clone, context);
         }
 
-        public override void Read(CPlugVisual n, GbxReader r)
+        public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
-            base.Read(n, r);
-            n.bitmapElemToPacks = r.ReadArrayReadable<BitmapElemToPack>();
-        }
-
-        public override void Write(CPlugVisual n, GbxWriter w)
-        {
-            base.Write(n, w);
-            w.WriteArrayWritable<BitmapElemToPack>(n.bitmapElemToPacks);
+            base.ReadWrite(n, rw);
+            rw.ArrayReadableWritable<BitmapElemToPack>(ref n.bitmapElemToPacks!);
         }
     }
 
-    [Chunk(0x0900600F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 4, 5, -1)]
-    public partial class Chunk0900600F : Chunk0900600E
+    /// <summary>
+    /// geometry, skin, UV groups, and packed data
+    /// </summary>
+    [Chunk(0x0900600F, "geometry, skin, UV groups, and packed data")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 4, 5, 6)]
+    public partial class Chunk0900600F : Chunk0900600E, IVersionable
     {
         public override uint Id => 0x0900600F;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0900600F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900600F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900600F)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0900600F)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0900600F)clone).U04 = context.CloneArray(this.U04)!;
             ((Chunk0900600F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0900600F)clone).PackedDataVersion = context.Clone(this.PackedDataVersion)!;
+            ((Chunk0900600F)clone).PackedData = context.CloneArray(this.PackedData)!;
         }
     }
 
-    [Chunk(0x09006010)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, -1)]
+    /// <summary>
+    /// Morphs
+    /// </summary>
+    [Chunk(0x09006010, "Morphs")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk09006010 : Chunk<CPlugVisual>, IVersionable
     {
         public override uint Id => 0x09006010;
@@ -332,7 +413,7 @@ public partial class CPlugVisual : CPlug, IClass
 
         public Chunk09006010(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 0;
             }
@@ -347,29 +428,24 @@ public partial class CPlugVisual : CPlug, IClass
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref n.morphCount);
-
-            if (n.MorphCount> 0)
-            {
-                throw new NotSupportedException();
-            }
+            rw.ArrayReadableWritable<Morph>(ref n.morphs!, version: Version);
         }
     }
 
     public partial class Split : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int indexOffset;
+        public int IndexOffset
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.indexOffset;
+            set => this.indexOffset = value;
         }
 
-        private int u02;
-        public int U02
+        private int vertexOffset;
+        public int VertexOffset
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.vertexOffset;
+            set => this.vertexOffset = value;
         }
 
         private BoxAligned boundingBox;
@@ -389,15 +465,15 @@ public partial class CPlugVisual : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Split)clone).u01 = context.Clone(this.u01)!;
-            ((Split)clone).u02 = context.Clone(this.u02)!;
+            ((Split)clone).indexOffset = context.Clone(this.indexOffset)!;
+            ((Split)clone).vertexOffset = context.Clone(this.vertexOffset)!;
             ((Split)clone).boundingBox = context.Clone(this.boundingBox)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
+            rw.Int32(ref this.indexOffset);
+            rw.Int32(ref this.vertexOffset);
             rw.BoxAligned(ref this.boundingBox);
         }
 
@@ -414,41 +490,27 @@ public partial class CPlugVisual : CPlug, IClass
         }
     }
 
-    public partial class BitmapElemToPack : IReadable, IWritable, IDeepCloneable
+    public partial class BitmapElemToPack : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int mapperIndex;
+        public int MapperIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.mapperIndex;
+            set => this.mapperIndex = value;
         }
 
-        private int u02;
-        public int U02
+        private Vec2 scale;
+        public Vec2 Scale
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.scale;
+            set => this.scale = value;
         }
 
-        private int u03;
-        public int U03
+        private Vec2 translation;
+        public Vec2 Translation
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private int u04;
-        public int U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private int u05;
-        public int U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.translation;
+            set => this.translation = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -461,35 +523,94 @@ public partial class CPlugVisual : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((BitmapElemToPack)clone).u01 = context.Clone(this.u01)!;
-            ((BitmapElemToPack)clone).u02 = context.Clone(this.u02)!;
-            ((BitmapElemToPack)clone).u03 = context.Clone(this.u03)!;
-            ((BitmapElemToPack)clone).u04 = context.Clone(this.u04)!;
-            ((BitmapElemToPack)clone).u05 = context.Clone(this.u05)!;
+            ((BitmapElemToPack)clone).mapperIndex = context.Clone(this.mapperIndex)!;
+            ((BitmapElemToPack)clone).scale = context.Clone(this.scale)!;
+            ((BitmapElemToPack)clone).translation = context.Clone(this.translation)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.mapperIndex);
+            rw.Vec2(ref this.scale);
+            rw.Vec2(ref this.translation);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadInt32();
-            this.u02 = r.ReadInt32();
-            this.u03 = r.ReadInt32();
-            this.u04 = r.ReadInt32();
-            this.u05 = r.ReadInt32();
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.Write(this.u01);
-            w.Write(this.u02);
-            w.Write(this.u03);
-            w.Write(this.u04);
-            w.Write(this.u05);
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Morph : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int[] indices = [];
+        public int[] Indices
+        {
+            get => this.indices;
+            set => this.indices = value;
+        }
+
+        private int boneCount;
+        public int BoneCount
+        {
+            get => this.boneCount;
+            set => this.boneCount = value;
+        }
+
+        private CPlugVertexStream? vertexStream;
+        public CPlugVertexStream? VertexStream
+        {
+            get => this.vertexStream;
+            set => this.vertexStream = value;
+        }
+
+        private string[] bones = [];
+        public string[] Bones
+        {
+            get => this.bones;
+            set => this.bones = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Morph)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Morph)clone).indices = context.CloneArray(this.indices)!;
+            ((Morph)clone).boneCount = context.Clone(this.boneCount)!;
+            ((Morph)clone).vertexStream = context.Clone(this.vertexStream)!;
+            ((Morph)clone).bones = context.CloneArray(this.bones)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x09006001 => new Chunk09006001(),
+        0x09006003 => new Chunk09006003(),
         0x09006004 => new Chunk09006004(),
         0x09006005 => new Chunk09006005(),
         0x09006006 => new Chunk09006006(),

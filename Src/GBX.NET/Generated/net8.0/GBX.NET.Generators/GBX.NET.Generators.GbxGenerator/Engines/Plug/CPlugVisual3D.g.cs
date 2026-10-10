@@ -34,9 +34,18 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     [Hexadecimal]
     public static new uint Id => 0x0902C000;
 
+    private CMwNod? blendShapes;
+    [AppliedWithChunk<Chunk0902C002>]
+    public CMwNod? BlendShapes
+    {
+        get => this.blendShapes;
+        set => this.blendShapes = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVisual3D)clone).blendShapes = context.Clone(this.blendShapes)!;
         ((CPlugVisual3D)clone).Vertices = context.CloneArray(this.Vertices)!;
         ((CPlugVisual3D)clone).Tangents = context.CloneArray(this.Tangents)!;
         ((CPlugVisual3D)clone).BiTangents = context.CloneArray(this.BiTangents)!;
@@ -46,29 +55,44 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     {
     }
 
-    [Chunk(0x0902C002)]
+    /// <summary>
+    /// Legacy vertices and tangents
+    /// </summary>
+    [Chunk(0x0902C001, "Legacy vertices and tangents")]
+    public partial class Chunk0902C001 : Chunk<CPlugVisual3D>
+    {
+        public override uint Id => 0x0902C001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// BlendShapes
+    /// </summary>
+    [Chunk(0x0902C002, "BlendShapes")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0902C002 : Chunk<CPlugVisual3D>
     {
         public override uint Id => 0x0902C002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0902C002)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
-        {
-            rw.NodeRef<CMwNod>(ref U01);
+            ((Chunk0902C002)clone).LegacyBlendShapes = context.Clone(this.LegacyBlendShapes)!;
+            ((Chunk0902C002)clone).LegacyBlendShapesSet = context.Clone(this.LegacyBlendShapesSet)!;
         }
     }
 
-    [Chunk(0x0902C003)]
+    /// <summary>
+    /// Legacy vertices, tangents and bitangents
+    /// </summary>
+    [Chunk(0x0902C003, "Legacy vertices, tangents and bitangents")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
-    public partial class Chunk0902C003 : Chunk<CPlugVisual3D>
+    public partial class Chunk0902C003 : Chunk0902C001
     {
         public override uint Id => 0x0902C003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
@@ -77,9 +101,18 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            n.BiTangents = rw.Array<Vec3>(n.BiTangents);
+        }
     }
 
-    [Chunk(0x0902C004)]
+    /// <summary>
+    /// Vertices and tangents
+    /// </summary>
+    [Chunk(0x0902C004, "Vertices and tangents")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0902C004 : Chunk<CPlugVisual3D>
     {
@@ -89,15 +122,16 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0902C004)clone).Tangents1Count = context.Clone(this.Tangents1Count)!;
-            ((Chunk0902C004)clone).Tangents1 = context.CloneArray(this.Tangents1)!;
-            ((Chunk0902C004)clone).Tangents2Count = context.Clone(this.Tangents2Count)!;
-            ((Chunk0902C004)clone).Tangents2 = context.CloneArray(this.Tangents2)!;
+            ((Chunk0902C004)clone).TangentCount = context.Clone(this.TangentCount)!;
+            ((Chunk0902C004)clone).TangentData = context.CloneArray(this.TangentData)!;
+            ((Chunk0902C004)clone).BitangentCount = context.Clone(this.BitangentCount)!;
+            ((Chunk0902C004)clone).BitangentData = context.CloneArray(this.BitangentData)!;
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0902C001 => new Chunk0902C001(),
         0x0902C002 => new Chunk0902C002(),
         0x0902C003 => new Chunk0902C003(),
         0x0902C004 => new Chunk0902C004(),

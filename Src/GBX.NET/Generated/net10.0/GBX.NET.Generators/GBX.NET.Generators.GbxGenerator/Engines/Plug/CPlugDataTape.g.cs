@@ -34,55 +34,180 @@ public partial class CPlugDataTape : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090CE000;
 
+    private TapeHeader? header;
+    [AppliedWithChunk<Chunk090CE000>]
+    [AppliedWithChunk<Chunk090CE001>]
+    public TapeHeader? Header
+    {
+        get => this.header;
+        set => this.header = value;
+    }
+
+    private int[] stateTimes = [];
+    [AppliedWithChunk<Chunk090CE000>]
+    [AppliedWithChunk<Chunk090CE001>]
+    public int[] StateTimes
+    {
+        get => this.stateTimes;
+        set => this.stateTimes = value;
+    }
+
+    private int[] stateOffsets = [];
+    [AppliedWithChunk<Chunk090CE000>]
+    [AppliedWithChunk<Chunk090CE001>]
+    public int[] StateOffsets
+    {
+        get => this.stateOffsets;
+        set => this.stateOffsets = value;
+    }
+
+    private byte[] stateData = [];
+    [AppliedWithChunk<Chunk090CE000>]
+    [AppliedWithChunk<Chunk090CE001>]
+    public byte[] StateData
+    {
+        get => this.stateData;
+        set => this.stateData = value;
+    }
+
+    private int noticeCount;
+    [AppliedWithChunk<Chunk090CE001>]
+    public int NoticeCount
+    {
+        get => this.noticeCount;
+        set => this.noticeCount = value;
+    }
+
+    private byte[] noticeData = [];
+    [AppliedWithChunk<Chunk090CE001>]
+    public byte[] NoticeData
+    {
+        get => this.noticeData;
+        set => this.noticeData = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugDataTape)clone).header = context.Clone(this.header)!;
+        ((CPlugDataTape)clone).stateTimes = context.CloneArray(this.stateTimes)!;
+        ((CPlugDataTape)clone).stateOffsets = context.CloneArray(this.stateOffsets)!;
+        ((CPlugDataTape)clone).stateData = context.CloneArray(this.stateData)!;
+        ((CPlugDataTape)clone).noticeCount = context.Clone(this.noticeCount)!;
+        ((CPlugDataTape)clone).noticeData = context.CloneArray(this.noticeData)!;
     }
 
     public CPlugDataTape()
     {
     }
 
-    [Chunk(0x090CE001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// legacy states without notices
+    /// </summary>
+    [Chunk(0x090CE000, "legacy states without notices")]
+    public partial class Chunk090CE000 : Chunk<CPlugDataTape>
+    {
+        public override uint Id => 0x090CE000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugDataTape n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<TapeHeader>(ref n.header);
+            rw.Array<int>(ref n.stateTimes!);
+            rw.Array<int>(ref n.stateOffsets!);
+            rw.Data(ref n.stateData);
+            n.NoticeCount = 0;
+        }
+    }
+
+    /// <summary>
+    /// states and notices
+    /// </summary>
+    [Chunk(0x090CE001, "states and notices")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk090CE001 : Chunk<CPlugDataTape>, IVersionable
     {
         public override uint Id => 0x090CE001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int[]? U02;
-        public int[]? U03;
-        public byte[]? U04;
-        public int U05;
-        public byte[]? U06;
+
+        public Chunk090CE001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CE001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090CE001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090CE001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090CE001)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk090CE001)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk090CE001)clone).U04 = context.CloneArray(this.U04)!;
-            ((Chunk090CE001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090CE001)clone).U06 = context.CloneArray(this.U06)!;
         }
 
         public override void ReadWrite(CPlugDataTape n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
-            rw.Array<int>(ref U02!);
-            rw.Array<int>(ref U03!);
-            rw.Data(ref U04);
-            rw.Int32(ref U05);
-            rw.Data(ref U06);
+            rw.ReadableWritable<TapeHeader>(ref n.header, version: Version);
+            rw.Array<int>(ref n.stateTimes!);
+            rw.Array<int>(ref n.stateOffsets!);
+            rw.Data(ref n.stateData);
+            rw.Int32(ref n.noticeCount);
+            rw.Data(ref n.noticeData);
+        }
+    }
+
+    public partial class TapeHeader : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (TapeHeader)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((TapeHeader)clone).u01 = context.Clone(this.u01)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x090CE000 => new Chunk090CE000(),
         0x090CE001 => new Chunk090CE001(),
         _ => base.NewChunk(chunkId),
     };

@@ -224,6 +224,107 @@ public class CSystemConfigLayoutTests
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 
+    [Test]
+    public async Task ReadWrite_LegacyAudioLimits_PreservesNamedSettings()
+    {
+        using var payload = CreatePayload(writer =>
+        {
+            writer.Write(true);
+            writer.Write(0.25f);
+            writer.Write(0.75f);
+            writer.Write(1);
+            writer.Write(2);
+            writer.Write(true);
+            writer.Write(32);
+            writer.Write(20);
+            writer.Write(8);
+        });
+        var node = new CSystemConfig();
+        var chunk = new CSystemConfig.Chunk0B005004();
+        ReadChunk(payload, rw => chunk.ReadWrite(node, rw));
+        await Assert.That(node.AudioUseEAX).IsTrue();
+        await Assert.That(node.AudioMaxSounds).IsEqualTo(32);
+        await Assert.That(node.AudioUpdatePeriod).IsEqualTo(20);
+        await Assert.That(node.AudioSoundsPerUpdate).IsEqualTo(8);
+        await AssertRoundTrip(payload, rw => chunk.ReadWrite(node, rw));
+    }
+
+    [Test]
+    public async Task ReadWrite_LegacyDisplayChain_ConsumesSettingsInNativeOrder()
+    {
+        using var payload = CreatePayload(writer =>
+        {
+            writer.Write(1280);
+            writer.Write(720);
+            writer.Write(3); // Window size.
+            foreach (var value in new[] { 2, 1, 4, 2, 60 })
+            {
+                writer.Write(value);
+            }
+            writer.Write(true); // VSync.
+            writer.Write(false); // Fullscreen.
+            foreach (var value in new[] { 16, 5, 2 })
+            {
+                writer.Write(value);
+            }
+            writer.Write(true); // Disable shadow buffer.
+            writer.Write(6); // GPU synchronization.
+            writer.Write(false); // GDI cursor.
+            writer.Write(2); // Vertex processing.
+            writer.Write(true); // Dynamic geometry optimization.
+        });
+        var node = new CSystemConfig();
+        var chunk = new CSystemConfig.Chunk0B00501F();
+        ReadChunk(payload, rw => chunk.ReadWrite(node, rw));
+        await Assert.That(node.DisplayScreenSizeFS).IsEqualTo(new Int2(1280, 720));
+        await Assert.That(node.DisplayScreenSizeWin).IsEqualTo(3);
+        await Assert.That(node.DisplayMaxFiltering).IsEqualTo(16);
+        await Assert.That(node.DisplayGpuSync).IsEqualTo(6);
+        await Assert.That(node.DisplayVertexProcess).IsEqualTo(2);
+        await Assert.That(node.DisplayOptimPartDynaGeom).IsTrue();
+        await AssertRoundTrip(payload, rw => chunk.ReadWrite(node, rw));
+    }
+
+    [Test]
+    [Arguments(0x05C, 1)]
+    [Arguments(0x05D, 1)]
+    [Arguments(0x05E, 2)]
+    public async Task ReadWrite_UnsupportedNetworkAndInstallVersions_StopsBeforePayload(int id, int version)
+    {
+        using var payload = CreatePayload(writer => writer.Write(version));
+        payload.Position = 0;
+        using var reader = new GbxReader(payload);
+        using var rw = new GbxReaderWriter(reader);
+        var node = new CSystemConfig();
+        Action serialize = id switch
+        {
+            0x05C => () => new CSystemConfig.Chunk0B00505C().ReadWrite(node, rw),
+            0x05D => () => new CSystemConfig.Chunk0B00505D().ReadWrite(node, rw),
+            _ => () => new CSystemConfig.Chunk0B00505E().ReadWrite(node, rw)
+        };
+        Assert.Throws<NotSupportedException>(serialize);
+        await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
+    }
+
+    [Test]
+    public async Task Constructor_GameContext_SelectsVerifiedNativeDefaults()
+    {
+        var tmf = new CSystemConfig(GameVersion.TMF);
+        var mp4 = new CSystemConfig(GameVersion.MP4);
+        await Assert.That(tmf.AudioSoundVolume).IsEqualTo(1.0f);
+        await Assert.That(tmf.AudioAllowEFX).IsTrue();
+        await Assert.That(mp4.AudioSoundVolume).IsEqualTo(0.31622776f);
+        await Assert.That(tmf.NetworkServerBroadcastLength).IsEqualTo(10);
+        await Assert.That(mp4.NetworkServerBroadcastLength).IsEqualTo(50);
+        await Assert.That(mp4.NetworkDownloadRate).IsEqualTo(688128);
+        await Assert.That(mp4.NetworkUploadRate).IsEqualTo(43008);
+        await Assert.That(mp4.FileTransferMaxCacheSize).IsEqualTo(629145600UL);
+        await Assert.That(mp4.FileTransferEnableTagSkinDownload).IsTrue();
+        await Assert.That(mp4.SmMaxPlayerResimStepPerFrame).IsEqualTo(100);
+        await Assert.That(new CSystemConfig.Chunk0B00505B(GameVersion.MP4).Version).IsEqualTo(1);
+        await Assert.That(new CSystemConfig.Chunk0B00505B(GameVersion.TM2020).Version).IsEqualTo(2);
+    }
+
     private static MemoryStream CreatePayload(Action<GbxWriter> write)
     {
         var payload = new MemoryStream();

@@ -1,54 +1,59 @@
 CPlugVisual 0x09006000
 - inherits: CPlug
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  id
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // VisualId
+  id VisualId
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
-  CMwNod
+0x003 (base: 0x008) // legacy geometry with raw 2D texture coordinates
 
-0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int3[] SubVisuals // SSubVisual?
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4] // FuncVisual
+  CMwNod FuncVisual
 
-0x006 [TM10, TMPU, TMSX, TMNESWC]
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // SubVisuals
+  int3[] SubVisuals = empty // SSubVisual records
 
-0x007 [TM10, TMPU, TMSX]
-  bool
+0x006 [TM10, TMPU, TMSX, TMNESWC] // HasVertexNormals
 
-0x008 [TM10, TMPU]
+0x007 [TM10, TMPU, TMSX] // legacy skin inverse flag
+  bool IsInverse
 
-0x009 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  float
+0x008 [TM10, TMPU] // legacy geometry, texture coordinates, and skin transforms
 
-0x00A [TMSX]
+0x009 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // NPatchTessLevel
+  float NPatchTessLevel
 
-0x00B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  Split[] Splits // SSplit array
+0x00A (base: 0x008) [TMSX] // legacy vertex streams and skin transforms
 
-0x00C [TMNESWC]
+0x00B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Splits
+  Split[] Splits = empty
 
-0x00D [VSK5]
+0x00C [TMNESWC] // legacy geometry, texture coordinates, skin, and bounds
 
-0x00E (base: 0x00D) [TMF]
+0x00D [VSK5] // geometry flags, vertex streams, skin, and bounds
+
+0x00E (base: 0x00D) [TMF] // geometry and bitmap packing transforms
   base
-  BitmapElemToPack[] BitmapElemToPacks
+  BitmapElemToPack[] BitmapElemToPacks = empty
 
-0x00F (base: 0x00E) [MP3, TMT.v4, MP4.v5, TM2020]
-
-0x010 [MP3, TMT.v0, MP4.v0, TM2020]
+0x00F (base: 0x00E) [MP3, TMT.v4, MP4.v5, TM2020.v6] // geometry, skin, UV groups, and packed data
   version
-  int MorphCount
-  if MorphCount > 0
-    throw
+
+0x010 [MP3, TMT.v0, MP4.v0, TM2020.v0] // Morphs
+  version
+  Morph[] Morphs = empty
 
 archive Split
-  int
-  int
+  int IndexOffset
+  int VertexOffset
   box BoundingBox
 
 archive BitmapElemToPack
-  int
-  int
-  int
-  int
-  int
+  int MapperIndex
+  vec2 Scale
+  vec2 Translation
+
+archive Morph
+  int[] Indices = empty
+  int BoneCount
+  CPlugVertexStream VertexStream
+  id[BoneCount] Bones = empty
