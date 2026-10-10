@@ -2,6 +2,8 @@
 
 The BenchmarkDotNet project measures GBX.NET source generation and Gbx fixture reads and writes. It also includes the existing string-reader and array-copy benchmarks.
 
+The separate [cross-library comparison](#cross-library-map-comparison) runs the three supplied maps through GBX.NET, gbx-py, and gbx-ts.
+
 ## Structure
 
 One console runner discovers all suites. Workload code lives in separate folders and namespaces:
@@ -90,3 +92,90 @@ Each fixture runs with both compressed and uncompressed bodies. Setup parses the
 Setup primes serialization caches and checks that the saved file can be parsed with the expected class and compression. Reads use strict settings, with body exceptions and skippable-chunk fallback disabled. The fixture benchmarks measure repeated saves of an already prepared object. To add coverage, extend `Serialization/FixtureCatalog.cs` with a short display name and another writable fixture path relative to the fixture root, then run the dry check.
 
 For comparisons, use the same job, fixtures, runtime, compression implementation, and machine across revisions. Rebuild after changing layouts or source files, as `--no-build` uses the previous input snapshot. Run `dotnet clean Benchmarks/GBX.NET.Benchmarks -c Release` before rebuilding after removing or renaming inputs to clear old copies.
+
+## Cross-library map comparison
+
+[Comparison/run.mjs](Comparison/run.mjs) runs these original files without rewriting or recompressing them:
+
+- `A01-Race.Challenge.Gbx`
+- `Canyon A01.Map.Gbx`
+- `Deep_Dip_2r1.Map.Gbx`
+
+### Setup and run
+
+You need the .NET 10 SDK, Node.js 20 or newer with npm, Python 3.10 or newer with a compatible `gbx-py` wheel, and Git. The measured run uses CPython 3.13. Setup uses an isolated Python environment and local Node modules, and it checks out the gbx-py parser at the revision in [dependencies.json](Comparison/dependencies.json). It does not install the Python GUI dependencies or change system-wide packages.
+
+Run from the repository root on Windows:
+
+```powershell
+./Benchmarks/Comparison/setup.ps1 -Python python
+node Benchmarks/Comparison/run.mjs --update-readme
+```
+
+If your Python command is `py`, use `-Python py`. If necessary, supply an executable path. PowerShell 7 can also run setup on Linux or macOS. The equivalent setup with a POSIX shell is:
+
+```sh
+cd Benchmarks/Comparison
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+npm ci --ignore-scripts --no-audit --no-fund
+git clone --no-checkout https://github.com/schadocalex/gbx-py.git .deps/gbx-py
+git -C .deps/gbx-py checkout --detach 342419ce4e937a4303b8a36fc2d3ed8093d95cf5
+cd ../..
+node Benchmarks/Comparison/run.mjs --update-readme
+```
+
+The runner builds a standalone Release .NET worker, then starts a fresh process for each library/map pair, one at a time. A default run takes several minutes because the Python parse of Deep Dip 2 is much slower than the smaller cases. Nothing is installed automatically during measurement.
+
+The command writes raw samples, dependency/runtime versions, fixture SHA-256 hashes, parsing diagnostics, environment details, and Markdown into a timestamped directory under `Comparison/results`. Results are ignored by Git. `--update-readme` refreshes the compact performance table near the top of the [repository README](../README.md#benchmark) and the detailed results in this page, replacing only their marked sections. The compact table shows means in ms or s. The detailed table includes sample standard deviations and uses µs, ms, or s. Both tables retain partial-parse labels. Without that flag, both READMEs stay unchanged.
+
+For a smoke check rather than a performance measurement:
+
+```powershell
+node Benchmarks/Comparison/run.mjs --samples 2 --warmup-seconds 0.1 --sample-ms 10
+```
+
+Use `--map <path>` repeatedly to compare other maps, `--python <path>` to select another Python environment, or `--output <directory>` to choose the report directory. `--samples`, `--warmup-seconds`, and `--sample-ms` control measurements. `--timeout-seconds` limits each worker (default 600 s). `--no-build` is useful for repeated runs with the same binaries, but rebuild after library changes. `--help` lists all options. Errors are recorded rather than stopping the remaining cases, and any failed case makes the runner exit with code 1. Partial parses are reported but do not fail the run.
+
+### What is measured
+
+All three workers preload the same compressed file bytes. The timed operation creates a fresh parser/stream and calls its body-parsing API:
+
+| Library | Operation | Source and decompressor |
+| --- | --- | --- |
+| GBX.NET | `Gbx.Parse(new MemoryStream(bytes), settings)` | Local project reference, strict body reads, GBX.NET.LZO. |
+| gbx-py | `src.parser.parse_bytes(bytes)` | Pinned source checkout, Construct, native `gbx.lzo` from the pinned PyPI package. |
+| gbx-ts | `await new GBX(bytes, 0).parse()` | Pinned npm package `gbx`, with `lzo-ts`. |
+
+The published `gbx-py` 0.3.1 wheel contains the LZO extension, not the parser. That is why setup also downloads the parser source. The `gbx-ts` project is published under the npm name `gbx`, and the tested version is `1.0.0-rc12`. [requirements.txt](Comparison/requirements.txt) and [package-lock.json](Comparison/package-lock.json) pin the external packages. The upstream parsers are not patched.
+
+Startup, imports, disk reads, validation, and reporting are outside the timer. Body decompression, object construction, allocations, and normal garbage collection are inside it. The adapters discard library console diagnostics while measuring, and retain parsing checks from the initial validation call. No file writes, round-trips, embedded-item extraction, or external resource loading are requested. Each worker warms up before selecting an adaptive batch size, then records the configured number of batch averages. The table shows their mean and sample standard deviation, not a confidence interval. Small standard deviations do not remove differences between runtimes or parsing coverage. These are lightweight cross-runtime measurements, not BenchmarkDotNet results or allocation comparisons.
+
+### Parsing limitations
+
+The runner checks for a parsed block list, normalizes away `flags == -1` block placeholders, and compares block counts with GBX.NET. GBX.NET disables body exception suppression and skippable-chunk fallback, and reports unknown root map chunks. The Python adapter scans returned containers for unknown/failed chunks, trailing data, and a missing body end marker. The TypeScript adapter scans returned nodes for skipped chunks and captures parser errors. These checks identify known fallbacks, not every omission in a parser.
+
+**Partial timings measure the library's available work, not an equivalent full parse.** In this run, gbx-py does not finish parsing the A01-Race body. The Python parser also retains unknown chunks in the newer maps. gbx-ts skips newer map chunks, including embedded item data, and does not offer the same nested-node coverage as GBX.NET. Neither timings nor matching block counts prove that every field was read. For that reason the table does not calculate speedup ratios. JSON reports retain grouped Python diagnostics and skipped TypeScript chunk IDs so you can inspect what each library actually processed.
+
+### Measured results
+
+<!-- gbx-comparison:start -->
+Measured 2026-10-10 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64).
+
+In-memory parse calls on the original compressed files, including LZO decompression. Mean ± sample standard deviation per parse, using µs, ms, or s as appropriate. Values are rounded to three significant digits. Lower is faster, but parsing coverage differs.
+
+| Map | File bytes | GBX.NET | gbx-py | gbx-ts |
+| --- | ---: | ---: | ---: | ---: |
+| A01-Race.Challenge.Gbx | 18,977 | 32 ± 4.81 µs | 14.1 ± 1.09 ms (partial) | 2.76 ± 0.282 ms |
+| Canyon A01.Map.Gbx | 408,180 | 327 ± 53.9 µs | 62.2 ± 6.2 ms (partial) | 31.6 ± 2.61 ms (partial) |
+| Deep_Dip_2r1.Map.Gbx | 5,998,704 | 170 ± 51.2 ms | 15.2 ± 0.827 s (partial) | 897 ± 15.6 ms (partial) |
+
+**Partial results are not equivalent full parses.** They include skipped chunks or a body that was not fully parsed. Failed calls have no timing. These numbers do not establish a like-for-like speedup.
+
+GBX.NET 2.5.0.0 (.NET 10.0.12), gbx-py parser 342419ce4e93, LZO package 0.3.1 (CPython 3.13.2), gbx-ts 1.0.0-rc12 (Node.js v20.10.0). GBX.NET.LZO 2.1.6.0, lzo-ts 0.2.3, Construct 2.10.70.
+
+GBX.NET source: `b640d6c6033cd9fdae7d6f1078d6556c62bb35af` (library sources unchanged). gbx-py parser source: `342419ce4e937a4303b8a36fc2d3ed8093d95cf5`.
+
+15 samples per case after at least 2 s of warmup, with an adaptive batch targeting 200 ms (at least one parse per sample). Worker processes run sequentially. Startup, imports, file reads, validation, and report writing are excluded. Normal garbage collection remains enabled.
+
+<!-- gbx-comparison:end -->

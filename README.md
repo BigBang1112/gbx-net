@@ -13,8 +13,28 @@ GBX.NET is not just a library that can read or write Gbx files, but also **a mod
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via Discord DM: `bigbang1112`
 
+<!-- gbx-comparison:start -->
+### Benchmark
+
+**0.032 ms** for **A01-Race**, **170 ms** for **Deep Dip 2** on average with GBX.NET.
+
+Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.
+
+| Map | GBX.NET | gbx-py | gbx-ts |
+| --- | ---: | ---: | ---: |
+| A01-Race | **0.032 ms** | 14.1 ms (partial) | 2.76 ms |
+| Canyon A01 | **0.327 ms** | 62.2 ms (partial) | 31.6 ms (partial) |
+| Deep Dip 2 | **170 ms** | 15.2 s (partial) | 897 ms (partial) |
+
+**Parsing coverage differs.** `(partial)` means skipped chunks or an unfinished body, not equivalent full parsing. Passing the runner's checks does not prove exhaustive coverage, so these timings are not a like-for-like speedup.
+
+Measured 2026-10-10 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64), with 15 samples per case after warmup. [Methodology, parsing limitations, versions, and reusable runner](Benchmarks/README.md#cross-library-map-comparison).
+
+<!-- gbx-comparison:end -->
+
 ### Navigation
 
+- [Benchmark](#benchmark)
 - [Supported games](#supported-games)
 - [File types](#file-types)
 - [Framework support](#framework-support)
@@ -607,6 +627,8 @@ You can also create a `nuget.config` file in your solution directory and put the
 ## Benchmarks
 
 The [benchmark project](Benchmarks/README.md) measures source generator speed and Gbx fixture reads and writes, including compressed and uncompressed bodies.
+
+The [cross-library map comparison](Benchmarks/README.md#cross-library-map-comparison) includes the reusable runner, setup, and parsing limitations for the [results near the top](#benchmark).
 
 ## License
 
