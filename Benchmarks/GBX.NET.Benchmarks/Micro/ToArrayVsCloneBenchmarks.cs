@@ -1,8 +1,9 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace GBX.NET.Benchmarks;
+namespace GBX.NET.Benchmarks.Micro;
 
 [MemoryDiagnoser]
+[BenchmarkCategory("Micro")]
 public class ToArrayVsCloneBenchmarks
 {
     private static readonly Random random = new(123);

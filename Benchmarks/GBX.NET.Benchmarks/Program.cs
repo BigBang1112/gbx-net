@@ -1,3 +1,6 @@
-﻿using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Running;
+using GBX.NET.Benchmarks.Infrastructure;
 
-BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
+var summaries = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, BenchmarkConfiguration.Create());
+Environment.ExitCode = summaries.Any(summary => summary.HasCriticalValidationErrors
+    || summary.Reports.Any(report => !report.Success)) ? 1 : 0;

@@ -1,11 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using GBX.NET.Benchmarks.OldClasses;
+using GBX.NET.Benchmarks.Micro.Legacy;
 using GBX.NET.Serialization;
 
-namespace GBX.NET.Benchmarks;
+namespace GBX.NET.Benchmarks.Micro;
 
 [MemoryDiagnoser]
+[BenchmarkCategory("Micro")]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 public class GbxReaderStringBenchmarks
 {

@@ -1,7 +1,7 @@
 ﻿using GBX.NET.Exceptions;
 using System.Text;
 
-namespace GBX.NET.Benchmarks.OldClasses;
+namespace GBX.NET.Benchmarks.Micro.Legacy;
 
 public class GameBoxReader : BinaryReader
 {
