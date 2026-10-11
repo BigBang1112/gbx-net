@@ -664,6 +664,7 @@ internal static class EngineWriter
             return $"context.CloneList({value})!";
         if (name is "Dictionary" or "IDictionary" or "IReadOnlyDictionary")
             return $"context.CloneDictionary({value})!";
+        if (name == "SortedDictionary") return $"context.CloneSortedDictionary({value})!";
         if (name is "HashSet" or "ISet") return $"context.CloneHashSet({value})!";
 
         return $"context.Clone({value})!";

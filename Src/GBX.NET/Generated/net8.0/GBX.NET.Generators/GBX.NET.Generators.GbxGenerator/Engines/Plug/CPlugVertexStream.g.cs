@@ -34,24 +34,75 @@ public partial class CPlugVertexStream : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09056000;
 
+    private int vertexCount;
+    [AppliedWithChunk<Chunk09056000>]
+    public int VertexCount
+    {
+        get => this.vertexCount;
+        set => this.vertexCount = value;
+    }
+
+    private uint flags = 3;
+    [AppliedWithChunk<Chunk09056000>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private CPlugVertexStream? streamModel;
+    [AppliedWithChunk<Chunk09056000>]
+    public CPlugVertexStream? StreamModel
+    {
+        get => this.streamModelFile?.GetNode(ref this.streamModel) ?? this.streamModel;
+        set => this.streamModel = value;
+    }
+    private Components.GbxRefTableFile? streamModelFile;
+
+    public Components.GbxRefTableFile? StreamModelFile
+    {
+        get => streamModelFile;
+        set => streamModelFile = value;
+    }
+
+    public CPlugVertexStream? GetStreamModel(GbxReadSettings settings = default, bool exceptions = false) => streamModelFile?.GetNode(ref streamModel, settings, exceptions) ?? streamModel;
+
+    private DataDecl[]? dataDecls;
+    [AppliedWithChunk<Chunk09056000>]
+    public DataDecl[]? DataDecls
+    {
+        get => this.dataDecls;
+        set => this.dataDecls = value;
+    }
+
+    private bool compressLocalFloat3 = true;
+    [AppliedWithChunk<Chunk09056000>(1)]
+    public bool CompressLocalFloat3
+    {
+        get => this.compressLocalFloat3;
+        set => this.compressLocalFloat3 = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVertexStream)clone).count = context.Clone(this.count)!;
+        ((CPlugVertexStream)clone).vertexCount = context.Clone(this.vertexCount)!;
         ((CPlugVertexStream)clone).flags = context.Clone(this.flags)!;
         ((CPlugVertexStream)clone).streamModel = context.Clone(this.streamModel)!;
-        ((CPlugVertexStream)clone).streamModelFile = context.Clone(this.streamModelFile)!;
         ((CPlugVertexStream)clone).dataDecls = context.CloneArray(this.dataDecls)!;
-        ((CPlugVertexStream)clone).uvs = context.Clone(this.uvs)!;
-        ((CPlugVertexStream)clone).blendWeight = context.CloneArray(this.blendWeight)!;
-        ((CPlugVertexStream)clone).positions = context.CloneArray(this.positions)!;
-        ((CPlugVertexStream)clone).positions2 = context.CloneArray(this.positions2)!;
-        ((CPlugVertexStream)clone).normals = context.CloneArray(this.normals)!;
-        ((CPlugVertexStream)clone).normals2 = context.CloneArray(this.normals2)!;
-        ((CPlugVertexStream)clone).colors = context.Clone(this.colors)!;
-        ((CPlugVertexStream)clone).blendIndices = context.CloneArray(this.blendIndices)!;
-        ((CPlugVertexStream)clone).tangentUs = context.CloneArray(this.tangentUs)!;
-        ((CPlugVertexStream)clone).tangentVs = context.CloneArray(this.tangentVs)!;
+        ((CPlugVertexStream)clone).compressLocalFloat3 = context.Clone(this.compressLocalFloat3)!;
+        ((CPlugVertexStream)clone).uvs = context.CloneSortedDictionary(this.uvs)!;
+        ((CPlugVertexStream)clone).colors = context.CloneSortedDictionary(this.colors)!;
+        ((CPlugVertexStream)clone).Positions = context.CloneArray(this.Positions)!;
+        ((CPlugVertexStream)clone).Positions2 = context.CloneArray(this.Positions2)!;
+        ((CPlugVertexStream)clone).Normals = context.CloneArray(this.Normals)!;
+        ((CPlugVertexStream)clone).Normals2 = context.CloneArray(this.Normals2)!;
+        ((CPlugVertexStream)clone).BlendWeight = context.CloneArray(this.BlendWeight)!;
+        ((CPlugVertexStream)clone).BlendIndices = context.CloneArray(this.BlendIndices)!;
+        ((CPlugVertexStream)clone).TangentUs = context.CloneArray(this.TangentUs)!;
+        ((CPlugVertexStream)clone).TangentUs2 = context.CloneArray(this.TangentUs2)!;
+        ((CPlugVertexStream)clone).TangentVs = context.CloneArray(this.TangentVs)!;
+        ((CPlugVertexStream)clone).TangentVs2 = context.CloneArray(this.TangentVs2)!;
     }
 
     public CPlugVertexStream()
@@ -59,22 +110,50 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     [Chunk(0x09056000)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk09056000 : Chunk<CPlugVertexStream>
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, 1, 0, 1, 1)]
+    public partial class Chunk09056000 : Chunk<CPlugVertexStream>, IVersionable
     {
         public override uint Id => 0x09056000;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09056000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk09056000)clone).Version = context.Clone(this.Version)!;
         }
     }
 
     public partial class DataDecl : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private uint flags1;
+        public uint Flags1
+        {
+            get => this.flags1;
+            set => this.flags1 = value;
+        }
+
+        private uint flags2;
+        public uint Flags2
+        {
+            get => this.flags2;
+            set => this.flags2 = value;
+        }
+
+        private ushort sharedDeclIndex;
+        public ushort SharedDeclIndex
+        {
+            get => this.sharedDeclIndex;
+            set => this.sharedDeclIndex = value;
+        }
+
+        private ushort offset;
+        public ushort Offset
+        {
+            get => this.offset;
+            set => this.offset = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (DataDecl)MemberwiseClone();
@@ -87,9 +166,11 @@ public partial class CPlugVertexStream : CPlug, IClass
         {
             ((DataDecl)clone).flags1 = context.Clone(this.flags1)!;
             ((DataDecl)clone).flags2 = context.Clone(this.flags2)!;
-            ((DataDecl)clone).u01 = context.CloneArray(this.u01)!;
-            ((DataDecl)clone).u02 = context.Clone(this.u02)!;
+            ((DataDecl)clone).sharedDeclIndex = context.Clone(this.sharedDeclIndex)!;
             ((DataDecl)clone).offset = context.Clone(this.offset)!;
+            ((DataDecl)clone).data = context.CloneArray(this.data)!;
+            ((DataDecl)clone).VertexCount = context.Clone(this.VertexCount)!;
+            ((DataDecl)clone).Legacy = context.Clone(this.Legacy)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -107,16 +188,29 @@ public partial class CPlugVertexStream : CPlug, IClass
 
     public enum EPlugVDclType
     {
-        U01,
+        Float1,
         Float2,
         Float3,
         Float4,
         /// <summary>
-        /// 4 bytes RGBA
+        /// Packed BGRA color
         /// </summary>
-        Color,
-        Int32,
-        Dec3N = 14,
+        ColorD3D,
+        UByte4,
+        Short2,
+        Short4,
+        UByte4N,
+        Short2N,
+        Short4N,
+        UShort2N,
+        UShort4N,
+        UDec3,
+        Dec3N,
+        Half2,
+        Half4,
+        U01 = Float1,
+        Color = ColorD3D,
+        Int32 = UByte4,
     }
 
     public enum EPlugVDcl

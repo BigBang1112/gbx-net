@@ -207,6 +207,26 @@ internal sealed class DeepCloneContext
         return clone;
     }
 
+    public SortedDictionary<TKey, TValue>? CloneSortedDictionary<TKey, TValue>(SortedDictionary<TKey, TValue>? source) where TKey : notnull
+    {
+        if (source is null) return null;
+
+        if (clones.TryGetValue(source, out var existing))
+        {
+            return (SortedDictionary<TKey, TValue>)existing;
+        }
+
+        var clone = new SortedDictionary<TKey, TValue>(source.Comparer);
+        Register(source, clone);
+
+        foreach (var pair in source)
+        {
+            clone.Add(Clone(pair.Key)!, Clone(pair.Value)!);
+        }
+
+        return clone;
+    }
+
     public HashSet<T>? CloneHashSet<T>(ISet<T>? source)
     {
         if (source is null)

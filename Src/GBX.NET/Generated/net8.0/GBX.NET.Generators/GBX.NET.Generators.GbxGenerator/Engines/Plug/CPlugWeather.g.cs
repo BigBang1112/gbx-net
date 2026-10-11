@@ -34,39 +34,142 @@ public partial class CPlugWeather : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0917E000;
 
-    private Vec2 lDirSpecIntens;
-    [AppliedWithChunk<Chunk0917E00D>]
-    public Vec2 LDirSpecIntens
+    private CPlugMaterial? materialSky_Night;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSky_Night
     {
-        get => this.lDirSpecIntens;
-        set => this.lDirSpecIntens = value;
+        get => this.materialSky_NightFile?.GetNode(ref this.materialSky_Night) ?? this.materialSky_Night;
+        set => this.materialSky_Night = value;
+    }
+    private Components.GbxRefTableFile? materialSky_NightFile;
+
+    public Components.GbxRefTableFile? MaterialSky_NightFile
+    {
+        get => materialSky_NightFile;
+        set => materialSky_NightFile = value;
     }
 
-    private Vec2 lDirSpecPower;
-    [AppliedWithChunk<Chunk0917E00D>]
-    public Vec2 LDirSpecPower
+    public CPlugMaterial? GetMaterialSky_Night(GbxReadSettings settings = default, bool exceptions = false) => materialSky_NightFile?.GetNode(ref materialSky_Night, settings, exceptions) ?? materialSky_Night;
+
+    private CPlugMaterial? materialSky_SunRise;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSky_SunRise
     {
-        get => this.lDirSpecPower;
-        set => this.lDirSpecPower = value;
+        get => this.materialSky_SunRiseFile?.GetNode(ref this.materialSky_SunRise) ?? this.materialSky_SunRise;
+        set => this.materialSky_SunRise = value;
+    }
+    private Components.GbxRefTableFile? materialSky_SunRiseFile;
+
+    public Components.GbxRefTableFile? MaterialSky_SunRiseFile
+    {
+        get => materialSky_SunRiseFile;
+        set => materialSky_SunRiseFile = value;
     }
 
-    private Vec3 seaTwkWaterColor_Night;
-    [AppliedWithChunk<Chunk0917E00D>]
-    public Vec3 SeaTwkWaterColor_Night
+    public CPlugMaterial? GetMaterialSky_SunRise(GbxReadSettings settings = default, bool exceptions = false) => materialSky_SunRiseFile?.GetNode(ref materialSky_SunRise, settings, exceptions) ?? materialSky_SunRise;
+
+    private CPlugMaterial? materialSky_Day;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSky_Day
     {
-        get => this.seaTwkWaterColor_Night;
-        set => this.seaTwkWaterColor_Night = value;
+        get => this.materialSky_DayFile?.GetNode(ref this.materialSky_Day) ?? this.materialSky_Day;
+        set => this.materialSky_Day = value;
+    }
+    private Components.GbxRefTableFile? materialSky_DayFile;
+
+    public Components.GbxRefTableFile? MaterialSky_DayFile
+    {
+        get => materialSky_DayFile;
+        set => materialSky_DayFile = value;
     }
 
-    private Vec3 seaTwkWaterColor_Day;
-    [AppliedWithChunk<Chunk0917E00D>]
-    public Vec3 SeaTwkWaterColor_Day
+    public CPlugMaterial? GetMaterialSky_Day(GbxReadSettings settings = default, bool exceptions = false) => materialSky_DayFile?.GetNode(ref materialSky_Day, settings, exceptions) ?? materialSky_Day;
+
+    private CPlugMaterial? materialSky_SunFall;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSky_SunFall
     {
-        get => this.seaTwkWaterColor_Day;
-        set => this.seaTwkWaterColor_Day = value;
+        get => this.materialSky_SunFallFile?.GetNode(ref this.materialSky_SunFall) ?? this.materialSky_SunFall;
+        set => this.materialSky_SunFall = value;
     }
+    private Components.GbxRefTableFile? materialSky_SunFallFile;
+
+    public Components.GbxRefTableFile? MaterialSky_SunFallFile
+    {
+        get => materialSky_SunFallFile;
+        set => materialSky_SunFallFile = value;
+    }
+
+    public CPlugMaterial? GetMaterialSky_SunFall(GbxReadSettings settings = default, bool exceptions = false) => materialSky_SunFallFile?.GetNode(ref materialSky_SunFall, settings, exceptions) ?? materialSky_SunFall;
+
+    private CPlugMaterial? materialSea0;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSea0
+    {
+        get => this.materialSea0File?.GetNode(ref this.materialSea0) ?? this.materialSea0;
+        set => this.materialSea0 = value;
+    }
+    private Components.GbxRefTableFile? materialSea0File;
+
+    public Components.GbxRefTableFile? MaterialSea0File
+    {
+        get => materialSea0File;
+        set => materialSea0File = value;
+    }
+
+    public CPlugMaterial? GetMaterialSea0(GbxReadSettings settings = default, bool exceptions = false) => materialSea0File?.GetNode(ref materialSea0, settings, exceptions) ?? materialSea0;
 
     private CPlugFileImg? imageLightAmb;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightAmb
     {
@@ -84,6 +187,16 @@ public partial class CPlugWeather : CMwNod, IClass
     public CPlugFileImg? GetImageLightAmb(GbxReadSettings settings = default, bool exceptions = false) => imageLightAmbFile?.GetNode(ref imageLightAmb, settings, exceptions) ?? imageLightAmb;
 
     private CPlugFileImg? imageLightDirSun;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightDirSun
     {
@@ -100,7 +213,295 @@ public partial class CPlugWeather : CMwNod, IClass
 
     public CPlugFileImg? GetImageLightDirSun(GbxReadSettings settings = default, bool exceptions = false) => imageLightDirSunFile?.GetNode(ref imageLightDirSun, settings, exceptions) ?? imageLightDirSun;
 
+    private Vec3 fogRGB = (1, 1, 1);
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public Vec3 FogRGB
+    {
+        get => this.fogRGB;
+        set => this.fogRGB = value;
+    }
+
+    private float fogLinearStart;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float FogLinearStart
+    {
+        get => this.fogLinearStart;
+        set => this.fogLinearStart = value;
+    }
+
+    private float fogLinearEnd = 1;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float FogLinearEnd
+    {
+        get => this.fogLinearEnd;
+        set => this.fogLinearEnd = value;
+    }
+
+    private float fogExpDensity = 1;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float FogExpDensity
+    {
+        get => this.fogExpDensity;
+        set => this.fogExpDensity = value;
+    }
+
+    private uint fogFlags = 6;
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public uint FogFlags
+    {
+        get => this.fogFlags;
+        set => this.fogFlags = value;
+    }
+
+    private float cameraFarZ = 31000;
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float CameraFarZ
+    {
+        get => this.cameraFarZ;
+        set => this.cameraFarZ = value;
+    }
+
+    private Vec3 dayFogColor = (1, 1, 1);
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public Vec3 DayFogColor
+    {
+        get => this.dayFogColor;
+        set => this.dayFogColor = value;
+    }
+
+    private float dayFogStart;
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float DayFogStart
+    {
+        get => this.dayFogStart;
+        set => this.dayFogStart = value;
+    }
+
+    private float dayFogEnd = 1;
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float DayFogEnd
+    {
+        get => this.dayFogEnd;
+        set => this.dayFogEnd = value;
+    }
+
+    private float dayFogDensity = 1;
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public float DayFogDensity
+    {
+        get => this.dayFogDensity;
+        set => this.dayFogDensity = value;
+    }
+
+    private uint dayFogFlags = 6;
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public uint DayFogFlags
+    {
+        get => this.dayFogFlags;
+        set => this.dayFogFlags = value;
+    }
+
+    private float seaTwkReflecIntensNight;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensNight
+    {
+        get => this.seaTwkReflecIntensNight;
+        set => this.seaTwkReflecIntensNight = value;
+    }
+
+    private float seaTwkReflecIntensDay;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensDay
+    {
+        get => this.seaTwkReflecIntensDay;
+        set => this.seaTwkReflecIntensDay = value;
+    }
+
+    private Vec2 lDirSpecIntens;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public Vec2 LDirSpecIntens
+    {
+        get => this.lDirSpecIntens;
+        set => this.lDirSpecIntens = value;
+    }
+
+    private Vec2 lDirSpecPower;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public Vec2 LDirSpecPower
+    {
+        get => this.lDirSpecPower;
+        set => this.lDirSpecPower = value;
+    }
+
+    private Vec3 seaTwkWaterColor_Night;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public Vec3 SeaTwkWaterColor_Night
+    {
+        get => this.seaTwkWaterColor_Night;
+        set => this.seaTwkWaterColor_Night = value;
+    }
+
+    private Vec3 seaTwkWaterColor_Day;
+    [AppliedWithChunk<Chunk0917E006>]
+    [AppliedWithChunk<Chunk0917E00D>]
+    public Vec3 SeaTwkWaterColor_Day
+    {
+        get => this.seaTwkWaterColor_Day;
+        set => this.seaTwkWaterColor_Day = value;
+    }
+
+    private CPlugBitmap? bitmapRainFid;
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public CPlugBitmap? BitmapRainFid
+    {
+        get => this.bitmapRainFidFile?.GetNode(ref this.bitmapRainFid) ?? this.bitmapRainFid;
+        set => this.bitmapRainFid = value;
+    }
+    private Components.GbxRefTableFile? bitmapRainFidFile;
+
+    public Components.GbxRefTableFile? BitmapRainFidFile
+    {
+        get => bitmapRainFidFile;
+        set => bitmapRainFidFile = value;
+    }
+
+    public CPlugBitmap? GetBitmapRainFid(GbxReadSettings settings = default, bool exceptions = false) => bitmapRainFidFile?.GetNode(ref bitmapRainFid, settings, exceptions) ?? bitmapRainFid;
+
+    private CMwNod? sceneFxFid;
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public CMwNod? SceneFxFid
+    {
+        get => this.sceneFxFidFile?.GetNode(ref this.sceneFxFid) ?? this.sceneFxFid;
+        set => this.sceneFxFid = value;
+    }
+    private Components.GbxRefTableFile? sceneFxFidFile;
+
+    public Components.GbxRefTableFile? SceneFxFidFile
+    {
+        get => sceneFxFidFile;
+        set => sceneFxFidFile = value;
+    }
+
+    public CMwNod? GetSceneFxFid(GbxReadSettings settings = default, bool exceptions = false) => sceneFxFidFile?.GetNode(ref sceneFxFid, settings, exceptions) ?? sceneFxFid;
+
+    private CPlugMaterial? materialSea1;
+    [AppliedWithChunk<Chunk0917E00B>]
+    public CPlugMaterial? MaterialSea1
+    {
+        get => this.materialSea1File?.GetNode(ref this.materialSea1) ?? this.materialSea1;
+        set => this.materialSea1 = value;
+    }
+    private Components.GbxRefTableFile? materialSea1File;
+
+    public Components.GbxRefTableFile? MaterialSea1File
+    {
+        get => materialSea1File;
+        set => materialSea1File = value;
+    }
+
+    public CPlugMaterial? GetMaterialSea1(GbxReadSettings settings = default, bool exceptions = false) => materialSea1File?.GetNode(ref materialSea1, settings, exceptions) ?? materialSea1;
+
     private CPlugFileImg? imageLightDirMoon;
+    [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightDirMoon
     {
@@ -117,9 +518,57 @@ public partial class CPlugWeather : CMwNod, IClass
 
     public CPlugFileImg? GetImageLightDirMoon(GbxReadSettings settings = default, bool exceptions = false) => imageLightDirMoonFile?.GetNode(ref imageLightDirMoon, settings, exceptions) ?? imageLightDirMoon;
 
-    private CPlugFileImg? bitmapFlareSun;
+    private float seaTwkReflecIntensMidNight = 0.3f;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensMidNight
+    {
+        get => this.seaTwkReflecIntensMidNight;
+        set => this.seaTwkReflecIntensMidNight = value;
+    }
+
+    private float seaTwkReflecIntensMidDay = 0.3f;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensMidDay
+    {
+        get => this.seaTwkReflecIntensMidDay;
+        set => this.seaTwkReflecIntensMidDay = value;
+    }
+
+    private float seaTwkReflecIntensTMNight = 1;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensTMNight
+    {
+        get => this.seaTwkReflecIntensTMNight;
+        set => this.seaTwkReflecIntensTMNight = value;
+    }
+
+    private float seaTwkReflecIntensTMDay = 1;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensTMDay
+    {
+        get => this.seaTwkReflecIntensTMDay;
+        set => this.seaTwkReflecIntensTMDay = value;
+    }
+
+    private float seaTwkReflecIntensTMmidNight = 0.3f;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensTMmidNight
+    {
+        get => this.seaTwkReflecIntensTMmidNight;
+        set => this.seaTwkReflecIntensTMmidNight = value;
+    }
+
+    private float seaTwkReflecIntensTMmidDay = 0.3f;
+    [AppliedWithChunk<Chunk0917E00D>]
+    public float SeaTwkReflecIntensTMmidDay
+    {
+        get => this.seaTwkReflecIntensTMmidDay;
+        set => this.seaTwkReflecIntensTMmidDay = value;
+    }
+
+    private CPlugBitmap? bitmapFlareSun;
     [AppliedWithChunk<Chunk0917E00E>]
-    public CPlugFileImg? BitmapFlareSun
+    public CPlugBitmap? BitmapFlareSun
     {
         get => this.bitmapFlareSunFile?.GetNode(ref this.bitmapFlareSun) ?? this.bitmapFlareSun;
         set => this.bitmapFlareSun = value;
@@ -132,11 +581,11 @@ public partial class CPlugWeather : CMwNod, IClass
         set => bitmapFlareSunFile = value;
     }
 
-    public CPlugFileImg? GetBitmapFlareSun(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareSunFile?.GetNode(ref bitmapFlareSun, settings, exceptions) ?? bitmapFlareSun;
+    public CPlugBitmap? GetBitmapFlareSun(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareSunFile?.GetNode(ref bitmapFlareSun, settings, exceptions) ?? bitmapFlareSun;
 
-    private CPlugFileImg? bitmapFlareMoon;
+    private CPlugBitmap? bitmapFlareMoon;
     [AppliedWithChunk<Chunk0917E00E>]
-    public CPlugFileImg? BitmapFlareMoon
+    public CPlugBitmap? BitmapFlareMoon
     {
         get => this.bitmapFlareMoonFile?.GetNode(ref this.bitmapFlareMoon) ?? this.bitmapFlareMoon;
         set => this.bitmapFlareMoon = value;
@@ -149,9 +598,9 @@ public partial class CPlugWeather : CMwNod, IClass
         set => bitmapFlareMoonFile = value;
     }
 
-    public CPlugFileImg? GetBitmapFlareMoon(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareMoonFile?.GetNode(ref bitmapFlareMoon, settings, exceptions) ?? bitmapFlareMoon;
+    public CPlugBitmap? GetBitmapFlareMoon(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareMoonFile?.GetNode(ref bitmapFlareMoon, settings, exceptions) ?? bitmapFlareMoon;
 
-    private float flareAngularSizeSun;
+    private float flareAngularSizeSun = 20;
     [AppliedWithChunk<Chunk0917E00E>]
     public float FlareAngularSizeSun
     {
@@ -159,36 +608,12 @@ public partial class CPlugWeather : CMwNod, IClass
         set => this.flareAngularSizeSun = value;
     }
 
-    private float flareAngularSizeMoon;
+    private float flareAngularSizeMoon = 5;
     [AppliedWithChunk<Chunk0917E00E>]
     public float FlareAngularSizeMoon
     {
         get => this.flareAngularSizeMoon;
         set => this.flareAngularSizeMoon = value;
-    }
-
-    private float cameraFarZ;
-    [AppliedWithChunk<Chunk0917E00E>]
-    public float CameraFarZ
-    {
-        get => this.cameraFarZ;
-        set => this.cameraFarZ = value;
-    }
-
-    private CPlugBitmap? bitmapRainFid;
-    [AppliedWithChunk<Chunk0917E00E>]
-    public CPlugBitmap? BitmapRainFid
-    {
-        get => this.bitmapRainFid;
-        set => this.bitmapRainFid = value;
-    }
-
-    private CMwNod? sceneFxFid;
-    [AppliedWithChunk<Chunk0917E00E>]
-    public CMwNod? SceneFxFid
-    {
-        get => this.sceneFxFid;
-        set => this.sceneFxFid = value;
     }
 
     private CPlugFileImg? imageLightDirDblSided;
@@ -208,9 +633,9 @@ public partial class CPlugWeather : CMwNod, IClass
 
     public CPlugFileImg? GetImageLightDirDblSided(GbxReadSettings settings = default, bool exceptions = false) => imageLightDirDblSidedFile?.GetNode(ref imageLightDirDblSided, settings, exceptions) ?? imageLightDirDblSided;
 
-    private CPlugFileImg? bitmapSkyGradV;
+    private CPlugBitmap? bitmapSkyGradV;
     [AppliedWithChunk<Chunk0917E011>]
-    public CPlugFileImg? BitmapSkyGradV
+    public CPlugBitmap? BitmapSkyGradV
     {
         get => this.bitmapSkyGradVFile?.GetNode(ref this.bitmapSkyGradV) ?? this.bitmapSkyGradV;
         set => this.bitmapSkyGradV = value;
@@ -223,7 +648,7 @@ public partial class CPlugWeather : CMwNod, IClass
         set => bitmapSkyGradVFile = value;
     }
 
-    public CPlugFileImg? GetBitmapSkyGradV(GbxReadSettings settings = default, bool exceptions = false) => bitmapSkyGradVFile?.GetNode(ref bitmapSkyGradV, settings, exceptions) ?? bitmapSkyGradV;
+    public CPlugBitmap? GetBitmapSkyGradV(GbxReadSettings settings = default, bool exceptions = false) => bitmapSkyGradVFile?.GetNode(ref bitmapSkyGradV, settings, exceptions) ?? bitmapSkyGradV;
 
     private CPlugFileImg? imageFogColor;
     [AppliedWithChunk<Chunk0917E013>]
@@ -293,167 +718,725 @@ public partial class CPlugWeather : CMwNod, IClass
 
     public GxFogBlender? GetFogBlender(GbxReadSettings settings = default, bool exceptions = false) => fogBlenderFile?.GetNode(ref fogBlender, settings, exceptions) ?? fogBlender;
 
+    private CPlugParticleEmitterModel? emitterInFog;
+    [AppliedWithChunk<Chunk0917E018>]
+    public CPlugParticleEmitterModel? EmitterInFog
+    {
+        get => this.emitterInFogFile?.GetNode(ref this.emitterInFog) ?? this.emitterInFog;
+        set => this.emitterInFog = value;
+    }
+    private Components.GbxRefTableFile? emitterInFogFile;
+
+    public Components.GbxRefTableFile? EmitterInFogFile
+    {
+        get => emitterInFogFile;
+        set => emitterInFogFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetEmitterInFog(GbxReadSettings settings = default, bool exceptions = false) => emitterInFogFile?.GetNode(ref emitterInFog, settings, exceptions) ?? emitterInFog;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugWeather)clone).materialSky_Night = context.Clone(this.materialSky_Night)!;
+        ((CPlugWeather)clone).materialSky_SunRise = context.Clone(this.materialSky_SunRise)!;
+        ((CPlugWeather)clone).materialSky_Day = context.Clone(this.materialSky_Day)!;
+        ((CPlugWeather)clone).materialSky_SunFall = context.Clone(this.materialSky_SunFall)!;
+        ((CPlugWeather)clone).materialSea0 = context.Clone(this.materialSea0)!;
+        ((CPlugWeather)clone).imageLightAmb = context.Clone(this.imageLightAmb)!;
+        ((CPlugWeather)clone).imageLightDirSun = context.Clone(this.imageLightDirSun)!;
+        ((CPlugWeather)clone).fogRGB = context.Clone(this.fogRGB)!;
+        ((CPlugWeather)clone).fogLinearStart = context.Clone(this.fogLinearStart)!;
+        ((CPlugWeather)clone).fogLinearEnd = context.Clone(this.fogLinearEnd)!;
+        ((CPlugWeather)clone).fogExpDensity = context.Clone(this.fogExpDensity)!;
+        ((CPlugWeather)clone).fogFlags = context.Clone(this.fogFlags)!;
+        ((CPlugWeather)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
+        ((CPlugWeather)clone).dayFogColor = context.Clone(this.dayFogColor)!;
+        ((CPlugWeather)clone).dayFogStart = context.Clone(this.dayFogStart)!;
+        ((CPlugWeather)clone).dayFogEnd = context.Clone(this.dayFogEnd)!;
+        ((CPlugWeather)clone).dayFogDensity = context.Clone(this.dayFogDensity)!;
+        ((CPlugWeather)clone).dayFogFlags = context.Clone(this.dayFogFlags)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensNight = context.Clone(this.seaTwkReflecIntensNight)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensDay = context.Clone(this.seaTwkReflecIntensDay)!;
         ((CPlugWeather)clone).lDirSpecIntens = context.Clone(this.lDirSpecIntens)!;
         ((CPlugWeather)clone).lDirSpecPower = context.Clone(this.lDirSpecPower)!;
         ((CPlugWeather)clone).seaTwkWaterColor_Night = context.Clone(this.seaTwkWaterColor_Night)!;
         ((CPlugWeather)clone).seaTwkWaterColor_Day = context.Clone(this.seaTwkWaterColor_Day)!;
-        ((CPlugWeather)clone).imageLightAmb = context.Clone(this.imageLightAmb)!;
-        ((CPlugWeather)clone).imageLightDirSun = context.Clone(this.imageLightDirSun)!;
+        ((CPlugWeather)clone).bitmapRainFid = context.Clone(this.bitmapRainFid)!;
+        ((CPlugWeather)clone).sceneFxFid = context.Clone(this.sceneFxFid)!;
+        ((CPlugWeather)clone).materialSea1 = context.Clone(this.materialSea1)!;
         ((CPlugWeather)clone).imageLightDirMoon = context.Clone(this.imageLightDirMoon)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensMidNight = context.Clone(this.seaTwkReflecIntensMidNight)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensMidDay = context.Clone(this.seaTwkReflecIntensMidDay)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensTMNight = context.Clone(this.seaTwkReflecIntensTMNight)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensTMDay = context.Clone(this.seaTwkReflecIntensTMDay)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensTMmidNight = context.Clone(this.seaTwkReflecIntensTMmidNight)!;
+        ((CPlugWeather)clone).seaTwkReflecIntensTMmidDay = context.Clone(this.seaTwkReflecIntensTMmidDay)!;
         ((CPlugWeather)clone).bitmapFlareSun = context.Clone(this.bitmapFlareSun)!;
         ((CPlugWeather)clone).bitmapFlareMoon = context.Clone(this.bitmapFlareMoon)!;
         ((CPlugWeather)clone).flareAngularSizeSun = context.Clone(this.flareAngularSizeSun)!;
         ((CPlugWeather)clone).flareAngularSizeMoon = context.Clone(this.flareAngularSizeMoon)!;
-        ((CPlugWeather)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
-        ((CPlugWeather)clone).bitmapRainFid = context.Clone(this.bitmapRainFid)!;
-        ((CPlugWeather)clone).sceneFxFid = context.Clone(this.sceneFxFid)!;
         ((CPlugWeather)clone).imageLightDirDblSided = context.Clone(this.imageLightDirDblSided)!;
         ((CPlugWeather)clone).bitmapSkyGradV = context.Clone(this.bitmapSkyGradV)!;
         ((CPlugWeather)clone).imageFogColor = context.Clone(this.imageFogColor)!;
         ((CPlugWeather)clone).imageSeaColor = context.Clone(this.imageSeaColor)!;
         ((CPlugWeather)clone).clouds = context.Clone(this.clouds)!;
         ((CPlugWeather)clone).fogBlender = context.Clone(this.fogBlender)!;
+        ((CPlugWeather)clone).emitterInFog = context.Clone(this.emitterInFog)!;
+    }
+
+    [AppliedWithChunk<Chunk0917E000>]
+    [AppliedWithChunk<Chunk0917E001>]
+    [AppliedWithChunk<Chunk0917E002>]
+    [AppliedWithChunk<Chunk0917E003>]
+    [AppliedWithChunk<Chunk0917E004>]
+    [AppliedWithChunk<Chunk0917E005>]
+    [AppliedWithChunk<Chunk0917E008>]
+    [AppliedWithChunk<Chunk0917E009>]
+    [AppliedWithChunk<Chunk0917E00A>]
+    [AppliedWithChunk<Chunk0917E00C>]
+    [AppliedWithChunk<Chunk0917E00E>]
+    public bool FogByVertex
+    {
+        get => (FogFlags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                FogFlags = FogFlags| 1;
+            }
+            else
+            {
+                FogFlags = FogFlags& 0xFFFFFFFE;
+            }
+        }
     }
 
     public CPlugWeather()
     {
     }
 
-    [Chunk(0x0917E007)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
-    public partial class Chunk0917E007 : Chunk<CPlugWeather>
+    /// <summary>
+    /// Legacy materials, lighting and fog
+    /// </summary>
+    [Chunk(0x0917E000, "Legacy materials, lighting and fog")]
+    public partial class Chunk0917E000 : Chunk<CPlugWeather>
     {
-        public override uint Id => 0x0917E007;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override uint Id => 0x0917E000;
+        public string? U01;
+        public float U02;
+        public float U03;
+        public float U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-        }
-    }
-
-    [Chunk(0x0917E00B)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
-    public partial class Chunk0917E00B : Chunk<CPlugWeather>
-    {
-        public override uint Id => 0x0917E00B;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk0917E00B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0917E00B)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0917E00B)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0917E00B)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0917E00B)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0917E00B)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0917E000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E000)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Night, ref n.materialSky_NightFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunRise, ref n.materialSky_SunRiseFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Day, ref n.materialSky_DayFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunFall, ref n.materialSky_SunFallFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea0, ref n.materialSea0File);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1 = n.materialSea0;
+            }
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1File = n.MaterialSea0File;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogColor = n.FogRGB;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogStart = n.FogLinearStart;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogEnd = n.FogLinearEnd;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogDensity = n.FogExpDensity;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.FogFlags;
+            }
         }
     }
 
-    [Chunk(0x0917E00D)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
-    public partial class Chunk0917E00D : Chunk<CPlugWeather>
+    /// <summary>
+    /// Legacy materials, lighting and fog
+    /// </summary>
+    [Chunk(0x0917E001, "Legacy materials, lighting and fog")]
+    public partial class Chunk0917E001 : Chunk<CPlugWeather>
     {
-        public override uint Id => 0x0917E00D;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
-        public Vec2 U01;
-        public Vec2 U02;
-        public Vec2 U03;
-        public Vec2 U04;
+        public override uint Id => 0x0917E001;
+        public string? U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public bool U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0917E00D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0917E00D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0917E00D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0917E00D)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E001)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.Vec2(ref U01);
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Night, ref n.materialSky_NightFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunRise, ref n.materialSky_SunRiseFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Day, ref n.materialSky_DayFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunFall, ref n.materialSky_SunFallFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea0, ref n.materialSea0File);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Boolean(ref U05);
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1 = n.materialSea0;
+            }
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1File = n.MaterialSea0File;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogColor = n.FogRGB;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogStart = n.FogLinearStart;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogEnd = n.FogLinearEnd;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogDensity = n.FogExpDensity;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.FogFlags;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Legacy paired sky and sea materials
+    /// </summary>
+    [Chunk(0x0917E002, "Legacy paired sky and sea materials")]
+    public partial class Chunk0917E002 : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E002;
+        public string? U01;
+        public CPlugMaterial? U02;
+        public Components.GbxRefTableFile? U02File;
+        public CPlugMaterial? U03;
+        public Components.GbxRefTableFile? U03File;
+        public CPlugMaterial? U04;
+        public Components.GbxRefTableFile? U04File;
+        public float U05;
+        public float U06;
+        public float U07;
+        public bool U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0917E002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0917E002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0917E002)clone).U08 = context.Clone(this.U08)!;
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Night, ref n.materialSky_NightFile);
+            rw.NodeRef<CPlugMaterial>(ref U02, ref U02File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunRise, ref n.materialSky_SunRiseFile);
+            rw.NodeRef<CPlugMaterial>(ref U03, ref U03File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Day, ref n.materialSky_DayFile);
+            rw.NodeRef<CPlugMaterial>(ref U04, ref U04File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunFall, ref n.materialSky_SunFallFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea0, ref n.materialSea0File);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Boolean(ref U08);
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1 = n.materialSea0;
+            }
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1File = n.MaterialSea0File;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogColor = n.FogRGB;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogStart = n.FogLinearStart;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogEnd = n.FogLinearEnd;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogDensity = n.FogExpDensity;
+            }
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.FogFlags;
+            }
+        }
+    }
+
+    [Chunk(0x0917E003)]
+    public partial class Chunk0917E003 : Chunk0917E002
+    {
+        public override uint Id => 0x0917E003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref n.cameraFarZ);
+        }
+    }
+
+    /// <summary>
+    /// Legacy fog and sea settings
+    /// </summary>
+    [Chunk(0x0917E004, "Legacy fog and sea settings")]
+    public partial class Chunk0917E004 : Chunk0917E005
+    {
+        public override uint Id => 0x0917E004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    /// <summary>
+    /// Legacy paired materials and day fog
+    /// </summary>
+    [Chunk(0x0917E005, "Legacy paired materials and day fog")]
+    public partial class Chunk0917E005 : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E005;
+        public string? U01;
+        public CPlugMaterial? U02;
+        public Components.GbxRefTableFile? U02File;
+        public CPlugMaterial? U03;
+        public Components.GbxRefTableFile? U03File;
+        public CPlugMaterial? U04;
+        public Components.GbxRefTableFile? U04File;
+        public float U05;
+        public float U06;
+        public float U07;
+        public bool U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E005)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E005)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E005)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0917E005)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0917E005)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0917E005)clone).U08 = context.Clone(this.U08)!;
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Night, ref n.materialSky_NightFile);
+            rw.NodeRef<CPlugMaterial>(ref U02, ref U02File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunRise, ref n.materialSky_SunRiseFile);
+            rw.NodeRef<CPlugMaterial>(ref U03, ref U03File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Day, ref n.materialSky_DayFile);
+            rw.NodeRef<CPlugMaterial>(ref U04, ref U04File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunFall, ref n.materialSky_SunFallFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea0, ref n.materialSea0File);
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Vec3(ref n.dayFogColor);
+            rw.Single(ref n.dayFogStart);
+            rw.Single(ref n.dayFogEnd);
+            rw.Single(ref n.dayFogDensity);
+            n.dayFogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.DayFogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.DayFogFlags& 0xF;
+            }
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Boolean(ref U08);
+            rw.Single(ref n.cameraFarZ);
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1 = n.materialSea0;
+            }
+            if (rw.Reader is not null)
+            {
+                n.MaterialSea1File = n.MaterialSea0File;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sea reflection and water colors
+    /// </summary>
+    [Chunk(0x0917E006, "Sea reflection and water colors")]
+    public partial class Chunk0917E006 : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.seaTwkReflecIntensNight);
+            rw.Single(ref n.seaTwkReflecIntensDay);
             rw.Vec2(ref n.lDirSpecIntens);
             rw.Vec2(ref n.lDirSpecPower);
             rw.Vec3(ref n.seaTwkWaterColor_Night);
             rw.Vec3(ref n.seaTwkWaterColor_Day);
-            rw.Vec2(ref U02);
-            rw.Vec2(ref U03);
-            rw.Vec2(ref U04);
         }
     }
 
-    [Chunk(0x0917E00E)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
-    public partial class Chunk0917E00E : Chunk<CPlugWeather>
+    [Chunk(0x0917E007)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0917E007 : Chunk<CPlugWeather>
     {
-        public override uint Id => 0x0917E00E;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
-        public byte[]? U01;
-        public byte[]? U02;
-        public string? U03;
-        public float U04;
-        public float U05;
-        public float U06;
+        public override uint Id => 0x0917E007;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0917E00E)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0917E00E)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk0917E00E)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0917E00E)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0917E00E)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0917E00E)clone).U06 = context.Clone(this.U06)!;
+        }
+    }
+
+    [Chunk(0x0917E008)]
+    public partial class Chunk0917E008 : Chunk0917E005
+    {
+        public override uint Id => 0x0917E008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.Data(ref U01!, 28);
-            rw.Data(ref U02!, 28);
-            rw.Id(ref U03);
-            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
-            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
-            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirMoon, ref n.imageLightDirMoonFile);
-            rw.NodeRef<CPlugFileImg>(ref n.bitmapFlareSun, ref n.bitmapFlareSunFile);
-            rw.NodeRef<CPlugFileImg>(ref n.bitmapFlareMoon, ref n.bitmapFlareMoonFile);
-            rw.Single(ref n.flareAngularSizeSun);
-            rw.Single(ref n.flareAngularSizeMoon);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref n.cameraFarZ);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapRainFid);
-            rw.NodeRef<CMwNod>(ref n.sceneFxFid);
+            base.ReadWrite(n, rw);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapRainFid, ref n.bitmapRainFidFile);
         }
     }
 
-    [Chunk(0x0917E00F)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [Chunk(0x0917E009)]
+    public partial class Chunk0917E009 : Chunk0917E008
+    {
+        public override uint Id => 0x0917E009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.NodeRef<CMwNod>(ref n.sceneFxFid, ref n.sceneFxFidFile);
+        }
+    }
+
+    /// <summary>
+    /// Legacy lighting, fog and effects
+    /// </summary>
+    [Chunk(0x0917E00A, "Legacy lighting, fog and effects")]
+    public partial class Chunk0917E00A : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E00A;
+        public string? U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public bool U05;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E00A)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E00A)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0917E00A)clone).U05 = context.Clone(this.U05)!;
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Vec3(ref n.dayFogColor);
+            rw.Single(ref n.dayFogStart);
+            rw.Single(ref n.dayFogEnd);
+            rw.Single(ref n.dayFogDensity);
+            n.dayFogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.DayFogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.DayFogFlags& 0xF;
+            }
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Boolean(ref U05);
+            rw.Single(ref n.cameraFarZ);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapRainFid, ref n.bitmapRainFidFile);
+            rw.NodeRef<CMwNod>(ref n.sceneFxFid, ref n.sceneFxFidFile);
+        }
+    }
+
+    /// <summary>
+    /// Sky and sea materials
+    /// </summary>
+    [Chunk(0x0917E00B, "Sky and sea materials")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0917E00B : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E00B;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Night, ref n.materialSky_NightFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunRise, ref n.materialSky_SunRiseFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_Day, ref n.materialSky_DayFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSky_SunFall, ref n.materialSky_SunFallFile);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea0, ref n.materialSea0File);
+            rw.NodeRef<CPlugMaterial>(ref n.materialSea1, ref n.materialSea1File);
+        }
+    }
+
+    [Chunk(0x0917E00C)]
+    public partial class Chunk0917E00C : Chunk0917E00A
+    {
+        public override uint Id => 0x0917E00C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirMoon, ref n.imageLightDirMoonFile);
+        }
+    }
+
+    /// <summary>
+    /// Sea reflection and water colors
+    /// </summary>
+    [Chunk(0x0917E00D, "Sea reflection and water colors")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0917E00D : Chunk0917E006
+    {
+        public override uint Id => 0x0917E00D;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref n.seaTwkReflecIntensMidNight);
+            rw.Single(ref n.seaTwkReflecIntensMidDay);
+            rw.Single(ref n.seaTwkReflecIntensTMNight);
+            rw.Single(ref n.seaTwkReflecIntensTMDay);
+            rw.Single(ref n.seaTwkReflecIntensTMmidNight);
+            rw.Single(ref n.seaTwkReflecIntensTMmidDay);
+        }
+    }
+
+    /// <summary>
+    /// Lighting, fog and effects
+    /// </summary>
+    [Chunk(0x0917E00E, "Lighting, fog and effects")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0917E00E : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E00E;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public string? U01;
+        public float U02;
+        public float U03;
+        public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E00E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0917E00E)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0917E00E)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0917E00E)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.Vec3(ref n.fogRGB);
+            rw.Single(ref n.fogLinearStart);
+            rw.Single(ref n.fogLinearEnd);
+            rw.Single(ref n.fogExpDensity);
+            n.fogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.FogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.FogFlags = n.FogFlags& 0xF;
+            }
+            rw.Vec3(ref n.dayFogColor);
+            rw.Single(ref n.dayFogStart);
+            rw.Single(ref n.dayFogEnd);
+            rw.Single(ref n.dayFogDensity);
+            n.dayFogFlags = rw.UInt32((uint)(rw.Writer is null ? default : (n.DayFogFlags& 0xF)));
+            if (rw.Reader is not null)
+            {
+                n.DayFogFlags = n.DayFogFlags& 0xF;
+            }
+            rw.Id(ref U01);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightAmb, ref n.imageLightAmbFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirSun, ref n.imageLightDirSunFile);
+            rw.NodeRef<CPlugFileImg>(ref n.imageLightDirMoon, ref n.imageLightDirMoonFile);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapFlareSun, ref n.bitmapFlareSunFile);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapFlareMoon, ref n.bitmapFlareMoonFile);
+            rw.Single(ref n.flareAngularSizeSun);
+            rw.Single(ref n.flareAngularSizeMoon);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref n.cameraFarZ);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapRainFid, ref n.bitmapRainFidFile);
+            rw.NodeRef<CMwNod>(ref n.sceneFxFid, ref n.sceneFxFidFile);
+        }
+    }
+
+    /// <summary>
+    /// ImageLightDirDblSided
+    /// </summary>
+    [Chunk(0x0917E00F, "ImageLightDirDblSided")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E00F : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E00F;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -466,12 +1449,29 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0917E011)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// Legacy cloud solids and near distance
+    /// </summary>
+    [Chunk(0x0917E010, "Legacy cloud solids and near distance")]
+    public partial class Chunk0917E010 : Chunk<CPlugWeather>
+    {
+        public override uint Id => 0x0917E010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// BitmapSkyGradV
+    /// </summary>
+    [Chunk(0x0917E011, "BitmapSkyGradV")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E011 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E011;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -480,16 +1480,33 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugFileImg>(ref n.bitmapSkyGradV, ref n.bitmapSkyGradVFile);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapSkyGradV, ref n.bitmapSkyGradVFile);
         }
     }
 
-    [Chunk(0x0917E013)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// Legacy cloud far distance and colors
+    /// </summary>
+    [Chunk(0x0917E012, "Legacy cloud far distance and colors")]
+    public partial class Chunk0917E012 : Chunk0917E010
+    {
+        public override uint Id => 0x0917E012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// ImageFogColor
+    /// </summary>
+    [Chunk(0x0917E013, "ImageFogColor")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E013 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E013;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -502,12 +1519,15 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0917E014)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// ImageSeaColor
+    /// </summary>
+    [Chunk(0x0917E014, "ImageSeaColor")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E014 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E014;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -520,12 +1540,29 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0917E016)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// Legacy cloud lighting
+    /// </summary>
+    [Chunk(0x0917E015, "Legacy cloud lighting")]
+    public partial class Chunk0917E015 : Chunk0917E012
+    {
+        public override uint Id => 0x0917E015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// Clouds
+    /// </summary>
+    [Chunk(0x0917E016, "Clouds")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E016 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E016;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -538,12 +1575,15 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
-    [Chunk(0x0917E017)]
-    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// FogBlender
+    /// </summary>
+    [Chunk(0x0917E017, "FogBlender")]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E017 : Chunk<CPlugWeather>
     {
         public override uint Id => 0x0917E017;
-        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -556,18 +1596,83 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// EmitterInFog
+    /// </summary>
+    [Chunk(0x0917E018, "EmitterInFog")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk0917E018 : Chunk<CPlugWeather>, IVersionable
+    {
+        public override uint Id => 0x0917E018;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0917E018() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0917E018(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0917E018)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.emitterInFog, ref n.emitterInFogFile);
+        }
+    }
+
+    public enum EGxFogFormula
+    {
+        None,
+        Exp,
+        Exp2,
+        Linear,
+    }
+
+    public enum EGxFogSpace
+    {
+        CameraFarZ,
+        World,
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0917E000 => new Chunk0917E000(),
+        0x0917E001 => new Chunk0917E001(),
+        0x0917E002 => new Chunk0917E002(),
+        0x0917E003 => new Chunk0917E003(),
+        0x0917E004 => new Chunk0917E004(),
+        0x0917E005 => new Chunk0917E005(),
+        0x0917E006 => new Chunk0917E006(),
         0x0917E007 => new Chunk0917E007(),
+        0x0917E008 => new Chunk0917E008(),
+        0x0917E009 => new Chunk0917E009(),
+        0x0917E00A => new Chunk0917E00A(),
         0x0917E00B => new Chunk0917E00B(),
+        0x0917E00C => new Chunk0917E00C(),
         0x0917E00D => new Chunk0917E00D(),
         0x0917E00E => new Chunk0917E00E(),
         0x0917E00F => new Chunk0917E00F(),
+        0x0917E010 => new Chunk0917E010(),
         0x0917E011 => new Chunk0917E011(),
+        0x0917E012 => new Chunk0917E012(),
         0x0917E013 => new Chunk0917E013(),
         0x0917E014 => new Chunk0917E014(),
+        0x0917E015 => new Chunk0917E015(),
         0x0917E016 => new Chunk0917E016(),
         0x0917E017 => new Chunk0917E017(),
+        0x0917E018 => new Chunk0917E018(),
         _ => base.NewChunk(chunkId),
     };
 }

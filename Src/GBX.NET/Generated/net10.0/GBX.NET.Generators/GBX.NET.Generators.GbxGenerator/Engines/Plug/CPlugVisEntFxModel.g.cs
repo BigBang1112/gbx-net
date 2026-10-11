@@ -34,68 +34,264 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09115000;
 
+    private CPlugParticleEmitterModel? part_DeactivatedShot;
+    [AppliedWithChunk<Chunk09115000>]
+    public CPlugParticleEmitterModel? Part_DeactivatedShot
+    {
+        get => this.part_DeactivatedShotFile?.GetNode(ref this.part_DeactivatedShot) ?? this.part_DeactivatedShot;
+        set => this.part_DeactivatedShot = value;
+    }
+    private Components.GbxRefTableFile? part_DeactivatedShotFile;
+
+    public Components.GbxRefTableFile? Part_DeactivatedShotFile
+    {
+        get => part_DeactivatedShotFile;
+        set => part_DeactivatedShotFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetPart_DeactivatedShot(GbxReadSettings settings = default, bool exceptions = false) => part_DeactivatedShotFile?.GetNode(ref part_DeactivatedShot, settings, exceptions) ?? part_DeactivatedShot;
+
+    private CPlugParticleEmitterModel? part_Deactivated;
+    [AppliedWithChunk<Chunk09115000>]
+    public CPlugParticleEmitterModel? Part_Deactivated
+    {
+        get => this.part_DeactivatedFile?.GetNode(ref this.part_Deactivated) ?? this.part_Deactivated;
+        set => this.part_Deactivated = value;
+    }
+    private Components.GbxRefTableFile? part_DeactivatedFile;
+
+    public Components.GbxRefTableFile? Part_DeactivatedFile
+    {
+        get => part_DeactivatedFile;
+        set => part_DeactivatedFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetPart_Deactivated(GbxReadSettings settings = default, bool exceptions = false) => part_DeactivatedFile?.GetNode(ref part_Deactivated, settings, exceptions) ?? part_Deactivated;
+
+    private CPlugParticleEmitterModel? part_TeleportUnspawn;
+    [AppliedWithChunk<Chunk09115000>]
+    public CPlugParticleEmitterModel? Part_TeleportUnspawn
+    {
+        get => this.part_TeleportUnspawnFile?.GetNode(ref this.part_TeleportUnspawn) ?? this.part_TeleportUnspawn;
+        set => this.part_TeleportUnspawn = value;
+    }
+    private Components.GbxRefTableFile? part_TeleportUnspawnFile;
+
+    public Components.GbxRefTableFile? Part_TeleportUnspawnFile
+    {
+        get => part_TeleportUnspawnFile;
+        set => part_TeleportUnspawnFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetPart_TeleportUnspawn(GbxReadSettings settings = default, bool exceptions = false) => part_TeleportUnspawnFile?.GetNode(ref part_TeleportUnspawn, settings, exceptions) ?? part_TeleportUnspawn;
+
+    private CPlugParticleEmitterModel? part_TeleportSpawn;
+    [AppliedWithChunk<Chunk09115000>]
+    public CPlugParticleEmitterModel? Part_TeleportSpawn
+    {
+        get => this.part_TeleportSpawnFile?.GetNode(ref this.part_TeleportSpawn) ?? this.part_TeleportSpawn;
+        set => this.part_TeleportSpawn = value;
+    }
+    private Components.GbxRefTableFile? part_TeleportSpawnFile;
+
+    public Components.GbxRefTableFile? Part_TeleportSpawnFile
+    {
+        get => part_TeleportSpawnFile;
+        set => part_TeleportSpawnFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetPart_TeleportSpawn(GbxReadSettings settings = default, bool exceptions = false) => part_TeleportSpawnFile?.GetNode(ref part_TeleportSpawn, settings, exceptions) ?? part_TeleportSpawn;
+
+    private Keys? eliminatedTeleportIntens;
+    [AppliedWithChunk<Chunk09115000>]
+    public Keys? EliminatedTeleportIntens
+    {
+        get => this.eliminatedTeleportIntens;
+        set => this.eliminatedTeleportIntens = value;
+    }
+
+    private Keys? eliminatedHighlight;
+    [AppliedWithChunk<Chunk09115000>]
+    public Keys? EliminatedHighlight
+    {
+        get => this.eliminatedHighlight;
+        set => this.eliminatedHighlight = value;
+    }
+
+    private Vec3 eliminatedHighlightRgb = (1, 0.8f, 0.4f);
+    [AppliedWithChunk<Chunk09115000>]
+    public Vec3 EliminatedHighlightRgb
+    {
+        get => this.eliminatedHighlightRgb;
+        set => this.eliminatedHighlightRgb = value;
+    }
+
+    private GxLightBall? tacticalLight;
+    [AppliedWithChunk<Chunk09115000>]
+    public GxLightBall? TacticalLight
+    {
+        get => this.tacticalLightFile?.GetNode(ref this.tacticalLight) ?? this.tacticalLight;
+        set => this.tacticalLight = value;
+    }
+    private Components.GbxRefTableFile? tacticalLightFile;
+
+    public Components.GbxRefTableFile? TacticalLightFile
+    {
+        get => tacticalLightFile;
+        set => tacticalLightFile = value;
+    }
+
+    public GxLightBall? GetTacticalLight(GbxReadSettings settings = default, bool exceptions = false) => tacticalLightFile?.GetNode(ref tacticalLight, settings, exceptions) ?? tacticalLight;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVisEntFxModel)clone).part_DeactivatedShot = context.Clone(this.part_DeactivatedShot)!;
+        ((CPlugVisEntFxModel)clone).part_Deactivated = context.Clone(this.part_Deactivated)!;
+        ((CPlugVisEntFxModel)clone).part_TeleportUnspawn = context.Clone(this.part_TeleportUnspawn)!;
+        ((CPlugVisEntFxModel)clone).part_TeleportSpawn = context.Clone(this.part_TeleportSpawn)!;
+        ((CPlugVisEntFxModel)clone).eliminatedTeleportIntens = context.Clone(this.eliminatedTeleportIntens)!;
+        ((CPlugVisEntFxModel)clone).eliminatedHighlight = context.Clone(this.eliminatedHighlight)!;
+        ((CPlugVisEntFxModel)clone).eliminatedHighlightRgb = context.Clone(this.eliminatedHighlightRgb)!;
+        ((CPlugVisEntFxModel)clone).tacticalLight = context.Clone(this.tacticalLight)!;
     }
 
-    public CPlugVisEntFxModel()
-    {
-    }
-
-    [Chunk(0x09115000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// Entity particles, elimination curves and tactical light
+    /// </summary>
+    [Chunk(0x09115000, "Entity particles, elimination curves and tactical light")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
     public partial class Chunk09115000 : Chunk<CPlugVisEntFxModel>, IVersionable
     {
         public override uint Id => 0x09115000;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugParticleEmitterModel? U01;
-        public Components.GbxRefTableFile? U01File;
-        public CPlugParticleEmitterModel? U02;
-        public Components.GbxRefTableFile? U02File;
-        public CPlugParticleEmitterModel? U03;
-        public Components.GbxRefTableFile? U03File;
-        public CPlugParticleEmitterModel? U04;
-        public Components.GbxRefTableFile? U04File;
-        public CFuncKeysReal? U05;
-        public Components.GbxRefTableFile? U05File;
-        public CFuncKeysReal? U06;
-        public Components.GbxRefTableFile? U06File;
-        public float U07;
-        public float U08;
-        public float U09;
-        public GxLightBall? U10;
+
+        public Chunk09115000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09115000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09115000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09115000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09115000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09115000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09115000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09115000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09115000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09115000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09115000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09115000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09115000)clone).U10 = context.Clone(this.U10)!;
         }
 
         public override void ReadWrite(CPlugVisEntFxModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U01, ref U01File);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U02, ref U02File);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U03, ref U03File);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U04, ref U04File);
-            rw.NodeRef<CFuncKeysReal>(ref U05, ref U05File);
-            rw.NodeRef<CFuncKeysReal>(ref U06, ref U06File);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.NodeRef<GxLightBall>(ref U10);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_DeactivatedShot, ref n.part_DeactivatedShotFile);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_Deactivated, ref n.part_DeactivatedFile);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportUnspawn, ref n.part_TeleportUnspawnFile);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportSpawn, ref n.part_TeleportSpawnFile);
+            rw.ReadableWritable<Keys>(ref n.eliminatedTeleportIntens, version: Version);
+            rw.ReadableWritable<Keys>(ref n.eliminatedHighlight, version: Version);
+            rw.Vec3(ref n.eliminatedHighlightRgb);
+            rw.NodeRef<GxLightBall>(ref n.tacticalLight, ref n.tacticalLightFile);
+        }
+    }
+
+    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CFuncKeysReal? curve;
+        public CFuncKeysReal? Curve
+        {
+            get => this.curveFile?.GetNode(ref this.curve) ?? this.curve;
+            set => this.curve = value;
+        }
+        private Components.GbxRefTableFile? curveFile;
+
+        public Components.GbxRefTableFile? CurveFile
+        {
+            get => curveFile;
+            set => curveFile = value;
+        }
+
+        public CFuncKeysReal? GetCurve(GbxReadSettings settings = default, bool exceptions = false) => curveFile?.GetNode(ref curve, settings, exceptions) ?? curve;
+
+        private int version = 3;
+        public int Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private int count;
+        public int Count
+        {
+            get => this.count;
+            set => this.count = value;
+        }
+
+        private byte flagsV1;
+        public byte FlagsV1
+        {
+            get => this.flagsV1;
+            set => this.flagsV1 = value;
+        }
+
+        private int capacity = 7;
+        public int Capacity
+        {
+            get => this.capacity;
+            set => this.capacity = value;
+        }
+
+        private ushort flags;
+        public ushort Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        private Vec2[]? values;
+        public Vec2[]? Values
+        {
+            get => this.values;
+            set => this.values = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Keys)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Keys)clone).curve = context.Clone(this.curve)!;
+            ((Keys)clone).version = context.Clone(this.version)!;
+            ((Keys)clone).count = context.Clone(this.count)!;
+            ((Keys)clone).flagsV1 = context.Clone(this.flagsV1)!;
+            ((Keys)clone).capacity = context.Clone(this.capacity)!;
+            ((Keys)clone).flags = context.Clone(this.flags)!;
+            ((Keys)clone).values = context.CloneArray(this.values)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

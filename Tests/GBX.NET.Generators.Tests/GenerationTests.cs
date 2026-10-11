@@ -1459,6 +1459,26 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task ClonesSortedDictionaryFieldsAndProperties()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private System.Collections.Generic.SortedDictionary<int, float[]> values = new();
+                public System.Collections.Generic.SortedDictionary<int, int[]>? Colors { get; set; }
+            }
+            """;
+        var (result, compilation) = Run(source,
+            new Text("Engines/Game/Example.chunkl", "Example 0x03043000"), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("((Example)clone).values = context.CloneSortedDictionary(this.values)!");
+        await Assert.That(generated).Contains("((Example)clone).Colors = context.CloneSortedDictionary(this.Colors)!");
+    }
+
+    [Test]
     public async Task UsesPropertiesWhenThereIsNoBackingFieldAndKeepsUnknownsInTheirChunks()
     {
         const string source = """
@@ -2445,6 +2465,7 @@ public class GenerationTests
                 public T[] CloneArray<T>(T[] source) => source;
                 public System.Collections.Generic.List<T> CloneList<T>(System.Collections.Generic.IEnumerable<T> source) => new(source);
                 public System.Collections.Generic.Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>> source) where TKey : notnull => new();
+                public System.Collections.Generic.SortedDictionary<TKey, TValue> CloneSortedDictionary<TKey, TValue>(System.Collections.Generic.SortedDictionary<TKey, TValue> source) where TKey : notnull => new(source.Comparer);
                 public System.Collections.Generic.HashSet<T> CloneHashSet<T>(System.Collections.Generic.ISet<T> source) => new(source);
             }
             public partial class GbxReaderWriter : System.IDisposable

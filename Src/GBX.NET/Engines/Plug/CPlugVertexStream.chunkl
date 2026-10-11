@@ -1,16 +1,37 @@
 CPlugVertexStream 0x09056000
 - inherits: CPlug
 
-0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3.v1, TMT.v0, MP4.v1, TM2020.v1]
+  version
+  int VertexCount
+  uint Flags = 3
+  CPlugVertexStream StreamModel (external)
+  if VertexCount > 0 && StreamModel == null
+    DataDecl[] DataDecls
+    v1+
+      bool CompressLocalFloat3 = true
 
 enum EPlugVDclType
-  U01
+  Float1
   Float2
   Float3
   Float4
-  Color // 4 bytes RGBA
-  Int32
-  Dec3N = 14
+  ColorD3D // Packed BGRA color
+  UByte4
+  Short2
+  Short4
+  UByte4N
+  Short2N
+  Short4N
+  UShort2N
+  UShort4N
+  UDec3
+  Dec3N
+  Half2
+  Half4
+  U01 = Float1
+  Color = ColorD3D
+  Int32 = UByte4
 
 enum EPlugVDcl
   Position
@@ -43,3 +64,9 @@ enum EPlugVDclSpace
   Global2D
 
 archive DataDecl
+  uint Flags1
+  v0+
+    uint Flags2
+  if IsShared
+    ushort SharedDeclIndex
+    ushort Offset

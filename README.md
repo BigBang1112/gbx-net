@@ -14,6 +14,7 @@ GBX.NET is not just a library that can read or write Gbx files, but also **a mod
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via Discord DM: `bigbang1112`
 
 <!-- gbx-comparison:start -->
+
 ### Benchmark
 
 **0.032 ms** for **A01-Race**, **170 ms** for **Deep Dip 2** on average with GBX.NET.
@@ -34,7 +35,6 @@ Measured 2026-10-10 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.2620
 
 ### Navigation
 
-- [Benchmark](#benchmark)
 - [Supported games](#supported-games)
 - [File types](#file-types)
 - [Framework support](#framework-support)
