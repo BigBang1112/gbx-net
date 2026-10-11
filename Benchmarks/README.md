@@ -2,7 +2,7 @@
 
 The BenchmarkDotNet project measures GBX.NET source generation and Gbx fixture reads and writes. It also includes the existing string-reader and array-copy benchmarks.
 
-The separate [cross-library comparison](#cross-library-map-comparison) runs the three supplied maps through GBX.NET, gbx-py, and gbx-ts.
+The separate [cross-library comparison](#cross-library-map-comparison) runs the three supplied maps through GBX.NET, gbx-py, gbx-ts, and ManiaPlanetSharp.
 
 ## Structure
 
@@ -103,7 +103,7 @@ For comparisons, use the same job, fixtures, runtime, compression implementation
 
 ### Setup and run
 
-You need the .NET 10 SDK, Node.js 20 or newer with npm, Python 3.10 or newer with a compatible `gbx-py` wheel, and Git. The measured run uses CPython 3.13. Setup uses an isolated Python environment and local Node modules, and it checks out the gbx-py parser at the revision in [dependencies.json](Comparison/dependencies.json). It does not install the Python GUI dependencies or change system-wide packages.
+You need the .NET 10 SDK, Node.js 20 or newer with npm, Python 3.10 or newer with a compatible `gbx-py` wheel, and Git. The measured run uses CPython 3.13. Setup uses an isolated Python environment and local Node modules, and it checks out the gbx-py parser and ManiaPlanetSharp at the revisions in [dependencies.json](Comparison/dependencies.json). It does not install the Python GUI dependencies or change system-wide packages.
 
 Run from the repository root on Windows:
 
@@ -121,11 +121,15 @@ python3 -m venv .venv
 npm ci --ignore-scripts --no-audit --no-fund
 git clone --no-checkout https://github.com/schadocalex/gbx-py.git .deps/gbx-py
 git -C .deps/gbx-py checkout --detach 342419ce4e937a4303b8a36fc2d3ed8093d95cf5
+git clone --no-checkout https://github.com/stefan-baumann/ManiaPlanetSharp.git .deps/ManiaPlanetSharp
+git -C .deps/ManiaPlanetSharp checkout --detach dfac322673d7a5260381d107a7ee34191da2a5fd
 cd ../..
 node Benchmarks/Comparison/run.mjs --update-readme
 ```
 
-The runner builds a standalone Release .NET worker, then starts a fresh process for each library/map pair, one at a time. A default run takes several minutes because the Python parse of Deep Dip 2 is much slower than the smaller cases. Nothing is installed automatically during measurement.
+The runner builds standalone Release .NET workers, then starts a fresh process for each library/map pair, one at a time. A default run takes several minutes because the Python parse of Deep Dip 2 is much slower than the smaller cases. Nothing is installed automatically during measurement.
+
+The ManiaPlanetSharp worker compiles the unchanged upstream sources through a local project that keeps its .NET 8 target, dependencies, resources, and parser flags, without the upstream Windows-only post-build copy. It uses the default runtime-generated parsers. The initial container parser compilation happens before timing. The upstream default body-parsing path regenerates chunk parsers during parse calls, and that work remains inside the timer. The optional precompiled parser assembly is not included.
 
 The command writes raw samples, dependency/runtime versions, fixture SHA-256 hashes, parsing diagnostics, environment details, and Markdown into a timestamped directory under `Comparison/results`. Results are ignored by Git. `--update-readme` refreshes the compact performance table near the top of the [repository README](../README.md#benchmark) and the detailed results in this page, replacing only their marked sections. The compact table shows means in ms or s. The detailed table includes sample standard deviations and uses µs, ms, or s. Both tables retain partial-parse labels. Without that flag, both READMEs stay unchanged.
 
@@ -139,13 +143,14 @@ Use `--map <path>` repeatedly to compare other maps, `--python <path>` to select
 
 ### What is measured
 
-All three workers preload the same compressed file bytes. The timed operation creates a fresh parser/stream and calls its body-parsing API:
+All four workers preload the same compressed file bytes. The timed operation creates a fresh parser/stream and calls its body-parsing API:
 
 | Library | Operation | Source and decompressor |
 | --- | --- | --- |
 | GBX.NET | `Gbx.Parse(new MemoryStream(bytes), settings)` | Local project reference, strict body reads, GBX.NET.LZO. |
 | gbx-py | `src.parser.parse_bytes(bytes)` | Pinned source checkout, Construct, native `gbx.lzo` from the pinned PyPI package. |
 | gbx-ts | `await new GBX(bytes, 0).parse()` | Pinned npm package `gbx`, with `lzo-ts`. |
+| [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) | `GameBoxFile.Parse(new MemoryStream(bytes))`, then `ParseBody()` | Pinned source checkout, runtime-generated parsers, upstream MiniLZO. |
 
 The published `gbx-py` 0.3.1 wheel contains the LZO extension, not the parser. That is why setup also downloads the parser source. The `gbx-ts` project is published under the npm name `gbx`, and the tested version is `1.0.0-rc12`. [requirements.txt](Comparison/requirements.txt) and [package-lock.json](Comparison/package-lock.json) pin the external packages. The upstream parsers are not patched.
 
@@ -153,28 +158,28 @@ Startup, imports, disk reads, validation, and reporting are outside the timer. B
 
 ### Parsing limitations
 
-The runner checks for a parsed block list, normalizes away `flags == -1` block placeholders, and compares block counts with GBX.NET. GBX.NET disables body exception suppression and skippable-chunk fallback, and reports unknown root map chunks. The Python adapter scans returned containers for unknown/failed chunks, trailing data, and a missing body end marker. The TypeScript adapter scans returned nodes for skipped chunks and captures parser errors. These checks identify known fallbacks, not every omission in a parser.
+The runner checks for a parsed block list, normalizes away `flags == -1` block placeholders, and compares block counts with GBX.NET. GBX.NET disables body exception suppression and skippable-chunk fallback, and reports unknown root map chunks. The Python adapter scans returned containers for unknown/failed chunks, trailing data, and a missing body end marker. The TypeScript adapter scans returned nodes for skipped chunks and captures parser errors. The ManiaPlanetSharp adapter records recognized body chunk IDs, unknown header chunks, missing blocks, and available console diagnostics. Its body parser scans bytes for recognized chunks and silently suppresses parsing failures in Release builds, so its timings are always marked partial. These checks identify known fallbacks, not every omission in a parser.
 
 **Partial timings measure the library's available work, not an equivalent full parse.** In this run, gbx-py does not finish parsing the A01-Race body. The Python parser also retains unknown chunks in the newer maps. gbx-ts skips newer map chunks, including embedded item data, and does not offer the same nested-node coverage as GBX.NET. Neither timings nor matching block counts prove that every field was read. For that reason the table does not calculate speedup ratios. JSON reports retain grouped Python diagnostics and skipped TypeScript chunk IDs so you can inspect what each library actually processed.
 
 ### Measured results
 
 <!-- gbx-comparison:start -->
-Measured 2026-10-10 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64).
+Measured 2026-10-11 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64).
 
 In-memory parse calls on the original compressed files, including LZO decompression. Mean ± sample standard deviation per parse, using µs, ms, or s as appropriate. Values are rounded to three significant digits. Lower is faster, but parsing coverage differs.
 
-| Map | File bytes | GBX.NET | gbx-py | gbx-ts |
-| --- | ---: | ---: | ---: | ---: |
-| A01-Race.Challenge.Gbx | 18,977 | 32 ± 4.81 µs | 14.1 ± 1.09 ms (partial) | 2.76 ± 0.282 ms |
-| Canyon A01.Map.Gbx | 408,180 | 327 ± 53.9 µs | 62.2 ± 6.2 ms (partial) | 31.6 ± 2.61 ms (partial) |
-| Deep_Dip_2r1.Map.Gbx | 5,998,704 | 170 ± 51.2 ms | 15.2 ± 0.827 s (partial) | 897 ± 15.6 ms (partial) |
+| Map | File bytes | GBX.NET | gbx-py | gbx-ts | ManiaPlanetSharp |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A01-Race.Challenge.Gbx | 18,977 | 29.3 ± 2.5 µs | 14 ± 0.879 ms (partial) | 2.58 ± 0.3 ms | 17.2 ± 1.54 ms (partial) |
+| Canyon A01.Map.Gbx | 408,180 | 325 ± 61.7 µs | 60.9 ± 4.34 ms (partial) | 30.8 ± 2.6 ms (partial) | 25.2 ± 3.67 ms (partial) |
+| Deep_Dip_2r1.Map.Gbx | 5,998,704 | 188 ± 49 ms | 15 ± 1.08 s (partial) | 712 ± 25.2 ms (partial) | 2.86 ± 0.227 s (partial) |
 
 **Partial results are not equivalent full parses.** They include skipped chunks or a body that was not fully parsed. Failed calls have no timing. These numbers do not establish a like-for-like speedup.
 
-GBX.NET 2.5.0.0 (.NET 10.0.12), gbx-py parser 342419ce4e93, LZO package 0.3.1 (CPython 3.13.2), gbx-ts 1.0.0-rc12 (Node.js v20.10.0). GBX.NET.LZO 2.1.6.0, lzo-ts 0.2.3, Construct 2.10.70.
+GBX.NET 2.5.0.0 (.NET 10.0.12), gbx-py parser 342419ce4e93, LZO package 0.3.1 (CPython 3.13.2), gbx-ts 1.0.0-rc12 (Node.js v20.10.0), ManiaPlanetSharp source dfac322673d7, runtime-generated, upstream MiniLZO (.NET 10.0.12). GBX.NET.LZO 2.1.6.0, lzo-ts 0.2.3, Construct 2.10.70.
 
-GBX.NET source: `b640d6c6033cd9fdae7d6f1078d6556c62bb35af` (library sources unchanged). gbx-py parser source: `342419ce4e937a4303b8a36fc2d3ed8093d95cf5`.
+GBX.NET source: `5211f09a488f47618c0063ebdda97b490119af80` (library sources unchanged). gbx-py parser source: `342419ce4e937a4303b8a36fc2d3ed8093d95cf5`. ManiaPlanetSharp source: `dfac322673d7a5260381d107a7ee34191da2a5fd`.
 
 15 samples per case after at least 2 s of warmup, with an adaptive batch targeting 200 ms (at least one parse per sample). Worker processes run sequentially. Startup, imports, file reads, validation, and report writing are excluded. Normal garbage collection remains enabled.
 

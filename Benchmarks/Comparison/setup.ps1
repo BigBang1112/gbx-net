@@ -14,15 +14,24 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "Installing Node dependencies failed." }
 
     $dependencies = Get-Content dependencies.json -Raw | ConvertFrom-Json
-    if (-not (Test-Path .deps/gbx-py)) {
-        git clone --no-checkout $dependencies.gbxPyRepository .deps/gbx-py
-        if ($LASTEXITCODE -ne 0) { throw "Cloning gbx-py failed." }
-        git -C .deps/gbx-py checkout --detach $dependencies.gbxPyRevision
-        if ($LASTEXITCODE -ne 0) { throw "Checking out gbx-py failed." }
-    }
-    $revision = git -C .deps/gbx-py rev-parse HEAD
-    if ($LASTEXITCODE -ne 0 -or $revision -ne $dependencies.gbxPyRevision) {
-        throw "The gbx-py checkout does not match dependencies.json. Use a separate checkout or restore it manually."
+    $sources = @(
+        @{ Name = "gbx-py"; Repository = $dependencies.gbxPyRepository; Revision = $dependencies.gbxPyRevision },
+        @{ Name = "ManiaPlanetSharp"; Repository = $dependencies.maniaPlanetSharpRepository; Revision = $dependencies.maniaPlanetSharpRevision }
+    )
+    foreach ($source in $sources) {
+        $checkout = Join-Path .deps $source.Name
+        if (-not (Test-Path -LiteralPath $checkout)) {
+            git clone --no-checkout $source.Repository $checkout
+            if ($LASTEXITCODE -ne 0) { throw "Cloning $($source.Name) failed." }
+            git -C $checkout checkout --detach $source.Revision
+            if ($LASTEXITCODE -ne 0) { throw "Checking out $($source.Name) failed." }
+        }
+        $revision = git -C $checkout rev-parse HEAD
+        if ($LASTEXITCODE -ne 0 -or $revision -ne $source.Revision) {
+            throw "The $($source.Name) checkout does not match dependencies.json. Use a separate checkout or restore it manually."
+        }
+        $changes = git -C $checkout status --porcelain --untracked-files=no
+        if ($LASTEXITCODE -ne 0 -or $changes) { throw "The $($source.Name) checkout has tracked changes." }
     }
 }
 finally {

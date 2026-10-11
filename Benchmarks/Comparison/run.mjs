@@ -53,31 +53,39 @@ function git(argumentsList) {
 
 const dependencies = JSON.parse(readFileSync(path.join(directory, 'dependencies.json')));
 const pythonSource = path.join(directory, '.deps/gbx-py');
+const maniaPlanetSharpSource = path.join(directory, '.deps/ManiaPlanetSharp');
 if (!existsSync(python) || !existsSync(path.join(directory, 'node_modules/gbx'))) throw new Error('Run Benchmarks/Comparison/setup.ps1 first, or specify --python.');
 if (git(['-C', pythonSource, 'rev-parse', 'HEAD']) !== dependencies.gbxPyRevision || git(['-C', pythonSource, 'status', '--porcelain', '--untracked-files=no'])) throw new Error('gbx-py must be an unmodified checkout of the pinned revision.');
+if (!existsSync(maniaPlanetSharpSource)) throw new Error('Run Benchmarks/Comparison/setup.ps1 to download ManiaPlanetSharp.');
+if (git(['-C', maniaPlanetSharpSource, 'rev-parse', 'HEAD']) !== dependencies.maniaPlanetSharpRevision || git(['-C', maniaPlanetSharpSource, 'status', '--porcelain', '--untracked-files=no'])) throw new Error('ManiaPlanetSharp must be an unmodified checkout of the pinned revision.');
 const fixtureInfo = maps.map(map => {
   const bytes = readFileSync(map);
   return { name: path.basename(map), bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') };
 });
 const project = path.join(directory, 'GBX.NET.Comparison');
+const maniaPlanetSharpProject = path.join(directory, 'ManiaPlanetSharp.Comparison');
 if (build) {
-  const result = command('dotnet', ['build', project, '-c', 'Release', '--disable-build-servers', '--verbosity', 'minimal']);
-  if (result.error || result.status !== 0) throw new Error(`Release build failed:\n${result.stdout}\n${result.stderr}\n${result.error ?? ''}`);
+  for (const workerProject of [project, maniaPlanetSharpProject]) {
+    const result = command('dotnet', ['build', workerProject, '-c', 'Release', '--disable-build-servers', '--verbosity', 'minimal']);
+    if (result.error || result.status !== 0) throw new Error(`Release build failed:\n${result.stdout}\n${result.stderr}\n${result.error ?? ''}`);
+  }
 }
 const dll = path.join(project, 'bin/Release/net10.0/GBX.NET.Comparison.dll');
-if (!existsSync(dll)) throw new Error('Release worker is missing. Run without --no-build.');
+const maniaPlanetSharpDll = path.join(maniaPlanetSharpProject, 'bin/Release/net10.0/ManiaPlanetSharp.Comparison.dll');
+if (!existsSync(dll) || !existsSync(maniaPlanetSharpDll)) throw new Error('Release worker is missing. Run without --no-build.');
 mkdirSync(output, { recursive: true });
 if (existsSync(path.join(output, 'report.json'))) throw new Error('Output already has a report. Choose a new directory.');
 const report = {
   measuredAt: new Date().toISOString(),
   environment: { cpu: os.cpus()[0]?.model ?? 'unknown', logicalProcessors: os.cpus().length, os: `${os.type()} ${os.release()} ${os.arch()}` },
   source: { revision: git(['rev-parse', 'HEAD']), libraryDirty: Boolean(git(['status', '--porcelain', '--', 'Src', 'Generators', 'Resources'])), noBuild: !build },
-  dependencies, settings, maps: fixtureInfo, libraries: ['GBX.NET', 'gbx-py', 'gbx-ts'], results: [],
+  dependencies, settings, maps: fixtureInfo, libraries: ['GBX.NET', 'gbx-py', 'gbx-ts', 'ManiaPlanetSharp'], results: [],
 };
 const workers = [
   { library: 'GBX.NET', executable: 'dotnet', prefix: [dll], suffix: [] },
   { library: 'gbx-py', executable: python, prefix: [path.join(directory, 'gbx-py-worker.py')], suffix: [pythonSource] },
   { library: 'gbx-ts', executable: process.execPath, prefix: [path.join(directory, 'gbx-ts-worker.mjs')], suffix: [] },
+  { library: 'ManiaPlanetSharp', executable: 'dotnet', prefix: [maniaPlanetSharpDll], suffix: [] },
 ];
 for (const [mapIndex, map] of maps.entries()) {
   for (const [workerIndex, worker] of workers.entries()) {

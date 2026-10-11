@@ -41,8 +41,8 @@ export function renderHighlight(report) {
     lines.push(`${timings.join(', ')} on average with GBX.NET.`, '');
   }
   lines.push('Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.', '',
-    '| Map | GBX.NET | gbx-py | gbx-ts |',
-    '| --- | ---: | ---: | ---: |');
+    `| Map | ${report.libraries.map(escapeCell).join(' | ')} |`,
+    `| --- | ${report.libraries.map(() => '---:').join(' | ')} |`);
   for (const map of report.maps) {
     const cells = report.libraries.map(library => renderTiming(report.results.find(result => result.map === map.name && result.library === library), library === 'GBX.NET', false));
     lines.push(`| ${escapeCell(mapDisplayName(map.name))} | ${cells.join(' | ')} |`);
@@ -58,8 +58,8 @@ export function renderSummary(report) {
     '',
     'In-memory parse calls on the original compressed files, including LZO decompression. Mean ± sample standard deviation per parse, using µs, ms, or s as appropriate. Values are rounded to three significant digits. Lower is faster, but parsing coverage differs.',
     '',
-    '| Map | File bytes | GBX.NET | gbx-py | gbx-ts |',
-    '| --- | ---: | ---: | ---: | ---: |',
+    `| Map | File bytes | ${report.libraries.map(escapeCell).join(' | ')} |`,
+    `| --- | ---: | ${report.libraries.map(() => '---:').join(' | ')} |`,
   ];
   for (const map of report.maps) {
     const cells = report.libraries.map(library => renderTiming(report.results.find(entry => entry.map === map.name && entry.library === library)));
@@ -68,11 +68,13 @@ export function renderSummary(report) {
   lines.push('', '**Partial results are not equivalent full parses.** They include skipped chunks or a body that was not fully parsed. Failed calls have no timing. These numbers do not establish a like-for-like speedup.', '');
   const versions = report.libraries.map(library => {
     const result = report.results.find(entry => entry.library === library && entry.runtime);
-    const version = library === 'gbx-py' ? `parser ${report.dependencies.gbxPyRevision.slice(0, 12)}, LZO package ${result?.version ?? 'unavailable'}` : result?.version ?? 'unavailable';
+    const version = library === 'gbx-py' ? `parser ${report.dependencies.gbxPyRevision.slice(0, 12)}, LZO package ${result?.version ?? 'unavailable'}`
+      : library === 'ManiaPlanetSharp' ? `source ${report.dependencies.maniaPlanetSharpRevision.slice(0, 12)}, ${result?.parserMode ?? 'parser unavailable'}, ${result?.lzoImplementation ?? 'LZO unavailable'}`
+      : result?.version ?? 'unavailable';
     return `${library} ${version} (${result?.runtime ?? 'unavailable'})`;
   });
   lines.push(`${versions.join(', ')}. GBX.NET.LZO ${report.results.find(entry => entry.library === 'GBX.NET')?.lzoVersion ?? 'unavailable'}, lzo-ts ${report.results.find(entry => entry.library === 'gbx-ts')?.lzoVersion ?? 'unavailable'}, Construct ${report.results.find(entry => entry.library === 'gbx-py')?.constructVersion ?? 'unavailable'}.`, '',
-    `GBX.NET source: \`${report.source.revision}\`${report.source.libraryDirty ? ' with local library changes' : ' (library sources unchanged)'}. gbx-py parser source: \`${report.dependencies.gbxPyRevision}\`.`, '',
+    `GBX.NET source: \`${report.source.revision}\`${report.source.libraryDirty ? ' with local library changes' : ' (library sources unchanged)'}. gbx-py parser source: \`${report.dependencies.gbxPyRevision}\`.${report.dependencies.maniaPlanetSharpRevision ? ` ManiaPlanetSharp source: \`${report.dependencies.maniaPlanetSharpRevision}\`.` : ''}`, '',
     `${report.settings.samples} samples per case after at least ${report.settings.warmupSeconds} s of warmup, with an adaptive batch targeting ${report.settings.sampleMs} ms (at least one parse per sample). Worker processes run sequentially. Startup, imports, file reads, validation, and report writing are excluded. Normal garbage collection remains enabled.`, '');
   return lines.join('\n');
 }

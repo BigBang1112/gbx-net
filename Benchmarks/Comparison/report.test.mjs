@@ -85,3 +85,31 @@ test('reports label partial parses and failures without inventing timings', () =
   assert.match(details, /Parser failed/);
   assert.match(details, /hash/);
 });
+
+test('reports include every library column and ManiaPlanetSharp source details', () => {
+  const report = {
+    measuredAt: '2026-10-11T12:00:00.000Z',
+    environment: { cpu: 'Test CPU', os: 'Test OS' },
+    source: { revision: 'local', libraryDirty: true },
+    dependencies: { gbxPyRevision: 'python-pinned', maniaPlanetSharpRevision: 'dfac322673d7a5260381d107a7ee34191da2a5fd' },
+    settings: { samples: 2, warmupSeconds: 2, sampleMs: 200 },
+    libraries: ['GBX.NET', 'gbx-py', 'gbx-ts', 'ManiaPlanetSharp'],
+    maps: [{ name: 'Test.Map.Gbx', bytes: 100, sha256: 'hash' }],
+    results: ['GBX.NET', 'gbx-py', 'gbx-ts', 'ManiaPlanetSharp'].map((library, index) => ({
+      library, map: 'Test.Map.Gbx', status: index ? 'partial' : 'ok',
+      statistics: summarize([index + 1, index + 1]),
+      runtime: '.NET 10', parserMode: 'runtime-generated', lzoImplementation: 'upstream MiniLZO',
+      validation: { blockCount: 1, problems: index ? ['Incomplete coverage'] : [] },
+    })),
+  };
+  const summary = renderSummary(report);
+  assert.match(summary, /\| Map \| File bytes \| GBX.NET \| gbx-py \| gbx-ts \| ManiaPlanetSharp \|/);
+  assert.match(summary, /\| --- \| ---: \| ---: \| ---: \| ---: \| ---: \|/);
+  assert.match(summary, /4 ± 0 ms \(partial\) \|/);
+  assert.match(summary, /ManiaPlanetSharp source dfac322673d7, runtime-generated, upstream MiniLZO/);
+  assert.match(summary, /ManiaPlanetSharp source: `dfac322673d7a5260381d107a7ee34191da2a5fd`/);
+  const highlight = renderHighlight(report);
+  assert.match(highlight, /\| Map \| GBX.NET \| gbx-py \| gbx-ts \| ManiaPlanetSharp \|/);
+  assert.match(highlight, /\| --- \| ---: \| ---: \| ---: \| ---: \|/);
+  assert.match(highlight, /4 ms \(partial\) \|/);
+});
