@@ -34,27 +34,203 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     [Hexadecimal]
     public static new uint Id => 0x090BA000;
 
+    private string name = "";
+    public string Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private Joint[] joints = [];
+    public Joint[] Joints
+    {
+        get => this.joints;
+        set => this.joints = value;
+    }
+
+    private Setup? skelSetup;
+    public Setup? SkelSetup
+    {
+        get => this.skelSetup;
+        set => this.skelSetup = value;
+    }
+
+    private Socket[] sockets = [];
+    public Socket[] Sockets
+    {
+        get => this.sockets;
+        set => this.sockets = value;
+    }
+
+    private ExtraJoints? additionalJoints;
+    public ExtraJoints? AdditionalJoints
+    {
+        get => this.additionalJoints;
+        set => this.additionalJoints = value;
+    }
+
+    private int[]? u03;
+    /// <summary>
+    /// Legacy animation LOD data discarded by newer games.
+    /// </summary>
+    public int[]? U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
+    private byte[]? animLodIndexs;
+    /// <summary>
+    /// Animation LOD index for each joint.
+    /// </summary>
+    public byte[]? AnimLodIndexs
+    {
+        get => this.animLodIndexs;
+        set => this.animLodIndexs = value;
+    }
+
+    private byte[]? u04;
+    public byte[]? U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private int jointExprVersion;
+    public int JointExprVersion
+    {
+        get => this.jointExprVersion;
+        set => this.jointExprVersion = value;
+    }
+
+    private JointExpr[] jointExprs = [];
+    public JointExpr[] JointExprs
+    {
+        get => this.jointExprs;
+        set => this.jointExprs = value;
+    }
+
+    private byte[]? u07;
+    public byte[]? U07
+    {
+        get => this.u07;
+        set => this.u07 = value;
+    }
+
+    private Iso4[]? u08;
+    public Iso4[]? U08
+    {
+        get => this.u08;
+        set => this.u08 = value;
+    }
+
+    private byte animLodCount = 1;
+    public byte AnimLodCount
+    {
+        get => this.animLodCount;
+        set => this.animLodCount = value;
+    }
+
+    private float[]? animLodDistances;
+    public float[]? AnimLodDistances
+    {
+        get => this.animLodDistances;
+        set => this.animLodDistances = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugSkel)clone).name = context.Clone(this.name)!;
         ((CPlugSkel)clone).joints = context.CloneArray(this.joints)!;
+        ((CPlugSkel)clone).skelSetup = context.Clone(this.skelSetup)!;
         ((CPlugSkel)clone).sockets = context.CloneArray(this.sockets)!;
-        ((CPlugSkel)clone).jointExprs = context.CloneArray(this.jointExprs)!;
-        ((CPlugSkel)clone).u01 = context.Clone(this.u01)!;
-        ((CPlugSkel)clone).u02 = context.Clone(this.u02)!;
+        ((CPlugSkel)clone).additionalJoints = context.Clone(this.additionalJoints)!;
         ((CPlugSkel)clone).u03 = context.CloneArray(this.u03)!;
+        ((CPlugSkel)clone).animLodIndexs = context.CloneArray(this.animLodIndexs)!;
         ((CPlugSkel)clone).u04 = context.CloneArray(this.u04)!;
-        ((CPlugSkel)clone).u05 = context.Clone(this.u05)!;
-        ((CPlugSkel)clone).u06 = context.Clone(this.u06)!;
+        ((CPlugSkel)clone).jointExprVersion = context.Clone(this.jointExprVersion)!;
+        ((CPlugSkel)clone).jointExprs = context.CloneArray(this.jointExprs)!;
         ((CPlugSkel)clone).u07 = context.CloneArray(this.u07)!;
         ((CPlugSkel)clone).u08 = context.CloneArray(this.u08)!;
-        ((CPlugSkel)clone).setup = context.Clone(this.setup)!;
-        ((CPlugSkel)clone).extraJoints = context.Clone(this.extraJoints)!;
+        ((CPlugSkel)clone).animLodCount = context.Clone(this.animLodCount)!;
+        ((CPlugSkel)clone).animLodDistances = context.CloneArray(this.animLodDistances)!;
     }
 
     public CPlugSkel()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.Id(ref this.name);
+        var jointCount = rw.UInt16((ushort)(rw.Writer is null ? default : (checked((ushort)(Joints?.Length?? 0)))));
+        rw.ArrayReadableWritable<Joint>(ref this.joints!, jointCount, version: v);
+
+        if (v >= 2)
+        {
+            var hasSetup = rw.Boolean((rw.Writer is null ? default : (SkelSetup!= null)));
+
+            if (hasSetup)
+            {
+                rw.ReadableWritable<Setup>(ref this.skelSetup, version: v);
+            }
+        }
+
+        if (v >= 6)
+        {
+            rw.ArrayReadableWritable<Socket>(ref this.sockets!, version: v);
+        }
+
+        if (v >= 9)
+        {
+            var hasExtraJoints = rw.Boolean((rw.Writer is null ? default : (AdditionalJoints!= null)));
+
+            if (hasExtraJoints)
+            {
+                rw.ReadableWritable<ExtraJoints>(ref this.additionalJoints, version: v);
+            }
+        }
+
+        if (v >= 10)
+        {
+            if (v <= 15)
+            {
+                rw.Array<int>(ref this.u03!);
+            }
+
+            if (v >= 16)
+            {
+                rw.Data(ref this.animLodIndexs);
+            }
+        }
+
+        if (v >= 13)
+        {
+            rw.Data(ref this.u04);
+        }
+
+        if (v == 14)
+        {
+            rw.Int32(ref this.jointExprVersion);
+            rw.ArrayReadableWritable<JointExpr>(ref this.jointExprs!, version: v);
+        }
+
+        if (v >= 19)
+        {
+            rw.Data(ref this.u07);
+        }
+
+        if (v >= 20)
+        {
+            rw.Array<Iso4>(ref this.u08!);
+        }
+
+        if (v >= 17)
+        {
+            rw.Byte(ref this.animLodCount);
+            rw.Array<float>(ref this.animLodDistances!);
+        }
     }
 
     public virtual void Read(GbxReader r, int v = 0)
@@ -69,12 +245,36 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         ReadWrite(rw, v);
     }
 
-    [Chunk(0x090BA000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk090BA000 : Chunk<CPlugSkel>
+    /// <summary>
+    /// skeleton
+    /// </summary>
+    [Chunk(0x090BA000, "skeleton")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 12, 14, 20)]
+    public partial class Chunk090BA000 : Chunk<CPlugSkel>, IVersionable
     {
         public override uint Id => 0x090BA000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk090BA000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090BA000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 12;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 14;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 20;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -99,25 +299,25 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.parentIndex = value;
         }
 
-        private Quat globalJoint;
-        public Quat GlobalJoint
+        private Quat localRotation;
+        public Quat LocalRotation
         {
-            get => this.globalJoint;
-            set => this.globalJoint = value;
+            get => this.localRotation;
+            set => this.localRotation = value;
         }
 
-        private Vec3 u01;
-        public Vec3 U01
+        private Vec3 localTranslation;
+        public Vec3 LocalTranslation
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.localTranslation;
+            set => this.localTranslation = value;
         }
 
-        private Iso4 u02;
-        public Iso4 U02
+        private Iso4 globalTransform;
+        public Iso4 GlobalTransform
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.globalTransform;
+            set => this.globalTransform = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -132,9 +332,9 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         {
             ((Joint)clone).name = context.Clone(this.name)!;
             ((Joint)clone).parentIndex = context.Clone(this.parentIndex)!;
-            ((Joint)clone).globalJoint = context.Clone(this.globalJoint)!;
-            ((Joint)clone).u01 = context.Clone(this.u01)!;
-            ((Joint)clone).u02 = context.Clone(this.u02)!;
+            ((Joint)clone).localRotation = context.Clone(this.localRotation)!;
+            ((Joint)clone).localTranslation = context.Clone(this.localTranslation)!;
+            ((Joint)clone).globalTransform = context.Clone(this.globalTransform)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -144,13 +344,13 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
 
             if (v <= 14)
             {
-                rw.Quat(ref this.globalJoint);
-                rw.Vec3(ref this.u01);
+                rw.Quat(ref this.localRotation);
+                rw.Vec3(ref this.localTranslation);
             }
 
             if (v >= 1)
             {
-                rw.Iso4(ref this.u02);
+                rw.Iso4(ref this.globalTransform);
             }
         }
 
@@ -176,18 +376,18 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.name = value;
         }
 
-        private short u01;
-        public short U01
+        private short jointIndex;
+        public short JointIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.jointIndex;
+            set => this.jointIndex = value;
         }
 
-        private Iso4 u02;
-        public Iso4 U02
+        private Iso4 localTransform;
+        public Iso4 LocalTransform
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.localTransform;
+            set => this.localTransform = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -201,15 +401,15 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Socket)clone).name = context.Clone(this.name)!;
-            ((Socket)clone).u01 = context.Clone(this.u01)!;
-            ((Socket)clone).u02 = context.Clone(this.u02)!;
+            ((Socket)clone).jointIndex = context.Clone(this.jointIndex)!;
+            ((Socket)clone).localTransform = context.Clone(this.localTransform)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.name);
-            rw.Int16(ref this.u01);
-            rw.Iso4(ref this.u02);
+            rw.Int16(ref this.jointIndex);
+            rw.Iso4(ref this.localTransform);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -227,6 +427,34 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
 
     public partial class JointExpr : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (JointExpr)MemberwiseClone();
@@ -237,10 +465,18 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((JointExpr)clone).u01 = context.Clone(this.u01)!;
+            ((JointExpr)clone).u02 = context.Clone(this.u02)!;
+            ((JointExpr)clone).u03 = context.Clone(this.u03)!;
+            ((JointExpr)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
+            rw.Int32(ref this.u01);
+            rw.Id(ref this.u02);
+            rw.Id(ref this.u03);
+            rw.Id(ref this.u04);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -286,14 +522,14 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.globalTargets = value;
         }
 
-        private int u02;
+        private int u02 = -1;
         public int U02
         {
             get => this.u02;
             set => this.u02 = value;
         }
 
-        private ushort u03;
+        private ushort u03 = 0xFFFF;
         public ushort U03
         {
             get => this.u03;
@@ -307,14 +543,14 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.u04 = value;
         }
 
-        private int u05;
+        private int u05 = -1;
         public int U05
         {
             get => this.u05;
             set => this.u05 = value;
         }
 
-        private ushort u06;
+        private ushort u06 = 0xFFFF;
         public ushort U06
         {
             get => this.u06;
@@ -533,11 +769,14 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             set => this.u03 = value;
         }
 
-        private byte[]? u04;
-        public byte[]? U04
+        private uint flags;
+        /// <summary>
+        /// Upper-body and parent-length flags.
+        /// </summary>
+        public uint Flags
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.flags;
+            set => this.flags = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -553,7 +792,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             ((JointInfo)clone).u01 = context.Clone(this.u01)!;
             ((JointInfo)clone).u02 = context.Clone(this.u02)!;
             ((JointInfo)clone).u03 = context.Clone(this.u03)!;
-            ((JointInfo)clone).u04 = context.CloneArray(this.u04)!;
+            ((JointInfo)clone).flags = context.Clone(this.flags)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -561,7 +800,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
             rw.Int32(ref this.u01);
             rw.Int32(ref this.u02);
             rw.Int32(ref this.u03);
-            rw.Data(ref this.u04!, 4);
+            rw.DataUInt32(ref this.flags);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

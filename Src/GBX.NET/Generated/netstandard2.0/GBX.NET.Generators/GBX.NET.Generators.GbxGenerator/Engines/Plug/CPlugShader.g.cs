@@ -34,6 +34,26 @@ public partial class CPlugShader : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09002000;
 
+    private float lightMapQuality;
+    [AppliedWithChunk<Chunk09002000>]
+    [AppliedWithChunk<Chunk0900200B>]
+    [AppliedWithChunk<Chunk0900200C>]
+    [AppliedWithChunk<Chunk0900200D>]
+    [AppliedWithChunk<Chunk0900200F>]
+    [AppliedWithChunk<Chunk09002010>]
+    [AppliedWithChunk<Chunk09002011>]
+    [AppliedWithChunk<Chunk09002012>]
+    [AppliedWithChunk<Chunk09002013>]
+    [AppliedWithChunk<Chunk09002014>]
+    [AppliedWithChunk<Chunk09002015>]
+    [AppliedWithChunk<Chunk09002016>]
+    [AppliedWithChunk<Chunk09002020>]
+    public float LightMapQuality
+    {
+        get => this.lightMapQuality;
+        set => this.lightMapQuality = value;
+    }
+
     private CFuncShader? funcShader;
     [AppliedWithChunk<Chunk09002007>]
     [AppliedWithChunk<Chunk0900200E>]
@@ -52,20 +72,68 @@ public partial class CPlugShader : CPlug, IClass
 
     public CFuncShader? GetFuncShader(GbxReadSettings settings = default, bool exceptions = false) => funcShaderFile?.GetNode(ref funcShader, settings, exceptions) ?? funcShader;
 
-    private CPlugShaderPass[]? passes;
+    private CPlugShaderPass[] passes = default!;
     [AppliedWithChunk<Chunk09002007>]
     [AppliedWithChunk<Chunk0900200E>]
-    public CPlugShaderPass[]? Passes
+    public CPlugShaderPass[] Passes
     {
         get => this.passes;
         set => this.passes = value;
     }
 
-    private ushort visibleIdFlags;
+    private CPlugBitmapApply? solidWiredApply;
+    [AppliedWithChunk<Chunk09002007>]
+    [AppliedWithChunk<Chunk0900200E>]
+    public CPlugBitmapApply? SolidWiredApply
+    {
+        get => this.solidWiredApply;
+        set => this.solidWiredApply = value;
+    }
+
+    private CPlugMaterialFx? materialFx;
+    [AppliedWithChunk<Chunk0900200C>]
+    [AppliedWithChunk<Chunk0900200D>]
+    [AppliedWithChunk<Chunk0900200F>]
     [AppliedWithChunk<Chunk09002010>]
+    [AppliedWithChunk<Chunk09002011>]
+    [AppliedWithChunk<Chunk09002012>]
+    [AppliedWithChunk<Chunk09002013>]
     [AppliedWithChunk<Chunk09002014>]
     [AppliedWithChunk<Chunk09002015>]
     [AppliedWithChunk<Chunk09002016>]
+    [AppliedWithChunk<Chunk09002020>]
+    public CPlugMaterialFx? MaterialFx
+    {
+        get => this.materialFxFile?.GetNode(ref this.materialFx) ?? this.materialFx;
+        set => this.materialFx = value;
+    }
+    private Components.GbxRefTableFile? materialFxFile;
+
+    public Components.GbxRefTableFile? MaterialFxFile
+    {
+        get => materialFxFile;
+        set => materialFxFile = value;
+    }
+
+    public CPlugMaterialFx? GetMaterialFx(GbxReadSettings settings = default, bool exceptions = false) => materialFxFile?.GetNode(ref materialFx, settings, exceptions) ?? materialFx;
+
+    private External<CPlugShader>[] legacyCustomShaders = default!;
+    [AppliedWithChunk<Chunk0900200E>]
+    public External<CPlugShader>[] LegacyCustomShaders
+    {
+        get => this.legacyCustomShaders;
+        set => this.legacyCustomShaders = value;
+    }
+
+    private ushort visibleIdFlags;
+    [AppliedWithChunk<Chunk09002010>]
+    [AppliedWithChunk<Chunk09002011>]
+    [AppliedWithChunk<Chunk09002012>]
+    [AppliedWithChunk<Chunk09002013>]
+    [AppliedWithChunk<Chunk09002014>]
+    [AppliedWithChunk<Chunk09002015>]
+    [AppliedWithChunk<Chunk09002016>]
+    [AppliedWithChunk<Chunk09002020>]
     public ushort VisibleIdFlags
     {
         get => this.visibleIdFlags;
@@ -73,50 +141,303 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private ulong requirementFlags;
-    /// <summary>
-    /// SRequirement
-    /// </summary>
-    [AppliedWithChunk<Chunk09002014>]
+    [GameVersionDefault(GameVersion.TMF, 0x0000FFF0B003F800)]
+    [GameVersionDefault(GameVersion.TM2020, 0x0000FFF00C007800)]
     [AppliedWithChunk<Chunk09002015>]
     [AppliedWithChunk<Chunk09002016>]
+    [AppliedWithChunk<Chunk09002020>]
     public ulong RequirementFlags
     {
         get => this.requirementFlags;
         set => this.requirementFlags = value;
     }
 
+    private uint flags;
+    [AppliedWithChunk<Chunk09002018>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private ShaderCustom[] customShaders = default!;
+    [AppliedWithChunk<Chunk09002019>]
+    [AppliedWithChunk<Chunk0900201F>]
+    public ShaderCustom[] CustomShaders
+    {
+        get => this.customShaders;
+        set => this.customShaders = value;
+    }
+
+    private float visibleMaxDist;
+    [AppliedWithChunk<Chunk0900201A>]
+    [AppliedWithChunk<Chunk0900201B>]
+    public float VisibleMaxDist
+    {
+        get => this.visibleMaxDist;
+        set => this.visibleMaxDist = value;
+    }
+
+    private float visibleMinScreenHeight;
+    [AppliedWithChunk<Chunk0900201B>]
+    public float VisibleMinScreenHeight
+    {
+        get => this.visibleMinScreenHeight;
+        set => this.visibleMinScreenHeight = value;
+    }
+
+    private CPlugFileGPUV? gPU;
+    [AppliedWithChunk<Chunk0900201C>]
+    public CPlugFileGPUV? GPU
+    {
+        get => this.gPUFile?.GetNode(ref this.gPU) ?? this.gPU;
+        set => this.gPU = value;
+    }
+    private Components.GbxRefTableFile? gPUFile;
+
+    public Components.GbxRefTableFile? GPUFile
+    {
+        get => gPUFile;
+        set => gPUFile = value;
+    }
+
+    public CPlugFileGPUV? GetGPU(GbxReadSettings settings = default, bool exceptions = false) => gPUFile?.GetNode(ref gPU, settings, exceptions) ?? gPU;
+
+    private uint requirementFlags2;
+    [GameVersionDefault(GameVersion.TMF, 0x40)]
+    [AppliedWithChunk<Chunk0900201E>]
+    public uint RequirementFlags2
+    {
+        get => this.requirementFlags2;
+        set => this.requirementFlags2 = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugShader)clone).lightMapQuality = context.Clone(this.lightMapQuality)!;
         ((CPlugShader)clone).funcShader = context.Clone(this.funcShader)!;
         ((CPlugShader)clone).passes = context.CloneArray(this.passes)!;
+        ((CPlugShader)clone).solidWiredApply = context.Clone(this.solidWiredApply)!;
+        ((CPlugShader)clone).materialFx = context.Clone(this.materialFx)!;
+        ((CPlugShader)clone).legacyCustomShaders = context.CloneArray(this.legacyCustomShaders)!;
         ((CPlugShader)clone).visibleIdFlags = context.Clone(this.visibleIdFlags)!;
         ((CPlugShader)clone).requirementFlags = context.Clone(this.requirementFlags)!;
+        ((CPlugShader)clone).flags = context.Clone(this.flags)!;
+        ((CPlugShader)clone).customShaders = context.CloneArray(this.customShaders)!;
+        ((CPlugShader)clone).visibleMaxDist = context.Clone(this.visibleMaxDist)!;
+        ((CPlugShader)clone).visibleMinScreenHeight = context.Clone(this.visibleMinScreenHeight)!;
+        ((CPlugShader)clone).gPU = context.Clone(this.gPU)!;
+        ((CPlugShader)clone).requirementFlags2 = context.Clone(this.requirementFlags2)!;
     }
 
-    public CPlugShader()
+    public CPlugShader() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x09002007)]
+    public CPlugShader(GameVersion gameVersion)
+    {
+        passes = [];
+        legacyCustomShaders = [];
+        visibleIdFlags = 1;
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            requirementFlags = 0x0000FFF0B003F800;
+        }
+        else if (gameVersion == GameVersion.TM2020)
+        {
+            requirementFlags = 0x0000FFF00C007800;
+        }
+        else
+        {
+            requirementFlags = 0x0000FFF030039800;
+        }
+
+        customShaders = [];
+        visibleMaxDist = -1;
+        visibleMinScreenHeight = -1;
+
+        if (gameVersion == GameVersion.TMF)
+        {
+            requirementFlags2 = 0x40;
+        }
+        else
+        {
+            requirementFlags2 = 0x1FFE001E;
+        }
+    }
+
+    [Chunk(0x09002000)]
+    public partial class Chunk09002000 : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x09002000;
+        public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09002000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref U01);
+            rw.Single(ref n.lightMapQuality);
+        }
+    }
+
+    [Chunk(0x09002005)]
+    public partial class Chunk09002005 : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x09002005;
+        public ulong U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09002005)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt64(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// shader function and passes
+    /// </summary>
+    [Chunk(0x09002007, "shader function and passes")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09002007 : Chunk<CPlugShader>
     {
         public override uint Id => 0x09002007;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09002007)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.NodeRef<CFuncShader>(ref n.funcShader, ref n.funcShaderFile);
             rw.ArrayNodeRef<CPlugShaderPass>(ref n.passes!);
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef<CPlugBitmapApply>(ref n.solidWiredApply);
+        }
+    }
+
+    [Chunk(0x09002008)]
+    public partial class Chunk09002008 : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x09002008;
+        public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09002008)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref U01);
+        }
+    }
+
+    [Chunk(0x09002009)]
+    public partial class Chunk09002009 : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x09002009;
+        public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09002009)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref U01);
+        }
+    }
+
+    [Chunk(0x0900200A)]
+    public partial class Chunk0900200A : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x0900200A;
+        public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900200A)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref U01);
+        }
+    }
+
+    [Chunk(0x0900200B)]
+    public partial class Chunk0900200B : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x0900200B;
+        public ulong U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900200B)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt64(ref U01);
+            rw.Single(ref n.lightMapQuality);
+        }
+    }
+
+    [Chunk(0x0900200C)]
+    public partial class Chunk0900200C : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x0900200C;
+        public uint U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900200C)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref U01);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
+        }
+    }
+
+    [Chunk(0x0900200D)]
+    public partial class Chunk0900200D : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x0900200D;
+        public ulong U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0900200D)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt64(ref U01);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
         }
     }
 
@@ -126,18 +447,27 @@ public partial class CPlugShader : CPlug, IClass
     {
         public override uint Id => 0x0900200E;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public External<CMwNod>[]? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900200E)clone).U02 = context.CloneArray(this.U02)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.ArrayNodeRef<CMwNod>(ref U02!);
+            rw.ArrayNodeRef<CPlugShader>(ref n.legacyCustomShaders!);
+        }
+    }
+
+    [Chunk(0x0900200F)]
+    public partial class Chunk0900200F : Chunk0900200D
+    {
+        public override uint Id => 0x0900200F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
@@ -148,23 +478,62 @@ public partial class CPlugShader : CPlug, IClass
         public override uint Id => 0x09002010;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
         public ulong U01;
-        public float U02;
-        public CMwNod? U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09002010)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09002010)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09002010)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
-            rw.UInt64(ref U01);
-            rw.Single(ref U02);
-            rw.NodeRef<CMwNod>(ref U03);
+            rw.DataUInt64(ref U01);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
             rw.UInt16(ref n.visibleIdFlags);
+        }
+    }
+
+    [Chunk(0x09002011)]
+    public partial class Chunk09002011 : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x09002011;
+        public ulong U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09002011)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.DataUInt64(ref U01);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
+            rw.UInt16(ref n.visibleIdFlags);
+        }
+    }
+
+    [Chunk(0x09002012)]
+    public partial class Chunk09002012 : Chunk09002011
+    {
+        public override uint Id => 0x09002012;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    [Chunk(0x09002013)]
+    public partial class Chunk09002013 : Chunk09002011
+    {
+        public override uint Id => 0x09002013;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
@@ -174,87 +543,70 @@ public partial class CPlugShader : CPlug, IClass
     {
         public override uint Id => 0x09002014;
         public override GameVersion GameVersion => GameVersion.TMSX;
-        public float U01;
-        public CMwNod? U02;
+        public ulong U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09002014)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09002014)clone).U02 = context.Clone(this.U02)!;
         }
     }
 
-    [Chunk(0x09002015)]
+    /// <summary>
+    /// requirements and visibility
+    /// </summary>
+    [Chunk(0x09002015, "requirements and visibility")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk09002015 : Chunk<CPlugShader>
     {
         public override uint Id => 0x09002015;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
-        public float U01;
-        public CMwNod? U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09002015)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09002015)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.DataUInt64(ref n.requirementFlags);
-            rw.Single(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
             rw.UInt16(ref n.visibleIdFlags);
+        }
+    }
+
+    [Chunk(0x09002016)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
+    public partial class Chunk09002016 : Chunk09002015
+    {
+        public override uint Id => 0x09002016;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
     /// <summary>
-    /// flags, latest TMF
+    /// Flags
     /// </summary>
-    [Chunk(0x09002016, "flags, latest TMF")]
-    [ChunkGameVersion(GameVersion.MP3)]
-    public partial class Chunk09002016 : Chunk<CPlugShader>
-    {
-        public override uint Id => 0x09002016;
-        public override GameVersion GameVersion => GameVersion.MP3;
-        public float U01;
-        public CMwNod? U02;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk09002016)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09002016)clone).U02 = context.Clone(this.U02)!;
-        }
-
-        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
-        {
-            rw.DataUInt64(ref n.requirementFlags);
-            rw.Single(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
-            rw.UInt16(ref n.visibleIdFlags);
-        }
-    }
-
-    [Chunk(0x09002018)]
+    [Chunk(0x09002018, "Flags")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09002018 : Chunk<CPlugShader>
     {
         public override uint Id => 0x09002018;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09002018)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.flags);
         }
     }
 
@@ -262,48 +614,79 @@ public partial class CPlugShader : CPlug, IClass
     public partial class Chunk09002019 : Chunk<CPlugShader>
     {
         public override uint Id => 0x09002019;
-        public UnknownStruct2[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09002019)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
-            rw.ArrayReadableWritable<UnknownStruct2>(ref U01!);
+            rw.ArrayReadableWritable<ShaderCustom>(ref n.customShaders!, version: - 1);
         }
     }
 
-    [Chunk(0x0900201B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// VisibleMaxDist
+    /// </summary>
+    [Chunk(0x0900201A, "VisibleMaxDist")]
+    public partial class Chunk0900201A : Chunk<CPlugShader>
+    {
+        public override uint Id => 0x0900201A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.visibleMaxDist);
+        }
+    }
+
+    /// <summary>
+    /// visibility distances
+    /// </summary>
+    [Chunk(0x0900201B, "visibility distances")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk0900201B : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
+
+        public Chunk0900201B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900201B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900201B)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0900201B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0900201B)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.visibleMaxDist);
+            rw.Single(ref n.visibleMinScreenHeight);
         }
     }
 
-    [Chunk(0x0900201C)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// GPU shader file
+    /// </summary>
+    [Chunk(0x0900201C, "GPU shader file")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
     public partial class Chunk0900201C : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201C;
@@ -311,22 +694,40 @@ public partial class CPlugShader : CPlug, IClass
         public int Version { get; set; }
         public CPlugFileText? U01;
         public Components.GbxRefTableFile? U01File;
-        public CMwNod? U02;
-        public Components.GbxRefTableFile? U02File;
+
+        public Chunk0900201C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900201C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900201C)clone).Version = context.Clone(this.Version)!;
             ((Chunk0900201C)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0900201C)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.NodeRef<CPlugFileText>(ref U01, ref U01File);
-            rw.NodeRef<CMwNod>(ref U02, ref U02File);
+
+            if (Version== 0)
+            {
+                rw.NodeRef<CPlugFileGPUV>(ref n.gPU, ref n.gPUFile);
+            }
+
+            if (Version>= 1)
+            {
+                rw.NodeRef<CPlugFileGPUV>(ref n.gPU, ref n.gPUFile);
+            }
         }
     }
 
@@ -346,191 +747,168 @@ public partial class CPlugShader : CPlug, IClass
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref U01);
         }
     }
 
-    [Chunk(0x0900201E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// RequirementFlags2
+    /// </summary>
+    [Chunk(0x0900201E, "RequirementFlags2")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
     public partial class Chunk0900201E : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public uint U01;
+
+        public Chunk0900201E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900201E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900201E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0900201E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.requirementFlags2);
         }
     }
 
-    [Chunk(0x0900201F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// custom shaders
+    /// </summary>
+    [Chunk(0x0900201F, "custom shaders")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk0900201F : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201F;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public UnknownStruct[]? U01;
+
+        public Chunk0900201F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900201F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900201F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0900201F)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayReadableWritable<UnknownStruct>(ref U01!, version: Version);
+            rw.ArrayReadableWritable<ShaderCustom>(ref n.customShaders!, version: Version);
         }
     }
 
-    [Chunk(0x09002020)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// requirements and visibility
+    /// </summary>
+    [Chunk(0x09002020, "requirements and visibility")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 3)]
     public partial class Chunk09002020 : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x09002020;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public ulong U01;
-        public float U02;
-        public CPlugMaterialFx? U03;
-        public short U04;
+        public uint U01;
+
+        public Chunk09002020() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09002020(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09002020)clone).Version = context.Clone(this.Version)!;
             ((Chunk09002020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09002020)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09002020)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09002020)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.UInt64(ref U01);
-            rw.Single(ref U02);
-            rw.NodeRef<CPlugMaterialFx>(ref U03);
-            rw.Int16(ref U04);
-        }
-    }
+            rw.DataUInt64(ref n.requirementFlags);
 
-    public partial class UnknownStruct : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        private CMwNod? u01;
-        public CMwNod? U01
-        {
-            get => this.u01File?.GetNode(ref this.u01) ?? this.u01;
-            set => this.u01 = value;
-        }
-        private Components.GbxRefTableFile? u01File;
-
-        public Components.GbxRefTableFile? U01File
-        {
-            get => u01File;
-            set => u01File = value;
-        }
-
-        public CMwNod? GetU01(GbxReadSettings settings = default, bool exceptions = false) => u01File?.GetNode(ref u01, settings, exceptions) ?? u01;
-
-        private bool u02;
-        public bool U02
-        {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private CMwNod? u03;
-        public CMwNod? U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (UnknownStruct)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((UnknownStruct)clone).u01 = context.Clone(this.u01)!;
-            ((UnknownStruct)clone).u02 = context.Clone(this.u02)!;
-            ((UnknownStruct)clone).u03 = context.Clone(this.u03)!;
-        }
-
-        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
-        {
-            rw.NodeRef<CMwNod>(ref this.u01, ref this.u01File);
-
-            if (U01== null && U01File== null)
+            if (Version>= 3)
             {
-                rw.Boolean(ref this.u02);
-
-                if (U02)
-                {
-                    rw.NodeRef<CMwNod>(ref this.u03);
-                }
+                rw.DataUInt32(ref U01);
             }
-        }
 
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
+            rw.UInt16(ref n.visibleIdFlags);
         }
     }
 
-    public partial class UnknownStruct2 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class ShaderCustom : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CMwNod? u01;
-        public CMwNod? U01
+        private CPlugShader? externalShader;
+        public CPlugShader? ExternalShader
         {
-            get => this.u01File?.GetNode(ref this.u01) ?? this.u01;
-            set => this.u01 = value;
+            get => this.externalShaderFile?.GetNode(ref this.externalShader) ?? this.externalShader;
+            set => this.externalShader = value;
         }
-        private Components.GbxRefTableFile? u01File;
+        private Components.GbxRefTableFile? externalShaderFile;
 
-        public Components.GbxRefTableFile? U01File
+        public Components.GbxRefTableFile? ExternalShaderFile
         {
-            get => u01File;
-            set => u01File = value;
+            get => externalShaderFile;
+            set => externalShaderFile = value;
         }
 
-        public CMwNod? GetU01(GbxReadSettings settings = default, bool exceptions = false) => u01File?.GetNode(ref u01, settings, exceptions) ?? u01;
+        public CPlugShader? GetExternalShader(GbxReadSettings settings = default, bool exceptions = false) => externalShaderFile?.GetNode(ref externalShader, settings, exceptions) ?? externalShader;
 
-        private CMwNod? u02;
-        public CMwNod? U02
+        private CPlugShader? shader;
+        public CPlugShader? Shader
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.shader;
+            set => this.shader = value;
+        }
+
+        private bool hasShader;
+        public bool HasShader
+        {
+            get => this.hasShader;
+            set => this.hasShader = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
-            var clone = (UnknownStruct2)MemberwiseClone();
+            var clone = (ShaderCustom)MemberwiseClone();
             context.Register(this, clone);
             DeepCloneArchiveFields(clone, context);
             return clone;
@@ -538,17 +916,31 @@ public partial class CPlugShader : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((UnknownStruct2)clone).u01 = context.Clone(this.u01)!;
-            ((UnknownStruct2)clone).u02 = context.Clone(this.u02)!;
+            ((ShaderCustom)clone).externalShader = context.Clone(this.externalShader)!;
+            ((ShaderCustom)clone).shader = context.Clone(this.shader)!;
+            ((ShaderCustom)clone).hasShader = context.Clone(this.hasShader)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef<CMwNod>(ref this.u01, ref this.u01File);
+            rw.NodeRef<CPlugShader>(ref this.externalShader, ref this.externalShaderFile);
 
-            if (U01== null && U01File== null)
+            if (ExternalShader== null && ExternalShaderFile== null)
             {
-                rw.NodeRef<CMwNod>(ref this.u02);
+                if (v< 0)
+                {
+                    rw.NodeRef<CPlugShader>(ref this.shader);
+                }
+
+                if (v>= 0)
+                {
+                    rw.Boolean(ref this.hasShader);
+
+                    if (HasShader)
+                    {
+                        rw.NodeRef<CPlugShader>(ref this.shader);
+                    }
+                }
             }
         }
 
@@ -597,14 +989,27 @@ public partial class CPlugShader : CPlug, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09002000 => new Chunk09002000(),
+        0x09002005 => new Chunk09002005(),
         0x09002007 => new Chunk09002007(),
+        0x09002008 => new Chunk09002008(),
+        0x09002009 => new Chunk09002009(),
+        0x0900200A => new Chunk0900200A(),
+        0x0900200B => new Chunk0900200B(),
+        0x0900200C => new Chunk0900200C(),
+        0x0900200D => new Chunk0900200D(),
         0x0900200E => new Chunk0900200E(),
+        0x0900200F => new Chunk0900200F(),
         0x09002010 => new Chunk09002010(),
+        0x09002011 => new Chunk09002011(),
+        0x09002012 => new Chunk09002012(),
+        0x09002013 => new Chunk09002013(),
         0x09002014 => new Chunk09002014(),
         0x09002015 => new Chunk09002015(),
         0x09002016 => new Chunk09002016(),
         0x09002018 => new Chunk09002018(),
         0x09002019 => new Chunk09002019(),
+        0x0900201A => new Chunk0900201A(),
         0x0900201B => new Chunk0900201B(),
         0x0900201C => new Chunk0900201C(),
         0x0900201D => new Chunk0900201D(),

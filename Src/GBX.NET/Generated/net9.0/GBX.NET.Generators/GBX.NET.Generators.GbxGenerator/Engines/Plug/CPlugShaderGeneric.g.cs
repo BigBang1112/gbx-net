@@ -34,13 +34,37 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     [Hexadecimal]
     public static new uint Id => 0x09004000;
 
+    private SMaterial? material;
+    [AppliedWithChunk<Chunk09004000>]
+    [AppliedWithChunk<Chunk09004001>]
+    [AppliedWithChunk<Chunk09004002>]
+    [AppliedWithChunk<Chunk09004003>]
+    public SMaterial? Material
+    {
+        get => this.material;
+        set => this.material = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugShaderGeneric)clone).material = context.Clone(this.material)!;
     }
 
-    public CPlugShaderGeneric()
+    [Chunk(0x09004000)]
+    public partial class Chunk09004000 : Chunk<CPlugShaderGeneric>
     {
+        public override uint Id => 0x09004000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<SMaterial>(ref n.material);
+        }
     }
 
     [Chunk(0x09004001)]
@@ -49,17 +73,15 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     {
         public override uint Id => 0x09004001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09004001)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.Data(ref U01!, 88);
+            rw.ReadableWritable<SMaterial>(ref n.material);
         }
     }
 
@@ -67,17 +89,15 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     public partial class Chunk09004002 : Chunk<CPlugShaderGeneric>
     {
         public override uint Id => 0x09004002;
-        public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09004002)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.Data(ref U01!, 88);
+            rw.ReadableWritable<SMaterial>(ref n.material);
         }
     }
 
@@ -87,22 +107,227 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     {
         public override uint Id => 0x09004003;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09004003)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.Data(ref U01!, 88);
+            rw.ReadableWritable<SMaterial>(ref n.material);
+        }
+    }
+
+    public partial class SMaterial : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Vec3 ambientRGB;
+        [GameVersionDefault(GameVersion.TM10, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMPU, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMSX, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMNESWC, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.VSK5, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMF, DefaultExpression = "Vec3.One")]
+        public Vec3 AmbientRGB
+        {
+            get => this.ambientRGB;
+            set => this.ambientRGB = value;
+        }
+
+        private Vec3 diffuseRGB;
+        [GameVersionDefault(GameVersion.TM10, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMPU, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMSX, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMNESWC, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.VSK5, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMF, DefaultExpression = "Vec3.One")]
+        public Vec3 DiffuseRGB
+        {
+            get => this.diffuseRGB;
+            set => this.diffuseRGB = value;
+        }
+
+        private float diffuseAlpha;
+        [GameVersionDefault(GameVersion.TM10, 1f)]
+        [GameVersionDefault(GameVersion.TMPU, 1f)]
+        [GameVersionDefault(GameVersion.TMSX, 1f)]
+        [GameVersionDefault(GameVersion.TMNESWC, 1f)]
+        [GameVersionDefault(GameVersion.VSK5, 1f)]
+        [GameVersionDefault(GameVersion.TMF, 1f)]
+        public float DiffuseAlpha
+        {
+            get => this.diffuseAlpha;
+            set => this.diffuseAlpha = value;
+        }
+
+        private Vec3 specularRGB;
+        [GameVersionDefault(GameVersion.TM10, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMPU, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMSX, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMNESWC, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.VSK5, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMF, DefaultExpression = "Vec3.One")]
+        public Vec3 SpecularRGB
+        {
+            get => this.specularRGB;
+            set => this.specularRGB = value;
+        }
+
+        private float specularExp;
+        [GameVersionDefault(GameVersion.TM10, 20f)]
+        [GameVersionDefault(GameVersion.TMPU, 20f)]
+        [GameVersionDefault(GameVersion.TMSX, 20f)]
+        [GameVersionDefault(GameVersion.TMNESWC, 20f)]
+        [GameVersionDefault(GameVersion.VSK5, 20f)]
+        [GameVersionDefault(GameVersion.TMF, 20f)]
+        public float SpecularExp
+        {
+            get => this.specularExp;
+            set => this.specularExp = value;
+        }
+
+        private Vec3 emissiveRGB;
+        [GameVersionDefault(GameVersion.TM10, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMPU, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMSX, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMNESWC, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.VSK5, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMF, DefaultExpression = "Vec3.One")]
+        public Vec3 EmissiveRGB
+        {
+            get => this.emissiveRGB;
+            set => this.emissiveRGB = value;
+        }
+
+        private Vec3 emissiveModifier;
+        public Vec3 EmissiveModifier
+        {
+            get => this.emissiveModifier;
+            set => this.emissiveModifier = value;
+        }
+
+        private Vec3 wireRGB;
+        [GameVersionDefault(GameVersion.TM10, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMPU, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMSX, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMNESWC, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.VSK5, DefaultExpression = "Vec3.One")]
+        [GameVersionDefault(GameVersion.TMF, DefaultExpression = "Vec3.One")]
+        public Vec3 WireRGB
+        {
+            get => this.wireRGB;
+            set => this.wireRGB = value;
+        }
+
+        private float wireAlpha;
+        [GameVersionDefault(GameVersion.TM10, 1f)]
+        [GameVersionDefault(GameVersion.TMPU, 1f)]
+        [GameVersionDefault(GameVersion.TMSX, 1f)]
+        [GameVersionDefault(GameVersion.TMNESWC, 1f)]
+        [GameVersionDefault(GameVersion.VSK5, 1f)]
+        [GameVersionDefault(GameVersion.TMF, 1f)]
+        public float WireAlpha
+        {
+            get => this.wireAlpha;
+            set => this.wireAlpha = value;
+        }
+
+        private uint flags;
+        /// <summary>
+        /// Preserve serialized bits before native readers upgrade legacy lighting flags and clear runtime flags.
+        /// </summary>
+        [GameVersionDefault(GameVersion.TM10, 5)]
+        [GameVersionDefault(GameVersion.TMPU, 5)]
+        [GameVersionDefault(GameVersion.TMSX, 5)]
+        [GameVersionDefault(GameVersion.TMNESWC, 5)]
+        [GameVersionDefault(GameVersion.VSK5, 5)]
+        [GameVersionDefault(GameVersion.TMF, 5)]
+        public uint Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        public SMaterial() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public SMaterial(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+            {
+                ambientRGB = Vec3.One;
+                diffuseRGB = Vec3.One;
+                diffuseAlpha = 1f;
+                specularRGB = Vec3.One;
+                specularExp = 20f;
+                emissiveRGB = Vec3.One;
+                wireRGB = Vec3.One;
+                wireAlpha = 1f;
+            }
+
+            if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+            {
+                flags = 5;
+            }
+            else
+            {
+                flags = 0x800;
+            }
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SMaterial)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SMaterial)clone).ambientRGB = context.Clone(this.ambientRGB)!;
+            ((SMaterial)clone).diffuseRGB = context.Clone(this.diffuseRGB)!;
+            ((SMaterial)clone).diffuseAlpha = context.Clone(this.diffuseAlpha)!;
+            ((SMaterial)clone).specularRGB = context.Clone(this.specularRGB)!;
+            ((SMaterial)clone).specularExp = context.Clone(this.specularExp)!;
+            ((SMaterial)clone).emissiveRGB = context.Clone(this.emissiveRGB)!;
+            ((SMaterial)clone).emissiveModifier = context.Clone(this.emissiveModifier)!;
+            ((SMaterial)clone).wireRGB = context.Clone(this.wireRGB)!;
+            ((SMaterial)clone).wireAlpha = context.Clone(this.wireAlpha)!;
+            ((SMaterial)clone).flags = context.Clone(this.flags)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Vec3(ref this.ambientRGB);
+            rw.Vec3(ref this.diffuseRGB);
+            rw.Single(ref this.diffuseAlpha);
+            rw.Vec3(ref this.specularRGB);
+            rw.Single(ref this.specularExp);
+            rw.Vec3(ref this.emissiveRGB);
+            rw.Vec3(ref this.emissiveModifier);
+            rw.Vec3(ref this.wireRGB);
+            rw.Single(ref this.wireAlpha);
+            rw.DataUInt32(ref this.flags);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09004000 => new Chunk09004000(),
         0x09004001 => new Chunk09004001(),
         0x09004002 => new Chunk09004002(),
         0x09004003 => new Chunk09004003(),

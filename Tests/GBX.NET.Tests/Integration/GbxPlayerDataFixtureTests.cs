@@ -10,8 +10,7 @@ public class GbxPlayerDataFixtureTests
     {
         foreach (var game in new[] { "TM10", "TMNESWC", "TMF", "MP3", "MP4" })
         {
-            var suffix = game == "TMNESWC" ? "Profile.Profile.Gbx" : "Profile.Gbx";
-            yield return $"CGamePlayerProfile/CGamePlayerProfile {game} 001.{suffix}";
+            yield return $"CGamePlayerProfile/CGamePlayerProfile {game} 001.Profile.Gbx";
         }
 
         foreach (var game in new[] { "TMNESWC", "TMF" })

@@ -34,115 +34,427 @@ public partial class CPlugShaderPass : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09067000;
 
-    private CPlugBitmapSampler[]? vertexTextures;
+    private CPlugFileGPU? vertexShader;
+    [AppliedWithChunk<Chunk09067000>]
+    [AppliedWithChunk<Chunk09067001>]
+    [AppliedWithChunk<Chunk09067002>]
+    [AppliedWithChunk<Chunk09067003>]
+    [AppliedWithChunk<Chunk09067004>]
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public CPlugFileGPU? VertexShader
+    {
+        get => this.vertexShaderFile?.GetNode(ref this.vertexShader) ?? this.vertexShader;
+        set => this.vertexShader = value;
+    }
+    private Components.GbxRefTableFile? vertexShaderFile;
+
+    public Components.GbxRefTableFile? VertexShaderFile
+    {
+        get => vertexShaderFile;
+        set => vertexShaderFile = value;
+    }
+
+    public CPlugFileGPU? GetVertexShader(GbxReadSettings settings = default, bool exceptions = false) => vertexShaderFile?.GetNode(ref vertexShader, settings, exceptions) ?? vertexShader;
+
+    private CPlugFileGPU? pixelShader;
+    [AppliedWithChunk<Chunk09067000>]
+    [AppliedWithChunk<Chunk09067001>]
+    [AppliedWithChunk<Chunk09067002>]
+    [AppliedWithChunk<Chunk09067003>]
+    [AppliedWithChunk<Chunk09067004>]
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public CPlugFileGPU? PixelShader
+    {
+        get => this.pixelShaderFile?.GetNode(ref this.pixelShader) ?? this.pixelShader;
+        set => this.pixelShader = value;
+    }
+    private Components.GbxRefTableFile? pixelShaderFile;
+
+    public Components.GbxRefTableFile? PixelShaderFile
+    {
+        get => pixelShaderFile;
+        set => pixelShaderFile = value;
+    }
+
+    public CPlugFileGPU? GetPixelShader(GbxReadSettings settings = default, bool exceptions = false) => pixelShaderFile?.GetNode(ref pixelShader, settings, exceptions) ?? pixelShader;
+
+    private Vec4[] vertexFxValues = [];
+    [AppliedWithChunk<Chunk09067000>]
+    [AppliedWithChunk<Chunk09067001>]
+    [AppliedWithChunk<Chunk09067002>]
+    [AppliedWithChunk<Chunk09067003>]
+    [AppliedWithChunk<Chunk09067004>]
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public Vec4[] VertexFxValues
+    {
+        get => this.vertexFxValues;
+        set => this.vertexFxValues = value;
+    }
+
+    private CMwNod? unusedShader;
+    [AppliedWithChunk<Chunk09067001>]
+    [AppliedWithChunk<Chunk09067002>]
+    [AppliedWithChunk<Chunk09067003>]
+    [AppliedWithChunk<Chunk09067004>]
+    public CMwNod? UnusedShader
+    {
+        get => this.unusedShader;
+        set => this.unusedShader = value;
+    }
+
+    private Vec4[] pixelFxValues = [];
+    [AppliedWithChunk<Chunk09067004>]
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public Vec4[] PixelFxValues
+    {
+        get => this.pixelFxValues;
+        set => this.pixelFxValues = value;
+    }
+
+    private GpuLoadFx[] vertexLoadFxs = [];
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public GpuLoadFx[] VertexLoadFxs
+    {
+        get => this.vertexLoadFxs;
+        set => this.vertexLoadFxs = value;
+    }
+
+    private GpuLoadFx[] pixelLoadFxs = [];
+    [AppliedWithChunk<Chunk09067005>]
+    [AppliedWithChunk<Chunk09067008>]
+    public GpuLoadFx[] PixelLoadFxs
+    {
+        get => this.pixelLoadFxs;
+        set => this.pixelLoadFxs = value;
+    }
+
+    private CPlugBitmapSampler[] vertexTextures = [];
     [AppliedWithChunk<Chunk09067006>]
-    public CPlugBitmapSampler[]? VertexTextures
+    public CPlugBitmapSampler[] VertexTextures
     {
         get => this.vertexTextures;
         set => this.vertexTextures = value;
     }
 
-    private CPlugFileGPU? vHlslGpu;
-    [AppliedWithChunk<Chunk09067008>]
-    public CPlugFileGPU? VHlslGpu
+    private uint flags = 1;
+    [AppliedWithChunk<Chunk09067007>]
+    [AppliedWithChunk<Chunk0906700C>]
+    public uint Flags
     {
-        get => this.vHlslGpuFile?.GetNode(ref this.vHlslGpu) ?? this.vHlslGpu;
-        set => this.vHlslGpu = value;
-    }
-    private Components.GbxRefTableFile? vHlslGpuFile;
-
-    public Components.GbxRefTableFile? VHlslGpuFile
-    {
-        get => vHlslGpuFile;
-        set => vHlslGpuFile = value;
+        get => this.flags;
+        set => this.flags = value;
     }
 
-    public CPlugFileGPU? GetVHlslGpu(GbxReadSettings settings = default, bool exceptions = false) => vHlslGpuFile?.GetNode(ref vHlslGpu, settings, exceptions) ?? vHlslGpu;
-
-    private GpuLoadFx[]? vHlslGpuLoadFxs1;
-    [AppliedWithChunk<Chunk09067008>]
-    public GpuLoadFx[]? VHlslGpuLoadFxs1
+    private string[] legacySkipSamplers = [];
+    /// <summary>
+    /// Names prefixed with DTwkVSkipMap_ or DTwkPSkipMap_.
+    /// </summary>
+    [AppliedWithChunk<Chunk09067009>]
+    public string[] LegacySkipSamplers
     {
-        get => this.vHlslGpuLoadFxs1;
-        set => this.vHlslGpuLoadFxs1 = value;
+        get => this.legacySkipSamplers;
+        set => this.legacySkipSamplers = value;
     }
 
-    private Vec4[]? vHlslU01;
-    [AppliedWithChunk<Chunk09067008>]
-    public Vec4[]? VHlslU01
-    {
-        get => this.vHlslU01;
-        set => this.vHlslU01 = value;
-    }
-
-    private CPlugFileGPU? pHlslGpu;
-    [AppliedWithChunk<Chunk09067008>]
-    public CPlugFileGPU? PHlslGpu
-    {
-        get => this.pHlslGpuFile?.GetNode(ref this.pHlslGpu) ?? this.pHlslGpu;
-        set => this.pHlslGpu = value;
-    }
-    private Components.GbxRefTableFile? pHlslGpuFile;
-
-    public Components.GbxRefTableFile? PHlslGpuFile
-    {
-        get => pHlslGpuFile;
-        set => pHlslGpuFile = value;
-    }
-
-    public CPlugFileGPU? GetPHlslGpu(GbxReadSettings settings = default, bool exceptions = false) => pHlslGpuFile?.GetNode(ref pHlslGpu, settings, exceptions) ?? pHlslGpu;
-
-    private GpuLoadFx[]? pHlslGpuLoadFxs2;
-    [AppliedWithChunk<Chunk09067008>]
-    public GpuLoadFx[]? PHlslGpuLoadFxs2
-    {
-        get => this.pHlslGpuLoadFxs2;
-        set => this.pHlslGpuLoadFxs2 = value;
-    }
-
-    private Vec4[]? pHlslU01;
-    [AppliedWithChunk<Chunk09067008>]
-    public Vec4[]? PHlslU01
-    {
-        get => this.pHlslU01;
-        set => this.pHlslU01 = value;
-    }
-
-    private PipelineGpu? vHlsl;
+    private PipelineGpu? vertexPipeline;
+    [AppliedWithChunk<Chunk09067009>]
     [AppliedWithChunk<Chunk0906700A>]
-    public PipelineGpu? VHlsl
+    public PipelineGpu? VertexPipeline
     {
-        get => this.vHlsl;
-        set => this.vHlsl = value;
+        get => this.vertexPipeline;
+        set => this.vertexPipeline = value;
     }
 
-    private PipelineGpu? pHlsl;
+    private PipelineGpu? pixelPipeline;
+    [AppliedWithChunk<Chunk09067009>]
     [AppliedWithChunk<Chunk0906700A>]
-    public PipelineGpu? PHlsl
+    public PipelineGpu? PixelPipeline
     {
-        get => this.pHlsl;
-        set => this.pHlsl = value;
+        get => this.pixelPipeline;
+        set => this.pixelPipeline = value;
+    }
+
+    private string[] skipSamplers = [];
+    [AppliedWithChunk<Chunk0906700A>]
+    public string[] SkipSamplers
+    {
+        get => this.skipSamplers;
+        set => this.skipSamplers = value;
+    }
+
+    private PipelineGpu? domainPipeline;
+    [AppliedWithChunk<Chunk0906700B>]
+    public PipelineGpu? DomainPipeline
+    {
+        get => this.domainPipeline;
+        set => this.domainPipeline = value;
+    }
+
+    private PipelineGpu? hullPipeline;
+    [AppliedWithChunk<Chunk0906700B>]
+    public PipelineGpu? HullPipeline
+    {
+        get => this.hullPipeline;
+        set => this.hullPipeline = value;
+    }
+
+    private PipelineGpu? geometryPipeline;
+    [AppliedWithChunk<Chunk0906700B>(1)]
+    public PipelineGpu? GeometryPipeline
+    {
+        get => this.geometryPipeline;
+        set => this.geometryPipeline = value;
+    }
+
+    private Sampler[] vertexSamplers = [];
+    [AppliedWithChunk<Chunk0906700D>]
+    public Sampler[] VertexSamplers
+    {
+        get => this.vertexSamplers;
+        set => this.vertexSamplers = value;
+    }
+
+    private Sampler[] pixelSamplers = [];
+    [AppliedWithChunk<Chunk0906700D>]
+    public Sampler[] PixelSamplers
+    {
+        get => this.pixelSamplers;
+        set => this.pixelSamplers = value;
+    }
+
+    private Sampler[] domainSamplers = [];
+    [AppliedWithChunk<Chunk0906700D>]
+    public Sampler[] DomainSamplers
+    {
+        get => this.domainSamplers;
+        set => this.domainSamplers = value;
+    }
+
+    private Sampler[] hullSamplers = [];
+    [AppliedWithChunk<Chunk0906700D>]
+    public Sampler[] HullSamplers
+    {
+        get => this.hullSamplers;
+        set => this.hullSamplers = value;
+    }
+
+    private Sampler[] geometrySamplers = [];
+    [AppliedWithChunk<Chunk0906700D>]
+    public Sampler[] GeometrySamplers
+    {
+        get => this.geometrySamplers;
+        set => this.geometrySamplers = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugShaderPass)clone).vertexShader = context.Clone(this.vertexShader)!;
+        ((CPlugShaderPass)clone).pixelShader = context.Clone(this.pixelShader)!;
+        ((CPlugShaderPass)clone).vertexFxValues = context.CloneArray(this.vertexFxValues)!;
+        ((CPlugShaderPass)clone).unusedShader = context.Clone(this.unusedShader)!;
+        ((CPlugShaderPass)clone).pixelFxValues = context.CloneArray(this.pixelFxValues)!;
+        ((CPlugShaderPass)clone).vertexLoadFxs = context.CloneArray(this.vertexLoadFxs)!;
+        ((CPlugShaderPass)clone).pixelLoadFxs = context.CloneArray(this.pixelLoadFxs)!;
         ((CPlugShaderPass)clone).vertexTextures = context.CloneArray(this.vertexTextures)!;
-        ((CPlugShaderPass)clone).vHlslGpu = context.Clone(this.vHlslGpu)!;
-        ((CPlugShaderPass)clone).vHlslGpuLoadFxs1 = context.CloneArray(this.vHlslGpuLoadFxs1)!;
-        ((CPlugShaderPass)clone).vHlslU01 = context.CloneArray(this.vHlslU01)!;
-        ((CPlugShaderPass)clone).pHlslGpu = context.Clone(this.pHlslGpu)!;
-        ((CPlugShaderPass)clone).pHlslGpuLoadFxs2 = context.CloneArray(this.pHlslGpuLoadFxs2)!;
-        ((CPlugShaderPass)clone).pHlslU01 = context.CloneArray(this.pHlslU01)!;
-        ((CPlugShaderPass)clone).vHlsl = context.Clone(this.vHlsl)!;
-        ((CPlugShaderPass)clone).pHlsl = context.Clone(this.pHlsl)!;
+        ((CPlugShaderPass)clone).flags = context.Clone(this.flags)!;
+        ((CPlugShaderPass)clone).legacySkipSamplers = context.CloneArray(this.legacySkipSamplers)!;
+        ((CPlugShaderPass)clone).vertexPipeline = context.Clone(this.vertexPipeline)!;
+        ((CPlugShaderPass)clone).pixelPipeline = context.Clone(this.pixelPipeline)!;
+        ((CPlugShaderPass)clone).skipSamplers = context.CloneArray(this.skipSamplers)!;
+        ((CPlugShaderPass)clone).domainPipeline = context.Clone(this.domainPipeline)!;
+        ((CPlugShaderPass)clone).hullPipeline = context.Clone(this.hullPipeline)!;
+        ((CPlugShaderPass)clone).geometryPipeline = context.Clone(this.geometryPipeline)!;
+        ((CPlugShaderPass)clone).vertexSamplers = context.CloneArray(this.vertexSamplers)!;
+        ((CPlugShaderPass)clone).pixelSamplers = context.CloneArray(this.pixelSamplers)!;
+        ((CPlugShaderPass)clone).domainSamplers = context.CloneArray(this.domainSamplers)!;
+        ((CPlugShaderPass)clone).hullSamplers = context.CloneArray(this.hullSamplers)!;
+        ((CPlugShaderPass)clone).geometrySamplers = context.CloneArray(this.geometrySamplers)!;
     }
 
     public CPlugShaderPass()
     {
     }
 
-    [Chunk(0x09067006)]
+    /// <summary>
+    /// legacy shaders and vertex constants
+    /// </summary>
+    [Chunk(0x09067000, "legacy shaders and vertex constants")]
+    public partial class Chunk09067000 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
+
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
+            {
+                rw.Array<Vec4>(ref n.vertexFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy shaders and vertex constants
+    /// </summary>
+    [Chunk(0x09067001, "legacy shaders and vertex constants")]
+    public partial class Chunk09067001 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
+            rw.NodeRef<CMwNod>(ref n.unusedShader);
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
+
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
+            {
+                rw.Array<Vec4>(ref n.vertexFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy blending and shaders
+    /// </summary>
+    [Chunk(0x09067002, "legacy blending and shaders")]
+    public partial class Chunk09067002 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            n.BlendSrc = rw.Int32(n.BlendSrc);
+            n.BlendDst = rw.Int32(n.BlendDst);
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
+            rw.NodeRef<CMwNod>(ref n.unusedShader);
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
+
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
+            {
+                rw.Array<Vec4>(ref n.vertexFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy blending, culling and shaders
+    /// </summary>
+    [Chunk(0x09067003, "legacy blending, culling and shaders")]
+    public partial class Chunk09067003 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            n.BlendSrc = rw.Int32(n.BlendSrc);
+            n.BlendDst = rw.Int32(n.BlendDst);
+            n.CullMode = rw.Int32(n.CullMode);
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
+            rw.NodeRef<CMwNod>(ref n.unusedShader);
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
+
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
+            {
+                rw.Array<Vec4>(ref n.vertexFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy shaders and constants
+    /// </summary>
+    [Chunk(0x09067004, "legacy shaders and constants")]
+    public partial class Chunk09067004 : Chunk09067003
+    {
+        public override uint Id => 0x09067004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+
+            if (n.PixelShaderFile!= null || n.PixelShader!= null)
+            {
+                rw.Array<Vec4>(ref n.pixelFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// legacy blending, culling and GPU effects
+    /// </summary>
+    [Chunk(0x09067005, "legacy blending, culling and GPU effects")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk09067005 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067005;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            n.BlendSrc = rw.Int32(n.BlendSrc);
+            n.BlendDst = rw.Int32(n.BlendDst);
+            n.CullMode = rw.Int32(n.CullMode);
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
+
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
+            {
+                rw.ArrayReadableWritable<GpuLoadFx>(ref n.vertexLoadFxs!, version: 0);
+                rw.Array<Vec4>(ref n.vertexFxValues!);
+            }
+
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
+
+            if (n.PixelShaderFile!= null || n.PixelShader!= null)
+            {
+                rw.ArrayReadableWritable<GpuLoadFx>(ref n.pixelLoadFxs!, version: 0);
+                rw.Array<Vec4>(ref n.pixelFxValues!);
+            }
+        }
+    }
+
+    /// <summary>
+    /// VertexTextures
+    /// </summary>
+    [Chunk(0x09067006, "VertexTextures")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk09067006 : Chunk<CPlugShaderPass>
     {
@@ -160,27 +472,31 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
-    [Chunk(0x09067007)]
+    /// <summary>
+    /// legacy render-state flags
+    /// </summary>
+    [Chunk(0x09067007, "legacy render-state flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk09067007 : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x09067007;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09067007)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.flags);
         }
     }
 
-    [Chunk(0x09067008)]
+    /// <summary>
+    /// legacy vertex and pixel GPU effects
+    /// </summary>
+    [Chunk(0x09067008, "legacy vertex and pixel GPU effects")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09067008 : Chunk<CPlugShaderPass>
     {
@@ -194,168 +510,193 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugFileGPU>(ref n.vHlslGpu, ref n.vHlslGpuFile);
+            rw.NodeRef<CPlugFileGPU>(ref n.vertexShader, ref n.vertexShaderFile);
 
-            if (n.VHlslGpu!= null || n.VHlslGpuFile!= null)
+            if (n.VertexShaderFile!= null || n.VertexShader!= null)
             {
-                rw.ArrayReadableWritable<GpuLoadFx>(ref n.vHlslGpuLoadFxs1!);
-                rw.Array<Vec4>(ref n.vHlslU01!);
+                rw.ArrayReadableWritable<GpuLoadFx>(ref n.vertexLoadFxs!, version: 0);
+                rw.Array<Vec4>(ref n.vertexFxValues!);
             }
 
-            rw.NodeRef<CPlugFileGPU>(ref n.pHlslGpu, ref n.pHlslGpuFile);
+            rw.NodeRef<CPlugFileGPU>(ref n.pixelShader, ref n.pixelShaderFile);
 
-            if (n.PHlslGpu!= null || n.PHlslGpuFile!= null)
+            if (n.PixelShaderFile!= null || n.PixelShader!= null)
             {
-                rw.ArrayReadableWritable<GpuLoadFx>(ref n.pHlslGpuLoadFxs2!);
-                rw.Array<Vec4>(ref n.pHlslU01!);
+                rw.ArrayReadableWritable<GpuLoadFx>(ref n.pixelLoadFxs!, version: 0);
+                rw.Array<Vec4>(ref n.pixelFxValues!);
             }
         }
     }
 
-    [Chunk(0x0906700A)]
+    /// <summary>
+    /// legacy sampler exclusions and GPU effects
+    /// </summary>
+    [Chunk(0x09067009, "legacy sampler exclusions and GPU effects")]
+    public partial class Chunk09067009 : Chunk<CPlugShaderPass>
+    {
+        public override uint Id => 0x09067009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
+        {
+            rw.ArrayId(ref n.legacySkipSamplers!);
+            rw.ReadableWritable<PipelineGpu>(ref n.vertexPipeline);
+            rw.ReadableWritable<PipelineGpu>(ref n.pixelPipeline);
+        }
+    }
+
+    /// <summary>
+    /// sampler exclusions and GPU effects
+    /// </summary>
+    [Chunk(0x0906700A, "sampler exclusions and GPU effects")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906700A : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700A;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0906700A)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.ArrayId(ref U01!);
-            rw.ReadableWritable<PipelineGpu>(ref n.vHlsl);
-            rw.ReadableWritable<PipelineGpu>(ref n.pHlsl);
+            rw.ArrayId(ref n.skipSamplers!);
+            rw.ReadableWritable<PipelineGpu>(ref n.vertexPipeline);
+            rw.ReadableWritable<PipelineGpu>(ref n.pixelPipeline);
         }
     }
 
-    [Chunk(0x0906700B)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// tessellation and geometry GPU effects
+    /// </summary>
+    [Chunk(0x0906700B, "tessellation and geometry GPU effects")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk0906700B : Chunk<CPlugShaderPass>, IVersionable
     {
         public override uint Id => 0x0906700B;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public PipelineGpu? U01;
-        public PipelineGpu? U02;
-        public PipelineGpu? U03;
+
+        public Chunk0906700B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0906700B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0906700B)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0906700B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0906700B)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0906700B)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<PipelineGpu>(ref U01, version: Version);
-            rw.ReadableWritable<PipelineGpu>(ref U02, version: Version);
+            rw.ReadableWritable<PipelineGpu>(ref n.domainPipeline, version: Version);
+            rw.ReadableWritable<PipelineGpu>(ref n.hullPipeline, version: Version);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<PipelineGpu>(ref U03, version: Version);
+                rw.ReadableWritable<PipelineGpu>(ref n.geometryPipeline, version: Version);
             }
         }
     }
 
-    [Chunk(0x0906700C)]
+    /// <summary>
+    /// Flags
+    /// </summary>
+    [Chunk(0x0906700C, "Flags")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906700C : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700C;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0906700C)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.flags);
         }
     }
 
-    [Chunk(0x0906700D)]
+    /// <summary>
+    /// texture bindings for each GPU stage
+    /// </summary>
+    [Chunk(0x0906700D, "texture bindings for each GPU stage")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0906700D : Chunk<CPlugShaderPass>
     {
         public override uint Id => 0x0906700D;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public UnknownStruct[]? U01;
-        public UnknownStruct[]? U02;
-        public UnknownStruct[]? U03;
-        public UnknownStruct[]? U04;
-        public UnknownStruct[]? U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0906700D)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0906700D)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk0906700D)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk0906700D)clone).U04 = context.CloneArray(this.U04)!;
-            ((Chunk0906700D)clone).U05 = context.CloneArray(this.U05)!;
         }
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.ArrayReadableWritable<UnknownStruct>(ref U01!);
-            rw.ArrayReadableWritable<UnknownStruct>(ref U02!);
-            rw.ArrayReadableWritable<UnknownStruct>(ref U03!);
-            rw.ArrayReadableWritable<UnknownStruct>(ref U04!);
-            rw.ArrayReadableWritable<UnknownStruct>(ref U05!);
+            rw.ArrayReadableWritable<Sampler>(ref n.vertexSamplers!);
+            rw.ArrayReadableWritable<Sampler>(ref n.pixelSamplers!);
+            rw.ArrayReadableWritable<Sampler>(ref n.domainSamplers!);
+            rw.ArrayReadableWritable<Sampler>(ref n.hullSamplers!);
+            rw.ArrayReadableWritable<Sampler>(ref n.geometrySamplers!);
         }
     }
 
     public partial class PipelineGpu : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private bool u01;
-        public bool U01
+        private bool hasExternalFile;
+        public bool HasExternalFile
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.hasExternalFile;
+            set => this.hasExternalFile = value;
         }
 
-        private CMwNod? script;
-        public CMwNod? Script
+        private CPlugFileGPU? fileGpu;
+        public CPlugFileGPU? FileGpu
         {
-            get => this.scriptFile?.GetNode(ref this.script) ?? this.script;
-            set => this.script = value;
+            get => this.fileGpuFile?.GetNode(ref this.fileGpu) ?? this.fileGpu;
+            set => this.fileGpu = value;
         }
-        private Components.GbxRefTableFile? scriptFile;
+        private Components.GbxRefTableFile? fileGpuFile;
 
-        public Components.GbxRefTableFile? ScriptFile
+        public Components.GbxRefTableFile? FileGpuFile
         {
-            get => scriptFile;
-            set => scriptFile = value;
+            get => fileGpuFile;
+            set => fileGpuFile = value;
         }
 
-        public CMwNod? GetScript(GbxReadSettings settings = default, bool exceptions = false) => scriptFile?.GetNode(ref script, settings, exceptions) ?? script;
+        public CPlugFileGPU? GetFileGpu(GbxReadSettings settings = default, bool exceptions = false) => fileGpuFile?.GetNode(ref fileGpu, settings, exceptions) ?? fileGpu;
 
-        private GpuLoadFx[]? gpuLoadFxs;
-        public GpuLoadFx[]? GpuLoadFxs
+        private GpuLoadFx[] gpuLoadFxs = [];
+        public GpuLoadFx[] GpuLoadFxs
         {
             get => this.gpuLoadFxs;
             set => this.gpuLoadFxs = value;
         }
 
-        private Vec4[]? u02;
-        public Vec4[]? U02
+        private Vec4[] fxValues = [];
+        public Vec4[] FxValues
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.fxValues;
+            set => this.fxValues = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -368,24 +709,22 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((PipelineGpu)clone).u01 = context.Clone(this.u01)!;
-            ((PipelineGpu)clone).script = context.Clone(this.script)!;
+            ((PipelineGpu)clone).hasExternalFile = context.Clone(this.hasExternalFile)!;
+            ((PipelineGpu)clone).fileGpu = context.Clone(this.fileGpu)!;
             ((PipelineGpu)clone).gpuLoadFxs = context.CloneArray(this.gpuLoadFxs)!;
-            ((PipelineGpu)clone).u02 = context.CloneArray(this.u02)!;
+            ((PipelineGpu)clone).fxValues = context.CloneArray(this.fxValues)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Boolean(ref this.u01);
-            rw.NodeRef<CMwNod>(ref this.script, ref this.scriptFile);
+            this.hasExternalFile = rw.Boolean((rw.Writer is null ? default : (FileGpuFile is not null)));
+            rw.NodeRef<CPlugFileGPU>(ref this.fileGpu, ref this.fileGpuFile);
 
-            if (!U01)
+            if (FileGpuFile!= null || FileGpu!= null)
             {
-                return;
+                rw.ArrayReadableWritable<GpuLoadFx>(ref this.gpuLoadFxs!, version: 0);
+                rw.Array<Vec4>(ref this.fxValues!);
             }
-
-            rw.ArrayReadableWritable<GpuLoadFx>(ref this.gpuLoadFxs!, version: v);
-            rw.Array<Vec4>(ref this.u02!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -403,39 +742,51 @@ public partial class CPlugShaderPass : CPlug, IClass
 
     public partial class GpuLoadFx : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? name;
+        public string? Name
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.name;
+            set => this.name = value;
         }
 
         private int u02;
+        /// <summary>
+        /// Three-bit value kind.
+        /// </summary>
         public int U02
         {
             get => this.u02;
             set => this.u02 = value;
         }
 
-        private int u03;
-        public int U03
+        private int registersPerElement;
+        /// <summary>
+        /// Four-component registers per array element.
+        /// </summary>
+        public int RegistersPerElement
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.registersPerElement;
+            set => this.registersPerElement = value;
         }
 
-        private int u04;
-        public int U04
+        private int elementCount;
+        /// <summary>
+        /// Number of elements contributing registers.
+        /// </summary>
+        public int ElementCount
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.elementCount;
+            set => this.elementCount = value;
         }
 
-        private int u05;
-        public int U05
+        private int valueIndex;
+        /// <summary>
+        /// First four-component constant in FxValues.
+        /// </summary>
+        public int ValueIndex
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.valueIndex;
+            set => this.valueIndex = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -448,20 +799,20 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((GpuLoadFx)clone).u01 = context.Clone(this.u01)!;
+            ((GpuLoadFx)clone).name = context.Clone(this.name)!;
             ((GpuLoadFx)clone).u02 = context.Clone(this.u02)!;
-            ((GpuLoadFx)clone).u03 = context.Clone(this.u03)!;
-            ((GpuLoadFx)clone).u04 = context.Clone(this.u04)!;
-            ((GpuLoadFx)clone).u05 = context.Clone(this.u05)!;
+            ((GpuLoadFx)clone).registersPerElement = context.Clone(this.registersPerElement)!;
+            ((GpuLoadFx)clone).elementCount = context.Clone(this.elementCount)!;
+            ((GpuLoadFx)clone).valueIndex = context.Clone(this.valueIndex)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
+            rw.Id(ref this.name);
             rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Int32(ref this.u04);
-            rw.Int32(ref this.u05);
+            rw.Int32(ref this.registersPerElement);
+            rw.Int32(ref this.elementCount);
+            rw.Int32(ref this.valueIndex);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -477,34 +828,34 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
-    public partial class UnknownStruct : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class Sampler : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CPlugBitmap? u01;
-        public CPlugBitmap? U01
+        private CPlugBitmap? bitmap;
+        public CPlugBitmap? Bitmap
         {
-            get => this.u01File?.GetNode(ref this.u01) ?? this.u01;
-            set => this.u01 = value;
+            get => this.bitmapFile?.GetNode(ref this.bitmap) ?? this.bitmap;
+            set => this.bitmap = value;
         }
-        private Components.GbxRefTableFile? u01File;
+        private Components.GbxRefTableFile? bitmapFile;
 
-        public Components.GbxRefTableFile? U01File
+        public Components.GbxRefTableFile? BitmapFile
         {
-            get => u01File;
-            set => u01File = value;
+            get => bitmapFile;
+            set => bitmapFile = value;
         }
 
-        public CPlugBitmap? GetU01(GbxReadSettings settings = default, bool exceptions = false) => u01File?.GetNode(ref u01, settings, exceptions) ?? u01;
+        public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
 
-        private string? u02;
-        public string? U02
+        private string? name;
+        public string? Name
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.name;
+            set => this.name = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
-            var clone = (UnknownStruct)MemberwiseClone();
+            var clone = (Sampler)MemberwiseClone();
             context.Register(this, clone);
             DeepCloneArchiveFields(clone, context);
             return clone;
@@ -512,14 +863,14 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((UnknownStruct)clone).u01 = context.Clone(this.u01)!;
-            ((UnknownStruct)clone).u02 = context.Clone(this.u02)!;
+            ((Sampler)clone).bitmap = context.Clone(this.bitmap)!;
+            ((Sampler)clone).name = context.Clone(this.name)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef<CPlugBitmap>(ref this.u01, ref this.u01File);
-            rw.Id(ref this.u02);
+            rw.NodeRef<CPlugBitmap>(ref this.bitmap, ref this.bitmapFile);
+            rw.Id(ref this.name);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -537,9 +888,16 @@ public partial class CPlugShaderPass : CPlug, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09067000 => new Chunk09067000(),
+        0x09067001 => new Chunk09067001(),
+        0x09067002 => new Chunk09067002(),
+        0x09067003 => new Chunk09067003(),
+        0x09067004 => new Chunk09067004(),
+        0x09067005 => new Chunk09067005(),
         0x09067006 => new Chunk09067006(),
         0x09067007 => new Chunk09067007(),
         0x09067008 => new Chunk09067008(),
+        0x09067009 => new Chunk09067009(),
         0x0906700A => new Chunk0906700A(),
         0x0906700B => new Chunk0906700B(),
         0x0906700C => new Chunk0906700C(),

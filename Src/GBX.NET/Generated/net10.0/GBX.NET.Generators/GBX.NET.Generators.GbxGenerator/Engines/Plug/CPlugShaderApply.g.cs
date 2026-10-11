@@ -34,54 +34,284 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     [Hexadecimal]
     public static new uint Id => 0x09026000;
 
-    private CPlugBitmapAddress[]? bitmapAddresses;
+    private CPlugBitmapAddress[] bitmapAddresses = default!;
+    [AppliedWithChunk<Chunk09026000>]
     [AppliedWithChunk<Chunk09026001>]
     [AppliedWithChunk<Chunk09026002>]
-    [AppliedWithChunk<Chunk0902600C>]
-    public CPlugBitmapAddress[]? BitmapAddresses
+    public CPlugBitmapAddress[] BitmapAddresses
     {
         get => this.bitmapAddresses;
         set => this.bitmapAddresses = value;
+    }
+
+    private uint legacyAlphaFlags;
+    [AppliedWithChunk<Chunk09026001>]
+    public uint LegacyAlphaFlags
+    {
+        get => this.legacyAlphaFlags;
+        set => this.legacyAlphaFlags = value;
+    }
+
+    private uint legacyApplyField;
+    [AppliedWithChunk<Chunk09026003>]
+    [AppliedWithChunk<Chunk09026005>]
+    [AppliedWithChunk<Chunk09026006>]
+    public uint LegacyApplyField
+    {
+        get => this.legacyApplyField;
+        set => this.legacyApplyField = value;
+    }
+
+    private uint texOpConstant;
+    /// <summary>
+    /// Packed BGRA texture-operation constant.
+    /// </summary>
+    [AppliedWithChunk<Chunk09026004>]
+    public uint TexOpConstant
+    {
+        get => this.texOpConstant;
+        set => this.texOpConstant = value;
+    }
+
+    private uint applyField;
+    /// <summary>
+    /// Packed blending and alpha-test state.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM2020, 0x06200001)]
+    [AppliedWithChunk<Chunk09026007>]
+    [AppliedWithChunk<Chunk09026008>]
+    [AppliedWithChunk<Chunk09026009>]
+    [AppliedWithChunk<Chunk0902600A>]
+    [AppliedWithChunk<Chunk09026012>]
+    public uint ApplyField
+    {
+        get => this.applyField;
+        set => this.applyField = value;
+    }
+
+    private uint applyField2;
+    [GameVersionDefault(GameVersion.TM2020, 0x007F807F)]
+    [AppliedWithChunk<Chunk09026008>]
+    [AppliedWithChunk<Chunk09026009>]
+    [AppliedWithChunk<Chunk0902600A>]
+    [AppliedWithChunk<Chunk09026012>]
+    public uint ApplyField2
+    {
+        get => this.applyField2;
+        set => this.applyField2 = value;
+    }
+
+    private uint applyField3;
+    [AppliedWithChunk<Chunk09026009>]
+    [AppliedWithChunk<Chunk0902600A>]
+    [AppliedWithChunk<Chunk09026012>]
+    public uint ApplyField3
+    {
+        get => this.applyField3;
+        set => this.applyField3 = value;
+    }
+
+    private CPlugBitmapAddress[] unusedBitmapAddresses = default!;
+    [AppliedWithChunk<Chunk0902600C>]
+    public CPlugBitmapAddress[] UnusedBitmapAddresses
+    {
+        get => this.unusedBitmapAddresses;
+        set => this.unusedBitmapAddresses = value;
+    }
+
+    private byte applyFlags;
+    [AppliedWithChunk<Chunk09026010>]
+    public byte ApplyFlags
+    {
+        get => this.applyFlags;
+        set => this.applyFlags = value;
+    }
+
+    private CPlugBitmapApplyArray? bitmapApplyArray;
+    [AppliedWithChunk<Chunk09026011>]
+    public CPlugBitmapApplyArray? BitmapApplyArray
+    {
+        get => this.bitmapApplyArrayFile?.GetNode(ref this.bitmapApplyArray) ?? this.bitmapApplyArray;
+        set => this.bitmapApplyArray = value;
+    }
+    private Components.GbxRefTableFile? bitmapApplyArrayFile;
+
+    public Components.GbxRefTableFile? BitmapApplyArrayFile
+    {
+        get => bitmapApplyArrayFile;
+        set => bitmapApplyArrayFile = value;
+    }
+
+    public CPlugBitmapApplyArray? GetBitmapApplyArray(GbxReadSettings settings = default, bool exceptions = false) => bitmapApplyArrayFile?.GetNode(ref bitmapApplyArray, settings, exceptions) ?? bitmapApplyArray;
+
+    private uint legacyMaterialFlags0;
+    [AppliedWithChunk<Chunk09063000>]
+    public uint LegacyMaterialFlags0
+    {
+        get => this.legacyMaterialFlags0;
+        set => this.legacyMaterialFlags0 = value;
+    }
+
+    private int envMapTexOp;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public int EnvMapTexOp
+    {
+        get => this.envMapTexOp;
+        set => this.envMapTexOp = value;
+    }
+
+    private CPlugBitmapAddress? diffuse;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public CPlugBitmapAddress? Diffuse
+    {
+        get => this.diffuse;
+        set => this.diffuse = value;
+    }
+
+    private CPlugBitmapAddress? lightMap;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public CPlugBitmapAddress? LightMap
+    {
+        get => this.lightMap;
+        set => this.lightMap = value;
+    }
+
+    private CPlugBitmapAddress? bumpMap;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public CPlugBitmapAddress? BumpMap
+    {
+        get => this.bumpMap;
+        set => this.bumpMap = value;
+    }
+
+    private CPlugBitmapAddress? selfIllum;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public CPlugBitmapAddress? SelfIllum
+    {
+        get => this.selfIllum;
+        set => this.selfIllum = value;
+    }
+
+    private CPlugBitmapAddress? envMap;
+    [AppliedWithChunk<Chunk09063000>]
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public CPlugBitmapAddress? EnvMap
+    {
+        get => this.envMap;
+        set => this.envMap = value;
+    }
+
+    private uint legacyMaterialFlags;
+    [AppliedWithChunk<Chunk09063001>]
+    [AppliedWithChunk<Chunk09063002>]
+    public uint LegacyMaterialFlags
+    {
+        get => this.legacyMaterialFlags;
+        set => this.legacyMaterialFlags = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugShaderApply)clone).bitmapAddresses = context.CloneArray(this.bitmapAddresses)!;
+        ((CPlugShaderApply)clone).legacyAlphaFlags = context.Clone(this.legacyAlphaFlags)!;
+        ((CPlugShaderApply)clone).legacyApplyField = context.Clone(this.legacyApplyField)!;
+        ((CPlugShaderApply)clone).texOpConstant = context.Clone(this.texOpConstant)!;
+        ((CPlugShaderApply)clone).applyField = context.Clone(this.applyField)!;
+        ((CPlugShaderApply)clone).applyField2 = context.Clone(this.applyField2)!;
+        ((CPlugShaderApply)clone).applyField3 = context.Clone(this.applyField3)!;
+        ((CPlugShaderApply)clone).unusedBitmapAddresses = context.CloneArray(this.unusedBitmapAddresses)!;
+        ((CPlugShaderApply)clone).applyFlags = context.Clone(this.applyFlags)!;
+        ((CPlugShaderApply)clone).bitmapApplyArray = context.Clone(this.bitmapApplyArray)!;
+        ((CPlugShaderApply)clone).legacyMaterialFlags0 = context.Clone(this.legacyMaterialFlags0)!;
+        ((CPlugShaderApply)clone).envMapTexOp = context.Clone(this.envMapTexOp)!;
+        ((CPlugShaderApply)clone).diffuse = context.Clone(this.diffuse)!;
+        ((CPlugShaderApply)clone).lightMap = context.Clone(this.lightMap)!;
+        ((CPlugShaderApply)clone).bumpMap = context.Clone(this.bumpMap)!;
+        ((CPlugShaderApply)clone).selfIllum = context.Clone(this.selfIllum)!;
+        ((CPlugShaderApply)clone).envMap = context.Clone(this.envMap)!;
+        ((CPlugShaderApply)clone).legacyMaterialFlags = context.Clone(this.legacyMaterialFlags)!;
     }
 
-    public CPlugShaderApply()
+    public CPlugShaderApply() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x09026001)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
-    public partial class Chunk09026001 : Chunk<CPlugShaderApply>
+    public CPlugShaderApply(GameVersion gameVersion)
     {
-        public override uint Id => 0x09026001;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
-        public int U02;
-        public uint U03;
+        BlendSrc = 1;
+        bitmapAddresses = [];
+        texOpConstant = 0x01010101;
+
+        if (gameVersion == GameVersion.TM2020)
+        {
+            applyField = 0x06200001;
+            applyField2 = 0x007F807F;
+        }
+        else
+        {
+            applyField = 0x06000001;
+            applyField2 = 0x007F007F;
+        }
+
+        applyField3 = 2;
+        unusedBitmapAddresses = [];
+        envMapTexOp = 3;
+        legacyMaterialFlags = 0x30;
+    }
+
+    [Chunk(0x09026000)]
+    public partial class Chunk09026000 : Chunk<CPlugShaderApply>
+    {
+        public override uint Id => 0x09026000;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09026001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09026001)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            n.BlendSrc = rw.Int32(n.BlendSrc);
+            n.BlendDst = rw.Int32(n.BlendDst);
             rw.ArrayNodeRef<CPlugBitmapAddress>(ref n.bitmapAddresses!);
-            rw.UInt32(ref U03);
         }
     }
 
-    [Chunk(0x09026002)]
+    [Chunk(0x09026001)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk09026001 : Chunk09026000
+    {
+        public override uint Id => 0x09026001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.DataUInt32(ref n.legacyAlphaFlags);
+        }
+    }
+
+    /// <summary>
+    /// BitmapAddresses
+    /// </summary>
+    [Chunk(0x09026002, "BitmapAddresses")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026002 : Chunk<CPlugShaderApply>
     {
@@ -99,110 +329,132 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
-    [Chunk(0x09026004)]
+    [Chunk(0x09026003)]
+    public partial class Chunk09026003 : Chunk<CPlugShaderApply>
+    {
+        public override uint Id => 0x09026003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref n.legacyApplyField);
+        }
+    }
+
+    /// <summary>
+    /// TexOpConstant
+    /// </summary>
+    [Chunk(0x09026004, "TexOpConstant")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026004 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026004;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.DataUInt32(ref n.texOpConstant);
+        }
+    }
+
+    [Chunk(0x09026005)]
+    public partial class Chunk09026005 : Chunk09026003
+    {
+        public override uint Id => 0x09026005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
     [Chunk(0x09026006)]
-    public partial class Chunk09026006 : Chunk<CPlugShaderApply>
+    public partial class Chunk09026006 : Chunk09026003
     {
         public override uint Id => 0x09026006;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026006)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
         }
     }
 
-    [Chunk(0x09026007)]
+    /// <summary>
+    /// ApplyField
+    /// </summary>
+    [Chunk(0x09026007, "ApplyField")]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk09026007 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026007;
         public override GameVersion GameVersion => GameVersion.VSK5;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026007)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.DataUInt32(ref n.applyField);
         }
     }
 
     [Chunk(0x09026008)]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk09026008 : Chunk<CPlugShaderApply>
+    public partial class Chunk09026008 : Chunk09026007
     {
         public override uint Id => 0x09026008;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public int U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026008)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09026008)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            base.ReadWrite(n, rw);
+            rw.DataUInt32(ref n.applyField2);
+        }
+    }
+
+    [Chunk(0x09026009)]
+    public partial class Chunk09026009 : Chunk09026008
+    {
+        public override uint Id => 0x09026009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.DataUInt32(ref n.applyField3);
         }
     }
 
     [Chunk(0x0902600A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
-    public partial class Chunk0902600A : Chunk<CPlugShaderApply>
+    public partial class Chunk0902600A : Chunk09026009
     {
         public override uint Id => 0x0902600A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public uint U01;
-        public uint U02;
-        public uint U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0902600A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0902600A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0902600A)clone).U03 = context.Clone(this.U03)!;
-        }
-
-        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
-        {
-            rw.UInt32(ref U01);
-            rw.UInt32(ref U02);
-            rw.UInt32(ref U03);
         }
     }
 
@@ -220,153 +472,179 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugBitmapAddress>(ref n.bitmapAddresses!);
+            rw.ArrayNodeRef_deprec<CPlugBitmapAddress>(ref n.unusedBitmapAddresses!);
         }
     }
 
-    [Chunk(0x0902600D)]
-    public partial class Chunk0902600D : Chunk<CPlugShaderApply>
-    {
-        public override uint Id => 0x0902600D;
-        public byte U01;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk0902600D)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
-        {
-            rw.Byte(ref U01);
-        }
-    }
-
-    [Chunk(0x09026010)]
+    /// <summary>
+    /// ApplyFlags
+    /// </summary>
+    [Chunk(0x09026010, "ApplyFlags")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026010 : Chunk<CPlugShaderApply>
     {
         public override uint Id => 0x09026010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public byte U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09026010)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.Byte(ref U01);
+            rw.Byte(ref n.applyFlags);
         }
     }
 
-    [Chunk(0x09026011)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// BitmapApplyArray
+    /// </summary>
+    [Chunk(0x09026011, "BitmapApplyArray")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
     public partial class Chunk09026011 : Chunk<CPlugShaderApply>, IVersionable
     {
         public override uint Id => 0x09026011;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        public Chunk09026011() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09026011(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09026011)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09026011)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef<CPlugBitmapApplyArray>(ref n.bitmapApplyArray, ref n.bitmapApplyArrayFile);
         }
     }
 
-    [Chunk(0x09026012)]
-    [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk09026012 : Chunk<CPlugShaderApply>, IVersionable
+    /// <summary>
+    /// apply fields
+    /// </summary>
+    [Chunk(0x09026012, "apply fields")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    public partial class Chunk09026012 : Chunk0902600A, IVersionable
     {
         public override uint Id => 0x09026012;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public uint U01;
-        public uint U02;
-        public uint U03;
+
+        public Chunk09026012() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09026012(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09026012)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09026012)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09026012)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09026012)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.UInt32(ref U01);
-            rw.UInt32(ref U02);
-            rw.UInt32(ref U03);
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    [Chunk(0x09063000)]
+    public partial class Chunk09063000 : Chunk<CPlugShaderApply>
+    {
+        public override uint Id => 0x09063000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref n.legacyMaterialFlags0);
+            rw.Int32(ref n.envMapTexOp);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.diffuse);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.lightMap);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.bumpMap);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.selfIllum);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.envMap);
+        }
+    }
+
+    [Chunk(0x09063001)]
+    public partial class Chunk09063001 : Chunk<CPlugShaderApply>
+    {
+        public override uint Id => 0x09063001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref n.legacyMaterialFlags);
+            rw.Int32(ref n.envMapTexOp);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.diffuse);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.lightMap);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.bumpMap);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.selfIllum);
+            rw.NodeRef<CPlugBitmapAddress>(ref n.envMap);
         }
     }
 
     [Chunk(0x09063002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
-    public partial class Chunk09063002 : Chunk<CPlugShaderApply>
+    public partial class Chunk09063002 : Chunk09063001
     {
         public override uint Id => 0x09063002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
-        public int U02;
-        public CPlugBitmapAddress? U03;
-        public CPlugBitmapAddress? U04;
-        public CPlugBitmapAddress? U05;
-        public CPlugBitmapAddress? U06;
-        public CPlugBitmapAddress? U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09063002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09063002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09063002)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09063002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09063002)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09063002)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09063002)clone).U07 = context.Clone(this.U07)!;
-        }
-
-        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
-        {
-            rw.DataInt32(ref U01);
-            rw.Int32(ref U02);
-            rw.NodeRef<CPlugBitmapAddress>(ref U03);
-            rw.NodeRef<CPlugBitmapAddress>(ref U04);
-            rw.NodeRef<CPlugBitmapAddress>(ref U05);
-            rw.NodeRef<CPlugBitmapAddress>(ref U06);
-            rw.NodeRef<CPlugBitmapAddress>(ref U07);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09026000 => new Chunk09026000(),
         0x09026001 => new Chunk09026001(),
         0x09026002 => new Chunk09026002(),
+        0x09026003 => new Chunk09026003(),
         0x09026004 => new Chunk09026004(),
+        0x09026005 => new Chunk09026005(),
         0x09026006 => new Chunk09026006(),
         0x09026007 => new Chunk09026007(),
         0x09026008 => new Chunk09026008(),
+        0x09026009 => new Chunk09026009(),
         0x0902600A => new Chunk0902600A(),
         0x0902600C => new Chunk0902600C(),
-        0x0902600D => new Chunk0902600D(),
         0x09026010 => new Chunk09026010(),
         0x09026011 => new Chunk09026011(),
         0x09026012 => new Chunk09026012(),
+        0x09063000 => new Chunk09063000(),
+        0x09063001 => new Chunk09063001(),
         0x09063002 => new Chunk09063002(),
         _ => base.NewChunk(chunkId),
     };
