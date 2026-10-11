@@ -453,15 +453,15 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public float U20;
         public float U21;
         public float U22;
-        public Keys? U23;
-        public Keys? U24;
+        public PlugCurve? U23;
+        public PlugCurve? U24;
         public float U25;
-        public Keys? U26;
-        public Keys? U27;
+        public PlugCurve? U26;
+        public PlugCurve? U27;
         public float U28;
         public float U29;
         public float U30;
-        public Keys? U31;
+        public PlugCurve? U31;
         public int U32;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -570,12 +570,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<Keys>(ref U23, version: Version- 12);
+                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 12);
             }
 
             if (Version >= 10)
             {
-                rw.ReadableWritable<Keys>(ref U24, version: Version- 12);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 12);
             }
 
             if (Version >= 11)
@@ -585,8 +585,8 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
             if (Version >= 13)
             {
-                rw.ReadableWritable<Keys>(ref U26, version: Version- 12);
-                rw.ReadableWritable<Keys>(ref U27, version: Version- 12);
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 12);
+                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 12);
                 rw.Single(ref U28);
                 rw.Single(ref U29);
                 rw.Single(ref U30);
@@ -594,43 +594,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
             if (Version >= 14)
             {
-                rw.ReadableWritable<Keys>(ref U31, version: Version- 12);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 12);
                 rw.Int32(ref U32);
             }
-        }
-    }
-
-    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (Keys)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((Keys)clone).u01 = context.Clone(this.u01)!;
-            ((Keys)clone).u02 = context.Clone(this.u02)!;
-            ((Keys)clone).count = context.Clone(this.count)!;
-            ((Keys)clone).u03 = context.Clone(this.u03)!;
-            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
-            ((Keys)clone).u05 = context.Clone(this.u05)!;
-            ((Keys)clone).u06 = context.Clone(this.u06)!;
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
         }
     }
 

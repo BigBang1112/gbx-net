@@ -8,25 +8,11 @@ archive
   float Gravity
   float U02 = 10
   float U03 = 1
-  Keys U04
-  Keys U05
-  Keys U06
+  PlugCurve U04 (version: v - 1)
+  PlugCurve U05 (version: v - 1)
+  PlugCurve U06 (version: v - 1)
   float U07 = 1
-  Keys U08
+  PlugCurve U08 (version: v - 1)
   float U09 = 1
   v3+
     CPlugSurface Surface (external)
-
-archive Keys
-  v0=
-    CPlugCurveSimpleNod Curve (external)
-  v1+
-    int Version = 3
-    int Count
-    if Version == 1
-      byte FlagsV1
-    if Version == 2
-      int Capacity = 7
-    if Version >= 3
-      ushort Flags
-    vec2[Count] Values

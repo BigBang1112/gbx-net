@@ -69,7 +69,7 @@ public class CPlugDynaWaterModelTests
         writer.Write(new Vec2(3.5f, 4.5f));
         payload.Finish();
 
-        var keys = new CPlugDynaWaterModel.Keys();
+        var keys = new PlugCurve();
         payload.Read(rw => keys.ReadWrite(rw, version: 1));
         await Assert.That(keys.Version).IsEqualTo(keyVersion);
         await Assert.That(keys.Count).IsEqualTo(2);
@@ -156,13 +156,13 @@ public class CPlugDynaWaterModelTests
         writer.Write(0xFACADE01u);
         payload.Finish();
 
-        var keys = new CPlugDynaWaterModel.Keys();
-        payload.Read(rw => keys.ReadWrite(rw, version: 0));
+        var keys = new PlugCurve();
+        payload.Read(rw => keys.ReadWrite(rw, version: -1));
         await Assert.That(keys.Curve).IsNotNull();
         await Assert.That(keys.Flags).IsEqualTo((ushort)0xFEDC);
         await Assert.That(keys.Count).IsEqualTo(2);
         await Assert.That(keys.Values!).IsEquivalentTo(new[] { new Vec2(1.5f, 2.5f), new Vec2(3.5f, 4.5f) }, CollectionOrdering.Matching);
-        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: 0));
+        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: -1));
     }
 
     [Test]

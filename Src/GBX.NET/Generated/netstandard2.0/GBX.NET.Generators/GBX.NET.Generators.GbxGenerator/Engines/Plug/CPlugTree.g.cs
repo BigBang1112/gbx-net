@@ -86,7 +86,6 @@ public partial class CPlugTree : CPlug, IClass
     private CPlugVisual? visual;
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
-    [AppliedWithChunk<Chunk0904F014>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlugVisual? Visual
     {
@@ -116,7 +115,6 @@ public partial class CPlugTree : CPlug, IClass
     private CPlug? surface;
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
-    [AppliedWithChunk<Chunk0904F014>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlug? Surface
     {
@@ -172,47 +170,12 @@ public partial class CPlugTree : CPlug, IClass
 
     private CPlugTreeGenerator? generator;
     [AppliedWithChunk<Chunk0904F012>]
-    [AppliedWithChunk<Chunk0904F014>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlugTreeGenerator? Generator
     {
         get => this.generator;
         set => this.generator = value;
     }
-
-    private CPlugShader? legacyShader;
-    [AppliedWithChunk<Chunk0904F014>]
-    public CPlugShader? LegacyShader
-    {
-        get => this.legacyShaderFile?.GetNode(ref this.legacyShader) ?? this.legacyShader;
-        set => this.legacyShader = value;
-    }
-    private Components.GbxRefTableFile? legacyShaderFile;
-
-    public Components.GbxRefTableFile? LegacyShaderFile
-    {
-        get => legacyShaderFile;
-        set => legacyShaderFile = value;
-    }
-
-    public CPlugShader? GetLegacyShader(GbxReadSettings settings = default, bool exceptions = false) => legacyShaderFile?.GetNode(ref legacyShader, settings, exceptions) ?? legacyShader;
-
-    private CPlugMaterial? legacyMaterial;
-    [AppliedWithChunk<Chunk0904F014>]
-    public CPlugMaterial? LegacyMaterial
-    {
-        get => this.legacyMaterialFile?.GetNode(ref this.legacyMaterial) ?? this.legacyMaterial;
-        set => this.legacyMaterial = value;
-    }
-    private Components.GbxRefTableFile? legacyMaterialFile;
-
-    public Components.GbxRefTableFile? LegacyMaterialFile
-    {
-        get => legacyMaterialFile;
-        set => legacyMaterialFile = value;
-    }
-
-    public CPlugMaterial? GetLegacyMaterial(GbxReadSettings settings = default, bool exceptions = false) => legacyMaterialFile?.GetNode(ref legacyMaterial, settings, exceptions) ?? legacyMaterial;
 
     private CMwRefBuffer? refBuffer;
     [AppliedWithChunk<Chunk0904F017>]
@@ -237,8 +200,6 @@ public partial class CPlugTree : CPlug, IClass
         ((CPlugTree)clone).location = context.Clone(this.location)!;
         ((CPlugTree)clone).funcTree = context.Clone(this.funcTree)!;
         ((CPlugTree)clone).generator = context.Clone(this.generator)!;
-        ((CPlugTree)clone).legacyShader = context.Clone(this.legacyShader)!;
-        ((CPlugTree)clone).legacyMaterial = context.Clone(this.legacyMaterial)!;
         ((CPlugTree)clone).refBuffer = context.Clone(this.refBuffer)!;
     }
 
@@ -477,57 +438,6 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy visual, shader, material, surface and generator
-    /// </summary>
-    [Chunk(0x0904F014, "legacy visual, shader, material, surface and generator")]
-    public partial class Chunk0904F014 : Chunk<CPlugTree>
-    {
-        public override uint Id => 0x0904F014;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
-
-        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
-        {
-            if (n.HasModel)
-            {
-                return;
-            }
-
-            rw.NodeRef<CPlugVisual>(ref n.visual);
-            rw.NodeRef<CPlugShader>(ref n.legacyShader, ref n.legacyShaderFile);
-            rw.NodeRef<CPlugMaterial>(ref n.legacyMaterial, ref n.legacyMaterialFile);
-            rw.NodeRef<CPlug>(ref n.surface);
-            rw.NodeRef<CPlugTreeGenerator>(ref n.generator);
-
-            if (n.LegacyMaterial!= null || n.LegacyMaterialFile!= null)
-            {
-                if (rw.Reader is not null)
-                {
-                    n.Shader = n.LegacyMaterial;
-                }
-                if (rw.Reader is not null)
-                {
-                    n.ShaderFile = n.LegacyMaterialFile;
-                }
-            }
-            else
-            {
-                if (rw.Reader is not null)
-                {
-                    n.Shader = n.LegacyShader;
-                }
-                if (rw.Reader is not null)
-                {
-                    n.ShaderFile = n.LegacyShaderFile;
-                }
-            }
-        }
-    }
-
-    /// <summary>
     /// legacy flags and location
     /// </summary>
     [Chunk(0x0904F015, "legacy flags and location")]
@@ -749,7 +659,6 @@ public partial class CPlugTree : CPlug, IClass
         0x0904F011 => new Chunk0904F011(),
         0x0904F012 => new Chunk0904F012(),
         0x0904F013 => new Chunk0904F013(),
-        0x0904F014 => new Chunk0904F014(),
         0x0904F015 => new Chunk0904F015(),
         0x0904F016 => new Chunk0904F016(),
         0x0904F017 => new Chunk0904F017(),

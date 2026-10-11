@@ -99,21 +99,21 @@ public class CPlugVisEntFxModelTests
         writer.Write(0xFACADE01u);
         payload.Finish();
 
-        var keys = new CPlugVisEntFxModel.Keys();
-        payload.Read(rw => keys.ReadWrite(rw, version: 0));
+        var keys = new PlugCurve();
+        payload.Read(rw => keys.ReadWrite(rw, version: -1));
         await Assert.That(keys.Curve!.RealInterp).IsEqualTo(interpolation);
         await Assert.That(keys.Curve.ForcedTangentMinX).IsEqualTo(5.5f);
         await Assert.That(keys.Curve.ForcedTangentMaxX).IsEqualTo(6.5f);
         await Assert.That(keys.Flags).IsEqualTo((ushort)(flags | 0x20));
         await Assert.That(keys.Values!).IsEquivalentTo(new[] { new Vec2(1.5f, 2.5f), new Vec2(3.5f, 4.5f) }, CollectionOrdering.Matching);
         await Assert.That(keys.Count).IsEqualTo(2);
-        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: 0));
+        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: -1));
 
         using var current = new MemoryStream();
         using (var currentWriter = new GbxWriter(current)) keys.Write(currentWriter, v: 1);
         current.Position = 0;
         using var reader = new GbxReader(current);
-        var restored = reader.ReadReadable<CPlugVisEntFxModel.Keys>(version: 1);
+        var restored = reader.ReadReadable<PlugCurve>(version: 1);
         await Assert.That(restored.Flags).IsEqualTo(keys.Flags);
         await Assert.That(restored.Values!).IsEquivalentTo(keys.Values!, CollectionOrdering.Matching);
         await Assert.That(current.Position).IsEqualTo(current.Length);
@@ -132,13 +132,13 @@ public class CPlugVisEntFxModelTests
         writer.Write(0xFACADE01u);
         payload.Finish();
 
-        var keys = new CPlugVisEntFxModel.Keys();
-        payload.Read(rw => keys.ReadWrite(rw, version: 0));
+        var keys = new PlugCurve();
+        payload.Read(rw => keys.ReadWrite(rw, version: -1));
         await Assert.That(keys.Curve).IsTypeOf<CPlugCurveSimpleNod>();
         await Assert.That(keys.Flags).IsEqualTo((ushort)0xFEDD);
         await Assert.That(keys.Count).IsEqualTo(2);
         await Assert.That(keys.Values![1]).IsEqualTo(new Vec2(2.5f, 3.5f));
-        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: 0));
+        await payload.AssertRoundTrip(rw => keys.ReadWrite(rw, version: -1));
     }
 
     [Test]

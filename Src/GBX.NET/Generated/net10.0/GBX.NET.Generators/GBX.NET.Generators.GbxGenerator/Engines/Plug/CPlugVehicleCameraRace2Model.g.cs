@@ -34,240 +34,790 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F6000;
 
+    private float inputGasDistDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputGasDistDelta
+    {
+        get => this.inputGasDistDelta;
+        set => this.inputGasDistDelta = value;
+    }
+
+    private int inputGasDistTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputGasDistTimeUp
+    {
+        get => this.inputGasDistTimeUp;
+        set => this.inputGasDistTimeUp = value;
+    }
+
+    private int inputGasDistTimeDown = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputGasDistTimeDown
+    {
+        get => this.inputGasDistTimeDown;
+        set => this.inputGasDistTimeDown = value;
+    }
+
+    private float inputBrakeDistDelta = -0.7f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputBrakeDistDelta
+    {
+        get => this.inputBrakeDistDelta;
+        set => this.inputBrakeDistDelta = value;
+    }
+
+    private int inputBrakeDistTimeUp = 750;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputBrakeDistTimeUp
+    {
+        get => this.inputBrakeDistTimeUp;
+        set => this.inputBrakeDistTimeUp = value;
+    }
+
+    private int inputBrakeDistTimeDown = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputBrakeDistTimeDown
+    {
+        get => this.inputBrakeDistTimeDown;
+        set => this.inputBrakeDistTimeDown = value;
+    }
+
+    private float inputSteerDistDelta = -0.8f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputSteerDistDelta
+    {
+        get => this.inputSteerDistDelta;
+        set => this.inputSteerDistDelta = value;
+    }
+
+    private int inputSteerDistTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputSteerDistTimeUp
+    {
+        get => this.inputSteerDistTimeUp;
+        set => this.inputSteerDistTimeUp = value;
+    }
+
+    private int inputSteerDistTimeDown = 1500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputSteerDistTimeDown
+    {
+        get => this.inputSteerDistTimeDown;
+        set => this.inputSteerDistTimeDown = value;
+    }
+
+    private float eventTurboFovDelta = 10.5f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float EventTurboFovDelta
+    {
+        get => this.eventTurboFovDelta;
+        set => this.eventTurboFovDelta = value;
+    }
+
+    private int eventTurboFovTimeUp = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventTurboFovTimeUp
+    {
+        get => this.eventTurboFovTimeUp;
+        set => this.eventTurboFovTimeUp = value;
+    }
+
+    private int eventTurboFovTimeDown = 1400;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventTurboFovTimeDown
+    {
+        get => this.eventTurboFovTimeDown;
+        set => this.eventTurboFovTimeDown = value;
+    }
+
+    private float eventTurboDistDelta = -0.6f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float EventTurboDistDelta
+    {
+        get => this.eventTurboDistDelta;
+        set => this.eventTurboDistDelta = value;
+    }
+
+    private int eventTurboDistTimeUp = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventTurboDistTimeUp
+    {
+        get => this.eventTurboDistTimeUp;
+        set => this.eventTurboDistTimeUp = value;
+    }
+
+    private int eventTurboDistTimeDown = 1400;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventTurboDistTimeDown
+    {
+        get => this.eventTurboDistTimeDown;
+        set => this.eventTurboDistTimeDown = value;
+    }
+
+    private float eventChangeGearDistDelta = -0.35f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float EventChangeGearDistDelta
+    {
+        get => this.eventChangeGearDistDelta;
+        set => this.eventChangeGearDistDelta = value;
+    }
+
+    private int eventChangeGearDistTimeUp = 500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventChangeGearDistTimeUp
+    {
+        get => this.eventChangeGearDistTimeUp;
+        set => this.eventChangeGearDistTimeUp = value;
+    }
+
+    private int eventChangeGearDistTimeDown = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventChangeGearDistTimeDown
+    {
+        get => this.eventChangeGearDistTimeDown;
+        set => this.eventChangeGearDistTimeDown = value;
+    }
+
+    private float eventBurningLookAtFactorDelta = -0.4f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float EventBurningLookAtFactorDelta
+    {
+        get => this.eventBurningLookAtFactorDelta;
+        set => this.eventBurningLookAtFactorDelta = value;
+    }
+
+    private int eventBurningLookAtFactorTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventBurningLookAtFactorTimeUp
+    {
+        get => this.eventBurningLookAtFactorTimeUp;
+        set => this.eventBurningLookAtFactorTimeUp = value;
+    }
+
+    private int eventBurningLookAtFactorTimeDown = 1500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventBurningLookAtFactorTimeDown
+    {
+        get => this.eventBurningLookAtFactorTimeDown;
+        set => this.eventBurningLookAtFactorTimeDown = value;
+    }
+
+    private float eventBurningDistDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float EventBurningDistDelta
+    {
+        get => this.eventBurningDistDelta;
+        set => this.eventBurningDistDelta = value;
+    }
+
+    private int eventBurningDistTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventBurningDistTimeUp
+    {
+        get => this.eventBurningDistTimeUp;
+        set => this.eventBurningDistTimeUp = value;
+    }
+
+    private int eventBurningDistTimeDown = 1500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int EventBurningDistTimeDown
+    {
+        get => this.eventBurningDistTimeDown;
+        set => this.eventBurningDistTimeDown = value;
+    }
+
+    private float stateFlyingDistDelta = 2.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float StateFlyingDistDelta
+    {
+        get => this.stateFlyingDistDelta;
+        set => this.stateFlyingDistDelta = value;
+    }
+
+    private int stateFlyingDistTimeUp = 3000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingDistTimeUp
+    {
+        get => this.stateFlyingDistTimeUp;
+        set => this.stateFlyingDistTimeUp = value;
+    }
+
+    private int stateFlyingDistTimeDown = 2500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingDistTimeDown
+    {
+        get => this.stateFlyingDistTimeDown;
+        set => this.stateFlyingDistTimeDown = value;
+    }
+
+    private float stateFlyingPlaneDistDelta = 4.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float StateFlyingPlaneDistDelta
+    {
+        get => this.stateFlyingPlaneDistDelta;
+        set => this.stateFlyingPlaneDistDelta = value;
+    }
+
+    private int stateFlyingPlaneDistTimeUp = 3000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingPlaneDistTimeUp
+    {
+        get => this.stateFlyingPlaneDistTimeUp;
+        set => this.stateFlyingPlaneDistTimeUp = value;
+    }
+
+    private int stateFlyingPlaneDistTimeDown = 2500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingPlaneDistTimeDown
+    {
+        get => this.stateFlyingPlaneDistTimeDown;
+        set => this.stateFlyingPlaneDistTimeDown = value;
+    }
+
+    private float stateFlyingLookAtFactorDelta = -0.2f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float StateFlyingLookAtFactorDelta
+    {
+        get => this.stateFlyingLookAtFactorDelta;
+        set => this.stateFlyingLookAtFactorDelta = value;
+    }
+
+    private int stateFlyingLookAtFactorTimeUp = 3000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingLookAtFactorTimeUp
+    {
+        get => this.stateFlyingLookAtFactorTimeUp;
+        set => this.stateFlyingLookAtFactorTimeUp = value;
+    }
+
+    private int stateFlyingLookAtFactorTimeDown = 2500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingLookAtFactorTimeDown
+    {
+        get => this.stateFlyingLookAtFactorTimeDown;
+        set => this.stateFlyingLookAtFactorTimeDown = value;
+    }
+
+    private float inputLeftSteerRollDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputLeftSteerRollDelta
+    {
+        get => this.inputLeftSteerRollDelta;
+        set => this.inputLeftSteerRollDelta = value;
+    }
+
+    private int inputLeftSteerRollTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputLeftSteerRollTimeUp
+    {
+        get => this.inputLeftSteerRollTimeUp;
+        set => this.inputLeftSteerRollTimeUp = value;
+    }
+
+    private int inputLeftSteerRollTimeDown = 1200;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputLeftSteerRollTimeDown
+    {
+        get => this.inputLeftSteerRollTimeDown;
+        set => this.inputLeftSteerRollTimeDown = value;
+    }
+
+    private float inputRightSteerRollDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputRightSteerRollDelta
+    {
+        get => this.inputRightSteerRollDelta;
+        set => this.inputRightSteerRollDelta = value;
+    }
+
+    private int inputRightSteerRollTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputRightSteerRollTimeUp
+    {
+        get => this.inputRightSteerRollTimeUp;
+        set => this.inputRightSteerRollTimeUp = value;
+    }
+
+    private int inputRightSteerRollTimeDown = 1200;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputRightSteerRollTimeDown
+    {
+        get => this.inputRightSteerRollTimeDown;
+        set => this.inputRightSteerRollTimeDown = value;
+    }
+
+    private float inputLeftSteerYawDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputLeftSteerYawDelta
+    {
+        get => this.inputLeftSteerYawDelta;
+        set => this.inputLeftSteerYawDelta = value;
+    }
+
+    private int inputLeftSteerYawTimeUp = 2500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputLeftSteerYawTimeUp
+    {
+        get => this.inputLeftSteerYawTimeUp;
+        set => this.inputLeftSteerYawTimeUp = value;
+    }
+
+    private int inputLeftSteerYawTimeDown = 1500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputLeftSteerYawTimeDown
+    {
+        get => this.inputLeftSteerYawTimeDown;
+        set => this.inputLeftSteerYawTimeDown = value;
+    }
+
+    private float inputRightSteerYawDelta = 1.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float InputRightSteerYawDelta
+    {
+        get => this.inputRightSteerYawDelta;
+        set => this.inputRightSteerYawDelta = value;
+    }
+
+    private int inputRightSteerYawTimeUp = 2000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputRightSteerYawTimeUp
+    {
+        get => this.inputRightSteerYawTimeUp;
+        set => this.inputRightSteerYawTimeUp = value;
+    }
+
+    private int inputRightSteerYawTimeDown = 1500;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputRightSteerYawTimeDown
+    {
+        get => this.inputRightSteerYawTimeDown;
+        set => this.inputRightSteerYawTimeDown = value;
+    }
+
+    private float stateFlyingLookAtStep = 0.5f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float StateFlyingLookAtStep
+    {
+        get => this.stateFlyingLookAtStep;
+        set => this.stateFlyingLookAtStep = value;
+    }
+
+    private float minSpeed = 20.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float MinSpeed
+    {
+        get => this.minSpeed;
+        set => this.minSpeed = value;
+    }
+
+    private int stateFlyingDurationBeforeFlyingMode = 200;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingDurationBeforeFlyingMode
+    {
+        get => this.stateFlyingDurationBeforeFlyingMode;
+        set => this.stateFlyingDurationBeforeFlyingMode = value;
+    }
+
+    private int stateFlyingDurationBeforeCameraMove = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int StateFlyingDurationBeforeCameraMove
+    {
+        get => this.stateFlyingDurationBeforeCameraMove;
+        set => this.stateFlyingDurationBeforeCameraMove = value;
+    }
+
+    private int inputSteerDurationBeforeBurnoutShowView = 1000;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputSteerDurationBeforeBurnoutShowView
+    {
+        get => this.inputSteerDurationBeforeBurnoutShowView;
+        set => this.inputSteerDurationBeforeBurnoutShowView = value;
+    }
+
+    private int inputSteerDurationBeforeAnticipatingTurnTriggered = 200;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputSteerDurationBeforeAnticipatingTurnTriggered
+    {
+        get => this.inputSteerDurationBeforeAnticipatingTurnTriggered;
+        set => this.inputSteerDurationBeforeAnticipatingTurnTriggered = value;
+    }
+
+    private int inputSteerDurationBeforeRollTriggered = 300;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputSteerDurationBeforeRollTriggered
+    {
+        get => this.inputSteerDurationBeforeRollTriggered;
+        set => this.inputSteerDurationBeforeRollTriggered = value;
+    }
+
+    private int inputNoSteerDurationBeforeReset = 150;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public int InputNoSteerDurationBeforeReset
+    {
+        get => this.inputNoSteerDurationBeforeReset;
+        set => this.inputNoSteerDurationBeforeReset = value;
+    }
+
+    private float maxDeltaPlaneDistStep = 2.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float MaxDeltaPlaneDistStep
+    {
+        get => this.maxDeltaPlaneDistStep;
+        set => this.maxDeltaPlaneDistStep = value;
+    }
+
+    private float maxDeltaFovStep = 19.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float MaxDeltaFovStep
+    {
+        get => this.maxDeltaFovStep;
+        set => this.maxDeltaFovStep = value;
+    }
+
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public PlugCurve? LookAtFactorFromUpSpeedRatio
+    {
+        get => this.lookAtFactorFromUpSpeedRatio;
+        set => this.lookAtFactorFromUpSpeedRatio = value;
+    }
+
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public PlugCurve? YawFromSpeed
+    {
+        get => this.yawFromSpeed;
+        set => this.yawFromSpeed = value;
+    }
+
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public PlugCurve? RollFromSpeed
+    {
+        get => this.rollFromSpeed;
+        set => this.rollFromSpeed = value;
+    }
+
+    private float deltaDistDamperKi = 10.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float DeltaDistDamperKi
+    {
+        get => this.deltaDistDamperKi;
+        set => this.deltaDistDamperKi = value;
+    }
+
+    private float deltaDistDamperKa = 5.0f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float DeltaDistDamperKa
+    {
+        get => this.deltaDistDamperKa;
+        set => this.deltaDistDamperKa = value;
+    }
+
+    private float deltaLookAtFactorDamperKi = 1.5f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float DeltaLookAtFactorDamperKi
+    {
+        get => this.deltaLookAtFactorDamperKi;
+        set => this.deltaLookAtFactorDamperKi = value;
+    }
+
+    private float deltaLookAtFactorDamperKa = 0.7f;
+    [AppliedWithChunk<Chunk090F6000>]
+    [AppliedWithChunk<Chunk090F6002>(4)]
+    public float DeltaLookAtFactorDamperKa
+    {
+        get => this.deltaLookAtFactorDamperKa;
+        set => this.deltaLookAtFactorDamperKa = value;
+    }
+
+    private bool isRollFromInput = true;
+    [AppliedWithChunk<Chunk090F6001>]
+    public bool IsRollFromInput
+    {
+        get => this.isRollFromInput;
+        set => this.isRollFromInput = value;
+    }
+
+    private float minDist = 0.1f;
+    [AppliedWithChunk<Chunk090F6002>]
+    public float MinDist
+    {
+        get => this.minDist;
+        set => this.minDist = value;
+    }
+
+    private float maxDist = 3.5f;
+    [AppliedWithChunk<Chunk090F6002>]
+    public float MaxDist
+    {
+        get => this.maxDist;
+        set => this.maxDist = value;
+    }
+
+    private float planeDist = 4.0f;
+    [AppliedWithChunk<Chunk090F6002>]
+    public float PlaneDist
+    {
+        get => this.planeDist;
+        set => this.planeDist = value;
+    }
+
+    private float lookAtFactor = 0.5f;
+    [AppliedWithChunk<Chunk090F6002>]
+    public float LookAtFactor
+    {
+        get => this.lookAtFactor;
+        set => this.lookAtFactor = value;
+    }
+
+    private float defaultFov = 75.0f;
+    [AppliedWithChunk<Chunk090F6002>]
+    public float DefaultFov
+    {
+        get => this.defaultFov;
+        set => this.defaultFov = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehicleCameraRace2Model)clone).inputGasDistDelta = context.Clone(this.inputGasDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputGasDistTimeUp = context.Clone(this.inputGasDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputGasDistTimeDown = context.Clone(this.inputGasDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputBrakeDistDelta = context.Clone(this.inputBrakeDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputBrakeDistTimeUp = context.Clone(this.inputBrakeDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputBrakeDistTimeDown = context.Clone(this.inputBrakeDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDistDelta = context.Clone(this.inputSteerDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDistTimeUp = context.Clone(this.inputSteerDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDistTimeDown = context.Clone(this.inputSteerDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboFovDelta = context.Clone(this.eventTurboFovDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboFovTimeUp = context.Clone(this.eventTurboFovTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboFovTimeDown = context.Clone(this.eventTurboFovTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboDistDelta = context.Clone(this.eventTurboDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboDistTimeUp = context.Clone(this.eventTurboDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventTurboDistTimeDown = context.Clone(this.eventTurboDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventChangeGearDistDelta = context.Clone(this.eventChangeGearDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventChangeGearDistTimeUp = context.Clone(this.eventChangeGearDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventChangeGearDistTimeDown = context.Clone(this.eventChangeGearDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningLookAtFactorDelta = context.Clone(this.eventBurningLookAtFactorDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningLookAtFactorTimeUp = context.Clone(this.eventBurningLookAtFactorTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningLookAtFactorTimeDown = context.Clone(this.eventBurningLookAtFactorTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningDistDelta = context.Clone(this.eventBurningDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningDistTimeUp = context.Clone(this.eventBurningDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).eventBurningDistTimeDown = context.Clone(this.eventBurningDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingDistDelta = context.Clone(this.stateFlyingDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingDistTimeUp = context.Clone(this.stateFlyingDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingDistTimeDown = context.Clone(this.stateFlyingDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingPlaneDistDelta = context.Clone(this.stateFlyingPlaneDistDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingPlaneDistTimeUp = context.Clone(this.stateFlyingPlaneDistTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingPlaneDistTimeDown = context.Clone(this.stateFlyingPlaneDistTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingLookAtFactorDelta = context.Clone(this.stateFlyingLookAtFactorDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingLookAtFactorTimeUp = context.Clone(this.stateFlyingLookAtFactorTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingLookAtFactorTimeDown = context.Clone(this.stateFlyingLookAtFactorTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerRollDelta = context.Clone(this.inputLeftSteerRollDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerRollTimeUp = context.Clone(this.inputLeftSteerRollTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerRollTimeDown = context.Clone(this.inputLeftSteerRollTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerRollDelta = context.Clone(this.inputRightSteerRollDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerRollTimeUp = context.Clone(this.inputRightSteerRollTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerRollTimeDown = context.Clone(this.inputRightSteerRollTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerYawDelta = context.Clone(this.inputLeftSteerYawDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerYawTimeUp = context.Clone(this.inputLeftSteerYawTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputLeftSteerYawTimeDown = context.Clone(this.inputLeftSteerYawTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerYawDelta = context.Clone(this.inputRightSteerYawDelta)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerYawTimeUp = context.Clone(this.inputRightSteerYawTimeUp)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputRightSteerYawTimeDown = context.Clone(this.inputRightSteerYawTimeDown)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingLookAtStep = context.Clone(this.stateFlyingLookAtStep)!;
+        ((CPlugVehicleCameraRace2Model)clone).minSpeed = context.Clone(this.minSpeed)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingDurationBeforeFlyingMode = context.Clone(this.stateFlyingDurationBeforeFlyingMode)!;
+        ((CPlugVehicleCameraRace2Model)clone).stateFlyingDurationBeforeCameraMove = context.Clone(this.stateFlyingDurationBeforeCameraMove)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDurationBeforeBurnoutShowView = context.Clone(this.inputSteerDurationBeforeBurnoutShowView)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDurationBeforeAnticipatingTurnTriggered = context.Clone(this.inputSteerDurationBeforeAnticipatingTurnTriggered)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputSteerDurationBeforeRollTriggered = context.Clone(this.inputSteerDurationBeforeRollTriggered)!;
+        ((CPlugVehicleCameraRace2Model)clone).inputNoSteerDurationBeforeReset = context.Clone(this.inputNoSteerDurationBeforeReset)!;
+        ((CPlugVehicleCameraRace2Model)clone).maxDeltaPlaneDistStep = context.Clone(this.maxDeltaPlaneDistStep)!;
+        ((CPlugVehicleCameraRace2Model)clone).maxDeltaFovStep = context.Clone(this.maxDeltaFovStep)!;
+        ((CPlugVehicleCameraRace2Model)clone).lookAtFactorFromUpSpeedRatio = context.Clone(this.lookAtFactorFromUpSpeedRatio)!;
+        ((CPlugVehicleCameraRace2Model)clone).yawFromSpeed = context.Clone(this.yawFromSpeed)!;
+        ((CPlugVehicleCameraRace2Model)clone).rollFromSpeed = context.Clone(this.rollFromSpeed)!;
+        ((CPlugVehicleCameraRace2Model)clone).deltaDistDamperKi = context.Clone(this.deltaDistDamperKi)!;
+        ((CPlugVehicleCameraRace2Model)clone).deltaDistDamperKa = context.Clone(this.deltaDistDamperKa)!;
+        ((CPlugVehicleCameraRace2Model)clone).deltaLookAtFactorDamperKi = context.Clone(this.deltaLookAtFactorDamperKi)!;
+        ((CPlugVehicleCameraRace2Model)clone).deltaLookAtFactorDamperKa = context.Clone(this.deltaLookAtFactorDamperKa)!;
+        ((CPlugVehicleCameraRace2Model)clone).isRollFromInput = context.Clone(this.isRollFromInput)!;
+        ((CPlugVehicleCameraRace2Model)clone).minDist = context.Clone(this.minDist)!;
+        ((CPlugVehicleCameraRace2Model)clone).maxDist = context.Clone(this.maxDist)!;
+        ((CPlugVehicleCameraRace2Model)clone).planeDist = context.Clone(this.planeDist)!;
+        ((CPlugVehicleCameraRace2Model)clone).lookAtFactor = context.Clone(this.lookAtFactor)!;
+        ((CPlugVehicleCameraRace2Model)clone).defaultFov = context.Clone(this.defaultFov)!;
     }
 
-    public CPlugVehicleCameraRace2Model()
-    {
-    }
-
-    [Chunk(0x090F6000)]
+    /// <summary>
+    /// camera smoothing and steering response curves
+    /// </summary>
+    [Chunk(0x090F6000, "camera smoothing and steering response curves")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090F6000 : Chunk<CPlugVehicleCameraRace2Model>
     {
         public override uint Id => 0x090F6000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public float U01;
-        public int U02;
-        public int U03;
-        public float U04;
-        public int U05;
-        public int U06;
-        public float U07;
-        public int U08;
-        public int U09;
-        public float U10;
-        public int U11;
-        public int U12;
-        public float U13;
-        public int U14;
-        public int U15;
-        public float U16;
-        public int U17;
-        public int U18;
-        public float U19;
-        public int U20;
-        public int U21;
-        public float U22;
-        public int U23;
-        public int U24;
-        public float U25;
-        public int U26;
-        public int U27;
-        public float U28;
-        public int U29;
-        public int U30;
-        public float U31;
-        public int U32;
-        public int U33;
-        public float U34;
-        public int U35;
-        public int U36;
-        public float U37;
-        public int U38;
-        public int U39;
-        public float U40;
-        public int U41;
-        public int U42;
-        public float U43;
-        public int U44;
-        public int U45;
-        public float U46;
-        public float U47;
-        public int U48;
-        public int U49;
-        public int U50;
-        public int U51;
-        public int U52;
-        public int U53;
-        public float U54;
-        public float U55;
-        public CFuncKeysReal? U56;
-        public CFuncKeysReal? U57;
-        public CFuncKeysReal? U58;
-        public float U59;
-        public float U60;
-        public float U61;
-        public float U62;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090F6000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090F6000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090F6000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090F6000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090F6000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090F6000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090F6000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090F6000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090F6000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090F6000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090F6000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090F6000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090F6000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090F6000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090F6000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090F6000)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090F6000)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090F6000)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090F6000)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090F6000)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090F6000)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090F6000)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090F6000)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090F6000)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090F6000)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090F6000)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk090F6000)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk090F6000)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090F6000)clone).U29 = context.Clone(this.U29)!;
-            ((Chunk090F6000)clone).U30 = context.Clone(this.U30)!;
-            ((Chunk090F6000)clone).U31 = context.Clone(this.U31)!;
-            ((Chunk090F6000)clone).U32 = context.Clone(this.U32)!;
-            ((Chunk090F6000)clone).U33 = context.Clone(this.U33)!;
-            ((Chunk090F6000)clone).U34 = context.Clone(this.U34)!;
-            ((Chunk090F6000)clone).U35 = context.Clone(this.U35)!;
-            ((Chunk090F6000)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk090F6000)clone).U37 = context.Clone(this.U37)!;
-            ((Chunk090F6000)clone).U38 = context.Clone(this.U38)!;
-            ((Chunk090F6000)clone).U39 = context.Clone(this.U39)!;
-            ((Chunk090F6000)clone).U40 = context.Clone(this.U40)!;
-            ((Chunk090F6000)clone).U41 = context.Clone(this.U41)!;
-            ((Chunk090F6000)clone).U42 = context.Clone(this.U42)!;
-            ((Chunk090F6000)clone).U43 = context.Clone(this.U43)!;
-            ((Chunk090F6000)clone).U44 = context.Clone(this.U44)!;
-            ((Chunk090F6000)clone).U45 = context.Clone(this.U45)!;
-            ((Chunk090F6000)clone).U46 = context.Clone(this.U46)!;
-            ((Chunk090F6000)clone).U47 = context.Clone(this.U47)!;
-            ((Chunk090F6000)clone).U48 = context.Clone(this.U48)!;
-            ((Chunk090F6000)clone).U49 = context.Clone(this.U49)!;
-            ((Chunk090F6000)clone).U50 = context.Clone(this.U50)!;
-            ((Chunk090F6000)clone).U51 = context.Clone(this.U51)!;
-            ((Chunk090F6000)clone).U52 = context.Clone(this.U52)!;
-            ((Chunk090F6000)clone).U53 = context.Clone(this.U53)!;
-            ((Chunk090F6000)clone).U54 = context.Clone(this.U54)!;
-            ((Chunk090F6000)clone).U55 = context.Clone(this.U55)!;
-            ((Chunk090F6000)clone).U56 = context.Clone(this.U56)!;
-            ((Chunk090F6000)clone).U57 = context.Clone(this.U57)!;
-            ((Chunk090F6000)clone).U58 = context.Clone(this.U58)!;
-            ((Chunk090F6000)clone).U59 = context.Clone(this.U59)!;
-            ((Chunk090F6000)clone).U60 = context.Clone(this.U60)!;
-            ((Chunk090F6000)clone).U61 = context.Clone(this.U61)!;
-            ((Chunk090F6000)clone).U62 = context.Clone(this.U62)!;
         }
 
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Single(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Single(ref U07);
-            rw.Int32(ref U08);
-            rw.Int32(ref U09);
-            rw.Single(ref U10);
-            rw.Int32(ref U11);
-            rw.Int32(ref U12);
-            rw.Single(ref U13);
-            rw.Int32(ref U14);
-            rw.Int32(ref U15);
-            rw.Single(ref U16);
-            rw.Int32(ref U17);
-            rw.Int32(ref U18);
-            rw.Single(ref U19);
-            rw.Int32(ref U20);
-            rw.Int32(ref U21);
-            rw.Single(ref U22);
-            rw.Int32(ref U23);
-            rw.Int32(ref U24);
-            rw.Single(ref U25);
-            rw.Int32(ref U26);
-            rw.Int32(ref U27);
-            rw.Single(ref U28);
-            rw.Int32(ref U29);
-            rw.Int32(ref U30);
-            rw.Single(ref U31);
-            rw.Int32(ref U32);
-            rw.Int32(ref U33);
-            rw.Single(ref U34);
-            rw.Int32(ref U35);
-            rw.Int32(ref U36);
-            rw.Single(ref U37);
-            rw.Int32(ref U38);
-            rw.Int32(ref U39);
-            rw.Single(ref U40);
-            rw.Int32(ref U41);
-            rw.Int32(ref U42);
-            rw.Single(ref U43);
-            rw.Int32(ref U44);
-            rw.Int32(ref U45);
-            rw.Single(ref U46);
-            rw.Single(ref U47);
-            rw.Int32(ref U48);
-            rw.Int32(ref U49);
-            rw.Int32(ref U50);
-            rw.Int32(ref U51);
-            rw.Int32(ref U52);
-            rw.Int32(ref U53);
-            rw.Single(ref U54);
-            rw.Single(ref U55);
-            rw.NodeRef<CFuncKeysReal>(ref U56);
-            rw.NodeRef<CFuncKeysReal>(ref U57);
-            rw.NodeRef<CFuncKeysReal>(ref U58);
-            rw.Single(ref U59);
-            rw.Single(ref U60);
-            rw.Single(ref U61);
-            rw.Single(ref U62);
+            rw.Single(ref n.inputGasDistDelta);
+            rw.Int32(ref n.inputGasDistTimeUp);
+            rw.Int32(ref n.inputGasDistTimeDown);
+            rw.Single(ref n.inputBrakeDistDelta);
+            rw.Int32(ref n.inputBrakeDistTimeUp);
+            rw.Int32(ref n.inputBrakeDistTimeDown);
+            rw.Single(ref n.inputSteerDistDelta);
+            rw.Int32(ref n.inputSteerDistTimeUp);
+            rw.Int32(ref n.inputSteerDistTimeDown);
+            rw.Single(ref n.eventTurboFovDelta);
+            rw.Int32(ref n.eventTurboFovTimeUp);
+            rw.Int32(ref n.eventTurboFovTimeDown);
+            rw.Single(ref n.eventTurboDistDelta);
+            rw.Int32(ref n.eventTurboDistTimeUp);
+            rw.Int32(ref n.eventTurboDistTimeDown);
+            rw.Single(ref n.eventChangeGearDistDelta);
+            rw.Int32(ref n.eventChangeGearDistTimeUp);
+            rw.Int32(ref n.eventChangeGearDistTimeDown);
+            rw.Single(ref n.eventBurningLookAtFactorDelta);
+            rw.Int32(ref n.eventBurningLookAtFactorTimeUp);
+            rw.Int32(ref n.eventBurningLookAtFactorTimeDown);
+            rw.Single(ref n.eventBurningDistDelta);
+            rw.Int32(ref n.eventBurningDistTimeUp);
+            rw.Int32(ref n.eventBurningDistTimeDown);
+            rw.Single(ref n.stateFlyingDistDelta);
+            rw.Int32(ref n.stateFlyingDistTimeUp);
+            rw.Int32(ref n.stateFlyingDistTimeDown);
+            rw.Single(ref n.stateFlyingPlaneDistDelta);
+            rw.Int32(ref n.stateFlyingPlaneDistTimeUp);
+            rw.Int32(ref n.stateFlyingPlaneDistTimeDown);
+            rw.Single(ref n.stateFlyingLookAtFactorDelta);
+            rw.Int32(ref n.stateFlyingLookAtFactorTimeUp);
+            rw.Int32(ref n.stateFlyingLookAtFactorTimeDown);
+            rw.Single(ref n.inputLeftSteerRollDelta);
+            rw.Int32(ref n.inputLeftSteerRollTimeUp);
+            rw.Int32(ref n.inputLeftSteerRollTimeDown);
+            rw.Single(ref n.inputRightSteerRollDelta);
+            rw.Int32(ref n.inputRightSteerRollTimeUp);
+            rw.Int32(ref n.inputRightSteerRollTimeDown);
+            rw.Single(ref n.inputLeftSteerYawDelta);
+            rw.Int32(ref n.inputLeftSteerYawTimeUp);
+            rw.Int32(ref n.inputLeftSteerYawTimeDown);
+            rw.Single(ref n.inputRightSteerYawDelta);
+            rw.Int32(ref n.inputRightSteerYawTimeUp);
+            rw.Int32(ref n.inputRightSteerYawTimeDown);
+            rw.Single(ref n.stateFlyingLookAtStep);
+            rw.Single(ref n.minSpeed);
+            rw.Int32(ref n.stateFlyingDurationBeforeFlyingMode);
+            rw.Int32(ref n.stateFlyingDurationBeforeCameraMove);
+            rw.Int32(ref n.inputSteerDurationBeforeBurnoutShowView);
+            rw.Int32(ref n.inputSteerDurationBeforeAnticipatingTurnTriggered);
+            rw.Int32(ref n.inputSteerDurationBeforeRollTriggered);
+            rw.Int32(ref n.inputNoSteerDurationBeforeReset);
+            rw.Single(ref n.maxDeltaPlaneDistStep);
+            rw.Single(ref n.maxDeltaFovStep);
+            n.lookAtFactorFromUpSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.lookAtFactorFromUpSpeedRatio);
+            n.yawFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.yawFromSpeed);
+            n.rollFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.rollFromSpeed);
+            rw.Single(ref n.deltaDistDamperKi);
+            rw.Single(ref n.deltaDistDamperKa);
+            rw.Single(ref n.deltaLookAtFactorDamperKi);
+            rw.Single(ref n.deltaLookAtFactorDamperKa);
         }
     }
 
-    [Chunk(0x090F6001)]
+    /// <summary>
+    /// IsRollFromInput
+    /// </summary>
+    [Chunk(0x090F6001, "IsRollFromInput")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F6001 : Chunk<CPlugVehicleCameraRace2Model>
     {
         public override uint Id => 0x090F6001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090F6001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.isRollFromInput);
         }
     }
 
-    [Chunk(0x090F6002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// camera distance, field of view and responses
+    /// </summary>
+    [Chunk(0x090F6002, "camera distance, field of view and responses")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 4)]
     public partial class Chunk090F6002 : Chunk<CPlugVehicleCameraRace2Model>, IVersionable
     {
         public override uint Id => 0x090F6002;
@@ -275,16 +825,46 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         public int Version { get; set; }
         public string? U01;
         public float U02;
-        public float U03;
-        public float U04;
+        public int U03;
+        public int U04;
         public float U05;
-        public float U06;
-        public float U07;
-        public int U08;
+        public int U06;
+        public int U07;
+        public float U08;
         public int U09;
-        public float U10;
-        public int U11;
+        public int U10;
+        public float U11;
         public int U12;
+        public int U13;
+
+        public Chunk090F6002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F6002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+
+            U02 = -0.1f;
+            U03 = 750;
+            U04 = 1250;
+            U05 = -15f;
+            U06 = 750;
+            U07 = 1250;
+            U08 = 0.5f;
+            U09 = 750;
+            U10 = 1250;
+            U11 = 0.5f;
+            U12 = 750;
+            U13 = 1250;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -302,26 +882,103 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
             ((Chunk090F6002)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090F6002)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090F6002)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090F6002)clone).U13 = context.Clone(this.U13)!;
         }
 
         public override void ReadWrite(CPlugVehicleCameraRace2Model n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.Id(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.Single(ref n.minDist);
+            rw.Single(ref n.maxDist);
+            rw.Single(ref n.planeDist);
+            rw.Single(ref n.lookAtFactor);
+            rw.Single(ref n.defaultFov);
 
             if (Version >= 2)
             {
-                rw.Single(ref U07);
-                rw.Int32(ref U08);
+                rw.Single(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+                rw.Single(ref U05);
+                rw.Int32(ref U06);
+                rw.Int32(ref U07);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref U08);
                 rw.Int32(ref U09);
-                rw.Single(ref U10);
-                rw.Int32(ref U11);
+                rw.Int32(ref U10);
+                rw.Single(ref U11);
                 rw.Int32(ref U12);
+                rw.Int32(ref U13);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Single(ref n.inputGasDistDelta);
+                rw.Int32(ref n.inputGasDistTimeUp);
+                rw.Int32(ref n.inputGasDistTimeDown);
+                rw.Single(ref n.inputBrakeDistDelta);
+                rw.Int32(ref n.inputBrakeDistTimeUp);
+                rw.Int32(ref n.inputBrakeDistTimeDown);
+                rw.Single(ref n.inputSteerDistDelta);
+                rw.Int32(ref n.inputSteerDistTimeUp);
+                rw.Int32(ref n.inputSteerDistTimeDown);
+                rw.Single(ref n.eventTurboFovDelta);
+                rw.Int32(ref n.eventTurboFovTimeUp);
+                rw.Int32(ref n.eventTurboFovTimeDown);
+                rw.Single(ref n.eventTurboDistDelta);
+                rw.Int32(ref n.eventTurboDistTimeUp);
+                rw.Int32(ref n.eventTurboDistTimeDown);
+                rw.Single(ref n.eventChangeGearDistDelta);
+                rw.Int32(ref n.eventChangeGearDistTimeUp);
+                rw.Int32(ref n.eventChangeGearDistTimeDown);
+                rw.Single(ref n.eventBurningLookAtFactorDelta);
+                rw.Int32(ref n.eventBurningLookAtFactorTimeUp);
+                rw.Int32(ref n.eventBurningLookAtFactorTimeDown);
+                rw.Single(ref n.eventBurningDistDelta);
+                rw.Int32(ref n.eventBurningDistTimeUp);
+                rw.Int32(ref n.eventBurningDistTimeDown);
+                rw.Single(ref n.stateFlyingDistDelta);
+                rw.Int32(ref n.stateFlyingDistTimeUp);
+                rw.Int32(ref n.stateFlyingDistTimeDown);
+                rw.Single(ref n.stateFlyingPlaneDistDelta);
+                rw.Int32(ref n.stateFlyingPlaneDistTimeUp);
+                rw.Int32(ref n.stateFlyingPlaneDistTimeDown);
+                rw.Single(ref n.stateFlyingLookAtFactorDelta);
+                rw.Int32(ref n.stateFlyingLookAtFactorTimeUp);
+                rw.Int32(ref n.stateFlyingLookAtFactorTimeDown);
+                rw.Single(ref n.inputLeftSteerRollDelta);
+                rw.Int32(ref n.inputLeftSteerRollTimeUp);
+                rw.Int32(ref n.inputLeftSteerRollTimeDown);
+                rw.Single(ref n.inputRightSteerRollDelta);
+                rw.Int32(ref n.inputRightSteerRollTimeUp);
+                rw.Int32(ref n.inputRightSteerRollTimeDown);
+                rw.Single(ref n.inputLeftSteerYawDelta);
+                rw.Int32(ref n.inputLeftSteerYawTimeUp);
+                rw.Int32(ref n.inputLeftSteerYawTimeDown);
+                rw.Single(ref n.inputRightSteerYawDelta);
+                rw.Int32(ref n.inputRightSteerYawTimeUp);
+                rw.Int32(ref n.inputRightSteerYawTimeDown);
+                rw.Single(ref n.stateFlyingLookAtStep);
+                rw.Single(ref n.minSpeed);
+                rw.Int32(ref n.stateFlyingDurationBeforeFlyingMode);
+                rw.Int32(ref n.stateFlyingDurationBeforeCameraMove);
+                rw.Int32(ref n.inputSteerDurationBeforeBurnoutShowView);
+                rw.Int32(ref n.inputSteerDurationBeforeAnticipatingTurnTriggered);
+                rw.Int32(ref n.inputSteerDurationBeforeRollTriggered);
+                rw.Int32(ref n.inputNoSteerDurationBeforeReset);
+                rw.Single(ref n.maxDeltaPlaneDistStep);
+                rw.Single(ref n.maxDeltaFovStep);
+                rw.ReadableWritable<PlugCurve>(ref n.lookAtFactorFromUpSpeedRatio, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.yawFromSpeed, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.rollFromSpeed, version: Version);
+                rw.Single(ref n.deltaDistDamperKi);
+                rw.Single(ref n.deltaDistDamperKa);
+                rw.Single(ref n.deltaLookAtFactorDamperKi);
+                rw.Single(ref n.deltaLookAtFactorDamperKa);
             }
         }
     }

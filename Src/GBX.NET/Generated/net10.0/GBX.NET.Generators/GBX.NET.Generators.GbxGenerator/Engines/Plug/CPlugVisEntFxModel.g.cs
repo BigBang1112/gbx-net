@@ -102,17 +102,17 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
 
     public CPlugParticleEmitterModel? GetPart_TeleportSpawn(GbxReadSettings settings = default, bool exceptions = false) => part_TeleportSpawnFile?.GetNode(ref part_TeleportSpawn, settings, exceptions) ?? part_TeleportSpawn;
 
-    private Keys? eliminatedTeleportIntens;
+    private PlugCurve? eliminatedTeleportIntens;
     [AppliedWithChunk<Chunk09115000>]
-    public Keys? EliminatedTeleportIntens
+    public PlugCurve? EliminatedTeleportIntens
     {
         get => this.eliminatedTeleportIntens;
         set => this.eliminatedTeleportIntens = value;
     }
 
-    private Keys? eliminatedHighlight;
+    private PlugCurve? eliminatedHighlight;
     [AppliedWithChunk<Chunk09115000>]
-    public Keys? EliminatedHighlight
+    public PlugCurve? EliminatedHighlight
     {
         get => this.eliminatedHighlight;
         set => this.eliminatedHighlight = value;
@@ -196,102 +196,10 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
             rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_Deactivated, ref n.part_DeactivatedFile);
             rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportUnspawn, ref n.part_TeleportUnspawnFile);
             rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportSpawn, ref n.part_TeleportSpawnFile);
-            rw.ReadableWritable<Keys>(ref n.eliminatedTeleportIntens, version: Version);
-            rw.ReadableWritable<Keys>(ref n.eliminatedHighlight, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref n.eliminatedTeleportIntens, version: Version- 1);
+            rw.ReadableWritable<PlugCurve>(ref n.eliminatedHighlight, version: Version- 1);
             rw.Vec3(ref n.eliminatedHighlightRgb);
             rw.NodeRef<GxLightBall>(ref n.tacticalLight, ref n.tacticalLightFile);
-        }
-    }
-
-    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        private CFuncKeysReal? curve;
-        public CFuncKeysReal? Curve
-        {
-            get => this.curveFile?.GetNode(ref this.curve) ?? this.curve;
-            set => this.curve = value;
-        }
-        private Components.GbxRefTableFile? curveFile;
-
-        public Components.GbxRefTableFile? CurveFile
-        {
-            get => curveFile;
-            set => curveFile = value;
-        }
-
-        public CFuncKeysReal? GetCurve(GbxReadSettings settings = default, bool exceptions = false) => curveFile?.GetNode(ref curve, settings, exceptions) ?? curve;
-
-        private int version = 3;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
-
-        private int count;
-        public int Count
-        {
-            get => this.count;
-            set => this.count = value;
-        }
-
-        private byte flagsV1;
-        public byte FlagsV1
-        {
-            get => this.flagsV1;
-            set => this.flagsV1 = value;
-        }
-
-        private int capacity = 7;
-        public int Capacity
-        {
-            get => this.capacity;
-            set => this.capacity = value;
-        }
-
-        private ushort flags;
-        public ushort Flags
-        {
-            get => this.flags;
-            set => this.flags = value;
-        }
-
-        private Vec2[]? values;
-        public Vec2[]? Values
-        {
-            get => this.values;
-            set => this.values = value;
-        }
-
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (Keys)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((Keys)clone).curve = context.Clone(this.curve)!;
-            ((Keys)clone).version = context.Clone(this.version)!;
-            ((Keys)clone).count = context.Clone(this.count)!;
-            ((Keys)clone).flagsV1 = context.Clone(this.flagsV1)!;
-            ((Keys)clone).capacity = context.Clone(this.capacity)!;
-            ((Keys)clone).flags = context.Clone(this.flags)!;
-            ((Keys)clone).values = context.CloneArray(this.values)!;
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
         }
     }
 

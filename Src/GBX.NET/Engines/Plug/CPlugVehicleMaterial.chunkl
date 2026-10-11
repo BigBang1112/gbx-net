@@ -87,19 +87,17 @@ CPlugVehicleMaterial 0x090F1000
     v13-
       float
   v9+
-    Keys (version: Version - 12)
+    PlugCurve (version: Version - 12)
   v10+
-    Keys (version: Version - 12)
+    PlugCurve (version: Version - 12)
   v11+
     float
   v13+
-    Keys (version: Version - 12)
-    Keys (version: Version - 12)
+    PlugCurve (version: Version - 12)
+    PlugCurve (version: Version - 12)
     float
     float
     float
   v14+
-    Keys (version: Version - 12)
+    PlugCurve (version: Version - 12)
     int
-
-archive Keys

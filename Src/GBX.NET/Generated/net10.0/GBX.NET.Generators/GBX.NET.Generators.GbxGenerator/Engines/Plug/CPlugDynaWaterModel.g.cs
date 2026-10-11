@@ -55,22 +55,22 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u03 = value;
     }
 
-    private Keys? u04;
-    public Keys? U04
+    private PlugCurve? u04;
+    public PlugCurve? U04
     {
         get => this.u04;
         set => this.u04 = value;
     }
 
-    private Keys? u05;
-    public Keys? U05
+    private PlugCurve? u05;
+    public PlugCurve? U05
     {
         get => this.u05;
         set => this.u05 = value;
     }
 
-    private Keys? u06;
-    public Keys? U06
+    private PlugCurve? u06;
+    public PlugCurve? U06
     {
         get => this.u06;
         set => this.u06 = value;
@@ -83,8 +83,8 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u07 = value;
     }
 
-    private Keys? u08;
-    public Keys? U08
+    private PlugCurve? u08;
+    public PlugCurve? U08
     {
         get => this.u08;
         set => this.u08 = value;
@@ -167,91 +167,6 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0915F000)clone).Version = context.Clone(this.Version)!;
-        }
-    }
-
-    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        private CPlugCurveSimpleNod? curve;
-        public CPlugCurveSimpleNod? Curve
-        {
-            get => this.curveFile?.GetNode(ref this.curve) ?? this.curve;
-            set => this.curve = value;
-        }
-        private Components.GbxRefTableFile? curveFile;
-
-        public Components.GbxRefTableFile? CurveFile
-        {
-            get => curveFile;
-            set => curveFile = value;
-        }
-
-        public CPlugCurveSimpleNod? GetCurve(GbxReadSettings settings = default, bool exceptions = false) => curveFile?.GetNode(ref curve, settings, exceptions) ?? curve;
-
-        private int version = 3;
-        public int Version
-        {
-            get => this.version;
-            set => this.version = value;
-        }
-
-        private byte flagsV1;
-        public byte FlagsV1
-        {
-            get => this.flagsV1;
-            set => this.flagsV1 = value;
-        }
-
-        private int capacity = 7;
-        public int Capacity
-        {
-            get => this.capacity;
-            set => this.capacity = value;
-        }
-
-        private ushort flags;
-        public ushort Flags
-        {
-            get => this.flags;
-            set => this.flags = value;
-        }
-
-        private Vec2[]? values;
-        public Vec2[]? Values
-        {
-            get => this.values;
-            set => this.values = value;
-        }
-
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (Keys)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((Keys)clone).curve = context.Clone(this.curve)!;
-            ((Keys)clone).version = context.Clone(this.version)!;
-            ((Keys)clone).flagsV1 = context.Clone(this.flagsV1)!;
-            ((Keys)clone).capacity = context.Clone(this.capacity)!;
-            ((Keys)clone).flags = context.Clone(this.flags)!;
-            ((Keys)clone).values = context.CloneArray(this.values)!;
-            ((Keys)clone).count = context.Clone(this.count)!;
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
         }
     }
 

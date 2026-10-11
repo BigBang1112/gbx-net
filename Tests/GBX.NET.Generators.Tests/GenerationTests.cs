@@ -11,6 +11,127 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
+    public async Task SerializesNodeReferencesThroughSharedBackingTypes(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game
+            {
+                public class Legacy : CMwNod { }
+                public class Shared
+                {
+                    public static implicit operator Shared(Legacy? node) => new();
+                    public static implicit operator Legacy?(Shared? value) => null;
+                }
+                public partial class Example
+                {
+                    private Shared? curve;
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043001 { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public T? ReadNodeRef<T>() where T : GBX.NET.Engines.Game.CMwNod => null;
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteNodeRef<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public T? NodeRef<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod => value;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              Legacy Curve
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public Shared? Curve");
+        if (structureKind == 0)
+        {
+            await Assert.That(generated).Contains("n.curve = (Shared?)rw.NodeRef<Legacy>((Legacy?)n.curve)");
+        }
+        else
+        {
+            await Assert.That(generated).Contains("n.curve = (Shared?)r.ReadNodeRef<Legacy>()");
+            await Assert.That(generated).Contains("w.WriteNodeRef<Legacy>((Legacy)n.curve)");
+        }
+    }
+
+    [Test]
+    [Arguments("GBX.NET.Engines.Game")]
+    [Arguments("GBX.NET")]
+    public async Task SerializesStandaloneHandwrittenArchives(string archiveNamespace)
+    {
+        var (result, compilation) = Run($$"""
+            namespace {{archiveNamespace}}
+            {
+                public sealed class Curve : GBX.NET.Serialization.IReadableWritable,
+                    GBX.NET.Serialization.IReadable, GBX.NET.Serialization.IWritable
+                {
+                    public void ReadWrite(GBX.NET.Serialization.GbxReaderWriter rw, int version = 0) { }
+                    public void Read(GBX.NET.Serialization.GbxReader r, int version = 0) { }
+                    public void Write(GBX.NET.Serialization.GbxWriter w, int version = 0) { }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = 1)]
+                    public partial class Chunk03043002 { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public T ReadReadable<T>(int version = 0) where T : IReadable, new() => new();
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public void ArrayReadableWritable<T>(ref T[]? value, int version = 0) where T : IReadableWritable, new() { }
+                    public void ListReadableWritable<T>(ref System.Collections.Generic.List<T>? value, int version = 0) where T : IReadableWritable, new() { }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001
+              version
+              Curve Data (version: Version - 8)
+              Curve[] Entries
+              Curve[] ListEntries (list)
+            0x002
+              version
+              {{archiveNamespace}}.Curve Other
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public Curve? Data");
+        await Assert.That(generated).Contains("rw.ReadableWritable<Curve>(ref n.data, version: Version- 8)");
+        await Assert.That(generated).Contains("rw.ArrayReadableWritable<Curve>(ref n.entries!, version: Version)");
+        await Assert.That(generated).Contains("rw.ListReadableWritable<Curve>(ref n.listEntries!, version: Version)");
+        await Assert.That(generated).Contains($"r.ReadReadable<{archiveNamespace}.Curve>(version: Version)");
+        await Assert.That(generated).Contains($"w.WriteWritable<{archiveNamespace}.Curve>(n.other, version: Version)");
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
     public async Task NumericCastsPreserveSharedStorageAndWireWidths(int structureKind)
     {
         var (result, compilation) = Run($$"""

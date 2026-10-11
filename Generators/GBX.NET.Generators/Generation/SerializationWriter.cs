@@ -1,5 +1,6 @@
 using ChunkL;
 using ChunkL.Syntax;
+using GBX.NET.Generators.Analysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -12,6 +13,7 @@ internal sealed class SerializationWriter
     private readonly LayoutModel layout;
     private readonly ScopeModel scope;
     private readonly IReadOnlyDictionary<string, LayoutModel> layouts;
+    private readonly IReadOnlyDictionary<string, ExistingType> existingTypes;
     private readonly SerializationMode mode;
     private readonly bool chunk;
 
@@ -19,12 +21,14 @@ internal sealed class SerializationWriter
     private readonly Stack<Dictionary<string, FieldModel>> locals = new();
 
     public SerializationWriter(CodeWriter code, LayoutModel layout, ScopeModel scope,
-        IReadOnlyDictionary<string, LayoutModel> layouts, SerializationMode mode, bool chunk)
+        IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes,
+        SerializationMode mode, bool chunk)
     {
         this.code = code;
         this.layout = layout;
         this.scope = scope;
         this.layouts = layouts;
+        this.existingTypes = existingTypes;
         this.mode = mode;
         this.chunk = chunk;
     }
@@ -319,7 +323,7 @@ internal sealed class SerializationWriter
             var readMethod = method;
             var cast = declaration.Type.CastTarget is not null ? "(" + WireTypes.Cast(declaration.Type) + ")" :
                 SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)) &&
-                    WireTypes.Value(declaration.Type.Name) && declaration.Type.ArrayDimensions == 0 ? "(" + storageType + ")" : "";
+                    (WireTypes.Value(declaration.Type.Name) || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 ? "(" + storageType + ")" : "";
 
             code.Line($"{(field.IsLocal ? "var " : "")}{target} = {cast}r.Read{readMethod}({string.Join(", ", arguments)});");
         }
@@ -338,13 +342,13 @@ internal sealed class SerializationWriter
                 writeMethod = (LayoutModel.Has(declaration.Attributes, "list") ? "List" : "Array") + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
             }
 
-            if (declaration.Type.CastTarget is not null && declaration.Type.ArrayDimensions == 0)
+            if (declaration.Type.CastTarget is not null && declaration.Type.ArrayDimensions == 0 && WireTypes.Primitive(declaration.Type.Name))
             {
                 writeMethod = WireTypes.Method(declaration.Type.Name, declaration.Attributes);
             }
 
             var cast = declaration.Type.CastTarget is not null ||
-                (WireTypes.Value(declaration.Type.Name) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)))
+                ((WireTypes.Value(declaration.Type.Name) || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)))
                 ? "(" + WireTypes.Map(declaration.Type.Name, declaration.Attributes) +
                     (LayoutModel.Has(declaration.Attributes, "nullable") ? "?" : "") + ")" : "";
 
@@ -360,13 +364,13 @@ internal sealed class SerializationWriter
         else
         {
             var numeric = SyntaxOverlap.Normalize(storageType) is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" or "float" or "double";
-            if (declaration.Type.CastTarget is not null && !numeric)
+            if (declaration.Type.CastTarget is not null && !numeric && WireTypes.Primitive(declaration.Type.Name))
             {
                 method = "Enum" + WireTypes.Method(declaration.Type.Name, declaration.Attributes) + "<" + WireTypes.Cast(declaration.Type) + ">";
             }
 
             var wireType = WireTypes.Map(declaration.Type.Name, declaration.Attributes);
-            var conversion = numeric && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
+            var conversion = (numeric || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
             var value = write is null ? target : WriteArgument(write);
             var assignment = (field.IsLocal ? "var " : "") + target;
 
@@ -563,6 +567,15 @@ internal sealed class SerializationWriter
     private bool IsArchive(FieldDeclaration field)
     {
         var name = field.Type.Name;
+        if (!field.Type.ChunkPreference &&
+            (existingTypes.TryGetValue(layout.File.Namespace + "." + name, out var existing) ||
+             existingTypes.TryGetValue("GBX.NET." + name, out existing) ||
+             existingTypes.TryGetValue(name, out existing)) &&
+            existing.BaseTypes.Any(static x => SyntaxOverlap.Normalize(x.ToString()) == "IReadableWritable"))
+        {
+            return true;
+        }
+
         var separator = name.IndexOf('.');
         if (separator >= 0)
         {

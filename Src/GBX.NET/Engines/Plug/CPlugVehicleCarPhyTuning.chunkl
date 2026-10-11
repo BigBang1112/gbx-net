@@ -511,7 +511,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x089 [MP3, TMT, MP4, TM2020]
   version
-  Keys (version: Version - 10)
+  PlugCurve (version: Version - 10)
   v2-
     CFuncKeysReal
   v2+
@@ -536,10 +536,10 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v7+
           bool?
           v8+
-            Keys (version: Version - 10)
-            Keys (version: Version - 10)
+            PlugCurve (version: Version - 10)
+            PlugCurve (version: Version - 10)
             v9+
-              Keys (version: Version - 10)
+              PlugCurve (version: Version - 10)
 
 0x08A [MP3, TMT, MP4, TM2020]
   version
@@ -547,23 +547,23 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
   float
-  Keys (version: Version - 8)
-  Keys (version: Version - 8)
-  Keys (version: Version - 8)
-  Keys (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
   v1+
     v3-
       float?
       float?
     v4+
-      Keys (version: Version - 8)
-      Keys (version: Version - 8)
+      PlugCurve (version: Version - 8)
+      PlugCurve (version: Version - 8)
     v3+
       int?
       v5=
         float?
       v6+
-        Keys (version: Version - 8)
+        PlugCurve (version: Version - 8)
         v7+
           bool?
 
@@ -590,48 +590,48 @@ CPlugVehicleCarPhyTuning 0x090ED000
       float
       float
   v4+
-    Keys (version: Version - 37)
+    PlugCurve (version: Version - 37)
     v5+
       v9-
         int
         int
       v9+
-        Keys (version: Version - 37)
+        PlugCurve (version: Version - 37)
         v13+
           v22-
             float
           v22+
-            Keys (version: Version - 37)
+            PlugCurve (version: Version - 37)
           float
       v6+
-        Keys (version: Version - 37)
+        PlugCurve (version: Version - 37)
         v7+
           float
           v10+
-            Keys (version: Version - 37)
-            Keys (version: Version - 37)
-            Keys (version: Version - 37)
+            PlugCurve (version: Version - 37)
+            PlugCurve (version: Version - 37)
+            PlugCurve (version: Version - 37)
             v11+
               float
               float
               float
               float
               float
-              Keys (version: Version - 37)
+              PlugCurve (version: Version - 37)
               v12+
                 float
                 v14+
-                  Keys (version: Version - 37)
+                  PlugCurve (version: Version - 37)
                   v15+
-                    Keys (version: Version - 37)
+                    PlugCurve (version: Version - 37)
                     v16+
-                      Keys (version: Version - 37)
+                      PlugCurve (version: Version - 37)
                       v17+
                         int
                         v18+
                           int
                           v19+
-                            Keys (version: Version - 37)
+                            PlugCurve (version: Version - 37)
                             v20+
                               float
                               float
@@ -644,7 +644,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                                   bool
                                   float
                                   float
-                                  Keys (version: Version - 37)
+                                  PlugCurve (version: Version - 37)
                                   v24+
                                     int
                                     v25+
@@ -677,7 +677,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                                                 bool
                                                 v36+
                                                   bool
-                                                  Keys (version: Version - 37)
+                                                  PlugCurve (version: Version - 37)
                                                   CFuncKeysReal
 
 0x08C [MP3, TMT, MP4, TM2020]
@@ -731,17 +731,17 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v6+
     throw
   float
-  Keys (version: Version - 3)
+  PlugCurve (version: Version - 3)
   int
   float
-  Keys (version: Version - 3)
+  PlugCurve (version: Version - 3)
   int
   v1+
     int?
     int?
     v2+
       float?
-      Keys (version: Version - 3)
+      PlugCurve (version: Version - 3)
       int?
       int?
       v3=
@@ -755,7 +755,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     throw
   int
   float
-  Keys (version: Version - 1)
+  PlugCurve (version: Version - 1)
   bool
   float
   float
@@ -764,19 +764,19 @@ CPlugVehicleCarPhyTuning 0x090ED000
     int?
     v2+
       int?
-      Keys (version: Version - 1)
-      Keys (version: Version - 1)
+      PlugCurve (version: Version - 1)
+      PlugCurve (version: Version - 1)
       v3+
-        Keys (version: Version - 1)
+        PlugCurve (version: Version - 1)
         v4+
           int?
           v5+
             int?
             int?
-            Keys (version: Version - 1)
+            PlugCurve (version: Version - 1)
             int?
             v6+
-              Keys (version: Version - 1)
+              PlugCurve (version: Version - 1)
 
 0x096 [MP3, TMT, MP4, TM2020]
   version
@@ -878,26 +878,25 @@ CPlugVehicleCarPhyTuning 0x090ED000
         float?
         float?
         v4+
-          Keys
-
+          PlugCurve
 0x09C [MP4, TM2020]
   version
   v17-
     float?
   v18+
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
   float?
   float?
   CFuncKeysReal
   CFuncKeysReal
   CFuncKeysReal
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
+  PlugCurve (version: Version - 21)
+  PlugCurve (version: Version - 21)
   v1+
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v2+
     float?
   v3=
@@ -906,7 +905,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     CFuncKeysReal
     v5+
       float?
-      Keys (version: Version - 21)
+      PlugCurve (version: Version - 21)
       float?
       float?
       float?
@@ -914,26 +913,26 @@ CPlugVehicleCarPhyTuning 0x090ED000
         float?
         v7+
           int?
-          Keys (version: Version - 21)
+          PlugCurve (version: Version - 21)
           v8+
-            Keys (version: Version - 21)
+            PlugCurve (version: Version - 21)
             v9+
               float?
               v10+
                 float?
                 v11+
-                  Keys (version: Version - 21)
-                  Keys (version: Version - 21)
+                  PlugCurve (version: Version - 21)
+                  PlugCurve (version: Version - 21)
                   v12+
-                    Keys (version: Version - 21)
+                    PlugCurve (version: Version - 21)
                     v13+
-                      Keys (version: Version - 21)
+                      PlugCurve (version: Version - 21)
                       v15+
                         float?
                         v16+
                           float?
                           v19+
-                            Keys (version: Version - 21)
+                            PlugCurve (version: Version - 21)
                             v20+
                               float?
 
@@ -950,57 +949,57 @@ CPlugVehicleCarPhyTuning 0x090ED000
     float
   v1+
     v20-
-      Keys (version: Version - 21)
+      PlugCurve (version: Version - 21)
       float?
-      Keys (version: Version - 21)
+      PlugCurve (version: Version - 21)
       float?
       float?
     float
     float
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v2+
     v20-
-      Keys (version: Version - 21)
+      PlugCurve (version: Version - 21)
   v3+
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v4+
     float?
     float?
   v5+
     float?
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
     v20-
-      Keys (version: Version - 21)
+      PlugCurve (version: Version - 21)
   v6+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v7-
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v8+
     float?
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v9+
     float?
     float?
     float?
   v10+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v11+
     float?
   v12+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v13+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v14+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v15+
     float?
     float?
@@ -1009,7 +1008,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v17+
     float?
   v18+
-    Keys (version: Version - 21)
+    PlugCurve (version: Version - 21)
   v19+
     float?
   v20+
@@ -1029,11 +1028,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
         float?
         v4+
           float?
-          Keys (version: Version - 8)
+          PlugCurve (version: Version - 8)
           v6-
             float?
           v7+
-            Keys
+            PlugCurve
           v5+
             float?
             v6+
@@ -1042,16 +1041,16 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x09F [MP4, TM2020]
   version
-  Keys (version: Version - 14)
+  PlugCurve (version: Version - 14)
   float
   float
   float
   v1+
     float?
     v2+
-      Keys (version: Version - 14)
+      PlugCurve (version: Version - 14)
       v3+
-        Keys (version: Version - 14)
+        PlugCurve (version: Version - 14)
         v4+
           float?
           float?
@@ -1062,11 +1061,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
           v5+
             float?
             v6+
-              Keys (version: Version - 14)
+              PlugCurve (version: Version - 14)
               v7+
                 float?
-                Keys (version: Version - 14)
-                Keys (version: Version - 14)
+                PlugCurve (version: Version - 14)
+                PlugCurve (version: Version - 14)
                 float?
                 v8+
                   float?
@@ -1077,9 +1076,9 @@ CPlugVehicleCarPhyTuning 0x090ED000
                     vec3?
                     vec3?
                     v10+
-                      Keys (version: Version - 14)
+                      PlugCurve (version: Version - 14)
                       v11+
-                        Keys (version: Version - 14)
+                        PlugCurve (version: Version - 14)
                         v12+
                           bool?
                           v13+
@@ -1106,33 +1105,32 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0A1 [TM2020]
   version
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
   float
   float
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
   float
   float
   float
   float
   float
-  Keys
-
+  PlugCurve
 0x0A2 [TM2020]
   version
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
-  Keys (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
 
 0x0A3 [TM2020]
   version
@@ -1159,8 +1157,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
             int
             CFuncKeysReal
             CFuncKeysReal
-            Keys (version: Version - 13)
-            Keys (version: Version - 13)
+            PlugCurve (version: Version - 13)
+            PlugCurve (version: Version - 13)
             v6+
               int
               v7+
@@ -1175,8 +1173,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
                       v11+
                         float
                         v12+
-                          Keys (version: Version - 13)
-                          Keys (version: Version - 13)
+                          PlugCurve (version: Version - 13)
+                          PlugCurve (version: Version - 13)
 
 0x0A4 [TM2020]
   version
@@ -1187,7 +1185,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     int
   v3+
     int
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
     float
     float
   v4+
@@ -1195,15 +1193,15 @@ CPlugVehicleCarPhyTuning 0x090ED000
     int
     float
   v5+
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
   v6+
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
   v7+
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
     int
   v8+
-    Keys (version: Version - 14)
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
+    PlugCurve (version: Version - 14)
   v9+
     int
   v10+
@@ -1214,7 +1212,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       int
       int
   v12+
-    Keys (version: Version - 14)
+    PlugCurve (version: Version - 14)
   v13+
     v17-
       int
@@ -1245,55 +1243,55 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
   v1-
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-  Keys
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+  PlugCurve
   v1-
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-    Keys (version: Version - 1)
-  Keys (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+  PlugCurve (version: Version - 1)
 
 0x0A6 [TM2020]
   version
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
   int
   int
   int
   v1+
     float
-    Keys (version: Version - 11)
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
     float
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v2+
     float
   v3+
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v4+
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v5+
     int
     int
   v6+
     v13-
-      Keys (version: Version - 11)
+      PlugCurve (version: Version - 11)
   v7+
     v13-
-      Keys (version: Version - 11)
+      PlugCurve (version: Version - 11)
   v8+
-    Keys (version: Version - 11)
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v9+
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v10+
-    Keys (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v12+
     v13-
       int
@@ -1304,8 +1302,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v14=
     int
   v15+
-    Keys
-
+    PlugCurve
 0x0A7 [TM2020]
   version
   int
@@ -1315,13 +1312,13 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
   float
-  Keys (version: Version - 19)
-  Keys (version: Version - 19)
+  PlugCurve (version: Version - 19)
+  PlugCurve (version: Version - 19)
   v1+
     int
   v2+
     int
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v3+
     int
   v4+
@@ -1337,30 +1334,30 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v7+
     int
   v8+
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v9+
-    Keys (version: Version - 19)
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
+    PlugCurve (version: Version - 19)
     int
   v10+
     float
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v11+
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v12+
     float
     float
   v13+
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v14+
-    Keys (version: Version - 19)
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v15+
     int
   v16+
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v17+
-    Keys (version: Version - 19)
+    PlugCurve (version: Version - 19)
   v18+
     float
     float
@@ -1368,44 +1365,44 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x0A8 [TM2020]
   version
   int
-  Keys (version: Version - 10)
+  PlugCurve (version: Version - 10)
   v1+
-    Keys (version: Version - 10)
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v2+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v3+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v4+
     int
   v5+
     int
     float
   v6+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v7+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v8+
     float
     float
   v9+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
 
 0x0A9 [TM2020]
   version
   int
   int
-  Keys (version: Version - 4)
-  Keys (version: Version - 4)
+  PlugCurve (version: Version - 4)
+  PlugCurve (version: Version - 4)
   v1+
     int
   v2+
     int
     float
-    Keys (version: Version - 4)
-    Keys (version: Version - 4)
+    PlugCurve (version: Version - 4)
+    PlugCurve (version: Version - 4)
   v3+
-    Keys (version: Version - 4)
+    PlugCurve (version: Version - 4)
 
 0x0AA [TM2020]
   version
@@ -1416,7 +1413,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int
   int
   float
-  Keys (version: Version - 1)
+  PlugCurve (version: Version - 1)
 
 0x0AC [TM2020]
   version
@@ -1424,7 +1421,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0AD [TM2020]
   version
-  Keys (version: Version - 10)
+  PlugCurve (version: Version - 10)
   int
   float
   int
@@ -1434,36 +1431,36 @@ CPlugVehicleCarPhyTuning 0x090ED000
   int
   int
   CFuncKeysReal
-  Keys (version: Version - 10)
+  PlugCurve (version: Version - 10)
   int
   int
   CFuncKeysReal
-  Keys (version: Version - 10)
+  PlugCurve (version: Version - 10)
   CFuncKeysReal
   v1+
-    Keys (version: Version - 10)
-    Keys (version: Version - 10)
-    Keys (version: Version - 10)
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v2+
     int
     int
     int
   v3+
-    Keys (version: Version - 10)
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v4+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
     float
   v5+
     float
   v6+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v7+
     CFuncKeysReal
     CFuncKeysReal
   v8+
-    Keys (version: Version - 10)
+    PlugCurve (version: Version - 10)
   v9+
     float
   v11+
@@ -1472,54 +1469,54 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x0AE [TM2020]
   version
   int
-  Keys (version: Version - 2)
+  PlugCurve (version: Version - 2)
   v1+
     float
 
 0x0AF [TM2020]
   version
-  Keys
+  PlugCurve
   float
   float
   float
   float
-  Keys
-  Keys
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
   float
   float
   float
   float
   float
-  Keys
+  PlugCurve
   float
   float
   float
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
   float
-  Keys
-  float
-  float
-  Keys
-  Keys
-  Keys
+  PlugCurve
   float
   float
-  float
-  Keys
-  Keys
-  Keys
-  Keys
-  float
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
+  PlugCurve
   float
   float
-  Keys
-  Keys
-  Keys
+  float
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  float
+  PlugCurve
+  PlugCurve
+  float
+  float
+  PlugCurve
+  PlugCurve
+  PlugCurve
   float
   float
   float
@@ -1537,26 +1534,25 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   float
   float
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
   float
   float
   float
   float
   float
-  Keys
+  PlugCurve
   float
   float
-  Keys
+  PlugCurve
   int
-  Keys
-  Keys
+  PlugCurve
+  PlugCurve
   float
-  Keys
-  Keys
-  Keys
-  Keys
-
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
 0x0B0 [TM2020]
   version
   float
@@ -1575,5 +1571,3 @@ enum ESteerModel
   Steer04
   Steer05
   Steer06
-
-archive Keys

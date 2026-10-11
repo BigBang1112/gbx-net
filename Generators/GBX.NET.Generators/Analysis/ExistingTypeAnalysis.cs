@@ -23,7 +23,7 @@ internal static class ExistingTypeAnalysis
                 .Where(static t => t.IsKind(SyntaxKind.IdentifierToken))
                 .Select(static t => t.ValueText))));
 
-        if (!@namespace.StartsWith(EnginesNamespace + ".", StringComparison.Ordinal))
+        if (@namespace != "GBX.NET" && !@namespace.StartsWith(EnginesNamespace + ".", StringComparison.Ordinal))
         {
             return null;
         }

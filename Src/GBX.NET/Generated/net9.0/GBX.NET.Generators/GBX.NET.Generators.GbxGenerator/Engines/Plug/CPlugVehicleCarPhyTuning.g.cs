@@ -4035,7 +4035,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED089;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
+        public PlugCurve? U01;
         public CFuncKeysReal? U02;
         public float? U03;
         public float? U04;
@@ -4054,9 +4054,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U17;
         public float? U18;
         public bool? U19;
-        public Keys? U20;
-        public Keys? U21;
-        public Keys? U22;
+        public PlugCurve? U20;
+        public PlugCurve? U21;
+        public PlugCurve? U22;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4089,7 +4089,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version- 10);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 10);
 
             if (Version <= 2)
             {
@@ -4127,12 +4127,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                             if (Version >= 8)
                             {
-                                rw.ReadableWritable<Keys>(ref U20, version: Version- 10);
-                                rw.ReadableWritable<Keys>(ref U21, version: Version- 10);
+                                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 10);
+                                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 10);
 
                                 if (Version >= 9)
                                 {
-                                    rw.ReadableWritable<Keys>(ref U22, version: Version- 10);
+                                    rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 10);
                                 }
                             }
                         }
@@ -4153,17 +4153,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U02;
         public float U03;
         public float U04;
-        public Keys? U05;
-        public Keys? U06;
-        public Keys? U07;
-        public Keys? U08;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
+        public PlugCurve? U08;
         public float? U09;
         public float? U10;
-        public Keys? U11;
-        public Keys? U12;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
         public int? U13;
         public float? U14;
-        public Keys? U15;
+        public PlugCurve? U15;
         public bool? U16;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -4195,10 +4195,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
-            rw.ReadableWritable<Keys>(ref U05, version: Version- 8);
-            rw.ReadableWritable<Keys>(ref U06, version: Version- 8);
-            rw.ReadableWritable<Keys>(ref U07, version: Version- 8);
-            rw.ReadableWritable<Keys>(ref U08, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 8);
 
             if (Version >= 1)
             {
@@ -4210,8 +4210,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                 if (Version >= 4)
                 {
-                    rw.ReadableWritable<Keys>(ref U11, version: Version- 8);
-                    rw.ReadableWritable<Keys>(ref U12, version: Version- 8);
+                    rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 8);
+                    rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 8);
                 }
 
                 if (Version >= 3)
@@ -4225,7 +4225,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                     if (Version >= 6)
                     {
-                        rw.ReadableWritable<Keys>(ref U15, version: Version- 8);
+                        rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 8);
 
                         if (Version >= 7)
                         {
@@ -4255,31 +4255,31 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool U09;
         public float U10;
         public float U11;
-        public Keys? U12;
+        public PlugCurve? U12;
         public int U13;
         public int U14;
-        public Keys? U15;
+        public PlugCurve? U15;
         public float U16;
-        public Keys? U17;
+        public PlugCurve? U17;
         public float U18;
-        public Keys? U19;
+        public PlugCurve? U19;
         public float U20;
-        public Keys? U21;
-        public Keys? U22;
-        public Keys? U23;
+        public PlugCurve? U21;
+        public PlugCurve? U22;
+        public PlugCurve? U23;
         public float U24;
         public float U25;
         public float U26;
         public float U27;
         public float U28;
-        public Keys? U29;
+        public PlugCurve? U29;
         public float U30;
-        public Keys? U31;
-        public Keys? U32;
-        public Keys? U33;
+        public PlugCurve? U31;
+        public PlugCurve? U32;
+        public PlugCurve? U33;
         public int U34;
         public int U35;
-        public Keys? U36;
+        public PlugCurve? U36;
         public float U37;
         public float U38;
         public float U39;
@@ -4289,7 +4289,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool U43;
         public float U44;
         public float U45;
-        public Keys? U46;
+        public PlugCurve? U46;
         public int U47;
         public bool U48;
         public float U49;
@@ -4308,7 +4308,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public CFuncKeysReal? U62;
         public bool U63;
         public bool U64;
-        public Keys? U65;
+        public PlugCurve? U65;
         public CFuncKeysReal? U66;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -4436,7 +4436,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 4)
             {
-                rw.ReadableWritable<Keys>(ref U12, version: Version- 37);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 37);
 
                 if (Version >= 5)
                 {
@@ -4448,7 +4448,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                     if (Version >= 9)
                     {
-                        rw.ReadableWritable<Keys>(ref U15, version: Version- 37);
+                        rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 37);
 
                         if (Version >= 13)
                         {
@@ -4459,7 +4459,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                             if (Version >= 22)
                             {
-                                rw.ReadableWritable<Keys>(ref U17, version: Version- 37);
+                                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 37);
                             }
 
                             rw.Single(ref U18);
@@ -4468,7 +4468,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                     if (Version >= 6)
                     {
-                        rw.ReadableWritable<Keys>(ref U19, version: Version- 37);
+                        rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 37);
 
                         if (Version >= 7)
                         {
@@ -4476,9 +4476,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                             if (Version >= 10)
                             {
-                                rw.ReadableWritable<Keys>(ref U21, version: Version- 37);
-                                rw.ReadableWritable<Keys>(ref U22, version: Version- 37);
-                                rw.ReadableWritable<Keys>(ref U23, version: Version- 37);
+                                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 37);
+                                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 37);
+                                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 37);
 
                                 if (Version >= 11)
                                 {
@@ -4487,7 +4487,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                     rw.Single(ref U26);
                                     rw.Single(ref U27);
                                     rw.Single(ref U28);
-                                    rw.ReadableWritable<Keys>(ref U29, version: Version- 37);
+                                    rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 37);
 
                                     if (Version >= 12)
                                     {
@@ -4495,15 +4495,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                         if (Version >= 14)
                                         {
-                                            rw.ReadableWritable<Keys>(ref U31, version: Version- 37);
+                                            rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 37);
 
                                             if (Version >= 15)
                                             {
-                                                rw.ReadableWritable<Keys>(ref U32, version: Version- 37);
+                                                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 37);
 
                                                 if (Version >= 16)
                                                 {
-                                                    rw.ReadableWritable<Keys>(ref U33, version: Version- 37);
+                                                    rw.ReadableWritable<PlugCurve>(ref U33, version: Version- 37);
 
                                                     if (Version >= 17)
                                                     {
@@ -4515,7 +4515,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                                             if (Version >= 19)
                                                             {
-                                                                rw.ReadableWritable<Keys>(ref U36, version: Version- 37);
+                                                                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 37);
 
                                                                 if (Version >= 20)
                                                                 {
@@ -4534,7 +4534,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                             rw.Boolean(ref U43);
                                                                             rw.Single(ref U44);
                                                                             rw.Single(ref U45);
-                                                                            rw.ReadableWritable<Keys>(ref U46, version: Version- 37);
+                                                                            rw.ReadableWritable<PlugCurve>(ref U46, version: Version- 37);
 
                                                                             if (Version >= 24)
                                                                             {
@@ -4598,7 +4598,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                                         if (Version >= 36)
                                                                                                         {
                                                                                                             rw.Boolean(ref U64);
-                                                                                                            rw.ReadableWritable<Keys>(ref U65, version: Version- 37);
+                                                                                                            rw.ReadableWritable<PlugCurve>(ref U65, version: Version- 37);
                                                                                                             rw.NodeRef<CFuncKeysReal>(ref U66);
                                                                                                         }
                                                                                                     }
@@ -4820,15 +4820,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-        public Keys? U02;
+        public PlugCurve? U02;
         public int U03;
         public float U04;
-        public Keys? U05;
+        public PlugCurve? U05;
         public int U06;
         public int? U07;
         public int? U08;
         public float? U09;
-        public Keys? U10;
+        public PlugCurve? U10;
         public int? U11;
         public int? U12;
         public int? U13;
@@ -4864,10 +4864,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             }
 
             rw.Single(ref U01);
-            rw.ReadableWritable<Keys>(ref U02, version: Version- 3);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 3);
             rw.Int32(ref U03);
             rw.Single(ref U04);
-            rw.ReadableWritable<Keys>(ref U05, version: Version- 3);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 3);
             rw.Int32(ref U06);
 
             if (Version >= 1)
@@ -4878,7 +4878,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 if (Version >= 2)
                 {
                     rw.Single(ref U09);
-                    rw.ReadableWritable<Keys>(ref U10, version: Version- 3);
+                    rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 3);
                     rw.Int32(ref U11);
                     rw.Int32(ref U12);
 
@@ -4905,22 +4905,22 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public int U01;
         public float U02;
-        public Keys? U03;
+        public PlugCurve? U03;
         public bool U04;
         public float U05;
         public float U06;
         public float U07;
         public int? U08;
         public int? U09;
-        public Keys? U10;
-        public Keys? U11;
-        public Keys? U12;
+        public PlugCurve? U10;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
         public int? U13;
         public int? U14;
         public int? U15;
-        public Keys? U16;
+        public PlugCurve? U16;
         public int? U17;
-        public Keys? U18;
+        public PlugCurve? U18;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4957,7 +4957,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             rw.Int32(ref U01);
             rw.Single(ref U02);
-            rw.ReadableWritable<Keys>(ref U03, version: Version- 1);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 1);
             rw.Boolean(ref U04);
             rw.Single(ref U05);
             rw.Single(ref U06);
@@ -4970,12 +4970,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 if (Version >= 2)
                 {
                     rw.Int32(ref U09);
-                    rw.ReadableWritable<Keys>(ref U10, version: Version- 1);
-                    rw.ReadableWritable<Keys>(ref U11, version: Version- 1);
+                    rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 1);
+                    rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 1);
 
                     if (Version >= 3)
                     {
-                        rw.ReadableWritable<Keys>(ref U12, version: Version- 1);
+                        rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 1);
 
                         if (Version >= 4)
                         {
@@ -4985,12 +4985,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                             {
                                 rw.Int32(ref U14);
                                 rw.Int32(ref U15);
-                                rw.ReadableWritable<Keys>(ref U16, version: Version- 1);
+                                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 1);
                                 rw.Int32(ref U17);
 
                                 if (Version >= 6)
                                 {
-                                    rw.ReadableWritable<Keys>(ref U18, version: Version- 1);
+                                    rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 1);
                                 }
                             }
                         }
@@ -5286,7 +5286,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U28;
         public float? U29;
         public float? U30;
-        public Keys? U31;
+        public PlugCurve? U31;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -5370,7 +5370,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                         if (Version >= 4)
                         {
-                            rw.ReadableWritable<Keys>(ref U31, version: Version);
+                            rw.ReadableWritable<PlugCurve>(ref U31, version: Version);
                         }
                     }
                 }
@@ -5386,39 +5386,39 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float? U01;
-        public Keys? U02;
-        public Keys? U03;
-        public Keys? U04;
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
         public float? U05;
         public float? U06;
         public CFuncKeysReal? U07;
         public CFuncKeysReal? U08;
         public CFuncKeysReal? U09;
-        public Keys? U10;
-        public Keys? U11;
-        public Keys? U12;
-        public Keys? U13;
+        public PlugCurve? U10;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
+        public PlugCurve? U13;
         public float? U14;
         public float? U15;
         public CFuncKeysReal? U16;
         public float? U17;
-        public Keys? U18;
+        public PlugCurve? U18;
         public float? U19;
         public float? U20;
         public float? U21;
         public float? U22;
         public int? U23;
-        public Keys? U24;
-        public Keys? U25;
+        public PlugCurve? U24;
+        public PlugCurve? U25;
         public float? U26;
         public float? U27;
-        public Keys? U28;
-        public Keys? U29;
-        public Keys? U30;
-        public Keys? U31;
+        public PlugCurve? U28;
+        public PlugCurve? U29;
+        public PlugCurve? U30;
+        public PlugCurve? U31;
         public float? U32;
         public float? U33;
-        public Keys? U34;
+        public PlugCurve? U34;
         public float? U35;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -5473,9 +5473,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 18)
             {
-                rw.ReadableWritable<Keys>(ref U02, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U03, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U04, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 21);
             }
 
             rw.Single(ref U05);
@@ -5483,13 +5483,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.NodeRef<CFuncKeysReal>(ref U07);
             rw.NodeRef<CFuncKeysReal>(ref U08);
             rw.NodeRef<CFuncKeysReal>(ref U09);
-            rw.ReadableWritable<Keys>(ref U10, version: Version- 21);
-            rw.ReadableWritable<Keys>(ref U11, version: Version- 21);
+            rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 21);
+            rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 21);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<Keys>(ref U12, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U13, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 21);
             }
 
             if (Version >= 2)
@@ -5509,7 +5509,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 if (Version >= 5)
                 {
                     rw.Single(ref U17);
-                    rw.ReadableWritable<Keys>(ref U18, version: Version- 21);
+                    rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 21);
                     rw.Single(ref U19);
                     rw.Single(ref U20);
                     rw.Single(ref U21);
@@ -5521,11 +5521,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                         if (Version >= 7)
                         {
                             rw.Int32(ref U23);
-                            rw.ReadableWritable<Keys>(ref U24, version: Version- 21);
+                            rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 21);
 
                             if (Version >= 8)
                             {
-                                rw.ReadableWritable<Keys>(ref U25, version: Version- 21);
+                                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 21);
 
                                 if (Version >= 9)
                                 {
@@ -5537,16 +5537,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                         if (Version >= 11)
                                         {
-                                            rw.ReadableWritable<Keys>(ref U28, version: Version- 21);
-                                            rw.ReadableWritable<Keys>(ref U29, version: Version- 21);
+                                            rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 21);
+                                            rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 21);
 
                                             if (Version >= 12)
                                             {
-                                                rw.ReadableWritable<Keys>(ref U30, version: Version- 21);
+                                                rw.ReadableWritable<PlugCurve>(ref U30, version: Version- 21);
 
                                                 if (Version >= 13)
                                                 {
-                                                    rw.ReadableWritable<Keys>(ref U31, version: Version- 21);
+                                                    rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 21);
 
                                                     if (Version >= 15)
                                                     {
@@ -5558,7 +5558,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                                             if (Version >= 19)
                                                             {
-                                                                rw.ReadableWritable<Keys>(ref U34, version: Version- 21);
+                                                                rw.ReadableWritable<PlugCurve>(ref U34, version: Version- 21);
 
                                                                 if (Version >= 20)
                                                                 {
@@ -5595,47 +5595,47 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public bool? U06;
         public float U07;
         public float U08;
-        public Keys? U09;
+        public PlugCurve? U09;
         public float? U10;
-        public Keys? U11;
+        public PlugCurve? U11;
         public float? U12;
         public float? U13;
         public float U14;
         public float U15;
-        public Keys? U16;
-        public Keys? U17;
-        public Keys? U18;
-        public Keys? U19;
-        public Keys? U20;
+        public PlugCurve? U16;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
         public float? U21;
         public float? U22;
         public float? U23;
-        public Keys? U24;
-        public Keys? U25;
-        public Keys? U26;
-        public Keys? U27;
-        public Keys? U28;
-        public Keys? U29;
-        public Keys? U30;
-        public Keys? U31;
-        public Keys? U32;
-        public Keys? U33;
-        public Keys? U34;
+        public PlugCurve? U24;
+        public PlugCurve? U25;
+        public PlugCurve? U26;
+        public PlugCurve? U27;
+        public PlugCurve? U28;
+        public PlugCurve? U29;
+        public PlugCurve? U30;
+        public PlugCurve? U31;
+        public PlugCurve? U32;
+        public PlugCurve? U33;
+        public PlugCurve? U34;
         public float? U35;
-        public Keys? U36;
+        public PlugCurve? U36;
         public float? U37;
         public float? U38;
         public float? U39;
-        public Keys? U40;
+        public PlugCurve? U40;
         public float? U41;
-        public Keys? U42;
-        public Keys? U43;
-        public Keys? U44;
+        public PlugCurve? U42;
+        public PlugCurve? U43;
+        public PlugCurve? U44;
         public float? U45;
         public float? U46;
         public float? U47;
         public float? U48;
-        public Keys? U49;
+        public PlugCurve? U49;
         public float? U50;
         public CPlugDynaWaterModel? U51;
 
@@ -5716,31 +5716,31 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 if (Version <= 20)
                 {
-                    rw.ReadableWritable<Keys>(ref U09, version: Version- 21);
+                    rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 21);
                     rw.Single(ref U10);
-                    rw.ReadableWritable<Keys>(ref U11, version: Version- 21);
+                    rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 21);
                     rw.Single(ref U12);
                     rw.Single(ref U13);
                 }
 
                 rw.Single(ref U14);
                 rw.Single(ref U15);
-                rw.ReadableWritable<Keys>(ref U16, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U17, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 21);
             }
 
             if (Version >= 2)
             {
                 if (Version <= 20)
                 {
-                    rw.ReadableWritable<Keys>(ref U18, version: Version- 21);
+                    rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 21);
                 }
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<Keys>(ref U19, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U20, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 21);
             }
 
             if (Version >= 4)
@@ -5752,35 +5752,35 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             if (Version >= 5)
             {
                 rw.Single(ref U23);
-                rw.ReadableWritable<Keys>(ref U24, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U25, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U26, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 21);
 
                 if (Version <= 20)
                 {
-                    rw.ReadableWritable<Keys>(ref U27, version: Version- 21);
+                    rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 21);
                 }
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<Keys>(ref U28, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 21);
             }
 
             if (Version <= 7)
             {
-                rw.ReadableWritable<Keys>(ref U29, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U30, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U31, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U32, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U33, version: Version- 21);
-                rw.ReadableWritable<Keys>(ref U34, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U30, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U33, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U34, version: Version- 21);
             }
 
             if (Version >= 8)
             {
                 rw.Single(ref U35);
-                rw.ReadableWritable<Keys>(ref U36, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 21);
             }
 
             if (Version >= 9)
@@ -5792,7 +5792,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 10)
             {
-                rw.ReadableWritable<Keys>(ref U40, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U40, version: Version- 21);
             }
 
             if (Version >= 11)
@@ -5802,17 +5802,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 12)
             {
-                rw.ReadableWritable<Keys>(ref U42, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U42, version: Version- 21);
             }
 
             if (Version >= 13)
             {
-                rw.ReadableWritable<Keys>(ref U43, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U43, version: Version- 21);
             }
 
             if (Version >= 14)
             {
-                rw.ReadableWritable<Keys>(ref U44, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U44, version: Version- 21);
             }
 
             if (Version >= 15)
@@ -5833,7 +5833,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 18)
             {
-                rw.ReadableWritable<Keys>(ref U49, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref U49, version: Version- 21);
             }
 
             if (Version >= 19)
@@ -5863,9 +5863,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U06;
         public float? U07;
         public float? U08;
-        public Keys? U09;
+        public PlugCurve? U09;
         public float? U10;
-        public Keys? U11;
+        public PlugCurve? U11;
         public float? U12;
         public float? U13;
         public float? U14;
@@ -5913,7 +5913,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                         if (Version >= 4)
                         {
                             rw.Single(ref U08);
-                            rw.ReadableWritable<Keys>(ref U09, version: Version- 8);
+                            rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 8);
 
                             if (Version <= 6)
                             {
@@ -5922,7 +5922,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                             if (Version >= 7)
                             {
-                                rw.ReadableWritable<Keys>(ref U11, version: Version);
+                                rw.ReadableWritable<PlugCurve>(ref U11, version: Version);
                             }
 
                             if (Version >= 5)
@@ -5949,13 +5949,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED09F;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
+        public PlugCurve? U01;
         public float U02;
         public float U03;
         public float U04;
         public float? U05;
-        public Keys? U06;
-        public Keys? U07;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
         public float? U08;
         public float? U09;
         public float? U10;
@@ -5963,10 +5963,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U12;
         public float? U13;
         public float? U14;
-        public Keys? U15;
+        public PlugCurve? U15;
         public float? U16;
-        public Keys? U17;
-        public Keys? U18;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
         public float? U19;
         public float? U20;
         public float? U21;
@@ -5974,8 +5974,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U23;
         public Vec3? U24;
         public Vec3? U25;
-        public Keys? U26;
-        public Keys? U27;
+        public PlugCurve? U26;
+        public PlugCurve? U27;
         public bool? U28;
         public int? U29;
         public int? U30;
@@ -6025,7 +6025,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version- 14);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 14);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
@@ -6036,11 +6036,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                 if (Version >= 2)
                 {
-                    rw.ReadableWritable<Keys>(ref U06, version: Version- 14);
+                    rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 14);
 
                     if (Version >= 3)
                     {
-                        rw.ReadableWritable<Keys>(ref U07, version: Version- 14);
+                        rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 14);
 
                         if (Version >= 4)
                         {
@@ -6057,13 +6057,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                 if (Version >= 6)
                                 {
-                                    rw.ReadableWritable<Keys>(ref U15, version: Version- 14);
+                                    rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 14);
 
                                     if (Version >= 7)
                                     {
                                         rw.Single(ref U16);
-                                        rw.ReadableWritable<Keys>(ref U17, version: Version- 14);
-                                        rw.ReadableWritable<Keys>(ref U18, version: Version- 14);
+                                        rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 14);
+                                        rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 14);
                                         rw.Single(ref U19);
 
                                         if (Version >= 8)
@@ -6080,11 +6080,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                                 if (Version >= 10)
                                                 {
-                                                    rw.ReadableWritable<Keys>(ref U26, version: Version- 14);
+                                                    rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 14);
 
                                                     if (Version >= 11)
                                                     {
-                                                        rw.ReadableWritable<Keys>(ref U27, version: Version- 14);
+                                                        rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 14);
 
                                                         if (Version >= 12)
                                                         {
@@ -6178,18 +6178,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0A1;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
-        public Keys? U02;
+        public PlugCurve? U01;
+        public PlugCurve? U02;
         public float U03;
         public float U04;
-        public Keys? U05;
-        public Keys? U06;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
         public float U07;
         public float U08;
         public float U09;
         public float U10;
         public float U11;
-        public Keys? U12;
+        public PlugCurve? U12;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6212,18 +6212,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version);
-            rw.ReadableWritable<Keys>(ref U02, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version);
             rw.Single(ref U03);
             rw.Single(ref U04);
-            rw.ReadableWritable<Keys>(ref U05, version: Version);
-            rw.ReadableWritable<Keys>(ref U06, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U06, version: Version);
             rw.Single(ref U07);
             rw.Single(ref U08);
             rw.Single(ref U09);
             rw.Single(ref U10);
             rw.Single(ref U11);
-            rw.ReadableWritable<Keys>(ref U12, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U12, version: Version);
         }
     }
 
@@ -6234,18 +6234,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0A2;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
-        public Keys? U02;
-        public Keys? U03;
-        public Keys? U04;
-        public Keys? U05;
-        public Keys? U06;
-        public Keys? U07;
-        public Keys? U08;
-        public Keys? U09;
-        public Keys? U10;
-        public Keys? U11;
-        public Keys? U12;
+        public PlugCurve? U01;
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
+        public PlugCurve? U10;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6268,18 +6268,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U02, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U03, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U04, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U05, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U06, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U07, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U08, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U09, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U10, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U11, version: Version- 2);
-            rw.ReadableWritable<Keys>(ref U12, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 2);
         }
     }
 
@@ -6308,8 +6308,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U16;
         public CFuncKeysReal? U17;
         public CFuncKeysReal? U18;
-        public Keys? U19;
-        public Keys? U20;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
         public int U21;
         public int U22;
         public int U23;
@@ -6317,8 +6317,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U25;
         public int U26;
         public float U27;
-        public Keys? U28;
-        public Keys? U29;
+        public PlugCurve? U28;
+        public PlugCurve? U29;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6391,8 +6391,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                 rw.Int32(ref U16);
                                 rw.NodeRef<CFuncKeysReal>(ref U17);
                                 rw.NodeRef<CFuncKeysReal>(ref U18);
-                                rw.ReadableWritable<Keys>(ref U19, version: Version- 13);
-                                rw.ReadableWritable<Keys>(ref U20, version: Version- 13);
+                                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 13);
+                                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 13);
 
                                 if (Version >= 6)
                                 {
@@ -6421,8 +6421,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                                                         if (Version >= 12)
                                                         {
-                                                            rw.ReadableWritable<Keys>(ref U28, version: Version- 13);
-                                                            rw.ReadableWritable<Keys>(ref U29, version: Version- 13);
+                                                            rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 13);
+                                                            rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 13);
                                                         }
                                                     }
                                                 }
@@ -6449,24 +6449,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U02;
         public int U03;
         public int U04;
-        public Keys? U05;
+        public PlugCurve? U05;
         public float U06;
         public float U07;
         public float U08;
         public int U09;
         public float U10;
-        public Keys? U11;
-        public Keys? U12;
-        public Keys? U13;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
+        public PlugCurve? U13;
         public int U14;
-        public Keys? U15;
-        public Keys? U16;
+        public PlugCurve? U15;
+        public PlugCurve? U16;
         public int U17;
         public int U18;
         public int U19;
         public int U20;
         public int U21;
-        public Keys? U22;
+        public PlugCurve? U22;
         public int U23;
         public int U24;
         public float U25;
@@ -6522,7 +6522,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             if (Version >= 3)
             {
                 rw.Int32(ref U04);
-                rw.ReadableWritable<Keys>(ref U05, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 14);
                 rw.Single(ref U06);
                 rw.Single(ref U07);
             }
@@ -6536,24 +6536,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<Keys>(ref U11, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 14);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<Keys>(ref U12, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 14);
             }
 
             if (Version >= 7)
             {
-                rw.ReadableWritable<Keys>(ref U13, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 14);
                 rw.Int32(ref U14);
             }
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<Keys>(ref U15, version: Version- 14);
-                rw.ReadableWritable<Keys>(ref U16, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 14);
             }
 
             if (Version >= 9)
@@ -6578,7 +6578,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 12)
             {
-                rw.ReadableWritable<Keys>(ref U22, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 14);
             }
 
             if (Version >= 13)
@@ -6627,17 +6627,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U12;
         public float U13;
         public float U14;
-        public Keys? U15;
-        public Keys? U16;
-        public Keys? U17;
-        public Keys? U18;
-        public Keys? U19;
-        public Keys? U20;
-        public Keys? U21;
-        public Keys? U22;
-        public Keys? U23;
-        public Keys? U24;
-        public Keys? U25;
+        public PlugCurve? U15;
+        public PlugCurve? U16;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
+        public PlugCurve? U21;
+        public PlugCurve? U22;
+        public PlugCurve? U23;
+        public PlugCurve? U24;
+        public PlugCurve? U25;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6705,24 +6705,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version <= 1)
             {
-                rw.ReadableWritable<Keys>(ref U15, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U16, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U17, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U18, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U19, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U20, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 1);
             }
 
-            rw.ReadableWritable<Keys>(ref U21, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U21, version: Version);
 
             if (Version <= 1)
             {
-                rw.ReadableWritable<Keys>(ref U22, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U23, version: Version- 1);
-                rw.ReadableWritable<Keys>(ref U24, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 1);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 1);
             }
 
-            rw.ReadableWritable<Keys>(ref U25, version: Version- 1);
+            rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 1);
         }
     }
 
@@ -6733,34 +6733,34 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0A6;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
-        public Keys? U02;
-        public Keys? U03;
+        public PlugCurve? U01;
+        public PlugCurve? U02;
+        public PlugCurve? U03;
         public int U04;
         public int U05;
         public int U06;
         public float U07;
-        public Keys? U08;
-        public Keys? U09;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
         public float U10;
-        public Keys? U11;
+        public PlugCurve? U11;
         public float U12;
-        public Keys? U13;
-        public Keys? U14;
+        public PlugCurve? U13;
+        public PlugCurve? U14;
         public int U15;
         public int U16;
-        public Keys? U17;
-        public Keys? U18;
-        public Keys? U19;
-        public Keys? U20;
-        public Keys? U21;
-        public Keys? U22;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
+        public PlugCurve? U21;
+        public PlugCurve? U22;
         public int U23;
         public int U24;
         public int U25;
         public int U26;
         public int U27;
-        public Keys? U28;
+        public PlugCurve? U28;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6799,9 +6799,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version- 11);
-            rw.ReadableWritable<Keys>(ref U02, version: Version- 11);
-            rw.ReadableWritable<Keys>(ref U03, version: Version- 11);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 11);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 11);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 11);
             rw.Int32(ref U04);
             rw.Int32(ref U05);
             rw.Int32(ref U06);
@@ -6809,10 +6809,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             if (Version >= 1)
             {
                 rw.Single(ref U07);
-                rw.ReadableWritable<Keys>(ref U08, version: Version- 11);
-                rw.ReadableWritable<Keys>(ref U09, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 11);
                 rw.Single(ref U10);
-                rw.ReadableWritable<Keys>(ref U11, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 11);
             }
 
             if (Version >= 2)
@@ -6822,12 +6822,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<Keys>(ref U13, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 11);
             }
 
             if (Version >= 4)
             {
-                rw.ReadableWritable<Keys>(ref U14, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 11);
             }
 
             if (Version >= 5)
@@ -6840,7 +6840,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 if (Version <= 13)
                 {
-                    rw.ReadableWritable<Keys>(ref U17, version: Version- 11);
+                    rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 11);
                 }
             }
 
@@ -6848,24 +6848,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 if (Version <= 13)
                 {
-                    rw.ReadableWritable<Keys>(ref U18, version: Version- 11);
+                    rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 11);
                 }
             }
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<Keys>(ref U19, version: Version- 11);
-                rw.ReadableWritable<Keys>(ref U20, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 11);
             }
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<Keys>(ref U21, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 11);
             }
 
             if (Version >= 10)
             {
-                rw.ReadableWritable<Keys>(ref U22, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 11);
             }
 
             if (Version >= 12)
@@ -6890,7 +6890,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 15)
             {
-                rw.ReadableWritable<Keys>(ref U28, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref U28, version: Version);
             }
         }
     }
@@ -6909,11 +6909,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U05;
         public float U06;
         public float U07;
-        public Keys? U08;
-        public Keys? U09;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
         public int U10;
         public int U11;
-        public Keys? U12;
+        public PlugCurve? U12;
         public int U13;
         public float U14;
         public float U15;
@@ -6923,21 +6923,21 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U19;
         public CFuncKeysReal? U20;
         public int U21;
-        public Keys? U22;
-        public Keys? U23;
-        public Keys? U24;
+        public PlugCurve? U22;
+        public PlugCurve? U23;
+        public PlugCurve? U24;
         public int U25;
         public float U26;
-        public Keys? U27;
-        public Keys? U28;
+        public PlugCurve? U27;
+        public PlugCurve? U28;
         public float U29;
         public float U30;
-        public Keys? U31;
-        public Keys? U32;
-        public Keys? U33;
+        public PlugCurve? U31;
+        public PlugCurve? U32;
+        public PlugCurve? U33;
         public int U34;
-        public Keys? U35;
-        public Keys? U36;
+        public PlugCurve? U35;
+        public PlugCurve? U36;
         public float U37;
         public float U38;
 
@@ -6995,8 +6995,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref U05);
             rw.Single(ref U06);
             rw.Single(ref U07);
-            rw.ReadableWritable<Keys>(ref U08, version: Version- 19);
-            rw.ReadableWritable<Keys>(ref U09, version: Version- 19);
+            rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 19);
+            rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 19);
 
             if (Version >= 1)
             {
@@ -7006,7 +7006,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             if (Version >= 2)
             {
                 rw.Int32(ref U11);
-                rw.ReadableWritable<Keys>(ref U12, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 19);
             }
 
             if (Version >= 3)
@@ -7040,25 +7040,25 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<Keys>(ref U22, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 19);
             }
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<Keys>(ref U23, version: Version- 19);
-                rw.ReadableWritable<Keys>(ref U24, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 19);
                 rw.Int32(ref U25);
             }
 
             if (Version >= 10)
             {
                 rw.Single(ref U26);
-                rw.ReadableWritable<Keys>(ref U27, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 19);
             }
 
             if (Version >= 11)
             {
-                rw.ReadableWritable<Keys>(ref U28, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 19);
             }
 
             if (Version >= 12)
@@ -7069,13 +7069,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 13)
             {
-                rw.ReadableWritable<Keys>(ref U31, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 19);
             }
 
             if (Version >= 14)
             {
-                rw.ReadableWritable<Keys>(ref U32, version: Version- 19);
-                rw.ReadableWritable<Keys>(ref U33, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U33, version: Version- 19);
             }
 
             if (Version >= 15)
@@ -7085,12 +7085,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 16)
             {
-                rw.ReadableWritable<Keys>(ref U35, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U35, version: Version- 19);
             }
 
             if (Version >= 17)
             {
-                rw.ReadableWritable<Keys>(ref U36, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 19);
             }
 
             if (Version >= 18)
@@ -7109,19 +7109,19 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
-        public Keys? U02;
-        public Keys? U03;
-        public Keys? U04;
-        public Keys? U05;
-        public Keys? U06;
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
         public int U07;
         public int U08;
         public float U09;
-        public Keys? U10;
-        public Keys? U11;
+        public PlugCurve? U10;
+        public PlugCurve? U11;
         public float U12;
         public float U13;
-        public Keys? U14;
+        public PlugCurve? U14;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7147,22 +7147,22 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             rw.VersionInt32(this);
             rw.Int32(ref U01);
-            rw.ReadableWritable<Keys>(ref U02, version: Version- 10);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 10);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<Keys>(ref U03, version: Version- 10);
-                rw.ReadableWritable<Keys>(ref U04, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 10);
             }
 
             if (Version >= 2)
             {
-                rw.ReadableWritable<Keys>(ref U05, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 10);
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<Keys>(ref U06, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 10);
             }
 
             if (Version >= 4)
@@ -7178,12 +7178,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<Keys>(ref U10, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 10);
             }
 
             if (Version >= 7)
             {
-                rw.ReadableWritable<Keys>(ref U11, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 10);
             }
 
             if (Version >= 8)
@@ -7194,7 +7194,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<Keys>(ref U14, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 10);
             }
         }
     }
@@ -7208,14 +7208,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public int U01;
         public int U02;
-        public Keys? U03;
-        public Keys? U04;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
         public int U05;
         public int U06;
         public float U07;
-        public Keys? U08;
-        public Keys? U09;
-        public Keys? U10;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
+        public PlugCurve? U10;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7238,8 +7238,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.VersionInt32(this);
             rw.Int32(ref U01);
             rw.Int32(ref U02);
-            rw.ReadableWritable<Keys>(ref U03, version: Version- 4);
-            rw.ReadableWritable<Keys>(ref U04, version: Version- 4);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 4);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 4);
 
             if (Version >= 1)
             {
@@ -7250,13 +7250,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 rw.Int32(ref U06);
                 rw.Single(ref U07);
-                rw.ReadableWritable<Keys>(ref U08, version: Version- 4);
-                rw.ReadableWritable<Keys>(ref U09, version: Version- 4);
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 4);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 4);
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<Keys>(ref U10, version: Version- 4);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 4);
             }
         }
     }
@@ -7294,7 +7294,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U01;
         public int U02;
         public float U03;
-        public Keys? U04;
+        public PlugCurve? U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7312,7 +7312,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Single(ref U03);
-            rw.ReadableWritable<Keys>(ref U04, version: Version- 1);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 1);
         }
     }
 
@@ -7346,7 +7346,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0AD;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
+        public PlugCurve? U01;
         public int U02;
         public float U03;
         public int U04;
@@ -7356,28 +7356,28 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U08;
         public int U09;
         public CFuncKeysReal? U10;
-        public Keys? U11;
+        public PlugCurve? U11;
         public int U12;
         public int U13;
         public CFuncKeysReal? U14;
-        public Keys? U15;
+        public PlugCurve? U15;
         public CFuncKeysReal? U16;
-        public Keys? U17;
-        public Keys? U18;
-        public Keys? U19;
-        public Keys? U20;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
         public int U21;
         public int U22;
         public int U23;
-        public Keys? U24;
-        public Keys? U25;
-        public Keys? U26;
+        public PlugCurve? U24;
+        public PlugCurve? U25;
+        public PlugCurve? U26;
         public float U27;
         public float U28;
-        public Keys? U29;
+        public PlugCurve? U29;
         public CFuncKeysReal? U30;
         public CFuncKeysReal? U31;
-        public Keys? U32;
+        public PlugCurve? U32;
         public float U33;
         public int U34;
 
@@ -7424,7 +7424,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version- 10);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 10);
             rw.Int32(ref U02);
             rw.Single(ref U03);
             rw.Int32(ref U04);
@@ -7434,19 +7434,19 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Int32(ref U08);
             rw.Int32(ref U09);
             rw.NodeRef<CFuncKeysReal>(ref U10);
-            rw.ReadableWritable<Keys>(ref U11, version: Version- 10);
+            rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 10);
             rw.Int32(ref U12);
             rw.Int32(ref U13);
             rw.NodeRef<CFuncKeysReal>(ref U14);
-            rw.ReadableWritable<Keys>(ref U15, version: Version- 10);
+            rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 10);
             rw.NodeRef<CFuncKeysReal>(ref U16);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<Keys>(ref U17, version: Version- 10);
-                rw.ReadableWritable<Keys>(ref U18, version: Version- 10);
-                rw.ReadableWritable<Keys>(ref U19, version: Version- 10);
-                rw.ReadableWritable<Keys>(ref U20, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 10);
             }
 
             if (Version >= 2)
@@ -7458,13 +7458,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<Keys>(ref U24, version: Version- 10);
-                rw.ReadableWritable<Keys>(ref U25, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 10);
             }
 
             if (Version >= 4)
             {
-                rw.ReadableWritable<Keys>(ref U26, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 10);
                 rw.Single(ref U27);
             }
 
@@ -7475,7 +7475,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<Keys>(ref U29, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 10);
             }
 
             if (Version >= 7)
@@ -7486,7 +7486,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<Keys>(ref U32, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 10);
             }
 
             if (Version >= 9)
@@ -7509,7 +7509,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
-        public Keys? U02;
+        public PlugCurve? U02;
         public float U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -7525,7 +7525,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             rw.VersionInt32(this);
             rw.Int32(ref U01);
-            rw.ReadableWritable<Keys>(ref U02, version: Version- 2);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
 
             if (Version >= 1)
             {
@@ -7541,48 +7541,48 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0AF;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Keys? U01;
+        public PlugCurve? U01;
         public float U02;
         public float U03;
         public float U04;
         public float U05;
-        public Keys? U06;
-        public Keys? U07;
-        public Keys? U08;
-        public Keys? U09;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
         public float U10;
         public float U11;
         public float U12;
         public float U13;
         public float U14;
-        public Keys? U15;
+        public PlugCurve? U15;
         public float U16;
         public float U17;
         public float U18;
-        public Keys? U19;
-        public Keys? U20;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
         public float U21;
-        public Keys? U22;
+        public PlugCurve? U22;
         public float U23;
         public float U24;
-        public Keys? U25;
-        public Keys? U26;
-        public Keys? U27;
+        public PlugCurve? U25;
+        public PlugCurve? U26;
+        public PlugCurve? U27;
         public float U28;
         public float U29;
         public float U30;
-        public Keys? U31;
-        public Keys? U32;
-        public Keys? U33;
-        public Keys? U34;
+        public PlugCurve? U31;
+        public PlugCurve? U32;
+        public PlugCurve? U33;
+        public PlugCurve? U34;
         public float U35;
-        public Keys? U36;
-        public Keys? U37;
+        public PlugCurve? U36;
+        public PlugCurve? U37;
         public float U38;
         public float U39;
-        public Keys? U40;
-        public Keys? U41;
-        public Keys? U42;
+        public PlugCurve? U40;
+        public PlugCurve? U41;
+        public PlugCurve? U42;
         public float U43;
         public float U44;
         public float U45;
@@ -7600,25 +7600,25 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U57;
         public float U58;
         public float U59;
-        public Keys? U60;
-        public Keys? U61;
+        public PlugCurve? U60;
+        public PlugCurve? U61;
         public float U62;
         public float U63;
         public float U64;
         public float U65;
         public float U66;
-        public Keys? U67;
+        public PlugCurve? U67;
         public float U68;
         public float U69;
-        public Keys? U70;
+        public PlugCurve? U70;
         public int U71;
-        public Keys? U72;
-        public Keys? U73;
+        public PlugCurve? U72;
+        public PlugCurve? U73;
         public float U74;
-        public Keys? U75;
-        public Keys? U76;
-        public Keys? U77;
-        public Keys? U78;
+        public PlugCurve? U75;
+        public PlugCurve? U76;
+        public PlugCurve? U77;
+        public PlugCurve? U78;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7707,48 +7707,48 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ReadableWritable<Keys>(ref U01, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref U05);
-            rw.ReadableWritable<Keys>(ref U06, version: Version);
-            rw.ReadableWritable<Keys>(ref U07, version: Version);
-            rw.ReadableWritable<Keys>(ref U08, version: Version);
-            rw.ReadableWritable<Keys>(ref U09, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U06, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U07, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U08, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U09, version: Version);
             rw.Single(ref U10);
             rw.Single(ref U11);
             rw.Single(ref U12);
             rw.Single(ref U13);
             rw.Single(ref U14);
-            rw.ReadableWritable<Keys>(ref U15, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U15, version: Version);
             rw.Single(ref U16);
             rw.Single(ref U17);
             rw.Single(ref U18);
-            rw.ReadableWritable<Keys>(ref U19, version: Version);
-            rw.ReadableWritable<Keys>(ref U20, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U19, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U20, version: Version);
             rw.Single(ref U21);
-            rw.ReadableWritable<Keys>(ref U22, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U22, version: Version);
             rw.Single(ref U23);
             rw.Single(ref U24);
-            rw.ReadableWritable<Keys>(ref U25, version: Version);
-            rw.ReadableWritable<Keys>(ref U26, version: Version);
-            rw.ReadableWritable<Keys>(ref U27, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U25, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U26, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U27, version: Version);
             rw.Single(ref U28);
             rw.Single(ref U29);
             rw.Single(ref U30);
-            rw.ReadableWritable<Keys>(ref U31, version: Version);
-            rw.ReadableWritable<Keys>(ref U32, version: Version);
-            rw.ReadableWritable<Keys>(ref U33, version: Version);
-            rw.ReadableWritable<Keys>(ref U34, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U31, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U32, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U33, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U34, version: Version);
             rw.Single(ref U35);
-            rw.ReadableWritable<Keys>(ref U36, version: Version);
-            rw.ReadableWritable<Keys>(ref U37, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U36, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U37, version: Version);
             rw.Single(ref U38);
             rw.Single(ref U39);
-            rw.ReadableWritable<Keys>(ref U40, version: Version);
-            rw.ReadableWritable<Keys>(ref U41, version: Version);
-            rw.ReadableWritable<Keys>(ref U42, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U40, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U41, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U42, version: Version);
             rw.Single(ref U43);
             rw.Single(ref U44);
             rw.Single(ref U45);
@@ -7766,25 +7766,25 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref U57);
             rw.Single(ref U58);
             rw.Single(ref U59);
-            rw.ReadableWritable<Keys>(ref U60, version: Version);
-            rw.ReadableWritable<Keys>(ref U61, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U60, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U61, version: Version);
             rw.Single(ref U62);
             rw.Single(ref U63);
             rw.Single(ref U64);
             rw.Single(ref U65);
             rw.Single(ref U66);
-            rw.ReadableWritable<Keys>(ref U67, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U67, version: Version);
             rw.Single(ref U68);
             rw.Single(ref U69);
-            rw.ReadableWritable<Keys>(ref U70, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U70, version: Version);
             rw.Int32(ref U71);
-            rw.ReadableWritable<Keys>(ref U72, version: Version);
-            rw.ReadableWritable<Keys>(ref U73, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U72, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U73, version: Version);
             rw.Single(ref U74);
-            rw.ReadableWritable<Keys>(ref U75, version: Version);
-            rw.ReadableWritable<Keys>(ref U76, version: Version);
-            rw.ReadableWritable<Keys>(ref U77, version: Version);
-            rw.ReadableWritable<Keys>(ref U78, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U75, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U76, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U77, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref U78, version: Version);
         }
     }
 
@@ -7815,40 +7815,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 rw.Single(ref U02);
             }
-        }
-    }
-
-    public partial class Keys : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (Keys)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((Keys)clone).u01 = context.Clone(this.u01)!;
-            ((Keys)clone).u02 = context.Clone(this.u02)!;
-            ((Keys)clone).count = context.Clone(this.count)!;
-            ((Keys)clone).u03 = context.Clone(this.u03)!;
-            ((Keys)clone).u04 = context.CloneArray(this.u04)!;
-            ((Keys)clone).u05 = context.Clone(this.u05)!;
-            ((Keys)clone).u06 = context.Clone(this.u06)!;
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
         }
     }
 

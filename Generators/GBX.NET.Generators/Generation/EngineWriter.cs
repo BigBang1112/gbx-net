@@ -127,7 +127,7 @@ internal static class EngineWriter
 
             code.Open("public " + WireTypes.CSharp(property.Type) + (property.Type.IsNullable && property.Type.ArrayDimensions == 0 ? "?" : "") + " " + SyntaxOverlap.Escape(property.Name));
             
-            var writer = new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.None, false);
+            var writer = new SerializationWriter(code, layout, layout.Scope, layouts, existingTypes, SerializationMode.None, false);
             
             foreach (var accessor in property.Accessors)
             {
@@ -139,7 +139,7 @@ internal static class EngineWriter
             code.Close();
         }
 
-        if (!GameDefaultsWriter.Write(code, layout, layout.Scope, layout.Name, layouts, false, layout.File.Syntax.Constructor) &&
+        if (!GameDefaultsWriter.Write(code, layout, layout.Scope, layout.Name, layouts, existingTypes, false, layout.File.Syntax.Constructor) &&
             layout.Existing?.Constructors.Any(static x => !x.Modifiers.Any(SyntaxKind.StaticKeyword) && x.ParameterList.Parameters.Count == 0) != true &&
             layout.Existing?.PrimaryConstructors.Any() != true)
         {
@@ -147,7 +147,7 @@ internal static class EngineWriter
             code.Open("public " + layout.Name + "()");
 
             if (layout.File.Syntax.Constructor is { } constructor)
-                new SerializationWriter(code, layout, layout.Scope, layouts, SerializationMode.None, false).Write(constructor.Body);
+                new SerializationWriter(code, layout, layout.Scope, layouts, existingTypes, SerializationMode.None, false).Write(constructor.Body);
             
             code.Close();
         }
@@ -174,13 +174,13 @@ internal static class EngineWriter
         if (layout.SelfArchive is not null)
         {
             code.BlankLine();
-            ArchiveMethods(code, layout, layout.Scope, layouts,
+            ArchiveMethods(code, layout, layout.Scope, layouts, existingTypes,
                 layout.BaseName is not null && layouts.TryGetValue(layout.BaseName, out var parent) && parent.SelfArchive is not null ? "override " : "virtual ");
         }
         
         foreach (var chunk in layout.Chunks.OrderBy(static x => x.IsHeader ? 0 : 1).ThenBy(static x => x.Id))
         {
-            Chunk(code, layout, chunk, layouts);
+            Chunk(code, layout, chunk, layouts, existingTypes);
         }
 
         foreach (var archive in layout.Archives)
@@ -198,7 +198,7 @@ internal static class EngineWriter
             code.Open($"public partial class {archive.Key} : {string.Join(", ", archiveBases)}");
 
             Properties(code, layout, archive.Value, false);
-            GameDefaultsWriter.Write(code, layout, archive.Value, archive.Key, layouts, false);
+            GameDefaultsWriter.Write(code, layout, archive.Value, archive.Key, layouts, existingTypes, false);
 
             if (!inheritedArchive && archive.Value.Existing?.Methods.Any(static x => x.Identifier.ValueText == "DeepClone") != true)
             {
@@ -218,7 +218,7 @@ internal static class EngineWriter
             code.Close();
 
             code.BlankLine();
-            ArchiveMethods(code, layout, archive.Value, layouts,
+            ArchiveMethods(code, layout, archive.Value, layouts, existingTypes,
                 inheritedArchive ? "override " : "virtual ");
             
             code.Close();
@@ -492,7 +492,7 @@ internal static class EngineWriter
         return type + ".Empty";
     }
 
-    private static void Chunk(CodeWriter code, LayoutModel layout, ChunkModel chunk, IReadOnlyDictionary<string, LayoutModel> layouts)
+    private static void Chunk(CodeWriter code, LayoutModel layout, ChunkModel chunk, IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes)
     {
         RequirePartial(chunk.Scope.Existing);
         code.BlankLine();
@@ -558,7 +558,7 @@ internal static class EngineWriter
         if (!omitMembers)
         {
             Properties(code, layout, chunk.Scope, true);
-            GameDefaultsWriter.Write(code, layout, chunk.Scope, chunk.Name, layouts, true);
+            GameDefaultsWriter.Write(code, layout, chunk.Scope, chunk.Name, layouts, existingTypes, true);
         }
 
         if (!omitMembers && !SyntaxOverlap.Method(chunk.Scope.Existing, "DeepCloneFields", "Chunk", "DeepCloneContext"))
@@ -596,7 +596,7 @@ internal static class EngineWriter
                 code.BlankLine();
                 code.Open($"public override void {mode}({layout.Name} n, {ioType} {io})");
 
-                new SerializationWriter(code, layout, chunk.Scope, layouts, mode, true).Write(chunk.Declaration.Body);
+                new SerializationWriter(code, layout, chunk.Scope, layouts, existingTypes, mode, true).Write(chunk.Declaration.Body);
 
                 code.Close();
             }
@@ -670,7 +670,7 @@ internal static class EngineWriter
         return $"context.Clone({value})!";
     }
 
-    private static void ArchiveMethods(CodeWriter code, LayoutModel layout, ScopeModel scope, IReadOnlyDictionary<string, LayoutModel> layouts, string modifier)
+    private static void ArchiveMethods(CodeWriter code, LayoutModel layout, ScopeModel scope, IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes, string modifier)
     {
         if (scope.Existing?.Declarations.Any(static x => x.Modifiers.Any(SyntaxKind.SealedKeyword)) == true)
         {
@@ -705,7 +705,7 @@ internal static class EngineWriter
             code.BlankLine();
             code.Open($"public {modifier}void {mode}({ioType} {io}, {(contextual ? layout.Name + " n, " : "")}int v = 0)");
             
-            new SerializationWriter(code, layout, scope, layouts, mode, false).Write(scope.Body);
+            new SerializationWriter(code, layout, scope, layouts, existingTypes, mode, false).Write(scope.Body);
             
             code.Close();
         }

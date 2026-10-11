@@ -6,21 +6,7 @@ CPlugVisEntFxModel 0x09115000
   CPlugParticleEmitterModel Part_Deactivated (external)
   CPlugParticleEmitterModel Part_TeleportUnspawn (external)
   CPlugParticleEmitterModel Part_TeleportSpawn (external)
-  Keys EliminatedTeleportIntens
-  Keys EliminatedHighlight
+  PlugCurve EliminatedTeleportIntens (version: Version - 1)
+  PlugCurve EliminatedHighlight (version: Version - 1)
   vec3 EliminatedHighlightRgb = (1, 0.8f, 0.4f)
   GxLightBall TacticalLight (external)
-
-archive Keys
-  v0=
-    CFuncKeysReal Curve (external)
-  v1+
-    int Version = 3
-    int Count
-    if Version == 1
-      byte FlagsV1
-    if Version == 2
-      int Capacity = 7
-    if Version >= 3
-      ushort Flags
-    vec2[Count] Values

@@ -1,5 +1,6 @@
 using ChunkL;
 using ChunkL.Syntax;
+using GBX.NET.Generators.Analysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System.Globalization;
@@ -34,7 +35,7 @@ internal static class GameDefaultsWriter
     }
 
     public static bool Write(CodeWriter code, LayoutModel layout, ScopeModel scope, string name,
-        IReadOnlyDictionary<string, LayoutModel> layouts, bool chunk, ConstructorDeclaration? constructor = null)
+        IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes, bool chunk, ConstructorDeclaration? constructor = null)
     {
         if (!Enabled(scope, chunk)) return false;
 
@@ -42,7 +43,7 @@ internal static class GameDefaultsWriter
             new HashSet<string>(ScopeModel.Walk(constructor.Body).OfType<ComputedAssignment>()
                 .Select(static a => a.TargetName), StringComparer.Ordinal);
         var defaults = new List<(FieldModel Field, FieldDeclaration Declaration, string? Game, string Value, string Statement)>();
-        var writer = new SerializationWriter(code, layout, scope, layouts, SerializationMode.None, chunk);
+        var writer = new SerializationWriter(code, layout, scope, layouts, existingTypes, SerializationMode.None, chunk);
 
         foreach (var field in StoredFields(scope, chunk))
         {

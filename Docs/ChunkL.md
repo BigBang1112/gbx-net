@@ -35,6 +35,10 @@ Use an unnamed `archive` for a class self-archive, and named `archive` declarati
 
 Reference a named archive from another class with its dotted type name, such as `CGameCtnMacroBlockInfo.BlockSpawn[] Blocks`. The generator uses the enclosing class layout to resolve the archive and its serialization.
 
+A standalone handwritten type in the layout's engine namespace or the main `GBX.NET` namespace can also implement `IReadableWritable` and be used directly as an archive field. Implement `IReadable` and `IWritable` as well when separate read/write methods use it. This keeps shared serialization independent of a particular Gbx class.
+
+`GBX.NET.PlugCurve` handles legacy curve references and inline control points. Its field `version` argument selects the storage format (`-1` or any negative value for a node reference, zero or positive for inline points), while `PlugCurve.Version` selects the inline curve version. Bare `PlugCurve` fields use inline storage by default, so `(version: 1)` is unnecessary. Use `(version: Version - 8)` to switch to inline storage at chunk version 8. Fields that always store a legacy reference should use `CFuncKeysReal` directly. A handwritten `PlugCurve` backing field and its node conversions let legacy and inline declarations share one property.
+
 ## Computed assignments
 
 Computed assignments in chunk and archive bodies run only when reading. The generator adds the reader check in combined `ReadWrite` methods and omits these assignments from separate `Write` methods. **Do not wrap computed assignments in `if rw.Reader != null`.**
