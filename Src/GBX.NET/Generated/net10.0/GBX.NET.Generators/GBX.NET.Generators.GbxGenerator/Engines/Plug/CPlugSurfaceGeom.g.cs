@@ -34,9 +34,18 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0900F000;
 
+    private BoxAligned boundingBox = (0, 0, 0, -1, -1, -1);
+    [AppliedWithChunk<Chunk0900F004>]
+    public BoxAligned BoundingBox
+    {
+        get => this.boundingBox;
+        set => this.boundingBox = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugSurfaceGeom)clone).boundingBox = context.Clone(this.boundingBox)!;
         ((CPlugSurfaceGeom)clone).Surf = context.Clone(this.Surf)!;
         ((CPlugSurfaceGeom)clone).SurfaceId = context.Clone(this.SurfaceId)!;
     }
@@ -111,18 +120,21 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900F004)]
+    /// <summary>
+    /// bounding box and geometry
+    /// </summary>
+    [Chunk(0x0900F004, "bounding box and geometry")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0900F004 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900F004;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
+        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900F004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0900F004)clone).U02 = context.Clone(this.U02)!;
         }
     }
 

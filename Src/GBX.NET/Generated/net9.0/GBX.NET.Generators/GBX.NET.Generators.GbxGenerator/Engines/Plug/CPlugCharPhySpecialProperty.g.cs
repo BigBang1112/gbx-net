@@ -34,38 +34,142 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F2000;
 
+    private ESpecialType specialType;
+    [AppliedWithChunk<Chunk090F2000>]
+    public ESpecialType SpecialType
+    {
+        get => this.specialType;
+        set => this.specialType = value;
+    }
+
+    private bool jumpPadFixedVel;
+    [AppliedWithChunk<Chunk090F2000>]
+    public bool JumpPadFixedVel
+    {
+        get => this.jumpPadFixedVel;
+        set => this.jumpPadFixedVel = value;
+    }
+
+    private TimeInt32 speedUpDuration = new TimeInt32(5000);
+    [AppliedWithChunk<Chunk090F2000>]
+    public TimeInt32 SpeedUpDuration
+    {
+        get => this.speedUpDuration;
+        set => this.speedUpDuration = value;
+    }
+
+    private float speedUpCoef = 3f;
+    [AppliedWithChunk<Chunk090F2000>]
+    public float SpeedUpCoef
+    {
+        get => this.speedUpCoef;
+        set => this.speedUpCoef = value;
+    }
+
+    private TimeInt32 turboDuration = new TimeInt32(3000);
+    [AppliedWithChunk<Chunk090F2000>]
+    public TimeInt32 TurboDuration
+    {
+        get => this.turboDuration;
+        set => this.turboDuration = value;
+    }
+
+    private float turboVal = 3f;
+    [AppliedWithChunk<Chunk090F2000>]
+    public float TurboVal
+    {
+        get => this.turboVal;
+        set => this.turboVal = value;
+    }
+
+    private TimeInt32 freeWheelingDuration = new TimeInt32(3000);
+    [AppliedWithChunk<Chunk090F2000>(1)]
+    public TimeInt32 FreeWheelingDuration
+    {
+        get => this.freeWheelingDuration;
+        set => this.freeWheelingDuration = value;
+    }
+
+    private Vec3 jumpPadDestinationOffset = (0, 5, 0);
+    [AppliedWithChunk<Chunk090F2000>(2)]
+    public Vec3 JumpPadDestinationOffset
+    {
+        get => this.jumpPadDestinationOffset;
+        set => this.jumpPadDestinationOffset = value;
+    }
+
+    private float trajectoryCurve = 0.5f;
+    [AppliedWithChunk<Chunk090F2000>(2)]
+    public float TrajectoryCurve
+    {
+        get => this.trajectoryCurve;
+        set => this.trajectoryCurve = value;
+    }
+
+    private int jumpPadSize;
+    [AppliedWithChunk<Chunk090F2000>(3)]
+    public int JumpPadSize
+    {
+        get => this.jumpPadSize;
+        set => this.jumpPadSize = value;
+    }
+
+    private bool jumpPadCenterOnPad = true;
+    /// <summary>
+    /// Adjusts horizontal velocity to center the jump on the pad.
+    /// </summary>
+    [AppliedWithChunk<Chunk090F2000>(4)]
+    public bool JumpPadCenterOnPad
+    {
+        get => this.jumpPadCenterOnPad;
+        set => this.jumpPadCenterOnPad = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugCharPhySpecialProperty)clone).specialType = context.Clone(this.specialType)!;
+        ((CPlugCharPhySpecialProperty)clone).jumpPadFixedVel = context.Clone(this.jumpPadFixedVel)!;
+        ((CPlugCharPhySpecialProperty)clone).speedUpDuration = context.Clone(this.speedUpDuration)!;
+        ((CPlugCharPhySpecialProperty)clone).speedUpCoef = context.Clone(this.speedUpCoef)!;
+        ((CPlugCharPhySpecialProperty)clone).turboDuration = context.Clone(this.turboDuration)!;
+        ((CPlugCharPhySpecialProperty)clone).turboVal = context.Clone(this.turboVal)!;
+        ((CPlugCharPhySpecialProperty)clone).freeWheelingDuration = context.Clone(this.freeWheelingDuration)!;
+        ((CPlugCharPhySpecialProperty)clone).jumpPadDestinationOffset = context.Clone(this.jumpPadDestinationOffset)!;
+        ((CPlugCharPhySpecialProperty)clone).trajectoryCurve = context.Clone(this.trajectoryCurve)!;
+        ((CPlugCharPhySpecialProperty)clone).jumpPadSize = context.Clone(this.jumpPadSize)!;
+        ((CPlugCharPhySpecialProperty)clone).jumpPadCenterOnPad = context.Clone(this.jumpPadCenterOnPad)!;
     }
 
     public CPlugCharPhySpecialProperty()
     {
     }
 
-    [Chunk(0x090F2000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// character movement effects
+    /// </summary>
+    [Chunk(0x090F2000, "character movement effects")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, 4, 4, 4)]
     public partial class Chunk090F2000 : Chunk<CPlugCharPhySpecialProperty>, IVersionable
     {
         public override uint Id => 0x090F2000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
+        public float U01;
         public float U02;
         public float U03;
-        public float U04;
-        public bool U05;
-        public int U06;
-        public float U07;
-        public int U08;
-        public float U09;
-        public int U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public int U15;
-        public bool U16;
+
+        public Chunk090F2000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F2000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -74,62 +178,55 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
             ((Chunk090F2000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F2000)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090F2000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090F2000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090F2000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090F2000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090F2000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090F2000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090F2000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090F2000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090F2000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090F2000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090F2000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090F2000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090F2000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090F2000)clone).U16 = context.Clone(this.U16)!;
         }
 
         public override void ReadWrite(CPlugCharPhySpecialProperty n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref U01);
+            rw.EnumInt32<ESpecialType>(ref n.specialType);
 
             if (Version <= 1)
             {
+                rw.Single(ref U01);
                 rw.Single(ref U02);
                 rw.Single(ref U03);
-                rw.Single(ref U04);
             }
 
-            rw.Boolean(ref U05);
-            rw.Int32(ref U06);
-            rw.Single(ref U07);
-            rw.Int32(ref U08);
-            rw.Single(ref U09);
+            rw.Boolean(ref n.jumpPadFixedVel);
+            rw.TimeInt32(ref n.speedUpDuration);
+            rw.Single(ref n.speedUpCoef);
+            rw.TimeInt32(ref n.turboDuration);
+            rw.Single(ref n.turboVal);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U10);
+                rw.TimeInt32(ref n.freeWheelingDuration);
             }
 
             if (Version >= 2)
             {
-                rw.Single(ref U11);
-                rw.Single(ref U12);
-                rw.Single(ref U13);
-                rw.Single(ref U14);
+                rw.Vec3(ref n.jumpPadDestinationOffset);
+                rw.Single(ref n.trajectoryCurve);
+            }
 
-                if (Version >= 3)
-                {
-                    rw.Int32(ref U15);
+            if (Version >= 3)
+            {
+                rw.Int32(ref n.jumpPadSize);
+            }
 
-                    if (Version >= 4)
-                    {
-                        rw.Boolean(ref U16);
-                    }
-                }
+            if (Version >= 4)
+            {
+                rw.Boolean(ref n.jumpPadCenterOnPad);
             }
         }
+    }
+
+    public enum ESpecialType
+    {
+        JumpPad,
+        SpeedUp,
+        Turbo,
+        FreeWheeling,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

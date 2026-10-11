@@ -34,7 +34,8 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x09088000;
 
-    private int cubeFaceCount;
+    private int cubeFaceCount = 6;
+    [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public int CubeFaceCount
     {
@@ -42,7 +43,8 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.cubeFaceCount = value;
     }
 
-    private float nearZ;
+    private float nearZ = 0.5f;
+    [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public float NearZ
     {
@@ -50,7 +52,8 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.nearZ = value;
     }
 
-    private float farZ;
+    private float farZ = 1000f;
+    [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public float FarZ
     {
@@ -58,12 +61,55 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.farZ = value;
     }
 
-    private float minDistToUpdate;
+    private uint flags;
+    [AppliedWithChunk<Chunk09088001>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private float minDistToUpdate = 1f;
     [AppliedWithChunk<Chunk09088002>]
     public float MinDistToUpdate
     {
         get => this.minDistToUpdate;
         set => this.minDistToUpdate = value;
+    }
+
+    private CPlugBitmap? bitmapImageSpace;
+    [AppliedWithChunk<Chunk09088003>]
+    [AppliedWithChunk<Chunk09088004>]
+    public CPlugBitmap? BitmapImageSpace
+    {
+        get => this.bitmapImageSpaceFile?.GetNode(ref this.bitmapImageSpace) ?? this.bitmapImageSpace;
+        set => this.bitmapImageSpace = value;
+    }
+    private Components.GbxRefTableFile? bitmapImageSpaceFile;
+
+    public Components.GbxRefTableFile? BitmapImageSpaceFile
+    {
+        get => bitmapImageSpaceFile;
+        set => bitmapImageSpaceFile = value;
+    }
+
+    public CPlugBitmap? GetBitmapImageSpace(GbxReadSettings settings = default, bool exceptions = false) => bitmapImageSpaceFile?.GetNode(ref bitmapImageSpace, settings, exceptions) ?? bitmapImageSpace;
+
+    private float bitmapImageSpaceDistToCenter;
+    [AppliedWithChunk<Chunk09088003>]
+    [AppliedWithChunk<Chunk09088004>]
+    public float BitmapImageSpaceDistToCenter
+    {
+        get => this.bitmapImageSpaceDistToCenter;
+        set => this.bitmapImageSpaceDistToCenter = value;
+    }
+
+    private float bitmapImageSpaceScaleHeight = 1f;
+    [AppliedWithChunk<Chunk09088004>]
+    public float BitmapImageSpaceScaleHeight
+    {
+        get => this.bitmapImageSpaceScaleHeight;
+        set => this.bitmapImageSpaceScaleHeight = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -72,39 +118,26 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         ((CPlugBitmapRenderCubeMap)clone).cubeFaceCount = context.Clone(this.cubeFaceCount)!;
         ((CPlugBitmapRenderCubeMap)clone).nearZ = context.Clone(this.nearZ)!;
         ((CPlugBitmapRenderCubeMap)clone).farZ = context.Clone(this.farZ)!;
+        ((CPlugBitmapRenderCubeMap)clone).flags = context.Clone(this.flags)!;
         ((CPlugBitmapRenderCubeMap)clone).minDistToUpdate = context.Clone(this.minDistToUpdate)!;
+        ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpace = context.Clone(this.bitmapImageSpace)!;
+        ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpaceDistToCenter = context.Clone(this.bitmapImageSpaceDistToCenter)!;
+        ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpaceScaleHeight = context.Clone(this.bitmapImageSpaceScaleHeight)!;
     }
 
     public CPlugBitmapRenderCubeMap()
     {
     }
 
-    [Chunk(0x09088001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk09088001 : Chunk<CPlugBitmapRenderCubeMap>
+    /// <summary>
+    /// legacy cube settings
+    /// </summary>
+    [Chunk(0x09088000, "legacy cube settings")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
+    public partial class Chunk09088000 : Chunk<CPlugBitmapRenderCubeMap>
     {
-        public override uint Id => 0x09088001;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public uint U01;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk09088001)clone).U01 = context.Clone(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
-        {
-            rw.UInt32(ref U01);
-        }
-    }
-
-    [Chunk(0x09088002)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk09088002 : Chunk<CPlugBitmapRenderCubeMap>
-    {
-        public override uint Id => 0x09088002;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override uint Id => 0x09088000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -116,14 +149,101 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
             rw.Int32(ref n.cubeFaceCount);
             rw.Single(ref n.nearZ);
             rw.Single(ref n.farZ);
+        }
+    }
+
+    /// <summary>
+    /// flags
+    /// </summary>
+    [Chunk(0x09088001, "flags")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09088001 : Chunk<CPlugBitmapRenderCubeMap>
+    {
+        public override uint Id => 0x09088001;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
+        {
+            rw.DataUInt32(ref n.flags);
+        }
+    }
+
+    /// <summary>
+    /// cube settings and update distance
+    /// </summary>
+    [Chunk(0x09088002, "cube settings and update distance")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09088002 : Chunk09088000
+    {
+        public override uint Id => 0x09088002;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
             rw.Single(ref n.minDistToUpdate);
+        }
+    }
+
+    /// <summary>
+    /// image-space bitmap and distance
+    /// </summary>
+    [Chunk(0x09088003, "image-space bitmap and distance")]
+    public partial class Chunk09088003 : Chunk<CPlugBitmapRenderCubeMap>
+    {
+        public override uint Id => 0x09088003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapImageSpace, ref n.bitmapImageSpaceFile);
+            rw.Single(ref n.bitmapImageSpaceDistToCenter);
+        }
+    }
+
+    /// <summary>
+    /// image-space bitmap and scaling
+    /// </summary>
+    [Chunk(0x09088004, "image-space bitmap and scaling")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09088004 : Chunk09088003
+    {
+        public override uint Id => 0x09088004;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref n.bitmapImageSpaceScaleHeight);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09088000 => new Chunk09088000(),
         0x09088001 => new Chunk09088001(),
         0x09088002 => new Chunk09088002(),
+        0x09088003 => new Chunk09088003(),
+        0x09088004 => new Chunk09088004(),
         _ => base.NewChunk(chunkId),
     };
 }

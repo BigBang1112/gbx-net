@@ -41,32 +41,18 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
         set => this.u01 = value;
     }
 
-    private float u02;
-    public float U02
+    private float endYaw;
+    public float EndYaw
     {
-        get => this.u02;
-        set => this.u02 = value;
+        get => this.endYaw;
+        set => this.endYaw = value;
     }
 
-    private float u03;
-    public float U03
+    private Vec3 endPos;
+    public Vec3 EndPos
     {
-        get => this.u03;
-        set => this.u03 = value;
-    }
-
-    private float u04;
-    public float U04
-    {
-        get => this.u04;
-        set => this.u04 = value;
-    }
-
-    private float u05;
-    public float U05
-    {
-        get => this.u05;
-        set => this.u05 = value;
+        get => this.endPos;
+        set => this.endPos = value;
     }
 
     private int u06;
@@ -76,18 +62,18 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
         set => this.u06 = value;
     }
 
-    private int u07;
-    public int U07
+    private int actionIndex;
+    public int ActionIndex
     {
-        get => this.u07;
-        set => this.u07 = value;
+        get => this.actionIndex;
+        set => this.actionIndex = value;
     }
 
-    private int u08;
-    public int U08
+    private EType @type;
+    public EType Type
     {
-        get => this.u08;
-        set => this.u08 = value;
+        get => this.@type;
+        set => this.@type = value;
     }
 
     private int u09;
@@ -97,46 +83,32 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
         set => this.u09 = value;
     }
 
-    private float u10;
-    public float U10
+    private float startYaw;
+    public float StartYaw
     {
-        get => this.u10;
-        set => this.u10 = value;
+        get => this.startYaw;
+        set => this.startYaw = value;
     }
 
-    private float u11;
-    public float U11
+    private Vec3 startPos;
+    public Vec3 StartPos
     {
-        get => this.u11;
-        set => this.u11 = value;
+        get => this.startPos;
+        set => this.startPos = value;
     }
 
-    private float u12;
-    public float U12
+    private float radius = 1f;
+    public float Radius
     {
-        get => this.u12;
-        set => this.u12 = value;
+        get => this.radius;
+        set => this.radius = value;
     }
 
-    private float u13;
-    public float U13
+    private float height = 1f;
+    public float Height
     {
-        get => this.u13;
-        set => this.u13 = value;
-    }
-
-    private float u14;
-    public float U14
-    {
-        get => this.u14;
-        set => this.u14 = value;
-    }
-
-    private float u15;
-    public float U15
-    {
-        get => this.u15;
-        set => this.u15 = value;
+        get => this.height;
+        set => this.height = value;
     }
 
     private string? u16;
@@ -150,20 +122,16 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     {
         base.DeepCloneFields(clone, context);
         ((CPlugTriggerAction)clone).u01 = context.Clone(this.u01)!;
-        ((CPlugTriggerAction)clone).u02 = context.Clone(this.u02)!;
-        ((CPlugTriggerAction)clone).u03 = context.Clone(this.u03)!;
-        ((CPlugTriggerAction)clone).u04 = context.Clone(this.u04)!;
-        ((CPlugTriggerAction)clone).u05 = context.Clone(this.u05)!;
+        ((CPlugTriggerAction)clone).endYaw = context.Clone(this.endYaw)!;
+        ((CPlugTriggerAction)clone).endPos = context.Clone(this.endPos)!;
         ((CPlugTriggerAction)clone).u06 = context.Clone(this.u06)!;
-        ((CPlugTriggerAction)clone).u07 = context.Clone(this.u07)!;
-        ((CPlugTriggerAction)clone).u08 = context.Clone(this.u08)!;
+        ((CPlugTriggerAction)clone).actionIndex = context.Clone(this.actionIndex)!;
+        ((CPlugTriggerAction)clone).@type = context.Clone(this.@type)!;
         ((CPlugTriggerAction)clone).u09 = context.Clone(this.u09)!;
-        ((CPlugTriggerAction)clone).u10 = context.Clone(this.u10)!;
-        ((CPlugTriggerAction)clone).u11 = context.Clone(this.u11)!;
-        ((CPlugTriggerAction)clone).u12 = context.Clone(this.u12)!;
-        ((CPlugTriggerAction)clone).u13 = context.Clone(this.u13)!;
-        ((CPlugTriggerAction)clone).u14 = context.Clone(this.u14)!;
-        ((CPlugTriggerAction)clone).u15 = context.Clone(this.u15)!;
+        ((CPlugTriggerAction)clone).startYaw = context.Clone(this.startYaw)!;
+        ((CPlugTriggerAction)clone).startPos = context.Clone(this.startPos)!;
+        ((CPlugTriggerAction)clone).radius = context.Clone(this.radius)!;
+        ((CPlugTriggerAction)clone).height = context.Clone(this.height)!;
         ((CPlugTriggerAction)clone).u16 = context.Clone(this.u16)!;
     }
 
@@ -178,12 +146,18 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
             rw.Int32(ref this.u01);
         }
 
+        if (v <= 4)
+        {
+            if (rw.Reader is not null)
+            {
+                U01 = 1;
+            }
+        }
+
         if (v >= 4)
         {
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
+            rw.Single(ref this.endYaw);
+            rw.Vec3(ref this.endPos);
         }
 
         if (v >= 3)
@@ -193,22 +167,23 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
 
         if (v >= 2)
         {
-            rw.Int32(ref this.u07);
+            rw.Int32(ref this.actionIndex);
         }
 
         if (v >= 1)
         {
-            rw.Int32(ref this.u08);
+            rw.EnumInt32<EType>(ref this.@type);
             rw.Int32(ref this.u09);
         }
 
-        rw.Single(ref this.u10);
-        rw.Single(ref this.u11);
-        rw.Single(ref this.u12);
-        rw.Single(ref this.u13);
-        rw.Single(ref this.u14);
-        rw.Single(ref this.u15);
-        rw.Id(ref this.u16);
+        if (v >= 0)
+        {
+            rw.Single(ref this.startYaw);
+            rw.Vec3(ref this.startPos);
+            rw.Single(ref this.radius);
+            rw.Single(ref this.height);
+            rw.Id(ref this.u16);
+        }
     }
 
     public virtual void Read(GbxReader r, int v = 0)
@@ -221,5 +196,15 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     {
         using var rw = new GbxReaderWriter(w);
         ReadWrite(rw, v);
+    }
+
+    public enum EType
+    {
+        Capsule,
+        Time,
+        Cylinder,
+        CylinderObject,
+        Mesh,
+        CapsuleObject,
     }
 }

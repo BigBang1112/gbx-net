@@ -2914,7 +2914,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         SpawnPosition,
         Sector,
         ParticleEmitter,
-        Light = 18,
+        Light,
         WaterShape,
     }
 

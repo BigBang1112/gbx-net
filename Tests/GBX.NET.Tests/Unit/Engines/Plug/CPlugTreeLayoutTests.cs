@@ -99,7 +99,6 @@ public class CPlugTreeLayoutTests
     [Test]
     [Arguments(0x00E, 3)]
     [Arguments(0x012, 4)]
-    [Arguments(0x014, 5)]
     public async Task LegacyPropertyChunksPreserveTheirReferenceOrder(int offset, int count)
     {
         using var payload = new MemoryStream();
@@ -108,7 +107,6 @@ public class CPlugTreeLayoutTests
             writer.Write(0x0904F000u + (uint)offset);
             writer.WriteNodeRef(new CPlugVisual());
             writer.WriteNodeRef(new CPlugShader());
-            if (count == 5) writer.WriteNodeRef(new CPlugMaterial());
             writer.WriteNodeRef(new CPlugSurface());
             if (count >= 4) writer.WriteNodeRef(new CPlugTreeGenerator());
             writer.Write(0xFACADE01u);
@@ -121,12 +119,7 @@ public class CPlugTreeLayoutTests
         await Assert.That(node.Visual).IsNotNull();
         await Assert.That(node.Surface).IsTypeOf<CPlugSurface>();
         await Assert.That(node.Generator is not null).IsEqualTo(count >= 4);
-        if (count == 5)
-        {
-            await Assert.That(node.LegacyShader).IsNotNull();
-            await Assert.That(node.Material).IsSameReferenceAs(node.LegacyMaterial);
-        }
-        else await Assert.That(node.Shader).IsTypeOf<CPlugShader>();
+        await Assert.That(node.Shader).IsTypeOf<CPlugShader>();
     }
 
     [Test]

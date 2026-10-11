@@ -34,82 +34,153 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0910B000;
 
+    [AppliedWithChunk<Chunk0910B000>]
+    public CamShakeParams[] Params
+    {
+        get => this.@params;
+        set => this.@params = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugCamShakeModel)clone).@params = context.CloneArray(this.@params)!;
+        ((CPlugCamShakeModel)clone).@params = context.CloneArray(this.@params)!;
     }
 
     public CPlugCamShakeModel()
     {
     }
 
-    [Chunk(0x0910B000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// camera shake parameters
+    /// </summary>
+    [Chunk(0x0910B000, "camera shake parameters")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 3)]
     public partial class Chunk0910B000 : Chunk<CPlugCamShakeModel>, IVersionable
     {
         public override uint Id => 0x0910B000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float? U07;
-        public int? U08;
-        public int? U09;
-        public float? U10;
-        public float? U11;
-        public float? U12;
-        public float? U13;
-        public float? U14;
+
+        public Chunk0910B000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0910B000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0910B000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0910B000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0910B000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0910B000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0910B000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0910B000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0910B000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0910B000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0910B000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0910B000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0910B000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk0910B000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk0910B000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk0910B000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk0910B000)clone).U14 = context.Clone(this.U14)!;
+        }
+    }
+
+    public partial class CamShakeParams : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private TimeInt32 duration = new TimeInt32(150);
+        public TimeInt32 Duration
+        {
+            get => this.duration;
+            set => this.duration = value;
         }
 
-        public override void ReadWrite(CPlugCamShakeModel n, GbxReaderWriter rw)
+        private TimeInt32 fadeDuration = new TimeInt32(150);
+        public TimeInt32 FadeDuration
         {
-            rw.VersionInt32(this);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            get => this.fadeDuration;
+            set => this.fadeDuration = value;
+        }
 
-            if (Version >= 2)
+        private float posFreq = 12f;
+        public float PosFreq
+        {
+            get => this.posFreq;
+            set => this.posFreq = value;
+        }
+
+        private float posOffset = 0.05f;
+        public float PosOffset
+        {
+            get => this.posOffset;
+            set => this.posOffset = value;
+        }
+
+        private float rotFreq = 10f;
+        public float RotFreq
+        {
+            get => this.rotFreq;
+            set => this.rotFreq = value;
+        }
+
+        private float rotOffsetDeg = 1f;
+        public float RotOffsetDeg
+        {
+            get => this.rotOffsetDeg;
+            set => this.rotOffsetDeg = value;
+        }
+
+        private float impactIntensityMin = 0.75f;
+        public float ImpactIntensityMin
+        {
+            get => this.impactIntensityMin;
+            set => this.impactIntensityMin = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (CamShakeParams)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((CamShakeParams)clone).duration = context.Clone(this.duration)!;
+            ((CamShakeParams)clone).fadeDuration = context.Clone(this.fadeDuration)!;
+            ((CamShakeParams)clone).posFreq = context.Clone(this.posFreq)!;
+            ((CamShakeParams)clone).posOffset = context.Clone(this.posOffset)!;
+            ((CamShakeParams)clone).rotFreq = context.Clone(this.rotFreq)!;
+            ((CamShakeParams)clone).rotOffsetDeg = context.Clone(this.rotOffsetDeg)!;
+            ((CamShakeParams)clone).impactIntensityMin = context.Clone(this.impactIntensityMin)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.TimeInt32(ref this.duration);
+            rw.TimeInt32(ref this.fadeDuration);
+            rw.Single(ref this.posFreq);
+            rw.Single(ref this.posOffset);
+            rw.Single(ref this.rotFreq);
+            rw.Single(ref this.rotOffsetDeg);
+
+            if (v >= 2)
             {
-                rw.Single(ref U07);
-
-                if (Version >= 3)
-                {
-                    rw.Int32(ref U08);
-                    rw.Int32(ref U09);
-                    rw.Single(ref U10);
-                    rw.Single(ref U11);
-                    rw.Single(ref U12);
-                    rw.Single(ref U13);
-                    rw.Single(ref U14);
-                }
+                rw.Single(ref this.impactIntensityMin);
             }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

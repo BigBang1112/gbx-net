@@ -35,24 +35,110 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     public static new uint Id => 0x09058000;
 
     private EHemiLayout hemiLayout;
+    [AppliedWithChunk<Chunk09058000>]
     [AppliedWithChunk<Chunk09058001>]
+    [AppliedWithChunk<Chunk09058002>]
+    [AppliedWithChunk<Chunk09058003>]
     public EHemiLayout HemiLayout
     {
         get => this.hemiLayout;
         set => this.hemiLayout = value;
     }
 
+    private float specularPower0;
+    [GameVersionDefault(GameVersion.TMSX, 20f)]
+    [GameVersionDefault(GameVersion.TMNESWC, 20f)]
+    [GameVersionDefault(GameVersion.VSK5, 20f)]
+    [GameVersionDefault(GameVersion.TMF, 20f)]
+    [AppliedWithChunk<Chunk09058000>]
+    [AppliedWithChunk<Chunk09058001>]
+    [AppliedWithChunk<Chunk09058002>]
+    [AppliedWithChunk<Chunk09058003>]
+    public float SpecularPower0
+    {
+        get => this.specularPower0;
+        set => this.specularPower0 = value;
+    }
+
+    private float specularPower1;
+    [AppliedWithChunk<Chunk09058001>]
+    [AppliedWithChunk<Chunk09058002>]
+    [AppliedWithChunk<Chunk09058003>]
+    public float SpecularPower1
+    {
+        get => this.specularPower1;
+        set => this.specularPower1 = value;
+    }
+
+    private bool autoScaleWithPower;
+    [AppliedWithChunk<Chunk09058002>]
+    [AppliedWithChunk<Chunk09058003>]
+    public bool AutoScaleWithPower
+    {
+        get => this.autoScaleWithPower;
+        set => this.autoScaleWithPower = value;
+    }
+
+    private bool useLightDir;
+    [AppliedWithChunk<Chunk09058003>]
+    public bool UseLightDir
+    {
+        get => this.useLightDir;
+        set => this.useLightDir = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugBitmapRenderHemisphere)clone).hemiLayout = context.Clone(this.hemiLayout)!;
+        ((CPlugBitmapRenderHemisphere)clone).specularPower0 = context.Clone(this.specularPower0)!;
+        ((CPlugBitmapRenderHemisphere)clone).specularPower1 = context.Clone(this.specularPower1)!;
+        ((CPlugBitmapRenderHemisphere)clone).autoScaleWithPower = context.Clone(this.autoScaleWithPower)!;
+        ((CPlugBitmapRenderHemisphere)clone).useLightDir = context.Clone(this.useLightDir)!;
     }
 
-    public CPlugBitmapRenderHemisphere()
+    public CPlugBitmapRenderHemisphere() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x09058001)]
+    public CPlugBitmapRenderHemisphere(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+        {
+            specularPower0 = 20f;
+        }
+        else
+        {
+            specularPower0 = 44f;
+        }
+
+        useLightDir = true;
+    }
+
+    /// <summary>
+    /// legacy specular power
+    /// </summary>
+    [Chunk(0x09058000, "legacy specular power")]
+    public partial class Chunk09058000 : Chunk<CPlugBitmapRenderHemisphere>
+    {
+        public override uint Id => 0x09058000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderHemisphere n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EHemiLayout>(ref n.hemiLayout);
+            rw.Single(ref n.specularPower0);
+        }
+    }
+
+    /// <summary>
+    /// legacy specular powers
+    /// </summary>
+    [Chunk(0x09058001, "legacy specular powers")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09058001 : Chunk<CPlugBitmapRenderHemisphere>
     {
@@ -64,8 +150,6 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
         public float U04;
         public float U05;
         public float U06;
-        public float U07;
-        public float U08;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -76,21 +160,63 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
             ((Chunk09058001)clone).U04 = context.Clone(this.U04)!;
             ((Chunk09058001)clone).U05 = context.Clone(this.U05)!;
             ((Chunk09058001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09058001)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09058001)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(CPlugBitmapRenderHemisphere n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EHemiLayout>(ref n.hemiLayout);
+            rw.Single(ref n.specularPower0);
+            rw.Single(ref n.specularPower1);
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref U05);
             rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
+        }
+    }
+
+    /// <summary>
+    /// specular powers and automatic scaling
+    /// </summary>
+    [Chunk(0x09058002, "specular powers and automatic scaling")]
+    public partial class Chunk09058002 : Chunk<CPlugBitmapRenderHemisphere>
+    {
+        public override uint Id => 0x09058002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderHemisphere n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EHemiLayout>(ref n.hemiLayout);
+            rw.Single(ref n.specularPower0);
+            rw.Single(ref n.specularPower1);
+            rw.Boolean(ref n.autoScaleWithPower);
+        }
+    }
+
+    /// <summary>
+    /// light direction
+    /// </summary>
+    [Chunk(0x09058003, "light direction")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09058003 : Chunk09058002
+    {
+        public override uint Id => 0x09058003;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderHemisphere n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.useLightDir);
         }
     }
 
@@ -102,7 +228,10 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09058000 => new Chunk09058000(),
         0x09058001 => new Chunk09058001(),
+        0x09058002 => new Chunk09058002(),
+        0x09058003 => new Chunk09058003(),
         _ => base.NewChunk(chunkId),
     };
 }

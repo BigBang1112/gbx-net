@@ -1,15 +1,25 @@
 CPlugCloudsParam 0x09182000
 
-0x001 [MP3, TMT, TM2020]
+0x000 // legacy cloud settings
+  int<EHeightCenter> HeightCenter
+  vec2 HeightCenterXZ
+  float BottomNearZ = 1000f
+  float BottomFarZ = 1000f
+  float SpeedScale = 97.192f
+  int<ELighting> Lighting
+
+0x001 [MP3, TMT, MP4, TM2020] // distance and height pairs
   vec2[] Points
 
-0x002 [MP3, TMT, TM2020]
-  int
-  int
-  float
-  float
-  float
-  float
-  float
-  int
-  int
+0x002 (base: 0x000) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // cloud settings
+  version
+  base
+  bool MaterialUseT3b
+
+enum EHeightCenter
+  Camera
+  WorldXZ
+
+enum ELighting
+  PerObject
+  PerSprite

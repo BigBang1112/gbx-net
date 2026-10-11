@@ -37,29 +37,46 @@ public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugCurveSimpleNod)clone).version2 = context.Clone(this.version2)!;
-        ((CPlugCurveSimpleNod)clone).count = context.Clone(this.count)!;
+        ((CPlugCurveSimpleNod)clone).curve = context.Clone(this.curve)!;
     }
 
     public CPlugCurveSimpleNod()
     {
     }
 
-    [Chunk(0x09185000)]
-    [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk09185000 : Chunk<CPlugCurveSimpleNod>
+    /// <summary>
+    /// Curve
+    /// </summary>
+    [Chunk(0x09185000, "Curve")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    public partial class Chunk09185000 : Chunk<CPlugCurveSimpleNod>, IVersionable
     {
         public override uint Id => 0x09185000;
         public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09185000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09185000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09185000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09185000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09185000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09185000)clone).U04 = context.CloneArray(this.U04)!;
             ((Chunk09185000)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugCurveSimpleNod n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.ReadableWritable<PlugCurve>(ref n.curve, version: 0);
         }
     }
 

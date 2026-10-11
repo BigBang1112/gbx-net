@@ -34,32 +34,76 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09051000;
 
+    private uint flags = 2;
+    [AppliedWithChunk<Chunk09051000>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugTreeGenerator)clone).flags = context.Clone(this.flags)!;
+    }
+
+    [AppliedWithChunk<Chunk09051000>]
+    public bool IsSaveGenerated
+    {
+        get => (Flags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 1;
+            }
+            else
+            {
+                Flags = Flags& 0xFFFFFFFE;
+            }
+        }
+    }
+
+    [AppliedWithChunk<Chunk09051000>]
+    public bool IsToKeepInSaveAsRelease
+    {
+        get => (Flags& 2) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 2;
+            }
+            else
+            {
+                Flags = Flags& 0xFFFFFFFD;
+            }
+        }
     }
 
     public CPlugTreeGenerator()
     {
     }
 
-    [Chunk(0x09051000)]
+    /// <summary>
+    /// Flags
+    /// </summary>
+    [Chunk(0x09051000, "Flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09051000 : Chunk<CPlugTreeGenerator>
     {
         public override uint Id => 0x09051000;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09051000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugTreeGenerator n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.flags);
         }
     }
 

@@ -34,25 +34,18 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0907E000;
 
-    private string? name;
-    [AppliedWithChunk<Chunk0907E002>]
-    [AppliedWithChunk<Chunk0907E005>]
-    [AppliedWithChunk<Chunk0907E006>]
-    [AppliedWithChunk<Chunk0907E007>]
-    [AppliedWithChunk<Chunk0907E008>]
-    [AppliedWithChunk<Chunk0907E00B>]
-    public string? Name
-    {
-        get => this.name;
-        set => this.name = value;
-    }
-
     private CPlugBitmap? bitmap;
+    [AppliedWithChunk<Chunk0907E000>]
+    [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
+    [AppliedWithChunk<Chunk0907E003>]
+    [AppliedWithChunk<Chunk0907E004>]
     [AppliedWithChunk<Chunk0907E005>]
     [AppliedWithChunk<Chunk0907E006>]
     [AppliedWithChunk<Chunk0907E007>]
     [AppliedWithChunk<Chunk0907E008>]
+    [AppliedWithChunk<Chunk0907E009>]
+    [AppliedWithChunk<Chunk0907E00A>]
     [AppliedWithChunk<Chunk0907E00B>]
     public CPlugBitmap? Bitmap
     {
@@ -69,39 +62,238 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
     public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
 
+    private ETexFilter wantedFiltering;
+    [AppliedWithChunk<Chunk0907E000>]
+    public ETexFilter WantedFiltering
+    {
+        get => this.wantedFiltering;
+        set => this.wantedFiltering = value;
+    }
+
+    private ETexAddress texAddressU;
+    [AppliedWithChunk<Chunk0907E000>]
+    public ETexAddress TexAddressU
+    {
+        get => this.texAddressU;
+        set => this.texAddressU = value;
+    }
+
+    private ETexAddress texAddressV;
+    [AppliedWithChunk<Chunk0907E000>]
+    public ETexAddress TexAddressV
+    {
+        get => this.texAddressV;
+        set => this.texAddressV = value;
+    }
+
+    private float mipMapLodBias;
+    [AppliedWithChunk<Chunk0907E000>]
+    [AppliedWithChunk<Chunk0907E001>]
+    [AppliedWithChunk<Chunk0907E002>]
+    [AppliedWithChunk<Chunk0907E003>]
+    [AppliedWithChunk<Chunk0907E004>]
+    [AppliedWithChunk<Chunk0907E005>]
+    [AppliedWithChunk<Chunk0907E006>]
+    [AppliedWithChunk<Chunk0907E007>]
+    [AppliedWithChunk<Chunk0907E008>]
+    [AppliedWithChunk<Chunk0907E009>]
+    [AppliedWithChunk<Chunk0907E00A>]
+    [AppliedWithChunk<Chunk0907E00B>]
+    public float MipMapLodBias
+    {
+        get => this.mipMapLodBias;
+        set => this.mipMapLodBias = value;
+    }
+
+    private uint legacyFlags;
+    /// <summary>
+    /// Packed sampler flags in the legacy bit layout.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 5)]
+    [GameVersionDefault(GameVersion.TMPU, 5)]
+    [AppliedWithChunk<Chunk0907E001>]
+    [AppliedWithChunk<Chunk0907E002>]
+    [AppliedWithChunk<Chunk0907E003>]
+    [AppliedWithChunk<Chunk0907E004>]
+    [AppliedWithChunk<Chunk0907E005>]
+    [AppliedWithChunk<Chunk0907E006>]
+    [AppliedWithChunk<Chunk0907E007>]
+    [AppliedWithChunk<Chunk0907E008>]
+    [AppliedWithChunk<Chunk0907E009>]
+    [AppliedWithChunk<Chunk0907E00A>]
+    public uint LegacyFlags
+    {
+        get => this.legacyFlags;
+        set => this.legacyFlags = value;
+    }
+
+    private string? name;
+    [AppliedWithChunk<Chunk0907E002>]
+    [AppliedWithChunk<Chunk0907E003>]
+    [AppliedWithChunk<Chunk0907E004>]
+    [AppliedWithChunk<Chunk0907E005>]
+    [AppliedWithChunk<Chunk0907E006>]
+    [AppliedWithChunk<Chunk0907E007>]
+    [AppliedWithChunk<Chunk0907E008>]
+    [AppliedWithChunk<Chunk0907E009>]
+    [AppliedWithChunk<Chunk0907E00A>]
+    [AppliedWithChunk<Chunk0907E00B>]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private uint borderColor;
+    /// <summary>
+    /// Packed ARGB border color.
+    /// </summary>
+    [AppliedWithChunk<Chunk0907E008>]
+    [AppliedWithChunk<Chunk0907E009>]
+    [AppliedWithChunk<Chunk0907E00A>]
+    [AppliedWithChunk<Chunk0907E00B>]
+    public uint BorderColor
+    {
+        get => this.borderColor;
+        set => this.borderColor = value;
+    }
+
+    private uint flags;
+    /// <summary>
+    /// Packed sampler flags with three bits per filtering or address mode.
+    /// </summary>
+    [AppliedWithChunk<Chunk0907E00B>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapSampler)clone).name = context.Clone(this.name)!;
         ((CPlugBitmapSampler)clone).bitmap = context.Clone(this.bitmap)!;
+        ((CPlugBitmapSampler)clone).wantedFiltering = context.Clone(this.wantedFiltering)!;
+        ((CPlugBitmapSampler)clone).texAddressU = context.Clone(this.texAddressU)!;
+        ((CPlugBitmapSampler)clone).texAddressV = context.Clone(this.texAddressV)!;
+        ((CPlugBitmapSampler)clone).mipMapLodBias = context.Clone(this.mipMapLodBias)!;
+        ((CPlugBitmapSampler)clone).legacyFlags = context.Clone(this.legacyFlags)!;
+        ((CPlugBitmapSampler)clone).name = context.Clone(this.name)!;
+        ((CPlugBitmapSampler)clone).borderColor = context.Clone(this.borderColor)!;
+        ((CPlugBitmapSampler)clone).flags = context.Clone(this.flags)!;
     }
 
-    public CPlugBitmapSampler()
+    public CPlugBitmapSampler() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x0907E002)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
-    public partial class Chunk0907E002 : Chunk<CPlugBitmapSampler>
+    public CPlugBitmapSampler(GameVersion gameVersion)
     {
-        public override uint Id => 0x0907E002;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
-        public uint U01;
-        public float U02;
+        wantedFiltering = ETexFilter.Trilinear;
+
+        if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU)
+        {
+            legacyFlags = 5;
+        }
+        else
+        {
+            legacyFlags = 0x605;
+        }
+
+        flags = 0x1C018005;
+    }
+
+    /// <summary>
+    /// legacy filtering and texture addressing
+    /// </summary>
+    [Chunk(0x0907E000, "legacy filtering and texture addressing")]
+    public partial class Chunk0907E000 : Chunk<CPlugBitmapSampler>
+    {
+        public override uint Id => 0x0907E000;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0907E002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0907E002)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.EnumInt32<ETexFilter>(ref n.wantedFiltering);
+            rw.EnumInt32<ETexAddress>(ref n.texAddressU);
+            rw.EnumInt32<ETexAddress>(ref n.texAddressV);
+            rw.Single(ref n.mipMapLodBias);
+        }
+    }
+
+    /// <summary>
+    /// legacy sampler state
+    /// </summary>
+    [Chunk(0x0907E001, "legacy sampler state")]
+    public partial class Chunk0907E001 : Chunk<CPlugBitmapSampler>
+    {
+        public override uint Id => 0x0907E001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.DataUInt32(ref n.legacyFlags);
+            rw.Single(ref n.mipMapLodBias);
+        }
+    }
+
+    /// <summary>
+    /// named legacy sampler state
+    /// </summary>
+    [Chunk(0x0907E002, "named legacy sampler state")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0907E002 : Chunk0907E001
+    {
+        public override uint Id => 0x0907E002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
             rw.Id(ref n.name);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
-            rw.UInt32(ref U01);
-            rw.Single(ref U02);
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    [Chunk(0x0907E003)]
+    public partial class Chunk0907E003 : Chunk0907E001
+    {
+        public override uint Id => 0x0907E003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.name);
+            base.ReadWrite(n, rw);
+        }
+    }
+
+    [Chunk(0x0907E004)]
+    public partial class Chunk0907E004 : Chunk0907E003
+    {
+        public override uint Id => 0x0907E004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
@@ -154,17 +346,73 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0907E008)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+
+            if ((n.LegacyFlags& 0x18) == 0x18 || (n.LegacyFlags& 0x60) == 0x60 || (n.LegacyFlags& 0x1800) == 0x1800)
+            {
+                rw.DataUInt32(ref n.borderColor);
+            }
         }
     }
 
-    [Chunk(0x0907E00B)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0907E00B : Chunk0907E008, IVersionable
+    [Chunk(0x0907E009)]
+    public partial class Chunk0907E009 : Chunk0907E003
+    {
+        public override uint Id => 0x0907E009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+
+            if ((n.LegacyFlags& 0x18) == 0x18 || (n.LegacyFlags& 0x60) == 0x60 || (n.LegacyFlags& 0x1800) == 0x1800)
+            {
+                rw.DataUInt32(ref n.borderColor);
+            }
+        }
+    }
+
+    [Chunk(0x0907E00A)]
+    public partial class Chunk0907E00A : Chunk0907E009
+    {
+        public override uint Id => 0x0907E00A;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// sampler state
+    /// </summary>
+    [Chunk(0x0907E00B, "sampler state")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    public partial class Chunk0907E00B : Chunk<CPlugBitmapSampler>, IVersionable
     {
         public override uint Id => 0x0907E00B;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0907E00B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0907E00B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -175,17 +423,48 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            base.ReadWrite(n, rw);
+            rw.Id(ref n.name);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.DataUInt32(ref n.flags);
+            rw.Single(ref n.mipMapLodBias);
+
+            if ((n.Flags& 0x70) == 0x30 || (n.Flags& 0x380) == 0x180 || (n.Flags& 0x1C00) == 0xC00)
+            {
+                rw.DataUInt32(ref n.borderColor);
+            }
         }
+    }
+
+    public enum ETexFilter
+    {
+        Point,
+        Bilinear,
+        Trilinear,
+        Anisotropic,
+        AnisoPoint,
+    }
+
+    public enum ETexAddress
+    {
+        Wrap,
+        Mirror,
+        Clamp,
+        Border,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0907E000 => new Chunk0907E000(),
+        0x0907E001 => new Chunk0907E001(),
         0x0907E002 => new Chunk0907E002(),
+        0x0907E003 => new Chunk0907E003(),
+        0x0907E004 => new Chunk0907E004(),
         0x0907E005 => new Chunk0907E005(),
         0x0907E006 => new Chunk0907E006(),
         0x0907E007 => new Chunk0907E007(),
         0x0907E008 => new Chunk0907E008(),
+        0x0907E009 => new Chunk0907E009(),
+        0x0907E00A => new Chunk0907E00A(),
         0x0907E00B => new Chunk0907E00B(),
         _ => base.NewChunk(chunkId),
     };

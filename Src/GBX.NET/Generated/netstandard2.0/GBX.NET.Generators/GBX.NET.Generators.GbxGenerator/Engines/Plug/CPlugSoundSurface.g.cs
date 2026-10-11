@@ -34,31 +34,117 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     [Hexadecimal]
     public static new uint Id => 0x0905E000;
 
+    private float edMaxSpeedKmh = 500f;
+    [AppliedWithChunk<Chunk0905E000>]
+    [AppliedWithChunk<Chunk0905E003>]
+    public float EdMaxSpeedKmh
+    {
+        get => this.edMaxSpeedKmh;
+        set => this.edMaxSpeedKmh = value;
+    }
+
+    [AppliedWithChunk<Chunk0905E000>]
+    [AppliedWithChunk<Chunk0905E003>]
+    public MaterialSound[] MaterialSounds
+    {
+        get => this.materialSounds;
+        set => this.materialSounds = value;
+    }
+
+    private float bigImpactAttenuation = 1.2f;
+    [AppliedWithChunk<Chunk0905E001>]
+    [AppliedWithChunk<Chunk0905E002>]
+    public float BigImpactAttenuation
+    {
+        get => this.bigImpactAttenuation;
+        set => this.bigImpactAttenuation = value;
+    }
+
+    private float smallImpactAttenuation = 0.8f;
+    [AppliedWithChunk<Chunk0905E001>]
+    [AppliedWithChunk<Chunk0905E002>]
+    public float SmallImpactAttenuation
+    {
+        get => this.smallImpactAttenuation;
+        set => this.smallImpactAttenuation = value;
+    }
+
+    private bool impactOnlyMode;
+    [AppliedWithChunk<Chunk0905E002>(2)]
+    public bool ImpactOnlyMode
+    {
+        get => this.impactOnlyMode;
+        set => this.impactOnlyMode = value;
+    }
+
+    [AppliedWithChunk<Chunk0905E003>]
+    public CFuncKeysReal? SkidVolumeFromIntensity
+    {
+        get => this.skidVolumeFromIntensity;
+        set => this.skidVolumeFromIntensity = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugSoundSurface)clone).edMaxSpeedKmh = context.Clone(this.edMaxSpeedKmh)!;
+        ((CPlugSoundSurface)clone).materialSounds = context.CloneArray(this.materialSounds)!;
+        ((CPlugSoundSurface)clone).bigImpactAttenuation = context.Clone(this.bigImpactAttenuation)!;
+        ((CPlugSoundSurface)clone).smallImpactAttenuation = context.Clone(this.smallImpactAttenuation)!;
+        ((CPlugSoundSurface)clone).impactOnlyMode = context.Clone(this.impactOnlyMode)!;
+        ((CPlugSoundSurface)clone).skidVolumeFromIntensity = context.Clone(this.skidVolumeFromIntensity)!;
     }
 
-    public CPlugSoundSurface()
-    {
-    }
-
-    [Chunk(0x0905E000)]
+    /// <summary>
+    /// legacy impact, texture and skid sounds by material
+    /// </summary>
+    [Chunk(0x0905E000, "legacy impact, texture and skid sounds by material")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0905E000 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E000;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CPlugSoundSurface n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.edMaxSpeedKmh);
+            var count = rw.Int32((rw.Writer is null ? default : (n.MaterialSounds?.Length?? 0)));
+            rw.ArrayReadableWritable<MaterialSound>(ref n.materialSounds!, count, version: 0);
+        }
     }
 
-    [Chunk(0x0905E002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    /// <summary>
+    /// impact attenuation
+    /// </summary>
+    [Chunk(0x0905E001, "impact attenuation")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
+    public partial class Chunk0905E001 : Chunk<CPlugSoundSurface>
+    {
+        public override uint Id => 0x0905E001;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugSoundSurface n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.bigImpactAttenuation);
+            rw.Single(ref n.smallImpactAttenuation);
+        }
+    }
+
+    /// <summary>
+    /// impact attenuation and mode
+    /// </summary>
+    [Chunk(0x0905E002, "impact attenuation and mode")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk0905E002 : Chunk<CPlugSoundSurface>, IVersionable
     {
         public override uint Id => 0x0905E002;
@@ -66,9 +152,21 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         public int Version { get; set; }
         public float U01;
         public float U02;
-        public float U03;
-        public float U04;
-        public bool U05;
+
+        public Chunk0905E002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0905E002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+
+            U01 = 0.02f;
+            U02 = 0.2f;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -76,43 +174,164 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
             ((Chunk0905E002)clone).Version = context.Clone(this.Version)!;
             ((Chunk0905E002)clone).U01 = context.Clone(this.U01)!;
             ((Chunk0905E002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0905E002)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0905E002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0905E002)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugSoundSurface n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            rw.Single(ref n.bigImpactAttenuation);
+            rw.Single(ref n.smallImpactAttenuation);
             rw.Single(ref U01);
             rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
 
             if (Version >= 2)
             {
-                rw.Boolean(ref U05);
+                rw.Boolean(ref n.impactOnlyMode);
             }
         }
     }
 
-    [Chunk(0x0905E003)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0905E003 : Chunk<CPlugSoundSurface>
+    /// <summary>
+    /// texture and skid sounds by material
+    /// </summary>
+    [Chunk(0x0905E003, "texture and skid sounds by material")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
+    public partial class Chunk0905E003 : Chunk<CPlugSoundSurface>, IVersionable
     {
         public override uint Id => 0x0905E003;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0905E003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0905E003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0905E003)clone).Version = context.Clone(this.Version)!;
+        }
+    }
+
+    public partial class MaterialSound : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CPlugFileSnd? smallImpact;
+        public CPlugFileSnd? SmallImpact
+        {
+            get => this.smallImpactFile?.GetNode(ref this.smallImpact) ?? this.smallImpact;
+            set => this.smallImpact = value;
+        }
+        private Components.GbxRefTableFile? smallImpactFile;
+
+        public Components.GbxRefTableFile? SmallImpactFile
+        {
+            get => smallImpactFile;
+            set => smallImpactFile = value;
+        }
+
+        public CPlugFileSnd? GetSmallImpact(GbxReadSettings settings = default, bool exceptions = false) => smallImpactFile?.GetNode(ref smallImpact, settings, exceptions) ?? smallImpact;
+
+        private CPlugFileSnd? bigImpact;
+        public CPlugFileSnd? BigImpact
+        {
+            get => this.bigImpactFile?.GetNode(ref this.bigImpact) ?? this.bigImpact;
+            set => this.bigImpact = value;
+        }
+        private Components.GbxRefTableFile? bigImpactFile;
+
+        public Components.GbxRefTableFile? BigImpactFile
+        {
+            get => bigImpactFile;
+            set => bigImpactFile = value;
+        }
+
+        public CPlugFileSnd? GetBigImpact(GbxReadSettings settings = default, bool exceptions = false) => bigImpactFile?.GetNode(ref bigImpact, settings, exceptions) ?? bigImpact;
+
+        private CPlugSoundComponent? texture;
+        public CPlugSoundComponent? Texture
+        {
+            get => this.textureFile?.GetNode(ref this.texture) ?? this.texture;
+            set => this.texture = value;
+        }
+        private Components.GbxRefTableFile? textureFile;
+
+        public Components.GbxRefTableFile? TextureFile
+        {
+            get => textureFile;
+            set => textureFile = value;
+        }
+
+        public CPlugSoundComponent? GetTexture(GbxReadSettings settings = default, bool exceptions = false) => textureFile?.GetNode(ref texture, settings, exceptions) ?? texture;
+
+        private CPlugSoundComponent? skid;
+        public CPlugSoundComponent? Skid
+        {
+            get => this.skidFile?.GetNode(ref this.skid) ?? this.skid;
+            set => this.skid = value;
+        }
+        private Components.GbxRefTableFile? skidFile;
+
+        public Components.GbxRefTableFile? SkidFile
+        {
+            get => skidFile;
+            set => skidFile = value;
+        }
+
+        public CPlugSoundComponent? GetSkid(GbxReadSettings settings = default, bool exceptions = false) => skidFile?.GetNode(ref skid, settings, exceptions) ?? skid;
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MaterialSound)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MaterialSound)clone).smallImpact = context.Clone(this.smallImpact)!;
+            ((MaterialSound)clone).bigImpact = context.Clone(this.bigImpact)!;
+            ((MaterialSound)clone).texture = context.Clone(this.texture)!;
+            ((MaterialSound)clone).skid = context.Clone(this.skid)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v == 0)
+            {
+                rw.NodeRef<CPlugFileSnd>(ref this.smallImpact, ref this.smallImpactFile);
+                rw.NodeRef<CPlugFileSnd>(ref this.bigImpact, ref this.bigImpactFile);
+            }
+
+            rw.NodeRef<CPlugSoundComponent>(ref this.texture, ref this.textureFile);
+            rw.NodeRef<CPlugSoundComponent>(ref this.skid, ref this.skidFile);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0905E000 => new Chunk0905E000(),
+        0x0905E001 => new Chunk0905E001(),
         0x0905E002 => new Chunk0905E002(),
         0x0905E003 => new Chunk0905E003(),
         _ => base.NewChunk(chunkId),

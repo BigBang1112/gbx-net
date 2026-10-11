@@ -115,33 +115,36 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
 
     private CPlugCurveSimpleNod CreateSimpleNode()
     {
-        var node = new CPlugCurveSimpleNod { Version2 = Version, Count = values!.Length };
-        var chunk = node.CreateChunk<CPlugCurveSimpleNod.Chunk09185000>();
-        chunk.U01 = flagsV1;
-        chunk.U02 = capacity;
-        chunk.U03 = unchecked((short)flags);
-        chunk.U04 = Array.ConvertAll(values, value =>
-            (ulong)BitConverter.ToUInt32(BitConverter.GetBytes(value.Y), 0) << 32 |
-            BitConverter.ToUInt32(BitConverter.GetBytes(value.X), 0));
+        var node = new CPlugCurveSimpleNod
+        {
+            Curve = new PlugCurve
+            {
+                Version = Version,
+                Count = values!.Length,
+                FlagsV1 = flagsV1,
+                Capacity = capacity,
+                Flags = flags,
+                Values = (Vec2[])values.Clone()
+            }
+        };
+        node.CreateChunk<CPlugCurveSimpleNod.Chunk09185000>();
         return node;
     }
 
     private void ReadLegacyCurve()
     {
-        if (curve is CPlugCurveSimpleNod simple && simple.Chunks.Get<CPlugCurveSimpleNod.Chunk09185000>() is { } chunk)
+        if (curve is CPlugCurveSimpleNod simple && simple.Chunks.Get<CPlugCurveSimpleNod.Chunk09185000>() is not null)
         {
-            Version = simple.Version2;
-            FlagsV1 = chunk.U01;
-            Capacity = chunk.U02;
-            Flags = simple.Version2 switch
+            Version = simple.Curve.Version;
+            FlagsV1 = simple.Curve.FlagsV1;
+            Capacity = simple.Curve.Capacity;
+            Flags = simple.Curve.Version switch
             {
-                1 => (ushort)(chunk.U01 > 0 ? 1 : 0),
-                >= 3 => unchecked((ushort)chunk.U03),
+                1 => (ushort)(simple.Curve.FlagsV1 > 0 ? 1 : 0),
+                >= 3 => simple.Curve.Flags,
                 _ => 0
             };
-            Values = chunk.U04 is null ? [] : Array.ConvertAll(chunk.U04, value => new Vec2(
-                BitConverter.ToSingle(BitConverter.GetBytes((uint)value), 0),
-                BitConverter.ToSingle(BitConverter.GetBytes((uint)(value >> 32)), 0)));
+            Values = simple.Curve.Values is null ? [] : (Vec2[])simple.Curve.Values.Clone();
         }
         else
         {

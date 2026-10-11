@@ -34,6 +34,159 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09086000;
 
+    private uint clearColor;
+    /// <summary>
+    /// Packed ARGB clear color.
+    /// </summary>
+    [AppliedWithChunk<Chunk09086000>]
+    [AppliedWithChunk<Chunk09086001>]
+    [AppliedWithChunk<Chunk09086004>]
+    [AppliedWithChunk<Chunk09086005>]
+    [AppliedWithChunk<Chunk09086006>]
+    [AppliedWithChunk<Chunk09086007>]
+    [AppliedWithChunk<Chunk09086009>]
+    [AppliedWithChunk<Chunk0908600B>]
+    [AppliedWithChunk<Chunk09086010>]
+    public uint ClearColor
+    {
+        get => this.clearColor;
+        set => this.clearColor = value;
+    }
+
+    private uint legacyRenderFlags;
+    /// <summary>
+    /// Original packed render flags before the current bit layout.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 0x0E8007E1)]
+    [GameVersionDefault(GameVersion.TMPU, 0x2E8007E1)]
+    [AppliedWithChunk<Chunk09086000>]
+    [AppliedWithChunk<Chunk09086001>]
+    [AppliedWithChunk<Chunk09086004>]
+    [AppliedWithChunk<Chunk09086005>]
+    [AppliedWithChunk<Chunk09086006>]
+    [AppliedWithChunk<Chunk09086007>]
+    [AppliedWithChunk<Chunk09086009>]
+    public uint LegacyRenderFlags
+    {
+        get => this.legacyRenderFlags;
+        set => this.legacyRenderFlags = value;
+    }
+
+    private CPlugBitmap? bitmapClear;
+    [AppliedWithChunk<Chunk09086001>]
+    [AppliedWithChunk<Chunk09086004>]
+    [AppliedWithChunk<Chunk09086005>]
+    [AppliedWithChunk<Chunk09086006>]
+    [AppliedWithChunk<Chunk09086007>]
+    [AppliedWithChunk<Chunk09086009>]
+    [AppliedWithChunk<Chunk0908600B>]
+    [AppliedWithChunk<Chunk09086010>]
+    public CPlugBitmap? BitmapClear
+    {
+        get => this.bitmapClearFile?.GetNode(ref this.bitmapClear) ?? this.bitmapClear;
+        set => this.bitmapClear = value;
+    }
+    private Components.GbxRefTableFile? bitmapClearFile;
+
+    public Components.GbxRefTableFile? BitmapClearFile
+    {
+        get => bitmapClearFile;
+        set => bitmapClearFile = value;
+    }
+
+    public CPlugBitmap? GetBitmapClear(GbxReadSettings settings = default, bool exceptions = false) => bitmapClearFile?.GetNode(ref bitmapClear, settings, exceptions) ?? bitmapClear;
+
+    private Vec2? bitmapClearUV;
+    [AppliedWithChunk<Chunk09086001>]
+    [AppliedWithChunk<Chunk09086004>]
+    [AppliedWithChunk<Chunk09086005>]
+    [AppliedWithChunk<Chunk09086006>]
+    [AppliedWithChunk<Chunk09086007>]
+    [AppliedWithChunk<Chunk09086009>]
+    [AppliedWithChunk<Chunk0908600B>]
+    [AppliedWithChunk<Chunk09086010>]
+    public Vec2? BitmapClearUV
+    {
+        get => this.bitmapClearUV;
+        set => this.bitmapClearUV = value;
+    }
+
+    private ushort sVIdMask;
+    /// <summary>
+    /// Shader visibility bits to check.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 0)]
+    [GameVersionDefault(GameVersion.TMPU, 0)]
+    [GameVersionDefault(GameVersion.TMSX, 0x138)]
+    [GameVersionDefault(GameVersion.TMNESWC, 0x338)]
+    [GameVersionDefault(GameVersion.VSK5, 0x338)]
+    [GameVersionDefault(GameVersion.TMF, 0x338)]
+    [GameVersionDefault(GameVersion.TM2020, 0x8130)]
+    [AppliedWithChunk<Chunk09086002>]
+    [AppliedWithChunk<Chunk09086003>]
+    public ushort SVIdMask
+    {
+        get => this.sVIdMask;
+        set => this.sVIdMask = value;
+    }
+
+    private ushort sVIdRef;
+    /// <summary>
+    /// Required shader visibility bits.
+    /// </summary>
+    [AppliedWithChunk<Chunk09086002>]
+    [AppliedWithChunk<Chunk09086003>]
+    public ushort SVIdRef
+    {
+        get => this.sVIdRef;
+        set => this.sVIdRef = value;
+    }
+
+    private ushort iVIdMask;
+    /// <summary>
+    /// Item visibility bits to check.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TM10, 0)]
+    [GameVersionDefault(GameVersion.TMPU, 0)]
+    [GameVersionDefault(GameVersion.TMSX, 0x138)]
+    [GameVersionDefault(GameVersion.TMNESWC, 0x338)]
+    [GameVersionDefault(GameVersion.VSK5, 0x338)]
+    [GameVersionDefault(GameVersion.TMF, 0x338)]
+    [GameVersionDefault(GameVersion.TM2020, 0x8130)]
+    [AppliedWithChunk<Chunk09086003>]
+    public ushort IVIdMask
+    {
+        get => this.iVIdMask;
+        set => this.iVIdMask = value;
+    }
+
+    private ushort iVIdRef;
+    /// <summary>
+    /// Required item visibility bits.
+    /// </summary>
+    [AppliedWithChunk<Chunk09086003>]
+    public ushort IVIdRef
+    {
+        get => this.iVIdRef;
+        set => this.iVIdRef = value;
+    }
+
+    private ERenderPath renderPath;
+    [AppliedWithChunk<Chunk09086008>]
+    public ERenderPath RenderPath
+    {
+        get => this.renderPath;
+        set => this.renderPath = value;
+    }
+
+    private ERenderPathFails renderPathFails;
+    [AppliedWithChunk<Chunk09086008>]
+    public ERenderPathFails RenderPathFails
+    {
+        get => this.renderPathFails;
+        set => this.renderPathFails = value;
+    }
+
     private float fogCustomFarZ;
     [AppliedWithChunk<Chunk0908600A>]
     public float FogCustomFarZ
@@ -42,73 +195,311 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.fogCustomFarZ = value;
     }
 
-    private CPlugBitmap? bitmapClear;
+    private uint renderFlags;
+    /// <summary>
+    /// Packed render, clear-bitmap and color-write settings.
+    /// </summary>
     [AppliedWithChunk<Chunk0908600B>]
-    public CPlugBitmap? BitmapClear
+    [AppliedWithChunk<Chunk09086010>]
+    public uint RenderFlags
     {
-        get => this.bitmapClear;
-        set => this.bitmapClear = value;
-    }
-
-    private Vec2? bitmapClearUV;
-    [AppliedWithChunk<Chunk0908600B>]
-    public Vec2? BitmapClearUV
-    {
-        get => this.bitmapClearUV;
-        set => this.bitmapClearUV = value;
+        get => this.renderFlags;
+        set => this.renderFlags = value;
     }
 
     private CPlugBitmapRenderSub? renderSub;
     [AppliedWithChunk<Chunk0908600C>]
     public CPlugBitmapRenderSub? RenderSub
     {
-        get => this.renderSub;
+        get => this.renderSubFile?.GetNode(ref this.renderSub) ?? this.renderSub;
         set => this.renderSub = value;
+    }
+    private Components.GbxRefTableFile? renderSubFile;
+
+    public Components.GbxRefTableFile? RenderSubFile
+    {
+        get => renderSubFile;
+        set => renderSubFile = value;
+    }
+
+    public CPlugBitmapRenderSub? GetRenderSub(GbxReadSettings settings = default, bool exceptions = false) => renderSubFile?.GetNode(ref renderSub, settings, exceptions) ?? renderSub;
+
+    private uint renderFlags2;
+    /// <summary>
+    /// Packed blur, fog and lighting settings.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TMNESWC, 0)]
+    [GameVersionDefault(GameVersion.VSK5, 0)]
+    [AppliedWithChunk<Chunk0908600D>]
+    [AppliedWithChunk<Chunk0908600E>]
+    [AppliedWithChunk<Chunk0908600F>]
+    public uint RenderFlags2
+    {
+        get => this.renderFlags2;
+        set => this.renderFlags2 = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapRender)clone).fogCustomFarZ = context.Clone(this.fogCustomFarZ)!;
+        ((CPlugBitmapRender)clone).clearColor = context.Clone(this.clearColor)!;
+        ((CPlugBitmapRender)clone).legacyRenderFlags = context.Clone(this.legacyRenderFlags)!;
         ((CPlugBitmapRender)clone).bitmapClear = context.Clone(this.bitmapClear)!;
         ((CPlugBitmapRender)clone).bitmapClearUV = context.Clone(this.bitmapClearUV)!;
+        ((CPlugBitmapRender)clone).sVIdMask = context.Clone(this.sVIdMask)!;
+        ((CPlugBitmapRender)clone).sVIdRef = context.Clone(this.sVIdRef)!;
+        ((CPlugBitmapRender)clone).iVIdMask = context.Clone(this.iVIdMask)!;
+        ((CPlugBitmapRender)clone).iVIdRef = context.Clone(this.iVIdRef)!;
+        ((CPlugBitmapRender)clone).renderPath = context.Clone(this.renderPath)!;
+        ((CPlugBitmapRender)clone).renderPathFails = context.Clone(this.renderPathFails)!;
+        ((CPlugBitmapRender)clone).fogCustomFarZ = context.Clone(this.fogCustomFarZ)!;
+        ((CPlugBitmapRender)clone).renderFlags = context.Clone(this.renderFlags)!;
         ((CPlugBitmapRender)clone).renderSub = context.Clone(this.renderSub)!;
+        ((CPlugBitmapRender)clone).renderFlags2 = context.Clone(this.renderFlags2)!;
     }
 
-    public CPlugBitmapRender()
+    public CPlugBitmapRender() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x09086003)]
+    public CPlugBitmapRender(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TM10)
+        {
+            legacyRenderFlags = 0x0E8007E1;
+        }
+        else if (gameVersion == GameVersion.TMPU)
+        {
+            legacyRenderFlags = 0x2E8007E1;
+        }
+
+        bitmapClearUV = (0, 0);
+
+        if (gameVersion == GameVersion.TM10 || gameVersion == GameVersion.TMPU)
+        {
+            sVIdMask = 0;
+            iVIdMask = 0;
+        }
+        else if (gameVersion == GameVersion.TMSX)
+        {
+            sVIdMask = 0x138;
+            iVIdMask = 0x138;
+        }
+        else if (gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+        {
+            sVIdMask = 0x338;
+            iVIdMask = 0x338;
+        }
+        else if (gameVersion == GameVersion.TM2020)
+        {
+            sVIdMask = 0x8130;
+            iVIdMask = 0x8130;
+        }
+        else
+        {
+            sVIdMask = 0x8138;
+            iVIdMask = 0x8138;
+        }
+
+        renderPathFails = ERenderPathFails.Hide;
+        fogCustomFarZ = 50f;
+        renderFlags = 0x2E8007E2;
+
+        if (gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.VSK5)
+        {
+            renderFlags2 = 0;
+        }
+        else
+        {
+            renderFlags2 = 0x7800;
+        }
+    }
+
+    /// <summary>
+    /// legacy clear color and render flags
+    /// </summary>
+    [Chunk(0x09086000, "legacy clear color and render flags")]
+    public partial class Chunk09086000 : Chunk<CPlugBitmapRender>
+    {
+        public override uint Id => 0x09086000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
+        {
+            rw.UInt32(ref n.clearColor);
+            rw.DataUInt32(ref n.legacyRenderFlags);
+        }
+    }
+
+    /// <summary>
+    /// legacy clear bitmap
+    /// </summary>
+    [Chunk(0x09086001, "legacy clear bitmap")]
+    public partial class Chunk09086001 : Chunk09086000
+    {
+        public override uint Id => 0x09086001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapClear, ref n.bitmapClearFile);
+            rw.Vec2(ref n.bitmapClearUV);
+        }
+    }
+
+    /// <summary>
+    /// shader visibility filter
+    /// </summary>
+    [Chunk(0x09086002, "shader visibility filter")]
+    public partial class Chunk09086002 : Chunk<CPlugBitmapRender>
+    {
+        public override uint Id => 0x09086002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
+        {
+            rw.UInt16(ref n.sVIdMask);
+            rw.UInt16(ref n.sVIdRef);
+        }
+    }
+
+    /// <summary>
+    /// item and shader visibility filters
+    /// </summary>
+    [Chunk(0x09086003, "item and shader visibility filters")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09086003 : Chunk<CPlugBitmapRender>
     {
         public override uint Id => 0x09086003;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public short U01;
-        public short U02;
-        public short U03;
-        public short U04;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09086003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09086003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09086003)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09086003)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.Int16(ref U01);
-            rw.Int16(ref U02);
-            rw.Int16(ref U03);
-            rw.Int16(ref U04);
+            rw.UInt16(ref n.iVIdMask);
+            rw.UInt16(ref n.iVIdRef);
+            rw.UInt16(ref n.sVIdMask);
+            rw.UInt16(ref n.sVIdRef);
         }
     }
 
-    [Chunk(0x0908600A)]
+    /// <summary>
+    /// legacy clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086004, "legacy clear bitmap and render flags")]
+    public partial class Chunk09086004 : Chunk09086001
+    {
+        public override uint Id => 0x09086004;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// legacy clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086005, "legacy clear bitmap and render flags")]
+    public partial class Chunk09086005 : Chunk09086001
+    {
+        public override uint Id => 0x09086005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// legacy clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086006, "legacy clear bitmap and render flags")]
+    [ChunkGameVersion(GameVersion.TM10)]
+    public partial class Chunk09086006 : Chunk09086001
+    {
+        public override uint Id => 0x09086006;
+        public override GameVersion GameVersion => GameVersion.TM10;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// legacy clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086007, "legacy clear bitmap and render flags")]
+    public partial class Chunk09086007 : Chunk09086001
+    {
+        public override uint Id => 0x09086007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// render path
+    /// </summary>
+    [Chunk(0x09086008, "render path")]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09086008 : SkippableChunk<CPlugBitmapRender>
+    {
+        public override uint Id => 0x09086008;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<ERenderPath>(ref n.renderPath);
+            rw.EnumInt32<ERenderPathFails>(ref n.renderPathFails);
+        }
+    }
+
+    /// <summary>
+    /// legacy clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086009, "legacy clear bitmap and render flags")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk09086009 : Chunk09086001
+    {
+        public override uint Id => 0x09086009;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// FogCustomFarZ
+    /// </summary>
+    [Chunk(0x0908600A, "FogCustomFarZ")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0908600A : Chunk<CPlugBitmapRender>
     {
@@ -126,32 +517,34 @@ public partial class CPlugBitmapRender : CPlug, IClass
         }
     }
 
-    [Chunk(0x0908600B)]
+    /// <summary>
+    /// clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x0908600B, "clear bitmap and render flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0908600B : Chunk<CPlugBitmapRender>
     {
         public override uint Id => 0x0908600B;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public int U01;
-        public uint U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0908600B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0908600B)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.UInt32(ref U02);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapClear);
+            rw.UInt32(ref n.clearColor);
+            rw.DataUInt32(ref n.renderFlags);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapClear, ref n.bitmapClearFile);
             rw.Vec2(ref n.bitmapClearUV);
         }
     }
 
-    [Chunk(0x0908600C)]
+    /// <summary>
+    /// RenderSub
+    /// </summary>
+    [Chunk(0x0908600C, "RenderSub")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0908600C : Chunk<CPlugBitmapRender>
     {
@@ -165,58 +558,115 @@ public partial class CPlugBitmapRender : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmapRenderSub>(ref n.renderSub);
+            rw.NodeRef<CPlugBitmapRenderSub>(ref n.renderSub, ref n.renderSubFile);
         }
     }
 
-    [Chunk(0x0908600D)]
+    /// <summary>
+    /// legacy secondary render flags
+    /// </summary>
+    [Chunk(0x0908600D, "legacy secondary render flags")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0908600D : Chunk<CPlugBitmapRender>
     {
         public override uint Id => 0x0908600D;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0908600D)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.DataUInt32(ref n.renderFlags2);
         }
     }
 
-    [Chunk(0x0908600E)]
+    /// <summary>
+    /// secondary render flags
+    /// </summary>
+    [Chunk(0x0908600E, "secondary render flags")]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk0908600E : Chunk<CPlugBitmapRender>
+    public partial class Chunk0908600E : Chunk0908600D
     {
         public override uint Id => 0x0908600E;
         public override GameVersion GameVersion => GameVersion.TMF;
-        public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0908600E)clone).U01 = context.Clone(this.U01)!;
         }
+    }
 
-        public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
+    /// <summary>
+    /// secondary render flags
+    /// </summary>
+    [Chunk(0x0908600F, "secondary render flags")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0908600F : Chunk0908600D
+    {
+        public override uint Id => 0x0908600F;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
-            rw.UInt32(ref U01);
+            base.DeepCloneFields(clone, context);
         }
+    }
+
+    /// <summary>
+    /// clear bitmap and render flags
+    /// </summary>
+    [Chunk(0x09086010, "clear bitmap and render flags")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk09086010 : Chunk0908600B
+    {
+        public override uint Id => 0x09086010;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    public enum ERenderPath
+    {
+        Normal,
+        DepthAsAlpha,
+        GlowInput,
+        Opacity,
+        SpecIntens,
+        LightFromMap,
+        PlaneDToAlpha,
+    }
+
+    public enum ERenderPathFails
+    {
+        Ignore,
+        Hide,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09086000 => new Chunk09086000(),
+        0x09086001 => new Chunk09086001(),
+        0x09086002 => new Chunk09086002(),
         0x09086003 => new Chunk09086003(),
+        0x09086004 => new Chunk09086004(),
+        0x09086005 => new Chunk09086005(),
+        0x09086006 => new Chunk09086006(),
+        0x09086007 => new Chunk09086007(),
+        0x09086008 => new Chunk09086008(),
+        0x09086009 => new Chunk09086009(),
         0x0908600A => new Chunk0908600A(),
         0x0908600B => new Chunk0908600B(),
         0x0908600C => new Chunk0908600C(),
         0x0908600D => new Chunk0908600D(),
         0x0908600E => new Chunk0908600E(),
+        0x0908600F => new Chunk0908600F(),
+        0x09086010 => new Chunk09086010(),
         _ => base.NewChunk(chunkId),
     };
 }

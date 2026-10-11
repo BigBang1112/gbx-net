@@ -52,7 +52,7 @@ enum ELayerType
   SpawnPosition // RespawnPos
   Sector
   ParticleEmitter
-  Light = 18
+  Light
   WaterShape
 
 enum EAxis

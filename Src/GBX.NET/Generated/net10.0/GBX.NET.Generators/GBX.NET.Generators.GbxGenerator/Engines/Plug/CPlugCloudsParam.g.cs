@@ -34,6 +34,60 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09182000;
 
+    private EHeightCenter heightCenter;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public EHeightCenter HeightCenter
+    {
+        get => this.heightCenter;
+        set => this.heightCenter = value;
+    }
+
+    private Vec2 heightCenterXZ;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public Vec2 HeightCenterXZ
+    {
+        get => this.heightCenterXZ;
+        set => this.heightCenterXZ = value;
+    }
+
+    private float bottomNearZ = 1000f;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public float BottomNearZ
+    {
+        get => this.bottomNearZ;
+        set => this.bottomNearZ = value;
+    }
+
+    private float bottomFarZ = 1000f;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public float BottomFarZ
+    {
+        get => this.bottomFarZ;
+        set => this.bottomFarZ = value;
+    }
+
+    private float speedScale = 97.192f;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public float SpeedScale
+    {
+        get => this.speedScale;
+        set => this.speedScale = value;
+    }
+
+    private ELighting lighting;
+    [AppliedWithChunk<Chunk09182000>]
+    [AppliedWithChunk<Chunk09182002>]
+    public ELighting Lighting
+    {
+        get => this.lighting;
+        set => this.lighting = value;
+    }
+
     private Vec2[]? points;
     [AppliedWithChunk<Chunk09182001>]
     public Vec2[]? Points
@@ -42,22 +96,64 @@ public partial class CPlugCloudsParam : CMwNod, IClass
         set => this.points = value;
     }
 
+    private bool materialUseT3b;
+    [AppliedWithChunk<Chunk09182002>]
+    public bool MaterialUseT3b
+    {
+        get => this.materialUseT3b;
+        set => this.materialUseT3b = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugCloudsParam)clone).heightCenter = context.Clone(this.heightCenter)!;
+        ((CPlugCloudsParam)clone).heightCenterXZ = context.Clone(this.heightCenterXZ)!;
+        ((CPlugCloudsParam)clone).bottomNearZ = context.Clone(this.bottomNearZ)!;
+        ((CPlugCloudsParam)clone).bottomFarZ = context.Clone(this.bottomFarZ)!;
+        ((CPlugCloudsParam)clone).speedScale = context.Clone(this.speedScale)!;
+        ((CPlugCloudsParam)clone).lighting = context.Clone(this.lighting)!;
         ((CPlugCloudsParam)clone).points = context.CloneArray(this.points)!;
+        ((CPlugCloudsParam)clone).materialUseT3b = context.Clone(this.materialUseT3b)!;
     }
 
     public CPlugCloudsParam()
     {
     }
 
-    [Chunk(0x09182001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    /// <summary>
+    /// legacy cloud settings
+    /// </summary>
+    [Chunk(0x09182000, "legacy cloud settings")]
+    public partial class Chunk09182000 : Chunk<CPlugCloudsParam>
+    {
+        public override uint Id => 0x09182000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugCloudsParam n, GbxReaderWriter rw)
+        {
+            rw.EnumInt32<EHeightCenter>(ref n.heightCenter);
+            rw.Vec2(ref n.heightCenterXZ);
+            rw.Single(ref n.bottomNearZ);
+            rw.Single(ref n.bottomFarZ);
+            rw.Single(ref n.speedScale);
+            rw.EnumInt32<ELighting>(ref n.lighting);
+        }
+    }
+
+    /// <summary>
+    /// distance and height pairs
+    /// </summary>
+    [Chunk(0x09182001, "distance and height pairs")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09182001 : Chunk<CPlugCloudsParam>
     {
         public override uint Id => 0x09182001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -70,52 +166,58 @@ public partial class CPlugCloudsParam : CMwNod, IClass
         }
     }
 
-    [Chunk(0x09182002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
-    public partial class Chunk09182002 : Chunk<CPlugCloudsParam>
+    /// <summary>
+    /// cloud settings
+    /// </summary>
+    [Chunk(0x09182002, "cloud settings")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
+    public partial class Chunk09182002 : Chunk09182000, IVersionable
     {
         public override uint Id => 0x09182002;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
-        public int U01;
-        public int U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public int U08;
-        public int U09;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09182002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09182002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09182002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09182002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09182002)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09182002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09182002)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09182002)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09182002)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09182002)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09182002)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk09182002)clone).Version = context.Clone(this.Version)!;
         }
 
         public override void ReadWrite(CPlugCloudsParam n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Int32(ref U08);
-            rw.Int32(ref U09);
+            rw.VersionInt32(this);
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.materialUseT3b);
         }
+    }
+
+    public enum EHeightCenter
+    {
+        Camera,
+        WorldXZ,
+    }
+
+    public enum ELighting
+    {
+        PerObject,
+        PerSprite,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09182000 => new Chunk09182000(),
         0x09182001 => new Chunk09182001(),
         0x09182002 => new Chunk09182002(),
         _ => base.NewChunk(chunkId),
