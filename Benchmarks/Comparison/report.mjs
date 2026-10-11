@@ -32,6 +32,57 @@ function mapDisplayName(name) {
   return name.replace(/\.(?:(?:Map|Challenge)\.)?Gbx$/i, '');
 }
 
+function renderChart(report) {
+  const colors = ['#10b981', '#f59e0b', '#3b82f6', '#8b5cf6'];
+  const datasets = report.libraries.map((library, index) => {
+    const results = report.maps.map(map => report.results.find(result => result.map === map.name && result.library === library));
+    return {
+      label: library,
+      backgroundColor: colors[index % colors.length],
+      data: results.map(result => result?.status === 'error' ? null : result?.statistics.meanMs ?? null),
+      timings: results.map(result => !result || result.status === 'error' ? ''
+        : formatDuration(result.statistics.meanMs, undefined, false) + (result.status === 'partial' ? '*' : '')),
+    };
+  });
+  const values = datasets.flatMap(dataset => dataset.data).filter(value => Number.isFinite(value) && value > 0);
+  if (!values.length) return '';
+  const smallest = Math.min(...values);
+  let minimum = 10 ** Math.floor(Math.log10(smallest));
+  if (minimum === smallest) minimum /= 10;
+  const chart = {
+    type: 'bar',
+    data: { labels: report.maps.map(map => mapDisplayName(map.name)), datasets },
+    options: {
+      indexAxis: 'y',
+      font: { size: 13 },
+      layout: { padding: { right: 95 } },
+      scales: {
+        x: {
+          type: 'logarithmic', min: minimum,
+          title: { display: true, text: 'Mean parse time (ms, logarithmic scale). Lower is faster.' },
+          ticks: { maxTicksLimit: 8 },
+        },
+        y: { grid: { display: false }, ticks: { autoSkip: false } },
+      },
+      plugins: {
+        title: { display: true, text: `Gbx library benchmarks (${report.measuredAt.slice(0, 10)})`, font: { size: 20 } },
+        subtitle: { display: true, text: 'Original compressed files, including LZO. * Partial parsing. Coverage differs.' },
+        legend: { position: 'bottom' },
+        datalabels: { anchor: 'end', align: 'end', color: '#17212b', font: { size: 12 }, formatter: null },
+      },
+    },
+  };
+  // QuickChart accepts Javascript callbacks in its encoded chart configuration.
+  const configuration = JSON.stringify(chart).replace('"formatter":null',
+    '"formatter":function(value,context){return context.dataset.timings[context.dataIndex];}');
+  const url = new URL('https://quickchart.io/chart');
+  for (const [name, value] of Object.entries({ version: 4, format: 'png', width: 960,
+    height: Math.max(380, report.maps.length * 110 + 190), devicePixelRatio: 2, backgroundColor: 'white', c: configuration })) {
+    url.searchParams.set(name, value);
+  }
+  return `![Gbx benchmark mean parse times on a logarithmic axis. Asterisks mark partial parsing. Failed cases are omitted.](${url})`;
+}
+
 export function renderHighlight(report) {
   const checked = report.maps.map(map => report.results.find(result => result.map === map.name && result.library === 'GBX.NET' && result.status === 'ok')).filter(Boolean);
   const featured = checked.length > 1 ? [checked[0], checked.at(-1)] : checked;
@@ -41,6 +92,7 @@ export function renderHighlight(report) {
     lines.push(`${timings.join(', ')} on average with GBX.NET.`, '');
   }
   lines.push('Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.', '',
+    renderChart(report), '',
     `| Map | ${report.libraries.map(escapeCell).join(' | ')} |`,
     `| --- | ${report.libraries.map(() => '---:').join(' | ')} |`);
   for (const map of report.maps) {
@@ -58,6 +110,7 @@ export function renderSummary(report) {
     '',
     'In-memory parse calls on the original compressed files, including LZO decompression. Mean ± sample standard deviation per parse, using µs, ms, or s as appropriate. Values are rounded to three significant digits. Lower is faster, but parsing coverage differs.',
     '',
+    renderChart(report), '',
     `| Map | File bytes | ${report.libraries.map(escapeCell).join(' | ')} |`,
     `| --- | ---: | ${report.libraries.map(() => '---:').join(' | ')} |`,
   ];
