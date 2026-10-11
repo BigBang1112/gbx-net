@@ -90,3 +90,4 @@ CCtnMediaBlockTransitionFade -> CGameCtnMediaBlockTransitionFade
 CCtnMediaBlockCameraEffect -> CGameCtnMediaBlockCameraEffect
 CCtnMediaBlockCameraEffectShake -> CGameCtnMediaBlockCameraEffectShake
 CCtnMediaBlockMusicEffect -> CGameCtnMediaBlockMusicEffect
+CSceneVehicleCarTuning -> CPlugVehicleCarPhyTuning

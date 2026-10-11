@@ -126,11 +126,12 @@ public class PlugCurveTests
     public async Task VehicleTuning_UnversionedCurveFieldUsesInlineStorage()
     {
         var curve = new PlugCurve { Flags = 0xFEDC, Count = 99, Values = [new(1.5f, 2.5f)] };
-        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0AF { U01 = curve };
+        var model = new CPlugVehicleCarPhyTuning { MaxSideFriction = curve };
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0AF();
         using var saved = new MemoryStream();
         using (var writer = new GbxWriter(saved))
         {
-            chunk.ReadWrite(new CPlugVehicleCarPhyTuning(), new GbxReaderWriter(writer));
+            chunk.ReadWrite(model, new GbxReaderWriter(writer));
         }
         saved.Position = 0;
         using var reader = new GbxReader(saved);

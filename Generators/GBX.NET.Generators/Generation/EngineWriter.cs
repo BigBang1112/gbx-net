@@ -312,10 +312,11 @@ internal static class EngineWriter
             var property = SyntaxOverlap.Escape(field.Name);
             var backing = chunk ? property : SyntaxOverlap.Backing(field.Name);
             var nullable = WireTypes.Nullable(field) && !field.IsVersion;
-            var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration) + (nullable ? "?" : "");
+            var storageDeclaration = field.StorageDeclaration;
+            var type = field.IsVersion ? "int" : WireTypes.CSharp(storageDeclaration) + (nullable ? "?" : "");
             var defaultDeclaration = field.Occurrences.FirstOrDefault(static x => x.DefaultValue is not null);
             var initial = gameDefaults ? null : Default(layout, type, defaultDeclaration);
-            if (gameDefaults && !nullable && !WireTypes.Value(field.Declaration.Type.Name) && field.Declaration.Type.CastTarget is null)
+            if (gameDefaults && !nullable && !WireTypes.Value(storageDeclaration.Type.Name) && storageDeclaration.Type.CastTarget is null)
                 initial = "default!";
             var partialProperty = SyntaxOverlap.PartialPropertyImplementation(scope.Existing, field.Name);
             var hasExisting = SyntaxOverlap.Has(scope.Existing, field.Name);
@@ -618,7 +619,7 @@ internal static class EngineWriter
             var name = field.IsVersion ? "Version" : chunk ? field.Name : SyntaxOverlap.Backing(field.Name);
             if (!copied.Add(name)) continue;
 
-            var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration);
+            var type = field.IsVersion ? "int" : WireTypes.CSharp(field.StorageDeclaration);
             code.Line($"(({className})clone).{SyntaxOverlap.Escape(name)} = {CloneExpression(type, "this." + SyntaxOverlap.Escape(name))};");
         }
 

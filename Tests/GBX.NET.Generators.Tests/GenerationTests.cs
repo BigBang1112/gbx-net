@@ -66,6 +66,56 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task GeneratesPlugCurveBackingFieldsForSharedLegacyAndInlineCurves()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                public class CFuncKeysReal : CMwNod { }
+                public class PlugCurve : GBX.NET.Serialization.IReadableWritable, GBX.NET.Serialization.IReadable, GBX.NET.Serialization.IWritable
+                {
+                    public static implicit operator PlugCurve(CFuncKeysReal? value) => new();
+                    public static implicit operator CFuncKeysReal?(PlugCurve? value) => null;
+                    public void ReadWrite(GBX.NET.Serialization.GbxReaderWriter rw, int version = 0) { }
+                    public void Read(GBX.NET.Serialization.GbxReader reader, int version = 0) { }
+                    public void Write(GBX.NET.Serialization.GbxWriter writer, int version = 0) { }
+                }
+                public partial class Example { }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public T? ReadNodeRef<T>() where T : GBX.NET.Engines.Game.CMwNod => null;
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteNodeRef<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public T? NodeRef<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod => value;
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              CFuncKeysReal Curve
+            0x002
+              PlugCurve Curve
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).GetText().ToString();
+        await Assert.That(generated).Contains("private PlugCurve? curve;");
+        await Assert.That(generated).Contains("public PlugCurve? Curve");
+        await Assert.That(generated).Contains("n.curve = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.curve);");
+        await Assert.That(generated).Contains("rw.ReadableWritable<PlugCurve>(ref n.curve);");
+    }
+
+    [Test]
     [Arguments("GBX.NET.Engines.Game")]
     [Arguments("GBX.NET")]
     public async Task SerializesStandaloneHandwrittenArchives(string archiveNamespace)

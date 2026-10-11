@@ -262,7 +262,8 @@ internal sealed class SerializationWriter
         var target = prefix + (hasBacking ? backing : property);
         var storedField = !field.IsLocal && owner.Occurrences.TryGetValue(declaration, out var shared) ? shared : field;
         var storageType = (field.IsLocal ? null : SyntaxOverlap.MemberType(owner.Existing, (hasBacking ? backing : property).TrimStart('@'))) ??
-            WireTypes.CSharp(storedField.Declaration);
+            WireTypes.CSharp(storedField.StorageDeclaration) +
+            (!field.IsLocal && WireTypes.Nullable(storedField) ? "?" : "");
         if (field.IsLocal && WireTypes.Nullable(field))
         {
             storageType += "?";
