@@ -34,213 +34,595 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E6000;
 
+    private CPlugParticleEmitterModel? particleEmitterModel1;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public CPlugParticleEmitterModel? ParticleEmitterModel1
+    {
+        get => this.particleEmitterModel1File?.GetNode(ref this.particleEmitterModel1) ?? this.particleEmitterModel1;
+        set => this.particleEmitterModel1 = value;
+    }
+    private Components.GbxRefTableFile? particleEmitterModel1File;
+
+    public Components.GbxRefTableFile? ParticleEmitterModel1File
+    {
+        get => particleEmitterModel1File;
+        set => particleEmitterModel1File = value;
+    }
+
+    public CPlugParticleEmitterModel? GetParticleEmitterModel1(GbxReadSettings settings = default, bool exceptions = false) => particleEmitterModel1File?.GetNode(ref particleEmitterModel1, settings, exceptions) ?? particleEmitterModel1;
+
+    private int wheelIndex;
+    /// <summary>
+    /// Obsolete wheel attachment.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TMF, -1)]
+    [GameVersionDefault(GameVersion.VSK5, -1)]
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public int WheelIndex
+    {
+        get => this.wheelIndex;
+        set => this.wheelIndex = value;
+    }
+
+    private int visualHandlerIndex;
+    /// <summary>
+    /// Obsolete visual attachment.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TMF, -1)]
+    [GameVersionDefault(GameVersion.VSK5, -1)]
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public int VisualHandlerIndex
+    {
+        get => this.visualHandlerIndex;
+        set => this.visualHandlerIndex = value;
+    }
+
+    private int materialGroupIndex;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public int MaterialGroupIndex
+    {
+        get => this.materialGroupIndex;
+        set => this.materialGroupIndex = value;
+    }
+
+    private bool onlyWhenSliding;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public bool OnlyWhenSliding
+    {
+        get => this.onlyWhenSliding;
+        set => this.onlyWhenSliding = value;
+    }
+
+    private bool useOwnerLoc;
+    /// <summary>
+    /// Obsolete owner transform flag.
+    /// </summary>
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.VSK5, true)]
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public bool UseOwnerLoc
+    {
+        get => this.useOwnerLoc;
+        set => this.useOwnerLoc = value;
+    }
+
+    private bool isEventMode;
+    /// <summary>
+    /// Obsolete event emission flag.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public bool IsEventMode
+    {
+        get => this.isEventMode;
+        set => this.isEventMode = value;
+    }
+
+    private float emitIntensity;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public float EmitIntensity
+    {
+        get => this.emitIntensity;
+        set => this.emitIntensity = value;
+    }
+
+    private Vec3 emitIntensityBySpeed;
+    /// <summary>
+    /// Coefficients for absolute local velocity components.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public Vec3 EmitIntensityBySpeed
+    {
+        get => this.emitIntensityBySpeed;
+        set => this.emitIntensityBySpeed = value;
+    }
+
+    private float emitIntensityOnTurbo;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public float EmitIntensityOnTurbo
+    {
+        get => this.emitIntensityOnTurbo;
+        set => this.emitIntensityOnTurbo = value;
+    }
+
+    private Vec3 emitSpeed;
+    /// <summary>
+    /// Base local particle velocity.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public Vec3 EmitSpeed
+    {
+        get => this.emitSpeed;
+        set => this.emitSpeed = value;
+    }
+
+    private Vec3 emitSpeedBySpeed;
+    /// <summary>
+    /// Coefficients for local vehicle velocity.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public Vec3 EmitSpeedBySpeed
+    {
+        get => this.emitSpeedBySpeed;
+        set => this.emitSpeedBySpeed = value;
+    }
+
+    private Vec3 emitSpeedBySpeedOnTurbo;
+    [AppliedWithChunk<Chunk090E6000>]
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public Vec3 EmitSpeedBySpeedOnTurbo
+    {
+        get => this.emitSpeedBySpeedOnTurbo;
+        set => this.emitSpeedBySpeedOnTurbo = value;
+    }
+
+    private Iso4 loc;
+    [AppliedWithChunk<Chunk090E6001>]
+    [AppliedWithChunk<Chunk090E6004>]
+    public Iso4 Loc
+    {
+        get => this.loc;
+        set => this.loc = value;
+    }
+
+    private bool orientWithVelocity;
+    [AppliedWithChunk<Chunk090E6002>]
+    public bool OrientWithVelocity
+    {
+        get => this.orientWithVelocity;
+        set => this.orientWithVelocity = value;
+    }
+
+    private Vec3 position;
+    [AppliedWithChunk<Chunk090E6003>]
+    public Vec3 Position
+    {
+        get => this.position;
+        set => this.position = value;
+    }
+
+    private Vec3 pitchYawRoll;
+    /// <summary>
+    /// Radians
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6003>]
+    public Vec3 PitchYawRoll
+    {
+        get => this.pitchYawRoll;
+        set => this.pitchYawRoll = value;
+    }
+
+    private CPlugParticleEmitterModel? particleEmitterModel0;
+    /// <summary>
+    /// Visual quality index 0.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6004>]
+    public CPlugParticleEmitterModel? ParticleEmitterModel0
+    {
+        get => this.particleEmitterModel0File?.GetNode(ref this.particleEmitterModel0) ?? this.particleEmitterModel0;
+        set => this.particleEmitterModel0 = value;
+    }
+    private Components.GbxRefTableFile? particleEmitterModel0File;
+
+    public Components.GbxRefTableFile? ParticleEmitterModel0File
+    {
+        get => particleEmitterModel0File;
+        set => particleEmitterModel0File = value;
+    }
+
+    public CPlugParticleEmitterModel? GetParticleEmitterModel0(GbxReadSettings settings = default, bool exceptions = false) => particleEmitterModel0File?.GetNode(ref particleEmitterModel0, settings, exceptions) ?? particleEmitterModel0;
+
+    private CPlugParticleEmitterModel? particleEmitterModel2;
+    /// <summary>
+    /// Visual quality index 2.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6004>]
+    public CPlugParticleEmitterModel? ParticleEmitterModel2
+    {
+        get => this.particleEmitterModel2File?.GetNode(ref this.particleEmitterModel2) ?? this.particleEmitterModel2;
+        set => this.particleEmitterModel2 = value;
+    }
+    private Components.GbxRefTableFile? particleEmitterModel2File;
+
+    public Components.GbxRefTableFile? ParticleEmitterModel2File
+    {
+        get => particleEmitterModel2File;
+        set => particleEmitterModel2File = value;
+    }
+
+    public CPlugParticleEmitterModel? GetParticleEmitterModel2(GbxReadSettings settings = default, bool exceptions = false) => particleEmitterModel2File?.GetNode(ref particleEmitterModel2, settings, exceptions) ?? particleEmitterModel2;
+
+    private bool onlyWhenAllWheelsSliding;
+    [AppliedWithChunk<Chunk090E6005>]
+    public bool OnlyWhenAllWheelsSliding
+    {
+        get => this.onlyWhenAllWheelsSliding;
+        set => this.onlyWhenAllWheelsSliding = value;
+    }
+
+    private CPlugParticleEmitterModel? particleEmitterModelShoot;
+    /// <summary>
+    /// Used when rendering videos.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E6006>]
+    public CPlugParticleEmitterModel? ParticleEmitterModelShoot
+    {
+        get => this.particleEmitterModelShootFile?.GetNode(ref this.particleEmitterModelShoot) ?? this.particleEmitterModelShoot;
+        set => this.particleEmitterModelShoot = value;
+    }
+    private Components.GbxRefTableFile? particleEmitterModelShootFile;
+
+    public Components.GbxRefTableFile? ParticleEmitterModelShootFile
+    {
+        get => particleEmitterModelShootFile;
+        set => particleEmitterModelShootFile = value;
+    }
+
+    public CPlugParticleEmitterModel? GetParticleEmitterModelShoot(GbxReadSettings settings = default, bool exceptions = false) => particleEmitterModelShootFile?.GetNode(ref particleEmitterModelShoot, settings, exceptions) ?? particleEmitterModelShoot;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehicleVisEmitterModel)clone).particleEmitterModel1 = context.Clone(this.particleEmitterModel1)!;
+        ((CPlugVehicleVisEmitterModel)clone).wheelIndex = context.Clone(this.wheelIndex)!;
+        ((CPlugVehicleVisEmitterModel)clone).visualHandlerIndex = context.Clone(this.visualHandlerIndex)!;
+        ((CPlugVehicleVisEmitterModel)clone).materialGroupIndex = context.Clone(this.materialGroupIndex)!;
+        ((CPlugVehicleVisEmitterModel)clone).onlyWhenSliding = context.Clone(this.onlyWhenSliding)!;
+        ((CPlugVehicleVisEmitterModel)clone).useOwnerLoc = context.Clone(this.useOwnerLoc)!;
+        ((CPlugVehicleVisEmitterModel)clone).isEventMode = context.Clone(this.isEventMode)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitIntensity = context.Clone(this.emitIntensity)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitIntensityBySpeed = context.Clone(this.emitIntensityBySpeed)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitIntensityOnTurbo = context.Clone(this.emitIntensityOnTurbo)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitSpeed = context.Clone(this.emitSpeed)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitSpeedBySpeed = context.Clone(this.emitSpeedBySpeed)!;
+        ((CPlugVehicleVisEmitterModel)clone).emitSpeedBySpeedOnTurbo = context.Clone(this.emitSpeedBySpeedOnTurbo)!;
+        ((CPlugVehicleVisEmitterModel)clone).loc = context.Clone(this.loc)!;
+        ((CPlugVehicleVisEmitterModel)clone).orientWithVelocity = context.Clone(this.orientWithVelocity)!;
+        ((CPlugVehicleVisEmitterModel)clone).position = context.Clone(this.position)!;
+        ((CPlugVehicleVisEmitterModel)clone).pitchYawRoll = context.Clone(this.pitchYawRoll)!;
+        ((CPlugVehicleVisEmitterModel)clone).particleEmitterModel0 = context.Clone(this.particleEmitterModel0)!;
+        ((CPlugVehicleVisEmitterModel)clone).particleEmitterModel2 = context.Clone(this.particleEmitterModel2)!;
+        ((CPlugVehicleVisEmitterModel)clone).onlyWhenAllWheelsSliding = context.Clone(this.onlyWhenAllWheelsSliding)!;
+        ((CPlugVehicleVisEmitterModel)clone).particleEmitterModelShoot = context.Clone(this.particleEmitterModelShoot)!;
     }
 
-    public CPlugVehicleVisEmitterModel()
+    public CPlugVehicleVisEmitterModel() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x090E6002)]
+    public CPlugVehicleVisEmitterModel(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.VSK5)
+        {
+            wheelIndex = -1;
+            visualHandlerIndex = -1;
+        }
+
+        materialGroupIndex = -1;
+
+        if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.VSK5)
+        {
+            useOwnerLoc = true;
+        }
+
+        emitIntensity = 1;
+        loc = Iso4.Identity;
+    }
+
+    /// <summary>
+    /// Legacy single model and translation
+    /// </summary>
+    [Chunk(0x090E6000, "Legacy single model and translation")]
+    public partial class Chunk090E6000 : Chunk<CPlugVehicleVisEmitterModel>
+    {
+        public override uint Id => 0x090E6000;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E6000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel1, ref n.particleEmitterModel1File);
+            if (rw.Reader is not null)
+            {
+                n.ParticleEmitterModel2 = n.ParticleEmitterModel1;
+            }
+            if (rw.Reader is not null)
+            {
+                n.ParticleEmitterModel2File = n.ParticleEmitterModel1File;
+            }
+            rw.Int32(ref n.wheelIndex);
+            rw.Int32(ref n.visualHandlerIndex);
+            rw.Int32(ref n.materialGroupIndex);
+            rw.Boolean(ref n.onlyWhenSliding);
+            rw.Boolean(ref n.useOwnerLoc);
+            rw.Boolean(ref n.isEventMode);
+            var translation = rw.Vec3((rw.Writer is null ? default : (n.Loc. Translation)));
+            if (rw.Reader is not null)
+            {
+                n.Loc = (1, 0, 0, 0, 1, 0, 0, 0, 1, translation.X, translation.Y, translation.Z);
+            }
+            rw.Single(ref n.emitIntensity);
+            rw.Vec3(ref n.emitIntensityBySpeed);
+            rw.Single(ref n.emitIntensityOnTurbo);
+            rw.Vec3(ref n.emitSpeed);
+            rw.Vec3(ref n.emitSpeedBySpeed);
+            rw.Vec3(ref n.emitSpeedBySpeedOnTurbo);
+        }
+    }
+
+    /// <summary>
+    /// Legacy single model and transform
+    /// </summary>
+    [Chunk(0x090E6001, "Legacy single model and transform")]
+    public partial class Chunk090E6001 : Chunk<CPlugVehicleVisEmitterModel>
+    {
+        public override uint Id => 0x090E6001;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E6001)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel1, ref n.particleEmitterModel1File);
+            if (rw.Reader is not null)
+            {
+                n.ParticleEmitterModel2 = n.ParticleEmitterModel1;
+            }
+            if (rw.Reader is not null)
+            {
+                n.ParticleEmitterModel2File = n.ParticleEmitterModel1File;
+            }
+            rw.Int32(ref n.wheelIndex);
+            rw.Int32(ref n.visualHandlerIndex);
+            rw.Int32(ref n.materialGroupIndex);
+            rw.Boolean(ref n.onlyWhenSliding);
+            rw.Boolean(ref n.useOwnerLoc);
+            rw.Boolean(ref n.isEventMode);
+            rw.Iso4(ref n.loc);
+            if (rw.Reader is not null)
+            {
+                n.Position = n.Loc.Translation;
+            }
+            rw.Single(ref n.emitIntensity);
+            rw.Vec3(ref n.emitIntensityBySpeed);
+            rw.Single(ref n.emitIntensityOnTurbo);
+            rw.Vec3(ref n.emitSpeed);
+            rw.Vec3(ref n.emitSpeedBySpeed);
+            rw.Vec3(ref n.emitSpeedBySpeedOnTurbo);
+        }
+    }
+
+    /// <summary>
+    /// OrientWithVelocity
+    /// </summary>
+    [Chunk(0x090E6002, "OrientWithVelocity")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E6002 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6002;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E6002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.orientWithVelocity);
         }
     }
 
-    [Chunk(0x090E6003)]
+    /// <summary>
+    /// Position and rotation
+    /// </summary>
+    [Chunk(0x090E6003, "Position and rotation")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E6003 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6003;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E6003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090E6003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090E6003)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090E6003)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090E6003)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090E6003)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.Vec3(ref n.position);
+            rw.Vec3(ref n.pitchYawRoll);
         }
     }
 
-    [Chunk(0x090E6004)]
+    /// <summary>
+    /// Quality models and emission settings
+    /// </summary>
+    [Chunk(0x090E6004, "Quality models and emission settings")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E6004 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6004;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
-        public CPlugParticleEmitterModel? U02;
-        public Components.GbxRefTableFile? U02File;
-        public CPlugParticleEmitterModel? U03;
-        public Components.GbxRefTableFile? U03File;
-        public CPlugParticleEmitterModel? U04;
-        public Components.GbxRefTableFile? U04File;
-        public int U05;
-        public int U06;
-        public int U07;
-        public bool U08;
-        public bool U09;
-        public bool U10;
-        public Iso4 U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
-        public float U17;
-        public float U18;
-        public float U19;
-        public float U20;
-        public float U21;
-        public float U22;
-        public float U23;
-        public float U24;
-        public float U25;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090E6004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090E6004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090E6004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090E6004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090E6004)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090E6004)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090E6004)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090E6004)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090E6004)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090E6004)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090E6004)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090E6004)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090E6004)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090E6004)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090E6004)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090E6004)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090E6004)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090E6004)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090E6004)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090E6004)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090E6004)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090E6004)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090E6004)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090E6004)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090E6004)clone).U25 = context.Clone(this.U25)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U02, ref U02File);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U03, ref U03File);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U04, ref U04File);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
-            rw.Boolean(ref U08);
-            rw.Boolean(ref U09);
-            rw.Boolean(ref U10);
-            rw.Iso4(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-            rw.Single(ref U14);
-            rw.Single(ref U15);
-            rw.Single(ref U16);
-            rw.Single(ref U17);
-            rw.Single(ref U18);
-            rw.Single(ref U19);
-            rw.Single(ref U20);
-            rw.Single(ref U21);
-            rw.Single(ref U22);
-            rw.Single(ref U23);
-            rw.Single(ref U24);
-            rw.Single(ref U25);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel0, ref n.particleEmitterModel0File);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel1, ref n.particleEmitterModel1File);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel2, ref n.particleEmitterModel2File);
+            rw.Int32(ref n.wheelIndex);
+            rw.Int32(ref n.visualHandlerIndex);
+            rw.Int32(ref n.materialGroupIndex);
+            rw.Boolean(ref n.onlyWhenSliding);
+            rw.Boolean(ref n.useOwnerLoc);
+            rw.Boolean(ref n.isEventMode);
+            rw.Iso4(ref n.loc);
+            if (rw.Reader is not null)
+            {
+                n.Position = n.Loc.Translation;
+            }
+            rw.Single(ref n.emitIntensity);
+            rw.Vec3(ref n.emitIntensityBySpeed);
+            rw.Single(ref n.emitIntensityOnTurbo);
+            rw.Vec3(ref n.emitSpeed);
+            rw.Vec3(ref n.emitSpeedBySpeed);
+            rw.Vec3(ref n.emitSpeedBySpeedOnTurbo);
         }
     }
 
-    [Chunk(0x090E6005)]
+    /// <summary>
+    /// OnlyWhenAllWheelsSliding
+    /// </summary>
+    [Chunk(0x090E6005, "OnlyWhenAllWheelsSliding")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E6005 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6005;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E6005)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.onlyWhenAllWheelsSliding);
         }
     }
 
-    [Chunk(0x090E6006)]
+    /// <summary>
+    /// ParticleEmitterModelShoot
+    /// </summary>
+    [Chunk(0x090E6006, "ParticleEmitterModelShoot")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E6006 : Chunk<CPlugVehicleVisEmitterModel>
     {
         public override uint Id => 0x090E6006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CPlugParticleEmitterModel? U01;
-        public Components.GbxRefTableFile? U01File;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E6006)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugParticleEmitterModel>(ref U01, ref U01File);
+            rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModelShoot, ref n.particleEmitterModelShootFile);
+        }
+    }
+
+    /// <summary>
+    /// Additional emission flag
+    /// </summary>
+    [Chunk(0x090E6007, "Additional emission flag")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    public partial class Chunk090E6007 : Chunk<CPlugVehicleVisEmitterModel>, IVersionable
+    {
+        public override uint Id => 0x090E6007;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public bool U01;
+
+        public Chunk090E6007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E6007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E6007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E6007)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Boolean(ref U01);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x090E6000 => new Chunk090E6000(),
+        0x090E6001 => new Chunk090E6001(),
         0x090E6002 => new Chunk090E6002(),
         0x090E6003 => new Chunk090E6003(),
         0x090E6004 => new Chunk090E6004(),
         0x090E6005 => new Chunk090E6005(),
         0x090E6006 => new Chunk090E6006(),
+        0x090E6007 => new Chunk090E6007(),
         _ => base.NewChunk(chunkId),
     };
 }

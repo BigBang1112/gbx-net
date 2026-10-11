@@ -34,100 +34,821 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E7000;
 
+    private CPlugVehicleVisModelShared? shared;
+    [AppliedWithChunk<Chunk090E7000>]
+    public CPlugVehicleVisModelShared? Shared
+    {
+        get => this.shared;
+        set => this.shared = value;
+    }
+
+    private int surfVersion;
+    [GameVersionDefault(GameVersion.TM2020, 2)]
+    [AppliedWithChunk<Chunk090E7000>(5)]
+    public int SurfVersion
+    {
+        get => this.surfVersion;
+        set => this.surfVersion = value;
+    }
+
+    private SoundSet sounds = default!;
+    [AppliedWithChunk<Chunk090E7000>]
+    public SoundSet Sounds
+    {
+        get => this.sounds;
+        set => this.sounds = value;
+    }
+
+    private float defaultDamperMinLen;
+    [AppliedWithChunk<Chunk090E7000>(1)]
+    public float DefaultDamperMinLen
+    {
+        get => this.defaultDamperMinLen;
+        set => this.defaultDamperMinLen = value;
+    }
+
+    private float defaultWheelOffsetY;
+    [AppliedWithChunk<Chunk090E7000>(1)]
+    public float DefaultWheelOffsetY
+    {
+        get => this.defaultWheelOffsetY;
+        set => this.defaultWheelOffsetY = value;
+    }
+
+    private float defaultSparkleRelSpeedThreshold;
+    [AppliedWithChunk<Chunk090E7000>(9)]
+    public float DefaultSparkleRelSpeedThreshold
+    {
+        get => this.defaultSparkleRelSpeedThreshold;
+        set => this.defaultSparkleRelSpeedThreshold = value;
+    }
+
+    private float defaultSparkleScale;
+    [AppliedWithChunk<Chunk090E7000>(9)]
+    public float DefaultSparkleScale
+    {
+        get => this.defaultSparkleScale;
+        set => this.defaultSparkleScale = value;
+    }
+
+    /// <summary>
+    /// Damage surfaces use SurfVersion, or 0 before version 5.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E7000>(3)]
+    public CPlugVehicleVisGeomModel GeomModel
+    {
+        get => this.geomModel;
+        set => this.geomModel = value;
+    }
+
+    private CPlugFxSystem? fxSystem;
+    [AppliedWithChunk<Chunk090E7000>(17)]
+    public CPlugFxSystem? FxSystem
+    {
+        get => this.fxSystem;
+        set => this.fxSystem = value;
+    }
+
+    private SoundEventSet soundEvents = default!;
+    [AppliedWithChunk<Chunk090E7001>]
+    public SoundEventSet SoundEvents
+    {
+        get => this.soundEvents;
+        set => this.soundEvents = value;
+    }
+
+    private float soundWheelImpact_Hard_ThresholdKmh;
+    /// <summary>
+    /// Before version 5, stored in metres per second.
+    /// </summary>
+    [AppliedWithChunk<Chunk090E7002>]
+    public float SoundWheelImpact_Hard_ThresholdKmh
+    {
+        get => this.soundWheelImpact_Hard_ThresholdKmh;
+        set => this.soundWheelImpact_Hard_ThresholdKmh = value;
+    }
+
+    private float soundWheelImpact_Soft_ThresholdKmh;
+    [AppliedWithChunk<Chunk090E7002>]
+    public float SoundWheelImpact_Soft_ThresholdKmh
+    {
+        get => this.soundWheelImpact_Soft_ThresholdKmh;
+        set => this.soundWheelImpact_Soft_ThresholdKmh = value;
+    }
+
+    private float soundBodyImpact_Hard_ThresholdKmh;
+    [AppliedWithChunk<Chunk090E7002>]
+    public float SoundBodyImpact_Hard_ThresholdKmh
+    {
+        get => this.soundBodyImpact_Hard_ThresholdKmh;
+        set => this.soundBodyImpact_Hard_ThresholdKmh = value;
+    }
+
+    private float soundBodyImpact_Soft_ThresholdKmh;
+    [AppliedWithChunk<Chunk090E7002>]
+    public float SoundBodyImpact_Soft_ThresholdKmh
+    {
+        get => this.soundBodyImpact_Soft_ThresholdKmh;
+        set => this.soundBodyImpact_Soft_ThresholdKmh = value;
+    }
+
+    private CPlugAudioEnvironment? audioEnvironmentForFirstPerson;
+    [AppliedWithChunk<Chunk090E7002>(3)]
+    public CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
+    {
+        get => this.audioEnvironmentForFirstPerson;
+        set => this.audioEnvironmentForFirstPerson = value;
+    }
+
+    private Vec3 soundImpactWheelFrontPos;
+    [AppliedWithChunk<Chunk090E7002>(4)]
+    public Vec3 SoundImpactWheelFrontPos
+    {
+        get => this.soundImpactWheelFrontPos;
+        set => this.soundImpactWheelFrontPos = value;
+    }
+
+    private Vec3 soundImpactWheelBackPos;
+    [AppliedWithChunk<Chunk090E7002>(4)]
+    public Vec3 SoundImpactWheelBackPos
+    {
+        get => this.soundImpactWheelBackPos;
+        set => this.soundImpactWheelBackPos = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehicleVisModel)clone).shared = context.Clone(this.shared)!;
         ((CPlugVehicleVisModel)clone).surfVersion = context.Clone(this.surfVersion)!;
+        ((CPlugVehicleVisModel)clone).sounds = context.Clone(this.sounds)!;
+        ((CPlugVehicleVisModel)clone).defaultDamperMinLen = context.Clone(this.defaultDamperMinLen)!;
+        ((CPlugVehicleVisModel)clone).defaultWheelOffsetY = context.Clone(this.defaultWheelOffsetY)!;
+        ((CPlugVehicleVisModel)clone).defaultSparkleRelSpeedThreshold = context.Clone(this.defaultSparkleRelSpeedThreshold)!;
+        ((CPlugVehicleVisModel)clone).defaultSparkleScale = context.Clone(this.defaultSparkleScale)!;
+        ((CPlugVehicleVisModel)clone).geomModel = context.Clone(this.geomModel)!;
+        ((CPlugVehicleVisModel)clone).fxSystem = context.Clone(this.fxSystem)!;
+        ((CPlugVehicleVisModel)clone).soundEvents = context.Clone(this.soundEvents)!;
+        ((CPlugVehicleVisModel)clone).soundWheelImpact_Hard_ThresholdKmh = context.Clone(this.soundWheelImpact_Hard_ThresholdKmh)!;
+        ((CPlugVehicleVisModel)clone).soundWheelImpact_Soft_ThresholdKmh = context.Clone(this.soundWheelImpact_Soft_ThresholdKmh)!;
+        ((CPlugVehicleVisModel)clone).soundBodyImpact_Hard_ThresholdKmh = context.Clone(this.soundBodyImpact_Hard_ThresholdKmh)!;
+        ((CPlugVehicleVisModel)clone).soundBodyImpact_Soft_ThresholdKmh = context.Clone(this.soundBodyImpact_Soft_ThresholdKmh)!;
+        ((CPlugVehicleVisModel)clone).audioEnvironmentForFirstPerson = context.Clone(this.audioEnvironmentForFirstPerson)!;
+        ((CPlugVehicleVisModel)clone).soundImpactWheelFrontPos = context.Clone(this.soundImpactWheelFrontPos)!;
+        ((CPlugVehicleVisModel)clone).soundImpactWheelBackPos = context.Clone(this.soundImpactWheelBackPos)!;
     }
 
-    public CPlugVehicleVisModel()
+    public CPlugVehicleVisModel() : this(GameVersion.Unspecified)
     {
     }
 
-    [Chunk(0x090E7000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk090E7000 : Chunk<CPlugVehicleVisModel>
+    public CPlugVehicleVisModel(GameVersion gameVersion)
+    {
+        if (gameVersion == GameVersion.TM2020)
+        {
+            surfVersion = 2;
+        }
+        else
+        {
+            surfVersion = 1;
+        }
+
+        sounds = new();
+        defaultDamperMinLen = -2;
+        defaultSparkleRelSpeedThreshold = 20;
+        defaultSparkleScale = 1;
+        soundEvents = new();
+        soundWheelImpact_Hard_ThresholdKmh = 115.2f;
+        soundWheelImpact_Soft_ThresholdKmh = 21.599998f;
+        soundBodyImpact_Hard_ThresholdKmh = 144;
+        soundBodyImpact_Soft_ThresholdKmh = 21.599998f;
+        soundImpactWheelFrontPos = (0, -0.5f, 1.5f);
+        soundImpactWheelBackPos = (0, -0.5f, -1.5f);
+    }
+
+    /// <summary>
+    /// Shared model, sounds and geometry
+    /// </summary>
+    [Chunk(0x090E7000, "Shared model, sounds and geometry")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 6, 9, 18)]
+    public partial class Chunk090E7000 : Chunk<CPlugVehicleVisModel>, IVersionable
     {
         public override uint Id => 0x090E7000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+        public CPlugSolid? U01;
+        public Components.GbxRefTableFile? U01File;
+        public CPlugSolid? U02;
+        public Components.GbxRefTableFile? U02File;
+        public CPlugSolid? U03;
+        public Components.GbxRefTableFile? U03File;
+        public CPlugVFXFile? U04;
+
+        public Chunk090E7000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E7000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 9;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 18;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E7000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090E7000)clone).U01File = context.Clone(this.U01File)!;
-            ((Chunk090E7000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090E7000)clone).U02File = context.Clone(this.U02File)!;
-            ((Chunk090E7000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090E7000)clone).U03File = context.Clone(this.U03File)!;
-            ((Chunk090E7000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090E7000)clone).U04File = context.Clone(this.U04File)!;
-            ((Chunk090E7000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090E7000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090E7000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090E7000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090E7000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090E7000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090E7000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090E7000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090E7000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090E7000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090E7000)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090E7000)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090E7000)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090E7000)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090E7000)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090E7000)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090E7000)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090E7000)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090E7000)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090E7000)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090E7000)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk090E7000)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk090E7000)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090E7000)clone).U29 = context.Clone(this.U29)!;
-            ((Chunk090E7000)clone).U30 = context.Clone(this.U30)!;
-            ((Chunk090E7000)clone).U31 = context.Clone(this.U31)!;
-            ((Chunk090E7000)clone).U32 = context.Clone(this.U32)!;
-            ((Chunk090E7000)clone).U33 = context.Clone(this.U33)!;
-            ((Chunk090E7000)clone).U34 = context.CloneArray(this.U34)!;
-            ((Chunk090E7000)clone).U35 = context.CloneArray(this.U35)!;
-            ((Chunk090E7000)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk090E7000)clone).U37 = context.Clone(this.U37)!;
-            ((Chunk090E7000)clone).U38 = context.CloneArray(this.U38)!;
-            ((Chunk090E7000)clone).U39 = context.CloneArray(this.U39)!;
-            ((Chunk090E7000)clone).U40 = context.Clone(this.U40)!;
-            ((Chunk090E7000)clone).U41 = context.Clone(this.U41)!;
-            ((Chunk090E7000)clone).U42 = context.CloneArray(this.U42)!;
-            ((Chunk090E7000)clone).U43 = context.CloneArray(this.U43)!;
-            ((Chunk090E7000)clone).U44 = context.Clone(this.U44)!;
-            ((Chunk090E7000)clone).U45 = context.Clone(this.U45)!;
-            ((Chunk090E7000)clone).U46 = context.CloneArray(this.U46)!;
-            ((Chunk090E7000)clone).U47 = context.CloneArray(this.U47)!;
-            ((Chunk090E7000)clone).U48 = context.Clone(this.U48)!;
-            ((Chunk090E7000)clone).U49 = context.Clone(this.U49)!;
-            ((Chunk090E7000)clone).U50 = context.CloneArray(this.U50)!;
-            ((Chunk090E7000)clone).U51 = context.CloneArray(this.U51)!;
-            ((Chunk090E7000)clone).U52 = context.Clone(this.U52)!;
-            ((Chunk090E7000)clone).U53 = context.Clone(this.U53)!;
-            ((Chunk090E7000)clone).U54 = context.Clone(this.U54)!;
-            ((Chunk090E7000)clone).U55 = context.Clone(this.U55)!;
-            ((Chunk090E7000)clone).U56 = context.Clone(this.U56)!;
-            ((Chunk090E7000)clone).U57 = context.Clone(this.U57)!;
-            ((Chunk090E7000)clone).U58 = context.Clone(this.U58)!;
-            ((Chunk090E7000)clone).U59 = context.Clone(this.U59)!;
-            ((Chunk090E7000)clone).U60 = context.Clone(this.U60)!;
-            ((Chunk090E7000)clone).U61 = context.Clone(this.U61)!;
-            ((Chunk090E7000)clone).U62 = context.Clone(this.U62)!;
-            ((Chunk090E7000)clone).U63 = context.Clone(this.U63)!;
-            ((Chunk090E7000)clone).U64 = context.Clone(this.U64)!;
             ((Chunk090E7000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E7000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E7000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E7000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E7000)clone).U04 = context.Clone(this.U04)!;
+        }
+    }
+
+    /// <summary>
+    /// Sound events
+    /// </summary>
+    [Chunk(0x090E7001, "Sound events")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 6, 10)]
+    public partial class Chunk090E7001 : Chunk<CPlugVehicleVisModel>, IVersionable
+    {
+        public override uint Id => 0x090E7001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk090E7001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E7001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 10;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E7001)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugVehicleVisModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.ReadableWritable<SoundEventSet>(ref n.soundEvents, version: Version);
+        }
+    }
+
+    /// <summary>
+    /// Impact sounds
+    /// </summary>
+    [Chunk(0x090E7002, "Impact sounds")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 5)]
+    public partial class Chunk090E7002 : Chunk<CPlugVehicleVisModel>, IVersionable
+    {
+        public override uint Id => 0x090E7002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+        public CFuncKeysReal? U01;
+        public CFuncKeysReal? U02;
+
+        public Chunk090E7002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E7002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090E7002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090E7002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E7002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090E7002)clone).legacyWheelHardThreshold = context.Clone(this.legacyWheelHardThreshold)!;
+            ((Chunk090E7002)clone).legacyWheelSoftThreshold = context.Clone(this.legacyWheelSoftThreshold)!;
+            ((Chunk090E7002)clone).legacyBodyHardThreshold = context.Clone(this.legacyBodyHardThreshold)!;
+            ((Chunk090E7002)clone).legacyBodySoftThreshold = context.Clone(this.legacyBodySoftThreshold)!;
+        }
+    }
+
+    public partial class SoundSet : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CPlugLocatedSound? horn;
+        public CPlugLocatedSound? Horn
+        {
+            get => this.horn;
+            set => this.horn = value;
+        }
+
+        private CPlugLocatedSound? wheelSurfaceLeft;
+        public CPlugLocatedSound? WheelSurfaceLeft
+        {
+            get => this.wheelSurfaceLeft;
+            set => this.wheelSurfaceLeft = value;
+        }
+
+        private CPlugLocatedSound? engine;
+        public CPlugLocatedSound? Engine
+        {
+            get => this.engine;
+            set => this.engine = value;
+        }
+
+        private CPlugLocatedSound? turbo;
+        public CPlugLocatedSound? Turbo
+        {
+            get => this.turbo;
+            set => this.turbo = value;
+        }
+
+        private CPlugLocatedSound? wheelSurfaceRight;
+        public CPlugLocatedSound? WheelSurfaceRight
+        {
+            get => this.wheelSurfaceRight;
+            set => this.wheelSurfaceRight = value;
+        }
+
+        private CPlugLocatedSound? brakes;
+        public CPlugLocatedSound? Brakes
+        {
+            get => this.brakes;
+            set => this.brakes = value;
+        }
+
+        private CPlugLocatedSound? gearChange;
+        public CPlugLocatedSound? GearChange
+        {
+            get => this.gearChange;
+            set => this.gearChange = value;
+        }
+
+        private CPlugLocatedSound? brakeLights;
+        public CPlugLocatedSound? BrakeLights
+        {
+            get => this.brakeLights;
+            set => this.brakeLights = value;
+        }
+
+        private CPlugLocatedSound? roar;
+        public CPlugLocatedSound? Roar
+        {
+            get => this.roar;
+            set => this.roar = value;
+        }
+
+        private CPlugLocatedSound? vibrations;
+        public CPlugLocatedSound? Vibrations
+        {
+            get => this.vibrations;
+            set => this.vibrations = value;
+        }
+
+        private CPlugLocatedSound? sparkles;
+        public CPlugLocatedSound? Sparkles
+        {
+            get => this.sparkles;
+            set => this.sparkles = value;
+        }
+
+        private CPlugLocatedSound? freeWheeling;
+        public CPlugLocatedSound? FreeWheeling
+        {
+            get => this.freeWheeling;
+            set => this.freeWheeling = value;
+        }
+
+        private CPlugLocatedSound? waterWake;
+        public CPlugLocatedSound? WaterWake
+        {
+            get => this.waterWake;
+            set => this.waterWake = value;
+        }
+
+        private CPlugLocatedSound? u01;
+        public CPlugLocatedSound? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private CPlugLocatedSound? u02;
+        public CPlugLocatedSound? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private CPlugLocatedSound? u03;
+        public CPlugLocatedSound? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private CPlugLocatedSound? u04;
+        public CPlugLocatedSound? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private CPlugLocatedSound? u05;
+        public CPlugLocatedSound? U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private CPlugLocatedSound? u06;
+        public CPlugLocatedSound? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SoundSet)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SoundSet)clone).horn = context.Clone(this.horn)!;
+            ((SoundSet)clone).wheelSurfaceLeft = context.Clone(this.wheelSurfaceLeft)!;
+            ((SoundSet)clone).engine = context.Clone(this.engine)!;
+            ((SoundSet)clone).turbo = context.Clone(this.turbo)!;
+            ((SoundSet)clone).wheelSurfaceRight = context.Clone(this.wheelSurfaceRight)!;
+            ((SoundSet)clone).brakes = context.Clone(this.brakes)!;
+            ((SoundSet)clone).gearChange = context.Clone(this.gearChange)!;
+            ((SoundSet)clone).brakeLights = context.Clone(this.brakeLights)!;
+            ((SoundSet)clone).roar = context.Clone(this.roar)!;
+            ((SoundSet)clone).vibrations = context.Clone(this.vibrations)!;
+            ((SoundSet)clone).sparkles = context.Clone(this.sparkles)!;
+            ((SoundSet)clone).freeWheeling = context.Clone(this.freeWheeling)!;
+            ((SoundSet)clone).waterWake = context.Clone(this.waterWake)!;
+            ((SoundSet)clone).u01 = context.Clone(this.u01)!;
+            ((SoundSet)clone).u02 = context.Clone(this.u02)!;
+            ((SoundSet)clone).u03 = context.Clone(this.u03)!;
+            ((SoundSet)clone).u04 = context.Clone(this.u04)!;
+            ((SoundSet)clone).u05 = context.Clone(this.u05)!;
+            ((SoundSet)clone).u06 = context.Clone(this.u06)!;
+            ((SoundSet)clone).bodySurface_Deprecated = context.Clone(this.bodySurface_Deprecated)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef<CPlugLocatedSound>(ref this.horn);
+            rw.NodeRef<CPlugLocatedSound>(ref this.wheelSurfaceLeft);
+            rw.NodeRef<CPlugLocatedSound>(ref this.engine);
+            rw.NodeRef<CPlugLocatedSound>(ref this.turbo);
+            rw.NodeRef<CPlugLocatedSound>(ref this.wheelSurfaceRight);
+            rw.NodeRef<CPlugLocatedSound>(ref this.brakes);
+            rw.NodeRef<CPlugLocatedSound>(ref this.bodySurface_Deprecated);
+            rw.NodeRef<CPlugLocatedSound>(ref this.gearChange);
+            rw.NodeRef<CPlugLocatedSound>(ref this.brakeLights);
+            rw.NodeRef<CPlugLocatedSound>(ref this.roar);
+            rw.NodeRef<CPlugLocatedSound>(ref this.vibrations);
+
+            if (v >= 2)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.sparkles);
+            }
+
+            if (v >= 6)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.freeWheeling);
+            }
+
+            if (v >= 8)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.waterWake);
+            }
+
+            if (v >= 13)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u01);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u02);
+            }
+
+            if (v >= 14)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u03);
+            }
+
+            if (v >= 15)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u04);
+            }
+
+            if (v >= 16)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u05);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u06);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SoundEventSet : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private CPlugLocatedSound? glassSmash;
+        public CPlugLocatedSound? GlassSmash
+        {
+            get => this.glassSmash;
+            set => this.glassSmash = value;
+        }
+
+        private CPlugLocatedSound? bodyImpact;
+        public CPlugLocatedSound? BodyImpact
+        {
+            get => this.bodyImpact;
+            set => this.bodyImpact = value;
+        }
+
+        private CPlugLocatedSound? backFire;
+        public CPlugLocatedSound? BackFire
+        {
+            get => this.backFire;
+            set => this.backFire = value;
+        }
+
+        private CPlugLocatedSound? wheelLand;
+        public CPlugLocatedSound? WheelLand
+        {
+            get => this.wheelLand;
+            set => this.wheelLand = value;
+        }
+
+        private CPlugLocatedSound? wheelJump;
+        public CPlugLocatedSound? WheelJump
+        {
+            get => this.wheelJump;
+            set => this.wheelJump = value;
+        }
+
+        private CPlugLocatedSound? bodyPartDetached;
+        public CPlugLocatedSound? BodyPartDetached
+        {
+            get => this.bodyPartDetached;
+            set => this.bodyPartDetached = value;
+        }
+
+        private CPlugLocatedSound? bodyPartImpact;
+        public CPlugLocatedSound? BodyPartImpact
+        {
+            get => this.bodyPartImpact;
+            set => this.bodyPartImpact = value;
+        }
+
+        private CPlugLocatedSound? turboStart;
+        public CPlugLocatedSound? TurboStart
+        {
+            get => this.turboStart;
+            set => this.turboStart = value;
+        }
+
+        private CPlugLocatedSound? helicoRelease;
+        public CPlugLocatedSound? HelicoRelease
+        {
+            get => this.helicoRelease;
+            set => this.helicoRelease = value;
+        }
+
+        private CPlugLocatedSound? beginFreeWheeling;
+        public CPlugLocatedSound? BeginFreeWheeling
+        {
+            get => this.beginFreeWheeling;
+            set => this.beginFreeWheeling = value;
+        }
+
+        private CPlugLocatedSound? endFreeWheeling;
+        public CPlugLocatedSound? EndFreeWheeling
+        {
+            get => this.endFreeWheeling;
+            set => this.endFreeWheeling = value;
+        }
+
+        private CPlugLocatedSound? u01;
+        public CPlugLocatedSound? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private CPlugLocatedSound? u02;
+        public CPlugLocatedSound? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private CPlugLocatedSound? u03;
+        public CPlugLocatedSound? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private CPlugLocatedSound? u04;
+        public CPlugLocatedSound? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private CPlugLocatedSound? u05;
+        public CPlugLocatedSound? U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private CPlugLocatedSound? u06;
+        public CPlugLocatedSound? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private CPlugLocatedSound? u07;
+        public CPlugLocatedSound? U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private CPlugLocatedSound? u08;
+        public CPlugLocatedSound? U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private CPlugLocatedSound? u09;
+        public CPlugLocatedSound? U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SoundEventSet)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SoundEventSet)clone).glassSmash = context.Clone(this.glassSmash)!;
+            ((SoundEventSet)clone).bodyImpact = context.Clone(this.bodyImpact)!;
+            ((SoundEventSet)clone).backFire = context.Clone(this.backFire)!;
+            ((SoundEventSet)clone).wheelLand = context.Clone(this.wheelLand)!;
+            ((SoundEventSet)clone).wheelJump = context.Clone(this.wheelJump)!;
+            ((SoundEventSet)clone).bodyPartDetached = context.Clone(this.bodyPartDetached)!;
+            ((SoundEventSet)clone).bodyPartImpact = context.Clone(this.bodyPartImpact)!;
+            ((SoundEventSet)clone).turboStart = context.Clone(this.turboStart)!;
+            ((SoundEventSet)clone).helicoRelease = context.Clone(this.helicoRelease)!;
+            ((SoundEventSet)clone).beginFreeWheeling = context.Clone(this.beginFreeWheeling)!;
+            ((SoundEventSet)clone).endFreeWheeling = context.Clone(this.endFreeWheeling)!;
+            ((SoundEventSet)clone).u01 = context.Clone(this.u01)!;
+            ((SoundEventSet)clone).u02 = context.Clone(this.u02)!;
+            ((SoundEventSet)clone).u03 = context.Clone(this.u03)!;
+            ((SoundEventSet)clone).u04 = context.Clone(this.u04)!;
+            ((SoundEventSet)clone).u05 = context.Clone(this.u05)!;
+            ((SoundEventSet)clone).u06 = context.Clone(this.u06)!;
+            ((SoundEventSet)clone).u07 = context.Clone(this.u07)!;
+            ((SoundEventSet)clone).u08 = context.Clone(this.u08)!;
+            ((SoundEventSet)clone).u09 = context.Clone(this.u09)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef<CPlugLocatedSound>(ref this.glassSmash);
+
+            if (v >= 1)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.bodyImpact);
+            }
+
+            if (v >= 2)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.backFire);
+            }
+
+            if (v >= 3)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.wheelLand);
+            }
+
+            if (v >= 0 && v <= 3)
+            {
+                if (rw.Reader is not null)
+                {
+                    WheelJump = WheelLand;
+                }
+            }
+
+            if (v >= 4)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.wheelJump);
+                rw.NodeRef<CPlugLocatedSound>(ref this.bodyPartDetached);
+                rw.NodeRef<CPlugLocatedSound>(ref this.bodyPartImpact);
+            }
+
+            if (v >= 5)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.turboStart);
+                rw.NodeRef<CPlugLocatedSound>(ref this.helicoRelease);
+            }
+
+            if (v >= 6)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.beginFreeWheeling);
+                rw.NodeRef<CPlugLocatedSound>(ref this.endFreeWheeling);
+            }
+
+            if (v >= 7)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u01);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u02);
+            }
+
+            if (v >= 8)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u03);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u04);
+            }
+
+            if (v >= 9)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u05);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u06);
+            }
+
+            if (v >= 10)
+            {
+                rw.NodeRef<CPlugLocatedSound>(ref this.u07);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u08);
+                rw.NodeRef<CPlugLocatedSound>(ref this.u09);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x090E7000 => new Chunk090E7000(),
+        0x090E7001 => new Chunk090E7001(),
+        0x090E7002 => new Chunk090E7002(),
         _ => base.NewChunk(chunkId),
     };
 }

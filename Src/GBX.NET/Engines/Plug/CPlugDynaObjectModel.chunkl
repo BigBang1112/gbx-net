@@ -10,7 +10,7 @@ archive
   CPlugSurface DynaShape (external)
   v0..2 (archive)
     CPlugDynaModel* DynaModel (external)
-    if rw.Reader != null && dynaModel != null
+    if dynaModel != null
       Mass = dynaModel.LinearMass
   v0= (archive)
     staticShape = dynaShape

@@ -6,20 +6,12 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTree
 {
-    [AppliedWithChunk<Chunk0904F00D>]
-    public string Name { get; set; } = "";
-
-    [AppliedWithChunk<Chunk0904F015>]
-    [AppliedWithChunk<Chunk0904F018>]
-    [AppliedWithChunk<Chunk0904F019>]
-    [AppliedWithChunk<Chunk0904F01A>]
-    public ulong Flags { get; set; }
-
-    [AppliedWithChunk<Chunk0904F015>]
-    [AppliedWithChunk<Chunk0904F018>]
-    [AppliedWithChunk<Chunk0904F019>]
-    [AppliedWithChunk<Chunk0904F01A>]
-    public Iso4? Location { get; set; }
+    [Obsolete("Use PlugId instead.")]
+    public string Name
+    {
+        get => PlugId;
+        set => PlugId = value;
+    }
 
     public CPlugMaterial? Material
     {
@@ -109,6 +101,12 @@ public partial class CPlugTree
     {
         get => GetBit(Flags, 0xC);
         set => Flags = SetBit(Flags, 0xC, value);
+    }
+
+    public bool IsCustomBBox
+    {
+        get => GetBit(Flags, 0x13);
+        set => Flags = SetBit(Flags, 0x13, value);
     }
 
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
@@ -223,85 +221,37 @@ public partial class CPlugTree
 
     public partial class Chunk0904F00D
     {
-        public override void Read(CPlugTree n, GbxReader r)
-        {
-            n.Name = r.ReadIdAsString();
-            U01 = r.ReadIdAsString();
-        }
-
-        public override void Write(CPlugTree n, GbxWriter w)
-        {
-            if (int.TryParse(n.Name, out var numericName) && (numericName & 0xC0000000) == 0)
-            {
-                w.Write(new Id(numericName));
-            }
-            else
-            {
-                w.WriteIdAsString(n.Name);
-            }
-
-            w.WriteIdAsString(U01);
-        }
-    }
-
-    public partial class Chunk0904F015
-    {
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
-            n.Flags = rw.DataUInt32((uint)n.Flags) & 0x1FFFF;
+            n.PlugId = ReadWriteId(n.PlugId, rw);
+            rw.NodeRef(ref n.modelSolid, ref n.modelSolidFile);
 
-            if (n.UseLocation)
+            if (n.HasModel)
             {
-                n.Location = rw.Iso4(n.Location);
+                n.ModelPlugId = ReadWriteId(n.ModelPlugId, rw);
             }
         }
-    }
 
-    public partial class Chunk0904F018
-    {
-        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
+        private static string ReadWriteId(string? value, GbxReaderWriter rw)
         {
-            n.Flags = rw.DataUInt64(n.Flags);
-
-            if (n.UseLocation)
+            if (rw.Reader is not null)
             {
-                n.Location = rw.Iso4(n.Location);
+                value = rw.Reader.ReadIdAsString();
             }
 
-            n.Flags |= 0x2800;
-            // Flags = Flags | 0x8000; (if Bucr3IsR)
-        }
-    }
-
-    public partial class Chunk0904F019
-    {
-        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
-        {
-            n.Flags = rw.DataUInt32((uint)n.Flags);
-
-            if (n.UseLocation)
+            if (rw.Writer is not null)
             {
-                n.Location = rw.Iso4(n.Location);
+                if (int.TryParse(value, out var numericId) && (numericId & 0xC0000000) == 0)
+                {
+                    rw.Writer.Write(new Id(numericId));
+                }
+                else
+                {
+                    rw.Writer.WriteIdAsString(value);
+                }
             }
 
-            n.Flags |= 0x2800;
-            // Flags = Flags | 0x8000; (if Bucr3IsR)
-        }
-    }
-
-    public partial class Chunk0904F01A
-    {
-        public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
-        {
-            n.Flags = rw.DataUInt32((uint)n.Flags);
-
-            if (n.UseLocation)
-            {
-                n.Location = rw.Iso4(n.Location);
-            }
-
-            n.Flags |= 0x2000;
-            // Flags = Flags | 0x8000; (if Bucr3IsR)
+            return value ?? "";
         }
     }
 }

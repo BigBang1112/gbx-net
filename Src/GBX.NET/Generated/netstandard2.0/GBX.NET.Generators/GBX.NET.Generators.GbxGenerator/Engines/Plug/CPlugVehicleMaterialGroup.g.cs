@@ -34,32 +34,42 @@ public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E9000;
 
+    private int[] materialIds = [];
+    [AppliedWithChunk<Chunk090E9000>]
+    public int[] MaterialIds
+    {
+        get => this.materialIds;
+        set => this.materialIds = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehicleMaterialGroup)clone).materialIds = context.CloneArray(this.materialIds)!;
     }
 
     public CPlugVehicleMaterialGroup()
     {
     }
 
-    [Chunk(0x090E9000)]
+    /// <summary>
+    /// MaterialIds
+    /// </summary>
+    [Chunk(0x090E9000, "MaterialIds")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E9000 : Chunk<CPlugVehicleMaterialGroup>
     {
         public override uint Id => 0x090E9000;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E9000)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleMaterialGroup n, GbxReaderWriter rw)
         {
-            rw.Array<int>(ref U01!);
+            rw.Array<int>(ref n.materialIds!);
         }
     }
 

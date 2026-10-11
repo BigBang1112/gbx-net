@@ -42,17 +42,29 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         set => this.name = value;
     }
 
+    private bool inTuningCycle;
+    [AppliedWithChunk<Chunk090EB001>]
+    public bool InTuningCycle
+    {
+        get => this.inTuningCycle;
+        set => this.inTuningCycle = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugVehiclePhyTuning)clone).name = context.Clone(this.name)!;
+        ((CPlugVehiclePhyTuning)clone).inTuningCycle = context.Clone(this.inTuningCycle)!;
     }
 
     public CPlugVehiclePhyTuning()
     {
     }
 
-    [Chunk(0x090EB000)]
+    /// <summary>
+    /// name
+    /// </summary>
+    [Chunk(0x090EB000, "name")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EB000 : Chunk<CPlugVehiclePhyTuning>
     {
@@ -69,23 +81,24 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         }
     }
 
-    [Chunk(0x090EB001)]
+    /// <summary>
+    /// InTuningCycle
+    /// </summary>
+    [Chunk(0x090EB001, "InTuningCycle")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EB001 : Chunk<CPlugVehiclePhyTuning>
     {
         public override uint Id => 0x090EB001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090EB001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehiclePhyTuning n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.inTuningCycle);
         }
     }
 

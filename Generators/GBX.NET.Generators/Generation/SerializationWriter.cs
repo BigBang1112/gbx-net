@@ -359,13 +359,13 @@ internal sealed class SerializationWriter
         }
         else
         {
-            if (declaration.Type.CastTarget is not null)
+            var numeric = SyntaxOverlap.Normalize(storageType) is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" or "float" or "double";
+            if (declaration.Type.CastTarget is not null && !numeric)
             {
                 method = "Enum" + WireTypes.Method(declaration.Type.Name, declaration.Attributes) + "<" + WireTypes.Cast(declaration.Type) + ">";
             }
 
             var wireType = WireTypes.Map(declaration.Type.Name, declaration.Attributes);
-            var numeric = SyntaxOverlap.Normalize(storageType) is "byte" or "sbyte" or "short" or "ushort" or "int" or "uint" or "long" or "ulong" or "float" or "double";
             var conversion = numeric && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
             var value = write is null ? target : WriteArgument(write);
             var assignment = (field.IsLocal ? "var " : "") + target;

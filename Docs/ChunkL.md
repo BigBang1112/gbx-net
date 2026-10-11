@@ -35,6 +35,35 @@ Use an unnamed `archive` for a class self-archive, and named `archive` declarati
 
 Reference a named archive from another class with its dotted type name, such as `CGameCtnMacroBlockInfo.BlockSpawn[] Blocks`. The generator uses the enclosing class layout to resolve the archive and its serialization.
 
+## Computed assignments
+
+Computed assignments in chunk and archive bodies run only when reading. The generator adds the reader check in combined `ReadWrite` methods and omits these assignments from separate `Write` methods. **Do not wrap computed assignments in `if rw.Reader != null`.**
+
+For example, this upgrades flags after reading without changing them when writing:
+
+```chunkl
+0x001
+  datauint Flags
+  Flags = Flags | 0x2000
+```
+
+The assignment's expression is also evaluated only when reading, so accessing `rw.Reader` there is safe. Conditions surrounding assignments are evaluated during writing too. Keep reader checks when they protect reader access in conditions, such as `if rw.Reader != null && rw.Reader.IsRelease`, or select different serialized fields for reading and writing.
+
+This rule applies to computed assignments in serialization bodies. Field defaults, constructor assignments, and property setters retain their own behavior.
+
+## Numeric casts
+
+Use a numeric cast to give a field a different C# storage type from its wire type. For example, these chunks share a `ulong Flags` property while serializing different widths:
+
+```chunkl
+0x001
+  datauint<ulong> Flags
+0x002
+  dataulong Flags
+```
+
+The first chunk reads and writes 32 bits, and the second reads and writes 64 bits. Numeric casts use ordinary conversions. Casts to enum types use the enum serialization methods.
+
 ## Nullable signed integers
 
 Use `(nullable)` on a scalar signed integer field to read `-1` as `null` and write `null` as `-1`:

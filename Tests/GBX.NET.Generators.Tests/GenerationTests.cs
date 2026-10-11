@@ -9,6 +9,70 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task NumericCastsPreserveSharedStorageAndWireWidths(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043001 { }
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043002 { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public uint ReadDataUInt32() => 0;
+                    public ulong ReadDataUInt64() => 0;
+                }
+                public partial class GbxWriter
+                {
+                    public void Write(uint value) { }
+                    public void Write(ulong value) { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public uint DataUInt32(uint value) => value;
+                    public void DataUInt64(ref ulong value) { }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              datauint<ulong> Flags = 0x1E80A [TM10 = 0x1E00A]
+            0x002
+              dataulong Flags
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var root = Engine(result).GetRoot();
+        var flags = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Flags");
+        await Assert.That(flags.Type.ToString()).IsEqualTo("ulong");
+        var generated = root.ToString();
+        await Assert.That(generated).Contains("[GameVersionDefault(GameVersion.TM10, 0x1E00A)]");
+        await Assert.That(generated).DoesNotContain("EnumDataUInt");
+        if (structureKind == 0)
+        {
+            await Assert.That(generated).Contains("n.flags = (ulong)rw.DataUInt32((uint)n.flags);");
+            await Assert.That(generated).Contains("rw.DataUInt64(ref n.flags);");
+        }
+        else
+        {
+            await Assert.That(generated).Contains("n.flags = (ulong)r.ReadDataUInt32();");
+            await Assert.That(generated).Contains("w.Write((uint)n.flags);");
+            await Assert.That(generated).Contains("n.flags = r.ReadDataUInt64();");
+            await Assert.That(generated).Contains("w.Write(n.flags);");
+        }
+    }
+
+    [Test]
     [Arguments(false, 0)]
     [Arguments(false, 1)]
     [Arguments(true, 0)]

@@ -313,7 +313,7 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         {
             rw.NodeRef<CPlugDynaModel>(ref this.dynaModel, ref this.dynaModelFile);
 
-            if (rw.Reader != null && dynaModel!= null)
+            if (dynaModel!= null)
             {
                 if (rw.Reader is not null)
                 {
