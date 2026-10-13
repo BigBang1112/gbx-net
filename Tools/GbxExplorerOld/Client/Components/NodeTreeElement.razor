@@ -120,6 +120,7 @@
         props = value.GetType()
             .GetProperties()
             .Where(x => x.GetGetMethod()?.IsStatic == false)
+            .Where(x => x.GetIndexParameters().Length == 0)
             .Where(ValueRenderer.ShowPropertyInTree);
 
         try
