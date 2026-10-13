@@ -153,4 +153,9 @@ public abstract class NodeRef
         Reset();
         return await ResolveAsync(cancellationToken).ConfigureAwait(false);
     }
+
+    /// <summary>
+    /// Describes the external descriptor or embedded node without resolving it. An absent reference returns "null".
+    /// </summary>
+    public override string ToString() => Descriptor?.ToString() ?? CachedNode?.ToString() ?? "null";
 }

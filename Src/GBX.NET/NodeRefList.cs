@@ -6,12 +6,16 @@ namespace GBX.NET;
 /// <summary>
 /// A collection that retains external descriptors and resolves nodes on element access.
 /// </summary>
-public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneable where T : CMwNod
+public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepCloneable where T : CMwNod
 {
     private readonly List<NodeRef<T>> references = [];
 
     public bool IsReadOnly => false;
     public int Count => references.Count;
+
+    bool IList.IsFixedSize => false;
+    bool ICollection.IsSynchronized => false;
+    object ICollection.SyncRoot => this;
 
     public NodeRefList()
     {
@@ -65,6 +69,12 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
         set => references[index].Node = value;
     }
 
+    object? IList.this[int index]
+    {
+        get => this[index];
+        set => this[index] = ValidateNode(value);
+    }
+
     /// <summary>
     /// Gets the stored handle without resolving its node.
     /// </summary>
@@ -89,6 +99,12 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
     [OverloadResolutionPriority(1)]
     public void Add(T? item) => references.Add(new() { Node = item });
 
+    int IList.Add(object? value)
+    {
+        Add(ValidateNode(value));
+        return Count - 1;
+    }
+
     /// <summary>
     /// Inserts a copy of the stored reference without resolving it. The new element owns its own handle.
     /// </summary>
@@ -96,6 +112,18 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
 
     [OverloadResolutionPriority(1)]
     public void Insert(int index, T? item) => references.Insert(index, new() { Node = item });
+
+    void IList.Insert(int index, object? value) => Insert(index, ValidateNode(value));
+
+    private static T? ValidateNode(object? value)
+    {
+        if (value is null or T)
+        {
+            return (T?)value;
+        }
+
+        throw new ArgumentException($"Expected a node of type {typeof(T).Name}.", nameof(value));
+    }
 
     private static NodeRef<T> Copy(NodeRef<T> reference)
     {
@@ -126,6 +154,14 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
         return true;
     }
 
+    void IList.Remove(object? value)
+    {
+        if (value is null or T)
+        {
+            Remove((T?)value);
+        }
+    }
+
     public int IndexOf(T? item)
     {
         var comparer = EqualityComparer<T?>.Default;
@@ -141,7 +177,11 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
         return -1;
     }
 
+    int IList.IndexOf(object? value) => value is null or T ? IndexOf((T?)value) : -1;
+
     public bool Contains(T? item) => IndexOf(item) >= 0;
+
+    bool IList.Contains(object? value) => (value is null or T) && Contains((T?)value);
 
     public int RemoveAll(Predicate<T?> match)
     {
@@ -186,6 +226,50 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
         foreach (var reference in references)
         {
             array[arrayIndex++] = reference.Resolve();
+        }
+    }
+
+    void ICollection.CopyTo(Array array, int index)
+    {
+        if (array is null)
+        {
+            throw new ArgumentNullException(nameof(array));
+        }
+
+        if (array.Rank != 1 || array.GetLowerBound(0) != 0)
+        {
+            throw new ArgumentException("The destination must be a one-dimensional, zero-based array.", nameof(array));
+        }
+
+        if (index < 0 || index > array.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
+        }
+
+        if (array.Length - index < Count)
+        {
+            throw new ArgumentException("The destination array is too small.", nameof(array));
+        }
+
+        var elementType = array.GetType().GetElementType()!;
+
+        if (!elementType.IsAssignableFrom(typeof(T)) && !typeof(T).IsAssignableFrom(elementType))
+        {
+            throw new ArgumentException("The destination array has an incompatible element type.", nameof(array));
+        }
+
+        foreach (var reference in references)
+        {
+            var node = reference.Resolve();
+
+            try
+            {
+                array.SetValue(node, index++);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new ArgumentException("The destination array has an incompatible element type.", nameof(array), ex);
+            }
         }
     }
 

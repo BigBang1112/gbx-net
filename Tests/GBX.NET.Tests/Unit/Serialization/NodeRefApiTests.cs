@@ -1,6 +1,7 @@
 using GBX.NET.Components;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Engines.Plug;
+using System.Collections;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
@@ -358,6 +359,151 @@ public class NodeRefApiTests
         await Assert.That(references.Get(0)).IsSameReferenceAs(handles[0]);
         await Assert.That(references.Get(1)).IsSameReferenceAs(handles[3]);
         await Assert.That(handles[1].Node).IsSameReferenceAs(material);
+    }
+
+    [Test]
+    public async Task NonGenericReferenceCollection_MutationsPreserveHandlesWithoutResolving()
+    {
+        var table = new GbxRefTable();
+        var calls = 0;
+        table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
+        var first = new CPlugCrystal();
+        var replacement = new CPlugCrystal();
+        var references = new NodeRefList<CPlugCrystal> { null, first };
+        references.Get(0).Descriptor = table.CreateFile("unloaded.Gbx");
+        var handle = references.Get(0);
+        IList list = references;
+        ICollection collection = references;
+
+        await Assert.That(collection.Count).IsEqualTo(2);
+        await Assert.That(list.IsFixedSize).IsFalse();
+        await Assert.That(list.IsReadOnly).IsFalse();
+        await Assert.That(collection.IsSynchronized).IsFalse();
+        await Assert.That(collection.SyncRoot).IsSameReferenceAs(references);
+        await Assert.That(calls).IsEqualTo(0);
+
+        list[0] = replacement;
+        await Assert.That(references.Get(0)).IsSameReferenceAs(handle);
+        await Assert.That(handle.Descriptor).IsNull();
+        await Assert.That(list[0]).IsSameReferenceAs(replacement);
+        await Assert.That(list.Add(first)).IsEqualTo(2);
+        list.Insert(1, null);
+        await Assert.That(list.Count).IsEqualTo(4);
+        await Assert.That(list.IndexOf(null)).IsEqualTo(1);
+        list.RemoveAt(2);
+        list.Remove(first);
+        await Assert.That(list.Count).IsEqualTo(2);
+        list.Clear();
+        await Assert.That(list.Count).IsEqualTo(0);
+        await Assert.That(handle.Node).IsSameReferenceAs(replacement);
+        await Assert.That(calls).IsEqualTo(0);
+    }
+
+    [Test]
+    public async Task NonGenericReferenceCollection_IncompatibleValuesDoNotResolveOrReplaceEntries()
+    {
+        var table = new GbxRefTable();
+        var calls = 0;
+        table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
+        var descriptor = table.CreateFile("unloaded.Gbx");
+        var references = new NodeRefList<CPlugCrystal> { null };
+        references.Get(0).Descriptor = descriptor;
+        IList list = references;
+        var incompatible = new CPlugMaterial();
+
+        await Assert.That(() => list.Add(incompatible)).Throws<ArgumentException>();
+        await Assert.That(() => list.Insert(0, incompatible)).Throws<ArgumentException>();
+        await Assert.That(() => list[0] = incompatible).Throws<ArgumentException>();
+        await Assert.That(() => list.Add(new NodeRef<CPlugCrystal>())).Throws<ArgumentException>();
+        await Assert.That(list.Contains(incompatible)).IsFalse();
+        await Assert.That(list.IndexOf(incompatible)).IsEqualTo(-1);
+        list.Remove(incompatible);
+
+        await Assert.That(list.Count).IsEqualTo(1);
+        await Assert.That(references.Get(0).Descriptor).IsSameReferenceAs(descriptor);
+        await Assert.That(references.Get(0).State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(calls).IsEqualTo(0);
+    }
+
+    [Test]
+    public async Task NonGenericReferenceCollection_QueriesEnumerationAndCopyToResolveNodes()
+    {
+        var table = new GbxRefTable();
+        var calls = 0;
+        var external = new CPlugCrystal();
+        var embedded = new CPlugMaterial();
+        table.ExternalNodes["node.Gbx"] = () => { calls++; return external.ToGbx(); };
+        var references = new NodeRefList<CMwNod> { null, embedded, null };
+        var descriptor = table.CreateFile("node.Gbx");
+        references.Get(0).Descriptor = descriptor;
+        IList list = references;
+        ICollection collection = references;
+        var marker = new object();
+        object?[] objects = [marker, null, null, null, marker];
+
+        collection.CopyTo(objects, 1);
+
+        await Assert.That(objects[0]).IsSameReferenceAs(marker);
+        await Assert.That(objects[1]).IsSameReferenceAs(external);
+        await Assert.That(objects[2]).IsSameReferenceAs(embedded);
+        await Assert.That(objects[3]).IsNull();
+        await Assert.That(objects[4]).IsSameReferenceAs(marker);
+        await Assert.That(list.Contains(external)).IsTrue();
+        await Assert.That(list.IndexOf(embedded)).IsEqualTo(1);
+        await Assert.That(list.IndexOf(null)).IsEqualTo(2);
+        var nodes = new CMwNod?[3];
+        collection.CopyTo(nodes, 0);
+        await Assert.That(nodes).IsEquivalentTo(new CMwNod?[] { external, embedded, null }, CollectionOrdering.Matching);
+        var interfaces = new IClass?[3];
+        collection.CopyTo(interfaces, 0);
+        await Assert.That((object?)interfaces[0]).IsSameReferenceAs(external);
+        await Assert.That((object?)interfaces[1]).IsSameReferenceAs(embedded);
+        await Assert.That(((IEnumerable)references).Cast<CMwNod?>()).IsEquivalentTo(nodes, CollectionOrdering.Matching);
+        await Assert.That(references.Get(0).Descriptor).IsSameReferenceAs(descriptor);
+        await Assert.That(calls).IsEqualTo(1);
+    }
+
+    [Test]
+    [Arguments("null", 0)]
+    [Arguments("rank", 0)]
+    [Arguments("lowerBound", 0)]
+    [Arguments("empty", 0)]
+    [Arguments("type", 0)]
+    [Arguments("index", -1)]
+    [Arguments("index", 2)]
+    public async Task NonGenericReferenceCollection_CopyToRejectsInvalidDestinationsWithoutResolving(string scenario, int index)
+    {
+        var table = new GbxRefTable();
+        var calls = 0;
+        table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
+        var references = new NodeRefList<CPlugCrystal> { null };
+        references.Get(0).Descriptor = table.CreateFile("unloaded.Gbx");
+        ICollection collection = references;
+        var array = scenario switch
+        {
+            "null" => null,
+            "rank" => new object[1, 1],
+            "lowerBound" => Array.CreateInstance(typeof(object), [1], [1]),
+            "empty" => Array.Empty<object>(),
+            "type" => new string[1],
+            _ => new object[1]
+        };
+
+        if (scenario == "null")
+        {
+            await Assert.That(() => collection.CopyTo(array!, index)).Throws<ArgumentNullException>();
+        }
+        else if (scenario == "index")
+        {
+            await Assert.That(() => collection.CopyTo(array!, index)).Throws<ArgumentOutOfRangeException>();
+        }
+        else
+        {
+            await Assert.That(() => collection.CopyTo(array!, index)).Throws<ArgumentException>();
+        }
+
+        await Assert.That(calls).IsEqualTo(0);
+        await Assert.That(references.Get(0).State).IsEqualTo(NodeRefState.Unresolved);
     }
 
     [Test]
