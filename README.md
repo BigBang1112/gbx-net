@@ -16,19 +16,19 @@ For any questions, open an issue, join the [GameBox Sandbox Discord server](http
 <!-- gbx-comparison:start -->
 ### Benchmark
 
-**0.0293 ms** for **A01-Race**, **188 ms** for **Deep Dip 2** on average with GBX.NET.
+**0.0266 ms** for **A01-Race**, **159 ms** for **Deep Dip 2** on average with GBX.NET.
 
 Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.
 
 | Map | GBX.NET | gbx-py | gbx-ts | ManiaPlanetSharp |
 | --- | ---: | ---: | ---: | ---: |
-| A01-Race | **0.0293 ms** | 14 ms (partial) | 2.58 ms | 17.2 ms (partial) |
-| Canyon A01 | **0.325 ms** | 60.9 ms (partial) | 30.8 ms (partial) | 25.2 ms (partial) |
-| Deep Dip 2 | **188 ms** | 15 s (partial) | 712 ms (partial) | 2.86 s (partial) |
+| A01-Race | **0.0266 ms** | 11.9 ms (partial) | 2.14 ms | 14.6 ms (partial) |
+| Canyon A01 | **0.349 ms** | 51 ms (partial) | 26.5 ms (partial) | 24.9 ms (partial) |
+| Deep Dip 2 | **159 ms** | 12.7 s (partial) | 701 ms (partial) | 2.37 s (partial) |
 
 **Parsing coverage differs.** `(partial)` means skipped chunks or an unfinished body, not equivalent full parsing. Passing the runner's checks does not prove exhaustive coverage, so these timings are not a like-for-like speedup.
 
-Measured 2026-10-11 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64), with 15 samples per case after warmup. [Methodology, parsing limitations, versions, and reusable runner](Benchmarks/README.md#cross-library-map-comparison).
+Measured 2026-10-14 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64), with 15 samples per case after warmup. [Methodology, parsing limitations, versions, and reusable runner](Benchmarks/README.md#cross-library-map-comparison).
 
 <!-- gbx-comparison:end -->
 

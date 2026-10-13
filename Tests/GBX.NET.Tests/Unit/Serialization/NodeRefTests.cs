@@ -166,6 +166,51 @@ public class NodeRefTests
         await Assert.That(restored.Count).IsEqualTo(4);
     }
 
+    [Test]
+    public async Task ListReadsKeepIndependentHandlesForSharedNodesAndNullEntries()
+    {
+        var node = new CMwNod();
+        var references = new NodeRefList<CMwNod> { node, node, null, null };
+        using var stream = new MemoryStream();
+        using var writer = new GbxWriter(stream);
+        writer.WriteListNodeRef(references);
+
+        stream.Position = 0;
+        using var reader = new GbxReader(stream);
+        var restored = reader.ReadListNodeRef<CMwNod>();
+
+        await Assert.That(restored[0]).IsSameReferenceAs(restored[1]);
+        await Assert.That(restored.Get(0)).IsNotSameReferenceAs(restored.Get(1));
+        await Assert.That(restored.Get(2)).IsNotSameReferenceAs(restored.Get(3));
+
+        restored.Get(0).Clear();
+        restored.Get(2).Node = node;
+        await Assert.That(restored[0]).IsNull();
+        await Assert.That(restored[1]).IsNotNull();
+        await Assert.That(restored[2]).IsSameReferenceAs(node);
+        await Assert.That(restored[3]).IsNull();
+    }
+
+    [Test]
+    public async Task EmbeddedListHandlesSupportConcurrentFirstAccess()
+    {
+        var node = new CMwNod();
+        var references = new NodeRefList<CMwNod> { node };
+        var reference = references.Get(0);
+        var start = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var readers = Enumerable.Range(0, 32).Select(async _ =>
+        {
+            await start.Task;
+            return reference.Resolve();
+        }).ToArray();
+
+        start.SetResult(true);
+        var results = await Task.WhenAll(readers);
+        await Assert.That(results.All(result => ReferenceEquals(result, node))).IsTrue();
+        reference.Clear();
+        await Assert.That(reference.Node).IsNull();
+    }
+
     private sealed class EqualMaterial : CPlugMaterial
     {
         public override bool Equals(object? obj) => obj is EqualMaterial;

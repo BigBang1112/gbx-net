@@ -9,7 +9,7 @@ namespace GBX.NET;
 /// </summary>
 public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepCloneable where T : CMwNod
 {
-    private readonly List<NodeRef<T>> references = [];
+    private readonly List<NodeRef<T>> references;
     private ReadOnlyCollection<NodeRef<T>>? referenceView;
 
     internal IReadOnlyList<NodeRef<T>> References => referenceView ??= references.AsReadOnly();
@@ -21,11 +21,16 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     bool ICollection.IsSynchronized => false;
     object ICollection.SyncRoot => this;
 
-    public NodeRefList()
+    public NodeRefList() : this(0)
     {
     }
 
-    public NodeRefList(IEnumerable<T?> nodes)
+    public NodeRefList(int capacity)
+    {
+        references = new(capacity);
+    }
+
+    public NodeRefList(IEnumerable<T?> nodes) : this(nodes is ICollection<T?> collection ? collection.Count : 0)
     {
         if (nodes is null)
         {
@@ -100,8 +105,11 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     /// </summary>
     public void Add(NodeRef<T> reference) => references.Add(Copy(reference));
 
+    // Readers create a fresh handle for each entry, so ownership can transfer without copying.
+    internal void AddOwned(NodeRef<T> reference) => references.Add(reference);
+
     [OverloadResolutionPriority(1)]
-    public void Add(T? item) => references.Add(new() { Node = item });
+    public void Add(T? item) => references.Add(new(item));
 
     int IList.Add(object? value)
     {
@@ -115,7 +123,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     public void Insert(int index, NodeRef<T> reference) => references.Insert(index, Copy(reference));
 
     [OverloadResolutionPriority(1)]
-    public void Insert(int index, T? item) => references.Insert(index, new() { Node = item });
+    public void Insert(int index, T? item) => references.Insert(index, new(item));
 
     void IList.Insert(int index, object? value) => Insert(index, ValidateNode(value));
 
@@ -296,7 +304,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
 
     object IDeepCloneable.DeepClone(DeepCloneContext context)
     {
-        var clone = new NodeRefList<T>();
+        var clone = new NodeRefList<T>(Count);
         context.Register(this, clone);
 
         foreach (var reference in references)

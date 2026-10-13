@@ -98,11 +98,11 @@ public partial class GbxReader
         var count = length ?? ReadInt32();
         EnsureValidLength(count);
 
-        var list = new NodeRefList<T>();
+        var list = new NodeRefList<T>(count);
 
         for (var i = 0; i < count; i++)
         {
-            list.Add(ReadNodeRef<T>(null));
+            list.AddOwned(ReadNodeRef<T>(null));
         }
 
         return list;

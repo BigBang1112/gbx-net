@@ -1217,7 +1217,7 @@ public partial class CGameCtnChallenge :
             Version = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
-            n.blocks = new NodeRefList<CGameCtnBlock>();
+            n.blocks = new NodeRefList<CGameCtnBlock>(nbBlocks);
 
             for (var i = 0; i < nbBlocks; i++)
             {
@@ -1685,7 +1685,7 @@ public partial class CGameCtnChallenge :
             BlocksVersion = r.ReadInt32();
 
             var nbBakedBlocks = r.ReadInt32();
-            n.bakedBlocks = new NodeRefList<CGameCtnBlock>();
+            n.bakedBlocks = new NodeRefList<CGameCtnBlock>(nbBakedBlocks);
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {

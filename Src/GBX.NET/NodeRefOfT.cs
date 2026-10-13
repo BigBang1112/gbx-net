@@ -10,9 +10,13 @@ namespace GBX.NET;
 public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
 {
 #if NET9_0_OR_GREATER
-    private readonly Lock sync = new();
+    private Lock? sync;
+
+    private Lock Sync => LazyInitializer.EnsureInitialized(ref sync);
 #else
-    private readonly object sync = new();
+    private object? sync;
+
+    private object Sync => LazyInitializer.EnsureInitialized(ref sync);
 #endif
     private GbxRefTableNode? descriptor;
     private T? node;
@@ -20,11 +24,21 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     private long revision;
     private int validatedGeneration = -1;
 
+    public NodeRef()
+    {
+    }
+
+    internal NodeRef(T? node)
+    {
+        // The handle is not published yet, so its initial embedded node needs no lock.
+        this.node = node;
+    }
+
     public override NodeRefKind Kind
     {
         get
         {
-            lock (sync)
+            lock (Sync)
             {
                 return descriptor switch
                 {
@@ -40,7 +54,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     {
         get
         {
-            lock (sync)
+            lock (Sync)
             {
                 if (descriptor is not { } source)
                 {
@@ -72,7 +86,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     {
         get
         {
-            lock (sync)
+            lock (Sync)
             {
                 if (descriptor is not { } source)
                 {
@@ -91,7 +105,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     {
         get
         {
-            lock (sync)
+            lock (Sync)
             {
                 if (descriptor is not { } source)
                 {
@@ -108,7 +122,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     {
         get
         {
-            lock (sync)
+            lock (Sync)
             {
                 return descriptor;
             }
@@ -119,7 +133,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
 
     private void SetStorage(T? node, GbxRefTableNode? descriptor)
     {
-        lock (sync)
+        lock (Sync)
         {
             revision++;
             this.descriptor = descriptor;
@@ -147,7 +161,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         GbxRefTableNode? source;
         T? embedded;
 
-        lock (reference.sync)
+        lock (reference.Sync)
         {
             source = reference.descriptor;
             embedded = reference.node;
@@ -227,7 +241,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
     /// <inheritdoc/>
     public override void Reset()
     {
-        lock (sync)
+        lock (Sync)
         {
             if (descriptor is null)
             {
@@ -244,7 +258,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
 
     private (GbxRefTableNode? Source, long Version, T? Node, bool Resolved) Snapshot()
     {
-        lock (sync)
+        lock (Sync)
         {
             if (descriptor is null)
             {
@@ -273,7 +287,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         {
             var failure = new InvalidCastException($"Expected {typeof(T).Name}, received Gbx class 0x{value.GetId():X8}.");
 
-            lock (sync)
+            lock (Sync)
             {
                 if (ReferenceEquals(descriptor, source) && revision == version && source.Resolution.Generation == generation)
                 {
@@ -287,7 +301,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
 
         var typed = (T?)value;
 
-        lock (sync)
+        lock (Sync)
         {
             if (ReferenceEquals(descriptor, source) && revision == version && source.Resolution.Generation == generation)
             {
